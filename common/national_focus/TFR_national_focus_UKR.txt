@@ -1,0 +1,1758 @@
+focus_tree = {
+	id = UKR
+	country = {
+		factor = 0
+		modifier = {
+			add = 10
+			tag = UKR
+		}
+	}
+	focus = {
+		id = UKR_intelligence_operation
+		icon = GFX_UKR_intelligence_operation
+		x = 3
+		y = 0
+		cost = 1
+		cancelable = no
+		available = {
+			has_country_leader = {
+				character = UKR_volodymyr_zelensky
+				ruling_only = yes
+			}
+		}
+		completion_reward = {
+			add_command_power = 20
+			set_temp_variable = {
+				var = intel_special_task
+				value = yes
+			}
+			country_event = {
+				id = ukraine.800
+				days = 1
+			}
+		}
+	}
+
+	focus = {
+		id = UKR_military_budget_expansion
+		icon = GFX_UKR_budget_military
+		x = -2
+		y = 1
+		cost = 5
+		relative_position_id = UKR_intelligence_operation
+		prerequisite = {
+			focus = UKR_intelligence_operation
+			}
+		available = {
+			has_completed_focus = UKR_reform_general_staff_nato_standards
+			is_puppet = no
+		}
+		completion_reward = {
+			add_political_power = 40
+			add_command_power = 30
+			add_war_support = 0.02
+			
+			add_timed_idea = {
+				idea = UKR_increased_funding_agency
+				days = 300
+			}
+
+			unlock_decision_tooltip = UKR_help_forces_against_russian_influence
+
+			set_temp_variable = {
+				var = income_var_temp
+				value = -5.5
+			}
+			add_income_with_inflation = yes
+			
+			custom_effect_tooltip = UKR_budget_military_expansion_tooltip
+				
+			hidden_effect = {
+				country_event = {
+					id = ukraine.801
+					days = 7
+				}
+				add_popularity = {
+					ideology = nationalist
+					popularity = 0.02
+				}
+			}
+		}
+	}
+
+	focus = {
+		id = UKR_shadow_war_capabilities
+		icon = GFX_UKR_shadow_war
+		x = 0
+		y = 1
+		cost = 6
+		prerequisite = { focus = UKR_military_budget_expansion }
+		relative_position_id = UKR_military_budget_expansion
+		available = {
+			is_puppet = no
+		}
+		completion_reward = {
+			add_command_power = 30
+			add_political_power = 15
+
+			set_temp_variable = {
+				var = income_var_temp
+				value = -2
+			}
+			add_income_with_inflation = yes
+
+			unlock_decision_tooltip = UKR_support_central_asian_resistance_KAZ
+			unlock_decision_tooltip = UKR_support_central_asian_resistance_UZB
+			unlock_decision_tooltip = UKR_support_central_asian_resistance_TMS
+			unlock_decision_tooltip = UKR_support_central_asian_resistance_TAJ
+			unlock_decision_tooltip = UKR_support_central_asian_resistance_GEO
+			unlock_decision_tooltip = UKR_support_central_asian_resistance_AZR
+			unlock_decision_tooltip = UKR_support_central_asian_resistance_ARM
+			
+			custom_effect_tooltip = UKR_shadow_war_special_ops_tooltip
+			hidden_effect = {
+				country_event = {
+					id = ukraine.802
+					days = 10
+				}
+				add_popularity = {
+					ideology = nationalist
+					popularity = 0.01
+				}
+			}
+		}
+	}
+
+
+	focus = {
+		id = UKR_donbass_conflict_and_crimea_annexation
+		icon = GFX_UKR_donbass_conflict_and_crimea_annexation
+		relative_position_id = UKR_intelligence_operation
+		x = 0
+		y = 1
+		cost = 3
+		cancelable = no
+		prerequisite = {
+			focus = UKR_intelligence_operation
+		}
+		available = {
+			has_completed_focus = UKR_intelligence_operation
+			has_country_leader = {
+				character = UKR_volodymyr_zelensky
+				ruling_only = yes
+			}
+		}
+		completion_reward = {
+			add_war_support = 0.03
+			add_stability = -0.02
+			hidden_effect = {
+				country_event = {
+					id = ukraine.105
+					days = 5
+				}
+			}
+			custom_effect_tooltip = UKR_budapest_memorandum_violated_tt
+		}
+	}
+	focus = {
+		id = UKR_oligarchs_and_economy
+		icon = GFX_focus_generic_monetary_union
+		relative_position_id = UKR_donbass_conflict_and_crimea_annexation
+		x = 0
+		y = 1
+		cost = 3
+		prerequisite = {
+			focus = UKR_donbass_conflict_and_crimea_annexation
+		}
+		completion_reward = {
+			add_stability = -0.01
+			add_political_power = -25
+			1285 = { # Киев
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = office_park
+					level = 1
+					instant_build = yes
+				}
+			}
+			hidden_effect = {
+				country_event = {
+					id = ukraine.106
+					days = 7
+				}
+			}
+			custom_effect_tooltip = UKR_economy_2020_status_tt
+		}
+	}
+	focus = {
+		id = UKR_corruption_and_power_consolidation
+		icon = GFX_focus_ARG_crackdown_on_corruption
+		relative_position_id = UKR_oligarchs_and_economy
+		#GFX_focus_UKR_corruption
+		x = 0
+		y = 1
+		cost = 3
+		prerequisite = {
+			focus = UKR_oligarchs_and_economy
+		}
+		completion_reward = {
+			add_political_power = 50
+			add_stability = -0.02
+			add_ideas = UKR_endemic_corruption
+			hidden_effect = {
+				country_event = {
+					id = ukraine.107
+					days = 7
+				}
+			}
+			custom_effect_tooltip = UKR_rada_and_oligarchs_tt
+		}
+	}
+	focus = {
+		id = UKR_presidential_elections
+		icon = GFX_UKR_Actor_President
+		relative_position_id = UKR_corruption_and_power_consolidation
+		x = 0
+		y = 1
+		cost = 3
+		prerequisite = {
+			focus = UKR_corruption_and_power_consolidation
+		}
+		completion_reward = {
+			add_stability = 0.03
+			add_political_power = 25
+			hidden_effect = {
+				country_event = {
+					id = ukraine.108
+					days = 7
+				}
+			}
+		}
+	}
+	focus = {
+		id = UKR_path_to_independence
+		icon = GFX_focus_UKR_Slava_Ukraina
+		relative_position_id = UKR_presidential_elections
+		x = 0
+		y = 1
+		cost = 7
+		prerequisite = {
+			focus = UKR_presidential_elections
+		}
+		available = {
+			has_country_leader = {
+				character = UKR_volodymyr_zelensky
+				ruling_only = yes
+			}
+		}
+		allow_branch = {
+			has_country_leader = {
+				character = UKR_volodymyr_zelensky
+				ruling_only = yes
+			}
+		}
+		completion_reward = {
+			add_political_power = 100
+			hidden_effect = {
+				country_event = {
+					id = ukraine.100
+					days = 3
+				}
+			}
+		}
+	}
+	focus = {
+		id = UKR_european_integration
+		icon = GFX_UKR_european_integration
+		relative_position_id = UKR_path_to_independence
+		x = 0
+		y = 1
+		cost = 4
+		available = {
+			has_country_leader = {
+				character = UKR_volodymyr_zelensky
+				ruling_only = yes
+			}
+		}
+		prerequisite = {
+			focus = UKR_path_to_independence
+		}
+		completion_reward = {
+			add_political_power = 75
+			add_stability = 0.05
+			hidden_effect = {
+				add_popularity = {
+					ideology = market_liberal
+					popularity = 0.05
+				}
+				add_popularity = {
+					ideology = social_liberal
+					popularity = 0.03
+				}
+				country_event = {
+					id = ukraine.110
+					days = 30
+				}
+			}
+			ENG = {
+				add_opinion_modifier = {
+					target = UKR
+					modifier = diplomatic_treaty_ukr
+				}
+			}
+			FRA = {
+				add_opinion_modifier = {
+					target = UKR
+					modifier = diplomatic_treaty_ukr
+				}
+			}
+			GER = {
+				add_opinion_modifier = {
+					target = UKR
+					modifier = diplomatic_treaty_ukr
+				}
+			}
+		}
+	}	
+	focus = {
+		id = UKR_secure_western_aid
+		icon = GFX_SOV_the_means_to_wage_war_ccp_2d_sov_compatibility
+		relative_position_id = UKR_european_integration
+		x = 1
+		y = 1
+		cost = 5
+		available = {
+			has_country_leader = {
+				character = UKR_volodymyr_zelensky
+				ruling_only = yes
+			}
+		}
+		prerequisite = {
+			focus = UKR_european_integration
+		}
+		mutually_exclusive = {
+			focus = UKR_develop_domestic_industry
+		}
+		completion_reward = {
+			add_timed_idea = {
+				idea = UKR_western_support
+				days = 250
+			}
+			add_equipment_to_stockpile = {
+				type = infantry_equipment_2
+				amount = 2500
+				producer = USA
+			}
+			add_equipment_to_stockpile = {
+				type = artillery_equipment_2
+				amount = 125
+				producer = GER
+			}
+			hidden_effect = {
+				USA = {
+					add_opinion_modifier = {
+						target = UKR
+						modifier = military_cooperation
+					}
+				}
+			}
+		}
+	}
+	focus = {
+		id = UKR_develop_domestic_industry
+		icon = GFX_SOV_heavy_industry_ccp_2d_sov_compatibility
+		relative_position_id = UKR_european_integration
+		x = -1
+		y = 1
+		cost = 9
+		available = {
+			has_country_leader = {
+				character = UKR_volodymyr_zelensky
+				ruling_only = yes
+			}
+		}
+		prerequisite = {
+			focus = UKR_european_integration
+		}
+		mutually_exclusive = {
+			focus = UKR_secure_western_aid
+		}
+		completion_reward = {
+			add_ideas = UKR_industrial_revitalization
+			random_owned_controlled_state = {
+				limit = {
+					industrial_complex > 0
+				}
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = industrial_complex
+					level = 2
+					instant_build = yes
+				}
+			}
+			1285 = { # Киев
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = arms_factory
+					level = 1
+					instant_build = yes
+				}
+			}
+		}
+	}
+	focus = {
+		id = UKR_defensive_fortifications
+		icon = GFX_SOV_policy_of_individual_security_ccp_2d_sov_compatibility
+		relative_position_id = UKR_develop_domestic_industry
+		x = 1
+		y = 1
+		cost = 5
+		available = {
+			has_country_leader = {
+				character = UKR_volodymyr_zelensky
+				ruling_only = yes
+			}
+		}
+		prerequisite = {
+			focus = UKR_secure_western_aid
+			focus = UKR_develop_domestic_industry
+		}
+		completion_reward = {
+			add_war_support = 0.05
+			army_experience = 25
+			unlock_decision_tooltip = UKR_establish_border_defense_system
+			add_tech_bonus = {
+				name = UKR_support_tech
+				bonus = 0.3
+				uses = 2
+				category = support_tech
+			}
+			1091 = { # Крамоторск
+				add_building_construction = {
+					type = bunker
+					level = 2
+					province = 14643
+					instant_build = yes
+				}
+			}
+			1374 = { # Мариуполь
+				add_building_construction = {
+					type = bunker
+					level = 2
+					province = 3449
+					instant_build = yes
+				}
+			}
+			set_temp_variable = {
+				var = income_var_temp
+				value = -8
+			}
+			add_income_with_inflation = yes
+		}
+	}
+	focus = {
+		id = UKR_territorial_defense_forces
+		icon = GFX_focus_SWE_hedgehog_defense
+		relative_position_id = UKR_defensive_fortifications
+		x = 0
+		y = 1
+		cost = 7
+		available = {
+			has_country_leader = {
+				character = UKR_volodymyr_zelensky
+				ruling_only = yes
+			}
+		}
+		prerequisite = {
+			focus = UKR_defensive_fortifications
+		}
+		completion_reward = {
+			add_ideas = UKR_territorial_defense_idea
+			add_manpower = 50000
+			army_experience = 20
+			add_doctrine_cost_reduction = {
+				name = land_doc_bonus
+				cost_reduction = 0.6
+				uses = 1
+				category = cat_mobile_warfare
+			}
+			UKR_valery_zaluzhny = {
+				add_unit_leader_trait = brilliant_strategist
+			}
+			set_country_flag = UKR_territorial_defense_forces_flag
+		}
+	}
+	focus = {
+		id = UKR_diplomatic_offensive
+		icon = GFX_focus_generic_diplomatic_treaty
+		relative_position_id = UKR_european_integration
+		x = -3
+		y = 1
+		cost = 5
+		available = {
+			has_country_leader = {
+				character = UKR_volodymyr_zelensky
+				ruling_only = yes
+			}
+		}
+		prerequisite = {
+			focus = UKR_european_integration
+		}
+		completion_reward = {
+			add_political_power = 100
+			add_stability = 0.03
+			unlock_decision_tooltip = UKR_appeal_to_un_security_council
+			unlock_decision_tooltip = UKR_request_nato_partnership
+			hidden_effect = {
+				add_popularity = {
+					ideology = social_liberal
+					popularity = 0.02
+				}
+			}
+			set_country_flag = UKR_diplomatic_offensive_flag
+		}
+	}
+	focus = {
+		id = UKR_national_reconciliation
+		icon = GFX_goal_generic_national_unity
+		relative_position_id = UKR_path_to_independence
+		x = 3
+		y = 1
+		cost = 6
+		available = {
+			has_country_leader = {
+				character = UKR_volodymyr_zelensky
+				ruling_only = yes
+			}
+		}
+		prerequisite = {
+			focus = UKR_path_to_independence
+		}
+		completion_reward = {
+			add_stability = 0.02
+			add_war_support = 0.02
+			add_political_power = 50
+			hidden_effect = {
+				add_popularity = {
+					ideology = libertarian_socialist
+					popularity = 0.02
+				}
+				add_popularity = {
+					ideology = conservative
+					popularity = 0.02
+				}
+				add_popularity = {
+					ideology = market_liberal
+					popularity = 0.02
+				}
+			}
+			set_country_flag = UKR_national_reconciliation_flag
+		}
+	}
+	focus = {
+		id = UKR_economic_transformation
+		icon = GFX_SOV_planned_economy_ccp_2d_sov_compatibility
+		x = 10
+		y = 0
+		cost = 5
+		available = {
+			has_completed_focus = UKR_path_to_independence
+			has_country_leader = {
+				character = UKR_volodymyr_zelensky
+				ruling_only = yes
+			}
+		}
+		completion_reward = {
+			add_political_power = 25
+			set_country_flag = UKR_economic_reform_start
+		}
+	}
+	#PORT
+	focus = {
+		id = UKR_port_infrastructure_investment
+		icon = GFX_goal_generic_construct_naval_dockyard
+		
+		prerequisite = { 
+			focus = UKR_economic_transformation
+		}
+		relative_position_id = UKR_economic_transformation
+		x = -2
+		y = 1
+		
+		cost = 12
+		
+		available = {
+			has_war = no
+			has_country_leader = {
+				character = UKR_volodymyr_zelensky
+				ruling_only = yes
+			}
+		}
+		
+		completion_reward = {
+			192 = { # Одесская область
+				add_building_construction = {
+					type = infrastructure
+					level = 1
+					instant_build = yes
+				}
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = dockyard
+					level = 2
+					instant_build = yes
+				}
+			}
+			set_country_flag = port_infrastructure_developed
+			add_tech_bonus = {
+				name = UKR_port_logistics
+				category = construction_tech
+				bonus = 0.3
+			}
+			set_temp_variable = {
+				var = income_var_temp
+				value = -13
+			}
+			add_income_with_inflation = yes
+			remove_ideas = UKR_embargoed_economy
+
+			custom_effect_tooltip = UKR_port_infrastructure_tooltip
+		}
+	}
+	focus = {
+		id = UKR_maritime_revival
+		icon = GFX_goal_generic_navy_cruiser
+		prerequisite = { 
+			focus = UKR_port_infrastructure_investment 
+		}
+		relative_position_id = UKR_port_infrastructure_investment 
+		x = 0
+		y = 1
+		
+		cost = 8
+		
+		available = {
+			has_country_leader = {
+				character = UKR_volodymyr_zelensky
+				ruling_only = yes
+			}
+		}
+		
+		completion_reward = {
+			navy_experience = 50
+			192 = { # Одесская область
+				add_building_construction = {
+					type = naval_base
+					level = 3
+					instant_build = yes
+					province = 11670
+				}
+				add_building_construction = {
+					type = bunker
+					level = 1
+					instant_build = yes
+					province = 11670
+				}
+				
+			}
+			set_country_flag = maritime_program_launched
+			
+			add_tech_bonus = {
+				name = UKR_naval_modernization
+				category = naval_doctrine
+				bonus = 0.75
+			}
+			
+			add_tech_bonus = {
+				name = UKR_naval_engineering
+				category = naval_equipment
+				bonus = 0.4
+				uses = 1
+			}
+		}
+	}
+	focus = {
+		id = UKR_convoy_fleet_development
+		icon = GFX_goal_generic_occupy_states_coastal
+		prerequisite = { 
+			focus = UKR_maritime_revival
+		}
+		relative_position_id = UKR_maritime_revival
+		
+		x = 0
+		y = 1
+		
+		cost = 7
+		
+		available = {
+			has_country_leader = {
+				character = UKR_volodymyr_zelensky
+				ruling_only = yes
+			}
+		}
+		
+		completion_reward = {
+			add_equipment_to_stockpile = {
+				type = convoy
+				amount = 25
+			}
+			
+			add_tech_bonus = {
+				name = UKR_maritime_trade
+				category = naval_minesweeping
+				bonus = 0.4
+				uses = 1
+			}
+
+			set_temp_variable = {
+				var = income_var_temp
+				value = -2.8
+			}
+			add_income_with_inflation = yes
+			
+			custom_effect_tooltip = UKR_convoy_fleet_development_tooltip
+		}
+	}
+	focus = {
+		id = UKR_maritime_doctrine_adaptation
+		icon = GFX_focus_generic_coastal_fort
+		prerequisite = { 
+			focus = UKR_convoy_fleet_development
+		}
+		relative_position_id = UKR_convoy_fleet_development
+		x = 0
+		y = 1
+		
+		cost = 6
+		
+		available = {
+			has_country_leader = {
+				character = UKR_volodymyr_zelensky
+				ruling_only = yes
+			}
+		}
+		
+		completion_reward = {
+			add_doctrine_cost_reduction = {
+				name = land_doc_bonus
+				cost_reduction = 0.3
+				uses = 1
+				category = naval_doctrine
+			}
+			
+			add_tech_bonus = {
+				name = UKR_naval_tech_boost
+				category = naval_equipment
+				bonus = 0.5
+				uses = 1
+			}
+			
+			add_tech_bonus = {
+				name = UKR_naval_defense_tech
+				category = naval_minelaying
+				bonus = 0.6
+				uses = 1
+			}
+			
+			navy_experience = 15
+		}
+	}
+
+	focus = {
+		id = UKR_maritime_defense_strategy
+		icon = GFX_goal_generic_build_navy
+		prerequisite = { 
+			focus = UKR_maritime_doctrine_adaptation
+		}
+		relative_position_id = UKR_maritime_doctrine_adaptation
+		x = 0
+		y = 1
+		
+		cost = 5
+		
+		available = {
+			has_country_leader = {
+				character = UKR_volodymyr_zelensky
+				ruling_only = yes
+			}
+		}
+		
+		completion_reward = {		
+			add_tech_bonus = {
+				name = UKR_comprehensive_maritime
+				category = naval_doctrine
+				bonus = 0.6
+				uses = 1
+
+			}
+			
+			add_tech_bonus = {
+				name = UKR_advanced_naval_tech
+				category = naval_equipment
+				bonus = 0.5
+				uses = 2
+			}
+			
+			custom_effect_tooltip = UKR_maritime_defense_strategy_tooltip
+		}
+	}
+	focus = {
+		id = UKR_big_construction
+		icon = GFX_goal_generic_construct_civilian
+		relative_position_id = UKR_economic_transformation
+		x = 2
+		y = 1
+		cost = 8
+		prerequisite = {
+			focus = UKR_economic_transformation
+		}
+		available = {
+			has_country_leader = {
+				character = UKR_volodymyr_zelensky
+				ruling_only = yes
+			}
+		}
+		completion_reward = {
+			every_owned_state = {
+				random_select_amount = 3
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = infrastructure
+					level = 2
+					instant_build = yes
+				}
+			}
+			add_timed_idea = {
+					idea = UKR_big_construction_idea
+					days = 485
+				}
+			set_temp_variable = {
+				var = income_var_temp
+				value = -22.8
+			}
+			add_income_with_inflation = yes
+		}
+	}
+	focus = {
+		id = UKR_digital_economy
+		icon = GFX_focus_SWE_radiotjanst
+		relative_position_id = UKR_big_construction
+		x = 0
+		y = 1
+		cost = 5
+		prerequisite = {
+			focus = UKR_big_construction
+		}
+		available = {
+			has_country_leader = {
+				character = UKR_volodymyr_zelensky
+				ruling_only = yes
+			}
+		}
+		completion_reward = {
+			add_ideas = UKR_startup_ecosystem_idea
+			add_tech_bonus = {
+				name = UKR_digital_transformation
+				bonus = 0.5
+				uses = 2
+				category = industry
+				category = electronics
+			}
+			set_temp_variable = {
+				var = income_var_temp
+				value = 10.5
+			}
+			add_income_with_inflation = yes
+		}
+	}
+	focus = {
+		id = UKR_startup_support
+		icon = GFX_focus_ARG_develop_the_electricity_sector
+		relative_position_id = UKR_digital_economy
+		x = 0
+		y = 1
+		cost = 4
+		prerequisite = {
+			focus = UKR_digital_economy
+		}
+		available = {
+			has_country_leader = {
+				character = UKR_volodymyr_zelensky
+				ruling_only = yes
+			}
+		}
+		completion_reward = {
+			add_political_power = 30
+			add_tech_bonus = {
+				name = UKR_startup_support
+				bonus = 0.3
+				uses = 1
+				category = electronics
+			}
+			#unlock_decision_tooltip = UKR_startup_ecosystem_category
+			unlock_decision_tooltip = UKR_national_startup_fund
+			custom_effect_tooltip = UKR_startup_ecosystem_tooltip
+		}
+	}
+	focus = {
+		id = UKR_agricultural_reform
+		icon = GFX_focus_generic_agricultural_subsidies
+		relative_position_id = UKR_economic_transformation
+		x = 0
+		y = 1
+		cost = 6
+		prerequisite = {
+			focus = UKR_economic_transformation
+		}
+		available = {
+			has_country_leader = {
+				character = UKR_volodymyr_zelensky
+				ruling_only = yes
+			}
+		}
+		completion_reward = {
+			add_ideas = UKR_land_reform_idea
+			add_tech_bonus = {
+				bonus = 0.25
+				uses = 1
+				category = excavation_tech
+			}
+			random_owned_controlled_state = {
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = infrastructure
+					level = 1
+					instant_build = yes
+				}
+			}
+		}
+	}
+	focus = {
+		id = UKR_land_market_opening
+		icon = GFX_focus_generic_farmland
+		relative_position_id = UKR_agricultural_reform
+		x = 0
+		y = 1
+		cost = 5
+		prerequisite = {
+			focus = UKR_agricultural_reform
+		}
+		available = {
+			has_country_leader = {
+				character = UKR_volodymyr_zelensky
+				ruling_only = yes
+			}
+		}
+		completion_reward = {
+			add_stability = 0.05
+			add_war_support = 0.03
+			set_temp_variable = {
+				var = income_var_temp
+				value = 25
+			}
+			add_income_with_inflation = yes
+		}
+	}
+	focus = {
+		id = UKR_invest_in_infrastructure
+		icon = GFX_goal_generic_construct_infrastructure
+		relative_position_id = UKR_big_construction
+		x = 2
+		y = 1
+		cost = 10
+		prerequisite = {
+			focus = UKR_big_construction
+		}
+		available = {
+			has_country_leader = {
+				character = UKR_volodymyr_zelensky
+				ruling_only = yes
+			}
+		}
+		completion_reward = {
+			add_ideas = UKR_infrastructure_modernization_idea
+			set_temp_variable = {
+				var = income_var_temp
+				value = -37
+			}
+			add_income_with_inflation = yes
+			1285 = { # Киев
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = industrial_complex
+					level = 1
+					instant_build = yes
+				}
+			}
+			random_owned_controlled_state = {
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = industrial_complex
+					level = 1
+					instant_build = yes
+				}
+			}
+			every_owned_state = {
+				random_select_amount = 6
+				add_building_construction = {
+					type = infrastructure
+					level = 1
+					instant_build = yes
+				}
+			}
+		}
+	}
+
+	#Milit_Focus
+		focus = {
+		id = UKR_reform_general_staff_nato_standards
+		icon = GFX_UKR_reform_general_staff_nato_standards
+		x = 20
+		y = 0
+		cost = 5
+		available = {
+			has_completed_focus = UKR_path_to_independence
+			OR = {
+				has_idea = high_training
+				has_idea = higher_training
+				has_idea = highest_training
+			}
+		}	
+		ai_will_do = {
+			factor = 8
+		}
+		completion_reward = {
+			add_command_power = 25
+			add_war_support = 0.05
+			add_ideas = UKR_nato_command_structure
+			custom_effect_tooltip = UKR_reform_general_staff_tooltip
+			hidden_effect = {
+				set_country_flag = UKR_general_staff_reformed
+			}
+		}
+	}
+
+	# Новые фокусы после UKR_reform_general_staff_nato_standards
+
+	focus = {
+		id = UKR_forge_professional_officer_corps
+		icon = GFX_UKR_forge_professional_officer_corps
+		relative_position_id = UKR_reform_general_staff_nato_standards
+		x = -2
+		y = 4
+		cost = 6
+		
+		prerequisite = {
+			focus = UKR_reform_general_staff_nato_standards
+		}
+		
+		available = {
+			is_puppet = no
+		}
+		
+		ai_will_do = {
+			factor = 10
+			modifier = {
+				factor = 2
+				threat > 0.5
+			}
+		}
+		
+		completion_reward = {
+			army_experience = 35
+			add_doctrine_cost_reduction = {
+				cost_reduction = 0.1
+				uses = 1
+				category = land_doctrine
+			}
+			custom_effect_tooltip = UKR_officer_training_decisions_tooltip
+			hidden_effect = {
+				unlock_decision_tooltip = UKR_artillery_warfare_course
+				unlock_decision_tooltip = UKR_mobile_warfare_program
+				unlock_decision_tooltip = UKR_infantry_tactics_school
+				unlock_decision_tooltip = UKR_hybrid_operations_school
+			}
+		}
+	}
+
+	focus = {
+		id = UKR_UAV_warfare_revolution
+		icon = GFX_UKR_UAV_warfare_revolution
+		relative_position_id = UKR_reform_general_staff_nato_standards
+		x = 2
+		y = 4
+		cost = 6
+		
+		prerequisite = {
+			focus = UKR_reform_general_staff_nato_standards
+		}
+		
+		available = {
+			is_puppet = no
+		}
+		
+		ai_will_do = {
+			factor = 12
+			modifier = {
+				factor = 2
+				has_war = no
+			}
+		}
+		
+		completion_reward = {
+			air_experience = 25
+			add_tech_bonus = {
+				name = UKR_UAV_research
+				bonus = 0.2
+				uses = 2
+				category = cas_bomber
+				category = tactical_bomber
+			}
+			add_ideas = UKR_UAV_warfare_pioneers
+			custom_effect_tooltip = UKR_drone_doctrine_tooltip
+		}
+	}
+
+
+
+	# Mobile Tactics Branch - Offensive Doctrine
+
+	focus = {
+		id = UKR_mobile_tactics_doctrine
+		icon = GFX_focus_generic_tank_assault
+		relative_position_id = UKR_reform_general_staff_nato_standards
+		x = -4
+		y = 1
+		cost = 6
+		ai_will_do = {
+			factor = 10
+			modifier = {
+				factor = 2
+				has_war = yes
+			}
+		}
+		prerequisite = {
+			focus = UKR_reform_general_staff_nato_standards
+		}
+		mutually_exclusive = {
+			focus = UKR_combined_arms_doctrine
+			focus = UKR_defensive_doctrine
+		}
+		completion_reward = {
+			army_experience = 50
+			add_doctrine_cost_reduction = {
+				cost_reduction = 0.5
+				uses = 2
+				category = land_doctrine
+			}
+			add_tech_bonus = {
+				name = UKR_mobile_tactics
+				bonus = 0.5
+				uses = 1
+				category = motorized_equipment
+			}
+			add_tech_bonus = {
+				name = UKR_mobile_armo
+				bonus = 0.2
+				uses = 1
+				category = armor
+			}
+			custom_effect_tooltip = UKR_mobile_doctrine_tooltip
+			hidden_effect = {
+				set_country_flag = UKR_mobile_doctrine_chosen
+			}
+		}
+	}
+
+	focus = {
+		id = UKR_modernize_tank_forces
+		icon = GFX_focus_generic_tank_assembly
+		relative_position_id = UKR_mobile_tactics_doctrine
+		x = 0
+		y = 1
+		cost = 7
+		ai_will_do = {
+			factor = 10
+		}
+		prerequisite = {
+			focus = UKR_mobile_tactics_doctrine
+		}
+		completion_reward = {
+			army_experience = 15
+			add_tech_bonus = {
+				name = armor_bonus
+				bonus = 0.5
+				uses = 3
+				category = armor
+			}
+			custom_effect_tooltip = UKR_tank_modernization_tooltip
+			add_equipment_to_stockpile = {
+					type = modern_tank_chassis_1
+					amount = 60
+					producer = UKR
+				}
+			add_equipment_to_stockpile = {
+					type = light_tank_chassis_1
+					amount = 135
+					producer = UKR
+				}
+			add_equipment_to_stockpile = {
+					type = amphibious_tank_equipment
+					amount = 85
+					producer = UKR
+				}
+			add_to_variable = {
+				var = UKR_offensive_capability
+				value = 0.15
+			}
+		}
+	}
+
+	focus = {
+		id = UKR_blitzkrieg_tactics
+		icon = GFX_SOV_the_glory_of_the_red_army_alt_ccp_2d_sov_compatibility
+		relative_position_id =  UKR_modernize_tank_forces
+		x = 0
+		y = 1
+		cost = 8
+		ai_will_do = {
+			factor = 10
+		}
+		prerequisite = {
+			focus = UKR_modernize_tank_forces
+		}
+		completion_reward = {
+			add_ideas = UKR_blitzkrieg_doctrine
+			custom_effect_tooltip = UKR_blitzkrieg_operations_tooltip
+			hidden_effect = {
+				add_timed_idea = {
+					idea = UKR_rapid_offensive_operations
+					days = 365
+				}
+			}
+			add_command_power = 50
+			add_to_variable = {
+				var = UKR_army_attack_factor_dynamic
+				value = 0.1
+			}
+			force_update_dynamic_modifier = yes
+		}
+	}
+
+	# Combined Arms Branch - Balanced Doctrine
+
+	focus = {
+		id = UKR_combined_arms_doctrine
+		icon = GFX_SOV_barrier_troops_ccp_2d_sov_compatibility
+		relative_position_id = UKR_reform_general_staff_nato_standards
+		x = 0
+		y = 1
+		cost = 6
+		ai_will_do = {
+			factor = 15
+		}
+		prerequisite = {
+			focus = UKR_reform_general_staff_nato_standards
+		}
+		mutually_exclusive = {
+			focus = UKR_mobile_tactics_doctrine
+			focus = UKR_defensive_doctrine
+		}
+		completion_reward = {
+			army_experience = 40
+			add_doctrine_cost_reduction = {
+				cost_reduction = 0.5
+				uses = 2
+				category = land_doctrine
+			}
+			add_tech_bonus = {
+				name = UKR_combined_tactics
+				bonus = 0.3
+				uses = 2
+				category = infantry_weapons
+				category = artillery
+			}
+			custom_effect_tooltip = UKR_combined_arms_tooltip
+			hidden_effect = {
+				set_country_flag = UKR_combined_arms_chosen
+			}
+		}
+	}
+
+	focus = {
+		id = UKR_mobile_groups_tactics
+		icon = GFX_focus_generic_full_social_mobilization
+		relative_position_id = UKR_combined_arms_doctrine
+		x = 0
+		y = 1
+		cost = 7
+		ai_will_do = {
+			factor = 10
+		}
+		prerequisite = {
+			focus = UKR_combined_arms_doctrine
+		}
+		completion_reward = {
+			add_ideas = UKR_mobile_battlegroups
+			custom_effect_tooltip = UKR_tactical_encirclement_tooltip
+			add_command_power = 35
+			force_update_dynamic_modifier = yes
+		}
+	}
+
+	focus = {
+		id = UKR_consolidate_tactical_gains
+		icon = GFX_SOV_soviet_artillery_ccp_2d_sov_compatibility
+		relative_position_id = UKR_mobile_groups_tactics
+		x = 0
+		y = 1
+		cost = 8
+		ai_will_do = {
+			factor = 10
+		}
+		prerequisite = {
+			focus = UKR_mobile_groups_tactics
+		}
+		completion_reward = {
+			add_ideas = UKR_consolidation_tactics
+			add_tech_bonus = {
+				name = UKR_field_fortifications
+				bonus = 0.5
+				uses = 1
+				category = engineers_tech
+			}
+			add_tech_bonus = {
+				name = UKR_mobile_tactics_groups
+				bonus = 0.2
+				uses = 1
+				category = motorized_equipment
+			}
+			unlock_decision_tooltip = UKR_tactical_fortifications
+			force_update_dynamic_modifier = yes
+		}
+	}
+
+	# Defensive Branch - Deep Defense Doctrine
+
+	focus = {
+		id = UKR_defensive_doctrine
+		icon = GFX_goal_continuous_def_against_influence
+		relative_position_id = UKR_reform_general_staff_nato_standards
+		x = 4
+		y = 1
+		cost = 6
+		ai_will_do = {
+			factor = 10
+			modifier = {
+				factor = 2
+				threat > 0.5
+			}
+		}
+		prerequisite = {
+			focus = UKR_reform_general_staff_nato_standards
+		}
+		mutually_exclusive = {
+			focus = UKR_mobile_tactics_doctrine
+			focus = UKR_combined_arms_doctrine
+		}
+		completion_reward = {
+			army_experience = 35
+			add_doctrine_cost_reduction = {
+				cost_reduction = 0.5
+				uses = 2
+				category = land_doctrine
+			}
+			add_tech_bonus = {
+				name = UKR_defensive_tactics
+				bonus = 0.5
+				uses = 2
+				category = artillery
+			}
+			custom_effect_tooltip = UKR_defensive_doctrine_tooltip
+			hidden_effect = {
+				set_country_flag = UKR_defensive_doctrine_chosen
+			}
+		}
+	}
+
+	focus = {
+		id = UKR_fortification_construction
+		icon = GFX_SOV_improve_the_stalin_line_ccp_2d_sov_compatibility
+		relative_position_id = UKR_defensive_doctrine
+		x = 0
+		y = 1
+		cost = 7
+		ai_will_do = {
+			factor = 10
+		}
+		prerequisite = {
+			focus = UKR_defensive_doctrine
+		}
+		completion_reward = {
+			add_ideas = UKR_fortification_bureau
+			add_to_variable = {
+				var = UKR_construction_speed_bunker_factor_dynamic
+				value = 0.25
+			}
+			add_to_variable = {
+				var = UKR_production_speed_bunker_factor_dynamic
+				value = 0.2
+			}
+			add_tech_bonus = {
+				name = UKR_field_fortifications_engineers
+				bonus = 0.3
+				uses = 2
+				category = engineers_tech
+			}
+			force_update_dynamic_modifier = yes
+		}
+	}
+
+	focus = {
+		id = UKR_deep_defense_tactics
+		icon = GFX_SOV_fortify_mongolian_border_ccp_2d_sov_compatibility
+		relative_position_id = UKR_fortification_construction
+		x = 0
+		y = 1
+		cost = 8
+		ai_will_do = {
+			factor = 10
+		}
+		prerequisite = {
+			focus = UKR_fortification_construction
+		}
+		completion_reward = {
+			add_command_power = 40
+			add_war_support = 0.1
+			add_ideas = UKR_echeloned_defense
+			custom_effect_tooltip = UKR_deep_defense_tooltip
+			add_to_variable = {
+				var = UKR_army_defence_factor_dynamic
+				value = 0.15
+			}
+			add_to_variable = {
+				var = UKR_max_dig_in_factor_dynamic
+				value = 0.25
+			}
+			add_to_variable = {
+				var = UKR_max_planning_factor_dynamic
+				value = 0.1
+			}
+			force_update_dynamic_modifier = yes
+		}
+	}
+
+	# Главный фокус - Стратегия национального обновления
+	# Основной фокус, от которого идут все ветки
+	focus = {
+		id = UKR_path_to_new_ukraine
+		icon = GFX_focus_generic_diplomatic_treaty
+		x = 30
+		y = 0
+		cost = 8
+		
+		available = {
+			has_completed_focus = UKR_economic_transformation
+			has_country_leader = {
+				character = UKR_volodymyr_zelensky
+				ruling_only = yes
+			}
+		}
+		
+		completion_reward = {
+			add_stability = 0.05
+			add_war_support = 0.02
+			add_political_power = 50
+			custom_effect_tooltip = UKR_new_path_tooltip
+		}
+	}
+	
+	### ЯДЕРНАЯ БЕЗОПАСНОСТЬ И ЭНЕРГЕТИКА ###
+	
+	focus = {
+		id = UKR_chernobyl_legacy
+		icon = GFX_focus_wonderweapons
+		relative_position_id = UKR_path_to_new_ukraine
+		x = -3
+		y = 1
+		cost = 6
+		prerequisite = { focus = UKR_path_to_new_ukraine }
+		
+		available = {
+			has_tech = nuclear_reactors
+		}
+		
+		completion_reward = {
+			202 = { # Киев область
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = nuclear_reactor
+					level = 1
+					instant_build = yes
+				}
+			}
+			
+			set_temp_variable = {
+				var = industrial_development_var_temp
+				value = 0.2
+			}
+			add_industrial_development = yes
+			#news_event = news.1001 # Событие "Завершение строительства 'Арки'"
+		}
+	}
+	
+	focus = {
+		id = UKR_modernize_nuclear_facilities
+		icon = GFX_focus_research
+		relative_position_id = UKR_chernobyl_legacy
+		x = 0
+		y = 1
+		cost = 7
+		prerequisite = { focus = UKR_chernobyl_legacy }
+		completion_reward = {
+			add_tech_bonus = {
+				name = UKR_nuclear_reactor_up
+				bonus = 0.7
+				uses = 2
+				category = nuclear
+			}
+			set_temp_variable = {
+				var = income_var_temp
+				value = -13.8
+			}
+			add_income_with_inflation = yes
+			set_temp_variable = {
+				var = academic_development_var_temp
+				value = 0.15
+			}
+			add_academic_development = yes
+			
+
+		}
+	}
+	
+	focus = {
+		id = UKR_energy_independence
+		icon = GFX_goal_generic_construction2
+		relative_position_id = UKR_modernize_nuclear_facilities
+		x = 0
+		y = 1
+		cost = 10
+		prerequisite = { focus = UKR_modernize_nuclear_facilities }
+		
+		completion_reward = {
+			add_tech_bonus = {
+				name = UKR_synth_resources
+				bonus = 0.3
+				uses = 2
+				category = synth_resources
+			}
+			add_ideas = UKR_energy_self_sufficiency
+			custom_effect_tooltip = UKR_factory_efficiency_increase
+		}
+	}
+	
+	### ВОЕННАЯ МОДЕРНИЗАЦИЯ ###
+	
+	focus = {
+		id = UKR_military_adaptability
+		icon = GFX_goal_generic_army_doctrines
+		relative_position_id = UKR_path_to_new_ukraine
+		x = 0
+		y = 1
+		cost = 6
+		prerequisite = { focus = UKR_path_to_new_ukraine }
+		
+		completion_reward = {
+			add_ideas = UKR_military_adaptability_idea
+		}
+
+	}
+	
+	focus = {
+		id = UKR_military_industrial_complex
+		icon = GFX_goal_generic_army_tanks
+		relative_position_id = UKR_military_adaptability
+		x = 0
+		y = 1
+		cost = 7
+		prerequisite = { focus = UKR_military_adaptability }
+		
+		completion_reward = {
+			add_equipment_to_stockpile = {
+				type = modern_tank_chassis_1
+				amount = 120
+				producer = UKR
+			}
+			add_tech_bonus = {
+				name = tank_bonus
+				bonus = 0.15
+				uses = 2
+				category = armor
+			}
+			add_tech_bonus = {
+				name = artillery_bonus
+				bonus = 0.10
+				uses = 2
+				category = artillery
+			}
+			add_tech_bonus = {
+				name = cat_anti_tank_bonus
+				bonus = 0.35
+				uses = 1
+				category = cat_anti_tank
+			}
+			set_temp_variable = {
+				var = income_var_temp
+				value = -20
+			}
+			add_income_with_inflation = yes
+			custom_effect_tooltip = UKR_unique_tank_mods
+		}
+	}
+	
+	focus = {
+		id = UKR_special_forces_equipment
+		icon = GFX_goal_generic_special_forces
+		relative_position_id = UKR_military_industrial_complex
+		x = 0
+		y = 1
+		cost = 8
+		prerequisite = { focus = UKR_military_industrial_complex }
+		
+		completion_reward = {
+			add_tech_bonus = {
+				name = tank_bonus
+				bonus = 0.5
+				uses = 1
+				category = recon_tech
+			}
+			army_experience = 30
+			add_war_support = 0.05
+		set_temp_variable = {
+			var = military_development_var_temp
+			value = 0.3
+		}
+		add_military_development = yes
+		}
+	}
+	
+	### НАЦИОНАЛЬНОЕ ВОЗРОЖДЕНИЕ ###
+	
+	focus = {
+		id = UKR_decommunization
+		icon = GFX_focus_GER_end_european_communism
+		relative_position_id = UKR_path_to_new_ukraine
+		x = 3
+		y = 1
+		cost = 5
+		prerequisite = { focus = UKR_path_to_new_ukraine }
+		
+		completion_reward = {
+			add_stability = -0.08
+			add_war_support = -0.03
+			country_event = {
+					id = ukraine.1000
+					days = 1
+				}
+			custom_effect_tooltip = UKR_decommunization_decisions
+			hidden_effect = {
+				unlock_decision_category = UKR_decommunization_decisions
+			}
+		}
+	}
+	
+	focus = {
+		id = UKR_ukrainian_renaissance
+		icon = GFX_goal_generic_propaganda
+		relative_position_id = UKR_decommunization
+		x = 0
+		y = 1
+		cost = 7
+		prerequisite = { focus = UKR_decommunization }
+		
+		completion_reward = {
+			add_popularity = {
+				ideology = social_liberal
+				popularity = 0.03
+			}
+			add_popularity = {
+				ideology = conservative
+				popularity = 0.02
+			}
+			add_popularity = {
+				ideology = market_liberal
+				popularity = 0.01
+			}
+			add_popularity = {
+				ideology = social_democrat
+				popularity = 0.01
+			}
+			add_timed_idea = {
+				idea = UKR_cultural_reforms
+				days = 365
+			}
+			#news_event = news.1002 # Событие "Культурная дипломатия"
+			custom_effect_tooltip = UKR_culture_decisions
+			#hidden_effect = {
+				#unlock_decision_category = UKR_cultural_development
+			#}
+		}
+	}
+	
+	focus = {
+		id = UKR_education_reform
+		icon = GFX_goal_generic_scientific_exchange
+		relative_position_id = UKR_ukrainian_renaissance
+		x = 0
+		y = 1
+		cost = 8
+		prerequisite = { focus = UKR_ukrainian_renaissance }
+		available = {
+			OR = {
+				has_idea = high_education
+				has_idea = higher_education
+			}
+		}	
+		
+		completion_reward = {
+			add_ideas = UKR_education_future
+			set_temp_variable = {
+				var = income_var_temp
+				value = -8.2
+			}
+			add_income_with_inflation = yes
+			set_temp_variable = {
+				var = academic_development_var_temp
+				value = 0.35
+			}
+			add_academic_development = yes
+		}
+	}
+	
+#Ukraine COVID Response Tree
+	focus = {
+		id = UKR_address_covid_threat
+		icon = GFX_UKR_Covid
+		x = 5
+		y = 0
+		cost = 5
+		available = {
+			has_idea = UKR_covid_crisis
+		}
+		ai_will_do = {
+			base = 95
+		}
+		completion_reward = {
+			add_political_power = 75
+			add_stability = -0.03
+			unlock_decision_category_tooltip = UKR_covid_response_decisions
+			hidden_effect = {
+				set_country_flag = UKR_COVID_ongoing
+			}
+		}
+	}
+
+
+
+}

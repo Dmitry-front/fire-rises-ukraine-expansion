@@ -1,0 +1,93 @@
+# Отображение значения ненависти (ИСПРАВЛЕНО)
+defined_text = {
+    name = UKR_HATE_DISPLAY
+    text = {
+        trigger = { always = yes }
+        localization_key = "[?UKRhate|0]"
+    }
+}
+
+# Отображение значения усталости (ИСПРАВЛЕНО)
+defined_text = {
+    name = UKR_FATIGUE_DISPLAY
+    text = {
+        trigger = { always = yes }
+        localization_key = "[?UKRwarfatigue|0]"
+    }
+}
+
+# Динамическое название стадии ненависти
+defined_text = {
+    name = UKR_HATE_STAGE_NAME
+    
+    text = {
+        trigger = {
+            check_variable = { var = UKRhate value = 100 compare = greater_than_or_equals }
+        }
+        localization_key = UKR_HATE_STAGE_4_NAME
+    }
+    
+    text = {
+        trigger = {
+            check_variable = { var = UKRhate value = 75 compare = greater_than_or_equals }
+        }
+        localization_key = UKR_HATE_STAGE_3_NAME
+    }
+    
+    text = {
+        trigger = {
+            check_variable = { var = UKRhate value = 50 compare = greater_than_or_equals }
+        }
+        localization_key = UKR_HATE_STAGE_2_NAME
+    }
+    
+    text = {
+        trigger = {
+            check_variable = { var = UKRhate value = 25 compare = greater_than_or_equals }
+        }
+        localization_key = UKR_HATE_STAGE_1_NAME
+    }
+    
+    text = {
+        trigger = { always = yes }
+        localization_key = UKR_HATE_STAGE_0_NAME
+    }
+}
+
+# Динамическое название стадии усталости
+defined_text = {
+    name = UKR_FATIGUE_STAGE_NAME
+    
+    text = {
+        trigger = {
+            check_variable = { var = UKRwarfatigue value = 100 compare = greater_than_or_equals }
+        }
+        localization_key = UKR_FATIGUE_STAGE_4_NAME
+    }
+    
+    text = {
+        trigger = {
+            check_variable = { var = UKRwarfatigue value = 75 compare = greater_than_or_equals }
+        }
+        localization_key = UKR_FATIGUE_STAGE_3_NAME
+    }
+    
+    text = {
+        trigger = {
+            check_variable = { var = UKRwarfatigue value = 50 compare = greater_than_or_equals }
+        }
+        localization_key = UKR_FATIGUE_STAGE_2_NAME
+    }
+    
+    text = {
+        trigger = {
+            check_variable = { var = UKRwarfatigue value = 25 compare = greater_than_or_equals }
+        }
+        localization_key = UKR_FATIGUE_STAGE_1_NAME
+    }
+    
+    text = {
+        trigger = { always = yes }
+        localization_key = UKR_FATIGUE_STAGE_0_NAME
+    }
+}

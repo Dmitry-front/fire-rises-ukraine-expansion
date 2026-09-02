@@ -1,0 +1,46 @@
+# Конверсия в послевоенные эффекты
+country_event = {
+	id = ukrainewar.200
+	title = ukrainewar.200.t
+	desc = ukrainewar.200.d
+	picture = GFXreporteventukrainiancivilwar
+	
+	fire_only_once = yes
+	is_triggered_only = yes
+	
+	immediate = {
+		clr_country_flag = UKR_war_mood_active
+		remove_dynamic_modifier = { modifier = UKR_hate_dynamic }
+		remove_dynamic_modifier = { modifier = UKR_war_fatigue_dynamic }
+		
+		# Конверсия в послевоенные идеи
+		if = {
+			limit = { check_variable = { var = UKRwarfatigue value = 75 compare = greater_than_or_equals } }
+			add_ideas = UKR_severe_war_trauma
+		}
+		else_if = {
+			limit = { check_variable = { var = UKRwarfatigue value = 50 compare = greater_than_or_equals } }
+			add_ideas = UKR_moderate_war_trauma
+		}
+		else_if = {
+			limit = { check_variable = { var = UKRwarfatigue value = 25 compare = greater_than_or_equals } }
+			add_ideas = UKR_light_war_trauma
+		}
+		
+		# Сохранение ненависти как "закалки"
+		if = {
+			limit = { check_variable = { var = UKRhate value = 100 compare = greater_than_or_equals } }
+			add_ideas = UKR_hardened_by_war
+		}
+		else_if = {
+			limit = { check_variable = { var = UKRhate value = 50 compare = greater_than_or_equals } }
+			add_ideas = UKR_tempered_by_war
+		}
+	}
+	
+	option = {
+		name = ukrainewar.200.a
+		add_political_power = 50
+		custom_effect_tooltip = UKRpostwarconversiontooltip
+	}
+}

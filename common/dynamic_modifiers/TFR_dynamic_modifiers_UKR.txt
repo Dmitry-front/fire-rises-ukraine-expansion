@@ -1,0 +1,218 @@
+# Динамический модификатор ненависти
+UKR_hate_dynamic = {
+	icon = chi_war_of_resistance
+	
+	# 100+: Фанатичное сопротивление
+	enable = { check_variable = { var = UKRhate value = 100 compare = greater_than_or_equals } }
+	remove_trigger = { check_variable = { var = UKRhate value = 100 compare = less_than } }
+	
+	army_morale_factor = 0.15
+	war_support_factor = 0.08
+	army_attack_factor = 0.12
+	army_core_defence_factor = 0.15
+	conscription_factor = 0.2
+	special_forces_attack_factor = 0.15
+	nationalist_drift = 0.05
+	fascist_drift = 0.02
+	national_socialist_drift = 0.01
+	stability_factor = -0.08
+	consumer_goods_factor = 0.05
+	political_power_cost = 0.1
+}
+
+UKR_hate_dynamic_75 = {
+	icon = chi_war_of_resistance
+	
+	# 75-99: Тотальная ненависть
+	enable = { 
+		check_variable = { var = UKRhate value = 75 compare = greater_than_or_equals }
+		check_variable = { var = UKRhate value = 100 compare = less_than }
+	}
+	remove_trigger = { 
+		OR = {
+			check_variable = { var = UKRhate value = 75 compare = less_than }
+			check_variable = { var = UKRhate value = 100 compare = greater_than_or_equals }
+		}
+	}
+	
+	army_core_defence_factor = 0.05
+	army_morale_factor = 0.12
+	war_support_factor = 0.06
+	army_attack_factor = 0.08
+	conscription_factor = 0.15
+	special_forces_attack_factor = 0.1
+	nationalist_drift = 0.03
+	stability_factor = -0.05
+	consumer_goods_factor = 0.02
+}
+
+UKR_hate_dynamic_50 = {
+	icon = chi_war_of_resistance
+	
+	# 50-74: Жёсткие меры
+	enable = { 
+		check_variable = { var = UKRhate value = 50 compare = greater_than_or_equals }
+		check_variable = { var = UKRhate value = 75 compare = less_than }
+	}
+	remove_trigger = { 
+		OR = {
+			check_variable = { var = UKRhate value = 50 compare = less_than }
+			check_variable = { var = UKRhate value = 75 compare = greater_than_or_equals }
+		}
+	}
+	
+	army_core_defence_factor = 0.03
+	army_morale_factor = 0.08
+	war_support_factor = 0.04
+	army_attack_factor = 0.05
+	conscription_factor = 0.1
+	nationalist_drift = 0.02
+	stability_factor = -0.02
+}
+
+UKR_hate_dynamic_25 = {
+	icon = chi_war_of_resistance
+	
+	# 25-49: Растущая ненависть
+	enable = { 
+		check_variable = { var = UKRhate value = 25 compare = greater_than_or_equals }
+		check_variable = { var = UKRhate value = 50 compare = less_than }
+	}
+	remove_trigger = { 
+		OR = {
+			check_variable = { var = UKRhate value = 25 compare = less_than }
+			check_variable = { var = UKRhate value = 50 compare = greater_than_or_equals }
+		}
+	}
+	
+	army_core_defence_factor = 0.02
+	army_morale_factor = 0.05
+	war_support_factor = 0.02
+	army_attack_factor = 0.02
+	nationalist_drift = 0.01
+}
+
+UKR_hate_dynamic_0 = {
+	icon = chi_war_of_resistance
+	
+	# 0-24: Начальная решимость
+	enable = { check_variable = { var = UKRhate value = 25 compare = less_than } }
+	remove_trigger = { check_variable = { var = UKRhate value = 25 compare = greater_than_or_equals } }
+	
+	army_morale_factor = 0.02
+	war_support_factor = 0.01
+}
+
+# Динамический модификатор усталости от войны
+UKR_war_fatigue_dynamic = {
+	icon = SPA_recovering_from_the_civil_war
+	
+	# 100+: Коллапс морального духа
+	enable = { check_variable = { var = UKRwarfatigue value = 100 compare = greater_than_or_equals } }
+	remove_trigger = { check_variable = { var = UKRwarfatigue value = 100 compare = less_than } }
+	
+	stability_factor = -0.15
+	stability_weekly = -0.02
+	war_support_factor = -0.12
+	war_support_weekly = -0.1
+	army_org_factor = -0.12
+	army_morale_factor = -0.10
+	mobilization_speed = -0.15
+	production_factory_efficiency_gain_factor = -0.12
+	consumer_goods_factor = 0.08
+	command_power_gain_mult = -0.1
+	conservative_drift = -0.02
+	libertarian_socialist_drift = -0.04
+	market_liberal_drift = -0.01
+	social_liberal _drift = -0.01
+	surrender_limit = -0.05
+}
+
+UKR_war_fatigue_dynamic_75 = {
+	icon = SPA_recovering_from_the_civil_war
+	
+	# 75-99: Критическая усталость
+	enable = { 
+		check_variable = { var = UKRwarfatigue value = 75 compare = greater_than_or_equals }
+		check_variable = { var = UKRwarfatigue value = 100 compare = less_than }
+	}
+	remove_trigger = { 
+		OR = {
+			check_variable = { var = UKRwarfatigue value = 75 compare = less_than }
+			check_variable = { var = UKRwarfatigue value = 100 compare = greater_than_or_equals }
+		}
+	}
+	
+	stability_factor = -0.10
+	stability_weekly = -0.01
+	war_support_factor = -0.08
+	war_support_weekly = -0.01
+	army_org_factor = -0.08
+	army_morale_factor = -0.06
+	mobilization_speed = -0.1
+	production_factory_efficiency_gain_factor = -0.08
+	consumer_goods_factor = 0.05
+	conservative_drift = -0.01
+	libertarian_socialist_drift = -0.02
+}
+
+UKR_war_fatigue_dynamic_50 = {
+	icon = SPA_recovering_from_the_civil_war
+	
+	# 50-74: Серьёзная усталость
+	enable = { 
+		check_variable = { var = UKRwarfatigue value = 50 compare = greater_than_or_equals }
+		check_variable = { var = UKRwarfatigue value = 75 compare = less_than }
+	}
+	remove_trigger = { 
+		OR = {
+			check_variable = { var = UKRwarfatigue value = 50 compare = less_than }
+			check_variable = { var = UKRwarfatigue value = 75 compare = greater_than_or_equals }
+		}
+	}
+	
+	stability_factor = -0.06
+	stability_weekly = -0.005
+	war_support_factor = -0.04
+	war_support_weekly = -0.001
+	army_org_factor = -0.05
+	army_morale_factor = -0.03
+	production_factory_efficiency_gain_factor = -0.05
+	consumer_goods_factor = 0.03
+	libertarian_socialist_drift = -0.01
+	conservative_drift = -0.01
+}
+
+UKR_war_fatigue_dynamic_25 = {
+	icon = SPA_recovering_from_the_civil_war
+	
+	# 25-49: Растущее утомление
+	enable = { 
+		check_variable = { var = UKRwarfatigue value = 25 compare = greater_than_or_equals }
+		check_variable = { var = UKRwarfatigue value = 50 compare = less_than }
+	}
+	remove_trigger = { 
+		OR = {
+			check_variable = { var = UKRwarfatigue value = 25 compare = less_than }
+			check_variable = { var = UKRwarfatigue value = 50 compare = greater_than_or_equals }
+		}
+	}
+	
+	stability_factor = -0.03
+	stability_weekly = -0.001
+	war_support_factor = -0.02
+	war_support_weekly = -0.0005
+	army_org_factor = -0.02
+	production_factory_efficiency_gain_factor = -0.02
+}
+
+UKR_war_fatigue_dynamic_0 = {
+	icon = SPA_recovering_from_the_civil_war
+	
+	# 0-24: Лёгкая усталость
+	enable = { check_variable = { var = UKRwarfatigue value = 25 compare = less_than } }
+	remove_trigger = { check_variable = { var = UKRwarfatigue value = 25 compare = greater_than_or_equals } }
+	
+	stability_factor = -0.01
+	war_support_factor = -0.01
+}

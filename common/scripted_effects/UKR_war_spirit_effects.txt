@@ -1,0 +1,91 @@
+# Обновление духа ненависти
+UKR_update_hate_spirit = {
+    # Удаляем все старые модификаторы ненависти
+    if = {
+        limit = { has_idea = UKR_war_spirit_hate_0 }
+        remove_ideas = UKR_war_spirit_hate_0
+    }
+    if = {
+        limit = { has_idea = UKR_war_spirit_hate_25 }
+        remove_ideas = UKR_war_spirit_hate_25
+    }
+    if = {
+        limit = { has_idea = UKR_war_spirit_hate_50 }
+        remove_ideas = UKR_war_spirit_hate_50
+    }
+    if = {
+        limit = { has_idea = UKR_war_spirit_hate_75 }
+        remove_ideas = UKR_war_spirit_hate_75
+    }
+    if = {
+        limit = { has_idea = UKR_war_spirit_hate_100 }
+        remove_ideas = UKR_war_spirit_hate_100
+    }
+    
+    # Добавляем новый модификатор в зависимости от уровня
+    if = {
+        limit = { check_variable = { var = UKRhate value = 100 compare = greater_than_or_equals } }
+        add_ideas = UKR_war_spirit_hate_100
+    }
+    else_if = {
+        limit = { check_variable = { var = UKRhate value = 75 compare = greater_than_or_equals } }
+        add_ideas = UKR_war_spirit_hate_75
+    }
+    else_if = {
+        limit = { check_variable = { var = UKRhate value = 50 compare = greater_than_or_equals } }
+        add_ideas = UKR_war_spirit_hate_50
+    }
+    else_if = {
+        limit = { check_variable = { var = UKRhate value = 25 compare = greater_than_or_equals } }
+        add_ideas = UKR_war_spirit_hate_25
+    }
+    else = {
+        add_ideas = UKR_war_spirit_hate_0
+    }
+}
+
+# Обновление духа усталости
+UKR_update_fatigue_spirit = {
+    # Удаляем все старые модификаторы усталости
+    if = {
+        limit = { has_idea = UKR_war_spirit_fatigue_0 }
+        remove_ideas = UKR_war_spirit_fatigue_0
+    }
+    if = {
+        limit = { has_idea = UKR_war_spirit_fatigue_25 }
+        remove_ideas = UKR_war_spirit_fatigue_25
+    }
+    if = {
+        limit = { has_idea = UKR_war_spirit_fatigue_50 }
+        remove_ideas = UKR_war_spirit_fatigue_50
+    }
+    if = {
+        limit = { has_idea = UKR_war_spirit_fatigue_75 }
+        remove_ideas = UKR_war_spirit_fatigue_75
+    }
+    if = {
+        limit = { has_idea = UKR_war_spirit_fatigue_100 }
+        remove_ideas = UKR_war_spirit_fatigue_100
+    }
+    
+    # Добавляем новый модификатор в зависимости от уровня
+    if = {
+        limit = { check_variable = { var = UKRwarfatigue value = 100 compare = greater_than_or_equals } }
+        add_ideas = UKR_war_spirit_fatigue_100
+    }
+    else_if = {
+        limit = { check_variable = { var = UKRwarfatigue value = 75 compare = greater_than_or_equals } }
+        add_ideas = UKR_war_spirit_fatigue_75
+    }
+    else_if = {
+        limit = { check_variable = { var = UKRwarfatigue value = 50 compare = greater_than_or_equals } }
+        add_ideas = UKR_war_spirit_fatigue_50
+    }
+    else_if = {
+        limit = { check_variable = { var = UKRwarfatigue value = 25 compare = greater_than_or_equals } }
+        add_ideas = UKR_war_spirit_fatigue_25
+    }
+    else = {
+        add_ideas = UKR_war_spirit_fatigue_0
+    }
+}

@@ -1,0 +1,39 @@
+namespace = ukr_ui
+
+# Обновление UI каждый день
+country_event = {
+    id = ukr_ui.1
+    hidden = yes
+    is_triggered_only = yes
+    
+    trigger = {
+        original_tag = UKR
+        has_country_flag = UKR_war_mood_active
+    }
+    
+    immediate = {
+        # Обновляем переменные для UI
+        UKR_update_war_mood_ui = yes
+        
+        # Обновление через 1 день
+        country_event = { id = ukr_ui.1 days = 1 }
+    }
+}
+
+# Инициализация UI
+country_event = {
+    id = ukr_ui.2
+    hidden = yes
+    is_triggered_only = yes
+    
+    trigger = {
+        original_tag = UKR
+        has_war_with = SOV
+    }
+    
+    immediate = {
+        set_country_flag = UKR_war_mood_active
+        UKR_update_war_mood_ui = yes
+        country_event = { id = ukr_ui.1 days = 1 }
+    }
+}

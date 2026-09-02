@@ -1,0 +1,172 @@
+add_namespace = baltic_defense
+# Помощь в Балтии
+# Эстония - Мобилизация Кайтселийт
+country_event = {
+	id = baltic_defense.1
+	title = baltic_defense.1.t
+	desc = baltic_defense.1.d
+	picture = GFX_event_EST_kaitseliit_mobilization
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = baltic_defense.1.a
+		set_country_flag = estonia_kaitseliit_mobilized
+		custom_effect_tooltip = estonia_kaitseliit_mobilization_tooltip
+		
+		division_template = {
+			name = "Kaitseliit Maakaitseüksus"
+			regiments = {
+				infantry = { x = 0 y = 0 }
+				infantry = { x = 0 y = 1 }
+				infantry = { x = 0 y = 2 }
+				infantry = { x = 1 y = 0 }
+				infantry = { x = 1 y = 1 }
+			}
+			support = {
+				engineer = { x = 0 y = 0 }
+				anti_tank = { x = 0 y = 1 }
+			}
+		}
+		
+		13 = {
+			create_unit = {
+				division = "name = \"Põhja Kaitseringkond\" division_template = \"Kaitseliit Maakaitseüksus\" start_experience_factor = 0.6 start_equipment_factor = 0.7" 
+				owner = EST
+			}
+		}
+		
+		13 = {
+			create_unit = {
+				division = "name = \"Lõuna Kaitseringkond\" division_template = \"Kaitseliit Maakaitseüksus\" start_experience_factor = 0.6 start_equipment_factor = 0.7" 
+				owner = EST
+			}
+		}
+		
+		13 = {
+			create_unit = {
+				division = "name = \"Lääne Kaitseringkond\" division_template = \"Kaitseliit Maakaitseüksus\" start_experience_factor = 0.6 start_equipment_factor = 0.7" 
+				owner = EST
+			}
+		}
+		
+		add_war_support = 0.03
+		add_stability = 0.02
+		add_command_power = 10
+		add_manpower = 5000
+	}
+}
+
+# Литва - Мобилизация Шауляй
+country_event = {
+	id = baltic_defense.2
+	title = baltic_defense.2.t
+	desc = baltic_defense.2.d
+	picture = GFX_event_LIT_sauliai_mobilization
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = baltic_defense.2.a
+		set_country_flag = lithuania_sauliai_mobilized
+		custom_effect_tooltip = lithuania_sauliai_mobilization_tooltip
+		
+		division_template = {
+			name = "Šaulių Rinktinė"
+			regiments = {
+				infantry = { x = 0 y = 0 }
+				infantry = { x = 0 y = 1 }
+				infantry = { x = 0 y = 2 }
+				infantry = { x = 1 y = 0 }
+				infantry = { x = 1 y = 1 }
+			}
+			support = {
+				recon = { x = 0 y = 0 }
+				anti_tank = { x = 0 y = 1 }
+			}
+		}
+		
+		96 = {
+			create_unit = {
+				division = "name = \"1-oji Šaulių Rinktinė\" division_template = \"Šaulių Rinktinė\" start_experience_factor = 0.65 start_equipment_factor = 0.7" 
+				owner = LIT
+			}
+		}
+		
+		96 = {
+			create_unit = {
+				division = "name = \"Vytauto Didžiojo 2-oji ŠR\" division_template = \"Šaulių Rinktinė\" start_experience_factor = 0.65 start_equipment_factor = 0.7" 
+				owner = LIT
+			}
+		}
+		
+		96 = {
+			create_unit = {
+				division = "name = \"Vakarų Jūros 3-oji ŠR\" division_template = \"Šaulių Rinktinė\" start_experience_factor = 0.65 start_equipment_factor = 0.7" 
+				owner = LIT
+			}
+		}
+		
+		add_war_support = 0.03
+		add_stability = 0.02
+		add_command_power = 10
+		add_manpower = 4500
+	}
+}
+
+# Латвия - Мобилизация Земессардзе
+country_event = {
+	id = baltic_defense.3
+	title = baltic_defense.3.t
+	desc = baltic_defense.3.d
+	picture = GFX_event_LAT_zemessardze_mobilization
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = baltic_defense.3.a
+		set_country_flag = latvia_zemessardze_mobilized
+		custom_effect_tooltip = latvia_zemessardze_mobilization_tooltip
+		
+		division_template = {
+			name = "Zemessardzes Brigāde"
+			regiments = {
+				infantry = { x = 0 y = 0 }
+				infantry = { x = 0 y = 1 }
+				infantry = { x = 0 y = 2 }
+				infantry = { x = 1 y = 0 }
+				infantry = { x = 1 y = 1 }
+			}
+			support = {
+				engineer = { x = 0 y = 0 }
+				recon = { x = 0 y = 1 }
+			}
+		}
+		
+		12 = {
+			create_unit = {
+				division = "name = \"Rīgas Brigāde\" division_template = \"Zemessardzes Brigāde\" start_experience_factor = 0.6 start_equipment_factor = 0.7" 
+				owner = LAT
+			}
+		}
+		
+		12 = {
+			create_unit = {
+				division = "name = \"Vidzemes Brigāde\" division_template = \"Zemessardzes Brigāde\" start_experience_factor = 0.6 start_equipment_factor = 0.7" 
+				owner = LAT
+			}
+		}
+		
+		12 = {
+			create_unit = {
+				division = "name = \"Kurzemes Brigāde\" division_template = \"Zemessardzes Brigāde\" start_experience_factor = 0.6 start_equipment_factor = 0.7" 
+				owner = LAT
+			}
+		}
+		
+		add_war_support = 0.03
+		add_stability = 0.02
+		add_command_power = 10
+		add_manpower = 4000
+	}
+}

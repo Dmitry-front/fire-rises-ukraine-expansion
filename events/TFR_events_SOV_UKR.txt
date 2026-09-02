@@ -1,0 +1,50 @@
+﻿add_namespace = russia
+add_namespace = russiaflavor
+
+country_event = {
+	id = russia.76
+	title = russia.76.t
+	desc = russia.76.d
+	picture = GFX_SOV_myth_of_western_superiority 
+	
+	is_triggered_only = yes
+
+	trigger = {
+		UKR = {
+			NOT = { is_puppet_of = SOV } 
+			exists = yes
+			has_popularity = {
+				ideology = nationalist
+				popularity > 0.40
+			}
+		}
+	}
+	
+	option = {
+		name = russia.76.a
+		UKR = {
+			add_stability = -0.2
+			remove_ideas = UKR_to_the_last
+			add_ideas = UKR_collapsing_military
+			set_politics = {
+				ruling_party = nationalist
+				last_election = "2020.5.7"
+				elections_allowed = no
+			}
+			add_country_leader_role = {
+				character = UKR_valery_zaluzhny
+				promote_leader = yes
+				country_leader = {
+					ideology = military_junta
+					expire="1.1.1.1"
+					id=-1
+					traits = { }
+				}
+			}
+			add_popularity = {
+				ideology = nationalist
+				popularity = 0.26
+			}
+		}
+	}
+}

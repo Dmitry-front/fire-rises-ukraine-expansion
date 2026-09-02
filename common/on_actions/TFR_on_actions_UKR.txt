@@ -1,0 +1,181 @@
+on_actions = {
+    on_state_control_changed = {
+        effect = {
+            # При потере контроля над украинской территорией
+            if = {
+                limit = {
+                    FROM = { tag = UKR has_country_flag = UKR_war_mood_active }
+                    NOT = { is_controlled_by = UKR }
+                    is_core_of = UKR
+                }
+                FROM = {
+                    add_to_variable = { var = UKRhate value = 5 }
+                    add_to_variable = { var = UKRwarfatigue value = 8 }
+                    force_update_dynamic_modifier = yes
+                }
+            }
+            
+            # При освобождении территории
+            if = {
+                limit = {
+                    FROM = { tag = UKR has_country_flag = UKR_war_mood_active }
+                    is_controlled_by = UKR
+                    is_core_of = UKR
+                    NOT = { has_state_flag = UKR_recently_liberated }
+                }
+                set_state_flag = { flag = UKR_recently_liberated days = 30 }
+                FROM = {
+                    add_to_variable = { var = UKRhate value = 3 }
+                    add_to_variable = { var = UKRwarfatigue value = -5 }
+                    force_update_dynamic_modifier = yes
+                }
+            }
+        }
+    }
+    
+    # Проверка потери ключевых городов
+    on_daily = {
+        effect = {
+            if = {
+                limit = {
+                    tag = UKR
+                    has_country_flag = UKR_war_mood_active
+                    NOT = { controls_state = 1285 } # Киев
+                    NOT = { has_country_flag = UKR_kiev_lost }
+                }
+                set_country_flag = UKR_kiev_lost
+                add_to_variable = { var = UKRhate value = 15 }
+                add_to_variable = { var = UKRwarfatigue value = 12 }
+                country_event = { id = ukrainewar.100 days = 1 }
+                force_update_dynamic_modifier = yes
+            }
+            
+            if = {
+                limit = {
+                    tag = UKR
+                    has_country_flag = UKR_war_mood_active
+                    NOT = { controls_state = 226 } # Днепр
+                    NOT = { has_country_flag = UKR_dnipro_lost }
+                }
+                set_country_flag = UKR_dnipro_lost
+                add_to_variable = { var = UKRhate value = 8 }
+                add_to_variable = { var = UKRwarfatigue value = 6 }
+                force_update_dynamic_modifier = yes
+            }
+            
+            if = {
+                limit = {
+                    tag = UKR
+                    has_country_flag = UKR_war_mood_active
+                    NOT = { controls_state = 196 } # Херсон
+                    NOT = { has_country_flag = UKR_kherson_lost }
+                }
+                set_country_flag = UKR_kherson_lost
+                add_to_variable = { var = UKRhate value = 6 }
+                add_to_variable = { var = UKRwarfatigue value = 4 }
+                force_update_dynamic_modifier = yes
+            }
+            # Добавить в блок on_daily:
+
+            if = {
+                limit = {
+                    tag = UKR
+                    has_country_flag = UKR_war_mood_active
+                    NOT = { controls_state = 221 }
+                    NOT = { has_country_flag = UKR_kharkiv_lost }
+                }
+                set_country_flag = UKR_kharkiv_lost
+                country_event = { id = ukrainewar.101 days = 1 }
+            }
+
+            if = {
+                limit = {
+                    tag = UKR
+                    has_country_flag = UKR_war_mood_active
+                    NOT = { controls_state = 225 }
+                    NOT = { has_country_flag = UKR_sumy_lost }
+                }
+                set_country_flag = UKR_sumy_lost
+                country_event = { id = ukrainewar.102 days = 1 }
+            }
+
+            if = {
+                limit = {
+                    tag = UKR
+                    has_country_flag = UKR_war_mood_active
+                    NOT = { controls_state = 193 }
+                    NOT = { has_country_flag = UKR_chernihiv_lost }
+                }
+                set_country_flag = UKR_chernihiv_lost
+                country_event = { id = ukrainewar.103 days = 1 }
+            }
+
+            if = {
+                limit = {
+                    tag = UKR
+                    has_country_flag = UKR_war_mood_active
+                    NOT = { controls_state = 200 }
+                    NOT = { has_country_flag = UKR_zaporizhzhia_lost }
+                }
+                set_country_flag = UKR_zaporizhzhia_lost
+                country_event = { id = ukrainewar.104 days = 1 }
+            }
+
+            if = {
+                limit = {
+                    tag = UKR
+                    has_country_flag = UKR_war_mood_active
+                    NOT = { controls_state = 196 }
+                    NOT = { has_country_flag = UKR_kherson_lost }
+                }
+                set_country_flag = UKR_kherson_lost
+                country_event = { id = ukrainewar.105 days = 1 }
+            }
+
+            if = {
+                limit = {
+                    tag = UKR
+                    has_country_flag = UKR_war_mood_active
+                    NOT = { controls_state = 226 }
+                    NOT = { has_country_flag = UKR_dnipro_lost }
+                }
+                set_country_flag = UKR_dnipro_lost
+                country_event = { id = ukrainewar.106 days = 1 }
+            }
+
+            if = {
+                limit = {
+                    tag = UKR
+                    has_country_flag = UKR_war_mood_active
+                    NOT = { controls_state = 201 }
+                    NOT = { has_country_flag = UKR_zhytomyr_lost }
+                }
+                set_country_flag = UKR_zhytomyr_lost
+                country_event = { id = ukrainewar.107 days = 1 }
+            }
+
+            if = {
+                limit = {
+                    tag = UKR
+                    has_country_flag = UKR_war_mood_active
+                    NOT = { controls_state = 192 }
+                    NOT = { has_country_flag = UKR_odesa_lost }
+                }
+                set_country_flag = UKR_odesa_lost
+                country_event = { id = ukrainewar.108 days = 1 }
+            }
+
+            if = {
+                limit = {
+                    tag = UKR
+                    has_country_flag = UKR_war_mood_active
+                    NOT = { controls_state = 91 }
+                    NOT = { has_country_flag = UKR_lviv_lost }
+                }
+                set_country_flag = UKR_lviv_lost
+                country_event = { id = ukrainewar.109 days = 1 }
+            }
+
+        }
+    }
+}

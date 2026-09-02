@@ -1,0 +1,145 @@
+# UKR_land_reforms = {
+# 	icon = united_states
+# 	allowed = {
+# 		original_tag = UKR
+# 	}
+# 	visible = {
+# 		has_completed_focus = UKR_begin_land_reforms
+# 	}
+# }
+
+UKR_special_military_operation = {
+	icon = GFX_decision_category_UKR_icon_category
+	picture = GFX_decision_category_UKR_FSU_cat
+	allowed = {
+		original_tag = UKR
+	}
+	visible = {
+	}
+}
+
+UKR_against_occupiers = {
+	icon = GFX_SOV_decision_nato_war_category
+	picture = GFX_decision_category_UKR_ukraine_war
+	priority = 20
+	visible_when_empty = yes	
+	allowed = {
+		original_tag = UKR
+		has_war_with = SOV
+		is_subject = no
+	}
+	visible = {
+		tag = UKR
+		has_war_with = SOV
+		#NOT = {
+		#	has_global_flag = USA_american_civil_war_over_global
+		#} Потом сделать отдельно войну
+	}
+}
+
+UKR_political_decisions = {
+	icon = GFX_decision_category_generic_political_actions
+	picture = GFX_decision_category_UKR_political_decisions_cat
+	priority = 3
+	visible_when_empty = yes	
+	allowed = {
+		original_tag = UKR
+	}
+	visible = {
+	}
+}
+
+UKR_startup_ecosystem_category = {
+	icon = GFX_decision_category_gre_paying_ifc_debt
+	#picture = decision_cat_GER_volkswirtschaft
+	priority = 2
+	allowed = {
+		original_tag = UKR
+	}
+	visible = {
+	}
+}
+
+UKR_covid_response_decisions = {
+	icon = GFX_decision_category_UKR_covid_19_cat
+	#picture = decision_cat_GER_volkswirtschaft
+	priority = 10
+	allowed = {
+		original_tag = UKR
+	}
+	visible = {
+		has_country_flag = UKR_COVID_ongoing
+	}
+}
+
+UKR_offensive_operations = {
+	icon = GFX_decision_category_military_operation
+	#picture = decision_cat_GER_volkswirtschaft
+	priority = 14
+	allowed = {
+		original_tag = UKR
+		has_war = yes
+	}
+	visible = {
+		has_completed_focus = UKR_mobile_tactics_doctrine
+	}
+}
+
+UKR_shadow_war_category = {
+	icon = GFX_decision_category_UKR_icon_categoryicon_category_CBU
+	picture = GFX_decision_category_UKR_shadow_war_cat
+	priority = 4
+	visible_when_empty = yes	
+	allowed = {
+		original_tag = UKR
+		is_subject = no
+		}
+	
+	visible = {
+		has_completed_focus = UKR_intelligence_operation
+	}
+}
+
+UKR_decommunization_category = {
+	icon = GFX_decision_category_SOV_civil_war
+	picture = GFX_decision_category_UKR_decommunization_cat
+	priority = 8
+	allowed = {
+		original_tag = UKR
+		is_subject = no
+		}
+	visible = {
+		tag = UKR
+		has_completed_focus = UKR_decommunization
+		has_country_flag = UKR_decommunization_begin
+	}
+}
+
+# Военное настроение - категория решений
+UKRwarmood = {
+	icon = GFX_decision_category_generic_crisis
+	picture = GFX_decision_cat_UKR_war_mood_picture
+    
+	allowed = {
+		original_tag = UKR
+	}
+    
+	visible = {
+		has_country_flag = UKR_war_mood_active
+		has_war_with = SOV
+	}
+    
+	visible_when_empty = yes
+    
+	priority = 100
+    
+	# Интеграция scripted GUI в категорию решений
+	scripted_gui = UKR_war_mood_display_gui
+}
+
+
+
+
+
+
+

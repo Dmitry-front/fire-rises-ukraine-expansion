@@ -1,0 +1,2924 @@
+UKR_land_reforms = {
+	land_purchasing_amendments = {
+		available = {
+		}
+		visible = {
+			tag = UKR
+		}
+		complete_effect = {
+			add_stability = 0.03
+			custom_effect_tooltip = UKR_pay_IMF_debt_small
+		}
+		icon = democracy
+		fire_only_once = yes
+		cost = 30
+		ai_will_do = {
+			factor = 10
+		}
+	}
+}
+
+UKR_special_military_operation = {
+
+	UKR_establish_border_defense_system = {
+		icon = GFX_decision_generic_fortification
+		available = {
+			has_completed_focus = UKR_defensive_fortifications
+			has_war_support > 0.3
+			has_command_power > 30
+			country_flag_border_defense_uses < 5 
+		}
+		
+		visible = {
+			tag = UKR
+		}
+		
+		fire_only_once = no
+		
+		custom_cost_trigger = {
+			command_power > 29
+		}
+		custom_cost_text = 30cp_cost
+		days_remove = 120
+		remove_effect = {
+			add_command_power = -30
+			196 = {
+				add_building_construction = {
+					type = bunker
+					level = 1
+					province = 568
+					instant_build = yes
+				}
+				add_building_construction = {
+					type = bunker
+					level = 1
+					province = 14404
+					instant_build = yes
+				}
+				add_building_construction = {
+					type = bunker
+					level = 1
+					province = 14405
+					instant_build = yes
+				}
+			}
+			add_war_support = 0.01
+			set_temp_variable = {
+				var = income_var_temp
+				value = -1
+			}
+			add_income = yes
+
+			increment_country_flag = country_flag_border_defense_uses
+		}
+		
+
+		ai_will_do = {
+			factor = 10
+		}
+	}
+
+	UKR_novorossiyan_offensive_decision = {
+		icon = democracy
+		fire_only_once = yes
+		cost = 100
+		allowed = {
+			tag = UKR
+		}
+		visible = {
+			is_ai = yes
+			NOT = {
+				is_in_faction_with = SOV
+				has_global_flag = nato_nato_won_nato_war
+				has_global_flag = SOV_first_nato_war_victory
+			}
+		}
+		available = {
+			date > 2026.07.01
+			has_war = no
+		}
+		complete_effect = {
+			SOV = {
+				country_event = {
+					id = russia.307
+				}
+			}
+		}
+		ai_will_do = {
+			factor = 99
+		}
+	}
+	UKR_first_mobilization_wave = {
+		available = {
+			has_war = yes
+		}
+		visible = {
+			tag = UKR
+		}
+		complete_effect = {
+			load_oob = "UKR_first_mobilization"
+			set_country_flag = UKRfirstmobilizationcompleted
+		}
+		icon = GFX_decision_generic_military
+		fire_only_once = yes
+		cost = 15
+		ai_will_do = {
+			factor = 999
+		}
+	}
+	UKR_second_mobilization_wave = {
+		available = {
+			has_war = yes
+			UKR = {
+				surrender_progress > 0.2
+			}
+		}
+		visible = {
+			tag = UKR
+		}
+		complete_effect = {
+			add_stability = -0.02
+			add_war_support = -0.03
+			load_oob = "UKR_second_mobilization"
+		}
+		icon = GFX_decision_generic_military
+		fire_only_once = yes
+		cost = 40
+		ai_will_do = {
+			factor = 999
+		}
+	}
+	UKR_third_mobilization_wave = {
+		available = {
+			has_war = yes
+			UKR = {
+				surrender_progress > 0.4
+			}
+		}
+		visible = {
+			tag = UKR
+		}
+		complete_effect = {
+			add_stability = -0.05
+			add_war_support = -0.08
+			load_oob = "UKR_second_mobilization"
+		}
+		icon = GFX_decision_generic_military
+		fire_only_once = yes
+		cost = 80
+		ai_will_do = {
+			factor = 999
+		}
+	}
+	UKR_special_military_operation_timer = {
+		priority = 1
+		icon = GFX_SOV_decision_president_election_category
+		days_mission_timeout = 1080
+		fire_only_once = no
+		is_good = no
+		cancel_if_not_visible = yes
+		visible = {
+			NOT = {
+				has_global_flag = SOV_nato_war_begins_global
+			}
+		}
+		available = {
+			hidden_trigger = {
+				always = no
+			}
+		}
+		cancel_trigger = {
+			UKR = {
+				surrender_progress > 0.51
+			}
+		}
+		activation = {
+			always = no
+		}
+		complete_effect = {
+		}
+		cancel_effect = {
+			news_event = {
+				id = news.237
+			}
+			UKR = {
+				country_event = {
+					id = ukraine.5
+				}
+			}
+			GER = {
+				country_event = {
+					id = nato.22
+				}
+				country_event = {
+					id = germany.23
+					days = 20
+				}
+				country_event = {
+					id = germany.28
+					days = 40
+				}
+				GER_richard_rossmanith = {
+					unit_leader_event = {
+						id = germany.23
+						days = 10
+					}
+				}
+				if = {
+					limit = {
+						check_variable = {
+							GER_die_linke_popularity_var_temp > 15
+						}
+					}
+					country_event = {
+						id = germany.93
+						days = 60
+					}
+				}
+			}
+			FRA = {
+				country_event = {
+					id = nato.22
+				}
+			}
+			set_global_flag = SOV_nato_war_begins_global
+			SOV = {
+				activate_mission = SOV_nato_war_deadline
+				mark_focus_tree_layout_dirty = yes
+				hidden_effect = {
+					remove_ideas = SOV_special_military_operation
+					remove_ideas = SOV_special_military_operation_1
+					if = {
+						limit = {
+							has_dlc = "No Step Back"
+							has_tech = improved_light_tank_chassis
+						}
+						country_event = {
+							id = russia.220
+						}
+					}
+					else_if = {
+						limit = {
+							NOT = {
+								has_dlc = "No Step Back"
+							}
+							has_tech = light_tank4
+						}
+						country_event = {
+							id = russia.220
+						}
+					}
+					every_country = {
+						limit = {
+							NOT = {
+								tag = UKR
+							}
+							is_in_faction_with = GER
+						}
+						add_ideas = NATO_european_war
+					}
+					if = {
+						limit = {
+							NOT = {
+								OR = {
+									date > 2024.09.01
+									date > 2025.09.01
+								}
+							}
+							NOT = {
+								OR = {
+									date < 2025.03.01
+									date < 2026.03.01
+								}
+							}
+						}
+						ITA = {
+							country_event = {
+								id = nato.12
+								days = 10
+							}
+						}
+						GER = {
+							country_event = {
+								id = nato.12
+								days = 10
+							}
+						}
+						FRA = {
+							country_event = {
+								id = nato.12
+								days = 10
+							}
+						}
+						POL = {
+							country_event = {
+								id = nato.12
+								days = 10
+							}
+						}
+						ROM = {
+							country_event = {
+								id = nato.12
+								days = 10
+							}
+						}
+						UKR = {
+							country_event = {
+								id = nato.12
+								days = 10
+							}
+						}
+						ENG = {
+							country_event = {
+								id = nato.12
+								days = 10
+							}
+						}
+						CZE = {
+							country_event = {
+								id = nato.12
+								days = 10
+							}
+						}
+						SPR = {
+							country_event = {
+								id = nato.12
+								days = 10
+							}
+						}
+					}
+					if = {
+						limit = {
+							OR = {
+								AND = {
+									date > 2023.03.01
+									date < 2023.06.01
+								}
+								AND = {
+									date > 2024.03.01
+									date < 2024.06.01
+								}
+								AND = {
+									date > 2025.03.01
+									date < 2025.06.01
+								}
+								AND = {
+									date > 2026.03.01
+									date < 2026.06.01
+								}
+								AND = {
+									date > 2027.03.01
+									date < 2027.06.01
+								}
+							}
+						}
+						SOV = {
+							country_event = {
+								id = russia.157
+								days = 10
+							}
+						}
+						GER = {
+							country_event = {
+								id = russia.157
+								days = 10
+							}
+						}
+						FRA = {
+							country_event = {
+								id = russia.157
+								days = 10
+							}
+						}
+					}
+					else_if = {
+						limit = {
+							OR = {
+								AND = {
+									date > 2023.06.01
+									date < 2023.09.01
+								}
+								AND = {
+									date > 2024.06.01
+									date < 2024.09.01
+								}
+								AND = {
+									date > 2025.06.01
+									date < 2025.09.01
+								}
+								AND = {
+									date > 2026.06.01
+									date < 2026.09.01
+								}
+								AND = {
+									date > 2027.06.01
+									date < 2027.09.01
+								}
+							}
+						}
+						SOV = {
+							country_event = {
+								id = russia.157
+								days = 270
+							}
+						}
+						GER = {
+							country_event = {
+								id = russia.157
+								days = 270
+							}
+						}
+						FRA = {
+							country_event = {
+								id = russia.157
+								days = 270
+							}
+						}
+					}
+					PLD = {
+						add_country_leader_trait = hos_hates_russians
+					}
+					country_event = {
+						id = russia.65
+						days = 230
+					}
+					HUN = {
+						load_oob = "HUN_nato_war"
+					}
+					ENG = {
+						if = {
+							limit = {
+								ENG = {
+									is_ai = yes
+								}
+							}
+							load_oob = "ENG_nato_war"
+						}
+					}
+					GER = {
+						if = {
+							limit = {
+								GER = {
+									is_ai = yes
+								}
+							}
+							load_oob = "GER_nato_war"
+						}
+					}
+					ROM = {
+						load_oob = "ROM_nato_war"
+					}
+					PLD = {
+						load_oob = "POL_nato_war"
+					}
+					if = {
+						#AI Help
+						limit = {
+							is_ai = yes
+						}
+						add_ideas = SOV_russia_can_win
+						# add_equipment_to_stockpile = {
+						# 	type = fighter_equipment_3
+						# 	amount = 1000
+						# 	producer = SOV
+						# }
+						# add_equipment_to_stockpile = {
+						# 	type = CAS_equipment_2
+						# 	amount = 500
+						# 	producer = SOV
+						# }
+					}
+					MOL = {
+						if = {
+							limit = {
+								SOV = {
+									NOT = {
+										has_country_flag = SOV_moldova_pro_russian
+									}
+								}
+							}
+							country_event = {
+								id = moldova.2
+								days = 20
+							}
+						}
+					}
+					LIT = {
+						load_oob = "LIT_mobilization"
+						country_event = {
+							id = nato.9
+							days = 10
+						}
+					}
+					EST = {
+						load_oob = "EST_mobilization"
+						country_event = {
+							id = nato.9
+							days = 10
+						}
+					}
+					LAT = {
+						load_oob = "LAT_mobilization"
+						country_event = {
+							id = nato.9
+							days = 10
+						}
+					}
+					SYR = {
+						country_event = {
+							id = syria.25
+							days = 60
+						}
+					}
+					load_oob = SOV_militia
+				}
+				if = {
+					limit = {
+						OR = {
+							has_government = authoritarian_democrat
+							has_government = fascist
+						}
+					}
+					add_timed_idea = {
+						idea = SOV_russian_storm
+						days = 120
+					}
+				}
+				else_if = {
+					limit = {
+						OR = {
+							has_government = communist
+							has_government = libertarian_socialist
+						}
+					}
+					add_timed_idea = {
+						idea = SOV_soviet_storm
+						days = 120
+					}
+				}
+				SOV = {
+					country_event = {
+						id = nato.14
+						hours = 2
+					}
+					add_dynamic_modifier = {
+						modifier = SOV_war_exhaustion_dynamic
+					}
+					remove_ideas = SOV_special_military_operation
+					set_variable = {
+						var = SOV_level_of_exhaustion
+						value = 0
+					}
+					set_variable = {
+						var = SOV_war_exhaustion_war_support_factor_dynamic
+						value = 0
+					}
+					set_variable = {
+						var = SOV_war_exhaustion_army_attack_factor_dynamic
+						value = 0
+					}
+					set_variable = {
+						var = SOV_war_exhaustion_army_defence_factor_dynamic
+						value = 0
+					}
+					set_variable = {
+						var = SOV_war_exhaustion_army_org_factor_dynamic
+						value = 0
+					}
+					set_variable = {
+						var = SOV_war_exhaustion_army_morale_factor_dynamic
+						value = 0
+					}
+				}
+			}
+		}
+	}
+	# Решения от фокуса "Ковка Офицерского Корпуса"
+	UKR_staff_organization_course = {
+		
+		icon = generic_organizer
+		
+		available = {
+			has_completed_focus = UKR_forge_professional_officer_corps
+			has_command_power > 30
+			NOT = { has_country_flag = UKR_organization_course_cooldown }
+		}
+		
+		visible = {
+			has_completed_focus = UKR_forge_professional_officer_corps
+		}
+		
+		fire_only_once = no
+		days_re_enable = 360
+		days_remove = 360
+		
+		modifier = {
+		experience_gain_army = 0.02
+		}
+		
+		custom_cost_trigger = {
+			command_power > 29
+		}
+		
+		custom_cost_text = 30cp_cost
+
+		complete_effect = {
+			add_command_power = -30
+			custom_effect_tooltip = UKR_organizer_training_tooltip
+			hidden_effect = {
+				random_army_leader = {
+					limit = { NOT = { has_trait = organizer } }
+					add_unit_leader_trait = organizer
+					add_skill_level = 1
+				}
+				random_army_leader = {
+					limit = { NOT = { has_trait = organizer } }
+					add_unit_leader_trait = organizer
+					add_skill_level = 1
+				}
+				set_country_flag = { flag = UKR_organization_course_cooldown days = 360 }
+			}
+		}
+		
+		ai_will_do = {
+			factor = 5
+		}
+	}
+	
+	UKR_mobile_warfare_program = {
+		icon = generic_tank
+		
+		available = {
+			has_completed_focus = UKR_forge_professional_officer_corps
+			has_command_power > 30
+			NOT = { has_country_flag = UKR_mobile_course_cooldown }
+		}
+		
+		visible = {
+			has_completed_focus = UKR_forge_professional_officer_corps
+		}
+		
+		fire_only_once = no
+		days_re_enable = 360
+		days_remove = 360
+		
+		modifier = {
+		experience_gain_army = 0.02
+		}
+		
+		custom_cost_trigger = {
+			command_power > 29
+		}
+		
+		custom_cost_text = 30cp_cost
+		
+		complete_effect = {
+			add_command_power = -30
+			custom_effect_tooltip = UKR_panzer_leader_training_tooltip
+			hidden_effect = {
+				random_army_leader = {
+					limit = { NOT = { has_trait = panzer_leader } }
+					add_unit_leader_trait = panzer_leader
+					add_skill_level = 1
+				}
+				random_army_leader = {
+					limit = { NOT = { has_trait = panzer_leader } }
+					add_unit_leader_trait = panzer_leader
+					add_skill_level = 1
+				}
+				set_country_flag = { flag = UKR_mobile_course_cooldown days = 360 }
+			}
+		}
+		
+		ai_will_do = {
+			factor = 5
+		}
+	}
+	
+	UKR_infantry_tactics_school = {
+		icon = generic_infantry
+		
+		available = {
+			has_completed_focus = UKR_forge_professional_officer_corps
+			has_command_power > 30
+			NOT = { has_country_flag = UKR_infantry_course_cooldown }
+		}
+		
+		visible = {
+			has_completed_focus = UKR_forge_professional_officer_corps
+		}
+		
+		fire_only_once = no
+		days_re_enable = 360
+		days_remove = 360
+		
+		modifier = {
+		experience_gain_army = 0.02
+		}
+		
+		custom_cost_trigger = {
+			command_power > 29
+		}
+		
+		custom_cost_text = 30cp_cost
+		
+		complete_effect = {
+			add_command_power = -30
+			custom_effect_tooltip = UKR_infantry_leader_training_tooltip
+			hidden_effect = {
+				random_army_leader = {
+					limit = { NOT = { has_trait = infantry_leader } }
+					add_unit_leader_trait = infantry_leader
+					add_skill_level = 1
+				}
+				random_army_leader = {
+					limit = { NOT = { has_trait = infantry_leader } }
+					add_unit_leader_trait = infantry_leader
+					add_skill_level = 1
+				}
+				set_country_flag = { flag = UKR_infantry_course_cooldown days = 360 }
+			}
+		}
+		
+		ai_will_do = {
+			factor = 6
+		}
+	}
+	
+	UKR_hybrid_operations_school = {
+		icon = generic_prepare_civil_war
+		
+		available = {
+			has_completed_focus = UKR_forge_professional_officer_corps
+			has_command_power > 30
+			NOT = { has_country_flag = UKR_hybrid_course_cooldown }
+		}
+		
+		visible = {
+			has_completed_focus = UKR_forge_professional_officer_corps
+		}
+		
+		fire_only_once = no
+		days_re_enable = 360
+		days_remove = 360
+		
+		modifier = {
+		experience_gain_army = 0.02
+		}
+		
+		custom_cost_trigger = {
+			command_power > 29
+		}
+		
+		custom_cost_text = 30cp_cost
+		
+		complete_effect = {
+			add_command_power = -30
+			custom_effect_tooltip = UKR_hybrid_ops_training_tooltip
+			hidden_effect = {
+				random_army_leader = {
+					limit = { 
+						NOT = { has_trait = trickster }
+						NOT = { has_trait = commando }
+					}
+					random_list = {
+						50 = { add_unit_leader_trait = trickster }
+						50 = { add_unit_leader_trait = commando }
+					}
+					add_skill_level = 1
+				}
+				random_army_leader = {
+					limit = { 
+						NOT = { has_trait = trickster }
+						NOT = { has_trait = commando }
+					}
+					random_list = {
+						50 = { add_unit_leader_trait = trickster }
+						50 = { add_unit_leader_trait = commando }
+					}
+					add_skill_level = 1
+				}
+				set_country_flag = { flag = UKR_hybrid_course_cooldown days = 360 }
+			}
+		}
+		
+		ai_will_do = {
+			factor = 4
+		}
+	}
+
+
+
+
+
+}
+
+UKR_political_decisions = {
+		UKR_anti_corruption_campaign = {
+		icon = GFX_decision_generic_political_discourse
+		
+		available = {
+			has_idea = UKR_endemic_corruption
+			has_political_power > 50
+		}
+		
+		visible = {
+			has_idea = UKR_endemic_corruption
+		}
+		
+		fire_only_once = yes
+		
+		cost = 50
+		
+		ai_will_do = {
+			factor = 100
+		}
+		
+		days_remove = 180
+		
+		remove_effect = {
+			swap_ideas = {
+				remove_idea = UKR_endemic_corruption
+				add_idea = UKR_corruption_reforming
+			}
+			add_political_power = 10
+		}
+		
+		modifier = {
+			political_power_gain = -0.05
+		}
+	}
+
+	UKR_establish_high_anticorruption_court = {
+		icon = GFX_decision_generic_arrest
+		
+		available = {
+			has_idea = UKR_corruption_reforming
+			has_political_power > 75
+		}
+		
+		visible = {
+			has_idea = UKR_corruption_reforming
+		}
+		
+		fire_only_once = yes
+		
+		cost = 75
+		
+		ai_will_do = {
+			factor = 100
+		}
+		
+		days_remove = 220
+		
+		remove_effect = {
+			remove_ideas = UKR_corruption_reforming
+			add_stability = 0.05
+			add_war_support = 0.03
+			add_political_power = 50
+		}
+		
+		
+		modifier = {
+			political_power_gain = -0.15
+		}
+	}
+
+	UKR_appeal_to_un_security_council = {
+		
+		icon = GFX_decision_hol_war_on_pacifism
+		
+		available = {
+			has_completed_focus = UKR_diplomatic_offensive
+			has_political_power > 25
+		}
+		
+		visible = {
+			has_completed_focus = UKR_diplomatic_offensive
+		}
+		
+		fire_only_once = no
+		
+		cost = 25
+		days_remove = 120
+		days_re_enable = 60
+		
+		remove_effect = {
+			add_stability = 0.01
+			add_war_support = 0.01
+			set_country_flag = UKR_appeal_to_un_security_council_flag
+			SOV = {
+				add_opinion_modifier = {
+					target = UKR
+					modifier = political_pressure
+				}
+			}
+			random_country = {
+				limit = {
+					is_major = yes
+					NOT = { tag = SOV }
+				}
+				add_opinion_modifier = {
+					target = UKR
+					modifier = diplomatic_support
+				}
+				add_opinion_modifier = {
+					target = SOV
+					modifier = political_pressure
+				}
+			}
+		}
+		
+		ai_will_do = {
+			factor = 10
+		}
+	}
+	
+	UKR_request_nato_partnership = {
+		
+		icon = GFX_decision_generic_protection
+		
+		available = {
+			has_completed_focus = UKR_diplomatic_offensive
+			NOT = { 
+				has_country_flag = UKR_request_nato_partnership_flag
+			}
+		}
+		
+		visible = {
+			has_completed_focus = UKR_diplomatic_offensive
+		}
+		
+		fire_only_once = yes
+		
+		cost = 100
+		days_remove = 90
+		remove_effect = {
+			army_experience = 10
+			navy_experience = 10
+			air_experience = 10
+			add_stability = -0.01
+			add_war_support = 0.05
+			set_country_flag = UKR_request_nato_partnership_flag
+			#country_event = { id = ukraine.12 days = 14 }
+			SOV = {
+				add_opinion_modifier = {
+					target = UKR
+					modifier = hostile_status_us
+				}
+			}
+			FRA = {
+				air_experience = 10
+				add_opinion_modifier = {
+					target = UKR
+					modifier = military_cooperation
+				}
+			}
+			ENG = {
+				navy_experience = 10
+				add_opinion_modifier = {
+					target = UKR
+					modifier = military_cooperation
+				}
+			}
+			GER = {
+				army_experience = 10
+				add_opinion_modifier = {
+					target = UKR
+					modifier = military_cooperation
+				}
+			}
+		}
+		modifier = {
+			military_development_monthly = 0.02
+		}
+
+		ai_will_do = {
+			factor = 10
+			modifier = {
+				factor = 0
+				SOV = { has_war_with = UKR }
+			}
+		}
+	}
+}
+
+UKR_startup_ecosystem_category = {
+	UKR_national_startup_fund = {
+		icon = GFX_decision_gre_paying_ifc_debt
+		
+		available = {
+			has_completed_focus = UKR_startup_support
+			NOT = { has_country_flag = UKR_national_startup_fund_flag }
+		}
+		
+		visible = {
+			has_completed_focus = UKR_startup_support
+		}
+		
+		fire_only_once = yes
+		
+		cost = 50
+		
+		days_remove = 70
+		
+		modifier = {
+			consumer_goods_factor = 0.02
+		}
+		
+		ai_will_do = {
+			factor = 10
+		}
+		
+		remove_effect = {
+			add_stability = 0.03
+			add_research_slot = 1
+			set_country_flag = UKR_national_startup_fund_flag
+			set_temp_variable = {
+				var = income_var_temp
+				value = -10
+			}
+			add_income = yes	
+		}
+	}
+	
+	UKR_diia_city_initiative = {
+		icon = GFX_decision_generic_research
+		
+		available = {
+			has_completed_focus = UKR_startup_support
+			has_country_flag = UKR_national_startup_fund_flag
+			NOT = { has_country_flag = UKR_diia_city_flag }
+		}
+		
+		visible = {
+			has_completed_focus = UKR_startup_support
+			has_country_flag = UKR_national_startup_fund_flag
+		}
+		
+		fire_only_once = yes
+		
+		cost = 75
+		
+		days_remove = 90
+		
+		modifier = {
+			political_power_factor = -0.02
+			academic_development_monthly = 0.02
+		}
+		
+		ai_will_do = {
+			factor = 8
+		}
+		
+		remove_effect = {
+			add_timed_idea = {
+				idea = UKR_diia_city_benefits
+				days = 730
+			}
+			add_tech_bonus = {
+				name = electronics_bonus
+				bonus = 0.15
+				uses = 2
+				category = electronics
+			}
+			set_country_flag = UKR_diia_city_flag
+			set_temp_variable = {
+				var = income_var_temp
+				value = -3
+			}
+			add_income = yes	
+		}
+	}
+	
+	UKR_fund_invest_in_education = {
+		icon = generic_education
+		
+		available = {
+			has_completed_focus = UKR_startup_support
+			has_country_flag = UKR_national_startup_fund_flag
+			NOT = { has_country_flag = UKR_education_investment_flag }
+		}
+		
+		visible = {
+			has_completed_focus = UKR_startup_support
+			has_country_flag = UKR_national_startup_fund_flag
+		}
+		
+		fire_only_once = yes
+		
+		cost = 60
+		
+		days_remove = 70
+		
+		modifier = {
+			consumer_goods_factor = 0.01
+			society_development_monthly = 0.01
+		}
+		
+		ai_will_do = {
+			factor = 7
+		}
+		
+		remove_effect = {
+			set_temp_variable = {
+				var = academic_development_var_temp
+				value = 0.25
+			}
+			add_academic_development = yes
+			set_temp_variable = {
+				var = industrial_development_var_temp
+				value = 0.1
+			}
+			add_industrial_development = yes
+			set_country_flag = UKR_education_investment_flag
+			set_temp_variable = {
+				var = income_var_temp
+				value = -8
+			}
+			add_income = yes	
+		}
+	}
+	
+	UKR_create_innovation_parks = {
+		icon = GFX_decision_generic_construction
+		
+		available = {
+			has_completed_focus = UKR_startup_support
+			has_country_flag = UKR_national_startup_fund_flag
+			NOT = { has_country_flag = UKR_innovation_parks_flag }
+		}
+		
+		visible = {
+			has_completed_focus = UKR_startup_support
+			has_country_flag = UKR_national_startup_fund_flag
+		}
+		
+		fire_only_once = yes
+		
+		cost = 65
+		
+		days_remove = 80
+		
+		modifier = {
+			production_speed_buildings_factor = -0.05
+		}
+		
+		ai_will_do = {
+			factor = 6
+		}
+		
+		remove_effect = {
+			random_owned_controlled_state = {
+				limit = {
+					free_building_slots = {
+						building = office_park
+						size > 0
+						include_locked = yes
+					}
+				}
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = office_park
+					level = 2
+					instant_build = yes
+				}
+			}
+			set_country_flag = UKR_innovation_parks_flag
+			set_temp_variable = {
+				var = income_var_temp
+				value = -20
+			}
+			add_income = yes	
+		}
+	}
+	
+	UKR_international_tech_partnerships = {
+		icon = GFX_decision_hol_exchange_intelligence_data
+		
+		available = {
+			has_completed_focus = UKR_startup_support
+			has_country_flag = UKR_diia_city_flag
+			NOT = { has_country_flag = UKR_tech_partnerships_flag }
+		}
+		
+		visible = {
+			has_completed_focus = UKR_startup_support
+			has_country_flag = UKR_diia_city_flag
+		}
+		
+		fire_only_once = yes
+		
+		cost = 80
+		
+		days_remove = 100
+		
+		modifier = {
+			political_power_factor = -0.05
+		}
+		
+		ai_will_do = {
+			factor = 5
+		}
+		
+		remove_effect = {
+			set_temp_variable = {
+				var = income_var_temp
+				value = 15
+			}
+			add_income = yes
+			add_tech_bonus = {
+				name = industrial_bonus
+				bonus = 0.1
+				uses = 3
+				category = industry
+			}
+			add_tech_bonus = {
+				name = electronic_bonus
+				bonus = 0.1
+				uses = 3
+				category = electronics
+			}
+			add_opinion_modifier = {
+				target = FRA
+				modifier = small_increase
+			}
+			add_opinion_modifier = {
+				target = ENG
+				modifier = small_increase
+			}
+			add_opinion_modifier = {
+				target = GER
+				modifier = small_increase
+			}
+			add_opinion_modifier = {
+				target = POL
+				modifier = small_increase
+			}
+			add_opinion_modifier = {
+				target = ROM
+				modifier = small_increase
+			}
+			set_temp_variable = {
+					var = industrial_development_var_temp
+					value = 0.1
+				}
+			add_industrial_development = yes						
+			set_country_flag = UKR_tech_partnerships_flag
+		}
+	}
+}
+#covid
+UKR_covid_response_decisions = {
+	# Адаптивный карантин
+	UKR_implement_adaptive_quarantine = {
+		icon = GFX_decision_eng_trade_unions_demand
+		
+		available = {
+			NOT = { has_idea = UKR_adaptive_quarantine }
+			has_idea = UKR_covid_crisis
+			has_country_flag = UKR_COVID_ongoing
+			has_political_power > 20
+		}
+		
+		visible = {
+			has_country_flag = UKR_COVID_ongoing
+		}
+		
+		cost = 20
+		
+		complete_effect = {
+			modify_timed_idea = {
+				idea = UKR_covid_crisis
+				days = -15
+			}
+			add_timed_idea = {
+				idea = UKR_adaptive_quarantine
+				days = 150
+			}
+			custom_effect_tooltip = UKR_adaptive_quarantine_tooltip
+		}
+		
+		ai_will_do = {
+			factor = 45
+		}
+	}
+	
+	# Расширение бюджета здравоохранения
+	UKR_expand_healthcare_budget = {
+		icon = GFX_decision_generic_consumer_goods
+		
+		available = {
+			NOT = { has_idea = UKR_expanded_healthcare_budget }
+			has_idea = UKR_covid_crisis
+			has_country_flag = UKR_COVID_ongoing
+			has_political_power > 75
+		}
+		
+		visible = {
+			has_country_flag = UKR_COVID_ongoing
+			NOT = { has_idea = UKR_expanded_healthcare_budget }
+		}
+		fire_only_once = yes
+		cost = 75
+
+		days_remove = 15
+
+		remove_effect = {
+			add_stability = 0.02
+			modify_timed_idea = {
+				idea = UKR_covid_crisis
+				days = -120
+			}
+			set_country_flag = UKR_expand_healthcare_budget
+		}
+		
+		complete_effect = {
+			add_timed_idea = {
+				idea = UKR_expanded_healthcare_budget
+				days = 210
+			}
+			set_temp_variable = {
+				var = income_var_temp
+				value = -20
+			}
+			add_income = yes
+			custom_effect_tooltip = UKR_expanded_healthcare_budget_tooltip
+		}
+		
+		ai_will_do = {
+			factor = 65
+		}
+	}
+	
+	# Инициатива "Здоровая нация"
+	UKR_healthy_nation_program = {
+		icon = generic_civil_support
+		
+		available = {
+			NOT = { has_idea = UKR_healthy_nation_initiative }
+			has_idea = UKR_covid_crisis
+			has_country_flag = UKR_COVID_ongoing
+			has_political_power > 25
+			has_stability > 0.3
+		}
+		
+		visible = {
+			has_country_flag = UKR_COVID_ongoing
+			NOT = { has_idea = UKR_healthy_nation_initiative }
+		}
+		fire_only_once = yes
+		cost = 25
+
+		days_remove = 15
+
+		remove_effect = {
+			add_stability = 0.02
+			add_timed_idea = {
+				idea = UKR_healthy_nation_initiative
+				days = 260
+			}
+
+			modify_timed_idea = {
+				idea = UKR_covid_crisis
+				days = -45
+			}
+		}
+		
+		complete_effect = {
+			set_temp_variable = {
+				var = income_var_temp
+				value = -2
+			}
+			add_income = yes
+			custom_effect_tooltip = UKR_healthy_nation_initiative_tooltip
+		}
+		
+		ai_will_do = {
+			factor = 85
+		}
+	}
+	UKR_vaccinate_population = {
+		icon = GFX_decision_generic_research
+	
+		available = {
+			has_idea = UKR_covid_crisis
+			has_country_flag = UKR_COVID_ongoing
+			has_country_flag = UKR_expand_healthcare_budget
+			has_political_power > 40
+			date > 2021.01.01
+		}
+		
+		visible = {
+			has_country_flag = UKR_COVID_ongoing
+		}
+		fire_only_once = yes
+		days_remove = 5
+		
+		cost = 40
+		
+		remove_effect = {
+			modify_timed_idea = {
+				idea = UKR_covid_crisis
+				days = -180
+			}
+			remove_idea = UKR_covid_crisis
+			clr_country_flag = UKR_COVID_ongoing
+		}
+
+		complete_effect = {
+			set_temp_variable = {
+				var = income_var_temp
+				value = -5
+			}
+			add_income = yes
+		}
+		
+		ai_will_do = {
+			factor = 90
+		}
+	}
+	
+	UKR_enforce_lockdowns = {
+		icon = GFX_decision_generic_arrest
+		
+		available = {
+			has_country_flag = UKR_COVID_ongoing
+			has_idea = UKR_covid_crisis
+			has_political_power > 25
+		}
+		
+		visible = {
+			has_country_flag = UKR_COVID_ongoing
+		}
+		
+		days_remove = 60
+		
+		cost = 25
+		
+		modifier = {
+			stability_weekly = 0.002
+			political_power_gain = -0.10
+			consumer_goods_factor = 0.05
+			industrial_capacity_factory = -0.15
+		}
+		
+		remove_effect = {
+			add_stability = 0.05
+			modify_timed_idea = {
+				idea = UKR_covid_crisis
+				days = -70
+			}
+		}
+		
+		ai_will_do = {
+			factor = 65
+		}
+	}
+
+
+	UKR_use_army_aganist_covid = {
+		icon = GFX_decision_generic_army_support
+		
+		available = {
+			has_country_flag = UKR_COVID_ongoing
+			has_idea = UKR_covid_crisis
+			has_command_power > 30
+			has_war_support > 0.2
+		}
+		visible = {
+			has_country_flag = UKR_COVID_ongoing
+		}
+		fire_only_once = no
+		custom_cost_trigger = {
+			command_power > 30
+		}
+		custom_cost_text = 30cp_cost
+		days_remove = 15
+		remove_effect = {
+			add_political_power = 25
+			add_stability = 0.01
+			add_command_power = -30
+			add_war_support = -0.01
+		}
+		
+		ai_will_do = {
+			factor = 15
+		}
+	}
+}
+
+# Война в тенях
+UKR_shadow_war_category = {
+
+	ukraine_influence_belarus = {
+		icon = generic_recruit_operative
+		visible = {
+			BLR = {
+				has_idea = BLR_Rising_Zmagars_idea
+			}
+		}
+		days_remove = 5
+		fire_only_once = yes
+		cost = 10
+		available = {
+			has_completed_focus = UKR_intelligence_operation
+			has_war = no
+			NOT = { has_country_flag = UKR_influencing_BLR }
+			BLR = {
+				is_subject = no
+				has_idea = BLR_Rising_Zmagars_idea
+			}
+		}
+		complete_effect = {
+			add_political_power = -25
+			set_country_flag = UKR_influencing_BLR
+			BLR = {
+				set_country_flag = BLR_opposition_supported
+			}
+		}
+		ai_will_do = {
+			factor = 5
+		}
+	}
+
+	UKR_support_central_asian_resistance_KAZ = {
+		icon = generic_shaking_hands
+		
+		available = {
+			KAZ = { 
+				has_war_with = SOV
+				NOT = { has_war_with = UKR }
+			}
+			has_command_power > 30
+		}
+		
+		visible = {
+			KAZ = { 
+				has_war_with = SOV
+			}
+		}
+		custom_cost_trigger = {
+			command_power > 30
+		}		
+		custom_cost_text = 30cp_cost
+		days_remove = 7
+		days_re_enable = 190
+
+		complete_effect = {
+			add_command_power = -30
+		}
+
+		remove_effect = {
+			set_country_flag = ukraine_supported_KAZ
+			KAZ = {
+				add_timed_idea = {
+					idea = UKR_support_resistance_idea
+					days = 180
+				}
+			}
+		}
+		ai_will_do = {
+			factor = 85
+		}
+	}
+
+	UKR_support_central_asian_resistance_UZB = {
+		icon = generic_shaking_hands
+		
+		available = {
+			UZB = { 
+				has_war_with = SOV
+				NOT = { has_war_with = UKR }
+			}
+			has_command_power > 30
+		}
+		
+		visible = {
+			UZB = { 
+				has_war_with = SOV
+			}
+		}
+		custom_cost_trigger = {
+			command_power > 30
+		}		
+		custom_cost_text = 30cp_cost
+		days_remove = 7
+		days_re_enable = 190
+
+		complete_effect = {
+			add_command_power = -30
+		}
+
+		remove_effect = {
+			set_country_flag = ukraine_supported_UZB
+			UZB = {
+				add_timed_idea = {
+					idea = UKR_support_resistance_idea
+					days = 180
+				}
+			}
+		}
+		ai_will_do = {
+			factor = 85
+		}
+	}
+
+	UKR_support_central_asian_resistance_TMS = {
+		icon = generic_shaking_hands
+		
+		available = {
+			TMS = { 
+				has_war_with = SOV
+				NOT = { has_war_with = UKR }
+			}
+			has_command_power > 30
+			has_completed_focus = UKR_shadow_war_capabilities
+		}
+		
+		visible = {
+			TMS = { 
+				has_war_with = SOV
+			}
+		}
+		custom_cost_trigger = {
+			command_power > 30
+		}		
+		custom_cost_text = 30cp_cost
+		days_remove = 7
+		days_re_enable = 190
+
+		complete_effect = {
+			add_command_power = -30
+		}
+
+		remove_effect = {
+			set_country_flag = ukraine_supported_TMS
+			TMS = { 
+				add_timed_idea = {
+				idea = UKR_support_resistance_idea
+				days = 180
+				}
+			}
+		}
+		ai_will_do = {
+			factor = 85
+		}
+	}
+
+	UKR_support_central_asian_resistance_TAJ = {
+		icon = generic_shaking_hands
+		
+		available = {
+			TAJ = { 
+				has_war_with = SOV
+				NOT = { has_war_with = UKR }
+			}
+			has_command_power > 30
+			has_completed_focus = UKR_shadow_war_capabilities
+		}
+		
+		visible = {
+			TAJ = { 
+				has_war_with = SOV
+			}
+		}
+		custom_cost_trigger = {
+			command_power > 30
+		}		
+		custom_cost_text = 30cp_cost
+		days_remove = 7
+		days_re_enable = 190
+
+		complete_effect = {
+			add_command_power = -30
+		}
+
+		remove_effect = {
+			set_country_flag = ukraine_supported_TAJ
+			TAJ = { 
+				add_timed_idea = {
+				idea = UKR_support_resistance_idea
+				days = 180
+				}
+			}
+		}
+		ai_will_do = {
+			factor = 85
+		}
+	}
+
+	UKR_support_central_asian_resistance_GEO = {
+		icon = generic_shaking_hands
+		available = {
+			GEO = { 
+				has_war_with = SOV
+				NOT = { has_war_with = UKR }
+			}
+			has_command_power > 30
+			has_completed_focus = UKR_shadow_war_capabilities
+			
+		}
+		
+		visible = {
+			GEO = { 
+				has_war_with = SOV
+			}
+		}
+		custom_cost_trigger = {
+			command_power > 30
+		}		
+		custom_cost_text = 30cp_cost
+		days_remove = 7
+		days_re_enable = 190
+
+		complete_effect = {
+			add_command_power = -30
+		}
+		remove_effect = {
+			set_country_flag = ukraine_supported_GEO
+			GEO = { 
+				add_timed_idea = {
+				idea = UKR_support_resistance_idea
+				days = 180
+				}
+			}
+		}
+		ai_will_do = {
+			factor = 85
+		}
+	}
+
+		UKR_support_central_asian_resistance_AZR = {
+		icon = generic_shaking_hands
+		available = {
+			AZR = { 
+				has_war_with = SOV
+				NOT = { has_war_with = UKR }
+			}
+			has_command_power > 30
+			has_completed_focus = UKR_shadow_war_capabilities
+			
+		}
+		
+		visible = {
+			AZR = { 
+				has_war_with = SOV
+			}
+		}
+		custom_cost_trigger = {
+			command_power > 30
+		}		
+		custom_cost_text = 30cp_cost
+		days_remove = 7
+		days_re_enable = 190
+
+		complete_effect = {
+			add_command_power = -30
+		}
+		remove_effect = {
+			set_country_flag = ukraine_supported_AZR
+			AZR = { 
+				add_timed_idea = {
+				idea = UKR_support_resistance_idea
+				days = 180
+				}
+			}
+		}
+		ai_will_do = {
+			factor = 85
+			}
+		}
+		
+		UKR_support_central_asian_resistance_ARM = {
+		icon = generic_shaking_hands
+		available = {
+			ARM = { 
+				has_war_with = SOV
+				NOT = { has_war_with = UKR }
+			}
+			has_command_power > 30
+			has_completed_focus = UKR_shadow_war_capabilities
+			
+		}
+		
+		visible = {
+			ARM = { 
+				has_war_with = SOV
+			}
+		}
+		custom_cost_trigger = {
+			command_power > 30
+		}		
+		custom_cost_text = 30cp_cost
+		days_remove = 7
+		days_re_enable = 190
+
+		complete_effect = {
+			add_command_power = -30
+		}
+		remove_effect = {
+			set_country_flag = ukraine_supported_ARM
+			ARM = { 
+				add_timed_idea = {
+				idea = UKR_support_resistance_idea
+				days = 180
+				}
+			}
+		}
+		ai_will_do = {
+			factor = 85
+			}
+		}
+		UKR_support_central_asian_resistance_KYR = {
+		icon = generic_shaking_hands
+		
+		available = {
+			KYR = { 
+				has_war_with = SOV
+				NOT = { has_war_with = UKR }
+			}
+			has_command_power > 30
+		}
+		
+		visible = {
+			KYR = { 
+				has_war_with = SOV
+			}
+		}
+		custom_cost_trigger = {
+			command_power > 30
+		}		
+		custom_cost_text = 30cp_cost
+		days_remove = 7
+		days_re_enable = 190
+
+		complete_effect = {
+			add_command_power = -30
+		}
+
+		remove_effect = {
+			set_country_flag = ukraine_supported_KYR
+			KYR = {
+				add_timed_idea = {
+					idea = UKR_support_resistance_idea
+					days = 180
+				}
+			}
+		}
+		ai_will_do = {
+			factor = 85
+		}
+	}
+	UKR_support_central_asian_resistance_BLR = {
+		icon = generic_shaking_hands
+		
+		available = {
+			BLR = { 
+				has_war_with = SOV
+				NOT = { has_war_with = UKR }
+			}
+			has_command_power > 30
+		}
+		
+		visible = {
+			BLR = { 
+				has_war_with = SOV
+			}
+		}
+		custom_cost_trigger = {
+			command_power > 30
+		}		
+		custom_cost_text = 30cp_cost
+		days_remove = 7
+		days_re_enable = 190
+
+		complete_effect = {
+			add_command_power = -30
+		}
+
+		remove_effect = {
+			set_country_flag = ukraine_supported_BLR
+			BLR = {
+				add_timed_idea = {
+					idea = UKR_support_resistance_idea
+					days = 180
+				}
+			}
+		}
+		ai_will_do = {
+			factor = 85
+		}
+	}
+
+
+}
+# Код для решений Украины в The Fire Rises при нападении РФ
+# Категория решений для международной поддержки
+UKR_against_occupiers = {
+
+	UKR_resistance_coalition = {
+		icon = generic_form_nation
+		available = {
+			has_war_with = SOV
+			NOT = { has_country_flag = UKR_resistance_coalition_formed }
+		}
+		visible = {
+			has_war_with = SOV
+			NOT = { has_country_flag = UKR_resistance_coalition_formed }
+		}
+		
+		cost = 40
+		days_remove = 40
+		fire_only_once = yes
+		
+		complete_effect = {
+			stability_factor = 0.02
+			add_war_support = 0.02
+			#log = "[GetDateText]: [Root.GetName]: Decision UKR_resistance_coalition"
+			#news_event = { id = ukr_news.1 hours = 6 }
+		}
+		
+		remove_effect = {
+			add_war_support = 0.02
+			set_country_flag = UKR_resistance_coalition_formed
+			if = {
+				limit = {
+					ITA = { has_war = no }
+				}
+				add_opinion_modifier = {
+					target = ITA
+					modifier = military_cooperation
+				}
+				ITA = {
+					add_opinion_modifier = {
+						target = UKR
+						modifier = military_cooperation
+					}
+					add_timed_idea = {
+						idea = UKR_idea_resistance_coalition
+						days = 365
+					}
+				}
+			}
+			if = {
+				limit = {
+					ENG = { has_war = no }
+				}
+				add_opinion_modifier = {
+					target = ENG
+					modifier = military_cooperation
+				}
+				ENG = {
+					add_opinion_modifier = {
+						target = UKR
+						modifier = military_cooperation
+					}
+					add_timed_idea = {
+						idea = UKR_idea_resistance_coalition
+						days = 365
+					}
+				}
+			}
+			if = {
+				limit = {
+					FRA = { has_war = no }
+				}
+				add_opinion_modifier = {
+					target = FRA
+					modifier = military_cooperation
+				}
+				FRA = {
+					add_opinion_modifier = {
+						target = UKR
+						modifier = military_cooperation
+					}
+					add_timed_idea = {
+						idea = UKR_idea_resistance_coalition
+						days = 365
+					}
+				}
+			}
+			if = {
+				limit = {
+					GER = { has_war = no }
+				}
+				add_opinion_modifier = {
+					target = GER
+					modifier = military_cooperation
+				}
+				GER = {
+					add_opinion_modifier = {
+						target = UKR
+						modifier = military_cooperation
+					}
+					add_timed_idea = {
+						idea = UKR_idea_resistance_coalition
+						days = 365
+					}
+				}
+			}
+		}
+		
+		ai_will_do = {
+			factor = 75
+		}
+	}
+	
+	UKR_regional_alliance = {
+		icon = generic_prepare_civil_war
+		available = {
+			has_war_with = SOV
+			NOT = { has_country_flag = UKR_regional_alliance_formed }
+		}
+		visible = {
+			has_war_with = SOV
+			NOT = { has_country_flag = UKR_regional_alliance_formed }
+		}
+		cost = 80
+		days_remove = 35
+		fire_only_once = yes
+		complete_effect = {
+			add_war_support = 0.03
+			add_stability = 0.02
+			#log = "[GetDateText]: [Root.GetName]: Decision UKR_regional_alliance"
+			#news_event = { id = ukr_news.2 hours = 6 }
+		}
+		ai_will_do = {
+				factor = 80
+			}
+		remove_effect = {
+			add_timed_idea = {
+				idea = UKR_idea_regional_alliance
+				days = 720
+			}
+			set_country_flag = UKR_regional_alliance_formed
+				PLD = {
+					add_timed_idea = {
+						idea = UKR_idea_regional_alliance_member
+						days = 720
+					}
+				add_war_support = 0.02
+				}
+				EST = { 
+					add_timed_idea = {
+						idea = UKR_idea_regional_alliance_member
+						days = 720
+					}
+				add_war_support = 0.02
+				country_event = { id = baltic_defense.1  }
+				}
+				LAT = { 
+					add_timed_idea = {
+						idea = UKR_idea_regional_alliance_member
+						days = 720
+					}
+				add_war_support = 0.02
+				country_event = { id = baltic_defense.3 }
+				}
+				LIT = { 
+					add_timed_idea = {
+						idea = UKR_idea_regional_alliance_member
+						days = 720
+					}
+				add_war_support = 0.02
+				country_event = { id = baltic_defense.2 }
+				}
+		}
+	}
+
+	UKR_lend_lease_program = {
+		icon = generic_lend_lease
+		available = {
+			has_war_with = SOV
+		}
+		visible = {
+			has_war_with = SOV
+		}
+		cost = 100
+		days_remove = 30
+		days_re_enable = 150
+		complete_effect = {
+			add_stability = 0.02
+			add_war_support = 0.02
+			#log = "[GetDateText]: [Root.GetName]: Decision UKR_lend_lease_program"
+			#news_event = { id = ukr_news.3 hours = 6 }
+		}
+		remove_effect = {
+			set_country_flag = UKR_lend_lease_approved
+			add_timed_idea = {
+				idea = UKR_idea_lend_lease
+				days = 150
+			}
+			add_equipment_to_stockpile = {
+				type = type = infantry_equipment_1
+				amount = 1500
+				producer = FRA
+			}
+			add_equipment_to_stockpile = {
+				type = support_equipment
+				amount = 400
+				producer = GER
+			}
+			add_equipment_to_stockpile = {
+				type = anti_tank_equipment_1
+				amount = 150
+				producer = ENG
+			}
+			add_equipment_to_stockpile = {
+				type = motorized_equipment
+				amount = 120
+				producer = POL
+			}
+			add_equipment_to_stockpile = {
+				type = infantry_equipment_1
+				amount = 500
+				producer = ITL
+			}
+		}
+		
+		ai_will_do = {
+			factor = 80
+		}
+	}
+
+	#Категория решений для внутренней безопасности
+	UKR_SBU_emergency_powers = {
+		icon = GFX_decision_category_UKR_icon_category_CBU
+		
+		available = {
+			has_war_with = SOV
+			NOT = { has_idea = UKR_idea_SBU_emergency_powers }
+		}
+		
+		visible = {
+			has_war_with = SOV
+			NOT = { has_idea = UKR_idea_SBU_emergency_powers }
+		}
+		
+		cost = 50
+		days_remove = 15
+		days_re_enable = 180
+		
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision UKR_SBU_emergency_powers"
+			modify_timed_idea = {
+            idea = SOV_pro_russian_partisans_idea
+            days = -150
+        	}
+		}
+		
+		remove_effect = {
+			add_timed_idea = {
+				idea = UKR_idea_SBU_emergency_powers
+				days = 150
+			}
+			set_country_flag = UKR_SBU_empowered
+			add_stability = 0.02
+			add_popularity = {
+				ideology = nationalist
+				popularity = 0.03
+			}
+		}
+		
+		ai_will_do = {
+			factor = 90
+			modifier = {
+				factor = 1.5
+				has_stability > 0.6
+			}
+		}
+	}
+
+	# Категория решений для логистики и экономики
+	UKR_carpathian_logistics_plan = {
+		icon = GFX_decision_UKR_karpat_logistic
+		
+		available = {
+			has_war_with = SOV
+			NOT = { has_country_flag = UKR_carpathian_plan_completed }
+			controls_state = 73 # Карпаты
+		}
+		
+		visible = {
+			has_war_with = SOV
+			NOT = { has_country_flag = UKR_carpathian_plan_completed }
+		}
+		
+		cost = 35
+		days_remove = 55
+		fire_only_once = yes
+		
+		complete_effect = {
+			#log = "[GetDateText]: [Root.GetName]: Decision UKR_carpathian_logistics_plan"
+			set_temp_variable = {
+				var = income_var_temp
+				value = -2.25
+			}
+			add_income = yes
+		}
+		
+		remove_effect = {
+			set_country_flag = UKR_carpathian_plan_completed
+			
+			# Создать 2 топливных склада
+			73 = { # Карпаты
+				add_building_construction = {
+					type = fuel_silo
+					level = 1
+					instant_build = yes
+				}
+			}
+			
+			89 = { # Ивано-Франковская
+				add_building_construction = {
+					type = fuel_silo
+					level = 1
+					instant_build = yes
+				}
+			}
+			add_timed_idea = {
+				idea = UKR_idea_carpathian_logistics
+				days = 480
+			}
+		}
+		
+		ai_will_do = {
+			factor = 90
+		}
+	}
+
+	UKR_civilian_vehicle_adaptation = {
+		icon = GFX_decision_UKR_civil_ven_adptation
+		
+		available = {
+			has_war_with = SOV
+			NOT = { has_idea = UKR_idea_adapted_civilian_vehicles }
+		}
+		
+		visible = {
+			has_war_with = SOV
+		}
+		
+		cost = 25
+		days_remove = 30
+		days_re_enable = 180
+
+		
+		complete_effect = {
+			set_temp_variable = {
+				var = income_var_temp
+				value = -0.25
+			}
+			add_income = yes
+			#log = "[GetDateText]: [Root.GetName]: Decision UKR_civilian_vehicle_adaptation"
+		}
+		
+		remove_effect = {
+			add_timed_idea = {
+				idea = UKR_idea_adapted_civilian_vehicles
+				days = 150
+			}
+			set_country_flag = UKR_civilian_vehicles_adapted
+			add_equipment_to_stockpile = {
+				type = motorized_equipment
+				amount = 500
+				producer = UKR
+			}
+		}
+		
+		ai_will_do = {
+			factor = 75
+		}
+	}
+
+	# Категория решений для военной подготовки
+	UKR_air_defense_priority = {
+		icon = generic_air
+		
+		available = {
+			has_war_with = SOV
+			NOT = { has_country_flag = UKR_air_defense_prioritized }
+		}
+		
+		visible = {
+			has_war_with = SOV
+			NOT = { has_country_flag = UKR_air_defense_prioritized }
+		}
+		
+		cost = 60
+		days_remove = 14
+		fire_only_once = yes
+		
+		complete_effect = {
+			add_war_support = 0.02
+			add_stability = 0.02
+			set_temp_variable = {
+				var = income_var_temp
+				value = -3.5
+			}
+			add_income = yes
+			#log = "[GetDateText]: [Root.GetName]: Decision UKR_air_defense_priority"
+		}
+		
+		remove_effect = {
+			add_timed_idea = {
+				idea = UKR_idea_air_defense_priority
+				days = 285
+			}
+			set_country_flag = UKR_air_defense_prioritized
+			add_equipment_to_stockpile = {
+				type = anti_air_equipment
+				amount = 200
+				producer = UKR
+			}
+
+			203 = { # Черкассы
+				add_building_construction = {
+					type = anti_air_building
+					level = 2
+					instant_build = yes
+				}
+			}
+
+			1285 = { # Киев
+				add_building_construction = {
+					type = anti_air_building
+					level = 2
+					instant_build = yes
+				}
+			}
+		}
+		
+		ai_will_do = {
+			factor = 100
+		}
+	}
+	
+	UKR_minefield_key_directions = {
+		icon = GFX_decision_UKR_mine
+		
+		available = {
+			has_war_with = SOV
+			NOT = { has_idea = UKR_idea_minefields }
+			has_war_support > 0.3
+			has_command_power > 30
+		}
+		
+		visible = {
+			has_war_with = SOV
+			NOT = { has_idea = UKR_idea_minefields }
+		}
+		custom_cost_trigger = {
+			command_power > 30
+		}		
+		custom_cost_text = 30cp_cost
+		days_remove = 10
+		days_re_enable = 180
+
+
+		complete_effect = {
+			add_command_power = -30
+			#log = "[GetDateText]: [Root.GetName]: Decision UKR_minefield_key_directions"
+		}
+		
+		remove_effect = {
+			add_timed_idea = {
+				idea = UKR_idea_minefields
+				days = 140
+			}
+			set_country_flag = UKR_minefields_placed
+			add_stability = -0.05
+			
+		}
+		
+		ai_will_do = {
+			factor = 100
+		}
+	}
+
+	# Bayraktar TB2 Strike Coordination
+	UKR_bayraktar_strike_coordination = {
+		icon = GFX_decision_UKR_bayraktar
+		
+		available = {
+			has_war_with = SOV
+			has_completed_focus = UKR_reform_general_staff_nato_standards
+			command_power > 10
+		}
+		
+		visible = {
+			has_completed_focus = UKR_reform_general_staff_nato_standards
+		}
+		
+		custom_cost_trigger = {
+			command_power > 10
+		}
+		custom_cost_text = 10cp_cost
+		
+		fire_only_once = no
+		days_re_enable = 45
+		
+		ai_will_do = {
+			factor = 15
+			modifier = {
+				factor = 2
+				enemy_has_capitulated = no
+			}
+		}
+		
+		complete_effect = {
+			add_command_power = -10
+			air_experience = 5
+			army_experience = 2
+			add_timed_idea = {
+				idea = UKR_drone_strike_bonus
+				days = 30
+			}
+			set_temp_variable = {
+				var = income_var_temp
+				value = -0.5
+			}
+			add_income = yes
+			custom_effect_tooltip = UKR_bayraktar_strike_tooltip
+		}
+	}
+	
+	# Joint NATO Intelligence Operation
+	UKR_nato_intelligence_operation = {
+		icon = GFX_decision_UKR_nato_intel_help
+		
+		available = {
+			has_war_with = SOV
+			has_completed_focus = UKR_reform_general_staff_nato_standards
+			command_power > 10
+			NOT = { has_country_flag = UKR_nato_intel_cooldown }
+		}
+		
+		visible = {
+			has_completed_focus = UKR_reform_general_staff_nato_standards
+		}
+		
+		custom_cost_trigger = {
+			command_power > 10
+		}
+		custom_cost_text = 10cp_cost
+		
+		fire_only_once = no
+		days_re_enable = 90
+		
+		ai_will_do = {
+			factor = 10
+			modifier = {
+				factor = 3
+				surrender_progress > 0.1
+			}
+		}
+		
+		complete_effect = {
+			add_command_power = -10
+			add_timed_idea = {
+				idea = UKR_nato_intelligence_support
+				days = 50
+			}
+			set_country_flag = { flag = UKR_nato_intel_cooldown days = 90 }
+			custom_effect_tooltip = UKR_nato_intel_tooltip
+			if = {
+				limit = { SOV = { has_variable = SOV_strategic_planning } }
+				SOV = { add_to_variable = { SOV_strategic_planning = -0.1 } }
+			}
+			if = {
+				limit = { has_global_flag = SOV_medvedev_leader }
+				add_political_power = 50
+				add_stability = 0.02
+			}
+			if = {
+				limit = { has_global_flag = SOV_zhirinovsky_leader }
+				add_political_power = 30
+				news_event = { id = ukr_news.15 hours = 12 }
+			}
+		}
+	}
+	
+	# Night Raids Operation
+	UKR_night_raids_operation = {
+		icon = GFX_decision_generic_special_forces
+		
+		available = {
+			has_war_with = SOV
+			has_completed_focus = UKR_reform_general_staff_nato_standards
+			command_power > 30
+			has_army_experience > 50
+		}
+		
+		visible = {
+			has_completed_focus = UKR_reform_general_staff_nato_standards
+		}
+		
+		custom_cost_trigger = {
+			command_power > 30
+		}
+		custom_cost_text = 30cp_cost
+		
+		fire_only_once = no
+		days_re_enable = 30
+		
+		ai_will_do = {
+			factor = 8
+			modifier = {
+				factor = 2
+				has_equipment = { infantry_equipment > 1000 }
+			}
+		}
+		
+		complete_effect = {
+			add_command_power = -30
+			army_experience = -10
+			add_timed_idea = {
+				idea = UKR_night_combat_bonus
+				days = 45
+			}
+			SOV = {
+				 add_war_support = -0.008
+				 add_stability = -0.005
+			}
+			custom_effect_tooltip = UKR_night_raids_tooltip
+		}
+	}
+	
+	# Dnipro-Kyiv-Kherson Triangle Defense
+	UKR_strategic_triangle_defense = {
+		icon = GFX_decision_generic_form_nation
+		
+		available = {
+			has_war_with = SOV
+			has_completed_focus = UKR_defensive_doctrine
+			command_power > 30
+			controls_state = 226 # Dnipro
+			controls_state = 1285 # Kyiv 
+			controls_state = 196 # Kherson
+		}
+		
+		visible = {
+			has_country_flag = UKR_defensive_doctrine
+			has_war_with = SOV
+		}
+		
+		custom_cost_trigger = {
+			command_power > 30
+		}
+		custom_cost_text = 30cp_cost
+		
+		fire_only_once = yes
+		
+		ai_will_do = {
+			factor = 95
+			modifier = {
+				factor = 0
+				NOT = { 
+					controls_state = 226
+					controls_state = 1285
+					controls_state = 196
+				}
+			}
+		}
+		
+		complete_effect = {
+			set_temp_variable = {
+				var = income_var_temp
+				value = -2.85
+			}
+			add_income = yes
+			add_command_power = -30
+			add_stability = 0.01
+			add_war_support = 0.03
+			add_timed_idea = {
+				idea = UKR_strategic_triangle
+				days = 325
+			}
+			custom_effect_tooltip = UKR_strategic_triangle_tooltip
+			#if = {
+				#limit = { date > 2022.02.01 }
+				#news_event = { id = ukr_news.24 hours = 6 }
+			#}
+		}
+	}
+
+	# Project "Asgard" - Mobile Anti-Air Defense Network
+	UKR_project_asgard = {
+		icon = GFX_decision_UKR_asgard
+		
+		available = {
+			has_completed_focus = UKR_military_industrial_complex
+			NOT = { has_country_flag = UKR_asgard_active }
+		}
+		
+		visible = {
+			has_completed_focus = UKR_military_industrial_complex
+		}
+		
+		cost = 25
+		
+		fire_only_once = yes
+		days_remove = 90
+		
+		ai_will_do = {
+			factor = 5
+		}
+		complete_effect = {
+			set_country_flag = UKR_asgard_active days
+			add_tech_bonus = {
+				name = asgard
+				bonus = 0.75
+				uses = 1
+				category = electronics
+			}
+			set_temp_variable = {
+				var = income_var_temp
+				value = -6.5
+			}
+			add_income = yes
+		}
+		remove_effect = {
+			1285 = { # Киев
+				add_building_construction = {
+					type = anti_air_building
+					level = 1
+					instant_build = yes
+				}
+			}
+			add_timed_idea = {
+							idea = UKR_asgard_defense_network
+							days = 485
+						}
+			}
+			custom_effect_tooltip = UKR_asgard_tooltip
+	}
+	
+	# "Serpent's Path" Border Assault
+	UKR_serpents_path_assault = {
+		icon = GFX_decision_UKR_serpent_tactic
+		
+		available = {
+			has_war = yes
+			has_completed_focus = UKR_reform_general_staff_nato_standards
+			command_power > 30
+			has_stability > 0.5
+		}
+		
+		visible = {
+			has_completed_focus = UKR_reform_general_staff_nato_standards
+		}
+		
+		custom_cost_trigger = {
+			command_power > 30
+		}
+		custom_cost_text = 30cp_cost
+		
+		fire_only_once = no
+		days_re_enable = 160
+		
+		ai_will_do = {
+			factor = 10
+			modifier = {
+				factor = 3
+				has_war_support > 0.7
+			}
+			modifier = {
+				factor = 0
+				strength_ratio = { tag = SOV ratio < 0.5 }
+			}
+		}
+		
+		complete_effect = {
+			add_command_power = -30
+			add_war_support = -0.03
+			add_timed_idea = {
+				idea = UKR_offensive_momentum
+				days = 80
+			}
+			custom_effect_tooltip = UKR_serpents_path_tooltip
+			hidden_effect = {
+				add_popularity = {
+				ideology = nationalist
+				popularity = 0.01
+				}
+			}
+		}
+	}
+	
+	# "Azov Steel" Special Operation
+	UKR_azov_steel_operation = {
+		icon = GFX_decision_UKR_Azov
+		
+		available = {
+			has_war_with = SOV
+			has_completed_focus = UKR_reform_general_staff_nato_standards
+			command_power > 10
+			NOT = { has_country_flag = UKR_azov_op_active }
+		}
+		
+		visible = {
+			has_war_with = SOV
+		}
+		
+		cost = 20
+
+		custom_cost_trigger = {
+			command_power > 10
+		}
+		custom_cost_text = 10cp_cost
+		
+		fire_only_once = no
+		days_re_enable = 90
+		
+		ai_will_do = {
+			factor = 5
+			modifier = {
+				factor = 2
+				has_war_support > 0.65
+			}
+		}
+		
+		complete_effect = {
+			add_command_power = -10
+			add_war_support = -0.02
+			set_country_flag = { flag = UKR_azov_op_active days = 90 }
+			add_timed_idea = {
+				idea = UKR_azov_steel_operations
+				days = 65
+			}
+			custom_effect_tooltip = UKR_azov_operation_tooltip
+		}
+	}
+}
+
+# New Blitz
+UKR_offensive_operations = {
+	
+	# Rapid Armored Thrust
+	UKR_rapid_armored_thrust = {
+		icon = GFX_decision_tank_divisions
+		
+		available = {
+			has_war_with = SOV
+			has_completed_focus = UKR_blitzkrieg_tactics
+			command_power > 30
+		}
+		
+		visible = {
+			has_country_flag = UKR_mobile_doctrine_chosen
+		}
+		
+		custom_cost_trigger = {
+			command_power > 30
+		}
+		custom_cost_text = 30cp_cost
+		
+		fire_only_once = no
+		days_re_enable = 60
+		
+		ai_will_do = {
+			factor = 10
+			modifier = {
+				factor = 2
+				strength_ratio = { tag = SOV ratio > 0.7 }
+			}
+		}
+		
+		complete_effect = {
+			add_war_support = -0.03
+			add_command_power = -30
+			army_experience = 5
+			add_timed_idea = {
+				idea = UKR_armored_thrust_bonus
+				days = 60
+			}
+			custom_effect_tooltip = UKR_rapid_armored_thrust_tooltip
+		}
+	}
+}
+
+#UKR_decommunization
+# Категория решений по декоммунизации
+UKR_decommunization_category = {
+		UKR_digital_repressions_archive = {
+			icon = generic_intelligence_document
+			
+			visible = {
+				NOT = { has_country_flag = UKR_repressions_archive_completed }
+			}
+			
+			available = {
+				has_war = no
+			}
+			
+			cost = 30
+			days_remove = 30
+			
+			remove_effect = {
+				country_event = { id = ukraine.1001 }
+			}
+			
+			ai_will_do = {
+				factor = 8
+			}
+		}
+		
+		# Решение 2: Демонтаж советских памятников
+		UKR_monuments_removal = {
+			icon = generic_political_discourse
+			
+			visible = {
+				NOT = { has_country_flag = UKR_monuments_completed }
+			}
+			
+			available = {
+				has_war = no
+				stability > 0.4
+			}
+			
+			cost = 50
+			
+			complete_effect = {
+				country_event = { id = ukraine.1002 }
+			}
+			
+			ai_will_do = {
+				factor = 12
+			}
+		}
+		
+		# Решение 3: Открытие архивов КГБ
+		UKR_kgb_archives = {
+			icon = generic_intelligence_document
+			
+			visible = {
+				NOT = { has_country_flag = UKR_archives_completed }
+			}
+			
+			available = {
+				has_war = no
+			}
+			
+			cost = 75
+			
+			complete_effect = {
+				country_event = { id = ukraine.1003 }
+			}
+			
+			ai_will_do = {
+				factor = 5
+			}
+		}
+		
+		# Решение 4: Реформа исторического образования
+		UKR_history_education_reform = {
+			icon = generic_research
+			
+			visible = {
+				NOT = { has_country_flag = UKR_education_completed }
+				has_country_flag = UKR_archives_completed
+			}
+			
+			available = {
+				has_war = no
+			}
+			
+			cost = 40
+			
+			complete_effect = {
+				country_event = { id = ukraine.1004 }
+			}
+			
+			ai_will_do = {
+				factor = 9
+			}
+		}
+		
+		# Решение 5: Институт национальной памяти
+		UKR_national_memory_institute = {
+			icon = generic_form_nation
+			
+			visible = {
+				NOT = { has_country_flag = UKR_memory_institute_completed }
+				has_country_flag = UKR_education_completed
+			}
+			
+			available = {
+				has_war = no
+				stability > 0.5
+			}
+			
+			cost = 20
+			days_remove = 60
+			
+			remove_effect = {
+				country_event = { id = ukraine.1005 }
+			}
+			
+			ai_will_do = {
+				factor = 25
+			}
+		}
+}

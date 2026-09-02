@@ -1,0 +1,652 @@
+﻿add_namespace = ukraine_economy
+#Протесты против земельной реформы
+country_event = {
+	id = ukraine_economy.200
+	title = ukraine_economy.200.t
+	desc = ukraine_economy.200.d
+	picture = GFX_UKR_protest_land_reform
+	
+	is_triggered_only = no
+	fire_only_once = yes
+	
+	trigger = {
+		tag = UKR
+		has_completed_focus = UKR_land_market_opening
+		has_idea = UKR_land_reform_idea
+		has_country_leader = {
+			character = UKR_volodymyr_zelensky
+			ruling_only = yes
+		}
+		NOT = { has_country_flag = UKR_land_protests_happened }
+	}
+	
+	mean_time_to_happen = {
+		days = 85
+	}
+	
+	immediate = {
+		set_country_flag = UKR_land_protests_happened
+	}
+	
+	# Подавить протесты силами полиции
+	option = {
+		name = ukraine_economy.200.a
+		
+		add_stability = -0.05
+		add_war_support = -0.02
+		add_political_power = -25
+		add_popularity = {
+			ideology = totalitarian_socialist
+			popularity = 0.01
+		}
+		add_popularity = {
+			ideology = authoritarian_democrat
+			popularity = 0.02
+		}
+		add_popularity = {
+			ideology = communist
+			popularity = 0.03
+		}
+		add_popularity = {
+			ideology = libertarian_socialist
+			popularity = 0.03
+		}		
+
+		
+		ai_chance = {
+			factor = 40
+			modifier = {
+				factor = 1.5
+				has_stability > 0.70
+			}
+		}
+	}
+	
+	# Вступить в переговоры с протестующими
+	option = {
+		name = ukraine_economy.200.b
+		
+		add_stability = -0.01
+		add_political_power = -160
+		add_popularity = {
+			ideology = communist
+			popularity = 0.01
+		}
+		add_popularity = {
+			ideology = libertarian_socialist
+			popularity = 0.02
+		}
+		add_popularity = {
+			ideology = social_democrat
+			popularity = 0.04
+		}
+		
+		remove_ideas = UKR_land_reform_idea
+		add_ideas = UKR_modified_land_reform_idea
+		
+		ai_chance = {
+			factor = 60
+			modifier = {
+				factor = 1.5
+				has_stability < 0.50
+			}
+		}
+	}
+}
+
+# Рост IT-экспорта
+country_event = {
+	id = ukraine_economy.201
+	title = ukraine_economy.201.t
+	desc = ukraine_economy.201.d
+	picture = GFX_UKR_it_growth
+	
+	is_triggered_only = no
+	fire_only_once = yes
+	
+	trigger = {
+		tag = UKR
+		has_completed_focus = UKR_digital_economy
+		has_completed_focus = UKR_startup_support
+		has_idea = UKR_startup_ecosystem_idea
+		has_country_leader = {
+			character = UKR_volodymyr_zelensky
+			ruling_only = yes
+		}
+		NOT = { has_country_flag = UKR_it_export_growth }
+	}
+	
+	mean_time_to_happen = {
+		days = 120
+	}
+	
+	immediate = {
+		set_country_flag = UKR_it_export_growth
+	}
+	
+	# Поддержать дальнейший рост IT-сектора
+	option = {
+		name = ukraine_economy.201.a
+		
+		add_stability = 0.03
+		add_political_power = 15
+		set_temp_variable = {
+			var = income_var_temp
+			value = 20
+		}
+		add_income_with_inflation = yes
+		
+		add_ideas = UKR_booming_it_sector_idea
+		
+		ai_chance = {
+			factor = 80
+		}
+	}
+	
+	# Обложить IT-компании дополнительными налогами
+	option = {
+		name = ukraine_economy.201.b
+		
+		add_political_power = -15
+		set_temp_variable = {
+			var = income_var_temp
+			value = 45
+		}
+		add_income_with_inflation = yes
+		
+		add_timed_idea = {
+			idea = UKR_it_tax_policy
+			days = 365
+		}
+		
+		ai_chance = {
+			factor = 20
+			modifier = {
+				factor = 2
+				has_idea = economy_in_deficit
+			}
+		}
+	}
+}
+
+# Коррупционный скандал в программе "Большое строительство"
+country_event = {
+	id = ukraine_economy.202
+	title = ukraine_economy.202.t
+	desc = ukraine_economy.202.d
+	picture = GFX_UKR_big_corruption_scandal
+	
+	is_triggered_only = no
+	fire_only_once = yes
+	
+	trigger = {
+		tag = UKR
+		has_completed_focus = UKR_big_construction
+		has_idea = UKR_big_construction_idea
+		has_country_leader = {
+			character = UKR_volodymyr_zelensky
+			ruling_only = yes
+		}
+		NOT = { has_country_flag = UKR_construction_scandal }
+	}
+	
+	mean_time_to_happen = {
+		days = 100
+		modifier = {
+			factor = 0.8
+			has_idea = UKR_infrastructure_modernization_idea
+		}
+	}
+	
+	immediate = {
+		set_country_flag = UKR_construction_scandal
+	}
+	
+	# Начать антикоррупционное расследование
+	option = {
+		name = ukraine_economy.202.a
+		
+		add_stability = -0.03
+		add_political_power = -35
+		add_war_support = -0.01
+		#effect_tooltip = {
+			#swap_ideas = {
+					#remove_idea = UKR_big_construction_idea
+					#add_idea = UKR_construction_investigation
+				#}
+		#}
+
+		remove_ideas = UKR_big_construction_idea
+
+		add_timed_idea = {
+					idea = UKR_construction_investigation
+					days = 485
+				}
+		#hidden_effect = {
+			#country_event = { id = ukraine_economy.4 days = 180 }
+		#}
+		ai_chance = {
+			factor = 60
+			modifier = {
+				factor = 1.5
+				has_stability > 0.60
+			}
+		}
+	}
+	
+	# Замять скандал
+	option = {
+		name = ukraine_economy.202.b
+		
+		add_stability = -0.08
+		add_political_power = -15
+		add_war_support = -0.03
+		add_popularity = {
+			ideology = communist
+			popularity = 0.08
+		}
+		add_popularity = {
+			ideology = authoritarian_democrat
+			popularity = 0.04
+		}
+		add_popularity = {
+			ideology = libertarian_socialist
+			popularity = 0.02
+		}
+		
+		ai_chance = {
+			factor = 40
+			modifier = {
+				factor = 2
+				has_stability < 0.40
+			}
+		}
+	}
+}	
+# Результаты земельной реформы
+country_event = {
+	id = ukraine_economy.203
+	title = ukraine_economy.203.t
+	desc = ukraine_economy.203.d
+	picture = GFX_UKR_agricultural_success
+	
+	is_triggered_only = no
+	fire_only_once = yes
+	
+	trigger = {
+		tag = UKR
+		has_completed_focus = UKR_land_market_opening
+		has_idea = UKR_modified_land_reform_idea
+		has_country_flag = UKR_land_protests_happened
+		NOT = { has_country_flag = UKR_land_reform_results}
+	}
+	
+	mean_time_to_happen = {
+		days = 182
+	}
+	
+	immediate = {
+		set_country_flag = UKR_land_reform_results
+	}
+	
+	# Аграрный сектор показывает рост
+	option = {
+		name = ukraine_economy.203.a
+		
+		add_political_power = -350
+		add_stability = 0.05		
+		set_temp_variable = {
+			var = income_var_temp
+			value = 35
+		}
+		add_income_with_inflation = yes
+		
+		add_timed_idea = {
+			idea = UKR_agricultural_boom
+			days = 730
+		}
+		
+		ai_chance = {
+			factor = 90
+		}
+	}
+	
+	# Результаты ниже ожиданий
+	option = {
+		name = ukraine_economy.203.b
+		
+		set_temp_variable = {
+			var = income_var_temp
+			value = 10
+		}
+		add_income_with_inflation = yes
+		
+		add_timed_idea = {
+			idea = UKR_slow_land_reform
+			days = 365
+		}
+		
+		ai_chance = {
+			factor = 10
+		}
+	}
+}
+
+# Результаты программы "Государство в смартфоне"
+country_event = {
+	id = ukraine_economy.204
+	title = ukraine_economy.204.t
+	desc = ukraine_economy.204.d
+	picture = GFX_UKR_digital_state
+	
+	is_triggered_only = no
+	fire_only_once = yes
+	
+	trigger = {
+		tag = UKR
+		has_completed_focus = UKR_digital_economy
+		has_idea = UKR_digital_state_idea
+		NOT = { has_country_flag = UKR_digital_state_results }
+	}
+	
+	mean_time_to_happen = {
+		days = 100
+	}
+	
+	immediate = {
+		set_country_flag = UKR_digital_state_results
+	}
+	
+	# Успешная цифровизация
+	option = {
+		name = ukraine_economy.204.a
+
+		set_temp_variable = {
+			var = income_var_temp
+			value = 9
+		}			
+		
+		add_stability = 0.05
+		add_political_power = -210
+
+		add_popularity = {
+			ideology = social_liberal
+			popularity = 0.03
+		}
+		
+		remove_ideas = UKR_digital_state_idea
+		add_ideas = UKR_digital_leadership_idea
+		
+		ai_chance = {
+			factor = 75
+		}
+	}
+	
+	# Технические проблемы и утечки данных
+	option = {
+		name = ukraine_economy.204.b
+		
+		add_stability = 0.02
+		
+		add_timed_idea = {
+			idea = UKR_digital_security_issues
+			days = 270
+		}
+		
+		ai_chance = {
+			factor = 25
+			modifier = {
+				factor = 2
+				has_idea = UKR_corruption_high
+			}
+		}
+	}
+}
+
+# Энергетический кризис и его влияние на экономику
+country_event = {
+	id = ukraine_economy.205
+	title = ukraine_economy.205.t
+	desc = ukraine_economy.205.d
+	picture = GFX_UKR_energy_crisis
+	
+	is_triggered_only = no
+	fire_only_once = yes
+	
+	trigger = {
+		tag = UKR
+		has_completed_focus = UKR_economic_transformation
+		NOT = { has_country_flag = UKR_energy_crisis_happened }
+	}
+	
+	mean_time_to_happen = {
+		days = 30
+	}
+	
+	immediate = {
+		set_country_flag = UKR_energy_crisis_happened
+	}
+	
+	# Ввести государственное регулирование цен
+	option = {
+		name = ukraine_economy.205.a
+		
+		add_stability = 0.03
+		add_political_power = -25
+		set_temp_variable = {
+			var = income_var_temp
+			value = -16
+		}
+		add_income_with_inflation = yes
+		
+		add_timed_idea = {
+			idea = UKR_energy_price_control
+			days = 180
+		}
+		
+		ai_chance = {
+			factor = 40
+			modifier = {
+				factor = 2
+				has_stability < 0.40
+			}
+		}
+	}
+	
+	# Рыночное решение проблемы
+	option = {
+		name = ukraine_economy.205.b
+		
+		add_stability = -0.07
+		add_political_power = -15
+		add_popularity = {
+			ideology = communist
+			popularity = 0.04
+		}
+		add_popularity = {
+			ideology = libertarian_socialist
+			popularity = 0.01
+		}	
+		add_popularity = {
+			ideology = authoritarian_democrat
+			popularity = 0.02
+		}
+		
+		add_timed_idea = {
+			idea = UKR_energy_market_adjustment
+			days = 180
+		}
+		
+		ai_chance = {
+			factor = 60
+			modifier = {
+				factor = 1.5
+				has_stability > 0.60
+			}
+		}
+	}
+}
+
+# Инвестиционный форум в Киеве
+country_event = {
+	id = ukraine_economy.206
+	title = ukraine_economy.206.t
+	desc = ukraine_economy.206.d
+	picture = GFX_UKR_investment_forum
+	
+	is_triggered_only = no
+	fire_only_once = yes
+	
+	trigger = {
+		tag = UKR
+		has_completed_focus = UKR_economic_transformation
+		has_completed_focus = UKR_big_construction
+		has_completed_focus = UKR_digital_economy
+		has_completed_focus = UKR_invest_in_infrastructure
+		NOT = { has_country_flag = UKR_investment_forum_held }
+	}
+	
+	mean_time_to_happen = {
+		days = 300
+	}
+	
+	immediate = {
+		set_country_flag = UKR_investment_forum_held
+	}
+	
+	# Подписать крупные инвестиционные соглашения
+	option = {
+		name = ukraine_economy.206.a
+		
+		add_stability = 0.01
+		add_political_power = -300
+		set_temp_variable = {
+			var = income_var_temp
+			value = 12
+		}
+		add_income_with_inflation = yes
+		
+		random_owned_controlled_state = {
+			random_select_amount = 2
+			add_extra_state_shared_building_slots = 2
+			add_building_construction = {
+				type = industrial_complex
+				level = 1
+				instant_build = yes
+			}
+		}
+		
+		add_timed_idea = {
+			idea = UKR_investment_boom
+			days = 365
+		}
+		
+		ai_chance = {
+			factor = 80
+		}
+	}
+	
+	# Форум не оправдал ожиданий
+	option = {
+		name = ukraine_economy.206.b
+		
+
+		add_popularity = {
+			ideology = fascist
+			popularity = 0.04
+		}
+		
+		add_timed_idea = {
+			idea = UKR_investment_disappointment
+			days = 180
+		}
+		
+		ai_chance = {
+			factor = 20
+		}
+	}
+}
+
+# Украинская индустрия на мировом рынке
+country_event = {
+	id = ukraine_economy.207
+	title = ukraine_economy.207.t
+	desc = ukraine_economy.207.d
+	picture = GFX_event_UKR_industry_export
+	
+	is_triggered_only = no
+	fire_only_once = yes
+	
+	trigger = {
+		tag = UKR
+		has_completed_focus = UKR_invest_in_infrastructure
+		has_idea = UKR_infrastructure_modernization_idea
+		NOT = { has_country_flag = UKR_industry_export_boost }
+	}
+	
+	mean_time_to_happen = {
+		days = 150
+	}
+	
+	immediate = {
+		set_country_flag = UKR_industry_export_boost
+	}
+	
+	# Поддержать экспортоориентированные отрасли
+	option = {
+		name = ukraine_economy.207.a
+		
+		add_stability = 0.02
+		add_political_power = 45
+		
+		random_owned_controlled_state = {
+			add_extra_state_shared_building_slots = 2
+			add_building_construction = {
+				
+				type = industrial_complex
+				level = 1
+				instant_build = yes
+			}
+		}
+		
+		add_timed_idea = {
+			idea = UKR_export_focused_industry
+			days = 365
+		}
+		
+		ai_chance = {
+			factor = 65
+		}
+		set_temp_variable = {
+			var = income_var_temp
+			value = 32
+		}
+		add_income_with_inflation = yes			
+	}
+	
+	# Сосредоточиться на внутреннем рынке
+	option = {
+		name = ukraine_economy.207.b
+		
+		add_stability = 0.05
+		add_war_support = 0.03
+		
+		random_owned_controlled_state = {
+			add_extra_state_shared_building_slots = 2
+			add_building_construction = {
+				type = industrial_complex
+				level = 1
+				instant_build = yes
+			}
+		}
+		
+		add_timed_idea = {
+			idea = UKR_domestic_industry_focus
+			days = 365
+		}
+		
+		ai_chance = {
+			factor = 35
+		}
+	}
+}

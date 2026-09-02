@@ -1,0 +1,656 @@
+add_namespace = ukrainewar
+
+# Инициализация военного настроения
+country_event = {
+	id = ukrainewar.1
+	title = ukrainewar.1.t
+	desc = ukrainewar.1.d
+	picture = GFX_event_UKR_start_war
+	
+	fire_only_once = yes
+	
+	trigger = {
+		is_tag = UKR
+		NOT = {
+			has_global_flag = nato_nato_won_nato_war
+			has_global_flag = SOV_first_nato_war_victory
+		}
+		has_war_with = SOV
+		NOT = { has_country_flag = UKR_war_mood_active }
+	}
+	
+	mean_time_to_happen = {
+		days = 1
+	}
+	
+	immediate = {
+		set_country_flag = UKR_war_mood_active
+		set_variable = { var = UKRhate value = 5 }
+		set_variable = { var = UKRwarfatigue value = 1 }
+		# Устанавливаем начальные идеи
+		add_ideas = UKR_war_spirit_hate_0
+		add_ideas = UKR_war_spirit_fatigue_0
+	}
+	
+	option = {
+		name = ukrainewar.1.a
+		add_war_support = -0.02
+		add_stability = -0.07
+		custom_effect_tooltip = UKRwarmoodinitialized
+	}
+}
+
+country_event = {
+	id = ukrainewar.check
+	is_triggered_only = no
+	hidden = yes
+
+	trigger = {
+		is_tag = UKR
+		has_war_with = SOV
+		NOT = { has_country_flag = UKR_war_mood_scheduled }
+		NOT = { has_country_flag = UKR_war_mood_active } # чтобы не дублировать
+		NOT = {
+		has_global_flag = nato_nato_won_nato_war
+		has_global_flag = SOV_first_nato_war_victory
+		}
+	}
+
+	mean_time_to_happen = { days = 1 }
+
+	immediate = {
+	set_country_flag = UKR_war_mood_scheduled
+	}
+
+  option = {
+	name = hidden
+	hidden_effect = {
+		fire_country_event = { id = ukrainewar.1 }
+		}
+	}
+}
+
+
+# Первые бомбардировки - рост ненависти
+country_event = {
+	id = ukrainewar.10
+	title = ukrainewar.10.t
+	desc = ukrainewar.10.d
+	picture = GFX_event_UKR_first_strike_of_war
+	
+	fire_only_once = yes
+	
+	trigger = {
+		tag = UKR
+		has_country_flag = UKR_war_mood_active
+		has_war_with = SOV
+	}
+	
+	option = {
+		name = ukrainewar.10.a
+		add_to_variable = { var = UKRhate value = 12 }
+		add_to_variable = { var = UKRwarfatigue value = 4 }
+		UKR_update_hate_spirit = yes
+		UKR_update_fatigue_spirit = yes
+		add_war_support = 0.03
+		add_stability = -0.02
+		force_update_dynamic_modifier = yes
+	}
+}
+
+# События порогов ненависти
+country_event = {
+	id = ukrainewar.25
+	title = ukrainewar.25.t
+	desc = ukrainewar.25.d
+	picture = GFX_event_UKR_war_hate_up
+	
+	trigger = {
+		tag = UKR
+		has_country_flag = UKR_war_mood_active
+		check_variable = { var = UKRhate value = 50 compare = greater_than_or_equals }
+		NOT = { has_country_flag = UKRhate_threshold_50 }
+	}
+	
+	mean_time_to_happen = { days = 5 }
+	
+	immediate = {
+		set_country_flag = UKRhate_threshold_50
+	}
+	
+	option = {
+		name = ukrainewar.25.a
+		add_war_support = 0.05
+		add_stability = -0.02
+		add_popularity = {
+			ideology = nationalist
+			popularity = 0.03
+		}
+		custom_effect_tooltip = UKRhate50reached
+	}
+}
+
+# События порогов усталости
+country_event = {
+	id = ukrainewar.50
+	title = ukrainewar.50.t
+	desc = ukrainewar.50.d
+	picture = GFX_event_UKR_war_fatigue_up
+	
+	trigger = {
+		tag = UKR
+		has_country_flag = UKR_war_mood_active
+		check_variable = { var = UKRwarfatigue value = 75 compare = greater_than_or_equals }
+		NOT = { has_country_flag = UKRfatigue_threshold_75 }
+	}
+	
+	mean_time_to_happen = { days = 7 }
+	
+	immediate = {
+		set_country_flag = UKRfatigue_threshold_75
+	}
+	
+	option = {
+		name = ukrainewar.50.a
+		add_war_support = -0.11
+		add_stability = -0.07
+		add_popularity = {
+			ideology = social_democrat
+			popularity = 0.04
+		}
+		custom_effect_tooltip = UKRfatigue75reached
+	}
+}
+
+# Потеря столицы - Киева
+country_event = {
+	id = ukrainewar.100
+	title = ukrainewar.100.t
+	desc = ukrainewar.100.d
+	picture = GFX_event_UKR_war_Kyiv_lost
+    
+	fire_only_once = yes
+	is_triggered_only = yes
+    
+	trigger = {
+		tag = UKR
+		has_country_flag = UKR_war_mood_active
+		has_war_with = SOV
+	}
+	
+    
+	option = {
+		name = ukrainewar.100.a
+		add_war_support = -0.15
+		add_stability = -0.20
+		custom_effect_tooltip = UKR_kiev_lost_tt
+		UKR_update_hate_spirit = yes
+    	UKR_update_fatigue_spirit = yes
+	}
+	option = {
+		name = ukrainewar.100.b
+		trigger = { has_political_power > 50 }
+		add_political_power = -50
+		add_war_support = -0.012
+		add_stability = -0.08
+		custom_effect_tooltip = UKR_kiev_emergency_measures_tt
+		UKR_update_hate_spirit = yes
+    	UKR_update_fatigue_spirit = yes
+	}
+}
+
+# Потеря Харькова
+country_event = {
+	id = ukrainewar.101
+	title = ukrainewar.101.t
+	desc = ukrainewar.101.d
+	picture = GFX_event_UKR_war_Kharkov_lost
+	
+	fire_only_once = yes
+	is_triggered_only = yes
+	
+	trigger = {
+		tag = UKR
+		has_country_flag = UKR_war_mood_active
+		NOT = { controls_state = 221 }
+		has_war_with = SOV
+	}
+	
+	# Организовать эвакуацию
+	option = {
+		name = ukrainewar.101.a
+		add_political_power = -25
+		set_temp_variable = { var = income_var_temp value = -0.45 }
+		add_income = yes
+		add_to_variable = { var = UKRhate value = 4 }
+		add_to_variable = { var = UKRwarfatigue value = 3 }
+		add_war_support = -0.04
+		add_stability = -0.02
+		add_manpower = 8000
+		force_update_dynamic_modifier = yes
+		custom_effect_tooltip = UKR_kharkiv_evacuation_tt
+	}
+	
+	# Проклинать врага
+	option = {
+		name = ukrainewar.101.b
+		add_to_variable = { var = UKRhate value = 6 }
+		add_to_variable = { var = UKRwarfatigue value = 5 }
+		add_war_support = -0.06
+		add_stability = -0.05
+		force_update_dynamic_modifier = yes
+		custom_effect_tooltip = UKR_kharkiv_lost_tt
+	}
+}
+
+# Потеря Сум
+country_event = {
+	id = ukrainewar.102
+	title = ukrainewar.102.t
+	desc = ukrainewar.102.d
+	picture = GFX_event_UKR_war_Sum_lost
+	
+	fire_only_once = yes
+	is_triggered_only = yes
+	
+	trigger = {
+		tag = UKR
+		has_country_flag = UKR_war_mood_active
+		NOT = { controls_state = 225 }
+		has_war_with = SOV
+	}
+	
+	# Организовать эвакуацию
+	option = {
+		name = ukrainewar.102.a
+		add_political_power = -20
+		set_temp_variable = { var = income_var_temp value = -0.35 }
+		add_income = yes
+		add_to_variable = { var = UKRhate value = 3 }
+		add_to_variable = { var = UKRwarfatigue value = 2 }
+		add_war_support = -0.03
+		add_stability = -0.02
+		add_manpower = 3500
+		force_update_dynamic_modifier = yes
+		custom_effect_tooltip = UKR_sumy_evacuation_tt
+	}
+	
+	# Проклинать врага
+	option = {
+		name = ukrainewar.102.b
+		add_to_variable = { var = UKRhate value = 6 }
+		add_to_variable = { var = UKRwarfatigue value = 5 }
+		add_war_support = -0.06
+		add_stability = -0.05
+		force_update_dynamic_modifier = yes
+		custom_effect_tooltip = UKR_sumy_lost_tt
+	}
+}
+
+# Потеря Чернигова
+country_event = {
+	id = ukrainewar.103
+	title = ukrainewar.103.t
+	desc = ukrainewar.103.d
+	picture = GFX_event_UKR_war_Chernigov_lost
+	
+	fire_only_once = yes
+	is_triggered_only = yes
+	
+	trigger = {
+		tag = UKR
+		has_country_flag = UKR_war_mood_active
+		NOT = { controls_state = 193 }
+		has_war_with = SOV
+	}
+	
+	# Организовать эвакуацию
+	option = {
+		name = ukrainewar.103.a
+		add_political_power = -30
+		set_temp_variable = { var = income_var_temp value = -0.4 }
+		add_income = yes
+		add_to_variable = { var = UKRhate value = 4 }
+		add_to_variable = { var = UKRwarfatigue value = 2 }
+		add_war_support = -0.04
+		add_stability = -0.02
+		add_manpower = 4000
+		force_update_dynamic_modifier = yes
+		custom_effect_tooltip = UKR_chernihiv_evacuation_tt
+	}
+	
+	# Проклинать врага
+	option = {
+		name = ukrainewar.103.b
+		add_to_variable = { var = UKRhate value = 6 }
+		add_to_variable = { var = UKRwarfatigue value = 4 }
+		add_war_support = -0.06
+		add_stability = -0.04
+		force_update_dynamic_modifier = yes
+		custom_effect_tooltip = UKR_chernihiv_lost_tt
+	}
+}
+
+# Потеря Запорожья
+country_event = {
+	id = ukrainewar.104
+	title = ukrainewar.104.t
+	desc = ukrainewar.104.d
+	picture = GFX_event_UKR_war_Zaporozhye_lost
+	
+	fire_only_once = yes
+	is_triggered_only = yes
+	
+	trigger = {
+		tag = UKR
+		has_country_flag = UKR_war_mood_active
+		NOT = { controls_state = 200 }
+		has_war_with = SOV
+	}
+	
+	# Организовать эвакуацию
+	option = {
+		name = ukrainewar.104.a
+		add_political_power = -30
+		set_temp_variable = { var = income_var_temp value = -0.75 }
+		add_income = yes
+		add_to_variable = { var = UKRhate value = 6 }
+		add_to_variable = { var = UKRwarfatigue value = 5 }
+		add_war_support = -0.06
+		add_stability = -0.05
+		add_manpower = 9000
+		force_update_dynamic_modifier = yes
+		custom_effect_tooltip = UKR_zaporizhzhia_evacuation_tt
+	}
+	
+	# Проклинать врага
+	option = {
+		name = ukrainewar.104.b
+		add_to_variable = { var = UKRhate value = 9 }
+		add_to_variable = { var = UKRwarfatigue value = 8 }
+		add_war_support = -0.09
+		add_stability = -0.08
+		force_update_dynamic_modifier = yes
+		custom_effect_tooltip = UKR_zaporizhzhia_lost_tt
+	}
+}
+
+# Потеря Херсона
+country_event = {
+	id = ukrainewar.105
+	title = ukrainewar.105.t
+	desc = ukrainewar.105.d
+	picture = GFX_event_UKR_war_Kherson_lost
+	
+	fire_only_once = yes
+	is_triggered_only = yes
+	
+	trigger = {
+		tag = UKR
+		has_country_flag = UKR_war_mood_active
+		NOT = { controls_state = 196 }
+		has_war_with = SOV
+	}
+	
+	# Организовать эвакуацию
+	option = {
+		name = ukrainewar.105.a
+		add_political_power = -20
+		set_temp_variable = { var = income_var_temp value = -0.6 }
+		add_income = yes
+		add_to_variable = { var = UKRhate value = 7 }
+		add_to_variable = { var = UKRwarfatigue value = 5 }
+		add_war_support = -0.07
+		add_stability = -0.05
+		add_manpower = 4850
+		force_update_dynamic_modifier = yes
+		custom_effect_tooltip = UKR_kherson_evacuation_tt
+	}
+	
+	# Проклинать врага
+	option = {
+		name = ukrainewar.105.b
+		add_to_variable = { var = UKRhate value = 9 }
+		add_to_variable = { var = UKRwarfatigue value = 5 }
+		add_war_support = -0.09
+		add_stability = -0.05
+		force_update_dynamic_modifier = yes
+		custom_effect_tooltip = UKR_kherson_lost_tt
+	}
+}
+
+# Потеря Днепра
+country_event = {
+	id = ukrainewar.106
+	title = ukrainewar.106.t
+	desc = ukrainewar.106.d
+	picture = GFX_event_UKR_war_Dnipro_lost
+	
+	fire_only_once = yes
+	is_triggered_only = yes
+	
+	trigger = {
+		tag = UKR
+		has_country_flag = UKR_war_mood_active
+		NOT = { controls_state = 226 }
+		has_war_with = SOV
+	}
+	
+	# Организовать эвакуацию
+	option = {
+		name = ukrainewar.106.a
+		add_political_power = -35
+		set_temp_variable = { var = income_var_temp value = -1.0 }
+		add_income = yes
+		add_to_variable = { var = UKRhate value = 10 }
+		add_to_variable = { var = UKRwarfatigue value = 7 }
+		add_war_support = -0.10
+		add_stability = -0.07
+		add_manpower = 14500
+		force_update_dynamic_modifier = yes
+		custom_effect_tooltip = UKR_dnipro_evacuation_tt
+	}
+	
+	# Проклинать врага
+	option = {
+		name = ukrainewar.106.b
+		add_to_variable = { var = UKRhate value = 13 }
+		add_to_variable = { var = UKRwarfatigue value = 11 }
+		add_war_support = -0.13
+		add_stability = -0.11
+		force_update_dynamic_modifier = yes
+		custom_effect_tooltip = UKR_dnipro_lost_tt
+	}
+}
+
+# Потеря Житомира
+country_event = {
+	id = ukrainewar.107
+	title = ukrainewar.107.t
+	desc = ukrainewar.107.d
+	picture = GFX_event_UKR_war_Zhytomyr_lost
+	
+	fire_only_once = yes
+	is_triggered_only = yes
+	
+	trigger = {
+		tag = UKR
+		has_country_flag = UKR_war_mood_active
+		NOT = { controls_state = 201 }
+		has_war_with = SOV
+	}
+	
+	# Организовать эвакуацию
+	option = {
+		name = ukrainewar.107.a
+		add_political_power = -20
+		set_temp_variable = { var = income_var_temp value = -0.55 }
+		add_income = yes
+		add_to_variable = { var = UKRhate value = 3 }
+		add_to_variable = { var = UKRwarfatigue value = 2 }
+		add_war_support = -0.03
+		add_stability = -0.02
+		add_manpower = 4800
+		force_update_dynamic_modifier = yes
+		custom_effect_tooltip = UKR_zhytomyr_evacuation_tt
+	}
+	
+	# Проклинать врага
+	option = {
+		name = ukrainewar.107.b
+		add_to_variable = { var = UKRhate value = 6 }
+		add_to_variable = { var = UKRwarfatigue value = 5 }
+		add_war_support = -0.06
+		add_stability = -0.05
+		force_update_dynamic_modifier = yes
+		custom_effect_tooltip = UKR_zhytomyr_lost_tt
+	}
+}
+
+# Потеря Одессы
+country_event = {
+	id = ukrainewar.108
+	title = ukrainewar.108.t
+	desc = ukrainewar.108.d
+	picture = GFX_event_UKR_war_Odessa_lost
+	
+	fire_only_once = yes
+	is_triggered_only = yes
+	
+	trigger = {
+		tag = UKR
+		has_country_flag = UKR_war_mood_active
+		NOT = { controls_state = 192 }
+		has_war_with = SOV
+	}
+	
+	# Организовать эвакуацию
+	option = {
+		name = ukrainewar.108.a
+		add_political_power = -40
+		set_temp_variable = { var = income_var_temp value = -1.1 }
+		add_income = yes
+		add_to_variable = { var = UKRhate value = 8 }
+		add_to_variable = { var = UKRwarfatigue value = 6 }
+		add_war_support = -0.08
+		add_stability = -0.06
+		add_manpower = 13000
+		force_update_dynamic_modifier = yes
+		custom_effect_tooltip = UKR_odesa_evacuation_tt
+	}
+	
+	# Проклинать врага
+	option = {
+		name = ukrainewar.108.b
+		add_to_variable = { var = UKRhate value = 11 }
+		add_to_variable = { var = UKRwarfatigue value = 10 }
+		add_war_support = -0.11
+		add_stability = -0.10
+		force_update_dynamic_modifier = yes
+		custom_effect_tooltip = UKR_odesa_lost_tt
+	}
+}
+
+# Потеря Львова
+country_event = {
+	id = ukrainewar.109
+	title = ukrainewar.109.t
+	desc = ukrainewar.109.d
+	picture = GFX_event_UKR_war_Lviv_lost
+	
+	fire_only_once = yes
+	is_triggered_only = yes
+	
+	trigger = {
+		tag = UKR
+		has_country_flag = UKR_war_mood_active
+		NOT = { controls_state = 91 }
+		has_war_with = SOV
+	}
+	
+	# Организовать эвакуацию
+	option = {
+		name = ukrainewar.109.a
+		add_political_power = -35
+		set_temp_variable = { var = income_var_temp value = -1 }
+		add_income = yes
+		add_to_variable = { var = UKRhate value = 12 }
+		add_to_variable = { var = UKRwarfatigue value = 11 }
+		add_war_support = -0.12
+		add_stability = -0.11
+		add_manpower = 11000
+		force_update_dynamic_modifier = yes
+		custom_effect_tooltip = UKR_lviv_evacuation_tt
+	}
+	
+	# Проклинать врага
+	option = {
+		name = ukrainewar.109.b
+		add_to_variable = { var = UKRhate value = 15 }
+		add_to_variable = { var = UKRwarfatigue value = 12 }
+		add_war_support = -0.15
+		add_stability = -0.12
+		force_update_dynamic_modifier = yes
+		custom_effect_tooltip = UKR_lviv_lost_tt
+	}
+}
+
+
+
+# При бомбардировке гражданской инфраструктуры
+country_event = {
+	id = ukrainewar.300
+	title = ukrainewar.300.t
+	desc = ukrainewar.300.d
+	picture = GFX_event_UKR_war_fatigue
+	
+	trigger = {
+		tag = UKR
+		has_country_flag = UKR_war_mood_active
+		# Триггер на урон от стратегических бомбардировок
+		any_owned_state = {
+			damage_building = { building = infrastructure level > 3 }
+		}
+		has_war_with = SOV
+	}
+	
+	mean_time_to_happen = { days = 15 }
+	
+	option = {
+		name = ukrainewar.300.a
+		add_to_variable = { var = UKRhate value = 6 }
+		add_to_variable = { var = UKRwarfatigue value = 5 }
+		UKR_update_hate_spirit = yes
+    	UKR_update_fatigue_spirit = yes
+		add_war_support = -0.01
+		add_stability = -0.03
+		force_update_dynamic_modifier = yes
+	}
+}
+
+# При успешной мобилизационной волне
+country_event = {
+	id = ukrainewar.310
+	title = ukrainewar.310.t
+	desc = ukrainewar.310.d
+	picture = GFX_event_UKR_successful_mobilization
+	
+	trigger = {
+		tag = UKR
+		has_country_flag = UKR_war_mood_active
+		has_country_flag = UKRfirstmobilizationcompleted
+		has_war_with = SOV
+	}
+	
+	mean_time_to_happen = { days = 35 }
+	
+	option = {
+		name = ukrainewar.310.a
+		add_to_variable = { var = UKRhate value = 3 }
+		add_to_variable = { var = UKRwarfatigue value = 3 }
+		UKR_update_hate_spirit = yes
+    	UKR_update_fatigue_spirit = yes
+		add_manpower = 10000
+		force_update_dynamic_modifier = yes
+	}
+}

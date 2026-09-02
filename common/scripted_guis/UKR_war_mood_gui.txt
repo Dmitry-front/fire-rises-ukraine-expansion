@@ -1,0 +1,123 @@
+scripted_gui = {
+    
+    # Основной GUI для отображения в категории решений
+    UKR_war_mood_display_gui = {
+        context_type = decision_category
+        
+        window_name = "UKR_war_mood_bars_window"
+        
+        parent_window_token = decision_category_entry
+        
+        visible = {
+            FROM = {
+                check_variable = { var = UKRhate value = 0 compare = greater_than_or_equals }
+            }
+        }
+        
+        # Кружки-индикаторы для ненависти - стадия 0 (0-24)
+        UKR_hate_marker_0 = {
+            visible = {
+                FROM = { always = yes }
+            }
+            click_enabled = { always = no }
+            ai_will_do = { factor = 0 }
+        }
+        
+        # Стадия 1 (25-49)
+        UKR_hate_marker_1 = {
+            visible = {
+                FROM = {
+                    check_variable = { var = UKRhate value = 25 compare = greater_than_or_equals }
+                }
+            }
+            click_enabled = { always = no }
+            ai_will_do = { factor = 0 }
+        }
+        
+        # Стадия 2 (50-74)
+        UKR_hate_marker_2 = {
+            visible = {
+                FROM = {
+                    check_variable = { var = UKRhate value = 50 compare = greater_than_or_equals }
+                }
+            }
+            click_enabled = { always = no }
+            ai_will_do = { factor = 0 }
+        }
+        
+        # Стадия 3 (75-99)
+        UKR_hate_marker_3 = {
+            visible = {
+                FROM = {
+                    check_variable = { var = UKRhate value = 75 compare = greater_than_or_equals }
+                }
+            }
+            click_enabled = { always = no }
+            ai_will_do = { factor = 0 }
+        }
+        
+        # Стадия 4 (100+)
+        UKR_hate_marker_4 = {
+            visible = {
+                FROM = {
+                    check_variable = { var = UKRhate value = 100 compare = greater_than_or_equals }
+                }
+            }
+            click_enabled = { always = no }
+            ai_will_do = { factor = 0 }
+        }
+        
+        # Кружки-индикаторы для усталости - стадия 0 (0-24)
+        UKR_fatigue_marker_0 = {
+            visible = {
+                FROM = { always = yes }
+            }
+            click_enabled = { always = no }
+            ai_will_do = { factor = 0 }
+        }
+        
+        # Стадия 1 (25-49)
+        UKR_fatigue_marker_1 = {
+            visible = {
+                FROM = {
+                    check_variable = { var = UKRwarfatigue value = 25 compare = greater_than_or_equals }
+                }
+            }
+            click_enabled = { always = no }
+            ai_will_do = { factor = 0 }
+        }
+        
+        # Стадия 2 (50-74)
+        UKR_fatigue_marker_2 = {
+            visible = {
+                FROM = {
+                    check_variable = { var = UKRwarfatigue value = 50 compare = greater_than_or_equals }
+                }
+            }
+            click_enabled = { always = no }
+            ai_will_do = { factor = 0 }
+        }
+        
+        # Стадия 3 (75-99)
+        UKR_fatigue_marker_3 = {
+            visible = {
+                FROM = {
+                    check_variable = { var = UKRwarfatigue value = 75 compare = greater_than_or_equals }
+                }
+            }
+            click_enabled = { always = no }
+            ai_will_do = { factor = 0 }
+        }
+        
+        # Стадия 4 (100+)
+        UKR_fatigue_marker_4 = {
+            visible = {
+                FROM = {
+                    check_variable = { var = UKRwarfatigue value = 100 compare = greater_than_or_equals }
+                }
+            }
+            click_enabled = { always = no }
+            ai_will_do = { factor = 0 }
+        }
+    }
+}

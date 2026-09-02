@@ -1,0 +1,486 @@
+# Категория военного настроения
+UKRwarmood = {
+	
+	# Сдерживание злоупотреблений против пленных
+	UKRcontrolwaratrocities = {
+		icon = GFX_decision_generic_army_support
+		
+		available = {
+			has_war_with = SOV
+		}
+		
+		visible = {
+			has_country_flag = UKR_war_mood_active
+		}
+		
+		fire_only_once = no
+		cost = 15
+		days_re_enable = 60
+		
+		complete_effect = {
+			add_to_variable = { var = UKRhate value = -12 }
+			add_war_support = -0.05
+			
+			# Европейские страны одобряют
+			FRA = { add_opinion_modifier = { target = UKR modifier = wartime_restraint } }
+			GER = { add_opinion_modifier = { target = UKR modifier = wartime_restraint } }
+			ENG = { add_opinion_modifier = { target = UKR modifier = wartime_restraint } }
+			POL = { add_opinion_modifier = { target = UKR modifier = wartime_restraint } }
+			
+			force_update_dynamic_modifier = yes
+			custom_effect_tooltip = UKRcontrolwaratrocitiestooltip
+		}
+		
+		ai_will_do = {
+			factor = 5
+			modifier = {
+				factor = 2
+			}
+		}
+	}
+	
+	# Форсированное восстановление после ударов
+	UKRrapidreconstruction = {
+		icon = GFX_decision_generic_construction
+		
+		available = {
+			has_war_with = SOV
+		}
+		
+		visible = {
+			has_country_flag = UKR_war_mood_active
+		}
+		
+		fire_only_once = no
+		cost = 30
+		days_remove = 15
+		days_re_enable = 100
+		
+		modifier = {
+			consumer_goods_factor = 0.02
+			production_speed_buildings_factor = -0.05
+		}
+		
+		remove_effect = {
+			add_political_power = 5
+			add_to_variable = { var = UKRhate value = -1 }
+			add_timed_idea = { 
+				idea = UKRrapidreconstruction_boost
+				days = 45
+			}
+		}
+		
+		complete_effect = {
+			add_to_variable = { var = UKRwarfatigue value = -8 }
+			set_temp_variable = {
+				var = income_var_temp
+				value = -1
+			}
+			add_income = yes
+			add_stability = 0.02
+			force_update_dynamic_modifier = yes
+			custom_effect_tooltip = UKRrapidreconstructiontooltip
+		}
+		
+		ai_will_do = {
+			factor = 8
+			modifier = {
+				factor = 3
+			}
+		}
+	}
+	
+	# Народные кухни и гуманитарка
+	UKRcivilianrelief = {
+		icon = GFX_decision_generic_consumer_goods
+		
+		available = {
+			has_war_with = SOV
+		}
+		
+		visible = {
+			has_country_flag = UKR_war_mood_active
+		}
+		
+		fire_only_once = no
+		cost = 5
+		days_re_enable = 50
+		
+		complete_effect = {
+			add_to_variable = { var = UKRwarfatigue value = -3 }
+			set_temp_variable = {
+				var = income_var_temp
+				value = -0.05
+			}
+			add_income = yes
+			add_stability = 0.03
+			add_popularity = {
+				ideology = social_democrat
+				popularity = 0.01
+			}
+			force_update_dynamic_modifier = yes
+			custom_effect_tooltip = UKRcivilianrelieftooltip
+		}
+		
+		ai_will_do = {
+			factor = 6
+		}
+	}
+	
+	# Информационная кампания "Стойкость"
+	UKRresiliencecampaign = {
+		icon = GFX_decision_generic_nationalism
+		
+		available = {
+			has_war_with = SOV
+		}
+		
+		visible = {
+			has_country_flag = UKR_war_mood_active
+		}
+		
+		fire_only_once = no
+		cost = 25
+		days_remove = 21
+		days_re_enable = 70
+		
+		modifier = {
+			political_power_gain = -0.05
+		}
+		
+		remove_effect = {
+			add_to_variable = { var = UKRwarfatigue value = -5 }
+			add_to_variable = { var = UKRhate value = 2 }
+			add_war_support = 0.03
+			force_update_dynamic_modifier = yes
+		}
+		
+		ai_will_do = {
+			factor = 7
+			modifier = {
+				factor = 2
+			}
+		}
+	}
+	
+	# Мемориалы и почести героям
+	UKRhonorfallen = {
+		icon = GFX_decision_generic_military
+		
+		available = {
+			has_war_with = SOV
+		}
+		
+		visible = {
+			has_country_flag = UKR_war_mood_active
+		}
+		
+		fire_only_once = no
+		cost = 35
+		days_remove = 14
+		days_re_enable = 80
+		
+		remove_effect = {
+			add_to_variable = { var = UKRhate value = 4 }
+			add_to_variable = { var = UKRwarfatigue value = -4 }
+			add_war_support = 0.04
+			add_stability = 0.01
+			add_army_experience = 5
+			force_update_dynamic_modifier = yes
+		}
+		
+		ai_will_do = {
+			factor = 4
+		}
+	}
+
+# Ежемесячный тик военного настроения
+UKRwarmooodmonthlytick = {
+	priority = 20
+	icon = GFX_decision_generic_scorched_earth
+	
+	days_mission_timeout = 30
+	fire_only_once = no
+	is_good = no
+	cancel_if_not_visible = yes
+	
+	visible = {
+		has_country_flag = UKR_war_mood_active
+		has_war_with = SOV
+	}
+	
+	activation = {
+		has_country_flag = UKR_war_mood_active
+		has_war_with = SOV
+	}
+	
+	available = {
+		always = no
+	}
+	
+	selectable_mission = no
+	
+	cancel_trigger = {
+		OR = {
+			NOT = { has_war_with = SOV }
+			NOT = { has_country_flag = UKR_war_mood_active }
+			surrender_progress > 0.99
+		}
+	}
+	
+	timeout_effect = {
+		# Базовый прирост ненависти от войны
+		add_to_variable = { var = UKRhate value = 2 }
+		
+		# Усталость зависит от длительности и ситуации
+		if = {
+			limit = { surrender_progress > 0.3 }
+			add_to_variable = { var = UKRwarfatigue value = 4 }
+		}
+		else_if = {
+			limit = { surrender_progress > 0.15 }
+			add_to_variable = { var = UKRwarfatigue value = 3 }
+		}
+		else = {
+			add_to_variable = { var = UKRwarfatigue value = 2 }
+		}
+		
+		# При нехватке снабжения
+		if = {
+			limit = { has_idea = supply_crisis }
+			add_to_variable = { var = UKRwarfatigue value = 2 }
+		}
+		
+		# При успешных контрнаступлениях
+		if = {
+			limit = { 
+				check_variable = { var = UKRoffensive_momentum value = 5 compare = greater_than }
+			}
+			add_to_variable = { var = UKRhate value = 1 }
+			add_to_variable = { var = UKRwarfatigue value = -1 }
+		}
+		
+		# Проверка максимума
+		if = {
+			limit = { check_variable = { var = UKRhate value = 120 compare = greater_than } }
+			set_variable = { var = UKRhate value = 120 }
+		}
+		if = {
+			limit = { check_variable = { var = UKRwarfatigue value = 120 compare = greater_than } }
+			set_variable = { var = UKRwarfatigue value = 120 }
+		}
+		
+		force_update_dynamic_modifier = yes
+		
+		# Автоматическое продление миссии
+		activate_mission = UKRwarmooodmonthlytick
+	}
+	
+	cancel_effect = {
+		# Переход к послевоенной системе
+		country_event = { id = ukrainewar.200 days = 3 }
+		}
+	}
+
+	# Психологическая помощь ветеранам
+	UKRveteranpsychcare = {
+		icon = GFX_decision_hol_exchange_intelligence_data
+		
+		available = {
+			has_war_with = SOV
+		}
+		
+		visible = {
+			has_country_flag = UKR_war_mood_active
+		}
+		
+		fire_only_once = no
+		cost = 40
+		days_remove = 45
+		days_re_enable = 90
+		
+		remove_effect = {
+			add_to_variable = { var = UKRhate value = -4 }
+			add_to_variable = { var = UKRwarfatigue value = -6 }
+			add_stability = 0.03
+			add_war_support = 0.01
+			set_temp_variable = {
+				var = income_var_temp
+				value = -0.4
+			}
+			add_income = yes
+			force_update_dynamic_modifier = yes
+		}
+		
+		ai_will_do = {
+			factor = 3
+			modifier = {
+				factor = 2
+				check_variable = { var = UKRhate value = 80 compare = greater_than_or_equals }
+			}
+		}
+	}
+
+	# Культурные мероприятия для поддержания морали
+	UKRculturalmoraleboost = {
+		icon = GFX_decision_generic_propaganda
+		
+		available = {
+			has_war_with = SOV
+		}
+		
+		visible = {
+			has_country_flag = UKR_war_mood_active
+		}
+		
+		fire_only_once = no
+		cost = 35
+		days_remove = 30
+		days_re_enable = 90
+		
+		modifier = {
+			stability_weekly = 0.002
+			war_support_weekly = 0.001
+			army_org_factor = 0.05
+		}
+		
+		remove_effect = {
+			add_to_variable = { var = UKRwarfatigue value = -2 }
+			add_stability = 0.02
+			add_war_support = 0.01
+			set_temp_variable = {
+				var = income_var_temp
+				value = -0.2
+			}
+			add_income = yes
+			force_update_dynamic_modifier = yes
+		}
+		
+		ai_will_do = {
+			factor = 5
+		}
+	}
+	# Диверсии любой ценой
+	UKR_sabotage_at_any_cost = {
+		icon = GFX_decision_generic_prepare_civil_war
+		
+		available = {
+			has_war_with = SOV
+			check_variable = { var = UKRhate value = 25 compare = greater_than_or_equals }
+		}
+		
+		visible = {
+			has_country_flag = UKR_war_mood_active
+			check_variable = { var = UKRhate value = 25 compare = greater_than_or_equals }
+		}
+		
+		fire_only_once = no
+		
+		cost = 20
+		
+		days_remove = 60
+		days_re_enable = 120
+
+		custom_cost_trigger = {
+			command_power > 10
+		}
+		custom_cost_text = 10cp_cost
+		
+		modifier = {
+			army_attack_factor = 0.05
+			breakthrough_factor = 0.05
+			army_core_attack_factor = 0.05
+			intelligence_agency_defense = 0.15
+		}
+		
+		targeted_modifier = {
+			tag = SOV
+			attack_bonus_against = -0.08
+			defense_bonus_against = -0.02
+			enemy_operative_detection_chance_over_border_factor = 0.2
+			supply_consumption_factor = 0.30
+		}
+		
+		complete_effect = {
+			add_command_power = -10
+			custom_effect_tooltip = UKR_sabotage_at_any_cost_tooltip
+		}
+		
+		remove_effect = {
+			add_to_variable = { var =  UKRhate value = 4 }
+			add_war_support = -0.05
+			force_update_dynamic_modifier = yes
+			set_temp_variable = {
+				var = income_var_temp
+				value = -0.5
+			}
+			add_income = yes
+		}
+		
+		ai_will_do = {
+			factor = 6
+			modifier = {
+				factor = 2
+				check_variable = { var =  UKRhate value = 90 compare = greater_than_or_equals }
+			}
+		}
+	}
+
+	# Все против врага
+	UKR_everything_against_enemy = {
+		icon = GFX_decision_generic_propaganda
+		
+		available = {
+			has_war_with = SOV
+			check_variable = { var =  UKRhate value = 25 compare = greater_than_or_equals }
+			
+		}
+		
+		visible = {
+			has_war_with = SOV
+			has_country_flag = UKR_war_mood_active
+			check_variable = { var =  UKRhate value = 25 compare = greater_than_or_equals }
+		}
+		
+		fire_only_once = no
+		
+		cost = 75
+		
+		days_re_enable = 185
+		
+		complete_effect = {
+			SOV = {
+				add_timed_idea = {
+					idea = UKR_subversion_campaign
+					days = 180
+				}
+			}
+			add_to_variable = { var =  UKRhate value = 2 }
+			add_war_support = -0.02
+			custom_effect_tooltip = UKR_everything_against_enemy_tooltip
+			force_update_dynamic_modifier = yes
+			set_temp_variable = {
+				var = income_var_temp
+				value = -0.35
+			}
+			add_income = yes
+		}
+		
+		ai_will_do = {
+			factor = 8
+			modifier = {
+				factor = 3
+				check_variable = { var = UKRhate = 100 compare = greater_than_or_equals }
+			}
+			modifier = {
+				factor = 0
+				SOV = {
+					has_idea = UKR_subversion_campaign
+				}
+			}
+		}
+	}
+
+
+
+}

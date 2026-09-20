@@ -1792,19 +1792,17 @@ country_event = {
 
 	trigger = {
 		tag = UKR
+		date > 2020.3.1
 	}
 
-	mean_time_to_happen = { 
+	mean_time_to_happen = {
 		days = 48
-		modifier = {
-			factor = 0.9
-		}
 	}
-	
+
 	option = {
 		name = ukraine.400.a
 		add_timed_idea = {
-			ideas = UKR_covid_crisis
+			idea = UKR_covid_crisis
 			days = 730
 		}
 		set_country_flag = UKR_COVID_ongoing
@@ -1817,21 +1815,18 @@ country_event = {
 	title = ukraine.401.t
 	desc = ukraine.401.d
 	picture = GFX_Generic_COVID1
-	
+
 	is_triggered_only = yes
 
 	trigger = {
-		tag = UKR
-		UKR = {
-			has_country_flag = UKR_COVID_ongoing
-			date > 2022.01.01
-		}
+		has_country_flag = UKR_COVID_ongoing
 	}
-	
+
 	option = {
 		name = ukraine.401.a
 		remove_ideas = UKR_covid_crisis
 		clr_country_flag = UKR_COVID_ongoing
+		clr_country_flag = UKR_covid_decisions_unlocked
 		custom_effect_tooltip = UKR_covid_over_tt
 	}
 }

@@ -29,7 +29,7 @@
 ### Не ломать чужие файлы
 - Файлы с именами, как в TFR (`TFR_events_UKR.txt`, `TFR_national_focus_UKR.txt`, `TFR_country_localisation_UKR_l_*.yml`, `TFR_characters_UKR.txt`, …), **намеренно полностью заменяют** оригиналы TFR. Это модифицированные копии, их можно править.
 - **Другие страны (SOV, BLR, POL, NATO …) не трогаем в их файлах.** Их реакции делаем событиями в наших файлах, которые вызываются из UKR (`SOV = { country_event = … }`). С Беларусью планируется много взаимодействий.
-- Референсы `common/national_focus/Reference_TFR_national_focus_SOV.txt` и `events/Reference_TFR_events_SOV.txt` — **только для чтения**. Это копии TFR, по ним смотрим стиль и TFR-эффекты. Ничего в них не меняем и не ссылаемся на них как на наш контент. Если нужен ещё референс — попросить у автора.
+- Референсы лежат в `_reference/` (`Reference_TFR_national_focus_SOV.txt`, `Reference_TFR_events_SOV.txt`) — **только для чтения**. Папка вне игровых путей, игра её не загружает; класть референсы только туда. Это копии TFR, по ним смотрим стиль и TFR-эффекты. Ничего в них не меняем и не ссылаемся на них как на наш контент. Если нужен ещё референс — попросить у автора.
 
 ### Префиксы и ID
 - Всё новое — с префиксом `UKR_` (фокусы, идеи, решения, флаги, переменные, модификаторы, scripted effects/triggers). Персонажи — `UKR_имя_фамилия`.
@@ -73,7 +73,7 @@
 - Динамические модификаторы (`add_dynamic_modifier`) и `set_temp_variable` для расчётов в тултипах.
 
 ### Механики сабмода
-- **Военный настрой:** переменные `UKRhate` и `UKRwarfatigue`, флаг `UKR_war_mood_active`. Код лежит в `common/scripted_effects/UKR_war_*`, `common/scripted_guis/UKR_war_mood_gui.txt`, `common/dynamic_modifiers/`, `common/on_actions/TFR_on_actions_UKR.txt`, `events/TFR_events_UKR_war.txt`, `events/UKR_war_mood_ui_update.txt`. Идеи — `UKR_war_spirit_hate_*` и `UKR_war_spirit_fatigue_*`.
+- **Военный настрой:** переменные `UKRhate` и `UKRwarfatigue` (0–100), флаг `UKR_war_mood_active`. Меняем только переменные — духи `UKR_war_spirit_*` синхронизируются сами раз в день (`on_daily` → `UKR_update_hate_spirit` / `UKR_update_fatigue_spirit`, уровни в `UKRhate_level` / `UKRwarfatigue_level`). Код лежит в `common/scripted_effects/UKR_war_*`, `common/scripted_guis/UKR_war_mood_gui.txt`, `common/dynamic_modifiers/`, `common/on_actions/TFR_on_actions_UKR.txt`, `events/TFR_events_UKR_war.txt`, `events/UKR_war_mood_ui_update.txt`. Идеи — `UKR_war_spirit_hate_*` и `UKR_war_spirit_fatigue_*`.
 - **Мобилизация:** решения `UKR_*_mobilization_wave` и `UKR_establish_border_defense_system`.
 
 ### Локализация
@@ -93,12 +93,16 @@ common/decisions/TFR_decisions_UKR*.txt           — решения (земля
 common/ideas/TFR_ideas_UKR*.txt                   — идеи
 common/characters/TFR_characters_UKR.txt          — персонажи
 history/countries/UKR - Ukraine.txt               — старт 2020: техи, партии, влияние, персонажи
+_reference/                                       — референсы TFR (только чтение, не грузится игрой)
+_tools/audit.py                                   — статический аудит мода
 events/TFR_events_UKR*.txt, TFR_events_BLR.txt, TFR_events_Baltic.txt, TFR_events_SOV_UKR.txt
 interface/*.gfx, *.gui, gfx/…                     — спрайты и GUI настроя
 localisation/{russian,english}/
 ```
 
 ## Проверки перед коммитом
+Автоматически: `python3 _tools/audit.py` (скобки, дубли ID, несуществующие события/идеи/GFX, локализация). Папки `_reference/` и `_tools/` игрой не загружаются.
+
 1. Баланс `{}` в изменённых файлах.
 2. Нет дублей ID фокусов, событий и ключей локализации.
 3. Все `country_event`, `add_ideas`, `GFX_*`, `has_country_flag` и т. п. ссылаются на существующие объекты (или объекты из TFR — уточнить по референсу).

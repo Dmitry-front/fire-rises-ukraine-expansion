@@ -3,15 +3,26 @@ country_event = {
 	id = ukrainewar.200
 	title = ukrainewar.200.t
 	desc = ukrainewar.200.d
-	picture = GFXreporteventukrainiancivilwar
+	picture = GFX_report_event_ukrainian_civil_war
 	
 	fire_only_once = yes
 	is_triggered_only = yes
 	
 	immediate = {
 		clr_country_flag = UKR_war_mood_active
-		remove_dynamic_modifier = { modifier = UKR_hate_dynamic }
-		remove_dynamic_modifier = { modifier = UKR_war_fatigue_dynamic }
+		# Снимаем военные духи ненависти и усталости
+		remove_ideas = {
+			UKR_war_spirit_hate_0
+			UKR_war_spirit_hate_25
+			UKR_war_spirit_hate_50
+			UKR_war_spirit_hate_75
+			UKR_war_spirit_hate_100
+			UKR_war_spirit_fatigue_0
+			UKR_war_spirit_fatigue_25
+			UKR_war_spirit_fatigue_50
+			UKR_war_spirit_fatigue_75
+			UKR_war_spirit_fatigue_100
+		}
 		
 		# Конверсия в послевоенные идеи
 		if = {

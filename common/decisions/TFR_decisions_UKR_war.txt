@@ -1,8 +1,8 @@
 # Категория военного настроения
-UKRwarmood = {
+UKR_war_mood_category = {
 	
 	# Сдерживание злоупотреблений против пленных
-	UKRcontrolwaratrocities = {
+	UKR_control_war_atrocities = {
 		icon = GFX_decision_generic_army_support
 		
 		available = {
@@ -28,7 +28,7 @@ UKRwarmood = {
 			POL = { add_opinion_modifier = { target = UKR modifier = wartime_restraint } }
 			
 			force_update_dynamic_modifier = yes
-			custom_effect_tooltip = UKRcontrolwaratrocitiestooltip
+			custom_effect_tooltip = UKR_control_war_atrocities_tt
 		}
 		
 		ai_will_do = {
@@ -40,7 +40,7 @@ UKRwarmood = {
 	}
 	
 	# Форсированное восстановление после ударов
-	UKRrapidreconstruction = {
+	UKR_rapid_reconstruction = {
 		icon = GFX_decision_generic_construction
 		
 		available = {
@@ -65,7 +65,7 @@ UKRwarmood = {
 			add_political_power = 5
 			add_to_variable = { var = UKRhate value = -1 }
 			add_timed_idea = { 
-				idea = UKRrapidreconstruction_boost
+				idea = UKR_rapid_reconstruction_boost
 				days = 45
 			}
 		}
@@ -79,7 +79,7 @@ UKRwarmood = {
 			add_income = yes
 			add_stability = 0.02
 			force_update_dynamic_modifier = yes
-			custom_effect_tooltip = UKRrapidreconstructiontooltip
+			custom_effect_tooltip = UKR_rapid_reconstruction_tt
 		}
 		
 		ai_will_do = {
@@ -91,7 +91,7 @@ UKRwarmood = {
 	}
 	
 	# Народные кухни и гуманитарка
-	UKRcivilianrelief = {
+	UKR_civilian_relief = {
 		icon = GFX_decision_generic_consumer_goods
 		
 		available = {
@@ -119,7 +119,7 @@ UKRwarmood = {
 				popularity = 0.01
 			}
 			force_update_dynamic_modifier = yes
-			custom_effect_tooltip = UKRcivilianrelieftooltip
+			custom_effect_tooltip = UKR_civilian_relief_tt
 		}
 		
 		ai_will_do = {
@@ -128,7 +128,7 @@ UKRwarmood = {
 	}
 	
 	# Информационная кампания "Стойкость"
-	UKRresiliencecampaign = {
+	UKR_resilience_campaign = {
 		icon = GFX_decision_generic_nationalism
 		
 		available = {
@@ -164,7 +164,7 @@ UKRwarmood = {
 	}
 	
 	# Мемориалы и почести героям
-	UKRhonorfallen = {
+	UKR_honor_fallen = {
 		icon = GFX_decision_generic_military
 		
 		available = {
@@ -195,7 +195,7 @@ UKRwarmood = {
 	}
 
 # Ежемесячный тик военного настроения
-UKRwarmooodmonthlytick = {
+UKR_war_mood_monthly_tick = {
 	priority = 20
 	icon = GFX_decision_generic_scorched_earth
 	
@@ -254,7 +254,7 @@ UKRwarmooodmonthlytick = {
 		# При успешных контрнаступлениях
 		if = {
 			limit = { 
-				check_variable = { var = UKRoffensive_momentum value = 5 compare = greater_than }
+				has_idea = UKR_offensive_momentum
 			}
 			add_to_variable = { var = UKRhate value = 1 }
 			add_to_variable = { var = UKRwarfatigue value = -1 }
@@ -273,7 +273,7 @@ UKRwarmooodmonthlytick = {
 		force_update_dynamic_modifier = yes
 		
 		# Автоматическое продление миссии
-		activate_mission = UKRwarmooodmonthlytick
+		activate_mission = UKR_war_mood_monthly_tick
 	}
 	
 	cancel_effect = {
@@ -283,7 +283,7 @@ UKRwarmooodmonthlytick = {
 	}
 
 	# Психологическая помощь ветеранам
-	UKRveteranpsychcare = {
+	UKR_veteran_psych_care = {
 		icon = GFX_decision_hol_exchange_intelligence_data
 		
 		available = {
@@ -322,7 +322,7 @@ UKRwarmooodmonthlytick = {
 	}
 
 	# Культурные мероприятия для поддержания морали
-	UKRculturalmoraleboost = {
+	UKR_cultural_morale_boost = {
 		icon = GFX_decision_generic_propaganda
 		
 		available = {

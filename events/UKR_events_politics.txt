@@ -1094,7 +1094,7 @@ country_event = {
 		set_country_flag = UKR_second_term
 		add_stability = 0.05
 		add_political_power = 50
-		# Блок 3: дерево выбранной опоры. Пока написан только путь технократов
+		# Блок 3: дерево выбранной опоры. Написаны пути технократов и левых
 		if = {
 			limit = { has_country_flag = UKR_pillar_chosen_technocrats }
 			load_focus_tree = {
@@ -1102,6 +1102,14 @@ country_event = {
 				keep_completed = yes
 			}
 			country_event = { id = ukraine_politics.400 days = 1 }
+		}
+		else_if = {
+			limit = { has_country_flag = UKR_pillar_chosen_left }
+			load_focus_tree = {
+				tree = UKR_block3_left
+				keep_completed = yes
+			}
+			country_event = { id = ukraine_politics.500 days = 1 }
 		}
 	}
 }
@@ -1311,5 +1319,623 @@ country_event = {
 		name = ukraine_politics.406.a
 		add_stability = 0.02
 		add_political_power = 25
+	}
+}
+
+# =====================================================================
+# Блок 3: левая консолидация (500–512) — DESIGN.md, 8.2
+# =====================================================================
+
+# Левая коалиция: старт пути
+country_event = {
+	id = ukraine_politics.500
+	title = ukraine_politics.500.t
+	desc = ukraine_politics.500.d
+	picture = GFX_report_event_ukrainian_civil_war
+
+	is_triggered_only = yes
+
+	trigger = {
+		tag = UKR
+	}
+
+	# Старт
+	option = {
+		name = ukraine_politics.500.a
+		add_political_power = 30
+	}
+}
+
+# Съезд левых сил: на кого опереться
+country_event = {
+	id = ukraine_politics.501
+	title = ukraine_politics.501.t
+	desc = ukraine_politics.501.d
+	picture = GFX_UKR_rada_oligarchy
+
+	is_triggered_only = yes
+
+	trigger = {
+		tag = UKR
+	}
+
+	# Профсоюзы
+	option = {
+		name = ukraine_politics.501.a
+		add_stability = 0.02
+		custom_effect_tooltip = UKR_lf_unions_up_tt
+		hidden_effect = {
+			add_to_variable = { UKR_lf_unions = 15 }
+			UKR_clamp_left_factions = yes
+		}
+		ai_chance = { factor = 40 }
+	}
+
+	# Социалисты
+	option = {
+		name = ukraine_politics.501.b
+		add_popularity = { ideology = social_democrat popularity = 0.02 }
+		custom_effect_tooltip = UKR_lf_socialists_up_tt
+		hidden_effect = {
+			add_to_variable = { UKR_lf_socialists = 15 }
+			UKR_clamp_left_factions = yes
+		}
+		ai_chance = { factor = 35 }
+	}
+
+	# Анархисты
+	option = {
+		name = ukraine_politics.501.c
+		add_war_support = 0.02
+		custom_effect_tooltip = UKR_lf_anarchists_up_tt
+		hidden_effect = {
+			add_to_variable = { UKR_lf_anarchists = 15 }
+			UKR_clamp_left_factions = yes
+		}
+		ai_chance = { factor = 15 }
+	}
+
+	# Радикальные коммунисты
+	option = {
+		name = ukraine_politics.501.e
+		add_political_power = 30
+		custom_effect_tooltip = UKR_lf_communists_up_tt
+		hidden_effect = {
+			add_to_variable = { UKR_lf_communists = 15 }
+			UKR_clamp_left_factions = yes
+		}
+		custom_effect_tooltip = UKR_european_influence_down_tt
+		hidden_effect = {
+			add_to_variable = { European_Influence = -0.01 }
+			clamp_variable = { var = European_Influence min = 0 max = 1 }
+		}
+		ai_chance = { factor = 10 }
+	}
+}
+
+# Трудовой кодекс в Раде
+country_event = {
+	id = ukraine_politics.502
+	title = ukraine_politics.502.t
+	desc = ukraine_politics.502.d
+	picture = GFX_UKR_rada_oligarchy
+
+	is_triggered_only = yes
+
+	trigger = {
+		tag = UKR
+	}
+
+	# Кодекс профсоюзов
+	option = {
+		name = ukraine_politics.502.a
+		set_temp_variable = {
+			var = society_development_var_temp
+			value = 0.05
+		}
+		add_society_development = yes
+		set_temp_variable = {
+			var = poverty_development_var_temp
+			value = 0.05
+		}
+		add_poverty_development = yes
+		set_temp_variable = {
+			var = income_var_temp
+			value = -3
+		}
+		add_income_with_inflation = yes
+		add_power_balance_value = {
+			id = UKR_left_dualism_balance
+			value = -0.1
+		}
+		custom_effect_tooltip = UKR_lf_unions_up_tt
+		hidden_effect = {
+			add_to_variable = { UKR_lf_unions = 10 }
+			UKR_clamp_left_factions = yes
+		}
+		hidden_effect = {
+			add_to_variable = { UKR_left_lean = 3 }
+			UKR_clamp_leans = yes
+		}
+		ai_chance = { factor = 60 }
+	}
+
+	# Компромисс с бизнесом
+	option = {
+		name = ukraine_politics.502.b
+		set_temp_variable = {
+			var = society_development_var_temp
+			value = 0.03
+		}
+		add_society_development = yes
+		add_political_power = 25
+		add_power_balance_value = {
+			id = UKR_left_dualism_balance
+			value = 0.05
+		}
+		hidden_effect = {
+			add_to_variable = { UKR_lf_unions = -5 }
+			UKR_clamp_left_factions = yes
+		}
+		ai_chance = { factor = 40 }
+	}
+}
+
+# Имущество ФПУ (по версии СМИ)
+country_event = {
+	id = ukraine_politics.503
+	title = ukraine_politics.503.t
+	desc = ukraine_politics.503.d
+	picture = GFX_UKR_big_corruption_scandal
+
+	is_triggered_only = yes
+
+	trigger = {
+		tag = UKR
+	}
+
+	# Реформировать вместе с независимыми профсоюзами
+	option = {
+		name = ukraine_politics.503.a
+		add_political_power = -50
+		add_stability = -0.02
+		custom_effect_tooltip = UKR_lf_socialists_up_tt
+		hidden_effect = {
+			add_to_variable = { UKR_lf_unions = -5 }
+			add_to_variable = { UKR_lf_socialists = 5 }
+			add_to_variable = { UKR_lf_anarchists = 5 }
+			UKR_clamp_left_factions = yes
+		}
+		hidden_effect = {
+			add_to_variable = { UKR_left_lean = 2 }
+			UKR_clamp_leans = yes
+		}
+		ai_chance = { factor = 45 }
+	}
+
+	# Договориться с руководством ФПУ
+	option = {
+		name = ukraine_politics.503.b
+		add_stability = 0.03
+		custom_effect_tooltip = UKR_lf_unions_up_tt
+		hidden_effect = {
+			add_to_variable = { UKR_lf_unions = 10 }
+			add_to_variable = { UKR_lf_socialists = -5 }
+			UKR_clamp_left_factions = yes
+		}
+		hidden_effect = {
+			add_to_variable = { UKR_authoritarian_lean = 2 }
+			UKR_clamp_leans = yes
+		}
+		ai_chance = { factor = 55 }
+	}
+}
+
+# Брюссель обеспокоен национализацией
+country_event = {
+	id = ukraine_politics.504
+	title = ukraine_politics.504.t
+	desc = ukraine_politics.504.d
+	picture = GFX_report_event_ukrainian_civil_war
+
+	is_triggered_only = yes
+
+	trigger = {
+		tag = UKR
+	}
+
+	# Временная мера
+	option = {
+		name = ukraine_politics.504.a
+		add_political_power = -40
+		custom_effect_tooltip = UKR_european_influence_up_tt
+		hidden_effect = {
+			add_to_variable = { European_Influence = 0.01 }
+			clamp_variable = { var = European_Influence min = 0 max = 1 }
+		}
+		ai_chance = { factor = 60 }
+	}
+
+	# Наши заводы — наше дело
+	option = {
+		name = ukraine_politics.504.b
+		add_war_support = 0.02
+		custom_effect_tooltip = UKR_european_influence_down_tt
+		hidden_effect = {
+			add_to_variable = { European_Influence = -0.02 }
+			clamp_variable = { var = European_Influence min = 0 max = 1 }
+		}
+		add_power_balance_value = {
+			id = UKR_left_dualism_balance
+			value = -0.05
+		}
+		custom_effect_tooltip = UKR_lf_communists_up_tt
+		hidden_effect = {
+			add_to_variable = { UKR_lf_communists = 5 }
+			UKR_clamp_left_factions = yes
+		}
+		ai_chance = { factor = 40 }
+	}
+}
+
+# Кооператив избрал директора… того же самого
+country_event = {
+	id = ukraine_politics.505
+	title = ukraine_politics.505.t
+	desc = ukraine_politics.505.d
+	picture = GFX_event_UKR_industry_export
+
+	is_triggered_only = yes
+
+	trigger = {
+		tag = UKR
+	}
+
+	# Демократия есть демократия
+	option = {
+		name = ukraine_politics.505.a
+		add_stability = 0.01
+		add_political_power = 10
+		ai_chance = { factor = 60 }
+	}
+
+	# Главное — не кто, а как
+	option = {
+		name = ukraine_politics.505.b
+		custom_effect_tooltip = UKR_lf_unions_up_tt
+		hidden_effect = {
+			add_to_variable = { UKR_lf_unions = 3 }
+			UKR_clamp_left_factions = yes
+		}
+		ai_chance = { factor = 40 }
+	}
+}
+
+# Памятник или профсоюз: конфликт с декоммунизацией
+country_event = {
+	id = ukraine_politics.506
+	title = ukraine_politics.506.t
+	desc = ukraine_politics.506.d
+	picture = GFX_UKR_protest_land_reform
+
+	is_triggered_only = yes
+
+	trigger = {
+		tag = UKR
+	}
+
+	# Закон есть закон
+	option = {
+		name = ukraine_politics.506.a
+		add_stability = 0.01
+		hidden_effect = {
+			add_to_variable = { UKR_lf_communists = -10 }
+			UKR_clamp_left_factions = yes
+		}
+		hidden_effect = {
+			add_to_variable = { UKR_nationalist_lean = 3 }
+			UKR_clamp_leans = yes
+		}
+		ai_chance = { factor = 40 }
+	}
+
+	# Табличка с контекстом
+	option = {
+		name = ukraine_politics.506.b
+		add_political_power = -25
+		custom_effect_tooltip = UKR_lf_socialists_up_tt
+		hidden_effect = {
+			add_to_variable = { UKR_lf_socialists = 5 }
+			UKR_clamp_left_factions = yes
+		}
+		ai_chance = { factor = 45 }
+	}
+
+	# Оставить как есть
+	option = {
+		name = ukraine_politics.506.c
+		add_stability = -0.02
+		add_popularity = { ideology = nationalist popularity = 0.02 }
+		custom_effect_tooltip = UKR_lf_communists_up_tt
+		hidden_effect = {
+			add_to_variable = { UKR_lf_communists = 10 }
+			UKR_clamp_left_factions = yes
+		}
+		hidden_effect = {
+			add_to_variable = { UKR_left_lean = 2 }
+			add_to_variable = { UKR_nationalist_lean = -2 }
+			UKR_clamp_leans = yes
+		}
+		ai_chance = { factor = 15 }
+	}
+}
+
+# Два призыва: спор с националистами за призывную базу
+country_event = {
+	id = ukraine_politics.507
+	title = ukraine_politics.507.t
+	desc = ukraine_politics.507.d
+	picture = GFX_report_event_ukrainian_civil_war
+
+	is_triggered_only = yes
+
+	trigger = {
+		tag = UKR
+	}
+
+	# Общие ветеранские советы
+	option = {
+		name = ukraine_politics.507.a
+		add_manpower = 5000
+		add_political_power = -25
+		add_stability = 0.01
+		ai_chance = { factor = 45 }
+	}
+
+	# Левые батальоны
+	option = {
+		name = ukraine_politics.507.b
+		add_war_support = 0.02
+		add_stability = -0.02
+		add_popularity = { ideology = nationalist popularity = 0.03 }
+		custom_effect_tooltip = UKR_lf_anarchists_up_tt
+		hidden_effect = {
+			add_to_variable = { UKR_lf_anarchists = 5 }
+			add_to_variable = { UKR_lf_socialists = 5 }
+			UKR_clamp_left_factions = yes
+		}
+		hidden_effect = {
+			add_to_variable = { UKR_left_lean = 3 }
+			add_to_variable = { UKR_nationalist_lean = -2 }
+			UKR_clamp_leans = yes
+		}
+		ai_chance = { factor = 35 }
+	}
+
+	# Уступить националистам
+	option = {
+		name = ukraine_politics.507.c
+		army_experience = 10
+		custom_effect_tooltip = UKR_lf_all_down_tt
+		hidden_effect = {
+			add_to_variable = { UKR_lf_unions = -5 }
+			add_to_variable = { UKR_lf_socialists = -5 }
+			add_to_variable = { UKR_lf_anarchists = -5 }
+			add_to_variable = { UKR_lf_communists = -5 }
+			UKR_clamp_left_factions = yes
+		}
+		hidden_effect = {
+			add_to_variable = { UKR_nationalist_lean = 3 }
+			add_to_variable = { UKR_left_lean = -2 }
+			UKR_clamp_leans = yes
+		}
+		ai_chance = { factor = 20 }
+	}
+}
+
+# Рада забирает правительство (край шкалы у Рады)
+country_event = {
+	id = ukraine_politics.508
+	title = ukraine_politics.508.t
+	desc = ukraine_politics.508.d
+	picture = GFX_UKR_rada_oligarchy
+
+	is_triggered_only = yes
+
+	trigger = {
+		tag = UKR
+	}
+
+	# Парламентская республика
+	option = {
+		name = ukraine_politics.508.a
+		change_government_type_parliamentary_republic = yes
+		add_stability = 0.05
+		add_political_power = -100
+		set_power_balance = {
+			id = UKR_left_dualism_balance
+			set_value = -0.4
+		}
+		hidden_effect = {
+			add_to_variable = { UKR_left_lean = 3 }
+			add_to_variable = { UKR_authoritarian_lean = -3 }
+			UKR_clamp_leans = yes
+		}
+		ai_chance = { factor = 40 }
+	}
+
+	# Отстоять полномочия президента
+	option = {
+		name = ukraine_politics.508.b
+		add_stability = -0.08
+		set_power_balance = {
+			id = UKR_left_dualism_balance
+			set_value = -0.45
+		}
+		hidden_effect = {
+			add_to_variable = { UKR_lf_unions = -5 }
+			UKR_clamp_left_factions = yes
+		}
+		hidden_effect = {
+			add_to_variable = { UKR_authoritarian_lean = 2 }
+			UKR_clamp_leans = yes
+		}
+		ai_chance = { factor = 60 }
+	}
+}
+
+# Коалиция на грани (край шкалы у Банковой)
+country_event = {
+	id = ukraine_politics.509
+	title = ukraine_politics.509.t
+	desc = ukraine_politics.509.d
+	picture = GFX_UKR_rada_oligarchy
+
+	is_triggered_only = yes
+
+	trigger = {
+		tag = UKR
+	}
+
+	# Уступить Раде
+	option = {
+		name = ukraine_politics.509.a
+		add_political_power = -75
+		set_power_balance = {
+			id = UKR_left_dualism_balance
+			set_value = 0.4
+		}
+		custom_effect_tooltip = UKR_lf_unions_up_tt
+		hidden_effect = {
+			add_to_variable = { UKR_lf_unions = 5 }
+			UKR_clamp_left_factions = yes
+		}
+		ai_chance = { factor = 60 }
+	}
+
+	# Перекупить часть фракции
+	option = {
+		name = ukraine_politics.509.b
+		add_political_power = -25
+		add_stability = -0.05
+		set_power_balance = {
+			id = UKR_left_dualism_balance
+			set_value = 0.45
+		}
+		hidden_effect = {
+			add_to_variable = { UKR_lf_communists = -10 }
+			add_to_variable = { UKR_lf_anarchists = -10 }
+			add_to_variable = { UKR_lf_socialists = -5 }
+			UKR_clamp_left_factions = yes
+		}
+		hidden_effect = {
+			add_to_variable = { UKR_authoritarian_lean = 3 }
+			UKR_clamp_leans = yes
+		}
+		ai_chance = { factor = 40 }
+	}
+}
+
+# Ловушка ортодоксального пути: «С кем мы воюем?» (Россия КПРФ)
+country_event = {
+	id = ukraine_politics.510
+	title = ukraine_politics.510.t
+	desc = ukraine_politics.510.d
+	picture = GFX_report_event_ukrainian_civil_war
+
+	fire_only_once = yes
+
+	mean_time_to_happen = {
+		days = 30
+	}
+
+	trigger = {
+		tag = UKR
+		has_completed_focus = UKR_l_orthodox_left
+		has_global_flag = SOV_cprf_won
+	}
+
+	# Мы воюем с агрессором, а не с флагом
+	option = {
+		name = ukraine_politics.510.a
+		add_timed_idea = { idea = UKR_red_doubt days = 365 }
+		custom_effect_tooltip = UKR_russian_influence_up_tt
+		hidden_effect = {
+			add_to_variable = { Russian_Influence = 0.02 }
+			clamp_variable = { var = Russian_Influence min = 0 max = 1 }
+		}
+		ai_chance = { factor = 70 }
+	}
+
+	# Жёстко пресечь
+	option = {
+		name = ukraine_politics.510.b
+		add_political_power = -100
+		add_stability = -0.05
+		add_timed_idea = { idea = UKR_red_doubt days = 180 }
+		hidden_effect = {
+			add_to_variable = { UKR_lf_communists = -20 }
+			UKR_clamp_left_factions = yes
+		}
+		ai_chance = { factor = 30 }
+	}
+}
+
+# Гуляйполе-фест
+country_event = {
+	id = ukraine_politics.511
+	title = ukraine_politics.511.t
+	desc = ukraine_politics.511.d
+	picture = GFX_report_event_ukrainian_civil_war
+
+	is_triggered_only = yes
+
+	trigger = {
+		tag = UKR
+	}
+
+	# Пусть гуляют
+	option = {
+		name = ukraine_politics.511.a
+		add_stability = 0.01
+		set_temp_variable = {
+			var = income_var_temp
+			value = 1
+		}
+		add_income_with_inflation = yes
+		custom_effect_tooltip = UKR_lf_anarchists_up_tt
+		hidden_effect = {
+			add_to_variable = { UKR_lf_anarchists = 5 }
+			UKR_clamp_left_factions = yes
+		}
+		ai_chance = { factor = 60 }
+	}
+
+	# Лишь бы тачанку не угнали
+	option = {
+		name = ukraine_politics.511.b
+		add_political_power = 15
+		ai_chance = { factor = 40 }
+	}
+}
+
+
+# Кооперативный сектор окреп (скрытое, через год после фокуса)
+country_event = {
+	id = ukraine_politics.512
+	hidden = yes
+
+	is_triggered_only = yes
+
+	trigger = {
+		tag = UKR
+		has_idea = UKR_cooperative_sector
+	}
+
+	immediate = {
+		swap_ideas = {
+			remove_idea = UKR_cooperative_sector
+			add_idea = UKR_cooperative_sector_mature
+		}
 	}
 }

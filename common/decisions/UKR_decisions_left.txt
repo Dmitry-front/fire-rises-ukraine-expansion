@@ -1,0 +1,407 @@
+# Блок 3, левые: окно «Общественный договор» (DESIGN.md, 8.2)
+# Шкала «Рада ↔ Банковая» (UKR_left_dualism_balance): минус — к Раде, плюс — к Банковой.
+UKR_social_contract = {
+
+	# Отраслевые коллективные договоры
+	UKR_lc_collective_agreements = {
+		icon = GFX_decision_generic_consumer_goods
+		available = {
+			has_country_flag = UKR_left_coalition
+		}
+		fire_only_once = yes
+		cost = 50
+		days_remove = 60
+		ai_will_do = {
+			factor = 10
+		}
+		remove_effect = {
+			add_stability = 0.03
+			set_temp_variable = {
+				var = income_var_temp
+				value = -2
+			}
+			add_income_with_inflation = yes
+			add_power_balance_value = {
+				id = UKR_left_dualism_balance
+				value = -0.05
+			}
+			custom_effect_tooltip = UKR_lf_unions_up_tt
+			hidden_effect = {
+				add_to_variable = { UKR_lf_unions = 5 }
+				UKR_clamp_left_factions = yes
+			}
+		}
+	}
+
+	# Прогрессивный налог
+	UKR_lc_progressive_tax = {
+		icon = GFX_decision_generic_political_discourse
+		available = {
+			has_country_flag = UKR_left_coalition
+		}
+		fire_only_once = yes
+		cost = 75
+		days_remove = 60
+		ai_will_do = {
+			factor = 10
+		}
+		remove_effect = {
+			set_temp_variable = {
+				var = income_var_temp
+				value = 4
+			}
+			add_income_with_inflation = yes
+			add_stability = -0.02
+			custom_effect_tooltip = UKR_lf_socialists_up_tt
+			hidden_effect = {
+				add_to_variable = { UKR_lf_socialists = 5 }
+				UKR_clamp_left_factions = yes
+			}
+			add_power_balance_value = {
+				id = UKR_left_dualism_balance
+				value = -0.05
+			}
+		}
+	}
+
+	# Земля и жильё ветеранам АТО
+	UKR_lc_veteran_housing = {
+		icon = GFX_decision_generic_construction
+		available = {
+			has_country_flag = UKR_left_coalition
+		}
+		fire_only_once = yes
+		cost = 50
+		days_remove = 45
+		ai_will_do = {
+			factor = 10
+		}
+		remove_effect = {
+			add_war_support = 0.03
+			add_manpower = 5000
+			set_temp_variable = {
+				var = income_var_temp
+				value = -2
+			}
+			add_income_with_inflation = yes
+		}
+	}
+
+	# Рабочий кооператив на заводе (повторяемое)
+	UKR_lc_workers_cooperative = {
+		icon = GFX_decision_generic_construction
+		available = {
+			has_country_flag = UKR_left_coalition
+			has_completed_focus = UKR_l_cooperative_sector
+		}
+		days_re_enable = 180
+		cost = 50
+		days_remove = 90
+		ai_will_do = {
+			factor = 10
+		}
+		remove_effect = {
+			set_temp_variable = {
+				var = industrial_development_var_temp
+				value = 0.03
+			}
+			add_industrial_development = yes
+			custom_effect_tooltip = UKR_lf_anarchists_up_tt
+			hidden_effect = {
+				add_to_variable = { UKR_lf_anarchists = 5 }
+				UKR_clamp_left_factions = yes
+			}
+		}
+	}
+
+	# Национализация: «Метинвест» Рината Ахметова (металлургия)
+	UKR_lc_nationalize_metinvest = {
+		icon = GFX_decision_generic_industry
+		available = {
+			has_country_flag = UKR_left_coalition
+			has_country_flag = UKR_oligarch_audit
+		}
+		fire_only_once = yes
+		cost = 100
+		days_remove = 60
+		ai_will_do = {
+			factor = 8
+		}
+		complete_effect = {
+			set_country_flag = UKR_nationalized_metinvest
+			hidden_effect = {
+				if = {
+					limit = { NOT = { has_country_flag = UKR_first_nationalization } }
+					set_country_flag = UKR_first_nationalization
+					country_event = { id = ukraine_politics.504 days = 7 }
+				}
+			}
+		}
+		remove_effect = {
+			set_temp_variable = {
+				var = industrial_development_var_temp
+				value = 0.05
+			}
+			add_industrial_development = yes
+			set_temp_variable = {
+				var = income_var_temp
+				value = 3
+			}
+			add_income_with_inflation = yes
+			add_power_balance_value = {
+				id = UKR_left_dualism_balance
+				value = -0.05
+			}
+			custom_effect_tooltip = UKR_european_influence_down_tt
+			hidden_effect = {
+				add_to_variable = { European_Influence = -0.02 }
+				clamp_variable = { var = European_Influence min = 0 max = 1 }
+			}
+			custom_effect_tooltip = UKR_lf_communists_up_tt
+			hidden_effect = {
+				add_to_variable = { UKR_lf_communists = 5 }
+				UKR_clamp_left_factions = yes
+			}
+		}
+	}
+
+	# Национализация: ДТЭК Рината Ахметова (энергетика)
+	UKR_lc_nationalize_dtek = {
+		icon = GFX_decision_generic_industry
+		available = {
+			has_country_flag = UKR_left_coalition
+			has_country_flag = UKR_oligarch_audit
+		}
+		fire_only_once = yes
+		cost = 100
+		days_remove = 60
+		ai_will_do = {
+			factor = 8
+		}
+		complete_effect = {
+			set_country_flag = UKR_nationalized_dtek
+			hidden_effect = {
+				if = {
+					limit = { NOT = { has_country_flag = UKR_first_nationalization } }
+					set_country_flag = UKR_first_nationalization
+					country_event = { id = ukraine_politics.504 days = 7 }
+				}
+			}
+		}
+		remove_effect = {
+			set_temp_variable = {
+				var = income_var_temp
+				value = 4
+			}
+			add_income_with_inflation = yes
+			add_stability = 0.02
+			add_power_balance_value = {
+				id = UKR_left_dualism_balance
+				value = -0.05
+			}
+			custom_effect_tooltip = UKR_european_influence_down_tt
+			hidden_effect = {
+				add_to_variable = { European_Influence = -0.02 }
+				clamp_variable = { var = European_Influence min = 0 max = 1 }
+			}
+			custom_effect_tooltip = UKR_lf_communists_up_tt
+			hidden_effect = {
+				add_to_variable = { UKR_lf_communists = 5 }
+				UKR_clamp_left_factions = yes
+			}
+		}
+	}
+
+	# Национализация: «Укрнафта» и «Укртатнафта» (нефть, группа «Приват»)
+	UKR_lc_nationalize_ukrnafta = {
+		icon = GFX_decision_generic_industry
+		available = {
+			has_country_flag = UKR_left_coalition
+			has_country_flag = UKR_oligarch_audit
+		}
+		fire_only_once = yes
+		cost = 100
+		days_remove = 60
+		ai_will_do = {
+			factor = 8
+		}
+		complete_effect = {
+			set_country_flag = UKR_nationalized_ukrnafta
+			hidden_effect = {
+				if = {
+					limit = { NOT = { has_country_flag = UKR_first_nationalization } }
+					set_country_flag = UKR_first_nationalization
+					country_event = { id = ukraine_politics.504 days = 7 }
+				}
+			}
+		}
+		remove_effect = {
+			set_temp_variable = {
+				var = income_var_temp
+				value = 4
+			}
+			add_income_with_inflation = yes
+			add_power_balance_value = {
+				id = UKR_left_dualism_balance
+				value = -0.05
+			}
+			custom_effect_tooltip = UKR_european_influence_down_tt
+			hidden_effect = {
+				add_to_variable = { European_Influence = -0.02 }
+				clamp_variable = { var = European_Influence min = 0 max = 1 }
+			}
+			custom_effect_tooltip = UKR_lf_communists_up_tt
+			hidden_effect = {
+				add_to_variable = { UKR_lf_communists = 5 }
+				UKR_clamp_left_factions = yes
+			}
+		}
+	}
+
+	# Национализация: азотные заводы и облгазы Дмитрия Фирташа (химия и газ)
+	UKR_lc_nationalize_ostchem = {
+		icon = GFX_decision_generic_industry
+		available = {
+			has_country_flag = UKR_left_coalition
+			has_country_flag = UKR_oligarch_audit
+		}
+		fire_only_once = yes
+		cost = 100
+		days_remove = 60
+		ai_will_do = {
+			factor = 8
+		}
+		complete_effect = {
+			set_country_flag = UKR_nationalized_ostchem
+			hidden_effect = {
+				if = {
+					limit = { NOT = { has_country_flag = UKR_first_nationalization } }
+					set_country_flag = UKR_first_nationalization
+					country_event = { id = ukraine_politics.504 days = 7 }
+				}
+			}
+		}
+		remove_effect = {
+			set_temp_variable = {
+				var = industrial_development_var_temp
+				value = 0.03
+			}
+			add_industrial_development = yes
+			set_temp_variable = {
+				var = income_var_temp
+				value = 2
+			}
+			add_income_with_inflation = yes
+			add_power_balance_value = {
+				id = UKR_left_dualism_balance
+				value = -0.05
+			}
+			custom_effect_tooltip = UKR_european_influence_down_tt
+			hidden_effect = {
+				add_to_variable = { European_Influence = -0.02 }
+				clamp_variable = { var = European_Influence min = 0 max = 1 }
+			}
+			custom_effect_tooltip = UKR_lf_communists_up_tt
+			hidden_effect = {
+				add_to_variable = { UKR_lf_communists = 5 }
+				UKR_clamp_left_factions = yes
+			}
+		}
+	}
+
+	# Национализация: телеканалы олигархов (медиа)
+	UKR_lc_nationalize_media = {
+		icon = GFX_decision_generic_propaganda
+		available = {
+			has_country_flag = UKR_left_coalition
+			has_country_flag = UKR_oligarch_audit
+		}
+		fire_only_once = yes
+		cost = 100
+		days_remove = 60
+		ai_will_do = {
+			factor = 8
+		}
+		complete_effect = {
+			set_country_flag = UKR_nationalized_media
+			hidden_effect = {
+				if = {
+					limit = { NOT = { has_country_flag = UKR_first_nationalization } }
+					set_country_flag = UKR_first_nationalization
+					country_event = { id = ukraine_politics.504 days = 7 }
+				}
+			}
+		}
+		remove_effect = {
+			add_political_power = 50
+			add_stability = -0.02
+			add_power_balance_value = {
+				id = UKR_left_dualism_balance
+				value = 0.1
+			}
+			custom_effect_tooltip = UKR_european_influence_down_tt
+			hidden_effect = {
+				add_to_variable = { European_Influence = -0.02 }
+				clamp_variable = { var = European_Influence min = 0 max = 1 }
+			}
+			custom_effect_tooltip = UKR_lf_communists_up_tt
+			hidden_effect = {
+				add_to_variable = { UKR_lf_communists = 5 }
+				UKR_clamp_left_factions = yes
+			}
+		}
+	}
+
+	# Всеобщая забастовка: профсоюзы давят на Банковую
+	UKR_lc_general_strike = {
+		icon = GFX_decision_generic_protection
+		available = {
+			has_country_flag = UKR_left_coalition
+			custom_trigger_tooltip = {
+				tooltip = UKR_general_strike_req_tt
+				check_variable = { UKR_lf_unions > 39 }
+			}
+		}
+		days_re_enable = 120
+		cost = 25
+		ai_will_do = {
+			factor = 3
+		}
+		complete_effect = {
+			add_power_balance_value = {
+				id = UKR_left_dualism_balance
+				value = -0.15
+			}
+			add_stability = -0.03
+		}
+	}
+
+	# Указ президента: Банковая действует в обход Рады
+	UKR_lc_presidential_decree = {
+		icon = GFX_decision_generic_political_discourse
+		available = {
+			has_country_flag = UKR_left_coalition
+		}
+		days_re_enable = 120
+		cost = 75
+		ai_will_do = {
+			factor = 3
+		}
+		complete_effect = {
+			add_power_balance_value = {
+				id = UKR_left_dualism_balance
+				value = 0.15
+			}
+			add_stability = -0.01
+			custom_effect_tooltip = UKR_lf_all_down_tt
+			hidden_effect = {
+				add_to_variable = { UKR_lf_unions = -3 }
+				add_to_variable = { UKR_lf_socialists = -3 }
+				add_to_variable = { UKR_lf_anarchists = -3 }
+				add_to_variable = { UKR_lf_communists = -3 }
+				UKR_clamp_left_factions = yes
+			}
+		}
+	}
+
+}

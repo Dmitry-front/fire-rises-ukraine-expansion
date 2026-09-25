@@ -273,3 +273,30 @@ UKR_apply_pillar_mismatch = {
 		add_timed_idea = { idea = UKR_pillar_mismatch days = 180 }
 	}
 }
+
+# =====================================================================
+# Блок 3, левые (DESIGN.md, 8.2)
+# =====================================================================
+
+# Левые группы внутри коалиции (0–100). Видны в описании окна «Общественный договор».
+# Профсоюзы и социалисты открывают социал-демократию, анархисты — самоуправление, коммунисты — ортодоксальный путь.
+UKR_init_left_factions = {
+	set_variable = { UKR_lf_unions = 35 }
+	set_variable = { UKR_lf_socialists = 25 }
+	set_variable = { UKR_lf_anarchists = 10 }
+	set_variable = { UKR_lf_communists = 10 }
+}
+
+# Использование: add_to_variable = { UKR_lf_unions = 5 } затем UKR_clamp_left_factions = yes
+UKR_clamp_left_factions = {
+	clamp_variable = { var = UKR_lf_unions min = 0 max = 100 }
+	clamp_variable = { var = UKR_lf_socialists min = 0 max = 100 }
+	clamp_variable = { var = UKR_lf_anarchists min = 0 max = 100 }
+	clamp_variable = { var = UKR_lf_communists min = 0 max = 100 }
+}
+
+# Кооперативная экономика TFR. [ПРОВЕРИТЬ] точное имя эффекта (TECH_DEBT.md, TD-18):
+# пока стоит рыночный социализм, после сверки заменить одной строкой здесь.
+UKR_set_cooperative_economy = {
+	change_economy_type_socialist_market = yes
+}

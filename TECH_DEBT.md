@@ -83,3 +83,13 @@
 - Касается: блока 2 (кампания и второй тур должны совпасть с выборами).
 - Сделать: автор ищет `ukraine.13` по папке TFR и присылает место вызова и условие.
 
+**TD-18. Имя эффекта «Кооперативная экономика» в TFR**
+- Автор говорит, что в TFR есть тип экономики «Кооперативная экономика», но в референсе SOV он не встречается (видны `welfare_capitalism`, `socialist_market`, `planned_economy`, `mixed_economy`, `state_capitalism`, `left_corporatism`, `oligopolistic_capitalism`, `military_controlled`).
+- Сейчас обёртка `UKR_set_cooperative_economy` (`common/scripted_effects/UKR_politics_effects.txt`) ставит `change_economy_type_socialist_market`.
+- Сделать: автор ищет в TFR `change_economy_type_` с «cooperative» и присылает точное имя — меняется одна строка.
+
+**TD-19. Проверить в игре баланс сил левых (`common/bop/UKR_bop.txt`)**
+- Первый наш баланс сил. Сверить по `error.log`: формат файла (`range`, `side`, `on_activate`), модификатор `power_balance_weekly` в центре шкалы, отображение шкалы в окне «Общественный договор», локализацию сторон и диапазонов.
+- Эффект `change_government_type_parliamentary_republic` (событие 508) взят из референса SOV — проверить, что на Украине он работает.
+- Иконки сторон `GFX_bop_UKR_rada` / `GFX_bop_UKR_bankova` указывают на PNG идей — если шкала требует другого размера, нужен арт.
+

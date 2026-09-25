@@ -1,0 +1,191 @@
+# Блок 3, технократы: окно «Реформы кабинета Свириденко» (DESIGN.md, 8.1)
+UKR_svyrydenko_reforms = {
+
+	# «Зроблено в Україні»: национальный кэшбэк и локализация госзакупок
+	UKR_sv_made_in_ukraine = {
+		icon = GFX_decision_generic_consumer_goods
+		available = {
+			has_country_flag = UKR_svyrydenko_cabinet
+		}
+		fire_only_once = yes
+		cost = 75
+		days_remove = 60
+		ai_will_do = {
+			factor = 10
+		}
+		remove_effect = {
+			add_timed_idea = { idea = UKR_made_in_ukraine days = 730 }
+			set_temp_variable = {
+				var = industrial_development_var_temp
+				value = 0.05
+			}
+			add_industrial_development = yes
+			set_temp_variable = {
+				var = income_var_temp
+				value = -4
+			}
+			add_income_with_inflation = yes
+		}
+	}
+
+	# «Доступные кредиты 5-7-9%»
+	UKR_sv_affordable_loans = {
+		icon = GFX_decision_generic_construction
+		available = {
+			has_country_flag = UKR_svyrydenko_cabinet
+		}
+		fire_only_once = yes
+		cost = 50
+		days_remove = 45
+		ai_will_do = {
+			factor = 10
+		}
+		remove_effect = {
+			set_temp_variable = {
+				var = debt_var_temp
+				value = 20
+			}
+			add_debt_with_inflation = yes
+			random_owned_controlled_state = {
+				limit = { free_building_slots = { building = industrial_complex size > 0 include_locked = no } }
+				add_building_construction = {
+					type = industrial_complex
+					level = 1
+					instant_build = yes
+				}
+			}
+		}
+	}
+
+	# Гранты «Власна справа»
+	UKR_sv_own_business_grants = {
+		icon = GFX_decision_generic_propaganda
+		available = {
+			has_country_flag = UKR_svyrydenko_cabinet
+		}
+		fire_only_once = yes
+		cost = 50
+		days_remove = 45
+		ai_will_do = {
+			factor = 10
+		}
+		remove_effect = {
+			set_temp_variable = {
+				var = income_var_temp
+				value = -3
+			}
+			add_income_with_inflation = yes
+			set_temp_variable = {
+				var = society_development_var_temp
+				value = 0.05
+			}
+			add_society_development = yes
+			set_temp_variable = {
+				var = poverty_development_var_temp
+				value = 0.05
+			}
+			add_poverty_development = yes
+		}
+	}
+
+	# Дерегуляция
+	UKR_sv_deregulation = {
+		icon = GFX_decision_generic_political_discourse
+		available = {
+			has_country_flag = UKR_svyrydenko_cabinet
+		}
+		fire_only_once = yes
+		cost = 75
+		days_remove = 60
+		ai_will_do = {
+			factor = 10
+		}
+		remove_effect = {
+			add_stability = 0.02
+			if = {
+				limit = { has_idea = UKR_government_corruption }
+				swap_ideas = {
+					remove_idea = UKR_government_corruption
+					add_idea = UKR_government_corruption_low
+				}
+			}
+			else_if = {
+				limit = { has_idea = UKR_government_corruption_low }
+				remove_ideas = UKR_government_corruption_low
+			}
+		}
+	}
+
+	# Большая приватизация (злит левых)
+	UKR_sv_big_privatization = {
+		icon = GFX_decision_gre_paying_ifc_debt
+		available = {
+			has_country_flag = UKR_svyrydenko_cabinet
+		}
+		fire_only_once = yes
+		cost = 25
+		days_remove = 30
+		ai_will_do = {
+			factor = 6
+		}
+		remove_effect = {
+			set_temp_variable = {
+				var = income_var_temp
+				value = 6
+			}
+			add_income_with_inflation = yes
+			add_stability = -0.04
+			add_popularity = { ideology = social_democrat popularity = 0.02 }
+		}
+	}
+
+	# Фонд восстановления с США (по образцу соглашения о недрах 2025)
+	UKR_sv_us_reconstruction_fund = {
+		icon = GFX_decision_hol_exchange_intelligence_data
+		available = {
+			has_country_flag = UKR_svyrydenko_cabinet
+			country_exists = USA
+		}
+		fire_only_once = yes
+		cost = 100
+		days_remove = 60
+		ai_will_do = {
+			factor = 10
+		}
+		remove_effect = {
+			add_timed_idea = { idea = UKR_us_reconstruction_fund days = 730 }
+			set_temp_variable = {
+				var = income_var_temp
+				value = 3
+			}
+			add_income_with_inflation = yes
+		}
+	}
+
+	# Индустриальные парки
+	UKR_sv_industrial_parks = {
+		icon = GFX_decision_generic_construction
+		available = {
+			has_country_flag = UKR_svyrydenko_cabinet
+		}
+		fire_only_once = yes
+		cost = 75
+		days_remove = 60
+		ai_will_do = {
+			factor = 10
+		}
+		remove_effect = {
+			random_owned_controlled_state = {
+				add_extra_state_shared_building_slots = 1
+			}
+			random_owned_controlled_state = {
+				add_extra_state_shared_building_slots = 1
+			}
+			set_temp_variable = {
+				var = income_var_temp
+				value = -2
+			}
+			add_income_with_inflation = yes
+		}
+	}
+}

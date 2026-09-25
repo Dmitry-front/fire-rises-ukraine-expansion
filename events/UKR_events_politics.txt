@@ -1094,6 +1094,222 @@ country_event = {
 		set_country_flag = UKR_second_term
 		add_stability = 0.05
 		add_political_power = 50
-		# Дерево блока 3 (опоры) ещё не написано: пока только флаг
+		# Блок 3: дерево выбранной опоры. Пока написан только путь технократов
+		if = {
+			limit = { has_country_flag = UKR_pillar_chosen_technocrats }
+			load_focus_tree = {
+				tree = UKR_block3_technocrats
+				keep_completed = yes
+			}
+			country_event = { id = ukraine_politics.400 days = 1 }
+		}
+	}
+}
+
+# =====================================================================
+# Блок 3: институционалисты-технократы (400–406) — DESIGN.md, 8.1.1
+# =====================================================================
+
+# Кабинет Свириденко: старт пути
+country_event = {
+	id = ukraine_politics.400
+	title = ukraine_politics.400.t
+	desc = ukraine_politics.400.d
+	picture = GFX_report_event_ukrainian_civil_war
+
+	is_triggered_only = yes
+
+	trigger = {
+		tag = UKR
+	}
+
+	option = {
+		name = ukraine_politics.400.a
+		add_political_power = 30
+	}
+}
+
+# «Дія лежит»: сбой или кибератака
+country_event = {
+	id = ukraine_politics.401
+	title = ukraine_politics.401.t
+	desc = ukraine_politics.401.d
+	picture = GFX_report_event_ukrainian_civil_war
+
+	is_triggered_only = yes
+
+	trigger = {
+		tag = UKR
+	}
+
+	# Резервные серверы за рубежом
+	option = {
+		name = ukraine_politics.401.a
+		set_temp_variable = {
+			var = income_var_temp
+			value = -2
+		}
+		add_income_with_inflation = yes
+		add_stability = 0.01
+		ai_chance = { factor = 60 }
+	}
+
+	# Переждать
+	option = {
+		name = ukraine_politics.401.b
+		add_stability = -0.03
+		add_political_power = 20
+		ai_chance = { factor = 40 }
+	}
+}
+
+# «Дрон из гаража»
+country_event = {
+	id = ukraine_politics.402
+	title = ukraine_politics.402.t
+	desc = ukraine_politics.402.d
+	picture = GFX_report_event_ukrainian_civil_war
+
+	is_triggered_only = yes
+
+	trigger = {
+		tag = UKR
+	}
+
+	# Поддержать стартап
+	option = {
+		name = ukraine_politics.402.a
+		set_temp_variable = {
+			var = income_var_temp
+			value = -1
+		}
+		add_income_with_inflation = yes
+		add_tech_bonus = {
+			name = UKR_garage_drone_bonus
+			bonus = 0.5
+			uses = 1
+			category = electronics
+		}
+		ai_chance = { factor = 50 }
+	}
+
+	# Передать армии
+	option = {
+		name = ukraine_politics.402.b
+		army_experience = 15
+		add_war_support = 0.01
+		ai_chance = { factor = 50 }
+	}
+}
+
+# «Утечка» (Открытое государство)
+country_event = {
+	id = ukraine_politics.403
+	title = ukraine_politics.403.t
+	desc = ukraine_politics.403.d
+	picture = GFX_report_event_ukrainian_civil_war
+
+	is_triggered_only = yes
+
+	trigger = {
+		tag = UKR
+	}
+
+	# Признать и закрыть уязвимость
+	option = {
+		name = ukraine_politics.403.a
+		add_political_power = -40
+		add_stability = 0.01
+		ai_chance = { factor = 60 }
+	}
+
+	# Свалить на российских хакеров
+	option = {
+		name = ukraine_politics.403.b
+		add_stability = -0.02
+		add_war_support = 0.02
+		ai_chance = { factor = 40 }
+	}
+}
+
+# «Цифровой паноптикум» (Цифровой контроль)
+country_event = {
+	id = ukraine_politics.404
+	title = ukraine_politics.404.t
+	desc = ukraine_politics.404.d
+	picture = GFX_report_event_ukrainian_civil_war
+
+	is_triggered_only = yes
+
+	trigger = {
+		tag = UKR
+	}
+
+	# Пообещать контроль парламента за данными
+	option = {
+		name = ukraine_politics.404.a
+		add_political_power = -30
+		add_stability = 0.02
+		ai_chance = { factor = 50 }
+	}
+
+	# Безопасность важнее
+	option = {
+		name = ukraine_politics.404.b
+		add_stability = -0.03
+		add_political_power = 30
+		add_popularity = { ideology = conservative popularity = 0.02 }
+		ai_chance = { factor = 50 }
+	}
+}
+
+# «Консерваторы против цифры»
+country_event = {
+	id = ukraine_politics.405
+	title = ukraine_politics.405.t
+	desc = ukraine_politics.405.d
+	picture = GFX_report_event_ukrainian_civil_war
+
+	is_triggered_only = yes
+
+	trigger = {
+		tag = UKR
+	}
+
+	# Уступить: оставить бумажные услуги
+	option = {
+		name = ukraine_politics.405.a
+		add_stability = 0.02
+		add_political_power = -20
+		ai_chance = { factor = 50 }
+	}
+
+	# Продавить
+	option = {
+		name = ukraine_politics.405.b
+		add_stability = -0.02
+		add_political_power = 25
+		add_popularity = { ideology = conservative popularity = 0.02 }
+		ai_chance = { factor = 50 }
+	}
+}
+
+# «Эстонский опыт»
+country_event = {
+	id = ukraine_politics.406
+	title = ukraine_politics.406.t
+	desc = ukraine_politics.406.d
+	picture = GFX_report_event_ukrainian_civil_war
+
+	is_triggered_only = yes
+
+	trigger = {
+		tag = UKR
+	}
+
+	option = {
+		name = ukraine_politics.406.a
+		add_stability = 0.02
+		add_political_power = 25
 	}
 }

@@ -1,4 +1,4 @@
-add_namespace = ukrainewar
+﻿add_namespace = ukrainewar
 
 # Инициализация военного настроения
 country_event = {
@@ -157,6 +157,13 @@ country_event = {
 		add_war_support = -0.15
 		add_stability = -0.20
 		custom_effect_tooltip = UKR_kiev_lost_tt
+		# Государство без территории (технократы): удар вдвое слабее
+		if = {
+			limit = { has_country_flag = UKR_state_without_territory }
+			add_war_support = 0.07
+			add_stability = 0.10
+			custom_effect_tooltip = UKR_state_without_territory_kyiv_tt
+		}
 		UKR_update_hate_spirit = yes
     	UKR_update_fatigue_spirit = yes
 	}
@@ -166,6 +173,11 @@ country_event = {
 		add_political_power = -50
 		add_war_support = -0.012
 		add_stability = -0.08
+		if = {
+			limit = { has_country_flag = UKR_state_without_territory }
+			add_stability = 0.04
+			custom_effect_tooltip = UKR_state_without_territory_kyiv_tt
+		}
 		custom_effect_tooltip = UKR_kiev_emergency_measures_tt
 		UKR_update_hate_spirit = yes
     	UKR_update_fatigue_spirit = yes

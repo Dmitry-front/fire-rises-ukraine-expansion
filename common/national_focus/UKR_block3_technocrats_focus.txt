@@ -1,0 +1,519 @@
+﻿# Блок 3: путь институционалистов-технократов (DESIGN.md, 8.1)
+# Загружается событием ukraine_politics.304 (инаугурация) при ставке на технократов.
+focus_tree = {
+	id = UKR_block3_technocrats
+	country = {
+		factor = 0
+	}
+	default = no
+
+	# Ряд 0. Кабинет Свириденко
+	focus = {
+		id = UKR_t_svyrydenko_cabinet
+		icon = GFX_goal_generic_political_pressure
+		x = 10
+		y = 0
+		cost = 5
+		available = {
+			has_country_leader = {
+				character = UKR_volodymyr_zelensky
+				ruling_only = yes
+			}
+		}
+		ai_will_do = {
+			factor = 20
+		}
+		completion_reward = {
+			add_political_power = 50
+			custom_effect_tooltip = appoint_head_minister_tooltip
+			show_ideas_tooltip = UKR_svyrydenko
+			custom_effect_tooltip = appoint_economic_minister_tooltip
+			show_ideas_tooltip = UKR_fedorov
+			add_ideas = UKR_network_dependency
+			unlock_decision_category_tooltip = UKR_svyrydenko_reforms
+			hidden_effect = {
+				add_ideas = UKR_svyrydenko
+				add_ideas = UKR_fedorov
+				set_country_flag = UKR_svyrydenko_cabinet
+				country_event = { id = ukraine_politics.401 days = 90 }
+			}
+		}
+	}
+
+	# Государство: «Дія как система»
+	focus = {
+		id = UKR_t_diia_system
+		icon = GFX_goal_generic_scientific_exchange
+		prerequisite = { focus = UKR_t_svyrydenko_cabinet }
+		relative_position_id = UKR_t_svyrydenko_cabinet
+		x = -4
+		y = 1
+		cost = 6
+		available = {
+			has_country_leader = {
+				character = UKR_volodymyr_zelensky
+				ruling_only = yes
+			}
+		}
+		ai_will_do = {
+			factor = 15
+		}
+		completion_reward = {
+			add_stability = 0.03
+			# Ступень вниз по лестнице коррупции
+			if = {
+				limit = { has_idea = UKR_government_corruption }
+				swap_ideas = {
+					remove_idea = UKR_government_corruption
+					add_idea = UKR_government_corruption_low
+				}
+			}
+			else_if = {
+				limit = { has_idea = UKR_government_corruption_low }
+				remove_ideas = UKR_government_corruption_low
+			}
+			if = {
+				limit = { has_idea = UKR_endemic_corruption }
+				remove_ideas = UKR_endemic_corruption
+			}
+			hidden_effect = {
+				country_event = { id = ukraine_politics.405 days = 45 }
+			}
+		}
+	}
+
+	# Единый цифровой реестр
+	focus = {
+		id = UKR_t_digital_registry
+		icon = GFX_goal_generic_army_doctrines
+		prerequisite = { focus = UKR_t_diia_system }
+		relative_position_id = UKR_t_svyrydenko_cabinet
+		x = -4
+		y = 2
+		cost = 5
+		available = {
+			has_country_leader = {
+				character = UKR_volodymyr_zelensky
+				ruling_only = yes
+			}
+		}
+		ai_will_do = {
+			factor = 10
+		}
+		completion_reward = {
+			add_ideas = UKR_digital_registry_idea
+		}
+	}
+
+	# Э-резидентство
+	focus = {
+		id = UKR_t_e_residency
+		icon = GFX_goal_generic_trade
+		prerequisite = { focus = UKR_t_digital_registry }
+		relative_position_id = UKR_t_svyrydenko_cabinet
+		x = -4
+		y = 3
+		cost = 4
+		available = {
+			has_country_leader = {
+				character = UKR_volodymyr_zelensky
+				ruling_only = yes
+			}
+		}
+		ai_will_do = {
+			factor = 10
+		}
+		completion_reward = {
+			set_temp_variable = {
+				var = income_var_temp
+				value = 3
+			}
+			add_income_with_inflation = yes
+			set_temp_variable = {
+				var = academic_development_var_temp
+				value = 0.05
+			}
+			add_academic_development = yes
+		}
+	}
+
+	# Экономика: IT-экспорт
+	focus = {
+		id = UKR_t_it_export
+		icon = GFX_goal_generic_trade
+		prerequisite = { focus = UKR_t_svyrydenko_cabinet }
+		relative_position_id = UKR_t_svyrydenko_cabinet
+		x = 0
+		y = 1
+		cost = 6
+		available = {
+			has_country_leader = {
+				character = UKR_volodymyr_zelensky
+				ruling_only = yes
+			}
+		}
+		ai_will_do = {
+			factor = 15
+		}
+		completion_reward = {
+			set_temp_variable = {
+				var = income_var_temp
+				value = 5
+			}
+			add_income_with_inflation = yes
+			add_ideas = UKR_it_export_idea
+		}
+	}
+
+	# Дія.City 2.0 — сильнее, если в блоке 1 был «Дія City»
+	focus = {
+		id = UKR_t_diia_city_2
+		icon = GFX_goal_generic_scientific_exchange
+		prerequisite = { focus = UKR_t_it_export }
+		relative_position_id = UKR_t_svyrydenko_cabinet
+		x = 0
+		y = 2
+		cost = 5
+		available = {
+			has_country_leader = {
+				character = UKR_volodymyr_zelensky
+				ruling_only = yes
+			}
+		}
+		ai_will_do = {
+			factor = 10
+		}
+		completion_reward = {
+			if = {
+				limit = { has_country_flag = UKR_diia_city_flag }
+				set_temp_variable = {
+					var = academic_development_var_temp
+					value = 0.1
+				}
+				add_academic_development = yes
+				add_tech_bonus = {
+					name = UKR_diia_city_2_bonus
+					bonus = 0.5
+					uses = 2
+					category = electronics
+				}
+			}
+			else = {
+				set_temp_variable = {
+					var = academic_development_var_temp
+					value = 0.05
+				}
+				add_academic_development = yes
+				add_tech_bonus = {
+					name = UKR_diia_city_2_bonus
+					bonus = 0.3
+					uses = 1
+					category = electronics
+				}
+			}
+		}
+	}
+
+	# Облачное государство: реестры и бэкапы за рубежом
+	focus = {
+		id = UKR_t_cloud_state
+		icon = GFX_goal_generic_secret_weapon
+		prerequisite = { focus = UKR_t_diia_city_2 }
+		relative_position_id = UKR_t_svyrydenko_cabinet
+		x = 0
+		y = 3
+		cost = 5
+		available = {
+			has_country_leader = {
+				character = UKR_volodymyr_zelensky
+				ruling_only = yes
+			}
+		}
+		ai_will_do = {
+			factor = 10
+		}
+		completion_reward = {
+			add_political_power = 30
+			custom_effect_tooltip = UKR_cloud_state_tt
+			set_country_flag = UKR_cloud_state
+		}
+	}
+
+	# Оборона: армия дронов (продолжение UKR_UAV_warfare_revolution)
+	focus = {
+		id = UKR_t_drone_army
+		icon = GFX_goal_generic_air_doctrine
+		prerequisite = { focus = UKR_t_svyrydenko_cabinet }
+		relative_position_id = UKR_t_svyrydenko_cabinet
+		x = 4
+		y = 1
+		cost = 7
+		available = {
+			has_country_leader = {
+				character = UKR_volodymyr_zelensky
+				ruling_only = yes
+			}
+		}
+		ai_will_do = {
+			factor = 15
+		}
+		completion_reward = {
+			if = {
+				limit = { has_idea = UKR_UAV_warfare_pioneers }
+				swap_ideas = {
+					remove_idea = UKR_UAV_warfare_pioneers
+					add_idea = UKR_drone_army
+				}
+			}
+			else = {
+				add_ideas = UKR_drone_army
+			}
+			hidden_effect = {
+				country_event = { id = ukraine_politics.402 days = 30 }
+			}
+		}
+	}
+
+	# Кибервойска
+	focus = {
+		id = UKR_t_cyber_troops
+		icon = GFX_goal_generic_secret_weapon
+		prerequisite = { focus = UKR_t_drone_army }
+		relative_position_id = UKR_t_svyrydenko_cabinet
+		x = 4
+		y = 2
+		cost = 6
+		available = {
+			has_country_leader = {
+				character = UKR_volodymyr_zelensky
+				ruling_only = yes
+			}
+		}
+		ai_will_do = {
+			factor = 10
+		}
+		completion_reward = {
+			add_ideas = UKR_cyber_troops
+		}
+	}
+
+	# Цифровая мобилизация
+	focus = {
+		id = UKR_t_digital_mobilization
+		icon = GFX_goal_generic_army_doctrines
+		prerequisite = { focus = UKR_t_cyber_troops }
+		relative_position_id = UKR_t_svyrydenko_cabinet
+		x = 4
+		y = 3
+		cost = 5
+		available = {
+			has_country_leader = {
+				character = UKR_volodymyr_zelensky
+				ruling_only = yes
+			}
+		}
+		ai_will_do = {
+			factor = 10
+		}
+		completion_reward = {
+			if = {
+				limit = { has_idea = UKR_digital_registry_idea }
+				swap_ideas = {
+					remove_idea = UKR_digital_registry_idea
+					add_idea = UKR_digital_mobilization_idea
+				}
+			}
+			else = {
+				add_ideas = UKR_digital_mobilization_idea
+			}
+			add_manpower = 15000
+		}
+	}
+
+	# Развилка: Открытое государство
+	focus = {
+		id = UKR_t_open_state
+		icon = GFX_goal_generic_improve_relations
+		prerequisite = { focus = UKR_t_e_residency focus = UKR_t_cloud_state focus = UKR_t_digital_mobilization }
+		mutually_exclusive = { focus = UKR_t_digital_control }
+		relative_position_id = UKR_t_svyrydenko_cabinet
+		x = -2
+		y = 4
+		cost = 6
+		available = {
+			has_country_leader = {
+				character = UKR_volodymyr_zelensky
+				ruling_only = yes
+			}
+		}
+		ai_will_do = {
+			factor = 12
+		}
+		completion_reward = {
+			remove_ideas = UKR_eu_aid_frozen
+			add_ideas = UKR_open_state
+			hidden_effect = {
+				country_event = { id = ukraine_politics.403 days = 60 }
+			}
+		}
+	}
+
+	# Развилка: Цифровой контроль
+	focus = {
+		id = UKR_t_digital_control
+		icon = GFX_goal_generic_political_pressure
+		prerequisite = { focus = UKR_t_e_residency focus = UKR_t_cloud_state focus = UKR_t_digital_mobilization }
+		mutually_exclusive = { focus = UKR_t_open_state }
+		relative_position_id = UKR_t_svyrydenko_cabinet
+		x = 2
+		y = 4
+		cost = 6
+		available = {
+			has_country_leader = {
+				character = UKR_volodymyr_zelensky
+				ruling_only = yes
+			}
+		}
+		ai_will_do = {
+			factor = 8
+		}
+		completion_reward = {
+			add_ideas = UKR_digital_control
+			add_popularity = { ideology = conservative popularity = 0.03 }
+			hidden_effect = {
+				country_event = { id = ukraine_politics.404 days = 60 }
+			}
+		}
+	}
+
+	# Открытое: прозрачный бюджет
+	focus = {
+		id = UKR_t_transparent_budget
+		icon = GFX_goal_generic_trade
+		prerequisite = { focus = UKR_t_open_state }
+		relative_position_id = UKR_t_svyrydenko_cabinet
+		x = -3
+		y = 5
+		cost = 5
+		available = {
+			has_country_leader = {
+				character = UKR_volodymyr_zelensky
+				ruling_only = yes
+			}
+		}
+		ai_will_do = {
+			factor = 10
+		}
+		completion_reward = {
+			add_political_power = 50
+			add_stability = 0.03
+			if = {
+				limit = { has_idea = UKR_government_corruption_low }
+				remove_ideas = UKR_government_corruption_low
+			}
+		}
+	}
+
+	# Открытое: эстонский опыт
+	focus = {
+		id = UKR_t_estonian_experience
+		icon = GFX_goal_generic_improve_relations
+		prerequisite = { focus = UKR_t_open_state }
+		relative_position_id = UKR_t_svyrydenko_cabinet
+		x = -1
+		y = 5
+		cost = 5
+		available = {
+			has_country_leader = {
+				character = UKR_volodymyr_zelensky
+				ruling_only = yes
+			}
+		}
+		ai_will_do = {
+			factor = 10
+		}
+		completion_reward = {
+			add_tech_bonus = {
+				name = UKR_estonian_experience_bonus
+				bonus = 0.5
+				uses = 1
+				category = electronics
+			}
+			country_event = { id = ukraine_politics.406 }
+		}
+	}
+
+	# Контроль: алгоритмы вместо чиновников
+	focus = {
+		id = UKR_t_algorithms
+		icon = GFX_goal_generic_scientific_exchange
+		prerequisite = { focus = UKR_t_digital_control }
+		relative_position_id = UKR_t_svyrydenko_cabinet
+		x = 1
+		y = 5
+		cost = 5
+		available = {
+			has_country_leader = {
+				character = UKR_volodymyr_zelensky
+				ruling_only = yes
+			}
+		}
+		ai_will_do = {
+			factor = 10
+		}
+		completion_reward = {
+			add_political_power = 100
+			add_stability = -0.02
+		}
+	}
+
+	# Контроль: единое окно безопасности
+	focus = {
+		id = UKR_t_security_single_window
+		icon = GFX_goal_generic_secret_weapon
+		prerequisite = { focus = UKR_t_digital_control }
+		relative_position_id = UKR_t_svyrydenko_cabinet
+		x = 3
+		y = 5
+		cost = 5
+		available = {
+			has_country_leader = {
+				character = UKR_volodymyr_zelensky
+				ruling_only = yes
+			}
+		}
+		ai_will_do = {
+			factor = 10
+		}
+		completion_reward = {
+			add_ideas = UKR_security_single_window
+		}
+	}
+
+	# Горлышко: государство без территории
+	focus = {
+		id = UKR_t_state_without_territory
+		icon = GFX_goal_generic_national_unity
+		prerequisite = { focus = UKR_t_cloud_state }
+		prerequisite = { focus = UKR_t_transparent_budget focus = UKR_t_estonian_experience focus = UKR_t_algorithms focus = UKR_t_security_single_window }
+		relative_position_id = UKR_t_svyrydenko_cabinet
+		x = 0
+		y = 6
+		cost = 7
+		available = {
+			has_country_leader = {
+				character = UKR_volodymyr_zelensky
+				ruling_only = yes
+			}
+		}
+		ai_will_do = {
+			factor = 15
+		}
+		completion_reward = {
+			add_political_power = 75
+			add_war_support = 0.03
+			custom_effect_tooltip = UKR_state_without_territory_tt
+			set_country_flag = UKR_state_without_territory
+		}
+	}
+}

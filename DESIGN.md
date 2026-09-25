@@ -301,7 +301,7 @@ Namespace `ukraine_politics`, файл `events/UKR_events_politics.txt` (нов�
 | Опора | Окно решений | Основа |
 |---|---|---|
 | Технократы | «Реформы кабинета Свириденко» (`UKR_svyrydenko_reforms`) | «Зроблено в Україні», кредиты 5-7-9%, гранты, дерегуляция, приватизация, фонд ЕС, индустриальные парки |
-| Левые | проектируется | профсоюзы, кооперативы, национализация, двоевластие Рада ↔ президент |
+| Левые | «Общественный договор» (`UKR_social_contract`) | коллективные договоры, прогрессивный налог, жильё ветеранам, кооперативы, национализация активов Ахметова, «Привата», Фирташа и телеканалов, рычаги шкалы «Рада ↔ Банковая» |
 | Олигархи | проектируется | медиахолдинги, закупки через своих, лояльные силовики |
 | Националисты | проектируется | ветеранские советы, тероборона, патронаж силовых ведомств |
 
@@ -358,10 +358,66 @@ Namespace `ukraine_politics`, файл `events/UKR_events_politics.txt` (нов�
 
 ### 8.2. Левая консолидация — `ukraine_politics` 500–599
 - Реальная база: идеология и агитация «Соціальний рух» (стиль европейских левых и зелёных левых), институциональная опора — профсоюзы (ФПУ), социальная база — ветераны АТО и военные, не желающие воевать за олигархов и их капитал. **[РЕШЕНО]**
-- Механика двоевластия Рада ↔ Президент, по образцу «Дуализма ЛДПР» из TFR. Проверить, как это устроено в базовом моде. **[ПРОВЕРИТЬ]**
-- Содержание: национализация активов олигархов (доходы вверх, Запад холодеет), рабочие кооперативы (медленный старт, потом устойчивость), профсоюзы как политическая сила.
-- Мини-пути: социал-демократический, либертарно-социалистический, ортодоксально-левый (ловушка: против КПРФ-России падает поддержка войны).
-- Конфликт с декоммунизацией и с националистами за одну и ту же призывную базу.
+- **Лицо пути [РЕШЕНО, 25.09.2026]:** левый премьер не обязателен. Зелёный — президент; в правительство входит **Виталий Дудин** («Соціальний рух») — министр социальной политики и труда (слот `economic_minister`, идея `UKR_dudin`). ФПУ (Григорий Осовой) и КВПУ (Михаил Волынец) — фигуры в событиях, не министры.
+- **Двоевластие «Рада ↔ Банковая» [РЕШЕНО]** — стандартный баланс сил HOI4, как `SOV_LDPR_balance` в TFR (сверено по референсу). Шкала `UKR_left_dualism_balance` (`common/bop/UKR_bop.txt`), минус — Рада и профсоюзы, плюс — Офис президента. Центр — «Рабочий компромисс» (с лёгким дрейфом к Банковой). Сторона Рады: стабильность выше, политсила ниже; край — событие 508 «Рада забирает правительство» (переход к парламентской республике или отказ). Сторона Банковой: политсила выше, стабильность ниже; край — событие 509 «Коалиция на грани».
+- **Левые группы [РЕШЕНО]** — четыре видимых счётчика (0–100) в описании окна решений: профсоюзы `UKR_lf_unions` (старт 35), социалисты `UKR_lf_socialists` (25), анархисты `UKR_lf_anarchists` (10), радикальные коммунисты `UKR_lf_communists` (10). Фокусы, решения и события их двигают; от них зависит доступ к мини-путям (порог 30).
+- **Национализация — с названиями активов [РЕШЕНО]:** «Метинвест» и ДТЭК (Ахметов), «Укрнафта» и «Укртатнафта» (группа «Приват»), азотные заводы и облгазы (Фирташ), телеканалы «1+1», «Интер», StarLightMedia. Флаги `UKR_nationalized_*` — задел для пути олигархов (у них целые сектора экономики). Подача нейтральная: владельцы «обещают судиться».
+- **Тип экономики [РЕШЕНО]:** по итогу экономических реформ олигархический капитализм TFR меняется на другой тип. Каждый мини-путь имеет фокус смены экономики, доступный только после «Национализации стратегических отраслей»: социал-демократия → `welfare_capitalism`, самоуправление → кооперативная экономика (эффект-обёртка `UKR_set_cooperative_economy`, имя эффекта TFR — [ПРОВЕРИТЬ], TD-18), ортодоксальные → `planned_economy`.
+- Цена пути: идея «Бегство капитала» (торговля и стройка хуже), Запад холодеет от национализации (`European_Influence` вниз, событие 504), конфликт с декоммунизацией (506) и с националистами за призывную базу (507).
+
+#### 8.2.1. Дерево левых `UKR_block3_left` [РЕШЕНО, 25.09.2026]
+Загружается на инаугурации (`ukraine_politics.304`), если стоит `UKR_pillar_chosen_left`. Путь до горлышка ≈ **77 единиц**.
+
+| Ряд | Фокус | Cost | Суть |
+|---|---|---|---|
+| 0 | «Левая коалиция» | 5 | министр Дудин, шкала «Рада ↔ Банковая», окно `UKR_social_contract`, левые группы, идея «Бегство капитала» |
+| 1–3 | **Труд:** «Союз с профсоюзами» → «Трудовой кодекс» → «Социальное государство» | 6/5/5 | стабильность, бедность, развитие общества; события 503, 502, 506 |
+| 1–3 | **Собственность:** «Аудит олигархических активов» → «Национализация стратегических отраслей» → «Кооперативный сектор» | 6/6/5 | открывает национализацию, госсектор; кооперативы — медленный старт, через год крепнут (512) |
+| 1–3 | **Оборона:** «Армия не для олигархов» → «Ветеранские кооперативы» → «Профсоюзная тероборона» | 6/5/5 | поддержка войны, призывники, оборона; событие 507 |
+| 4 | **Развилка:** «Социал-демократия» (профсоюзы или социалисты ≥ 30) / «Самоуправление» (анархисты ≥ 30) / «Ортодоксальные левые» (коммунисты ≥ 30) | 6 | взаимоисключающие |
+| 5 | Социал-демократия: «Трёхсторонний социальный диалог», «Экономика благосостояния» | 5 + 5 | шкала в центр; `welfare_capitalism` |
+| 5 | Самоуправление: «Рабочие советы», «Кооперативная экономика» | 5 + 5 | тероборона → народная самооборона; кооперативная экономика |
+| 5 | Ортодоксальные: «Партийная линия», «Госплан 2.0» | 5 + 5 | политсила, шкала к Банковой; `planned_economy` |
+| 6 | **Горлышко:** «Республика труда» | 7 | итог пути, бонус по выбранному мини-пути |
+
+**Ловушка ортодоксального пути:** быстрые политсила и стабильность, но рост `Russian_Influence`, падение европейского влияния; если в России победила КПРФ (`SOV_cprf_won`) — событие 510 «С кем мы воюем?» и идея `UKR_red_doubt` (поддержка войны −10%).
+
+**События `ukraine_politics` 500–512:**
+| ID | Событие | Суть |
+|---|---|---|
+| 500 | «Левая коалиция» | старт пути, Дудин — министр |
+| 501 | «Съезд левых сил» | на какую группу опереться (+15 одной из четырёх) |
+| 502 | «Трудовой кодекс в Раде» | кодекс профсоюзов / компромисс с бизнесом |
+| 503 | «Имущество ФПУ» | по версии СМИ; реформа с КВПУ / договор с руководством ФПУ |
+| 504 | «Брюссель обеспокоен» | после первой национализации |
+| 505 | «Кооператив избрал директора… того же самого» | щепоть фрикости |
+| 506 | «Памятник или профсоюз» | конфликт с декоммунизацией |
+| 507 | «Два призыва» | спор с националистами за призывную базу |
+| 508 / 509 | «Рада забирает правительство» / «Коалиция на грани» | края шкалы |
+| 510 | «С кем мы воюем?» | ловушка, только ортодоксальный путь + КПРФ в России |
+| 511 | «Гуляйполе-фест» | фестиваль самоуправления на родине Махно (самоуправление) |
+| 512 | скрытое | кооперативный сектор окреп |
+
+**Повествовательные события 520–534 [РЕШЕНО, 25.09.2026]** — общество, труд и капитал, левые силы, познавательная история Украины. Случайные (`mean_time_to_happen` 180 дней), раз в игру, только при `UKR_left_coalition`; между ними пауза не меньше 40 дней (флаг `UKR_left_flavor_cd`). Эффекты мелкие и мгновенные, без национальных духов. Часть событий — с выбором, часть — как данность (одна кнопка).
+| ID | Событие | История / тема |
+|---|---|---|
+| 520 | Павлоградские шахтёры | забастовка шахтёров 1989 года |
+| 521 | Криворожсталь: история одной приватизации | продажа 2004 года и повторный аукцион 2005 года |
+| 522 | Махно в учебнике | «вольная территория» 1918–1921 |
+| 523 | Кухня солидарности (данность) | анархисты и ветераны АТО; после «Армии не для олигархов» |
+| 524 | Первомай | от Чикаго 1886 года до марша на Крещатике |
+| 525 | Заробітчани | трудовая миграция, переводы из-за границы |
+| 526 | Кооператив против агрохолдинга | рынок земли 2021 года |
+| 527 | Левые и память о Голодоморе (данность) | коллективизация, признание геноцидом в 2006 году |
+| 528 | «Березіль» и Расстрелянное возрождение (данность) | Курбас, Кулиш, Сандармох |
+| 529 | Зарплата в конверте | теневая экономика с 1990-х |
+| 530 | Курьеры против платформы | платформенная занятость |
+| 531 | «Будь як Ніна» | медики и медицинская реформа |
+| 532 | Арсенал, январь 1918-го (данность) | Январское восстание и Круты |
+| 533 | Последние шахты Волыни | «справедливый переход» Львовско-Волынского бассейна |
+| 534 | Протасов Яр | городской активизм против застройки |
+
+Реакции России нотами и пропагандой (`ukraine_foreign.2xx`) — позже, вместе с тремя Россиями (9.1).
 
 ### 8.3. Олигархи / институциональный распад — `ukraine_politics` 600–699
 - Президент не чистит окружение, а легализует его. Дух «Растущий авторитаризм Зеленского» получает продолжение.
@@ -479,7 +535,7 @@ Namespace `ukraine_politics`, файл `events/UKR_events_politics.txt` (нов�
 
 Существующие занятые номера (`ukraine.*`, `ukrainewar.*`) не перенумеровываем.
 
-Флаги и переменные (новые): `UKR_digital_lean`, `UKR_left_lean`, `UKR_authoritarian_lean`, `UKR_nationalist_lean`, `UKR_election_2023_done`, `UKR_rada_union_partner`, `UKR_anticorruption_subordinated`, `UKR_pillar_chosen_*`, `UKR_scandal_stage`, `UKR_golden_age_expectations`, `UKR_golden_age_started`, `UKR_politics_2023_started`, `UKR_rada_union_collapsed`, `UKR_block2_ready`. Файл событий: `events/UKR_events_politics.txt`. **Блок 2:** дерево `UKR_block2` (`common/national_focus/UKR_block2_focus.txt`), фокусы `UKR_b2_campaign_2024`, `UKR_b2_veterans_against_oligarchs`, `UKR_b2_veteran_councils`, `UKR_b2_transparent_state`, `UKR_b2_loyal_people`, `UKR_b2_subordinate_anticorruption`, `UKR_b2_protect_anticorruption`, `UKR_b2_face_investigation`, `UKR_b2_meet_voters`, `UKR_b2_bet_technocrats`, `UKR_b2_bet_left`, `UKR_b2_bet_oligarchs`, `UKR_b2_bet_nationalists`; идеи (`common/ideas/UKR_ideas_politics.txt`) `UKR_captured_judiciary`, `UKR_eu_aid_frozen`, `UKR_pillar_organic`, `UKR_pillar_mismatch_minor`, `UKR_pillar_mismatch`; эффект `UKR_apply_pillar_mismatch`; флаги `UKR_block2_loaded`, `UKR_zelensky_reelected`, `UKR_tymoshenko_candidate_2024`, `UKR_scandal_2024_started`, `UKR_yermak_resurfaces`, `UKR_yermak_trial`, `UKR_yermak_resigned`, `UKR_second_term`, `UKR_pillar_chosen_technocrats/left/oligarchs/nationalists`; события `ukraine_politics.200–207`, `300–304`. Переменная `UKR_honesty_2023`, временные `UKR_sn_target`. Scripted effects: `UKR_start_scandal_chain`, `UKR_rada_2023_results`, `UKR_rada_union_collapse_results` (`common/scripted_effects/UKR_politics_effects.txt`). События: `ukraine_politics.100–105, 110, 111, 120–125`. Scripted effect: `UKR_clamp_leans`. Фокусы: `UKR_state_in_smartphone`, `UKR_nsdc_sanctions`, `UKR_social_shield`, `UKR_golden_age` (план). Динамический модификатор: `UKR_golden_age` (план). **Блок 3, технократы:** дерево `UKR_block3_technocrats` (`common/national_focus/UKR_block3_technocrats_focus.txt`), фокусы `UKR_t_*` (`svyrydenko_cabinet`, `diia_system`, `digital_registry`, `e_residency`, `it_export`, `diia_city_2`, `cloud_state`, `drone_army`, `cyber_troops`, `digital_mobilization`, `open_state`, `digital_control`, `transparent_budget`, `estonian_experience`, `algorithms`, `security_single_window`, `state_without_territory`); министры `UKR_svyrydenko`, `UKR_fedorov`, `UKR_fedorov_defense` (план — вместе с военным деревом); идеи `UKR_network_dependency`, `UKR_digital_registry_idea`, `UKR_digital_mobilization_idea`, `UKR_it_export_idea`, `UKR_drone_army`, `UKR_cyber_troops`, `UKR_open_state`, `UKR_digital_control`, `UKR_security_single_window`, `UKR_eu_reconstruction_fund`, `UKR_made_in_ukraine`; категория `UKR_svyrydenko_reforms` и решения `UKR_sv_*`; флаги `UKR_svyrydenko_cabinet`, `UKR_cloud_state`, `UKR_state_without_territory`; события `ukraine_politics.400–406`. Идеи: `UKR_national_memory_institute_radical`, `UKR_national_memory_institute_moderate`, `UKR_national_memory_institute_moderate_Holodomor`. Список дополняется по ходу работы.
+Флаги и переменные (новые): `UKR_digital_lean`, `UKR_left_lean`, `UKR_authoritarian_lean`, `UKR_nationalist_lean`, `UKR_election_2023_done`, `UKR_rada_union_partner`, `UKR_anticorruption_subordinated`, `UKR_pillar_chosen_*`, `UKR_scandal_stage`, `UKR_golden_age_expectations`, `UKR_golden_age_started`, `UKR_politics_2023_started`, `UKR_rada_union_collapsed`, `UKR_block2_ready`. Файл событий: `events/UKR_events_politics.txt`. **Блок 2:** дерево `UKR_block2` (`common/national_focus/UKR_block2_focus.txt`), фокусы `UKR_b2_campaign_2024`, `UKR_b2_veterans_against_oligarchs`, `UKR_b2_veteran_councils`, `UKR_b2_transparent_state`, `UKR_b2_loyal_people`, `UKR_b2_subordinate_anticorruption`, `UKR_b2_protect_anticorruption`, `UKR_b2_face_investigation`, `UKR_b2_meet_voters`, `UKR_b2_bet_technocrats`, `UKR_b2_bet_left`, `UKR_b2_bet_oligarchs`, `UKR_b2_bet_nationalists`; идеи (`common/ideas/UKR_ideas_politics.txt`) `UKR_captured_judiciary`, `UKR_eu_aid_frozen`, `UKR_pillar_organic`, `UKR_pillar_mismatch_minor`, `UKR_pillar_mismatch`; эффект `UKR_apply_pillar_mismatch`; флаги `UKR_block2_loaded`, `UKR_zelensky_reelected`, `UKR_tymoshenko_candidate_2024`, `UKR_scandal_2024_started`, `UKR_yermak_resurfaces`, `UKR_yermak_trial`, `UKR_yermak_resigned`, `UKR_second_term`, `UKR_pillar_chosen_technocrats/left/oligarchs/nationalists`; события `ukraine_politics.200–207`, `300–304`. Переменная `UKR_honesty_2023`, временные `UKR_sn_target`. Scripted effects: `UKR_start_scandal_chain`, `UKR_rada_2023_results`, `UKR_rada_union_collapse_results` (`common/scripted_effects/UKR_politics_effects.txt`). События: `ukraine_politics.100–105, 110, 111, 120–125`. Scripted effect: `UKR_clamp_leans`. Фокусы: `UKR_state_in_smartphone`, `UKR_nsdc_sanctions`, `UKR_social_shield`, `UKR_golden_age` (план). Динамический модификатор: `UKR_golden_age` (план). **Блок 3, технократы:** дерево `UKR_block3_technocrats` (`common/national_focus/UKR_block3_technocrats_focus.txt`), фокусы `UKR_t_*` (`svyrydenko_cabinet`, `diia_system`, `digital_registry`, `e_residency`, `it_export`, `diia_city_2`, `cloud_state`, `drone_army`, `cyber_troops`, `digital_mobilization`, `open_state`, `digital_control`, `transparent_budget`, `estonian_experience`, `algorithms`, `security_single_window`, `state_without_territory`); министры `UKR_svyrydenko`, `UKR_fedorov`, `UKR_fedorov_defense` (план — вместе с военным деревом); идеи `UKR_network_dependency`, `UKR_digital_registry_idea`, `UKR_digital_mobilization_idea`, `UKR_it_export_idea`, `UKR_drone_army`, `UKR_cyber_troops`, `UKR_open_state`, `UKR_digital_control`, `UKR_security_single_window`, `UKR_eu_reconstruction_fund`, `UKR_made_in_ukraine`; категория `UKR_svyrydenko_reforms` и решения `UKR_sv_*`; флаги `UKR_svyrydenko_cabinet`, `UKR_cloud_state`, `UKR_state_without_territory`; события `ukraine_politics.400–406`. **Блок 3, левые:** дерево `UKR_block3_left` (`common/national_focus/UKR_block3_left_focus.txt`), фокусы `UKR_l_*` (`left_coalition`, `union_alliance`, `labour_code`, `welfare_state`, `oligarch_audit`, `strategic_sectors`, `cooperative_sector`, `army_not_for_oligarchs`, `veteran_cooperatives`, `union_territorial_defense`, `social_democracy`, `self_management`, `orthodox_left`, `social_dialogue`, `welfare_economy`, `workers_councils_focus`, `cooperative_economy`, `party_line`, `gosplan`, `republic_of_labour`); министр `UKR_dudin`; идеи `UKR_capital_flight`, `UKR_union_partnership`, `UKR_welfare_state`, `UKR_state_sector`, `UKR_cooperative_sector`, `UKR_cooperative_sector_mature`, `UKR_army_not_for_oligarchs`, `UKR_veteran_cooperatives`, `UKR_union_territorial_defense`, `UKR_peoples_self_defense`, `UKR_nordic_model`, `UKR_workers_councils`, `UKR_party_discipline`, `UKR_red_doubt`, `UKR_republic_of_labour`; категория `UKR_social_contract` и решения `UKR_lc_*`; баланс сил `UKR_left_dualism_balance` (стороны `UKR_bop_rada`, `UKR_bop_bankova`, диапазоны `UKR_bop_*`, спрайты `GFX_bop_UKR_rada/bankova` в `interface/UKR_bop.gfx`); переменные `UKR_lf_unions`, `UKR_lf_socialists`, `UKR_lf_anarchists`, `UKR_lf_communists`; эффекты `UKR_init_left_factions`, `UKR_clamp_left_factions`, `UKR_set_cooperative_economy`; флаги `UKR_left_coalition`, `UKR_oligarch_audit`, `UKR_first_nationalization`, `UKR_nationalized_metinvest/dtek/ukrnafta/ostchem/media`, `UKR_republic_of_labour`; события `ukraine_politics.500–512`, повествовательные `520–534`, флаг паузы `UKR_left_flavor_cd`. Идеи: `UKR_national_memory_institute_radical`, `UKR_national_memory_institute_moderate`, `UKR_national_memory_institute_moderate_Holodomor`. Список дополняется по ходу работы.
 
 ---
 
@@ -502,7 +558,7 @@ Namespace `ukraine_politics`, файл `events/UKR_events_politics.txt` (нов�
 3. ~~Имя фигуры скандала~~ — Андрей Ермак, по имени (раздел 7).
 4. ~~Когда меняется дерево~~ — 1.01.2024, событие `ukraine_politics.200` (6.0).
 5. Победа НАТО в блоке 4: содержание.
-6. Механика «Дуализм Рада ↔ Президент» для левого пути: есть ли аналог в TFR.
+6. ~~Механика «Дуализм Рада ↔ Президент»~~ — в TFR это стандартный баланс сил HOI4 (`SOV_LDPR_balance`); у нас своя шкала `UKR_left_dualism_balance` (8.2).
 7. США: 2021 или 2022–25; вторая война в 2030 — канон или допущение.
 8. Версия игры: в доках 1.16.*, в `CLAUDE.md` «последняя».
 9. ~~Язык~~ — русский основной, английский переводом (`CLAUDE.md`).
@@ -562,3 +618,5 @@ Namespace `ukraine_politics`, файл `events/UKR_events_politics.txt` (нов�
 - **25.09.2026 (сессия 2)** — путь технократов утверждён и переименован: «институционалисты-технократы (либералы)». Премьер — Юлия Свириденко (лицо пути), Фёдоров — министр (цифра, с войной — оборона). Добавлено окно решений «Реформы кабинета Свириденко».
 - **25.09.2026 (сессия 2)** — принцип: у каждой опоры своё окно решений. Путь технократов написан: дерево `UKR_block3_technocrats` (17 фокусов), министры Свириденко и Фёдоров, окно «Реформы кабинета Свириденко» (7 решений), события 400–406, «государство без территории» смягчает потерю Киева в `ukrainewar.100`. Загрузка дерева — на инаугурации (304).
 - **25.09.2026 (сессия 2)** — фонд с США в окне Свириденко заменён фондом ЕС (Ukraine Facility): в США гражданская война.
+- **25.09.2026 (сессия 3)** — путь левых утверждён и написан: лицо — министр Виталий Дудин (левый премьер не обязателен); двоевластие «Рада ↔ Банковая» — баланс сил HOI4 по образцу `SOV_LDPR_balance`; национализация с названиями активов (Ахметов, «Приват», Фирташ, телеканалы); три мини-пути + четыре левые группы (профсоюзы, социалисты, анархисты, радикальные коммунисты) как счётчики, открывающие мини-пути; смена типа экономики TFR по итогу реформ (welfare / кооперативная / плановая). Дерево `UKR_block3_left` (20 фокусов), окно «Общественный договор» (11 решений), события 500–512.
+- **25.09.2026 (сессия 3)** — по просьбе автора добавлены 15 повествовательных событий пути левых (520–534): общество, труд и капитал, анархисты, познавательная история. Случайные с паузой 40 дней, мелкие мгновенные эффекты без духов, часть — «данность» с одной кнопкой.

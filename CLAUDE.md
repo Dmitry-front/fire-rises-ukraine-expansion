@@ -137,6 +137,7 @@ common/national_focus/UKR_block2_focus.txt        — древо блока 2 (�
 events/UKR_events_politics.txt                    — политика 2023–2024 (ukraine_politics)
 common/scripted_effects/UKR_politics_effects.txt  — выборы, распад союза, штраф за разворот; UKR_lean_effects.txt — склонности
 common/national_focus/UKR_block3_*_focus.txt       — деревья опор блока 3; окна решений опор — common/decisions/UKR_decisions_<опора>.txt
+common/bop/UKR_bop.txt                            — баланс сил «Рада ↔ Банковая» (путь левых)
 common/decisions/TFR_decisions_UKR*.txt           — решения (земля, СВО, мобилизация, война)
 common/ideas/TFR_ideas_UKR*.txt                   — идеи
 common/characters/TFR_characters_UKR.txt          — персонажи
@@ -166,3 +167,4 @@ _Список фокусов, событий и идей с временными
 - События `ukraine_politics.101–125` — временные картинки `GFX_report_event_ukrainian_civil_war` и `GFX_UKR_status_economy` (104). Нужны: кризис Запада, левые, правые, «яйца по 17», кампания, выборы, союз, кулуары, распад союза, митинги.
 - События `ukraine_politics.200–304` — временная `GFX_report_event_ukrainian_civil_war`. Фокусы `UKR_b2_*` — временные `GFX_goal_generic_*`. Идеи `UKR_captured_judiciary`, `UKR_eu_aid_frozen`, `UKR_pillar_*` — чужие украинские спрайты.
 - Портреты министров `UKR_svyrydenko` (Юлия Свириденко) и `UKR_fedorov` (Михаил Фёдоров) — сейчас `unknown`. Идеи пути технократов (`UKR_network_dependency`, `UKR_drone_army`, `UKR_open_state` и др.) — `unknown`. Фокусы `UKR_t_*` — `GFX_goal_generic_*`. События 400–406 — `GFX_report_event_ukrainian_civil_war`.
+- Путь левых: портрет министра `UKR_dudin` (Виталий Дудин) — `unknown`; идеи `UKR_capital_flight`…`UKR_republic_of_labour` — `unknown` или чужие спрайты; фокусы `UKR_l_*` — `GFX_goal_generic_*`; события 500–511 и 520–534 — временные картинки; иконки сторон шкалы «Рада ↔ Банковая» (`GFX_bop_UKR_rada`, `GFX_bop_UKR_bankova`) — чужие PNG идей.

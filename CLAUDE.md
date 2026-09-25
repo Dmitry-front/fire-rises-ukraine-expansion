@@ -130,6 +130,7 @@
 ## Структура
 ```
 DESIGN.md                                         — дизайн-документ (сюжет, блоки, реестр ID, журнал решений)
+TECH_DEBT.md                                      — открытый техдолг (TD-*), закрытое переносится в DESIGN.md, раздел 11
 common/national_focus/TFR_national_focus_UKR.txt  — древо UKR (около 50 фокусов)
 common/decisions/TFR_decisions_UKR*.txt           — решения (земля, СВО, мобилизация, война)
 common/ideas/TFR_ideas_UKR*.txt                   — идеи

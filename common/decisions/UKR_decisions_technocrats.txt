@@ -139,12 +139,12 @@ UKR_svyrydenko_reforms = {
 		}
 	}
 
-	# Фонд восстановления с США (по образцу соглашения о недрах 2025)
-	UKR_sv_us_reconstruction_fund = {
+	# Фонд восстановления ЕС (по образцу программы Ukraine Facility, 2024–2027)
+	UKR_sv_eu_reconstruction_fund = {
 		icon = GFX_decision_hol_exchange_intelligence_data
 		available = {
 			has_country_flag = UKR_svyrydenko_cabinet
-			country_exists = USA
+			NOT = { has_idea = UKR_eu_aid_frozen }
 		}
 		fire_only_once = yes
 		cost = 100
@@ -153,7 +153,7 @@ UKR_svyrydenko_reforms = {
 			factor = 10
 		}
 		remove_effect = {
-			add_timed_idea = { idea = UKR_us_reconstruction_fund days = 730 }
+			add_timed_idea = { idea = UKR_eu_reconstruction_fund days = 730 }
 			set_temp_variable = {
 				var = income_var_temp
 				value = 3

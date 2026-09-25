@@ -157,3 +157,4 @@ localisation/{russian,english}/
 ## Нужен арт (временные иконки)
 _Список фокусов, событий и идей с временными иконками — дополнять по ходу работы._
 - Идеи `UKR_national_memory_institute_radical`, `UKR_national_memory_institute_moderate`, `UKR_national_memory_institute_moderate_Holodomor` — сейчас иконки итогов декоммунизации.
+- Фокусы `UKR_state_in_smartphone`, `UKR_nsdc_sanctions`, `UKR_social_shield` — временные `GFX_goal_generic_*`.

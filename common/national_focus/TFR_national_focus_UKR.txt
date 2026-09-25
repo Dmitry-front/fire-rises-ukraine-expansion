@@ -13,6 +13,9 @@
 		x = 3
 		y = 0
 		cost = 1
+		ai_will_do = {
+			factor = 20
+		}
 		cancelable = no
 		available = {
 			has_country_leader = {
@@ -30,6 +33,11 @@
 				id = ukraine.800
 				days = 1
 			}
+			# Склонность (скрыто)
+			hidden_effect = {
+				add_to_variable = { UKR_authoritarian_lean = 3 }
+				UKR_clamp_leans = yes
+			}
 		}
 	}
 
@@ -38,7 +46,10 @@
 		icon = GFX_UKR_budget_military
 		x = -2
 		y = 1
-		cost = 5
+		cost = 4
+		ai_will_do = {
+			factor = 15
+		}
 		relative_position_id = UKR_intelligence_operation
 		prerequisite = {
 			focus = UKR_intelligence_operation
@@ -75,6 +86,11 @@
 					popularity = 0.02
 				}
 			}
+			# Склонность (скрыто)
+			hidden_effect = {
+				add_to_variable = { UKR_authoritarian_lean = 4 }
+				UKR_clamp_leans = yes
+			}
 		}
 	}
 
@@ -83,7 +99,10 @@
 		icon = GFX_UKR_shadow_war
 		x = 0
 		y = 1
-		cost = 6
+		cost = 5
+		ai_will_do = {
+			factor = 10
+		}
 		prerequisite = { focus = UKR_military_budget_expansion }
 		relative_position_id = UKR_military_budget_expansion
 		available = {
@@ -116,6 +135,11 @@
 					popularity = 0.01
 				}
 			}
+			# Склонность (скрыто)
+			hidden_effect = {
+				add_to_variable = { UKR_authoritarian_lean = 5 }
+				UKR_clamp_leans = yes
+			}
 		}
 	}
 
@@ -127,6 +151,9 @@
 		x = 0
 		y = 1
 		cost = 3
+		ai_will_do = {
+			factor = 20
+		}
 		cancelable = no
 		prerequisite = {
 			focus = UKR_intelligence_operation
@@ -157,6 +184,9 @@
 		x = 0
 		y = 1
 		cost = 3
+		ai_will_do = {
+			factor = 20
+		}
 		prerequisite = {
 			focus = UKR_donbass_conflict_and_crimea_annexation
 		}
@@ -188,6 +218,9 @@
 		x = 0
 		y = 1
 		cost = 3
+		ai_will_do = {
+			factor = 20
+		}
 		prerequisite = {
 			focus = UKR_oligarchs_and_economy
 		}
@@ -202,6 +235,11 @@
 				}
 			}
 			custom_effect_tooltip = UKR_rada_and_oligarchs_tt
+			# Склонность (скрыто)
+			hidden_effect = {
+				add_to_variable = { UKR_authoritarian_lean = 6 }
+				UKR_clamp_leans = yes
+			}
 		}
 	}
 	focus = {
@@ -211,6 +249,9 @@
 		x = 0
 		y = 1
 		cost = 3
+		ai_will_do = {
+			factor = 20
+		}
 		prerequisite = {
 			focus = UKR_corruption_and_power_consolidation
 		}
@@ -231,7 +272,10 @@
 		relative_position_id = UKR_presidential_elections
 		x = 0
 		y = 1
-		cost = 7
+		cost = 5
+		ai_will_do = {
+			factor = 20
+		}
 		prerequisite = {
 			focus = UKR_presidential_elections
 		}
@@ -264,6 +308,9 @@
 		x = 0
 		y = 1
 		cost = 4
+		ai_will_do = {
+			factor = 20
+		}
 		available = {
 			has_country_leader = {
 				character = UKR_volodymyr_zelensky
@@ -316,7 +363,10 @@
 		relative_position_id = UKR_european_integration
 		x = 1
 		y = 1
-		cost = 5
+		cost = 4
+		ai_will_do = {
+			factor = 15
+		}
 		available = {
 			has_country_leader = {
 				character = UKR_volodymyr_zelensky
@@ -360,7 +410,10 @@
 		relative_position_id = UKR_european_integration
 		x = -1
 		y = 1
-		cost = 9
+		cost = 6
+		ai_will_do = {
+			factor = 10
+		}
 		available = {
 			has_country_leader = {
 				character = UKR_volodymyr_zelensky
@@ -394,6 +447,11 @@
 					instant_build = yes
 				}
 			}
+			# Склонность (скрыто)
+			hidden_effect = {
+				add_to_variable = { UKR_left_lean = 5 }
+				UKR_clamp_leans = yes
+			}
 		}
 	}
 	focus = {
@@ -402,7 +460,10 @@
 		relative_position_id = UKR_develop_domestic_industry
 		x = 1
 		y = 1
-		cost = 5
+		cost = 4
+		ai_will_do = {
+			factor = 15
+		}
 		available = {
 			has_country_leader = {
 				character = UKR_volodymyr_zelensky
@@ -444,6 +505,11 @@
 				value = -8
 			}
 			add_income_with_inflation = yes
+			# Склонность (скрыто)
+			hidden_effect = {
+				add_to_variable = { UKR_nationalist_lean = 3 }
+				UKR_clamp_leans = yes
+			}
 		}
 	}
 	focus = {
@@ -452,7 +518,10 @@
 		relative_position_id = UKR_defensive_fortifications
 		x = 0
 		y = 1
-		cost = 7
+		cost = 5
+		ai_will_do = {
+			factor = 15
+		}
 		available = {
 			has_country_leader = {
 				character = UKR_volodymyr_zelensky
@@ -476,6 +545,11 @@
 				add_unit_leader_trait = brilliant_strategist
 			}
 			set_country_flag = UKR_territorial_defense_forces_flag
+			# Склонность (скрыто)
+			hidden_effect = {
+				add_to_variable = { UKR_nationalist_lean = 6 }
+				UKR_clamp_leans = yes
+			}
 		}
 	}
 	focus = {
@@ -484,7 +558,10 @@
 		relative_position_id = UKR_european_integration
 		x = -3
 		y = 1
-		cost = 5
+		cost = 4
+		ai_will_do = {
+			factor = 10
+		}
 		available = {
 			has_country_leader = {
 				character = UKR_volodymyr_zelensky
@@ -514,7 +591,10 @@
 		relative_position_id = UKR_path_to_independence
 		x = 3
 		y = 1
-		cost = 6
+		cost = 4
+		ai_will_do = {
+			factor = 10
+		}
 		available = {
 			has_country_leader = {
 				character = UKR_volodymyr_zelensky
@@ -543,6 +623,11 @@
 				}
 			}
 			set_country_flag = UKR_national_reconciliation_flag
+			# Склонность (скрыто)
+			hidden_effect = {
+				add_to_variable = { UKR_left_lean = 4 }
+				UKR_clamp_leans = yes
+			}
 		}
 	}
 	focus = {
@@ -550,7 +635,10 @@
 		icon = GFX_SOV_planned_economy_ccp_2d_sov_compatibility
 		x = 10
 		y = 0
-		cost = 5
+		cost = 3
+		ai_will_do = {
+			factor = 10
+		}
 		available = {
 			has_completed_focus = UKR_path_to_independence
 			has_country_leader = {
@@ -575,7 +663,10 @@
 		x = -2
 		y = 1
 		
-		cost = 12
+		cost = 6
+		ai_will_do = {
+			factor = 3
+		}
 		
 		available = {
 			has_war = no
@@ -625,7 +716,10 @@
 		x = 0
 		y = 1
 		
-		cost = 8
+		cost = 5
+		ai_will_do = {
+			factor = 3
+		}
 		
 		available = {
 			has_country_leader = {
@@ -678,7 +772,10 @@
 		x = 0
 		y = 1
 		
-		cost = 7
+		cost = 4
+		ai_will_do = {
+			factor = 3
+		}
 		
 		available = {
 			has_country_leader = {
@@ -719,7 +816,10 @@
 		x = 0
 		y = 1
 		
-		cost = 6
+		cost = 4
+		ai_will_do = {
+			factor = 3
+		}
 		
 		available = {
 			has_country_leader = {
@@ -764,7 +864,10 @@
 		x = 0
 		y = 1
 		
-		cost = 5
+		cost = 4
+		ai_will_do = {
+			factor = 3
+		}
 		
 		available = {
 			has_country_leader = {
@@ -798,7 +901,10 @@
 		relative_position_id = UKR_economic_transformation
 		x = 2
 		y = 1
-		cost = 8
+		cost = 6
+		ai_will_do = {
+			factor = 10
+		}
 		prerequisite = {
 			focus = UKR_economic_transformation
 		}
@@ -827,6 +933,11 @@
 				value = -22.8
 			}
 			add_income_with_inflation = yes
+			# Склонность (скрыто)
+			hidden_effect = {
+				add_to_variable = { UKR_left_lean = 3 }
+				UKR_clamp_leans = yes
+			}
 		}
 	}
 	focus = {
@@ -835,7 +946,10 @@
 		relative_position_id = UKR_big_construction
 		x = 0
 		y = 1
-		cost = 5
+		cost = 4
+		ai_will_do = {
+			factor = 10
+		}
 		prerequisite = {
 			focus = UKR_big_construction
 		}
@@ -859,6 +973,11 @@
 				value = 10.5
 			}
 			add_income_with_inflation = yes
+			# Склонность (скрыто)
+			hidden_effect = {
+				add_to_variable = { UKR_digital_lean = 6 }
+				UKR_clamp_leans = yes
+			}
 		}
 	}
 	focus = {
@@ -868,6 +987,9 @@
 		x = 0
 		y = 1
 		cost = 4
+		ai_will_do = {
+			factor = 10
+		}
 		prerequisite = {
 			focus = UKR_digital_economy
 		}
@@ -888,6 +1010,11 @@
 			#unlock_decision_tooltip = UKR_startup_ecosystem_category
 			unlock_decision_tooltip = UKR_national_startup_fund
 			custom_effect_tooltip = UKR_startup_ecosystem_tooltip
+			# Склонность (скрыто)
+			hidden_effect = {
+				add_to_variable = { UKR_digital_lean = 5 }
+				UKR_clamp_leans = yes
+			}
 		}
 	}
 	focus = {
@@ -896,7 +1023,10 @@
 		relative_position_id = UKR_economic_transformation
 		x = 0
 		y = 1
-		cost = 6
+		cost = 5
+		ai_will_do = {
+			factor = 10
+		}
 		prerequisite = {
 			focus = UKR_economic_transformation
 		}
@@ -930,7 +1060,10 @@
 		relative_position_id = UKR_agricultural_reform
 		x = 0
 		y = 1
-		cost = 5
+		cost = 4
+		ai_will_do = {
+			factor = 10
+		}
 		prerequisite = {
 			focus = UKR_agricultural_reform
 		}
@@ -956,7 +1089,10 @@
 		relative_position_id = UKR_big_construction
 		x = 2
 		y = 1
-		cost = 10
+		cost = 7
+		ai_will_do = {
+			factor = 10
+		}
 		prerequisite = {
 			focus = UKR_big_construction
 		}
@@ -1037,7 +1173,7 @@
 		relative_position_id = UKR_reform_general_staff_nato_standards
 		x = -2
 		y = 4
-		cost = 6
+		cost = 5
 		
 		prerequisite = {
 			focus = UKR_reform_general_staff_nato_standards
@@ -1078,7 +1214,7 @@
 		relative_position_id = UKR_reform_general_staff_nato_standards
 		x = 2
 		y = 4
-		cost = 6
+		cost = 5
 		
 		prerequisite = {
 			focus = UKR_reform_general_staff_nato_standards
@@ -1107,6 +1243,11 @@
 			}
 			add_ideas = UKR_UAV_warfare_pioneers
 			custom_effect_tooltip = UKR_drone_doctrine_tooltip
+			# Склонность (скрыто)
+			hidden_effect = {
+				add_to_variable = { UKR_digital_lean = 6 }
+				UKR_clamp_leans = yes
+			}
 		}
 	}
 
@@ -1120,7 +1261,7 @@
 		relative_position_id = UKR_reform_general_staff_nato_standards
 		x = -4
 		y = 1
-		cost = 6
+		cost = 4
 		ai_will_do = {
 			factor = 10
 			modifier = {
@@ -1167,7 +1308,7 @@
 		relative_position_id = UKR_mobile_tactics_doctrine
 		x = 0
 		y = 1
-		cost = 7
+		cost = 5
 		ai_will_do = {
 			factor = 10
 		}
@@ -1211,7 +1352,7 @@
 		relative_position_id =  UKR_modernize_tank_forces
 		x = 0
 		y = 1
-		cost = 8
+		cost = 6
 		ai_will_do = {
 			factor = 10
 		}
@@ -1244,7 +1385,7 @@
 		relative_position_id = UKR_reform_general_staff_nato_standards
 		x = 0
 		y = 1
-		cost = 6
+		cost = 4
 		ai_will_do = {
 			factor = 15
 		}
@@ -1282,7 +1423,7 @@
 		relative_position_id = UKR_combined_arms_doctrine
 		x = 0
 		y = 1
-		cost = 7
+		cost = 5
 		ai_will_do = {
 			factor = 10
 		}
@@ -1303,7 +1444,7 @@
 		relative_position_id = UKR_mobile_groups_tactics
 		x = 0
 		y = 1
-		cost = 8
+		cost = 6
 		ai_will_do = {
 			factor = 10
 		}
@@ -1337,7 +1478,7 @@
 		relative_position_id = UKR_reform_general_staff_nato_standards
 		x = 4
 		y = 1
-		cost = 6
+		cost = 4
 		ai_will_do = {
 			factor = 10
 			modifier = {
@@ -1378,7 +1519,7 @@
 		relative_position_id = UKR_defensive_doctrine
 		x = 0
 		y = 1
-		cost = 7
+		cost = 5
 		ai_will_do = {
 			factor = 10
 		}
@@ -1411,7 +1552,7 @@
 		relative_position_id = UKR_fortification_construction
 		x = 0
 		y = 1
-		cost = 8
+		cost = 6
 		ai_will_do = {
 			factor = 10
 		}
@@ -1446,7 +1587,10 @@
 		icon = GFX_focus_generic_diplomatic_treaty
 		x = 30
 		y = 0
-		cost = 8
+		cost = 3
+		ai_will_do = {
+			factor = 10
+		}
 		
 		available = {
 			has_completed_focus = UKR_economic_transformation
@@ -1472,7 +1616,10 @@
 		relative_position_id = UKR_path_to_new_ukraine
 		x = -3
 		y = 1
-		cost = 6
+		cost = 5
+		ai_will_do = {
+			factor = 10
+		}
 		prerequisite = { focus = UKR_path_to_new_ukraine }
 		
 		available = {
@@ -1504,7 +1651,10 @@
 		relative_position_id = UKR_chernobyl_legacy
 		x = 0
 		y = 1
-		cost = 7
+		cost = 6
+		ai_will_do = {
+			factor = 10
+		}
 		prerequisite = { focus = UKR_chernobyl_legacy }
 		completion_reward = {
 			add_tech_bonus = {
@@ -1534,7 +1684,10 @@
 		relative_position_id = UKR_modernize_nuclear_facilities
 		x = 0
 		y = 1
-		cost = 10
+		cost = 7
+		ai_will_do = {
+			factor = 10
+		}
 		prerequisite = { focus = UKR_modernize_nuclear_facilities }
 		
 		completion_reward = {
@@ -1557,7 +1710,10 @@
 		relative_position_id = UKR_path_to_new_ukraine
 		x = 0
 		y = 1
-		cost = 6
+		cost = 5
+		ai_will_do = {
+			factor = 15
+		}
 		prerequisite = { focus = UKR_path_to_new_ukraine }
 		
 		completion_reward = {
@@ -1572,7 +1728,10 @@
 		relative_position_id = UKR_military_adaptability
 		x = 0
 		y = 1
-		cost = 7
+		cost = 6
+		ai_will_do = {
+			factor = 15
+		}
 		prerequisite = { focus = UKR_military_adaptability }
 		
 		completion_reward = {
@@ -1614,7 +1773,10 @@
 		relative_position_id = UKR_military_industrial_complex
 		x = 0
 		y = 1
-		cost = 8
+		cost = 5
+		ai_will_do = {
+			factor = 10
+		}
 		prerequisite = { focus = UKR_military_industrial_complex }
 		
 		completion_reward = {
@@ -1642,7 +1804,10 @@
 		relative_position_id = UKR_path_to_new_ukraine
 		x = 3
 		y = 1
-		cost = 5
+		cost = 4
+		ai_will_do = {
+			factor = 10
+		}
 		prerequisite = { focus = UKR_path_to_new_ukraine }
 		
 		completion_reward = {
@@ -1656,6 +1821,11 @@
 			hidden_effect = {
 				unlock_decision_category = UKR_decommunization_category
 			}
+			# Склонность (скрыто)
+			hidden_effect = {
+				add_to_variable = { UKR_nationalist_lean = 6 }
+				UKR_clamp_leans = yes
+			}
 		}
 	}
 	
@@ -1665,7 +1835,10 @@
 		relative_position_id = UKR_decommunization
 		x = 0
 		y = 1
-		cost = 7
+		cost = 5
+		ai_will_do = {
+			factor = 10
+		}
 		prerequisite = { focus = UKR_decommunization }
 		
 		completion_reward = {
@@ -1694,6 +1867,11 @@
 			#hidden_effect = {
 				#unlock_decision_category = UKR_cultural_development
 			#}
+			# Склонность (скрыто)
+			hidden_effect = {
+				add_to_variable = { UKR_nationalist_lean = 5 }
+				UKR_clamp_leans = yes
+			}
 		}
 	}
 	
@@ -1703,7 +1881,10 @@
 		relative_position_id = UKR_ukrainian_renaissance
 		x = 0
 		y = 1
-		cost = 8
+		cost = 6
+		ai_will_do = {
+			factor = 10
+		}
 		prerequisite = { focus = UKR_ukrainian_renaissance }
 		available = {
 			OR = {
@@ -1724,6 +1905,11 @@
 				value = 0.35
 			}
 			add_academic_development = yes
+			# Склонность (скрыто)
+			hidden_effect = {
+				add_to_variable = { UKR_digital_lean = 3 }
+				UKR_clamp_leans = yes
+			}
 		}
 	}
 	
@@ -1733,7 +1919,7 @@
 		icon = GFX_UKR_Covid
 		x = 5
 		y = 0
-		cost = 5
+		cost = 3
 		available = {
 			has_idea = UKR_covid_crisis
 		}
@@ -1747,9 +1933,117 @@
 			hidden_effect = {
 				set_country_flag = UKR_covid_decisions_unlocked
 			}
+			# Склонность (скрыто)
+			hidden_effect = {
+				add_to_variable = { UKR_left_lean = 4 }
+				UKR_clamp_leans = yes
+			}
 		}
 	}
 
+	# === Необязательная ветка склонностей (блок 1) ===
+	# Цифровое государство: запуск «Дії» (2020)
+	focus = {
+		id = UKR_state_in_smartphone
+		icon = GFX_goal_generic_scientific_exchange
+		relative_position_id = UKR_oligarchs_and_economy
+		x = 2
+		y = 1
+		cost = 3
+		prerequisite = { focus = UKR_oligarchs_and_economy }
+		available = {
+			has_country_leader = {
+				character = UKR_volodymyr_zelensky
+				ruling_only = yes
+			}
+		}
+		ai_will_do = {
+			factor = 8
+		}
+		completion_reward = {
+			add_political_power = 25
+			add_stability = 0.01
+			set_temp_variable = {
+				var = income_var_temp
+				value = -1.5
+			}
+			add_income_with_inflation = yes
+			set_temp_variable = {
+				var = society_development_var_temp
+				value = 0.05
+			}
+			add_society_development = yes
+			hidden_effect = {
+				add_to_variable = { UKR_digital_lean = 8 }
+				UKR_clamp_leans = yes
+			}
+		}
+	}
 
+	# Санкции СНБО против «своих» (2021)
+	focus = {
+		id = UKR_nsdc_sanctions
+		icon = GFX_goal_generic_secret_weapon
+		relative_position_id = UKR_corruption_and_power_consolidation
+		x = 2
+		y = 1
+		cost = 3
+		prerequisite = { focus = UKR_corruption_and_power_consolidation }
+		available = {
+			has_country_leader = {
+				character = UKR_volodymyr_zelensky
+				ruling_only = yes
+			}
+		}
+		ai_will_do = {
+			factor = 6
+		}
+		completion_reward = {
+			add_political_power = 50
+			add_stability = -0.02
+			add_war_support = 0.02
+			hidden_effect = {
+				add_to_variable = { UKR_authoritarian_lean = 8 }
+				UKR_clamp_leans = yes
+			}
+		}
+	}
+
+	# Социальный щит: индексация пенсий и выплат
+	focus = {
+		id = UKR_social_shield
+		icon = GFX_goal_generic_consumer_goods
+		relative_position_id = UKR_presidential_elections
+		x = 2
+		y = 1
+		cost = 3
+		prerequisite = { focus = UKR_presidential_elections }
+		available = {
+			has_country_leader = {
+				character = UKR_volodymyr_zelensky
+				ruling_only = yes
+			}
+		}
+		ai_will_do = {
+			factor = 8
+		}
+		completion_reward = {
+			add_stability = 0.03
+			set_temp_variable = {
+				var = income_var_temp
+				value = -3
+			}
+			add_income_with_inflation = yes
+			set_temp_variable = {
+				var = poverty_development_var_temp
+				value = 0.05
+			}
+			add_poverty_development = yes
+			hidden_effect = {
+				add_to_variable = { UKR_left_lean = 8 }
+				UKR_clamp_leans = yes
+			}
+		}
+	}
 
 }

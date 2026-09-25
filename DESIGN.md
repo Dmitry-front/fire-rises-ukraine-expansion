@@ -215,7 +215,7 @@ Namespace `ukraine_politics`, файл `events/UKR_events_politics.txt` (нов�
 - **Опция «Порошенко» в `ukraine.13` скрыта для игрока**, пока идёт блок 2 (условие `is_ai = yes` или нет флага `UKR_block2_ready`). ИИ-Украина по-прежнему может её выбрать. В опцию «Зеленский» добавляем флаг `UKR_zelensky_reelected`.
 - Бюджет: 1.01 → 20.05 = 140 дней ≈ **20 единиц cost**.
 
-### 6.1. Раскладка фокусов [темы РЕШЕНО, раскладка ПРЕДЛОЖЕНО]
+### 6.1. Раскладка фокусов [РЕШЕНО, в коде `common/national_focus/UKR_block2_focus.txt`]
 | Ряд | Фокус | Cost | Суть |
 |---|---|---|---|
 | 0 | «Кампания 2024» | авто | завершается при загрузке дерева (`complete_national_focus`) |
@@ -240,19 +240,19 @@ Namespace `ukraine_politics`, файл `events/UKR_events_politics.txt` (нов�
 - Слухи о расследовании нарастают по ходу цепочки, но не срывают выборы.
 - **Полный, глобальный скандал случается в блоке 2** **[РЕШЕНО, автор: «наверное»]**; конец 2023 — только слухи, мелкие скандалы и превентивный распад союза (5.3).
 
-### 6.2.1. План событий кампании, `ukraine_politics` 200–299 [ПРЕДЛОЖЕНО, ждёт утверждения]
+### 6.2.1. План событий кампании, `ukraine_politics` 200–299 [РЕШЕНО, 25.09.2026]
 | ID | Когда | Событие | Выбор | Что двигает |
 |---|---|---|---|---|
 | 200 | 1.01.2024 | «Кампания стартует»: загрузка дерева блока 2 (по флагу `UKR_block2_ready`) | — | `load_focus_tree`, «Кампания 2024» завершается сама |
-| 201 | февраль | «Стадион так стадион» — оппонент зовёт на дебаты, отсылка к 2019 | принять вызов / отказаться | политсила или стабильность; мем без издёвки над людьми |
-| 202 | февраль | «Армия, мова, віра» — Порошенко атакует | факты и цифры / социальные обещания / жёсткий ответ / перехватить патриотическую повестку | +2 к `digital` / `left` / `authoritarian` / `nationalist` |
-| 203 | март | «Бывший союзник»: Тимошенко идёт на выборы и бьёт по президенту за распад союза | ответить / промолчать | политсила, стабильность |
+| 201 | февраль | «Стадион 2.0» — роли поменялись: теперь Порошенко зовёт действующего президента на реванш на тот же «Олимпийский» (в 2019 Зеленский вызвал Порошенко, тот ответил «Стадион так стадион») | принять реванш / предложить дебаты онлайн через «Дію» / отказаться | политсила или стабильность, `digital` +2 |
+| 202 | февраль | «Армия. Мова. Віра. Досвід» — Порошенко дописывает к лозунгу 2019 года «опыт» и бьёт по распаду союза и слухам | факты и цифры / социальные обещания / жёсткий ответ / перехватить патриотическую повестку | +2 к `digital` / `left` / `authoritarian` / `nationalist` |
+| 203 | март | «Бывший союзник»: Тимошенко — **отдельный кандидат** [РЕШЕНО], бьёт по президенту за распад союза | ответить / промолчать | политсила, стабильность; флаг `UKR_tymoshenko_candidate_2024` (задел под её будущую ветку) |
 | 204 | март | «НАБУ проверяет контракты» — слухи о расследовании нарастают | текст зависит от развилки органов: подчинены — дело «буксует», защищены — идёт | подготовка к 300 |
-| 205 | 31.03 | Первый тур: Зеленский первый, Порошенко второй | — | итог в процентах в тексте |
+| 205 | 31.03 | Первый тур: Зеленский первый, Порошенко второй, Тимошенко третья | — | итог в процентах в тексте |
 | 206 | ~7.04 | «Между турами»: чьих избирателей добирать | левых / правых / молодёжь и IT / «порядок» | +2 к склонности |
 | 207 | 21.04 | Второй тур → вызывает `ukraine.13` | (в `ukraine.13` для игрока только «Зеленский») | флаг `UKR_zelensky_reelected` |
 
-### 7.1. План событий скандала, `ukraine_politics` 300–399 [ПРЕДЛОЖЕНО, ждёт утверждения]
+### 7.1. План событий скандала, `ukraine_politics` 300–399 [РЕШЕНО, 25.09.2026]
 | ID | Когда | Событие | Выбор | Что происходит |
 |---|---|---|---|---|
 | 300 | ~28.04 | «Обыски»: по версии следствия, НАБУ проводит обыски, связанные с Андреем Ермаком | — | текст зависит от развилки органов; открывает фокус «Лицом к расследованию» |
@@ -266,7 +266,7 @@ Namespace `ukraine_politics`, файл `events/UKR_events_politics.txt` (нов�
 - Пути **не блокируются** в принципе: любую опору можно взять в конце. **[РЕШЕНО]**
 - Если выбор — разворот на 180° от всего сделанного (низкая соответствующая склонность), применяются штрафы к стабильности, политсиле и т. д.
 
-**Штраф за разворот [ПРЕДЛОЖЕНО]:**
+**Штраф за разворот [ПРЕДЛОЖЕНО, в коде — ступенями]:** опора → склонность: технократы → `digital`, левые → `left`, олигархи → `authoritarian`, националисты → `nationalist`.
 - Склонность выбранной опоры ≥ 50 — без штрафа, при ≥ 75 небольшой бонус «органичный союз».
 - 25–49 — малый штраф (временная идея на несколько месяцев).
 - < 25 — большой штраф: стабильность, политсила, популярность, идея `UKR_pillar_mismatch` (масштаб пропорционален `25 − lean`).
@@ -428,7 +428,7 @@ Namespace `ukraine_politics`, файл `events/UKR_events_politics.txt` (нов�
 
 Существующие занятые номера (`ukraine.*`, `ukrainewar.*`) не перенумеровываем.
 
-Флаги и переменные (новые): `UKR_digital_lean`, `UKR_left_lean`, `UKR_authoritarian_lean`, `UKR_nationalist_lean`, `UKR_election_2023_done`, `UKR_rada_union_partner`, `UKR_anticorruption_subordinated`, `UKR_pillar_chosen_*`, `UKR_scandal_stage`, `UKR_golden_age_expectations`, `UKR_golden_age_started`, `UKR_politics_2023_started`, `UKR_rada_union_collapsed`, `UKR_block2_ready`. Файл событий: `events/UKR_events_politics.txt`. Переменная `UKR_honesty_2023`, временные `UKR_sn_target`. Scripted effects: `UKR_start_scandal_chain`, `UKR_rada_2023_results`, `UKR_rada_union_collapse_results` (`common/scripted_effects/UKR_politics_effects.txt`). События: `ukraine_politics.100–105, 110, 111, 120–125`. Scripted effect: `UKR_clamp_leans`. Фокусы: `UKR_state_in_smartphone`, `UKR_nsdc_sanctions`, `UKR_social_shield`, `UKR_golden_age` (план). Динамический модификатор: `UKR_golden_age` (план). Идеи: `UKR_national_memory_institute_radical`, `UKR_national_memory_institute_moderate`, `UKR_national_memory_institute_moderate_Holodomor`. Список дополняется по ходу работы.
+Флаги и переменные (новые): `UKR_digital_lean`, `UKR_left_lean`, `UKR_authoritarian_lean`, `UKR_nationalist_lean`, `UKR_election_2023_done`, `UKR_rada_union_partner`, `UKR_anticorruption_subordinated`, `UKR_pillar_chosen_*`, `UKR_scandal_stage`, `UKR_golden_age_expectations`, `UKR_golden_age_started`, `UKR_politics_2023_started`, `UKR_rada_union_collapsed`, `UKR_block2_ready`. Файл событий: `events/UKR_events_politics.txt`. **Блок 2:** дерево `UKR_block2` (`common/national_focus/UKR_block2_focus.txt`), фокусы `UKR_b2_campaign_2024`, `UKR_b2_veterans_against_oligarchs`, `UKR_b2_veteran_councils`, `UKR_b2_transparent_state`, `UKR_b2_loyal_people`, `UKR_b2_subordinate_anticorruption`, `UKR_b2_protect_anticorruption`, `UKR_b2_face_investigation`, `UKR_b2_meet_voters`, `UKR_b2_bet_technocrats`, `UKR_b2_bet_left`, `UKR_b2_bet_oligarchs`, `UKR_b2_bet_nationalists`; идеи (`common/ideas/UKR_ideas_politics.txt`) `UKR_captured_judiciary`, `UKR_eu_aid_frozen`, `UKR_pillar_organic`, `UKR_pillar_mismatch_minor`, `UKR_pillar_mismatch`; эффект `UKR_apply_pillar_mismatch`; флаги `UKR_block2_loaded`, `UKR_zelensky_reelected`, `UKR_tymoshenko_candidate_2024`, `UKR_scandal_2024_started`, `UKR_yermak_resurfaces`, `UKR_yermak_trial`, `UKR_yermak_resigned`, `UKR_second_term`, `UKR_pillar_chosen_technocrats/left/oligarchs/nationalists`; события `ukraine_politics.200–207`, `300–304`. Переменная `UKR_honesty_2023`, временные `UKR_sn_target`. Scripted effects: `UKR_start_scandal_chain`, `UKR_rada_2023_results`, `UKR_rada_union_collapse_results` (`common/scripted_effects/UKR_politics_effects.txt`). События: `ukraine_politics.100–105, 110, 111, 120–125`. Scripted effect: `UKR_clamp_leans`. Фокусы: `UKR_state_in_smartphone`, `UKR_nsdc_sanctions`, `UKR_social_shield`, `UKR_golden_age` (план). Динамический модификатор: `UKR_golden_age` (план). Идеи: `UKR_national_memory_institute_radical`, `UKR_national_memory_institute_moderate`, `UKR_national_memory_institute_moderate_Holodomor`. Список дополняется по ходу работы.
 
 ---
 
@@ -506,3 +506,5 @@ Namespace `ukraine_politics`, файл `events/UKR_events_politics.txt` (нов�
 - **25.09.2026 (сессия 2)** — план 2023 утверждён: 101 без запасного варианта (война в США неизбежна), 105 — +3 выбранной склонности и −5 остальным, 111 — союз без выбора, через коалицию TFR (половина политсилы партнёра).
 - **25.09.2026 (сессия 2)** — написаны события 2023 года `ukraine_politics.100–125` (файл `events/UKR_events_politics.txt`), эффекты выборов и распада (`UKR_politics_effects.txt`), локализация RU/EN. Переход в блок 2 пока только флагом `UKR_block2_ready`.
 - **25.09.2026 (сессия 2)** — блок 2: `ukraine.13` вызываем сами 21.04.2024; опция «Порошенко» скрыта для игрока; глава Офиса — Андрей Ермак по имени (обвинения — как обвинения). Добавлены две развилки: Донбасс и ветераны АТО (левые / правые), цифровизация или личная лояльность (технократы / вертикаль).
+- **25.09.2026 (сессия 2)** — план событий блока 2 утверждён: «Стадион 2.0» и «Армия. Мова. Віра. Досвід» — переработки мемов 2019, а не копии; Тимошенко — отдельный кандидат (возможна её ветка позже).
+- **25.09.2026 (сессия 2)** — блок 2 написан: дерево `UKR_block2` (13 фокусов), события кампании 200–207 и скандала 300–304, идеи блока 2, штраф за разворот ступенями; `ukraine.13`: флаг `UKR_zelensky_reelected`, опция «Порошенко» скрыта для игрока. Переход в блок 3 пока только флагом `UKR_second_term`.

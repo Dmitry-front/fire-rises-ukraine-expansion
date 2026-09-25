@@ -473,6 +473,7 @@ country_event = {
 	}
 	option = {
 		name = ukraine.13.a
+		set_country_flag = UKR_zelensky_reelected
 		add_popularity = {
 			ideology = social_liberal
 			popularity = 0.15
@@ -509,6 +510,13 @@ country_event = {
 	}
 	option = {
 		name = ukraine.13.b
+		# Для игрока скрыто, пока идёт блок 2 (DESIGN.md, 6.0); ИИ может выбрать
+		trigger = {
+			OR = {
+				is_ai = yes
+				NOT = { has_country_flag = UKR_block2_loaded }
+			}
+		}
 		set_politics = {
 			ruling_party = conservative
 			elections_allowed = no

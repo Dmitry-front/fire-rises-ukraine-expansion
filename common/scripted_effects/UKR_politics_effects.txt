@@ -251,3 +251,25 @@ UKR_rada_union_collapse_results = {
 		}
 	}
 }
+
+# Ставка на опору: штраф за разворот на 180° (DESIGN.md, 6.3).
+# Перед вызовом: set_temp_variable = { UKR_pillar_lean_tmp = <склонность выбранной опоры> }
+UKR_apply_pillar_mismatch = {
+	if = {
+		limit = { check_variable = { UKR_pillar_lean_tmp > 74 } }
+		add_timed_idea = { idea = UKR_pillar_organic days = 365 }
+	}
+	else_if = {
+		limit = { check_variable = { UKR_pillar_lean_tmp > 49 } }
+		add_political_power = 25
+	}
+	else_if = {
+		limit = { check_variable = { UKR_pillar_lean_tmp > 24 } }
+		add_timed_idea = { idea = UKR_pillar_mismatch_minor days = 120 }
+	}
+	else = {
+		add_stability = -0.05
+		add_political_power = -50
+		add_timed_idea = { idea = UKR_pillar_mismatch days = 180 }
+	}
+}

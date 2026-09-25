@@ -132,6 +132,9 @@
 DESIGN.md                                         — дизайн-документ (сюжет, блоки, реестр ID, журнал решений)
 TECH_DEBT.md                                      — открытый техдолг (TD-*), закрытое переносится в DESIGN.md, раздел 11
 common/national_focus/TFR_national_focus_UKR.txt  — древо UKR (около 50 фокусов)
+common/national_focus/UKR_block2_focus.txt        — древо блока 2 (кампания 2024), грузится событием ukraine_politics.200
+events/UKR_events_politics.txt                    — политика 2023–2024 (ukraine_politics)
+common/scripted_effects/UKR_politics_effects.txt  — выборы, распад союза, штраф за разворот; UKR_lean_effects.txt — склонности
 common/decisions/TFR_decisions_UKR*.txt           — решения (земля, СВО, мобилизация, война)
 common/ideas/TFR_ideas_UKR*.txt                   — идеи
 common/characters/TFR_characters_UKR.txt          — персонажи
@@ -159,3 +162,4 @@ _Список фокусов, событий и идей с временными
 - Идеи `UKR_national_memory_institute_radical`, `UKR_national_memory_institute_moderate`, `UKR_national_memory_institute_moderate_Holodomor` — сейчас иконки итогов декоммунизации.
 - Фокусы `UKR_state_in_smartphone`, `UKR_nsdc_sanctions`, `UKR_social_shield` — временные `GFX_goal_generic_*`.
 - События `ukraine_politics.101–125` — временные картинки `GFX_report_event_ukrainian_civil_war` и `GFX_UKR_status_economy` (104). Нужны: кризис Запада, левые, правые, «яйца по 17», кампания, выборы, союз, кулуары, распад союза, митинги.
+- События `ukraine_politics.200–304` — временная `GFX_report_event_ukrainian_civil_war`. Фокусы `UKR_b2_*` — временные `GFX_goal_generic_*`. Идеи `UKR_captured_judiciary`, `UKR_eu_aid_frozen`, `UKR_pillar_*` — чужие украинские спрайты.

@@ -1,0 +1,333 @@
+﻿# Блок 2: президентская кампания 2024 (DESIGN.md, раздел 6)
+# Загружается событием ukraine_politics.200 через load_focus_tree (keep_completed = yes).
+focus_tree = {
+	id = UKR_block2
+	country = {
+		factor = 0
+	}
+	default = no
+
+	# Ряд 0. Старт кампании — завершается автоматически при загрузке дерева
+	focus = {
+		id = UKR_b2_campaign_2024
+		icon = GFX_goal_generic_propaganda
+		x = 6
+		y = 0
+		cost = 1
+		available = {
+			always = no
+		}
+		ai_will_do = {
+			factor = 1
+		}
+		completion_reward = {
+			add_political_power = 25
+		}
+	}
+
+	# Ряд 1. Донбасс и ветераны АТО: левые или правые
+	focus = {
+		id = UKR_b2_veterans_against_oligarchs
+		icon = GFX_goal_generic_consumer_goods
+		prerequisite = { focus = UKR_b2_campaign_2024 }
+		mutually_exclusive = { focus = UKR_b2_veteran_councils }
+		relative_position_id = UKR_b2_campaign_2024
+		x = -5
+		y = 1
+		cost = 3
+		ai_will_do = {
+			factor = 10
+			modifier = {
+				factor = 2
+				check_variable = { var = UKR_left_lean value = UKR_nationalist_lean compare = greater_than }
+			}
+		}
+		completion_reward = {
+			add_stability = 0.02
+			set_temp_variable = {
+				var = income_var_temp
+				value = -2
+			}
+			add_income_with_inflation = yes
+			add_popularity = { ideology = social_democrat popularity = 0.02 }
+			hidden_effect = {
+				add_to_variable = { UKR_left_lean = 6 }
+				add_to_variable = { UKR_nationalist_lean = -2 }
+				UKR_clamp_leans = yes
+			}
+		}
+	}
+
+	focus = {
+		id = UKR_b2_veteran_councils
+		icon = GFX_goal_generic_national_unity
+		prerequisite = { focus = UKR_b2_campaign_2024 }
+		mutually_exclusive = { focus = UKR_b2_veterans_against_oligarchs }
+		relative_position_id = UKR_b2_campaign_2024
+		x = -3
+		y = 1
+		cost = 3
+		ai_will_do = {
+			factor = 10
+			modifier = {
+				factor = 2
+				check_variable = { var = UKR_nationalist_lean value = UKR_left_lean compare = greater_than }
+			}
+		}
+		completion_reward = {
+			add_war_support = 0.03
+			add_manpower = 5000
+			add_popularity = { ideology = nationalist popularity = 0.02 }
+			hidden_effect = {
+				add_to_variable = { UKR_nationalist_lean = 6 }
+				add_to_variable = { UKR_left_lean = -2 }
+				UKR_clamp_leans = yes
+			}
+		}
+	}
+
+	# Ряд 1. Цифровизация или личная лояльность: технократы или вертикаль
+	focus = {
+		id = UKR_b2_transparent_state
+		icon = GFX_goal_generic_scientific_exchange
+		prerequisite = { focus = UKR_b2_campaign_2024 }
+		mutually_exclusive = { focus = UKR_b2_loyal_people }
+		relative_position_id = UKR_b2_campaign_2024
+		x = 3
+		y = 1
+		cost = 3
+		ai_will_do = {
+			factor = 10
+			modifier = {
+				factor = 2
+				check_variable = { var = UKR_digital_lean value = UKR_authoritarian_lean compare = greater_than }
+			}
+		}
+		completion_reward = {
+			add_stability = 0.01
+			set_temp_variable = {
+				var = society_development_var_temp
+				value = 0.03
+			}
+			add_society_development = yes
+			hidden_effect = {
+				add_to_variable = { UKR_digital_lean = 6 }
+				add_to_variable = { UKR_authoritarian_lean = -2 }
+				UKR_clamp_leans = yes
+			}
+		}
+	}
+
+	focus = {
+		id = UKR_b2_loyal_people
+		icon = GFX_goal_generic_political_pressure
+		prerequisite = { focus = UKR_b2_campaign_2024 }
+		mutually_exclusive = { focus = UKR_b2_transparent_state }
+		relative_position_id = UKR_b2_campaign_2024
+		x = 5
+		y = 1
+		cost = 3
+		ai_will_do = {
+			factor = 10
+			modifier = {
+				factor = 2
+				check_variable = { var = UKR_authoritarian_lean value = UKR_digital_lean compare = greater_than }
+			}
+		}
+		completion_reward = {
+			add_political_power = 75
+			add_stability = -0.01
+			hidden_effect = {
+				add_to_variable = { UKR_authoritarian_lean = 6 }
+				add_to_variable = { UKR_digital_lean = -2 }
+				UKR_clamp_leans = yes
+			}
+		}
+	}
+
+	# Ряд 1. Необязательный фокус кампании
+	focus = {
+		id = UKR_b2_meet_voters
+		icon = GFX_goal_support_democracy
+		prerequisite = { focus = UKR_b2_campaign_2024 }
+		relative_position_id = UKR_b2_campaign_2024
+		x = 0
+		y = 1
+		cost = 3
+		ai_will_do = {
+			factor = 5
+		}
+		completion_reward = {
+			add_stability = 0.02
+			add_political_power = 30
+			add_popularity = { ideology = social_liberal popularity = 0.02 }
+		}
+	}
+
+	# Ряд 2. Антикоррупционные органы: подчинить или защитить
+	focus = {
+		id = UKR_b2_subordinate_anticorruption
+		icon = GFX_goal_generic_dangerous_deal
+		prerequisite = { focus = UKR_b2_veterans_against_oligarchs focus = UKR_b2_veteran_councils }
+		prerequisite = { focus = UKR_b2_transparent_state focus = UKR_b2_loyal_people }
+		mutually_exclusive = { focus = UKR_b2_protect_anticorruption }
+		relative_position_id = UKR_b2_campaign_2024
+		x = -2
+		y = 2
+		cost = 4
+		ai_will_do = {
+			factor = 5
+			modifier = {
+				factor = 3
+				check_variable = { UKR_authoritarian_lean > 40 }
+			}
+		}
+		completion_reward = {
+			add_political_power = 75
+			add_ideas = UKR_captured_judiciary
+			hidden_effect = {
+				add_to_variable = { UKR_authoritarian_lean = 5 }
+				UKR_clamp_leans = yes
+			}
+		}
+	}
+
+	focus = {
+		id = UKR_b2_protect_anticorruption
+		icon = GFX_goal_generic_improve_relations
+		prerequisite = { focus = UKR_b2_veterans_against_oligarchs focus = UKR_b2_veteran_councils }
+		prerequisite = { focus = UKR_b2_transparent_state focus = UKR_b2_loyal_people }
+		mutually_exclusive = { focus = UKR_b2_subordinate_anticorruption }
+		relative_position_id = UKR_b2_campaign_2024
+		x = 2
+		y = 2
+		cost = 4
+		ai_will_do = {
+			factor = 10
+		}
+		completion_reward = {
+			add_political_power = -50
+			add_stability = 0.02
+			hidden_effect = {
+				add_to_variable = { UKR_digital_lean = 2 }
+				add_to_variable = { UKR_left_lean = 2 }
+				add_to_variable = { UKR_nationalist_lean = 2 }
+				UKR_clamp_leans = yes
+			}
+		}
+	}
+
+	# Ряд 3. Кризисный фокус: открывается, когда начался скандал (событие 300)
+	focus = {
+		id = UKR_b2_face_investigation
+		icon = GFX_goal_generic_major_alliance
+		prerequisite = { focus = UKR_b2_subordinate_anticorruption focus = UKR_b2_protect_anticorruption }
+		relative_position_id = UKR_b2_campaign_2024
+		x = 5
+		y = 3
+		cost = 2
+		available = {
+			has_country_flag = UKR_scandal_2024_started
+		}
+		ai_will_do = {
+			factor = 20
+		}
+		completion_reward = {
+			add_political_power = 40
+			add_stability = 0.03
+		}
+	}
+
+	# Ряд 4. Ставка на опору второго срока
+	focus = {
+		id = UKR_b2_bet_technocrats
+		icon = GFX_goal_generic_scientific_exchange
+		prerequisite = { focus = UKR_b2_subordinate_anticorruption focus = UKR_b2_protect_anticorruption }
+		mutually_exclusive = { focus = UKR_b2_bet_left focus = UKR_b2_bet_oligarchs focus = UKR_b2_bet_nationalists }
+		relative_position_id = UKR_b2_campaign_2024
+		x = -3
+		y = 4
+		cost = 5
+		ai_will_do = {
+			factor = 10
+			modifier = {
+				factor = 3
+				check_variable = { UKR_digital_lean > 49 }
+			}
+		}
+		completion_reward = {
+			set_country_flag = UKR_pillar_chosen_technocrats
+			set_temp_variable = { UKR_pillar_lean_tmp = UKR_digital_lean }
+			UKR_apply_pillar_mismatch = yes
+		}
+	}
+
+	focus = {
+		id = UKR_b2_bet_left
+		icon = GFX_goal_generic_consumer_goods
+		prerequisite = { focus = UKR_b2_subordinate_anticorruption focus = UKR_b2_protect_anticorruption }
+		mutually_exclusive = { focus = UKR_b2_bet_technocrats focus = UKR_b2_bet_oligarchs focus = UKR_b2_bet_nationalists }
+		relative_position_id = UKR_b2_campaign_2024
+		x = -1
+		y = 4
+		cost = 5
+		ai_will_do = {
+			factor = 10
+			modifier = {
+				factor = 3
+				check_variable = { UKR_left_lean > 49 }
+			}
+		}
+		completion_reward = {
+			set_country_flag = UKR_pillar_chosen_left
+			set_temp_variable = { UKR_pillar_lean_tmp = UKR_left_lean }
+			UKR_apply_pillar_mismatch = yes
+		}
+	}
+
+	focus = {
+		id = UKR_b2_bet_oligarchs
+		icon = GFX_goal_generic_dangerous_deal
+		prerequisite = { focus = UKR_b2_subordinate_anticorruption focus = UKR_b2_protect_anticorruption }
+		mutually_exclusive = { focus = UKR_b2_bet_technocrats focus = UKR_b2_bet_left focus = UKR_b2_bet_nationalists }
+		relative_position_id = UKR_b2_campaign_2024
+		x = 1
+		y = 4
+		cost = 5
+		ai_will_do = {
+			factor = 5
+			modifier = {
+				factor = 3
+				check_variable = { UKR_authoritarian_lean > 49 }
+			}
+		}
+		completion_reward = {
+			set_country_flag = UKR_pillar_chosen_oligarchs
+			set_temp_variable = { UKR_pillar_lean_tmp = UKR_authoritarian_lean }
+			UKR_apply_pillar_mismatch = yes
+		}
+	}
+
+	focus = {
+		id = UKR_b2_bet_nationalists
+		icon = GFX_goal_generic_national_unity
+		prerequisite = { focus = UKR_b2_subordinate_anticorruption focus = UKR_b2_protect_anticorruption }
+		mutually_exclusive = { focus = UKR_b2_bet_technocrats focus = UKR_b2_bet_left focus = UKR_b2_bet_oligarchs }
+		relative_position_id = UKR_b2_campaign_2024
+		x = 3
+		y = 4
+		cost = 5
+		ai_will_do = {
+			factor = 10
+			modifier = {
+				factor = 3
+				check_variable = { UKR_nationalist_lean > 49 }
+			}
+		}
+		completion_reward = {
+			set_country_flag = UKR_pillar_chosen_nationalists
+			set_temp_variable = { UKR_pillar_lean_tmp = UKR_nationalist_lean }
+			UKR_apply_pillar_mismatch = yes
+		}
+	}
+}

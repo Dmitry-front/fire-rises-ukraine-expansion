@@ -548,8 +548,552 @@ country_event = {
 		name = ukraine_politics.125.a
 		add_stability = -0.03
 		add_political_power = 50
-		# Дерево блока 2 ещё не написано: пока только флаг.
-		# Позже: load_focus_tree = { tree = UKR_block2 keep_completed = yes }
+		# Дерево блока 2 загружается событием ukraine_politics.200 (1.01.2024)
 		set_country_flag = UKR_block2_ready
+	}
+}
+
+# =====================================================================
+# Блок 2: президентская кампания 2024 (200–207) — DESIGN.md, 6.2.1
+# =====================================================================
+
+# Старт кампании: загрузка дерева блока 2
+country_event = {
+	id = ukraine_politics.200
+	title = ukraine_politics.200.t
+	desc = ukraine_politics.200.d
+	picture = GFX_report_event_ukrainian_civil_war
+
+	fire_only_once = yes
+
+	trigger = {
+		tag = UKR
+		date > 2023.12.31
+		has_country_flag = UKR_block2_ready
+		NOT = { has_country_flag = UKR_block2_loaded }
+	}
+
+	mean_time_to_happen = {
+		days = 1
+	}
+
+	immediate = {
+		set_country_flag = UKR_block2_loaded
+		load_focus_tree = {
+			tree = UKR_block2
+			keep_completed = yes
+		}
+		complete_national_focus = UKR_b2_campaign_2024
+		country_event = { id = ukraine_politics.201 days = 40 }
+		country_event = { id = ukraine_politics.202 days = 55 }
+		country_event = { id = ukraine_politics.203 days = 70 }
+		country_event = { id = ukraine_politics.204 days = 80 }
+	}
+
+	option = {
+		name = ukraine_politics.200.a
+		add_political_power = 25
+	}
+}
+
+# «Стадион 2.0»: реванш на «Олимпийском»
+country_event = {
+	id = ukraine_politics.201
+	title = ukraine_politics.201.t
+	desc = ukraine_politics.201.d
+	picture = GFX_report_event_ukrainian_civil_war
+
+	is_triggered_only = yes
+
+	trigger = {
+		tag = UKR
+	}
+
+	# Принять реванш
+	option = {
+		name = ukraine_politics.201.a
+		add_political_power = -25
+		add_stability = 0.02
+		add_popularity = { ideology = social_liberal popularity = 0.01 }
+		ai_chance = { factor = 40 }
+	}
+
+	# Дебаты онлайн через «Дію»
+	option = {
+		name = ukraine_politics.201.b
+		add_political_power = 10
+		hidden_effect = {
+			add_to_variable = { UKR_digital_lean = 2 }
+			UKR_clamp_leans = yes
+		}
+		ai_chance = { factor = 40 }
+	}
+
+	# Отказаться
+	option = {
+		name = ukraine_politics.201.c
+		add_political_power = 25
+		add_stability = -0.02
+		ai_chance = { factor = 20 }
+	}
+}
+
+# «Армия. Мова. Віра. Досвід»: атака Порошенко
+country_event = {
+	id = ukraine_politics.202
+	title = ukraine_politics.202.t
+	desc = ukraine_politics.202.d
+	picture = GFX_report_event_ukrainian_civil_war
+
+	is_triggered_only = yes
+
+	trigger = {
+		tag = UKR
+	}
+
+	# Факты и цифры
+	option = {
+		name = ukraine_politics.202.a
+		add_political_power = 15
+		hidden_effect = {
+			add_to_variable = { UKR_digital_lean = 2 }
+			UKR_clamp_leans = yes
+		}
+	}
+
+	# Социальные обещания
+	option = {
+		name = ukraine_politics.202.b
+		add_stability = 0.02
+		hidden_effect = {
+			add_to_variable = { UKR_left_lean = 2 }
+			UKR_clamp_leans = yes
+		}
+	}
+
+	# Жёсткий ответ
+	option = {
+		name = ukraine_politics.202.c
+		add_political_power = 30
+		add_stability = -0.01
+		hidden_effect = {
+			add_to_variable = { UKR_authoritarian_lean = 2 }
+			UKR_clamp_leans = yes
+		}
+	}
+
+	# Перехватить патриотическую повестку
+	option = {
+		name = ukraine_politics.202.e
+		add_war_support = 0.02
+		hidden_effect = {
+			add_to_variable = { UKR_nationalist_lean = 2 }
+			UKR_clamp_leans = yes
+		}
+	}
+}
+
+# «Бывший союзник»: Тимошенко — отдельный кандидат
+country_event = {
+	id = ukraine_politics.203
+	title = ukraine_politics.203.t
+	desc = ukraine_politics.203.d
+	picture = GFX_report_event_ukrainian_civil_war
+
+	is_triggered_only = yes
+
+	trigger = {
+		tag = UKR
+	}
+
+	immediate = {
+		set_country_flag = UKR_tymoshenko_candidate_2024
+	}
+
+	# Ответить
+	option = {
+		name = ukraine_politics.203.a
+		add_political_power = -20
+		add_stability = 0.01
+		ai_chance = { factor = 50 }
+	}
+
+	# Промолчать
+	option = {
+		name = ukraine_politics.203.b
+		add_political_power = 10
+		add_popularity = { ideology = social_liberal popularity = -0.01 }
+		add_popularity = { ideology = conservative popularity = 0.01 }
+		ai_chance = { factor = 50 }
+	}
+}
+
+# «НАБУ проверяет контракты»: слухи нарастают
+country_event = {
+	id = ukraine_politics.204
+	title = ukraine_politics.204.t
+	desc = {
+		text = ukraine_politics.204.d_sub
+		trigger = { has_completed_focus = UKR_b2_subordinate_anticorruption }
+	}
+	desc = {
+		text = ukraine_politics.204.d_prot
+		trigger = { has_completed_focus = UKR_b2_protect_anticorruption }
+	}
+	desc = {
+		text = ukraine_politics.204.d
+		trigger = {
+			NOT = { has_completed_focus = UKR_b2_subordinate_anticorruption }
+			NOT = { has_completed_focus = UKR_b2_protect_anticorruption }
+		}
+	}
+	picture = GFX_report_event_ukrainian_civil_war
+
+	is_triggered_only = yes
+
+	trigger = {
+		tag = UKR
+	}
+
+	option = {
+		name = ukraine_politics.204.a
+		add_political_power = -10
+	}
+}
+
+# Первый тур, 31.03.2024
+country_event = {
+	id = ukraine_politics.205
+	title = ukraine_politics.205.t
+	desc = ukraine_politics.205.d
+	picture = GFX_report_event_ukrainian_civil_war
+
+	fire_only_once = yes
+
+	trigger = {
+		tag = UKR
+		date > 2024.3.30
+		has_country_flag = UKR_block2_loaded
+		NOT = { has_war_with = SOV }
+	}
+
+	mean_time_to_happen = {
+		days = 1
+	}
+
+	option = {
+		name = ukraine_politics.205.a
+		add_political_power = 20
+		country_event = { id = ukraine_politics.206 days = 7 }
+		country_event = { id = ukraine_politics.207 days = 21 }
+	}
+}
+
+# Между турами: чьих избирателей добирать
+country_event = {
+	id = ukraine_politics.206
+	title = ukraine_politics.206.t
+	desc = ukraine_politics.206.d
+	picture = GFX_report_event_ukrainian_civil_war
+
+	is_triggered_only = yes
+
+	trigger = {
+		tag = UKR
+	}
+
+	# Левые
+	option = {
+		name = ukraine_politics.206.a
+		add_popularity = { ideology = social_democrat popularity = -0.01 }
+		add_popularity = { ideology = social_liberal popularity = 0.01 }
+		hidden_effect = {
+			add_to_variable = { UKR_left_lean = 2 }
+			UKR_clamp_leans = yes
+		}
+	}
+
+	# Правые
+	option = {
+		name = ukraine_politics.206.b
+		add_popularity = { ideology = conservative popularity = -0.01 }
+		add_popularity = { ideology = social_liberal popularity = 0.01 }
+		hidden_effect = {
+			add_to_variable = { UKR_nationalist_lean = 2 }
+			UKR_clamp_leans = yes
+		}
+	}
+
+	# Молодёжь и IT
+	option = {
+		name = ukraine_politics.206.c
+		add_political_power = 15
+		hidden_effect = {
+			add_to_variable = { UKR_digital_lean = 2 }
+			UKR_clamp_leans = yes
+		}
+	}
+
+	# «Порядок»
+	option = {
+		name = ukraine_politics.206.e
+		add_war_support = 0.02
+		hidden_effect = {
+			add_to_variable = { UKR_authoritarian_lean = 2 }
+			UKR_clamp_leans = yes
+		}
+	}
+}
+
+# Второй тур, ~21.04.2024: вызывает событие TFR ukraine.13
+country_event = {
+	id = ukraine_politics.207
+	title = ukraine_politics.207.t
+	desc = ukraine_politics.207.d
+	picture = GFX_report_event_ukrainian_civil_war
+
+	is_triggered_only = yes
+
+	trigger = {
+		tag = UKR
+	}
+
+	option = {
+		name = ukraine_politics.207.a
+		if = {
+			# TFR мог вызвать ukraine.13 раньше нас: исход «Зеленский» уже наступил
+			limit = { has_idea = UKR_zelensky_growing_authoritarism2 }
+			set_country_flag = UKR_zelensky_reelected
+		}
+		else = {
+			country_event = { id = ukraine.13 }
+		}
+	}
+}
+
+# =====================================================================
+# Блок 2: скандал вокруг главы Офиса (300–304) — DESIGN.md, 7.1
+# =====================================================================
+
+# «Обыски»
+country_event = {
+	id = ukraine_politics.300
+	title = ukraine_politics.300.t
+	desc = {
+		text = ukraine_politics.300.d_sub
+		trigger = { has_completed_focus = UKR_b2_subordinate_anticorruption }
+	}
+	desc = {
+		text = ukraine_politics.300.d
+		trigger = { NOT = { has_completed_focus = UKR_b2_subordinate_anticorruption } }
+	}
+	picture = GFX_report_event_ukrainian_civil_war
+
+	fire_only_once = yes
+
+	trigger = {
+		tag = UKR
+		date > 2024.4.26
+		has_country_flag = UKR_zelensky_reelected
+		has_country_flag = UKR_block2_loaded
+		NOT = { has_country_flag = UKR_scandal_2024_started }
+	}
+
+	mean_time_to_happen = {
+		days = 1
+	}
+
+	immediate = {
+		set_country_flag = UKR_scandal_2024_started
+	}
+
+	option = {
+		name = ukraine_politics.300.a
+		add_stability = -0.05
+		add_political_power = -25
+		country_event = { id = ukraine_politics.301 days = 5 }
+		country_event = { id = ukraine_politics.302 days = 10 }
+		country_event = { id = ukraine_politics.303 days = 14 }
+	}
+}
+
+# «Ермак»: защищать или отправить в отставку
+country_event = {
+	id = ukraine_politics.301
+	title = ukraine_politics.301.t
+	desc = ukraine_politics.301.d
+	picture = GFX_report_event_ukrainian_civil_war
+
+	is_triggered_only = yes
+
+	trigger = {
+		tag = UKR
+	}
+
+	# Защищать
+	option = {
+		name = ukraine_politics.301.a
+		if = {
+			limit = { has_completed_focus = UKR_b2_subordinate_anticorruption }
+			custom_effect_tooltip = UKR_yermak_resurfaces_tt
+			set_country_flag = UKR_yermak_resurfaces
+			add_stability = -0.02
+		}
+		else = {
+			custom_effect_tooltip = UKR_yermak_trial_tt
+			set_country_flag = UKR_yermak_trial
+			add_stability = -0.05
+			add_political_power = -50
+		}
+		hidden_effect = {
+			add_to_variable = { UKR_authoritarian_lean = 3 }
+			UKR_clamp_leans = yes
+		}
+		ai_chance = { factor = 40 }
+	}
+
+	# Отправить в отставку
+	option = {
+		name = ukraine_politics.301.b
+		if = {
+			limit = { has_completed_focus = UKR_b2_protect_anticorruption }
+			custom_effect_tooltip = UKR_yermak_trial_tt
+			set_country_flag = UKR_yermak_trial
+			add_stability = -0.02
+		}
+		else = {
+			custom_effect_tooltip = UKR_yermak_resigned_tt
+			set_country_flag = UKR_yermak_resigned
+			add_stability = -0.03
+		}
+		add_political_power = 25
+		ai_chance = { factor = 60 }
+	}
+}
+
+# «Опора выходит на сцену»
+country_event = {
+	id = ukraine_politics.302
+	title = ukraine_politics.302.t
+	desc = {
+		text = ukraine_politics.302.d_tech
+		trigger = { has_country_flag = UKR_pillar_chosen_technocrats }
+	}
+	desc = {
+		text = ukraine_politics.302.d_left
+		trigger = { has_country_flag = UKR_pillar_chosen_left }
+	}
+	desc = {
+		text = ukraine_politics.302.d_olig
+		trigger = { has_country_flag = UKR_pillar_chosen_oligarchs }
+	}
+	desc = {
+		text = ukraine_politics.302.d_nat
+		trigger = { has_country_flag = UKR_pillar_chosen_nationalists }
+	}
+	desc = {
+		text = ukraine_politics.302.d
+		trigger = {
+			NOT = { has_country_flag = UKR_pillar_chosen_technocrats }
+			NOT = { has_country_flag = UKR_pillar_chosen_left }
+			NOT = { has_country_flag = UKR_pillar_chosen_oligarchs }
+			NOT = { has_country_flag = UKR_pillar_chosen_nationalists }
+		}
+	}
+	picture = GFX_report_event_ukrainian_civil_war
+
+	is_triggered_only = yes
+
+	trigger = {
+		tag = UKR
+	}
+
+	option = {
+		name = ukraine_politics.302.a
+		if = {
+			limit = {
+				OR = {
+					has_country_flag = UKR_pillar_chosen_technocrats
+					has_country_flag = UKR_pillar_chosen_left
+					has_country_flag = UKR_pillar_chosen_oligarchs
+					has_country_flag = UKR_pillar_chosen_nationalists
+				}
+			}
+			add_stability = 0.05
+			add_political_power = 50
+		}
+		else = {
+			add_stability = -0.05
+		}
+	}
+}
+
+# «Брюссель реагирует»
+country_event = {
+	id = ukraine_politics.303
+	title = ukraine_politics.303.t
+	desc = {
+		text = ukraine_politics.303.d_sub
+		trigger = { has_completed_focus = UKR_b2_subordinate_anticorruption }
+	}
+	desc = {
+		text = ukraine_politics.303.d_prot
+		trigger = { has_completed_focus = UKR_b2_protect_anticorruption }
+	}
+	desc = {
+		text = ukraine_politics.303.d
+		trigger = {
+			NOT = { has_completed_focus = UKR_b2_subordinate_anticorruption }
+			NOT = { has_completed_focus = UKR_b2_protect_anticorruption }
+		}
+	}
+	picture = GFX_report_event_ukrainian_civil_war
+
+	is_triggered_only = yes
+
+	trigger = {
+		tag = UKR
+	}
+
+	option = {
+		name = ukraine_politics.303.a
+		if = {
+			limit = { has_completed_focus = UKR_b2_subordinate_anticorruption }
+			add_timed_idea = { idea = UKR_eu_aid_frozen days = 180 }
+		}
+		else_if = {
+			limit = { has_completed_focus = UKR_b2_protect_anticorruption }
+			add_political_power = 25
+			add_stability = 0.02
+		}
+	}
+}
+
+# Инаугурация, ~20.05.2024: второй срок
+country_event = {
+	id = ukraine_politics.304
+	title = ukraine_politics.304.t
+	desc = ukraine_politics.304.d
+	picture = GFX_report_event_ukrainian_civil_war
+
+	fire_only_once = yes
+
+	trigger = {
+		tag = UKR
+		date > 2024.5.19
+		has_country_flag = UKR_scandal_2024_started
+		NOT = { has_country_flag = UKR_second_term }
+	}
+
+	mean_time_to_happen = {
+		days = 1
+	}
+
+	option = {
+		name = ukraine_politics.304.a
+		set_country_flag = UKR_second_term
+		add_stability = 0.05
+		add_political_power = 50
+		# Дерево блока 3 (опоры) ещё не написано: пока только флаг
 	}
 }

@@ -1,0 +1,72 @@
+# Идеи политического блока 2 (DESIGN.md, раздел 6)
+ideas = {
+	country = {
+		# Подчинённые антикоррупционные органы (развилка блока 2)
+		UKR_captured_judiciary = {
+			picture = UKR_Corruption
+			allowed = {
+				original_tag = UKR
+			}
+			removal_cost = -1
+			modifier = {
+				political_power_gain = 0.10
+				stability_factor = -0.03
+				trade_opinion_factor = -0.10
+			}
+		}
+
+		# Заморозка помощи ЕС (событие ukraine_politics.303)
+		UKR_eu_aid_frozen = {
+			picture = UKR_Embargoed_Economy
+			allowed = {
+				original_tag = UKR
+			}
+			removal_cost = -1
+			modifier = {
+				consumer_goods_factor = 0.03
+				production_speed_buildings_factor = -0.10
+				trade_opinion_factor = -0.15
+			}
+		}
+
+		# Органичный союз с опорой (склонность ≥ 75)
+		UKR_pillar_organic = {
+			picture = UKR_healthy_patriotism_idea
+			allowed = {
+				original_tag = UKR
+			}
+			removal_cost = -1
+			modifier = {
+				stability_factor = 0.05
+				political_power_gain = 0.10
+			}
+		}
+
+		# Малый штраф за разворот (склонность 25–49)
+		UKR_pillar_mismatch_minor = {
+			picture = UKR_zelensky_growing_authoritarism
+			allowed = {
+				original_tag = UKR
+			}
+			removal_cost = -1
+			modifier = {
+				stability_factor = -0.03
+				political_power_gain = -0.05
+			}
+		}
+
+		# Большой штраф за разворот (склонность < 25)
+		UKR_pillar_mismatch = {
+			picture = UKR_zelensky_growing_authoritarism
+			allowed = {
+				original_tag = UKR
+			}
+			removal_cost = -1
+			modifier = {
+				stability_factor = -0.08
+				political_power_gain = -0.15
+				war_support_factor = -0.03
+			}
+		}
+	}
+}

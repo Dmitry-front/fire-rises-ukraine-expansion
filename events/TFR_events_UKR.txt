@@ -1607,9 +1607,10 @@ country_event = {
 		name = ukraine.105.a
 		add_war_support = 0.01
 		add_stability = 0.01
-		hidden_effect = {
-			news_event = { id = ukraine_news.1 days = 1 }
-		}
+		# TODO: namespace ukraine_news ещё не создан — вызов отключён
+		#hidden_effect = {
+		#	news_event = { id = ukraine_news.1 days = 1 }
+		#}
 	}
 	option = {
 		name = ukraine.105.b
@@ -2475,6 +2476,7 @@ country_event = {
 		name = ukraine.1006.c
 		trigger = {
 			NOT = { check_variable = { UKR_radical_score > 9 } }
+			NOT = { check_variable = { UKR_moderate_score > 7 } }
 			check_variable = { UKR_moderate_score > 5 }
 		}
 		
@@ -2492,6 +2494,11 @@ country_event = {
 	# Провал
 	option = {
 		name = ukraine.1006.m
+		# Провал — только если не подошёл ни один исход выше
+		trigger = {
+			NOT = { check_variable = { UKR_radical_score > 9 } }
+			NOT = { check_variable = { UKR_moderate_score > 5 } }
+		}
 		
 		add_stability = -0.02
 		add_war_support = -0.03

@@ -274,16 +274,24 @@ TFR знает только `ukraine.13` (март 2024, Зеленский ил
 
 ---
 
-## 11. Баги и техдолг (на 25.09.2026)
+## 11. Баги и техдолг (обновлено 25.09.2026 по коду)
 
-По документу 04 и заметкам:
-- **B-01.** `common/on_actions/TFR_on_actions_UKR.txt`: дубли `if` для Херсона и Днепра (`ukrainewar.105`, `.106`) ставят флаги раньше вызова событий, события мёртвые. Образец — блок Киева.
-- **B-02.** `events/TFR_events_UKR.txt`, `ukraine.1006`: в `immediate` нет `=` и триггер внутри эффектов.
-- **B-03.** Пробел в ключе `social_liberal _drift` в динамических модификаторах.
-- **T-01.** Идея `UKRrapidreconstruction_boost` без подчёркивания.
-- **T-02–T-05.** Аудит иконок и prerequisite, закомментированные вызовы, локализация в одном файле, реестр ID.
-- По ходу проверки дерева найдено: в `UKR_agricultural_reform` у `add_tech_bonus` нет `name`; `name = tank_bonus` используется дважды; ссылка на несуществующую категорию решений `UKR_decommunization_decisions` (реальная — `UKR_decommunization_category`); `ai_will_do = { base = 95 }` вместо `factor` у `UKR_address_covid_threat`.
-- Статус: автор отметил, что часть закрыта. **Обновить эту таблицу по факту в репозитории.**
+**Закрыто:**
+- **B-01.** Херсон и Днепр в `on_daily` — флаг и вызов события в одном блоке, как у Киева. Исправлено в «Пакете 1».
+- **B-02.** `ukraine.1006`: `immediate` корректен. Дополнительно: опции исходов сделаны взаимоисключающими (умеренный и смешанный исход пересекались, «Провал» был виден всегда).
+- **B-03.** `social_liberal_drift` без пробела. Исправлено в «Пакете 1».
+- `add_tech_bonus` в `UKR_agricultural_reform` с `name`; дубля `tank_bonus` нет; `ai_will_do` у `UKR_address_covid_threat` через `factor`; `UKR_decommunization_decisions` — ключ тултипа, существует.
+- **B-04.** Событие `ukraine.1005` выдавало несуществующие идеи `UKR_national_memory_institute_radical` / `_moderate` / `_moderate_Holodomor`. Идеи созданы (временные иконки декоммунизации), локализация RU/EN.
+- **B-05.** Вызовы несуществующих событий отключены с `# TODO`: `ukraine.801`, `ukraine.802` (фокусы военного бюджета и теневой войны, диапазон ГУР), `ukr_news.15`, `ukraine_news.1`. Когда события будут написаны — раскомментировать.
+- **B-06.** Дубли ключей локализации UKR (RU и EN): `UKR_startup_support(_desc)`, `UKR_against_occupiers(_desc)`, `UKRwarmood`, блок `ukrainewar.100`, `soviet_legacy`, заглушки `ukraine.13.t/.d` в EN (перекрывали заголовок выборов 2024). Оставлены версии, совпадающие с кодом.
+
+**Открыто [ПРОВЕРИТЬ] по `error.log`:**
+- `UKR_gdp_fix` (история UKR) и динамический модификатор `UKR_russian_ghetto` (событие `ukraine.6`) у нас не объявлены. Могут быть в общих файлах TFR.
+- `russia.76` определено в `events/TFR_events_SOV_UKR.txt` и в TFR (`TFR_events_SOV.txt`) — дубль ID события. Если намеренный перехват — нужно подтверждение автора; иначе убрать.
+- Вызовы TFR-событий `germany.*`, `nato.*`, `news.*`, `moldova.2`, `syria.25`, `russia.*` — предполагаются в TFR, сверить по логу.
+- Дубли ключей в `TFR_characters_l_*.yml` (персонажи других стран, копия TFR) — не трогаем.
+- **T-01.** `UKRrapidreconstruction_boost` / решение `UKRrapidreconstruction` без префикса `UKR_`. Переименование ломает сохранения; не трогаем, пока не будет повода.
+- **T-02–T-05.** Аудит иконок и prerequisite, закомментированные вызовы, реестр ID — по ходу работы.
 
 ---
 
@@ -309,7 +317,7 @@ TFR знает только `ukraine.13` (март 2024, Зеленский ил
 
 Существующие занятые номера (`ukraine.*`, `ukrainewar.*`) не перенумеровываем.
 
-Флаги и переменные (новые): `UKR_digital_lean`, `UKR_left_lean`, `UKR_authoritarian_lean`, `UKR_nationalist_lean`, `UKR_election_2023_done`, `UKR_rada_union_partner`, `UKR_anticorruption_subordinated`, `UKR_pillar_chosen_*`, `UKR_scandal_stage`. Список дополняется по ходу работы.
+Флаги и переменные (новые): `UKR_digital_lean`, `UKR_left_lean`, `UKR_authoritarian_lean`, `UKR_nationalist_lean`, `UKR_election_2023_done`, `UKR_rada_union_partner`, `UKR_anticorruption_subordinated`, `UKR_pillar_chosen_*`, `UKR_scandal_stage`. Идеи: `UKR_national_memory_institute_radical`, `UKR_national_memory_institute_moderate`, `UKR_national_memory_institute_moderate_Holodomor`. Список дополняется по ходу работы.
 
 ---
 
@@ -370,3 +378,4 @@ TFR знает только `ukraine.13` (март 2024, Зеленский ил
   - сначала развиваем Россию Медведева;
   - отношения HOI4 определяют согласие на события;
   - «Золотой век» стоит 11–14 в порядке исключения из диапазона 3–7.
+- **25.09.2026 (сессия 2)** — задача 7: B-01…B-03 подтверждены закрытыми; закрыты B-04…B-06 (идеи Института памяти, вызовы несуществующих событий, дубли локализации). Остаток — раздел 11 «Открыто».

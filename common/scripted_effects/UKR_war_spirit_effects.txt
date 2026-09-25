@@ -1,91 +1,171 @@
 # Обновление духа ненависти
+# Уровень хранится в UKRhate_level (0-4), идеи меняются только при смене уровня
 UKR_update_hate_spirit = {
-    # Удаляем все старые модификаторы ненависти
-    if = {
-        limit = { has_idea = UKR_war_spirit_hate_0 }
-        remove_ideas = UKR_war_spirit_hate_0
-    }
-    if = {
-        limit = { has_idea = UKR_war_spirit_hate_25 }
-        remove_ideas = UKR_war_spirit_hate_25
-    }
-    if = {
-        limit = { has_idea = UKR_war_spirit_hate_50 }
-        remove_ideas = UKR_war_spirit_hate_50
-    }
-    if = {
-        limit = { has_idea = UKR_war_spirit_hate_75 }
-        remove_ideas = UKR_war_spirit_hate_75
-    }
-    if = {
-        limit = { has_idea = UKR_war_spirit_hate_100 }
-        remove_ideas = UKR_war_spirit_hate_100
-    }
-    
-    # Добавляем новый модификатор в зависимости от уровня
+    clamp_variable = { var = UKRhate min = 0 max = 100 }
+
+    # Определяем текущий уровень
     if = {
         limit = { check_variable = { var = UKRhate value = 100 compare = greater_than_or_equals } }
-        add_ideas = UKR_war_spirit_hate_100
+        set_temp_variable = { var = UKR_new_level value = 4 }
     }
     else_if = {
         limit = { check_variable = { var = UKRhate value = 75 compare = greater_than_or_equals } }
-        add_ideas = UKR_war_spirit_hate_75
+        set_temp_variable = { var = UKR_new_level value = 3 }
     }
     else_if = {
         limit = { check_variable = { var = UKRhate value = 50 compare = greater_than_or_equals } }
-        add_ideas = UKR_war_spirit_hate_50
+        set_temp_variable = { var = UKR_new_level value = 2 }
     }
     else_if = {
         limit = { check_variable = { var = UKRhate value = 25 compare = greater_than_or_equals } }
-        add_ideas = UKR_war_spirit_hate_25
+        set_temp_variable = { var = UKR_new_level value = 1 }
     }
     else = {
-        add_ideas = UKR_war_spirit_hate_0
+        set_temp_variable = { var = UKR_new_level value = 0 }
+    }
+
+    if = {
+        limit = {
+            OR = {
+                NOT = { check_variable = { var = UKRhate_level value = UKR_new_level compare = equals } }
+                # Страховка: ни одного духа ненависти нет (старое сохранение, снятие идей)
+                NOT = {
+                    has_idea = UKR_war_spirit_hate_0
+                    has_idea = UKR_war_spirit_hate_25
+                    has_idea = UKR_war_spirit_hate_50
+                    has_idea = UKR_war_spirit_hate_75
+                    has_idea = UKR_war_spirit_hate_100
+                }
+            }
+        }
+        # Удаляем все старые духи ненависти
+        if = {
+            limit = { has_idea = UKR_war_spirit_hate_0 }
+            remove_ideas = UKR_war_spirit_hate_0
+        }
+        if = {
+            limit = { has_idea = UKR_war_spirit_hate_25 }
+            remove_ideas = UKR_war_spirit_hate_25
+        }
+        if = {
+            limit = { has_idea = UKR_war_spirit_hate_50 }
+            remove_ideas = UKR_war_spirit_hate_50
+        }
+        if = {
+            limit = { has_idea = UKR_war_spirit_hate_75 }
+            remove_ideas = UKR_war_spirit_hate_75
+        }
+        if = {
+            limit = { has_idea = UKR_war_spirit_hate_100 }
+            remove_ideas = UKR_war_spirit_hate_100
+        }
+
+        # Добавляем дух текущего уровня
+        if = {
+            limit = { check_variable = { var = UKR_new_level value = 4 compare = equals } }
+            add_ideas = UKR_war_spirit_hate_100
+        }
+        else_if = {
+            limit = { check_variable = { var = UKR_new_level value = 3 compare = equals } }
+            add_ideas = UKR_war_spirit_hate_75
+        }
+        else_if = {
+            limit = { check_variable = { var = UKR_new_level value = 2 compare = equals } }
+            add_ideas = UKR_war_spirit_hate_50
+        }
+        else_if = {
+            limit = { check_variable = { var = UKR_new_level value = 1 compare = equals } }
+            add_ideas = UKR_war_spirit_hate_25
+        }
+        else = {
+            add_ideas = UKR_war_spirit_hate_0
+        }
+        set_variable = { var = UKRhate_level value = UKR_new_level }
     }
 }
 
 # Обновление духа усталости
+# Уровень хранится в UKRwarfatigue_level (0-4), идеи меняются только при смене уровня
 UKR_update_fatigue_spirit = {
-    # Удаляем все старые модификаторы усталости
-    if = {
-        limit = { has_idea = UKR_war_spirit_fatigue_0 }
-        remove_ideas = UKR_war_spirit_fatigue_0
-    }
-    if = {
-        limit = { has_idea = UKR_war_spirit_fatigue_25 }
-        remove_ideas = UKR_war_spirit_fatigue_25
-    }
-    if = {
-        limit = { has_idea = UKR_war_spirit_fatigue_50 }
-        remove_ideas = UKR_war_spirit_fatigue_50
-    }
-    if = {
-        limit = { has_idea = UKR_war_spirit_fatigue_75 }
-        remove_ideas = UKR_war_spirit_fatigue_75
-    }
-    if = {
-        limit = { has_idea = UKR_war_spirit_fatigue_100 }
-        remove_ideas = UKR_war_spirit_fatigue_100
-    }
-    
-    # Добавляем новый модификатор в зависимости от уровня
+    clamp_variable = { var = UKRwarfatigue min = 0 max = 100 }
+
+    # Определяем текущий уровень
     if = {
         limit = { check_variable = { var = UKRwarfatigue value = 100 compare = greater_than_or_equals } }
-        add_ideas = UKR_war_spirit_fatigue_100
+        set_temp_variable = { var = UKR_new_level value = 4 }
     }
     else_if = {
         limit = { check_variable = { var = UKRwarfatigue value = 75 compare = greater_than_or_equals } }
-        add_ideas = UKR_war_spirit_fatigue_75
+        set_temp_variable = { var = UKR_new_level value = 3 }
     }
     else_if = {
         limit = { check_variable = { var = UKRwarfatigue value = 50 compare = greater_than_or_equals } }
-        add_ideas = UKR_war_spirit_fatigue_50
+        set_temp_variable = { var = UKR_new_level value = 2 }
     }
     else_if = {
         limit = { check_variable = { var = UKRwarfatigue value = 25 compare = greater_than_or_equals } }
-        add_ideas = UKR_war_spirit_fatigue_25
+        set_temp_variable = { var = UKR_new_level value = 1 }
     }
     else = {
-        add_ideas = UKR_war_spirit_fatigue_0
+        set_temp_variable = { var = UKR_new_level value = 0 }
+    }
+
+    if = {
+        limit = {
+            OR = {
+                NOT = { check_variable = { var = UKRwarfatigue_level value = UKR_new_level compare = equals } }
+                # Страховка: ни одного духа усталости нет (старое сохранение, снятие идей)
+                NOT = {
+                    has_idea = UKR_war_spirit_fatigue_0
+                    has_idea = UKR_war_spirit_fatigue_25
+                    has_idea = UKR_war_spirit_fatigue_50
+                    has_idea = UKR_war_spirit_fatigue_75
+                    has_idea = UKR_war_spirit_fatigue_100
+                }
+            }
+        }
+        # Удаляем все старые духи усталости
+        if = {
+            limit = { has_idea = UKR_war_spirit_fatigue_0 }
+            remove_ideas = UKR_war_spirit_fatigue_0
+        }
+        if = {
+            limit = { has_idea = UKR_war_spirit_fatigue_25 }
+            remove_ideas = UKR_war_spirit_fatigue_25
+        }
+        if = {
+            limit = { has_idea = UKR_war_spirit_fatigue_50 }
+            remove_ideas = UKR_war_spirit_fatigue_50
+        }
+        if = {
+            limit = { has_idea = UKR_war_spirit_fatigue_75 }
+            remove_ideas = UKR_war_spirit_fatigue_75
+        }
+        if = {
+            limit = { has_idea = UKR_war_spirit_fatigue_100 }
+            remove_ideas = UKR_war_spirit_fatigue_100
+        }
+
+        # Добавляем дух текущего уровня
+        if = {
+            limit = { check_variable = { var = UKR_new_level value = 4 compare = equals } }
+            add_ideas = UKR_war_spirit_fatigue_100
+        }
+        else_if = {
+            limit = { check_variable = { var = UKR_new_level value = 3 compare = equals } }
+            add_ideas = UKR_war_spirit_fatigue_75
+        }
+        else_if = {
+            limit = { check_variable = { var = UKR_new_level value = 2 compare = equals } }
+            add_ideas = UKR_war_spirit_fatigue_50
+        }
+        else_if = {
+            limit = { check_variable = { var = UKR_new_level value = 1 compare = equals } }
+            add_ideas = UKR_war_spirit_fatigue_25
+        }
+        else = {
+            add_ideas = UKR_war_spirit_fatigue_0
+        }
+        set_variable = { var = UKRwarfatigue_level value = UKR_new_level }
     }
 }

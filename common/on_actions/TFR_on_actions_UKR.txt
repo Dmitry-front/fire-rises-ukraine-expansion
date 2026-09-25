@@ -1,34 +1,37 @@
 on_actions = {
+    # ROOT — новый контролёр области, FROM — прежний контролёр, FROM.FROM — сама область
     on_state_control_changed = {
         effect = {
             # При потере контроля над украинской территорией
             if = {
                 limit = {
                     FROM = { tag = UKR has_country_flag = UKR_war_mood_active }
-                    NOT = { is_controlled_by = UKR }
-                    is_core_of = UKR
+                    FROM.FROM = {
+                        is_core_of = UKR
+                        NOT = { has_state_flag = UKR_recently_lost }
+                    }
                 }
+                # Защита от повторного счёта, если область переходит из рук в руки
+                FROM.FROM = { set_state_flag = { flag = UKR_recently_lost days = 30 } }
                 FROM = {
                     add_to_variable = { var = UKRhate value = 5 }
                     add_to_variable = { var = UKRwarfatigue value = 8 }
-                    force_update_dynamic_modifier = yes
                 }
             }
             
             # При освобождении территории
             if = {
                 limit = {
-                    FROM = { tag = UKR has_country_flag = UKR_war_mood_active }
-                    is_controlled_by = UKR
-                    is_core_of = UKR
-                    NOT = { has_state_flag = UKR_recently_liberated }
+                    tag = UKR
+                    has_country_flag = UKR_war_mood_active
+                    FROM.FROM = {
+                        is_core_of = UKR
+                        NOT = { has_state_flag = UKR_recently_liberated }
+                    }
                 }
-                set_state_flag = { flag = UKR_recently_liberated days = 30 }
-                FROM = {
-                    add_to_variable = { var = UKRhate value = 3 }
-                    add_to_variable = { var = UKRwarfatigue value = -5 }
-                    force_update_dynamic_modifier = yes
-                }
+                FROM.FROM = { set_state_flag = { flag = UKR_recently_liberated days = 30 } }
+                add_to_variable = { var = UKRhate value = 3 }
+                add_to_variable = { var = UKRwarfatigue value = -5 }
             }
         }
     }
@@ -49,33 +52,6 @@ on_actions = {
                 country_event = { id = ukrainewar.100 days = 1 }
                 force_update_dynamic_modifier = yes
             }
-            
-            if = {
-                limit = {
-                    tag = UKR
-                    has_country_flag = UKR_war_mood_active
-                    NOT = { controls_state = 226 } # Днепр
-                    NOT = { has_country_flag = UKR_dnipro_lost }
-                }
-                set_country_flag = UKR_dnipro_lost
-                add_to_variable = { var = UKRhate value = 8 }
-                add_to_variable = { var = UKRwarfatigue value = 6 }
-                force_update_dynamic_modifier = yes
-            }
-            
-            if = {
-                limit = {
-                    tag = UKR
-                    has_country_flag = UKR_war_mood_active
-                    NOT = { controls_state = 196 } # Херсон
-                    NOT = { has_country_flag = UKR_kherson_lost }
-                }
-                set_country_flag = UKR_kherson_lost
-                add_to_variable = { var = UKRhate value = 6 }
-                add_to_variable = { var = UKRwarfatigue value = 4 }
-                force_update_dynamic_modifier = yes
-            }
-            # Добавить в блок on_daily:
 
             if = {
                 limit = {
@@ -176,6 +152,15 @@ on_actions = {
                 country_event = { id = ukrainewar.109 days = 1 }
             }
 
+            # Синхронизация военных духов с переменными настроя
+            if = {
+                limit = {
+                    tag = UKR
+                    has_country_flag = UKR_war_mood_active
+                }
+                UKR_update_hate_spirit = yes
+                UKR_update_fatigue_spirit = yes
+            }
         }
     }
 }

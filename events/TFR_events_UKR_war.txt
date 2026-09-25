@@ -40,37 +40,6 @@ country_event = {
 	}
 }
 
-country_event = {
-	id = ukrainewar.check
-	is_triggered_only = no
-	hidden = yes
-
-	trigger = {
-		is_tag = UKR
-		has_war_with = SOV
-		NOT = { has_country_flag = UKR_war_mood_scheduled }
-		NOT = { has_country_flag = UKR_war_mood_active } # чтобы не дублировать
-		NOT = {
-		has_global_flag = nato_nato_won_nato_war
-		has_global_flag = SOV_first_nato_war_victory
-		}
-	}
-
-	mean_time_to_happen = { days = 1 }
-
-	immediate = {
-	set_country_flag = UKR_war_mood_scheduled
-	}
-
-  option = {
-	name = hidden
-	hidden_effect = {
-		fire_country_event = { id = ukrainewar.1 }
-		}
-	}
-}
-
-
 # Первые бомбардировки - рост ненависти
 country_event = {
 	id = ukrainewar.10
@@ -84,6 +53,10 @@ country_event = {
 		tag = UKR
 		has_country_flag = UKR_war_mood_active
 		has_war_with = SOV
+	}
+	
+	mean_time_to_happen = {
+		days = 3
 	}
 	
 	option = {

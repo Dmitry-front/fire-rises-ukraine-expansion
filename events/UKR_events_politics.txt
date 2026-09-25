@@ -1939,3 +1939,622 @@ country_event = {
 		}
 	}
 }
+
+# =====================================================================
+# Блок 3, левые: повествовательные события об обществе и труде (520–534)
+# Случайные, раз в игру; между ними пауза не меньше 40 дней (флаг UKR_left_flavor_cd).
+# =====================================================================
+
+# Павлоградские шахтёры
+country_event = {
+	id = ukraine_politics.520
+	title = ukraine_politics.520.t
+	desc = ukraine_politics.520.d
+	picture = GFX_UKR_protest_land_reform
+
+	fire_only_once = yes
+
+	trigger = {
+		tag = UKR
+		has_country_flag = UKR_left_coalition
+		NOT = { has_country_flag = UKR_left_flavor_cd }
+	}
+
+	mean_time_to_happen = {
+		days = 180
+	}
+
+	immediate = {
+		hidden_effect = {
+			set_country_flag = { flag = UKR_left_flavor_cd days = 40 }
+		}
+	}
+
+	option = {
+		name = ukraine_politics.520.a
+		add_political_power = -25
+		add_stability = 0.02
+		ai_chance = { factor = 60 }
+	}
+
+	option = {
+		name = ukraine_politics.520.b
+		add_political_power = 25
+		add_stability = -0.02
+		ai_chance = { factor = 40 }
+	}
+}
+
+# Криворожсталь: история одной приватизации
+country_event = {
+	id = ukraine_politics.521
+	title = ukraine_politics.521.t
+	desc = ukraine_politics.521.d
+	picture = GFX_event_UKR_industry_export
+
+	fire_only_once = yes
+
+	trigger = {
+		tag = UKR
+		has_country_flag = UKR_left_coalition
+		NOT = { has_country_flag = UKR_left_flavor_cd }
+	}
+
+	mean_time_to_happen = {
+		days = 180
+	}
+
+	immediate = {
+		hidden_effect = {
+			set_country_flag = { flag = UKR_left_flavor_cd days = 40 }
+		}
+	}
+
+	option = {
+		name = ukraine_politics.521.a
+		add_stability = 0.02
+		set_temp_variable = {
+			var = income_var_temp
+			value = -1
+		}
+		add_income_with_inflation = yes
+		ai_chance = { factor = 55 }
+	}
+
+	option = {
+		name = ukraine_politics.521.b
+		set_temp_variable = {
+			var = income_var_temp
+			value = 2
+		}
+		add_income_with_inflation = yes
+		ai_chance = { factor = 45 }
+	}
+}
+
+# Махно в учебнике
+country_event = {
+	id = ukraine_politics.522
+	title = ukraine_politics.522.t
+	desc = ukraine_politics.522.d
+	picture = GFX_event_UKR_decommunization_school
+
+	fire_only_once = yes
+
+	trigger = {
+		tag = UKR
+		has_country_flag = UKR_left_coalition
+		NOT = { has_country_flag = UKR_left_flavor_cd }
+	}
+
+	mean_time_to_happen = {
+		days = 180
+	}
+
+	immediate = {
+		hidden_effect = {
+			set_country_flag = { flag = UKR_left_flavor_cd days = 40 }
+		}
+	}
+
+	option = {
+		name = ukraine_politics.522.a
+		add_political_power = 15
+		add_stability = 0.01
+		ai_chance = { factor = 60 }
+	}
+
+	option = {
+		name = ukraine_politics.522.b
+		add_political_power = 25
+		ai_chance = { factor = 40 }
+	}
+}
+
+# Кухня солидарности
+country_event = {
+	id = ukraine_politics.523
+	title = ukraine_politics.523.t
+	desc = ukraine_politics.523.d
+	picture = GFX_event_UKR_volunteers
+
+	fire_only_once = yes
+
+	trigger = {
+		tag = UKR
+		has_country_flag = UKR_left_coalition
+		NOT = { has_country_flag = UKR_left_flavor_cd }
+		has_completed_focus = UKR_l_army_not_for_oligarchs
+	}
+
+	mean_time_to_happen = {
+		days = 180
+	}
+
+	immediate = {
+		hidden_effect = {
+			set_country_flag = { flag = UKR_left_flavor_cd days = 40 }
+		}
+	}
+
+	option = {
+		name = ukraine_politics.523.a
+		army_experience = 5
+		add_stability = 0.01
+	}
+}
+
+# Первомай
+country_event = {
+	id = ukraine_politics.524
+	title = ukraine_politics.524.t
+	desc = ukraine_politics.524.d
+	picture = GFX_UKR_protest_land_reform
+
+	fire_only_once = yes
+
+	trigger = {
+		tag = UKR
+		has_country_flag = UKR_left_coalition
+		NOT = { has_country_flag = UKR_left_flavor_cd }
+	}
+
+	mean_time_to_happen = {
+		days = 180
+	}
+
+	immediate = {
+		hidden_effect = {
+			set_country_flag = { flag = UKR_left_flavor_cd days = 40 }
+		}
+	}
+
+	option = {
+		name = ukraine_politics.524.a
+		add_stability = 0.01
+		add_political_power = -15
+		ai_chance = { factor = 55 }
+	}
+
+	option = {
+		name = ukraine_politics.524.b
+		add_political_power = 20
+		ai_chance = { factor = 45 }
+	}
+}
+
+# Заробітчани
+country_event = {
+	id = ukraine_politics.525
+	title = ukraine_politics.525.t
+	desc = ukraine_politics.525.d
+	picture = GFX_UKR_diplomat
+
+	fire_only_once = yes
+
+	trigger = {
+		tag = UKR
+		has_country_flag = UKR_left_coalition
+		NOT = { has_country_flag = UKR_left_flavor_cd }
+	}
+
+	mean_time_to_happen = {
+		days = 180
+	}
+
+	immediate = {
+		hidden_effect = {
+			set_country_flag = { flag = UKR_left_flavor_cd days = 40 }
+		}
+	}
+
+	option = {
+		name = ukraine_politics.525.a
+		set_temp_variable = {
+			var = income_var_temp
+			value = -2
+		}
+		add_income_with_inflation = yes
+		add_manpower = 5000
+		ai_chance = { factor = 50 }
+	}
+
+	option = {
+		name = ukraine_politics.525.b
+		set_temp_variable = {
+			var = income_var_temp
+			value = 2
+		}
+		add_income_with_inflation = yes
+		ai_chance = { factor = 50 }
+	}
+}
+
+# Кооператив против агрохолдинга
+country_event = {
+	id = ukraine_politics.526
+	title = ukraine_politics.526.t
+	desc = ukraine_politics.526.d
+	picture = GFX_UKR_agricultural_success
+
+	fire_only_once = yes
+
+	trigger = {
+		tag = UKR
+		has_country_flag = UKR_left_coalition
+		NOT = { has_country_flag = UKR_left_flavor_cd }
+	}
+
+	mean_time_to_happen = {
+		days = 180
+	}
+
+	immediate = {
+		hidden_effect = {
+			set_country_flag = { flag = UKR_left_flavor_cd days = 40 }
+		}
+	}
+
+	option = {
+		name = ukraine_politics.526.a
+		set_temp_variable = {
+			var = income_var_temp
+			value = -1
+		}
+		add_income_with_inflation = yes
+		add_stability = 0.02
+		ai_chance = { factor = 55 }
+	}
+
+	option = {
+		name = ukraine_politics.526.b
+		set_temp_variable = {
+			var = income_var_temp
+			value = 1
+		}
+		add_income_with_inflation = yes
+		ai_chance = { factor = 45 }
+	}
+}
+
+# Левые и память о Голодоморе
+country_event = {
+	id = ukraine_politics.527
+	title = ukraine_politics.527.t
+	desc = ukraine_politics.527.d
+	picture = GFX_event_UKR_decommunization_memoryl
+
+	fire_only_once = yes
+
+	trigger = {
+		tag = UKR
+		has_country_flag = UKR_left_coalition
+		NOT = { has_country_flag = UKR_left_flavor_cd }
+	}
+
+	mean_time_to_happen = {
+		days = 180
+	}
+
+	immediate = {
+		hidden_effect = {
+			set_country_flag = { flag = UKR_left_flavor_cd days = 40 }
+		}
+	}
+
+	option = {
+		name = ukraine_politics.527.a
+		add_stability = 0.02
+	}
+}
+
+# «Березіль» и Расстрелянное возрождение
+country_event = {
+	id = ukraine_politics.528
+	title = ukraine_politics.528.t
+	desc = ukraine_politics.528.d
+	picture = GFX_event_UKR_decommunization_int
+
+	fire_only_once = yes
+
+	trigger = {
+		tag = UKR
+		has_country_flag = UKR_left_coalition
+		NOT = { has_country_flag = UKR_left_flavor_cd }
+	}
+
+	mean_time_to_happen = {
+		days = 180
+	}
+
+	immediate = {
+		hidden_effect = {
+			set_country_flag = { flag = UKR_left_flavor_cd days = 40 }
+		}
+	}
+
+	option = {
+		name = ukraine_politics.528.a
+		add_political_power = 15
+		add_stability = 0.01
+	}
+}
+
+# Зарплата в конверте
+country_event = {
+	id = ukraine_politics.529
+	title = ukraine_politics.529.t
+	desc = ukraine_politics.529.d
+	picture = GFX_UKR_big_corruption_scandal
+
+	fire_only_once = yes
+
+	trigger = {
+		tag = UKR
+		has_country_flag = UKR_left_coalition
+		NOT = { has_country_flag = UKR_left_flavor_cd }
+	}
+
+	mean_time_to_happen = {
+		days = 180
+	}
+
+	immediate = {
+		hidden_effect = {
+			set_country_flag = { flag = UKR_left_flavor_cd days = 40 }
+		}
+	}
+
+	option = {
+		name = ukraine_politics.529.a
+		add_political_power = -25
+		set_temp_variable = {
+			var = income_var_temp
+			value = 2
+		}
+		add_income_with_inflation = yes
+		ai_chance = { factor = 50 }
+	}
+
+	option = {
+		name = ukraine_politics.529.b
+		set_temp_variable = {
+			var = income_var_temp
+			value = 3
+		}
+		add_income_with_inflation = yes
+		add_stability = -0.02
+		ai_chance = { factor = 50 }
+	}
+}
+
+# Курьеры против платформы
+country_event = {
+	id = ukraine_politics.530
+	title = ukraine_politics.530.t
+	desc = ukraine_politics.530.d
+	picture = GFX_UKR_it_growth
+
+	fire_only_once = yes
+
+	trigger = {
+		tag = UKR
+		has_country_flag = UKR_left_coalition
+		NOT = { has_country_flag = UKR_left_flavor_cd }
+	}
+
+	mean_time_to_happen = {
+		days = 180
+	}
+
+	immediate = {
+		hidden_effect = {
+			set_country_flag = { flag = UKR_left_flavor_cd days = 40 }
+		}
+	}
+
+	option = {
+		name = ukraine_politics.530.a
+		add_stability = 0.02
+		set_temp_variable = {
+			var = income_var_temp
+			value = -1
+		}
+		add_income_with_inflation = yes
+		ai_chance = { factor = 55 }
+	}
+
+	option = {
+		name = ukraine_politics.530.b
+		add_political_power = 25
+		ai_chance = { factor = 45 }
+	}
+}
+
+# «Будь як Ніна»
+country_event = {
+	id = ukraine_politics.531
+	title = ukraine_politics.531.t
+	desc = ukraine_politics.531.d
+	picture = GFX_UKR_status_economy
+
+	fire_only_once = yes
+
+	trigger = {
+		tag = UKR
+		has_country_flag = UKR_left_coalition
+		NOT = { has_country_flag = UKR_left_flavor_cd }
+	}
+
+	mean_time_to_happen = {
+		days = 180
+	}
+
+	immediate = {
+		hidden_effect = {
+			set_country_flag = { flag = UKR_left_flavor_cd days = 40 }
+		}
+	}
+
+	option = {
+		name = ukraine_politics.531.a
+		set_temp_variable = {
+			var = income_var_temp
+			value = -3
+		}
+		add_income_with_inflation = yes
+		add_stability = 0.03
+		ai_chance = { factor = 60 }
+	}
+
+	option = {
+		name = ukraine_politics.531.b
+		add_political_power = 20
+		add_stability = -0.01
+		ai_chance = { factor = 40 }
+	}
+}
+
+# Арсенал, январь 1918-го
+country_event = {
+	id = ukraine_politics.532
+	title = ukraine_politics.532.t
+	desc = ukraine_politics.532.d
+	picture = GFX_event_UKR_decommunization_soviet_documents
+
+	fire_only_once = yes
+
+	trigger = {
+		tag = UKR
+		has_country_flag = UKR_left_coalition
+		NOT = { has_country_flag = UKR_left_flavor_cd }
+	}
+
+	mean_time_to_happen = {
+		days = 180
+	}
+
+	immediate = {
+		hidden_effect = {
+			set_country_flag = { flag = UKR_left_flavor_cd days = 40 }
+		}
+	}
+
+	option = {
+		name = ukraine_politics.532.a
+		add_political_power = 15
+		add_stability = 0.01
+	}
+}
+
+# Последние шахты Волыни
+country_event = {
+	id = ukraine_politics.533
+	title = ukraine_politics.533.t
+	desc = ukraine_politics.533.d
+	picture = GFX_UKR_energy_crisis
+
+	fire_only_once = yes
+
+	trigger = {
+		tag = UKR
+		has_country_flag = UKR_left_coalition
+		NOT = { has_country_flag = UKR_left_flavor_cd }
+	}
+
+	mean_time_to_happen = {
+		days = 180
+	}
+
+	immediate = {
+		hidden_effect = {
+			set_country_flag = { flag = UKR_left_flavor_cd days = 40 }
+		}
+	}
+
+	option = {
+		name = ukraine_politics.533.a
+		set_temp_variable = {
+			var = income_var_temp
+			value = -2
+		}
+		add_income_with_inflation = yes
+		add_stability = 0.02
+		ai_chance = { factor = 55 }
+	}
+
+	option = {
+		name = ukraine_politics.533.b
+		set_temp_variable = {
+			var = income_var_temp
+			value = 2
+		}
+		add_income_with_inflation = yes
+		add_stability = -0.03
+		ai_chance = { factor = 45 }
+	}
+}
+
+# Протасов Яр
+country_event = {
+	id = ukraine_politics.534
+	title = ukraine_politics.534.t
+	desc = ukraine_politics.534.d
+	picture = GFX_UKR_big_construction_event
+
+	fire_only_once = yes
+
+	trigger = {
+		tag = UKR
+		has_country_flag = UKR_left_coalition
+		NOT = { has_country_flag = UKR_left_flavor_cd }
+	}
+
+	mean_time_to_happen = {
+		days = 180
+	}
+
+	immediate = {
+		hidden_effect = {
+			set_country_flag = { flag = UKR_left_flavor_cd days = 40 }
+		}
+	}
+
+	option = {
+		name = ukraine_politics.534.a
+		add_political_power = -25
+		add_stability = 0.02
+		ai_chance = { factor = 55 }
+	}
+
+	option = {
+		name = ukraine_politics.534.b
+		set_temp_variable = {
+			var = income_var_temp
+			value = 2
+		}
+		add_income_with_inflation = yes
+		add_stability = -0.02
+		ai_chance = { factor = 45 }
+	}
+}

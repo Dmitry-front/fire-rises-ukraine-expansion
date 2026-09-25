@@ -1,0 +1,253 @@
+# Политика 2023 года: выборы в Раду и распад союза (DESIGN.md, раздел 5)
+
+# Запуск цепочки слухов и распада союза (фаза В).
+# Вызывается из ukraine_politics.120: после союза в Раде — сразу при старте «Золотого века» или 15.11.2023 без него.
+UKR_start_scandal_chain = {
+	if = {
+		limit = { NOT = { has_country_flag = UKR_scandal_chain_started } }
+		set_country_flag = UKR_scandal_chain_started
+		country_event = { id = ukraine_politics.121 days = 14 }
+	}
+}
+
+# Итоги выборов в Раду 29.10.2023: раскладка по ведущей склонности
+UKR_rada_2023_results = {
+	if = {
+		limit = {
+			check_variable = { var = UKR_digital_lean value = UKR_left_lean compare = greater_than_or_equals }
+			check_variable = { var = UKR_digital_lean value = UKR_authoritarian_lean compare = greater_than_or_equals }
+			check_variable = { var = UKR_digital_lean value = UKR_nationalist_lean compare = greater_than_or_equals }
+		}
+		set_popularities = {
+			social_liberal = 44
+			market_liberal = 12
+			conservative = 15
+			social_democrat = 11
+			libertarian_socialist = 4
+			nationalist = 6
+			fascist = 3
+			communist = 2
+			authoritarian_democrat = 3
+		}
+	}
+	else_if = {
+		limit = {
+			check_variable = { var = UKR_left_lean value = UKR_authoritarian_lean compare = greater_than_or_equals }
+			check_variable = { var = UKR_left_lean value = UKR_nationalist_lean compare = greater_than_or_equals }
+		}
+		set_popularities = {
+			social_liberal = 40
+			market_liberal = 9
+			conservative = 14
+			social_democrat = 16
+			libertarian_socialist = 7
+			nationalist = 6
+			fascist = 3
+			communist = 2
+			authoritarian_democrat = 3
+		}
+	}
+	else_if = {
+		limit = {
+			check_variable = { var = UKR_authoritarian_lean value = UKR_nationalist_lean compare = greater_than_or_equals }
+		}
+		set_popularities = {
+			social_liberal = 42
+			market_liberal = 10
+			conservative = 16
+			social_democrat = 11
+			libertarian_socialist = 4
+			nationalist = 6
+			fascist = 3
+			communist = 2
+			authoritarian_democrat = 6
+		}
+	}
+	else = {
+		set_popularities = {
+			social_liberal = 39
+			market_liberal = 10
+			conservative = 17
+			social_democrat = 11
+			libertarian_socialist = 4
+			nationalist = 10
+			fascist = 4
+			communist = 2
+			authoritarian_democrat = 3
+		}
+	}
+}
+
+# Распад союза: «Слуга народа» падает до 25–35%.
+# База 30; +3, если ведущая склонность ≥ 50; ±2 за каждый честный/нечестный ответ (UKR_honesty_2023).
+UKR_rada_union_collapse_results = {
+	set_temp_variable = { UKR_sn_target = 30 }
+	if = {
+		limit = {
+			OR = {
+				check_variable = { UKR_digital_lean > 49 }
+				check_variable = { UKR_left_lean > 49 }
+				check_variable = { UKR_authoritarian_lean > 49 }
+				check_variable = { UKR_nationalist_lean > 49 }
+			}
+		}
+		add_to_temp_variable = { UKR_sn_target = 3 }
+	}
+	set_temp_variable = { UKR_honesty_x2 = UKR_honesty_2023 }
+	multiply_temp_variable = { UKR_honesty_x2 = 2 }
+	add_to_temp_variable = { UKR_sn_target = UKR_honesty_x2 }
+	clamp_temp_variable = { var = UKR_sn_target min = 25 max = 35 }
+	if = {
+		limit = { check_variable = { UKR_sn_target < 25.5 } }
+		set_popularities = {
+			social_liberal = 25
+			market_liberal = 12
+			conservative = 19.5
+			social_democrat = 16.5
+			libertarian_socialist = 6
+			nationalist = 9
+			fascist = 3.8
+			communist = 2.2
+			authoritarian_democrat = 6
+		}
+	}
+	else_if = {
+		limit = { check_variable = { UKR_sn_target < 26.5 } }
+		set_popularities = {
+			social_liberal = 26
+			market_liberal = 11.8
+			conservative = 19.3
+			social_democrat = 16.3
+			libertarian_socialist = 5.9
+			nationalist = 8.9
+			fascist = 3.7
+			communist = 2.2
+			authoritarian_democrat = 5.9
+		}
+	}
+	else_if = {
+		limit = { check_variable = { UKR_sn_target < 27.5 } }
+		set_popularities = {
+			social_liberal = 27
+			market_liberal = 11.7
+			conservative = 18.9
+			social_democrat = 16.1
+			libertarian_socialist = 5.8
+			nationalist = 8.8
+			fascist = 3.7
+			communist = 2.2
+			authoritarian_democrat = 5.8
+		}
+	}
+	else_if = {
+		limit = { check_variable = { UKR_sn_target < 28.5 } }
+		set_popularities = {
+			social_liberal = 28
+			market_liberal = 11.5
+			conservative = 18.7
+			social_democrat = 15.8
+			libertarian_socialist = 5.8
+			nationalist = 8.6
+			fascist = 3.6
+			communist = 2.2
+			authoritarian_democrat = 5.8
+		}
+	}
+	else_if = {
+		limit = { check_variable = { UKR_sn_target < 29.5 } }
+		set_popularities = {
+			social_liberal = 29
+			market_liberal = 11.4
+			conservative = 18.4
+			social_democrat = 15.6
+			libertarian_socialist = 5.7
+			nationalist = 8.5
+			fascist = 3.6
+			communist = 2.1
+			authoritarian_democrat = 5.7
+		}
+	}
+	else_if = {
+		limit = { check_variable = { UKR_sn_target < 30.5 } }
+		set_popularities = {
+			social_liberal = 30
+			market_liberal = 11.2
+			conservative = 18.2
+			social_democrat = 15.4
+			libertarian_socialist = 5.6
+			nationalist = 8.4
+			fascist = 3.5
+			communist = 2.1
+			authoritarian_democrat = 5.6
+		}
+	}
+	else_if = {
+		limit = { check_variable = { UKR_sn_target < 31.5 } }
+		set_popularities = {
+			social_liberal = 31
+			market_liberal = 11
+			conservative = 17.9
+			social_democrat = 15.2
+			libertarian_socialist = 5.5
+			nationalist = 8.3
+			fascist = 3.5
+			communist = 2.1
+			authoritarian_democrat = 5.5
+		}
+	}
+	else_if = {
+		limit = { check_variable = { UKR_sn_target < 32.5 } }
+		set_popularities = {
+			social_liberal = 32
+			market_liberal = 10.9
+			conservative = 17.7
+			social_democrat = 15
+			libertarian_socialist = 5.4
+			nationalist = 8.2
+			fascist = 3.4
+			communist = 2
+			authoritarian_democrat = 5.4
+		}
+	}
+	else_if = {
+		limit = { check_variable = { UKR_sn_target < 33.5 } }
+		set_popularities = {
+			social_liberal = 33
+			market_liberal = 10.7
+			conservative = 17.4
+			social_democrat = 14.7
+			libertarian_socialist = 5.4
+			nationalist = 8
+			fascist = 3.4
+			communist = 2
+			authoritarian_democrat = 5.4
+		}
+	}
+	else_if = {
+		limit = { check_variable = { UKR_sn_target < 34.5 } }
+		set_popularities = {
+			social_liberal = 34
+			market_liberal = 10.6
+			conservative = 17.1
+			social_democrat = 14.5
+			libertarian_socialist = 5.3
+			nationalist = 7.9
+			fascist = 3.3
+			communist = 2
+			authoritarian_democrat = 5.3
+		}
+	}
+	else = {
+		set_popularities = {
+			social_liberal = 35
+			market_liberal = 10.4
+			conservative = 17
+			social_democrat = 14.3
+			libertarian_socialist = 5.2
+			nationalist = 7.8
+			fascist = 3.2
+			communist = 1.9
+			authoritarian_democrat = 5.2
+		}
+	}
+}

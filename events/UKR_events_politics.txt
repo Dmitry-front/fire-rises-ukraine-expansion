@@ -1,0 +1,555 @@
+add_namespace = ukraine_politics
+
+# =====================================================================
+# Политика 2023 года (DESIGN.md, раздел 5)
+# Фаза А: сдвиг поля (100–105). Фаза Б: выборы и союз (110–111).
+# Фаза В: слухи и распад союза (120–125).
+# =====================================================================
+
+# Скрытый контроллер: запускает год 1 января 2023
+country_event = {
+	id = ukraine_politics.100
+	title = ukraine_politics.100.t
+	desc = ukraine_politics.100.d
+	picture = GFX_report_event_ukrainian_civil_war
+
+	hidden = yes
+	fire_only_once = yes
+
+	trigger = {
+		tag = UKR
+		date > 2022.12.31
+		NOT = { has_country_flag = UKR_politics_2023_started }
+		has_country_leader = {
+			character = UKR_volodymyr_zelensky
+			ruling_only = yes
+		}
+		NOT = { has_war_with = SOV }
+	}
+
+	mean_time_to_happen = {
+		days = 1
+	}
+
+	immediate = {
+		set_country_flag = UKR_politics_2023_started
+		set_variable = { UKR_honesty_2023 = 0 }
+		country_event = { id = ukraine_politics.101 days = 35 }
+		country_event = { id = ukraine_politics.102 days = 95 }
+		country_event = { id = ukraine_politics.103 days = 155 }
+		country_event = { id = ukraine_politics.104 days = 185 }
+		country_event = { id = ukraine_politics.105 days = 245 }
+	}
+}
+
+# Эхо американской войны: либералы теряют опору
+country_event = {
+	id = ukraine_politics.101
+	title = ukraine_politics.101.t
+	desc = ukraine_politics.101.d
+	picture = GFX_report_event_ukrainian_civil_war
+
+	is_triggered_only = yes
+
+	trigger = {
+		tag = UKR
+	}
+
+	immediate = {
+		hidden_effect = {
+			add_popularity = { ideology = social_liberal popularity = -0.03 }
+			add_popularity = { ideology = market_liberal popularity = -0.02 }
+		}
+	}
+
+	# Держать западный курс
+	option = {
+		name = ukraine_politics.101.a
+		add_stability = -0.02
+		add_political_power = 15
+		hidden_effect = {
+			add_to_variable = { UKR_digital_lean = 2 }
+			UKR_clamp_leans = yes
+		}
+		ai_chance = { factor = 60 }
+	}
+
+	# Искать свой путь
+	option = {
+		name = ukraine_politics.101.b
+		add_war_support = 0.02
+		add_political_power = 25
+		add_popularity = { ideology = nationalist popularity = 0.01 }
+		hidden_effect = {
+			add_to_variable = { UKR_nationalist_lean = 2 }
+			UKR_clamp_leans = yes
+		}
+		ai_chance = { factor = 40 }
+	}
+}
+
+# Левый фронт: евролевые объединяются
+country_event = {
+	id = ukraine_politics.102
+	title = ukraine_politics.102.t
+	desc = ukraine_politics.102.d
+	picture = GFX_report_event_ukrainian_civil_war
+
+	is_triggered_only = yes
+
+	trigger = {
+		tag = UKR
+	}
+
+	immediate = {
+		hidden_effect = {
+			add_popularity = { ideology = social_democrat popularity = 0.03 }
+			add_popularity = { ideology = libertarian_socialist popularity = 0.02 }
+		}
+	}
+
+	# Открыть диалог
+	option = {
+		name = ukraine_politics.102.a
+		add_political_power = -25
+		add_stability = 0.02
+		hidden_effect = {
+			add_to_variable = { UKR_left_lean = 2 }
+			UKR_clamp_leans = yes
+		}
+		ai_chance = { factor = 40 }
+	}
+
+	# Не замечать
+	option = {
+		name = ukraine_politics.102.b
+		add_political_power = 10
+		ai_chance = { factor = 40 }
+	}
+
+	# Давить
+	option = {
+		name = ukraine_politics.102.c
+		add_political_power = 30
+		add_stability = -0.02
+		add_popularity = { ideology = social_democrat popularity = 0.01 }
+		hidden_effect = {
+			add_to_variable = { UKR_authoritarian_lean = 2 }
+			UKR_clamp_leans = yes
+		}
+		ai_chance = { factor = 20 }
+	}
+}
+
+# Правый поворот
+country_event = {
+	id = ukraine_politics.103
+	title = ukraine_politics.103.t
+	desc = ukraine_politics.103.d
+	picture = GFX_report_event_ukrainian_civil_war
+
+	is_triggered_only = yes
+
+	trigger = {
+		tag = UKR
+	}
+
+	immediate = {
+		hidden_effect = {
+			add_popularity = { ideology = conservative popularity = 0.03 }
+			add_popularity = { ideology = nationalist popularity = 0.02 }
+		}
+	}
+
+	# Перехватить повестку
+	option = {
+		name = ukraine_politics.103.a
+		add_war_support = 0.03
+		add_political_power = 15
+		hidden_effect = {
+			add_to_variable = { UKR_nationalist_lean = 2 }
+			UKR_clamp_leans = yes
+		}
+		ai_chance = { factor = 50 }
+	}
+
+	# Держать дистанцию
+	option = {
+		name = ukraine_politics.103.b
+		add_stability = 0.01
+		add_popularity = { ideology = conservative popularity = 0.01 }
+		hidden_effect = {
+			add_to_variable = { UKR_left_lean = 1 }
+			add_to_variable = { UKR_digital_lean = 1 }
+			UKR_clamp_leans = yes
+		}
+		ai_chance = { factor = 50 }
+	}
+}
+
+# «Яйца по 17 гривен»: мелкий скандал с закупками
+country_event = {
+	id = ukraine_politics.104
+	title = ukraine_politics.104.t
+	desc = ukraine_politics.104.d
+	picture = GFX_UKR_status_economy
+
+	is_triggered_only = yes
+
+	trigger = {
+		tag = UKR
+	}
+
+	# Расследовать
+	option = {
+		name = ukraine_politics.104.a
+		add_political_power = -30
+		add_stability = 0.01
+		hidden_effect = {
+			add_to_variable = { UKR_honesty_2023 = 1 }
+			add_to_variable = { UKR_digital_lean = 2 }
+			UKR_clamp_leans = yes
+		}
+		ai_chance = { factor = 60 }
+	}
+
+	# Отмолчаться
+	option = {
+		name = ukraine_politics.104.b
+		add_political_power = 10
+		add_stability = -0.02
+		hidden_effect = {
+			add_to_variable = { UKR_honesty_2023 = -1 }
+			add_to_variable = { UKR_authoritarian_lean = 2 }
+			UKR_clamp_leans = yes
+		}
+		ai_chance = { factor = 40 }
+	}
+}
+
+# Старт кампании «Слуги народа»: выбор программы (+3 выбранной склонности, −5 остальным)
+country_event = {
+	id = ukraine_politics.105
+	title = ukraine_politics.105.t
+	desc = ukraine_politics.105.d
+	picture = GFX_report_event_ukrainian_civil_war
+
+	is_triggered_only = yes
+
+	trigger = {
+		tag = UKR
+	}
+
+	# Технократическая программа
+	option = {
+		name = ukraine_politics.105.a
+		add_political_power = 40
+		add_popularity = { ideology = social_liberal popularity = 0.02 }
+		hidden_effect = {
+			add_to_variable = { UKR_digital_lean = 3 }
+			add_to_variable = { UKR_left_lean = -5 }
+			add_to_variable = { UKR_authoritarian_lean = -5 }
+			add_to_variable = { UKR_nationalist_lean = -5 }
+			UKR_clamp_leans = yes
+		}
+		ai_chance = { factor = 25 }
+	}
+
+	# Социальная программа
+	option = {
+		name = ukraine_politics.105.b
+		add_stability = 0.03
+		set_temp_variable = {
+			var = income_var_temp
+			value = -2
+		}
+		add_income_with_inflation = yes
+		add_popularity = { ideology = social_liberal popularity = 0.02 }
+		hidden_effect = {
+			add_to_variable = { UKR_left_lean = 3 }
+			add_to_variable = { UKR_digital_lean = -5 }
+			add_to_variable = { UKR_authoritarian_lean = -5 }
+			add_to_variable = { UKR_nationalist_lean = -5 }
+			UKR_clamp_leans = yes
+		}
+		ai_chance = { factor = 25 }
+	}
+
+	# «Порядок»
+	option = {
+		name = ukraine_politics.105.c
+		add_political_power = 25
+		add_war_support = 0.02
+		add_popularity = { ideology = social_liberal popularity = 0.02 }
+		hidden_effect = {
+			add_to_variable = { UKR_authoritarian_lean = 3 }
+			add_to_variable = { UKR_digital_lean = -5 }
+			add_to_variable = { UKR_left_lean = -5 }
+			add_to_variable = { UKR_nationalist_lean = -5 }
+			UKR_clamp_leans = yes
+		}
+		ai_chance = { factor = 25 }
+	}
+
+	# Патриотическая программа
+	option = {
+		name = ukraine_politics.105.e
+		add_war_support = 0.04
+		add_popularity = { ideology = social_liberal popularity = 0.02 }
+		hidden_effect = {
+			add_to_variable = { UKR_nationalist_lean = 3 }
+			add_to_variable = { UKR_digital_lean = -5 }
+			add_to_variable = { UKR_left_lean = -5 }
+			add_to_variable = { UKR_authoritarian_lean = -5 }
+			UKR_clamp_leans = yes
+		}
+		ai_chance = { factor = 25 }
+	}
+}
+
+# Выборы в Верховную Раду, 29.10.2023
+country_event = {
+	id = ukraine_politics.110
+	title = ukraine_politics.110.t
+	desc = ukraine_politics.110.d
+	picture = GFX_report_event_ukrainian_civil_war
+
+	fire_only_once = yes
+
+	trigger = {
+		tag = UKR
+		date > 2023.10.28
+		has_country_flag = UKR_politics_2023_started
+		NOT = { has_country_flag = UKR_election_2023_done }
+		NOT = { has_war_with = SOV }
+	}
+
+	mean_time_to_happen = {
+		days = 1
+	}
+
+	immediate = {
+		set_country_flag = UKR_election_2023_done
+		UKR_rada_2023_results = yes
+	}
+
+	option = {
+		name = ukraine_politics.110.a
+		add_political_power = 25
+		country_event = { id = ukraine_politics.111 days = 7 }
+	}
+}
+
+# Прагматический союз с «Батькивщиной» (без выбора)
+country_event = {
+	id = ukraine_politics.111
+	title = ukraine_politics.111.t
+	desc = ukraine_politics.111.d
+	picture = GFX_report_event_ukrainian_civil_war
+
+	is_triggered_only = yes
+
+	trigger = {
+		tag = UKR
+	}
+
+	option = {
+		name = ukraine_politics.111.a
+		set_temp_variable = { coalition_partner_var_temp = token:conservative }
+		add_to_coalition = yes
+		set_country_flag = UKR_rada_union_partner
+		add_stability = 0.02
+	}
+}
+
+# Скрытый запуск фазы В: при старте «Золотого века» или 15.11.2023 без него
+country_event = {
+	id = ukraine_politics.120
+	title = ukraine_politics.120.t
+	desc = ukraine_politics.120.d
+	picture = GFX_report_event_ukrainian_civil_war
+
+	hidden = yes
+	fire_only_once = yes
+
+	trigger = {
+		tag = UKR
+		has_country_flag = UKR_rada_union_partner
+		NOT = { has_country_flag = UKR_scandal_chain_started }
+		OR = {
+			has_country_flag = UKR_golden_age_started
+			date > 2023.11.14
+		}
+	}
+
+	mean_time_to_happen = {
+		days = 1
+	}
+
+	immediate = {
+		UKR_start_scandal_chain = yes
+	}
+}
+
+# Шёпот в кулуарах: слухи о теневых схемах
+country_event = {
+	id = ukraine_politics.121
+	title = ukraine_politics.121.t
+	desc = ukraine_politics.121.d
+	picture = GFX_report_event_ukrainian_civil_war
+
+	is_triggered_only = yes
+
+	trigger = {
+		tag = UKR
+	}
+
+	# Опровергнуть
+	option = {
+		name = ukraine_politics.121.a
+		add_political_power = 15
+		hidden_effect = {
+			add_to_variable = { UKR_honesty_2023 = -1 }
+		}
+		country_event = { id = ukraine_politics.122 days = 14 }
+		ai_chance = { factor = 50 }
+	}
+
+	# Пообещать проверку
+	option = {
+		name = ukraine_politics.121.b
+		add_political_power = -20
+		hidden_effect = {
+			add_to_variable = { UKR_honesty_2023 = 1 }
+		}
+		country_event = { id = ukraine_politics.122 days = 14 }
+		ai_chance = { factor = 50 }
+	}
+}
+
+# Второй звоночек
+country_event = {
+	id = ukraine_politics.122
+	title = ukraine_politics.122.t
+	desc = ukraine_politics.122.d
+	picture = GFX_report_event_ukrainian_civil_war
+
+	is_triggered_only = yes
+
+	trigger = {
+		tag = UKR
+	}
+
+	# Сдать чиновника
+	option = {
+		name = ukraine_politics.122.a
+		add_political_power = -25
+		add_stability = 0.01
+		hidden_effect = {
+			add_to_variable = { UKR_honesty_2023 = 1 }
+		}
+		country_event = { id = ukraine_politics.123 days = 10 }
+		ai_chance = { factor = 50 }
+	}
+
+	# Прикрыть
+	option = {
+		name = ukraine_politics.122.b
+		add_stability = -0.02
+		hidden_effect = {
+			add_to_variable = { UKR_honesty_2023 = -1 }
+			add_to_variable = { UKR_authoritarian_lean = 2 }
+			UKR_clamp_leans = yes
+		}
+		country_event = { id = ukraine_politics.123 days = 10 }
+		ai_chance = { factor = 50 }
+	}
+}
+
+# Союзник нервничает: исход один, меняется цена
+country_event = {
+	id = ukraine_politics.123
+	title = ukraine_politics.123.t
+	desc = ukraine_politics.123.d
+	picture = GFX_report_event_ukrainian_civil_war
+
+	is_triggered_only = yes
+
+	trigger = {
+		tag = UKR
+	}
+
+	# Пытаться удержать
+	option = {
+		name = ukraine_politics.123.a
+		add_political_power = -50
+		set_country_flag = UKR_tried_to_hold_union
+		country_event = { id = ukraine_politics.124 days = 7 }
+		ai_chance = { factor = 50 }
+	}
+
+	# Отпустить
+	option = {
+		name = ukraine_politics.123.b
+		add_political_power = 20
+		country_event = { id = ukraine_politics.124 days = 7 }
+		ai_chance = { factor = 50 }
+	}
+}
+
+# Распад союза
+country_event = {
+	id = ukraine_politics.124
+	title = ukraine_politics.124.t
+	desc = ukraine_politics.124.d
+	picture = GFX_report_event_ukrainian_civil_war
+
+	is_triggered_only = yes
+
+	trigger = {
+		tag = UKR
+	}
+
+	immediate = {
+		set_temp_variable = { coalition_partner_var_temp = token:conservative }
+		remove_from_coalition = yes
+		clr_country_flag = UKR_rada_union_partner
+		set_country_flag = UKR_rada_union_collapsed
+		UKR_rada_union_collapse_results = yes
+	}
+
+	option = {
+		name = ukraine_politics.124.a
+		if = {
+			limit = { has_country_flag = UKR_tried_to_hold_union }
+			add_stability = -0.03
+		}
+		else = {
+			add_stability = -0.06
+		}
+		country_event = { id = ukraine_politics.125 days = 5 }
+	}
+}
+
+# Улица требует перемен: переход к блоку 2
+country_event = {
+	id = ukraine_politics.125
+	title = ukraine_politics.125.t
+	desc = ukraine_politics.125.d
+	picture = GFX_report_event_ukrainian_civil_war
+
+	is_triggered_only = yes
+
+	trigger = {
+		tag = UKR
+	}
+
+	option = {
+		name = ukraine_politics.125.a
+		add_stability = -0.03
+		add_political_power = 50
+		# Дерево блока 2 ещё не написано: пока только флаг.
+		# Позже: load_focus_tree = { tree = UKR_block2 keep_completed = yes }
+		set_country_flag = UKR_block2_ready
+	}
+}

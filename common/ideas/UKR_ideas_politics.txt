@@ -1,6 +1,127 @@
 # Идеи политического блока 2 (DESIGN.md, раздел 6)
 ideas = {
 	country = {
+		# === Политический сезон 2023: временные духи, двигающие популярность партий (DESIGN.md, 5) ===
+		# Кризис доверия к Западу (ukraine_politics.101): «Слуга народа» и «За будущее» теряют
+		UKR_west_trust_crisis = {
+			picture = UKR_Embargoed_Economy
+			allowed = {
+				original_tag = UKR
+			}
+			removal_cost = -1
+			modifier = {
+				social_liberal_drift = -0.03
+				market_liberal_drift = -0.02
+			}
+		}
+
+		# Левая консолидация (102): Радикальная партия и Союз левых сил растут
+		UKR_left_consolidation = {
+			picture = SOV_stakhanovite_movement
+			allowed = {
+				original_tag = UKR
+			}
+			removal_cost = -1
+			modifier = {
+				social_democrat_drift = 0.03
+				libertarian_socialist_drift = 0.02
+			}
+		}
+
+		# Правый поворот (103): «Европейская Солидарность» и «Свобода» растут
+		UKR_right_turn = {
+			picture = UKR_far_right_meddling
+			allowed = {
+				original_tag = UKR
+			}
+			removal_cost = -1
+			modifier = {
+				conservative_drift = 0.03
+				national_socialist_drift = 0.02
+			}
+		}
+
+		# «Яйца по 17» (104): «Слуга народа» теряет, срок зависит от реакции
+		UKR_eggs_scandal = {
+			picture = UKR_Corruption
+			allowed = {
+				original_tag = UKR
+			}
+			removal_cost = -1
+			modifier = {
+				social_liberal_drift = -0.02
+			}
+		}
+
+		# Слухи в кулуарах (121): «Слуга народа» теряет
+		UKR_corridor_rumours = {
+			picture = UKR_Corruption
+			allowed = {
+				original_tag = UKR
+			}
+			removal_cost = -1
+			modifier = {
+				social_liberal_drift = -0.02
+				stability_factor = -0.02
+			}
+		}
+
+		# Улица требует перемен (125): оппозиция растёт до выборов президента
+		UKR_street_demands = {
+			picture = UKR_zelensky_growing_authoritarism
+			allowed = {
+				original_tag = UKR
+			}
+			removal_cost = -1
+			modifier = {
+				social_liberal_drift = -0.03
+				conservative_drift = 0.02
+				social_democrat_drift = 0.01
+			}
+		}
+
+		# === Олигархат: ступени после закона о деолигархизации (DESIGN.md, 8) ===
+		# Лестница: UKR_government_corruption → _low (ukraine.107) → UKR_oligarchs_retreating → UKR_oligarchs_remnants → снятие
+		UKR_oligarchs_retreating = {
+			picture = UKR_Corruption
+			allowed = {
+				original_tag = UKR
+			}
+			allowed_civil_war = {
+				always = yes
+			}
+			removal_cost = -1
+			modifier = {
+				political_power_gain = -0.02
+				stability_factor = -0.06
+				misc_expense = 0.01
+				income_growth_factor = -0.015
+				planning_speed = -0.15
+				army_speed_factor = -0.03
+				mobilization_speed = -0.10
+				battalion_upkeep_factor = -0.2
+			}
+		}
+
+		UKR_oligarchs_remnants = {
+			picture = UKR_Corruption
+			allowed = {
+				original_tag = UKR
+			}
+			allowed_civil_war = {
+				always = yes
+			}
+			removal_cost = -1
+			modifier = {
+				political_power_gain = -0.01
+				stability_factor = -0.03
+				income_growth_factor = -0.005
+				planning_speed = -0.05
+				mobilization_speed = -0.05
+				battalion_upkeep_factor = -0.1
+			}
+		}
+
 		# Подчинённые антикоррупционные органы (развилка блока 2)
 		UKR_captured_judiciary = {
 			picture = UKR_Corruption

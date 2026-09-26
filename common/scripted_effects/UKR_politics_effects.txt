@@ -228,3 +228,53 @@ UKR_clamp_left_factions = {
 UKR_set_cooperative_economy = {
 	change_economy_type_socialist_market = yes
 }
+
+# =====================================================================
+# Олигархат и коррупция: снятие по ступеням, а не одним фокусом
+# =====================================================================
+
+# Одна ступень вниз по лестнице олигархата:
+# «Украинский Олигархат» → он же после закона (ukraine.107) → «Олигархат отступает» → «Остатки олигархата» → снят
+UKR_oligarchs_step_down = {
+	if = {
+		limit = { has_idea = UKR_government_corruption }
+		swap_ideas = {
+			remove_idea = UKR_government_corruption
+			add_idea = UKR_government_corruption_low
+		}
+	}
+	else_if = {
+		limit = { has_idea = UKR_government_corruption_low }
+		swap_ideas = {
+			remove_idea = UKR_government_corruption_low
+			add_idea = UKR_oligarchs_retreating
+		}
+	}
+	else_if = {
+		limit = { has_idea = UKR_oligarchs_retreating }
+		swap_ideas = {
+			remove_idea = UKR_oligarchs_retreating
+			add_idea = UKR_oligarchs_remnants
+		}
+	}
+	else_if = {
+		limit = { has_idea = UKR_oligarchs_remnants }
+		remove_ideas = UKR_oligarchs_remnants
+	}
+}
+
+# Одна ступень вниз по лестнице коррупции: «Эндемичная коррупция» → «Антикоррупционные реформы» → снята
+UKR_corruption_step_down = {
+	if = {
+		limit = { has_idea = UKR_endemic_corruption }
+		swap_ideas = {
+			remove_idea = UKR_endemic_corruption
+			add_idea = UKR_corruption_reforming
+		}
+	}
+	else_if = {
+		limit = { has_idea = UKR_corruption_reforming }
+		remove_ideas = UKR_corruption_reforming
+	}
+}
+

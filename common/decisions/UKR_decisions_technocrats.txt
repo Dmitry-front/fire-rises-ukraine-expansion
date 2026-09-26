@@ -102,17 +102,8 @@ UKR_svyrydenko_reforms = {
 		}
 		remove_effect = {
 			add_stability = 0.02
-			if = {
-				limit = { has_idea = UKR_government_corruption }
-				swap_ideas = {
-					remove_idea = UKR_government_corruption
-					add_idea = UKR_government_corruption_low
-				}
-			}
-			else_if = {
-				limit = { has_idea = UKR_government_corruption_low }
-				remove_ideas = UKR_government_corruption_low
-			}
+			# Ступень вниз по лестнице олигархата
+			UKR_oligarchs_step_down = yes
 		}
 	}
 
@@ -135,7 +126,8 @@ UKR_svyrydenko_reforms = {
 			}
 			add_income_with_inflation = yes
 			add_stability = -0.04
-			add_popularity = { ideology = social_democrat popularity = 0.02 }
+			custom_effect_tooltip = UKR_pop_social_democrat_p2_tt
+			hidden_effect = { add_popularity = { ideology = social_democrat popularity = 0.02 } }
 		}
 	}
 

@@ -60,22 +60,8 @@ focus_tree = {
 		}
 		completion_reward = {
 			add_stability = 0.03
-			# Ступень вниз по лестнице коррупции
-			if = {
-				limit = { has_idea = UKR_government_corruption }
-				swap_ideas = {
-					remove_idea = UKR_government_corruption
-					add_idea = UKR_government_corruption_low
-				}
-			}
-			else_if = {
-				limit = { has_idea = UKR_government_corruption_low }
-				remove_ideas = UKR_government_corruption_low
-			}
-			if = {
-				limit = { has_idea = UKR_endemic_corruption }
-				remove_ideas = UKR_endemic_corruption
-			}
+			# Ступень вниз по лестнице коррупции (олигархат не трогает)
+			UKR_corruption_step_down = yes
 			hidden_effect = {
 				country_event = { id = ukraine_politics.405 days = 45 }
 			}
@@ -352,6 +338,8 @@ focus_tree = {
 		completion_reward = {
 			remove_ideas = UKR_eu_aid_frozen
 			add_ideas = UKR_open_state
+			# Открытые реестры бенефициаров: ступень вниз по лестнице олигархата
+			UKR_oligarchs_step_down = yes
 			hidden_effect = {
 				country_event = { id = ukraine_politics.403 days = 60 }
 			}
@@ -379,7 +367,8 @@ focus_tree = {
 		}
 		completion_reward = {
 			add_ideas = UKR_digital_control
-			add_popularity = { ideology = conservative popularity = 0.03 }
+			custom_effect_tooltip = UKR_pop_conservative_p3_tt
+			hidden_effect = { add_popularity = { ideology = conservative popularity = 0.03 } }
 			hidden_effect = {
 				country_event = { id = ukraine_politics.404 days = 60 }
 			}
@@ -407,10 +396,8 @@ focus_tree = {
 		completion_reward = {
 			add_political_power = 50
 			add_stability = 0.03
-			if = {
-				limit = { has_idea = UKR_government_corruption_low }
-				remove_ideas = UKR_government_corruption_low
-			}
+			# Ступень вниз по лестнице олигархата
+			UKR_oligarchs_step_down = yes
 		}
 	}
 

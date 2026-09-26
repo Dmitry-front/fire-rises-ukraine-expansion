@@ -35,6 +35,8 @@ for p in files('.yml'):
     print(f'{p}: BOM={bom} header={first}')
 for p in files('.txt'):
     if p.endswith('.txt.txt'): print('ДВОЙНОЕ РАСШИРЕНИЕ:', p)
+    # BOM нужен только в .yml; в скриптах он портит первый токен и игра теряет первый блок файла
+    if read(p)[1] and not p.startswith('_reference'): print('BOM В СКРИПТЕ (удалить):', p)
 
 print('\n=== Баланс скобок')
 texts = {}

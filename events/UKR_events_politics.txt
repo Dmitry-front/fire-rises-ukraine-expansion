@@ -34,11 +34,11 @@ country_event = {
 	immediate = {
 		set_country_flag = UKR_politics_2023_started
 		set_variable = { UKR_honesty_2023 = 0 }
-		country_event = { id = ukraine_politics.101 days = 35 }
-		country_event = { id = ukraine_politics.102 days = 95 }
-		country_event = { id = ukraine_politics.103 days = 155 }
-		country_event = { id = ukraine_politics.104 days = 185 }
-		country_event = { id = ukraine_politics.105 days = 245 }
+		hidden_effect = { country_event = { id = ukraine_politics.101 days = 35 } }
+		hidden_effect = { country_event = { id = ukraine_politics.102 days = 95 } }
+		hidden_effect = { country_event = { id = ukraine_politics.103 days = 155 } }
+		hidden_effect = { country_event = { id = ukraine_politics.104 days = 185 } }
+		hidden_effect = { country_event = { id = ukraine_politics.105 days = 245 } }
 	}
 }
 
@@ -79,7 +79,7 @@ country_event = {
 		name = ukraine_politics.101.b
 		add_war_support = 0.02
 		add_political_power = 25
-		add_popularity = { ideology = nationalist popularity = 0.01 }
+		add_popularity = { ideology = national_socialist popularity = 0.01 }
 		hidden_effect = {
 			add_to_variable = { UKR_nationalist_lean = 2 }
 			UKR_clamp_leans = yes
@@ -157,7 +157,7 @@ country_event = {
 	immediate = {
 		hidden_effect = {
 			add_popularity = { ideology = conservative popularity = 0.03 }
-			add_popularity = { ideology = nationalist popularity = 0.02 }
+			add_popularity = { ideology = national_socialist popularity = 0.02 }
 		}
 	}
 
@@ -330,17 +330,17 @@ country_event = {
 
 	immediate = {
 		set_country_flag = UKR_election_2023_done
-		UKR_rada_2023_results = yes
 	}
 
 	option = {
 		name = ukraine_politics.110.a
+		UKR_rada_2023_results = yes
 		add_political_power = 25
-		country_event = { id = ukraine_politics.111 days = 7 }
+		hidden_effect = { country_event = { id = ukraine_politics.111 days = 7 } }
 	}
 }
 
-# Прагматический союз с «Батькивщиной» (без выбора)
+# Прагматический союз с «За будущее» (без выбора). В TFR «Батькивщины» нет: партнёр — market_liberal
 country_event = {
 	id = ukraine_politics.111
 	title = ukraine_politics.111.t
@@ -355,8 +355,11 @@ country_event = {
 
 	option = {
 		name = ukraine_politics.111.a
-		set_temp_variable = { coalition_partner_var_temp = token:conservative }
-		add_to_coalition = yes
+		custom_effect_tooltip = UKR_union_za_maibutnie_tt
+		hidden_effect = {
+			set_temp_variable = { coalition_partner_var_temp = token:market_liberal }
+			add_to_coalition = yes
+		}
 		set_country_flag = UKR_rada_union_partner
 		add_stability = 0.02
 	}
@@ -411,7 +414,7 @@ country_event = {
 		hidden_effect = {
 			add_to_variable = { UKR_honesty_2023 = -1 }
 		}
-		country_event = { id = ukraine_politics.122 days = 14 }
+		hidden_effect = { country_event = { id = ukraine_politics.122 days = 14 } }
 		ai_chance = { factor = 50 }
 	}
 
@@ -422,7 +425,7 @@ country_event = {
 		hidden_effect = {
 			add_to_variable = { UKR_honesty_2023 = 1 }
 		}
-		country_event = { id = ukraine_politics.122 days = 14 }
+		hidden_effect = { country_event = { id = ukraine_politics.122 days = 14 } }
 		ai_chance = { factor = 50 }
 	}
 }
@@ -448,7 +451,7 @@ country_event = {
 		hidden_effect = {
 			add_to_variable = { UKR_honesty_2023 = 1 }
 		}
-		country_event = { id = ukraine_politics.123 days = 10 }
+		hidden_effect = { country_event = { id = ukraine_politics.123 days = 10 } }
 		ai_chance = { factor = 50 }
 	}
 
@@ -461,7 +464,7 @@ country_event = {
 			add_to_variable = { UKR_authoritarian_lean = 2 }
 			UKR_clamp_leans = yes
 		}
-		country_event = { id = ukraine_politics.123 days = 10 }
+		hidden_effect = { country_event = { id = ukraine_politics.123 days = 10 } }
 		ai_chance = { factor = 50 }
 	}
 }
@@ -484,7 +487,7 @@ country_event = {
 		name = ukraine_politics.123.a
 		add_political_power = -50
 		set_country_flag = UKR_tried_to_hold_union
-		country_event = { id = ukraine_politics.124 days = 7 }
+		hidden_effect = { country_event = { id = ukraine_politics.124 days = 7 } }
 		ai_chance = { factor = 50 }
 	}
 
@@ -492,7 +495,7 @@ country_event = {
 	option = {
 		name = ukraine_politics.123.b
 		add_political_power = 20
-		country_event = { id = ukraine_politics.124 days = 7 }
+		hidden_effect = { country_event = { id = ukraine_politics.124 days = 7 } }
 		ai_chance = { factor = 50 }
 	}
 }
@@ -511,15 +514,18 @@ country_event = {
 	}
 
 	immediate = {
-		set_temp_variable = { coalition_partner_var_temp = token:conservative }
-		remove_from_coalition = yes
+		hidden_effect = {
+			set_temp_variable = { coalition_partner_var_temp = token:market_liberal }
+			remove_from_coalition = yes
+		}
 		clr_country_flag = UKR_rada_union_partner
 		set_country_flag = UKR_rada_union_collapsed
-		UKR_rada_union_collapse_results = yes
+		UKR_rada_union_collapse_calc = yes
 	}
 
 	option = {
 		name = ukraine_politics.124.a
+		UKR_rada_union_collapse_results = yes
 		if = {
 			limit = { has_country_flag = UKR_tried_to_hold_union }
 			add_stability = -0.03
@@ -527,7 +533,7 @@ country_event = {
 		else = {
 			add_stability = -0.06
 		}
-		country_event = { id = ukraine_politics.125 days = 5 }
+		hidden_effect = { country_event = { id = ukraine_politics.125 days = 5 } }
 	}
 }
 
@@ -579,15 +585,17 @@ country_event = {
 
 	immediate = {
 		set_country_flag = UKR_block2_loaded
-		load_focus_tree = {
-			tree = UKR_block2
-			keep_completed = yes
+		hidden_effect = {
+			load_focus_tree = {
+				tree = UKR_block2
+				keep_completed = yes
+			}
 		}
-		complete_national_focus = UKR_b2_campaign_2024
-		country_event = { id = ukraine_politics.201 days = 40 }
-		country_event = { id = ukraine_politics.202 days = 55 }
-		country_event = { id = ukraine_politics.203 days = 70 }
-		country_event = { id = ukraine_politics.204 days = 80 }
+		hidden_effect = { complete_national_focus = UKR_b2_campaign_2024 }
+		hidden_effect = { country_event = { id = ukraine_politics.201 days = 40 } }
+		hidden_effect = { country_event = { id = ukraine_politics.202 days = 55 } }
+		hidden_effect = { country_event = { id = ukraine_politics.203 days = 70 } }
+		hidden_effect = { country_event = { id = ukraine_politics.204 days = 80 } }
 	}
 
 	option = {
@@ -784,8 +792,8 @@ country_event = {
 	option = {
 		name = ukraine_politics.205.a
 		add_political_power = 20
-		country_event = { id = ukraine_politics.206 days = 7 }
-		country_event = { id = ukraine_politics.207 days = 21 }
+		hidden_effect = { country_event = { id = ukraine_politics.206 days = 7 } }
+		hidden_effect = { country_event = { id = ukraine_politics.207 days = 21 } }
 	}
 }
 
@@ -866,7 +874,7 @@ country_event = {
 			set_country_flag = UKR_zelensky_reelected
 		}
 		else = {
-			country_event = { id = ukraine.13 }
+			hidden_effect = { country_event = { id = ukraine.13 } }
 		}
 	}
 }
@@ -911,9 +919,9 @@ country_event = {
 		name = ukraine_politics.300.a
 		add_stability = -0.05
 		add_political_power = -25
-		country_event = { id = ukraine_politics.301 days = 5 }
-		country_event = { id = ukraine_politics.302 days = 10 }
-		country_event = { id = ukraine_politics.303 days = 14 }
+		hidden_effect = { country_event = { id = ukraine_politics.301 days = 5 } }
+		hidden_effect = { country_event = { id = ukraine_politics.302 days = 10 } }
+		hidden_effect = { country_event = { id = ukraine_politics.303 days = 14 } }
 	}
 }
 
@@ -1097,19 +1105,23 @@ country_event = {
 		# Блок 3: дерево выбранной опоры. Написаны пути технократов и левых
 		if = {
 			limit = { has_country_flag = UKR_pillar_chosen_technocrats }
-			load_focus_tree = {
-				tree = UKR_block3_technocrats
-				keep_completed = yes
+			hidden_effect = {
+				load_focus_tree = {
+					tree = UKR_block3_technocrats
+					keep_completed = yes
+				}
 			}
-			country_event = { id = ukraine_politics.400 days = 1 }
+			hidden_effect = { country_event = { id = ukraine_politics.400 days = 1 } }
 		}
 		else_if = {
 			limit = { has_country_flag = UKR_pillar_chosen_left }
-			load_focus_tree = {
-				tree = UKR_block3_left
-				keep_completed = yes
+			hidden_effect = {
+				load_focus_tree = {
+					tree = UKR_block3_left
+					keep_completed = yes
+				}
 			}
-			country_event = { id = ukraine_politics.500 days = 1 }
+			hidden_effect = { country_event = { id = ukraine_politics.500 days = 1 } }
 		}
 	}
 }
@@ -1655,7 +1667,7 @@ country_event = {
 	option = {
 		name = ukraine_politics.506.c
 		add_stability = -0.02
-		add_popularity = { ideology = nationalist popularity = 0.02 }
+		add_popularity = { ideology = national_socialist popularity = 0.02 }
 		custom_effect_tooltip = UKR_lf_communists_up_tt
 		hidden_effect = {
 			add_to_variable = { UKR_lf_communists = 10 }
@@ -1697,7 +1709,7 @@ country_event = {
 		name = ukraine_politics.507.b
 		add_war_support = 0.02
 		add_stability = -0.02
-		add_popularity = { ideology = nationalist popularity = 0.03 }
+		add_popularity = { ideology = national_socialist popularity = 0.03 }
 		custom_effect_tooltip = UKR_lf_anarchists_up_tt
 		hidden_effect = {
 			add_to_variable = { UKR_lf_anarchists = 5 }

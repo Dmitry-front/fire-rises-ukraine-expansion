@@ -33,6 +33,10 @@ for p in files('.yml'):
     t, bom = read(p)
     first = t.lstrip().split('\n')[0].strip()
     print(f'{p}: BOM={bom} header={first}')
+for p in files('.yml'):
+    t, _ = read(p)
+    for n, line in enumerate(t.split('\n'), 1):
+        if any(c in line for c in '—–…'): print(f'ТИРЕ/МНОГОТОЧИЕ (в игре «?»): {p}:{n}')
 for p in files('.txt'):
     if p.endswith('.txt.txt'): print('ДВОЙНОЕ РАСШИРЕНИЕ:', p)
     # BOM нужен только в .yml; в скриптах он портит первый токен и игра теряет первый блок файла

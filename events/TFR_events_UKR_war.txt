@@ -592,17 +592,16 @@ country_event = {
 	trigger = {
 		tag = UKR
 		has_country_flag = UKR_war_mood_active
-		# Триггер на урон от стратегических бомбардировок
-		any_owned_state = {
-			damage_building = { building = infrastructure level > 3 }
-		}
+		# Урон от бомбардировок триггером HOI4 не проверить: удары идут раз в 1-2 месяца, пока идёт война
+		NOT = { has_country_flag = UKR_infra_strike_cd }
 		has_war_with = SOV
 	}
 	
-	mean_time_to_happen = { days = 15 }
+	mean_time_to_happen = { days = 30 }
 	
 	option = {
 		name = ukrainewar.300.a
+		set_country_flag = { flag = UKR_infra_strike_cd days = 60 }
 		add_to_variable = { var = UKRhate value = 6 }
 		add_to_variable = { var = UKRwarfatigue value = 5 }
 		UKR_update_hate_spirit = yes

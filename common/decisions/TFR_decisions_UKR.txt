@@ -1,22 +1,23 @@
-UKR_land_reforms = {
-	land_purchasing_amendments = {
-		available = {
-		}
-		visible = {
-			tag = UKR
-		}
-		complete_effect = {
-			add_stability = 0.03
-			custom_effect_tooltip = UKR_pay_IMF_debt_small
-		}
-		icon = democracy
-		fire_only_once = yes
-		cost = 30
-		ai_will_do = {
-			factor = 10
-		}
-	}
-}
+# Мёртвый остаток шаблона: категория UKR_land_reforms закомментирована, фокуса UKR_begin_land_reforms нет.
+# UKR_land_reforms = {
+# 	land_purchasing_amendments = {
+# 		available = {
+# 		}
+# 		visible = {
+# 			tag = UKR
+# 		}
+# 		complete_effect = {
+# 			add_stability = 0.03
+# 			custom_effect_tooltip = UKR_pay_IMF_debt_small
+# 		}
+# 		icon = democracy
+# 		fire_only_once = yes
+# 		cost = 30
+# 		ai_will_do = {
+# 			factor = 10
+# 		}
+# 	}
+# }
 
 UKR_special_military_operation = {
 
@@ -25,7 +26,7 @@ UKR_special_military_operation = {
 		available = {
 			has_completed_focus = UKR_defensive_fortifications
 			has_war_support > 0.3
-			has_command_power > 30
+			command_power > 30
 			check_variable = { UKR_border_defense_uses < 5 }
 		}
 		
@@ -601,7 +602,7 @@ UKR_special_military_operation = {
 		
 		available = {
 			has_completed_focus = UKR_forge_professional_officer_corps
-			has_command_power > 30
+			command_power > 30
 			NOT = { has_country_flag = UKR_organization_course_cooldown }
 		}
 		
@@ -651,7 +652,7 @@ UKR_special_military_operation = {
 		
 		available = {
 			has_completed_focus = UKR_forge_professional_officer_corps
-			has_command_power > 30
+			command_power > 30
 			NOT = { has_country_flag = UKR_mobile_course_cooldown }
 		}
 		
@@ -701,7 +702,7 @@ UKR_special_military_operation = {
 		
 		available = {
 			has_completed_focus = UKR_forge_professional_officer_corps
-			has_command_power > 30
+			command_power > 30
 			NOT = { has_country_flag = UKR_infantry_course_cooldown }
 		}
 		
@@ -751,7 +752,7 @@ UKR_special_military_operation = {
 		
 		available = {
 			has_completed_focus = UKR_forge_professional_officer_corps
-			has_command_power > 30
+			command_power > 30
 			NOT = { has_country_flag = UKR_hybrid_course_cooldown }
 		}
 		
@@ -1302,6 +1303,40 @@ UKR_startup_ecosystem_category = {
 }
 #covid
 UKR_covid_response_decisions = {
+	# Жёсткий локдаун: сокращает кризис COVID на 60 дней (перенесено из файла категорий)
+	UKR_covid_lockdown = {
+		icon = GFX_decision_generic_political_discourse
+		visible = { has_idea = UKR_covid_crisis }
+		available = { has_idea = UKR_covid_crisis }
+		cost = 25
+		days_re_enable = 90
+		ai_will_do = {
+			factor = 5
+		}
+		complete_effect = {
+			add_stability = -0.02
+			modify_timed_idea = {
+				idea = UKR_covid_crisis
+				days = -60
+			}
+		}
+	}
+
+	# Массовая вакцинация: снимает кризис COVID
+	UKR_covid_vaccination = {
+		icon = GFX_decision_generic_political_discourse
+		visible = { has_idea = UKR_covid_crisis }
+		available = { has_idea = UKR_covid_crisis }
+		cost = 75
+		fire_only_once = yes
+		ai_will_do = {
+			factor = 10
+		}
+		complete_effect = {
+			remove_ideas = UKR_covid_crisis
+		}
+	}
+
 	# Адаптивный карантин
 	UKR_implement_adaptive_quarantine = {
 		icon = GFX_decision_eng_trade_unions_demand
@@ -1536,7 +1571,7 @@ UKR_covid_response_decisions = {
 		available = {
 			has_country_flag = UKR_COVID_ongoing
 			has_idea = UKR_covid_crisis
-			has_command_power > 30
+			command_power > 30
 			has_war_support > 0.2
 		}
 		visible = {
@@ -1603,7 +1638,7 @@ UKR_shadow_war_category = {
 				has_war_with = SOV
 				NOT = { has_war_with = UKR }
 			}
-			has_command_power > 30
+			command_power > 30
 			has_completed_focus = UKR_shadow_war_capabilities
 		}
 		
@@ -1645,7 +1680,7 @@ UKR_shadow_war_category = {
 				has_war_with = SOV
 				NOT = { has_war_with = UKR }
 			}
-			has_command_power > 30
+			command_power > 30
 			has_completed_focus = UKR_shadow_war_capabilities
 		}
 		
@@ -1687,7 +1722,7 @@ UKR_shadow_war_category = {
 				has_war_with = SOV
 				NOT = { has_war_with = UKR }
 			}
-			has_command_power > 30
+			command_power > 30
 			has_completed_focus = UKR_shadow_war_capabilities
 		}
 		
@@ -1729,7 +1764,7 @@ UKR_shadow_war_category = {
 				has_war_with = SOV
 				NOT = { has_war_with = UKR }
 			}
-			has_command_power > 30
+			command_power > 30
 			has_completed_focus = UKR_shadow_war_capabilities
 		}
 		
@@ -1770,7 +1805,7 @@ UKR_shadow_war_category = {
 				has_war_with = SOV
 				NOT = { has_war_with = UKR }
 			}
-			has_command_power > 30
+			command_power > 30
 			has_completed_focus = UKR_shadow_war_capabilities
 			
 		}
@@ -1811,7 +1846,7 @@ UKR_shadow_war_category = {
 				has_war_with = SOV
 				NOT = { has_war_with = UKR }
 			}
-			has_command_power > 30
+			command_power > 30
 			has_completed_focus = UKR_shadow_war_capabilities
 			
 		}
@@ -1852,7 +1887,7 @@ UKR_shadow_war_category = {
 				has_war_with = SOV
 				NOT = { has_war_with = UKR }
 			}
-			has_command_power > 30
+			command_power > 30
 			has_completed_focus = UKR_shadow_war_capabilities
 			
 		}
@@ -1893,7 +1928,7 @@ UKR_shadow_war_category = {
 				has_war_with = SOV
 				NOT = { has_war_with = UKR }
 			}
-			has_command_power > 30
+			command_power > 30
 			has_completed_focus = UKR_shadow_war_capabilities
 		}
 		
@@ -1934,7 +1969,7 @@ UKR_shadow_war_category = {
 				has_war_with = SOV
 				NOT = { has_war_with = UKR }
 			}
-			has_command_power > 30
+			command_power > 30
 			has_completed_focus = UKR_shadow_war_capabilities
 		}
 		
@@ -2419,7 +2454,7 @@ UKR_against_occupiers = {
 			has_war_with = SOV
 			NOT = { has_idea = UKR_idea_minefields }
 			has_war_support > 0.3
-			has_command_power > 30
+			command_power > 30
 		}
 		
 		visible = {
@@ -2480,7 +2515,7 @@ UKR_against_occupiers = {
 			factor = 15
 			modifier = {
 				factor = 2
-				enemy_has_capitulated = no
+				NOT = { any_enemy_country = { has_capitulated = yes } }
 			}
 		}
 		
@@ -2893,7 +2928,7 @@ UKR_decommunization_category = {
 			
 			available = {
 				has_war = no
-				stability > 0.4
+				has_stability > 0.4
 			}
 			
 			cost = 50
@@ -2965,7 +3000,7 @@ UKR_decommunization_category = {
 			
 			available = {
 				has_war = no
-				stability > 0.5
+				has_stability > 0.5
 			}
 			
 			cost = 20

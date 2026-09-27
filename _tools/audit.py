@@ -188,3 +188,29 @@ for e, v in own_ev.items():
 for lang, d in loc.items():
     miss = sorted(k for k in need if k not in d)
     print(f'[{lang}] нет ключей для наших фокусов/событий: {len(miss)}', miss[:80])
+
+print('\n=== Известные неверные конструкции (по error.log)')
+BAD = [
+    (r'\bis_tag\s*=', 'is_tag не существует: tag = X'),
+    (r'\bhas_command_power\b', 'has_command_power не существует: command_power > X'),
+    (r'^\s*stability\s*[<>]', 'stability как триггер: has_stability > X'),
+    (r'^\s*ruling_party\s*=\s*\w+\s*$', 'ruling_party как триггер: has_government = X (допустимо только внутри set_politics)'),
+    (r'\bhas_party\s*=', 'has_party не существует: <идеология> > 0.4'),
+    (r'\bhas_popularity\s*=', 'has_popularity не существует: <идеология> > 0.4'),
+    (r'\benemy_has_capitulated\b', 'enemy_has_capitulated не существует'),
+    (r'\badd_army_experience\b', 'add_army_experience не существует: army_experience = X'),
+    (r'\bunlock_decision_category\s*=', 'unlock_decision_category не существует: видимость категории через visible'),
+    (r'\bruling_party_drift\b', 'ruling_party_drift не существует'),
+    (r'\bproduction_speed_(tac_bomber|CAS|fighter)\w*_factor\b', 'такого модификатора нет'),
+    (r'\bremove_timed_idea\b', 'remove_timed_idea не существует: remove_ideas'),
+]
+for p in files('.txt'):
+    if p.startswith(('_reference', '_tools')): continue
+    t, _ = read(p)
+    in_setpol = False
+    for n, line in enumerate(strip_comments(t).split('\n'), 1):
+        if 'set_politics' in line: in_setpol = True
+        for rx, msg in BAD:
+            if 'ruling_party как триггер' in msg and in_setpol: continue
+            if re.search(rx, line): print(f'{p}:{n}: {msg}')
+        if in_setpol and '}' in line and 'set_politics' not in line: in_setpol = False

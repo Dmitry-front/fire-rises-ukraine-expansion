@@ -563,6 +563,32 @@
 					cic_to_target_factor = 0.1
 				}
 			}		
+			# Третья ступень договора: на неё переключает TFR (решения SOV)
+			UKR_brotherhood_treaty_3_idea = {
+				picture = UKR_brotherhood_treaty_idea
+
+				allowed = {
+					always = no
+				}
+
+				allowed_civil_war = {
+					always = yes
+				}
+
+				removal_cost = -1
+				modifier = {
+					stability_factor = 0.15
+					political_power_factor = 0.25
+					industrial_capacity_factory = 0.2
+					production_factory_efficiency_gain_factor = 0.05
+				}
+				targeted_modifier = {
+					tag = SOV
+					extra_trade_to_target_factor = 0.75
+					mic_to_target_factor = 0.15
+					cic_to_target_factor = 0.2
+				}
+			}
 			UKR_brotherhood_treaty_2_idea = {
 				picture = UKR_brotherhood_treaty_idea     
 
@@ -768,7 +794,6 @@
 					consumer_goods_factor = 0.02
 					political_power_gain = -0.10
 				}
-				desc = "UKR_big_construction_idea_desc"
 			}
 			UKR_land_reform_idea = {
 				picture = generic_agrarian_reform
@@ -786,7 +811,6 @@
 					consumer_goods_factor = -0.02
 				}
 				
-				desc = "UKR_land_reform_idea_desc"
 			}
 			
 			UKR_digital_state_idea = {
@@ -804,7 +828,6 @@
 					personal_value_factor = 0.02
 				}
 				
-				desc = "UKR_digital_state_idea_desc"
 			}
 			
 			UKR_startup_ecosystem_idea = {
@@ -824,7 +847,6 @@
 					business_value_factor = 0.010
 				}
 				
-				desc = "UKR_startup_ecosystem_idea_desc"
 			}
 			
 			UKR_land_market_idea = {
@@ -843,7 +865,6 @@
 					political_power_gain = 0.05
 				}
 				
-				desc = "UKR_land_market_idea_desc"
 			}
 			
 			UKR_infrastructure_modernization_idea = {
@@ -863,7 +884,6 @@
 					supply_factor = 0.10
 				}
 				
-				desc = "UKR_infrastructure_modernization_idea_desc"
 			}
 			
 			UKR_economic_transformation_idea = {
@@ -884,7 +904,6 @@
 					global_building_slots_factor = 0.10
 				}
 				
-				desc = "UKR_economic_transformation_idea_desc"
 			}
 
 			UKR_modified_land_reform_idea = {
@@ -986,7 +1005,6 @@
 					research_speed_factor = 0.02
 					academic_development_monthly = 0.005
 				}
-				desc = "UKR_digital_leadership_idea"
 			}
 			
 			UKR_digital_security_issues = {
@@ -1021,7 +1039,6 @@
 					political_power_gain = -0.20
 					consumer_goods_factor = 0.01
 				}
-				desc = "UKR_construction_investigation"
 			}
 
 			UKR_energy_price_control = {
@@ -1623,14 +1640,8 @@
 					send_volunteer_divisions_required = -0.5
 					send_volunteer_size = 1
 					lend_lease_tension = -0.3
-					ai_volunteer_desire_factor = 1.5
-					ai_volunteer_force_multiplier = 1.0
 				}
-				
-				targeted_modifier = {
-					tag = UKR
-					ai_send_volunteers_desire = 10 # Очень высокий модификатор
-				}
+
 			}
 			
 			# Региональный альянс
@@ -1804,7 +1815,6 @@
 				modifier = {
 					army_core_defence_factor = 0.1
 					enemy_army_speed_factor = -0.15
-					enemy_army_core_attack_factor = -0.1
 				}
 			}
 
@@ -1858,7 +1868,7 @@
 				modifier = {
 					max_dig_in = 0.5
 					dig_in_speed_factor = 0.25
-					army_defense_factor = 0.05
+					army_defence_factor = 0.05
 					army_morale_factor = 0.05
 					industrial_capacity_factory = 0.10
 					production_factory_efficiency_gain_factor = 0.05
@@ -1915,8 +1925,6 @@
 				picture = generic_air_bonus
 				
 				modifier = {
-					production_speed_tac_bomber_factor = 0.15
-					production_speed_CAS_factor = 0.15
 					recon_factor = 0.15
 					air_superiority_detect_factor = 0.1
 					air_doctrine_cost_factor = -0.05
@@ -2076,7 +2084,7 @@
 					war_support_factor = -0.02
 					army_org_factor = -0.01
 					production_factory_efficiency_gain_factor = -0.02
-					ruling_party_drift = -0.01
+					social_liberal_drift = -0.01
 				}
 			}
 
@@ -2093,7 +2101,7 @@
 					army_morale_factor = -0.02
 					production_factory_efficiency_gain_factor = -0.05
 					consumer_goods_factor = 0.03
-					ruling_party_drift = -0.01
+					social_liberal_drift = -0.01
 				}
 			}
 
@@ -2112,7 +2120,7 @@
 					mobilization_speed = -0.1
 					production_factory_efficiency_gain_factor = -0.08
 					consumer_goods_factor = 0.05
-					ruling_party_drift = -0.02
+					social_liberal_drift = -0.02
 				}
 			}
 
@@ -2132,7 +2140,7 @@
 					production_factory_efficiency_gain_factor = -0.12
 					consumer_goods_factor = 0.08
 					command_power_gain_mult = -0.1
-					ruling_party_drift = -0.04
+					social_liberal_drift = -0.04
 					surrender_limit = -0.05
 				}
 			}

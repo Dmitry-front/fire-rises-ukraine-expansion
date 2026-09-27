@@ -89,3 +89,9 @@
 - Эффект `change_government_type_parliamentary_republic` (событие 508) взят из референса SOV — проверить, что на Украине он работает.
 - Иконки сторон `GFX_bop_UKR_rada` / `GFX_bop_UKR_bankova` указывают на PNG идей — если шкала требует другого размера, нужен арт.
 
+**TD-20. Остатки из error.log (27.09.2026), не исправленные**
+- `history/countries/UKR - Ukraine.txt:76` - в `set_technology` есть технология, которой нет в TFR. Какая именно, лог не говорит: нужна строка из лога TFR с именем или список техов TFR.
+- `interface/frontendgamesetupview.gui` - наша копия устарела относительно версии игры («Could not find new_content / more_countries / filters»). Может ломать экран выбора страны. Вопрос автору: зачем мы её переопределяем? Если незачем - удалить, тогда работает версия TFR.
+- `common/decisions/TFR_decisions_UKR.txt:~440` - `add_country_leader_trait = hos_hates_russians` для PLD повторно, если черта уже есть. Безвредно, только шум в логе.
+- `UKR_modern_armor_entity` (около 1000 строк лога) - ошибка самого TFR, в нашем моде такой модели нет.
+- Интерфейс военного настроя (`common/scripted_guis/UKR_war_mood_gui.txt`) переписан на `triggers = { <элемент>_visible }`; область - страна игрока (раньше стояло `FROM`). Проверить в игре, что кружки показываются.

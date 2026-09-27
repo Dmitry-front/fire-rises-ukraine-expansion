@@ -249,9 +249,15 @@ country_event = {
 			limit = {
 				has_government = social_liberal
 			}
-			recruit_character = UKR_volodymyr_zelenskyy
+			if = {
+				limit = { NOT = { has_character = UKR_volodymyr_zelenskyy } }
+				recruit_character = UKR_volodymyr_zelenskyy
+			}
 		}
-		recruit_character = UKR_mariana_bezuglaya
+		if = {
+			limit = { NOT = { has_character = UKR_mariana_bezuglaya } }
+			recruit_character = UKR_mariana_bezuglaya
+		}
 		load_oob = "UKR_foreign_volunteers"
 	}
 }
@@ -2691,8 +2697,8 @@ country_event = {
 			has_idea = BLR_Democratization_of_Belarus_idea
 			OR = {
 				has_country_flag = BLR_maidan
-				ruling_party = social_democrat
-				has_party = { party = social_democrat popularity > 0.4 }
+				has_government = social_democrat
+				social_democrat > 0.4
 			}
 		}
 		NOT = {
@@ -2769,10 +2775,10 @@ country_event = {
 	trigger = {
 		tag = UKR
 		BLR = {
-			ruling_party = social_democrat
+			has_government = social_democrat
 		}
 		has_country_flag = ukraine_supported_belarus
-		NOT = has_country_flag = ukraine_belarus_deep_cooperation 
+		NOT = { has_country_flag = ukraine_belarus_deep_cooperation } 
 	}
 
 	immediate = {

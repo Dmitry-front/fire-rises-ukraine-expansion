@@ -476,6 +476,13 @@ country_event = {
 	is_triggered_only = yes
 	trigger = {
 		tag = UKR
+		# TFR вызывает это событие раньше (около июля 2023). Пока идёт наша цепочка 2023-2024,
+		# выборы приходят только из второго тура ukraine_politics.207 (флаг UKR_runoff_2024).
+		OR = {
+			has_country_flag = UKR_runoff_2024
+			NOT = { has_country_flag = UKR_politics_2023_started }
+			has_war_with = SOV
+		}
 	}
 	option = {
 		name = ukraine.13.a

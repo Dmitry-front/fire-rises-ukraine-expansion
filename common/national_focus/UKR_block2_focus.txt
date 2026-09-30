@@ -44,11 +44,17 @@ focus_tree = {
 		}
 		completion_reward = {
 			add_stability = 0.02
+			add_political_power = -10
 			set_temp_variable = {
 				var = income_var_temp
-				value = -2
+				value = -1.1
 			}
 			add_income_with_inflation = yes
+			set_temp_variable = {
+			var = military_development_var_temp
+			value = 0.2
+			}
+			add_military_development = yes
 			custom_effect_tooltip = UKR_pop_social_democrat_p2_tt
 			hidden_effect = { add_popularity = { ideology = social_democrat popularity = 0.02 } }
 			hidden_effect = {
@@ -77,9 +83,16 @@ focus_tree = {
 		}
 		completion_reward = {
 			add_war_support = 0.03
-			add_manpower = 5000
+			add_manpower = 7500
+			army_experience = 15
+			set_temp_variable = {
+			var = military_development_var_temp
+			value = 0.1
+			}
+			add_military_development = yes
 			custom_effect_tooltip = UKR_pop_national_socialist_p2_tt
 			hidden_effect = { add_popularity = { ideology = national_socialist popularity = 0.02 } }
+			hidden_effect = { add_popularity = { ideology = nationalist popularity = 0.01 } }
 			hidden_effect = {
 				add_to_variable = { UKR_nationalist_lean = 6 }
 				add_to_variable = { UKR_left_lean = -2 }
@@ -107,6 +120,11 @@ focus_tree = {
 		}
 		completion_reward = {
 			add_stability = 0.01
+			set_temp_variable = {
+				var = income_var_temp
+				value = -2.2
+			}
+			add_income_with_inflation = yes
 			set_temp_variable = {
 				var = society_development_var_temp
 				value = 0.03
@@ -137,8 +155,12 @@ focus_tree = {
 			}
 		}
 		completion_reward = {
-			add_political_power = 75
+			add_political_power = 125
 			add_stability = -0.01
+			set_temp_variable = {
+				var = society_development_var_temp
+				value = -0.01
+			}
 			hidden_effect = {
 				add_to_variable = { UKR_authoritarian_lean = 6 }
 				add_to_variable = { UKR_digital_lean = -2 }
@@ -160,8 +182,8 @@ focus_tree = {
 			factor = 5
 		}
 		completion_reward = {
-			add_stability = 0.02
-			add_political_power = 30
+			add_stability = 0.01
+			add_political_power = 35
 			custom_effect_tooltip = UKR_pop_social_liberal_p2_tt
 			hidden_effect = { add_popularity = { ideology = social_liberal popularity = 0.02 } }
 		}
@@ -186,8 +208,12 @@ focus_tree = {
 			}
 		}
 		completion_reward = {
-			add_political_power = 75
+			add_political_power = 90
 			add_ideas = UKR_captured_judiciary
+			set_temp_variable = {
+				var = society_development_var_temp
+				value = -0.01
+			}
 			hidden_effect = {
 				add_to_variable = { UKR_authoritarian_lean = 5 }
 				UKR_clamp_leans = yes
@@ -209,8 +235,12 @@ focus_tree = {
 			factor = 10
 		}
 		completion_reward = {
-			add_political_power = -50
-			add_stability = 0.02
+			add_political_power = -60
+			add_stability = 0.01
+			set_temp_variable = {
+				var = society_development_var_temp
+				value = 0.01
+			}
 			hidden_effect = {
 				add_to_variable = { UKR_digital_lean = 2 }
 				add_to_variable = { UKR_left_lean = 2 }

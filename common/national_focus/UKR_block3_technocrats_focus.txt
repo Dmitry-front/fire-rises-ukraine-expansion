@@ -188,6 +188,11 @@ focus_tree = {
 					value = 0.1
 				}
 				add_academic_development = yes
+				set_temp_variable = {
+				var = society_development_var_temp
+				value = 0.01
+				}
+				add_society_development = yes
 				add_tech_bonus = {
 					name = UKR_diia_city_2_bonus
 					bonus = 0.5
@@ -255,6 +260,11 @@ focus_tree = {
 			factor = 15
 		}
 		completion_reward = {
+			set_temp_variable = {
+				var = income_var_temp
+				value = -4.5
+			}
+			add_income_with_inflation = yes
 			if = {
 				limit = { has_idea = UKR_UAV_warfare_pioneers }
 				swap_ideas = {
@@ -265,6 +275,11 @@ focus_tree = {
 			else = {
 				add_ideas = UKR_drone_army
 			}
+			set_temp_variable = {
+			var = military_development_var_temp
+			value = 0.15
+			}
+			add_military_development = yes
 			hidden_effect = {
 				country_event = { id = ukraine_politics.402 days = 30 }
 			}
@@ -290,7 +305,12 @@ focus_tree = {
 			factor = 10
 		}
 		completion_reward = {
+			add_war_support = 0.05
 			add_ideas = UKR_cyber_troops
+			set_temp_variable = {
+				var = income_var_temp
+				value = -1.2
+			}
 		}
 	}
 
@@ -313,6 +333,8 @@ focus_tree = {
 			factor = 10
 		}
 		completion_reward = {
+			add_war_support = 0.05
+			add_manpower = 7500
 			if = {
 				limit = { has_idea = UKR_digital_registry_idea }
 				swap_ideas = {
@@ -323,7 +345,7 @@ focus_tree = {
 			else = {
 				add_ideas = UKR_digital_mobilization_idea
 			}
-			add_manpower = 15000
+			
 		}
 	}
 
@@ -405,7 +427,6 @@ focus_tree = {
 			factor = 10
 		}
 		completion_reward = {
-			add_political_power = 50
 			add_stability = 0.03
 			# Ступень вниз по лестнице олигархата
 			UKR_oligarchs_step_down = yes

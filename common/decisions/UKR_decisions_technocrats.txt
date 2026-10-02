@@ -8,7 +8,7 @@ UKR_svyrydenko_reforms = {
 			has_country_flag = UKR_svyrydenko_cabinet
 		}
 		fire_only_once = yes
-		cost = 75
+		cost = 40
 		days_remove = 60
 		ai_will_do = {
 			factor = 10
@@ -22,7 +22,7 @@ UKR_svyrydenko_reforms = {
 			add_industrial_development = yes
 			set_temp_variable = {
 				var = income_var_temp
-				value = -4
+				value = -4.7
 			}
 			add_income_with_inflation = yes
 		}
@@ -41,6 +41,11 @@ UKR_svyrydenko_reforms = {
 			factor = 10
 		}
 		remove_effect = {
+			set_temp_variable = {
+				var = poverty_development_var_temp
+				value = 0.06
+			}
+			add_poverty_development = yes
 			set_temp_variable = {
 				var = debt_var_temp
 				value = 20
@@ -72,7 +77,7 @@ UKR_svyrydenko_reforms = {
 		remove_effect = {
 			set_temp_variable = {
 				var = income_var_temp
-				value = -3
+				value = -3.3
 			}
 			add_income_with_inflation = yes
 			set_temp_variable = {
@@ -95,15 +100,16 @@ UKR_svyrydenko_reforms = {
 			has_country_flag = UKR_svyrydenko_cabinet
 		}
 		fire_only_once = yes
-		cost = 75
+		cost = 85
 		days_remove = 60
 		ai_will_do = {
 			factor = 10
 		}
 		remove_effect = {
-			add_stability = 0.02
+			add_stability = -0.02
 			# Ступень вниз по лестнице олигархата
 			UKR_oligarchs_step_down = yes
+			hidden_effect = { add_popularity = { ideology = social_liberal popularity = -0.02 } }
 		}
 	}
 
@@ -122,12 +128,17 @@ UKR_svyrydenko_reforms = {
 		remove_effect = {
 			set_temp_variable = {
 				var = income_var_temp
-				value = 6
+				value = 13
 			}
 			add_income_with_inflation = yes
 			add_stability = -0.04
+			set_temp_variable = {
+				var = poverty_development_var_temp
+				value = -0.02
+			}
+			add_poverty_development = yes
 			custom_effect_tooltip = UKR_pop_social_democrat_p2_tt
-			hidden_effect = { add_popularity = { ideology = social_democrat popularity = 0.02 } }
+			hidden_effect = { add_popularity = { ideology = social_democrat popularity = 0.03 } }
 		}
 	}
 
@@ -148,7 +159,7 @@ UKR_svyrydenko_reforms = {
 			add_timed_idea = { idea = UKR_eu_reconstruction_fund days = 730 }
 			set_temp_variable = {
 				var = income_var_temp
-				value = 3
+				value = 3.5
 			}
 			add_income_with_inflation = yes
 		}
@@ -161,7 +172,7 @@ UKR_svyrydenko_reforms = {
 			has_country_flag = UKR_svyrydenko_cabinet
 		}
 		fire_only_once = yes
-		cost = 75
+		cost = 80
 		days_remove = 60
 		ai_will_do = {
 			factor = 10
@@ -173,9 +184,17 @@ UKR_svyrydenko_reforms = {
 			random_owned_controlled_state = {
 				add_extra_state_shared_building_slots = 1
 			}
+			random_owned_controlled_state = {
+				add_extra_state_shared_building_slots = 1
+			}
+			set_temp_variable = {
+				var = industrial_development_var_temp
+				value = 0.03
+			}
+			add_industrial_development = yes
 			set_temp_variable = {
 				var = income_var_temp
-				value = -2
+				value = -9.5
 			}
 			add_income_with_inflation = yes
 		}

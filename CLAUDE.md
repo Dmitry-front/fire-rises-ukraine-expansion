@@ -133,6 +133,7 @@
 DESIGN.md                                         — дизайн-документ (сюжет, блоки, реестр ID, журнал решений)
 HANDOFF.md                                        — передача между сессиями (сделано, решения, следующий шаг)
 TECH_DEBT.md                                      — открытый техдолг (TD-*), закрытое переносится в DESIGN.md, раздел 11
+TFR_CHEATSHEET.md                                 — шпаргалка по эффектам и слотам TFR (инфляция, развитие, министры)
 common/national_focus/TFR_national_focus_UKR.txt  — древо UKR (около 50 фокусов)
 common/national_focus/UKR_block2_focus.txt        — древо блока 2 (кампания 2024), грузится событием ukraine_politics.200
 events/UKR_events_politics.txt                    — политика 2023–2024 (ukraine_politics)

@@ -1,0 +1,105 @@
+# Кабинет Свириденко (DESIGN.md, 8.1.2): служебные эффекты назначений
+
+# Снимает с должности всех возможных министров слота, чтобы новый встал без конфликта
+UKR_clear_economic_minister = {
+	if = {
+		limit = { has_idea = UKR_marchenko }
+		remove_ideas = UKR_marchenko
+	}
+	if = {
+		limit = { has_idea = UKR_mylovanov }
+		remove_ideas = UKR_mylovanov
+	}
+	if = {
+		limit = { has_idea = UKR_arakhamia }
+		remove_ideas = UKR_arakhamia
+	}
+	if = {
+		limit = { has_idea = UKR_fedorov }
+		remove_ideas = UKR_fedorov
+	}
+	if = {
+		limit = { has_idea = UKR_dudin }
+		remove_ideas = UKR_dudin
+	}
+	if = {
+		limit = { has_idea = UKR_markarova }
+		remove_ideas = UKR_markarova
+	}
+	if = {
+		limit = { has_idea = UKR_hetmantsev }
+		remove_ideas = UKR_hetmantsev
+	}
+}
+
+UKR_clear_foreign_minister = {
+	if = {
+		limit = { has_idea = UKR_prystaiko }
+		remove_ideas = UKR_prystaiko
+	}
+	if = {
+		limit = { has_idea = UKR_kuleba }
+		remove_ideas = UKR_kuleba
+	}
+	if = {
+		limit = { has_idea = UKR_stefanishyna }
+		remove_ideas = UKR_stefanishyna
+	}
+	if = {
+		limit = { has_idea = UKR_sybiha }
+		remove_ideas = UKR_sybiha
+	}
+	if = {
+		limit = { has_idea = UKR_klimkin }
+		remove_ideas = UKR_klimkin
+	}
+}
+
+UKR_clear_interior_minister = {
+	if = {
+		limit = { has_idea = UKR_avakov }
+		remove_ideas = UKR_avakov
+	}
+	if = {
+		limit = { has_idea = UKR_monastyrsky }
+		remove_ideas = UKR_monastyrsky
+	}
+	if = {
+		limit = { has_idea = UKR_klymenko }
+		remove_ideas = UKR_klymenko
+	}
+	if = {
+		limit = { has_idea = UKR_zguladze }
+		remove_ideas = UKR_zguladze
+	}
+}
+
+UKR_clear_intelligence_minister = {
+	if = {
+		limit = { has_idea = UKR_bakanov }
+		remove_ideas = UKR_bakanov
+	}
+	if = {
+		limit = { has_idea = UKR_budanov }
+		remove_ideas = UKR_budanov
+	}
+	if = {
+		limit = { has_idea = UKR_shchyhol }
+		remove_ideas = UKR_shchyhol
+	}
+	if = {
+		limit = { has_idea = UKR_malyuk }
+		remove_ideas = UKR_malyuk
+	}
+}
+
+# Самостоятельный актор кабинета: технократ-министр или член второй линии.
+# Перед вызовом: set_temp_variable = { var = UKR_actors_to_add value = N }
+# Каждый актор снижает прирост политсилы на 1% (динамический модификатор UKR_cabinet_actors_dynamic)
+UKR_add_cabinet_actors = {
+	add_to_variable = { var = UKR_cabinet_actors value = UKR_actors_to_add }
+	set_variable = { var = UKR_cabinet_actors_pp value = UKR_cabinet_actors }
+	multiply_variable = { var = UKR_cabinet_actors_pp value = -0.01 }
+	add_dynamic_modifier = { modifier = UKR_cabinet_actors_dynamic }
+	force_update_dynamic_modifier = yes
+}

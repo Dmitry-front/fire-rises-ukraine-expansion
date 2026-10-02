@@ -25,17 +25,27 @@ focus_tree = {
 		}
 		completion_reward = {
 			add_political_power = 25
-			# Claude - тут нужно будет нам изменить немного подход. Я предлагаю сделать череду событий ивентов где мы одного за другим министра будем назначать, но глава будет UKR_svyrydenko, и у нам там еще 4 места и так по каждому слоту министра будет события кого мы назначаем, оставляем прошлого министра или назначаем нового. Так нам нужно будет провести работу с министрами и добавить их как новые идеи. Федоров может идти просто как министром циф развития то есть просто в тексте впишим все остальных министров и создадим для них национальный дух - "Способные министры" и уже этот дух описывает все остальные позиции и дает прибавку к политической силе, экономики, производству и тд.
 			custom_effect_tooltip = appoint_head_minister_tooltip
 			show_ideas_tooltip = UKR_svyrydenko
-			custom_effect_tooltip = appoint_economic_minister_tooltip
-			show_ideas_tooltip = UKR_fedorov
+			custom_effect_tooltip = UKR_cabinet_talks_tt
 			add_ideas = UKR_network_dependency
 			unlock_decision_category_tooltip = UKR_svyrydenko_reforms
 			hidden_effect = {
+				if = {
+					limit = { has_idea = UKR_honcharuk }
+					remove_ideas = UKR_honcharuk
+				}
+				if = {
+					limit = { has_idea = UKR_shmyhal }
+					remove_ideas = UKR_shmyhal
+				}
+				if = {
+					limit = { has_idea = UKR_razumkov }
+					remove_ideas = UKR_razumkov
+				}
 				add_ideas = UKR_svyrydenko
-				add_ideas = UKR_fedorov
 				set_country_flag = UKR_svyrydenko_cabinet
+				country_event = { id = ukraine_politics.410 days = 3 }
 				country_event = { id = ukraine_politics.401 days = 90 }
 			}
 		}

@@ -1307,6 +1307,284 @@ country_event = {
 }
 
 # =====================================================================
+# Блок 3, технократы: торг о кабинете Свириденко (410-414) — DESIGN.md, 8.1.2
+# Цепочка: 410 экономика -> 411 МИД -> 412 МВД -> 413 разведка -> 414 вторая линия.
+# Типы кандидатов: технократ (0, самостоятельный актор), нейтральный профи (-15 политсилы),
+# человек президента (-25 политсилы, скрыто растёт популярность социал-либералов).
+# =====================================================================
+
+# Торг о кабинете: Кто будет считать деньги
+country_event = {
+	id = ukraine_politics.410
+	title = ukraine_politics.410.t
+	desc = ukraine_politics.410.d
+	picture = GFX_report_event_ukrainian_civil_war
+
+	is_triggered_only = yes
+
+	trigger = {
+		tag = UKR
+	}
+
+	option = {
+		name = ukraine_politics.410.a
+		UKR_clear_economic_minister = yes
+		add_ideas = UKR_mylovanov
+		custom_effect_tooltip = UKR_cabinet_actors_1_tt
+		hidden_effect = {
+			set_temp_variable = { var = UKR_actors_to_add value = 1 }
+			UKR_add_cabinet_actors = yes
+			add_to_variable = { UKR_digital_lean = 3 }
+			UKR_clamp_leans = yes
+		}
+		hidden_effect = { country_event = { id = ukraine_politics.411 days = 2 } }
+		ai_chance = { factor = 35 }
+	}
+
+	option = {
+		name = ukraine_politics.410.b
+		trigger = { has_political_power > 14 }
+		add_political_power = -15
+		UKR_clear_economic_minister = yes
+		add_ideas = UKR_markarova
+		hidden_effect = { country_event = { id = ukraine_politics.411 days = 2 } }
+		ai_chance = { factor = 30 }
+	}
+
+	option = {
+		name = ukraine_politics.410.c
+		trigger = { has_political_power > 24 }
+		add_political_power = -25
+		UKR_clear_economic_minister = yes
+		add_ideas = UKR_hetmantsev
+		hidden_effect = { add_popularity = { ideology = social_liberal popularity = 0.01 } }
+		hidden_effect = { country_event = { id = ukraine_politics.411 days = 2 } }
+		ai_chance = { factor = 35 }
+	}
+}
+
+# Торг о кабинете: Лицо страны за границей
+country_event = {
+	id = ukraine_politics.411
+	title = ukraine_politics.411.t
+	desc = ukraine_politics.411.d
+	picture = GFX_report_event_ukrainian_civil_war
+
+	is_triggered_only = yes
+
+	trigger = {
+		tag = UKR
+	}
+
+	option = {
+		name = ukraine_politics.411.a
+		UKR_clear_foreign_minister = yes
+		add_ideas = UKR_stefanishyna
+		custom_effect_tooltip = UKR_cabinet_actors_1_tt
+		hidden_effect = {
+			set_temp_variable = { var = UKR_actors_to_add value = 1 }
+			UKR_add_cabinet_actors = yes
+			add_to_variable = { UKR_digital_lean = 3 }
+			UKR_clamp_leans = yes
+		}
+		hidden_effect = { country_event = { id = ukraine_politics.412 days = 2 } }
+		ai_chance = { factor = 35 }
+	}
+
+	option = {
+		name = ukraine_politics.411.b
+		trigger = { has_political_power > 24 }
+		add_political_power = -25
+		UKR_clear_foreign_minister = yes
+		add_ideas = UKR_sybiha
+		hidden_effect = { add_popularity = { ideology = social_liberal popularity = 0.01 } }
+		hidden_effect = { country_event = { id = ukraine_politics.412 days = 2 } }
+		ai_chance = { factor = 35 }
+	}
+
+	option = {
+		name = ukraine_politics.411.c
+		trigger = { has_political_power > 14 }
+		add_political_power = -15
+		UKR_clear_foreign_minister = yes
+		add_ideas = UKR_klimkin
+		hidden_effect = { country_event = { id = ukraine_politics.412 days = 2 } }
+		ai_chance = { factor = 30 }
+	}
+}
+
+# Торг о кабинете: Человек в погонах
+country_event = {
+	id = ukraine_politics.412
+	title = ukraine_politics.412.t
+	desc = ukraine_politics.412.d
+	picture = GFX_report_event_ukrainian_civil_war
+
+	is_triggered_only = yes
+
+	trigger = {
+		tag = UKR
+	}
+
+	option = {
+		name = ukraine_politics.412.a
+		UKR_clear_interior_minister = yes
+		add_ideas = UKR_zguladze
+		custom_effect_tooltip = UKR_cabinet_actors_1_tt
+		hidden_effect = {
+			set_temp_variable = { var = UKR_actors_to_add value = 1 }
+			UKR_add_cabinet_actors = yes
+			add_to_variable = { UKR_digital_lean = 3 }
+			UKR_clamp_leans = yes
+		}
+		hidden_effect = { country_event = { id = ukraine_politics.413 days = 2 } }
+		ai_chance = { factor = 35 }
+	}
+
+	option = {
+		name = ukraine_politics.412.b
+		trigger = { has_political_power > 24 }
+		add_political_power = -25
+		UKR_clear_interior_minister = yes
+		add_ideas = UKR_monastyrsky
+		hidden_effect = { add_popularity = { ideology = social_liberal popularity = 0.01 } }
+		hidden_effect = { country_event = { id = ukraine_politics.413 days = 2 } }
+		ai_chance = { factor = 35 }
+	}
+
+	option = {
+		name = ukraine_politics.412.c
+		trigger = { has_political_power > 14 }
+		add_political_power = -15
+		UKR_clear_interior_minister = yes
+		add_ideas = UKR_klymenko
+		hidden_effect = { country_event = { id = ukraine_politics.413 days = 2 } }
+		ai_chance = { factor = 30 }
+	}
+}
+
+# Торг о кабинете: Тот, кто знает чужие секреты
+country_event = {
+	id = ukraine_politics.413
+	title = ukraine_politics.413.t
+	desc = ukraine_politics.413.d
+	picture = GFX_report_event_ukrainian_civil_war
+
+	is_triggered_only = yes
+
+	trigger = {
+		tag = UKR
+	}
+
+	option = {
+		name = ukraine_politics.413.a
+		UKR_clear_intelligence_minister = yes
+		add_ideas = UKR_shchyhol
+		custom_effect_tooltip = UKR_cabinet_actors_1_tt
+		hidden_effect = {
+			set_temp_variable = { var = UKR_actors_to_add value = 1 }
+			UKR_add_cabinet_actors = yes
+			add_to_variable = { UKR_digital_lean = 3 }
+			UKR_clamp_leans = yes
+		}
+		hidden_effect = { country_event = { id = ukraine_politics.414 days = 2 } }
+		ai_chance = { factor = 25 }
+	}
+
+	option = {
+		name = ukraine_politics.413.b
+		trigger = { has_political_power > 24 }
+		add_political_power = -25
+		UKR_clear_intelligence_minister = yes
+		add_ideas = UKR_bakanov
+		hidden_effect = { add_popularity = { ideology = social_liberal popularity = 0.01 } }
+		hidden_effect = { country_event = { id = ukraine_politics.414 days = 2 } }
+		ai_chance = { factor = 25 }
+	}
+
+	option = {
+		name = ukraine_politics.413.c
+		trigger = { has_political_power > 14 }
+		add_political_power = -15
+		UKR_clear_intelligence_minister = yes
+		add_ideas = UKR_budanov
+		hidden_effect = { country_event = { id = ukraine_politics.414 days = 2 } }
+		ai_chance = { factor = 25 }
+	}
+
+	option = {
+		name = ukraine_politics.413.d
+		trigger = { has_political_power > 14 }
+		add_political_power = -15
+		UKR_clear_intelligence_minister = yes
+		add_ideas = UKR_malyuk
+		hidden_effect = { country_event = { id = ukraine_politics.414 days = 2 } }
+		ai_chance = { factor = 25 }
+	}
+}
+
+# Торг о кабинете: вторая линия (Фёдоров и технократы-замы)
+country_event = {
+	id = ukraine_politics.414
+	title = ukraine_politics.414.t
+	desc = ukraine_politics.414.d
+	picture = GFX_report_event_ukrainian_civil_war
+
+	is_triggered_only = yes
+
+	trigger = {
+		tag = UKR
+	}
+
+	option = {
+		name = ukraine_politics.414.a
+		add_political_power = -20
+		add_ideas = UKR_tech_team_narrow
+		custom_effect_tooltip = UKR_cabinet_actors_1_tt
+		hidden_effect = {
+			set_temp_variable = { var = UKR_actors_to_add value = 1 }
+			UKR_add_cabinet_actors = yes
+			add_to_variable = { UKR_digital_lean = 2 }
+			UKR_clamp_leans = yes
+			set_country_flag = UKR_cabinet_formed
+		}
+		ai_chance = { factor = 50 }
+	}
+
+	option = {
+		name = ukraine_politics.414.b
+		trigger = { has_political_power > 44 }
+		add_political_power = -45
+		add_ideas = UKR_tech_team_medium
+		custom_effect_tooltip = UKR_cabinet_actors_3_tt
+		hidden_effect = {
+			set_temp_variable = { var = UKR_actors_to_add value = 3 }
+			UKR_add_cabinet_actors = yes
+			add_to_variable = { UKR_digital_lean = 4 }
+			UKR_clamp_leans = yes
+			set_country_flag = UKR_cabinet_formed
+		}
+		ai_chance = { factor = 35 }
+	}
+
+	option = {
+		name = ukraine_politics.414.c
+		trigger = { has_political_power > 79 }
+		add_political_power = -80
+		add_ideas = UKR_tech_team_wide
+		custom_effect_tooltip = UKR_cabinet_actors_5_tt
+		hidden_effect = {
+			set_temp_variable = { var = UKR_actors_to_add value = 5 }
+			UKR_add_cabinet_actors = yes
+			add_to_variable = { UKR_digital_lean = 6 }
+			UKR_clamp_leans = yes
+			set_country_flag = UKR_cabinet_formed
+		}
+		ai_chance = { factor = 15 }
+	}
+}
+
+# =====================================================================
 # Блок 3: левая консолидация (500–512) — DESIGN.md, 8.2
 # =====================================================================
 

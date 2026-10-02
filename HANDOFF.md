@@ -95,6 +95,7 @@
 - TD-17: где и когда TFR вызывает `ukraine.13`.
 - TD-16: названия партий Украины в локализации TFR.
 - TD-18: точное имя эффекта «Кооперативная экономика» в TFR (`change_economy_type_…`).
+- TD-21: точное имя эффекта «Либеральный корпоративизм» в TFR (финал технократов, фокус `UKR_t_liberal_corporatism`; сейчас угадано `change_economy_type_liberal_corporatism`).
 - TD-03/04/05/06: проверка по `error.log` (`UKR_gdp_fix`, `UKR_russian_ghetto`, тексты `ukraine.6–19`, `supply_crisis`).
 
 **Отложено до своего этапа**

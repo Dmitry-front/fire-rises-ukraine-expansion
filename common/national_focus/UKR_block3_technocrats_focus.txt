@@ -547,4 +547,46 @@ focus_tree = {
 			set_country_flag = UKR_state_without_territory
 		}
 	}
+
+	# Финал: либеральный корпоративизм (смена типа экономики с олигархического капитализма)
+	focus = {
+		id = UKR_t_liberal_corporatism
+		icon = GFX_goal_generic_trade
+		prerequisite = { focus = UKR_t_state_without_territory }
+		relative_position_id = UKR_t_svyrydenko_cabinet
+		x = 0
+		y = 7
+		cost = 5
+		available = {
+			has_country_leader = {
+				character = UKR_volodymyr_zelensky
+				ruling_only = yes
+			}
+		}
+		ai_will_do = {
+			factor = 15
+		}
+		completion_reward = {
+			UKR_set_liberal_corporatism_economy = yes
+			# Договорённость правительства, бизнеса и профсоюзов: общество выигрывает
+			set_temp_variable = {
+				var = society_development_var_temp
+				value = 0.05
+			}
+			add_society_development = yes
+			set_temp_variable = {
+				var = poverty_development_var_temp
+				value = 0.2
+			}
+			add_poverty_development = yes
+			set_temp_variable = {
+				var = industrial_development_var_temp
+				value = 0.1
+			}
+			add_industrial_development = yes
+			# Сделка за общим столом стоит политического капитала, зато успокаивает страну
+			add_political_power = -50
+			add_stability = 0.05
+		}
+	}
 }

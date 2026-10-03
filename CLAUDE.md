@@ -133,6 +133,7 @@
 DESIGN.md                                         — дизайн-документ (сюжет, блоки, реестр ID, журнал решений)
 HANDOFF.md                                        — передача между сессиями (сделано, решения, следующий шаг)
 TECH_DEBT.md                                      — открытый техдолг (TD-*), закрытое переносится в DESIGN.md, раздел 11
+TFR_CHEATSHEET.md                                 — шпаргалка по эффектам и слотам TFR (инфляция, развитие, министры)
 common/national_focus/TFR_national_focus_UKR.txt  — древо UKR (около 50 фокусов)
 common/national_focus/UKR_block2_focus.txt        — древо блока 2 (кампания 2024), грузится событием ukraine_politics.200
 events/UKR_events_politics.txt                    — политика 2023–2024 (ukraine_politics)
@@ -169,4 +170,5 @@ _Список фокусов, событий и идей с временными
 - Духи сезона 2023 (`UKR_west_trust_crisis`, `UKR_left_consolidation`, `UKR_right_turn`, `UKR_eggs_scandal`, `UKR_corridor_rumours`, `UKR_street_demands`) и ступени олигархата (`UKR_oligarchs_retreating`, `UKR_oligarchs_remnants`) — чужие украинские и советские спрайты.
 - События `ukraine_politics.200–304` — временная `GFX_report_event_ukrainian_civil_war`. Фокусы `UKR_b2_*` — временные `GFX_goal_generic_*`. Идеи `UKR_captured_judiciary`, `UKR_eu_aid_frozen`, `UKR_pillar_*` — чужие украинские спрайты.
 - Портреты министров `UKR_svyrydenko` (Юлия Свириденко) и `UKR_fedorov` (Михаил Фёдоров) — сейчас `unknown`. Идеи пути технократов (`UKR_network_dependency`, `UKR_drone_army`, `UKR_open_state` и др.) — `unknown`. Фокусы `UKR_t_*` — `GFX_goal_generic_*`. События 400–406 — `GFX_report_event_ukrainian_civil_war`.
+- Кабинет Свириденко (технократы): портреты новых министров `UKR_markarova`, `UKR_hetmantsev`, `UKR_stefanishyna`, `UKR_sybiha`, `UKR_klimkin`, `UKR_klymenko`, `UKR_zguladze`, `UKR_shchyhol`, `UKR_malyuk` — сейчас `unknown`; идеи `UKR_tech_team_*` — `unknown`; иконка модификатора `UKR_cabinet_actors_dynamic` — временная `chi_war_of_resistance`; события 410-414 — `GFX_report_event_ukrainian_civil_war`.
 - Путь левых: портрет министра `UKR_dudin` (Виталий Дудин) — `unknown`; идеи `UKR_capital_flight`…`UKR_republic_of_labour` — `unknown` или чужие спрайты; фокусы `UKR_l_*` — `GFX_goal_generic_*`; события 500–511 и 520–534 — временные картинки; иконки сторон шкалы «Рада ↔ Банковая» (`GFX_bop_UKR_rada`, `GFX_bop_UKR_bankova`) — чужие PNG идей.

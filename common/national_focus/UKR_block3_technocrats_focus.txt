@@ -24,17 +24,28 @@ focus_tree = {
 			factor = 20
 		}
 		completion_reward = {
-			add_political_power = 50
+			add_political_power = 25
 			custom_effect_tooltip = appoint_head_minister_tooltip
 			show_ideas_tooltip = UKR_svyrydenko
-			custom_effect_tooltip = appoint_economic_minister_tooltip
-			show_ideas_tooltip = UKR_fedorov
+			custom_effect_tooltip = UKR_cabinet_talks_tt
 			add_ideas = UKR_network_dependency
 			unlock_decision_category_tooltip = UKR_svyrydenko_reforms
 			hidden_effect = {
+				if = {
+					limit = { has_idea = UKR_honcharuk }
+					remove_ideas = UKR_honcharuk
+				}
+				if = {
+					limit = { has_idea = UKR_shmyhal }
+					remove_ideas = UKR_shmyhal
+				}
+				if = {
+					limit = { has_idea = UKR_razumkov }
+					remove_ideas = UKR_razumkov
+				}
 				add_ideas = UKR_svyrydenko
-				add_ideas = UKR_fedorov
 				set_country_flag = UKR_svyrydenko_cabinet
+				country_event = { id = ukraine_politics.410 days = 3 }
 				country_event = { id = ukraine_politics.401 days = 90 }
 			}
 		}
@@ -59,7 +70,12 @@ focus_tree = {
 			factor = 15
 		}
 		completion_reward = {
-			add_stability = 0.03
+			add_stability = 0.01
+			set_temp_variable = {
+				var = income_var_temp
+				value = -3.5
+			}
+			add_income_with_inflation = yes
 			# Ступень вниз по лестнице коррупции (олигархат не трогает)
 			UKR_corruption_step_down = yes
 			hidden_effect = {
@@ -87,6 +103,12 @@ focus_tree = {
 			factor = 10
 		}
 		completion_reward = {
+			add_political_power = -15
+			set_temp_variable = {
+				var = income_var_temp
+				value = -1.8
+			}
+			add_income_with_inflation = yes
 			add_ideas = UKR_digital_registry_idea
 		}
 	}
@@ -144,7 +166,7 @@ focus_tree = {
 		completion_reward = {
 			set_temp_variable = {
 				var = income_var_temp
-				value = 5
+				value = 3.5
 			}
 			add_income_with_inflation = yes
 			add_ideas = UKR_it_export_idea
@@ -177,6 +199,11 @@ focus_tree = {
 					value = 0.1
 				}
 				add_academic_development = yes
+				set_temp_variable = {
+				var = society_development_var_temp
+				value = 0.01
+				}
+				add_society_development = yes
 				add_tech_bonus = {
 					name = UKR_diia_city_2_bonus
 					bonus = 0.5
@@ -244,6 +271,11 @@ focus_tree = {
 			factor = 15
 		}
 		completion_reward = {
+			set_temp_variable = {
+				var = income_var_temp
+				value = -4.5
+			}
+			add_income_with_inflation = yes
 			if = {
 				limit = { has_idea = UKR_UAV_warfare_pioneers }
 				swap_ideas = {
@@ -254,6 +286,11 @@ focus_tree = {
 			else = {
 				add_ideas = UKR_drone_army
 			}
+			set_temp_variable = {
+			var = military_development_var_temp
+			value = 0.15
+			}
+			add_military_development = yes
 			hidden_effect = {
 				country_event = { id = ukraine_politics.402 days = 30 }
 			}
@@ -279,7 +316,13 @@ focus_tree = {
 			factor = 10
 		}
 		completion_reward = {
+			add_war_support = 0.05
 			add_ideas = UKR_cyber_troops
+			set_temp_variable = {
+				var = income_var_temp
+				value = -1.2
+			}
+			add_income_with_inflation = yes
 		}
 	}
 
@@ -302,6 +345,8 @@ focus_tree = {
 			factor = 10
 		}
 		completion_reward = {
+			add_war_support = 0.05
+			add_manpower = 7500
 			if = {
 				limit = { has_idea = UKR_digital_registry_idea }
 				swap_ideas = {
@@ -312,7 +357,7 @@ focus_tree = {
 			else = {
 				add_ideas = UKR_digital_mobilization_idea
 			}
-			add_manpower = 15000
+			
 		}
 	}
 
@@ -394,7 +439,6 @@ focus_tree = {
 			factor = 10
 		}
 		completion_reward = {
-			add_political_power = 50
 			add_stability = 0.03
 			# Ступень вниз по лестнице олигархата
 			UKR_oligarchs_step_down = yes
@@ -501,6 +545,48 @@ focus_tree = {
 			add_war_support = 0.03
 			custom_effect_tooltip = UKR_state_without_territory_tt
 			set_country_flag = UKR_state_without_territory
+		}
+	}
+
+	# Финал: либеральный корпоративизм (смена типа экономики с олигархического капитализма)
+	focus = {
+		id = UKR_t_liberal_corporatism
+		icon = GFX_goal_generic_trade
+		prerequisite = { focus = UKR_t_state_without_territory }
+		relative_position_id = UKR_t_svyrydenko_cabinet
+		x = 0
+		y = 7
+		cost = 5
+		available = {
+			has_country_leader = {
+				character = UKR_volodymyr_zelensky
+				ruling_only = yes
+			}
+		}
+		ai_will_do = {
+			factor = 15
+		}
+		completion_reward = {
+			UKR_set_liberal_corporatism_economy = yes
+			# Договорённость правительства, бизнеса и профсоюзов: общество выигрывает
+			set_temp_variable = {
+				var = society_development_var_temp
+				value = 0.05
+			}
+			add_society_development = yes
+			set_temp_variable = {
+				var = poverty_development_var_temp
+				value = 0.2
+			}
+			add_poverty_development = yes
+			set_temp_variable = {
+				var = industrial_development_var_temp
+				value = 0.1
+			}
+			add_industrial_development = yes
+			# Сделка за общим столом стоит политического капитала, зато успокаивает страну
+			add_political_power = -50
+			add_stability = 0.05
 		}
 	}
 }

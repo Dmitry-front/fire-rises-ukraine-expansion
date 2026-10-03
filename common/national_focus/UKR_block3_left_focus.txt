@@ -129,14 +129,19 @@ focus_tree = {
 			add_ideas = UKR_welfare_state
 			set_temp_variable = {
 				var = income_var_temp
-				value = -3
+				value = -9
 			}
 			add_income_with_inflation = yes
 			set_temp_variable = {
 				var = poverty_development_var_temp
-				value = 0.05
+				value = 0.06
 			}
 			add_poverty_development = yes
+			set_temp_variable = {
+				var = society_development_var_temp
+				value = 0.02
+			}
+			add_society_development = yes
 			custom_effect_tooltip = UKR_lf_socialists_up_tt
 			hidden_effect = {
 				add_to_variable = { UKR_lf_socialists = 10 }
@@ -165,7 +170,7 @@ focus_tree = {
 			factor = 15
 		}
 		completion_reward = {
-			add_political_power = 40
+			add_political_power = 30
 			custom_effect_tooltip = UKR_oligarch_audit_tt
 			set_country_flag = UKR_oligarch_audit
 			# Ступень вниз по лестнице олигархата
@@ -201,6 +206,7 @@ focus_tree = {
 			factor = 12
 		}
 		completion_reward = {
+			add_stability = -0.05
 			add_ideas = UKR_state_sector
 			# Ступень вниз по лестнице олигархата
 			UKR_oligarchs_step_down = yes

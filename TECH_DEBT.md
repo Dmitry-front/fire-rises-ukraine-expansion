@@ -85,6 +85,11 @@
 - Сейчас обёртка `UKR_set_cooperative_economy` (`common/scripted_effects/UKR_politics_effects.txt`) ставит `change_economy_type_socialist_market`.
 - Сделать: автор ищет в TFR `change_economy_type_` с «cooperative» и присылает точное имя — меняется одна строка.
 
+**TD-21. Имя эффекта «Либеральный корпоративизм» в TFR**
+- Финальный фокус технократов `UKR_t_liberal_corporatism` меняет тип экономики через обёртку `UKR_set_liberal_corporatism_economy` (`common/scripted_effects/UKR_politics_effects.txt`).
+- Имя `change_economy_type_liberal_corporatism` собрано по образцу `change_economy_type_left_corporatism` из референса SOV; в референсах самого «либерального корпоративизма» нет. Если в TFR имя другое, в `error.log` будет ошибка неизвестного эффекта.
+- Сделать: автор ищет в TFR `change_economy_type_` с «corporatism» и присылает точное имя - меняется одна строка.
+
 **TD-19. Проверить в игре баланс сил левых (`common/bop/UKR_bop.txt`)**
 - Первый наш баланс сил. Сверить по `error.log`: формат файла (`range`, `side`, `on_activate`), модификатор `power_balance_weekly` в центре шкалы, отображение шкалы в окне «Общественный договор», локализацию сторон и диапазонов.
 - Эффект `change_government_type_parliamentary_republic` (событие 508) взят из референса SOV — проверить, что на Украине он работает.

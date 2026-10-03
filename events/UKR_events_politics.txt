@@ -52,6 +52,9 @@ country_event = {
 		hidden_effect = { country_event = { id = ukraine_politics.112 days = 215 } }
 		hidden_effect = { country_event = { id = ukraine_politics.113 days = 235 } }
 		hidden_effect = { country_event = { id = ukraine_politics.115 days = 270 } }
+		hidden_effect = { country_event = { id = ukraine_politics.116 days = 195 } }
+		hidden_effect = { country_event = { id = ukraine_politics.117 days = 255 } }
+		hidden_effect = { country_event = { id = ukraine_politics.118 days = 290 } }
 	}
 }
 
@@ -675,6 +678,143 @@ country_event = {
 		add_political_power = 5
 		add_stability = -0.01
 		ai_chance = { factor = 30 }
+	}
+}
+
+# Вольная территория (июль 2023): Махно и анархисты
+country_event = {
+	id = ukraine_politics.116
+	title = ukraine_politics.116.t
+	desc = ukraine_politics.116.d
+	picture = GFX_report_event_ukrainian_civil_war
+
+	is_triggered_only = yes
+
+	trigger = {
+		tag = UKR
+	}
+
+	option = {
+		name = ukraine_politics.116.a
+		add_political_power = -10
+		add_stability = 0.01
+		custom_effect_tooltip = UKR_pop_libertarian_socialist_p1_tt
+		hidden_effect = { add_popularity = { ideology = libertarian_socialist popularity = 0.01 } }
+		hidden_effect = {
+			add_to_variable = { UKR_lf_pre_anarchists = 2 }
+			add_to_variable = { UKR_left_lean = 1 }
+			UKR_clamp_leans = yes
+		}
+		custom_effect_tooltip = UKR_left_maneuver_tt
+		ai_chance = { factor = 35 }
+	}
+
+	option = {
+		name = ukraine_politics.116.b
+		add_political_power = 5
+		ai_chance = { factor = 40 }
+	}
+
+	option = {
+		name = ukraine_politics.116.c
+		add_political_power = 10
+		add_stability = -0.01
+		hidden_effect = {
+			add_to_variable = { UKR_authoritarian_lean = 1 }
+			UKR_clamp_leans = yes
+		}
+		ai_chance = { factor = 25 }
+	}
+}
+
+# Вольный союз (сентябрь 2023): Драгоманов и Подолинский
+country_event = {
+	id = ukraine_politics.117
+	title = ukraine_politics.117.t
+	desc = ukraine_politics.117.d
+	picture = GFX_report_event_ukrainian_civil_war
+
+	is_triggered_only = yes
+
+	trigger = {
+		tag = UKR
+	}
+
+	option = {
+		name = ukraine_politics.117.a
+		add_political_power = -10
+		add_stability = 0.01
+		custom_effect_tooltip = UKR_pop_social_democrat_p1_tt
+		hidden_effect = { add_popularity = { ideology = social_democrat popularity = 0.01 } }
+		hidden_effect = {
+			add_to_variable = { UKR_left_lean = 1 }
+			UKR_clamp_leans = yes
+		}
+		custom_effect_tooltip = UKR_left_maneuver_tt
+		ai_chance = { factor = 40 }
+	}
+
+	option = {
+		name = ukraine_politics.117.b
+		add_political_power = -5
+		custom_effect_tooltip = UKR_pop_libertarian_socialist_p1_tt
+		hidden_effect = { add_popularity = { ideology = libertarian_socialist popularity = 0.01 } }
+		hidden_effect = {
+			add_to_variable = { UKR_lf_pre_unions = 2 }
+		}
+		custom_effect_tooltip = UKR_left_maneuver_tt
+		ai_chance = { factor = 35 }
+	}
+
+	option = {
+		name = ukraine_politics.117.c
+		add_political_power = 5
+		ai_chance = { factor = 25 }
+	}
+}
+
+# Социальная и национальная (октябрь 2023): боротьбисты и Скрыпник
+country_event = {
+	id = ukraine_politics.118
+	title = ukraine_politics.118.t
+	desc = ukraine_politics.118.d
+	picture = GFX_report_event_ukrainian_civil_war
+
+	is_triggered_only = yes
+
+	trigger = {
+		tag = UKR
+	}
+
+	option = {
+		name = ukraine_politics.118.a
+		add_political_power = -5
+		custom_effect_tooltip = UKR_pop_social_democrat_p1_tt
+		hidden_effect = { add_popularity = { ideology = social_democrat popularity = 0.01 } }
+		hidden_effect = {
+			add_to_variable = { UKR_left_lean = 1 }
+			UKR_clamp_leans = yes
+		}
+		custom_effect_tooltip = UKR_left_maneuver_tt
+		ai_chance = { factor = 40 }
+	}
+
+	option = {
+		name = ukraine_politics.118.b
+		add_war_support = 0.01
+		custom_effect_tooltip = UKR_pop_national_socialist_p1_tt
+		hidden_effect = { add_popularity = { ideology = national_socialist popularity = 0.01 } }
+		hidden_effect = {
+			add_to_variable = { UKR_nationalist_lean = 1 }
+			UKR_clamp_leans = yes
+		}
+		ai_chance = { factor = 35 }
+	}
+
+	option = {
+		name = ukraine_politics.118.c
+		add_political_power = 5
+		ai_chance = { factor = 25 }
 	}
 }
 

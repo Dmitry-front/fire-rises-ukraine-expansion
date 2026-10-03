@@ -569,3 +569,322 @@ country_event = {
 		ai_chance = { factor = 15 }
 	}
 }
+
+# ===== Пачка 2: осень 2020 - зима 2021 =====
+
+# --- 25 октября 2020: местные выборы и «опрос президента» ---
+country_event = {
+	id = ukraine.406
+	title = ukraine.406.t
+	desc = ukraine.406.d
+	picture = GFX_UKR_2019_election
+
+	fire_only_once = yes
+
+	trigger = {
+		tag = UKR
+		date > 2020.10.24
+		has_country_leader = {
+			character = UKR_volodymyr_zelensky
+			ruling_only = yes
+		}
+	}
+
+	mean_time_to_happen = {
+		days = 1
+	}
+
+	# Работать с мэрами
+	option = {
+		name = ukraine.406.a
+		add_stability = 0.01
+		add_political_power = -15
+		set_country_flag = UKR_mayors_cooperation
+		hidden_effect = {
+			add_to_variable = { UKR_left_lean = 1 }
+			UKR_clamp_leans = yes
+		}
+		ai_chance = { factor = 40 }
+	}
+
+	# Укрепить партийную вертикаль
+	option = {
+		name = ukraine.406.b
+		add_political_power = 25
+		add_stability = -0.02
+		hidden_effect = {
+			add_to_variable = { UKR_authoritarian_lean = 2 }
+			UKR_clamp_leans = yes
+		}
+		ai_chance = { factor = 35 }
+	}
+
+	# Не делать выводов
+	option = {
+		name = ukraine.406.c
+		add_timed_idea = { idea = UKR_local_elections_setback days = 120 }
+		add_political_power = 5
+		ai_chance = { factor = 25 }
+	}
+}
+
+# --- 27 октября 2020: Конституционный суд и е-декларации ---
+country_event = {
+	id = ukraine.405
+	title = ukraine.405.t
+	desc = ukraine.405.d
+	picture = GFX_UKR_big_corruption_scandal
+
+	fire_only_once = yes
+
+	trigger = {
+		tag = UKR
+		date > 2020.10.27
+		has_country_leader = {
+			character = UKR_volodymyr_zelensky
+			ruling_only = yes
+		}
+	}
+
+	mean_time_to_happen = {
+		days = 2
+	}
+
+	# Распустить суд
+	option = {
+		name = ukraine.405.a
+		add_political_power = 30
+		add_timed_idea = { idea = UKR_constitutional_crisis days = 120 }
+		set_country_flag = UKR_ccu_confrontation
+		hidden_effect = {
+			add_to_variable = { UKR_authoritarian_lean = 3 }
+			add_to_variable = { European_Influence = -0.02 }
+			clamp_variable = { var = European_Influence min = 0 max = 1 }
+			UKR_clamp_leans = yes
+		}
+		ai_chance = { factor = 35 }
+	}
+
+	# Венецианская комиссия
+	option = {
+		name = ukraine.405.b
+		add_political_power = -15
+		set_country_flag = UKR_ccu_venice
+		hidden_effect = {
+			add_to_variable = { UKR_digital_lean = 2 }
+			add_to_variable = { European_Influence = 0.01 }
+			clamp_variable = { var = European_Influence min = 0 max = 1 }
+			UKR_clamp_leans = yes
+		}
+		ai_chance = { factor = 45 }
+	}
+
+	# Принять решение суда
+	option = {
+		name = ukraine.405.c
+		add_political_power = 5
+		add_timed_idea = { idea = UKR_declaration_gap days = 180 }
+		set_country_flag = UKR_ccu_accepted
+		hidden_effect = {
+			add_to_variable = { European_Influence = -0.02 }
+			clamp_variable = { var = European_Influence min = 0 max = 1 }
+		}
+		ai_chance = { factor = 20 }
+	}
+}
+
+# --- 9 ноября 2020: президент заболел ---
+country_event = {
+	id = ukraine.404
+	title = ukraine.404.t
+	desc = ukraine.404.d
+	picture = GFX_Generic_COVID1
+
+	fire_only_once = yes
+
+	trigger = {
+		tag = UKR
+		date > 2020.11.8
+		has_country_flag = UKR_COVID_ongoing
+		has_country_leader = {
+			character = UKR_volodymyr_zelensky
+			ruling_only = yes
+		}
+	}
+
+	mean_time_to_happen = {
+		days = 1
+	}
+
+	# Говорить открыто
+	option = {
+		name = ukraine.404.a
+		add_stability = 0.01
+		add_political_power = -10
+		set_country_flag = UKR_covid_open
+		hidden_effect = {
+			add_to_variable = { UKR_digital_lean = 1 }
+			UKR_clamp_leans = yes
+		}
+		ai_chance = { factor = 60 }
+	}
+
+	# Говорить скупо
+	option = {
+		name = ukraine.404.b
+		add_political_power = 10
+		add_stability = -0.01
+		hidden_effect = {
+			add_to_variable = { UKR_authoritarian_lean = 1 }
+			UKR_clamp_leans = yes
+		}
+		ai_chance = { factor = 40 }
+	}
+}
+
+# --- 15 декабря 2020: Майдан ФОПов ---
+country_event = {
+	id = ukraine.407
+	title = ukraine.407.t
+	desc = ukraine.407.d
+	picture = GFX_UKR_protest_land_reform
+
+	fire_only_once = yes
+
+	trigger = {
+		tag = UKR
+		date > 2020.12.14
+		has_country_flag = UKR_COVID_ongoing
+		has_country_leader = {
+			character = UKR_volodymyr_zelensky
+			ruling_only = yes
+		}
+	}
+
+	mean_time_to_happen = {
+		days = 1
+	}
+
+	# Порядок и закон
+	option = {
+		name = ukraine.407.a
+		add_political_power = 20
+		add_stability = -0.02
+		set_country_flag = UKR_fop_hard
+		hidden_effect = {
+			add_to_variable = { UKR_authoritarian_lean = 2 }
+			UKR_clamp_leans = yes
+		}
+		ai_chance = { factor = 30 }
+	}
+
+	# Компромисс
+	option = {
+		name = ukraine.407.b
+		add_stability = 0.02
+		add_political_power = -10
+		set_temp_variable = {
+			var = income_var_temp
+			value = -0.5
+		}
+		add_income_with_inflation = yes
+		set_country_flag = UKR_fop_compromise
+		hidden_effect = {
+			add_to_variable = { UKR_left_lean = 1 }
+			UKR_clamp_leans = yes
+		}
+		ai_chance = { factor = 45 }
+	}
+
+	# Прямая помощь
+	option = {
+		name = ukraine.407.c
+		add_stability = 0.03
+		add_political_power = -15
+		set_temp_variable = {
+			var = income_var_temp
+			value = -1.5
+		}
+		add_income_with_inflation = yes
+		set_country_flag = UKR_fop_support
+		hidden_effect = {
+			add_to_variable = { UKR_left_lean = 2 }
+			UKR_clamp_leans = yes
+		}
+		ai_chance = { factor = 25 }
+	}
+}
+
+# --- 8-24 февраля 2021: вакцины ---
+country_event = {
+	id = ukraine.408
+	title = ukraine.408.t
+	desc = ukraine.408.d
+	picture = GFX_Generic_COVID1
+
+	fire_only_once = yes
+
+	trigger = {
+		tag = UKR
+		date > 2021.2.7
+		has_country_flag = UKR_COVID_ongoing
+		has_country_leader = {
+			character = UKR_volodymyr_zelensky
+			ruling_only = yes
+		}
+	}
+
+	mean_time_to_happen = {
+		days = 2
+	}
+
+	# Только вакцины, одобренные ВОЗ
+	option = {
+		name = ukraine.408.a
+		add_stability = -0.01
+		add_political_power = -10
+		set_country_flag = UKR_vaccine_who
+		hidden_effect = {
+			add_to_variable = { UKR_digital_lean = 1 }
+			add_to_variable = { European_Influence = 0.02 }
+			clamp_variable = { var = European_Influence min = 0 max = 1 }
+			UKR_clamp_leans = yes
+		}
+		ai_chance = { factor = 55 }
+	}
+
+	# Брать там, где дают
+	option = {
+		name = ukraine.408.b
+		add_stability = 0.02
+		add_political_power = 10
+		set_temp_variable = {
+			var = income_var_temp
+			value = -1
+		}
+		add_income_with_inflation = yes
+		set_country_flag = UKR_vaccine_any
+		hidden_effect = {
+			add_to_variable = { Chinese_Influence = 0.02 }
+			clamp_variable = { var = Chinese_Influence min = 0 max = 1 }
+		}
+		ai_chance = { factor = 35 }
+	}
+
+	# Не запрещать ничего
+	option = {
+		name = ukraine.408.c
+		add_stability = 0.01
+		add_political_power = -20
+		set_country_flag = UKR_vaccine_sputnik
+		hidden_effect = {
+			add_to_variable = { Russian_Influence = 0.03 }
+			clamp_variable = { var = Russian_Influence min = 0 max = 1 }
+			add_to_variable = { European_Influence = -0.02 }
+			clamp_variable = { var = European_Influence min = 0 max = 1 }
+			add_to_variable = { UKR_nationalist_lean = -2 }
+			UKR_clamp_leans = yes
+		}
+		ai_chance = { factor = 10 }
+	}
+}

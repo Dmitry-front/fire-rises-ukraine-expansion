@@ -888,3 +888,595 @@ country_event = {
 		ai_chance = { factor = 10 }
 	}
 }
+
+# ===== Пачка 3: 2021 - начало 2022 =====
+
+# --- 2 февраля 2021: каналы Медведчука ---
+country_event = {
+	id = ukraine.310
+	title = ukraine.310.t
+	desc = ukraine.310.d
+	picture = GFX_UKR_rada_oligarchy
+
+	fire_only_once = yes
+
+	trigger = {
+		tag = UKR
+		date > 2021.2.1
+		has_country_leader = {
+			character = UKR_volodymyr_zelensky
+			ruling_only = yes
+		}
+	}
+
+	mean_time_to_happen = {
+		days = 1
+	}
+
+	# Быстрый путь
+	option = {
+		name = ukraine.310.a
+		add_political_power = 25
+		set_country_flag = UKR_sanctions_fast
+		hidden_effect = {
+			add_to_variable = { UKR_authoritarian_lean = 3 }
+			add_to_variable = { UKR_nationalist_lean = 1 }
+			add_to_variable = { European_Influence = -0.01 }
+			clamp_variable = { var = European_Influence min = 0 max = 1 }
+			UKR_clamp_leans = yes
+		}
+		ai_chance = { factor = 40 }
+	}
+
+	# Через суд
+	option = {
+		name = ukraine.310.b
+		add_political_power = -10
+		set_country_flag = UKR_sanctions_court
+		hidden_effect = {
+			add_to_variable = { UKR_digital_lean = 1 }
+			add_to_variable = { European_Influence = 0.01 }
+			clamp_variable = { var = European_Influence min = 0 max = 1 }
+			UKR_clamp_leans = yes
+		}
+		ai_chance = { factor = 40 }
+	}
+
+	# Ограничиться сделанным
+	option = {
+		name = ukraine.310.c
+		add_stability = 0.01
+		set_country_flag = UKR_sanctions_stop
+		hidden_effect = {
+			add_to_variable = { Russian_Influence = 0.01 }
+			clamp_variable = { var = Russian_Influence min = 0 max = 1 }
+		}
+		ai_chance = { factor = 20 }
+	}
+}
+
+# --- 5 марта 2021: санкции США против Коломойского ---
+country_event = {
+	id = ukraine.312
+	title = ukraine.312.t
+	desc = ukraine.312.d
+	picture = GFX_UKR_big_corruption_scandal
+
+	fire_only_once = yes
+
+	trigger = {
+		tag = UKR
+		date > 2021.3.4
+		has_country_leader = {
+			character = UKR_volodymyr_zelensky
+			ruling_only = yes
+		}
+	}
+
+	mean_time_to_happen = {
+		days = 1
+	}
+
+	# Присоединиться к давлению
+	option = {
+		name = ukraine.312.a
+		add_political_power = 15
+		set_country_flag = UKR_kolomoisky_pressure
+		hidden_effect = {
+			add_to_variable = { UKR_left_lean = 1 }
+			add_to_variable = { American_Influence = 0.02 }
+			clamp_variable = { var = American_Influence min = 0 max = 1 }
+			UKR_clamp_leans = yes
+		}
+		ai_chance = { factor = 55 }
+	}
+
+	# Нейтралитет
+	option = {
+		name = ukraine.312.b
+		add_stability = 0.01
+		set_country_flag = UKR_kolomoisky_neutral
+		hidden_effect = {
+			add_to_variable = { American_Influence = -0.01 }
+			clamp_variable = { var = American_Influence min = 0 max = 1 }
+		}
+		ai_chance = { factor = 45 }
+	}
+}
+
+# --- 11 мая 2021: измена Медведчука ---
+country_event = {
+	id = ukraine.311
+	title = ukraine.311.t
+	desc = ukraine.311.d
+	picture = GFX_UKR_rada_oligarchy
+
+	fire_only_once = yes
+
+	trigger = {
+		tag = UKR
+		date > 2021.5.10
+		has_country_leader = {
+			character = UKR_volodymyr_zelensky
+			ruling_only = yes
+		}
+	}
+
+	mean_time_to_happen = {
+		days = 1
+	}
+
+	# Суд без сделок
+	option = {
+		name = ukraine.311.a
+		add_stability = 0.02
+		add_political_power = 10
+		set_country_flag = UKR_medvedchuk_trial
+		hidden_effect = {
+			add_to_variable = { UKR_nationalist_lean = 1 }
+			add_to_variable = { European_Influence = 0.01 }
+			clamp_variable = { var = European_Influence min = 0 max = 1 }
+			UKR_clamp_leans = yes
+		}
+		ai_chance = { factor = 60 }
+	}
+
+	# Держать как рычаг
+	option = {
+		name = ukraine.311.b
+		add_political_power = 15
+		set_country_flag = UKR_medvedchuk_leverage
+		hidden_effect = {
+			add_to_variable = { UKR_authoritarian_lean = 1 }
+			UKR_clamp_leans = yes
+		}
+		ai_chance = { factor = 40 }
+	}
+}
+
+# --- 23 сентября - 5 ноября 2021: закон об олигархах ---
+country_event = {
+	id = ukraine.313
+	title = ukraine.313.t
+	desc = ukraine.313.d
+	picture = GFX_UKR_rada_oligarchy
+
+	fire_only_once = yes
+
+	trigger = {
+		tag = UKR
+		date > 2021.9.22
+		has_country_leader = {
+			character = UKR_volodymyr_zelensky
+			ruling_only = yes
+		}
+	}
+
+	mean_time_to_happen = {
+		days = 2
+	}
+
+	# Жёсткий реестр
+	option = {
+		name = ukraine.313.a
+		add_political_power = 25
+		add_stability = -0.02
+		set_country_flag = UKR_oligarch_registry_hard
+		hidden_effect = {
+			add_to_variable = { UKR_left_lean = 3 }
+			add_to_variable = { UKR_authoritarian_lean = 1 }
+			add_to_variable = { European_Influence = 0.01 }
+			clamp_variable = { var = European_Influence min = 0 max = 1 }
+			UKR_clamp_leans = yes
+		}
+		ai_chance = { factor = 35 }
+	}
+
+	# Мягкий реестр как рычаг
+	option = {
+		name = ukraine.313.b
+		add_political_power = 10
+		set_country_flag = UKR_oligarch_registry_soft
+		set_country_flag = UKR_office_clan
+		hidden_effect = {
+			add_to_variable = { UKR_authoritarian_lean = 2 }
+			UKR_clamp_leans = yes
+		}
+		ai_chance = { factor = 45 }
+	}
+
+	# Венецианская комиссия
+	option = {
+		name = ukraine.313.c
+		add_political_power = -15
+		set_country_flag = UKR_oligarch_registry_venice
+		hidden_effect = {
+			add_to_variable = { UKR_digital_lean = 1 }
+			add_to_variable = { European_Influence = 0.02 }
+			clamp_variable = { var = European_Influence min = 0 max = 1 }
+			UKR_clamp_leans = yes
+		}
+		ai_chance = { factor = 20 }
+	}
+}
+
+# --- 3 октября 2021: Pandora Papers ---
+country_event = {
+	id = ukraine.314
+	title = ukraine.314.t
+	desc = ukraine.314.d
+	picture = GFX_UKR_big_corruption_scandal
+
+	fire_only_once = yes
+
+	trigger = {
+		tag = UKR
+		date > 2021.10.2
+		has_country_leader = {
+			character = UKR_volodymyr_zelensky
+			ruling_only = yes
+		}
+	}
+
+	mean_time_to_happen = {
+		days = 1
+	}
+
+	# Объясниться публично
+	option = {
+		name = ukraine.314.a
+		add_stability = 0.01
+		add_political_power = -15
+		set_country_flag = UKR_pandora_open
+		hidden_effect = {
+			add_to_variable = { UKR_digital_lean = 2 }
+			UKR_clamp_leans = yes
+		}
+		ai_chance = { factor = 40 }
+	}
+
+	# Атаковать
+	option = {
+		name = ukraine.314.b
+		add_stability = -0.01
+		add_political_power = 15
+		set_country_flag = UKR_pandora_attack
+		hidden_effect = {
+			add_to_variable = { UKR_authoritarian_lean = 2 }
+			UKR_clamp_leans = yes
+		}
+		ai_chance = { factor = 30 }
+	}
+
+	# Не отвечать
+	option = {
+		name = ukraine.314.c
+		add_timed_idea = { idea = UKR_pandora_shadow days = 120 }
+		set_country_flag = UKR_pandora_silent
+		ai_chance = { factor = 30 }
+	}
+}
+
+# --- 7 октября 2021: отставка Разумкова ---
+country_event = {
+	id = ukraine.315
+	title = ukraine.315.t
+	desc = ukraine.315.d
+	picture = GFX_UKR_rada_oligarchy
+
+	fire_only_once = yes
+
+	trigger = {
+		tag = UKR
+		date > 2021.10.6
+		has_country_leader = {
+			character = UKR_volodymyr_zelensky
+			ruling_only = yes
+		}
+	}
+
+	mean_time_to_happen = {
+		days = 1
+	}
+
+	# Проголосовать за отставку
+	option = {
+		name = ukraine.315.a
+		add_political_power = 30
+		add_stability = -0.01
+		set_country_flag = UKR_razumkov_dismissed
+		hidden_effect = {
+			add_to_variable = { UKR_authoritarian_lean = 2 }
+			UKR_clamp_leans = yes
+		}
+		ai_chance = { factor = 60 }
+	}
+
+	# Удержать спикера
+	option = {
+		name = ukraine.315.b
+		add_political_power = -20
+		add_stability = 0.01
+		set_country_flag = UKR_razumkov_kept
+		hidden_effect = {
+			add_to_variable = { UKR_digital_lean = 1 }
+			UKR_clamp_leans = yes
+		}
+		ai_chance = { factor = 40 }
+	}
+}
+
+# --- 17 ноября 2021: расследование Bellingcat об операции «Вагнер» ---
+country_event = {
+	id = ukraine.318
+	title = ukraine.318.t
+	desc = ukraine.318.d
+	picture = GFX_UKR_help_BLR
+
+	fire_only_once = yes
+
+	trigger = {
+		tag = UKR
+		date > 2021.11.16
+		has_country_leader = {
+			character = UKR_volodymyr_zelensky
+			ruling_only = yes
+		}
+	}
+
+	mean_time_to_happen = {
+		days = 2
+	}
+
+	# Уже признавали
+	option = {
+		name = ukraine.318.a
+		trigger = {
+			has_country_flag = UKR_wagner_open
+		}
+		add_stability = 0.01
+		hidden_effect = {
+			add_to_variable = { European_Influence = 0.01 }
+			clamp_variable = { var = European_Influence min = 0 max = 1 }
+		}
+		ai_chance = { factor = 100 }
+	}
+
+	# Отрицать
+	option = {
+		name = ukraine.318.b
+		trigger = {
+			NOT = { has_country_flag = UKR_wagner_open }
+		}
+		add_political_power = 10
+		add_stability = -0.02
+		hidden_effect = {
+			add_to_variable = { UKR_authoritarian_lean = 1 }
+			UKR_clamp_leans = yes
+		}
+		ai_chance = { factor = 40 }
+	}
+
+	# Признать ошибки и провести проверку
+	option = {
+		name = ukraine.318.c
+		trigger = {
+			NOT = { has_country_flag = UKR_wagner_open }
+		}
+		add_political_power = -15
+		add_stability = 0.01
+		hidden_effect = {
+			add_to_variable = { UKR_digital_lean = 1 }
+			UKR_clamp_leans = yes
+		}
+		ai_chance = { factor = 60 }
+	}
+}
+
+# --- 26 ноября 2021: «переворот 1-2 декабря» ---
+country_event = {
+	id = ukraine.316
+	title = ukraine.316.t
+	desc = ukraine.316.d
+	picture = GFX_UKR_rada_oligarchy
+
+	fire_only_once = yes
+
+	trigger = {
+		tag = UKR
+		date > 2021.11.25
+		has_country_leader = {
+			character = UKR_volodymyr_zelensky
+			ruling_only = yes
+		}
+	}
+
+	mean_time_to_happen = {
+		days = 1
+	}
+
+	# Обнародовать
+	option = {
+		name = ukraine.316.a
+		add_political_power = 20
+		add_stability = -0.02
+		set_country_flag = UKR_coup_claims_public
+		hidden_effect = {
+			add_to_variable = { UKR_authoritarian_lean = 2 }
+			UKR_clamp_leans = yes
+		}
+		ai_chance = { factor = 30 }
+	}
+
+	# Тихая проверка
+	option = {
+		name = ukraine.316.b
+		add_political_power = -5
+		add_stability = 0.01
+		set_country_flag = UKR_coup_claims_quiet
+		ai_chance = { factor = 40 }
+	}
+
+	# Разговор с Ахметовым
+	option = {
+		name = ukraine.316.c
+		add_political_power = -10
+		set_country_flag = UKR_akhmetov_dialogue
+		hidden_effect = {
+			add_to_variable = { European_Influence = -0.01 }
+			clamp_variable = { var = European_Influence min = 0 max = 1 }
+		}
+		ai_chance = { factor = 30 }
+	}
+}
+
+# --- 20 декабря 2021: дело Порошенко ---
+country_event = {
+	id = ukraine.317
+	title = ukraine.317.t
+	desc = ukraine.317.d
+	picture = GFX_UKR_big_corruption_scandal
+
+	fire_only_once = yes
+
+	trigger = {
+		tag = UKR
+		date > 2021.12.19
+		has_country_leader = {
+			character = UKR_volodymyr_zelensky
+			ruling_only = yes
+		}
+	}
+
+	mean_time_to_happen = {
+		days = 1
+	}
+
+	# Давить
+	option = {
+		name = ukraine.317.a
+		add_political_power = 20
+		add_stability = -0.02
+		set_country_flag = UKR_poroshenko_case_hard
+		hidden_effect = {
+			add_to_variable = { UKR_authoritarian_lean = 3 }
+			add_to_variable = { European_Influence = -0.01 }
+			clamp_variable = { var = European_Influence min = 0 max = 1 }
+			UKR_clamp_leans = yes
+		}
+		ai_chance = { factor = 30 }
+	}
+
+	# Пусть решает суд
+	option = {
+		name = ukraine.317.b
+		add_political_power = -10
+		set_country_flag = UKR_poroshenko_case_court
+		hidden_effect = {
+			add_to_variable = { UKR_digital_lean = 2 }
+			add_to_variable = { European_Influence = 0.01 }
+			clamp_variable = { var = European_Influence min = 0 max = 1 }
+			UKR_clamp_leans = yes
+		}
+		ai_chance = { factor = 45 }
+	}
+
+	# Рычаг
+	option = {
+		name = ukraine.317.c
+		add_political_power = 15
+		set_country_flag = UKR_poroshenko_leverage
+		hidden_effect = {
+			add_to_variable = { UKR_authoritarian_lean = 2 }
+			UKR_clamp_leans = yes
+		}
+		ai_chance = { factor = 25 }
+	}
+}
+
+# --- 14 января 2022: кибератака на ведомства ---
+country_event = {
+	id = ukraine.840
+	title = ukraine.840.t
+	desc = ukraine.840.d
+	picture = GFX_UKR_digital_state
+
+	fire_only_once = yes
+
+	trigger = {
+		tag = UKR
+		date > 2022.1.13
+		has_country_leader = {
+			character = UKR_volodymyr_zelensky
+			ruling_only = yes
+		}
+	}
+
+	mean_time_to_happen = {
+		days = 1
+	}
+
+	# Облако и резервные реестры
+	option = {
+		name = ukraine.840.a
+		add_stability = 0.01
+		add_political_power = -10
+		set_temp_variable = {
+			var = income_var_temp
+			value = -1.5
+		}
+		add_income_with_inflation = yes
+		set_country_flag = UKR_cloud_backup
+		hidden_effect = {
+			add_to_variable = { UKR_digital_lean = 3 }
+			UKR_clamp_leans = yes
+		}
+		ai_chance = { factor = 55 }
+	}
+
+	# Централизовать
+	option = {
+		name = ukraine.840.b
+		add_political_power = 20
+		set_temp_variable = {
+			var = income_var_temp
+			value = -0.5
+		}
+		add_income_with_inflation = yes
+		set_country_flag = UKR_cyber_centralised
+		hidden_effect = {
+			add_to_variable = { UKR_authoritarian_lean = 2 }
+			UKR_clamp_leans = yes
+		}
+		ai_chance = { factor = 30 }
+	}
+
+	# Заявления
+	option = {
+		name = ukraine.840.c
+		add_political_power = 5
+		add_stability = -0.01
+		set_country_flag = UKR_cyber_ignored
+		ai_chance = { factor = 15 }
+	}
+}

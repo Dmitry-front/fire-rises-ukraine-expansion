@@ -2101,6 +2101,7 @@ country_event = {
 		else = {
 			custom_effect_tooltip = UKR_yermak_trial_tt
 			set_country_flag = UKR_yermak_trial
+			set_country_flag = UKR_yermak_confrontation
 			add_stability = -0.05
 			add_political_power = -50
 		}
@@ -2275,6 +2276,23 @@ country_event = {
 		}
 		add_stability = 0.05
 		add_political_power = 50
+		# Эпилог дела Ермака (6.4): ветка зависит от развилки органов и решения в 301
+		if = {
+			limit = { has_country_flag = UKR_yermak_confrontation }
+			hidden_effect = { country_event = { id = ukraine_politics.316 days = 25 } }
+		}
+		else_if = {
+			limit = { has_country_flag = UKR_yermak_resurfaces }
+			hidden_effect = { country_event = { id = ukraine_politics.310 days = 25 } }
+		}
+		else_if = {
+			limit = { has_country_flag = UKR_yermak_resigned }
+			hidden_effect = { country_event = { id = ukraine_politics.312 days = 25 } }
+		}
+		else_if = {
+			limit = { has_country_flag = UKR_yermak_trial }
+			hidden_effect = { country_event = { id = ukraine_politics.314 days = 25 } }
+		}
 		# Блок 3: дерево выбранной опоры. Написаны пути технократов и левых
 		if = {
 			limit = { has_country_flag = UKR_pillar_chosen_technocrats }
@@ -2296,6 +2314,481 @@ country_event = {
 			}
 			hidden_effect = { country_event = { id = ukraine_politics.500 days = 1 } }
 		}
+	}
+}
+
+# Эпилог Ермака, ветка «Тень»: тишина (~июнь 2024)
+country_event = {
+	id = ukraine_politics.310
+	title = ukraine_politics.310.t
+	desc = ukraine_politics.310.d
+	picture = GFX_report_event_ukrainian_civil_war
+
+	is_triggered_only = yes
+
+	trigger = {
+		tag = UKR
+	}
+
+	option = {
+		name = ukraine_politics.310.a
+		add_political_power = 15
+		add_stability = -0.01
+		hidden_effect = {
+			add_to_variable = { UKR_yermak_score = -1 }
+			add_to_variable = { UKR_authoritarian_lean = 1 }
+			UKR_clamp_leans = yes
+		}
+		hidden_effect = { country_event = { id = ukraine_politics.311 days = 50 } }
+		ai_chance = { factor = 30 }
+	}
+
+	option = {
+		name = ukraine_politics.310.b
+		add_political_power = -10
+		add_stability = 0.01
+		hidden_effect = {
+			add_to_variable = { UKR_yermak_score = 1 }
+		}
+		hidden_effect = { country_event = { id = ukraine_politics.311 days = 50 } }
+		ai_chance = { factor = 40 }
+	}
+
+	option = {
+		name = ukraine_politics.310.c
+		add_political_power = -5
+		hidden_effect = { country_event = { id = ukraine_politics.311 days = 50 } }
+		ai_chance = { factor = 30 }
+	}
+}
+
+# Эпилог Ермака, ветка «Тень»: утечка (~август 2024)
+country_event = {
+	id = ukraine_politics.311
+	title = ukraine_politics.311.t
+	desc = ukraine_politics.311.d
+	picture = GFX_report_event_ukrainian_civil_war
+
+	is_triggered_only = yes
+
+	trigger = {
+		tag = UKR
+	}
+
+	option = {
+		name = ukraine_politics.311.a
+		add_political_power = 15
+		add_stability = -0.02
+		hidden_effect = {
+			add_to_variable = { UKR_yermak_score = -1 }
+			add_to_variable = { UKR_honesty_2023 = -1 }
+			add_to_variable = { UKR_authoritarian_lean = 2 }
+			UKR_clamp_leans = yes
+		}
+		hidden_effect = { country_event = { id = ukraine_politics.319 days = 50 } }
+		ai_chance = { factor = 25 }
+	}
+
+	option = {
+		name = ukraine_politics.311.b
+		add_political_power = -15
+		add_stability = 0.01
+		hidden_effect = {
+			add_to_variable = { UKR_yermak_score = 1 }
+			add_to_variable = { UKR_honesty_2023 = 1 }
+		}
+		hidden_effect = { country_event = { id = ukraine_politics.319 days = 50 } }
+		ai_chance = { factor = 40 }
+	}
+
+	option = {
+		name = ukraine_politics.311.c
+		add_political_power = -10
+		add_stability = -0.01
+		hidden_effect = {
+		}
+		hidden_effect = { country_event = { id = ukraine_politics.319 days = 50 } }
+		ai_chance = { factor = 35 }
+	}
+}
+
+# Эпилог Ермака, ветка «Вакуум»: кто в Офисе (~июнь 2024)
+country_event = {
+	id = ukraine_politics.312
+	title = ukraine_politics.312.t
+	desc = ukraine_politics.312.d
+	picture = GFX_report_event_ukrainian_civil_war
+
+	is_triggered_only = yes
+
+	trigger = {
+		tag = UKR
+	}
+
+	option = {
+		name = ukraine_politics.312.a
+		add_political_power = -10
+		add_stability = 0.01
+		hidden_effect = {
+			add_to_variable = { UKR_yermak_score = 1 }
+			add_to_variable = { UKR_digital_lean = 2 }
+			UKR_clamp_leans = yes
+		}
+		hidden_effect = { country_event = { id = ukraine_politics.313 days = 50 } }
+		ai_chance = { factor = 25 }
+	}
+
+	option = {
+		name = ukraine_politics.312.b
+		add_political_power = -10
+		add_war_support = 0.03
+		hidden_effect = {
+			add_to_variable = { UKR_authoritarian_lean = 2 }
+			UKR_clamp_leans = yes
+		}
+		hidden_effect = { country_event = { id = ukraine_politics.313 days = 50 } }
+		ai_chance = { factor = 25 }
+	}
+
+	option = {
+		name = ukraine_politics.312.c
+		add_political_power = -5
+		add_stability = 0.02
+		hidden_effect = {
+			add_to_variable = { UKR_yermak_score = 1 }
+		}
+		hidden_effect = { country_event = { id = ukraine_politics.313 days = 50 } }
+		ai_chance = { factor = 25 }
+	}
+
+	option = {
+		name = ukraine_politics.312.e
+		add_political_power = 15
+		add_stability = -0.02
+		hidden_effect = {
+			add_to_variable = { UKR_yermak_score = -1 }
+			add_to_variable = { UKR_authoritarian_lean = 1 }
+			UKR_clamp_leans = yes
+		}
+		hidden_effect = { country_event = { id = ukraine_politics.313 days = 50 } }
+		ai_chance = { factor = 25 }
+	}
+}
+
+# Эпилог Ермака, ветка «Вакуум»: после Ермака (~август 2024)
+country_event = {
+	id = ukraine_politics.313
+	title = ukraine_politics.313.t
+	desc = ukraine_politics.313.d
+	picture = GFX_report_event_ukrainian_civil_war
+
+	is_triggered_only = yes
+
+	trigger = {
+		tag = UKR
+	}
+
+	option = {
+		name = ukraine_politics.313.a
+		add_political_power = -15
+		add_stability = 0.01
+		hidden_effect = {
+			add_to_variable = { UKR_yermak_score = 1 }
+			add_to_variable = { UKR_honesty_2023 = 1 }
+		}
+		hidden_effect = { country_event = { id = ukraine_politics.319 days = 50 } }
+		ai_chance = { factor = 40 }
+	}
+
+	option = {
+		name = ukraine_politics.313.b
+		add_political_power = 5
+		hidden_effect = {
+		}
+		hidden_effect = { country_event = { id = ukraine_politics.319 days = 50 } }
+		ai_chance = { factor = 35 }
+	}
+
+	option = {
+		name = ukraine_politics.313.c
+		add_political_power = 10
+		add_stability = -0.01
+		hidden_effect = {
+			add_to_variable = { UKR_yermak_score = -1 }
+		}
+		hidden_effect = { country_event = { id = ukraine_politics.319 days = 50 } }
+		ai_chance = { factor = 25 }
+	}
+}
+
+# Эпилог Ермака, ветка «Суд»: дело в ВАКС (~июнь 2024)
+country_event = {
+	id = ukraine_politics.314
+	title = ukraine_politics.314.t
+	desc = ukraine_politics.314.d
+	picture = GFX_report_event_ukrainian_civil_war
+
+	is_triggered_only = yes
+
+	trigger = {
+		tag = UKR
+	}
+
+	option = {
+		name = ukraine_politics.314.a
+		add_political_power = -5
+		add_stability = 0.01
+		hidden_effect = {
+			add_to_variable = { UKR_yermak_score = 1 }
+		}
+		hidden_effect = { country_event = { id = ukraine_politics.315 days = 50 } }
+		ai_chance = { factor = 40 }
+	}
+
+	option = {
+		name = ukraine_politics.314.b
+		add_political_power = -10
+		hidden_effect = {
+			add_to_variable = { UKR_yermak_score = 1 }
+			add_to_variable = { UKR_honesty_2023 = 1 }
+		}
+		hidden_effect = { country_event = { id = ukraine_politics.315 days = 50 } }
+		ai_chance = { factor = 35 }
+	}
+
+	option = {
+		name = ukraine_politics.314.c
+		add_political_power = 10
+		add_stability = -0.02
+		hidden_effect = {
+			add_to_variable = { UKR_yermak_score = -1 }
+			add_to_variable = { UKR_authoritarian_lean = 1 }
+			UKR_clamp_leans = yes
+		}
+		hidden_effect = { country_event = { id = ukraine_politics.315 days = 50 } }
+		ai_chance = { factor = 25 }
+	}
+}
+
+# Эпилог Ермака, ветка «Суд»: заседания переносятся (~август 2024)
+country_event = {
+	id = ukraine_politics.315
+	title = ukraine_politics.315.t
+	desc = ukraine_politics.315.d
+	picture = GFX_report_event_ukrainian_civil_war
+
+	is_triggered_only = yes
+
+	trigger = {
+		tag = UKR
+	}
+
+	option = {
+		name = ukraine_politics.315.a
+		add_political_power = -10
+		hidden_effect = {
+			add_to_variable = { UKR_yermak_score = 1 }
+			add_to_variable = { UKR_honesty_2023 = 1 }
+		}
+		hidden_effect = { country_event = { id = ukraine_politics.319 days = 50 } }
+		ai_chance = { factor = 40 }
+	}
+
+	option = {
+		name = ukraine_politics.315.b
+		add_political_power = 5
+		hidden_effect = {
+		}
+		hidden_effect = { country_event = { id = ukraine_politics.319 days = 50 } }
+		ai_chance = { factor = 35 }
+	}
+
+	option = {
+		name = ukraine_politics.315.c
+		add_political_power = 15
+		add_stability = -0.02
+		hidden_effect = {
+			add_to_variable = { UKR_yermak_score = -1 }
+			add_to_variable = { UKR_honesty_2023 = -1 }
+			add_to_variable = { UKR_authoritarian_lean = 2 }
+			UKR_clamp_leans = yes
+		}
+		hidden_effect = { country_event = { id = ukraine_politics.319 days = 50 } }
+		ai_chance = { factor = 25 }
+	}
+}
+
+# Эпилог Ермака, ветка «Конфронтация»: президент против бюро (~июнь 2024)
+country_event = {
+	id = ukraine_politics.316
+	title = ukraine_politics.316.t
+	desc = ukraine_politics.316.d
+	picture = GFX_report_event_ukrainian_civil_war
+
+	is_triggered_only = yes
+
+	trigger = {
+		tag = UKR
+	}
+
+	option = {
+		name = ukraine_politics.316.a
+		add_political_power = -20
+		add_stability = 0.02
+		hidden_effect = {
+			add_to_variable = { UKR_yermak_score = 2 }
+			add_to_variable = { UKR_honesty_2023 = 1 }
+		}
+		hidden_effect = { country_event = { id = ukraine_politics.317 days = 50 } }
+		ai_chance = { factor = 35 }
+	}
+
+	option = {
+		name = ukraine_politics.316.b
+		add_political_power = 20
+		add_stability = -0.04
+		if = {
+			limit = { NOT = { has_idea = UKR_eu_aid_frozen } }
+			add_timed_idea = { idea = UKR_eu_aid_frozen days = 120 }
+		}
+		hidden_effect = {
+			add_to_variable = { UKR_yermak_score = -2 }
+			add_to_variable = { UKR_honesty_2023 = -1 }
+			add_to_variable = { UKR_authoritarian_lean = 2 }
+			UKR_clamp_leans = yes
+		}
+		hidden_effect = { country_event = { id = ukraine_politics.317 days = 50 } }
+		ai_chance = { factor = 20 }
+	}
+
+	option = {
+		name = ukraine_politics.316.c
+		add_political_power = -10
+		add_stability = 0.01
+		hidden_effect = {
+			add_to_variable = { UKR_yermak_score = 1 }
+		}
+		hidden_effect = { country_event = { id = ukraine_politics.317 days = 50 } }
+		ai_chance = { factor = 45 }
+	}
+}
+
+# Эпилог Ермака, ветка «Конфронтация»: после бури (~август 2024)
+country_event = {
+	id = ukraine_politics.317
+	title = ukraine_politics.317.t
+	desc = ukraine_politics.317.d
+	picture = GFX_report_event_ukrainian_civil_war
+
+	is_triggered_only = yes
+
+	trigger = {
+		tag = UKR
+	}
+
+	option = {
+		name = ukraine_politics.317.a
+		add_political_power = -10
+		add_stability = 0.02
+		hidden_effect = {
+			add_to_variable = { UKR_yermak_score = 1 }
+		}
+		hidden_effect = { country_event = { id = ukraine_politics.319 days = 50 } }
+		ai_chance = { factor = 40 }
+	}
+
+	option = {
+		name = ukraine_politics.317.b
+		add_political_power = 10
+		add_stability = -0.01
+		hidden_effect = {
+			add_to_variable = { UKR_yermak_score = -1 }
+		}
+		hidden_effect = { country_event = { id = ukraine_politics.319 days = 50 } }
+		ai_chance = { factor = 30 }
+	}
+
+	option = {
+		name = ukraine_politics.317.c
+		add_political_power = -5
+		add_stability = 0.01
+		hidden_effect = {
+		}
+		hidden_effect = { country_event = { id = ukraine_politics.319 days = 50 } }
+		ai_chance = { factor = 30 }
+	}
+}
+
+# Дело Ермака: итог (~ноябрь 2024). Исход считает UKR_yermak_calc_outcome
+country_event = {
+	id = ukraine_politics.319
+	title = ukraine_politics.319.t
+	desc = {
+		text = ukraine_politics.319.d_court
+		trigger = {
+			has_country_flag = UKR_yermak_end_court
+		}
+	}
+	desc = {
+		text = ukraine_politics.319.d_deal
+		trigger = {
+			has_country_flag = UKR_yermak_end_deal
+		}
+	}
+	desc = {
+		text = ukraine_politics.319.d_fade
+		trigger = {
+			has_country_flag = UKR_yermak_end_fade
+		}
+	}
+	picture = GFX_report_event_ukrainian_civil_war
+
+	is_triggered_only = yes
+
+	trigger = {
+		tag = UKR
+	}
+
+	immediate = {
+		UKR_yermak_calc_outcome = yes
+	}
+
+	option = {
+		name = ukraine_politics.319.a
+		trigger = { has_country_flag = UKR_yermak_end_court }
+		add_political_power = 30
+		add_stability = -0.02
+		custom_effect_tooltip = UKR_pop_social_liberal_p2_tt
+		hidden_effect = { add_popularity = { ideology = social_liberal popularity = 0.02 } }
+		remove_ideas = UKR_eu_aid_frozen
+		set_country_flag = UKR_yermak_convicted
+		ai_chance = { factor = 40 }
+	}
+
+	option = {
+		name = ukraine_politics.319.b
+		trigger = { has_country_flag = UKR_yermak_end_deal }
+		add_political_power = -20
+		add_stability = 0.01
+		remove_ideas = UKR_eu_aid_frozen
+		set_country_flag = UKR_yermak_deal
+		ai_chance = { factor = 40 }
+	}
+
+	option = {
+		name = ukraine_politics.319.c
+		trigger = { has_country_flag = UKR_yermak_end_fade }
+		add_political_power = 10
+		add_stability = -0.02
+		custom_effect_tooltip = UKR_pop_social_liberal_m2_tt
+		hidden_effect = { add_popularity = { ideology = social_liberal popularity = -0.02 } }
+		if = {
+			limit = { NOT = { has_idea = UKR_eu_aid_frozen } }
+			add_timed_idea = { idea = UKR_eu_aid_frozen days = 180 }
+		}
+		set_country_flag = UKR_office_clan
+		set_country_flag = UKR_yermak_case_faded
+		ai_chance = { factor = 40 }
 	}
 }
 

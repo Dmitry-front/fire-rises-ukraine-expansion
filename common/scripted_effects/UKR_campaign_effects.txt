@@ -114,3 +114,66 @@ UKR_runoff_effects = {
 		hidden_effect = { add_popularity = { ideology = social_liberal popularity = -0.02 } }
 	}
 }
+
+# Исход дела Ермака (событие 319): очки накапливаются в опциях веток 310-317 (UKR_yermak_score),
+# к ним добавляются база развилки органов и решения в 301 и репутация реформ.
+# total >= 2 - суд признаёт вину; 0..1 - сделка со следствием; < 0 - дело затухает.
+UKR_yermak_calc_outcome = {
+	if = {
+		limit = { NOT = { has_variable = UKR_yermak_score } }
+		set_variable = { UKR_yermak_score = 0 }
+	}
+	UKR_calc_reform_credit = yes
+	set_variable = { UKR_yermak_total = UKR_yermak_score }
+	if = {
+		limit = { has_completed_focus = UKR_b2_protect_anticorruption }
+		add_to_variable = { UKR_yermak_total = 1 }
+	}
+	if = {
+		limit = { has_completed_focus = UKR_b2_subordinate_anticorruption }
+		add_to_variable = { UKR_yermak_total = -1 }
+	}
+	if = {
+		limit = {
+			OR = {
+				has_country_flag = UKR_yermak_resigned
+				AND = {
+					has_country_flag = UKR_yermak_trial
+					NOT = { has_country_flag = UKR_yermak_confrontation }
+				}
+			}
+		}
+		add_to_variable = { UKR_yermak_total = 1 }
+	}
+	if = {
+		limit = {
+			OR = {
+				has_country_flag = UKR_yermak_resurfaces
+				has_country_flag = UKR_yermak_confrontation
+			}
+		}
+		add_to_variable = { UKR_yermak_total = -1 }
+	}
+	if = {
+		limit = { check_variable = { UKR_reform_credit > 2 } }
+		add_to_variable = { UKR_yermak_total = 1 }
+	}
+	if = {
+		limit = { check_variable = { UKR_reform_credit < -2 } }
+		add_to_variable = { UKR_yermak_total = -1 }
+	}
+	clr_country_flag = UKR_yermak_end_court
+	clr_country_flag = UKR_yermak_end_deal
+	clr_country_flag = UKR_yermak_end_fade
+	if = {
+		limit = { check_variable = { UKR_yermak_total > 1 } }
+		set_country_flag = UKR_yermak_end_court
+	}
+	else_if = {
+		limit = { check_variable = { UKR_yermak_total > -1 } }
+		set_country_flag = UKR_yermak_end_deal
+	}
+	else = {
+		set_country_flag = UKR_yermak_end_fade
+	}
+}

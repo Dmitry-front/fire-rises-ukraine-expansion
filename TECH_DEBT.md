@@ -101,3 +101,8 @@
 - `common/decisions/TFR_decisions_UKR.txt:~440` - `add_country_leader_trait = hos_hates_russians` для PLD повторно, если черта уже есть. Безвредно, только шум в логе.
 - `UKR_modern_armor_entity` (около 1000 строк лога) - ошибка самого TFR, в нашем моде такой модели нет.
 - Интерфейс военного настроя (`common/scripted_guis/UKR_war_mood_gui.txt`) переписан на `triggers = { <элемент>_visible }`; область - страна игрока (раньше стояло `FROM`). Проверить в игре, что кружки показываются.
+
+**TD-22. Флаги хроники блока 1 нигде не читаются**
+- Хроника 2020-2022 (`events/UKR_events_block1.txt`, правка `ukraine.2`) ставит около 50 флагов выбора (`UKR_yermak_chief`, `UKR_razumkov_*`, `UKR_poroshenko_case_*`, `UKR_wagner_*`, `UKR_oligarch_registry_*` и др.), но ни одно событие или дерево их ещё не проверяет. Исключение - `ukraine.318`, читающее `UKR_wagner_open`.
+- Сделать: подключить по таблице `DESIGN.md`, 4.6 (кампания 2024, дело Ермака, пути олигархов и левых, блок 4). Ничего не ломает, пока не подключено.
+

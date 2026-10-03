@@ -1,0 +1,571 @@
+add_namespace = ukraine
+add_namespace = ukraine_economy
+
+# Хроника блока 1 (2020-2022): реальные события + твист TFR + развилка с ценой (DESIGN.md, 4.5)
+# Пачка 1: 2020 год. Сроки: окно по дате (date >) и короткий mean_time_to_happen,
+# чтобы событие приходило само и игрок его не пропустил, независимо от фокусов.
+# Склонности скрыты (hidden_effect), UKR_clamp_leans держит 0-100.
+
+# --- Январь 2020: «Плёнки Гончарука» ---
+country_event = {
+	id = ukraine.303
+	title = ukraine.303.t
+	desc = ukraine.303.d
+	picture = GFX_UKR_big_corruption_scandal
+
+	fire_only_once = yes
+
+	trigger = {
+		tag = UKR
+		date > 2020.1.14
+		has_idea = UKR_honcharuk
+		has_country_leader = {
+			character = UKR_volodymyr_zelensky
+			ruling_only = yes
+		}
+	}
+
+	mean_time_to_happen = {
+		days = 3
+	}
+
+	# Принять отставку
+	option = {
+		name = ukraine.303.a
+		add_stability = -0.02
+		add_political_power = -30
+		set_country_flag = UKR_pm_replaced_early
+		UKR_replace_honcharuk_cabinet = yes
+		hidden_effect = {
+			add_to_variable = { UKR_authoritarian_lean = 1 }
+			UKR_clamp_leans = yes
+		}
+		ai_chance = { factor = 35 }
+	}
+
+	# Дать последний шанс
+	option = {
+		name = ukraine.303.b
+		add_timed_idea = { idea = UKR_last_chance_cabinet days = 45 }
+		hidden_effect = {
+			country_event = { id = ukraine.304 days = 45 }
+			add_to_variable = { UKR_digital_lean = 1 }
+			UKR_clamp_leans = yes
+		}
+		ai_chance = { factor = 65 }
+	}
+}
+
+# --- 4 марта 2020: Шмыгаль ---
+country_event = {
+	id = ukraine.304
+	title = ukraine.304.t
+	desc = ukraine.304.d
+	picture = GFX_UKR_rada_oligarchy
+
+	is_triggered_only = yes
+
+	trigger = {
+		tag = UKR
+	}
+
+	option = {
+		name = ukraine.304.a
+		UKR_replace_honcharuk_cabinet = yes
+		add_stability = 0.01
+	}
+}
+
+# --- 11 февраля 2020: Богдан уходит, Ермак приходит ---
+country_event = {
+	id = ukraine.302
+	title = ukraine.302.t
+	desc = ukraine.302.d
+	picture = GFX_UKR_rada_oligarchy
+
+	fire_only_once = yes
+
+	trigger = {
+		tag = UKR
+		date > 2020.2.10
+		has_country_leader = {
+			character = UKR_volodymyr_zelensky
+			ruling_only = yes
+		}
+	}
+
+	mean_time_to_happen = {
+		days = 2
+	}
+
+	# Одна вертикаль
+	option = {
+		name = ukraine.302.a
+		add_political_power = 40
+		set_country_flag = UKR_yermak_chief
+		set_country_flag = UKR_office_centralised
+		hidden_effect = {
+			add_to_variable = { UKR_authoritarian_lean = 3 }
+			add_to_variable = { European_Influence = -0.01 }
+			clamp_variable = { var = European_Influence min = 0 max = 1 }
+			UKR_clamp_leans = yes
+		}
+		ai_chance = { factor = 55 }
+	}
+
+	# Профильные заместители и правила
+	option = {
+		name = ukraine.302.b
+		add_political_power = -20
+		set_country_flag = UKR_yermak_chief
+		hidden_effect = {
+			add_to_variable = { UKR_digital_lean = 2 }
+			UKR_clamp_leans = yes
+		}
+		ai_chance = { factor = 45 }
+	}
+}
+
+# --- 20 февраля 2020: Новые Санжары ---
+country_event = {
+	id = ukraine.402
+	title = ukraine.402.t
+	desc = ukraine.402.d
+	picture = GFX_Generic_COVID1
+
+	fire_only_once = yes
+
+	trigger = {
+		tag = UKR
+		date > 2020.2.19
+		has_country_leader = {
+			character = UKR_volodymyr_zelensky
+			ruling_only = yes
+		}
+	}
+
+	mean_time_to_happen = {
+		days = 1
+	}
+
+	# Приехать и поговорить
+	option = {
+		name = ukraine.402.a
+		add_stability = 0.02
+		add_political_power = -25
+		hidden_effect = {
+			add_to_variable = { UKR_left_lean = 1 }
+			UKR_clamp_leans = yes
+		}
+		ai_chance = { factor = 45 }
+	}
+
+	# Усилить полицию
+	option = {
+		name = ukraine.402.b
+		add_stability = -0.01
+		add_political_power = 20
+		hidden_effect = {
+			add_to_variable = { UKR_authoritarian_lean = 2 }
+			UKR_clamp_leans = yes
+		}
+		ai_chance = { factor = 30 }
+	}
+
+	# Оставить Минздраву и местной власти
+	option = {
+		name = ukraine.402.c
+		add_timed_idea = { idea = UKR_novi_sanzhary_panic days = 60 }
+		add_political_power = 10
+		ai_chance = { factor = 25 }
+	}
+}
+
+# --- Апрель 2020: пожары в зоне отчуждения ---
+country_event = {
+	id = ukraine.403
+	title = ukraine.403.t
+	desc = ukraine.403.d
+	picture = GFX_report_event_ukrainian_civil_war
+
+	fire_only_once = yes
+
+	trigger = {
+		tag = UKR
+		date > 2020.4.4
+		has_country_leader = {
+			character = UKR_volodymyr_zelensky
+			ruling_only = yes
+		}
+	}
+
+	mean_time_to_happen = {
+		days = 2
+	}
+
+	# МЧС и армия
+	option = {
+		name = ukraine.403.a
+		add_stability = 0.02
+		set_temp_variable = {
+			var = income_var_temp
+			value = -0.3
+		}
+		add_income_with_inflation = yes
+		hidden_effect = {
+			add_to_variable = { UKR_nationalist_lean = 1 }
+			UKR_clamp_leans = yes
+		}
+		ai_chance = { factor = 45 }
+	}
+
+	# Найти виноватых
+	option = {
+		name = ukraine.403.b
+		add_stability = 0.01
+		add_political_power = 15
+		hidden_effect = {
+			add_to_variable = { UKR_authoritarian_lean = 1 }
+			UKR_clamp_leans = yes
+		}
+		ai_chance = { factor = 30 }
+	}
+
+	# Успокоить людей
+	option = {
+		name = ukraine.403.c
+		add_timed_idea = { idea = UKR_zone_smoke days = 45 }
+		add_political_power = 10
+		ai_chance = { factor = 25 }
+	}
+}
+
+# --- Июнь 2020: деньги МВФ ---
+country_event = {
+	id = ukraine_economy.208
+	title = ukraine_economy.208.t
+	desc = ukraine_economy.208.d
+	picture = GFX_UKR_status_economy
+
+	fire_only_once = yes
+
+	trigger = {
+		tag = UKR
+		date > 2020.6.8
+		has_country_leader = {
+			character = UKR_volodymyr_zelensky
+			ruling_only = yes
+		}
+	}
+
+	mean_time_to_happen = {
+		days = 2
+	}
+
+	# Держать линию
+	option = {
+		name = ukraine_economy.208.a
+		set_temp_variable = {
+			var = income_var_temp
+			value = 3
+		}
+		add_income = yes
+		add_political_power = -25
+		set_country_flag = UKR_imf_firm
+		hidden_effect = {
+			country_event = { id = ukraine_economy.209 days = 21 }
+			add_to_variable = { UKR_digital_lean = 2 }
+			UKR_clamp_leans = yes
+		}
+		ai_chance = { factor = 50 }
+	}
+
+	# Оставить пространство для манёвра
+	option = {
+		name = ukraine_economy.208.b
+		set_temp_variable = {
+			var = income_var_temp
+			value = 2
+		}
+		add_income = yes
+		add_political_power = 10
+		set_country_flag = UKR_imf_flex
+		hidden_effect = {
+			country_event = { id = ukraine_economy.209 days = 21 }
+			add_to_variable = { UKR_authoritarian_lean = 1 }
+			UKR_clamp_leans = yes
+		}
+		ai_chance = { factor = 50 }
+	}
+}
+
+# --- 1-3 июля 2020: Смолий уходит ---
+country_event = {
+	id = ukraine_economy.209
+	title = ukraine_economy.209.t
+	desc = ukraine_economy.209.d
+	picture = GFX_UKR_status_economy
+
+	is_triggered_only = yes
+
+	trigger = {
+		tag = UKR
+	}
+
+	# Независимый профессионал
+	option = {
+		name = ukraine_economy.209.a
+		add_stability = 0.01
+		add_political_power = -20
+		set_temp_variable = {
+			var = income_var_temp
+			value = 1
+		}
+		add_income = yes
+		set_country_flag = UKR_nbu_independent
+		hidden_effect = {
+			add_to_variable = { UKR_digital_lean = 1 }
+			UKR_clamp_leans = yes
+		}
+		ai_chance = { factor = 55 }
+	}
+
+	# Удобный человек
+	option = {
+		name = ukraine_economy.209.b
+		add_political_power = 20
+		set_temp_variable = {
+			var = income_var_temp
+			value = -1
+		}
+		add_income = yes
+		add_timed_idea = { idea = UKR_nbu_pressure days = 90 }
+		set_country_flag = UKR_nbu_pliable
+		hidden_effect = {
+			add_to_variable = { UKR_authoritarian_lean = 1 }
+			UKR_clamp_leans = yes
+		}
+		ai_chance = { factor = 45 }
+	}
+}
+
+# --- 29 июля 2020: «Вагнергейт» ---
+country_event = {
+	id = ukraine.503
+	title = ukraine.503.t
+	desc = ukraine.503.d
+	picture = GFX_UKR_help_BLR
+
+	fire_only_once = yes
+
+	trigger = {
+		tag = UKR
+		date > 2020.7.29
+		has_country_leader = {
+			character = UKR_volodymyr_zelensky
+			ruling_only = yes
+		}
+	}
+
+	mean_time_to_happen = {
+		days = 2
+	}
+
+	# Требовать экстрадиции
+	option = {
+		name = ukraine.503.a
+		add_political_power = 15
+		set_country_flag = UKR_wagner_extradition
+		if = {
+			limit = { country_exists = BLR }
+			BLR = {
+				add_opinion_modifier = {
+					target = UKR
+					modifier = ukr_extradition_demand
+				}
+			}
+		}
+		hidden_effect = {
+			add_to_variable = { UKR_nationalist_lean = 1 }
+			UKR_clamp_leans = yes
+		}
+		ai_chance = { factor = 30 }
+	}
+
+	# Тихая дипломатия
+	option = {
+		name = ukraine.503.b
+		add_political_power = 5
+		set_country_flag = UKR_wagner_quiet
+		if = {
+			limit = { country_exists = BLR }
+			BLR = {
+				add_opinion_modifier = {
+					target = UKR
+					modifier = ukr_quiet_channel
+				}
+			}
+		}
+		ai_chance = { factor = 45 }
+	}
+
+	# Признать операцию
+	option = {
+		name = ukraine.503.c
+		add_stability = -0.02
+		set_country_flag = UKR_wagner_open
+		hidden_effect = {
+			add_to_variable = { UKR_digital_lean = 1 }
+			add_to_variable = { European_Influence = 0.01 }
+			clamp_variable = { var = European_Influence min = 0 max = 1 }
+			UKR_clamp_leans = yes
+		}
+		ai_chance = { factor = 25 }
+	}
+}
+
+# --- Сентябрь - октябрь 2020: белорусские айтишники ---
+country_event = {
+	id = ukraine.504
+	title = ukraine.504.t
+	desc = ukraine.504.d
+	picture = GFX_UKR_it_growth
+
+	fire_only_once = yes
+
+	trigger = {
+		tag = UKR
+		date > 2020.9.15
+		has_country_leader = {
+			character = UKR_volodymyr_zelensky
+			ruling_only = yes
+		}
+	}
+
+	mean_time_to_happen = {
+		days = 5
+	}
+
+	# Открыть двери
+	option = {
+		name = ukraine.504.a
+		add_political_power = -15
+		set_temp_variable = {
+			var = income_var_temp
+			value = -0.2
+		}
+		add_income_with_inflation = yes
+		add_timed_idea = { idea = UKR_belarus_tech_wave days = 365 }
+		set_country_flag = UKR_belarus_techies_welcome
+		if = {
+			limit = { country_exists = BLR }
+			BLR = {
+				add_opinion_modifier = {
+					target = UKR
+					modifier = ukr_poaching_it
+				}
+			}
+		}
+		hidden_effect = {
+			add_to_variable = { UKR_digital_lean = 3 }
+			add_to_variable = { European_Influence = 0.01 }
+			clamp_variable = { var = European_Influence min = 0 max = 1 }
+			UKR_clamp_leans = yes
+		}
+		ai_chance = { factor = 45 }
+	}
+
+	# Обычные правила
+	option = {
+		name = ukraine.504.b
+		hidden_effect = {
+			add_to_variable = { UKR_digital_lean = 1 }
+			UKR_clamp_leans = yes
+		}
+		ai_chance = { factor = 40 }
+	}
+
+	# Не вмешиваться
+	option = {
+		name = ukraine.504.c
+		add_political_power = 10
+		hidden_effect = {
+			add_to_variable = { Russian_Influence = 0.01 }
+			clamp_variable = { var = Russian_Influence min = 0 max = 1 }
+		}
+		ai_chance = { factor = 15 }
+	}
+}
+
+# --- Октябрь - ноябрь 2020: Карабах, урок дронов ---
+country_event = {
+	id = ukraine.850
+	title = ukraine.850.t
+	desc = ukraine.850.d
+	picture = GFX_UKR_preparing_for_war
+
+	fire_only_once = yes
+
+	trigger = {
+		tag = UKR
+		date > 2020.10.15
+		has_country_leader = {
+			character = UKR_volodymyr_zelensky
+			ruling_only = yes
+		}
+	}
+
+	mean_time_to_happen = {
+		days = 4
+	}
+
+	# Турецкая линия
+	option = {
+		name = ukraine.850.a
+		add_political_power = -20
+		set_temp_variable = {
+			var = income_var_temp
+			value = -0.8
+		}
+		add_income_with_inflation = yes
+		set_country_flag = UKR_tb2_line
+		if = {
+			limit = { country_exists = TUR }
+			TUR = {
+				add_opinion_modifier = {
+					target = UKR
+					modifier = diplomatic_treaty_ukr
+				}
+			}
+		}
+		hidden_effect = {
+			add_to_variable = { UKR_digital_lean = 2 }
+			UKR_clamp_leans = yes
+		}
+		ai_chance = { factor = 45 }
+	}
+
+	# Своё
+	option = {
+		name = ukraine.850.b
+		add_political_power = -10
+		set_temp_variable = {
+			var = income_var_temp
+			value = -1.2
+		}
+		add_income_with_inflation = yes
+		set_country_flag = UKR_own_drones
+		hidden_effect = {
+			add_to_variable = { UKR_digital_lean = 3 }
+			UKR_clamp_leans = yes
+		}
+		ai_chance = { factor = 40 }
+	}
+
+	# Смотреть и учиться
+	option = {
+		name = ukraine.850.c
+		add_political_power = 10
+		ai_chance = { factor = 15 }
+	}
+}

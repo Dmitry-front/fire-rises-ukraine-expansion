@@ -10,6 +10,9 @@ def files(ext, base='.'):
         if '.git' in d: continue
         for f in fs:
             if f.endswith(ext): out.append(os.path.join(d, f)[2:] if d.startswith('./') or d == '.' else os.path.join(d, f))
+    # Windows: пути приводим к виду с / (скрипт писался под Linux)
+    out = [o.replace(chr(92), '/') for o in out]
+    out = [o[2:] if o.startswith('./') else o for o in out]
     return sorted(out)
 
 def read(p):

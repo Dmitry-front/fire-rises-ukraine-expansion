@@ -1847,15 +1847,14 @@ country_event = {
 
 	fire_only_once = yes
 
+	# Первый случай в Украине - 3 марта 2020; окно по дате, чтобы не приходил раньше и не терялся (DESIGN.md, 4.5)
 	trigger = {
 		tag = UKR
+		date > 2020.3.1
 	}
 
-	mean_time_to_happen = { 
-		days = 48
-		modifier = {
-			factor = 0.9
-		}
+	mean_time_to_happen = {
+		days = 4
 	}
 	
 	option = {
@@ -2958,16 +2957,17 @@ country_event = {
 	desc = ukraine.300.d
 	picture = GFX_UKR_ministr_avakov_scandal
 
+	fire_only_once = yes
+
+	# В реальности Аваков ушёл в июле 2021; окно по дате (DESIGN.md, 4.5)
 	trigger = {
 		tag = UKR
+		date > 2021.5.15
 		has_idea = UKR_avakov
 	}
 
-	mean_time_to_happen = { 
-		days = 60
-		modifier = {
-			factor = 1
-		}
+	mean_time_to_happen = {
+		days = 20
 	}
 	option = {
 		name = ukraine.300.a 

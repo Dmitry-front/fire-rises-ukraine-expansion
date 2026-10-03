@@ -39,6 +39,19 @@ country_event = {
 		hidden_effect = { country_event = { id = ukraine_politics.103 days = 155 } }
 		hidden_effect = { country_event = { id = ukraine_politics.104 days = 185 } }
 		hidden_effect = { country_event = { id = ukraine_politics.105 days = 245 } }
+		# Консолидация левых (DESIGN.md, 5.5)
+		set_variable = { UKR_left_front_strength = 0 }
+		set_variable = { UKR_lf_pre_unions = 0 }
+		set_variable = { UKR_lf_pre_socialists = 0 }
+		set_variable = { UKR_lf_pre_anarchists = 0 }
+		set_variable = { UKR_lf_pre_communists = 0 }
+		hidden_effect = { country_event = { id = ukraine_politics.106 days = 65 } }
+		hidden_effect = { country_event = { id = ukraine_politics.107 days = 120 } }
+		hidden_effect = { country_event = { id = ukraine_politics.108 days = 140 } }
+		hidden_effect = { country_event = { id = ukraine_politics.109 days = 175 } }
+		hidden_effect = { country_event = { id = ukraine_politics.112 days = 215 } }
+		hidden_effect = { country_event = { id = ukraine_politics.113 days = 235 } }
+		hidden_effect = { country_event = { id = ukraine_politics.115 days = 270 } }
 	}
 }
 
@@ -100,6 +113,8 @@ country_event = {
 	# Открыть диалог
 	option = {
 		name = ukraine_politics.102.a
+		custom_effect_tooltip = UKR_left_maneuver_tt
+		hidden_effect = { add_to_variable = { UKR_left_front_strength = 1 } }
 		add_timed_idea = { idea = UKR_left_consolidation days = 150 }
 		add_political_power = -25
 		add_stability = 0.02
@@ -124,7 +139,7 @@ country_event = {
 		add_timed_idea = { idea = UKR_left_consolidation days = 150 }
 		add_political_power = 30
 		add_stability = -0.02
-		custom_effect_tooltip = UKR_pop_social_democrat_p1_tt
+		custom_effect_tooltip = UKR_pop_social_democrat_pre_p1_tt
 		hidden_effect = { add_popularity = { ideology = social_democrat popularity = 0.01 } }
 		hidden_effect = {
 			add_to_variable = { UKR_authoritarian_lean = 2 }
@@ -302,6 +317,367 @@ country_event = {
 	}
 }
 
+# Тарифная зима (март 2023): левая повестка набирает силу
+country_event = {
+	id = ukraine_politics.106
+	title = ukraine_politics.106.t
+	desc = ukraine_politics.106.d
+	picture = GFX_report_event_ukrainian_civil_war
+
+	is_triggered_only = yes
+
+	trigger = {
+		tag = UKR
+	}
+
+	option = {
+		name = ukraine_politics.106.a
+		add_stability = 0.02
+		set_temp_variable = {
+			var = income_var_temp
+			value = -2
+		}
+		add_income_with_inflation = yes
+		hidden_effect = {
+			add_to_variable = { UKR_left_front_strength = 2 }
+			add_to_variable = { UKR_lf_pre_unions = 3 }
+			add_to_variable = { UKR_left_lean = 2 }
+			UKR_clamp_leans = yes
+		}
+		custom_effect_tooltip = UKR_left_maneuver_tt
+		ai_chance = { factor = 30 }
+	}
+
+	option = {
+		name = ukraine_politics.106.b
+		add_political_power = -10
+		add_stability = 0.01
+		hidden_effect = {
+			add_to_variable = { UKR_left_front_strength = 1 }
+			add_to_variable = { UKR_lf_pre_unions = 2 }
+			add_to_variable = { UKR_left_lean = 1 }
+			UKR_clamp_leans = yes
+		}
+		custom_effect_tooltip = UKR_left_maneuver_tt
+		ai_chance = { factor = 40 }
+	}
+
+	option = {
+		name = ukraine_politics.106.c
+		add_political_power = 15
+		add_stability = -0.02
+		hidden_effect = {
+			add_to_variable = { UKR_digital_lean = 1 }
+			UKR_clamp_leans = yes
+		}
+		ai_chance = { factor = 30 }
+	}
+}
+
+# Первомай (1.05.2023)
+country_event = {
+	id = ukraine_politics.107
+	title = ukraine_politics.107.t
+	desc = ukraine_politics.107.d
+	picture = GFX_report_event_ukrainian_civil_war
+
+	is_triggered_only = yes
+
+	trigger = {
+		tag = UKR
+	}
+
+	option = {
+		name = ukraine_politics.107.a
+		add_political_power = -10
+		add_stability = 0.01
+		hidden_effect = {
+			add_to_variable = { UKR_left_front_strength = 1 }
+			add_to_variable = { UKR_lf_pre_unions = 3 }
+			add_to_variable = { UKR_left_lean = 1 }
+			UKR_clamp_leans = yes
+		}
+		custom_effect_tooltip = UKR_left_maneuver_tt
+		ai_chance = { factor = 40 }
+	}
+
+	option = {
+		name = ukraine_politics.107.b
+		add_political_power = 5
+		ai_chance = { factor = 40 }
+	}
+
+	option = {
+		name = ukraine_politics.107.c
+		add_political_power = 15
+		add_stability = -0.02
+		hidden_effect = {
+			add_to_variable = { UKR_authoritarian_lean = 2 }
+			UKR_clamp_leans = yes
+		}
+		ai_chance = { factor = 20 }
+	}
+}
+
+# Ветераны и левые (май 2023)
+country_event = {
+	id = ukraine_politics.108
+	title = ukraine_politics.108.t
+	desc = ukraine_politics.108.d
+	picture = GFX_report_event_ukrainian_civil_war
+
+	is_triggered_only = yes
+
+	trigger = {
+		tag = UKR
+	}
+
+	option = {
+		name = ukraine_politics.108.a
+		add_political_power = -15
+		add_stability = 0.01
+		hidden_effect = {
+			add_to_variable = { UKR_left_front_strength = 1 }
+			add_to_variable = { UKR_lf_pre_unions = 2 }
+			add_to_variable = { UKR_lf_pre_socialists = 2 }
+			add_to_variable = { UKR_left_lean = 2 }
+			add_to_variable = { UKR_nationalist_lean = -1 }
+			UKR_clamp_leans = yes
+		}
+		custom_effect_tooltip = UKR_left_maneuver_tt
+		ai_chance = { factor = 40 }
+	}
+
+	option = {
+		name = ukraine_politics.108.b
+		add_political_power = 5
+		ai_chance = { factor = 30 }
+	}
+
+	option = {
+		name = ukraine_politics.108.c
+		add_political_power = 10
+		hidden_effect = {
+			add_to_variable = { UKR_left_front_strength = -1 }
+			add_to_variable = { UKR_nationalist_lean = 2 }
+			UKR_clamp_leans = yes
+		}
+		ai_chance = { factor = 30 }
+	}
+}
+
+# Учредительный съезд (25.06.2023): Радикальная партия и Союз левых сил получают новые названия
+country_event = {
+	id = ukraine_politics.109
+	title = ukraine_politics.109.t
+	desc = ukraine_politics.109.d
+	picture = GFX_report_event_ukrainian_civil_war
+
+	is_triggered_only = yes
+
+	trigger = {
+		tag = UKR
+	}
+
+	immediate = {
+		set_country_flag = UKR_left_front_founded
+		hidden_effect = {
+			set_party_name = {
+				ideology = social_democrat
+				name = UKR_left_front_party
+				long_name = UKR_left_front_party_long
+			}
+			set_party_name = {
+				ideology = libertarian_socialist
+				name = UKR_left_unions_party
+				long_name = UKR_left_unions_party_long
+			}
+			if = {
+				limit = { has_idea = UKR_left_consolidation }
+				remove_ideas = UKR_left_consolidation
+			}
+			add_timed_idea = { idea = UKR_left_front_surge days = 125 }
+		}
+	}
+
+	option = {
+		name = ukraine_politics.109.a
+		custom_effect_tooltip = UKR_left_front_renamed_tt
+		add_political_power = -10
+		hidden_effect = {
+			add_to_variable = { UKR_left_front_strength = 1 }
+			add_to_variable = { UKR_lf_pre_socialists = 3 }
+		}
+		custom_effect_tooltip = UKR_left_maneuver_tt
+		ai_chance = { factor = 40 }
+	}
+
+	option = {
+		name = ukraine_politics.109.b
+		custom_effect_tooltip = UKR_left_front_renamed_tt
+		add_stability = 0.01
+		ai_chance = { factor = 40 }
+	}
+
+	option = {
+		name = ukraine_politics.109.c
+		custom_effect_tooltip = UKR_left_front_renamed_tt
+		add_political_power = 20
+		add_stability = -0.02
+		hidden_effect = {
+			add_to_variable = { UKR_left_front_strength = -1 }
+			add_to_variable = { UKR_honesty_2023 = -1 }
+			add_to_variable = { UKR_authoritarian_lean = 2 }
+			UKR_clamp_leans = yes
+		}
+		ai_chance = { factor = 20 }
+	}
+}
+
+# Красная линия (август 2023): Левый фронт и КПУ
+country_event = {
+	id = ukraine_politics.112
+	title = ukraine_politics.112.t
+	desc = ukraine_politics.112.d
+	picture = GFX_report_event_ukrainian_civil_war
+
+	is_triggered_only = yes
+
+	trigger = {
+		tag = UKR
+	}
+
+	option = {
+		name = ukraine_politics.112.a
+		add_political_power = 10
+		hidden_effect = {
+			add_to_variable = { UKR_left_front_strength = -1 }
+			add_to_variable = { UKR_authoritarian_lean = 1 }
+			UKR_clamp_leans = yes
+		}
+		custom_effect_tooltip = UKR_left_maneuver_tt
+		ai_chance = { factor = 30 }
+	}
+
+	option = {
+		name = ukraine_politics.112.b
+		add_political_power = 5
+		ai_chance = { factor = 40 }
+	}
+
+	option = {
+		name = ukraine_politics.112.c
+		add_political_power = -10
+		add_stability = 0.01
+		hidden_effect = {
+			add_to_variable = { UKR_left_front_strength = 1 }
+			add_to_variable = { UKR_lf_pre_socialists = 2 }
+			add_to_variable = { UKR_left_lean = 1 }
+			UKR_clamp_leans = yes
+		}
+		custom_effect_tooltip = UKR_left_maneuver_tt
+		ai_chance = { factor = 30 }
+	}
+}
+
+# Единый список Левого фронта (август 2023)
+country_event = {
+	id = ukraine_politics.113
+	title = ukraine_politics.113.t
+	desc = ukraine_politics.113.d
+	picture = GFX_report_event_ukrainian_civil_war
+
+	is_triggered_only = yes
+
+	trigger = {
+		tag = UKR
+	}
+
+	option = {
+		name = ukraine_politics.113.a
+		add_political_power = -15
+		add_stability = 0.01
+		hidden_effect = {
+			add_to_variable = { UKR_left_front_strength = 1 }
+			add_to_variable = { UKR_lf_pre_socialists = 3 }
+			add_to_variable = { UKR_lf_pre_unions = 2 }
+			add_to_variable = { UKR_left_lean = 2 }
+			UKR_clamp_leans = yes
+		}
+		custom_effect_tooltip = UKR_left_maneuver_tt
+		ai_chance = { factor = 40 }
+	}
+
+	option = {
+		name = ukraine_politics.113.b
+		add_political_power = 15
+		add_stability = -0.01
+		hidden_effect = {
+			add_to_variable = { UKR_left_front_strength = -1 }
+			add_to_variable = { UKR_authoritarian_lean = 1 }
+			UKR_clamp_leans = yes
+		}
+		ai_chance = { factor = 30 }
+	}
+
+	option = {
+		name = ukraine_politics.113.c
+		add_political_power = 5
+		ai_chance = { factor = 30 }
+	}
+}
+
+# Кривбасс (сентябрь 2023)
+country_event = {
+	id = ukraine_politics.115
+	title = ukraine_politics.115.t
+	desc = ukraine_politics.115.d
+	picture = GFX_report_event_ukrainian_civil_war
+
+	is_triggered_only = yes
+
+	trigger = {
+		tag = UKR
+	}
+
+	option = {
+		name = ukraine_politics.115.a
+		add_political_power = -15
+		add_stability = 0.02
+		hidden_effect = {
+			add_to_variable = { UKR_left_front_strength = 1 }
+			add_to_variable = { UKR_lf_pre_unions = 3 }
+			add_to_variable = { UKR_left_lean = 2 }
+			UKR_clamp_leans = yes
+		}
+		custom_effect_tooltip = UKR_left_maneuver_tt
+		ai_chance = { factor = 40 }
+	}
+
+	option = {
+		name = ukraine_politics.115.b
+		add_political_power = -10
+		set_temp_variable = {
+			var = income_var_temp
+			value = -1
+		}
+		add_income_with_inflation = yes
+		add_stability = 0.01
+		hidden_effect = {
+			add_to_variable = { UKR_authoritarian_lean = 1 }
+			UKR_clamp_leans = yes
+		}
+		ai_chance = { factor = 30 }
+	}
+
+	option = {
+		name = ukraine_politics.115.c
+		add_political_power = 5
+		add_stability = -0.01
+		ai_chance = { factor = 30 }
+	}
+}
+
 # Выборы в Верховную Раду, 29.10.2023
 country_event = {
 	id = ukraine_politics.110
@@ -330,8 +706,10 @@ country_event = {
 	option = {
 		name = ukraine_politics.110.a
 		UKR_rada_2023_results = yes
+		UKR_left_front_bonus_2023 = yes
 		add_political_power = 25
 		hidden_effect = { country_event = { id = ukraine_politics.111 days = 7 } }
+		hidden_effect = { country_event = { id = ukraine_politics.114 days = 17 } }
 	}
 }
 
@@ -357,6 +735,57 @@ country_event = {
 		}
 		set_country_flag = UKR_rada_union_partner
 		add_stability = 0.02
+	}
+}
+
+# Левая фракция в Раде (ноябрь 2023, через 17 дней после выборов)
+country_event = {
+	id = ukraine_politics.114
+	title = ukraine_politics.114.t
+	desc = ukraine_politics.114.d
+	picture = GFX_report_event_ukrainian_civil_war
+
+	is_triggered_only = yes
+
+	trigger = {
+		tag = UKR
+	}
+
+	option = {
+		name = ukraine_politics.114.a
+		add_political_power = -10
+		add_stability = 0.01
+		hidden_effect = {
+			add_to_variable = { UKR_lf_pre_unions = 4 }
+			add_to_variable = { UKR_left_lean = 2 }
+			UKR_clamp_leans = yes
+		}
+		custom_effect_tooltip = UKR_left_maneuver_tt
+		ai_chance = { factor = 40 }
+	}
+
+	option = {
+		name = ukraine_politics.114.b
+		add_political_power = 15
+		add_stability = -0.02
+		hidden_effect = {
+			add_to_variable = { UKR_authoritarian_lean = 1 }
+			UKR_clamp_leans = yes
+		}
+		ai_chance = { factor = 25 }
+	}
+
+	option = {
+		name = ukraine_politics.114.c
+		add_political_power = 10
+		hidden_effect = {
+			add_to_variable = { UKR_lf_pre_unions = 2 }
+			add_to_variable = { UKR_left_lean = 1 }
+			add_to_variable = { UKR_authoritarian_lean = 1 }
+			UKR_clamp_leans = yes
+		}
+		custom_effect_tooltip = UKR_left_maneuver_tt
+		ai_chance = { factor = 35 }
 	}
 }
 
@@ -1187,6 +1616,28 @@ country_event = {
 	option = {
 		name = ukraine_politics.304.a
 		set_country_flag = UKR_second_term
+		# Опора не выбрана: берём ту, что лучше поддерживает прошлая политика, со штрафом за несоответствие
+		if = {
+			limit = {
+				NOT = { has_country_flag = UKR_pillar_chosen_technocrats }
+				NOT = { has_country_flag = UKR_pillar_chosen_left }
+				NOT = { has_country_flag = UKR_pillar_chosen_oligarchs }
+				NOT = { has_country_flag = UKR_pillar_chosen_nationalists }
+			}
+			custom_effect_tooltip = UKR_pillar_fallback_tt
+			hidden_effect = {
+				if = {
+					limit = { check_variable = { var = UKR_digital_lean value = UKR_left_lean compare = greater_than_or_equals } }
+					set_country_flag = UKR_pillar_chosen_technocrats
+					set_temp_variable = { UKR_pillar_lean_tmp = UKR_digital_lean }
+				}
+				else = {
+					set_country_flag = UKR_pillar_chosen_left
+					set_temp_variable = { UKR_pillar_lean_tmp = UKR_left_lean }
+				}
+				UKR_apply_pillar_mismatch = yes
+			}
+		}
 		add_stability = 0.05
 		add_political_power = 50
 		# Блок 3: дерево выбранной опоры. Написаны пути технократов и левых

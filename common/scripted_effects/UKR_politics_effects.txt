@@ -213,6 +213,24 @@ UKR_init_left_factions = {
 	set_variable = { UKR_lf_socialists = 25 }
 	set_variable = { UKR_lf_anarchists = 10 }
 	set_variable = { UKR_lf_communists = 10 }
+	# Вклад консолидации левых 2023 (события 106-115): добавки накапливались в UKR_lf_pre_*
+	if = {
+		limit = { has_variable = UKR_lf_pre_unions }
+		add_to_variable = { UKR_lf_unions = UKR_lf_pre_unions }
+	}
+	if = {
+		limit = { has_variable = UKR_lf_pre_socialists }
+		add_to_variable = { UKR_lf_socialists = UKR_lf_pre_socialists }
+	}
+	if = {
+		limit = { has_variable = UKR_lf_pre_anarchists }
+		add_to_variable = { UKR_lf_anarchists = UKR_lf_pre_anarchists }
+	}
+	if = {
+		limit = { has_variable = UKR_lf_pre_communists }
+		add_to_variable = { UKR_lf_communists = UKR_lf_pre_communists }
+	}
+	UKR_clamp_left_factions = yes
 }
 
 # Использование: add_to_variable = { UKR_lf_unions = 5 } затем UKR_clamp_left_factions = yes
@@ -284,3 +302,28 @@ UKR_corruption_step_down = {
 	}
 }
 
+
+# Итог Левого фронта на выборах 2023: прибавка зависит от того, как к консолидации левых относился Офис
+# (UKR_left_front_strength: события 102, 106-109, 112, 113, 115). Вызывается после UKR_rada_2023_results.
+UKR_left_front_bonus_2023 = {
+	if = {
+		limit = { check_variable = { UKR_left_front_strength > 4 } }
+		custom_effect_tooltip = UKR_pop_social_democrat_p3_tt
+		hidden_effect = { add_popularity = { ideology = social_democrat popularity = 0.03 } }
+	}
+	else_if = {
+		limit = { check_variable = { UKR_left_front_strength > 2 } }
+		custom_effect_tooltip = UKR_pop_social_democrat_p2_tt
+		hidden_effect = { add_popularity = { ideology = social_democrat popularity = 0.02 } }
+	}
+	else_if = {
+		limit = { check_variable = { UKR_left_front_strength > 0 } }
+		custom_effect_tooltip = UKR_pop_social_democrat_p1_tt
+		hidden_effect = { add_popularity = { ideology = social_democrat popularity = 0.01 } }
+	}
+	else_if = {
+		limit = { check_variable = { UKR_left_front_strength < -1 } }
+		custom_effect_tooltip = UKR_pop_social_democrat_m1_tt
+		hidden_effect = { add_popularity = { ideology = social_democrat popularity = -0.01 } }
+	}
+}

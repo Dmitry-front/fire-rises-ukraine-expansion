@@ -1021,8 +1021,13 @@ country_event = {
 			}
 		}
 		hidden_effect = { complete_national_focus = UKR_b2_campaign_2024 }
+		hidden_effect = { country_event = { id = ukraine_politics.208 days = 10 } }
 		hidden_effect = { country_event = { id = ukraine_politics.201 days = 40 } }
+		hidden_effect = { country_event = { id = ukraine_politics.212 days = 48 } }
 		hidden_effect = { country_event = { id = ukraine_politics.202 days = 55 } }
+		hidden_effect = { country_event = { id = ukraine_politics.209 days = 62 } }
+		hidden_effect = { country_event = { id = ukraine_politics.210 days = 68 } }
+		hidden_effect = { country_event = { id = ukraine_politics.211 days = 74 } }
 		hidden_effect = { country_event = { id = ukraine_politics.204 days = 80 } }
 	}
 
@@ -1048,6 +1053,7 @@ country_event = {
 	# Принять реванш
 	option = {
 		name = ukraine_politics.201.a
+		set_country_flag = UKR_stadium_accepted
 		hidden_effect = { add_to_variable = { UKR_campaign_bonus = 1 } }
 		add_political_power = -25
 		add_stability = 0.02
@@ -1059,6 +1065,7 @@ country_event = {
 	# Дебаты онлайн через «Дію»
 	option = {
 		name = ukraine_politics.201.b
+		set_country_flag = UKR_debate_online
 		hidden_effect = { add_to_variable = { UKR_campaign_bonus = 1 } }
 		add_political_power = 10
 		hidden_effect = {
@@ -1071,6 +1078,7 @@ country_event = {
 	# Отказаться
 	option = {
 		name = ukraine_politics.201.c
+		set_country_flag = UKR_stadium_refused
 		hidden_effect = { add_to_variable = { UKR_campaign_bonus = -1 } }
 		add_political_power = 25
 		add_stability = -0.02
@@ -1169,6 +1177,632 @@ country_event = {
 	}
 }
 
+# Регистрация кандидатов в ЦИК (~15.01.2024)
+country_event = {
+	id = ukraine_politics.208
+	title = ukraine_politics.208.t
+	desc = ukraine_politics.208.d
+	picture = GFX_report_event_ukrainian_civil_war
+
+	is_triggered_only = yes
+
+	trigger = {
+		tag = UKR
+	}
+
+	option = {
+		name = ukraine_politics.208.a
+		add_political_power = 5
+		ai_chance = { factor = 40 }
+	}
+
+	option = {
+		name = ukraine_politics.208.b
+		add_political_power = 20
+		add_stability = -0.01
+		set_country_flag = UKR_spoilers_2024
+		hidden_effect = {
+			add_to_variable = { UKR_campaign_bonus = 1 }
+			add_to_variable = { UKR_honesty_2023 = -1 }
+			add_to_variable = { UKR_authoritarian_lean = 2 }
+			UKR_clamp_leans = yes
+		}
+		ai_chance = { factor = 20 }
+	}
+
+	option = {
+		name = ukraine_politics.208.c
+		add_political_power = -10
+		add_stability = 0.01
+		hidden_effect = {
+			add_to_variable = { UKR_honesty_2023 = 1 }
+		}
+		ai_chance = { factor = 40 }
+	}
+}
+
+# Е-голосование в «Дії» для диаспоры (~23.02.2024)
+country_event = {
+	id = ukraine_politics.212
+	title = ukraine_politics.212.t
+	desc = ukraine_politics.212.d
+	picture = GFX_report_event_ukrainian_civil_war
+
+	is_triggered_only = yes
+
+	trigger = {
+		tag = UKR
+	}
+
+	option = {
+		name = ukraine_politics.212.a
+		add_political_power = -15
+		add_stability = -0.01
+		hidden_effect = {
+			add_to_variable = { UKR_campaign_bonus = 1 }
+			add_to_variable = { UKR_digital_lean = 2 }
+			UKR_clamp_leans = yes
+		}
+		ai_chance = { factor = 30 }
+	}
+
+	option = {
+		name = ukraine_politics.212.b
+		add_political_power = -5
+		add_stability = 0.01
+		ai_chance = { factor = 45 }
+	}
+
+	option = {
+		name = ukraine_politics.212.c
+		add_political_power = 5
+		add_stability = 0.01
+		hidden_effect = {
+			add_to_variable = { UKR_authoritarian_lean = 1 }
+			UKR_clamp_leans = yes
+		}
+		ai_chance = { factor = 25 }
+	}
+}
+
+# Что запомнили после «Стадиона 2.0» (~8.03.2024): текст зависит от выбора в 201
+country_event = {
+	id = ukraine_politics.209
+	title = ukraine_politics.209.t
+	desc = {
+		text = ukraine_politics.209.d_accept
+		trigger = {
+			has_country_flag = UKR_stadium_accepted
+		}
+	}
+	desc = {
+		text = ukraine_politics.209.d_online
+		trigger = {
+			has_country_flag = UKR_debate_online
+		}
+	}
+	desc = {
+		text = ukraine_politics.209.d_refuse
+		trigger = {
+			has_country_flag = UKR_stadium_refused
+		}
+	}
+	desc = {
+		text = ukraine_politics.209.d
+		trigger = {
+			NOT = { has_country_flag = UKR_stadium_accepted }
+			NOT = { has_country_flag = UKR_debate_online }
+			NOT = { has_country_flag = UKR_stadium_refused }
+		}
+	}
+	picture = GFX_report_event_ukrainian_civil_war
+
+	is_triggered_only = yes
+
+	trigger = {
+		tag = UKR
+	}
+
+	option = {
+		name = ukraine_politics.209.a
+		add_political_power = 10
+		hidden_effect = {
+			add_to_variable = { UKR_campaign_bonus = 1 }
+		}
+		ai_chance = { factor = 40 }
+	}
+
+	option = {
+		name = ukraine_politics.209.b
+		add_stability = 0.01
+		hidden_effect = {
+			add_to_variable = { UKR_campaign_bonus = 1 }
+			add_to_variable = { UKR_digital_lean = 1 }
+			UKR_clamp_leans = yes
+		}
+		ai_chance = { factor = 40 }
+	}
+
+	option = {
+		name = ukraine_politics.209.c
+		add_political_power = 5
+		ai_chance = { factor = 20 }
+	}
+}
+
+# Бойко и «Оппозиционная платформа»: диалог с Москвой (~14.03.2024)
+country_event = {
+	id = ukraine_politics.210
+	title = ukraine_politics.210.t
+	desc = ukraine_politics.210.d
+	picture = GFX_report_event_ukrainian_civil_war
+
+	is_triggered_only = yes
+
+	trigger = {
+		tag = UKR
+	}
+
+	option = {
+		name = ukraine_politics.210.a
+		add_political_power = 5
+		ai_chance = { factor = 40 }
+	}
+
+	option = {
+		name = ukraine_politics.210.b
+		add_political_power = 15
+		add_stability = -0.01
+		hidden_effect = {
+			add_to_variable = { UKR_campaign_bonus = 1 }
+			add_to_variable = { UKR_authoritarian_lean = 2 }
+			UKR_clamp_leans = yes
+		}
+		ai_chance = { factor = 25 }
+	}
+
+	option = {
+		name = ukraine_politics.210.c
+		add_political_power = -10
+		add_stability = 0.01
+		hidden_effect = {
+			add_to_variable = { UKR_campaign_bonus = 1 }
+			add_to_variable = { UKR_nationalist_lean = 1 }
+			UKR_clamp_leans = yes
+		}
+		ai_chance = { factor = 35 }
+	}
+}
+
+# Список кандидатов: Кличко, Разумков и другие (~20.03.2024)
+country_event = {
+	id = ukraine_politics.211
+	title = ukraine_politics.211.t
+	desc = {
+		text = ukraine_politics.211.d_spoilers
+		trigger = {
+			has_country_flag = UKR_spoilers_2024
+		}
+	}
+	desc = {
+		text = ukraine_politics.211.d
+		trigger = {
+			NOT = { has_country_flag = UKR_spoilers_2024 }
+		}
+	}
+	picture = GFX_report_event_ukrainian_civil_war
+
+	is_triggered_only = yes
+
+	trigger = {
+		tag = UKR
+	}
+
+	immediate = {
+		if = {
+			limit = { has_country_flag = UKR_spoilers_2024 }
+			add_stability = -0.01
+		}
+	}
+
+	option = {
+		name = ukraine_politics.211.a
+		add_political_power = -15
+		add_stability = 0.01
+		hidden_effect = {
+			add_to_variable = { UKR_campaign_bonus = 1 }
+		}
+		ai_chance = { factor = 40 }
+	}
+
+	option = {
+		name = ukraine_politics.211.b
+		add_political_power = -10
+		hidden_effect = {
+			add_to_variable = { UKR_campaign_bonus = 1 }
+			add_to_variable = { UKR_digital_lean = 1 }
+			UKR_clamp_leans = yes
+		}
+		ai_chance = { factor = 35 }
+	}
+
+	option = {
+		name = ukraine_politics.211.c
+		add_political_power = 10
+		hidden_effect = {
+			add_to_variable = { UKR_campaign_bonus = -1 }
+			add_to_variable = { UKR_authoritarian_lean = 1 }
+			UKR_clamp_leans = yes
+		}
+		ai_chance = { factor = 25 }
+	}
+}
+
+# День тишины перед вторым туром (~12.04.2024)
+country_event = {
+	id = ukraine_politics.213
+	title = ukraine_politics.213.t
+	desc = ukraine_politics.213.d
+	picture = GFX_report_event_ukrainian_civil_war
+
+	is_triggered_only = yes
+
+	trigger = {
+		tag = UKR
+	}
+
+	option = {
+		name = ukraine_politics.213.a
+		add_political_power = -15
+		set_country_flag = UKR_media_favours
+		hidden_effect = {
+			add_to_variable = { UKR_campaign_bonus2 = 1 }
+			add_to_variable = { UKR_honesty_2023 = -1 }
+			add_to_variable = { UKR_authoritarian_lean = 1 }
+			UKR_clamp_leans = yes
+		}
+		ai_chance = { factor = 25 }
+	}
+
+	option = {
+		name = ukraine_politics.213.b
+		add_political_power = 5
+		hidden_effect = {
+			add_to_variable = { UKR_honesty_2023 = 1 }
+		}
+		ai_chance = { factor = 40 }
+	}
+
+	option = {
+		name = ukraine_politics.213.c
+		add_stability = -0.01
+		hidden_effect = {
+			add_to_variable = { UKR_campaign_bonus2 = 1 }
+		}
+		ai_chance = { factor = 35 }
+	}
+}
+
+# Съезд ветеранов (после фокуса «Ветераны против олигархов»)
+country_event = {
+	id = ukraine_politics.220
+	title = ukraine_politics.220.t
+	desc = ukraine_politics.220.d
+	picture = GFX_report_event_ukrainian_civil_war
+
+	is_triggered_only = yes
+
+	trigger = {
+		tag = UKR
+	}
+
+	option = {
+		name = ukraine_politics.220.a
+		add_political_power = -10
+		add_stability = 0.01
+		hidden_effect = {
+			add_to_variable = { UKR_campaign_bonus = 1 }
+			add_to_variable = { UKR_left_lean = 1 }
+			UKR_clamp_leans = yes
+		}
+		custom_effect_tooltip = UKR_left_maneuver_tt
+		ai_chance = { factor = 35 }
+	}
+
+	option = {
+		name = ukraine_politics.220.b
+		add_political_power = -15
+		add_stability = 0.02
+		set_temp_variable = {
+			var = income_var_temp
+			value = -1
+		}
+		add_income_with_inflation = yes
+		hidden_effect = {
+			add_to_variable = { UKR_campaign_bonus = 1 }
+		}
+		custom_effect_tooltip = UKR_left_maneuver_tt
+		ai_chance = { factor = 35 }
+	}
+
+	option = {
+		name = ukraine_politics.220.c
+		add_political_power = -10
+		hidden_effect = {
+			add_to_variable = { UKR_lf_pre_unions = 2 }
+			add_to_variable = { UKR_left_lean = 2 }
+			UKR_clamp_leans = yes
+		}
+		custom_effect_tooltip = UKR_left_maneuver_tt
+		ai_chance = { factor = 30 }
+	}
+}
+
+# Форум ветеранских советов (после фокуса «Ветеранские советы»)
+country_event = {
+	id = ukraine_politics.221
+	title = ukraine_politics.221.t
+	desc = ukraine_politics.221.d
+	picture = GFX_report_event_ukrainian_civil_war
+
+	is_triggered_only = yes
+
+	trigger = {
+		tag = UKR
+	}
+
+	option = {
+		name = ukraine_politics.221.a
+		add_political_power = -15
+		add_war_support = 0.02
+		add_manpower = 5000
+		hidden_effect = {
+			add_to_variable = { UKR_campaign_bonus = 1 }
+			add_to_variable = { UKR_nationalist_lean = 2 }
+			UKR_clamp_leans = yes
+		}
+		ai_chance = { factor = 35 }
+	}
+
+	option = {
+		name = ukraine_politics.221.b
+		add_political_power = 5
+		add_stability = 0.01
+		ai_chance = { factor = 35 }
+	}
+
+	option = {
+		name = ukraine_politics.221.c
+		add_political_power = -10
+		add_stability = 0.01
+		hidden_effect = {
+			add_to_variable = { UKR_campaign_bonus = 1 }
+			add_to_variable = { UKR_nationalist_lean = 1 }
+			add_to_variable = { UKR_authoritarian_lean = 1 }
+			UKR_clamp_leans = yes
+		}
+		ai_chance = { factor = 30 }
+	}
+}
+
+# Первая неприятная публикация (после фокуса «Прозрачное государство»)
+country_event = {
+	id = ukraine_politics.222
+	title = ukraine_politics.222.t
+	desc = ukraine_politics.222.d
+	picture = GFX_report_event_ukrainian_civil_war
+
+	is_triggered_only = yes
+
+	trigger = {
+		tag = UKR
+	}
+
+	option = {
+		name = ukraine_politics.222.a
+		add_political_power = -15
+		add_stability = 0.01
+		hidden_effect = {
+			add_to_variable = { UKR_campaign_bonus = 1 }
+			add_to_variable = { UKR_honesty_2023 = 1 }
+			add_to_variable = { UKR_digital_lean = 1 }
+			UKR_clamp_leans = yes
+		}
+		ai_chance = { factor = 45 }
+	}
+
+	option = {
+		name = ukraine_politics.222.b
+		add_political_power = -5
+		ai_chance = { factor = 35 }
+	}
+
+	option = {
+		name = ukraine_politics.222.c
+		add_political_power = 10
+		add_stability = -0.02
+		hidden_effect = {
+			add_to_variable = { UKR_honesty_2023 = -1 }
+			add_to_variable = { UKR_authoritarian_lean = 1 }
+			UKR_clamp_leans = yes
+		}
+		ai_chance = { factor = 20 }
+	}
+}
+
+# «Свои люди» подводят (после фокуса «Свои люди на местах»)
+country_event = {
+	id = ukraine_politics.223
+	title = ukraine_politics.223.t
+	desc = ukraine_politics.223.d
+	picture = GFX_report_event_ukrainian_civil_war
+
+	is_triggered_only = yes
+
+	trigger = {
+		tag = UKR
+	}
+
+	option = {
+		name = ukraine_politics.223.a
+		add_political_power = -10
+		add_stability = 0.01
+		hidden_effect = {
+			add_to_variable = { UKR_honesty_2023 = 1 }
+		}
+		ai_chance = { factor = 40 }
+	}
+
+	option = {
+		name = ukraine_politics.223.b
+		add_political_power = 15
+		add_stability = -0.02
+		hidden_effect = {
+			add_to_variable = { UKR_honesty_2023 = -1 }
+			add_to_variable = { UKR_authoritarian_lean = 2 }
+			UKR_clamp_leans = yes
+		}
+		ai_chance = { factor = 30 }
+	}
+
+	option = {
+		name = ukraine_politics.223.c
+		add_political_power = 5
+		add_stability = -0.01
+		ai_chance = { factor = 30 }
+	}
+}
+
+# Неудобный вопрос на встрече (после фокуса «Встречи с избирателями»)
+country_event = {
+	id = ukraine_politics.224
+	title = ukraine_politics.224.t
+	desc = ukraine_politics.224.d
+	picture = GFX_report_event_ukrainian_civil_war
+
+	is_triggered_only = yes
+
+	trigger = {
+		tag = UKR
+	}
+
+	option = {
+		name = ukraine_politics.224.a
+		add_political_power = -5
+		hidden_effect = {
+			add_to_variable = { UKR_campaign_bonus = 1 }
+			add_to_variable = { UKR_honesty_2023 = 1 }
+		}
+		ai_chance = { factor = 35 }
+	}
+
+	option = {
+		name = ukraine_politics.224.b
+		add_political_power = 5
+		ai_chance = { factor = 30 }
+	}
+
+	option = {
+		name = ukraine_politics.224.c
+		add_political_power = -10
+		add_stability = 0.01
+		hidden_effect = {
+			add_to_variable = { UKR_campaign_bonus = 1 }
+			add_to_variable = { UKR_honesty_2023 = 1 }
+			add_to_variable = { UKR_digital_lean = 1 }
+			UKR_clamp_leans = yes
+		}
+		ai_chance = { factor = 35 }
+	}
+}
+
+# Закон в пятницу вечером (после фокуса «Подчинить антикоррупционные органы»)
+country_event = {
+	id = ukraine_politics.225
+	title = ukraine_politics.225.t
+	desc = ukraine_politics.225.d
+	picture = GFX_report_event_ukrainian_civil_war
+
+	is_triggered_only = yes
+
+	trigger = {
+		tag = UKR
+	}
+
+	option = {
+		name = ukraine_politics.225.a
+		add_political_power = -10
+		add_stability = 0.01
+		ai_chance = { factor = 35 }
+	}
+
+	option = {
+		name = ukraine_politics.225.b
+		add_political_power = 20
+		add_stability = -0.03
+		hidden_effect = {
+			add_to_variable = { UKR_honesty_2023 = -1 }
+			add_to_variable = { UKR_authoritarian_lean = 1 }
+			UKR_clamp_leans = yes
+		}
+		ai_chance = { factor = 30 }
+	}
+
+	option = {
+		name = ukraine_politics.225.c
+		add_political_power = -15
+		add_stability = 0.02
+		hidden_effect = {
+			add_to_variable = { UKR_honesty_2023 = 1 }
+		}
+		ai_chance = { factor = 35 }
+	}
+}
+
+# Окружение просит передумать (после фокуса «Защитить независимость НАБУ»)
+country_event = {
+	id = ukraine_politics.226
+	title = ukraine_politics.226.t
+	desc = ukraine_politics.226.d
+	picture = GFX_report_event_ukrainian_civil_war
+
+	is_triggered_only = yes
+
+	trigger = {
+		tag = UKR
+	}
+
+	option = {
+		name = ukraine_politics.226.a
+		add_political_power = -10
+		add_stability = 0.01
+		hidden_effect = {
+			add_to_variable = { UKR_campaign_bonus = 1 }
+			add_to_variable = { UKR_honesty_2023 = 1 }
+		}
+		ai_chance = { factor = 40 }
+	}
+
+	option = {
+		name = ukraine_politics.226.b
+		add_political_power = 15
+		add_stability = -0.02
+		hidden_effect = {
+			add_to_variable = { UKR_honesty_2023 = -2 }
+			add_to_variable = { UKR_authoritarian_lean = 2 }
+			UKR_clamp_leans = yes
+		}
+		ai_chance = { factor = 25 }
+	}
+
+	option = {
+		name = ukraine_politics.226.c
+		add_political_power = -5
+		add_stability = 0.01
+		ai_chance = { factor = 35 }
+	}
+}
+
 # Первый тур, 31.03.2024
 country_event = {
 	id = ukraine_politics.205
@@ -1211,6 +1845,7 @@ country_event = {
 		name = ukraine_politics.205.a
 		add_political_power = 20
 		hidden_effect = { country_event = { id = ukraine_politics.206 days = 7 } }
+		hidden_effect = { country_event = { id = ukraine_politics.213 days = 12 } }
 		hidden_effect = { country_event = { id = ukraine_politics.207 days = 21 } }
 	}
 }

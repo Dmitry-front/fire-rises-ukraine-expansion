@@ -583,6 +583,8 @@ country_event = {
 
 	immediate = {
 		set_country_flag = UKR_block2_loaded
+		set_variable = { UKR_campaign_bonus = 0 }
+		set_variable = { UKR_campaign_bonus2 = 0 }
 		hidden_effect = {
 			load_focus_tree = {
 				tree = UKR_block2
@@ -617,6 +619,7 @@ country_event = {
 	# Принять реванш
 	option = {
 		name = ukraine_politics.201.a
+		hidden_effect = { add_to_variable = { UKR_campaign_bonus = 1 } }
 		add_political_power = -25
 		add_stability = 0.02
 		custom_effect_tooltip = UKR_pop_social_liberal_p1_tt
@@ -627,6 +630,7 @@ country_event = {
 	# Дебаты онлайн через «Дію»
 	option = {
 		name = ukraine_politics.201.b
+		hidden_effect = { add_to_variable = { UKR_campaign_bonus = 1 } }
 		add_political_power = 10
 		hidden_effect = {
 			add_to_variable = { UKR_digital_lean = 2 }
@@ -638,6 +642,7 @@ country_event = {
 	# Отказаться
 	option = {
 		name = ukraine_politics.201.c
+		hidden_effect = { add_to_variable = { UKR_campaign_bonus = -1 } }
 		add_political_power = 25
 		add_stability = -0.02
 		ai_chance = { factor = 20 }
@@ -660,6 +665,7 @@ country_event = {
 	# Факты и цифры
 	option = {
 		name = ukraine_politics.202.a
+		hidden_effect = { add_to_variable = { UKR_campaign_bonus = 1 } }
 		add_political_power = 15
 		hidden_effect = {
 			add_to_variable = { UKR_digital_lean = 2 }
@@ -670,6 +676,7 @@ country_event = {
 	# Социальные обещания
 	option = {
 		name = ukraine_politics.202.b
+		hidden_effect = { add_to_variable = { UKR_campaign_bonus = 1 } }
 		add_stability = 0.02
 		hidden_effect = {
 			add_to_variable = { UKR_left_lean = 2 }
@@ -691,6 +698,7 @@ country_event = {
 	# Перехватить патриотическую повестку
 	option = {
 		name = ukraine_politics.202.e
+		hidden_effect = { add_to_variable = { UKR_campaign_bonus = 1 } }
 		add_war_support = 0.02
 		hidden_effect = {
 			add_to_variable = { UKR_nationalist_lean = 2 }
@@ -736,7 +744,21 @@ country_event = {
 country_event = {
 	id = ukraine_politics.205
 	title = ukraine_politics.205.t
-	desc = ukraine_politics.205.d
+	desc = {
+		text = ukraine_politics.205.d_high
+		trigger = { check_variable = { UKR_reform_credit > 2 } }
+	}
+	desc = {
+		text = ukraine_politics.205.d_low
+		trigger = { check_variable = { UKR_reform_credit < -2 } }
+	}
+	desc = {
+		text = ukraine_politics.205.d
+		trigger = {
+			check_variable = { UKR_reform_credit > -3 }
+			check_variable = { UKR_reform_credit < 3 }
+		}
+	}
 	picture = GFX_report_event_ukrainian_civil_war
 
 	fire_only_once = yes
@@ -750,6 +772,10 @@ country_event = {
 
 	mean_time_to_happen = {
 		days = 1
+	}
+
+	immediate = {
+		UKR_calc_round1 = yes
 	}
 
 	option = {
@@ -776,6 +802,7 @@ country_event = {
 	# Левые
 	option = {
 		name = ukraine_politics.206.a
+		hidden_effect = { add_to_variable = { UKR_campaign_bonus2 = 1 } }
 		custom_effect_tooltip = UKR_pop_social_democrat_m1_tt
 		hidden_effect = { add_popularity = { ideology = social_democrat popularity = -0.01 } }
 		custom_effect_tooltip = UKR_pop_social_liberal_p1_tt
@@ -789,6 +816,7 @@ country_event = {
 	# Правые
 	option = {
 		name = ukraine_politics.206.b
+		hidden_effect = { add_to_variable = { UKR_campaign_bonus2 = 1 } }
 		custom_effect_tooltip = UKR_pop_conservative_m1_tt
 		hidden_effect = { add_popularity = { ideology = conservative popularity = -0.01 } }
 		custom_effect_tooltip = UKR_pop_social_liberal_p1_tt
@@ -802,6 +830,7 @@ country_event = {
 	# Молодёжь и IT
 	option = {
 		name = ukraine_politics.206.c
+		hidden_effect = { add_to_variable = { UKR_campaign_bonus2 = 1 } }
 		add_political_power = 15
 		hidden_effect = {
 			add_to_variable = { UKR_digital_lean = 2 }
@@ -833,8 +862,15 @@ country_event = {
 		tag = UKR
 	}
 
+	immediate = {
+		UKR_calc_round2 = yes
+	}
+
 	option = {
 		name = ukraine_politics.207.a
+		custom_effect_tooltip = UKR_runoff_result_tt
+		UKR_runoff_effects = yes
+		hidden_effect = { country_event = { id = ukraine_politics.214 days = 2 } }
 		if = {
 			# TFR мог вызвать ukraine.13 раньше нас: исход «Зеленский» уже наступил
 			limit = { has_idea = UKR_zelensky_growing_authoritarism2 }
@@ -846,6 +882,87 @@ country_event = {
 				country_event = { id = ukraine.13 }
 			}
 		}
+	}
+}
+
+# Реакция Порошенко на итоги второго тура: текст и опции зависят от отрыва и репутации реформ
+country_event = {
+	id = ukraine_politics.214
+	title = ukraine_politics.214.t
+	desc = {
+		text = ukraine_politics.214.d_wide
+		trigger = { check_variable = { UKR_r2_zel > 62 } }
+	}
+	desc = {
+		text = ukraine_politics.214.d_close
+		trigger = { check_variable = { UKR_r2_zel < 58 } }
+	}
+	desc = {
+		text = ukraine_politics.214.d_mid
+		trigger = {
+			check_variable = { UKR_r2_zel > 57 }
+			check_variable = { UKR_r2_zel < 63 }
+		}
+	}
+	picture = GFX_report_event_ukrainian_civil_war
+
+	is_triggered_only = yes
+
+	trigger = {
+		tag = UKR
+	}
+
+	# Позвонить и предложить разговор
+	option = {
+		name = ukraine_politics.214.a
+		add_political_power = -10
+		add_stability = 0.01
+		ai_chance = { factor = 40 }
+	}
+
+	# Работать, ответы будут в Раде
+	option = {
+		name = ukraine_politics.214.b
+		add_political_power = 10
+		ai_chance = { factor = 30 }
+	}
+
+	# Узкий отрыв: пересчитать всё, что просят
+	option = {
+		name = ukraine_politics.214.c
+		trigger = { check_variable = { UKR_r2_zel < 58 } }
+		add_political_power = -20
+		add_stability = 0.02
+		hidden_effect = {
+			add_to_variable = { UKR_honesty_2023 = 1 }
+		}
+		ai_chance = { factor = 40 }
+	}
+
+	# Узкий отрыв: идти в суд
+	option = {
+		name = ukraine_politics.214.d
+		trigger = { check_variable = { UKR_r2_zel < 58 } }
+		add_political_power = 25
+		add_stability = -0.02
+		hidden_effect = {
+			add_to_variable = { UKR_authoritarian_lean = 2 }
+			UKR_clamp_leans = yes
+		}
+		ai_chance = { factor = 20 }
+	}
+
+	# Только при высокой репутации реформ: позвать оппозицию к столу
+	option = {
+		name = ukraine_politics.214.e
+		trigger = { check_variable = { UKR_reform_credit > 1 } }
+		add_political_power = 20
+		add_stability = 0.01
+		hidden_effect = {
+			add_to_variable = { UKR_digital_lean = 1 }
+			UKR_clamp_leans = yes
+		}
+		ai_chance = { factor = 50 }
 	}
 }
 

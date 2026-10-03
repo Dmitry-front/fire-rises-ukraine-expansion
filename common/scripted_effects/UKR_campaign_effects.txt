@@ -1,0 +1,116 @@
+# Кампания 2024: репутация реформ и рейтинг (DESIGN.md, 6.4)
+# Все переменные скрыты, игрок видит только проценты в текстах событий 205, 207 и 214.
+# UKR_campaign_bonus  - вклад ответов в событиях до первого тура (201, 202, 208-212)
+# UKR_campaign_bonus2 - вклад ответов между турами (206, 213)
+
+# Репутация реформ: честность 2023 плюс прогрессивные решения блока 2 (диапазон около -8...+8)
+UKR_calc_reform_credit = {
+	if = {
+		limit = { NOT = { has_variable = UKR_honesty_2023 } }
+		set_variable = { UKR_honesty_2023 = 0 }
+	}
+	set_variable = { UKR_reform_credit = UKR_honesty_2023 }
+	if = {
+		limit = { has_completed_focus = UKR_b2_protect_anticorruption }
+		add_to_variable = { UKR_reform_credit = 2 }
+	}
+	if = {
+		limit = { has_completed_focus = UKR_b2_subordinate_anticorruption }
+		add_to_variable = { UKR_reform_credit = -2 }
+	}
+	if = {
+		limit = { has_completed_focus = UKR_b2_transparent_state }
+		add_to_variable = { UKR_reform_credit = 2 }
+	}
+	if = {
+		limit = { has_completed_focus = UKR_b2_loyal_people }
+		add_to_variable = { UKR_reform_credit = -2 }
+	}
+	if = {
+		limit = { has_completed_focus = UKR_b2_veterans_against_oligarchs }
+		add_to_variable = { UKR_reform_credit = 1 }
+	}
+}
+
+# Первый тур: Зеленский 30-42%, Порошенко 20-26%, остальные - остаток
+UKR_calc_round1 = {
+	if = {
+		limit = { NOT = { has_variable = UKR_campaign_bonus } }
+		set_variable = { UKR_campaign_bonus = 0 }
+	}
+	UKR_calc_reform_credit = yes
+	set_variable = { UKR_r1_zel = 36 }
+	set_temp_variable = { UKR_cr_x = UKR_reform_credit }
+	multiply_temp_variable = { UKR_cr_x = 0.6 }
+	add_to_variable = { UKR_r1_zel = UKR_cr_x }
+	add_to_variable = { UKR_r1_zel = UKR_campaign_bonus }
+	if = {
+		limit = {
+			OR = {
+				check_variable = { UKR_digital_lean > 49 }
+				check_variable = { UKR_left_lean > 49 }
+				check_variable = { UKR_authoritarian_lean > 49 }
+				check_variable = { UKR_nationalist_lean > 49 }
+			}
+		}
+		add_to_variable = { UKR_r1_zel = 2 }
+	}
+	clamp_variable = { var = UKR_r1_zel min = 30 max = 42 }
+	round_variable = UKR_r1_zel
+	set_variable = { UKR_r1_por = 24 }
+	set_temp_variable = { UKR_cr_y = UKR_r1_zel }
+	subtract_from_temp_variable = { UKR_cr_y = 36 }
+	multiply_temp_variable = { UKR_cr_y = 0.3 }
+	subtract_from_variable = { UKR_r1_por = UKR_cr_y }
+	clamp_variable = { var = UKR_r1_por min = 20 max = 26 }
+	round_variable = UKR_r1_por
+	set_variable = { UKR_r1_other = 100 }
+	subtract_from_variable = { UKR_r1_other = UKR_r1_zel }
+	subtract_from_variable = { UKR_r1_other = UKR_r1_por }
+}
+
+# Второй тур: Зеленский 54-66%
+UKR_calc_round2 = {
+	if = {
+		limit = { NOT = { has_variable = UKR_campaign_bonus2 } }
+		set_variable = { UKR_campaign_bonus2 = 0 }
+	}
+	if = {
+		limit = { NOT = { has_variable = UKR_r1_zel } }
+		UKR_calc_round1 = yes
+	}
+	UKR_calc_reform_credit = yes
+	set_variable = { UKR_r2_zel = 58 }
+	set_temp_variable = { UKR_cr_z = UKR_r1_zel }
+	subtract_from_temp_variable = { UKR_cr_z = 36 }
+	multiply_temp_variable = { UKR_cr_z = 1.2 }
+	add_to_variable = { UKR_r2_zel = UKR_cr_z }
+	add_to_variable = { UKR_r2_zel = UKR_campaign_bonus2 }
+	clamp_variable = { var = UKR_r2_zel min = 54 max = 66 }
+	round_variable = UKR_r2_zel
+	set_variable = { UKR_r2_por = 100 }
+	subtract_from_variable = { UKR_r2_por = UKR_r2_zel }
+}
+
+# Последствия отрыва во втором туре (опция события 207): политсила и популярность партии президента.
+# Отрыв 63%+ - сильный, 60-62% - хороший, 58-59% - без эффекта, до 57% - слабый.
+UKR_runoff_effects = {
+	if = {
+		limit = { check_variable = { UKR_r2_zel > 62 } }
+		add_political_power = 40
+		custom_effect_tooltip = UKR_pop_social_liberal_p3_tt
+		hidden_effect = { add_popularity = { ideology = social_liberal popularity = 0.03 } }
+	}
+	else_if = {
+		limit = { check_variable = { UKR_r2_zel > 59 } }
+		add_political_power = 20
+		custom_effect_tooltip = UKR_pop_social_liberal_p1_tt
+		hidden_effect = { add_popularity = { ideology = social_liberal popularity = 0.01 } }
+	}
+	else_if = {
+		limit = { check_variable = { UKR_r2_zel < 58 } }
+		add_political_power = -30
+		custom_effect_tooltip = UKR_pop_social_liberal_m2_tt
+		hidden_effect = { add_popularity = { ideology = social_liberal popularity = -0.02 } }
+	}
+}

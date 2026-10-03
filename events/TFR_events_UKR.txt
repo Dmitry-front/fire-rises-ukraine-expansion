@@ -26,9 +26,27 @@ country_event = {
 	trigger = {
 		tag = UKR
 	}
-	option = {
+	immediate = {
 		add_manpower = -11
+	}
+	# Международная группа: Канада, Британия, Швеция, Афганистан и Украина (16.01.2020)
+	option = {
 		name = ukraine.2.o1
+		add_political_power = -10
+		add_stability = 0.02
+		set_country_flag = UKR_flight752_coalition
+		hidden_effect = {
+			add_to_variable = { European_Influence = 0.01 }
+			clamp_variable = { var = European_Influence min = 0 max = 1 }
+		}
+		ai_chance = { factor = 65 }
+	}
+	option = {
+		name = ukraine.2.o2
+		add_political_power = 10
+		add_stability = -0.01
+		set_country_flag = UKR_flight752_quiet
+		ai_chance = { factor = 35 }
 	}
 }
 

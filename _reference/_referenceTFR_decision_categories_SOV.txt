@@ -1,0 +1,951 @@
+	decisions_SOV = {
+		icon = russia
+
+		allowed = {
+			original_tag = SOV
+		}
+	}
+	SOV_Supreme_Veche_category = {
+		icon = SOV_Dugin_Veche
+		picture = decision_cat_Supreme_Soviet_Decision
+		visible_when_empty = yes
+
+		allowed = {
+			tag = SOV
+		}
+		
+		visible = {
+			has_completed_focus = SOV_organic_democracy
+		}
+	}
+	SOV_Dugin_Directives_category = {
+		icon = SOV_Dugin_Directives
+		#picture = decision_cat_Dugin_Directive_Decision
+		visible_when_empty = yes
+
+		allowed = {
+			tag = SOV
+		}
+		
+		visible = {
+			has_completed_focus = SOV_declare_eurasian_state
+		}
+	}		
+	
+	SOV_wagner_state_cat = {
+		icon = GFX_decision_category_SOV_wagner_state_category
+		#picture = decision_cat_Dugin_Directive_Decision
+		visible_when_empty = yes
+
+		allowed = {
+			tag = SOV
+		}
+		
+		visible = {
+			has_completed_focus = SOV_solidify_wagner_reign
+		}
+	}	
+	
+	SOV_rebuilding_the_regions_category = {
+		icon = GFX_decision_category_SOV_rebuilding_the_regions_category
+		visible_when_empty = no
+
+		allowed = {
+			tag = SOV
+		}
+		priority = -1
+		visible = {
+			has_completed_focus = SOV_rebuilding_period
+		}
+	}	
+	
+	SOV_prigozhin_army_cat = {
+		icon = GFX_decision_category_SOV_prigozhin_army_category
+		picture = decision_cat_decision_wagner_army
+		visible_when_empty = yes
+
+		allowed = {
+			tag = SOV
+		}
+		
+		visible = {
+			has_completed_focus = SOV_wagnerite_armed_forces
+		}
+	}
+	
+	SOV_eurasian_army_category = {
+		icon = GFX_decision_category_SOV_eurasian_army_icon
+		picture = decision_cat_SOV_eurasian_army
+		visible_when_empty = yes
+
+		allowed = {
+			tag = SOV
+		}
+		
+		visible = {
+			has_completed_focus = SOV_eurasian_armed_forces
+		}
+	}
+	 
+	SOV_nav_russian_reformation_category = {
+		icon = SOV_russian_reformation
+		#picture = Navalny_Protests_Decision
+		visible_when_empty = yes
+		scripted_gui = TFR_SOV_oligarch_info
+		allowed = {
+			OR = { 
+				tag = SOV
+				tag = BUL
+			}
+		}
+		
+		visible = {
+			has_country_flag = SOV_grand_constitutional_reformation_flag
+		}
+	}
+	
+	SOV_expand_eurasia = {
+		icon = russia
+		scripted_gui = rus_attack_districts_decision_ui
+
+		allowed = {
+			tag = SOV
+		}
+		
+		visible = {
+			has_completed_focus = SOV_declare_eurasian_state
+		}
+	}
+
+	SOV_strangle_the_islamists_category = {
+		icon = oppression
+		visible_when_empty = yes
+		allowed = {
+			tag = SOV
+		}	
+		visible = {
+			always = no 
+		}
+	}
+
+	SOV_the_house_of_cards = { 
+		icon = GFX_decision_category_SOV_russian_house_of_cards
+		#picture = GFX_decision_cat_SOV_election_decision_picture 
+		visible_when_empty = yes
+		scripted_gui = TFR_SOV_party_info
+		allowed = {
+			tag = SOV
+		}	
+		priority = 10
+		visible = {
+			tag = SOV
+			has_country_flag = SOV_house_of_cards_activated_flag
+			NOT = {
+				OR = {
+					has_global_flag = SOV_cprf_won
+					has_global_flag = SOV_ldpr_won
+					has_global_flag = SOV_eurasia_won
+					has_global_flag = SOV_medvedev_won
+					has_global_flag = SOV_srzp_won
+				}
+			}
+		}
+	}
+
+	SOV_prepare_the_union_state_category = {
+		picture = decision_cat_SOV_union_state_cat
+		icon = GFX_decision_category_SOV_prepare_the_union_state
+		visible_when_empty = no
+		allowed = {
+			tag = SOV
+		}
+		visible = {
+			has_completed_focus = SOV_prepare_the_union_state
+		}
+	}
+	
+	SOV_coronavirus_decrease = {
+		icon = politics
+		visible_when_empty = no
+		allowed = {
+		    original_tag = SOV
+		}
+		visible = {
+			OR = {
+			    has_idea = SOV_coronavirus_pandemic_idea4
+				has_idea = SOV_coronavirus_pandemic_idea3
+				has_idea = SOV_coronavirus_pandemic_idea2
+				has_idea = SOV_coronavirus_pandemic_idea1
+				has_idea = SOV_coronavirus_pandemic_idea
+		    }
+			AND = {
+			    NOT = {	
+			        has_country_leader = {
+	                    character = SOV_vladimir_putin
+                        ruling_only = yes
+                    }
+					has_country_flag = SOV_dealt_with_coronavirus
+		        }
+			}
+		}
+	}
+	
+	SOV_derzhavnik_politics_category = {
+		icon = GFX_decision_category_national_russia
+		picture = GFX_decision_SOV_derzhavnik_politics_picture
+		visible_when_empty = yes
+		scripted_gui = TFR_SOV_derzhavnik_cool_posters_container
+		allowed = {
+			tag = SOV
+		}
+		priority = {
+			base = 10
+		}
+		visible = {
+			tag = SOV
+			has_completed_focus = SOV_victory_of_national_russia
+			has_global_flag = SOV_alikhanov_leader_flag
+		}
+	}	
+	
+	SOV_derzhavnik_economy_category = {
+		icon = GFX_decision_category_national_russia
+		pciture = GFX_decision_pragmatic_economy_category
+		visible_when_empty = yes
+		allowed = {
+			tag = SOV
+		}
+		priority = {
+			base = 5
+		}
+		visible = {
+			tag = SOV
+			has_completed_focus = SOV_russia_above_all
+			has_global_flag = SOV_alikhanov_leader_flag
+		}
+	}	
+	
+	SOV_socialist_politics_category = {
+		icon = SOV_decision_politburo
+		pciture = decision_cat_SOV_politburo
+		visible_when_empty = yes
+		allowed = {
+			tag = SOV
+		}
+		priority = {
+			base = 5
+		}
+		visible = {
+			tag = SOV
+			OR = {
+				has_completed_focus = SOV_end_of_tyranny
+				has_completed_focus = SOV_steel_revolution
+			}
+		}
+	}	
+	
+	SOV_democratic_politics_category = {
+		icon = SOV_russian_reformation
+		pciture = GFX_decision_cat_SOV_duma_decision_picture
+		visible_when_empty = yes
+		allowed = {
+			tag = SOV
+		}
+		priority = {
+			base = 5
+		}
+		visible = {
+			tag = SOV
+			OR = {
+				has_completed_focus = SOV_restoration_of_democracy
+			}
+		}
+	}
+	
+	SOV_politburo_category = {
+		icon = SOV_decision_politburo
+		#picture = decision_cat_SOV_politburo
+		visible_when_empty = yes
+		scripted_gui = TFR_SOV_supreme_soviet_info
+		allowed = {
+			tag = SOV
+		}	
+		priority = {
+			base = 10
+			modifier = {
+				add = -5
+				has_completed_focus = SOV_prepare_to_march_west
+			}
+		}
+		visible = {
+			tag = SOV
+			has_completed_focus = SOV_first_convocation
+			NOT = {
+				has_country_flag = SOV_supreme_soviet_disabled
+			}
+		}
+	} 
+	
+	SOV_union_restoration_cat = {
+		icon = GFX_decision_category_suraykin_politburo_cat
+		#picture = decision_cat_SOV_politburo
+		visible_when_empty = yes
+		allowed = {
+			tag = SOV
+		}	
+		priority = {
+			base = 100
+		}
+		visible = {
+			tag = SOV
+			has_completed_focus = SOV_convene_council_ministers
+		}
+	}
+ 
+	SOV_african_dawn_category = {
+		icon = GFX_decision_category_african_dawn
+		picture = decision_cat_SOV_african_dawn_cat
+		visible_when_empty = yes
+		priority = -1
+		allowed = {
+			tag = SOV
+		}	
+		priority = 3
+		visible = {
+			tag = SOV
+			has_country_flag = SOV_african_dawn_cat_flag
+			NOT = {
+				OR = {
+					has_global_flag = SOV_ldpr_won
+					has_global_flag = SOV_cprf_won
+					has_global_flag = global_sahel_federation_formed_flag
+					has_global_flag = global_west_african_federation_flag
+					has_country_flag = SOV_grand_constitutional_reformation_flag
+					has_country_flag = SOV_african_dawn_disabled_flag
+				}
+			}
+		}
+	}
+	
+	SOV_duma_category = {
+		icon = GFX_decision_category_SOV_federal_assembly
+		#picture = GFX_decision_cat_SOV_duma_decision_picture 
+		visible_when_empty = yes
+		scripted_gui = TFR_SOV_russian_state_machine_info
+		allowed = {
+			tag = SOV
+		}	
+		priority = {
+			base = 10
+			modifier = {
+				add = -5
+				has_completed_focus = SOV_recognize_donbas
+			}
+		}
+		visible = {
+			tag = SOV
+			NOT = {
+				OR = {
+					has_global_flag = SOV_cprf_won
+					has_completed_focus = SOV_triumph_of_zhirinovsky
+					has_completed_focus = SOV_victory_of_national_russia
+					has_country_flag = SOV_grand_constitutional_reformation_flag
+					has_country_flag = SOV_duma_category_disabled
+				}
+			}
+		}
+	}
+		  
+	SOV_political_simulation_category = {
+		icon = GFX_SOV_decision_political_simulation_category 
+		visible_when_empty = no
+		allowed = {
+			tag = SOV
+		}	
+		priority = {
+			base = 1
+		}
+		visible = {
+			tag = SOV
+			has_completed_focus = SOV_simulacra_of_outrage
+		}
+	}
+	
+	SOV_modernization_programme_category = {
+		icon = GFX_decision_russian_economy_category
+		#picture = GFX_decision_cat_SOV_election_decision_picture
+		visible_when_empty = yes
+		scripted_gui = TFR_SOV_oligarch_info
+		allowed = {
+			tag = SOV
+		}	
+		priority = 4
+		visible = {
+			tag = SOV
+			NOT = {
+				OR = {
+					has_global_flag = SOV_cprf_won
+					has_completed_focus = SOV_triumph_of_zhirinovsky
+					has_country_flag = SOV_grand_constitutional_reformation_flag
+					has_country_flag = SOV_duma_category_disabled
+				}
+			}
+		}
+	}
+	
+	SOV_NATO_war_category = {
+		icon = GFX_SOV_decision_nato_war_category
+		#picture = decision_SOV_nato_war 
+		visible_when_empty = yes
+		scripted_gui = war_escalation_decision_ui
+		allowed = {
+			tag = SOV
+		}
+		priority = 10
+		on_map_area = {
+			state = 219
+			name = SOV_develop_ssrs_category_name
+			zoom = 250
+		}
+	
+		visible = {
+			tag = SOV
+			OR = {
+				has_completed_focus = SOV_prepare_to_march_west 
+				has_completed_focus = SOV_recognize_donbas 
+				has_completed_focus = SOV_the_time_is_now 
+			}
+			NOT = {
+				OR = {
+					has_global_flag = SOV_first_nato_war_victory
+					has_global_flag = nato_nato_won_nato_war
+				}
+			}
+		}
+	}
+
+	SOV_second_NATO_war_category = {
+		icon = GFX_SOV_decision_nato_war_category
+		picture = decision_SOV_nato_war 
+		visible_when_empty = yes
+		allowed = {
+			tag = SOV
+		}
+		priority = 20
+		visible = {
+			tag = SOV
+			OR = {
+				has_completed_focus = SOV_ultimatum_to_the_kuban
+				has_completed_focus = SOV_march_on_the_west
+				has_completed_focus = SOV_prepare_for_the_march
+				has_global_flag = second_nato_war_flag	
+			}
+			OR = {
+				NOT = {
+					has_global_flag = SOV_russia_second_nato_war_victory_global
+					has_global_flag = SOV_nato_second_nato_war_victory_global
+				}
+			}
+		}
+	}
+	
+	SOV_american_intervention_category = {
+		icon = GFX_decision_category_america_burning_category
+		picture = decision_cat_SOV_burning_america2
+		visible_when_empty = yes
+		allowed = {
+			tag = SOV
+		}
+		priority = 3
+		visible = {
+			tag = SOV
+			OR = {
+				has_completed_focus = SOV_american_policy
+			}
+			NOT = {
+				has_global_flag = SOV_first_nato_war_victory
+				has_global_flag = nato_nato_won_nato_war
+			}
+			NOT = {
+				has_global_flag = USA_american_civil_war_over_global
+			}
+		}
+	}
+	
+	SOV_brics_category = {
+		icon = GFX_SOV_decision_decision_brics_cat
+		visible_when_empty = yes
+		allowed = {
+			OR = {
+				tag = SOV
+				tag = PRC
+			}
+		}
+		priority = {
+			base = 4
+			modifier = {
+				add = -2
+				tag = PRC
+			}
+		}
+		visible = {
+			SOV = {
+				has_completed_focus = SOV_brics
+			}
+			NOT = {
+				is_ai = yes
+				has_global_flag = nato_nato_won_nato_war
+			}
+		}
+	}
+	SOV_reform_russia = {
+		icon = GFX_SOV_decision_reform_russian_empire_category
+		#picture = GFX_decision_category_SOV_empire_restoration
+		visible_when_empty = yes
+		allowed = {
+			tag = SOV
+		}	
+		priority = {
+			base = 10
+		}
+		visible = {
+			has_country_flag = SOV_rpss_won 
+		}
+	}
+	SOV_reform_russian_empire = {
+		icon = GFX_SOV_decision_reform_russian_empire_category
+		#picture = GFX_decision_category_SOV_empire_restoration
+		visible_when_empty = yes
+		allowed = {
+			tag = SOV
+		}	
+		priority = {
+			base = 10
+			modifier = {
+				add = -5
+				has_completed_focus = SOV_the_time_is_now
+			}
+		}
+		visible = {
+			has_country_flag = SOV_reform_russian_empire_flag 
+			NOT = {
+			    OR = {
+					#has_completed_focus = SOV_national_thaw
+					#has_completed_focus = SOV_to_protect_the_motherland
+					has_country_flag = SOV_grand_constitutional_reformation_flag
+					has_country_flag = SOV_rpss_won
+				}
+			}
+		}
+	}
+	
+	SOV_the_secret_war = {
+		icon = GFX_decision_category_SOV_decision_the_secret_war_category
+		picture = decision_cat_SOV_the_secret_war_cat
+		visible_when_empty = yes
+		allowed = {
+			tag = SOV
+		}	
+		visible = {
+			has_country_flag = SOV_the_secret_war_begin_flag
+		}
+	}
+	
+	SOV_medvedev_elections_balance_category = { 
+		icon = generic_propaganda
+		
+		allowed = {
+			tag = SOV
+		}	
+		visible = {
+			
+		}
+	}
+	SOV_nadezhdin_onf_balance_category = { 
+		icon = generic_propaganda
+		
+		allowed = {
+			tag = SOV
+		}	
+		visible = {
+			
+		}
+	}	
+	SOV_alikhanov_bop_category = {
+		icon = generic_propaganda
+		
+		allowed = {
+			tag = SOV
+		}	
+		visible = {
+			
+		}
+	}
+	SOV_zhir_post_war_economy_category = {
+		icon = GFX_decision_pragmatic_economy_category
+		picture = GFX_decision_cat_factory
+		visible_when_empty = yes
+		allowed = {
+			OR = {
+				tag = SOV
+			}
+		}
+		visible = {
+			OR = {
+				has_completed_focus = SOV_begin_reconstruction_plan
+				has_completed_focus = SOV_fund_rebuilding_effort
+			}
+		}
+	}
+	SOV_pragmatic_economy_category = {
+		icon = GFX_decision_pragmatic_economy_category
+		picture = GFX_decision_cat_factory
+		visible_when_empty = yes
+		allowed = {
+			OR = {
+				tag = SOV
+			}
+		}	
+		visible = {
+			has_completed_focus = SOV_pragmatic_economics
+			NOT = {
+				has_global_flag = SOV_first_nato_war_victory
+				has_global_flag = nato_nato_won_nato_war
+			}
+		}
+	}
+	SOV_resource_excavation_category = {
+		icon = generic_propaganda
+		picture = GFX_decision_category_SOV_empire_restoration
+		visible_when_empty = yes
+		allowed = {
+			tag = SOV
+		}	
+		visible = {
+		    has_country_flag = SOV_develop_siberia_flag
+			NOT = {
+				has_global_flag = SOV_first_nato_war_victory
+				has_global_flag = nato_nato_won_nato_war
+			}
+		}
+	}
+
+	SOV_influence_west_category = {
+		icon = GFX_decision_category_economic_gas_wars
+		picture = decision_cat_SOV_economic_wars
+		visible_when_empty = no
+		allowed = {
+			tag = SOV
+		}	
+		priority = 3
+		visible = {
+			OR = {
+				has_completed_focus = SOV_weaponise_gazprom
+				has_completed_focus = SOV_spread_anti_globalism
+			}
+			OR = {
+				NOT = {
+					has_global_flag = SOV_first_nato_war_victory
+					has_global_flag = nato_nato_won_nato_war
+				}
+			}
+		}
+	}
+	
+	SOV_oligarchs_influence_category = {
+		icon = generic_propaganda
+		picture = decision_cat_SOV_oligarch_influence
+		visible_when_empty = no
+		allowed = {
+			tag = SOV
+		}	
+		priority = 3
+		visible = {
+			has_completed_focus = SOV_them_in_our_pockets
+			OR = {
+				NOT = {
+					has_global_flag = SOV_first_nato_war_victory
+					has_global_flag = nato_nato_won_nato_war
+				}
+			}
+		}
+	}
+	
+	SOV_communist_party_balance_category = {
+		icon = generic_propaganda
+		
+		allowed = {
+			tag = SOV
+		}	
+		visible = {
+			
+		}
+	}
+	SOV_LDPR_balance_category = {
+		icon = generic_propaganda
+		
+		allowed = {
+			tag = SOV
+		}	
+		visible = {
+			
+		}
+	}
+	SOV_soviet_navalny_balance_category = {
+		icon = generic_propaganda
+		
+		allowed = {
+			tag = SOV
+		}	
+		visible = {
+			
+		}
+	}	
+	SOV_soviet_solovyev_balance_category = {
+		icon = generic_propaganda
+		
+		allowed = {
+			tag = SOV
+		}	
+		visible = {
+			
+		}
+	}
+	
+	SOV_western_states_terrorists_category = {
+		icon = GFX_SOV_decision_western_states_terrorists_category
+		visible_when_empty = no
+		allowed = {
+			tag = SOV
+		}	
+		visible = {
+			has_country_flag = SOV_soviet_cto
+		}
+	}
+
+	SOV_western_states_terrorists_ldpr_category = {
+		icon = GFX_SOV_decision_western_states_terrorists_category
+		visible_when_empty = no
+		allowed = {
+			tag = SOV
+		}	
+		visible = {
+			has_country_flag = SOV_ldpr_cto
+		}
+	}
+	
+	SOV_minsk_treaty_organization_category = {
+		icon = GFX_SOV_decision_minsk_treaty_organization_category
+		visible_when_empty = no
+		allowed = {
+			tag = SOV
+		}	
+		visible = {
+			has_completed_focus = SOV_new_treaty
+		}
+	}
+	
+	SOV_soviet_economy_category = {
+		icon = GFX_SOV_decision_soviet_economy_category
+		picture = GFX_SOV_decision_soviet_economy_category_picture
+		visible_when_empty = yes
+		scripted_gui = TFR_SOV_oligarch_info
+		allowed = {
+			tag = SOV
+		}	
+		
+		visible = {
+			has_country_flag = SOV_economy_open_decisions
+			OR = {
+				NOT = {
+					has_global_flag = nato_nato_won_nato_war
+				}
+			}
+		}
+	}
+	 
+	SOV_csto_organization_category = {
+		icon = GFX_decision_category_csto_category
+		picture = GFX_decision_cat_SOV_election_decision_picture 
+		visible_when_empty = yes
+		allowed = {
+			tag = SOV
+		}		
+		
+		visible = {
+			has_completed_focus = SOV_new_territories
+		}
+	}
+	
+	SOV_ldpr_alliance_category = {
+		icon = GFX_SOV_decision_president_election_category
+		picture = GFX_decision_cat_SOV_election_decision_picture 
+		visible_when_empty = yes
+		allowed = {
+			tag = SOV
+		}		
+		
+		visible = {
+			OR = {
+				has_completed_focus = SOV_reform_csto
+				has_completed_focus = SOV_holy_union_reborn
+			}
+		}
+	}
+	
+	SOV_novorussian_integration_category = {
+		icon = GFX_decision_category_SOV_Novorossiyan_Referendum
+		picture = GFX_decision_category_SOV_novorussian_referendum 
+		visible_when_empty = no
+		allowed = {
+			tag = SOV
+		}		
+		
+		visible = {
+			has_completed_focus = SOV_novorussian_integration
+		}
+	}
+	
+	SOV_ukrainian_insurgencies_category = {
+		icon = GFX_SOV_decision_president_election_category
+		picture = GFX_decision_Ukraine_Resistance 
+		visible_when_empty = no
+		allowed = {
+			tag = SOV
+		}		
+		
+		visible = {
+			has_country_flag = SOV_UKR_resistance_flag
+		}
+	}
+	
+	SOV_ADS_category = {
+		icon = GFX_SOV_decision_GFX_SOV_ADS_category
+		visible_when_empty = yes
+		allowed = {
+			tag = SOV
+		}		
+		
+		visible = {
+			has_completed_focus = SOV_create_ADS
+			OR = {
+				NOT = {
+					has_global_flag = nato_nato_won_nato_war
+				}
+			}
+		}
+	}
+	SOV_TMC_category = {
+		icon = GFX_decision_category_TMC_category
+		visible_when_empty = yes
+		allowed = {
+			tag = SOV
+		}		
+		
+		visible = {
+			has_completed_focus = SOV_pragmatic_eurasianism
+			OR = {
+				NOT = {
+					has_global_flag = nato_nato_won_nato_war
+				}
+			}
+		}
+	}
+	SOV_keep_america_burning_category = {
+		icon = GFX_decision_category_america_burning_category
+		picture = decision_cat_SOV_burning_america
+		visible_when_empty = yes
+		allowed = {
+			tag = SOV
+		}		
+		
+		visible = {
+			has_completed_focus = SOV_keeping_america_burning
+			OR = {
+				NOT = {
+					has_global_flag = nato_nato_won_nato_war
+				}
+			}
+			NOT = {
+				has_global_flag = USA_american_civil_war_over_global
+			}
+		}
+	}	
+#	SOV_new_national_duma_category = {
+#		icon = GFX_SOV_decision_russian_eagle_category
+#		#picture = GFX_decision_cat_SOV_duma_decision_picture 
+#		visible_when_empty = yes
+#		allowed = {
+#			tag = SOV
+#		}		
+#		
+#		visible = {
+#			has_completed_focus = SOV_restoring_state_duma
+#			NOT = { has_country_flag = SOV_suraykin_won }
+#		}
+#	}
+	SOV_russian_inner_affairs_category = {
+		icon = GFX_SOV_decision_russian_eagle_category
+		#picture = GFX_decision_cat_SOV_duma_decision_picture 
+		visible_when_empty = yes
+		allowed = {
+			tag = SOV
+		}		
+		
+		visible = {
+			has_completed_focus = SOV_shepard_with_sheep
+		}
+	}	
+	SOV_suraykin_politburo_category = {
+		icon = GFX_decision_category_suraykin_politburo_cat
+		#picture = GFX_decision_cat_SOV_duma_decision_picture 
+		visible_when_empty = yes
+		allowed = {
+			tag = SOV
+		}		
+		
+		visible = {
+			has_completed_focus = SOV_russian_sovietization
+		}
+	}
+	SOV_russian_army_category = {
+		icon = GFX_decision_category_SOV_russian_army
+		picture = GFX_decision_category_SOV_russian_army_picture 
+		visible_when_empty = yes
+		allowed = {
+			tag = SOV
+		}		
+		
+		visible = {
+			has_completed_focus = SOV_rollback_serdykovs_reforms
+			OR = {
+				NOT = {
+					has_global_flag = nato_nato_won_nato_war
+				}
+			}
+		}
+	}
+
+	SOV_new_russian_army_category = {
+		icon = GFX_decision_category_new_SOV_russian_army
+		visible_when_empty = yes
+		allowed = {
+			tag = SOV
+		}		
+		
+		visible = {
+			has_completed_focus = SOV_fund_the_russian_self_defence_forces
+		}
+	}
+
+	SOV_russian_economic_miracle_category = {
+		icon = GFX_decision_category_SOV_russian_economic_miracle
+		visible_when_empty = yes
+		allowed = {
+			tag = SOV
+		}		
+		
+		visible = {
+			has_completed_focus = SOV_denounce_the_sanctions
+		}
+	}

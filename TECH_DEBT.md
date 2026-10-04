@@ -14,6 +14,7 @@
 - Проблема: ID события дублируется с TFR, и неизвестно, какая версия побеждает при загрузке. Кто вызывает событие, в наших референсах не видно.
 - Касается: 3-го акта (война), связанных событий и фокусов других стран. Решение [РЕШЕНО]: отключить или переработать (`DESIGN.md`, 9.4).
 - Сделать: 1) автор ищет `russia.76` по папке TFR (файл и условие вызова); 2) автор присылает строку из `error.log` про дубль; 3) после этого — отключить через условие в нашей копии или флагом в месте вызова.
+- 04.10.2026 (по референсу события, он лежит в git, `bc699df`): в оригинале `russia.76` это `is_triggered_only = yes`, условие только `UKR = { NOT = { is_puppet_of = SOV } exists = yes }`, единственная опция делает `add_stability -0.2`, `remove_ideas UKR_to_the_last`, `add_ideas UKR_collapsing_military`, `set_politics ruling_party = nationalist, elections_allowed = no`, Залужный `military_junta`, `add_popularity nationalist 0.26`. **Вызова нет ни в одном референсе** (деревья фокусов, решения, события SOV) - значит, вызывает его `on_actions` TFR или файл другой страны (вероятно, проверка падения Киева). Аудит (`_tools/audit.py`) теперь сам показывает наш дубль `russia.76`. Автору искать `russia.76` нужно в `common/on_actions/` TFR и в `events/` за пределами `russia`.
 
 **TD-02. Перехват `on_capitulation`** **[КРИТИЧНО]**
 - Что: раздел Украины при капитуляции (Новороссия, Малороссия, Карпатская Русь).
@@ -38,6 +39,7 @@
 
 **TD-07. Вызовы событий TFR**
 - `germany.*`, `nato.*`, `news.*`, `moldova.2`, `syria.25`, `russia.*` из наших решений и событий. Предполагаются в TFR, сверить по логу, что все существуют.
+- 04.10.2026: `russia.65`, `.91`, `.109`, `.157`, `.220`, `.307` существуют в TFR (проверено по удалённому референсу `events_SOV`, индекс - `_tools/tfr_known_events.txt`, аудит его читает). Остальные пространства (`germany`, `nato`, `news`, `moldova`, `syria`) проверить нечем: нужен `error.log`.
 
 ## Отложенный контент (вызовы отключены `# TODO`)
 
@@ -76,23 +78,19 @@
 **TD-17. Кто и когда вызывает `ukraine.13`**
 - Событие президентских выборов 2024 (`events/TFR_events_UKR.txt`) вызывается откуда-то из TFR — не из наших файлов и не из референса SOV. Дата вызова неизвестна (по дизайну — март – апрель 2024).
 - Касается: блока 2 (кампания и второй тур должны совпасть с выборами).
+- 04.10.2026: в референсах (деревья, решения, события SOV) `ukraine.13` не вызывается нигде, так что вызов в `on_actions` или в файлах другой страны (ищется в `common/on_actions/` TFR).
 - Сделать: автор ищет `ukraine.13` по папке TFR и присылает место вызова и условие.
 - 28.09.2026: тест показал - TFR вызывает `ukraine.13` около 25.07.2023. Место вызова по-прежнему неизвестно; в нашей копии `ukraine.13` добавлено условие: пока идёт цепочка 2023-2024, событие срабатывает только из `ukraine_politics.207` (флаг `UKR_runoff_2024`). Ранний вызов TFR просто не проходит.
 - 26.09.2026: подозрение, что ванильные выборы 31.03.2024 (`election_frequency = 60` от 2019.3.31) ломали цепочку. Теперь выборы в Раду (`UKR_rada_2023_results`) сдвигают `last_election` на 2023.10.29. Если TFR вызывает `ukraine.13` по дате — наш `ukraine_politics.207` это учитывает.
 
 **TD-18. Имя эффекта «Кооперативная экономика» в TFR**
-- Автор говорит, что в TFR есть тип экономики «Кооперативная экономика», но в референсе SOV он не встречается (видны `welfare_capitalism`, `socialist_market`, `planned_economy`, `mixed_economy`, `state_capitalism`, `left_corporatism`, `oligopolistic_capitalism`, `military_controlled`).
-- Сейчас обёртка `UKR_set_cooperative_economy` (`common/scripted_effects/UKR_politics_effects.txt`) ставит `change_economy_type_socialist_market`.
-- Сделать: автор ищет в TFR `change_economy_type_` с «cooperative» и присылает точное имя — меняется одна строка.
-
-**TD-21. Имя эффекта «Либеральный корпоративизм» в TFR**
-- Финальный фокус технократов `UKR_t_liberal_corporatism` меняет тип экономики через обёртку `UKR_set_liberal_corporatism_economy` (`common/scripted_effects/UKR_politics_effects.txt`).
-- Имя `change_economy_type_liberal_corporatism` собрано по образцу `change_economy_type_left_corporatism` из референса SOV; в референсах самого «либерального корпоративизма» нет. Если в TFR имя другое, в `error.log` будет ошибка неизвестного эффекта.
-- Сделать: автор ищет в TFR `change_economy_type_` с «corporatism» и присылает точное имя - меняется одна строка.
+- Автор говорит, что в TFR есть тип экономики «Кооперативная экономика». Под таким названием в референсах нет; полный список по всем референсам (15 типов): `welfare_capitalism`, `capitalism`, `socialist_market`, `mixed_economy`, `planned_economy`, `state_capitalism`, `left_corporatism`, `command_economy`, `oligopolistic_capitalism`, `military_controlled`, `worker_controlled`, `corporatism`, `liberal_corporatism`, `minarchism`, `developed_socialism`.
+- **Кандидат (04.10.2026): `worker_controlled`.** TFR применяет его для «экономической демократии» и рабочего контроля (`SOV_a_new_economy`, `SOV_adl_model_economy`), по смыслу это ближе всего к кооперативной модели. Сейчас обёртка `UKR_set_cooperative_economy` (`common/scripted_effects/UKR_politics_effects.txt`) ставит `change_economy_type_socialist_market`.
+- Сделать: автор подтверждает по названию в игре (в окне типа экономики искать «Кооперативная» или «Рабочий контроль»); после этого меняется одна строка.
 
 **TD-19. Проверить в игре баланс сил левых (`common/bop/UKR_bop.txt`)**
 - Первый наш баланс сил. Сверить по `error.log`: формат файла (`range`, `side`, `on_activate`), модификатор `power_balance_weekly` в центре шкалы, отображение шкалы в окне «Общественный договор», локализацию сторон и диапазонов.
-- Эффект `change_government_type_parliamentary_republic` (событие 508) взят из референса SOV — проверить, что на Украине он работает.
+- Эффект `change_government_type_parliamentary_republic` (событие 508) существует в TFR (5 вхождений в событиях SOV); работает ли он на Украине, проверить в игре.
 - Иконки сторон `GFX_bop_UKR_rada` / `GFX_bop_UKR_bankova` указывают на PNG идей — если шкала требует другого размера, нужен арт.
 
 **TD-20. Остатки из error.log (27.09.2026), не исправленные**
@@ -106,3 +104,7 @@
 - Хроника 2020-2022 (`events/UKR_events_block1.txt`, правка `ukraine.2`) ставит около 50 флагов выбора (`UKR_yermak_chief`, `UKR_razumkov_*`, `UKR_poroshenko_case_*`, `UKR_wagner_*`, `UKR_oligarch_registry_*` и др.), но ни одно событие или дерево их ещё не проверяет. Исключение - `ukraine.318`, читающее `UKR_wagner_open`.
 - Сделать: подключить по таблице `DESIGN.md`, 4.6 (кампания 2024, дело Ермака, пути олигархов и левых, блок 4). Ничего не ломает, пока не подключено.
 
+
+**TD-23. Таймер СВО при запуске войны Дугиным и Вагнером**
+- `UKR_special_military_operation_timer` у нас запускает только `ukraine.11`. Его вызывают деревья Медведева, КПРФ и ЛДПР; в деревьях Дугина (`SOV_march_on_the_west` / `SOV_grand_showdown`) и Вагнера (`SOV_russian_revengeance`) война объявляется без `ukraine.11` (`TFR_CHEATSHEET.md`, 13.2). Настрой (`ukrainewar.1`) стартует сам по `has_war_with = SOV`, а таймер нет.
+- Сделать: когда дойдём до «трёх Россий» (`DESIGN.md`, 9.1), решить, нужен ли таймер в этих двух ветках, и подцепить его условием на старт войны, не трогая файлы SOV.

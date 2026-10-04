@@ -72,12 +72,19 @@ evdefs = collections.defaultdict(list)
 ev_re = r'(?:country_event|news_event|state_event|unit_leader_event|operative_leader_event)\s*=\s*\{\s*id\s*=\s*([\w\.]+)'
 for p in [x for x in texts if x.startswith('events/') or 'events' in x and x.startswith('_reference/')]:
     for i, f, l in blocks_ids(p, ev_re, 0): evdefs[i].append((f, l))
+# Индекс событий TFR из удалённого референса events_SOV (русские пространства имён); см. _tools/tfr_known_events.txt
+known_tfr_events = set()
+_kp = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'tfr_known_events.txt')
+if os.path.exists(_kp):
+    known_tfr_events = {l.strip() for l in open(_kp, encoding='utf-8') if l.strip() and not l.startswith('#')}
 own_ev = {k: [x for x in v if OWN(x[0])] for k, v in evdefs.items()}
 for k, v in own_ev.items():
     if len(v) > 1: print(k, v)
 print('\n=== Наши события, пересекающиеся с референсом SOV (дубль при загрузке)')
 for k, v in evdefs.items():
     if any(OWN(x[0]) for x in v) and any(not OWN(x[0]) for x in v): print(k, v)
+for k, v in own_ev.items():
+    if v and k in known_tfr_events and not any(not OWN(x[0]) for x in evdefs[k]): print(k, v, '(есть в индексе TFR)')
 
 print('\n=== Вызовы событий, не определённых у нас (могут быть в TFR)')
 call_re = r'(?:country_event|news_event|state_event|unit_leader_event)\s*=\s*(?:\{[^{}]*?id\s*=\s*([\w]+\.\d+)|([\w]+\.\d+))'
@@ -89,7 +96,7 @@ for p in texts:
         calls[e].append(f'{p}:{texts[p][:m.start()].count(chr(10))+1}')
 for e, locs in sorted(calls.items()):
     if e not in own_ev or not own_ev[e]:
-        inref = e in evdefs
+        inref = e in evdefs or e in known_tfr_events
         print(e, '(есть в референсе SOV)' if inref else '', locs[:3])
 
 print('\n=== Дубли ID фокусов')
@@ -217,3 +224,46 @@ for p in files('.txt'):
             if 'ruling_party как триггер' in msg and in_setpol: continue
             if re.search(rx, line): print(f'{p}:{n}: {msg}')
         if in_setpol and '}' in line and 'set_politics' not in line: in_setpol = False
+
+print('\n=== Имена TFR: сверка с _reference (подидеологии, черты, типы государства/экономики)')
+# Типы государства и экономики собраны по всем референсам, включая удалённые из рабочей копии (events_SOV, bop_SOV); 04.10.2026.
+GOV_TYPES = set('''provisional_government presidential_dictatorship socialist_republic semi_presidential_system parliamentary_republic
+communist_party_state presidential_republic military_dictatorship revolutionary_front ultranationalist_dictatorship theocracy
+semi_constitutional_monarchy constitutional_monarchy absolute_monarchy peoples_democracy fascist_dictatorship eurasianist_system
+counterintelligence_state'''.split())
+ECON_TYPES = set('''welfare_capitalism capitalism socialist_market mixed_economy planned_economy state_capitalism left_corporatism
+command_economy oligopolistic_capitalism military_controlled worker_controlled corporatism liberal_corporatism minarchism
+developed_socialism'''.split())
+
+def ref_text(pattern):
+    import glob as _g
+    out = ''
+    for f in _g.glob(os.path.join('_reference', pattern)):
+        out += read(f)[0]
+    return out
+
+ideo_src = strip_comments(ref_text('*TFR_ideologies.txt'))
+ideo_names = set(re.findall(r'[A-Za-z_][A-Za-z_0-9]*', ideo_src)) if ideo_src else set()
+trait_names = set()
+for f in __import__('glob').glob(os.path.join('_reference', '*TFR_traits_*.txt')):
+    trait_names |= set(re.findall(r'^\t([A-Za-z_][A-Za-z_0-9]*)\s*=\s*\{', strip_comments(read(f)[0]), re.M))
+TRAIT_PREFIX = re.compile(r'\b((?:hog|eco|for|sec|int|hos|army_chief|air_chief|navy_chief|theorist)_[a-z0-9_]+)\b')
+bad_names = 0
+for p in files('.txt'):
+    if p.startswith(('_reference', '_tools')): continue
+    c = strip_comments(read(p)[0])
+    for n, line in enumerate(c.split('\n'), 1):
+        for m in re.finditer(r'\b(?:ideology|ruling_party)\s*=\s*"?([A-Za-z_]+)"?', line):
+            if ideo_names and m.group(1) not in ideo_names:
+                print(f'{p}:{n}: идеология/подидеология не найдена в TFR: {m.group(1)}'); bad_names += 1
+        for m in re.finditer(r'\bchange_government_type_(\w+)\s*=', line):
+            if m.group(1) not in GOV_TYPES:
+                print(f'{p}:{n}: нет такого типа государства в референсах: {m.group(1)}'); bad_names += 1
+        for m in re.finditer(r'\bchange_economy_type_(\w+)\s*=', line):
+            if m.group(1) not in ECON_TYPES:
+                print(f'{p}:{n}: нет такого типа экономики в референсах: {m.group(1)}'); bad_names += 1
+        if trait_names and 'trait' in line:
+            for m in TRAIT_PREFIX.finditer(line):
+                if m.group(1) not in trait_names:
+                    print(f'{p}:{n}: черта не найдена в референсах: {m.group(1)}'); bad_names += 1
+print('несовпадений имён TFR:', bad_names)

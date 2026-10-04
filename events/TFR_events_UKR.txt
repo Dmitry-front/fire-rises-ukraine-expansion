@@ -1150,7 +1150,26 @@ country_event = {
 	}
 	option = {
 		name = ukraine.800.a
-		add_ideas = UKR_budanov
+		# ГУР становится лицом разведки: Баканов (СБУ) уступает слот Буданову; выбранных в торге 413 не трогаем
+		if = {
+			limit = { has_idea = UKR_bakanov }
+			swap_ideas = {
+				remove_idea = UKR_bakanov
+				add_idea = UKR_budanov
+			}
+		}
+		else_if = {
+			limit = {
+				NOT = {
+					OR = {
+						has_idea = UKR_budanov
+						has_idea = UKR_shchyhol
+						has_idea = UKR_malyuk
+					}
+				}
+			}
+			add_ideas = UKR_budanov
+		}
 	}
 }
 

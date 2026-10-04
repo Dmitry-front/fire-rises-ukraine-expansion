@@ -1804,6 +1804,28 @@ UKR_covid_response_decisions = {
 # Война в тенях
 UKR_shadow_war_category = {
 
+	# Апгрейд главы разведки (пакет 3): ГУР в центре
+	UKR_upgrade_budanov = {
+		icon = generic_recruit_operative
+		visible = {
+			has_idea = UKR_budanov
+		}
+		available = {
+			has_war_with = SOV
+		}
+		fire_only_once = yes
+		cost = 30
+		ai_will_do = {
+			factor = 10
+		}
+		complete_effect = {
+			swap_ideas = {
+				remove_idea = UKR_budanov
+				add_idea = UKR_budanov_2
+			}
+		}
+	}
+
 	ukraine_influence_belarus = {
 		icon = generic_recruit_operative
 		visible = {

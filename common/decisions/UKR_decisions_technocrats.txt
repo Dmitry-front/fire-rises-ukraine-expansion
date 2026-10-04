@@ -14,6 +14,7 @@ UKR_svyrydenko_reforms = {
 			factor = 10
 		}
 		remove_effect = {
+			add_to_variable = { UKR_sv_reforms_done = 1 }
 			add_timed_idea = { idea = UKR_made_in_ukraine days = 730 }
 			set_temp_variable = {
 				var = industrial_development_var_temp
@@ -41,6 +42,7 @@ UKR_svyrydenko_reforms = {
 			factor = 10
 		}
 		remove_effect = {
+			add_to_variable = { UKR_sv_reforms_done = 1 }
 			set_temp_variable = {
 				var = poverty_development_var_temp
 				value = 0.06
@@ -75,6 +77,7 @@ UKR_svyrydenko_reforms = {
 			factor = 10
 		}
 		remove_effect = {
+			add_to_variable = { UKR_sv_reforms_done = 1 }
 			set_temp_variable = {
 				var = income_var_temp
 				value = -3.3
@@ -106,6 +109,7 @@ UKR_svyrydenko_reforms = {
 			factor = 10
 		}
 		remove_effect = {
+			add_to_variable = { UKR_sv_reforms_done = 1 }
 			add_stability = -0.02
 			# Ступень вниз по лестнице олигархата
 			UKR_oligarchs_step_down = yes
@@ -126,6 +130,7 @@ UKR_svyrydenko_reforms = {
 			factor = 6
 		}
 		remove_effect = {
+			add_to_variable = { UKR_sv_reforms_done = 1 }
 			set_temp_variable = {
 				var = income_var_temp
 				value = 13
@@ -156,6 +161,7 @@ UKR_svyrydenko_reforms = {
 			factor = 10
 		}
 		remove_effect = {
+			add_to_variable = { UKR_sv_reforms_done = 1 }
 			add_timed_idea = { idea = UKR_eu_reconstruction_fund days = 730 }
 			set_temp_variable = {
 				var = income_var_temp
@@ -178,6 +184,7 @@ UKR_svyrydenko_reforms = {
 			factor = 10
 		}
 		remove_effect = {
+			add_to_variable = { UKR_sv_reforms_done = 1 }
 			random_owned_controlled_state = {
 				add_extra_state_shared_building_slots = 1
 			}
@@ -197,6 +204,82 @@ UKR_svyrydenko_reforms = {
 				value = -9.5
 			}
 			add_income_with_inflation = yes
+		}
+	}
+
+	# Апгрейд премьера (пакет 3): институты закрепляют реформы
+	UKR_sv_institutions_work = {
+		icon = GFX_decision_generic_political_actions
+		visible = {
+			has_idea = UKR_svyrydenko
+		}
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = UKR_sv_reforms_5_tt
+				check_variable = { UKR_sv_reforms_done > 4 }
+			}
+		}
+		fire_only_once = yes
+		cost = 40
+		ai_will_do = {
+			factor = 10
+		}
+		complete_effect = {
+			swap_ideas = {
+				remove_idea = UKR_svyrydenko
+				add_idea = UKR_svyrydenko_2
+			}
+		}
+	}
+
+	# Фёдоров переходит в оборону (пакет 3, только на войне)
+	UKR_sv_fedorov_defense = {
+		icon = GFX_decision_generic_army_support
+		visible = {
+			NOT = {
+				OR = {
+					has_idea = UKR_fedorov_defense
+					has_idea = UKR_fedorov_defense_2
+				}
+			}
+		}
+		available = {
+			has_war_with = SOV
+		}
+		fire_only_once = yes
+		cost = 50
+		ai_will_do = {
+			factor = 10
+		}
+		complete_effect = {
+			custom_effect_tooltip = UKR_sv_fedorov_defense_tt
+			show_ideas_tooltip = UKR_fedorov_defense
+			hidden_effect = {
+				UKR_clear_theorist_minister = yes
+				add_ideas = UKR_fedorov_defense
+			}
+		}
+	}
+
+	# Апгрейд министра обороны (пакет 3): после фокуса «Армия дронов»
+	UKR_sv_fedorov_defense_upgrade = {
+		icon = GFX_decision_generic_army_support
+		visible = {
+			has_idea = UKR_fedorov_defense
+		}
+		available = {
+			has_completed_focus = UKR_t_drone_army
+		}
+		fire_only_once = yes
+		cost = 40
+		ai_will_do = {
+			factor = 10
+		}
+		complete_effect = {
+			swap_ideas = {
+				remove_idea = UKR_fedorov_defense
+				add_idea = UKR_fedorov_defense_2
+			}
 		}
 	}
 }

@@ -529,6 +529,17 @@ focus_tree = {
 		}
 		completion_reward = {
 			change_economy_type_welfare_capitalism = yes
+			custom_effect_tooltip = appoint_economic_minister_tooltip
+			show_ideas_tooltip = UKR_dudin_socdem
+			hidden_effect = {
+				if = {
+					limit = { has_idea = UKR_dudin }
+					swap_ideas = {
+						remove_idea = UKR_dudin
+						add_idea = UKR_dudin_socdem
+					}
+				}
+			}
 			set_temp_variable = {
 				var = society_development_var_temp
 				value = 0.1
@@ -592,6 +603,17 @@ focus_tree = {
 		}
 		completion_reward = {
 			UKR_set_cooperative_economy = yes
+			custom_effect_tooltip = appoint_economic_minister_tooltip
+			show_ideas_tooltip = UKR_dudin_selfmanagement
+			hidden_effect = {
+				if = {
+					limit = { has_idea = UKR_dudin }
+					swap_ideas = {
+						remove_idea = UKR_dudin
+						add_idea = UKR_dudin_selfmanagement
+					}
+				}
+			}
 			set_temp_variable = {
 				var = industrial_development_var_temp
 				value = 0.05
@@ -653,6 +675,17 @@ focus_tree = {
 		}
 		completion_reward = {
 			change_economy_type_planned_economy = yes
+			custom_effect_tooltip = appoint_economic_minister_tooltip
+			show_ideas_tooltip = UKR_dudin_orthodox
+			hidden_effect = {
+				if = {
+					limit = { has_idea = UKR_dudin }
+					swap_ideas = {
+						remove_idea = UKR_dudin
+						add_idea = UKR_dudin_orthodox
+					}
+				}
+			}
 			set_temp_variable = {
 				var = industrial_development_var_temp
 				value = 0.08

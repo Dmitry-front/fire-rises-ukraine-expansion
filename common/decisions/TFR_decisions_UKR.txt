@@ -1303,23 +1303,70 @@ UKR_startup_ecosystem_category = {
 }
 #covid
 UKR_covid_response_decisions = {
+	# Все решения этой категории открываются после фокуса «Противостоять угрозе COVID-19» (замечание автора, 04.10.2026).
+	# Реальные даты (карантин с 12.03.2020, границы с 16.03, адаптивный карантин с 22.05 и зоны с 1.08, выходного дня с ноября,
+	# вакцинация с февраля 2021) - в условиях available, чтобы решения не появлялись раньше своего времени.
+
+	# Закрыть границы и авиасообщение
+	UKR_covid_close_borders = {
+		icon = GFX_decision_eng_trade_unions_demand
+
+		visible = {
+			has_completed_focus = UKR_address_covid_threat
+			has_country_flag = UKR_COVID_ongoing
+		}
+		available = {
+			has_idea = UKR_covid_crisis
+			date > 2020.3.10
+			has_political_power > 20
+		}
+
+		cost = 20
+		fire_only_once = yes
+		days_remove = 45
+
+		modifier = {
+			income_growth_factor = -0.05
+			consumer_goods_factor = 0.03
+		}
+
+		remove_effect = {
+			modify_timed_idea = {
+				idea = UKR_covid_crisis
+				days = -30
+			}
+			add_war_support = 0.01
+			# Склонность (скрыто)
+			hidden_effect = {
+				add_to_variable = { UKR_authoritarian_lean = 1 }
+				UKR_clamp_leans = yes
+			}
+		}
+
+		ai_will_do = {
+			factor = 60
+		}
+	}
+
 	# Адаптивный карантин
 	UKR_implement_adaptive_quarantine = {
 		icon = GFX_decision_eng_trade_unions_demand
-		
+
 		available = {
 			NOT = { has_idea = UKR_adaptive_quarantine }
 			has_idea = UKR_covid_crisis
 			has_country_flag = UKR_COVID_ongoing
 			has_political_power > 20
+			date > 2020.5.20
 		}
-		
+
 		visible = {
+			has_completed_focus = UKR_address_covid_threat
 			has_country_flag = UKR_COVID_ongoing
 		}
-		
+
 		cost = 20
-		
+
 		complete_effect = {
 			modify_timed_idea = {
 				idea = UKR_covid_crisis
@@ -1336,24 +1383,75 @@ UKR_covid_response_decisions = {
 				UKR_clamp_leans = yes
 			}
 		}
-		
+
 		ai_will_do = {
 			factor = 45
 		}
 	}
-	
+
+	# Доплаты медикам (в реальности: надбавки до 300% к зарплате тех, кто лечит больных COVID-19)
+	UKR_covid_doctors_bonuses = {
+		icon = GFX_decision_generic_consumer_goods
+
+		visible = {
+			has_completed_focus = UKR_address_covid_threat
+			has_country_flag = UKR_COVID_ongoing
+		}
+		available = {
+			has_idea = UKR_covid_crisis
+			date > 2020.4.1
+			has_political_power > 25
+		}
+
+		cost = 25
+		fire_only_once = yes
+		days_remove = 20
+
+		complete_effect = {
+			set_temp_variable = {
+				var = income_var_temp
+				value = -1.2
+			}
+			add_income = yes
+		}
+
+		remove_effect = {
+			add_stability = 0.02
+			set_temp_variable = {
+				var = society_development_var_temp
+				value = 0.05
+			}
+			add_society_development = yes
+			modify_timed_idea = {
+				idea = UKR_covid_crisis
+				days = -40
+			}
+			# Склонность (скрыто) и событие о задержке выплат через 60 дней
+			hidden_effect = {
+				add_to_variable = { UKR_left_lean = 1 }
+				UKR_clamp_leans = yes
+				country_event = { id = ukraine.409 days = 60 }
+			}
+		}
+
+		ai_will_do = {
+			factor = 55
+		}
+	}
+
 	# Расширение бюджета здравоохранения
 	UKR_expand_healthcare_budget = {
 		icon = GFX_decision_generic_consumer_goods
-		
+
 		available = {
 			NOT = { has_idea = UKR_expanded_healthcare_budget }
 			has_idea = UKR_covid_crisis
 			has_country_flag = UKR_COVID_ongoing
 			has_political_power > 75
 		}
-		
+
 		visible = {
+			has_completed_focus = UKR_address_covid_threat
 			has_country_flag = UKR_COVID_ongoing
 			NOT = { has_idea = UKR_expanded_healthcare_budget }
 		}
@@ -1370,7 +1468,7 @@ UKR_covid_response_decisions = {
 			}
 			set_country_flag = UKR_expand_healthcare_budget
 		}
-		
+
 		complete_effect = {
 			add_timed_idea = {
 				idea = UKR_expanded_healthcare_budget
@@ -1388,16 +1486,106 @@ UKR_covid_response_decisions = {
 				UKR_clamp_leans = yes
 			}
 		}
-		
+
 		ai_will_do = {
 			factor = 65
 		}
 	}
-	
+
+	# Кислород и аппараты ИВЛ (в реальности: нехватка кислорода в больницах осенью 2020)
+	UKR_covid_oxygen_program = {
+		icon = GFX_decision_generic_research
+
+		visible = {
+			has_completed_focus = UKR_address_covid_threat
+			has_country_flag = UKR_COVID_ongoing
+		}
+		available = {
+			has_idea = UKR_covid_crisis
+			date > 2020.9.15
+			has_political_power > 30
+		}
+
+		cost = 30
+		fire_only_once = yes
+		days_remove = 30
+
+		complete_effect = {
+			set_temp_variable = {
+				var = income_var_temp
+				value = -2
+			}
+			add_income = yes
+		}
+
+		remove_effect = {
+			modify_timed_idea = {
+				idea = UKR_covid_crisis
+				days = -35
+			}
+			set_temp_variable = {
+				var = industrial_development_var_temp
+				value = 0.05
+			}
+			add_industrial_development = yes
+			random_owned_controlled_state = {
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = industrial_complex
+					level = 1
+					instant_build = yes
+				}
+			}
+		}
+
+		ai_will_do = {
+			factor = 50
+		}
+	}
+
+	# Карантин выходного дня (в реальности: с ноября 2020)
+	UKR_covid_weekend_quarantine = {
+		icon = GFX_decision_generic_civil_support
+
+		visible = {
+			has_completed_focus = UKR_address_covid_threat
+			has_country_flag = UKR_COVID_ongoing
+		}
+		available = {
+			has_idea = UKR_covid_crisis
+			date > 2020.11.10
+			has_political_power > 15
+		}
+
+		cost = 15
+		fire_only_once = yes
+		days_remove = 40
+
+		modifier = {
+			consumer_goods_factor = 0.03
+			income_growth_factor = -0.05
+		}
+
+		remove_effect = {
+			modify_timed_idea = {
+				idea = UKR_covid_crisis
+				days = -50
+			}
+			add_popularity = {
+				ideology = social_liberal
+				popularity = -0.01
+			}
+		}
+
+		ai_will_do = {
+			factor = 40
+		}
+	}
+
 	# Инициатива "Здоровая нация"
 	UKR_healthy_nation_program = {
 		icon = generic_civil_support
-		
+
 		available = {
 			NOT = { has_idea = UKR_healthy_nation_initiative }
 			has_idea = UKR_covid_crisis
@@ -1405,8 +1593,9 @@ UKR_covid_response_decisions = {
 			has_political_power > 25
 			has_stability > 0.3
 		}
-		
+
 		visible = {
+			has_completed_focus = UKR_address_covid_threat
 			has_country_flag = UKR_COVID_ongoing
 			NOT = { has_idea = UKR_healthy_nation_initiative }
 		}
@@ -1427,7 +1616,7 @@ UKR_covid_response_decisions = {
 				days = -45
 			}
 		}
-		
+
 		complete_effect = {
 			set_temp_variable = {
 				var = income_var_temp
@@ -1441,30 +1630,36 @@ UKR_covid_response_decisions = {
 				UKR_clamp_leans = yes
 			}
 		}
-		
+
 		ai_will_do = {
 			factor = 85
 		}
 	}
+
+	# Вакцинация населения: с 2021 года; 40 дней, каждую неделю минус к стабильности (значение автора)
 	UKR_vaccinate_population = {
 		icon = GFX_decision_generic_research
-	
+
 		available = {
 			has_idea = UKR_covid_crisis
 			has_country_flag = UKR_COVID_ongoing
-			has_country_flag = UKR_expand_healthcare_budget
 			has_political_power > 40
 			date > 2021.01.01
 		}
-		
+
 		visible = {
+			has_completed_focus = UKR_address_covid_threat
 			has_country_flag = UKR_COVID_ongoing
 		}
 		fire_only_once = yes
-		days_remove = 5
-		
+		days_remove = 40
+
 		cost = 40
-		
+
+		modifier = {
+			stability_weekly = -0.05
+		}
+
 		remove_effect = {
 			remove_ideas = UKR_covid_crisis
 			clr_country_flag = UKR_COVID_ongoing
@@ -1482,36 +1677,79 @@ UKR_covid_response_decisions = {
 				UKR_clamp_leans = yes
 			}
 		}
-		
+
 		ai_will_do = {
 			factor = 90
 		}
 	}
-	
+
+	# Covid-сертификаты в «Дії» (в реальности: осень 2021)
+	UKR_covid_certificates = {
+		icon = GFX_decision_generic_political_discourse
+
+		visible = {
+			has_completed_focus = UKR_address_covid_threat
+			has_country_flag = UKR_COVID_ongoing
+		}
+		available = {
+			has_idea = UKR_covid_crisis
+			date > 2021.10.1
+			has_political_power > 30
+		}
+
+		cost = 30
+		fire_only_once = yes
+		days_remove = 14
+
+		remove_effect = {
+			add_political_power = 25
+			add_stability = -0.02
+			set_temp_variable = {
+				var = academic_development_var_temp
+				value = 0.03
+			}
+			add_academic_development = yes
+			modify_timed_idea = {
+				idea = UKR_covid_crisis
+				days = -60
+			}
+			# Склонность (скрыто)
+			hidden_effect = {
+				add_to_variable = { UKR_digital_lean = 2 }
+				UKR_clamp_leans = yes
+			}
+		}
+
+		ai_will_do = {
+			factor = 35
+		}
+	}
+
 	UKR_enforce_lockdowns = {
 		icon = GFX_decision_generic_arrest
-		
+
 		available = {
 			has_country_flag = UKR_COVID_ongoing
 			has_idea = UKR_covid_crisis
 			has_political_power > 25
 		}
-		
+
 		visible = {
+			has_completed_focus = UKR_address_covid_threat
 			has_country_flag = UKR_COVID_ongoing
 		}
-		
+
 		days_remove = 60
-		
+
 		cost = 25
-		
+
 		modifier = {
 			stability_weekly = 0.002
 			political_power_gain = -0.10
 			consumer_goods_factor = 0.05
 			industrial_capacity_factory = -0.15
 		}
-		
+
 		remove_effect = {
 			add_stability = 0.05
 			modify_timed_idea = {
@@ -1524,7 +1762,7 @@ UKR_covid_response_decisions = {
 				UKR_clamp_leans = yes
 			}
 		}
-		
+
 		ai_will_do = {
 			factor = 65
 		}
@@ -1533,7 +1771,7 @@ UKR_covid_response_decisions = {
 
 	UKR_use_army_aganist_covid = {
 		icon = GFX_decision_generic_army_support
-		
+
 		available = {
 			has_country_flag = UKR_COVID_ongoing
 			has_idea = UKR_covid_crisis
@@ -1541,6 +1779,7 @@ UKR_covid_response_decisions = {
 			has_war_support > 0.2
 		}
 		visible = {
+			has_completed_focus = UKR_address_covid_threat
 			has_country_flag = UKR_COVID_ongoing
 		}
 		fire_only_once = no
@@ -1555,7 +1794,7 @@ UKR_covid_response_decisions = {
 			add_command_power = -30
 			add_war_support = -0.01
 		}
-		
+
 		ai_will_do = {
 			factor = 15
 		}

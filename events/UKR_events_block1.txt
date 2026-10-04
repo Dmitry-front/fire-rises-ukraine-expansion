@@ -2,9 +2,10 @@ add_namespace = ukraine
 add_namespace = ukraine_economy
 
 # Хроника блока 1 (2020-2022): реальные события + твист TFR + развилка с ценой (DESIGN.md, 4.5)
-# Пачка 1: 2020 год. Сроки: окно по дате (date >) и короткий mean_time_to_happen,
-# чтобы событие приходило само и игрок его не пропустил, независимо от фокусов.
-# Склонности скрыты (hidden_effect), UKR_clamp_leans держит 0-100.
+# Сессия 9: события переписаны по заметкам автора (разные награды, тексты без шаблона «Заголовок: пояснение»).
+# Сроки: окно по дате (date >) и короткий mean_time_to_happen, плюс пауза UKR_chronicle_quiet (10 дней),
+# чтобы события не приходили в один день. Склонности скрыты (hidden_effect), UKR_clamp_leans держит 0-100.
+# Файл создан генератором (одно описание -> код и локализация RU/EN); правьте напрямую, генератор одноразовый.
 
 # --- Январь 2020: «Плёнки Гончарука» ---
 country_event = {
@@ -38,7 +39,11 @@ country_event = {
 	option = {
 		name = ukraine.303.a
 		add_stability = -0.02
-		add_political_power = -30
+		add_political_power = 25
+		add_popularity = {
+			ideology = social_liberal
+			popularity = -0.01
+		}
 		set_country_flag = UKR_pm_replaced_early
 		UKR_replace_honcharuk_cabinet = yes
 		hidden_effect = {
@@ -52,9 +57,14 @@ country_event = {
 	option = {
 		name = ukraine.303.b
 		add_timed_idea = { idea = UKR_last_chance_cabinet days = 45 }
+		add_stability = 0.01
+		add_popularity = {
+			ideology = social_liberal
+			popularity = 0.01
+		}
 		hidden_effect = {
-			country_event = { id = ukraine.304 days = 45 }
 			add_to_variable = { UKR_digital_lean = 1 }
+			country_event = { id = ukraine.304 days = 45 }
 			UKR_clamp_leans = yes
 		}
 		ai_chance = { factor = 65 }
@@ -78,6 +88,7 @@ country_event = {
 		name = ukraine.304.a
 		UKR_replace_honcharuk_cabinet = yes
 		add_stability = 0.01
+		ai_chance = { factor = 30 }
 	}
 }
 
@@ -114,6 +125,10 @@ country_event = {
 		add_political_power = 40
 		set_country_flag = UKR_yermak_chief
 		set_country_flag = UKR_office_centralised
+		add_popularity = {
+			ideology = authoritarian_democrat
+			popularity = 0.01
+		}
 		hidden_effect = {
 			add_to_variable = { UKR_authoritarian_lean = 3 }
 			add_to_variable = { European_Influence = -0.01 }
@@ -128,6 +143,11 @@ country_event = {
 		name = ukraine.302.b
 		add_political_power = -20
 		set_country_flag = UKR_yermak_chief
+		set_temp_variable = {
+			var = society_development_var_temp
+			value = 0.03
+		}
+		add_society_development = yes
 		hidden_effect = {
 			add_to_variable = { UKR_digital_lean = 2 }
 			UKR_clamp_leans = yes
@@ -168,6 +188,15 @@ country_event = {
 		name = ukraine.402.a
 		add_stability = 0.02
 		add_political_power = -25
+		add_popularity = {
+			ideology = social_liberal
+			popularity = 0.015
+		}
+		set_temp_variable = {
+			var = society_development_var_temp
+			value = 0.02
+		}
+		add_society_development = yes
 		hidden_effect = {
 			add_to_variable = { UKR_left_lean = 1 }
 			UKR_clamp_leans = yes
@@ -180,6 +209,7 @@ country_event = {
 		name = ukraine.402.b
 		add_stability = -0.01
 		add_political_power = 20
+		add_war_support = 0.01
 		hidden_effect = {
 			add_to_variable = { UKR_authoritarian_lean = 2 }
 			UKR_clamp_leans = yes
@@ -191,7 +221,16 @@ country_event = {
 	option = {
 		name = ukraine.402.c
 		add_timed_idea = { idea = UKR_novi_sanzhary_panic days = 60 }
-		add_political_power = 10
+		set_temp_variable = {
+			var = income_var_temp
+			value = 0.1
+		}
+		add_income = yes
+		set_temp_variable = {
+			var = society_development_var_temp
+			value = -0.02
+		}
+		add_society_development = yes
 		ai_chance = { factor = 25 }
 	}
 }
@@ -226,12 +265,13 @@ country_event = {
 	# МЧС и армия
 	option = {
 		name = ukraine.403.a
-		add_stability = 0.02
 		set_temp_variable = {
 			var = income_var_temp
 			value = -0.3
 		}
 		add_income_with_inflation = yes
+		add_stability = 0.02
+		add_war_support = 0.015
 		hidden_effect = {
 			add_to_variable = { UKR_nationalist_lean = 1 }
 			UKR_clamp_leans = yes
@@ -239,11 +279,16 @@ country_event = {
 		ai_chance = { factor = 45 }
 	}
 
-	# Найти виноватых
+	# Назвать виновных
 	option = {
 		name = ukraine.403.b
-		add_stability = 0.01
 		add_political_power = 15
+		add_stability = 0.01
+		set_temp_variable = {
+			var = society_development_var_temp
+			value = -0.02
+		}
+		add_society_development = yes
 		hidden_effect = {
 			add_to_variable = { UKR_authoritarian_lean = 1 }
 			UKR_clamp_leans = yes
@@ -251,11 +296,11 @@ country_event = {
 		ai_chance = { factor = 30 }
 	}
 
-	# Успокоить людей
+	# Заверить, что радиация в норме
 	option = {
 		name = ukraine.403.c
+		add_stability = 0.02
 		add_timed_idea = { idea = UKR_zone_smoke days = 45 }
-		add_political_power = 10
 		ai_chance = { factor = 25 }
 	}
 }
@@ -295,17 +340,18 @@ country_event = {
 			value = 3
 		}
 		add_income = yes
+		add_stability = 0.01
 		add_political_power = -25
 		set_country_flag = UKR_imf_firm
 		hidden_effect = {
-			country_event = { id = ukraine_economy.209 days = 21 }
 			add_to_variable = { UKR_digital_lean = 2 }
+			country_event = { id = ukraine_economy.209 days = 21 }
 			UKR_clamp_leans = yes
 		}
 		ai_chance = { factor = 50 }
 	}
 
-	# Оставить пространство для манёвра
+	# Манёвр
 	option = {
 		name = ukraine_economy.208.b
 		set_temp_variable = {
@@ -314,10 +360,14 @@ country_event = {
 		}
 		add_income = yes
 		add_political_power = 10
+		add_popularity = {
+			ideology = social_liberal
+			popularity = 0.01
+		}
 		set_country_flag = UKR_imf_flex
 		hidden_effect = {
-			country_event = { id = ukraine_economy.209 days = 21 }
 			add_to_variable = { UKR_authoritarian_lean = 1 }
+			country_event = { id = ukraine_economy.209 days = 21 }
 			UKR_clamp_leans = yes
 		}
 		ai_chance = { factor = 50 }
@@ -337,40 +387,59 @@ country_event = {
 		tag = UKR
 	}
 
-	# Независимый профессионал
+	# Николайчук
 	option = {
 		name = ukraine_economy.209.a
-		add_stability = 0.01
-		add_political_power = -20
 		set_temp_variable = {
 			var = income_var_temp
 			value = 1
 		}
 		add_income = yes
+		add_stability = 0.01
+		add_political_power = -20
 		set_country_flag = UKR_nbu_independent
 		hidden_effect = {
 			add_to_variable = { UKR_digital_lean = 1 }
 			UKR_clamp_leans = yes
 		}
-		ai_chance = { factor = 55 }
+		ai_chance = { factor = 45 }
 	}
 
-	# Удобный человек
+	# Шевченко
 	option = {
 		name = ukraine_economy.209.b
 		add_political_power = 20
 		set_temp_variable = {
 			var = income_var_temp
+			value = 0.5
+		}
+		add_income = yes
+		add_timed_idea = { idea = UKR_nbu_pressure days = 60 }
+		set_country_flag = UKR_nbu_pliable
+		hidden_effect = {
+			add_to_variable = { UKR_authoritarian_lean = 1 }
+			UKR_clamp_leans = yes
+		}
+		ai_chance = { factor = 40 }
+	}
+
+	# Не спешить
+	option = {
+		name = ukraine_economy.209.c
+		add_political_power = 10
+		set_temp_variable = {
+			var = income_var_temp
 			value = -1
 		}
 		add_income = yes
+		add_stability = -0.01
 		add_timed_idea = { idea = UKR_nbu_pressure days = 90 }
 		set_country_flag = UKR_nbu_pliable
 		hidden_effect = {
 			add_to_variable = { UKR_authoritarian_lean = 1 }
 			UKR_clamp_leans = yes
 		}
-		ai_chance = { factor = 45 }
+		ai_chance = { factor = 15 }
 	}
 }
 
@@ -405,6 +474,7 @@ country_event = {
 	option = {
 		name = ukraine.503.a
 		add_political_power = 15
+		add_war_support = 0.02
 		set_country_flag = UKR_wagner_extradition
 		if = {
 			limit = { country_exists = BLR }
@@ -425,7 +495,12 @@ country_event = {
 	# Тихая дипломатия
 	option = {
 		name = ukraine.503.b
-		add_political_power = 5
+		set_temp_variable = {
+			var = income_var_temp
+			value = 0.3
+		}
+		add_income = yes
+		add_stability = 0.01
 		set_country_flag = UKR_wagner_quiet
 		if = {
 			limit = { country_exists = BLR }
@@ -443,6 +518,15 @@ country_event = {
 	option = {
 		name = ukraine.503.c
 		add_stability = -0.02
+		add_popularity = {
+			ideology = social_liberal
+			popularity = 0.015
+		}
+		set_temp_variable = {
+			var = military_development_var_temp
+			value = 0.02
+		}
+		add_military_development = yes
 		set_country_flag = UKR_wagner_open
 		hidden_effect = {
 			add_to_variable = { UKR_digital_lean = 1 }
@@ -490,7 +574,7 @@ country_event = {
 			value = -0.2
 		}
 		add_income_with_inflation = yes
-		add_timed_idea = { idea = UKR_belarus_tech_wave days = 365 }
+		add_timed_idea = { idea = UKR_belarus_tech_wave days = 540 }
 		set_country_flag = UKR_belarus_techies_welcome
 		if = {
 			limit = { country_exists = BLR }
@@ -513,6 +597,12 @@ country_event = {
 	# Обычные правила
 	option = {
 		name = ukraine.504.b
+		set_temp_variable = {
+			var = income_var_temp
+			value = 0.15
+		}
+		add_income = yes
+		add_political_power = 5
 		hidden_effect = {
 			add_to_variable = { UKR_digital_lean = 1 }
 			UKR_clamp_leans = yes
@@ -524,6 +614,7 @@ country_event = {
 	option = {
 		name = ukraine.504.c
 		add_political_power = 10
+		add_stability = 0.01
 		hidden_effect = {
 			add_to_variable = { Russian_Influence = 0.01 }
 			clamp_variable = { var = Russian_Influence min = 0 max = 1 }
@@ -562,12 +653,17 @@ country_event = {
 	# Турецкая линия
 	option = {
 		name = ukraine.850.a
-		add_political_power = -20
+		set_temp_variable = {
+			var = military_development_var_temp
+			value = 0.05
+		}
+		add_military_development = yes
 		set_temp_variable = {
 			var = income_var_temp
 			value = -0.8
 		}
 		add_income_with_inflation = yes
+		add_political_power = -20
 		set_country_flag = UKR_tb2_line
 		if = {
 			limit = { country_exists = TUR }
@@ -588,12 +684,22 @@ country_event = {
 	# Своё
 	option = {
 		name = ukraine.850.b
-		add_political_power = -10
+		set_temp_variable = {
+			var = academic_development_var_temp
+			value = 0.05
+		}
+		add_academic_development = yes
+		set_temp_variable = {
+			var = industrial_development_var_temp
+			value = 0.03
+		}
+		add_industrial_development = yes
 		set_temp_variable = {
 			var = income_var_temp
 			value = -1.2
 		}
 		add_income_with_inflation = yes
+		add_political_power = -10
 		set_country_flag = UKR_own_drones
 		hidden_effect = {
 			add_to_variable = { UKR_digital_lean = 3 }
@@ -606,11 +712,180 @@ country_event = {
 	option = {
 		name = ukraine.850.c
 		add_political_power = 10
+		add_stability = 0.01
 		ai_chance = { factor = 15 }
 	}
 }
 
-# ===== Пачка 2: осень 2020 - зима 2021 =====
+# --- PS752: что показало расследование (через 45 дней после ukraine.2, вариант «международная группа») ---
+country_event = {
+	id = ukraine.851
+	title = ukraine.851.t
+	desc = ukraine.851.d
+	picture = GFX_UKR_2020_plane_crash
+
+	is_triggered_only = yes
+
+	trigger = {
+		tag = UKR
+	}
+
+	# Принять предложение
+	option = {
+		name = ukraine.851.a
+		set_temp_variable = {
+			var = income_var_temp
+			value = 0.15
+		}
+		add_income = yes
+		add_stability = 0.01
+		set_country_flag = UKR_ps752_accept
+		if = {
+			limit = { country_exists = PER }
+			PER = {
+				add_opinion_modifier = {
+					target = UKR
+					modifier = ukr_flight752_quiet
+				}
+			}
+		}
+		hidden_effect = {
+			country_event = { id = ukraine.852 days = 60 }
+		}
+		ai_chance = { factor = 35 }
+	}
+
+	# Требовать большего
+	option = {
+		name = ukraine.851.b
+		add_political_power = -15
+		set_country_flag = UKR_ps752_demand
+		if = {
+			limit = { country_exists = PER }
+			PER = {
+				add_opinion_modifier = {
+					target = UKR
+					modifier = ukr_flight752_claims
+				}
+			}
+		}
+		hidden_effect = {
+			add_to_variable = { European_Influence = 0.01 }
+			clamp_variable = { var = European_Influence min = 0 max = 1 }
+			country_event = { id = ukraine.852 days = 150 }
+		}
+		ai_chance = { factor = 40 }
+	}
+
+	# Идти в суд
+	option = {
+		name = ukraine.851.c
+		add_political_power = -20
+		set_country_flag = UKR_ps752_court
+		if = {
+			limit = { country_exists = PER }
+			PER = {
+				add_opinion_modifier = {
+					target = UKR
+					modifier = ukr_flight752_claims
+				}
+			}
+		}
+		if = {
+			limit = { country_exists = CAN }
+			CAN = {
+				add_opinion_modifier = {
+					target = UKR
+					modifier = ukr_flight752_solidarity
+				}
+			}
+		}
+		if = {
+			limit = { country_exists = SWE }
+			SWE = {
+				add_opinion_modifier = {
+					target = UKR
+					modifier = ukr_flight752_solidarity
+				}
+			}
+		}
+		if = {
+			limit = { country_exists = ENG }
+			ENG = {
+				add_opinion_modifier = {
+					target = UKR
+					modifier = ukr_flight752_solidarity
+				}
+			}
+		}
+		hidden_effect = {
+			add_to_variable = { European_Influence = 0.02 }
+			clamp_variable = { var = European_Influence min = 0 max = 1 }
+			add_to_variable = { American_Influence = 0.01 }
+			clamp_variable = { var = American_Influence min = 0 max = 1 }
+			country_event = { id = ukraine.852 days = 270 }
+		}
+		ai_chance = { factor = 25 }
+	}
+}
+
+# --- PS752: выплаты (60 / 150 / 270 дней после ukraine.851) ---
+country_event = {
+	id = ukraine.852
+	title = ukraine.852.t
+	desc = {
+		text = ukraine.852.d_accept
+		trigger = { has_country_flag = UKR_ps752_accept }
+	}
+	desc = {
+		text = ukraine.852.d_demand
+		trigger = { has_country_flag = UKR_ps752_demand }
+	}
+	desc = {
+		text = ukraine.852.d_court
+		trigger = { has_country_flag = UKR_ps752_court }
+	}
+	desc = ukraine.852.d
+	picture = GFX_UKR_2020_plane_crash
+
+	is_triggered_only = yes
+
+	trigger = {
+		tag = UKR
+	}
+
+	option = {
+		name = ukraine.852.a
+		if = {
+			limit = { has_country_flag = UKR_ps752_accept }
+			set_temp_variable = {
+				var = income_var_temp
+				value = 0.2
+			}
+			add_income = yes
+			add_stability = 0.01
+		}
+		if = {
+			limit = { has_country_flag = UKR_ps752_demand }
+			set_temp_variable = {
+				var = income_var_temp
+				value = 0.6
+			}
+			add_income = yes
+		}
+		if = {
+			limit = { has_country_flag = UKR_ps752_court }
+			set_temp_variable = {
+				var = income_var_temp
+				value = 1.0
+			}
+			add_income = yes
+			add_stability = 0.02
+			add_war_support = 0.01
+		}
+		ai_chance = { factor = 100 }
+	}
+}
 
 # --- 25 октября 2020: местные выборы и «опрос президента» ---
 country_event = {
@@ -644,6 +919,15 @@ country_event = {
 		name = ukraine.406.a
 		add_stability = 0.01
 		add_political_power = -15
+		add_popularity = {
+			ideology = social_liberal
+			popularity = 0.01
+		}
+		set_temp_variable = {
+			var = poverty_development_var_temp
+			value = 0.02
+		}
+		add_poverty_development = yes
 		set_country_flag = UKR_mayors_cooperation
 		hidden_effect = {
 			add_to_variable = { UKR_left_lean = 1 }
@@ -655,8 +939,12 @@ country_event = {
 	# Укрепить партийную вертикаль
 	option = {
 		name = ukraine.406.b
-		add_political_power = 25
+		add_political_power = 15
 		add_stability = -0.02
+		add_popularity = {
+			ideology = social_liberal
+			popularity = 0.03
+		}
 		hidden_effect = {
 			add_to_variable = { UKR_authoritarian_lean = 2 }
 			UKR_clamp_leans = yes
@@ -669,6 +957,10 @@ country_event = {
 		name = ukraine.406.c
 		add_timed_idea = { idea = UKR_local_elections_setback days = 120 }
 		add_political_power = 5
+		add_popularity = {
+			ideology = social_liberal
+			popularity = -0.02
+		}
 		ai_chance = { factor = 25 }
 	}
 }
@@ -705,6 +997,7 @@ country_event = {
 		name = ukraine.405.a
 		add_political_power = 30
 		add_timed_idea = { idea = UKR_constitutional_crisis days = 120 }
+		add_war_support = 0.01
 		set_country_flag = UKR_ccu_confrontation
 		hidden_effect = {
 			add_to_variable = { UKR_authoritarian_lean = 3 }
@@ -719,6 +1012,16 @@ country_event = {
 	option = {
 		name = ukraine.405.b
 		add_political_power = -15
+		set_temp_variable = {
+			var = income_var_temp
+			value = 0.8
+		}
+		add_income = yes
+		set_temp_variable = {
+			var = society_development_var_temp
+			value = 0.03
+		}
+		add_society_development = yes
 		set_country_flag = UKR_ccu_venice
 		hidden_effect = {
 			add_to_variable = { UKR_digital_lean = 2 }
@@ -732,7 +1035,7 @@ country_event = {
 	# Принять решение суда
 	option = {
 		name = ukraine.405.c
-		add_political_power = 5
+		add_stability = 0.01
 		add_timed_idea = { idea = UKR_declaration_gap days = 180 }
 		set_country_flag = UKR_ccu_accepted
 		hidden_effect = {
@@ -771,11 +1074,20 @@ country_event = {
 		UKR_chronicle_cooldown_start = yes
 	}
 
-	# Говорить открыто
+	# Открыто
 	option = {
 		name = ukraine.404.a
 		add_stability = 0.01
 		add_political_power = -10
+		add_popularity = {
+			ideology = social_liberal
+			popularity = 0.015
+		}
+		set_temp_variable = {
+			var = society_development_var_temp
+			value = 0.02
+		}
+		add_society_development = yes
 		set_country_flag = UKR_covid_open
 		hidden_effect = {
 			add_to_variable = { UKR_digital_lean = 1 }
@@ -784,11 +1096,15 @@ country_event = {
 		ai_chance = { factor = 60 }
 	}
 
-	# Говорить скупо
+	# Скупо
 	option = {
 		name = ukraine.404.b
 		add_political_power = 10
 		add_stability = -0.01
+		add_popularity = {
+			ideology = authoritarian_democrat
+			popularity = 0.01
+		}
 		hidden_effect = {
 			add_to_variable = { UKR_authoritarian_lean = 1 }
 			UKR_clamp_leans = yes
@@ -825,17 +1141,18 @@ country_event = {
 		UKR_chronicle_cooldown_start = yes
 	}
 
-	# Порядок и закон
+	# Порядок
 	option = {
 		name = ukraine.407.a
 		add_political_power = 20
 		add_stability = -0.02
+		add_timed_idea = { idea = UKR_fop_distrust days = 150 }
 		set_country_flag = UKR_fop_hard
 		hidden_effect = {
 			add_to_variable = { UKR_authoritarian_lean = 2 }
 			UKR_clamp_leans = yes
 		}
-		ai_chance = { factor = 30 }
+		ai_chance = { factor = 25 }
 	}
 
 	# Компромисс
@@ -848,12 +1165,13 @@ country_event = {
 			value = -0.5
 		}
 		add_income_with_inflation = yes
+		add_timed_idea = { idea = UKR_fop_tax_pause days = 180 }
 		set_country_flag = UKR_fop_compromise
 		hidden_effect = {
 			add_to_variable = { UKR_left_lean = 1 }
 			UKR_clamp_leans = yes
 		}
-		ai_chance = { factor = 45 }
+		ai_chance = { factor = 35 }
 	}
 
 	# Прямая помощь
@@ -866,12 +1184,36 @@ country_event = {
 			value = -1.5
 		}
 		add_income_with_inflation = yes
+		add_timed_idea = { idea = UKR_fop_support_payments days = 150 }
 		set_country_flag = UKR_fop_support
 		hidden_effect = {
 			add_to_variable = { UKR_left_lean = 2 }
 			UKR_clamp_leans = yes
 		}
-		ai_chance = { factor = 25 }
+		ai_chance = { factor = 20 }
+	}
+
+	# Рабочая группа и «Дія»
+	option = {
+		name = ukraine.407.e
+		add_political_power = -10
+		set_temp_variable = {
+			var = academic_development_var_temp
+			value = 0.03
+		}
+		add_academic_development = yes
+		set_temp_variable = {
+			var = income_var_temp
+			value = -0.4
+		}
+		add_income_with_inflation = yes
+		add_timed_idea = { idea = UKR_fop_digital_deal days = 240 }
+		set_country_flag = UKR_fop_digital
+		hidden_effect = {
+			add_to_variable = { UKR_digital_lean = 3 }
+			UKR_clamp_leans = yes
+		}
+		ai_chance = { factor = 30 }
 	}
 }
 
@@ -903,11 +1245,16 @@ country_event = {
 		UKR_chronicle_cooldown_start = yes
 	}
 
-	# Только вакцины, одобренные ВОЗ
+	# Только ВОЗ
 	option = {
 		name = ukraine.408.a
 		add_stability = -0.01
-		add_political_power = -10
+		add_political_power = -5
+		set_temp_variable = {
+			var = society_development_var_temp
+			value = 0.04
+		}
+		add_society_development = yes
 		set_country_flag = UKR_vaccine_who
 		hidden_effect = {
 			add_to_variable = { UKR_digital_lean = 1 }
@@ -922,12 +1269,12 @@ country_event = {
 	option = {
 		name = ukraine.408.b
 		add_stability = 0.02
-		add_political_power = 10
 		set_temp_variable = {
 			var = income_var_temp
 			value = -1
 		}
 		add_income_with_inflation = yes
+		add_manpower = 1000
 		set_country_flag = UKR_vaccine_any
 		hidden_effect = {
 			add_to_variable = { Chinese_Influence = 0.02 }
@@ -936,12 +1283,22 @@ country_event = {
 		ai_chance = { factor = 35 }
 	}
 
-	# Не запрещать ничего
+	# Ничего не запрещать
 	option = {
 		name = ukraine.408.c
 		add_stability = 0.01
 		add_political_power = -20
+		add_war_support = -0.03
 		set_country_flag = UKR_vaccine_sputnik
+		if = {
+			limit = { country_exists = SOV }
+			SOV = {
+				add_opinion_modifier = {
+					target = UKR
+					modifier = ukr_vaccine_overture
+				}
+			}
+		}
 		hidden_effect = {
 			add_to_variable = { Russian_Influence = 0.03 }
 			clamp_variable = { var = Russian_Influence min = 0 max = 1 }
@@ -954,7 +1311,66 @@ country_event = {
 	}
 }
 
-# ===== Пачка 3: 2021 - начало 2022 =====
+# --- Надбавки медикам не дошли (через 60 дней после решения UKR_covid_doctors_bonuses) ---
+country_event = {
+	id = ukraine.409
+	title = ukraine.409.t
+	desc = ukraine.409.d
+	picture = GFX_Generic_COVID1
+
+	is_triggered_only = yes
+
+	trigger = {
+		tag = UKR
+		has_country_flag = UKR_COVID_ongoing
+	}
+
+	# Выплатить задолженность
+	option = {
+		name = ukraine.409.a
+		set_temp_variable = {
+			var = income_var_temp
+			value = -0.6
+		}
+		add_income = yes
+		add_stability = 0.02
+		set_temp_variable = {
+			var = society_development_var_temp
+			value = 0.02
+		}
+		add_society_development = yes
+		hidden_effect = {
+			add_to_variable = { UKR_left_lean = 1 }
+			UKR_clamp_leans = yes
+		}
+		ai_chance = { factor = 60 }
+	}
+
+	# Переложить вину
+	option = {
+		name = ukraine.409.b
+		add_political_power = 10
+		add_stability = -0.02
+		add_popularity = {
+			ideology = social_liberal
+			popularity = -0.01
+		}
+		hidden_effect = {
+			add_to_variable = { UKR_authoritarian_lean = 1 }
+			UKR_clamp_leans = yes
+		}
+		ai_chance = { factor = 25 }
+	}
+
+	# Пообещать разобраться
+	option = {
+		name = ukraine.409.c
+		add_political_power = 5
+		add_stability = -0.01
+		add_war_support = -0.01
+		ai_chance = { factor = 15 }
+	}
+}
 
 # --- Каналы Медведчука (в реальности 2 февраля 2021) ---
 # Цепочка СНБО -> Коломойский -> измена запускается только фокусом UKR_nsdc_sanctions:
@@ -986,6 +1402,7 @@ country_event = {
 	option = {
 		name = ukraine.310.a
 		add_political_power = 25
+		add_war_support = 0.02
 		set_country_flag = UKR_sanctions_fast
 		hidden_effect = {
 			add_to_variable = { UKR_authoritarian_lean = 3 }
@@ -1001,6 +1418,11 @@ country_event = {
 	option = {
 		name = ukraine.310.b
 		add_political_power = -10
+		set_temp_variable = {
+			var = society_development_var_temp
+			value = 0.03
+		}
+		add_society_development = yes
 		set_country_flag = UKR_sanctions_court
 		hidden_effect = {
 			add_to_variable = { UKR_digital_lean = 1 }
@@ -1011,7 +1433,7 @@ country_event = {
 		ai_chance = { factor = 40 }
 	}
 
-	# Ограничиться сделанным
+	# Остановиться
 	option = {
 		name = ukraine.310.c
 		add_stability = 0.01
@@ -1021,6 +1443,27 @@ country_event = {
 			clamp_variable = { var = Russian_Influence min = 0 max = 1 }
 		}
 		ai_chance = { factor = 20 }
+	}
+
+	# Расширить список (нужна склонность к жёсткому курсу)
+	option = {
+		name = ukraine.310.e
+		trigger = {
+			check_variable = { UKR_authoritarian_lean > 19 }
+		}
+		add_political_power = 35
+		add_stability = -0.02
+		add_war_support = 0.02
+		set_country_flag = UKR_sanctions_fast
+		set_country_flag = UKR_sanctions_expanded
+		hidden_effect = {
+			add_to_variable = { UKR_authoritarian_lean = 4 }
+			add_to_variable = { UKR_nationalist_lean = 2 }
+			add_to_variable = { European_Influence = -0.02 }
+			clamp_variable = { var = European_Influence min = 0 max = 1 }
+			UKR_clamp_leans = yes
+		}
+		ai_chance = { factor = 15 }
 	}
 }
 
@@ -1045,6 +1488,10 @@ country_event = {
 	option = {
 		name = ukraine.312.a
 		add_political_power = 15
+		add_popularity = {
+			ideology = social_liberal
+			popularity = 0.01
+		}
 		set_country_flag = UKR_kolomoisky_pressure
 		hidden_effect = {
 			add_to_variable = { UKR_left_lean = 1 }
@@ -1052,19 +1499,98 @@ country_event = {
 			clamp_variable = { var = American_Influence min = 0 max = 1 }
 			UKR_clamp_leans = yes
 		}
-		ai_chance = { factor = 55 }
+		ai_chance = { factor = 50 }
 	}
 
 	# Нейтралитет
 	option = {
 		name = ukraine.312.b
 		add_stability = 0.01
+		set_temp_variable = {
+			var = income_var_temp
+			value = 0.1
+		}
+		add_income = yes
 		set_country_flag = UKR_kolomoisky_neutral
 		hidden_effect = {
 			add_to_variable = { American_Influence = -0.01 }
 			clamp_variable = { var = American_Influence min = 0 max = 1 }
 		}
+		ai_chance = { factor = 35 }
+	}
+
+	# Новые иски по ПриватБанку (нужна жёсткая линия с МВФ)
+	option = {
+		name = ukraine.312.c
+		trigger = {
+			has_country_flag = UKR_imf_firm
+		}
+		set_temp_variable = {
+			var = income_var_temp
+			value = 1.5
+		}
+		add_income = yes
+		add_stability = 0.01
+		add_political_power = -10
+		set_country_flag = UKR_kolomoisky_pressure
+		set_country_flag = UKR_kolomoisky_lawsuits
+		hidden_effect = {
+			add_to_variable = { UKR_digital_lean = 1 }
+			add_to_variable = { American_Influence = 0.02 }
+			clamp_variable = { var = American_Influence min = 0 max = 1 }
+			UKR_clamp_leans = yes
+		}
 		ai_chance = { factor = 45 }
+	}
+
+	# Проверить телеканалы (нужны санкции СНБО)
+	option = {
+		name = ukraine.312.e
+		trigger = {
+			OR = {
+				has_country_flag = UKR_sanctions_fast
+				has_country_flag = UKR_sanctions_court
+			}
+		}
+		add_political_power = 20
+		add_stability = -0.01
+		add_war_support = 0.01
+		set_country_flag = UKR_kolomoisky_pressure
+		set_country_flag = UKR_kolomoisky_media_pressure
+		hidden_effect = {
+			add_to_variable = { UKR_authoritarian_lean = 2 }
+			add_to_variable = { American_Influence = 0.01 }
+			clamp_variable = { var = American_Influence min = 0 max = 1 }
+			UKR_clamp_leans = yes
+		}
+		ai_chance = { factor = 35 }
+	}
+
+	# Договориться (нужен манёвр с МВФ или остановка санкций)
+	option = {
+		name = ukraine.312.f
+		trigger = {
+			OR = {
+				has_country_flag = UKR_imf_flex
+				has_country_flag = UKR_sanctions_stop
+			}
+		}
+		add_political_power = 10
+		set_temp_variable = {
+			var = income_var_temp
+			value = 0.5
+		}
+		add_income = yes
+		add_stability = 0.01
+		set_country_flag = UKR_kolomoisky_neutral
+		set_country_flag = UKR_kolomoisky_deal
+		hidden_effect = {
+			add_to_variable = { UKR_authoritarian_lean = 2 }
+			add_to_variable = { American_Influence = -0.02 }
+			clamp_variable = { var = American_Influence min = 0 max = 1 }
+			UKR_clamp_leans = yes
+		}
+		ai_chance = { factor = 25 }
 	}
 }
 
@@ -1090,26 +1616,90 @@ country_event = {
 		name = ukraine.311.a
 		add_stability = 0.02
 		add_political_power = 10
+		add_war_support = 0.02
 		set_country_flag = UKR_medvedchuk_trial
+		if = {
+			limit = { country_exists = SOV }
+			SOV = {
+				add_opinion_modifier = {
+					target = UKR
+					modifier = ukr_medvedchuk_case
+				}
+			}
+		}
 		hidden_effect = {
 			add_to_variable = { UKR_nationalist_lean = 1 }
 			add_to_variable = { European_Influence = 0.01 }
 			clamp_variable = { var = European_Influence min = 0 max = 1 }
 			UKR_clamp_leans = yes
 		}
-		ai_chance = { factor = 60 }
+		ai_chance = { factor = 50 }
 	}
 
-	# Держать как рычаг
+	# Рычаг
 	option = {
 		name = ukraine.311.b
 		add_political_power = 15
+		add_command_power = 10
 		set_country_flag = UKR_medvedchuk_leverage
 		hidden_effect = {
 			add_to_variable = { UKR_authoritarian_lean = 1 }
 			UKR_clamp_leans = yes
 		}
-		ai_chance = { factor = 40 }
+		ai_chance = { factor = 30 }
+	}
+
+	# Обмен заключёнными
+	option = {
+		name = ukraine.311.c
+		add_political_power = -10
+		add_stability = 0.02
+		add_war_support = 0.01
+		set_country_flag = UKR_medvedchuk_leverage
+		set_country_flag = UKR_medvedchuk_exchange
+		if = {
+			limit = { country_exists = SOV }
+			SOV = {
+				add_opinion_modifier = {
+					target = UKR
+					modifier = ukr_prisoner_talks
+				}
+			}
+		}
+		hidden_effect = {
+			add_to_variable = { Russian_Influence = 0.01 }
+			clamp_variable = { var = Russian_Influence min = 0 max = 1 }
+		}
+		ai_chance = { factor = 15 }
+	}
+
+	# Заморозить активы
+	option = {
+		name = ukraine.311.e
+		set_temp_variable = {
+			var = income_var_temp
+			value = 1.2
+		}
+		add_income = yes
+		add_political_power = 10
+		add_stability = -0.01
+		set_country_flag = UKR_medvedchuk_trial
+		set_country_flag = UKR_medvedchuk_assets
+		if = {
+			limit = { country_exists = SOV }
+			SOV = {
+				add_opinion_modifier = {
+					target = UKR
+					modifier = ukr_medvedchuk_case
+				}
+			}
+		}
+		hidden_effect = {
+			add_to_variable = { UKR_authoritarian_lean = 2 }
+			add_to_variable = { UKR_nationalist_lean = 1 }
+			UKR_clamp_leans = yes
+		}
+		ai_chance = { factor = 30 }
 	}
 }
 
@@ -1145,6 +1735,10 @@ country_event = {
 		name = ukraine.313.a
 		add_political_power = 25
 		add_stability = -0.02
+		add_popularity = {
+			ideology = social_liberal
+			popularity = 0.02
+		}
 		set_country_flag = UKR_oligarch_registry_hard
 		hidden_effect = {
 			add_to_variable = { UKR_left_lean = 3 }
@@ -1156,10 +1750,15 @@ country_event = {
 		ai_chance = { factor = 35 }
 	}
 
-	# Мягкий реестр как рычаг
+	# Мягкий реестр
 	option = {
 		name = ukraine.313.b
 		add_political_power = 10
+		set_temp_variable = {
+			var = income_var_temp
+			value = 0.5
+		}
+		add_income = yes
 		set_country_flag = UKR_oligarch_registry_soft
 		set_country_flag = UKR_office_clan
 		hidden_effect = {
@@ -1173,6 +1772,11 @@ country_event = {
 	option = {
 		name = ukraine.313.c
 		add_political_power = -15
+		set_temp_variable = {
+			var = society_development_var_temp
+			value = 0.04
+		}
+		add_society_development = yes
 		set_country_flag = UKR_oligarch_registry_venice
 		hidden_effect = {
 			add_to_variable = { UKR_digital_lean = 1 }
@@ -1211,11 +1815,15 @@ country_event = {
 		UKR_chronicle_cooldown_start = yes
 	}
 
-	# Объясниться публично
+	# Объясниться
 	option = {
 		name = ukraine.314.a
 		add_stability = 0.01
 		add_political_power = -15
+		add_popularity = {
+			ideology = social_liberal
+			popularity = 0.01
+		}
 		set_country_flag = UKR_pandora_open
 		hidden_effect = {
 			add_to_variable = { UKR_digital_lean = 2 }
@@ -1227,8 +1835,12 @@ country_event = {
 	# Атаковать
 	option = {
 		name = ukraine.314.b
-		add_stability = -0.01
 		add_political_power = 15
+		add_stability = -0.01
+		add_popularity = {
+			ideology = social_liberal
+			popularity = -0.01
+		}
 		set_country_flag = UKR_pandora_attack
 		hidden_effect = {
 			add_to_variable = { UKR_authoritarian_lean = 2 }
@@ -1273,11 +1885,15 @@ country_event = {
 		UKR_chronicle_cooldown_start = yes
 	}
 
-	# Проголосовать за отставку
+	# За отставку
 	option = {
 		name = ukraine.315.a
 		add_political_power = 30
 		add_stability = -0.01
+		add_popularity = {
+			ideology = social_liberal
+			popularity = -0.015
+		}
 		set_country_flag = UKR_razumkov_dismissed
 		hidden_effect = {
 			add_to_variable = { UKR_authoritarian_lean = 2 }
@@ -1291,6 +1907,15 @@ country_event = {
 		name = ukraine.315.b
 		add_political_power = -20
 		add_stability = 0.01
+		add_popularity = {
+			ideology = social_liberal
+			popularity = 0.01
+		}
+		set_temp_variable = {
+			var = society_development_var_temp
+			value = 0.02
+		}
+		add_society_development = yes
 		set_country_flag = UKR_razumkov_kept
 		hidden_effect = {
 			add_to_variable = { UKR_digital_lean = 1 }
@@ -1334,6 +1959,7 @@ country_event = {
 			has_country_flag = UKR_wagner_open
 		}
 		add_stability = 0.01
+		add_political_power = 5
 		hidden_effect = {
 			add_to_variable = { European_Influence = 0.01 }
 			clamp_variable = { var = European_Influence min = 0 max = 1 }
@@ -1356,7 +1982,7 @@ country_event = {
 		ai_chance = { factor = 40 }
 	}
 
-	# Признать ошибки и провести проверку
+	# Признать ошибки
 	option = {
 		name = ukraine.318.c
 		trigger = {
@@ -1364,6 +1990,11 @@ country_event = {
 		}
 		add_political_power = -15
 		add_stability = 0.01
+		set_temp_variable = {
+			var = military_development_var_temp
+			value = 0.02
+		}
+		add_military_development = yes
 		hidden_effect = {
 			add_to_variable = { UKR_digital_lean = 1 }
 			UKR_clamp_leans = yes
@@ -1404,6 +2035,7 @@ country_event = {
 		name = ukraine.316.a
 		add_political_power = 20
 		add_stability = -0.02
+		add_war_support = 0.02
 		set_country_flag = UKR_coup_claims_public
 		hidden_effect = {
 			add_to_variable = { UKR_authoritarian_lean = 2 }
@@ -1417,6 +2049,7 @@ country_event = {
 		name = ukraine.316.b
 		add_political_power = -5
 		add_stability = 0.01
+		add_command_power = 10
 		set_country_flag = UKR_coup_claims_quiet
 		ai_chance = { factor = 40 }
 	}
@@ -1425,6 +2058,16 @@ country_event = {
 	option = {
 		name = ukraine.316.c
 		add_political_power = -10
+		set_temp_variable = {
+			var = income_var_temp
+			value = 0.8
+		}
+		add_income = yes
+		set_temp_variable = {
+			var = industrial_development_var_temp
+			value = 0.03
+		}
+		add_industrial_development = yes
 		set_country_flag = UKR_akhmetov_dialogue
 		hidden_effect = {
 			add_to_variable = { European_Influence = -0.01 }
@@ -1466,6 +2109,10 @@ country_event = {
 		name = ukraine.317.a
 		add_political_power = 20
 		add_stability = -0.02
+		add_popularity = {
+			ideology = conservative
+			popularity = 0.015
+		}
 		set_country_flag = UKR_poroshenko_case_hard
 		hidden_effect = {
 			add_to_variable = { UKR_authoritarian_lean = 3 }
@@ -1480,6 +2127,11 @@ country_event = {
 	option = {
 		name = ukraine.317.b
 		add_political_power = -10
+		set_temp_variable = {
+			var = society_development_var_temp
+			value = 0.03
+		}
+		add_society_development = yes
 		set_country_flag = UKR_poroshenko_case_court
 		hidden_effect = {
 			add_to_variable = { UKR_digital_lean = 2 }
@@ -1494,6 +2146,10 @@ country_event = {
 	option = {
 		name = ukraine.317.c
 		add_political_power = 15
+		add_popularity = {
+			ideology = conservative
+			popularity = -0.02
+		}
 		set_country_flag = UKR_poroshenko_leverage
 		hidden_effect = {
 			add_to_variable = { UKR_authoritarian_lean = 2 }
@@ -1540,6 +2196,11 @@ country_event = {
 			value = -1.5
 		}
 		add_income_with_inflation = yes
+		set_temp_variable = {
+			var = academic_development_var_temp
+			value = 0.04
+		}
+		add_academic_development = yes
 		set_country_flag = UKR_cloud_backup
 		hidden_effect = {
 			add_to_variable = { UKR_digital_lean = 3 }

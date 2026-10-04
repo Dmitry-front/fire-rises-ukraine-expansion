@@ -29,15 +29,56 @@ country_event = {
 	immediate = {
 		add_manpower = -11
 	}
-	# Международная группа: Канада, Британия, Швеция, Афганистан и Украина (16.01.2020)
+	# Международная группа: Канада, Британия, Швеция, Афганистан и Украина (16.01.2020); через 45 дней приходит ukraine.851
 	option = {
 		name = ukraine.2.o1
 		add_political_power = -10
 		add_stability = 0.02
+		add_popularity = {
+			ideology = social_liberal
+			popularity = 0.01
+		}
 		set_country_flag = UKR_flight752_coalition
+		if = {
+			limit = { country_exists = PER }
+			PER = {
+				add_opinion_modifier = {
+					target = UKR
+					modifier = ukr_flight752_claims
+				}
+			}
+		}
+		if = {
+			limit = { country_exists = CAN }
+			CAN = {
+				add_opinion_modifier = {
+					target = UKR
+					modifier = ukr_flight752_solidarity
+				}
+			}
+		}
+		if = {
+			limit = { country_exists = SWE }
+			SWE = {
+				add_opinion_modifier = {
+					target = UKR
+					modifier = ukr_flight752_solidarity
+				}
+			}
+		}
+		if = {
+			limit = { country_exists = ENG }
+			ENG = {
+				add_opinion_modifier = {
+					target = UKR
+					modifier = ukr_flight752_solidarity
+				}
+			}
+		}
 		hidden_effect = {
 			add_to_variable = { European_Influence = 0.01 }
 			clamp_variable = { var = European_Influence min = 0 max = 1 }
+			country_event = { id = ukraine.851 days = 45 }
 		}
 		ai_chance = { factor = 65 }
 	}
@@ -46,6 +87,15 @@ country_event = {
 		add_political_power = 10
 		add_stability = -0.01
 		set_country_flag = UKR_flight752_quiet
+		if = {
+			limit = { country_exists = PER }
+			PER = {
+				add_opinion_modifier = {
+					target = UKR
+					modifier = ukr_flight752_quiet
+				}
+			}
+		}
 		ai_chance = { factor = 35 }
 	}
 }

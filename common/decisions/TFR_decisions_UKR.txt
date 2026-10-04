@@ -1303,40 +1303,6 @@ UKR_startup_ecosystem_category = {
 }
 #covid
 UKR_covid_response_decisions = {
-	# Жёсткий локдаун: сокращает кризис COVID на 60 дней (перенесено из файла категорий)
-	UKR_covid_lockdown = {
-		icon = GFX_decision_generic_political_discourse
-		visible = { has_idea = UKR_covid_crisis }
-		available = { has_idea = UKR_covid_crisis }
-		cost = 25
-		days_re_enable = 90
-		ai_will_do = {
-			factor = 5
-		}
-		complete_effect = {
-			add_stability = -0.02
-			modify_timed_idea = {
-				idea = UKR_covid_crisis
-				days = -60
-			}
-		}
-	}
-
-	# Массовая вакцинация: снимает кризис COVID
-	UKR_covid_vaccination = {
-		icon = GFX_decision_generic_political_discourse
-		visible = { has_idea = UKR_covid_crisis }
-		available = { has_idea = UKR_covid_crisis }
-		cost = 75
-		fire_only_once = yes
-		ai_will_do = {
-			factor = 10
-		}
-		complete_effect = {
-			remove_ideas = UKR_covid_crisis
-		}
-	}
-
 	# Адаптивный карантин
 	UKR_implement_adaptive_quarantine = {
 		icon = GFX_decision_eng_trade_unions_demand

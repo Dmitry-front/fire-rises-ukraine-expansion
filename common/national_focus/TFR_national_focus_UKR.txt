@@ -933,10 +933,11 @@ focus_tree = {
 				value = -22.8
 			}
 			add_income_with_inflation = yes
-			# Склонность (скрыто)
+			# Склонность (скрыто) и отложенный скандал вокруг программы (через 90 дней)
 			hidden_effect = {
 				add_to_variable = { UKR_left_lean = 3 }
 				UKR_clamp_leans = yes
+				country_event = { id = ukraine_economy.202 days = 90 }
 			}
 		}
 	}
@@ -2002,6 +2003,8 @@ focus_tree = {
 			hidden_effect = {
 				add_to_variable = { UKR_authoritarian_lean = 8 }
 				UKR_clamp_leans = yes
+				# Цепочка «Каналы Медведчука» -> «Коломойский в списке» -> «Государственная измена»
+				country_event = { id = ukraine.310 days = 10 }
 			}
 		}
 	}

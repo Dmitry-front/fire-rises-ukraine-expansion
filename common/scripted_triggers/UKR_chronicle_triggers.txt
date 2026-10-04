@@ -1,0 +1,7 @@
+# Хроника блока 1: пауза между событиями (DESIGN.md, 4.5)
+# Событие хроники с окном по дате или mean_time_to_happen проверяет UKR_chronicle_quiet и в immediate
+# запускает UKR_chronicle_cooldown_start. Следующее такое событие ждёт, пока пауза не кончится,
+# поэтому несколько событий не приходят в один день (26.09.2021 их было три).
+UKR_chronicle_quiet = {
+	NOT = { has_country_flag = UKR_chronicle_cooldown }
+}

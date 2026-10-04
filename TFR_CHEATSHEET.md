@@ -263,7 +263,7 @@ end_ruling_party_wings = yes      # убрать все крылья
 - Запомнить/вернуть: `get_current_government_type = yes` + `restore_previous_government_type = yes`.
 - Контексты в TFR: `liberal_corporatism` - дерево Медведева, фокус `SOV_state_corporations_liberalization` (линия Надеждина, «либерализация госкорпораций»; подмена идеи `SOV_nadezhdin_economy_*`, динамический модификатор); `worker_controlled` - «экономическая демократия» (`SOV_a_new_economy`, `SOV_adl_model_economy`, идея `SOV_new_socialist_economy_idea`); `minarchism` - ветка Навального; `capitalism` - либеральная линия ЕР; `corporatism` - ЛДПР и ЕР; `command_economy` - Дугин и «статистская модель»; `developed_socialism` - «брежневская» линия КПРФ.
 - **Закрыто: TD-21.** `change_economy_type_liberal_corporatism` существует в TFR, наша обёртка `UKR_set_liberal_corporatism_economy` названа правильно.
-- **TD-18 (кандидат).** «Кооперативной экономики» под таким названием в референсах нет. По смыслу (рабочий контроль, экономическая демократия, кооперативы) ближе всего `worker_controlled`; сейчас `UKR_set_cooperative_economy` ставит `socialist_market`. Если автор подтвердит по тексту игры, менять одну строку.
+- **TD-18 (закрыт 04.10.2026).** «Кооперативной экономики» под таким названием в референсах нет. По смыслу (рабочий контроль, экономическая демократия, кооперативы) ближе всего `worker_controlled`; сейчас `UKR_set_cooperative_economy` ставит `socialist_market`. Решение автора: ставим `worker_controlled`, исходная гипотеза записана комментарием в обёртке.
 - `parliamentary_republic` существует (5 раз в событиях SOV), наш `ukraine_politics.508` корректен (TD-19, пункт про этот эффект закрыт).
 
 ### 4.5. Баланс сил (BoP) (реф)

@@ -9,12 +9,11 @@ country_event = {
 	
 	is_triggered_only = yes
 
+	# ОТКЛЮЧЕНО (решение автора, 04.10.2026): «переворот Залужного» мешает ветке Украины в этом сабмоде.
+	# Событие остаётся определённым (чтобы перекрыть оригинал TFR с тем же ID), но не срабатывает ни при каком вызове.
+	# Оригинальное условие: UKR = { NOT = { is_puppet_of = SOV } exists = yes nationalist > 0.40 }
 	trigger = {
-		UKR = {
-			NOT = { is_puppet_of = SOV } 
-			exists = yes
-			nationalist > 0.40
-		}
+		always = no
 	}
 	
 	option = {

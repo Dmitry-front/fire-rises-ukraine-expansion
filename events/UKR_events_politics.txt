@@ -1169,6 +1169,11 @@ country_event = {
 		hidden_effect = { country_event = { id = ukraine_politics.210 days = 68 } }
 		hidden_effect = { country_event = { id = ukraine_politics.211 days = 74 } }
 		hidden_effect = { country_event = { id = ukraine_politics.204 days = 80 } }
+		# Путь националистов, кампания: 230 (~25.01), 231 (~4.02), 232 (~6.03), 233 (~24.03)
+		hidden_effect = { country_event = { id = ukraine_politics.230 days = 24 } }
+		hidden_effect = { country_event = { id = ukraine_politics.231 days = 34 } }
+		hidden_effect = { country_event = { id = ukraine_politics.232 days = 65 } }
+		hidden_effect = { country_event = { id = ukraine_politics.233 days = 83 } }
 	}
 
 	option = {
@@ -1986,6 +1991,7 @@ country_event = {
 		add_political_power = 20
 		hidden_effect = { country_event = { id = ukraine_politics.206 days = 7 } }
 		hidden_effect = { country_event = { id = ukraine_politics.213 days = 12 } }
+		hidden_effect = { country_event = { id = ukraine_politics.234 days = 9 } }
 		hidden_effect = { country_event = { id = ukraine_politics.207 days = 21 } }
 	}
 }
@@ -4657,5 +4663,281 @@ country_event = {
 		add_income_with_inflation = yes
 		add_stability = -0.02
 		ai_chance = { factor = 45 }
+	}
+}
+
+# ============================================================================
+# Путь националистов, блок 2: кампания 2024 (PROPOSAL_nationalists.md, раздел 12).
+# События 230-233 вызываются из ukraine_politics.200, 234 - из 205 после первого тура.
+# Вклад в рейтинг: UKR_campaign_bonus (до первого тура), UKR_campaign_bonus2 (между турами).
+# ============================================================================
+
+# Единый кандидат правых (январь)
+country_event = {
+	id = ukraine_politics.230
+	title = ukraine_politics.230.t
+	desc = ukraine_politics.230.d
+	picture = GFX_report_event_ukrainian_civil_war
+
+	is_triggered_only = yes
+
+	trigger = {
+		tag = UKR
+	}
+
+	# Подтолкнуть к единому кандидату
+	option = {
+		name = ukraine_politics.230.a
+		add_political_power = -10
+		add_timed_idea = { idea = UKR_right_unity_push days = 120 }
+		hidden_effect = {
+			add_to_variable = { UKR_campaign_bonus = 1 }
+			add_to_variable = { UKR_nationalist_lean = 1 }
+			add_to_variable = { UKR_np_pre_right_union = 1 }
+			add_to_variable = { European_Influence = -0.005 }
+			clamp_variable = { var = European_Influence min = 0 max = 1 }
+			UKR_clamp_leans = yes
+		}
+		ai_chance = { factor = 30 }
+	}
+
+	# Не вмешиваться
+	option = {
+		name = ukraine_politics.230.b
+		add_political_power = 5
+		add_stability = 0.005
+		ai_chance = { factor = 45 }
+	}
+
+	# Сыграть на разногласиях
+	option = {
+		name = ukraine_politics.230.c
+		add_political_power = 15
+		add_stability = -0.01
+		hidden_effect = {
+			add_to_variable = { UKR_authoritarian_lean = 1 }
+			add_to_variable = { UKR_np_pre_street = 1 }
+			UKR_clamp_leans = yes
+		}
+		ai_chance = { factor = 25 }
+	}
+}
+
+# «В Украине» или «на Украине» (февраль)
+country_event = {
+	id = ukraine_politics.231
+	title = ukraine_politics.231.t
+	desc = ukraine_politics.231.d
+	picture = GFX_report_event_ukrainian_civil_war
+
+	is_triggered_only = yes
+
+	trigger = {
+		tag = UKR
+	}
+
+	# Официальное письмо МИД
+	option = {
+		name = ukraine_politics.231.a
+		add_political_power = 10
+		hidden_effect = {
+			add_to_variable = { UKR_nationalist_lean = 1 }
+			UKR_clamp_leans = yes
+		}
+		ai_chance = { factor = 40 }
+	}
+
+	# Отшутиться мемом
+	option = {
+		name = ukraine_politics.231.b
+		add_political_power = -5
+		custom_effect_tooltip = UKR_pop_social_liberal_p1_tt
+		hidden_effect = {
+			add_popularity = { ideology = social_liberal popularity = 0.01 }
+			add_to_variable = { UKR_campaign_bonus = 1 }
+			add_to_variable = { UKR_digital_lean = 1 }
+			UKR_clamp_leans = yes
+		}
+		ai_chance = { factor = 45 }
+	}
+
+	# Поддержать законопроект правых
+	option = {
+		name = ukraine_politics.231.c
+		add_war_support = 0.01
+		add_stability = -0.01
+		custom_effect_tooltip = UKR_pop_national_socialist_p1_tt
+		hidden_effect = {
+			add_popularity = { ideology = national_socialist popularity = 0.01 }
+			add_to_variable = { UKR_nationalist_lean = 2 }
+			add_to_variable = { UKR_np_pre_svoboda = 1 }
+			UKR_clamp_leans = yes
+		}
+		ai_chance = { factor = 15 }
+	}
+}
+
+# «Зрада» или «перемога» (март)
+country_event = {
+	id = ukraine_politics.232
+	title = ukraine_politics.232.t
+	desc = ukraine_politics.232.d
+	picture = GFX_report_event_ukrainian_civil_war
+
+	is_triggered_only = yes
+
+	trigger = {
+		tag = UKR
+	}
+
+	# Своя «перемога недели»
+	option = {
+		name = ukraine_politics.232.a
+		add_political_power = 15
+		hidden_effect = {
+			add_to_variable = { UKR_campaign_bonus = 1 }
+			add_to_variable = { UKR_digital_lean = 1 }
+			UKR_clamp_leans = yes
+		}
+		ai_chance = { factor = 45 }
+	}
+
+	# Признать «зраду»
+	option = {
+		name = ukraine_politics.232.b
+		add_political_power = -10
+		add_stability = 0.01
+		ai_chance = { factor = 30 }
+	}
+
+	# Отвечать цифрами
+	option = {
+		name = ukraine_politics.232.c
+		add_political_power = 5
+		hidden_effect = {
+			add_to_variable = { UKR_digital_lean = 2 }
+			UKR_clamp_leans = yes
+		}
+		ai_chance = { factor = 25 }
+	}
+}
+
+# Язык в дебатах (конец марта), текст читает флаги из ukraine.1013
+country_event = {
+	id = ukraine_politics.233
+	title = ukraine_politics.233.t
+	desc = {
+		text = ukraine_politics.233.d_enf
+		trigger = { has_country_flag = UKR_language_enforced }
+	}
+	desc = {
+		text = ukraine_politics.233.d_trans
+		trigger = { has_country_flag = UKR_language_transition }
+	}
+	desc = {
+		text = ukraine_politics.233.d
+		trigger = {
+			NOT = { has_country_flag = UKR_language_enforced }
+			NOT = { has_country_flag = UKR_language_transition }
+		}
+	}
+	picture = GFX_report_event_ukrainian_civil_war
+
+	is_triggered_only = yes
+
+	trigger = {
+		tag = UKR
+	}
+
+	# Закон не обсуждается
+	option = {
+		name = ukraine_politics.233.a
+		add_political_power = 10
+		add_timed_idea = { idea = UKR_language_dispute days = 90 }
+		hidden_effect = {
+			add_to_variable = { UKR_nationalist_lean = 2 }
+			add_to_variable = { UKR_np_pre_svoboda = 1 }
+			add_to_variable = { European_Influence = -0.005 }
+			clamp_variable = { var = European_Influence min = 0 max = 1 }
+			UKR_clamp_leans = yes
+		}
+		ai_chance = { factor = 30 }
+	}
+
+	# Поправки для школ меньшинств
+	option = {
+		name = ukraine_politics.233.b
+		add_stability = 0.01
+		hidden_effect = {
+			add_to_variable = { UKR_campaign_bonus = 1 }
+			add_to_variable = { UKR_np_pre_demo = 1 }
+			add_to_variable = { European_Influence = 0.01 }
+			clamp_variable = { var = European_Influence min = 0 max = 1 }
+		}
+		ai_chance = { factor = 45 }
+	}
+
+	# Уйти от вопроса
+	option = {
+		name = ukraine_politics.233.c
+		add_political_power = -5
+		hidden_effect = {
+			add_to_variable = { UKR_campaign_bonus = -1 }
+		}
+		ai_chance = { factor = 25 }
+	}
+}
+
+# Ветеранский форум и Билецкий (между турами, ~10 апреля)
+country_event = {
+	id = ukraine_politics.234
+	title = ukraine_politics.234.t
+	desc = ukraine_politics.234.d
+	picture = GFX_report_event_ukrainian_civil_war
+
+	is_triggered_only = yes
+
+	trigger = {
+		tag = UKR
+	}
+
+	# Рукопожатие
+	option = {
+		name = ukraine_politics.234.a
+		add_war_support = 0.02
+		add_timed_idea = { idea = UKR_veteran_spotlight days = 120 }
+		hidden_effect = {
+			add_to_variable = { UKR_campaign_bonus2 = 1 }
+			add_to_variable = { UKR_nationalist_lean = 1 }
+			add_to_variable = { UKR_np_pre_azov = 1 }
+			add_to_variable = { European_Influence = -0.005 }
+			clamp_variable = { var = European_Influence min = 0 max = 1 }
+			UKR_clamp_leans = yes
+		}
+		ai_chance = { factor = 35 }
+	}
+
+	# О правах ветеранов, без лозунгов
+	option = {
+		name = ukraine_politics.234.b
+		add_stability = 0.01
+		hidden_effect = {
+			add_to_variable = { UKR_campaign_bonus2 = 1 }
+			add_to_variable = { UKR_np_pre_demo = 1 }
+			add_to_variable = { European_Influence = 0.005 }
+			clamp_variable = { var = European_Influence min = 0 max = 1 }
+		}
+		ai_chance = { factor = 45 }
+	}
+
+	# Прислать министра
+	option = {
+		name = ukraine_politics.234.c
+		add_political_power = 10
+		add_stability = -0.005
+		hidden_effect = {
+			add_to_variable = { UKR_np_pre_street = 1 }
+		}
+		ai_chance = { factor = 20 }
 	}
 }

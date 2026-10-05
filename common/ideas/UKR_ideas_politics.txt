@@ -606,5 +606,48 @@ ideas = {
 				political_power_gain = 0.05
 			}
 		}
+
+		# === Путь националистов, блок 2: кампания 2024 (ukraine_politics.230-234, PROPOSAL_nationalists.md, раздел 12) ===
+		# Правые обсуждают единого кандидата (230): правое поле растёт, центр теряет немного
+		UKR_right_unity_push = {
+			picture = UKR_far_right_meddling
+			allowed = {
+				original_tag = UKR
+			}
+			removal_cost = -1
+			modifier = {
+				national_socialist_drift = 0.02
+				fascist_drift = 0.01
+				conservative_drift = -0.01
+				stability_factor = -0.01
+			}
+		}
+
+		# Языковой спор после дебатов (233, жёсткая линия): объединяет одних, пугает других
+		UKR_language_dispute = {
+			picture = UKR_to_each_their_own
+			allowed = {
+				original_tag = UKR
+			}
+			removal_cost = -1
+			modifier = {
+				stability_factor = -0.02
+				war_support_factor = 0.02
+			}
+		}
+
+		# Ветеранский форум (234): рукопожатие запомнили, ветераны ждут обещанного
+		UKR_veteran_spotlight = {
+			picture = UKR_healthy_patriotism_idea
+			allowed = {
+				original_tag = UKR
+			}
+			removal_cost = -1
+			modifier = {
+				war_support_factor = 0.03
+				conscription_factor = 0.02
+				stability_factor = -0.01
+			}
+		}
 	}
 }

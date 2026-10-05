@@ -1,0 +1,203 @@
+# Блок 3: путь националистов «Нация в строю» (DESIGN.md, 8.4; PROPOSAL_nationalists.md, раздел 13)
+# Загружается событием ukraine_politics.304 (инаугурация) при ставке на националистов.
+# Шаг 1 (каркас): ствол - конвент, ветеранские советы, институты памяти, развилка героев.
+# Ветки программ (Республика службы, Армия-нация, Рідний дім) и финалы добавляются в шаге 2.
+# Шкала - common/bop/UKR_np_bop.txt, окно решений - common/decisions/UKR_decisions_nationalists.txt,
+# группы - переменные UKR_np_demo / _azov / _svoboda / _street (доли UKR_np_*_pct), эффекты - UKR_np_effects.txt.
+focus_tree = {
+	id = UKR_block3_nationalists
+	country = {
+		factor = 0
+	}
+	default = no
+
+	# Ряд 0. Национальный конвент
+	focus = {
+		id = UKR_np_convent
+		icon = GFX_goal_generic_national_unity
+		x = 10
+		y = 0
+		cost = 5
+		available = {
+			has_country_leader = {
+				character = UKR_volodymyr_zelensky
+				ruling_only = yes
+			}
+		}
+		ai_will_do = {
+			factor = 20
+		}
+		completion_reward = {
+			add_political_power = 50
+			custom_effect_tooltip = UKR_np_convent_tt
+			set_power_balance = {
+				id = UKR_np_civic_ethnic_balance
+				left_side = UKR_bop_np_civic
+				right_side = UKR_bop_np_ethnic
+				set_value = 0
+			}
+			unlock_decision_category_tooltip = UKR_nation_council
+			hidden_effect = {
+				set_country_flag = UKR_np_convent_done
+				UKR_init_np_groups = yes
+				country_event = { id = ukraine_politics.700 days = 3 }
+			}
+		}
+	}
+
+	# Ряд 1. Ветеранские советы
+	focus = {
+		id = UKR_np_veteran_councils
+		icon = GFX_goal_generic_political_pressure
+		prerequisite = { focus = UKR_np_convent }
+		relative_position_id = UKR_np_convent
+		x = -3
+		y = 1
+		cost = 5
+		available = {
+			has_country_leader = {
+				character = UKR_volodymyr_zelensky
+				ruling_only = yes
+			}
+		}
+		ai_will_do = {
+			factor = 15
+		}
+		completion_reward = {
+			add_political_power = 25
+			add_war_support = 0.02
+			add_manpower = 3000
+			custom_effect_tooltip = UKR_np_demo_up_tt
+			custom_effect_tooltip = UKR_np_azov_up_tt
+			hidden_effect = {
+				set_country_flag = UKR_np_vet_councils
+				add_to_variable = { UKR_np_demo = 4 }
+				add_to_variable = { UKR_np_azov = 2 }
+				UKR_np_update = yes
+				add_to_variable = { UKR_nationalist_lean = 3 }
+				UKR_clamp_leans = yes
+			}
+		}
+	}
+
+	# Ряд 1. Институты памяти
+	focus = {
+		id = UKR_np_memory_institutes
+		icon = GFX_goal_generic_national_unity
+		prerequisite = { focus = UKR_np_convent }
+		relative_position_id = UKR_np_convent
+		x = 3
+		y = 1
+		cost = 5
+		available = {
+			has_country_leader = {
+				character = UKR_volodymyr_zelensky
+				ruling_only = yes
+			}
+		}
+		ai_will_do = {
+			factor = 15
+		}
+		completion_reward = {
+			add_political_power = 25
+			set_temp_variable = {
+				var = society_development_var_temp
+				value = 0.02
+			}
+			add_society_development = yes
+			custom_effect_tooltip = UKR_np_svoboda_up_tt
+			custom_effect_tooltip = UKR_np_demo_up_tt
+			hidden_effect = {
+				set_country_flag = UKR_np_memory_institutes
+				add_to_variable = { UKR_np_svoboda = 4 }
+				add_to_variable = { UKR_np_demo = 2 }
+				UKR_np_update = yes
+				add_to_variable = { UKR_nationalist_lean = 3 }
+				UKR_clamp_leans = yes
+			}
+		}
+	}
+
+	# Ряд 2. Развилка: «Герои УПА» (прошлое)
+	focus = {
+		id = UKR_np_heroes_upa
+		icon = GFX_goal_generic_national_unity
+		prerequisite = { focus = UKR_np_veteran_councils }
+		prerequisite = { focus = UKR_np_memory_institutes }
+		mutually_exclusive = { focus = UKR_np_heroes_present }
+		relative_position_id = UKR_np_convent
+		x = -2
+		y = 2
+		cost = 6
+		available = {
+			has_country_leader = {
+				character = UKR_volodymyr_zelensky
+				ruling_only = yes
+			}
+		}
+		ai_will_do = {
+			factor = 10
+		}
+		completion_reward = {
+			add_political_power = 25
+			add_power_balance_value = {
+				id = UKR_np_civic_ethnic_balance
+				value = 0.05
+			}
+			custom_effect_tooltip = UKR_np_svoboda_up_tt
+			custom_effect_tooltip = UKR_np_demo_down_tt
+			hidden_effect = {
+				set_country_flag = UKR_np_hero_upa
+				add_to_variable = { UKR_np_svoboda = 5 }
+				add_to_variable = { UKR_np_street = 3 }
+				add_to_variable = { UKR_np_demo = -3 }
+				UKR_np_update = yes
+				add_to_variable = { UKR_nationalist_lean = 3 }
+				UKR_clamp_leans = yes
+				add_to_variable = { European_Influence = -0.01 }
+				clamp_variable = { var = European_Influence min = 0 max = 1 }
+			}
+		}
+	}
+
+	# Ряд 2. Развилка: «Герои нашего времени» (настоящее)
+	focus = {
+		id = UKR_np_heroes_present
+		icon = GFX_goal_generic_political_pressure
+		prerequisite = { focus = UKR_np_veteran_councils }
+		prerequisite = { focus = UKR_np_memory_institutes }
+		mutually_exclusive = { focus = UKR_np_heroes_upa }
+		relative_position_id = UKR_np_convent
+		x = 2
+		y = 2
+		cost = 6
+		available = {
+			has_country_leader = {
+				character = UKR_volodymyr_zelensky
+				ruling_only = yes
+			}
+		}
+		ai_will_do = {
+			factor = 15
+		}
+		completion_reward = {
+			add_political_power = 25
+			add_power_balance_value = {
+				id = UKR_np_civic_ethnic_balance
+				value = -0.05
+			}
+			custom_effect_tooltip = UKR_np_demo_up_tt
+			custom_effect_tooltip = UKR_np_azov_up_tt
+			hidden_effect = {
+				set_country_flag = UKR_np_hero_present
+				add_to_variable = { UKR_np_demo = 5 }
+				add_to_variable = { UKR_np_azov = 2 }
+				UKR_np_update = yes
+				add_to_variable = { UKR_nationalist_lean = 1 }
+				UKR_clamp_leans = yes
+				add_to_variable = { European_Influence = 0.01 }
+				clamp_variable = { var = European_Influence min = 0 max = 1 }
+			}
+		}
+	}
+}

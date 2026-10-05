@@ -1,0 +1,101 @@
+# Шкала «Нация: гражданская или этническая» (PROPOSAL_nationalists.md, раздел 6; DESIGN.md, 8.4). Путь националистов, блок 3.
+# Стандартный баланс сил HOI4, как «дуализм ЛДПР» в TFR (SOV_LDPR_balance) и наша «Рада ↔ Банковая» (UKR_bop.txt).
+# Минус - гражданский национализм (служба важнее происхождения), плюс - этнический и ксенофобный.
+# Включается фокусом UKR_np_convent (set_power_balance), стартовое значение задаёт программа (UKR_np_apply_*),
+# двигается решениями окна «Совет нации», фокусами и событиями.
+UKR_np_civic_ethnic_balance = {
+	initial_value = 0
+	left_side = UKR_bop_np_civic
+	right_side = UKR_bop_np_ethnic
+	decision_category = UKR_nation_council
+
+	# Центр: национальный компромисс
+	range = {
+		id = UKR_bop_np_compromise
+		min = -0.1
+		max = 0.1
+		modifier = {
+			stability_factor = 0.02
+			political_power_factor = 0.03
+		}
+	}
+
+	side = {
+		id = UKR_bop_np_civic
+		icon = GFX_bop_UKR_np_civic
+
+		range = {
+			id = UKR_bop_np_civic_leads
+			min = -0.5
+			max = -0.1
+			modifier = {
+				stability_factor = 0.03
+				war_support_factor = 0.02
+			}
+		}
+		range = {
+			id = UKR_bop_np_civic_dominates
+			min = -0.8
+			max = -0.5
+			modifier = {
+				stability_factor = 0.05
+				war_support_factor = 0.03
+				conscription_factor = 0.03
+				political_power_factor = -0.05
+			}
+		}
+		range = {
+			id = UKR_bop_np_civic_edge
+			min = -1
+			max = -0.8
+			modifier = {
+				stability_factor = 0.05
+				war_support_factor = 0.03
+				conscription_factor = 0.04
+				political_power_factor = -0.10
+			}
+			on_activate = {
+				country_event = { id = ukraine_politics.730 days = 1 }
+			}
+		}
+	}
+
+	side = {
+		id = UKR_bop_np_ethnic
+		icon = GFX_bop_UKR_np_ethnic
+
+		range = {
+			id = UKR_bop_np_ethnic_leads
+			min = 0.1
+			max = 0.5
+			modifier = {
+				war_support_factor = 0.03
+				political_power_factor = 0.05
+				stability_factor = -0.02
+			}
+		}
+		range = {
+			id = UKR_bop_np_ethnic_dominates
+			min = 0.5
+			max = 0.8
+			modifier = {
+				war_support_factor = 0.05
+				political_power_factor = 0.10
+				stability_factor = -0.05
+			}
+		}
+		range = {
+			id = UKR_bop_np_ethnic_edge
+			min = 0.8
+			max = 1
+			modifier = {
+				war_support_factor = 0.06
+				political_power_factor = 0.15
+				stability_factor = -0.08
+			}
+			on_activate = {
+				country_event = { id = ukraine_politics.731 days = 1 }
+			}
+		}
+	}
+}

@@ -1,0 +1,147 @@
+# Блок 3, националисты: окно «Совет нации» (DESIGN.md, 8.4; PROPOSAL_nationalists.md, разделы 3 и 4.4)
+# Общие решения (шаг 1): дают политсилу и небольшие временные бонусы, двигают доли групп и шкалу
+# «Нация: гражданская или этническая» (UKR_np_civic_ethnic_balance: минус - гражданская, плюс - этническая).
+# Решения программ (по пунктам программ «Свободы» и Национального корпуса) добавляются в шаге 2.
+UKR_nation_council = {
+
+	# Ветеранский совет: политсила и короткий подъём призыва
+	UKR_nc_veteran_council = {
+		icon = GFX_decision_generic_political_discourse
+		available = {
+			has_country_flag = UKR_np_convent_done
+		}
+		days_re_enable = 150
+		cost = 10
+		days_remove = 14
+		ai_will_do = {
+			factor = 10
+		}
+		remove_effect = {
+			add_political_power = 40
+			add_timed_idea = { idea = UKR_np_boost_veterans days = 60 }
+			custom_effect_tooltip = UKR_np_demo_up_tt
+			hidden_effect = {
+				add_to_variable = { UKR_np_demo = 2 }
+				UKR_np_update = yes
+				add_to_variable = { UKR_nationalist_lean = 1 }
+				UKR_clamp_leans = yes
+			}
+		}
+	}
+
+	# Мемориальная неделя: стабильность и поддержка войны на полтора месяца
+	UKR_nc_memorial_week = {
+		icon = GFX_decision_generic_political_discourse
+		available = {
+			has_country_flag = UKR_np_convent_done
+		}
+		days_re_enable = 180
+		cost = 25
+		days_remove = 7
+		ai_will_do = {
+			factor = 10
+		}
+		remove_effect = {
+			add_political_power = 20
+			add_war_support = 0.03
+			add_timed_idea = { idea = UKR_np_boost_memorial days = 45 }
+			custom_effect_tooltip = UKR_np_svoboda_up_tt
+			hidden_effect = {
+				add_to_variable = { UKR_np_svoboda = 1 }
+				add_to_variable = { UKR_np_demo = 1 }
+				UKR_np_update = yes
+			}
+		}
+	}
+
+	# Лагерь «Пласта»: резерв и общество, шкала к гражданской нации
+	UKR_nc_plast_camp = {
+		icon = GFX_decision_generic_construction
+		available = {
+			has_country_flag = UKR_np_convent_done
+		}
+		days_re_enable = 365
+		cost = 30
+		days_remove = 30
+		ai_will_do = {
+			factor = 10
+		}
+		remove_effect = {
+			add_manpower = 3000
+			set_temp_variable = {
+				var = society_development_var_temp
+				value = 0.01
+			}
+			add_society_development = yes
+			add_power_balance_value = {
+				id = UKR_np_civic_ethnic_balance
+				value = -0.03
+			}
+			custom_effect_tooltip = UKR_np_demo_up_tt
+			hidden_effect = {
+				add_to_variable = { UKR_np_demo = 2 }
+				UKR_np_update = yes
+			}
+		}
+	}
+
+	# Переговоры с улицей: меньше «улицы», шкала к гражданской нации, партнёры спокойнее
+	UKR_nc_calm_street = {
+		icon = GFX_decision_generic_political_discourse
+		available = {
+			has_country_flag = UKR_np_convent_done
+		}
+		days_re_enable = 120
+		cost = 40
+		days_remove = 20
+		ai_will_do = {
+			factor = 10
+		}
+		remove_effect = {
+			add_stability = 0.01
+			add_power_balance_value = {
+				id = UKR_np_civic_ethnic_balance
+				value = -0.05
+			}
+			custom_effect_tooltip = UKR_np_street_down_tt
+			hidden_effect = {
+				add_to_variable = { UKR_np_street = -4 }
+				UKR_np_update = yes
+				add_to_variable = { European_Influence = 0.005 }
+				clamp_variable = { var = European_Influence min = 0 max = 1 }
+			}
+		}
+	}
+
+	# Национальное вече: много политсилы, но шкала к этнической нации и растёт «улица»
+	UKR_nc_national_rally = {
+		icon = GFX_decision_generic_political_discourse
+		available = {
+			has_country_flag = UKR_np_convent_done
+		}
+		days_re_enable = 120
+		cost = 0
+		days_remove = 10
+		ai_will_do = {
+			factor = 5
+		}
+		remove_effect = {
+			add_political_power = 50
+			add_war_support = 0.03
+			add_stability = -0.01
+			add_timed_idea = { idea = UKR_np_boost_rally days = 40 }
+			add_power_balance_value = {
+				id = UKR_np_civic_ethnic_balance
+				value = 0.05
+			}
+			custom_effect_tooltip = UKR_np_street_up_tt
+			hidden_effect = {
+				add_to_variable = { UKR_np_street = 3 }
+				add_to_variable = { UKR_np_svoboda = 2 }
+				UKR_np_update = yes
+				add_to_variable = { UKR_nationalist_lean = 1 }
+				UKR_clamp_leans = yes
+			}
+		}
+	}
+}

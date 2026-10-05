@@ -1,0 +1,151 @@
+# Путь националистов, блок 3 (PROPOSAL_nationalists.md, раздел 13; DESIGN.md, 8.4).
+# Четыре группы: UKR_np_demo (национал-демократы и ветераны), UKR_np_azov («Азовское движение»),
+# UKR_np_svoboda («Свобода», старая гвардия), UKR_np_street (улица). Сырые значения 0-100; игроку показывается ДОЛЯ власти
+# (UKR_np_*_pct, сумма около 100), считает UKR_np_calc_shares. «Зёрна» блоков 1-2: UKR_np_pre_demo / _azov / _svoboda / _street /
+# _right_union (по 2 очка группы за каждое зерно).
+
+# Старт групп на «Национальном конвенте»
+UKR_init_np_groups = {
+	set_variable = { UKR_np_demo = 30 }
+	set_variable = { UKR_np_azov = 30 }
+	set_variable = { UKR_np_svoboda = 20 }
+	set_variable = { UKR_np_street = 20 }
+	if = {
+		limit = { has_variable = UKR_np_pre_demo }
+		set_temp_variable = { UKR_np_seed = UKR_np_pre_demo }
+		multiply_temp_variable = { UKR_np_seed = 2 }
+		add_to_variable = { UKR_np_demo = UKR_np_seed }
+	}
+	if = {
+		limit = { has_variable = UKR_np_pre_azov }
+		set_temp_variable = { UKR_np_seed = UKR_np_pre_azov }
+		multiply_temp_variable = { UKR_np_seed = 2 }
+		add_to_variable = { UKR_np_azov = UKR_np_seed }
+	}
+	if = {
+		limit = { has_variable = UKR_np_pre_svoboda }
+		set_temp_variable = { UKR_np_seed = UKR_np_pre_svoboda }
+		multiply_temp_variable = { UKR_np_seed = 2 }
+		add_to_variable = { UKR_np_svoboda = UKR_np_seed }
+	}
+	if = {
+		limit = { has_variable = UKR_np_pre_street }
+		set_temp_variable = { UKR_np_seed = UKR_np_pre_street }
+		multiply_temp_variable = { UKR_np_seed = 2 }
+		add_to_variable = { UKR_np_street = UKR_np_seed }
+	}
+	# Единый кандидат правых (ukraine_politics.230) усилил и «Свободу», и «Азов»
+	if = {
+		limit = { has_variable = UKR_np_pre_right_union }
+		add_to_variable = { UKR_np_svoboda = UKR_np_pre_right_union }
+		add_to_variable = { UKR_np_azov = UKR_np_pre_right_union }
+	}
+	UKR_np_update = yes
+}
+
+# Использование: add_to_variable = { UKR_np_demo = 5 } затем UKR_np_update = yes
+UKR_np_update = {
+	clamp_variable = { var = UKR_np_demo min = 1 max = 100 }
+	clamp_variable = { var = UKR_np_azov min = 1 max = 100 }
+	clamp_variable = { var = UKR_np_svoboda min = 1 max = 100 }
+	clamp_variable = { var = UKR_np_street min = 1 max = 100 }
+	UKR_np_calc_shares = yes
+}
+
+# Доли власти в процентах (видны в окне «Совет нации» и в тексте конвента)
+UKR_np_calc_shares = {
+	set_temp_variable = { UKR_np_sum = UKR_np_demo }
+	add_to_temp_variable = { UKR_np_sum = UKR_np_azov }
+	add_to_temp_variable = { UKR_np_sum = UKR_np_svoboda }
+	add_to_temp_variable = { UKR_np_sum = UKR_np_street }
+	set_variable = { UKR_np_demo_pct = UKR_np_demo }
+	multiply_variable = { var = UKR_np_demo_pct value = 100 }
+	divide_variable = { var = UKR_np_demo_pct value = UKR_np_sum }
+	round_variable = UKR_np_demo_pct
+	set_variable = { UKR_np_azov_pct = UKR_np_azov }
+	multiply_variable = { var = UKR_np_azov_pct value = 100 }
+	divide_variable = { var = UKR_np_azov_pct value = UKR_np_sum }
+	round_variable = UKR_np_azov_pct
+	set_variable = { UKR_np_svoboda_pct = UKR_np_svoboda }
+	multiply_variable = { var = UKR_np_svoboda_pct value = 100 }
+	divide_variable = { var = UKR_np_svoboda_pct value = UKR_np_sum }
+	round_variable = UKR_np_svoboda_pct
+	set_variable = { UKR_np_street_pct = UKR_np_street }
+	multiply_variable = { var = UKR_np_street_pct value = 100 }
+	divide_variable = { var = UKR_np_street_pct value = UKR_np_sum }
+	round_variable = UKR_np_street_pct
+}
+
+# Программы конвента (ukraine_politics.700): флаг, идея-программа, шкала, судьба духа вмешательства, Билецкий в МВД.
+
+# Республика службы: гражданский национализм по службе
+UKR_np_apply_civic = {
+	set_country_flag = UKR_np_program_civic
+	add_ideas = UKR_np_republic_of_service
+	set_power_balance = {
+		id = UKR_np_civic_ethnic_balance
+		left_side = UKR_bop_np_civic
+		right_side = UKR_bop_np_ethnic
+		set_value = -0.3
+	}
+	if = {
+		limit = { has_idea = UKR_far_right_meddling }
+		swap_ideas = {
+			remove_idea = UKR_far_right_meddling
+			add_idea = UKR_np_veterans_integrated
+		}
+	}
+	else = {
+		add_ideas = UKR_np_veterans_integrated
+	}
+	UKR_clear_interior_minister = yes
+	add_ideas = UKR_biletsky_civic
+}
+
+# Армия-нация: государство-армия, азовская модель
+UKR_np_apply_army = {
+	set_country_flag = UKR_np_program_army
+	add_ideas = UKR_np_army_nation
+	set_power_balance = {
+		id = UKR_np_civic_ethnic_balance
+		left_side = UKR_bop_np_civic
+		right_side = UKR_bop_np_ethnic
+		set_value = 0
+	}
+	if = {
+		limit = { has_idea = UKR_far_right_meddling }
+		swap_ideas = {
+			remove_idea = UKR_far_right_meddling
+			add_idea = UKR_national_corps_patronage
+		}
+	}
+	else = {
+		add_ideas = UKR_national_corps_patronage
+	}
+	UKR_clear_interior_minister = yes
+	add_ideas = UKR_biletsky_army
+}
+
+# Рідний дім: этническое государство (путь с жёсткой ценой)
+UKR_np_apply_ethnic = {
+	set_country_flag = UKR_np_program_ethnic
+	add_ideas = UKR_np_native_home
+	set_power_balance = {
+		id = UKR_np_civic_ethnic_balance
+		left_side = UKR_bop_np_civic
+		right_side = UKR_bop_np_ethnic
+		set_value = 0.3
+	}
+	if = {
+		limit = { has_idea = UKR_far_right_meddling }
+		swap_ideas = {
+			remove_idea = UKR_far_right_meddling
+			add_idea = UKR_far_right_legalised
+		}
+	}
+	else = {
+		add_ideas = UKR_far_right_legalised
+	}
+	UKR_clear_interior_minister = yes
+	add_ideas = UKR_biletsky_ethnic
+}

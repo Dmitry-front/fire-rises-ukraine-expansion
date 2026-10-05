@@ -2439,7 +2439,7 @@ country_event = {
 			limit = { has_country_flag = UKR_yermak_trial }
 			hidden_effect = { country_event = { id = ukraine_politics.314 days = 25 } }
 		}
-		# Блок 3: дерево выбранной опоры. Написаны пути технократов и левых
+		# Блок 3: дерево выбранной опоры. Написаны пути технократов и левых, каркас пути националистов (ставка пока только при -debug)
 		if = {
 			limit = { has_country_flag = UKR_pillar_chosen_technocrats }
 			hidden_effect = {
@@ -2459,6 +2459,15 @@ country_event = {
 				}
 			}
 			hidden_effect = { country_event = { id = ukraine_politics.500 days = 1 } }
+		}
+		else_if = {
+			limit = { has_country_flag = UKR_pillar_chosen_nationalists }
+			hidden_effect = {
+				load_focus_tree = {
+					tree = UKR_block3_nationalists
+					keep_completed = yes
+				}
+			}
 		}
 	}
 }
@@ -4939,5 +4948,246 @@ country_event = {
 			add_to_variable = { UKR_np_pre_street = 1 }
 		}
 		ai_chance = { factor = 20 }
+	}
+}
+
+# ============================================================================
+# Путь националистов, блок 3, шаг 1 (PROPOSAL_nationalists.md, раздел 13).
+# 700 - выбор программы на конвенте, 701 - делёж власти, 730/731 - края шкалы «Гражданский ↔ Этнический».
+# ============================================================================
+
+# Национальный конвент: выбор программы (вызывается фокусом UKR_np_convent через 3 дня)
+country_event = {
+	id = ukraine_politics.700
+	title = ukraine_politics.700.t
+	desc = ukraine_politics.700.d
+	picture = GFX_report_event_ukrainian_civil_war
+
+	is_triggered_only = yes
+
+	trigger = {
+		tag = UKR
+	}
+
+	immediate = {
+		log = "[GetDateText]: [Root.GetName]: event ukraine_politics.700"
+	}
+
+	# Республика службы
+	option = {
+		name = ukraine_politics.700.a
+		custom_effect_tooltip = UKR_np_program_civic_tt
+		custom_effect_tooltip = UKR_np_biletsky_civic_tt
+		hidden_effect = {
+			UKR_np_apply_civic = yes
+			add_to_variable = { UKR_nationalist_lean = 1 }
+			UKR_clamp_leans = yes
+			country_event = { id = ukraine_politics.701 days = 2 }
+		}
+		ai_chance = { factor = 45 }
+	}
+
+	# Армия-нация
+	option = {
+		name = ukraine_politics.700.b
+		custom_effect_tooltip = UKR_np_program_army_tt
+		custom_effect_tooltip = UKR_np_biletsky_army_tt
+		hidden_effect = {
+			UKR_np_apply_army = yes
+			add_to_variable = { UKR_nationalist_lean = 2 }
+			add_to_variable = { UKR_authoritarian_lean = 1 }
+			UKR_clamp_leans = yes
+			country_event = { id = ukraine_politics.701 days = 2 }
+		}
+		ai_chance = { factor = 35 }
+	}
+
+	# Рідний дім
+	option = {
+		name = ukraine_politics.700.c
+		custom_effect_tooltip = UKR_np_program_ethnic_tt
+		custom_effect_tooltip = UKR_np_biletsky_ethnic_tt
+		hidden_effect = {
+			UKR_np_apply_ethnic = yes
+			add_to_variable = { UKR_nationalist_lean = 3 }
+			add_to_variable = { UKR_authoritarian_lean = 1 }
+			UKR_clamp_leans = yes
+			country_event = { id = ukraine_politics.701 days = 2 }
+		}
+		ai_chance = {
+			factor = 20
+			modifier = {
+				factor = 3
+				check_variable = { UKR_nationalist_lean > 49 }
+			}
+		}
+	}
+}
+
+# Конвент: делёж власти между четырьмя группами
+country_event = {
+	id = ukraine_politics.701
+	title = ukraine_politics.701.t
+	desc = ukraine_politics.701.d
+	picture = GFX_report_event_ukrainian_civil_war
+
+	is_triggered_only = yes
+
+	trigger = {
+		tag = UKR
+	}
+
+	# Паритет: каждой группе по равному куску
+	option = {
+		name = ukraine_politics.701.a
+		add_political_power = 30
+		add_stability = 0.01
+		ai_chance = { factor = 40 }
+	}
+
+	# Власть главной группе программы (цена: остальные обижены)
+	option = {
+		name = ukraine_politics.701.b
+		add_political_power = -10
+		add_stability = -0.01
+		custom_effect_tooltip = UKR_np_lead_group_up_tt
+		hidden_effect = {
+			if = {
+				limit = { has_country_flag = UKR_np_program_civic }
+				add_to_variable = { UKR_np_demo = 15 }
+				add_to_variable = { UKR_np_azov = 3 }
+			}
+			else_if = {
+				limit = { has_country_flag = UKR_np_program_army }
+				add_to_variable = { UKR_np_azov = 15 }
+				add_to_variable = { UKR_np_demo = 3 }
+			}
+			else = {
+				add_to_variable = { UKR_np_svoboda = 10 }
+				add_to_variable = { UKR_np_street = 8 }
+			}
+			UKR_np_update = yes
+		}
+		ai_chance = { factor = 35 }
+	}
+
+	# Широкая коалиция: должности всем, цена выше
+	option = {
+		name = ukraine_politics.701.c
+		add_political_power = -25
+		add_stability = 0.02
+		custom_effect_tooltip = UKR_np_all_up_tt
+		hidden_effect = {
+			add_to_variable = { UKR_np_demo = 5 }
+			add_to_variable = { UKR_np_azov = 5 }
+			add_to_variable = { UKR_np_svoboda = 5 }
+			add_to_variable = { UKR_np_street = 5 }
+			UKR_np_update = yes
+		}
+		ai_chance = { factor = 25 }
+	}
+}
+
+# Край шкалы, гражданский: «Служба засчитана всем» (вызывается шкалой)
+country_event = {
+	id = ukraine_politics.730
+	title = ukraine_politics.730.t
+	desc = ukraine_politics.730.d
+	picture = GFX_report_event_ukrainian_civil_war
+
+	is_triggered_only = yes
+
+	trigger = {
+		tag = UKR
+	}
+
+	# Принять
+	option = {
+		name = ukraine_politics.730.a
+		add_war_support = 0.03
+		add_manpower = 5000
+		custom_effect_tooltip = UKR_np_right_groups_down_tt
+		hidden_effect = {
+			add_to_variable = { UKR_np_svoboda = -4 }
+			add_to_variable = { UKR_np_street = -4 }
+			UKR_np_update = yes
+			add_to_variable = { European_Influence = 0.01 }
+			clamp_variable = { var = European_Influence min = 0 max = 1 }
+		}
+		ai_chance = { factor = 55 }
+	}
+
+	# Притормозить
+	option = {
+		name = ukraine_politics.730.b
+		add_political_power = -15
+		add_stability = 0.01
+		add_power_balance_value = {
+			id = UKR_np_civic_ethnic_balance
+			value = 0.25
+		}
+		ai_chance = { factor = 45 }
+	}
+}
+
+# Край шкалы, этнический: «Улица вышла из-под контроля» (вызывается шкалой)
+country_event = {
+	id = ukraine_politics.731
+	title = ukraine_politics.731.t
+	desc = ukraine_politics.731.d
+	picture = GFX_report_event_ukrainian_civil_war
+
+	is_triggered_only = yes
+
+	trigger = {
+		tag = UKR
+	}
+
+	# Жёстко остановить
+	option = {
+		name = ukraine_politics.731.a
+		add_political_power = -30
+		add_stability = 0.02
+		add_power_balance_value = {
+			id = UKR_np_civic_ethnic_balance
+			value = -0.3
+		}
+		custom_effect_tooltip = UKR_np_street_down_tt
+		hidden_effect = {
+			add_to_variable = { UKR_np_street = -8 }
+			UKR_np_update = yes
+		}
+		ai_chance = { factor = 45 }
+	}
+
+	# Договориться об «общественном патрулировании»
+	option = {
+		name = ukraine_politics.731.b
+		add_stability = -0.02
+		custom_effect_tooltip = UKR_np_street_up_tt
+		hidden_effect = {
+			add_to_variable = { UKR_np_street = 5 }
+			UKR_np_update = yes
+			add_to_variable = { European_Influence = -0.02 }
+			clamp_variable = { var = European_Influence min = 0 max = 1 }
+		}
+		ai_chance = { factor = 30 }
+	}
+
+	# Объявить это волей народа
+	option = {
+		name = ukraine_politics.731.c
+		add_war_support = 0.03
+		add_stability = -0.04
+		add_timed_idea = { idea = UKR_eu_aid_frozen days = 120 }
+		add_power_balance_value = {
+			id = UKR_np_civic_ethnic_balance
+			value = 0.05
+		}
+		hidden_effect = {
+			add_to_variable = { European_Influence = -0.03 }
+			clamp_variable = { var = European_Influence min = 0 max = 1 }
+		}
+		ai_chance = { factor = 25 }
 	}
 }

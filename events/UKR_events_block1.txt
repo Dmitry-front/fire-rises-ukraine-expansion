@@ -2259,3 +2259,346 @@ country_event = {
 		}
 	}
 }
+
+# ============================================================================
+# Путь националистов, блок 1 (сессия 11, PROPOSAL_nationalists.md, раздел 11).
+# Только малые события: митинги, слух, споры. Эффекты небольшие, скрытые «зёрна» UKR_np_pre_*
+# читаются позже, в «Национальном конвенте» блока 3. Картинки временные (CLAUDE.md, «Нужен арт»).
+# ============================================================================
+
+# --- 1 января 2021: факельное шествие ---
+country_event = {
+	id = ukraine.1010
+	title = ukraine.1010.t
+	desc = ukraine.1010.d
+	picture = GFX_report_event_ukrainian_civil_war
+
+	fire_only_once = yes
+
+	trigger = {
+		UKR_chronicle_quiet = yes
+		tag = UKR
+		date > 2020.12.31
+		has_country_leader = {
+			character = UKR_volodymyr_zelensky
+			ruling_only = yes
+		}
+	}
+
+	mean_time_to_happen = {
+		days = 3
+	}
+
+	immediate = {
+		UKR_chronicle_cooldown_start = yes
+	}
+
+	# Сопроводить колонну
+	option = {
+		name = ukraine.1010.a
+		add_political_power = 10
+		add_popularity = {
+			ideology = national_socialist
+			popularity = 0.01
+		}
+		set_country_flag = UKR_march_escorted
+		hidden_effect = {
+			add_to_variable = { UKR_nationalist_lean = 1 }
+			add_to_variable = { UKR_np_pre_svoboda = 1 }
+			add_to_variable = { European_Influence = -0.005 }
+			clamp_variable = { var = European_Influence min = 0 max = 1 }
+			UKR_clamp_leans = yes
+		}
+		ai_chance = { factor = 40 }
+	}
+
+	# Сократить маршрут
+	option = {
+		name = ukraine.1010.b
+		add_stability = 0.005
+		add_political_power = -5
+		set_country_flag = UKR_march_limited
+		hidden_effect = {
+			add_to_variable = { UKR_np_pre_street = 1 }
+			add_to_variable = { European_Influence = 0.005 }
+			clamp_variable = { var = European_Influence min = 0 max = 1 }
+		}
+		ai_chance = { factor = 35 }
+	}
+
+	# Не вмешиваться
+	option = {
+		name = ukraine.1010.c
+		add_stability = -0.005
+		hidden_effect = {
+			add_to_variable = { UKR_nationalist_lean = 1 }
+			add_to_variable = { UKR_np_pre_street = 1 }
+			UKR_clamp_leans = yes
+		}
+		ai_chance = { factor = 25 }
+	}
+}
+
+# --- Апрель - май 2020: слух «вирус против нации» ---
+country_event = {
+	id = ukraine.1011
+	title = ukraine.1011.t
+	desc = ukraine.1011.d
+	picture = GFX_Generic_COVID1
+
+	fire_only_once = yes
+
+	trigger = {
+		UKR_chronicle_quiet = yes
+		tag = UKR
+		date > 2020.4.20
+		has_country_flag = UKR_COVID_ongoing
+		has_country_leader = {
+			character = UKR_volodymyr_zelensky
+			ruling_only = yes
+		}
+	}
+
+	mean_time_to_happen = {
+		days = 6
+	}
+
+	immediate = {
+		UKR_chronicle_cooldown_start = yes
+	}
+
+	# Разобрать слухи фактами
+	option = {
+		name = ukraine.1011.a
+		add_stability = 0.005
+		add_political_power = 5
+		set_country_flag = UKR_conspiracy_debunked
+		hidden_effect = {
+			add_to_variable = { UKR_digital_lean = 1 }
+			UKR_clamp_leans = yes
+		}
+		ai_chance = { factor = 55 }
+	}
+
+	# Не реагировать
+	option = {
+		name = ukraine.1011.b
+		add_political_power = 10
+		set_country_flag = UKR_conspiracy_ignored
+		hidden_effect = {
+			add_to_variable = { UKR_nationalist_lean = 1 }
+			UKR_clamp_leans = yes
+		}
+		ai_chance = { factor = 25 }
+	}
+
+	# Подыграть тревоге
+	option = {
+		name = ukraine.1011.c
+		add_political_power = -10
+		add_stability = -0.005
+		add_popularity = {
+			ideology = national_socialist
+			popularity = 0.01
+		}
+		set_country_flag = UKR_conspiracy_embraced
+		hidden_effect = {
+			add_to_variable = { UKR_nationalist_lean = 2 }
+			add_to_variable = { UKR_authoritarian_lean = 1 }
+			add_to_variable = { UKR_np_pre_street = 1 }
+			UKR_clamp_leans = yes
+		}
+		ai_chance = { factor = 20 }
+	}
+}
+
+# --- 23 февраля 2021: приговор Стерненко и митинги ---
+country_event = {
+	id = ukraine.1012
+	title = ukraine.1012.t
+	desc = ukraine.1012.d
+	picture = GFX_report_event_ukrainian_civil_war
+
+	fire_only_once = yes
+
+	trigger = {
+		UKR_chronicle_quiet = yes
+		tag = UKR
+		date > 2021.2.22
+		has_country_leader = {
+			character = UKR_volodymyr_zelensky
+			ruling_only = yes
+		}
+	}
+
+	mean_time_to_happen = {
+		days = 4
+	}
+
+	immediate = {
+		UKR_chronicle_cooldown_start = yes
+	}
+
+	# Не вмешиваться
+	option = {
+		name = ukraine.1012.a
+		add_stability = 0.005
+		set_country_flag = UKR_sternenko_left_to_court
+		hidden_effect = {
+			add_to_variable = { UKR_np_pre_street = 1 }
+		}
+		ai_chance = { factor = 45 }
+	}
+
+	# Закон один для всех
+	option = {
+		name = ukraine.1012.b
+		add_political_power = 10
+		hidden_effect = {
+			add_to_variable = { UKR_nationalist_lean = 1 }
+			UKR_clamp_leans = yes
+		}
+		ai_chance = { factor = 35 }
+	}
+
+	# Поддержать смягчение
+	option = {
+		name = ukraine.1012.c
+		add_political_power = -10
+		add_popularity = {
+			ideology = national_socialist
+			popularity = 0.01
+		}
+		set_country_flag = UKR_sternenko_courted
+		hidden_effect = {
+			add_to_variable = { UKR_nationalist_lean = 2 }
+			add_to_variable = { UKR_authoritarian_lean = 1 }
+			add_to_variable = { UKR_np_pre_street = 2 }
+			UKR_clamp_leans = yes
+		}
+		ai_chance = { factor = 20 }
+	}
+}
+
+# --- 16 января 2021: закон о языке в сфере услуг ---
+country_event = {
+	id = ukraine.1013
+	title = ukraine.1013.t
+	desc = ukraine.1013.d
+	picture = GFX_report_event_ukrainian_civil_war
+
+	fire_only_once = yes
+
+	trigger = {
+		UKR_chronicle_quiet = yes
+		tag = UKR
+		date > 2021.1.15
+		has_country_leader = {
+			character = UKR_volodymyr_zelensky
+			ruling_only = yes
+		}
+	}
+
+	mean_time_to_happen = {
+		days = 2
+	}
+
+	immediate = {
+		UKR_chronicle_cooldown_start = yes
+	}
+
+	# Закон без поблажек
+	option = {
+		name = ukraine.1013.a
+		add_political_power = 10
+		add_stability = -0.005
+		set_country_flag = UKR_language_enforced
+		hidden_effect = {
+			add_to_variable = { UKR_nationalist_lean = 1 }
+			add_to_variable = { UKR_np_pre_svoboda = 1 }
+			UKR_clamp_leans = yes
+		}
+		ai_chance = { factor = 40 }
+	}
+
+	# Время привыкнуть
+	option = {
+		name = ukraine.1013.b
+		add_stability = 0.005
+		set_country_flag = UKR_language_transition
+		hidden_effect = {
+			add_to_variable = { UKR_np_pre_demo = 1 }
+		}
+		ai_chance = { factor = 40 }
+	}
+
+	# Отшутиться
+	option = {
+		name = ukraine.1013.c
+		add_political_power = 5
+		add_popularity = {
+			ideology = social_liberal
+			popularity = 0.005
+		}
+		ai_chance = { factor = 20 }
+	}
+}
+
+# --- Июнь 2021: «Героям слава» на форме сборной ---
+country_event = {
+	id = ukraine.1014
+	title = ukraine.1014.t
+	desc = ukraine.1014.d
+	picture = GFX_report_event_ukrainian_civil_war
+
+	fire_only_once = yes
+
+	trigger = {
+		UKR_chronicle_quiet = yes
+		tag = UKR
+		date > 2021.6.7
+		has_country_leader = {
+			character = UKR_volodymyr_zelensky
+			ruling_only = yes
+		}
+	}
+
+	mean_time_to_happen = {
+		days = 3
+	}
+
+	immediate = {
+		UKR_chronicle_cooldown_start = yes
+	}
+
+	# Настоять
+	option = {
+		name = ukraine.1014.a
+		add_political_power = -10
+		set_country_flag = UKR_hero_slogan_insist
+		hidden_effect = {
+			add_to_variable = { UKR_nationalist_lean = 1 }
+			add_to_variable = { UKR_np_pre_street = 1 }
+			UKR_clamp_leans = yes
+		}
+		ai_chance = { factor = 35 }
+	}
+
+	# Договориться
+	option = {
+		name = ukraine.1014.b
+		add_stability = 0.005
+		set_country_flag = UKR_hero_slogan_compromise
+		hidden_effect = {
+			add_to_variable = { UKR_np_pre_demo = 1 }
+		}
+		ai_chance = { factor = 45 }
+	}
+
+	# Передать решение федерации
+	option = {
+		name = ukraine.1014.c
+		add_political_power = 5
+		ai_chance = { factor = 20 }
+	}
+}

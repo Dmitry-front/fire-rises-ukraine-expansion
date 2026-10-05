@@ -144,4 +144,482 @@ UKR_nation_council = {
 			}
 		}
 	}
+
+	# ======================================================================
+	# Решения программ: реальные пункты программ «Свободы», Национального корпуса и Правого сектора
+	# (PROPOSAL_nationalists.md, раздел 4.4; пункты [ПРОВЕРИТЬ] по первоисточникам)
+	# ======================================================================
+
+	# --- Рідний дім («Свобода», Правый сектор) ---
+
+	# Все госучреждения и школы на украинском, школы меньшинств сохраняются
+	UKR_nc_language_law2 = {
+		icon = GFX_decision_generic_political_discourse
+		visible = {
+			has_country_flag = UKR_np_program_ethnic
+		}
+		available = {
+			has_country_flag = UKR_np_convent_done
+		}
+		fire_only_once = yes
+		cost = 50
+		days_remove = 30
+		ai_will_do = {
+			factor = 10
+		}
+		remove_effect = {
+			add_stability = -0.01
+			set_temp_variable = {
+				var = society_development_var_temp
+				value = 0.03
+			}
+			add_society_development = yes
+			add_power_balance_value = {
+				id = UKR_np_civic_ethnic_balance
+				value = 0.05
+			}
+			custom_effect_tooltip = UKR_np_svoboda_up_tt
+			custom_effect_tooltip = UKR_np_language_neighbours_tt
+			if = {
+				limit = { country_exists = HUN }
+				HUN = {
+					add_opinion_modifier = {
+						target = UKR
+						modifier = ukr_np_language_law
+					}
+				}
+			}
+			if = {
+				limit = { country_exists = ROM }
+				ROM = {
+					add_opinion_modifier = {
+						target = UKR
+						modifier = ukr_np_language_law
+					}
+				}
+			}
+			hidden_effect = {
+				add_to_variable = { UKR_np_svoboda = 3 }
+				UKR_np_update = yes
+				add_to_variable = { European_Influence = -0.01 }
+				clamp_variable = { var = European_Influence min = 0 max = 1 }
+			}
+		}
+	}
+
+	# Доля украинского в СМИ не ниже 78-90%
+	UKR_nc_media_quotas = {
+		icon = GFX_decision_generic_political_discourse
+		visible = {
+			has_country_flag = UKR_np_program_ethnic
+		}
+		available = {
+			has_country_flag = UKR_np_convent_done
+		}
+		fire_only_once = yes
+		cost = 40
+		days_remove = 20
+		ai_will_do = {
+			factor = 10
+		}
+		remove_effect = {
+			add_political_power = 20
+			add_stability = -0.01
+			add_power_balance_value = {
+				id = UKR_np_civic_ethnic_balance
+				value = 0.03
+			}
+			custom_effect_tooltip = UKR_np_svoboda_up_tt
+			hidden_effect = {
+				add_to_variable = { UKR_np_svoboda = 2 }
+				UKR_np_update = yes
+				add_to_variable = { European_Influence = -0.01 }
+				clamp_variable = { var = European_Influence min = 0 max = 1 }
+			}
+		}
+	}
+
+	# «Национальность» в паспорте
+	UKR_nc_passport_nation = {
+		icon = GFX_decision_generic_political_discourse
+		visible = {
+			has_country_flag = UKR_np_program_ethnic
+		}
+		available = {
+			has_country_flag = UKR_np_convent_done
+		}
+		fire_only_once = yes
+		cost = 35
+		days_remove = 20
+		ai_will_do = {
+			factor = 8
+		}
+		remove_effect = {
+			add_political_power = 30
+			add_stability = -0.02
+			add_power_balance_value = {
+				id = UKR_np_civic_ethnic_balance
+				value = 0.03
+			}
+			custom_effect_tooltip = UKR_np_svoboda_up_tt
+			hidden_effect = {
+				add_to_variable = { UKR_np_svoboda = 3 }
+				UKR_np_update = yes
+			}
+		}
+	}
+
+	# Люстрация: шаг вниз по лестнице коррупции
+	UKR_nc_lustration = {
+		icon = GFX_decision_generic_political_discourse
+		visible = {
+			has_country_flag = UKR_np_program_ethnic
+		}
+		available = {
+			has_country_flag = UKR_np_convent_done
+		}
+		fire_only_once = yes
+		cost = 45
+		days_remove = 30
+		ai_will_do = {
+			factor = 10
+		}
+		remove_effect = {
+			add_political_power = 30
+			add_stability = -0.02
+			add_power_balance_value = {
+				id = UKR_np_civic_ethnic_balance
+				value = 0.05
+			}
+			UKR_corruption_step_down = yes
+			custom_effect_tooltip = UKR_np_svoboda_up_tt
+			hidden_effect = {
+				add_to_variable = { UKR_np_svoboda = 2 }
+				add_to_variable = { UKR_np_street = 1 }
+				UKR_np_update = yes
+			}
+		}
+	}
+
+	# Реабилитация ОУН-УПА: спор с Варшавой
+	UKR_nc_rehab_upa = {
+		icon = GFX_decision_generic_political_discourse
+		visible = {
+			has_country_flag = UKR_np_program_ethnic
+		}
+		available = {
+			has_country_flag = UKR_np_convent_done
+		}
+		fire_only_once = yes
+		cost = 50
+		days_remove = 20
+		ai_will_do = {
+			factor = 5
+		}
+		remove_effect = {
+			add_power_balance_value = {
+				id = UKR_np_civic_ethnic_balance
+				value = 0.05
+			}
+			custom_effect_tooltip = UKR_np_svoboda_up_tt
+			custom_effect_tooltip = UKR_np_street_up_tt
+			custom_effect_tooltip = UKR_np_poland_dispute_tt
+			if = {
+				limit = { country_exists = POL }
+				POL = {
+					add_opinion_modifier = {
+						target = UKR
+						modifier = ukr_np_upa_dispute
+					}
+				}
+			}
+			hidden_effect = {
+				add_to_variable = { UKR_np_svoboda = 4 }
+				add_to_variable = { UKR_np_street = 3 }
+				UKR_np_update = yes
+				add_to_variable = { UKR_nationalist_lean = 3 }
+				UKR_clamp_leans = yes
+				add_to_variable = { European_Influence = -0.02 }
+				clamp_variable = { var = European_Influence min = 0 max = 1 }
+			}
+		}
+	}
+
+	# Визовый режим с Россией
+	UKR_nc_visa_russia = {
+		icon = GFX_decision_generic_political_discourse
+		visible = {
+			has_country_flag = UKR_np_program_ethnic
+		}
+		available = {
+			has_country_flag = UKR_np_convent_done
+		}
+		fire_only_once = yes
+		cost = 30
+		days_remove = 15
+		ai_will_do = {
+			factor = 10
+		}
+		remove_effect = {
+			add_war_support = 0.03
+			add_stability = -0.005
+			hidden_effect = {
+				add_to_variable = { Russian_Influence = -0.02 }
+				clamp_variable = { var = Russian_Influence min = 0 max = 1 }
+				add_to_variable = { UKR_np_svoboda = 1 }
+				UKR_np_update = yes
+			}
+		}
+	}
+
+	# Курс без Брюсселя (евроскептицизм Правого сектора): дорого
+	UKR_nc_no_brussels = {
+		icon = GFX_decision_generic_political_discourse
+		visible = {
+			has_country_flag = UKR_np_program_ethnic
+		}
+		available = {
+			has_country_flag = UKR_np_convent_done
+		}
+		fire_only_once = yes
+		cost = 60
+		days_remove = 40
+		ai_will_do = {
+			factor = 3
+		}
+		remove_effect = {
+			add_political_power = 50
+			add_timed_idea = { idea = UKR_eu_aid_frozen days = 180 }
+			add_power_balance_value = {
+				id = UKR_np_civic_ethnic_balance
+				value = 0.10
+			}
+			custom_effect_tooltip = UKR_np_svoboda_up_tt
+			custom_effect_tooltip = UKR_np_street_up_tt
+			hidden_effect = {
+				set_country_flag = UKR_np_no_brussels
+				add_to_variable = { UKR_np_svoboda = 3 }
+				add_to_variable = { UKR_np_street = 2 }
+				UKR_np_update = yes
+				add_to_variable = { European_Influence = -0.05 }
+				clamp_variable = { var = European_Influence min = 0 max = 1 }
+			}
+		}
+	}
+
+	# --- Армия-нация (Национальный корпус) ---
+
+	# Национализация стратегических предприятий под корпуса
+	UKR_nc_strategic_corps = {
+		icon = GFX_decision_generic_construction
+		visible = {
+			has_country_flag = UKR_np_program_army
+		}
+		available = {
+			has_country_flag = UKR_np_convent_done
+		}
+		fire_only_once = yes
+		cost = 60
+		days_remove = 45
+		ai_will_do = {
+			factor = 10
+		}
+		remove_effect = {
+			add_stability = -0.02
+			set_temp_variable = {
+				var = industrial_development_var_temp
+				value = 0.03
+			}
+			add_industrial_development = yes
+			set_temp_variable = {
+				var = military_development_var_temp
+				value = 0.03
+			}
+			add_military_development = yes
+			set_temp_variable = {
+				var = income_var_temp
+				value = -2
+			}
+			add_income_with_inflation = yes
+			UKR_oligarchs_step_down = yes
+			custom_effect_tooltip = UKR_np_azov_up_tt
+			hidden_effect = {
+				set_country_flag = UKR_np_strategic_corps
+				add_to_variable = { UKR_np_azov = 4 }
+				UKR_np_update = yes
+			}
+		}
+	}
+
+	# Военные школы при корпусах (повторяемое)
+	UKR_nc_military_schools = {
+		icon = GFX_decision_generic_construction
+		visible = {
+			has_country_flag = UKR_np_program_army
+		}
+		available = {
+			has_country_flag = UKR_np_convent_done
+		}
+		days_re_enable = 180
+		cost = 35
+		days_remove = 30
+		ai_will_do = {
+			factor = 10
+		}
+		remove_effect = {
+			set_temp_variable = {
+				var = military_development_var_temp
+				value = 0.02
+			}
+			add_military_development = yes
+			set_temp_variable = {
+				var = income_var_temp
+				value = -0.5
+			}
+			add_income_with_inflation = yes
+			add_timed_idea = { idea = UKR_np_boost_veterans days = 90 }
+			custom_effect_tooltip = UKR_np_azov_up_tt
+			hidden_effect = {
+				add_to_variable = { UKR_np_azov = 2 }
+				UKR_np_update = yes
+			}
+		}
+	}
+
+	# Статус добровольческих корпусов
+	UKR_nc_volunteer_corps_status = {
+		icon = GFX_decision_generic_construction
+		visible = {
+			has_country_flag = UKR_np_program_army
+		}
+		available = {
+			has_country_flag = UKR_np_convent_done
+		}
+		fire_only_once = yes
+		cost = 40
+		days_remove = 25
+		ai_will_do = {
+			factor = 10
+		}
+		remove_effect = {
+			add_manpower = 8000
+			add_stability = -0.01
+			add_power_balance_value = {
+				id = UKR_np_civic_ethnic_balance
+				value = 0.03
+			}
+			custom_effect_tooltip = UKR_np_azov_up_tt
+			hidden_effect = {
+				add_to_variable = { UKR_np_azov = 4 }
+				UKR_np_update = yes
+			}
+		}
+	}
+
+	# --- Республика службы (национал-демократы) ---
+
+	# Указ о гражданстве за службу
+	UKR_nc_service_decree = {
+		icon = GFX_decision_generic_political_discourse
+		visible = {
+			has_country_flag = UKR_np_program_civic
+		}
+		available = {
+			has_country_flag = UKR_np_convent_done
+		}
+		fire_only_once = yes
+		cost = 40
+		days_remove = 25
+		ai_will_do = {
+			factor = 10
+		}
+		remove_effect = {
+			add_manpower = 6000
+			add_war_support = 0.03
+			add_power_balance_value = {
+				id = UKR_np_civic_ethnic_balance
+				value = -0.05
+			}
+			custom_effect_tooltip = UKR_np_service_citizenship_tt
+			custom_effect_tooltip = UKR_np_demo_up_tt
+			hidden_effect = {
+				add_to_variable = { UKR_np_demo = 3 }
+				add_to_variable = { UKR_np_svoboda = -2 }
+				UKR_np_update = yes
+				add_to_variable = { European_Influence = 0.01 }
+				clamp_variable = { var = European_Influence min = 0 max = 1 }
+			}
+		}
+	}
+
+	# Крымскотатарские ветераны в Совете нации
+	UKR_nc_tatar_council = {
+		icon = GFX_decision_generic_political_discourse
+		visible = {
+			has_country_flag = UKR_np_program_civic
+		}
+		available = {
+			has_country_flag = UKR_np_convent_done
+		}
+		fire_only_once = yes
+		cost = 25
+		days_remove = 15
+		ai_will_do = {
+			factor = 10
+		}
+		remove_effect = {
+			add_political_power = 20
+			add_stability = 0.01
+			add_power_balance_value = {
+				id = UKR_np_civic_ethnic_balance
+				value = -0.03
+			}
+			custom_effect_tooltip = UKR_np_demo_up_tt
+			hidden_effect = {
+				add_to_variable = { UKR_np_demo = 3 }
+				UKR_np_update = yes
+				add_to_variable = { European_Influence = 0.01 }
+				clamp_variable = { var = European_Influence min = 0 max = 1 }
+			}
+		}
+	}
+
+	# Ветеранский бизнес: гранты (повторяемое)
+	UKR_nc_veteran_grants = {
+		icon = GFX_decision_generic_construction
+		visible = {
+			has_country_flag = UKR_np_program_civic
+		}
+		available = {
+			has_country_flag = UKR_np_convent_done
+		}
+		days_re_enable = 240
+		cost = 35
+		days_remove = 30
+		ai_will_do = {
+			factor = 10
+		}
+		remove_effect = {
+			set_temp_variable = {
+				var = income_var_temp
+				value = -1
+			}
+			add_income_with_inflation = yes
+			set_temp_variable = {
+				var = industrial_development_var_temp
+				value = 0.01
+			}
+			add_industrial_development = yes
+			set_temp_variable = {
+				var = poverty_development_var_temp
+				value = 0.01
+			}
+			add_poverty_development = yes
+			custom_effect_tooltip = UKR_np_demo_up_tt
+			hidden_effect = {
+				add_to_variable = { UKR_np_demo = 1 }
+				UKR_np_update = yes
+			}
+		}
+	}
 }

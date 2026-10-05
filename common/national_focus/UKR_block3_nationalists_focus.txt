@@ -156,6 +156,7 @@ focus_tree = {
 				UKR_clamp_leans = yes
 				add_to_variable = { European_Influence = -0.01 }
 				clamp_variable = { var = European_Influence min = 0 max = 1 }
+				country_event = { id = ukraine_politics.710 days = 5 }
 			}
 		}
 	}
@@ -197,6 +198,639 @@ focus_tree = {
 				UKR_clamp_leans = yes
 				add_to_variable = { European_Influence = 0.01 }
 				clamp_variable = { var = European_Influence min = 0 max = 1 }
+				country_event = { id = ukraine_politics.711 days = 5 }
+			}
+		}
+	}
+
+	# ======================================================================
+	# Республика службы: гражданский национализм (x = -6)
+	# ======================================================================
+
+	# Закон о ветеранах-гражданах
+	focus = {
+		id = UKR_np_civic_veterans_law
+		icon = GFX_goal_generic_political_pressure
+		prerequisite = { focus = UKR_np_heroes_upa focus = UKR_np_heroes_present }
+		allow_branch = { has_country_flag = UKR_np_program_civic }
+		relative_position_id = UKR_np_convent
+		x = -6
+		y = 3
+		cost = 6
+		available = {
+			has_country_leader = {
+				character = UKR_volodymyr_zelensky
+				ruling_only = yes
+			}
+		}
+		ai_will_do = {
+			factor = 15
+		}
+		completion_reward = {
+			add_political_power = 30
+			add_manpower = 4000
+			set_temp_variable = {
+				var = poverty_development_var_temp
+				value = 0.04
+			}
+			add_poverty_development = yes
+			set_temp_variable = {
+				var = income_var_temp
+				value = -2
+			}
+			add_income_with_inflation = yes
+			add_power_balance_value = {
+				id = UKR_np_civic_ethnic_balance
+				value = -0.05
+			}
+			custom_effect_tooltip = UKR_np_demo_up_tt
+			hidden_effect = {
+				set_country_flag = UKR_np_veterans_law
+				add_to_variable = { UKR_np_demo = 4 }
+				UKR_np_update = yes
+				add_to_variable = { UKR_nationalist_lean = 2 }
+				UKR_clamp_leans = yes
+			}
+		}
+	}
+
+	# Служба и гражданство
+	focus = {
+		id = UKR_np_civic_service_citizenship
+		icon = GFX_goal_generic_national_unity
+		prerequisite = { focus = UKR_np_civic_veterans_law }
+		relative_position_id = UKR_np_convent
+		x = -6
+		y = 4
+		cost = 5
+		available = {
+			has_country_leader = {
+				character = UKR_volodymyr_zelensky
+				ruling_only = yes
+			}
+		}
+		ai_will_do = {
+			factor = 15
+		}
+		completion_reward = {
+			add_war_support = 0.03
+			add_manpower = 8000
+			add_power_balance_value = {
+				id = UKR_np_civic_ethnic_balance
+				value = -0.05
+			}
+			custom_effect_tooltip = UKR_np_service_citizenship_tt
+			custom_effect_tooltip = UKR_np_demo_up_tt
+			custom_effect_tooltip = UKR_np_right_groups_down_tt
+			hidden_effect = {
+				set_country_flag = UKR_np_service_citizenship
+				add_to_variable = { UKR_np_demo = 3 }
+				add_to_variable = { UKR_np_svoboda = -3 }
+				UKR_np_update = yes
+				add_to_variable = { European_Influence = 0.01 }
+				clamp_variable = { var = European_Influence min = 0 max = 1 }
+			}
+		}
+	}
+
+	# Ветеранский кредит
+	focus = {
+		id = UKR_np_civic_veteran_credit
+		icon = GFX_goal_generic_consumer_goods
+		prerequisite = { focus = UKR_np_civic_service_citizenship }
+		relative_position_id = UKR_np_convent
+		x = -7
+		y = 5
+		cost = 5
+		available = {
+			has_country_leader = {
+				character = UKR_volodymyr_zelensky
+				ruling_only = yes
+			}
+		}
+		ai_will_do = {
+			factor = 10
+		}
+		completion_reward = {
+			set_temp_variable = {
+				var = income_var_temp
+				value = -2.5
+			}
+			add_income_with_inflation = yes
+			set_temp_variable = {
+				var = industrial_development_var_temp
+				value = 0.03
+			}
+			add_industrial_development = yes
+			set_temp_variable = {
+				var = poverty_development_var_temp
+				value = 0.03
+			}
+			add_poverty_development = yes
+			custom_effect_tooltip = UKR_np_demo_up_tt
+			hidden_effect = {
+				set_country_flag = UKR_np_veteran_credit
+				add_to_variable = { UKR_np_demo = 2 }
+				UKR_np_update = yes
+			}
+		}
+	}
+
+	# Лагеря «Пласта» и тероборона
+	focus = {
+		id = UKR_np_civic_plast_defense
+		icon = GFX_goal_generic_national_unity
+		prerequisite = { focus = UKR_np_civic_service_citizenship }
+		relative_position_id = UKR_np_convent
+		x = -5
+		y = 5
+		cost = 5
+		available = {
+			has_country_leader = {
+				character = UKR_volodymyr_zelensky
+				ruling_only = yes
+			}
+		}
+		ai_will_do = {
+			factor = 10
+		}
+		completion_reward = {
+			add_manpower = 5000
+			set_temp_variable = {
+				var = military_development_var_temp
+				value = 0.05
+			}
+			add_military_development = yes
+			set_temp_variable = {
+				var = society_development_var_temp
+				value = 0.02
+			}
+			add_society_development = yes
+			add_timed_idea = { idea = UKR_np_boost_veterans days = 180 }
+			custom_effect_tooltip = UKR_np_demo_up_tt
+			custom_effect_tooltip = UKR_np_azov_up_tt
+			hidden_effect = {
+				set_country_flag = UKR_np_plast_defense
+				add_to_variable = { UKR_np_demo = 2 }
+				add_to_variable = { UKR_np_azov = 2 }
+				UKR_np_update = yes
+			}
+		}
+	}
+
+	# Финал: Нация в строю
+	focus = {
+		id = UKR_np_civic_nation_in_ranks
+		icon = GFX_goal_generic_national_unity
+		prerequisite = { focus = UKR_np_civic_veteran_credit }
+		prerequisite = { focus = UKR_np_civic_plast_defense }
+		relative_position_id = UKR_np_convent
+		x = -6
+		y = 6
+		cost = 7
+		available = {
+			has_country_leader = {
+				character = UKR_volodymyr_zelensky
+				ruling_only = yes
+			}
+		}
+		ai_will_do = {
+			factor = 20
+		}
+		completion_reward = {
+			add_political_power = 50
+			add_ideas = UKR_np_nation_in_ranks
+			custom_effect_tooltip = UKR_np_final_civic_tt
+			change_economy_type_mixed_economy = yes
+			hidden_effect = {
+				set_country_flag = UKR_np_final_civic
+				add_to_variable = { UKR_nationalist_lean = 2 }
+				UKR_clamp_leans = yes
+			}
+		}
+	}
+
+	# ======================================================================
+	# Армия-нация: государство-армия, азовская модель (x = 0)
+	# ======================================================================
+
+	# Корпус-школа
+	focus = {
+		id = UKR_np_army_school
+		icon = GFX_goal_generic_political_pressure
+		prerequisite = { focus = UKR_np_heroes_upa focus = UKR_np_heroes_present }
+		allow_branch = { has_country_flag = UKR_np_program_army }
+		relative_position_id = UKR_np_convent
+		x = 0
+		y = 3
+		cost = 6
+		available = {
+			has_country_leader = {
+				character = UKR_volodymyr_zelensky
+				ruling_only = yes
+			}
+		}
+		ai_will_do = {
+			factor = 15
+		}
+		completion_reward = {
+			add_political_power = 25
+			add_war_support = 0.03
+			add_manpower = 3000
+			set_temp_variable = {
+				var = military_development_var_temp
+				value = 0.06
+			}
+			add_military_development = yes
+			set_temp_variable = {
+				var = income_var_temp
+				value = -2
+			}
+			add_income_with_inflation = yes
+			custom_effect_tooltip = UKR_np_azov_up_tt
+			hidden_effect = {
+				set_country_flag = UKR_np_army_school
+				add_to_variable = { UKR_np_azov = 5 }
+				UKR_np_update = yes
+				add_to_variable = { UKR_nationalist_lean = 2 }
+				UKR_clamp_leans = yes
+			}
+		}
+	}
+
+	# Ветеранские артели
+	focus = {
+		id = UKR_np_army_artels
+		icon = GFX_goal_generic_construct_civ_factory
+		prerequisite = { focus = UKR_np_army_school }
+		relative_position_id = UKR_np_convent
+		x = 0
+		y = 4
+		cost = 5
+		available = {
+			has_country_leader = {
+				character = UKR_volodymyr_zelensky
+				ruling_only = yes
+			}
+		}
+		ai_will_do = {
+			factor = 15
+		}
+		completion_reward = {
+			set_temp_variable = {
+				var = industrial_development_var_temp
+				value = 0.04
+			}
+			add_industrial_development = yes
+			set_temp_variable = {
+				var = income_var_temp
+				value = -3
+			}
+			add_income_with_inflation = yes
+			custom_effect_tooltip = UKR_np_azov_up_tt
+			custom_effect_tooltip = UKR_np_demo_up_tt
+			hidden_effect = {
+				set_country_flag = UKR_np_army_artels
+				add_to_variable = { UKR_np_azov = 2 }
+				add_to_variable = { UKR_np_demo = 1 }
+				UKR_np_update = yes
+			}
+		}
+	}
+
+	# Ось Балтика - Чёрное море
+	focus = {
+		id = UKR_np_army_axis
+		icon = GFX_goal_generic_trade
+		prerequisite = { focus = UKR_np_army_artels }
+		relative_position_id = UKR_np_convent
+		x = -1
+		y = 5
+		cost = 5
+		available = {
+			has_country_leader = {
+				character = UKR_volodymyr_zelensky
+				ruling_only = yes
+			}
+		}
+		ai_will_do = {
+			factor = 10
+		}
+		completion_reward = {
+			add_political_power = 20
+			custom_effect_tooltip = UKR_np_axis_tt
+			if = {
+				limit = { country_exists = ROM }
+				ROM = {
+					add_opinion_modifier = {
+						target = UKR
+						modifier = ukr_np_axis_overture
+					}
+				}
+			}
+			if = {
+				limit = {
+					country_exists = POL
+					NOT = { has_country_flag = UKR_np_hero_upa }
+				}
+				POL = {
+					add_opinion_modifier = {
+						target = UKR
+						modifier = ukr_np_axis_overture
+					}
+				}
+			}
+			hidden_effect = {
+				set_country_flag = UKR_np_axis
+				add_to_variable = { UKR_np_azov = 2 }
+				UKR_np_update = yes
+				add_to_variable = { Russian_Influence = -0.01 }
+				clamp_variable = { var = Russian_Influence min = 0 max = 1 }
+			}
+		}
+	}
+
+	# Оружие гражданам
+	focus = {
+		id = UKR_np_army_arms
+		icon = GFX_goal_generic_construct_civ_factory
+		prerequisite = { focus = UKR_np_army_artels }
+		relative_position_id = UKR_np_convent
+		x = 1
+		y = 5
+		cost = 5
+		available = {
+			has_country_leader = {
+				character = UKR_volodymyr_zelensky
+				ruling_only = yes
+			}
+		}
+		ai_will_do = {
+			factor = 10
+		}
+		completion_reward = {
+			add_manpower = 10000
+			add_war_support = 0.03
+			add_stability = -0.02
+			custom_effect_tooltip = UKR_np_azov_up_tt
+			custom_effect_tooltip = UKR_np_street_up_tt
+			hidden_effect = {
+				set_country_flag = UKR_np_army_arms
+				add_to_variable = { UKR_np_azov = 2 }
+				add_to_variable = { UKR_np_street = 3 }
+				UKR_np_update = yes
+				add_to_variable = { UKR_nationalist_lean = 2 }
+				UKR_clamp_leans = yes
+			}
+		}
+	}
+
+	# Финал: Армия-нация
+	focus = {
+		id = UKR_np_army_final
+		icon = GFX_goal_generic_political_pressure
+		prerequisite = { focus = UKR_np_army_axis }
+		prerequisite = { focus = UKR_np_army_arms }
+		relative_position_id = UKR_np_convent
+		x = 0
+		y = 6
+		cost = 7
+		available = {
+			has_country_leader = {
+				character = UKR_volodymyr_zelensky
+				ruling_only = yes
+			}
+		}
+		ai_will_do = {
+			factor = 20
+		}
+		completion_reward = {
+			add_political_power = 50
+			add_ideas = UKR_np_army_nation_final
+			custom_effect_tooltip = UKR_np_final_army_tt
+			change_economy_type_military_controlled = yes
+			hidden_effect = {
+				set_country_flag = UKR_np_final_army
+				add_to_variable = { UKR_nationalist_lean = 2 }
+				add_to_variable = { UKR_authoritarian_lean = 2 }
+				UKR_clamp_leans = yes
+			}
+		}
+	}
+
+	# ======================================================================
+	# Рідний дім: этническое государство, путь с жёсткой ценой (x = 6)
+	# ======================================================================
+
+	# Язык и школа
+	focus = {
+		id = UKR_np_ethnic_language_school
+		icon = GFX_goal_generic_national_unity
+		prerequisite = { focus = UKR_np_heroes_upa focus = UKR_np_heroes_present }
+		allow_branch = { has_country_flag = UKR_np_program_ethnic }
+		relative_position_id = UKR_np_convent
+		x = 6
+		y = 3
+		cost = 6
+		available = {
+			has_country_leader = {
+				character = UKR_volodymyr_zelensky
+				ruling_only = yes
+			}
+		}
+		ai_will_do = {
+			factor = 15
+		}
+		completion_reward = {
+			add_political_power = 30
+			add_stability = -0.01
+			set_temp_variable = {
+				var = society_development_var_temp
+				value = 0.04
+			}
+			add_society_development = yes
+			add_power_balance_value = {
+				id = UKR_np_civic_ethnic_balance
+				value = 0.05
+			}
+			custom_effect_tooltip = UKR_np_svoboda_up_tt
+			custom_effect_tooltip = UKR_np_language_neighbours_tt
+			if = {
+				limit = { country_exists = HUN }
+				HUN = {
+					add_opinion_modifier = {
+						target = UKR
+						modifier = ukr_np_language_law
+					}
+				}
+			}
+			if = {
+				limit = { country_exists = ROM }
+				ROM = {
+					add_opinion_modifier = {
+						target = UKR
+						modifier = ukr_np_language_law
+					}
+				}
+			}
+			hidden_effect = {
+				set_country_flag = UKR_np_language_school
+				add_to_variable = { UKR_np_svoboda = 5 }
+				UKR_np_update = yes
+				add_to_variable = { UKR_nationalist_lean = 3 }
+				UKR_clamp_leans = yes
+				add_to_variable = { European_Influence = -0.01 }
+				clamp_variable = { var = European_Influence min = 0 max = 1 }
+			}
+		}
+	}
+
+	# Единая церковь
+	focus = {
+		id = UKR_np_ethnic_church
+		icon = GFX_goal_generic_national_unity
+		prerequisite = { focus = UKR_np_ethnic_language_school }
+		relative_position_id = UKR_np_convent
+		x = 6
+		y = 4
+		cost = 5
+		available = {
+			has_country_leader = {
+				character = UKR_volodymyr_zelensky
+				ruling_only = yes
+			}
+		}
+		ai_will_do = {
+			factor = 15
+		}
+		completion_reward = {
+			add_stability = -0.02
+			add_war_support = 0.03
+			set_temp_variable = {
+				var = society_development_var_temp
+				value = 0.02
+			}
+			add_society_development = yes
+			add_power_balance_value = {
+				id = UKR_np_civic_ethnic_balance
+				value = 0.03
+			}
+			custom_effect_tooltip = UKR_np_svoboda_up_tt
+			hidden_effect = {
+				set_country_flag = UKR_np_unified_church
+				add_to_variable = { UKR_np_svoboda = 3 }
+				UKR_np_update = yes
+				add_to_variable = { Russian_Influence = -0.02 }
+				clamp_variable = { var = Russian_Influence min = 0 max = 1 }
+			}
+		}
+	}
+
+	# Национальная экономика
+	focus = {
+		id = UKR_np_ethnic_economy
+		icon = GFX_goal_generic_consumer_goods
+		prerequisite = { focus = UKR_np_ethnic_church }
+		relative_position_id = UKR_np_convent
+		x = 5
+		y = 5
+		cost = 5
+		available = {
+			has_country_leader = {
+				character = UKR_volodymyr_zelensky
+				ruling_only = yes
+			}
+		}
+		ai_will_do = {
+			factor = 10
+		}
+		completion_reward = {
+			add_ideas = UKR_np_import_substitution
+			set_temp_variable = {
+				var = industrial_development_var_temp
+				value = 0.05
+			}
+			add_industrial_development = yes
+			set_temp_variable = {
+				var = income_var_temp
+				value = -2.5
+			}
+			add_income_with_inflation = yes
+			hidden_effect = {
+				set_country_flag = UKR_np_ethnic_economy
+				add_to_variable = { European_Influence = -0.01 }
+				clamp_variable = { var = European_Influence min = 0 max = 1 }
+			}
+		}
+	}
+
+	# Закон о гражданстве
+	focus = {
+		id = UKR_np_ethnic_citizenship
+		icon = GFX_goal_generic_political_pressure
+		prerequisite = { focus = UKR_np_ethnic_church }
+		relative_position_id = UKR_np_convent
+		x = 7
+		y = 5
+		cost = 5
+		available = {
+			has_country_leader = {
+				character = UKR_volodymyr_zelensky
+				ruling_only = yes
+			}
+		}
+		ai_will_do = {
+			factor = 10
+		}
+		completion_reward = {
+			add_political_power = 30
+			add_stability = -0.01
+			add_power_balance_value = {
+				id = UKR_np_civic_ethnic_balance
+				value = 0.05
+			}
+			custom_effect_tooltip = UKR_np_svoboda_up_tt
+			custom_effect_tooltip = UKR_np_street_up_tt
+			hidden_effect = {
+				set_country_flag = UKR_np_citizenship_law
+				add_to_variable = { UKR_np_svoboda = 3 }
+				add_to_variable = { UKR_np_street = 2 }
+				UKR_np_update = yes
+				add_to_variable = { European_Influence = -0.01 }
+				clamp_variable = { var = European_Influence min = 0 max = 1 }
+			}
+		}
+	}
+
+	# Финал: Рідний дім
+	focus = {
+		id = UKR_np_ethnic_final
+		icon = GFX_goal_generic_national_unity
+		prerequisite = { focus = UKR_np_ethnic_economy }
+		prerequisite = { focus = UKR_np_ethnic_citizenship }
+		relative_position_id = UKR_np_convent
+		x = 6
+		y = 6
+		cost = 7
+		available = {
+			has_country_leader = {
+				character = UKR_volodymyr_zelensky
+				ruling_only = yes
+			}
+		}
+		ai_will_do = {
+			factor = 20
+		}
+		completion_reward = {
+			add_political_power = 50
+			add_ideas = UKR_np_native_home_final
+			custom_effect_tooltip = UKR_np_final_ethnic_tt
+			change_economy_type_corporatism = yes
+			hidden_effect = {
+				set_country_flag = UKR_np_final_ethnic
+				add_to_variable = { UKR_nationalist_lean = 3 }
+				add_to_variable = { UKR_authoritarian_lean = 2 }
+				UKR_clamp_leans = yes
 			}
 		}
 	}

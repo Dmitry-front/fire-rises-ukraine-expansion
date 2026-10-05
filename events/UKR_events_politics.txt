@@ -5191,3 +5191,220 @@ country_event = {
 		ai_chance = { factor = 25 }
 	}
 }
+
+# ============================================================================
+# Путь националистов, блок 3, шаг 2: развилка героев и «Поле Марса» (PROPOSAL_nationalists.md, раздел 5).
+# 710 - после фокуса «Герои УПА», 711 - после «Героев нашего времени» (вызов через 5 дней), 712 - ответ Варшавы.
+# Выбор в событиях делает игрок (президент): как проводить церемонию.
+# ============================================================================
+
+# Поле Марса: возвращение имён (перезахоронение бойцов освободительной борьбы XX века)
+country_event = {
+	id = ukraine_politics.710
+	title = ukraine_politics.710.t
+	desc = ukraine_politics.710.d
+	picture = GFX_report_event_ukrainian_civil_war
+
+	is_triggered_only = yes
+
+	trigger = {
+		tag = UKR
+	}
+
+	# Приехать и выступить
+	option = {
+		name = ukraine_politics.710.a
+		add_political_power = 20
+		add_stability = -0.01
+		custom_effect_tooltip = UKR_np_svoboda_up_tt
+		custom_effect_tooltip = UKR_np_street_up_tt
+		hidden_effect = {
+			set_country_flag = UKR_np_upa_speech
+			add_to_variable = { UKR_np_svoboda = 3 }
+			add_to_variable = { UKR_np_street = 2 }
+			UKR_np_update = yes
+			add_to_variable = { UKR_nationalist_lean = 2 }
+			UKR_clamp_leans = yes
+			add_to_variable = { European_Influence = -0.02 }
+			clamp_variable = { var = European_Influence min = 0 max = 1 }
+			country_event = { id = ukraine_politics.712 days = 5 }
+		}
+		ai_chance = { factor = 30 }
+	}
+
+	# Прислать делегацию во главе с министром
+	option = {
+		name = ukraine_politics.710.b
+		add_political_power = 10
+		custom_effect_tooltip = UKR_np_svoboda_up_tt
+		hidden_effect = {
+			set_country_flag = UKR_np_upa_delegation
+			add_to_variable = { UKR_np_svoboda = 1 }
+			UKR_np_update = yes
+			add_to_variable = { European_Influence = -0.01 }
+			clamp_variable = { var = European_Influence min = 0 max = 1 }
+			country_event = { id = ukraine_politics.712 days = 8 }
+		}
+		ai_chance = { factor = 40 }
+	}
+
+	# Церемония без политических лозунгов
+	option = {
+		name = ukraine_politics.710.c
+		add_stability = 0.01
+		custom_effect_tooltip = UKR_np_demo_up_tt
+		hidden_effect = {
+			set_country_flag = UKR_np_upa_quiet
+			add_to_variable = { UKR_np_demo = 2 }
+			add_to_variable = { UKR_np_svoboda = -1 }
+			UKR_np_update = yes
+		}
+		ai_chance = { factor = 30 }
+	}
+}
+
+# Поле Марса: прощание с героями нашего времени
+country_event = {
+	id = ukraine_politics.711
+	title = ukraine_politics.711.t
+	desc = ukraine_politics.711.d
+	picture = GFX_report_event_ukrainian_civil_war
+
+	is_triggered_only = yes
+
+	trigger = {
+		tag = UKR
+	}
+
+	# Стоять в строю вместе с семьями
+	option = {
+		name = ukraine_politics.711.a
+		add_stability = 0.02
+		add_war_support = 0.03
+		add_power_balance_value = {
+			id = UKR_np_civic_ethnic_balance
+			value = -0.03
+		}
+		custom_effect_tooltip = UKR_np_demo_up_tt
+		hidden_effect = {
+			set_country_flag = UKR_np_present_with_families
+			add_to_variable = { UKR_np_demo = 3 }
+			UKR_np_update = yes
+			add_to_variable = { UKR_nationalist_lean = 1 }
+			UKR_clamp_leans = yes
+			add_to_variable = { European_Influence = 0.01 }
+			clamp_variable = { var = European_Influence min = 0 max = 1 }
+		}
+		ai_chance = { factor = 45 }
+	}
+
+	# Короткая речь и минута молчания
+	option = {
+		name = ukraine_politics.711.b
+		add_political_power = 10
+		add_stability = 0.01
+		custom_effect_tooltip = UKR_np_demo_up_tt
+		hidden_effect = {
+			set_country_flag = UKR_np_present_speech
+			add_to_variable = { UKR_np_demo = 1 }
+			UKR_np_update = yes
+		}
+		ai_chance = { factor = 35 }
+	}
+
+	# Передать организацию Министерству ветеранов
+	option = {
+		name = ukraine_politics.711.c
+		add_political_power = 15
+		hidden_effect = {
+			set_country_flag = UKR_np_present_delegated
+			add_to_variable = { UKR_np_svoboda = -1 }
+			UKR_np_update = yes
+		}
+		ai_chance = { factor = 20 }
+	}
+}
+
+# Ответ Варшавы на «Героев УПА» (вызывается из 710.a и 710.b)
+country_event = {
+	id = ukraine_politics.712
+	title = ukraine_politics.712.t
+	desc = ukraine_politics.712.d
+	picture = GFX_report_event_ukrainian_civil_war
+
+	is_triggered_only = yes
+
+	trigger = {
+		tag = UKR
+	}
+
+	# Нота и совместная комиссия историков
+	option = {
+		name = ukraine_politics.712.a
+		add_political_power = -10
+		add_stability = 0.005
+		custom_effect_tooltip = UKR_np_poland_dialogue_tt
+		if = {
+			limit = { country_exists = POL }
+			POL = {
+				add_opinion_modifier = {
+					target = UKR
+					modifier = ukr_np_upa_dialogue
+				}
+			}
+		}
+		hidden_effect = {
+			add_to_variable = { UKR_np_svoboda = -2 }
+			UKR_np_update = yes
+			add_to_variable = { European_Influence = 0.01 }
+			clamp_variable = { var = European_Influence min = 0 max = 1 }
+		}
+		ai_chance = { factor = 45 }
+	}
+
+	# Внутреннее дело Украины
+	option = {
+		name = ukraine_politics.712.b
+		custom_effect_tooltip = UKR_np_poland_dispute_tt
+		if = {
+			limit = { country_exists = POL }
+			POL = {
+				add_opinion_modifier = {
+					target = UKR
+					modifier = ukr_np_upa_dispute
+				}
+			}
+		}
+		hidden_effect = {
+			add_to_variable = { UKR_np_svoboda = 1 }
+			UKR_np_update = yes
+			add_to_variable = { UKR_nationalist_lean = 1 }
+			UKR_clamp_leans = yes
+			add_to_variable = { European_Influence = -0.01 }
+			clamp_variable = { var = European_Influence min = 0 max = 1 }
+		}
+		ai_chance = { factor = 25 }
+	}
+
+	# Компромисс: эксгумации возобновить, памятники оставить
+	option = {
+		name = ukraine_politics.712.c
+		add_political_power = -15
+		custom_effect_tooltip = UKR_np_poland_dialogue_tt
+		if = {
+			limit = { country_exists = POL }
+			POL = {
+				add_opinion_modifier = {
+					target = UKR
+					modifier = ukr_np_upa_dialogue
+				}
+			}
+		}
+		hidden_effect = {
+			add_to_variable = { UKR_np_svoboda = -1 }
+			add_to_variable = { UKR_np_demo = 1 }
+			UKR_np_update = yes
+		}
+		ai_chance = { factor = 30 }
+	}
+}

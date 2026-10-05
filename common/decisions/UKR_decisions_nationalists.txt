@@ -516,6 +516,32 @@ UKR_nation_council = {
 		}
 	}
 
+	# --- Все программы: «Ядерный вопрос» открывается при высокой мировой напряжённости ---
+
+	# Заявление об аудите ядерного потенциала (без создания оружия). Условие: world_tension > 0.5 ([ПРОВЕРИТЬ] в игре)
+	UKR_nc_nuclear_question = {
+		icon = GFX_decision_generic_political_discourse
+		visible = {
+			has_country_flag = UKR_np_convent_done
+			NOT = { has_country_flag = UKR_np_nuclear_done }
+		}
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = UKR_np_world_tension_tt
+				world_tension > 0.5
+			}
+		}
+		fire_only_once = yes
+		cost = 60
+		days_remove = 10
+		ai_will_do = {
+			factor = 3
+		}
+		remove_effect = {
+			country_event = { id = ukraine_politics.740 }
+		}
+	}
+
 	# --- Республика службы (национал-демократы) ---
 
 	# Указ о гражданстве за службу

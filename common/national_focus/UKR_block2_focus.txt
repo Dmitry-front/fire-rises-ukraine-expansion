@@ -358,18 +358,8 @@ focus_tree = {
 		x = 3
 		y = 3
 		cost = 5
-		# Дерево пути ещё строится (шаг 1 из 3 готов): без этого игрок остался бы на 304 с неполным деревом.
-		# Для теста запустить игру с -debug (is_debug); в конце шага 3 заменить условие на постоянное разрешение
-		# (set_country_flag = UKR_np_path_ready в фокусе блока 2 или убрать блок available целиком).
-		available = {
-			custom_trigger_tooltip = {
-				tooltip = UKR_b2_bet_not_ready_tt
-				OR = {
-					has_country_flag = UKR_np_path_ready
-					is_debug = yes
-				}
-			}
-		}
+		# Дерево пути готово (шаги 1-3, PROPOSAL_nationalists.md): блокировка снята 05.10.2026.
+		# Военное дерево пути (DESIGN.md, 8.5) ещё впереди.
 		ai_will_do = {
 			factor = 10
 			modifier = {

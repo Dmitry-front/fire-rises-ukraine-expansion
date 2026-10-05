@@ -1,0 +1,1198 @@
+add_namespace = ukraine_politics
+
+# Путь националистов, блок 3, шаг 3 (PROPOSAL_nationalists.md, разделы 3.1, 6.1, 6.2, 13).
+# 720-723: Парубий (убит 30.08.2025), охота на активистов, прощание, преемник.
+# 740, 749: «Ядерный вопрос» (глобальный world_tension > 0.5, [ПРОВЕРИТЬ] имя и шкалу триггера в игре).
+# 750-755: юмор из реальных интернет-споров; 770-775: история национального движения; 781-784: реакции программ.
+# Случайные события (750-755, 770-775, 781-784): раз в игру, пауза не меньше 40 дней (флаг UKR_np_flavor_cd).
+# Реальные люди: подача нейтральная, без выдуманных цитат; смерть Парубия - без юмора.
+
+# ============================================================================
+# Парубий и «теневая война»
+# ============================================================================
+
+# Охота на активистов: нападения на публичных людей (с сентября 2024, без имён пострадавших)
+country_event = {
+	id = ukraine_politics.723
+	title = ukraine_politics.723.t
+	desc = ukraine_politics.723.d
+	picture = GFX_report_event_ukrainian_civil_war
+
+	fire_only_once = yes
+
+	trigger = {
+		tag = UKR
+		date > 2024.8.31
+		has_country_flag = UKR_np_convent_done
+	}
+
+	mean_time_to_happen = {
+		days = 5
+	}
+
+	# Усилить охрану
+	option = {
+		name = ukraine_politics.723.a
+		add_political_power = -15
+		add_stability = 0.01
+		add_timed_idea = { idea = UKR_hunt_on_activists days = 300 }
+		ai_chance = { factor = 45 }
+	}
+
+	# Следствие идёт
+	option = {
+		name = ukraine_politics.723.b
+		add_political_power = 5
+		add_timed_idea = { idea = UKR_hunt_on_activists days = 420 }
+		ai_chance = { factor = 35 }
+	}
+
+	# Ужесточить меры безопасности
+	option = {
+		name = ukraine_politics.723.c
+		add_political_power = 20
+		add_stability = -0.01
+		add_timed_idea = { idea = UKR_hunt_on_activists days = 420 }
+		hidden_effect = {
+			add_to_variable = { UKR_authoritarian_lean = 2 }
+			UKR_clamp_leans = yes
+		}
+		ai_chance = { factor = 20 }
+	}
+}
+
+# Выстрелы во Львове, 30.08.2025 (реальное событие, подача по сообщениям)
+country_event = {
+	id = ukraine_politics.720
+	title = ukraine_politics.720.t
+	desc = ukraine_politics.720.d
+	picture = GFX_report_event_ukrainian_civil_war
+
+	fire_only_once = yes
+
+	trigger = {
+		tag = UKR
+		date > 2025.8.29
+		has_country_flag = UKR_np_convent_done
+		NOT = { has_country_flag = UKR_parubiy_killed }
+		OR = {
+			has_country_flag = UKR_np_program_civic
+			has_country_flag = UKR_np_program_army
+			has_country_flag = UKR_np_program_ethnic
+		}
+	}
+
+	mean_time_to_happen = {
+		days = 1
+	}
+
+	immediate = {
+		log = "[GetDateText]: [Root.GetName]: event ukraine_politics.720"
+		hidden_effect = {
+			set_country_flag = UKR_parubiy_killed
+			if = {
+				limit = { has_idea = UKR_parubiy_face }
+				swap_ideas = {
+					remove_idea = UKR_parubiy_face
+					add_idea = UKR_parubiy_legacy
+				}
+			}
+			else = {
+				add_ideas = UKR_parubiy_legacy
+			}
+			country_event = { id = ukraine_politics.721 days = 3 }
+		}
+	}
+
+	# Национальный траур
+	option = {
+		name = ukraine_politics.720.a
+		add_stability = 0.01
+		add_war_support = 0.02
+		custom_effect_tooltip = UKR_np_demo_up_tt
+		hidden_effect = {
+			add_to_variable = { UKR_np_demo = 3 }
+			UKR_np_update = yes
+		}
+		ai_chance = { factor = 45 }
+	}
+
+	# Усилить охрану публичных людей
+	option = {
+		name = ukraine_politics.720.b
+		add_political_power = -20
+		add_stability = 0.02
+		ai_chance = { factor = 35 }
+	}
+
+	# Назвать российский след по версии следствия
+	option = {
+		name = ukraine_politics.720.c
+		add_political_power = 10
+		add_war_support = 0.03
+		add_stability = -0.01
+		hidden_effect = {
+			add_to_variable = { Russian_Influence = -0.02 }
+			clamp_variable = { var = Russian_Influence min = 0 max = 1 }
+			add_to_variable = { UKR_nationalist_lean = 1 }
+			UKR_clamp_leans = yes
+		}
+		ai_chance = { factor = 20 }
+	}
+}
+
+# Прощание, 2.09.2025: выбор президента
+country_event = {
+	id = ukraine_politics.721
+	title = ukraine_politics.721.t
+	desc = ukraine_politics.721.d
+	picture = GFX_report_event_ukrainian_civil_war
+
+	is_triggered_only = yes
+
+	trigger = {
+		tag = UKR
+	}
+
+	immediate = {
+		hidden_effect = {
+			if = {
+				limit = { has_country_flag = UKR_np_program_civic }
+				country_event = { id = ukraine_politics.722 days = 14 }
+			}
+		}
+	}
+
+	# Государственные похороны и траур
+	option = {
+		name = ukraine_politics.721.a
+		add_political_power = -20
+		add_stability = 0.02
+		add_war_support = 0.03
+		add_power_balance_value = {
+			id = UKR_np_civic_ethnic_balance
+			value = -0.03
+		}
+		if = {
+			limit = { has_country_flag = UKR_np_hero_present }
+			add_political_power = 10
+		}
+		custom_effect_tooltip = UKR_np_demo_up_tt
+		hidden_effect = {
+			add_to_variable = { UKR_np_demo = 3 }
+			UKR_np_update = yes
+			add_to_variable = { European_Influence = 0.01 }
+			clamp_variable = { var = European_Influence min = 0 max = 1 }
+		}
+		ai_chance = { factor = 50 }
+	}
+
+	# Траурное шествие ветеранов и дружин
+	option = {
+		name = ukraine_politics.721.b
+		add_war_support = 0.04
+		add_stability = -0.01
+		add_power_balance_value = {
+			id = UKR_np_civic_ethnic_balance
+			value = 0.03
+		}
+		custom_effect_tooltip = UKR_np_azov_up_tt
+		custom_effect_tooltip = UKR_np_street_up_tt
+		hidden_effect = {
+			add_to_variable = { UKR_np_azov = 3 }
+			add_to_variable = { UKR_np_street = 3 }
+			UKR_np_update = yes
+			add_to_variable = { European_Influence = -0.01 }
+			clamp_variable = { var = European_Influence min = 0 max = 1 }
+		}
+		ai_chance = { factor = 25 }
+	}
+
+	# Закрытое прощание с семьёй
+	option = {
+		name = ukraine_politics.721.c
+		add_political_power = 10
+		add_stability = 0.01
+		hidden_effect = {
+			add_to_variable = { UKR_np_demo = -1 }
+			UKR_np_update = yes
+		}
+		ai_chance = { factor = 25 }
+	}
+}
+
+# После Львова: преемник в гражданской программе (вызывается из 721 через 14 дней)
+country_event = {
+	id = ukraine_politics.722
+	title = ukraine_politics.722.t
+	desc = ukraine_politics.722.d
+	picture = GFX_report_event_ukrainian_civil_war
+
+	is_triggered_only = yes
+
+	trigger = {
+		tag = UKR
+	}
+
+	# Садовый
+	option = {
+		name = ukraine_politics.722.a
+		add_ideas = UKR_np_face_sadovyi
+		custom_effect_tooltip = UKR_np_demo_up_tt
+		hidden_effect = {
+			set_country_flag = UKR_np_successor_sadovyi
+			add_to_variable = { UKR_np_demo = 4 }
+			UKR_np_update = yes
+		}
+		ai_chance = { factor = 55 }
+	}
+
+	# Стерненко
+	option = {
+		name = ukraine_politics.722.b
+		add_ideas = UKR_np_face_sternenko
+		custom_effect_tooltip = UKR_np_street_up_tt
+		custom_effect_tooltip = UKR_np_azov_up_tt
+		hidden_effect = {
+			set_country_flag = UKR_np_successor_sternenko
+			add_to_variable = { UKR_np_street = 4 }
+			add_to_variable = { UKR_np_azov = 3 }
+			add_to_variable = { UKR_np_demo = -2 }
+			UKR_np_update = yes
+		}
+		ai_chance = { factor = 20 }
+	}
+
+	# Совет ветеранов
+	option = {
+		name = ukraine_politics.722.c
+		add_ideas = UKR_np_face_council
+		custom_effect_tooltip = UKR_np_demo_up_tt
+		hidden_effect = {
+			set_country_flag = UKR_np_successor_council
+			add_to_variable = { UKR_np_demo = 2 }
+			add_to_variable = { UKR_np_azov = 1 }
+			UKR_np_update = yes
+		}
+		ai_chance = { factor = 25 }
+	}
+}
+
+# ============================================================================
+# «Ядерный вопрос» при росте мировой напряжённости
+# ============================================================================
+
+# Скрытый детектор: когда world_tension выше 0.5, через 3 дня приходит 740
+country_event = {
+	id = ukraine_politics.749
+	hidden = yes
+	fire_only_once = yes
+
+	trigger = {
+		tag = UKR
+		has_country_flag = UKR_np_convent_done
+		NOT = { has_country_flag = UKR_np_nuclear_done }
+		world_tension > 0.5
+	}
+
+	mean_time_to_happen = {
+		days = 3
+	}
+
+	immediate = {
+		country_event = { id = ukraine_politics.740 }
+	}
+}
+
+# Ядерный вопрос (вызывается 749 или решением UKR_nc_nuclear_question)
+country_event = {
+	id = ukraine_politics.740
+	title = ukraine_politics.740.t
+	desc = ukraine_politics.740.d
+	picture = GFX_report_event_ukrainian_civil_war
+
+	is_triggered_only = yes
+
+	trigger = {
+		tag = UKR
+		NOT = { has_country_flag = UKR_np_nuclear_done }
+	}
+
+	# Аудит ядерного потенциала (без создания оружия)
+	option = {
+		name = ukraine_politics.740.a
+		add_political_power = 30
+		add_war_support = 0.02
+		add_stability = -0.01
+		if = {
+			limit = { has_country_flag = UKR_np_program_army }
+			custom_effect_tooltip = UKR_np_azov_up_tt
+		}
+		else = {
+			custom_effect_tooltip = UKR_np_nuclear_penalty_tt
+			add_timed_idea = { idea = UKR_eu_aid_frozen days = 90 }
+		}
+		hidden_effect = {
+			set_country_flag = UKR_np_nuclear_done
+			set_country_flag = UKR_np_nuclear_audit
+			add_to_variable = { American_Influence = -0.02 }
+			clamp_variable = { var = American_Influence min = 0 max = 1 }
+			add_to_variable = { European_Influence = -0.03 }
+			clamp_variable = { var = European_Influence min = 0 max = 1 }
+			add_to_variable = { UKR_nationalist_lean = 2 }
+			UKR_clamp_leans = yes
+			if = {
+				limit = { has_country_flag = UKR_np_program_army }
+				add_to_variable = { UKR_np_azov = 3 }
+				UKR_np_update = yes
+			}
+		}
+		ai_chance = { factor = 20 }
+	}
+
+	# Передать вопрос экспертной комиссии
+	option = {
+		name = ukraine_politics.740.b
+		add_political_power = 10
+		add_stability = 0.005
+		hidden_effect = {
+			set_country_flag = UKR_np_nuclear_done
+			add_to_variable = { UKR_np_demo = 1 }
+			UKR_np_update = yes
+		}
+		ai_chance = { factor = 50 }
+	}
+
+	# Не отвечать
+	option = {
+		name = ukraine_politics.740.c
+		add_stability = 0.01
+		hidden_effect = {
+			set_country_flag = UKR_np_nuclear_done
+			add_to_variable = { UKR_np_azov = -1 }
+			add_to_variable = { UKR_np_svoboda = -1 }
+			UKR_np_update = yes
+		}
+		ai_chance = { factor = 30 }
+	}
+}
+
+# ============================================================================
+# Юмор из реальных интернет-споров (750-755)
+# ============================================================================
+
+# Чат четырёх «настоящих националистов»
+country_event = {
+	id = ukraine_politics.750
+	title = ukraine_politics.750.t
+	desc = ukraine_politics.750.d
+	picture = GFX_report_event_ukrainian_civil_war
+
+	fire_only_once = yes
+
+	trigger = {
+		tag = UKR
+		has_country_flag = UKR_np_convent_done
+		NOT = { has_country_flag = UKR_np_flavor_cd }
+	}
+
+	mean_time_to_happen = {
+		days = 200
+	}
+
+	immediate = {
+		hidden_effect = {
+			set_country_flag = { flag = UKR_np_flavor_cd days = 40 }
+		}
+	}
+
+	# Мирить
+	option = {
+		name = ukraine_politics.750.a
+		add_political_power = -10
+		add_stability = 0.005
+		hidden_effect = {
+			add_to_variable = { UKR_np_demo = 1 }
+			UKR_np_update = yes
+		}
+		ai_chance = { factor = 40 }
+	}
+
+	# Стравить
+	option = {
+		name = ukraine_politics.750.b
+		add_political_power = 15
+		add_stability = -0.005
+		hidden_effect = {
+			add_to_variable = { UKR_np_street = 1 }
+			UKR_np_update = yes
+		}
+		ai_chance = { factor = 30 }
+	}
+
+	# Выйти из чатов
+	option = {
+		name = ukraine_politics.750.c
+		add_political_power = 5
+		ai_chance = { factor = 30 }
+	}
+}
+
+# Вышиванка в рекламе пива
+country_event = {
+	id = ukraine_politics.751
+	title = ukraine_politics.751.t
+	desc = ukraine_politics.751.d
+	picture = GFX_report_event_ukrainian_civil_war
+
+	fire_only_once = yes
+
+	trigger = {
+		tag = UKR
+		has_country_flag = UKR_np_convent_done
+		NOT = { has_country_flag = UKR_np_flavor_cd }
+	}
+
+	mean_time_to_happen = {
+		days = 200
+	}
+
+	immediate = {
+		hidden_effect = {
+			set_country_flag = { flag = UKR_np_flavor_cd days = 40 }
+		}
+	}
+
+	# Не вмешиваться
+	option = {
+		name = ukraine_politics.751.a
+		add_stability = 0.005
+		ai_chance = { factor = 45 }
+	}
+
+	# Добровольный стандарт
+	option = {
+		name = ukraine_politics.751.b
+		add_political_power = 10
+		add_stability = -0.005
+		hidden_effect = {
+			add_to_variable = { UKR_np_svoboda = 1 }
+			UKR_np_update = yes
+		}
+		ai_chance = { factor = 25 }
+	}
+
+	# Отшутиться
+	option = {
+		name = ukraine_politics.751.c
+		add_stability = 0.005
+		hidden_effect = {
+			add_to_variable = { UKR_digital_lean = 1 }
+			UKR_clamp_leans = yes
+		}
+		ai_chance = { factor = 30 }
+	}
+}
+
+# Слив из закрытого заседания Совета нации
+country_event = {
+	id = ukraine_politics.752
+	title = ukraine_politics.752.t
+	desc = ukraine_politics.752.d
+	picture = GFX_report_event_ukrainian_civil_war
+
+	fire_only_once = yes
+
+	trigger = {
+		tag = UKR
+		has_country_flag = UKR_np_convent_done
+		NOT = { has_country_flag = UKR_np_flavor_cd }
+	}
+
+	mean_time_to_happen = {
+		days = 200
+	}
+
+	immediate = {
+		hidden_effect = {
+			set_country_flag = { flag = UKR_np_flavor_cd days = 40 }
+		}
+	}
+
+	# Найти источник
+	option = {
+		name = ukraine_politics.752.a
+		add_political_power = -10
+		add_stability = -0.005
+		hidden_effect = {
+			add_to_variable = { UKR_authoritarian_lean = 1 }
+			UKR_clamp_leans = yes
+		}
+		ai_chance = { factor = 25 }
+	}
+
+	# Сделать повестку открытой
+	option = {
+		name = ukraine_politics.752.b
+		add_stability = 0.01
+		hidden_effect = {
+			add_to_variable = { UKR_digital_lean = 1 }
+			add_to_variable = { UKR_np_demo = 1 }
+			UKR_clamp_leans = yes
+			UKR_np_update = yes
+		}
+		ai_chance = { factor = 45 }
+	}
+
+	# Не реагировать
+	option = {
+		name = ukraine_politics.752.c
+		add_political_power = 5
+		ai_chance = { factor = 30 }
+	}
+}
+
+# Борщевая война
+country_event = {
+	id = ukraine_politics.753
+	title = ukraine_politics.753.t
+	desc = ukraine_politics.753.d
+	picture = GFX_report_event_ukrainian_civil_war
+
+	fire_only_once = yes
+
+	trigger = {
+		tag = UKR
+		has_country_flag = UKR_np_convent_done
+		NOT = { has_country_flag = UKR_np_flavor_cd }
+	}
+
+	mean_time_to_happen = {
+		days = 200
+	}
+
+	immediate = {
+		hidden_effect = {
+			set_country_flag = { flag = UKR_np_flavor_cd days = 40 }
+		}
+	}
+
+	# Нота МИДа
+	option = {
+		name = ukraine_politics.753.a
+		add_political_power = -5
+		add_war_support = 0.01
+		hidden_effect = {
+			add_to_variable = { Russian_Influence = -0.005 }
+			clamp_variable = { var = Russian_Influence min = 0 max = 1 }
+		}
+		ai_chance = { factor = 25 }
+	}
+
+	# Мем
+	option = {
+		name = ukraine_politics.753.b
+		add_stability = 0.01
+		ai_chance = { factor = 45 }
+	}
+
+	# Фестиваль борща
+	option = {
+		name = ukraine_politics.753.c
+		add_political_power = 10
+		set_temp_variable = {
+			var = society_development_var_temp
+			value = 0.01
+		}
+		add_society_development = yes
+		ai_chance = { factor = 30 }
+	}
+}
+
+# Ветеран-бариста (только Республика службы)
+country_event = {
+	id = ukraine_politics.754
+	title = ukraine_politics.754.t
+	desc = ukraine_politics.754.d
+	picture = GFX_report_event_ukrainian_civil_war
+
+	fire_only_once = yes
+
+	trigger = {
+		tag = UKR
+		has_country_flag = UKR_np_program_civic
+		NOT = { has_country_flag = UKR_np_flavor_cd }
+	}
+
+	mean_time_to_happen = {
+		days = 200
+	}
+
+	immediate = {
+		hidden_effect = {
+			set_country_flag = { flag = UKR_np_flavor_cd days = 40 }
+		}
+	}
+
+	# Ветеранская карточка
+	option = {
+		name = ukraine_politics.754.a
+		set_temp_variable = {
+			var = income_var_temp
+			value = -0.3
+		}
+		add_income_with_inflation = yes
+		custom_effect_tooltip = UKR_np_demo_up_tt
+		hidden_effect = {
+			add_to_variable = { UKR_np_demo = 1 }
+			UKR_np_update = yes
+		}
+		ai_chance = { factor = 35 }
+	}
+
+	# Оставить решение за бизнесом
+	option = {
+		name = ukraine_politics.754.b
+		add_stability = 0.005
+		ai_chance = { factor = 40 }
+	}
+
+	# Скидки не должны делить людей
+	option = {
+		name = ukraine_politics.754.c
+		add_political_power = 10
+		hidden_effect = {
+			add_to_variable = { European_Influence = 0.005 }
+			clamp_variable = { var = European_Influence min = 0 max = 1 }
+		}
+		ai_chance = { factor = 25 }
+	}
+}
+
+# Матч и колонна ультрас
+country_event = {
+	id = ukraine_politics.755
+	title = ukraine_politics.755.t
+	desc = ukraine_politics.755.d
+	picture = GFX_report_event_ukrainian_civil_war
+
+	fire_only_once = yes
+
+	trigger = {
+		tag = UKR
+		has_country_flag = UKR_np_convent_done
+		NOT = { has_country_flag = UKR_np_flavor_cd }
+	}
+
+	mean_time_to_happen = {
+		days = 200
+	}
+
+	immediate = {
+		hidden_effect = {
+			set_country_flag = { flag = UKR_np_flavor_cd days = 40 }
+		}
+	}
+
+	# Усилить полицию
+	option = {
+		name = ukraine_politics.755.a
+		add_political_power = -10
+		custom_effect_tooltip = UKR_np_street_down_tt
+		hidden_effect = {
+			add_to_variable = { UKR_np_street = -1 }
+			UKR_np_update = yes
+		}
+		ai_chance = { factor = 35 }
+	}
+
+	# Договориться с клубами
+	option = {
+		name = ukraine_politics.755.b
+		add_stability = 0.005
+		custom_effect_tooltip = UKR_np_street_up_tt
+		hidden_effect = {
+			add_to_variable = { UKR_np_street = 1 }
+			UKR_np_update = yes
+		}
+		ai_chance = { factor = 40 }
+	}
+
+	# Не замечать
+	option = {
+		name = ukraine_politics.755.c
+		add_stability = -0.005
+		ai_chance = { factor = 25 }
+	}
+}
+
+# ============================================================================
+# История национального движения (770-775): случайные, раз в игру, одна кнопка
+# Условие: пройден фокус «Институты памяти»
+# ============================================================================
+
+# Круты, январь 1918
+country_event = {
+	id = ukraine_politics.770
+	title = ukraine_politics.770.t
+	desc = ukraine_politics.770.d
+	picture = GFX_report_event_ukrainian_civil_war
+
+	fire_only_once = yes
+
+	trigger = {
+		tag = UKR
+		has_country_flag = UKR_np_memory_institutes
+		NOT = { has_country_flag = UKR_np_flavor_cd }
+	}
+
+	mean_time_to_happen = {
+		days = 220
+	}
+
+	immediate = {
+		hidden_effect = {
+			set_country_flag = { flag = UKR_np_flavor_cd days = 40 }
+		}
+	}
+
+	option = {
+		name = ukraine_politics.770.a
+		add_political_power = 10
+		hidden_effect = {
+			add_to_variable = { UKR_np_demo = 1 }
+			add_to_variable = { UKR_np_azov = 1 }
+			UKR_np_update = yes
+		}
+		ai_chance = { factor = 100 }
+	}
+}
+
+# Холодный Яр, 1919-1922
+country_event = {
+	id = ukraine_politics.771
+	title = ukraine_politics.771.t
+	desc = ukraine_politics.771.d
+	picture = GFX_report_event_ukrainian_civil_war
+
+	fire_only_once = yes
+
+	trigger = {
+		tag = UKR
+		has_country_flag = UKR_np_memory_institutes
+		NOT = { has_country_flag = UKR_np_flavor_cd }
+	}
+
+	mean_time_to_happen = {
+		days = 220
+	}
+
+	immediate = {
+		hidden_effect = {
+			set_country_flag = { flag = UKR_np_flavor_cd days = 40 }
+		}
+	}
+
+	option = {
+		name = ukraine_politics.771.a
+		add_political_power = 10
+		hidden_effect = {
+			add_to_variable = { UKR_np_azov = 1 }
+			add_to_variable = { UKR_np_street = 1 }
+			UKR_np_update = yes
+		}
+		ai_chance = { factor = 100 }
+	}
+}
+
+# Стус, сентябрь 1985
+country_event = {
+	id = ukraine_politics.772
+	title = ukraine_politics.772.t
+	desc = ukraine_politics.772.d
+	picture = GFX_report_event_ukrainian_civil_war
+
+	fire_only_once = yes
+
+	trigger = {
+		tag = UKR
+		has_country_flag = UKR_np_memory_institutes
+		NOT = { has_country_flag = UKR_np_flavor_cd }
+	}
+
+	mean_time_to_happen = {
+		days = 220
+	}
+
+	immediate = {
+		hidden_effect = {
+			set_country_flag = { flag = UKR_np_flavor_cd days = 40 }
+		}
+	}
+
+	option = {
+		name = ukraine_politics.772.a
+		set_temp_variable = {
+			var = society_development_var_temp
+			value = 0.01
+		}
+		add_society_development = yes
+		hidden_effect = {
+			add_to_variable = { UKR_np_demo = 2 }
+			UKR_np_update = yes
+		}
+		ai_chance = { factor = 100 }
+	}
+}
+
+# Рух, 1989
+country_event = {
+	id = ukraine_politics.773
+	title = ukraine_politics.773.t
+	desc = ukraine_politics.773.d
+	picture = GFX_report_event_ukrainian_civil_war
+
+	fire_only_once = yes
+
+	trigger = {
+		tag = UKR
+		has_country_flag = UKR_np_memory_institutes
+		NOT = { has_country_flag = UKR_np_flavor_cd }
+	}
+
+	mean_time_to_happen = {
+		days = 220
+	}
+
+	immediate = {
+		hidden_effect = {
+			set_country_flag = { flag = UKR_np_flavor_cd days = 40 }
+		}
+	}
+
+	option = {
+		name = ukraine_politics.773.a
+		add_political_power = 10
+		hidden_effect = {
+			add_to_variable = { UKR_np_demo = 2 }
+			UKR_np_update = yes
+		}
+		ai_chance = { factor = 100 }
+	}
+}
+
+# Революция на граните, октябрь 1990
+country_event = {
+	id = ukraine_politics.774
+	title = ukraine_politics.774.t
+	desc = ukraine_politics.774.d
+	picture = GFX_report_event_ukrainian_civil_war
+
+	fire_only_once = yes
+
+	trigger = {
+		tag = UKR
+		has_country_flag = UKR_np_memory_institutes
+		NOT = { has_country_flag = UKR_np_flavor_cd }
+	}
+
+	mean_time_to_happen = {
+		days = 220
+	}
+
+	immediate = {
+		hidden_effect = {
+			set_country_flag = { flag = UKR_np_flavor_cd days = 40 }
+		}
+	}
+
+	option = {
+		name = ukraine_politics.774.a
+		add_stability = 0.005
+		hidden_effect = {
+			add_to_variable = { UKR_np_demo = 2 }
+			UKR_np_update = yes
+		}
+		ai_chance = { factor = 100 }
+	}
+}
+
+# Революция достоинства, февраль 2014
+country_event = {
+	id = ukraine_politics.775
+	title = ukraine_politics.775.t
+	desc = ukraine_politics.775.d
+	picture = GFX_report_event_ukrainian_civil_war
+
+	fire_only_once = yes
+
+	trigger = {
+		tag = UKR
+		has_country_flag = UKR_np_memory_institutes
+		NOT = { has_country_flag = UKR_np_flavor_cd }
+	}
+
+	mean_time_to_happen = {
+		days = 220
+	}
+
+	immediate = {
+		hidden_effect = {
+			set_country_flag = { flag = UKR_np_flavor_cd days = 40 }
+		}
+	}
+
+	option = {
+		name = ukraine_politics.775.a
+		add_stability = 0.01
+		hidden_effect = {
+			add_to_variable = { UKR_np_demo = 1 }
+			add_to_variable = { UKR_np_azov = 1 }
+			add_to_variable = { UKR_np_street = 1 }
+			UKR_np_update = yes
+		}
+		ai_chance = { factor = 100 }
+	}
+}
+
+# ============================================================================
+# Реакции программ (781-784): случайные, раз в игру, условие - пройденный фокус программы
+# ============================================================================
+
+# Иностранные добровольцы просят паспорта (Республика службы, «Служба и гражданство»)
+country_event = {
+	id = ukraine_politics.781
+	title = ukraine_politics.781.t
+	desc = ukraine_politics.781.d
+	picture = GFX_report_event_ukrainian_civil_war
+
+	fire_only_once = yes
+
+	trigger = {
+		tag = UKR
+		has_country_flag = UKR_np_service_citizenship
+		NOT = { has_country_flag = UKR_np_flavor_cd }
+	}
+
+	mean_time_to_happen = {
+		days = 90
+	}
+
+	immediate = {
+		hidden_effect = {
+			set_country_flag = { flag = UKR_np_flavor_cd days = 40 }
+		}
+	}
+
+	# Выдать всем, кто выполнил условия
+	option = {
+		name = ukraine_politics.781.a
+		add_manpower = 3000
+		add_war_support = 0.02
+		hidden_effect = {
+			add_to_variable = { European_Influence = 0.01 }
+			clamp_variable = { var = European_Influence min = 0 max = 1 }
+			add_to_variable = { UKR_np_svoboda = -1 }
+			UKR_np_update = yes
+		}
+		ai_chance = { factor = 45 }
+	}
+
+	# Дополнительная проверка
+	option = {
+		name = ukraine_politics.781.b
+		add_stability = 0.005
+		add_political_power = -5
+		ai_chance = { factor = 35 }
+	}
+
+	# Ограничить число в год
+	option = {
+		name = ukraine_politics.781.c
+		add_political_power = 10
+		hidden_effect = {
+			add_to_variable = { European_Influence = -0.005 }
+			clamp_variable = { var = European_Influence min = 0 max = 1 }
+			add_to_variable = { UKR_np_svoboda = 1 }
+			UKR_np_update = yes
+		}
+		ai_chance = { factor = 20 }
+	}
+}
+
+# Венгрия и закон о языке (Рідний дім, «Язык и школа»)
+country_event = {
+	id = ukraine_politics.782
+	title = ukraine_politics.782.t
+	desc = ukraine_politics.782.d
+	picture = GFX_report_event_ukrainian_civil_war
+
+	fire_only_once = yes
+
+	trigger = {
+		tag = UKR
+		has_country_flag = UKR_np_language_school
+		NOT = { has_country_flag = UKR_np_flavor_cd }
+	}
+
+	mean_time_to_happen = {
+		days = 90
+	}
+
+	immediate = {
+		hidden_effect = {
+			set_country_flag = { flag = UKR_np_flavor_cd days = 40 }
+		}
+	}
+
+	# Переговоры с Будапештом
+	option = {
+		name = ukraine_politics.782.a
+		add_stability = 0.01
+		hidden_effect = {
+			add_to_variable = { European_Influence = 0.01 }
+			clamp_variable = { var = European_Influence min = 0 max = 1 }
+			add_to_variable = { UKR_np_svoboda = -1 }
+			UKR_np_update = yes
+		}
+		ai_chance = { factor = 40 }
+	}
+
+	# Настоять
+	option = {
+		name = ukraine_politics.782.b
+		add_political_power = 10
+		hidden_effect = {
+			add_to_variable = { European_Influence = -0.01 }
+			clamp_variable = { var = European_Influence min = 0 max = 1 }
+			add_to_variable = { UKR_np_svoboda = 1 }
+			UKR_np_update = yes
+		}
+		ai_chance = { factor = 35 }
+	}
+
+	# Договор о правах меньшинств
+	option = {
+		name = ukraine_politics.782.c
+		add_political_power = -15
+		add_stability = 0.005
+		hidden_effect = {
+			add_to_variable = { European_Influence = 0.02 }
+			clamp_variable = { var = European_Influence min = 0 max = 1 }
+		}
+		ai_chance = { factor = 25 }
+	}
+}
+
+# ПЦУ и УПЦ МП (Рідний дім, «Единая церковь»)
+country_event = {
+	id = ukraine_politics.783
+	title = ukraine_politics.783.t
+	desc = ukraine_politics.783.d
+	picture = GFX_report_event_ukrainian_civil_war
+
+	fire_only_once = yes
+
+	trigger = {
+		tag = UKR
+		has_country_flag = UKR_np_unified_church
+		NOT = { has_country_flag = UKR_np_flavor_cd }
+	}
+
+	mean_time_to_happen = {
+		days = 90
+	}
+
+	immediate = {
+		hidden_effect = {
+			set_country_flag = { flag = UKR_np_flavor_cd days = 40 }
+		}
+	}
+
+	# Ужесточить
+	option = {
+		name = ukraine_politics.783.a
+		add_stability = -0.02
+		add_war_support = 0.03
+		hidden_effect = {
+			add_to_variable = { Russian_Influence = -0.02 }
+			clamp_variable = { var = Russian_Influence min = 0 max = 1 }
+			add_to_variable = { UKR_np_svoboda = 1 }
+			UKR_np_update = yes
+		}
+		ai_chance = { factor = 30 }
+	}
+
+	# Переходный срок и диалог
+	option = {
+		name = ukraine_politics.783.b
+		add_stability = 0.01
+		add_political_power = -10
+		ai_chance = { factor = 45 }
+	}
+
+	# Оставить церквям
+	option = {
+		name = ukraine_politics.783.c
+		add_political_power = 5
+		ai_chance = { factor = 25 }
+	}
+}
+
+# Крымские татары в Совете (Республика службы)
+country_event = {
+	id = ukraine_politics.784
+	title = ukraine_politics.784.t
+	desc = ukraine_politics.784.d
+	picture = GFX_report_event_ukrainian_civil_war
+
+	fire_only_once = yes
+
+	trigger = {
+		tag = UKR
+		has_country_flag = UKR_np_program_civic
+		NOT = { has_country_flag = UKR_np_flavor_cd }
+	}
+
+	mean_time_to_happen = {
+		days = 160
+	}
+
+	immediate = {
+		hidden_effect = {
+			set_country_flag = { flag = UKR_np_flavor_cd days = 40 }
+		}
+	}
+
+	# Закрепить места в Совете
+	option = {
+		name = ukraine_politics.784.a
+		add_stability = 0.005
+		custom_effect_tooltip = UKR_np_demo_up_tt
+		hidden_effect = {
+			add_to_variable = { UKR_np_demo = 2 }
+			UKR_np_update = yes
+			add_to_variable = { European_Influence = 0.01 }
+			clamp_variable = { var = European_Influence min = 0 max = 1 }
+		}
+		ai_chance = { factor = 45 }
+	}
+
+	# Опубликовать выступление
+	option = {
+		name = ukraine_politics.784.b
+		add_political_power = 10
+		hidden_effect = {
+			add_to_variable = { UKR_np_demo = 1 }
+			UKR_np_update = yes
+		}
+		ai_chance = { factor = 35 }
+	}
+
+	# Оставить как есть
+	option = {
+		name = ukraine_politics.784.c
+		add_political_power = 5
+		ai_chance = { factor = 20 }
+	}
+}

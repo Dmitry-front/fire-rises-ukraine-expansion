@@ -57,7 +57,6 @@ country_event = {
 	option = {
 		name = ukraine.303.b
 		add_timed_idea = { idea = UKR_last_chance_cabinet days = 45 }
-		add_stability = 0.01
 		add_popularity = {
 			ideology = social_liberal
 			popularity = 0.01
@@ -122,14 +121,19 @@ country_event = {
 	# Одна вертикаль
 	option = {
 		name = ukraine.302.a
-		add_political_power = 40
+		add_political_power = 60
 		set_country_flag = UKR_yermak_chief
 		set_country_flag = UKR_office_centralised
 		add_popularity = {
-			ideology = authoritarian_democrat
+			ideology = social_liberal
 			popularity = 0.01
 		}
+		
 		hidden_effect = {
+			add_popularity = {
+			ideology = authoritarian_democrat
+			popularity = 0.02
+			}
 			add_to_variable = { UKR_authoritarian_lean = 3 }
 			add_to_variable = { European_Influence = -0.01 }
 			clamp_variable = { var = European_Influence min = 0 max = 1 }
@@ -141,7 +145,8 @@ country_event = {
 	# Профильные заместители и правила
 	option = {
 		name = ukraine.302.b
-		add_political_power = -20
+		add_stability = 0.01
+		add_political_power = -15
 		set_country_flag = UKR_yermak_chief
 		set_temp_variable = {
 			var = society_development_var_temp
@@ -2259,6 +2264,7 @@ country_event = {
 		}
 	}
 }
+
 
 # ============================================================================
 # Путь националистов, блок 1 (сессия 11, PROPOSAL_nationalists.md, раздел 11).

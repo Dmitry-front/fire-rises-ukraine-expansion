@@ -70,8 +70,26 @@ def blocks_ids(p, pattern, depth=None):
 print('\n=== Дубли ID событий (определения)')
 evdefs = collections.defaultdict(list)
 ev_re = r'(?:country_event|news_event|state_event|unit_leader_event|operative_leader_event)\s*=\s*\{\s*id\s*=\s*([\w\.]+)'
+def block_end(c, start):
+    """Позиция закрывающей скобки блока, чья открывающая скобка первая после start."""
+    d, i = 0, c.index('{', start)
+    for j in range(i, len(c)):
+        if c[j] == '{': d += 1
+        elif c[j] == '}':
+            d -= 1
+            if d == 0: return j
+    return len(c)
+
+hidden_ev = set()  # скрытые события: игроку не показываются, заголовка и текста нет
 for p in [x for x in texts if x.startswith('events/') or 'events' in x and x.startswith('_reference/')]:
     for i, f, l in blocks_ids(p, ev_re, 0): evdefs[i].append((f, l))
+    c = texts[p]
+    for m in re.finditer(ev_re, c):
+        if depth_at(c, m.start()) != 0: continue
+        body = c[m.start():block_end(c, m.start())]
+        # hidden = yes только на первом уровне блока события (глубже - это опции и эффекты)
+        if any(depth_at(body, h.start()) == 1 for h in re.finditer(r'\bhidden\s*=\s*yes\b', body)):
+            hidden_ev.add(m.group(1))
 # Индекс событий TFR из удалённого референса events_SOV (русские пространства имён); см. _tools/tfr_known_events.txt
 known_tfr_events = set()
 _kp = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'tfr_known_events.txt')
@@ -193,10 +211,11 @@ print('  ', lat[:80])
 need = set()
 for f in ukr_focus: need |= {f}
 for e, v in own_ev.items():
-    if v:
+    if v and e not in hidden_ev:
         need |= {e + '.t', e + '.d'}
 for lang, d in loc.items():
-    miss = sorted(k for k in need if k not in d)
+    # описание с вариантами (desc = { trigger ... text = X.d_court }) - ключа X.d нет, есть X.d_*
+    miss = sorted(k for k in need if k not in d and not (k.endswith('.d') and any(x.startswith(k + '_') for x in d)))
     print(f'[{lang}] нет ключей для наших фокусов/событий: {len(miss)}', miss[:80])
 
 print('\n=== Известные неверные конструкции (по error.log)')

@@ -699,6 +699,7 @@ Namespace `ukraine_politics`, файл `events/UKR_events_politics.txt` (нов�
 - **TD-19, пункт про `change_government_type_parliamentary_republic`** (закрыт 04.10.2026): эффект существует в TFR (5 вхождений в событиях SOV).
 
 - **TD-18** (закрыт 04.10.2026). «Кооперативная экономика» взята с вики TFR как гипотеза; обёртка `UKR_set_cooperative_economy` теперь ставит `change_economy_type_worker_controlled` (ближайший существующий тип), в коде оставлен комментарий.
+- **TD-13** (закрыт 06.10.2026). `_tools/audit.py` больше не требует ключей `.t` и `.d` у скрытых событий (`hidden = yes` на первом уровне блока события: `ukr_ui.1-2`, `ukraine_politics.749` и др.) и у событий с вариантами описания (`X.d_*` вместо `X.d`, например `ukraine_politics.319`). Список «нет ключей» сократился с 45 до 38; остаток - базовые события TFR `ukraine.6-19`, `belarus.*` (TD-05) и отключённое `russia.76`.
 
 **Открыто** — перенесено в `TECH_DEBT.md` (TD-01…TD-14).
 

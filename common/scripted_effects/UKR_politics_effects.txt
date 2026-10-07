@@ -267,6 +267,8 @@ UKR_oligarchs_step_down = {
 			remove_idea = UKR_government_corruption
 			add_idea = UKR_government_corruption_low
 		}
+		set_temp_variable = { var = UKR_wave_step value = 1 }
+		UKR_season_deoligarchization_wave = yes
 	}
 	else_if = {
 		limit = { has_idea = UKR_government_corruption_low }
@@ -274,6 +276,8 @@ UKR_oligarchs_step_down = {
 			remove_idea = UKR_government_corruption_low
 			add_idea = UKR_oligarchs_retreating
 		}
+		set_temp_variable = { var = UKR_wave_step value = 2 }
+		UKR_season_deoligarchization_wave = yes
 	}
 	else_if = {
 		limit = { has_idea = UKR_oligarchs_retreating }
@@ -281,10 +285,14 @@ UKR_oligarchs_step_down = {
 			remove_idea = UKR_oligarchs_retreating
 			add_idea = UKR_oligarchs_remnants
 		}
+		set_temp_variable = { var = UKR_wave_step value = 3 }
+		UKR_season_deoligarchization_wave = yes
 	}
 	else_if = {
 		limit = { has_idea = UKR_oligarchs_remnants }
 		remove_ideas = UKR_oligarchs_remnants
+		set_temp_variable = { var = UKR_wave_step value = 4 }
+		UKR_season_deoligarchization_wave = yes
 	}
 }
 
@@ -296,10 +304,14 @@ UKR_corruption_step_down = {
 			remove_idea = UKR_endemic_corruption
 			add_idea = UKR_corruption_reforming
 		}
+		set_temp_variable = { var = UKR_wave_step value = 1 }
+		UKR_season_anticorruption_wave = yes
 	}
 	else_if = {
 		limit = { has_idea = UKR_corruption_reforming }
 		remove_ideas = UKR_corruption_reforming
+		set_temp_variable = { var = UKR_wave_step value = 2 }
+		UKR_season_anticorruption_wave = yes
 	}
 }
 

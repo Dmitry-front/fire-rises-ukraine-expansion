@@ -26,7 +26,9 @@
 
 **Пакет 5 (духи от фокусов) сделан:** фокусы `UKR_decommunization`, `UKR_european_integration`, `UKR_diplomatic_offensive`, `UKR_national_reconciliation`, `UKR_nsdc_sanctions`, `UKR_b2_loyal_people`, `UKR_b2_veterans_against_oligarchs` выдают духи сверху прежних разовых эффектов; `UKR_cultural_reforms` и `UKR_western_support` получили дрейф партий. Проверить в игре: фокусы в списке выше, ключи `opinion_gain_monthly_factor` и `improve_relations_maintain_cost_factor` в `error.log`; исходы декоммунизации TFR (`war_support_weekly` до +0.008) автор смотрит сам. **Пакет 6** (духи для 6 событий хроники, `PROPOSAL_spirits.md`, раздел 7.2) - позже.
 
-**Дальше (по решению автора):** пакет 4 - лестницы олигархата и коррупции, `UKR_red_doubt`.
+**Пакет 4 (лестницы) сделан:** на каждой ступени `UKR_oligarchs_step_down`, `UKR_corruption_step_down` и после `ukraine.107.a` приходит 120-дневная волна реформ (`UKR_deoligarchization_wave`, `UKR_anticorruption_wave`); сглажен дух `UKR_government_corruption_low` (числа TFR, вернуть можно по `git show` коммита). Проверить: `event ukraine.107` (вариант a), фокусы `UKR_t_open_state`, `UKR_t_diia_system`, `UKR_l_oligarch_audit`.
+
+**Дальше (по решению автора):** пакет 6 (духи событий хроники, `PROPOSAL_spirits.md`, 7.2), затем остальное по очереди автора. Прежний пункт: - лестницы олигархата и коррупции, `UKR_red_doubt`.
 
 ## 0. Сессия 10 (04.10.2026): министры и расширенный референс
 

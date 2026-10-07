@@ -192,6 +192,34 @@ ideas = {
 			}
 		}
 
+		# === Лестницы олигархата и коррупции (PROPOSAL_spirits.md, пакет 4): волна реформ на каждой ступени вниз ===
+		# Волна деолигархизации: даётся при каждой ступени UKR_oligarchs_step_down и после закона ukraine.107.a
+		UKR_deoligarchization_wave = {
+			picture = UKR_Corruption
+			allowed = {
+				original_tag = UKR
+			}
+			removal_cost = -1
+			modifier = {
+				stability_weekly = 0.0004
+				political_power_gain = 0.03
+				trade_opinion_factor = 0.02
+			}
+		}
+
+		# Волна антикоррупционных реформ: даётся при каждой ступени UKR_corruption_step_down
+		UKR_anticorruption_wave = {
+			picture = ETH_corrupt_bureaucracy
+			allowed = {
+				original_tag = UKR
+			}
+			removal_cost = -1
+			modifier = {
+				stability_weekly = 0.0003
+				trade_opinion_factor = 0.03
+			}
+		}
+
 		# === Олигархат: ступени после закона о деолигархизации (DESIGN.md, 8) ===
 		# Лестница: UKR_government_corruption → _low (ukraine.107) → UKR_oligarchs_retreating → UKR_oligarchs_remnants → снятие
 		UKR_oligarchs_retreating = {

@@ -538,3 +538,53 @@ UKR_season_western_support = {
 	add_dynamic_modifier = { modifier = UKR_western_support_dynamic }
 	force_update_dynamic_modifier = yes
 }
+
+# === Лестницы олигархата и коррупции, пакет 4 ===
+# Волна деолигархизации. Перед вызовом: set_temp_variable = { var = UKR_wave_step value = N } (номер ступени 1-4)
+# k = 0.8 + 0.1 * N: чем ниже ступень, тем сильнее волна. Вызывается из UKR_oligarchs_step_down и ukraine.107.a
+UKR_season_deoligarchization_wave = {
+	UKR_season_scale_init = yes
+	add_timed_idea = { idea = UKR_deoligarchization_wave days = 120 }
+	set_temp_variable = { var = UKR_sm_k value = UKR_wave_step }
+	multiply_temp_variable = { var = UKR_sm_k value = 0.1 }
+	add_to_temp_variable = { var = UKR_sm_k value = 0.8 }
+	UKR_season_k_finish = yes
+
+	set_variable = { var = UKR_sm_deol_sl value = 0.004 }
+	multiply_variable = { var = UKR_sm_deol_sl value = UKR_sm_k }
+	set_variable = { var = UKR_sm_deol_ml value = -0.005 }
+	multiply_variable = { var = UKR_sm_deol_ml value = UKR_sm_k }
+	set_variable = { var = UKR_sm_deol_ad value = -0.004 }
+	multiply_variable = { var = UKR_sm_deol_ad value = UKR_sm_k }
+
+	hidden_effect = {
+		add_to_variable = { European_Influence = 0.01 }
+		clamp_variable = { var = European_Influence min = 0 max = 1 }
+	}
+	add_dynamic_modifier = { modifier = UKR_deoligarchization_wave_dynamic }
+	force_update_dynamic_modifier = yes
+}
+
+# Волна антикоррупционных реформ. Перед вызовом: set_temp_variable = { var = UKR_wave_step value = N } (ступень 1-2)
+# k = 0.8 + 0.2 * N. Вызывается из UKR_corruption_step_down
+UKR_season_anticorruption_wave = {
+	UKR_season_scale_init = yes
+	add_timed_idea = { idea = UKR_anticorruption_wave days = 120 }
+	set_temp_variable = { var = UKR_sm_k value = UKR_wave_step }
+	multiply_temp_variable = { var = UKR_sm_k value = 0.2 }
+	add_to_temp_variable = { var = UKR_sm_k value = 0.8 }
+	UKR_season_k_finish = yes
+
+	set_variable = { var = UKR_sm_acw_sl value = 0.004 }
+	multiply_variable = { var = UKR_sm_acw_sl value = UKR_sm_k }
+	set_variable = { var = UKR_sm_acw_ad value = -0.003 }
+	multiply_variable = { var = UKR_sm_acw_ad value = UKR_sm_k }
+
+	hidden_effect = {
+		add_to_variable = { European_Influence = 0.01 }
+		clamp_variable = { var = European_Influence min = 0 max = 1 }
+	}
+	add_dynamic_modifier = { modifier = UKR_anticorruption_wave_dynamic }
+	force_update_dynamic_modifier = yes
+}
+

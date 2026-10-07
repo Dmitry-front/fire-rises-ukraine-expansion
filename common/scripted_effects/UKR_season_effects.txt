@@ -168,3 +168,117 @@ UKR_season_street_demands = {
 	add_dynamic_modifier = { modifier = UKR_street_demands_dynamic }
 	force_update_dynamic_modifier = yes
 }
+
+# === Хроника блока 1 (2020-2021), пакет 2 ===
+
+# UKR_local_elections_setback: множитель 1 (одна опция)
+UKR_season_local_elections_setback = {
+	UKR_season_scale_init = yes
+	set_temp_variable = { var = UKR_sm_k value = 1 }
+	UKR_season_k_finish = yes
+
+	set_variable = { var = UKR_sm_local_sl value = -0.012 }
+	multiply_variable = { var = UKR_sm_local_sl value = UKR_sm_k }
+	set_variable = { var = UKR_sm_local_con value = 0.005 }
+	multiply_variable = { var = UKR_sm_local_con value = UKR_sm_k }
+
+	add_dynamic_modifier = { modifier = UKR_local_elections_setback_dynamic }
+	force_update_dynamic_modifier = yes
+}
+
+# UKR_pandora_shadow: множитель 1 (одна опция)
+UKR_season_pandora_shadow = {
+	UKR_season_scale_init = yes
+	set_temp_variable = { var = UKR_sm_k value = 1 }
+	UKR_season_k_finish = yes
+
+	set_variable = { var = UKR_sm_pandora_sl value = -0.012 }
+	multiply_variable = { var = UKR_sm_pandora_sl value = UKR_sm_k }
+
+	add_dynamic_modifier = { modifier = UKR_pandora_shadow_dynamic }
+	force_update_dynamic_modifier = yes
+}
+
+# UKR_constitutional_crisis: k = 1 + (UKR_authoritarian_lean - 20) / 200: чем жёстче линия президента, тем сильнее удар
+UKR_season_constitutional_crisis = {
+	UKR_season_scale_init = yes
+	set_temp_variable = { var = UKR_sm_k value = UKR_authoritarian_lean }
+	subtract_from_temp_variable = { var = UKR_sm_k value = 20 }
+	divide_temp_variable = { var = UKR_sm_k value = 200 }
+	add_to_temp_variable = { var = UKR_sm_k value = 1 }
+	UKR_season_k_finish = yes
+
+	set_variable = { var = UKR_sm_const_sl value = -0.008 }
+	multiply_variable = { var = UKR_sm_const_sl value = UKR_sm_k }
+	set_variable = { var = UKR_sm_const_con value = 0.008 }
+	multiply_variable = { var = UKR_sm_const_con value = UKR_sm_k }
+
+	add_dynamic_modifier = { modifier = UKR_constitutional_crisis_dynamic }
+	force_update_dynamic_modifier = yes
+}
+
+# UKR_fop_distrust: множитель 1
+UKR_season_fop_distrust = {
+	UKR_season_scale_init = yes
+	set_temp_variable = { var = UKR_sm_k value = 1 }
+	UKR_season_k_finish = yes
+
+	set_variable = { var = UKR_sm_fopd_ml value = -0.010 }
+	multiply_variable = { var = UKR_sm_fopd_ml value = UKR_sm_k }
+	set_variable = { var = UKR_sm_fopd_sl value = -0.006 }
+	multiply_variable = { var = UKR_sm_fopd_sl value = UKR_sm_k }
+
+	add_dynamic_modifier = { modifier = UKR_fop_distrust_dynamic }
+	force_update_dynamic_modifier = yes
+}
+
+# UKR_fop_tax_pause: множитель 1
+UKR_season_fop_tax_pause = {
+	UKR_season_scale_init = yes
+	set_temp_variable = { var = UKR_sm_k value = 1 }
+	UKR_season_k_finish = yes
+
+	set_variable = { var = UKR_sm_fopt_ml value = 0.008 }
+	multiply_variable = { var = UKR_sm_fopt_ml value = UKR_sm_k }
+	set_variable = { var = UKR_sm_fopt_sl value = 0.003 }
+	multiply_variable = { var = UKR_sm_fopt_sl value = UKR_sm_k }
+
+	add_dynamic_modifier = { modifier = UKR_fop_tax_pause_dynamic }
+	force_update_dynamic_modifier = yes
+}
+
+# UKR_fop_support_payments: k = 1 + (UKR_left_lean - 20) / 200
+UKR_season_fop_support_payments = {
+	UKR_season_scale_init = yes
+	set_temp_variable = { var = UKR_sm_k value = UKR_left_lean }
+	subtract_from_temp_variable = { var = UKR_sm_k value = 20 }
+	divide_temp_variable = { var = UKR_sm_k value = 200 }
+	add_to_temp_variable = { var = UKR_sm_k value = 1 }
+	UKR_season_k_finish = yes
+
+	set_variable = { var = UKR_sm_fops_sl value = 0.006 }
+	multiply_variable = { var = UKR_sm_fops_sl value = UKR_sm_k }
+	set_variable = { var = UKR_sm_fops_sd value = 0.006 }
+	multiply_variable = { var = UKR_sm_fops_sd value = UKR_sm_k }
+
+	add_dynamic_modifier = { modifier = UKR_fop_support_payments_dynamic }
+	force_update_dynamic_modifier = yes
+}
+
+# UKR_fop_digital_deal: k = 1 + (UKR_digital_lean - 20) / 200
+UKR_season_fop_digital_deal = {
+	UKR_season_scale_init = yes
+	set_temp_variable = { var = UKR_sm_k value = UKR_digital_lean }
+	subtract_from_temp_variable = { var = UKR_sm_k value = 20 }
+	divide_temp_variable = { var = UKR_sm_k value = 200 }
+	add_to_temp_variable = { var = UKR_sm_k value = 1 }
+	UKR_season_k_finish = yes
+
+	set_variable = { var = UKR_sm_fopg_ml value = 0.007 }
+	multiply_variable = { var = UKR_sm_fopg_ml value = UKR_sm_k }
+	set_variable = { var = UKR_sm_fopg_sl value = 0.005 }
+	multiply_variable = { var = UKR_sm_fopg_sl value = UKR_sm_k }
+
+	add_dynamic_modifier = { modifier = UKR_fop_digital_deal_dynamic }
+	force_update_dynamic_modifier = yes
+}

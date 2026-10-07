@@ -22,7 +22,9 @@
 
 **Пакет 2 (хроника блока 1) сделан там же:** 13 духов (`events/UKR_events_block1.txt`, `common/ideas/UKR_ideas_block1.txt`), у 7 из них дрейф в динамических модификаторах; проверка в игре та же (события `ukraine.406`, `405`, `407`, `314`; для быстрого теста - `event ukraine.407`). Снижены `stability_factor` у Новых Санжар и КС, потому что добавлен недельный износ.
 
-**Дальше (по решению автора):** пакет 3 - блок 2-3 и путь националистов (кроме `UKR_hunt_on_activists`), пакет 4 - лестницы олигархата и коррупции, `UKR_red_doubt`.
+**Пакет 3 сделан:** 8 духов блока 2-3 и пути националистов (`UKR_eu_aid_frozen`, `UKR_red_doubt`, `UKR_right_unity_push`, `UKR_language_dispute`, `UKR_veteran_spotlight`, `UKR_pillar_*`); `UKR_hunt_on_activists` и `UKR_np_boost_*` не менялись. Проверить в игре: заморозка помощи (`event ukraine_politics.303` при фокусе `UKR_b2_subordinate_anticorruption`), `event ukraine_politics.233` и `234`, `event ukraine_politics.510`. **Новые Санжары** (`event ukraine.402`): общественное развитие -0.18 в вариантах b и c и -0.14 в a (по просьбе автора; вариант b - моё допущение, уточнить).
+
+**Дальше (по решению автора):** пакет 4 - лестницы олигархата и коррупции, `UKR_red_doubt`.
 
 ## 0. Сессия 10 (04.10.2026): министры и расширенный референс
 

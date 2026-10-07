@@ -197,9 +197,10 @@ country_event = {
 			ideology = social_liberal
 			popularity = 0.015
 		}
+		# Приезд смягчает удар: -0.14 вместо стандартного -0.18
 		set_temp_variable = {
 			var = society_development_var_temp
-			value = 0.02
+			value = -0.14
 		}
 		add_society_development = yes
 		hidden_effect = {
@@ -215,6 +216,12 @@ country_event = {
 		add_stability = -0.01
 		add_political_power = 20
 		add_war_support = 0.01
+		# Без разговора с людьми удар полный: стандартные -0.18
+		set_temp_variable = {
+			var = society_development_var_temp
+			value = -0.18
+		}
+		add_society_development = yes
 		hidden_effect = {
 			add_to_variable = { UKR_authoritarian_lean = 2 }
 			UKR_clamp_leans = yes
@@ -233,7 +240,7 @@ country_event = {
 		add_income = yes
 		set_temp_variable = {
 			var = society_development_var_temp
-			value = -0.02
+			value = -0.18
 		}
 		add_society_development = yes
 		ai_chance = { factor = 25 }

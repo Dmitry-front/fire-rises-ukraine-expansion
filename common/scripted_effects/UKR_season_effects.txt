@@ -282,3 +282,102 @@ UKR_season_fop_digital_deal = {
 	add_dynamic_modifier = { modifier = UKR_fop_digital_deal_dynamic }
 	force_update_dynamic_modifier = yes
 }
+
+# === Блок 2-3 и путь националистов, пакет 3 ===
+
+# UKR_eu_aid_frozen: множитель 1 (много источников)
+UKR_season_eu_aid_frozen = {
+	UKR_season_scale_init = yes
+	set_temp_variable = { var = UKR_sm_k value = 1 }
+	UKR_season_k_finish = yes
+
+	set_variable = { var = UKR_sm_aid_sl value = -0.008 }
+	multiply_variable = { var = UKR_sm_aid_sl value = UKR_sm_k }
+	set_variable = { var = UKR_sm_aid_con value = 0.004 }
+	multiply_variable = { var = UKR_sm_aid_con value = UKR_sm_k }
+
+	add_dynamic_modifier = { modifier = UKR_eu_aid_frozen_dynamic }
+	force_update_dynamic_modifier = yes
+}
+
+# UKR_red_doubt: k = 1 + (UKR_lf_communists - 10) / 200: чем сильнее ортодоксы в коалиции, тем громче вопрос
+UKR_season_red_doubt = {
+	UKR_season_scale_init = yes
+	set_temp_variable = { var = UKR_sm_k value = UKR_lf_communists }
+	subtract_from_temp_variable = { var = UKR_sm_k value = 10 }
+	divide_temp_variable = { var = UKR_sm_k value = 200 }
+	add_to_temp_variable = { var = UKR_sm_k value = 1 }
+	UKR_season_k_finish = yes
+
+	set_variable = { var = UKR_sm_red_com value = 0.006 }
+	multiply_variable = { var = UKR_sm_red_com value = UKR_sm_k }
+	set_variable = { var = UKR_sm_red_ls value = 0.004 }
+	multiply_variable = { var = UKR_sm_red_ls value = UKR_sm_k }
+	set_variable = { var = UKR_sm_red_sl value = -0.004 }
+	multiply_variable = { var = UKR_sm_red_sl value = UKR_sm_k }
+
+	# В войне усталость общества растёт через уже работающий настрой (UKR_war_fatigue_dynamic_*), а не отдельным недельным износом
+	if = {
+		limit = { has_country_flag = UKR_war_mood_active }
+		hidden_effect = { add_to_variable = { UKRwarfatigue = 3 } }
+	}
+
+	add_dynamic_modifier = { modifier = UKR_red_doubt_dynamic }
+	force_update_dynamic_modifier = yes
+}
+
+# UKR_right_unity_push: k = 1 + (UKR_nationalist_lean - 20) / 200
+UKR_season_right_unity_push = {
+	UKR_season_scale_init = yes
+	set_temp_variable = { var = UKR_sm_k value = UKR_nationalist_lean }
+	subtract_from_temp_variable = { var = UKR_sm_k value = 20 }
+	divide_temp_variable = { var = UKR_sm_k value = 200 }
+	add_to_temp_variable = { var = UKR_sm_k value = 1 }
+	UKR_season_k_finish = yes
+
+	set_variable = { var = UKR_sm_runity_ns value = 0.012 }
+	multiply_variable = { var = UKR_sm_runity_ns value = UKR_sm_k }
+	set_variable = { var = UKR_sm_runity_fas value = 0.004 }
+	multiply_variable = { var = UKR_sm_runity_fas value = UKR_sm_k }
+	set_variable = { var = UKR_sm_runity_con value = -0.004 }
+	multiply_variable = { var = UKR_sm_runity_con value = UKR_sm_k }
+
+	add_dynamic_modifier = { modifier = UKR_right_unity_push_dynamic }
+	force_update_dynamic_modifier = yes
+}
+
+# UKR_language_dispute: k = 1 + (UKR_nationalist_lean - 20) / 200
+UKR_season_language_dispute = {
+	UKR_season_scale_init = yes
+	set_temp_variable = { var = UKR_sm_k value = UKR_nationalist_lean }
+	subtract_from_temp_variable = { var = UKR_sm_k value = 20 }
+	divide_temp_variable = { var = UKR_sm_k value = 200 }
+	add_to_temp_variable = { var = UKR_sm_k value = 1 }
+	UKR_season_k_finish = yes
+
+	set_variable = { var = UKR_sm_lang_ns value = 0.008 }
+	multiply_variable = { var = UKR_sm_lang_ns value = UKR_sm_k }
+	set_variable = { var = UKR_sm_lang_sl value = -0.004 }
+	multiply_variable = { var = UKR_sm_lang_sl value = UKR_sm_k }
+
+	add_dynamic_modifier = { modifier = UKR_language_dispute_dynamic }
+	force_update_dynamic_modifier = yes
+}
+
+# UKR_veteran_spotlight: k = 1 + (UKR_nationalist_lean - 20) / 200
+UKR_season_veteran_spotlight = {
+	UKR_season_scale_init = yes
+	set_temp_variable = { var = UKR_sm_k value = UKR_nationalist_lean }
+	subtract_from_temp_variable = { var = UKR_sm_k value = 20 }
+	divide_temp_variable = { var = UKR_sm_k value = 200 }
+	add_to_temp_variable = { var = UKR_sm_k value = 1 }
+	UKR_season_k_finish = yes
+
+	set_variable = { var = UKR_sm_vet_fas value = 0.004 }
+	multiply_variable = { var = UKR_sm_vet_fas value = UKR_sm_k }
+	set_variable = { var = UKR_sm_vet_ns value = 0.004 }
+	multiply_variable = { var = UKR_sm_vet_ns value = UKR_sm_k }
+
+	add_dynamic_modifier = { modifier = UKR_veteran_spotlight_dynamic }
+	force_update_dynamic_modifier = yes
+}

@@ -381,3 +381,160 @@ UKR_season_veteran_spotlight = {
 	add_dynamic_modifier = { modifier = UKR_veteran_spotlight_dynamic }
 	force_update_dynamic_modifier = yes
 }
+
+# === Духи от фокусов, пакет 5 ===
+
+# UKR_decommunization_dispute: k = 1 + (UKR_nationalist_lean - 20) / 200
+UKR_season_decommunization_dispute = {
+	UKR_season_scale_init = yes
+	set_temp_variable = { var = UKR_sm_k value = UKR_nationalist_lean }
+	subtract_from_temp_variable = { var = UKR_sm_k value = 20 }
+	divide_temp_variable = { var = UKR_sm_k value = 200 }
+	add_to_temp_variable = { var = UKR_sm_k value = 1 }
+	UKR_season_k_finish = yes
+
+	set_variable = { var = UKR_sm_decomm_ns value = 0.008 }
+	multiply_variable = { var = UKR_sm_decomm_ns value = UKR_sm_k }
+	set_variable = { var = UKR_sm_decomm_com value = -0.006 }
+	multiply_variable = { var = UKR_sm_decomm_com value = UKR_sm_k }
+	set_variable = { var = UKR_sm_decomm_ts value = -0.006 }
+	multiply_variable = { var = UKR_sm_decomm_ts value = UKR_sm_k }
+
+	add_dynamic_modifier = { modifier = UKR_decommunization_dispute_dynamic }
+	force_update_dynamic_modifier = yes
+}
+
+# UKR_euro_momentum: k = 1 + (UKR_digital_lean - 20) / 200
+UKR_season_euro_momentum = {
+	UKR_season_scale_init = yes
+	set_temp_variable = { var = UKR_sm_k value = UKR_digital_lean }
+	subtract_from_temp_variable = { var = UKR_sm_k value = 20 }
+	divide_temp_variable = { var = UKR_sm_k value = 200 }
+	add_to_temp_variable = { var = UKR_sm_k value = 1 }
+	UKR_season_k_finish = yes
+
+	set_variable = { var = UKR_sm_euro_ml value = 0.008 }
+	multiply_variable = { var = UKR_sm_euro_ml value = UKR_sm_k }
+	set_variable = { var = UKR_sm_euro_sl value = 0.004 }
+	multiply_variable = { var = UKR_sm_euro_sl value = UKR_sm_k }
+	set_variable = { var = UKR_sm_euro_ad value = -0.004 }
+	multiply_variable = { var = UKR_sm_euro_ad value = UKR_sm_k }
+
+	hidden_effect = {
+		add_to_variable = { European_Influence = 0.02 }
+		clamp_variable = { var = European_Influence min = 0 max = 1 }
+	}
+
+	add_dynamic_modifier = { modifier = UKR_euro_momentum_dynamic }
+	force_update_dynamic_modifier = yes
+}
+
+# UKR_reconciliation_mood: k = 1 + (UKR_left_lean - 20) / 200
+UKR_season_reconciliation_mood = {
+	UKR_season_scale_init = yes
+	set_temp_variable = { var = UKR_sm_k value = UKR_left_lean }
+	subtract_from_temp_variable = { var = UKR_sm_k value = 20 }
+	divide_temp_variable = { var = UKR_sm_k value = 200 }
+	add_to_temp_variable = { var = UKR_sm_k value = 1 }
+	UKR_season_k_finish = yes
+
+	set_variable = { var = UKR_sm_recon_ad value = -0.004 }
+	multiply_variable = { var = UKR_sm_recon_ad value = UKR_sm_k }
+	set_variable = { var = UKR_sm_recon_sd value = 0.004 }
+	multiply_variable = { var = UKR_sm_recon_sd value = UKR_sm_k }
+
+	add_dynamic_modifier = { modifier = UKR_reconciliation_mood_dynamic }
+	force_update_dynamic_modifier = yes
+}
+
+# UKR_sanctions_regime: k = 1 + (UKR_authoritarian_lean - 20) / 200
+UKR_season_sanctions_regime = {
+	UKR_season_scale_init = yes
+	set_temp_variable = { var = UKR_sm_k value = UKR_authoritarian_lean }
+	subtract_from_temp_variable = { var = UKR_sm_k value = 20 }
+	divide_temp_variable = { var = UKR_sm_k value = 200 }
+	add_to_temp_variable = { var = UKR_sm_k value = 1 }
+	UKR_season_k_finish = yes
+
+	set_variable = { var = UKR_sm_sanc_ad value = -0.008 }
+	multiply_variable = { var = UKR_sm_sanc_ad value = UKR_sm_k }
+	set_variable = { var = UKR_sm_sanc_sl value = 0.003 }
+	multiply_variable = { var = UKR_sm_sanc_sl value = UKR_sm_k }
+
+	add_dynamic_modifier = { modifier = UKR_sanctions_regime_dynamic }
+	force_update_dynamic_modifier = yes
+}
+
+# UKR_party_machine: k = 1 + (UKR_authoritarian_lean - 20) / 200
+UKR_season_party_machine = {
+	UKR_season_scale_init = yes
+	set_temp_variable = { var = UKR_sm_k value = UKR_authoritarian_lean }
+	subtract_from_temp_variable = { var = UKR_sm_k value = 20 }
+	divide_temp_variable = { var = UKR_sm_k value = 200 }
+	add_to_temp_variable = { var = UKR_sm_k value = 1 }
+	UKR_season_k_finish = yes
+
+	set_variable = { var = UKR_sm_mach_ad value = 0.006 }
+	multiply_variable = { var = UKR_sm_mach_ad value = UKR_sm_k }
+	set_variable = { var = UKR_sm_mach_sl value = -0.003 }
+	multiply_variable = { var = UKR_sm_mach_sl value = UKR_sm_k }
+
+	add_dynamic_modifier = { modifier = UKR_party_machine_dynamic }
+	force_update_dynamic_modifier = yes
+}
+
+# UKR_veteran_wave: k = 1 + (UKR_left_lean - 20) / 200
+UKR_season_veteran_wave = {
+	UKR_season_scale_init = yes
+	set_temp_variable = { var = UKR_sm_k value = UKR_left_lean }
+	subtract_from_temp_variable = { var = UKR_sm_k value = 20 }
+	divide_temp_variable = { var = UKR_sm_k value = 200 }
+	add_to_temp_variable = { var = UKR_sm_k value = 1 }
+	UKR_season_k_finish = yes
+
+	set_variable = { var = UKR_sm_vwave_sd value = 0.008 }
+	multiply_variable = { var = UKR_sm_vwave_sd value = UKR_sm_k }
+	set_variable = { var = UKR_sm_vwave_ls value = 0.006 }
+	multiply_variable = { var = UKR_sm_vwave_ls value = UKR_sm_k }
+
+	add_dynamic_modifier = { modifier = UKR_veteran_wave_dynamic }
+	force_update_dynamic_modifier = yes
+}
+
+# UKR_cultural_reforms: k = 1 + (UKR_nationalist_lean - 20) / 200 (дух из TFR, выдаётся фокусом UKR_ukrainian_renaissance)
+UKR_season_cultural_reforms = {
+	UKR_season_scale_init = yes
+	set_temp_variable = { var = UKR_sm_k value = UKR_nationalist_lean }
+	subtract_from_temp_variable = { var = UKR_sm_k value = 20 }
+	divide_temp_variable = { var = UKR_sm_k value = 200 }
+	add_to_temp_variable = { var = UKR_sm_k value = 1 }
+	UKR_season_k_finish = yes
+
+	set_variable = { var = UKR_sm_cult_ns value = 0.006 }
+	multiply_variable = { var = UKR_sm_cult_ns value = UKR_sm_k }
+	set_variable = { var = UKR_sm_cult_con value = 0.004 }
+	multiply_variable = { var = UKR_sm_cult_con value = UKR_sm_k }
+
+	add_dynamic_modifier = { modifier = UKR_cultural_reforms_dynamic }
+	force_update_dynamic_modifier = yes
+}
+
+# UKR_western_support: множитель 1 (дух из TFR, выдаётся фокусом UKR_secure_western_aid)
+UKR_season_western_support = {
+	UKR_season_scale_init = yes
+	set_temp_variable = { var = UKR_sm_k value = 1 }
+	UKR_season_k_finish = yes
+
+	set_variable = { var = UKR_sm_wsup_sl value = 0.005 }
+	multiply_variable = { var = UKR_sm_wsup_sl value = UKR_sm_k }
+	set_variable = { var = UKR_sm_wsup_ml value = 0.005 }
+	multiply_variable = { var = UKR_sm_wsup_ml value = UKR_sm_k }
+
+	hidden_effect = {
+		add_to_variable = { European_Influence = 0.01 }
+		clamp_variable = { var = European_Influence min = 0 max = 1 }
+	}
+
+	add_dynamic_modifier = { modifier = UKR_western_support_dynamic }
+	force_update_dynamic_modifier = yes
+}

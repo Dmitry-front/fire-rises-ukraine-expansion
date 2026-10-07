@@ -1,0 +1,170 @@
+# Политический сезон 2023: расчёт силы духов (PROPOSAL_spirits.md, пакет 1)
+# Схема: событие даёт дух add_timed_idea, затем вызывает UKR_season_<дух> = yes. Эффект считает множитель UKR_sm_k
+# (склонности, честность, сила Левого фронта), записывает переменные UKR_sm_<дух>_<партия> и обновляет динамический
+# модификатор из common/dynamic_modifiers/UKR_dynamic_season.txt. Вызывать ПОСЛЕ add_timed_idea.
+# Единицы *_drift в TFR не проверены в игре: общая сила всех сдвигов регулируется переменной UKR_season_scale (по умолчанию 1).
+# Если дрейф слабый - увеличить (например, set_variable = { UKR_season_scale = 5 } в консоли), если сильный - уменьшить.
+
+# Создаёт регулятор силы, если его ещё нет
+UKR_season_scale_init = {
+	if = {
+		limit = { NOT = { has_variable = UKR_season_scale } }
+		set_variable = { var = UKR_season_scale value = 1 }
+	}
+}
+
+# Завершает расчёт множителя: границы и общий регулятор. Вход: временная переменная UKR_sm_k
+UKR_season_k_finish = {
+	clamp_temp_variable = { var = UKR_sm_k min = 0.6 max = 1.5 }
+	multiply_temp_variable = { var = UKR_sm_k value = UKR_season_scale }
+}
+
+# Множитель по честности: k = 1 - 0.15 * UKR_honesty_2023 (замалчивание усиливает удар, расследование смягчает)
+UKR_season_k_honesty = {
+	set_temp_variable = { var = UKR_sm_h value = UKR_honesty_2023 }
+	clamp_temp_variable = { var = UKR_sm_h min = -3 max = 3 }
+	multiply_temp_variable = { var = UKR_sm_h value = -0.15 }
+	set_temp_variable = { var = UKR_sm_k value = 1 }
+	add_to_temp_variable = { var = UKR_sm_k value = UKR_sm_h }
+	UKR_season_k_finish = yes
+}
+
+# Кризис доверия к Западу: цифровая страна переносит урезание грантов легче
+# k = 1 + (20 - UKR_digital_lean) / 200; бьёт по «Слуге народа» и «За будущее», чуть поднимает «Европейскую Солидарность»
+UKR_season_west_trust_crisis = {
+	UKR_season_scale_init = yes
+	set_temp_variable = { var = UKR_sm_k value = 20 }
+	subtract_from_temp_variable = { var = UKR_sm_k value = UKR_digital_lean }
+	divide_temp_variable = { var = UKR_sm_k value = 200 }
+	add_to_temp_variable = { var = UKR_sm_k value = 1 }
+	UKR_season_k_finish = yes
+
+	set_variable = { var = UKR_sm_west_sl value = -0.015 }
+	multiply_variable = { var = UKR_sm_west_sl value = UKR_sm_k }
+	set_variable = { var = UKR_sm_west_ml value = -0.012 }
+	multiply_variable = { var = UKR_sm_west_ml value = UKR_sm_k }
+	set_variable = { var = UKR_sm_west_con value = 0.004 }
+	multiply_variable = { var = UKR_sm_west_con value = UKR_sm_k }
+
+	# Партнёры отвернулись: европейское и американское влияние слегка падает
+	hidden_effect = {
+		add_to_variable = { European_Influence = -0.01 }
+		clamp_variable = { var = European_Influence min = 0 max = 1 }
+		add_to_variable = { American_Influence = -0.01 }
+		clamp_variable = { var = American_Influence min = 0 max = 1 }
+	}
+	add_dynamic_modifier = { modifier = UKR_west_trust_crisis_dynamic }
+	force_update_dynamic_modifier = yes
+}
+
+# Левая консолидация: k = 1 + (UKR_left_lean - 20) / 200
+UKR_season_left_consolidation = {
+	UKR_season_scale_init = yes
+	set_temp_variable = { var = UKR_sm_k value = UKR_left_lean }
+	subtract_from_temp_variable = { var = UKR_sm_k value = 20 }
+	divide_temp_variable = { var = UKR_sm_k value = 200 }
+	add_to_temp_variable = { var = UKR_sm_k value = 1 }
+	UKR_season_k_finish = yes
+
+	set_variable = { var = UKR_sm_leftc_sd value = 0.015 }
+	multiply_variable = { var = UKR_sm_leftc_sd value = UKR_sm_k }
+	set_variable = { var = UKR_sm_leftc_ls value = 0.012 }
+	multiply_variable = { var = UKR_sm_leftc_ls value = UKR_sm_k }
+	set_variable = { var = UKR_sm_leftc_sl value = -0.004 }
+	multiply_variable = { var = UKR_sm_leftc_sl value = UKR_sm_k }
+
+	add_dynamic_modifier = { modifier = UKR_left_consolidation_dynamic }
+	force_update_dynamic_modifier = yes
+}
+
+# Подъём левых: k = 0.8 + 0.1 * UKR_left_front_strength (силу набирают события 106-118)
+UKR_season_left_front_surge = {
+	UKR_season_scale_init = yes
+	set_temp_variable = { var = UKR_sm_k value = UKR_left_front_strength }
+	multiply_temp_variable = { var = UKR_sm_k value = 0.1 }
+	add_to_temp_variable = { var = UKR_sm_k value = 0.8 }
+	UKR_season_k_finish = yes
+
+	set_variable = { var = UKR_sm_surge_sd value = 0.020 }
+	multiply_variable = { var = UKR_sm_surge_sd value = UKR_sm_k }
+	set_variable = { var = UKR_sm_surge_ls value = 0.016 }
+	multiply_variable = { var = UKR_sm_surge_ls value = UKR_sm_k }
+	set_variable = { var = UKR_sm_surge_sl value = -0.006 }
+	multiply_variable = { var = UKR_sm_surge_sl value = UKR_sm_k }
+
+	add_dynamic_modifier = { modifier = UKR_left_front_surge_dynamic }
+	force_update_dynamic_modifier = yes
+}
+
+# Правый поворот: k = 1 + (UKR_nationalist_lean - 20) / 200
+UKR_season_right_turn = {
+	UKR_season_scale_init = yes
+	set_temp_variable = { var = UKR_sm_k value = UKR_nationalist_lean }
+	subtract_from_temp_variable = { var = UKR_sm_k value = 20 }
+	divide_temp_variable = { var = UKR_sm_k value = 200 }
+	add_to_temp_variable = { var = UKR_sm_k value = 1 }
+	UKR_season_k_finish = yes
+
+	set_variable = { var = UKR_sm_right_con value = 0.018 }
+	multiply_variable = { var = UKR_sm_right_con value = UKR_sm_k }
+	set_variable = { var = UKR_sm_right_ns value = 0.018 }
+	multiply_variable = { var = UKR_sm_right_ns value = UKR_sm_k }
+	set_variable = { var = UKR_sm_right_fas value = 0.004 }
+	multiply_variable = { var = UKR_sm_right_fas value = UKR_sm_k }
+
+	add_dynamic_modifier = { modifier = UKR_right_turn_dynamic }
+	force_update_dynamic_modifier = yes
+}
+
+# «Яйца по 17»: множитель по честности; вызывать после изменения UKR_honesty_2023 в опции
+UKR_season_eggs_scandal = {
+	UKR_season_scale_init = yes
+	UKR_season_k_honesty = yes
+
+	set_variable = { var = UKR_sm_eggs_sl value = -0.014 }
+	multiply_variable = { var = UKR_sm_eggs_sl value = UKR_sm_k }
+	set_variable = { var = UKR_sm_eggs_con value = 0.004 }
+	multiply_variable = { var = UKR_sm_eggs_con value = UKR_sm_k }
+
+	add_dynamic_modifier = { modifier = UKR_eggs_scandal_dynamic }
+	force_update_dynamic_modifier = yes
+}
+
+# Шёпот в кулуарах: множитель по честности; вызывать после изменения UKR_honesty_2023 в опции
+UKR_season_corridor_rumours = {
+	UKR_season_scale_init = yes
+	UKR_season_k_honesty = yes
+
+	set_variable = { var = UKR_sm_rumours_sl value = -0.012 }
+	multiply_variable = { var = UKR_sm_rumours_sl value = UKR_sm_k }
+	set_variable = { var = UKR_sm_rumours_con value = 0.003 }
+	multiply_variable = { var = UKR_sm_rumours_con value = UKR_sm_k }
+
+	add_dynamic_modifier = { modifier = UKR_corridor_rumours_dynamic }
+	force_update_dynamic_modifier = yes
+}
+
+# Улица требует перемен: k = 1 - 0.1 * UKR_honesty_2023 + (UKR_authoritarian_lean - 20) / 400
+UKR_season_street_demands = {
+	UKR_season_scale_init = yes
+	set_temp_variable = { var = UKR_sm_h value = UKR_honesty_2023 }
+	clamp_temp_variable = { var = UKR_sm_h min = -3 max = 3 }
+	multiply_temp_variable = { var = UKR_sm_h value = -0.1 }
+	set_temp_variable = { var = UKR_sm_a value = UKR_authoritarian_lean }
+	subtract_from_temp_variable = { var = UKR_sm_a value = 20 }
+	divide_temp_variable = { var = UKR_sm_a value = 400 }
+	set_temp_variable = { var = UKR_sm_k value = 1 }
+	add_to_temp_variable = { var = UKR_sm_k value = UKR_sm_h }
+	add_to_temp_variable = { var = UKR_sm_k value = UKR_sm_a }
+	UKR_season_k_finish = yes
+
+	set_variable = { var = UKR_sm_street_sl value = -0.015 }
+	multiply_variable = { var = UKR_sm_street_sl value = UKR_sm_k }
+	set_variable = { var = UKR_sm_street_con value = 0.008 }
+	multiply_variable = { var = UKR_sm_street_con value = UKR_sm_k }
+	set_variable = { var = UKR_sm_street_sd value = 0.004 }
+	multiply_variable = { var = UKR_sm_street_sd value = UKR_sm_k }
+
+	add_dynamic_modifier = { modifier = UKR_street_demands_dynamic }
+	force_update_dynamic_modifier = yes
+}

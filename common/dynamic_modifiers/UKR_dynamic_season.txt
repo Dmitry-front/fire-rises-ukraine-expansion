@@ -1,0 +1,80 @@
+# Политический сезон 2023: сдвиги популярности партий, масштабируемые переменными мода (PROPOSAL_spirits.md, пакет 1)
+# Значения берутся из переменных UKR_sm_<дух>_<партия>, их считают эффекты UKR_season_* (common/scripted_effects/UKR_season_effects.txt).
+# Модификатор живёт, пока у страны есть соответствующий дух; после смены переменных нужен force_update_dynamic_modifier = yes.
+# Партии: social_liberal - «Слуга народа», market_liberal - «За будущее», conservative - «Европейская Солидарность»,
+# social_democrat - Радикальная партия / «Левый фронт», libertarian_socialist - «Союз левых сил», national_socialist - «Свобода», fascist - «Национальный корпус».
+
+# Кризис доверия к Западу (ukraine_politics.101)
+UKR_west_trust_crisis_dynamic = {
+	icon = chi_war_of_resistance
+	enable = { has_idea = UKR_west_trust_crisis }
+	remove_trigger = { NOT = { has_idea = UKR_west_trust_crisis } }
+
+	social_liberal_drift = UKR_sm_west_sl
+	market_liberal_drift = UKR_sm_west_ml
+	conservative_drift = UKR_sm_west_con
+}
+
+# Левая консолидация (ukraine_politics.102)
+UKR_left_consolidation_dynamic = {
+	icon = chi_war_of_resistance
+	enable = { has_idea = UKR_left_consolidation }
+	remove_trigger = { NOT = { has_idea = UKR_left_consolidation } }
+
+	social_democrat_drift = UKR_sm_leftc_sd
+	libertarian_socialist_drift = UKR_sm_leftc_ls
+	social_liberal_drift = UKR_sm_leftc_sl
+}
+
+# Подъём левых (ukraine_politics.109)
+UKR_left_front_surge_dynamic = {
+	icon = chi_war_of_resistance
+	enable = { has_idea = UKR_left_front_surge }
+	remove_trigger = { NOT = { has_idea = UKR_left_front_surge } }
+
+	social_democrat_drift = UKR_sm_surge_sd
+	libertarian_socialist_drift = UKR_sm_surge_ls
+	social_liberal_drift = UKR_sm_surge_sl
+}
+
+# Правый поворот (ukraine_politics.103)
+UKR_right_turn_dynamic = {
+	icon = chi_war_of_resistance
+	enable = { has_idea = UKR_right_turn }
+	remove_trigger = { NOT = { has_idea = UKR_right_turn } }
+
+	conservative_drift = UKR_sm_right_con
+	national_socialist_drift = UKR_sm_right_ns
+	fascist_drift = UKR_sm_right_fas
+}
+
+# «Яйца по 17» (ukraine_politics.104)
+UKR_eggs_scandal_dynamic = {
+	icon = chi_war_of_resistance
+	enable = { has_idea = UKR_eggs_scandal }
+	remove_trigger = { NOT = { has_idea = UKR_eggs_scandal } }
+
+	social_liberal_drift = UKR_sm_eggs_sl
+	conservative_drift = UKR_sm_eggs_con
+}
+
+# Шёпот в кулуарах (ukraine_politics.121)
+UKR_corridor_rumours_dynamic = {
+	icon = chi_war_of_resistance
+	enable = { has_idea = UKR_corridor_rumours }
+	remove_trigger = { NOT = { has_idea = UKR_corridor_rumours } }
+
+	social_liberal_drift = UKR_sm_rumours_sl
+	conservative_drift = UKR_sm_rumours_con
+}
+
+# Улица требует перемен (ukraine_politics.125)
+UKR_street_demands_dynamic = {
+	icon = chi_war_of_resistance
+	enable = { has_idea = UKR_street_demands }
+	remove_trigger = { NOT = { has_idea = UKR_street_demands } }
+
+	social_liberal_drift = UKR_sm_street_sl
+	conservative_drift = UKR_sm_street_con
+	social_democrat_drift = UKR_sm_street_sd
+}

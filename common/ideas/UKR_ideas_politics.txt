@@ -1,8 +1,11 @@
 # Идеи политического блока 2 (DESIGN.md, раздел 6)
 ideas = {
 	country = {
-		# === Политический сезон 2023: временные духи, двигающие популярность партий (DESIGN.md, 5) ===
-		# Кризис доверия к Западу (ukraine_politics.101): «Слуга народа» и «За будущее» теряют
+		# === Политический сезон 2023: временные духи (PROPOSAL_spirits.md, пакет 1) ===
+		# Дух несёт статическую часть (износ стабильности и поддержки войны, стабильность от рейтинга партии власти),
+		# сдвиги популярности партий лежат в динамическом модификаторе UKR_<дух>_dynamic
+		# (common/dynamic_modifiers/UKR_dynamic_season.txt), силу считает эффект UKR_season_<дух>.
+		# Кризис доверия к Западу (ukraine_politics.101): «Слуга народа» и «За будущее» теряют, торговое доверие падает
 		UKR_west_trust_crisis = {
 			picture = UKR_Embargoed_Economy
 			allowed = {
@@ -10,12 +13,12 @@ ideas = {
 			}
 			removal_cost = -1
 			modifier = {
-				social_liberal_drift = -0.03
-				market_liberal_drift = -0.02
+				stability_weekly = -0.0005
+				trade_opinion_factor = -0.03
 			}
 		}
 
-		# Левая консолидация (102): Радикальная партия и Союз левых сил растут
+		# Левая консолидация (102): Радикальная партия и Союз левых сил растут, улица шумнее
 		UKR_left_consolidation = {
 			picture = SOV_stakhanovite_movement
 			allowed = {
@@ -23,12 +26,12 @@ ideas = {
 			}
 			removal_cost = -1
 			modifier = {
-				social_democrat_drift = 0.03
-				libertarian_socialist_drift = 0.02
+				stability_factor = -0.01
+				political_power_gain = -0.02
 			}
 		}
 
-		# Подъём левых (109): Левый фронт и Союз левых сил идут на выборы
+		# Подъём левых (109): Левый фронт и Союз левых сил идут на выборы, сила зависит от хода консолидации
 		UKR_left_front_surge = {
 			picture = SOV_stakhanovite_movement
 			allowed = {
@@ -36,12 +39,12 @@ ideas = {
 			}
 			removal_cost = -1
 			modifier = {
-				social_democrat_drift = 0.03
-				libertarian_socialist_drift = 0.02
+				stability_weekly = -0.0004
+				party_popularity_stability_factor = -0.03
 			}
 		}
 
-		# Правый поворот (103): «Европейская Солидарность» и «Свобода» растут
+		# Правый поворот (103): «Европейская Солидарность» и «Свобода» растут, поддержка войны понемногу прибавляется
 		UKR_right_turn = {
 			picture = UKR_far_right_meddling
 			allowed = {
@@ -49,12 +52,12 @@ ideas = {
 			}
 			removal_cost = -1
 			modifier = {
-				conservative_drift = 0.03
-				national_socialist_drift = 0.02
+				stability_weekly = -0.0003
+				war_support_weekly = 0.0003
 			}
 		}
 
-		# «Яйца по 17» (104): «Слуга народа» теряет, срок зависит от реакции
+		# «Яйца по 17» (104): «Слуга народа» теряет, срок зависит от реакции; шум, а не кризис, поэтому без недельного износа
 		UKR_eggs_scandal = {
 			picture = UKR_Corruption
 			allowed = {
@@ -62,11 +65,12 @@ ideas = {
 			}
 			removal_cost = -1
 			modifier = {
-				social_liberal_drift = -0.02
+				party_popularity_stability_factor = -0.03
+				political_power_gain = -0.02
 			}
 		}
 
-		# Слухи в кулуарах (121): «Слуга народа» теряет
+		# Слухи в кулуарах (121): «Слуга народа» теряет, власть работает хуже
 		UKR_corridor_rumours = {
 			picture = UKR_Corruption
 			allowed = {
@@ -74,12 +78,14 @@ ideas = {
 			}
 			removal_cost = -1
 			modifier = {
-				social_liberal_drift = -0.02
-				stability_factor = -0.02
+				stability_factor = -0.01
+				stability_weekly = -0.0008
+				party_popularity_stability_factor = -0.03
+				political_power_gain = -0.03
 			}
 		}
 
-		# Улица требует перемен (125): оппозиция растёт до выборов президента
+		# Улица требует перемен (125): оппозиция растёт до выборов президента, стабильность и поддержка войны понемногу падают
 		UKR_street_demands = {
 			picture = UKR_zelensky_growing_authoritarism
 			allowed = {
@@ -87,9 +93,9 @@ ideas = {
 			}
 			removal_cost = -1
 			modifier = {
-				social_liberal_drift = -0.03
-				conservative_drift = 0.02
-				social_democrat_drift = 0.01
+				stability_weekly = -0.0015
+				war_support_weekly = -0.0005
+				party_popularity_stability_factor = -0.05
 			}
 		}
 

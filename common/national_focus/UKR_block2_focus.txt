@@ -48,7 +48,7 @@ focus_tree = {
 			add_political_power = -10
 			set_temp_variable = {
 				var = income_var_temp
-				value = -1.1
+				value = -1.15
 			}
 			add_income_with_inflation = yes
 			set_temp_variable = {
@@ -56,6 +56,8 @@ focus_tree = {
 			value = 0.2
 			}
 			add_military_development = yes
+			add_popularity = { ideology = social_democrat = 0.018 }
+			add_popularity = { ideology = libertarian_socialist = 0.012 }
 			custom_effect_tooltip = UKR_pop_social_democrat_p2_tt
 			hidden_effect = { add_popularity = { ideology = social_democrat popularity = 0.02 } }
 			hidden_effect = {
@@ -89,9 +91,10 @@ focus_tree = {
 			army_experience = 15
 			set_temp_variable = {
 			var = military_development_var_temp
-			value = 0.1
+			value = 0.15
 			}
 			add_military_development = yes
+			add_popularity = { ideology = nationalist = 0.025 }
 			custom_effect_tooltip = UKR_pop_national_socialist_p2_tt
 			hidden_effect = { add_popularity = { ideology = national_socialist popularity = 0.02 } }
 			hidden_effect = { add_popularity = { ideology = nationalist popularity = 0.01 } }
@@ -161,12 +164,14 @@ focus_tree = {
 			hidden_effect = { country_event = { id = ukraine_politics.223 days = 8 } }
 			add_political_power = 125
 			add_stability = -0.01
+			add_popularity = { ideology = social_liberal popularity = 0.025 }
 			set_temp_variable = {
 				var = society_development_var_temp
-				value = -0.01
+				value = -0.015
 			}
 			add_society_development = yes
 			hidden_effect = {
+				add_popularity = { ideology = authoritarian_democrat popularity = 0.035 }
 				add_to_variable = { UKR_authoritarian_lean = 6 }
 				add_to_variable = { UKR_digital_lean = -2 }
 				UKR_clamp_leans = yes
@@ -188,8 +193,8 @@ focus_tree = {
 		}
 		completion_reward = {
 			hidden_effect = { country_event = { id = ukraine_politics.224 days = 8 } }
-			add_stability = 0.01
-			add_political_power = 35
+			add_stability = 0.005
+			add_political_power = 45
 			custom_effect_tooltip = UKR_pop_social_liberal_p2_tt
 			hidden_effect = { add_popularity = { ideology = social_liberal popularity = 0.02 } }
 		}
@@ -219,7 +224,7 @@ focus_tree = {
 			add_ideas = UKR_captured_judiciary
 			set_temp_variable = {
 				var = society_development_var_temp
-				value = -0.01
+				value = -0.015
 			}
 			add_society_development = yes
 			hidden_effect = {

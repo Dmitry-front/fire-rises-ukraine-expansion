@@ -33,26 +33,26 @@ country_event = {
 	# Усилить охрану
 	option = {
 		name = ukraine_politics.723.a
-		add_political_power = -15
+		add_political_power = -10
 		add_stability = 0.01
-		add_timed_idea = { idea = UKR_hunt_on_activists days = 300 }
+		add_timed_idea = { idea = UKR_hunt_on_activists days = 250 }
 		ai_chance = { factor = 45 }
 	}
 
 	# Следствие идёт
 	option = {
 		name = ukraine_politics.723.b
-		add_political_power = 5
-		add_timed_idea = { idea = UKR_hunt_on_activists days = 420 }
+		add_political_power = -5
+		add_timed_idea = { idea = UKR_hunt_on_activists days = 300 }
 		ai_chance = { factor = 35 }
 	}
 
 	# Ужесточить меры безопасности
 	option = {
 		name = ukraine_politics.723.c
-		add_political_power = 20
-		add_stability = -0.01
-		add_timed_idea = { idea = UKR_hunt_on_activists days = 420 }
+		add_political_power = -35
+		add_stability = 0.015
+		add_timed_idea = { idea = UKR_hunt_on_activists days = 180 }
 		hidden_effect = {
 			add_to_variable = { UKR_authoritarian_lean = 2 }
 			UKR_clamp_leans = yes
@@ -108,7 +108,7 @@ country_event = {
 	option = {
 		name = ukraine_politics.720.a
 		add_stability = 0.01
-		add_war_support = 0.02
+		add_war_support = 0.025
 		custom_effect_tooltip = UKR_np_demo_up_tt
 		hidden_effect = {
 			add_to_variable = { UKR_np_demo = 3 }
@@ -120,16 +120,17 @@ country_event = {
 	# Усилить охрану публичных людей
 	option = {
 		name = ukraine_politics.720.b
-		add_political_power = -20
-		add_stability = 0.02
+		add_political_power = -15
+		add_stability = 0.025
+		add_war_support = 0.025
 		ai_chance = { factor = 35 }
 	}
 
 	# Назвать российский след по версии следствия
 	option = {
 		name = ukraine_politics.720.c
-		add_political_power = 10
-		add_war_support = 0.03
+		add_political_power = 40
+		add_war_support = 0.035
 		add_stability = -0.01
 		hidden_effect = {
 			add_to_variable = { Russian_Influence = -0.02 }
@@ -173,6 +174,18 @@ country_event = {
 			id = UKR_np_civic_ethnic_balance
 			value = -0.03
 		}
+		add_popularity = {
+			ideology = fascist
+			popularity = 0.015
+		}
+		add_popularity = {
+			ideology = nationalist
+			popularity = 0.015
+		}
+		add_popularity = {
+			ideology = national_socialist
+			popularity = 0.005
+		}
 		if = {
 			limit = { has_country_flag = UKR_np_hero_present }
 			add_political_power = 10
@@ -190,12 +203,25 @@ country_event = {
 	# Траурное шествие ветеранов и дружин
 	option = {
 		name = ukraine_politics.721.b
-		add_war_support = 0.04
-		add_stability = -0.01
+		add_war_support = 0.05
+		add_stability = 0.01
 		add_power_balance_value = {
 			id = UKR_np_civic_ethnic_balance
 			value = 0.03
 		}
+		add_popularity = {
+			ideology = fascist
+			popularity = 0.025
+		}
+		add_popularity = {
+			ideology = nationalist
+			popularity = 0.035
+		}
+		add_popularity = {
+			ideology = national_socialist
+			popularity = 0.015
+		}
+		
 		custom_effect_tooltip = UKR_np_azov_up_tt
 		custom_effect_tooltip = UKR_np_street_up_tt
 		hidden_effect = {
@@ -211,8 +237,8 @@ country_event = {
 	# Закрытое прощание с семьёй
 	option = {
 		name = ukraine_politics.721.c
-		add_political_power = 10
-		add_stability = 0.01
+		add_political_power = 5
+		add_stability = 0.001
 		hidden_effect = {
 			add_to_variable = { UKR_np_demo = -1 }
 			UKR_np_update = yes

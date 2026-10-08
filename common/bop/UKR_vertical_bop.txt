@@ -3,8 +3,8 @@
 # и «Нация: гражданская или этническая» (UKR_np_bop.txt).
 # Минус - клан-сторона (президент зависит от кланов), плюс - вертикаль (президент подчиняет кланы). Центр - «Арбитр».
 # Включается фокусом UKR_ol_vertical (set_power_balance), двигается решениями окна «Вертикаль», фокусами и событиями.
-# Края шкалы (события «Плен» 690 и «Восстание элит» 691, черты hos_cowed_by_oligarchs и hos_aspiring_autocrat)
-# добавляются в шаге 3: on_activate пока не заданы.
+# Края шкалы (шаг 3): на краю кланов - черта hos_cowed_by_oligarchs и событие «Плен» (690), на краю вертикали -
+# черта hos_aspiring_autocrat и событие «Восстание элит» (691); при выходе с края черта снимается (on_deactivate).
 UKR_vertical_clans_balance = {
 	initial_value = 0
 	left_side = UKR_bop_clans
@@ -58,6 +58,13 @@ UKR_vertical_clans_balance = {
 				stability_factor = -0.03
 				war_support_factor = -0.03
 			}
+			on_activate = {
+				add_country_leader_trait = hos_cowed_by_oligarchs
+				country_event = { id = ukraine_politics.690 days = 1 }
+			}
+			on_deactivate = {
+				remove_country_leader_trait = hos_cowed_by_oligarchs
+			}
 		}
 	}
 
@@ -96,6 +103,13 @@ UKR_vertical_clans_balance = {
 				society_development_monthly = -0.003
 				trade_opinion_factor = -0.06
 				party_popularity_stability_factor = -0.03
+			}
+			on_activate = {
+				add_country_leader_trait = hos_aspiring_autocrat
+				country_event = { id = ukraine_politics.691 days = 1 }
+			}
+			on_deactivate = {
+				remove_country_leader_trait = hos_aspiring_autocrat
 			}
 		}
 	}

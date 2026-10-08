@@ -16,6 +16,8 @@ UKR_ol_start = {
 	UKR_ol_apply_office = yes
 	UKR_ol_update = yes
 	country_event = { id = ukraine_politics.600 days = 3 }
+	# «Итоги года» повторяются раз в 365 дней (ukraine_politics.650 сам назначает следующий)
+	country_event = { id = ukraine_politics.650 days = 365 }
 }
 
 # «Управляемый олигархат» заменяет текущую ступень лестницы олигархата (лестницу назад не поднимаем)
@@ -131,6 +133,7 @@ UKR_ol_check_bills = {
 			NOT = { has_active_mission = UKR_vp_bill_met }
 		}
 		activate_mission = UKR_vp_bill_met
+		country_event = { id = ukraine_politics.612 days = 1 }
 	}
 	if = {
 		limit = {
@@ -145,6 +148,7 @@ UKR_ol_check_bills = {
 			NOT = { has_active_mission = UKR_vp_bill_priv }
 		}
 		activate_mission = UKR_vp_bill_priv
+		country_event = { id = ukraine_politics.613 days = 1 }
 	}
 	if = {
 		limit = {
@@ -159,6 +163,7 @@ UKR_ol_check_bills = {
 			NOT = { has_active_mission = UKR_vp_bill_gas }
 		}
 		activate_mission = UKR_vp_bill_gas
+		country_event = { id = ukraine_politics.614 days = 1 }
 	}
 	if = {
 		limit = {
@@ -173,6 +178,7 @@ UKR_ol_check_bills = {
 			NOT = { has_active_mission = UKR_vp_bill_sec }
 		}
 		activate_mission = UKR_vp_bill_sec
+		country_event = { id = ukraine_politics.615 days = 1 }
 	}
 	if = {
 		limit = {
@@ -541,4 +547,45 @@ UKR_ol_share_gas = {
 UKR_ol_share_sec = {
 	add_to_variable = { UKR_cl_sec_share = UKR_ol_sh }
 	UKR_ol_update = yes
+}
+
+# «Бумажное развитие» реализуется как потеря. Перед вызовом: set_temp_variable = { UKR_ol_real_frac = 0.5 } (доля накопленной бумаги).
+# Потеря делится поровну между промышленностью и военным развитием.
+UKR_ol_realize_paper = {
+	if = {
+		limit = { has_variable = UKR_ol_paper }
+		set_temp_variable = { UKR_ol_realized = UKR_ol_paper }
+		multiply_temp_variable = { UKR_ol_realized = UKR_ol_real_frac }
+		set_temp_variable = { industrial_development_var_temp = UKR_ol_realized }
+		multiply_temp_variable = { industrial_development_var_temp = -0.5 }
+		add_industrial_development = yes
+		set_temp_variable = { military_development_var_temp = UKR_ol_realized }
+		multiply_temp_variable = { military_development_var_temp = -0.5 }
+		add_military_development = yes
+		multiply_temp_variable = { UKR_ol_realized = -1 }
+		add_to_variable = { UKR_ol_paper = UKR_ol_realized }
+		clamp_variable = { var = UKR_ol_paper min = 0 max = 10 }
+		UKR_ol_update = yes
+	}
+}
+
+# «Портрет страны» (события 695-696): 0 - витрина держится, 1 - трещины, 2 - подвал прорвало
+UKR_ol_calc_portrait = {
+	UKR_ol_update = yes
+	set_variable = { UKR_ol_portrait = 1 }
+	if = {
+		limit = {
+			check_variable = { var = UKR_ol_paper value = 0.06 compare = less_than }
+			check_variable = { var = UKR_ol_d_pov value = -0.12 compare = greater_than }
+			check_variable = { var = UKR_ol_loyalty value = 50 compare = greater_than_or_equals }
+		}
+		set_variable = { UKR_ol_portrait = 0 }
+	}
+	if = {
+		limit = {
+			check_variable = { var = UKR_ol_d_pov value = -0.15 compare = less_than_or_equals }
+			check_variable = { var = UKR_ol_d_soc value = -0.2 compare = less_than_or_equals }
+		}
+		set_variable = { UKR_ol_portrait = 2 }
+	}
 }

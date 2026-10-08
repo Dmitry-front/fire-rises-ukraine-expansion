@@ -1011,3 +1011,2199 @@ country_event = {
 		ai_chance = { factor = 100 }
 	}
 }
+
+# =====================================================================
+# Шаг 3 (PROPOSAL_oligarchs.md, раздел 16): повествование, война, края шкалы, «Портрет страны».
+# Сгенерировано из одной спецификации (код и тексты RU/EN); дальше правится вручную.
+# 610-611: марафон и закупки; 612-615: счета кланов (вызываются из UKR_ol_check_bills); 630-634: «Платформа в Раде»;
+# 640-649: «Как строится вертикаль» (познавательные); 650: «Итоги года»; 651-655: юмор; 660-663: личные эпизоды кланов;
+# 680-682: война; 690-691: края шкалы (BoP); 695-697: «Портрет страны» и улица.
+# =====================================================================
+
+country_event = {
+	id = ukraine_politics.610
+	title = ukraine_politics.610.t
+	desc = ukraine_politics.610.d
+	picture = GFX_report_event_ukrainian_civil_war
+
+	trigger = {
+		tag = UKR
+		has_country_flag = UKR_ol_vertical_done
+		has_country_flag = UKR_ol_marathon_done
+	}
+
+	mean_time_to_happen = {
+		days = 25
+	}
+
+	fire_only_once = yes
+
+	option = {
+		name = ukraine_politics.610.a
+		add_political_power = -10
+		add_stability = 0.01
+		ai_chance = { factor = 40 }
+	}
+
+	option = {
+		name = ukraine_politics.610.b
+		add_war_support = 0.01
+		hidden_effect = {
+			add_to_variable = { UKR_authoritarian_lean = 1 }
+			UKR_clamp_leans = yes
+		}
+		ai_chance = { factor = 35 }
+	}
+
+	option = {
+		name = ukraine_politics.610.c
+		add_stability = -0.01
+		hidden_effect = {
+			add_to_variable = { UKR_cl_priv_grudge = -5 }
+			UKR_ol_update = yes
+		}
+		ai_chance = { factor = 25 }
+	}
+}
+
+country_event = {
+	id = ukraine_politics.611
+	title = ukraine_politics.611.t
+	desc = ukraine_politics.611.d
+	picture = GFX_report_event_ukrainian_civil_war
+
+	trigger = {
+		tag = UKR
+		has_country_flag = UKR_ol_vertical_done
+		has_country_flag = UKR_ol_procurement_done
+	}
+
+	mean_time_to_happen = {
+		days = 150
+		modifier = {
+			factor = 0.5
+			check_variable = { var = UKR_ol_proc_count value = 3 compare = greater_than_or_equals }
+		}
+	}
+
+	fire_only_once = yes
+
+	option = {
+		name = ukraine_politics.611.a
+		add_political_power = -15
+		add_stability = -0.01
+		custom_effect_tooltip = UKR_ol_paper_real_tt
+		hidden_effect = {
+			set_temp_variable = { UKR_ol_real_frac = 0.5 }
+			UKR_ol_realize_paper = yes
+		}
+		ai_chance = { factor = 35 }
+	}
+
+	option = {
+		name = ukraine_politics.611.b
+		add_stability = -0.03
+		add_timed_idea = { idea = UKR_ol_scandal_aftermath days = 90 }
+		custom_effect_tooltip = UKR_ol_paper_real_tt
+		hidden_effect = {
+			set_temp_variable = { UKR_ol_real_frac = 0.3 }
+			UKR_ol_realize_paper = yes
+			set_temp_variable = { UKR_ol_eu = -0.01 }
+			UKR_ol_add_eu = yes
+			add_to_variable = { UKR_authoritarian_lean = 2 }
+			UKR_clamp_leans = yes
+		}
+		ai_chance = { factor = 25 }
+	}
+
+	option = {
+		name = ukraine_politics.611.c
+		add_political_power = -25
+		add_stability = 0.01
+		custom_effect_tooltip = UKR_ol_paper_real_tt
+		hidden_effect = {
+			set_temp_variable = { UKR_ol_real_frac = 0.8 }
+			UKR_ol_realize_paper = yes
+			set_temp_variable = { UKR_ol_amt = 10 }
+			UKR_ol_claim_sec = yes
+			set_temp_variable = { UKR_ol_amt = 5 }
+			UKR_ol_claim_met = yes
+		}
+		ai_chance = { factor = 40 }
+	}
+}
+
+country_event = {
+	id = ukraine_politics.612
+	title = ukraine_politics.612.t
+	desc = ukraine_politics.612.d
+	picture = GFX_report_event_ukrainian_civil_war
+
+	is_triggered_only = yes
+
+	trigger = {
+		tag = UKR
+	}
+
+	option = {
+		name = ukraine_politics.612.a
+		trigger = {
+			has_political_power > 19
+		}
+		add_political_power = -20
+		custom_effect_tooltip = UKR_ol_claim_down_tt
+		custom_effect_tooltip = UKR_ol_bop_clans_tt
+		add_power_balance_value = {
+			id = UKR_vertical_clans_balance
+			value = -0.03
+		}
+		hidden_effect = {
+			set_temp_variable = { UKR_ol_amt = -35 }
+			UKR_ol_claim_met = yes
+		}
+		ai_chance = { factor = 45 }
+	}
+
+	option = {
+		name = ukraine_politics.612.b
+		custom_effect_tooltip = UKR_ol_target_met_tt
+		custom_effect_tooltip = UKR_ol_grudge_up_tt
+		hidden_effect = {
+			set_country_flag = UKR_ol_target_met
+			add_to_variable = { UKR_cl_met_grudge = 10 }
+			UKR_ol_update = yes
+		}
+		ai_chance = { factor = 30 }
+	}
+
+	option = {
+		name = ukraine_politics.612.c
+		ai_chance = { factor = 25 }
+	}
+}
+
+country_event = {
+	id = ukraine_politics.613
+	title = ukraine_politics.613.t
+	desc = ukraine_politics.613.d
+	picture = GFX_report_event_ukrainian_civil_war
+
+	is_triggered_only = yes
+
+	trigger = {
+		tag = UKR
+	}
+
+	option = {
+		name = ukraine_politics.613.a
+		trigger = {
+			has_political_power > 19
+		}
+		add_political_power = -20
+		custom_effect_tooltip = UKR_ol_claim_down_tt
+		custom_effect_tooltip = UKR_ol_bop_clans_tt
+		add_power_balance_value = {
+			id = UKR_vertical_clans_balance
+			value = -0.03
+		}
+		hidden_effect = {
+			set_temp_variable = { UKR_ol_amt = -35 }
+			UKR_ol_claim_priv = yes
+		}
+		ai_chance = { factor = 45 }
+	}
+
+	option = {
+		name = ukraine_politics.613.b
+		custom_effect_tooltip = UKR_ol_target_priv_tt
+		custom_effect_tooltip = UKR_ol_grudge_up_tt
+		hidden_effect = {
+			set_country_flag = UKR_ol_target_priv
+			add_to_variable = { UKR_cl_priv_grudge = 10 }
+			UKR_ol_update = yes
+		}
+		ai_chance = { factor = 30 }
+	}
+
+	option = {
+		name = ukraine_politics.613.c
+		ai_chance = { factor = 25 }
+	}
+}
+
+country_event = {
+	id = ukraine_politics.614
+	title = ukraine_politics.614.t
+	desc = ukraine_politics.614.d
+	picture = GFX_report_event_ukrainian_civil_war
+
+	is_triggered_only = yes
+
+	trigger = {
+		tag = UKR
+	}
+
+	option = {
+		name = ukraine_politics.614.a
+		trigger = {
+			has_political_power > 19
+		}
+		add_political_power = -20
+		custom_effect_tooltip = UKR_ol_claim_down_tt
+		custom_effect_tooltip = UKR_ol_bop_clans_tt
+		add_power_balance_value = {
+			id = UKR_vertical_clans_balance
+			value = -0.03
+		}
+		hidden_effect = {
+			set_temp_variable = { UKR_ol_amt = -35 }
+			UKR_ol_claim_gas = yes
+		}
+		ai_chance = { factor = 45 }
+	}
+
+	option = {
+		name = ukraine_politics.614.b
+		custom_effect_tooltip = UKR_ol_target_gas_tt
+		custom_effect_tooltip = UKR_ol_grudge_up_tt
+		hidden_effect = {
+			set_country_flag = UKR_ol_target_gas
+			add_to_variable = { UKR_cl_gas_grudge = 10 }
+			UKR_ol_update = yes
+		}
+		ai_chance = { factor = 30 }
+	}
+
+	option = {
+		name = ukraine_politics.614.c
+		ai_chance = { factor = 25 }
+	}
+}
+
+country_event = {
+	id = ukraine_politics.615
+	title = ukraine_politics.615.t
+	desc = ukraine_politics.615.d
+	picture = GFX_report_event_ukrainian_civil_war
+
+	is_triggered_only = yes
+
+	trigger = {
+		tag = UKR
+	}
+
+	option = {
+		name = ukraine_politics.615.a
+		trigger = {
+			has_political_power > 19
+		}
+		add_political_power = -20
+		custom_effect_tooltip = UKR_ol_claim_down_tt
+		custom_effect_tooltip = UKR_ol_bop_clans_tt
+		add_power_balance_value = {
+			id = UKR_vertical_clans_balance
+			value = -0.03
+		}
+		hidden_effect = {
+			set_temp_variable = { UKR_ol_amt = -35 }
+			UKR_ol_claim_sec = yes
+		}
+		ai_chance = { factor = 45 }
+	}
+
+	option = {
+		name = ukraine_politics.615.b
+		custom_effect_tooltip = UKR_ol_target_sec_tt
+		custom_effect_tooltip = UKR_ol_grudge_up_tt
+		hidden_effect = {
+			set_country_flag = UKR_ol_target_sec
+			add_to_variable = { UKR_cl_sec_grudge = 10 }
+			UKR_ol_update = yes
+		}
+		ai_chance = { factor = 30 }
+	}
+
+	option = {
+		name = ukraine_politics.615.c
+		ai_chance = { factor = 25 }
+	}
+}
+
+country_event = {
+	id = ukraine_politics.630
+	title = ukraine_politics.630.t
+	desc = ukraine_politics.630.d
+	picture = GFX_report_event_ukrainian_civil_war
+
+	trigger = {
+		tag = UKR
+		has_country_flag = UKR_ol_vertical_done
+		check_variable = { var = UKR_ol_vertical_level value = 1 compare = greater_than_or_equals }
+	}
+
+	mean_time_to_happen = {
+		days = 90
+	}
+
+	fire_only_once = yes
+
+	immediate = {
+		set_country_flag = UKR_ol_platform_1
+	}
+
+	option = {
+		name = ukraine_politics.630.a
+		hidden_effect = {
+			add_popularity = { ideology = authoritarian_democrat popularity = 0.005 }
+		}
+		ai_chance = { factor = 40 }
+	}
+
+	option = {
+		name = ukraine_politics.630.b
+		add_political_power = -10
+		custom_effect_tooltip = UKR_ol_bop_vertical_tt
+		add_power_balance_value = {
+			id = UKR_vertical_clans_balance
+			value = 0.03
+		}
+		hidden_effect = {
+			add_popularity = { ideology = authoritarian_democrat popularity = 0.01 }
+		}
+		ai_chance = { factor = 35 }
+	}
+
+	option = {
+		name = ukraine_politics.630.c
+		add_political_power = -5
+		add_stability = 0.01
+		hidden_effect = {
+			add_popularity = { ideology = authoritarian_democrat popularity = 0.015 }
+		}
+		ai_chance = { factor = 25 }
+	}
+}
+
+country_event = {
+	id = ukraine_politics.631
+	title = ukraine_politics.631.t
+	desc = ukraine_politics.631.d
+	picture = GFX_report_event_ukrainian_civil_war
+
+	trigger = {
+		tag = UKR
+		has_country_flag = UKR_ol_vertical_done
+		check_variable = { var = UKR_ol_vertical_level value = 2 compare = greater_than_or_equals }
+		has_country_flag = UKR_ol_platform_1
+	}
+
+	mean_time_to_happen = {
+		days = 120
+	}
+
+	fire_only_once = yes
+
+	option = {
+		name = ukraine_politics.631.a
+		add_war_support = 0.02
+		add_stability = -0.01
+		hidden_effect = {
+			add_popularity = { ideology = authoritarian_democrat popularity = 0.01 }
+		}
+		ai_chance = { factor = 40 }
+	}
+
+	option = {
+		name = ukraine_politics.631.b
+		add_political_power = -10
+		add_stability = 0.01
+		hidden_effect = {
+			add_popularity = { ideology = authoritarian_democrat popularity = 0.005 }
+		}
+		ai_chance = { factor = 30 }
+	}
+
+	option = {
+		name = ukraine_politics.631.c
+		add_political_power = 10
+		add_stability = -0.02
+		custom_effect_tooltip = UKR_ol_eu_down_tt
+		hidden_effect = {
+			add_popularity = { ideology = authoritarian_democrat popularity = 0.015 }
+			set_temp_variable = { UKR_ol_eu = -0.01 }
+			UKR_ol_add_eu = yes
+		}
+		ai_chance = { factor = 30 }
+	}
+}
+
+country_event = {
+	id = ukraine_politics.632
+	title = ukraine_politics.632.t
+	desc = ukraine_politics.632.d
+	picture = GFX_report_event_ukrainian_civil_war
+
+	trigger = {
+		tag = UKR
+		has_country_flag = UKR_ol_vertical_done
+		has_country_flag = UKR_war_mood_active
+		check_variable = { var = UKR_ol_vertical_level value = 2 compare = greater_than_or_equals }
+	}
+
+	mean_time_to_happen = {
+		days = 60
+	}
+
+	fire_only_once = yes
+
+	option = {
+		name = ukraine_politics.632.a
+		set_temp_variable = {
+			var = income_var_temp
+			value = -0.5
+		}
+		add_income = yes
+		set_temp_variable = {
+			var = poverty_development_var_temp
+			value = 0.01
+		}
+		add_poverty_development = yes
+		hidden_effect = {
+			if = {
+				limit = { has_country_flag = UKR_war_mood_active }
+				add_to_variable = { UKRwarfatigue = -3 }
+			}
+		}
+		ai_chance = { factor = 35 }
+	}
+
+	option = {
+		name = ukraine_politics.632.b
+		add_stability = 0.01
+		hidden_effect = {
+			add_popularity = { ideology = authoritarian_democrat popularity = 0.015 }
+			if = {
+				limit = { has_country_flag = UKR_war_mood_active }
+				add_to_variable = { UKRwarfatigue = 3 }
+			}
+		}
+		ai_chance = { factor = 30 }
+	}
+
+	option = {
+		name = ukraine_politics.632.c
+		add_political_power = -10
+		add_stability = 0.01
+		hidden_effect = {
+			if = {
+				limit = { has_country_flag = UKR_war_mood_active }
+				add_to_variable = { UKRwarfatigue = -2 }
+			}
+		}
+		ai_chance = { factor = 35 }
+	}
+}
+
+country_event = {
+	id = ukraine_politics.633
+	title = ukraine_politics.633.t
+	desc = ukraine_politics.633.d
+	picture = GFX_report_event_ukrainian_civil_war
+
+	trigger = {
+		tag = UKR
+		has_country_flag = UKR_ol_vertical_done
+		check_variable = { var = UKR_ol_vertical_level value = 2 compare = greater_than_or_equals }
+		has_country_flag = UKR_ol_platform_1
+	}
+
+	mean_time_to_happen = {
+		days = 140
+	}
+
+	fire_only_once = yes
+
+	option = {
+		name = ukraine_politics.633.a
+		add_political_power = -10
+		add_stability = 0.01
+		ai_chance = { factor = 30 }
+	}
+
+	option = {
+		name = ukraine_politics.633.b
+		add_political_power = -15
+		set_temp_variable = {
+			var = poverty_development_var_temp
+			value = 0.01
+		}
+		add_poverty_development = yes
+		hidden_effect = {
+			add_popularity = { ideology = authoritarian_democrat popularity = -0.005 }
+		}
+		ai_chance = { factor = 35 }
+	}
+
+	option = {
+		name = ukraine_politics.633.c
+		add_stability = -0.01
+		hidden_effect = {
+			add_popularity = { ideology = authoritarian_democrat popularity = 0.01 }
+		}
+		ai_chance = { factor = 35 }
+	}
+}
+
+country_event = {
+	id = ukraine_politics.634
+	title = ukraine_politics.634.t
+	desc = ukraine_politics.634.d
+	picture = GFX_report_event_ukrainian_civil_war
+
+	trigger = {
+		tag = UKR
+		has_country_flag = UKR_ol_vertical_done
+		check_variable = { var = UKR_ol_vertical_level value = 3 compare = greater_than_or_equals }
+		has_country_flag = UKR_ol_platform_1
+	}
+
+	mean_time_to_happen = {
+		days = 100
+	}
+
+	fire_only_once = yes
+
+	option = {
+		name = ukraine_politics.634.a
+		add_political_power = 30
+		add_stability = -0.02
+		custom_effect_tooltip = UKR_ol_eu_down_tt
+		hidden_effect = {
+			set_temp_variable = { UKR_ol_eu = -0.01 }
+			UKR_ol_add_eu = yes
+		}
+		ai_chance = { factor = 30 }
+	}
+
+	option = {
+		name = ukraine_politics.634.b
+		add_political_power = 20
+		hidden_effect = {
+			set_temp_variable = { UKR_ol_amt = 10 }
+			UKR_ol_claim_sec = yes
+		}
+		ai_chance = { factor = 40 }
+	}
+
+	option = {
+		name = ukraine_politics.634.c
+		add_stability = -0.02
+		hidden_effect = {
+			add_to_variable = { Russian_Influence = 0.02 }
+			clamp_variable = { var = Russian_Influence min = 0 max = 1 }
+		}
+		ai_chance = { factor = 30 }
+	}
+}
+
+country_event = {
+	id = ukraine_politics.640
+	title = ukraine_politics.640.t
+	desc = ukraine_politics.640.d
+	picture = GFX_report_event_ukrainian_civil_war
+
+	trigger = {
+		tag = UKR
+		has_country_flag = UKR_ol_vertical_done
+		NOT = { has_country_flag = UKR_ol_flavor_cd }
+		has_country_flag = UKR_ol_cabinet_formed
+	}
+
+	mean_time_to_happen = {
+		days = 200
+	}
+
+	fire_only_once = yes
+
+	immediate = {
+		set_country_flag = {
+			flag = UKR_ol_flavor_cd
+			days = 40
+		}
+	}
+
+	option = {
+		name = ukraine_politics.640.a
+		add_political_power = -5
+		set_temp_variable = {
+			var = society_development_var_temp
+			value = 0.01
+		}
+		add_society_development = yes
+		ai_chance = { factor = 35 }
+	}
+
+	option = {
+		name = ukraine_politics.640.b
+		add_political_power = 10
+		hidden_effect = {
+			add_to_variable = { UKR_authoritarian_lean = 1 }
+			UKR_clamp_leans = yes
+		}
+		ai_chance = { factor = 65 }
+	}
+}
+
+country_event = {
+	id = ukraine_politics.641
+	title = ukraine_politics.641.t
+	desc = ukraine_politics.641.d
+	picture = GFX_report_event_ukrainian_civil_war
+
+	trigger = {
+		tag = UKR
+		has_country_flag = UKR_ol_vertical_done
+		NOT = { has_country_flag = UKR_ol_flavor_cd }
+		has_country_flag = UKR_ol_commission_done
+	}
+
+	mean_time_to_happen = {
+		days = 200
+	}
+
+	fire_only_once = yes
+
+	immediate = {
+		set_country_flag = {
+			flag = UKR_ol_flavor_cd
+			days = 40
+		}
+	}
+
+	option = {
+		name = ukraine_politics.641.a
+		add_political_power = -5
+		set_temp_variable = {
+			var = society_development_var_temp
+			value = 0.01
+		}
+		add_society_development = yes
+		ai_chance = { factor = 35 }
+	}
+
+	option = {
+		name = ukraine_politics.641.b
+		add_political_power = 10
+		hidden_effect = {
+			add_to_variable = { UKR_authoritarian_lean = 1 }
+			UKR_clamp_leans = yes
+		}
+		ai_chance = { factor = 65 }
+	}
+}
+
+country_event = {
+	id = ukraine_politics.642
+	title = ukraine_politics.642.t
+	desc = ukraine_politics.642.d
+	picture = GFX_report_event_ukrainian_civil_war
+
+	trigger = {
+		tag = UKR
+		has_country_flag = UKR_ol_vertical_done
+		NOT = { has_country_flag = UKR_ol_flavor_cd }
+		OR = {
+			has_country_flag = UKR_ol_const_court
+			has_country_flag = UKR_ol_arbiter_done
+		}
+	}
+
+	mean_time_to_happen = {
+		days = 200
+	}
+
+	fire_only_once = yes
+
+	immediate = {
+		set_country_flag = {
+			flag = UKR_ol_flavor_cd
+			days = 40
+		}
+	}
+
+	option = {
+		name = ukraine_politics.642.a
+		add_political_power = -5
+		set_temp_variable = {
+			var = society_development_var_temp
+			value = 0.01
+		}
+		add_society_development = yes
+		ai_chance = { factor = 35 }
+	}
+
+	option = {
+		name = ukraine_politics.642.b
+		add_political_power = 10
+		hidden_effect = {
+			add_to_variable = { UKR_authoritarian_lean = 1 }
+			UKR_clamp_leans = yes
+		}
+		ai_chance = { factor = 65 }
+	}
+}
+
+country_event = {
+	id = ukraine_politics.643
+	title = ukraine_politics.643.t
+	desc = ukraine_politics.643.d
+	picture = GFX_report_event_ukrainian_civil_war
+
+	trigger = {
+		tag = UKR
+		has_country_flag = UKR_ol_vertical_done
+		NOT = { has_country_flag = UKR_ol_flavor_cd }
+		has_country_flag = UKR_ol_cabinet_formed
+	}
+
+	mean_time_to_happen = {
+		days = 200
+	}
+
+	fire_only_once = yes
+
+	immediate = {
+		set_country_flag = {
+			flag = UKR_ol_flavor_cd
+			days = 40
+		}
+	}
+
+	option = {
+		name = ukraine_politics.643.a
+		add_political_power = -5
+		set_temp_variable = {
+			var = society_development_var_temp
+			value = 0.01
+		}
+		add_society_development = yes
+		ai_chance = { factor = 35 }
+	}
+
+	option = {
+		name = ukraine_politics.643.b
+		add_political_power = 10
+		hidden_effect = {
+			add_to_variable = { UKR_authoritarian_lean = 1 }
+			UKR_clamp_leans = yes
+		}
+		ai_chance = { factor = 65 }
+	}
+}
+
+country_event = {
+	id = ukraine_politics.644
+	title = ukraine_politics.644.t
+	desc = ukraine_politics.644.d
+	picture = GFX_report_event_ukrainian_civil_war
+
+	trigger = {
+		tag = UKR
+		has_country_flag = UKR_ol_vertical_done
+		NOT = { has_country_flag = UKR_ol_flavor_cd }
+		has_country_flag = UKR_ol_cabinet_formed
+	}
+
+	mean_time_to_happen = {
+		days = 200
+	}
+
+	fire_only_once = yes
+
+	immediate = {
+		set_country_flag = {
+			flag = UKR_ol_flavor_cd
+			days = 40
+		}
+	}
+
+	option = {
+		name = ukraine_politics.644.a
+		add_political_power = -5
+		set_temp_variable = {
+			var = society_development_var_temp
+			value = 0.01
+		}
+		add_society_development = yes
+		ai_chance = { factor = 35 }
+	}
+
+	option = {
+		name = ukraine_politics.644.b
+		add_political_power = 10
+		hidden_effect = {
+			add_to_variable = { UKR_authoritarian_lean = 1 }
+			UKR_clamp_leans = yes
+		}
+		ai_chance = { factor = 65 }
+	}
+}
+
+country_event = {
+	id = ukraine_politics.645
+	title = ukraine_politics.645.t
+	desc = ukraine_politics.645.d
+	picture = GFX_report_event_ukrainian_civil_war
+
+	trigger = {
+		tag = UKR
+		has_country_flag = UKR_ol_vertical_done
+		NOT = { has_country_flag = UKR_ol_flavor_cd }
+		has_country_flag = UKR_ol_cabinet_formed
+	}
+
+	mean_time_to_happen = {
+		days = 200
+	}
+
+	fire_only_once = yes
+
+	immediate = {
+		set_country_flag = {
+			flag = UKR_ol_flavor_cd
+			days = 40
+		}
+	}
+
+	option = {
+		name = ukraine_politics.645.a
+		add_political_power = -5
+		set_temp_variable = {
+			var = society_development_var_temp
+			value = 0.01
+		}
+		add_society_development = yes
+		ai_chance = { factor = 35 }
+	}
+
+	option = {
+		name = ukraine_politics.645.b
+		add_political_power = 10
+		hidden_effect = {
+			add_to_variable = { UKR_authoritarian_lean = 1 }
+			UKR_clamp_leans = yes
+		}
+		ai_chance = { factor = 65 }
+	}
+}
+
+country_event = {
+	id = ukraine_politics.646
+	title = ukraine_politics.646.t
+	desc = ukraine_politics.646.d
+	picture = GFX_report_event_ukrainian_civil_war
+
+	trigger = {
+		tag = UKR
+		has_country_flag = UKR_ol_vertical_done
+		NOT = { has_country_flag = UKR_ol_flavor_cd }
+		has_country_flag = UKR_ol_emergency_done
+	}
+
+	mean_time_to_happen = {
+		days = 200
+	}
+
+	fire_only_once = yes
+
+	immediate = {
+		set_country_flag = {
+			flag = UKR_ol_flavor_cd
+			days = 40
+		}
+	}
+
+	option = {
+		name = ukraine_politics.646.a
+		add_political_power = -5
+		set_temp_variable = {
+			var = society_development_var_temp
+			value = 0.01
+		}
+		add_society_development = yes
+		ai_chance = { factor = 35 }
+	}
+
+	option = {
+		name = ukraine_politics.646.b
+		add_political_power = 10
+		hidden_effect = {
+			add_to_variable = { UKR_authoritarian_lean = 1 }
+			UKR_clamp_leans = yes
+		}
+		ai_chance = { factor = 65 }
+	}
+}
+
+country_event = {
+	id = ukraine_politics.647
+	title = ukraine_politics.647.t
+	desc = ukraine_politics.647.d
+	picture = GFX_report_event_ukrainian_civil_war
+
+	trigger = {
+		tag = UKR
+		has_country_flag = UKR_ol_vertical_done
+		NOT = { has_country_flag = UKR_ol_flavor_cd }
+		has_country_flag = UKR_ol_const_full
+	}
+
+	mean_time_to_happen = {
+		days = 200
+	}
+
+	fire_only_once = yes
+
+	immediate = {
+		set_country_flag = {
+			flag = UKR_ol_flavor_cd
+			days = 40
+		}
+	}
+
+	option = {
+		name = ukraine_politics.647.a
+		add_political_power = -5
+		set_temp_variable = {
+			var = society_development_var_temp
+			value = 0.01
+		}
+		add_society_development = yes
+		ai_chance = { factor = 35 }
+	}
+
+	option = {
+		name = ukraine_politics.647.b
+		add_political_power = 10
+		hidden_effect = {
+			add_to_variable = { UKR_authoritarian_lean = 1 }
+			UKR_clamp_leans = yes
+		}
+		ai_chance = { factor = 65 }
+	}
+}
+
+country_event = {
+	id = ukraine_politics.648
+	title = ukraine_politics.648.t
+	desc = ukraine_politics.648.d
+	picture = GFX_report_event_ukrainian_civil_war
+
+	trigger = {
+		tag = UKR
+		has_country_flag = UKR_ol_vertical_done
+		NOT = { has_country_flag = UKR_ol_flavor_cd }
+		OR = {
+			has_country_flag = UKR_ol_const_term
+			has_country_flag = UKR_ol_const_vertical
+		}
+	}
+
+	mean_time_to_happen = {
+		days = 200
+	}
+
+	fire_only_once = yes
+
+	immediate = {
+		set_country_flag = {
+			flag = UKR_ol_flavor_cd
+			days = 40
+		}
+	}
+
+	option = {
+		name = ukraine_politics.648.a
+		add_political_power = -5
+		set_temp_variable = {
+			var = society_development_var_temp
+			value = 0.01
+		}
+		add_society_development = yes
+		ai_chance = { factor = 35 }
+	}
+
+	option = {
+		name = ukraine_politics.648.b
+		add_political_power = 10
+		hidden_effect = {
+			add_to_variable = { UKR_authoritarian_lean = 1 }
+			UKR_clamp_leans = yes
+		}
+		ai_chance = { factor = 65 }
+	}
+}
+
+country_event = {
+	id = ukraine_politics.649
+	title = ukraine_politics.649.t
+	desc = ukraine_politics.649.d
+	picture = GFX_report_event_ukrainian_civil_war
+
+	trigger = {
+		tag = UKR
+		has_country_flag = UKR_ol_vertical_done
+		NOT = { has_country_flag = UKR_ol_flavor_cd }
+		has_country_flag = UKR_ol_const_referendum_started
+	}
+
+	mean_time_to_happen = {
+		days = 200
+	}
+
+	fire_only_once = yes
+
+	immediate = {
+		set_country_flag = {
+			flag = UKR_ol_flavor_cd
+			days = 40
+		}
+	}
+
+	option = {
+		name = ukraine_politics.649.a
+		add_political_power = -5
+		set_temp_variable = {
+			var = society_development_var_temp
+			value = 0.01
+		}
+		add_society_development = yes
+		ai_chance = { factor = 35 }
+	}
+
+	option = {
+		name = ukraine_politics.649.b
+		add_political_power = 10
+		hidden_effect = {
+			add_to_variable = { UKR_authoritarian_lean = 1 }
+			UKR_clamp_leans = yes
+		}
+		ai_chance = { factor = 65 }
+	}
+}
+
+country_event = {
+	id = ukraine_politics.650
+	title = ukraine_politics.650.t
+	desc = ukraine_politics.650.d
+	picture = GFX_report_event_ukrainian_civil_war
+
+	is_triggered_only = yes
+
+	trigger = {
+		tag = UKR
+	}
+
+	immediate = {
+		UKR_ol_update = yes
+	}
+
+	option = {
+		name = ukraine_politics.650.a
+		hidden_effect = {
+			add_to_variable = { UKR_authoritarian_lean = 1 }
+			UKR_clamp_leans = yes
+			country_event = { id = ukraine_politics.650 days = 365 }
+		}
+		ai_chance = { factor = 45 }
+	}
+
+	option = {
+		name = ukraine_politics.650.b
+		trigger = {
+			has_political_power > 49
+		}
+		add_political_power = -50
+		set_temp_variable = {
+			var = poverty_development_var_temp
+			value = 0.03
+		}
+		add_poverty_development = yes
+		custom_effect_tooltip = UKR_ol_bop_clans_tt
+		add_power_balance_value = {
+			id = UKR_vertical_clans_balance
+			value = -0.05
+		}
+		hidden_effect = {
+			country_event = { id = ukraine_politics.650 days = 365 }
+		}
+		ai_chance = { factor = 15 }
+	}
+
+	option = {
+		name = ukraine_politics.650.c
+		trigger = {
+			has_political_power > 49
+		}
+		add_political_power = -50
+		set_temp_variable = {
+			var = society_development_var_temp
+			value = 0.03
+		}
+		add_society_development = yes
+		set_temp_variable = {
+			var = academic_development_var_temp
+			value = 0.02
+		}
+		add_academic_development = yes
+		custom_effect_tooltip = UKR_ol_bop_clans_tt
+		add_power_balance_value = {
+			id = UKR_vertical_clans_balance
+			value = -0.05
+		}
+		hidden_effect = {
+			country_event = { id = ukraine_politics.650 days = 365 }
+		}
+		ai_chance = { factor = 15 }
+	}
+
+	option = {
+		name = ukraine_politics.650.e
+		trigger = {
+			has_political_power > 19
+		}
+		add_political_power = -20
+		add_stability = 0.01
+		custom_effect_tooltip = UKR_ol_paper_real_tt
+		hidden_effect = {
+			set_temp_variable = { UKR_ol_real_frac = 0.3 }
+			UKR_ol_realize_paper = yes
+			country_event = { id = ukraine_politics.650 days = 365 }
+		}
+		ai_chance = { factor = 25 }
+	}
+}
+
+country_event = {
+	id = ukraine_politics.651
+	title = ukraine_politics.651.t
+	desc = ukraine_politics.651.d
+	picture = GFX_report_event_ukrainian_civil_war
+
+	trigger = {
+		tag = UKR
+		has_country_flag = UKR_ol_vertical_done
+		NOT = { has_country_flag = UKR_ol_flavor_cd }
+		has_country_flag = UKR_ol_marathon_done
+	}
+
+	mean_time_to_happen = {
+		days = 250
+	}
+
+	fire_only_once = yes
+
+	immediate = {
+		set_country_flag = {
+			flag = UKR_ol_flavor_cd
+			days = 40
+		}
+	}
+
+	option = {
+		name = ukraine_politics.651.a
+		add_stability = 0.005
+		ai_chance = { factor = 50 }
+	}
+
+	option = {
+		name = ukraine_politics.651.b
+		add_political_power = -5
+		set_temp_variable = {
+			var = society_development_var_temp
+			value = 0.005
+		}
+		add_society_development = yes
+		ai_chance = { factor = 30 }
+	}
+}
+
+country_event = {
+	id = ukraine_politics.652
+	title = ukraine_politics.652.t
+	desc = ukraine_politics.652.d
+	picture = GFX_report_event_ukrainian_civil_war
+
+	trigger = {
+		tag = UKR
+		has_country_flag = UKR_ol_vertical_done
+		NOT = { has_country_flag = UKR_ol_flavor_cd }
+		has_country_flag = UKR_ol_carousel_done
+	}
+
+	mean_time_to_happen = {
+		days = 220
+	}
+
+	fire_only_once = yes
+
+	immediate = {
+		set_country_flag = {
+			flag = UKR_ol_flavor_cd
+			days = 40
+		}
+	}
+
+	option = {
+		name = ukraine_politics.652.a
+		add_political_power = -15
+		add_stability = 0.01
+		ai_chance = { factor = 40 }
+	}
+
+	option = {
+		name = ukraine_politics.652.b
+		add_political_power = 10
+		add_stability = -0.01
+		ai_chance = { factor = 40 }
+	}
+}
+
+country_event = {
+	id = ukraine_politics.653
+	title = ukraine_politics.653.t
+	desc = ukraine_politics.653.d
+	picture = GFX_report_event_ukrainian_civil_war
+
+	trigger = {
+		tag = UKR
+		has_country_flag = UKR_ol_vertical_done
+		NOT = { has_country_flag = UKR_ol_flavor_cd }
+		has_country_flag = UKR_ol_reserve_done
+	}
+
+	mean_time_to_happen = {
+		days = 230
+	}
+
+	fire_only_once = yes
+
+	immediate = {
+		set_country_flag = {
+			flag = UKR_ol_flavor_cd
+			days = 40
+		}
+	}
+
+	option = {
+		name = ukraine_politics.653.a
+		add_political_power = -10
+		add_stability = 0.01
+		ai_chance = { factor = 40 }
+	}
+
+	option = {
+		name = ukraine_politics.653.b
+		add_political_power = -20
+		add_war_support = 0.02
+		custom_effect_tooltip = UKR_ol_claims_all_up_tt
+		hidden_effect = {
+			set_temp_variable = { UKR_ol_amt = 3 }
+			UKR_ol_claim_all = yes
+		}
+		ai_chance = { factor = 25 }
+	}
+
+	option = {
+		name = ukraine_politics.653.c
+		ai_chance = { factor = 35 }
+	}
+}
+
+country_event = {
+	id = ukraine_politics.654
+	title = ukraine_politics.654.t
+	desc = ukraine_politics.654.d
+	picture = GFX_report_event_ukrainian_civil_war
+
+	trigger = {
+		tag = UKR
+		has_country_flag = UKR_ol_vertical_done
+		NOT = { has_country_flag = UKR_ol_flavor_cd }
+		has_country_flag = UKR_ol_procurement_done
+	}
+
+	mean_time_to_happen = {
+		days = 260
+	}
+
+	fire_only_once = yes
+
+	immediate = {
+		set_country_flag = {
+			flag = UKR_ol_flavor_cd
+			days = 40
+		}
+	}
+
+	option = {
+		name = ukraine_politics.654.a
+		add_political_power = -15
+		custom_effect_tooltip = UKR_ol_paper_real_tt
+		hidden_effect = {
+			set_temp_variable = { UKR_ol_real_frac = 0.3 }
+			UKR_ol_realize_paper = yes
+		}
+		ai_chance = { factor = 40 }
+	}
+
+	option = {
+		name = ukraine_politics.654.b
+		hidden_effect = {
+			set_temp_variable = { UKR_ol_amt = 5 }
+			UKR_ol_claim_sec = yes
+		}
+		ai_chance = { factor = 40 }
+	}
+}
+
+country_event = {
+	id = ukraine_politics.655
+	title = ukraine_politics.655.t
+	desc = ukraine_politics.655.d
+	picture = GFX_report_event_ukrainian_civil_war
+
+	trigger = {
+		tag = UKR
+		has_country_flag = UKR_ol_vertical_done
+		NOT = { has_country_flag = UKR_ol_flavor_cd }
+		check_variable = { var = UKR_ol_vertical_level value = 2 compare = greater_than_or_equals }
+	}
+
+	mean_time_to_happen = {
+		days = 240
+	}
+
+	fire_only_once = yes
+
+	immediate = {
+		set_country_flag = {
+			flag = UKR_ol_flavor_cd
+			days = 40
+		}
+	}
+
+	option = {
+		name = ukraine_politics.655.a
+		add_stability = 0.01
+		ai_chance = { factor = 40 }
+	}
+
+	option = {
+		name = ukraine_politics.655.b
+		add_political_power = 10
+		add_stability = -0.01
+		ai_chance = { factor = 40 }
+	}
+}
+
+country_event = {
+	id = ukraine_politics.660
+	title = ukraine_politics.660.t
+	desc = ukraine_politics.660.d
+	picture = GFX_report_event_ukrainian_civil_war
+
+	trigger = {
+		tag = UKR
+		has_country_flag = UKR_ol_vertical_done
+		NOT = { has_country_flag = UKR_ol_flavor_cd }
+		check_variable = { var = UKR_ol_loyalty value = 60 compare = less_than }
+		check_variable = { var = UKR_cl_met_claim value = 30 compare = greater_than_or_equals }
+	}
+
+	mean_time_to_happen = {
+		days = 120
+	}
+
+	fire_only_once = yes
+
+	immediate = {
+		set_country_flag = {
+			flag = UKR_ol_flavor_cd
+			days = 40
+		}
+	}
+
+	option = {
+		name = ukraine_politics.660.a
+		add_political_power = 10
+		hidden_effect = {
+			set_temp_variable = { UKR_ol_amt = 8 }
+			UKR_ol_claim_met = yes
+		}
+		ai_chance = { factor = 33 }
+	}
+
+	option = {
+		name = ukraine_politics.660.b
+		add_stability = 0.01
+		hidden_effect = {
+			add_to_variable = { UKR_cl_met_grudge = 10 }
+			UKR_ol_update = yes
+		}
+		ai_chance = { factor = 33 }
+	}
+
+	option = {
+		name = ukraine_politics.660.c
+		add_political_power = -5
+		hidden_effect = {
+			set_temp_variable = { UKR_ol_amt = -5 }
+			UKR_ol_claim_met = yes
+		}
+		ai_chance = { factor = 33 }
+	}
+}
+
+country_event = {
+	id = ukraine_politics.661
+	title = ukraine_politics.661.t
+	desc = ukraine_politics.661.d
+	picture = GFX_report_event_ukrainian_civil_war
+
+	trigger = {
+		tag = UKR
+		has_country_flag = UKR_ol_vertical_done
+		NOT = { has_country_flag = UKR_ol_flavor_cd }
+		check_variable = { var = UKR_ol_loyalty value = 60 compare = less_than }
+		check_variable = { var = UKR_cl_priv_claim value = 30 compare = greater_than_or_equals }
+	}
+
+	mean_time_to_happen = {
+		days = 120
+	}
+
+	fire_only_once = yes
+
+	immediate = {
+		set_country_flag = {
+			flag = UKR_ol_flavor_cd
+			days = 40
+		}
+	}
+
+	option = {
+		name = ukraine_politics.661.a
+		add_stability = -0.01
+		hidden_effect = {
+			set_temp_variable = { UKR_ol_amt = -8 }
+			UKR_ol_claim_priv = yes
+		}
+		ai_chance = { factor = 33 }
+	}
+
+	option = {
+		name = ukraine_politics.661.b
+		add_war_support = 0.01
+		hidden_effect = {
+			add_to_variable = { UKR_cl_priv_grudge = 8 }
+			UKR_ol_update = yes
+		}
+		ai_chance = { factor = 33 }
+	}
+
+	option = {
+		name = ukraine_politics.661.c
+		add_political_power = 5
+		hidden_effect = {
+			set_temp_variable = { UKR_ol_amt = 5 }
+			UKR_ol_claim_priv = yes
+		}
+		ai_chance = { factor = 33 }
+	}
+}
+
+country_event = {
+	id = ukraine_politics.662
+	title = ukraine_politics.662.t
+	desc = ukraine_politics.662.d
+	picture = GFX_report_event_ukrainian_civil_war
+
+	trigger = {
+		tag = UKR
+		has_country_flag = UKR_ol_vertical_done
+		NOT = { has_country_flag = UKR_ol_flavor_cd }
+		check_variable = { var = UKR_ol_loyalty value = 60 compare = less_than }
+		check_variable = { var = UKR_cl_gas_claim value = 30 compare = greater_than_or_equals }
+	}
+
+	mean_time_to_happen = {
+		days = 120
+	}
+
+	fire_only_once = yes
+
+	immediate = {
+		set_country_flag = {
+			flag = UKR_ol_flavor_cd
+			days = 40
+		}
+	}
+
+	option = {
+		name = ukraine_politics.662.a
+		add_political_power = -5
+		hidden_effect = {
+			set_temp_variable = { UKR_ol_amt = -5 }
+			UKR_ol_claim_gas = yes
+		}
+		ai_chance = { factor = 33 }
+	}
+
+	option = {
+		name = ukraine_politics.662.b
+		hidden_effect = {
+			set_temp_variable = { UKR_ol_amt = 8 }
+			UKR_ol_claim_gas = yes
+		}
+		ai_chance = { factor = 33 }
+	}
+
+	option = {
+		name = ukraine_politics.662.c
+		add_political_power = 10
+		hidden_effect = {
+			add_to_variable = { UKR_cl_gas_grudge = 10 }
+			UKR_ol_update = yes
+		}
+		ai_chance = { factor = 33 }
+	}
+}
+
+country_event = {
+	id = ukraine_politics.663
+	title = ukraine_politics.663.t
+	desc = ukraine_politics.663.d
+	picture = GFX_report_event_ukrainian_civil_war
+
+	trigger = {
+		tag = UKR
+		has_country_flag = UKR_ol_vertical_done
+		NOT = { has_country_flag = UKR_ol_flavor_cd }
+		check_variable = { var = UKR_ol_loyalty value = 60 compare = less_than }
+		check_variable = { var = UKR_cl_sec_claim value = 30 compare = greater_than_or_equals }
+	}
+
+	mean_time_to_happen = {
+		days = 120
+	}
+
+	fire_only_once = yes
+
+	immediate = {
+		set_country_flag = {
+			flag = UKR_ol_flavor_cd
+			days = 40
+		}
+	}
+
+	option = {
+		name = ukraine_politics.663.a
+		add_political_power = -5
+		hidden_effect = {
+			set_temp_variable = { UKR_ol_amt = -8 }
+			UKR_ol_claim_sec = yes
+		}
+		ai_chance = { factor = 33 }
+	}
+
+	option = {
+		name = ukraine_politics.663.b
+		add_stability = 0.01
+		hidden_effect = {
+			add_to_variable = { UKR_cl_sec_grudge = 8 }
+			UKR_ol_update = yes
+		}
+		ai_chance = { factor = 33 }
+	}
+
+	option = {
+		name = ukraine_politics.663.c
+		hidden_effect = {
+			set_temp_variable = { UKR_ol_amt = 5 }
+			UKR_ol_claim_sec = yes
+		}
+		ai_chance = { factor = 33 }
+	}
+}
+
+country_event = {
+	id = ukraine_politics.680
+	title = ukraine_politics.680.t
+	desc = ukraine_politics.680.d
+	picture = GFX_report_event_ukrainian_civil_war
+
+	trigger = {
+		tag = UKR
+		has_country_flag = UKR_ol_vertical_done
+		has_country_flag = UKR_war_mood_active
+	}
+
+	mean_time_to_happen = {
+		days = 20
+	}
+
+	fire_only_once = yes
+
+	option = {
+		name = ukraine_politics.680.a
+		set_temp_variable = {
+			var = income_var_temp
+			value = -1.0
+		}
+		add_income = yes
+		add_timed_idea = { idea = UKR_ol_empty_depots days = 90 }
+		custom_effect_tooltip = UKR_ol_paper_real_tt
+		hidden_effect = {
+			set_temp_variable = { UKR_ol_real_frac = 0.7 }
+			UKR_ol_realize_paper = yes
+		}
+		ai_chance = { factor = 40 }
+	}
+
+	option = {
+		name = ukraine_politics.680.b
+		add_political_power = -25
+		add_timed_idea = { idea = UKR_ol_empty_depots days = 60 }
+		custom_effect_tooltip = UKR_ol_paper_real_tt
+		hidden_effect = {
+			set_temp_variable = { UKR_ol_real_frac = 0.9 }
+			UKR_ol_realize_paper = yes
+			add_to_variable = { UKR_cl_sec_grudge = 10 }
+			UKR_ol_update = yes
+			add_to_variable = { UKR_cl_priv_grudge = 5 }
+			UKR_ol_update = yes
+		}
+		ai_chance = { factor = 30 }
+	}
+
+	option = {
+		name = ukraine_politics.680.c
+		add_stability = -0.02
+		add_timed_idea = { idea = UKR_ol_empty_depots days = 150 }
+		custom_effect_tooltip = UKR_ol_paper_real_tt
+		hidden_effect = {
+			set_temp_variable = { UKR_ol_real_frac = 0.4 }
+			UKR_ol_realize_paper = yes
+			add_to_variable = { UKR_authoritarian_lean = 2 }
+			UKR_clamp_leans = yes
+		}
+		ai_chance = { factor = 30 }
+	}
+}
+
+country_event = {
+	id = ukraine_politics.681
+	title = ukraine_politics.681.t
+	desc = ukraine_politics.681.d
+	picture = GFX_report_event_ukrainian_civil_war
+
+	trigger = {
+		tag = UKR
+		has_country_flag = UKR_ol_vertical_done
+		has_country_flag = UKR_war_mood_active
+		OR = {
+			has_idea = UKR_clan_met_opposition
+			has_idea = UKR_clan_priv_opposition
+			has_idea = UKR_clan_gas_opposition
+			has_idea = UKR_clan_sec_opposition
+			check_variable = { var = UKR_ol_loyalty value = 25 compare = less_than }
+		}
+	}
+
+	mean_time_to_happen = {
+		days = 40
+	}
+
+	fire_only_once = yes
+
+	option = {
+		name = ukraine_politics.681.a
+		add_political_power = -30
+		add_timed_idea = { idea = UKR_ol_fragile_circle days = 60 }
+		ai_chance = { factor = 40 }
+	}
+
+	option = {
+		name = ukraine_politics.681.b
+		add_stability = -0.02
+		add_timed_idea = { idea = UKR_ol_fragile_circle days = 100 }
+		ai_chance = { factor = 25 }
+	}
+
+	option = {
+		name = ukraine_politics.681.c
+		add_timed_idea = { idea = UKR_ol_fragile_circle days = 40 }
+		custom_effect_tooltip = UKR_ol_claims_all_up_tt
+		custom_effect_tooltip = UKR_ol_bop_clans_tt
+		add_power_balance_value = {
+			id = UKR_vertical_clans_balance
+			value = -0.08
+		}
+		hidden_effect = {
+			set_temp_variable = { UKR_ol_amt = 8 }
+			UKR_ol_claim_all = yes
+		}
+		ai_chance = { factor = 35 }
+	}
+}
+
+country_event = {
+	id = ukraine_politics.682
+	title = ukraine_politics.682.t
+	desc = ukraine_politics.682.d
+	picture = GFX_report_event_ukrainian_civil_war
+
+	trigger = {
+		tag = UKR
+		has_country_flag = UKR_ol_vertical_done
+		has_country_flag = UKR_war_mood_active
+		has_country_flag = UKR_ol_procurement_done
+	}
+
+	mean_time_to_happen = {
+		days = 80
+	}
+
+	fire_only_once = yes
+
+	option = {
+		name = ukraine_politics.682.a
+		add_political_power = -10
+		add_war_support = 0.02
+		custom_effect_tooltip = UKR_ol_claim_met_sec_down_tt
+		hidden_effect = {
+			set_temp_variable = { UKR_ol_amt = -8 }
+			UKR_ol_claim_met = yes
+			set_temp_variable = { UKR_ol_amt = -8 }
+			UKR_ol_claim_sec = yes
+		}
+		ai_chance = { factor = 45 }
+	}
+
+	option = {
+		name = ukraine_politics.682.b
+		add_war_support = 0.01
+		hidden_effect = {
+			set_temp_variable = { UKR_ol_amt = 5 }
+			UKR_ol_claim_sec = yes
+		}
+		ai_chance = { factor = 35 }
+	}
+}
+
+country_event = {
+	id = ukraine_politics.690
+	title = ukraine_politics.690.t
+	desc = ukraine_politics.690.d
+	picture = GFX_report_event_ukrainian_civil_war
+
+	is_triggered_only = yes
+
+	trigger = {
+		tag = UKR
+	}
+
+	option = {
+		name = ukraine_politics.690.a
+		trigger = {
+			has_political_power > 49
+		}
+		add_political_power = -50
+		custom_effect_tooltip = UKR_ol_claims_all_down_tt
+		hidden_effect = {
+			set_temp_variable = { UKR_ol_amt = -15 }
+			UKR_ol_claim_all = yes
+		}
+		ai_chance = { factor = 35 }
+	}
+
+	option = {
+		name = ukraine_politics.690.b
+		custom_effect_tooltip = UKR_ol_bop_vertical_tt
+		add_power_balance_value = {
+			id = UKR_vertical_clans_balance
+			value = 0.15
+		}
+		custom_effect_tooltip = UKR_ol_target_met_tt
+		custom_effect_tooltip = UKR_ol_target_priv_tt
+		hidden_effect = {
+			set_country_flag = UKR_ol_target_met
+			set_country_flag = UKR_ol_target_priv
+			add_to_variable = { UKR_cl_met_grudge = 10 }
+			UKR_ol_update = yes
+			add_to_variable = { UKR_cl_priv_grudge = 10 }
+			UKR_ol_update = yes
+		}
+		ai_chance = { factor = 40 }
+	}
+
+	option = {
+		name = ukraine_politics.690.c
+		add_stability = -0.02
+		ai_chance = { factor = 25 }
+	}
+}
+
+country_event = {
+	id = ukraine_politics.691
+	title = ukraine_politics.691.t
+	desc = ukraine_politics.691.d
+	picture = GFX_report_event_ukrainian_civil_war
+
+	is_triggered_only = yes
+
+	trigger = {
+		tag = UKR
+	}
+
+	option = {
+		name = ukraine_politics.691.a
+		add_stability = -0.03
+		add_political_power = 30
+		custom_effect_tooltip = UKR_ol_target_met_tt
+		custom_effect_tooltip = UKR_ol_target_priv_tt
+		custom_effect_tooltip = UKR_ol_target_gas_tt
+		custom_effect_tooltip = UKR_ol_grudge_up_tt
+		hidden_effect = {
+			set_country_flag = UKR_ol_target_met
+			set_country_flag = UKR_ol_target_priv
+			set_country_flag = UKR_ol_target_gas
+			add_to_variable = { UKR_cl_met_grudge = 10 }
+			UKR_ol_update = yes
+			add_to_variable = { UKR_cl_priv_grudge = 10 }
+			UKR_ol_update = yes
+			add_to_variable = { UKR_cl_gas_grudge = 10 }
+			UKR_ol_update = yes
+			add_to_variable = { UKR_cl_sec_grudge = 10 }
+			UKR_ol_update = yes
+		}
+		ai_chance = { factor = 25 }
+	}
+
+	option = {
+		name = ukraine_politics.691.b
+		trigger = {
+			has_political_power > 39
+		}
+		add_political_power = -40
+		custom_effect_tooltip = UKR_ol_bop_clans_tt
+		add_power_balance_value = {
+			id = UKR_vertical_clans_balance
+			value = -0.2
+		}
+		hidden_effect = {
+			set_temp_variable = { UKR_ol_amt = -10 }
+			UKR_ol_claim_all = yes
+		}
+		ai_chance = { factor = 35 }
+	}
+
+	option = {
+		name = ukraine_politics.691.c
+		add_stability = 0.03
+		add_political_power = 40
+		set_temp_variable = {
+			var = society_development_var_temp
+			value = -0.03
+		}
+		add_society_development = yes
+		custom_effect_tooltip = UKR_ol_eu_down_tt
+		hidden_effect = {
+			set_temp_variable = { UKR_ol_eu = -0.03 }
+			UKR_ol_add_eu = yes
+			add_to_variable = { UKR_authoritarian_lean = 3 }
+			UKR_clamp_leans = yes
+		}
+		ai_chance = { factor = 40 }
+	}
+}
+
+country_event = {
+	id = ukraine_politics.695
+	title = ukraine_politics.695.t
+	desc = {
+		text = ukraine_politics.695.d_showcase
+		trigger = {
+			check_variable = { var = UKR_ol_portrait value = 0 }
+		}
+	}
+	desc = {
+		text = ukraine_politics.695.d_cracks
+		trigger = {
+			check_variable = { var = UKR_ol_portrait value = 1 }
+		}
+	}
+	desc = {
+		text = ukraine_politics.695.d_breach
+		trigger = {
+			check_variable = { var = UKR_ol_portrait value = 2 }
+		}
+	}
+	picture = GFX_report_event_ukrainian_civil_war
+
+	is_triggered_only = yes
+	fire_only_once = yes
+
+	trigger = {
+		tag = UKR
+	}
+
+	immediate = {
+		UKR_ol_calc_portrait = yes
+	}
+
+	option = {
+		name = ukraine_politics.695.a
+		trigger = {
+			check_variable = { var = UKR_ol_portrait value = 0 }
+		}
+		add_political_power = 50
+		add_stability = 0.03
+		add_ideas = UKR_ol_portrait_showcase
+		ai_chance = { factor = 100 }
+	}
+
+	option = {
+		name = ukraine_politics.695.b
+		trigger = {
+			check_variable = { var = UKR_ol_portrait value = 1 }
+		}
+		add_stability = -0.01
+		add_ideas = UKR_ol_portrait_cracks
+		ai_chance = { factor = 40 }
+	}
+
+	option = {
+		name = ukraine_politics.695.c
+		trigger = {
+			check_variable = { var = UKR_ol_portrait value = 1 }
+			has_political_power > 29
+		}
+		add_political_power = -30
+		add_stability = 0.01
+		custom_effect_tooltip = UKR_ol_paper_real_tt
+		hidden_effect = {
+			set_temp_variable = { UKR_ol_real_frac = 0.5 }
+			UKR_ol_realize_paper = yes
+		}
+		ai_chance = { factor = 60 }
+	}
+
+	option = {
+		name = ukraine_politics.695.e
+		trigger = {
+			check_variable = { var = UKR_ol_portrait value = 2 }
+			has_political_power > 59
+		}
+		add_political_power = -60
+		set_temp_variable = {
+			var = poverty_development_var_temp
+			value = 0.04
+		}
+		add_poverty_development = yes
+		set_temp_variable = {
+			var = society_development_var_temp
+			value = 0.03
+		}
+		add_society_development = yes
+		custom_effect_tooltip = UKR_ol_bop_clans_tt
+		add_power_balance_value = {
+			id = UKR_vertical_clans_balance
+			value = -0.1
+		}
+		ai_chance = { factor = 60 }
+	}
+
+	option = {
+		name = ukraine_politics.695.f
+		trigger = {
+			check_variable = { var = UKR_ol_portrait value = 2 }
+		}
+		add_stability = -0.04
+		add_ideas = UKR_ol_portrait_breach
+		hidden_effect = {
+			country_event = { id = ukraine_politics.697 days = 20 }
+		}
+		ai_chance = { factor = 40 }
+	}
+}
+
+country_event = {
+	id = ukraine_politics.696
+	title = ukraine_politics.696.t
+	desc = {
+		text = ukraine_politics.696.d_showcase
+		trigger = {
+			check_variable = { var = UKR_ol_portrait value = 0 }
+		}
+	}
+	desc = {
+		text = ukraine_politics.696.d_cracks
+		trigger = {
+			check_variable = { var = UKR_ol_portrait value = 1 }
+		}
+	}
+	desc = {
+		text = ukraine_politics.696.d_breach
+		trigger = {
+			check_variable = { var = UKR_ol_portrait value = 2 }
+		}
+	}
+	picture = GFX_report_event_ukrainian_civil_war
+
+	is_triggered_only = yes
+	fire_only_once = yes
+
+	trigger = {
+		tag = UKR
+	}
+
+	immediate = {
+		UKR_ol_calc_portrait = yes
+	}
+
+	option = {
+		name = ukraine_politics.696.a
+		trigger = {
+			check_variable = { var = UKR_ol_portrait value = 0 }
+		}
+		add_political_power = 60
+		add_stability = 0.03
+		add_ideas = UKR_ol_portrait_showcase
+		ai_chance = { factor = 100 }
+	}
+
+	option = {
+		name = ukraine_politics.696.b
+		trigger = {
+			check_variable = { var = UKR_ol_portrait value = 1 }
+		}
+		add_stability = -0.01
+		add_ideas = UKR_ol_portrait_cracks
+		ai_chance = { factor = 40 }
+	}
+
+	option = {
+		name = ukraine_politics.696.c
+		trigger = {
+			check_variable = { var = UKR_ol_portrait value = 1 }
+			has_political_power > 29
+		}
+		add_political_power = -30
+		add_stability = 0.01
+		custom_effect_tooltip = UKR_ol_paper_real_tt
+		hidden_effect = {
+			set_temp_variable = { UKR_ol_real_frac = 0.5 }
+			UKR_ol_realize_paper = yes
+		}
+		ai_chance = { factor = 60 }
+	}
+
+	option = {
+		name = ukraine_politics.696.e
+		trigger = {
+			check_variable = { var = UKR_ol_portrait value = 2 }
+			has_political_power > 59
+		}
+		add_political_power = -60
+		set_temp_variable = {
+			var = poverty_development_var_temp
+			value = 0.04
+		}
+		add_poverty_development = yes
+		set_temp_variable = {
+			var = society_development_var_temp
+			value = 0.03
+		}
+		add_society_development = yes
+		custom_effect_tooltip = UKR_ol_bop_clans_tt
+		add_power_balance_value = {
+			id = UKR_vertical_clans_balance
+			value = -0.1
+		}
+		ai_chance = { factor = 60 }
+	}
+
+	option = {
+		name = ukraine_politics.696.f
+		trigger = {
+			check_variable = { var = UKR_ol_portrait value = 2 }
+		}
+		add_political_power = 40
+		set_temp_variable = {
+			var = society_development_var_temp
+			value = -0.03
+		}
+		add_society_development = yes
+		custom_effect_tooltip = UKR_ol_eu_down_tt
+		custom_effect_tooltip = UKR_ol_bop_vertical_tt
+		add_power_balance_value = {
+			id = UKR_vertical_clans_balance
+			value = 0.1
+		}
+		hidden_effect = {
+			set_temp_variable = { UKR_ol_eu = -0.03 }
+			UKR_ol_add_eu = yes
+			country_event = { id = ukraine_politics.697 days = 20 }
+		}
+		ai_chance = { factor = 40 }
+	}
+}
+
+country_event = {
+	id = ukraine_politics.697
+	title = ukraine_politics.697.t
+	desc = ukraine_politics.697.d
+	picture = GFX_report_event_ukrainian_civil_war
+
+	is_triggered_only = yes
+	fire_only_once = yes
+
+	trigger = {
+		tag = UKR
+	}
+
+	option = {
+		name = ukraine_politics.697.a
+		set_temp_variable = {
+			var = income_var_temp
+			value = -1.0
+		}
+		add_income = yes
+		set_temp_variable = {
+			var = poverty_development_var_temp
+			value = 0.02
+		}
+		add_poverty_development = yes
+		add_stability = 0.02
+		ai_chance = { factor = 50 }
+	}
+
+	option = {
+		name = ukraine_politics.697.b
+		add_stability = -0.03
+		add_political_power = 20
+		set_temp_variable = {
+			var = society_development_var_temp
+			value = -0.02
+		}
+		add_society_development = yes
+		custom_effect_tooltip = UKR_ol_eu_down_tt
+		hidden_effect = {
+			set_temp_variable = { UKR_ol_eu = -0.02 }
+			UKR_ol_add_eu = yes
+		}
+		ai_chance = { factor = 50 }
+	}
+}

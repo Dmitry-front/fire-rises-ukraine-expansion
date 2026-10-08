@@ -148,3 +148,41 @@
 3. Идеи в `common/ideas/TFR_ideas_UKR.txt` (`visible` по флагу пути, `allowed_to_remove = { always = no }` у ключевых), имена и `_desc` в `TFR_characters_l_*.yml` на RU и EN, эффекты очистки слотов (`UKR_cabinet_effects.txt`), реестр ID в `DESIGN.md`, раздел 12.
 4. Апгрейды ключевых министров (по образцу пакета 3, решения за политсилу), ИИ-вес (`ai_will_do`).
 5. Портреты: для Билецкого, Залужного, Сырского есть большие портреты лидеров/командиров (`gfx/leaders/UKR/`), но иконка идеи требует отдельного спрайта в `interface/UKR_ideas.gfx`; остальным - `unknown` до арта BalticSa (дописать в `CLAUDE.md`, «Нужен арт»).
+
+## Ревизия системы первой войны с SOV (08.10.2026, только чтение кода; в игре не запускалось)
+
+Проверены: `events/TFR_events_UKR_war.txt`, `TFR_events_UKR_postwar.txt`, `UKR_war_mood_ui_update.txt`, `common/decisions/TFR_decisions_UKR_war.txt`, категория `UKR_against_occupiers` и таймер СВО в `TFR_decisions_UKR.txt`, `on_actions`, духи и динамические модификаторы, scripted GUI, `.gui`/`.gfx`, спрайты, локализация. Скобки, ключи RU/EN, спрайты и идеи в порядке (кроме перечисленного ниже). Цепочка рабочая на бумаге: `ukraine.11` -> `ukrainewar.1` -> ежедневная синхронизация духов -> миссия `UKR_war_mood_monthly_tick` -> `ukrainewar.200`.
+
+**TD-26. Таймер СВО - копия устаревшей версии TFR** (`UKR_special_military_operation_timer`, `TFR_decisions_UKR.txt:175`; его `cancel_effect` запускает Первую Европейскую войну). Расхождения с `NATO_intervention_timer` из референса (`_referenceTFR_decisions_SOV.txt:3666`):
+- нет блока `ITA = { set_country_flag = ITA_first_war_tree_enabled_flag, mark_focus_tree_layout_dirty, italy_ew_events.1 }` - дерево Италии для первой войны не включится;
+- получатель `nato.12`: в референсе `PLD`, у нас `POL` (в TFR есть оба тега, какой из них действующая Польша - проверить); `POL` стоит и в наших решениях (`UKR_control_war_atrocities`, `UKR_lend_lease_program`, пути националистов);
+- событие лидера Россмана: референс `germany.25` (14 дней), у нас `germany.23` (10 дней);
+- Die Linke: референс `GER_die_linke_popularity_var > 0.15`, у нас `GER_die_linke_popularity_var_temp > 15` - переменной, возможно, больше нет, `germany.93` не придёт;
+- мелочи: `nato.14` 3 часа / 2 часа, `germany.93` 56 / 60 дней;
+- наш блок `russia.157` (сезонность, «Распутица») в референсном таймере отсутствует, потому что TFR планирует его в фокусе Медведева (`TFR_CHEATSHEET.md`, 13.3): возможен двойной вызов;
+- блок `nato.12` с датами `(date <= 2024.09.01) И (date >= 2026.03.01)` невыполним. Это унаследовано из TFR (в референсе так же), не «чинить» вслепую;
+- эскалация только по `surrender_progress > 0.51`; `timeout_effect` нет, при 1080 днях без прогресса война не станет европейской (в `DESIGN.md` сказано «либо когда спецоперация идёт успешно»). Решение автора: синхронизировать с референсом и/или добавить таймаут.
+
+**TD-27. Тултипы настроя не совпадают с живыми духами.** Игрок видит `UKR_HATE_STAGE_*_TOOLTIP` / `UKR_FATIGUE_STAGE_*_TOOLTIP`, а они написаны по динамическим модификаторам `UKR_hate_dynamic*` / `UKR_war_fatigue_dynamic*` (`common/dynamic_modifiers/TFR_dynamic_modifiers_UKR.txt`), которые **нигде не выдаются** (`add_dynamic_modifier` для них нет; работают идеи `UKR_war_spirit_*`). Примеры расхождений: «защита на своей земле +2/+3/+5%» на ступенях 25/50/75 - в духах её нет; ступень 100: атака 12% / защита 15% в тексте и 15% / 20% в духе; «стабильность в неделю» -0.1...-2% и «поддержка войны в неделю» до -10% в усталости - в духах только `stability_weekly` -0.002 на ступенях 75 и 100; нацсоциалисты +1% на ступени 100 - в духе только `fascist_drift`. Также 32 вызова `force_update_dynamic_modifier = yes` в событиях и решениях настроя ничего не обновляют. Решение: пересобрать тексты по духам (или наоборот), мёртвые модификаторы удалить.
+
+**TD-28. Интерфейс настроя.** Работает как статичный градиент 450x26 с пятью иконками ступеней, которые включаются накопительно (старые не гаснут), текущая ступень не выделена. Не подключены готовые ассеты `UKR_position_arrow.dds`, `UKR_stage_circle*.dds`, `UKR_bar_background.dds` (спрайтов для них нет). `ukr_ui.1` / `ukr_ui.2` и эффект `UKR_update_war_mood_ui` (`UKRhate_percent`, `UKRwarfatigue_percent`) **нигде не вызываются и не читаются** - мёртвый код (`events/UKR_war_mood_ui_update.txt`, `common/scripted_effects/UKR_war_mood_ui_effects.txt`). `defined_text` `UKR_HATE_DISPLAY` / `UKR_FATIGUE_DISPLAY` берёт `localization_key = "[?UKRhate|0]"` как ключ; безопаснее ключи `UKR_HATE_VALUE` / `UKR_FATIGUE_VALUE`, которые уже есть в локализации и не используются. Не уверен в атрибуте `no_clicksound` у кнопок (проверить `error.log`). Привязка `scripted_gui = ...` в категории подтверждена референсом SOV; `context_type = decision_category` и `parent_window_token = decision_category_entry` без игры не проверить.
+
+**TD-29. События настроя: баги и пробелы.**
+- `ukrainewar.310` (мобилизация): `mean_time_to_happen = 35`, условие - флаг `UKR_first_mobilization_completed`, который не снимается; нет `fire_only_once` -> +10 000 человек и +3/+3 настроя каждые ~35 дней всю войну. Второй и третий призыв флагов не ставят. Скорее всего задумано один раз на волну.
+- `ukrainewar.100`, вариант b: `add_war_support = -0.012` при остальных значениях 0.08-0.15 (опечатка `-0.12`?).
+- `UKR_third_mobilization_wave` грузит `UKR_second_mobilization` (нет третьей ООБ или копипаст). ООБ лежат в TFR, `history/units` у нас нет - проверить `error.log`.
+- Двойной счёт потерь: `on_state_control_changed` даёт +5 ненависти / +8 усталости за каждую ядровую область (раз в 30 дней на область) плюс события городов `ukrainewar.100-109` ещё +3...+15 / +2...+12. Четырёх потерь хватает на усталость 75.
+- Нет событий для ненависти 100 и усталости 100, хотя тултип обещает «риск капитуляции или гражданской войны»; нет событий освобождения городов (реестр `ukrainewar` 100-199 «потеря и освобождение»), только счётчик в `on_action`.
+- Флаги `UKR_*_lost`, `UKR_hate_threshold_50`, `UKR_fatigue_threshold_75` не снимаются, `ukrainewar.1` закрыт флагами исхода и `fire_only_once`: на Вторую Европейскую войну (~2030) настроя не будет.
+- При старте войны проверить, что девять `*_lost` не срабатывают в первый день (ID областей 221, 225, 193, 200, 196, 226, 201, 192, 91 по карте TFR не сверены; столица 1285 верна).
+
+**TD-30. Мелочи в решениях войны.**
+- `UKR_establish_border_defense_system`: бункеры только в области 196 и трёх провинциях, все пять использований строят одно и то же (TODO в коде).
+- `UKR_SBU_emergency_powers`: `modify_timed_idea` на `SOV_pro_russian_partisans_idea` в области UKR - если этой идеи у Украины нет, эффект впустую.
+- `UKR_sabotage_at_any_cost`: `supply_consumption_factor` внутри `targeted_modifier` - допустимость не уверен [ПРОВЕРИТЬ].
+- `ai_will_do` с пустым `modifier = { factor = 2 }` у `UKR_control_war_atrocities` и `UKR_rapid_reconstruction` просто удваивает вес.
+- `UKR_strategic_triangle_defense`: множитель `factor = 0` при `NOT` без трёх областей недостижим (доступность уже требует все три).
+- Нет `UKR_offensive_momentum_desc` (RU, EN). Идея `supply_crisis` не найдена ни у нас, ни в референсе: условие +2 усталости мёртвое (TD-06).
+
+**TD-10 (уточнение).** Фактический потолок настроя 100: `clamp_variable` в `UKR_update_hate_spirit` / `UKR_update_fatigue_spirit` срабатывает ежедневно. Значение 120 в миссии безвредно; пункт можно закрыть.
+**TD-05 (подтверждено аудитом).** Нет `.t`/`.d`/`.a` для `ukraine.6-10` и `ukraine.15-19` (оккупационная зона Белгорода, восстания и т.д.) на обоих языках, а также `ukraine.1.a` и `ukraine.2.a`.

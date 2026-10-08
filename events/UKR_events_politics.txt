@@ -470,6 +470,7 @@ country_event = {
 		name = ukraine_politics.108.c
 		add_political_power = 10
 		hidden_effect = {
+			set_country_flag = UKR_vets_councils_over_unions
 			add_to_variable = { UKR_left_front_strength = -1 }
 			add_to_variable = { UKR_nationalist_lean = 2 }
 			UKR_clamp_leans = yes
@@ -5427,5 +5428,497 @@ country_event = {
 			UKR_np_update = yes
 		}
 		ai_chance = { factor = 30 }
+	}
+}
+
+# =====================================================================
+# Блок 3, левые: торг о левом кабинете (540-545) - PROPOSAL_left_ministers.md
+# Цепочка: 540 премьер -> 541 МИД -> 542 МВД -> 543 оборона -> 544 вторая линия. Запуск: через 3 дня после фокуса «Левая коалиция».
+# 545 - Симоненко (ортодоксальный путь), запуск наградой фокуса «Партийная линия».
+# Кандидат с невыполненным условием показывается строкой «отказывается: причина» без эффекта.
+# Условия: профсоюзы (UKR_lf_unions), блок 2 (антикоррупционные органы), помощь ЕС, склонности, флаг 108.c.
+# =====================================================================
+
+# Торг о левом кабинете: премьер
+country_event = {
+	id = ukraine_politics.540
+	title = ukraine_politics.540.t
+	desc = ukraine_politics.540.d
+	picture = GFX_report_event_ukrainian_civil_war
+
+	is_triggered_only = yes
+
+	trigger = {
+		tag = UKR
+	}
+
+	option = {
+		name = ukraine_politics.540.a
+		trigger = {
+			has_political_power > 24
+			check_variable = { UKR_lf_unions > 39 }
+		}
+		add_political_power = -25
+		UKR_clear_head_minister = yes
+		add_ideas = UKR_osovyi
+		hidden_effect = {
+			add_to_variable = { UKR_lf_unions = 5 }
+			add_to_variable = { UKR_authoritarian_lean = 1 }
+			UKR_clamp_leans = yes
+			UKR_clamp_left_factions = yes
+			add_power_balance_value = {
+				id = UKR_left_dualism_balance
+				value = 0.1
+			}
+			country_event = { id = ukraine_politics.541 days = 2 }
+		}
+		ai_chance = { factor = 40 }
+	}
+
+	option = {
+		name = ukraine_politics.540.a_no
+		trigger = {
+			NOT = {
+				check_variable = { UKR_lf_unions > 39 }
+			}
+		}
+		hidden_effect = {
+			country_event = { id = ukraine_politics.541 days = 2 }
+		}
+		ai_chance = { factor = 0 }
+	}
+
+	option = {
+		name = ukraine_politics.540.b
+		trigger = {
+			has_political_power > 24
+			NOT = {
+				check_variable = { UKR_lf_unions > 39 }
+			}
+		}
+		add_political_power = -25
+		UKR_clear_head_minister = yes
+		add_ideas = UKR_volynets
+		custom_effect_tooltip = UKR_cabinet_actors_1_tt
+		hidden_effect = {
+			set_temp_variable = { var = UKR_actors_to_add value = 1 }
+			UKR_add_cabinet_actors = yes
+			add_to_variable = { UKR_lf_socialists = 3 }
+			add_to_variable = { UKR_left_lean = 1 }
+			UKR_clamp_leans = yes
+			UKR_clamp_left_factions = yes
+			add_power_balance_value = {
+				id = UKR_left_dualism_balance
+				value = -0.1
+			}
+			country_event = { id = ukraine_politics.541 days = 2 }
+		}
+		ai_chance = { factor = 40 }
+	}
+
+	option = {
+		name = ukraine_politics.540.b_no
+		trigger = {
+			check_variable = { UKR_lf_unions > 39 }
+		}
+		hidden_effect = {
+			country_event = { id = ukraine_politics.541 days = 2 }
+		}
+		ai_chance = { factor = 0 }
+	}
+
+	option = {
+		name = ukraine_politics.540.c
+		hidden_effect = {
+			country_event = { id = ukraine_politics.541 days = 2 }
+		}
+		ai_chance = { factor = 20 }
+	}
+}
+
+# Торг о левом кабинете: МИД
+country_event = {
+	id = ukraine_politics.541
+	title = ukraine_politics.541.t
+	desc = ukraine_politics.541.d
+	picture = GFX_report_event_ukrainian_civil_war
+
+	is_triggered_only = yes
+
+	trigger = {
+		tag = UKR
+	}
+
+	option = {
+		name = ukraine_politics.541.a
+		trigger = {
+			has_political_power > 14
+			NOT = { has_idea = UKR_eu_aid_frozen }
+			check_variable = { European_Influence > 0.349 }
+		}
+		add_political_power = -15
+		UKR_clear_foreign_minister = yes
+		add_ideas = UKR_stefanishyna
+		hidden_effect = {
+			add_to_variable = { European_Influence = 0.02 }
+			add_to_variable = { UKR_left_lean = 1 }
+			UKR_clamp_leans = yes
+			UKR_clamp_left_factions = yes
+			country_event = { id = ukraine_politics.542 days = 2 }
+		}
+		ai_chance = { factor = 40 }
+	}
+
+	option = {
+		name = ukraine_politics.541.a_no
+		trigger = {
+			NOT = {
+				AND = {
+					NOT = { has_idea = UKR_eu_aid_frozen }
+					check_variable = { European_Influence > 0.349 }
+				}
+			}
+		}
+		hidden_effect = {
+			country_event = { id = ukraine_politics.542 days = 2 }
+		}
+		ai_chance = { factor = 0 }
+	}
+
+	option = {
+		name = ukraine_politics.541.b
+		trigger = {
+			has_political_power > 14
+			NOT = { has_idea = UKR_captured_judiciary }
+			NOT = { has_idea = UKR_eu_aid_frozen }
+		}
+		add_political_power = -15
+		UKR_clear_foreign_minister = yes
+		add_ideas = UKR_hopko
+		custom_effect_tooltip = UKR_cabinet_actors_1_tt
+		hidden_effect = {
+			set_temp_variable = { var = UKR_actors_to_add value = 1 }
+			UKR_add_cabinet_actors = yes
+			add_to_variable = { European_Influence = 0.02 }
+			UKR_clamp_leans = yes
+			UKR_clamp_left_factions = yes
+			country_event = { id = ukraine_politics.542 days = 2 }
+		}
+		ai_chance = { factor = 35 }
+	}
+
+	option = {
+		name = ukraine_politics.541.b_no
+		trigger = {
+			OR = {
+				has_idea = UKR_captured_judiciary
+				has_idea = UKR_eu_aid_frozen
+			}
+		}
+		hidden_effect = {
+			country_event = { id = ukraine_politics.542 days = 2 }
+		}
+		ai_chance = { factor = 0 }
+	}
+
+	option = {
+		name = ukraine_politics.541.c
+		hidden_effect = {
+			country_event = { id = ukraine_politics.542 days = 2 }
+		}
+		ai_chance = { factor = 20 }
+	}
+}
+
+# Торг о левом кабинете: МВД
+country_event = {
+	id = ukraine_politics.542
+	title = ukraine_politics.542.t
+	desc = ukraine_politics.542.d
+	picture = GFX_report_event_ukrainian_civil_war
+
+	is_triggered_only = yes
+
+	trigger = {
+		tag = UKR
+	}
+
+	option = {
+		name = ukraine_politics.542.a
+		trigger = {
+			has_political_power > 19
+			has_completed_focus = UKR_b2_protect_anticorruption
+		}
+		add_political_power = -20
+		UKR_clear_interior_minister = yes
+		add_ideas = UKR_ryaboshapka
+		custom_effect_tooltip = UKR_cabinet_actors_1_tt
+		hidden_effect = {
+			set_temp_variable = { var = UKR_actors_to_add value = 1 }
+			UKR_add_cabinet_actors = yes
+			add_to_variable = { UKR_left_lean = 1 }
+			UKR_clamp_leans = yes
+			UKR_clamp_left_factions = yes
+			add_popularity = { ideology = social_liberal popularity = 0.01 }
+			country_event = { id = ukraine_politics.543 days = 2 }
+		}
+		ai_chance = { factor = 40 }
+	}
+
+	option = {
+		name = ukraine_politics.542.a_no
+		trigger = {
+			NOT = { has_completed_focus = UKR_b2_protect_anticorruption }
+		}
+		hidden_effect = {
+			country_event = { id = ukraine_politics.543 days = 2 }
+		}
+		ai_chance = { factor = 0 }
+	}
+
+	option = {
+		name = ukraine_politics.542.b
+		trigger = {
+			has_political_power > 19
+			NOT = { has_completed_focus = UKR_b2_subordinate_anticorruption }
+			NOT = { has_idea = UKR_captured_judiciary }
+		}
+		add_political_power = -20
+		UKR_clear_interior_minister = yes
+		add_ideas = UKR_kasko
+		custom_effect_tooltip = UKR_cabinet_actors_1_tt
+		hidden_effect = {
+			set_temp_variable = { var = UKR_actors_to_add value = 1 }
+			UKR_add_cabinet_actors = yes
+			UKR_clamp_leans = yes
+			UKR_clamp_left_factions = yes
+			add_popularity = { ideology = social_liberal popularity = 0.01 }
+			country_event = { id = ukraine_politics.543 days = 2 }
+		}
+		ai_chance = { factor = 35 }
+	}
+
+	option = {
+		name = ukraine_politics.542.b_no
+		trigger = {
+			OR = {
+				has_completed_focus = UKR_b2_subordinate_anticorruption
+				has_idea = UKR_captured_judiciary
+			}
+		}
+		hidden_effect = {
+			country_event = { id = ukraine_politics.543 days = 2 }
+		}
+		ai_chance = { factor = 0 }
+	}
+
+	option = {
+		name = ukraine_politics.542.c
+		trigger = {
+			has_political_power > 9
+		}
+		add_political_power = -10
+		UKR_clear_interior_minister = yes
+		add_ideas = UKR_lyashko
+		add_stability = -0.02
+		hidden_effect = {
+			add_to_variable = { European_Influence = -0.03 }
+			add_to_variable = { UKR_authoritarian_lean = 2 }
+			UKR_clamp_leans = yes
+			UKR_clamp_left_factions = yes
+			add_power_balance_value = {
+				id = UKR_left_dualism_balance
+				value = 0.1
+			}
+			country_event = { id = ukraine_politics.543 days = 2 }
+		}
+		ai_chance = { factor = 20 }
+	}
+
+	option = {
+		name = ukraine_politics.542.e
+		hidden_effect = {
+			country_event = { id = ukraine_politics.543 days = 2 }
+		}
+		ai_chance = { factor = 20 }
+	}
+}
+
+# Торг о левом кабинете: оборона
+country_event = {
+	id = ukraine_politics.543
+	title = ukraine_politics.543.t
+	desc = ukraine_politics.543.d
+	picture = GFX_report_event_ukrainian_civil_war
+
+	is_triggered_only = yes
+
+	trigger = {
+		tag = UKR
+	}
+
+	option = {
+		name = ukraine_politics.543.a
+		trigger = {
+			has_political_power > 14
+			check_variable = { UKR_nationalist_lean < 40 }
+			NOT = { has_country_flag = UKR_vets_councils_over_unions }
+		}
+		add_political_power = -15
+		UKR_clear_theorist_minister = yes
+		add_ideas = UKR_zagorodnuk
+		hidden_effect = {
+			add_to_variable = { UKR_left_lean = 1 }
+			UKR_clamp_leans = yes
+			UKR_clamp_left_factions = yes
+			country_event = { id = ukraine_politics.544 days = 2 }
+		}
+		ai_chance = { factor = 40 }
+	}
+
+	option = {
+		name = ukraine_politics.543.a_no
+		trigger = {
+			NOT = {
+				AND = {
+					check_variable = { UKR_nationalist_lean < 40 }
+					NOT = { has_country_flag = UKR_vets_councils_over_unions }
+				}
+			}
+		}
+		hidden_effect = {
+			country_event = { id = ukraine_politics.544 days = 2 }
+		}
+		ai_chance = { factor = 0 }
+	}
+
+	option = {
+		name = ukraine_politics.543.b
+		hidden_effect = {
+			country_event = { id = ukraine_politics.544 days = 2 }
+		}
+		ai_chance = { factor = 20 }
+	}
+}
+
+# Торг о левом кабинете: вторая линия
+country_event = {
+	id = ukraine_politics.544
+	title = ukraine_politics.544.t
+	desc = ukraine_politics.544.d
+	picture = GFX_report_event_ukrainian_civil_war
+
+	is_triggered_only = yes
+
+	trigger = {
+		tag = UKR
+	}
+
+	option = {
+		name = ukraine_politics.544.a
+		add_political_power = -20
+		add_ideas = UKR_left_team_narrow
+		custom_effect_tooltip = UKR_cabinet_actors_1_tt
+		hidden_effect = {
+			set_temp_variable = { var = UKR_actors_to_add value = 1 }
+			UKR_add_cabinet_actors = yes
+			add_to_variable = { UKR_left_lean = 2 }
+			UKR_clamp_leans = yes
+			UKR_clamp_left_factions = yes
+			set_country_flag = UKR_left_cabinet_formed
+		}
+		ai_chance = { factor = 35 }
+	}
+
+	option = {
+		name = ukraine_politics.544.b
+		trigger = {
+			has_political_power > 44
+		}
+		add_political_power = -45
+		add_ideas = UKR_left_team_medium
+		custom_effect_tooltip = UKR_cabinet_actors_3_tt
+		hidden_effect = {
+			set_temp_variable = { var = UKR_actors_to_add value = 3 }
+			UKR_add_cabinet_actors = yes
+			add_to_variable = { UKR_left_lean = 4 }
+			UKR_clamp_leans = yes
+			UKR_clamp_left_factions = yes
+			set_country_flag = UKR_left_cabinet_formed
+		}
+		ai_chance = { factor = 35 }
+	}
+
+	option = {
+		name = ukraine_politics.544.c
+		trigger = {
+			has_political_power > 79
+		}
+		add_political_power = -80
+		add_ideas = UKR_left_team_wide
+		custom_effect_tooltip = UKR_cabinet_actors_5_tt
+		hidden_effect = {
+			set_temp_variable = { var = UKR_actors_to_add value = 5 }
+			UKR_add_cabinet_actors = yes
+			add_to_variable = { UKR_left_lean = 6 }
+			UKR_clamp_leans = yes
+			UKR_clamp_left_factions = yes
+			set_country_flag = UKR_left_cabinet_formed
+		}
+		ai_chance = { factor = 20 }
+	}
+
+	option = {
+		name = ukraine_politics.544.e
+		hidden_effect = {
+			set_country_flag = UKR_left_cabinet_formed
+		}
+		ai_chance = { factor = 15 }
+	}
+}
+
+# Ортодоксальный путь: Симоненко в кабинете
+country_event = {
+	id = ukraine_politics.545
+	title = ukraine_politics.545.t
+	desc = ukraine_politics.545.d
+	picture = GFX_report_event_ukrainian_civil_war
+
+	is_triggered_only = yes
+
+	trigger = {
+		tag = UKR
+	}
+
+	option = {
+		name = ukraine_politics.545.a
+		trigger = {
+			has_political_power > 19
+		}
+		add_political_power = -20
+		UKR_clear_economic_minister = yes
+		add_ideas = UKR_symonenko
+		hidden_effect = {
+			add_to_variable = { UKR_lf_communists = 10 }
+			add_to_variable = { Russian_Influence = 0.03 }
+			add_to_variable = { European_Influence = -0.03 }
+			UKR_clamp_leans = yes
+			UKR_clamp_left_factions = yes
+			add_power_balance_value = {
+				id = UKR_left_dualism_balance
+				value = 0.1
+			}
+		}
+		ai_chance = { factor = 35 }
+	}
+
+	option = {
+		name = ukraine_politics.545.b
+		hidden_effect = {
+			add_to_variable = { UKR_lf_communists = -3 }
+			UKR_clamp_leans = yes
+			UKR_clamp_left_factions = yes
+		}
+		ai_chance = { factor = 65 }
 	}
 }

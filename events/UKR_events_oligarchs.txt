@@ -1,0 +1,429 @@
+add_namespace = ukraine_politics
+
+# Путь олигархов и вертикали, блок 3, шаг 1 (PROPOSAL_oligarchs.md, разделы 8, 9, 11; DESIGN.md, 8.3).
+# 600: «Обед в Офисе» (запускается через 3 дня после фокуса UKR_ol_vertical эффектом UKR_ol_start).
+# 601-605: торг о кабинете (премьер, экономика, МВД, оборона, разведка). Назначение министра от клана погашает его претензии,
+# назначение «человека президента» сдвигает шкалу UKR_vertical_clans_balance к вертикали. Отказ не требует политсилы.
+# Реальные люди: активы и должности пишем как факты; выдуманных цитат и сумм нет.
+# События 610+ (счета кланов, «Строптивый», конституционный пакет, «Итоги года» и др.) добавляются в шагах 2-3.
+
+# Обед в Офисе: старт пути
+country_event = {
+	id = ukraine_politics.600
+	title = ukraine_politics.600.t
+	desc = {
+		text = ukraine_politics.600.d_stefanchuk
+		trigger = {
+			has_idea = UKR_office_stefanchuk
+		}
+	}
+	desc = {
+		text = ukraine_politics.600.d_yermak
+		trigger = {
+			NOT = { has_idea = UKR_office_stefanchuk }
+		}
+	}
+	picture = GFX_report_event_ukrainian_civil_war
+
+	is_triggered_only = yes
+
+	trigger = {
+		tag = UKR
+	}
+
+	# Договариваться
+	option = {
+		name = ukraine_politics.600.a
+		custom_effect_tooltip = UKR_ol_bop_clans_tt
+		custom_effect_tooltip = UKR_ol_claims_all_down_tt
+		add_power_balance_value = {
+			id = UKR_vertical_clans_balance
+			value = -0.10
+		}
+		hidden_effect = {
+			set_temp_variable = { UKR_ol_amt = -5 }
+			UKR_ol_claim_met = yes
+			UKR_ol_claim_priv = yes
+			UKR_ol_claim_gas = yes
+			UKR_ol_claim_sec = yes
+			add_to_variable = { UKR_authoritarian_lean = 1 }
+			UKR_clamp_leans = yes
+			country_event = { id = ukraine_politics.601 days = 2 }
+		}
+		ai_chance = { factor = 30 }
+	}
+
+	# Держать дистанцию
+	option = {
+		name = ukraine_politics.600.b
+		hidden_effect = {
+			country_event = { id = ukraine_politics.601 days = 2 }
+		}
+		ai_chance = { factor = 40 }
+	}
+
+	# Напомнить, чья Банковая
+	option = {
+		name = ukraine_politics.600.c
+		custom_effect_tooltip = UKR_ol_bop_vertical_tt
+		custom_effect_tooltip = UKR_ol_grudge_up_tt
+		add_power_balance_value = {
+			id = UKR_vertical_clans_balance
+			value = 0.10
+		}
+		hidden_effect = {
+			add_to_variable = { UKR_cl_met_grudge = 5 }
+			add_to_variable = { UKR_cl_priv_grudge = 5 }
+			add_to_variable = { UKR_cl_gas_grudge = 5 }
+			add_to_variable = { UKR_cl_sec_grudge = 5 }
+			UKR_ol_update = yes
+			add_to_variable = { UKR_authoritarian_lean = 2 }
+			UKR_clamp_leans = yes
+			country_event = { id = ukraine_politics.601 days = 2 }
+		}
+		ai_chance = { factor = 30 }
+	}
+}
+
+# Торг о кабинете олигархов: премьер
+country_event = {
+	id = ukraine_politics.601
+	title = ukraine_politics.601.t
+	desc = ukraine_politics.601.d
+	picture = GFX_report_event_ukrainian_civil_war
+
+	is_triggered_only = yes
+
+	trigger = {
+		tag = UKR
+	}
+
+	# Давид Арахамия: фракция и дисциплина (сторона Офиса)
+	option = {
+		name = ukraine_politics.601.a
+		trigger = { has_political_power > 14 }
+		add_political_power = -15
+		UKR_clear_head_minister = yes
+		add_ideas = UKR_arakhamia_premier
+		custom_effect_tooltip = UKR_ol_bop_vertical_tt
+		add_power_balance_value = {
+			id = UKR_vertical_clans_balance
+			value = 0.05
+		}
+		hidden_effect = {
+			add_to_variable = { UKR_authoritarian_lean = 1 }
+			UKR_clamp_leans = yes
+			UKR_ol_update = yes
+			country_event = { id = ukraine_politics.602 days = 2 }
+		}
+		ai_chance = { factor = 40 }
+	}
+
+	# Андрей Богдан: старая дружба «Привата»
+	option = {
+		name = ukraine_politics.601.b
+		trigger = { has_political_power > 14 }
+		add_political_power = -15
+		UKR_clear_head_minister = yes
+		add_ideas = UKR_bohdan
+		custom_effect_tooltip = UKR_ol_claim_priv_down_tt
+		custom_effect_tooltip = UKR_ol_bop_clans_tt
+		add_power_balance_value = {
+			id = UKR_vertical_clans_balance
+			value = -0.05
+		}
+		hidden_effect = {
+			set_temp_variable = { UKR_ol_amt = -25 }
+			UKR_ol_claim_priv = yes
+			set_temp_variable = { UKR_ol_sh = 3 }
+			UKR_ol_share_priv = yes
+			add_to_variable = { UKR_authoritarian_lean = 1 }
+			UKR_clamp_leans = yes
+			country_event = { id = ukraine_politics.602 days = 2 }
+		}
+		ai_chance = { factor = 30 }
+	}
+
+	# Оставить действующего премьера
+	option = {
+		name = ukraine_politics.601.c
+		hidden_effect = {
+			country_event = { id = ukraine_politics.602 days = 2 }
+		}
+		ai_chance = { factor = 30 }
+	}
+}
+
+# Торг о кабинете олигархов: экономика
+country_event = {
+	id = ukraine_politics.602
+	title = ukraine_politics.602.t
+	desc = ukraine_politics.602.d
+	picture = GFX_report_event_ukrainian_civil_war
+
+	is_triggered_only = yes
+
+	trigger = {
+		tag = UKR
+	}
+
+	# Александр Вилкул: металл и энергия
+	option = {
+		name = ukraine_politics.602.a
+		trigger = { has_political_power > 19 }
+		add_political_power = -20
+		UKR_clear_economic_minister = yes
+		add_ideas = UKR_vilkul
+		custom_effect_tooltip = UKR_ol_claim_met_down_tt
+		custom_effect_tooltip = UKR_ol_bop_clans_tt
+		add_power_balance_value = {
+			id = UKR_vertical_clans_balance
+			value = -0.05
+		}
+		hidden_effect = {
+			set_temp_variable = { UKR_ol_amt = -25 }
+			UKR_ol_claim_met = yes
+			set_temp_variable = { UKR_ol_sh = 3 }
+			UKR_ol_share_met = yes
+			add_to_variable = { UKR_authoritarian_lean = 1 }
+			UKR_clamp_leans = yes
+			country_event = { id = ukraine_politics.603 days = 2 }
+		}
+		ai_chance = { factor = 35 }
+	}
+
+	# Даниил Гетманцев: налоги по линии Банковой
+	option = {
+		name = ukraine_politics.602.b
+		trigger = {
+			has_political_power > 24
+			NOT = { has_idea = UKR_hetmantsev }
+		}
+		add_political_power = -25
+		UKR_clear_economic_minister = yes
+		add_ideas = UKR_hetmantsev
+		custom_effect_tooltip = UKR_ol_bop_vertical_tt
+		add_power_balance_value = {
+			id = UKR_vertical_clans_balance
+			value = 0.05
+		}
+		hidden_effect = {
+			add_popularity = { ideology = social_liberal popularity = 0.01 }
+			country_event = { id = ukraine_politics.603 days = 2 }
+		}
+		ai_chance = { factor = 35 }
+	}
+
+	# Оставить действующего министра
+	option = {
+		name = ukraine_politics.602.c
+		hidden_effect = {
+			country_event = { id = ukraine_politics.603 days = 2 }
+		}
+		ai_chance = { factor = 30 }
+	}
+}
+
+# Торг о кабинете олигархов: МВД
+country_event = {
+	id = ukraine_politics.603
+	title = ukraine_politics.603.t
+	desc = ukraine_politics.603.d
+	picture = GFX_report_event_ukrainian_civil_war
+
+	is_triggered_only = yes
+
+	trigger = {
+		tag = UKR
+	}
+
+	# Арсен Аваков: полиция, Нацгвардия и свой аппарат
+	option = {
+		name = ukraine_politics.603.a
+		trigger = {
+			has_political_power > 19
+			NOT = { has_idea = UKR_avakov }
+		}
+		add_political_power = -20
+		UKR_clear_interior_minister = yes
+		add_ideas = UKR_avakov
+		custom_effect_tooltip = UKR_ol_claim_sec_down_tt
+		custom_effect_tooltip = UKR_ol_bop_clans_tt
+		add_power_balance_value = {
+			id = UKR_vertical_clans_balance
+			value = -0.05
+		}
+		hidden_effect = {
+			set_temp_variable = { UKR_ol_amt = -25 }
+			UKR_ol_claim_sec = yes
+			set_temp_variable = { UKR_ol_sh = 3 }
+			UKR_ol_share_sec = yes
+			add_to_variable = { UKR_authoritarian_lean = 1 }
+			UKR_clamp_leans = yes
+			country_event = { id = ukraine_politics.604 days = 2 }
+		}
+		ai_chance = { factor = 30 }
+	}
+
+	# Денис Монастырский: министр без собственной базы
+	option = {
+		name = ukraine_politics.603.b
+		trigger = {
+			has_political_power > 9
+			NOT = { has_idea = UKR_monastyrsky }
+		}
+		add_political_power = -10
+		UKR_clear_interior_minister = yes
+		add_ideas = UKR_monastyrsky
+		custom_effect_tooltip = UKR_ol_bop_vertical_tt
+		add_power_balance_value = {
+			id = UKR_vertical_clans_balance
+			value = 0.05
+		}
+		hidden_effect = {
+			country_event = { id = ukraine_politics.604 days = 2 }
+		}
+		ai_chance = { factor = 35 }
+	}
+
+	# Оставить действующего министра
+	option = {
+		name = ukraine_politics.603.c
+		hidden_effect = {
+			country_event = { id = ukraine_politics.604 days = 2 }
+		}
+		ai_chance = { factor = 35 }
+	}
+}
+
+# Торг о кабинете олигархов: оборона
+country_event = {
+	id = ukraine_politics.604
+	title = ukraine_politics.604.t
+	desc = ukraine_politics.604.d
+	picture = GFX_report_event_ukrainian_civil_war
+
+	is_triggered_only = yes
+
+	trigger = {
+		tag = UKR
+	}
+
+	# Алексей Резников: закупки идут своим
+	option = {
+		name = ukraine_politics.604.a
+		trigger = {
+			has_political_power > 19
+			NOT = { has_idea = UKR_reznikov }
+		}
+		add_political_power = -20
+		UKR_clear_theorist_minister = yes
+		add_ideas = UKR_reznikov
+		custom_effect_tooltip = UKR_ol_claim_met_sec_down_tt
+		custom_effect_tooltip = UKR_ol_bop_clans_tt
+		add_power_balance_value = {
+			id = UKR_vertical_clans_balance
+			value = -0.03
+		}
+		hidden_effect = {
+			set_temp_variable = { UKR_ol_amt = -15 }
+			UKR_ol_claim_sec = yes
+			set_temp_variable = { UKR_ol_amt = -10 }
+			UKR_ol_claim_met = yes
+			add_to_variable = { UKR_authoritarian_lean = 1 }
+			UKR_clamp_leans = yes
+			country_event = { id = ukraine_politics.605 days = 2 }
+		}
+		ai_chance = { factor = 35 }
+	}
+
+	# Андрей Таран: офицер, а не менеджер
+	option = {
+		name = ukraine_politics.604.b
+		trigger = {
+			has_political_power > 9
+			NOT = { has_idea = UKR_taran }
+		}
+		add_political_power = -10
+		UKR_clear_theorist_minister = yes
+		add_ideas = UKR_taran
+		hidden_effect = {
+			country_event = { id = ukraine_politics.605 days = 2 }
+		}
+		ai_chance = { factor = 30 }
+	}
+
+	# Оставить действующего министра
+	option = {
+		name = ukraine_politics.604.c
+		hidden_effect = {
+			country_event = { id = ukraine_politics.605 days = 2 }
+		}
+		ai_chance = { factor = 35 }
+	}
+}
+
+# Торг о кабинете олигархов: разведка
+country_event = {
+	id = ukraine_politics.605
+	title = ukraine_politics.605.t
+	desc = ukraine_politics.605.d
+	picture = GFX_report_event_ukrainian_civil_war
+
+	is_triggered_only = yes
+
+	trigger = {
+		tag = UKR
+	}
+
+	# Иван Баканов: свой человек в службе
+	option = {
+		name = ukraine_politics.605.a
+		trigger = {
+			has_political_power > 14
+			NOT = { has_idea = UKR_bakanov }
+		}
+		add_political_power = -15
+		UKR_clear_intelligence_minister = yes
+		add_ideas = UKR_bakanov
+		custom_effect_tooltip = UKR_ol_claim_sec_down_tt
+		custom_effect_tooltip = UKR_ol_bop_vertical_tt
+		add_power_balance_value = {
+			id = UKR_vertical_clans_balance
+			value = 0.05
+		}
+		hidden_effect = {
+			set_temp_variable = { UKR_ol_amt = -20 }
+			UKR_ol_claim_sec = yes
+			add_to_variable = { UKR_authoritarian_lean = 1 }
+			UKR_clamp_leans = yes
+			set_country_flag = UKR_ol_cabinet_formed
+		}
+		ai_chance = { factor = 35 }
+	}
+
+	# Кирилл Буданов: профессионал, который никому не должен
+	option = {
+		name = ukraine_politics.605.b
+		trigger = {
+			has_political_power > 9
+			NOT = { has_idea = UKR_budanov }
+		}
+		add_political_power = -10
+		UKR_clear_intelligence_minister = yes
+		add_ideas = UKR_budanov
+		hidden_effect = {
+			set_country_flag = UKR_ol_cabinet_formed
+		}
+		ai_chance = { factor = 30 }
+	}
+
+	# Оставить действующего министра
+	option = {
+		name = ukraine_politics.605.c
+		hidden_effect = {
+			set_country_flag = UKR_ol_cabinet_formed
+		}
+		ai_chance = { factor = 35 }
+	}
+}

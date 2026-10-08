@@ -1,0 +1,213 @@
+# Блок 3: путь олигархов и вертикали «Порядок в обмен на лояльность» (DESIGN.md, 8.3; PROPOSAL_oligarchs.md, разделы 7 и 13)
+# Загружается событием ukraine_politics.304 (инаугурация) при ставке на олигархов (UKR_pillar_chosen_oligarchs).
+# Шаг 1 (каркас): ствол «Вертикаль и кланы» и первые фокусы трёх веток: медиа и деньги, силовики и суды, оборона через своих.
+# Остальные фокусы веток, развилка «мягкая эрозия / открытая вертикаль», конституционный пакет и финалы добавляются в шаге 2.
+# Шкала - common/bop/UKR_vertical_bop.txt, окно решений - common/decisions/UKR_decisions_oligarchs.txt,
+# кланы и профиль развития - common/scripted_effects/UKR_ol_effects.txt.
+# Правило наград: строка вверх («Витрина») и строка вниз («Подвал»), обе видны в подсказке (раздел 13.2 предложения).
+focus_tree = {
+	id = UKR_block3_oligarchs
+	country = {
+		factor = 0
+	}
+	default = no
+
+	# Ряд 0. Вертикаль и кланы
+	focus = {
+		id = UKR_ol_vertical
+		icon = GFX_goal_generic_dangerous_deal
+		x = 10
+		y = 0
+		cost = 5
+		available = {
+			has_country_leader = {
+				character = UKR_volodymyr_zelensky
+				ruling_only = yes
+			}
+		}
+		ai_will_do = {
+			factor = 20
+		}
+		completion_reward = {
+			add_political_power = 50
+			set_power_balance = {
+				id = UKR_vertical_clans_balance
+				left_side = UKR_bop_clans
+				right_side = UKR_bop_vertical
+				set_value = 0
+			}
+			custom_effect_tooltip = UKR_ol_vertical_tt
+			show_ideas_tooltip = UKR_managed_oligarchy
+			unlock_decision_category_tooltip = UKR_vertical_power
+			custom_effect_tooltip = UKR_ol_vertical_dev_tt
+			# Снимок развития берётся внутри UKR_ol_start, до изменений ниже
+			hidden_effect = {
+				UKR_ol_start = yes
+			}
+			set_temp_variable = {
+				var = industrial_development_var_temp
+				value = 0.02
+			}
+			add_industrial_development = yes
+			set_temp_variable = {
+				var = society_development_var_temp
+				value = -0.01
+			}
+			add_society_development = yes
+			hidden_effect = {
+				set_temp_variable = { UKR_ol_gain = 0.02 }
+				UKR_ol_book_paper = yes
+				add_to_variable = { UKR_authoritarian_lean = 5 }
+				UKR_clamp_leans = yes
+				UKR_ol_update = yes
+			}
+		}
+	}
+
+	# Ряд 1. Медиа и деньги: «Государственные партнёры»
+	focus = {
+		id = UKR_ol_state_partners
+		icon = GFX_goal_generic_propaganda
+		prerequisite = { focus = UKR_ol_vertical }
+		relative_position_id = UKR_ol_vertical
+		x = -3
+		y = 1
+		cost = 6
+		available = {
+			has_country_leader = {
+				character = UKR_volodymyr_zelensky
+				ruling_only = yes
+			}
+		}
+		ai_will_do = {
+			factor = 10
+		}
+		completion_reward = {
+			add_ideas = UKR_state_partners_idea
+			custom_effect_tooltip = UKR_ol_partners_dev_tt
+			custom_effect_tooltip = UKR_ol_claim_priv_up_tt
+			custom_effect_tooltip = UKR_ol_bop_clans_tt
+			set_temp_variable = {
+				var = society_development_var_temp
+				value = -0.02
+			}
+			add_society_development = yes
+			add_power_balance_value = {
+				id = UKR_vertical_clans_balance
+				value = -0.05
+			}
+			hidden_effect = {
+				set_country_flag = UKR_media_favours
+				set_country_flag = UKR_ol_media_partners
+				set_temp_variable = { UKR_ol_amt = 15 }
+				UKR_ol_claim_priv = yes
+				set_temp_variable = { UKR_ol_sh = 3 }
+				UKR_ol_share_priv = yes
+				add_to_variable = { UKR_authoritarian_lean = 4 }
+				UKR_clamp_leans = yes
+			}
+		}
+	}
+
+	# Ряд 1. Силовики и суды: «Лояльные силовики»
+	focus = {
+		id = UKR_ol_loyal_security
+		icon = GFX_goal_generic_political_pressure
+		prerequisite = { focus = UKR_ol_vertical }
+		relative_position_id = UKR_ol_vertical
+		x = 0
+		y = 1
+		cost = 6
+		available = {
+			has_country_leader = {
+				character = UKR_volodymyr_zelensky
+				ruling_only = yes
+			}
+		}
+		ai_will_do = {
+			factor = 10
+		}
+		completion_reward = {
+			add_ideas = UKR_loyal_security_idea
+			custom_effect_tooltip = UKR_ol_security_dev_tt
+			custom_effect_tooltip = UKR_ol_claim_sec_up_tt
+			custom_effect_tooltip = UKR_ol_bop_vertical_tt
+			set_temp_variable = {
+				var = poverty_development_var_temp
+				value = -0.015
+			}
+			add_poverty_development = yes
+			add_power_balance_value = {
+				id = UKR_vertical_clans_balance
+				value = 0.08
+			}
+			hidden_effect = {
+				set_country_flag = UKR_ol_loyal_security_done
+				set_temp_variable = { UKR_ol_amt = 15 }
+				UKR_ol_claim_sec = yes
+				set_temp_variable = { UKR_ol_sh = 3 }
+				UKR_ol_share_sec = yes
+				add_to_variable = { UKR_authoritarian_lean = 5 }
+				UKR_clamp_leans = yes
+			}
+		}
+	}
+
+	# Ряд 1. Оборона через своих: «Закупки через своих»
+	focus = {
+		id = UKR_ol_procurement
+		icon = GFX_goal_generic_construct_mil_factory
+		prerequisite = { focus = UKR_ol_vertical }
+		relative_position_id = UKR_ol_vertical
+		x = 3
+		y = 1
+		cost = 7
+		available = {
+			has_country_leader = {
+				character = UKR_volodymyr_zelensky
+				ruling_only = yes
+			}
+		}
+		ai_will_do = {
+			factor = 10
+		}
+		completion_reward = {
+			add_ideas = UKR_priority_procurement_idea
+			custom_effect_tooltip = UKR_ol_procurement_dev_tt
+			custom_effect_tooltip = UKR_ol_claim_met_sec_up_tt
+			custom_effect_tooltip = UKR_ol_bop_clans_tt
+			set_temp_variable = {
+				var = military_development_var_temp
+				value = 0.04
+			}
+			add_military_development = yes
+			set_temp_variable = {
+				var = industrial_development_var_temp
+				value = 0.02
+			}
+			add_industrial_development = yes
+			set_temp_variable = {
+				var = poverty_development_var_temp
+				value = -0.01
+			}
+			add_poverty_development = yes
+			add_power_balance_value = {
+				id = UKR_vertical_clans_balance
+				value = -0.05
+			}
+			hidden_effect = {
+				set_country_flag = UKR_ol_procurement_done
+				set_temp_variable = { UKR_ol_gain = 0.06 }
+				UKR_ol_book_paper = yes
+				set_temp_variable = { UKR_ol_amt = 10 }
+				UKR_ol_claim_sec = yes
+				UKR_ol_claim_met = yes
+				set_temp_variable = { UKR_ol_sh = 2 }
+				UKR_ol_share_sec = yes
+				UKR_ol_share_met = yes
+				add_to_variable = { UKR_authoritarian_lean = 5 }
+				UKR_clamp_leans = yes
+			}
+		}
+	}
+}

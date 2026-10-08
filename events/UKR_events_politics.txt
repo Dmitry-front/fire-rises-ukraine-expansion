@@ -2453,7 +2453,7 @@ country_event = {
 			limit = { has_country_flag = UKR_yermak_trial }
 			hidden_effect = { country_event = { id = ukraine_politics.314 days = 25 } }
 		}
-		# Блок 3: дерево выбранной опоры. Написаны пути технократов и левых, каркас пути националистов (ставка пока только при -debug)
+		# Блок 3: дерево выбранной опоры. Написаны пути технократов, левых, националистов; у олигархов шаг 1 (каркас)
 		if = {
 			limit = { has_country_flag = UKR_pillar_chosen_technocrats }
 			hidden_effect = {
@@ -2479,6 +2479,15 @@ country_event = {
 			hidden_effect = {
 				load_focus_tree = {
 					tree = UKR_block3_nationalists
+					keep_completed = yes
+				}
+			}
+		}
+		else_if = {
+			limit = { has_country_flag = UKR_pillar_chosen_oligarchs }
+			hidden_effect = {
+				load_focus_tree = {
+					tree = UKR_block3_oligarchs
 					keep_completed = yes
 				}
 			}
@@ -2932,6 +2941,7 @@ country_event = {
 		hidden_effect = { add_popularity = { ideology = social_liberal popularity = 0.02 } }
 		remove_ideas = UKR_eu_aid_frozen
 		set_country_flag = UKR_yermak_convicted
+		UKR_ol_apply_office = yes
 		ai_chance = { factor = 40 }
 	}
 
@@ -2942,6 +2952,7 @@ country_event = {
 		add_stability = 0.01
 		remove_ideas = UKR_eu_aid_frozen
 		set_country_flag = UKR_yermak_deal
+		UKR_ol_apply_office = yes
 		ai_chance = { factor = 40 }
 	}
 
@@ -2959,6 +2970,7 @@ country_event = {
 		}
 		set_country_flag = UKR_office_clan
 		set_country_flag = UKR_yermak_case_faded
+		UKR_ol_apply_office = yes
 		ai_chance = { factor = 40 }
 	}
 }

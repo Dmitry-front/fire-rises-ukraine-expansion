@@ -1,0 +1,199 @@
+# Путь олигархов и вертикали, блок 3 (PROPOSAL_oligarchs.md; DESIGN.md, 8.3). Шаг 1: каркас.
+# Духи пути, лицо Офиса, скрытое «подводное течение» ОП-ЗЖ и министры торга (ukraine_politics.601-605).
+ideas = {
+	# Скрытые ступени дрейфа authoritarian_democrat (в Украине это ОП-ЗЖ). Выбирает UKR_ol_set_undertow, игрок видит только тексты событий
+	hidden_ideas = {
+		UKR_undertow_1 = {
+			picture = UKR_Corruption
+			allowed = {
+				always = no
+			}
+			allowed_civil_war = {
+				always = yes
+			}
+			removal_cost = -1
+			modifier = {
+				authoritarian_democrat_drift = 0.010
+			}
+		}
+		UKR_undertow_2 = {
+			picture = UKR_Corruption
+			allowed = {
+				always = no
+			}
+			allowed_civil_war = {
+				always = yes
+			}
+			removal_cost = -1
+			modifier = {
+				authoritarian_democrat_drift = 0.021
+			}
+		}
+		UKR_undertow_3 = {
+			picture = UKR_Corruption
+			allowed = {
+				always = no
+			}
+			allowed_civil_war = {
+				always = yes
+			}
+			removal_cost = -1
+			modifier = {
+				authoritarian_democrat_drift = 0.035
+			}
+		}
+	}
+
+	country = {
+		# Замена лестницы олигархата (UKR_ol_apply_oligarchy). Политсила выше, чем у оригинала (там -0.05),
+		# стабильность падает меньше (-0.07 против -0.10), прочие штрафы мягче; скидка на содержание батальонов сохранена.
+		# Дрейф шкал развития: Витрина растёт, Подвал оседает (PROPOSAL_oligarchs.md, раздел 13.3).
+		UKR_managed_oligarchy = {
+			picture = UKR_Corruption
+			allowed = {
+				original_tag = UKR
+			}
+			allowed_civil_war = {
+				always = yes
+			}
+			removal_cost = -1
+			modifier = {
+				political_power_gain = 0.05
+				stability_factor = -0.07
+				misc_expense = 0.015
+				income_growth_factor = -0.015
+				planning_speed = -0.15
+				army_speed_factor = -0.03
+				mobilization_speed = -0.10
+				battalion_upkeep_factor = -0.3
+				industrial_development_monthly = 0.002
+				society_development_monthly = -0.001
+				poverty_development_monthly = -0.001
+			}
+		}
+
+		# Фокус UKR_ol_state_partners
+		UKR_state_partners_idea = {
+			picture = UKR_zelensky_growing_authoritarism
+			allowed = {
+				original_tag = UKR
+			}
+			removal_cost = -1
+			modifier = {
+				political_power_gain = 0.03
+				stability_factor = 0.02
+				trade_opinion_factor = -0.01
+				society_development_monthly = -0.001
+			}
+		}
+
+		# Фокус UKR_ol_loyal_security
+		UKR_loyal_security_idea = {
+			picture = UKR_zelensky_growing_authoritarism
+			allowed = {
+				original_tag = UKR
+			}
+			removal_cost = -1
+			modifier = {
+				political_power_gain = 0.02
+				stability_factor = 0.03
+				mobilization_speed = 0.03
+				poverty_development_monthly = -0.001
+			}
+		}
+
+		# Фокус UKR_ol_procurement
+		UKR_priority_procurement_idea = {
+			picture = UKR_Corruption
+			allowed = {
+				original_tag = UKR
+			}
+			removal_cost = -1
+			modifier = {
+				production_speed_arms_factory_factor = 0.10
+				military_development_monthly = 0.002
+				misc_expense = 0.01
+			}
+		}
+
+		# Лицо пути (UKR_ol_apply_office): глава Офиса президента. Исход дела Ермака (ukraine_politics.319) меняет лицо
+		UKR_office_yermak = {
+			picture = UKR_zelensky_growing_authoritarism
+			allowed = {
+				original_tag = UKR
+			}
+			removal_cost = -1
+			modifier = {
+				political_power_gain = 0.03
+			}
+		}
+		UKR_office_yermak_shadow = {
+			picture = UKR_zelensky_growing_authoritarism
+			allowed = {
+				original_tag = UKR
+			}
+			removal_cost = -1
+			modifier = {
+				political_power_gain = 0.01
+			}
+		}
+		UKR_office_stefanchuk = {
+			picture = UKR_zelensky_growing_authoritarism
+			allowed = {
+				original_tag = UKR
+			}
+			removal_cost = -1
+			modifier = {
+				political_power_gain = 0.02
+				stability_factor = 0.01
+			}
+		}
+	}
+
+	# Министры торга о кабинете олигархов (ukraine_politics.601-605). Портреты: unknown, нужен арт
+	head_minister = {
+		UKR_arakhamia_premier = {
+			picture = UKR_David_Arakhamia
+			allowed = {
+				original_tag = UKR
+			}
+			visible = {
+				is_puppet = no
+				has_country_flag = UKR_ol_vertical_done
+			}
+			traits = {
+				hog_backroom_backstabber
+			}
+		}
+		UKR_bohdan = {
+			picture = unknown
+			allowed = {
+				original_tag = UKR
+			}
+			visible = {
+				is_puppet = no
+				has_country_flag = UKR_ol_vertical_done
+			}
+			traits = {
+				hog_corporate_suit
+			}
+		}
+	}
+
+	economic_minister = {
+		UKR_vilkul = {
+			picture = unknown
+			allowed = {
+				original_tag = UKR
+			}
+			visible = {
+				is_puppet = no
+				has_country_flag = UKR_ol_vertical_done
+			}
+			traits = {
+				eco_steel_magnate
+				eco_captain_of_industry
+			}
+		}
+	}
+}

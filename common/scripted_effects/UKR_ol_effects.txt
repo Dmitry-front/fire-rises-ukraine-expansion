@@ -1,0 +1,355 @@
+# Путь олигархов и вертикали, блок 3 (PROPOSAL_oligarchs.md; DESIGN.md, 8.3).
+# Кланы: met (Металл и энергетика), priv (Приват), gas (Газ и химия), sec (Силовой круг).
+# Переменные клана: UKR_cl_<id>_share (сырая доля), UKR_cl_<id>_pct (доля в процентах, считает UKR_ol_calc_shares),
+# UKR_cl_<id>_claim (претензии 0-100: что президент должен клану), UKR_cl_<id>_grudge (скрытая обида 0-100, копится от давления).
+# UKR_ol_loyalty - «Лояльность кланов» (0-100), считает UKR_ol_calc_loyalty.
+# Профиль развития «Витрина и подвал» (раздел 13 предложения): снимки UKR_ol_snap_* при старте пути, разница UKR_ol_d_*,
+# скрытая «бумага» UKR_ol_paper (около 40% наград Витрины, реализуется в событиях шага 3).
+# Проверки выполняются в момент изменения (в эффекте решения, фокуса, события) и раз в месяц (on_monthly, UKR_on_actions_oligarchs.txt).
+
+# Старт пути (награда фокуса UKR_ol_vertical): снимок развития берётся ДО наград фокуса
+UKR_ol_start = {
+	set_country_flag = UKR_ol_vertical_done
+	UKR_ol_apply_oligarchy = yes
+	UKR_ol_init_clans = yes
+	UKR_ol_snapshot = yes
+	UKR_ol_apply_office = yes
+	UKR_ol_update = yes
+	country_event = { id = ukraine_politics.600 days = 3 }
+}
+
+# «Управляемый олигархат» заменяет текущую ступень лестницы олигархата (лестницу назад не поднимаем)
+UKR_ol_apply_oligarchy = {
+	if = {
+		limit = { has_idea = UKR_government_corruption }
+		remove_ideas = UKR_government_corruption
+	}
+	else_if = {
+		limit = { has_idea = UKR_government_corruption_low }
+		remove_ideas = UKR_government_corruption_low
+	}
+	else_if = {
+		limit = {
+			OR = {
+				has_idea = UKR_oligarchs_retreating
+				has_idea = UKR_oligarchs_remnants
+			}
+		}
+		remove_ideas = UKR_oligarchs_retreating
+		remove_ideas = UKR_oligarchs_remnants
+		set_country_flag = UKR_oligarchs_restored
+	}
+	else = {
+		set_country_flag = UKR_oligarchs_restored
+	}
+	add_ideas = UKR_managed_oligarchy
+}
+
+# Начальные доли, претензии и обиды; хроника блока 1 сдвигает старт
+UKR_ol_init_clans = {
+	set_variable = { UKR_cl_met_share = 30 }
+	set_variable = { UKR_cl_priv_share = 25 }
+	set_variable = { UKR_cl_gas_share = 15 }
+	set_variable = { UKR_cl_sec_share = 30 }
+	set_variable = { UKR_cl_met_claim = 30 }
+	set_variable = { UKR_cl_priv_claim = 30 }
+	set_variable = { UKR_cl_gas_claim = 20 }
+	set_variable = { UKR_cl_sec_claim = 30 }
+	set_variable = { UKR_cl_met_grudge = 0 }
+	set_variable = { UKR_cl_priv_grudge = 0 }
+	set_variable = { UKR_cl_gas_grudge = 0 }
+	set_variable = { UKR_cl_sec_grudge = 0 }
+	set_variable = { UKR_ol_paper = 0 }
+	set_variable = { UKR_ol_vertical_level = 0 }
+	# Коломойского давили (ukraine.312): обида, доля меньше
+	if = {
+		limit = { has_country_flag = UKR_kolomoisky_pressure }
+		add_to_variable = { UKR_cl_priv_grudge = 15 }
+		add_to_variable = { UKR_cl_priv_share = -3 }
+	}
+	# Сделка с Коломойским в тени
+	if = {
+		limit = { has_country_flag = UKR_kolomoisky_deal }
+		add_to_variable = { UKR_cl_priv_share = 5 }
+	}
+	# Диалог с Ахметовым (ukraine.316)
+	if = {
+		limit = { has_country_flag = UKR_akhmetov_dialogue }
+		add_to_variable = { UKR_cl_met_share = 3 }
+		add_to_variable = { UKR_cl_met_claim = -5 }
+	}
+	# Услуги медиа в кампании 2024 (ukraine_politics.213)
+	if = {
+		limit = { has_country_flag = UKR_media_favours }
+		add_to_variable = { UKR_cl_priv_claim = 10 }
+	}
+	# Офис как клан (ukraine.313.b, 319.c)
+	if = {
+		limit = { has_country_flag = UKR_office_clan }
+		add_to_variable = { UKR_cl_sec_share = 3 }
+	}
+}
+
+# Снимок шести шкал развития TFR на старте пути: от него считается «с начала пути»
+UKR_ol_snapshot = {
+	set_variable = { UKR_ol_snap_ind = industrial_development_var }
+	set_variable = { UKR_ol_snap_mil = military_development_var }
+	set_variable = { UKR_ol_snap_farm = farming_development_var }
+	set_variable = { UKR_ol_snap_soc = society_development_var }
+	set_variable = { UKR_ol_snap_pov = poverty_development_var }
+	set_variable = { UKR_ol_snap_acad = academic_development_var }
+}
+
+# Использование: add_to_variable = { UKR_cl_met_claim = 10 } затем UKR_ol_update = yes
+UKR_ol_update = {
+	clamp_variable = { var = UKR_cl_met_claim min = 0 max = 100 }
+	clamp_variable = { var = UKR_cl_priv_claim min = 0 max = 100 }
+	clamp_variable = { var = UKR_cl_gas_claim min = 0 max = 100 }
+	clamp_variable = { var = UKR_cl_sec_claim min = 0 max = 100 }
+	clamp_variable = { var = UKR_cl_met_grudge min = 0 max = 100 }
+	clamp_variable = { var = UKR_cl_priv_grudge min = 0 max = 100 }
+	clamp_variable = { var = UKR_cl_gas_grudge min = 0 max = 100 }
+	clamp_variable = { var = UKR_cl_sec_grudge min = 0 max = 100 }
+	clamp_variable = { var = UKR_cl_met_share min = 1 max = 100 }
+	clamp_variable = { var = UKR_cl_priv_share min = 1 max = 100 }
+	clamp_variable = { var = UKR_cl_gas_share min = 1 max = 100 }
+	clamp_variable = { var = UKR_cl_sec_share min = 1 max = 100 }
+	UKR_ol_calc_shares = yes
+	UKR_ol_calc_loyalty = yes
+	UKR_ol_calc_profile = yes
+	UKR_ol_set_undertow = yes
+}
+
+# Доли власти в процентах (видны в окне «Вертикаль»)
+UKR_ol_calc_shares = {
+	set_temp_variable = { UKR_ol_sum = UKR_cl_met_share }
+	add_to_temp_variable = { UKR_ol_sum = UKR_cl_priv_share }
+	add_to_temp_variable = { UKR_ol_sum = UKR_cl_gas_share }
+	add_to_temp_variable = { UKR_ol_sum = UKR_cl_sec_share }
+	set_variable = { UKR_cl_met_pct = UKR_cl_met_share }
+	multiply_variable = { var = UKR_cl_met_pct value = 100 }
+	divide_variable = { var = UKR_cl_met_pct value = UKR_ol_sum }
+	round_variable = UKR_cl_met_pct
+	set_variable = { UKR_cl_priv_pct = UKR_cl_priv_share }
+	multiply_variable = { var = UKR_cl_priv_pct value = 100 }
+	divide_variable = { var = UKR_cl_priv_pct value = UKR_ol_sum }
+	round_variable = UKR_cl_priv_pct
+	set_variable = { UKR_cl_gas_pct = UKR_cl_gas_share }
+	multiply_variable = { var = UKR_cl_gas_pct value = 100 }
+	divide_variable = { var = UKR_cl_gas_pct value = UKR_ol_sum }
+	round_variable = UKR_cl_gas_pct
+	set_variable = { UKR_cl_sec_pct = UKR_cl_sec_share }
+	multiply_variable = { var = UKR_cl_sec_pct value = 100 }
+	divide_variable = { var = UKR_cl_sec_pct value = UKR_ol_sum }
+	round_variable = UKR_cl_sec_pct
+}
+
+# Лояльность = 100 - (средневзвешенные претензии) - 0.3 * (максимальные претензии одного клана)
+UKR_ol_calc_loyalty = {
+	set_temp_variable = { UKR_ol_avg = 0 }
+	set_temp_variable = { UKR_ol_t = UKR_cl_met_claim }
+	multiply_temp_variable = { UKR_ol_t = UKR_cl_met_pct }
+	add_to_temp_variable = { UKR_ol_avg = UKR_ol_t }
+	set_temp_variable = { UKR_ol_t = UKR_cl_priv_claim }
+	multiply_temp_variable = { UKR_ol_t = UKR_cl_priv_pct }
+	add_to_temp_variable = { UKR_ol_avg = UKR_ol_t }
+	set_temp_variable = { UKR_ol_t = UKR_cl_gas_claim }
+	multiply_temp_variable = { UKR_ol_t = UKR_cl_gas_pct }
+	add_to_temp_variable = { UKR_ol_avg = UKR_ol_t }
+	set_temp_variable = { UKR_ol_t = UKR_cl_sec_claim }
+	multiply_temp_variable = { UKR_ol_t = UKR_cl_sec_pct }
+	add_to_temp_variable = { UKR_ol_avg = UKR_ol_t }
+	divide_temp_variable = { UKR_ol_avg = 100 }
+
+	set_temp_variable = { UKR_ol_max = UKR_cl_met_claim }
+	if = {
+		limit = { check_variable = { var = UKR_cl_priv_claim value = UKR_ol_max compare = greater_than } }
+		set_temp_variable = { UKR_ol_max = UKR_cl_priv_claim }
+	}
+	if = {
+		limit = { check_variable = { var = UKR_cl_gas_claim value = UKR_ol_max compare = greater_than } }
+		set_temp_variable = { UKR_ol_max = UKR_cl_gas_claim }
+	}
+	if = {
+		limit = { check_variable = { var = UKR_cl_sec_claim value = UKR_ol_max compare = greater_than } }
+		set_temp_variable = { UKR_ol_max = UKR_cl_sec_claim }
+	}
+	multiply_temp_variable = { UKR_ol_max = 0.3 }
+
+	set_variable = { UKR_ol_loyalty = 100 }
+	multiply_temp_variable = { UKR_ol_avg = -1 }
+	multiply_temp_variable = { UKR_ol_max = -1 }
+	add_to_variable = { UKR_ol_loyalty = UKR_ol_avg }
+	add_to_variable = { UKR_ol_loyalty = UKR_ol_max }
+	clamp_variable = { var = UKR_ol_loyalty min = 0 max = 100 }
+	round_variable = UKR_ol_loyalty
+}
+
+# Разница шести шкал TFR с начала пути (для строк «Витрина и подвал» в окне)
+UKR_ol_calc_profile = {
+	if = {
+		limit = { has_variable = UKR_ol_snap_ind }
+		set_variable = { UKR_ol_d_ind = industrial_development_var }
+		set_temp_variable = { UKR_ol_neg = UKR_ol_snap_ind }
+		multiply_temp_variable = { UKR_ol_neg = -1 }
+		add_to_variable = { UKR_ol_d_ind = UKR_ol_neg }
+
+		set_variable = { UKR_ol_d_mil = military_development_var }
+		set_temp_variable = { UKR_ol_neg = UKR_ol_snap_mil }
+		multiply_temp_variable = { UKR_ol_neg = -1 }
+		add_to_variable = { UKR_ol_d_mil = UKR_ol_neg }
+
+		set_variable = { UKR_ol_d_farm = farming_development_var }
+		set_temp_variable = { UKR_ol_neg = UKR_ol_snap_farm }
+		multiply_temp_variable = { UKR_ol_neg = -1 }
+		add_to_variable = { UKR_ol_d_farm = UKR_ol_neg }
+
+		set_variable = { UKR_ol_d_soc = society_development_var }
+		set_temp_variable = { UKR_ol_neg = UKR_ol_snap_soc }
+		multiply_temp_variable = { UKR_ol_neg = -1 }
+		add_to_variable = { UKR_ol_d_soc = UKR_ol_neg }
+
+		set_variable = { UKR_ol_d_pov = poverty_development_var }
+		set_temp_variable = { UKR_ol_neg = UKR_ol_snap_pov }
+		multiply_temp_variable = { UKR_ol_neg = -1 }
+		add_to_variable = { UKR_ol_d_pov = UKR_ol_neg }
+
+		set_variable = { UKR_ol_d_acad = academic_development_var }
+		set_temp_variable = { UKR_ol_neg = UKR_ol_snap_acad }
+		multiply_temp_variable = { UKR_ol_neg = -1 }
+		add_to_variable = { UKR_ol_d_acad = UKR_ol_neg }
+	}
+}
+
+# Подводное течение (раздел 6 предложения): чем сильнее вертикаль и обиды, тем выше скрытый рост ОП-ЗЖ (authoritarian_democrat)
+UKR_ol_set_undertow = {
+	set_variable = { UKR_ol_vertical_level = 0 }
+	if = {
+		limit = { has_power_balance = { id = UKR_vertical_clans_balance } }
+		if = {
+			limit = { power_balance_value = { id = UKR_vertical_clans_balance value > 0.1 } }
+			set_variable = { UKR_ol_vertical_level = 1 }
+		}
+		if = {
+			limit = { power_balance_value = { id = UKR_vertical_clans_balance value > 0.5 } }
+			set_variable = { UKR_ol_vertical_level = 2 }
+		}
+		if = {
+			limit = { power_balance_value = { id = UKR_vertical_clans_balance value > 0.8 } }
+			set_variable = { UKR_ol_vertical_level = 3 }
+		}
+	}
+	set_variable = { UKR_ol_grudge_total = UKR_cl_met_grudge }
+	add_to_variable = { UKR_ol_grudge_total = UKR_cl_priv_grudge }
+	add_to_variable = { UKR_ol_grudge_total = UKR_cl_gas_grudge }
+	add_to_variable = { UKR_ol_grudge_total = UKR_cl_sec_grudge }
+	if = {
+		limit = { check_variable = { var = UKR_ol_grudge_total value = 60 compare = greater_than_or_equals } }
+		add_to_variable = { UKR_ol_vertical_level = 1 }
+	}
+	clamp_variable = { var = UKR_ol_vertical_level min = 0 max = 3 }
+	if = {
+		limit = { has_idea = UKR_undertow_1 }
+		remove_ideas = UKR_undertow_1
+	}
+	if = {
+		limit = { has_idea = UKR_undertow_2 }
+		remove_ideas = UKR_undertow_2
+	}
+	if = {
+		limit = { has_idea = UKR_undertow_3 }
+		remove_ideas = UKR_undertow_3
+	}
+	if = {
+		limit = { check_variable = { var = UKR_ol_vertical_level value = 3 compare = greater_than_or_equals } }
+		add_ideas = UKR_undertow_3
+	}
+	else_if = {
+		limit = { check_variable = { var = UKR_ol_vertical_level value = 2 compare = greater_than_or_equals } }
+		add_ideas = UKR_undertow_2
+	}
+	else_if = {
+		limit = { check_variable = { var = UKR_ol_vertical_level value = 1 compare = greater_than_or_equals } }
+		add_ideas = UKR_undertow_1
+	}
+}
+
+# «Бумажное развитие»: около 40% награды Витрины записывается как бумага. Перед вызовом: set_temp_variable = { UKR_ol_gain = 0.02 }
+UKR_ol_book_paper = {
+	set_temp_variable = { UKR_ol_paper_tmp = UKR_ol_gain }
+	multiply_temp_variable = { UKR_ol_paper_tmp = 0.4 }
+	add_to_variable = { UKR_ol_paper = UKR_ol_paper_tmp }
+}
+
+# Лицо пути: глава Офиса. Исход дела Ермака (ukraine_politics.319) приходит осенью 2024, после запуска дерева,
+# поэтому эффект вызывается и на старте пути (временное лицо), и в вариантах 319 (окончательное).
+UKR_ol_apply_office = {
+	if = {
+		limit = { has_country_flag = UKR_ol_vertical_done }
+		if = {
+			limit = { has_idea = UKR_office_yermak }
+			remove_ideas = UKR_office_yermak
+		}
+		if = {
+			limit = { has_idea = UKR_office_yermak_shadow }
+			remove_ideas = UKR_office_yermak_shadow
+		}
+		if = {
+			limit = { has_idea = UKR_office_stefanchuk }
+			remove_ideas = UKR_office_stefanchuk
+		}
+		if = {
+			limit = { has_country_flag = UKR_yermak_convicted }
+			add_ideas = UKR_office_stefanchuk
+		}
+		else_if = {
+			limit = { has_country_flag = UKR_yermak_deal }
+			add_ideas = UKR_office_yermak_shadow
+		}
+		else_if = {
+			limit = { has_country_flag = UKR_yermak_case_faded }
+			add_ideas = UKR_office_yermak
+		}
+		else_if = {
+			limit = { has_country_flag = UKR_yermak_resigned }
+			add_ideas = UKR_office_stefanchuk
+		}
+		else = {
+			add_ideas = UKR_office_yermak
+		}
+	}
+}
+
+# Претензии и доли клана: перед вызовом set_temp_variable = { UKR_ol_amt = -25 } (и UKR_ol_sh = 3 для доли)
+UKR_ol_claim_met = {
+	add_to_variable = { UKR_cl_met_claim = UKR_ol_amt }
+	UKR_ol_update = yes
+}
+UKR_ol_claim_priv = {
+	add_to_variable = { UKR_cl_priv_claim = UKR_ol_amt }
+	UKR_ol_update = yes
+}
+UKR_ol_claim_gas = {
+	add_to_variable = { UKR_cl_gas_claim = UKR_ol_amt }
+	UKR_ol_update = yes
+}
+UKR_ol_claim_sec = {
+	add_to_variable = { UKR_cl_sec_claim = UKR_ol_amt }
+	UKR_ol_update = yes
+}
+UKR_ol_share_met = {
+	add_to_variable = { UKR_cl_met_share = UKR_ol_sh }
+	UKR_ol_update = yes
+}
+UKR_ol_share_priv = {
+	add_to_variable = { UKR_cl_priv_share = UKR_ol_sh }
+	UKR_ol_update = yes
+}
+UKR_ol_share_gas = {
+	add_to_variable = { UKR_cl_gas_share = UKR_ol_sh }
+	UKR_ol_update = yes
+}
+UKR_ol_share_sec = {
+	add_to_variable = { UKR_cl_sec_share = UKR_ol_sh }
+	UKR_ol_update = yes
+}

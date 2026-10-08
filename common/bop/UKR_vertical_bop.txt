@@ -1,0 +1,102 @@
+# Шкала «Вертикаль ↔ Кланы» (PROPOSAL_oligarchs.md, раздел 4.1; DESIGN.md, 8.3). Путь олигархов, блок 3.
+# Стандартный баланс сил HOI4, как «дуализм ЛДПР» в TFR (SOV_LDPR_balance) и наши «Рада ↔ Банковая» (UKR_bop.txt)
+# и «Нация: гражданская или этническая» (UKR_np_bop.txt).
+# Минус - клан-сторона (президент зависит от кланов), плюс - вертикаль (президент подчиняет кланы). Центр - «Арбитр».
+# Включается фокусом UKR_ol_vertical (set_power_balance), двигается решениями окна «Вертикаль», фокусами и событиями.
+# Края шкалы (события «Плен» 690 и «Восстание элит» 691, черты hos_cowed_by_oligarchs и hos_aspiring_autocrat)
+# добавляются в шаге 3: on_activate пока не заданы.
+UKR_vertical_clans_balance = {
+	initial_value = 0
+	left_side = UKR_bop_clans
+	right_side = UKR_bop_vertical
+	decision_category = UKR_vertical_power
+
+	# Центр: президент-арбитр. Самый устойчивый и самый скучный режим
+	range = {
+		id = UKR_bop_vc_arbiter
+		min = -0.1
+		max = 0.1
+		modifier = {
+			stability_factor = 0.02
+			political_power_factor = 0.03
+		}
+	}
+
+	side = {
+		id = UKR_bop_clans
+		icon = GFX_bop_UKR_clans
+
+		range = {
+			id = UKR_bop_vc_clans_lead
+			min = -0.5
+			max = -0.1
+			modifier = {
+				income_growth_factor = 0.02
+				production_speed_buildings_factor = 0.05
+				political_power_gain = -0.03
+			}
+		}
+		range = {
+			id = UKR_bop_vc_clans_dominate
+			min = -0.8
+			max = -0.5
+			modifier = {
+				industrial_capacity_factory = 0.05
+				income_growth_factor = 0.03
+				political_power_factor = -0.10
+				stability_factor = -0.03
+			}
+		}
+		range = {
+			id = UKR_bop_vc_clans_edge
+			min = -1
+			max = -0.8
+			modifier = {
+				industrial_capacity_factory = 0.05
+				income_growth_factor = 0.03
+				political_power_factor = -0.10
+				stability_factor = -0.03
+				war_support_factor = -0.03
+			}
+		}
+	}
+
+	side = {
+		id = UKR_bop_vertical
+		icon = GFX_bop_UKR_vertical
+
+		range = {
+			id = UKR_bop_vc_vertical_lead
+			min = 0.1
+			max = 0.5
+			modifier = {
+				political_power_gain = 0.05
+				stability_factor = 0.02
+				trade_opinion_factor = -0.03
+			}
+		}
+		range = {
+			id = UKR_bop_vc_vertical_dominate
+			min = 0.5
+			max = 0.8
+			modifier = {
+				political_power_gain = 0.08
+				stability_factor = 0.03
+				society_development_monthly = -0.003
+				trade_opinion_factor = -0.06
+			}
+		}
+		range = {
+			id = UKR_bop_vc_vertical_edge
+			min = 0.8
+			max = 1
+			modifier = {
+				political_power_gain = 0.08
+				stability_factor = 0.03
+				society_development_monthly = -0.003
+				trade_opinion_factor = -0.06
+				party_popularity_stability_factor = -0.03
+			}
+		}
+	}
+}

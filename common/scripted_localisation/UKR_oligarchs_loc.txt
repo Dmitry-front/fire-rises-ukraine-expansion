@@ -1,0 +1,222 @@
+# Путь олигархов, окно «Вертикаль»: словесные оценки к цифрам (PROPOSAL_oligarchs.md, 13.7).
+# Тренд шкалы TFR с начала пути: по разнице UKR_ol_d_* (считает UKR_ol_calc_profile). Пороги: +0.10, +0.03, -0.03, -0.10.
+# Использование в локализации: [UKR_OL_TREND_IND] и т.д., [UKR_OL_LOYALTY_WORD]. Ключи слов - UKR_ol_trend_*, UKR_ol_loyalty_*.
+
+defined_text = {
+	name = UKR_OL_TREND_IND
+	text = {
+		trigger = {
+			check_variable = { var = UKR_ol_d_ind value = 0.1 compare = greater_than_or_equals }
+		}
+		localization_key = UKR_ol_trend_up2
+	}
+	text = {
+		trigger = {
+			check_variable = { var = UKR_ol_d_ind value = 0.03 compare = greater_than_or_equals }
+		}
+		localization_key = UKR_ol_trend_up1
+	}
+	text = {
+		trigger = {
+			check_variable = { var = UKR_ol_d_ind value = -0.03 compare = greater_than }
+		}
+		localization_key = UKR_ol_trend_flat
+	}
+	text = {
+		trigger = {
+			check_variable = { var = UKR_ol_d_ind value = -0.1 compare = greater_than }
+		}
+		localization_key = UKR_ol_trend_down1
+	}
+	text = {
+		trigger = { always = yes }
+		localization_key = UKR_ol_trend_down2
+	}
+}
+
+defined_text = {
+	name = UKR_OL_TREND_MIL
+	text = {
+		trigger = {
+			check_variable = { var = UKR_ol_d_mil value = 0.1 compare = greater_than_or_equals }
+		}
+		localization_key = UKR_ol_trend_up2
+	}
+	text = {
+		trigger = {
+			check_variable = { var = UKR_ol_d_mil value = 0.03 compare = greater_than_or_equals }
+		}
+		localization_key = UKR_ol_trend_up1
+	}
+	text = {
+		trigger = {
+			check_variable = { var = UKR_ol_d_mil value = -0.03 compare = greater_than }
+		}
+		localization_key = UKR_ol_trend_flat
+	}
+	text = {
+		trigger = {
+			check_variable = { var = UKR_ol_d_mil value = -0.1 compare = greater_than }
+		}
+		localization_key = UKR_ol_trend_down1
+	}
+	text = {
+		trigger = { always = yes }
+		localization_key = UKR_ol_trend_down2
+	}
+}
+
+defined_text = {
+	name = UKR_OL_TREND_FARM
+	text = {
+		trigger = {
+			check_variable = { var = UKR_ol_d_farm value = 0.1 compare = greater_than_or_equals }
+		}
+		localization_key = UKR_ol_trend_up2
+	}
+	text = {
+		trigger = {
+			check_variable = { var = UKR_ol_d_farm value = 0.03 compare = greater_than_or_equals }
+		}
+		localization_key = UKR_ol_trend_up1
+	}
+	text = {
+		trigger = {
+			check_variable = { var = UKR_ol_d_farm value = -0.03 compare = greater_than }
+		}
+		localization_key = UKR_ol_trend_flat
+	}
+	text = {
+		trigger = {
+			check_variable = { var = UKR_ol_d_farm value = -0.1 compare = greater_than }
+		}
+		localization_key = UKR_ol_trend_down1
+	}
+	text = {
+		trigger = { always = yes }
+		localization_key = UKR_ol_trend_down2
+	}
+}
+
+defined_text = {
+	name = UKR_OL_TREND_SOC
+	text = {
+		trigger = {
+			check_variable = { var = UKR_ol_d_soc value = 0.1 compare = greater_than_or_equals }
+		}
+		localization_key = UKR_ol_trend_up2
+	}
+	text = {
+		trigger = {
+			check_variable = { var = UKR_ol_d_soc value = 0.03 compare = greater_than_or_equals }
+		}
+		localization_key = UKR_ol_trend_up1
+	}
+	text = {
+		trigger = {
+			check_variable = { var = UKR_ol_d_soc value = -0.03 compare = greater_than }
+		}
+		localization_key = UKR_ol_trend_flat
+	}
+	text = {
+		trigger = {
+			check_variable = { var = UKR_ol_d_soc value = -0.1 compare = greater_than }
+		}
+		localization_key = UKR_ol_trend_down1
+	}
+	text = {
+		trigger = { always = yes }
+		localization_key = UKR_ol_trend_down2
+	}
+}
+
+defined_text = {
+	name = UKR_OL_TREND_POV
+	text = {
+		trigger = {
+			check_variable = { var = UKR_ol_d_pov value = 0.1 compare = greater_than_or_equals }
+		}
+		localization_key = UKR_ol_trend_up2
+	}
+	text = {
+		trigger = {
+			check_variable = { var = UKR_ol_d_pov value = 0.03 compare = greater_than_or_equals }
+		}
+		localization_key = UKR_ol_trend_up1
+	}
+	text = {
+		trigger = {
+			check_variable = { var = UKR_ol_d_pov value = -0.03 compare = greater_than }
+		}
+		localization_key = UKR_ol_trend_flat
+	}
+	text = {
+		trigger = {
+			check_variable = { var = UKR_ol_d_pov value = -0.1 compare = greater_than }
+		}
+		localization_key = UKR_ol_trend_down1
+	}
+	text = {
+		trigger = { always = yes }
+		localization_key = UKR_ol_trend_down2
+	}
+}
+
+defined_text = {
+	name = UKR_OL_TREND_ACAD
+	text = {
+		trigger = {
+			check_variable = { var = UKR_ol_d_acad value = 0.1 compare = greater_than_or_equals }
+		}
+		localization_key = UKR_ol_trend_up2
+	}
+	text = {
+		trigger = {
+			check_variable = { var = UKR_ol_d_acad value = 0.03 compare = greater_than_or_equals }
+		}
+		localization_key = UKR_ol_trend_up1
+	}
+	text = {
+		trigger = {
+			check_variable = { var = UKR_ol_d_acad value = -0.03 compare = greater_than }
+		}
+		localization_key = UKR_ol_trend_flat
+	}
+	text = {
+		trigger = {
+			check_variable = { var = UKR_ol_d_acad value = -0.1 compare = greater_than }
+		}
+		localization_key = UKR_ol_trend_down1
+	}
+	text = {
+		trigger = { always = yes }
+		localization_key = UKR_ol_trend_down2
+	}
+}
+
+# Настроение кланов по лояльности (UKR_ol_loyalty)
+defined_text = {
+	name = UKR_OL_LOYALTY_WORD
+	text = {
+		trigger = {
+			check_variable = { var = UKR_ol_loyalty value = 60 compare = greater_than_or_equals }
+		}
+		localization_key = UKR_ol_loyalty_calm
+	}
+	text = {
+		trigger = {
+			check_variable = { var = UKR_ol_loyalty value = 40 compare = greater_than_or_equals }
+		}
+		localization_key = UKR_ol_loyalty_grumble
+	}
+	text = {
+		trigger = {
+			check_variable = { var = UKR_ol_loyalty value = 20 compare = greater_than_or_equals }
+		}
+		localization_key = UKR_ol_loyalty_bills
+	}
+	text = {
+		trigger = { always = yes }
+		localization_key = UKR_ol_loyalty_break
+	}
+}

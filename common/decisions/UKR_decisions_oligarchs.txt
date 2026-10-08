@@ -1,0 +1,146 @@
+# Блок 3, олигархи: окно «Вертикаль» (DESIGN.md, 8.3; PROPOSAL_oligarchs.md, раздел 5)
+# Шаг 1: четыре решения урегулирования (расчёт с кланом: претензии вниз, шкала немного к кланам). Они проверяют петлю
+# «претензии - лояльность». Услуги, давление, подачки, конституционный пакет и счета кланов (миссии) добавляются в шаге 2.
+# Шкала «Вертикаль ↔ Кланы»: UKR_vertical_clans_balance (минус - кланы, плюс - вертикаль).
+UKR_vertical_power = {
+
+	# Компенсация клану «Металл и энергетика» (Ахметов: СКМ, «Метинвест», ДТЭК)
+	UKR_vp_pay_off_met = {
+		icon = GFX_decision_generic_industry
+		available = {
+			has_country_flag = UKR_ol_vertical_done
+			check_variable = { var = UKR_cl_met_claim value = 15 compare = greater_than_or_equals }
+		}
+		days_re_enable = 45
+		cost = 25
+		days_remove = 10
+		ai_will_do = {
+			factor = 5
+			modifier = {
+				factor = 4
+				check_variable = { var = UKR_cl_met_claim value = 60 compare = greater_than_or_equals }
+			}
+		}
+		remove_effect = {
+			custom_effect_tooltip = UKR_vp_pay_off_tt
+			set_temp_variable = {
+				var = income_var_temp
+				value = -0.3
+			}
+			add_income = yes
+			add_power_balance_value = {
+				id = UKR_vertical_clans_balance
+				value = -0.03
+			}
+			hidden_effect = {
+				set_temp_variable = { UKR_ol_amt = -30 }
+				UKR_ol_claim_met = yes
+			}
+		}
+	}
+
+	# Компенсация клану «Приват» (Коломойский: «Приват», «1+1 Медиа», «Укрнафта»)
+	UKR_vp_pay_off_priv = {
+		icon = GFX_decision_generic_propaganda
+		available = {
+			has_country_flag = UKR_ol_vertical_done
+			check_variable = { var = UKR_cl_priv_claim value = 15 compare = greater_than_or_equals }
+		}
+		days_re_enable = 45
+		cost = 25
+		days_remove = 10
+		ai_will_do = {
+			factor = 5
+			modifier = {
+				factor = 4
+				check_variable = { var = UKR_cl_priv_claim value = 60 compare = greater_than_or_equals }
+			}
+		}
+		remove_effect = {
+			custom_effect_tooltip = UKR_vp_pay_off_tt
+			set_temp_variable = {
+				var = income_var_temp
+				value = -0.3
+			}
+			add_income = yes
+			add_power_balance_value = {
+				id = UKR_vertical_clans_balance
+				value = -0.03
+			}
+			hidden_effect = {
+				set_temp_variable = { UKR_ol_amt = -30 }
+				UKR_ol_claim_priv = yes
+			}
+		}
+	}
+
+	# Компенсация клану «Газ и химия» (Фирташ: Group DF, «Остчем», облгазы)
+	UKR_vp_pay_off_gas = {
+		icon = GFX_decision_generic_consumer_goods
+		available = {
+			has_country_flag = UKR_ol_vertical_done
+			check_variable = { var = UKR_cl_gas_claim value = 15 compare = greater_than_or_equals }
+		}
+		days_re_enable = 45
+		cost = 25
+		days_remove = 10
+		ai_will_do = {
+			factor = 5
+			modifier = {
+				factor = 4
+				check_variable = { var = UKR_cl_gas_claim value = 60 compare = greater_than_or_equals }
+			}
+		}
+		remove_effect = {
+			custom_effect_tooltip = UKR_vp_pay_off_tt
+			set_temp_variable = {
+				var = income_var_temp
+				value = -0.3
+			}
+			add_income = yes
+			add_power_balance_value = {
+				id = UKR_vertical_clans_balance
+				value = -0.03
+			}
+			hidden_effect = {
+				set_temp_variable = { UKR_ol_amt = -30 }
+				UKR_ol_claim_gas = yes
+			}
+		}
+	}
+
+	# Компенсация клану «Силовой круг» (СБУ, Нацгвардия, МВД, прокуратура)
+	UKR_vp_pay_off_sec = {
+		icon = GFX_decision_generic_protection
+		available = {
+			has_country_flag = UKR_ol_vertical_done
+			check_variable = { var = UKR_cl_sec_claim value = 15 compare = greater_than_or_equals }
+		}
+		days_re_enable = 45
+		cost = 25
+		days_remove = 10
+		ai_will_do = {
+			factor = 5
+			modifier = {
+				factor = 4
+				check_variable = { var = UKR_cl_sec_claim value = 60 compare = greater_than_or_equals }
+			}
+		}
+		remove_effect = {
+			custom_effect_tooltip = UKR_vp_pay_off_tt
+			set_temp_variable = {
+				var = income_var_temp
+				value = -0.3
+			}
+			add_income = yes
+			add_power_balance_value = {
+				id = UKR_vertical_clans_balance
+				value = -0.03
+			}
+			hidden_effect = {
+				set_temp_variable = { UKR_ol_amt = -30 }
+				UKR_ol_claim_sec = yes
+			}
+		}
+	}
+}

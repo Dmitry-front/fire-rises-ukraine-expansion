@@ -15,37 +15,93 @@ scripted_gui = {
 		}
 
 		triggers = {
-			# Ненависть: стадии 0 (0-24), 1 (25-49), 2 (50-74), 3 (75-99), 4 (100)
+			# Показывается только текущая стадия (цветная иконка _marker_N), остальные - серые (_off_N).
+			# Ненависть: стадии 0 (0-24), 1 (25-49), 2 (50-74), 3 (75-99), 4 (100). Усталость - те же пороги.
+			# Ненависть
 			UKR_hate_marker_0_visible = {
-				always = yes
+				check_variable = { var = UKRhate value = 25 compare = less_than }
+			}
+			UKR_hate_off_0_visible = {
+				check_variable = { var = UKRhate value = 25 compare = greater_than_or_equals }
 			}
 			UKR_hate_marker_1_visible = {
 				check_variable = { var = UKRhate value = 25 compare = greater_than_or_equals }
+				check_variable = { var = UKRhate value = 50 compare = less_than }
+			}
+			UKR_hate_off_1_visible = {
+				OR = {
+					check_variable = { var = UKRhate value = 25 compare = less_than }
+					check_variable = { var = UKRhate value = 50 compare = greater_than_or_equals }
+				}
 			}
 			UKR_hate_marker_2_visible = {
 				check_variable = { var = UKRhate value = 50 compare = greater_than_or_equals }
+				check_variable = { var = UKRhate value = 75 compare = less_than }
+			}
+			UKR_hate_off_2_visible = {
+				OR = {
+					check_variable = { var = UKRhate value = 50 compare = less_than }
+					check_variable = { var = UKRhate value = 75 compare = greater_than_or_equals }
+				}
 			}
 			UKR_hate_marker_3_visible = {
 				check_variable = { var = UKRhate value = 75 compare = greater_than_or_equals }
+				check_variable = { var = UKRhate value = 100 compare = less_than }
+			}
+			UKR_hate_off_3_visible = {
+				OR = {
+					check_variable = { var = UKRhate value = 75 compare = less_than }
+					check_variable = { var = UKRhate value = 100 compare = greater_than_or_equals }
+				}
 			}
 			UKR_hate_marker_4_visible = {
 				check_variable = { var = UKRhate value = 100 compare = greater_than_or_equals }
 			}
-			# Усталость: те же стадии
+			UKR_hate_off_4_visible = {
+				check_variable = { var = UKRhate value = 100 compare = less_than }
+			}
+			# Усталость
 			UKR_fatigue_marker_0_visible = {
-				always = yes
+				check_variable = { var = UKRwarfatigue value = 25 compare = less_than }
+			}
+			UKR_fatigue_off_0_visible = {
+				check_variable = { var = UKRwarfatigue value = 25 compare = greater_than_or_equals }
 			}
 			UKR_fatigue_marker_1_visible = {
 				check_variable = { var = UKRwarfatigue value = 25 compare = greater_than_or_equals }
+				check_variable = { var = UKRwarfatigue value = 50 compare = less_than }
+			}
+			UKR_fatigue_off_1_visible = {
+				OR = {
+					check_variable = { var = UKRwarfatigue value = 25 compare = less_than }
+					check_variable = { var = UKRwarfatigue value = 50 compare = greater_than_or_equals }
+				}
 			}
 			UKR_fatigue_marker_2_visible = {
 				check_variable = { var = UKRwarfatigue value = 50 compare = greater_than_or_equals }
+				check_variable = { var = UKRwarfatigue value = 75 compare = less_than }
+			}
+			UKR_fatigue_off_2_visible = {
+				OR = {
+					check_variable = { var = UKRwarfatigue value = 50 compare = less_than }
+					check_variable = { var = UKRwarfatigue value = 75 compare = greater_than_or_equals }
+				}
 			}
 			UKR_fatigue_marker_3_visible = {
 				check_variable = { var = UKRwarfatigue value = 75 compare = greater_than_or_equals }
+				check_variable = { var = UKRwarfatigue value = 100 compare = less_than }
+			}
+			UKR_fatigue_off_3_visible = {
+				OR = {
+					check_variable = { var = UKRwarfatigue value = 75 compare = less_than }
+					check_variable = { var = UKRwarfatigue value = 100 compare = greater_than_or_equals }
+				}
 			}
 			UKR_fatigue_marker_4_visible = {
 				check_variable = { var = UKRwarfatigue value = 100 compare = greater_than_or_equals }
+			}
+			UKR_fatigue_off_4_visible = {
+				check_variable = { var = UKRwarfatigue value = 100 compare = less_than }
 			}
 		}
 	}

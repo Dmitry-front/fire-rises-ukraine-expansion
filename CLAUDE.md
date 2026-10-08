@@ -77,7 +77,7 @@
 | | 100–199 | потеря и освобождение городов |
 | | 200–299 | послевоенный период |
 | | 300–799 | мобилизация, удары по инфраструктуре, преступления, оккупация и подполье |
-| `ukr_ui` | 1–99 | служебные (обновление GUI) |
+| `ukr_ui` | 1–99 | служебные (зарезервировано; событий нет, старые `ukr_ui.1-2` удалены 08.10.2026 как мёртвый код) |
 | `ukraine_politics` (новый) | 100–199 | выборы в Раду, 29.10.2023 |
 | | 200–299 | блок 2: кампания, слухи, развилка антикоррупционных органов |
 | | 300–399 | скандал, крах союза, развязка |
@@ -112,7 +112,7 @@
 - Динамические модификаторы (`add_dynamic_modifier`) и `set_temp_variable` для расчётов в тултипах. После изменения переменной динамического модификатора — `force_update_dynamic_modifier = yes`.
 
 ### Механики сабмода
-- **Военный настрой:** переменные `UKRhate` и `UKRwarfatigue` (0–100), флаг `UKR_war_mood_active`. Меняем только переменные — духи `UKR_war_spirit_*` синхронизируются сами раз в день (`on_daily` → `UKR_update_hate_spirit` / `UKR_update_fatigue_spirit`, уровни в `UKRhate_level` / `UKRwarfatigue_level`). Код лежит в `common/scripted_effects/UKR_war_*`, `common/scripted_guis/UKR_war_mood_gui.txt`, `common/dynamic_modifiers/`, `common/on_actions/TFR_on_actions_UKR.txt`, `events/TFR_events_UKR_war.txt`, `events/UKR_war_mood_ui_update.txt`. Идеи — `UKR_war_spirit_hate_*` и `UKR_war_spirit_fatigue_*`.
+- **Военный настрой:** переменные `UKRhate` и `UKRwarfatigue` (0–100), флаг `UKR_war_mood_active`. Меняем только переменные — духи `UKR_war_spirit_*` синхронизируются сами раз в день (`on_daily` → `UKR_update_hate_spirit` / `UKR_update_fatigue_spirit`, уровни в `UKRhate_level` / `UKRwarfatigue_level`). Код лежит в `common/scripted_effects/UKR_war_*`, `common/scripted_guis/UKR_war_mood_gui.txt`, `common/dynamic_modifiers/`, `common/on_actions/TFR_on_actions_UKR.txt`, `events/TFR_events_UKR_war.txt`. Окно настроя: `interface/UKR_war_mood_interface.gui` + `UKR_war_mood_decisions.gfx`, у каждой ступени цветная иконка (текущая) и серая `_off` (остальные). Идеи — `UKR_war_spirit_hate_*` и `UKR_war_spirit_fatigue_*`.
 - **Мобилизация:** решения `UKR_*_mobilization_wave` и `UKR_establish_border_defense_system`.
 - **Склонности (`UKR_*_lean`):** меняем только переменные, видимой цифры нет. Вес опор в блоке 2 и штраф за разворот считаются по ним (формула — в `DESIGN.md`, раздел 6.3).
 - **Оккупация и подполье (блок 4):** счётчики «Сеть» и «Подозрение» видимые, «Народная поддержка» скрытая. Игрок сохраняет тег UKR. У олигархов подполья нет.

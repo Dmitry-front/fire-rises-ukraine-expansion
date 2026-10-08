@@ -5,7 +5,9 @@ add_namespace = ukraine_politics
 # 601-605: торг о кабинете (премьер, экономика, МВД, оборона, разведка). Назначение министра от клана погашает его претензии,
 # назначение «человека президента» сдвигает шкалу UKR_vertical_clans_balance к вертикали. Отказ не требует политсилы.
 # Реальные люди: активы и должности пишем как факты; выдуманных цитат и сумм нет.
-# События 610+ (счета кланов, «Строптивый», конституционный пакет, «Итоги года» и др.) добавляются в шагах 2-3.
+# Шаг 2: 616-619 («Строптивый»: клан огрызнулся, событие ставит флаг UKR_ol_target_<id> и открывает решения давления),
+# 621-625 (конституционный пакет: комиссия, голосование в Раде, заключение суда, референдум, крах референдума).
+# События 610-615, 630+ (счета кланов, итоги года и др.) добавляются в шаге 3.
 
 # Обед в Офисе: старт пути
 country_event = {
@@ -425,5 +427,587 @@ country_event = {
 			set_country_flag = UKR_ol_cabinet_formed
 		}
 		ai_chance = { factor = 35 }
+	}
+}
+
+# =====================================================================
+# Строптивый (616-619): клан огрызнулся. Не чаще раза в 45 дней, только после торга о кабинете
+# =====================================================================
+
+# Строптивый: Металл и энергетика
+country_event = {
+	id = ukraine_politics.616
+	title = ukraine_politics.616.t
+	desc = ukraine_politics.616.d
+	picture = GFX_report_event_ukrainian_civil_war
+
+	trigger = {
+		tag = UKR
+		has_country_flag = UKR_ol_vertical_done
+		has_country_flag = UKR_ol_cabinet_formed
+		NOT = { has_country_flag = UKR_ol_target_cd }
+		NOT = { has_country_flag = UKR_ol_target_met }
+		OR = {
+			check_variable = { var = UKR_cl_met_claim value = 45 compare = greater_than_or_equals }
+			check_variable = { var = UKR_cl_met_grudge value = 25 compare = greater_than_or_equals }
+		}
+	}
+
+	mean_time_to_happen = {
+		days = 45
+	}
+
+	immediate = {
+		set_country_flag = {
+			flag = UKR_ol_target_cd
+			days = 45
+		}
+	}
+
+	# Открыть дело: клан становится целью давления
+	option = {
+		name = ukraine_politics.616.a
+		add_political_power = 10
+		custom_effect_tooltip = UKR_ol_target_met_tt
+		hidden_effect = {
+			set_country_flag = UKR_ol_target_met
+			add_to_variable = { UKR_authoritarian_lean = 1 }
+			UKR_clamp_leans = yes
+		}
+		ai_chance = { factor = 35 }
+	}
+
+	# Уступить
+	option = {
+		name = ukraine_politics.616.b
+		trigger = { has_political_power > 14 }
+		add_political_power = -15
+		custom_effect_tooltip = UKR_ol_bop_clans_tt
+		add_power_balance_value = {
+			id = UKR_vertical_clans_balance
+			value = -0.03
+		}
+		hidden_effect = {
+			set_temp_variable = { UKR_ol_amt = -20 }
+			UKR_ol_claim_met = yes
+		}
+		ai_chance = { factor = 40 }
+	}
+
+	# Сделать вид, что не заметил
+	option = {
+		name = ukraine_politics.616.c
+		hidden_effect = {
+			set_temp_variable = { UKR_ol_amt = 5 }
+			UKR_ol_claim_met = yes
+		}
+		ai_chance = { factor = 25 }
+	}
+}
+
+# Строптивый: Приват
+country_event = {
+	id = ukraine_politics.617
+	title = ukraine_politics.617.t
+	desc = ukraine_politics.617.d
+	picture = GFX_report_event_ukrainian_civil_war
+
+	trigger = {
+		tag = UKR
+		has_country_flag = UKR_ol_vertical_done
+		has_country_flag = UKR_ol_cabinet_formed
+		NOT = { has_country_flag = UKR_ol_target_cd }
+		NOT = { has_country_flag = UKR_ol_target_priv }
+		OR = {
+			check_variable = { var = UKR_cl_priv_claim value = 45 compare = greater_than_or_equals }
+			check_variable = { var = UKR_cl_priv_grudge value = 25 compare = greater_than_or_equals }
+		}
+	}
+
+	mean_time_to_happen = {
+		days = 45
+	}
+
+	immediate = {
+		set_country_flag = {
+			flag = UKR_ol_target_cd
+			days = 45
+		}
+	}
+
+	# Открыть дело: клан становится целью давления
+	option = {
+		name = ukraine_politics.617.a
+		add_political_power = 10
+		custom_effect_tooltip = UKR_ol_target_priv_tt
+		hidden_effect = {
+			set_country_flag = UKR_ol_target_priv
+			add_to_variable = { UKR_authoritarian_lean = 1 }
+			UKR_clamp_leans = yes
+		}
+		ai_chance = { factor = 35 }
+	}
+
+	# Уступить
+	option = {
+		name = ukraine_politics.617.b
+		trigger = { has_political_power > 14 }
+		add_political_power = -15
+		custom_effect_tooltip = UKR_ol_bop_clans_tt
+		add_power_balance_value = {
+			id = UKR_vertical_clans_balance
+			value = -0.03
+		}
+		hidden_effect = {
+			set_temp_variable = { UKR_ol_amt = -20 }
+			UKR_ol_claim_priv = yes
+		}
+		ai_chance = { factor = 40 }
+	}
+
+	# Сделать вид, что не заметил
+	option = {
+		name = ukraine_politics.617.c
+		hidden_effect = {
+			set_temp_variable = { UKR_ol_amt = 5 }
+			UKR_ol_claim_priv = yes
+		}
+		ai_chance = { factor = 25 }
+	}
+}
+
+# Строптивый: Газ и химия
+country_event = {
+	id = ukraine_politics.618
+	title = ukraine_politics.618.t
+	desc = ukraine_politics.618.d
+	picture = GFX_report_event_ukrainian_civil_war
+
+	trigger = {
+		tag = UKR
+		has_country_flag = UKR_ol_vertical_done
+		has_country_flag = UKR_ol_cabinet_formed
+		NOT = { has_country_flag = UKR_ol_target_cd }
+		NOT = { has_country_flag = UKR_ol_target_gas }
+		OR = {
+			check_variable = { var = UKR_cl_gas_claim value = 45 compare = greater_than_or_equals }
+			check_variable = { var = UKR_cl_gas_grudge value = 25 compare = greater_than_or_equals }
+		}
+	}
+
+	mean_time_to_happen = {
+		days = 45
+	}
+
+	immediate = {
+		set_country_flag = {
+			flag = UKR_ol_target_cd
+			days = 45
+		}
+	}
+
+	# Открыть дело: клан становится целью давления
+	option = {
+		name = ukraine_politics.618.a
+		add_political_power = 10
+		custom_effect_tooltip = UKR_ol_target_gas_tt
+		hidden_effect = {
+			set_country_flag = UKR_ol_target_gas
+			add_to_variable = { UKR_authoritarian_lean = 1 }
+			UKR_clamp_leans = yes
+		}
+		ai_chance = { factor = 35 }
+	}
+
+	# Уступить
+	option = {
+		name = ukraine_politics.618.b
+		trigger = { has_political_power > 14 }
+		add_political_power = -15
+		custom_effect_tooltip = UKR_ol_bop_clans_tt
+		add_power_balance_value = {
+			id = UKR_vertical_clans_balance
+			value = -0.03
+		}
+		hidden_effect = {
+			set_temp_variable = { UKR_ol_amt = -20 }
+			UKR_ol_claim_gas = yes
+		}
+		ai_chance = { factor = 40 }
+	}
+
+	# Сделать вид, что не заметил
+	option = {
+		name = ukraine_politics.618.c
+		hidden_effect = {
+			set_temp_variable = { UKR_ol_amt = 5 }
+			UKR_ol_claim_gas = yes
+		}
+		ai_chance = { factor = 25 }
+	}
+}
+
+# Строптивый: Силовой круг
+country_event = {
+	id = ukraine_politics.619
+	title = ukraine_politics.619.t
+	desc = ukraine_politics.619.d
+	picture = GFX_report_event_ukrainian_civil_war
+
+	trigger = {
+		tag = UKR
+		has_country_flag = UKR_ol_vertical_done
+		has_country_flag = UKR_ol_cabinet_formed
+		NOT = { has_country_flag = UKR_ol_target_cd }
+		NOT = { has_country_flag = UKR_ol_target_sec }
+		OR = {
+			check_variable = { var = UKR_cl_sec_claim value = 45 compare = greater_than_or_equals }
+			check_variable = { var = UKR_cl_sec_grudge value = 25 compare = greater_than_or_equals }
+		}
+	}
+
+	mean_time_to_happen = {
+		days = 45
+	}
+
+	immediate = {
+		set_country_flag = {
+			flag = UKR_ol_target_cd
+			days = 45
+		}
+	}
+
+	# Открыть дело: клан становится целью давления
+	option = {
+		name = ukraine_politics.619.a
+		add_political_power = 10
+		custom_effect_tooltip = UKR_ol_target_sec_tt
+		hidden_effect = {
+			set_country_flag = UKR_ol_target_sec
+			add_to_variable = { UKR_authoritarian_lean = 1 }
+			UKR_clamp_leans = yes
+		}
+		ai_chance = { factor = 35 }
+	}
+
+	# Уступить
+	option = {
+		name = ukraine_politics.619.b
+		trigger = { has_political_power > 14 }
+		add_political_power = -15
+		custom_effect_tooltip = UKR_ol_bop_clans_tt
+		add_power_balance_value = {
+			id = UKR_vertical_clans_balance
+			value = -0.03
+		}
+		hidden_effect = {
+			set_temp_variable = { UKR_ol_amt = -20 }
+			UKR_ol_claim_sec = yes
+		}
+		ai_chance = { factor = 40 }
+	}
+
+	# Сделать вид, что не заметил
+	option = {
+		name = ukraine_politics.619.c
+		hidden_effect = {
+			set_temp_variable = { UKR_ol_amt = 5 }
+			UKR_ol_claim_sec = yes
+		}
+		ai_chance = { factor = 25 }
+	}
+}
+
+# =====================================================================
+# Конституционный пакет (621-625): комиссия, голосование в Раде, заключение суда, референдум, крах референдума
+# =====================================================================
+
+# Конституционная комиссия
+country_event = {
+	id = ukraine_politics.621
+	title = ukraine_politics.621.t
+	desc = {
+		text = ukraine_politics.621.d_stefanchuk
+		trigger = {
+			has_idea = UKR_office_stefanchuk
+		}
+	}
+	desc = {
+		text = ukraine_politics.621.d_office
+		trigger = {
+			NOT = { has_idea = UKR_office_stefanchuk }
+		}
+	}
+	picture = GFX_report_event_ukrainian_civil_war
+
+	is_triggered_only = yes
+
+	trigger = {
+		tag = UKR
+	}
+
+	# Рабочая группа юристов: без шума
+	option = {
+		name = ukraine_politics.621.a
+		trigger = { has_political_power > 9 }
+		add_political_power = -10
+		hidden_effect = {
+			set_country_flag = UKR_ol_commission_done
+		}
+		ai_chance = { factor = 45 }
+	}
+
+	# Публичное обсуждение, Венецианская комиссия приглашена
+	option = {
+		name = ukraine_politics.621.b
+		trigger = { has_political_power > 19 }
+		add_political_power = -20
+		add_stability = 0.01
+		custom_effect_tooltip = UKR_ol_eu_up_tt
+		hidden_effect = {
+			set_country_flag = UKR_ol_commission_done
+			set_country_flag = UKR_ol_venice
+			set_temp_variable = { UKR_ol_eu = 0.01 }
+			UKR_ol_add_eu = yes
+		}
+		ai_chance = { factor = 20 }
+	}
+
+	# Закрытое заседание
+	option = {
+		name = ukraine_politics.621.c
+		custom_effect_tooltip = UKR_ol_eu_down_tt
+		hidden_effect = {
+			set_country_flag = UKR_ol_commission_done
+			set_temp_variable = { UKR_ol_eu = -0.01 }
+			UKR_ol_add_eu = yes
+		}
+		ai_chance = { factor = 35 }
+	}
+}
+
+# Голосование в Раде (первый модуль пакета: срок, вертикаль или избирательный закон)
+country_event = {
+	id = ukraine_politics.622
+	title = ukraine_politics.622.t
+	desc = ukraine_politics.622.d
+	picture = GFX_report_event_ukrainian_civil_war
+
+	is_triggered_only = yes
+	fire_only_once = yes
+
+	trigger = {
+		tag = UKR
+	}
+
+	# Купить недостающие голоса
+	option = {
+		name = ukraine_politics.622.a
+		trigger = { has_political_power > 39 }
+		add_political_power = -40
+		custom_effect_tooltip = UKR_ol_claim_met_priv_up_tt
+		hidden_effect = {
+			set_temp_variable = { UKR_ol_amt = 8 }
+			UKR_ol_claim_met = yes
+			UKR_ol_claim_priv = yes
+		}
+		ai_chance = { factor = 40 }
+	}
+
+	# Провести с минимальным запасом
+	option = {
+		name = ukraine_politics.622.b
+		add_stability = -0.02
+		custom_effect_tooltip = UKR_ol_grudge_up_tt
+		hidden_effect = {
+			add_to_variable = { UKR_cl_met_grudge = 5 }
+			add_to_variable = { UKR_cl_priv_grudge = 5 }
+			add_to_variable = { UKR_cl_gas_grudge = 5 }
+			add_to_variable = { UKR_cl_sec_grudge = 5 }
+			UKR_ol_update = yes
+		}
+		ai_chance = { factor = 60 }
+	}
+}
+
+# Заключение Конституционного суда
+country_event = {
+	id = ukraine_politics.623
+	title = ukraine_politics.623.t
+	desc = ukraine_politics.623.d
+	picture = GFX_report_event_ukrainian_civil_war
+
+	is_triggered_only = yes
+	fire_only_once = yes
+
+	trigger = {
+		tag = UKR
+	}
+
+	# Принять заключение
+	option = {
+		name = ukraine_politics.623.a
+		add_political_power = 20
+		hidden_effect = {
+			set_country_flag = UKR_ol_court_blessed
+		}
+		ai_chance = { factor = 65 }
+	}
+
+	# Запросить мнение Венецианской комиссии
+	option = {
+		name = ukraine_politics.623.b
+		trigger = { has_political_power > 9 }
+		add_political_power = -10
+		add_stability = 0.01
+		custom_effect_tooltip = UKR_ol_eu_up_tt
+		hidden_effect = {
+			set_temp_variable = { UKR_ol_eu = 0.01 }
+			UKR_ol_add_eu = yes
+			set_country_flag = UKR_ol_venice
+		}
+		ai_chance = { factor = 35 }
+	}
+}
+
+# Референдум: итог считается сразу (шанс зависит от стабильности, суда, марафона и Венецианской комиссии)
+country_event = {
+	id = ukraine_politics.624
+	title = ukraine_politics.624.t
+	desc = {
+		text = ukraine_politics.624.d_passed
+		trigger = {
+			has_country_flag = UKR_ol_ref_passed
+		}
+	}
+	desc = {
+		text = ukraine_politics.624.d_failed
+		trigger = {
+			has_country_flag = UKR_ol_ref_failed
+		}
+	}
+	picture = GFX_report_event_ukrainian_civil_war
+
+	is_triggered_only = yes
+
+	trigger = {
+		tag = UKR
+	}
+
+	immediate = {
+		clr_country_flag = UKR_ol_ref_passed
+		clr_country_flag = UKR_ol_ref_failed
+		random_list = {
+			55 = {
+				modifier = {
+					add = 20
+					has_country_flag = UKR_ol_court_blessed
+				}
+				modifier = {
+					add = 10
+					has_idea = UKR_marathon_idea
+				}
+				modifier = {
+					add = 10
+					has_country_flag = UKR_ol_venice
+				}
+				modifier = {
+					add = -25
+					has_stability < 0.4
+				}
+				modifier = {
+					add = -10
+					has_country_flag = UKR_ol_const_ngo
+				}
+				set_country_flag = UKR_ol_ref_passed
+			}
+			45 = {
+				set_country_flag = UKR_ol_ref_failed
+			}
+		}
+	}
+
+	# Референдум состоялся
+	option = {
+		name = ukraine_politics.624.a
+		trigger = { has_country_flag = UKR_ol_ref_passed }
+		add_political_power = 50
+		add_stability = 0.02
+		show_ideas_tooltip = UKR_referendum_idea
+		hidden_effect = {
+			add_ideas = UKR_referendum_idea
+			set_country_flag = UKR_ol_const_referendum
+			add_to_variable = { UKR_authoritarian_lean = 3 }
+			UKR_clamp_leans = yes
+			set_temp_variable = { UKR_ol_eu = -0.02 }
+			UKR_ol_add_eu = yes
+		}
+		ai_chance = { factor = 100 }
+	}
+
+	# Референдум не удался
+	option = {
+		name = ukraine_politics.624.b
+		trigger = { has_country_flag = UKR_ol_ref_failed }
+		hidden_effect = {
+			country_event = { id = ukraine_politics.625 days = 1 }
+		}
+		ai_chance = { factor = 100 }
+	}
+}
+
+# Крах референдума: откат модулей 1 и 2
+country_event = {
+	id = ukraine_politics.625
+	title = ukraine_politics.625.t
+	desc = ukraine_politics.625.d
+	picture = GFX_report_event_ukrainian_civil_war
+
+	is_triggered_only = yes
+
+	trigger = {
+		tag = UKR
+	}
+
+	option = {
+		name = ukraine_politics.625.a
+		add_stability = -0.05
+		add_political_power = -50
+		custom_effect_tooltip = UKR_ol_bop_clans_tt
+		custom_effect_tooltip = UKR_ol_grudge_up_tt
+		add_power_balance_value = {
+			id = UKR_vertical_clans_balance
+			value = -0.20
+		}
+		hidden_effect = {
+			if = {
+				limit = { has_idea = UKR_const_term_idea }
+				remove_ideas = UKR_const_term_idea
+			}
+			if = {
+				limit = { has_idea = UKR_const_vertical_idea }
+				remove_ideas = UKR_const_vertical_idea
+			}
+			if = {
+				limit = { has_country_flag = UKR_ol_const_term }
+				clr_country_flag = UKR_ol_const_term
+				set_politics = {
+					ruling_party = social_liberal
+					elections_allowed = yes
+				}
+			}
+			if = {
+				limit = { has_country_flag = UKR_ol_const_vertical }
+				clr_country_flag = UKR_ol_const_vertical
+				restore_previous_government_type = yes
+			}
+			clr_country_flag = UKR_ol_const_referendum_started
+			add_to_variable = { UKR_cl_met_grudge = 10 }
+			add_to_variable = { UKR_cl_priv_grudge = 10 }
+			add_to_variable = { UKR_cl_gas_grudge = 10 }
+			add_to_variable = { UKR_cl_sec_grudge = 10 }
+			UKR_ol_update = yes
+		}
+		ai_chance = { factor = 100 }
 	}
 }

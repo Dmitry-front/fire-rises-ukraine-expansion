@@ -143,4 +143,1042 @@ UKR_vertical_power = {
 			}
 		}
 	}
+
+	# ===== Шаг 2: услуги, давление, законы, подачки, «повернуть руль», конституционный пакет, счета кланов =====
+
+	# Услуга: приоритетные закупки (после фокуса «Закупки через своих»); счётчик UKR_ol_proc_count питает скандал шага 3
+	UKR_vp_priority_procurement = {
+		icon = GFX_decision_generic_military
+		visible = {
+			has_completed_focus = UKR_ol_procurement
+		}
+		available = {
+			has_country_flag = UKR_ol_vertical_done
+		}
+		days_re_enable = 120
+		cost = 40
+		days_remove = 30
+		ai_will_do = {
+			factor = 3
+		}
+		remove_effect = {
+			custom_effect_tooltip = UKR_vp_priority_procurement_tt
+			add_timed_idea = { idea = UKR_vp_procurement_boost days = 90 }
+			set_temp_variable = {
+				var = military_development_var_temp
+				value = 0.02
+			}
+			add_military_development = yes
+			set_temp_variable = {
+				var = poverty_development_var_temp
+				value = -0.005
+			}
+			add_poverty_development = yes
+			add_power_balance_value = {
+				id = UKR_vertical_clans_balance
+				value = -0.05
+			}
+			hidden_effect = {
+				set_temp_variable = { UKR_ol_gain = 0.02 }
+				UKR_ol_book_paper = yes
+				set_temp_variable = { UKR_ol_amt = 12 }
+				UKR_ol_claim_sec = yes
+				set_temp_variable = { UKR_ol_amt = 8 }
+				UKR_ol_claim_met = yes
+				add_to_variable = { UKR_ol_proc_count = 1 }
+				add_to_variable = { UKR_authoritarian_lean = 1 }
+				UKR_clamp_leans = yes
+			}
+		}
+	}
+
+	# Услуга: энергетические концессии (Металл и энергетика)
+	UKR_vp_energy_concessions = {
+		icon = GFX_decision_generic_industry
+		visible = {
+			has_completed_focus = UKR_ol_concessions
+		}
+		available = {
+			has_country_flag = UKR_ol_vertical_done
+		}
+		days_re_enable = 150
+		cost = 35
+		days_remove = 30
+		ai_will_do = {
+			factor = 3
+		}
+		remove_effect = {
+			custom_effect_tooltip = UKR_vp_energy_concessions_tt
+			set_temp_variable = {
+				var = income_var_temp
+				value = 0.3
+			}
+			add_income = yes
+			set_temp_variable = {
+				var = industrial_development_var_temp
+				value = 0.03
+			}
+			add_industrial_development = yes
+			set_temp_variable = {
+				var = poverty_development_var_temp
+				value = -0.01
+			}
+			add_poverty_development = yes
+			add_power_balance_value = {
+				id = UKR_vertical_clans_balance
+				value = -0.05
+			}
+			hidden_effect = {
+				set_temp_variable = { UKR_ol_gain = 0.03 }
+				UKR_ol_book_paper = yes
+				set_temp_variable = { UKR_ol_amt = 15 }
+				UKR_ol_claim_met = yes
+				set_temp_variable = { UKR_ol_sh = 2 }
+				UKR_ol_share_met = yes
+			}
+		}
+	}
+
+	# Услуга: газовые лицензии и удобрения (Газ и химия)
+	UKR_vp_gas_licences = {
+		icon = GFX_decision_generic_consumer_goods
+		visible = {
+			has_completed_focus = UKR_ol_concessions
+		}
+		available = {
+			has_country_flag = UKR_ol_vertical_done
+		}
+		days_re_enable = 150
+		cost = 35
+		days_remove = 30
+		ai_will_do = {
+			factor = 3
+		}
+		remove_effect = {
+			custom_effect_tooltip = UKR_vp_gas_licences_tt
+			set_temp_variable = {
+				var = income_var_temp
+				value = 0.3
+			}
+			add_income = yes
+			set_temp_variable = {
+				var = farming_development_var_temp
+				value = 0.03
+			}
+			add_farming_development = yes
+			set_temp_variable = {
+				var = society_development_var_temp
+				value = -0.01
+			}
+			add_society_development = yes
+			add_power_balance_value = {
+				id = UKR_vertical_clans_balance
+				value = -0.05
+			}
+			hidden_effect = {
+				set_temp_variable = { UKR_ol_gain = 0.03 }
+				UKR_ol_book_paper = yes
+				set_temp_variable = { UKR_ol_amt = 15 }
+				UKR_ol_claim_gas = yes
+				set_temp_variable = { UKR_ol_sh = 2 }
+				UKR_ol_share_gas = yes
+			}
+		}
+	}
+
+	# Услуга: квота на должности (Силовой круг)
+	UKR_vp_security_quota = {
+		icon = GFX_decision_generic_protection
+		visible = {
+			has_completed_focus = UKR_ol_loyal_security
+		}
+		available = {
+			has_country_flag = UKR_ol_vertical_done
+		}
+		days_re_enable = 120
+		cost = 30
+		days_remove = 20
+		ai_will_do = {
+			factor = 3
+		}
+		remove_effect = {
+			custom_effect_tooltip = UKR_vp_security_quota_tt
+			add_timed_idea = { idea = UKR_vp_quota_boost days = 90 }
+			set_temp_variable = {
+				var = poverty_development_var_temp
+				value = -0.005
+			}
+			add_poverty_development = yes
+			add_power_balance_value = {
+				id = UKR_vertical_clans_balance
+				value = -0.05
+			}
+			hidden_effect = {
+				set_temp_variable = { UKR_ol_amt = 15 }
+				UKR_ol_claim_sec = yes
+				add_to_variable = { UKR_authoritarian_lean = 1 }
+				UKR_clamp_leans = yes
+			}
+		}
+	}
+
+	# Услуга: налоговые каникулы инвесторам (закон «Низкие налоги»)
+	UKR_vp_tax_holiday = {
+		icon = GFX_decision_generic_construction
+		visible = {
+			has_completed_focus = UKR_ol_concessions
+		}
+		available = {
+			has_country_flag = UKR_ol_vertical_done
+		}
+		fire_only_once = yes
+		cost = 40
+		days_remove = 20
+		ai_will_do = {
+			factor = 3
+		}
+		remove_effect = {
+			custom_effect_tooltip = UKR_vp_tax_holiday_tt
+			show_ideas_tooltip = low_taxes
+			set_temp_variable = {
+				var = income_var_temp
+				value = -0.2
+			}
+			add_income = yes
+			set_temp_variable = {
+				var = industrial_development_var_temp
+				value = 0.03
+			}
+			add_industrial_development = yes
+			set_temp_variable = {
+				var = poverty_development_var_temp
+				value = -0.015
+			}
+			add_poverty_development = yes
+			add_power_balance_value = {
+				id = UKR_vertical_clans_balance
+				value = -0.05
+			}
+			hidden_effect = {
+				add_ideas = low_taxes
+				set_temp_variable = { UKR_ol_gain = 0.03 }
+				UKR_ol_book_paper = yes
+				set_temp_variable = { UKR_ol_amt = 8 }
+				UKR_ol_claim_met = yes
+				set_temp_variable = { UKR_ol_amt = 8 }
+				UKR_ol_claim_priv = yes
+			}
+		}
+	}
+
+	# Давление: налоговая проверка (образец SOV_wrangle_oligarchs: 21 день, повтор 35); цель - клан, названный событием «Строптивый»
+	UKR_vp_tax_audit = {
+		icon = GFX_decision_generic_protection
+		available = {
+			has_country_flag = UKR_ol_vertical_done
+			OR = {
+				has_country_flag = UKR_ol_target_met
+				has_country_flag = UKR_ol_target_priv
+				has_country_flag = UKR_ol_target_gas
+				has_country_flag = UKR_ol_target_sec
+			}
+		}
+		days_re_enable = 35
+		cost = 30
+		days_remove = 21
+		ai_will_do = {
+			factor = 3
+		}
+		remove_effect = {
+			custom_effect_tooltip = UKR_vp_tax_audit_tt
+			add_political_power = 30
+			set_temp_variable = {
+				var = income_var_temp
+				value = 0.2
+			}
+			add_income = yes
+			set_temp_variable = {
+				var = industrial_development_var_temp
+				value = 0.02
+			}
+			add_industrial_development = yes
+			add_power_balance_value = {
+				id = UKR_vertical_clans_balance
+				value = 0.06
+			}
+			hidden_effect = {
+				set_temp_variable = { UKR_ol_p_share = 6 }
+				set_temp_variable = { UKR_ol_p_grudge = 20 }
+				UKR_ol_apply_pressure = yes
+				set_temp_variable = { UKR_ol_gain = 0.02 }
+				UKR_ol_book_paper = yes
+			}
+		}
+	}
+
+	# Давление: санкции СНБО против клана
+	UKR_vp_sanctions_domestic = {
+		icon = GFX_decision_generic_political_discourse
+		available = {
+			has_country_flag = UKR_ol_vertical_done
+			OR = {
+				has_country_flag = UKR_ol_target_met
+				has_country_flag = UKR_ol_target_priv
+				has_country_flag = UKR_ol_target_gas
+				has_country_flag = UKR_ol_target_sec
+			}
+		}
+		days_re_enable = 60
+		cost = 40
+		days_remove = 30
+		ai_will_do = {
+			factor = 3
+		}
+		remove_effect = {
+			custom_effect_tooltip = UKR_vp_sanctions_domestic_tt
+			add_political_power = 20
+			add_power_balance_value = {
+				id = UKR_vertical_clans_balance
+				value = 0.08
+			}
+			hidden_effect = {
+				set_temp_variable = { UKR_ol_p_share = 8 }
+				set_temp_variable = { UKR_ol_p_grudge = 20 }
+				UKR_ol_apply_pressure = yes
+				set_temp_variable = { UKR_ol_eu = -0.01 }
+				UKR_ol_add_eu = yes
+				add_to_variable = { UKR_authoritarian_lean = 2 }
+				UKR_clamp_leans = yes
+			}
+		}
+	}
+
+	# Давление: дело против строптивого клана (подконтрольные органы закрепляются)
+	UKR_vp_court_case = {
+		icon = GFX_decision_generic_protection
+		available = {
+			has_country_flag = UKR_ol_vertical_done
+			OR = {
+				has_country_flag = UKR_ol_target_met
+				has_country_flag = UKR_ol_target_priv
+				has_country_flag = UKR_ol_target_gas
+				has_country_flag = UKR_ol_target_sec
+			}
+		}
+		days_re_enable = 90
+		cost = 45
+		days_remove = 30
+		ai_will_do = {
+			factor = 3
+		}
+		remove_effect = {
+			custom_effect_tooltip = UKR_vp_court_case_tt
+			add_political_power = 40
+			add_power_balance_value = {
+				id = UKR_vertical_clans_balance
+				value = 0.10
+			}
+			hidden_effect = {
+				set_temp_variable = { UKR_ol_p_share = 10 }
+				set_temp_variable = { UKR_ol_p_grudge = 25 }
+				UKR_ol_apply_pressure = yes
+				if = {
+					limit = { NOT = { has_idea = UKR_captured_judiciary } }
+					add_ideas = UKR_captured_judiciary
+				}
+				set_temp_variable = { UKR_ol_eu = -0.02 }
+				UKR_ol_add_eu = yes
+				add_to_variable = { UKR_authoritarian_lean = 2 }
+				UKR_clamp_leans = yes
+			}
+		}
+	}
+
+	# Давление: ротация силовиков (остальные кланы замечают, кто следующий)
+	UKR_vp_security_rotation = {
+		icon = GFX_decision_generic_protection
+		available = {
+			has_country_flag = UKR_ol_vertical_done
+			OR = {
+				has_country_flag = UKR_ol_target_met
+				has_country_flag = UKR_ol_target_priv
+				has_country_flag = UKR_ol_target_gas
+				has_country_flag = UKR_ol_target_sec
+			}
+		}
+		days_re_enable = 90
+		cost = 35
+		days_remove = 21
+		ai_will_do = {
+			factor = 3
+		}
+		remove_effect = {
+			custom_effect_tooltip = UKR_vp_security_rotation_tt
+			add_stability = 0.01
+			add_power_balance_value = {
+				id = UKR_vertical_clans_balance
+				value = 0.06
+			}
+			hidden_effect = {
+				set_temp_variable = { UKR_ol_p_share = 6 }
+				set_temp_variable = { UKR_ol_p_grudge = 15 }
+				UKR_ol_apply_pressure = yes
+				set_temp_variable = { UKR_ol_amt = 5 }
+				UKR_ol_claim_sec = yes
+			}
+		}
+	}
+
+	# Давление: единый информационный марафон
+	UKR_vp_unified_marathon = {
+		icon = GFX_decision_generic_propaganda
+		visible = {
+			has_completed_focus = UKR_ol_marathon
+		}
+		available = {
+			has_country_flag = UKR_ol_vertical_done
+		}
+		days_re_enable = 150
+		cost = 35
+		days_remove = 20
+		ai_will_do = {
+			factor = 3
+		}
+		remove_effect = {
+			custom_effect_tooltip = UKR_vp_unified_marathon_tt
+			add_timed_idea = { idea = UKR_vp_marathon_boost days = 120 }
+			set_temp_variable = {
+				var = society_development_var_temp
+				value = -0.01
+			}
+			add_society_development = yes
+			add_power_balance_value = {
+				id = UKR_vertical_clans_balance
+				value = 0.05
+			}
+			hidden_effect = {
+				add_to_variable = { UKR_cl_priv_grudge = 10 }
+				UKR_ol_update = yes
+				add_to_variable = { UKR_authoritarian_lean = 1 }
+				UKR_clamp_leans = yes
+			}
+		}
+	}
+
+	# Закон: «Частная полиция» (police_laws)
+	UKR_vp_private_security_law = {
+		icon = GFX_decision_generic_protection
+		visible = {
+			has_completed_focus = UKR_ol_loyal_security
+		}
+		available = {
+			has_country_flag = UKR_ol_vertical_done
+		}
+		fire_only_once = yes
+		cost = 50
+		days_remove = 14
+		ai_will_do = {
+			factor = 3
+		}
+		remove_effect = {
+			custom_effect_tooltip = UKR_vp_private_security_law_tt
+			show_ideas_tooltip = private_police
+			add_political_power = 20
+			add_power_balance_value = {
+				id = UKR_vertical_clans_balance
+				value = -0.03
+			}
+			hidden_effect = {
+				add_ideas = private_police
+				set_temp_variable = { UKR_ol_amt = 10 }
+				UKR_ol_claim_sec = yes
+			}
+		}
+	}
+
+	# Закон: всеобщие брони (только открытая вертикаль)
+	UKR_vp_draft_deferments = {
+		icon = GFX_decision_generic_military
+		visible = {
+			has_completed_focus = UKR_ol_mobilization_reserve
+			has_country_flag = UKR_ol_open
+		}
+		available = {
+			has_country_flag = UKR_ol_vertical_done
+		}
+		fire_only_once = yes
+		cost = 60
+		days_remove = 14
+		ai_will_do = {
+			factor = 3
+		}
+		remove_effect = {
+			custom_effect_tooltip = UKR_vp_draft_deferments_tt
+			show_ideas_tooltip = general_exemptions
+			set_temp_variable = {
+				var = society_development_var_temp
+				value = -0.01
+			}
+			add_society_development = yes
+			hidden_effect = {
+				add_ideas = general_exemptions
+				if = {
+					limit = { has_country_flag = UKR_war_mood_active }
+					add_to_variable = { UKRwarfatigue = 3 }
+				}
+				add_to_variable = { UKR_authoritarian_lean = 2 }
+				UKR_clamp_leans = yes
+			}
+		}
+	}
+
+	# Война: реквизиция мощностей (образец SOV_requisition_oligarch_*): 70 дней ускоренного производства, клан Металл и энергетика обижен
+	UKR_vp_requisition = {
+		icon = GFX_decision_generic_industry
+		visible = {
+			has_country_flag = UKR_war_mood_active
+		}
+		available = {
+			has_country_flag = UKR_ol_vertical_done
+		}
+		days_re_enable = 90
+		cost = 25
+		days_remove = 10
+		ai_will_do = {
+			factor = 3
+		}
+		remove_effect = {
+			custom_effect_tooltip = UKR_vp_requisition_tt
+			add_timed_idea = { idea = UKR_vp_requisition_boost days = 70 }
+			add_power_balance_value = {
+				id = UKR_vertical_clans_balance
+				value = 0.03
+			}
+			hidden_effect = {
+				add_to_variable = { UKR_cl_met_grudge = 10 }
+				set_temp_variable = { UKR_ol_amt = 10 }
+				UKR_ol_claim_met = yes
+			}
+		}
+	}
+
+	# Услуга: военный завод силами клана
+	UKR_vp_clan_industry = {
+		icon = GFX_decision_generic_industry
+		visible = {
+			has_completed_focus = UKR_ol_clan_industry
+		}
+		available = {
+			has_country_flag = UKR_ol_vertical_done
+		}
+		days_re_enable = 180
+		cost = 45
+		days_remove = 30
+		ai_will_do = {
+			factor = 3
+		}
+		remove_effect = {
+			custom_effect_tooltip = UKR_vp_clan_industry_tt
+			set_temp_variable = {
+				var = military_development_var_temp
+				value = 0.02
+			}
+			add_military_development = yes
+			set_temp_variable = {
+				var = poverty_development_var_temp
+				value = -0.005
+			}
+			add_poverty_development = yes
+			add_power_balance_value = {
+				id = UKR_vertical_clans_balance
+				value = -0.04
+			}
+			random_owned_controlled_state = {
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = arms_factory
+					level = 1
+					instant_build = yes
+				}
+			}
+			hidden_effect = {
+				set_temp_variable = { UKR_ol_gain = 0.02 }
+				UKR_ol_book_paper = yes
+				set_temp_variable = { UKR_ol_amt = 10 }
+				UKR_ol_claim_met = yes
+				set_temp_variable = { UKR_ol_amt = 10 }
+				UKR_ol_claim_sec = yes
+				set_temp_variable = { UKR_ol_sh = 2 }
+				UKR_ol_share_met = yes
+				set_temp_variable = { UKR_ol_sh = 2 }
+				UKR_ol_share_sec = yes
+			}
+		}
+	}
+
+	# Подачка: президентские выплаты (стабильность покупается, а не строится)
+	UKR_vp_handouts = {
+		icon = GFX_decision_generic_consumer_goods
+		available = {
+			has_country_flag = UKR_ol_vertical_done
+		}
+		days_re_enable = 120
+		cost = 30
+		days_remove = 14
+		ai_will_do = {
+			factor = 3
+		}
+		remove_effect = {
+			custom_effect_tooltip = UKR_vp_handouts_tt
+			set_temp_variable = {
+				var = income_var_temp
+				value = -0.8
+			}
+			add_income = yes
+			add_timed_idea = { idea = UKR_vp_handouts_idea days = 75 }
+		}
+	}
+
+	# Подачка: заморозка тарифов (платят энергетики и газовщики претензиями)
+	UKR_vp_tariff_freeze = {
+		icon = GFX_decision_generic_consumer_goods
+		available = {
+			has_country_flag = UKR_ol_vertical_done
+		}
+		days_re_enable = 150
+		cost = 25
+		days_remove = 14
+		ai_will_do = {
+			factor = 3
+		}
+		remove_effect = {
+			custom_effect_tooltip = UKR_vp_tariff_freeze_tt
+			add_timed_idea = { idea = UKR_vp_tariff_freeze_idea days = 90 }
+			hidden_effect = {
+				set_temp_variable = { UKR_ol_amt = 8 }
+				UKR_ol_claim_met = yes
+				set_temp_variable = { UKR_ol_amt = 8 }
+				UKR_ol_claim_gas = yes
+			}
+		}
+	}
+
+	# Повернуть руль: социальный пакет (кланам это не нравится)
+	UKR_vp_turn_wheel_poverty = {
+		icon = GFX_decision_generic_consumer_goods
+		available = {
+			has_country_flag = UKR_ol_vertical_done
+		}
+		days_re_enable = 240
+		cost = 75
+		days_remove = 30
+		ai_will_do = {
+			factor = 1
+		}
+		remove_effect = {
+			custom_effect_tooltip = UKR_vp_turn_wheel_poverty_tt
+			set_temp_variable = {
+				var = income_var_temp
+				value = -0.5
+			}
+			add_income = yes
+			set_temp_variable = {
+				var = poverty_development_var_temp
+				value = 0.05
+			}
+			add_poverty_development = yes
+			add_power_balance_value = {
+				id = UKR_vertical_clans_balance
+				value = -0.10
+			}
+			hidden_effect = {
+				set_temp_variable = { UKR_ol_amt = 5 }
+				UKR_ol_claim_all = yes
+			}
+		}
+	}
+
+	# Повернуть руль: «оттепель» (общество и наука; кланам это не нравится)
+	UKR_vp_turn_wheel_society = {
+		icon = GFX_decision_generic_political_discourse
+		available = {
+			has_country_flag = UKR_ol_vertical_done
+		}
+		days_re_enable = 240
+		cost = 75
+		days_remove = 30
+		ai_will_do = {
+			factor = 1
+		}
+		remove_effect = {
+			custom_effect_tooltip = UKR_vp_turn_wheel_society_tt
+			set_temp_variable = {
+				var = society_development_var_temp
+				value = 0.05
+			}
+			add_society_development = yes
+			set_temp_variable = {
+				var = academic_development_var_temp
+				value = 0.03
+			}
+			add_academic_development = yes
+			add_power_balance_value = {
+				id = UKR_vertical_clans_balance
+				value = -0.10
+			}
+			hidden_effect = {
+				set_temp_variable = { UKR_ol_amt = 5 }
+				UKR_ol_claim_all = yes
+				set_temp_variable = { UKR_ol_eu = 0.01 }
+				UKR_ol_add_eu = yes
+			}
+		}
+	}
+
+	# Конституционный пакет, модуль 1: «Срок и преемственность» (выборы «до стабилизации»)
+	UKR_vp_const_term = {
+		icon = GFX_decision_generic_political_discourse
+		visible = {
+			has_country_flag = UKR_ol_const_full
+		}
+		available = {
+			has_country_flag = UKR_ol_vertical_done
+			has_country_flag = UKR_ol_commission_done
+		}
+		fire_only_once = yes
+		cost = UKR_ol_const_cost
+		days_remove = 20
+		ai_will_do = {
+			factor = 2
+		}
+		remove_effect = {
+			custom_effect_tooltip = UKR_vp_const_term_tt
+			show_ideas_tooltip = UKR_const_term_idea
+			add_power_balance_value = {
+				id = UKR_vertical_clans_balance
+				value = 0.05
+			}
+			hidden_effect = {
+				add_ideas = UKR_const_term_idea
+				set_politics = {
+						ruling_party = social_liberal
+						elections_allowed = no
+					}
+				set_country_flag = UKR_ol_const_term
+				country_event = { id = ukraine_politics.622 days = 3 }
+				set_temp_variable = { UKR_ol_eu = -0.05 }
+				UKR_ol_add_eu = yes
+				add_to_variable = { UKR_authoritarian_lean = 2 }
+				UKR_clamp_leans = yes
+			}
+		}
+	}
+
+	# Модуль 2: «Единая вертикаль власти» (правительство подотчётно президенту)
+	UKR_vp_const_vertical = {
+		icon = GFX_decision_generic_political_discourse
+		visible = {
+			has_country_flag = UKR_ol_const_full
+		}
+		available = {
+			has_country_flag = UKR_ol_vertical_done
+			has_country_flag = UKR_ol_commission_done
+		}
+		fire_only_once = yes
+		cost = UKR_ol_const_cost
+		days_remove = 20
+		ai_will_do = {
+			factor = 2
+		}
+		remove_effect = {
+			custom_effect_tooltip = UKR_vp_const_vertical_tt
+			show_ideas_tooltip = UKR_const_vertical_idea
+			add_stability = -0.02
+			set_temp_variable = {
+				var = society_development_var_temp
+				value = -0.05
+			}
+			add_society_development = yes
+			add_power_balance_value = {
+				id = UKR_vertical_clans_balance
+				value = 0.15
+			}
+			hidden_effect = {
+				add_ideas = UKR_const_vertical_idea
+				get_current_government_type = yes
+				change_government_type_presidential_dictatorship = yes
+				set_country_flag = UKR_ol_const_vertical
+				country_event = { id = ukraine_politics.622 days = 3 }
+				add_to_variable = { UKR_authoritarian_lean = 2 }
+				UKR_clamp_leans = yes
+			}
+		}
+	}
+
+	# Модуль 3: «Рада по новым правилам» (закрытые списки, барьер выше; доступен и в мягкой ветке)
+	UKR_vp_const_rada = {
+		icon = GFX_decision_generic_political_discourse
+		visible = {
+			OR = {
+				has_country_flag = UKR_ol_const_full
+				has_country_flag = UKR_ol_const_soft
+			}
+		}
+		available = {
+			has_country_flag = UKR_ol_vertical_done
+			has_country_flag = UKR_ol_commission_done
+		}
+		fire_only_once = yes
+		cost = UKR_ol_const_cost
+		days_remove = 20
+		ai_will_do = {
+			factor = 2
+		}
+		remove_effect = {
+			custom_effect_tooltip = UKR_vp_const_rada_tt
+			show_ideas_tooltip = UKR_const_rada_idea
+			add_power_balance_value = {
+				id = UKR_vertical_clans_balance
+				value = 0.05
+			}
+			hidden_effect = {
+				add_ideas = UKR_const_rada_idea
+				add_popularity = { ideology = communist popularity = -0.01 }
+				add_popularity = { ideology = totalitarian_socialist popularity = -0.01 }
+				add_popularity = { ideology = libertarian_socialist popularity = -0.01 }
+				add_popularity = { ideology = national_socialist popularity = -0.01 }
+				add_popularity = { ideology = fascist popularity = -0.01 }
+				add_popularity = { ideology = social_liberal popularity = 0.03 }
+				add_popularity = { ideology = authoritarian_democrat popularity = 0.02 }
+				set_country_flag = UKR_ol_const_rada
+				UKR_ol_update = yes
+				country_event = { id = ukraine_politics.622 days = 3 }
+				add_to_variable = { UKR_authoritarian_lean = 2 }
+				UKR_clamp_leans = yes
+			}
+		}
+	}
+
+	# Модуль 4: «Суд и правосудие» (доступен и в мягкой ветке)
+	UKR_vp_const_court = {
+		icon = GFX_decision_generic_protection
+		visible = {
+			OR = {
+				has_country_flag = UKR_ol_const_full
+				has_country_flag = UKR_ol_const_soft
+			}
+		}
+		available = {
+			has_country_flag = UKR_ol_vertical_done
+			has_country_flag = UKR_ol_commission_done
+		}
+		fire_only_once = yes
+		cost = UKR_ol_const_cost
+		days_remove = 20
+		ai_will_do = {
+			factor = 2
+		}
+		remove_effect = {
+			custom_effect_tooltip = UKR_vp_const_court_tt
+			show_ideas_tooltip = UKR_const_court_idea
+			add_power_balance_value = {
+				id = UKR_vertical_clans_balance
+				value = 0.05
+			}
+			hidden_effect = {
+				add_ideas = UKR_const_court_idea
+				if = {
+					limit = { NOT = { has_idea = UKR_captured_judiciary } }
+					add_ideas = UKR_captured_judiciary
+				}
+				set_country_flag = UKR_ol_const_court
+				country_event = { id = ukraine_politics.623 days = 3 }
+				set_temp_variable = { UKR_ol_eu = -0.03 }
+				UKR_ol_add_eu = yes
+				add_to_variable = { UKR_authoritarian_lean = 2 }
+				UKR_clamp_leans = yes
+			}
+		}
+	}
+
+	# Модуль 5: закон о публичном финансировании НКО и медиа
+	UKR_vp_const_ngo = {
+		icon = GFX_decision_generic_propaganda
+		visible = {
+			has_country_flag = UKR_ol_const_full
+		}
+		available = {
+			has_country_flag = UKR_ol_vertical_done
+			has_country_flag = UKR_ol_commission_done
+		}
+		fire_only_once = yes
+		cost = UKR_ol_const_cost
+		days_remove = 20
+		ai_will_do = {
+			factor = 2
+		}
+		remove_effect = {
+			custom_effect_tooltip = UKR_vp_const_ngo_tt
+			show_ideas_tooltip = UKR_ngo_law_idea
+			set_temp_variable = {
+				var = society_development_var_temp
+				value = -0.05
+			}
+			add_society_development = yes
+			hidden_effect = {
+				add_ideas = UKR_ngo_law_idea
+				set_country_flag = UKR_ol_const_ngo
+				set_temp_variable = { UKR_ol_eu = -0.01 }
+				UKR_ol_add_eu = yes
+				add_to_variable = { UKR_authoritarian_lean = 2 }
+				UKR_clamp_leans = yes
+			}
+		}
+	}
+
+	# Модуль 6: «Референдум» (закрепляет принятое; исход считает событие 624)
+	UKR_vp_const_referendum = {
+		icon = GFX_decision_generic_political_discourse
+		visible = {
+			has_country_flag = UKR_ol_const_full
+		}
+		available = {
+			has_country_flag = UKR_ol_vertical_done
+			has_country_flag = UKR_ol_commission_done
+			OR = {
+				has_country_flag = UKR_ol_const_term
+				has_country_flag = UKR_ol_const_vertical
+			}
+			NOT = { has_country_flag = UKR_ol_const_referendum_started }
+		}
+		fire_only_once = yes
+		cost = UKR_ol_const_cost
+		days_remove = 30
+		ai_will_do = {
+			factor = 2
+		}
+		remove_effect = {
+			custom_effect_tooltip = UKR_vp_const_referendum_tt
+			hidden_effect = {
+				set_country_flag = UKR_ol_const_referendum_started
+				country_event = { id = ukraine_politics.624 }
+			}
+		}
+	}
+
+	# Счёт клана «Металл и энергетика»: запускается эффектом UKR_ol_check_bills при претензиях 70 и выше; гасится решением «Компенсация» или любым снижением претензий
+	UKR_vp_bill_met = {
+		priority = 5
+		icon = GFX_decision_generic_industry
+		days_mission_timeout = 60
+		fire_only_once = no
+		is_good = no
+		cancel_if_not_visible = yes
+		visible = {
+			has_country_flag = UKR_ol_vertical_done
+		}
+		available = {
+			hidden_trigger = {
+				always = no
+			}
+		}
+		activation = {
+			always = no
+		}
+		complete_effect = {
+		}
+		timeout_effect = {
+			UKR_ol_defect_met = yes
+		}
+		ai_will_do = {
+			factor = 1
+		}
+	}
+
+	# Счёт клана «Приват»: запускается эффектом UKR_ol_check_bills при претензиях 70 и выше; гасится решением «Компенсация» или любым снижением претензий
+	UKR_vp_bill_priv = {
+		priority = 5
+		icon = GFX_decision_generic_propaganda
+		days_mission_timeout = 60
+		fire_only_once = no
+		is_good = no
+		cancel_if_not_visible = yes
+		visible = {
+			has_country_flag = UKR_ol_vertical_done
+		}
+		available = {
+			hidden_trigger = {
+				always = no
+			}
+		}
+		activation = {
+			always = no
+		}
+		complete_effect = {
+		}
+		timeout_effect = {
+			UKR_ol_defect_priv = yes
+		}
+		ai_will_do = {
+			factor = 1
+		}
+	}
+
+	# Счёт клана «Газ и химия»: запускается эффектом UKR_ol_check_bills при претензиях 70 и выше; гасится решением «Компенсация» или любым снижением претензий
+	UKR_vp_bill_gas = {
+		priority = 5
+		icon = GFX_decision_generic_consumer_goods
+		days_mission_timeout = 60
+		fire_only_once = no
+		is_good = no
+		cancel_if_not_visible = yes
+		visible = {
+			has_country_flag = UKR_ol_vertical_done
+		}
+		available = {
+			hidden_trigger = {
+				always = no
+			}
+		}
+		activation = {
+			always = no
+		}
+		complete_effect = {
+		}
+		timeout_effect = {
+			UKR_ol_defect_gas = yes
+		}
+		ai_will_do = {
+			factor = 1
+		}
+	}
+
+	# Счёт клана «Силовой круг»: запускается эффектом UKR_ol_check_bills при претензиях 70 и выше; гасится решением «Компенсация» или любым снижением претензий
+	UKR_vp_bill_sec = {
+		priority = 5
+		icon = GFX_decision_generic_protection
+		days_mission_timeout = 60
+		fire_only_once = no
+		is_good = no
+		cancel_if_not_visible = yes
+		visible = {
+			has_country_flag = UKR_ol_vertical_done
+		}
+		available = {
+			hidden_trigger = {
+				always = no
+			}
+		}
+		activation = {
+			always = no
+		}
+		complete_effect = {
+		}
+		timeout_effect = {
+			UKR_ol_defect_sec = yes
+		}
+		ai_will_do = {
+			factor = 1
+		}
+	}
 }

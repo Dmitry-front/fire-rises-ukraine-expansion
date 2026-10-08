@@ -118,6 +118,169 @@ UKR_ol_update = {
 	UKR_ol_calc_loyalty = yes
 	UKR_ol_calc_profile = yes
 	UKR_ol_set_undertow = yes
+	UKR_ol_check_bills = yes
+}
+
+# Счёт клана: претензии 70 и выше запускают миссию на 60 дней (UKR_vp_bill_<id>); спад ниже 70 снимает её.
+# Не погашенный счёт заканчивается дезертирством клана (timeout_effect миссии -> UKR_ol_defect_<id>).
+# Ниже 60 лояльности кланов: дух «Кланы ворчат» (стабильность -1%), выше - снимается.
+UKR_ol_check_bills = {
+	if = {
+		limit = {
+			check_variable = { var = UKR_cl_met_claim value = 70 compare = greater_than_or_equals }
+			NOT = { has_active_mission = UKR_vp_bill_met }
+		}
+		activate_mission = UKR_vp_bill_met
+	}
+	if = {
+		limit = {
+			check_variable = { var = UKR_cl_met_claim value = 70 compare = less_than }
+			has_active_mission = UKR_vp_bill_met
+		}
+		remove_mission = UKR_vp_bill_met
+	}
+	if = {
+		limit = {
+			check_variable = { var = UKR_cl_priv_claim value = 70 compare = greater_than_or_equals }
+			NOT = { has_active_mission = UKR_vp_bill_priv }
+		}
+		activate_mission = UKR_vp_bill_priv
+	}
+	if = {
+		limit = {
+			check_variable = { var = UKR_cl_priv_claim value = 70 compare = less_than }
+			has_active_mission = UKR_vp_bill_priv
+		}
+		remove_mission = UKR_vp_bill_priv
+	}
+	if = {
+		limit = {
+			check_variable = { var = UKR_cl_gas_claim value = 70 compare = greater_than_or_equals }
+			NOT = { has_active_mission = UKR_vp_bill_gas }
+		}
+		activate_mission = UKR_vp_bill_gas
+	}
+	if = {
+		limit = {
+			check_variable = { var = UKR_cl_gas_claim value = 70 compare = less_than }
+			has_active_mission = UKR_vp_bill_gas
+		}
+		remove_mission = UKR_vp_bill_gas
+	}
+	if = {
+		limit = {
+			check_variable = { var = UKR_cl_sec_claim value = 70 compare = greater_than_or_equals }
+			NOT = { has_active_mission = UKR_vp_bill_sec }
+		}
+		activate_mission = UKR_vp_bill_sec
+	}
+	if = {
+		limit = {
+			check_variable = { var = UKR_cl_sec_claim value = 70 compare = less_than }
+			has_active_mission = UKR_vp_bill_sec
+		}
+		remove_mission = UKR_vp_bill_sec
+	}
+	if = {
+		limit = {
+			check_variable = { var = UKR_ol_loyalty value = 60 compare = less_than }
+			NOT = { has_idea = UKR_clans_grumble }
+		}
+		add_ideas = UKR_clans_grumble
+	}
+	if = {
+		limit = {
+			check_variable = { var = UKR_ol_loyalty value = 60 compare = greater_than_or_equals }
+			has_idea = UKR_clans_grumble
+		}
+		remove_ideas = UKR_clans_grumble
+	}
+}
+
+# Дезертирство клана при просроченном счёте: 180 дней в оппозиции (духи UKR_clan_<id>_opposition), доля падает, претензии возвращаются к 40
+UKR_ol_defect_met = {
+	add_timed_idea = { idea = UKR_clan_met_opposition days = 180 }
+	set_variable = { UKR_cl_met_claim = 40 }
+	add_to_variable = { UKR_cl_met_grudge = 15 }
+	add_to_variable = { UKR_cl_met_share = -8 }
+	UKR_ol_update = yes
+}
+UKR_ol_defect_priv = {
+	add_timed_idea = { idea = UKR_clan_priv_opposition days = 180 }
+	set_variable = { UKR_cl_priv_claim = 40 }
+	add_to_variable = { UKR_cl_priv_grudge = 15 }
+	add_to_variable = { UKR_cl_priv_share = -8 }
+	UKR_ol_update = yes
+}
+UKR_ol_defect_gas = {
+	add_timed_idea = { idea = UKR_clan_gas_opposition days = 180 }
+	set_variable = { UKR_cl_gas_claim = 40 }
+	add_to_variable = { UKR_cl_gas_grudge = 15 }
+	add_to_variable = { UKR_cl_gas_share = -8 }
+	UKR_ol_update = yes
+}
+UKR_ol_defect_sec = {
+	add_timed_idea = { idea = UKR_clan_sec_opposition days = 180 }
+	set_variable = { UKR_cl_sec_claim = 40 }
+	add_to_variable = { UKR_cl_sec_grudge = 15 }
+	add_to_variable = { UKR_cl_sec_share = -8 }
+	UKR_ol_update = yes
+}
+
+# Давление на клан, названный событием «Строптивый» (флаг UKR_ol_target_<id>). Перед вызовом:
+# set_temp_variable = { UKR_ol_p_share = 8 } (потеря доли) и set_temp_variable = { UKR_ol_p_grudge = 20 } (обида).
+UKR_ol_apply_pressure = {
+	if = {
+		limit = { has_country_flag = UKR_ol_target_met }
+		clr_country_flag = UKR_ol_target_met
+		set_variable = { UKR_cl_met_claim = 0 }
+		add_to_variable = { UKR_cl_met_grudge = UKR_ol_p_grudge }
+		set_temp_variable = { UKR_ol_sh = UKR_ol_p_share }
+		multiply_temp_variable = { UKR_ol_sh = -1 }
+		UKR_ol_share_met = yes
+	}
+	if = {
+		limit = { has_country_flag = UKR_ol_target_priv }
+		clr_country_flag = UKR_ol_target_priv
+		set_variable = { UKR_cl_priv_claim = 0 }
+		add_to_variable = { UKR_cl_priv_grudge = UKR_ol_p_grudge }
+		set_temp_variable = { UKR_ol_sh = UKR_ol_p_share }
+		multiply_temp_variable = { UKR_ol_sh = -1 }
+		UKR_ol_share_priv = yes
+	}
+	if = {
+		limit = { has_country_flag = UKR_ol_target_gas }
+		clr_country_flag = UKR_ol_target_gas
+		set_variable = { UKR_cl_gas_claim = 0 }
+		add_to_variable = { UKR_cl_gas_grudge = UKR_ol_p_grudge }
+		set_temp_variable = { UKR_ol_sh = UKR_ol_p_share }
+		multiply_temp_variable = { UKR_ol_sh = -1 }
+		UKR_ol_share_gas = yes
+	}
+	if = {
+		limit = { has_country_flag = UKR_ol_target_sec }
+		clr_country_flag = UKR_ol_target_sec
+		set_variable = { UKR_cl_sec_claim = 0 }
+		add_to_variable = { UKR_cl_sec_grudge = UKR_ol_p_grudge }
+		set_temp_variable = { UKR_ol_sh = UKR_ol_p_share }
+		multiply_temp_variable = { UKR_ol_sh = -1 }
+		UKR_ol_share_sec = yes
+	}
+}
+
+# Претензии всех четырёх кланов: перед вызовом set_temp_variable = { UKR_ol_amt = 5 }
+UKR_ol_claim_all = {
+	add_to_variable = { UKR_cl_met_claim = UKR_ol_amt }
+	add_to_variable = { UKR_cl_priv_claim = UKR_ol_amt }
+	add_to_variable = { UKR_cl_gas_claim = UKR_ol_amt }
+	add_to_variable = { UKR_cl_sec_claim = UKR_ol_amt }
+	UKR_ol_update = yes
+}
+
+# Европейское влияние: перед вызовом set_temp_variable = { UKR_ol_eu = -0.01 }
+UKR_ol_add_eu = {
+	add_to_variable = { European_Influence = UKR_ol_eu }
+	clamp_variable = { var = European_Influence min = 0 max = 1 }
 }
 
 # Доли власти в процентах (видны в окне «Вертикаль»)
@@ -247,6 +410,26 @@ UKR_ol_set_undertow = {
 		limit = { check_variable = { var = UKR_ol_grudge_total value = 60 compare = greater_than_or_equals } }
 		add_to_variable = { UKR_ol_vertical_level = 1 }
 	}
+	# Конституционный избирательный закон (модуль «Рада по новым правилам») добавляет ступень
+	if = {
+		limit = { has_country_flag = UKR_ol_const_rada }
+		add_to_variable = { UKR_ol_vertical_level = 1 }
+	}
+	# Финалы задают нижнюю границу: договорная республика - 1, государство-корпорация - 3
+	if = {
+		limit = {
+			has_country_flag = UKR_ol_final_soft_done
+			check_variable = { var = UKR_ol_vertical_level value = 1 compare = less_than }
+		}
+		set_variable = { UKR_ol_vertical_level = 1 }
+	}
+	if = {
+		limit = {
+			has_country_flag = UKR_ol_final_open_done
+			check_variable = { var = UKR_ol_vertical_level value = 3 compare = less_than }
+		}
+		set_variable = { UKR_ol_vertical_level = 3 }
+	}
 	clamp_variable = { var = UKR_ol_vertical_level min = 0 max = 3 }
 	if = {
 		limit = { has_idea = UKR_undertow_1 }
@@ -298,6 +481,7 @@ UKR_ol_apply_office = {
 			limit = { has_idea = UKR_office_stefanchuk }
 			remove_ideas = UKR_office_stefanchuk
 		}
+		set_variable = { UKR_ol_const_cost = 60 }
 		if = {
 			limit = { has_country_flag = UKR_yermak_convicted }
 			add_ideas = UKR_office_stefanchuk
@@ -316,6 +500,11 @@ UKR_ol_apply_office = {
 		}
 		else = {
 			add_ideas = UKR_office_yermak
+		}
+		# Конституционные решения дешевле на 20%, если пакет ведёт Стефанчук
+		if = {
+			limit = { has_idea = UKR_office_stefanchuk }
+			set_variable = { UKR_ol_const_cost = 48 }
 		}
 	}
 }

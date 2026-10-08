@@ -1,14 +1,19 @@
-# Иконки фокусов UKR. Каждый спрайт - по единому шаблону: effectFile buttonstate.lua (затемнение по состоянию фокуса),
-# две анимации блика shine_overlay и legacy_lazy_load = no. Спрайт без этого блока в дереве показывается "плоско".
-# Не определять один и тот же спрайт дважды: побеждает последнее определение.
+# Иконки фокусов UKR. На каждую иконку - ДВА спрайта: GFX_UKR_<имя> (обычный, только текстура)
+# и GFX_UKR_<имя>_shine (с buttonstate.lua и анимацией блика): дерево фокусов берёт _shine для доступных фокусов.
+# Без пары _shine иконка показывается как ошибка. Имя файла этого .gfx значения не имеет, важны имена спрайтов.
 spriteTypes = {
 	SpriteType = {
 		name = "GFX_UKR_Actor_President"
 		texturefile = "gfx/interface/goals/UKR/UKR_Actor_President.png"
+		legacy_lazy_load = no
+	}
+	SpriteType = {
+		name = "GFX_UKR_Actor_President_shine"
+		texturefile = "gfx/interface/goals/UKR/UKR_Actor_President.png"
 		effectFile = gfx/FX/buttonstate.lua
 		animation = {
-			animationmaskfile = gfx/interface/goals/UKR/UKR_Actor_President.png
-			animationtexturefile = gfx/interface/goals/shine_overlay.dds
+			animationmaskfile = "gfx/interface/goals/UKR/UKR_Actor_President.png"
+			animationtexturefile = "gfx/interface/goals/shine_overlay.dds"
 			animationrotation = -90.0
 			animationlooping = no
 			animationtime = 0.75
@@ -19,8 +24,8 @@ spriteTypes = {
 			animationtexturescale = { x = 1.0 y = 1.0 }
 		}
 		animation = {
-			animationmaskfile = gfx/interface/goals/UKR/UKR_Actor_President.png
-			animationtexturefile = gfx/interface/goals/shine_overlay.dds
+			animationmaskfile = "gfx/interface/goals/UKR/UKR_Actor_President.png"
+			animationtexturefile = "gfx/interface/goals/shine_overlay.dds"
 			animationrotation = 90.0
 			animationlooping = no
 			animationtime = 0.75
@@ -36,10 +41,15 @@ spriteTypes = {
 	SpriteType = {
 		name = "GFX_UKR_reform_general_staff_nato_standards"
 		texturefile = "gfx/interface/goals/UKR/UKR_reform_general_staff_nato_standards.png"
+		legacy_lazy_load = no
+	}
+	SpriteType = {
+		name = "GFX_UKR_reform_general_staff_nato_standards_shine"
+		texturefile = "gfx/interface/goals/UKR/UKR_reform_general_staff_nato_standards.png"
 		effectFile = gfx/FX/buttonstate.lua
 		animation = {
-			animationmaskfile = gfx/interface/goals/UKR/UKR_reform_general_staff_nato_standards.png
-			animationtexturefile = gfx/interface/goals/shine_overlay.dds
+			animationmaskfile = "gfx/interface/goals/UKR/UKR_reform_general_staff_nato_standards.png"
+			animationtexturefile = "gfx/interface/goals/shine_overlay.dds"
 			animationrotation = -90.0
 			animationlooping = no
 			animationtime = 0.75
@@ -50,8 +60,8 @@ spriteTypes = {
 			animationtexturescale = { x = 1.0 y = 1.0 }
 		}
 		animation = {
-			animationmaskfile = gfx/interface/goals/UKR/UKR_reform_general_staff_nato_standards.png
-			animationtexturefile = gfx/interface/goals/shine_overlay.dds
+			animationmaskfile = "gfx/interface/goals/UKR/UKR_reform_general_staff_nato_standards.png"
+			animationtexturefile = "gfx/interface/goals/shine_overlay.dds"
 			animationrotation = 90.0
 			animationlooping = no
 			animationtime = 0.75
@@ -67,10 +77,15 @@ spriteTypes = {
 	SpriteType = {
 		name = "GFX_UKR_intelligence_operation"
 		texturefile = "gfx/interface/goals/UKR/UKR_intelligence_operation.png"
+		legacy_lazy_load = no
+	}
+	SpriteType = {
+		name = "GFX_UKR_intelligence_operation_shine"
+		texturefile = "gfx/interface/goals/UKR/UKR_intelligence_operation.png"
 		effectFile = gfx/FX/buttonstate.lua
 		animation = {
-			animationmaskfile = gfx/interface/goals/UKR/UKR_intelligence_operation.png
-			animationtexturefile = gfx/interface/goals/shine_overlay.dds
+			animationmaskfile = "gfx/interface/goals/UKR/UKR_intelligence_operation.png"
+			animationtexturefile = "gfx/interface/goals/shine_overlay.dds"
 			animationrotation = -90.0
 			animationlooping = no
 			animationtime = 0.75
@@ -81,8 +96,8 @@ spriteTypes = {
 			animationtexturescale = { x = 1.0 y = 1.0 }
 		}
 		animation = {
-			animationmaskfile = gfx/interface/goals/UKR/UKR_intelligence_operation.png
-			animationtexturefile = gfx/interface/goals/shine_overlay.dds
+			animationmaskfile = "gfx/interface/goals/UKR/UKR_intelligence_operation.png"
+			animationtexturefile = "gfx/interface/goals/shine_overlay.dds"
 			animationrotation = 90.0
 			animationlooping = no
 			animationtime = 0.75
@@ -98,10 +113,15 @@ spriteTypes = {
 	SpriteType = {
 		name = "GFX_UKR_forge_professional_officer_corps"
 		texturefile = "gfx/interface/goals/UKR/UKR_forge_professional_officer_corps.png"
+		legacy_lazy_load = no
+	}
+	SpriteType = {
+		name = "GFX_UKR_forge_professional_officer_corps_shine"
+		texturefile = "gfx/interface/goals/UKR/UKR_forge_professional_officer_corps.png"
 		effectFile = gfx/FX/buttonstate.lua
 		animation = {
-			animationmaskfile = gfx/interface/goals/UKR/UKR_forge_professional_officer_corps.png
-			animationtexturefile = gfx/interface/goals/shine_overlay.dds
+			animationmaskfile = "gfx/interface/goals/UKR/UKR_forge_professional_officer_corps.png"
+			animationtexturefile = "gfx/interface/goals/shine_overlay.dds"
 			animationrotation = -90.0
 			animationlooping = no
 			animationtime = 0.75
@@ -112,8 +132,8 @@ spriteTypes = {
 			animationtexturescale = { x = 1.0 y = 1.0 }
 		}
 		animation = {
-			animationmaskfile = gfx/interface/goals/UKR/UKR_forge_professional_officer_corps.png
-			animationtexturefile = gfx/interface/goals/shine_overlay.dds
+			animationmaskfile = "gfx/interface/goals/UKR/UKR_forge_professional_officer_corps.png"
+			animationtexturefile = "gfx/interface/goals/shine_overlay.dds"
 			animationrotation = 90.0
 			animationlooping = no
 			animationtime = 0.75
@@ -129,10 +149,15 @@ spriteTypes = {
 	SpriteType = {
 		name = "GFX_UKR_UAV_warfare_revolution"
 		texturefile = "gfx/interface/goals/UKR/UKR_UAV_warfare_revolution.png"
+		legacy_lazy_load = no
+	}
+	SpriteType = {
+		name = "GFX_UKR_UAV_warfare_revolution_shine"
+		texturefile = "gfx/interface/goals/UKR/UKR_UAV_warfare_revolution.png"
 		effectFile = gfx/FX/buttonstate.lua
 		animation = {
-			animationmaskfile = gfx/interface/goals/UKR/UKR_UAV_warfare_revolution.png
-			animationtexturefile = gfx/interface/goals/shine_overlay.dds
+			animationmaskfile = "gfx/interface/goals/UKR/UKR_UAV_warfare_revolution.png"
+			animationtexturefile = "gfx/interface/goals/shine_overlay.dds"
 			animationrotation = -90.0
 			animationlooping = no
 			animationtime = 0.75
@@ -143,8 +168,8 @@ spriteTypes = {
 			animationtexturescale = { x = 1.0 y = 1.0 }
 		}
 		animation = {
-			animationmaskfile = gfx/interface/goals/UKR/UKR_UAV_warfare_revolution.png
-			animationtexturefile = gfx/interface/goals/shine_overlay.dds
+			animationmaskfile = "gfx/interface/goals/UKR/UKR_UAV_warfare_revolution.png"
+			animationtexturefile = "gfx/interface/goals/shine_overlay.dds"
 			animationrotation = 90.0
 			animationlooping = no
 			animationtime = 0.75
@@ -160,10 +185,15 @@ spriteTypes = {
 	SpriteType = {
 		name = "GFX_UKR_donbass_conflict_and_crimea_annexation"
 		texturefile = "gfx/interface/goals/UKR/UKR_donbass_conflict_and_crimea_annexation.png"
+		legacy_lazy_load = no
+	}
+	SpriteType = {
+		name = "GFX_UKR_donbass_conflict_and_crimea_annexation_shine"
+		texturefile = "gfx/interface/goals/UKR/UKR_donbass_conflict_and_crimea_annexation.png"
 		effectFile = gfx/FX/buttonstate.lua
 		animation = {
-			animationmaskfile = gfx/interface/goals/UKR/UKR_donbass_conflict_and_crimea_annexation.png
-			animationtexturefile = gfx/interface/goals/shine_overlay.dds
+			animationmaskfile = "gfx/interface/goals/UKR/UKR_donbass_conflict_and_crimea_annexation.png"
+			animationtexturefile = "gfx/interface/goals/shine_overlay.dds"
 			animationrotation = -90.0
 			animationlooping = no
 			animationtime = 0.75
@@ -174,8 +204,8 @@ spriteTypes = {
 			animationtexturescale = { x = 1.0 y = 1.0 }
 		}
 		animation = {
-			animationmaskfile = gfx/interface/goals/UKR/UKR_donbass_conflict_and_crimea_annexation.png
-			animationtexturefile = gfx/interface/goals/shine_overlay.dds
+			animationmaskfile = "gfx/interface/goals/UKR/UKR_donbass_conflict_and_crimea_annexation.png"
+			animationtexturefile = "gfx/interface/goals/shine_overlay.dds"
 			animationrotation = 90.0
 			animationlooping = no
 			animationtime = 0.75
@@ -191,10 +221,15 @@ spriteTypes = {
 	SpriteType = {
 		name = "GFX_UKR_european_integration"
 		texturefile = "gfx/interface/goals/UKR/UKR_european_integration.png"
+		legacy_lazy_load = no
+	}
+	SpriteType = {
+		name = "GFX_UKR_european_integration_shine"
+		texturefile = "gfx/interface/goals/UKR/UKR_european_integration.png"
 		effectFile = gfx/FX/buttonstate.lua
 		animation = {
-			animationmaskfile = gfx/interface/goals/UKR/UKR_european_integration.png
-			animationtexturefile = gfx/interface/goals/shine_overlay.dds
+			animationmaskfile = "gfx/interface/goals/UKR/UKR_european_integration.png"
+			animationtexturefile = "gfx/interface/goals/shine_overlay.dds"
 			animationrotation = -90.0
 			animationlooping = no
 			animationtime = 0.75
@@ -205,8 +240,8 @@ spriteTypes = {
 			animationtexturescale = { x = 1.0 y = 1.0 }
 		}
 		animation = {
-			animationmaskfile = gfx/interface/goals/UKR/UKR_european_integration.png
-			animationtexturefile = gfx/interface/goals/shine_overlay.dds
+			animationmaskfile = "gfx/interface/goals/UKR/UKR_european_integration.png"
+			animationtexturefile = "gfx/interface/goals/shine_overlay.dds"
 			animationrotation = 90.0
 			animationlooping = no
 			animationtime = 0.75
@@ -222,10 +257,15 @@ spriteTypes = {
 	SpriteType = {
 		name = "GFX_UKR_economic_transformation"
 		texturefile = "gfx/interface/goals/UKR/UKR_economic_transformation.png"
+		legacy_lazy_load = no
+	}
+	SpriteType = {
+		name = "GFX_UKR_economic_transformation_shine"
+		texturefile = "gfx/interface/goals/UKR/UKR_economic_transformation.png"
 		effectFile = gfx/FX/buttonstate.lua
 		animation = {
-			animationmaskfile = gfx/interface/goals/UKR/UKR_economic_transformation.png
-			animationtexturefile = gfx/interface/goals/shine_overlay.dds
+			animationmaskfile = "gfx/interface/goals/UKR/UKR_economic_transformation.png"
+			animationtexturefile = "gfx/interface/goals/shine_overlay.dds"
 			animationrotation = -90.0
 			animationlooping = no
 			animationtime = 0.75
@@ -236,8 +276,8 @@ spriteTypes = {
 			animationtexturescale = { x = 1.0 y = 1.0 }
 		}
 		animation = {
-			animationmaskfile = gfx/interface/goals/UKR/UKR_economic_transformation.png
-			animationtexturefile = gfx/interface/goals/shine_overlay.dds
+			animationmaskfile = "gfx/interface/goals/UKR/UKR_economic_transformation.png"
+			animationtexturefile = "gfx/interface/goals/shine_overlay.dds"
 			animationrotation = 90.0
 			animationlooping = no
 			animationtime = 0.75
@@ -253,10 +293,15 @@ spriteTypes = {
 	SpriteType = {
 		name = "GFX_UKR_Covid"
 		texturefile = "gfx/interface/goals/UKR/UKR_Covid.png"
+		legacy_lazy_load = no
+	}
+	SpriteType = {
+		name = "GFX_UKR_Covid_shine"
+		texturefile = "gfx/interface/goals/UKR/UKR_Covid.png"
 		effectFile = gfx/FX/buttonstate.lua
 		animation = {
-			animationmaskfile = gfx/interface/goals/UKR/UKR_Covid.png
-			animationtexturefile = gfx/interface/goals/shine_overlay.dds
+			animationmaskfile = "gfx/interface/goals/UKR/UKR_Covid.png"
+			animationtexturefile = "gfx/interface/goals/shine_overlay.dds"
 			animationrotation = -90.0
 			animationlooping = no
 			animationtime = 0.75
@@ -267,8 +312,8 @@ spriteTypes = {
 			animationtexturescale = { x = 1.0 y = 1.0 }
 		}
 		animation = {
-			animationmaskfile = gfx/interface/goals/UKR/UKR_Covid.png
-			animationtexturefile = gfx/interface/goals/shine_overlay.dds
+			animationmaskfile = "gfx/interface/goals/UKR/UKR_Covid.png"
+			animationtexturefile = "gfx/interface/goals/shine_overlay.dds"
 			animationrotation = 90.0
 			animationlooping = no
 			animationtime = 0.75
@@ -284,10 +329,15 @@ spriteTypes = {
 	SpriteType = {
 		name = "GFX_UKR_budget_military"
 		texturefile = "gfx/interface/goals/UKR/UKR_budget_military.png"
+		legacy_lazy_load = no
+	}
+	SpriteType = {
+		name = "GFX_UKR_budget_military_shine"
+		texturefile = "gfx/interface/goals/UKR/UKR_budget_military.png"
 		effectFile = gfx/FX/buttonstate.lua
 		animation = {
-			animationmaskfile = gfx/interface/goals/UKR/UKR_budget_military.png
-			animationtexturefile = gfx/interface/goals/shine_overlay.dds
+			animationmaskfile = "gfx/interface/goals/UKR/UKR_budget_military.png"
+			animationtexturefile = "gfx/interface/goals/shine_overlay.dds"
 			animationrotation = -90.0
 			animationlooping = no
 			animationtime = 0.75
@@ -298,8 +348,8 @@ spriteTypes = {
 			animationtexturescale = { x = 1.0 y = 1.0 }
 		}
 		animation = {
-			animationmaskfile = gfx/interface/goals/UKR/UKR_budget_military.png
-			animationtexturefile = gfx/interface/goals/shine_overlay.dds
+			animationmaskfile = "gfx/interface/goals/UKR/UKR_budget_military.png"
+			animationtexturefile = "gfx/interface/goals/shine_overlay.dds"
 			animationrotation = 90.0
 			animationlooping = no
 			animationtime = 0.75
@@ -315,10 +365,15 @@ spriteTypes = {
 	SpriteType = {
 		name = "GFX_UKR_shadow_war"
 		texturefile = "gfx/interface/goals/UKR/UKR_shadow_war.png"
+		legacy_lazy_load = no
+	}
+	SpriteType = {
+		name = "GFX_UKR_shadow_war_shine"
+		texturefile = "gfx/interface/goals/UKR/UKR_shadow_war.png"
 		effectFile = gfx/FX/buttonstate.lua
 		animation = {
-			animationmaskfile = gfx/interface/goals/UKR/UKR_shadow_war.png
-			animationtexturefile = gfx/interface/goals/shine_overlay.dds
+			animationmaskfile = "gfx/interface/goals/UKR/UKR_shadow_war.png"
+			animationtexturefile = "gfx/interface/goals/shine_overlay.dds"
 			animationrotation = -90.0
 			animationlooping = no
 			animationtime = 0.75
@@ -329,8 +384,8 @@ spriteTypes = {
 			animationtexturescale = { x = 1.0 y = 1.0 }
 		}
 		animation = {
-			animationmaskfile = gfx/interface/goals/UKR/UKR_shadow_war.png
-			animationtexturefile = gfx/interface/goals/shine_overlay.dds
+			animationmaskfile = "gfx/interface/goals/UKR/UKR_shadow_war.png"
+			animationtexturefile = "gfx/interface/goals/shine_overlay.dds"
 			animationrotation = 90.0
 			animationlooping = no
 			animationtime = 0.75

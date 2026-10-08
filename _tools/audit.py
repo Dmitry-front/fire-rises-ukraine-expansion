@@ -188,6 +188,7 @@ for p in files('.gfx'):
 # --- пути и формат графики (см. CLAUDE.md, «Графика»)
 print('\n=== GFX: пути, форматы, дубли')
 sprite_names = collections.defaultdict(list)
+goal_sprites = []
 for p in files('.gfx'):
     if p.startswith('_'): continue
     for blk in re.finditer(r'[sS]prite[tT]ype\s*=\s*\{', texts[p]):
@@ -200,9 +201,14 @@ for p in files('.gfx'):
         if not nm: continue
         sprite_names[nm.group(1)].append(p)
         tf = re.search(r'texturefile\s*=\s*"([^"]+)"', body)
-        # иконки фокусов обязаны иметь buttonstate.lua, иначе в дереве не затемняются по состоянию
-        if tf and '/interface/goals/' in tf.group(1) and 'buttonstate.lua' not in body:
-            print('ФОКУС-ИКОНКА БЕЗ buttonstate.lua:', nm.group(1), p)
+        # иконка фокуса: пара GFX_x + GFX_x_shine, а блик (_shine) обязан иметь buttonstate.lua и анимацию
+        if tf and '/interface/goals/' in tf.group(1):
+            if nm.group(1).endswith('_shine'):
+                if 'buttonstate.lua' not in body or 'animation' not in body: print('SHINE БЕЗ buttonstate.lua/animation:', nm.group(1), p)
+            else:
+                goal_sprites.append(nm.group(1))
+for g in goal_sprites:
+    if g + '_shine' not in sprite_names: print('ФОКУС-ИКОНКА БЕЗ ПАРЫ _shine:', g)
 for n, ps in sprite_names.items():
     if len(ps) > 1: print('СПРАЙТ ОПРЕДЕЛЁН НЕСКОЛЬКО РАЗ:', n, ps)
 # формат файла по содержимому, а не по расширению (PNG, переименованный в .dds, в игре не грузится)
@@ -217,6 +223,10 @@ for p in texts:
     if not OWN(p) or p.endswith('.gfx'): continue
     for m in re.finditer(r'"(gfx/[^"]*/UKR/[^"]+\.(?:png|dds|tga))"', texts[p]):
         if not os.path.exists(m.group(1)): print('НЕТ ФАЙЛА ПО ПУТИ:', m.group(1), p)
+# idea: picture = X ищет GFX_idea_X (префикс игра добавляет сама, picture = GFX_... даёт GFX_idea_GFX_... и пустую иконку)
+for p in texts:
+    if p.startswith('common/ideas/') and OWN(p):
+        for m in re.finditer(r'\bpicture\s*=\s*"?(GFX_\w+)', texts[p]): print('ИДЕЯ: picture с префиксом GFX_ (убрать GFX_idea_):', m.group(1), p)
 # idea picture = X -> GFX_idea_X, если X начинается с UKR_ (наш арт), спрайт должен быть определён
 for p in texts:
     if not p.startswith('common/ideas/'): continue

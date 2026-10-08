@@ -2,13 +2,29 @@ on_actions = {
     # ROOT — новый контролёр области, FROM — прежний контролёр, FROM.FROM — сама область
     on_state_control_changed = {
         effect = {
-            # При потере контроля над украинской территорией
+            # При потере контроля над украинской территорией (кроме десяти ключевых областей, см. ниже)
             if = {
                 limit = {
                     FROM = { tag = UKR has_country_flag = UKR_war_mood_active }
                     FROM.FROM = {
                         is_core_of = UKR
                         NOT = { has_state_flag = UKR_recently_lost }
+                        # Десять ключевых областей (Киев и девять городов) считают настрой сами:
+                        # в on_daily и в событиях ukrainewar.100-109. Здесь их не считаем, чтобы не было двойного счёта.
+                        NOT = {
+                            OR = {
+                                state = 1285
+                                state = 221
+                                state = 225
+                                state = 193
+                                state = 200
+                                state = 196
+                                state = 226
+                                state = 201
+                                state = 192
+                                state = 91
+                            }
+                        }
                     }
                 }
                 # Защита от повторного счёта, если область переходит из рук в руки

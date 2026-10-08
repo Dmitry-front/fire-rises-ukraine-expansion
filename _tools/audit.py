@@ -185,6 +185,49 @@ for p in files('.gfx'):
         if ('UKR' in f or 'ukr' in f.lower()) and not os.path.exists(f) and not os.path.exists(f.replace('.dds', '.png')):
             print('нет файла текстуры:', f, 'в', p)
 
+# --- пути и формат графики (см. CLAUDE.md, «Графика»)
+print('\n=== GFX: пути, форматы, дубли')
+sprite_names = collections.defaultdict(list)
+for p in files('.gfx'):
+    if p.startswith('_'): continue
+    for blk in re.finditer(r'[sS]prite[tT]ype\s*=\s*\{', texts[p]):
+        # тело спрайта: до парной закрывающей скобки
+        i, depth = blk.end(), 1
+        while i < len(texts[p]) and depth:
+            depth += {'{': 1, '}': -1}.get(texts[p][i], 0); i += 1
+        body = texts[p][blk.end():i]
+        nm = re.search(r'name\s*=\s*"?(GFX_\w+)', body)
+        if not nm: continue
+        sprite_names[nm.group(1)].append(p)
+        tf = re.search(r'texturefile\s*=\s*"([^"]+)"', body)
+        # иконки фокусов обязаны иметь buttonstate.lua, иначе в дереве не затемняются по состоянию
+        if tf and '/interface/goals/' in tf.group(1) and 'buttonstate.lua' not in body:
+            print('ФОКУС-ИКОНКА БЕЗ buttonstate.lua:', nm.group(1), p)
+for n, ps in sprite_names.items():
+    if len(ps) > 1: print('СПРАЙТ ОПРЕДЕЛЁН НЕСКОЛЬКО РАЗ:', n, ps)
+# формат файла по содержимому, а не по расширению (PNG, переименованный в .dds, в игре не грузится)
+for d, _, fs in os.walk('gfx'):
+    for f in fs:
+        pth = os.path.join(d, f).replace(chr(92), '/')
+        head = open(pth, 'rb').read(8)
+        if f.lower().endswith('.dds') and not head.startswith(b'DDS '): print('ФАЙЛ .dds НЕ ЯВЛЯЕТСЯ DDS:', pth)
+        if f.lower().endswith('.png') and not head.startswith(b'\x89PNG'): print('ФАЙЛ .png НЕ ЯВЛЯЕТСЯ PNG:', pth)
+# пути gfx/... в скриптах (портреты персонажей и т.п.): наши UKR-файлы должны существовать
+for p in texts:
+    if not OWN(p) or p.endswith('.gfx'): continue
+    for m in re.finditer(r'"(gfx/[^"]*/UKR/[^"]+\.(?:png|dds|tga))"', texts[p]):
+        if not os.path.exists(m.group(1)): print('НЕТ ФАЙЛА ПО ПУТИ:', m.group(1), p)
+# idea picture = X -> GFX_idea_X, если X начинается с UKR_ (наш арт), спрайт должен быть определён
+for p in texts:
+    if not p.startswith('common/ideas/'): continue
+    for m in re.finditer(r'\bpicture\s*=\s*"?(UKR_\w+)"?', texts[p]):
+        if 'GFX_idea_' + m.group(1) not in sprite_names:
+            print('ИДЕЯ: нет спрайта GFX_idea_%s (если арт из TFR - проигнорировать):' % m.group(1), p)
+for p in texts:
+    if not p.startswith('common/intelligence_agencies/'): continue
+    for m in re.finditer(r'picture\s*=\s*(GFX_\w*(?:Ukraine|UKR)\w*)', texts[p]):
+        if m.group(1) not in sprite_names: print('АГЕНТСТВО: нет спрайта', m.group(1))
+
 print('\n=== Локализация')
 loc = {}
 for p in files('.yml'):

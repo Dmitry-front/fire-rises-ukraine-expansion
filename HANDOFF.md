@@ -9,6 +9,10 @@
 
 ---
 
+## 0в. Сессия 13 (08.10.2026): пути иконок и графики
+
+Разбор «иконки показываются криво». Найдено и исправлено: портреты лежали в `gfx/interface/leaders/UKR`, а код ссылается на `gfx/leaders/UKR` (перенесены); три «.dds» на деле PNG (конвертированы); дубли и «голые» спрайты в `interface/TFR_goals_UKR.gfx` (пересобран по шаблону с `buttonstate.lua`); нет спрайтов `GFX_idea_UKR_legacy_of_kiev_junta` и логотипа разведки (добавлены). В `_tools/audit.py` новый раздел «GFX: пути, форматы, дубли»; правила - `CLAUDE.md`, «Графика: пути и спрайты». **Открытое - `TECH_DEBT.md`, TD-25**, главный вопрос автору: заменяют ли наши `interface/TFR_*_UKR.gfx` одноимённые файлы TFR и не теряются ли из-за этого спрайты TFR.
+
 ## 0б. Сессия 12 (07.10.2026): национальные духи, пакет 1 (сезон 2023)
 
 `PROPOSAL_spirits.md`: автор выбрал модификаторы TFR без пульса `on_weekly`, склонности как множитель, износ-шрам только у «кризисных» духов; `UKR_hunt_on_activists` не трогать. **Сделано (пакет 1):** 7 духов сезона 2023 (`UKR_west_trust_crisis`, `UKR_left_consolidation`, `UKR_left_front_surge`, `UKR_right_turn`, `UKR_eggs_scandal`, `UKR_corridor_rumours`, `UKR_street_demands`) - статика в идее (`stability_weekly`, `war_support_weekly`, `party_popularity_stability_factor`), сдвиги `*_drift` в динамических модификаторах `common/dynamic_modifiers/UKR_dynamic_season.txt`, силу считают эффекты `common/scripted_effects/UKR_season_effects.txt` (вызываются из `events/UKR_events_politics.txt` после `add_timed_idea`). Общий регулятор силы дрейфа - переменная `UKR_season_scale` (1 по умолчанию).

@@ -32,8 +32,8 @@ focus_tree = {
 		prerequisite = { focus = UKR_b2_campaign_2024 }
 		mutually_exclusive = { focus = UKR_b2_veteran_councils }
 		relative_position_id = UKR_b2_campaign_2024
-		x = -5
-		y = 1
+		x = -4
+		y = 2
 		cost = 3
 		ai_will_do = {
 			factor = 10
@@ -71,41 +71,41 @@ focus_tree = {
 	}
 
 	focus = {
-		id = UKR_b2_veteran_councils
-		icon = GFX_goal_generic_national_unity
-		prerequisite = { focus = UKR_b2_campaign_2024 }
-		mutually_exclusive = { focus = UKR_b2_veterans_against_oligarchs }
-		relative_position_id = UKR_b2_campaign_2024
-		x = -3
-		y = 1
-		cost = 3
-		ai_will_do = {
-			factor = 10
-			modifier = {
-				factor = 2
-				check_variable = { var = UKR_nationalist_lean value = UKR_left_lean compare = greater_than }
-			}
-		}
-		completion_reward = {
-			hidden_effect = { country_event = { id = ukraine_politics.221 days = 8 } }
-			add_war_support = 0.03
-			add_manpower = 7500
-			army_experience = 15
-			set_temp_variable = {
-			var = military_development_var_temp
-			value = 0.15
-			}
-			add_military_development = yes
-			add_popularity = { ideology = nationalist popularity = 0.025 }
-			custom_effect_tooltip = UKR_pop_national_socialist_p2_tt
-			hidden_effect = { add_popularity = { ideology = national_socialist popularity = 0.02 } }
-			hidden_effect = { add_popularity = { ideology = nationalist popularity = 0.01 } }
-			hidden_effect = {
-				add_to_variable = { UKR_nationalist_lean = 6 }
-				add_to_variable = { UKR_left_lean = -2 }
-				UKR_clamp_leans = yes
-			}
-		}
+	    id = UKR_b2_veteran_councils
+	    icon = GFX_goal_generic_national_unity
+	    relative_position_id = UKR_b2_campaign_2024
+	    x = -2
+	    y = 2
+	    cost = 3
+	    prerequisite = { focus = UKR_b2_campaign_2024 }
+	    mutually_exclusive = { focus = UKR_b2_veterans_against_oligarchs }
+	    ai_will_do = {
+         factor = 10
+         modifier = {
+             factor = 2
+             check_variable = { var = UKR_nationalist_lean value = UKR_left_lean compare = greater_than }
+         }
+	    }
+	    completion_reward = {
+         hidden_effect = { country_event = { id = ukraine_politics.221 days = 8 } }
+         add_war_support = 0.03
+         add_manpower = 7500
+         army_experience = 15
+         set_temp_variable = {
+             var = military_development_var_temp
+             value = 0.15
+         }
+         add_military_development = yes
+         add_popularity = { ideology = nationalist popularity = 0.025 }
+         custom_effect_tooltip = UKR_pop_national_socialist_p2_tt
+         hidden_effect = { add_popularity = { ideology = national_socialist popularity = 0.02 } }
+         hidden_effect = { add_popularity = { ideology = nationalist popularity = 0.01 } }
+         hidden_effect = {
+             add_to_variable = { UKR_nationalist_lean = 6 }
+             add_to_variable = { UKR_left_lean = -2 }
+             UKR_clamp_leans = yes
+         }
+	    }
 	}
 
 	# Ряд 1. Цифровизация или личная лояльность: технократы или вертикаль
@@ -115,8 +115,8 @@ focus_tree = {
 		prerequisite = { focus = UKR_b2_campaign_2024 }
 		mutually_exclusive = { focus = UKR_b2_loyal_people }
 		relative_position_id = UKR_b2_campaign_2024
-		x = 3
-		y = 1
+		x = 2
+		y = 2
 		cost = 3
 		ai_will_do = {
 			factor = 10
@@ -152,8 +152,8 @@ focus_tree = {
 		prerequisite = { focus = UKR_b2_campaign_2024 }
 		mutually_exclusive = { focus = UKR_b2_transparent_state }
 		relative_position_id = UKR_b2_campaign_2024
-		x = 5
-		y = 1
+		x = 4
+		y = 2
 		cost = 3
 		ai_will_do = {
 			factor = 10
@@ -185,23 +185,23 @@ focus_tree = {
 
 	# Ряд 1. Необязательный фокус кампании
 	focus = {
-		id = UKR_b2_meet_voters
-		icon = GFX_goal_support_democracy
-		prerequisite = { focus = UKR_b2_campaign_2024 }
-		relative_position_id = UKR_b2_campaign_2024
-		x = 0
-		y = 1
-		cost = 3
-		ai_will_do = {
-			factor = 5
-		}
-		completion_reward = {
-			hidden_effect = { country_event = { id = ukraine_politics.224 days = 8 } }
-			add_stability = 0.005
-			add_political_power = 45
-			custom_effect_tooltip = UKR_pop_social_liberal_p2_tt
-			hidden_effect = { add_popularity = { ideology = social_liberal popularity = 0.02 } }
-		}
+	    id = UKR_b2_meet_voters
+	    icon = GFX_goal_support_democracy
+	    relative_position_id = UKR_b2_campaign_2024
+	    x = 0
+	    y = 2
+	    cost = 3
+	    prerequisite = { focus = UKR_b2_campaign_2024 }
+	    ai_will_do = {
+         factor = 5
+	    }
+	    completion_reward = {
+         hidden_effect = { country_event = { id = ukraine_politics.224 days = 8 } }
+         add_stability = 0.005
+         add_political_power = 45
+         custom_effect_tooltip = UKR_pop_social_liberal_p2_tt
+         hidden_effect = { add_popularity = { ideology = social_liberal popularity = 0.02 } }
+	    }
 	}
 
 	# Ряд 2. Антикоррупционные органы: подчинить или защитить
@@ -212,8 +212,8 @@ focus_tree = {
 		prerequisite = { focus = UKR_b2_transparent_state focus = UKR_b2_loyal_people }
 		mutually_exclusive = { focus = UKR_b2_protect_anticorruption }
 		relative_position_id = UKR_b2_campaign_2024
-		x = -2
-		y = 2
+		x = -1
+		y = 4
 		cost = 4
 		ai_will_do = {
 			factor = 5
@@ -245,8 +245,8 @@ focus_tree = {
 		prerequisite = { focus = UKR_b2_transparent_state focus = UKR_b2_loyal_people }
 		mutually_exclusive = { focus = UKR_b2_subordinate_anticorruption }
 		relative_position_id = UKR_b2_campaign_2024
-		x = 2
-		y = 2
+		x = 1
+		y = 4
 		cost = 4
 		ai_will_do = {
 			factor = 10
@@ -277,7 +277,7 @@ focus_tree = {
 		mutually_exclusive = { focus = UKR_b2_bet_left focus = UKR_b2_bet_oligarchs focus = UKR_b2_bet_nationalists }
 		relative_position_id = UKR_b2_campaign_2024
 		x = -3
-		y = 3
+		y = 6
 		cost = 5
 		ai_will_do = {
 			factor = 10
@@ -304,7 +304,7 @@ focus_tree = {
 		mutually_exclusive = { focus = UKR_b2_bet_technocrats focus = UKR_b2_bet_oligarchs focus = UKR_b2_bet_nationalists }
 		relative_position_id = UKR_b2_campaign_2024
 		x = -1
-		y = 3
+		y = 6
 		cost = 5
 		ai_will_do = {
 			factor = 10
@@ -331,7 +331,7 @@ focus_tree = {
 		mutually_exclusive = { focus = UKR_b2_bet_technocrats focus = UKR_b2_bet_left focus = UKR_b2_bet_nationalists }
 		relative_position_id = UKR_b2_campaign_2024
 		x = 1
-		y = 3
+		y = 6
 		cost = 5
 		# Дерево пути: шаг 1 готов (PROPOSAL_oligarchs.md, раздел 16), блокировка снята 08.10.2026
 		ai_will_do = {
@@ -359,7 +359,7 @@ focus_tree = {
 		mutually_exclusive = { focus = UKR_b2_bet_technocrats focus = UKR_b2_bet_left focus = UKR_b2_bet_oligarchs }
 		relative_position_id = UKR_b2_campaign_2024
 		x = 3
-		y = 3
+		y = 6
 		cost = 5
 		# Дерево пути готово (шаги 1-3, PROPOSAL_nationalists.md): блокировка снята 05.10.2026.
 		# Военное дерево пути (DESIGN.md, 8.5) ещё впереди.

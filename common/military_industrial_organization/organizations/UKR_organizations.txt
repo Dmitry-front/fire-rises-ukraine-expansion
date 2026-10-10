@@ -1,0 +1,465 @@
+# Украинские военно-промышленные организации (PROPOSAL_concerns.md).
+# Каждая - копия базового архетипа TFR (include) со своим названием, иконкой, начальной чертой
+# и двумя-тремя уникальными чертами. Свои черты стоят в ряду y=5 под деревом архетипа
+# (все архетипы занимают ряды 0-4), без родителей: корневые, чтобы не пересекаться с чужими позициями.
+# Иконки временные: ванильные GFX_idea_generic_*_manufacturer_* (CLAUDE.md, «Нужен арт»).
+# Окно решений, которые пополняют funds: common/decisions/UKR_decisions_defense_industry.txt
+
+#########
+# Танки #
+#########
+
+# Завод имени Малышева и КБ имени Морозова (Харьков)
+UKR_malyshev_organization = {
+	include = generic_medium_tank_organization
+	icon = GFX_idea_generic_tank_manufacturer_2
+
+	allowed = {
+		original_tag = UKR
+		has_dlc = "Arms Against Tyranny"
+	}
+
+	initial_trait = {
+		name = UKR_malyshev_initial_trait
+
+		equipment_bonus = {
+			reliability = 0.04
+			armor_value = 0.02
+		}
+	}
+
+	# Двигатель типа 6ТД: надёжность и скорость
+	trait = {
+		token = UKR_mio_trait_oplot_engine
+		name = UKR_mio_trait_oplot_engine
+		icon = GFX_generic_mio_trait_icon_reliability
+
+		position = { x=0 y=5 }
+		relative_position_id = generic_mio_trait_power_traverse
+
+		equipment_bonus = {
+			maximum_speed = 0.05
+			reliability = 0.05
+		}
+	}
+
+	# Комплекс динамической защиты: броня за счёт цены
+	trait = {
+		token = UKR_mio_trait_reactive_armor
+		name = UKR_mio_trait_reactive_armor
+		icon = GFX_generic_mio_trait_icon_armor_value
+
+		position = { x=3 y=5 }
+		relative_position_id = generic_mio_trait_power_traverse
+
+		equipment_bonus = {
+			armor_value = 0.08
+			defense = 0.05
+			build_cost_ic = 0.03
+		}
+	}
+}
+
+# Бронетанковые ремонтные заводы (Львов, Киев, Николаев)
+UKR_armor_repair_organization = {
+	include = generic_tank_refurbishment_plant_organization
+	icon = GFX_idea_generic_tank_manufacturer_3
+
+	allowed = {
+		original_tag = UKR
+		has_dlc = "Arms Against Tyranny"
+	}
+
+	initial_trait = {
+		token = UKR_armor_repair_initial_trait
+		name = UKR_armor_repair_initial_trait
+
+		limit_to_equipment_type = { armor }
+
+		production_bonus = {
+			production_conversion_speed_factor = 0.15
+			production_cost_factor = -0.03
+		}
+	}
+
+	# Трофейный фонд: захваченная техника возвращается в строй
+	trait = {
+		token = UKR_mio_trait_trophy_fund
+		name = UKR_mio_trait_trophy_fund
+		icon = GFX_generic_mio_department_icon_tank_general_conversion
+
+		position = { x=0 y=5 }
+		relative_position_id = generic_mio_trait_enemy_tank_refitting
+
+		limit_to_equipment_type = { armor }
+
+		production_bonus = {
+			production_conversion_speed_factor = 0.2
+			production_resource_need_factor = -0.15
+		}
+	}
+
+	# Ремонт у линии фронта
+	trait = {
+		token = UKR_mio_trait_field_repair
+		name = UKR_mio_trait_field_repair
+		icon = GFX_generic_mio_trait_icon_reliability
+
+		position = { x=3 y=5 }
+		relative_position_id = generic_mio_trait_enemy_tank_refitting
+
+		limit_to_equipment_type = { armor }
+
+		equipment_bonus = {
+			reliability = 0.04
+		}
+		production_bonus = {
+			production_efficiency_gain_factor = 0.1
+		}
+	}
+}
+
+# КрАЗ (Кременчуг) и производители бронемашин. Архетип требует DLC La Resistance
+UKR_kraz_organization = {
+	include = generic_armored_car_organization
+	icon = GFX_idea_generic_tank_manufacturer_1
+
+	allowed = {
+		original_tag = UKR
+		has_dlc = "Arms Against Tyranny"
+		has_dlc = "La Resistance"
+	}
+
+	initial_trait = {
+		name = UKR_kraz_initial_trait
+
+		equipment_bonus = {
+			maximum_speed = 0.03
+			reliability = 0.03
+		}
+	}
+
+	# Колёсные шасси большой проходимости
+	trait = {
+		token = UKR_mio_trait_wheeled_chassis
+		name = UKR_mio_trait_wheeled_chassis
+		icon = GFX_generic_mio_trait_icon_maximum_speed
+
+		position = { x=0 y=5 }
+		relative_position_id = generic_mio_trait_simplified_suspension
+
+		equipment_bonus = {
+			maximum_speed = 0.06
+			fuel_consumption = -0.05
+		}
+	}
+
+	# Противоминная защита корпуса
+	trait = {
+		token = UKR_mio_trait_mine_resistant_hull
+		name = UKR_mio_trait_mine_resistant_hull
+		icon = GFX_generic_mio_trait_icon_defense
+
+		position = { x=3 y=5 }
+		relative_position_id = generic_mio_trait_simplified_suspension
+
+		equipment_bonus = {
+			defense = 0.06
+			armor_value = 0.04
+			build_cost_ic = 0.02
+		}
+	}
+}
+
+##########
+# БПЛА   #
+##########
+
+# Оборонный кластер БПЛА: мастерские, волонтёры, стартапы (архетип БПЛА из TFR)
+UKR_drone_cluster_organization = {
+	include = generic_TFR_UAV_equipment_organization
+	icon = GFX_idea_generic_infantry_equipment_manufacturer_2
+
+	allowed = {
+		original_tag = UKR
+		has_dlc = "Arms Against Tyranny"
+	}
+
+	initial_trait = {
+		name = UKR_drone_cluster_initial_trait
+
+		organization_modifier = {
+			military_industrial_organization_funds_gain = 0.05
+		}
+		production_bonus = {
+			production_efficiency_gain_factor = 0.1
+		}
+		equipment_bonus = {
+			soft_attack = 0.04
+			reliability = -0.05
+		}
+	}
+
+	# Гаражные мастерские: быстро и дёшево, но сыро
+	trait = {
+		token = UKR_mio_trait_garage_workshops
+		name = UKR_mio_trait_garage_workshops
+		icon = GFX_tfr_mio_icon_integrated_production
+
+		position = { x=0 y=5 }
+		relative_position_id = generic_mio_trait_drum_pattern_sights
+
+		production_bonus = {
+			production_efficiency_gain_factor = 0.15
+			production_cost_factor = -0.05
+		}
+		equipment_bonus = {
+			reliability = -0.05
+		}
+	}
+
+	# Волонтёрское финансирование
+	trait = {
+		token = UKR_mio_trait_volunteer_funding
+		name = UKR_mio_trait_volunteer_funding
+		icon = GFX_generic_mio_department_icon_facilities
+
+		position = { x=2 y=5 }
+		relative_position_id = generic_mio_trait_drum_pattern_sights
+
+		organization_modifier = {
+			military_industrial_organization_funds_gain = 0.15
+		}
+	}
+
+	# Нейросетевое наведение
+	trait = {
+		token = UKR_mio_trait_neuro_guidance
+		name = UKR_mio_trait_neuro_guidance
+		icon = GFX_tfr_mio_icon_AI_disign
+
+		position = { x=4 y=5 }
+		relative_position_id = generic_mio_trait_drum_pattern_sights
+
+		equipment_bonus = {
+			soft_attack = 0.08
+			breakthrough = 0.04
+		}
+	}
+}
+
+##########
+# Авиация #
+##########
+
+# «Антонов»
+UKR_antonov_organization = {
+	include = generic_heavy_aircraft_organization
+	icon = GFX_idea_generic_air_manufacturer_2
+
+	allowed = {
+		original_tag = UKR
+		has_dlc = "Arms Against Tyranny"
+	}
+
+	initial_trait = {
+		name = UKR_antonov_initial_trait
+
+		organization_modifier = {
+			military_industrial_organization_research_bonus = 0.05
+		}
+		equipment_bonus = {
+			air_range = 0.05
+			build_cost_ic = -0.02
+		}
+	}
+
+	# Школа транспортной авиации: дальность и грузоподъёмность
+	trait = {
+		token = UKR_mio_trait_transport_school
+		name = UKR_mio_trait_transport_school
+		icon = GFX_generic_mio_trait_icon_naval_range
+
+		position = { x=0 y=5 }
+		relative_position_id = generic_mio_trait_reinforced_frames
+
+		equipment_bonus = {
+			air_range = 0.1
+			build_cost_ic = -0.03
+		}
+	}
+
+	# Посадка на неподготовленные полосы
+	trait = {
+		token = UKR_mio_trait_rough_field_landing
+		name = UKR_mio_trait_rough_field_landing
+		icon = GFX_generic_mio_trait_icon_reliability
+
+		position = { x=3 y=5 }
+		relative_position_id = generic_mio_trait_reinforced_frames
+
+		equipment_bonus = {
+			reliability = 0.05
+			fuel_consumption = -0.05
+		}
+	}
+}
+
+# «Мотор Сич» и «Ивченко-Прогресс»
+UKR_motor_sich_organization = {
+	include = generic_range_focused_aircraft_organization
+	icon = GFX_idea_generic_air_manufacturer_3
+
+	allowed = {
+		original_tag = UKR
+		has_dlc = "Arms Against Tyranny"
+	}
+
+	initial_trait = {
+		name = UKR_motor_sich_initial_trait
+
+		organization_modifier = {
+			military_industrial_organization_research_bonus = 0.05
+		}
+		equipment_bonus = {
+			reliability = 0.03
+		}
+	}
+
+	# Двигатели Ивченко: тяга и надёжность
+	trait = {
+		token = UKR_mio_trait_ivchenko_engines
+		name = UKR_mio_trait_ivchenko_engines
+		icon = GFX_generic_mio_trait_icon_maximum_speed
+
+		position = { x=0 y=5 }
+		relative_position_id = generic_mio_trait_large_rudders_and_flaps
+
+		equipment_bonus = {
+			maximum_speed = 0.05
+			reliability = 0.05
+		}
+	}
+
+	# Экономичный расход топлива
+	trait = {
+		token = UKR_mio_trait_fuel_economy
+		name = UKR_mio_trait_fuel_economy
+		icon = GFX_generic_mio_trait_icon_fuel_consumption
+
+		position = { x=3 y=5 }
+		relative_position_id = generic_mio_trait_large_rudders_and_flaps
+
+		equipment_bonus = {
+			air_range = 0.1
+			fuel_consumption = -0.08
+		}
+	}
+}
+
+# Авиаремонтные заводы (Львов, Николаев, Чугуев): модернизация советских истребителей
+UKR_aircraft_repair_organization = {
+	include = generic_high_agility_fighter_aircraft_organization
+	icon = GFX_idea_generic_air_manufacturer_1
+
+	allowed = {
+		original_tag = UKR
+		has_dlc = "Arms Against Tyranny"
+	}
+
+	initial_trait = {
+		name = UKR_aircraft_repair_initial_trait
+
+		production_bonus = {
+			production_conversion_speed_factor = 0.1
+		}
+		equipment_bonus = {
+			air_agility = 0.03
+		}
+	}
+
+	# Модернизация МиГ-29: бортовая электроника
+	trait = {
+		token = UKR_mio_trait_mig29_upgrade
+		name = UKR_mio_trait_mig29_upgrade
+		icon = GFX_generic_mio_trait_icon_air_agility
+
+		position = { x=2 y=5 }
+		relative_position_id = generic_mio_trait_fabric_skin
+
+		equipment_bonus = {
+			air_agility = 0.06
+			air_attack = 0.04
+			build_cost_ic = 0.03
+		}
+	}
+
+	# Капремонт Су-27: ресурс планера
+	trait = {
+		token = UKR_mio_trait_su27_overhaul
+		name = UKR_mio_trait_su27_overhaul
+		icon = GFX_generic_mio_trait_icon_reliability
+
+		position = { x=5 y=5 }
+		relative_position_id = generic_mio_trait_fabric_skin
+
+		equipment_bonus = {
+			reliability = 0.08
+			air_defence = 0.04
+		}
+	}
+}
+
+#########
+# Флот  #
+#########
+
+# Черноморский судостроительный завод и «Зоря-Машпроект» (Николаев)
+UKR_mykolaiv_yard_organization = {
+	include = generic_black_sea_fleet_organization
+	icon = GFX_idea_generic_naval_manufacturer_2
+
+	allowed = {
+		original_tag = UKR
+		has_dlc = "Arms Against Tyranny"
+	}
+
+	initial_trait = {
+		name = UKR_mykolaiv_yard_initial_trait
+
+		production_bonus = {
+			production_capacity_factor = 0.04
+		}
+	}
+
+	# Газотурбинные установки
+	trait = {
+		token = UKR_mio_trait_gas_turbines
+		name = UKR_mio_trait_gas_turbines
+		icon = GFX_generic_mio_trait_icon_maximum_speed
+
+		position = { x=0 y=5 }
+		relative_position_id = generic_mio_trait_submarine_hunters_black_sea
+
+		equipment_bonus = {
+			naval_speed = 0.06
+			fuel_consumption = -0.05
+		}
+	}
+
+	# Береговая оборона: ПВО и дешевизна за счёт дальности
+	trait = {
+		token = UKR_mio_trait_coastal_defense
+		name = UKR_mio_trait_coastal_defense
+		icon = GFX_generic_mio_trait_icon_anti_air_attack
+
+		position = { x=3 y=5 }
+		relative_position_id = generic_mio_trait_submarine_hunters_black_sea
+
+		equipment_bonus = {
+			anti_air_attack = 0.05
+			naval_range = -0.05
+			build_cost_ic = -0.03
+		}
+	}
+}

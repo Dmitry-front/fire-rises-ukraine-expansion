@@ -1,0 +1,391 @@
+# Блок «Оборонная промышленность» (PROPOSAL_concerns.md): решения при военных фокусах.
+# Схема: платим политсилу и деньги -> на срок программы действует скидка на конкретную технику (идея UKR_mio_*_boost)
+# -> по окончании идея снимается и организация получает funds (mio:..., add_mio_funds, как у SOV_izhevsk_kalashnikov_expansion).
+# Тексты стоимости: UKR_mio_cost_a/b/c (локализация), подсказка о funds: UKR_mio_funds_<N>_tt.
+UKR_defense_industry_category = {
+
+	UKR_mio_malyshev_overhaul = {
+		icon = GFX_decision_generic_tank
+
+		visible = {
+			has_dlc = "Arms Against Tyranny"
+			has_completed_focus = UKR_modernize_tank_forces
+		}
+
+		available = {
+			has_dlc = "Arms Against Tyranny"
+		}
+
+		custom_cost_trigger = {
+			has_political_power > 34
+			check_variable = {
+				var = income_var
+				value = 3
+			}
+		}
+		custom_cost_text = UKR_mio_cost_b
+
+		days_remove = 180
+		days_re_enable = 365
+
+		complete_effect = {
+			add_political_power = -35
+			set_temp_variable = {
+				var = income_var_temp
+				value = -3
+			}
+			add_income = yes
+			add_ideas = UKR_mio_malyshev_boost
+			custom_effect_tooltip = UKR_mio_funds_300_tt
+		}
+
+		remove_effect = {
+			remove_ideas = UKR_mio_malyshev_boost
+			mio:UKR_malyshev_organization = {
+				add_mio_funds = 300
+			}
+		}
+
+		ai_will_do = {
+			factor = 10
+		}
+	}
+
+	UKR_mio_trophy_repair = {
+		icon = GFX_decision_generic_army_support
+
+		visible = {
+			has_dlc = "Arms Against Tyranny"
+			has_completed_focus = UKR_military_industrial_complex
+		}
+
+		available = {
+			has_dlc = "Arms Against Tyranny"
+		}
+
+		custom_cost_trigger = {
+			has_political_power > 24
+			check_variable = {
+				var = income_var
+				value = 2
+			}
+		}
+		custom_cost_text = UKR_mio_cost_a
+
+		days_remove = 150
+		days_re_enable = 365
+
+		complete_effect = {
+			add_political_power = -25
+			set_temp_variable = {
+				var = income_var_temp
+				value = -2
+			}
+			add_income = yes
+			add_ideas = UKR_mio_trophy_boost
+			custom_effect_tooltip = UKR_mio_funds_200_tt
+		}
+
+		remove_effect = {
+			remove_ideas = UKR_mio_trophy_boost
+			mio:UKR_armor_repair_organization = {
+				add_mio_funds = 200
+			}
+		}
+
+		ai_will_do = {
+			factor = 8
+		}
+	}
+
+	UKR_mio_kraz_armored = {
+		icon = GFX_decision_generic_military
+
+		visible = {
+			has_dlc = "Arms Against Tyranny"
+			has_completed_focus = UKR_special_forces_equipment
+			has_dlc = "La Resistance"
+		}
+
+		available = {
+			has_dlc = "Arms Against Tyranny"
+		}
+
+		custom_cost_trigger = {
+			has_political_power > 24
+			check_variable = {
+				var = income_var
+				value = 2
+			}
+		}
+		custom_cost_text = UKR_mio_cost_a
+
+		days_remove = 150
+		days_re_enable = 365
+
+		complete_effect = {
+			add_political_power = -25
+			set_temp_variable = {
+				var = income_var_temp
+				value = -2
+			}
+			add_income = yes
+			add_ideas = UKR_mio_kraz_boost
+			custom_effect_tooltip = UKR_mio_funds_200_tt
+		}
+
+		remove_effect = {
+			remove_ideas = UKR_mio_kraz_boost
+			mio:UKR_kraz_organization = {
+				add_mio_funds = 200
+			}
+		}
+
+		ai_will_do = {
+			factor = 6
+		}
+	}
+
+	UKR_mio_drone_workshops = {
+		icon = GFX_decision_generic_research
+
+		visible = {
+			has_dlc = "Arms Against Tyranny"
+			has_completed_focus = UKR_UAV_warfare_revolution
+		}
+
+		available = {
+			has_dlc = "Arms Against Tyranny"
+		}
+
+		custom_cost_trigger = {
+			has_political_power > 34
+			check_variable = {
+				var = income_var
+				value = 3
+			}
+		}
+		custom_cost_text = UKR_mio_cost_b
+
+		days_remove = 150
+		days_re_enable = 365
+
+		complete_effect = {
+			add_political_power = -35
+			set_temp_variable = {
+				var = income_var_temp
+				value = -3
+			}
+			add_income = yes
+			add_ideas = UKR_mio_drone_boost
+			custom_effect_tooltip = UKR_mio_funds_300_tt
+		}
+
+		remove_effect = {
+			remove_ideas = UKR_mio_drone_boost
+			mio:UKR_drone_cluster_organization = {
+				add_mio_funds = 300
+			}
+			# Склонность (скрыто), один раз
+			if = {
+				limit = { NOT = { has_country_flag = UKR_mio_drone_workshops_lean_done } }
+				set_country_flag = UKR_mio_drone_workshops_lean_done
+				add_to_variable = { UKR_digital_lean = 2 }
+				UKR_clamp_leans = yes
+			}
+		}
+
+		ai_will_do = {
+			factor = 10
+		}
+	}
+
+	UKR_mio_antonov = {
+		icon = GFX_decision_generic_industry
+
+		visible = {
+			has_dlc = "Arms Against Tyranny"
+			has_completed_focus = UKR_develop_domestic_industry
+		}
+
+		available = {
+			has_dlc = "Arms Against Tyranny"
+		}
+
+		custom_cost_trigger = {
+			has_political_power > 34
+			check_variable = {
+				var = income_var
+				value = 3
+			}
+		}
+		custom_cost_text = UKR_mio_cost_b
+
+		days_remove = 180
+		days_re_enable = 365
+
+		complete_effect = {
+			add_political_power = -35
+			set_temp_variable = {
+				var = income_var_temp
+				value = -3
+			}
+			add_income = yes
+			add_ideas = UKR_mio_antonov_boost
+			custom_effect_tooltip = UKR_mio_funds_250_tt
+		}
+
+		remove_effect = {
+			remove_ideas = UKR_mio_antonov_boost
+			mio:UKR_antonov_organization = {
+				add_mio_funds = 250
+			}
+		}
+
+		ai_will_do = {
+			factor = 6
+		}
+	}
+
+	UKR_mio_motor_sich = {
+		icon = GFX_decision_generic_plant_material
+
+		visible = {
+			has_dlc = "Arms Against Tyranny"
+			has_completed_focus = UKR_develop_domestic_industry
+		}
+
+		available = {
+			has_dlc = "Arms Against Tyranny"
+		}
+
+		custom_cost_trigger = {
+			has_political_power > 34
+			check_variable = {
+				var = income_var
+				value = 3
+			}
+		}
+		custom_cost_text = UKR_mio_cost_b
+
+		days_remove = 180
+		days_re_enable = 365
+
+		complete_effect = {
+			add_political_power = -35
+			set_temp_variable = {
+				var = income_var_temp
+				value = -3
+			}
+			add_income = yes
+			add_ideas = UKR_mio_motor_sich_boost
+			custom_effect_tooltip = UKR_mio_funds_250_tt
+		}
+
+		remove_effect = {
+			remove_ideas = UKR_mio_motor_sich_boost
+			mio:UKR_motor_sich_organization = {
+				add_mio_funds = 250
+			}
+		}
+
+		ai_will_do = {
+			factor = 6
+		}
+	}
+
+	UKR_mio_aircraft_overhaul = {
+		icon = GFX_decision_generic_industry
+
+		visible = {
+			has_dlc = "Arms Against Tyranny"
+			has_completed_focus = UKR_military_adaptability
+		}
+
+		available = {
+			has_dlc = "Arms Against Tyranny"
+		}
+
+		custom_cost_trigger = {
+			has_political_power > 24
+			check_variable = {
+				var = income_var
+				value = 2
+			}
+		}
+		custom_cost_text = UKR_mio_cost_a
+
+		days_remove = 150
+		days_re_enable = 365
+
+		complete_effect = {
+			add_political_power = -25
+			set_temp_variable = {
+				var = income_var_temp
+				value = -2
+			}
+			add_income = yes
+			add_ideas = UKR_mio_aircraft_boost
+			custom_effect_tooltip = UKR_mio_funds_200_tt
+		}
+
+		remove_effect = {
+			remove_ideas = UKR_mio_aircraft_boost
+			mio:UKR_aircraft_repair_organization = {
+				add_mio_funds = 200
+			}
+		}
+
+		ai_will_do = {
+			factor = 5
+		}
+	}
+
+	UKR_mio_mykolaiv_yard = {
+		icon = GFX_decision_generic_plant_material
+
+		visible = {
+			has_dlc = "Arms Against Tyranny"
+			has_completed_focus = UKR_maritime_revival
+		}
+
+		available = {
+			has_dlc = "Arms Against Tyranny"
+		}
+
+		custom_cost_trigger = {
+			has_political_power > 49
+			check_variable = {
+				var = income_var
+				value = 5
+			}
+		}
+		custom_cost_text = UKR_mio_cost_c
+
+		days_remove = 180
+		days_re_enable = 365
+
+		complete_effect = {
+			add_political_power = -50
+			set_temp_variable = {
+				var = income_var_temp
+				value = -5
+			}
+			add_income = yes
+			add_ideas = UKR_mio_yard_boost
+			custom_effect_tooltip = UKR_mio_funds_300_tt
+		}
+
+		remove_effect = {
+			remove_ideas = UKR_mio_yard_boost
+			mio:UKR_mykolaiv_yard_organization = {
+				add_mio_funds = 300
+			}
+		}
+
+		ai_will_do = {
+			factor = 5
+		}
+	}
+
+}

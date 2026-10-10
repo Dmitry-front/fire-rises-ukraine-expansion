@@ -164,7 +164,8 @@ common/ideas/TFR_ideas_UKR*.txt                   — идеи
 common/characters/TFR_characters_UKR.txt          — персонажи
 history/countries/UKR - Ukraine.txt               — старт 2020: техи, партии, влияние, персонажи
 _reference/                                       — референсы TFR (только чтение, не грузится игрой)
-_tools/audit.py                                   — статический аудит мода (в т. ч. сверка имён TFR с _reference); индекс событий TFR — _tools/tfr_known_events.txt
+_tools/audit.py                                   — статический аудит ТОЛЬКО нашего кода (папки на «_» не сканирует); с TFR сверяется по индексу _tools/tfr_index/
+_tools/build_tfr_index.py                         — пересборка индекса TFR (события, фокусы, спрайты, идеи, подидеологии, черты, типы государства и экономики) из _reference/TFR_Reference; индекс лежит в репозитории, папку _reference можно удалять
 _tools/build_catalog.py                           — пересборка TFR_CATALOG.md из _reference/ (python3 _tools/build_catalog.py)
 events/TFR_events_UKR*.txt, TFR_events_BLR.txt, TFR_events_Baltic.txt, TFR_events_SOV_UKR.txt
 interface/*.gfx, *.gui, gfx/…                     — спрайты и GUI настроя
@@ -172,7 +173,7 @@ localisation/{russian,english}/
 ```
 
 ## Проверки перед коммитом
-Автоматически: `python3 _tools/audit.py` (скобки, дубли ID, несуществующие события/идеи/GFX, локализация). Папки `_reference/` и `_tools/` игрой не загружаются.
+Автоматически: `python3 _tools/audit.py` (скобки, дубли ID, несуществующие события/идеи/GFX, локализация). Проверяется только наш код; референс и наш контент разделены: сверка с TFR идёт по индексу `_tools/tfr_index/`, после обновления референса его пересобирают `python3 _tools/build_tfr_index.py`. Папки `_reference/` и `_tools/` игрой не загружаются.
 
 1. Баланс `{}` в изменённых файлах.
 2. Нет дублей ID фокусов, событий и ключей локализации; новые ID внесены в реестр `DESIGN.md`.
@@ -182,7 +183,7 @@ localisation/{russian,english}/
 6. В блоках `immediate` и других эффектах нет триггеров, у всех присваиваний есть `=`.
 7. Если менялась переменная динамического модификатора — стоит `force_update_dynamic_modifier = yes`.
 8. Подидеологии, черты, типы государства и экономики — существующие в TFR (аудит, раздел «Имена TFR», должен показывать 0 несовпадений).
-9. Если в `_reference/` появились новые файлы — перезапустить `python3 _tools/build_catalog.py` и дополнить `TFR_CHEATSHEET.md`.
+9. Если в `_reference/` появились новые файлы — перезапустить `python3 _tools/build_tfr_index.py` (индекс для аудита) и `python3 _tools/build_catalog.py`, дополнить `TFR_CHEATSHEET.md`.
 
 ## Нужен арт (временные иконки)
 _Список фокусов, событий и идей с временными иконками — дополнять по ходу работы._

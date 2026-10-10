@@ -135,6 +135,14 @@
 
 **TD-33. Различия наших идей с оригиналом (10.10.2026, `TFR_SYNC.md`, раздел 3).** Убраны `cancel` у `UKR_to_the_last`, `UKR_kiev_counter_offensive`, `UKR_poroshenko_plutocracy`; смягчены `UKR_brotherhood_treaty_*`; противоречие правила `picture = GFX_idea_X` (TFR использует полные имена 565 раз). Решить, что оставить, и проверить в игре иконку `UKR_to_the_last`.
 
+**TD-34. Дубль `scripted_triggers` TFR (10.10.2026, `AUDIT_2026-10-10.md`, 1.1).** Рядом лежат `00_TFR_scripted_triggers_ZZZ_generic.txt` (наша правка оригинала) и `TFR_scripted_triggers_ZZZ_generic.txt` (в TFR такого файла нет). Одни и те же 93 триггера определены дважды, по алфавиту побеждает устаревший второй (`is_ironman` активен, нет трёх `is_able_to_build_*`). Сделать: удалить второй файл вместе с синхронизацией `00_...` по TD-32. **Ждёт решения автора.**
+
+**TD-35. Переменные бонусов без динамических модификаторов (10.10.2026, `AUDIT_2026-10-10.md`, 1.2).** Награды фокусов старого дерева (`TFR_national_focus_UKR.txt`, ~1363-1598) пишут в `UKR_army_attack_factor_dynamic`, `UKR_army_defence_factor_dynamic`, `UKR_construction_speed_bunker_factor_dynamic`, `UKR_production_speed_bunker_factor_dynamic`, `UKR_max_dig_in_factor_dynamic`, `UKR_max_planning_factor_dynamic`, `UKR_offensive_capability`, но никто их не читает. Сделать: завести динамический модификатор или перенести числа в идеи.
+
+**TD-36. Подсказки и решения-призраки (10.10.2026, `AUDIT_2026-10-10.md`, 3.1-3.3).** Восемь `custom_effect_tooltip` старого дерева без текста (RU и EN); три `unlock_decision_tooltip` на несуществующие решения (`UKR_help_forces_against_russian_influence`, `UKR_artillery_warfare_course`, `UKR_tactical_fortifications`); у решений `UKR_support_central_asian_resistance_BLR` и `UKR_special_military_operation_timer` нет названий в локализации (в TFR тоже).
+
+**TD-37. Мелочи аудита (10.10.2026, `AUDIT_2026-10-10.md`, 3.4-3.6).** (а) Английские описания с несколькими «$» (пять ключей); (б) наши `military_cooperation` и `small_increase` совпадают по имени с модификаторами отношений TFR - переименовать в `UKR_*`; (в) одиннадцать мёртвых идей, список в отчёте.
+
 ## Ревизия системы первой войны с SOV (08.10.2026, только чтение кода; в игре не запускалось)
 
 Проверены: `events/TFR_events_UKR_war.txt`, `TFR_events_UKR_postwar.txt`, `UKR_war_mood_ui_update.txt`, `common/decisions/TFR_decisions_UKR_war.txt`, категория `UKR_against_occupiers` и таймер СВО в `TFR_decisions_UKR.txt`, `on_actions`, духи и динамические модификаторы, scripted GUI, `.gui`/`.gfx`, спрайты, локализация. Скобки, ключи RU/EN, спрайты и идеи в порядке (кроме перечисленного ниже). Цепочка рабочая на бумаге: `ukraine.11` -> `ukrainewar.1` -> ежедневная синхронизация духов -> миссия `UKR_war_mood_monthly_tick` -> `ukrainewar.200`.

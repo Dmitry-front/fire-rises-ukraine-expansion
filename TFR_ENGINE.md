@@ -14,7 +14,7 @@
 | `common/scripted_guis` | 32 | 7 тыс. | окна и кнопки интерфейса (`TFR_INTERFACE.md`) |
 | `common/scripted_localisation` | 54 | 28 тыс. | динамические тексты |
 | `common/dynamic_modifiers` | 27 | 9,3 тыс. | динамические модификаторы стран |
-| `common/national_focus` | 60 | - | 58 деревьев фокусов |
+| `common/national_focus` | 60 | - | 59 деревьев фокусов |
 | `events` | 125 | - | события |
 | `localisation` | 1077 | - | 5 языков |
 
@@ -225,4 +225,4 @@
 ## 10. Что дальше
 - `TFR_POLITICS.md`: партии, коалиции, выборы, влияние на режим.
 - `TFR_INTERFACE.md`: локализация, интерфейс, решения, события.
-- Рецепты для новых механик - `TFR_CHEATSHEET.md`, раздел 15 (дополнен).
+- Рецепты для новых механик - `TFR_CHEATSHEET.md`, раздел 15.

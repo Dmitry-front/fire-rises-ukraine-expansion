@@ -1,0 +1,75 @@
+PRC_kill_the_leader_of_antitechnocratic_movement = { ### 1/50
+	icon = GFX_PRC_kill_the_leader_of_antitechnocratic_movement
+	map_icon = GFX_PRC_kill_the_leader_of_antitechnocratic_movement_map
+	name = PRC_kill_the_leader_of_antitechnocratic_movement
+	desc = PRC_kill_the_leader_of_antitechnocratic_movement_desc
+	days = 22 
+
+	priority = 30
+
+	allowed = {
+		original_tag = PRC
+	}
+	available = { 
+		network_national_coverage = {
+			target = CHI
+			value > 0
+		}
+		NOT = {
+			has_country_flag = PRC_anti_technocratic_decision_in_progress
+		}
+	}
+	visible = {
+		has_completed_focus = PRC_permeate_the_whole_world
+		has_country_flag = PRC_anti_technocratic_movement_is_active
+	}
+
+	operation_target = {
+		targets = {CHI}
+	}
+
+	operatives = 2
+
+	network_strength = 35
+
+	equipment = {
+		infantry_equipment = 100
+		support_equipment = 50
+	}
+
+	on_start = {  # SCOPE_OPERATION
+		PRC = {
+			set_country_flag = {
+				flag = PRC_anti_technocratic_decision_in_progress
+				days = 22
+				value = 1
+			}
+		}
+	}
+
+	outcome_modifiers = { operation_outcome }
+	cost_modifiers = { operation_cost }
+	risk_modifiers = { operation_risk }
+
+	outcome_potential = {
+		custom_effect_tooltip = PRC_kill_the_leader_of_antitechnocratic_movement_outcome_tt
+	}
+	risk_chance = 0.5
+	experience = 5
+	# outcome is an effect that runs when the operation has completed
+	outcome_execute = { # SCOPE_OPERATION
+		PRC = { country_event = { id = china.544 days = 3 } }
+	}
+
+	outcome_extra_chance = 1
+
+	phases = {
+		infiltration_submarine = { base = 100 }
+	}
+	phases = { 
+		infiltrate_military_seduction = { base = 100 }
+	}
+	phases = { 
+		elimination_and_cover_up = { base = 100 }
+	}
+}

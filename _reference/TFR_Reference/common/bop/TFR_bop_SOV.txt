@@ -1,0 +1,1242 @@
+#CPRF Zyuganovites vs Rashkinites
+SOV_communist_party_balance = {
+	initial_value = -0.5
+	left_side = SOV_old_guard_pb
+	right_side = SOV_new_guard_pb	
+	decision_category = SOV_communist_party_balance_category
+	### Middle
+	range = {
+		id = SOV_middle
+		min = -0.15
+		max = 0.15
+		modifier = {
+			war_support_factor = 0
+			political_power_gain = 0.25
+			stability_factor = 0
+		}
+		on_activate = {
+			
+		}
+		on_deactivate = {
+			
+		}
+
+	}
+
+	#Old Guard 
+	side = {
+		id = SOV_old_guard_pb	
+		icon = GFX_bop_SOV_old_guard
+		range = {
+			id = SOV_old_guard_total_control
+			min = -1
+			max = -0.9
+			modifier = {
+				war_support_factor = 0.1
+				political_power_gain = 0
+				stability_factor = 0.15
+			}
+			on_activate = {
+				
+			}
+			on_deactivate = {
+				
+			}
+
+		}
+		range = {
+			id = SOV_old_guard_dominant_range
+			min = -0.9
+			max = -0.65
+			modifier = {
+				war_support_factor = 0.075
+				political_power_gain = 0.05
+				stability_factor = 0.075
+			}
+			on_activate = {
+			
+			}
+			on_deactivate = {
+			
+			}
+
+		}
+		range = {
+			id = SOV_old_guard_power_range
+			min = -0.65
+			max = -0.35
+			modifier = {
+				war_support_factor = 0.05
+				political_power_gain = 0.075
+				stability_factor = 0.05
+			}
+			on_activate = {
+				
+			}
+			on_deactivate = {
+				
+			}
+
+		}
+		range = {
+			id = SOV_old_guard_influence_range
+			min = -0.35
+			max = -0.15
+			modifier = {
+				war_support_factor = 0.025
+				political_power_gain = 0.1
+				stability_factor = 0.025
+			}
+			on_activate = {
+				
+			}
+			on_deactivate = {
+				
+			}
+
+		}
+	}
+	#New Guard
+	side = {
+		id = SOV_new_guard_pb
+		icon = GFX_bop_SOV_new_guard
+		range = {
+			id = SOV_new_guard_influence_range
+			min = 0.15
+			max = 0.35
+			modifier = {
+				war_support_factor = -0.025
+				political_power_gain = 0.05
+				stability_factor = -0.025
+			}
+			on_activate = {
+				
+			}
+			on_deactivate = {
+				
+			}
+
+		}
+		range = {
+			id = SOV_new_guard_power_range
+			min = 0.35
+			max = 0.65
+			modifier = {
+				war_support_factor = -0.05
+				political_power_gain = 0.25
+				stability_factor = -0.05
+			}
+			on_activate = {
+				
+			}
+			on_deactivate = {
+				
+			}
+
+		}
+		range = {
+			id = SOV_new_guard_dominant_range
+			min = 0.65
+			max = 0.9
+			modifier = {
+				war_support_factor = -0.075
+				political_power_gain = 0.5
+				stability_factor = -0.075
+			}
+			on_activate = {
+				
+			}
+			on_deactivate = {
+				
+			}
+
+		}
+		range = {
+			id = SOV_new_guard_total_control
+			min = 0.9
+			max = 1
+			modifier = {
+				war_support_factor = -0.1
+				political_power_gain = 0.85
+				stability_factor = -0.15
+			}
+			on_activate = {
+				
+			}
+			on_deactivate = {
+				
+			}
+
+		}
+	}
+}
+#LDPR - Supreme Council - Zhirinovsky Ambitions #Its like Italy Again!!!!
+SOV_LDPR_balance = {
+	initial_value = 0.20
+	left_side = SOV_supreme_council
+	right_side = SOV_zhirinovskites
+	decision_category = SOV_LDPR_balance_category
+	### Middle
+	range = {
+		id = SOV_ldpr_middle
+		min = -0.15
+		max = 0.15
+		modifier = {
+			war_support_factor = 0
+			political_power_factor = 0
+			stability_factor = 0
+		}
+		on_activate = {
+			
+		}
+		on_deactivate = {
+			
+		}
+
+	}
+
+	#Supreme Council|Older Members|More Moderate
+	side = {
+		id = SOV_supreme_council	
+		icon = GFX_bop_SOV_LDPR_council
+		range = {
+			id = SOV_supreme_council_total_dominance
+			min = -1
+			max = -0.9
+			modifier = {
+				war_support_factor = -0.15
+				political_power_factor = -0.15
+				stability_factor = 0.15
+				conservative_drift = 0.005
+				authoritarian_democrat_drift = 0.005
+			}
+			on_activate = {
+
+			}
+			on_deactivate = {
+				
+			}
+
+		}
+		range = {
+			id = SOV_supreme_council_dominant_range
+			min = -0.9
+			max = -0.65
+			modifier = {
+				war_support_factor = -0.1
+				political_power_factor = -0.1
+				stability_factor = 0.1
+				authoritarian_democrat_drift = 0.002
+			}
+			on_activate = {
+
+			}
+			on_deactivate = {
+			
+			}
+
+		}
+		range = {
+			id = SOV_supreme_council_power_range
+			min = -0.65
+			max = -0.35
+			modifier = {
+				war_support_factor = -0.075
+				political_power_factor = -0.05
+				stability_factor = 0.05
+				research_speed_factor = 0.02
+			}
+			on_activate = {
+
+			}
+			on_deactivate = {
+				
+			}
+
+		}
+		range = {
+			id = SOV_supreme_council_influence_range
+			min = -0.35
+			max = -0.15
+			modifier = {
+				war_support_factor = -0.05
+				political_power_factor = -0.025
+				stability_factor = 0.025
+				
+			}
+			on_activate = {
+				
+			}
+			on_deactivate = {
+				
+			}
+
+		}
+	}
+	#Zhirinovsky|His Radical Supporters|Young Wing
+	side = {
+		id = SOV_zhirinovskites
+		icon = GFX_bop_SOV_Zhir
+		range = {
+			id = SOV_SOV_zhirinovskites_influence_range
+			min = 0.15
+			max = 0.35
+			modifier = {
+				war_support_factor = 0.05
+				political_power_factor = 0.025
+				stability_factor = -0.025
+			}
+			on_activate = {
+				
+			}
+			on_deactivate = {
+				
+			}
+
+		}
+		range = {
+			id = SOV_SOV_zhirinovskites_power_range
+			min = 0.35
+			max = 0.65
+			modifier = {
+				war_support_factor = 0.075
+				political_power_factor = 0.05
+				stability_factor = -0.025
+				personal_value_factor = -0.05
+			}
+			on_activate = {
+				
+			}
+			on_deactivate = {
+				
+			}
+
+		}
+		range = {
+			id = SOV_SOV_zhirinovskites_dominant_range
+			min = 0.65
+			max = 0.9
+			modifier = {
+				war_support_factor = 0.1
+				political_power_factor = 0.1
+				stability_factor = -0.1
+				personal_value_factor = -0.1
+				fascist_drift = 0.002
+			}
+			on_activate = {
+			}
+			on_deactivate = {
+				
+			}
+
+		}
+		range = {
+			id = SOV_SOV_zhirinovskites_total_control
+			min = 0.9
+			max = 1
+			modifier = {
+				war_support_factor = 0.15
+				political_power_factor = 0.15
+				stability_factor = -0.15
+				personal_value_factor = -0.15
+				fascist_drift = 0.005
+				national_socialist_drift = 0.002
+			}
+			on_activate = {
+			}
+			on_deactivate = {
+			}
+		}
+	}
+}
+
+#Communists vs Navalnyites
+SOV_soviet_navalny_balance = {
+	initial_value = -0.9
+	left_side = SOV_communists
+	right_side = SOV_navalnytes	
+	decision_category = SOV_soviet_navalny_balance_category
+	### Middle
+	range = {
+		id = SOV_middle
+		min = -0.15
+		max = 0.15
+		modifier = {
+			stability_factor = 0
+		}
+		on_activate = {
+			
+		}
+		on_deactivate = {
+			
+		}
+
+	}
+
+	#Communists
+	side = {
+		id = SOV_communists	
+		icon = GFX_bop_SOV_communists
+		range = {
+			id = SOV_communists_total_control
+			min = -1
+			max = -0.9
+			modifier = {
+				stability_factor = 0.15
+				libertarian_socialist_drift = 0.03
+			}
+			on_activate = {
+				
+			}
+			on_deactivate = {
+				
+			}
+
+		}
+		range = {
+			id = SOV_communists_dominant_range
+			min = -0.9
+			max = -0.65
+			modifier = {
+				stability_factor = 0.1
+				libertarian_socialist_drift = 0.02
+			}
+			on_activate = {
+			
+			}
+			on_deactivate = {
+			
+			}
+
+		}
+		range = {
+			id = SOV_communists_power_range
+			min = -0.65
+			max = -0.35
+			modifier = {
+				stability_factor = 0.05
+				libertarian_socialist_drift = 0.01
+			}
+			on_activate = {
+				hidden_effect = {
+					add_popularity = {
+						ideology = fascist
+						popularity = 0.025
+					}
+				}
+			}
+			on_deactivate = {
+				
+			}
+
+		}
+		range = {
+			id = SOV_communists_influence_range
+			min = -0.35
+			max = -0.15
+			modifier = {
+				stability_factor = 0.025
+			}
+			on_activate = {
+				hidden_effect = {
+					add_popularity = {
+						ideology = fascist
+						popularity = 0.025
+					}
+				}
+			}
+			on_deactivate = {
+				
+			}
+
+		}
+	}
+	#Navalnyties
+	side = {
+		id = SOV_navalnytes
+		icon = GFX_bop_SOV_navalnytes
+		range = {
+			id = SOV_navalnytes_influence_range
+			min = 0.15
+			max = 0.35
+			modifier = {
+				stability_factor = -0.025
+			}
+			on_activate = {
+				country_event = { id = russia.385 }
+			}
+			on_deactivate = {
+				
+			}
+
+		}
+		range = {
+			id = SOV_navalnytes_power_range
+			min = 0.35
+			max = 0.65
+			modifier = {
+				stability_factor = -0.05
+				social_liberal_drift = 0.01
+			}
+			on_activate = {
+				country_event = { id = russia.386 }
+				
+			}
+			on_deactivate = {
+				
+			}
+
+		}
+		range = {
+			id = SOV_navalnytes_dominant_range
+			min = 0.65
+			max = 0.9
+			modifier = {
+				stability_factor = -0.1
+				social_liberal_drift = 0.02
+			}
+			on_activate = {
+				
+			}
+			on_deactivate = {
+				
+			}
+
+		}
+		range = {
+			id = SOV_navalnytes_total_control
+			min = 0.9
+			max = 1
+			modifier = {
+				stability_factor = -0.15
+				social_liberal_drift = 0.03
+			}
+			on_activate = {
+				
+			}
+			on_deactivate = {
+				
+			}
+
+		}
+	}
+}
+#Rashkin vs Solovyev
+SOV_soviet_solovyev_balance = {
+	initial_value = 0.5
+	left_side = SOV_rashkin
+	right_side = SOV_solovyev
+	decision_category = SOV_soviet_solovyev_balance_category
+	### Middle
+	range = {
+		id = SOV_middle
+		min = -0.15
+		max = 0.15
+		modifier = {
+			stability_factor = 0
+		}
+		on_activate = {
+			
+		}
+		on_deactivate = {
+			
+		}
+
+	}
+
+	#Rashkin
+	side = {
+		id = SOV_rashkin	
+		icon = GFX_bop_SOV_communists
+		range = {
+			id = SOV_communists_total_control
+			min = -1
+			max = -0.9
+			modifier = {
+				stability_factor = 0.15
+				libertarian_socialist_drift = 0.03
+			}
+			on_activate = {
+				
+			}
+			on_deactivate = {
+				
+			}
+
+		}
+		range = {
+			id = SOV_communists_dominant_range
+			min = -0.9
+			max = -0.65
+			modifier = {
+				stability_factor = 0.1
+				libertarian_socialist_drift = 0.02
+			}
+			on_activate = {
+			
+			}
+			on_deactivate = {
+			
+			}
+
+		}
+		range = {
+			id = SOV_communists_power_range
+			min = -0.65
+			max = -0.35
+			modifier = {
+				stability_factor = 0.05
+				libertarian_socialist_drift = 0.01
+			}
+			on_activate = {
+				hidden_effect = {
+					add_popularity = {
+						ideology = fascist
+						popularity = 0.025
+					}
+				}
+			}
+			on_deactivate = {
+				
+			}
+
+		}
+		range = {
+			id = SOV_communists_influence_range
+			min = -0.35
+			max = -0.15
+			modifier = {
+				stability_factor = 0.025
+			}
+			on_activate = {
+				hidden_effect = {
+					add_popularity = {
+						ideology = fascist
+						popularity = 0.025
+					}
+				}
+			}
+			on_deactivate = {
+				
+			}
+
+		}
+	}
+	#Solovyev
+	side = {
+		id = SOV_solovyev
+		icon = GFX_bop_SOV_patriots
+		range = {
+			id = SOV_solovyev_influence_range
+			min = 0.15
+			max = 0.35
+			modifier = {
+				authoritarian_democrat_drift = 0.02
+				war_support_factor = 0.01
+			}
+			on_activate = {
+			   
+			}
+			on_deactivate = {
+				
+			}
+
+		}
+		range = {
+			id = SOV_solovyev_power_range
+			min = 0.35
+			max = 0.65
+			modifier = {
+				authoritarian_democrat_drift = 0.05
+				war_support_factor = 0.015
+			}
+			on_activate = {
+				
+			}
+			on_deactivate = {
+				
+			}
+
+		}
+		range = {
+			id = SOV_solovyev_dominant_range
+			min = 0.65
+			max = 0.9
+			modifier = {
+				authoritarian_democrat_drift = 0.05
+				war_support_factor = 0.02
+			}
+			on_activate = {
+				
+			}
+			on_deactivate = {
+				
+			}
+
+		}
+		range = {
+			id = SOV_solovyev_total_control
+			min = 0.9
+			max = 1
+			modifier = {
+				authoritarian_democrat_drift = 0.10
+				war_support_factor = 0.03
+			}
+			on_activate = {
+				country_event = { id = russia.390 days = 1 }
+			}
+			on_deactivate = {
+				
+			}
+
+		}
+	}
+}
+#Medvedev Elections United Russia vs People's Russia
+SOV_medvedev_elections_balance = {
+	initial_value = -0.5
+	left_side = SOV_people_russia_pb
+	right_side = SOV_united_russia_pb	
+	decision_category = SOV_medvedev_elections_balance_category
+	### Middle
+	range = {
+		id = SOV_ur_middle
+		min = -0.15
+		max = 0.15
+		modifier = {
+			hidden_modifier = {
+				social_liberal_drift = 0.03
+			    market_liberal_drift = 0.03
+			}
+			political_power_gain = 0.25
+		}
+		on_activate = {
+			
+		}
+		on_deactivate = {
+			
+		}
+
+	}
+
+	#People Russia
+	side = {
+		id = SOV_people_russia_pb	
+		icon = GFX_bop_SOV_people_russia
+		range = {
+			id = SOV_people_russia_electoral_approval_very_good
+			min = -1
+			max = -0.70
+			modifier = {
+				political_power_gain = 0.10
+				stability_factor = -0.075
+				social_democrat_drift = 0.01
+				libertarian_socialist_drift = 0.01
+			}
+			on_activate = {
+			
+			}
+			on_deactivate = {
+			
+			}
+
+		}
+		range = {
+			id = SOV_people_russia_electoral_approval_good
+			min = -0.70
+			max = -0.15
+			modifier = {
+				political_power_gain = 0.05
+				stability_factor = -0.05
+				social_democrat_drift = 0.01
+				libertarian_socialist_drift = 0.01
+			}
+			on_activate = {
+				
+			}
+			on_deactivate = {
+				
+			}
+
+		}
+	}
+	#United Russia
+	side = {
+		id = SOV_united_russia_pb
+		icon = GFX_bop_SOV_united_russia
+		range = {
+			id = SOV_united_russia_electoral_approval_ok
+			min = 0.15
+			max = 0.70
+			modifier = {
+				political_power_gain = -0.05
+				stability_factor = 0.05
+				conservative_drift = 0.01
+				authoritarian_democrat_drift = 0.01
+			}
+			on_activate = {
+				
+			}
+			on_deactivate = {
+				
+			}
+
+		}
+		range = {
+			id = SOV_united_russia_electoral_approval_very_good
+			min = 0.70
+			max = 1
+			modifier = {
+				political_power_gain = -0.10
+				stability_factor = 0.075
+				conservative_drift = 0.01
+				authoritarian_democrat_drift = 0.01
+			}
+			on_activate = {
+				
+			}
+			on_deactivate = {
+				
+			}
+
+		}
+	}
+}
+#Nadezhdin ONF
+SOV_nadezhdin_onf_balance = {
+	initial_value = -0.5
+	left_side = SOV_left_onf_pb
+	right_side = SOV_right_onf_pb	
+	decision_category = SOV_nadezhdin_onf_balance_category
+	### Middle
+	range = {
+		id = SOV_onf_centre
+		min = -0.25
+		max = 0.25
+		modifier = {
+			market_liberal_drift = 0.05
+			political_power_factor = 0.15
+			stability_factor = 0.05
+			society_development_monthly = 0.01
+		}
+		on_activate = {
+			
+		}
+		on_deactivate = {
+			
+		}
+
+	}
+
+	#Left Lean
+	side = {
+		id = SOV_left_onf_pb	
+		icon = GFX_bop_onf_left
+		range = {
+			id = SOV_left_lean_2_onf
+			min = -1
+			max = -0.80
+			modifier = {
+				stability_weekly = -0.004
+				political_power_factor = -0.1
+				society_development_monthly = -0.015
+			}
+			on_activate = {
+				country_event = { id = russia.852 }
+			}
+			on_deactivate = {
+			
+			}
+
+		}
+		range = {
+			id = SOV_left_lean_onf
+			min = -0.80
+			max = -0.25
+			modifier = {
+				social_democrat_drift = 0.03
+				poverty_development_monthly = 0.01
+			}
+			on_activate = {
+				if = {
+					limit = {
+						NOT = {
+							has_country_flag = SOV_nadezhdin_left_lean
+						}
+					}
+					add_ideas = SOV_left_lean
+				}
+			}
+			on_deactivate = {
+				if = {
+					limit = {
+						NOT = {
+							has_country_flag = SOV_nadezhdin_left_lean
+						}
+					}
+					remove_ideas = SOV_left_lean
+				}
+			}
+
+		}
+	}
+	#Right Lean
+	side = {
+		id = SOV_right_onf_pb
+		icon = GFX_bop_onf_right
+		range = {
+			id = SOV_right_lean_onf
+			min = 0.25
+			max = 0.80
+			modifier = {
+				conservative_drift = 0.03
+				industrial_development_monthly = 0.01
+			}
+			on_activate = {
+				if = {
+					limit = {
+						NOT = {
+							has_country_flag = SOV_nadezhdin_right_lean
+						}
+					}
+					add_ideas = SOV_left_lean
+				}
+			}
+			on_deactivate = {
+				if = {
+					limit = {
+						NOT = {
+							has_country_flag = SOV_nadezhdin_right_lean
+						}
+					}
+					remove_ideas = SOV_left_lean
+				}
+			}
+
+		}
+		range = {
+			id = SOV_right_lean_2_onf
+			min = 0.80
+			max = 1
+			modifier = {
+				stability_weekly = -0.004
+				political_power_factor = -0.1
+				society_development_monthly = -0.015
+			}
+			on_activate = {
+				country_event = { id = russia.852 }
+			}
+			on_deactivate = {
+				
+			}
+
+		}
+	}
+}
+SOV_dugin_power_balance = {
+	initial_value = 0
+	left_side = SOV_lunarists_bop
+	right_side = SOV_solarists_bop
+	decision_category = SOV_dugin_bop_category
+
+	#Middle
+	range = {
+		id = SOV_dugin_middle
+		min = -0.35
+		max = 0.35
+		modifier = {
+			political_power_factor = 0.05
+			national_socialist_drift = 0.01
+			totalitarian_socialist_drift = 0.01
+		}
+		on_activate = {
+		}
+		on_deactivate = {
+		}
+	}
+
+	#Lunarists
+	side = {
+		id = SOV_lunarists_bop
+		icon = GFX_bop_SOV_lunarists
+		range = {
+			id = SOV_bop_dugin_lunarists_supreme
+			min = -1
+			max = -0.9
+			modifier = {
+				political_power_gain = -0.15
+				war_support_factor = 0.15
+				totalitarian_socialist_drift = 0.05
+				stability_factor = -0.055
+				personal_value_factor = 0.1
+			}
+			on_activate = {
+				
+			}
+			on_deactivate = {
+				
+			}
+
+		}
+		range = {
+			id = SOV_bop_dugin_lunarists_dominant
+			min = -0.9
+			max = -0.65
+			modifier = {
+				political_power_gain = -0.05
+				war_support_factor = 0.1
+				totalitarian_socialist_drift = 0.02
+				stability_factor = -0.015
+				national_socialist_drift = 0.01
+				personal_value_factor = 0.1
+			}
+			on_activate = {
+			
+			}
+			on_deactivate = {
+			
+			}
+
+		}
+		range = {
+			id = SOV_bop_dugin_lunarists_prevalent
+			min = -0.65
+			max = -0.35
+			modifier = {
+				war_support_factor = 0.05
+				totalitarian_socialist_drift = 0.02
+				national_socialist_drift = 0.02
+				personal_value_factor = 0.1
+			}
+			on_activate = {
+				
+			}
+			on_deactivate = {
+				
+			}
+
+		}
+	}
+
+	#Solarists
+	side = {
+		id = SOV_solarists_bop
+		icon = GFX_bop_SOV_solarists
+		range = {
+			id = SOV_bop_dugin_solarists_prevalent
+			min = 0.35
+			max = 0.65
+			modifier = {
+				stability_factor = 0.05
+				totalitarian_socialist_drift = 0.02
+				national_socialist_drift = 0.02
+				army_morale_factor = 0.015
+				local_non_core_manpower = 0.02
+			}
+			on_activate = {
+				
+			}
+			on_deactivate = {
+				
+			}
+
+		}
+		range = {
+			id = SOV_bop_dugin_solarists_dominant
+			min = 0.65
+			max = 0.9
+			modifier = {
+				political_power_factor = -0.05
+				stability_factor = 0.05
+				totalitarian_socialist_drift = 0.01
+				national_socialist_drift = 0.02
+				army_morale_factor = 0.02
+				local_non_core_manpower = 0.025
+			}
+			on_activate = {
+			
+			}
+			on_deactivate = {
+			
+			}
+
+		}
+		range = {
+			id = SOV_bop_dugin_solarists_supreme
+			min = 0.9
+			max = 1
+			modifier = {
+				political_power_gain = -0.15
+				stability_factor = 0.1
+				national_socialist_drift = 0.02
+				army_morale_factor = 0.05
+				local_non_core_manpower = 0.05
+				personal_value_factor = 0.05
+			}
+			on_activate = {
+				
+			}
+			on_deactivate = {
+				
+			}
+
+		}
+	}
+}
+
+SOV_alikhanov_power_balance = {
+	initial_value = -0.05
+	left_side = SOV_flagbearers_bop
+	right_side = SOV_revivalists_bop
+	decision_category = SOV_alikhanov_bop_category
+
+	#loyal center
+	range = {
+		id = SOV_alikhanov_middle
+		min = -0.25
+		max = 0.25
+		modifier = {
+			political_power_factor = 0.05
+		}
+		on_activate = {
+			hidden_effect = {
+				set_country_leader_ideology = derzhavism
+				set_party_name = {
+					ideology = fascist
+					long_name = SOV_sznd_party_long
+					name = SOV_sznd_party
+				}
+			}
+		}
+		on_deactivate = {
+		}
+	}
+
+	#Flagbearers
+	side = {
+		id = SOV_flagbearers_bop
+		icon = GFX_bop_SOV_flagbearers
+		range = {
+			id = SOV_bop_flagbearers_supreme
+			min = -1
+			max = -0.8
+			modifier = {
+				political_power_gain = -0.1
+				war_support_factor = 0.1
+				stability_factor = -0.07
+				personal_value_factor = -0.1
+				local_non_core_manpower = 0.015
+			}
+			on_activate = {
+				
+			}
+			on_deactivate = {
+				
+			}
+
+		}
+		range = {
+			id = SOV_bop_flagbearers_dominant
+			min = -0.8
+			max = -0.65
+			modifier = {
+				political_power_gain = -0.05
+				war_support_factor = 0.05
+				stability_factor = -0.035
+			}
+			on_activate = {
+				hidden_effect = {
+					set_country_leader_ideology = national_derzhavism
+					set_party_name = {
+						ideology = fascist
+						long_name = SOV_sznd_znamya_party_long
+						name = SOV_sznd_znamya_party
+					}
+					country_event = { id = russiaflavor.91 days = 15 }
+				}
+			}
+			on_deactivate = {
+				
+			}
+		}
+		range = {
+			id = SOV_bop_flagbearers_prevalent
+			min = -0.65
+			max = -0.25
+			modifier = {
+				political_power_gain = -0.05
+				war_support_factor = 0.03
+			}
+			on_activate = {
+				
+			}
+			on_deactivate = {
+				
+			}
+		}
+	}
+
+	#Revivalists
+	side = {
+		id = SOV_revivalists_bop
+		icon = GFX_bop_SOV_revivalists
+		range = {
+			id = SOV_bop_revivalists_prevalent
+			min = 0.25
+			max = 0.65
+			modifier = {
+				political_power_gain = -0.05
+				stability_factor = 0.03
+			}
+			on_activate = {
+				
+			}
+			on_deactivate = {
+				
+			}
+
+		}
+		range = {
+			id = SOV_bop_revivalists_dominant
+			min = 0.65
+			max = 0.8
+			modifier = {
+				political_power_gain = -0.05
+				stability_factor = 0.035
+				society_development_monthly = -0.02
+			}
+			on_activate = {
+				hidden_effect = {
+					set_country_leader_ideology = revivalist_derzhavism
+					set_party_name = {
+						ideology = fascist
+						long_name = SOV_sznd_vozrozhdenye_party_long
+						name = SOV_sznd_vozrozhdenye_party
+					}
+				}
+			}
+			on_deactivate = {
+			
+			}
+
+		}
+		range = {
+			id = SOV_bop_revivalists_supreme
+			min = 0.8
+			max = 1
+			modifier = {
+				political_power_gain = -0.1
+				stability_factor = 0.05
+				society_development_monthly = -0.05
+				army_morale_factor = 0.015
+			}
+			on_activate = {
+				
+			}
+			on_deactivate = {
+				
+			}
+
+		}
+	}
+}

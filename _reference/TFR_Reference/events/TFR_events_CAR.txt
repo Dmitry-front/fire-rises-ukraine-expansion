@@ -1,0 +1,454 @@
+﻿	###########################
+	# Central African Events
+	###########################
+
+	add_namespace = car
+
+	# Russian Mercenary Coup
+	country_event = {
+		id = car.1
+		title = car.1.t
+		desc = car.1.d
+		picture = report_event_equipment
+		
+		fire_only_once = yes
+		is_triggered_only = yes
+		
+		trigger = {
+			tag = CAR
+		}
+
+		option = {
+		name = car.1.a
+			set_politics = {
+				ruling_party = authoritarian_democrat
+				elections_allowed = no
+			}
+			add_popularity = {
+				ideology = authoritarian_democrat
+				popularity = 0.5
+			}
+			set_cosmetic_tag = CAR_Wagner
+			change_government_type_military_dictatorship = yes
+			change_economy_type_military_controlled = yes
+		}
+	}
+
+	country_event = { #establishment of Kinshasa Military District
+		id = car.3
+		title = car.3.t
+		desc = car.3.d
+		picture = report_event_equipment
+		
+		fire_only_once = yes
+		
+		trigger = {
+			tag = CAR
+			controls_state = 760
+			controls_state = 759
+			controls_state = 1363
+			controls_state = 1362
+			controls_state = 295
+			BDK = {
+				exists = no
+			}
+		}
+
+		option = {
+			name = car.3.a
+			BDK = {
+				set_cosmetic_tag = CAR_Congo_Basin_Military_District
+				set_capital = {
+					state = 1363
+				}
+				transfer_state = 760
+				transfer_state = 759
+				transfer_state = 1363
+				transfer_state = 1362
+				transfer_state = 295
+				if = {
+					limit = {
+						CAR = {
+							controls_state = 842
+						}
+					}
+					transfer_state = 842
+					add_state_core = 842
+				}
+				set_party_name = {
+					long_name = CAR_authoritarian_democrat_party
+					name = CAR_authoritarian_democrat_party
+					ideology = authoritarian_democrat
+				}
+			}
+			puppet = BDK
+			set_nationality = {
+				target_country = BDK
+				character = CAR_Kinshasa_MD
+			}
+			add_country_leader_role = {
+			    character = CAR_Kinshasa_MD
+			    promote_leader = yes
+				country_leader = {
+					ideology = corporatocracy
+					traits = {
+					}
+				}
+			}
+		}
+	}
+	country_event = { #Establishment of Greater Kivu Military District
+		id = car.4
+		title = car.4.t
+		desc = car.4.d
+		picture = report_event_equipment
+		
+		fire_only_once = yes
+		
+		trigger = {
+			tag = CAR
+			controls_state = 1359
+			controls_state = 1360
+			controls_state = 864
+			controls_state = 863
+			controls_state = 862
+			DRO = {
+				exists = no
+			}
+		}
+
+		option = {
+			name = car.4.a
+			DRO = {
+				set_cosmetic_tag = CAR_Greater_Kivu_Military_District
+				set_capital = {
+					state = 863
+				}
+				transfer_state = 1359
+				transfer_state = 1360
+				transfer_state = 864
+				transfer_state = 863
+				transfer_state = 862
+				set_party_name = {
+					long_name = CAR_authoritarian_democrat_party
+					name = CAR_authoritarian_democrat_party
+					ideology = authoritarian_democrat
+				}
+				set_politics = {
+					ruling_party = authoritarian_democrat
+					elections_allowed = no
+				}
+			}
+			puppet = DRO
+			set_nationality = {
+				target_country = DRO
+				character = CAR_GV_MD
+			}
+			add_country_leader_role = {
+			    character = CAR_GV_MD
+			    promote_leader = yes
+				country_leader = {
+					ideology = corporatocracy
+					traits = {	
+					}
+				}
+			}
+		}
+	}
+	country_event = { #Establishment of Katanga Military District
+		id = car.5
+		title = car.5.t
+		desc = car.5.d
+		picture = report_event_equipment
+		
+		fire_only_once = yes
+		
+		trigger = {
+			tag = CAR
+			OR = {
+				CAR = {
+					controls_state = 1358
+					controls_state = 865
+				}
+				any_country =  {
+					is_puppet_of = CAR
+					controls_state = 1358
+					controls_state = 865					
+				}
+			}
+			MMK = {
+				exists = no
+			}
+		}
+
+		option = {
+			name = car.4.a
+			MMK = {
+				set_cosmetic_tag = CAR_Katanga_Military_District
+				transfer_state = 1358
+				transfer_state = 865
+				if = {
+					limit = {
+						CAR = {
+							controls_state = 845
+						}
+					}
+					transfer_state = 845
+					add_state_core = 845
+					country_event = {
+						id = car.8
+						days = 2
+					}
+				}
+				set_party_name = {
+					long_name = CAR_authoritarian_democrat_party
+					name = CAR_authoritarian_democrat_party
+					ideology = authoritarian_democrat
+				}
+				set_politics = {
+					ruling_party = authoritarian_democrat
+					elections_allowed = no
+				}
+			}
+			puppet = MMK
+			country_event = {
+				id = car.6
+				days = 10
+			}
+			set_nationality = {
+				target_country = MMK
+				character = CAR_Katanga_MD
+			}
+			add_country_leader_role = {
+			    character = CAR_Katanga_MD
+			    promote_leader = yes
+				country_leader = {
+					ideology = corporatocracy
+					traits = {
+					}
+				}
+			}
+		}
+	}
+	country_event = { #Establishment of Angolan Military District
+		id = car.8
+		title = car.8.t
+		desc = car.8.d
+		picture = report_event_equipment
+		
+		fire_only_once = yes
+		
+		trigger = {
+			tag = CAR
+			OR = {
+				CAR = {
+					controls_state = 540
+				}
+				any_country =  {
+					is_puppet_of = CAR
+					controls_state = 540					
+				}
+			}
+			ANG = {
+				exists = no
+			}
+		}
+
+		option = {
+			name = car.4.a
+			ANG = {
+				set_cosmetic_tag = CAR_Angola_Military_District
+				transfer_state = 540
+				transfer_state = 846
+				transfer_state = 843
+				transfer_state = 844
+				set_party_name = {
+					long_name = CAR_authoritarian_democrat_party
+					name = CAR_authoritarian_democrat_party
+					ideology = authoritarian_democrat
+				}
+				set_politics = {
+					ruling_party = authoritarian_democrat
+					elections_allowed = no
+				}
+				create_country_leader = {
+					name = CAR_Kinshasa_MD
+					picture = "gfx/leaders/SOV/wagner_officer_council.png"
+					ideology = corporatocracy
+					traits = {
+					}
+				}
+				remove_ideas = african_union_member
+			}
+			BDK = {
+				if = {
+					limit = {
+						CAR = {
+							controls_state = 842
+						}
+					}
+					transfer_state = 842
+					add_state_core = 842
+				}
+			}
+			MMK = {
+				if = {
+					limit = {
+						CAR = {
+							controls_state = 845
+						}
+					}
+					transfer_state = 845
+					add_state_core = 845
+				}
+			}
+			puppet = ANG
+		}
+	}
+	country_event = { #With or without Russia?
+		id = car.6
+		title = car.6.t
+		desc = car.6.d
+		picture = report_event_equipment
+		
+		fire_only_once = yes
+		
+		trigger = {
+			tag = CAR
+			has_subject = MMK
+			has_subject = DRO
+			has_subject = BDK
+			OR = {
+				has_global_flag = SOV_cprf_won
+				has_global_flag = SOV_ldpr_won
+				has_global_flag = SOV_medvedev_won
+			}
+		}
+
+		option = { #Without!
+			name = car.6.a
+			ai_chance = {
+				base = 1
+		    	modifier = {
+				    factor = 0
+				    has_game_rule = {
+					    rule = CAR_Wagner_choose
+					    option = CAR_Wagner_rus
+					}
+			      }
+			   }
+			set_cosmetic_tag = CAR_Soldiers_Republic
+			retire_character = CAR_Bokassa_II
+			add_popularity = {
+				ideology = nationalist
+				popularity = 0.20
+			}
+			add_popularity = {
+				ideology = fascist
+				popularity = 0.8
+			}
+			add_country_leader_trait = hos_Solid_Snake
+			news_event = {
+				id = car.3
+			}
+			annex_country = {
+				target = MMK
+				transfer_troops = yes
+			}
+			annex_country = {
+				target = DRO
+				transfer_troops = yes
+			}
+			annex_country = {
+				target = BDK
+				transfer_troops = yes
+			}
+			annex_country = {
+				target = ANG
+				transfer_troops = yes
+			}
+		}
+		option = { #With!
+			name = car.6.b
+			trigger = {
+				NOT = {
+					limit = {
+						has_global_flag = SOV_cprf_won
+					}
+				}
+			}
+			ai_chance = {
+				base = 1
+		    	modifier = {
+				    factor = 0
+				    has_game_rule = {
+					    rule = CAR_Wagner_choose
+					    option = CAR_Wagner_africa
+					}
+			      }
+			   }
+			add_country_leader_trait = hos_russophile
+			add_ideas = SOV_russian_stronghold_idea
+			BDK = {
+				add_ideas = SOV_russian_stronghold_idea
+			}
+			DRO = {
+				add_ideas = SOV_russian_stronghold_idea
+			}
+			MMK = {
+				add_ideas = SOV_russian_stronghold_idea
+			}
+			if = {
+				limit = {
+					has_subject = ANG
+				}
+				ANG = {
+					add_ideas = SOV_russian_stronghold_idea
+				}
+			}
+		}
+	}
+	news_event = { #Soldiers Republic Declared
+		id = car.7
+		title = car.7.t
+		desc = car.7.d
+		picture = GFX_news_RCG_coup
+		
+		is_triggered_only = yes
+		major = yes
+		
+		immediate = {
+		}
+		option = {
+			name = car.7.a
+		}
+	}
+
+
+	# Kony 2022
+	country_event = {
+		id = car.2
+		title = car.2.t
+		desc = car.2.d
+		picture = report_event_equipment
+		
+		fire_only_once = yes
+		is_triggered_only = yes
+		
+		trigger = {
+			tag = CPC
+		}
+
+		option = {
+		name = car.2.a
+			set_politics = {
+				ruling_party = nationalist
+				elections_allowed = no
+			}
+			add_popularity = {
+				ideology = nationalist
+				popularity = 0.20
+			}
+			set_cosmetic_tag = CAR_koney
+		}
+	}

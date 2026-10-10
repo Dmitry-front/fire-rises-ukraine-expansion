@@ -1,0 +1,147 @@
+PHI_unification = {
+    PHI_reunification = {
+		available = {
+		    OR = {
+				AND = {
+					tag = NPA
+					NOT = {
+						country_exists = PHI
+						country_exists = MIN
+						country_exists = BAG
+					}
+				}
+				AND = {
+					tag = PHI
+					country_exists = VIS
+					NOT = {
+						country_exists = MIN
+						country_exists = NPA
+						country_exists = BAG
+						country_exists = TAG
+					}
+				}
+				AND = {
+					tag = MIN
+					NOT = {
+						country_exists = PHI
+						country_exists = NPA
+						country_exists = BAG
+						country_exists = TAG
+					}
+				}
+			}
+        }
+		modifier = {
+		}
+		ai_will_do = {
+			factor = 100
+		}
+		fire_only_once = yes
+		cost = 0
+	    remove_effect = {
+			remove_decision = PHI_reunification
+			if = {
+				limit = {
+					tag = NPA
+				}
+				add_state_core = 625
+				add_state_core = 624
+				add_state_core = 1274
+				add_state_core = 1275
+				add_state_core = 327
+				add_state_core = 1272
+				add_state_core = 1273
+				add_state_core = 623
+				add_state_core = 626
+				add_state_core = 1276
+				add_state_core = 627
+				add_state_core = 628
+				add_state_core = 1277
+				add_state_core = 1278
+				add_state_core = 1279
+				add_state_core = 1280
+				add_state_core = 1281
+				add_state_core = 1384
+				NPA = {
+					annex_country = {
+						target = TAG
+						transfer_troops = yes
+					}
+					annex_country = {
+						target = VIS
+						transfer_troops = no
+					}
+					set_cosmetic_tag = PHI_communist
+					set_capital = {
+						state = 1274
+					}
+				}
+			}
+			if = {
+				limit = {
+					tag = MIN
+				}
+				add_state_core = 625
+				add_state_core = 624
+				add_state_core = 1274
+				add_state_core = 1275
+				add_state_core = 327
+				add_state_core = 1272
+				add_state_core = 1273
+				add_state_core = 623
+				add_state_core = 626
+				add_state_core = 1276
+				add_state_core = 628
+				add_state_core = 1384
+				MIN = {
+					annex_country = {
+						target = VIS
+						transfer_troops = yes
+					}
+					set_cosmetic_tag = PHI
+					set_capital = {
+						state = 1274
+					}
+					add_ideas = ASEAN_member
+					set_politics = {
+						ruling_party = social_democrat 
+       					elections_allowed = yes
+        				last_election = "2022.5.9"
+       					election_frequency = 72
+					}
+					add_popularity = {
+						ideology = conservative
+						popularity = 0.08
+					}
+					add_popularity = {
+						ideology = social_liberal
+						popularity = 0.08
+					}
+					add_popularity = {
+						ideology = market_liberal
+						popularity = 0.05
+					}
+				}
+			}
+			if = {
+				limit = {
+					tag = PHI
+				}
+				PHI = {
+					annex_country = {
+						target = VIS
+						transfer_troops = yes
+					}
+					remove_ideas = PHI_increasing_chinese_influence_idea
+					drop_cosmetic_tag = yes
+				}
+				every_state = {
+					limit = {
+						is_core_of = PHI
+					}
+					transfer_state_to = PHI
+				}
+			}
+		}
+	}
+}

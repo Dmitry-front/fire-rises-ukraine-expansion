@@ -1,0 +1,87 @@
+﻿add_namespace = FIN
+
+#Finnish 2024 election
+country_event = {
+	id = FIN.1
+	title = FIN.1.t
+	desc = FIN.1.d
+	picture = GFX_generic_elections
+	
+	fire_only_once = yes
+	is_triggered_only = yes
+	
+	trigger = {
+		tag = FIN
+	}
+
+	option = {
+		name = FIN.1.a
+		set_politics = {
+			ruling_party = market_liberal
+			last_election = "2024.2.11"
+			election_frequency = 72
+			elections_allowed = yes
+		}
+		add_popularity = {
+			ideology = market_liberal
+			popularity = 0.08
+		}
+	}
+    option = {
+		name = FIN.1.b
+		set_politics = {
+			ruling_party = social_liberal
+			last_election = "2024.2.11"
+			election_frequency = 72
+			elections_allowed = yes
+		}
+		add_popularity = {
+			ideology = social_liberal
+			popularity = 0.08
+		}
+        set_party_name = {
+            ideology = social_liberal
+            long_name = FIN_2024_social_liberal_long
+            name = FIN_2024_social_liberal_short
+        }
+	}
+}
+
+#Finish Post Nato war elections
+country_event = {
+	id = FIN.5
+	title = FIN.1.t
+	desc = FIN.1.d
+	picture = GFX_generic_elections
+	
+	fire_only_once = yes
+	is_triggered_only = yes
+	
+	trigger = {
+		tag = FIN
+	}
+
+	option = {
+		name = FIN.1.a
+		ai_chance = {
+			base = 50
+		}
+		set_politics = {
+			ruling_party = authoritarian_democrat
+			last_election = "2024.2.11"
+			election_frequency = 72
+			elections_allowed = yes
+		}
+		add_popularity = {
+			ideology = authoritarian_democrat
+			popularity = 0.13
+		}
+	}
+    option = {
+		name = FIN.1.b
+		ai_chance = {
+			base = 25
+		}
+		add_war_support = 0.05
+	}
+}

@@ -1,0 +1,1078 @@
+SOV_boost_economy_strategy = {
+	abort_when_not_enabled = yes
+	allowed = {
+		original_tag = SOV
+	}
+	enable = {
+		date < 2024.1.1
+	}
+	ai_strategy = {
+		type = building_target
+		id = industrial_complex
+		value = 180
+	}
+}
+
+SOV_build_for_war_strategy = {
+	abort_when_not_enabled = yes
+	allowed = {
+		original_tag = SOV
+	}
+	enable = {
+		date > 2024.1.1
+		date < 2028.4.1
+	}
+	ai_strategy = {
+		type = building_target
+		id = arms_factory
+		value = 200
+	}
+	ai_strategy = {
+		type = antagonize
+		id = GER
+		value = 100
+	}
+	ai_strategy = {
+		type = antagonize
+		id = FRA
+		value = 100
+	}
+	ai_strategy = {
+		type = antagonize
+		id = ENG
+		value = 100
+	}
+	ai_strategy = {
+		type = antagonize
+		id = UKR
+		value = 100
+	}
+	ai_strategy = {
+		type = force_build_armies
+		value = 300
+	}
+}
+
+SOV_build_for_war_strategy1 = {
+	abort_when_not_enabled = yes
+	allowed = {
+		original_tag = SOV
+	}
+	enable = {
+		OR = {
+			has_global_flag = SOV_first_nato_war_victory
+			has_global_flag = nato_nato_won_nato_war
+		}
+		date > 2028.4.1
+		date < 2032.6.1
+	}
+	ai_strategy = {
+		type = building_target
+		id = arms_factory
+		value = 300
+	}
+	ai_strategy = {
+		type = added_military_to_civilian_factory_ratio
+		value = 50
+	}
+	ai_strategy = {
+		type = antagonize
+		id = GER
+		value = 100
+	}
+	ai_strategy = {
+		type = antagonize
+		id = FRA
+		value = 100
+	}
+	ai_strategy = {
+		type = antagonize
+		id = ENG
+		value = 100
+	}
+	ai_strategy = {
+		type = antagonize
+		id = ITA
+		value = 100
+	}
+	ai_strategy = {
+		type = force_build_armies
+		value = 600
+	}
+}
+
+SOV_prepare_for_war_strategy = {
+	allowed = {
+		original_tag = SOV
+	}
+	enable = {
+		date > 2024.1.1
+		is_in_faction_with = KAZ
+	}
+	abort = {
+		always = no
+	}
+	
+	ai_strategy = {
+		type = prepare_for_war
+		id = UKR
+		value = 100
+	}
+	ai_strategy = {
+		type = prepare_for_war
+		id = PLD
+		value = 100
+	}
+	ai_strategy = {
+		type = prepare_for_war
+		id = LIT
+		value = 100
+	}
+	ai_strategy = {
+		type = prepare_for_war
+		id = LAT
+		value = 100
+	}
+	ai_strategy = {
+		type = prepare_for_war
+		id = EST
+		value = 100
+	}
+}
+
+SOV_unit_production = {
+	allowed = {
+		original_tag = SOV
+	}
+	enable = {
+		always = yes
+	}
+	abort = {
+		has_war = yes
+	}
+	ai_strategy = {
+		type = role_ratio
+		id = garrison
+		value = 5
+	}
+	# Old garrison system against resistance
+	# ai_strategy = { 
+	# 	type = role_ratio
+	# 	id = suppression
+	# 	value = 3
+	# }
+	ai_strategy = {
+		type = role_ratio
+		id = paratroopers
+		value = 1
+	}
+	ai_strategy = {
+		type = role_ratio
+		id = mountaineers
+		value = 0
+	}
+	ai_strategy = {
+		type = role_ratio
+		id = marines
+		value = 3
+	}
+	ai_strategy = {
+		type = role_ratio
+		id = cavalry
+		value = 0
+	}
+	ai_strategy = {
+		type = role_ratio
+		id = infantry
+		value = 45
+	}
+	ai_strategy = {
+		type = unit_ratio
+		id = convoy
+		value = 20
+	}
+	ai_strategy = {
+		type = equipment_production_factor
+		id = fighter
+		value = 80
+	}
+	ai_strategy = {
+		type = equipment_production_factor
+		id = cas
+		value = 20
+	}
+	ai_strategy = {
+		type = equipment_production_factor
+		id = tactical_bomber
+		value = -80
+	}
+	ai_strategy = {
+		type = equipment_production_factor
+		id = naval_bomber
+		value = -120
+	}
+	ai_strategy = {
+		type = equipment_production_factor
+		id = strategic_bomber
+		value = -200
+	}
+	ai_strategy = {
+		type = equipment_production_factor
+		id = scout_plane
+		value = -200
+	}
+	ai_strategy = {
+		type = equipment_production_factor
+		id = infantry
+		value = 15
+	}
+}
+
+SOV_upgrade_tanks_god_damnit = {
+	allowed = {
+		original_tag = SOV
+	}
+	enable = {
+		tag = SOV
+	}
+	abort = {
+		has_war = yes
+	}
+	ai_strategy = {
+		type = equipment_variant_production_factor
+		id = modern_tank_chassis
+		value = 1000
+	}
+}
+
+SOV_help_nma = {
+	allowed = {
+		original_tag = SOV
+	}
+	enable = {
+		has_global_flag = PRC_china_collapse
+	}
+	abort_when_not_enabled = yes
+	ai_strategy = {
+		type = send_volunteers_desire
+		id = NMA
+		value = 900
+	}
+	ai_strategy = {
+		type = send_lend_lease_desire
+		id = NMA
+		value = 900
+	}
+}
+
+#First NATO War
+SOV_defend_important_cities_strategy = {
+	abort_when_not_enabled = yes
+	allowed = {
+		original_tag = SOV
+	}
+	enable = {
+		OR = {
+			has_war_with = UKR
+			has_war_with = FRA
+			has_war_with = GER
+			has_war_with = ENG
+		}
+	}
+	ai_strategy = {
+		type = put_unit_buffers
+		ratio = 0.15
+		states = {
+			853
+			1396
+			217
+			196
+			219
+			1339
+			260
+		}
+		subtract_fronts_from_need = yes
+	}
+	ai_strategy = {
+		type = garrison
+		value = 100
+	}
+	ai_strategy = {
+		type = garrison_reinforcement_priority
+		value = 100
+	}
+}
+
+SOV_kazakhstan_genocide = {
+	allowed = {
+		original_tag = SOV
+	}
+	enable = {
+		tag = SOV
+		has_war_with = KAZ
+		NOT = {
+			KAZ = {
+				is_in_faction_with = SOV
+			}
+		}
+	}
+	abort = {
+		always = no
+	}
+	ai_strategy = {
+		type = front_control
+		tag = KAZ
+		execution_type = rush
+		execute_order = yes
+		manual_attack = no
+	}
+	ai_strategy = {
+		type = consider_weak
+		id = KAZ
+		value = 1000
+	}
+	ai_strategy = {
+		type = conquer
+		id = KAZ
+		value = 1000
+	}
+}
+
+
+SOV_za_rossiu = {
+	allowed = {
+		original_tag = SOV
+	}
+	enable = {
+		tag = SOV
+		has_war_with = UKR
+	}
+	abort = {
+		OR = {
+			has_country_leader = {
+				character = SOV_alexander_dugin
+				ruling_only = yes
+			}
+			has_country_leader = {
+				character = SOV_alexei_navalny
+				ruling_only = yes
+			}
+		}
+	}
+	ai_strategy = {
+		type = front_control
+		tag = UKR
+		execution_type = rush
+		execute_order = yes
+		manual_attack = no
+	}
+	ai_strategy = {
+		type = consider_weak
+		id = UKR
+		value = 1000
+	}
+	ai_strategy = {
+		type = conquer
+		id = UKR
+		value = 1000
+	}
+}
+
+SOV_za_rodinu = {
+	allowed = {
+		original_tag = SOV
+	}
+	enable = {
+		tag = SOV
+		has_war_with = GER
+	}
+	abort = {
+		OR = {
+			has_country_leader = {
+				character = SOV_alexander_dugin
+				ruling_only = yes
+			}
+			has_country_leader = {
+				character = SOV_alexei_navalny
+				ruling_only = yes
+			}
+		}
+	}
+	ai_strategy = {
+		type = front_control
+		tag = EST
+		tag = LIT
+		tag = LAT
+		execution_type = rush
+		execute_order = yes
+		manual_attack = no
+	}
+	ai_strategy = {
+		type = consider_weak
+		id = EST
+		value = 1000
+	}
+	ai_strategy = {
+		type = conquer
+		id = EST
+		value = 1000
+	}
+	ai_strategy = {
+		type = consider_weak
+		id = LIT
+		value = 1000
+	}
+	ai_strategy = {
+		type = conquer
+		id = LIT
+		value = 1000
+	}
+	ai_strategy = {
+		type = consider_weak
+		id = LAT
+		value = 1000
+	}
+	ai_strategy = {
+		type = conquer
+		id = LAT
+		value = 1000
+	}
+}
+
+SOV_support_GRK = {
+	enable = {
+		tag = SOV
+		has_war = no
+		has_government = communist
+	}
+	abort = {
+		has_war = yes
+	}
+	ai_strategy = {
+		type = support
+		id = "GRK"
+		value = 900
+	}
+	ai_strategy = {
+		type = send_volunteers_desire
+		id = "GRK"
+		value = 900
+	}
+}
+
+SOV_support_PRS = {
+	enable = {
+		tag = SOV
+		has_war = no
+		OR = {
+			has_government = communist
+			has_government = libertarian_socialist
+		}
+	}
+	abort = {
+		has_war = yes
+	}
+	ai_strategy = {
+		type = support
+		id = "PRS"
+		value = 900
+	}
+	ai_strategy = {
+		type = send_volunteers_desire
+		id = "PRS"
+		value = 900
+	}
+}
+
+SOV_support_PRP = {
+	enable = {
+		tag = SOV
+		has_war = no
+		OR = {
+			has_government = communist
+			has_government = libertarian_socialist
+		}
+	}
+	abort = {
+		has_war = yes
+	}
+	ai_strategy = {
+		type = support
+		id = "PRP"
+		value = 900
+	}
+	ai_strategy = {
+		type = send_volunteers_desire
+		id = "PRP"
+		value = 900
+	}
+}
+
+Red_SOV_dont_support_PDTO = {
+	enable = {
+		original_tag = SOV
+		has_global_flag = SOV_first_nato_war_victory
+		has_global_flag = SOV_cprf_won
+	}
+	
+	abort = { always = no }
+
+	ai_strategy = {
+		type = send_volunteers_desire
+		id = "JAP"
+		value = -900
+	}
+	ai_strategy = {
+		type = send_volunteers_desire
+		id = "AST"
+		value = -900
+	}
+	ai_strategy = {
+		type = send_volunteers_desire
+		id = "KOR"
+		value = -900
+	}
+	ai_strategy = {
+		type = send_volunteers_desire
+		id = "RAJ"
+		value = -900
+	}
+	ai_strategy = {
+		type = send_volunteers_desire
+		id = "CHI"
+		value = -900
+	}
+}
+
+SOV_kill_zmagar_BLR = {
+	enable = {
+		original_tag = SOV
+		BLR = { NOT = { is_ally_with = SOV } }
+		NOT = { has_global_flag = SOV_nato_war_over_global }
+	}
+	
+	abort = {
+		BLR = {
+			OR = {
+				is_ally_with = SOV
+				exists = no
+			}
+		}
+	}
+	
+	abort_when_not_enabled = yes
+	
+	ai_strategy = { type = prepare_for_war id = BLR value = 100 }
+	
+	ai_strategy = { type = front_control ordertype = front execution_type = rush manual_attack = yes tag = BLR priority = 1 ratio = 0 }
+	
+}
+
+SOV_zhir_dont_be_stupid = {
+	enable = {
+		original_tag = SOV
+		has_country_leader = {
+			character = SOV_vladimir_zhirinovsky
+			ruling_only = yes
+		}
+	}
+	
+	abort = {
+		NOT = {
+			country_exists = KAZ
+			country_exists = TMS
+			country_exists = KYR
+			country_exists = TAJ
+			country_exists = UZB
+			country_exists = GEO
+			country_exists = AZR
+			country_exists = ARM
+		}
+	}
+	
+	abort_when_not_enabled = yes
+	
+	
+	ai_strategy = { type = prepare_for_war id = UKR value = -100 }
+	ai_strategy = { type = prepare_for_war id = PLD value = -300 }
+	ai_strategy = { type = prepare_for_war id = LIT value = -300 }
+	ai_strategy = { type = prepare_for_war id = LAT value = -300 }
+	ai_strategy = { type = prepare_for_war id = EST value = -300 }
+	
+	ai_strategy = { type = prepare_for_war id = KAZ value = 100 }
+	ai_strategy = { type = prepare_for_war id = TMS value = 100 }
+	ai_strategy = { type = prepare_for_war id = KYR value = 100 }
+	ai_strategy = { type = prepare_for_war id = TAJ value = 100 }
+	ai_strategy = { type = prepare_for_war id = UZB value = 100 }
+	ai_strategy = { type = prepare_for_war id = GEO value = 100 }
+	ai_strategy = { type = prepare_for_war id = AZR value = 100 }
+	ai_strategy = { type = prepare_for_war id = ARM value = 100 }
+	
+	ai_strategy = { type = front_control ordertype = front execution_type = rush manual_attack = yes tag = KAZ priority = 1 ratio = 0 }
+	ai_strategy = { type = front_control ordertype = front execution_type = rush manual_attack = yes tag = TMS priority = 1 ratio = 0 }
+	ai_strategy = { type = front_control ordertype = front execution_type = rush manual_attack = yes tag = KYR priority = 1 ratio = 0 }
+	ai_strategy = { type = front_control ordertype = front execution_type = rush manual_attack = yes tag = TAJ priority = 1 ratio = 0 }
+	ai_strategy = { type = front_control ordertype = front execution_type = rush manual_attack = yes tag = UZB priority = 1 ratio = 0 }
+	ai_strategy = { type = front_control ordertype = front execution_type = rush manual_attack = yes tag = GEO priority = 1 ratio = 0 }
+	ai_strategy = { type = front_control ordertype = front execution_type = rush manual_attack = yes tag = AZR priority = 1 ratio = 0 }
+	ai_strategy = { type = front_control ordertype = front execution_type = rush manual_attack = yes tag = ARM priority = 1 ratio = 0 }
+	
+}
+
+SOV_zhir_dont_be_stupid_2 = {
+	enable = {
+		original_tag = SOV
+		has_country_leader = {
+			character = SOV_vladimir_zhirinovsky
+			ruling_only = yes
+		}
+		
+		has_war_with = UKR
+	}
+	
+	abort_when_not_enabled = yes
+	
+	ai_strategy = { type = prepare_for_war id = PLD value = 200 }
+	ai_strategy = { type = prepare_for_war id = LIT value = 200 }
+	ai_strategy = { type = prepare_for_war id = LAT value = 200 }
+	ai_strategy = { type = prepare_for_war id = EST value = 100 }
+	
+}
+
+SOV_zhir_dont_be_stupid_3 = {
+	enable = {
+		original_tag = SOV
+		has_country_leader = {
+			character = SOV_vladimir_zhirinovsky
+			ruling_only = yes
+		}
+		
+		num_divisions < 150
+	}
+	
+	abort_when_not_enabled = yes
+	
+	ai_strategy = { type = force_build_armies value = 500 } # РЫГАЛЬНО МНОГО
+	
+}
+
+SOV_zhir_dont_be_stupid_4 = {
+	enable = {
+		original_tag = SOV
+		has_country_leader = {
+			character = SOV_vladimir_zhirinovsky
+			ruling_only = yes
+		}
+	}
+	
+	abort_when_not_enabled = yes
+	
+	ai_strategy = { type = invade id = GRE value = -300 }
+	ai_strategy = { type = invade id = NOR value = -300 }
+	ai_strategy = { type = invade id = DEN value = -300 }
+	ai_strategy = { type = invade id = ROM value = -300 }
+	ai_strategy = { type = invade id = BUL value = -300 }
+	ai_strategy = { type = garrison value = -20 }
+	
+}
+
+SOV_dont_prepare_war_with_PRC = {
+	enable = {
+		original_tag = SOV
+		NOT = {
+			has_country_flag = SOV_prepare_war_with_PRC_flag
+		}
+	}
+	
+	abort_when_not_enabled = yes
+	
+	ai_strategy = { type = prepare_for_war id = PRC value = -300 }
+	
+}
+
+SOV_prepare_for_war_with_TUR = {
+	enable = {
+		original_tag = SOV
+		NOT = {
+			has_global_flag = SOV_nato_war_over_global
+		}
+		
+		OR = {
+			has_war_with = UKR
+			has_war_with = TUR
+		}
+		
+		TUR = { is_in_faction_with = GER }
+	}
+	
+	abort_when_not_enabled = yes
+	
+	ai_strategy = { type = front_unit_request tag = TUR value = 200 }
+	ai_strategy = { type = prepare_for_war id = TUR value = 300 }
+	
+}
+
+SOV_dont_support_Empire_PRC = {
+	enable = {
+		original_tag = SOV
+		PRC = {
+		    has_country_flag = PRC_giga_mega_secret_empire_path
+		}
+	}
+	
+	abort = { always = no }
+
+	ai_strategy = {
+		type = send_volunteers_desire
+		id = "PRC"
+		value = -900
+	}
+	ai_strategy = {
+		type = send_volunteers_desire
+		id = "PRK"
+		value = -900
+	}
+	ai_strategy = {
+		type = send_volunteers_desire
+		id = "PAK"
+		value = -900
+	}
+}
+
+STR_Defense = {
+	enable = {
+		tag = STR
+	}
+	abort_when_not_enabled = yes
+	ai_strategy = {
+		type = front_control
+		priority = 2
+		ordertype = front
+		execute_order = yes
+		execution_type = careful
+	}
+}
+
+#SOV_lancets_lancets_lancets = {
+#	allowed = {
+#		original_tag = SOV
+#	}
+#	enable = {
+#		always = yes
+#	}
+#	abort = {
+#		always = no
+#	}
+#	ai_strategy = {
+#		type = building_target
+#		id = rocket_site
+#		value = 1
+#	}
+#}
+
+### SECOND NATO WAR ###
+SOV_phase_one = {
+	allowed = {
+		original_tag = SOV
+	}
+	enable = {
+		tag = SOV
+		has_war_with = FER
+		OR = {
+			has_country_flag = SOV_enable_revanchist_ai
+			has_country_leader = {
+				character = SOV_alexander_dugin
+				ruling_only = yes
+			}
+			has_country_leader = {
+				character = SOV_alexei_navalny
+				ruling_only = yes
+			}
+		}
+		FER = {
+			exists = yes
+		}
+	}
+	abort = {
+		always = no
+	}
+	ai_strategy = {
+		type = front_control
+		tag = FER
+		execution_type = rush
+		execute_order = yes
+		manual_attack = no
+	}
+	ai_strategy = {
+		type = front_control
+		tag = SHL
+		execution_type = rush
+		execute_order = yes
+		manual_attack = no
+	}
+	ai_strategy = {
+		type = front_control
+		tag = KBK
+		execution_type = rush
+		execute_order = yes
+		manual_attack = no
+	}
+	ai_strategy = {
+		type = consider_weak
+		id = FER
+		value = 1000
+	}
+	ai_strategy = {
+		type = conquer
+		id = FER
+		value = 1000
+	}
+	ai_strategy = {
+		type = consider_weak
+		id = SHL
+		value = 1000
+	}
+	ai_strategy = {
+		type = conquer
+		id = SHL
+		value = 1000
+	}
+	ai_strategy = {
+		type = consider_weak
+		id = KBK
+		value = 1000
+	}
+	ai_strategy = {
+		type = conquer
+		id = KBK
+		value = 1000
+	}
+	ai_strategy = {
+		type = conquer
+		id = UKR
+		value = -1000
+	}
+	ai_strategy = {
+		type = conquer
+		id = BLR
+		value = -1000
+	}
+	ai_strategy = {
+		type = conquer
+		id = EST
+		value = -1000
+	}
+	ai_strategy = {
+		type = conquer
+		id = LAT
+		value = -1000
+	}
+	ai_strategy = {
+		type = conquer
+		id = LIT
+		value = -1000
+	}
+}
+
+SOV_phase_two = {
+	allowed = {
+		original_tag = SOV
+	}
+	enable = {
+		tag = SOV
+		has_war_with = UKR
+		OR = {
+			has_country_flag = SOV_enable_revanchist_ai
+			has_country_leader = {
+				character = SOV_alexander_dugin
+				ruling_only = yes
+			}
+			has_country_leader = {
+				character = SOV_alexei_navalny
+				ruling_only = yes
+			}
+		}
+		FER = {
+			exists = no
+		}
+		KBK = {
+			exists = no
+		}
+		SHL = {
+			exists = no
+		}
+	}
+	abort = {
+		always = no
+		SOV = {
+			controls_state = 196
+			controls_state = 200
+			controls_state = 1184
+			controls_state = 259
+			controls_state = 1185
+		}
+	}
+	ai_strategy = {
+		type = front_control
+		tag = UKR
+		execution_type = rush
+		execute_order = yes
+		manual_attack = no
+	}
+	ai_strategy = {
+		type = consider_weak
+		id = UKR
+		value = 1000
+	}
+	ai_strategy = {
+		type = conquer
+		id = UKR
+		value = 1000
+	}
+	ai_strategy = {
+		type = conquer
+		id = BLR
+		value = -1000
+	}
+	ai_strategy = {
+		type = conquer
+		id = EST
+		value = -1000
+	}
+	ai_strategy = {
+		type = conquer
+		id = LAT
+		value = -1000
+	}
+	ai_strategy = {
+		type = conquer
+		id = LIT
+		value = -1000
+	}
+}
+
+###GO GO GO###
+SOV_phase_three = {
+	allowed = {
+		original_tag = SOV
+	}
+	enable = {
+		tag = SOV
+		has_war_with = UKR
+		OR = {
+			has_country_flag = SOV_enable_revanchist_ai
+			has_country_leader = {
+				character = SOV_alexander_dugin
+				ruling_only = yes
+			}
+			has_country_leader = {
+				character = SOV_alexei_navalny
+				ruling_only = yes
+			}
+		}
+		FER = {
+			exists = no
+		}
+		KBK = {
+			exists = no
+		}
+		SHL = {
+			exists = no
+		}
+		SOV = {
+			controls_state = 196
+			controls_state = 200
+			controls_state = 1184
+			controls_state = 259
+			controls_state = 1185
+		}
+	}
+	abort = {
+		always = no
+	}
+	ai_strategy = {
+		type = front_control
+		tag = UKR
+		execution_type = rush
+		execute_order = yes
+		manual_attack = no
+	}
+	ai_strategy = {
+		type = front_control
+		tag = BLR
+		execution_type = rush
+		execute_order = yes
+		manual_attack = no
+	}
+	ai_strategy = {
+		type = front_control
+		tag = EST
+		execution_type = rush
+		execute_order = yes
+		manual_attack = no
+	}
+	ai_strategy = {
+		type = front_control
+		tag = LAT
+		execution_type = rush
+		execute_order = yes
+		manual_attack = no
+	}
+	ai_strategy = {
+		type = front_control
+		tag = LIT
+		execution_type = rush
+		execute_order = yes
+		manual_attack = no
+	}
+	ai_strategy = {
+		type = consider_weak
+		id = UKR
+		value = 1000
+	}
+	ai_strategy = {
+		type = conquer
+		id = UKR
+		value = 1000
+	}
+	ai_strategy = {
+		type = consider_weak
+		id = EST
+		value = 1000
+	}
+	ai_strategy = {
+		type = conquer
+		id = EST
+		value = 1000
+	}
+	ai_strategy = {
+		type = consider_weak
+		id = LAT
+		value = 1000
+	}
+	ai_strategy = {
+		type = conquer
+		id = LAT
+		value = 1000
+	}
+	ai_strategy = {
+		type = consider_weak
+		id = LIT
+		value = 1000
+	}
+	ai_strategy = {
+		type = conquer
+		id = LIT
+		value = 1000
+	}
+	ai_strategy = {
+		type = consider_weak
+		id = BLR
+		value = 1000
+	}
+	ai_strategy = {
+		type = conquer
+		id = BLR
+		value = 1000
+	}
+}

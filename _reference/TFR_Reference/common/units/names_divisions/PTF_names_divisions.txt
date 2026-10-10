@@ -1,0 +1,448 @@
+﻿# Division template historical names system. Is a new method of naming the divisions based on the names-group assigned to it's template.
+# If we run out of all historical names, the names will be assigned in the old way.
+#
+# Each group has a made up tag. Use it if you want to append more, or replace existing names with the extra txt files (modding).
+#
+# for_countries - lists all countries that can use it. If empty, or entire tag is missing, all countries in the world can use it.
+#
+# can_use - is a trigger that locks/unlocks the group under specific circumstances. The trigger is in a country scope.
+#
+# division_types - is a list of tokens to corresponding unit types. A player can in fact use any group of names for a div.template
+#                  however this tag is a helper for an automated choice (for AI, or if the group must switch on it's own, because
+#                  for example the current one is no longer available due to the can_use trigger saying so).
+#                  In automated choice, the division template must have at least 1 of the following types for it to be chosen.
+#
+# fallback_name - Is going to be used if we run out of the scripted historical names. If you want to use the old division naming
+#                 mechanics to be used for fallbacks, then just skip this option.
+#
+# unordered - It's a list of historical division names that did not have a number. Regardless if such names happened in history or not
+#             this option is available here mainly for a mods.
+#
+# ordered - Is a list of all historical names. 
+#           Numbers must start from 1 and up. 
+#           Numbers can't repeat in one scope.
+#           If you script the name for this group, at the same number (for example in a mod in another file), the name will be override.
+#           All arguments between the brackets must be separated by spaces. Each argument is wrapped in "quotas".
+#           1st argument = The name. It must contain either: 
+#                          %d (for decimal number placement)
+#                          %s (for string number placement - ROMAN numbers like XIV).
+#           2nd argument is optional = A localizable text describing this historical division. The text will be visible in the tooltip
+#                                      where you choose the historical division name.
+#           3rd argument is optional = An URL preferably pointing to the WIKI. It's a future feature that is not currently working in
+#                                      the current game version.
+PTF_INF_01 = 
+{
+	name = "Infantry Division"
+
+	for_countries = { PTF }
+
+	can_use = { always = yes }
+
+	division_types = { "infantry" }
+
+	# Number reservation system will tie to another group.
+	#link_numbering_with = { PTF_INF_01 }
+
+	fallback_name = "%d Infantry Division"
+
+	# Names with numbers (only one number per entry). 
+	# It's okay to have gaps in numbering.
+	ordered =
+	{
+		1 = { "%dst 'Washington' Division" }
+		2 = { "%dnd 'Robert E. Lee' Division" }
+		3 = { "%drd 'Appalachia' Division" }
+		4 = { "%dth 'Adams' Division" }
+		5 = { "%dth 'Patton' Division" }
+		6 = { "%dth 'Victory' Division" }
+		7 = { "%dth 'Rossevelt' Division" }
+		8 = { "%dth 'Marquis de Lafayette' Division" }
+		9 = { "%dth 'McCarthy' Division" }
+		10 = { "%dth 'Benjamin' Division" }
+		11 = { "%dth 'Lincoln' Division" }
+		12 = { "%dth 'Eisenhower' Division" }
+		13 = { "%dst 'Europa' Division" }
+		14 = { "%dth 'Legionary' Division" }
+		15 = { "%dth 'Henry Ford' Division" }
+		16 = { "%dth 'Charles Lindbergh' Division" }
+		17 = { "%dnd 'Jackson' Division" }
+		18 = { "%dth 'Hancock' Division" }
+		19 = { "%dth 'Texas' Division" }
+		20 = { "%dth 'Yankee' Division" }
+		21 = { "%dth 'Dixie' Division" }
+		22 = { "%dth 'Chuck Yeager' Division" }
+		24 = { "%dth 'Liberators' Division" }
+		25 = { "%dth 'Pine Tree' Division" }
+		26 = { "%drd 'Franklin' Division" }
+		27 = { "%drd 'Jefferson' Division" }
+		28 = { "%drd 'Columbia' Division" }
+		29 = { "%dth 'Hamilton' Division" }
+		30 = { "%dth 'Sneed' Division" }
+		31 = { "%dth 'Spartan' Division" }
+		77 = { "%dth 'Madison' Division" }
+		54 = { "%dth 'Massachusetts Regiment" }
+		90 = { "%dth 'John Jay' Division" }
+		85 = { "%dth 'D. W. Griffith' Division" }
+		93 = { "%drd 'England' Division" }
+		23 = { "'Americal' Division" }
+		76 = { "%dth 'Sherman' Division" }
+		79 = { "%dth 'Alvin York' Division" }
+		81 = { "%dst 'Swift' Division" }
+		80 = { "%dth 'Kennedy' Division" }
+		88 = { "%dth 'Green Mountain Boys' Division" }
+		89 = { "%dth 'Rolling W' Division" }
+		78 = { "%dth 'Malcom X' Division" }
+		83 = { "%drd 'Rousseau' Division" }
+		91 = { "%dst 'Pilgrims' Division" }
+		96 = { "%dth 'Nimitz' Division" }
+		94 = { "%dth 'Neuf Quatres' Division" }
+		98 = { "%dth 'Doolittle' Division" }
+		102 = { "%dnd 'Jafari' Division" }
+		104 = { "%dth 'Timberwolves' Division" }
+		84 = { "%dth 'Railsplitters' Division" }
+		92 = { "%dnd 'Buffalo Soldiers' Division" }
+		99 = { "%dth 'Checkerboard' Division" }
+		100 = { "%dth 'Century' Division" }
+		103 = { "%drd 'Cactus' Division" }
+		86 = { "%dth 'Blackhawk' Division" }
+		87 = { "%dth 'Golden Acorns' Division" }
+		97 = { "%dth 'Trident' Division" }
+		106 = { "%dth 'Golden Lions' Division" }
+		66 = { "%dth 'MacArthur' Division" }
+		75 = { "%dth Infantry Division" }
+		69 = { "%dth 'Fighting 69th' Division" }
+		63 = { "%drd 'Blood Fire' Division" }
+		70 = { "%dth 'Trailblazers' Division" }
+		42 = { "%dnd 'Rainbow' Division" }
+		71 = { "%dst 'Red Circle' Division" }
+		65 = { "%dth 'Battle Axe' Division" }
+		39 = { "%dth 'Delta' Division" }
+		47 = { "%dth 'Viking' Division" }
+		46 = { "%dth 'Ironfist' Division" }
+		48 = { "%dth 'Hurricane' Division" }
+		51 = { "%dst 'Rattlesnake' Division" }
+		49 = { "%dth '49ers' Division" }
+		52 = { "%dnd 'Argonauts' Division" }
+	}
+}
+
+PTF_MIN_01 = 
+{
+	name = "Minutemen Divisions"
+
+	for_countries = { PTF }
+
+	can_use = { always = yes }
+
+	division_types = { "militia" "mot_militia" }
+
+	# Number reservation system will tie to another group.
+	#link_numbering_with = { PTF_INF_01 }
+
+	fallback_name = "%d Minute Men Division"
+
+	# Names with numbers (only one number per entry). 
+	# It's okay to have gaps in numbering.
+	ordered =
+	{
+		1 = { "%dst Minutemen 'Paul Revere'" }
+		2 = { "%dnd Minutemen 'Ethan Allen'" }
+		3 = { "%drd Minutemen 'Prescott" }
+		4 = { "%dth Minutemen 'Knox'" }
+		5 = { "%dth Minutemen 'Paul Revere'" }
+		6 = { "%dth Minutemen 'Tyler Durden'" }
+		7 = { "%dth Minutemen 'Groyper'"}
+		8 = { "%dth Minutemen 'Good Night Left Side'" }
+		9 = { "%dth Minutemen 'Anti-Communist Action'" }
+		10 = { "%dth Minutemen 'Vanguard '" }
+	}
+}
+
+PTF_ICBT_01 = 
+{
+	name = "Infantry Brigade Combat Team"
+
+	for_countries = { PTF }
+
+	can_use = { always = yes }
+
+	division_types = { "motorized" }
+
+	# Number reservation system will tie to another group.
+	link_numbering_with = { PTF_INF_01 }
+
+	fallback_name = "%d Motorized Division"
+
+	# Names with numbers (only one number per entry). 
+	# It's okay to have gaps in numbering.
+	ordered =
+	{
+		1 = { "%dst Infantry Brigade Combat Team" }
+		2 = { "%dnd Infantry Brigade Combat Team" }
+		3 = { "%drd Infantry Brigade Combat Team" }
+		4 = { "%dth Infantry Brigade Combat Team" }
+		5 = { "%dth Infantry Brigade Combat Team" }
+		6 = { "%dth Infantry Brigade Combat Team" }
+		7 = { "%dth Infantry Brigade Combat Team" }
+		8 = { "%dth Infantry Brigade Combat Team" }
+		9 = { "%dth Infantry Brigade Combat Team" }
+		10 = { "%dth Infantry Brigade Combat Team" }
+		11 = { "%dth Infantry Brigade Combat Team" }
+		12 = { "%dth Infantry Brigade Combat Team" }
+		13 = { "%dth Infantry Brigade Combat Team" }
+		14 = { "%dth Infantry Brigade Combat Team" }
+		15 = { "%dth Infantry Brigade Combat Team" }
+		16 = { "%dth Infantry Brigade Combat Team" }
+		17 = { "%dth Infantry Brigade Combat Team" }
+		18 = { "%dth Infantry Brigade Combat Team" }
+		19 = { "%dth Infantry Brigade Combat Team" }
+		20 = { "%dth Infantry Brigade Combat Team" }
+		21 = { "%dst Infantry Brigade Combat Team" }
+		22 = { "%dnd Infantry Brigade Combat Team" }
+		23 = { "%drd Infantry Brigade Combat Team" }
+		24 = { "%dth Infantry Brigade Combat Team" }
+		25 = { "%dth Infantry Brigade Combat Team" }
+		26 = { "%dth Infantry Brigade Combat Team" }
+		27 = { "%dth Infantry Brigade Combat Team" }
+		28 = { "%dth Infantry Brigade Combat Team" }
+		29 = { "%dth Infantry Brigade Combat Team" }
+		30 = { "%dth Infantry Brigade Combat Team" }
+		31 = { "%dst Infantry Brigade Combat Team" }
+		32 = { "%dnd Infantry Brigade Combat Team" }
+		33 = { "%drd Infantry Brigade Combat Team" }
+		34 = { "%dth Infantry Brigade Combat Team" }
+		35 = { "%dth Infantry Brigade Combat Team" }
+		36 = { "%dth Infantry Brigade Combat Team" }
+		37 = { "%dth Infantry Brigade Combat Team" }
+		38 = { "%dth Infantry Brigade Combat Team" }
+		39 = { "%dth Infantry Brigade Combat Team" }
+		40 = { "%dth Infantry Brigade Combat Team" }
+		41 = { "%dst Infantry Brigade Combat Team" }
+		42 = { "%dnd Infantry Brigade Combat Team" }
+		43 = { "%drd Infantry Brigade Combat Team" }
+		44 = { "%dth Infantry Brigade Combat Team" }
+		45 = { "%dth Infantry Brigade Combat Team" }
+		46 = { "%dth Infantry Brigade Combat Team" }
+		47 = { "%dth Infantry Brigade Combat Team" }
+		48 = { "%dth Infantry Brigade Combat Team" }
+		49 = { "%dth Infantry Brigade Combat Team" }
+		50 = { "%dth Infantry Brigade Combat Team" }
+		51 = { "%dst Infantry Brigade Combat Team" }
+		52 = { "%dnd Infantry Brigade Combat Team" }
+		53 = { "%drd Infantry Brigade Combat Team" }
+		54 = { "%dth Infantry Brigade Combat Team" }
+		55 = { "%dth Infantry Brigade Combat Team" }
+		56 = { "%dth Infantry Brigade Combat Team" }
+		57 = { "%dth Infantry Brigade Combat Team" }
+		58 = { "%dth Infantry Brigade Combat Team" }
+	}
+}
+
+PTF_ARM_01 = 
+{
+	name = "Armored Division"
+
+	for_countries = { PTF }
+
+	can_use = { always = yes }
+
+	division_types = { "light_armor" "modern_armor" }
+
+	# Number reservation system will tie to another group.
+	#link_numbering_with = { PTF_INF_01 }
+
+	fallback_name = "%d Armored Division"
+
+	# Names with numbers (only one number per entry). 
+	# It's okay to have gaps in numbering.
+	ordered =
+	{
+		1 = { "%dst Armored 'Old Ironsides' Div." }
+		2 = { "%dnd Armored 'Hell on Wheels' Div." }
+		3 = { "%drd Armored 'Spearhead' Div." }
+		4 = { "%dth Armored 'Breakthrough' Div." }
+		5 = { "%dth Armored 'Victory' Div." }
+		6 = { "%dth Armored 'Super Sixth' Div." }
+		7 = { "%dth Armored 'Lucky Seventh' Div." }
+		8 = { "%dth Armored 'Thundering Herd' Div." }
+		9 = { "%dth Armored 'Phantom' Div." }
+		10 = { "%dth Armored 'Tiger' Div." }
+		11 = { "%dth Armored 'Thunderbolt' Div." }
+		12 = { "%dth Armored 'Hellcat' Div." }
+		13 = { "%dth Armored 'Blackcat' Div." }
+		14 = { "%dth Armored 'Liberator' Div." }
+		15 = { "%dth Armored Division" }
+		16 = { "%dth Armored Division" }
+		20 = { "%dth Armored Division" }
+		21 = { "%dst Armored Division" }
+		22 = { "%dnd Armored Division" }
+		18 = { "%dth Armored Division" }
+		19 = { "%dth Armored Division" }
+		25 = { "%dth Armored Division" }
+		39 = { "%dth Armored Division" }
+		27 = { "%dth Armored 'Empire' Div." }
+		30 = { "%dth Armored 'Dixie' Div." }
+		40 = { "%dth Armored 'Grizzly' Div." }
+		48 = { "%dth Armored 'Hurricane' Div." }
+		49 = { "%dth Armored 'Lone Star' Div." }
+		50 = { "%drd Armored 'Jersey Blues' Div." }
+		51 = { "%dst Armored 'Cavaliers' Div." }
+		52 = { "%dnd Armored Division" }
+		53 = { "%drd Armored 'Jaguar' Div." }
+		54 = { "%dth Armored 'Roadrunners' Div." }
+		55 = { "%dth Armored 'Old Virginia' Div." }
+		56 = { "%dth Armored 'Crusaders' Div." }
+		57 = { "%dth Armored Division" }
+		58 = { "%dth Armored 'Patriot' Div." }
+		59 = { "%dth Armored 'Rough Riders' Div." }
+		60 = { "%dth Armored Division" }
+		61 = { "%dst Armored 'Stampede' Div." }
+		62 = { "%dnd Armored Division" }
+		63 = { "%drd Armored 'Charge!' Div." }
+		64 = { "%dth Armored 'Broncos' Div." }
+		65 = { "%dth Armored 'Lynx' Div." }
+		66 = { "%dth Armored 'Cheetah' Div." }
+		67 = { "%dth Armored 'Forward!' Div." }
+		68 = { "%dth Armored Division" }
+		69 = { "%dth Armored 'Leopard' Div." }
+		70 = { "%dth Armored Division" }
+		71 = { "%dst Armored 'Lancers' Div." }
+		72 = { "%dnd Armored Division" }
+		73 = { "%drd Armored Division" }
+		74 = { "%dth Armored 'Brandy Station' Div." }
+		75 = { "%dth Armored 'Delaware Delight' Div." }  
+	}
+}
+
+PTF_PAR_01 = 
+{
+	name = "Combat Aviation Brigades"
+
+	for_countries = { PTF }
+
+	can_use = { always = yes }
+
+	division_types = { "paratrooper" }
+
+	# Number reservation system will tie to another group.
+	link_numbering_with = { USA_INF_01 }
+
+	fallback_name = "%d Combat Aviation Brigade"
+
+	# Names with numbers (only one number per entry). 
+	# It's okay to have gaps in numbering.
+	ordered =
+	{
+		1 = { "%dst Combat Aviation Brigade" }
+		2 = { "%dnd Combat Aviation Brigade" }
+		3 = { "%drd Combat Aviation Brigade" }
+		4 = { "%dth Combat Aviation Brigade" }
+		5 = { "%dth Combat Aviation Brigade" }
+		6 = { "%dth Combat Aviation Brigade" }
+		7 = { "%dth Combat Aviation Brigade" }
+		8 = { "%dth Combat Aviation Brigade" }
+	}
+}
+
+PTF_MAR_01 = 
+{
+	name = "Marine Division"
+
+	for_countries = { PTF }
+
+	can_use = { always = yes }
+
+	division_types = { "marine" }
+
+	# Number reservation system will tie to another group.
+	#link_numbering_with = { PTF_INF_01 }
+
+	fallback_name = "%d Marine Division"
+
+	# Names with numbers (only one number per entry). 
+	# It's okay to have gaps in numbering.
+	ordered =
+	{
+		1 = { "%dst Marine 'The Old Breed' Div." }
+		2 = { "%dnd Marine 'Follow Me' Division" }
+		3 = { "%drd Marine Division" }
+		4 = { "%dth Marine Division" }
+		5 = { "%dth Marine Division" }
+		6 = { "%dth Marine Division" }
+		7 = { "%dth Marine Division" }
+		8 = { "%dth Marine Division" }
+		9 = { "%dth Marine Division" }
+		10 = { "%dth Marine Division" }
+		11 = { "%dth Marine Division" }
+		12 = { "%dth Marine Division" }
+		13 = { "%dth Marine Division" }
+		14 = { "%dth Marine Division" }
+		15 = { "%dth Marine Division" }
+		16 = { "%dth Marine Division" }
+		17 = { "%dth Marine Division" }
+		18 = { "%dth Marine Division" }
+		19 = { "%dth Marine Division" }
+		20 = { "%dth Marine Division" }
+		21 = { "%dst Marine Division" }
+		22 = { "%dnd Marine Division" }
+		23 = { "%drd Marine Division" }
+		24 = { "%dth Marine Division" }
+		25 = { "%dth Marine Division" }
+		26 = { "%dth Marine Division" }
+		27 = { "%dth Marine Division" }
+		28 = { "%dth Marine Division" }
+		29 = { "%dth Marine Division" }
+		30 = { "%dth Marine Division" }
+		31 = { "%dst Marine Division" }
+		32 = { "%dnd Marine Division" }
+		33 = { "%drd Marine Division" }
+		34 = { "%dth Marine Division" }
+		35 = { "%dth Marine Division" }
+		36 = { "%dth Marine Division" }
+		37 = { "%dth Marine Division" }
+		38 = { "%dth Marine Division" }
+		39 = { "%dth Marine Division" }
+		40 = { "%dth Marine Division" }
+		41 = { "%dst Marine Division" }
+		42 = { "%dnd Marine Division" }
+		43 = { "%drd Marine Division" }
+		44 = { "%dth Marine Division" }
+		45 = { "%dth Marine Division" }
+		46 = { "%dth Marine Division" }
+		47 = { "%dth Marine Division" }
+		48 = { "%dth Marine Division" }
+		49 = { "%dth Marine Division" }
+	}
+}
+
+PTF_SPF_01 = 
+{
+	name = "Special Forces"
+
+	for_countries = { PTF }
+
+	can_use = { always = yes }
+
+	division_types = { "special_forces" }
+
+	# Number reservation system will tie to another group.
+	link_numbering_with = { PTF_INF_01 }
+
+	fallback_name = "%d Special Forces Group"
+
+	# Names with numbers (only one number per entry). 
+	# It's okay to have gaps in numbering.
+	ordered =
+	{
+		1 = { "%dst Special Forces Group" }
+		2 = { "%dnd Special Forces Group" }
+		3 = { "%drd Special Forces Group" }
+		4 = { "%dth Special Forces Group" }
+		5 = { "%dth Special Forces Group" }
+		6 = { "%dth Special Forces Group" }
+		7 = { "%dth Special Forces Group" }
+		8 = { "%dth Special Forces Group" }
+		9 = { "%dth Special Forces Group" }
+		10 = { "%dth Special Forces Group" }
+	}
+}

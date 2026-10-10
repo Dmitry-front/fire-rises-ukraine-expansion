@@ -1,0 +1,66 @@
+AST_devastation_category = {
+	icon = GFX_AST_devasation_category
+	picture = "AST_Devasation_Picture"
+
+	allowed = {
+		tag = AST
+	}
+	
+	visible = {
+		has_country_flag = AST_National_Devastation_flag
+	}
+	
+	on_map_area = {
+		state = 285
+		state = 517
+	}
+
+	priority = 6
+}
+
+AST_patriot_coup_category = {
+	icon = GFX_AST_patriot_coup_decision_category
+	picture = "AST_Patriot_Coup"
+	
+	visible_when_empty = yes
+
+	allowed = {
+		tag = AST
+	}
+	
+	visible = {
+		has_country_flag = AST_PATRIQT_COUP_FLAG
+	}
+	
+	on_map_area = {
+		state = 285
+		state = 517
+		state = 518
+		state = 521
+		state = 519
+		state = 520
+		state = 522
+		state = 868
+	}
+
+	priority = 6
+}
+
+CAN_our_neighbour_in_the_south_category = {
+	icon = GFX_PTF_Canadian_Intervention
+
+	allowed = {
+		tag = CAN
+	}
+	
+	visible = {
+		OR = {
+			USC = {
+				has_country_flag = USC_reunified_flag
+			}
+			USB = {
+				has_country_flag = USB_reunified_flag
+			}
+		}
+	}
+}

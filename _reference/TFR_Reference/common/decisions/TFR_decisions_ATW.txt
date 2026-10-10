@@ -1,0 +1,6116 @@
+USA_second_american_civil_war_category = {
+	ATW_reunify_america_decision = {
+		icon = USA_american_reunification
+		cost = 0
+		allowed = {
+			original_tag = ATW
+		}
+		visible = {
+			NOT = {
+				is_in_faction_with = NSM
+				is_in_faction_with = PTF
+				has_completed_focus = ATW_lacrimosa
+			}
+			OR = {
+				has_country_flag = ATW_national_conference_breaks_down_flag
+				has_country_flag = NSM_left_faction_flag
+			}
+		}
+		available = {
+			OR = {
+				has_completed_focus = ATW_the_nuclear_congress
+				has_completed_focus = ATW_unity_in_purpose
+				has_completed_focus = ATW_the_true_revolution
+			}
+			USA_has_states_secured = yes
+			USA_has_militias_secured = yes
+			USA_has_gangs_secured = yes
+			USA_has_separatists_secured = yes
+			USA_has_rivals_secured = yes
+		}
+		ai_will_do = {
+			base = 1000
+		}
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: decision ATW_reunify_america_decision complete_effect"
+			complete_national_focus = ATW_lacrimosa
+		}
+	}
+	ATW_delegitimize_PTF_decision = {
+		icon = generic_political_discourse
+		cost = 20
+		days_remove = 35
+		days_re_enable = 70
+		cancel_if_not_visible = yes
+		visible = {
+			hidden_trigger = {
+				has_completed_focus = ATW_spread_our_message
+			}
+			country_exists = PTF
+		}
+		available = {
+		}
+		ai_will_do = {
+			base = 100
+		}
+		modifier = {
+		}
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: decision ATW_delegitimize_PTF_decision complete_effect"
+		}
+		remove_effect = {
+			log = "[GetDateText]: [Root.GetName]: decision ATW_delegitimize_PTF_decision remove_effect"
+			set_temp_variable = {
+				var = ATW_suspicion_var_temp
+				value = 0.05
+			}
+			ATW_add_suspicion = yes
+			PTF = {
+				set_temp_variable = {
+					var = legit_var_temp
+					value = -0.05
+				}
+				add_legit = yes
+			}
+		}
+		cancel_effect = {
+			log = "[GetDateText]: [Root.GetName]: decision ATW_delegitimize_PTF_decision cancel_effect"
+			add_political_power = 20
+		}
+	}
+	ATW_delegitimize_NSM_decision = {
+		icon = generic_political_discourse
+		cost = 20
+		days_remove = 35
+		days_re_enable = 70
+		cancel_if_not_visible = yes
+		visible = {
+			hidden_trigger = {
+				has_completed_focus = ATW_spread_our_message
+			}
+			country_exists = NSM
+		}
+		available = {
+		}
+		ai_will_do = {
+			base = 100
+		}
+		modifier = {
+		}
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: decision ATW_delegitimize_NSM_decision complete_effect"
+		}
+		remove_effect = {
+			log = "[GetDateText]: [Root.GetName]: decision ATW_delegitimize_NSM_decision remove_effect"
+			set_temp_variable = {
+				var = ATW_suspicion_var_temp
+				value = 0.05
+			}
+			ATW_add_suspicion = yes
+			NSM = {
+				set_temp_variable = {
+					var = legit_var_temp
+					value = -0.05
+				}
+				add_legit = yes
+			}
+		}
+		cancel_effect = {
+			log = "[GetDateText]: [Root.GetName]: decision ATW_delegitimize_NSM_decision cancel_effect"
+			add_political_power = 20
+		}
+	}
+	ATW_attack_deep_south_decision = {
+		icon = generic_prepare_civil_war
+		fire_only_once = yes
+		days_remove = 14
+		allowed = {
+			original_tag = ATW
+		}
+		available = {
+			hidden_trigger = {
+				if = {
+					limit = {
+						is_ai = yes
+					}
+					has_war = no
+				}
+			}
+		}
+		visible = {
+			has_completed_focus = ATW_rattelsnakes_and_alligators
+			any_other_country = {
+				if = {
+					limit = {
+						OR = {
+							tag = LOS
+							tag = LOU
+							tag = BLA
+							tag = MSS
+							tag = ALA
+							tag = ASL
+						}
+					}
+					exists = yes
+					NOT = {
+						has_war_with = ROOT
+						is_in_faction_with = ROOT
+					}
+				}
+			}
+		}
+		available = {
+			NOT = {
+				has_country_flag = war_justification_flag
+			}
+		}
+		ai_will_do = {
+			base = 1000
+			modifier = {
+				factor = 0
+				NOT = {
+					any_other_country = {
+						USA_is_rival_tag = yes
+						has_war_with = ROOT
+					}
+				}
+				OR = {
+					tag = LOS
+					tag = LOU
+					tag = BLA
+					tag = MSS
+					tag = ALA
+					tag = ASL
+				}
+			}
+		}
+		complete_effect = {
+			set_country_flag = {
+				flag = war_justification_flag
+				days = 14
+				value = 1
+			}
+		}
+		remove_effect = {
+			every_other_country = {
+				limit = {
+					exists = yes
+					NOT = {
+						has_war_with = ROOT
+						is_in_faction_with = ROOT
+					}
+					OR = {
+						tag = LOS
+						tag = LOU
+						tag = BLA
+						tag = MSS
+						tag = ALA
+						tag = ASL
+					}
+				}
+				war_with_PREV = yes
+			}
+		}
+	}
+	ATW_attack_south_east_decision = {
+		icon = generic_prepare_civil_war
+		fire_only_once = yes
+		days_remove = 14
+		allowed = {
+			original_tag = ATW
+		}
+		available = {
+			hidden_trigger = {
+				if = {
+					limit = {
+						is_ai = yes
+					}
+					has_war = no
+				}
+			}
+		}
+		visible = {
+			has_completed_focus = ATW_georgia_on_our_mind
+			any_other_country = {
+				if = {
+					limit = {
+						OR = {
+							tag = LWK
+							tag = GRA
+							tag = RRR
+							tag = IKA
+							tag = NCA
+						}
+					}
+					exists = yes
+					NOT = {
+						has_war_with = ROOT
+						is_in_faction_with = ROOT
+					}
+				}
+			}
+		}
+		available = {
+			NOT = {
+				has_country_flag = war_justification_flag
+			}
+		}
+		ai_will_do = {
+			base = 1000
+			modifier = {
+				factor = 0
+				NOT = {
+					any_other_country = {
+						USA_is_rival_tag = yes
+						has_war_with = ROOT
+					}
+				}
+				OR = {
+					tag = LWK
+					tag = GRA
+					tag = RRR
+					tag = IKA
+					tag = NCA
+				}
+			}
+		}
+		complete_effect = {
+			set_country_flag = {
+				flag = war_justification_flag
+				days = 14
+				value = 1
+			}
+		}
+		remove_effect = {
+			every_other_country = {
+				limit = {
+					exists = yes
+					NOT = {
+						has_war_with = ROOT
+						is_in_faction_with = ROOT
+					}
+					OR = {
+						tag = LWK
+						tag = GRA
+						tag = RRR
+						tag = IKA
+						tag = NCA
+					}
+				}
+				war_with_PREV = yes
+			}
+		}
+	}
+	ATW_attack_FROM_decision = {
+		icon = generic_prepare_civil_war
+		war_with_target_on_remove = yes
+		fire_only_once = no
+		target_array = USA.faction_tag_array
+		days_remove = 14
+		custom_cost_text = NSM_attack_APA_decision_cost
+		custom_cost_trigger = {
+			NOT = {
+				command_power < 10
+			}
+		}
+		ai_will_do = {
+			base = 1000
+			modifier = {
+				factor = 0
+				OR = {
+					is_faction_leader = no
+					any_other_country = {
+						is_in_faction_with = ROOT
+						is_ai = no
+					}
+					strength_ratio = {
+						tag = FROM
+						ratio < 0.3
+					}
+				}
+			}
+		}
+		allowed = {
+			original_tag = ATW
+		}
+		target_root_trigger = {
+			has_completed_focus = ATW_accelerate_into_the_end
+		}
+		target_trigger = {
+			FROM = {
+				NOT = {
+					has_war_with = ROOT
+					is_ally_with = ROOT
+					tag = LWK
+					tag = GRA
+					tag = RRR
+					tag = IKA
+					tag = NCA
+					tag = LOS
+					tag = LOU
+					tag = BLA
+					tag = MSS
+					tag = ALA
+					tag = ASL
+				}
+				if = {
+					limit = {
+						OR = {
+							tag = PTF
+							tag = NSM
+						}
+					}
+					ROOT = {
+						has_country_flag = NSM_left_faction_flag
+					}
+				}
+				OR = {
+					any_controlled_state = {
+						any_neighbor_state = {
+							is_controlled_by = ROOT
+						}
+					}
+					any_other_country = {
+						OR = {
+							is_in_faction_with = ROOT
+							is_puppet_of = ROOT
+						}
+						any_controlled_state = {
+							any_neighbor_state = {
+								is_controlled_by = PREV.PREV.PREV
+							}
+						}
+					}
+				}
+			}
+		}
+		available = {
+			NOT = {
+				has_country_flag = war_justification_flag
+			}
+		}
+		complete_effect = {
+			set_country_flag = {
+				flag = war_justification_flag
+				days = 14
+				value = 1
+			}
+			hidden_effect = {
+				add_command_power = -10
+			}
+		}
+		remove_effect = {
+			war_with_FROM = yes
+		}
+	}
+}
+
+ATW_balance_of_power_category = {
+	ATW_add_left_bop_debug_decision = {
+		allowed = {
+			original_tag = ATW
+		}
+		visible = {
+			is_debug = yes
+			is_ai = no
+			has_power_balance = {
+				id = ATW_religion_bop
+			}
+		}
+		complete_effect = {
+			add_power_balance_value = {
+				id = ATW_religion_bop
+				value = -0.35
+			}
+		}
+	}
+	ATW_add_right_bop_debug_decision = {
+		allowed = {
+			original_tag = ATW
+		}
+		visible = {
+			is_debug = yes
+			is_ai = no
+			has_power_balance = {
+				id = ATW_religion_bop
+			}
+		}
+		complete_effect = {
+			add_power_balance_value = {
+				id = ATW_religion_bop
+				value = 0.35
+			}
+		}
+	}
+	ATW_satanist_corruption_grows_stronger_mission = {
+		fire_only_once = no
+		priority = 10
+		days_mission_timeout = 69
+		allowed = {
+			tag = ATW
+		}
+		activation = {
+			always = no
+		}
+		available = {
+			hidden_trigger = {
+				always = no
+			}
+		}
+		timeout_effect = {
+			add_power_balance_value = {
+				id = ATW_religion_bop
+				value = -0.05
+			}
+			set_temp_variable = {
+				var = var:nationalist_popularity_var_temp
+				value = 0.025
+			}
+			add_nationalist_popularity = yes
+			hidden_effect = {
+				activate_mission = ATW_satanist_corruption_grows_stronger_mission
+			}
+		}
+	}
+	ATW_christian_influence_grows_mission = {
+		fire_only_once = no
+		priority = 10
+		days_mission_timeout = 69
+		allowed = {
+			tag = ATW
+		}
+		activation = {
+			always = no
+		}
+		available = {
+			hidden_trigger = {
+				always = no
+			}
+		}
+		timeout_effect = {
+			add_power_balance_value = {
+				id = ATW_religion_bop
+				value = 0.05
+			}
+			set_temp_variable = {
+				var = var:fascist_popularity_var_temp
+				value = 0.025
+			}
+			add_fascist_popularity = yes
+			hidden_effect = {
+				activate_mission = ATW_christian_influence_grows_mission
+			}
+		}
+	}
+	ATW_pro_christian_decision = {
+		icon = generic_political_rally
+		cost = 25
+		days_remove = 70
+		#days_re_enable = 70
+		allowed = {
+			original_tag = ATW
+		}
+		visible = {
+			NOT = {
+				has_country_flag = bop_decision_flag
+			}
+		}
+		available = {
+			NOT = {
+				power_balance_value = {
+					id = ATW_religion_bop
+					value < -0.9
+				}
+			}
+		}
+		ai_will_do = {
+			base = 2
+		}
+		modifier = {
+			custom_modifier_tooltip = ATW_pro_christian_modifier_tooltip
+		}
+		complete_effect = {
+			hidden_effect = {
+				add_power_balance_modifier = {
+					id = ATW_religion_bop
+					modifier = ATW_pro_christian_bop_modifier
+				}
+				set_country_flag = {
+					flag = bop_decision_flag
+					days = 175
+					value = 1
+				}
+			}
+		}
+		remove_effect = {
+			hidden_effect = {
+				remove_power_balance_modifier = {
+					id = ATW_religion_bop
+					modifier = ATW_pro_christian_bop_modifier
+				}
+			}
+		}
+	}
+	ATW_pro_satanist_decision = {
+		icon = generic_political_rally
+		cost = 25
+		days_remove = 70
+		allowed = {
+			original_tag = ATW
+		}
+		visible = {
+			NOT = {
+				has_country_flag = bop_decision_flag
+			}
+		}
+		available = {
+			NOT = {
+				power_balance_value = {
+					id = ATW_religion_bop
+					value > 0.9
+				}
+			}
+		}
+		ai_will_do = {
+			base = 2
+		}
+		modifier = {
+			custom_modifier_tooltip = ATW_pro_satanist_modifier_tooltip
+		}
+		complete_effect = {
+			hidden_effect = {
+				add_power_balance_modifier = {
+					id = ATW_religion_bop
+					modifier = ATW_pro_satanist_bop_modifier
+				}
+			}
+		}
+		remove_effect = {
+			hidden_effect = {
+				remove_power_balance_modifier = {
+					id = ATW_religion_bop
+					modifier = ATW_pro_satanist_bop_modifier
+				}
+			}
+		}
+	}
+	ATW_espouse_christian_values_decision = {
+		icon = generic_political_discourse
+		fire_only_once = yes
+		cost = 50
+		days_remove = 70
+		allowed = {
+			original_tag = ATW
+		}
+		visible = {
+			has_completed_focus = ATW_the_flames_of_change
+			NOT = {
+				has_country_flag = ATW_awaken_new_satanists_decision_flag
+			}
+		}
+		available = {
+		}
+		ai_will_do = {
+			base = 2
+		}
+		modifier = {
+		}
+		complete_effect = {
+		}
+		remove_effect = {
+			add_power_balance_value = {
+				id = ATW_religion_bop
+				value = 0.05
+			}
+			set_temp_variable = {
+				var = legit_var_temp
+				value = 0.1
+			}
+			add_legit = yes
+			hidden_effect = {
+				set_country_flag = ATW_espouse_christian_values_decision_flag
+			}
+		}
+	}
+	ATW_awaken_new_satanists_decision = {
+		icon = generic_scorched_earth
+		fire_only_once = yes
+		cost = 50
+		days_remove = 70
+		allowed = {
+			original_tag = ATW
+		}
+		visible = {
+			has_completed_focus = ATW_accelerate_the_collapse
+			NOT = {
+				has_country_flag = ATW_espouse_christian_values_decision_flag
+			}
+		}
+		available = {
+		}
+		ai_will_do = {
+			base = 2
+		}
+		modifier = {
+		}
+		complete_effect = {
+		}
+		remove_effect = {
+			add_power_balance_value = {
+				id = ATW_religion_bop
+				value = -0.05
+			}
+			add_war_support = 0.05
+			hidden_effect = {
+				set_country_flag = ATW_awaken_new_satanists_decision_flag
+			}
+		}
+	}
+	ATW_cure_their_ailments_decision = {
+		icon = generic_research
+		fire_only_once = yes
+		cost = 75
+		days_remove = 105
+		allowed = {
+			original_tag = ATW
+		}
+		visible = {
+			has_completed_focus = ATW_reopen_the_ratlines
+			NOT = {
+				has_country_flag = ATW_arm_our_rebels_decision_flag
+			}
+		}
+		available = {
+		}
+		ai_will_do = {
+			base = 2
+		}
+		modifier = {
+		}
+		complete_effect = {
+		}
+		remove_effect = {
+			add_power_balance_value = {
+				id = ATW_religion_bop
+				value = 0.1
+			}
+			set_temp_variable = {
+				var = income_var_temp
+				value = -50
+			}
+			add_income_with_inflation = yes
+			every_controlled_state = {
+				limit = {
+					is_core_of = ROOT
+					is_island_state = no
+					free_building_slots = {
+						building = industrial_complex
+						size > 0
+						include_locked = yes
+					}
+				}
+				random_select_amount = 2
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = industrial_complex
+					level = 1
+					instant_build = yes
+				}
+			}
+			hidden_effect = {
+				set_country_flag = ATW_cure_their_ailments_decision_flag
+			}
+		}
+	}
+	ATW_arm_our_rebels_decision = {
+		icon = generic_scorched_earth
+		fire_only_once = yes
+		cost = 75
+		days_remove = 105
+		allowed = {
+			original_tag = ATW
+		}
+		visible = {
+			has_completed_focus = ATW_ransack_the_armories
+			NOT = {
+				has_country_flag = ATW_cure_their_ailments_decision_flag
+			}
+		}
+		available = {
+		}
+		ai_will_do = {
+			base = 2
+		}
+		modifier = {
+		}
+		complete_effect = {
+		}
+		remove_effect = {
+			set_temp_variable = {
+				var = income_var_temp
+				value = -45
+			}
+			add_income_with_inflation = yes
+			add_power_balance_value = {
+				id = ATW_religion_bop
+				value = -0.1
+			}
+			every_controlled_state = {
+				limit = {
+					is_core_of = ROOT
+					is_island_state = no
+					free_building_slots = {
+						building = arms_factory
+						size > 0
+						include_locked = yes
+					}
+				}
+				random_select_amount = 3
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = arms_factory
+					level = 1
+					instant_build = yes
+				}
+			}
+			hidden_effect = {
+				set_country_flag = ATW_arm_our_rebels_decision_flag
+			}
+		}
+	}
+	ATW_recruit_christian_soldiers_decision = {
+		icon = generic_military
+		fire_only_once = yes
+		cost = 100
+		days_remove = 140
+		allowed = {
+			original_tag = ATW
+		}
+		visible = {
+			has_completed_focus = ATW_broadcast_our_terror
+			NOT = {
+				has_country_flag = ATW_promote_satanist_officers_decision_flag
+			}
+		}
+		available = {
+		}
+		ai_will_do = {
+			base = 2
+		}
+		modifier = {
+			custom_modifier_tooltip = ATW_recruit_christian_soldiers_modifier_tooltip
+			weekly_manpower = 1250
+		}
+		complete_effect = {
+			hidden_effect = {
+				add_power_balance_modifier = {
+					id = ATW_religion_bop
+					modifier = ATW_recruit_christian_soldiers_bop_modifier
+				}
+				set_country_flag = ATW_recruit_christian_soldiers_decision_flag
+			}
+		}
+		remove_effect = {
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = ATW_heralds_of_the_apocalypse_dummy_idea
+					add_idea = ATW_recruit_christian_soldiers_idea
+				}
+			}
+			hidden_effect = {
+				add_to_variable = {
+					var = ATW_military_conscription_factor_dynamic_var
+					value = 0.05
+				}
+				add_to_variable = {
+					var = ATW_military_mobilization_speed_dynamic_var
+					value = 0.05
+				}
+				remove_power_balance_modifier = {
+					id = ATW_religion_bop
+					modifier = ATW_recruit_christian_soldiers_bop_modifier
+				}
+			}
+		}
+	}
+	ATW_promote_satanist_officers_decision = {
+		icon = generic_military_support
+		fire_only_once = yes
+		cost = 100
+		days_remove = 140
+		allowed = {
+			original_tag = ATW
+		}
+		visible = {
+			has_completed_focus = ATW_broadcast_our_terror
+			NOT = {
+				has_country_flag = ATW_recruit_christian_soldiers_decision_flag
+			}
+		}
+		available = {
+		}
+		ai_will_do = {
+			base = 2
+		}
+		modifier = {
+			custom_modifier_tooltip = ATW_promote_satanist_officers_modifier_tooltip
+			weekly_manpower = 1250
+		}
+		complete_effect = {
+			hidden_effect = {
+				add_power_balance_modifier = {
+					id = ATW_religion_bop
+					modifier = ATW_promote_satanist_officers_bop_modifier
+				}
+				set_country_flag = ATW_promote_satanist_officers_decision_flag
+			}
+		}
+		remove_effect = {
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = ATW_heralds_of_the_apocalypse_dummy_idea
+					add_idea = ATW_promote_satanist_officers_idea
+				}
+			}
+			hidden_effect = {
+				add_to_variable = {
+					var = ATW_military_army_org_factor_dynamic_var
+					value = 0.05
+				}
+				remove_power_balance_modifier = {
+					id = ATW_religion_bop
+					modifier = ATW_promote_satanist_officers_bop_modifier
+				}
+			}
+		}
+	}
+}
+
+ATW_the_final_revolution_category = {
+	ATW_crucify_john_cameron_decision = {
+		fire_only_once = yes
+		cost = 50
+		days_remove = 70
+		visible = {
+			has_completed_focus = ATW_the_ultimate_punishment
+		}
+		available = {
+		}
+		remove_effect = {
+			set_temp_variable = {
+				var = USA_reconstruction_progress_var_temp
+				value = 0.1
+			}
+			retire_character = ATW_john_cameron_denton_char
+			add_stability = 0.05
+		}
+		ai_will_do = {
+			base = 15
+		}
+	}
+	ATW_remove_the_devils_decision = {
+		fire_only_once = yes
+		cost = 75
+		days_remove = 70
+		visible = {
+			has_completed_focus = ATW_renewed_faith
+		}
+		modifier = {
+			stability_weekly = 0.005
+			weekly_manpower = -1500
+		}
+		complete_effect = {
+			hidden_effect = {
+				add_power_balance_modifier = {
+					id = ATW_religion_bop
+					modifier = ATW_remove_the_devils_modifier
+				}
+			}
+		}
+		remove_effect = {
+		}
+		ai_will_do = {
+			base = 15
+		}
+	}
+	ATW_cleanse_ourselves_of_cultism_decision = {
+		fire_only_once = yes
+		cost = 50
+		days_remove = 70
+		available = {
+			tag = ATW
+		}
+		visible = {
+			has_completed_focus = ATW_renewed_faith
+		}
+		complete_effect = {
+			add_stability = 0.02
+		}
+		modifier = {
+			nationalist_drift = -0.02
+			political_power_gain = 0.1
+		}
+		ai_will_do = {
+			base = 15
+		}
+	}
+	ATW_resort_to_christian_education_decision = {
+		fire_only_once = yes
+		cost = 50
+		visible = {
+			has_completed_focus = ATW_renewed_faith
+			NOT = {
+				has_idea = low_education
+			}
+		}
+		complete_effect = {
+			add_stability = 0.01
+			add_power_balance_value = {
+				id = ATW_religion_bop
+				value = 0.1
+			}
+			add_ideas = low_education
+		}
+		ai_will_do = {
+			base = 15
+		}
+	}
+	ATW_public_reconciliation_decision = {
+		fire_only_once = yes
+		cost = 50
+		visible = {
+			has_completed_focus = ATW_admonish_the_sinner
+		}
+		complete_effect = {
+			add_stability = 0.05
+			add_power_balance_value = {
+				id = ATW_religion_bop
+				value = 0.05
+			}
+			add_timed_idea = {
+				idea = ATW_the_mercy_of_god_idea
+				days = 175
+			}
+		}
+		ai_will_do = {
+			base = 15
+		}
+	}
+	ATW_use_defiant_sinners_as_cannon_fodder_decision = {
+		fire_only_once = yes
+		cost = 50
+		visible = {
+			has_completed_focus = ATW_admonish_the_sinner
+		}
+		complete_effect = {
+			add_stability = -0.075
+			add_war_support = -0.05
+			add_power_balance_value = {
+				id = ATW_religion_bop
+				value = -0.05
+			}
+			add_manpower = 10000
+			set_temp_variable = {
+				var = military_development_var_temp
+				value = 0.2
+			}
+			add_military_development = yes
+		}
+		ai_will_do = {
+			base = 5
+		}
+	}
+	ATW_slave_away_at_the_sinful_decision = {
+		fire_only_once = yes
+		cost = 50
+		visible = {
+			has_completed_focus = ATW_admonish_the_sinner
+		}
+		complete_effect = {
+			add_stability = -0.025
+			add_power_balance_value = {
+				id = ATW_religion_bop
+				value = -0.075
+			}
+			add_timed_idea = {
+				idea = ATW_the_lords_punishment_idea
+				days = 105
+			}
+		}
+		ai_will_do = {
+			base = 10
+		}
+	}
+	ATW_endorse_slave_labor_decision = {
+		icon = generic_factory
+		cost = 100
+		days_remove = 70
+		fire_only_once = yes
+		visible = {
+			has_completed_focus = ATW_a_new_level_of_decimation
+		}
+		complete_effect = {
+		}
+		remove_effect = {
+			set_temp_variable = {
+				var = industrial_development_var_temp
+				value = 0.1
+			}
+			add_industrial_development = yes
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = ATW_industrial_anarchy_dummy_idea
+					add_idea = ATW_endorse_slave_labor_idea
+				}
+			}
+			hidden_effect = {
+				add_to_variable = {
+					var = ATW_economy_stability_factor_dynamic_var
+					value = -0.05
+				}
+				add_to_variable = {
+					var = ATW_economy_industrial_capacity_factory_dynamic_var
+					value = 0.05
+				}
+				add_to_variable = {
+					var = ATW_economy_industrial_capacity_dockyard_dynamic_var
+					value = 0.05
+				}
+				add_to_variable = {
+					var = ATW_economy_production_speed_buildings_factor_dynamic_var
+					value = 0.05
+				}
+				add_to_variable = {
+					var = ATW_economy_industry_repair_factor_dynamic_var
+					value = 0.15
+				}
+			}
+		}
+		ai_will_do = {
+			base = 100
+		}
+	}
+	# ATW_american_concentration_camps_decision = {
+	# 	icon = generic_factory
+	# 	cost = 50
+	# 	days_remove = 70
+	# 	fire_only_once = yes
+	# 	visible = {
+	# 		has_completed_focus = ATW_a_new_level_of_decimation
+	# 	}
+	# 	available = {
+	# 		set_temp_variable = {
+	# 			var = income_trigger_temp_var
+	# 			value = 25
+	# 		}
+	# 		has_income_with_inflation_greater_than_or_equals = yes
+	# 	}
+	# 	complete_effect = {
+	# 		set_temp_variable = {
+	# 			var = income_var_temp
+	# 			value = -25
+	# 		}
+	# 		add_income_with_inflation = yes
+	# 	}
+	# 	remove_effect = {
+	# 	}
+	# 	ai_will_do = {
+	# 		base = 100
+	# 	}
+	# }
+	ATW_organizing_the_death_squads_decision = {
+		icon = generic_factory
+		cost = 25
+		days_remove = 35
+		fire_only_once = yes
+		visible = {
+			has_completed_focus = ATW_a_new_level_of_decimation
+		}
+		available = {
+		}
+		complete_effect = {
+		}
+		remove_effect = {
+			add_stability = -0.05
+			add_war_support = 0.05
+		}
+		ai_will_do = {
+			base = 100
+		}
+	}
+	ATW_crush_barbarianism_decision = {
+		icon = generic_factory
+		cost = 50
+		days_remove = 70
+		visible = {
+			has_completed_focus = ATW_true_aryan_life
+		}
+		complete_effect = {
+		}
+		remove_effect = {
+			set_temp_variable = {
+				var = USA_reconstruction_progress_var_temp
+				value = 0.05
+			}
+			USA_add_reconstruction_progress = yes
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = ATW_doctrine_of_destruction_dummy_idea
+					add_idea = ATW_crush_barbarianism_idea
+				}
+			}
+			hidden_effect = {
+				add_to_variable = {
+					var = ATW_politics_stability_factor_dynamic_var
+					value = 0.05
+				}
+				add_to_variable = {
+					var = ATW_politics_war_support_factor_dynamic_var
+					value = 0.05
+				}
+				add_to_variable = {
+					var = ATW_politics_society_development_monthly_dynamic_var
+					value = 0.01
+				}
+			}
+		}
+		ai_will_do = {
+			base = 100
+		}
+	}
+	ATW_resurrect_public_executions_decision = {
+		icon = generic_assassination
+		cost = 25
+		days_remove = 175
+		fire_only_once = yes
+		visible = {
+			has_completed_focus = ATW_our_own_take_on_torment
+		}
+		complete_effect = {
+		}
+		remove_effect = {
+		}
+		modifier = {
+			compliance_growth = 0.05
+			resistance_decay = 0.05
+			resistance_growth = -0.05
+			national_socialist_drift = 0.01
+			required_garrison_factor = -0.1
+		}
+		ai_will_do = {
+			base = 100
+		}
+	}
+	ATW_restore_sports_leagues_decision = {
+		icon = generic_speech
+		cost = 25
+		days_remove = 35
+		fire_only_once = yes
+		visible = {
+			has_completed_focus = ATW_true_aryan_life
+		}
+		available = {
+			set_temp_variable = {
+				var = income_trigger_temp_var
+				value = 50
+			}
+			has_income_with_inflation_greater_than_or_equals = yes
+		}
+		complete_effect = {
+			set_temp_variable = {
+				var = income_var_temp
+				value = -50
+			}
+			add_income_with_inflation = yes
+		}
+		remove_effect = {
+			set_temp_variable = {
+				var = USA_reconstruction_progress_var_temp
+				value = 0.05
+			}
+			USA_add_reconstruction_progress = yes
+			add_stability = 0.1
+		}
+		ai_will_do = {
+			base = 100
+		}
+	}
+	ATW_no_life_goes_un_used_decision = {
+		icon = generic_factory
+		cost = 25
+		days_remove = 175
+		fire_only_once = yes
+		visible = {
+			has_completed_focus = ATW_our_own_take_on_torment
+		}
+		complete_effect = {
+		}
+		modifier = {
+			production_speed_arms_factory_factor = 0.15
+		}
+		remove_effect = {
+		}
+		ai_will_do = {
+			base = 100
+		}
+	}
+	ATW_reeducation_camps_decision = {
+		icon = generic_brainwash
+		cost = 25
+		days_remove = 175
+		fire_only_once = yes
+		visible = {
+			has_completed_focus = ATW_emulate_north_korea
+		}
+		complete_effect = {
+		}
+		modifier = {
+			political_power_gain = 0.4
+			national_socialist_drift = 0.05
+			society_development_monthly = 0.01
+		}
+		remove_effect = {
+		}
+		ai_will_do = {
+			base = 100
+		}
+	}
+	ATW_deify_mason_decision = {
+		icon = generic_speech
+		cost = 50
+		days_remove = 175
+		fire_only_once = yes
+		visible = {
+			has_completed_focus = ATW_emulate_north_korea
+		}
+		complete_effect = {
+		}
+		modifier = {
+			political_power_gain = 0.1
+			national_socialist_drift = 0.05
+			society_development_monthly = 0.01
+		}
+		remove_effect = {
+			add_country_leader_trait = hos_sadistic
+		}
+		ai_will_do = {
+			base = 100
+		}
+	}
+	# ATW_restrict_online_communication_services_decision = {
+	# 	icon = generic_factory
+	# 	cost = 25
+	# 	days_remove = 70
+	# 	fire_only_once = yes
+	# 	visible = {
+	# 		has_completed_focus = ATW_emulate_north_korea
+	# 	}
+	# 	complete_effect = {
+	# 	}
+	# 	modifier = {
+	# 	}
+	# 	remove_effect = {
+	# 	}
+	# 	ai_will_do = {
+	# 		base = 100
+	# 	}
+	# }
+	ATW_restore_patriotism_decision = {
+		icon = generic_political_rally
+		cost = 50
+		days_remove = 70
+		fire_only_once = yes
+		visible = {
+			has_completed_focus = ATW_from_the_belly_of_the_beast
+		}
+		complete_effect = {
+		}
+		remove_effect = {
+			add_stability = 0.05
+			add_war_support = 0.05
+			set_temp_variable = {
+				var = USA_reconstruction_progress_var_temp
+				value = 0.05
+			}
+			USA_add_reconstruction_progress = yes
+		}
+		ai_will_do = {
+			base = 100
+		}
+	}
+	ATW_plunge_ourselves_into_the_chaos_decision = {
+		icon = generic_nationalism
+		fire_only_once = yes
+		cost = 50
+		days_remove = 175
+		visible = {
+			has_completed_focus = ATW_send_them_through_the_inferno
+		}
+		complete_effect = {
+			add_stability = -0.05
+		}
+		remove_effect = {
+			set_temp_variable = {
+				var = USA_reconstruction_progress_var_temp
+				value = 0.05
+			}
+			USA_add_reconstruction_progress = yes
+			add_war_support = 0.05
+		}
+		modifier = {
+			compliance_growth = 0.1
+			resistance_growth = -0.1
+			resistance_decay = 0.1
+		}
+		ai_will_do = {
+			base = 100
+		}
+	}
+	ATW_continue_our_ways_decision = {
+		icon = generic_speech
+		fire_only_once = yes
+		cost = 50
+		days_remove = 70
+		visible = {
+			has_completed_focus = ATW_send_them_through_the_inferno
+		}
+		complete_effect = {
+			set_temp_variable = {
+				var = USA_reconstruction_progress_var_temp
+				value = 0.05
+			}
+			USA_add_reconstruction_progress = yes
+			set_temp_variable = {
+				var = national_socialist_popularity_var_temp
+				value = 0.05
+			}
+			add_national_socialist_popularity = yes
+		}
+		ai_will_do = {
+			base = 100
+		}
+	}
+	ATW_expell_thoughts_of_change_decision = {
+		icon = generic_brainwash
+		fire_only_once = yes
+		cost = 50
+		days_remove = 70
+		visible = {
+			has_completed_focus = ATW_send_them_through_the_inferno
+		}
+		remove_effect = {
+			add_stability = 0.05
+			set_temp_variable = {
+				var = USA_reconstruction_progress_var_temp
+				value = 0.05
+			}
+			USA_add_reconstruction_progress = yes
+		}
+		modifier = {
+		}
+		ai_will_do = {
+			base = 100
+		}
+	}
+	ATW_calm_and_prepare_our_people_decision = {
+		fire_only_once = yes
+		cost = 50
+		days_remove = 70
+		visible = {
+			has_completed_focus = ATW_send_them_through_the_inferno
+		}
+		complete_effect = {
+			add_war_support = 0.05
+			set_temp_variable = {
+				var = USA_reconstruction_progress_var_temp
+				value = 0.05
+			}
+			USA_add_reconstruction_progress = yes
+		}
+		modifier = {
+			required_garrison_factor = -0.05
+		}
+		ai_will_do = {
+			base = 100
+		}
+	}
+	ATW_execute_duncan_decision = {
+		fire_only_once = yes
+		cost = 25
+		days_remove = 35
+		visible = {
+			has_completed_focus = ATW_sacrificing_the_fathers
+		}
+		complete_effect = {
+		}
+		remove_effect = {
+			retire_character = ATW_jordan_duncan_char
+		}
+		modifier = {
+		}
+		ai_will_do = {
+			base = 100
+		}
+	}
+	ATW_execute_corwyn_decision = {
+		fire_only_once = yes
+		cost = 25
+		days_remove = 35
+		visible = {
+			has_completed_focus = ATW_sacrificing_the_fathers
+		}
+		remove_effect = {
+			retire_character = ATW_corwyn_carver_char
+		}
+		ai_will_do = {
+			base = 100
+		}
+	}
+	ATW_execute_melzer_decision = {
+		fire_only_once = yes
+		cost = 25
+		days_remove = 35
+		visible = {
+			has_completed_focus = ATW_sacrificing_the_fathers
+		}
+		remove_effect = {
+			retire_character = ATW_ethan_melzer_char
+		}
+		ai_will_do = {
+			base = 100
+		}
+	}
+	ATW_execute_climo_decision = {
+		fire_only_once = yes
+		cost = 25
+		days_remove = 35
+		visible = {
+			has_completed_focus = ATW_sacrificing_the_fathers
+		}
+		remove_effect = {
+			retire_character = ATW_conor_climo_char
+		}
+		ai_will_do = {
+			base = 100
+		}
+	}
+	ATW_execute_merryman_decision = {
+		fire_only_once = yes
+		cost = 25
+		days_remove = 35
+		visible = {
+			has_completed_focus = ATW_sacrificing_the_fathers
+		}
+		remove_effect = {
+			retire_character = ATW_beau_merryman_char
+		}
+		ai_will_do = {
+			base = 100
+		}
+	}
+	ATW_execute_aguigui_decision = {
+		fire_only_once = yes
+		cost = 25
+		days_remove = 35
+		visible = {
+			has_completed_focus = ATW_sacrificing_the_fathers
+		}
+		remove_effect = {
+			retire_character = ATW_isaac_aguigui_char
+		}
+		ai_will_do = {
+			base = 100
+		}
+	}
+	ATW_souls_of_the_damned_decision = {
+		icon = generic_civil_support
+		fire_only_once = yes
+		cost = 100
+		days_remove = 70
+		visible = {
+			has_completed_focus = ATW_sacrificing_the_fathers
+		}
+		available = {
+			NOT = {
+				has_character = ATW_isaac_aguigui_char
+				has_character = ATW_beau_merryman_char
+				has_character = ATW_conor_climo_char
+				has_character = ATW_corwyn_carver_char
+				has_character = ATW_ethan_melzer_char
+				has_character = ATW_jordan_duncan_char
+			}
+		}
+		remove_effect = {
+			set_temp_variable = {
+				var = USA_reconstruction_progress_var_temp
+				value = 0.1
+			}
+			USA_add_reconstruction_progress = yes
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = ATW_heralds_of_the_apocalypse_dummy_idea
+					add_idea = ATW_memories_of_the_damned_idea
+				}
+			}
+			hidden_effect = {
+				add_to_variable = {
+					var = ATW_military_out_of_supply_factor_dynamic_var
+					value = -0.15
+				}
+				add_to_variable = {
+					var = ATW_military_war_support_factor_dynamic_var
+					value = 0.05
+				}
+				add_to_variable = {
+					var = ATW_military_max_planning_factor_dynamic_var
+					value = 0.1
+				}
+				add_to_variable = {
+					var = ATW_military_development_monthly_dynamic_var
+					value = 0.02
+				}
+			}
+		}
+		ai_will_do = {
+			base = 100
+		}
+	}
+	ATW_advance_into_hell_decision = {
+		icon = generic_ignite_civil_war
+		fire_only_once = yes
+		cost = 50
+		days_remove = 70
+		visible = {
+			has_completed_focus = ATW_send_them_through_the_inferno
+		}
+		available = {
+		}
+		complete_effect = {
+		}
+		remove_effect = {
+			set_temp_variable = {
+				var = USA_reconstruction_progress_var_temp
+				value = 0.1
+			}
+			USA_add_reconstruction_progress = yes
+			ATW_add_layer_of_hell_effect = yes
+		}
+		ai_will_do = {
+			base = 100
+		}
+	}
+	ATW_fascism_is_the_solution_campaign_decision = {
+		icon = generic_propaganda_campaigns
+		cost = 25
+		days_remove = 175
+		days_re_enable = 175
+		allowed = {
+			original_tag = ATW
+		}
+		visible = {
+			has_completed_focus = ATW_consolidate_the_command
+		}
+		available = {
+			has_campaign_slot = yes
+		}
+		ai_will_do = {
+			factor = 6
+		}
+		complete_effect = {
+			remove_campaign_slot = yes
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = ATW_doctrine_of_destruction_dummy_idea
+					add_idea = ATW_fascism_is_the_solution_campaign_idea
+				}
+			}
+			hidden_effect = {
+				add_to_variable = {
+					var = ATW_politics_political_power_gain_dynamic_var
+					value = 0.3
+				}
+				add_to_variable = {
+					var = ATW_politics_weekly_stability_dynamic_var
+					value = 0.001
+				}
+				add_to_variable = {
+					var = ATW_politics_national_socialist_drift_dynamic_var
+					value = 0.05
+				}
+			}
+		}
+		remove_effect = {
+			add_campaign_slot = yes
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = ATW_fascism_is_the_solution_campaign_idea
+					add_idea = ATW_doctrine_of_destruction_dummy_idea
+				}
+			}
+			hidden_effect = {
+				add_to_variable = {
+					var = ATW_politics_political_power_gain_dynamic_var
+					value = -0.3
+				}
+				add_to_variable = {
+					var = ATW_politics_weekly_stability_dynamic_var
+					value = -0.001
+				}
+				add_to_variable = {
+					var = ATW_politics_national_socialist_drift_dynamic_var
+					value = -0.05
+				}
+			}
+		}
+	}
+	ATW_increase_our_control_campaign_decision = {
+		icon = generic_propaganda_campaigns
+		cost = 50
+		days_remove = 175
+		days_re_enable = 175
+		allowed = {
+			original_tag = ATW
+		}
+		visible = {
+			has_completed_focus = ATW_consolidate_the_command
+		}
+		available = {
+			has_campaign_slot = yes
+			NOT = {
+				has_stability > 0.85
+			}
+		}
+		ai_will_do = {
+			base = 2
+		}
+		complete_effect = {
+			remove_campaign_slot = yes
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = ATW_doctrine_of_destruction_dummy_idea
+					add_idea = ATW_increase_our_control_campaign_idea
+				}
+			}
+			hidden_effect = {
+				add_to_variable = {
+					var = ATW_politics_stability_weekly_dynamic_var
+					value = 0.003
+				}
+			}
+		}
+		remove_effect = {
+			add_campaign_slot = yes
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = ATW_increase_our_control_campaign_idea
+					add_idea = ATW_doctrine_of_destruction_dummy_idea
+				}
+			}
+			hidden_effect = {
+				add_to_variable = {
+					var = ATW_politics_stability_weekly_dynamic_var
+					value = -0.003
+				}
+			}
+		}
+	}
+	ATW_our_honor_is_loyalty_campaign_decision = {
+		icon = generic_propaganda_campaigns
+		cost = 50
+		days_remove = 175
+		days_re_enable = 175
+		allowed = {
+			original_tag = ATW
+		}
+		visible = {
+			has_completed_focus = ATW_consolidate_the_command
+		}
+		available = {
+			has_campaign_slot = yes
+			NOT = {
+				has_war_support > 0.85
+			}
+		}
+		ai_will_do = {
+			base = 2
+		}
+		complete_effect = {
+			remove_campaign_slot = yes
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = ATW_doctrine_of_destruction_dummy_idea
+					add_idea = ATW_our_honor_is_loyalty_campaign_idea
+				}
+			}
+			hidden_effect = {
+				add_to_variable = {
+					var = ATW_politics_war_support_factor_dynamic_var
+					value = 0.003
+				}
+			}
+		}
+		remove_effect = {
+			add_campaign_slot = yes
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = ATW_our_honor_is_loyalty_campaign_idea
+					add_idea = ATW_doctrine_of_destruction_dummy_idea
+				}
+			}
+			hidden_effect = {
+				add_to_variable = {
+					var = ATW_politics_war_support_factor_dynamic_var
+					value = -0.003
+				}
+			}
+		}
+	}
+	ATW_accelerationist_propaganda_campaign_decision = {
+		icon = generic_propaganda_campaigns
+		cost = 25
+		days_remove = 175
+		days_re_enable = 175
+		cancel_if_not_visible = yes
+		allowed = {
+			original_tag = ATW
+		}
+		visible = {
+			has_completed_focus = ATW_siege
+		}
+		available = {
+			has_campaign_slot = yes
+		}
+		ai_will_do = {
+			base = 2
+		}
+		complete_effect = {
+			remove_campaign_slot = yes
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = ATW_doctrine_of_destruction_dummy_idea
+					add_idea = ATW_accelerationist_propaganda_campaign_idea
+				}
+			}
+			hidden_effect = {
+				add_to_variable = {
+					var = ATW_politics_party_popularity_stability_factor_dynamic_var
+					value = 0.2
+				}
+				add_to_variable = {
+					var = ATW_politics_national_socialist_drift_dynamic_var
+					value = 0.05
+				}
+			}
+		}
+		remove_effect = {
+			add_campaign_slot = yes
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = ATW_accelerationist_propaganda_campaign_idea
+					add_idea = ATW_doctrine_of_destruction_dummy_idea
+				}
+			}
+			hidden_effect = {
+				add_to_variable = {
+					var = ATW_politics_party_popularity_stability_factor_dynamic_var
+					value = -0.2
+				}
+				add_to_variable = {
+					var = ATW_politics_national_socialist_drift_dynamic_var
+					value = -0.05
+				}
+			}
+		}
+	}
+	ATW_utilize_our_connections_campaign_decision = {
+		icon = generic_propaganda_campaigns
+		cost = 0
+		days_remove = 175
+		days_re_enable = 175
+		allowed = {
+			original_tag = ATW
+		}
+		visible = {
+			has_completed_focus = ATW_insurrection
+		}
+		available = {
+			power_balance_value = {
+				id = ATW_religion_bop
+				value < -0.1
+			}
+			has_campaign_slot = yes
+		}
+		ai_will_do = {
+			base = 2
+		}
+		complete_effect = {
+			add_power_balance_value = {
+				id = ATW_religion_bop
+				value = 0.1
+			}
+			remove_campaign_slot = yes
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = ATW_doctrine_of_destruction_dummy_idea
+					add_idea = ATW_utilize_our_connections_campaign_idea
+				}
+			}
+			hidden_effect = {
+				add_to_variable = {
+					var = ATW_politics_political_power_gain_dynamic_var
+					value = 0.5
+				}
+			}
+		}
+		remove_effect = {
+			add_campaign_slot = yes
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = ATW_utilize_our_connections_campaign_idea
+					add_idea = ATW_doctrine_of_destruction_dummy_idea
+				}
+			}
+			hidden_effect = {
+				add_to_variable = {
+					var = ATW_politics_political_power_gain_dynamic_var
+					value = -0.5
+				}
+			}
+		}
+	}
+	ATW_christianization_campaign_decision = {
+		icon = generic_propaganda_campaigns
+		cost = 0
+		days_remove = 175
+		days_re_enable = 175
+		allowed = {
+			original_tag = ATW
+		}
+		visible = {
+			has_completed_focus = ATW_resurrection
+		}
+		available = {
+			power_balance_value = {
+				id = ATW_religion_bop
+				value > 0.1
+			}
+			has_campaign_slot = yes
+		}
+		ai_will_do = {
+			base = 2
+		}
+		complete_effect = {
+			add_power_balance_value = {
+				id = ATW_religion_bop
+				value = -0.1
+			}
+			remove_campaign_slot = yes
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = ATW_doctrine_of_destruction_dummy_idea
+					add_idea = ATW_christianization_campaign_idea
+				}
+			}
+			hidden_effect = {
+				add_to_variable = {
+					var = ATW_politics_political_power_gain_dynamic_var
+					value = 0.1
+				}
+				add_to_variable = {
+					var = ATW_politics_society_development_monthly_dynamic_var
+					value = 0.02
+				}
+			}
+		}
+		remove_effect = {
+			add_campaign_slot = yes
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = ATW_christianization_campaign_idea
+					add_idea = ATW_doctrine_of_destruction_dummy_idea
+				}
+			}
+			hidden_effect = {
+				add_to_variable = {
+					var = ATW_politics_political_power_gain_dynamic_var
+					value = -0.1
+				}
+				add_to_variable = {
+					var = ATW_politics_society_development_monthly_dynamic_var
+					value = -0.02
+				}
+			}
+		}
+	}
+	ATW_faith_and_works_campaign_decision = {
+		icon = generic_propaganda_campaigns
+		cost = 100
+		days_remove = 175
+		days_re_enable = 175
+		allowed = {
+			original_tag = ATW
+		}
+		visible = {
+			has_completed_focus = ATW_the_gates_have_opened
+		}
+		available = {
+			has_campaign_slot = yes
+		}
+		ai_will_do = {
+			base = 2
+		}
+		complete_effect = {
+			remove_campaign_slot = yes
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = ATW_doctrine_of_destruction_dummy_idea
+					add_idea = ATW_faith_and_works_campaign_idea
+				}
+			}
+			hidden_effect = {
+				add_to_variable = {
+					var = ATW_politics_stability_weekly_dynamic_var
+					value = 0.003
+				}
+				add_to_variable = {
+					var = ATW_politics_war_support_weekly_dynamic_var
+					value = 0.003
+				}
+			}
+		}
+		remove_effect = {
+			add_campaign_slot = yes
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = ATW_faith_and_works_campaign_idea
+					add_idea = ATW_doctrine_of_destruction_dummy_idea
+				}
+			}
+			hidden_effect = {
+				add_to_variable = {
+					var = ATW_politics_stability_weekly_dynamic_var
+					value = -0.003
+				}
+				add_to_variable = {
+					var = ATW_politics_war_support_weekly_dynamic_var
+					value = -0.003
+				}
+			}
+		}
+	}
+}
+
+NSM_national_front_category = {
+	ATW_the_boot_mission = {
+		icon = generic_ignite_civil_war
+		is_good = no
+		days_mission_timeout = 35
+		activation = {
+			always = no
+		}
+		available = {
+			set_temp_variable = {
+				var = ATW_suspicion_trigger_var_temp
+				value = 0.65
+			}
+			ATW_has_suspicion_less_than = yes
+		}
+		complete_effect = {
+		}
+		timeout_effect = {
+			effect_tooltip = {
+				remove_from_faction = ATW
+			}
+			country_event = atom.66
+		}
+	}
+	ATW_attend_an_operations_meeting_decision = {
+		fire_only_once = yes
+		cost = 15
+		available = {
+			has_completed_focus = ATW_the_final_army
+			is_in_faction = yes
+		}
+		visible = {
+			has_completed_focus = ATW_the_final_army
+			is_in_faction = yes
+			is_faction_leader = no
+		}
+		complete_effect = {
+			add_war_support = 0.02
+			set_temp_variable = {
+				var = ATW_suspicion_var_temp
+				value = 0.05
+			}
+			ATW_add_suspicion = yes
+		}
+		ai_will_do = {
+			base = 100
+		}
+	}
+	ATW_meet_with_fellow_leaders_decision = {
+		available = {
+			has_completed_focus = ATW_the_final_army
+			is_in_faction = yes
+		}
+		visible = {
+			has_completed_focus = ATW_the_final_army
+			is_in_faction = yes
+			is_faction_leader = no
+		}
+		complete_effect = {
+			set_temp_variable = {
+				var = ATW_suspicion_var_temp
+				value = -0.05
+			}
+			ATW_add_suspicion = yes
+		}
+		days_remove = 50
+		days_re_enable = 1
+		cost = 15
+		ai_will_do = {
+			base = 100
+		}
+	}
+	ATW_throw_a_party_decision = {
+		visible = {
+			has_completed_focus = ATW_the_final_army
+			is_in_faction = yes
+			is_faction_leader = no
+		}
+		complete_effect = {
+			add_stability = 0.025
+			set_temp_variable = {
+				var = ATW_suspicion_var_temp
+				value = -0.1
+			}
+			ATW_add_suspicion = yes
+		}
+		fire_only_once = yes
+		cost = 35
+		ai_will_do = {
+			base = 100
+		}
+	}
+	ATW_disuade_thoughts_of_betrayal_decision = {
+		available = {
+			has_completed_focus = ATW_the_final_army
+			is_in_faction = yes
+		}
+		visible = {
+			has_completed_focus = ATW_the_final_army
+			is_in_faction = yes
+			is_faction_leader = no
+		}
+		complete_effect = {
+			add_stability = 0.05
+			set_temp_variable = {
+				var = ATW_suspicion_var_temp
+				value = -0.1
+			}
+			ATW_add_suspicion = yes
+		}
+		fire_only_once = yes
+		cost = 50
+		ai_will_do = {
+			base = 100
+		}
+	}
+	ATW_joint_minor_military_exercises_decision = {
+		available = {
+			has_completed_focus = ATW_the_final_army
+			is_in_faction = yes
+		}
+		visible = {
+			has_completed_focus = ATW_the_final_army
+			is_in_faction = yes
+			is_faction_leader = no
+		}
+		complete_effect = {
+			army_experience = 15
+			add_war_support = 0.015
+			set_temp_variable = {
+				var = ATW_suspicion_var_temp
+				value = -0.05
+			}
+			ATW_add_suspicion = yes
+		}
+		days_remove = 50
+		days_re_enable = 1
+		cost = 35
+		ai_will_do = {
+			base = 100
+		}
+	}
+	ATW_justify_our_delegates_decision = {
+		available = {
+			has_completed_focus = ATW_the_final_army
+			is_in_faction = yes
+		}
+		visible = {
+			has_completed_focus = ATW_the_final_army
+			is_in_faction = yes
+			is_faction_leader = no
+		}
+		complete_effect = {
+			set_temp_variable = {
+				var = legit_var_temp
+				value = 0.025
+			}
+			add_legit = yes
+			set_temp_variable = {
+				var = ATW_suspicion_var_temp
+				value = 0.05
+			}
+			ATW_add_suspicion = yes
+		}
+		days_remove = 50
+		days_re_enable = 1
+		cost = 35
+		ai_will_do = {
+			base = 100
+		}
+	}
+	ATW_condemn_our_allies_intentions_decision = {
+		available = {
+			has_completed_focus = ATW_the_final_army
+			is_in_faction = yes
+		}
+		visible = {
+			has_completed_focus = ATW_the_final_army
+			is_in_faction = yes
+			is_faction_leader = no
+		}
+		complete_effect = {
+			every_other_country = {
+				limit = {
+					USA_is_nationalist_tag = yes
+					OR = {
+						USA_is_separatist_tag = yes
+						USA_is_rival_tag = yes
+					}
+				}
+				set_temp_variable = {
+					var = legit_var_temp
+					value = -0.025
+				}
+				add_legit = yes
+			}
+			set_temp_variable = {
+				var = ATW_suspicion_var_temp
+				value = 0.1
+			}
+			ATW_add_suspicion = yes
+			add_stability = -0.025
+		}
+		days_remove = 50
+		days_re_enable = 1
+		cost = 50
+		ai_will_do = {
+			base = 100
+		}
+	}
+	ATW_small_economic_integration_decision = {
+		available = {
+			is_in_faction = yes
+		}
+		visible = {
+			has_completed_focus = ATW_the_final_army
+			is_in_faction = yes
+			is_faction_leader = no
+		}
+		complete_effect = {
+			random_owned_controlled_state = {
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = industrial_complex
+					level = 1
+					instant_build = yes
+				}
+			}
+			set_temp_variable = {
+				var = ATW_suspicion_var_temp
+				value = -0.1
+			}
+			ATW_add_suspicion = yes
+		}
+		fire_only_once = yes
+		cost = 25
+		ai_will_do = {
+			base = 100
+		}
+	}
+	ATW_assure_the_front_of_compiance_and_loyalty_decision = {
+		available = {
+			has_completed_focus = ATW_the_final_army
+			is_in_faction = yes
+		}
+		visible = {
+			has_completed_focus = ATW_the_final_army
+			is_in_faction = yes
+			is_faction_leader = no
+		}
+		complete_effect = {
+			add_stability = 0.035
+			add_war_support = 0.01
+			set_temp_variable = {
+				var = ATW_suspicion_var_temp
+				value = -0.1
+			}
+			ATW_add_suspicion = yes
+		}
+		days_remove = 35
+		days_re_enable = 1
+		cost = 50
+		ai_will_do = {
+			base = 100
+		}
+	}
+	ATW_excuse_chemical_and_nuclear_weapons_decision = {
+		available = {
+			has_completed_focus = ATW_the_final_army
+			is_in_faction = yes
+		}
+		visible = {
+			has_completed_focus = ATW_the_final_army
+			is_in_faction = yes
+			is_faction_leader = no
+		}
+		complete_effect = {
+			add_stability = 0.01
+			add_war_support = 0.01
+			set_temp_variable = {
+				var = ATW_suspicion_var_temp
+				value = -0.1
+			}
+			ATW_add_suspicion = yes
+		}
+		fire_only_once = yes
+		cost = 35
+		ai_will_do = {
+			base = 17
+		}
+	}
+	ATW_confiscate_nuclear_weaponry_decision = {
+		visible = {
+			has_completed_focus = ATW_the_final_army
+			is_in_faction = yes
+			is_faction_leader = no
+		}
+		complete_effect = {
+			add_stability = -0.01
+			PTF = {
+				add_stability = -0.02
+			}
+			NSM = {
+				add_stability = -0.02
+			}
+			add_nuclear_bombs = 2
+			set_temp_variable = {
+				var = ATW_suspicion_var_temp
+				value = 0.1
+			}
+			ATW_add_suspicion = yes
+		}
+		fire_only_once = yes
+		cost = 50
+		ai_will_do = {
+			base = 16
+		}
+	}
+	ATW_steal_patriot_front_military_designs_decision = {
+		available = {
+			has_completed_focus = ATW_the_final_army
+			is_in_faction = yes
+		}
+		visible = {
+			has_completed_focus = ATW_the_final_army
+			is_in_faction = yes
+			is_faction_leader = no
+		}
+		complete_effect = {
+			PTF = {
+				add_stability = -0.01
+			}
+			random_list = {
+				34 = {
+					add_tech_bonus = {
+						name = ATW_steal_patriot_front_military_designs_decision
+						bonus = 0.5
+						uses = 1
+						category = infantry_weapons
+					}
+				}
+				33 = {
+					add_tech_bonus = {
+						name = ATW_steal_patriot_front_military_designs_decision
+						bonus = 0.5
+						uses = 1
+						category = motorized_equipment
+					}
+				}
+				33 = {
+					add_tech_bonus = {
+						name = ATW_steal_patriot_front_military_designs_decision
+						bonus = 0.5
+						uses = 1
+						category = cat_mechanized_equipment
+					}
+				}
+			}
+			set_temp_variable = {
+				var = ATW_suspicion_var_temp
+				value = 0.15
+			}
+			ATW_add_suspicion = yes
+		}
+		days_remove = 70
+		days_re_enable = 1
+		cost = 50
+		ai_will_do = {
+			base = 16
+		}
+	}
+	ATW_steal_nsm_equipment_decision = {
+		available = {
+			has_completed_focus = ATW_the_final_army
+			is_in_faction = yes
+		}
+		visible = {
+			has_completed_focus = ATW_the_final_army
+			is_in_faction = yes
+			is_faction_leader = no
+		}
+		complete_effect = {
+			NSM = {
+				add_stability = -0.015
+			}
+			random_list = {
+				34 = {
+					add_equipment_to_stockpile = {
+						type = infantry_equipment
+						amount = 100
+					}
+				}
+				33 = {
+					add_equipment_to_stockpile = {
+						type = infantry_equipment
+						amount = 500
+					}
+				}
+				33 = {
+					add_equipment_to_stockpile = {
+						type = infantry_equipment
+						amount = 1000
+					}
+					add_equipment_to_stockpile = {
+						type = support_equipment
+						amount = 150
+					}
+				}
+			}
+			set_temp_variable = {
+				var = ATW_suspicion_var_temp
+				value = 0.15
+			}
+			ATW_add_suspicion = yes
+		}
+		days_remove = 50
+		days_re_enable = 1
+		cost = 50
+		ai_will_do = {
+			base = 16
+		}
+	}
+}
+
+ATW_the_final_solution_category = {
+	ATW_international_intervention_mission = {
+		icon = generic_ignite_civil_war
+		is_good = no
+		days_mission_timeout = 35
+		activation = {
+			always = no
+		}
+		available = {
+			set_temp_variable = {
+				var = ATW_suspicion_trigger_var_temp
+				value = 0.4
+			}
+			ATW_has_suspicion_less_than = yes
+		}
+		complete_effect = {
+		}
+		timeout_effect = {
+			country_event = {
+				id = atom.84
+			}
+		}
+	}
+	ATW_popular_revolt_mission = {
+		icon = generic_ignite_civil_war
+		is_good = no
+		days_mission_timeout = 35
+		activation = {
+			always = no
+		}
+		available = {
+			set_temp_variable = {
+				var = ATW_suspicion_trigger_var_temp
+				value = 0.6
+			}
+			ATW_has_suspicion_less_than = yes
+		}
+		complete_effect = {
+		}
+		timeout_effect = {
+			country_event = {
+				id = atom.2
+			}
+		}
+	}
+	# ATW_permit_chemical_weapons = {
+	# 	visible = {
+	# 		has_completed_focus = ATW_domestic_small_arms_production
+	# 	}
+	# 	complete_effect = {
+	# 		custom_effect_tooltip = ATW_chem_weapons_tt
+	# 		set_country_flag = chem_weapons
+	# 	}
+	# 	icon = democracy
+	# 	fire_only_once = yes
+	# 	ai_will_do = {
+	# 		factor = 10
+	# 	}
+	# }
+}
+
+ATW_heralds_of_the_apocalypse_category = {
+	ATW_hinder_our_desperation_decision = {
+		icon = generic_political_rally
+		cancel_if_not_visible = yes
+		cost = 25
+		days_remove = 70
+		days_re_enable = 105
+		allowed = {
+			original_tag = ATW
+		}
+		visible = {
+			has_dynamic_modifier = {
+				modifier = ATW_desperation_dynamic
+			}
+		}
+		available = {
+			set_temp_variable = {
+				var = ATW_desperation_trigger_var_temp
+				value = 0.05
+			}
+			ATW_has_desperation_greater_than_or_equals = yes
+		}
+		ai_will_do = {
+			base = 0
+			modifier = {
+				add = 100
+				check_variable = {
+					var = ATW_desperation_var
+					value = 0.5
+					compare = greater_than_or_equals
+				}
+			}
+		}
+		modifier = {
+			desperation_weekly = -0.005
+		}
+	}
+	ATW_fuel_our_devotion_decision = {
+		icon = generic_political_rally
+		cancel_if_not_visible = yes
+		cost = 25
+		days_remove = 70
+		days_re_enable = 105
+		allowed = {
+			original_tag = ATW
+		}
+		visible = {
+			has_dynamic_modifier = {
+				modifier = ATW_devotion_dynamic
+			}
+		}
+		available = {
+			set_temp_variable = {
+				var = ATW_devotion_trigger_var_temp
+				value = 0.95
+			}
+			ATW_has_devotion_less_than = yes
+		}
+		ai_will_do = {
+			base = 0
+			modifier = {
+				add = 100
+				check_variable = {
+					var = ATW_devotion_var
+					value = 0.5
+					compare = less_than_or_equals
+				}
+			}
+		}
+		modifier = {
+			devotion_weekly = 0.005
+		}
+	}
+	ATW_multiply_their_despair_decision = {
+		icon = generic_political_rally
+		cancel_if_not_visible = yes
+		cost = 25
+		days_remove = 70
+		days_re_enable = 105
+		allowed = {
+			original_tag = ATW
+		}
+		visible = {
+			has_dynamic_modifier = {
+				modifier = ATW_despair_dynamic
+			}
+		}
+		available = {
+			set_temp_variable = {
+				var = ATW_despair_trigger_var_temp
+				value = 0.95
+			}
+			ATW_has_despair_less_than = yes
+		}
+		ai_will_do = {
+			base = 0
+			modifier = {
+				add = 100
+				check_variable = {
+					var = ATW_despair_var
+					value = 0.5
+					compare = less_than_or_equals
+				}
+			}
+		}
+		modifier = {
+			despair_weekly = 0.005
+		}
+	}
+	ATW_mandatory_military_service_decision = {
+		icon = generic_military
+		cost = 50
+		days_remove = 70
+		fire_only_once = yes
+		visible = {
+			has_completed_focus = ATW_no_life_left_unchanged
+		}
+		complete_effect = {
+		}
+		remove_effect = {
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = ATW_heralds_of_the_apocalypse_dummy_idea
+					add_idea = ATW_mandatory_military_service_idea
+				}
+			}
+			hidden_effect = {
+				add_to_variable = {
+					var = ATW_military_conscription_factor_dynamic_var
+					value = 0.05
+				}
+				add_to_variable = {
+					var = ATW_military_mobilization_speed_dynamic_var
+					value = 0.05
+				}
+				add_to_variable = {
+					var = ATW_military_training_time_army_factor_dynamic_var
+					value = -0.05
+				}
+			}
+		}
+		ai_will_do = {
+			base = 100
+		}
+	}
+	ATW_you_fight_till_your_last_breath_decision = {
+		icon = generic_military
+		cost = 75
+		days_remove = 105
+		fire_only_once = yes
+		visible = {
+			has_completed_focus = ATW_fight_for_every_inch
+		}
+		complete_effect = {
+		}
+		remove_effect = {
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = ATW_heralds_of_the_apocalypse_dummy_idea
+					add_idea = ATW_you_fight_till_your_last_breath_idea
+				}
+			}
+			hidden_effect = {
+				add_to_variable = {
+					var = ATW_military_pocket_penalty_dynamic_var
+					value = -0.1
+				}
+				add_to_variable = {
+					var = ATW_military_army_strength_factor_dynamic_var
+					value = 0.05
+				}
+				add_to_variable = {
+					var = ATW_military_max_dig_in_factor_dynamic_var
+					value = 0.1
+				}
+				add_to_variable = {
+					var = ATW_military_dig_in_speed_factor_dynamic_var
+					value = 0.1
+				}
+			}
+		}
+		ai_will_do = {
+			base = 100
+		}
+	}
+	ATW_honor_armageddon_campaign_decision = {
+		icon = generic_propaganda_campaigns
+		cost = 0
+		days_remove = 175
+		days_re_enable = 175
+		custom_cost_text = NSM_revanchist_reconquest_campaign_decision_cost
+		custom_cost_trigger = {
+			NOT = {
+				command_power < 20
+			}
+		}
+		allowed = {
+			original_tag = ATW
+		}
+		visible = {
+			has_completed_focus = ATW_the_final_army
+		}
+		available = {
+			has_campaign_slot = yes
+		}
+		ai_will_do = {
+			base = 6
+		}
+		complete_effect = {
+			remove_campaign_slot = yes
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = ATW_heralds_of_the_apocalypse_dummy_idea
+					add_idea = ATW_honor_armaggedon_campaign_idea
+				}
+			}
+			hidden_effect = {
+				add_command_power = -20
+				add_to_variable = {
+					var = ATW_military_max_command_power
+					value = -20
+				}
+				add_to_variable = {
+					var = ATW_military_war_support_factor_dynamic_var
+					value = 0.05
+				}
+				add_to_variable = {
+					var = ATW_military_army_attack_factor_dynamic_var
+					value = 0.1
+				}
+				add_to_variable = {
+					var = ATW_military_army_speed_factor_dynamic_var
+					value = 0.1
+				}
+				add_to_variable = {
+					var = ATW_military_stability_factor_dynamic_var
+					value = -0.1
+				}
+			}
+		}
+		remove_effect = {
+			add_campaign_slot = yes
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = ATW_honor_armaggedon_campaign_idea
+					add_idea = ATW_heralds_of_the_apocalypse_dummy_idea
+				}
+			}
+			hidden_effect = {
+				add_to_variable = {
+					var = ATW_military_max_command_power
+					value = 20
+				}
+				add_to_variable = {
+					var = ATW_military_max_command_power
+					value = 20
+				}
+				add_to_variable = {
+					var = ATW_military_war_support_factor_dynamic_var
+					value = -0.05
+				}
+				add_to_variable = {
+					var = ATW_military_army_attack_factor_dynamic_var
+					value = -0.1
+				}
+				add_to_variable = {
+					var = ATW_military_army_speed_factor_dynamic_var
+					value = -0.1
+				}
+				add_to_variable = {
+					var = ATW_military_stability_factor_dynamic_var
+					value = 0.1
+				}
+			}
+		}
+	}
+	ATW_organize_propogate_operate_campaign_decision = {
+		icon = generic_propaganda_campaigns
+		cost = 0
+		days_remove = 175
+		days_re_enable = 175
+		custom_cost_text = NSM_revanchist_reconquest_campaign_decision_cost
+		custom_cost_trigger = {
+			NOT = {
+				command_power < 20
+			}
+		}
+		allowed = {
+			original_tag = ATW
+		}
+		visible = {
+			has_completed_focus = ATW_infiltrate_their_armies
+		}
+		available = {
+			has_campaign_slot = yes
+		}
+		ai_will_do = {
+			base = 6
+		}
+		complete_effect = {
+			remove_campaign_slot = yes
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = ATW_heralds_of_the_apocalypse_dummy_idea
+					add_idea = ATW_organize_propogate_operate_campaign_idea
+				}
+			}
+			hidden_effect = {
+				add_command_power = -20
+				add_to_variable = {
+					var = ATW_military_max_command_power
+					value = -20
+				}
+				add_to_variable = {
+					var = ATW_military_coordination_bonus_dynamic_var
+					value = 0.1
+				}
+				add_to_variable = {
+					var = ATW_military_max_planning_factor_dynamic_var
+					value = 0.1
+				}
+			}
+		}
+		remove_effect = {
+			add_campaign_slot = yes
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = ATW_organize_propogate_operate_campaign_idea
+					add_idea = ATW_heralds_of_the_apocalypse_dummy_idea
+				}
+			}
+			hidden_effect = {
+				add_to_variable = {
+					var = ATW_military_max_command_power
+					value = 20
+				}
+				add_to_variable = {
+					var = ATW_military_coordination_bonus_dynamic_var
+					value = -0.1
+				}
+				add_to_variable = {
+					var = ATW_military_max_planning_factor_dynamic_var
+					value = -0.1
+				}
+			}
+		}
+	}
+	ATW_from_the_belly_of_the_beast_campaign_decision = {
+		icon = generic_propaganda_campaigns
+		cost = 0
+		days_remove = 175
+		days_re_enable = 175
+		custom_cost_text = NSM_revanchist_reconquest_campaign_decision_cost
+		custom_cost_trigger = {
+			NOT = {
+				command_power < 20
+			}
+		}
+		allowed = {
+			original_tag = ATW
+		}
+		visible = {
+			hidden_trigger = {
+				has_completed_focus = ATW_a_golden_circle
+			}
+		}
+		available = {
+			has_campaign_slot = yes
+		}
+		ai_will_do = {
+			base = 6
+		}
+		complete_effect = {
+			remove_campaign_slot = yes
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = ATW_heralds_of_the_apocalypse_dummy_idea
+					add_idea = ATW_from_belly_of_the_beast_campaign_idea
+				}
+			}
+			hidden_effect = {
+				add_command_power = -20
+				add_to_variable = {
+					var = ATW_military_max_command_power
+					value = -20
+				}
+				add_to_variable = {
+					var = ATW_military_war_support_factor_dynamic_var
+					value = 0.05
+				}
+				add_to_variable = {
+					var = ATW_military_training_time_army_factor_dynamic_var
+					value = -0.15
+				}
+				add_to_variable = {
+					var = ATW_military_mobilization_speed_dynamic_var
+					value = 0.1
+				}
+			}
+		}
+		remove_effect = {
+			add_campaign_slot = yes
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = ATW_from_belly_of_the_beast_campaign_idea
+					add_idea = ATW_heralds_of_the_apocalypse_dummy_idea
+				}
+			}
+			hidden_effect = {
+				add_to_variable = {
+					var = ATW_military_max_command_power
+					value = 20
+				}
+				add_to_variable = {
+					var = ATW_military_war_support_factor_dynamic_var
+					value = -0.05
+				}
+				add_to_variable = {
+					var = ATW_military_training_time_army_factor_dynamic_var
+					value = 0.15
+				}
+				add_to_variable = {
+					var = ATW_military_mobilization_speed_dynamic_var
+					value = -0.1
+				}
+			}
+		}
+	}
+	ATW_pure_unadulterated_destruction_campaign_decision = {
+		icon = generic_propaganda_campaigns
+		cost = 0
+		days_remove = 175
+		days_re_enable = 175
+		custom_cost_text = NSM_revanchist_reconquest_campaign_decision_cost
+		custom_cost_trigger = {
+			NOT = {
+				command_power < 20
+			}
+		}
+		allowed = {
+			original_tag = ATW
+		}
+		visible = {
+			hidden_trigger = {
+				has_completed_focus = ATW_infiltrate_their_armies
+			}
+		}
+		available = {
+			has_campaign_slot = yes
+		}
+		ai_will_do = {
+			base = 6
+		}
+		complete_effect = {
+			remove_campaign_slot = yes
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = ATW_heralds_of_the_apocalypse_dummy_idea
+					add_idea = ATW_pure_unadulterated_destruction_campaign_idea
+				}
+			}
+			hidden_effect = {
+				add_command_power = -20
+				add_to_variable = {
+					var = ATW_military_max_command_power
+					value = -20
+				}
+				add_to_variable = {
+					var = ATW_military_land_reinforce_rate_dynamic_var
+					value = 0.1
+				}
+				add_to_variable = {
+					var = ATW_military_army_attack_factor_dynamic_var
+					value = 0.15
+				}
+				add_to_variable = {
+					var = ATW_military_supply_consumption_factor_dynamic_var
+					value = -0.1
+				}
+			}
+		}
+		remove_effect = {
+			add_campaign_slot = yes
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = ATW_pure_unadulterated_destruction_campaign_idea
+					add_idea = ATW_heralds_of_the_apocalypse_dummy_idea
+				}
+			}
+			hidden_effect = {
+				add_to_variable = {
+					var = ATW_military_max_command_power
+					value = 20
+				}
+				add_to_variable = {
+					var = ATW_military_land_reinforce_rate_dynamic_var
+					value = -0.1
+				}
+				add_to_variable = {
+					var = ATW_military_army_attack_factor_dynamic_var
+					value = -0.15
+				}
+				add_to_variable = {
+					var = ATW_military_supply_consumption_factor_dynamic_var
+					value = 0.1
+				}
+			}
+		}
+	}
+	ATW_our_patience_has_limits_campaign_decision = {
+		icon = generic_propaganda_campaigns
+		cost = 0
+		days_remove = 175
+		days_re_enable = 175
+		custom_cost_text = NSM_revanchist_reconquest_campaign_decision_cost
+		custom_cost_trigger = {
+			NOT = {
+				command_power < 20
+			}
+		}
+		allowed = {
+			original_tag = ATW
+		}
+		visible = {
+			hidden_trigger = {
+				has_completed_focus = ATW_a_golden_circle
+			}
+		}
+		available = {
+			has_campaign_slot = yes
+		}
+		ai_will_do = {
+			base = 6
+		}
+		complete_effect = {
+			remove_campaign_slot = yes
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = ATW_heralds_of_the_apocalypse_dummy_idea
+					add_idea = ATW_our_patience_has_limits_campaign_idea
+				}
+			}
+			hidden_effect = {
+				add_command_power = -20
+				add_to_variable = {
+					var = ATW_military_max_command_power
+					value = -20
+				}
+				add_to_variable = {
+					var = ATW_military_army_speed_factor_dynamic_var
+					value = 0.1
+				}
+				add_to_variable = {
+					var = ATW_military_army_morale_factor_dynamic_var
+					value = 0.1
+				}
+			}
+		}
+		remove_effect = {
+			add_campaign_slot = yes
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = ATW_our_patience_has_limits_campaign_idea
+					add_idea = ATW_heralds_of_the_apocalypse_dummy_idea
+				}
+			}
+			hidden_effect = {
+				add_to_variable = {
+					var = ATW_military_max_command_power
+					value = 20
+				}
+				add_to_variable = {
+					var = ATW_military_army_speed_factor_dynamic_var
+					value = -0.1
+				}
+				add_to_variable = {
+					var = ATW_military_army_morale_factor_dynamic_var
+					value = -0.1
+				}
+			}
+		}
+	}
+	ATW_the_aryan_revolution_campaign_decision = {
+		icon = generic_propaganda_campaigns
+		cost = 0
+		days_remove = 175
+		days_re_enable = 175
+		custom_cost_text = NSM_revanchist_reconquest_campaign_decision_cost
+		custom_cost_trigger = {
+			NOT = {
+				command_power < 20
+			}
+		}
+		allowed = {
+			original_tag = ATW
+		}
+		visible = {
+			has_completed_focus = ATW_a_golden_circle
+		}
+		available = {
+			has_campaign_slot = yes
+		}
+		ai_will_do = {
+			base = 6
+		}
+		complete_effect = {
+			remove_campaign_slot = yes
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = ATW_heralds_of_the_apocalypse_dummy_idea
+					add_idea = ATW_aryan_revolution_campaign_idea
+				}
+			}
+			hidden_effect = {
+				add_command_power = -20
+				add_to_variable = {
+					var = ATW_military_max_command_power
+					value = -20
+				}
+				add_to_variable = {
+					var = ATW_military_mobilization_speed_dynamic_var
+					value = 0.25
+				}
+				add_to_variable = {
+					var = ATW_military_training_time_army_factor_dynamic_var
+					value = -0.25
+				}
+			}
+		}
+		remove_effect = {
+			add_campaign_slot = yes
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = ATW_aryan_revolution_campaign_idea
+					add_idea = ATW_heralds_of_the_apocalypse_dummy_idea
+				}
+			}
+			hidden_effect = {
+				add_to_variable = {
+					var = ATW_military_max_command_power
+					value = 20
+				}
+				add_to_variable = {
+					var = ATW_military_mobilization_speed_dynamic_var
+					value = -0.25
+				}
+				add_to_variable = {
+					var = ATW_military_training_time_army_factor_dynamic_var
+					value = 0.25
+				}
+			}
+		}
+	}
+	ATW_root_out_the_impurities_campaign_decision = {
+		icon = generic_propaganda_campaigns
+		cost = 0
+		days_remove = 175
+		days_re_enable = 175
+		custom_cost_text = NSM_revanchist_reconquest_campaign_decision_cost
+		custom_cost_trigger = {
+			NOT = {
+				command_power < 20
+			}
+		}
+		allowed = {
+			original_tag = ATW
+		}
+		visible = {
+			has_completed_focus = ATW_accelerate_into_the_end
+		}
+		available = {
+			has_campaign_slot = yes
+		}
+		ai_will_do = {
+			base = 6
+		}
+		complete_effect = {
+			remove_campaign_slot = yes
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = ATW_heralds_of_the_apocalypse_dummy_idea
+					add_idea = ATW_root_out_the_impurities_campaign_idea
+				}
+			}
+			hidden_effect = {
+				add_command_power = -20
+				add_to_variable = {
+					var = ATW_military_max_command_power
+					value = -20
+				}
+				add_to_variable = {
+					var = ATW_military_compliance_growth_dynamic_var
+					value = 0.1
+				}
+				add_to_variable = {
+					var = ATW_military_resistance_decay_dynamic_var
+					value = 0.1
+				}
+				add_to_variable = {
+					var = ATW_military_resistance_growth_dynamic_var
+					value = -0.1
+				}
+			}
+		}
+		remove_effect = {
+			add_campaign_slot = yes
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = ATW_root_out_the_impurities_campaign_idea
+					add_idea = ATW_heralds_of_the_apocalypse_dummy_idea
+				}
+			}
+			hidden_effect = {
+				add_to_variable = {
+					var = ATW_military_max_command_power
+					value = 20
+				}
+				add_to_variable = {
+					var = ATW_military_compliance_growth_dynamic_var
+					value = -0.1
+				}
+				add_to_variable = {
+					var = ATW_military_resistance_decay_dynamic_var
+					value = -0.1
+				}
+				add_to_variable = {
+					var = ATW_military_resistance_growth_dynamic_var
+					value = 0.1
+				}
+			}
+		}
+	}
+	ATW_the_will_to_survive_campaign_decision = {
+		icon = generic_propaganda_campaigns
+		cost = 0
+		days_remove = 175
+		days_re_enable = 175
+		custom_cost_text = NSM_revanchist_reconquest_campaign_decision_cost
+		custom_cost_trigger = {
+			NOT = {
+				command_power < 20
+			}
+		}
+		allowed = {
+			original_tag = ATW
+		}
+		visible = {
+			has_completed_focus = ATW_pestilence
+		}
+		available = {
+			has_campaign_slot = yes
+		}
+		ai_will_do = {
+			base = 6
+		}
+		complete_effect = {
+			remove_campaign_slot = yes
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = ATW_heralds_of_the_apocalypse_dummy_idea
+					add_idea = ATW_the_will_to_survive_campaign_idea
+				}
+			}
+			hidden_effect = {
+				add_command_power = -20
+				add_to_variable = {
+					var = ATW_military_max_command_power
+					value = -20
+				}
+				add_to_variable = {
+					var = ATW_military_pocket_penalty_dynamic_var
+					value = -0.1
+				}
+				add_to_variable = {
+					var = ATW_military_army_org_factor_dynamic_var
+					value = 0.1
+				}
+			}
+		}
+		remove_effect = {
+			add_campaign_slot = yes
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = ATW_the_will_to_survive_campaign_idea
+					add_idea = ATW_heralds_of_the_apocalypse_dummy_idea
+				}
+			}
+			hidden_effect = {
+				add_to_variable = {
+					var = ATW_military_max_command_power
+					value = 20
+				}
+				add_to_variable = {
+					var = ATW_military_pocket_penalty_dynamic_var
+					value = 0.1
+				}
+				add_to_variable = {
+					var = ATW_military_army_org_factor_dynamic_var
+					value = -0.1
+				}
+			}
+		}
+	}
+	ATW_harbringers_of_the_apocalypse_campaign_decision = {
+		icon = generic_propaganda_campaigns
+		cost = 0
+		days_remove = 175
+		days_re_enable = 175
+		custom_cost_text = NSM_revanchist_reconquest_campaign_decision_cost
+		custom_cost_trigger = {
+			NOT = {
+				command_power < 20
+			}
+		}
+		allowed = {
+			original_tag = ATW
+		}
+		visible = {
+			has_completed_focus = ATW_conquest
+		}
+		available = {
+			has_campaign_slot = yes
+		}
+		ai_will_do = {
+			base = 6
+		}
+		complete_effect = {
+			remove_campaign_slot = yes
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = ATW_heralds_of_the_apocalypse_dummy_idea
+					add_idea = ATW_harbringers_of_the_apocalypse_campaign_idea
+				}
+			}
+			hidden_effect = {
+				add_command_power = -20
+				add_to_variable = {
+					var = ATW_military_max_command_power
+					value = -20
+				}
+				add_to_variable = {
+					var = ATW_military_out_of_supply_factor_dynamic_var
+					value = -0.05
+				}
+				add_to_variable = {
+					var = ATW_military_army_morale_factor_dynamic_var
+					value = 0.1
+				}
+			}
+		}
+		remove_effect = {
+			add_campaign_slot = yes
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = ATW_harbringers_of_the_apocalypse_campaign_idea
+					add_idea = ATW_heralds_of_the_apocalypse_dummy_idea
+				}
+			}
+			hidden_effect = {
+				add_to_variable = {
+					var = ATW_military_max_command_power
+					value = 20
+				}
+				add_to_variable = {
+					var = ATW_military_out_of_supply_factor_dynamic_var
+					value = -0.05
+				}
+				add_to_variable = {
+					var = ATW_military_army_morale_factor_dynamic_var
+					value = 0.05
+				}
+			}
+		}
+	}
+	ATW_in_his_name_campaign_decision = {
+		icon = generic_propaganda_campaigns
+		cost = 0
+		days_remove = 175
+		days_re_enable = 175
+		custom_cost_text = NSM_revanchist_reconquest_campaign_decision_cost
+		custom_cost_trigger = {
+			NOT = {
+				command_power < 20
+			}
+		}
+		allowed = {
+			original_tag = ATW
+		}
+		visible = {
+			has_completed_focus = ATW_in_his_name
+		}
+		available = {
+			has_campaign_slot = yes
+		}
+		ai_will_do = {
+			base = 6
+		}
+		complete_effect = {
+			remove_campaign_slot = yes
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = ATW_heralds_of_the_apocalypse_dummy_idea
+					add_idea = ATW_strength_of_will_campaign_idea
+				}
+			}
+			hidden_effect = {
+				add_command_power = -20
+				add_to_variable = {
+					var = ATW_military_max_command_power
+					value = -20
+				}
+				add_to_variable = {
+					var = ATW_military_army_speed_factor_dynamic_var
+					value = 0.1
+				}
+				add_to_variable = {
+					var = ATW_military_army_attack_factor_dynamic_var
+					value = 0.1
+				}
+			}
+		}
+		remove_effect = {
+			add_campaign_slot = yes
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = ATW_strength_of_will_campaign_idea
+					add_idea = ATW_heralds_of_the_apocalypse_dummy_idea
+				}
+			}
+			hidden_effect = {
+				add_to_variable = {
+					var = ATW_military_max_command_power
+					value = 20
+				}
+				add_to_variable = {
+					var = ATW_military_army_speed_factor_dynamic_var
+					value = -0.1
+				}
+				add_to_variable = {
+					var = ATW_military_army_attack_factor_dynamic_var
+					value = -0.1
+				}
+			}
+		}
+	}
+	ATW_blood_for_every_inch_of_soil_campaign_decision = {
+		icon = generic_propaganda_campaigns
+		cost = 0
+		days_remove = 175
+		days_re_enable = 175
+		custom_cost_text = NSM_revanchist_reconquest_campaign_decision_cost
+		custom_cost_trigger = {
+			NOT = {
+				command_power < 20
+			}
+		}
+		allowed = {
+			original_tag = ATW
+		}
+		visible = {
+			has_completed_focus = ATW_blood_for_every_inch_of_soil
+		}
+		available = {
+			has_campaign_slot = yes
+		}
+		ai_will_do = {
+			base = 6
+		}
+		complete_effect = {
+			remove_campaign_slot = yes
+			every_army_leader = {
+				unit_modifiers = {
+					offence = 0.1
+					org_damage_multiplier = -0.1
+					str_damage_multiplier = 0.1
+					war_support_reduction_on_damage = 0.5
+					cannot_retreat_while_attacking = 1
+					days = 175
+					tooltip = ABILITY_FORCE_ATTACK_TOOLTIP
+				}
+			}
+			hidden_effect = {
+				add_command_power = -20
+			}
+		}
+		remove_effect = {
+			add_campaign_slot = yes
+		}
+	}
+	ATW_chemical_warfare_campaign_decision = {
+		icon = generic_propaganda_campaigns
+		cost = 0
+		days_remove = 175
+		days_re_enable = 175
+		custom_cost_text = APA_lighting_strike_campaign_decision_cost
+		custom_cost_trigger = {
+			NOT = {
+				command_power < 40
+			}
+		}
+		allowed = {
+			original_tag = ATW
+		}
+		visible = {
+			has_completed_focus = ATW_a_scarred_humanity
+		}
+		available = {
+			has_campaign_slot = yes
+		}
+		ai_will_do = {
+			base = 6
+		}
+		complete_effect = {
+			remove_campaign_slot = yes
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = ATW_heralds_of_the_apocalypse_dummy_idea
+					add_idea = ATW_chemical_combat_campaign_idea
+				}
+			}
+			hidden_effect = {
+				add_command_power = -40
+				add_to_variable = {
+					var = ATW_military_max_command_power
+					value = -40
+				}
+				add_to_variable = {
+					var = ATW_military_war_support_factor_dynamic_var
+					value = -0.1
+				}
+				add_to_variable = {
+					var = ATW_military_army_attack_factor_dynamic_var
+					value = 0.2
+				}
+				add_to_variable = {
+					var = ATW_military_army_defence_factor_dynamic_var
+					value = 0.2
+				}
+			}
+		}
+		remove_effect = {
+			add_campaign_slot = yes
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = ATW_strength_of_will_campaign_idea
+					add_idea = ATW_heralds_of_the_apocalypse_dummy_idea
+				}
+			}
+			hidden_effect = {
+				add_to_variable = {
+					var = ATW_military_max_command_power
+					value = 40
+				}
+				add_to_variable = {
+					var = ATW_military_war_support_factor_dynamic_var
+					value = 0.1
+				}
+				add_to_variable = {
+					var = ATW_military_army_attack_factor_dynamic_var
+					value = -0.2
+				}
+				add_to_variable = {
+					var = ATW_military_army_defence_factor_dynamic_var
+					value = -0.2
+				}
+			}
+		}
+	}
+	ATW_the_full_power_of_the_sun_campaign_decision = {
+		icon = generic_propaganda_campaigns
+		cost = 0
+		days_remove = 175
+		days_re_enable = 175
+		custom_cost_text = APA_lighting_strike_campaign_decision_cost
+		custom_cost_trigger = {
+			NOT = {
+				command_power < 40
+			}
+		}
+		allowed = {
+			original_tag = ATW
+		}
+		visible = {
+			has_completed_focus = ATW_the_atomic_weapons_division
+		}
+		available = {
+			has_campaign_slot = yes
+		}
+		ai_will_do = {
+			base = 6
+		}
+		complete_effect = {
+			remove_campaign_slot = yes
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = ATW_heralds_of_the_apocalypse_dummy_idea
+					add_idea = ATW_the_full_power_of_the_sun_campaign_idea
+				}
+			}
+			hidden_effect = {
+				add_command_power = -40
+				add_to_variable = {
+					var = ATW_military_max_command_power
+					value = -40
+				}
+				add_to_variable = {
+					var = ATW_military_max_planning_factor_dynamic_var
+					value = 0.25
+				}
+			}
+		}
+		remove_effect = {
+			add_campaign_slot = yes
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = ATW_the_full_power_of_the_sun_campaign_idea
+					add_idea = ATW_heralds_of_the_apocalypse_dummy_idea
+				}
+			}
+			hidden_effect = {
+				add_to_variable = {
+					var = ATW_military_max_command_power
+					value = 40
+				}
+				add_to_variable = {
+					var = ATW_military_max_planning_factor_dynamic_var
+					value = -0.25
+				}
+			}
+		}
+	}
+	ATW_fighting_for_your_country_campaign_decision = {
+		icon = generic_propaganda_campaigns
+		days_remove = 175
+		days_re_enable = 175
+		custom_cost_text = NSM_revanchist_reconquest_campaign_decision_cost
+		custom_cost_trigger = {
+			NOT = {
+				command_power < 20
+			}
+		}
+		visible = {
+			has_completed_focus = ATW_stretched_pandemonium
+		}
+		available = {
+			has_campaign_slot = yes
+		}
+		complete_effect = {
+			add_campaign_slot = yes
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = ATW_heralds_of_the_apocalypse_dummy_idea
+					add_idea = ATW_fight_for_your_country_campaign_idea
+				}
+			}
+			hidden_effect = {
+				add_command_power = -20
+				add_to_variable = {
+					var = ATW_military_land_reinforce_rate_dynamic_var
+					value = 0.1
+				}
+				add_to_variable = {
+					var = ATW_military_max_command_power
+					value = -20
+				}
+			}
+		}
+		remove_effect = {
+			remove_campaign_slot = yes
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = ATW_fight_for_your_country_campaign_idea
+					add_idea = ATW_heralds_of_the_apocalypse_dummy_idea
+				}
+			}
+			hidden_effect = {
+				add_to_variable = {
+					var = ATW_military_land_reinforce_rate_dynamic_var
+					value = -0.1
+				}
+				add_to_variable = {
+					var = ATW_military_max_command_power
+					value = 20
+				}
+			}
+		}
+		ai_will_do = {
+			base = 100
+		}
+	}
+	ATW_teutonic_rage_campaign_decision = {
+		icon = generic_propaganda_campaigns
+		days_remove = 175
+		days_re_enable = 175
+		custom_cost_text = NSM_revanchist_reconquest_campaign_decision_cost
+		custom_cost_trigger = {
+			NOT = {
+				command_power < 20
+			}
+		}
+		allowed = {
+			original_tag = ATW
+		}
+		visible = {
+			hidden_trigger = {
+				has_completed_focus = ATW_teutonic_rage
+			}
+		}
+		available = {
+			has_campaign_slot = yes
+		}
+		ai_will_do = {
+			base = 2
+		}
+		complete_effect = {
+			remove_campaign_slot = yes
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = ATW_heralds_of_the_apocalypse_dummy_idea
+					add_idea = ATW_teutonic_rage_campaign_idea
+				}
+			}
+			hidden_effect = {
+				add_command_power = -20
+				add_to_variable = {
+					var = ATW_military_army_attack_factor_dynamic_var
+					value = 0.2
+				}
+				add_to_variable = {
+					var = ATW_military_army_speed_factor_dynamic_var
+					value = 0.1
+				}
+				add_to_variable = {
+					var = ATW_military_army_org_factor_dynamic_var
+					value = -0.05
+				}
+				add_to_variable = {
+					var = ATW_military_max_command_power_dynamic_var
+					value = -20
+				}
+			}
+		}
+		remove_effect = {
+			add_campaign_slot = yes
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = ATW_teutonic_rage_campaign_idea
+					add_idea = ATW_heralds_of_the_apocalypse_dummy_idea
+				}
+			}
+			hidden_effect = {
+				add_to_variable = {
+					var = ATW_military_army_attack_factor_dynamic_var
+					value = -0.2
+				}
+				add_to_variable = {
+					var = ATW_military_army_speed_factor_dynamic_var
+					value = -0.1
+				}
+				add_to_variable = {
+					var = ATW_military_army_org_factor_dynamic_var
+					value = 0.05
+				}
+				add_to_variable = {
+					var = ATW_military_max_command_power_dynamic_var
+					value = 20
+				}
+			}
+		}
+	}
+	ATW_the_crusade_of_the_end_times_campaign_decision = {
+		icon = generic_propaganda_campaigns
+		days_remove = 175
+		days_re_enable = 175
+		custom_cost_text = NSM_revanchist_reconquest_campaign_decision_cost
+		custom_cost_trigger = {
+			NOT = {
+				command_power < 20
+			}
+		}
+		allowed = {
+			original_tag = ATW
+		}
+		visible = {
+			hidden_trigger = {
+				has_completed_focus = ATW_the_final_crusade
+			}
+		}
+		available = {
+			has_campaign_slot = yes
+		}
+		ai_will_do = {
+			base = 2
+		}
+		complete_effect = {
+			remove_campaign_slot = yes
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = ATW_heralds_of_the_apocalypse_dummy_idea
+					add_idea = ATW_the_crusade_of_the_end_times_campaign_idea
+				}
+			}
+			hidden_effect = {
+				add_command_power = -20
+				add_to_variable = {
+					var = ATW_military_political_power_gain_dynamic_var
+					value = 0.1
+				}
+				add_to_variable = {
+					var = ATW_military_breakthrough_factor_dynamic_var
+					value = 0.2
+				}
+				add_to_variable = {
+					var = ATW_military_max_command_power_dynamic_var
+					value = -20
+				}
+			}
+		}
+		remove_effect = {
+			add_campaign_slot = yes
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = ATW_the_crusade_of_the_end_times_campaign_idea
+					add_idea = ATW_heralds_of_the_apocalypse_dummy_idea
+				}
+			}
+			hidden_effect = {
+				add_to_variable = {
+					var = ATW_military_political_power_gain_dynamic_var
+					value = -0.1
+				}
+				add_to_variable = {
+					var = ATW_military_breakthrough_factor_dynamic_var
+					value = -0.2
+				}
+				add_to_variable = {
+					var = ATW_military_max_command_power_dynamic_var
+					value = 20
+				}
+			}
+		}
+	}
+	ATW_the_eternal_rebellion_campaign_decision = {
+		icon = generic_propaganda_campaigns
+		days_remove = 175
+		days_re_enable = 175
+		custom_cost_text = NSM_revanchist_reconquest_campaign_decision_cost
+		custom_cost_trigger = {
+			NOT = {
+				command_power < 20
+			}
+		}
+		allowed = {
+			original_tag = ATW
+		}
+		visible = {
+			hidden_trigger = {
+				has_completed_focus = ATW_send_them_through_the_inferno
+			}
+		}
+		available = {
+			has_campaign_slot = yes
+		}
+		ai_will_do = {
+			base = 2
+		}
+		complete_effect = {
+			remove_campaign_slot = yes
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = ATW_heralds_of_the_apocalypse_dummy_idea
+					add_idea = ATW_the_eternal_rebellion_campaign_idea
+				}
+			}
+			hidden_effect = {
+				add_command_power = -20
+				add_to_variable = {
+					var = ATW_military_war_stability_factor_dynamic_var
+					value = 0.2
+				}
+				add_to_variable = {
+					var = ATW_military_weekly_casualties_war_support_dynamic_var
+					value = 0.005
+				}
+				add_to_variable = {
+					var = ATW_military_weekly_convoys_war_support_dynamic_var
+					value = 0.005
+				}
+				add_to_variable = {
+					var = ATW_military_weekly_bombing_war_support_dynamic_var
+					value = 0.005
+				}
+				add_to_variable = {
+					var = ATW_military_max_command_power_dynamic_var
+					value = -20
+				}
+			}
+		}
+		remove_effect = {
+			add_campaign_slot = yes
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = ATW_the_eternal_rebellion_campaign_idea
+					add_idea = ATW_heralds_of_the_apocalypse_dummy_idea
+				}
+			}
+			hidden_effect = {
+				add_to_variable = {
+					var = ATW_military_war_stability_factor_dynamic_var
+					value = -0.2
+				}
+				add_to_variable = {
+					var = ATW_military_weekly_casualties_war_support_dynamic_var
+					value = -0.005
+				}
+				add_to_variable = {
+					var = ATW_military_weekly_convoys_war_support_dynamic_var
+					value = -0.005
+				}
+				add_to_variable = {
+					var = ATW_military_weekly_bombing_war_support_dynamic_var
+					value = -0.005
+				}
+				add_to_variable = {
+					var = ATW_military_max_command_power_dynamic_var
+					value = 20
+				}
+			}
+		}
+	}
+	ATW_set_fire_to_DC_decision = {
+		fire_only_once = yes
+		cost = 50
+		visible = {
+			has_completed_focus = ATW_burn_their_cities
+		}
+		complete_effect = {
+			set_temp_variable = {
+				var = ATW_suspicion_var_temp
+				value = 0.15
+			}
+			ATW_add_suspicion = yes
+			every_state = {
+				limit = {
+					OR = {
+						state = 931
+					}
+				}
+				add_dynamic_modifier = {
+					modifier = ATW_wild_fires_dynamic
+					scope = ATW
+					days = 85
+				}
+			}
+		}
+		ai_will_do = {
+			base = 10
+		}
+	}
+	ATW_set_fire_to_richmond_decision = {
+		fire_only_once = yes
+		cost = 50
+		visible = {
+			has_completed_focus = ATW_burn_their_cities
+		}
+		complete_effect = {
+			set_temp_variable = {
+				var = ATW_suspicion_var_temp
+				value = 0.1
+			}
+			ATW_add_suspicion = yes
+			every_state = {
+				limit = {
+					OR = {
+						state = 1070
+					}
+				}
+				add_dynamic_modifier = {
+					modifier = ATW_wild_fires_dynamic
+					scope = ATW
+					days = 85
+				}
+			}
+		}
+		ai_will_do = {
+			base = 10
+		}
+	}
+	ATW_set_fire_to_nashville_decision = {
+		fire_only_once = yes
+		cost = 50
+		visible = {
+			has_completed_focus = ATW_burn_their_cities
+		}
+		complete_effect = {
+			set_temp_variable = {
+				var = ATW_suspicion_var_temp
+				value = 0.1
+			}
+			ATW_add_suspicion = yes
+			every_state = {
+				limit = {
+					OR = {
+						state = 1248
+					}
+				}
+				add_dynamic_modifier = {
+					modifier = ATW_wild_fires_dynamic
+					scope = ATW
+					days = 85
+				}
+			}
+		}
+		ai_will_do = {
+			base = 10
+		}
+	}
+	ATW_set_fire_to_cincinnati_decision = {
+		fire_only_once = yes
+		cost = 50
+		visible = {
+			has_completed_focus = ATW_burn_their_cities
+		}
+		complete_effect = {
+			set_temp_variable = {
+				var = ATW_suspicion_var_temp
+				value = 0.15
+			}
+			ATW_add_suspicion = yes
+			every_state = {
+				limit = {
+					OR = {
+						state = 1247
+					}
+				}
+				add_dynamic_modifier = {
+					modifier = ATW_wild_fires_dynamic
+					scope = ATW
+					days = 85
+				}
+			}
+		}
+		ai_will_do = {
+			base = 10
+		}
+	}
+	ATW_poison_the_southern_mississippi_decision = {
+		fire_only_once = yes
+		cost = 50
+		visible = {
+			has_completed_focus = ATW_target_the_water_supply
+		}
+		complete_effect = {
+			set_temp_variable = {
+				var = ATW_suspicion_var_temp
+				value = 0.1
+			}
+			ATW_add_suspicion = yes
+			every_state = {
+				limit = {
+					OR = {
+						state = 1009
+						state = 982
+						state = 978
+						state = 1010
+						state = 1106
+						state = 1105
+						state = 371
+					}
+				}
+				add_dynamic_modifier = {
+					modifier = ATW_poisoned_water_supply_dynamic
+					scope = ATW
+					days = 350
+				}
+			}
+			# hidden_effect = {
+			# 	country_event = atom.31
+			# }
+		}
+		ai_will_do = {
+			base = 15
+		}
+	}
+	ATW_poison_the_northern_mississippi_decision = {
+		fire_only_once = yes
+		cost = 50
+		available = {
+			tag = ATW
+			has_completed_focus = ATW_target_the_water_supply
+		}
+		visible = {
+			has_completed_focus = ATW_target_the_water_supply
+		}
+		complete_effect = {
+			set_temp_variable = {
+				var = ATW_suspicion_var_temp
+				value = 0.1
+			}
+			ATW_add_suspicion = yes
+			every_state = {
+				limit = {
+					OR = {
+						state = 1071
+						state = 1120
+						state = 1125
+						state = 392
+						state = 1001
+						state = 1253
+						state = 1243
+						state = 394
+					}
+				}
+				add_dynamic_modifier = {
+					modifier = ATW_poisoned_water_supply_dynamic
+					scope = ATW
+					days = 350
+				}
+			}
+			# hidden_effect = {
+			# 	country_event = atom.32
+			# }
+		}
+		ai_will_do = {
+			base = 10
+		}
+	}
+	ATW_poison_the_eastern_veins_decision = {
+		fire_only_once = yes
+		cost = 50
+		visible = {
+			has_completed_focus = ATW_target_the_water_supply
+		}
+		complete_effect = {
+			set_temp_variable = {
+				var = ATW_suspicion_var_temp
+				value = 0.1
+			}
+			ATW_add_suspicion = yes
+			every_state = {
+				limit = {
+					OR = {
+						state = 1248
+						state = 369
+						state = 1002
+						state = 1000
+						state = 1001
+						state = 1250
+						state = 396
+						state = 1247
+					}
+				}
+				add_dynamic_modifier = {
+					modifier = ATW_poisoned_water_supply_dynamic
+					scope = ATW
+					days = 350
+				}
+			}
+			# hidden_effect = {
+			# 	country_event = atom.34
+			# }
+		}
+		ai_will_do = {
+			base = 10
+		}
+	}
+	ATW_poison_the_western_veins_decision = {
+		fire_only_once = yes
+		cost = 50
+		visible = {
+			has_completed_focus = ATW_target_the_water_supply
+		}
+		complete_effect = {
+			set_temp_variable = {
+				var = ATW_suspicion_var_temp
+				value = 0.1
+			}
+			ATW_add_suspicion = yes
+			every_state = {
+				limit = {
+					OR = {
+						state = 1236
+						state = 1241
+						state = 372
+						state = 371
+						state = 981
+						state = 980
+						state = 1242
+					}
+				}
+				add_dynamic_modifier = {
+					modifier = ATW_poisoned_water_supply_dynamic
+					scope = ATW
+					days = 350
+				}
+			}
+			# hidden_effect = {
+			# 	country_event = atom.33
+			# }
+		}
+		ai_will_do = {
+			base = 10
+		}
+	}
+	ATW_ignite_the_northern_farms_decision = {
+		fire_only_once = yes
+		cost = 50
+		visible = {
+			has_completed_focus = ATW_target_the_food_supply
+		}
+		complete_effect = {
+			set_temp_variable = {
+				var = ATW_suspicion_var_temp
+				value = 0.1
+			}
+			ATW_add_suspicion = yes
+			every_state = {
+				limit = {
+					OR = {
+						state = 390
+						state = 1238
+						state = 1175
+						state = 1257
+						state = 1237
+						state = 384
+						state = 1147
+						state = 388
+						state = 1134
+						state = 1133
+					}
+				}
+				add_dynamic_modifier = {
+					modifier = ATW_wild_fires_dynamic
+					scope = ATW
+					days = 350
+				}
+			}
+		}
+		ai_will_do = {
+			base = 10
+		}
+	}
+	ATW_ignite_the_great_plains_farms_decision = {
+		fire_only_once = yes
+		cost = 50
+		visible = {
+			has_completed_focus = ATW_target_the_food_supply
+		}
+		complete_effect = {
+			set_temp_variable = {
+				var = ATW_suspicion_var_temp
+				value = 0.1
+			}
+			ATW_add_suspicion = yes
+			every_state = {
+				limit = {
+					OR = {
+						state = 964
+						state = 968
+						state = 1038
+						state = 376
+						state = 1183
+						state = 1145
+						state = 383
+						state = 970
+						state = 1134
+						state = 1133
+					}
+				}
+				add_dynamic_modifier = {
+					modifier = ATW_wild_fires_dynamic
+					scope = ATW
+					days = 350
+				}
+			}
+		}
+		ai_will_do = {
+			base = 10
+		}
+	}
+	ATW_target_chicago_decision = {
+		fire_only_once = yes
+		cost = 50
+		visible = {
+			has_completed_focus = ATW_target_the_population_centers
+		}
+		complete_effect = {
+			set_temp_variable = {
+				var = ATW_suspicion_var_temp
+				value = 0.1
+			}
+			ATW_add_suspicion = yes
+			1099 = {
+				add_dynamic_modifier = {
+					modifier = ATW_chemical_hell_dynamic
+					scope = ATW
+					days = 350
+				}
+				
+				hidden_effect = {
+				}
+			}
+			# news_event = {
+			# 	id = news.378
+			# 	hours = 6
+			# }
+		}
+		ai_will_do = {
+			base = 10
+		}
+	}
+	ATW_target_charlotte_decision = {
+		fire_only_once = yes
+		cost = 50
+		visible = {
+			has_completed_focus = ATW_target_the_population_centers
+		}
+		complete_effect = {
+			set_temp_variable = {
+				var = ATW_suspicion_var_temp
+				value = 0.1
+			}
+			ATW_add_suspicion = yes
+			1005 = {
+				add_dynamic_modifier = {
+					modifier = ATW_chemical_hell_dynamic
+					scope = ATW
+					days = 350
+				}
+			}
+			# news_event = {
+			# 	id = news.398
+			# 	hours = 6
+			# }
+		}
+		ai_will_do = {
+			base = 10
+		}
+	}
+	ATW_target_Louisville_decision = {
+		fire_only_once = yes
+		cost = 50
+		visible = {
+			has_completed_focus = ATW_target_the_population_centers
+		}
+		complete_effect = {
+			set_temp_variable = {
+				var = ATW_suspicion_var_temp
+				value = 0.1
+			}
+			ATW_add_suspicion = yes
+			1000 = {
+				add_dynamic_modifier = {
+					modifier = ATW_chemical_hell_dynamic
+					scope = ATW
+					days = 350
+				}
+			}
+			# news_event = {
+			# 	id = news.379
+			# 	hours = 6
+			# }
+		}
+		ai_will_do = {
+			base = 10
+		}
+	}
+	ATW_target_indianapolis_decision = {
+		fire_only_once = yes
+		cost = 50
+		visible = {
+			has_completed_focus = ATW_target_the_population_centers
+		}
+		complete_effect = {
+			set_temp_variable = {
+				var = ATW_suspicion_var_temp
+				value = 0.1
+			}
+			ATW_add_suspicion = yes
+			1151 = {
+				add_dynamic_modifier = {
+					modifier = ATW_chemical_hell_dynamic
+					scope = ATW
+					days = 350
+				}
+			}
+			# news_event = {
+			# 	id = news.380
+			# 	hours = 6
+			# }
+			hidden_effect = {
+				country_event = atom.35
+			}
+		}
+		ai_will_do = {
+			base = 10
+		}
+	}
+	ATW_target_richmond_decision = {
+		fire_only_once = yes
+		cost = 50
+		visible = {
+			has_completed_focus = ATW_target_the_population_centers
+		}
+		complete_effect = {
+			set_temp_variable = {
+				var = ATW_suspicion_var_temp
+				value = 0.1
+			}
+			ATW_add_suspicion = yes
+			1070 = {
+				add_dynamic_modifier = {
+					modifier = ATW_chemical_hell_dynamic
+					scope = ATW
+					days = 350
+				}
+			}
+			# news_event = {
+			# 	id = news.399
+			# 	hours = 6
+			# }
+		}
+		ai_will_do = {
+			base = 10
+		}
+	}
+	ATW_target_nashville_decision = {
+		fire_only_once = yes
+		cost = 50
+		visible = {
+			has_completed_focus = ATW_target_the_population_centers
+		}
+		complete_effect = {
+			set_temp_variable = {
+				var = ATW_suspicion_var_temp
+				value = 0.1
+			}
+			ATW_add_suspicion = yes
+			1248 = {
+				add_dynamic_modifier = {
+					modifier = ATW_chemical_hell_dynamic
+					scope = ATW
+					days = 350
+				}
+			}
+			# news_event = {
+			# 	id = news.400
+			# 	hours = 6
+			# }
+		}
+		ai_will_do = {
+			base = 10
+		}
+	}
+	ATW_raise_warheads_decision = {
+		fire_only_once = no
+		days_remove = 175
+		days_re_enable = 175
+		icon = generic_make_nukes
+		visible = {
+			has_completed_focus = ATW_weaponize_the_reactors
+		}
+		available = {
+			has_tech = nukes
+		}
+		modifier = {
+			nuclear_production_factor = 1
+		}
+		complete_effect = {
+		}
+		remove_effect = {
+		}
+		ai_will_do = {
+			base = 15
+		}
+	}
+	ATW_destroy_nashville_decision = {
+		icon = generic_deploy_nukes
+		fire_only_once = yes
+		cost = 35
+		available = {
+			NOT = {
+				num_of_nukes < 1
+			}
+		}
+		visible = {
+			has_completed_focus = ATW_the_atomic_weapons_division
+		}
+		available = {
+			num_of_nukes > 0
+			1248 = {
+				is_able_to_nuke_trigger = yes
+			}
+		}
+		complete_effect = {
+			set_temp_variable = {
+				var = ATW_suspicion_var_temp
+				value = 0.15
+			}
+			ATW_add_suspicion = yes
+			1248 = {
+				add_dynamic_modifier = {
+					modifier = ATW_nuclear_armageddon_dynamic
+					scope = ATW
+				}
+			}
+			hidden_effect = {
+				# country_event = {
+				# 	id = atom.35
+				# 	hours = 12
+				# }
+				# news_event = {
+				# 	id = news.381
+				# 	hours = 12
+				# }
+				launch_nuke = {
+					province = 14087
+				}
+			}
+		}
+		ai_will_do = {
+			base = 10
+		}
+	}
+	ATW_destroy_Louisville_decision = {
+		icon = generic_deploy_nukes
+		fire_only_once = yes
+		cost = 35
+		available = {
+			NOT = {
+				num_of_nukes < 1
+			}
+		}
+		visible = {
+			has_completed_focus = ATW_the_atomic_weapons_division
+		}
+		available = {
+			num_of_nukes > 0
+			1000 = {
+				is_able_to_nuke_trigger = yes
+			}
+		}
+		complete_effect = {
+			set_temp_variable = {
+				var = ATW_suspicion_var_temp
+				value = 0.15
+			}
+			ATW_add_suspicion = yes
+			1000 = {
+				add_dynamic_modifier = {
+					modifier = ATW_nuclear_armageddon_dynamic
+					scope = ATW
+				}
+			}
+			hidden_effect = {
+				# country_event = {
+				# 	id = atom.50
+				# 	hours = 12
+				# }
+				# news_event = {
+				# 	id = news.382
+				# 	hours = 12
+				# }
+				launch_nuke = {
+					province = 13563
+				}
+			}
+		}
+		ai_will_do = {
+			base = 10
+		}
+	}
+	ATW_destroy_cincinnati_decision = {
+		icon = generic_deploy_nukes
+		fire_only_once = yes
+		cost = 35
+		available = {
+			NOT = {
+				num_of_nukes < 1
+			}
+		}
+		visible = {
+			has_completed_focus = ATW_the_atomic_weapons_division
+		}
+		available = {
+			num_of_nukes > 0
+			1247 = {
+				is_able_to_nuke_trigger = yes
+			}
+		}
+		complete_effect = {
+			set_temp_variable = {
+				var = ATW_suspicion_var_temp
+				value = 0.15
+			}
+			ATW_add_suspicion = yes
+			1247 = {
+				add_dynamic_modifier = {
+					modifier = ATW_nuclear_armageddon_dynamic
+					scope = ATW
+				}
+			}
+			hidden_effect = {
+				country_event = {
+					id = atom.51
+					hours = 12
+				}
+				# news_event = {
+				# 	id = news.383
+				# 	hours = 12
+				# }
+				launch_nuke = {
+					province = 14093
+				}
+			}
+		}
+		ai_will_do = {
+			base = 10
+		}
+	}
+	ATW_destroy_indianapolis_decision = {
+		icon = generic_deploy_nukes
+		fire_only_once = yes
+		cost = 35
+		available = {
+			NOT = {
+				num_of_nukes < 1
+			}
+		}
+		visible = {
+			has_completed_focus = ATW_the_atomic_weapons_division
+		}
+		available = {
+			num_of_nukes > 0
+			1151 = {
+				is_able_to_nuke_trigger = yes
+			}
+		}
+		complete_effect = {
+			set_temp_variable = {
+				var = ATW_suspicion_var_temp
+				value = 0.15
+			}
+			ATW_add_suspicion = yes
+			1151 = {
+				add_dynamic_modifier = {
+					modifier = ATW_nuclear_armageddon_dynamic
+					scope = ATW
+				}
+			}
+			hidden_effect = {
+				# country_event = {
+				# 	id = atom.52
+				# 	hours = 12
+				# }
+				# news_event = {
+				# 	id = news.384
+				# 	hours = 12
+				# }
+				launch_nuke = {
+					province = 13976
+				}
+			}
+		}
+		ai_will_do = {
+			base = 10
+		}
+	}
+	ATW_destroy_chicago_decision = {
+		#im gonna die dude
+		icon = generic_deploy_nukes
+		fire_only_once = yes
+		cost = 35
+		available = {
+			NOT = {
+				num_of_nukes < 1
+			}
+		}
+		visible = {
+			has_completed_focus = ATW_the_atomic_weapons_division
+		}
+		available = {
+			num_of_nukes > 0
+			1099 = {
+				is_able_to_nuke_trigger = yes
+			}
+		}
+		complete_effect = {
+			set_temp_variable = {
+				var = ATW_suspicion_var_temp
+				value = 0.15
+			}
+			ATW_add_suspicion = yes
+			1099 = {
+				add_dynamic_modifier = {
+					modifier = ATW_nuclear_armageddon_dynamic
+					scope = ATW
+				}
+			}
+			hidden_effect = {
+				# country_event = {
+				# 	id = atom.53
+				# 	hours = 12
+				# }
+				# news_event = {
+				# 	id = news.385
+				# 	hours = 12
+				# }
+				launch_nuke = {
+					province = 9450
+				}
+			}
+		}
+		ai_will_do = {
+			base = 10
+		}
+	}
+	ATW_destroy_milwakuee_decision = {
+		icon = generic_deploy_nukes
+		fire_only_once = yes
+		cost = 35
+		available = {
+			NOT = {
+				num_of_nukes < 1
+			}
+		}
+		visible = {
+			has_completed_focus = ATW_the_atomic_weapons_division
+		}
+		available = {
+			num_of_nukes > 0
+			1244 = {
+				is_able_to_nuke_trigger = yes
+			}
+		}
+		complete_effect = {
+			set_temp_variable = {
+				var = ATW_suspicion_var_temp
+				value = 0.15
+			}
+			ATW_add_suspicion = yes
+			1244 = {
+				add_dynamic_modifier = {
+					modifier = ATW_nuclear_armageddon_dynamic
+					scope = ATW
+				}
+			}
+			hidden_effect = {
+				# country_event = {
+				# 	id = atom.54
+				# 	hours = 12
+				# }
+				# news_event = {
+				# 	id = news.386
+				# 	hours = 12
+				# }
+				launch_nuke = {
+					province = 14110
+				}
+			}
+		}
+		ai_will_do = {
+			base = 10
+		}
+	}
+	ATW_destroy_minneapolis_decision = {
+		icon = generic_deploy_nukes
+		fire_only_once = yes
+		cost = 35
+		available = {
+			NOT = {
+				num_of_nukes < 1
+			}
+		}
+		visible = {
+			has_completed_focus = ATW_the_atomic_weapons_division
+		}
+		available = {
+			num_of_nukes > 0
+			1243 = {
+				is_able_to_nuke_trigger = yes
+			}
+		}
+		complete_effect = {
+			1243 = {
+				add_dynamic_modifier = {
+					modifier = ATW_nuclear_armageddon_dynamic
+					scope = ATW
+				}
+			}
+			hidden_effect = {
+				# country_event = {
+				# 	id = atom.55
+				# 	hours = 12
+				# }
+				# news_event = {
+				# 	id = news.387
+				# 	hours = 12
+				# }
+				launch_nuke = {
+					province = 14118
+				}
+			}
+		}
+		ai_will_do = {
+			base = 10
+		}
+	}
+	ATW_destroy_st_louis_decision = {
+		icon = generic_deploy_nukes
+		fire_only_once = yes
+		cost = 35
+		available = {
+			NOT = {
+				num_of_nukes < 1
+			}
+		}
+		visible = {
+			has_completed_focus = ATW_the_atomic_weapons_division
+		}
+		available = {
+			num_of_nukes > 0
+			1071 = {
+				is_able_to_nuke_trigger = yes
+			}
+		}
+		complete_effect = {
+			set_temp_variable = {
+				var = ATW_suspicion_var_temp
+				value = 0.15
+			}
+			ATW_add_suspicion = yes
+			1071 = {
+				add_dynamic_modifier = {
+					modifier = ATW_nuclear_armageddon_dynamic
+					scope = ATW
+				}
+			}
+			hidden_effect = {
+				# country_event = {
+				# 	id = atom.56
+				# 	hours = 12
+				# }
+				# news_event = {
+				# 	id = news.388
+				# 	hours = 12
+				# }
+				launch_nuke = {
+					province = 13819
+				}
+			}
+		}
+		ai_will_do = {
+			base = 10
+		}
+	}
+	ATW_destroy_oklahoma_city_decision = {
+		icon = generic_deploy_nukes
+		fire_only_once = yes
+		cost = 35
+		available = {
+			NOT = {
+				num_of_nukes < 1
+			}
+		}
+		visible = {
+			has_completed_focus = ATW_the_atomic_weapons_division
+		}
+		available = {
+			num_of_nukes > 0
+			1236 = {
+				is_able_to_nuke_trigger = yes
+			}
+		}
+		complete_effect = {
+			set_temp_variable = {
+				var = ATW_suspicion_var_temp
+				value = 0.15
+			}
+			ATW_add_suspicion = yes
+			1236 = {
+				add_dynamic_modifier = {
+					modifier = ATW_nuclear_armageddon_dynamic
+					scope = ATW
+				}
+			}
+			hidden_effect = {
+				# country_event = {
+				# 	id = atom.57
+				# 	hours = 12
+				# }
+				# news_event = {
+				# 	id = news.389
+				# 	hours = 12
+				# }
+				launch_nuke = {
+					province = 14035
+				}
+			}
+		}
+		ai_will_do = {
+			base = 10
+		}
+	}
+	ATW_destroy_dallas_decision = {
+		icon = generic_deploy_nukes
+		fire_only_once = yes
+		cost = 35
+		available = {
+			NOT = {
+				num_of_nukes < 1
+			}
+		}
+		visible = {
+			has_completed_focus = ATW_the_atomic_weapons_division
+		}
+		available = {
+			num_of_nukes > 0
+			956 = {
+				is_able_to_nuke_trigger = yes
+			}
+		}
+		complete_effect = {
+			set_temp_variable = {
+				var = ATW_suspicion_var_temp
+				value = 0.15
+			}
+			ATW_add_suspicion = yes
+			956 = {
+				add_dynamic_modifier = {
+					modifier = ATW_nuclear_armageddon_dynamic
+					scope = ATW
+				}
+			}
+			hidden_effect = {
+				# country_event = {
+				# 	id = atom.58
+				# 	hours = 12
+				# }
+				# news_event = {
+				# 	id = news.390
+				# 	hours = 12
+				# }
+				launch_nuke = {
+					province = 13395
+				}
+			}
+		}
+		ai_will_do = {
+			base = 10
+		}
+	}
+	ATW_destroy_fort_worth_decision = {
+		icon = generic_deploy_nukes
+		fire_only_once = yes
+		cost = 35
+		available = {
+			NOT = {
+				num_of_nukes < 1
+			}
+		}
+		visible = {
+			has_completed_focus = ATW_the_atomic_weapons_division
+		}
+		available = {
+			num_of_nukes > 0
+			957 = {
+				is_able_to_nuke_trigger = yes
+			}
+		}
+		complete_effect = {
+			set_temp_variable = {
+				var = ATW_suspicion_var_temp
+				value = 0.15
+			}
+			ATW_add_suspicion = yes
+			957 = {
+				add_dynamic_modifier = {
+					modifier = ATW_nuclear_armageddon_dynamic
+					scope = ATW
+				}
+			}
+			hidden_effect = {
+				# country_event = {
+				# 	id = atom.59
+				# 	hours = 12
+				# }
+				# news_event = {
+				# 	id = news.391
+				# 	hours = 12
+				# }
+				launch_nuke = {
+					province = 13405
+				}
+			}
+		}
+		ai_will_do = {
+			base = 10
+		}
+	}
+	ATW_destroy_houston_decision = {
+		icon = generic_deploy_nukes
+		fire_only_once = yes
+		cost = 35
+		available = {
+			NOT = {
+				num_of_nukes < 1
+			}
+		}
+		visible = {
+			has_completed_focus = ATW_the_atomic_weapons_division
+		}
+		available = {
+			num_of_nukes > 0
+			958 = {
+				is_able_to_nuke_trigger = yes
+			}
+		}
+		complete_effect = {
+			set_temp_variable = {
+				var = ATW_suspicion_var_temp
+				value = 0.15
+			}
+			ATW_add_suspicion = yes
+			958 = {
+				add_dynamic_modifier = {
+					modifier = ATW_nuclear_armageddon_dynamic
+					scope = ATW
+				}
+			}
+			hidden_effect = {
+				# country_event = {
+				# 	id = atom.60
+				# 	hours = 12
+				# }
+				# news_event = {
+				# 	id = news.392
+				# 	hours = 12
+				# }
+				launch_nuke = {
+					province = 13387
+				}
+			}
+		}
+		ai_will_do = {
+			base = 10
+		}
+	}
+	ATW_destroy_austin_decision = {
+		icon = generic_deploy_nukes
+		fire_only_once = yes
+		cost = 35
+		available = {
+			NOT = {
+				num_of_nukes < 1
+			}
+		}
+		visible = {
+			has_completed_focus = ATW_the_atomic_weapons_division
+		}
+		available = {
+			num_of_nukes > 0
+			961 = {
+				is_able_to_nuke_trigger = yes
+			}
+		}
+		complete_effect = {
+			set_temp_variable = {
+				var = ATW_suspicion_var_temp
+				value = 0.15
+			}
+			ATW_add_suspicion = yes
+			961 = {
+				add_dynamic_modifier = {
+					modifier = ATW_nuclear_armageddon_dynamic
+					scope = ATW
+				}
+			}
+			hidden_effect = {
+				# country_event = {
+				# 	id = atom.61
+				# 	hours = 12
+				# }
+				# news_event = {
+				# 	id = news.393
+				# 	hours = 12
+				# }
+				launch_nuke = {
+					province = 13460
+				}
+			}
+		}
+		ai_will_do = {
+			base = 10
+		}
+	}
+	ATW_destroy_san_antonio_decision = {
+		icon = generic_deploy_nukes
+		fire_only_once = yes
+		cost = 35
+		available = {
+			NOT = {
+				num_of_nukes < 1
+			}
+		}
+		visible = {
+			has_completed_focus = ATW_the_atomic_weapons_division
+		}
+		available = {
+			num_of_nukes > 0
+			959 = {
+				is_able_to_nuke_trigger = yes
+			}
+		}
+		complete_effect = {
+			set_temp_variable = {
+				var = ATW_suspicion_var_temp
+				value = 0.15
+			}
+			ATW_add_suspicion = yes
+			959 = {
+				add_dynamic_modifier = {
+					modifier = ATW_nuclear_armageddon_dynamic
+					scope = ATW
+				}
+			}
+			hidden_effect = {
+				# country_event = {
+				# 	id = atom.62
+				# 	hours = 12
+				# }
+				# news_event = {
+				# 	id = news.394
+				# 	hours = 12
+				# }
+				launch_nuke = {
+					province = 13378
+				}
+			}
+		}
+		ai_will_do = {
+			base = 10
+		}
+	}
+	ATW_destroy_seattle_decision = {
+		icon = generic_deploy_nukes
+		fire_only_once = yes
+		cost = 35
+		available = {
+			NOT = {
+				num_of_nukes < 1
+			}
+		}
+		visible = {
+			has_completed_focus = ATW_the_atomic_weapons_division
+		}
+		available = {
+			num_of_nukes > 0
+			1036 = {
+				is_able_to_nuke_trigger = yes
+			}
+		}
+		complete_effect = {
+			set_temp_variable = {
+				var = ATW_suspicion_var_temp
+				value = 0.15
+			}
+			ATW_add_suspicion = yes
+			1036 = {
+				add_dynamic_modifier = {
+					modifier = ATW_nuclear_armageddon_dynamic
+					scope = ATW
+				}
+			}
+			hidden_effect = {
+				# country_event = {
+				# 	id = atom.63
+				# 	hours = 12
+				# }
+				# news_event = {
+				# 	id = news.395
+				# 	hours = 12
+				# }
+				launch_nuke = {
+					province = 7315
+				}
+			}
+		}
+		ai_will_do = {
+			base = 10
+		}
+	}
+	ATW_destroy_san_fran_decision = {
+		icon = generic_deploy_nukes
+		fire_only_once = yes
+		cost = 35
+		available = {
+			NOT = {
+				num_of_nukes < 1
+			}
+		}
+		visible = {
+			has_completed_focus = ATW_the_atomic_weapons_division
+		}
+		available = {
+			num_of_nukes > 0
+			932 = {
+				is_able_to_nuke_trigger = yes
+			}
+		}
+		complete_effect = {
+			set_temp_variable = {
+				var = ATW_suspicion_var_temp
+				value = 0.15
+			}
+			ATW_add_suspicion = yes
+			932 = {
+				add_dynamic_modifier = {
+					modifier = ATW_nuclear_armageddon_dynamic
+					scope = ATW
+				}
+			}
+			hidden_effect = {
+				# country_event = {
+				# 	id = atom.64
+				# 	hours = 12
+				# }
+				# news_event = {
+				# 	id = news.396
+				# 	hours = 12
+				# }
+				launch_nuke = {
+					province = 13291
+				}
+			}
+		}
+		ai_will_do = {
+			base = 10
+		}
+	}
+	ATW_destroy_los_angelas_decision = {
+		icon = generic_deploy_nukes
+		fire_only_once = yes
+		cost = 35
+		available = {
+			NOT = {
+				num_of_nukes < 1
+			}
+		}
+		visible = {
+			has_completed_focus = ATW_the_atomic_weapons_division
+		}
+		available = {
+			num_of_nukes > 0
+			930 = {
+				is_able_to_nuke_trigger = yes
+			}
+		}
+		complete_effect = {
+			set_temp_variable = {
+				var = ATW_suspicion_var_temp
+				value = 0.15
+			}
+			ATW_add_suspicion = yes
+			930 = {
+				add_dynamic_modifier = {
+					modifier = ATW_nuclear_armageddon_dynamic
+					scope = ATW
+				}
+			}
+			hidden_effect = {
+				# country_event = {
+				# 	id = atom.65
+				# 	hours = 12
+				# }
+				# news_event = {
+				# 	id = news.398
+				# 	hours = 12
+				# }
+				launch_nuke = {
+					province = 9814
+				}
+			}
+		}
+		ai_will_do = {
+			base = 10
+		}
+	}
+}
+
+ATW_slaying_the_dragon_category = {
+	ATW_i_need_more_weapons_decision = {
+		icon = generic_factory
+		cost = 50
+		days_remove = 140
+		fire_only_once = yes
+		visible = {
+			has_completed_focus = ATW_from_the_belly_of_the_beast
+		}
+		available = {
+			NOT = {
+				num_of_civilian_factories_available_for_projects < 4
+			}
+		}
+		complete_effect = {
+		}
+		modifier = {
+			civilian_factory_use = 4
+		}
+		remove_effect = {
+			set_temp_variable = {
+				var = USA_reconstruction_progress_var_temp
+				value = 0.05
+			}
+			USA_add_reconstruction_progress = yes
+			every_controlled_state = {
+				limit = {
+					is_core_of = ROOT
+					free_building_slots = {
+						building = arms_factory
+						size > 0
+						include_locked = yes
+					}
+				}
+				random_select_amount = 2
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = arms_factory
+					level = 1
+					instant_build = yes
+				}
+			}
+		}
+		ai_will_do = {
+			base = 100
+		}
+	}
+	ATW_lower_standards_higher_production_decision = {
+		icon = generic_factory
+		cost = 75
+		days_remove = 140
+		fire_only_once = yes
+		visible = {
+			has_completed_focus = ATW_fight_for_every_inch
+		}
+		available = {
+			NOT = {
+				num_of_civilian_factories_available_for_projects < 4
+			}
+		}
+		complete_effect = {
+		}
+		modifier = {
+			civilian_factory_use = 4
+		}
+		remove_effect = {
+			every_controlled_state = {
+				limit = {
+					is_core_of = ROOT
+					free_building_slots = {
+						building = arms_factory
+						size > 0
+						include_locked = yes
+					}
+				}
+				random_select_amount = 1
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = arms_factory
+					level = 1
+					instant_build = yes
+				}
+			}
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = ATW_industrial_anarchy_dummy_idea
+					add_idea = ATW_lower_standards_higher_production_idea
+				}
+			}
+			hidden_effect = {
+				add_to_variable = {
+					var = ATW_economy_consumer_goods_factor_dynamic_var
+					value = -0.1
+				}
+				add_to_variable = {
+					var = ATW_economy_production_factory_efficiency_gain_factor_dynamic_var
+					value = -0.1
+				}
+				add_to_variable = {
+					var = ATW_economy_production_lack_of_resource_penalty_factor_dynamic_var
+					value = -0.1
+				}
+				add_to_variable = {
+					var = ATW_economy_production_factory_max_efficiency_factor_dynamic_var
+					value = 0.05
+				}
+			}
+		}
+		ai_will_do = {
+			base = 100
+		}
+	}
+	# ATW_concentrate_production_means_decision = {
+	# 	icon = generic_factory
+	# 	cost = 50
+	# 	days_remove = 70
+	# 	visible = {
+	# 		has_completed_focus = ATW_our_own_take_on_torment
+	# 	}
+	# 	available = {
+	# 		set_temp_variable = {
+	# 			var = income_trigger_temp_var
+	# 			value = 100
+	# 		}
+	# 		has_income_with_inflation_greater_than_or_equals = yes
+	# 	}
+	# 	complete_effect = {
+	# 		set_temp_variable = {
+	# 			var = income_var_temp
+	# 			value = -100
+	# 		}
+	# 		add_income = yes
+	# 	}
+	# 	remove_effect = {
+	# 		set_temp_variable = {
+	# 			var = industrial_development_var_temp
+	# 			value = 0.05
+	# 		}
+	# 		add_industrial_development = yes
+	# 	}
+	# 	ai_will_do = {
+	# 		base = 100
+	# 	}
+	# }
+	ATW_reject_pacifism_campaign_decision = {
+		icon = generic_propaganda_campaigns
+		days_remove = 175
+		days_re_enable = 175
+		cost = 25
+		allowed = {
+			original_tag = ATW
+		}
+		visible = {
+		}
+		available = {
+			has_campaign_slot = yes
+		}
+		ai_will_do = {
+			base = 1
+		}
+		complete_effect = {
+			remove_campaign_slot = yes
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = ATW_industrial_anarchy_dummy_idea
+					add_idea = ATW_reject_pacifism_campaign_idea
+				}
+			}
+			hidden_effect = {
+				add_to_variable = {
+					var = ATW_economy_conversion_cost_civ_to_mil_factor_dynamic_var
+					value = -0.2
+				}
+			}
+		}
+		remove_effect = {
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = ATW_reject_pacifism_campaign_idea
+					add_idea = ATW_industrial_anarchy_dummy_idea
+				}
+			}
+			hidden_effect = {
+				add_to_variable = {
+					var = ATW_economy_conversion_cost_civ_to_mil_factor_dynamic_var
+					value = 0.2
+				}
+			}
+			add_campaign_slot = yes
+		}
+	}
+	ATW_compromise_with_normalcy_campaign_decision = {
+		icon = generic_propaganda_campaigns
+		days_remove = 175
+		days_re_enable = 175
+		cost = 25
+		allowed = {
+			original_tag = ATW
+		}
+		visible = {
+		}
+		available = {
+			has_campaign_slot = yes
+		}
+		ai_will_do = {
+			base = 1
+		}
+		complete_effect = {
+			remove_campaign_slot = yes
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = ATW_industrial_anarchy_dummy_idea
+					add_idea = ATW_compromise_with_normalcy_campaign_idea
+				}
+			}
+			hidden_effect = {
+				add_to_variable = {
+					var = ATW_economy_conversion_cost_mil_to_civ_factor_dynamic_var
+					value = -0.2
+				}
+			}
+		}
+		remove_effect = {
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = ATW_compromise_with_normalcy_campaign_idea
+					add_idea = ATW_industrial_anarchy_dummy_idea
+				}
+			}
+			hidden_effect = {
+				add_to_variable = {
+					var = ATW_economy_conversion_cost_mil_to_civ_factor_dynamic_var
+					value = 0.2
+				}
+			}
+			add_campaign_slot = yes
+		}
+	}
+	ATW_unleash_our_inner_animal_campaign_decision = {
+		icon = generic_propaganda_campaigns
+		days_remove = 175
+		days_re_enable = 175
+		cost = 50
+		allowed = {
+			original_tag = ATW
+		}
+		visible = {
+		}
+		available = {
+			has_campaign_slot = yes
+		}
+		ai_will_do = {
+			base = 1
+		}
+		complete_effect = {
+			remove_campaign_slot = yes
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = ATW_industrial_anarchy_dummy_idea
+					add_idea = ATW_unleash_our_inner_animal_campaign_idea
+				}
+			}
+			hidden_effect = {
+				add_to_variable = {
+					var = ATW_economy_production_speed_buildings_factor_dynamic_var
+					value = 0.05
+				}
+				add_to_variable = {
+					var = ATW_economy_industrial_capacity_factory_dynamic_var
+					value = 0.05
+				}
+				add_to_variable = {
+					var = ATW_economy_industrial_capacity_dockyard_dynamic_var
+					value = 0.05
+				}
+			}
+		}
+		remove_effect = {
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = ATW_unleash_our_inner_animal_campaign_idea
+					add_idea = ATW_industrial_anarchy_dummy_idea
+				}
+			}
+			hidden_effect = {
+				add_to_variable = {
+					var = ATW_economy_production_speed_buildings_factor_dynamic_var
+					value = -0.05
+				}
+				add_to_variable = {
+					var = ATW_economy_industrial_capacity_factory_dynamic_var
+					value = -0.05
+				}
+				add_to_variable = {
+					var = ATW_economy_industrial_capacity_dockyard_dynamic_var
+					value = -0.05
+				}
+			}
+			add_campaign_slot = yes
+		}
+	}
+	ATW_tighten_the_leash_campaign_decision = {
+		icon = generic_propaganda_campaigns
+		days_remove = 175
+		days_re_enable = 175
+		cost = 50
+		allowed = {
+			original_tag = ATW
+		}
+		visible = {
+			hidden_trigger = {
+				has_completed_focus = ATW_forges_of_hatred
+			}
+		}
+		available = {
+			OR = {
+				has_war = yes
+				has_global_flag = USA_american_civil_war_global
+				NOT = {
+					has_war_support < 0.25
+				}
+			}
+			has_campaign_slot = yes
+		}
+		ai_will_do = {
+			base = 1
+		}
+		complete_effect = {
+			remove_campaign_slot = yes
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = ATW_industrial_anarchy_dummy_idea
+					add_idea = ATW_tighten_the_leash_campaign_idea
+				}
+			}
+			hidden_effect = {
+				add_to_variable = {
+					var = ATW_economy_industrial_capacity_factory_dynamic_var
+					value = 0.1
+				}
+				add_to_variable = {
+					var = ATW_economy_industrial_capacity_dockyard_dynamic_var
+					value = 0.1
+				}
+			}
+		}
+		remove_effect = {
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = ATW_tighten_the_leash_campaign_idea
+					add_idea = ATW_industrial_anarchy_dummy_idea
+				}
+			}
+			hidden_effect = {
+				add_to_variable = {
+					var = ATW_economy_industrial_capacity_factory_dynamic_var
+					value = -0.1
+				}
+				add_to_variable = {
+					var = ATW_economy_industrial_capacity_dockyard_dynamic_var
+					value = -0.1
+				}
+			}
+			add_campaign_slot = yes
+		}
+	}
+	ATW_manipulate_order_campaign_decision = {
+		icon = generic_propaganda_campaigns
+		days_remove = 175
+		days_re_enable = 175
+		cost = 50
+		allowed = {
+			original_tag = ATW
+		}
+		visible = {
+			has_completed_focus = ATW_taming_the_beast_of_capital
+		}
+		available = {
+			has_campaign_slot = yes
+		}
+		ai_will_do = {
+			base = 1
+		}
+		complete_effect = {
+			remove_campaign_slot = yes
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = ATW_industrial_anarchy_dummy_idea
+					add_idea = ATW_manipulate_order_campaign_idea
+				}
+			}
+			hidden_effect = {
+				add_to_variable = {
+					var = ATW_economy_production_speed_industrial_complex_factor_dynamic_var
+					value = 0.2
+				}
+			}
+		}
+		remove_effect = {
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = ATW_manipulate_order_campaign_idea
+					add_idea = ATW_industrial_anarchy_dummy_idea
+				}
+			}
+			hidden_effect = {
+				add_to_variable = {
+					var = ATW_economy_production_speed_industrial_complex_factor_dynamic_var
+					value = -0.2
+				}
+			}
+			add_campaign_slot = yes
+		}
+	}
+	ATW_fight_our_carnal_desires_campaign_decision = {
+		icon = generic_propaganda_campaigns
+		days_remove = 175
+		days_re_enable = 175
+		cost = 50
+		allowed = {
+			original_tag = ATW
+		}
+		visible = {
+			has_completed_focus = ATW_the_vampire_economy
+		}
+		available = {
+			OR = {
+				has_war = yes
+				has_global_flag = USA_american_civil_war_global
+			}
+			has_campaign_slot = yes
+		}
+		ai_will_do = {
+			base = 1
+		}
+		complete_effect = {
+			remove_campaign_slot = yes
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = ATW_industrial_anarchy_dummy_idea
+					add_idea = ATW_fight_our_carnal_desires_campaign_idea
+				}
+			}
+			hidden_effect = {
+				add_to_variable = {
+					var = ATW_economy_consumer_goods_factor_dynamic_var
+					value = -0.15
+				}
+			}
+		}
+		remove_effect = {
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = ATW_fight_our_carnal_desires_campaign_idea
+					add_idea = ATW_industrial_anarchy_dummy_idea
+				}
+			}
+			hidden_effect = {
+				add_to_variable = {
+					var = ATW_economy_consumer_goods_factor_dynamic_var
+					value = 0.15
+				}
+			}
+			add_campaign_slot = yes
+		}
+	}
+	ATW_raise_the_altars_of_spite_campaign_decision = {
+		icon = generic_propaganda_campaigns
+		days_remove = 175
+		days_re_enable = 175
+		cost = 50
+		allowed = {
+			original_tag = ATW
+		}
+		visible = {
+			has_completed_focus = ATW_deny_their_death
+		}
+		available = {
+			has_campaign_slot = yes
+		}
+		ai_will_do = {
+			base = 1
+		}
+		complete_effect = {
+			remove_campaign_slot = yes
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = ATW_industrial_anarchy_dummy_idea
+					add_idea = ATW_raise_the_altars_of_spite_campaign_idea
+				}
+			}
+			hidden_effect = {
+				add_to_variable = {
+					var = ATW_economy_production_speed_buildings_factor_dynamic_var
+					value = 0.1
+				}
+			}
+		}
+		remove_effect = {
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = ATW_raise_the_altars_of_spite_campaign_idea
+					add_idea = ATW_industrial_anarchy_dummy_idea
+				}
+			}
+			hidden_effect = {
+				add_to_variable = {
+					var = ATW_economy_production_speed_buildings_factor_dynamic_var
+					value = -0.1
+				}
+			}
+			add_campaign_slot = yes
+		}
+	}
+	ATW_prioritize_the_means_of_violence_campaign_decision = {
+		icon = generic_propaganda_campaigns
+		days_remove = 175
+		days_re_enable = 175
+		cost = 50
+		allowed = {
+			original_tag = ATW
+		}
+		visible = {
+			has_completed_focus = ATW_pluck_them_dry
+		}
+		available = {
+			has_campaign_slot = yes
+		}
+		ai_will_do = {
+			base = 1
+		}
+		complete_effect = {
+			remove_campaign_slot = yes
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = ATW_industrial_anarchy_dummy_idea
+					add_idea = ATW_prioritize_the_means_of_violence_campaign_idea
+				}
+			}
+			hidden_effect = {
+				add_to_variable = {
+					var = ATW_economy_production_speed_arms_factory_factor_dynamic_var
+					value = 0.2
+				}
+			}
+		}
+		remove_effect = {
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = ATW_prioritize_the_means_of_violence_campaign_idea
+					add_idea = ATW_industrial_anarchy_dummy_idea
+				}
+			}
+			hidden_effect = {
+				add_to_variable = {
+					var = ATW_economy_production_speed_arms_factory_factor_dynamic_var
+					value = -0.2
+				}
+			}
+			add_campaign_slot = yes
+		}
+	}
+	ATW_whip_the_cattle_of_industry_campaign_decision = {
+		icon = generic_propaganda_campaigns
+		days_remove = 175
+		days_re_enable = 175
+		cost = 50
+		allowed = {
+			original_tag = ATW
+		}
+		visible = {
+			has_completed_focus = ATW_exhaust_the_factories
+		}
+		available = {
+			has_campaign_slot = yes
+		}
+		ai_will_do = {
+			base = 1
+		}
+		complete_effect = {
+			remove_campaign_slot = yes
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = ATW_industrial_anarchy_dummy_idea
+					add_idea = ATW_whip_the_cattle_of_industry_campaign_idea
+				}
+			}
+			hidden_effect = {
+				add_to_variable = {
+					var = ATW_economy_production_factory_max_efficiency_factor_dynamic_var
+					value = 0.1
+				}
+			}
+		}
+		remove_effect = {
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = ATW_whip_the_cattle_of_industry_campaign_idea
+					add_idea = ATW_industrial_anarchy_dummy_idea
+				}
+			}
+			hidden_effect = {
+				add_to_variable = {
+					var = ATW_economy_production_factory_max_efficiency_factor_dynamic_var
+					value = -0.1
+				}
+			}
+			add_campaign_slot = yes
+		}
+	}
+	ATW_eat_the_forbidden_fruit_campaign_decision = {
+		icon = generic_propaganda_campaigns
+		days_remove = 175
+		days_re_enable = 175
+		cost = 50
+		allowed = {
+			original_tag = ATW
+		}
+		visible = {
+			has_completed_focus = ATW_revive_aryan_ingenuity
+		}
+		available = {
+			has_campaign_slot = yes
+		}
+		ai_will_do = {
+			base = 1
+		}
+		complete_effect = {
+			remove_campaign_slot = yes
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = ATW_industrial_anarchy_dummy_idea
+					add_idea = ATW_eat_the_forbidden_fruit_campaign_idea
+				}
+			}
+			hidden_effect = {
+				add_to_variable = {
+					var = ATW_economy_research_speed_factor_dynamic_var
+					value = 0.1
+				}
+				add_to_variable = {
+					var = ATW_economy_academic_development_monthly_dynamic_var
+					value = 0.02
+				}
+			}
+		}
+		remove_effect = {
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = ATW_eat_the_forbidden_fruit_campaign_idea
+					add_idea = ATW_industrial_anarchy_dummy_idea
+				}
+			}
+			hidden_effect = {
+				add_to_variable = {
+					var = ATW_economy_research_speed_factor_dynamic_var
+					value = -0.1
+				}
+				add_to_variable = {
+					var = ATW_economy_academic_development_monthly_dynamic_var
+					value = -0.02
+				}
+			}
+			add_campaign_slot = yes
+		}
+	}
+	ATW_secure_our_victory_campaign_decision = {
+		icon = generic_propaganda_campaigns
+		days_remove = 175
+		days_re_enable = 175
+		cost = 50
+		allowed = {
+			original_tag = ATW
+		}
+		visible = {
+			has_completed_focus = ATW_the_order_is_born
+		}
+		available = {
+			has_campaign_slot = yes
+		}
+		ai_will_do = {
+			base = 1
+		}
+		complete_effect = {
+			remove_campaign_slot = yes
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = ATW_industrial_anarchy_dummy_idea
+					add_idea = ATW_secure_our_victory_campaign_idea
+				}
+			}
+			hidden_effect = {
+				add_to_variable = {
+					var = ATW_economy_production_speed_nuclear_reactor_factor_dynamic_var
+					value = 0.2
+				}
+			}
+		}
+		remove_effect = {
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = ATW_secure_our_victory_campaign_idea
+					add_idea = ATW_industrial_anarchy_dummy_idea
+				}
+			}
+			hidden_effect = {
+				add_to_variable = {
+					var = ATW_economy_production_speed_nuclear_reactor_factor_dynamic_var
+					value = -0.2
+				}
+			}
+			add_campaign_slot = yes
+		}
+	}
+}
+
+debug_decisions = {
+	ATW_annex_florida_debug_decision = {
+		icon = generic_ignite_civil_war
+		allowed = {
+			original_tag = ATW
+		}
+		visible = {
+			all_other_country = {
+				if = {
+					limit = {
+						OR = {
+							tag = ZOE
+							tag = ATW
+							tag = LRA
+							tag = FLM
+							tag = MMS
+							tag = UNN
+						}
+					}
+					exists = yes
+				}
+			}
+		}
+		available = {
+		}
+		ai_will_do = {
+			base = 0
+		}
+		complete_effect = {
+			ATW_local_theatre_win_debug_effect = yes
+		}
+		remove_effect = {
+		}
+	}
+	ATW_annex_national_front_debug_decision = {
+		icon = generic_ignite_civil_war
+		allowed = {
+			original_tag = ATW
+		}
+		visible = {
+			has_country_flag = ATW_national_conference_breaks_down_flag
+			OR = {
+				country_exists = NSM
+				country_exists = PTF
+			}
+		}
+		available = {
+		}
+		ai_will_do = {
+			base = 0
+		}
+		complete_effect = {
+			every_other_country = {
+				limit = {
+					OR = {
+						tag = NSM
+						tag = PTF
+					}
+				}
+				ROOT = {
+					annex_country = {
+						target = PREV
+					}
+				}
+			}
+			complete_national_focus = ATW_the_nuclear_congress
+		}
+		remove_effect = {
+		}
+	}
+	ATW_add_suspicion_debug_decision = {
+		allowed = {
+			original_tag = ATW
+		}
+		visible = {
+			OR = {
+				is_in_faction_with = NSM
+				is_in_faction_with = PTF
+				has_country_flag = ATW_on_the_world_stage_flag
+			}
+		}
+		available = {
+		}
+		ai_will_do = {
+			base = 0
+		}
+		complete_effect = {
+			set_temp_variable = {
+				var = ATW_suspicion_var_temp
+				value = 0.25
+			}
+			ATW_add_suspicion = yes
+		}
+		remove_effect = {
+		}
+	}
+	ATW_sub_suspicion_debug_decision = {
+		allowed = {
+			original_tag = ATW
+		}
+		visible = {
+			OR = {
+				is_in_faction_with = NSM
+				is_in_faction_with = PTF
+				has_country_flag = ATW_on_the_world_stage_flag
+			}
+		}
+		available = {
+		}
+		ai_will_do = {
+			base = 0
+		}
+		complete_effect = {
+			set_temp_variable = {
+				var = ATW_suspicion_var_temp
+				value = -0.25
+			}
+			ATW_add_suspicion = yes
+		}
+		remove_effect = {
+		}
+	}
+}

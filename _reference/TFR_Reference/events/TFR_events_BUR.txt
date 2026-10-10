@@ -1,0 +1,526 @@
+﻿###########################
+# Myanmar Events
+###########################
+
+add_namespace = bur
+
+#2021 Coup de'tat
+country_event = {
+	id = bur.1
+	title = bur.1.t
+	desc = bur.1.d
+	picture = GFX_Generic_Fight_Jet
+	
+	fire_only_once = yes
+	is_triggered_only = yes
+	
+	trigger = {
+		tag = BRM
+	}
+
+	option = {
+	name = bur.1.a
+		set_politics = {		
+			ruling_party = nationalist
+			last_election = "1997.1.1"
+			election_frequency = 48
+			elections_allowed = no
+		}
+		add_popularity = {
+			ideology = authoritarian_democrat
+			popularity = 0.1
+		}
+		add_popularity = {
+			ideology = nationalist
+			popularity = 0.25
+		}
+		set_temp_variable = {
+			var = global.PRC_influence_BRM_var_temp
+			value = 0.20
+		}
+		PRC_add_BRM_influence = yes
+		add_ideas = BRM_unstable_junta
+		news_event = { id = news.172 }
+		every_country = {
+			limit = {
+				OR = {
+					tag = MND
+					tag = KNU
+					tag = CNF
+					tag = WAT
+					tag = SSA
+					tag = MOA
+					tag = KLA
+				}
+			}
+			diplomatic_relation = {
+				country = BRM
+				relation = guarantee
+				active = no
+			}
+			drop_cosmetic_tag = yes
+		}
+		country_event = {
+			id = bur.2
+			days = 35
+			random_days = 25
+		}
+		country_event = {
+			id = bur.6
+			days = 1678
+		}
+		country_event = {
+			id = bur.7
+			days = 1819
+		}
+		diplomatic_relation = {
+				country = WAT
+				relation = military_access
+				active = no
+		}
+		diplomatic_relation = {
+				country = MND
+				relation = military_access
+				active = no
+		}
+		diplomatic_relation = {
+				country = KNU
+				relation = military_access
+				active = no
+		}
+		diplomatic_relation = {
+				country = MOA
+				relation = military_access
+				active = no
+		}
+		diplomatic_relation = {
+				country = SSA
+				relation = military_access
+				active = no
+		}
+		diplomatic_relation = {
+				country = CNF
+				relation = military_access
+				active = no
+		}
+		diplomatic_relation = {
+				country = KLA
+				relation = military_access
+				active = no
+		}
+	}
+}
+
+#RAMBO 4 STABBING BABIES WITH BAYONETS BAABBBEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE
+country_event = {
+	id = bur.2
+	title = bur.2.t
+	desc = bur.2.d
+	picture = GFX_Generic_Fight_Jet
+	
+	fire_only_once = yes
+	is_triggered_only = yes
+	
+	trigger = {
+		tag = BRM
+	}
+
+	option = {
+	name = bur.2.a
+		news_event = { id = news.350 }
+		set_country_flag = BRM_civil_war_flag
+		PDF = {
+			every_state = {
+				limit = {
+					is_core_of = BRM
+				}
+				add_core_of = PDF
+				add_dynamic_modifier = {
+					modifier = BRM_peoples_war
+				}
+			}
+			transfer_state = 1406
+			transfer_state = 1260
+			declare_war_on = { 
+				target = BRM 
+				type = civil_war 
+			}
+			load_oob = "PDF_2020"
+			add_ideas = BRM_civil_war_idea
+		}
+		WAT = {
+			transfer_state = 1404
+		}
+		transfer_units_fraction= {
+			target = PDF
+			size = 0.09
+			stockpile_ratio = 0.3
+		}
+		transfer_units_fraction= {
+			target = PDF
+			size = 0
+			stockpile_ratio = 0.1
+		}
+		add_ideas = BRM_civil_war_idea
+		every_country = {
+			limit = {
+				OR = {
+					tag = MND
+					tag = KNU
+					tag = CNF
+					tag = KLA
+				}
+			}
+			set_cosmetic_tag = PDF_separatist
+			add_ideas = BRM_civil_war_idea
+			declare_war_on = { 
+				target = BRM 
+				type = civil_war 
+			}
+		}
+		PRC = {
+			country_event = {
+				id = bur.3
+				days = 10
+			}
+		}
+	}
+}
+
+#China Negotiations
+country_event = {
+	id = bur.3
+	title = bur.3.t
+	desc = bur.3.d
+	picture = GFX_PRC_situation_in_myanmar
+	
+	fire_only_once = yes
+	is_triggered_only = yes
+	
+	trigger = {
+		tag = PRC
+	}
+
+	option = {
+	name = bur.3.a
+		if = {
+			limit = {
+				country_exists = MND
+			}
+			MND = {
+				white_peace = BRM
+				hidden_effect = {
+					drop_cosmetic_tag = yes
+				}
+			}
+		}
+		unlock_decision_tooltip = PRC_myanmar_negotiations
+		set_country_flag = PRC_myanmar_negotiations_flag
+	}
+}
+
+#New Myanmar
+country_event = {
+	id = bur.4
+	title = bur.4.t
+	desc = bur.4.d
+	picture = GFX_Generic_Fight_Jet
+	
+	fire_only_once = yes
+	is_triggered_only = yes
+	
+	trigger = {
+		tag = MND
+	}
+
+	option = {
+	name = bur.4.a
+		MND = {
+			annex_country = {
+				target = WAT
+				transfer_troops = yes
+			}
+			annex_country = {
+				target = KLA
+				transfer_troops = yes
+			}
+			set_cosmetic_tag = MND_unifier
+			if = {
+				limit = {
+					PRC = {
+						has_country_leader = {
+							character = PRC_li_zuocheng
+							ruling_only = yes
+						}
+					}
+				}
+				set_country_leader_ideology = social_fascism
+			}
+			else_if = {
+				limit = {
+					PRC = {
+						has_country_leader = {
+							character = PRC_xi_jinping
+							ruling_only = yes
+						}
+					}
+				}
+				add_popularity = {
+					ideology = communist
+					popularity = 0.25
+				}
+				set_politics = {
+					ruling_party = communist
+					elections_allowed = no
+				}
+				set_country_leader_ideology = left_nationalism
+			}
+			else_if = {
+				limit = {
+					PRC = {
+						has_country_leader = {
+							character = PRC_Hu_Chunhua
+							ruling_only = yes
+						}
+					}
+				}
+				add_popularity = {
+					ideology = communist
+					popularity = 0.25
+				}
+				set_politics = {
+					ruling_party = communist
+					elections_allowed = no
+				}
+				set_country_leader_ideology = marxism_leninism
+			}
+			else = {
+				add_popularity = {
+					ideology = communist
+					popularity = 0.25
+				}
+				set_politics = {
+					ruling_party = communist
+					elections_allowed = no
+				}
+				set_country_leader_ideology = market_socialism
+			}
+			set_party_name = {
+				long_name = MND_MNTJP_party_long
+				name = MND_MNTJP_party
+				ideology = communist
+			}
+		}
+		every_state = {
+			limit = {
+				is_core_of = BRM
+			}
+			add_core_of = MND
+		}
+	}
+}
+
+#New Myanmar
+country_event = {
+	id = bur.5
+	title = bur.5.t
+	desc = bur.5.d
+	picture = GFX_Generic_Fight_Jet
+	
+	fire_only_once = yes
+	is_triggered_only = yes
+	
+	trigger = {
+		tag = BRM
+	}
+
+	option = {
+	name = bur.5.a
+		clr_country_flag = head_of_gov_ui_enabled
+		clr_country_flag = BRM_civil_war_flag
+		if = {
+			limit = {
+				has_government = social_democrat
+			}
+			every_possible_country = {
+				limit = { has_character = PDF_duwa_lashi_la_char }
+				random_character = {
+					limit = { is_character = PDF_duwa_lashi_la_char }
+					set_nationality = BRM
+				}
+			}
+			promote_character = {
+				character = PDF_duwa_lashi_la_char
+				ideology = left_centrist
+			}
+		}
+		else_if = {
+			limit = {
+				OR = {
+					has_government = totalitarian_socialist
+					has_government = communist
+				}
+			}
+			every_possible_country = {
+				limit = { has_character = MND_peng_daxun }
+				random_character = {
+					limit = { is_character = MND_peng_daxun }
+					set_nationality = BRM
+				}
+			}
+			if = {
+				limit = {
+					PRC = {
+						has_country_leader = {
+							character = PRC_li_zuocheng
+							ruling_only = yes
+						}
+					}
+				}
+				add_country_leader_role = {
+					character = MND_peng_daxun
+					promote_leader = yes
+					country_leader = {
+					    ideology = social_fascism
+					}
+				}
+			}
+			else_if = {
+				limit = {
+					PRC = {
+						has_country_leader = {
+							character = PRC_xi_jinping
+							ruling_only = yes
+						}
+					}
+				}
+				add_country_leader_role = {
+					character = MND_peng_daxun
+					promote_leader = yes
+					country_leader = {
+					    ideology = left_nationalism
+					}
+				}
+				add_ideas = BRM_first_xiist_revolution
+			}
+			else_if = {
+				limit = {
+					PRC = {
+						has_country_leader = {
+							character = PRC_Hu_Chunhua
+							ruling_only = yes
+						}
+					}
+				}
+				add_popularity = {
+					ideology = communist
+					popularity = 0.25
+				}
+				add_country_leader_role = {
+					character = MND_peng_daxun
+					promote_leader = yes
+					country_leader = {
+					    ideology = marxism_leninism
+					}
+				}
+			}
+			else = {
+				add_country_leader_role = {
+					character = MND_peng_daxun
+					promote_leader = yes
+					country_leader = {
+					    ideology = market_socialism
+					}
+				}
+			}
+		}
+		else_if = {
+			limit = {
+				has_government = nationalist
+			}
+			set_politics = {		
+				ruling_party = authoritarian_democrat
+				election_frequency = 48
+				elections_allowed = yes
+			}
+			add_popularity = {
+				ideology = authoritarian_democrat
+				popularity = 0.1
+			}
+			add_popularity = {
+				ideology = conservative
+				popularity = 0.1
+			}
+			add_popularity = {
+				ideology = communist
+				popularity = 0.1
+			}
+			add_popularity = {
+				ideology = nationalist
+				popularity = -0.1
+			}
+		}
+	}
+}
+
+#Death of Myint Swe
+country_event = {
+	id = bur.6
+	title = bur.6.t
+	desc = bur.6.d
+	picture = GFX_Generic_Fight_Jet
+	
+	fire_only_once = yes
+	is_triggered_only = yes
+	
+	trigger = {
+		tag = BRM
+	}
+	
+	option = {
+		name = bur.6.a
+		promote_character = BRM_min_aung_hlaing_char
+		retire_character = BRM_myint_swe_char
+        clr_country_flag = head_of_gov_ui_enabled
+	}
+}
+
+#2024 Presidential Election
+country_event = {
+	id = bur.7
+	title = bur.7.t
+	desc = bur.7.d
+	picture = GFX_Generic_Fight_Jet
+	
+	fire_only_once = yes
+	is_triggered_only = yes
+	
+	trigger = {
+		tag = BRM
+	}
+	
+	option = {
+		name = bur.7.a
+		trigger = { 
+			has_government = nationalist
+		}
+		set_politics = {		
+			ruling_party = authoritarian_democrat
+			last_election = "1997.1.1"
+			election_frequency = 48
+			elections_allowed = no
+		}
+		add_popularity = {
+			ideology = authoritarian_democrat
+			popularity = 0.2
+		}
+	}
+	option = {
+		name = bur.7.b
+		trigger = { 
+			NOT = {
+				has_government = nationalist
+			}
+		}
+	}
+}

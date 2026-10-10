@@ -1,0 +1,238 @@
+SIB_unification = {
+    SIB_reunification = {
+		available = {
+		    OR = {
+				AND = {
+					tag = FLN
+					403 = {
+						is_owned_and_controlled_by  = FLN
+					}
+					571 = {
+						is_owned_and_controlled_by  = FLN
+					}
+					570 = {
+						is_owned_and_controlled_by  = FLN
+					}
+					578 = {
+						is_owned_and_controlled_by  = FLN
+					}
+					569 = {
+						is_owned_and_controlled_by  = FLN
+					}
+					568 = {
+						is_owned_and_controlled_by  = FLN
+					}
+					576 = {
+						is_owned_and_controlled_by  = FLN
+					}
+				}
+				AND = {
+					tag = NAU
+					653 = {
+						is_owned_and_controlled_by  = NAU
+					}
+					582 = {
+						is_owned_and_controlled_by  = NAU
+					}
+					572 = {
+						is_owned_and_controlled_by  = NAU
+					}
+					580 = {
+						is_owned_and_controlled_by  = NAU
+					}
+					577 = {
+						is_owned_and_controlled_by  = NAU
+					}
+					579 = {
+						is_owned_and_controlled_by  = NAU
+					}
+					575 = {
+						is_owned_and_controlled_by  = NAU
+					}
+				}
+			}
+        }
+		modifier = {
+		}
+		ai_will_do = {
+			factor = 100
+		}
+		fire_only_once = yes
+		cost = 0
+	    remove_effect = {
+			set_country_flag = SIB_unifier_flag
+			if = {
+				limit = {
+					tag = FLN
+				}
+				add_state_core = 403
+				add_state_core = 571
+				add_state_core = 570
+				add_state_core = 578
+				add_state_core = 569
+				add_state_core = 568
+				add_state_core = 576
+				add_state_core = 516
+				add_state_core = 567
+				add_state_core = 565
+				add_state_core = 566
+				country_event = { id = russia.518 days = 25}
+			}
+			if = {
+				limit = {
+					tag = NAU
+				}
+				add_state_core = 403
+				add_state_core = 571
+				add_state_core = 570
+				add_state_core = 578
+				add_state_core = 569
+				add_state_core = 579
+				add_state_core = 577
+				add_state_core = 580
+				add_state_core = 653
+				add_state_core = 582
+				add_state_core = 572
+				add_state_core = 583
+				add_state_core = 590
+				add_state_core = 588
+				add_state_core = 40
+				add_state_core = 654
+				add_state_core = 575
+				NAU = {
+					dismantle_faction = yes
+				}
+				NAU = {
+					annex_country = {
+						target = CHU
+						transfer_troops = yes
+					}
+					annex_country = {
+						target = GLC
+						transfer_troops = yes
+					}
+					annex_country = {
+						target = KKP
+						transfer_troops = yes
+					}
+					annex_country = {
+						target = CKK
+						transfer_troops = yes
+					}
+					annex_country = {
+						target = KIR
+						transfer_troops = yes
+					}
+					drop_cosmetic_tag = yes
+					set_cosmetic_tag = NAU_siberia
+				}
+				country_event = { id = russia.515 days = 25}
+			}
+		}
+	}
+	SIB_take_the_far_east = {
+		available = {
+		    has_country_flag = SIB_unifier_flag
+        }
+		visible = {
+			has_global_flag = GER_mass_catharsis_event_global
+		}
+		modifier = {
+		}
+		ai_will_do = {
+			factor = 100
+		}
+		fire_only_once = yes
+		cost = 0
+		days_remove = 30
+		complete_effect = {
+			hidden_effect = {
+				load_oob = "SOV_siberian_federation"
+				SEY = { load_oob = SOV_reserve_far_eastern_divisions }
+			}
+		}
+	    remove_effect = {
+			declare_war_on = {
+				target  = SEY
+				type = civil_war
+			}
+		}
+	}
+	SIB_take_west_russia = {
+		available = {
+		    has_country_flag = SIB_unifier_flag
+			SEY = { exists = no }
+        }
+		visible = {
+			has_global_flag = GER_mass_catharsis_event_global
+		}
+		modifier = {
+		}
+		ai_will_do = {
+			factor = 100
+		}
+		fire_only_once = yes
+		cost = 0
+		days_remove = 30
+		complete_effect = {
+			hidden_effect = {
+				every_controlled_state = {
+					add_core_of = ROOT
+				}
+			}
+		}
+	    remove_effect = {
+			declare_war_on = {
+				target  = YAK
+				type = civil_war
+			}
+			declare_war_on = {
+				target  = PUR
+				type = civil_war
+			}
+			declare_war_on = {
+				target  = SOL
+				type = civil_war
+			}
+			declare_war_on = {
+				target  = HNG
+				type = civil_war
+			}
+		}
+	}
+	SIB_liberate_russia = {
+		available = {
+		    has_country_flag = SIB_unifier_flag
+			YAK = { exists = no }
+			PUR = { exists = no }
+			SOL = { exists = no }
+			HNG = { exists = no }
+        }
+		visible = {
+			has_global_flag = GER_mass_catharsis_event_global
+		}
+		modifier = {
+		}
+		ai_will_do = {
+			factor = 100
+		}
+		fire_only_once = yes
+		cost = 0
+		days_remove = 30
+		complete_effect = {
+			hidden_effect = {
+				every_controlled_state = {
+					add_core_of = ROOT
+				}
+				load_oob = SOV_2020
+				load_oob = SOV_2020
+			}
+		}
+	    remove_effect = {
+			declare_war_on = {
+				target  = GER
+				type = civil_war
+			}
+		}
+	}
+}

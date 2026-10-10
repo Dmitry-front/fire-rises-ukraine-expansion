@@ -1,0 +1,195 @@
+infantry_PRC = {
+
+	available_for = {
+		PRC
+	}
+	
+	role = infantry
+	
+	upgrade_prio = {
+		factor = 20
+
+		modifier = {
+			factor = 40
+		}
+	}
+	
+	#match_to_count = 0.60
+
+	infantry_default_PRC = {
+	
+		upgrade_prio = {
+			factor = 20
+
+			modifier = {
+				factor = 40
+			}
+		}
+		
+		target_template = {
+			support = {
+				engineer = 1
+				signal_company = 1
+				logistics_company = 1
+				mbt_company = 1
+				spaa_company = 1
+			}
+			
+			regiments = {
+				mechanized = 6
+				modern_sp_artillery_brigade = 2
+			}
+		}
+	}
+	infantry_cool_PRC = {
+	
+		upgrade_prio = {
+			factor = 10
+
+			modifier = {
+				factor = 150
+				has_global_flag = pan_asian_war_ongoing
+			}
+			modifier = {
+				factor = 50
+				has_completed_focus = PRC_next_generation_army
+			}
+		}
+
+		target_template = {
+			support = {
+				engineer = 1
+				signal_company = 1
+				logistics_company = 1
+				mbt_company = 1
+				spaa_company = 1
+			}
+			
+			regiments = {
+				mechanized = 8
+				modern_sp_artillery_brigade = 3
+			}
+		}
+	}
+}
+
+armor_PRC = {
+
+	available_for = {
+		PRC
+	}
+	
+	role = armor
+	
+	upgrade_prio = {
+		factor = 20
+
+		modifier = {
+			factor = 10
+		}
+	}
+	
+	#match_to_count = 0.60
+
+	modern_armor_PRC = {
+	
+		upgrade_prio = {
+			factor = 20
+
+			modifier = {
+				factor = 10
+			}
+		}
+
+		target_template = {
+			support = {
+				engineer = 1
+				signal_company = 1
+				logistics_company = 1
+				light_tank_recon = 1
+				spaa_company = 1
+			}
+			
+			regiments = {
+				modern_armor = 3
+				mechanized = 3
+				modern_sp_artillery_brigade = 3
+				motorized = 2
+			}
+		}
+	}
+}
+
+marines_PRC = {
+
+	available_for = {
+		PRC
+	}
+
+	role = marines
+	
+	upgrade_prio = {
+		factor = 20
+
+		modifier = {
+			factor = 10
+		}
+	}
+	
+	#match_to_count = 0.45
+
+	marine_default_PRC = {
+	
+		upgrade_prio = {
+			factor = 20
+
+			modifier = {
+				factor = 10
+			}
+		}
+
+		target_template = {
+			support = {
+				engineer = 1
+				signal_company = 1
+				logistics_company = 1
+				mbt_company = 1
+				spaa_company = 1
+			}
+			
+			regiments = {
+				marine = 8
+				modern_sp_artillery_brigade = 2
+			}
+		}
+	}
+	
+	marine_armored = {
+	
+		upgrade_prio = {
+			factor = 10
+
+			modifier = {
+				factor = 30
+				has_tech = amphibious_tank1
+				has_tech = amphibious_mechanized_infantry1
+			}
+		}
+
+		target_template = {
+			support = {
+				engineer = 1
+				signal_company = 1
+				logistics_company = 1
+				light_tank_recon = 1
+				spaa_company = 1
+			}
+			
+			regiments = {
+				amphibious_armor = 4
+				amphibious_mechanized = 5
+				modern_sp_artillery_brigade = 1
+			}
+		}
+	}
+}

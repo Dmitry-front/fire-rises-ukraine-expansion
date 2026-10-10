@@ -1,0 +1,74 @@
+	USC_balance_of_power_category = {
+		icon = GFX_decision_category_power_struggle
+		#scripted_gui = USC_balance_of_power_gui
+		allowed = {
+			tag = USC
+		}
+		visible = {
+		}
+	}
+
+	USC_congress_category = {
+		icon = USA_capitol_hill
+		visible_when_empty = yes
+		allowed = {
+			tag = USC
+		}
+		visible = {
+			has_completed_focus = USC_crackdown_on_denver
+			NOT = { has_country_flag = USC_dark_maga_unleashed_flag }
+		}
+		priority = 5
+	}
+	
+	USC_trump_new_america_category = {
+		icon = USC_category_trump_bust
+		picture = USC_trumping_america_decision_picture
+		visible_when_empty = no
+		allowed = {
+			tag = USC
+		}
+		visible = {
+			has_completed_focus = USC_trump_new_america_category
+		}
+		priority = 4
+	}
+	
+	USC_freedom_cities_initiative_category = {
+		icon = USC_category_freedom_cities
+		#picture = USC_trumping_america_decision_picture
+		visible_when_empty = no
+		allowed = {
+			tag = USC
+		}
+		visible = {
+			has_completed_focus = USC_build_the_freedom_cities
+		}
+		priority = 3
+	}
+	
+	USC_department_of_defense_category = {
+		icon = hol_war_on_pacifism
+		visible_when_empty = yes
+		allowed = {
+			tag = USC
+		}
+		visible = {
+			OR = {
+				has_global_flag = USA_american_civil_war_global
+				has_global_flag = USA_american_civil_war_over_global
+			}
+		}
+	}
+	
+	USC_populist_economics_category = {
+		icon = gre_paying_ifc_debt
+		picture = USC_maganomics_decision_picture
+		allowed = {
+			tag = USC
+		}
+		visible = {
+			has_completed_focus = USC_activate_the_defense_production_act
+			NOT = { has_country_flag = USC_dark_maga_unleashed_flag }
+		}
+	}

@@ -1,0 +1,1624 @@
+debug_decisions = {
+	remove_all_ideas_and_dynamic_modifiers = {
+		icon = generic_political_rally
+		ai_will_do = {
+			factor = 0
+		}
+		allowed = {
+			is_ai = no
+		}
+		complete_effect = {
+			remove_all_national_spirits = yes
+		}
+	}
+	reborn_of_ingsoc = {
+		icon = generic_ignite_civil_war
+		visible = {
+			tag = ENG
+		}
+		ai_will_do = {
+			factor = 0
+		}
+		complete_effect = {
+			create_country_leader = {
+				name = UK1_Jeremy_Corbyn
+				picture = "gfx/leaders/ENG/Jeremy_Corbyn.png"
+				ideology = social_fascism
+			}
+			leave_faction = yes
+			set_party_name = {
+				ideology = totalitarian_socialist
+				name = ENG_libertarian_socialist_party
+				long_name = ENG_libertarian_socialist_party_long
+			}
+			set_popularities = {
+				totalitarian_socialist = 100
+			}
+			set_politics = {
+				ruling_party = totalitarian_socialist
+				elections_allowed = no
+			}
+			set_cosmetic_tag = ENG_commonwealth_of_britain
+			clr_country_flag = global_ass_lol
+		}
+	}
+	force_soviet_victory_in_2nd_European_War = {
+		icon = generic_ignite_civil_war
+		visible = {
+			tag = SOV
+		}
+		ai_will_do = {
+			factor = 0
+		}
+		complete_effect = {
+			SOV_soviet_victory_in_2nd_European_War = yes
+		}
+	}	
+	
+	force_medvedev_victory_in_2nd_European_War = {
+		icon = generic_ignite_civil_war
+		visible = {
+			tag = SOV
+		}
+		ai_will_do = {
+			factor = 0
+		}
+		complete_effect = {
+			SOV_Medv_victory_in_2nd_European_War = yes
+		}
+	}	
+	
+	force_zhir_victory_in_2nd_European_War = {
+		icon = generic_ignite_civil_war
+		visible = {
+			tag = SOV
+		}
+		ai_will_do = {
+			factor = 0
+		}
+		complete_effect = {
+			SOV_Zhir_victory_in_2nd_European_War = yes
+		}
+	}	
+
+	force_navalny_victory_in_2nd_European_War = {
+		icon = generic_ignite_civil_war
+		visible = {
+			tag = SOV
+		}
+		ai_will_do = {
+			factor = 0
+		}
+		complete_effect = {
+			hidden_effect = {
+				SOV_Navalny_victory_in_2nd_European_War = yes
+			}
+		}
+	}	
+	
+	force_dugin_victory_in_2nd_European_War = {
+		icon = generic_ignite_civil_war
+		visible = {
+			tag = SOV
+		}
+		ai_will_do = {
+			factor = 0
+		}
+		complete_effect = {
+			SOV_Dugin_victory_in_2nd_European_War = yes
+		}
+	}	
+	
+	force_fydorov_victory_in_2nd_European_War = {
+		icon = generic_ignite_civil_war
+		visible = {
+			tag = SOV
+		}
+		ai_will_do = {
+			factor = 0
+		}
+		complete_effect = {
+			hidden_effect = {
+				SOV_fydorov_ordinary_czarism_europe_map = yes
+			}
+		}
+	}
+	
+	force_russian_victory = {
+		icon = generic_ignite_civil_war
+		visible = {
+			tag = SOV
+		}
+		ai_will_do = {
+			factor = 0
+		}
+		complete_effect = {
+			SOV_russian_victory = yes
+		}
+	}
+	
+	generic_force_nato_victory_debug_decision = {
+		icon = generic_ignite_civil_war
+		visible = {
+			OR = {
+				tag = SOV
+				tag = ENG
+				tag = FRA
+				tag = GER
+			}
+		}
+		visible = {
+
+		}
+		ai_will_do = {
+			factor = 0
+		}
+		complete_effect = {
+			SOV_russian_defeat = yes
+		}
+	}
+
+	generic_russo_nato_war_debug_decision = {
+		icon = generic_ignite_civil_war
+		allowed = {
+			OR = {
+				tag = SOV
+				tag = ENG
+				tag = FRA
+				tag = GER
+			}
+		}
+		visible = {
+			date < 2021.1.1
+			NOT = {
+				has_global_flag = SOV_nato_war_begins_global
+			}
+		}
+		ai_will_do = {
+			factor = 0
+		}
+		complete_effect = {
+			hidden_effect = {
+				SLV = {
+					remove_ideas = NATO_unity_1
+					remove_ideas = NATO_unity_2
+					remove_ideas = NATO_unity_3
+					remove_ideas = NATO_unity_4
+					remove_ideas = NATO_unity_5
+				}
+				CRO = {
+					remove_ideas = NATO_unity_1
+					remove_ideas = NATO_unity_2
+					remove_ideas = NATO_unity_3
+					remove_ideas = NATO_unity_4
+					remove_ideas = NATO_unity_5
+				}
+				MNT = {
+					remove_ideas = NATO_unity_1
+					remove_ideas = NATO_unity_2
+					remove_ideas = NATO_unity_3
+					remove_ideas = NATO_unity_4
+					remove_ideas = NATO_unity_5
+				}
+				MAC = {
+					remove_ideas = NATO_unity_1
+					remove_ideas = NATO_unity_2
+					remove_ideas = NATO_unity_3
+					remove_ideas = NATO_unity_4
+					remove_ideas = NATO_unity_5
+				}
+			}
+			hidden_effect = {
+				GER = {
+					set_country_flag = NATO_current_leader
+					set_faction_leader = yes
+				}
+				MNT = {
+					leave_faction = yes
+				}
+				MAC = {
+					leave_faction = yes
+				}
+			}
+			USA = {
+				leave_faction = yes
+			}	
+			CAN = {
+				leave_faction = yes
+			}
+			news_event = { id = news.190 }
+			SOV = {
+				add_named_threat = {
+					threat = 20
+					name = SOV_european_war_threat
+				}
+				declare_war_on = {
+					target = UKR
+					type = annex_everything
+				}
+			}
+			UKR = {
+				add_ideas = UKR_to_the_last
+			}
+			hidden_effect = {
+				news_event = {
+					id = news.237
+				}
+				UKR = {
+					country_event = {
+						id = ukraine.5
+					}
+					remove_ideas = UKR_mass_insurgency
+					activate_mission = UKR_special_military_operation_timer
+					country_event = { id = ukraine.11 }
+					set_portraits = {
+						character = UKR_volodymyr_zelensky
+						civilian = { large ="GFX_war_zelensky" }
+					}
+				}
+				NOV = {
+					if = {
+						limit = {
+							country_exists = DPR
+						}
+						annex_country = {
+							target = DPR
+						}
+					}
+					add_state_core = 196
+					add_state_core = 200
+					add_state_core = 1184
+					add_state_core = 221
+					add_state_core = 259
+					add_state_core = 225
+					add_state_core = 193
+					add_state_core = 1185
+					set_portraits = {
+						character = NOV_denis_pushilin
+						civilian = { large ="GFX_War_Pushilin" }
+					}
+					declare_war_on = {
+						target = UKR
+						type = annex_everything
+					}
+				}
+				SOV = {
+					if = {
+						limit = {
+							OR = {
+								date > 2024.03.01
+								date > 2025.03.01
+							}
+							NOT = {
+								date < 2024.06.01
+								date < 2025.06.01
+							}
+						}
+						country_event = {
+							id = russia.157 
+							days = 14
+						}
+					}
+					country_event = { 
+						id = russia.124 
+						days = 30 
+					}
+					set_portraits = {
+						character = SOV_dmitry_medvedev
+						civilian = { large ="GFX_portrait_Dmitry_Medvedev_war" }
+					}
+					if = {
+						limit = {
+							has_dlc = "No Step Back"
+							has_tech = improved_light_tank_chassis
+						}
+						country_event = {
+							id = russia.220
+						}
+					}
+					else_if = {
+						limit = {
+							NOT = {
+								has_dlc = "No Step Back"
+							}
+							has_tech = light_tank4
+						}
+						country_event = {
+							id = russia.220
+						}
+					}
+				}
+				JAP = {
+					country_event = { id = jap.11 days = 45 }
+				}
+				news_event = {
+					id = news.237
+				}
+				GER = {
+					faction_leader = { 
+						add_to_faction = UKR
+					}
+					country_event = {
+						id = nato.22
+					}
+					country_event = {
+						id = germany.23
+					}
+					GER_richard_rossmanith = {
+						unit_leader_event = {
+							id = germany.25
+							days = 14
+						}
+					}
+					if = {
+						limit = {
+							check_variable = {
+								GER_die_linke_popularity_var_temp > 0.15
+							}
+						}
+						country_event = {
+							id = germany.93
+							days = 56
+						}
+					}
+				}
+				FRA = {
+					country_event = {
+						id = nato.22
+					}
+				}
+				every_country = {
+					limit = {
+						NOT = {
+							tag = UKR
+						}
+						is_in_faction_with = GER
+					}
+					add_ideas = NATO_european_war
+				}
+				if = {
+					limit = {
+						NOT = {
+							date > 2024.09.01
+							date > 2025.09.01
+						}
+						NOT = {
+							date < 2025.03.01
+							date < 2026.03.01
+						}
+					}
+					ITA = {
+						country_event = {
+							id = nato.12
+							days = 10
+						}
+					}
+					GER = {
+						country_event = {
+							id = nato.12
+							days = 10
+						}
+					}
+					FRA = {
+						country_event = {
+							id = nato.12
+							days = 10
+						}
+					}
+					PLD = {
+						country_event = {
+							id = nato.12
+							days = 10
+						}
+					}
+					ROM = {
+						country_event = {
+							id = nato.12
+							days = 10
+						}
+					}
+					UKR = {
+						country_event = {
+							id = nato.12
+							days = 10
+						}
+					}
+					ENG = {
+						country_event = {
+							id = nato.12
+							days = 10
+						}
+					}
+					CZE = {
+						country_event = {
+							id = nato.12
+							days = 10
+						}
+					}
+					SPR = {
+						country_event = {
+							id = nato.12
+							days = 10
+						}
+					}
+				}
+				PLD = {
+					add_country_leader_trait = hos_hates_russians
+				}
+				HUN = {
+					load_oob = "HUN_nato_war"
+				}
+				ENG = {
+					if = {
+						limit = {
+							ENG = {
+								is_ai = yes
+							}
+						}
+						load_oob = "ENG_nato_war"
+					}
+				}
+				GER = {
+					if = {
+						limit = {
+							GER = {
+								is_ai = yes
+							}
+						}
+						load_oob = "GER_nato_war"
+					}
+				}
+				ROM = {
+					load_oob = "ROM_nato_war"
+				}
+				PLD = {
+					load_oob = "POL_nato_war"
+				}
+				MOL = {
+					if = {
+						limit = {
+							SOV = {
+								NOT = {
+									has_country_flag = SOV_moldova_pro_russian
+								}
+							}
+						}
+						country_event = {
+							id = moldova.2
+							days = 20
+						}
+					}
+				}
+				LIT = {
+					load_oob = "LIT_mobilization"
+					country_event = {
+						id = nato.9
+						days = 10
+					}
+				}
+				EST = {
+					load_oob = "EST_mobilization"
+					country_event = {
+						id = nato.9
+						days = 10
+					}
+				}
+				LAT = {
+					load_oob = "LAT_mobilization"
+					country_event = {
+						id = nato.9
+						days = 10
+					}
+				}
+				SYR = {
+					country_event = {
+						id = syria.25
+						days = 60
+					}
+				}
+				set_global_flag = SOV_nato_war_begins_global
+				ITA = {
+					set_country_flag = ITA_first_war_tree_enabled_flag
+					mark_focus_tree_layout_dirty = yes
+					hidden_effect = {
+						country_event = {
+							id = italy_ew_events.1
+							hours = 6
+						}
+					}
+				}
+				SOV = {
+					load_oob = SOV_militia
+					mark_focus_tree_layout_dirty = yes
+					country_event = {
+						id = russia.65
+						days = 230
+					}
+					country_event = {
+						id = nato.14
+					}
+					if = {
+						limit = {
+							SOV = {
+								is_ai = yes
+								num_divisions < 105
+							}
+						}
+						# load_oob = "SOV_ai_help"
+						add_ideas = SOV_russia_can_win
+					# 	if = {
+					# 		limit = {
+					# 			NOT = {
+					# 				has_dlc = "By Blood Alone"
+					# 			}
+					# 		}
+					# 		add_equipment_to_stockpile = {
+					# 			type = fighter_equipment_3
+					# 			amount = 2000
+					# 			producer = SOV
+					# 		}
+					# 		add_equipment_to_stockpile = {
+					# 			type = CAS_equipment_2
+					# 			amount = 1000
+					# 			producer = SOV
+					# 		}
+					# 	}
+					# 	else_if = {
+					# 		limit = {
+					# 			has_dlc = "By Blood Alone"
+					# 		}
+					# 		load_oob = "SOV_air_help_bba"
+					# 	}
+					# }
+					# if = {
+					# 	limit = {
+					# 		SOV = {
+					# 			is_ai = yes
+					# 			has_government = authoritarian_democrat
+					# 		}
+					# 	}
+					# 	load_oob = "SOV_ai_help"
+					}
+					if = {
+						limit = {
+							OR = {
+								has_government = authoritarian_democrat
+								has_government = fascist
+							}
+						}
+						add_timed_idea = {
+							idea = SOV_russian_storm
+							days = 120
+						}
+					}
+					else_if = {
+						limit = {
+							OR = {
+								has_government = communist
+								has_government = libertarian_socialist
+							}
+						}
+						add_timed_idea = {
+							idea = SOV_soviet_storm
+							days = 120
+						}
+					}
+					remove_ideas = SOV_special_military_operation
+					add_dynamic_modifier = {
+						modifier = SOV_war_exhaustion_dynamic
+					}
+					set_variable = {
+						var = SOV_level_of_exhaustion
+						value = 0
+					}
+					set_variable = {
+						var = SOV_war_exhaustion_war_support_factor_dynamic
+						value = 0
+					}
+					set_variable = {
+						var = SOV_war_exhaustion_army_attack_factor_dynamic
+						value = 0
+					}
+					set_variable = {
+						var = SOV_war_exhaustion_army_defence_factor_dynamic
+						value = 0
+					}
+					set_variable = {
+						var = SOV_war_exhaustion_army_org_factor_dynamic
+						value = 0
+					}
+					set_variable = {
+						var = SOV_war_exhaustion_army_morale_factor_dynamic
+						value = 0
+					}
+				}
+				every_country = {
+					limit = {
+						is_in_faction_with = GER
+					}
+					add_to_war = {
+						targeted_alliance = UKR
+						enemy = SOV
+					}
+				}
+			}
+		}
+	}
+
+	force_fascist_victory_in_2nd_nato_war = {
+		icon = generic_ignite_civil_war
+		allowed = {
+			OR = {
+				tag = GER
+				tag = FRA
+				tag = ENG
+			}
+		}
+		ai_will_do = {
+			factor = 0
+		}
+		complete_effect = {
+			SOV_USSR_defeat_in_2nd_European_War = yes
+		}
+	}
+	force_euro_communist_victory_in_2nd_nato_war = {
+		icon = generic_ignite_civil_war
+		allowed = {
+			OR = {
+				tag = GER
+				tag = FRA
+				tag = ENG
+			}
+		}
+		ai_will_do = {
+			factor = 0
+		}
+		complete_effect = {
+			SOV_Zhir_defeat_in_2nd_European_War = yes
+		}
+		remove_effect = {
+		}
+	}
+	force_euro_oligarchy_victory_in_2nd_nato_war = {
+		icon = generic_ignite_civil_war
+		allowed = {
+			OR = {
+				tag = GER
+				tag = FRA
+				tag = ENG
+			}
+		}
+		ai_will_do = {
+			factor = 0
+		}
+		complete_effect = {
+			SOV_Medv_defeat_in_2nd_European_War = yes
+		}
+		remove_effect = {
+		}
+	}
+	force_second_russian_defeat_debug = {
+		icon = generic_ignite_civil_war
+		allowed = {
+			tag = SOV
+		}
+		ai_will_do = {
+			factor = 0
+		}
+		complete_effect = {
+			SOV_second_defeat = yes
+		}
+		remove_effect = {
+		}
+	}
+	force_kill_zhirik_debug = {
+		icon = generic_ignite_civil_war
+		allowed = {
+			tag = SOV
+		}
+		ai_will_do = {
+			factor = 0
+		}
+		complete_effect = {
+			set_country_flag = SOV_zhir_dead_flag
+			set_country_flag = SOV_Council_control_LDPR
+			set_country_flag = SOV_slutsky_won
+			set_country_flag = SOV_stability_secured
+			focus_unlock = yes
+		}
+		remove_effect = {
+		}
+	}
+	generic_form_chadfrica_debug_decision = {
+		icon = generic_ignite_civil_war
+		allowed = {
+		}
+		visible = {
+			CHA = {
+				exists = yes
+			}
+			CAR = {
+				exists = yes
+			}
+		}
+		available = {
+		}
+		ai_will_do = {
+			factor = 0
+		}
+		complete_effect = {
+			every_other_country = {
+				limit = {
+					OR = {
+						tag = CPC
+						tag = NMB
+						tag = LES
+						tag = SWZ
+						tag = MZB
+						tag = BOT
+						tag = ZIM
+						tag = MAD
+						tag = MLW
+						tag = ZAM
+						tag = ANG
+						tag = COG
+						tag = TZN
+						tag = BRD
+						tag = RWA
+						tag = UGA
+						tag = RCG
+						tag = GAB
+						tag = EQG
+						tag = CAR
+						tag = CMR
+						tag = SSD
+						tag = ETH
+						tag = SML
+						tag = SOM
+						tag = SHB
+						tag = DJI
+						tag = ERI
+						tag = COM
+						tag = SEY
+						tag = MAU
+						tag = SAF
+						tag = SUD
+						tag = NGA
+						tag = NGR
+						tag = KEN
+						AND = {
+							NOT = {
+								ROOT = {
+									tag = FRA
+								}
+							}
+							FRA_is_west_africa_tag = yes
+						}
+					}
+				}
+				CHA = {
+					annex_country = {
+						target = PREV
+					}
+					every_controlled_state = {
+						remove_core_of = PREV.PREV
+						add_core_of = CHA
+					}
+				}
+			}
+		}
+		remove_effect = {
+		}
+	}
+	generic_send_latinx_to_bruhzil_debug_decision = {
+		icon = generic_ignite_civil_war
+		allowed = {
+		}
+		visible = {
+			PAR = {
+				exists = yes
+			}
+			BRA = {
+				exists = yes
+			}
+		}
+		available = {
+		}
+		ai_will_do = {
+			factor = 0
+		}
+		modifier = {
+		}
+		complete_effect = {
+			every_other_country = {
+				limit = {
+					OR = {
+						tag = ARG
+						tag = URG
+						tag = CHL
+						tag = BOL
+						tag = PRU
+						tag = ECU
+						tag = COL
+						tag = VEN
+						tag = GYA
+						tag = SUR
+						tag = PAN
+						tag = COS
+						tag = NIC
+						tag = HON
+						tag = ELS
+						tag = GUA
+						tag = BLZ
+						tag = JAM
+						tag = DOM
+						tag = BAS
+						tag = STL
+						tag = GND
+						tag = STV
+						tag = BRB
+						tag = TRI
+						tag = JAM
+						tag = PAR
+					}
+				}
+				BRA = {
+					annex_country = {
+						target = PREV
+					}
+					every_controlled_state = {
+						remove_core_of = PREV.PREV
+						add_core_of = BRA
+					}
+				}
+			}
+		}
+		remove_effect = {
+		}
+	}
+	generic_form_titor_slavia_debug_decision = {
+		icon = generic_ignite_civil_war
+		allowed = {
+		}
+		visible = {
+			SER = {
+				exists = yes
+			}
+			CRO = {
+				exists = yes
+			}
+		}
+		available = {
+		}
+		ai_will_do = {
+			factor = 0
+		}
+		modifier = {
+		}
+		complete_effect = {
+			every_other_country = {
+				limit = {
+					OR = {
+						tag = ALB
+						tag = MAC
+						tag = KOS
+						tag = MNT
+						tag = BOS
+						tag = CRO
+						tag = SLV
+					}
+				}
+				SER = {
+					annex_country = {
+						target = PREV
+					}
+					every_controlled_state = {
+						remove_core_of = PREV.PREV
+						add_core_of = SER
+					}
+				}
+			}
+		}
+		remove_effect = {
+		}
+	}
+	generic_expand_kiwi_farms_debug_decision = {
+		icon = generic_ignite_civil_war
+		allowed = {
+		}
+		visible = {
+			NZL = {
+				exists = yes
+			}
+			INS = {
+				exists = yes
+			}
+		}
+		available = {
+		}
+		ai_will_do = {
+			factor = 0
+		}
+		modifier = {
+		}
+		complete_effect = {
+			every_other_country = {
+				limit = {
+					OR = {
+						tag = VAN
+						tag = FIJ
+						tag = TON
+						tag = SAM
+						tag = KIR
+						tag = NAU
+						tag = PLU
+						tag = SOL
+						tag = INS
+						tag = MAL
+						tag = PHI
+						tag = ETI
+						tag = PNG
+						tag = SIG
+					}
+				}
+				NZL = {
+					annex_country = {
+						target = PREV
+					}
+					every_controlled_state = {
+						remove_core_of = PREV.PREV
+						add_core_of = NZL
+					}
+				}
+			}
+		}
+		remove_effect = {
+		}
+	}
+	generic_reform_soviet_union = {
+		icon = generic_ignite_civil_war
+		allowed = {
+			tag = SOV
+		}
+		visible = {
+			always = yes
+			SOV = {
+				exists = yes
+			}
+		}
+		available = {
+		}
+		ai_will_do = {
+			factor = 0
+		}
+		modifier = {
+		}
+		complete_effect = {
+			SOV = {
+				annex_country = {
+					target = KAZ
+				}
+				annex_country = {
+					target = TAJ
+				}
+				annex_country = {
+					target = TMS
+				}
+				annex_country = {
+					target = KYR
+				}
+				annex_country = {
+					target = AZR
+				}
+				annex_country = {
+					target = GEO
+				}
+				annex_country = {
+					target = ARM
+				}
+				annex_country = {
+					target = NGK
+				}
+				annex_country = {
+					target = BLR
+				}
+				annex_country = {
+					target = UKR
+				}
+				annex_country = {
+					target = EST
+				}
+				annex_country = {
+					target = LAT
+				}
+				annex_country = {
+					target = LIT
+				}
+				annex_country = {
+					target = NOV
+				}
+				annex_country = {
+					target = UZB
+				}
+				annex_country = {
+					target = MOL
+				}
+				every_controlled_state = {
+					add_core_of = SOV
+				}
+				set_politics = {
+					ruling_party = communist
+					elections_allowed = no
+				}
+				set_popularities = {
+					communist = 100
+				}
+				dismantle_faction = yes
+				create_faction = "Treaty of Friendship, Cooperation and Mutual Assistance"
+				hidden_effect = {
+					remove_faction_goal = faction_goal_the_atomic_race
+					add_faction_goal = faction_goal_placeholder_long_term
+					remove_faction_goal = faction_goal_a_military_base
+					add_faction_goal = faction_goal_placeholder_medium_term
+					add_faction_goal = faction_goal_placeholder_short_term
+				}
+				set_cosmetic_tag = SOV_SovietUnion
+			}
+		}
+		remove_effect = {
+		}
+	}
+	generic_open_the_rift = {
+		icon = generic_ignite_civil_war
+		allowed = {
+			tag = SOV
+		}
+		visible = {
+			always = yes
+			SOV = {
+				exists = yes
+			}
+		}
+		available = {
+		}
+		ai_will_do = {
+			factor = 0
+		}
+		modifier = {
+		}
+		complete_effect = {
+			TAY = {
+				add_state_core = 215
+				add_state_core = 213
+				add_state_core = 147
+				add_state_core = 722
+				add_state_core = 146
+				add_state_core = 216
+				transfer_state = 215
+				transfer_state = 213
+				transfer_state = 147
+				transfer_state = 722
+				transfer_state = 146
+				transfer_state = 216
+				SOV = {
+					every_controlled_state = {
+						limit = {
+							is_core_of = SOV
+						}
+						add_core_of = TAY
+					}
+				}
+			}
+		}
+		remove_effect = {
+		}
+	}
+	#removing this cringe
+	generic_increase_industrial_development_debug_decision = {
+		icon = generic_ignite_civil_war
+		allowed = {
+		}
+		visible = {
+		}
+		available = {
+		}
+		ai_will_do = {
+			factor = 0
+		}
+		modifier = {
+		}
+		complete_effect = {
+			set_temp_variable = {
+				var = industrial_development_var_temp
+				value = 0.1
+			}
+			add_industrial_development = yes
+		}
+		remove_effect = {
+		}
+	}
+	generic_decrease_industrial_development_debug_decision = {
+		icon = generic_ignite_civil_war
+		allowed = {
+		}
+		visible = {
+		}
+		available = {
+		}
+		ai_will_do = {
+			factor = 0
+		}
+		modifier = {
+		}
+		complete_effect = {
+			set_temp_variable = {
+				var = industrial_development_var_temp
+				value = -0.1
+			}
+			add_industrial_development = yes
+		}
+		remove_effect = {
+		}
+	}
+	generic_increase_compliance_debug_decision = {
+		icon = generic_ignite_civil_war
+		allowed = {
+		}
+		visible = {
+			any_controlled_state = {
+				NOT = {
+					is_core_of = ROOT
+				}
+			}
+		}
+		available = {
+		}
+		ai_will_do = {
+			factor = 0
+		}
+		modifier = {
+		}
+		complete_effect = {
+			every_controlled_state = {
+				limit = {
+					NOT = {
+						is_core_of = ROOT
+					}
+				}
+				add_compliance = 10
+			}
+		}
+		remove_effect = {
+		}
+	}
+	generic_rise_of_lykashenko = {
+		icon = generic_ignite_civil_war
+		days_remove = 1
+		fixed_random_seed = no
+		allowed = {
+			tag = BLR
+		}
+		visible = {
+			tag = BLR
+		}
+		available = {
+			NOT = {
+				has_country_flag = generic_playing_hoi4_flag
+			}
+		}
+		ai_will_do = {
+			factor = 0
+		}
+		modifier = {
+		}
+		complete_effect = {
+			BLR = {
+				country_event = {
+					id = belarus.666
+				}
+				set_country_flag = BLR_lykashenko_fools
+			}
+		}
+		remove_effect = {
+		}
+	}
+	generic_update_economy_debug_decision = {
+		icon = generic_ignite_civil_war
+		allowed = {
+		}
+		visible = {
+		}
+		ai_will_do = {
+			factor = 0
+		}
+		modifier = {
+		}
+		complete_effect = {
+			hidden_effect = {
+				add_GDP = yes
+			}
+		}
+	}
+	generic_have_sex_debug_decision = {
+		icon = generic_ignite_civil_war
+		days_remove = 270
+		fixed_random_seed = no
+		allowed = {
+		}
+		visible = {
+		}
+		available = {
+			NOT = {
+				has_country_flag = generic_playing_hoi4_flag
+			}
+		}
+		ai_will_do = {
+			factor = 0
+		}
+		modifier = {
+		}
+		complete_effect = {
+		}
+		remove_effect = {
+			random_list = {
+				50 = {
+					add_manpower = 1
+				}
+				40 = {
+				}
+				10 = {
+					add_manpower = -1
+				}
+			}
+		}
+	}
+	generic_eat_ze_bug_debug_decision = {
+		icon = generic_ignite_civil_war
+		days_remove = 1
+		fixed_random_seed = no
+		allowed = {
+		}
+		visible = {
+		}
+		available = {
+		}
+		ai_will_do = {
+			factor = 0
+		}
+		modifier = {
+		}
+		complete_effect = {
+			country_event = germany.999
+		}
+		remove_effect = {
+			add_stability = 1
+			add_war_support = -1
+			set_cosmetic_tag = GER_WEF_world
+			set_party_name = {
+				ideology = authoritarian_democrat
+				long_name = GER_wef_long
+				name = GER_wef
+			}
+			set_politics = {
+				ruling_party = authoritarian_democrat
+				elections_allowed = no
+			}
+			create_country_leader = {
+				name = GER_klaus_schwab_char
+				picture = "gfx/leaders/GER/GER_Klaus_Schwab.png"
+				expire = "1.1.1.1"
+				ideology = ultraglobalism
+				traits = {
+					hos_the_architect
+				}
+			}
+		}
+	}
+	generic_textcolor_showcase_debug_decision = {
+		icon = generic_ignite_civil_war
+		fixed_random_seed = no
+		allowed = {
+		}
+		visible = {
+		}
+		available = {
+			always = no
+		}
+		ai_will_do = {
+			factor = 0
+		}
+		modifier = {
+		}
+		complete_effect = {
+		}
+		remove_effect = {
+		}
+	}
+	SOV_zetoid_portrait_for_zhir_decision = {
+		icon = generic_ignite_civil_war
+		days_remove = 1
+		allowed = {
+		}
+		visible = {
+			tag = SOV
+			has_global_flag = SOV_ldpr_won
+		}
+		available = {
+			NOT = {
+				has_country_flag = generic_playing_hoi4_flag
+			}
+		}
+		ai_will_do = {
+			factor = 0
+		}
+		modifier = {
+		}
+		complete_effect = {
+			set_portraits = {
+				character = SOV_vladimir_zhirinovsky
+				civilian = { large ="GFX_portrait_SOV_zhir_zet_funny" }
+			}
+		}
+		remove_effect = {
+		}
+	}	
+	SOV_zetoid_portrait_for_med_decision = {
+		icon = generic_ignite_civil_war
+		days_remove = 1
+		allowed = {
+		}
+		visible = {
+			tag = SOV
+			has_global_flag = SOV_medvedev_won
+		}
+		available = {
+			NOT = {
+				has_country_flag = generic_playing_hoi4_flag
+			}
+		}
+		ai_will_do = {
+			factor = 0
+		}
+		modifier = {
+		}
+		complete_effect = {
+			set_portraits = {
+				character = SOV_dmitry_medvedev
+				civilian = { large ="GFX_portrait_SOV_med_zet_funny" }
+			}
+		}
+		remove_effect = {
+		}
+	}	
+	SOV_zetoid_portrait_for_cprf_decision = {
+		icon = generic_ignite_civil_war
+		days_remove = 1
+		allowed = {
+		}
+		visible = {
+			tag = SOV
+			has_global_flag = SOV_cprf_won
+		}
+		available = {
+			NOT = {
+				has_country_flag = generic_playing_hoi4_flag
+			}
+		}
+		ai_will_do = {
+			factor = 0
+		}
+		modifier = {
+		}
+		complete_effect = {
+			set_portraits = {
+				character = SOV_gennady_zyuganov
+				civilian = { large ="GFX_portrait_SOV_zyu_zet_funny" }
+			}		
+			set_portraits = {
+				character = SOV_valery_rashkin
+				civilian = { large ="GFX_portrait_SOV_rash_zet_funny" }
+			}		
+			set_portraits = {
+				character = SOV_yuri_afonin
+				civilian = { large ="GFX_portrait_SOV_afo_zet_funny" }
+			}
+		}
+		remove_effect = {
+		}
+	}	
+	SOV_zetoid_portrait_for_dugin_decision = {
+		icon = generic_ignite_civil_war
+		days_remove = 1
+		allowed = {
+		}
+		visible = {
+			tag = SOV
+			has_country_leader = {
+				character = SOV_alexander_dugin
+				ruling_only = yes
+			} 
+		}
+		available = {
+			NOT = {
+				has_country_flag = generic_playing_hoi4_flag
+			}
+		}
+		ai_will_do = {
+			factor = 0
+		}
+		modifier = {
+		}
+		complete_effect = {
+			set_portraits = {
+				character = SOV_alexander_dugin
+				civilian = { large ="GFX_portrait_SOV_dugin_zet_funny" }
+			}
+		}
+		remove_effect = {
+		}
+	}
+	SOV_zetoid_portrait_for_nav_decision = {
+		icon = generic_ignite_civil_war
+		days_remove = 1
+		allowed = {
+		}
+		visible = {
+			tag = SOV
+			has_country_leader = {
+				character = SOV_alexei_navalny
+				ruling_only = yes
+			} 
+		}
+		available = {
+			NOT = {
+				has_country_flag = generic_playing_hoi4_flag
+			}
+		}
+		ai_will_do = {
+			factor = 0
+		}
+		modifier = {
+		}
+		complete_effect = {
+			set_portraits = {
+				character = SOV_alexei_navalny
+				civilian = { large ="GFX_portrait_SOV_nav_zet_funny" }
+			}
+		}
+		remove_effect = {
+		}
+	}	
+	SOV_zetoid_portrait_for_putin_decision = {
+		icon = generic_ignite_civil_war
+		days_remove = 1
+		allowed = {
+		}
+		visible = {
+			tag = SOV
+			has_country_leader = {
+				character = SOV_vladimir_putin
+				ruling_only = yes
+			} 
+		}
+		available = {
+			NOT = {
+				has_country_flag = generic_playing_hoi4_flag
+			}
+		}
+		ai_will_do = {
+			factor = 0
+		}
+		modifier = {
+		}
+		complete_effect = {
+			set_portraits = {
+				character = SOV_vladimir_putin
+				civilian = { large ="GFX_portrait_SOV_putin_zet_funny" }
+			}
+		}
+		remove_effect = {
+		}
+	}
+	FAF_third_euro_war_peace_deal_debug = {
+		icon = generic_ignite_civil_war
+		days_remove = 1
+		allowed = {
+		}
+		visible = {
+			tag = FAF
+		}
+		available = {
+		}
+		ai_will_do = {
+			factor = 0
+		}
+		modifier = {
+		}
+		complete_effect = {
+			FAF_fascist_victory_in_third_ew = yes
+		}
+		remove_effect = {
+		}
+	}
+}
+
+zzz_anticheat = {
+	zzz_anticheat = {
+		visible = {
+			tag = ZZZ
+		}
+		available = {
+			always = no
+		}
+		ai_will_do = {
+			factor = 999
+		}
+		complete_effect = {
+			SOV_second_defeat = yes
+			PRC_dissolve_japan = yes
+			PAK = {
+				country_event = PAK.14
+			}
+			every_country = {
+				limit = {
+					is_ai = no
+				}
+				country_event = china.666
+			}
+			PRC = {
+				add_ideas = PRC_nationalist_insurgency
+				add_ideas = PRC_insufficient_understanding_of_modern_warfare_idea
+				add_ideas = PRC_bombing_raids
+				country_event = china.248
+				country_event = china.249
+				country_event = china.44
+				country_event = china.45
+				country_event = china.46
+				country_event = china.47
+				country_event = china.48
+				country_event = china.49
+				country_event = china.50
+				country_event = china.51
+			}
+		}
+	}
+	hotline_miami_check_mission = {
+		icon = GFX_decision_generic_crossed_guns
+		allowed = { 
+			tag = ZZZ
+		}
+		activation = {
+			always = no
+		}
+		available = { 
+			always = no
+		}
+		is_good = no
+		selectable_mission = no
+		days_mission_timeout = 150
+		complete_effect = {			
+		}
+		timeout_effect = {
+		}
+	}
+	eye_of_the_storm_check_decision = {
+		visible = {
+			tag = ZZZ
+			USC = {
+				has_achievements_enabled = yes
+			}
+		}
+		available = {
+			USC = {
+				has_war_with = APA
+				has_war_with = PTF
+			}
+		}
+		ai_will_do = {
+			factor = 999
+		}
+		complete_effect = {
+			set_global_flag = USC_eye_of_the_storm_conditions_fulfilled
+		}
+	}
+}

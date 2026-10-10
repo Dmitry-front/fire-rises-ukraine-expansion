@@ -1,0 +1,1160 @@
+# focus_tree = {
+# 	id = state_tree
+# 	country = {
+# 		factor = 0
+# 		# modifier = {
+# 		# 	add = 20
+# 		# 	OR = {
+# 		# 		original_tag = TEX
+# 		# 		original_tag = FLA
+# 		# 		original_tag = ALA
+# 		# 		original_tag = NEG
+# 		# 		original_tag = CAL
+# 		# 		original_tag = VER
+# 		# 		original_tag = GRA
+# 		# 		original_tag = MSS
+# 		# 		original_tag = STC
+# 		# 		original_tag = LOU
+# 		# 		original_tag = NMX
+# 		# 		original_tag = ARZ
+# 		# 		original_tag = ORE
+# 		# 		original_tag = WAS
+# 		# 		original_tag = MIM
+# 		# 		original_tag = NCY
+# 		# 	}
+# 		# }
+# 	}
+# 	focus = {
+# 		id = state_deal_with_insurgents
+# 		icon = GFX_focus_USB_professionalize_the_army
+# 		x = 1
+# 		y = 0
+# 		cost = 5
+# 		search_filters = {
+# 			FOCUS_FILTER_POLITICAL
+# 		}
+# 		ai_will_do = {
+# 			base = 1
+# 		}
+# 		completion_reward = {
+# 			add_stability = 0.1
+# 			add_war_support = 0.05
+# 			if = {
+# 				limit = {
+# 					tag = TEX
+# 				}
+# 				hidden_effect = {
+# 					LDS = {
+# 						country_event = {
+# 							id = LDS.1
+# 							days = 20
+# 						}
+# 						country_event = {
+# 							id = LDS.2
+# 							days = 10
+# 						}
+# 					}
+# 				}
+# 			}
+# 		}
+# 	}
+# 	focus = {
+# 		id = side_with_trump
+# 		icon = GFX_focus_USC_revive_the_american_spirit
+# 		x = 6
+# 		y = 1
+# 		cost = 5
+# 		available = {
+# 			NOT = {
+# 				tag = NCY
+# 				tag = CAL
+# 			}
+# 		}
+# 		prerequisite = {
+# 			focus = state_deal_with_insurgents
+# 		}
+# 		mutually_exclusive = {
+# 			focus = side_with_biden
+# 		}
+# 		search_filters = {
+# 			FOCUS_FILTER_POLITICAL
+# 		}
+# 		ai_will_do = {
+# 			base = 1
+# 			modifier = {
+# 				has_government = conservative
+# 				add = 5
+# 			}
+# 			modifier = {
+# 				tag = TEX
+# 				add = 10
+# 			}
+# 		}
+# 		completion_reward = {
+# 			add_ideas = siding_with_trump
+# 		}
+# 	}
+# 	focus = {
+# 		id = state_choke_out_insurgents
+# 		icon = GFX_focus_USC_through_the_barrel_of_a_gun
+# 		x = 3
+# 		y = 1
+# 		relative_position_id = side_with_trump
+# 		prerequisite = {
+# 			focus = side_with_trump
+# 		}
+# 		cost = 5
+# 		search_filters = {
+# 			FOCUS_FILTER_POLITICAL
+# 		}
+# 		ai_will_do = {
+# 			factor = 1
+# 		}
+# 		completion_reward = {
+# 			add_stability = 0.2
+# 			add_war_support = 0.1
+# 		}
+# 	}
+# 	focus = {
+# 		id = state_eliminate_traitors
+# 		icon = GFX_focus_USC_ban_the_DNC
+# 		x = 0
+# 		y = 1
+# 		relative_position_id = state_choke_out_insurgents
+# 		prerequisite = {
+# 			focus = state_choke_out_insurgents
+# 		}
+# 		cost = 5
+# 		search_filters = {
+# 			FOCUS_FILTER_POLITICAL
+# 		}
+# 		completion_reward = {
+# 			add_ideas = low_prison
+# 		}
+# 		ai_will_do = {
+# 			base = 1
+# 		}
+# 	}
+# 	focus = {
+# 		id = expand_the_national_guard
+# 		icon = GFX_focus_USC_total_mobilization
+# 		x = 0
+# 		y = 1
+# 		relative_position_id = state_eliminate_traitors
+# 		prerequisite = {
+# 			focus = state_eliminate_traitors
+# 		}
+# 		cost = 5
+# 		search_filters = {
+# 			FOCUS_FILTER_POLITICAL
+# 		}
+# 		completion_reward = {
+# 			add_ideas = medium_conscription
+# 			add_war_support = 0.1
+# 		}
+# 		ai_will_do = {
+# 			base = 1
+# 		}
+# 	}
+# 	focus = {
+# 		id = work_with_militias
+# 		icon = GFX_focus_USC_empower_the_agents_of_change
+# 		x = -3
+# 		y = 1
+# 		relative_position_id = side_with_trump
+# 		prerequisite = {
+# 			focus = side_with_trump
+# 		}
+# 		cost = 5
+# 		search_filters = {
+# 			FOCUS_FILTER_POLITICAL
+# 		}
+# 		completion_reward = {
+# 			add_ideas = work_with_militias
+# 		}
+# 		ai_will_do = {
+# 			base = 1
+# 		}
+# 	}
+# 	focus = {
+# 		id = second_amendment
+# 		icon = GFX_focus_USC_invoke_the_second_amendment
+# 		x = 0
+# 		y = 1
+# 		relative_position_id = work_with_militias
+# 		prerequisite = {
+# 			focus = work_with_militias
+# 		}
+# 		cost = 5
+# 		search_filters = {
+# 			FOCUS_FILTER_POLITICAL
+# 		}
+# 		available = {
+# 		}
+# 		completion_reward = {
+# 			add_ideas = USA_second_amendment_idea
+# 		}
+# 		ai_will_do = {
+# 			base = 1
+# 		}
+# 	}
+# 	focus = {
+# 		id = state_combined_arms
+# 		icon = GFX_focus_USC_next_generation_logistics
+# 		x = 0
+# 		y = 1
+# 		relative_position_id = second_amendment
+# 		prerequisite = {
+# 			focus = second_amendment
+# 		}
+# 		cost = 5
+# 		search_filters = {
+# 			FOCUS_FILTER_POLITICAL
+# 		}
+# 		available = {
+# 		}
+# 		completion_reward = {
+# 			add_ideas = state_combined_arms
+# 			add_war_support = 0.1
+# 		}
+# 		ai_will_do = {
+# 			base = 1
+# 		}
+# 	}
+# 	focus = {
+# 		id = request_military_aid
+# 		icon = GFX_focus_USC_harness_the_military_industrial_complex
+# 		x = 0
+# 		y = 1
+# 		relative_position_id = side_with_trump
+# 		prerequisite = {
+# 			focus = side_with_trump
+# 		}
+# 		cost = 5
+# 		search_filters = {
+# 			FOCUS_FILTER_POLITICAL
+# 		}
+# 		completion_reward = {
+# 			add_stability = 0.05
+# 			add_equipment_to_stockpile = {
+# 				type = infantry_equipment_2
+# 				amount = 1250
+# 				producer = USA
+# 			}
+# 			add_equipment_to_stockpile = {
+# 				type = support_equipment_1
+# 				amount = 600
+# 				producer = USA
+# 			}
+# 		}
+# 	}
+# 	focus = {
+# 		id = state_request_trump_troops
+# 		icon = GFX_focus_USC_redfine_martial_law
+# 		x = 1
+# 		y = 1
+# 		relative_position_id = request_military_aid
+# 		prerequisite = {
+# 			focus = request_military_aid
+# 		}
+# 		cost = 5
+# 		search_filters = {
+# 			FOCUS_FILTER_POLITICAL
+# 		}
+# 		ai_will_do = {
+# 			factor = 20
+# 		}
+# 		available = {
+# 		}
+# 		completion_reward = {
+# 			add_manpower = 25000
+# 			add_war_support = 0.1
+# 		}
+# 	}
+# 	focus = {
+# 		id = state_invite_trump_command_structure
+# 		icon = GFX_focus_USC_favour_the_military
+# 		x = 0
+# 		y = 1
+# 		relative_position_id = state_request_trump_troops
+# 		prerequisite = {
+# 			focus = state_request_trump_troops
+# 		}
+# 		cost = 5
+# 		search_filters = {
+# 			FOCUS_FILTER_POLITICAL
+# 		}
+# 		completion_reward = {
+# 			add_ideas = militia_gov_advisors
+# 		}
+# 		ai_will_do = {
+# 			factor = 20
+# 		}
+# 	}
+# 	focus = {
+# 		id = NRA_support
+# 		icon = GFX_focus_USC_rekindle_nationalism
+# 		x = -1
+# 		y = 1
+# 		relative_position_id = request_military_aid
+# 		prerequisite = {
+# 			focus = request_military_aid
+# 		}
+# 		cost = 5
+# 		search_filters = {
+# 			FOCUS_FILTER_POLITICAL
+# 		}
+# 		completion_reward = {
+# 			add_ideas = PTF_extensive_firearm_knowledge_idea
+# 		}
+# 		ai_will_do = {
+# 			factor = 20
+# 		}
+# 	}
+# 	focus = {
+# 		id = triple_canopy
+# 		icon = GFX_focus_USC_desperate_measures
+# 		x = 0
+# 		y = 1
+# 		relative_position_id = NRA_support
+# 		prerequisite = {
+# 			focus = NRA_support
+# 		}
+# 		cost = 5
+# 		search_filters = {
+# 			FOCUS_FILTER_POLITICAL
+# 		}
+# 		available = {
+# 		}
+# 		completion_reward = {
+# 			add_ideas = triple_canopy_assistance
+# 		}
+# 		ai_will_do = {
+# 			factor = 20
+# 		}
+# 	}
+# 	focus = {
+# 		id = state_join_trump_war
+# 		icon = GFX_focus_USC_the_coming_storm
+# 		x = 6
+# 		y = 5
+# 		prerequisite = {
+# 			focus = triple_canopy
+# 		}
+# 		prerequisite = {
+# 			focus = state_invite_trump_command_structure
+# 		}
+# 		cost = 5
+# 		search_filters = {
+# 			FOCUS_FILTER_POLITICAL
+# 		}
+# 		available = {
+# 			if = {
+# 				limit = {
+# 					original_tag = TEX
+# 				}
+# 				USB = {
+# 					surrender_progress > 0.1
+# 				}
+# 			}
+# 			else = {
+# 				USB = {
+# 					surrender_progress > 0.35
+# 				}
+# 			}
+# 			has_war = no
+# 		}
+# 		completion_reward = {
+# 			USA_add_to_coalition = yes
+# 		}
+# 		ai_will_do = {
+# 			base = 1
+# 		}
+# 	}
+# 	focus = {
+# 		id = side_with_biden
+# 		icon = GFX_focus_USB_discourage_anti_americanism
+# 		x = -4
+# 		y = 1
+# 		prerequisite = {
+# 			focus = state_deal_with_insurgents
+# 		}
+# 		mutually_exclusive = {
+# 			focus = side_with_trump
+# 		}
+# 		cost = 5
+# 		available = {
+# 			NOT = {
+# 				tag = TEX
+# 			}
+# 		}
+# 		ai_will_do = {
+# 			base = 1
+# 			modifier = {
+# 				has_government = social_liberal
+# 				add = 5
+# 			}
+# 			modifier = {
+# 				tag = CAL
+# 				add = 20
+# 			}
+# 			modifier = {
+# 				has_government = social_liberal
+# 				add = 5
+# 			}
+# 			modifier = {
+# 				tag = NCA
+# 				add = 45
+# 			}
+# 		}
+# 		search_filters = {
+# 			FOCUS_FILTER_POLITICAL
+# 		}
+# 		completion_reward = {
+# 			add_ideas = siding_with_biden
+# 		}
+# 		ai_will_do = {
+# 			base = 6
+# 		}
+# 	}
+# 	focus = {
+# 		id = state_mass_surveillance
+# 		icon = GFX_focus_USB_engage_the_nsa
+# 		x = -1
+# 		y = 2
+# 		prerequisite = {
+# 			focus = side_with_biden
+# 		}
+# 		cost = 5
+# 		search_filters = {
+# 			FOCUS_FILTER_POLITICAL
+# 		}
+# 		completion_reward = {
+# 			increase_police = yes
+# 		}
+# 		ai_will_do = {
+# 			base = 1
+# 		}
+# 	}
+# 	focus = {
+# 		id = state_increase_taxes
+# 		icon = GFX_focus_USB_provide_economic_incentives
+# 		x = 0
+# 		y = 1
+# 		relative_position_id = state_mass_surveillance
+# 		prerequisite = {
+# 			focus = state_mass_surveillance
+# 		}
+# 		cost = 5
+# 		search_filters = {
+# 			FOCUS_FILTER_POLITICAL
+# 		}
+# 		completion_reward = {
+# 			increase_taxes = yes
+# 		}
+# 		ai_will_do = {
+# 			base = 1
+# 		}
+# 	}
+# 	focus = {
+# 		id = state_increase_federal_control
+# 		icon = GFX_focus_USB_fighting_for_democracy
+# 		x = 0
+# 		y = 1
+# 		relative_position_id = state_increase_taxes
+# 		prerequisite = {
+# 			focus = state_increase_taxes
+# 		}
+# 		cost = 5
+# 		search_filters = {
+# 			FOCUS_FILTER_POLITICAL
+# 		}
+# 		completion_reward = {
+# 			add_war_support = -0.05
+# 			add_stability = 0.1
+# 			add_ideas = state_unions
+# 		}
+# 		ai_will_do = {
+# 			base = 1
+# 		}
+# 	}
+# 	focus = {
+# 		id = state_un_aid
+# 		icon = GFX_focus_USB_appeal_to_the_un
+# 		x = -7
+# 		y = 2
+# 		prerequisite = {
+# 			focus = side_with_biden
+# 		}
+# 		cost = 5
+# 		search_filters = {
+# 			FOCUS_FILTER_POLITICAL
+# 		}
+# 		completion_reward = {
+# 			add_stability = 0.05
+# 			add_equipment_to_stockpile = {
+# 				type = support_equipment_1
+# 				amount = 1000
+# 				producer = UNN
+# 			}
+# 		}
+# 		ai_will_do = {
+# 			base = 1
+# 		}
+# 	}
+# 	focus = {
+# 		id = state_financial_backers
+# 		icon = GFX_focus_USB_supercharge_the_war_machine
+# 		x = 0
+# 		y = 1
+# 		relative_position_id = state_un_aid
+# 		prerequisite = {
+# 			focus = state_un_aid
+# 		}
+# 		cost = 5
+# 		search_filters = {
+# 			FOCUS_FILTER_POLITICAL
+# 		}
+# 		completion_reward = {
+# 			set_temp_variable = {
+# 				var = income_var_temp
+# 				value = 75
+# 			}
+# 			add_income_with_inflation = yes
+# 		}
+# 		ai_will_do = {
+# 			base = 1
+# 		}
+# 	}
+# 	focus = {
+# 		id = state_methodical_approach
+# 		icon = GFX_focus_USB_mandate_female_service
+# 		x = 0
+# 		y = 1
+# 		relative_position_id = state_financial_backers
+# 		prerequisite = {
+# 			focus = state_financial_backers
+# 		}
+# 		cost = 5
+# 		search_filters = {
+# 			FOCUS_FILTER_POLITICAL
+# 		}
+# 		completion_reward = {
+# 			increase_female = yes
+# 			increase_race = yes
+# 		}
+# 		ai_will_do = {
+# 			base = 1
+# 		}
+# 	}
+# 	focus = {
+# 		id = state_apeal_to_military_complex
+# 		icon = GFX_focus_USB_full_spectrum_operations
+# 		x = -4
+# 		y = 2
+# 		prerequisite = {
+# 			focus = side_with_biden
+# 		}
+# 		cost = 5
+# 		search_filters = {
+# 			FOCUS_FILTER_POLITICAL
+# 		}
+# 		completion_reward = {
+# 			add_ideas = state_MIC
+# 		}
+# 		ai_will_do = {
+# 			base = 1
+# 		}
+# 	}
+# 	focus = {
+# 		id = state_corporate_support
+# 		icon = GFX_focus_USB_meet_with_the_corporations
+# 		x = -5
+# 		y = 3
+# 		prerequisite = {
+# 			focus = state_apeal_to_military_complex
+# 		}
+# 		cost = 5
+# 		search_filters = {
+# 			FOCUS_FILTER_POLITICAL
+# 		}
+# 		completion_reward = {
+# 			add_popularity = {
+# 				ideology = authoritarian_democrat
+# 				popularity = 0.1
+# 			}
+# 			add_ideas = state_corp_support
+# 		}
+# 		ai_will_do = {
+# 			base = 1
+# 		}
+# 	}
+# 	focus = {
+# 		id = state_industrial_buildup
+# 		icon = GFX_focus_USB_bolster_the_mil_industrial_complex
+# 		x = 0
+# 		y = 1
+# 		relative_position_id = state_corporate_support
+# 		prerequisite = {
+# 			focus = state_corporate_support
+# 		}
+# 		cost = 5
+# 		search_filters = {
+# 			FOCUS_FILTER_POLITICAL
+# 		}
+# 		completion_reward = {
+# 			random_owned_controlled_state = {
+# 				limit = {
+# 					free_building_slots = {
+# 						building = arms_factory
+# 						size > 0
+# 						include_locked = yes
+# 					}
+# 					OR = {
+# 						is_in_home_area = yes
+# 						NOT = {
+# 							owner = {
+# 								any_owned_state = {
+# 									free_building_slots = {
+# 										building = arms_factory
+# 										size > 0
+# 										include_locked = yes
+# 									}
+# 									is_in_home_area = yes
+# 								}
+# 							}
+# 						}
+# 					}
+# 				}
+# 				add_extra_state_shared_building_slots = 2
+# 				add_building_construction = {
+# 					type = arms_factory
+# 					level = 2
+# 					instant_build = yes
+# 				}
+# 			}
+# 		}
+# 		ai_will_do = {
+# 			base = 1
+# 		}
+# 	}
+# 	focus = {
+# 		id = state_support_from_education_institutions
+# 		icon = GFX_focus_USB_reunify_the_nation
+# 		x = -3
+# 		y = 3
+# 		prerequisite = {
+# 			focus = state_apeal_to_military_complex
+# 		}
+# 		cost = 5
+# 		search_filters = {
+# 			FOCUS_FILTER_POLITICAL
+# 		}
+# 		available = {
+# 		}
+# 		completion_reward = {
+# 			add_popularity = {
+# 				ideology = social_democrat
+# 				popularity = 0.1
+# 			}
+# 			increase_education = yes
+# 		}
+# 		ai_will_do = {
+# 			base = 1
+# 		}
+# 	}
+# 	focus = {
+# 		id = state_media_propaganda
+# 		icon = GFX_focus_USB_utilize_online_propaganda
+# 		x = -3
+# 		y = 4
+# 		prerequisite = {
+# 			focus = state_support_from_education_institutions
+# 		}
+# 		cost = 5
+# 		search_filters = {
+# 			FOCUS_FILTER_POLITICAL
+# 		}
+# 		completion_reward = {
+# 			add_ideas = state_press
+# 		}
+# 		ai_will_do = {
+# 			base = 1
+# 		}
+# 	}
+# 	focus = {
+# 		id = state_join_biden_war
+# 		icon = GFX_focus_USB_nationalize_the_war_effort
+# 		x = -4
+# 		y = 5
+# 		prerequisite = {
+# 			focus = state_industrial_buildup
+# 		}
+# 		prerequisite = {
+# 			focus = state_media_propaganda
+# 		}
+# 		available = {
+# 			has_war = no
+# 		}
+# 		cost = 5
+# 		search_filters = {
+# 			FOCUS_FILTER_POLITICAL
+# 		}
+# 		completion_reward = {
+# 			USB_add_to_coalition = yes
+# 		}
+# 		ai_will_do = {
+# 			base = 1
+# 		}
+# 	}
+# 	focus = {
+# 		id = state_war_rationing
+# 		icon = GFX_focus_USC_introduce_rationing
+# 		x = 16
+# 		y = 0
+# 		cost = 5
+# 		search_filters = {
+# 			FOCUS_FILTER_POLITICAL
+# 		}
+# 		completion_reward = {
+# 			add_ideas = war_rationing
+# 			add_stability = -0.15
+# 			add_war_support = -0.1
+# 		}
+# 		ai_will_do = {
+# 			base = 1
+# 		}
+# 	}
+# 	focus = {
+# 		id = state_nationalize_industries
+# 		icon = GFX_focus_USC_kickstart_the_automotive_industry
+# 		x = 3
+# 		y = 1
+# 		relative_position_id = state_war_rationing
+# 		prerequisite = {
+# 			focus = state_war_rationing
+# 		}
+# 		cost = 5
+# 		search_filters = {
+# 			FOCUS_FILTER_POLITICAL
+# 		}
+# 		completion_reward = {
+# 			increase_industry = yes
+# 		}
+# 		ai_will_do = {
+# 			base = 1
+# 		}
+# 	}
+# 	focus = {
+# 		id = state_medecine_rationing
+# 		icon = GFX_focus_FRA_Mass_Vaxx
+# 		x = 3
+# 		y = 1
+# 		relative_position_id = state_nationalize_industries
+# 		prerequisite = {
+# 			focus = state_nationalize_industries
+# 		}
+# 		cost = 5
+# 		search_filters = {
+# 			FOCUS_FILTER_POLITICAL
+# 		}
+# 		available = {
+# 		}
+# 		completion_reward = {
+# 			decrease_society = yes
+# 			add_equipment_to_stockpile = {
+# 				type = support_equipment_1
+# 				amount = 3000
+# 				producer = UNN
+# 			}
+# 		}
+# 		ai_will_do = {
+# 			base = 1
+# 		}
+# 	}
+# 	focus = {
+# 		id = state_convert_old_factories
+# 		icon = GFX_focus_USC_employ_our_veterans
+# 		x = -3
+# 		y = 1
+# 		relative_position_id = state_nationalize_industries
+# 		prerequisite = {
+# 			focus = state_nationalize_industries
+# 		}
+# 		cost = 5
+# 		search_filters = {
+# 			FOCUS_FILTER_POLITICAL
+# 		}
+# 		completion_reward = {
+# 			add_ideas = state_convert_factories
+# 		}
+# 		ai_will_do = {
+# 			base = 1
+# 		}
+# 	}
+# 	focus = {
+# 		id = state_import_foreign_goods
+# 		icon = GFX_focus_FRA_Strengthen_Protectionism
+# 		x = 1
+# 		y = 1
+# 		relative_position_id = state_nationalize_industries
+# 		prerequisite = {
+# 			focus = state_nationalize_industries
+# 		}
+# 		cost = 5
+# 		search_filters = {
+# 			FOCUS_FILTER_POLITICAL
+# 		}
+# 		available = {
+# 		}
+# 		completion_reward = {
+# 			increase_trade = yes
+# 		}
+# 		ai_will_do = {
+# 			base = 1
+# 		}
+# 	}
+# 	focus = {
+# 		id = state_agriculture_quotas
+# 		icon = GFX_focus_USC_the_harvest_of_progress
+# 		x = -1
+# 		y = 1
+# 		relative_position_id = state_nationalize_industries
+# 		prerequisite = {
+# 			focus = state_nationalize_industries
+# 		}
+# 		cost = 5
+# 		search_filters = {
+# 			FOCUS_FILTER_POLITICAL
+# 		}
+# 		completion_reward = {
+# 			increase_farming = yes
+# 		}
+# 		ai_will_do = {
+# 			base = 1
+# 		}
+# 	}
+# 	focus = {
+# 		id = state_construst_emergency_hospitals
+# 		icon = GFX_focus_replace_the_ENA
+# 		x = 0
+# 		y = 1
+# 		relative_position_id = state_medecine_rationing
+# 		prerequisite = {
+# 			focus = state_medecine_rationing
+# 		}
+# 		cost = 5
+# 		search_filters = {
+# 			FOCUS_FILTER_POLITICAL
+# 		}
+# 		available = {
+# 		}
+# 		completion_reward = {
+# 			log = "[GetDateText]: [This.GetName]: focus state_construst_emergency_hospitals executed"
+# 		}
+# 		ai_will_do = {
+# 			base = 1
+# 		}
+# 	}
+# 	focus = {
+# 		id = state_request_humanitarian_aid
+# 		icon = GFX_focus_Petition_UN_Peacekeepers
+# 		x = 0
+# 		y = 1
+# 		relative_position_id = state_construst_emergency_hospitals
+# 		prerequisite = {
+# 			focus = state_construst_emergency_hospitals
+# 		}
+# 		cost = 5
+# 		search_filters = {
+# 			FOCUS_FILTER_POLITICAL
+# 		}
+# 		available = {
+# 		}
+# 		completion_reward = {
+# 			log = "[GetDateText]: [This.GetName]: focus state_request_humanitarian_aid executed"
+# 		}
+# 		ai_will_do = {
+# 			base = 1
+# 		}
+# 	}
+# 	focus = {
+# 		id = state_import_factory_equipment
+# 		icon = GFX_focus_Emergency_Factory_Conv
+# 		x = 0
+# 		y = 1
+# 		relative_position_id = state_convert_old_factories
+# 		prerequisite = {
+# 			focus = state_convert_old_factories
+# 		}
+# 		cost = 5
+# 		search_filters = {
+# 			FOCUS_FILTER_POLITICAL
+# 		}
+# 		completion_reward = {
+# 			add_ideas = high_industry
+# 		}
+# 		ai_will_do = {
+# 			base = 1
+# 		}
+# 	}
+# 	focus = {
+# 		id = state_emergency_construction_crews
+# 		icon = GFX_focus_FRA_Reorganize_Civilian_Infrastructure
+# 		x = 0
+# 		y = 1
+# 		relative_position_id = state_import_factory_equipment
+# 		prerequisite = {
+# 			focus = state_import_factory_equipment
+# 		}
+# 		cost = 5
+# 		search_filters = {
+# 			FOCUS_FILTER_POLITICAL
+# 		}
+# 		completion_reward = {
+# 			add_ideas = state_contractors
+# 		}
+# 		ai_will_do = {
+# 			base = 1
+# 		}
+# 	}
+# 	focus = {
+# 		id = state_bolster_infrastructure
+# 		icon = GFX_focus_USC_beautify_the_nation
+# 		x = 1
+# 		y = 1
+# 		relative_position_id = state_agriculture_quotas
+# 		prerequisite = {
+# 			focus = state_agriculture_quotas
+# 		}
+# 		prerequisite = {
+# 			focus = state_import_foreign_goods
+# 		}
+# 		cost = 5
+# 		search_filters = {
+# 			FOCUS_FILTER_POLITICAL
+# 		}
+# 		completion_reward = {
+# 			random_owned_controlled_state = {
+# 				limit = {
+# 					free_building_slots = {
+# 						building = infrastructure
+# 						size > 0
+# 						include_locked = yes
+# 					}
+# 					OR = {
+# 						is_in_home_area = yes
+# 						NOT = {
+# 							owner = {
+# 								any_owned_state = {
+# 									free_building_slots = {
+# 										building = infrastructure
+# 										size > 0
+# 										include_locked = yes
+# 									}
+# 									is_in_home_area = yes
+# 								}
+# 							}
+# 						}
+# 					}
+# 				}
+# 				add_building_construction = {
+# 					type = infrastructure
+# 					level = 3
+# 					instant_build = yes
+# 				}
+# 			}
+# 		}
+# 		ai_will_do = {
+# 			base = 1
+# 		}
+# 	}
+# 	focus = {
+# 		id = state_increase_rnd_funding
+# 		icon = GFX_focus_USC_shark_tank_initiative
+# 		x = 0
+# 		y = 1
+# 		relative_position_id = state_bolster_infrastructure
+# 		prerequisite = {
+# 			focus = state_bolster_infrastructure
+# 		}
+# 		cost = 5
+# 		search_filters = {
+# 			FOCUS_FILTER_POLITICAL
+# 		}
+# 		completion_reward = {
+# 			add_ideas = state_rnd_fundings
+# 		}
+# 		ai_will_do = {
+# 			base = 1
+# 		}
+# 	}
+# 	focus = {
+# 		id = state_hire_contractors
+# 		icon = GFX_focus_SOV_reform_the_officer_corps
+# 		x = -3
+# 		y = 1
+# 		relative_position_id = state_war_rationing
+# 		prerequisite = {
+# 			focus = state_war_rationing
+# 		}
+# 		cost = 5
+# 		search_filters = {
+# 			FOCUS_FILTER_POLITICAL
+# 		}
+# 		completion_reward = {
+# 			add_ideas = high_training
+# 		}
+# 		ai_will_do = {
+# 			base = 1
+# 		}
+# 	}
+# 	focus = {
+# 		id = state_increase_wartime_production
+# 		icon = GFX_focus_declare_wartime_measures
+# 		x = 1
+# 		y = 1
+# 		relative_position_id = state_hire_contractors
+# 		prerequisite = {
+# 			focus = state_hire_contractors
+# 		}
+# 		mutually_exclusive = {
+# 			focus = state_export_based_economy
+# 		}
+# 		cost = 5
+# 		search_filters = {
+# 			FOCUS_FILTER_POLITICAL
+# 		}
+# 		available = {
+# 		}
+# 		completion_reward = {
+# 			add_ideas = total_mobilization
+# 		}
+# 		ai_will_do = {
+# 			base = 1
+# 		}
+# 	}
+# 	focus = {
+# 		id = state_end_unemployement
+# 		icon = GFX_focus_USC_build_anti_poverty_encampments
+# 		x = 0
+# 		y = 1
+# 		relative_position_id = state_increase_wartime_production
+# 		prerequisite = {
+# 			focus = state_increase_wartime_production
+# 		}
+# 		cost = 5
+# 		search_filters = {
+# 			FOCUS_FILTER_POLITICAL
+# 		}
+# 		completion_reward = {
+# 			add_ideas = medium_poverty
+# 		}
+# 		ai_will_do = {
+# 			base = 1
+# 		}
+# 	}
+# 	focus = {
+# 		id = state_bring_jobs_back
+# 		icon = GFX_focus_USC_bring_our_jobs_home
+# 		x = 0
+# 		y = 1
+# 		relative_position_id = state_end_unemployement
+# 		prerequisite = {
+# 			focus = state_end_unemployement
+# 		}
+# 		cost = 5
+# 		search_filters = {
+# 			FOCUS_FILTER_POLITICAL
+# 		}
+# 		available = {
+# 		}
+# 		completion_reward = {
+# 			add_ideas = high_poverty
+# 		}
+# 		ai_will_do = {
+# 			base = 1
+# 		}
+# 	}
+# 	focus = {
+# 		id = state_black_market_equipment
+# 		icon = GFX_focus_FRA_improve_on_the_SAMPT
+# 		x = -1
+# 		y = 1
+# 		relative_position_id = state_hire_contractors
+# 		prerequisite = {
+# 			focus = state_hire_contractors
+# 		}
+# 		mutually_exclusive = {
+# 			focus = state_increase_wartime_production
+# 		}
+# 		cost = 5
+# 		search_filters = {
+# 			FOCUS_FILTER_POLITICAL
+# 		}
+# 		completion_reward = {
+# 			add_equipment_to_stockpile = {
+# 				type = motorized_equipment_1
+# 				amount = 500
+# 				producer = ISS
+# 			}
+# 			add_equipment_to_stockpile = {
+# 				type = light_mechanized_equipment_1
+# 				amount = 250
+# 				producer = TAL
+# 			}
+# 		}
+# 		ai_will_do = {
+# 			base = 1
+# 		}
+# 	}
+# 	focus = {
+# 		id = state_import_black_market_arms
+# 		icon = GFX_focus_PTF_small_arms_requisition_program
+# 		x = 0
+# 		y = 1
+# 		relative_position_id = state_black_market_equipment
+# 		prerequisite = {
+# 			focus = state_black_market_equipment
+# 		}
+# 		cost = 5
+# 		search_filters = {
+# 			FOCUS_FILTER_POLITICAL
+# 		}
+# 		completion_reward = {
+# 			add_equipment_to_stockpile = {
+# 				type = infantry_equipment_1
+# 				amount = 800
+# 				producer = US3
+# 			}
+# 			add_equipment_to_stockpile = {
+# 				type = infantry_equipment_2
+# 				amount = 400
+# 				producer = USA
+# 			}
+# 		}
+# 		ai_will_do = {
+# 			base = 1
+# 		}
+# 	}
+# 	focus = {
+# 		id = state_hire_private_mercenaries
+# 		icon = GFX_focus_SOV_wagnerite_armed_forces
+# 		x = 0
+# 		y = 1
+# 		relative_position_id = state_import_black_market_arms
+# 		prerequisite = {
+# 			focus = state_import_black_market_arms
+# 		}
+# 		cost = 5
+# 		search_filters = {
+# 			FOCUS_FILTER_POLITICAL
+# 		}
+# 		completion_reward = {
+# 			add_manpower = 15000
+# 		}
+# 		ai_will_do = {
+# 			base = 1
+# 		}
+# 	}
+# }

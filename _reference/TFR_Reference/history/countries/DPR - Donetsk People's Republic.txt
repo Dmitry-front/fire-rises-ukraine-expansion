@@ -1,0 +1,143 @@
+﻿capital = 227
+oob = "DPR_2020"
+set_research_slots = 2
+set_convoys = 10
+set_stability = 0.5
+set_country_flag = shithole_country
+set_variable = {
+	Russian_Influence = 0.9
+}
+
+set_variable = {
+	Chinese_Influence = 0
+}
+
+set_variable = {
+	American_Influence = 0
+}
+
+set_variable = {
+	European_Influence = 0
+}
+
+set_variable = {
+	PDO_Influence = 0
+}
+
+set_variable = {
+	Sovereign_Influence = 0.1
+}
+
+set_technology = {
+	## Infantry ##
+	infantry_weapons1 = 1
+	infantry_weapons2 = 1
+	motorised_infantry = 1
+	infantry_rifle_upgrade = 1
+	support_weapons = 1
+	night_vision = 1
+	body_armor = 1
+	camouflage = 1
+	## Support Companies ##
+	tech_support = 1
+	tech_engineers = 1
+	tech_recon = 1
+	tech_military_police = 1
+	tech_field_hospital = 1
+	## Armor ##
+	main_battle_tank1 = 1
+	main_battle_tank2 = 1
+	main_battle_tank3 = 1
+	light_tank1 = 1
+	mechanised_infantry1 = 1
+	light_mechanized_infantry1 = 1
+	## Artillery ##
+	gw_artillery = 1
+	interwar_antitank = 1
+	interwar_antiair = 1
+	tank_destroyer1 = 1
+	self_propelled_aa1 = 1
+	interwar_artillery = 1
+	sp_artillery1 = 1
+	## Engineering ##
+	#eng_low
+	## Industry ##
+	#ind_low
+	## Doctrines ##
+}
+
+if = {
+	limit = {
+		has_dlc = "By Blood Alone"
+	}
+	set_technology = {
+		aa_lmg = 1
+		aa_cannon_1 = 1
+		aa_hmg = 1
+		engines_1 = 1
+		engines_2 = 1
+		early_bombs = 1
+		guided_bombs = 1
+		aircraft_construction = 1
+		survivability_studies = 1
+		iw_small_airframe = 1
+		basic_small_airframe = 1
+		iw_medium_airframe = 1
+		basic_medium_airframe = 1
+		iw_large_airframe = 1
+	}
+	else = {
+		set_technology = {
+			CAS1 = 1
+			CAS2 = 1
+			fighter1 = 1
+			fighter2 = 1
+			scout_plane1 = 1
+			transport_plane2 = 1
+		}
+	}
+}
+
+recruit_character = DPR_denis_pushilin
+recruit_character = DPR_boris_litvinov
+give_military_access = NOV
+give_guarantee = NOV
+add_ideas = {
+	DPR_gdp_fix
+	DPR_zakharchenko_legacy_idea
+	DPR_donetsk_economy_idea
+	NOV_peoples_militia_idea
+	NOV_ukrainian_shelling_idea
+	NOV_political_blur_idea
+	#Laws
+	lower_trade
+	war_mobilization
+	high_conscription
+	lower_poverty
+}
+
+add_opinion_modifier = {
+	target = UKR
+	modifier = donbas_conflict
+}
+
+add_opinion_modifier = {
+	target = SOV
+	modifier = our_motherland
+}
+
+set_politics = {
+	ruling_party = authoritarian_democrat
+	last_election = "2018.9.15"
+	election_frequency = 60
+	elections_allowed = yes
+}
+
+set_popularities = {
+	fascist = 7
+	communist = 10
+	libertarian_socialist = 5
+	social_liberal = 3
+	nationalist = 21
+	authoritarian_democrat = 54
+}

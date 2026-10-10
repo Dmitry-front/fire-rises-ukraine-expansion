@@ -1,0 +1,79 @@
+ideas = {
+	country = {
+		VIN_determined_defenders = {
+			picture = VIN_determined_defenders
+		    traits = {
+		        ZZZ_blank_idea_trait
+		    }
+
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				always = yes
+			}
+
+			removal_cost = -1
+				
+			modifier = {
+				army_morale_factor = 0.1
+					max_dig_in_factor = 0.10
+					army_core_defence_factor = 0.25
+					army_org = 5
+			}
+		}
+		VIN_communist_party_vietnam = {
+			picture = VIN_CPV
+		    traits = {
+		        ZZZ_blank_idea_trait
+		    }
+
+			allowed = {
+				always = no
+			}
+			allowed_civil_war = {
+				always = yes
+			}
+
+			cancel = {
+				NOT = {
+					OR = {
+						has_government = libertarian_socialist
+						has_government = communist
+						has_government = totalitarian_socialist
+					}
+				}
+			}
+
+			removal_cost = -1
+			modifier = {
+				stability_factor = 0.15
+				political_power_gain = 0.15
+				drift_defence_factor = 0.25
+			}
+		}
+		VIN_corruption_trials = {
+			picture = VIN_corruption_trials
+		    traits = {
+		        ZZZ_blank_idea_trait
+		    }
+
+			allowed = {
+				always = no
+			}
+			allowed_civil_war = {
+				always = yes 
+			}
+			removal_cost = -1
+			modifier = {
+				stability_factor = -0.05
+				political_power_gain = -0.05
+				society_development_monthly = 0.05
+				drift_defence_factor = -0.10
+				business_value_factor = 0.05
+				income_growth_factor = 0.05
+			}
+		}
+	}
+}

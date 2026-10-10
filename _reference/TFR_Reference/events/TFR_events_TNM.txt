@@ -1,0 +1,89 @@
+﻿add_namespace = tnm
+add_namespace = tnm_news
+add_namespace = tnm_hidden
+add_namespace = tnm_unit_leader
+country_event = {
+	#Republicans split!
+	id = tnm.1
+	title = tnm.1.t
+	desc = tnm.1.d
+	picture = GFX_TNM_Republicans_Split
+	is_triggered_only = yes
+	fire_only_once = yes
+	option = {
+		name = tnm.1.a
+		ai_chance = {
+			base = 1
+		}
+		add_stability = -0.2
+		add_war_support = -0.1
+		add_manpower = -2500
+		add_timed_idea = {
+			idea = TNM_republican_abandonment_idea
+			days = 90
+		}
+		set_temp_variable = {
+			var = legit_var_temp
+			value = -0.05
+		}
+		add_legit = yes
+	}
+}
+
+country_event = {
+	id = tnm.2
+	title = tnm.2.t
+	desc = tnm.2.d
+	picture = GFX_blue_bonnie_flag
+	is_triggered_only = yes
+	trigger = {
+		USA_is_nationalist_tag = yes
+	}
+	option = {
+		name = cac.44.a
+		ai_chance = {
+			base = 1
+		}
+		set_country_flag = TNM_autonomy_flag
+	}
+	option = {
+		name = cac.44.b
+		ai_chance = {
+			base = 0
+		}
+		custom_effect_tooltip = TNM_will_lead_war_tt
+		hidden_effect = {
+			TNM = {
+				country_event = {
+					id = tnm.3
+					days = 1
+				}
+			}
+		}
+	}
+}
+
+country_event = {
+	id = tnm.3
+	title = los.44.t
+	desc = los.44.d
+	picture = GFX_blue_bonnie_flag
+	is_triggered_only = yes
+	trigger = {
+		tag = TNM
+	}
+	immediate = {
+		hidden_effect = {
+			NSM_leave_national_front = yes
+		}
+	}
+	option = {
+		name = los.44.a
+		ai_chance = {
+			base = 1
+		}
+		effect_tooltip = {
+			NSM_leave_national_front = yes
+		}
+	}
+}

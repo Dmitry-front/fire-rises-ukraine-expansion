@@ -1,0 +1,2424 @@
+######################################################
+# United States of America Focus Tree
+# By PrivateHazard
+######################################################
+
+### search_filters = {FOCUS_FILTER_POLITICAL}
+### search_filters = {FOCUS_FILTER_RESEARCH}
+### search_filters = {FOCUS_FILTER_INDUSTRY}
+### search_filters = {FOCUS_FILTER_STABILITY}
+### search_filters = {FOCUS_FILTER_WAR_SUPPORT}
+### search_filters = {FOCUS_FILTER_MANPOWER}
+### search_filters = {FOCUS_FILTER_ANNEXATION}
+focus_tree = {
+    id = USA_focus
+    country = {
+        factor = 0
+        modifier = {
+            add = 20
+            original_tag = USA
+        }
+    }
+    #Pre-Election
+    focus = {
+        id = USA_state_of_the_union
+        icon = GFX_focus_USA_trump_speech
+        search_filters = {
+            FOCUS_FILTER_POLITICAL
+        }
+        x = 0
+        y = 0
+        cost = 5
+        allow_branch = {
+        }
+        available_if_capitulated = yes
+        cancelable = no
+        ai_will_do = {
+            base = 1
+        }
+        available = {
+            has_country_leader = {
+                character = USA_donald_trump_char
+                ruling_only = yes
+            }
+        }
+        completion_reward = {
+            log = "[GetDateText]: [Root.GetName]: focus USA_state_of_the_union completion_reward"
+            #set_temp_variable = {
+            #	var = USA_senate_seats_dem_var_temp
+            #	value = -2
+            #}
+            #USA_add_senate_seats_dem = yes
+            #set_temp_variable = {
+            #	var = USA_senate_seats_gop_var_temp
+            #	value = 2
+            #}
+            #USA_add_senate_seats_gop = yes
+            country_event = {
+                id = usa.126
+            }
+            hidden_effect = {
+                scoped_play_song = "21st"
+            }
+        }
+    }
+    focus = {
+        id = USA_side_with_trump
+        icon = GFX_focus_USA_side_with_trump
+        search_filters = {
+            FOCUS_FILTER_POLITICAL
+        }
+        relative_position_id = USA_state_of_the_union
+        x = 4
+        y = 1
+        allow_branch = {
+            USA_sided_with_trump_trigger = yes
+        }
+        offset = {
+            x = -4
+            y = 0
+            trigger = {
+                has_country_flag = USA_sided_with_trump_flag
+            }
+        }
+        cost = 5
+        prerequisite = {
+            focus = USA_state_of_the_union
+        }
+        mutually_exclusive = {
+            focus = USA_side_against_trump
+        }
+        ai_will_do = {
+            base = 1
+        }
+        available = {
+            is_completed_by_event = yes
+        }
+        completion_reward = {
+            log = "[GetDateText]: [Root.GetName]: focus USA_side_with_trump completion_reward"
+            custom_effect_tooltip = USA_side_with_trump_tooltip
+            hidden_effect = {
+                set_country_flag = USA_sided_with_trump_flag
+                focus_unlock = yes
+                set_power_balance_gfx = {
+                    id = USA_trust_bop
+                    side = USA_bad_side
+                    gfx = "GFX_bop_USA_trump_bad_side"
+                }
+                set_power_balance_gfx = {
+                    id = USA_trust_bop
+                    side = USA_good_side
+                    gfx = "GFX_bop_USA_trump_good_side"
+                }
+            }
+            set_power_balance = {
+                id = USA_trust_bop
+                left_side = USA_bad_side
+                right_side = USA_good_side
+                set_value = 0.15
+            }
+            unlock_decision_category_tooltip = USA_2020_election_category
+        }
+    }
+    focus = {
+        id = USA_plan_for_the_worst
+        icon = GFX_focus_USA_plan_for_worst
+        relative_position_id = USA_side_with_trump
+        search_filters = {
+            FOCUS_FILTER_POLITICAL
+        }
+        x = -2
+        y = 1
+        cost = 5
+        prerequisite = {
+            focus = USA_side_with_trump
+        }
+        available_if_capitulated = yes
+        ai_will_do = {
+            base = 1
+        }
+        completion_reward = {
+            log = "[GetDateText]: [Root.GetName]: focus USA_plan_for_the_worst completion_reward"
+            add_political_power = 50
+            unlock_decision_tooltip = USA_mass_mask_production
+            unlock_decision_tooltip = {
+                decision = USA_implement_guidelines
+                show_effect_tooltip = yes
+            }
+            unlock_decision_tooltip = {
+                decision = USA_ban_international_travel_decision
+                show_effect_tooltip = yes
+            }
+            unlock_decision_tooltip = {
+                decision = USA_purchase_masks
+                show_effect_tooltip = yes
+            }
+        }
+    }
+    focus = {
+        id = USA_warp_speed
+        icon = GFX_focus_USA_warp_speed
+        relative_position_id = USA_plan_for_the_worst
+        search_filters = {
+            FOCUS_FILTER_POLITICAL
+            FOCUS_FILTER_INDUSTRY
+        }
+        x = 1
+        y = 1
+        cost = 5
+        prerequisite = {
+            focus = USA_plan_for_the_worst
+        }
+        mutually_exclusive = {
+            focus = USA_implement_emergency_measures
+        }
+        available_if_capitulated = yes
+        ai_will_do = {
+            base = 1
+        }
+        available = {
+            has_country_flag = USA_coronavirus_strikes
+        }
+        bypass = {
+            has_country_flag = USA_coronavirus_eliminated
+        }
+        completion_reward = {
+            log = "[GetDateText]: [Root.GetName]: focus USA_warp_speed completion_reward"
+            add_political_power = 50
+            set_temp_variable = {
+                var = mask_supply_var
+                value = 5000
+            }
+            add_mask_supply = yes
+            set_temp_variable = {
+                var = USA_coronavirus_outbreak_in_state_mission_var_temp
+                value = 3
+            }
+            USA_add_covid_growth_time = yes
+            custom_effect_tooltip = USA_warp_speed_tooltip
+            hidden_effect = {
+                set_country_flag = {
+                    flag = USA_researching_vaccine_flag
+                    days = 70
+                    value = 1
+                }
+            }
+        }
+    }
+    focus = {
+        id = USA_implement_emergency_measures
+        icon = GFX_focus_USA_emergency_measures
+        relative_position_id = USA_plan_for_the_worst
+        search_filters = {
+            FOCUS_FILTER_POLITICAL
+            FOCUS_FILTER_INDUSTRY
+        }
+        x = -1
+        y = 1
+        cost = 5
+        prerequisite = {
+            focus = USA_plan_for_the_worst
+        }
+        mutually_exclusive = {
+            focus = USA_warp_speed
+        }
+        available_if_capitulated = yes
+        ai_will_do = {
+            base = 1
+        }
+        available = {
+            has_country_flag = USA_coronavirus_strikes
+        }
+        bypass = {
+            has_country_flag = USA_coronavirus_eliminated
+        }
+        completion_reward = {
+            log = "[GetDateText]: [Root.GetName]: focus USA_implement_emergency_measures completion_reward"
+            add_political_power = 50
+            add_stability = -0.025
+            set_temp_variable = {
+                var = mask_supply_var
+                value = 10000
+            }
+            add_mask_supply = yes
+            custom_effect_tooltip = USA_implement_emergency_measures_tooltip
+            hidden_effect = {
+                set_country_flag = {
+                    flag = USA_researching_vaccine_flag
+                    days = 140
+                    value = 1
+                }
+            }
+            unlock_decision_tooltip = {
+                decision = USA_minor_lockdown
+                show_effect_tooltip = yes
+            }
+            unlock_decision_tooltip = {
+                decision = USA_mass_lockdowns
+                show_effect_tooltip = yes
+            }
+        }
+    }
+    focus = {
+        id = USA_prepare_the_vaccine
+        icon = GFX_focus_generic_prepare_the_vaccine
+        relative_position_id = USA_plan_for_the_worst
+        search_filters = {
+            FOCUS_FILTER_POLITICAL
+        }
+        x = 0
+        y = 2
+        cost = 5
+        prerequisite = {
+            focus = USA_implement_emergency_measures
+            focus = USA_warp_speed
+        }
+        available_if_capitulated = yes
+        ai_will_do = {
+            base = 1
+        }
+        available = {
+            NOT = {
+                has_country_flag = USA_researching_vaccine_flag
+            }
+        }
+        bypass = {
+            has_country_flag = USA_coronavirus_eliminated
+        }
+        completion_reward = {
+            log = "[GetDateText]: [Root.GetName]: focus USA_prepare_the_vaccine completion_reward"
+            set_temp_variable = {
+                var = mask_supply_var
+                value = 5000
+            }
+            add_mask_supply = yes
+            custom_effect_tooltip = USA_prepare_the_vaccine_tooltip
+            unlock_decision_tooltip = USA_stop_the_spread_decision
+        }
+    }
+    focus = {
+        id = USA_american_only_oil
+        icon = GFX_focus_USA_oil_crisis
+        relative_position_id = USA_prepare_the_vaccine
+        search_filters = {
+            FOCUS_FILTER_POLITICAL
+        }
+        x = 1
+        y = 1
+        cost = 5
+        prerequisite = {
+            focus = USA_prepare_the_vaccine
+        }
+        prerequisite = {
+            focus = USA_reinvigorate_the_economy
+        }
+        ai_will_do = {
+            base = 1
+        }
+        available = {
+            has_idea = USA_oil_crisis_idea
+        }
+        bypass = {
+            hidden_trigger = {
+                has_idea = USA_oil_crisis_idea1
+            }
+        }
+        completion_reward = {
+            log = "[GetDateText]: [Root.GetName]: focus USA_american_only_oil completion_reward"
+            add_power_balance_value = {
+                id = USA_trust_bop
+                value = 0.05
+            }
+            swap_ideas = {
+                remove_idea = USA_oil_crisis_idea
+                add_idea = USA_oil_crisis_idea1
+            }
+        }
+    }
+    focus = {
+        id = USA_back_the_blue
+        icon = GFX_focus_USA_back_the_blue
+        relative_position_id = USA_side_with_trump
+        search_filters = {
+            FOCUS_FILTER_POLITICAL
+            FOCUS_FILTER_STABILITY
+        }
+        x = 2
+        y = 1
+        cost = 5
+        prerequisite = {
+            focus = USA_side_with_trump
+        }
+        available_if_capitulated = yes
+        ai_will_do = {
+            base = 1
+        }
+        available = {
+            USA_mass_riots = yes
+        }
+        completion_reward = {
+            log = "[GetDateText]: [Root.GetName]: focus USA_back_the_blue completion_reward"
+            unlock_decision_tooltip = USA_back_the_blue_decision
+            USA_riots_decrease = yes
+        }
+    }
+    focus = {
+        id = USA_crush_the_rioters
+        icon = GFX_focus_USA_crush_the_protesters
+        relative_position_id = USA_back_the_blue
+        search_filters = {
+            FOCUS_FILTER_POLITICAL
+            FOCUS_FILTER_STABILITY
+        }
+        x = -1
+        y = 1
+        cost = 5
+        prerequisite = {
+            focus = USA_back_the_blue
+        }
+        mutually_exclusive = {
+            focus = USA_compromise_with_the_protesters
+        }
+        available_if_capitulated = yes
+        ai_will_do = {
+            base = 1
+        }
+        available = {
+            USA_mass_riots = yes
+        }
+        completion_reward = {
+            log = "[GetDateText]: [Root.GetName]: focus USA_crush_the_rioters completion_reward"
+            custom_effect_tooltip = USA_crush_the_rioters_tooltip
+            unlock_decision_tooltip = USA_encourage_militias
+            USA_riots_decrease = yes
+        }
+    }
+    focus = {
+        id = USA_compromise_with_the_protesters
+        icon = GFX_focus_USA_compromise_with_the_protesters
+        relative_position_id = USA_back_the_blue
+        search_filters = {
+            FOCUS_FILTER_POLITICAL
+            FOCUS_FILTER_STABILITY
+        }
+        x = 1
+        y = 1
+        cost = 5
+        prerequisite = {
+            focus = USA_back_the_blue
+        }
+        mutually_exclusive = {
+            focus = USA_crush_the_rioters
+        }
+        available_if_capitulated = yes
+        ai_will_do = {
+            base = 1
+        }
+        available = {
+            USA_mass_riots = yes
+        }
+        completion_reward = {
+            log = "[GetDateText]: [Root.GetName]: focus USA_compromise_with_the_protesters completion_reward"
+            custom_effect_tooltip = USA_compromise_with_the_protesters_tooltip
+            set_temp_variable = {
+                var = USA_movement_organization_time_var_temp
+                value = 4
+            }
+            USA_add_movement_protest_state_mission_days = yes
+            USA_riots_decrease = yes
+        }
+    }
+    focus = {
+        id = USA_end_the_chaos
+        icon = GFX_focus_USA_end_the_chaos
+        relative_position_id = USA_back_the_blue
+        search_filters = {
+            FOCUS_FILTER_POLITICAL
+            FOCUS_FILTER_STABILITY
+        }
+        x = 0
+        y = 2
+        cost = 5
+        prerequisite = {
+            focus = USA_compromise_with_the_protesters
+            focus = USA_crush_the_rioters
+        }
+        available_if_capitulated = yes
+        ai_will_do = {
+            base = 1
+        }
+        available = {
+            USA_mass_riots = yes
+        }
+        completion_reward = {
+            log = "[GetDateText]: [Root.GetName]: focus USA_end_the_chaos completion_reward"
+            unlock_decision_tooltip = USA_end_the_chaos_decision
+            unlock_decision_tooltip = USA_fortify_the_election_decision
+            USA_riots_decrease = yes
+        }
+    }
+    focus = {
+        id = USA_lasting_peace
+        icon = GFX_focus_USA_lasting_peace
+        relative_position_id = USA_reinvigorate_the_economy
+        search_filters = {
+            FOCUS_FILTER_POLITICAL
+            FOCUS_FILTER_STABILITY
+        }
+        x = 1
+        y = 1
+        cost = 5
+        prerequisite = {
+            focus = USA_end_the_chaos
+        }
+        prerequisite = {
+            focus = USA_reinvigorate_the_economy
+        }
+        available_if_capitulated = yes
+        ai_will_do = {
+            base = 1
+        }
+        available = {
+        }
+        completion_reward = {
+            log = "[GetDateText]: [Root.GetName]: focus USA_lasting_peace completion_reward"
+            add_power_balance_value = {
+                id = USA_trust_bop
+                value = 0.05
+            }
+            add_stability = 0.05
+        }
+    }
+    focus = {
+        id = USA_stimulate_the_economy
+        icon = GFX_focus_USA_stimulate_the_economy
+        relative_position_id = USA_side_with_trump
+        search_filters = {
+            FOCUS_FILTER_INDUSTRY
+        }
+        x = 0
+        y = 1
+        cost = 5
+        prerequisite = {
+            focus = USA_side_with_trump
+        }
+        available_if_capitulated = yes
+        ai_will_do = {
+            base = 1
+        }
+        available = {
+            OR = {
+                has_country_flag = USA_coronavirus_strikes
+                has_country_flag = USA_coronavirus_eliminated
+            }
+        }
+        completion_reward = {
+            log = "[GetDateText]: [Root.GetName]: focus USA_stimulate_the_economy completion_reward"
+            add_political_power = 125
+            add_stability = -0.05
+            set_temp_variable = {
+                var = debt_var_temp
+                value = 2500
+            }
+            add_debt_with_inflation = yes
+        }
+    }
+    focus = {
+        id = USA_reinvigorate_the_economy
+        icon = GFX_focus_USA_reinvigorate_the_economy
+        relative_position_id = USA_stimulate_the_economy
+        search_filters = {
+            FOCUS_FILTER_POLITICAL
+            FOCUS_FILTER_INDUSTRY
+        }
+        x = 0
+        y = 2
+        cost = 5
+        prerequisite = {
+            focus = USA_stimulate_the_economy
+        }
+        available_if_capitulated = yes
+        ai_will_do = {
+            base = 1
+        }
+        available = {
+            has_idea = USA_locked_down_economy_idea
+        }
+        completion_reward = {
+            log = "[GetDateText]: [Root.GetName]: focus USA_reinvigorate_the_economy completion_reward"
+            add_power_balance_value = {
+                id = USA_trust_bop
+                value = 0.05
+            }
+            USA_reduce_locked_down_economy = yes
+        }
+    }
+    #Anti-Trump Pre-Civil War Tree
+    focus = {
+        id = USA_side_against_trump
+        icon = GFX_focus_USA_side_against_trump
+        search_filters = {
+            FOCUS_FILTER_POLITICAL
+        }
+        relative_position_id = USA_state_of_the_union
+        x = -4
+        y = 1
+        allow_branch = {
+            USA_sided_with_resistance_trigger = yes
+        }
+        offset = {
+            x = 4
+            y = 0
+            trigger = {
+                has_country_flag = USA_sided_with_resistance_flag
+            }
+        }
+        cost = 5
+        prerequisite = {
+            focus = USA_state_of_the_union
+        }
+        mutually_exclusive = {
+            focus = USA_side_with_trump
+        }
+        ai_will_do = {
+            base = 1
+        }
+        available = {
+            is_completed_by_event = yes
+        }
+        completion_reward = {
+            log = "[GetDateText]: [Root.GetName]: focus USA_side_against_trump completion_reward"
+            custom_effect_tooltip = USA_side_with_resistance_tooltip
+            hidden_effect = {
+                set_country_flag = USA_sided_with_resistance_flag
+                set_country_leader_portrait = {
+                    ideology = conservative
+                    portrait = GFX_portrait_USA_donald_trump1
+                }
+                set_variable = {
+                    var = political_power_ideology_var
+                    value = token:social_liberal
+                }
+                map_party_popularity_PP_gain_to_ideology = yes
+                focus_unlock = yes
+            }
+            set_power_balance = {
+                id = USA_trust_bop
+                left_side = USA_bad_side
+                right_side = USA_good_side
+                set_value = -0.15
+            }
+            unlock_decision_category_tooltip = USA_2020_election_category
+            swap_ruler_traits = {
+                remove = hos_divisive_populist
+                add = hos_divisive_populist1
+            }
+        }
+    }
+    focus = {
+        id = USA_no_justice_no_peace
+        icon = GFX_focus_USA_no_justice_no_peace
+        relative_position_id = USA_side_against_trump
+        search_filters = {
+            FOCUS_FILTER_POLITICAL
+        }
+        x = -2
+        y = 1
+        cost = 5
+        available_if_capitulated = yes
+        prerequisite = {
+            focus = USA_side_against_trump
+        }
+        ai_will_do = {
+            base = 1
+        }
+        available = {
+            USA_mass_riots = yes
+        }
+        completion_reward = {
+            log = "[GetDateText]: [Root.GetName]: focus USA_no_justice_no_peace completion_reward"
+            add_political_power = 50
+            add_power_balance_value = {
+                id = USA_trust_bop
+                value = 0.05
+            }
+            USA_riots_decrease = yes
+        }
+    }
+    focus = {
+        id = USA_abandon_the_anarchists
+        icon = GFX_focus_USA_abandon_the_anarchists
+        relative_position_id = USA_no_justice_no_peace
+        search_filters = {
+            FOCUS_FILTER_POLITICAL
+        }
+        x = -1
+        y = 1
+        cost = 5
+        available_if_capitulated = yes
+        prerequisite = {
+            focus = USA_no_justice_no_peace
+        }
+        mutually_exclusive = {
+            focus = USA_mingle_with_the_movement
+        }
+        ai_will_do = {
+            base = 1
+        }
+        available = {
+            USA_mass_riots = yes
+        }
+        completion_reward = {
+            log = "[GetDateText]: [Root.GetName]: focus USA_abandon_the_anarchists completion_reward"
+            custom_effect_tooltip = USA_abandon_the_anarchists_tooltip
+            set_temp_variable = {
+                var = USA_movement_organization_time_var_temp
+                value = 2
+            }
+            USA_add_movement_protest_state_mission_days = yes
+            unlock_decision_tooltip = USA_send_in_the_police
+            if = {
+                limit = {
+                    has_country_flag = USA_the_movement_flag
+                }
+                add_power_balance_value = {
+                    id = USA_trust_bop
+                    value = -0.1
+                }
+            }
+            else = {
+                add_power_balance_value = {
+                    id = USA_trust_bop
+                    value = -0.05
+                }
+            }
+            custom_effect_tooltip = USA_compromise_with_the_protesters_tooltip
+            effect_tooltip = {
+                remove_decision = USA_fund_the_movement_decision
+            }
+            USA_riots_decrease = yes
+        }
+    }
+    focus = {
+        id = USA_mingle_with_the_movement
+        icon = GFX_focus_USA_mingle_with_the_movement
+        relative_position_id = USA_no_justice_no_peace
+        search_filters = {
+            FOCUS_FILTER_POLITICAL
+        }
+        x = 1
+        y = 1
+        cost = 5
+        available_if_capitulated = yes
+        prerequisite = {
+            focus = USA_no_justice_no_peace
+        }
+        mutually_exclusive = {
+            focus = USA_abandon_the_anarchists
+        }
+        ai_will_do = {
+            base = 1
+        }
+        available = {
+            USA_mass_riots = yes
+        }
+        completion_reward = {
+            log = "[GetDateText]: [Root.GetName]: focus USA_mingle_with_the_movement completion_reward"
+            custom_effect_tooltip = USA_mingle_with_the_movement_tooltip
+            set_temp_variable = {
+                var = USA_movement_organization_time_var_temp
+                value = 4
+            }
+            USA_reduce_movement_protest_state_mission_days = yes
+            effect_tooltip = {
+                remove_decision = USA_fund_the_movement_decision
+            }
+            swap_ideas = {
+                remove_idea = USA_mass_riots_idea1
+                add_idea = USA_mingle_with_the_movement_idea
+            }
+        }
+    }
+    focus = {
+        id = USA_flames_of_the_future
+        icon = GFX_focus_USA_flames_of_the_future
+        relative_position_id = USA_no_justice_no_peace
+        search_filters = {
+            FOCUS_FILTER_POLITICAL
+        }
+        x = 0
+        y = 2
+        cost = 5
+        available_if_capitulated = yes
+        prerequisite = {
+            focus = USA_abandon_the_anarchists
+            focus = USA_mingle_with_the_movement
+        }
+        ai_will_do = {
+            base = 1
+        }
+        available = {
+            USA_mass_riots = yes
+        }
+        completion_reward = {
+            log = "[GetDateText]: [Root.GetName]: focus USA_flames_of_the_future completion_reward"
+            if = {
+                limit = {
+                    has_completed_focus = USA_mingle_with_the_movement
+                }
+                set_temp_variable = {
+                    var = social_liberal_popularity_var_temp
+                    value = 0.05
+                }
+                add_social_liberal_popularity = yes
+                swap_ideas = {
+                    remove_idea = USA_mingle_with_the_movement_idea
+                    add_idea = USA_mingle_with_the_movement_idea1
+                }
+            }
+            else = {
+                add_stability = 0.075
+                unlock_decision_tooltip = USA_end_the_chaos_decision
+                USA_riots_decrease = yes
+            }
+        }
+    }
+    focus = {
+        id = USA_silence_the_tyrant
+        icon = GFX_focus_USA_silence_trump
+        relative_position_id = USA_fuel_the_machine
+        search_filters = {
+            FOCUS_FILTER_POLITICAL
+        }
+        x = -1
+        y = 1
+        cost = 5
+        available_if_capitulated = yes
+        prerequisite = {
+            focus = USA_flames_of_the_future
+        }
+        prerequisite = {
+            focus = USA_fuel_the_machine
+        }
+        ai_will_do = {
+            base = 1
+        }
+        available = {
+        }
+        completion_reward = {
+            log = "[GetDateText]: [Root.GetName]: focus USA_silence_the_tyrant completion_reward"
+            country_event = {
+                id = usa.183
+                days = 2
+            }
+            add_power_balance_value = {
+                id = USA_trust_bop
+                value = 0.1
+            }
+        }
+    }
+    focus = {
+        id = USA_engage_the_media
+        icon = GFX_focus_USA_fund_the_media
+        relative_position_id = USA_side_against_trump
+        search_filters = {
+            FOCUS_FILTER_POLITICAL
+        }
+        x = 0
+        y = 1
+        cost = 5
+        available_if_capitulated = yes
+        prerequisite = {
+            focus = USA_side_against_trump
+        }
+        ai_will_do = {
+            base = 1
+        }
+        available = {
+        }
+        completion_reward = {
+            log = "[GetDateText]: [Root.GetName]: focus USA_engage_the_media completion_reward"
+            add_political_power = 50
+            unlock_decision_tooltip = {
+                decision = USA_fund_the_media_decision
+                show_effect_tooltip = yes
+            }
+            unlock_decision_tooltip = {
+                decision = USA_prolonge_impeachment_decision
+                show_effect_tooltip = yes
+            }
+        }
+    }
+    focus = {
+        id = USA_fuel_the_machine
+        icon = GFX_focus_USA_trump_mania
+        relative_position_id = USA_engage_the_media
+        search_filters = {
+            FOCUS_FILTER_POLITICAL
+        }
+        x = 0
+        y = 2
+        cost = 5
+        available_if_capitulated = yes
+        prerequisite = {
+            focus = USA_engage_the_media
+        }
+        ai_will_do = {
+            base = 1
+        }
+        available = {
+        }
+        completion_reward = {
+            log = "[GetDateText]: [Root.GetName]: focus USA_fuel_the_machine completion_reward"
+            add_political_power = 50
+            set_temp_variable = {
+                var = income_var_temp
+                value = 1500
+            }
+            add_income_with_inflation = yes
+            unlock_decision_tooltip = USA_fuel_the_machine_decision
+            unlock_decision_tooltip = USA_fortify_the_election_decision
+        }
+    }
+    focus = {
+        id = USA_expand_the_cdc
+        icon = GFX_focus_USA_expand_the_cdc
+        relative_position_id = USA_side_against_trump
+        search_filters = {
+            FOCUS_FILTER_POLITICAL
+        }
+        x = 2
+        y = 1
+        cost = 5
+        available_if_capitulated = yes
+        prerequisite = {
+            focus = USA_side_against_trump
+        }
+        ai_will_do = {
+            base = 1
+        }
+        available = {
+        }
+        completion_reward = {
+            log = "[GetDateText]: [Root.GetName]: focus USA_expand_the_cdc completion_reward"
+            add_stability = 0.025
+            add_power_balance_value = {
+                id = USA_trust_bop
+                value = 0.05
+            }
+            set_temp_variable = {
+                var = mask_supply_var
+                value = 10000
+            }
+            add_mask_supply = yes
+            set_temp_variable = {
+                var = debt_var_temp
+                value = 5000
+            }
+            add_debt_with_inflation = yes
+            hidden_effect = {
+                set_country_flag = USA_researching_vaccine_flag
+                set_variable = {
+                    var = USA_vaccine_research_mission_var
+                    value = 350
+                }
+            }
+            activate_mission = USA_vaccine_research_mission
+            unlock_decision_tooltip = USA_mass_mask_production
+            unlock_decision_tooltip = {
+                decision = USA_implement_guidelines
+                show_effect_tooltip = yes
+            }
+            unlock_decision_tooltip = {
+                decision = USA_purchase_masks
+                show_effect_tooltip = yes
+            }
+        }
+    }
+    focus = {
+        id = USA_high_expectations
+        icon = GFX_focus_USA_high_expectations
+        relative_position_id = USA_expand_the_cdc
+        search_filters = {
+            FOCUS_FILTER_POLITICAL
+        }
+        x = -1
+        y = 1
+        cost = 5
+        available_if_capitulated = yes
+        prerequisite = {
+            focus = USA_expand_the_cdc
+        }
+        mutually_exclusive = {
+            focus = USA_meet_in_the_middle
+        }
+        ai_will_do = {
+            base = 1
+        }
+        available = {
+        }
+        completion_reward = {
+            log = "[GetDateText]: [Root.GetName]: focus USA_high_expectations completion_reward"
+            set_temp_variable = {
+                var = USA_coronavirus_outbreak_in_state_mission_var_temp
+                value = 2
+            }
+            USA_add_covid_growth_time = yes
+            random_list = {
+                80 = {
+                    country_event = {
+                        id = usa.9
+                    }
+                    add_power_balance_value = {
+                        id = USA_trust_bop
+                        value = 0.2
+                    }
+                }
+                20 = {
+                    country_event = {
+                        id = usa.10
+                    }
+                    set_temp_variable = {
+                        var = debt_var_temp
+                        value = 4000
+                    }
+                    add_debt_with_inflation = yes
+                    USA_reduce_locked_down_economy = yes
+                }
+            }
+        }
+    }
+    focus = {
+        id = USA_meet_in_the_middle
+        icon = GFX_focus_USA_meet_in_the_middle
+        relative_position_id = USA_expand_the_cdc
+        search_filters = {
+            FOCUS_FILTER_POLITICAL
+        }
+        x = 1
+        y = 1
+        cost = 5
+        available_if_capitulated = yes
+        prerequisite = {
+            focus = USA_expand_the_cdc
+        }
+        mutually_exclusive = {
+            focus = USA_high_expectations
+        }
+        ai_will_do = {
+            base = 1
+        }
+        available = {
+        }
+        completion_reward = {
+            log = "[GetDateText]: [Root.GetName]: focus USA_meet_in_the_middle completion_reward"
+            set_temp_variable = {
+                var = USA_coronavirus_outbreak_in_state_mission_var_temp
+                value = 2
+            }
+            USA_add_covid_growth_time = yes
+            random_list = {
+                80 = {
+                    country_event = {
+                        id = usa.11
+                    }
+                    set_temp_variable = {
+                        var = debt_var_temp
+                        value = 2500
+                    }
+                    add_debt_with_inflation = yes
+                    USA_reduce_locked_down_economy = yes
+                }
+                20 = {
+                    country_event = {
+                        id = usa.12
+                    }
+                    add_political_power = -25
+                    add_power_balance_value = {
+                        id = USA_trust_bop
+                        value = 0.1
+                    }
+                }
+            }
+        }
+    }
+    focus = {
+        id = USA_national_lockdowns
+        icon = GFX_focus_USA_national_lockdowns
+        relative_position_id = USA_expand_the_cdc
+        search_filters = {
+            FOCUS_FILTER_POLITICAL
+        }
+        x = 0
+        y = 2
+        cost = 5
+        available_if_capitulated = yes
+        prerequisite = {
+            focus = USA_high_expectations
+            focus = USA_meet_in_the_middle
+        }
+        ai_will_do = {
+            base = 1
+        }
+        available = {
+        }
+        completion_reward = {
+            log = "[GetDateText]: [Root.GetName]: focus USA_national_lockdowns completion_reward"
+            set_temp_variable = {
+                var = mask_supply_var
+                value = 25000
+            }
+            add_mask_supply = yes
+            unlock_decision_tooltip = {
+                decision = USA_minor_lockdown
+                show_effect_tooltip = yes
+            }
+            unlock_decision_tooltip = {
+                decision = USA_mass_lockdowns
+                show_effect_tooltip = yes
+            }
+        }
+    }
+    focus = {
+        id = USA_green_economics
+        icon = GFX_focus_USA_green_economics
+        relative_position_id = USA_fuel_the_machine
+        search_filters = {
+            FOCUS_FILTER_POLITICAL
+        }
+        x = 1
+        y = 1
+        cost = 5
+        available_if_capitulated = yes
+        prerequisite = {
+            focus = USA_national_lockdowns
+        }
+        prerequisite = {
+            focus = USA_fuel_the_machine
+        }
+        ai_will_do = {
+            base = 1
+        }
+        available = {
+            has_idea = USA_oil_crisis_idea
+        }
+        completion_reward = {
+            log = "[GetDateText]: [Root.GetName]: focus USA_green_economics completion_reward"
+            add_political_power = 75
+            set_temp_variable = {
+                var = debt_var_temp
+                value = 5000
+            }
+            add_debt_with_inflation = yes
+            swap_ideas = {
+                remove_idea = USA_oil_crisis_idea
+                add_idea = USA_oil_crisis_idea1
+            }
+            modify_building_resources = {
+                building = energy_farm
+                resource = coal
+                amount = 1
+            }
+        }
+    }
+    #Pre-Civil War, Trump Won, Sided With Trump
+    focus = {
+        id = USA_keep_america_great
+        icon = GFX_focus_USA_assure_security
+        search_filters = {
+            FOCUS_FILTER_POLITICAL
+        }
+        relative_position_id = USA_reinvigorate_the_economy
+        x = 0
+        y = 2
+        cost = 5
+        allow_branch = {
+            has_country_flag = USA_trump_2020_inauguration_flag
+            USA_sided_with_trump_trigger = yes
+        }
+        prerequisite = {
+            focus = USA_american_only_oil
+        }
+        prerequisite = {
+            focus = USA_lasting_peace
+        }
+        ai_will_do = {
+            base = 1
+        }
+        available = {
+            has_country_leader = {
+                character = USA_donald_trump_char
+                ruling_only = yes
+            }
+            has_country_flag = USA_counting_heads_flag
+        }
+        completion_reward = {
+            log = "[GetDateText]: [Root.GetName]: focus USA_keep_america_great completion_reward"
+            add_political_power = 75
+            set_temp_variable = {
+                var = legit_var_temp
+                value = 0.05
+            }
+            add_legit = yes
+            unlock_decision_tooltip = USA_talk_with_moderates_decision
+            unlock_decision_tooltip = USA_talk_with_militias_decision
+            unlock_decision_tooltip = USA_talk_with_the_military_decision
+        }
+    }
+    focus = {
+        id = USA_defend_the_second_amendment
+        icon = GFX_focus_USA_second_ammendment
+        search_filters = {
+            FOCUS_FILTER_POLITICAL
+        }
+        relative_position_id = USA_keep_america_great
+        x = -2
+        y = 1
+        cost = 5
+        prerequisite = {
+            focus = USA_keep_america_great
+        }
+        available_if_capitulated = yes
+        ai_will_do = {
+            base = 1
+        }
+        available = {
+            has_country_leader = {
+                character = USA_donald_trump_char
+                ruling_only = yes
+            }
+            has_country_flag = USA_counting_heads_flag
+        }
+        completion_reward = {
+            log = "[GetDateText]: [Root.GetName]: focus USA_defend_the_second_amendment completion_reward"
+            add_political_power = 50
+            set_temp_variable = {
+                var = legit_var_temp
+                value = 0.05
+            }
+            add_legit = yes
+            set_variable = {
+                var = USA_guns_in_storage_var
+                value = 0
+            }
+            unlock_decision_tooltip = USA_store_guns_decision
+        }
+    }
+    focus = {
+        id = USA_standing_down_and_standing_by
+        icon = GFX_focus_USA_presidential_militias
+        search_filters = {
+            FOCUS_FILTER_POLITICAL
+        }
+        relative_position_id = USA_defend_the_second_amendment
+        x = 0
+        y = 2
+        cost = 5
+        prerequisite = {
+            focus = USA_defend_the_second_amendment
+        }
+        available_if_capitulated = yes
+        ai_will_do = {
+            base = 1
+        }
+        available = {
+            has_country_leader = {
+                character = USA_donald_trump_char
+                ruling_only = yes
+            }
+            has_country_flag = USA_counting_heads_flag
+        }
+        completion_reward = {
+            log = "[GetDateText]: [Root.GetName]: focus USA_standing_down_and_standing_by completion_reward"
+            add_stability = 0.025
+            if = {
+                limit = {
+                    has_idea = USA_second_amendment_idea1
+                }
+                swap_ideas = {
+                    remove_idea = USA_second_amendment_idea1
+                    add_idea = USA_second_amendment_idea2
+                }
+            }
+            else = {
+                swap_ideas = {
+                    remove_idea = USA_second_amendment_idea
+                    add_idea = USA_second_amendment_idea1
+                }
+            }
+        }
+    }
+    focus = {
+        id = USA_enforce_order
+        icon = GFX_focus_USA_enforce_order
+        search_filters = {
+            FOCUS_FILTER_POLITICAL
+        }
+        relative_position_id = USA_keep_america_great
+        x = 0
+        y = 1
+        cost = 5
+        prerequisite = {
+            focus = USA_keep_america_great
+        }
+        available_if_capitulated = yes
+        ai_will_do = {
+            base = 1
+        }
+        available = {
+            has_country_leader = {
+                character = USA_donald_trump_char
+                ruling_only = yes
+            }
+            has_country_flag = USA_counting_heads_flag
+        }
+        completion_reward = {
+            log = "[GetDateText]: [Root.GetName]: focus USA_enforce_order completion_reward"
+            set_temp_variable = {
+                var = legit_var_temp
+                value = 0.15
+            }
+            add_legit = yes
+            add_ideas = USA_enforce_order_idea
+        }
+    }
+    focus = {
+        id = USA_by_law
+        icon = GFX_focus_USA_by_law
+        search_filters = {
+            FOCUS_FILTER_POLITICAL
+        }
+        relative_position_id = USA_enforce_order
+        x = -1
+        y = 1
+        cost = 5
+        prerequisite = {
+            focus = USA_enforce_order
+        }
+        mutually_exclusive = {
+            focus = USA_by_force
+        }
+        available_if_capitulated = yes
+        ai_will_do = {
+            base = 1
+        }
+        available = {
+            has_country_leader = {
+                character = USA_donald_trump_char
+                ruling_only = yes
+            }
+            has_country_flag = USA_counting_heads_flag
+        }
+        completion_reward = {
+            log = "[GetDateText]: [Root.GetName]: focus USA_by_law completion_reward"
+            add_political_power = 75
+            custom_effect_tooltip = USA_civil_war_begins_tooltip
+            effect_tooltip = {
+                USC = {
+                    add_political_power = 75
+                }
+            }
+        }
+    }
+    focus = {
+        id = USA_by_force
+        icon = GFX_focus_USA_by_force
+        search_filters = {
+            FOCUS_FILTER_POLITICAL
+        }
+        relative_position_id = USA_enforce_order
+        x = 1
+        y = 1
+        cost = 5
+        prerequisite = {
+            focus = USA_enforce_order
+        }
+        mutually_exclusive = {
+            focus = USA_by_law
+        }
+        available_if_capitulated = yes
+        ai_will_do = {
+            base = 1
+        }
+        available = {
+            has_country_leader = {
+                character = USA_donald_trump_char
+                ruling_only = yes
+            }
+            has_country_flag = USA_counting_heads_flag
+        }
+        completion_reward = {
+            log = "[GetDateText]: [Root.GetName]: focus USA_by_force completion_reward"
+            add_political_power = 50
+            custom_effect_tooltip = USA_civil_war_begins_tooltip
+            effect_tooltip = {
+                USC = {
+                    army_experience = 40
+                }
+            }
+        }
+    }
+    focus = {
+        id = USA_end_state_lockdowns
+        icon = GFX_focus_generic_end_lockdowns
+        search_filters = {
+            FOCUS_FILTER_POLITICAL
+        }
+        relative_position_id = USA_enforce_order
+        x = 0
+        y = 2
+        cost = 5
+        prerequisite = {
+            focus = USA_by_law
+            focus = USA_by_force
+        }
+        available_if_capitulated = yes
+        ai_will_do = {
+            base = 1
+        }
+        available = {
+            has_country_leader = {
+                character = USA_donald_trump_char
+                ruling_only = yes
+            }
+            has_country_flag = USA_counting_heads_flag
+        }
+        completion_reward = {
+            log = "[GetDateText]: [Root.GetName]: focus USA_end_state_lockdowns completion_reward"
+            add_political_power = 50
+            USC = {
+                add_stability = 0.1
+            }
+        }
+    }
+    focus = {
+        id = USA_purge_the_pentagon
+        icon = GFX_focus_USA_purge_the_pentagon
+        search_filters = {
+            FOCUS_FILTER_POLITICAL
+        }
+        relative_position_id = USA_keep_america_great
+        x = 2
+        y = 1
+        cost = 5
+        prerequisite = {
+            focus = USA_keep_america_great
+        }
+        available_if_capitulated = yes
+        ai_will_do = {
+            base = 1
+        }
+        available = {
+            has_country_leader = {
+                character = USA_donald_trump_char
+                ruling_only = yes
+            }
+            has_country_flag = USA_counting_heads_flag
+        }
+        completion_reward = {
+            log = "[GetDateText]: [Root.GetName]: focus USA_purge_the_pentagon completion_reward"
+            set_temp_variable = {
+                var = legit_var_temp
+                value = 0.075
+            }
+            add_legit = yes
+            add_timed_idea = {
+                idea = USA_military_disorganization_idea
+                days = 70
+            }
+            custom_effect_tooltip = USA_purge_the_pentagon_tooltip
+        }
+    }
+    focus = {
+        id = USA_unify_the_military
+        icon = GFX_focus_USA_unify_the_army
+        search_filters = {
+            FOCUS_FILTER_POLITICAL
+        }
+        relative_position_id = USA_purge_the_pentagon
+        x = 0
+        y = 2
+        cost = 5
+        prerequisite = {
+            focus = USA_purge_the_pentagon
+        }
+        available_if_capitulated = yes
+        ai_will_do = {
+            base = 1
+        }
+        available = {
+            has_country_leader = {
+                character = USA_donald_trump_char
+                ruling_only = yes
+            }
+            has_country_flag = USA_counting_heads_flag
+            NOT = {
+                has_idea = USA_military_disorganization_idea
+            }
+        }
+        completion_reward = {
+            log = "[GetDateText]: [Root.GetName]: focus USA_unify_the_military completion_reward"
+            custom_effect_tooltip = USA_civil_war_begins_tooltip
+            effect_tooltip = {
+                USC = {
+                    add_timed_idea = {
+                        idea = USA_unified_military_idea
+                        days = 350
+                    }
+                }
+            }
+        }
+    }
+    focus = {
+        id = USA_invoke_the_insurrection_act
+        icon = GFX_focus_USA_invoke_the_insurrection_act
+        search_filters = {
+            FOCUS_FILTER_POLITICAL
+        }
+        relative_position_id = USA_end_state_lockdowns
+        x = 0
+        y = 1
+        cost = 10
+        prerequisite = {
+            focus = USA_standing_down_and_standing_by
+        }
+        prerequisite = {
+            focus = USA_end_state_lockdowns
+        }
+        prerequisite = {
+            focus = USA_unify_the_military
+        }
+        available_if_capitulated = yes
+        ai_will_do = {
+            base = 1
+        }
+        available = {
+            has_country_leader = {
+                character = USA_donald_trump_char
+                ruling_only = yes
+            }
+            has_country_flag = USA_counting_heads_flag
+        }
+        completion_reward = {
+            log = "[GetDateText]: [Root.GetName]: focus USA_invoke_the_insurrection_act completion_reward"
+            country_event = {
+                id = usa.95
+            }
+            custom_effect_tooltip = USA_civil_war_tooltip
+            custom_effect_tooltip = USA_civil_war_begins_tooltip
+            USC = {
+                effect_tooltip = {
+                    add_war_support = 0.1
+                    add_timed_idea = {
+                        idea = USA_arrested_the_traitors_idea
+                        days = 1050
+                    }
+                }
+            }
+        }
+    }
+    #Pre-Civil War, Trump Lost, Sided With Trump
+    focus = {
+        id = USA_the_shadow_presidency
+        icon = GFX_focus_USA_shadow_presidency
+        search_filters = {
+            FOCUS_FILTER_POLITICAL
+        }
+        relative_position_id = USA_reinvigorate_the_economy
+        x = 0
+        y = 2
+        cost = 5
+        allow_branch = {
+            has_country_flag = USA_biden_2020_inauguration_flag
+            USA_sided_with_trump_trigger = yes
+        }
+        prerequisite = {
+            focus = USA_american_only_oil
+        }
+        prerequisite = {
+            focus = USA_lasting_peace
+        }
+        ai_will_do = {
+            base = 1
+        }
+        available = {
+            has_country_flag = USA_counting_heads_flag
+        }
+        completion_reward = {
+            log = "[GetDateText]: [Root.GetName]: focus USA_the_shadow_presidency completion_reward"
+            add_political_power = 75
+            set_temp_variable = {
+                var = legit_var_temp
+                value = 0.05
+            }
+            add_legit = yes
+            add_days_mission_timeout = {
+                mission = USA_civil_war_mission
+                days = -56
+            }
+        }
+    }
+    focus = {
+        id = USA_underground_armaments
+        icon = GFX_focus_generic_bury_weapons
+        search_filters = {
+            FOCUS_FILTER_POLITICAL
+        }
+        relative_position_id = USA_the_shadow_presidency
+        x = -2
+        y = 1
+        cost = 5
+        prerequisite = {
+            focus = USA_the_shadow_presidency
+        }
+        ai_will_do = {
+            base = 1
+        }
+        available = {
+            has_country_flag = USA_counting_heads_flag
+        }
+        completion_reward = {
+            log = "[GetDateText]: [Root.GetName]: focus USA_underground_armaments completion_reward"
+            set_country_flag = USA_underground_armaments_flag
+            unlock_decision_tooltip = USA_underground_armaments_decision
+            add_days_mission_timeout = {
+                mission = USA_civil_war_mission
+                days = -56
+            }
+            custom_effect_tooltip = USA_civil_war_begins_tooltip
+            effect_tooltip = {
+                USC = {
+                    add_equipment_to_stockpile = {
+                        type = infantry_equipment
+                        amount = 10000
+                        producer = USA
+                    }
+                }
+            }
+        }
+    }
+    focus = {
+        id = USA_fan_the_flames
+        icon = GFX_focus_USA_fan_the_flames
+        search_filters = {
+            FOCUS_FILTER_POLITICAL
+        }
+        relative_position_id = USA_the_shadow_presidency
+        x = 0
+        y = 1
+        cost = 5
+        prerequisite = {
+            focus = USA_the_shadow_presidency
+        }
+        ai_will_do = {
+            base = 1
+        }
+        available = {
+            has_country_flag = USA_counting_heads_flag
+        }
+        completion_reward = {
+            log = "[GetDateText]: [Root.GetName]: focus USA_fan_the_flames completion_reward"
+            add_political_power = 250
+            add_days_mission_timeout = {
+                mission = USA_civil_war_mission
+                days = -56
+            }
+        }
+    }
+    focus = {
+        id = USA_rally_the_people
+        icon = GFX_focus_USA_rally_the_people
+        search_filters = {
+            FOCUS_FILTER_POLITICAL
+        }
+        relative_position_id = USA_the_shadow_presidency
+        x = 2
+        y = 1
+        cost = 5
+        prerequisite = {
+            focus = USA_the_shadow_presidency
+        }
+        ai_will_do = {
+            base = 1
+        }
+        available = {
+            has_country_flag = USA_counting_heads_flag
+        }
+        completion_reward = {
+            log = "[GetDateText]: [Root.GetName]: focus USA_rally_the_people completion_reward"
+            add_war_support = 0.2
+            unlock_decision_tooltip = USA_rally_the_people_decision
+            add_days_mission_timeout = {
+                mission = USA_civil_war_mission
+                days = -75
+            }
+        }
+    }
+    focus = {
+        id = USA_the_fire_rises
+        icon = GFX_focus_USA_the_fire_rises
+        search_filters = {
+            FOCUS_FILTER_POLITICAL
+        }
+        relative_position_id = USA_the_shadow_presidency
+        x = 0
+        y = 2
+        cost = 5
+        prerequisite = {
+            focus = USA_rally_the_people
+        }
+        prerequisite = {
+            focus = USA_fan_the_flames
+        }
+        prerequisite = {
+            focus = USA_underground_armaments
+        }
+        ai_will_do = {
+            factor = 5
+        }
+        available = {
+            has_country_flag = USA_counting_heads_flag
+        }
+        completion_reward = {
+            log = "[GetDateText]: [Root.GetName]: focus USA_the_fire_rises completion_reward"
+            set_country_flag = USA_the_fire_rises_flag
+            add_days_mission_timeout = {
+                mission = USA_civil_war_mission
+                days = -365
+            }
+            custom_effect_tooltip = USA_civil_war_begins_tooltip
+            effect_tooltip = {
+                USC = {
+                    add_timed_idea = {
+                        idea = USA_patriotic_defense_idea
+                        days = 210
+                    }
+                }
+            }
+        }
+    }
+    #Pre-Civil War, Trump Lost, Sided With Resistance
+    focus = {
+        id = USA_build_back_better
+        icon = GFX_focus_USA_build_back_better
+        search_filters = {
+            FOCUS_FILTER_POLITICAL
+        }
+        relative_position_id = USA_fuel_the_machine
+        x = 0
+        y = 2
+        cost = 5
+        allow_branch = {
+            has_country_flag = USA_biden_2020_inauguration_flag
+            USA_sided_with_resistance_trigger = yes
+        }
+        prerequisite = {
+            focus = USA_green_economics
+        }
+        prerequisite = {
+            focus = USA_silence_the_tyrant
+        }
+        ai_will_do = {
+            base = 1
+        }
+        available = {
+            has_country_leader = {
+                character = USA_joe_biden_char
+                ruling_only = yes
+            }
+            has_country_flag = USA_counting_heads_flag
+        }
+        completion_reward = {
+            log = "[GetDateText]: [Root.GetName]: focus USA_build_back_better completion_reward"
+            add_political_power = 75
+            set_temp_variable = {
+                var = legit_var_temp
+                value = 0.05
+            }
+            add_legit = yes
+            unlock_decision_tooltip = USA_stop_the_spread_decision
+            unlock_decision_tooltip = USA_talk_with_moderates_decision
+        }
+    }
+    focus = {
+        id = USA_promise_progress
+        icon = GFX_focus_USA_promise_progress
+        search_filters = {
+            FOCUS_FILTER_POLITICAL
+        }
+        relative_position_id = USA_build_back_better
+        x = -2
+        y = 1
+        cost = 5
+        prerequisite = {
+            focus = USA_build_back_better
+        }
+        ai_will_do = {
+            base = 1
+        }
+        available = {
+            has_country_leader = {
+                character = USA_joe_biden_char
+                ruling_only = yes
+            }
+            has_country_flag = USA_counting_heads_flag
+        }
+        completion_reward = {
+            log = "[GetDateText]: [Root.GetName]: focus USA_promise_progress completion_reward"
+            add_stability = 0.1
+            unlock_decision_tooltip = USA_promise_progress_decision
+        }
+    }
+    focus = {
+        id = USA_address_the_infrastructure
+        icon = GFX_focus_USA_build_back_better_act
+        search_filters = {
+            FOCUS_FILTER_POLITICAL
+        }
+        relative_position_id = USA_promise_progress
+        x = 0
+        y = 2
+        cost = 5
+        prerequisite = {
+            focus = USA_promise_progress
+        }
+        ai_will_do = {
+            base = 1
+        }
+        available = {
+            has_country_leader = {
+                character = USA_joe_biden_char
+                ruling_only = yes
+            }
+            has_country_flag = USA_counting_heads_flag
+        }
+        completion_reward = {
+            log = "[GetDateText]: [Root.GetName]: focus USA_address_the_infrastructure completion_reward"
+            set_temp_variable = {
+                var = debt_var_temp
+                value = 9500
+            }
+            add_debt_with_inflation = yes
+            every_owned_state = {
+                limit = {
+                    infrastructure < 4
+                    NOT = {
+                        state = 1002
+                    }
+                    OR = {
+                        state = 1244
+                        USA_is_indiana_state = yes
+                        USA_is_ohio_state = yes
+                        USA_is_kentucky_state = yes
+                        USA_is_tennessee_state = yes
+                        USA_is_west_virginia_state = yes
+                        USA_is_virginia_state = yes
+                        USA_is_maryland_state = yes
+                        USA_is_new_jersey_state = yes
+                        USA_is_pennsylvania_state = yes
+                        if = {
+                            limit = {
+                                ROOT = {
+                                    has_country_flag = USA_expand_influence_in_395_flag
+                                }
+                            }
+                            USA_is_illinois_state = yes
+                        }
+                        else = {
+                            state = 1099
+                        }
+                    }
+                }
+                add_building_construction = {
+                    type = infrastructure
+                    level = 1
+                    instant_build = yes
+                }
+            }
+            every_owned_state = {
+                limit = {
+                    free_building_slots = {
+                        building = arms_factory
+                        size > 1
+                        include_locked = yes
+                    }
+                    NOT = {
+                        state = 1002
+                    }
+                    OR = {
+                        state = 1244
+                        USA_is_indiana_state = yes
+                        USA_is_ohio_state = yes
+                        USA_is_kentucky_state = yes
+                        USA_is_tennessee_state = yes
+                        USA_is_west_virginia_state = yes
+                        USA_is_virginia_state = yes
+                        USA_is_maryland_state = yes
+                        USA_is_new_jersey_state = yes
+                        USA_is_pennsylvania_state = yes
+                        if = {
+                            limit = {
+                                ROOT = {
+                                    has_country_flag = USA_expand_influence_in_395_flag
+                                }
+                            }
+                            USA_is_illinois_state = yes
+                        }
+                        else = {
+                            state = 1099
+                        }
+                    }
+                }
+                random_select_amount = 4
+                add_extra_state_shared_building_slots = 1
+                add_building_construction = {
+                    type = arms_factory
+                    level = 1
+                    instant_build = yes
+                }
+            }
+        }
+    }
+    focus = {
+        id = USA_unifiy_the_democratic_party
+        icon = GFX_focus_USA_unify_the_dems
+        search_filters = {
+            FOCUS_FILTER_POLITICAL
+        }
+        relative_position_id = USA_build_back_better
+        x = 0
+        y = 1
+        cost = 5
+        prerequisite = {
+            focus = USA_build_back_better
+        }
+        ai_will_do = {
+            base = 1
+        }
+        available = {
+            has_country_leader = {
+                character = USA_joe_biden_char
+                ruling_only = yes
+            }
+            has_country_flag = USA_counting_heads_flag
+        }
+        completion_reward = {
+            log = "[GetDateText]: [Root.GetName]: focus USA_unifiy_the_democratic_party completion_reward"
+            add_political_power = 50
+            unlock_decision_tooltip = USA_unify_the_dems_decision
+            custom_effect_tooltip = USA_civil_war_begins_tooltip
+            effect_tooltip = {
+                USB = {
+                    add_stability = 0.1
+                }
+            }
+        }
+    }
+    focus = {
+        id = USA_mandate_the_mask
+        icon = GFX_focus_generic_mandate_the_mask
+        search_filters = {
+            FOCUS_FILTER_POLITICAL
+        }
+        relative_position_id = USA_unifiy_the_democratic_party
+        x = -1
+        y = 1
+        cost = 5
+        prerequisite = {
+            focus = USA_unifiy_the_democratic_party
+        }
+        mutually_exclusive = {
+            focus = USA_expand_lockdowns
+        }
+        ai_will_do = {
+            base = 1
+        }
+        available = {
+            has_country_leader = {
+                character = USA_joe_biden_char
+                ruling_only = yes
+            }
+            has_country_flag = USA_counting_heads_flag
+        }
+        completion_reward = {
+            log = "[GetDateText]: [Root.GetName]: focus USA_mandate_the_mask completion_reward"
+            add_political_power = -25
+            add_stability = -0.1
+            set_temp_variable = {
+                var = mask_supply_var
+                value = 25000
+            }
+            add_mask_supply = yes
+            USA_reduce_locked_down_economy = yes
+        }
+    }
+    focus = {
+        id = USA_expand_lockdowns
+        icon = GFX_focus_generic_expand_lockdowns
+        search_filters = {
+            FOCUS_FILTER_POLITICAL
+        }
+        relative_position_id = USA_unifiy_the_democratic_party
+        x = 1
+        y = 1
+        cost = 5
+        prerequisite = {
+            focus = USA_unifiy_the_democratic_party
+        }
+        mutually_exclusive = {
+            focus = USA_mandate_the_mask
+        }
+        ai_will_do = {
+            base = 1
+        }
+        available = {
+            has_country_leader = {
+                character = USA_joe_biden_char
+                ruling_only = yes
+            }
+            has_country_flag = USA_counting_heads_flag
+        }
+        completion_reward = {
+            log = "[GetDateText]: [Root.GetName]: focus USA_expand_lockdowns completion_reward"
+            if = {
+                limit = {
+                    has_idea = USA_locked_down_economy_idea
+                }
+                remove_ideas = USA_locked_down_economy_idea
+            }
+            else_if = {
+                limit = {
+                    has_idea = USA_locked_down_economy_idea1
+                }
+                remove_ideas = USA_locked_down_economy_idea1
+            }
+            else_if = {
+                limit = {
+                    has_idea = USA_locked_down_economy_idea2
+                }
+                remove_ideas = USA_locked_down_economy_idea2
+            }
+            custom_effect_tooltip = USA_civil_war_begins_tooltip
+            effect_tooltip = {
+                USB = {
+                    add_stability = 0.05
+                    add_political_power = -75
+                }
+            }
+        }
+    }
+    focus = {
+        id = USA_empower_the_government
+        icon = GFX_focus_USA_everything_is_fine
+        search_filters = {
+            FOCUS_FILTER_POLITICAL
+        }
+        relative_position_id = USA_unifiy_the_democratic_party
+        x = 0
+        y = 2
+        cost = 5
+        prerequisite = {
+            focus = USA_expand_lockdowns
+            focus = USA_mandate_the_mask
+        }
+        ai_will_do = {
+            base = 1
+        }
+        available = {
+            has_country_leader = {
+                character = USA_joe_biden_char
+                ruling_only = yes
+            }
+            has_country_flag = USA_counting_heads_flag
+        }
+        completion_reward = {
+            log = "[GetDateText]: [Root.GetName]: focus USA_empower_the_government completion_reward"
+            add_political_power = 50
+            unlock_decision_tooltip = USA_expand_influence_in_395_decision
+            custom_effect_tooltip = USA_civil_war_begins_tooltip
+            effect_tooltip = {
+                USB = {
+                    add_political_power = 75
+                }
+            }
+        }
+    }
+    focus = {
+        id = USA_reconcile_republicans
+        icon = GFX_focus_USA_reconcile_republicans
+        search_filters = {
+            FOCUS_FILTER_POLITICAL
+        }
+        relative_position_id = USA_build_back_better
+        x = 2
+        y = 1
+        cost = 5
+        prerequisite = {
+            focus = USA_build_back_better
+        }
+        ai_will_do = {
+            base = 1
+        }
+        available = {
+            has_country_leader = {
+                character = USA_joe_biden_char
+                ruling_only = yes
+            }
+            has_country_flag = USA_counting_heads_flag
+        }
+        completion_reward = {
+            log = "[GetDateText]: [Root.GetName]: focus USA_reconcile_republicans completion_reward"
+            set_temp_variable = {
+                var = legit_var_temp
+                value = 0.1
+            }
+            add_legit = yes
+            add_power_balance_value = {
+                id = USA_trust_bop
+                value = 0.05
+            }
+            unlock_decision_tooltip = USA_compromise_with_republicans_decision
+        }
+    }
+    focus = {
+        id = USA_minimalize_militias
+        icon = GFX_focus_USA_minimize_militias
+        search_filters = {
+            FOCUS_FILTER_POLITICAL
+        }
+        relative_position_id = USA_reconcile_republicans
+        x = 0
+        y = 2
+        cost = 5
+        prerequisite = {
+            focus = USA_reconcile_republicans
+        }
+        ai_will_do = {
+            base = 1
+        }
+        available = {
+            has_country_leader = {
+                character = USA_joe_biden_char
+                ruling_only = yes
+            }
+            has_country_flag = USA_counting_heads_flag
+        }
+        completion_reward = {
+            log = "[GetDateText]: [Root.GetName]: focus USA_minimalize_militias completion_reward"
+            set_temp_variable = {
+                var = legit_var_temp
+                value = 0.05
+            }
+            add_legit = yes
+            set_variable = {
+                var = USA_guns_in_storage_var
+                value = 0
+            }
+            unlock_decision_tooltip = USA_store_guns_decision
+            custom_effect_tooltip = USA_civil_war_begins_tooltip
+            effect_tooltip = {
+                USC = {
+                    add_timed_idea = {
+                        idea = USA_minimalized_militias_idea
+                        days = 175
+                    }
+                }
+            }
+        }
+    }
+    focus = {
+        id = USA_executive_order_14066
+        icon = GFX_focus_USA_executive_order_14066
+        search_filters = {
+            FOCUS_FILTER_POLITICAL
+        }
+        relative_position_id = USA_empower_the_government
+        x = 0
+        y = 1
+        cost = 10
+        prerequisite = {
+            focus = USA_minimalize_militias
+        }
+        prerequisite = {
+            focus = USA_empower_the_government
+        }
+        prerequisite = {
+            focus = USA_address_the_infrastructure
+        }
+        ai_will_do = {
+            base = 1
+        }
+        available = {
+            has_country_leader = {
+                character = USA_joe_biden_char
+                ruling_only = yes
+            }
+            has_country_flag = USA_counting_heads_flag
+        }
+        completion_reward = {
+            log = "[GetDateText]: [Root.GetName]: focus USA_executive_order_14066 completion_reward"
+            country_event = {
+                id = usa.5
+            }
+            custom_effect_tooltip = USA_civil_war_tooltip
+            custom_effect_tooltip = USA_civil_war_begins_tooltip
+            effect_tooltip = {
+                USB = {
+                    add_war_support = 0.1
+                    add_timed_idea = {
+                        idea = USA_arrested_the_traitors_idea
+                        days = 1050
+                    }
+                }
+            }
+        }
+    }
+    #Pre-Civil War, Trump Won, Sided With Resistance
+    focus = {
+        id = USA_oppose_the_tyrant
+        icon = GFX_focus_USA_oppose_the_tyrant
+        search_filters = {
+            FOCUS_FILTER_POLITICAL
+        }
+        relative_position_id = USA_fuel_the_machine
+        x = 0
+        y = 2
+        cost = 5
+        allow_branch = {
+            has_country_flag = USA_trump_2020_inauguration_flag
+            USA_sided_with_resistance_trigger = yes
+        }
+        prerequisite = {
+            focus = USA_green_economics
+        }
+        prerequisite = {
+            focus = USA_silence_the_tyrant
+        }
+        ai_will_do = {
+            base = 1
+        }
+        available = {
+            has_country_leader = {
+                character = USA_donald_trump_char
+                ruling_only = yes
+            }
+            has_country_flag = USA_counting_heads_flag
+        }
+        completion_reward = {
+            log = "[GetDateText]: [Root.GetName]: focus USA_oppose_the_tyrant completion_reward"
+            add_political_power = 75
+            add_days_mission_timeout = {
+                mission = USA_civil_war_mission
+                days = -150
+            }
+            custom_effect_tooltip = USA_civil_war_begins_tooltip
+            USC = {
+                set_temp_variable = {
+                    var = legit_var_temp
+                    value = -0.05
+                }
+                add_legit = yes
+            }
+        }
+    }
+    focus = {
+        id = USA_the_true_revolution_begins
+        icon = GFX_focus_USA_the_true_revolution
+        search_filters = {
+            FOCUS_FILTER_POLITICAL
+        }
+        relative_position_id = USA_oppose_the_tyrant
+        x = -2
+        y = 1
+        cost = 5
+        mutually_exclusive = {
+            focus = USA_ridin_with_biden
+        }
+        mutually_exclusive = {
+            focus = USA_support_national_socialism
+        }
+        prerequisite = {
+            focus = USA_oppose_the_tyrant
+        }
+        available_if_capitulated = yes
+        ai_will_do = {
+            base = 1
+        }
+        available = {
+            has_country_leader = {
+                character = USA_donald_trump_char
+                ruling_only = yes
+            }
+            has_country_flag = USA_counting_heads_flag
+        }
+        completion_reward = {
+            log = "[GetDateText]: [Root.GetName]: focus USA_the_true_revolution_begins completion_reward"
+            set_country_flag = USA_the_true_revolution_begins_flag
+            add_days_mission_timeout = {
+                mission = USA_civil_war_mission
+                days = -100
+            }
+            custom_effect_tooltip = USA_civil_war_begins_tooltip
+            effect_tooltip = {
+                APA = {
+                    add_timed_idea = {
+                        idea = USA_resistance_support_idea
+                        days = 140
+                    }
+                }
+            }
+        }
+    }
+    focus = {
+        id = USA_ridin_with_biden
+        icon = GFX_focus_USA_ridin_with_biden
+        search_filters = {
+            FOCUS_FILTER_POLITICAL
+        }
+        relative_position_id = USA_oppose_the_tyrant
+        x = 0
+        y = 1
+        cost = 5
+        mutually_exclusive = {
+            focus = USA_the_true_revolution_begins
+        }
+        mutually_exclusive = {
+            focus = USA_support_national_socialism
+        }
+        prerequisite = {
+            focus = USA_oppose_the_tyrant
+        }
+        available_if_capitulated = yes
+        ai_will_do = {
+            base = 1
+        }
+        available = {
+            has_country_leader = {
+                character = USA_donald_trump_char
+                ruling_only = yes
+            }
+            has_country_flag = USA_counting_heads_flag
+        }
+        completion_reward = {
+            log = "[GetDateText]: [Root.GetName]: focus USA_ridin_with_biden completion_reward"
+            set_country_flag = USA_ridin_with_biden_flag
+            add_days_mission_timeout = {
+                mission = USA_civil_war_mission
+                days = -100
+            }
+            custom_effect_tooltip = USA_civil_war_begins_tooltip
+            effect_tooltip = {
+                USB = {
+                    add_timed_idea = {
+                        idea = USA_resistance_support_idea
+                        days = 140
+                    }
+                }
+            }
+        }
+    }
+    focus = {
+        id = USA_support_national_socialism
+        icon = GFX_focus_NSM_propagate_national_socialism
+        search_filters = {
+            FOCUS_FILTER_POLITICAL
+        }
+        relative_position_id = USA_oppose_the_tyrant
+        x = 2
+        y = 1
+        cost = 5
+        mutually_exclusive = {
+            focus = USA_the_true_revolution_begins
+        }
+        mutually_exclusive = {
+            focus = USA_ridin_with_biden
+        }
+        prerequisite = {
+            focus = USA_oppose_the_tyrant
+        }
+        available_if_capitulated = yes
+        ai_will_do = {
+            base = 1
+        }
+        available = {
+            has_country_leader = {
+                character = USA_donald_trump_char
+                ruling_only = yes
+            }
+            has_country_flag = USA_counting_heads_flag
+        }
+        completion_reward = {
+            log = "[GetDateText]: [Root.GetName]: focus USA_support_national_socialism completion_reward"
+            set_country_flag = USA_support_national_socialism_flag
+            add_days_mission_timeout = {
+                mission = USA_civil_war_mission
+                days = -100
+            }
+            custom_effect_tooltip = USA_civil_war_begins_tooltip
+            effect_tooltip = {
+                NSM = {
+                    add_timed_idea = {
+                        idea = USA_resistance_support_idea
+                        days = 140
+                    }
+                }
+                PTF = {
+                    add_timed_idea = {
+                        idea = USA_resistance_support_idea
+                        days = 140
+                    }
+                }
+                ATW = {
+                    add_timed_idea = {
+                        idea = USA_resistance_support_idea
+                        days = 140
+                    }
+                }
+            }
+        }
+    }
+    focus = {
+        id = USA_the_third_impeachment
+        icon = GFX_focus_USA_the_third_impeachment
+        search_filters = {
+            FOCUS_FILTER_POLITICAL
+        }
+        relative_position_id = USA_oppose_the_tyrant
+        x = 0
+        y = 2
+        cost = 5
+        prerequisite = {
+            focus = USA_support_national_socialism
+            focus = USA_ridin_with_biden
+            focus = USA_the_true_revolution_begins
+        }
+        available_if_capitulated = yes
+        ai_will_do = {
+            base = 1
+        }
+        available = {
+            has_country_leader = {
+                character = USA_donald_trump_char
+                ruling_only = yes
+            }
+            has_country_flag = USA_counting_heads_flag
+        }
+        completion_reward = {
+            log = "[GetDateText]: [Root.GetName]: focus USA_the_third_impeachment completion_reward"
+            add_days_mission_timeout = {
+                mission = USA_civil_war_mission
+                days = -100
+            }
+            USC = {
+                add_stability = -0.1
+                add_war_support = -0.1
+            }
+            hidden_effect = {
+                # country_event = {
+                # 	id = usa.229
+                # 	days = 3
+                # }
+            }
+        }
+    }
+}

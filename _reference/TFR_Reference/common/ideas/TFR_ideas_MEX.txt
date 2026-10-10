@@ -1,0 +1,201 @@
+ideas = {
+	hidden_ideas = {
+		MEX_hasten_war_idea = {
+			allowed = {
+				tag = MEX
+			}
+			available = {
+				is_ai = yes
+				NOT = {
+					has_global_flag = MEX_mexican_cartel_war_over_global
+				}
+			}
+			modifier = {
+				army_attack_factor = 0.5
+				army_defence_factor = 0.5
+				breakthrough_factor = 0.5
+			}
+		}
+		MEX_bulwark_against_fascism_idea = {
+			picture = GFX_idea_CAN_american_refugees
+			name = CAN_bulwark_against_fascism_idea
+			allowed = {
+				MEX_is_civil_war_faction = yes
+			}
+			modifier = {
+				industrial_capacity_factory = 0.5
+				industrial_capacity_dockyard = 0.5
+				production_speed_buildings_factor = 0.5
+				conscription_factor = 0.5
+				mobilization_speed = 0.5
+				army_attack_factor = 0.25
+				army_defence_factor = 0.25
+				breakthrough_factor = 0.25
+				surrender_limit = 1
+				max_surrender_limit_offset = -0.2
+				ai_desired_divisions_factor = 5
+				industrial_factory_donations = 100
+				military_factory_donations = 100
+				dockyard_donations = 100
+			}
+		}
+	}
+	country = {
+		MEX_pemex = {
+			picture = MEX_pemex
+		    traits = {
+		        ZZZ_blank_idea_trait
+		    }
+			allowed = {
+				always = no
+			}
+			allowed_civil_war = {
+				always = yes
+			}
+			removal_cost = -1
+			modifier = {
+				fuel_gain_factor_from_states = 0.15
+				production_speed_fuel_silo_factor = 0.1
+				income_growth_factor = 0.25
+			}
+		}
+		MEX_obrador_moderate_revolution = {
+			picture = MEX_moderate_revolution
+		    traits = {
+		        ZZZ_blank_idea_trait
+		    }
+			allowed = {
+				always = no
+			}
+			allowed_civil_war = {
+				always = yes
+			}
+			removal_cost = -1
+			modifier = {
+				stability_factor = 0.05
+				political_power_gain = -0.1
+				mobilization_speed = 0.01
+				war_support_factor = 0.021
+				army_attack_factor = 0.05
+				army_defence_factor = 0.05
+				army_core_defence_factor = 0.03
+			}
+		}
+		MEX_american_refugee_waves = {
+			picture = CAN_american_refugees
+		    traits = {
+		        ZZZ_blank_idea_trait
+		    }
+			allowed = {
+				always = no
+			}
+			allowed_civil_war = {
+				always = yes
+			}
+			removal_cost = -1
+			modifier = {
+				stability_factor = -0.15
+				monthly_population = 0.25
+			}
+		}
+		MEX_cartel_presence_minor = {
+			picture = MEX_callistas
+		    traits = {
+		        ZZZ_blank_idea_trait
+		    }
+			allowed = {
+				always = no
+			}
+			allowed_civil_war = {
+				always = yes
+			}
+			removal_cost = -1
+			modifier = {
+				stability_factor = -0.05
+				income_growth_factor = -0.05
+				line_change_production_efficiency_factor = 0.05
+			}
+		}
+		MEX_cartel_presence_moderate = {
+			picture = MEX_callistas
+		    traits = {
+		        ZZZ_blank_idea_trait
+		    }
+			allowed = {
+				always = no
+			}
+			allowed_civil_war = {
+				always = yes
+			}
+			removal_cost = -1
+			modifier = {
+				stability_factor = -0.1
+				income_growth_factor = -0.1
+				resistance_growth_on_our_occupied_states = 0.15
+				civilian_intel_to_others = 10
+				line_change_production_efficiency_factor = -0.05
+			}
+		}
+		MEX_cartel_presence_major = {
+			picture = MEX_callistas
+		    traits = {
+		        ZZZ_blank_idea_trait
+		    }
+			allowed = {
+				always = no
+			}
+			allowed_civil_war = {
+				always = yes
+			}
+			removal_cost = -1
+			modifier = {
+				stability_factor = -0.15
+				income_growth_factor = -0.15
+				resistance_growth_on_our_occupied_states = 0.2
+				civilian_intel_to_others = 30
+				line_change_production_efficiency_factor = -0.15
+			}
+		}
+		MEX_cartel_presence_severe = {
+			picture = MEX_callistas
+		    traits = {
+		        ZZZ_blank_idea_trait
+		    }
+			allowed = {
+				always = no
+			}
+			allowed_civil_war = {
+				always = yes
+			}
+			removal_cost = -1
+			modifier = {
+				stability_factor = -0.25
+				income_growth_factor = -0.2
+				resistance_growth_on_our_occupied_states = 0.4
+				civilian_intel_to_others = 50
+				line_change_production_efficiency_factor = -0.3
+			}
+		}
+		MEX_collapsed_authority = {
+			picture = MEX_collapsed_authority
+		    traits = {
+		        ZZZ_blank_idea_trait
+		    }
+			allowed = {
+				always = no
+			}
+			allowed_civil_war = {
+				always = yes
+			}
+			removal_cost = -1
+			modifier = {
+				army_org_factor = -0.15
+				stability_factor = -0.25
+				consumer_goods_factor = 0.35
+				production_speed_buildings_factor = -0.25
+				industrial_capacity_factory = -0.15
+				income_growth_factor = -0.9
+			}
+		}
+	}
+}

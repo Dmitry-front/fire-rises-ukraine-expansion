@@ -1,0 +1,952 @@
+#HUN_Putinist_Policies = {
+#	HUN_Sabotage_Hungarian_Opposition = {
+
+#		priority = 10
+
+#		icon = generic_nationalism
+
+#		available = {
+#			TAG = HUN
+#			has_completed_focus = HUN_Emulate_Putinist_Policies
+#		}
+		
+#		days_remove = 42
+
+#		visible = {
+#			TAG = HUN
+			#
+#		}
+		#cost = 75
+		
+		#cancel_if_not_visible = yes
+
+		#is_good = yes
+		#modifier = {
+        	#political_power_gain = -0.15
+        	#consumer_goods_factor = 0.15
+    	#}
+		#remove_effect = {
+		     #add_popularity = {
+    			#ideology = social_democrat
+    			#popularity = -0.03
+			#}
+			#add_popularity = {
+    			#ideology = social_liberal
+    			#popularity = -0.05
+			#}
+			#add_popularity = {
+    			#ideology = market_liberal
+    			#popularity = -0.03
+			#}
+		#}
+	#}
+#	HUN_Build_National_Pride = {
+
+#		priority = 10
+
+#		icon = generic_nationalism
+
+#		available = {
+#			TAG = HUN
+#			has_completed_focus = HUN_Emulate_Putinist_Policies
+#		}
+		
+#		days_remove = 20
+
+#		visible = {
+#			TAG = HUN
+#			#
+#		}
+#		cost = 50
+		
+#		cancel_if_not_visible = yes
+
+#		is_good = yes
+#		fire_only_once = yes
+#		modifier = {
+#        	political_power_gain = -0.15
+#    	}
+#		remove_effect = {
+#		    add_popularity = {
+#    			ideology = authoritarian_democrat
+#    			popularity = 0.03
+#			}
+#			add_stability = 0.02
+#			add_war_support = 0.02
+#		}
+#	}
+#	HUN_Consolidate_Inner_Circle = {
+
+#		priority = 10
+
+#		icon = generic_nationalism
+
+#		available = {
+#			TAG = HUN
+#			has_completed_focus = HUN_Emulate_Putinist_Policies
+#		}
+		
+#		days_remove = 20
+
+#		visible = {
+#			TAG = HUN
+			#
+#		}
+#		cost = 50
+		
+#		cancel_if_not_visible = yes
+
+#		is_good = yes
+#		fire_only_once = yes
+#		modifier = {
+#        	political_power_gain = -0.15
+#    	}
+#		remove_effect = {
+#		    add_stability = 0.05
+#		    set_country_flag = Fidesz_Inner_Circle_Flag
+#		    add_country_leader_trait = Fidesz_Inner_Circle
+#		    hidden_effect = {
+#		    	HUN_Katalin_Novak_char = {
+#		    		add_country_leader_trait = Fidesz_Inner_Circle
+#		    	}
+#		    	HUN_Viktor_Orban_char = {
+#		    		add_country_leader_trait = Fidesz_Inner_Circle
+#		    	}
+#		    }
+#		}
+#	}
+#	HUN_Repeal_the_ban_on_the_Hungarian_Guard_Movement = {
+
+#		priority = 10
+
+#		icon = generic_nationalism
+
+#		available = {
+#			TAG = HUN
+#			has_completed_focus = HUN_Emulate_Putinist_Policies
+#		}
+		
+#		days_remove = 25
+
+#		visible = {
+#			TAG = HUN
+			#
+#		}
+#		cost = 75
+		
+#		cancel_if_not_visible = yes
+
+#		is_good = yes
+#		fire_only_once = yes
+#		modifier = {
+        	
+#    	}
+#		remove_effect = {
+#		    add_popularity = {
+#    			ideology = authoritarian_democrat
+#    			popularity = 0.03
+#			}
+#			add_popularity = {
+#    			ideology = national_socialist
+#    			popularity = 0.01
+#			}
+#			add_popularity = {
+#    			ideology = fascist
+#    			popularity = 0.03
+#			}
+#			add_popularity = {
+#    			ideology = nationalist
+#    			popularity = 0.05
+#			}
+#			custom_effect_tooltip = HUN_Hungarian_Guard_Warning
+#			set_country_flag = HUN_Hungarian_Guard_Flag
+#		}
+#	}
+#	HUN_Fight_the_Homosexual_Agenda = {
+
+#		priority = 10
+
+#		icon = generic_nationalism
+
+#		available = {
+#			TAG = HUN
+#			has_completed_focus = HUN_Emulate_Putinist_Policies
+#		}
+		
+#		days_remove = 35
+
+#		visible = {
+#			TAG = HUN
+			#
+#		}
+#		fire_only_once = yes
+#		cost = 25
+		
+#		cancel_if_not_visible = yes
+
+#		is_good = yes
+#		modifier = {
+#       	political_power_gain = -0.25
+
+#    	}
+#		remove_effect = {
+#		   add_stability = 0.05
+#		   hidden_effect = {
+#		   		country_event = { #Passing of Anti-LGBT Laws
+#					id = Hungary.20
+#					days = 10 
+#				}
+#			}
+#		}
+#	}
+	
+#	HUN_Auction_Infrastructure_Contracts = {
+
+#		priority = 10
+
+#		icon = generic_nationalism
+
+#		available = {
+#			TAG = HUN
+#			has_completed_focus = HUN_Emulate_Putinist_Policies
+#			has_completed_focus = HUN_Subsidized_Cronyism
+#			NOT = { has_country_flag = HUN_Contract_Auctioning }
+#		}
+		
+#		days_remove = 200
+
+#		visible = {
+#			TAG = HUN
+			#
+#		}
+#		cancel_if_not_visible = yes
+
+#		is_good = yes
+#		cancel_trigger = {
+#			is_subject = yes
+#			has_capitulated = yes
+#		}
+#		modifier = {
+        	
+#       	production_speed_infrastructure_factor = 0.35
+#   	}
+#    	cancel_effect = {
+#    		clr_country_flag = HUN_Contract_Auctioning
+#    		add_stability = -0.15
+#    	}
+#    	cost = 100
+#		complete_effect = {
+#			subtract_from_variable  = { var = income_var value = 1 }
+#			set_country_flag = HUN_Contract_Auctioning
+#		}
+#		remove_effect = {
+#		   clr_country_flag = HUN_Contract_Auctioning
+#		}
+#	}
+#	HUN_Auction_Railroad_Contracts = {
+
+#		priority = 10
+
+#		icon = generic_nationalism
+
+#		available = {
+#			TAG = HUN
+#			has_completed_focus = HUN_Emulate_Putinist_Policies
+#			has_completed_focus = HUN_Subsidized_Cronyism
+			#has certain amount of money
+#			NOT = { has_country_flag = HUN_Contract_Auctioning }
+#		}
+		
+#		days_remove = 125
+
+#		visible = {
+#			TAG = HUN
+			#
+#		}
+		
+#		cancel_if_not_visible = yes
+
+#		is_good = yes
+#		cancel_trigger = {
+#			is_subject = yes
+#			has_capitulated = yes
+#		}
+#		modifier = {
+        	
+#       	production_speed_rail_way_factor = 0.35
+#    	}
+#    	cancel_effect = {
+#    		clr_country_flag = HUN_Contract_Auctioning
+#    		add_stability = -0.05
+#    	}
+#    	cost = 100
+#		complete_effect = {
+#			subtract_from_variable  = { var = income_var value = 1 }
+#			set_country_flag = HUN_Contract_Auctioning
+#		}
+#		remove_effect = {
+#		   clr_country_flag = HUN_Contract_Auctioning
+#		}
+#	}
+#	HUN_Auction_Factory_Contracts = {
+
+#		priority = 10
+
+#		icon = generic_nationalism
+
+#		available = {
+#			TAG = HUN
+#			has_completed_focus = HUN_Emulate_Putinist_Policies
+#			has_completed_focus = HUN_Subsidized_Cronyism
+			#has certain amount of money
+#			NOT = { has_country_flag = HUN_Contract_Auctioning }
+#		}
+		
+#		days_remove = 150
+
+#		visible = {
+#			TAG = HUN
+			#
+#		}
+		
+#		cancel_if_not_visible = yes
+
+#		is_good = yes
+#		cancel_trigger = {
+#			is_subject = yes
+#			has_capitulated = yes
+#		}
+#		modifier = {
+        	
+#        	production_speed_industrial_complex_factor = 0.25
+#    	}
+#    	cancel_effect = {
+#    		clr_country_flag = HUN_Contract_Auctioning
+#    		add_stability = -0.25
+#    	}
+#    	cost = 100
+#		complete_effect = {
+#			subtract_from_variable  = { var = income_var value = 1 }
+#			set_country_flag = HUN_Contract_Auctioning
+#		}
+#		remove_effect = {
+#		   clr_country_flag = HUN_Contract_Auctioning
+#		}
+#	}
+#}
+#HUN_European_Beneficiaries = {
+	#HUN_Request_German_Cash_Package = {
+
+#		priority = 10
+
+#		icon = generic_nationalism
+
+#		available = {
+#			TAG = HUN
+#			has_completed_focus = HUN_Demand_More_Beneficiaries
+#		}
+
+#		visible = {
+#			TAG = HUN
+			#
+#		}
+#		days_remove = 365
+#		cancel_if_not_visible = yes
+
+#		is_good = yes
+#		complete_effect = {
+#		    GER = {
+#		    	country_event = {
+#		    		id = Hungary.22
+#		    		days = 1
+#		    	}
+#		    }
+#		}
+#	}
+#	HUN_Request_Italian_Cash_Package = {
+
+#		priority = 10
+
+#		icon = generic_nationalism
+
+#		available = {
+#			TAG = HUN
+#			has_completed_focus = HUN_Demand_More_Beneficiaries
+#		}
+
+#		visible = {
+#			TAG = HUN
+			#
+#		}
+#		days_remove = 365
+#		cancel_if_not_visible = yes
+
+#		is_good = yes
+#		complete_effect = {
+#		    ITA = {
+#		    	country_event = {
+#		    		id = Hungary.22
+#		    		days = 1
+#		    	}
+#		    }
+#		}
+#	}
+#	HUN_Request_French_Cash_Package = {
+
+#		priority = 10
+
+#		icon = generic_nationalism
+
+#		available = {
+#			TAG = HUN
+#			has_completed_focus = HUN_Demand_More_Beneficiaries
+#		}
+
+#		visible = {
+#			TAG = HUN
+			#
+#		}
+#		days_remove = 365
+#		cancel_if_not_visible = yes
+
+#		is_good = yes
+#		complete_effect = {
+#		    FRA = {
+#		    	country_event = {
+#		    		id = Hungary.22
+#		    		days = 1
+#		    	}
+#		    }
+#		}
+#	}
+#}
+#HUN_Hungarian_Arts = {
+#	HUN_Fund_Folk_Festivals = {
+
+#		priority = 10
+
+#		icon = generic_nationalism
+
+#		available = {
+#			TAG = HUN
+#			has_completed_focus = HUN_Demand_More_Beneficiaries
+#		}
+
+#		visible = {
+#			TAG = HUN
+			#
+#		}
+#		fire_only_once = yes
+#		custom_cost_text = dx_more_than_1B
+#		custom_cost_trigger = {
+#			check_variable = { 
+#				var = income_var 
+#				value = 1.00
+#			}
+#		}
+#		days_remove = 365
+#		cancel_if_not_visible = yes
+
+#		is_good = yes
+#		complete_effect = {
+#		   country_event = {
+#		   		id = Hungary.26
+#		    	days = 20
+#		   }
+#		}
+#	}
+#	HUN_Fund_Local_Artists = {
+
+#		priority = 10
+
+#		icon = generic_nationalism
+
+#		available = {
+#			TAG = HUN
+#			has_completed_focus = HUN_Demand_More_Beneficiaries
+#		}
+
+#		visible = {
+#			TAG = HUN
+			#
+#		}
+#		fire_only_once = yes
+#		custom_cost_text = dx_more_than_1B
+#		custom_cost_trigger = {
+#			check_variable = { 
+#				var = income_var 
+#				value = 1.00
+#			}
+#		}
+#		cancel_if_not_visible = yes
+
+#		is_good = yes
+#		complete_effect = {
+#			add_political_power = 25
+#			hidden_effect = {
+#			 country_event = {
+#			   		id = Hungary.27
+#			    	days = 45
+#			   }
+#			}
+#		}
+#	}
+#	HUN_Send_Hungarian_Abroad = {
+
+#		priority = 10
+
+#		icon = generic_nationalism
+
+#		available = {
+#			TAG = HUN
+#			has_completed_focus = HUN_Demand_More_Beneficiaries
+#		}
+
+#		visible = {
+#			TAG = HUN
+			#
+#		}
+#		fire_only_once = yes
+#		custom_cost_text = dx_more_than_1B
+#		custom_cost_trigger = {
+#			check_variable = { 
+#				var = income_var 
+#				value = 1.00
+#			}
+#		}
+#		days_remove = 45
+#		cancel_if_not_visible = yes
+
+#		is_good = yes
+#		remove_effect = {
+#			set_country_flag = Hungarians_Abroad_flag
+#		}
+#	}
+#	HUN_Contact_Slovakian_Diaspora = {
+
+#		priority = 10
+
+#		icon = generic_nationalism
+
+#		available = {
+#			TAG = HUN
+#			has_completed_focus = HUN_Demand_More_Beneficiaries
+#			has_country_flag = Hungarians_Abroad_flag
+#		}
+#		fire_only_once = yes
+#		visible = {
+#			TAG = HUN
+#			has_country_flag = Hungarians_Abroad_flag
+#		}
+#		cost = 25
+		
+#		cancel_if_not_visible = yes
+
+#		is_good = yes
+#		complete_effect = {
+#			set_country_flag = HUN_Contacted_Slovakian_Diaspora_flag
+#		}
+#	}
+#	HUN_Contact_Ukrainian_Diaspora = {
+
+#		priority = 10
+
+#		icon = generic_nationalism
+
+#		available = {
+#			TAG = HUN
+#			has_completed_focus = HUN_Demand_More_Beneficiaries
+#			has_country_flag = Hungarians_Abroad_flag
+#		}
+#		fire_only_once = yes
+#		visible = {
+#			TAG = HUN
+#			has_country_flag = Hungarians_Abroad_flag
+#		}
+#		cost = 25
+		
+#		cancel_if_not_visible = yes
+
+#		is_good = yes
+#		complete_effect = {
+#			set_country_flag = HUN_Contacted_Ukrainian_Diaspora_flag
+#		}
+#	}
+#	HUN_Contact_North_American_Diaspora = {
+
+#		priority = 10
+
+#		icon = generic_nationalism
+
+#		available = {
+#			TAG = HUN
+#			has_completed_focus = HUN_Demand_More_Beneficiaries
+#			has_country_flag = Hungarians_Abroad_flag
+#		}
+#		fire_only_once = yes
+#		visible = {
+#			TAG = HUN
+#			has_country_flag = Hungarians_Abroad_flag
+#		}
+#		cost = 25
+		
+#		cancel_if_not_visible = yes
+
+#		is_good = yes
+#		complete_effect = {
+#			set_country_flag = HUN_Contacted_North_American_Diaspora_flag
+#		}
+#	}
+#	HUN_Contact_Romanian_Diaspora = {
+
+#		priority = 10
+
+#		icon = generic_nationalism
+
+#		available = {
+#			TAG = HUN
+#			has_completed_focus = HUN_Demand_More_Beneficiaries
+#			has_country_flag = Hungarians_Abroad_flag
+#		}
+#		fire_only_once = yes
+#		visible = {
+#			TAG = HUN
+#			has_country_flag = Hungarians_Abroad_flag
+#		}
+#		cost = 25
+		
+#		cancel_if_not_visible = yes
+
+#		is_good = yes
+#		complete_effect = {
+#			set_country_flag = HUN_Contacted_Romanian_Diaspora_flag
+#		}
+#	}
+#	HUN_Host_Foreign_Exchange_Programs = {
+
+#		priority = 10
+
+#		icon = generic_nationalism
+
+#		available = {
+#			TAG = HUN
+#			has_completed_focus = HUN_Demand_More_Beneficiaries
+#		}
+
+#		visible = {
+#			TAG = HUN
+			#
+#		}
+#		custom_cost_text = dx_more_than_1B
+#		custom_cost_trigger = {
+#			check_variable = { 
+#				var = income_var 
+#				value = 1.00
+#			}
+#		}
+#		days_remove = 365
+#		cancel_if_not_visible = yes
+#		is_good = yes
+#		modifier = {
+#			research_speed_factor = 0.10
+#		}
+#	}
+#}
+#HUN_EU_Contractors = {
+#	HUN_Invite_Military_Industrialists = {
+
+#		priority = 10
+
+#		icon = generic_nationalism
+
+#		available = {
+#			TAG = HUN
+#			has_completed_focus = HUN_EU_Military_Contractors
+#		}
+
+#		visible = {
+#			TAG = HUN
+			#
+#		}
+#		custom_cost_text = dx_more_than_1B
+#		custom_cost_trigger = {
+#			check_variable = { 
+#				var = income_var 
+#				value = 1.00
+#			}
+#		}
+#		days_remove = 80
+#		cancel_if_not_visible = yes
+
+#		is_good = yes
+#		modifier = {
+#			military_factory_donations = 2
+#		}
+#	}
+#	HUN_Purchase_Air_Contracts = {
+
+#		priority = 10
+
+#		icon = generic_nationalism
+
+#		available = {
+#			TAG = HUN
+#			has_completed_focus = HUN_EU_Military_Contractors
+#		}
+
+#		visible = {
+#			TAG = HUN
+			#
+#		}
+#		custom_cost_text = dx_more_than_1B
+#		custom_cost_trigger = {
+#			check_variable = { 
+#				var = income_var 
+#				value = 1.00
+#			}
+#		}
+#		days_remove = 80
+#		cancel_if_not_visible = yes
+
+#		is_good = yes
+#		modifier = {
+#			military_factory_donations = 1
+#			production_speed_air_base_factor = 0.25 
+#		}
+#	}
+#	HUN_Request_Naval_Access_Through_Romania = {
+
+#		priority = 10
+
+#		icon = generic_nationalism
+
+#		available = {
+#			TAG = HUN
+#			has_completed_focus = HUN_EU_Military_Contractors
+#			ROM = {
+#				is_in_faction_with = HUN
+#			}
+#		}
+
+#		visible = {
+#			TAG = HUN
+			#
+#		}
+#		fire_only_once = yes
+#		cost = 100
+#		cancel_if_not_visible = yes
+
+#		is_good = yes
+#		complete_effect = {
+#			set_country_flag = HUN_Naval_Access_flag
+
+#		}
+#	}
+#	HUN_Request_Romanian_Ship_Designs = {
+
+#		priority = 10
+
+#		icon = generic_nationalism
+
+#		available = {
+#			TAG = HUN
+#			has_completed_focus = HUN_EU_Military_Contractors
+#			ROM = {
+#				is_in_faction_with = HUN
+#			}
+#			has_country_flag = HUN_Naval_Access_flag
+#		}
+
+#		visible = {
+#			TAG = HUN
+			#
+#		}
+#		fire_only_once = yes
+#		custom_cost_text = dx_more_than_1B
+#		custom_cost_trigger = {
+#			check_variable = { 
+#				var = income_var 
+#				value = 1.00
+#			}
+#		}
+#		cancel_if_not_visible = yes
+
+#		is_good = yes
+#		complete_effect = {
+#			set_country_flag = HUN_Romanian_Designs_flag
+#			hidden_effect = {
+#				if = {
+#					limit = { not = { has_dlc = "Man the Guns" } }
+#					set_technology = {
+#						early_destroyer = 1
+#						basic_destroyer = 1
+#						early_light_cruiser = 1
+#						basic_light_cruiser = 1
+#						early_submarine = 1
+#						transport = 1
+#					}
+#				}
+#				if = {
+#					limit = { has_dlc = "Man the Guns" }
+#					set_technology = {
+#						early_ship_hull_light = 1
+#						basic_ship_hull_light = 1
+#						early_ship_hull_cruiser = 1
+#						basic_ship_hull_cruiser = 1
+#						early_ship_hull_submarine = 1
+#						smoke_generator = 1
+#						sonar = 1
+#						basic_depth_charges = 1
+#						improved_airplane_launcher = 1
+#						basic_cruiser_armor_scheme = 1
+#						basic_torpedo = 1
+#						basic_battery = 1
+#						basic_light_battery = 1
+#						basic_medium_battery = 1
+#						#basic_secondary_battery = 1
+#						mtg_transport = 1
+#						basic_naval_mines = 1
+#						submarine_mine_laying = 1
+#					}
+#				}
+#				if = {
+#					limit = { not = { has_dlc = "Man the Guns" } }	
+#				}
+#				if = {
+#					limit = { has_dlc = "Man the Guns" }
+					## Corvettes ##
+#					create_equipment_variant = { #Corvette 2
+#						name = "Project 1241 Corvette"
+#						type = ship_hull_light_2
+#						parent_version = 0
+#						modules = {
+#							fixed_ship_battery_slot = ship_light_battery_2
+#							fixed_ship_anti_air_slot = ship_anti_air_1
+#							fixed_ship_fire_control_system_slot = ship_fire_control_system_0
+#							fixed_ship_radar_slot = empty
+#							fixed_ship_engine_slot = light_ship_engine_2
+#							fixed_ship_torpedo_slot = ship_torpedo_1
+#							mid_1_custom_slot = ship_torpedo_1
+#							rear_1_custom_slot = ship_depth_charge_1
+#						}
+#						obsolete = no
+#					}
+					## Frigates ##
+#					create_equipment_variant = { #Frigate 2
+#						name = "Regele Ferdinand-class"
+#						type = ship_hull_cruiser_2
+#						parent_version = 0
+#						modules = {
+#							fixed_ship_battery_slot = ship_light_medium_battery_2
+#							fixed_ship_anti_air_slot = ship_anti_air_1
+#							fixed_ship_fire_control_system_slot = ship_fire_control_system_0
+#							fixed_ship_radar_slot = empty
+#							fixed_ship_engine_slot = cruiser_ship_engine_2
+#							fixed_ship_armor_slot = ship_armor_cruiser_2
+#							fixed_ship_secondaries_slot = ship_secondaries_1
+#							front_1_custom_slot = ship_light_medium_battery_2
+#							mid_1_custom_slot = ship_airplane_launcher_1
+#							mid_2_custom_slot = ship_anti_air_1
+#							rear_1_custom_slot = empty
+#						}
+#						obsolete = no
+#					}
+#					## Submarines ##
+#					create_equipment_variant = { #Diesel Sub 1
+#						name = "Kilo-class"
+#						type = ship_hull_submarine_1
+#						parent_version = 0
+#						modules = {
+#							fixed_ship_torpedo_slot = ship_torpedo_sub_1
+#							fixed_ship_engine_slot = sub_ship_engine_1
+#							rear_1_custom_slot = empty
+#						}
+#						obsolete = no
+#					}			
+#				}
+	
+#			}
+#		}
+#	}
+#	HUN_Rent_Dockyards = {
+
+#		priority = 10
+
+#		icon = generic_nationalism
+
+#		available = {
+#			TAG = HUN
+#			has_completed_focus = HUN_EU_Military_Contractors
+#			ROM = {
+#				is_in_faction_with = HUN
+#			}
+#			has_country_flag = HUN_Warship_Debut_flag
+#		}
+
+#		visible = {
+#			TAG = HUN
+#			has_country_flag = HUN_Warship_Debut_flag
+			#
+#		}
+#		custom_cost_text = dx_more_than_1B
+#		custom_cost_trigger = {
+#			check_variable = { 
+#				var = income_var 
+#				value = 1.00
+#			}
+#		}
+#		days_remove = 365
+#		cancel_if_not_visible = yes
+
+#		is_good = yes
+#		modifier = {
+#			dockyard_donations = 2
+#		}
+#	}
+#	HUN_Expand_Warship_Battalion = {
+
+#		priority = 10
+
+#		icon = generic_nationalism
+
+#		available = {
+#			TAG = HUN
+#			has_completed_focus = HUN_EU_Military_Contractors
+#			ROM = {
+#				is_in_faction_with = HUN
+#			}
+#			has_country_flag = HUN_Naval_Access_flag
+#			has_country_flag = HUN_Romanian_Designs_flag
+#		}
+
+#		visible = {
+#			TAG = HUN
+#			has_country_flag = HUN_Naval_Access_flag
+#			has_country_flag = HUN_Romanian_Designs_flag
+			#
+#		}
+#		custom_cost_text = dx_more_than_1B
+#		custom_cost_trigger = {
+#			check_variable = { 
+#				var = income_var 
+#				value = 1.00
+#			}
+#		}
+#		fire_only_once = yes
+#		days_remove = 180
+#		cancel_if_not_visible = yes
+
+#		is_good = yes
+#		remove_effect = {
+#		set_country_flag = HUN_Warship_Debut_flag
+#			if = {
+#				limit = { has_dlc = "Man the Guns" }
+#				load_oob = "HUN_2000_naval_mtg"
+#			}
+#			if = {
+#				limit = { NOT = { has_dlc = "Man the Guns" } }
+#				load_oob = "HUN_2000_naval_legacy"
+#			}
+#		}
+#	}
+#}

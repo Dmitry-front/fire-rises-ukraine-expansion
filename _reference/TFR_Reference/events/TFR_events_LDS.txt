@@ -1,0 +1,164 @@
+	###########################
+	# LDS Events
+	###########################
+
+	add_namespace = LDS
+	add_namespace = LDS_news
+	
+	#Warren Jeffs broken out of Prison
+	country_event = {
+		id = LDS.1
+		title = LDS.1.t
+		desc = LDS.1.d
+		picture = GFX_FLDS_Women
+		
+		fire_only_once = yes
+		is_triggered_only = yes
+		immediate = {
+			hidden_effect = {
+				random_list = {
+	    			30 = {
+						LDS = {
+							country_event = { 
+								id = LDS.3
+								days = 15
+							}
+						}
+					}
+					70 = {
+						LDS = {
+							country_event = { 
+								id = LDS.4
+								days = 10
+							}
+						}
+					}
+				}
+			}
+		}
+		 
+
+		option = {
+			name = LDS.1.a
+			add_popularity = {
+				ideology = nationalist
+				popularity = 0.05
+			}
+			
+		}
+	}
+
+	#Fundamentalist Volunteers
+	country_event = {
+		id = LDS.2
+		title = LDS.2.t
+		desc = LDS.2.d
+		picture = GFX_FLDS_Women
+		
+		fire_only_once = yes
+		is_triggered_only = yes
+		
+		 
+
+		option = {
+			name = LDS.2.a
+			load_oob = "LDS_Fundamentalists_oob"
+			add_popularity = {
+				ideology = nationalist
+				popularity = 0.10
+			}
+			add_ideas = LDS_Mormon_ISIS_idea
+			swap_ideas = {
+				remove_idea = LDS_divided_mormons_idea
+				add_idea = LDS_divided_mormons_2_idea
+			}
+		}
+	}
+	#Jeffs arrives in our territory
+	country_event = {
+		id = LDS.3
+		title = LDS.3.t
+		desc = LDS.3.d
+		picture = GFX_FLDS_Jeffs
+		
+		fire_only_once = yes
+		is_triggered_only = yes
+		
+		 
+
+		option = {
+			name = LDS.3.a
+			add_popularity = {
+				ideology = nationalist
+				popularity = 0.20
+			}
+			swap_ideas = {
+				remove_idea = LDS_divided_mormons_2_idea
+				add_idea = LDS_divided_mormons_3_idea
+			}
+			country_event = { 
+				id = LDS.5
+				days = 90
+			}
+		}
+	}
+	#Jeffs dies in Texas
+	country_event = {
+		id = LDS.4
+		title = LDS.4.t
+		desc = LDS.4.d
+		picture = GFX_FLDS_Funeral
+		
+		fire_only_once = yes
+		is_triggered_only = yes
+		
+		 
+
+		option = {
+			name = LDS.4.a
+			add_popularity = {
+				ideology = nationalist
+				popularity = -0.10
+			}
+			swap_ideas = {
+				remove_idea = LDS_divided_mormons_2_idea
+				add_idea = LDS_divided_mormons_3_NoJeffs_idea
+			}
+		}
+	}
+	country_event = {
+		id = LDS.5
+		title = LDS.5.t
+		desc = LDS.5.d
+		picture = GFX_FLDS_Jeffs
+		
+		fire_only_once = yes
+		is_triggered_only = yes
+		
+		 
+
+		option = {
+			name = LDS.5.a
+			add_popularity = {
+				ideology = nationalist
+				popularity = 0.10
+			}
+			set_cosmetic_tag = LDS_Mormon_ISIS_cosmetic
+			add_country_leader_role = {
+				character = LDS_Warren_Jeffs_char
+			    promote_leader = yes
+				country_leader = {
+					ideology = theocracy
+					traits = {
+						LDS_The_Prophet
+					}
+					expire = "1.1.1.1"
+					id = -1
+				}
+			}
+			set_politics = {
+				ruling_party = nationalist
+				elections_allowed = no
+   			}
+		}
+	}

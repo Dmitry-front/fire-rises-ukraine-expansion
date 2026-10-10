@@ -1,0 +1,986 @@
+#Agendas
+generic_weekly_agenda_check = {
+	#Good Agendas
+	generic_national_stabilization_agenda_effect = yes
+	generic_low_taxation_agenda_effect = yes
+	generic_sacred_endeavor_agenda_effect = yes
+	generic_for_the_common_man_agenda_effect = yes
+	generic_bread_and_circuses_agenda_effect = yes
+	#Bad Agendas
+	generic_consumer_advocacy_agenda_effect = yes
+	generic_political_unity_agenda_effect = yes
+	generic_anti_welfare_agenda_effect = yes
+	generic_upholding_expectations_agenda_effect = yes
+	generic_practical_finances_agenda_effect = yes
+	generic_eyes_wide_shut_agenda_effect = yes
+}
+
+generic_national_stabilization_agenda_effect = {
+	if = {
+		limit = {
+			has_country_flag = generic_national_stabilization_agenda_flag
+		}
+		if = {
+			limit = {
+				NOT = {
+					has_stability < 0.85
+				}
+			}
+			#Add modifier (only once)
+			if = {
+				limit = {
+					meta_trigger = {
+						text = {
+							NOT = {
+								has_power_balance_modifier = {
+									id = [TAG]_trust_bop
+									modifier = generic_national_stabilization_agenda_bop_modifier
+								}
+							}
+						}
+						TAG = "[ROOT.GetTag]"
+					}
+				}
+				meta_effect = {
+					text = {
+						add_power_balance_modifier = {
+							id = [TAG]_trust_bop
+							modifier = generic_national_stabilization_agenda_bop_modifier
+						}
+					}
+					TAG = "[ROOT.GetTag]"
+				}
+			}
+		}
+		else = {
+			if = {
+				limit = {
+					meta_trigger = {
+						text = {
+							has_power_balance_modifier = {
+								id = [TAG]_trust_bop
+								modifier = generic_national_stabilization_agenda_bop_modifier
+							}
+						}
+						TAG = "[ROOT.GetTag]"
+					}
+				}
+				meta_effect = {
+					text = {
+						remove_power_balance_modifier = {
+							id = [TAG]_trust_bop
+							modifier = generic_national_stabilization_agenda_bop_modifier
+						}
+					}
+					TAG = "[ROOT.GetTag]"
+				}
+			}
+		}
+	}
+	else_if = {
+		limit = {
+			meta_trigger = {
+				text = {
+					has_power_balance_modifier = {
+						id = [TAG]_trust_bop
+						modifier = generic_national_stabilization_agenda_bop_modifier
+					}
+				}
+				TAG = "[ROOT.GetTag]"
+			}
+		}
+		meta_effect = {
+			text = {
+				remove_power_balance_modifier = {
+					id = [TAG]_trust_bop
+					modifier = generic_national_stabilization_agenda_bop_modifier
+				}
+			}
+			TAG = "[ROOT.GetTag]"
+		}
+	}
+}
+
+generic_low_taxation_agenda_effect = {
+	if = {
+		limit = {
+			has_country_flag = generic_low_taxation_agenda_flag
+		}
+		if = {
+			limit = {
+				check_variable = {
+					var = modifier@tax_personal_rate
+					value = 0.1
+					compare = less_than_or_equals
+				}
+			}
+			#Add modifier (only once)
+			if = {
+				limit = {
+					meta_trigger = {
+						text = {
+							NOT = {
+								has_power_balance_modifier = {
+									id = [TAG]_trust_bop
+									modifier = generic_low_taxation_agenda_bop_modifier
+								}
+							}
+						}
+						TAG = "[ROOT.GetTag]"
+					}
+				}
+				meta_effect = {
+					text = {
+						add_power_balance_modifier = {
+							id = [TAG]_trust_bop
+							modifier = generic_low_taxation_agenda_bop_modifier
+						}
+					}
+					TAG = "[ROOT.GetTag]"
+				}
+			}
+		}
+		else = {
+			if = {
+				limit = {
+					meta_trigger = {
+						text = {
+							has_power_balance_modifier = {
+								id = [TAG]_trust_bop
+								modifier = generic_low_taxation_agenda_bop_modifier
+							}
+						}
+						TAG = "[ROOT.GetTag]"
+					}
+				}
+				meta_effect = {
+					text = {
+						remove_power_balance_modifier = {
+							id = [TAG]_trust_bop
+							modifier = generic_low_taxation_agenda_bop_modifier
+						}
+					}
+					TAG = "[ROOT.GetTag]"
+				}
+			}
+		}
+	}
+	else_if = {
+		limit = {
+			meta_trigger = {
+				text = {
+					has_power_balance_modifier = {
+						id = [TAG]_trust_bop
+						modifier = generic_low_taxation_agenda_bop_modifier
+					}
+				}
+				TAG = "[ROOT.GetTag]"
+			}
+		}
+		meta_effect = {
+			text = {
+				remove_power_balance_modifier = {
+					id = [TAG]_trust_bop
+					modifier = generic_low_taxation_agenda_bop_modifier
+				}
+			}
+			TAG = "[ROOT.GetTag]"
+		}
+	}
+}
+
+generic_sacred_endeavor_agenda_effect = {
+	if = {
+		limit = {
+			has_country_flag = generic_sacred_endeavor_agenda_flag
+		}
+		if = {
+			limit = {
+				NOT = {
+					has_war_support < 0.7
+				}
+			}
+			#Add modifier (only once)
+			if = {
+				limit = {
+					meta_trigger = {
+						text = {
+							NOT = {
+								has_power_balance_modifier = {
+									id = [TAG]_trust_bop
+									modifier = generic_sacred_endeavor_agenda_bop_modifier
+								}
+							}
+						}
+						TAG = "[ROOT.GetTag]"
+					}
+				}
+				meta_effect = {
+					text = {
+						add_power_balance_modifier = {
+							id = [TAG]_trust_bop
+							modifier = generic_sacred_endeavor_agenda_bop_modifier
+						}
+					}
+					TAG = "[ROOT.GetTag]"
+				}
+			}
+		}
+		else = {
+			if = {
+				limit = {
+					meta_trigger = {
+						text = {
+							has_power_balance_modifier = {
+								id = [TAG]_trust_bop
+								modifier = generic_sacred_endeavor_agenda_bop_modifier
+							}
+						}
+						TAG = "[ROOT.GetTag]"
+					}
+				}
+				meta_effect = {
+					text = {
+						remove_power_balance_modifier = {
+							id = [TAG]_trust_bop
+							modifier = generic_sacred_endeavor_agenda_bop_modifier
+						}
+					}
+					TAG = "[ROOT.GetTag]"
+				}
+			}
+		}
+	}
+	else_if = {
+		limit = {
+			meta_trigger = {
+				text = {
+					has_power_balance_modifier = {
+						id = [TAG]_trust_bop
+						modifier = generic_sacred_endeavor_agenda_bop_modifier
+					}
+				}
+				TAG = "[ROOT.GetTag]"
+			}
+		}
+		meta_effect = {
+			text = {
+				remove_power_balance_modifier = {
+					id = [TAG]_trust_bop
+					modifier = generic_sacred_endeavor_agenda_bop_modifier
+				}
+			}
+			TAG = "[ROOT.GetTag]"
+		}
+	}
+}
+
+generic_for_the_common_man_agenda_effect = {
+	if = {
+		limit = {
+			has_country_flag = generic_for_the_common_man_agenda_flag
+		}
+		if = {
+			limit = {
+				OR = {
+					has_idea = high_poverty
+					has_idea = higher_poverty
+				}
+			}
+			#Add modifier (only once)
+			if = {
+				limit = {
+					meta_trigger = {
+						text = {
+							NOT = {
+								has_power_balance_modifier = {
+									id = [TAG]_trust_bop
+									modifier = generic_for_the_common_man_agenda_bop_modifier
+								}
+							}
+						}
+						TAG = "[ROOT.GetTag]"
+					}
+				}
+				meta_effect = {
+					text = {
+						add_power_balance_modifier = {
+							id = [TAG]_trust_bop
+							modifier = generic_for_the_common_man_agenda_bop_modifier
+						}
+					}
+					TAG = "[ROOT.GetTag]"
+				}
+			}
+		}
+		else = {
+			if = {
+				limit = {
+					meta_trigger = {
+						text = {
+							has_power_balance_modifier = {
+								id = [TAG]_trust_bop
+								modifier = generic_for_the_common_man_agenda_bop_modifier
+							}
+						}
+						TAG = "[ROOT.GetTag]"
+					}
+				}
+				meta_effect = {
+					text = {
+						remove_power_balance_modifier = {
+							id = [TAG]_trust_bop
+							modifier = generic_for_the_common_man_agenda_bop_modifier
+						}
+					}
+					TAG = "[ROOT.GetTag]"
+				}
+			}
+		}
+	}
+	else_if = {
+		limit = {
+			meta_trigger = {
+				text = {
+					has_power_balance_modifier = {
+						id = [TAG]_trust_bop
+						modifier = generic_for_the_common_man_agenda_bop_modifier
+					}
+				}
+				TAG = "[ROOT.GetTag]"
+			}
+		}
+		meta_effect = {
+			text = {
+				remove_power_balance_modifier = {
+					id = [TAG]_trust_bop
+					modifier = generic_for_the_common_man_agenda_bop_modifier
+				}
+			}
+			TAG = "[ROOT.GetTag]"
+		}
+	}
+}
+
+generic_bread_and_circuses_agenda_effect = {
+	set_temp_variable = {
+		var = civ_factory_ratio_var_temp
+		value = num_of_civilian_factories
+	}
+	divide_temp_variable = {
+		var = civ_factory_ratio_var_temp
+		value = num_of_factories
+	}
+	if = {
+		limit = {
+			has_country_flag = generic_bread_and_circuses_agenda_flag
+		}
+		if = {
+			limit = {
+				check_variable = {
+					var = civ_factory_ratio_var_temp
+					value = 0.5
+					compare = greater_than_or_equals
+				}
+			}
+			#Add modifier (only once)
+			if = {
+				limit = {
+					meta_trigger = {
+						text = {
+							NOT = {
+								has_power_balance_modifier = {
+									id = [TAG]_trust_bop
+									modifier = generic_bread_and_circuses_agenda_bop_modifier
+								}
+							}
+						}
+						TAG = "[ROOT.GetTag]"
+					}
+				}
+				meta_effect = {
+					text = {
+						add_power_balance_modifier = {
+							id = [TAG]_trust_bop
+							modifier = generic_bread_and_circuses_agenda_bop_modifier
+						}
+					}
+					TAG = "[ROOT.GetTag]"
+				}
+			}
+		}
+		else = {
+			if = {
+				limit = {
+					meta_trigger = {
+						text = {
+							has_power_balance_modifier = {
+								id = [TAG]_trust_bop
+								modifier = generic_bread_and_circuses_agenda_bop_modifier
+							}
+						}
+						TAG = "[ROOT.GetTag]"
+					}
+				}
+				meta_effect = {
+					text = {
+						remove_power_balance_modifier = {
+							id = [TAG]_trust_bop
+							modifier = generic_bread_and_circuses_agenda_bop_modifier
+						}
+					}
+					TAG = "[ROOT.GetTag]"
+				}
+			}
+		}
+	}
+	else_if = {
+		limit = {
+			meta_trigger = {
+				text = {
+					has_power_balance_modifier = {
+						id = [TAG]_trust_bop
+						modifier = generic_bread_and_circuses_agenda_bop_modifier
+					}
+				}
+				TAG = "[ROOT.GetTag]"
+			}
+		}
+		meta_effect = {
+			text = {
+				remove_power_balance_modifier = {
+					id = [TAG]_trust_bop
+					modifier = generic_bread_and_circuses_agenda_bop_modifier
+				}
+			}
+			TAG = "[ROOT.GetTag]"
+		}
+	}
+}
+
+#Bad Agendas
+generic_consumer_advocacy_agenda_effect = {
+	if = {
+		limit = {
+			has_country_flag = generic_consumer_advocacy_agenda_flag
+		}
+		if = {
+			limit = {
+				check_variable = {
+					var = modifier@consumer_goods_expected_value
+					value = 0.25
+					compare = less_than_or_equals
+				}
+			}
+			#Add modifier (only once)
+			if = {
+				limit = {
+					meta_trigger = {
+						text = {
+							NOT = {
+								has_power_balance_modifier = {
+									id = [TAG]_trust_bop
+									modifier = generic_consumer_advocacy_agenda_bop_modifier
+								}
+							}
+						}
+						TAG = "[ROOT.GetTag]"
+					}
+				}
+				meta_effect = {
+					text = {
+						add_power_balance_modifier = {
+							id = [TAG]_trust_bop
+							modifier = generic_consumer_advocacy_agenda_bop_modifier
+						}
+					}
+					TAG = "[ROOT.GetTag]"
+				}
+			}
+		}
+		else = {
+			if = {
+				limit = {
+					meta_trigger = {
+						text = {
+							has_power_balance_modifier = {
+								id = [TAG]_trust_bop
+								modifier = generic_consumer_advocacy_agenda_bop_modifier
+							}
+						}
+						TAG = "[ROOT.GetTag]"
+					}
+				}
+				meta_effect = {
+					text = {
+						remove_power_balance_modifier = {
+							id = [TAG]_trust_bop
+							modifier = generic_consumer_advocacy_agenda_bop_modifier
+						}
+					}
+					TAG = "[ROOT.GetTag]"
+				}
+			}
+		}
+	}
+	else_if = {
+		limit = {
+			meta_trigger = {
+				text = {
+					has_power_balance_modifier = {
+						id = [TAG]_trust_bop
+						modifier = generic_consumer_advocacy_agenda_bop_modifier
+					}
+				}
+				TAG = "[ROOT.GetTag]"
+			}
+		}
+		meta_effect = {
+			text = {
+				remove_power_balance_modifier = {
+					id = [TAG]_trust_bop
+					modifier = generic_consumer_advocacy_agenda_bop_modifier
+				}
+			}
+			TAG = "[ROOT.GetTag]"
+		}
+	}
+}
+
+generic_political_unity_agenda_effect = {
+	if = {
+		limit = {
+			has_country_flag = generic_political_unity_agenda_flag
+		}
+		if = {
+			limit = {
+				set_temp_variable = {
+					var = ruling_popularity_trigger_temp
+					value = 0.33
+				}
+				has_ruling_party_popularity_less_than = yes
+			}
+			#Add modifier (only once)
+			if = {
+				limit = {
+					meta_trigger = {
+						text = {
+							NOT = {
+								has_power_balance_modifier = {
+									id = [TAG]_trust_bop
+									modifier = generic_political_unity_agenda_bop_modifier
+								}
+							}
+						}
+						TAG = "[ROOT.GetTag]"
+					}
+				}
+				meta_effect = {
+					text = {
+						add_power_balance_modifier = {
+							id = [TAG]_trust_bop
+							modifier = generic_political_unity_agenda_bop_modifier
+						}
+					}
+					TAG = "[ROOT.GetTag]"
+				}
+			}
+		}
+		else = {
+			if = {
+				limit = {
+					meta_trigger = {
+						text = {
+							has_power_balance_modifier = {
+								id = [TAG]_trust_bop
+								modifier = generic_political_unity_agenda_bop_modifier
+							}
+						}
+						TAG = "[ROOT.GetTag]"
+					}
+				}
+				meta_effect = {
+					text = {
+						remove_power_balance_modifier = {
+							id = [TAG]_trust_bop
+							modifier = generic_political_unity_agenda_bop_modifier
+						}
+					}
+					TAG = "[ROOT.GetTag]"
+				}
+			}
+		}
+	}
+	else_if = {
+		limit = {
+			meta_trigger = {
+				text = {
+					has_power_balance_modifier = {
+						id = [TAG]_trust_bop
+						modifier = generic_political_unity_agenda_bop_modifier
+					}
+				}
+				TAG = "[ROOT.GetTag]"
+			}
+		}
+		meta_effect = {
+			text = {
+				remove_power_balance_modifier = {
+					id = [TAG]_trust_bop
+					modifier = generic_political_unity_agenda_bop_modifier
+				}
+			}
+			TAG = "[ROOT.GetTag]"
+		}
+	}
+}
+
+generic_anti_welfare_agenda_effect = {
+	if = {
+		limit = {
+			has_country_flag = generic_anti_welfare_agenda_flag
+		}
+		if = {
+			limit = {
+				NOT = {
+					has_idea = high_welfare
+					has_idea = higher_welfare
+					has_idea = highest_welfare
+				}
+			}
+			#Add modifier (only once)
+			if = {
+				limit = {
+					meta_trigger = {
+						text = {
+							NOT = {
+								has_power_balance_modifier = {
+									id = [TAG]_trust_bop
+									modifier = generic_anti_welfare_agenda_bop_modifier
+								}
+							}
+						}
+						TAG = "[ROOT.GetTag]"
+					}
+				}
+				meta_effect = {
+					text = {
+						add_power_balance_modifier = {
+							id = [TAG]_trust_bop
+							modifier = generic_anti_welfare_agenda_bop_modifier
+						}
+					}
+					TAG = "[ROOT.GetTag]"
+				}
+			}
+		}
+		else = {
+			if = {
+				limit = {
+					meta_trigger = {
+						text = {
+							has_power_balance_modifier = {
+								id = [TAG]_trust_bop
+								modifier = generic_anti_welfare_agenda_bop_modifier
+							}
+						}
+						TAG = "[ROOT.GetTag]"
+					}
+				}
+				meta_effect = {
+					text = {
+						remove_power_balance_modifier = {
+							id = [TAG]_trust_bop
+							modifier = generic_anti_welfare_agenda_bop_modifier
+						}
+					}
+					TAG = "[ROOT.GetTag]"
+				}
+			}
+		}
+	}
+	else_if = {
+		limit = {
+			meta_trigger = {
+				text = {
+					has_power_balance_modifier = {
+						id = [TAG]_trust_bop
+						modifier = generic_anti_welfare_agenda_bop_modifier
+					}
+				}
+				TAG = "[ROOT.GetTag]"
+			}
+		}
+		meta_effect = {
+			text = {
+				remove_power_balance_modifier = {
+					id = [TAG]_trust_bop
+					modifier = generic_anti_welfare_agenda_bop_modifier
+				}
+			}
+			TAG = "[ROOT.GetTag]"
+		}
+	}
+}
+
+generic_upholding_expectations_agenda_effect = {
+	if = {
+		limit = {
+			has_country_flag = generic_upholding_expectations_agenda_flag
+		}
+		if = {
+			limit = {
+				NOT = {
+					has_stability > 0.4
+				}
+			}
+			#Add modifier (only once)
+			if = {
+				limit = {
+					meta_trigger = {
+						text = {
+							NOT = {
+								has_power_balance_modifier = {
+									id = [TAG]_trust_bop
+									modifier = generic_upholding_expectations_agenda_bop_modifier
+								}
+							}
+						}
+						TAG = "[ROOT.GetTag]"
+					}
+				}
+				meta_effect = {
+					text = {
+						add_power_balance_modifier = {
+							id = [TAG]_trust_bop
+							modifier = generic_upholding_expectations_agenda_bop_modifier
+						}
+					}
+					TAG = "[ROOT.GetTag]"
+				}
+			}
+		}
+		else = {
+			if = {
+				limit = {
+					meta_trigger = {
+						text = {
+							has_power_balance_modifier = {
+								id = [TAG]_trust_bop
+								modifier = generic_upholding_expectations_agenda_bop_modifier
+							}
+						}
+						TAG = "[ROOT.GetTag]"
+					}
+				}
+				meta_effect = {
+					text = {
+						remove_power_balance_modifier = {
+							id = [TAG]_trust_bop
+							modifier = generic_upholding_expectations_agenda_bop_modifier
+						}
+					}
+					TAG = "[ROOT.GetTag]"
+				}
+			}
+		}
+	}
+	else_if = {
+		limit = {
+			meta_trigger = {
+				text = {
+					has_power_balance_modifier = {
+						id = [TAG]_trust_bop
+						modifier = generic_upholding_expectations_agenda_bop_modifier
+					}
+				}
+				TAG = "[ROOT.GetTag]"
+			}
+		}
+		meta_effect = {
+			text = {
+				remove_power_balance_modifier = {
+					id = [TAG]_trust_bop
+					modifier = generic_upholding_expectations_agenda_bop_modifier
+				}
+			}
+			TAG = "[ROOT.GetTag]"
+		}
+	}
+}
+
+generic_practical_finances_agenda_effect = {
+	if = {
+		limit = {
+			has_country_flag = generic_practical_finances_agenda_flag
+		}
+		if = {
+			limit = {
+				check_variable = {
+					var = debt_gdp_var
+					value = dtg_threshold_var
+					compare = greater_than_or_equals
+				}
+			}
+			#Add modifier (only once)
+			if = {
+				limit = {
+					meta_trigger = {
+						text = {
+							NOT = {
+								has_power_balance_modifier = {
+									id = [TAG]_trust_bop
+									modifier = generic_practical_finances_agenda_bop_modifier
+								}
+							}
+						}
+						TAG = "[ROOT.GetTag]"
+					}
+				}
+				meta_effect = {
+					text = {
+						add_power_balance_modifier = {
+							id = [TAG]_trust_bop
+							modifier = generic_practical_finances_agenda_bop_modifier
+						}
+					}
+					TAG = "[ROOT.GetTag]"
+				}
+			}
+		}
+		else = {
+			if = {
+				limit = {
+					meta_trigger = {
+						text = {
+							has_power_balance_modifier = {
+								id = [TAG]_trust_bop
+								modifier = generic_practical_finances_agenda_bop_modifier
+							}
+						}
+						TAG = "[ROOT.GetTag]"
+					}
+				}
+				meta_effect = {
+					text = {
+						remove_power_balance_modifier = {
+							id = [TAG]_trust_bop
+							modifier = generic_practical_finances_agenda_bop_modifier
+						}
+					}
+					TAG = "[ROOT.GetTag]"
+				}
+			}
+		}
+	}
+	else_if = {
+		limit = {
+			meta_trigger = {
+				text = {
+					has_power_balance_modifier = {
+						id = [TAG]_trust_bop
+						modifier = generic_practical_finances_agenda_bop_modifier
+					}
+				}
+				TAG = "[ROOT.GetTag]"
+			}
+		}
+		meta_effect = {
+			text = {
+				remove_power_balance_modifier = {
+					id = [TAG]_trust_bop
+					modifier = generic_practical_finances_agenda_bop_modifier
+				}
+			}
+			TAG = "[ROOT.GetTag]"
+		}
+	}
+}
+
+generic_eyes_wide_shut_agenda_effect = {
+	if = {
+		limit = {
+			has_country_flag = generic_eyes_wide_shut_agenda_flag
+		}
+		if = {
+			limit = {
+				OR = {
+					has_idea = lower_society
+					has_idea = low_society
+					has_idea = medium_society
+				}
+			}
+			#Add modifier (only once)
+			if = {
+				limit = {
+					meta_trigger = {
+						text = {
+							NOT = {
+								has_power_balance_modifier = {
+									id = [TAG]_trust_bop
+									modifier = generic_eyes_wide_shut_agenda_bop_modifier
+								}
+							}
+						}
+						TAG = "[ROOT.GetTag]"
+					}
+				}
+				meta_effect = {
+					text = {
+						add_power_balance_modifier = {
+							id = [TAG]_trust_bop
+							modifier = generic_eyes_wide_shut_agenda_bop_modifier
+						}
+					}
+					TAG = "[ROOT.GetTag]"
+				}
+			}
+		}
+		else = {
+			if = {
+				limit = {
+					meta_trigger = {
+						text = {
+							has_power_balance_modifier = {
+								id = [TAG]_trust_bop
+								modifier = generic_eyes_wide_shut_agenda_bop_modifier
+							}
+						}
+						TAG = "[ROOT.GetTag]"
+					}
+				}
+				meta_effect = {
+					text = {
+						remove_power_balance_modifier = {
+							id = [TAG]_trust_bop
+							modifier = generic_eyes_wide_shut_agenda_bop_modifier
+						}
+					}
+					TAG = "[ROOT.GetTag]"
+				}
+			}
+		}
+	}
+	else_if = {
+		limit = {
+			meta_trigger = {
+				text = {
+					has_power_balance_modifier = {
+						id = [TAG]_trust_bop
+						modifier = generic_eyes_wide_shut_agenda_bop_modifier
+					}
+				}
+				TAG = "[ROOT.GetTag]"
+			}
+		}
+		meta_effect = {
+			text = {
+				remove_power_balance_modifier = {
+					id = [TAG]_trust_bop
+					modifier = generic_eyes_wide_shut_agenda_bop_modifier
+				}
+			}
+			TAG = "[ROOT.GetTag]"
+		}
+	}
+}

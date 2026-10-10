@@ -1,0 +1,1177 @@
+﻿add_namespace = mali
+
+#2020 Coup de'tat
+country_event = {
+	id = mali.1
+	title = mali.1.t
+	desc = mali.1.d
+	picture = GFX_Generic_Fight_Jet
+	
+	fire_only_once = yes
+	is_triggered_only = yes
+	
+	trigger = {
+		tag = MLI
+	}
+
+	option = {
+		name = mali.1.a
+		#add_country_leader_role = {
+		#    character = MLI_Boubou_Cisse_char
+		#	promote_leader = yes
+		#	country_leader = {
+		#		ideology = social_democracy
+		#		traits = {
+		#		}
+		#	}
+		#}
+		IAI = {
+			add_state_core = 745
+			add_state_core = 1286
+			add_state_core = 744
+			add_state_core = 746
+			add_state_core = 1287
+			add_state_core = 746
+			add_state_core = 751
+			add_state_core = 749
+			add_state_core = 750
+			transfer_state = 745
+			transfer_state = 1287
+			transfer_state = 750
+			declare_war_on = {
+				target = MLI
+				type = civil_war 
+			}
+			declare_war_on = {
+				target = NGR
+				type = civil_war 
+			}
+			declare_war_on = {
+				target = VOL
+				type = civil_war 
+			}
+			declare_war_on = {
+				target = MLT
+				type = civil_war 
+			}
+			declare_war_on = {
+				target = IVO
+				type = civil_war 
+			}
+			add_country_leader_role = {
+			    character = AQI_Adnan_Abu_Walid_al_Sahrawi
+				promote_leader = yes
+				country_leader = {
+					ideology = salafi
+					traits = {
+						
+					}
+				}
+			}
+			add_ideas = {
+				IAI_desert_sands_alight_idea
+			}
+		}
+		MLT = {
+			add_state_core = 745
+			add_state_core = 1286
+			add_state_core = 744
+			add_state_core = 1287
+			transfer_state = 744
+			transfer_state = 1286
+			declare_war_on = {
+				target = MLI
+				type = civil_war 
+			}
+			declare_war_on = {
+				target = NGR
+				type = civil_war 
+			}
+			declare_war_on = {
+				target = VOL
+				type = civil_war 
+			}
+			declare_war_on = {
+				target = IAI
+				type = civil_war 
+			}
+			add_ideas = { NGA_tuareg_rebellion_idea }
+			add_country_leader_role = {
+			    character = IRQ_juba_char
+				promote_leader = yes
+				country_leader = {
+					ideology = radical_nationalism
+					traits = {
+						
+					}
+				}
+			}
+		}
+		NGA = {
+			country_event = { id = nigeria.4 days = 60 }
+		}
+		transfer_units_fraction = {
+			target = IAI
+			keep_unit_leaders_trigger = {
+				always = yes
+			}
+			size = 0.6
+			stockpile_ratio = 0.8
+			army_ratio = 0.6
+			air_ratio = 0.6
+		}
+		set_country_flag = MLI_Civil_war_flag
+		random_owned_state = {
+			create_unit = {
+				division = "name = \"1. Bataillon d'Infanterie\" division_template = \"Bataillon d'Infanterie\"  start_experience_factor = 0.6"
+				allow_spawning_on_enemy_provs = no
+				owner = ROOT
+			}		
+			create_unit = {
+				division = "name = \"2. Bataillon d'Infanterie\" division_template = \"Bataillon d'Infanterie\"  start_experience_factor = 0.6"
+				allow_spawning_on_enemy_provs = no
+				owner = ROOT
+			}	
+			create_unit = {
+				division = "name = \"2. Bataillon d'Infanterie\" division_template = \"Bataillon d'Infanterie\"  start_experience_factor = 0.6"
+				allow_spawning_on_enemy_provs = no
+				owner = ROOT
+			}	
+		}
+		MLT = {
+			load_oob = MLI_islamists
+		}
+		IAI = {
+			load_oob = IAI_wilayat_sahel
+		}
+		FRA = {
+			country_event = { id = france.13 days = 2 }
+		}
+	}
+}
+
+country_event = {
+	id = mali.2
+	title = mali.2.t
+	desc = mali.2.d
+	picture = GFX_SouthAfricaANC2
+	
+	fire_only_once = yes
+	is_triggered_only = yes
+	trigger = {
+		
+	}
+	option = {
+		name = mali.2.a
+		create_faction = MLT_West_African_Security_Pact
+		hidden_effect = {
+			remove_faction_goal = faction_goal_the_atomic_race
+			add_faction_goal = faction_goal_placeholder_long_term
+			remove_faction_goal = faction_goal_a_military_base
+			add_faction_goal = faction_goal_placeholder_medium_term
+			add_faction_goal = faction_goal_placeholder_short_term
+		}
+		add_to_faction = NGR
+		add_to_faction = VOL
+		NGR = {
+			add_popularity = {
+				ideology = nationalist
+				popularity = 0.12
+			}
+		}
+		#country_event = { id = mali.3 days = 15 }
+		if = {
+			limit = {
+				GNA = {
+					has_country_flag = SOV_WA_coup
+				}
+			}
+			MLI = {
+				add_to_faction = GNA
+			}
+		}
+		if = {
+			limit = {
+				GNB = {
+					has_country_flag = SOV_WA_coup
+				}
+			}
+			MLI = {
+				add_to_faction = GNB
+			}
+		}
+		news_event = {
+			id = news.307
+			days = 3
+		}
+	}
+}
+
+country_event = { # War with the French Puppet! #what are you a child or smth -IAVL
+	id = mali.3
+	title = mali.3.t
+	desc = mali.3.d
+	picture = GFX_SouthAfricaANC2
+	
+	fire_only_once = yes
+	is_triggered_only = yes
+	immediate = {
+		hidden_effect = {
+			every_country = {
+				limit = {
+					OR = {
+						original_tag = MLI
+						is_in_faction_with = MLI
+					}
+				}
+				set_major = yes
+			}
+			every_country = {
+				limit = {
+					OR = {
+						original_tag = IVO
+						is_in_faction_with = IVO
+					}
+				}
+				set_major = yes
+			}
+		}
+	}
+	option = { #WAR WAR WAR
+		name = mali.3.a
+		declare_war_on = {
+			target = IVO
+			type = annex_everything
+		}
+		NGR = {
+			declare_war_on = {
+				target = IVO
+				type = annex_everything
+			}
+		}
+		VOL = {
+			declare_war_on = {
+				target = IVO
+				type = annex_everything
+			}
+		}
+		if = {
+			limit = {
+				FRA = {
+					has_country_flag = FRA_mauritania_pressured
+				}
+			}
+			MRT = {
+				country_event = { id = mali.13 days = 14 }
+			}
+		}
+	}
+}
+
+country_event = { #Mali requests partnership
+	id = mali.4
+	title = mali.4.t
+	desc = mali.4.d
+	picture = GFX_SouthAfricaANC2
+	
+	fire_only_once = yes
+	is_triggered_only = yes
+	
+
+	option = { #DESTROY COLONIALISM
+		name = mali.4.a
+		declare_war_on = {
+			target = IVO
+			type = annex_everything
+		}
+		MLT = {
+			declare_war_on = {
+				target = IVO
+				type = annex_everything
+			}
+		}
+		NGR = {
+			declare_war_on = {
+				target = IVO
+				type = annex_everything
+			}
+		}
+		VOL = {
+			declare_war_on = {
+				target = IVO
+				type = annex_everything
+			}
+		}
+	}
+	option = { #Nah
+		name = mali.4.b
+		add_war_support = -0.15
+
+		MLT = {
+			country_event = { id = mali.8 }
+			declare_war_on = {
+				target = IVO
+				type = annex_everything
+			}
+		}
+		NGR = {
+			declare_war_on = {
+				target = IVO
+				type = annex_everything
+			}
+		}
+		VOL = {
+			declare_war_on = {
+				target = IVO
+				type = annex_everything
+			}
+		}
+
+	}
+}
+country_event = { #They will soon invade our Ivory Coast puppet, we don't have enough time to get men or resources over there...
+	id = mali.5
+	title = mali.5.t
+	desc = mali.5.d
+	picture = GFX_SouthAfricaANC2
+	
+	fire_only_once = yes
+	is_triggered_only = yes
+	
+
+	option = { #Petition Former American Bases for Aid
+		name = mali.5.a
+		random_list = {
+			20 = {
+				IVO = {
+					country_event = { id = mali.6 }
+				}
+			}
+			80 = {
+				IVO = {
+					country_event = { id = mali.7 }
+				}
+			}
+		}
+		
+	}
+	option = { #Stand our ground
+		name = mali.5.b
+		add_political_power = -200
+		add_war_support = 0.05
+	}
+	option = { #Backdown
+		name = mali.5.c
+		ai_chance = {
+			base = 100
+		}
+		add_war_support = -0.05
+		diplomatic_relation = {
+		    country = IVO
+		    relation = guarantee
+		    active = no
+		}
+	}
+}
+country_event = { #Last Stand of the Hegemon...
+	id = mali.6
+	title = mali.6.t
+	desc = mali.6.d
+	picture = GFX_fail_lasvegas
+	
+	fire_only_once = yes
+	is_triggered_only = yes
+	
+
+	option = { #Last Stand of the Hegemon
+		name = mali.6.a
+		hidden_effect = {
+			load_oob = "FRA_American_Remnants"
+			news_event = { 
+				id = news.309
+				days = 1
+			}
+		}
+		add_war_support = 0.1
+		add_political_power = 50
+		
+	}
+}
+country_event = { #The Americans are long gone...
+	id = mali.7
+	title = mali.7.t
+	desc = mali.7.d
+	picture = GFX_usa_disaster
+	
+	fire_only_once = yes
+	is_triggered_only = yes
+	
+
+	option = { #Panic
+		name = mali.7.a
+		add_political_power = -100
+		
+	}
+}
+country_event = { #Mauritanians refuse
+	id = mali.8
+	title = mali.8.t
+	desc = mali.8.d
+	picture = GFX_SouthAfricaANC2
+	
+	fire_only_once = yes
+	is_triggered_only = yes
+	
+
+	option = { #Panic
+		name = mali.7.a
+		add_political_power = -50
+		add_war_support = -0.03
+		
+	}
+}
+country_event = { #2nd Military Coup
+	id = mali.9
+	title = mali.9.t
+	desc = mali.9.d
+	picture = GFX_usa_disaster
+	
+	fire_only_once = yes
+	is_triggered_only = yes
+	
+
+	option = { #
+		name = mali.9.a
+		country_event = {
+		    id = mali.1
+		    days = 365
+			random_days = 90
+		}
+		set_politics = {
+			ruling_party = nationalist
+			last_election = "2022.04.10"
+			election_frequency = 60
+			elections_allowed = no
+		}
+		remove_ideas = {
+			FRA_CFA_Franc
+			african_union_member
+		}
+		add_popularity = {
+			ideology = nationalist
+			popularity = 0.12
+		}
+		add_country_leader_role = {
+		    character = MLI_Assimi_Goita_char
+			promote_leader = yes
+			country_leader = {
+				ideology = autocrat
+				traits = {
+
+				}
+			}
+		}
+		change_government_type_military_dictatorship = yes
+		SOV = {
+			country_event = { id = russia.711 hours = 8 }
+		}
+		SOV = {
+			country_event = { id = russia.710 days = 15 random_days = 5 }
+		}
+		news_event = { 
+			id = news.405
+			days = 1
+		}
+		#set_nationality = {
+		#	target_country = MLI
+		#	character = MLI_Bah_Ndaw_char
+		#}
+		#set_nationality = {
+		#	target_country = MLI
+		#	character = MLI_Moctar_Ouane_char
+		#}
+		#set_nationality = {
+		#	target_country = MLT
+		#	character = MLI_Malick_Diaw_char
+		#}
+		#transfer_units_fraction = {
+		#	target = MLI
+		#	keep_unit_leaders_trigger = {
+		#		always = yes
+		#	}
+		#	size = 0.3
+		#	stockpile_ratio = 0.3
+		#	army_ratio = 0.3
+		#	air_ratio = 0.3
+		#}
+	}
+}
+country_event = { #Snap Elections in Mali
+	id = mali.10
+	title = mali.10.t
+	desc = mali.10.d
+	picture = GFX_SouthAfricaANC2
+	
+	fire_only_once = yes
+	is_triggered_only = yes
+	
+
+	option = { #RPM victory
+		name = mali.10.a
+		add_popularity = {
+			ideology = social_democrat
+			popularity = 0.30
+		}
+	}
+	option = { #ADEMA-PASJ victory
+		name = mali.10.b
+		set_politics = {
+			ruling_party = libertarian_socialist
+			last_election = "2022.04.10"
+			election_frequency = 60
+			elections_allowed = no
+		}
+		add_popularity = {
+			ideology = libertarian_socialist
+			popularity = 0.30
+		}
+	}
+	option = { #PARENA victory
+		name = mali.10.c
+		set_politics = {
+			ruling_party = social_liberal
+			last_election = "2022.04.10"
+			election_frequency = 60
+			elections_allowed = no
+		}
+		add_popularity = {
+			ideology = social_liberal
+			popularity = 0.30
+		}
+	}
+}
+country_event = { #Sahel Federation forms
+	id = mali.11
+	title = mali.11.t
+	desc = mali.11.d
+	picture = GFX_SouthAfricaANC2
+	
+	fire_only_once = yes
+	is_triggered_only = yes
+	immediate = {
+		hidden_effect = {
+			set_global_flag = global_sahel_federation_formed_flag
+			set_cosmetic_tag = MLT_sahel_federation
+			puppet = NGA
+			puppet = DAH
+			puppet = GHA
+			puppet = TOG
+			puppet = IVO
+			puppet = GNA
+			puppet = SIE
+			puppet = SEN
+			puppet = GNB
+			puppet = GAM
+			puppet = LIB
+			annex_country = {
+				target = VOL
+				transfer_troops = yes
+			}
+			annex_country = {
+				target = NGR
+				transfer_troops = yes
+			}
+			every_state = {
+				limit = {
+					is_owned_by = MLI
+				}
+				add_core_of = MLI
+			}
+			NGR = {
+				set_nationality = {
+					target_country = MLI
+					character = NGR_Alkassoum_Indatou_char
+				}
+				set_nationality = {
+					target_country = MLI
+					character = NGR_Abdourahamane_Tchiani_char
+				}
+				set_nationality = {
+					target_country = MLI
+					character = NGR_Abdou_Sidikou_Issa_char
+				}
+				set_nationality = {
+					target_country = MLI
+					character = NGR_Amadou_Ibro_char
+				}
+				set_nationality = {
+					target_country = MLI
+					character = NGR_Chekou_Kore_Lawel_char
+				}
+				set_nationality = {
+					target_country = MLI
+					character = NGR_Garba_Hakimi_char
+				}
+				set_nationality = {
+					target_country = MLI
+					character = NGR_Mahaman_Elhadj_Ousmane_char
+				}
+				set_nationality = {
+					target_country = MLI
+					character = NGR_Maizama_Abdoulaye_char
+				}
+				set_nationality = {
+					target_country = MLI
+					character = NGR_Mohamed_Toumba_char
+				}
+				set_nationality = {
+					target_country = MLI
+					character = NGR_Moussa_Salaou_Barmou_char
+				}
+				set_nationality = {
+					target_country = MLI
+					character = NGR_Oumarou_Namata_Gazama_char
+				}
+				set_nationality = {
+					target_country = MLI
+					character = NGR_Salifou_Modi_char
+				}
+				set_nationality = {
+					target_country = MLI
+					character = NGR_Salifou_Wakasso_char
+				}
+				set_nationality = {
+					target_country = MLI
+					character = NGR_Sidi_Ahmed_char
+				}
+			}
+			VOL = {
+				set_nationality = {
+					target_country = MLI
+					character = VOL_Ibrahim_Traore_char
+				}
+			}
+			IVO = {
+				add_country_leader_role = {
+					character = IVO_Achy_Ekissi_char
+					promote_leader = yes
+					country_leader = {
+						ideology = social_fascism
+						expire = "1.1.1.1"
+					}
+				}
+				set_politics = {
+					ruling_party = totalitarian_socialist
+					elections_allowed = no
+				}
+				add_popularity = {
+					ideology = totalitarian_socialist
+					popularity = 0.31
+				}
+				set_party_name = {
+					ideology = totalitarian_socialist
+					long_name = IVO_communist_party_long
+					name = IVO_communist_party
+				}
+			}		
+			NGA = {
+				set_politics = {
+					ruling_party = social_democrat
+					elections_allowed = no
+				}
+				set_popularities = {
+					fascist = 2
+					social_democrat = 30
+					nationalist = 37
+					communist = 5
+					totalitarian_socialist = 7
+					conservative = 13
+					social_liberal = 6
+				}
+			}
+			SEN = {
+				set_politics = {
+					ruling_party = social_democrat
+					elections_allowed = no
+				}
+				add_popularity = {
+					ideology = social_democrat
+					popularity = 0.3
+				}
+				set_country_leader_portrait = {
+					ideology = social_democrat
+					portrait = GFX_portrait_Bassirou_Diomaye_Faye_2
+				}
+			}
+			GNB = {
+				set_politics = {
+					ruling_party = social_democrat
+					elections_allowed = no
+				}
+				add_popularity = {
+					ideology = social_democrat
+					popularity = 0.3
+				}
+			}
+			DAH = {
+				set_popularities = {
+					nationalist = 53
+					authoritarian_democrat = 13
+					social_liberal = 6
+					social_democrat = 7
+					libertarian_socialist = 21
+				}
+			}
+			TOG = {
+				set_politics = {
+					ruling_party = authoritarian_democrat
+					elections_allowed = no
+				}
+				set_popularities = {
+					authoritarian_democrat = 62
+					conservative = 17
+					nationalist = 12
+					totalitarian_socialist = 5
+					libertarian_socialist = 4
+				}
+			}
+			every_country = {
+				limit = {
+					is_ally_with = MLI
+				}
+				remove_ideas = {
+					FRA_French_Military_Influence_idea
+					FRA_French_Economic_Influence_idea
+					FRA_CFA_Franc
+					FRA_CFA_Franc_2
+					FRA_CFA_Franc_3
+				}
+			}
+			news_event = { 
+				id = news.402
+			}
+		}
+	}
+	
+
+	option = { #
+		name = mali.11.a
+		add_political_power = 100
+	}
+	option = { #
+		name = mali.11.b
+		retire_ideology_leader = nationalist
+		create_country_leader = {
+			name = VOL_Ibrahim_Traore_char
+			picture = "gfx/leaders/VOL/Ibrahim Traore.png"
+			expire = "1.1.1.1"
+			ideology = radical_nationalism
+			traits = {
+				Africa_Ambitious_Dictator
+			}
+		}
+	}
+	option = { #
+		name = mali.11.b
+		retire_ideology_leader = nationalist
+		create_country_leader = {
+			name = NGR_Abdourahamane_Tchiani_char
+			picture = "gfx/leaders/NGR/Abdourahamane Tchiani.png"
+			expire = "1.1.1.1"
+			ideology = radical_nationalism
+			traits = {
+			}
+		}
+	}
+}
+country_event = { #Sahel Fed is scary - Join Mauritania
+	id = mali.12
+	title = mali.12.t
+	desc = mali.12.d
+	picture = GFX_SouthAfricaANC2
+	
+	fire_only_once = yes
+	is_triggered_only = yes
+	
+
+	option = { #RPM victory
+		name = mali.12.a
+		MRT = {
+			add_to_faction = ROOT
+		}
+	}
+}
+
+country_event = { #Mauritania goes to war with Mali
+	id = mali.13
+	title = mali.13.t
+	desc = mali.13.d
+	picture = GFX_SouthAfricaANC2
+	
+	fire_only_once = yes
+	is_triggered_only = yes
+	
+
+	option = {
+		name = mali.13.a
+		MRT = {
+			declare_war_on = {
+				target = MLI
+				type = annex_everything
+			}
+		}
+		IVO = {
+			add_to_faction = MRT
+		}
+	}
+}
+
+country_event = { #Gambia takes a side
+	id = mali.14
+	title = mali.14.t
+	desc = mali.14.d
+	picture = GFX_SouthAfricaANC2
+	
+	fire_only_once = yes
+	trigger = {
+		tag = GAM
+		SEN = {
+			is_in_faction = yes
+		}
+	}
+
+	option = {
+		name = mali.14.a
+		division_template = {
+			name = "Military Defence Force"	
+			regiments = {
+				modern_armor = { x = 0 y = 0 }
+				modern_armor = { x = 0 y = 1 }
+				light_mechanized = { x = 0 y = 2 }
+				light_mechanized = { x = 0 y = 3 }
+				modern_sp_artillery_brigade = { x = 0 y = 4 }
+			}
+			support = {
+				signal_company = { x = 0 y = 0 }
+			}
+		}
+		random_owned_controlled_state = {
+			create_unit = {
+				division = "name = \"Military Defence Force\" division_template = \"Military Defence Force\" start_experience_factor = 0.4 start_equipment_factor = 1.0" 
+				owner = ROOT	
+			}
+		}
+		random_owned_controlled_state = {
+			create_unit = {
+				division = "name = \"Military Defence Force\" division_template = \"Military Defence Force\" start_experience_factor = 0.4 start_equipment_factor = 1.0" 
+				owner = ROOT	
+			}
+		}
+		if = {
+			limit = {
+				SEN = {
+					is_in_faction_with = MLI
+				}
+			}
+			MLI = {
+				add_to_faction = GAM
+			}
+		}
+		else_if = {
+			limit = {
+				SEN = {
+					is_in_faction_with = IVO
+				}
+			}
+			IVO = {
+				add_to_faction = GAM
+			}
+		}	
+	}
+}
+
+country_event = { #West African Federation forms
+	id = mali.15
+	title = mali.15.t
+	desc = mali.15.d
+	picture = GFX_SouthAfricaANC2
+	
+	fire_only_once = yes
+	is_triggered_only = yes
+	immediate = {
+		hidden_effect = {
+			set_cosmetic_tag = FRA_MLI_West_African_Federation_cos_tag
+			puppet = MLI
+			puppet = NGR
+			puppet = VOL
+			puppet = SEN
+			puppet = GAM
+			puppet = GNB
+			NGA = {
+				set_nationality = {
+					target_country = IVO
+					character = NGA_Bola_Tinubu_char
+				}
+			}
+			annex_country = {
+				target = NGA
+				transfer_troops = yes
+			}
+			annex_country = {
+				target = GHA
+				transfer_troops = yes
+			}
+			annex_country = {
+				target = TOG
+				transfer_troops = yes
+			}
+			annex_country = {
+				target = DAH
+				transfer_troops = yes
+			}
+			annex_country = {
+				target = LIB
+				transfer_troops = yes
+			}
+			annex_country = {
+				target = GNA
+				transfer_troops = yes
+			}
+			annex_country = {
+				target = SIE
+				transfer_troops = yes
+			}
+			annex_country = {
+				target = IVO
+				transfer_troops = yes
+			}
+			every_state = {
+				limit = {
+					is_owned_by = IVO
+				}
+				add_core_of = IVO
+			}
+			every_state = {
+				limit = {
+					is_owned_by = NGA
+				}
+				add_core_of = NGA
+			}
+			NGR = {
+				set_politics = {
+					ruling_party = libertarian_socialist
+					elections_allowed = no
+				}
+				add_popularity = {
+					ideology = libertarian_socialist
+					popularity = 0.3
+				}
+			}
+			GNB = {
+				set_politics = {
+					ruling_party = libertarian_socialist
+					elections_allowed = no
+				}
+				add_popularity = {
+					ideology = libertarian_socialist
+					popularity = 0.3
+				}
+			}
+			GAM = {
+				set_politics = {
+					ruling_party = conservative
+					elections_allowed = no
+				}
+				add_popularity = {
+					ideology = conservative
+					popularity = 0.3
+				}
+			}
+			every_country = {
+				limit = {
+					OR = {
+						is_ally_with = NGA
+						is_ally_with = IVO
+					}
+				}
+				remove_ideas = {
+					SOV_african_liberation_idea
+					SOV_russian_african_corps_idea
+					SOV_russo_african_economic_partnership_idea
+				}
+			}
+			every_country = {
+				limit = {
+					is_in_faction_with = IVO
+					NOT = {
+						OR = {
+							has_idea = FRA_CFA_Franc
+							has_idea = FRA_CFA_Franc_2
+							has_idea = FRA_CFA_Franc_3
+						}
+					}
+				}
+				add_ideas = FRA_CFA_Franc
+			}
+			news_event = { 
+				id = news.401
+			}
+		}
+	}
+	
+
+	option = {
+		name = mali.15.a
+		add_political_power = 100
+	}
+	option = {
+		name = mali.15.b
+		retire_ideology_leader = social_liberal
+		add_country_leader_role = {
+		    character = NGA_Bola_Tinubu_char
+			promote_leader = yes
+			country_leader = {
+				ideology = centrist
+				traits = {
+					
+				}
+			}
+		}
+		
+	}
+}
+
+country_event = { #SEN/GNB Drop French Influence
+	id = mali.16
+	title = mali.16.t
+	desc = mali.16.d
+	picture = GFX_SouthAfricaANC2
+	trigger = {
+		OR = {
+			tag = SEN
+			tag = GNB
+		}
+		OR = {
+			has_idea = FRA_French_Economic_Influence_idea
+			has_idea = FRA_French_Military_Influence_idea
+		}
+		social_democrat > 0.4
+	}
+	immediate = {
+		hidden_effect = {
+			remove_ideas = {
+				FRA_French_Economic_Influence_idea
+				FRA_French_Military_Influence_idea
+			}
+		}
+	}
+	option = {
+		name = mali.16.a
+	}
+}
+
+country_event = { #Chad Joins the Sahel Pact
+	id = mali.17
+	title = mali.17.t
+	desc = mali.17.d
+	picture = GFX_SouthAfricaANC2
+	
+	fire_only_once = yes
+	is_triggered_only = yes
+	
+
+	option = {
+		name = mali.17.a
+		CHA = {
+			declare_war_on = {
+				target = NGA
+				type = annex_everything
+			}
+		}
+		MLI = {
+			add_to_faction = CHA
+		}
+	}
+}
+
+country_event = { # War with the French Puppet! #what are you a child or smth -IAVL
+	id = mali.99
+	title = mali.99.t
+	desc = mali.99.d
+	picture = GFX_SouthAfricaANC2
+	
+	fire_only_once = yes
+	is_triggered_only = yes
+	trigger = {
+		SOV = { has_war_with = GER }
+		tag = MLI
+	}
+	immediate = {
+		hidden_effect = {
+			every_country = {
+				limit = {
+					OR = {
+						original_tag = MLI
+						is_in_faction_with = MLI
+					}
+				}
+				set_major = yes
+			}
+			every_country = {
+				limit = {
+					OR = {
+						original_tag = IVO
+						is_in_faction_with = IVO
+					}
+				}
+				set_major = yes
+			}
+		}
+	}
+	option = { #WAR WAR WAR
+		name = mali.99.a
+		set_global_flag = MLI_sahel_war_flag
+		declare_war_on = {
+			target = IVO
+			type = annex_everything
+		}
+		NGR = {
+			declare_war_on = {
+				target = IVO
+				type = annex_everything
+			}
+		}
+		VOL = {
+			declare_war_on = {
+				target = IVO
+				type = annex_everything
+			}
+		}
+		NGA = {
+			annex_country = {
+				target = AQI
+				transfer_troops = no
+			}
+		}
+		if = {
+			limit = {
+				FRA = {
+					has_country_flag = FRA_mauritania_pressured
+				}
+			}
+			MRT = {
+				country_event = { id = mali.13 days = 14 }
+			}
+		}
+		if = {
+			limit = {
+				SOV = {
+					has_country_flag = SOV_chad_pressured
+				}
+			}
+			CHA = {
+				country_event = { id = mali.17 days = 14 }
+			}
+		}
+	}
+}

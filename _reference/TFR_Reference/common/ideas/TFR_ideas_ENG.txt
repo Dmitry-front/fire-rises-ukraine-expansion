@@ -1,0 +1,1072 @@
+	ideas = {
+		country = {
+			ENG_commonwealth_of_nations_leader = {
+				picture = ENG_commonwealth_of_nations_leader
+			    traits = {
+			        ZZZ_blank_idea_trait
+			    }
+				
+				allowed = {
+					original_tag = ENG
+				}
+				
+				modifier = {
+					stability_factor = 0.05
+					political_power_gain = 0.15
+					opinion_gain_monthly = 0.20
+					trade_opinion_factor = 0.15
+
+				}
+			}
+
+			ENG_commonwealth_of_nations_leader_1 = {
+				picture = ENG_commonwealth_of_nations_leader
+			    traits = {
+			        ZZZ_blank_idea_trait
+			    }
+				
+				allowed = {
+					original_tag = ENG
+				}
+				
+				modifier = {
+					stability_factor = 0.10
+					political_power_gain = 0.20
+					opinion_gain_monthly = 0.25
+					trade_opinion_factor = 0.35
+
+				}
+			}
+
+			ENG_nato_eu_leader_idea = {
+				picture = ENG_nato_leadership
+			    traits = {
+			        ZZZ_blank_idea_trait
+			    }
+				
+				allowed = {
+					original_tag = ENG
+				}
+				
+				modifier = {
+					battalion_upkeep_factor = 0.05
+					army_org_factor = 0.10
+					command_power_gain = 0.10
+					military_development_monthly = 0.01
+				}
+			}
+
+			ENG_nato_eu_leader_idea_1 = {
+				picture = ENG_nato_leadership
+			    traits = {
+			        ZZZ_blank_idea_trait
+			    }
+				
+				allowed = {
+					original_tag = ENG
+				}
+				
+				modifier = {
+					battalion_upkeep_factor = 0.05
+					army_org_factor = 0.15
+					command_power_gain = 0.15
+					military_development_monthly = 0.02
+				}
+			}		
+			
+			ENG_csto_western_bulwark_idea = {
+				picture = ENG_csto_western_bulwark_idea
+			    traits = {
+			        ZZZ_blank_idea_trait
+			    }
+				
+				allowed = {
+					original_tag = ENG
+				}
+				
+				modifier = {
+					battalion_upkeep_factor = 0.05
+					army_org_factor = 0.15
+					command_power_gain = 0.15
+					military_development_monthly = 0.02
+				}
+			}
+			
+			ENG_sun_sets_idea = { #it will be a dynamic modifier someday
+				picture = ENG_sun_sets
+			    traits = {
+			        ZZZ_blank_idea_trait
+			    }
+				
+				allowed = {
+					original_tag = ENG
+				}
+				
+				cancel = {
+					OR = {
+						has_global_flag = SOV_nato_war_over_global
+						has_country_flag = ENG_sun_sets_idea_cancel_flag
+					}
+				}
+				
+				on_remove = {
+					country_lock_all_division_template = no
+				}
+				
+				modifier = {
+					stability_factor = -0.25
+					war_support_factor = -0.1
+					production_factory_max_efficiency_factor = -0.10
+					industrial_capacity_factory = -0.05
+					income_growth_factor = -0.15
+					army_org_factor = -0.05
+					army_morale_factor = -0.02
+					poverty_development_monthly = -0.025
+					society_development_monthly = -0.025
+					military_development_monthly = -0.01
+					custom_modifier_tooltip = SPR_military_disloyalty_tt
+				}
+			}
+			ENG_all_for_farage_idea = {
+				picture = ENG_all_for_farage_idea
+			    traits = {
+			        ZZZ_blank_idea_trait
+			    }
+				
+				allowed = {
+					original_tag = ENG
+				}
+				
+				modifier = {
+					stability_factor = 0.10
+					industrial_capacity_factory = 0.05
+					production_speed_infrastructure_factor = 0.05
+					war_support_factor = 0.025
+					army_morale_factor = 0.035
+                    authoritarian_democrat_drift = 0.05
+				}
+			}
+			ENG_systemic_poverty = {
+				picture = ENG_systemic_poverty
+			    traits = {
+			        ZZZ_blank_idea_trait
+			    }
+				
+				allowed = {
+					original_tag = ENG
+				}
+				
+				modifier = {
+					stability_factor = -0.10
+					production_factory_max_efficiency_factor = -0.10
+					income_growth_factor = -0.15
+					poverty_development_monthly = -0.025
+                    libertarian_socialist_drift = 0.03
+				}
+			}
+
+			ENG_systemic_poverty_1 = {
+				picture = ENG_systemic_poverty
+			    traits = {
+			        ZZZ_blank_idea_trait
+			    }
+				
+				allowed = {
+					original_tag = ENG
+				}
+				
+				modifier = {
+					stability_factor = -0.10
+					production_factory_max_efficiency_factor = -0.05
+					income_growth_factor = -0.10
+					poverty_development_monthly = -0.015
+					libertarian_socialist_drift = 0.015
+				}
+			}
+
+			ENG_struggling_health_sector_idea_1 = {
+				picture = ENG_nhs_timebomb
+			    traits = {
+			        ZZZ_blank_idea_trait
+			    }
+				
+				allowed = {
+					original_tag = ENG
+				}
+				
+				modifier = {
+					consumer_goods_factor = 0.075
+					conscription_factor = -0.10
+                    monthly_population = -0.10
+					power_balance_weekly = -0.01
+				}
+			}
+
+			ENG_struggling_health_sector_idea = {
+				picture = ENG_nhs_timebomb
+			    traits = {
+			        ZZZ_blank_idea_trait
+			    }
+				
+				allowed = {
+					original_tag = ENG
+				}
+				
+				modifier = {
+					consumer_goods_factor = 0.10
+					conscription_factor = -0.15
+                    monthly_population = -0.15
+					power_balance_weekly = -0.015
+				}
+			}
+			
+			ENG_reform_economics_idea = {
+				picture = ENG_reform_economics_idea
+			    traits = {
+			        ZZZ_blank_idea_trait
+			    }
+				
+				allowed = {
+					original_tag = ENG
+				}
+				
+				modifier = {
+					production_speed_buildings_factor = 0.065
+					production_factory_efficiency_gain_factor = 0.05
+					production_factory_max_efficiency_factor = 0.1
+					consumer_goods_factor = 0.05
+					industrial_development_monthly = 0.01
+					income_growth_factor = 0.025
+					personal_value_factor = 0.03
+				}
+			}	
+			
+			ENG_reform_democracy_idea = {
+				picture = ENG_reform_democracy_idea
+			    traits = {
+			        ZZZ_blank_idea_trait
+			    }
+				
+				allowed = {
+					original_tag = ENG
+				}
+				
+				modifier = {
+					political_power_factor = 0.05
+					stability_factor = 0.03
+					personal_value_factor = 0.015
+					army_morale_factor = 0.02
+					society_development_monthly = 0.005
+					authoritarian_democrat_drift = 0.02
+					market_liberal_drift = 0.02
+					social_democrat_drift = 0.02
+					libertarian_socialist_drift = 0.02
+					nationalist_drift = 0.02
+				}
+			}
+
+			ENG_restored_military_pride_idea = {
+				picture = ENG_reformed_army_pride
+			    traits = {
+			        ZZZ_blank_idea_trait
+			    }
+				
+				allowed = {
+					original_tag = ENG
+				}
+				
+				modifier = {
+					training_time_factor = -0.05
+					conscription_factor = 0.04
+					army_attack_factor = 0.035
+					army_org_factor = 0.01
+					war_support_factor = 0.05
+					war_stability_factor = 0.1
+				}
+			}
+			
+			ENG_albion_union_idea = {
+				picture = ENG_albion_union_idea
+			    traits = {
+			        ZZZ_blank_idea_trait
+			    }
+				
+				allowed = {
+					original_tag = ENG
+				}
+				
+				modifier = {
+					stability_factor = 0.1
+					income_growth_factor = 0.025
+					trade_opinion_factor = -0.05
+					society_development_monthly = 0.01
+				}
+			}
+
+
+			############ EU ideas!
+			ENG_eu_gambit_idea = {
+				picture = ENG_eu_gambit
+			    traits = {
+			        ZZZ_blank_idea_trait
+			    }
+				
+				allowed = {
+					original_tag = ENG
+				}
+				
+				modifier = {
+					political_power_gain = -0.25
+					income_growth_factor = -0.10
+					consumer_goods_factor = 0.10
+					industrial_capacity_factory = -0.10
+					authoritarian_democrat_drift = 0.025
+					social_liberal_drift = 0.025
+				}
+			}	
+
+			ENG_eu_gambit_idea_1 = {
+				picture = ENG_eu_gambit
+			    traits = {
+			        ZZZ_blank_idea_trait
+			    }
+				
+				allowed = {
+					original_tag = ENG
+				}
+				
+				modifier = {
+					political_power_gain = -0.15
+					income_growth_factor = -0.10
+					consumer_goods_factor = 0.10
+					industrial_capacity_factory = -0.10
+				}
+			}
+
+			ENG_eu_gambit_idea_softish_brexit = {
+				picture = ENG_eu_gambit
+			    traits = {
+			        ZZZ_blank_idea_trait
+			    }
+				
+				allowed = {
+					original_tag = ENG
+				}
+				
+				modifier = {
+					political_power_gain = -0.20
+					income_growth_factor = -0.075
+					consumer_goods_factor = 0.010
+					industrial_capacity_factory = -0.075
+					authoritarian_democrat_drift = 0.025
+				}
+			}
+
+			ENG_eu_gambit_idea_softish_brexit_1 = {
+				picture = ENG_eu_gambit
+			    traits = {
+			        ZZZ_blank_idea_trait
+			    }
+				
+				allowed = {
+					original_tag = ENG
+				}
+				
+				modifier = {
+					political_power_gain = -0.15
+					income_growth_factor = -0.05
+					consumer_goods_factor = 0.075
+					industrial_capacity_factory = -0.05
+					authoritarian_democrat_drift = 0.025
+				}
+			}
+
+			ENG_eu_gambit_idea_softish_brexit_2 = {
+				picture = ENG_eu_gambit
+			    traits = {
+			        ZZZ_blank_idea_trait
+			    }
+				
+				allowed = {
+					original_tag = ENG
+				}
+				
+				modifier = {
+					political_power_gain = -0.10
+					trade_opinion_factor = 0.25
+					income_growth_factor = 0.025
+					consumer_goods_factor = 0.05
+					authoritarian_democrat_drift = 0.025
+				}
+			}
+
+			ENG_eu_gambit_idea_softish_brexit_3 = {
+				picture = ENG_eu_gambit
+			    traits = {
+			        ZZZ_blank_idea_trait
+			    }
+				
+				allowed = {
+					original_tag = ENG
+				}
+				
+				modifier = {
+					political_power_gain = -0.05
+					trade_opinion_factor = 0.15
+					income_growth_factor = 0.05
+					industrial_capacity_factory = -0.05
+					consumer_goods_factor = 0.025
+					authoritarian_democrat_drift = 0.025
+				}
+			}
+
+			ENG_eu_gambit_idea_hardish_brexit = {
+				picture = ENG_eu_gambit
+			    traits = {
+			        ZZZ_blank_idea_trait
+			    }
+				
+				allowed = {
+					original_tag = ENG
+				}
+				
+				modifier = {
+					political_power_gain = -0.10
+					income_growth_factor = -0.10
+					consumer_goods_factor = 0.075
+					industrial_capacity_factory = -0.055
+					social_liberal_drift = 0.025
+				}
+			}
+
+			ENG_eu_gambit_idea_hardish_brexit_1 = {
+				picture = ENG_eu_gambit
+			    traits = {
+			        ZZZ_blank_idea_trait
+			    }
+				
+				allowed = {
+					original_tag = ENG
+				}
+				
+				modifier = {
+					political_power_gain = 0.10
+					min_export = -0.05
+					consumer_goods_factor = 0.075
+					income_growth_factor = -0.05
+					industrial_capacity_factory = -0.025
+					social_liberal_drift = 0.025
+				}
+			}
+
+			ENG_eu_gambit_idea_hardish_brexit_2 = {
+				picture = ENG_eu_gambit
+			    traits = {
+			        ZZZ_blank_idea_trait
+			    }
+				
+				allowed = {
+					original_tag = ENG
+				}
+				
+				modifier = {
+					political_power_gain = 0.25
+					min_export = -0.075
+					income_growth_factor = -0.075
+					industrial_capacity_factory = 0.055
+					consumer_goods_factor = 0.10
+					social_liberal_drift = 0.025
+					
+				}
+			}
+
+			ENG_eu_gambit_idea_hardish_brexit_3 = {
+				picture = ENG_eu_gambit
+			    traits = {
+			        ZZZ_blank_idea_trait
+			    }
+				
+				allowed = {
+					original_tag = ENG
+				}
+				
+				modifier = {
+					political_power_gain = 0.25
+					min_export = -0.10
+					income_growth_factor = -0.05
+					industrial_capacity_factory = 0.055
+					consumer_goods_factor = 0.075
+					social_liberal_drift = 0.025
+				}
+			}
+
+			############### Crime Ideas
+
+
+			ENG_rising_crime_rates = {
+				picture = ENG_systemic_poverty
+			    traits = {
+			        ZZZ_blank_idea_trait
+			    }
+				
+				allowed = {
+					original_tag = ENG
+				}
+				
+				modifier = {
+					stability_factor = -0.15
+					stability_weekly_factor = -0.02
+					society_development_monthly = -0.025
+					power_balance_weekly = -0.015
+				}
+			}
+
+			ENG_rising_crime_rates_1 = {
+				picture = ENG_systemic_poverty
+			    traits = {
+			        ZZZ_blank_idea_trait
+			    }
+				
+				allowed = {
+					original_tag = ENG
+				}
+				
+				modifier = {
+					stability_factor = -0.10
+					stability_weekly_factor = -0.015
+					society_development_monthly = -0.02
+					power_balance_weekly = -0.01
+				}
+			}
+
+			ENG_rising_crime_rates_2 = {
+				picture = ENG_systemic_poverty
+			    traits = {
+			        ZZZ_blank_idea_trait
+			    }
+				
+				allowed = {
+					original_tag = ENG
+				}
+				
+				modifier = {
+					stability_factor = -0.05
+					stability_weekly_factor = -0.015
+					society_development_monthly = -0.01
+					power_balance_weekly = -0.01
+				}
+			}
+
+			ENG_rising_crime_rates_high = {
+				picture = ENG_systemic_poverty
+			    traits = {
+			        ZZZ_blank_idea_trait
+			    }
+				
+				allowed = {
+					original_tag = ENG
+				}
+				
+				modifier = {
+					stability_factor = -0.05
+					stability_weekly_factor = -0.015
+					society_development_monthly = -0.01
+					power_balance_weekly = -0.01
+				}
+			}
+
+
+
+			########### COVID IDEAS
+
+			ENG_covid_19_pandemic = {
+				picture = ENG_nhs_timebomb
+			    traits = {
+			        ZZZ_blank_idea_trait
+			    }
+				
+				allowed = {
+					original_tag = ENG
+					NOT = {
+					#has_completed_focus = ENG_corona_defeated
+					}
+				}
+				
+				modifier = {
+					stability_factor = -0.05
+					monthly_population = -0.05
+					consumer_goods_factor = 0.05
+					industrial_development_monthly = -0.01
+					society_development_monthly = -0.01
+					poverty_development_monthly = -0.01
+				}
+			}
+
+
+			ENG_covid_19_pandemic_1 = {
+				picture = ENG_nhs_timebomb
+			    traits = {
+			        ZZZ_blank_idea_trait
+			    }
+				
+				allowed = {
+					original_tag = ENG
+					NOT = {
+						#has_completed_focus = ENG_corona_defeated
+						}
+				}
+				
+				modifier = {
+					stability_factor = -0.15
+					stability_weekly_factor = -0.02
+					monthly_population = -0.50
+					consumer_goods_factor = 0.10
+					industrial_development_monthly = -0.02
+					society_development_monthly = -0.02
+					poverty_development_monthly = -0.02
+				}
+			}
+
+			ENG_covid_19_pandemic_lockdown = {
+				picture = ENG_nhs_timebomb
+			    traits = {
+			        ZZZ_blank_idea_trait
+			    }
+				
+				allowed = {
+					original_tag = ENG
+					NOT = {
+						#has_completed_focus = ENG_corona_defeated
+					}
+				}
+				
+				modifier = {
+					stability_factor = -0.10
+					stability_weekly_factor = -0.015
+					monthly_population = -0.30
+					consumer_goods_factor = 0.20
+					society_development_monthly = -0.025
+					industrial_development_monthly = -0.015
+					poverty_development_monthly = -0.015
+				}
+			}
+
+			ENG_covid_19_pandemic_lockdown_1 = {
+				picture = ENG_nhs_timebomb
+			    traits = {
+			        ZZZ_blank_idea_trait
+			    }
+				
+				allowed = {
+					original_tag = ENG
+					NOT = {
+						#has_completed_focus = ENG_corona_defeated
+						}
+				}
+				
+				modifier = {
+					stability_factor = -0.15
+					monthly_population = -0.25
+					consumer_goods_factor = 0.20
+					society_development_monthly = -0.025
+					industrial_development_monthly = -0.015
+					poverty_development_monthly = -0.015
+					research_speed_factor = -0.15
+				}
+			}
+
+			ENG_covid_19_pandemic_reject_lockdown = {
+				picture = ENG_nhs_timebomb
+			    traits = {
+			        ZZZ_blank_idea_trait
+			    }
+				
+				allowed = {
+					original_tag = ENG
+					NOT = {
+						#has_completed_focus = ENG_corona_defeated
+					}
+				}
+				
+				modifier = {
+					stability_factor = -0.10
+					stability_weekly_factor = -0.025
+					monthly_population = -0.45
+					consumer_goods_factor = 0.10
+					society_development_monthly = -0.015
+					industrial_development_monthly = -0.015
+					poverty_development_monthly = -0.015
+				}
+			}
+
+			ENG_covid_19_pandemic_reject_lockdown_1 = {
+				picture = ENG_nhs_timebomb
+			    traits = {
+			        ZZZ_blank_idea_trait
+			    }
+				
+				allowed = {
+					original_tag = ENG
+					NOT = {
+						#has_completed_focus = ENG_corona_defeated
+					}
+				}
+				
+				modifier = {
+					stability_factor = -0.15
+					monthly_population = -0.50
+					consumer_goods_factor = 0.05
+					society_development_monthly = -0.01
+					industrial_development_monthly = -0.01
+					poverty_development_monthly = -0.01
+				}
+			}
+
+			ENG_covid_19_pandemic_reject_lockdown_alt = {
+				picture = ENG_nhs_timebomb
+			    traits = {
+			        ZZZ_blank_idea_trait
+			    }
+				
+				allowed = {
+					original_tag = ENG
+					NOT = {
+						#has_completed_focus = ENG_corona_defeated
+					}
+				}
+				
+				modifier = {
+					stability_factor = -0.20
+					monthly_population = -0.40
+					consumer_goods_factor = 0.15
+					society_development_monthly = -0.02
+					industrial_development_monthly = -0.02
+					poverty_development_monthly = -0.02
+				}
+			}
+			SCO_Sovereignty_Movement = {
+
+				allowed = {
+					always = no
+				}
+						
+				picture = SCO_popular_independence
+					
+				modifier = {
+					production_speed_industrial_complex_factor = 0.075
+					production_speed_infrastructure_factor = 0.075
+					line_change_production_efficiency_factor = 0.075
+					consumer_goods_factor = -0.025
+					society_development_monthly = 0.02
+					industrial_development_monthly = 0.02
+					poverty_development_monthly = -0.03
+				}
+			}
+			SCO_Unionist_Terror_Attacks = {
+
+				allowed = {
+					always = no
+				}
+						
+				picture = SCO_royalist_bombing
+					
+				modifier = {
+					war_support_factor = -0.10
+					army_attack_factor = -0.12
+					army_defence_factor = -0.12
+				}
+			}
+			SCO_Undignified_Independence = {
+
+				allowed = {
+					always = no
+				}
+						
+				picture = KOS_low_international_recognition
+					
+				modifier = {
+					stability_factor = -0.15
+					political_power_gain = -0.20
+					income_growth_factor = -0.075
+				}
+			}
+		}
+		
+		head_minister = {
+			ENG_boris_johnson_hog = {
+				picture = ENG_boris_johnson
+				
+				allowed = {
+					original_tag = ENG
+				}
+				
+				allowed_to_remove = {
+					head_minister_trigger = yes
+				}
+				
+				traits = {
+					ide_soc_con
+					hog_happy_amateur
+				}
+			}	
+			
+			ENG_kier_starmer_hog = {
+				picture = ENG_keir_starmer
+				
+				allowed = {
+					original_tag = ENG
+				}
+				
+				allowed_to_remove = {
+					head_minister_trigger = yes
+				}
+				
+				traits = {
+					ide_soc_dem
+					hog_smiling_serpent
+				}
+			}		
+			
+			ENG_nigel_farage_hog = {
+				picture = ENG_nigel_farage
+				
+				allowed = {
+					original_tag = ENG
+				}
+				
+				allowed_to_remove = {
+					head_minister_trigger = yes
+				}
+				
+				traits = {
+					ide_aut_dem
+					hog_patriotic_ideolouge
+				}
+			}
+			
+			ENG_jacob_rees_mogg_hog = {
+				picture = ENG_jacob_rees_mogg
+				
+				allowed = {
+					original_tag = ENG
+				}
+				
+				allowed_to_remove = {
+					head_minister_trigger = yes
+				}
+				
+				traits = {
+					ide_soc_con
+					hog_distinguished_gentleman
+				}
+			}	
+			
+			ENG_rishi_sunak_hog = {
+				picture = ENG_rishi_sunak
+				
+				allowed = {
+					original_tag = ENG
+				}
+				
+				allowed_to_remove = {
+					head_minister_trigger = yes
+				}
+				
+				traits = {
+					ide_soc_con
+					hog_silent_workhorse
+				}
+			}
+			
+			ENG_liz_truss_hog = {
+				picture = ENG_liz_truss
+				
+				allowed = {
+					original_tag = ENG
+				}
+				
+				allowed_to_remove = {
+					head_minister_trigger = yes
+				}
+				
+				traits = {
+					ide_soc_con
+					hog_political_protege
+				}
+			}
+		}
+		
+		foreign_minister = {
+			ENG_dominic_raab_for = {
+				picture = ENG_dominic_raab
+				
+				allowed = {
+					original_tag = ENG
+				}
+				
+				traits = {
+					ide_soc_con
+					for_loyal_nationalist
+				}
+			}
+			
+			ENG_liz_truss_for = {
+				picture = ENG_liz_truss
+				
+				allowed = {
+					original_tag = ENG
+					NOT = {
+						has_idea = ENG_liz_truss_hog
+					}
+				}
+				
+				traits = {
+					ide_soc_con
+					for_free_trader
+				}
+			}
+			ENG_david_cameron_for = {
+				picture = ENG_david_cameron
+				
+				allowed = {
+					original_tag = ENG
+				}
+				
+				traits = {
+					ide_soc_con
+					for_global_interventionist
+				}
+			}
+			ENG_david_lammy_for = {
+				picture = ENG_david_lammy
+				
+				allowed = {
+					original_tag = ENG
+				}
+				
+				traits = {
+					ide_soc_dem
+					for_pragmatic_liberal
+				}
+			}
+		}
+		
+		economic_minister = {
+			ENG_savid_javid_eco = {
+				picture = ENG_savid_javid
+				
+				allowed = {
+					original_tag = ENG
+				}
+				
+				traits = {
+					ide_soc_con
+					eco_bank_president
+				}
+			}
+			ENG_rishi_sunak_eco = {
+				picture = ENG_rishi_sunak
+				
+				allowed = {
+					original_tag = ENG
+					NOT = {
+						has_idea = ENG_rishi_sunak_hog
+					}
+				}
+				
+				traits = {
+					ide_soc_con
+					eco_economic_silent_workhorse
+				}
+			}
+			ENG_nadhim_zahawi_eco = {
+				picture = ENG_nadhim_zahawi
+				
+				allowed = {
+					original_tag = ENG
+				}
+				
+				traits = {
+					ide_soc_con
+					eco_experienced_capitalist
+				}
+			}
+			ENG_rachel_reeves_eco = {
+				picture = ENG_rachel_reeves
+				
+				allowed = {
+					original_tag = ENG
+				}
+				
+				traits = {
+					ide_soc_dem
+					eco_balanced_budget_economy
+				}
+			}
+		}
+		
+		interior_minister = {
+			ENG_priti_patel_sec = {
+				picture = ENG_priti_patel
+				
+				allowed = {
+					original_tag = ENG
+				}
+				
+				traits = {
+					ide_soc_con
+					sec_crime_fighter
+				}
+			}
+			ENG_suella_braverman_sec = {
+				picture = ENG_suella_braverman
+				
+				allowed = {
+					original_tag = ENG
+				}
+				
+				traits = {
+					ide_soc_con
+					sec_princess_of_terror
+				}
+			}
+			ENG_yvette_cooper_sec = {
+				picture = ENG_yvette_cooper
+				
+				allowed = {
+					original_tag = ENG
+				}
+				
+				traits = {
+					ide_soc_dem
+					sec_reformer
+				}
+			}
+		}
+		
+		intelligence_minister = {
+			ENG_alex_younger_int = {
+				picture = ENG_alex_younger
+				
+				allowed = {
+					original_tag = ENG
+				}
+				
+				traits = {
+					#ide_soc_con
+					int_balanced_cryptographer
+				}
+			}
+			ENG_richard_moore_int = {
+				picture = ENG_richard_moore
+				
+				allowed = {
+					original_tag = ENG
+				}
+				
+				traits = {
+					int_encryptor
+				}
+			}
+		}
+	}

@@ -1,0 +1,137 @@
+NSM_faction_balance = {
+    initial_value = 0
+    left_side = NSM_rockwell_side
+    right_side = NSM_hitlerite_side
+    decision_category = NSM_balance_of_power_category
+    range = {
+        id = NSM_balance_range
+		min = -0.10
+		max = 0.10
+		modifier = {
+			stability_factor = 0.025
+			war_support_factor = 0.025
+		}
+		on_activate = {
+		}
+		on_deactivate = {
+		}
+    }
+
+    side = {
+        id = NSM_rockwell_side
+        icon = GFX_bop_NSM_rockwell_faction
+        range = {
+            id = NSM_rockwell_25_control_range
+            min = -0.25
+			max = -0.10
+			modifier = {
+                stability_factor = 0.05
+				production_speed_buildings_factor = 0.025
+				industrial_capacity_factory = 0.025
+				industrial_capacity_dockyard = 0.025
+            }
+			on_activate = {
+			}
+			on_deactivate = {
+			}
+        }
+		range = {
+            id = NSM_rockwell_50_control_range
+            min = -0.50
+			max = -0.25
+			modifier = {
+                stability_factor = 0.10
+				production_speed_buildings_factor = 0.05
+				industrial_capacity_factory = 0.05
+				industrial_capacity_dockyard = 0.05
+            }
+			on_activate = {
+			}
+			on_deactivate = {
+			}
+        }
+		range = {
+            id = NSM_rockwell_75_control_range
+            min = -0.75
+			max = -0.50
+			modifier = {
+                stability_factor = 0.15
+				production_speed_buildings_factor = 0.075
+				industrial_capacity_factory = 0.075
+				industrial_capacity_dockyard = 0.075
+            }
+			on_activate = {
+			}
+			on_deactivate = {
+			}
+        }
+		range = {
+            id = NSM_rockwell_full_control_range
+            min = -1
+			max = -0.75
+			modifier = {
+                stability_factor = 0.20
+				production_speed_buildings_factor = 0.1
+				industrial_capacity_factory = 0.1
+				industrial_capacity_dockyard = 0.1
+            }
+			on_activate = {
+			}
+			on_deactivate = {
+			}
+        }
+    }
+
+    side = {
+        id = NSM_hitlerite_side
+        icon = GFX_bop_NSM_hitlerite_faction
+        range = {
+            id = NSM_hitlerite_25_control_range
+            min = 0.10
+			max = 0.25
+			modifier = {
+                war_support_factor = 0.05
+				conscription_factor = 0.025
+				army_morale_factor = 0.025
+				army_org_factor = 0.025
+            }
+        }
+		range = {
+            id = NSM_hitlerite_50_control_range
+            min = 0.25
+			max = 0.50
+			modifier = {
+                war_support_factor = 0.10
+				conscription_factor = 0.05
+				army_morale_factor = 0.05
+				army_org_factor = 0.05
+            }
+        }
+		range = {
+            id = NSM_hitlerite_75_control_range
+            min = 0.50
+			max = 0.75
+			modifier = {
+                war_support_factor = 0.15
+				conscription_factor = 0.075
+				army_morale_factor = 0.075
+				army_org_factor = 0.075
+            }
+        }
+		range = {
+            id = NSM_hitlerite_full_control_range
+            min = 0.75
+			max = 1
+			modifier = {
+                war_support_factor = 0.20
+				conscription_factor = 0.1
+				army_morale_factor = 0.1
+				army_org_factor = 0.1
+            }
+        }
+		on_activate = {
+		}
+		on_deactivate = {
+		}
+    }
+}

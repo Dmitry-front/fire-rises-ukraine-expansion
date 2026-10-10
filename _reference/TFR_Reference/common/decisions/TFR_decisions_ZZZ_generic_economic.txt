@@ -1,0 +1,643 @@
+demobilization_category = {
+	demobilization_economic_mission = {
+		icon = revolt
+		is_good = no
+		days_mission_timeout = 140
+		allowed = {
+			is_relavent_tag = yes
+		}
+		visible = {
+			
+		}
+		activation = {
+			has_unsupported_economic_law = yes
+			has_war = no
+			NOT = {
+				has_totalitarian_government = yes
+				has_country_leader = {
+					character = SOV_dmitry_medvedev
+					ruling_only = yes
+				}
+			}
+			if = {
+				limit = {
+					USA_is_civil_war_faction = yes
+				}
+				NOT = {
+					has_global_flag = USA_american_civil_war_global
+					has_global_flag = USA_shattered_union_global
+				}
+			}
+		}
+		available = {
+			OR = {
+				has_unsupported_economic_law = no
+				has_war = yes
+			}
+		}
+		complete_effect = {
+			if = {
+				limit = {
+					has_idea = strikes_1
+				}
+				remove_ideas = strikes_1
+			}
+			if = {
+				limit = {
+					has_idea = strikes_2
+				}
+				remove_ideas = strikes_2
+			}
+			if = {
+				limit = {
+					has_idea = strikes_3
+				}
+				remove_ideas = strikes_3
+			}
+		}
+		timeout_effect = {
+			activate_mission = demobilization_economic_mission
+			if = {
+				limit = {
+					has_idea = strikes_3
+					has_stability > 0.4
+				}
+				add_stability = -0.1
+			}
+			if = {
+				limit = {
+					has_idea = strikes_2
+				}
+				swap_ideas = {
+					remove_idea = strikes_2
+					add_idea = strikes_3
+				}
+			}
+			if = {
+				limit = {
+					has_idea = strikes_1
+				}
+				swap_ideas = {
+					remove_idea = strikes_1
+					add_idea = strikes_2
+				}
+			}
+			if = {
+				limit = {
+					NOT = {
+						has_idea = strikes_1
+						has_idea = strikes_2
+						has_idea = strikes_3
+					}
+				}
+				add_ideas = strikes_1
+			}
+		}
+	}
+
+	demobilization_manpower_mission = {
+		icon = revolt
+		is_good = no
+		days_mission_timeout = 140
+		allowed = {
+			is_relavent_tag = yes
+		}
+		available = {
+			OR = {
+				has_unsupported_manpower_law = no
+				has_war = yes
+			}
+		}
+		activation = {
+			has_unsupported_manpower_law = yes
+			has_war = no
+			NOT = {
+				has_totalitarian_government = yes
+				has_country_leader = {
+					character = SOV_dmitry_medvedev
+					ruling_only = yes
+				}
+			}
+			if = {
+				limit = {
+					USA_is_civil_war_faction = yes
+				}
+				NOT = {
+					has_global_flag = USA_american_civil_war_global
+					has_global_flag = USA_shattered_union_global
+				}
+			}
+		}
+		timeout_effect = {
+			activate_mission = demobilization_manpower_mission
+			add_stability = -0.1
+		}
+	}
+
+	demobilization_economic_decision = {
+		icon = generic_industry
+		cost = 50
+		allowed = {
+			is_relavent_tag = yes
+		}
+		visible = {
+			has_war = no
+			has_unsupported_economic_law = yes
+			has_totalitarian_government = no
+			NOT = {
+				has_country_leader = {
+					character = SOV_dmitry_medvedev
+					ruling_only = yes
+				}
+			}
+			if = {
+				limit = {
+					USA_is_civil_war_faction = yes
+				}
+				NOT = {
+					has_global_flag = USA_american_civil_war_global
+					has_global_flag = USA_shattered_union_global
+				}
+			}
+		}
+		available = {
+			has_unsupported_economic_law = yes
+			has_war = no
+		}
+		complete_effect = {
+			if = {
+				limit = {
+					has_war_support < 0.15
+				}
+				add_ideas = civilian_mobilization
+			}
+			else_if = {
+				limit = {
+					has_war_support < 0.25
+				}
+				add_ideas = early_mobilization
+			}
+			else_if = {
+				limit = {
+					has_war_support < 0.5
+				}
+				add_ideas = partial_mobilization
+			}
+			else_if = {
+				limit = {
+					has_war_support < 0.8
+				}
+				add_ideas = war_mobilization
+			}
+			if = {
+				limit = {
+					has_idea = strikes_1
+				}
+				remove_ideas = strikes_1
+			}
+			if = {
+				limit = {
+					has_idea = strikes_2
+				}
+				remove_ideas = strikes_2
+			}
+			if = {
+				limit = {
+					has_idea = strikes_3
+				}
+				remove_ideas = strikes_3
+			}
+		}
+		ai_will_do = {
+			factor = 500			#should really get on this
+		}
+	}
+
+	demobilization_manpower_decision = {
+		icon = generic_prepare_civil_war
+		icon = revolt
+		cost = 50
+		ai_will_do = {
+			factor = 500
+		}
+		allowed = {
+			is_relavent_tag = yes
+		}
+		visible = {
+			has_unsupported_manpower_law = yes
+			has_war = no
+			if = {
+				limit = {
+					USA_is_civil_war_faction = yes
+				}
+				NOT = {
+					has_global_flag = USA_american_civil_war_global
+					has_global_flag = USA_shattered_union_global
+				}
+			}
+		}
+		available = {
+			has_unsupported_manpower_law = yes
+			has_war = no
+		}
+		complete_effect = {
+			if = {
+				limit = {
+					has_war_support < 0.1
+				}
+				add_ideas = lower_conscription
+			}
+			else_if = {
+				limit = {
+					has_war_support < 0.2
+				}
+				add_ideas = low_conscription
+			}
+			else_if = {
+				limit = {
+					has_war_support < 0.6
+				}
+				add_ideas = medium_conscription
+			}
+			else = {
+				add_ideas = high_conscription
+			}
+		}
+	}
+}
+
+generic_economic_policy_category = {
+	improved_worker_conditions = {
+		icon = generic_industry
+		available = {
+			has_stability < 0.9
+		}
+		visible = {
+			NOT = {
+				tag = USA
+				tag = USB
+			}
+		}
+		fire_only_once = no
+		modifier = {
+			stability_weekly = 0.005
+			production_speed_buildings_factor = -0.1
+			industrial_capacity_factory = -0.1
+			industrial_capacity_dockyard = -0.1
+		}
+		days_remove = 140
+		days_re_enable = 280
+		cost = 100
+		complete_effect = {
+		}
+		ai_will_do = {
+			base = 0
+			modifier = {
+				add = 1
+				has_stability < 0.6
+			}
+		}
+	}
+	war_building_slot = {
+		icon = generic_construction
+		allowed = {
+			always = yes
+		}
+		cost = 25
+		days_remove = 14
+		days_re_enable = 21
+		fire_only_once = no
+		ai_will_do = {
+			factor = 1
+			modifier = {
+				factor = 10
+				all_owned_state = {
+					free_building_slots = {
+						building = industrial_complex
+						size < 1
+						include_locked = no
+					}
+				}
+			}
+			modifier = {
+				any_owned_state = {
+					infrastructure > 5
+					free_building_slots = {
+						building = industrial_complex
+						size > 0
+						include_locked = no
+					}
+				}
+				factor = 0
+			}
+		}
+		available = {
+			any_owned_state = {
+				NOT = {
+					has_state_flag = war_building_slot_flag
+				}
+				is_fully_controlled_by = ROOT
+				free_building_slots = {
+					building = arms_factory
+					size > 0
+					include_locked = yes
+				}
+			}
+		}
+		visible = {
+			has_war = yes
+		}
+		complete_effect = {
+			add_war_support = -0.025
+			add_stability = -0.025
+		}
+		remove_effect = {
+			if = {
+				limit = {
+					any_owned_state = {
+						is_fully_controlled_by = ROOT
+						free_building_slots = {
+							building = industrial_complex
+							size > 1
+							include_locked = yes
+						}
+						NOT = {
+							has_state_flag = war_building_slot_flag
+						}
+						infrastructure > 8
+					}
+				}
+				random_owned_state = {
+					limit = {
+						is_fully_controlled_by = ROOT
+						free_building_slots = {
+							building = industrial_complex
+							size > 1
+							include_locked = yes
+						}
+						NOT = {
+							has_state_flag = war_building_slot_flag
+						}
+						infrastructure > 8
+					}
+					add_extra_state_shared_building_slots = 1
+					set_state_flag = war_building_slot_flag
+				}
+			}
+			else_if = {
+				limit = {
+					any_owned_state = {
+						is_fully_controlled_by = ROOT
+						free_building_slots = {
+							building = industrial_complex
+							size > 1
+							include_locked = yes
+						}
+						NOT = {
+							has_state_flag = war_building_slot_flag
+						}
+						infrastructure > 5
+					}
+				}
+				random_owned_state = {
+					limit = {
+						is_fully_controlled_by = ROOT
+						free_building_slots = {
+							building = industrial_complex
+							size > 1
+							include_locked = yes
+						}
+						NOT = {
+							has_state_flag = war_building_slot_flag
+						}
+						infrastructure > 5
+					}
+					add_extra_state_shared_building_slots = 1
+					set_state_flag = war_building_slot_flag
+				}
+			}
+			else = {
+				random_owned_state = {
+					limit = {
+						is_fully_controlled_by = ROOT
+						free_building_slots = {
+							building = industrial_complex
+							size > 1
+							include_locked = yes
+						}
+						NOT = {
+							has_state_flag = war_building_slot_flag
+						}
+						infrastructure > 8
+					}
+					add_extra_state_shared_building_slots = 1
+					set_state_flag = war_building_slot_flag
+				}
+			}
+		}
+	}
+	infrastructure_building_slot = {
+		icon = generic_construction
+		allowed = {
+			always = yes
+		}
+		cost = 50
+		fire_only_once = no
+		days_remove = 35
+		days_re_enable = 35
+		available = {
+			any_state = {
+				NOT = {
+					has_state_flag = industrial_renovation_state
+				}
+				is_fully_controlled_by = ROOT
+				is_owned_by = ROOT
+				free_building_slots = {
+					building = infrastructure
+					size < 4
+				}
+			}
+		}
+		visible = {
+			has_country_flag = unlock_industrial_renovation_decision
+		}
+		remove_effect = {
+			random_owned_state = {
+				limit = {
+					NOT = {
+						has_state_flag = industrial_renovation_state
+					}
+					is_fully_controlled_by = ROOT
+					is_owned_by = ROOT
+					free_building_slots = {
+						building = infrastructure
+						size < 4
+					}
+				}
+				add_extra_state_shared_building_slots = 1
+				set_state_flag = industrial_renovation_state
+			}
+		}
+		ai_will_do = {
+			factor = 1
+		}
+	}
+	civilian_factory_commission = {
+		icon = generic_construction
+		allowed = {
+			always = yes
+		}
+		cost = 100
+		fire_only_once = no
+		days_remove = 70
+		days_re_enable = 70
+		available = {
+			any_state = {
+				NOT = {
+					has_state_flag = factory_comission_state
+				}
+				is_fully_controlled_by = ROOT
+				is_owned_by = ROOT
+				free_building_slots = {
+					building = industrial_complex
+					size > 1
+					include_locked = no
+				}
+			}
+		}
+		visible = {
+			has_country_flag = unlock_civilian_factory_commission_decision
+		}
+		remove_effect = {
+			random_owned_state = {
+				limit = {
+					NOT = {
+						has_state_flag = factory_comission_state
+					}
+					is_fully_controlled_by = ROOT
+					is_owned_by = ROOT
+					free_building_slots = {
+						building = industrial_complex
+						size > 1
+						include_locked = no
+					}
+				}
+				add_building_construction = {
+					type = industrial_complex
+					level = 1
+					instant_build = yes
+				}
+				set_state_flag = factory_comission_state
+			}
+		}
+		ai_will_do = {
+			factor = 1
+		}
+	}
+	arms_factory_commission = {
+		icon = generic_construction
+		allowed = {
+			always = yes
+		}
+		cost = 100
+		fire_only_once = no
+		days_remove = 70
+		days_re_enable = 70
+		available = {
+			any_state = {
+				NOT = {
+					has_state_flag = factory_comission_state
+				}
+				is_fully_controlled_by = ROOT
+				is_owned_by = ROOT
+				free_building_slots = {
+					building = arms_factory
+					size > 1
+					include_locked = no
+				}
+			}
+		}
+		visible = {
+			has_country_flag = unlock_arms_factory_commission_decision
+		}
+		remove_effect = {
+			random_owned_state = {
+				limit = {
+					NOT = {
+						has_state_flag = factory_comission_state
+					}
+					is_fully_controlled_by = ROOT
+					is_owned_by = ROOT
+					free_building_slots = {
+						building = arms_factory
+						size > 1
+						include_locked = no
+					}
+				}
+				add_building_construction = {
+					type = arms_factory
+					level = 1
+					instant_build = yes
+				}
+				set_state_flag = factory_comission_state
+			}
+		}
+		ai_will_do = {
+			factor = 1
+		}
+	}
+	dockyard_commission = {
+		icon = generic_construction
+		allowed = {
+			always = yes
+		}
+		cost = 100
+		fire_only_once = no
+		days_remove = 70
+		days_re_enable = 70
+		available = {
+			any_state = {
+				NOT = {
+					has_state_flag = factory_comission_state
+				}
+				is_coastal = yes
+				is_fully_controlled_by = ROOT
+				is_owned_by = ROOT
+				free_building_slots = {
+					building = dockyard
+					size > 1
+					include_locked = no
+				}
+			}
+		}
+		visible = {
+			has_country_flag = unlock_dockyard_commission_decision
+		}
+		remove_effect = {
+			random_owned_state = {
+				limit = {
+					NOT = {
+						has_state_flag = factory_comission_state
+					}
+					is_coastal = yes
+					is_fully_controlled_by = ROOT
+					is_owned_by = ROOT
+					free_building_slots = {
+						building = dockyard
+						size > 1
+						include_locked = no
+					}
+				}
+				add_building_construction = {
+					type = dockyard
+					level = 1
+					instant_build = yes
+				}
+				set_state_flag = factory_comission_state
+			}
+		}
+		ai_will_do = {
+			factor = 1
+		}
+	}
+}

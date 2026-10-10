@@ -1,0 +1,774 @@
+﻿# Division template historical names system. Is a new method of naming the divisions based on the names-group assigned to it's template.
+# If we run out of all historical names, the names will be assigned in the old way.
+#
+# Each group has a made up tag. Use it if you want to append more, or replace existing names with the extra txt files (modding).
+#
+# for_countries - lists all countries that can use it. If empty, or entire tag is missing, all countries in the world can use it.
+#
+# can_use - is a trigger that locks/unlocks the group under specific circumstances. The trigger is in a country scope.
+#
+# division_types - is a list of tokens to corresponding unit types. A player can in fact use any group of names for a div.template
+#                  however this tag is a helper for an automated choice (for AI, or if the group must switch on it's own, because
+#                  for example the current one is no longer available due to the can_use trigger saying so).
+#                  In automated choice, the division template must have at least 1 of the following types for it to be chosen.
+#
+# fallback_name - Is going to be used if we run out of the scripted historical names. If you want to use the old division naming
+#                 mechanics to be used for fallbacks, then just skip this option.
+#
+# unordered - It's a list of historical division names that did not have a number. Regardless if such names happened in history or not
+#             this option is available here mainly for a mods.
+#
+# ordered - Is a list of all historical names. 
+#           Numbers must start from 1 and up. 
+#           Numbers can't repeat in one scope.
+#           If you script the name for this group, at the same number (for example in a mod in another file), the name will be override.
+#           All arguments between the brackets must be separated by spaces. Each argument is wrapped in "quotas".
+#           1st argument = The name. It must contain either: 
+#                          %d (for decimal number placement)
+#                          %s (for string number placement - ROMAN numbers like XIV).
+#           2nd argument is optional = A localizable text describing this historical division. The text will be visible in the tooltip
+#                                      where you choose the historical division name.
+#           3rd argument is optional = An URL preferably pointing to the WIKI. It's a future feature that is not currently working in
+#                                      the current game version.
+
+GER_INF_01 = 
+{
+	name = "Infantry Brigades"
+
+	for_countries = { GER }
+
+	can_use = { always = yes }
+
+	division_types = { "infantry" "motorized" }
+
+	# Number reservation system will tie to another group.
+	#link_numbering_with = { GER_Gar_01 }
+
+	fallback_name = "InfBrig %d"
+
+	# Names with numbers (only one number per entry). 
+	# It's okay to have gaps in numbering.
+	ordered =
+	{
+		#Active numbered brigades
+		9 = { "InfBrig %d 'Niedersachsen'" } #PzLehrBrig 9
+		12 = { "InfBrig %d 'Oberpfalz'" } #PzBrig 12
+		21 = { "InfBrig %d 'Lipperland'" } #PzBrig 21
+		23 = { "InfBrig %d 'Bayern'" } #GebJgBrig 23
+		37 = { "InfBrig %d 'Freistaat Sachsen'" } #PzGrenBrig 37
+		41 = { "InfBrig %d 'Vorpommern'" } #PzGrenBrig 41
+		1 = { "InfBrig %d 'Saarland'" } #LLBrig 1
+		
+		#Old disbanded brigades, starting with ones disbanded in the 2000s
+		7 = { "InfBrig %d 'Hansestadt Hamburg'" }
+		14 = { "InfBrig %d 'Hessischer Löwe'" }
+		18 = { "InfBrig %d 'Holstein'" }
+		19 = { "InfBrig %d 'Münsterland'" }
+		26 = { "InfBrig %d 'Saarland'" }
+		30 = { "InfBrig %d 'Alb-Brigade'" }
+		31 = { "InfBrig %d 'Oldenburg'" }
+		34 = { "InfBrig %d 'Koblenz'" }
+		36 = { "InfBrig %d 'Mainfranken'" }
+		38 = { "InfBrig %d 'Sachsen-Anhalt'" }
+		39 = { "InfBrig %d 'Thüringen'" }
+		40 = { "InfBrig %d 'Mecklenburg'" }
+		42 = { "InfBrig %d 'Brandenburg'" }
+		
+		#Older brigades
+		2 = { "InfBrig %d" }
+		3 = { "InfBrig %d 'Weser-Leine'" }
+		4 = { "InfBrig %d" }
+		5 = { "InfBrig %d 'Kurhessen'" }
+		6 = { "InfBrig %d" }
+		8 = { "InfBrig %d 'Lüneburg'" }
+		10 = { "InfBrig %d" }
+		11 = { "InfBrig %d 'Bayerwald'" }
+		13 = { "InfBrig %d" }
+		15 = { "InfBrig %d 'Westerwald'" }
+		16 = { "InfBrig %d 'Herzogtum Lauenburg'" }
+		17 = { "InfBrig %d 'Hamburger Hausbrigade'" }
+		20 = { "InfBrig %d 'Märkisches Sauerland'" }
+		22 = { "InfBrig %d 'Oberland'" }
+		24 = { "InfBrig %d 'Niederbayern'" }
+		25 = { "InfBrig %d 'Schwarzwald'" }
+		27 = { "InfBrig %d 'Lipperland'" }
+		28 = { "InfBrig %d" }
+		29 = { "InfBrig %d 'Südbaden-Hohenzollern'" }
+		32 = { "InfBrig %d" }
+		33 = { "InfBrig %d 'Celle'" }
+		35 = { "InfBrig %d" }
+		
+		#Heimatschutzbrigade in order
+		51 = { "InfBrig %d" }
+		61 = { "InfBrig %d" }
+		52 = { "InfBrig %d" }
+		62 = { "InfBrig %d" }
+		53 = { "InfBrig %d" }
+		63 = { "InfBrig %d" }
+		54 = { "InfBrig %d" }
+		64 = { "InfBrig %d" }
+		55 = { "InfBrig %d" }
+		65 = { "InfBrig %d" }
+		56 = { "InfBrig %d" }
+		66 = { "InfBrig %d" }
+		
+		#Fictional HSchBrig
+		57 = { "InfBrig %d" }
+		67 = { "InfBrig %d" }
+		58 = { "InfBrig %d" }
+		68 = { "InfBrig %d" }
+		59 = { "InfBrig %d" }
+		69 = { "InfBrig %d" }
+	}
+}
+
+GER_INF_02 = 
+{
+	name = "Security Divisions"
+
+	for_countries = { GER HUN MLD PLD BUL SLO ROM }
+
+	can_use = {
+		OR = {
+			has_government = fascist 
+			has_government = nationalist 
+		}
+	}
+
+	division_types = { "infantry" "motorized" }
+
+	# Number reservation system will tie to another group.
+	#link_numbering_with = { GER_Gar_01 }
+
+	fallback_name = "Korück %d"
+
+	# Names with numbers (only one number per entry). 
+	# It's okay to have gaps in numbering.
+	ordered =
+	{
+		9 = { "Korück %d" }
+		12 = { "Korück %d" }
+		21 = { "Korück %d" }
+		23 = { "Korück %d" }
+		37 = { "Korück %d" } 
+		559 = { "Korück %d" } 
+		1 = { "Korück %d" }
+		7 = { "Korück %d" }
+		14 = { "Korück %d" }
+		18 = { "Korück %d" }
+		19 = { "Korück %d" }
+		26 = { "Korück %d" }
+		30 = { "Korück %d" }
+		31 = { "Korück %d" }
+		34 = { "Korück %d" }
+		36 = { "Korück %d" }
+		38 = { "Korück %d" }
+		39 = { "Korück %d" }
+		40 = { "Korück %d" }
+		42 = { "Korück %d" }
+	}
+}
+
+GER_LTINF_01 = 
+{
+	name = "Light Infantry Brigades"
+
+	for_countries = { GER }
+
+	can_use = { always = yes }
+
+	division_types = { "infantry" "motorized" "special_forces" "recce" }
+
+	fallback_name = "JgBrig %d"
+
+	link_numbering_with = { GER_INF_01 }
+
+	# Names with numbers (only one number per entry)
+	ordered =
+	{
+		#Active numbered brigades
+		9 = { "JgBrig %d 'Niedersachsen'" } #PzLehrBrig 9
+		12 = { "JgBrig %d 'Oberpfalz'" } #PzBrig 12
+		21 = { "JgBrig %d 'Lipperland'" } #PzBrig 21
+		23 = { "JgBrig %d 'Bayern'" } #GebJgBrig 23
+		37 = { "JgBrig %d 'Freistaat Sachsen'" } #PzGrenBrig 37
+		41 = { "JgBrig %d 'Vorpommern'" } #PzGrenBrig 41
+		1 = { "JgBrig %d 'Saarland'" } #LLBrig 1
+		
+		#Old disbanded brigades, starting with ones disbanded in the 2000s
+		7 = { "JgBrig %d 'Hansestadt Hamburg'" }
+		14 = { "JgBrig %d 'Hessischer Löwe'" }
+		18 = { "JgBrig %d 'Holstein'" }
+		19 = { "JgBrig %d 'Münsterland'" }
+		26 = { "JgBrig %d 'Saarland'" }
+		30 = { "JgBrig %d 'Alb-Brigade'" }
+		31 = { "JgBrig %d 'Oldenburg'" }
+		34 = { "JgBrig %d 'Koblenz'" }
+		36 = { "JgBrig %d 'Mainfranken'" }
+		38 = { "JgBrig %d 'Sachsen-Anhalt'" }
+		39 = { "JgBrig %d 'Thüringen'" }
+		40 = { "JgBrig %d 'Mecklenburg'" }
+		42 = { "JgBrig %d 'Brandenburg'" }
+		
+		#Older brigades
+		2 = { "JgBrig %d" }
+		3 = { "JgBrig %d 'Weser-Leine'" }
+		4 = { "JgBrig %d" }
+		5 = { "JgBrig %d 'Kurhessen'" }
+		6 = { "JgBrig %d" }
+		8 = { "JgBrig %d 'Lüneburg'" }
+		10 = { "JgBrig %d" }
+		11 = { "JgBrig %d 'Bayerwald'" }
+		13 = { "JgBrig %d" }
+		15 = { "JgBrig %d 'Westerwald'" }
+		16 = { "JgBrig %d 'Herzogtum Lauenburg'" }
+		17 = { "JgBrig %d 'Hamburger Hausbrigade'" }
+		20 = { "JgBrig %d 'Märkisches Sauerland'" }
+		22 = { "JgBrig %d 'Oberland'" }
+		24 = { "JgBrig %d 'Niederbayern'" }
+		25 = { "JgBrig %d 'Schwarzwald'" }
+		27 = { "JgBrig %d 'Lipperland'" }
+		28 = { "JgBrig %d" }
+		29 = { "JgBrig %d 'Südbaden-Hohenzollern'" }
+		32 = { "JgBrig %d" }
+		33 = { "JgBrig %d 'Celle'" }
+		35 = { "JgBrig %d" }
+		
+		#Heimatschutzbrigade in order
+		51 = { "JgBrig %d" }
+		61 = { "JgBrig %d" }
+		52 = { "JgBrig %d" }
+		62 = { "JgBrig %d" }
+		53 = { "JgBrig %d" }
+		63 = { "JgBrig %d" }
+		54 = { "JgBrig %d" }
+		64 = { "JgBrig %d" }
+		55 = { "JgBrig %d" }
+		65 = { "JgBrig %d" }
+		56 = { "JgBrig %d" }
+		66 = { "JgBrig %d" }
+		
+		#Fictional HSchBrig
+		57 = { "JgBrig %d" }
+		67 = { "JgBrig %d" }
+		58 = { "JgBrig %d" }
+		68 = { "JgBrig %d" }
+		59 = { "JgBrig %d" }
+		69 = { "JgBrig %d" }
+		
+	}
+}
+
+GER_MEC_01 = 
+{
+	name = "Panzergrenadier Brigades"
+
+	for_countries = { GER }
+
+	can_use = { always = yes }
+
+	division_types = { "mechanized" "light_mechanized" }
+
+	fallback_name = "PzGrenBrig %d"
+
+	link_numbering_with = { GER_INF_01 }
+
+	# Names with numbers (only one number per entry)
+	ordered =
+	{
+		#Active numbered brigades
+		9 = { "PzLehrBrig %d 'Niedersachsen'" } #PzLehrBrig 9
+		12 = { "PzGrenBrig %d 'Oberpfalz'" } #PzBrig 12
+		21 = { "PzGrenBrig %d 'Lipperland'" } #PzBrig 21
+		23 = { "PzGrenBrig %d 'Bayern'" } #GebJgBrig 23
+		37 = { "PzGrenBrig %d 'Freistaat Sachsen'" } #PzGrenBrig 37
+		41 = { "PzGrenBrig %d 'Vorpommern'" } #PzGrenBrig 41
+		1 = { "PzGrenBrig %d 'Saarland'" } #LLBrig 1
+		
+		#Old disbanded brigades, starting with ones disbanded in the 2000s
+		7 = { "PzGrenBrig %d 'Hansestadt Hamburg'" }
+		14 = { "PzGrenBrig %d 'Hessischer Löwe'" }
+		18 = { "PzGrenBrig %d 'Holstein'" }
+		19 = { "PzGrenBrig %d 'Münsterland'" }
+		26 = { "PzGrenBrig %d 'Saarland'" }
+		30 = { "PzGrenBrig %d 'Alb-Brigade'" }
+		31 = { "PzGrenBrig %d 'Oldenburg'" }
+		34 = { "PzGrenBrig %d 'Koblenz'" }
+		36 = { "PzGrenBrig %d 'Mainfranken'" }
+		38 = { "PzGrenBrig %d 'Sachsen-Anhalt'" }
+		39 = { "PzGrenBrig %d 'Thüringen'" }
+		40 = { "PzGrenBrig %d 'Mecklenburg'" }
+		42 = { "PzGrenBrig %d 'Brandenburg'" }
+		
+		#Older brigades
+		2 = { "PzGrenBrig %d" }
+		3 = { "PzGrenBrig %d 'Weser-Leine'" }
+		4 = { "PzGrenBrig %d" }
+		5 = { "PzGrenBrig %d 'Kurhessen'" }
+		6 = { "PzGrenBrig %d" }
+		8 = { "PzGrenBrig %d 'Lüneburg'" }
+		10 = { "PzGrenBrig %d" }
+		11 = { "PzGrenBrig %d 'Bayerwald'" }
+		13 = { "PzGrenBrig %d" }
+		15 = { "PzGrenBrig %d 'Westerwald'" }
+		16 = { "PzGrenBrig %d 'Herzogtum Lauenburg'" }
+		17 = { "PzGrenBrig %d 'Hamburger Hausbrigade'" }
+		20 = { "PzGrenBrig %d 'Märkisches Sauerland'" }
+		22 = { "PzGrenBrig %d 'Oberland'" }
+		24 = { "PzGrenBrig %d 'Niederbayern'" }
+		25 = { "PzGrenBrig %d 'Schwarzwald'" }
+		27 = { "PzGrenBrig %d 'Lipperland'" }
+		28 = { "PzGrenBrig %d" }
+		29 = { "PzGrenBrig %d 'Südbaden-Hohenzollern'" }
+		32 = { "PzGrenBrig %d" }
+		33 = { "PzGrenBrig %d 'Celle'" }
+		35 = { "PzGrenBrig %d" }
+		
+		#Heimatschutzbrigade in order
+		51 = { "PzGrenBrig %d" }
+		61 = { "PzGrenBrig %d" }
+		52 = { "PzGrenBrig %d" }
+		62 = { "PzGrenBrig %d" }
+		53 = { "PzGrenBrig %d" }
+		63 = { "PzGrenBrig %d" }
+		54 = { "PzGrenBrig %d" }
+		64 = { "PzGrenBrig %d" }
+		55 = { "PzGrenBrig %d" }
+		65 = { "PzGrenBrig %d" }
+		56 = { "PzGrenBrig %d" }
+		66 = { "PzGrenBrig %d" }
+		
+		#Fictional HSchBrig
+		57 = { "PzGrenBrig %d" }
+		67 = { "PzGrenBrig %d" }
+		58 = { "PzGrenBrig %d" }
+		68 = { "PzGrenBrig %d" }
+		59 = { "PzGrenBrig %d" }
+		69 = { "PzGrenBrig %d" }
+	}
+}
+
+GER_ARM_01 = 
+{
+	name = "Panzer Divisions"
+
+	for_countries = { GER }
+
+	can_use = { always = yes }
+
+	division_types = { "light_armor" "medium_armor" "heavy_armor" "modern_armor" }
+
+	fallback_name = "PzBrig %d"
+
+	link_numbering_with = { GER_INF_01 }
+
+	# Names with numbers (only one number per entry)
+	ordered =
+	{
+		#Active numbered brigades
+		9 = { "PzBrig %d 'Niedersachsen'" } #PzLehrBrig 9
+		12 = { "PzBrig %d 'Oberpfalz'" } #PzBrig 12
+		21 = { "PzBrig %d 'Lipperland'" } #PzBrig 21
+		23 = { "PzBrig %d 'Bayern'" } #GebJgBrig 23
+		37 = { "PzBrig %d 'Freistaat Sachsen'" } #PzGrenBrig 37
+		41 = { "PzBrig %d 'Vorpommern'" } #PzGrenBrig 41
+		1 = { "PzBrig %d 'Saarland'" } #LLBrig 1
+		
+		#Old disbanded brigades, starting with ones disbanded in the 2000s
+		7 = { "PzBrig %d 'Hansestadt Hamburg'" }
+		14 = { "PzBrig %d 'Hessischer Löwe'" }
+		18 = { "PzBrig %d 'Holstein'" }
+		19 = { "PzBrig %d 'Münsterland'" }
+		26 = { "PzBrig %d 'Saarland'" }
+		30 = { "PzBrig %d 'Alb-Brigade'" }
+		31 = { "PzBrig %d 'Oldenburg'" }
+		34 = { "PzBrig %d 'Koblenz'" }
+		36 = { "PzBrig %d 'Mainfranken'" }
+		38 = { "PzBrig %d 'Sachsen-Anhalt'" }
+		39 = { "PzBrig %d 'Thüringen'" }
+		40 = { "PzBrig %d 'Mecklenburg'" }
+		42 = { "PzBrig %d 'Brandenburg'" }
+		
+		#Older brigades
+		2 = { "PzBrig %d" }
+		3 = { "PzBrig %d 'Weser-Leine'" }
+		4 = { "PzBrig %d" }
+		5 = { "PzBrig %d 'Kurhessen'" }
+		6 = { "PzBrig %d" }
+		8 = { "PzBrig %d 'Lüneburg'" }
+		10 = { "PzBrig %d" }
+		11 = { "PzBrig %d 'Bayerwald'" }
+		13 = { "PzBrig %d" }
+		15 = { "PzBrig %d 'Westerwald'" }
+		16 = { "PzBrig %d 'Herzogtum Lauenburg'" }
+		17 = { "PzBrig %d 'Hamburger Hausbrigade'" }
+		20 = { "PzBrig %d 'Märkisches Sauerland'" }
+		22 = { "PzBrig %d 'Oberland'" }
+		24 = { "PzBrig %d 'Niederbayern'" }
+		25 = { "PzBrig %d 'Schwarzwald'" }
+		27 = { "PzBrig %d 'Lipperland'" }
+		28 = { "PzBrig %d" }
+		29 = { "PzBrig %d 'Südbaden-Hohenzollern'" }
+		32 = { "PzBrig %d" }
+		33 = { "PzBrig %d 'Celle'" }
+		35 = { "PzBrig %d" }
+		
+		#Heimatschutzbrigade in order
+		51 = { "PzBrig %d" }
+		61 = { "PzBrig %d" }
+		52 = { "PzBrig %d" }
+		62 = { "PzBrig %d" }
+		53 = { "PzBrig %d" }
+		63 = { "PzBrig %d" }
+		54 = { "PzBrig %d" }
+		64 = { "PzBrig %d" }
+		55 = { "PzBrig %d" }
+		65 = { "PzBrig %d" }
+		56 = { "PzBrig %d" }
+		66 = { "PzBrig %d" }
+		
+		#Fictional HSchBrig
+		57 = { "PzBrig %d" }
+		67 = { "PzBrig %d" }
+		58 = { "PzBrig %d" }
+		68 = { "PzBrig %d" }
+		59 = { "PzBrig %d" }
+		69 = { "PzBrig %d" }
+	}
+}
+
+GER_MNT_01 = 
+{
+	name = "Mountain Brigades"
+
+	for_countries = { GER }
+
+	can_use = { always = yes }
+
+	division_types = { "mountaineers" }
+
+	fallback_name = "GebJgBrig %d"
+
+	link_numbering_with = { GER_INF_01 }
+
+	# Names with numbers (only one number per entry)
+	ordered =
+	{
+		#Active numbered brigades
+		9 = { "GebJgBrig %d 'Niedersachsen'" } #PzLehrBrig 9
+		12 = { "GebJgBrig %d 'Oberpfalz'" } #PzBrig 12
+		21 = { "GebJgBrig %d 'Lipperland'" } #PzBrig 21
+		23 = { "GebJgBrig %d 'Bayern'" } #GebJgBrig 23
+		37 = { "GebJgBrig %d 'Freistaat Sachsen'" } #PzGrenBrig 37
+		41 = { "GebJgBrig %d 'Vorpommern'" } #PzGrenBrig 41
+		1 = { "GebJgBrig %d 'Saarland'" } #LLBrig 1
+		
+		#Old disbanded brigades, starting with ones disbanded in the 2000s
+		7 = { "GebJgBrig %d 'Hansestadt Hamburg'" }
+		14 = { "GebJgBrig %d 'Hessischer Löwe'" }
+		18 = { "GebJgBrig %d 'Holstein'" }
+		19 = { "GebJgBrig %d 'Münsterland'" }
+		26 = { "GebJgBrig %d 'Saarland'" }
+		30 = { "GebJgBrig %d 'Alb-Brigade'" }
+		31 = { "GebJgBrig %d 'Oldenburg'" }
+		34 = { "GebJgBrig %d 'Koblenz'" }
+		36 = { "GebJgBrig %d 'Mainfranken'" }
+		38 = { "GebJgBrig %d 'Sachsen-Anhalt'" }
+		39 = { "GebJgBrig %d 'Thüringen'" }
+		40 = { "GebJgBrig %d 'Mecklenburg'" }
+		42 = { "GebJgBrig %d 'Brandenburg'" }
+		
+		#Older brigades
+		2 = { "GebJgBrig %d" }
+		3 = { "GebJgBrig %d 'Weser-Leine'" }
+		4 = { "GebJgBrig %d" }
+		5 = { "GebJgBrig %d 'Kurhessen'" }
+		6 = { "GebJgBrig %d" }
+		8 = { "GebJgBrig %d 'Lüneburg'" }
+		10 = { "GebJgBrig %d" }
+		11 = { "GebJgBrig %d 'Bayerwald'" }
+		13 = { "GebJgBrig %d" }
+		15 = { "GebJgBrig %d 'Westerwald'" }
+		16 = { "GebJgBrig %d 'Herzogtum Lauenburg'" }
+		17 = { "GebJgBrig %d 'Hamburger Hausbrigade'" }
+		20 = { "GebJgBrig %d 'Märkisches Sauerland'" }
+		22 = { "GebJgBrig %d 'Oberland'" }
+		24 = { "GebJgBrig %d 'Niederbayern'" }
+		25 = { "GebJgBrig %d 'Schwarzwald'" }
+		27 = { "GebJgBrig %d 'Lipperland'" }
+		28 = { "GebJgBrig %d" }
+		29 = { "GebJgBrig %d 'Südbaden-Hohenzollern'" }
+		32 = { "GebJgBrig %d" }
+		33 = { "GebJgBrig %d 'Celle'" }
+		35 = { "GebJgBrig %d" }
+		
+		#Heimatschutzbrigade in order
+		51 = { "GebJgBrig %d" }
+		61 = { "GebJgBrig %d" }
+		52 = { "GebJgBrig %d" }
+		62 = { "GebJgBrig %d" }
+		53 = { "GebJgBrig %d" }
+		63 = { "GebJgBrig %d" }
+		54 = { "GebJgBrig %d" }
+		64 = { "GebJgBrig %d" }
+		55 = { "GebJgBrig %d" }
+		65 = { "GebJgBrig %d" }
+		56 = { "GebJgBrig %d" }
+		66 = { "GebJgBrig %d" }
+		
+		#Fictional HSchBrig
+		57 = { "GebJgBrig %d" }
+		67 = { "GebJgBrig %d" }
+		58 = { "GebJgBrig %d" }
+		68 = { "GebJgBrig %d" }
+		59 = { "GebJgBrig %d" }
+		69 = { "GebJgBrig %d" }
+	}
+}
+
+GER_MAR_01 = 
+{
+	name = "Marine Brigades"
+
+	for_countries = { GER }
+
+	can_use = { always = yes }
+
+	division_types = { "marine" }
+
+	fallback_name = "SeeBrig S%d"
+
+	# Names with numbers (only one number per entry)
+	ordered =
+	{
+		1 = { "SeeBrig S%d" }
+		2 = { "SeeBrig S%d" }
+		3 = { "SeeBrig S%d" }
+		4 = { "SeeBrig S%d" }
+		5 = { "SeeBrig S%d" }
+		6 = { "SeeBrig S%d" }
+		7 = { "SeeBrig S%d" }
+		8 = { "SeeBrig S%d" }
+		9 = { "SeeBrig S%d" }
+		10 = { "SeeBrig S%d" }
+		
+		# Entirely fictional list based on modern Seebatallion
+	}
+}
+
+GER_SPECOPS_01 = 
+{
+	name = "Commando Batallion"
+
+	for_countries = { GER }
+
+	can_use = { always = yes }
+
+	division_types = { "special_forces" }
+
+	fallback_name = "%d. KBat"
+
+	# Names with numbers (only one number per entry)
+	ordered =
+	{
+		1 = { "%d. KBat" }
+		2 = { "%d. KBat" }
+		3 = { "%d. KBat" }
+		4 = { "%d. KBat" }
+		5 = { "%d. KBat" }
+		6 = { "%d. KBat" }
+		7 = { "%d. KBat" }
+		8 = { "%d. KBat" }
+		9 = { "%d. KBat" }
+		10 = { "%d. KBat" }
+		
+		# Entirely fictional list
+	}
+}
+
+GER_PAR_01 = 
+{
+	name = "Airmobile Brigades"
+
+	for_countries = { GER }
+
+	can_use = { always = yes }
+
+	division_types = { "paratrooper" "recce" }
+
+	fallback_name = "LLBrig %d"
+
+	link_numbering_with = { GER_INF_01 }
+
+	# Names with numbers (only one number per entry)
+	ordered =
+	{
+		#Active numbered brigades
+		9 = { "LLBrig %d 'Niedersachsen'" } #PzLehrBrig 9
+		12 = { "LLBrig %d 'Oberpfalz'" } #PzBrig 12
+		21 = { "LLBrig %d 'Lipperland'" } #PzBrig 21
+		23 = { "LLBrig %d 'Bayern'" } #GebJgBrig 23
+		37 = { "LLBrig %d 'Freistaat Sachsen'" } #PzGrenBrig 37
+		41 = { "LLBrig %d 'Vorpommern'" } #PzGrenBrig 41
+		1 = { "LLBrig %d 'Saarland'" } #LLBrig 1
+		
+		#Old disbanded brigades, starting with ones disbanded in the 2000s
+		7 = { "LLBrig %d 'Hansestadt Hamburg'" }
+		14 = { "LLBrig %d 'Hessischer Löwe'" }
+		18 = { "LLBrig %d 'Holstein'" }
+		19 = { "LLBrig %d 'Münsterland'" }
+		26 = { "LLBrig %d 'Saarland'" }
+		30 = { "LLBrig %d 'Alb-Brigade'" }
+		31 = { "LLBrig %d 'Oldenburg'" }
+		34 = { "LLBrig %d 'Koblenz'" }
+		36 = { "LLBrig %d 'Mainfranken'" }
+		38 = { "LLBrig %d 'Sachsen-Anhalt'" }
+		39 = { "LLBrig %d 'Thüringen'" }
+		40 = { "LLBrig %d 'Mecklenburg'" }
+		42 = { "LLBrig %d 'Brandenburg'" }
+		
+		#Older brigades
+		2 = { "LLBrig %d" }
+		3 = { "LLBrig %d 'Weser-Leine'" }
+		4 = { "LLBrig %d" }
+		5 = { "LLBrig %d 'Kurhessen'" }
+		6 = { "LLBrig %d" }
+		8 = { "LLBrig %d 'Lüneburg'" }
+		10 = { "LLBrig %d" }
+		11 = { "LLBrig %d 'Bayerwald'" }
+		13 = { "LLBrig %d" }
+		15 = { "LLBrig %d 'Westerwald'" }
+		16 = { "LLBrig %d 'Herzogtum Lauenburg'" }
+		17 = { "LLBrig %d 'Hamburger Hausbrigade'" }
+		20 = { "LLBrig %d 'Märkisches Sauerland'" }
+		22 = { "LLBrig %d 'Oberland'" }
+		24 = { "LLBrig %d 'Niederbayern'" }
+		25 = { "LLBrig %d 'Schwarzwald'" }
+		27 = { "LLBrig %d 'Lipperland'" }
+		28 = { "LLBrig %d" }
+		29 = { "LLBrig %d 'Südbaden-Hohenzollern'" }
+		32 = { "LLBrig %d" }
+		33 = { "LLBrig %d 'Celle'" }
+		35 = { "LLBrig %d" }
+		
+		#Heimatschutzbrigade in order
+		51 = { "LLBrig %d" }
+		61 = { "LLBrig %d" }
+		52 = { "LLBrig %d" }
+		62 = { "LLBrig %d" }
+		53 = { "LLBrig %d" }
+		63 = { "LLBrig %d" }
+		54 = { "LLBrig %d" }
+		64 = { "LLBrig %d" }
+		55 = { "LLBrig %d" }
+		65 = { "LLBrig %d" }
+		56 = { "LLBrig %d" }
+		66 = { "LLBrig %d" }
+		
+		#Fictional HSchBrig
+		57 = { "LLBrig %d" }
+		67 = { "LLBrig %d" }
+		58 = { "LLBrig %d" }
+		68 = { "LLBrig %d" }
+		59 = { "LLBrig %d" }
+		69 = { "LLBrig %d" }
+	}
+}
+
+GER_MIL_01 = 
+{
+	name = "Homeland Security Brigades"
+
+	for_countries = { GER }
+
+	can_use = { always = yes }
+
+	division_types = { "infantry" "militia" "mot_militia" }
+
+	fallback_name = "HSchBrig %d"
+
+	link_numbering_with = { GER_INF_01 }
+
+	# Names with numbers (only one number per entry)
+	ordered =
+	{
+		#Heimatschutzbrigade in order
+		51 = { "HSchBrig %d" }
+		61 = { "HSchBrig %d" }
+		52 = { "HSchBrig %d" }
+		62 = { "HSchBrig %d" }
+		53 = { "HSchBrig %d" }
+		63 = { "HSchBrig %d" }
+		54 = { "HSchBrig %d" }
+		64 = { "HSchBrig %d" }
+		55 = { "HSchBrig %d" }
+		65 = { "HSchBrig %d" }
+		56 = { "HSchBrig %d" }
+		66 = { "HSchBrig %d" }
+		
+		#Fictional HSchBrig
+		57 = { "HSchBrig %d" }
+		67 = { "HSchBrig %d" }
+		58 = { "HSchBrig %d" }
+		68 = { "HSchBrig %d" }
+		59 = { "HSchBrig %d" }
+		69 = { "HSchBrig %d" }
+		
+		#Heimatschutzbrigades of Heeresstruktur V/VN
+		37 = { "HSchBrig %d 'Freistaat Sachsen'" }
+		38 = { "HSchBrig %d 'Sachsen-Anhalt'" }
+		39 = { "HSchBrig %d 'Thüringen'" }
+		40 = { "HSchBrig %d 'Mecklenburg'" }
+		41 = { "HSchBrig %d 'Vorpommern'" }
+		42 = { "HSchBrig %d 'Brandenburg'" }
+		
+		#Older brigades
+		2 = { "HSchBrig %d" }
+		3 = { "HSchBrig %d 'Weser-Leine'" }
+		4 = { "HSchBrig %d" }
+		5 = { "HSchBrig %d 'Kurhessen'" }
+		6 = { "HSchBrig %d" }
+		8 = { "HSchBrig %d 'Lüneburg'" }
+		10 = { "HSchBrig %d" }
+		11 = { "HSchBrig %d 'Bayerwald'" }
+		13 = { "HSchBrig %d" }
+		15 = { "HSchBrig %d 'Westerwald'" }
+		16 = { "HSchBrig %d 'Herzogtum Lauenburg'" }
+		17 = { "HSchBrig %d 'Hamburger Hausbrigade'" }
+		20 = { "HSchBrig %d 'Märkisches Sauerland'" }
+		22 = { "HSchBrig %d 'Oberland'" }
+		24 = { "HSchBrig %d 'Niederbayern'" }
+		25 = { "HSchBrig %d 'Schwarzwald'" }
+		27 = { "HSchBrig %d 'Lipperland'" }
+		28 = { "HSchBrig %d" }
+		29 = { "HSchBrig %d 'Südbaden-Hohenzollern'" }
+		32 = { "HSchBrig %d" }
+		33 = { "HSchBrig %d 'Celle'" }
+		35 = { "HSchBrig %d" }
+		
+		#Old disbanded brigades, starting with ones disbanded in the 2000s
+		7 = { "HSchBrig %d 'Hansestadt Hamburg'" }
+		14 = { "HSchBrig %d 'Hessischer Löwe'" }
+		18 = { "HSchBrig %d 'Holstein'" }
+		19 = { "HSchBrig %d 'Münsterland'" }
+		26 = { "HSchBrig %d 'Saarland'" }
+		30 = { "HSchBrig %d 'Alb-Brigade'" }
+		31 = { "HSchBrig %d 'Oldenburg'" }
+		34 = { "HSchBrig %d 'Koblenz'" }
+		36 = { "HSchBrig %d 'Mainfranken'" }
+		
+		#Active numbered brigades
+		9 = { "HSchBrig %d 'Niedersachsen'" } #PzLehrBrig 9
+		12 = { "HSchBrig %d 'Oberpfalz'" } #PzBrig 12
+		21 = { "HSchBrig %d 'Lipperland'" } #PzBrig 21
+		23 = { "HSchBrig %d 'Bayern'" } #GebJgBrig 23
+		1 = { "HSchBrig %d 'Saarland'" } #LLBrig 1
+		
+		#Fictional Volkssturm equivalents
+		101 = { "HSchBrig %d 'Germania'" }
+		102 = { "HLehrBrig %d 'Teutoburger Wald'" }
+		103 = { "HSchBrig %d 'Einigkeit'" }
+		104 = { "HSchBrig %d 'Recht'" }
+		105 = { "HSchBrig %d 'Freiheit'" }
+	}
+}

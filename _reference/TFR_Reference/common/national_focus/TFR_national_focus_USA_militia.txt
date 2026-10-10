@@ -1,0 +1,572 @@
+# focus_tree = {
+# 	id = militia_tree
+# 	country = {
+# 		factor = 0
+# 	}
+# 	focus = {
+# 		id = militia_establish_martial_law
+# 		icon = GFX_focus_generic_law
+# 		x = 0
+# 		y = 0
+# 		cost = 5
+# 		search_filters = {
+# 			FOCUS_FILTER_POLITICAL
+# 		}
+# 		available = {
+# 		}
+# 		completion_reward = {
+# 			log = "[GetDateText]: [This.GetName]: focus militia_establish_martial_law executed"
+# 			remove_ideas = militia_looting
+# 		}
+# 		ai_will_do = {
+# 			base = 1
+# 		}
+# 	}
+# 	focus = {
+# 		id = militia_patrols
+# 		icon = GFX_focus_generic_contact_cells
+# 		x = 2
+# 		y = 1
+# 		cost = 5
+# 		relative_position_id = militia_establish_martial_law
+# 		prerequisite = {
+# 			focus = militia_establish_martial_law
+# 		}
+# 		search_filters = {
+# 			FOCUS_FILTER_POLITICAL
+# 		}
+# 		available = {
+# 		}
+# 		completion_reward = {
+# 			log = "[GetDateText]: [This.GetName]: focus militia_patrols executed"
+# 			add_stability = 0.05
+# 		}
+# 		ai_will_do = {
+# 			base = 1
+# 		}
+# 	}
+# 	focus = {
+# 		id = militia_protect_our_faith
+# 		icon = GFX_focus_por_concordat
+# 		x = -2
+# 		y = 1
+# 		cost = 5
+# 		relative_position_id = militia_establish_martial_law
+# 		prerequisite = {
+# 			focus = militia_establish_martial_law
+# 		}
+# 		search_filters = {
+# 			FOCUS_FILTER_POLITICAL
+# 		}
+# 		available = {
+# 		}
+# 		completion_reward = {
+# 			log = "[GetDateText]: [This.GetName]: focus militia_protect_our_faith executed"
+# 			add_war_support = 0.05
+# 		}
+# 		ai_will_do = {
+# 			base = 1
+# 		}
+# 	}
+# 	focus = {
+# 		id = militia_training_programs
+# 		icon = GFX_focus_CLM_Absorb_Local_Militias
+# 		x = 0
+# 		y = 1
+# 		cost = 5
+# 		relative_position_id = militia_establish_martial_law
+# 		prerequisite = {
+# 			focus = militia_establish_martial_law
+# 		}
+# 		search_filters = {
+# 			FOCUS_FILTER_POLITICAL
+# 		}
+# 		available = {
+# 		}
+# 		completion_reward = {
+# 			log = "[GetDateText]: [This.GetName]: focus militia_training_programs executed"
+# 			add_ideas = militia_training_programs_idea
+# 		}
+# 		ai_will_do = {
+# 			base = 1
+# 		}
+# 	}
+# 	focus = {
+# 		id = militia_curfews
+# 		icon = GFX_focus_generic_propaganda
+# 		x = 0
+# 		y = 1
+# 		cost = 5
+# 		relative_position_id = militia_patrols
+# 		prerequisite = {
+# 			focus = militia_patrols
+# 		}
+# 		search_filters = {
+# 			FOCUS_FILTER_POLITICAL
+# 		}
+# 		available = {
+# 		}
+# 		completion_reward = {
+# 			log = "[GetDateText]: [This.GetName]: focus militia_curfews executed"
+# 			add_stability = 0.05
+# 			add_political_power = 100
+# 		}
+# 		ai_will_do = {
+# 			base = 1
+# 		}
+# 	}
+# 	focus = {
+# 		id = militia_censor_news
+# 		icon = GFX_focus_generic_purge_army
+# 		x = 0
+# 		y = 1
+# 		cost = 5
+# 		relative_position_id = militia_protect_our_faith
+# 		prerequisite = {
+# 			focus = militia_protect_our_faith
+# 		}
+# 		search_filters = {
+# 			FOCUS_FILTER_POLITICAL
+# 		}
+# 		available = {
+# 		}
+# 		completion_reward = {
+# 			log = "[GetDateText]: [This.GetName]: focus militia_censor_news executed"
+# 			add_ideas = militia_censorship
+# 		}
+# 		ai_will_do = {
+# 			base = 1
+# 		}
+# 	}
+# 	focus = {
+# 		id = militia_new_tactics
+# 		icon = special_forces
+# 		x = 0
+# 		y = 1
+# 		cost = 5
+# 		relative_position_id = militia_training_programs
+# 		prerequisite = {
+# 			focus = militia_training_programs
+# 		}
+# 		search_filters = {
+# 			FOCUS_FILTER_POLITICAL
+# 		}
+# 		available = {
+# 		}
+# 		completion_reward = {
+# 			log = "[GetDateText]: [This.GetName]: focus militia_new_tactics executed"
+# 			swap_ideas = {
+# 				remove_idea = militia_training_programs_idea
+# 				add_idea = militia_training_programs_idea2
+# 			}
+# 		}
+# 		ai_will_do = {
+# 			base = 1
+# 		}
+# 	}
+# 	focus = {
+# 		id = militia_integrate_police
+# 		icon = GFX_focus_generic_police_reform1
+# 		x = 0
+# 		y = 1
+# 		cost = 5
+# 		relative_position_id = militia_curfews
+# 		prerequisite = {
+# 			focus = militia_curfews
+# 		}
+# 		search_filters = {
+# 			FOCUS_FILTER_POLITICAL
+# 		}
+# 		available = {
+# 		}
+# 		completion_reward = {
+# 			log = "[GetDateText]: [This.GetName]: focus militia_integrate_police executed"
+# 			add_manpower = 10000
+# 		}
+# 		ai_will_do = {
+# 			base = 1
+# 		}
+# 	}
+# 	focus = {
+# 		id = militia_pow_question
+# 		icon = GFX_pow_question
+# 		x = 0
+# 		y = 1
+# 		cost = 5
+# 		relative_position_id = militia_censor_news
+# 		prerequisite = {
+# 			focus = militia_censor_news
+# 		}
+# 		search_filters = {
+# 			FOCUS_FILTER_POLITICAL
+# 		}
+# 		available = {
+# 		}
+# 		completion_reward = {
+# 			log = "[GetDateText]: [This.GetName]: focus militia_pow_question executed"
+# 		}
+# 		ai_will_do = {
+# 			base = 1
+# 		}
+# 	}
+# 	focus = {
+# 		id = militia_draft
+# 		icon = GFX_focus_generic_bring_the_military_to_our_side
+# 		x = 0
+# 		y = 1
+# 		cost = 5
+# 		relative_position_id = militia_new_tactics
+# 		prerequisite = {
+# 			focus = militia_new_tactics
+# 		}
+# 		search_filters = {
+# 			FOCUS_FILTER_POLITICAL
+# 		}
+# 		available = {
+# 		}
+# 		completion_reward = {
+# 			log = "[GetDateText]: [This.GetName]: focus militia_draft executed"
+# 			swap_ideas = {
+# 				remove_idea = militia_training_programs_idea2
+# 				add_idea = militia_training_programs_idea3
+# 			}
+# 		}
+# 		ai_will_do = {
+# 			base = 1
+# 		}
+# 	}
+# 	focus = {
+# 		id = militia_community_protection
+# 		icon = GFX_protect_our_communities
+# 		x = 0
+# 		y = 1
+# 		cost = 5
+# 		relative_position_id = militia_draft
+# 		prerequisite = {
+# 			focus = militia_draft
+# 		}
+# 		prerequisite = {
+# 			focus = militia_integrate_police
+# 		}
+# 		prerequisite = {
+# 			focus = militia_pow_question
+# 		}
+# 		search_filters = {
+# 			FOCUS_FILTER_POLITICAL
+# 		}
+# 		available = {
+# 		}
+# 		completion_reward = {
+# 			log = "[GetDateText]: [This.GetName]: focus militia_community_protection executed"
+# 			add_stability = 0.1
+# 			add_war_support = 0.05
+# 			add_political_power = 100
+# 		}
+# 		ai_will_do = {
+# 			base = 1
+# 		}
+# 	}
+# 	focus = {
+# 		id = militia_independence
+# 		icon = GFX_focus_generic_liberty_wings
+# 		x = 8
+# 		y = 0
+# 		cost = 5
+# 		mutually_exclusive = {
+# 			focus = militia_government
+# 		}
+# 		search_filters = {
+# 			FOCUS_FILTER_POLITICAL
+# 		}
+# 		available = {
+# 		}
+# 		completion_reward = {
+# 			log = "[GetDateText]: [This.GetName]: focus militia_independence executed"
+# 			add_opinion_modifier = {
+# 				target = USA
+# 				modifier = diplomatic_disloyalty
+# 			}
+# 		}
+# 		ai_will_do = {
+# 			base = 1
+# 		}
+# 	}
+# 	focus = {
+# 		id = militia_private_contractors
+# 		icon = GFX_focus_generic_cash_agreement
+# 		x = 0
+# 		y = 1
+# 		cost = 5
+# 		relative_position_id = militia_independence
+# 		prerequisite = {
+# 			focus = militia_independence
+# 		}
+# 		search_filters = {
+# 			FOCUS_FILTER_POLITICAL
+# 		}
+# 		available = {
+# 		}
+# 		completion_reward = {
+# 			log = "[GetDateText]: [This.GetName]: focus militia_private_contractors executed"
+# 			add_ideas = militia_private_contracts
+# 		}
+# 		ai_will_do = {
+# 			base = 1
+# 		}
+# 	}
+# 	focus = {
+# 		id = militia_command_chain
+# 		icon = army_doctrine
+# 		x = -2
+# 		y = 1
+# 		cost = 5
+# 		relative_position_id = militia_independence
+# 		prerequisite = {
+# 			focus = militia_independence
+# 		}
+# 		search_filters = {
+# 			FOCUS_FILTER_POLITICAL
+# 		}
+# 		available = {
+# 		}
+# 		completion_reward = {
+# 			log = "[GetDateText]: [This.GetName]: focus militia_command_chain executed"
+# 			army_experience = 50
+# 		}
+# 		ai_will_do = {
+# 			base = 1
+# 		}
+# 	}
+# 	focus = {
+# 		id = militia_purchase_heavy_guns
+# 		icon = GFX_purchase_heavy_weapons
+# 		x = 0
+# 		y = 1
+# 		cost = 5
+# 		relative_position_id = militia_private_contractors
+# 		prerequisite = {
+# 			focus = militia_private_contractors
+# 		}
+# 		prerequisite = {
+# 			focus = militia_command_chain
+# 		}
+# 		search_filters = {
+# 			FOCUS_FILTER_POLITICAL
+# 		}
+# 		available = {
+# 		}
+# 		completion_reward = {
+# 			log = "[GetDateText]: [This.GetName]: focus militia_purchase_heavy_guns executed"
+# 			add_equipment_to_stockpile = {
+# 				type = infantry_equipment_2
+# 				amount = 3000
+# 				producer = USA
+# 			}
+# 		}
+# 		ai_will_do = {
+# 			base = 1
+# 		}
+# 	}
+# 	focus = {
+# 		id = militia_bureaucracy
+# 		icon = intelligence_exchange
+# 		x = -2
+# 		y = 1
+# 		cost = 5
+# 		relative_position_id = militia_private_contractors
+# 		prerequisite = {
+# 			focus = militia_private_contractors
+# 		}
+# 		prerequisite = {
+# 			focus = militia_command_chain
+# 		}
+# 		search_filters = {
+# 			FOCUS_FILTER_POLITICAL
+# 		}
+# 		available = {
+# 		}
+# 		completion_reward = {
+# 			log = "[GetDateText]: [This.GetName]: focus militia_bureaucracy executed"
+# 			add_political_power = 150
+# 		}
+# 		ai_will_do = {
+# 			base = 1
+# 		}
+# 	}
+# 	focus = {
+# 		id = militia_vets
+# 		icon = self_management
+# 		x = -4
+# 		y = 1
+# 		cost = 5
+# 		relative_position_id = militia_private_contractors
+# 		prerequisite = {
+# 			focus = militia_private_contractors
+# 		}
+# 		prerequisite = {
+# 			focus = militia_command_chain
+# 		}
+# 		search_filters = {
+# 			FOCUS_FILTER_POLITICAL
+# 		}
+# 		available = {
+# 		}
+# 		completion_reward = {
+# 			log = "[GetDateText]: [This.GetName]: focus militia_vets executed"
+# 			add_ideas = militia_vets_idea
+# 		}
+# 		ai_will_do = {
+# 			base = 1
+# 		}
+# 	}
+# 	focus = {
+# 		id = militia_government
+# 		icon = GFX_focus_USA_republic
+# 		x = 10
+# 		y = 0
+# 		cost = 5
+# 		mutually_exclusive = {
+# 			focus = militia_independence
+# 		}
+# 		search_filters = {
+# 			FOCUS_FILTER_POLITICAL
+# 		}
+# 		available = {
+# 		}
+# 		completion_reward = {
+# 			log = "[GetDateText]: [This.GetName]: focus militia_government executed"
+# 			add_opinion_modifier = {
+# 				target = USA
+# 				modifier = diplomatic_support
+# 			}
+# 		}
+# 		ai_will_do = {
+# 			base = 1
+# 		}
+# 	}
+# 	focus = {
+# 		id = militia_skies
+# 		icon = fighter
+# 		x = 0
+# 		y = 1
+# 		cost = 5
+# 		relative_position_id = militia_government
+# 		prerequisite = {
+# 			focus = militia_government
+# 		}
+# 		search_filters = {
+# 			FOCUS_FILTER_POLITICAL
+# 		}
+# 		available = {
+# 		}
+# 		completion_reward = {
+# 			log = "[GetDateText]: [This.GetName]: focus militia_skies executed"
+# 			air_experience = 50
+# 		}
+# 		ai_will_do = {
+# 			base = 1
+# 		}
+# 	}
+# 	focus = {
+# 		id = militia_lobbying
+# 		icon = money
+# 		x = 2
+# 		y = 1
+# 		cost = 5
+# 		relative_position_id = militia_government
+# 		prerequisite = {
+# 			focus = militia_government
+# 		}
+# 		search_filters = {
+# 			FOCUS_FILTER_POLITICAL
+# 		}
+# 		available = {
+# 		}
+# 		completion_reward = {
+# 			log = "[GetDateText]: [This.GetName]: focus militia_lobbying executed"
+# 			add_ideas = militia_lobbying_idea
+# 		}
+# 		ai_will_do = {
+# 			base = 1
+# 		}
+# 	}
+# 	focus = {
+# 		id = militia_national_guard
+# 		icon = GFX_focus_USA_coordinate_with_the_national_guard
+# 		x = 2
+# 		y = 1
+# 		cost = 5
+# 		relative_position_id = militia_lobbying
+# 		prerequisite = {
+# 			focus = militia_lobbying
+# 		}
+# 		prerequisite = {
+# 			focus = militia_skies
+# 		}
+# 		search_filters = {
+# 			FOCUS_FILTER_POLITICAL
+# 		}
+# 		available = {
+# 		}
+# 		completion_reward = {
+# 			log = "[GetDateText]: [This.GetName]: focus militia_national_guard executed"
+# 			add_manpower = 10000
+# 			add_war_support = 0.05
+# 		}
+# 		ai_will_do = {
+# 			base = 1
+# 		}
+# 	}
+# 	focus = {
+# 		id = militia_contracts
+# 		icon = GFX_focus_USA_presidential_militias
+# 		x = 0
+# 		y = 1
+# 		cost = 5
+# 		relative_position_id = militia_lobbying
+# 		prerequisite = {
+# 			focus = militia_lobbying
+# 		}
+# 		prerequisite = {
+# 			focus = militia_skies
+# 		}
+# 		search_filters = {
+# 			FOCUS_FILTER_POLITICAL
+# 		}
+# 		available = {
+# 		}
+# 		completion_reward = {
+# 			log = "[GetDateText]: [This.GetName]: focus militia_contracts executed"
+# 			add_ideas = militia_gov_contracts
+# 		}
+# 		ai_will_do = {
+# 			base = 1
+# 		}
+# 	}
+# 	focus = {
+# 		id = militia_advisors
+# 		icon = GFX_focus_USA_order_march
+# 		x = -2
+# 		y = 1
+# 		cost = 5
+# 		relative_position_id = militia_lobbying
+# 		prerequisite = {
+# 			focus = militia_lobbying
+# 		}
+# 		prerequisite = {
+# 			focus = militia_skies
+# 		}
+# 		search_filters = {
+# 			FOCUS_FILTER_POLITICAL
+# 		}
+# 		available = {
+# 		}
+# 		completion_reward = {
+# 			log = "[GetDateText]: [This.GetName]: focus militia_advisors executed"
+# 			add_ideas = militia_gov_advisors
+# 		}
+# 		ai_will_do = {
+# 			base = 1
+# 		}
+# 	}
+# }

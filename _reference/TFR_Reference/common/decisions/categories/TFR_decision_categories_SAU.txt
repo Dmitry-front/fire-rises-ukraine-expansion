@@ -1,0 +1,110 @@
+SAU_civil_war_preparations = {
+	icon = Saudi-civilprep
+	picture = GFX_decision_cat_SAU_civilwarprep
+
+	allowed = {
+		original_tag = SAU
+	}
+	visible = {
+		NOT = {
+			has_global_flag = SAU_saudi_civil_war_global
+		}
+	}
+}
+
+SAU_yemeni_civil_war = {
+	icon = russia
+
+	allowed = {
+		original_tag = SAU
+	}
+	visible = {
+		NOT = {
+			has_global_flag = king_salman_dead
+		}
+	}
+}
+
+SAU_reunification = {
+	icon = Saudi-civilprep
+	picture = GFX_decision_cat_SAU_civilwarprep
+
+	allowed = {
+		OR = {
+			tag = SAU
+			tag = SAR
+			tag = ARR
+			tag = ROC
+			tag = JAH
+		}
+	}
+	visible = {
+		has_idea = SAU_saudi_civil_war
+		OR = {
+			AND = {
+				tag = SAR
+				NOT = {
+					country_exists = SAU
+					country_exists = ARR
+					country_exists = ROC
+					country_exists = JAH
+				}
+			}
+			AND = {
+				tag = SAU
+				NOT = {
+					country_exists = SAR
+					country_exists = ARR
+					country_exists = ROC
+					country_exists = JAH
+				}
+			}
+			AND = {
+				tag = ROC
+				NOT = {
+					country_exists = SAU
+					country_exists = ARR
+					country_exists = SAR
+					country_exists = JAH
+				}
+			}
+			AND = {
+				tag = ARR
+				NOT = {
+					country_exists = SAU
+					country_exists = ROC
+					country_exists = SAR
+					country_exists = JAH
+				}
+			}
+			AND = {
+				tag = JAH
+				NOT = {
+					country_exists = SAU
+					country_exists = ROC
+					country_exists = SAR
+					country_exists = ARR
+				}
+			}
+		}
+	}
+}
+
+YEM_yemeni_civil_war = {
+	icon = russia
+
+	allowed = {
+		OR = {
+			tag = YEM
+			tag = HOU
+			tag = AAS
+		}
+	}
+	visible = {
+		OR = {
+			tag = YEM
+			tag = HOU
+			tag = AAS
+		}
+	}
+}

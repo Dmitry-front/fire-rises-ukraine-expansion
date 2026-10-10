@@ -1,0 +1,468 @@
+focus_tree = {
+    id = TFR_tree_JAP_april_fools
+	country = {
+	    factor = 0
+		modifier = {
+			#Makes Tree persist after changes made to it
+			add = 30
+			tag = JAP
+			AND = {
+				has_country_flag = JAP_coup_president
+			}
+		}
+	}
+	focus = {
+	    id = JAP_great_japan_cool
+		icon = GFX_focus_JAP_great_japan_cool
+		cost = 3
+		x = 7
+		y = 0
+		
+			ai_will_do = {
+				factor = 10
+			}		
+		
+		completion_reward = {
+		    hidden_effect = {
+				scoped_play_song = "straightener"
+				country_event = {
+					id = jap.558
+					days = 2
+				}
+			}
+		}
+	}
+	focus = {
+		id = JAP_honda_accord
+		cost = 5
+		relative_position_id = JAP_great_japan_cool
+		icon = GFX_focus_JAP_honda_accord
+		
+		prerequisite = {
+			focus = JAP_great_japan_cool
+		}
+		x = -3
+		y = 1
+		
+		completion_reward = {
+			swap_ideas = {
+				add_idea = JAP_honda_accord_idea
+				remove_idea = JAP_keiretsu_control_6_idea
+			}
+			unlock_decision_tooltip = JAP_increase_honda
+			unlock_decision_tooltip = JAP_honda_expirience
+		}
+
+	}
+	focus = {
+		id = JAP_NANOMACHINES_ECONOMY
+		cost = 5
+		relative_position_id = JAP_honda_accord
+		icon = GFX_focus_JAP_NANOMACHINES_ECONOMY
+		
+		prerequisite = {
+			focus = JAP_honda_accord
+		}
+		prerequisite = {
+			focus = JAP_NEW_JAPAN_PRESIDENT_DEAL
+		}
+		x = 1
+		y = 2
+		
+		completion_reward = {
+			add_ideas = JAP_nanomachines_economy_idea
+		}
+
+	}
+	focus = {
+		id = JAP_HYPER_COOLER_JAPAN
+		cost = 5
+		relative_position_id = JAP_NANOMACHINES_ECONOMY
+		icon = GFX_focus_JAP_HYPER_COOLER_JAPAN
+		
+		prerequisite = {
+			focus = JAP_NANOMACHINES_ECONOMY
+		}
+		x = 0
+		y = 2
+		
+		completion_reward = {
+			swap_ideas = {
+				remove_idea = JAP_SSR_NEW_DEAL_FIVE_STARS_idea
+				add_idea = JAP_SSR_NEW_DEAL_FIVE_STARS_2_idea
+			}
+			add_ideas = JAP_hyper_cooler_japan_1_idea
+
+			activate_mission = JAP_hyper_cooler_japan_mission
+		}
+
+	}
+	focus = {
+		id = JAP_absorb_mitsubishi
+		cost = 5
+		relative_position_id = JAP_honda_accord
+		icon = GFX_focus_JAP_absorb_mitsubishi
+		
+		prerequisite = {
+			focus = JAP_honda_accord
+		}
+		x = -1
+		y = 1
+		
+		completion_reward = {
+			unlock_decision_tooltip = JAP_final_strike_toyota
+			add_war_support = 0.075
+			random_owned_controlled_state = {
+				prioritize = { 1332 1341 1337 1340 1335 }
+				add_building_construction = {
+					type = industrial_complex
+					level = 1
+					instant_build = yes
+				}
+				add_extra_state_shared_building_slots = 2
+			}
+			random_owned_controlled_state = {
+				prioritize = { 1332 1341 1337 1340 1335 }
+				add_building_construction = {
+					type = industrial_complex
+					level = 1
+					instant_build = yes
+				}
+				add_extra_state_shared_building_slots = 2
+			}
+			set_temp_variable = {
+				var = poverty_development_var_temp
+				value = 0.10
+			}
+			add_poverty_development = yes
+		}
+
+	}
+	focus = {
+		id = JAP_SUPER_NINJA
+		cost = 5
+		relative_position_id = JAP_absorb_mitsubishi
+		icon = GFX_focus_JAP_SUPER_NINJA 
+		
+		prerequisite = {
+			focus = JAP_absorb_mitsubishi
+		}
+		prerequisite = {
+			focus = JAP_NANOMACHINES_ECONOMY
+		}
+		x = 0
+		y = 2
+		
+		completion_reward = {
+			add_ideas = JAP_hokuto_shinken_idea
+			hidden_effect = {
+				country_event = {
+					id = jap.557
+				}
+			}
+		}
+
+	}
+	focus = {
+		id = JAP_mobilise_army
+		cost = 5
+		relative_position_id = JAP_great_japan_cool
+		icon = GFX_focus_JAP_mobilise_army
+		
+		prerequisite = {  
+			focus = JAP_great_japan_cool
+		}
+		x = 0
+		y = 1
+		
+		completion_reward = {
+			add_ideas = medium_conscription
+		}
+
+	}
+	
+	focus = {
+		id = JAP_GENOTECHNOLOGY_ADVANCEMENT
+		cost = 5
+		relative_position_id = JAP_great_japan_cool
+		icon = GFX_focus_JAP_GENOTECHNOLOGY_ADVANCEMENT
+		
+		prerequisite = {
+			focus = JAP_great_japan_cool
+		}
+		x = 3
+		y = 1
+		
+		completion_reward = {
+			add_ideas = JAP_genotechnology_advancement_idea
+			set_temp_variable = {
+				var = poverty_development_var_temp
+				value = 0.35
+			}
+			add_poverty_development = yes
+			set_temp_variable = {
+				var = industrial_development_var_temp
+				value = 0.35
+			}
+			add_industrial_development = yes
+			hidden_effect = {
+				country_event = {
+					id = jap.563
+				}
+			}
+		}
+
+	}
+	
+	focus = {
+		id = JAP_gundam_SUPERU_effort
+		cost = 5
+		relative_position_id = JAP_GENOTECHNOLOGY_ADVANCEMENT
+		icon = GFX_focus_JAP_gundam_SUPERU_effect
+		
+		prerequisite = {
+			focus = JAP_GENOTECHNOLOGY_ADVANCEMENT
+		}
+		x = 1
+		y = 1
+		
+		completion_reward = {
+			add_timed_idea = {
+				idea = JAP_gundam_effort_idea
+				days = 100
+			}
+			unlock_decision_tooltip = JAP_nartan_city_futuristic
+			unlock_decision_tooltip = JAP_mega_ultra_exoskeletons
+		}
+
+	}
+	
+	focus = {
+		id = JAP_pokemon_army
+		cost = 5
+		relative_position_id = JAP_gundam_SUPERU_effort
+		icon = GFX_focus_JAP_pokemon_army
+		
+		prerequisite = {
+			focus = JAP_gundam_SUPERU_effort
+		}
+		x = 0
+		y = 2
+		
+		completion_reward = {
+			unlock_decision_tooltip = JAP_catch_pokemons
+			unlock_decision_tooltip = JAP_use_pokemons
+			add_political_power = 100
+		}
+
+	}
+		
+	focus = {
+		id = JAP_NEW_JAPAN_PRESIDENT_DEAL
+		cost = 5
+		relative_position_id = JAP_honda_accord
+		icon = GFX_focus_JAP_NEW_JAPAN_PRESIDENT_DEAL
+		
+		prerequisite = {
+			focus = JAP_great_japan_cool
+		}
+		x = 2
+		y = 1
+		mutually_exclusive = {
+			focus = JAP_yoshiro_empire
+		}
+		
+		completion_reward = {
+			add_ideas = JAP_SSR_NEW_DEAL_FIVE_STARS_idea
+			unlock_decision_tooltip = JAP_president_tour
+		}
+
+	}
+		
+	focus = {
+		id = JAP_SAMURAI_SPIRIT
+		cost = 5
+		relative_position_id = JAP_NEW_JAPAN_PRESIDENT_DEAL
+		icon = GFX_focus_JAP_SAMURAI_SPIRIT
+		
+		prerequisite = {
+			focus = JAP_NEW_JAPAN_PRESIDENT_DEAL
+		}
+		prerequisite = {
+			focus = JAP_invent_time_machine
+		}
+		x = 0
+		y = 2
+		
+		completion_reward = {
+			add_ideas = JAP_bushido_samurai_idea
+		}
+
+	}
+		
+	focus = {
+		id = JAP_yoshiro_empire
+		cost = 5
+		relative_position_id = JAP_mobilise_army
+		icon = GFX_focus_JAP_yoshiro_empire
+		
+		prerequisite = {
+			focus = JAP_great_japan_cool
+		}
+		x = 1
+		y = 1
+		mutually_exclusive = {
+			focus = JAP_NEW_JAPAN_PRESIDENT_DEAL
+		}
+		
+		completion_reward = {
+			add_ideas = JAP_yoshiro_empire_idea
+			unlock_decision_tooltip = JAP_tea_ceremony
+			hidden_effect = {
+				country_event = {
+					id = jap.559
+				}
+			}
+		}
+
+	}
+		
+	focus = {
+		id = JAP_introduce_cloning
+		cost = 5
+		relative_position_id = JAP_yoshiro_empire
+		icon = GFX_focus_JAP_introduce_cloning
+		
+		prerequisite = {
+			focus = JAP_yoshiro_empire
+		}
+		prerequisite = {
+			focus = JAP_gundam_SUPERU_effort
+		}
+		x = 1
+		y = 1
+		
+		completion_reward = {
+			add_ideas = JAP_cloning_idea
+			add_manpower = 200000
+		}
+
+	}
+		
+	focus = {
+		id = JAP_psyonic_battalions
+		cost = 5
+		relative_position_id = JAP_introduce_cloning
+		icon = GFX_focus_JAP_psyonic_battalions
+		
+		prerequisite = {
+			focus = JAP_introduce_cloning
+		}
+		prerequisite = {
+			focus = JAP_invent_time_machine
+		}
+		x = -1
+		y = 1
+		
+		completion_reward = {
+			add_ideas = JAP_psyonic_idea
+		}
+
+	}
+		
+	focus = {
+		id = JAP_project_tokyo3
+		cost = 5
+		relative_position_id = JAP_introduce_cloning
+		icon = GFX_focus_JAP_project_tokyo3
+		
+		prerequisite = {
+			focus = JAP_introduce_cloning
+		}
+		x = 0
+		y = 2
+		
+		completion_reward = {
+			swap_ideas = {
+				remove_idea = JAP_yoshiro_empire_idea
+				add_idea = JAP_yoshiro_empire_2_idea
+			}
+			add_ideas = JAP_tokyo_three_idea
+			activate_mission = JAP_tokyo_three_building_mission
+		}
+
+	}
+	
+	focus = {
+		id = JAP_invent_time_machine
+		cost = 5
+		relative_position_id = JAP_yoshiro_empire
+		icon = GFX_focus_JAP_invent_time_machine
+		
+		prerequisite = {
+			focus = JAP_NEW_JAPAN_PRESIDENT_DEAL
+			focus = JAP_yoshiro_empire
+		}
+		x = -1
+		y = 1
+		
+		completion_reward = {
+			add_ideas = JAP_time_machine_idea
+			unlock_decision_tooltip = JAP_go_back_time
+		}
+
+	}
+		
+	focus = {
+		id = JAP_touge_drift_through_asia
+		cost = 5
+		relative_position_id = JAP_invent_time_machine
+		icon = GFX_focus_JAP_touge_drift_thro_asia
+		
+		prerequisite = {
+			focus = JAP_invent_time_machine
+		}
+		x = 0
+		y = 2
+		
+		completion_reward = {
+			country_event = {
+				id = jap.565
+			}
+			unlock_decision_tooltip = JAP_drift_through_indonesia
+			unlock_decision_tooltip = JAP_drift_through_malaysia
+			unlock_decision_tooltip = JAP_annex_phi
+			unlock_decision_tooltip = JAP_annex_sig
+			add_war_support = 0.15
+		}
+
+	}
+		
+	focus = { 
+		id = JAP_FUMO_RISING_SUN
+		cost = 5
+		relative_position_id = JAP_touge_drift_through_asia
+		icon = GFX_focus_JAP_FUMO_RISING_SUN
+		
+		prerequisite = {
+			focus = JAP_touge_drift_through_asia
+		}
+		prerequisite = {
+			focus = JAP_HYPER_COOLER_JAPAN
+			focus = JAP_project_tokyo3
+		}
+		x = 0
+		y = 1
+		
+		completion_reward = {
+			set_province_name = {
+				id = 12072
+				name = JAP_gensokyo
+			}
+			unlock_decision_tooltip = JAP_release_scarlet_police
+			add_stability = 0.05
+			add_political_power = 50
+		}
+
+	}
+}

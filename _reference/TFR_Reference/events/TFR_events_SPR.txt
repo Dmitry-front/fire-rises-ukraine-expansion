@@ -1,0 +1,731 @@
+﻿add_namespace = spain
+#Spain is fucked 
+country_event = {
+	id = spain.1
+	title = spain.1.t
+	desc = spain.1.d
+	picture = GFX_Generic_Collapse
+	is_triggered_only = yes
+	immediate = {
+		hidden_effect = {
+			news_event = {
+				id = news.254
+			}
+			SPR = {
+				country_event = {
+					id = spain.2
+					days = 5
+				}
+			}
+			POR = {
+				country_event = {
+					id = spain.10
+					days = 2
+				}
+			}
+		}
+	}
+	option = {
+		name = spain.1.a
+		SPR = {
+			leave_faction = yes
+			remove_ideas = {
+				SPR_catalonian_separatism_idea
+				SPR_basque_nationalism_idea
+			}
+			clr_country_flag = head_of_gov_ui_enabled
+			add_ideas = SPR_spanish_civil_war_idea
+			set_politics = {
+				ruling_party = social_liberal
+				elections_allowed = no
+				last_election = "1935.12.17"
+				election_frequency = 48
+			}
+			add_popularity = {
+				ideology = social_liberal
+				popularity = 0.20
+			}
+			add_popularity = {
+				ideology = conservative
+				popularity = 0.08
+			}
+			transfer_units_fraction = {
+				target = SNS
+				size = 0.35
+				stockpile_ratio = 0.35
+				army_ratio = 0.35
+				air_ratio = 0.35
+			}
+			transfer_navy = {
+				target = EAF
+			}
+		}
+		290 = {
+			owner = {
+				transfer_state = 178
+				transfer_state = 702
+				transfer_state = 698
+				transfer_state = 697
+				transfer_state = 898
+				transfer_state = 897
+			}
+		}
+		EAF = {
+			transfer_state = 698
+			transfer_state = 178
+			transfer_state = 697
+			transfer_state = 702
+			transfer_state = 703
+			transfer_state = 704
+			transfer_state = 917
+			transfer_state = 713
+			transfer_state = 720
+			transfer_state = 299
+			transfer_state = 310
+			transfer_state = 904
+			transfer_state = 695
+			transfer_state = 693
+			transfer_state = 690
+			transfer_state = 694
+			transfer_state = 833
+			transfer_state = 308
+			transfer_state = 831
+			transfer_state = 830
+			transfer_state = 692
+			transfer_state = 829
+			transfer_state = 691
+		}
+		EPI = {
+			transfer_state = 270
+			transfer_state = 710
+			transfer_state = 709
+			transfer_state = 707
+			transfer_state = 706
+			transfer_state = 641
+			transfer_state = 734
+		}
+		CAT = {
+			add_ideas = {
+				CAT_catalonian_nationalism_idea
+				SPR_spanish_civil_war_idea
+			}
+			add_state_core = 165
+			add_state_core = 852
+			transfer_state = 165
+			transfer_state = 852
+			load_oob = "CAT_2nd_spanish_civil_war"
+		}
+		BSQ = {
+			add_ideas = {
+				BSQ_basque_nationalism_idea
+				SPR_spanish_civil_war_idea
+			}
+			add_state_core = 1289
+			add_state_core = 172
+			transfer_state = 172
+			load_oob = "BSQ_2nd_spanish_civil_war"
+		}
+		RSR = {
+			add_ideas = SPR_spanish_civil_war_idea
+			every_state = {
+				limit = {
+					is_core_of = SPR
+				}
+				add_core_of = RSR
+			}
+			every_state = {
+				limit = {
+					OR = {
+						is_owned_by = SPR
+						state = 118
+					}
+				}
+				add_dynamic_modifier = {
+					modifier = SPR_peoples_war
+				}
+			}
+			transfer_state = 170
+			transfer_state = 169
+			transfer_state = 1302
+			transfer_state = 1292
+			transfer_state = 118
+			transfer_state = 173
+			transfer_state = 168
+			load_oob = "RSR_2nd_spanish_civil_war"
+			country_event = {
+				id = spain.8
+				days = 45
+			}
+			if = {
+				limit = {
+					has_global_flag = SOV_ldpr_won
+				}
+				add_ideas = FRA_The_Popular_Front
+			}
+		}
+		SNS = {
+			add_ideas = SPR_spanish_civil_war_idea
+			every_state = {
+				limit = {
+					is_core_of = SPR
+				}
+				add_core_of = SNS
+			}
+			transfer_state = 171
+			transfer_state = 1288
+			transfer_state = 171
+			transfer_state = 174
+			transfer_state = 176
+			transfer_state = 1291
+			transfer_state = 1489
+			load_oob = "SNS_2nd_spanish_civil_war"
+			if = {
+				limit = {
+					has_global_flag = SOV_cprf_won
+				}
+				add_ideas = FRA_Anti_Communist_Front
+			}
+		}
+		#		PRS = { 
+		#			add_state_core = 1289
+		#			add_state_core = 172
+		#			add_state_core = 165 
+		#			add_state_core = 852
+		#			add_state_core = 167
+		#			add_state_core = 168
+		#			add_state_core = 166
+		#			add_state_core = 173
+		#			add_state_core = 1292
+		#			add_state_core = 169
+		#			add_state_core = 170
+		#			add_state_core = 1291
+		#			add_state_core = 1290
+		#			add_state_core = 41
+		#			add_state_core = 176
+		#			add_state_core = 1289
+		#			add_state_core = 174
+		#			add_state_core = 171
+		#			add_state_core = 1288
+		#			add_state_core = 177
+		#			add_state_core = 178
+		#			add_state_core = 175
+		#			add_state_core = 1302
+		#			transfer_state = 1291
+		#			load_oob = "PRS_2nd_spanish_civil_war"
+		#		}
+	}
+}
+
+#AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAFUCKFUCKFUCKFUCKFUCKFUCKFUCKFUCKFUCKFUCKFUCKFUCKFUCKFUCKFUCKFUCKFUCKFUCK
+news_event = {
+	id = spain.2
+	title = spain.2.t
+	desc = spain.2.d
+	picture = GFX_news_Catalonia
+	is_triggered_only = yes
+	major = yes
+	immediate = {
+		hidden_effect = {
+			SPR = {
+				declare_war_on = {
+					target = SNS
+					type = civil_war
+				}
+				declare_war_on = {
+					target = LCA
+					type = civil_war
+				}
+				declare_war_on = {
+					target = BSQ
+					type = civil_war
+				}
+				declare_war_on = {
+					target = GAL
+					type = civil_war
+				}
+				declare_war_on = {
+					target = CAT
+					type = civil_war
+				}
+				declare_war_on = {
+					target = BAR
+					type = civil_war
+				}
+				declare_war_on = {
+					target = RSR
+					type = civil_war
+				}
+				declare_war_on = {
+					target = PRS
+					type = civil_war
+				}
+			}
+			SNS = {
+				declare_war_on = {
+					target = SPR
+					type = civil_war
+				}
+				declare_war_on = {
+					target = LCA
+					type = civil_war
+				}
+				declare_war_on = {
+					target = BSQ
+					type = civil_war
+				}
+				declare_war_on = {
+					target = GAL
+					type = civil_war
+				}
+				declare_war_on = {
+					target = CAT
+					type = civil_war
+				}
+				declare_war_on = {
+					target = BAR
+					type = civil_war
+				}
+				declare_war_on = {
+					target = RSR
+					type = civil_war
+				}
+				declare_war_on = {
+					target = PRS
+					type = civil_war
+				}
+			}
+			GAL = {
+				declare_war_on = {
+					target = LCA
+					type = civil_war
+				}
+			}
+			BAR = {
+				declare_war_on = {
+					target = CAT
+					type = civil_war
+				}
+			}
+			POR = {
+				declare_war_on = {
+					target = PRP
+					type = civil_war
+				}
+				declare_war_on = {
+					target = GOD
+					type = civil_war
+				}
+			}
+			PRP = {
+				declare_war_on = {
+					target = GOD
+					type = civil_war
+				}
+			}
+		}
+	}
+	option = {
+		name = spain.2.a
+		
+	}
+}
+
+country_event = {
+	id = spain.3
+	title = spain.3.t
+	desc = spain.3.d
+	picture = GFX_report_USA_flag
+	fire_only_once = yes
+	is_triggered_only = yes
+	immediate = {
+	}
+	option = {
+		#Roll up on the fucker
+		name = spain.3.a
+		ai_chance = {
+			base = 50
+		}
+		USA = {
+			country_event = {
+				id = spain.4
+				days = 10
+			}
+		}
+		add_command_power = -10
+	}
+	option = {
+		#We have much bigger problems
+		name = spain.3.b
+		ai_chance = {
+			base = 50
+		}
+		USA = {
+			set_country_flag = GMA_McAffee_Still_OTR
+		}
+		add_political_power = 25
+	}
+}
+
+country_event = {
+	id = spain.4
+	title = spain.4.t
+	desc = spain.4.d
+	picture = GFX_report_USA_flag
+	fire_only_once = yes
+	is_triggered_only = yes
+	immediate = {
+	}
+	option = {
+		#He knows our secrets, ice him
+		name = spain.4.a
+		ai_chance = {
+			base = 50
+		}
+		add_command_power = -10
+		custom_effect_tooltip = GMA_McAffee_is_Dead
+		set_country_flag = GMA_McAffee_Dead
+	}
+	option = {
+		#We have bigger problems
+		name = spain.4.b
+		ai_chance = {
+			base = 50
+		}
+		add_stability = -0.02
+		add_political_power = 5
+		set_country_flag = GMA_McAffee_in_Prison
+	}
+}
+
+country_event = {
+	id = spain.5
+	title = spain.5.t
+	desc = spain.5.d
+	picture = GFX_report_USA_flag
+	fire_only_once = yes
+	is_triggered_only = yes
+	immediate = {
+	}
+	option = {
+		#How the fuck did they get through unnoticed?
+		name = spain.5.a
+		ai_chance = {
+			base = 50
+		}
+		add_stability = -0.1
+		add_political_power = -25
+		hidden_effect = {
+			GMA = {
+				set_portraits = {
+					character = GMA_John_McAffee_char
+					civilian = {
+						large = "gfx/leaders/GMA/John_McAffee_Prison.png"
+					}
+				}
+			}
+		}
+	}
+}
+
+country_event = {
+	id = spain.6
+	title = spain.6.t
+	desc = spain.6.d
+	picture = GFX_report_USA_flag
+	fire_only_once = yes
+	is_triggered_only = yes
+	immediate = {
+	}
+	option = {
+		#Military maintains control
+		name = spain.6.a
+		ai_chance = {
+			base = 10
+		}
+		add_stability = 0.16
+	}
+	#option = {
+	#	#CATHOLIC ISIS
+	#	name = spain.6.a
+	#	ai_chance = {
+	#		base = 10
+	#	}
+	#	set_cosmetic_tag = GOD
+	#	add_popularity = {
+	#		ideology = fascist
+	#		popularity = 0.30
+	#	}
+	#	set_politics = {
+	#		ruling_party = fascist
+	#		last_election = "1999.10.10"
+	#		election_frequency = 36
+	#		elections_allowed = no
+	#	}
+	#}
+}
+
+country_event = {
+	id = spain.8
+	title = spain.8.t
+	desc = spain.8.d
+	picture = GFX_report_USA_flag
+	fire_only_once = yes
+	is_triggered_only = yes
+	immediate = {
+	}
+	option = {
+		#The wholesome leftists maintain control
+		name = spain.8.a
+		ai_chance = {
+			base = 10
+			modifier = {
+				add = -20
+				GER = {
+					OR = {
+						has_government = communist
+						has_government = totalitarian_socialist
+					}
+				}
+			}
+		}
+		add_popularity = {
+			ideology = social_democrat
+			popularity = 0.06
+		}
+	}
+	option = {
+		#PRS
+		name = spain.8.a
+		ai_chance = {
+			base = 10
+			modifier = {
+				add = 20
+				GER = {
+					OR = {
+						has_government = communist
+						has_government = totalitarian_socialist
+					}
+				}
+			}
+		}
+		set_cosmetic_tag = PRS
+		add_popularity = {
+			ideology = communist
+			popularity = 0.06
+		}
+		set_politics = {
+			ruling_party = communist
+			last_election = "1999.10.10"
+			election_frequency = 36
+			elections_allowed = no
+		}
+	}
+}
+
+#Republicans Annex Regionals
+country_event = {
+	id = spain.7
+	title = spain.7.t
+	desc = spain.7.d
+	picture = GFX_Generic_Spanish_Soldiers
+	fire_only_once = yes
+	trigger = {
+		tag = RSR
+		RSR = {
+			exists = yes
+		}
+		SNS = {
+			exists = no
+		}
+		SPR = {
+			exists = no
+		}
+	}
+	option = {
+		name = spain.7.a
+		RSR = {
+			annex_country = {
+				target = GAL
+				transfer_troops = yes
+			}
+			annex_country = {
+				target = LCA
+				transfer_troops = yes
+			}
+			annex_country = {
+				target = BSQ
+				transfer_troops = yes
+			}
+			annex_country = {
+				target = BAR
+				transfer_troops = yes
+			}
+			annex_country = {
+				target = CAT
+				transfer_troops = yes
+			}
+		}
+	}
+}
+
+#Commie Spain Forms Iberia
+country_event = {
+	id = spain.9
+	title = spain.9.t
+	desc = spain.9.d
+	picture = GFX_Generic_Spanish_Soldiers
+	fire_only_once = yes
+	trigger = {
+		tag = RSR
+		PRP = {
+			exists = no
+		}
+		GOD = {
+			exists = no
+		}
+		POR = {
+			exists = no
+		}
+	}
+	option = {
+		name = spain.9.a
+		RSR = {
+			set_cosmetic_tag = SPR_iberia
+		}
+		every_state = {
+			limit = {
+				is_core_of = POR
+			}
+			add_core_of = RSR
+		}
+	}
+}
+
+country_event = {
+	id = spain.10
+	title = spain.10.t
+	desc = spain.10.d
+	picture = GFX_Generic_Collapse
+	is_triggered_only = yes
+	immediate = {
+		hidden_effect = {
+			GOD = {
+				set_cosmetic_tag = GOD_Portuguese_State
+			}
+			news_event = {
+				id = spain.11
+			}
+		}
+	}
+	option = {
+		name = spain.10.a
+		POR = {
+			leave_faction = yes
+			add_ideas = SPR_spanish_civil_war_idea
+			every_state = {
+				limit = {
+					is_owned_by = POR
+				}
+				add_dynamic_modifier = {
+					modifier = SPR_peoples_war
+				}
+			}
+			add_popularity = {
+				ideology = totalitarian_socialist
+				popularity = -1
+			}
+			add_popularity = {
+				ideology = communist
+				popularity = -1
+			}
+			add_popularity = {
+				ideology = conservative
+				popularity = 0.07
+			}
+			add_popularity = {
+				ideology = authoritarian_democrat
+				popularity = 0.17
+			}
+			set_nationality = {
+				target_country = GOD
+				character = POR_Jose_Nunes_da_Fonseca_char
+			}
+			set_nationality = {
+				target_country = GOD
+				character = POR_Eugenio_Francisco_Nunes_Henriques_char
+			}
+			transfer_navy = {
+				target = EAF
+			}
+		}
+		GOD = {
+			add_ideas = SPR_spanish_civil_war_idea
+			add_state_core = 180
+			add_state_core = 179
+			add_state_core = 181
+			add_state_core = 112
+			transfer_state = 180
+			load_oob = "GOD_civil_war"
+			add_country_leader_role = {
+				character = POR_Eugenio_Francisco_Nunes_Henriques_char
+				promote_leader = yes
+				country_leader = {
+					ideology = military_junta
+					traits = {
+					}
+				}
+			}
+			set_party_name = {
+				ideology = authoritarian_democrat
+				long_name = POR_Military_long
+				name = POR_Military
+			}
+			set_party_name = {
+				ideology = nationalist
+				long_name = POR_Military_long
+				name = POR_Military
+			}
+			add_ideas = GOD_Military_Catholic_ISIS
+			set_cosmetic_tag = GOD_Portuguese_State
+			country_event = {
+				id = spain.6
+				days = 10
+			}
+			if = {
+				limit = {
+					has_global_flag = SOV_cprf_won
+				}
+				add_ideas = FRA_Anti_Communist_Front
+			}
+		}
+		PRP = {
+			add_ideas = SPR_spanish_civil_war_idea
+			add_state_core = 180
+			add_state_core = 179
+			add_state_core = 181
+			add_state_core = 112
+			transfer_state = 179
+			load_oob = "PRP_civil_war"
+			if = {
+				limit = {
+					has_global_flag = SOV_ldpr_won
+				}
+				add_ideas = FRA_The_Popular_Front
+				load_oob = "PRP_civil_war"
+			}
+		}
+	}
+}
+
+news_event = {
+	id = spain.11
+	title = spain.11.t
+	desc = spain.11.d
+	picture = GFX_news_Portugal_CW
+	is_triggered_only = yes
+	major = yes
+	option = {
+		name = spain.11.a
+		
+	}
+}

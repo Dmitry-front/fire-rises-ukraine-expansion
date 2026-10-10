@@ -1,0 +1,1285 @@
+capital = 931
+
+set_variable = { 
+	var = Diplomats_Var 
+	value = 0
+}
+
+recruit_character = USB_bernie_sanders_char
+recruit_character = USB_joe_biden_char
+recruit_character = USB_kamala_harris_char
+recruit_character = USB_tim_walz_char
+recruit_character = USB_jo_jorgensen_char
+recruit_character = USB_mitt_romney_char
+recruit_character = USB_michael_bloomberg_char
+recruit_character = USB_nicholas_perry_char
+recruit_character = USB_AOC_char
+recruit_character = USB_RFK_char
+recruit_character = USB_Andrew_Yang_char
+recruit_character = USB_richard_spencer
+recruit_character = USB_joe_biden_officer_char
+recruit_character = USB_hunter_biden_char
+recruit_character = USB_Warner_Ross_char
+recruit_character = AII_PAINE_char #PAINE
+recruit_character = AII_LINCOLN_char #LINCOLN
+recruit_character = AII_WSHNGTN_char #WSHNGTN
+recruit_character = AII_HAL_char #HAL
+recruit_character = USB_amy_klobuchar_char
+recruit_character = USB_elizabeth_warren_char
+recruit_character = USB_beto_o_rourke_char
+recruit_character = USB_hillary_clinton_char
+recruit_character = USA_pete_buttigeg_char
+recruit_character = USA_nikki_haley_char
+recruit_character = USB_michelle_obama_char
+recruit_character = USB_barack_obama_char
+
+####### CALIGULA COLLAPSE ######################
+recruit_character = NEG_tom_kawczynski
+recruit_character = SAT_anthony_fauci
+recruit_character = NCY_angus_king
+recruit_character = USC_emptiness
+recruit_character = CLM_john_bolton_char
+recruit_character = LWK_ike_baker_char
+recruit_character = BNF_lyman_bishop_char
+recruit_character = DUG_biden_ai_prototype_char
+recruit_character = TRG_kirk_watson_char
+recruit_character = ZOE_tim_walz_char
+recruit_character = ATP_shirley_phelps_roper_char
+recruit_character = HUM_lloyd_austin_char
+recruit_character = BMF_michael_flynn_char
+recruit_character = HWM_vasilios_g_pistolis_char
+recruit_character = TEX_calvin_kroger_char
+recruit_character = CAL_marc_austin_char
+
+set_research_slots = 4
+set_convoys = 100
+set_stability = 0.45
+set_war_support = 0.25
+
+set_country_flag = developed_country
+
+set_technology = {
+	## Infantry ##
+	
+	infantry_weapons1 = 1
+	infantry_weapons2 = 1
+	infantry_weapons3 = 1
+	motorised_infantry = 1
+	infantry_rifle_upgrade = 1
+	infantry_rifle_upgrade2 = 1
+	infantry_rifle_upgrade3 = 1
+	upgraded_infantry_weapons1 = 1
+	support_weapons = 1
+	support_weapons2 = 1
+	support_weapons3 = 1
+	night_vision = 1
+	night_vision2 = 1
+	night_vision3 = 1
+	body_armor = 1
+	body_armor2 = 1
+	body_armor3 = 1
+	camouflage = 1
+	camouflage2 = 1
+	marines = 1
+	tech_mountaineers = 1
+	paratroopers = 1
+	tech_rangers = 1
+	basic_train = 1
+	mechanised_infantry1 = 1
+	mechanised_infantry2 = 1
+	mechanised_infantry3 = 1
+	light_mechanized_infantry1 = 1
+	light_mechanized_infantry2 = 1
+	
+	## Support Companies ##
+	tech_support = 1
+	tech_engineers = 1
+	tech_recon = 1
+	tech_field_hospital = 1
+	tech_logistics_company = 1
+	tech_military_police = 1
+	tech_signal_company = 1
+	tech_maintenance_company = 1
+	basic_railway = 1
+	forward_operating_base = 1
+	
+	## Artillery ##
+	gw_artillery = 1
+	artillery1 = 1
+	artillery2 = 1
+	interwar_antitank = 1
+	interwar_antiair = 1
+	rocket_artillery = 1
+	interwar_artillery = 1
+	sp_artillery1 = 1
+	self_propelled_aa1 = 1
+	antitank1 = 1
+	antitank2 = 1
+	antiair1 = 1
+	antiair2 = 1
+	antiair3 = 1
+	
+	## Air ##
+	attack_helicopter_1 = 1
+	utility_helicopter_1 = 1
+	
+	## Engineering ##
+	electronic_mechanical_engineering = 1
+	radio = 1
+	power_plants = 1
+	nuclear_reactors = 1
+	##nukes = 1
+	
+	## Industry ##
+	basic_machine_tools = 1
+	fuel_silos = 1
+	fuel_refining = 1
+}
+
+if = {
+	limit = { 
+		NOT = { 
+			has_dlc = "Man the Guns" 
+		} 
+	}
+	set_technology = {
+		early_destroyer = 1
+		early_light_cruiser = 1
+		basic_light_cruiser = 1
+		early_heavy_cruiser = 1
+		basic_heavy_cruiser = 1
+		improved_heavy_cruiser = 1
+		early_battleship = 1
+		basic_battleship = 1
+		early_carrier = 1
+		basic_carrier = 1
+		early_submarine = 1
+		basic_submarine = 1
+		transport = 1
+	}
+}
+if = {
+	limit = { 
+		has_dlc = "Man the Guns" 
+	}
+	set_technology = {
+		early_ship_hull_light = 1
+		early_ship_hull_cruiser = 1
+		basic_ship_hull_cruiser = 1
+		improved_ship_hull_cruiser = 1
+		early_ship_hull_heavy = 1
+		basic_ship_hull_heavy = 1
+		early_ship_hull_carrier = 1
+		basic_ship_hull_carrier = 1
+		early_ship_hull_submarine = 1
+		basic_ship_hull_submarine = 1
+		smoke_generator = 1
+		sonar = 1
+		basic_depth_charges = 1
+		improved_airplane_launcher = 1
+		basic_cruiser_armor_scheme = 1
+		basic_heavy_armor_scheme = 1
+		basic_torpedo = 1
+		basic_battery = 1
+		basic_light_battery = 1
+		basic_medium_battery = 1
+		basic_heavy_battery = 1
+		#basic_secondary_battery = 1
+		mtg_transport = 1
+		basic_naval_mines = 1
+		submarine_mine_laying = 1
+	}
+}
+	
+if = {
+	limit = {
+		NOT = { has_dlc = "No Step Back" }
+	}
+	set_technology = {
+		main_battle_tank1 = 1
+		main_battle_tank2 = 1
+		main_battle_tank3 = 1
+		main_battle_tank4 = 1
+		light_tank1 = 1
+		light_tank2 = 1
+		amphibious_tank1 = 1
+		amphibious_mechanized_infantry1 = 1
+	}
+}
+if = {
+	limit = {
+		has_dlc = "No Step Back"
+	}
+	set_technology = {
+		gwtank_chassis = 1
+		basic_light_tank_chassis = 1
+		basic_medium_tank_chassis = 1
+		improved_light_tank_chassis = 1
+		improved_medium_tank_chassis = 1
+		engine_tech_1 = 1
+		amphibious_tank_chassis = 1
+		amphibious_mechanized_infantry1 = 1
+		apds_tech = 1
+		heat_tech = 1
+		apfsds_tech = 1
+		heatfs_tech = 1
+		legacy_armor_designs = 1
+		engine_tech_2 = 1
+	}
+}
+
+
+if = {
+	limit = { has_dlc = "By Blood Alone" }
+		set_technology = {
+			aa_lmg = 1
+			aa_cannon_1 = 1
+			aa_hmg = 1
+			engines_1 = 1
+			engines_2 = 1
+			early_bombs = 1
+			guided_bombs = 1
+			aircraft_construction = 1
+			survivability_studies = 1
+			iw_small_airframe = 1
+			basic_small_airframe = 1
+			iw_medium_airframe = 1
+			basic_medium_airframe = 1
+			iw_large_airframe = 1
+			basic_large_airframe = 1
+		}
+	else = {
+		set_technology = {
+			CAS1 = 1
+			CAS2 = 1
+			cv_CAS1 = 1
+			cv_CAS2 = 1
+			fighter1 = 1
+			fighter2 = 1
+			fighter3 = 1
+			cv_fighter1 = 1
+			cv_fighter2 = 1
+			cv_fighter3 = 1
+			naval_bomber1 = 1
+			naval_bomber2 = 1
+			naval_bomber3 = 1
+			cv_naval_bomber1 = 1
+			cv_naval_bomber2 = 1
+			cv_naval_bomber3 = 1
+			strategic_bomber1 = 1
+			strategic_bomber2 = 1
+			tactical_bomber1 = 1
+			scout_plane1 = 1
+			transport_plane2 = 1
+		}
+	}
+}
+
+if = {
+	limit = {
+		has_dlc = "La Resistance"
+	}
+	create_intelligence_agency = yes
+}
+
+add_ideas = {
+	#Hidden Ideas
+	USB_medium_ino_support_idea
+	USB_medium_con_support_idea
+	USB_higher_neo_support_idea
+	USB_high_pro_support_idea
+	#National Spirits
+	USB_uncooperative_military_idea
+	USB_inefficient_economy_idea
+	USB_lower_restricted_liberties_idea
+	USB_low_civilian_unrest_idea
+	USB_low_corporate_influence_idea
+	USB_air_force_domination_idea
+	#Ministers
+	USB_kamala_harris_hog
+	USB_antony_blinken_for
+	USB_janet_yellen_eco
+	USB_deb_haaland_sec
+	USB_avril_haines_int
+	USB_lloyd_austin_theorist
+	#Laws
+	early_mobilization
+	high_trade
+	medium_taxes
+	lower_interest_rates
+	medium_welfare
+	low_conscription
+	high_female_service
+	high_supervision
+	higher_training
+	high_racial_integration
+	general_exemptions
+	high_safety
+	high_race
+	high_female
+	medium_prison
+	low_police
+	medium_education
+	#Development
+	low_poverty
+	medium_society
+	higher_academic
+	higher_farming
+	higher_industry
+	medium_military
+	
+	ZZZ_american_presidential_republic
+}
+
+set_power_balance = {
+	id = USB_trust_bop
+	left_side = USB_bad_side
+	right_side = USB_good_side
+}
+
+set_politics = {	
+	ruling_party = social_liberal
+	last_election = "2020.11.3"
+	election_frequency = 48
+	elections_allowed = yes
+}
+
+set_popularities = {
+	social_liberal = 36
+	conservative = 18
+	market_liberal = 5
+	social_democrat = 33
+	authoritarian_democrat = 7
+	nationalist = 1
+}
+
+set_variable = {
+	var = USB_corporate_influence_var
+	value = 0.3
+}
+
+#Politics Dynamic Modifier
+set_variable = { 
+	var = USB_city_scrap_var
+	value = 0
+}
+set_variable = {
+	var = USB_politics_political_power_gain_dynamic_var
+	value = 0
+}
+set_variable = {
+	var = USB_politics_stability_factor_dynamic_var
+	value = 0
+}
+
+set_variable = {
+	var = USB_politics_stability_weekly_dynamic_var
+	value = 0
+}
+set_variable = {
+	var = USB_politics_war_stability_factor_dynamic_var
+	value = 0
+}
+set_variable = {
+	var = USB_politics_party_popularity_stability_factor_dynamic_var
+	value = 0
+}
+set_variable = {
+	var = USB_politics_war_support_factor_dynamic_var
+	value = 0
+}
+set_variable = {
+	var = USB_politics_war_support_weekly_dynamic_var
+	value = 0
+}
+set_variable = {
+	var = USB_politics_conscription_factor_dynamic_var
+	value = 0
+}
+set_variable = {
+	var = USB_politics_mobilization_speed_dynamic_var
+	value = 0
+}
+set_variable = {
+	var = USB_politics_personal_expense_factor_dynamic_var
+	value = 0
+}
+set_variable = {
+	var = USB_politics_communist_drift_dynamic_var
+	value = 0
+}
+set_variable = {
+	var = USB_politics_libertarian_socialist_drift_dynamic_var
+	value = 0
+}
+set_variable = {
+	var = USB_politics_social_democrat_drift_dynamic_var
+	value = 0
+}
+set_variable = {
+	var = USB_politics_social_liberal_drift_dynamic_var
+	value = 0
+}
+set_variable = {
+	var = USB_politics_market_liberal_drift_dynamic_var
+	value = 0
+}
+set_variable = {
+	var = USB_politics_conservative_drift_dynamic_var
+	value = 0
+}
+set_variable = {
+	var = USB_politics_authoritarian_democrat_drift_dynamic_var
+	value = 0
+}
+set_variable = {
+	var = USB_politics_nationalist_drift_dynamic_var
+	value = 0
+}
+set_variable = {
+	var = USB_politics_fascist_drift_dynamic_var
+	value = 0
+}
+set_variable = {
+	var = USB_politics_society_development_monthly_dynamic_var
+	value = 0
+}
+set_variable = {
+	var = USB_politics_poverty_development_monthly_dynamic_var
+	value = 0
+}
+
+#Economic Dynamic Modifier
+
+set_variable = {
+	var = USB_economy_political_power_gain_dynamic_var
+	value = 0
+}
+set_variable = {
+	var = USB_economy_stability_factor_dynamic_var
+	value = 0
+} 
+set_variable = {
+	var = USB_economy_stability_weekly_dynamic_var
+	value = 0
+} 
+set_variable = {
+	var = USB_economy_war_support_factor_dynamic_var
+	value = 0
+} 
+set_variable = {
+	var = USB_economy_war_support_weekly_dynamic_var
+	value = 0
+} 
+set_variable = {
+	var = USB_economy_consumer_goods_factor_dynamic_var
+	value = 0
+}
+set_variable = {
+	var = USB_economy_local_resources_factor_dynamic_var
+	value = 0
+}
+set_variable = {
+	var = USB_economy_global_building_slots_factor_dynamic_var
+	value = 0
+}
+set_variable = {
+	var = USB_economy_research_speed_factor_dynamic_var
+	value = 0
+}
+set_variable = {
+	var = USB_economy_economy_cost_factor_dynamic_var
+	value = 0
+}
+set_variable = {
+	var = USB_economy_trade_laws_cost_factor_dynamic_var
+	value = 0
+}
+set_variable = {
+	var = USB_economy_tax_laws_cost_factor_dynamic_var
+	value = 0
+}
+set_variable = {
+	var = USB_economy_production_factory_max_efficiency_factor_dynamic_var
+	value = 0
+}
+set_variable = {
+	var = USB_economy_production_factory_efficiency_gain_factor_dynamic_var
+	value = -0.2
+}
+set_variable = {
+	var = USB_economy_production_factory_start_efficiency_factor_dynamic_var
+	value = 0
+}
+set_variable = {
+	var = USB_economy_line_change_production_efficiency_factor_dynamic_var
+	value = -0.2
+}
+set_variable = {
+	var = USB_economy_production_lack_of_resource_penalty_factor_dynamic_var
+	value = 0
+}
+set_variable = {
+	var = USB_economy_fuel_gain_factor_dynamic_var
+	value = 0
+}
+set_variable = {
+	var = USB_economy_fuel_gain_factor_from_states_dynamic_var
+	value = 0
+}
+set_variable = {
+	var = USB_economy_conversion_cost_civ_to_mil_factor_dynamic_var
+	value = 0
+}
+set_variable = {
+	var = USB_economy_conversion_cost_mil_to_civ_factor_dynamic_var
+	value = 0
+}
+set_variable = {
+	var = USB_economy_production_speed_buildings_factor_dynamic_var
+	value = 0
+}
+set_variable = {
+	var = USB_economy_industrial_capacity_factory_dynamic_var
+	value = 0
+}
+set_variable = {
+	var = USB_economy_industrial_capacity_dockyard_dynamic_var
+	value = 0
+}
+set_variable = {
+	var = USB_economy_military_factory_upkeep_factor_dynamic_var
+	value = 0
+}
+set_variable = {
+	var = USB_economy_dockyard_upkeep_factor_dynamic_var
+	value = 0
+}
+set_variable = {
+	var = USB_economy_production_speed_infrastructure_factor_dynamic_var
+	value = 0
+}
+set_variable = {
+	var = USB_economy_production_speed_industrial_complex_factor_dynamic_var
+	value = 0
+}
+set_variable = {
+	var = USB_economy_production_speed_office_park_factor_dynamic_var
+	value = 0
+}
+set_variable = {
+	var = USB_economy_production_speed_rail_way_factor_dynamic_var
+	value = 0
+}
+set_variable = {
+	var = USB_economy_production_speed_arms_factory_factor_dynamic_var
+	value = 0
+}
+set_variable = {
+	var = USB_economy_production_speed_dockyard_factor_dynamic_var
+	value = 0
+}
+set_variable = {
+	var = USB_economy_production_speed_power_plant_factor_dynamic_var
+	value = 0
+}
+set_variable = {
+	var = USB_economy_production_speed_nuclear_reactor_factor_dynamic_var
+	value = 0
+}
+set_variable = {
+	var = USB_economy_production_speed_energy_farm_factor_dynamic_var
+	value = 0
+}
+set_variable = {
+	var = USB_economy_industrial_development_monthly_dynamic_var
+	value = 0
+}
+set_variable = {
+	var = USB_economy_poverty_development_monthly_dynamic_var
+	value = 0
+}
+set_variable = {
+	var = USB_economy_farming_development_monthly_dynamic_var
+	value = 0
+}
+set_variable = {
+	var = USB_economy_academic_development_monthly_dynamic_var
+	value = 0
+}
+set_variable = {
+	var = USB_economy_society_development_monthly_dynamic_var
+	value = 0
+}
+set_variable = {
+	var = USB_economy_income_growth_factor_dynamic_var
+	value = 0
+}
+set_variable = {
+	var = USB_economy_expense_growth_factor_dynamic_var
+	value = 0
+}
+set_variable = {
+	var = USB_economy_business_value_factor_dynamic_var
+	value = -0.1
+}
+set_variable = {
+	var = USB_economy_personal_value_factor_dynamic_var
+	value = 0
+}
+set_variable = {
+	var = USB_economy_personal_expense_factor_dynamic_var
+	value = 0
+}
+set_variable = {
+	var = USB_economy_tax_business_rate_factor_dynamic_var
+	value = 0
+}
+set_variable = {
+	var = USB_economy_tax_personal_rate_factor_dynamic_var
+	value = 0
+}
+set_variable = {
+	var = USB_economy_interest_rate_factor_dynamic_var
+	value = 0
+}
+set_variable = {
+	var = USB_economy_inflation_monthly_factor_dynamic_var
+	value = 0
+}
+
+#Military Dynamic Modifier
+
+set_variable = {
+	var = USB_military_political_power_gain_dynamic_var
+	value = 0
+}
+set_variable = {
+	var = USB_military_war_support_factor_dynamic_var
+	value = 0
+}
+set_variable = {
+	var = USB_military_war_support_weekly_dynamic_var
+	value = 0
+}
+set_variable = {
+	var = USB_military_weekly_casualties_war_support_dynamic_var
+	value = 0
+}
+set_variable = {
+	var = USB_military_weekly_convoys_war_support_dynamic_var
+	value = 0
+}
+set_variable = {
+	var = USB_military_weekly_bombing_war_support_dynamic_var
+	value = 0
+}
+set_variable = {
+	var = USB_military_experience_gain_army_dynamic_var
+	value = 0
+}
+set_variable = {
+	var = USB_military_experience_gain_army_factor_dynamic_var
+	value = 0
+}
+set_variable = {
+	var = USB_military_experience_loss_factor_dynamic_var
+	value = 0
+}
+set_variable = {
+	var = USB_military_training_time_factor_dynamic_var
+	value = 0
+}
+set_variable = {
+	var = USB_military_max_command_power_dynamic_var
+	value = 20
+}
+set_variable = {
+	var = USB_military_command_power_gain_mult_dynamic_var
+	value = 0
+}
+set_variable = {
+	var = USB_military_army_org_factor_dynamic_var
+	value = 0
+}
+set_variable = {
+	var = USB_military_army_org_regain_dynamic_var
+	value = 0
+}
+set_variable = {
+	var = USB_military_org_loss_when_moving_dynamic_var
+	value = 0
+}
+set_variable = {
+	var = USB_military_army_strength_factor_dynamic_var
+	value = 0
+}
+set_variable = {
+	var = USB_military_coordination_bonus_dynamic_var
+	value = 0
+}
+set_variable = {
+	var = USB_military_land_reinforce_rate_dynamic_var
+	value = 0
+}
+set_variable = {
+	var = USB_military_max_planning_factor_dynamic_var
+	value = 0
+}
+set_variable = {
+	var = USB_military_planning_speed_dynamic_var
+	value = 0
+}
+set_variable = {
+	var = USB_military_max_dig_in_factor_dynamic_var
+	value = 0
+}
+set_variable = {
+	var = USB_military_dig_in_speed_factor_dynamic_var
+	value = 0
+}
+set_variable = {
+	var = USB_military_army_morale_factor_dynamic_var
+	value = 0
+}
+set_variable = {
+	var = USB_military_army_attack_factor_dynamic_var
+	value = 0
+}
+set_variable = {
+	var = USB_military_army_defence_factor_dynamic_var
+	value = 0
+}
+set_variable = {
+	var = USB_military_breakthrough_factor_dynamic_var
+	value = 0
+}
+set_variable = {
+	var = USB_military_army_speed_factor_dynamic_var
+	value = 0
+}
+set_variable = {
+	var = USB_military_army_core_attack_factor_dynamic_var
+	value = 0
+}
+set_variable = {
+	var = USB_military_army_core_defence_factor_dynamic_var
+	value = 0
+}
+set_variable = {
+	var = USB_military_modifier_army_sub_unit_militia_attack_factor_dynamic_var
+	value = 0
+}
+set_variable = {
+	var = USB_military_modifier_army_sub_unit_militia_defence_factor_dynamic_var
+	value = 0
+}
+set_variable = {
+	var = USB_military_equipment_capture_factor_dynamic_var
+	value = 0
+}
+set_variable = {
+	var = USB_military_out_of_supply_factor_dynamic_var
+	value = 0
+}
+set_variable = {
+	var = USB_military_air_superiority_bonus_in_combat_dynamic_var
+	value = 0
+}
+set_variable = {
+	var = USB_military_supply_consumption_factor_dynamic_var
+	value = 0
+}
+set_variable = {
+	var = USB_military_conscription_factor_dynamic_var
+	value = -0.35
+}
+set_variable = {
+	var = USB_military_mobilization_speed_dynamic_var
+	value = -0.35
+}
+set_variable = {
+	var = USB_military_resistance_decay_on_our_occupied_states_dynamic_var
+	value = 0
+}
+set_variable = {
+	var = USB_military_resistance_growth_on_our_occupied_states_dynamic_var
+	value = 0
+}
+set_variable = {
+	var = USB_military_terrain_penalty_reduction_dynamic_var
+	value = 0
+}
+set_variable = {
+	var = USB_military_acclimatization_hot_climate_gain_factor_dynamic_var
+	value = 0
+}
+set_variable = {
+	var = USB_military_acclimatization_cold_climate_gain_factor_dynamic_var
+	value = 0
+}
+set_variable = {
+	var = USB_military_pocket_penalty_dynamic_var
+	value = 0
+}
+set_variable = {
+	var = USB_military_mobilization_laws_cost_factor_dynamic_var
+	value = 0.5
+}
+set_variable = {
+	var = USB_military_army_advisor_cost_factor_dynamic_var
+	value = 0
+}
+set_variable = {
+	var = USB_military_land_doctrine_cost_factor_dynamic_var
+	value = 0
+}
+set_variable = {
+	var = USB_military_battalion_upkeep_factor_dynamic_var
+	value = 0
+}
+set_variable = {
+	var = USB_military_development_monthly_dynamic_var
+	value = 0
+}
+
+#Green New Deal Dynamic Modifier
+
+set_variable = {
+	var = USB_gnd_inflation_monthly_factor_dynamic_var
+	value = 0
+}
+
+set_variable = {
+	var = USB_gnd_political_power_gain_dynamic_var
+	value = 0
+}
+
+set_variable = {
+	var = USB_gnd_stability_factor_dynamic_var
+	value = 0
+}
+
+set_variable = {
+	var = USB_gnd_stability_weekly_dynamic_var
+	value = 0
+}
+
+set_variable = {
+	var = USB_gnd_war_support_factor_dynamic_var
+	value = 0
+}
+
+set_variable = {
+	var = USB_gnd_war_support_weekly_dynamic_var
+	value = 0
+}
+
+set_variable = {
+	var = USB_gnd_consumer_goods_factor_dynamic_var
+	value = 0
+}
+
+set_variable = {
+	var = USB_gnd_industrial_capacity_factory_dynamic_var
+	value = 0
+}
+
+set_variable = {
+	var = USB_gnd_industrial_capacity_dockyard_dynamic_var
+	value = 0
+}
+
+set_variable = {
+	var = USB_gnd_production_factory_max_efficiency_factor_dynamic_var
+	value = 0
+}
+
+set_variable = {
+	var = USB_gnd_line_change_production_efficiency_factor_dynamic_var
+	value = 0
+}
+
+set_variable = {
+	var = USB_gnd_production_speed_buildings_factor_dynamic_var
+	value = 0
+}
+
+set_variable = {
+	var = USB_gnd_production_speed_arms_factory_factor_dynamic_var
+	value = 0
+}
+
+set_variable = {
+	var = USB_gnd_production_speed_industrial_complex_factor_dynamic_var
+	value = 0
+}
+
+set_variable = {
+	var = USB_gnd_research_speed_factor_dynamic_var
+	value = 0
+}
+
+set_variable = {
+	var = USB_gnd_compliance_growth_dynamic_var
+	value = 0
+}
+
+set_variable = {
+	var = USB_gnd_resistance_growth_dynamic_var
+	value = 0
+}
+
+set_variable = {
+	var = USB_gnd_resistance_decay_dynamic_var
+	value = 0
+}
+
+set_variable = {
+	var = USB_gnd_industrial_development_monthly_dynamic_var
+	value = 0
+}
+
+set_variable = {
+	var = USB_gnd_poverty_development_monthly_dynamic_var
+	value = 0
+}
+
+set_variable = {
+	var = USB_gnd_society_development_monthly_dynamic_var
+	value = 0
+}
+
+set_variable = {
+	var = USB_gnd_income_growth_factor_dynamic_var
+	value = 0
+}
+
+set_variable = {
+	var = USB_gnd_production_speed_rail_way_factor_dynamic_var
+	value = 0
+}
+
+set_variable = {
+	var = USB_gnd_personal_expense_factor_dynamic_var
+	value = 0
+}
+
+set_variable = {
+	var = USB_gnd_inflation_monthly_dynamic_var
+	value = 0
+}
+
+set_variable = {
+	var = USB_gnd_conscription_dynamic_var
+	value = 0
+}
+
+set_variable = {
+	var = USB_gnd_monthly_population_dynamic_var
+	value = 0
+}
+
+set_variable = {
+	var = USB_gnd_industry_repair_factor_var
+	value = 0
+}
+
+#Great Society Dyanmic Modifier
+
+set_variable = {
+	var = USB_gs_political_power_gain_dynamic_var
+	value = 0
+}
+
+set_variable = {
+	var = USB_gs_stability_factor_dynamic_var
+	value = 0
+}
+
+set_variable = {
+	var = USB_gs_stability_weekly_dynamic_var
+	value = 0
+}
+
+set_variable = {
+	var = USB_gs_war_support_factor_dynamic_var
+	value = 0
+}
+
+set_variable = {
+	var = USB_gs_war_support_weekly_dynamic_var
+	value = 0
+}
+
+set_variable = {
+	var = USB_gs_consumer_goods_factor_dynamic_var
+	value = 0
+}
+
+set_variable = {
+	var = USB_gs_industrial_capacity_factory_dynamic_var
+	value = 0
+}
+
+set_variable = {
+	var = USB_gs_industrial_capacity_dockyard_dynamic_var
+	value = 0
+}
+
+set_variable = {
+	var = USB_gs_production_factory_max_efficiency_factor_dynamic_var
+	value = 0
+}
+
+set_variable = {
+	var = USB_gs_line_change_production_efficiency_factor_dynamic_var
+	value = 0
+}
+
+set_variable = {
+	var = USB_gs_production_speed_buildings_factor_dynamic_var
+	value = 0
+}
+
+set_variable = {
+	var = USB_gs_production_speed_arms_factory_factor_dynamic_var
+	value = 0
+}
+
+set_variable = {
+	var = USB_gs_production_speed_industrial_complex_factor_dynamic_var
+	value = 0
+}
+
+set_variable = {
+	var = USB_gs_research_speed_factor_dynamic_var
+	value = 0
+}
+
+set_variable = {
+	var = USB_gs_compliance_growth_dynamic_var
+	value = 0
+}
+
+set_variable = {
+	var = USB_gs_resistance_growth_dynamic_var
+	value = 0
+}
+
+set_variable = {
+	var = USB_gs_resistance_decay_dynamic_var
+	value = 0
+}
+
+set_variable = {
+	var = USB_gs_industrial_development_monthly_dynamic_var
+	value = 0
+}
+
+set_variable = {
+	var = USB_gs_poverty_development_monthly_dynamic_var
+	value = 0
+}
+
+set_variable = {
+	var = USB_gs_society_development_monthly_dynamic_var
+	value = 0
+}
+
+set_variable = {
+	var = USB_gs_income_growth_factor_dynamic_var
+	value = 0
+}
+
+set_variable = {
+	var = USB_gs_production_speed_rail_way_factor_dynamic_var
+	value = 0
+}
+
+set_variable = {
+	var = USB_gs_personal_expense_factor_dynamic_var
+	value = 0
+}
+
+set_variable = {
+	var = USB_gs_inflation_monthly_dynamic_var
+	value = 0
+}
+
+set_variable = {
+	var = USB_gs_inflation_monthly_factor_dynamic_var
+	value = 0
+}
+
+set_variable = {
+	var = USB_gs_conscription_dynamic_var
+	value = 0
+}
+
+set_variable = {
+	var = USB_gs_monthly_population_dynamic_var
+	value = 0
+}
+
+set_variable = {
+	var = USB_gs_industry_repair_factor_var
+	value = 0
+}
+
+if = {
+	limit = {
+		has_dlc = "No Step Back"
+	}
+	create_equipment_variant = {
+		name = "M1A2 Abrams"
+		type = modern_tank_chassis_1
+		parent_version = 0
+		modules = {
+			main_armament_slot = tank_high_velocity_cannon_2
+			turret_type_slot = tank_modern_tank_turret
+			suspension_type_slot = tank_bogie_suspension
+			armor_type_slot = tank_welded_armor
+			engine_type_slot = tank_gas_turbine_engine
+			special_type_slot_1 = tank_radio_1
+			special_type_slot_2 = smoke_launchers
+			special_type_slot_3 = wet_ammo_storage
+			special_type_slot_4 = extra_ammo_storage
+		}
+		upgrades = {
+			tank_nsb_engine_upgrade = 9
+			tank_nsb_armor_upgrade = 4
+		}
+		icon = "gfx/interface/technologies/armor/MBT_2006_M1A2_Abrams.dds"
+	}
+	create_equipment_variant = {
+		name = "M1128 Stryker"
+		type = light_tank_chassis_1
+		parent_version = 0
+		modules = {
+			main_armament_slot = tank_small_cannon
+			turret_type_slot = tank_light_two_man_tank_turret
+			suspension_type_slot = tank_bogie_suspension
+			armor_type_slot = tank_riveted_armor
+			engine_type_slot = tank_gasoline_engine
+			special_type_slot_1 = tank_radio_1
+			special_type_slot_2 = extra_ammo_storage
+			special_type_slot_3 = smoke_launchers
+			special_type_slot_4 = empty
+		}
+		upgrades = {
+			tank_nsb_engine_upgrade = 3
+			tank_nsb_armor_upgrade = 2
+		}
+		icon = "gfx/interface/technologies/armor/LT_2000_M1128_Stryker.dds"
+	}
+}
+
+if = {
+	limit = {
+		has_dlc = "By Blood Alone"
+	}
+
+	create_equipment_variant = {
+		name = "MQ-9 Reaper"
+		type = medium_plane_airframe_1
+		modules = {
+			fixed_main_weapon_slot = aircraft_cannon_1_2x
+			fixed_auxiliary_weapon_slot_1 = light_mg_4x
+			fixed_auxiliary_weapon_slot_2 = empty
+			fixed_auxiliary_weapon_slot_3 = empty
+			engine_type_slot = engine_2_1x
+			special_type_slot_1 = lmg_defense_turret_2x
+			special_type_slot_2 = empty
+			special_type_slot_3 = empty
+		}
+		icon = "GFX_tactical_bomber2_medium"
+	}
+
+	create_equipment_variant = {
+		name = "F-15E"
+		type = small_plane_airframe_0
+		modules = {
+			fixed_main_weapon_slot = heavy_mg_4x
+			fixed_auxiliary_weapon_slot_1 = bomb_locks
+			fixed_auxiliary_weapon_slot_2 = light_mg_4x
+			engine_type_slot = engine_1_1x
+			special_type_slot_1 = empty
+		}
+		obsolete = yes
+		icon = "GFX_USA_fighter2_medium"
+	}
+	create_equipment_variant = {
+		name = "F-16/IQ"
+		type = small_plane_airframe_1
+		modules = {
+			fixed_main_weapon_slot = heavy_mg_4x
+			fixed_auxiliary_weapon_slot_1 = heavy_mg_4x
+			fixed_auxiliary_weapon_slot_2 = light_mg_4x
+			engine_type_slot = engine_2_1x
+			special_type_slot_1 = hmg_defense_turret
+		}
+		icon = "GFX_USA_fighter3_medium"
+	}
+	create_equipment_variant = {
+		name = "A-10 Warthog"
+		type = small_plane_cas_airframe_1
+		modules = {
+			fixed_main_weapon_slot = light_mg_4x
+			fixed_auxiliary_weapon_slot_1 = light_mg_4x
+			fixed_auxiliary_weapon_slot_2 = heavy_mg_4x
+			fixed_auxiliary_weapon_slot_3 = heavy_mg_4x
+			engine_type_slot = engine_2_1x
+			special_type_slot_1 = hmg_defense_turret
+			special_type_slot_2 = hmg_defense_turret
+		}
+		icon = "GFX_USA_CAS2_medium"
+	}
+	create_equipment_variant = {
+		name = "B-52" 
+		type = large_plane_airframe_1
+		modules = {
+			fixed_main_weapon_slot = aircraft_cannon_1_2x
+			fixed_auxiliary_weapon_slot_1 = empty
+			fixed_auxiliary_weapon_slot_2 = empty
+			engine_type_slot = engine_1_6x
+			special_type_slot_1 = empty
+			special_type_slot_2 = empty
+			special_type_slot_3 = empty
+
+		}
+		icon = "GFX_USA_strategic_bomber1_medium"
+	}
+	
+	create_equipment_variant = {
+		name = "B-1" 
+		type = large_plane_airframe_1
+		modules = {
+			fixed_main_weapon_slot = aircraft_cannon_1_2x
+			fixed_auxiliary_weapon_slot_1 = empty
+			fixed_auxiliary_weapon_slot_2 = empty
+			engine_type_slot = engine_2_3x
+			special_type_slot_1 = empty
+			special_type_slot_2 = empty
+			special_type_slot_3 = bomb_sights_1
+
+		}
+		icon = "GFX_USA_strategic_bomber2_medium"
+	}
+	
+	create_equipment_variant = {
+		name = "B-2" 
+		type = large_plane_airframe_1
+		modules = {
+			fixed_main_weapon_slot = aircraft_cannon_1_2x
+			fixed_auxiliary_weapon_slot_1 = aircraft_cannon_1_2x
+			fixed_auxiliary_weapon_slot_2 = empty
+			engine_type_slot = engine_1_4x
+			special_type_slot_1 = empty
+			special_type_slot_2 = empty
+			special_type_slot_3 = empty
+
+		}
+		icon = "GFX_USA_strategic_bomber3_medium"
+	}
+}

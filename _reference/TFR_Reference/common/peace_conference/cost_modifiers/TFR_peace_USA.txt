@@ -1,0 +1,52 @@
+peace_action_modifiers = {
+	ATW_cant_get_pa_modifier = {
+		category = has_claim
+		peace_action_type = take_states
+		enable = {
+			ROOT = {
+				tag = ATW
+			}
+			FROM = {
+				tag = ATW
+			}
+			FROM.FROM = {
+				USA_is_nationalist_tag = no
+			}
+			FROM.FROM.FROM = {
+				OR = {
+					USA_is_pennsylvania_state = yes
+					USA_is_ohio_state = yes
+					USA_is_indiana_state = yes
+					USA_is_new_jersey_state = yes
+					USA_is_illinois_state = yes
+					USA_is_wisconsin_state = yes
+				}
+			}
+		}
+		cost_multiplier = 100
+	}
+	ATW_gets_fucked_modifier = {
+		category = has_claim
+		peace_action_type = take_states
+		enable = {
+			NOT = {
+				has_global_flag = USA_american_civil_war_over_global
+			}
+			ROOT = {
+				tag = ATW
+				is_ai = no
+			}
+			FROM.FROM = {
+				USA_is_nationalist_tag = no
+			}
+			ROOT.FROM = {
+				tag = ATW
+				is_ai = no
+			}
+			FROM.FROM.FROM = {
+				has_state_flag = USA_core_state
+			}
+		}
+		cost_multiplier = 2
+	}
+}

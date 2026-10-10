@@ -1,0 +1,691 @@
+Vic_market = {
+	Krauss-Maffei_Wegmanns = {
+		icon = GFX_decision_kmw_bg
+
+		allowed = {
+			NOT = {
+				tag = GER
+			}
+		}
+
+		visible = {
+		}
+
+		ai_will_do = {
+			base = 0
+			modifier = {
+				add = 1
+				has_equipment = {
+					motorized_equipment < 400
+				}
+				OR = {
+					tag = CAN
+					tag = AUS
+					tag = GRE
+					tag = HUN
+					tag = POL
+					tag = QAT
+					tag = TUR
+					tag = BUL
+					tag = CZE
+					tag = BEL
+					tag = PAK
+					tag = IRQ
+					tag = EGY
+					tag = TZN
+					tag = POL
+					tag = UKR
+					tag = ROM
+					tag = USB
+				}
+			}
+		}
+
+		custom_cost_trigger = {
+			check_variable = { var = income_var value = 10 }
+        }
+		
+		days_re_enable = 175
+
+		custom_cost_text = dx_more_than_10B
+
+		complete_effect = {
+			hidden_effect = {
+				set_temp_variable = {
+					var = income_var_temp
+					value = -10
+				}
+				add_income = yes
+			}
+			custom_effect_tooltip = "WThis Will Buy Weapons from CKrauss-Maffei Wegmanns W"
+			add_equipment_to_stockpile = {type = modern_tank_chassis amount = 80 producer = GER }
+			add_equipment_to_stockpile = {type = mechanized_equipment_2 amount = 150 producer = GER }
+			add_equipment_to_stockpile = {type = motorized_equipment_1 amount = 500 producer = GER }
+		}
+	}
+
+	Nexter_Systems = {
+		icon = GFX_decision_nexter_systems_bg
+
+		allowed = {
+			NOT = {
+				tag = FRA
+			}
+		}
+
+		visible = {
+		}
+
+		ai_will_do = {
+			base = 0
+			modifier = {
+				add = 1
+				has_equipment = {
+					light_mechanized_equipment < 300
+				}
+				OR = {
+					tag = CHA
+					tag = CAR
+					tag = ITA
+					tag = LEB
+					tag = MOR
+					tag = UAE
+					tag = EGY
+					tag = ROM
+					tag = UKR
+					tag = USB
+				}
+			}
+		}
+
+		custom_cost_trigger = {
+			check_variable = { var = income_var value = 10 }
+        }
+		
+		days_re_enable = 150
+
+		custom_cost_text = dx_more_than_10B
+
+		complete_effect = {
+			hidden_effect = {
+				set_temp_variable = {
+					var = income_var_temp
+					value = -10
+				}
+				add_income = yes
+			}
+			custom_effect_tooltip = "WThis Will Buy Weapons from RNexter Systems W"
+			add_equipment_to_stockpile = {type = modern_tank_chassis amount = 95 producer = FRA }
+			add_equipment_to_stockpile = {type = mechanized_equipment_1 amount = 250 producer = FRA }
+			add_equipment_to_stockpile = {type = light_mechanized_equipment_2 amount = 400 producer = FRA }
+		}
+	}
+	Uralvagonzavod = {
+		icon = GFX_decision_uralvagonzavod_bg
+		allowed = {
+			NOT = {
+				tag = SOV
+			}
+		}
+		available = {
+			NOT = {
+				has_war_with = SOV
+			}
+		}
+
+		visible = {
+		}
+
+		ai_will_do = {
+			base = 0
+			modifier = {
+				add = 1
+				has_equipment = {
+					modern_tank_chassis < 400
+				}
+				OR = {
+					tag = AFG
+					tag = ALG
+					tag = ANG
+					tag = RCG
+					tag = COG
+					tag = CUB
+					tag = EGY
+					tag = PER
+					tag = KUR
+					tag = LBA
+					tag = HRL
+					tag = MON
+					tag = PRK
+					tag = SYR
+					tag = FSA
+					tag = TAJ
+					tag = UZB
+					tag = YEM
+					tag = HOU
+					tag = BLR
+					tag = BUL
+					tag = IRQ
+					tag = ARM
+					tag = AZR
+					tag = TZN
+					tag = TMS
+					tag = UGA
+					tag = PAK
+					tag = ETH
+					tag = GEO
+					tag = RAJ
+					tag = KAZ
+					tag = KYR
+					tag = MYA
+					tag = SUD
+					tag = SSU
+					tag = NGA
+					tag = ISS
+					tag = TAL
+					tag = APA
+					tag = ATS
+					tag = ATP
+					tag = ATH
+					tag = RGA
+					tag = TRG
+					tag = CAR
+				}
+			}
+		}
+
+		custom_cost_trigger = {
+			check_variable = { var = income_var value = 45 }
+        }
+		
+		days_re_enable = 150
+
+		custom_cost_text = dx_more_than_45B
+
+		complete_effect = {
+			hidden_effect = {
+				set_temp_variable = {
+					var = income_var_temp
+					value = -45
+				}
+				add_income = yes
+			}
+			custom_effect_tooltip = "WThis Will Buy Weapons from gUralvagonzavod W"
+			add_equipment_to_stockpile = {type = modern_tank_chassis amount = 95 producer = SOV }
+			add_equipment_to_stockpile = {type = mechanized_equipment_1 amount = 250 producer = SOV }
+			add_equipment_to_stockpile = {type = modern_tank_artillery_chassis amount = 100 producer = SOV }
+			add_equipment_to_stockpile = {type = motorized_equipment amount = 200 producer = SOV }
+		}
+	}
+
+	FNSS_Defence_Systems = {
+		icon = GFX_decision_FNSS_bg
+
+		allowed = {
+			NOT = {
+				tag = TUR
+			}
+		}
+
+		visible = {
+		}
+
+		ai_will_do = {
+			base = 0
+			modifier = {
+				add = 1
+				has_equipment = {
+					light_mechanized_equipment < 300
+				}
+				OR = {
+					tag = LBA
+					tag = MOL
+					tag = POR
+					tag = SPR
+					tag = BAN
+					tag = PAK
+					tag = USC
+					tag = USB
+				}
+			}
+		}
+
+		custom_cost_trigger = {
+			check_variable = { var = income_var value = 25 }
+        }
+		
+		days_re_enable = 150
+
+		custom_cost_text = dx_more_than_25B
+
+		complete_effect = {
+			hidden_effect = {
+				set_temp_variable = {
+					var = income_var_temp
+					value = -25
+				}
+				add_income = yes
+			}
+			custom_effect_tooltip = "WThis Will Buy Weapons from RFNSS Defence Systems W"
+			add_equipment_to_stockpile = {type = light_tank_chassis amount = 150 producer = TUR }
+			add_equipment_to_stockpile = {type = mechanized_equipment_1 amount = 250 producer = TUR }
+			add_equipment_to_stockpile = {type = light_mechanized_equipment_1 amount = 400 producer = TUR }
+		}
+	}
+
+	Defense_Industries_Organization = {
+		icon = GFX_decision_defense_industries_bg
+
+		allowed = {
+			NOT = {
+				tag = PER
+			}
+		}
+
+		visible = {
+		}
+
+		ai_will_do = {
+			base = 0
+			modifier = {
+				add = 1
+				has_equipment = {
+					light_mechanized_equipment < 300
+				}
+				OR = {
+					tag = SYR
+					tag = IRQ
+					tag = AFG
+					tag = SAR
+				}
+			}
+		}
+
+		custom_cost_trigger = {
+			check_variable = { var = income_var value = 25 }
+        }
+		
+		days_re_enable = 150
+
+		custom_cost_text = dx_more_than_25B
+
+		complete_effect = {
+			hidden_effect = {
+				set_temp_variable = {
+					var = income_var_temp
+					value = -25
+				}
+				add_income = yes
+			}
+			custom_effect_tooltip = "WThis Will Buy Weapons from GDefense Industries Organization W"
+			add_equipment_to_stockpile = {type = mechanized_equipment_1 amount = 250 producer = PER }
+			add_equipment_to_stockpile = {type = motorized_rocket_equipment_1 amount = 300 producer = PER }
+			add_equipment_to_stockpile = {type = light_mechanized_equipment_1 amount = 400 producer = PER }
+		}
+	}
+
+	NORINCO_vic = {
+		icon = GFX_decision_norinco_vehicles_bg
+
+		allowed = {
+			NOT = {
+				tag = PRC
+			}
+		}
+
+		visible = {
+		}
+
+		ai_will_do = {
+			base = 0
+			modifier = {
+				add = 1
+				has_equipment = {
+					mechanized_equipment < 200
+				}
+				OR = {
+					tag = PRK
+					tag = VIN
+					tag = LAO
+					tag = KYR
+					tag = ERI
+					tag = ETH
+					tag = SOM
+					tag = SUD
+					tag = COG
+					tag = RCG
+					tag = ANG
+					tag = ZAM
+					tag = MZB
+					tag = CAM
+					tag = NGR
+					tag = RGA
+					tag = TRG
+					tag = PAK
+				}
+			}
+		}
+
+		custom_cost_trigger = {
+			check_variable = { var = income_var value = 35 }
+        }
+		
+		days_re_enable = 150
+
+		custom_cost_text = dx_more_than_35B
+
+		complete_effect = {
+			hidden_effect = {
+				set_temp_variable = {
+					var = income_var_temp
+					value = -35
+				}
+				add_income = yes
+			}
+			custom_effect_tooltip = "WThis Will Buy Weapons from CNORINCO W"
+			add_equipment_to_stockpile = {type = modern_tank_chassis amount = 95 producer = PRC }
+			add_equipment_to_stockpile = {type = light_tank_equipment_1 amount = 150 producer = PRC }
+			add_equipment_to_stockpile = {type = mechanized_equipment_1 amount = 250 producer = PRC }
+		}
+	}
+
+	Baykar_vic = {
+		icon = GFX_decision_BAYKAR_bg
+
+		allowed = {
+			NOT = {
+				tag = TUR
+			}
+		}
+
+		visible = {
+		}
+
+		ai_will_do = {
+			base = 0
+			modifier = {
+				add = 1
+				has_equipment = {
+					tac_bomber_equipment < 20
+				}
+				OR = {
+					tag = AZR
+					tag = ETH
+					tag = LBA
+					tag = MOR
+					tag = NGR
+					tag = UKR
+					tag = IRQ
+					tag = POL
+					tag = PAK
+					tag = LAT
+					tag = SER
+					tag = SOM
+				}
+			}
+		}
+
+		custom_cost_trigger = {
+			check_variable = { var = income_var value = 45 }
+		}
+		
+		custom_cost_text = dx_more_than_45B
+		
+		days_re_enable = 150
+
+		complete_effect = {
+			subtract_from_variable  = { var = income_var value = 45 }
+			custom_effect_tooltip = "WThis Will Buy Weapons from CBaykar W"
+			if = {
+				limit = {
+					NOT = {
+						has_dlc = "By Blood Alone"
+					}
+				}
+			add_equipment_to_stockpile = {type = tac_bomber_equipment_1 amount = 20 producer = TUR }
+			}
+			else = {
+			add_equipment_to_stockpile = {
+					type = medium_plane_scout_plane_airframe_1
+					amount = 30
+					producer = TUR
+				}
+			}
+		}
+	}
+	mikoyan_vic = {
+		icon = GFX_decision_MIKOYAN_bg
+
+		allowed = {
+			NOT = {
+				tag = SOV
+			}
+		}
+
+		visible = {
+		}
+
+		ai_will_do = {
+			base = 0
+			modifier = {
+				add = 1
+				has_equipment = {
+					fighter_equipment < 100
+				}
+				OR = {
+					tag = AFG
+					tag = ALG
+					tag = ANG
+					tag = RCG
+					tag = COG
+					tag = CUB
+					tag = EGY
+					tag = PER
+					tag = KUR
+					tag = LBA
+					tag = HRL
+					tag = MON
+					tag = PRK
+					tag = SYR
+					tag = FSA
+					tag = TAJ
+					tag = UZB
+					tag = YEM
+					tag = HOU
+					tag = BLR
+					tag = BUL
+					tag = IRQ
+					tag = ARM
+					tag = AZR
+					tag = TZN
+					tag = TMS
+					tag = UGA
+					tag = PAK
+					tag = ETH
+					tag = GEO
+					tag = RAJ
+					tag = KAZ
+					tag = KYR
+					tag = MYA
+					tag = SUD
+					tag = SSU
+					tag = NGA
+					tag = ISS
+					tag = TAL
+					tag = APA
+					tag = ATS
+					tag = ATP
+					tag = ATH
+					tag = RGA
+					tag = TRG
+					tag = CAR
+				}
+			}
+		}
+
+		custom_cost_trigger = {
+			check_variable = { var = income_var value = 45 }
+		}
+		
+		custom_cost_text = dx_more_than_45B
+		
+		days_re_enable = 150
+
+		complete_effect = {
+			subtract_from_variable  = { var = income_var value = 45 }
+			custom_effect_tooltip = "WThis Will Buy Weapons from CMikoyan W"
+			if = {
+				limit = {
+					NOT = {
+						has_dlc = "By Blood Alone"
+					}
+				}
+			add_equipment_to_stockpile = {type = fighter_equipment_2 amount = 60 producer = SOV }
+			}
+			else = {
+			add_equipment_to_stockpile = {
+					type = small_plane_airframe_1
+					amount = 30
+					producer = SOV
+				}
+			}
+		}
+	}
+	dassault_aviation_vic = {
+		icon = GFX_decision_DASSAULT_bg
+
+		allowed = {
+			NOT = {
+				tag = FRA
+			}
+		}
+
+		visible = {
+		}
+
+		ai_will_do = {
+			base = 0
+			modifier = {
+				add = 1
+				has_equipment = {
+					light_mechanized_equipment < 100
+				}
+				OR = {
+					tag = CHA
+					tag = CAR
+					tag = ITA
+					tag = LEB
+					tag = MOR
+					tag = UAE
+					tag = EGY
+					tag = ROM
+					tag = CHI
+					tag = SAU
+					tag = UAE
+					tag = IRQ
+					tag = INS
+					tag = USB
+				}
+			}
+		}
+
+		custom_cost_trigger = {
+			check_variable = { var = income_var value = 45 }
+		}
+		
+		custom_cost_text = dx_more_than_45B
+		
+		days_re_enable = 150
+
+		complete_effect = {
+			subtract_from_variable  = { var = income_var value = 45 }
+			custom_effect_tooltip = "WThis Will Buy Weapons from CDassault Aviation W"
+			if = {
+				limit = {
+					NOT = {
+						has_dlc = "By Blood Alone"
+					}
+				}
+			add_equipment_to_stockpile = {type = fighter_equipment_3 amount = 40 producer = FRA }
+			}
+			else = {
+			add_equipment_to_stockpile = {
+					type = small_plane_airframe_1
+					amount = 30
+					producer = FRA
+				}
+			}			
+		}
+	}
+	lockheed_martin_vic = {
+		icon = GFX_decision_LOCKHEED_MARTIN_bg
+
+		allowed = {
+			NOT = {
+				tag = USA
+			}
+		}
+
+		visible = {
+		}
+
+		ai_will_do = {
+			base = 0
+			modifier = {
+				add = 1
+				has_equipment = {
+					fighter_equipment < 100
+				}
+				OR = {
+					tag = CAN
+					tag = AUS
+					tag = GRE
+					tag = HUN
+					tag = POL
+					tag = QAT
+					tag = TUR
+					tag = BUL
+					tag = CZE
+					tag = BEL
+					tag = PAK
+					tag = IRQ
+					tag = EGY
+					tag = TZN
+					tag = POL
+					tag = ROM
+					tag = USB
+					tag = USC
+				}
+			}
+		}
+
+		custom_cost_trigger = {
+			check_variable = { var = income_var value = 45 }
+		}
+		
+		custom_cost_text = dx_more_than_45B
+		
+		days_re_enable = 150
+
+		complete_effect = {
+			subtract_from_variable  = { var = income_var value = 45 }
+			custom_effect_tooltip = "WThis Will Buy Weapons from CLockheed Martin W"
+			if = {
+				limit = {
+					NOT = {
+						has_dlc = "By Blood Alone"
+					}
+				}
+			add_equipment_to_stockpile = {type = fighter_equipment_3 amount = 60 producer = USA }
+			}
+			else = {
+			add_equipment_to_stockpile = {
+					type = small_plane_airframe_1
+					amount = 30
+					producer = USA
+					version_name = "F-16/IQ"
+				}
+			}
+		}
+	}
+}

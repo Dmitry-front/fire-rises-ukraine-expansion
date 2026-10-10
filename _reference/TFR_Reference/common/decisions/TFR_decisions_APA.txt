@@ -1,0 +1,7042 @@
+USA_second_american_civil_war_category = {
+	APA_reunify_america_decision = {
+		icon = USA_american_reunification
+		cancel_if_not_visible = yes
+		cost = 0
+		allowed = {
+			original_tag = APA
+		}
+		visible = {
+		}
+		available = {
+			has_completed_focus = APA_proclaim_a_national_government
+			USA_has_states_secured = yes
+			USA_has_militias_secured = yes
+			USA_has_gangs_secured = yes
+			USA_has_separatists_secured = yes
+			USA_has_rivals_secured = yes
+		}
+		ai_will_do = {
+			base = 1000
+		}
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: decision APA_reunify_america_decision complete_effect"
+			country_event = {
+				id = apla.25
+			}
+			clr_country_flag = united_front_member
+		}
+	}
+	APA_operation_chocolate_mint_decision = {
+		icon = generic_prepare_civil_war
+		allowed = {
+			original_tag = APA
+		}
+		visible = {
+			has_completed_focus = APA_unify_the_west_coast
+			any_other_country = {
+				if = {
+					limit = {
+						OR = {
+							#tag = RCA
+							tag = ORE
+							tag = WAS
+							tag = CAC
+							tag = BBC
+							tag = PDX
+						}
+					}
+					exists = yes
+					NOT = {
+						has_war_with = ROOT
+						is_in_faction_with = ROOT
+					}
+				}
+			}
+			NOT = {
+				has_global_flag = RCA_northwest_republic_cascadia_flag
+			}
+		}
+		available = {
+			NOT = {
+				has_country_flag = war_justification_flag
+			}
+		}
+		ai_will_do = {
+			base = 1000
+			# modifier = {
+			# 	add = 100
+			# 	CAC = {
+			# 		exists = yes
+			# 		has_country_flag = CAC_unified_flag
+			# 		OR = {
+			# 			AND = {
+			# 				NOT = {
+			# 					has_country_leader = {
+			# 						character = CAC_bob_avakian
+			# 					}
+			# 				}
+			# 				has_government = totalitarian_socialist
+			# 			}
+			# 			has_government = communist
+			# 			has_government = libertarian_socialist
+			# 		}
+			# 	}
+			# }
+		}
+		days_remove = 14
+		modifier = {
+		}
+		fire_only_once = yes
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: decision APA_operation_chocolate_mint_decision complete_effect"
+			set_country_flag = {
+				flag = war_justification_flag
+				days = 14
+				value = 1
+			}
+			hidden_effect = {
+				#CAC = {
+				#	country_event = {
+				#		id = cac.40
+				#		days = 5
+				#	}
+				#}
+			}
+		}
+		remove_effect = {
+			log = "[GetDateText]: [Root.GetName]: decision APA_operation_chocolate_mint_decision remove_effect"
+			every_other_country = {
+				limit = {
+					exists = yes
+					NOT = {
+						has_war_with = ROOT
+						is_in_faction_with = ROOT
+					}
+					OR = {
+						tag = ORE
+						tag = WAS
+						tag = CAC
+						tag = BBC
+						tag = PDX
+					}
+				}
+				war_with_PREV = yes
+			}
+			annex_country = {
+				target = RCA
+				transfer_troops = yes
+			}
+			#activate_mission = APA_operation_chocolate_mint_mission
+		}
+	}
+	APA_operation_chocolate_mint_mission = {
+		icon = generic_speech
+		is_good = no
+		selectable_mission = no
+		days_mission_timeout = 175
+		allowed = {
+			tag = APA
+		}
+		activation = {
+			always = no
+		}
+		available = {
+			CAC = {
+				OR = {
+					exists = no
+					is_in_faction_with = ROOT
+					is_puppet_of = APA
+				}
+			}
+			NOT = {
+				country_exists = WAS
+				country_exists = ORE
+			}
+		}
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: mission APA_operation_chocolate_mint_mission complete_effect"
+			country_event = {
+				id = apla.48
+			}
+		}
+		timeout_effect = {
+			log = "[GetDateText]: [Root.GetName]: mission APA_operation_chocolate_mint_mission timeout_effect"
+			country_event = {
+				id = apla.47
+			}
+			white_peace = CAC
+		}
+	}
+	APA_war_with_southwest_decision = {
+		icon = generic_prepare_civil_war
+		days_remove = 14
+		fire_only_once = yes
+		war_with_on_remove = ARZ
+		war_with_on_remove = BRN
+		allowed = {
+			original_tag = APA
+		}
+		visible = {
+			has_completed_focus = APA_begin_the_march_east
+			any_other_country = {
+				if = {
+					limit = {
+						OR = {
+							tag = BRN
+							tag = ARZ
+							tag = ABR
+							tag = JUA
+							tag = NMX
+							tag = MOG
+						}
+					}
+					exists = yes
+					NOT = {
+						has_war_with = ROOT
+						is_in_faction_with = ROOT
+					}
+				}
+			}
+		}
+		available = {
+			NOT = {
+				has_country_flag = war_justification_flag
+			}
+		}
+		ai_will_do = {
+			base = 100
+			modifier = {
+				factor = 0
+				# any_other_country = {
+				# 	USA_is_separatist_tag = yes
+				# 	has_war_with = ROOT
+				# }
+				OR = {
+					country_exists = ORE
+					country_exists = WAS
+					country_exists = BBC
+					country_exists = PDX
+					AND = {
+						country_exists = CAC
+						NOT = {
+							is_in_faction_with = CAC
+						}
+					}
+				}
+			}
+		}
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: decision APA_war_with_southwest_decision complete_effect"
+			set_country_flag = {
+				flag = war_justification_flag
+				days = 14
+				value = 1
+			}
+		}
+		remove_effect = {
+			log = "[GetDateText]: [Root.GetName]: decision APA_war_with_southwest_decision remove_effect"
+			every_other_country = {
+				limit = {
+					exists = yes
+					NOT = {
+						has_war_with = ROOT
+						is_in_faction_with = ROOT
+					}
+					OR = {
+						tag = BRN
+						tag = ARZ
+						tag = ABR
+						tag = JUA
+						tag = NMX
+						tag = MOG
+					}
+				}
+				war_with_PREV = yes
+			}
+		}
+	}
+	APA_operation_rocky_road_decision = {
+		icon = generic_prepare_civil_war
+		war_with_on_remove = MOS
+		war_with_on_remove = BNF
+		war_with_on_remove = LDS
+		war_with_on_remove = FOL
+		war_with_on_remove = VAG
+		war_with_on_remove = DUG
+		allowed = {
+			original_tag = APA
+		}
+		visible = {
+			has_completed_focus = APA_begin_the_march_east
+			any_other_country = {
+				if = {
+					limit = {
+						OR = {
+							tag = MOS
+							tag = BNF
+							tag = LDS
+							tag = FOL
+							tag = VAG
+							tag = DUG
+						}
+					}
+					exists = yes
+					NOT = {
+						has_war_with = ROOT
+						is_in_faction_with = ROOT
+					}
+				}
+			}
+		}
+		available = {
+			NOT = {
+				has_country_flag = war_justification_flag
+			}
+		}
+		ai_will_do = {
+			base = 100
+			modifier = {
+				factor = 0
+				OR = {
+					country_exists = ORE
+					country_exists = WAS
+					country_exists = BBC
+					country_exists = PDX
+					country_exists = BRN
+					country_exists = ARZ
+					country_exists = ABR
+					country_exists = JUA
+					country_exists = NMX
+					country_exists = MOG
+					AND = {
+						country_exists = CAC
+						NOT = {
+							is_in_faction_with = CAC
+						}
+					}
+				}
+			}
+		}
+		days_remove = 14
+		fire_only_once = yes
+		modifier = {
+		}
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: decision APA_operation_rocky_road_decision complete_effect"
+			set_country_flag = {
+				flag = war_justification_flag
+				days = 14
+				value = 1
+			}
+		}
+		remove_effect = {
+			log = "[GetDateText]: [Root.GetName]: decision APA_operation_rocky_road_decision remove_effect"
+			every_other_country = {
+				limit = {
+					exists = yes
+					NOT = {
+						has_war_with = ROOT
+						is_in_faction_with = ROOT
+					}
+					OR = {
+						tag = MOS
+						tag = BNF
+						tag = LDS
+						tag = FOL
+						tag = VAG
+						tag = DUG
+					}
+				}
+				war_with_PREV = yes
+			}
+		}
+	}
+	APA_attack_FROM_decision = {
+		icon = generic_prepare_civil_war
+		war_with_target_on_remove = yes
+		fire_only_once = no
+		days_remove = 14
+		target_array = USA.faction_tag_array
+		ai_will_do = {
+			base = 100
+			modifier = {
+				factor = 2
+				FROM = {
+					NOT = {
+						surrender_progress > 0.5
+					}
+				}
+			}
+			modifier = {
+				factor = 0
+				OR = {
+					country_exists = ORE
+					country_exists = WAS
+					country_exists = BBC
+					country_exists = PDX
+					country_exists = ARZ
+					country_exists = ABR
+					country_exists = JUA
+					country_exists = NMX
+					country_exists = MOG
+					country_exists = MOS
+					country_exists = BNF
+					country_exists = LDS
+					country_exists = FOL
+					country_exists = VAG
+					country_exists = DUG
+					AND = {
+						country_exists = CAC
+						NOT = {
+							is_in_faction_with = CAC
+						}
+					}
+					AND = {
+						country_exists = BRN
+						NOT = {
+							is_in_faction_with = BRN
+						}
+					}
+					AND = {
+						country_exists = NNN
+						NOT = {
+							is_in_faction_with = NNN
+						}
+					}
+				}
+			}
+		}
+		allowed = {
+			original_tag = APA
+		}
+		target_root_trigger = {
+			has_completed_focus = APA_proclaim_a_national_government
+		}
+		target_trigger = {
+			FROM = {
+				NOT = {
+					is_in_faction_with = ROOT
+					has_war_with = ROOT
+					tag = MOS
+					tag = BNF
+					tag = LDS
+					tag = FOL
+					tag = VAG
+					tag = ORE
+					tag = WAS
+					tag = CAC
+					tag = BBC
+					tag = BRN
+					tag = ARZ
+					tag = ABR
+					tag = JUA
+					tag = NMX
+					tag = MOG
+					tag = DUG
+				}
+				OR = {
+					any_controlled_state = {
+						any_neighbor_state = {
+							is_controlled_by = ROOT
+						}
+					}
+					any_other_country = {
+						OR = {
+							is_in_faction_with = ROOT
+							is_puppet_of = ROOT
+						}
+						any_controlled_state = {
+							any_neighbor_state = {
+								is_controlled_by = PREV.PREV.PREV
+							}
+						}
+					}
+				}
+			}
+		}
+		available = {
+			NOT = {
+				has_country_flag = war_justification_flag
+			}
+		}
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: decision APA_attack_FROM_decision complete_effect"
+			set_country_flag = {
+				flag = war_justification_flag
+				days = 14
+				value = 1
+			}
+			hidden_effect = {
+			}
+		}
+		remove_effect = {
+			log = "[GetDateText]: [Root.GetName]: decision APA_attack_FROM_decision remove_effect"
+			war_with_FROM = yes
+		}
+	}
+	APA_oregon_trail_north_california_decision = {
+		icon = GFX_decision_reconstruction
+		allowed = {
+			original_tag = APA
+		}
+		visible = {
+			has_country_flag = APA_oregon_infrastructure_destroyed_flag
+		}
+		available = {
+			controls_state = 1089
+			controls_state = 378
+			num_of_civilian_factories_available_for_projects > 5
+		}
+		ai_will_do = {
+			base = 1000
+		}
+		fire_only_once = yes
+		cost = 25
+		days_remove = 50
+		cancel_if_not_visible = yes
+		modifier = {
+			civilian_factory_use = 5
+		}
+		remove_effect = {
+			1089 = {
+				set_building_level = {
+					type = infrastructure
+					level = 4
+					instant_build = yes
+				}
+			}
+			378 = {
+				set_building_level = {
+					type = infrastructure
+					level = 4
+					instant_build = yes
+				}
+			}
+			build_railway = {
+				level = 2
+				fallback = yes
+				path = { 610 781 1338 13340 }
+				start_province = 610 
+				target_province = 13340 
+			}
+			build_railway = {
+				level = 3
+				fallback = yes
+				path = { 13340 3588 13670 4331 }
+				start_province = 13340 
+				target_province = 4331
+			}
+			1089 = {
+				add_building_construction = {
+					type = supply_node
+					level = 1
+					instant_build = yes
+					province = 4331
+				}
+			}
+		}
+	}
+
+	APA_oregon_trail_south_oregon_decision = {
+		icon = GFX_decision_reconstruction
+		allowed = {
+			original_tag = APA
+		}
+		visible = {
+			has_country_flag = APA_oregon_infrastructure_destroyed_flag
+		}
+		available = {
+			controls_state = 996
+			controls_state = 385
+			controls_state = 999
+			controls_state = 995
+			num_of_civilian_factories_available_for_projects > 5
+		}
+		ai_will_do = {
+			base = 1000
+		}
+		fire_only_once = yes
+		cost = 25
+		days_remove = 50
+		cancel_if_not_visible = yes
+		modifier = {
+			civilian_factory_use = 5
+		}
+		remove_effect = {
+			996 = {
+				set_building_level = {
+					type = infrastructure
+					level = 3
+					instant_build = yes
+				}
+			}
+			285 = {
+				set_building_level = {
+					type = infrastructure
+					level = 4
+					instant_build = yes
+				}
+			}
+			999 = {
+				set_building_level = {
+					type = infrastructure
+					level = 3
+					instant_build = yes
+				}
+			}
+			995 = {
+				set_building_level = {
+					type = infrastructure
+					level = 3
+					instant_build = yes
+				}
+			}
+
+			build_railway = {
+				level = 2
+				fallback = yes
+				path = { 13670 3471 10151 4274 }
+				start_province = 13670
+				target_province = 4274
+			}
+			build_railway = {
+				level = 3
+				fallback = yes
+				path = { 4331 10305 13553 }
+				start_province = 4331
+				target_province = 13553
+			}
+			995 = {
+				add_building_construction = {
+					type = supply_node
+					level = 1
+					instant_build = yes
+					province = 13553
+				}
+			}
+		}
+	}
+}
+
+USA_recoring_category = {
+	APA_enforce_compliance_decision = {
+		icon = generic_arrest
+		allowed = {
+			original_tag = APA
+		}
+		visible = {
+			has_completed_focus = APA_establish_the_agency_of_socialist_security
+		}
+		available = {
+			any_controlled_state = {
+				is_claimed_by = ROOT
+				NOT = {
+					is_core_of = ROOT
+				}
+			}
+		}
+		ai_will_do = {
+			base = 2
+		}
+		cost = 0
+		days_remove = 70
+		cancel_if_not_visible = yes
+		modifier = {
+			compliance_gain = 0.05
+		}
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: decision APA_enforce_compliance_decision complete_effect"
+			set_temp_variable = {
+				var = var:authoritarian_democrat_popularity_var_temp
+				value = 0.01
+			}
+			add_authoritarian_democrat_popularity = yes
+		}
+	}
+}
+
+APA_decolonization_cat = {
+	APA_release_new_afrika = {
+		icon = generic_political_rally
+		allowed = {
+			original_tag = APA
+		}
+		visible = {
+			has_completed_focus = APA_decolonization
+		}
+		available = {
+			has_completed_focus = APA_decolonization
+			hidden_trigger = {
+				363 = {
+					is_fully_controlled_by = APA
+				}
+				364 = {
+					is_fully_controlled_by = APA
+				}
+				365 = {
+					is_fully_controlled_by = APA
+				}
+				367 = {
+					is_fully_controlled_by = APA
+				}
+				370 = {
+					is_fully_controlled_by = APA
+				}
+				978 = {
+					is_fully_controlled_by = APA
+				}
+				982 = {
+					is_fully_controlled_by = APA
+				}
+				1005 = {
+					is_fully_controlled_by = APA
+				}
+				1009 = {
+					is_fully_controlled_by = APA
+				}
+				1010 = {
+					is_fully_controlled_by = APA
+				}
+				1012 = {
+					is_fully_controlled_by = APA
+				}
+				1013 = {
+					is_fully_controlled_by = APA
+				}
+				1015 = {
+					is_fully_controlled_by = APA
+				}
+				1016 = {
+					is_fully_controlled_by = APA
+				}
+				1017 = {
+					is_fully_controlled_by = APA
+				}
+				1018 = {
+					is_fully_controlled_by = APA
+				}
+				1019 = {
+					is_fully_controlled_by = APA
+				}
+				1020 = {
+					is_fully_controlled_by = APA
+				}
+				1021 = {
+					is_fully_controlled_by = APA
+				}
+				1023 = {
+					is_fully_controlled_by = APA
+				}
+				1024 = {
+					is_fully_controlled_by = APA
+				}
+				1025 = {
+					is_fully_controlled_by = APA
+				}
+				1026 = {
+					is_fully_controlled_by = APA
+				}
+			}
+		}
+		ai_will_do = {
+			base = 2
+		}
+		cost = 5
+		days_remove = 14
+		fire_only_once = yes
+		cancel_if_not_visible = yes
+		modifier = {
+		}
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: decision APA_release_new_afrika complete_effect"
+		}
+		ai_will_do = {
+			base = 200
+		}
+		remove_effect = {
+			log = "[GetDateText]: [Root.GetName]: decision APA_release_new_afrika remove_effect"
+			hidden_effect = {
+				NAA = {
+					add_state_core = 363
+					add_state_core = 364
+					add_state_core = 365
+					add_state_core = 367
+					add_state_core = 370
+					add_state_core = 978
+					add_state_core = 982
+					add_state_core = 1005
+					add_state_core = 1009
+					add_state_core = 1010
+					add_state_core = 1012
+					add_state_core = 1013
+					add_state_core = 1015
+					add_state_core = 1016
+					add_state_core = 1017
+					add_state_core = 1018
+					add_state_core = 1019
+					add_state_core = 1020
+					add_state_core = 1021
+					add_state_core = 1023
+					add_state_core = 1024
+					add_state_core = 1025
+					add_state_core = 1026
+				}
+			}
+			release = NAA
+			hidden_effect = {
+				NAA = {
+					load_oob = "APA_new_africa_decolonization"
+					create_country_leader = {
+						name = APA_decolonization_society
+						picture = "gfx/leaders/APA/APA_decolonization_society.png"
+						expire = "1.1.1.1"
+						ideology = jacobinism
+						traits = {
+						}
+					}
+					create_country_leader = {
+						name = APA_decolonization_society
+						picture = "gfx/leaders/APA/APA_decolonization_society.png"
+						expire = "1.1.1.1"
+						ideology = marxism_leninism
+						traits = {
+						}
+					}
+					create_country_leader = {
+						name = APA_decolonization_society
+						picture = "gfx/leaders/APA/APA_decolonization_society.png"
+						expire = "1.1.1.1"
+						ideology = left_anarchist
+						traits = {
+						}
+					}
+					create_country_leader = {
+						name = APA_decolonization_society
+						picture = "gfx/leaders/APA/APA_decolonization_society.png"
+						expire = "1.1.1.1"
+						ideology = neo_socialism_socdem
+						traits = {
+						}
+					}
+				}
+			}
+			puppet = NAA
+			add_political_power = 50
+			add_war_support = 0.03
+			add_stability = -0.03
+		}
+	}
+	APA_release_blackfoot = {
+		icon = generic_political_rally
+		allowed = {
+			original_tag = APA
+		}
+		visible = {
+			has_completed_focus = APA_decolonization
+		}
+		available = {
+			has_completed_focus = APA_decolonization
+			hidden_trigger = {
+				1088 = {
+					is_fully_controlled_by = APA
+				}
+			}
+		}
+		ai_will_do = {
+			base = 200
+		}
+		cost = 5
+		days_remove = 14
+		fire_only_once = yes
+		cancel_if_not_visible = yes
+		modifier = {
+		}
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: decision APA_release_blackfoot complete_effect"
+		}
+		remove_effect = {
+			log = "[GetDateText]: [Root.GetName]: decision APA_release_blackfoot remove_effect"
+			hidden_effect = {
+				BAS = {
+					add_state_core = 1088
+				}
+			}
+			release = BAS
+			hidden_effect = {
+				BAS = {
+					load_oob = "APA_blackfoot_decolonization"
+					create_country_leader = {
+						name = APA_decolonization_society
+						picture = "gfx/leaders/APA/APA_decolonization_society.png"
+						expire = "1.1.1.1"
+						ideology = jacobinism
+						traits = {
+						}
+					}
+					create_country_leader = {
+						name = APA_decolonization_society
+						picture = "gfx/leaders/APA/APA_decolonization_society.png"
+						expire = "1.1.1.1"
+						ideology = marxism_leninism
+						traits = {
+						}
+					}
+					create_country_leader = {
+						name = APA_decolonization_society
+						picture = "gfx/leaders/APA/APA_decolonization_society.png"
+						expire = "1.1.1.1"
+						ideology = left_anarchist
+						traits = {
+						}
+					}
+					create_country_leader = {
+						name = APA_decolonization_society
+						picture = "gfx/leaders/APA/APA_decolonization_society.png"
+						expire = "1.1.1.1"
+						ideology = neo_socialism_socdem
+						traits = {
+						}
+					}
+				}
+			}
+			puppet = BAS
+			add_political_power = 50
+			add_war_support = 0.03
+			add_stability = -0.03
+		}
+	}
+	APA_release_sioux = {
+		icon = generic_political_rally
+		allowed = {
+			original_tag = APA
+		}
+		visible = {
+			has_completed_focus = APA_decolonization
+		}
+		available = {
+			has_completed_focus = APA_decolonization
+			hidden_trigger = {
+				390 = {
+					is_fully_controlled_by = APA
+				}
+			}
+		}
+		ai_will_do = {
+			base = 200
+		}
+		cost = 5
+		days_remove = 14
+		fire_only_once = yes
+		cancel_if_not_visible = yes
+		modifier = {
+		}
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: decision APA_release_sioux complete_effect"
+		}
+		remove_effect = {
+			log = "[GetDateText]: [Root.GetName]: decision APA_release_sioux remove_effect"
+			hidden_effect = {
+				SAS = {
+					add_state_core = 390
+				}
+			}
+			release = SAS
+			hidden_effect = {
+				SAS = {
+					load_oob = "APA_sioux_decolonization"
+					create_country_leader = {
+						name = APA_decolonization_society
+						picture = "gfx/leaders/APA/APA_decolonization_society.png"
+						expire = "1.1.1.1"
+						ideology = jacobinism
+						traits = {
+						}
+					}
+					create_country_leader = {
+						name = APA_decolonization_society
+						picture = "gfx/leaders/APA/APA_decolonization_society.png"
+						expire = "1.1.1.1"
+						ideology = marxism_leninism
+						traits = {
+						}
+					}
+					create_country_leader = {
+						name = APA_decolonization_society
+						picture = "gfx/leaders/APA/APA_decolonization_society.png"
+						expire = "1.1.1.1"
+						ideology = left_anarchist
+						traits = {
+						}
+					}
+					create_country_leader = {
+						name = APA_decolonization_society
+						picture = "gfx/leaders/APA/APA_decolonization_society.png"
+						expire = "1.1.1.1"
+						ideology = neo_socialism_socdem
+						traits = {
+						}
+					}
+				}
+			}
+			puppet = SAS
+			add_political_power = 50
+			add_war_support = 0.03
+			add_stability = -0.03
+		}
+	}
+	APA_release_texas = {
+		icon = generic_political_rally
+		allowed = {
+			original_tag = APA
+		}
+		visible = {
+			has_completed_focus = APA_decolonization
+		}
+		available = {
+			has_completed_focus = APA_decolonization
+			hidden_trigger = {
+				962 = {
+					is_fully_controlled_by = APA
+				}
+				976 = {
+					is_fully_controlled_by = APA
+				}
+				969 = {
+					is_fully_controlled_by = APA
+				}
+				958 = {
+					is_fully_controlled_by = APA
+				}
+				977 = {
+					is_fully_controlled_by = APA
+				}
+				974 = {
+					is_fully_controlled_by = APA
+				}
+				959 = {
+					is_fully_controlled_by = APA
+				}
+				375 = {
+					is_fully_controlled_by = APA
+				}
+				975 = {
+					is_fully_controlled_by = APA
+				}
+				972 = {
+					is_fully_controlled_by = APA
+				}
+				968 = {
+					is_fully_controlled_by = APA
+				}
+				965 = {
+					is_fully_controlled_by = APA
+				}
+				964 = {
+					is_fully_controlled_by = APA
+				}
+				963 = {
+					is_fully_controlled_by = APA
+				}
+				970 = {
+					is_fully_controlled_by = APA
+				}
+				967 = {
+					is_fully_controlled_by = APA
+				}
+				956 = {
+					is_fully_controlled_by = APA
+				}
+				957 = {
+					is_fully_controlled_by = APA
+				}
+				966 = {
+					is_fully_controlled_by = APA
+				}
+				973 = {
+					is_fully_controlled_by = APA
+				}
+				961 = {
+					is_fully_controlled_by = APA
+				}
+				971 = {
+					is_fully_controlled_by = APA
+				}
+				960 = {
+					is_fully_controlled_by = APA
+				}
+			}
+		}
+		ai_will_do = {
+			base = 2
+		}
+		cost = 5
+		days_remove = 14
+		fire_only_once = yes
+		cancel_if_not_visible = yes
+		modifier = {
+		}
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: decision APA_release_texas complete_effect"
+		}
+		remove_effect = {
+			log = "[GetDateText]: [Root.GetName]: decision APA_release_texas remove_effect"
+			hidden_effect = {
+				TAS = {
+					add_state_core = 962
+					add_state_core = 976
+					add_state_core = 969
+					add_state_core = 958
+					add_state_core = 977
+					add_state_core = 974
+					add_state_core = 959
+					add_state_core = 975
+					add_state_core = 972
+					add_state_core = 968
+					add_state_core = 965
+					add_state_core = 972
+					add_state_core = 968
+					add_state_core = 965
+					add_state_core = 964
+					add_state_core = 963
+					add_state_core = 970
+					add_state_core = 967
+					add_state_core = 956
+					add_state_core = 957
+					add_state_core = 375
+					add_state_core = 966
+					add_state_core = 973
+					add_state_core = 961
+					add_state_core = 971
+					add_state_core = 960
+				}
+			}
+			release = TAS
+			hidden_effect = {
+				TAS = {
+					load_oob = "APA_texas_decolonization"
+					create_country_leader = {
+						name = APA_decolonization_society
+						picture = "gfx/leaders/APA/APA_decolonization_society.png"
+						expire = "1.1.1.1"
+						ideology = jacobinism
+						traits = {
+						}
+					}
+					create_country_leader = {
+						name = APA_decolonization_society
+						picture = "gfx/leaders/APA/APA_decolonization_society.png"
+						expire = "1.1.1.1"
+						ideology = marxism_leninism
+						traits = {
+						}
+					}
+					create_country_leader = {
+						name = APA_decolonization_society
+						picture = "gfx/leaders/APA/APA_decolonization_society.png"
+						expire = "1.1.1.1"
+						ideology = left_anarchist
+						traits = {
+						}
+					}
+					create_country_leader = {
+						name = APA_decolonization_society
+						picture = "gfx/leaders/APA/APA_decolonization_society.png"
+						expire = "1.1.1.1"
+						ideology = neo_socialism_socdem
+						traits = {
+						}
+					}
+				}
+			}
+			puppet = TAS
+			add_political_power = 50
+			add_war_support = 0.03
+			add_stability = -0.03
+		}
+	}
+	APA_release_iroquois = {
+		icon = generic_political_rally
+		allowed = {
+			original_tag = APA
+		}
+		visible = {
+			has_completed_focus = APA_decolonization
+		}
+		available = {
+			has_completed_focus = APA_decolonization
+			hidden_trigger = {
+				1117 = {
+					is_fully_controlled_by = APA
+				}
+				1258 = {
+					is_fully_controlled_by = APA
+				}
+				1118 = {
+					is_fully_controlled_by = APA
+				}
+			}
+		}
+		ai_will_do = {
+			base = 2
+		}
+		cost = 5
+		days_remove = 14
+		fire_only_once = yes
+		cancel_if_not_visible = yes
+		modifier = {
+		}
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: decision APA_release_iroquois complete_effect"
+		}
+		remove_effect = {
+			log = "[GetDateText]: [Root.GetName]: decision APA_release_iroquois remove_effect"
+			hidden_effect = {
+				IAS = {
+					add_state_core = 1118
+					add_state_core = 1258
+					add_state_core = 1117
+				}
+			}
+			release = IAS
+			hidden_effect = {
+				IAS = {
+					load_oob = "APA_iroquois_decolonization"
+					create_country_leader = {
+						name = APA_decolonization_society
+						picture = "gfx/leaders/APA/APA_decolonization_society.png"
+						expire = "1.1.1.1"
+						ideology = jacobinism
+						traits = {
+						}
+					}
+					create_country_leader = {
+						name = APA_decolonization_society
+						picture = "gfx/leaders/APA/APA_decolonization_society.png"
+						expire = "1.1.1.1"
+						ideology = marxism_leninism
+						traits = {
+						}
+					}
+					create_country_leader = {
+						name = APA_decolonization_society
+						picture = "gfx/leaders/APA/APA_decolonization_society.png"
+						expire = "1.1.1.1"
+						ideology = left_anarchist
+						traits = {
+						}
+					}
+					create_country_leader = {
+						name = APA_decolonization_society
+						picture = "gfx/leaders/APA/APA_decolonization_society.png"
+						expire = "1.1.1.1"
+						ideology = neo_socialism_socdem
+						traits = {
+						}
+					}
+				}
+			}
+			puppet = IAS
+			add_political_power = 50
+			add_war_support = 0.03
+			add_stability = -0.03
+		}
+	}
+	APA_release_sequoyah = {
+		icon = generic_political_rally
+		allowed = {
+			original_tag = APA
+		}
+		visible = {
+			has_completed_focus = APA_decolonization
+		}
+		available = {
+			has_completed_focus = APA_decolonization
+			1242 = {
+				is_fully_controlled_by = APA
+			}
+			1241 = {
+				is_fully_controlled_by = APA
+			}
+			374 = {
+				is_fully_controlled_by = APA
+			}
+			1236 = {
+				is_fully_controlled_by = APA
+			}
+		}
+		ai_will_do = {
+			base = 2
+		}
+		cost = 5
+		days_remove = 14
+		fire_only_once = yes
+		cancel_if_not_visible = yes
+		modifier = {
+		}
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: decision APA_release_sequoyah complete_effect"
+		}
+		remove_effect = {
+			log = "[GetDateText]: [Root.GetName]: decision APA_release_sequoyah remove_effect"
+			hidden_effect = {
+				SQR = {
+					add_state_core = 1242
+					add_state_core = 1241
+					add_state_core = 374
+					add_state_core = 1236
+				}
+			}
+			release = SQR
+			hidden_effect = {
+				SQR = {
+					load_oob = "APA_sequoyah_decolonization"
+					create_country_leader = {
+						name = APA_decolonization_society
+						picture = "gfx/leaders/APA/APA_decolonization_society.png"
+						expire = "1.1.1.1"
+						ideology = jacobinism
+						traits = {
+						}
+					}
+					create_country_leader = {
+						name = APA_decolonization_society
+						picture = "gfx/leaders/APA/APA_decolonization_society.png"
+						expire = "1.1.1.1"
+						ideology = marxism_leninism
+						traits = {
+						}
+					}
+					create_country_leader = {
+						name = APA_decolonization_society
+						picture = "gfx/leaders/APA/APA_decolonization_society.png"
+						expire = "1.1.1.1"
+						ideology = left_anarchist
+						traits = {
+						}
+					}
+					create_country_leader = {
+						name = APA_decolonization_society
+						picture = "gfx/leaders/APA/APA_decolonization_society.png"
+						expire = "1.1.1.1"
+						ideology = neo_socialism_socdem
+						traits = {
+						}
+					}
+				}
+			}
+			puppet = SQR
+			add_political_power = 50
+			add_war_support = 0.03
+			add_stability = -0.03
+		}
+	}
+	APA_release_dakota = {
+		icon = generic_political_rally
+		allowed = {
+			original_tag = APA
+		}
+		visible = {
+			has_completed_focus = APA_decolonization
+		}
+		available = {
+			has_completed_focus = APA_decolonization
+			hidden_trigger = {
+				1239 = {
+					is_fully_controlled_by = APA
+				}
+				389 = {
+					is_fully_controlled_by = APA
+				}
+				1175 = {
+					is_fully_controlled_by = APA
+				}
+			}
+		}
+		ai_will_do = {
+			base = 2
+		}
+		cost = 5
+		days_remove = 14
+		fire_only_once = yes
+		cancel_if_not_visible = yes
+		modifier = {
+		}
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: decision APA_release_dakota complete_effect"
+		}
+		remove_effect = {
+			log = "[GetDateText]: [Root.GetName]: decision APA_release_dakota remove_effect"
+			hidden_effect = {
+				DAS = {
+					add_state_core = 1175
+					add_state_core = 389
+					add_state_core = 1239
+				}
+			}
+			release = DAS
+			hidden_effect = {
+				DAS = {
+					load_oob = "APA_dakota_decolonization"
+					create_country_leader = {
+						name = "Leonard Peltier"
+						picture = "gfx/leaders/APA/DAS_Leonard_Peltier.png"
+						expire = "1.1.1.1"
+						ideology = jacobinism
+						traits = {
+						}
+					}
+					create_country_leader = {
+						name = "Leonard Peltier"
+						picture = "gfx/leaders/APA/DAS_Leonard_Peltier.png"
+						expire = "1.1.1.1"
+						ideology = marxism_leninism
+						traits = {
+						}
+					}
+					create_country_leader = {
+						name = "Leonard Peltier"
+						picture = "gfx/leaders/APA/DAS_Leonard_Peltier.png"
+						expire = "1.1.1.1"
+						ideology = left_anarchist
+						traits = {
+						}
+					}
+					create_country_leader = {
+						name = "Leonard Peltier"
+						picture = "gfx/leaders/APA/DAS_Leonard_Peltier.png"
+						expire = "1.1.1.1"
+						ideology = neo_socialism_socdem
+						traits = {
+						}
+					}
+				}
+			}
+			puppet = DAS
+			add_political_power = 50
+			add_war_support = 0.03
+			add_stability = -0.03
+		}
+	}
+	APA_release_navajo = {
+		icon = generic_political_rally
+		allowed = {
+			original_tag = APA
+		}
+		visible = {
+			has_completed_focus = APA_decolonization
+		}
+		available = {
+			has_completed_focus = APA_decolonization
+			hidden_trigger = {
+				990 = {
+					is_fully_controlled_by = APA
+				}
+				989 = {
+					is_fully_controlled_by = APA
+				}
+				988 = {
+					is_fully_controlled_by = APA
+				}
+				986 = {
+					is_fully_controlled_by = APA
+				}
+			}
+		}
+		ai_will_do = {
+			base = 2
+		}
+		cost = 5
+		days_remove = 14
+		fire_only_once = yes
+		cancel_if_not_visible = yes
+		modifier = {
+		}
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: decision APA_release_navajo complete_effect"
+		}
+		remove_effect = {
+			log = "[GetDateText]: [Root.GetName]: decision APA_release_navajo remove_effect"
+			hidden_effect = {
+				NAS = {
+					add_state_core = 990
+					add_state_core = 989
+					add_state_core = 988
+					add_state_core = 986
+				}
+			}
+			release = NAS
+			hidden_effect = {
+				NAS = {
+					load_oob = "APA_navajo_decolonization"
+					create_country_leader = {
+						name = APA_decolonization_society
+						picture = "gfx/leaders/APA/APA_decolonization_society.png"
+						expire = "1.1.1.1"
+						ideology = jacobinism
+						traits = {
+						}
+					}
+					create_country_leader = {
+						name = APA_decolonization_society
+						picture = "gfx/leaders/APA/APA_decolonization_society.png"
+						expire = "1.1.1.1"
+						ideology = marxism_leninism
+						traits = {
+						}
+					}
+					create_country_leader = {
+						name = APA_decolonization_society
+						picture = "gfx/leaders/APA/APA_decolonization_society.png"
+						expire = "1.1.1.1"
+						ideology = left_anarchist
+						traits = {
+						}
+					}
+					create_country_leader = {
+						name = APA_decolonization_society
+						picture = "gfx/leaders/APA/APA_decolonization_society.png"
+						expire = "1.1.1.1"
+						ideology = neo_socialism_socdem
+						traits = {
+						}
+					}
+				}
+			}
+			puppet = NAS
+			add_political_power = 50
+			add_war_support = 0.03
+			add_stability = -0.03
+		}
+	}
+	APA_release_chicano = {
+		icon = generic_political_rally
+		allowed = {
+			original_tag = APA
+		}
+		visible = {
+			has_completed_focus = APA_decolonization
+		}
+		available = {
+			has_completed_focus = APA_decolonization
+			hidden_trigger = {
+				991 = {
+					is_fully_controlled_by = APA
+				}
+				992 = {
+					is_fully_controlled_by = APA
+				}
+				985 = {
+					is_fully_controlled_by = APA
+				}
+				987 = {
+					is_fully_controlled_by = APA
+				}
+				377 = {
+					is_fully_controlled_by = APA
+				}
+				983 = {
+					is_fully_controlled_by = APA
+				}
+				839 = {
+					is_fully_controlled_by = APA
+				}
+				1240 = {
+					is_fully_controlled_by = APA
+				}
+				376 = {
+					is_fully_controlled_by = APA
+				}
+				1183 = {
+					is_fully_controlled_by = APA
+				}
+				1235 = {
+					is_fully_controlled_by = APA
+				}
+				1038 = {
+					is_fully_controlled_by = APA
+				}
+			}
+		}
+		ai_will_do = {
+			base = 2
+		}
+		cost = 5
+		days_remove = 14
+		fire_only_once = yes
+		cancel_if_not_visible = yes
+		modifier = {
+		}
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: decision APA_release_chicano complete_effect"
+		}
+		remove_effect = {
+			log = "[GetDateText]: [Root.GetName]: decision APA_release_chicano remove_effect"
+			hidden_effect = {
+				BRN = {
+					add_state_core = 991
+					add_state_core = 992
+					add_state_core = 985
+					add_state_core = 987
+					add_state_core = 377
+					add_state_core = 983
+					add_state_core = 839
+					add_state_core = 1240
+					add_state_core = 376
+					add_state_core = 1183
+					add_state_core = 1235
+					add_state_core = 1038
+					remove_state_core = 986
+					remove_state_core = 984
+					set_cosmetic_tag = BRN_ssr
+				}
+			}
+			release = BRN
+			hidden_effect = {
+				BRN = {
+					load_oob = "APA_chicano_decolonization"
+					create_country_leader = {
+						name = APA_decolonization_society
+						picture = "gfx/leaders/APA/APA_decolonization_society.png"
+						expire = "1.1.1.1"
+						ideology = jacobinism
+						traits = {
+						}
+					}
+					create_country_leader = {
+						name = APA_decolonization_society
+						picture = "gfx/leaders/APA/APA_decolonization_society.png"
+						expire = "1.1.1.1"
+						ideology = marxism_leninism
+						traits = {
+						}
+					}
+					create_country_leader = {
+						name = APA_decolonization_society
+						picture = "gfx/leaders/APA/APA_decolonization_society.png"
+						expire = "1.1.1.1"
+						ideology = left_anarchist
+						traits = {
+						}
+					}
+					create_country_leader = {
+						name = APA_decolonization_society
+						picture = "gfx/leaders/APA/APA_decolonization_society.png"
+						expire = "1.1.1.1"
+						ideology = neo_socialism_socdem
+						traits = {
+						}
+					}
+				}
+			}
+			puppet = BRN
+			add_political_power = 50
+			add_war_support = 0.03
+			add_stability = -0.03
+		}
+	}
+}
+
+APA_balance_of_power_category = {
+	APA_add_left_bop_debug_decision = {
+		#icon = generic_political_rally
+		allowed = {
+			original_tag = APA
+		}
+		visible = {
+			is_debug = yes
+			is_ai = no
+			has_power_balance = {
+				id = APA_power_balance
+			}
+		}
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: decision APA_add_left_bop_debug_decision complete_effect"
+			add_power_balance_value = {
+				id = APA_power_balance
+				value = -0.35
+			}
+		}
+	}
+	APA_add_right_bop_debug_decision = {
+		#icon = generic_political_rally
+		allowed = {
+			original_tag = APA
+		}
+		visible = {
+			is_debug = yes
+			is_ai = no
+			has_power_balance = {
+				id = APA_power_balance
+			}
+		}
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: decision APA_add_right_bop_debug_decision complete_effect"
+			add_power_balance_value = {
+				id = APA_power_balance
+				value = 0.35
+			}
+		}
+	}
+	APA_centralize_power_decision = {
+		icon = generic_political_rally
+		cost = 25
+		days_remove = 70
+		days_re_enable = 70
+		allowed = {
+			original_tag = APA
+		}
+		visible = {
+			has_power_balance = {
+				id = APA_power_balance
+			}
+			has_completed_focus = APA_build_a_bureaucracy
+		}
+		available = {
+			NOT = {
+				has_country_flag = political_action_flag
+			}
+		}
+		modifier = {
+			political_power_gain = -0.15
+			power_balance_daily = 0.003
+		}
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: decision APA_centralize_power_decision complete_effect"
+			hidden_effect = {
+				set_country_flag = {
+					flag = political_action_flag
+					days = 70
+					value = 1
+				}
+			}
+		}
+		remove_effect = {
+			log = "[GetDateText]: [Root.GetName]: decision APA_centralize_power_decision remove_effect"
+			set_temp_variable = {
+				var = APA_support_octoberist_var_temp
+				value = 0.025
+			}
+			APA_add_support_octoberist = yes
+			set_temp_variable = {
+				var = APA_support_jacobin_var_temp
+				value = 0.025
+			}
+			APA_add_support_jacobin = yes
+		}
+	}
+	APA_decentralize_power_decision = {
+		icon = generic_political_rally
+		cost = 25
+		days_remove = 70
+		days_re_enable = 70
+		allowed = {
+			original_tag = APA
+		}
+		visible = {
+			has_power_balance = {
+				id = APA_power_balance
+			}
+			has_completed_focus = APA_build_a_bureaucracy
+		}
+		available = {
+			NOT = {
+				has_country_flag = political_action_flag
+			}
+		}
+		modifier = {
+			power_balance_daily = -0.003
+			stability_weekly = -0.002
+		}
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: decision APA_decentralize_power_decision complete_effect"
+			hidden_effect = {
+				set_country_flag = {
+					flag = political_action_flag
+					days = 70
+					value = 1
+				}
+			}
+		}
+		remove_effect = {
+			log = "[GetDateText]: [Root.GetName]: decision APA_decentralize_power_decision remove_effect"
+			set_temp_variable = {
+				var = APA_support_anarchist_var_temp
+				value = 0.025
+			}
+			APA_add_support_anarchist = yes
+			set_temp_variable = {
+				var = APA_support_neosocialist_var_temp
+				value = 0.025
+			}
+			APA_add_support_neosocialist = yes
+		}
+	}
+}
+
+APA_american_workers_congress_category = {
+	APA_rally_leftist_unity = {
+		icon = generic_political_rally
+		cost = 25
+		days_remove = 35
+		days_re_enable = 35
+		allowed = {
+			original_tag = APA
+		}
+		visible = {
+			has_completed_focus = APA_form_cabinet
+		}
+		available = {
+		}
+		modifier = {
+			political_power_gain = -0.2
+		}
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: decision APA_rally_leftist_unity complete_effect"
+			add_war_support = -0.025
+		}
+		remove_effect = {
+			log = "[GetDateText]: [Root.GetName]: decision APA_rally_leftist_unity remove_effect"
+			set_temp_variable = {
+				var = APA_leftist_unity_var_temp
+				value = 0.1
+			}
+			APA_add_leftist_unity = yes
+		}
+	}
+	APA_anarchist_uprising_mission = {
+		icon = APA_anarchist
+		priority = 2
+		fire_only_once = no
+		is_good = no
+		days_mission_timeout = 350
+		allowed = {
+			tag = APA
+		}
+		activation = {
+			always = no
+		}
+		visible = {
+		}
+		available = {
+			OR = {
+				set_temp_variable = {
+					var = APA_libsoc_popularity_trigger_temp
+					value = 0.1
+				}
+				APA_has_anarchist_popularity_less_than = yes
+				set_temp_variable = {
+					var = APA_support_anarchist_var_temp
+					value = 0.2
+				}
+				APA_has_anarchist_support_greater_than_or_equals = yes
+			}
+		}
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: mission APA_anarchist_uprising_mission complete_effect"
+			country_event = {
+				#Good
+				id = apla.62
+			}
+		}
+		timeout_effect = {
+			log = "[GetDateText]: [Root.GetName]: mission APA_anarchist_uprising_mission timeout_effect"
+			country_event = {
+				#Bad
+				id = apla.61
+			}
+		}
+	}
+	APA_lobby_for_jacobins_decision = {
+		icon = APA_jacobin
+		allowed = {
+			original_tag = APA
+		}
+		visible = {
+			has_country_flag = APA_jacobin_enable_flag
+		}
+		available = {
+			totalitarian_socialist < 0.85
+			NOT = {
+				has_country_flag = political_action_flag
+			}
+		}
+		ai_will_do = {
+			base = 2
+		}
+		cost = 25
+		days_remove = 70
+		days_re_enable = 70
+		modifier = {
+			totalitarian_socialist_drift = 0.08
+		}
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: decision APA_lobby_for_jacobins_decision complete_effect"
+			hidden_effect = {
+				set_country_flag = {
+					flag = political_action_flag
+					days = 70
+					value = 1
+				}
+			}
+		}
+		remove_effect = {
+			log = "[GetDateText]: [Root.GetName]: decision APA_lobby_for_jacobins_decision remove_effect"
+			set_temp_variable = {
+				var = var:totalitarian_socialist_popularity_var_temp
+				value = 0.01
+			}
+			add_totalitarian_socialist_popularity = yes
+			set_temp_variable = {
+				var = APA_support_jacobin_var_temp
+				value = 0.05
+			}
+			APA_add_support_jacobin = yes
+			add_power_balance_value = {
+				id = APA_power_balance
+				value = 0.05
+			}
+		}
+	}
+	APA_lobby_for_octoberists_decision = {
+		icon = APA_octoberist
+		allowed = {
+			original_tag = APA
+		}
+		visible = {
+			has_country_flag = APA_octoberist_enable_flag
+		}
+		available = {
+			communist < 0.85
+			NOT = {
+				has_country_flag = political_action_flag
+			}
+		}
+		ai_will_do = {
+			base = 2
+		}
+		cost = 25
+		days_remove = 70
+		days_re_enable = 70
+		modifier = {
+			communist_drift = 0.08
+		}
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: decision APA_lobby_for_octoberists_decision complete_effect"
+			hidden_effect = {
+				set_country_flag = {
+					flag = political_action_flag
+					days = 70
+					value = 1
+				}
+			}
+		}
+		remove_effect = {
+			log = "[GetDateText]: [Root.GetName]: decision APA_lobby_for_octoberists_decision remove_effect"
+			set_temp_variable = {
+				var = var:communist_popularity_var_temp
+				value = 0.01
+			}
+			add_communist_popularity = yes
+			set_temp_variable = {
+				var = APA_support_octoberist_var_temp
+				value = 0.05
+			}
+			APA_add_support_octoberist = yes
+		}
+	}
+	APA_lobby_for_anarchists_decision = {
+		icon = APA_anarchist
+		allowed = {
+			original_tag = APA
+		}
+		visible = {
+			has_country_flag = APA_anarchist_enable_flag
+		}
+		available = {
+			libertarian_socialist < 0.85
+			NOT = {
+				has_country_flag = political_action_flag
+			}
+		}
+		ai_will_do = {
+			base = 2
+		}
+		cost = 25
+		days_remove = 70
+		days_re_enable = 70
+		modifier = {
+			libertarian_socialist_drift = 0.08
+		}
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: decision APA_lobby_for_anarchists_decision complete_effect"
+			hidden_effect = {
+				set_country_flag = {
+					flag = political_action_flag
+					days = 70
+					value = 1
+				}
+			}
+		}
+		remove_effect = {
+			log = "[GetDateText]: [Root.GetName]: decision APA_lobby_for_anarchists_decision remove_effect"
+			set_temp_variable = {
+				var = var:libertarian_socialist_popularity_var_temp
+				value = 0.01
+			}
+			add_libertarian_socialist_popularity = yes
+			set_temp_variable = {
+				var = APA_support_anarchist_var_temp
+				value = 0.05
+			}
+			APA_add_support_anarchist = yes
+			add_power_balance_value = {
+				id = APA_power_balance
+				value = -0.05
+			}
+		}
+	}
+	APA_lobby_for_neosocialists_decision = {
+		icon = APA_neosocialist
+		allowed = {
+			original_tag = APA
+		}
+		visible = {
+			has_country_flag = APA_neosocialist_enable_flag
+		}
+		available = {
+			social_democrat < 0.85
+			NOT = {
+				has_country_flag = political_action_flag
+			}
+		}
+		ai_will_do = {
+			base = 2
+		}
+		cost = 25
+		days_remove = 70
+		days_re_enable = 70
+		modifier = {
+			social_democrat_drift = 0.08
+		}
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: decision APA_lobby_for_neosocialists_decision complete_effect"
+			hidden_effect = {
+				set_country_flag = {
+					flag = political_action_flag
+					days = 70
+					value = 1
+				}
+			}
+		}
+		remove_effect = {
+			log = "[GetDateText]: [Root.GetName]: decision APA_lobby_for_neosocialists_decision remove_effect"
+			set_temp_variable = {
+				var = var:social_democrat_popularity_var_temp
+				value = 0.01
+			}
+			add_social_democrat_popularity = yes
+			set_temp_variable = {
+				var = APA_support_neosocialist_var_temp
+				value = 0.05
+			}
+			APA_add_support_neosocialist = yes
+		}
+	}
+	APA_crack_down_on_reactionaries_decision = {
+		icon = generic_arrest
+		allowed = {
+			original_tag = APA
+		}
+		visible = {
+			has_completed_focus = APA_establish_the_agency_of_socialist_security
+		}
+		available = {
+			NOT = {
+				has_idea = APA_lower_popular_support_idea
+			}
+			authoritarian_democrat > 0.05
+		}
+		ai_will_do = {
+			base = 2
+		}
+		cost = 25
+		days_remove = 70
+		days_re_enable = 70
+		modifier = {
+			authoritarian_democrat_drift = -0.1
+		}
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: decision APA_crack_down_on_reactionaries_decision complete_effect"
+			add_war_support = -0.03
+			set_temp_variable = {
+				var = APA_popular_support_var_temp
+				value = -0.025
+			}
+			APA_add_popular_support = yes
+		}
+		remove_effect = {
+			log = "[GetDateText]: [Root.GetName]: decision APA_crack_down_on_reactionaries_decision remove_effect"
+			set_temp_variable = {
+				var = var:authoritarian_democrat_popularity_var_temp
+				value = -0.01
+			}
+			add_authoritarian_democrat_popularity = yes
+		}
+	}
+	APA_hold_a_la_riva_speech_decision = {
+		icon = generic_speech
+		allowed = {
+			original_tag = APA
+		}
+		visible = {
+			has_war = yes
+			has_completed_focus = APA_the_glory_of_october
+			has_government = communist
+		}
+		available = {
+			NOT = {
+				command_power < 10
+			}
+		}
+		ai_will_do = {
+			base = 5
+		}
+		cost = 25
+		days_remove = 35
+		days_re_enable = 7
+		cancel_if_not_visible = yes
+		modifier = {
+			army_defence_factor = 0.1
+			army_attack_factor = 0.1
+		}
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: decision APA_hold_a_la_riva_speech_decision complete_effect"
+			add_command_power = -10
+		}
+	}
+	APA_pardon_non_violent_criminals = {
+		icon = APA_anarchist
+		fire_only_once = yes
+		cost = 100
+		days_remove = 35
+		allowed = {
+			original_tag = APA
+		}
+		visible = {
+			has_completed_focus = APA_legalize_victimless_crimes
+		}
+		available = {
+			set_temp_variable = {
+				var = APA_support_congress_total_trigger_var_temp
+				value = 0.6
+			}
+			APA_has_congress_support_greater_than = yes
+			NOT = {
+				has_idea = APA_lower_popular_support_idea
+			}
+		}
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: decision APA_pardon_non_violent_criminals complete_effect"
+			set_temp_variable = {
+				var = APA_support_jacobin_var_temp
+				value = -0.1
+			}
+			APA_add_support_jacobin = yes
+			set_temp_variable = {
+				var = APA_leftist_unity_var_temp
+				value = -0.1
+			}
+			APA_add_leftist_unity = yes
+		}
+		remove_effect = {
+			log = "[GetDateText]: [Root.GetName]: decision APA_pardon_non_violent_criminals remove_effect"
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = APA_american_workers_congress_dummy_idea
+					add_idea = APA_pardon_non_violent_criminals_idea
+				}
+			}
+			hidden_effect = {
+				add_to_variable = {
+					var = APA_politics_poverty_development_monthly_dynamic_var
+					value = 0.01
+				}
+				add_to_variable = {
+					var = APA_politics_society_development_monthly_dynamic_var
+					value = 0.01
+				}
+				add_to_variable = {
+					var = APA_politics_war_stability_factor_dynamic_var
+					value = 0.1
+				}
+			}
+		}
+	}
+	APA_set_up_revolutionary_tribunals = {
+		icon = APA_anarchist
+		fire_only_once = yes
+		cost = 100
+		days_remove = 35
+		allowed = {
+			original_tag = APA
+		}
+		visible = {
+			has_completed_focus = APA_revolutionary_justice
+		}
+		available = {
+			set_temp_variable = {
+				var = APA_support_congress_total_trigger_var_temp
+				value = 0.5
+			}
+			APA_has_congress_support_greater_than = yes
+			NOT = {
+				has_idea = APA_lower_popular_support_idea
+			}
+		}
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: decision APA_set_up_revolutionary_tribunals complete_effect"
+			set_temp_variable = {
+				var = APA_support_neosocialist_var_temp
+				value = -0.1
+			}
+			APA_add_support_neosocialist = yes
+			set_temp_variable = {
+				var = APA_leftist_unity_var_temp
+				value = -0.1
+			}
+			APA_add_leftist_unity = yes
+		}
+		remove_effect = {
+			log = "[GetDateText]: [Root.GetName]: decision APA_set_up_revolutionary_tribunals remove_effect"
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = APA_american_workers_congress_dummy_idea
+					add_idea = APA_revolutionary_tribunals_idea
+				}
+			}
+			hidden_effect = {
+				add_to_variable = {
+					var = APA_politics_society_development_monthly_dynamic_var
+					value = 0.02
+				}
+				add_to_variable = {
+					var = APA_politics_stability_weekly_dynamic_var
+					value = -0.001
+				}
+			}
+		}
+	}
+	APA_organize_community_self_defense = {
+		icon = APA_anarchist
+		fire_only_once = yes
+		cost = 75
+		days_remove = 140
+		allowed = {
+			original_tag = APA
+		}
+		visible = {
+			has_completed_focus = APA_the_proletariat_shall_not_be_disarmed
+		}
+		modifier = {
+			consumer_goods_factor = 0.1
+		}
+		available = {
+			set_temp_variable = {
+				var = APA_support_congress_total_trigger_var_temp
+				value = 0.4
+			}
+			APA_has_congress_support_greater_than = yes
+			NOT = {
+				has_idea = APA_lower_popular_support_idea
+			}
+		}
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: decision APA_organize_community_self_defense complete_effect"
+		}
+		remove_effect = {
+			log = "[GetDateText]: [Root.GetName]: decision APA_organize_community_self_defense remove_effect"
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = APA_american_liberation_army_dummy_idea
+					add_idea = APA_organize_community_self_defense_idea
+				}
+			}
+			hidden_effect = {
+				add_to_variable = {
+					var = APA_military_army_defence_factor_dynamic_var
+					value = 0.15
+				}
+			}
+		}
+	}
+	APA_encourage_social_reproduction_units = {
+		icon = APA_anarchist
+		fire_only_once = yes
+		cost = 150
+		days_remove = 140
+		allowed = {
+			original_tag = APA
+		}
+		visible = {
+			has_completed_focus = APA_revolutionalize_the_family_unit
+		}
+		modifier = {
+		}
+		available = {
+			set_temp_variable = {
+				var = APA_support_congress_total_trigger_var_temp
+				value = 0.75
+			}
+			APA_has_congress_support_greater_than = yes
+			NOT = {
+				has_idea = APA_lower_popular_support_idea
+			}
+		}
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: decision APA_encourage_social_reproduction_units complete_effect"
+			set_temp_variable = {
+				var = APA_support_jacobin_var_temp
+				value = -0.1
+			}
+			APA_add_support_jacobin = yes
+			set_temp_variable = {
+				var = APA_leftist_unity_var_temp
+				value = -0.1
+			}
+			APA_add_leftist_unity = yes
+		}
+		remove_effect = {
+			log = "[GetDateText]: [Root.GetName]: decision APA_encourage_social_reproduction_units remove_effect"
+			set_temp_variable = {
+				var = society_development_var_temp
+				value = 0.15
+			}
+			add_society_development = yes
+			set_temp_variable = {
+				var = recore_pp_var_temp
+				value = 10
+			}
+			add_coring_cost = yes
+		}
+	}
+	APA_ecological_justice = {
+		icon = APA_anarchist
+		fire_only_once = yes
+		cost = 100
+		days_remove = 140
+		allowed = {
+			original_tag = APA
+		}
+		visible = {
+			has_completed_focus = APA_critical_education
+		}
+		modifier = {
+		}
+		available = {
+			set_temp_variable = {
+				var = APA_support_congress_total_trigger_var_temp
+				value = 0.75
+			}
+			APA_has_congress_support_greater_than = yes
+			NOT = {
+				has_idea = APA_lower_popular_support_idea
+			}
+		}
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: decision APA_ecological_justice complete_effect"
+			set_temp_variable = {
+				var = var:social_liberal_popularity_var_temp
+				value = -0.05
+			}
+			add_social_liberal_popularity = yes
+		}
+		remove_effect = {
+			log = "[GetDateText]: [Root.GetName]: decision APA_ecological_justice remove_effect"
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = APA_american_workers_congress_dummy_idea
+					add_idea = APA_degrowth
+				}
+			}
+			hidden_effect = {
+				add_to_variable = {
+					var = APA_politics_poverty_development_monthly_dynamic_var
+					value = 0.02
+				}
+				add_to_variable = {
+					var = APA_politics_industrial_development_monthly_dynamic_var
+					value = -0.01
+				}
+				add_to_variable = {
+					var = APA_politics_consumer_goods_factor_dynamic_var
+					value = -0.05
+				}
+				add_to_variable = {
+					var = APA_politics_production_factory_max_efficiency_factor_dynamic_var
+					value = -0.1
+				}
+			}
+		}
+	}
+	APA_animal_liberation_education = {
+		icon = APA_anarchist
+		fire_only_once = yes
+		cost = 100
+		days_remove = 140
+		allowed = {
+			original_tag = APA
+		}
+		modifier = {
+			political_power_gain = -0.1
+		}
+		visible = {
+			has_completed_focus = APA_critical_education
+		}
+		modifier = {
+		}
+		available = {
+			set_temp_variable = {
+				var = APA_support_congress_total_trigger_var_temp
+				value = 0.75
+			}
+			APA_has_congress_support_greater_than = yes
+			NOT = {
+				has_idea = APA_lower_popular_support_idea
+			}
+		}
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: decision APA_animal_liberation_education complete_effect"
+			set_temp_variable = {
+				var = APA_support_jacobin_var_temp
+				value = -0.05
+			}
+			APA_add_support_jacobin = yes
+			set_temp_variable = {
+				var = APA_leftist_unity_var_temp
+				value = -0.05
+			}
+			APA_add_leftist_unity = yes
+		}
+		remove_effect = {
+			log = "[GetDateText]: [Root.GetName]: decision APA_animal_liberation_education remove_effect"
+			set_temp_variable = {
+				var = society_development_var_temp
+				value = 0.05
+			}
+			add_society_development = yes
+		}
+	}
+	APA_critical_curriculum = {
+		icon = APA_anarchist
+		fire_only_once = yes
+		cost = 100
+		days_remove = 140
+		allowed = {
+			original_tag = APA
+		}
+		modifier = {
+			political_power_gain = -0.1
+		}
+		visible = {
+			has_completed_focus = APA_critical_education
+		}
+		modifier = {
+		}
+		available = {
+			set_temp_variable = {
+				var = APA_support_congress_total_trigger_var_temp
+				value = 0.65
+			}
+			APA_has_congress_support_greater_than = yes
+			NOT = {
+				has_idea = APA_lower_popular_support_idea
+			}
+		}
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: decision APA_critical_curriculum complete_effect"
+		}
+		remove_effect = {
+			log = "[GetDateText]: [Root.GetName]: decision APA_critical_curriculum remove_effect"
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = APA_american_workers_congress_dummy_idea
+					add_idea = APA_critical_education_idea
+				}
+			}
+			hidden_effect = {
+				add_to_variable = {
+					var = APA_politics_academic_development_monthly_dynamic_var
+					value = 0.03
+				}
+				add_to_variable = {
+					var = APA_politics_research_speed_factor_dynamic_var
+					value = 0.05
+				}
+			}
+		}
+	}
+	APA_encourage_critical_self_governance_units_decision = {
+		icon = APA_anarchist
+		fire_only_once = yes
+		cost = 100
+		days_remove = 140
+		allowed = {
+			original_tag = APA
+		}
+		modifier = {
+			political_power_gain = -0.1
+		}
+		visible = {
+			has_completed_focus = APA_encourage_social_self_governance
+			has_completed_focus = APA_no_gods_no_masters
+		}
+		available = {
+			set_temp_variable = {
+				var = APA_support_congress_total_trigger_var_temp
+				value = 0.65
+			}
+			APA_has_congress_support_greater_than = yes
+			NOT = {
+				has_idea = APA_lower_popular_support_idea
+			}
+		}
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: decision APA_encourage_critical_self_governance_units_decision complete_effect"
+			set_temp_variable = {
+				var = APA_revolution_progress_var_temp
+				value = 0.04
+			}
+			APA_add_revolution_progress = yes
+			set_temp_variable = {
+				var = APA_popular_support_var_temp
+				value = -0.05
+			}
+			APA_add_popular_support = yes
+		}
+		remove_effect = {
+			log = "[GetDateText]: [Root.GetName]: decision APA_encourage_critical_self_governance_units_decision remove_effect"
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = APA_american_workers_congress_dummy_idea
+					add_idea = APA_encourage_critical_self_governance_units_idea
+				}
+			}
+			hidden_effect = {
+				add_to_variable = {
+					var = APA_politics_production_factory_efficiency_gain_factor_dynamic_var
+					value = 0.05
+				}
+				add_to_variable = {
+					var = APA_politics_production_factory_max_efficiency_factor_dynamic_var
+					value = 0.025
+				}
+			}
+		}
+	}
+	APA_strengthen_the_agency_of_socialist_security_decision = {
+		icon = APA_jacobin
+		fire_only_once = yes
+		cost = 25
+		days_remove = 35
+		allowed = {
+			original_tag = APA
+		}
+		visible = {
+			has_completed_focus = APA_information_defense_act
+		}
+		available = {
+			set_temp_variable = {
+				var = APA_support_congress_total_trigger_var_temp
+				value = 0.5
+			}
+			APA_has_congress_support_greater_than = yes
+			NOT = {
+				has_idea = APA_lower_popular_support_idea
+			}
+		}
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: decision APA_strengthen_the_agency_of_socialist_security_decision complete_effect"
+			set_temp_variable = {
+				var = APA_popular_support_var_temp
+				value = -0.05
+			}
+			APA_add_popular_support = yes
+			set_temp_variable = {
+				var = APA_support_anarchist_var_temp
+				value = -0.1
+			}
+			APA_add_support_anarchist = yes
+		}
+		remove_effect = {
+			log = "[GetDateText]: [Root.GetName]: decision APA_strengthen_the_agency_of_socialist_security_decision remove_effect"
+			APA_reactionary_resistance_decrease = yes
+		}
+	}
+	APA_establish_a_state_newspaper_decision = {
+		icon = GFX_decision_APA_octoberist
+		fire_only_once = yes
+		cost = 50
+		days_remove = 35
+		allowed = {
+			original_tag = APA
+		}
+		visible = {
+			OR = {
+				has_completed_focus = APA_establish_a_peoples_democratic_dictatorship
+				has_completed_focus = APA_idolize_la_riva
+			}
+		}
+		available = {
+			set_temp_variable = {
+				var = APA_support_congress_total_trigger_var_temp
+				value = 0.25
+			}
+			APA_has_congress_support_greater_than = yes
+		}
+		remove_effect = {
+			log = "[GetDateText]: [Root.GetName]: decision APA_establish_a_state_newspaper_decision remove_effect"
+			if = {
+				limit = {
+					has_government = totalitarian_socialist
+				}
+				effect_tooltip = {
+					effect_tooltip = {
+						swap_ideas = {
+							remove_idea = APA_american_workers_congress_dummy_idea
+							add_idea = APA_state_newspaper_jacobin_idea
+						}
+					}
+					set_temp_variable = {
+						var = APA_revolution_progress_var_temp
+						value = 0.02
+					}
+					APA_add_revolution_progress = yes
+					hidden_effect = {
+						add_to_variable = {
+							var = APA_politics_totalitarian_socialist_drift_dynamic_var
+							value = 0.02
+						}
+						add_to_variable = {
+							var = APA_politics_war_support_factor_dynamic_var
+							value = 0.05
+						}
+						add_to_variable = {
+							var = APA_politics_society_development_monthly_dynamic_var
+							value = 0.01
+						}
+					}
+				}
+			}
+			if = {
+				limit = {
+					has_government = communist
+				}
+				effect_tooltip = {
+					swap_ideas = {
+						remove_idea = APA_american_workers_congress_dummy_idea
+						add_idea = APA_state_newspaper_octoberist_idea
+					}
+				}
+				set_temp_variable = {
+					var = APA_revolution_progress_var_temp
+					value = 0.02
+				}
+				APA_add_revolution_progress = yes
+				hidden_effect = {
+					add_to_variable = {
+						var = APA_politics_communist_drift_dynamic_var
+						value = 0.02
+					}
+					add_to_variable = {
+						var = APA_politics_war_support_factor_dynamic_var
+						value = 0.05
+					}
+					add_to_variable = {
+						var = APA_politics_society_development_monthly_dynamic_var
+						value = 0.01
+					}
+				}
+			}
+		}
+	}
+	APA_crack_down_on_journalists_decision = {
+		icon = GFX_decision_APA_jacobin
+		fire_only_once = yes
+		days_remove = 35
+		allowed = {
+			original_tag = APA
+		}
+		visible = {
+			has_completed_focus = APA_establish_a_peoples_democratic_dictatorship
+		}
+		available = {
+			NOT = {
+				has_stability < 0
+			}
+			set_temp_variable = {
+				var = APA_support_congress_total_trigger_var_temp
+				value = 0.6
+			}
+			APA_has_congress_support_greater_than = yes
+		}
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: decision APA_crack_down_on_journalists_decision complete_effect"
+			set_temp_variable = {
+				var = APA_support_anarchist_var_temp
+				value = -0.05
+			}
+			APA_add_support_anarchist = yes
+			add_stability = -0.05
+		}
+		remove_effect = {
+			log = "[GetDateText]: [Root.GetName]: decision APA_crack_down_on_journalists_decision remove_effect"
+			add_war_support = 0.05
+			add_political_power = 50
+			custom_effect_tooltip = APA_arrest_independent_journalists_tt
+			set_temp_variable = {
+				var = APA_revolution_progress_var_temp
+				value = 0.02
+			}
+			APA_add_revolution_progress = yes
+			hidden_effect = {
+				set_country_flag = APA_cracked_down_on_journalists
+			}
+		}
+	}
+	APA_crack_down_on_independent_unions_decision = {
+		icon = GFX_decision_APA_jacobin
+		fire_only_once = yes
+		days_remove = 35
+		cost = 100
+		allowed = {
+			original_tag = APA
+		}
+		visible = {
+			has_completed_focus = APA_establish_a_peoples_democratic_dictatorship
+		}
+		available = {
+			set_temp_variable = {
+				var = APA_support_congress_total_trigger_var_temp
+				value = 0.6
+			}
+			APA_has_congress_support_greater_than = yes
+		}
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: decision APA_crack_down_on_independent_unions_decision complete_effect"
+			set_temp_variable = {
+				var = APA_support_anarchist_var_temp
+				value = -0.1
+			}
+			APA_add_support_anarchist = yes
+			set_temp_variable = {
+				var = APA_support_neosocialist_var_temp
+				value = -0.1
+			}
+			APA_add_support_neosocialist = yes
+			set_temp_variable = {
+				var = APA_leftist_unity_var_temp
+				value = -0.1
+			}
+			APA_add_leftist_unity = yes
+		}
+		remove_effect = {
+			log = "[GetDateText]: [Root.GetName]: decision APA_crack_down_on_independent_unions_decision remove_effect"
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = APA_american_workers_congress_dummy_idea
+					add_idea = APA_cracked_down_on_unions_idea
+				}
+			}
+			set_temp_variable = {
+				var = APA_popular_support_var_temp
+				value = -0.1
+			}
+			APA_add_popular_support = yes
+			set_temp_variable = {
+				var = var:totalitarian_socialist_popularity_var_temp
+				value = -0.05
+			}
+			add_totalitarian_socialist_popularity = yes
+			hidden_effect = {
+				add_to_variable = {
+					var = APA_politics_production_factory_max_efficiency_factor_dynamic_var
+					value = 0.1
+				}
+				add_to_variable = {
+					var = APA_politics_production_speed_buildings_factor_dynamic_var
+					value = 0.05
+				}
+				add_to_variable = {
+					var = APA_politics_production_factory_efficiency_gain_factor_dynamic_var
+					value = -0.075
+				}
+			}
+		}
+	}
+	APA_deal_with_the_dealers = {
+		icon = GFX_decision_APA_jacobin
+		fire_only_once = yes
+		days_remove = 140
+		cost = 100
+		allowed = {
+			original_tag = APA
+		}
+		visible = {
+			has_completed_focus = APA_war_on_cultural_capitalism
+		}
+		available = {
+			set_temp_variable = {
+				var = APA_support_congress_total_trigger_var_temp
+				value = 0.65
+			}
+			APA_has_congress_support_greater_than = yes
+		}
+		modifier = {
+			consumer_goods_factor = 0.05
+			war_support_weekly = 0.004
+		}
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: decision APA_deal_with_the_dealers complete_effect"
+			set_temp_variable = {
+				var = APA_support_anarchist_var_temp
+				value = -0.1
+			}
+			APA_add_support_anarchist = yes
+			set_temp_variable = {
+				var = APA_support_neosocialist_var_temp
+				value = -0.05
+			}
+			APA_add_support_neosocialist = yes
+			set_temp_variable = {
+				var = APA_leftist_unity_var_temp
+				value = -0.1
+			}
+			APA_add_leftist_unity = yes
+		}
+		remove_effect = {
+			log = "[GetDateText]: [Root.GetName]: decision APA_deal_with_the_dealers remove_effect"
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = APA_drug_trade_dummy_idea
+					add_idea = APA_deal_with_the_dealers_idea
+				}
+			}
+			hidden_effect = {
+				add_to_variable = {
+					var = APA_drugs_society_development_monthly_dynamic_var
+					value = 0.01
+				}
+			}
+		}
+	}
+	APA_mandatory_rehabilitation = {
+		icon = GFX_decision_APA_jacobin
+		fire_only_once = yes
+		days_remove = 140
+		cost = 75
+		allowed = {
+			original_tag = APA
+		}
+		visible = {
+			has_completed_focus = APA_war_on_cultural_capitalism
+		}
+		available = {
+			set_temp_variable = {
+				var = APA_support_congress_total_trigger_var_temp
+				value = 0.6
+			}
+			APA_has_congress_support_greater_than = yes
+		}
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: decision APA_mandatory_rehabilitation complete_effect"
+			set_temp_variable = {
+				var = APA_support_anarchist_var_temp
+				value = -0.05
+			}
+			APA_add_support_anarchist = yes
+			set_temp_variable = {
+				var = APA_leftist_unity_var_temp
+				value = -0.1
+			}
+			APA_add_leftist_unity = yes
+		}
+		modifier = {
+			consumer_goods_factor = 0.07
+			stability_weekly = 0.004
+		}
+		remove_effect = {
+			log = "[GetDateText]: [Root.GetName]: decision APA_mandatory_rehabilitation remove_effect"
+			add_stability = 0.05
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = APA_drug_trade_dummy_idea
+					add_idea = APA_mandatory_rehabilitation_idea
+				}
+			}
+			hidden_effect = {
+				add_to_variable = {
+					var = APA_drugs_poverty_development_monthly_dynamic_var
+					value = 0.01
+				}
+				add_to_variable = {
+					var = APA_drugs_society_development_monthly_dynamic_var
+					value = 0.01
+				}
+			}
+		}
+	}
+	APA_socialist_academic_hegemony_decision = {
+		icon = GFX_decision_APA_octoberist
+		fire_only_once = yes
+		days_remove = 35
+		cost = 100
+		allowed = {
+			original_tag = APA
+		}
+		visible = {
+			has_completed_focus = APA_rewrite_the_history_books
+		}
+		available = {
+			set_temp_variable = {
+				var = APA_support_congress_total_trigger_var_temp
+				value = 0.6
+			}
+			APA_has_congress_support_greater_than = yes
+		}
+		remove_effect = {
+			log = "[GetDateText]: [Root.GetName]: decision APA_socialist_academic_hegemony_decision remove_effect"
+			if = {
+				limit = {
+					has_government = totalitarian_socialist
+				}
+				add_popularity = {
+					ideology = totalitarian_socialist
+					popularity = 0.05
+				}
+			}
+			if = {
+				limit = {
+					has_government = communist
+				}
+				add_popularity = {
+					ideology = communist
+					popularity = 0.05
+				}
+			}
+			set_temp_variable = {
+				var = APA_revolution_progress_var_temp
+				value = 0.02
+			}
+			APA_add_revolution_progress = yes
+			set_temp_variable = {
+				var = APA_leftist_unity_var_temp
+				value = 0.05
+			}
+			APA_add_leftist_unity = yes
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = APA_american_workers_congress_dummy_idea
+					add_idea = APA_socialist_academic_hegemony
+				}
+			}
+			hidden_effect = {
+				add_to_variable = {
+					var = APA_politics_research_speed_factor_dynamic_var
+					value = 0.05
+				}
+			}
+		}
+	}
+	APA_promote_democratic_centralism_decision = {
+		icon = GFX_decision_APA_octoberist
+		fire_only_once = yes
+		days_remove = 35
+		cost = 100
+		allowed = {
+			original_tag = APA
+		}
+		visible = {
+			OR = {
+				has_completed_focus = APA_assemble_the_first_politburo
+				has_completed_focus = APA_establish_a_peoples_democratic_dictatorship
+			}
+		}
+		available = {
+			set_temp_variable = {
+				var = APA_support_congress_total_trigger_var_temp
+				value = 0.66
+			}
+			APA_has_congress_support_greater_than = yes
+		}
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: decision APA_promote_democratic_centralism_decision complete_effect"
+			set_temp_variable = {
+				var = APA_support_anarchist_var_temp
+				value = -0.1
+			}
+			APA_add_support_anarchist = yes
+		}
+		remove_effect = {
+			log = "[GetDateText]: [Root.GetName]: decision APA_promote_democratic_centralism_decision remove_effect"
+			if = {
+				limit = {
+					has_government = totalitarian_socialist
+				}
+				add_popularity = {
+					ideology = totalitarian_socialist
+					popularity = 0.05
+				}
+			}
+			if = {
+				limit = {
+					has_government = communist
+				}
+				add_popularity = {
+					ideology = communist
+					popularity = 0.05
+				}
+			}
+			set_temp_variable = {
+				var = APA_revolution_progress_var_temp
+				value = 0.04
+			}
+			APA_add_revolution_progress = yes
+			add_stability = 0.1
+			set_temp_variable = {
+				var = APA_support_anarchist_var_temp
+				value = -0.1
+			}
+			APA_add_support_anarchist = yes
+		}
+	}
+	APA_constitutionalize_the_leading_role_decision = {
+		icon = APA_octoberist
+		fire_only_once = yes
+		days_remove = 35
+		cost = 150
+		allowed = {
+			original_tag = APA
+		}
+		visible = {
+			always = no
+			OR = {
+				has_completed_focus = APA_assemble_the_first_politburo
+				has_completed_focus = APA_establish_a_peoples_democratic_dictatorship
+			}
+		}
+		available = {
+			OR = {
+				has_idea = APA_high_leftist_unity_idea
+				has_idea = APA_higher_leftist_unity_idea
+			}
+			set_temp_variable = {
+				var = APA_support_congress_total_trigger_var_temp
+				value = 0.66
+			}
+			APA_has_congress_support_greater_than = yes
+		}
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: decision APA_constitutionalize_the_leading_role_decision complete_effect"
+			set_temp_variable = {
+				var = APA_support_anarchist_var_temp
+				value = -0.1
+			}
+			APA_add_support_anarchist = yes
+			set_temp_variable = {
+				var = APA_support_neosocialist_var_temp
+				value = -0.1
+			}
+			APA_add_support_neosocialist = yes
+			set_temp_variable = {
+				var = APA_leftist_unity_var_temp
+				value = -0.15
+			}
+			APA_add_leftist_unity = yes
+		}
+		remove_effect = {
+			log = "[GetDateText]: [Root.GetName]: decision APA_constitutionalize_the_leading_role_decision remove_effect"
+			if = {
+				limit = {
+					has_government = totalitarian_socialist
+				}
+				add_popularity = {
+					ideology = totalitarian_socialist
+					popularity = 0.05
+				}
+			}
+			if = {
+				limit = {
+					has_government = communist
+				}
+				add_popularity = {
+					ideology = communist
+					popularity = 0.05
+				}
+			}
+			set_temp_variable = {
+				var = APA_revolution_progress_var_temp
+				value = 0.08
+			}
+			APA_add_revolution_progress = yes
+			add_stability = 0.1
+		}
+	}
+	APA_party_directed_workplaces_decision = {
+		icon = decision_generic_factory
+		days_remove = 70
+		cost = 100
+		fire_only_once = yes
+		allowed = {
+			tag = APA
+		}
+		visible = {
+			has_completed_focus = APA_create_the_cadre_system
+		}
+		available = {
+			set_temp_variable = {
+				var = APA_support_congress_total_trigger_var_temp
+				value = 0.5
+			}
+			APA_has_congress_support_greater_than = yes
+		}
+		modifier = {
+		}
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: decision APA_party_directed_workplaces_decision complete_effect"
+			set_temp_variable = {
+				var = APA_leftist_unity_var_temp
+				value = -0.1
+			}
+			APA_add_leftist_unity = yes
+			set_temp_variable = {
+				var = APA_support_anarchist_var_temp
+				value = -0.1
+			}
+			APA_add_support_anarchist = yes
+		}
+		remove_effect = {
+			log = "[GetDateText]: [Root.GetName]: decision APA_party_directed_workplaces_decision remove_effect"
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = APA_american_workers_congress_dummy_idea
+					add_idea = APA_guide_the_economy_idea
+				}
+			}
+			hidden_effect = {
+				add_to_variable = {
+					var = APA_politics_poverty_development_monthly_dynamic_var
+					value = 0.01
+				}
+				add_to_variable = {
+					var = APA_politics_industrial_development_monthly_dynamic_var
+					value = 0.01
+				}
+			}
+		}
+	}
+	APA_promote_party_membership_decision = {
+		icon = APA_octoberist
+		days_remove = 70
+		cost = 50
+		fire_only_once = yes
+		allowed = {
+			tag = APA
+		}
+		visible = {
+			has_completed_focus = APA_assemble_the_first_politburo
+		}
+		available = {
+			set_temp_variable = {
+				var = APA_support_congress_total_trigger_var_temp
+				value = 0.5
+			}
+			APA_has_congress_support_greater_than = yes
+		}
+		modifier = {
+		}
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: decision APA_promote_party_membership_decision complete_effect"
+			set_temp_variable = {
+				var = APA_support_neosocialist_var_temp
+				value = 0.1
+			}
+			APA_add_support_neosocialist = yes
+		}
+		remove_effect = {
+			log = "[GetDateText]: [Root.GetName]: decision APA_promote_party_membership_decision remove_effect"
+			set_temp_variable = {
+				var = APA_leftist_unity_var_temp
+				value = 0.1
+			}
+			APA_add_leftist_unity = yes
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = APA_american_workers_congress_dummy_idea
+					add_idea = APA_mass_membership
+				}
+			}
+			hidden_effect = {
+				add_to_variable = {
+					var = APA_politics_society_development_monthly_dynamic_var
+					value = 0.01
+				}
+				add_to_variable = {
+					var = APA_politics_communist_drift_dynamic_var
+					value = 0.02
+				}
+			}
+		}
+	}
+	APA_build_housing_decision = {
+		icon = APA_octoberist
+		days_remove = 140
+		cost = 75
+		fire_only_once = yes
+		allowed = {
+			tag = APA
+		}
+		visible = {
+			has_completed_focus = APA_sieze_the_wealth
+		}
+		modifier = {
+		}
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: decision APA_build_housing_decision complete_effect"
+			set_temp_variable = {
+				var = APA_support_anarchist_var_temp
+				value = 0.05
+			}
+			APA_add_support_anarchist = yes
+			set_temp_variable = {
+				var = APA_support_neosocialist_var_temp
+				value = 0.05
+			}
+			APA_add_support_neosocialist = yes
+		}
+		remove_effect = {
+			log = "[GetDateText]: [Root.GetName]: decision APA_build_housing_decision remove_effect"
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = APA_american_workers_congress_dummy_idea
+					add_idea = APA_communal_housing
+				}
+			}
+			random_owned_state = {
+				limit = {
+					is_fully_controlled_by = ROOT
+					is_owned_by = ROOT
+					free_building_slots = {
+						building = infrastructure
+						size > 2
+					}
+				}
+				add_building_construction = {
+					type = infrastructure
+					level = 2
+					instant_build = yes
+				}
+			}
+			random_owned_state = {
+				limit = {
+					is_fully_controlled_by = ROOT
+					is_owned_by = ROOT
+					free_building_slots = {
+						building = infrastructure
+						size > 2
+					}
+				}
+				add_building_construction = {
+					type = infrastructure
+					level = 2
+					instant_build = yes
+				}
+			}
+			hidden_effect = {
+				add_to_variable = {
+					var = APA_politics_production_speed_infrastructure_factor_dynamic_var
+					value = 0.1
+				}
+				add_to_variable = {
+					var = APA_politics_repair_speed_factor_dynamic_var
+					value = 0.1
+				}
+			}
+		}
+	}
+	APA_nationalize_large_agriculture_decision = {
+		icon = APA_octoberist
+		days_remove = 140
+		cost = 100
+		fire_only_once = yes
+		allowed = {
+			tag = APA
+		}
+		visible = {
+			has_completed_focus = APA_sieze_the_wealth
+		}
+		modifier = {
+		}
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: decision APA_nationalize_large_agriculture_decision complete_effect"
+			set_temp_variable = {
+				var = APA_support_anarchist_var_temp
+				value = -0.05
+			}
+			APA_add_support_anarchist = yes
+			set_temp_variable = {
+				var = APA_support_neosocialist_var_temp
+				value = 0.05
+			}
+			APA_add_support_neosocialist = yes
+		}
+		remove_effect = {
+			log = "[GetDateText]: [Root.GetName]: decision APA_nationalize_large_agriculture_decision remove_effect"
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = APA_american_workers_congress_dummy_idea
+					add_idea = APA_nationalized_agriculture_idea
+				}
+			}
+			set_temp_variable = {
+				var = APA_revolution_progress_var_temp
+				value = 0.04
+			}
+			APA_add_revolution_progress = yes
+			hidden_effect = {
+				add_to_variable = {
+					var = APA_politics_monthly_population_dynamic_var
+					value = 0.07
+				}
+				add_to_variable = {
+					var = APA_politics_farming_development_monthly_dynamic_var
+					value = 0.1
+				}
+			}
+		}
+	}
+	APA_national_jobs_guarentee_decision = {
+		icon = APA_octoberist
+		days_remove = 140
+		cost = 100
+		fire_only_once = yes
+		allowed = {
+			tag = APA
+		}
+		visible = {
+			has_completed_focus = APA_sieze_the_wealth
+		}
+		modifier = {
+		}
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: decision APA_national_jobs_guarentee_decision complete_effect"
+			set_temp_variable = {
+				var = APA_support_neosocialist_var_temp
+				value = 0.05
+			}
+			APA_add_support_neosocialist = yes
+		}
+		remove_effect = {
+			log = "[GetDateText]: [Root.GetName]: decision APA_national_jobs_guarentee_decision remove_effect"
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = APA_american_workers_congress_dummy_idea
+					add_idea = APA_national_jobs_guarentee_idea
+				}
+			}
+			set_temp_variable = {
+				var = APA_revolution_progress_var_temp
+				value = 0.04
+			}
+			APA_add_revolution_progress = yes
+			hidden_effect = {
+				add_to_variable = {
+					var = APA_politics_production_speed_buildings_factor_dynamic_var
+					value = 0.1
+				}
+				add_to_variable = {
+					var = APA_politics_industrial_development_monthly_dynamic_var
+					value = 0.01
+				}
+			}
+		}
+	}
+	APA_implement_a_universal_basic_income_decision = {
+		icon = APA_neosocialist
+		days_remove = 140
+		cost = 200
+		fire_only_once = yes
+		allowed = {
+			tag = APA
+		}
+		visible = {
+			has_completed_focus = APA_implement_universal_basic_income
+		}
+		available = {
+			set_temp_variable = {
+				var = APA_support_congress_total_trigger_var_temp
+				value = 0.66
+			}
+			APA_has_congress_support_greater_than = yes
+		}
+		modifier = {
+		}
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: decision APA_implement_a_universal_basic_income_decision complete_effect"
+		}
+		remove_effect = {
+			log = "[GetDateText]: [Root.GetName]: decision APA_implement_a_universal_basic_income_decision remove_effect"
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = APA_american_workers_congress_dummy_idea
+					add_idea = APA_ubi_idea
+				}
+			}
+			set_temp_variable = {
+				var = APA_revolution_progress_var_temp
+				value = 0.08
+			}
+			APA_add_revolution_progress = yes
+			increase_welfare = yes
+			hidden_effect = {
+				add_to_variable = {
+					var = APA_politics_personal_value_dynamic_var
+					value = 0.2
+				}
+				add_to_variable = {
+					var = APA_politics_poverty_development_monthly_dynamic_var
+					value = 0.05
+				}
+				add_to_variable = {
+					var = APA_politics_production_speed_buildings_factor_dynamic_var
+					value = 0.15
+				}
+				add_to_variable = {
+					var = APA_politics_inflation_monthly_dynamic_var
+					value = 0.001
+				}
+			}
+		}
+	}
+	APA_fair_education_amendment_decision = {
+		icon = APA_neosocialist
+		days_remove = 35
+		cost = 50
+		fire_only_once = yes
+		allowed = {
+			tag = APA
+		}
+		visible = {
+			has_completed_focus = APA_bill_of_rights_socialism
+		}
+		modifier = {
+		}
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: decision APA_fair_education_amendment_decision complete_effect"
+			set_temp_variable = {
+				var = APA_support_anarchist_var_temp
+				value = 0.05
+			}
+			APA_add_support_anarchist = yes
+		}
+		remove_effect = {
+			log = "[GetDateText]: [Root.GetName]: decision APA_fair_education_amendment_decision remove_effect"
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = APA_american_workers_congress_dummy_idea
+					add_idea = APA_fair_education_amendment_idea
+				}
+			}
+			set_temp_variable = {
+				var = APA_revolution_progress_var_temp
+				value = 0.02
+			}
+			APA_add_revolution_progress = yes
+			hidden_effect = {
+				country_event = {
+					id = apla.66
+				}
+				add_to_variable = {
+					var = APA_politics_personal_expense_dynamic_var
+					value = 0.01
+				}
+				add_to_variable = {
+					var = APA_politics_academic_development_monthly_dynamic_var
+					value = 0.02
+				}
+				add_to_variable = {
+					var = APA_politics_research_speed_factor_dynamic_var
+					value = 0.05
+				}
+			}
+		}
+	}
+	APA_economic_security_amendment_decision = {
+		icon = APA_neosocialist
+		days_remove = 70
+		cost = 100
+		fire_only_once = yes
+		allowed = {
+			tag = APA
+		}
+		visible = {
+			has_completed_focus = APA_bill_of_rights_socialism
+		}
+		modifier = {
+		}
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: decision APA_economic_security_amendment_decision complete_effect"
+			set_temp_variable = {
+				var = APA_support_octoberist_var_temp
+				value = 0.1
+			}
+			APA_add_support_octoberist = yes
+		}
+		remove_effect = {
+			log = "[GetDateText]: [Root.GetName]: decision APA_economic_security_amendment_decision remove_effect"
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = APA_american_workers_congress_dummy_idea
+					add_idea = APA_economic_security_amendment_idea
+				}
+			}
+			set_temp_variable = {
+				var = APA_revolution_progress_var_temp
+				value = 0.04
+			}
+			APA_add_revolution_progress = yes
+			hidden_effect = {
+				country_event = {
+					id = apla.67
+				}
+				add_to_variable = {
+					var = APA_politics_personal_expense_dynamic_var
+					value = 0.04
+				}
+				add_to_variable = {
+					var = APA_politics_poverty_development_monthly_dynamic_var
+					value = 0.03
+				}
+				add_to_variable = {
+					var = APA_politics_society_development_monthly_dynamic_var
+					value = 0.02
+				}
+				add_to_variable = {
+					var = APA_politics_production_factory_efficiency_gain_factor_dynamic_var
+					value = 0.1
+				}
+			}
+		}
+	}
+	APA_common_resources_amendment_decision = {
+		icon = APA_neosocialist
+		days_remove = 70
+		cost = 150
+		fire_only_once = yes
+		allowed = {
+			tag = APA
+		}
+		visible = {
+			has_completed_focus = APA_bill_of_rights_socialism
+		}
+		available = {
+			set_temp_variable = {
+				var = APA_support_congress_total_trigger_var_temp
+				value = 0.5
+			}
+			APA_has_congress_support_greater_than = yes
+		}
+		modifier = {
+		}
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: decision APA_common_resources_amendment_decision complete_effect"
+			set_temp_variable = {
+				var = APA_support_octoberist_var_temp
+				value = 0.1
+			}
+			APA_add_support_octoberist = yes
+			set_temp_variable = {
+				var = APA_support_jacobin_var_temp
+				value = 0.1
+			}
+			APA_add_support_jacobin = yes
+		}
+		remove_effect = {
+			log = "[GetDateText]: [Root.GetName]: decision APA_common_resources_amendment_decision remove_effect"
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = APA_american_workers_congress_dummy_idea
+					add_idea = APA_collective_resources_idea
+				}
+			}
+			set_temp_variable = {
+				var = APA_revolution_progress_var_temp
+				value = 0.04
+			}
+			APA_add_revolution_progress = yes
+			hidden_effect = {
+				country_event = {
+					id = apla.68
+				}
+				add_to_variable = {
+					var = APA_politics_local_resources_factor_dynamic_var
+					value = 0.1
+				}
+				add_to_variable = {
+					var = APA_politics_production_lack_of_resource_penalty_factor_dynamic_var
+					value = -0.1
+				}
+			}
+		}
+	}
+	APA_socialist_democracy_amendment_decision = {
+		icon = APA_neosocialist
+		days_remove = 70
+		cost = 150
+		fire_only_once = yes
+		allowed = {
+			tag = APA
+		}
+		visible = {
+			has_completed_focus = APA_bill_of_rights_socialism
+		}
+		available = {
+			set_temp_variable = {
+				var = APA_support_congress_total_trigger_var_temp
+				value = 0.5
+			}
+			APA_has_congress_support_greater_than = yes
+		}
+		modifier = {
+		}
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: decision APA_socialist_democracy_amendment_decision complete_effect"
+			set_temp_variable = {
+				var = APA_support_anarchist_var_temp
+				value = 0.1
+			}
+			APA_add_support_anarchist = yes
+		}
+		remove_effect = {
+			log = "[GetDateText]: [Root.GetName]: decision APA_socialist_democracy_amendment_decision remove_effect"
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = APA_american_workers_congress_dummy_idea
+					add_idea = APA_socialist_democracy_socdem_idea
+				}
+			}
+			set_temp_variable = {
+				var = APA_revolution_progress_var_temp
+				value = 0.04
+			}
+			APA_add_revolution_progress = yes
+			hidden_effect = {
+				country_event = {
+					id = apla.69					#Nice
+				}
+				add_to_variable = {
+					var = APA_politics_compliance_growth_dynamic_var
+					value = 0.15
+				}
+				add_to_variable = {
+					var = APA_politics_society_development_monthly_dynamic_var
+					value = 0.01
+				}
+				add_to_variable = {
+					var = APA_politics_social_democrat_drift_dynamic_var
+					value = 0.02
+				}
+			}
+		}
+	}
+	APA_libertarian_municipalism_decision = {
+		icon = APA_neosocialist
+		fire_only_once = yes
+		cost = 100
+		days_remove = 100
+		allowed = {
+			original_tag = APA
+		}
+		visible = {
+			has_completed_focus = APA_encourage_social_self_governance
+			has_completed_focus = APA_bread_and_roses
+		}
+		available = {
+			set_temp_variable = {
+				var = APA_support_congress_total_trigger_var_temp
+				value = 0.5
+			}
+			APA_has_congress_support_greater_than = yes
+		}
+		modifier = {
+			social_liberal_drift = 0.03
+		}
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: decision APA_libertarian_municipalism_decision complete_effect"
+			set_temp_variable = {
+				var = APA_support_anarchist_var_temp
+				value = 0.05
+			}
+			APA_add_support_anarchist = yes
+			set_temp_variable = {
+				var = APA_support_neosocialist_var_temp
+				value = 0.05
+			}
+			APA_add_support_neosocialist = yes
+		}
+		remove_effect = {
+			log = "[GetDateText]: [Root.GetName]: decision APA_libertarian_municipalism_decision remove_effect"
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = APA_american_workers_congress_dummy_idea
+					add_idea = APA_libertarian_municipalism_idea
+				}
+			}
+			set_temp_variable = {
+				var = APA_revolution_progress_var_temp
+				value = 0.04
+			}
+			APA_add_revolution_progress = yes
+			hidden_effect = {
+				add_to_variable = {
+					var = APA_politics_war_support_factor_dynamic_var
+					value = 0.05
+				}
+				add_to_variable = {
+					var = APA_politics_local_resources_factor_dynamic_var
+					value = 0.025
+				}
+				add_to_variable = {
+					var = APA_politics_production_factory_efficiency_gain_factor_dynamic_var
+					value = 0.05
+				}
+				add_to_variable = {
+					var = APA_politics_personal_value_dynamic_var
+					value = 0.2
+				}
+				APA_popularity_change = yes
+			}
+		}
+	}
+	APA_encourage_green_initiatives_decision = {
+		icon = APA_neosocialist
+		fire_only_once = yes
+		cost = 70
+		days_remove = 100
+		allowed = {
+			original_tag = APA
+		}
+		visible = {
+			has_completed_focus = APA_new_socialist_culture
+		}
+		available = {
+			set_temp_variable = {
+				var = APA_support_congress_total_trigger_var_temp
+				value = 0.5
+			}
+			APA_has_congress_support_greater_than = yes
+		}
+		modifier = {
+			social_liberal_drift = 0.04
+		}
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: decision APA_encourage_green_initiatives_decision complete_effect"
+			set_temp_variable = {
+				var = APA_support_anarchist_var_temp
+				value = 0.05
+			}
+			APA_add_support_anarchist = yes
+			set_temp_variable = {
+				var = APA_support_neosocialist_var_temp
+				value = 0.05
+			}
+			APA_add_support_neosocialist = yes
+		}
+		remove_effect = {
+			log = "[GetDateText]: [Root.GetName]: decision APA_encourage_green_initiatives_decision remove_effect"
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = APA_american_workers_congress_dummy_idea
+					add_idea = APA_encourage_green_initiatives_idea
+				}
+			}
+			set_temp_variable = {
+				var = APA_revolution_progress_var_temp
+				value = 0.04
+			}
+			APA_add_revolution_progress = yes
+			hidden_effect = {
+				add_to_variable = {
+					var = APA_politics_poverty_development_monthly_dynamic_var
+					value = 0.02
+				}
+				add_to_variable = {
+					var = APA_politics_industrial_development_monthly_dynamic_var
+					value = -0.01
+				}
+				add_to_variable = {
+					var = APA_politics_production_lack_of_resource_penalty_factor_dynamic_var
+					value = 0.05
+				}
+				APA_popularity_change = yes
+			}
+		}
+	}
+	APA_bring_order_campaign_decision = {
+		icon = generic_propaganda_campaigns
+		allowed = {
+			original_tag = APA
+		}
+		visible = {
+			OR = {
+				has_completed_focus = APA_promote_socialist_patriotism
+				has_completed_focus = APA_sieze_the_police
+			}
+		}
+		available = {
+			NOT = {
+				has_stability > 0.85
+			}
+			has_campaign_slot = yes
+		}
+		ai_will_do = {
+			base = 2
+		}
+		cost = 50
+		days_remove = 175
+		days_re_enable = 175
+		modifier = {
+		}
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: decision APA_bring_order_campaign_decision complete_effect"
+			remove_campaign_slot = yes
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = APA_american_liberation_army_dummy_idea
+					add_idea = APA_bring_order_campaign_idea
+				}
+			}
+			hidden_effect = {
+				add_to_variable = {
+					var = APA_politics_stability_weekly_dynamic_var
+					value = 0.003
+				}
+			}
+		}
+		remove_effect = {
+			log = "[GetDateText]: [Root.GetName]: decision APA_bring_order_campaign_decision remove_effect"
+			add_campaign_slot = yes
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = APA_bring_order_campaign_idea
+					add_idea = APA_american_liberation_army_dummy_idea
+				}
+			}
+			hidden_effect = {
+				add_to_variable = {
+					var = APA_politics_stability_weekly_dynamic_var
+					value = -0.003
+				}
+			}
+		}
+	}
+	APA_rally_the_people_campaign_decision = {
+		icon = generic_propaganda_campaigns
+		cost = 50
+		days_remove = 175
+		days_re_enable = 175
+		allowed = {
+			original_tag = APA
+		}
+		visible = {
+			OR = {
+				has_completed_focus = APA_secure_liberties
+				has_completed_focus = APA_rewrite_the_history_books
+			}
+		}
+		available = {
+			NOT = {
+				has_war_support > 0.85
+			}
+			has_campaign_slot = yes
+		}
+		ai_will_do = {
+			base = 2
+		}
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: decision APA_rally_the_people_campaign_decision complete_effect"
+			remove_campaign_slot = yes
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = APA_american_workers_congress_dummy_idea
+					add_idea = APA_rally_the_people_campaign_idea
+				}
+			}
+			hidden_effect = {
+				add_to_variable = {
+					var = APA_politics_war_support_weekly_dynamic_var
+					value = 0.003
+				}
+			}
+		}
+		remove_effect = {
+			log = "[GetDateText]: [Root.GetName]: decision APA_rally_the_people_campaign_decision remove_effect"
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = APA_rally_the_people_campaign_idea
+					add_idea = APA_american_workers_congress_dummy_idea
+				}
+			}
+			hidden_effect = {
+				add_to_variable = {
+					var = APA_politics_war_support_weekly_dynamic_var
+					value = -0.003
+				}
+			}
+			add_campaign_slot = yes
+		}
+	}
+	APA_protect_the_constutition_decision = {
+		icon = generic_political_discourse
+		fire_only_once = yes
+		cost = 150
+		days_remove = 175
+		allowed = {
+			original_tag = APA
+		}
+		visible = {
+			has_completed_focus = APA_secure_liberties
+		}
+		available = {
+		}
+		ai_will_do = {
+			base = 20
+		}
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: decision APA_protect_the_constutition_decision complete_effect"
+			set_temp_variable = {
+				var = APA_leftist_unity_var_temp
+				value = -0.2
+			}
+			APA_add_leftist_unity = yes
+		}
+		remove_effect = {
+			log = "[GetDateText]: [Root.GetName]: decision APA_protect_the_constutition_decision remove_effect"
+			add_stability = 0.1
+			set_temp_variable = {
+				var = legit_var_temp
+				value = 0.1
+			}
+			add_legit = yes
+			set_temp_variable = {
+				var = recore_pp_var_temp
+				value = -5
+			}
+			add_coring_cost = yes
+			set_temp_variable = {
+				var = recore_time_var_temp
+				value = -7
+			}
+			add_coring_time = yes
+		}
+	}
+	APA_radicalize_the_masses_campaign_decision = {
+		icon = generic_propaganda_campaigns
+		cost = 25
+		days_remove = 175
+		days_re_enable = 175
+		allowed = {
+			original_tag = APA
+		}
+		visible = {
+			OR = {
+				has_completed_focus = APA_the_will_of_the_people
+				has_completed_focus = APA_purge_the_opportunists
+			}
+			OR = {
+				has_government = libertarian_socialist
+				has_government = totalitarian_socialist
+			}
+		}
+		available = {
+			NOT = {
+				has_idea = APA_lower_leftist_unity_idea
+			}
+			has_campaign_slot = yes
+		}
+		ai_will_do = {
+			base = 2
+		}
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: decision APA_radicalize_the_masses_campaign_decision complete_effect"
+			remove_campaign_slot = yes
+			set_temp_variable = {
+				var = APA_leftist_unity_var_temp
+				value = -0.075
+			}
+			APA_add_leftist_unity = yes
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = APA_american_workers_congress_dummy_idea
+					add_idea = APA_radicalize_the_masses_campaign_idea
+				}
+			}
+			hidden_effect = {
+				add_to_variable = {
+					var = APA_politics_war_stability_factor_dynamic_var
+					value = 0.1
+				}
+				add_to_variable = {
+					var = APA_politics_authoritarian_democrat_drift_dynamic_var
+					value = -0.04
+				}
+				add_to_variable = {
+					var = APA_politics_society_development_monthly_dynamic_var
+					value = 0.04
+				}
+			}
+		}
+		remove_effect = {
+			log = "[GetDateText]: [Root.GetName]: decision APA_radicalize_the_masses_campaign_decision remove_effect"
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = APA_radicalize_the_masses_campaign_idea
+					add_idea = APA_american_workers_congress_dummy_idea
+				}
+			}
+			add_to_variable = {
+				var = APA_politics_war_stability_factor_dynamic_var
+				value = -0.1
+			}
+			add_to_variable = {
+				var = APA_politics_authoritarian_democrat_drift_dynamic_var
+				value = 0.04
+			}
+			add_to_variable = {
+				var = APA_politics_society_development_monthly_dynamic_var
+				value = -0.04
+			}
+			add_campaign_slot = yes
+		}
+	}
+	APA_rural_radicalization_campaign_decision = {
+		icon = generic_propaganda_campaigns
+		days_remove = 175
+		days_re_enable = 175
+		cost = 25
+		allowed = {
+			original_tag = APA
+		}
+		visible = {
+			hidden_trigger = {
+				has_completed_focus = APA_rural_radicalization
+			}
+		}
+		available = {
+			has_campaign_slot = yes
+		}
+		ai_will_do = {
+			base = 1
+		}
+		modifier = {
+		}
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: decision APA_rural_radicalization_campaign_decision complete_effect"
+			remove_campaign_slot = yes
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = APA_american_workers_congress_dummy_idea
+					add_idea = APA_rural_radicalization_campaign_idea
+				}
+			}
+			hidden_effect = {
+				add_to_variable = {
+					var = APA_politics_totalitarian_socialist_drift_dynamic_var
+					value = 0.05
+				}
+				add_to_variable = {
+					var = APA_politics_compliance_growth_dynamic_var
+					value = 0.05
+				}
+			}
+		}
+		remove_effect = {
+			log = "[GetDateText]: [Root.GetName]: decision APA_rural_radicalization_campaign_decision remove_effect"
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = APA_rural_radicalization_campaign_idea
+					add_idea = APA_american_workers_congress_dummy_idea
+				}
+			}
+			set_temp_variable = {
+				var = APA_revolution_progress_var_temp
+				value = 0.03
+			}
+			APA_add_revolution_progress = yes
+			set_temp_variable = {
+				var = APA_popular_support_var_temp
+				value = 0.03
+			}
+			APA_add_popular_support = yes
+			hidden_effect = {
+				add_to_variable = {
+					var = APA_politics_totalitarian_socialist_drift_dynamic_var
+					value = -0.05
+				}
+				add_to_variable = {
+					var = APA_politics_compliance_growth_dynamic_var
+					value = -0.05
+				}
+			}
+			add_campaign_slot = yes
+		}
+	}
+	APA_unified_under_la_riva_campaign_decision = {
+		icon = generic_propaganda_campaigns
+		days_remove = 175
+		days_re_enable = 175
+		cost = 50
+		allowed = {
+			original_tag = APA
+		}
+		visible = {
+			hidden_trigger = {
+				has_completed_focus = APA_idolize_la_riva
+				has_country_leader = {
+					character = APA_gloria_la_riva_char
+					ruling_only = yes
+				}
+			}
+		}
+		available = {
+			has_campaign_slot = yes
+			has_dynamic_modifier = {
+				modifier = APA_american_liberation_army_dynamic
+			}
+		}
+		ai_will_do = {
+			base = 1
+		}
+		modifier = {
+		}
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: decision APA_unified_under_la_riva_campaign_decision complete_effect"
+			remove_campaign_slot = yes
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = APA_american_liberation_army_dummy_idea
+					add_idea = APA_unified_under_la_riva_campaign_idea
+				}
+			}
+			hidden_effect = {
+				add_to_variable = {
+					var = APA_military_political_power_gain_dynamic_var
+					value = 0.2
+				}
+				add_to_variable = {
+					var = APA_military_command_power_gain_mult_dynamic_var
+					value = 0.1
+				}
+				add_to_variable = {
+					var = APA_military_war_support_weekly_dynamic_var
+					value = 0.003
+				}
+				add_to_variable = {
+					var = APA_military_weekly_bombing_war_support_dynamic_var
+					value = 0.005
+				}
+				add_to_variable = {
+					var = APA_military_weekly_casualties_war_support_dynamic_var
+					value = 0.005
+				}
+				add_to_variable = {
+					var = APA_military_weekly_convoys_war_support_dynamic_var
+					value = 0.005
+				}
+				add_to_variable = {
+					var = APA_military_communist_drift_dynamic_var
+					value = 0.05
+				}
+			}
+		}
+		remove_effect = {
+			log = "[GetDateText]: [Root.GetName]: decision APA_unified_under_la_riva_campaign_decision remove_effect"
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = APA_unified_under_la_riva_campaign_idea
+					add_idea = APA_american_liberation_army_dummy_idea
+				}
+			}
+			hidden_effect = {
+				add_to_variable = {
+					var = APA_military_political_power_gain_dynamic_var
+					value = -0.2
+				}
+				add_to_variable = {
+					var = APA_military_command_power_gain_mult_dynamic_var
+					value = -0.1
+				}
+				add_to_variable = {
+					var = APA_military_war_support_weekly_dynamic_var
+					value = -0.003
+				}
+				add_to_variable = {
+					var = APA_military_weekly_bombing_war_support_dynamic_var
+					value = -0.005
+				}
+				add_to_variable = {
+					var = APA_military_weekly_casualties_war_support_dynamic_var
+					value = -0.005
+				}
+				add_to_variable = {
+					var = APA_military_weekly_convoys_war_support_dynamic_var
+					value = -0.005
+				}
+				add_to_variable = {
+					var = APA_military_communist_drift_dynamic_var
+					value = -0.05
+				}
+			}
+			add_campaign_slot = yes
+		}
+	}
+	APA_mass_appeal_campaign_decision = {
+		icon = generic_propaganda_campaigns
+		days_remove = 175
+		days_re_enable = 175
+		cost = 25
+		allowed = {
+			original_tag = APA
+		}
+		visible = {
+			hidden_trigger = {
+				has_completed_focus = APA_invite_mass_membership
+			}
+		}
+		available = {
+			has_campaign_slot = yes
+		}
+		ai_will_do = {
+			base = 1
+		}
+		modifier = {
+		}
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: decision APA_mass_appeal_campaign_decision complete_effect"
+			remove_campaign_slot = yes
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = APA_american_workers_congress_dummy_idea
+					add_idea = APA_mass_appeal_campaign_idea
+				}
+			}
+			hidden_effect = {
+				add_to_variable = {
+					var = APA_politics_social_democrat_drift_dynamic_var
+					value = 0.05
+				}
+				add_to_variable = {
+					var = APA_politics_stability_factor_dynamic_var
+					value = 0.1
+				}
+				add_to_variable = {
+					var = APA_politics_stability_weekly_dynamic_var
+					value = 0.001
+				}
+			}
+		}
+		remove_effect = {
+			log = "[GetDateText]: [Root.GetName]: decision APA_mass_appeal_campaign_decision remove_effect"
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = APA_mass_appeal_campaign_idea
+					add_idea = APA_american_workers_congress_dummy_idea
+				}
+			}
+			hidden_effect = {
+				add_to_variable = {
+					var = APA_politics_social_democrat_drift_dynamic_var
+					value = -0.05
+				}
+				add_to_variable = {
+					var = APA_politics_stability_factor_dynamic_var
+					value = -0.1
+				}
+				add_to_variable = {
+					var = APA_politics_stability_weekly_dynamic_var
+					value = -0.001
+				}
+			}
+			add_campaign_slot = yes
+		}
+	}
+	APA_radical_republicanism_campaign_decision = {
+		icon = generic_propaganda_campaigns
+		days_remove = 175
+		days_re_enable = 175
+		cost = 50
+		allowed = {
+			original_tag = APA
+		}
+		visible = {
+			hidden_trigger = {
+				has_completed_focus = APA_radical_republicanism
+			}
+		}
+		available = {
+			has_campaign_slot = yes
+			has_dynamic_modifier = {
+				modifier = APA_american_liberation_army_dynamic
+			}
+		}
+		ai_will_do = {
+			base = 1
+		}
+		modifier = {
+		}
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: decision APA_radical_republicanism_campaign_decision complete_effect"
+			remove_campaign_slot = yes
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = APA_american_liberation_army_dummy_idea
+					add_idea = APA_radical_republicanism_campaign_idea
+				}
+			}
+			hidden_effect = {
+				add_to_variable = {
+					var = APA_military_weekly_bombing_war_support_dynamic_var
+					value = 0.005
+				}
+				add_to_variable = {
+					var = APA_military_weekly_casualties_war_support_dynamic_var
+					value = 0.005
+				}
+				add_to_variable = {
+					var = APA_military_weekly_convoys_war_support_dynamic_var
+					value = 0.005
+				}
+				add_to_variable = {
+					var = APA_military_social_democrat_drift_dynamic_var
+					value = 0.05
+				}
+				add_to_variable = {
+					var = APA_military_army_attack_factor_dynamic_var
+					value = 0.1
+				}
+			}
+		}
+		remove_effect = {
+			log = "[GetDateText]: [Root.GetName]: decision APA_radical_republicanism_campaign_decision remove_effect"
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = APA_radical_republicanism_campaign_idea
+					add_idea = APA_american_liberation_army_dummy_idea
+				}
+			}
+			hidden_effect = {
+				add_to_variable = {
+					var = APA_military_weekly_bombing_war_support_dynamic_var
+					value = -0.005
+				}
+				add_to_variable = {
+					var = APA_military_weekly_casualties_war_support_dynamic_var
+					value = -0.005
+				}
+				add_to_variable = {
+					var = APA_military_weekly_convoys_war_support_dynamic_var
+					value = -0.005
+				}
+				add_to_variable = {
+					var = APA_military_social_democrat_drift_dynamic_var
+					value = -0.05
+				}
+				add_to_variable = {
+					var = APA_military_army_attack_factor_dynamic_var
+					value = -0.1
+				}
+			}
+			add_campaign_slot = yes
+		}
+	}
+	APA_political_pragmatism_campaign_decision = {
+		icon = generic_propaganda_campaigns
+		days_remove = 175
+		days_re_enable = 175
+		cost = 25
+		allowed = {
+			original_tag = APA
+		}
+		visible = {
+			hidden_trigger = {
+				OR = {
+					has_completed_focus = APA_promote_egalitarianism
+					has_completed_focus = APA_political_pragmatism
+					has_completed_focus = APA_establish_popular_councils
+				}
+			}
+		}
+		available = {
+			has_campaign_slot = yes
+		}
+		ai_will_do = {
+			base = 1
+		}
+		modifier = {
+		}
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: decision APA_political_pragmatism_campaign_decision complete_effect"
+			remove_campaign_slot = yes
+			if = {
+				limit = {
+					has_government = totalitarian_socialist
+				}
+				set_temp_variable = {
+					var = APA_support_jacobin_var_temp
+					value = -0.05
+				}
+				APA_add_support_jacobin = yes
+			}
+			else_if = {
+				limit = {
+					has_government = communist
+				}
+				set_temp_variable = {
+					var = APA_support_octoberist_var_temp
+					value = -0.05
+				}
+				APA_add_support_octoberist = yes
+			}
+			else_if = {
+				limit = {
+					has_government = libertarian_socialist
+				}
+				set_temp_variable = {
+					var = APA_support_anarchist_var_temp
+					value = -0.05
+				}
+				APA_add_support_anarchist = yes
+			}
+			else_if = {
+				limit = {
+					has_government = social_democrat
+				}
+				set_temp_variable = {
+					var = APA_support_neosocialist_var_temp
+					value = -0.05
+				}
+				APA_add_support_neosocialist = yes
+			}
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = APA_american_workers_congress_dummy_idea
+					add_idea = APA_political_pragmatism_campaign_idea
+				}
+			}
+			hidden_effect = {
+				add_to_variable = {
+					var = APA_politics_political_power_gain_dynamic_var
+					value = 0.4
+				}
+			}
+		}
+		remove_effect = {
+			log = "[GetDateText]: [Root.GetName]: decision APA_political_pragmatism_campaign_decision remove_effect"
+			if = {
+				limit = {
+					NOT = {
+						has_government = totalitarian_socialist
+					}
+				}
+				set_temp_variable = {
+					var = APA_support_jacobin_var_temp
+					value = 0.1
+				}
+				APA_add_support_jacobin = yes
+			}
+			if = {
+				limit = {
+					NOT = {
+						has_government = communist
+					}
+				}
+				set_temp_variable = {
+					var = APA_support_octoberist_var_temp
+					value = 0.1
+				}
+				APA_add_support_octoberist = yes
+			}
+			if = {
+				limit = {
+					NOT = {
+						has_government = libertarian_socialist
+					}
+				}
+				set_temp_variable = {
+					var = APA_support_anarchist_var_temp
+					value = 0.1
+				}
+				APA_add_support_anarchist = yes
+			}
+			if = {
+				limit = {
+					NOT = {
+						has_government = social_democrat
+					}
+				}
+				set_temp_variable = {
+					var = APA_support_neosocialist_var_temp
+					value = 0.1
+				}
+				APA_add_support_neosocialist = yes
+			}
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = APA_political_pragmatism_campaign_idea
+					add_idea = APA_american_workers_congress_dummy_idea
+				}
+			}
+			hidden_effect = {
+				add_to_variable = {
+					var = APA_politics_political_power_gain_dynamic_var
+					value = -0.4
+				}
+			}
+			add_campaign_slot = yes
+		}
+	}
+	APA_produce_anti_reactionary_movie_decision = {
+		icon = generic_nationalism
+		cost = 0
+		days_remove = 175
+		fire_only_once = yes
+		cancel_if_not_visible = yes
+		custom_cost_text = APA_produce_anti_reactionary_movie_decision_cost
+		custom_cost_trigger = {
+			check_variable = {
+				var = income_var
+				value = 0.1
+				compare = greater_than_or_equals
+			}
+		}
+		allowed = {
+			original_tag = APA
+		}
+		visible = {
+			hidden_trigger = {
+				has_completed_focus = APA_sieze_hollywood
+				OR = {
+					has_idea = APA_reactionary_resistance_idea
+					has_idea = APA_reactionary_resistance_idea1
+					has_idea = APA_reactionary_resistance_idea2
+				}
+			}
+		}
+		available = {
+			hidden_trigger = {
+				check_variable = {
+					var = income_var
+					value = 0.1
+					compare = greater_than_or_equals
+				}
+			}
+			NOT = {
+				has_country_flag = APA_producing_film_flag
+			}
+			OR = {
+				has_idea = APA_reactionary_resistance_idea
+				has_idea = APA_reactionary_resistance_idea1
+				has_idea = APA_reactionary_resistance_idea2
+			}
+		}
+		ai_will_do = {
+			base = 100
+		}
+		modifier = {
+		}
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: decision APA_produce_anti_reactionary_movie_decision complete_effect"
+			hidden_effect = {
+				set_country_flag = {
+					flag = APA_producing_film_flag
+					value = 1
+					days = 175
+				}
+			}
+		}
+		remove_effect = {
+			log = "[GetDateText]: [Root.GetName]: decision APA_produce_anti_reactionary_movie_decision remove_effect"
+			add_stability = 0.05
+			APA_reactionary_resistance_decrease = yes
+		}
+	}
+}
+
+APA_agency_of_socialist_security_category = {
+}
+
+APA_revolutionary_military_category = {
+	APA_guide_the_army_campaign_decision = {
+		icon = generic_propaganda_campaigns
+		days_remove = 175
+		days_re_enable = 175
+		cost = 25
+		allowed = {
+			original_tag = APA
+		}
+		visible = {
+			hidden_trigger = {
+				has_completed_focus = APA_form_the_liberation_army
+			}
+		}
+		available = {
+			has_war = yes
+			has_campaign_slot = yes
+		}
+		ai_will_do = {
+			base = 1
+		}
+		modifier = {
+		}
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: decision APA_guide_the_army_campaign_decision complete_effect"
+			remove_campaign_slot = yes
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = APA_american_liberation_army_dummy_idea
+					add_idea = APA_guide_the_army_campaign_idea
+				}
+			}
+			hidden_effect = {
+				add_to_variable = {
+					var = APA_military_command_power_gain_mult_dynamic_var
+					value = 0.5
+				}
+				add_to_variable = {
+					var = APA_military_experience_gain_army_dynamic_var
+					value = 0.05
+				}
+				add_to_variable = {
+					var = APA_military_development_monthly_dynamic_var
+					value = 0.03
+				}
+			}
+		}
+		remove_effect = {
+			log = "[GetDateText]: [Root.GetName]: decision APA_guide_the_army_campaign_decision remove_effect"
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = APA_guide_the_army_campaign_idea
+					add_idea = APA_american_liberation_army_dummy_idea
+				}
+			}
+			hidden_effect = {
+				add_to_variable = {
+					var = APA_military_command_power_gain_mult_dynamic_var
+					value = -0.5
+				}
+				add_to_variable = {
+					var = APA_military_experience_gain_army_dynamic_var
+					value = -0.05
+				}
+				add_to_variable = {
+					var = APA_military_development_monthly_dynamic_var
+					value = -0.03
+				}
+			}
+			add_campaign_slot = yes
+		}
+	}
+	APA_working_class_warfare_campaign_decision = {
+		icon = generic_propaganda_campaigns
+		days_remove = 175
+		days_re_enable = 175
+		cost = 0
+		custom_cost_text = NSM_revanchist_reconquest_campaign_decision_cost
+		custom_cost_trigger = {
+			NOT = {
+				command_power < 20
+			}
+		}
+		allowed = {
+			original_tag = APA
+		}
+		visible = {
+			hidden_trigger = {
+				has_completed_focus = APA_form_the_liberation_army
+			}
+		}
+		available = {
+			has_war = yes
+			has_campaign_slot = yes
+		}
+		ai_will_do = {
+			base = 1
+		}
+		modifier = {
+		}
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: decision APA_guide_the_army_campaign_decision complete_effect"
+			remove_campaign_slot = yes
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = APA_american_liberation_army_dummy_idea
+					add_idea = APA_working_class_warfare_campaign_idea
+				}
+			}
+			hidden_effect = {
+				add_command_power = -20
+				add_to_variable = {
+					var = APA_military_breakthrough_factor_dynamic_var
+					value = 0.1
+				}
+				add_to_variable = {
+					var = APA_military_max_command_power_dynamic_var
+					value = -20
+				}
+			}
+		}
+		remove_effect = {
+			log = "[GetDateText]: [Root.GetName]: decision APA_guide_the_army_campaign_decision remove_effect"
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = APA_working_class_warfare_campaign_idea
+					add_idea = APA_american_liberation_army_dummy_idea
+				}
+			}
+			hidden_effect = {
+				add_to_variable = {
+					var = APA_military_breakthrough_factor_dynamic_var
+					value = -0.1
+				}
+				add_to_variable = {
+					var = APA_military_max_command_power_dynamic_var
+					value = 20
+				}
+			}
+			add_campaign_slot = yes
+		}
+	}
+	APA_daring_to_die_campaign_decision = {
+		icon = generic_propaganda_campaigns
+		days_remove = 175
+		days_re_enable = 175
+		cost = 0
+		custom_cost_text = NSM_revanchist_reconquest_campaign_decision_cost
+		custom_cost_trigger = {
+			NOT = {
+				command_power < 20
+			}
+		}
+		allowed = {
+			original_tag = APA
+		}
+		visible = {
+			hidden_trigger = {
+				has_completed_focus = APA_dare_to_die
+			}
+		}
+		available = {
+			has_war = yes
+			has_campaign_slot = yes
+		}
+		ai_will_do = {
+			base = 1
+		}
+		modifier = {
+		}
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: decision APA_daring_to_die_campaign_decision complete_effect"
+			remove_campaign_slot = yes
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = APA_american_liberation_army_dummy_idea
+					add_idea = APA_dare_to_die_campaign_idea
+				}
+			}
+			hidden_effect = {
+				add_command_power = -20
+				add_to_variable = {
+					var = APA_military_army_attack_factor_dynamic_var
+					value = 0.1
+				}
+				add_to_variable = {
+					var = APA_military_land_reinforce_rate_dynamic_var
+					value = 0.1
+				}
+				add_to_variable = {
+					var = APA_military_org_regain_dynamic_var
+					value = 0.1
+				}
+				add_to_variable = {
+					var = APA_military_org_factor_dynamic_var
+					value = -0.1
+				}
+				add_to_variable = {
+					var = APA_military_max_command_power_dynamic_var
+					value = -20
+				}
+			}
+		}
+		remove_effect = {
+			log = "[GetDateText]: [Root.GetName]: decision APA_daring_to_die_campaign_decision remove_effect"
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = APA_dare_to_die_campaign_idea
+					add_idea = APA_american_liberation_army_dummy_idea
+				}
+			}
+			hidden_effect = {
+				add_to_variable = {
+					var = APA_military_army_attack_factor_dynamic_var
+					value = -0.1
+				}
+				add_to_variable = {
+					var = APA_military_land_reinforce_rate_dynamic_var
+					value = -0.1
+				}
+				add_to_variable = {
+					var = APA_military_org_regain_dynamic_var
+					value = -0.1
+				}
+				add_to_variable = {
+					var = APA_military_org_factor_dynamic_var
+					value = 0.1
+				}
+				add_to_variable = {
+					var = APA_military_max_command_power_dynamic_var
+					value = 20
+				}
+			}
+			add_campaign_slot = yes
+		}
+	}
+	APA_the_red_army_stands_strong_campaign_decision = {
+		icon = generic_propaganda_campaigns
+		days_remove = 175
+		days_re_enable = 175
+		cost = 0
+		custom_cost_text = NSM_revanchist_reconquest_campaign_decision_cost
+		custom_cost_trigger = {
+			NOT = {
+				command_power < 20
+			}
+		}
+		allowed = {
+			original_tag = APA
+		}
+		visible = {
+			hidden_trigger = {
+				has_completed_focus = APA_political_commissars
+			}
+		}
+		available = {
+			has_war = yes
+			has_campaign_slot = yes
+		}
+		ai_will_do = {
+			base = 1
+		}
+		modifier = {
+		}
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: decision APA_the_red_army_stands_strong_campaign_decision complete_effect"
+			remove_campaign_slot = yes
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = APA_american_liberation_army_dummy_idea
+					add_idea = APA_the_red_army_stands_strong_campaign_idea
+				}
+			}
+			hidden_effect = {
+				add_command_power = -20
+				add_to_variable = {
+					var = APA_military_army_attack_factor_dynamic_var
+					value = 0.1
+				}
+				add_to_variable = {
+					var = APA_military_army_defence_factor_dynamic_var
+					value = 0.1
+				}
+				add_to_variable = {
+					var = APA_military_max_command_power_dynamic_var
+					value = -20
+				}
+			}
+		}
+		remove_effect = {
+			log = "[GetDateText]: [Root.GetName]: decision APA_the_red_army_stands_strong_campaign_decision remove_effect"
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = APA_the_red_army_stands_strong_campaign_idea
+					add_idea = APA_american_liberation_army_dummy_idea
+				}
+			}
+			hidden_effect = {
+				add_to_variable = {
+					var = APA_military_army_attack_factor_dynamic_var
+					value = -0.1
+				}
+				add_to_variable = {
+					var = APA_military_army_defence_factor_dynamic_var
+					value = -0.1
+				}
+				add_to_variable = {
+					var = APA_military_max_command_power_dynamic_var
+					value = 20
+				}
+			}
+			add_campaign_slot = yes
+		}
+	}
+	APA_defend_your_community_campaign_descision = {
+		icon = generic_propaganda_campaigns
+		days_remove = 175
+		days_re_enable = 175
+		cost = 0
+		custom_cost_text = NSM_revanchist_reconquest_campaign_decision_cost
+		custom_cost_trigger = {
+			NOT = {
+				command_power < 20
+			}
+		}
+		allowed = {
+			original_tag = APA
+		}
+		visible = {
+			hidden_trigger = {
+				has_completed_focus = APA_political_commissars
+			}
+		}
+		available = {
+			has_war = yes
+			has_campaign_slot = yes
+		}
+		ai_will_do = {
+			base = 1
+		}
+		modifier = {
+		}
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: decision APA_defend_your_community_campaign_descision complete_effect"
+			remove_campaign_slot = yes
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = APA_american_liberation_army_dummy_idea
+					add_idea = APA_defend_your_community_campaign_idea
+				}
+			}
+			hidden_effect = {
+				add_command_power = -20
+				add_to_variable = {
+					var = APA_military_conscription_factor_dynamic_var
+					value = 0.2
+				}
+				add_to_variable = {
+					var = APA_military_max_command_power_dynamic_var
+					value = -20
+				}
+			}
+		}
+		remove_effect = {
+			log = "[GetDateText]: [Root.GetName]: decision APA_defend_your_community_campaign_descision remove_effect"
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = APA_defend_your_community_campaign_idea
+					add_idea = APA_american_liberation_army_dummy_idea
+				}
+			}
+			hidden_effect = {
+				add_to_variable = {
+					var = APA_military_conscription_factor_dynamic_var
+					value = -0.2
+				}
+				add_to_variable = {
+					var = APA_military_max_command_power_dynamic_var
+					value = 20
+				}
+			}
+			add_campaign_slot = yes
+		}
+	}
+	APA_hold_the_line_campaign_decision = {
+		icon = generic_propaganda_campaigns
+		days_remove = 175
+		days_re_enable = 175
+		cost = 0
+		custom_cost_text = NSM_revanchist_reconquest_campaign_decision_cost
+		custom_cost_trigger = {
+			NOT = {
+				command_power < 20
+			}
+		}
+		allowed = {
+			original_tag = APA
+		}
+		visible = {
+			hidden_trigger = {
+				has_completed_focus = APA_political_commissars
+			}
+		}
+		available = {
+			has_war = yes
+			has_campaign_slot = yes
+		}
+		ai_will_do = {
+			base = 1
+		}
+		modifier = {
+		}
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: decision APA_hold_the_line_campaign_decision complete_effect"
+			remove_campaign_slot = yes
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = APA_american_liberation_army_dummy_idea
+					add_idea = APA_hold_the_line_campaign_idea
+				}
+			}
+			hidden_effect = {
+				add_command_power = -20
+				add_to_variable = {
+					var = APA_military_dig_in_speed_factor_dynamic_var
+					value = 0.1
+				}
+				add_to_variable = {
+					var = APA_military_max_dig_in_speed_factor_dynamic_var
+					value = 0.1
+				}
+				add_to_variable = {
+					var = APA_military_max_command_power_dynamic_var
+					value = -20
+				}
+			}
+		}
+		remove_effect = {
+			log = "[GetDateText]: [Root.GetName]: decision APA_hold_the_line_campaign_decision remove_effect"
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = APA_hold_the_line_campaign_idea
+					add_idea = APA_american_liberation_army_dummy_idea
+				}
+			}
+			hidden_effect = {
+				add_to_variable = {
+					var = APA_military_dig_in_speed_factor_dynamic_var
+					value = -0.1
+				}
+				add_to_variable = {
+					var = APA_military_max_dig_in_speed_factor_dynamic_var
+					value = -0.1
+				}
+				add_to_variable = {
+					var = APA_military_max_command_power_dynamic_var
+					value = 20
+				}
+			}
+			add_campaign_slot = yes
+		}
+	}
+	APA_army_education_campaign_decision = {
+		icon = generic_propaganda_campaigns
+		days_remove = 175
+		days_re_enable = 175
+		cost = 0
+		custom_cost_text = NSM_revanchist_reconquest_campaign_decision_cost
+		custom_cost_trigger = {
+			NOT = {
+				command_power < 20
+			}
+		}
+		allowed = {
+			original_tag = APA
+		}
+		visible = {
+			hidden_trigger = {
+				has_completed_focus = APA_the_red_academy_of_military_science
+			}
+		}
+		available = {
+			has_war = yes
+			has_campaign_slot = yes
+		}
+		ai_will_do = {
+			base = 1
+		}
+		modifier = {
+		}
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: decision APA_army_education_campaign_decision complete_effect"
+			remove_campaign_slot = yes
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = APA_american_liberation_army_dummy_idea
+					add_idea = APA_army_education_campaign_idea
+				}
+			}
+			hidden_effect = {
+				add_command_power = -20
+				add_to_variable = {
+					var = APA_military_experience_gain_army_factor_dynamic_var
+					value = 0.1
+				}
+				add_to_variable = {
+					var = APA_military_development_monthly_dynamic_var
+					value = 0.03
+				}
+				add_to_variable = {
+					var = APA_military_max_command_power_dynamic_var
+					value = -20
+				}
+			}
+		}
+		remove_effect = {
+			log = "[GetDateText]: [Root.GetName]: decision APA_army_education_campaign_decision remove_effect"
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = APA_army_education_campaign_idea
+					add_idea = APA_american_liberation_army_dummy_idea
+				}
+			}
+			hidden_effect = {
+				add_to_variable = {
+					var = APA_military_experience_gain_army_factor_dynamic_var
+					value = -0.1
+				}
+				add_to_variable = {
+					var = APA_military_development_monthly_dynamic_var
+					value = -0.03
+				}
+				add_to_variable = {
+					var = APA_military_max_command_power_dynamic_var
+					value = 20
+				}
+			}
+			add_campaign_slot = yes
+		}
+	}
+	APA_call_of_duty_campaign_decision = {
+		icon = generic_propaganda_campaigns
+		days_remove = 175
+		days_re_enable = 175
+		cost = 0
+		custom_cost_text = NSM_revanchist_reconquest_campaign_decision_cost
+		custom_cost_trigger = {
+			NOT = {
+				command_power < 20
+			}
+		}
+		allowed = {
+			original_tag = APA
+		}
+		visible = {
+			hidden_trigger = {
+				has_completed_focus = APA_the_soldiers_army
+			}
+		}
+		available = {
+			has_war = yes
+			has_campaign_slot = yes
+		}
+		ai_will_do = {
+			base = 1
+		}
+		modifier = {
+		}
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: decision APA_call_of_duty_campaign_decision complete_effect"
+			remove_campaign_slot = yes
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = APA_american_liberation_army_dummy_idea
+					add_idea = APA_call_of_duty_campaign_idea
+				}
+			}
+			hidden_effect = {
+				add_command_power = -20
+				add_to_variable = {
+					var = APA_military_coordination_bonus_dynamic_var
+					value = 0.1
+				}
+				add_to_variable = {
+					var = APA_military_planning_speed_dynamic_var
+					value = 0.1
+				}
+				add_to_variable = {
+					var = APA_military_max_command_power_dynamic_var
+					value = -20
+				}
+			}
+		}
+		remove_effect = {
+			log = "[GetDateText]: [Root.GetName]: decision APA_call_of_duty_campaign_decision remove_effect"
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = APA_call_of_duty_campaign_idea
+					add_idea = APA_american_liberation_army_dummy_idea
+				}
+			}
+			hidden_effect = {
+				add_to_variable = {
+					var = APA_military_coordination_bonus_dynamic_var
+					value = -0.1
+				}
+				add_to_variable = {
+					var = APA_military_planning_speed_dynamic_var
+					value = -0.1
+				}
+				add_to_variable = {
+					var = APA_military_max_command_power_dynamic_var
+					value = 20
+				}
+			}
+			add_campaign_slot = yes
+		}
+	}
+	APA_lighting_strike_campaign_decision = {
+		icon = generic_propaganda_campaigns
+		days_remove = 175
+		days_re_enable = 175
+		cost = 0
+		custom_cost_text = APA_lighting_strike_campaign_decision_cost
+		custom_cost_trigger = {
+			NOT = {
+				command_power < 40
+			}
+		}
+		allowed = {
+			original_tag = APA
+		}
+		visible = {
+			hidden_trigger = {
+				has_completed_focus = APA_cult_of_movement
+			}
+		}
+		available = {
+			has_war = yes
+			has_campaign_slot = yes
+		}
+		ai_will_do = {
+			base = 1
+		}
+		modifier = {
+		}
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: decision APA_lighting_strike_campaign_decision complete_effect"
+			remove_campaign_slot = yes
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = APA_american_liberation_army_dummy_idea
+					add_idea = APA_lighting_strike_campaign_idea
+				}
+			}
+			hidden_effect = {
+				add_command_power = -40
+				add_to_variable = {
+					var = APA_military_army_speed_factor_dynamic_var
+					value = 0.15
+				}
+				add_to_variable = {
+					var = APA_military_breakthrough_factor_dynamic_var
+					value = 0.15
+				}
+				add_to_variable = {
+					var = APA_military_max_command_power_dynamic_var
+					value = -40
+				}
+			}
+		}
+		remove_effect = {
+			log = "[GetDateText]: [Root.GetName]: decision APA_lighting_strike_campaign_decision remove_effect"
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = APA_lighting_strike_campaign_idea
+					add_idea = APA_american_liberation_army_dummy_idea
+				}
+			}
+			hidden_effect = {
+				add_to_variable = {
+					var = APA_military_army_speed_factor_dynamic_var
+					value = -0.15
+				}
+				add_to_variable = {
+					var = APA_military_breakthrough_factor_dynamic_var
+					value = -0.15
+				}
+				add_to_variable = {
+					var = APA_military_max_command_power_dynamic_var
+					value = 40
+				}
+			}
+			add_campaign_slot = yes
+		}
+	}
+	APA_hold_your_hunger_campaign_decision = {
+		icon = generic_propaganda_campaigns
+		days_remove = 175
+		days_re_enable = 175
+		cost = 0
+		custom_cost_text = NSM_revanchist_reconquest_campaign_decision_cost
+		custom_cost_trigger = {
+			NOT = {
+				command_power < 20
+			}
+		}
+		allowed = {
+			original_tag = APA
+		}
+		visible = {
+			hidden_trigger = {
+				has_completed_focus = APA_the_workers_army
+			}
+		}
+		available = {
+			has_war = yes
+			has_campaign_slot = yes
+		}
+		ai_will_do = {
+			base = 1
+		}
+		modifier = {
+		}
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: decision APA_hold_your_hunger_campaign_decision complete_effect"
+			remove_campaign_slot = yes
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = APA_american_liberation_army_dummy_idea
+					add_idea = APA_hold_your_hunger_campaign_idea
+				}
+			}
+			hidden_effect = {
+				add_command_power = -20
+				add_to_variable = {
+					var = APA_military_supply_consumption_factor_dynamic_var
+					value = -0.1
+				}
+				add_to_variable = {
+					var = APA_military_max_command_power_dynamic_var
+					value = -20
+				}
+			}
+		}
+		remove_effect = {
+			log = "[GetDateText]: [Root.GetName]: decision APA_hold_your_hunger_campaign_decision remove_effect"
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = APA_hold_your_hunger_campaign_idea
+					add_idea = APA_american_liberation_army_dummy_idea
+				}
+			}
+			hidden_effect = {
+				add_to_variable = {
+					var = APA_military_supply_consumption_factor_dynamic_var
+					value = 0.1
+				}
+				add_to_variable = {
+					var = APA_military_max_command_power_dynamic_var
+					value = 20
+				}
+			}
+			add_campaign_slot = yes
+		}
+	}
+	APA_red_wave_campaign_decision = {
+		icon = generic_propaganda_campaigns
+		days_remove = 175
+		days_re_enable = 175
+		cost = 0
+		custom_cost_text = APA_lighting_strike_campaign_decision_cost
+		custom_cost_trigger = {
+			NOT = {
+				command_power < 40
+			}
+		}
+		allowed = {
+			original_tag = APA
+		}
+		visible = {
+			hidden_trigger = {
+				has_completed_focus = APA_the_red_tsunami
+			}
+		}
+		available = {
+			has_war = yes
+			has_campaign_slot = yes
+		}
+		ai_will_do = {
+			base = 1
+		}
+		modifier = {
+		}
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: decision APA_red_wave_campaign_decision complete_effect"
+			remove_campaign_slot = yes
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = APA_american_liberation_army_dummy_idea
+					add_idea = APA_red_wave_campaign_idea
+				}
+			}
+			hidden_effect = {
+				add_command_power = -40
+				add_to_variable = {
+					var = APA_military_army_org_factor_dynamic_var
+					value = 0.1
+				}
+				add_to_variable = {
+					var = APA_military_army_org_regain_dynamic_var
+					value = 0.1
+				}
+				add_to_variable = {
+					var = APA_military_max_command_power_dynamic_var
+					value = -20
+				}
+			}
+		}
+		remove_effect = {
+			log = "[GetDateText]: [Root.GetName]: decision APA_red_wave_campaign_decision remove_effect"
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = APA_red_wave_campaign_idea
+					add_idea = APA_american_liberation_army_dummy_idea
+				}
+			}
+			hidden_effect = {
+				add_to_variable = {
+					var = APA_military_army_org_factor_dynamic_var
+					value = -0.1
+				}
+				add_to_variable = {
+					var = APA_military_army_org_regain_dynamic_var
+					value = -0.1
+				}
+				add_to_variable = {
+					var = APA_military_max_command_power_dynamic_var
+					value = 20
+				}
+			}
+			add_campaign_slot = yes
+		}
+	}
+	APA_arm_the_masses_campaign_descision = {
+		icon = generic_propaganda_campaigns
+		days_remove = 175
+		days_re_enable = 175
+		cost = 0
+		custom_cost_text = NSM_revanchist_reconquest_campaign_decision_cost
+		custom_cost_trigger = {
+			NOT = {
+				command_power < 20
+			}
+		}
+		allowed = {
+			original_tag = APA
+		}
+		visible = {
+			hidden_trigger = {
+				has_completed_focus = APA_the_proletariat_shall_not_be_disarmed
+			}
+		}
+		available = {
+			has_war = yes
+			has_campaign_slot = yes
+		}
+		ai_will_do = {
+			base = 1
+		}
+		modifier = {
+		}
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: decision APA_arm_the_masses_campaign_descision complete_effect"
+			remove_campaign_slot = yes
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = APA_american_liberation_army_dummy_idea
+					add_idea = APA_arm_the_masses_campaign_idea
+				}
+			}
+			hidden_effect = {
+				add_command_power = -20
+				add_to_variable = {
+					var = APA_military_army_attack_factor_dynamic_var
+					value = 0.1
+				}
+				add_to_variable = {
+					var = APA_military_army_defence_factor_dynamic_var
+					value = 0.1
+				}
+				add_to_variable = {
+					var = APA_military_max_command_power_dynamic_var
+					value = -20
+				}
+			}
+		}
+		remove_effect = {
+			log = "[GetDateText]: [Root.GetName]: decision APA_arm_the_masses_campaign_descision remove_effect"
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = APA_defend_your_community_campaign_idea
+					add_idea = APA_american_liberation_army_dummy_idea
+				}
+			}
+			hidden_effect = {
+				add_to_variable = {
+					var = APA_military_army_attack_factor_dynamic_var
+					value = -0.1
+				}
+				add_to_variable = {
+					var = APA_military_army_defence_factor_dynamic_var
+					value = -0.1
+				}
+				add_to_variable = {
+					var = APA_military_max_command_power_dynamic_var
+					value = 20
+				}
+			}
+			add_campaign_slot = yes
+		}
+	}
+	APA_heroes_forward_campaign_descision = {
+		icon = generic_propaganda_campaigns
+		days_remove = 175
+		days_re_enable = 175
+		cost = 0
+		custom_cost_text = NSM_revanchist_reconquest_campaign_decision_cost
+		custom_cost_trigger = {
+			NOT = {
+				command_power < 20
+			}
+		}
+		allowed = {
+			original_tag = APA
+		}
+		visible = {
+			hidden_trigger = {
+				has_completed_focus = APA_positive_heroism
+			}
+		}
+		available = {
+			has_war = yes
+			has_campaign_slot = yes
+		}
+		ai_will_do = {
+			base = 1
+		}
+		modifier = {
+		}
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: decision APA_heroes_forward_campaign_descision complete_effect"
+			remove_campaign_slot = yes
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = APA_american_liberation_army_dummy_idea
+					add_idea = APA_heroes_forward_campaign_idea
+				}
+			}
+			hidden_effect = {
+				add_command_power = -20
+				add_to_variable = {
+					var = APA_military_army_morale_factor_dynamic_var
+					value = 0.1
+				}
+				add_to_variable = {
+					var = APA_military_max_command_power_dynamic_var
+					value = -20
+				}
+			}
+		}
+		remove_effect = {
+			log = "[GetDateText]: [Root.GetName]: decision APA_heroes_forward_campaign_descision remove_effect"
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = APA_heroes_forward_campaign_idea
+					add_idea = APA_american_liberation_army_dummy_idea
+				}
+			}
+			hidden_effect = {
+				add_to_variable = {
+					var = APA_military_army_morale_factor_dynamic_var
+					value = -0.1
+				}
+				add_to_variable = {
+					var = APA_military_max_command_power_dynamic_var
+					value = 20
+				}
+			}
+			add_campaign_slot = yes
+		}
+	}
+	APA_stronger_together_campaign_descision = {
+		icon = generic_propaganda_campaigns
+		days_remove = 175
+		days_re_enable = 175
+		cost = 0
+		custom_cost_text = NSM_revanchist_reconquest_campaign_decision_cost
+		custom_cost_trigger = {
+			NOT = {
+				command_power < 20
+			}
+		}
+		allowed = {
+			original_tag = APA
+		}
+		visible = {
+			hidden_trigger = {
+				has_completed_focus = APA_collectivist_propaganda
+			}
+		}
+		available = {
+			has_war = yes
+			has_campaign_slot = yes
+		}
+		ai_will_do = {
+			base = 1
+		}
+		modifier = {
+		}
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: decision APA_stronger_together_campaign_descision complete_effect"
+			remove_campaign_slot = yes
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = APA_american_liberation_army_dummy_idea
+					add_idea = APA_stronger_together_campaign_idea
+				}
+			}
+			hidden_effect = {
+				add_command_power = -20
+				add_to_variable = {
+					var = APA_military_experience_gain_army_factor_dynamic_var
+					value = 0.1
+				}
+				add_to_variable = {
+					var = APA_military_command_power_gain_mult_dynamic_var
+					value = 0.1
+				}
+				add_to_variable = {
+					var = APA_military_max_command_power_dynamic_var
+					value = -20
+				}
+			}
+		}
+		remove_effect = {
+			log = "[GetDateText]: [Root.GetName]: decision APA_stronger_together_campaign_descision remove_effect"
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = APA_stronger_together_campaign_idea
+					add_idea = APA_american_liberation_army_dummy_idea
+				}
+			}
+			hidden_effect = {
+				add_to_variable = {
+					var = APA_military_experience_gain_army_factor_dynamic_var
+					value = -0.1
+				}
+				add_to_variable = {
+					var = APA_military_command_power_gain_mult_dynamic_var
+					value = -0.1
+				}
+				add_to_variable = {
+					var = APA_military_max_command_power_dynamic_var
+					value = 20
+				}
+			}
+			add_campaign_slot = yes
+		}
+	}	
+	APA_send_generals_to_study_russian_military_thought_campaign_descision = {
+		icon = generic_nationalism
+		days_remove = 170
+		cost = 75
+		allowed = {
+			original_tag = APA
+		}
+		visible = {
+			has_government = totalitarian_socialist
+			hidden_trigger = {
+				has_completed_focus = APA_the_red_academy_of_military_science
+			}
+		}
+		fire_only_once = yes
+		available = {
+			has_war = yes
+			has_campaign_slot = yes
+		}
+		ai_will_do = {
+			base = 25
+		}
+		modifier = {
+			experience_gain_army_factor = -0.2
+			misc_expense = 5
+		}
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: decision APA_send_generals_to_study_russian_military_thought_campaign_descision complete_effect"
+		}
+		remove_effect = {
+			log = "[GetDateText]: [Root.GetName]: decision APA_send_generals_to_study_russian_military_thought_campaign_descision remove_effect"
+			add_trait = {
+				character = APA_John_McIntyre
+				slot = corps_commander
+				trait = trait_russian_military_thought
+			}		
+			add_trait = {
+				character = APA_russell_bentley_char
+				slot = corps_commander
+				trait = trait_russian_military_thought
+			}	
+			add_trait = {
+				character = APA_Wilmer_Puello_Mota
+				slot = corps_commander
+				trait = trait_russian_military_thought
+			}		
+			add_trait = {
+				character = APA_donald_courter_char
+				slot = corps_commander
+				trait = trait_russian_military_thought
+			}
+			if = {
+				limit = {
+					APA_jackson_hinkle_char = { is_corps_commander = yes }
+					
+				}
+				add_trait = {
+					character = APA_jackson_hinkle_char
+					slot = corps_commander
+					trait = trait_russian_military_thought
+				}
+			}
+			APA_John_McIntyre = {
+				add_skill_level = 1
+			}
+			APA_russell_bentley_char = {
+				add_skill_level = 1
+			}
+			APA_Wilmer_Puello_Mota = {
+				add_skill_level = 1
+			}	
+			APA_donald_courter_char = {
+				add_skill_level = 1
+			}
+			if = {
+				limit = {
+					APA_jackson_hinkle_char = { is_corps_commander = yes }
+					
+				}
+				APA_jackson_hinkle_char = {
+					add_skill_level = 1
+				}
+			}
+		}
+	}
+}
+
+APA_revolutionary_economy_category = {
+	APA_distribute_aid = {
+		icon = GFX_UN_Aid
+		allowed = {
+			tag = APA
+		}
+		visible = {
+		}
+		days_remove = 35
+		days_re_enable = 35
+		cost = 50
+		modifier = {
+		}
+		ai_will_do = {
+			base = 50
+		}
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: decision APA_distribute_aid complete_effect"
+			set_temp_variable = {
+				var = poverty_development_var_temp
+				value = 0.1
+			}
+			add_poverty_development = yes
+		}
+	}
+	APA_restore_basic_services = {
+		icon = GFX_UN_Aid
+		allowed = {
+			tag = APA
+		}
+		visible = {
+		}
+		days_remove = 35
+		days_re_enable = 35
+		cost = 75
+		modifier = {
+			repair_speed_factor = 0.1
+		}
+		ai_will_do = {
+			base = 50
+		}
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: decision APA_restore_basic_services complete_effect"
+			add_stability = 0.05
+		}
+	}
+	APA_build_a_mil_factory_china = {
+		icon = decision_generic_factory
+		allowed = {
+			tag = APA
+		}
+		visible = {
+		}
+		days_remove = 35
+		days_re_enable = 35
+		cost = 40
+		modifier = {
+		}
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: decision APA_build_a_mil_factory_china complete_effect"
+			set_temp_variable = {
+				var = PRC_influence_var_temp
+				value = 0.03
+			}
+			PRC_add_influence = yes
+			#set_temp_variable = {
+			#	var = income_var_temp
+			#	value = 1500
+			#}
+			#add_income = yes
+		}
+		remove_effect = {
+			log = "[GetDateText]: [Root.GetName]: decision APA_build_a_mil_factory_china remove_effect"
+			random_owned_controlled_state = {
+				add_building_construction = {
+					type = arms_factory
+					level = 1
+					instant_build = yes
+				}
+			}
+		}
+	}
+	APA_incentivize_chinese_investment = {
+		icon = decision_generic_factory
+		allowed = {
+			tag = APA
+		}
+		visible = {
+			has_completed_focus = APA_expand_chinese_investment
+		}
+		days_remove = 35
+		days_re_enable = 35
+		cost = 60
+		modifier = {
+			political_power_gain = -0.1
+		}
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: decision APA_incentivize_chinese_investment complete_effect"
+			set_temp_variable = {
+				var = PRC_influence_var_temp
+				value = 0.06
+			}
+			PRC_add_influence = yes
+		}
+		remove_effect = {
+			log = "[GetDateText]: [Root.GetName]: decision APA_incentivize_chinese_investment remove_effect"
+			random_owned_controlled_state = {
+				add_building_construction = {
+					type = industrial_complex
+					level = 1
+					instant_build = yes
+				}
+			}
+		}
+	}
+	APA_invite_chinese_aid_agencies = {
+		icon = GFX_UN_Aid
+		allowed = {
+			tag = APA
+		}
+		visible = {
+			has_completed_focus = APA_expand_chinese_investment
+		}
+		days_remove = 70
+		days_re_enable = 70
+		cost = 50
+		modifier = {
+			political_power_gain = -0.1
+		}
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: decision APA_invite_chinese_aid_agencies complete_effect"
+			set_temp_variable = {
+				var = PRC_influence_var_temp
+				value = 0.06
+			}
+			PRC_add_influence = yes
+		}
+		remove_effect = {
+			log = "[GetDateText]: [Root.GetName]: decision APA_invite_chinese_aid_agencies remove_effect"
+			set_temp_variable = {
+				var = poverty_development_var_temp
+				value = 0.1
+			}
+			add_poverty_development = yes
+		}
+	}
+	APA_counter_chinese_influence = {
+		icon = decision_generic_factory
+		allowed = {
+			tag = APA
+		}
+		visible = {
+			has_completed_focus = APA_expand_chinese_investment
+		}
+		days_remove = 70
+		days_re_enable = 70
+		cost = 35
+		modifier = {
+			political_power_gain = -0.1
+		}
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: decision APA_counter_chinese_influence complete_effect"
+		}
+		remove_effect = {
+			log = "[GetDateText]: [Root.GetName]: decision APA_counter_chinese_influence remove_effect"
+			set_temp_variable = {
+				var = PRC_influence_var_temp
+				value = -0.1
+			}
+			PRC_add_influence = yes
+		}
+	}
+	PRC_chinese_demand_free_trade_mission = {
+		icon = generic_speech
+		allowed = {
+			tag = APA
+		}
+		activation = {
+			AND = {
+				set_temp_variable = {
+					var = PRC_influence_var_temp
+					value = 0.7
+				}
+				APA_has_chinese_influence_greater_than = yes
+				NOT = {
+					has_idea = high_trade
+				}
+			}
+		}
+		available = {
+			always = no
+		}
+		cancel_trigger = {
+			OR = {
+				set_temp_variable = {
+					var = PRC_influence_var_temp
+					value = 0.7
+				}
+				APA_has_chinese_influence_less_than = yes
+				has_idea = high_trade
+			}
+		}
+		is_good = yes
+		selectable_mission = no
+		days_mission_timeout = 175
+		cancel_effect = {
+		}
+		timeout_effect = {
+			log = "[GetDateText]: [Root.GetName]: mission PRC_chinese_demand_free_trade_mission timeout_effect"
+			if = {
+				limit = {
+					NOT = {
+						has_idea = high_trade
+					}
+				}
+				add_ideas = high_trade
+			}
+			set_temp_variable = {
+				var = PRC_influence_var_temp
+				value = -0.1
+			}
+			PRC_add_influence = yes
+		}
+	}
+	APA_chinese_demand_resource_rights_mission = {
+		icon = generic_speech
+		allowed = {
+			tag = APA
+		}
+		activation = {
+			AND = {
+				set_temp_variable = {
+					var = PRC_influence_var_temp
+					value = 0.85
+				}
+				APA_has_chinese_influence_greater_than = yes
+				NOT = {
+					has_country_flag = APA_PRC_taken_resources
+				}
+			}
+		}
+		available = {
+			always = no
+		}
+		cancel_trigger = {
+			set_temp_variable = {
+				var = PRC_influence_var_temp
+				value = 0.85
+			}
+			APA_has_chinese_influence_less_than = yes
+		}
+		is_good = yes
+		selectable_mission = no
+		days_mission_timeout = 250
+		cancel_effect = {
+		}
+		timeout_effect = {
+			log = "[GetDateText]: [Root.GetName]: mission APA_chinese_demand_resource_rights_mission timeout_effect"
+			add_stability = -0.2
+			set_temp_variable = {
+				var = APA_popular_support_var_temp
+				value = -0.2
+			}
+			APA_add_popular_support = yes
+			give_resource_rights = {
+				receiver = PRC
+				state = 986
+			}
+			give_resource_rights = {
+				receiver = PRC
+				state = 950
+			}
+			give_resource_rights = {
+				receiver = PRC
+				state = 943
+			}
+			set_country_flag = APA_PRC_taken_resources
+		}
+	}
+	APA_home_front_warfare_campaign_decision = {
+		icon = generic_propaganda_campaigns
+		days_remove = 175
+		days_re_enable = 175
+		cost = 25
+		allowed = {
+			original_tag = APA
+		}
+		visible = {
+		}
+		available = {
+			has_campaign_slot = yes
+		}
+		ai_will_do = {
+			base = 1
+		}
+		modifier = {
+		}
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: decision APA_home_front_warfare_campaign_decision complete_effect"
+			remove_campaign_slot = yes
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = APA_revolutionary_industry_dummy_idea
+					add_idea = APA_home_front_warfare_campaign_idea
+				}
+			}
+			hidden_effect = {
+				add_to_variable = {
+					var = APA_economy_conversion_cost_civ_to_mil_factor_dynamic_var
+					value = -0.2
+				}
+			}
+		}
+		remove_effect = {
+			log = "[GetDateText]: [Root.GetName]: decision APA_home_front_warfare_campaign_decision remove_effect"
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = APA_home_front_warfare_campaign_idea
+					add_idea = APA_revolutionary_industry_dummy_idea
+				}
+			}
+			hidden_effect = {
+				add_to_variable = {
+					var = APA_economy_conversion_cost_civ_to_mil_factor_dynamic_var
+					value = 0.2
+				}
+			}
+			add_campaign_slot = yes
+		}
+	}
+	APA_empowered_consumers_campaign_decision = {
+		icon = generic_propaganda_campaigns
+		days_remove = 175
+		days_re_enable = 175
+		cost = 25
+		allowed = {
+			original_tag = APA
+		}
+		visible = {
+		}
+		available = {
+			has_campaign_slot = yes
+		}
+		ai_will_do = {
+			base = 1
+		}
+		modifier = {
+		}
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: decision APA_empowered_consumers_campaign_decision complete_effect"
+			remove_campaign_slot = yes
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = APA_revolutionary_industry_dummy_idea
+					add_idea = APA_empowered_consumers_campaign_idea
+				}
+			}
+			hidden_effect = {
+				add_to_variable = {
+					var = APA_economy_conversion_cost_mil_to_civ_factor_dynamic_var
+					value = -0.2
+				}
+			}
+		}
+		remove_effect = {
+			log = "[GetDateText]: [Root.GetName]: decision APA_empowered_consumers_campaign_decision remove_effect"
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = APA_empowered_consumers_campaign_idea
+					add_idea = APA_revolutionary_industry_dummy_idea
+				}
+			}
+			hidden_effect = {
+				add_to_variable = {
+					var = APA_economy_conversion_cost_mil_to_civ_factor_dynamic_var
+					value = 0.2
+				}
+			}
+			add_campaign_slot = yes
+		}
+	}
+	APA_every_worker_counts_campaign_decision = {
+		icon = generic_propaganda_campaigns
+		days_remove = 175
+		days_re_enable = 175
+		cost = 25
+		allowed = {
+			original_tag = APA
+		}
+		visible = {
+		}
+		available = {
+			has_campaign_slot = yes
+		}
+		ai_will_do = {
+			base = 1
+		}
+		modifier = {
+		}
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: decision APA_every_worker_counts_campaign_decision complete_effect"
+			remove_campaign_slot = yes
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = APA_revolutionary_industry_dummy_idea
+					add_idea = APA_every_worker_counts_campaign_idea
+				}
+			}
+			hidden_effect = {
+				add_to_variable = {
+					var = APA_economy_production_speed_buildings_factor_dynamic_var
+					value = 0.05
+				}
+			}
+		}
+		remove_effect = {
+			log = "[GetDateText]: [Root.GetName]: decision APA_every_worker_counts_campaign_decision remove_effect"
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = APA_every_worker_counts_campaign_idea
+					add_idea = APA_revolutionary_industry_dummy_idea
+				}
+			}
+			hidden_effect = {
+				add_to_variable = {
+					var = APA_economy_production_speed_buildings_factor_dynamic_var
+					value = -0.05
+				}
+			}
+			add_campaign_slot = yes
+		}
+	}
+	APA_backbone_of_socialism_campaign_decision = {
+		icon = generic_propaganda_campaigns
+		days_remove = 175
+		days_re_enable = 175
+		cost = 75
+		allowed = {
+			original_tag = APA
+		}
+		visible = {
+			OR = {
+				has_completed_focus = APA_an_ideologically_committed_economy
+				has_completed_focus = APA_the_peoples_stock_exchange
+			}
+		}
+		available = {
+			has_campaign_slot = yes
+		}
+		ai_will_do = {
+			base = 1
+		}
+		modifier = {
+		}
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: decision APA_backbone_of_socialism_campaign_decision complete_effect"
+			remove_campaign_slot = yes
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = APA_revolutionary_industry_dummy_idea
+					add_idea = APA_backbone_of_socialism_campaign_idea
+				}
+			}
+			hidden_effect = {
+				add_to_variable = {
+					var = APA_economy_production_speed_industrial_complex_factor_dynamic_var
+					value = 0.15
+				}
+			}
+		}
+		remove_effect = {
+			log = "[GetDateText]: [Root.GetName]: decision APA_backbone_of_socialism_campaign_decision remove_effect"
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = APA_backbone_of_socialism_campaign_idea
+					add_idea = APA_revolutionary_industry_dummy_idea
+				}
+			}
+			hidden_effect = {
+				add_to_variable = {
+					var = APA_economy_production_speed_industrial_complex_factor_dynamic_var
+					value = -0.15
+				}
+			}
+			add_campaign_slot = yes
+		}
+	}
+	APA_labor_for_liberation_campaign_decision = {
+		icon = generic_propaganda_campaigns
+		days_remove = 175
+		days_re_enable = 175
+		cost = 75
+		allowed = {
+			original_tag = APA
+		}
+		visible = {
+			OR = {
+				has_completed_focus = APA_forbidden_fruit_of_war_communism
+				has_completed_focus = APA_ban_private_ownership_of_capital
+			}
+		}
+		available = {
+			has_campaign_slot = yes
+		}
+		ai_will_do = {
+			base = 1
+		}
+		modifier = {
+		}
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: decision APA_labor_for_liberation_campaign_decision complete_effect"
+			remove_campaign_slot = yes
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = APA_revolutionary_industry_dummy_idea
+					add_idea = APA_labor_for_liberation_campaign_idea
+				}
+			}
+			hidden_effect = {
+				add_to_variable = {
+					var = APA_economy_production_speed_arms_factory_factor_dynamic_var
+					value = 0.15
+				}
+			}
+		}
+		remove_effect = {
+			log = "[GetDateText]: [Root.GetName]: decision APA_labor_for_liberation_campaign_decision remove_effect"
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = APA_labor_for_liberation_campaign_idea
+					add_idea = APA_revolutionary_industry_dummy_idea
+				}
+			}
+			hidden_effect = {
+				add_to_variable = {
+					var = APA_economy_production_speed_arms_factory_factor_dynamic_var
+					value = -0.15
+				}
+			}
+			add_campaign_slot = yes
+		}
+	}
+	APA_militarized_unions_campaign_decision = {
+		icon = generic_propaganda_campaigns
+		days_remove = 175
+		days_re_enable = 175
+		cost = 75
+		allowed = {
+			original_tag = APA
+		}
+		visible = {
+			hidden_trigger = {
+				has_completed_focus = APA_militarize_the_unions
+			}
+		}
+		available = {
+			OR = {
+				has_war = yes
+				NOT = {
+					has_war_support < 0.5
+				}
+			}
+			has_campaign_slot = yes
+		}
+		ai_will_do = {
+			base = 1
+		}
+		modifier = {
+		}
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: decision APA_militarized_unions_campaign_decision complete_effect"
+			remove_campaign_slot = yes
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = APA_revolutionary_industry_dummy_idea
+					add_idea = APA_militarize_the_unions_idea
+				}
+			}
+			hidden_effect = {
+				add_to_variable = {
+					var = APA_economy_industrial_capacity_factory_dynamic_var
+					value = 0.1
+				}
+				add_to_variable = {
+					var = APA_economy_industrial_capacity_dockyard_dynamic_var
+					value = 0.1
+				}
+			}
+		}
+		remove_effect = {
+			log = "[GetDateText]: [Root.GetName]: decision APA_militarized_unions_campaign_decision remove_effect"
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = APA_militarize_the_unions_idea
+					add_idea = APA_revolutionary_industry_dummy_idea
+				}
+			}
+			hidden_effect = {
+				add_to_variable = {
+					var = APA_economy_industrial_capacity_factory_dynamic_var
+					value = -0.1
+				}
+				add_to_variable = {
+					var = APA_economy_industrial_capacity_dockyard_dynamic_var
+					value = -0.1
+				}
+			}
+			add_campaign_slot = yes
+		}
+	}
+	APA_sharing_is_caring_campaign_decision = {
+		icon = generic_propaganda_campaigns
+		days_remove = 175
+		days_re_enable = 175
+		cost = 50
+		allowed = {
+			original_tag = APA
+		}
+		visible = {
+			hidden_trigger = {
+				has_completed_focus = APA_peer_to_peer_economics
+			}
+		}
+		available = {
+			has_campaign_slot = yes
+		}
+		ai_will_do = {
+			base = 1
+		}
+		modifier = {
+		}
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: decision APA_sharing_is_caring_campaign_decision complete_effect"
+			remove_campaign_slot = yes
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = APA_revolutionary_industry_dummy_idea
+					add_idea = APA_sharing_is_caring_campaign_idea
+				}
+			}
+			hidden_effect = {
+				add_to_variable = {
+					var = APA_economy_line_change_production_efficiency_factor_dynamic_var
+					value = 0.1
+				}
+			}
+		}
+		remove_effect = {
+			log = "[GetDateText]: [Root.GetName]: decision APA_sharing_is_caring_campaign_decision remove_effect"
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = APA_sharing_is_caring_campaign_idea
+					add_idea = APA_revolutionary_industry_dummy_idea
+				}
+			}
+			hidden_effect = {
+				add_to_variable = {
+					var = APA_economy_line_change_production_efficiency_factor_dynamic_var
+					value = -0.1
+				}
+			}
+			add_campaign_slot = yes
+		}
+	}
+	APA_push_it_to_the_limit_campaign_decision = {
+		icon = generic_propaganda_campaigns
+		days_remove = 175
+		days_re_enable = 175
+		cost = 50
+		allowed = {
+			original_tag = APA
+		}
+		visible = {
+			hidden_trigger = {
+				has_completed_focus = APA_radical_redistribution
+			}
+		}
+		available = {
+			has_campaign_slot = yes
+		}
+		ai_will_do = {
+			base = 1
+		}
+		modifier = {
+		}
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: decision APA_push_it_to_the_limit_campaign_decision complete_effect"
+			remove_campaign_slot = yes
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = APA_revolutionary_industry_dummy_idea
+					add_idea = APA_push_it_to_the_limit_campaign_idea
+				}
+			}
+			hidden_effect = {
+				add_to_variable = {
+					var = APA_economy_production_factory_max_efficiency_factor_dynamic_var
+					value = 0.1
+				}
+			}
+		}
+		remove_effect = {
+			log = "[GetDateText]: [Root.GetName]: decision APA_push_it_to_the_limit_campaign_decision remove_effect"
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = APA_push_it_to_the_limit_campaign_idea
+					add_idea = APA_revolutionary_industry_dummy_idea
+				}
+			}
+			hidden_effect = {
+				add_to_variable = {
+					var = APA_economy_production_factory_max_efficiency_factor_dynamic_var
+					value = -0.1
+				}
+			}
+			add_campaign_slot = yes
+		}
+	}
+	APA_yes_we_cannabis_campaign_decision = {
+		icon = generic_propaganda_campaigns
+		days_remove = 175
+		days_re_enable = 175
+		cost = 50
+		allowed = {
+			original_tag = APA
+		}
+		visible = {
+			hidden_trigger = {
+				has_completed_focus = APA_legalize_recreational_drugs
+			}
+		}
+		available = {
+			has_country_flag = APA_drugs_allowed_flag
+			has_campaign_slot = yes
+		}
+		ai_will_do = {
+			base = 1
+		}
+		modifier = {
+		}
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: decision APA_yes_we_cannabis_campaign_decision complete_effect"
+			remove_campaign_slot = yes
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = APA_revolutionary_industry_dummy_idea
+					add_idea = APA_yes_we_cannabis_campaign_idea
+				}
+			}
+			hidden_effect = {
+				add_to_variable = {
+					var = APA_economy_compliance_growth_dynamic_var
+					value = 0.1
+				}
+			}
+		}
+		remove_effect = {
+			log = "[GetDateText]: [Root.GetName]: decision APA_yes_we_cannabis_campaign_decision remove_effect"
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = APA_yes_we_cannabis_campaign_idea
+					add_idea = APA_revolutionary_industry_dummy_idea
+				}
+			}
+			hidden_effect = {
+				add_to_variable = {
+					var = APA_economy_compliance_growth_dynamic_var
+					value = -0.1
+				}
+			}
+			add_campaign_slot = yes
+		}
+	}
+	APA_save_your_scraps_campaign_decision = {
+		icon = generic_propaganda_campaigns
+		days_remove = 175
+		days_re_enable = 175
+		cost = 25
+		allowed = {
+			original_tag = APA
+		}
+		visible = {
+			hidden_trigger = {
+				has_completed_focus = APA_introduce_rationing
+			}
+		}
+		available = {
+			OR = {
+				has_war = yes
+				has_global_flag = USA_american_civil_war_global
+			}
+			has_campaign_slot = yes
+		}
+		ai_will_do = {
+			base = 1
+		}
+		modifier = {
+		}
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: decision APA_save_your_scraps_campaign_decision complete_effect"
+			remove_campaign_slot = yes
+			add_stability = -0.025
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = APA_revolutionary_industry_dummy_idea
+					add_idea = APA_save_your_scraps_campaign_idea
+				}
+			}
+			hidden_effect = {
+				add_to_variable = {
+					var = APA_economy_consumer_goods_factor_dynamic_var
+					value = -0.05
+				}
+			}
+		}
+		remove_effect = {
+			log = "[GetDateText]: [Root.GetName]: decision APA_save_your_scraps_campaign_decision remove_effect"
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = APA_save_your_scraps_campaign_idea
+					add_idea = APA_revolutionary_industry_dummy_idea
+				}
+			}
+			hidden_effect = {
+				add_to_variable = {
+					var = APA_economy_consumer_goods_factor_dynamic_var
+					value = 0.05
+				}
+			}
+			add_campaign_slot = yes
+		}
+	}
+	APA_reserve_your_resources_campaign_decision = {
+		icon = generic_propaganda_campaigns
+		days_remove = 175
+		days_re_enable = 175
+		cost = 50
+		allowed = {
+			original_tag = APA
+		}
+		visible = {
+			hidden_trigger = {
+				has_completed_focus = APA_introduce_rationing
+			}
+		}
+		available = {
+			has_campaign_slot = yes
+		}
+		ai_will_do = {
+			base = 1
+		}
+		modifier = {
+		}
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: decision APA_reserve_your_resources_campaign_decision complete_effect"
+			remove_campaign_slot = yes
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = APA_revolutionary_industry_dummy_idea
+					add_idea = APA_reserve_your_resources_campaign_idea
+				}
+			}
+			hidden_effect = {
+				add_to_variable = {
+					var = APA_economy_production_lack_of_resource_penalty_factor
+					value = 0.2
+				}
+			}
+		}
+		remove_effect = {
+			log = "[GetDateText]: [Root.GetName]: decision APA_reserve_your_resources_campaign_decision remove_effect"
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = APA_reserve_your_resources_campaign_idea
+					add_idea = APA_revolutionary_industry_dummy_idea
+				}
+			}
+			hidden_effect = {
+				add_to_variable = {
+					var = APA_economy_production_lack_of_resource_penalty_factor
+					value = -0.2
+				}
+			}
+			add_campaign_slot = yes
+		}
+	}
+	APA_expanded_quotas_campaign_decision = {
+		icon = generic_propaganda_campaigns
+		days_remove = 175
+		days_re_enable = 175
+		cost = 75
+		allowed = {
+			original_tag = APA
+		}
+		visible = {
+			hidden_trigger = {
+				has_completed_focus = APA_establish_production_quotas
+			}
+		}
+		available = {
+			has_campaign_slot = yes
+		}
+		ai_will_do = {
+			base = 1
+		}
+		modifier = {
+		}
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: decision APA_expanded_quotas_campaign_decision complete_effect"
+			remove_campaign_slot = yes
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = APA_revolutionary_industry_dummy_idea
+					add_idea = APA_expanded_quotas_campaign_idea
+				}
+			}
+			hidden_effect = {
+				add_to_variable = {
+					var = APA_economy_production_factory_efficiency_gain_factor_dynamic_var
+					value = 0.15
+				}
+			}
+		}
+		remove_effect = {
+			log = "[GetDateText]: [Root.GetName]: decision APA_expanded_quotas_campaign_decision remove_effect"
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = APA_expanded_quotas_campaign_idea
+					add_idea = APA_revolutionary_industry_dummy_idea
+				}
+			}
+			hidden_effect = {
+				add_to_variable = {
+					var = APA_economy_production_factory_efficiency_gain_factor_dynamic_var
+					value = -0.15
+				}
+			}
+			add_campaign_slot = yes
+		}
+	}
+	APA_expanded_co_ops_campaign_decision = {
+		icon = generic_propaganda_campaigns
+		days_remove = 175
+		days_re_enable = 175
+		cost = 25
+		allowed = {
+			original_tag = APA
+		}
+		visible = {
+			hidden_trigger = {
+				has_completed_focus = APA_workplace_democracy
+			}
+		}
+		available = {
+			has_campaign_slot = yes
+		}
+		ai_will_do = {
+			base = 1
+		}
+		modifier = {
+		}
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: decision APA_expanded_co_ops_campaign_decision complete_effect"
+			remove_campaign_slot = yes
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = APA_revolutionary_industry_dummy_idea
+					add_idea = APA_expanded_co_ops_campaign_idea
+				}
+			}
+			hidden_effect = {
+				add_to_variable = {
+					var = APA_economy_political_power_gain_dynamic_var
+					value = 0.3
+				}
+			}
+		}
+		remove_effect = {
+			log = "[GetDateText]: [Root.GetName]: decision APA_expanded_co_ops_campaign_decision remove_effect"
+			set_temp_variable = {
+				var = APA_popular_support_var_temp
+				value = 0.05
+			}
+			APA_add_popular_support = yes
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = APA_expanded_co_ops_campaign_idea
+					add_idea = APA_revolutionary_industry_dummy_idea
+				}
+			}
+			hidden_effect = {
+				add_to_variable = {
+					var = APA_economy_political_power_gain_dynamic_var
+					value = -0.3
+				}
+			}
+			add_campaign_slot = yes
+		}
+	}
+	APA_new_patriotism_campaign_decision = {
+		icon = generic_propaganda_campaigns
+		days_remove = 175
+		days_re_enable = 175
+		cost = 50
+		allowed = {
+			original_tag = APA
+		}
+		visible = {
+			hidden_trigger = {
+				has_completed_focus = APA_nationalization
+			}
+		}
+		available = {
+			has_campaign_slot = yes
+		}
+		ai_will_do = {
+			base = 1
+		}
+		modifier = {
+		}
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: decision APA_new_patriotism_campaign_decision complete_effect"
+			remove_campaign_slot = yes
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = APA_revolutionary_industry_dummy_idea
+					add_idea = APA_new_patriotism_campaign_idea
+				}
+			}
+			hidden_effect = {
+				add_to_variable = {
+					var = APA_economy_stability_weekly_dynamic_var
+					value = 0.003
+				}
+				add_to_variable = {
+					var = APA_economy_industrial_capacity_factory_dynamic_var
+					value = 0.05
+				}
+				add_to_variable = {
+					var = APA_economy_industrial_capacity_dockyard_dynamic_var
+					value = 0.05
+				}
+			}
+		}
+		remove_effect = {
+			log = "[GetDateText]: [Root.GetName]: decision APA_new_patriotism_campaign_decision remove_effect"
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = APA_new_patriotism_campaign_idea
+					add_idea = APA_revolutionary_industry_dummy_idea
+				}
+			}
+			hidden_effect = {
+				add_to_variable = {
+					var = APA_economy_stability_weekly_dynamic_var
+					value = -0.003
+				}
+				add_to_variable = {
+					var = APA_economy_industrial_capacity_factory_dynamic_var
+					value = -0.05
+				}
+				add_to_variable = {
+					var = APA_economy_industrial_capacity_dockyard_dynamic_var
+					value = -0.05
+				}
+			}
+			add_campaign_slot = yes
+		}
+	}
+	APA_anti_colonization_campaign_decision = {
+		icon = generic_propaganda_campaigns
+		days_remove = 175
+		days_re_enable = 175
+		cost = 50
+		allowed = {
+			original_tag = APA
+		}
+		visible = {
+			hidden_trigger = {
+				has_completed_focus = APA_decolonization
+			}
+		}
+		available = {
+			has_campaign_slot = yes
+		}
+		ai_will_do = {
+			base = 1
+		}
+		modifier = {
+		}
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: decision APA_anti_colonization_campaign_decision complete_effect"
+			remove_campaign_slot = yes
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = APA_revolutionary_industry_dummy_idea
+					add_idea = APA_anti_colonization_campaign_idea
+				}
+			}
+			hidden_effect = {
+				add_to_variable = {
+					var = APA_economy_stability_weekly_dynamic_var
+					value = 0.003
+				}
+				add_to_variable = {
+					var = APA_economy_production_speed_buildings_factor_dynamic_var
+					value = 0.05
+				}
+			}
+		}
+		remove_effect = {
+			log = "[GetDateText]: [Root.GetName]: decision APA_anti_colonization_campaign_decision remove_effect"
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = APA_anti_colonization_campaign_idea
+					add_idea = APA_revolutionary_industry_dummy_idea
+				}
+			}
+			hidden_effect = {
+				add_to_variable = {
+					var = APA_economy_stability_weekly_dynamic_var
+					value = -0.003
+				}
+				add_to_variable = {
+					var = APA_economy_production_speed_buildings_factor_dynamic_var
+					value = -0.05
+				}
+			}
+			add_campaign_slot = yes
+		}
+	}
+}
+
+APA_united_front_category = {
+	APA_invite_faction_to_coalition = {
+		icon = generic_shaking_hands
+		allowed = {
+			original_tag = APA
+		}
+		visible = {
+			is_in_faction = yes
+			is_faction_leader = yes
+			FROM = {
+				is_in_faction = no
+			}
+		}
+		target_root_trigger = {
+			has_completed_focus = APA_form_a_united_front
+		}
+		target_trigger = {
+			FROM = {
+				is_in_faction = no
+				is_subject = no
+				NOT = {
+					has_war_with = APA
+					has_country_leader = {
+						character = CAC_bob_avakian
+					}
+				}
+				USA_is_civil_war_faction = yes
+				OR = {
+					has_government = communist
+					has_government = totalitarian_socialist
+					has_government = libertarian_socialist
+					tag = NNN
+				}
+				if = {
+					limit = {
+						tag = CAC
+					}
+					has_country_flag = CAC_unified_flag
+				}
+			}
+		}
+		available = {
+			any_controlled_state = {
+				any_neighbor_state = {
+					is_controlled_by = FROM
+				}
+			}
+		}
+		ai_will_do = {
+			base = 100
+		}
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: decision APA_invite_faction_to_coalition complete_effect"
+			log = "[GetDateText]: [Root.GetName]: Invited [FROM.GetName] to [ROOT.GetFactionName]"
+			add_FROM_to_coalition = yes
+		}
+	}
+	APA_assist_faction = {
+		icon = generic_industry
+		fire_only_once = no
+		cost = 10
+		days_re_enable = 105
+		allowed = {
+			original_tag = APA
+		}
+		visible = {
+			is_in_faction = yes
+			is_faction_leader = yes
+		}
+		target_root_trigger = {
+			has_completed_focus = APA_form_a_united_front
+		}
+		target_trigger = {
+			FROM = {
+				is_in_faction = no
+				is_subject = no
+				has_war = yes
+				exists = yes
+				NOT = {
+					has_war_with = APA
+					has_idea = APA_assistance_idea
+				}
+				USA_is_civil_war_faction = yes
+				OR = {
+					has_government = communist
+					has_government = totalitarian_socialist
+					has_government = libertarian_socialist
+					tag = NNN
+				}
+			}
+		}
+		available = {
+		}
+		ai_will_do = {
+			base = 100
+		}
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: decision APA_assist_faction complete_effect"
+			FROM = {
+				add_timed_idea = {
+					idea = APA_assistance_idea
+					days = 70
+				}
+			}
+		}
+	}
+}
+
+debug_decisions = {
+	APA_annex_cali_decision = {
+		icon = generic_ignite_civil_war
+		allowed = {
+			original_tag = APA
+		}
+		visible = {
+			all_other_country = {
+				if = {
+					limit = {
+						OR = {
+							tag = CAL
+							tag = CLM
+							tag = AYB
+							tag = APA
+							tag = WLF
+							tag = HLA
+							tag = BGF
+							tag = NRT
+							tag = SRN
+							tag = RGA
+							tag = RPP
+							NOT = {
+								tag = ROOT
+							}
+						}
+					}
+					exists = yes
+				}
+			}
+		}
+		available = {
+		}
+		ai_will_do = {
+			base = 0
+		}
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: decision APA_annex_cali_decision complete_effect"
+			every_other_country = {
+				limit = {
+					exists = yes
+					NOT = {
+						tag = ROOT
+					}
+					OR = {
+						tag = CAL
+						tag = CLM
+						tag = AYB
+						tag = APA
+						tag = WLF
+						tag = HLA
+						tag = BGF
+						tag = NRT
+						tag = SRN
+						tag = RGA
+						tag = RPP
+					}
+				}
+				every_controlled_state = {
+					transfer_state_to = ROOT
+				}
+			}
+			country_event = {
+				id = apla.22
+			}
+		}
+	}
+}

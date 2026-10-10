@@ -1,0 +1,144 @@
+﻿add_namespace = norway
+
+#Anti War Protests
+country_event = {
+	id = norway.1
+	title = norway.1.t
+	desc = norway.1.d
+	picture = GFX_report_event_russian_flag
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = norway.1.a
+		add_timed_idea = {
+			idea = NOR_anti_war_protests
+			days = 200
+		}
+		hidden_effect = {
+			random_list = {
+				20 = {
+					country_event = { id = norway.2 }
+				}
+				80 = {
+				}
+			}
+		}
+	}
+}
+
+#Anti War Protests
+country_event = {
+	id = norway.2
+	title = norway.2.t
+	desc = norway.2.d
+	picture = GFX_report_event_russian_flag
+	
+	is_triggered_only = yes
+	immediate = {
+		hidden_effect = {
+			white_peace = SOV
+			news_event = { id = news.213 }
+			ENG = {
+				remove_from_faction = NOR
+			}
+		}
+	}
+	
+	option = {
+		name = norway.2.a
+		effect_tooltip = {
+			white_peace = SOV
+			news_event = { id = news.213 }
+			every_country = {
+				limit = {
+					has_country_flag = NATO_current_leader
+				}
+				remove_from_faction = NOR
+			}
+		}
+	}
+}
+country_event = { #Haakon speaks on the political divide
+	id = norway.3
+	title = norway.3.t
+	desc = norway.3.d
+	picture = GFX_report_event_russian_flag
+	
+	is_triggered_only = yes
+	immediate = {
+		
+	}
+	
+	option = { #Haakon supports giving him more power
+		name = norway.3.a
+		add_popularity = {
+			ideology = authoritarian_democrat
+			popularity = 0.05
+		}
+		add_war_support = 0.075
+		add_stability = -0.025
+		swap_ideas = {
+			add_idea = NOR_growing_class_divide_2_idea
+			remove_idea = NOR_growing_class_divide_idea
+		}
+	}
+	option = { #Haakon decries political divide
+		name = norway.3.b
+		add_stability = 0.05
+		swap_ideas = {
+			add_idea = NOR_growing_class_divide_1_idea
+			remove_idea = NOR_growing_class_divide_idea
+		}
+	}
+	option = { #Haakon donates to charity and decries rich oil oligarchy 
+		name = norway.3.c
+		add_popularity = {
+			ideology = authoritarian_democrat
+			popularity = -0.05
+		}
+		remove_ideas = NOR_growing_class_divide_idea
+	}
+}
+country_event = { #Harald dies
+	id = norway.4
+	title = norway.4.t
+	desc = norway.4.d
+	picture = GFX_report_event_russian_flag
+	
+	is_triggered_only = yes
+	immediate = {
+		
+	}
+	
+	option = { #rip whitey
+		name = norway.4.a
+		retire_character = NOR_harald_v_char
+	}
+}
+country_event = { #Oligarchy secures election
+	id = norway.5
+	title = norway.5.t
+	desc = norway.5.d
+	picture = GFX_report_event_russian_flag
+	fire_only_once = yes
+	trigger = {
+		tag = NOR
+		NOR = {
+			authoritarian_democrat > 49
+		}
+	}
+	immediate = {
+		
+	}
+	
+	option = { #
+		name = norway.5.a
+		set_politics = {
+			ruling_party = authoritarian_democrat
+			last_election = "2019.10.27"
+			election_frequency = 48
+			elections_allowed = no
+		}
+	}
+}

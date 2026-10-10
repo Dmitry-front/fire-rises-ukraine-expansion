@@ -1,0 +1,30 @@
+﻿add_namespace = yemen
+
+country_event = { #Civil war ends. Cores of other sides removed.
+	id = yemen.1
+	title = yemen.1.t
+	desc = yemen.1.d
+	picture = GFX_generic_vietnam
+	hidden = yes
+	
+	trigger = {
+		NOT = {
+			country_exists = HOU
+			country_exists = AAS
+		}
+		country_exists = YEM
+	}
+	immediate = {
+		
+	}
+	
+	option = {
+		name = yemen.1.a
+		YEM = {
+			every_state = {
+				remove_core_of = HOU
+				remove_core_of = AAS
+			}
+		}
+	}
+}

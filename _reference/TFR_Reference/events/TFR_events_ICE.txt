@@ -1,0 +1,356 @@
+add_namespace = Iceland
+	
+#Ecological Collapse End Game decided
+country_event = {
+	id = Iceland.1
+	title = Iceland.1.t
+	desc = Iceland.1.d
+	picture = GFX_Melting_Glaciers
+	
+	fire_only_once = yes
+	is_triggered_only = yes
+
+	trigger = {
+		original_tag = ICE
+	}
+
+	option = {
+		name = Iceland.1.a
+		random_list = {
+			50 = {
+				activate_mission = ICE_Ecological_Collapse
+				set_global_flag = Ecological_End_Game
+			}
+			50 = {
+				set_global_flag = No_Ecological_End_Game
+			}
+		}
+	}
+}
+#Iceland Requests Greenland 
+country_event = {
+	id = Iceland.2
+	title = Iceland.2.t
+	desc = Iceland.2.d
+	picture = GFX_Greenland
+	
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = {
+		name = Iceland.2.a
+		ICE = {
+			transfer_state = 101
+			transfer_state = 1459
+			transfer_state = 1452
+		}
+		101 = {
+			add_core_of = ICE
+		}
+		1459 = {
+			add_core_of = ICE
+		}
+		1452 = {
+			add_core_of = ICE
+		}
+		if = {
+			limit = {
+				has_global_flag = Ecological_End_Game
+			}
+			add_days_mission_timeout = {
+				mission = ICE_Ecological_Collapse
+				days = 20
+			}
+		}
+	}
+}
+country_event = {
+	id = Iceland.3
+	title = Iceland.3.t
+	desc = Iceland.3.d
+	picture = GFX_Iceland_Science
+	
+	fire_only_once = yes
+	is_triggered_only = yes
+
+	option = {
+		name = Iceland.3.a
+		add_research_slot = 1
+		add_popularity = {
+			ideology = social_democrat
+			popularity = 0.04
+		}
+	}
+}
+country_event = {
+	id = Iceland.4
+	title = Iceland.4.t
+	desc = Iceland.4.d
+	picture = GFX_Colossal_Mammoth
+	
+	fire_only_once = yes
+	is_triggered_only = yes
+
+	option = {
+		name = Iceland.4.a
+		add_popularity = {
+			ideology = social_democrat
+			popularity = 0.02
+		}
+		101 = {
+			add_extra_state_shared_building_slots = 2
+			add_building_construction = {
+				type = office_park
+				level = 2
+				instant_build = yes
+			}
+		}
+	}
+}
+country_event = { #the Mammoth
+	id = Iceland.5
+	title = Iceland.5.t
+	desc = Iceland.5.d
+	picture = GFX_Woolly_Mammoth
+	
+	fire_only_once = yes
+	is_triggered_only = yes
+
+	option = {
+		name = Iceland.5.a
+		add_political_power = 150
+		add_stability = 0.08
+		news_event = { 
+			id = Iceland.6
+			days = 1
+		}
+		set_global_flag = global_mammoth_back_flag
+	}
+}
+news_event = { #
+	id = Iceland.6
+	title = Iceland.6.t
+	desc = Iceland.6.d
+	picture = GFX_Woolly_Mammoth_news
+	
+	is_triggered_only = yes
+	major = yes
+	
+	trigger = {
+	}
+
+	option = {
+		name = Iceland.6.a
+		
+	}
+}
+country_event = { 
+	id = Iceland.7
+	title = Iceland.7.t
+	desc = Iceland.7.d
+	picture = GFX_Dodo
+	
+	fire_only_once = yes
+	is_triggered_only = yes
+
+	option = {
+		name = Iceland.7.a
+		add_political_power = -25
+		set_country_flag = ICE_DeExtinction_Path_3
+		
+	}
+}
+country_event = { #Nazis Storm government buildings
+	id = Iceland.8
+	title = Iceland.8.t
+	desc = Iceland.8.d
+	picture = GFX_Melting_Glaciers
+	
+	fire_only_once = yes
+	is_triggered_only = yes
+
+	option = {
+		name = Iceland.8.a
+		set_politics = {
+			ruling_party = national_socialist
+			last_election = "2022.04.10"
+			election_frequency = 60
+			elections_allowed = no
+		}
+	}
+}
+country_event = { #
+	id = Iceland.9
+	title = Iceland.9.t
+	desc = Iceland.9.d
+	picture = GFX_Melting_Glaciers
+	
+	fire_only_once = yes
+	is_triggered_only = yes
+
+	option = {
+		name = Iceland.9.a
+		set_politics = {
+			ruling_party = social_democrat
+			last_election = "2022.04.10"
+			election_frequency = 60
+			elections_allowed = no
+		}
+		set_party_name = {
+			ideology = social_democrat
+			long_name = ICE_libertarian_socialist_party_long
+			name = ICE_libertarian_socialist_party
+		}
+		set_country_flag = ICE_Left_Green_Gudmundur_leader
+		add_ideas = ICE_our_duty_idea
+	}
+	option = {
+		name = Iceland.9.b
+		add_stability = 0.05
+	}
+#	option = { 
+#		name = Iceland.9.c
+#		set_politics = {
+#			ruling_party = authoritarian_democrat
+#			last_election = "2022.04.10"
+#			election_frequency = 60
+#			elections_allowed = no
+#		}
+#	}
+}
+#Asian Collapse
+country_event = {
+	id = Iceland.100
+	title = Iceland.100.t
+	desc = Iceland.100.d
+	picture = GFX_Melting_Glaciers
+	
+	fire_only_once = yes
+	is_triggered_only = yes
+
+	option = {
+		name = Iceland.100.a
+		
+	}
+}
+#European Collapse
+country_event = {
+	id = Iceland.150
+	title = Iceland.150.t
+	desc = Iceland.150.d
+	picture = GFX_Melting_Glaciers
+	
+	fire_only_once = yes
+	is_triggered_only = yes
+
+	option = {
+		name = Iceland.150.a
+		
+	}
+}
+#African Collapse
+country_event = {
+	id = Iceland.200
+	title = Iceland.200.t
+	desc = Iceland.200.d
+	picture = GFX_Melting_Glaciers
+	
+	fire_only_once = yes
+	is_triggered_only = yes
+
+	option = {
+		name = Iceland.200.a
+		if = {
+			limit = {
+				OR = {
+					IVO = {
+						num_of_factories > 100
+					}
+					MRT = {
+						num_of_factories > 100
+					}
+					AQI = {
+						num_of_factories > 100
+					}
+					VOL = {
+						num_of_factories > 100
+					}
+				}
+			}
+		}
+		
+	}
+}
+#Oceania Collapse
+country_event = {
+	id = Iceland.250
+	title = Iceland.250.t
+	desc = Iceland.250.d
+	picture = GFX_Melting_Glaciers
+	
+	fire_only_once = yes
+	is_triggered_only = yes
+
+	option = {
+		name = Iceland.250.a
+		
+	}
+}
+#North America Collapse
+country_event = {
+	id = Iceland.300
+	title = Iceland.300.t
+	desc = Iceland.300.d
+	picture = GFX_Melting_Glaciers
+	
+	fire_only_once = yes
+	is_triggered_only = yes
+
+	option = {
+		name = Iceland.300.a
+		
+	}
+}
+#South America Collapse
+country_event = {
+	id = Iceland.350
+	title = Iceland.350.t
+	desc = Iceland.350.d
+	picture = GFX_Melting_Glaciers
+	
+	fire_only_once = yes
+	is_triggered_only = yes
+
+	option = {
+		name = Iceland.350.a
+		
+	}
+}
+#Antartic/Artic Collapse
+country_event = {
+	id = Iceland.400
+	title = Iceland.400.t
+	desc = Iceland.400.d
+	picture = GFX_Melting_Glaciers
+	
+	fire_only_once = yes
+	is_triggered_only = yes
+
+	option = {
+		name = Iceland.400.a
+		
+	}
+}
+country_event = { #TOTAL COLLAPSE
+	id = Iceland.450
+	title = Iceland.450.t
+	desc = Iceland.450.d
+	picture = GFX_Melting_Glaciers
+	
+	fire_only_once = yes
+	is_triggered_only = yes
+
+	option = {
+		name = Iceland.450.a
+		
+	}
+}

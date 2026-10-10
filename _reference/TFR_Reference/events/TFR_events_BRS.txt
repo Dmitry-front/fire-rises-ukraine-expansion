@@ -1,0 +1,509 @@
+﻿add_namespace = european_commission
+
+#European 2024 El
+country_event = {
+	id = european_commission.1
+	title = european_commission.1.t
+	desc = european_commission.1.d
+	picture = GFX_generic_elections
+	
+	is_triggered_only = yes
+	immediate = {
+		end_ruling_party_wings = yes
+		end_coalition = yes
+	}
+	
+	option = { #The Left 
+		name = european_commission.1.a
+		ai_chance = {
+		    factor = 1
+	   		modifier = {
+	    	    factor = 10
+	    	    add = 500
+				AND = {
+	    		    GER = {
+						has_government = libertarian_socialist
+					}
+	    		    FRA = {
+						has_government = libertarian_socialist
+					}
+				}
+	    	}
+	   		modifier = {
+	    	    add = 50
+				AND = {
+					OR = {
+						GER = {
+							has_government = libertarian_socialist
+						}
+						FRA = {
+							has_government = libertarian_socialist
+						}
+					}
+					OR = {
+						GER = {
+							has_government = social_democrat
+						}
+						FRA = {
+							has_government = social_democrat
+						}
+					}
+				}
+	    	}
+	   		modifier = {
+	    	    add = 25
+				OR = {
+					GER = {
+						has_government = libertarian_socialist
+					}
+					FRA = {
+						has_government = libertarian_socialist
+					}
+				}
+	    	}
+		}
+		hidden_effect = {
+			set_popularities = {
+				nationalist = 10
+				authoritarian_democrat = 15
+				conservative = 20
+				market_liberal = 4
+				social_liberal = 13
+				social_democrat = 18
+				libertarian_socialist = 20
+			}
+			news_event = {
+				id = news.661
+				hours = 6
+			}
+		}
+		set_politics = {
+			ruling_party = libertarian_socialist
+			last_election = "2022.9.25"
+			election_frequency = 60
+			elections_allowed = yes
+		}
+		set_temp_variable = { ruling_party_wing_var_temp = token:communist }
+		add_ruling_party_wing = yes
+
+		set_temp_variable = { coalition_partner_var_temp = token:social_democrat }
+		add_to_coalition = yes
+		set_temp_variable = { coalition_partner_var_temp = token:social_liberal }
+		add_to_coalition = yes
+	}
+	
+	option = { #S&D
+		name = european_commission.1.b
+		ai_chance = {
+		    factor = 1
+	   		modifier = {
+	    	    factor = 10
+	    	    add = 500
+				AND = {
+	    		    GER = {
+						has_government = social_democrat
+					}
+	    		    FRA = {
+						has_government = social_democrat
+					}
+				}
+	    	}
+	   		modifier = {
+	    	    add = 50
+				AND = {
+					OR = {
+						GER = {
+							has_government = social_democrat
+						}
+						FRA = {
+							has_government = social_democrat
+						}
+					}
+					OR = {
+						OR = {
+							GER = {
+								has_government = libertarian_socialist
+							}
+							GER = {
+								has_government = social_liberal
+							}
+						}
+						OR = {
+							FRA = {
+								has_government = libertarian_socialist
+							}
+							FRA = {
+								has_government = social_liberal
+							}
+						}
+					}
+				}
+	    	}
+	   		modifier = {
+	    	    add = 25
+				OR = {
+					GER = {
+						has_government = social_democrat
+					}
+					FRA = {
+						has_government = social_democrat
+					}
+				}
+	    	}
+		}
+		hidden_effect = {
+			set_popularities = {
+				nationalist = 10
+				authoritarian_democrat = 15
+				conservative = 18
+				market_liberal = 11
+				social_liberal = 13
+				social_democrat = 26
+				libertarian_socialist = 8
+			}
+			news_event = {
+				id = news.662
+				hours = 6
+			}
+		}
+		set_politics = {
+			ruling_party = social_democrat
+			last_election = "2022.9.25"
+			election_frequency = 60
+			elections_allowed = yes
+		}
+		set_temp_variable = { coalition_partner_var_temp = token:social_liberal }
+		add_to_coalition = yes
+		set_temp_variable = { coalition_partner_var_temp = token:market_liberal }
+		add_to_coalition = yes
+	}
+	
+	option = { #Greens
+		name = european_commission.1.c
+		ai_chance = {
+		    factor = 1
+	   		modifier = {
+	    	    factor = 10
+	    	    add = 500
+				AND = {
+	    		    GER = {
+						has_government = social_liberal
+					}
+	    		    FRA = {
+						has_government = social_democrat
+					}
+				}
+	    	}
+	   		modifier = {
+	    	    add = 50
+				AND = {
+					OR = {
+						GER = {
+							has_government = social_liberal
+						}
+						FRA = {
+							has_government = social_democrat
+						}
+					}
+					OR = {
+						OR = {
+							GER = {
+								has_government = libertarian_socialist
+							}
+							GER = {
+								has_government = social_democrat
+							}
+						}
+						FRA = {
+							has_government = libertarian_socialist
+						}
+					}
+				}
+	    	}
+	   		modifier = {
+	    	    add = 25
+				OR = {
+					GER = {
+						has_government = social_liberal
+					}
+					FRA = {
+						has_government = social_democrat
+					}
+				}
+	    	}
+		}
+		hidden_effect = {
+			set_popularities = {
+				nationalist = 10
+				authoritarian_democrat = 15
+				conservative = 18
+				market_liberal = 12
+				social_liberal = 20
+				social_democrat = 17
+				libertarian_socialist = 8
+			}
+			news_event = {
+				id = news.663
+				hours = 6
+			}
+		}
+		set_politics = {
+			ruling_party = social_liberal
+			last_election = "2022.9.25"
+			election_frequency = 60
+			elections_allowed = yes
+		}
+		set_temp_variable = { coalition_partner_var_temp = token:market_liberal }
+		add_to_coalition = yes
+		set_temp_variable = { coalition_partner_var_temp = token:social_democrat }
+		add_to_coalition = yes
+	}
+	
+	option = { #Renew
+		name = european_commission.1.e
+		ai_chance = {
+		    factor = 1
+	   		modifier = {
+	    	    factor = 10
+	    	    add = 500
+				AND = {
+	    		    GER = {
+						has_government = market_liberal
+					}
+					OR = {
+						FRA = {
+							has_government = social_liberal
+						}
+						FRA = {
+							has_government = market_liberal
+						}
+					}
+				}
+	    	}
+	   		modifier = {
+	    	    add = 50
+				AND = {
+					OR = {
+						GER = {
+							has_government = market_liberal
+						}
+						OR = {
+							FRA = {
+								has_government = social_liberal
+							}
+							FRA = {
+								has_government = market_liberal
+							}
+						}
+					}
+					OR = {
+						OR = {
+							GER = {
+								has_government = conservative
+							}
+							GER = {
+								has_government = social_democrat
+							}
+						}
+						FRA = {
+							has_government = social_democrat
+						}
+					}
+				}
+	    	}
+	   		modifier = {
+	    	    add = 25
+				OR = {
+					GER = {
+						has_government = market_liberal
+					}
+					FRA = {
+						has_government = social_liberal
+					}
+				}
+	    	}
+		}
+		hidden_effect = {
+			set_popularities = {
+				nationalist = 10
+				authoritarian_democrat = 15
+				conservative = 18
+				market_liberal = 19
+				social_liberal = 13
+				social_democrat = 17
+				libertarian_socialist = 8
+			}
+			news_event = {
+				id = news.664
+				hours = 6
+			}
+		}
+		set_politics = {
+			ruling_party = market_liberal
+			last_election = "2022.9.25"
+			election_frequency = 60
+			elections_allowed = yes
+		}
+		set_temp_variable = { coalition_partner_var_temp = token:conservative }
+		add_to_coalition = yes
+		set_temp_variable = { coalition_partner_var_temp = token:social_democrat }
+		add_to_coalition = yes
+	}
+	
+	option = { #EPP
+		name = european_commission.1.f
+		ai_chance = {
+		    factor = 1
+	   		modifier = {
+	    	    factor = 10
+	    	    add = 500
+				AND = {
+	    		    GER = {
+						has_government = conservative
+					}
+					FRA = {
+						has_government = market_liberal
+					}
+				}
+	    	}
+	   		modifier = {
+	    	    add = 50
+				AND = {
+					OR = {
+						GER = {
+							has_government = conservative
+						}
+						FRA = {
+							has_government = market_liberal
+						}
+					}
+					OR = {
+						OR = {
+							GER = {
+								has_government = market_liberal
+							}
+							GER = {
+								has_government = authoritarian_democrat
+							}
+						}
+						FRA = {
+							has_government = conservative
+						}
+					}
+				}
+	    	}
+	   		modifier = {
+	    	    add = 25
+				OR = {
+					GER = {
+						has_government = conservative
+					}
+					FRA = {
+						has_government = market_liberal
+					}
+				}
+	    	}
+		}
+		hidden_effect = {
+			set_popularities = {
+				nationalist = 10
+				authoritarian_democrat = 15
+				conservative = 26
+				market_liberal = 19
+				social_liberal = 13
+				social_democrat = 18
+				libertarian_socialist = 6
+			}
+			news_event = {
+				id = news.665
+				hours = 6
+			}
+		}
+		set_politics = {
+			ruling_party = conservative
+			last_election = "2022.9.25"
+			election_frequency = 60
+			elections_allowed = yes
+		}
+		set_temp_variable = { coalition_partner_var_temp = token:market_liberal }
+		add_to_coalition = yes
+		set_temp_variable = { coalition_partner_var_temp = token:social_democrat }
+		add_to_coalition = yes
+	}
+	
+	option = { #ECR
+		name = european_commission.1.g
+		ai_chance = {
+		    factor = 1
+	   		modifier = {
+	    	    factor = 10
+	    	    add = 500
+				AND = {
+	    		    GER = {
+						has_government = authoritarian_democrat
+					}
+					FRA = {
+						has_government = conservative
+					}
+				}
+	    	}
+	   		modifier = {
+	    	    add = 50
+				AND = {
+					OR = {
+						GER = {
+							has_government = authoritarian_democrat
+						}
+						FRA = {
+							has_government = conservative
+						}
+					}
+					OR = {
+						GER = {
+							has_government = conservative
+						}
+						FRA = {
+							has_government = market_liberal
+						}
+					}
+				}
+	    	}
+	   		modifier = {
+	    	    add = 25
+				OR = {
+					GER = {
+						has_government = authoritarian_democrat
+					}
+					FRA = {
+						has_government = conservative
+					}
+				}
+	    	}
+		}
+		hidden_effect = {
+			set_popularities = {
+				nationalist = 14
+				authoritarian_democrat = 21
+				conservative = 18
+				market_liberal = 11
+				social_liberal = 10
+				social_democrat = 20
+				libertarian_socialist = 6
+			}
+			news_event = {
+				id = news.666
+				hours = 6
+			}
+		}
+		set_politics = {
+			ruling_party = authoritarian_democrat
+			last_election = "2022.9.25"
+			election_frequency = 60
+			elections_allowed = yes
+		}
+		set_temp_variable = { coalition_partner_var_temp = token:nationalist }
+		add_to_coalition = yes
+		set_temp_variable = { coalition_partner_var_temp = token:conservative }
+		add_to_coalition = yes
+	}
+}

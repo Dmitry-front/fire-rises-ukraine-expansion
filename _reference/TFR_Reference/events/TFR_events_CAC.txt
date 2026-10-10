@@ -1,0 +1,1687 @@
+﻿###########################
+# Cascadia Events
+###########################
+add_namespace = cac
+add_namespace = malet
+#The Grassroots Republic
+country_event = {
+	id = cac.1
+	title = cac.1.t
+	desc = cac.1.d
+	picture = GFX_Generic_Cascadia
+	fire_only_once = yes
+	is_triggered_only = yes
+	trigger = {
+		tag = CAC
+	}
+	immediate = {
+		hidden_effect = {
+			country_event = {
+				id = cac.18
+				days = 5
+			}
+		}
+	}
+	option = {
+		name = cac.1.a
+		ai_chance = {
+			base = 1
+		}
+	}
+}
+
+#The Forwards Cascadia Coalition Wins!
+country_event = {
+	id = cac.2
+	title = cac.2.t
+	desc = cac.2.d
+	picture = GFX_CAC_fcc_wins
+	fire_only_once = yes
+	is_triggered_only = yes
+	trigger = {
+		tag = CAC
+	}
+	option = {
+		trigger = {
+			CAC = {
+				has_country_flag = CAC_progressive_coalition
+			}
+		}
+		name = cac.2.a
+		complete_national_focus = CAC_the_center_holds
+		complete_national_focus = CAC_the_left
+		clr_country_flag = CAC_progressive_coalition
+		remove_mission = CAC_election_countdown_mission
+		remove_mission = CAC_popularity_shift_mission
+		clr_country_flag = CAC_election_flag
+	}
+	option = {
+		trigger = {
+			CAC = {
+				has_country_flag = CAC_libertarian_coalition
+			}
+		}
+		name = cac.2.b
+		complete_national_focus = CAC_the_center_holds
+		complete_national_focus = CAC_a_libertarian_victory
+		clr_country_flag = CAC_libertarian_coalition
+		remove_mission = CAC_election_countdown_mission
+		remove_mission = CAC_popularity_shift_mission
+		clr_country_flag = CAC_election_flag
+	}
+	option = {
+		trigger = {
+			CAC = {
+				has_country_flag = CAC_conservative_coalition
+			}
+		}
+		name = cac.2.c
+		complete_national_focus = CAC_the_center_holds
+		complete_national_focus = CAC_the_right
+		clr_country_flag = CAC_conservative_coalition
+		remove_mission = CAC_election_countdown_mission
+		remove_mission = CAC_popularity_shift_mission
+		clr_country_flag = CAC_election_flag
+	}
+}
+
+#The Cascadian Socialist Party Wins!
+country_event = {
+	id = cac.333
+	title = cac.333.t
+	desc = cac.333.d
+	picture = GFX_CAC_csp_wins
+	fire_only_once = yes
+	is_triggered_only = yes
+	trigger = {
+		tag = CAC
+	}
+	option = {
+		name = cac.333.a
+		complete_national_focus = CAC_the_revolution_prevails
+		remove_mission = CAC_election_countdown_mission
+		remove_mission = CAC_popularity_shift_mission
+		clr_country_flag = CAC_election_flag
+	}
+}
+
+#The Imperative Party of Cascadia Wins!
+country_event = {
+	id = cac.4
+	title = cac.4.t
+	desc = cac.4.d
+	picture = GFX_CAC_ipc_wins
+	fire_only_once = yes
+	is_triggered_only = yes
+	trigger = {
+		tag = CAC
+	}
+	immediate = {
+		hidden_effect = {
+			country_event = {
+				id = cac.25
+				days = 15
+			}
+			remove_mission = CAC_election_countdown_mission
+			remove_mission = CAC_popularity_shift_mission
+		}
+		clr_country_flag = CAC_election_flag
+		clr_country_flag = CAC_election_decision_flag
+	}
+	option = {
+		name = cac.4.a
+		complete_national_focus = CAC_the_imperative_rises
+		clr_country_flag = CAC_election_decision_flag
+	}
+}
+
+#Elections Starting
+country_event = {
+	id = cac.5
+	title = cac.5.t
+	desc = cac.5.d
+	picture = GFX_generic_elections
+	fire_only_once = yes
+	is_triggered_only = yes
+	trigger = {
+		tag = CAC
+	}
+	immediate = {
+		hidden_effect = {
+			country_event = {
+				id = cac.6
+				days = 7
+			}
+		}
+		hidden_effect = {
+			country_event = {
+				id = cac.8
+				days = 15
+			}
+		}
+	}
+	option = {
+		name = cac.5.a
+		add_political_power = 25
+	}
+}
+
+#The Forwards Cascadia Coalition
+country_event = {
+	id = cac.6
+	title = cac.6.t
+	desc = cac.6.d
+	picture = GFX_Generic_Cascadia
+	fire_only_once = yes
+	is_triggered_only = yes
+	trigger = {
+		tag = CAC
+	}
+	option = {
+		name = cac.6.a
+		set_country_flag = CAC_progressive_coalition
+		ai_chance = {
+			base = 2
+		}
+	}
+	option = {
+		name = cac.6.b
+		set_country_flag = CAC_libertarian_coalition
+		ai_chance = {
+			base = 1
+		}
+	}
+	option = {
+		name = cac.6.c
+		set_country_flag = CAC_conservative_coalition
+		ai_chance = {
+			base = 2
+		}
+	}
+}
+
+#The Cascadian Political Movement
+country_event = {
+	id = cac.7
+	title = cac.7.t
+	desc = cac.7.d
+	picture = GFX_Generic_Cascadia
+	fire_only_once = yes
+	is_triggered_only = yes
+	trigger = {
+		tag = CAC
+	}
+	option = {
+		name = cac.7.a
+		set_country_flag = CAC_center_def_flag
+		custom_effect_tooltip = CAC_center_def_tooltip
+		ai_chance = {
+			base = 3
+		}
+	}
+	option = {
+		name = cac.7.b
+		set_country_flag = CAC_left_def_flag
+		custom_effect_tooltip = CAC_left_def_tooltip
+		ai_chance = {
+			base = 2
+		}
+	}
+	option = {
+		name = cac.7.c
+		set_country_flag = CAC_right_def_flag
+		custom_effect_tooltip = CAC_right_def_tooltip
+		ai_chance = {
+			base = 1
+		}
+	}
+	option = {
+		name = cac.7.e
+		add_political_power = -50
+	}
+}
+
+#Rar Right Rally Held in Spokane
+country_event = {
+	id = cac.8
+	title = cac.8.t
+	desc = cac.8.d
+	picture = GFX_Generic_Cascadia
+	fire_only_once = yes
+	is_triggered_only = yes
+	trigger = {
+		tag = CAC
+	}
+	immediate = {
+		hidden_effect = {
+			country_event = {
+				id = cac.9
+				days = 7
+			}
+		}
+	}
+	option = {
+		name = cac.8.a
+		ai_chance = {
+			base = 1
+		}
+		set_temp_variable = {
+			var = CAC_influence_right_var_temp
+			value = 0.05
+		}
+		CAC_add_influence_right = yes
+	}
+	option = {
+		name = cac.8.b
+		ai_chance = {
+			base = 1
+		}
+		random_list = {
+			10 = {
+				set_temp_variable = {
+					var = CAC_influence_right_var_temp
+					value = -0.08
+				}
+				CAC_add_influence_right = yes
+			}
+			15 = {
+				modifier = {
+					factor = 1.5
+					has_country_flag = CAC_right_def_flag
+				}
+				set_temp_variable = {
+					var = CAC_influence_right_var_temp
+					value = 0.08
+				}
+				CAC_add_influence_right = yes
+			}
+		}
+	}
+}
+
+#Violent Clashes in Portland
+country_event = {
+	id = cac.9
+	title = cac.9.t
+	desc = cac.9.d
+	picture = GFX_Generic_Cascadia
+	fire_only_once = yes
+	is_triggered_only = yes
+	trigger = {
+		tag = CAC
+	}
+	immediate = {
+		hidden_effect = {
+			country_event = {
+				id = cac.10
+				days = 4
+			}
+		}
+	}
+	option = {
+		name = cac.9.a
+		ai_chance = {
+			base = 1
+		}
+		random_list = {
+			10 = {
+				modifier = {
+					factor = 1.5
+					has_country_flag = CAC_left_def_flag
+				}
+				set_temp_variable = {
+					var = CAC_influence_left_var_temp
+					value = 0.1
+				}
+				CAC_add_influence_left = yes
+				set_temp_variable = {
+					var = CAC_influence_right_var_temp
+					value = -0.1
+				}
+				CAC_add_influence_right = yes
+			}
+			10 = {
+				set_temp_variable = {
+					var = CAC_influence_left_var_temp
+					value = -0.08
+				}
+				CAC_add_influence_left = yes
+			}
+		}
+	}
+	option = {
+		name = cac.9.b
+		ai_chance = {
+			base = 3
+		}
+		random_list = {
+			10 = {
+				modifier = {
+					factor = 1.5
+					has_country_flag = CAC_right_def_flag
+				}
+				set_temp_variable = {
+					var = CAC_influence_left_var_temp
+					value = -0.1
+				}
+				CAC_add_influence_left = yes
+				set_temp_variable = {
+					var = CAC_influence_right_var_temp
+					value = 0.1
+				}
+				CAC_add_influence_right = yes
+			}
+			10 = {
+				set_temp_variable = {
+					var = CAC_influence_right_var_temp
+					value = -0.08
+				}
+				CAC_add_influence_right = yes
+			}
+		}
+	}
+	option = {
+		name = cac.9.c
+		ai_chance = {
+			base = 2
+		}
+		random_list = {
+			90 = {
+				set_temp_variable = {
+					var = CAC_influence_center_var_temp
+					value = -0.2
+				}
+				CAC_add_influence_center = yes
+			}
+			10 = {
+				modifier = {
+					factor = 1.55
+					has_country_flag = CAC_center_def_flag
+				}
+				set_temp_variable = {
+					var = CAC_influence_center_var_temp
+					value = 0.05
+				}
+				CAC_add_influence_center = yes
+				set_temp_variable = {
+					var = CAC_influence_left_var_temp
+					value = -0.15
+				}
+				CAC_add_influence_left = yes
+				set_temp_variable = {
+					var = CAC_influence_right_var_temp
+					value = -0.15
+				}
+				CAC_add_influence_right = yes
+			}
+		}
+	}
+}
+
+#Mike Ma Speaks on "Ecofascism"
+country_event = {
+	id = cac.10
+	title = cac.10.t
+	desc = cac.10.d
+	picture = GFX_Generic_Cascadia
+	fire_only_once = yes
+	is_triggered_only = yes
+	trigger = {
+		tag = CAC
+	}
+	immediate = {
+		hidden_effect = {
+			country_event = {
+				id = cac.11
+				days = 3
+			}
+		}
+	}
+	option = {
+		name = cac.10.a
+		ai_chance = {
+			base = 2
+		}
+		set_temp_variable = {
+			var = CAC_influence_right_var_temp
+			value = 0.05
+		}
+		CAC_add_influence_right = yes
+	}
+}
+
+#Cascadian Labor Unions Form
+country_event = {
+	id = cac.11
+	title = cac.11.t
+	desc = cac.11.d
+	picture = GFX_Generic_Cascadia
+	fire_only_once = yes
+	is_triggered_only = yes
+	trigger = {
+		tag = CAC
+	}
+	immediate = {
+	}
+	option = {
+		name = cac.11.a
+		ai_chance = {
+			base = 2
+		}
+		set_temp_variable = {
+			var = CAC_influence_left_var_temp
+			value = 0.05
+		}
+		CAC_add_influence_left = yes
+	}
+}
+
+#Canadian volunteers Arrive
+country_event = {
+	id = cac.12
+	title = cac.12.t
+	desc = cac.12.d
+	picture = GFX_Generic_Cascadia
+	fire_only_once = yes
+	is_triggered_only = yes
+	trigger = {
+		tag = CAC
+	}
+	option = {
+		name = cac.12.a
+		ai_chance = {
+			base = 2
+		}
+		1082 = {
+			create_unit = {
+				division = "name = \"1st Canadian Volunteer\" division_template = \"Foot Militia\"  start_experience_factor = 0.2"
+				allow_spawning_on_enemy_provs = yes
+				owner = CAC
+			}
+			create_unit = {
+				division = "name = \"2nd Canadian Volunteer\" division_template = \"Foot Militia\"  start_experience_factor = 0.2"
+				allow_spawning_on_enemy_provs = yes
+				owner = CAC
+			}
+		}
+	}
+}
+
+#Idaho volunteers Arrive
+country_event = {
+	id = cac.13
+	title = cac.13.t
+	desc = cac.13.d
+	picture = GFX_Generic_Cascadia
+	fire_only_once = yes
+	is_triggered_only = yes
+	trigger = {
+		tag = CAC
+	}
+	option = {
+		name = cac.13.a
+		ai_chance = {
+			base = 2
+		}
+		1299 = {
+			create_unit = {
+				division = "name = \"1st Idaho Volunteer\" division_template = \"Foot Militia\"  start_experience_factor = 0.2"
+				allow_spawning_on_enemy_provs = yes
+				owner = CAC
+			}
+			create_unit = {
+				division = "name = \"2nd Idaho Volunteer\" division_template = \"Foot Militia\"  start_experience_factor = 0.2"
+				allow_spawning_on_enemy_provs = yes
+				owner = CAC
+			}
+		}
+	}
+}
+
+#Militia Defectors
+country_event = {
+	id = cac.14
+	title = cac.14.t
+	desc = cac.14.d
+	picture = GFX_Generic_Cascadia
+	fire_only_once = yes
+	is_triggered_only = yes
+	trigger = {
+		tag = CAC
+	}
+	option = {
+		name = cac.14.a
+		ai_chance = {
+			base = 2
+		}
+		1083 = {
+			create_unit = {
+				division = "name = \"1st Cascadian Militia\" division_template = \"Foot Militia\"  start_experience_factor = 0.5"
+				allow_spawning_on_enemy_provs = yes
+				owner = CAC
+			}
+			create_unit = {
+				division = "name = \"2nd Cascadian Militia\" division_template = \"Foot Militia\"  start_experience_factor = 0.5"
+				allow_spawning_on_enemy_provs = yes
+				owner = CAC
+			}
+		}
+	}
+}
+
+#Pleasure Seeker
+country_event = {
+	id = cac.15
+	title = cac.15.t
+	desc = cac.15.d
+	picture = GFX_Generic_Cascadia
+	fire_only_once = yes
+	is_triggered_only = yes
+	trigger = {
+		tag = CAC
+	}
+	immediate = {
+	}
+	option = {
+		name = cac.15.a
+	}
+}
+
+#Ar War E (mike ma pisses on the cascadian constitution)
+country_event = {
+	id = cac.16
+	title = cac.16.t
+	desc = cac.16.d
+	picture = GFX_Generic_Cascadia
+	fire_only_once = yes
+	is_triggered_only = yes
+	trigger = {
+		tag = CAC
+	}
+	immediate = {
+	}
+	option = {
+		name = cac.16.a
+	}
+}
+
+#
+country_event = {
+	id = cac.17
+	title = cac.17.t
+	desc = cac.17.d
+	picture = GFX_Generic_Cascadia
+	fire_only_once = yes
+	is_triggered_only = yes
+	trigger = {
+		tag = CAC
+	}
+	immediate = {
+	}
+	option = {
+		name = cac.17.a
+	}
+}
+
+#Morning Sun
+country_event = {
+	id = cac.18
+	title = cac.18.t
+	desc = cac.18.d
+	picture = GFX_Generic_Cascadia
+	fire_only_once = yes
+	is_triggered_only = yes
+	trigger = {
+		tag = CAC
+	}
+	immediate = {
+		hidden_effect = {
+			country_event = {
+				id = cac.19
+				days = 10
+			}
+		}
+	}
+	option = {
+		name = cac.18.a
+	}
+}
+
+#Crimson Star
+country_event = {
+	id = cac.19
+	title = cac.19.t
+	desc = cac.19.d
+	picture = GFX_Generic_Cascadia
+	fire_only_once = yes
+	is_triggered_only = yes
+	trigger = {
+		tag = CAC
+	}
+	immediate = {
+		hidden_effect = {
+			country_event = {
+				id = cac.20
+				days = 10
+			}
+		}
+	}
+	option = {
+		name = cac.19.a
+	}
+}
+
+#To Secure Peace
+country_event = {
+	id = cac.20
+	title = cac.20.t
+	desc = cac.20.d
+	picture = GFX_Generic_Cascadia
+	fire_only_once = yes
+	is_triggered_only = yes
+	trigger = {
+		tag = CAC
+	}
+	immediate = {
+		hidden_effect = {
+			country_event = {
+				id = cac.21
+				days = 10
+			}
+		}
+	}
+	option = {
+		name = cac.20.a
+	}
+}
+
+#To Prepare for War
+country_event = {
+	id = cac.21
+	title = cac.21.t
+	desc = cac.21.d
+	picture = GFX_Generic_Cascadia
+	fire_only_once = yes
+	is_triggered_only = yes
+	trigger = {
+		tag = CAC
+	}
+	immediate = {
+		hidden_effect = {
+			country_event = {
+				id = cac.22
+				days = 10
+			}
+		}
+	}
+	option = {
+		name = cac.21.a
+	}
+}
+
+#Harassment Architecture
+country_event = {
+	id = cac.22
+	title = cac.22.t
+	desc = cac.22.d
+	picture = GFX_Generic_Cascadia
+	fire_only_once = yes
+	is_triggered_only = yes
+	trigger = {
+		tag = CAC
+	}
+	immediate = {
+		hidden_effect = {
+			country_event = {
+				id = cac.23
+				days = 10
+			}
+		}
+	}
+	option = {
+		name = cac.22.a
+	}
+}
+
+#Under Fire
+country_event = {
+	id = cac.23
+	title = cac.23.t
+	desc = cac.23.d
+	picture = GFX_Generic_Cascadia
+	fire_only_once = yes
+	is_triggered_only = yes
+	trigger = {
+		tag = CAC
+	}
+	immediate = {
+		hidden_effect = {
+			country_event = {
+				id = cac.24
+				days = 7
+			}
+		}
+	}
+	option = {
+		name = cac.23.a
+	}
+}
+
+#The State of the Movement
+country_event = {
+	id = cac.24
+	title = cac.24.t
+	desc = cac.24.d
+	picture = GFX_Generic_Cascadia
+	fire_only_once = yes
+	is_triggered_only = yes
+	trigger = {
+		tag = CAC
+	}
+	option = {
+		name = cac.24.a
+	}
+}
+
+#Mike Ma Denied the Presidency
+country_event = {
+	id = cac.25
+	title = cac.25.t
+	desc = cac.25.d
+	picture = GFX_Generic_Cascadia
+	fire_only_once = yes
+	is_triggered_only = yes
+	trigger = {
+		tag = CAC
+	}
+	immediate = {
+		hidden_effect = {
+			country_event = {
+				id = cac.26
+				days = 3
+			}
+		}
+	}
+	option = {
+		name = cac.25.a
+		add_stability = -0.1
+	}
+}
+
+#Mass Riots in Seattle
+country_event = {
+	id = cac.26
+	title = cac.26.t
+	desc = cac.26.d
+	picture = GFX_Generic_Cascadia
+	fire_only_once = yes
+	is_triggered_only = yes
+	trigger = {
+		tag = CAC
+	}
+	immediate = {
+		hidden_effect = {
+			country_event = {
+				id = cac.27
+				days = 5
+			}
+		}
+	}
+	option = {
+		name = cac.26.a
+		add_stability = -1.5
+		add_political_power = -50
+	}
+}
+
+#Brandon Letsinger Assassinated!
+country_event = {
+	id = cac.27
+	title = cac.27.t
+	desc = cac.27.d
+	picture = GFX_Generic_Cascadia
+	fire_only_once = yes
+	is_triggered_only = yes
+	trigger = {
+		tag = CAC
+	}
+	immediate = {
+		hidden_effect = {
+			country_event = {
+				id = cac.28
+				days = 2
+			}
+		}
+	}
+	option = {
+		name = cac.27.a
+		add_country_leader_role = {
+			character = CAC_parliament_of_cascadia
+			ideology = green_politics
+		}
+		remove_country_leader_role = {
+			character = CAC_brandon_letsinger
+			ideology = green_politics
+		}
+		add_stability = -0.25
+	}
+}
+
+#The Coup
+country_event = {
+	id = cac.28
+	title = cac.28.t
+	desc = cac.28.d
+	picture = GFX_Generic_Cascadia
+	fire_only_once = yes
+	is_triggered_only = yes
+	trigger = {
+		tag = CAC
+	}
+	immediate = {
+		hidden_effect = {
+			country_event = {
+				id = cac.29
+				days = 5
+			}
+			set_power_balance = {
+				id = CAC_ipc_balance
+				left_side = CAC_mike_ma_side
+				right_side = CAC_rinaldo_nazzaro_side
+				set_value = -0.155
+			}
+		}
+	}
+	option = {
+		name = cac.28.a
+		set_politics = {
+			ruling_party = fascist
+		}
+		effect_tooltip = {
+			set_power_balance = {
+				id = CAC_ipc_balance
+				left_side = CAC_mike_ma_side
+				right_side = CAC_rinaldo_nazzaro_side
+				set_value = -0.155
+			}
+		}
+		activate_mission = CAC_bop_shift_right_mission
+	}
+}
+
+#The Base
+country_event = {
+	id = cac.29
+	title = cac.29.t
+	desc = cac.29.d
+	picture = GFX_Generic_Cascadia
+	fire_only_once = yes
+	is_triggered_only = yes
+	trigger = {
+		tag = CAC
+	}
+	option = {
+		name = cac.29.a
+		add_power_balance_value = {
+			id = CAC_ipc_balance
+			value = 0.25
+		}
+	}
+	option = {
+		name = cac.29.b
+		add_political_power = 25
+	}
+}
+
+#To Rebuild Rome
+country_event = {
+	id = cac.30
+	title = cac.30.t
+	desc = cac.30.d
+	picture = GFX_Generic_Cascadia
+	fire_only_once = yes
+	is_triggered_only = yes
+	trigger = {
+		tag = CAC
+	}
+	option = {
+		name = cac.30.a
+		add_timed_idea = {
+			idea = CAC_new_road_system_idea
+			days = 175
+		}
+	}
+}
+
+#Idaho Secured
+country_event = {
+	id = cac.31
+	title = cac.31.t
+	desc = cac.31.d
+	picture = GFX_Generic_Cascadia
+	fire_only_once = yes
+	is_triggered_only = yes
+	trigger = {
+		tag = CAC
+	}
+	immediate = {
+		hidden_effect = {
+			transfer_state = 387
+			transfer_state = 1084
+			transfer_state = 1085
+			transfer_state = 1086
+			white_peace = BNF
+			white_peace = LDS
+			if = {
+				limit = {
+					CAC = {
+						controls_state = 1100
+					}
+				}
+				1100 = {
+					transfer_state_to = BNF
+				}
+				380 = {
+					transfer_state_to = BNF
+				}
+			}
+		}
+	}
+	option = {
+		name = cac.31.a
+	}
+}
+
+#The Imperative Requests Aid 
+country_event = {
+	id = cac.32
+	title = cac.32.t
+	desc = cac.32.d
+	picture = GFX_Generic_Cascadia
+	fire_only_once = yes
+	is_triggered_only = yes
+	trigger = {
+		tag = CAC
+	}
+	immediate = {
+	}
+	option = {
+		name = cac.32.a
+		ai_chance = {
+			base = 100
+		}
+		CAC = {
+			country_event = cac.33
+			days = 20
+		}
+	}
+	option = {
+		name = cac.32.b
+		ai_chance = {
+			base = 0
+		}
+		CAC = {
+			country_event = cac.34
+			days = 2
+		}
+		add_political_power = 10
+	}
+}
+
+#National Front Support Arrives
+country_event = {
+	id = cac.33
+	title = cac.33.t
+	desc = cac.33.d
+	picture = GFX_Generic_Cascadia
+	fire_only_once = yes
+	is_triggered_only = yes
+	trigger = {
+		tag = CAC
+	}
+	immediate = {
+	}
+	option = {
+		name = cac.33.a
+		add_equipment_to_stockpile = {
+			type = infantry_equipment_2
+			amount = 1500
+			producer = NSM
+		}
+	}
+}
+
+#National Front Denies Support!
+country_event = {
+	id = cac.34
+	title = cac.34.t
+	desc = cac.34.d
+	picture = GFX_Generic_Cascadia
+	fire_only_once = yes
+	is_triggered_only = yes
+	trigger = {
+		tag = CAC
+	}
+	immediate = {
+	}
+	option = {
+		name = cac.34.a
+	}
+}
+
+#The Northwestern Territorial Imperative
+country_event = {
+	id = cac.35
+	title = cac.35.t
+	desc = cac.35.d
+	picture = GFX_Generic_Cascadia
+	fire_only_once = yes
+	is_triggered_only = yes
+	trigger = {
+		tag = CAC
+	}
+	immediate = {
+	}
+	option = {
+		name = cac.35.a
+		custom_effect_tooltip = CAC_unify_tooltip_right
+	}
+}
+
+#Beyond Our Realm
+country_event = {
+	id = cac.36
+	title = cac.36.t
+	desc = cac.36.d
+	picture = GFX_Generic_Cascadia
+	fire_only_once = yes
+	is_triggered_only = yes
+	trigger = {
+		tag = CAC
+	}
+	immediate = {
+		hidden_effect = {
+			set_power_balance = {
+				id = CAC_mike_ma_balance
+				left_side = CAC_mike_ma_side
+				right_side = CAC_tribal_party_side
+				set_value = -0.155
+			}
+			remove_power_balance = {
+				id = CAC_ipc_balance
+			}
+		}
+	}
+	option = {
+		name = cac.36.a
+		effect_tooltip = {
+			set_power_balance = {
+				id = CAC_mike_ma_balance
+				left_side = CAC_mike_ma_side
+				right_side = CAC_tribal_party_side
+				set_value = -0.155
+			}
+			remove_power_balance = {
+				id = CAC_ipc_balance
+			}
+		}
+	}
+}
+
+#Gothic Violence
+country_event = {
+	id = cac.37
+	title = cac.37.t
+	desc = cac.37.d
+	picture = GFX_Generic_Cascadia
+	fire_only_once = yes
+	is_triggered_only = yes
+	trigger = {
+		tag = CAC
+	}
+	immediate = {
+		hidden_effect = {
+			clr_global_flag = USA_american_civil_war_global
+			clr_global_flag = USA_shattered_union_global
+			set_global_flag = USA_american_civil_war_over_global
+			annex_country = {
+				target = PTF
+				transfer_troops = yes
+			}
+			annex_country = {
+				target = NSM
+				transfer_troops = yes
+			}
+			set_capital = 931
+			focus_unlock = yes
+			if = {
+				limit = {
+					has_country_leader = {
+						character = CAC_mike_ma
+						ruling_only = yes
+					}
+					has_government = nationalist
+				}
+				news_event = {
+					id = news.260
+					hours = 6
+				}
+				set_cosmetic_tag = CAC_mike_ma_unify2
+			}
+			else = {
+				limit = {
+					has_country_leader = {
+						character = CAC_mike_ma
+						ruling_only = yes
+					}
+				}
+				news_event = {
+					id = news.259
+					hours = 6
+				}
+				set_cosmetic_tag = CAC_mike_ma_unify1
+			}
+			set_country_leader_portrait = {
+				ideology = fascist
+				portrait = "gfx/Leaders/CAC/CAC_mike_ma_national.png"
+			}
+		}
+	}
+	option = {
+		name = cac.37.a
+		effect_tooltip = {
+			focus_unlock = yes
+		}
+	}
+}
+
+#Visit New York City
+country_event = {
+	id = cac.38
+	title = cac.38.t
+	desc = cac.38.d
+	picture = GFX_CAC_visit_new_york_city
+	fire_only_once = yes
+	is_triggered_only = yes
+	trigger = {
+		tag = CAC
+	}
+	option = {
+		name = cac.38.a
+		custom_effect_tooltip = CAC_nyc_must_be_destroyed
+		hidden_effect = {
+			add_power_balance_value = {
+				id = CAC_ipc_balance
+				value = -0.05
+			}
+			set_victory_points = {
+				province = 13260
+				value = -100
+			}
+			918 = {
+				set_state_category = wasteland
+				remove_building = {
+					type = industrial_complex
+					level = 5
+				}
+				remove_building = {
+					type = arms_factory
+					level = 5
+				}
+				remove_building = {
+					type = dockyard
+					level = 5
+				}
+				remove_building = {
+					type = infrastructure
+					level = 5
+				}
+				add_dynamic_modifier = {
+					modifier = CAC_nyc_destroyed_state_modifier
+				}
+				add_manpower = -6000000
+				add_manpower = -6000000
+				add_manpower = -6000000
+				add_manpower = -6000000
+				add_manpower = -6000000
+				add_manpower = -6000000
+				add_manpower = -6000000
+				add_manpower = -6000000
+				add_manpower = -6000000
+				add_manpower = -6000000
+			}
+			news_event = {
+				id = news.261
+				days = 0
+			}
+		}
+	}
+}
+
+#Looting the Golden City
+country_event = {
+	id = cac.39
+	title = cac.39.t
+	desc = cac.39.d
+	picture = GFX_CAC_fuck_san_francisco
+	fire_only_once = yes
+	is_triggered_only = yes
+	trigger = {
+		tag = CAC
+	}
+	option = {
+		name = cac.39.a
+		hidden_effect = {
+			add_power_balance_value = {
+				id = CAC_ipc_balance
+				value = -0.05
+			}
+			set_victory_points = {
+				province = 13291
+				value = -100
+			}
+			932 = {
+				set_state_category = wasteland
+				remove_building = {
+					type = industrial_complex
+					level = 5
+				}
+				remove_building = {
+					type = arms_factory
+					level = 5
+				}
+				remove_building = {
+					type = dockyard
+					level = 5
+				}
+				remove_building = {
+					type = infrastructure
+					level = 5
+				}
+				add_dynamic_modifier = {
+					modifier = CAC_nyc_destroyed_state_modifier
+				}
+				add_manpower = -6000000
+				add_manpower = -6000000
+				add_manpower = -6000000
+				add_manpower = -6000000
+				add_manpower = -6000000
+				add_manpower = -6000000
+				add_manpower = -6000000
+				add_manpower = -6000000
+				add_manpower = -6000000
+				add_manpower = -6000000
+			}
+		}
+	}
+}
+
+#Concerning News From the Southern Border
+country_event = {
+	id = cac.40
+	title = cac.40.t
+	desc = cac.40.d
+	picture = GFX_Generic_Cascadia
+	fire_only_once = yes
+	is_triggered_only = yes
+	trigger = {
+		tag = CAC
+	}
+	option = {
+		name = cac.40.a
+		add_war_support = 0.15
+		add_timed_idea = {
+			idea = CAC_fight_for_survival_idea
+			days = 200
+		}
+	}
+}
+
+#Operation Shooting Star: Success
+country_event = {
+	id = cac.41
+	title = cac.41.t
+	desc = cac.41.d
+	picture = GFX_Generic_Cascadia
+	fire_only_once = yes
+	is_triggered_only = yes
+	trigger = {
+		tag = CAC
+	}
+	option = {
+		name = cac.41.a
+	}
+}
+
+#Letter to the APLA
+unit_leader_event = {
+	id = malet.1
+	title = malet.1.t
+	desc = malet.1.d
+	picture = GFX_report_event_generic_mussolini
+	is_triggered_only = yes
+	immediate = {
+		hidden_effect = {
+		}
+	}
+	option = {
+		name = malet.1.a
+	}
+}
+
+#A Messy Start
+country_event = {
+	id = cac.42
+	title = cac.42.t
+	desc = cac.42.d
+	picture = GFX_Generic_Cascadia
+	fire_only_once = yes
+	is_triggered_only = yes
+	trigger = {
+		tag = CAC
+	}
+	option = {
+		name = cac.42.a
+		add_war_support = -0.05
+		#complete_national_focus = CAC_compromise_with_the_opposition
+		set_temp_variable = {
+			var = CAC_influence_center_var_temp
+			value = 0.05
+		}
+		CAC_add_influence_center = yes
+	}
+	option = {
+		name = cac.42.b
+		add_war_support = 0.05
+		#complete_national_focus = CAC_crack_down
+		set_temp_variable = {
+			var = CAC_influence_right_var_temp
+			value = 0.05
+		}
+		CAC_add_influence_right = yes
+	}
+}
+
+#Choice after war
+country_event = {
+	id = cac.43
+	title = cac.43.t
+	desc = cac.43.d
+	picture = GFX_moonlitnight
+	fire_only_once = yes
+	is_triggered_only = yes
+	trigger = {
+	}
+	immediate = {
+		hidden_effect = {
+			remove_ideas = {
+				CAC_uncertain_destiny_idea
+				CAC_unstable_alliance_idea
+			}
+		}
+	}
+	option = {
+		name = cac.43.a
+		ai_chance = {
+				base = 1
+		    	modifier = {
+				    factor = 0
+				    OR = {
+				        has_game_rule = {
+					        rule = The_CAC_path
+					        option = The_CAC_path_2
+					    }
+				        has_game_rule = {
+					        rule = The_CAC_path
+					        option = The_CAC_path_3
+					    }
+				        has_game_rule = {
+					        rule = The_CAC_path
+					        option = The_CAC_path_4
+					    }
+			      }
+			   }
+			}
+		set_politics = {
+			ruling_party = fascist
+		}
+		add_popularity = {
+			ideology = fascist
+			popularity = 0.075
+		}
+		add_timed_idea = {
+			idea = CAC_green_terror_idea
+			days = 175
+		}
+		hidden_effect = {
+			set_country_flag = CAC_unified_flag
+		}
+	}
+	option = {
+		name = cac.43.b
+		ai_chance = {
+				base = 1
+		    	modifier = {
+				    factor = 0
+				    OR = {
+				        has_game_rule = {
+					        rule = The_CAC_path
+					        option = The_CAC_path_1
+					    }
+				        has_game_rule = {
+					        rule = The_CAC_path
+					        option = The_CAC_path_3
+					    }
+				        has_game_rule = {
+					        rule = The_CAC_path
+					        option = The_CAC_path_4
+					    }
+			      }
+			   }
+			}
+		set_politics = {
+			ruling_party = libertarian_socialist
+		}
+		
+		hidden_effect = {
+			set_country_flag = CAC_unified_flag
+		}
+	}
+	option = {
+		name = cac.43.c
+		ai_chance = {
+				base = 1
+		    	modifier = {
+				    factor = 0
+				    OR = {
+				        has_game_rule = {
+					        rule = The_CAC_path
+					        option = The_CAC_path_1
+					    }
+				        has_game_rule = {
+					        rule = The_CAC_path
+					        option = The_CAC_path_2
+					    }
+				        has_game_rule = {
+					        rule = The_CAC_path
+					        option = The_CAC_path_4
+					    }
+			      }
+			   }
+			}
+		set_politics = {
+			ruling_party = totalitarian_socialist
+		}
+		add_timed_idea = {
+			idea = CAC_red_terror_idea
+			days = 175
+		}
+		add_ideas = {
+			CAC_red_army_idea
+		}
+		add_popularity = {
+			ideology = totalitarian_socialist
+			popularity = 0.075
+		}
+		remove_ideas = {
+			CAC_uncertain_destiny_idea
+			CAC_unstable_alliance_idea
+			CAC_cascadian_militias_idea
+		}
+		set_cosmetic_tag = CAC_northwest_colour
+		hidden_effect = {
+			set_country_flag = CAC_unified_flag
+		}
+	}
+	option = {
+		name = cac.43.c
+		ai_chance = {
+				base = 1
+		    	modifier = {
+				    factor = 0
+				    OR = {
+				        has_game_rule = {
+					        rule = The_CAC_path
+					        option = The_CAC_path_1
+					    }
+				        has_game_rule = {
+					        rule = The_CAC_path
+					        option = The_CAC_path_2
+					    }
+				        has_game_rule = {
+					        rule = The_CAC_path
+					        option = The_CAC_path_3
+					    }
+			      }
+			   }
+			}
+		remove_country_leader_role = {
+			character = CAC_mike_ma
+			ideology = ecofascism
+		}
+		promote_character = CAC_rinaldo_nazzaro
+		add_timed_idea = {
+			idea = CAC_rightist_unification_idea
+			days = 175
+		}
+		set_party_name = {
+			ideology = fascist
+			long_name = CAC_base_fascist_long
+			name = CAC_base_fascist_short
+		}
+		set_party_name = {
+			ideology = nationalist
+			long_name = CAC_base_nationalist_long
+			name = CAC_base_nationalist_short
+		}
+		set_party_name = {
+			ideology = national_socialist
+			long_name = CAC_base_national_socialist_long
+			name = CAC_base_national_socialist_short
+		}
+		set_temp_variable = {
+			coalition_partner_var_temp = token:nationalist
+		}
+		add_to_coalition = yes
+		set_temp_variable = {
+			coalition_partner_var_temp = token:national_socialist
+		}
+		add_to_coalition = yes
+		add_popularity = {
+			ideology = fascist
+			popularity = 0.075
+		}
+		remove_ideas = {
+			CAC_uncertain_destiny_idea
+			CAC_unstable_alliance_idea
+		}
+		remove_country_leader_role = {
+			character = CAC_rinaldo_nazzaro
+			ideology = neonazism
+		}
+		add_country_leader_role = {
+			character = CAC_OUTLAWED_char
+			promote_leader = yes
+			country_leader = {
+				ideology = accelerationist
+				expire = "1.1.1.1"
+				traits = {
+				}
+			}
+		}
+		set_cosmetic_tag = CAC_national_socialist
+		set_politics = {
+			ruling_party = fascist
+		}
+		add_state_core = 1299
+		add_state_core = 1300
+		add_state_core = 1084
+		add_state_core = 1086
+		add_state_core = 387
+		add_state_core = 1085
+		add_state_core = 1087
+		add_state_core = 1088
+		hidden_effect = {
+			set_country_flag = CAC_unified_flag
+		}
+	}
+}
+
+country_event = {
+	id = cac.44
+	title = cac.44.t
+	desc = cac.44.d
+	picture = GFX_CAC_ipc_wins
+	is_triggered_only = yes
+	trigger = {
+		USA_is_nationalist_tag = yes
+	}
+	option = {
+		name = cac.44.a
+		ai_chance = {
+			base = 1
+		}
+		set_country_flag = CAC_autonomy_flag
+	}
+	option = {
+		name = cac.44.b
+		ai_chance = {
+			base = 0
+		}
+		custom_effect_tooltip = CAC_will_lead_war_tt
+		hidden_effect = {
+			CAC = {
+				country_event = {
+					id = cac.45
+					days = 1
+				}
+			}
+		}
+	}
+}
+
+country_event = {
+	id = cac.45
+	title = los.44.t
+	desc = los.44.d
+	picture = GFX_confederate_congress
+	fire_only_once = yes
+	is_triggered_only = yes
+	trigger = {
+		tag = CAC
+	}
+	immediate = {
+		hidden_effect = {
+			NSM_leave_national_front = yes
+		}
+	}
+	option = {
+		name = los.44.a
+		ai_chance = {
+			base = 1
+		}
+		effect_tooltip = {
+			NSM_leave_national_front = yes
+		}
+	}
+}

@@ -1,0 +1,166 @@
+﻿	capital = 799
+
+	oob = "TMS_2020"
+
+	set_research_slots = 3
+	set_convoys = 10
+	set_stability = 0.4
+
+	set_variable = { Russian_Influence = 0.40 }
+	set_variable = { Chinese_Influence = 0.20 }
+	set_variable = { American_Influence = 0.00 }
+	set_variable = { European_Influence = 0.00 }
+	set_variable = { PDO_Influence = 0.00 }
+	set_variable = { Sovereign_Influence = 0.40 }
+
+	recruit_character = TMS_gurbanguly_berdimuhamedow_char
+	recruit_character = TMS_reconstruction_council_char
+	recruit_character = TMS_ata_serdarov_char
+	recruit_character = TMS_serdar_berdimuhamedow_char
+	recruit_character = TMS_begenc_gundogdyyew_char
+
+	set_technology = {
+		## Infantry ##
+		infantry_weapons1 = 1
+		infantry_weapons2 = 1
+		motorised_infantry = 1
+		infantry_rifle_upgrade = 1
+		support_weapons = 1
+		support_weapons2 = 1
+		night_vision = 1
+		body_armor = 1
+		camouflage = 1
+		marines = 1
+		tech_mountaineers = 1
+		paratroopers = 1
+		tech_rangers = 1
+		
+		## Support Companies ##
+		tech_support = 1
+		tech_engineers = 1
+		tech_recon = 1
+		tech_military_police = 1
+		tech_maintenance_company = 1
+		tech_field_hospital = 1
+		tech_logistics_company = 1
+		tech_signal_company = 1
+		
+		## Armor ##
+		main_battle_tank1 = 1
+		main_battle_tank2 = 1
+		light_tank1 = 1
+		mechanised_infantry1 = 1
+		light_mechanized_infantry1 = 1
+		
+		## Artillery ##
+		gw_artillery = 1
+		interwar_antitank = 1
+		interwar_antiair = 1
+		tank_destroyer1 = 1
+		self_propelled_aa1 = 1
+		interwar_artillery = 1
+		sp_artillery1 = 1
+		
+		## Engineering ##
+		#eng_low
+		
+		## Industry ##
+		#ind_low
+		
+		## Doctrines ##
+	}
+	
+	if = {
+		limit = { has_dlc = "By Blood Alone" }
+			set_air_oob = "TMS_2020_air_bba"
+			set_technology = {
+				aa_lmg = 1
+				aa_cannon_1 = 1
+				aa_hmg = 1
+				engines_1 = 1
+				engines_2 = 1
+				early_bombs = 1
+				guided_bombs = 1
+				aircraft_construction = 1
+				survivability_studies = 1
+				iw_small_airframe = 1
+				basic_small_airframe = 1
+				iw_medium_airframe = 1
+				basic_medium_airframe = 1
+				iw_large_airframe = 1
+			}
+		else = {
+			set_air_oob = "TMS_2020_air_legacy"
+			set_technology = {
+				CAS1 = 1
+				CAS2 = 1
+				fighter1 = 1
+				fighter2 = 1
+				fighter3 = 1
+				strategic_bomber1 = 1
+			}
+		}
+	}
+	
+	if = {
+		limit = {
+			has_dlc = "By Blood Alone"
+		}
+		
+		create_equipment_variant = {
+			name = "Mig-29"
+			type = small_plane_airframe_1
+			modules = {
+				fixed_main_weapon_slot = heavy_mg_4x
+				fixed_auxiliary_weapon_slot_1 = heavy_mg_4x
+				fixed_auxiliary_weapon_slot_2 = light_mg_4x
+				engine_type_slot = engine_2_1x
+				special_type_slot_1 = hmg_defense_turret
+			}
+			icon = "GFX_SOV_fighter2_medium"
+		}
+		create_equipment_variant = {
+			name = "Su-25"
+			type = small_plane_cas_airframe_1
+			model = "SOV_CAS_equipment_2_entity"
+			modules = {
+				fixed_main_weapon_slot = small_bomb_bay
+				fixed_auxiliary_weapon_slot_1 = small_bomb_bay
+				fixed_auxiliary_weapon_slot_2 = heavy_mg_4x
+				fixed_auxiliary_weapon_slot_3 = heavy_mg_4x
+				engine_type_slot = engine_2_1x
+				special_type_slot_1 = hmg_defense_turret
+				special_type_slot_2 = hmg_defense_turret
+			}
+			icon = "GFX_CAS3_medium"
+		}
+	}
+
+	set_country_flag = dominant_religion_islam
+	set_country_flag = sunni_islam
+
+	add_ideas = {
+		TMS_gdp_fix
+		TMS_totalitarian_cult_state_idea
+		low_poverty
+	}
+
+	TMS = {
+		country_event = {
+			id = TMS.1
+			days = 801
+		}
+	}
+
+	set_politics = {	
+		ruling_party = nationalist
+		last_election = "2017.9.1"
+		election_frequency = 84
+		elections_allowed = yes
+	}
+
+	set_popularities = {
+		nationalist = 70
+		conservative = 15
+		authoritarian_democrat = 15
+	}

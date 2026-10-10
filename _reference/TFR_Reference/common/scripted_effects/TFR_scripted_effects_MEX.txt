@@ -1,0 +1,28 @@
+MEX_remove_cores_effect = {
+	every_possible_country = {
+		limit = {
+			MEX_is_civil_war_faction = yes
+			exists = no
+		}
+		every_state = {
+			limit = {
+				OR = {
+					is_core_of = PREV
+					is_claimed_by = PREV
+				}
+			}
+			if = {
+				limit = {
+					is_core_of = PREV
+				}
+				remove_core_of = PREV
+			}
+			if = {
+				limit = {
+					is_claimed_by = PREV
+				}
+				remove_claim_by = PREV
+			}
+		}
+	}
+}

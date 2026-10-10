@@ -1,0 +1,241 @@
+﻿	capital = 854
+
+	oob = "HUN_2020"
+
+	set_research_slots = 3
+	set_convoys = 140
+	set_stability = 0.55
+
+	set_country_flag = developed_country
+
+	set_variable = { Russian_Influence = 0.80 }
+	set_variable = { Chinese_Influence = 0.00 }
+	set_variable = { American_Influence = 0.00 }
+	set_variable = { European_Influence = 0.10 }
+	set_variable = { PDO_Influence = 0.00 }
+	set_variable = { Sovereign_Influence = 0.10 }
+
+	set_technology = {
+		## Infantry ##
+		infantry_weapons1 = 1
+		infantry_weapons2 = 1
+		motorised_infantry = 1
+		infantry_rifle_upgrade = 1
+		support_weapons = 1
+		night_vision = 1
+		body_armor = 1
+		camouflage = 1
+		paratroopers = 1
+		tech_mountaineers = 1
+		tech_rangers = 1
+		
+		## Support Companies ##
+		tech_support = 1
+		tech_engineers = 1
+		tech_recon = 1
+		tech_military_police = 1
+		tech_maintenance_company = 1
+		tech_field_hospital = 1
+		tech_logistics_company = 1
+		tech_signal_company = 1
+		
+		## Armor ##
+		mechanised_infantry1 = 1
+		light_mechanized_infantry1 = 1
+		
+		## Artillery ##
+		gw_artillery = 1
+		interwar_antitank = 1
+		interwar_antiair = 1
+		tank_destroyer1 = 1
+		self_propelled_aa1 = 1
+		interwar_artillery = 1
+		sp_artillery1 = 1
+		rocket_artillery = 1
+		
+		## Air ##
+		transport_plane2 = 1
+		attack_helicopter_1 = 1
+		utility_helicopter_1 = 1
+		
+		## Engineering ##
+		electronic_mechanical_engineering = 1
+		radio = 1
+		
+		## Industry ##
+		basic_machine_tools = 1
+		fuel_silos = 1
+		fuel_refining = 1
+		
+	}
+	
+	if = {
+		limit = { has_dlc = "By Blood Alone" }
+			set_air_oob = "HUN_2020_air_bba"
+			set_technology = {
+				aa_lmg = 1
+				aa_cannon_1 = 1
+				aa_hmg = 1
+				engines_1 = 1
+				engines_2 = 1
+				early_bombs = 1
+				guided_bombs = 1
+				aircraft_construction = 1
+				survivability_studies = 1
+				iw_small_airframe = 1
+				basic_small_airframe = 1
+				iw_medium_airframe = 1
+				basic_medium_airframe = 1
+				iw_large_airframe = 1
+			}
+		else = {
+			set_air_oob = "HUN_2020_air_legacy"
+			set_technology = {
+				CAS1 = 1
+				CAS2 = 1
+				fighter1 = 1
+				fighter2 = 1
+				naval_bomber1 = 1
+				naval_bomber2 = 1
+				strategic_bomber1 = 1
+				strategic_bomber2 = 1
+				scout_plane1 = 1
+				transport_plane2 = 1
+			}
+		}
+	}
+	
+	if = {
+		limit = {
+			NOT = { has_dlc = "No Step Back" }
+		}
+		set_technology = {
+			main_battle_tank1 = 1
+			main_battle_tank2 = 1
+			main_battle_tank3 = 1
+			light_tank1 = 1
+			light_tank2 = 1
+		}
+	}
+	if = {
+		limit = {
+			has_dlc = "No Step Back"
+		}
+		set_technology = {
+			gwtank_chassis = 1
+			basic_light_tank_chassis = 1
+			basic_medium_tank_chassis = 1
+			improved_light_tank_chassis = 1
+			improved_medium_tank_chassis = 1
+			engine_tech_1 = 1
+			apds_tech = 1
+			turret_mounted_mg_tech = 1
+			heat_tech = 1
+			turret_mounted_atgm_tech = 1
+			apfsds_tech = 1
+			##four_man_turret_tech = 1
+			#smooth_bore_barrel_tech = 1
+			legacy_armor_designs = 1
+		}
+	}
+
+	add_ideas = {
+		lower_police
+		higher_trade
+		high_poverty
+	}
+
+	set_politics = {	
+		ruling_party = nationalist
+		last_election = "2018.04.08"
+		election_frequency = 48
+		elections_allowed = yes
+	}
+	recruit_character = HNG_Kunhalmi_Agnes_char
+	recruit_character = HNG_Laszlo_Toroczkai_char
+	recruit_character = HNG_Gyula_Thurmer
+	recruit_character = HNG_Rafael_Lusvarghi
+	recruit_character = HUN_Margareta_of_Romania_char
+	recruit_character = HUN_Ferdinand_Habsburg_char
+	recruit_character = HUN_Eduard_Habsburg_Lothringen_char
+	recruit_character = HUN_Nicholas_Medforth_Mills_char
+	set_popularities = {
+		conservative = 13
+		social_democrat = 30
+		authoritarian_democrat = 37
+		social_liberal = 0
+		market_liberal = 10
+		nationalist = 6
+		communist = 4
+		fascist = 0
+		totalitarian_socialist = 0
+		libertarian_socialist = 0
+		national_socialist = 0
+	}
+	add_opinion_modifier = {
+		target = GER
+		modifier = european_traitor
+	}
+
+	add_opinion_modifier = {
+		target = FRA
+		modifier = european_traitor
+	}
+
+	add_opinion_modifier = {
+		target = ENG
+		modifier = european_traitor
+	}
+
+	add_opinion_modifier = {
+		target = SOV
+		modifier = friendship_of_peoples
+	}
+
+	if = {
+		limit = {
+			has_dlc = "No Step Back"
+		}
+		create_equipment_variant = {
+			name = "BMO-T"
+			type = light_tank_chassis_1
+			parent_version = 0
+			modules = {
+				main_armament_slot = flamethrower
+				turret_type_slot = tank_light_two_man_tank_turret
+				suspension_type_slot = tank_bogie_suspension
+				armor_type_slot = tank_riveted_armor
+				engine_type_slot = tank_gasoline_engine
+				special_type_slot_1 = tank_radio_1
+				special_type_slot_2 = extra_ammo_storage
+				special_type_slot_3 = smoke_launchers
+				special_type_slot_4 = empty
+				special_type_slot_5 = gunner_optical_sight
+			}
+			upgrades = {
+				tank_nsb_engine_upgrade = 3
+				tank_nsb_armor_upgrade = 2
+			}
+			icon = "gfx/interface/technologies/armor/Universal/BMO-T.png"
+		}
+	}
+	
+	if = {
+		limit = {
+			has_dlc = "By Blood Alone"
+		}
+
+		create_equipment_variant = {
+			name = "JAS 39"
+			type = small_plane_airframe_1
+			modules = {
+				fixed_main_weapon_slot = heavy_mg_4x
+				fixed_auxiliary_weapon_slot_1 = heavy_mg_4x
+				fixed_auxiliary_weapon_slot_2 = light_mg_4x
+				engine_type_slot = engine_2_1x
+				special_type_slot_1 = hmg_defense_turret
+			}
+			obsolete = yes
+			icon = "GFX_USA_fighter2_medium"
+		}
+	}

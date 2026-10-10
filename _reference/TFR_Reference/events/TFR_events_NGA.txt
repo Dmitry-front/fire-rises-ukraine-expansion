@@ -1,0 +1,917 @@
+﻿###########################
+# Iranian Events
+###########################
+
+add_namespace = nigeria
+
+# Non Aggression Pact with Niger WE NEED WATER
+country_event = {
+	id = nigeria.1
+	title = nigeria.1.t
+	desc = nigeria.1.d
+	picture = report_event_equipment
+	
+	fire_only_once = yes
+	is_triggered_only = yes
+	
+	trigger = {
+		tag = NGA
+	}
+
+	option = {
+	name = nigeria.1.a
+		NGR = {
+			country_event = { id = nigeria.2 }
+		}
+	}
+}
+
+# Non Aggression Pact with Nigeria
+country_event = {
+	id = nigeria.2
+	title = nigeria.2.t
+	desc = nigeria.2.d
+	picture = report_event_equipment
+	
+	fire_only_once = yes
+	is_triggered_only = yes
+	
+	trigger = {
+		tag = NGR
+	}
+
+	option = {
+	name = nigeria.2.a
+		diplomatic_relation = { country = NGA relation = non_aggression_pact }
+		NGR = {
+			give_guarantee = NGA
+		}
+		NGA = {
+			give_guarantee = NGR
+			country_event = { id = nigeria.3 days = 10 }
+		}
+	}
+}
+
+#Insurgents seize Chadean supplies
+country_event = {
+	id = nigeria.3
+	title = nigeria.3.t
+	desc = nigeria.3.d
+	picture = report_event_equipment
+	
+	fire_only_once = yes
+	is_triggered_only = yes
+	
+	trigger = {
+		tag = NGA
+	}
+
+	option = {
+		name = nigeria.3.a
+		
+	}
+}
+#Chad Demands repayment
+country_event = {
+	id = nigeria.8
+	title = nigeria.8.t
+	desc = nigeria.8.d
+	picture = report_event_equipment
+	
+	fire_only_once = yes
+	is_triggered_only = yes
+	
+	trigger = {
+		tag = NGA
+	}
+
+	option = {
+		name = nigeria.8.a
+		
+	}
+	option = {
+		name = nigeria.8.b
+		CHA = {
+			declare_war_on = { 
+				target = NGA
+				type = annex_everything 
+			}
+		}
+	}
+}
+
+# Boko Haram Mobilizes
+country_event = {
+	id = nigeria.4
+	title = nigeria.4.t
+	desc = nigeria.4.d
+	picture = report_event_equipment
+	
+	fire_only_once = yes
+	is_triggered_only = yes
+	
+	trigger = {
+		tag = NGA
+	}
+
+	option = {
+		name = nigeria.4.a
+		AQI = {
+			country_event = { id = nigeria.5 days = 10 }
+			transfer_state = 766
+			transfer_state = 858
+			add_state_core = 766
+			add_state_core = 858
+			add_ideas = {
+				AQI_Scattered_Revolution
+				AQI_Temporary_Unity_idea
+				AQI_Abode_of_Monotheism_idea
+			}
+			load_oob = "NGA_islamists"
+			declare_war_on = {
+    			target = NGA
+				type = annex_everything
+			}
+		}
+		NGA = {
+			delete_unit_template_and_units = {
+   				division_template = "Islamic Militas"
+   				disband = no #will refund equipment and manpower
+			}
+			add_ideas = { NGA_ineffective_antiterror_idea }
+			#country_event = { id = nigeria.7 days = 25 }
+		}
+	}
+}
+country_event = {
+	id = nigeria.5
+	title = nigeria.5.t
+	desc = nigeria.5.d
+	picture = report_event_equipment
+	
+	fire_only_once = yes
+	is_triggered_only = yes
+	
+	option = {
+		name = nigeria.5.a
+		transfer_units_fraction= {
+			target = AQI
+			size = 0.4
+			stockpile_ratio = 0.4
+			army_ratio = 0.4
+		}
+		AQI = {
+			transfer_state = 765
+		}
+	}
+}
+country_event = {
+	id = nigeria.6
+	title = nigeria.6.t
+	desc = nigeria.6.d
+	picture = report_event_equipment
+	
+	fire_only_once = yes
+	is_triggered_only = yes
+	
+	option = {
+		name = nigeria.6.a
+		set_politics = {
+			ruling_party = national_socialist
+    		last_election = "2022.04.10"
+			election_frequency = 60
+			elections_allowed = no
+		}
+	}
+}
+#Biafran revolt
+country_event = {
+	id = nigeria.7
+	title = nigeria.7.t
+	desc = nigeria.7.d
+	picture = report_event_equipment
+	
+	fire_only_once = yes
+	is_triggered_only = yes
+	
+	option = {
+		name = nigeria.7.a
+		add_stability = -0.18
+		BIA = {
+			transfer_state = 764
+			764 = {
+				add_core_of = BIA
+			}
+			hidden_effect = {
+				division_template = {
+					name = "Eastern Security Forces"	
+					regiments = {
+						militia = { x = 0 y = 0 }
+						militia = { x = 0 y = 1 }
+						militia = { x = 0 y = 2 }
+						militia = { x = 0 y = 3 }
+					}
+					support = {
+						engineer = { x = 0 y = 0 }
+						recon = { x = 0 y = 0 }
+					}
+				}
+				random_owned_controlled_state = {
+					prioritize = { 764 }
+					create_unit = {
+						division = "name = \"Eastern Security Network No. 1\" division_template = \"Eastern Security Forces\" start_experience_factor = 0.6 start_equipment_factor = 1" 
+						owner = BIA	
+					}
+				}
+				random_owned_controlled_state = {
+					prioritize = { 764 }
+					create_unit = {
+						division = "name = \"Eastern Security Network No. 2\" division_template = \"Eastern Security Forces\" start_experience_factor = 0.8 start_equipment_factor = 1" 
+						owner = BIA	
+					}
+				}
+				random_owned_controlled_state = {
+					prioritize = { 764 }
+					create_unit = {
+						division = "name = \"Eastern Security Network No. 3\" division_template = \"Eastern Security Forces\" start_experience_factor = 0.4 start_equipment_factor = 1" 
+						owner = BIA	
+					}
+				}
+				random_owned_controlled_state = {
+					prioritize = { 764 }
+					create_unit = {
+						division = "name = \"Eastern Security Network No. 4\" division_template = \"Eastern Security Forces\" start_experience_factor = 0.8 start_equipment_factor = 1" 
+						owner = BIA	
+					}
+				}
+			}
+		}
+		declare_war_on = { 
+			target = BIA
+			type = annex_everything 
+		}
+		AQI = {
+			declare_war_on = { 
+				target = BIA
+				type = annex_everything 
+			}
+		}
+		hidden_effect = {
+			CMR = {
+				country_event = { id = Cameroon.1 days = 16 }
+			}
+		}
+		transfer_units_fraction = {
+			target = BIA
+			size = 0.2
+			keep_unit_leaders_trigger = {
+				OR = {
+					is_country_leader = yes
+					is_character = NGA_Muhammadu_Buhari_char
+					is_character = NGA_Lucky_Irabor_char
+				}
+			}
+		}
+
+	}
+}
+country_event = {
+	id = nigeria.9
+	title = nigeria.9.t
+	desc = nigeria.9.d
+	picture = GFX_generic_elections
+	
+	fire_only_once = yes
+	is_triggered_only = yes
+	
+	option = {
+		name = nigeria.9.a
+		ai_chance = {
+			base = 65
+		}
+		trigger = { 
+			NOT = {
+				is_puppet_of = BIA
+			}
+		}
+		add_popularity = { ideology = social_liberal popularity = 0.05 }
+		retire_character = NGA_Muhammadu_Buhari_char
+	}
+	option = {
+		name = nigeria.9.b
+		ai_chance = {
+			base = 35
+		}
+		trigger = { 
+			NOT = {
+				is_puppet_of = BIA
+			}
+		}
+		set_politics = {
+			ruling_party = conservative
+    		last_election = "2023.02.25"
+			election_frequency = 60
+			elections_allowed = yes
+		}
+		add_popularity = { ideology = conservative popularity = 0.15 }
+		retire_character = NGA_Muhammadu_Buhari_char
+	}
+	option = {
+		name = nigeria.9.c
+		trigger = { 
+			is_puppet_of = BIA
+		}
+	}
+}
+country_event = {
+	id = nigeria.10
+	title = nigeria.10.t
+	desc = nigeria.10.d
+	picture = report_event_equipment
+	
+	fire_only_once = yes
+	is_triggered_only = yes
+	
+	option = {
+		name = nigeria.10.a
+		load_oob = "VOL_2020"
+		set_politics = {
+			ruling_party = nationalist
+    		last_election = "2022.04.10"
+			election_frequency = 60
+			elections_allowed = no
+		}
+		change_government_type_military_dictatorship = yes
+		add_country_leader_role = {
+			character = VOL_Ibrahim_Traore_char
+			promote_leader = yes
+			country_leader = {
+				ideology = autocrat
+				traits = {
+					Africa_Ambitious_Dictator
+				}
+			}
+		}
+		remove_ideas = {
+			FRA_CFA_Franc
+			african_union_member
+		}
+		add_popularity = {
+			ideology = nationalist
+			popularity = 0.25
+		}
+		SOV = {
+			country_event = { id = russia.712 days = 5 }
+		}
+		news_event = { 
+			id = news.406
+			days = 1
+		}
+	}
+}
+country_event = {
+	id = nigeria.11
+	title = nigeria.11.t
+	desc = nigeria.11.d
+	picture = report_event_equipment
+	
+	fire_only_once = yes
+	is_triggered_only = yes
+	
+	option = {
+		name = nigeria.11.a
+		set_politics = {
+			ruling_party = nationalist
+    		last_election = "2022.04.10"
+			election_frequency = 60
+			elections_allowed = no
+		}
+		remove_ideas = {
+			FRA_CFA_Franc
+			african_union_member
+		}
+		SOV = {
+			country_event = { id = russia.714 days = 15 random_days = 10 }
+		}
+		add_popularity = {
+			ideology = nationalist
+			popularity = 0.3
+		}
+	}
+}
+
+country_event = {
+	id = nigeria.12
+	title = nigeria.12.t
+	desc = nigeria.12.d
+	picture = report_event_equipment
+	
+	fire_only_once = yes
+	is_triggered_only = yes
+	
+	option = {
+		name = nigeria.12.a
+		division_template = {
+			name = "Motostrelkovaya Brigada"	
+			regiments = {
+				modern_armor = { x = 0 y = 0 }
+				modern_armor = { x = 0 y = 1 }
+				light_mechanized = { x = 0 y = 2 }
+				light_mechanized = { x = 0 y = 3 }
+				modern_sp_artillery_brigade = { x = 0 y = 4 }
+			}
+			support = {
+				signal_company = { x = 0 y = 0 }
+			}
+		}
+		random_owned_controlled_state = {
+			create_unit = {
+				division = "name = \"Motostrelkovaya Brigada\" division_template = \"Motostrelkovaya Brigada\" start_experience_factor = 0.4 start_equipment_factor = 1.0" 
+				owner = ROOT	
+			}
+		}
+		random_owned_controlled_state = {
+			create_unit = {
+				division = "name = \"Motostrelkovaya Brigada\" division_template = \"Motostrelkovaya Brigada\" start_experience_factor = 0.4 start_equipment_factor = 1.0" 
+				owner = ROOT	
+			}
+		}
+		set_politics = {
+			ruling_party = nationalist
+    		last_election = "2022.04.10"
+			election_frequency = 60
+			elections_allowed = no
+		}
+		change_government_type_military_dictatorship = yes
+		add_country_leader_role = {
+			character = NGR_Abdourahamane_Tchiani_char
+			promote_leader = yes
+			country_leader = {
+				ideology = autocrat
+				traits = {
+					
+				}
+			}
+		}
+		remove_ideas = {
+			FRA_CFA_Franc
+			african_union_member
+		}
+		add_popularity = {
+			ideology = nationalist
+			popularity = 0.25
+		}
+		SOV = {
+			country_event = { id = russia.713 days = 5 }
+		}
+		MLI = {
+			country_event = {
+				id = mali.2
+				days = 14
+			}
+		}
+		news_event = { 
+			id = news.407
+			days = 1
+		}
+	}
+}
+
+#Senegal Elections
+country_event = {
+	id = nigeria.13
+	title = nigeria.13.t
+	desc = nigeria.13.d
+	picture = report_event_equipment
+	
+	fire_only_once = yes
+	is_triggered_only = yes
+	
+	option = {
+		name = nigeria.13.a
+		ai_chance = {
+			factor = 50
+		    modifier = {
+				factor = 0
+				OR = {
+				    has_game_rule = {
+					    rule = SEN_2024_election
+					    option = SEN_2024_election_1
+					}
+				    has_game_rule = {
+					    rule = SEN_2024_election
+					    option = SEN_2024_election_2
+					}
+			      }
+			   }
+		}
+		trigger = {
+			OR = {
+				social_democrat > 0.4
+				AND = {
+					NOT = {
+						has_idea = FRA_French_Economic_Influence_idea
+					}
+					NOT = {
+						has_idea = FRA_French_Military_Influence_idea
+					}
+				}
+			}
+		}
+		set_politics = {
+			ruling_party = social_democrat
+    		last_election = "2022.04.10"
+			election_frequency = 60
+			elections_allowed = no
+		}
+		set_country_flag = SOV_WA_Coup
+		division_template = {
+			name = "Motostrelkovaya Brigada"	
+			regiments = {
+				motorized = { x = 0 y = 0 }
+				motorized = { x = 0 y = 1 }
+				motorized = { x = 0 y = 2 }
+				light_mechanized = { x = 0 y = 3 }
+				mechanized = { x = 0 y = 4 }
+			}
+			support = {
+				signal_company = { x = 0 y = 0 }
+			}
+		}
+		random_owned_controlled_state = {
+			create_unit = {
+				division = "name = \"Motostrelkovaya Brigada\" division_template = \"Motostrelkovaya Brigada\" start_experience_factor = 0.4 start_equipment_factor = 1.0" 
+				owner = ROOT	
+			}
+		}
+		random_owned_controlled_state = {
+			create_unit = {
+				division = "name = \"Motostrelkovaya Brigada\" division_template = \"Motostrelkovaya Brigada\" start_experience_factor = 0.4 start_equipment_factor = 1.0" 
+				owner = ROOT	
+			}
+		}
+		if = {
+			limit = {
+				MLI = {
+					is_in_faction = yes
+				}
+			}
+			MLI = {
+				add_to_faction = ROOT
+			}
+		}
+		remove_ideas = {
+			FRA_CFA_Franc
+			FRA_French_Economic_Influence_idea
+			FRA_French_Military_Influence_idea
+		}
+		SOV = {
+			country_event = { id = russia.725 days = 5 }
+			set_country_flag = SOV_senegal_elections
+			set_country_flag = SOV_senegal_elections_won
+		}
+		news_event = {
+			id = news.408
+			days = 1
+		}
+	}
+	option = {
+		name = nigeria.13.b
+		ai_chance = {
+			factor = 50
+		    modifier = {
+				factor = 0
+				OR = {
+				    has_game_rule = {
+					    rule = SEN_2024_election
+					    option = SEN_2024_election_1
+					}
+				    has_game_rule = {
+					    rule = SEN_2024_election
+					    option = SEN_2024_election_2
+					}
+			      }
+			   }
+		}
+		trigger = {
+			NOT = {
+				social_democrat > 0.4
+			}
+		}
+		add_popularity = {
+			ideology = market_liberal
+			popularity = 0.1
+		}
+		SOV = {
+			country_event = { id = russia.726 days = 5 }
+			set_country_flag = SOV_senegal_elections
+		}
+	}
+	option = {
+		name = nigeria.13.c
+		ai_chance = {
+			base = 0
+		    modifier = {
+				add = 100
+				OR = {
+				    has_game_rule = {
+					    rule = SEN_2024_election
+					    option = SEN_2024_election_1
+					}
+			      }
+			   }
+		}
+		set_politics = {
+			ruling_party = social_democrat
+    		last_election = "2022.04.10"
+			election_frequency = 60
+			elections_allowed = no
+		}
+		set_country_flag = SOV_WA_Coup
+		division_template = {
+			name = "Motostrelkovaya Brigada"	
+			regiments = {
+				motorized = { x = 0 y = 0 }
+				motorized = { x = 0 y = 1 }
+				motorized = { x = 0 y = 2 }
+				light_mechanized = { x = 0 y = 3 }
+				mechanized = { x = 0 y = 4 }
+			}
+			support = {
+				signal_company = { x = 0 y = 0 }
+			}
+		}
+		random_owned_controlled_state = {
+			create_unit = {
+				division = "name = \"Motostrelkovaya Brigada\" division_template = \"Motostrelkovaya Brigada\" start_experience_factor = 0.4 start_equipment_factor = 1.0" 
+				owner = ROOT	
+			}
+		}
+		random_owned_controlled_state = {
+			create_unit = {
+				division = "name = \"Motostrelkovaya Brigada\" division_template = \"Motostrelkovaya Brigada\" start_experience_factor = 0.4 start_equipment_factor = 1.0" 
+				owner = ROOT	
+			}
+		}
+		if = {
+			limit = {
+				MLI = {
+					is_in_faction = yes
+				}
+			}
+			MLI = {
+				add_to_faction = ROOT
+			}
+		}
+		remove_ideas = {
+			FRA_CFA_Franc
+			FRA_French_Economic_Influence_idea
+			FRA_French_Military_Influence_idea
+		}
+		SOV = {
+			country_event = { id = russia.725 days = 5 }
+			set_country_flag = SOV_senegal_elections
+			set_country_flag = SOV_senegal_elections_won
+		}
+		news_event = {
+			id = news.408
+			days = 1
+		}
+	}
+	option = {
+		name = nigeria.13.e
+		ai_chance = {
+			base = 0
+		    modifier = {
+				add = 100
+				OR = {
+				    has_game_rule = {
+					    rule = SEN_2024_election
+					    option = SEN_2024_election_2
+					}
+			      }
+			   }
+		}
+		add_popularity = {
+			ideology = market_liberal
+			popularity = 0.1
+		}
+		SOV = {
+			country_event = { id = russia.726 days = 5 }
+			set_country_flag = SOV_senegal_elections
+		}
+	}
+}
+
+#Guinea-Bissau Elections
+country_event = {
+	id = nigeria.14
+	title = nigeria.14.t
+	desc = nigeria.14.d
+	picture = report_event_equipment
+	
+	fire_only_once = yes
+	is_triggered_only = yes
+	
+	option = {
+		name = nigeria.14.a
+		ai_chance = {
+			factor = 50
+		    modifier = {
+				factor = 0
+				OR = {
+				    has_game_rule = {
+					    rule = GNB_2024_election
+					    option = GNB_2024_election_1
+					}
+				    has_game_rule = {
+					    rule = GNB_2024_election
+					    option = GNB_2024_election_2
+					}
+			      }
+			   }
+		}
+		trigger = {
+			OR = {
+				social_democrat > 0.4
+				AND = {
+					NOT = {
+						has_idea = FRA_French_Economic_Influence_idea
+					}
+					NOT = {
+						has_idea = FRA_French_Military_Influence_idea
+					}
+				}
+			}
+		}
+		set_politics = {
+			ruling_party = social_democrat
+    		last_election = "2024.04.10"
+			election_frequency = 60
+			elections_allowed = no
+		}
+		set_country_flag = SOV_WA_Coup
+		division_template = {
+			name = "Motostrelkovaya Brigada"	
+			regiments = {
+				motorized = { x = 0 y = 0 }
+				motorized = { x = 0 y = 1 }
+				motorized = { x = 0 y = 2 }
+				light_mechanized = { x = 0 y = 3 }
+				mechanized = { x = 0 y = 4 }
+			}
+			support = {
+				signal_company = { x = 0 y = 0 }
+			}
+		}
+		random_owned_controlled_state = {
+			create_unit = {
+				division = "name = \"Motostrelkovaya Brigada\" division_template = \"Motostrelkovaya Brigada\" start_experience_factor = 0.4 start_equipment_factor = 1.0" 
+				owner = ROOT	
+			}
+		}
+		random_owned_controlled_state = {
+			create_unit = {
+				division = "name = \"Motostrelkovaya Brigada\" division_template = \"Motostrelkovaya Brigada\" start_experience_factor = 0.4 start_equipment_factor = 1.0" 
+				owner = ROOT	
+			}
+		}
+		if = {
+			limit = {
+				MLI = {
+					is_in_faction = yes
+				}
+			}
+			MLI = {
+				add_to_faction = ROOT
+			}
+		}
+		remove_ideas = {
+			FRA_CFA_Franc
+			FRA_French_Economic_Influence_idea
+			FRA_French_Military_Influence_idea
+		}
+		SOV = {
+			set_country_flag = GNB_elections
+		}
+	}
+	option = {
+		name = nigeria.14.b
+		ai_chance = {
+			factor = 50
+		    modifier = {
+				factor = 0
+				OR = {
+				    has_game_rule = {
+					    rule = GNB_2024_election
+					    option = GNB_2024_election_1
+					}
+				    has_game_rule = {
+					    rule = GNB_2024_election
+					    option = GNB_2024_election_2
+					}
+			      }
+			   }
+		}
+		trigger = {
+			NOT = {
+				social_democrat > 0.4
+			}
+		}
+		add_popularity = {
+			ideology = market_liberal
+			popularity = 0.1
+		}
+		SOV = {
+			set_country_flag = GNB_elections
+		}
+	}
+	option = {
+		name = nigeria.14.c
+		ai_chance = {
+			base = 0
+		    modifier = {
+				add = 100
+				OR = {
+				    has_game_rule = {
+					    rule = GNB_2024_election
+					    option = GNB_2024_election_1
+					}
+			      }
+			   }
+		}
+		set_politics = {
+			ruling_party = social_democrat
+    		last_election = "2024.04.10"
+			election_frequency = 60
+			elections_allowed = no
+		}
+		set_country_flag = SOV_WA_Coup
+		division_template = {
+			name = "Motostrelkovaya Brigada"	
+			regiments = {
+				motorized = { x = 0 y = 0 }
+				motorized = { x = 0 y = 1 }
+				motorized = { x = 0 y = 2 }
+				light_mechanized = { x = 0 y = 3 }
+				mechanized = { x = 0 y = 4 }
+			}
+			support = {
+				signal_company = { x = 0 y = 0 }
+			}
+		}
+		random_owned_controlled_state = {
+			create_unit = {
+				division = "name = \"Motostrelkovaya Brigada\" division_template = \"Motostrelkovaya Brigada\" start_experience_factor = 0.4 start_equipment_factor = 1.0" 
+				owner = ROOT	
+			}
+		}
+		random_owned_controlled_state = {
+			create_unit = {
+				division = "name = \"Motostrelkovaya Brigada\" division_template = \"Motostrelkovaya Brigada\" start_experience_factor = 0.4 start_equipment_factor = 1.0" 
+				owner = ROOT	
+			}
+		}
+		if = {
+			limit = {
+				MLI = {
+					is_in_faction = yes
+				}
+			}
+			MLI = {
+				add_to_faction = ROOT
+			}
+		}
+		remove_ideas = {
+			FRA_CFA_Franc
+			FRA_French_Economic_Influence_idea
+			FRA_French_Military_Influence_idea
+		}
+		SOV = {
+			set_country_flag = GNB_elections
+		}
+	}
+	option = {
+		name = nigeria.14.e
+		ai_chance = {
+			base = 0
+		    modifier = {
+				add = 100
+				OR = {
+				    has_game_rule = {
+					    rule = GNB_2024_election
+					    option = GNB_2024_election_2
+					}
+			      }
+			   }
+		}
+		add_popularity = {
+			ideology = market_liberal
+			popularity = 0.1
+		}
+		SOV = {
+			set_country_flag = GNB_elections
+		}
+	}
+}

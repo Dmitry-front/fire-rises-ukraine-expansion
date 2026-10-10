@@ -1,0 +1,110 @@
+	ideas = {
+		country = {
+			CRO_slavoniadalmatia_divide = {
+				picture = CRO_slavonia_dalmatia_divide
+			    traits = {
+			        ZZZ_blank_idea_trait
+			    }
+
+				allowed = {
+					always = no
+				}
+
+				allowed_civil_war = {
+					always = yes
+				}
+
+				removal_cost = -1
+				modifier = {
+					stability_factor = -0.05
+					consumer_goods_factor = 0.10
+					industrial_development_monthly = -0.02
+					industrial_capacity_factory = 0.025
+					industrial_capacity_dockyard = 0.075
+					income_growth_factor = 0.05
+				}
+			}
+			
+			CRO_european_reliance = {
+				picture = CRO_eu_reliance
+			    traits = {
+			        ZZZ_blank_idea_trait
+			    }
+
+				allowed = {
+					always = no
+				}
+				cancel = {
+					OR = {
+						has_government = authoritarian_democrat
+						has_government = fascist
+						has_government = national_socialist
+					}
+				}
+				allowed_civil_war = {
+					always = yes
+				}
+
+				removal_cost = -1
+				modifier = {
+					political_power_gain = -0.10
+					consumer_goods_factor = 0.05
+					business_value_factor = 0.075
+					authoritarian_democrat_drift = 0.01
+				}
+			}
+			
+			CRO_fading_grudges = {
+				picture = CRO_fading_grudges
+			    traits = {
+			        ZZZ_blank_idea_trait
+			    }
+
+				allowed = {
+					always = no
+				}
+
+				allowed_civil_war = {
+					always = yes
+				}
+
+				removal_cost = -1
+				modifier = {
+					stability_factor = 0.025
+					war_support_factor = -0.10
+					political_power_gain = 0.025
+					mobilization_speed = -0.01
+				}
+			}
+
+			CRO_fascist_resurgence = {
+				picture = CRO_fascist_resurgence
+			    traits = {
+			        ZZZ_blank_idea_trait
+			    }
+
+				allowed = {
+					always = no
+				}
+
+				allowed_civil_war = {
+					always = yes
+				}
+
+				cancel = {
+					NOT = { has_government = fascist }
+				}
+				removal_cost = -1
+				modifier = {
+					war_support_factor = 0.15
+					political_power_gain = 0.025
+					army_core_defence_factor = 0.075
+					mobilization_speed = 0.02
+					national_socialist_drift = 0.02
+					fascist_drift = 0.03
+					nationalist_drift = 0.02
+					authoritarian_democrat_drift = 0.02
+				}
+			}
+		}
+	}

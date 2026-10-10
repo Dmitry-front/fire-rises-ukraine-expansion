@@ -1,0 +1,585 @@
+	ideas = {
+		country = {
+			BLA_dreams_of_a_new_afrika_idea = {
+				picture = BLA_dreams_of_a_new_afrika
+			    traits = {
+			        ZZZ_blank_idea_trait
+			    }
+
+				allowed = {
+					always = no
+				}
+
+				allowed_civil_war = {
+					always = yes
+				}
+
+				removal_cost = -1
+				
+				modifier = {
+					political_power_gain = 0.01
+					army_speed_factor = 0.05
+				}
+			}
+
+			BLA_two_miltias_one_army_idea = {
+				picture = BLA_two_militias_one_army
+			    traits = {
+			        ZZZ_blank_idea_trait
+			    }
+
+				allowed = {
+					always = no
+				}
+
+				allowed_civil_war = {
+					always = yes
+				}
+
+				on_add = {
+					add_dynamic_modifier = {
+						modifier = BLA_bp_influence_dynamic_modifier
+					}
+					add_dynamic_modifier = {
+						modifier = BLA_noi_influence_dynamic_modifier
+					}
+				}
+
+				on_remove = {
+					if = {
+						limit = {
+							NOT = { has_country_flag = remove_ideas_flag }
+						}
+						remove_dynamic_modifier = {
+							modifier = BLA_bp_influence_dynamic_modifier
+						}
+						remove_dynamic_modifier = {
+							modifier = BLA_noi_influence_dynamic_modifier
+						}
+					}
+				}
+
+				removal_cost = -1
+				
+				modifier = {
+					nationalist_drift = -0.025
+					stability_weekly = -0.025
+					conscription_factor = -0.05
+				}
+			}
+
+			BLA_gang_violence = {
+				picture = USA_militia_looting
+			    traits = {
+			        ZZZ_blank_idea_trait
+			    }
+
+				allowed = {
+					always = no
+				}
+
+				allowed_civil_war = {
+					always = yes
+				}
+
+				removal_cost = -1
+				
+				modifier = {
+					army_core_attack_factor = 0.05
+					army_org_factor = -0.05
+					army_morale_factor = -0.05
+					political_power_factor = -0.05
+				}
+			}
+
+			BLA_self_serving_military_idea = {
+				picture = BLA_self_serving_military
+			    traits = {
+			        ZZZ_blank_idea_trait
+			    }
+				allowed = {
+					always = no
+				}
+
+				allowed_civil_war = {
+					always = yes
+				}
+
+				removal_cost = -1
+				
+				modifier = {
+					stability_factor = -0.05	
+					army_morale_factor = -0.10
+					army_org_factor = -0.10
+				}
+			}
+
+			BLA_community_defense_idea = {
+				picture = ast_volunteer_defence_corps
+			    traits = {
+			        ZZZ_blank_idea_trait
+			    }
+
+				allowed = {
+					always = no
+				}
+
+				allowed_civil_war = {
+					always = yes
+				}
+
+				removal_cost = -1
+				
+				modifier = {
+					army_core_attack_factor = 0.05
+					army_core_defence_factor = 0.05
+				}
+			}
+			
+			BLA_the_grand_master_supreme_idea = {
+				picture = vittoria_mutilata
+			    traits = {
+			        ZZZ_blank_idea_trait
+			    }
+
+				allowed = {
+					always = no
+				}
+
+				allowed_civil_war = {
+					always = yes
+				}
+
+				removal_cost = -1
+				
+				modifier = {
+					political_power_gain = -0.05
+					stability_factor = 0.05
+				}
+			}
+			
+			BLA_a_nation_of_blacks_idea = {
+				picture = vittoria_mutilata
+			    traits = {
+			        ZZZ_blank_idea_trait
+			    }
+
+				allowed = {
+					always = no
+				}
+
+				allowed_civil_war = {
+					always = yes
+				}
+
+				removal_cost = -1
+				
+				modifier = {
+					political_power_gain = -0.1
+					stability_factor = 0.1
+				}
+			}
+			
+			BLA_a_nation_of_blacks_idea1 = {
+				picture = vittoria_mutilata
+			    traits = {
+			        ZZZ_blank_idea_trait
+			    }
+
+				allowed = {
+					always = no
+				}
+
+				allowed_civil_war = {
+					always = yes
+				}
+
+				removal_cost = -1
+				
+				modifier = {
+					political_power_gain = -0.15
+					stability_factor = 0.1
+					army_core_defence_factor = 0.125
+				}
+			}
+			
+			BLA_a_nation_of_blacks_idea2 = {
+				picture = vittoria_mutilata
+			    traits = {
+			        ZZZ_blank_idea_trait
+			    }
+
+				allowed = {
+					always = no
+				}
+
+				allowed_civil_war = {
+					always = yes
+				}
+
+				removal_cost = -1
+				
+				modifier = {
+					political_power_gain = -0.15
+					stability_factor = 0.1
+					army_core_defence_factor = 0.125
+					conscription_factor = 0.1
+				}
+			}
+			
+			BLA_a_nation_for_blacks_idea = {
+				picture = vittoria_mutilata
+			    traits = {
+			        ZZZ_blank_idea_trait
+			    }
+
+				allowed = {
+					always = no
+				}
+
+				allowed_civil_war = {
+					always = yes
+				}
+
+				removal_cost = -1
+				
+				modifier = {
+					political_power_gain = -0.1
+					stability_factor = 0.05
+					production_speed_arms_factory_factor = 0.1
+				}
+			}
+			
+			BLA_a_nation_for_blacks_idea1 = {
+				picture = vittoria_mutilata
+			    traits = {
+			        ZZZ_blank_idea_trait
+			    }
+
+				allowed = {
+					always = no
+				}
+
+				allowed_civil_war = {
+					always = yes
+				}
+
+				removal_cost = -1
+				
+				modifier = {
+					political_power_gain = -0.1
+					stability_factor = 0.05
+					production_speed_arms_factory_factor = 0.1
+					army_attack_factor = 0.05
+				}
+			}
+			
+			BLA_a_nation_for_blacks_idea2 = {
+				picture = vittoria_mutilata
+			    traits = {
+			        ZZZ_blank_idea_trait
+			    }
+
+				allowed = {
+					always = no
+				}
+
+				allowed_civil_war = {
+					always = yes
+				}
+
+				removal_cost = -1
+				
+				modifier = {
+					political_power_gain = -0.1
+					stability_factor = 0.05
+					production_speed_arms_factory_factor = 0.1
+					army_attack_factor = 0.05
+					max_command_power = 25
+					army_org_regain = 0.05
+				}
+			}
+			
+			BLA_the_general_secretary_supreme_idea = {
+				picture = trotskyite_plot_purged
+			    traits = {
+			        ZZZ_blank_idea_trait
+			    }
+
+				allowed = {
+					always = no
+				}
+
+				allowed_civil_war = {
+					always = yes
+				}
+
+				removal_cost = -1
+				
+				modifier = {
+					political_power_gain = 0.05
+				}
+			}
+			
+			BLA_black_investing_idea = {
+				picture = generic_economic_increase
+			    traits = {
+			        ZZZ_blank_idea_trait
+			    }
+
+				allowed = {
+					always = no
+				}
+
+				allowed_civil_war = {
+					always = yes
+				}
+
+				removal_cost = -1
+				
+				modifier = {
+					production_speed_buildings_factor = 0.1
+				}
+			}
+
+			BLA_legacy_of_the_panthers = {
+				picture = GMA_Unorganized_Militias_idea2
+			    traits = {
+			        ZZZ_blank_idea_trait
+			    }
+
+				allowed = {
+					always = no
+				}
+
+				allowed_civil_war = {
+					always = yes
+				}
+
+				removal_cost = -1
+				
+				modifier = {
+					training_time_factor = -0.10
+					libertarian_socialist_drift = 0.01
+					communist_drift = 0.01
+				}
+			}
+			BLA_legacy_of_malcom_x = {
+				picture = USB_overwhelming_corporate_influence
+			    traits = {
+			        ZZZ_blank_idea_trait
+			    }
+
+				allowed = {
+					always = no
+				}
+
+				allowed_civil_war = {
+					always = yes
+				}
+
+				removal_cost = -1
+				
+				modifier = {
+					army_core_attack_factor = 0.10
+					army_core_defence_factor  = 0.10
+					fascist_drift = 0.01
+					national_socialist_drift = 0.01
+				}
+			}
+			BLA_mass_looting = {
+				picture = generic_economic_ruin
+			    traits = {
+			        ZZZ_blank_idea_trait
+			    }
+
+				allowed = {
+					always = no
+				}
+
+				allowed_civil_war = {
+					always = yes
+				}
+
+				removal_cost = -1
+				
+				modifier = {
+					war_stability_factor = 0.15
+					stability_factor = -0.15
+					consumer_goods_factor = -0.10
+				}
+			}
+			BLA_black_spirit = {
+				picture = mauritanian_referendum
+			    traits = {
+			        ZZZ_blank_idea_trait
+			    }
+
+				allowed = {
+					always = no
+				}
+
+				allowed_civil_war = {
+					always = yes
+				}
+
+				removal_cost = -1
+				
+				modifier = {
+					conscription = 0.01
+				}
+			}
+			BLA_anti_league_campaign = {
+				picture = kill_them_all
+			    traits = {
+			        ZZZ_blank_idea_trait
+			    }
+
+				allowed = {
+					always = no
+				}
+
+				allowed_civil_war = {
+					always = yes
+				}
+
+				removal_cost = -1
+				
+				modifier = {
+					stability_factor = -0.05
+				}
+				targeted_modifier = {
+					tag = LOS
+					attack_bonus_against = 0.10
+					defense_bonus_against = 0.10
+				}
+			}
+			BLA_garveyism_idea = {
+				picture = propaganda
+			    traits = {
+			        ZZZ_blank_idea_trait
+			    }
+
+				allowed = {
+					always = no
+				}
+
+				allowed_civil_war = {
+					always = yes
+				}
+
+				removal_cost = -1
+				
+				modifier = {
+					army_org_factor = 0.05
+					conscription = 0.01
+				}
+			}
+			BLA_afrikan_companies = {
+				picture = generic_economic_stimulation
+			    traits = {
+			        ZZZ_blank_idea_trait
+			    }
+
+				allowed = {
+					always = no
+				}
+
+				allowed_civil_war = {
+					always = yes
+				}
+
+				removal_cost = -1
+				
+				modifier = {
+					production_speed_buildings_factor = 0.10
+					consumer_goods_factor = -0.03
+				}
+			}
+			BLA_afrikan_christianity_idea = {
+				picture = catholic_faith
+			    traits = {
+			        ZZZ_blank_idea_trait
+			    }
+
+				allowed = {
+					always = no
+				}
+
+				allowed_civil_war = {
+					always = yes
+				}
+
+				removal_cost = -1
+				
+				modifier = {
+					nationalist_drift = 0.03
+					army_org_factor = 0.10
+					stability_factor = -0.10
+				}
+			}
+			BLA_great_afrikan_crusade_idea = {
+				picture = fascism
+			    traits = {
+			        ZZZ_blank_idea_trait
+			    }
+
+				allowed = {
+					always = no
+				}
+
+				allowed_civil_war = {
+					always = yes
+				}
+
+				removal_cost = -1
+				
+				modifier = {
+					army_attack_factor = 0.10
+					army_speed_factor = 0.10
+				}
+			}
+			BLA_centralized_command_idea = {
+				picture = u
+			    traits = {
+			        ZZZ_blank_idea_trait
+			    }
+
+				allowed = {
+					always = no
+				}
+
+				allowed_civil_war = {
+					always = yes
+				}
+
+				removal_cost = -1
+				
+				modifier = {
+					max_planning = 10 
+					army_org = 10
+				}
+			}
+			BLA_decentralized_command_idea = {
+				picture = u
+			    traits = {
+			        ZZZ_blank_idea_trait
+			    }
+
+				allowed = {
+					always = no
+				}
+
+				allowed_civil_war = {
+					always = yes
+				}
+
+				removal_cost = -1
+				
+				modifier = {
+					army_morale = 10 
+					max_dig_in = 10
+				}
+			}
+		}
+	}

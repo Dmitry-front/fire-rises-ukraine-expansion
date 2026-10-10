@@ -1,0 +1,815 @@
+USA_second_american_civil_war_category = {
+	state_join_USA_coalition = {
+		icon = generic_shaking_hands
+		fire_only_once = yes
+		allowed = {
+			OR = {
+				original_tag = CAL
+				original_tag = TEX
+				original_tag = ARZ
+				original_tag = NMX
+				original_tag = LOU
+				original_tag = MSS
+				original_tag = ALA
+				original_tag = GRA
+				original_tag = FLA
+				original_tag = STC
+				original_tag = WAS
+				original_tag = ORE
+				original_tag = NEG
+			}
+		}
+		visible = {
+			is_in_faction = no
+			OR = {
+				has_completed_focus = state_join_trump_war
+				has_completed_focus = state_join_biden_war
+			}
+			USA = {
+				is_in_faction = yes
+				is_faction_leader = yes
+			}
+		}
+		available = {
+			OR = {
+				has_government = conservative
+				has_government = market_liberal
+				has_government = authoritarian_democrat
+				has_completed_focus = state_join_trump_war
+				NOT = {
+					tag = NCA
+				}
+			}
+			OR = {
+				has_completed_focus = state_join_trump_war
+			}
+			OR = {
+				AND = {
+					if = {
+						limit = {
+							original_tag = NEG
+						}
+						PTF = {
+							OR = {
+								has_capitulated = yes
+								exists = no
+							}
+						}
+						GMB = {
+							OR = {
+								has_capitulated = yes
+								exists = no
+							}
+						}
+						GMA = {
+							OR = {
+								has_capitulated = yes
+								exists = no
+							}
+						}
+					}
+					if = {
+						limit = {
+							original_tag = TEX
+						}
+						ATH = {
+							OR = {
+								has_capitulated = yes
+								exists = no
+							}
+						}
+						TRG = {
+							OR = {
+								has_capitulated = yes
+								exists = no
+							}
+						}
+					}
+					if = {
+						limit = {
+							original_tag = ARZ
+						}
+						ABR = {
+							OR = {
+								has_capitulated = yes
+								exists = no
+							}
+						}
+						BRN = {
+							OR = {
+								has_capitulated = yes
+								exists = no
+							}
+						}
+					}
+					if = {
+						limit = {
+							original_tag = CAL
+						}
+						AYB = {
+							OR = {
+								has_capitulated = yes
+								exists = no
+							}
+						}
+						SRN = {
+							OR = {
+								has_capitulated = yes
+								exists = no
+							}
+						}
+						BGF = {
+							OR = {
+								has_capitulated = yes
+								exists = no
+							}
+						}
+						HLA = {
+							OR = {
+								has_capitulated = yes
+								exists = no
+							}
+						}
+						APA = {
+							OR = {
+								has_capitulated = yes
+								exists = no
+							}
+						}
+						RGA = {
+							OR = {
+								has_capitulated = yes
+								exists = no
+							}
+						}
+					}
+					if = {
+						limit = {
+							original_tag = ORE
+						}
+						APA = {
+							OR = {
+								has_capitulated = yes
+								exists = no
+							}
+						}
+						BBC = {
+							OR = {
+								has_capitulated = yes
+								exists = no
+							}
+						}
+						ATP = {
+							OR = {
+								has_capitulated = yes
+								exists = no
+							}
+						}
+					}
+					if = {
+						limit = {
+							original_tag = WAS
+						}
+						WLF = {
+							OR = {
+								has_capitulated = yes
+								exists = no
+							}
+						}
+						CAC = {
+							OR = {
+								has_capitulated = yes
+								exists = no
+							}
+						}
+					}
+					if = {
+						limit = {
+							original_tag = FLA
+						}
+						ATW = {
+							OR = {
+								has_capitulated = yes
+								exists = no
+							}
+						}
+						LRA = {
+							OR = {
+								has_capitulated = yes
+								exists = no
+							}
+						}
+					}
+					if = {
+						limit = {
+							original_tag = LOU
+						}
+						BLA = {
+							OR = {
+								has_capitulated = yes
+								exists = no
+							}
+						}
+						LOS = {
+							OR = {
+								has_capitulated = yes
+								exists = no
+							}
+						}
+					}
+					if = {
+						limit = {
+							original_tag = MSS
+						}
+						BLA = {
+							OR = {
+								has_capitulated = yes
+								exists = no
+							}
+						}
+						LOS = {
+							OR = {
+								has_capitulated = yes
+								exists = no
+							}
+						}
+					}
+					if = {
+						limit = {
+							original_tag = ALA
+						}
+						BLA = {
+							OR = {
+								has_capitulated = yes
+								exists = no
+							}
+						}
+						LOS = {
+							OR = {
+								has_capitulated = yes
+								exists = no
+							}
+						}
+					}
+					if = {
+						limit = {
+							original_tag = GRA
+						}
+						BLA = {
+							OR = {
+								has_capitulated = yes
+								exists = no
+							}
+						}
+						LOS = {
+							OR = {
+								has_capitulated = yes
+								exists = no
+							}
+						}
+					}
+					if = {
+						limit = {
+							original_tag = STC
+						}
+						BLA = {
+							OR = {
+								has_capitulated = yes
+								exists = no
+							}
+						}
+						LOS = {
+							OR = {
+								has_capitulated = yes
+								exists = no
+							}
+						}
+					}
+				}
+				any_enemy_country = {
+					has_war_with = USA
+				}
+			}
+		}
+		ai_will_do = {
+			factor = 100
+		}
+		complete_effect = {
+			USA_add_to_coalition = yes
+		}
+		remove_effect = {
+		}
+	}
+	state_join_USB_coalition = {
+		icon = generic_shaking_hands
+		fire_only_once = yes
+		allowed = {
+			OR = {
+				original_tag = CAL
+				original_tag = TEX
+				original_tag = ARZ
+				original_tag = NMX
+				original_tag = LOU
+				original_tag = MSS
+				original_tag = ALA
+				original_tag = GRA
+				original_tag = FLA
+				original_tag = STC
+				original_tag = WAS
+				original_tag = ORE
+				original_tag = NEG
+				original_tag = NCA
+			}
+		}
+		visible = {
+			is_in_faction = no
+			OR = {
+				has_completed_focus = state_join_biden_war
+			}
+			USB = {
+				exists = yes
+				is_in_faction = yes
+				is_faction_leader = yes
+			}
+		}
+		available = {
+			OR = {
+				has_government = social_democrat
+				has_government = social_liberal
+				original_tag = NCA
+			}
+			OR = {
+				AND = {
+					if = {
+						limit = {
+							original_tag = NEG
+						}
+						PTF = {
+							OR = {
+								has_capitulated = yes
+								exists = no
+							}
+						}
+						GMB = {
+							OR = {
+								has_capitulated = yes
+								exists = no
+							}
+						}
+						GMA = {
+							OR = {
+								has_capitulated = yes
+								exists = no
+							}
+						}
+					}
+					if = {
+						limit = {
+							original_tag = TEX
+						}
+						ATH = {
+							OR = {
+								has_capitulated = yes
+								exists = no
+							}
+						}
+						TRG = {
+							OR = {
+								has_capitulated = yes
+								exists = no
+							}
+						}
+					}
+					if = {
+						limit = {
+							original_tag = ARZ
+						}
+						ABR = {
+							OR = {
+								has_capitulated = yes
+								exists = no
+							}
+						}
+						BRN = {
+							OR = {
+								has_capitulated = yes
+								exists = no
+							}
+						}
+					}
+					if = {
+						limit = {
+							original_tag = NMX
+						}
+						ABR = {
+							OR = {
+								has_capitulated = yes
+								exists = no
+							}
+						}
+						BRN = {
+							OR = {
+								has_capitulated = yes
+								exists = no
+							}
+						}
+					}
+					if = {
+						limit = {
+							original_tag = CAL
+						}
+						AYB = {
+							OR = {
+								has_capitulated = yes
+								exists = no
+							}
+						}
+						SRN = {
+							OR = {
+								has_capitulated = yes
+								exists = no
+							}
+						}
+						BGF = {
+							OR = {
+								has_capitulated = yes
+								exists = no
+							}
+						}
+						HLA = {
+							OR = {
+								has_capitulated = yes
+								exists = no
+							}
+						}
+						APA = {
+							OR = {
+								has_capitulated = yes
+								exists = no
+							}
+						}
+						RGA = {
+							OR = {
+								has_capitulated = yes
+								exists = no
+							}
+						}
+					}
+					if = {
+						limit = {
+							original_tag = ORE
+						}
+						APA = {
+							OR = {
+								has_capitulated = yes
+								exists = no
+							}
+						}
+						BBC = {
+							OR = {
+								has_capitulated = yes
+								exists = no
+							}
+						}
+						ATP = {
+							OR = {
+								has_capitulated = yes
+								exists = no
+							}
+						}
+					}
+					if = {
+						limit = {
+							original_tag = WAS
+						}
+						WLF = {
+							OR = {
+								has_capitulated = yes
+								exists = no
+							}
+						}
+						CAC = {
+							OR = {
+								has_capitulated = yes
+								exists = no
+							}
+						}
+					}
+					if = {
+						limit = {
+							original_tag = FLA
+						}
+						ATW = {
+							OR = {
+								has_capitulated = yes
+								exists = no
+							}
+						}
+						LRA = {
+							OR = {
+								has_capitulated = yes
+								exists = no
+							}
+						}
+					}
+					if = {
+						limit = {
+							original_tag = LOU
+						}
+						BLA = {
+							OR = {
+								has_capitulated = yes
+								exists = no
+							}
+						}
+						LOS = {
+							OR = {
+								has_capitulated = yes
+								exists = no
+							}
+						}
+					}
+					if = {
+						limit = {
+							original_tag = MSS
+						}
+						BLA = {
+							OR = {
+								has_capitulated = yes
+								exists = no
+							}
+						}
+						LOS = {
+							OR = {
+								has_capitulated = yes
+								exists = no
+							}
+						}
+					}
+					if = {
+						limit = {
+							original_tag = ALA
+						}
+						BLA = {
+							OR = {
+								has_capitulated = yes
+								exists = no
+							}
+						}
+						LOS = {
+							OR = {
+								has_capitulated = yes
+								exists = no
+							}
+						}
+					}
+					if = {
+						limit = {
+							original_tag = GRA
+						}
+						BLA = {
+							OR = {
+								has_capitulated = yes
+								exists = no
+							}
+						}
+						LOS = {
+							OR = {
+								has_capitulated = yes
+								exists = no
+							}
+						}
+					}
+					if = {
+						limit = {
+							original_tag = STC
+						}
+						BLA = {
+							OR = {
+								has_capitulated = yes
+								exists = no
+							}
+						}
+						LOS = {
+							OR = {
+								has_capitulated = yes
+								exists = no
+							}
+						}
+					}
+				}
+				any_enemy_country = {
+					has_war_with = USB
+				}
+			}
+		}
+		ai_will_do = {
+			factor = 100
+		}
+		complete_effect = {
+			USB_add_to_coalition = yes
+		}
+		remove_effect = {
+		}
+	}
+	TNM_ask_for_russian_assistance = {
+		icon = generic_shaking_hands
+		fire_only_once = yes
+		allowed = {
+			original_tag = TNM
+		}
+		visible = {
+			original_tag = TNM
+		}
+		available = {
+			SOV = {
+				OR = {
+					has_government = authoritarian_democrat
+					has_government = fascist
+				}
+			}
+		}
+		ai_will_do = {
+			factor = 80
+		}
+		complete_effect = {
+		}
+		remove_effect = {
+			SOV = {
+				country_event = {
+					id = russia.248
+					days = 1
+				}
+			}
+		}
+		days_remove = 30
+	}
+	TNM_unite_texas = {
+		icon = generic_shaking_hands
+		fire_only_once = yes
+		allowed = {
+			original_tag = TNM
+		}
+		visible = {
+			original_tag = TNM
+		}
+		available = {
+			TEX = {
+				OR = {
+					has_capitulated = yes
+					exists = no
+				}
+			}
+			TRG = {
+				OR = {
+					has_capitulated = yes
+					exists = no
+				}
+			}
+			BSK = {
+				OR = {
+					has_capitulated = yes
+					exists = no
+				}
+			}
+			ATH = {
+				OR = {
+					has_capitulated = yes
+					exists = no
+				}
+			}
+			TFM = {
+				OR = {
+					has_capitulated = yes
+					exists = no
+				}
+			}
+			ATF = {
+				OR = {
+					has_capitulated = yes
+					exists = no
+				}
+			}
+			BND = {
+				OR = {
+					has_capitulated = yes
+					exists = no
+				}
+			}
+		}
+		ai_will_do = {
+			factor = 100
+		}
+		complete_effect = {
+			set_cosmetic_tag = TNM_republic
+		}
+		remove_effect = {
+		}
+	}
+	BBC_unite_cascadia_aryans = {
+		icon = generic_shaking_hands
+		fire_only_once = yes
+		allowed = {
+			original_tag = BBC
+		}
+		visible = {
+			original_tag = BBC
+		}
+		available = {
+			ORE = {
+				exists = no
+			}
+			WAS = {
+				exists = no
+			}
+			CAC = {
+				exists = no
+			}
+			RCA = {
+				exists = no
+			}
+		}
+		ai_will_do = {
+			factor = 100
+		}
+		complete_effect = {
+		}
+		remove_effect = {
+			remove_ideas = BBC_for_our_race
+			set_cosmetic_tag = BBC_white_aryan_republic
+			set_global_flag = BBC_aryan_nations_cascadia_flag
+			add_ideas = BBC_the_white_bastion
+		}
+		days_remove = 10
+	}
+	RCA_unite_cascadia_antifa = {
+		icon = generic_shaking_hands
+		fire_only_once = yes
+		allowed = {
+			original_tag = RCA
+		}
+		visible = {
+			original_tag = RCA
+		}
+		available = {
+			ORE = {
+				exists = no
+			}
+			WAS = {
+				exists = no
+			}
+			CAC = {
+				exists = no
+			}
+			BBC = {
+				exists = no
+			}
+		}
+		ai_will_do = {
+			factor = 100
+		}
+		complete_effect = {
+		}
+		remove_effect = {
+			set_cosmetic_tag = RCA_northwest
+			set_global_flag = RCA_northwest_republic_cascadia_flag
+			load_oob = "RCA_northwest"
+		}
+		days_remove = 10
+	}
+	CAC_unite_cascadia = {
+		icon = generic_shaking_hands
+		fire_only_once = yes
+		allowed = {
+			original_tag = CAC
+		}
+		visible = {
+			original_tag = CAC
+		}
+		available = {
+			ORE = {
+				exists = no
+			}
+			WAS = {
+				exists = no
+			}
+			RCA = {
+				exists = no
+			}
+			BBC = {
+				exists = no
+			}
+		}
+		ai_will_do = {
+			factor = 100
+		}
+		complete_effect = {
+		}
+		remove_effect = {
+			country_event = {
+				id = cac.43
+			}
+		}
+		days_remove = 10
+	}
+}

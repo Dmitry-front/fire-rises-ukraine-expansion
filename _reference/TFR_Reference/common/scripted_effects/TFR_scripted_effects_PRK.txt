@@ -1,0 +1,269 @@
+	NK2 = {
+		if = {
+			limit = {
+				check_variable = { PRK.NK2_pyongyang_units > 0 }
+			}
+			hidden_effect = {
+				capital_scope = {
+					create_unit = {
+						division = "division_template = \"Bobyeong Yeodan\" start_experience_factor = 0.1 start_equipment_factor = 0.9"
+						owner = PREV
+						count =  PRK.NK2_pyongyang_units
+					}
+				}
+			}
+		}
+		
+		if = {
+			limit = {
+				check_variable = { PRK.NK2_infantry_weapons > 0 }
+			}
+			add_equipment_to_stockpile = {
+				type = support_equipment
+				amount = PRK.NK2_infantry_weapons
+				producer = PRK
+			}
+			add_equipment_to_stockpile = {
+				type = anti_tank_equipment_1
+				amount = PRK.NK2_infantry_weapons
+				producer = PRK
+			}
+			add_equipment_to_stockpile = {
+				type = infantry_equipment
+				amount = PRK.NK2_infantry_weapons
+				producer = PRK
+			}
+		}
+		
+		if = {
+			limit = {
+				check_variable = { PRK.NK2_mechanized > 0 }
+			}
+			add_equipment_to_stockpile = {
+				type = mechanized_equipment_1
+				amount = PRK.NK2_mechanized
+				producer = PRK
+			}
+		}
+	}
+	NK3 = {
+		if = {
+			limit = {
+				check_variable = { PRK.NK3_pyongyang_units > 0 }
+			}
+			hidden_effect = {
+				capital_scope = {
+					create_unit = {
+						division = "division_template = \"Bobyeong Yeodan\" start_experience_factor = 0.1 start_equipment_factor = 0.9"
+						owner = PREV
+						count =  PRK.NK3_pyongyang_units
+					}
+				}
+			}
+		}
+		
+		if = {
+			limit = {
+				check_variable = { PRK.NK3_infantry_weapons > 0 }
+			}
+			add_equipment_to_stockpile = {
+				type = support_equipment
+				amount = PRK.NK3_infantry_weapons
+				producer = PRK
+			}
+			add_equipment_to_stockpile = {
+				type = anti_tank_equipment_1
+				amount = PRK.NK3_infantry_weapons
+				producer = PRK
+			}
+			add_equipment_to_stockpile = {
+				type = infantry_equipment
+				amount = PRK.NK3_infantry_weapons
+				producer = PRK
+			}
+		}
+		
+		if = {
+			limit = {
+				check_variable = { PRK.NK2_mechanized > 0 }
+			}
+			add_equipment_to_stockpile = {
+				type = mechanized_equipment_1
+				amount = PRK.NK2_mechanized
+				producer = PRK
+			}
+		}
+	}
+	PRK_war = {
+		if = {
+			limit = {
+				check_variable = { PRK.PRK_pyongyang_units > 0 }
+			}
+			hidden_effect = {
+				capital_scope = {
+					create_unit = {
+						division = "division_template = \"Bobyeong Yeodan\" start_experience_factor = 0.1 start_equipment_factor = 0.9"
+						owner = PREV
+						count =  PRK.PRK_pyongyang_units
+					}
+				}
+			}
+		}
+		
+		if = {
+			limit = {
+				check_variable = { PRK.PRK_infantry_weapons > 0 }
+			}
+			add_equipment_to_stockpile = {
+				type = support_equipment
+				amount = PRK.PRK_infantry_weapons
+				producer = PRK
+			}
+			add_equipment_to_stockpile = {
+				type = anti_tank_equipment_1
+				amount = PRK.PRK_infantry_weapons
+				producer = PRK
+			}
+			add_equipment_to_stockpile = {
+				type = infantry_equipment
+				amount = PRK.PRK_infantry_weapons
+				producer = PRK
+			}
+		}
+		
+		if = {
+			limit = {
+				check_variable = { PRK.PRK_mechanized > 0 }
+			}
+			add_equipment_to_stockpile = {
+				type = mechanized_equipment_1
+				amount = PRK.PRK_mechanized
+				producer = PRK
+			}
+		}
+	}
+
+	PRK_bring_divisions_side = {
+		custom_effect_tooltip = PRK_bring_units_tt
+		if = {
+			limit = {
+				has_country_flag = kim_sister_gov
+			}
+			add_to_variable = { NK2_pyongyang_units = 2 }
+		}
+		if = {
+			limit = {
+				has_country_flag = kpa_gov
+			}
+			add_to_variable = { NK3_pyongyang_units = 2 }
+		}
+		if = {
+			limit = {
+				has_country_flag = pyongyang_gov
+			}
+			add_to_variable = { PRK_pyongyang_units = 2 }
+		}
+	}
+
+	PRK_stockpile_infantry_weapons = {
+		custom_effect_tooltip = PRK_stockpile_infantry_weapons_tt
+		if = {
+			limit = {
+				has_country_flag = kim_sister_gov
+			}
+			add_to_variable = { NK2_infantry_weapons = 500 }
+		}
+		else_if = {
+			limit = {
+				has_country_flag = kpa_gov
+			}
+			add_to_variable = { NK3_infantry_weapons = 500 }
+		}
+		else_if = {
+			limit = {
+				has_country_flag = pyongyang_gov
+			}
+			add_to_variable = { PRK_infantry_weapons = 500 }
+		}
+	}
+
+	PRK_stockpile_mechanized_vehicles = {
+		custom_effect_tooltip = PRK_stockpile_mechanized_tt
+		if = {
+			limit = {
+				has_country_flag = kim_sister_gov
+			}
+			add_to_variable = { NK2_mechanized = 200 }
+		}
+		else_if = {
+			limit = {
+				has_country_flag = kpa_gov
+			}
+			add_to_variable = { NK3_mechanized = 200 }
+		}
+		else_if = {
+			limit = {
+				has_country_flag = pyongyang_gov
+			}
+			add_to_variable = { PRK_mechanized = 200 }
+		}
+	}
+
+	PRK_add_economic_sovereignty = {
+		custom_effect_tooltip = PRK_add_economic_sovereignty_tooltip
+		add_to_variable = {
+			var = PRK_economic_sovereignty_level_var
+			value = PRK_economic_sovereignty_level_var_temp
+		}
+		
+		clamp_variable = {
+			var = PRK_economic_sovereignty_level_var
+			min = 0
+			max = 1
+		}
+		
+		multiply_temp_variable = {
+			var = PRK_economic_sovereignty_level_var_temp
+			value = 0.05
+		}
+			
+		add_to_variable = {
+			var = PRK_economic_sovereignty_dockyard_var
+			value = PRK_economic_sovereignty_level_var_temp
+		}		
+		add_to_variable = {
+			var = PRK_economic_sovereignty_factory_var
+			value = PRK_economic_sovereignty_level_var_temp
+		}
+	}
+	PRK_add_military_preparedness = {
+		custom_effect_tooltip = PRK_add_military_preparedness_tooltip
+		add_to_variable = {
+			var = PRK_military_preparedness_level_var
+			value = PRK_military_preparedness_level_var_temp
+		}
+		
+		clamp_variable = {
+			var = PRK_military_preparedness_level_var
+			min = 0
+			max = 1
+		}
+		
+		multiply_temp_variable = {
+			var = PRK_military_preparedness_level_var_temp
+			value = 0.05
+		}
+			
+		add_to_variable = {
+			var = PRK_military_preparedness_military_development_var
+			value = PRK_military_preparedness_level_var_temp
+		}		
+		add_to_variable = {
+			var = PRK_military_preparedness_army_core_defence_var
+			value = PRK_military_preparedness_level_var_temp
+		}	
+		add_to_variable = {
+			var = PRK_military_preparedness_battalion_upkeep_var
+			value = PRK_military_preparedness_level_var_temp
+		}
+	}

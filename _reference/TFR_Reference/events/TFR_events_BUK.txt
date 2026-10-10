@@ -1,0 +1,80 @@
+add_namespace = baath
+
+#Ba'athism Returns to Iraq
+country_event = {
+	id = baath.1
+	title = baath.1.t
+	desc = baath.1.d
+	picture = GFX_report_izzat_return  
+	
+	fire_only_once = yes
+	is_triggered_only = yes
+	
+		trigger = {
+			tag = BUK
+			291 = { 
+				is_controlled_by = BUK 
+			}
+			
+			1180 = { 
+				is_controlled_by = BUK 
+			}
+			
+			1176 = { 
+				is_controlled_by = BUK 
+			}
+		}
+		
+		immediate = {
+			hidden_effect = {
+				country_event = {
+					id = baath.2
+					days = 365
+				}
+			}
+		}
+	
+	option = {
+		name = baath.1.a
+		set_cosmetic_tag = BUK_iraq
+	}
+}
+
+#Death of Izzat Ibrahim al-Douri
+country_event = {
+	id = baath.2
+	title = baath.2.t
+	desc = baath.2.d
+	picture = GFX_report_izzat_passes  
+	
+	fire_only_once = yes
+	is_triggered_only = yes
+	
+		immediate = {
+			hidden_effect = {
+				country_event = {
+					id = baath.3
+					days = 7
+				}
+			}
+		}
+	
+	option = {
+		name = baath.2.a
+	}
+}
+
+#Salah Al-Mukhtar Ascends as Iraqi President
+country_event = {
+	id = baath.3
+	title = baath.3.t
+	desc = baath.3.d
+	picture = GFX_report_salah_ascends  
+	
+	fire_only_once = yes
+	is_triggered_only = yes
+	
+	option = {
+		name = baath.3.a
+	}
+}

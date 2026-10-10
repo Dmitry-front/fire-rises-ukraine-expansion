@@ -1,0 +1,156 @@
+
+	#Support Effects
+	
+	SER_add_leftist_support = {
+		custom_effect_tooltip = SER_add_leftist_support_tooltip
+		set_temp_variable = { target = 1 }
+		add_to_variable = {
+			var = SER_left_support_var
+			value = SER_left_support_var_temp
+		}
+		SER_support_var_balancer = yes
+	}
+	
+	SER_add_government_support = {
+		custom_effect_tooltip = SER_add_government_support_tooltip
+		set_temp_variable = { target = 2 }
+		add_to_variable = {
+			var = SER_government_support_var
+			value = SER_government_support_var_temp
+		}
+		SER_support_var_balancer = yes
+	}
+	
+	SER_add_rightist_support = {
+		set_temp_variable = { target = 3 }
+		custom_effect_tooltip = SER_add_rightist_support_tooltip
+		add_to_variable = {
+			var = SER_right_support_var
+			value = SER_right_support_var_temp
+		}
+		SER_support_var_balancer = yes
+	}
+	
+	SER_add_sps_support = {
+		custom_effect_tooltip = SER_add_sps_support_tooltip
+		add_to_variable = {
+			var = SER_sps_crybabing_var
+			value = SER_sps_crybabing_var_temp
+		}
+		
+		if = {
+		    limit = {
+			   check_variable = { SER_sps_crybabing_var_temp > 0 }
+			}		
+		    add_to_variable = {
+			var = SER_sps_opposition_var
+			value = -0.002
+		    }
+		}
+		else_if = {
+		    limit = {
+			   check_variable = { SER_sps_crybabing_var_temp < 0 }
+			}
+		    add_to_variable = {
+			var = SER_sps_opposition_var
+			value = 0.002
+		    }
+		}
+		SER_support_var_balancer = yes
+	}
+	
+	SER_support_var_balancer = {
+		if = {
+			limit = { check_variable = { target = 1 } }
+			divide_temp_variable = { SER_left_support_var_temp = 3 }
+			multiply_temp_variable = { SER_left_support_var_temp = -1 }
+			add_to_variable = { SER_right_support_var = SER_left_support_var_temp }
+			add_to_variable = { SER_government_support_var = SER_left_support_var_temp }
+		}
+		else_if = {
+			limit = { check_variable = { target = 2 } }
+			divide_temp_variable = { SER_government_support_var_temp = 3 }
+			multiply_temp_variable = { SER_government_support_var_temp = -1 }
+			add_to_variable = { SER_left_support_var = SER_government_support_var_temp }
+			add_to_variable = { SER_government_support_var = SER_government_support_var_temp }
+		}
+		else_if = {
+			limit = { check_variable = { target = 3 } }
+			divide_temp_variable = { SER_right_support_var_temp = 3 }
+			multiply_temp_variable = { SER_right_support_var_temp = -1 }
+			add_to_variable = { SER_left_support_var = SER_right_support_var_temp }
+			add_to_variable = { SER_government_support_var = SER_right_support_var_temp }
+		}
+
+		clamp_variable = {
+			var = SER_government_support_var
+			min = 0
+			max = 1
+		}
+		add_to_temp_variable = { total_popularity = SER_government_support_var }
+		clamp_variable = {
+			var = SER_right_support_var
+			min = 0
+			max = 1
+		}
+		add_to_temp_variable = { total_popularity = SER_right_support_var }
+		clamp_variable = {
+			var = SER_left_support_var
+			min = 0
+			max = 1
+		}
+		add_to_temp_variable = { total_popularity = SER_left_support_var }
+
+		if = {
+			limit = {
+				OR = {
+					check_variable = { total_popularity > 1 }
+					check_variable = { total_popularity < 1 }
+				}
+				check_variable = { total_popularity > 1 }
+			}
+			subtract_from_temp_variable = { total_popularity = 1 }
+			hidden_effect = {
+				random_list = {
+					10 = { subtract_from_variable = { SER_right_support_var = total_popularity } }
+					10 = { subtract_from_variable = { SER_government_support_var = total_popularity } }
+					10 = { subtract_from_variable = { SER_left_support_var = total_popularity } }
+				}
+			}
+		}
+		set_temp_variable = { total_popularity = 0 }
+		set_temp_variable = { SER_left_support_var_temp = 0 }
+		set_temp_variable = { SER_government_support_var_temp = 0 }
+		set_temp_variable = { SER_right_support_var_temp = 0 }
+	}
+	
+	#Sphere Effects
+	
+	SOV_add_influence = {
+		custom_effect_tooltip = SOV_influence_var_tooltip
+		add_to_variable = {
+			var = SOV_influence_var
+			value = SOV_influence_var_temp
+		}
+		
+		clamp_variable = {
+			var = SOV_influence_var
+			min = 0
+			max = 1
+		}
+	}
+	
+	PRC_add_SER_influence = {
+		custom_effect_tooltip = EU_influence_var_tooltip
+		add_to_variable = {
+			var = EU_influence_var
+			value = EU_influence_var_temp
+		}
+		
+		clamp_variable = {
+			var = EU_influence_var
+			min = 0
+			max = 1
+		}
+	}
+	

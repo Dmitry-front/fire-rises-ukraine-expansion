@@ -1,0 +1,55 @@
+COL_civil_war = {
+
+    COL_reunification = {
+		visible = {
+			has_global_flag = COL_civil_war_flag
+		}
+		available = {
+		    owns_state = 910
+			owns_state = 493
+			owns_state = 1320
+			owns_state = 306
+			owns_state = 486
+			owns_state = 1319
+        }
+		modifier = {
+		}
+		ai_will_do = {
+			factor = 100
+		}
+		fire_only_once = yes
+		days_remove = 0
+		cost = 0
+	    remove_effect = {
+            		if = { 
+				limit = { has_government = communist }
+				set_cosmetic_tag = COL_socialist
+			}
+			else = {
+				set_cosmetic_tag = COL_CLS
+			}
+			remove_ideas = {
+				COL_colombian_armed_forces
+				ELN_foquismo
+				FRC_revolutionary_mafia
+			}
+			add_popularity = { 
+				ideology = social_democrat
+				popularity = 0.07
+			}
+			add_popularity = { 
+				ideology = social_liberal
+				popularity = 0.04
+			}
+			add_popularity = { 
+				ideology = market_liberal
+				popularity = 0.05
+			}
+			add_popularity = { 
+				ideology = conservative
+				popularity = 0.06
+			}
+		}
+	}
+}
+	

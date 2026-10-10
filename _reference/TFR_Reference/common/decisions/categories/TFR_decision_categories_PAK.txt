@@ -1,0 +1,97 @@
+PAK_indo_pakistan_war = {
+	icon = united_states
+
+	allowed = {
+		
+	}
+	
+	visible = {
+		OR = {
+			tag = PAK
+			tag = RAJ
+		}
+	}
+}
+
+PAK_nukes_cat = {
+	icon = GFX_decision_generic_deploy_nukes
+
+	allowed = {
+		tag = PAK
+	}
+	
+	visible = {
+		has_country_flag = PAK_nukes_allowed
+		PAK = {
+			is_ally_with = PRC
+		}
+	}
+}
+
+RAJ_nukes_cat = {
+	icon = GFX_decision_generic_deploy_nukes
+
+	allowed = {
+		OR = {
+			tag = RAJ
+			tag = JAP
+		}
+	}
+	
+	visible = {
+		OR = {
+			has_completed_focus = RAJ_activate_nuclear_arsenal
+			has_country_flag = RAJ_nukes_allowed
+		}
+		if = {
+			limit = {
+				original_tag = JAP
+			}
+			RAJ = {
+				is_ally_with = JAP
+			}
+		}
+	}
+}
+
+RAJ_foreign_policy_category = {
+    #icon = GFX_decision_category_PRC_internal_factions_icon
+    visible_when_empty = no
+    priority = 3
+    scripted_gui = TFR_asian_cold_war_gui
+    visible = {
+    	has_country_flag = RAJ_cold_war_flag
+		NOT = {
+			has_global_flag = pan_asian_war_ongoing
+			has_global_flag = PRC_chinese_gaw_victory_global
+			has_global_flag = PRC_japanese_gaw_victory_global
+		}
+	}
+    
+    allowed = {
+    	original_tag = RAJ
+    }
+}
+
+RAJ_civil_war_category = {
+    #icon = GFX_decision_category_PRC_internal_factions_icon
+    visible_when_empty = no
+    priority = 3
+    visible = {
+    	has_global_flag = RAJ_india_dead
+	}
+    
+    allowed = {
+		OR = {
+			original_tag = UPJ
+			original_tag = MPJ
+			original_tag = LRJ
+			original_tag = NAX
+			original_tag = SLJ
+			original_tag = BAN
+			original_tag = SAJ
+			original_tag = RSS
+			original_tag = DRV
+		}
+    }
+}

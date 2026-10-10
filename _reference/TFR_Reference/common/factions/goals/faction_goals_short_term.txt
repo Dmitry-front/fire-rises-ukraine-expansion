@@ -1,0 +1,192 @@
+
+faction_goal_unlock_research = {
+	name = faction_goal_unlock_research_name
+	description = faction_goal_unlock_research_desc
+	category = short_term
+	group = FOCUS_FILTER_INTERNAL_AFFAIRS
+	available = {
+		FROM = {
+			always = no
+		}
+	}
+}
+
+faction_goal_unlock_military = {
+	name = faction_goal_unlock_military_name
+	description = faction_goal_unlock_military_desc
+	category = short_term
+	group = FOCUS_FILTER_INTERNAL_AFFAIRS
+	available = {
+		FROM = {
+			always = no
+		}
+	}
+}
+
+faction_goal_coastal_security = {
+	name = coastal_security_goal_name
+	description = coastal_security_goal_desc
+	category = short_term
+	group = FOCUS_FILTER_NAVY_XP
+	available = {
+		FROM = {
+			always = no
+		}
+	}
+}
+
+faction_goal_growing_the_faction = {
+	name = growing_the_faction
+	description = growing_the_faction_desc
+	category = short_term
+	group = FOCUS_FILTER_POLITICAL_CHARACTER
+	available = {
+		FROM = {
+			always = no
+		}
+	}
+}
+
+faction_goal_spy_master = {
+	name = spy_master_goal_name
+	description = spy_master_goal_desc
+	group = FOCUS_FILTER_POLITICAL_CHARACTER
+	category = short_term
+	available = {
+		FROM = {
+			always = no
+		}
+	}
+	allowed = {
+		has_dlc = "La Resistance"
+	}
+	visible = {
+		FROM = {
+			is_spymaster = no
+			any_allied_country = {
+				is_spymaster = no
+			}
+		}
+	}
+	ai_will_do = {
+		base = 1
+		modifier = {  
+			add = 2
+			has_intelligence_agency = yes
+		}
+	}
+}
+
+
+faction_goal_convoy_sufficiency = {
+	name = convoy_sufficiency_goal_name
+	description = convoy_sufficiency_goal_desc
+	category = short_term
+	group = FOCUS_FILTER_INDUSTRY
+	
+	available = {
+		FROM = {
+			always = no
+		}
+	}
+}
+
+
+faction_goal_ensure_military_r_d = {
+	name = ensure_military_r_d_goal_name
+	description = ensure_military_r_d_goal_desc
+	category = short_term
+	group = FOCUS_FILTER_RESEARCH
+	visible = {
+		always = no
+	}
+	available = {
+		FROM = {
+			always = no
+		}
+	}
+	ai_will_do = {
+		base = 1
+	}
+}
+
+
+### Industry
+
+faction_goal_military_infrastructure = {
+	name = military_infrastructure_goal_name
+	description = military_infrastructure_goal_desc
+	category = short_term
+	group = FOCUS_FILTER_CONSOLIDATION
+	
+	available = {
+		FROM = {
+			always = no
+		}
+	}
+	ai_will_do = {
+		base = 0
+		modifier = {  
+			add = 1
+			has_war = no
+		}
+	}
+}
+
+faction_goal_a_great_fortress = {
+	name = a_great_fortress_goal_name
+	description = a_great_fortress_goal_desc
+	category = short_term
+	group = FOCUS_FILTER_CONSOLIDATION
+	visible = {
+	}
+	available = {
+		FROM = {
+			always = no
+		}
+	}
+	
+	ai_will_do = {
+		base = 0
+		modifier = {
+			add = 1
+			has_tech = basic_fortification_tech
+		}
+	}
+}
+
+
+faction_goal_an_armored_fist = {
+	name = an_armored_fist_goal_name
+	description = an_armored_fist_goal_desc
+	category = short_term
+	group = FOCUS_FILTER_ARMY_XP
+	visible = {
+
+	}
+	
+	available = {
+		FROM = {
+			always = no
+		}
+	}
+	ai_will_do = {
+		base = 1
+	}
+}
+
+faction_goal_an_infantry_army = {
+	name = an_infantry_army_goal_name
+	description = an_infantry_army_goal_desc
+	category = short_term
+	group = FOCUS_FILTER_ARMY_XP
+	
+	available = {
+		FROM = {
+			always = no
+		}
+	}
+	ai_will_do = {
+		base = 1
+	}
+}

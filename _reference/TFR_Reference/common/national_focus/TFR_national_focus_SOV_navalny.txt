@@ -1,0 +1,3245 @@
+focus_tree = {
+	id = SOV_navalny_tree
+	country = {
+		factor = 0
+	}
+	focus = {
+		id = SOV_russian_spring
+		icon = GFX_focus_SOV_Russian_Spring
+		x = 0
+		y = 0
+		cost = 2
+		available = {
+			original_tag = SOV
+		}
+		completion_reward = {
+			country_event = {
+				id = russia.132
+			}
+			add_stability = 0.05
+			change_economy_type_capitalism = yes
+			hidden_effect = {
+				set_cosmetic_tag = SOV_navalny
+				set_global_flag = SOV_zimin
+				set_global_flag = SOV_navalny_russia_flag
+				CHE = {
+					country_event = {
+						id = chechnya.1
+						days = 100
+					}
+				}
+				add_threat = -40
+				every_country = {
+					limit = {
+						is_embargoing = SOV
+					}
+					diplomatic_relation = {
+						country = SOV
+						relation = embargo
+						active = no
+					}
+				}
+			}
+		}
+	}
+	focus = {
+		id = SOV_grand_constitutional_reformation
+		icon = GFX_focus_SOV_Grand_Reformation
+		x = 1
+		y = 1
+		cost = 2
+		prerequisite = {
+			focus = SOV_russian_spring
+		}
+		available = {
+		}
+		completion_reward = {
+			unlock_decision_category_tooltip = SOV_nav_russian_reformation_category
+			set_country_flag = SOV_grand_constitutional_reformation_flag
+			SOV_decrease_mother_russia_bleeds = yes
+			add_political_power = 100
+			add_popularity = {
+				ideology = conservative
+				popularity = 0.025
+			}
+			add_popularity = {
+				ideology = social_democrat
+				popularity = 0.01
+			}
+			add_popularity = {
+				ideology = social_liberal
+				popularity = 0.02
+			}
+			add_popularity = {
+				ideology = market_liberal
+				popularity = 0.02
+			}
+			add_popularity = {
+				ideology = authoritarian_democrat
+				popularity = 0.0075
+			}
+			add_popularity = {
+				ideology = libertarian_socialist
+				popularity = 0.005
+			}
+			custom_effect_tooltip = tooltip_white_line
+			change_government_type_semi_presidential_system = yes
+			hidden_effect = {
+				country_event = {
+					id = russia.621
+					days = 20
+					random_days = 5
+				}
+				country_event = {
+					id = russia.625
+					days = 50
+					random_days = 5
+				}
+				add_dynamic_modifier = {
+					modifier = SOV_fanaticism_dynamic
+				}
+			}
+		}
+	}
+	focus = {
+		id = SOV_the_political_amnesties
+		icon = GFX_focus_SOV_the_political_amnesties
+		x = -1
+		y = 1
+		cost = 2
+		prerequisite = {
+			focus = SOV_russian_spring
+		}
+		available = {
+		}
+		completion_reward = {
+			remove_ideas = SOV_traitors_amongst_us_idea
+			country_event = russia.650
+			hidden_effect = {
+				random_list = {
+					seed = random
+					50 = {
+						country_event = {
+							id = russia.295
+							days = 20
+							random_days = 40
+						}
+					}
+					50 = {
+					}
+				}
+			}
+		}
+	}
+	focus = {
+		id = SOV_a_big_tent_government
+		icon = GFX_focus_SOV_a_big_tent_government
+		x = -2
+		y = 2
+		cost = 2
+		prerequisite = {
+			focus = SOV_the_political_amnesties
+		}
+		prerequisite = {
+			focus = SOV_grand_constitutional_reformation
+		}
+		mutually_exclusive = {
+			focus = SOV_Consolidate_Navalnys_Power
+		}
+		mutually_exclusive = {
+			focus = SOV_Push_The_Figurehead_Aside
+		}
+		available = {
+			always = no
+		}
+		completion_reward = {
+			custom_effect_tooltip = Navalny_Unfinished_tt
+		}
+	}
+	focus = {
+		id = SOV_Consolidate_Navalnys_Power
+		icon = GFX_focus_SOV_Consolidate_Navalnys_Power
+		x = 0
+		y = 2
+		cost = 2
+		prerequisite = {
+			focus = SOV_the_political_amnesties
+		}
+		prerequisite = {
+			focus = SOV_grand_constitutional_reformation
+		}
+		mutually_exclusive = {
+			focus = SOV_a_big_tent_government
+		}
+		mutually_exclusive = {
+			focus = SOV_Push_The_Figurehead_Aside
+		}
+		available = {
+		}
+		completion_reward = {
+			add_country_leader_trait = hos_gospodin_president
+			add_political_power = 100
+		}
+	}
+	focus = {
+		id = SOV_Push_The_Figurehead_Aside
+		icon = GFX_focus_SOV_Push_The_Figurehead_Aside
+		x = 2
+		y = 2
+		cost = 2
+		prerequisite = {
+			focus = SOV_the_political_amnesties
+		}
+		prerequisite = {
+			focus = SOV_grand_constitutional_reformation
+		}
+		mutually_exclusive = {
+			focus = SOV_a_big_tent_government
+		}
+		mutually_exclusive = {
+			focus = SOV_Consolidate_Navalnys_Power
+		}
+		available = {
+			always = no
+		}
+		completion_reward = {
+			custom_effect_tooltip = Navalny_Unfinished_tt
+		}
+	}
+	focus = {
+		id = SOV_Form_The_Russian_Self_Defense_Force
+		icon = GFX_focus_SOV_Form_The_Russian_Self_Defense_Force
+		x = -1
+		y = 3
+		cost = 2
+		prerequisite = {
+			focus = SOV_Consolidate_Navalnys_Power
+			focus = SOV_a_big_tent_government
+			focus = SOV_Push_The_Figurehead_Aside
+		}
+		available = {
+		}
+		completion_reward = {
+			effect_tooltip = {
+				add_ideas = SOV_russian_self_defense_forces_1
+			}
+			hidden_effect = {
+				add_dynamic_modifier = {
+					modifier = SOV_russian_self_defense_forces_dynamic
+				}
+				add_to_variable = {
+					var = SOV_navalny_army_core_attack_factor_dynamic
+					value = -0.025
+				}
+				add_to_variable = {
+					var = SOV_navalny_army_core_defence_factor_dynamic
+					value = 0.03
+				}
+				add_to_variable = {
+					var = SOV_navalny_mobilization_speed_dynamic
+					value = -0.1
+				}
+				add_to_variable = {
+					var = SOV_navalny_conscription_factor_dynamic
+					value = -0.1
+				}
+				add_to_variable = {
+					var = SOV_navalny_army_breakthrough_against_major_factor_dynamic
+					value = -0.1
+				}
+				add_to_variable = {
+					var = SOV_navalny_army_org_regain_factor_dynamic
+					value = 0.05
+				}
+			}
+			army_experience = 35
+		}
+	}
+	focus = {
+		id = SOV_Call_Back_For_The_Emigres
+		icon = GFX_focus_SOV_Call_Back_For_The_Emigres
+		x = 1
+		y = 3
+		cost = 2
+		prerequisite = {
+			focus = SOV_Consolidate_Navalnys_Power
+			focus = SOV_a_big_tent_government
+			focus = SOV_Push_The_Figurehead_Aside
+		}
+		available = {
+		}
+		completion_reward = {
+			add_timed_idea = {
+				idea = SOV_call_back_emigres
+				days = 70
+			}
+		}
+	}
+	focus = {
+		id = SOV_First_Russian_Democratic_Elections
+		icon = GFX_focus_SOV_First_Russian_Democratic_Elections
+		x = 0
+		y = 4
+		cost = 2
+		prerequisite = {
+			focus = SOV_Call_Back_For_The_Emigres
+		}
+		prerequisite = {
+			focus = SOV_Form_The_Russian_Self_Defense_Force
+		}
+		available = {
+		}
+		completion_reward = {
+			custom_effect_tooltip = SOV_what_now_tt
+			hidden_effect = {
+				if = {
+					limit = {
+						has_completed_focus = SOV_Consolidate_Navalnys_Power
+					}
+					country_event = {
+						id = russia.606
+						hours = 8
+					}
+				}
+			}
+		}
+	}
+}
+
+focus_tree = {
+	id = SOV_navalny_nato_war_tree
+	country = {
+		factor = 0
+		modifier = {
+			add = 30
+			tag = SOV
+			has_country_flag = SOV_navalny_won
+		}
+	}
+	focus = {
+		id = SOV_expand_the_presidential_powers
+		icon = GFX_focus_SOV_expand_the_presidential_powers
+		cost = 5
+		x = 4
+		y = 0
+		ai_will_do = {
+			factor = 1
+		}
+		available = {
+			original_tag = SOV
+		}
+		completion_reward = {
+			add_political_power = 150
+			add_popularity = {
+				ideology = authoritarian_democrat
+				popularity = 0.1
+			}
+			add_popularity = {
+				ideology = conservative
+				popularity = 0.1
+			}
+			set_temp_variable = {
+				coalition_partner_var_temp = token:conservative
+			}
+			add_to_coalition = yes
+			set_temp_variable = {
+				coalition_partner_var_temp = token:authoritarian_democrat
+			}
+			add_to_coalition = yes
+			unlock_decision_tooltip = SOV_Praise_The_Patriotism
+			hidden_effect = {
+				scoped_play_song = "dmts"
+				country_event = {
+					id = russia.641
+					days = 240
+				}
+				country_event = {
+					id = russia.613
+					days = 50
+				}
+			}
+			log = "[GetDateText]: [Root.GetName]: Focus SOV_expand_the_presidential_powers"
+		}
+	}
+	focus = {
+		id = SOV_secure_the_russian_revolution
+		icon = GFX_focus_SOV_secure_the_russian_revolution
+		cost = 5
+		x = 0
+		y = 1
+		ai_will_do = {
+			factor = 1
+		}
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus SOV_secure_the_russian_revolution"
+			add_ideas = SOV_desire_for_revenge
+			create_faction = BTO_Faction
+			hidden_effect = {
+				remove_faction_goal = faction_goal_the_atomic_race
+				add_faction_goal = faction_goal_placeholder_long_term
+				remove_faction_goal = faction_goal_a_military_base
+				add_faction_goal = faction_goal_placeholder_medium_term
+				add_faction_goal = faction_goal_placeholder_short_term
+			}
+			set_country_flag = BTO_member
+			SOV_decrease_mother_russia_bleeds = yes
+			SOV_decrease_national_catastrophe = yes
+			news_event = {
+				id = russia.654
+				hours = 5
+			}
+			hidden_effect = {
+				if = {
+					limit = {
+						is_ai = yes
+					}
+					add_ideas = SOV_medvedev_can_win
+					load_oob = "SOV_ai_help"
+					if = {
+						limit = {
+							OR = {
+								GER = {
+									is_ai = no
+								}
+								FRA = {
+									is_ai = no
+								}
+							}
+						}
+						load_oob = "SOV_ai_help"
+					}
+					if = {
+						limit = {
+							NOT = {
+								has_dlc = "By Blood Alone"
+							}
+						}
+						add_equipment_to_stockpile = {
+							type = fighter_equipment_3
+							amount = 2000
+							producer = SOV
+						}
+						add_equipment_to_stockpile = {
+							type = CAS_equipment_2
+							amount = 1000
+							producer = SOV
+						}
+					}
+					else_if = {
+						limit = {
+							has_dlc = "By Blood Alone"
+						}
+						load_oob = "SOV_air_help_bba"
+					}
+				}
+			}
+		}
+		relative_position_id = SOV_expand_the_presidential_powers
+		prerequisite = {
+			focus = SOV_expand_the_presidential_powers
+		}
+	}
+	focus = {
+		id = SOV_appease_kalmykia
+		icon = GFX_focus_SOV_appease_kalmykia
+		cost = 2
+		x = 0
+		y = 1
+		ai_will_do = {
+			factor = 1
+		}
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus SOV_appease_kalmykia"
+			country_event = {
+				id = russia.129
+			}
+			add_political_power = 100
+			hidden_effect = {
+				country_event = {
+					id = russia.637
+					days = 30
+				}
+				country_event = {
+					id = russia.355
+					days = 20
+				}
+			}
+		}
+		relative_position_id = SOV_secure_the_russian_revolution
+		prerequisite = {
+			focus = SOV_secure_the_russian_revolution
+		}
+	}
+	focus = {
+		id = SOV_wind_up_the_nationalism
+		icon = GFX_focus_SOV_utilize_radical_extremists
+		cost = 5
+		x = 2
+		y = 1
+		ai_will_do = {
+			factor = 1
+		}
+		mutually_exclusive = {
+			focus = SOV_a_nation_of_patriots
+		}
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus SOV_wind_up_the_nationalism"
+			SOV_decrease_mother_russia_bleeds = yes
+			add_ideas = SOV_empire_of_the_future
+			add_popularity = {
+				ideology = authoritarian_democrat
+				popularity = 0.04
+			}
+			add_popularity = {
+				ideology = fascist
+				popularity = 0.025
+			}
+			add_popularity = {
+				ideology = communist
+				popularity = 0.015
+			}
+		}
+		relative_position_id = SOV_expand_the_presidential_powers
+		prerequisite = {
+			focus = SOV_expand_the_presidential_powers
+		}
+	}
+	focus = {
+		id = SOV_a_nation_of_patriots
+		icon = GFX_focus_SOV_coalition_of_patriots
+		cost = 5
+		x = 5
+		y = 1
+		ai_will_do = {
+			factor = 1
+		}
+		mutually_exclusive = {
+			focus = SOV_wind_up_the_nationalism
+		}
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus SOV_a_nation_of_patriots"
+			SOV_decrease_mother_russia_bleeds = yes
+			add_ideas = SOV_russian_neo_nationalism
+			add_popularity = {
+				ideology = conservative
+				popularity = 0.02
+			}
+			add_popularity = {
+				ideology = social_liberal
+				popularity = 0.05
+			}
+		}
+		relative_position_id = SOV_expand_the_presidential_powers
+		prerequisite = {
+			focus = SOV_expand_the_presidential_powers
+		}
+	}
+	focus = {
+		id = SOV_united_country__united_people
+		icon = GFX_focus_SOV_united_country__united_people
+		cost = 5
+		x = 1.5
+		y = 1
+		ai_will_do = {
+			factor = 1
+		}
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus SOV_united_country__united_people"
+			SOV_decrease_mother_russia_bleeds = yes
+			unlock_decision_tooltip = SOV_nav_orthodox_reformation
+			unlock_decision_tooltip = SOV_state_forming_people_pr
+			set_temp_variable = {
+				var = campaign_slot_total_var_temp
+				value = 1
+			}
+			add_total_campaign_slot = yes
+			hidden_effect = {
+				country_event = {
+					id = russia.361
+					days = 28
+					random_days = 5
+				}
+			}
+		}
+		relative_position_id = SOV_wind_up_the_nationalism
+		prerequisite = {
+			focus = SOV_wind_up_the_nationalism
+			focus = SOV_a_nation_of_patriots
+		}
+	}
+	focus = {
+		id = SOV_where_the_russian_flag_waves_high
+		icon = GFX_focus_SOV_where_the_russian_flag_waves_high
+		cost = 5
+		x = 0
+		y = 1
+		ai_will_do = {
+			factor = 1
+		}
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus SOV_where_the_russian_flag_waves_high"
+			SOV_decrease_national_catastrophe = yes
+		}
+		relative_position_id = SOV_appease_kalmykia
+		prerequisite = {
+			focus = SOV_hack_the_chains_of_occupation
+		}
+		prerequisite = {
+			focus = SOV_invite_the_don_people
+		}
+	}
+	focus = {
+		id = SOV_invite_the_don_people
+		icon = GFX_focus_SOV_invite_the_don_people
+		cost = 5
+		x = -2
+		y = 1
+		ai_will_do = {
+			factor = 1
+		}
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus SOV_invite_the_don_people"
+			SOV_decrease_mother_russia_bleeds = yes
+			country_event = {
+				id = russia.128
+			}
+		}
+		relative_position_id = SOV_secure_the_russian_revolution
+		prerequisite = {
+			focus = SOV_secure_the_russian_revolution
+		}
+	}
+	focus = {
+		id = SOV_hack_the_chains_of_occupation
+		icon = GFX_focus_SOV_hack_the_chains_of_occupation
+		cost = 5
+		x = 2
+		y = 1
+		ai_will_do = {
+			factor = 1
+		}
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus SOV_hack_the_chains_of_occupation"
+			unlock_decision_tooltip = SOV_nav_incite_stavropol_protests
+			unlock_decision_tooltip = SOV_nav_north_caucaus_normalization
+		}
+		relative_position_id = SOV_appease_kalmykia
+		prerequisite = {
+			focus = SOV_appease_kalmykia
+		}
+		prerequisite = {
+			focus = SOV_united_country__united_people
+		}
+	}
+	focus = {
+		id = SOV_begin_the_navalny_trials
+		icon = GFX_focus_SOV_begin_the_navalny_trials
+		cost = 4
+		x = 0
+		y = 2
+		ai_will_do = {
+			factor = 1
+		}
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus SOV_begin_the_navalny_trials"
+			set_temp_variable = {
+				var = SOV_oligarch_approval_rating_var_temp
+				value = -0.1
+			}
+			SOV_add_oligarch_approval_rating = yes
+		}
+		relative_position_id = SOV_reshaping_the_kremlin_towers
+		prerequisite = {
+			focus = SOV_seize_the_majority_in_duma
+			focus = SOV_pledge_allegiance_to_the_ideas_of_revolution
+		}
+	}
+	focus = {
+		id = SOV_ultimatum_to_the_kuban
+		icon = GFX_focus_SOV_ultimatum_to_the_kuban
+		cost = 4
+		x = 0
+		y = 1
+		ai_will_do = {
+			factor = 1
+		}
+		available = {
+			NOT = {
+				country_exists = NOA
+				country_exists = KOM
+				country_exists = CHE
+				country_exists = KHI
+				country_exists = NAV
+			}
+			SOV = {
+				controls_state = 235
+				controls_state = 1330
+			}
+		}
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus SOV_ultimatum_to_the_kuban"
+			country_event = {
+				id = russia.649
+			}
+			UKR = {
+				give_guarantee = FER
+			}
+			unlock_decision_category_tooltip = SOV_second_NATO_war_category
+			hidden_effect = {
+				country_event = {
+					id = russia.604
+					days = 14
+					random_days = 14
+				}
+			}
+		}
+		relative_position_id = SOV_where_the_russian_flag_waves_high
+		prerequisite = {
+			focus = SOV_where_the_russian_flag_waves_high
+		}
+		prerequisite = {
+			focus = SOV_appease_kalmykia
+		}
+	}
+	focus = {
+		id = SOV_declare_the_state_of_emergency
+		icon = GFX_focus_SOV_declare_the_state_of_emergency
+		cost = 4
+		x = -1
+		y = 1
+		ai_will_do = {
+			factor = 1
+		}
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus SOV_declare_the_state_of_emergency"
+			add_ideas = SOV_national_emergency_nav
+			SOV_decrease_national_catastrophe = yes
+			add_war_support = 0.1
+		}
+		relative_position_id = SOV_ultimatum_to_the_kuban
+		prerequisite = {
+			focus = SOV_ultimatum_to_the_kuban
+		}
+	}
+	focus = {
+		id = SOV_fuel_the_fire_of_revanchism
+		icon = GFX_focus_SOV_fuel_the_fire_of_revanchism
+		cost = 4
+		x = 1
+		y = 1
+		ai_will_do = {
+			factor = 1
+		}
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus SOV_fuel_the_fire_of_revanchism"
+			SOV_decrease_national_catastrophe = yes
+			set_temp_variable = {
+				var = SOV_fanaticism_var_temp
+				value = 0.15
+			}
+			SOV_add_fanaticism = yes
+			add_popularity = {
+				ideology = fascist
+				popularity = 0.025
+			}
+			unlock_decision_tooltip = SOV_join_the_fight_pr
+			unlock_decision_tooltip = SOV_Fire_All_The_Guns
+		}
+		relative_position_id = SOV_ultimatum_to_the_kuban
+		prerequisite = {
+			focus = SOV_ultimatum_to_the_kuban
+		}
+	}
+	focus = {
+		id = SOV_our_last_full_measure
+		icon = GFX_focus_SOV_our_last_full_measure
+		cost = 4
+		x = -1
+		y = 1
+		ai_will_do = {
+			factor = 1
+		}
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus SOV_our_last_full_measure"
+			news_event = {
+				id = news.226
+				hours = 4
+			}
+			set_global_flag = second_nato_war_flag
+			declare_war_on = {
+				target = FER
+				type = annex_everything
+			}
+			custom_effect_tooltip = unrestricted_diplomacy_tt
+			set_country_flag = unrestricted_diplomacy_flag
+			if = {
+				limit = {
+					country_exists = STR
+				}
+				annex_country = {
+					target = STR
+					transfer_troops = yes
+				}
+			}
+			hidden_effect = {
+				every_country = {
+					limit = {
+						OR = {
+							has_war_with = GER
+							has_war_with = FRA
+						}
+					}
+					leave_faction = yes
+					dismantle_faction = yes
+					SOV = {
+						add_to_faction = PREV
+					}
+				}
+				# if = {
+				# 	limit = {
+				# 		SOV = {
+				# 			is_ai = yes
+				# 		}
+				# 	}
+				# 	load_oob = "SOV_ai_help"
+				# 	if = {
+				# 		limit = {
+				# 			NOT = {
+				# 				has_dlc = "By Blood Alone"
+				# 			}
+				# 		}
+				# 		add_equipment_to_stockpile = {
+				# 			type = fighter_equipment_3
+				# 			amount = 2000
+				# 			producer = SOV
+				# 		}
+				# 		add_equipment_to_stockpile = {
+				# 			type = CAS_equipment_2
+				# 			amount = 1000
+				# 			producer = SOV
+				# 		}
+				# 	}
+				# 	else_if = {
+				# 		limit = {
+				# 			has_dlc = "By Blood Alone"
+				# 		}
+				# 		load_oob = "SOV_air_help_bba"
+				# 	}
+				# }
+				ZZZ = {
+					activate_mission = second_nato_war_mission
+				}
+				news_event = {
+					id = news.411
+					hours = 5
+				}
+				mark_focus_tree_layout_dirty = yes
+				GER = {
+					focus_unlock = yes
+					complete_national_focus = GER_europes_darkest_hour
+				}
+				HRL = {
+					if = {
+						limit = {
+							has_cosmetic_tag = HRL_nato
+						}
+						end_puppet = HRL
+					}
+				}
+				EGY = {
+					if = {
+						limit = {
+							has_cosmetic_tag = EGY_nato
+						}
+						end_puppet = EGY
+					}
+				}
+				SYR = {
+					if = {
+						limit = {
+							has_cosmetic_tag = SYR_nato
+						}
+						end_puppet = SYR
+						country_event = {
+							id = syria.30
+							days = 30
+						}
+					}
+				}
+				PER = {
+					if = {
+						limit = {
+							has_cosmetic_tag = HRL_nato
+						}
+						end_puppet = PER
+					}
+				}
+				# UDM = {
+				# 	country_event = {
+				# 		id = iran.19
+				# 		days = 60
+				# 	}
+				# }
+			}
+		}
+		relative_position_id = SOV_fuel_the_fire_of_revanchism
+		prerequisite = {
+			focus = SOV_fuel_the_fire_of_revanchism
+		}
+		prerequisite = {
+			focus = SOV_declare_the_state_of_emergency
+		}
+	}
+	focus = {
+		id = SOV_navalnys_manifesto
+		icon = GFX_focus_SOV_navalnys_manifesto
+		cost = 1
+		x = 0
+		y = 1
+		ai_will_do = {
+			factor = 1
+		}
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus SOV_navalnys_manifesto"
+			add_ideas = total_mobilization
+		}
+		relative_position_id = SOV_our_last_full_measure
+		allow_branch = {
+			has_global_flag = second_nato_war_flag
+		}
+	}
+	focus = {
+		id = SOV_avenge_the_defeat
+		icon = GFX_focus_SOV_avenge_the_defeat
+		cost = 1
+		x = -2
+		y = 1
+		ai_will_do = {
+			factor = 1
+		}
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus SOV_avenge_the_defeat"
+			unlock_decision_tooltip = SOV_implement_total_conscription
+		}
+		relative_position_id = SOV_navalnys_manifesto
+		prerequisite = {
+			focus = SOV_navalnys_manifesto
+		}
+	}
+	focus = {
+		id = SOV_bring_the_freedom_back_to_europe
+		icon = GFX_focus_SOV_bring_the_freedom_back_to_europe
+		cost = 1
+		x = 0
+		y = 1
+		ai_will_do = {
+			factor = 1
+		}
+		available = {
+			has_completed_focus = SOV_avenge_the_defeat
+		}
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus SOV_bring_the_freedom_back_to_europe"
+			add_ideas = SOV_freedom_back_europe
+			every_controlled_state = {
+				random_select_amount = 5
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = arms_factory
+					level = 1
+					instant_build = yes
+				}
+			}
+			if = {
+				limit = {
+					has_game_rule = {
+						rule = The_Navalny_against_Navalny
+						option = The_Navalny_against_Navalny_We_People
+					}
+				}
+				add_popularity = {
+					ideology = fascist
+					popularity = 0.5
+				}
+				add_political_power = 150
+				set_country_flag = SOV_nav_terrorist_organised
+				country_event = {
+					id = russia.615
+					hours = 2
+				}
+			}
+		}
+		relative_position_id = SOV_navalnys_manifesto
+		prerequisite = {
+			focus = SOV_navalnys_manifesto
+		}
+	}
+	focus = {
+		id = SOV_the_final_war
+		icon = GFX_focus_SOV_the_final_war
+		cost = 1
+		x = 2
+		y = 1
+		ai_will_do = {
+			factor = 1
+		}
+		available = {
+			has_completed_focus = SOV_bring_the_freedom_back_to_europe
+		}
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus SOV_the_final_war"
+			add_ideas = SOV_final_patriotic_war
+		}
+		relative_position_id = SOV_navalnys_manifesto
+		prerequisite = {
+			focus = SOV_navalnys_manifesto
+		}
+	}
+	focus = {
+		id = SOV_alternative_for_european_people
+		icon = GFX_focus_SOV_alternative_for_european_people
+		cost = 2
+		x = 2
+		y = 2
+		ai_will_do = {
+			factor = 1
+		}
+		available = {
+			hidden_trigger = {
+				NOT = {
+					has_government = fascist
+				}
+			}
+		}
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus SOV_the_final_war"
+			swap_ideas = {
+				remove_idea = SOV_final_patriotic_war
+				add_idea = SOV_final_patriotic_war_alternative
+			}
+			add_field_marshal_role = {
+				character = SOV_alexei_navalny
+				traits = {
+					media_personality
+					armor_officer
+					offensive_doctrine
+					ranger
+				}
+				skill = 1
+				attack_skill = 1
+				defense_skill = 1
+				planning_skill = 2
+				logistics_skill = 3
+				legacy_id = -1
+			}
+			set_portraits = {
+				character = SOV_alexei_navalny
+				civilian = {
+					large = "GFX_portrait_Alexei_Navalny_War_2"
+				}
+			}
+		}
+		relative_position_id = SOV_navalnys_manifesto
+		prerequisite = {
+			focus = SOV_the_final_war
+		}
+		prerequisite = {
+			focus = SOV_avenge_the_defeat
+		}
+		prerequisite = {
+			focus = SOV_bring_the_freedom_back_to_europe
+		}
+		mutually_exclusive = {
+			focus = SOV_crush_the_bureacratic_union
+			focus = SOV_cleanse_the_west_with_fire
+		}
+	}
+	focus = {
+		id = SOV_crush_the_bureacratic_union
+		icon = GFX_focus_SOV_crush_the_bureacratic_union
+		cost = 2
+		x = -2
+		y = 2
+		ai_will_do = {
+			factor = 1
+		}
+		available = {
+			hidden_trigger = {
+				NOT = {
+					has_government = fascist
+				}
+			}
+		}
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus SOV_the_final_war"
+			swap_ideas = {
+				remove_idea = SOV_final_patriotic_war
+				add_idea = SOV_final_patriotic_war_bureaucratic
+			}
+			add_field_marshal_role = {
+				character = SOV_alexei_navalny
+				traits = {
+					media_personality
+					armor_officer
+					offensive_doctrine
+					ranger
+				}
+				skill = 1
+				attack_skill = 1
+				defense_skill = 1
+				planning_skill = 2
+				logistics_skill = 3
+				legacy_id = -1
+			}
+		}
+		relative_position_id = SOV_navalnys_manifesto
+		prerequisite = {
+			focus = SOV_the_final_war
+		}
+		prerequisite = {
+			focus = SOV_avenge_the_defeat
+		}
+		prerequisite = {
+			focus = SOV_bring_the_freedom_back_to_europe
+		}
+		mutually_exclusive = {
+			focus = SOV_alternative_for_european_people
+			focus = SOV_cleanse_the_west_with_fire
+		}
+	}
+	focus = {
+		id = SOV_no_mercy_for_the_enemy
+		icon = GFX_focus_SOV_no_mercy_for_the_enemy
+		cost = 2
+		x = -3
+		y = 3
+		ai_will_do = {
+			factor = 1
+		}
+		available = {
+			hidden_trigger = {
+				NOT = {
+					has_government = fascist
+				}
+			}
+		}
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus SOV_the_final_war"
+			swap_ideas = {
+				remove_idea = SOV_final_patriotic_war_bureaucratic
+				add_idea = SOV_final_patriotic_war_bureaucratic_2
+			}
+		}
+		relative_position_id = SOV_navalnys_manifesto
+		prerequisite = {
+			focus = SOV_crush_the_bureacratic_union
+		}
+	}
+	focus = {
+		id = SOV_by_any_means_necessary
+		icon = GFX_focus_SOV_by_any_means_necessary
+		cost = 2
+		x = -1
+		y = 3
+		ai_will_do = {
+			factor = 1
+		}
+		available = {
+			hidden_trigger = {
+				NOT = {
+					has_government = fascist
+				}
+			}
+		}
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus SOV_the_final_war"
+			unlock_decision_tooltip = SOV_victory_by_any_means_dec
+		}
+		relative_position_id = SOV_navalnys_manifesto
+		prerequisite = {
+			focus = SOV_crush_the_bureacratic_union
+		}
+	}
+	focus = {
+		id = SOV_destroy_the_european_federalism
+		icon = GFX_focus_SOV_destroy_the_european_federalism
+		cost = 2
+		x = -2
+		y = 4
+		ai_will_do = {
+			factor = 1
+		}
+		available = {
+			hidden_trigger = {
+				NOT = {
+					has_government = fascist
+				}
+			}
+		}
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus SOV_the_final_war"
+			add_ideas = SOV_EEC_leader
+			every_possible_country = {
+				limit = {
+					is_puppet_of = SOV
+				}
+				add_ideas = SOV_EEC_Member
+			}
+			add_political_power = 75
+			unlock_decision_tooltip = SOV_destroy_european_plutocracy_dec
+		}
+		relative_position_id = SOV_navalnys_manifesto
+		prerequisite = {
+			focus = SOV_by_any_means_necessary
+		}
+		prerequisite = {
+			focus = SOV_no_mercy_for_the_enemy
+		}
+	}
+	focus = {
+		id = SOV_rise_up_free_europeans
+		icon = GFX_focus_SOV_rise_up_free_europeans
+		cost = 2
+		x = 3
+		y = 3
+		ai_will_do = {
+			factor = 1
+		}
+		available = {
+			hidden_trigger = {
+				NOT = {
+					has_government = fascist
+				}
+			}
+		}
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus SOV_the_final_war"
+			swap_ideas = {
+				remove_idea = SOV_freedom_back_europe
+				add_idea = SOV_freedom_back_europe_2
+			}
+		}
+		relative_position_id = SOV_navalnys_manifesto
+		prerequisite = {
+			focus = SOV_alternative_for_european_people
+		}
+	}
+	focus = {
+		id = SOV_kick_out_the_elite
+		icon = GFX_focus_SOV_kick_out_the_elite
+		cost = 2
+		x = 1
+		y = 3
+		ai_will_do = {
+			factor = 1
+		}
+		available = {
+			hidden_trigger = {
+				NOT = {
+					has_government = fascist
+				}
+			}
+		}
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus SOV_the_final_war"
+			unlock_decision_tooltip = SOV_kick_oligarch_europe_dec
+		}
+		relative_position_id = SOV_navalnys_manifesto
+		prerequisite = {
+			focus = SOV_alternative_for_european_people
+		}
+	}
+	focus = {
+		id = SOV_union_with_the_russian_lead
+		icon = GFX_focus_SOV_union_with_the_russian_lead
+		cost = 2
+		x = 2
+		y = 4
+		ai_will_do = {
+			factor = 1
+		}
+		available = {
+			hidden_trigger = {
+				NOT = {
+					has_government = fascist
+				}
+			}
+		}
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus SOV_the_final_war"
+			add_ideas = SOV_EEC_leader
+			every_possible_country = {
+				limit = {
+					is_puppet_of = SOV
+				}
+				add_ideas = SOV_EEC_Member
+			}
+			add_political_power = 75
+			unlock_decision_tooltip = SOV_truly_free_europe_dec
+		}
+		relative_position_id = SOV_navalnys_manifesto
+		prerequisite = {
+			focus = SOV_kick_out_the_elite
+		}
+		prerequisite = {
+			focus = SOV_rise_up_free_europeans
+		}
+	}
+	focus = {
+		id = SOV_cleanse_the_west_with_fire
+		icon = GFX_focus_SOV_cleanse_the_west_with_fire
+		cost = 2
+		x = 0
+		y = 4
+		ai_will_do = {
+			factor = 1
+		}
+		allow_branch = {
+			has_government = fascist
+		}
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus SOV_the_final_war"
+			country_event = {
+				id = russia.651
+				days = 1
+			}
+			swap_ideas = {
+				remove_idea = SOV_final_patriotic_war
+				add_idea = SOV_final_patriotic_war_ultranat
+			}
+			remove_ideas = SOV_freedom_back_europe
+			add_field_marshal_role = {
+				character = SOV_alexei_navalny
+				traits = {
+					media_personality
+					armor_officer
+					offensive_doctrine
+					ranger
+				}
+				skill = 1
+				attack_skill = 1
+				defense_skill = 1
+				planning_skill = 2
+				logistics_skill = 3
+				legacy_id = -1
+			}
+			set_portraits = {
+				character = SOV_alexei_navalny
+				civilian = {
+					large = "GFX_portrait_SOV_Alexei_Navalny_War_1"
+				}
+				army = {
+					large = "GFX_portrait_SOV_Alexei_Navalny_War_1"
+				}
+			}
+			unlock_decision_tooltip = SOV_retarget_russian_hysteria_pr
+			unlock_decision_tooltip = SOV_cleanse_west_with_fire
+			unlock_decision_tooltip = SOV_Utilize_the_Youth
+			hidden_effect = {
+				remove_ideas = SOV_final_patriotic_war_alternative
+				remove_ideas = SOV_final_patriotic_war_bureaucratic
+				remove_ideas = SOV_final_patriotic_war_bureaucratic_2
+				remove_ideas = SOV_freedom_back_europe_2
+				division_template = {
+					name = "Batal'on Svobodnoy Molodezhy"
+					regiments = {
+						militia = {
+							x = 0
+							y = 0
+						}
+						militia = {
+							x = 0
+							y = 1
+						}
+						militia = {
+							x = 0
+							y = 2
+						}
+						militia = {
+							x = 0
+							y = 3
+						}
+						militia = {
+							x = 0
+							y = 4
+						}
+					}
+					support = {
+						engineer = {
+							x = 0
+							y = 0
+						}
+					}
+					is_locked = yes
+				}
+			}
+		}
+		relative_position_id = SOV_navalnys_manifesto
+		prerequisite = {
+			focus = SOV_the_final_war
+		}
+		prerequisite = {
+			focus = SOV_avenge_the_defeat
+		}
+		prerequisite = {
+			focus = SOV_bring_the_freedom_back_to_europe
+		}
+	}
+	focus = {
+		id = SOV_deploy_the_arsenal
+		icon = GFX_focus_SOV_deploy_the_arsenal
+		cost = 2
+		x = -1
+		y = 5
+		ai_will_do = {
+			factor = 1
+		}
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus SOV_the_final_war"
+			swap_ideas = {
+				remove_idea = SOV_final_patriotic_war_ultranat
+				add_idea = SOV_final_patriotic_war_ultranat_2
+			}
+			unlock_decision_tooltip = SOV_activate_nuclear_arsenal
+			unlock_decision_tooltip = SOV_nav_operation_torch
+			set_country_flag = SOV_nukes_allowed
+		}
+		relative_position_id = SOV_navalnys_manifesto
+		prerequisite = {
+			focus = SOV_cleanse_the_west_with_fire
+		}
+	}
+	focus = {
+		id = SOV_navalnys_list
+		icon = GFX_focus_SOV_navalnys_list
+		cost = 2
+		x = 1
+		y = 5
+		ai_will_do = {
+			factor = 1
+		}
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus SOV_the_final_war"
+			add_ideas = SOV_cult_navalny
+		}
+		relative_position_id = SOV_navalnys_manifesto
+		prerequisite = {
+			focus = SOV_cleanse_the_west_with_fire
+		}
+	}
+	focus = {
+		id = SOV_scorch_the_earth
+		icon = GFX_focus_SOV_scorch_the_earth
+		cost = 2
+		x = 0
+		y = 6
+		ai_will_do = {
+			factor = 1
+		}
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus SOV_the_final_war"
+			unlock_decision_tooltip = SOV_scorch_the_earth_dec
+		}
+		relative_position_id = SOV_navalnys_manifesto
+		prerequisite = {
+			focus = SOV_navalnys_list
+		}
+		prerequisite = {
+			focus = SOV_deploy_the_arsenal
+		}
+	}
+	focus = {
+		id = SOV_denounce_the_sanctions
+		icon = GFX_focus_SOV_denounce_the_sanctions
+		cost = 4
+		x = 7
+		y = 1
+		ai_will_do = {
+			factor = 1
+		}
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus SOV_denounce_the_sanctions"
+			unlock_decision_category_tooltip = SOV_russian_economic_miracle_category
+			effect_tooltip = {
+				add_ideas = SOV_navalnomika_1
+			}
+			SOV_decrease_devastated_ind = yes
+			hidden_effect = {
+				add_dynamic_modifier = {
+					modifier = SOV_navalnomika_dynamic
+				}
+				add_to_variable = {
+					var = SOV_navalnomika_consumer_goods_factor_dynamic
+					value = 0.05
+				}
+				add_to_variable = {
+					var = SOV_navalnomika_production_speed_industrial_complex_factor_dynamic
+					value = 0.025
+				}
+				add_to_variable = {
+					var = SOV_navalnomika_production_factory_start_efficiency_factor_dynamic
+					value = 0.05
+				}
+				add_to_variable = {
+					var = SOV_navalnomika_income_growth_factor_dynamic
+					value = 0.01
+				}
+				add_to_variable = {
+					var = SOV_navalnomika_business_value_factor_dynamic
+					value = 0.01
+				}
+			}
+			country_event = {
+				id = russia.638
+				days = 0
+			}
+		}
+		relative_position_id = SOV_expand_the_presidential_powers
+		prerequisite = {
+			focus = SOV_expand_the_presidential_powers
+		}
+	}
+	focus = {
+		id = SOV_fund_the_russian_self_defence_forces
+		icon = GFX_focus_SOV_begin_secret_rearmament
+		cost = 4
+		x = 9
+		y = 1
+		ai_will_do = {
+			factor = 1
+		}
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus SOV_fund_the_russian_self_defence_forces"
+			unlock_decision_category_tooltip = SOV_new_russian_army_category
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = SOV_russian_self_defense_forces_dummy
+					add_idea = SOV_russian_self_defense_forces_2
+				}
+			}
+			hidden_effect = {
+				add_to_variable = {
+					var = SOV_navalny_army_core_attack_factor_dynamic
+					value = 0.125
+				}
+				add_to_variable = {
+					var = SOV_navalny_army_core_defence_factor_dynamic
+					value = 0.07
+				}
+				add_to_variable = {
+					var = SOV_navalny_mobilization_speed_dynamic
+					value = 0.15
+				}
+				add_to_variable = {
+					var = SOV_navalny_conscription_factor_dynamic
+					value = 0.1
+				}
+				add_to_variable = {
+					var = SOV_navalny_army_breakthrough_against_major_factor_dynamic
+					value = 0.2
+				}
+				add_to_variable = {
+					var = SOV_navalny_military_development_monthly_dynamic
+					value = 0.005
+				}
+				country_event = {
+					id = russia.722
+					days = 50
+					random_days = 15
+				}
+			}
+		}
+		relative_position_id = SOV_expand_the_presidential_powers
+		prerequisite = {
+			focus = SOV_expand_the_presidential_powers
+		}
+	}
+	focus = {
+		id = SOV_selfsustainable_economy
+		icon = GFX_focus_SOV_selfsustainable_economy
+		cost = 4
+		x = 1
+		y = 1
+		ai_will_do = {
+			factor = 1
+		}
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus SOV_selfsustainable_economy"
+			add_timed_idea = {
+				idea = SOV_self_sustainable_economy
+				days = 70
+			}
+			custom_effect_tooltip = SOV_after_this_idea_tooltip
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = SOV_navalnomika_1
+					add_idea = SOV_navalnomika_2
+				}
+			}
+			unlock_decision_tooltip = SOV_nav_promote_economic_independence_decision
+		}
+		relative_position_id = SOV_denounce_the_sanctions
+		prerequisite = {
+			focus = SOV_denounce_the_sanctions
+		}
+		prerequisite = {
+			focus = SOV_fund_the_russian_self_defence_forces
+		}
+	}
+	focus = {
+		id = SOV_the_second_shock_therapy
+		icon = GFX_focus_SOV_the_second_shock_therapy
+		cost = 4
+		x = 0
+		y = 2
+		ai_will_do = {
+			factor = 1
+		}
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus SOV_the_second_shock_therapy"
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = SOV_navalnomika_2
+					add_idea = SOV_navalnomika_3
+				}
+			}
+			hidden_effect = {
+				add_to_variable = {
+					var = SOV_navalnomika_stability_factor_dynamic
+					value = -0.1
+				}
+				add_to_variable = {
+					var = SOV_navalnomika_consumer_goods_factor_dynamic
+					value = -0.05
+				}
+				add_to_variable = {
+					var = SOV_navalnomika_production_speed_industrial_complex_factor_dynamic
+					value = 0.025
+				}
+				add_to_variable = {
+					var = SOV_navalnomika_production_factory_max_efficiency_factor_dynamic
+					value = 0.05
+				}
+				add_to_variable = {
+					var = SOV_navalnomika_income_growth_factor_dynamic
+					value = 0.03
+				}
+				add_to_variable = {
+					var = SOV_navalnomika_business_value_factor_dynamic
+					value = 0.03
+				}
+			}
+			SOV_decrease_devastated_ind = yes
+			set_temp_variable = {
+				var = SOV_oligarch_approval_rating_var_temp
+				value = 0.1
+			}
+			SOV_add_oligarch_approval_rating = yes
+			unlock_decision_tooltip = SOV_nav_economic_optimization_decision
+			unlock_decision_tooltip = SOV_nav_social_security_decision
+			unlock_decision_tooltip = SOV_nav_industrial_prioritization_decision
+			hidden_effect = {
+				country_event = {
+					id = russia.620
+					days = 30
+					random_hours = 7
+				}
+			}
+		}
+		relative_position_id = SOV_denounce_the_sanctions
+		prerequisite = {
+			focus = SOV_denounce_the_sanctions
+		}
+		prerequisite = {
+			focus = SOV_selfsustainable_economy
+		}
+	}
+	focus = {
+		id = SOV_roll_into_the_international_market
+		icon = GFX_focus_SOV_military_industrial_contract_companies
+		cost = 4
+		x = 0
+		y = 2
+		ai_will_do = {
+			factor = 1
+		}
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus SOV_roll_into_the_international_market"
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = SOV_navalnomika_dummy
+					add_idea = SOV_navalnomika_army
+				}
+			}
+			hidden_effect = {
+				add_to_variable = {
+					var = SOV_navalnomika_political_power_factor_dynamic
+					value = -0.07
+				}
+				add_to_variable = {
+					var = SOV_navalnomika_industrial_capacity_factory_dynamic
+					value = 0.1
+				}
+				add_to_variable = {
+					var = SOV_navalnomika_business_value_factor_dynamic
+					value = 0.025
+				}
+				add_to_variable = {
+					var = SOV_navalnomika_income_growth_factor_dynamic
+					value = 0.025
+				}
+				add_to_variable = {
+					var = SOV_navalnomika_production_speed_arms_factory_factor_dynamic
+					value = 0.025
+				}
+			}
+		}
+		relative_position_id = SOV_fund_the_russian_self_defence_forces
+		prerequisite = {
+			focus = SOV_fund_the_russian_self_defence_forces
+		}
+		prerequisite = {
+			focus = SOV_selfsustainable_economy
+		}
+	}
+	focus = {
+		id = SOV_no_more_oligarchy
+		icon = GFX_focus_SOV_no_more_oligarchy
+		cost = 4
+		x = -2
+		y = 1
+		ai_will_do = {
+			factor = 1
+		}
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus SOV_no_more_oligarchy"
+			custom_effect_tooltip = SOV_refuse_oligarchs_nav_tt
+			set_country_flag = SOV_able_to_refuse_oligarchs_flag
+			unlock_decision_tooltip = SOV_begin_anti_corruption_trials
+			set_temp_variable = {
+				var = SOV_oligarch_approval_rating_var_temp
+				value = -0.05
+			}
+			SOV_add_oligarch_approval_rating = yes
+			if = {
+				limit = {
+					has_global_flag = SOV_grudinin
+				}
+				custom_effect_tooltip = tooltip_white_line
+				change_economy_type_welfare_capitalism = yes
+			}
+			else = {
+				custom_effect_tooltip = tooltip_white_line
+				change_economy_type_capitalism = yes
+			}
+		}
+		relative_position_id = SOV_the_second_shock_therapy
+		prerequisite = {
+			focus = SOV_the_second_shock_therapy
+		}
+	}
+	focus = {
+		id = SOV_the_best_of_two_systems
+		icon = {
+			GFX_focus_SOV_the_best_of_two_systems = {
+				has_global_flag = SOV_nabiullina
+			}
+
+			GFX_focus_SOV_the_best_of_two_systems_2 = {
+				has_global_flag = SOV_svetov
+			}
+
+			GFX_focus_SOV_the_best_of_two_systems_3 = {
+				has_global_flag = SOV_zimin
+			}
+
+			GFX_focus_SOV_the_best_of_two_systems_4 = {
+				has_global_flag = SOV_grudinin
+			}
+			GFX_focus_SOV_the_best_of_two_systems = yes
+		}
+		cost = 4
+		x = 0
+		y = 1
+		ai_will_do = {
+			factor = 1
+		}
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus SOV_the_best_of_two_systems"
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = SOV_navalnomika_dummy
+					add_idea = SOV_navalnomika_best_two_systems
+				}
+			}
+			country_event = {
+				id = russia.639
+				days = 2
+			}
+			hidden_effect = {
+				add_to_variable = {
+					var = SOV_navalnomika_consumer_goods_factor_dynamic
+					value = -0.025
+				}
+				add_to_variable = {
+					var = SOV_navalnomika_production_factory_efficiency_gain_factor_dynamic
+					value = 0.075
+				}
+				add_to_variable = {
+					var = SOV_navalnomika_production_factory_max_efficiency_factor_dynamic
+					value = 0.025
+				}
+				add_to_variable = {
+					var = SOV_navalnomika_war_support_factor_dynamic
+					value = -0.05
+				}
+				add_to_variable = {
+					var = SOV_navalnomika_recruitable_population_factor_dynamic
+					value = -0.1
+				}
+				add_to_variable = {
+					var = SOV_navalnomika_industrial_development_monthly_dynamic
+					value = 0.015
+				}
+				add_to_variable = {
+					var = SOV_navalnomika_poverty_development_monthly_dynamic
+					value = 0.015
+				}
+			}
+			set_temp_variable = {
+				var = SOV_oligarch_approval_rating_var_temp
+				value = -0.025
+			}
+			SOV_add_oligarch_approval_rating = yes
+			custom_effect_tooltip = appoint_economic_minister_tooltip
+			if = {
+				limit = {
+					has_global_flag = SOV_zimin
+				}
+				show_ideas_tooltip = SOV_Boris_Zimin
+				hidden_effect = {
+					swap_ideas = {
+						remove_idea = SOV_Mikhail_Khodarkovsky
+						add_idea = SOV_Boris_Zimin
+					}
+				}
+			}
+			if = {
+				limit = {
+					has_global_flag = SOV_nabiullina
+				}
+				show_ideas_tooltip = SOV_Nabiullina
+				hidden_effect = {
+					swap_ideas = {
+						remove_idea = SOV_Mikhail_Khodarkovsky
+						add_idea = SOV_Nabiullina
+					}
+				}
+			}
+			if = {
+				limit = {
+					has_global_flag = SOV_svetov
+				}
+				show_ideas_tooltip = SOV_Mikhail_Svetov_idea
+				hidden_effect = {
+					swap_ideas = {
+						remove_idea = SOV_Mikhail_Khodarkovsky
+						add_idea = SOV_Mikhail_Svetov_idea
+					}
+				}
+				change_economy_type_minarchism = yes
+			}
+			if = {
+				limit = {
+					has_global_flag = SOV_grudinin
+				}
+				show_ideas_tooltip = SOV_Grudinin
+				hidden_effect = {
+					swap_ideas = {
+						remove_idea = SOV_Mikhail_Khodarkovsky
+						add_idea = SOV_Grudinin
+					}
+				}
+			}
+		}
+		relative_position_id = SOV_the_second_shock_therapy
+		prerequisite = {
+			focus = SOV_the_second_shock_therapy
+		}
+	}
+	focus = {
+		id = SOV_let_the_money_flow
+		icon = GFX_focus_SOV_let_the_money_flow
+		cost = 4
+		x = 0
+		y = 1
+		ai_will_do = {
+			factor = 1
+		}
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus SOV_let_the_money_flow"
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = SOV_navalnomika_dummy
+					add_idea = SOV_navalnomika_money_flow
+				}
+			}
+			hidden_effect = {
+				add_to_variable = {
+					var = SOV_navalnomika_consumer_goods_factor_dynamic
+					value = -0.025
+				}
+				add_to_variable = {
+					var = SOV_navalnomika_political_power_factor_dynamic
+					value = -0.07
+				}
+				add_to_variable = {
+					var = SOV_navalnomika_stability_factor_dynamic
+					value = -0.05
+				}
+				add_to_variable = {
+					var = SOV_navalnomika_income_growth_factor_dynamic
+					value = 0.025
+				}
+				add_to_variable = {
+					var = SOV_navalnomika_business_value_factor_dynamic
+					value = 0.025
+				}
+				add_to_variable = {
+					var = SOV_navalnomika_personal_value_factor_dynamic
+					value = 0.05
+				}
+				add_to_variable = {
+					var = SOV_navalnomika_poverty_development_monthly_dynamic
+					value = 0.005
+				}
+			}
+		}
+		relative_position_id = SOV_roll_into_the_international_market
+		prerequisite = {
+			focus = SOV_roll_into_the_international_market
+		}
+	}
+	focus = {
+		id = SOV_underground_military_deals
+		icon = GFX_focus_SOV_underground_military_deals
+		cost = 4
+		x = 2
+		y = 1
+		ai_will_do = {
+			factor = 1
+		}
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus SOV_underground_military_deals"
+			add_timed_idea = {
+				idea = SOV_jsc_bills
+				days = 120
+			}
+			unlock_decision_tooltip = SOV_nav_jsc_bill_extend_decision
+		}
+		relative_position_id = SOV_roll_into_the_international_market
+		prerequisite = {
+			focus = SOV_roll_into_the_international_market
+		}
+		prerequisite = {
+			focus = SOV_fill_the_stockpiles
+		}
+	}
+	focus = {
+		id = SOV_revert_the_brain_drain
+		icon = GFX_focus_SOV_revert_the_brain_drain
+		cost = 4
+		x = 1
+		y = 1
+		ai_will_do = {
+			factor = 1
+		}
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus SOV_revert_the_brain_drain"
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = SOV_navalnomika_dummy
+					add_idea = SOV_navalnomika_brain_drain
+				}
+			}
+			hidden_effect = {
+				add_to_variable = {
+					var = SOV_navalnomika_consumer_goods_factor_dynamic
+					value = -0.025
+				}
+				add_to_variable = {
+					var = SOV_navalnomika_production_factory_max_efficiency_factor_dynamic
+					value = 0.05
+				}
+				add_to_variable = {
+					var = SOV_navalnomika_industrial_capacity_factory_dynamic
+					value = 0.05
+				}
+				add_to_variable = {
+					var = SOV_navalnomika_war_support_factor_dynamic
+					value = -0.05
+				}
+				add_to_variable = {
+					var = SOV_navalnomika_recruitable_population_factor_dynamic
+					value = -0.1
+				}
+				add_to_variable = {
+					var = SOV_navalnomika_personal_value_factor_dynamic
+					value = 0.05
+				}
+				add_to_variable = {
+					var = SOV_navalnomika_academic_development_monthly_dynamic
+					value = 0.02
+				}
+			}
+		}
+		relative_position_id = SOV_no_more_oligarchy
+		prerequisite = {
+			focus = SOV_no_more_oligarchy
+		}
+		prerequisite = {
+			focus = SOV_the_best_of_two_systems
+		}
+	}
+	focus = {
+		id = SOV_resources_for_guns
+		icon = GFX_focus_SOV_resources_for_guns
+		cost = 4
+		x = 1
+		y = 1
+		ai_will_do = {
+			factor = 1
+		}
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus SOV_resources_for_guns"
+			set_country_flag = SOV_navalny_pornushka
+			custom_effect_tooltip = SOV_navalny_black_market
+			add_ideas = SOV_resource_deal
+		}
+		relative_position_id = SOV_let_the_money_flow
+		prerequisite = {
+			focus = SOV_let_the_money_flow
+		}
+		prerequisite = {
+			focus = SOV_underground_military_deals
+		}
+	}
+	focus = {
+		id = SOV_rush_for_the_first_ranks
+		icon = GFX_focus_SOV_rush_for_the_first_ranks
+		cost = 4
+		x = 2
+		y = 0
+		ai_will_do = {
+			factor = 1
+		}
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus SOV_rush_for_the_first_ranks"
+			country_event = {
+				id = russia.652
+				days = 1
+			}
+			add_timed_idea = {
+				idea = SOV_rush_first_rank
+				days = 120
+			}
+			custom_effect_tooltip = SOV_after_this_idea_tooltip
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = SOV_navalnomika_dummy
+					add_idea = SOV_navalnomika_rush_first_rank
+				}
+			}
+		}
+		relative_position_id = SOV_revert_the_brain_drain
+		prerequisite = {
+			focus = SOV_the_best_of_two_systems
+		}
+		prerequisite = {
+			focus = SOV_let_the_money_flow
+		}
+	}
+	focus = {
+		id = SOV_the_miracles_of_russian_economy
+		icon = GFX_focus_SOV_the_miracles_of_russian_economy
+		cost = 4
+		x = -1
+		y = 1
+		ai_will_do = {
+			factor = 1
+		}
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus SOV_the_miracles_of_russian_economy"
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = SOV_navalnomika_dummy
+					add_idea = SOV_navalnomika_miracles_economy
+				}
+			}
+			hidden_effect = {
+				add_to_variable = {
+					var = SOV_navalnomika_political_power_factor_dynamic
+					value = -0.06
+				}
+				add_to_variable = {
+					var = SOV_navalnomika_production_factory_efficiency_gain_factor_dynamic
+					value = 0.05
+				}
+				add_to_variable = {
+					var = SOV_navalnomika_production_factory_max_efficiency_factor_dynamic
+					value = 0.05
+				}
+				add_to_variable = {
+					var = SOV_navalnomika_production_factory_start_efficiency_factor_dynamic
+					value = 0.05
+				}
+				add_to_variable = {
+					var = SOV_navalnomika_poverty_development_monthly_dynamic
+					value = 0.005
+				}
+				add_to_variable = {
+					var = SOV_navalnomika_personal_value_factor_dynamic
+					value = 0.05
+				}
+				add_to_variable = {
+					var = SOV_navalnomika_business_value_factor_dynamic
+					value = 0.05
+				}
+			}
+		}
+		relative_position_id = SOV_rush_for_the_first_ranks
+		prerequisite = {
+			focus = SOV_rush_for_the_first_ranks
+		}
+		prerequisite = {
+			focus = SOV_revert_the_brain_drain
+		}
+		prerequisite = {
+			focus = SOV_resources_for_guns
+		}
+		mutually_exclusive = {
+			focus = SOV_huge_military_subsidies
+		}
+	}
+	focus = {
+		id = SOV_huge_military_subsidies
+		icon = GFX_focus_SOV_huge_military_subsidies
+		cost = 4
+		x = 1
+		y = 1
+		ai_will_do = {
+			factor = 1
+		}
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus SOV_huge_military_subsidies"
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = SOV_navalnomika_dummy
+					add_idea = SOV_navalnomika_military_subsidies
+				}
+			}
+			hidden_effect = {
+				add_to_variable = {
+					var = SOV_navalnomika_political_power_factor_dynamic
+					value = -0.06
+				}
+				add_to_variable = {
+					var = SOV_navalnomika_consumer_goods_factor_dynamic
+					value = -0.025
+				}
+				add_to_variable = {
+					var = SOV_navalnomika_industrial_capacity_factory_dynamic
+					value = 0.05
+				}
+				add_to_variable = {
+					var = SOV_navalnomika_industrial_development_monthly_dynamic
+					value = 0.005
+				}
+				add_to_variable = {
+					var = SOV_navalnomika_personal_value_factor_dynamic
+					value = 0.05
+				}
+				add_to_variable = {
+					var = SOV_navalnomika_business_value_factor_dynamic
+					value = 0.05
+				}
+			}
+		}
+		relative_position_id = SOV_rush_for_the_first_ranks
+		prerequisite = {
+			focus = SOV_rush_for_the_first_ranks
+		}
+		prerequisite = {
+			focus = SOV_revert_the_brain_drain
+		}
+		prerequisite = {
+			focus = SOV_resources_for_guns
+		}
+		mutually_exclusive = {
+			focus = SOV_the_miracles_of_russian_economy
+		}
+	}
+	focus = {
+		id = SOV_the_giant_wakes_up
+		icon = GFX_focus_SOV_the_giant_wakes_up
+		cost = 4
+		x = 0
+		y = 2
+		ai_will_do = {
+			factor = 1
+		}
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus SOV_the_giant_wakes_up"
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = SOV_navalnomika_dummy
+					add_idea = SOV_navalnomika_giant_wakes_up
+				}
+			}
+			hidden_effect = {
+				add_to_variable = {
+					var = SOV_navalnomika_consumer_goods_factor_dynamic
+					value = -0.05
+				}
+				add_to_variable = {
+					var = SOV_navalnomika_recruitable_population_factor_dynamic
+					value = 0.1
+				}
+				add_to_variable = {
+					var = SOV_navalnomika_stability_factor_dynamic
+					value = 0.05
+				}
+				add_to_variable = {
+					var = SOV_navalnomika_war_support_factor_dynamic
+					value = 0.05
+				}
+				add_to_variable = {
+					var = SOV_navalnomika_income_growth_factor_dynamic
+					value = 0.05
+				}
+			}
+		}
+		relative_position_id = SOV_rush_for_the_first_ranks
+		prerequisite = {
+			focus = SOV_huge_military_subsidies
+			focus = SOV_the_miracles_of_russian_economy
+		}
+	}
+	focus = {
+		id = SOV_innovations_in_the_army
+		icon = GFX_focus_SOV_innovations_in_the_army
+		cost = 4
+		x = 2
+		y = 1
+		ai_will_do = {
+			factor = 1
+		}
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus SOV_innovations_in_the_army"
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = SOV_russian_self_defense_forces_dummy
+					add_idea = SOV_russian_self_defense_forces_3
+				}
+			}
+			add_tech_bonus = {
+				name = SOV_innovations_in_the_army
+				bonus = 0.75
+				uses = 2
+				category = infantry_tech
+			}
+			hidden_effect = {
+				add_to_variable = {
+					var = SOV_navalny_military_development_monthly_dynamic
+					value = 0.005
+				}
+				add_to_variable = {
+					var = SOV_navalny_land_doctrine_cost_factor_dynamic
+					value = -0.15
+				}
+				add_to_variable = {
+					var = SOV_navalnomika_income_growth_factor_dynamic
+					value = 0.05
+				}
+				add_to_variable = {
+					var = SOV_navalny_experience_gain_army_factor_dynamic
+					value = 0.25
+				}
+			}
+		}
+		relative_position_id = SOV_fund_the_russian_self_defence_forces
+		prerequisite = {
+			focus = SOV_fund_the_russian_self_defence_forces
+		}
+	}
+	focus = {
+		id = SOV_fill_the_stockpiles
+		icon = GFX_focus_SOV_fill_the_stockpiles
+		cost = 4
+		x = 2
+		y = 1
+		ai_will_do = {
+			factor = 1
+		}
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus SOV_fill_the_stockpiles"
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = SOV_russian_self_defense_forces_dummy
+					add_idea = SOV_russian_self_defense_forces_3
+				}
+			}
+			hidden_effect = {
+				add_to_variable = {
+					var = SOV_navalny_army_org_factor_dynamic
+					value = 0.025
+				}
+				add_to_variable = {
+					var = SOV_navalny_army_morale_factor_dynamic
+					value = 0.025
+				}
+				add_to_variable = {
+					var = SOV_navalny_army_org_factor_dynamic
+					value = 0.025
+				}
+			}
+		}
+		relative_position_id = SOV_innovations_in_the_army
+		prerequisite = {
+			focus = SOV_innovations_in_the_army
+		}
+	}
+	focus = {
+		id = SOV_fund_the_partisans
+		icon = GFX_focus_SOV_fund_the_partisans
+		cost = 4
+		x = 0
+		y = 1
+		ai_will_do = {
+			factor = 1
+		}
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus SOV_fund_the_partisans"
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = SOV_russian_self_defense_forces_dummy
+					add_idea = SOV_russian_self_defense_forces_5
+				}
+			}
+			hidden_effect = {
+				add_to_variable = {
+					var = SOV_navalny_experience_gain_army_unit_factor_dynamic
+					value = -0.05
+				}
+				add_to_variable = {
+					var = SOV_navalny_army_morale_factor_dynamic
+					value = 0.06
+				}
+				add_to_variable = {
+					var = SOV_navalny_land_night_attack_dynamic
+					value = 0.1
+				}
+				add_to_variable = {
+					var = SOV_navalny_max_planning_factor_dynamic
+					value = -0.1
+				}
+			}
+		}
+		relative_position_id = SOV_fill_the_stockpiles
+		prerequisite = {
+			focus = SOV_fill_the_stockpiles
+		}
+	}
+	focus = {
+		id = SOV_guerrilla_warfare
+		icon = GFX_focus_SOV_guerrilla_warfare
+		cost = 4
+		x = 0
+		y = 1
+		ai_will_do = {
+			factor = 1
+		}
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus SOV_guerrilla_warfare"
+			unlock_decision_tooltip = SOV_Drone_Strike
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = SOV_russian_self_defense_forces_dummy
+					add_idea = SOV_russian_self_defense_forces_7
+				}
+			}
+			hidden_effect = {
+				add_to_variable = {
+					var = SOV_cas_damage_reduction_dynamic
+					value = 0.15
+				}
+				add_to_variable = {
+					var = SOV_navalny_fortification_damage_dynamic
+					value = 0.1
+				}
+				add_to_variable = {
+					var = SOV_recon_factor_dynamic
+					value = 0.05
+				}
+			}
+		}
+		relative_position_id = SOV_fund_the_partisans
+		prerequisite = {
+			focus = SOV_fund_the_partisans
+		}
+	}
+	focus = {
+		id = SOV_revive_the_army_spirit
+		icon = GFX_focus_SOV_revive_the_army_spirit
+		cost = 4
+		x = 2
+		y = 1
+		ai_will_do = {
+			factor = 1
+		}
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus SOV_revive_the_army_spirit"
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = SOV_russian_self_defense_forces_dummy
+					add_idea = SOV_russian_self_defense_forces_6
+				}
+			}
+			hidden_effect = {
+				add_to_variable = {
+					var = SOV_navalny_army_org_regain_factor_dynamic
+					value = 0.1
+				}
+				add_to_variable = {
+					var = SOV_navalny_army_breakthrough_against_major_factor_dynamic
+					value = 0.05
+				}
+			}
+		}
+		relative_position_id = SOV_fund_the_partisans
+		prerequisite = {
+			focus = SOV_fund_the_partisans
+		}
+	}
+	focus = {
+		id = SOV_the_greatest_army_in_eurasia
+		icon = GFX_focus_SOV_the_greatest_army_in_eurasia
+		cost = 4
+		x = 1
+		y = 1
+		ai_will_do = {
+			factor = 1
+		}
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus SOV_the_greatest_army_in_eurasia"
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = SOV_russian_self_defense_forces_dummy
+					add_idea = SOV_russian_self_defense_forces_final
+				}
+			}
+			hidden_effect = {
+				add_to_variable = {
+					var = SOV_navalny_army_defence_factor_dynamic
+					value = 0.1
+				}
+				add_to_variable = {
+					var = SOV_navalny_army_attack_factor_dynamic
+					value = 0.05
+				}
+				add_to_variable = {
+					var = SOV_navalny_army_org_factor_dynamic
+					value = 0.05
+				}
+				remove_dynamic_modifier = {
+					modifier = SOV_russian_self_defense_forces_dynamic
+				}
+				add_dynamic_modifier = {
+					modifier = SOV_greatest_army_in_eurasia_dynamic
+				}
+			}
+		}
+		relative_position_id = SOV_guerrilla_warfare
+		prerequisite = {
+			focus = SOV_guerrilla_warfare
+		}
+		prerequisite = {
+			focus = SOV_revive_the_army_spirit
+		}
+	}
+	focus = {
+		id = SOV_reshaping_the_kremlin_towers
+		icon = GFX_focus_SOV_reshaping_the_kremlin_towers
+		cost = 5
+		x = -4
+		y = 1
+		ai_will_do = {
+			factor = 1
+		}
+		completion_reward = {
+			add_ideas = SOV_patriotic_democracy1
+			set_temp_variable = {
+				var = SOV_oligarch_approval_rating_var_temp
+				value = 0.02
+			}
+			SOV_add_oligarch_approval_rating = yes
+			set_party_name = {
+				ideology = conservative
+				long_name = SOV_nav_people_alliance_party_long
+				name = SOV_nav_people_alliance_party
+			}
+			set_party_name = {
+				ideology = authoritarian_democrat
+				long_name = SOV_nav_authdem_party_long
+				name = SOV_nav_authdem_party
+			}
+			hidden_effect = {
+				add_popularity = {
+					ideology = conservative
+					popularity = 0.01
+				}
+				set_temp_variable = {
+					var = campaign_slot_total_var_temp
+					value = 1
+				}
+				add_total_campaign_slot = yes
+				country_event = {
+					id = russia.607
+					days = 26
+					hours = 5
+				}
+				country_event = {
+					id = russia.608
+					days = 10
+					hours = 5
+				}
+			}
+			set_temp_variable = {
+				coalition_partner_var_temp = token:social_liberal
+			}
+			add_to_coalition = yes
+			set_temp_variable = {
+				coalition_partner_var_temp = token:social_democrat
+			}
+			add_to_coalition = yes
+			set_temp_variable = {
+				coalition_partner_var_temp = token:market_liberal
+			}
+			add_to_coalition = yes
+			log = "[GetDateText]: [Root.GetName]: Focus SOV_reshaping_the_kremlin_towers"
+		}
+		prerequisite = {
+			focus = SOV_expand_the_presidential_powers
+		}
+	}
+	focus = {
+		id = SOV_seize_the_majority_in_duma
+		icon = GFX_focus_SOV_seize_the_majority_in_duma
+		cost = 5
+		x = -2
+		y = 1
+		ai_will_do = {
+			factor = 1
+			modifier = {
+				factor = 0
+				OR = {
+					has_game_rule = {
+						rule = The_Navalny_against_Navalny
+						option = The_Navalny_against_Navalny_1991
+					}
+					has_game_rule = {
+						rule = The_Navalny_against_Navalny
+						option = The_Navalny_against_Navalny_We_People
+					}
+				}
+			}
+		}
+		completion_reward = {
+			swap_ideas = {
+				remove_idea = SOV_patriotic_democracy1
+				add_idea = SOV_patriotic_democracy2
+			}
+			add_popularity = {
+				ideology = conservative
+				popularity = 0.12
+			}
+			add_popularity = {
+				ideology = authoritarian_democrat
+				popularity = 0.08
+			}
+			set_temp_variable = {
+				var = SOV_oligarch_approval_rating_var_temp
+				value = -0.05
+			}
+			SOV_add_oligarch_approval_rating = yes
+			set_politics = {
+				ruling_party = authoritarian_democrat
+				elections_allowed = yes
+			}
+			hidden_effect = {
+				add_country_leader_role = {
+					character = SOV_alexei_navalny
+					promote_leader = yes
+					country_leader = {
+						ideology = russian_patriotic_meritocracy
+						traits = {
+							hos_great_liberator
+						}
+					}
+				}
+				set_temp_variable = {
+					coalition_partner_var_temp = token:conservative
+				}
+				add_to_coalition = yes
+			}
+			log = "[GetDateText]: [Root.GetName]: Focus SOV_seize_the_majority_in_duma"
+		}
+		relative_position_id = SOV_reshaping_the_kremlin_towers
+		prerequisite = {
+			focus = SOV_reshaping_the_kremlin_towers
+		}
+		mutually_exclusive = {
+			focus = SOV_pledge_allegiance_to_the_ideas_of_revolution
+		}
+	}
+	focus = {
+		id = SOV_rebrand_the_fsb
+		icon = GFX_focus_SOV_rebrand_the_fsb
+		cost = 5
+		x = -2
+		y = 1
+		ai_will_do = {
+			factor = 1
+		}
+		completion_reward = {
+			set_party_name = {
+				ideology = nationalist
+				long_name = SOV_navalny_party_fsk_long
+				name = SOV_navalny_party_fsk
+			}
+			add_popularity = {
+				ideology = nationalist
+				popularity = 0.05
+			}
+			add_ideas = SOV_Navalny_FSK
+			log = "[GetDateText]: [Root.GetName]: Focus SOV_rebrand_the_fsb"
+		}
+		relative_position_id = SOV_seize_the_majority_in_duma
+		prerequisite = {
+			focus = SOV_seize_the_majority_in_duma
+		}
+	}
+	focus = {
+		id = SOV_control_the_fourth_front
+		icon = GFX_focus_SOV_control_the_fourth_front
+		cost = 5
+		x = 0
+		y = 1
+		ai_will_do = {
+			factor = 1
+		}
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus SOV_control_the_4th_front"
+			swap_ideas = {
+				remove_idea = SOV_Navalny_FSK
+				add_idea = SOV_Navalny_FSK2
+			}
+			add_political_power = 120
+			add_popularity = {
+				ideology = nationalist
+				popularity = 0.03
+			}
+			add_popularity = {
+				ideology = conservative
+				popularity = 0.05
+			}
+			add_popularity = {
+				ideology = authoritarian_democrat
+				popularity = 0.07
+			}
+		}
+		relative_position_id = SOV_seize_the_majority_in_duma
+		prerequisite = {
+			focus = SOV_seize_the_majority_in_duma
+		}
+		available = {
+			has_completed_focus = SOV_rebrand_the_fsb
+		}
+	}
+	focus = {
+		id = SOV_ensure_press_loyalty
+		icon = GFX_focus_SOV_ensure_press_loyalty
+		cost = 5
+		x = 2
+		y = 1
+		ai_will_do = {
+			factor = 1
+		}
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus SOV_ensure_press_loyalty"
+			increase_police = yes
+			add_popularity = {
+				ideology = conservative
+				popularity = 0.15
+			}
+			add_popularity = {
+				ideology = authoritarian_democrat
+				popularity = 0.15
+			}
+			add_popularity = {
+				ideology = nationalist
+				popularity = 0.02
+			}
+			add_political_power = 250
+		}
+		relative_position_id = SOV_rebrand_the_fsb
+		prerequisite = {
+			focus = SOV_rebrand_the_fsb
+		}
+		prerequisite = {
+			focus = SOV_control_the_fourth_front
+		}
+	}
+	focus = {
+		id = SOV_political_bonapartism
+		icon = GFX_focus_SOV_political_bonapartism
+		cost = 5
+		x = 0
+		y = 1
+		ai_will_do = {
+			factor = 1
+		}
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus SOV_political_bonapartism"
+			custom_effect_tooltip = SOV_refuse_oligarchs_nav_tt
+			set_country_flag = SOV_able_to_refuse_oligarchs_flag
+			add_ideas = SOV_political_bonapartism
+			unlock_decision_tooltip = SOV_support_yuneman_party
+			unlock_decision_tooltip = SOV_fund_leftist_opposition
+			unlock_decision_tooltip = SOV_mimicking_our_past
+		}
+		relative_position_id = SOV_ensure_press_loyalty
+		prerequisite = {
+			focus = SOV_ensure_press_loyalty
+		}
+	}
+	focus = {
+		id = SOV_militarize_the_society
+		icon = GFX_focus_SOV_militarize_the_society
+		cost = 5
+		x = 0
+		y = 1
+		ai_will_do = {
+			factor = 1
+		}
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus SOV_militarize_the_society"
+			add_ideas = SOV_glory_to_russia_glory_to_navalny
+			add_manpower = 17211
+			add_political_power = 150
+			add_popularity = {
+				ideology = authoritarian_democrat
+				popularity = 0.07
+			}
+			add_popularity = {
+				ideology = fascist
+				popularity = 0.02
+			}
+		}
+		relative_position_id = SOV_political_bonapartism
+		prerequisite = {
+			focus = SOV_political_bonapartism
+		}
+	}
+	focus = {
+		id = SOV_install_the_cult_of_navalny
+		icon = GFX_focus_SOV_install_the_cult_of_navalny
+		cost = 5
+		x = -2
+		y = 1
+		ai_will_do = {
+			factor = 1
+		}
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus SOV_install_the_cult_of_navalny"
+			unlock_decision_tooltip = SOV_navalny_our_president_pr
+			swap_ruler_traits = {
+				remove = hos_gospodin_president
+				add = hos_gospodin_president_1
+			}
+			add_popularity = {
+				ideology = authoritarian_democrat
+				popularity = 0.03
+			}
+			hidden_effect = {
+				add_popularity = {
+					ideology = fascist
+					popularity = 0.02
+				}
+			}
+		}
+		relative_position_id = SOV_ensure_press_loyalty
+		prerequisite = {
+			focus = SOV_ensure_press_loyalty
+		}
+	}
+	focus = {
+		id = SOV_form_the_national_militia_squads
+		icon = GFX_focus_SOV_form_the_national_militia_squads
+		cost = 5
+		x = 0
+		y = 1
+		ai_will_do = {
+			factor = 1
+		}
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus SOV_form_the_national_militia_squads"
+			add_manpower = 100000
+			add_popularity = {
+				ideology = authoritarian_democrat
+				popularity = 0.03
+			}
+			custom_effect_tooltip = change_mobilization_law_tooltip
+			show_ideas_tooltip = volunteered_conscription
+			hidden_effect = {
+				add_ideas = volunteered_conscription
+			}
+			custom_effect_tooltip = navalny_lib_divisions
+			hidden_effect = {
+				load_oob = "NAVALNY_AUTH"
+			}
+		}
+		relative_position_id = SOV_install_the_cult_of_navalny
+		prerequisite = {
+			focus = SOV_install_the_cult_of_navalny
+		}
+	}
+	focus = {
+		id = SOV_pledge_allegiance_to_the_ideas_of_revolution
+		icon = GFX_focus_SOV_pledge_allegiance_to_the_ideas_of_revolution
+		cost = 5
+		x = 2
+		y = 1
+		ai_will_do = {
+			factor = 1
+			modifier = {
+				factor = 0
+				OR = {
+					has_game_rule = {
+						rule = The_Navalny_against_Navalny
+						option = The_Navalny_against_Navalny_1993
+					}
+				}
+			}
+		}
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus SOV_pledge_allegiance_to_the_ideas_of_revolution"
+			swap_ideas = {
+				remove_idea = SOV_patriotic_democracy1
+				add_idea = SOV_patriotic_democracy3
+			}
+			set_temp_variable = {
+				var = SOV_oligarch_approval_rating_var_temp
+				value = 0.05
+			}
+			SOV_add_oligarch_approval_rating = yes
+			add_popularity = {
+				ideology = conservative
+				popularity = 0.15
+			}
+			add_popularity = {
+				ideology = social_liberal
+				popularity = 0.03
+			}
+			add_popularity = {
+				ideology = market_liberal
+				popularity = 0.03
+			}
+			add_popularity = {
+				ideology = social_democrat
+				popularity = 0.01
+			}
+			add_political_power = 150
+			unlock_decision_tooltip = SOV_glory_to_great_revolutionaries_pr
+			hidden_effect = {
+				country_event = {
+					id = russia.617
+					days = 30
+					hours = 6
+				}
+			}
+		}
+		relative_position_id = SOV_reshaping_the_kremlin_towers
+		prerequisite = {
+			focus = SOV_reshaping_the_kremlin_towers
+		}
+		mutually_exclusive = {
+			focus = SOV_seize_the_majority_in_duma
+		}
+	}
+	focus = {
+		id = SOV_protect_the_free_speech
+		icon = GFX_focus_SOV_protect_the_free_speech
+		cost = 5
+		x = 0
+		y = 1
+		ai_will_do = {
+			factor = 1
+		}
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus SOV_protect_the_free_speech"
+			custom_effect_tooltip = change_security_law_tooltip
+			show_ideas_tooltip = low_police
+			set_country_flag = SOV_protect_the_free_speech_flag
+			hidden_effect = {
+				add_ideas = low_police
+			}
+			add_war_support = 0.15
+			add_stability = 0.05
+			add_popularity = {
+				ideology = conservative
+				popularity = 0.05
+			}
+			add_popularity = {
+				ideology = social_democrat
+				popularity = 0.02
+			}
+			add_popularity = {
+				ideology = social_liberal
+				popularity = 0.02
+			}
+			add_popularity = {
+				ideology = market_liberal
+				popularity = 0.02
+			}
+			add_popularity = {
+				ideology = libertarian_socialist
+				popularity = 0.02
+			}
+			add_popularity = {
+				ideology = communist
+				popularity = 0.02
+			}
+			add_popularity = {
+				ideology = totalitarian_socialist
+				popularity = 0.01
+			}
+			add_popularity = {
+				ideology = nationalist
+				popularity = 0.02
+			}
+			add_popularity = {
+				ideology = fascist
+				popularity = 0.02
+			}
+			add_popularity = {
+				ideology = national_socialist
+				popularity = 0.01
+			}
+		}
+		relative_position_id = SOV_pledge_allegiance_to_the_ideas_of_revolution
+		prerequisite = {
+			focus = SOV_pledge_allegiance_to_the_ideas_of_revolution
+		}
+	}
+	focus = {
+		id = SOV_fuel_the_fading_torch
+		icon = GFX_focus_SOV_fuel_the_fading_torch
+		cost = 5
+		x = 2
+		y = 1
+		ai_will_do = {
+			factor = 1
+		}
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus SOV_fuel_the_fading_torch"
+			add_ideas = higher_female_service
+			add_ideas = higher_academic
+			add_stability = 0.15
+			add_political_power = 150
+		}
+		relative_position_id = SOV_pledge_allegiance_to_the_ideas_of_revolution
+		prerequisite = {
+			focus = SOV_pledge_allegiance_to_the_ideas_of_revolution
+		}
+	}
+	focus = {
+		id = SOV_a_letter_to_washington
+		icon = GFX_focus_SOV_a_letter_to_washington
+		cost = 5
+		x = 11
+		y = 0
+		ai_will_do = {
+			factor = 1
+		}
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = SOV_moscow_washington_nav_tt
+				country_exists = USC
+			}
+		}
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus SOV_fuel_the_fading_torch"
+			USC = {
+				add_timed_idea = {
+					idea = SOV_economic_partnership_america_better_idea
+					days = 160
+				}
+			}
+			add_timed_idea = {
+				idea = SOV_economic_partnership_america_better_idea
+				days = 160
+			}
+		}
+		relative_position_id = SOV_pledge_allegiance_to_the_ideas_of_revolution
+		prerequisite = {
+			focus = SOV_denounce_the_sanctions
+		}
+		prerequisite = {
+			focus = SOV_a_nation_of_patriots
+			focus = SOV_wind_up_the_nationalism
+		}
+	}
+	focus = {
+		id = SOV_reform_the_gun_ownership_laws
+		icon = GFX_focus_SOV_reform_the_gun_ownership_laws
+		cost = 5
+		x = 0
+		y = 1
+		ai_will_do = {
+			factor = 1
+		}
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus SOV_reform_the_gun_ownership_laws"
+			custom_effect_tooltip = change_training_law_tooltip
+			show_ideas_tooltip = well_regulated_militia
+			hidden_effect = {
+				add_ideas = well_regulated_militia
+			}
+		}
+		relative_position_id = SOV_protect_the_free_speech
+		prerequisite = {
+			focus = SOV_protect_the_free_speech
+		}
+		prerequisite = {
+			focus = SOV_fuel_the_fading_torch
+		}
+	}
+	focus = {
+		id = SOV_shape_up_the_political_field
+		icon = GFX_focus_SOV_shape_up_the_political_field
+		cost = 5
+		x = 0
+		y = 1
+		ai_will_do = {
+			factor = 1
+		}
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus SOV_shape_up_the_political_field"
+			add_ideas = SOV_diverse_political_field
+		}
+		relative_position_id = SOV_reform_the_gun_ownership_laws
+		prerequisite = {
+			focus = SOV_reform_the_gun_ownership_laws
+		}
+	}
+	focus = {
+		id = SOV_radicalize_the_youth
+		icon = GFX_focus_SOV_radicalize_the_youth
+		cost = 5
+		x = 2
+		y = 1
+		ai_will_do = {
+			factor = 1
+		}
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus SOV_radicalize_the_youth"
+			country_event = russia.655
+			effect_tooltip = {
+				add_ideas = SOV_Paramilitaries
+			}
+		}
+		relative_position_id = SOV_reform_the_gun_ownership_laws
+		prerequisite = {
+			focus = SOV_reform_the_gun_ownership_laws
+		}
+	}
+	focus = {
+		id = SOV_unite_for_blood_and_home
+		icon = GFX_focus_SOV_unite_for_blood_and_home
+		cost = 5
+		x = 0
+		y = 1
+		ai_will_do = {
+			factor = 1
+		}
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus SOV_unite_for_blood_and_home"
+			swap_ruler_traits = {
+				remove = hos_great_liberator
+				add = hos_russian_unifier
+			}
+			add_ideas = SOV_russian_unifier
+			add_manpower = 100000
+			add_popularity = {
+				ideology = conservative
+				popularity = 0.05
+			}
+			add_popularity = {
+				ideology = market_liberal
+				popularity = 0.05
+			}
+		}
+		relative_position_id = SOV_shape_up_the_political_field
+		prerequisite = {
+			focus = SOV_shape_up_the_political_field
+		}
+	}
+	focus = {
+		id = SOV_liberalism_with_an_ak
+		icon = GFX_focus_SOV_liberalism_with_an_ak
+		cost = 5
+		x = 0
+		y = 1
+		ai_will_do = {
+			factor = 1
+		}
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus SOV_liberalism_with_an_ak"
+			add_timed_idea = {
+				idea = SOV_liberalism_with_ak
+				days = 160
+			}
+			add_equipment_to_stockpile = {
+				type = infantry_equipment
+				amount = 3121
+				producer = SOV
+			}
+			custom_effect_tooltip = navalny_lib_divisions
+			hidden_effect = {
+				load_oob = "NAVALNY_LIB"
+			}
+		}
+		relative_position_id = SOV_radicalize_the_youth
+		prerequisite = {
+			focus = SOV_radicalize_the_youth
+		}
+	}
+	focus = {
+		id = SOV_ultranational_liberalism
+		icon = GFX_focus_SOV_ultranational_liberalism
+		cost = 5
+		x = 0
+		y = 1
+		ai_will_do = {
+			factor = 1
+		}
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus SOV_ultranational_liberalism"
+			custom_effect_tooltip = change_race_law_tooltip
+			unlock_decision_tooltip = SOV_Send_In_The_FSK
+			show_ideas_tooltip = ultranational_liberalism
+			add_popularity = {
+				ideology = national_socialist
+				popularity = 0.01
+			}
+			add_popularity = {
+				ideology = fascist
+				popularity = 0.01
+			}
+			add_popularity = {
+				ideology = conservative
+				popularity = 0.05
+			}
+			add_popularity = {
+				ideology = authoritarian_democrat
+				popularity = 0.05
+			}
+			add_popularity = {
+				ideology = market_liberal
+				popularity = 0.01
+			}
+			hidden_effect = {
+				add_ideas = ultranational_liberalism
+				division_template = {
+					name = "Voiska FSK"
+					override_model = SOV_militia_entity
+					regiments = {
+						mechanized = {
+							x = 0
+							y = 0
+						}
+						mechanized = {
+							x = 0
+							y = 1
+						}
+						light_mechanized = {
+							x = 0
+							y = 2
+						}
+						modern_armor = {
+							x = 1
+							y = 0
+						}
+						modern_sp_artillery_brigade = {
+							x = 2
+							y = 0
+						}
+						modern_sp_artillery_brigade = {
+							x = 2
+							y = 1
+						}
+						spaa_brigade = {
+							x = 2
+							y = 2
+						}
+						motorized = {
+							x = 3
+							y = 0
+						}
+						motorized = {
+							x = 3
+							y = 1
+						}
+						light_armor = {
+							x = 3
+							y = 2
+						}
+					}
+					is_locked = yes
+				}
+			}
+		}
+		relative_position_id = SOV_begin_the_navalny_trials
+		prerequisite = {
+			focus = SOV_begin_the_navalny_trials
+		}
+	}
+	focus = {
+		id = SOV_a_russian_dream
+		icon = GFX_focus_SOV_a_russian_dream
+		cost = 5
+		x = 0
+		y = 1
+		ai_will_do = {
+			factor = 1
+		}
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus SOV_a_russian_dream"
+			add_ideas = {
+				SOV_beautiful_russia_of_the_future
+			}
+			hidden_effect = {
+				country_event = {
+					id = russia.721
+					days = 70
+					random_days = 30
+				}
+			}
+		}
+		relative_position_id = SOV_ultranational_liberalism
+		prerequisite = {
+			focus = SOV_ultranational_liberalism
+		}
+	}
+}

@@ -1,0 +1,495 @@
+﻿	capital = 1493
+
+	oob = "ITA_2020"
+	if = {
+		limit = { has_dlc = "Man the Guns" }
+			set_naval_oob = "ITA_2000_naval_mtg"
+		else = {
+			set_naval_oob = "ITA_2000_naval_legacy"
+		}
+	}
+	
+	if = {
+		limit = { has_dlc = "Together for Victory" }
+
+		add_to_tech_sharing_group = nato_research
+	}
+
+	set_variable = { Russian_Influence = 0.00 }
+	set_variable = { Chinese_Influence = 0.15 }
+	set_variable = { American_Influence = 0.05 }
+	set_variable = { European_Influence = 0.60 }
+	set_variable = { PDO_Influence = 0.00 }
+	set_variable = { Sovereign_Influence = 0.20 }
+	set_major = yes
+	recruit_character = ITA_sergio_mattarella
+
+	recruit_character = ITA_Gianluca_Iannone
+	recruit_character = ITA_Claudio_Graziano_char
+	recruit_character = ITA_Gaetano_Zauner_char
+	recruit_character = ITA_Lorenzo_DAddario_char
+	recruit_character = ITA_Ignazio_Gamba_char
+	recruit_character = ITA_Salvatore_Farina_char
+	recruit_character = ITA_Roberto_Fiore_char
+	recruit_character = ITA_Pietro_Serino_char
+	recruit_character = ITA_Maurizio_Ricc_char
+	recruit_character = ITA_Fascist_Council_char
+	recruit_character = ITA_Giancarlo_Cito
+	recruit_character = ITA_maurizio_ammendola_char
+	recruit_character = ITA_Lorenzo_Fiato
+	recruit_character = ITA_prince_pedro_calabria_char
+	recruit_character = ITA_prince_carlo_castro_char
+	recruit_character = ITA_franco_freda_char
+
+	recruit_character = ITA_cgil_council_char
+	recruit_character = ITA_giovanni_scuderi_char
+	recruit_character = ITA_oliviero_diliberto_char
+	recruit_character = ITA_giuliano_granato_char
+
+	recruit_character = ITA_Cavo_Dragone
+	recruit_character = ITA_Berutti_Bergotto
+	recruit_character = ITA_Enrico_Pacioni 
+	recruit_character = ITA_Andrea_Petroni
+	recruit_character = ITA_Aurelio_Carolis
+
+	set_research_slots = 4
+	set_convoys = 600
+	set_stability = 0.65
+	set_war_support = 0.1
+
+	set_country_flag = developed_country
+	set_country_flag = global_ass_lol
+	set_country_flag = head_of_gov_ui_enabled
+
+	set_technology = {
+		## Infantry ##
+		
+		infantry_weapons1 = 1
+		infantry_weapons2 = 1
+		motorised_infantry = 1
+		infantry_rifle_upgrade = 1
+		support_weapons = 1
+		support_weapons2 = 1
+		night_vision = 1
+		body_armor = 1
+		camouflage = 1
+		tech_mountaineers = 1
+		tech_rangers = 1
+		paratroopers = 1
+		
+		## Support Companies ##
+		tech_support = 1
+		tech_engineers = 1
+		tech_recon = 1
+		tech_military_police = 1
+		tech_maintenance_company = 1
+		tech_field_hospital = 1
+		tech_logistics_company = 1
+		tech_signal_company = 1
+		
+		## Armor ##
+		main_battle_tank1 = 1
+		main_battle_tank2 = 1
+		main_battle_tank3 = 1
+		light_tank1 = 1
+		mechanised_infantry1 = 1
+		light_mechanized_infantry1 = 1
+		light_mechanized_infantry2 = 1
+		amphibious_tank1 = 1
+		amphibious_mechanized_infantry1 = 1
+		
+		## Artillery ##
+		gw_artillery = 1
+		interwar_antitank = 1
+		interwar_antiair = 1
+		tank_destroyer1 = 1
+		self_propelled_aa1 = 1
+		interwar_artillery = 1
+		sp_artillery1 = 1
+		
+		## Air ##
+		transport_plane2 = 1
+		attack_helicopter_1 = 1
+		utility_helicopter_1 = 1
+		
+		## Engineering ##
+		electronic_mechanical_engineering = 1
+		radio = 1
+		
+		## Industry ##
+		basic_machine_tools = 1
+		fuel_silos = 1
+		fuel_refining = 1
+		
+		## Doctrines ##
+		#mobile_warfare = 1
+		#fleet_in_being = 1
+		
+	}
+
+	if = {
+		limit = { not = { has_dlc = "Man the Guns" } }
+		set_technology = {
+			early_destroyer = 1
+			basic_destroyer = 1
+			early_light_cruiser = 1
+			basic_light_cruiser = 1
+			early_heavy_cruiser = 1
+			basic_heavy_cruiser = 1
+			early_battleship = 1
+			early_carrier = 1
+			basic_carrier = 1
+			early_submarine = 1
+			transport = 1
+		}
+	}
+	if = {
+		limit = { has_dlc = "Man the Guns" }
+		set_technology = {
+			early_ship_hull_light = 1
+			basic_ship_hull_light = 1
+			early_ship_hull_cruiser = 1
+			basic_ship_hull_cruiser = 1
+			early_ship_hull_heavy = 1
+			early_ship_hull_carrier = 1
+			basic_ship_hull_carrier = 1
+			early_ship_hull_submarine = 1
+			smoke_generator = 1
+			sonar = 1
+			basic_depth_charges = 1
+			improved_airplane_launcher = 1
+			basic_cruiser_armor_scheme = 1
+			basic_heavy_armor_scheme = 1
+			basic_torpedo = 1
+			basic_battery = 1
+			basic_light_battery = 1
+			basic_medium_battery = 1
+			basic_heavy_battery = 1
+			#basic_secondary_battery = 1
+			mtg_transport = 1
+			basic_naval_mines = 1
+			submarine_mine_laying = 1
+		}
+	}
+	
+	if = {
+		limit = { has_dlc = "By Blood Alone" }
+			set_air_oob = "ITA_2020_air_bba"
+			set_technology = {
+				aa_lmg = 1
+				aa_cannon_1 = 1
+				aa_hmg = 1
+				engines_1 = 1
+				engines_2 = 1
+				early_bombs = 1
+				guided_bombs = 1
+				aircraft_construction = 1
+				survivability_studies = 1
+				iw_small_airframe = 1
+				basic_small_airframe = 1
+				improved_small_airframe = 1
+				iw_medium_airframe = 1
+				basic_medium_airframe = 1
+				iw_large_airframe = 1
+			}
+		else = {
+			set_air_oob = "ITA_2020_air_legacy"
+			set_technology = {
+				CAS1 = 1
+				CAS2 = 1
+				cv_CAS1 = 1
+				cv_CAS2 = 1
+				fighter1 = 1
+				fighter2 = 1
+				fighter3 = 1
+				fighter4 = 1
+				cv_fighter1 = 1
+				cv_fighter2 = 1
+				naval_bomber1 = 1
+				naval_bomber2 = 1
+				naval_bomber3 = 1
+				cv_naval_bomber1 = 1
+				cv_naval_bomber2 = 1
+				strategic_bomber1 = 1
+				strategic_bomber2 = 1
+				tactical_bomber1 = 1
+				scout_plane1 = 1
+				transport_plane2 = 1
+			}
+		}
+	}
+
+	add_ideas = {
+		ITA_gdp_fix
+		ITA_Giuseppe_Conte_HM
+		#National Spirits
+		ITA_stifling_administration_idea
+		ITA_italynomics_1_idea
+		ITA_political_chaos_idea
+		EU_euro_idea
+		#Ministers
+		#Economic
+		ITA_made_in_italy
+		high_taxes
+		high_welfare
+		#Military
+		high_supervision
+		high_training
+		general_exemptions
+		#Social
+		high_education
+		high_race
+		low_prison
+		#development
+		high_farming
+		high_poverty
+		higher_industry
+		higher_military
+	}
+
+	set_politics = {
+		ruling_party = social_liberal
+		last_election = "2018.3.4"
+		election_frequency = 60
+		elections_allowed = yes
+	}
+
+	set_popularities={
+		nationalist = 18
+		authoritarian_democrat = 4
+		conservative = 16
+		market_liberal = 4
+		social_liberal = 34
+		social_democrat = 20
+		libertarian_socialist = 4
+	}
+
+	1448 = {
+		add_dynamic_modifier = {
+			modifier = micro_san_marino
+		}
+	}
+
+	1449 = {
+		add_dynamic_modifier = {
+			modifier = micro_vatican_city
+		}
+	}
+
+	116 = {
+		add_dynamic_modifier = {
+			modifier = micro_malta
+		}
+	}
+
+	### VARIANTS ###
+	# 2000 Start #
+	if = {
+		limit = { not = { has_dlc = "Man the Guns" } }
+		
+	}
+	if = {
+		limit = { has_dlc = "Man the Guns" }
+		## Corvettes ##
+		create_equipment_variant = { #Corvette 2
+			name = "Minerva-class"
+			type = ship_hull_light_2
+			parent_version = 0
+			modules = {
+				fixed_ship_battery_slot = ship_light_battery_2
+				fixed_ship_anti_air_slot = ship_anti_air_1
+				fixed_ship_fire_control_system_slot = ship_fire_control_system_0
+				fixed_ship_radar_slot = empty
+				fixed_ship_engine_slot = light_ship_engine_2
+				fixed_ship_torpedo_slot = ship_torpedo_1
+				mid_1_custom_slot = ship_torpedo_1
+				rear_1_custom_slot = ship_depth_charge_1
+			}
+		}
+		## Frigates ##
+		create_equipment_variant = { #Frigate 1
+			name = "Maestrale-class"
+			type = ship_hull_cruiser_1
+			parent_version = 0
+			modules = {
+				fixed_ship_battery_slot = ship_medium_battery_1
+				fixed_ship_anti_air_slot = ship_anti_air_1
+				fixed_ship_fire_control_system_slot = ship_fire_control_system_0
+				fixed_ship_radar_slot = empty
+				fixed_ship_engine_slot = cruiser_ship_engine_1
+				fixed_ship_armor_slot = ship_armor_cruiser_1
+				fixed_ship_secondaries_slot = ship_secondaries_1
+				mid_1_custom_slot = ship_airplane_launcher_1
+				mid_2_custom_slot = ship_anti_air_1
+				rear_1_custom_slot = empty
+			}
+		}
+		## Destroyers ##
+		create_equipment_variant = { #Destroyer 1
+			name = "Audace-class"
+			type = ship_hull_cruiser_1
+			parent_version = 0
+			modules = {
+				fixed_ship_battery_slot = ship_medium_battery_1
+				fixed_ship_anti_air_slot = ship_anti_air_1
+				fixed_ship_fire_control_system_slot = ship_fire_control_system_0
+				fixed_ship_radar_slot = ship_radar_1
+				fixed_ship_engine_slot = cruiser_ship_engine_1
+				fixed_ship_armor_slot = ship_armor_cruiser_1
+				mid_1_custom_slot = ship_airplane_launcher_1
+				mid_2_custom_slot = ship_anti_air_1
+				rear_1_custom_slot = ship_medium_battery_1
+			}
+			obsolete = yes
+		}
+		create_equipment_variant = { #Destroyer 2
+			name = "Durand de la Penne-class"
+			type = ship_hull_cruiser_2
+			parent_version = 0
+			modules = {
+				fixed_ship_battery_slot = ship_medium_battery_2
+				fixed_ship_anti_air_slot = ship_anti_air_1
+				fixed_ship_fire_control_system_slot = ship_fire_control_system_0
+				fixed_ship_radar_slot = ship_radar_1
+				fixed_ship_engine_slot = cruiser_ship_engine_2
+				fixed_ship_armor_slot = ship_armor_cruiser_2
+				mid_1_custom_slot = ship_airplane_launcher_1
+				mid_2_custom_slot = ship_anti_air_1
+				rear_1_custom_slot = empty
+			}
+		}
+		## Missile Cruisers ##
+		create_equipment_variant = { #Missile Cruiser 1
+			name = "Vittorio Veneto-class"
+			type = ship_hull_heavy_1
+			parent_version = 0
+			modules = {
+				fixed_ship_battery_slot = ship_heavy_battery_1
+				fixed_ship_anti_air_slot = ship_anti_air_1
+				fixed_ship_fire_control_system_slot = ship_fire_control_system_0
+				fixed_ship_radar_slot = ship_radar_1
+				fixed_ship_engine_slot = heavy_ship_engine_1
+				fixed_ship_secondaries_slot = ship_secondaries_1
+				fixed_ship_armor_slot = ship_armor_bb_1
+				front_1_custom_slot = ship_anti_air_1
+				mid_1_custom_slot = ship_airplane_launcher_1
+				mid_2_custom_slot = ship_secondaries_1
+				rear_1_custom_slot = ship_heavy_battery_1
+			}
+		}
+		## Carriers ##
+		create_equipment_variant = { #Carrier 1 #Not needed for variant, just use type
+			name = "Giuseppe Garibaldi Carrier"
+			type = ship_hull_carrier_conversion_bb
+			parent_version = 0
+			modules = {
+				fixed_ship_deck_slot_1 = ship_deck_space
+				fixed_ship_deck_slot_2 = ship_deck_space
+				fixed_ship_anti_air_slot = empty
+				fixed_ship_radar_slot = empty
+				fixed_ship_engine_slot = carrier_ship_engine_1
+				fixed_ship_secondaries_slot = empty
+				
+			}
+		}
+		create_equipment_variant = { #Carrier 2 #Not needed for variant, just use type
+			name = "Cavour Carrier"
+			type = ship_hull_carrier_conversion_bb
+			parent_version = 0
+			modules = {
+				fixed_ship_deck_slot_1 = ship_deck_space
+				fixed_ship_deck_slot_2 = ship_deck_space
+				fixed_ship_anti_air_slot = ship_anti_air_2
+				fixed_ship_radar_slot = ship_radar_1
+				fixed_ship_engine_slot = carrier_ship_engine_2
+				fixed_ship_secondaries_slot = empty
+				
+			}
+		}
+		## Submarines ##
+		create_equipment_variant = { #Diesel Sub 1
+			name = "Sauro-class"
+			type = ship_hull_submarine_1
+			parent_version = 0
+			modules = {
+				fixed_ship_torpedo_slot = ship_torpedo_sub_1
+				fixed_ship_engine_slot = sub_ship_engine_1
+				rear_1_custom_slot = empty
+			}
+		}
+	}
+	
+	if = {
+		limit = {
+			has_dlc = "By Blood Alone"
+		}
+
+		create_equipment_variant = {
+			name = "Eurofighter Typhoon"
+			type = small_plane_airframe_1
+			modules = {
+				fixed_main_weapon_slot = heavy_mg_4x
+				fixed_auxiliary_weapon_slot_1 = heavy_mg_4x
+				fixed_auxiliary_weapon_slot_2 = light_mg_4x
+				engine_type_slot = engine_2_1x
+				special_type_slot_1 = hmg_defense_turret
+			}
+			icon = "GFX_GER_fighter3_medium"
+		}
+		create_equipment_variant = {
+			name = "Tornado IDS"
+			type = small_plane_cas_airframe_1
+			modules = {
+				fixed_main_weapon_slot = small_bomb_bay
+				fixed_auxiliary_weapon_slot_1 = small_bomb_bay
+				fixed_auxiliary_weapon_slot_2 = heavy_mg_4x
+				engine_type_slot = engine_2_1x
+				special_type_slot_1 = hmg_defense_turret
+				special_type_slot_2 = hmg_defense_turret
+			}
+			icon = "GFX_GER_fighter1_medium"
+		}
+		create_equipment_variant = {
+			name = "AMX International"
+			type = small_plane_airframe_0
+			modules = {
+				fixed_main_weapon_slot = heavy_mg_4x
+				fixed_auxiliary_weapon_slot_1 = heavy_mg_4x
+				engine_type_slot = engine_2_1x
+				special_type_slot_1 = lmg_defense_turret
+				special_type_slot_2 = empty
+			}
+			icon = "GFX_FRA_fighter1_medium"
+		}
+		create_equipment_variant = {
+			name = "F-35 Lightning II"
+			type = small_plane_airframe_2
+			modules = {
+				fixed_main_weapon_slot = heavy_mg_4x
+				fixed_auxiliary_weapon_slot_1 = heavy_mg_4x
+				fixed_auxiliary_weapon_slot_2 = heavy_mg_4x
+				fixed_auxiliary_weapon_slot_3 = light_mg_4x
+				fixed_auxiliary_weapon_slot_4 = heavy_mg_4x
+				engine_type_slot = engine_2_2x
+				special_type_slot_1 = hmg_defense_turret
+				special_type_slot_2 = bomb_sights_2
+				special_type_slot_3 = ai_targeting_computer_small
+			}
+			icon = "GFX_USA_fighter5_medium"
+		}
+		create_equipment_variant = {
+			name = "MQ-9 Reaper"
+			type = medium_plane_airframe_1
+			modules = {
+				fixed_main_weapon_slot = aircraft_cannon_1_2x
+				fixed_auxiliary_weapon_slot_1 = light_mg_4x
+				fixed_auxiliary_weapon_slot_2 = empty
+				fixed_auxiliary_weapon_slot_3 = empty
+				engine_type_slot = engine_2_1x
+				special_type_slot_1 = lmg_defense_turret_2x
+				special_type_slot_2 = empty
+				special_type_slot_3 = empty
+			}
+			icon = "GFX_tactical_bomber2_medium"
+		}
+	}

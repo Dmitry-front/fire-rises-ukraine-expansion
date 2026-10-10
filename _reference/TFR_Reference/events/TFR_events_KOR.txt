@@ -1,0 +1,1040 @@
+﻿add_namespace = korea
+add_namespace = korea_aprilfools25
+
+# Chinese Demand DMZ
+country_event = {
+	id = korea.1
+	title = korea.1.t
+	desc = korea.1.d
+	picture = report_event_equipment
+	fire_only_once = yes
+	is_triggered_only = yes
+	trigger = {
+		tag = KOR
+	}
+	option = {
+		name = korea.1.a		# yes
+		ai_chance = {
+			factor = 70
+		}
+		transfer_state = 527
+		transfer_state = 872
+		transfer_state = 873
+		transfer_state = 874
+		transfer_state = 875
+		transfer_state = 1042
+		transfer_state = 1043
+		transfer_state = 1044
+		transfer_state = 1045
+		transfer_state = 1046
+		transfer_state = 1050
+		527 = {
+			set_demilitarized_zone = yes
+		}
+		872 = {
+			set_demilitarized_zone = yes
+		}
+		873 = {
+			set_demilitarized_zone = yes
+		}
+		874 = {
+			set_demilitarized_zone = yes
+		}
+		875 = {
+			set_demilitarized_zone = yes
+		}
+		1050 = {
+			set_demilitarized_zone = yes
+		}
+		news_event = {
+			id = korea.3
+		}
+	}
+	option = {
+		name = korea.1.b		# no
+		ai_chance = {
+			factor = 30
+		}
+		add_war_support = 0.05
+		news_event = {
+			id = china.96
+		}
+	}
+}
+
+# Hanoi Accords
+country_event = {
+	id = korea.2
+	title = korea.2.t
+	desc = korea.2.d
+	picture = report_event_equipment
+	fire_only_once = yes
+	is_triggered_only = yes
+	trigger = {
+		tag = KOR
+	}
+	option = {
+		name = korea.2.a		# yes
+		ai_chance = {
+			factor = 70
+		}
+		transfer_state = 527
+		transfer_state = 872
+		transfer_state = 873
+		transfer_state = 874
+		transfer_state = 875
+		transfer_state = 1042
+		transfer_state = 1043
+		transfer_state = 1044
+		transfer_state = 1045
+		transfer_state = 1046
+		transfer_state = 1050
+		set_cosmetic_tag = KOR_unity_gov
+		add_ideas = KOR_korean_neutrality
+		set_party_name = {
+			ideology = totalitarian_socialist
+			long_name = KOR_totalitarian_socialist_long
+			name = KOR_totalitarian_socialist_short
+		}
+		set_party_name = {
+			ideology = communist
+			long_name = KOR_communist_long
+			name = KOR_communist_short
+		}
+		set_party_name = {
+			ideology = libertarian_socialist
+			long_name = KOR_libertarian_socialist_long
+			name = KOR_libertarian_socialist_short
+		}
+		set_party_name = {
+			ideology = social_democrat
+			long_name = KOR_social_democrat_long
+			name = KOR_social_democrat_short
+		}
+		set_politics = {
+			ruling_party = social_democrat
+			elections_allowed = no
+			last_election = "2000.1.1"
+			election_frequency = 48
+		}
+		set_popularities = {
+			totalitarian_socialist = 3
+			communist = 2
+			libertarian_socialist = 1
+			social_democrat = 24
+			social_liberal = 40
+			market_liberal = 0
+			conservative = 30
+			authoritarian_democrat = 0
+			nationalist = 0
+			fascist = 0
+			national_socialist = 0
+		}
+		create_country_leader = {
+			name = "PRK Transitional Council"
+			picture = "gfx/leaders/KOR/PRK_Transitional_Gov.png"
+			ideology = social_democracy
+		}
+		news_event = {
+			id = korea.4
+		}
+		country_event = {
+			id = korea.5
+			days = 140
+		}
+	}
+	option = {
+		name = korea.2.b		# no
+		ai_chance = {
+			factor = 30
+		}
+		add_war_support = 0.05
+	}
+}
+
+news_event = {
+	id = korea.3
+	title = china.3.t
+	desc = china.3.d
+	picture = GFX_news_South_Korea_Mil
+	fire_only_once = yes
+	is_triggered_only = yes
+	trigger = {
+		tag = PRC
+	}
+	option = {
+		name = korea.3.a
+		
+	}
+}
+
+news_event = {
+	id = korea.4
+	title = korea.4.t
+	desc = korea.4.d
+	picture = GFX_news_South_Korea_Mil
+	fire_only_once = yes
+	is_triggered_only = yes
+	trigger = {
+		tag = PRC
+	}
+	option = {
+		name = korea.4.a
+		
+	}
+}
+
+# Post-War Elections
+country_event = {
+	id = korea.5
+	title = korea.5.t
+	desc = korea.5.d
+	picture = report_event_equipment
+	fire_only_once = yes
+	is_triggered_only = yes
+	trigger = {
+		tag = KOR
+	}
+	option = {
+		name = korea.5.a		# Social Democrats
+		ai_chance = {
+			factor = 10
+		}
+		set_popularities = {
+			totalitarian_socialist = 3
+			communist = 2
+			libertarian_socialist = 1
+			social_democrat = 40
+			social_liberal = 30
+			market_liberal = 0
+			conservative = 24
+			authoritarian_democrat = 0
+			nationalist = 0
+			fascist = 0
+			national_socialist = 0
+		}
+		create_country_leader = {
+			name = "Sim Sang-jung"
+			picture = "gfx/leaders/KOR/PRK_Sim_Sang_jung.png"
+			ideology = social_democracy
+		}
+		news_event = {
+			id = korea.8
+			days = 120
+		}
+	}
+	option = {
+		name = korea.5.b		# Liberals
+		ai_chance = {
+			factor = 60
+		}
+		set_politics = {
+			ruling_party = social_liberal
+			elections_allowed = no
+			last_election = "2000.1.1"
+			election_frequency = 48
+		}
+	}
+	option = {
+		name = korea.5.c		# Conservatives
+		ai_chance = {
+			factor = 60
+		}
+		set_popularities = {
+			totalitarian_socialist = 3
+			communist = 2
+			libertarian_socialist = 1
+			social_democrat = 24
+			social_liberal = 30
+			market_liberal = 0
+			conservative = 40
+			authoritarian_democrat = 0
+			nationalist = 0
+			fascist = 0
+			national_socialist = 0
+		}
+		set_politics = {
+			ruling_party = conservative
+			elections_allowed = no
+			last_election = "2000.1.1"
+			election_frequency = 48
+		}
+		news_event = {
+			id = korea.9
+			days = 120
+		}
+	}
+}
+
+#North Korea Wins Korean War
+news_event = {
+	id = korea.6
+	title = korea.6.t
+	desc = korea.6.d
+	picture = GFX_Korean_Civil_War
+	is_triggered_only = yes
+	major = yes
+	trigger = {
+		tag = PRC
+	}
+	option = {
+		name = korea.6.a
+		
+		hidden_effect = {
+			PRC = {
+				add_to_faction = PRK
+			}
+		}
+	}
+}
+
+#South Korea Wins Korean War
+news_event = {
+	id = korea.7
+	title = korea.7.t
+	desc = korea.7.d
+	picture = GFX_news_South_Korea_Mil
+	is_triggered_only = yes
+	major = yes
+	trigger = {
+		tag = PRC
+	}
+	option = {
+		name = korea.7.a
+		
+		hidden_effect = {
+			news_event = {
+				id = korea.9
+				days = 50
+			}
+		}
+	}
+}
+
+#Korea joins EADI
+news_event = {
+	id = korea.8
+	title = korea.8.t
+	desc = korea.8.d
+	picture = GFX_news_Asia_Tanks
+	is_triggered_only = yes
+	major = yes
+	trigger = {
+		tag = PRC
+	}
+	option = {
+		name = korea.8.a
+		
+		hidden_effect = {
+			PRC = {
+				add_to_faction = KOR
+			}
+		}
+	}
+}
+
+#Korea joins PDTO
+news_event = {
+	id = korea.9
+	title = korea.9.t
+	desc = korea.9.d
+	picture = GFX_news_Asia_Tanks
+	is_triggered_only = yes
+	major = yes
+	trigger = {
+		tag = PRC
+	}
+	immediate = {
+		hidden_effect = {
+			JAP = {
+				add_to_faction = KOR
+			}
+		}
+	}
+	option = {
+		name = korea.9.a
+		
+	}
+}
+
+#Elections
+country_event = {
+	id = korea.10
+	title = korea.10.t
+	desc = korea.10.d
+	picture = GFX_generic_elections
+	is_triggered_only = yes
+	trigger = {
+	}
+	option = {
+		name = korea.10.a
+		ai_chance = {
+			base = 49			
+			modifier = {
+				factor = 0
+				has_game_rule = {
+					rule = KOR_election
+					option = KOR_PPP_AI_BEHAVIOR
+					}
+			}
+		}
+		set_politics = {
+			ruling_party = social_liberal
+			elections_allowed = yes
+			last_election = "2022.3.9"
+			election_frequency = 60
+		}
+		add_popularity = {
+			ideology = social_liberal
+			popularity = 0.15
+		}
+		retire_character = KOR_moon_jae_in_char
+		promote_character = KOR_lee_jae_myung_char
+	}
+	option = {
+		name = korea.10.b
+		ai_chance = {
+			base = 51
+			modifier = {
+				factor = 0
+				has_game_rule = {
+					rule = KOR_election
+					option = KOR_DPK_AI_BEHAVIOR
+					}
+			}
+		}
+		set_politics = {
+			ruling_party = conservative
+			elections_allowed = yes
+			last_election = "2022.3.9"
+			election_frequency = 60
+		}
+		add_popularity = {
+			ideology = conservative
+			popularity = 0.15
+		}
+		retire_character = KOR_moon_jae_in_char
+		promote_character = KOR_lee_jae_myung_char
+	}
+}
+
+
+
+###APRIL FOOLS 2025
+country_event = {#Flying To The Moon
+	id = korea_aprilfools25.1
+	title = korea_aprilfools25.1.t
+	desc = korea_aprilfools25.1.d
+	picture = GFX_KOR_april_fools_1
+	is_triggered_only = yes
+	trigger = {
+		tag = KOR
+	}
+	option = {
+		name = korea_aprilfools25.1.a
+		hidden_effect = {
+		
+		}
+	}
+}
+
+country_event = {#Juche In My Mind
+	id = korea_aprilfools25.2
+	title = korea_aprilfools25.2.t
+	desc = korea_aprilfools25.2.d
+	picture = GFX_KOR_april_fools_2
+	is_triggered_only = yes
+	trigger = {
+		tag = KOR
+	}
+	option = {
+		name = korea_aprilfools25.2.a
+		hidden_effect = {
+		
+		}
+	}
+}
+
+country_event = {#Second Attempt
+	id = korea_aprilfools25.3
+	title = korea_aprilfools25.3.t
+	desc = korea_aprilfools25.3.d
+	picture = GFX_KOR_april_fools_3
+	is_triggered_only = yes
+	trigger = {
+		tag = KOR
+	}
+	option = {
+		name = korea_aprilfools25.3.a
+		hidden_effect = {
+		
+		}
+	}
+}
+
+country_event = {#Eternal Brotherhood
+	id = korea_aprilfools25.4
+	title = korea_aprilfools25.4.t
+	desc = korea_aprilfools25.4.d
+	picture = GFX_KOR_april_fools_4
+	is_triggered_only = yes
+	trigger = {
+		tag = KOR
+	}
+	option = {
+		name = korea_aprilfools25.4.a
+		hidden_effect = {
+		
+		}
+	}
+}
+
+country_event = {#Cultural Exchange
+	id = korea_aprilfools25.5
+	title = korea_aprilfools25.5.t
+	desc = korea_aprilfools25.5.d
+	picture = GFX_KOR_april_fools_5
+	is_triggered_only = yes
+	trigger = {
+		tag = KOR
+	}
+	option = {
+		name = korea_aprilfools25.5.a
+		hidden_effect = {
+		
+		}
+	}
+}
+
+country_event = {#Shining Example Of Healthy Economy
+	id = korea_aprilfools25.6
+	title = korea_aprilfools25.6.t
+	desc = korea_aprilfools25.6.d
+	picture = GFX_KOR_april_fools_6
+	is_triggered_only = yes
+	trigger = {
+		tag = KOR
+	}
+	option = {
+		name = korea_aprilfools25.6.a
+		hidden_effect = {
+		
+		}
+	}
+}
+
+country_event = {#Economy In Ruins
+	id = korea_aprilfools25.7
+	title = korea_aprilfools25.7.t
+	desc = korea_aprilfools25.7.d
+	picture = GFX_KOR_april_fools_7
+	is_triggered_only = yes
+	trigger = {
+		tag = KOR
+	}
+	option = {
+		name = korea_aprilfools25.7.a
+		hidden_effect = {
+		
+		}
+	}
+}
+
+country_event = {#Reconcile With Japan
+	id = korea_aprilfools25.8
+	title = korea_aprilfools25.8.t
+	desc = korea_aprilfools25.8.d
+	picture = GFX_KOR_april_fools_8
+	is_triggered_only = yes
+	trigger = {
+		tag = KOR
+	}
+	option = {
+		name = korea_aprilfools25.8.a
+		hidden_effect = {
+		
+		}
+	}
+}
+
+country_event = {#Did We Forget Someone?
+	id = korea_aprilfools25.9
+	title = korea_aprilfools25.9.t
+	desc = korea_aprilfools25.9.d
+	picture = GFX_KOR_april_fools_9
+	is_triggered_only = yes
+	trigger = {
+		tag = KOR
+	}
+	option = {
+		name = korea_aprilfools25.9.a
+		hidden_effect = {
+		
+		}
+	}
+}
+
+country_event = {#My BROTHER Kim Jong Un
+	id = korea_aprilfools25.10
+	title = korea_aprilfools25.10.t
+	desc = korea_aprilfools25.10.d
+	picture = GFX_KOR_april_fools_10
+	is_triggered_only = yes
+	trigger = {
+		tag = KOR
+	}
+	option = {
+		name = korea_aprilfools25.10.a
+		hidden_effect = {
+		
+		}
+	}
+}
+
+country_event = {#Mooning As Usual
+	id = korea_aprilfools25.11
+	title = korea_aprilfools25.11.t
+	desc = korea_aprilfools25.11.d
+	picture = GFX_KOR_april_fools_11
+	is_triggered_only = yes
+	trigger = {
+		tag = KOR
+	}
+	option = {
+		name = korea_aprilfools25.11.a
+		hidden_effect = {
+		
+		}
+	}
+}
+
+country_event = {#John Lee-Samsung Comes To Power
+	id = korea_aprilfools25.12
+	title = korea_aprilfools25.12.t
+	desc = korea_aprilfools25.12.d
+	picture = GFX_KOR_april_fools_12
+	is_triggered_only = yes
+	trigger = {
+		tag = KOR
+	}
+	#immediate = {
+	#	hidden_effect = {
+	#		add_ideas = KOR_apr_smol_quixote
+	#		add_ideas = KOR_apr_kim_jong_un 
+	#		add_ideas = KOR_apr_don_quixote 
+	#		add_ideas = KOR_apr_goro_majima  
+	#		add_ideas = KOR_apr_angela   
+	#		add_ideas = KOR_apr_vergilius 
+	#	}
+	#}
+	option = {
+		name = korea_aprilfools25.12.a
+		set_cosmetic_tag = KOR_samsung_republic_cosmetic
+		set_politics = {
+			ruling_party = nationalist
+			elections_allowed = yes
+			last_election = "2022.3.9"
+			election_frequency = 60
+		}
+		add_popularity = {
+			ideology = nationalist
+			popularity = 1
+		}
+		retire_character = KOR_moon_jae_in_char
+		promote_character = KOR_lee_john_samsung_char
+		set_country_flag = KOR_april_fools_flag
+		#load_focus_tree = KOR_april_fools_first_korea_focus
+		
+		
+		
+		news_event = {
+			id = korea_aprilfools25.32
+		}
+	}
+}
+
+country_event = {#Chaebols In Control Start
+	id = korea_aprilfools25.13
+	title = korea_aprilfools25.13.t
+	desc = korea_aprilfools25.13.d
+	picture = GFX_KOR_april_fools_13
+	is_triggered_only = yes
+	trigger = {
+		tag = KOR
+	}
+	option = {
+		name = korea_aprilfools25.13.a
+		hidden_effect = {
+		
+		}
+	}
+}
+
+country_event = {#Chaebols In Control End Limbus
+	id = korea_aprilfools25.14
+	title = korea_aprilfools25.14.t
+	desc = korea_aprilfools25.14.d
+	picture = GFX_KOR_april_fools_14
+	is_triggered_only = yes
+	trigger = {
+		tag = KOR
+	}
+	option = {
+		name = korea_aprilfools25.14.a
+		add_corps_commander_role = {
+			character = KOR_don_quixote_char
+			skill = 3
+			attack_skill = 5
+			defense_skill = 3
+			planning_skill = 1
+			logistics_skill = 5
+		}
+	}
+}
+
+country_event = {#Korean Agony
+	id = korea_aprilfools25.15
+	title = korea_aprilfools25.15.t
+	desc = korea_aprilfools25.15.d
+	picture = GFX_KOR_april_fools_15
+	is_triggered_only = yes
+	trigger = {
+		tag = KOR
+	}
+	option = {
+		name = korea_aprilfools25.15.a
+		hidden_effect = {
+			annex_country = {
+				target = PRK
+				transfer_troops = yes
+			}
+		}
+		add_ideas = KOR_apr_kim_jong_un 
+	}
+}
+
+country_event = {#Unleashing The EGO
+	id = korea_aprilfools25.16
+	title = korea_aprilfools25.16.t
+	desc = korea_aprilfools25.16.d
+	picture = GFX_KOR_april_fools_16
+	is_triggered_only = yes
+	trigger = {
+		tag = KOR
+	}
+	option = {
+		name = korea_aprilfools25.16.a
+		1409 = {
+			add_manpower = -1257218
+		}
+		add_stability = -1
+	}
+}
+
+country_event = {#That's How Mafia Works
+	id = korea_aprilfools25.17
+	title = korea_aprilfools25.17.t
+	desc = korea_aprilfools25.17.d
+	picture = GFX_KOR_april_fools_17
+	is_triggered_only = yes
+	trigger = {
+		tag = KOR
+	}
+	option = {
+		name = korea_aprilfools25.17.a
+		hidden_effect = {
+		
+		}
+	}
+}
+
+country_event = {#Contacts In Yakuza
+	id = korea_aprilfools25.18
+	title = korea_aprilfools25.18.t
+	desc = korea_aprilfools25.18.d
+	picture = GFX_KOR_april_fools_18
+	is_triggered_only = yes
+	trigger = {
+		tag = KOR
+	}
+	option = {
+		name = korea_aprilfools25.18.a
+		hidden_effect = {
+		
+		}
+	}
+}
+
+country_event = {#Cyberpunk Paradise
+	id = korea_aprilfools25.19
+	title = korea_aprilfools25.19.t
+	desc = korea_aprilfools25.19.d
+	picture = GFX_KOR_april_fools_19
+	is_triggered_only = yes
+	trigger = {
+		tag = KOR
+	}
+	option = {
+		name = korea_aprilfools25.19.a
+		hidden_effect = {
+		
+		}
+	}
+}
+
+country_event = {#Open The Lobotomy Corp
+	id = korea_aprilfools25.20
+	title = korea_aprilfools25.20.t
+	desc = korea_aprilfools25.20.d
+	picture = GFX_KOR_april_fools_20
+	is_triggered_only = yes
+	trigger = {
+		tag = KOR
+	}
+	option = {
+		name = korea_aprilfools25.20.a
+		hidden_effect = {
+		
+		}
+	}
+}
+
+country_event = {#Galaxy Of Phones
+	id = korea_aprilfools25.21
+	title = korea_aprilfools25.21.t
+	desc = korea_aprilfools25.21.d
+	picture = GFX_KOR_april_fools_21
+	is_triggered_only = yes
+	trigger = {
+		tag = KOR
+	}
+	option = {
+		name = korea_aprilfools25.21.a
+		hidden_effect = {
+		
+		}
+	}
+}
+
+country_event = {#Hike Prices Of Dishwashers
+	id = korea_aprilfools25.22
+	title = korea_aprilfools25.22.t
+	desc = korea_aprilfools25.22.d
+	picture = GFX_KOR_april_fools_22
+	is_triggered_only = yes
+	trigger = {
+		tag = KOR
+	}
+	option = {
+		name = korea_aprilfools25.22.a
+		hidden_effect = {
+		
+		}
+	}
+}
+
+country_event = {#Healthcare Subscription Trials
+	id = korea_aprilfools25.23
+	title = korea_aprilfools25.23.t
+	desc = korea_aprilfools25.23.d
+	picture = GFX_KOR_april_fools_23
+	is_triggered_only = yes
+	trigger = {
+		tag = KOR
+	}
+	option = {
+		name = korea_aprilfools25.23.a
+		hidden_effect = {
+		
+		}
+	}
+}
+
+country_event = {#Korea Must Survive
+	id = korea_aprilfools25.24
+	title = korea_aprilfools25.24.t
+	desc = korea_aprilfools25.24.d
+	picture = GFX_KOR_april_fools_24
+	is_triggered_only = yes
+	trigger = {
+		tag = KOR
+	}
+	option = {
+		name = korea_aprilfools25.24.a
+		hidden_effect = {
+		
+		}
+	}
+}
+
+country_event = {#Import Japanese Fumos
+	id = korea_aprilfools25.25
+	title = korea_aprilfools25.25.t
+	desc = korea_aprilfools25.25.d
+	picture = GFX_KOR_april_fools_25
+	is_triggered_only = yes
+	trigger = {
+		tag = KOR
+	}
+	option = {
+		name = korea_aprilfools25.25.a
+		hidden_effect = {
+		
+		}
+	}
+}
+
+country_event = {#Building La Mancha Land
+	id = korea_aprilfools25.26
+	title = korea_aprilfools25.26.t
+	desc = korea_aprilfools25.26.d
+	picture = GFX_KOR_april_fools_26
+	is_triggered_only = yes
+	trigger = {
+		tag = KOR
+	}
+	option = {
+		name = korea_aprilfools25.26.a
+		hidden_effect = {
+		
+		}
+	}
+}
+
+country_event = {#HONUDA ACCORDU PRODUCTION
+	id = korea_aprilfools25.27
+	title = korea_aprilfools25.27.t
+	desc = korea_aprilfools25.27.d
+	picture = GFX_KOR_april_fools_27
+	is_triggered_only = yes
+	trigger = {
+		tag = KOR
+	}
+	option = {
+		name = korea_aprilfools25.27.a
+		hidden_effect = {
+		
+		}
+	}
+}
+
+country_event = {#INTO RED MIST
+	id = korea_aprilfools25.28
+	title = korea_aprilfools25.28.t
+	desc = korea_aprilfools25.28.d
+	picture = GFX_KOR_april_fools_28
+	is_triggered_only = yes
+	trigger = {
+		tag = KOR
+	}
+	option = {
+		name = korea_aprilfools25.28.a
+		hidden_effect = {
+		
+		}
+	}
+}
+
+country_event = {#MASS DISTORTION
+	id = korea_aprilfools25.29
+	title = korea_aprilfools25.29.t
+	desc = korea_aprilfools25.29.d
+	picture = GFX_KOR_april_fools_29
+	is_triggered_only = yes
+	trigger = {
+		tag = KOR
+	}
+	option = {
+		name = korea_aprilfools25.29.a
+		hidden_effect = {
+		
+		}
+	}
+}
+
+country_event = {#GWANLIJA NARI!!!
+	id = korea_aprilfools25.30
+	title = korea_aprilfools25.30.t
+	desc = korea_aprilfools25.30.d
+	picture = GFX_KOR_april_fools_30
+	is_triggered_only = yes
+	trigger = {
+		tag = KOR
+	}
+	option = {
+		name = korea_aprilfools25.30.a
+		hidden_effect = {
+		
+		}
+	}
+}
+
+country_event = {#Mass Oil Production!!!
+	id = korea_aprilfools25.31
+	title = korea_aprilfools25.31.t
+	desc = korea_aprilfools25.31.d
+	picture = GFX_KOR_april_fools_31
+	is_triggered_only = yes
+	trigger = {
+		tag = KOR
+	}
+	option = {
+		name = korea_aprilfools25.31.a
+		hidden_effect = {
+		
+		}
+	}
+}
+
+news_event = {#John Lee-Samsung News
+	id = korea_aprilfools25.32
+	title = korea_aprilfools25.32.t
+	desc = korea_aprilfools25.32.d
+	picture = GFX_KOR_april_fools_32
+	fire_only_once = yes
+	is_triggered_only = yes
+	major = yes
+	trigger = {
+	}
+	option = {
+		name = korea_aprilfools25.32.a
+		hidden_effect = {
+		
+		}
+	}
+}
+
+country_event = {#Blooky1
+	id = korea_aprilfools25.33
+	title = korea_aprilfools25.33.t
+	desc = korea_aprilfools25.33.d
+	picture = GFX_KOR_april_fools_33
+	fire_only_once = yes
+	is_triggered_only = yes
+	major = yes
+	trigger = {
+	}
+	option = {
+		name = korea_aprilfools25.33.a
+		hidden_effect = {
+		
+		}
+	}
+}
+
+country_event = {#Blooky2
+	id = korea_aprilfools25.34
+	title = korea_aprilfools25.34.t
+	desc = korea_aprilfools25.34.d
+	picture = GFX_KOR_april_fools_33
+	is_triggered_only = yes
+	trigger = {
+		tag = KOR
+	}
+	option = {
+		name = korea_aprilfools25.34.a
+		hidden_effect = {
+		
+		}
+	}
+}

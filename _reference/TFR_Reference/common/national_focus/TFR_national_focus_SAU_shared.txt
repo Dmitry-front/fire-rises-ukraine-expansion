@@ -1,0 +1,1445 @@
+# focus_tree = {
+# 	id = saudi_shared_focus
+# 	country = {
+# 		factor = 0
+# 		modifier = {
+# 			add = 10
+# 			OR = {
+# 				tag = ROC
+# 				tag = ARR
+# 				tag = JAH
+# 			}
+# 		}
+# 	}
+# 	#
+# 	focus = {
+# 		id = SAU_invite_foreign_advisors
+# 		icon = GFX_focus_Generic_Russian_Advisors
+# 		x = 13
+# 		y = 0
+# 		cost = 5
+		
+# 		available = {
+# 			tag = ROC
+# 		}
+# 		ai_will_do = {
+# 			factor = 1
+# 		}
+# 		completion_reward = {
+# 			add_political_power= 50
+# 			add_stability= 0.05
+# 		}
+# 	}
+	
+# 	focus = {
+# 		id = SAU_recruit_pmc_brigade
+# 		icon = GFX_goal_unknown
+# 		x = 12
+# 		y = 1
+# 		cost = 5
+		
+# 		prerequisite = { focus = SAU_invite_foreign_advisors }
+# 		mutually_exclusive = { focus = SAU_recruit_king_loyalists }
+# 		ai_will_do = {
+# 			factor = 1
+# 		}
+# 		completion_reward = {
+# 			random_owned_controlled_state = {
+# 				create_unit = {
+# 					division = "name = \"1. Sharikat Easkariat Khasa\" division_template = \"Sharikat Easkariat Khasa\"  start_experience_factor = 0.2"
+# 					allow_spawning_on_enemy_provs = no
+# 					owner = ROOT
+# 				}
+# 				create_unit = {
+# 					division = "name = \"2. Sharikat Easkariat Khasa\" division_template = \"Sharikat Easkariat Khasa\"  start_experience_factor = 0.2"
+# 					allow_spawning_on_enemy_provs = no
+# 					owner = ROOT
+# 				}
+# 			}
+# 		}
+# 	}
+	
+# 	focus = {
+# 		id = SAU_boost_soldiers_salaries
+# 		icon = GFX_goal_unknown
+# 		x = 12
+# 		y = 2
+# 		cost = 5
+		
+# 		prerequisite = { focus = SAU_recruit_pmc_brigade focus = SAU_recruit_king_loyalists }
+# 		ai_will_do = {
+# 			factor = 1
+# 		}
+# 		completion_reward = {
+# 			add_ideas = high_military
+# 		}
+# 	}
+	
+# 	focus = {
+# 		id = SAU_recruit_king_loyalists
+# 		icon = GFX_focus_SAU_King_Loyalists
+# 		x = 10
+# 		y = 1
+# 		cost = 5
+		
+# 		available = {
+# 			tag = SAU
+# 		}
+# 		mutually_exclusive = { focus = SAU_recruit_pmc_brigade }
+# 		ai_will_do = {
+# 			factor = 1
+# 		}
+# 		completion_reward = {
+# 			custom_effect_tooltip = SAU_loyalists
+# 			hidden_effect = {
+# 				load_oob = "SAU_king_loyalists"
+# 			}
+# 		}
+# 	}
+	
+# 	focus = {
+# 		id = SAU_purchase_foreign_fighters
+# 		icon = GFX_focus_SAU_King_Loyalists
+# 		x = 8
+# 		y = 2
+# 		cost = 5
+		
+# 		available = {
+# 			OR = {
+# 				tag = SAU
+# 				tag = ROC
+# 			}
+# 		}
+# 		prerequisite = { focus = SAU_recruit_king_loyalists }
+# 		ai_will_do = {
+# 			factor = 1
+# 		}
+# 		completion_reward = {
+# 			add_equipment_to_stockpile = {
+# 				type = fighter_equipment_2
+# 				amount = 20
+# 				producer = SOV 
+# 			}
+# 			add_equipment_to_stockpile = {
+# 				type = fighter_equipment_3
+# 				amount = 30
+# 				producer = SOV 
+# 			}
+# 			add_equipment_to_stockpile = {
+# 				type = CAS_equipment_2
+# 				amount = 50
+# 				producer = USA
+# 			}
+# 		}
+# 	}
+	
+# 	focus = {
+# 		id = SAU_defend_the_capital
+# 		icon = GFX_focus_SAU_King_Loyalists
+# 		x = 10
+# 		y = 2
+# 		cost = 2.9
+		
+# 		available = {
+# 			tag = SAU
+# 		}
+# 		prerequisite = { focus = SAU_recruit_king_loyalists }
+# 		ai_will_do = {
+# 			factor = 1
+# 		}
+# 		completion_reward = {
+# 			add_timed_idea = {
+# 				idea = SAU_defense_of_riyadh
+# 				days = 100
+# 			}
+# 		}
+# 	}
+	
+# 	focus = {
+# 		id = SAU_recover_arms_stockpile
+# 		icon = GFX_focus_APA_Millitary_Industry
+# 		x = 16
+# 		y = 1
+# 		cost = 5
+		
+# 		prerequisite = { focus = SAU_invite_foreign_advisors }
+# 		ai_will_do = {
+# 			factor = 1
+# 		}
+# 		completion_reward = {
+# 			add_equipment_to_stockpile = {
+# 				type = infantry_equipment_1
+# 				amount = 400
+# 				producer = SOV 
+# 			}
+	
+# 			add_equipment_to_stockpile = {
+# 				type = infantry_equipment_1
+# 				amount = 250
+# 				producer = GER
+# 			}
+				
+# 			add_equipment_to_stockpile = {
+# 				type = anti_tank_equipment_1
+# 				amount = 250
+# 				producer = GER
+# 			}
+				
+# 			add_equipment_to_stockpile = {
+# 				type = motorized_equipment_1
+# 				amount = 150
+# 				producer = USA
+# 			}
+# 		}
+# 	}
+	
+# 	focus = {
+# 		id = SAU_affirm_mutaibs_positiion
+# 		icon = GFX_focus_APA_Millitary_Industry
+# 		x = 14
+# 		y = 2
+# 		cost = 5
+		
+# 		prerequisite = { focus = SAU_military_factories }
+# 		ai_will_do = {
+# 			factor = 1
+# 		}
+# 		completion_reward = {
+# 			swap_ideas= {
+# 				remove_idea = ROC_questionable_legitimacy 
+# 				add_idea = ROC_moderate_legitimacy 
+# 			}
+# 		}
+# 	}
+	
+# 	focus = {
+# 		id = SAU_riyadh_to_medinah
+# 		icon = GFX_focus_APA_Millitary_Industry
+# 		x = 15
+# 		y = 3
+# 		cost = 5
+		
+# 		prerequisite = { focus = SAU_affirm_mutaibs_positiion }
+# 		ai_will_do = {
+# 			factor = 1
+# 		}
+# 		completion_reward = {
+# 			add_timed_idea = {
+# 				idea = ROC_riyadh_to_medina_idea
+# 				days = 120
+# 			}
+# 		}
+# 	}
+	
+# 	focus = {
+# 		id = SAU_repair_russian_relations
+# 		icon = GFX_focus_APA_Millitary_Industry
+# 		x = 13
+# 		y = 3
+# 		cost = 5
+		
+# 		prerequisite = { focus = SAU_affirm_mutaibs_positiion focus = SAU_boost_soldiers_salaries }
+# 		ai_will_do = {
+# 			factor = 1
+# 		}
+# 		completion_reward = {
+
+# 		}
+# 	}
+	
+# 	focus = {
+# 		id = SAU_military_factories
+# 		icon = GFX_goal_unknown
+# 		x = 14
+# 		y = 1
+# 		cost = 5
+		
+# 		prerequisite = { focus = SAU_invite_foreign_advisors }
+# 		ai_will_do = {
+# 			factor = 1
+# 		}
+# 		completion_reward = {
+# 			add_offsite_building = { type = arms_factory level = 2 }
+# 		}
+# 	}
+
+# 	focus = {
+# 		id = SAU_secure_internal_stability
+# 		icon = GFX_goal_unknown
+# 		x = 4
+# 		y = 0
+# 		cost = 5
+# 		available_if_capitulated = yes
+# 		available = {
+# 			tag = ARR
+# 		}
+# 		ai_will_do = {
+# 			factor = 5
+# 		}
+# 		completion_reward = {
+# 			add_political_power = 75
+# 			add_stability = 0.05
+# 		}
+# 	}
+	
+# 	focus = {
+# 		id = SAU_pass_the_first_reforms
+# 		icon = GFX_goal_unknown
+# 		x = 3
+# 		y = 1
+# 		cost = 3.6
+# 		available_if_capitulated = yes
+# 		available = {
+# 			tag = ARR
+# 		}
+# 		prerequisite = { focus = SAU_secure_internal_stability }
+# 		ai_will_do = {
+# 			factor = 1
+# 		}
+# 		completion_reward = {
+# 			add_ideas = medium_race
+# 			add_ideas = medium_female
+# 		}
+# 	}
+	
+# 	focus = {
+# 		id = SAU_mobilize_the_people
+# 		icon = GFX_goal_unknown
+# 		x = 4
+# 		y = 2
+# 		cost = 3.6
+# 		available_if_capitulated = yes
+# 		available = {
+# 			tag = ARR
+# 		}
+# 		prerequisite = { focus = SAU_secure_internal_stability }
+# 		ai_will_do = {
+# 			factor = 1
+# 		}
+# 		completion_reward = {
+# 			custom_effect_tooltip = SAU_mobilize_militia
+# 			add_ideas = ARR_civilian_mobilization
+# 			add_ideas = partial_mobilization
+# 			hidden_effect = {
+# 				1064 = {
+# 					create_unit = {
+# 						division = "name = \"1. Liwa' Milishia\" division_template = \"Liwa' Milishia\"  start_experience_factor = 0.2"
+# 						allow_spawning_on_enemy_provs = no
+# 						owner = ROOT
+# 					}
+# 					create_unit = {
+# 						division = "name = \"2. Liwa' Milishia\" division_template = \"Liwa' Milishia\"  start_experience_factor = 0.2"
+# 						allow_spawning_on_enemy_provs = no
+# 						owner = ROOT
+# 					}
+# 				}
+# 				1061 = {
+# 					create_unit = {
+# 						division = "name = \"3. Liwa' Milishia\" division_template = \"Liwa' Milishia\"  start_experience_factor = 0.2"
+# 						allow_spawning_on_enemy_provs = no
+# 						owner = ROOT
+# 					}
+# 				}
+# 			}
+# 		}
+# 	}
+	
+# 	focus = {
+# 		id = SAU_military_reformation
+# 		icon = GFX_goal_unknown
+# 		x = 7
+# 		y = 4
+# 		cost = 3.6
+# 		available_if_capitulated = yes
+# 		available = {
+# 			tag = ARR
+# 		}
+# 		prerequisite = { focus = SAU_assiris_connections }
+# 		ai_will_do = {
+# 			factor = 1
+# 		}
+# 		completion_reward = {
+# 			add_ideas = high_military
+# 		}
+# 	}
+	
+# 	focus = {
+# 		id = SAU_eastern_aid
+# 		icon = GFX_goal_unknown
+# 		x = 5
+# 		y = 4
+# 		cost = 3.6
+# 		available_if_capitulated = yes
+# 		available = {
+# 			tag = ARR
+# 		}
+# 		prerequisite = { focus = SAU_assiris_connections }
+# 		ai_will_do = {
+# 			factor = 1
+# 		}
+# 		completion_reward = {
+# 			add_equipment_to_stockpile = {
+# 				type = infantry_equipment_3
+# 				amount = 400
+# 				producer = SV1
+# 			}
+	
+# 			add_equipment_to_stockpile = {
+# 				type = support_equipment
+# 				amount = 250
+# 				producer = SOV
+# 			}
+				
+# 			add_equipment_to_stockpile = {
+# 				type = anti_tank_equipment_1
+# 				amount = 250
+# 				producer = SV1
+# 			}
+				
+# 			add_equipment_to_stockpile = {
+# 				type = motorized_equipment_1
+# 				amount = 150
+# 				producer = SOV
+# 			}
+# 		}
+# 	}
+	
+# 	focus = {
+# 		id = SAU_free_the_imprisoned
+# 		icon = GFX_goal_unknown
+# 		x = 5
+# 		y = 1
+# 		cost = 3.6
+# 		available_if_capitulated = yes
+# 		available = {
+# 			tag = ARR
+# 		}
+# 		prerequisite = { focus = SAU_secure_internal_stability }
+# 		ai_will_do = {
+# 			factor = 1
+# 		}
+# 		completion_reward = {
+# 			add_war_support = 0.05
+# 			add_manpower = 15000
+# 			add_stability = -0.1
+# 		}
+# 	}
+	
+# 	focus = {
+# 		id = SAU_seek_international_help
+# 		icon = GFX_goal_unknown
+# 		x = 2
+# 		y = 2
+# 		cost = 3.6
+# 		available_if_capitulated = yes
+# 		available = {
+# 			tag = ARR
+# 		}
+# 		prerequisite = { focus = SAU_pass_the_first_reforms	}
+# 		ai_will_do = {
+# 			factor = 1
+# 		}
+# 		completion_reward = {
+# 			add_offsite_building = { type = arms_factory level = 1 }
+# 			add_offsite_building = { type = industrial_complex level = 2 }
+# 			hidden_effect = {
+# 				country_event = { id = saudi.23 days = 30 }
+# 			}
+# 		}
+# 	}
+	
+# 	focus = {
+# 		id = SAU_declare_humanitarian_disaster
+# 		icon = GFX_goal_unknown
+# 		x = 1
+# 		y = 4
+# 		cost = 3.6
+# 		available_if_capitulated = yes
+# 		available = {
+# 			tag = ARR
+# 		}
+# 		prerequisite = { focus = SAU_seek_international_help }
+# 		ai_will_do = {
+# 			factor = 1
+# 		}
+# 		completion_reward = {
+# 			news_event = { id = news.153 }
+# 			hidden_effect = {
+# 				GER = {
+# 					country_event = { id = germany.60 days = 5 }
+# 				}
+# 			}
+# 		}
+# 	}
+	
+# 	focus = {
+# 		id = SAU_western_aid
+# 		icon = GFX_goal_unknown
+# 		x = 3
+# 		y = 4
+# 		cost = 3.6
+# 		available_if_capitulated = yes
+# 		available = {
+# 			tag = ARR
+# 		}
+# 		prerequisite = { focus = SAU_seek_international_help }
+# 		ai_will_do = {
+# 			factor = 1
+# 		}
+# 		completion_reward = {
+# 			add_political_power = 50
+# 			add_stability = 0.05
+# 		}
+# 	}
+	
+# 	focus = {
+# 		id = SAU_construct_refugee_centers
+# 		icon = GFX_goal_unknown
+# 		x = 2
+# 		y = 5
+# 		cost = 3.6
+# 		available_if_capitulated = yes
+# 		available = {
+# 			tag = ARR
+# 		}
+# 		prerequisite = { focus = SAU_western_aid focus = SAU_declare_humanitarian_disaster }
+# 		ai_will_do = {
+# 			factor = 1
+# 		}
+# 		completion_reward = {
+# 			random_owned_controlled_state = {
+# 				if = {
+# 					limit = {
+# 						free_building_slots = {
+# 							building = industrial_complex
+# 							size > 2
+# 							include_locked = yes
+# 						}
+# 					}
+# 					add_extra_state_shared_building_slots = 2
+# 					add_building_construction = {
+# 						type = industrial_complex
+# 						level = 2
+# 						instant_build = yes
+# 					}
+# 				}
+# 			}
+# 		}
+# 	}
+	
+# 	focus = {
+# 		id = SAU_assiris_connections
+# 		icon = GFX_goal_unknown
+# 		x = 6
+# 		y = 2
+# 		cost = 4
+# 		available_if_capitulated = yes
+# 		available = {
+# 			tag = ARR
+# 		}
+# 		prerequisite = { focus = SAU_free_the_imprisoned }
+# 		ai_will_do = {
+# 			factor = 1
+# 		}
+# 		completion_reward = {
+# 			add_equipment_to_stockpile = {
+# 				type = fighter_equipment_1
+# 				amount = 20
+# 				producer = SOV 
+# 			}
+# 			add_equipment_to_stockpile = {
+# 				type = fighter_equipment_2
+# 				amount = 30
+# 				producer = SOV 
+# 			}
+# 			add_equipment_to_stockpile = {
+# 				type = CAS_equipment_2
+# 				amount = 15
+# 				producer = GER
+# 			}
+# 			add_equipment_to_stockpile = {
+# 				type = support_equipment
+# 				amount = 100
+# 				producer = GER
+# 			}
+# 		}
+# 	}
+	
+# 	focus = {
+# 		id = SAU_victory_in_civil_war
+# 		icon = GFX_focus_SAU_Victory_Civil_War
+# 		x = 25
+# 		y = 0
+# 		cost = 10
+# 		available_if_capitulated = yes
+# 		available = {
+# 			has_global_flag = SAU_saudi_civil_war_over_global
+# 		}
+# 		ai_will_do = {
+# 			factor = 1
+# 		}
+# 		completion_reward = {
+# 			add_political_power = 50
+# 			add_stability = 0.05
+# 		}
+# 	}
+	
+# 	focus = {
+# 		id = SAU_purge_traitor_princes
+# 		icon = GFX_focus_SAU_Purge_Traitor_Princes
+# 		x = 19
+# 		y = 1
+# 		cost = 10
+# 		available_if_capitulated = yes
+# 		available = { 
+# 			OR = {
+# 				tag = ROC
+# 				tag = SAU
+# 			}
+# 		}
+# 		prerequisite = { focus = SAU_victory_in_civil_war }
+# 		mutually_exclusive = { focus = SAU_secure_political_control focus = SAU_proclaim_islamic_victory }
+# 		ai_will_do = {
+# 			factor = 1
+# 		}
+# 		completion_reward = {
+# 			add_timed_idea = {
+# 				idea = SAU_price_purges
+# 				days = 100
+# 			}
+# 		}
+# 	}
+	
+# 	focus = {
+# 		id = SAU_increase_secret_police_funding
+# 		icon = GFX_focus_SAU_Purge_Traitor_Princes
+# 		x = 17
+# 		y = 2
+# 		cost = 10
+# 		available_if_capitulated = yes
+# 		prerequisite = { focus = SAU_purge_traitor_princes }
+# 		ai_will_do = {
+# 			factor = 1
+# 		}
+# 		completion_reward = {
+# 			add_timed_idea = {
+# 				idea = SAU_price_purges
+# 				days = 100
+# 			}
+# 		}
+# 	}
+	
+# 	focus = {
+# 		id = SAU_secure_political_control
+# 		icon = GFX_focus_SAU_Secure_Political_Control
+# 		x = 25
+# 		y = 1
+# 		cost = 10
+# 		available_if_capitulated = yes
+# 		available = {
+# 			OR = {
+# 				tag = ARR
+# 				tag = SAR
+# 			}
+# 		}
+# 		prerequisite = { focus = SAU_victory_in_civil_war }
+# 		mutually_exclusive = { focus = SAU_purge_traitor_princes focus = SAU_proclaim_islamic_victory }
+# 		ai_will_do = {
+# 			factor = 1
+# 		}
+# 		completion_reward = {
+# 			add_political_power = 50
+# 			add_stability = 0.05
+# 		}
+# 	}
+	
+# 	focus = {
+# 		id = SAU_retain_relations_to_iran
+# 		icon = GFX_focus_SAU_Secure_Political_Control
+# 		x = 28
+# 		y = 2
+# 		cost = 10
+# 		available_if_capitulated = yes
+# 		prerequisite = { focus = SAU_secure_political_control }
+# 		mutually_exclusive = { focus = SAU_hold_free_elections }
+# 		ai_will_do = {
+# 			factor = 1
+# 		}
+# 		completion_reward = {
+# 			add_political_power = 50
+# 			add_stability = 0.05
+# 		}
+# 	}
+	
+# 	focus = {
+# 		id = SAU_begin_prince_trials
+# 		icon = GFX_focus_SAU_Secure_Political_Control
+# 		x = 28
+# 		y = 3
+# 		cost = 10
+# 		available_if_capitulated = yes
+# 		prerequisite = { focus = SAU_retain_relations_to_iran }
+# 		ai_will_do = {
+# 			factor = 1
+# 		}
+# 		completion_reward = {
+# 			add_political_power = 75
+# 			add_stability = -0.05
+# 		}
+# 	}
+	
+# 	focus = {
+# 		id = SAU_invite_iranian_investors
+# 		icon = GFX_focus_SAU_Secure_Political_Control
+# 		x = 27
+# 		y = 4
+# 		cost = 10
+# 		available_if_capitulated = yes
+# 		prerequisite = { focus = SAU_begin_prince_trials }
+# 		ai_will_do = {
+# 			factor = 1
+# 		}
+# 		completion_reward = {
+
+# 		}
+# 	}
+	
+# 	focus = {
+# 		id = SAU_hold_free_elections
+# 		icon = GFX_focus_SAU_Secure_Political_Control
+# 		x = 25
+# 		y = 2
+# 		cost = 10
+# 		available_if_capitulated = yes
+# 		prerequisite = { focus = SAU_secure_political_control }
+# 		mutually_exclusive = { focus = SAU_retain_relations_to_iran }
+# 		ai_will_do = {
+# 			factor = 1
+# 		}
+# 		completion_reward = {
+# 			add_political_power = 50
+# 			add_stability = 0.05
+# 		}
+# 	}
+	
+# 	focus = {
+# 		id = SAU_government_shuffle
+# 		icon = GFX_focus_SAU_Glorify_the_Martyrs
+# 		x = 24
+# 		y = 3
+# 		cost = 3
+# 		available_if_capitulated = yes
+# 		prerequisite = { focus = SAU_hold_free_elections }
+# 		ai_will_do = {
+# 			factor = 1
+# 		}
+# 		completion_reward = {
+# 			custom_effect_tooltip = SAU_liberal_reforms
+# 		}
+# 	}
+	
+# 	focus = {
+# 		id = SAU_education_reforms
+# 		icon = GFX_focus_SAU_Secure_Political_Control
+# 		x = 26
+# 		y = 3
+# 		cost = 10
+# 		available_if_capitulated = yes
+# 		prerequisite = { focus = SAU_hold_free_elections }
+# 		ai_will_do = {
+# 			factor = 1
+# 		}
+# 		completion_reward = {
+# 			add_research_slot = 1
+# 		}
+# 	}
+	
+# 	focus = {
+# 		id = SAU_eradicate_wahabists
+# 		icon = GFX_focus_SAU_Secure_Political_Control
+# 		x = 26
+# 		y = 5
+# 		cost = 10
+# 		available_if_capitulated = yes
+# 		prerequisite = { focus = SAU_education_reforms }
+# 		ai_will_do = {
+# 			factor = 1
+# 		}
+# 		completion_reward = {
+# 			add_political_power = 50
+# 			add_stability = 0.05
+# 		}
+# 	}
+	
+# 	focus = {
+# 		id = SAU_rebuild_nation
+# 		icon = GFX_goal_unknown
+# 		x = 21
+# 		y = 2
+# 		cost = 10
+# 		available_if_capitulated = yes
+# 		prerequisite = { focus = SAU_secure_political_control focus = SAU_purge_traitor_princes }
+# 		ai_will_do = {
+# 			factor = 1
+# 		}
+# 		completion_reward = {
+# 			add_political_power = 50
+# 			add_stability = 0.05
+# 		}
+# 	}
+	
+# 	focus = {
+# 		id = SAU_rebuild_mecca
+# 		icon = GFX_goal_unknown
+# 		x = 20
+# 		y = 3
+# 		cost = 10
+# 		available_if_capitulated = yes
+# 		prerequisite = { focus = SAU_rebuild_nation }
+# 		ai_will_do = {
+# 			factor = 1
+# 		}
+# 		completion_reward = {
+# 			add_political_power = 50
+# 			add_stability = 0.05
+# 		}
+# 	}
+	
+# 	focus = {
+# 		id = SAU_rebuild_ridah
+# 		icon = GFX_goal_unknown
+# 		x = 22
+# 		y = 3
+# 		cost = 10
+# 		available_if_capitulated = yes
+# 		prerequisite = { focus = SAU_rebuild_nation }
+# 		ai_will_do = {
+# 			factor = 1
+# 		}
+# 		completion_reward = {
+# 			add_political_power = 50
+# 			add_stability = 0.05
+# 		}
+# 	}
+	
+# 	focus = {
+# 		id = SAU_invite_investors
+# 		icon = GFX_goal_unknown
+# 		x = 22
+# 		y = 5
+# 		cost = 10
+# 		available_if_capitulated = yes
+# 		prerequisite = { focus = SAU_rebuild_ridah }
+# 		ai_will_do = {
+# 			factor = 1
+# 		}
+# 		completion_reward = {
+# 			add_political_power = 50
+# 			add_stability = 0.05
+# 		}
+# 	}
+	
+# 	focus = {
+# 		id = SAU_control_oil_prices
+# 		icon = GFX_goal_unknown
+# 		x = 23
+# 		y = 6
+# 		cost = 10
+# 		available_if_capitulated = yes
+# 		prerequisite = { focus = SAU_invite_investors }
+# 		ai_will_do = {
+# 			factor = 1
+# 		}
+# 		completion_reward = {
+# 			add_political_power = 50
+# 			add_stability = 0.05
+# 		}
+# 	}
+	
+# 	focus = {
+# 		id = SAU_rebuild_infrastructure
+# 		icon = GFX_goal_unknown
+# 		x = 21
+# 		y = 4
+# 		cost = 10
+# 		available_if_capitulated = yes
+# 		prerequisite = { focus = SAU_rebuild_mecca focus = SAU_rebuild_ridah }
+# 		ai_will_do = {
+# 			factor = 1
+# 		}
+# 		completion_reward = {
+# 			add_political_power = 50
+# 			add_stability = 0.05
+# 		}
+# 	}
+	
+# 	focus = {
+# 		id = SAU_proclaim_islamic_victory
+# 		icon = GFX_focus_SAU_Islamic_Victory
+# 		x = 33
+# 		y = 1
+# 		cost = 10
+# 		available_if_capitulated = yes
+# 		available = {
+# 			tag = JAH
+# 		}
+# 		prerequisite = { focus = SAU_victory_in_civil_war }
+# 		mutually_exclusive = { focus = SAU_secure_political_control focus = SAU_purge_traitor_princes }
+# 		ai_will_do = {
+# 			factor = 1
+# 		}
+# 		completion_reward = {
+# 			add_political_power = 50
+# 			add_stability = 0.05
+# 		}
+# 	}
+	
+# 	focus = {
+# 		id = SAU_rebuild_mecca_2
+# 		icon = GFX_goal_unknown
+# 		x = 30
+# 		y = 2
+# 		cost = 10
+# 		available_if_capitulated = yes
+# 		prerequisite = { focus = SAU_proclaim_islamic_victory }
+# 		ai_will_do = {
+# 			factor = 1
+# 		}
+# 		completion_reward = {
+# 			1066 = {
+# 				if = {
+# 					limit = {
+# 						free_building_slots = {
+# 							building = industrial_complex
+# 							size > 2
+# 							include_locked = yes
+# 						}
+# 					}
+# 					add_extra_state_shared_building_slots = 2
+# 					add_building_construction = {
+# 						type = industrial_complex
+# 						level = 2
+# 						instant_build = yes
+# 					}
+# 				}
+# 			}
+# 		}
+# 	}
+	
+# 	focus = {
+# 		id = SAU_construction_insentives
+# 		icon = GFX_goal_unknown
+# 		x = 30
+# 		y = 3
+# 		cost = 10
+# 		available_if_capitulated = yes
+# 		prerequisite = { focus = SAU_rebuild_mecca_2 }
+# 		ai_will_do = {
+# 			factor = 1
+# 		}
+# 		completion_reward = {
+# 			add_political_power = 50
+# 			add_stability = 0.05
+# 		}
+# 	}
+	
+# 	focus = {
+# 		id = SAU_establish_the_caliphate
+# 		icon = GFX_goal_unknown
+# 		x = 33
+# 		y = 2
+# 		cost = 10
+# 		available_if_capitulated = yes
+# 		prerequisite = { focus = SAU_proclaim_islamic_victory }
+# 		ai_will_do = {
+# 			factor = 1
+# 		}
+# 		completion_reward = {
+# 			add_political_power = 50
+# 			add_stability = 0.05
+# 		}
+# 	}
+	
+# 	focus = {
+# 		id = SAU_enforce_sharia
+# 		icon = GFX_goal_unknown
+# 		x = 34
+# 		y = 3
+# 		cost = 10
+# 		available_if_capitulated = yes
+# 		prerequisite = { focus = SAU_establish_the_caliphate }
+# 		ai_will_do = {
+# 			factor = 1
+# 		}
+# 		completion_reward = {
+# 			add_political_power = 50
+# 			add_stability = 0.05
+# 		}
+# 	}
+	
+# 	focus = {
+# 		id = SAU_persuade_gulf_states
+# 		icon = GFX_goal_unknown
+# 		x = 34
+# 		y = 4
+# 		cost = 10
+# 		available_if_capitulated = yes
+# 		prerequisite = { focus = SAU_enforce_sharia }
+# 		ai_will_do = {
+# 			factor = 1
+# 		}
+# 		completion_reward = {
+# 			create_wargoal = {
+# 				type = annex_everything
+# 				target = KUW
+# 			}
+# 			create_wargoal = {
+# 				type = annex_everything
+# 				target = QAT
+# 			}
+# 			create_wargoal = {
+# 				type = annex_everything
+# 				target = UAE
+# 			}
+# 			create_wargoal = {
+# 				type = annex_everything
+# 				target = OMA
+# 			}
+# 		}
+# 	}
+	
+# 	focus = {
+# 		id = SAU_shajid_brigades
+# 		icon = GFX_goal_unknown
+# 		x = 36
+# 		y = 4
+# 		cost = 10
+# 		available_if_capitulated = yes
+# 		prerequisite = { focus = SAU_enforce_sharia focus = SAU_construct_trainin_facilties }
+# 		ai_will_do = {
+# 			factor = 1
+# 		}
+# 		completion_reward = {
+# 			add_political_power = 50
+# 			add_stability = 0.05
+# 		}
+# 	}
+	
+# 	focus = {
+# 		id = SAU_restrict_travel
+# 		icon = GFX_goal_unknown
+# 		x = 32
+# 		y = 3
+# 		cost = 10
+# 		available_if_capitulated = yes
+# 		prerequisite = { focus = SAU_establish_the_caliphate }
+# 		ai_will_do = {
+# 			factor = 1
+# 		}
+# 		completion_reward = {
+# 			add_ideas = lower_immigration
+# 		}
+# 	}
+	
+# 	focus = {
+# 		id = SAU_instate_jizyah
+# 		icon = GFX_goal_unknown
+# 		x = 30
+# 		y = 4
+# 		cost = 10
+# 		available_if_capitulated = yes
+# 		prerequisite = { focus = SAU_restrict_travel focus = SAU_construction_insentives}
+# 		ai_will_do = {
+# 			factor = 1
+# 		}
+# 		completion_reward = {
+# 			add_political_power = 50
+# 			add_stability = 0.05
+# 		}
+# 	}
+	
+# 	focus = {
+# 		id = SAU_reform_the_army
+# 		icon = GFX_goal_unknown
+# 		x = 36
+# 		y = 2
+# 		cost = 10
+# 		available_if_capitulated = yes
+# 		prerequisite = { focus = SAU_proclaim_islamic_victory }
+# 		ai_will_do = {
+# 			factor = 1
+# 		}
+# 		completion_reward = {
+# 			add_ideas = high_military
+# 		}
+# 	}
+	
+# 	focus = {
+# 		id = SAU_construct_trainin_facilties
+# 		icon = GFX_goal_unknown
+# 		x = 36
+# 		y = 3
+# 		cost = 10
+# 		available_if_capitulated = yes
+# 		prerequisite = { focus = SAU_reform_the_army }
+# 		ai_will_do = {
+# 			factor = 1
+# 		}
+# 		completion_reward = {
+# 			add_political_power = 50
+# 			add_stability = 0.05
+# 		}
+# 	}
+	
+# 	focus = {
+# 		id = SAU_vanguard_of_islam
+# 		icon = GFX_goal_unknown
+# 		x = 32
+# 		y = 4
+# 		cost = 10
+# 		available_if_capitulated = yes
+# 		prerequisite = { focus = SAU_restrict_travel }
+# 		ai_will_do = {
+# 			factor = 1
+# 		}
+# 		completion_reward = {
+# 			add_political_power = 50
+# 			add_stability = 0.05
+# 		}
+# 	}
+	
+# 	focus = {
+# 		id = SAU_assist_ansar_yemen
+# 		icon = GFX_goal_unknown
+# 		x = 34
+# 		y = 5
+# 		cost = 10
+		
+# 		prerequisite = { focus = SAU_persuade_gulf_states }
+# 		ai_will_do = {
+# 			factor = 1
+# 		}
+# 		completion_reward = {
+# 			if = {
+# 				limit = {
+# 					AAS = { exists = no }
+# 				}
+# 				create_wargoal = { 
+# 					type = liberate_wargoal
+# 					target = YEM
+# 				}
+# 				create_wargoal = { 
+# 					type = liberate_wargoal
+# 					target = HOU
+# 				}
+# 			}
+# 			if = {
+# 				limit = {
+# 					AAS = { exists = yes }
+# 				}
+# 				create_wargoal = { 
+# 					type = annex_everything
+# 					target = YEM
+# 				}
+# 				create_wargoal = { 
+# 					type = annex_everything
+# 					target = HOU
+# 				}
+# 			}
+# 		}
+# 	}
+	
+# 	focus = {
+# 		id = SAU_establish_contact_with_cells
+# 		icon = GFX_goal_unknown
+# 		x = 32
+# 		y = 5
+# 		cost = 10
+# 		available_if_capitulated = yes
+# 		prerequisite = { focus = SAU_vanguard_of_islam }
+# 		ai_will_do = {
+# 			factor = 1
+# 		}
+# 		completion_reward = {
+# 			add_political_power = 50
+# 			add_stability = 0.05
+# 		}
+# 	}
+	
+# 	focus = {
+# 		id = SAU_move_north
+# 		icon = GFX_goal_unknown
+# 		x = 33
+# 		y = 6
+# 		cost = 10
+# 		available_if_capitulated = yes
+# 		prerequisite = { focus = SAU_establish_contact_with_cells }
+# 		prerequisite = { focus = SAU_assist_ansar_yemen }
+# 		ai_will_do = {
+# 			factor = 1
+# 		}
+# 		completion_reward = {
+# 			create_wargoal = { 
+# 				type = annex_everything
+# 				target = IRQ
+# 			}
+# 			create_wargoal = { 
+# 				type = liberate_wargoal
+# 				target = JOR
+# 			}
+# 		}
+# 	}
+	
+# 	focus = {
+# 		id = SAU_recruit_the_army
+# 		icon = GFX_focus_SAU_Recruit_the_Army
+# 		x = 44
+# 		y = 0
+# 		cost = 3
+# 		available_if_capitulated = yes
+# 		available = {
+# 			tag = JAH
+# 			has_government = nationalist
+# 		}
+# 		ai_will_do = {
+# 			factor = 1
+# 		}
+# 		completion_reward = {
+# 			custom_effect_tooltip = SAU_defectors
+# 			hidden_effect = {
+# 				1066 = {
+# 					create_unit = {
+# 						division = "name = \"1. Liwa' Aljaysh\" division_template = \"Liwa Almsha\"  start_experience_factor = 0.2"
+# 						allow_spawning_on_enemy_provs = no
+# 						owner = ROOT
+# 					}
+# 					create_unit = {
+# 						division = "name = \"2. Liwa' Aljaysh\" division_template = \"Liwa Almsha\"  start_experience_factor = 0.2"
+# 						allow_spawning_on_enemy_provs = no
+# 						owner = ROOT
+# 					}
+# 					create_unit = {
+# 						division = "name = \"3. Liwa' Aljaysh\" division_template = \"Liwa Almsha\"  start_experience_factor = 0.2"
+# 						allow_spawning_on_enemy_provs = no
+# 						owner = ROOT
+# 					}
+# 				}
+# 			}
+# 		}
+# 	}
+	
+# 	focus = {
+# 		id = SAU_glorify_the_martyrs
+# 		icon = GFX_focus_SAU_Glorify_the_Martyrs
+# 		x = 41
+# 		y = 1
+# 		cost = 3
+# 		available_if_capitulated = yes
+# 		prerequisite = { focus = SAU_recruit_the_army }
+# 		ai_will_do = {
+# 			factor = 1
+# 		}
+# 		completion_reward = {
+# 			add_ideas = JAH_martyrs_of_mecca
+# 		}
+# 	}
+	
+# 	focus = {
+# 		id = SAU_radacalize_the_youth
+# 		icon = GFX_focus_SAU_Glorify_the_Martyrs
+# 		x = 42
+# 		y = 2
+# 		cost = 3
+# 		available_if_capitulated = yes
+# 		prerequisite = { focus = SAU_glorify_the_martyrs }
+# 		ai_will_do = {
+# 			factor = 1
+# 		}
+# 		completion_reward = {
+# 			add_ideas = JAH_radacalized_youth
+# 		}
+# 	}
+	
+# 	focus = {
+# 		id = SAU_unrestricted_warfare
+# 		icon = GFX_focus_SAU_Glorify_the_Martyrs
+# 		x = 40
+# 		y = 2
+# 		cost = 3
+# 		available_if_capitulated = yes
+# 		prerequisite = { focus = SAU_glorify_the_martyrs }
+# 		ai_will_do = {
+# 			factor = 1
+# 		}
+# 		completion_reward = {
+# 			add_tech_bonus = {
+# 				name = land_doc_bonus
+# 				bonus = 3.0
+# 				uses = 1
+# 				category = cat_asym_warfare
+# 			}
+# 		}
+# 	}
+	
+# 	focus = {
+# 		id = SAU_foreign_volunteers
+# 		icon = GFX_focus_SAU_Glorify_the_Martyrs
+# 		x = 43
+# 		y = 3
+# 		cost = 3
+# 		available_if_capitulated = yes
+# 		prerequisite = { focus = SAU_radacalize_the_youth focus = SAU_recruit_the_citizens }
+# 		ai_will_do = {
+# 			factor = 1
+# 		}
+# 		completion_reward = {
+# 			custom_effect_tooltip = SAU_jihad_volunteers
+# 			hidden_effect = {
+# 				1066 = {
+# 					create_unit = {
+# 						division = "name = \"1. Liwa' Almutatawiein Al'ajanib\" division_template = \"Liwa Mushat Mechaniqui\"  start_experience_factor = 0.2"
+# 						allow_spawning_on_enemy_provs = no
+# 						owner = ROOT
+# 					}
+# 					create_unit = {
+# 						division = "name = \"2. Liwa' Almutatawiein Al'ajanib\" division_template = \"Liwa Mushat Mechaniqui\"  start_experience_factor = 0.2"
+# 						allow_spawning_on_enemy_provs = no
+# 						owner = ROOT
+# 					}
+# 					create_unit = {
+# 						division = "name = \"3. Liwa' Almutatawiein Al'ajanib\" division_template = \"Liwa Mushat Mechaniqui\"  start_experience_factor = 0.2"
+# 						allow_spawning_on_enemy_provs = no
+# 						owner = ROOT
+# 					}
+# 				}
+# 			}
+# 		}
+# 	}
+	
+# 	focus = {
+# 		id = SAU_secure_army_stockpiles
+# 		icon = GFX_focus_SAU_Secure_Army_Stockpiles
+# 		x = 47
+# 		y = 1
+# 		cost = 3
+# 		available_if_capitulated = yes
+# 		prerequisite = { focus = SAU_recruit_the_army }
+# 		ai_will_do = {
+# 			factor = 1
+# 		}
+# 		completion_reward = {
+# 			add_equipment_to_stockpile = {
+# 				type = infantry_equipment_1
+# 				amount = 500
+# 				producer = SOV 
+# 			}
+	
+# 			add_equipment_to_stockpile = {
+# 				type = infantry_equipment_3
+# 				amount = 450
+# 				producer = SV1
+# 			}
+				
+# 			add_equipment_to_stockpile = {
+# 				type = anti_tank_equipment_1
+# 				amount = 250
+# 				producer = GER
+# 			}
+				
+# 			add_equipment_to_stockpile = {
+# 				type = motorized_equipment_1
+# 				amount = 60
+# 				producer = USA
+# 			}
+			
+# 			add_equipment_to_stockpile = {
+# 				type = modern_tank_chassis
+# 				amount = 60
+# 				producer = USA
+# 			}
+# 		}
+# 	}
+	
+# 	focus = {
+# 		id = SAU_construct_technical_production_factories
+# 		icon = GFX_focus_SAU_Secure_Army_Stockpiles
+# 		x = 47
+# 		y = 2
+# 		cost = 3
+# 		available_if_capitulated = yes
+# 		prerequisite = { focus = SAU_secure_army_stockpiles }
+# 		ai_will_do = {
+# 			factor = 1
+# 		}
+# 		completion_reward = {
+# 			1066 = {
+# 				if = {
+# 					limit = {
+# 						free_building_slots = {
+# 							building = arms_factory
+# 							size > 2
+# 							include_locked = yes
+# 						}
+# 					}
+# 					add_extra_state_shared_building_slots = 2
+# 					add_building_construction = {
+# 						type = arms_factory
+# 						level = 2
+# 						instant_build = yes
+# 					}
+# 				}
+# 			}
+# 		}
+# 	}
+	
+# 	focus = {
+# 		id = SAU_recruit_the_citizens
+# 		icon = GFX_focus_SAU_Recruit_the_Citizens
+# 		x = 44
+# 		y = 2
+# 		cost = 3
+# 		available_if_capitulated = yes
+# 		prerequisite = { focus = SAU_recruit_the_army }
+# 		ai_will_do = {
+# 			factor = 1
+# 		}
+# 		completion_reward = {
+# 			custom_effect_tooltip = SAU_citizen_militia
+# 			hidden_effect = {
+# 				1066 = {
+# 					create_unit = {
+# 						division = "name = \"1. Liwa Mushat Mechaniqui\" division_template = \"Liwa Mushat Mechaniqui\"  start_experience_factor = 0.2"
+# 						allow_spawning_on_enemy_provs = no
+# 						owner = ROOT
+# 					}
+# 					create_unit = {
+# 						division = "name = \"2. Liwa Mushat Mechaniqui\" division_template = \"Liwa Mushat Mechaniqui\"  start_experience_factor = 0.2"
+# 						allow_spawning_on_enemy_provs = no
+# 						owner = ROOT
+# 					}
+# 					create_unit = {
+# 						division = "name = \"3. Liwa Mushat Mechaniqui\" division_template = \"Liwa Mushat Mechaniqui\"  start_experience_factor = 0.2"
+# 						allow_spawning_on_enemy_provs = no
+# 						owner = ROOT
+# 					}
+# 				}
+# 			}
+# 		}
+# 	}
+	
+# 	focus = {
+# 		id = SAU_post_online_propaganda
+# 		icon = GFX_focus_SAU_Recruit_the_Citizens
+# 		x = 45
+# 		y = 3
+# 		cost = 3
+# 		available_if_capitulated = yes
+# 		prerequisite = { focus = SAU_recruit_the_citizens }
+# 		ai_will_do = {
+# 			factor = 1
+# 		}
+# 		completion_reward = {
+
+# 		}
+# 	}
+# }

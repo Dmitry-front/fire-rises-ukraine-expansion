@@ -1,0 +1,48 @@
+TFM_help_abbot = {
+	enable = {
+		tag = TFM
+		has_war_with = TRG
+		has_war_with = ATH
+	}
+	abort = {
+		NOT = {
+			country_exists = TRG
+			country_exists = ATH
+		}
+	}
+	
+	ai_strategy = {
+		type = force_defend_ally_borders
+		id = "TEX"
+		value = 100
+	}
+}
+
+TEX_red_guards_are_more_of_a_threat = {
+	enable = {
+		tag = TEX
+		has_global_flag = USA_american_civil_war_global
+	}
+
+	abort_when_not_enabled = yes
+
+	ai_strategy = {
+		type = front_control
+		tag = TRG
+		execution_type = rush
+		execute_order = yes
+		manual_attack = no
+	}
+
+	ai_strategy = {
+		type = consider_weak
+		id = TRG
+		value = 1000
+	}
+
+	ai_strategy = {
+		type = conquer
+		id = TRG
+		value = 1000
+	}
+}

@@ -1,0 +1,207 @@
+﻿	add_namespace = bla
+
+	#First Black National Congress
+	country_event = {
+		id = bla.1
+		title = bla.1.t
+		desc = bla.1.desc
+		
+		is_triggered_only = yes
+		fire_only_once = yes
+		
+		trigger = {
+			original_tag = BLA
+		}
+		
+		option = {
+			name = bla.1.a
+			custom_effect_tooltip = BLA_keep_grand_master_tooltip
+			add_popularity = {
+				ideology = nationalist
+				popularity = 0.05
+			}
+		}
+		
+		option = {
+			name = bla.1.b
+			trigger = {
+				always = no
+			}
+			custom_effect_tooltip = BLA_socialist_nation_tooltip
+			hidden_effect = {
+				set_politics = {
+					ruling_party = libertarian_socialist
+				}
+			}
+			add_popularity = {
+				ideology = libertarian_socialist
+				popularity = 0.1
+			}
+		}
+	}
+	
+	#Black Republic Established
+	country_event = {
+		id = bla.3
+		title = bla.3.t
+		desc = bla.3.desc
+		
+		is_triggered_only = yes
+		fire_only_once = yes
+		
+		trigger = {
+			original_tag = BLA
+		}
+		
+		option = {
+			name = bla.3.a
+			add_political_power = 100
+			add_stability = 0.1
+			hidden_effect = {
+				country_event = { id = bla.2 days = 60 }
+				country_event = { id = bla.5 days = 30 }
+			}
+		}
+	}
+	
+	#Defeating the Confederates
+	country_event = {
+		id = bla.4
+		title = bla.4.t
+		desc = bla.4.d
+		picture = report_event_equipment
+
+		fire_only_once = yes
+		is_triggered_only = yes
+
+		trigger = {
+			tag = BLA
+		}
+		
+		immediate = {
+		}
+
+		option = {
+			name = bla.4.a
+			add_stability = 0.05
+			add_political_power = 75
+		}
+	}
+	
+	#Mass looting and rioting
+	country_event = {
+		id = bla.5
+		title = bla.5.t
+		desc = bla.5.d
+		picture = report_event_equipment
+
+		fire_only_once = yes
+		is_triggered_only = yes
+
+		trigger = {
+			tag = BLA
+		}
+		
+		immediate = {
+			hidden_effect = {
+				add_stability = -0.1
+				country_event = { id = bla.6 days = 25 }
+			}
+		}
+
+		option = {
+			name = bla.5.a
+			effect_tooltip = {
+				add_stability = -0.1
+			}
+		}
+	}
+	
+	#Communication with Militias Breakdown
+	country_event = {
+		id = bla.6
+		title = bla.6.t
+		desc = bla.6.d
+		picture = report_event_equipment
+
+		fire_only_once = yes
+		is_triggered_only = yes
+
+		trigger = {
+			tag = BLA
+		}
+		
+		immediate = {
+			hidden_effect = {
+				add_stability = -0.1
+				country_event = { id = bla.9 days = 5 }
+			}
+		}
+
+		option = {
+			name = bla.6.a
+			effect_tooltip = {
+				add_stability = -0.1
+			}
+		}
+	}
+	
+	#Black Israelites spread Influence
+	country_event = {
+		id = bla.7
+		title = bla.7.t
+		desc = bla.7.d
+		picture = report_event_equipment
+
+		fire_only_once = yes
+		is_triggered_only = yes
+
+		trigger = {
+			tag = BLA
+		}
+		
+		immediate = {
+			hidden_effect = {
+				add_popularity = {
+					ideology = national_socialist
+					popularity = 0.05
+				}
+				country_event = { id = bla.8 days = 15 }
+			}
+		}
+
+		option = {
+			name = bla.7.a
+			effect_tooltip = {
+				add_popularity = {
+					ideology = national_socialist
+					popularity = 0.05
+				}
+			}
+		}
+	}
+	
+	#Old Panthers Join the Coalition
+	country_event = {
+		id = bla.8
+		title = bla.8.t
+		desc = bla.8.d
+		picture = report_event_equipment
+
+		fire_only_once = yes
+		is_triggered_only = yes
+
+		trigger = {
+			tag = BLA
+		}
+		
+		immediate = {
+		}
+
+		option = {
+			name = bla.8.a
+			add_stability = 0.02
+			add_political_power = 50
+		}
+	}
+		

@@ -1,0 +1,541 @@
+UKR_land_reforms = {
+	land_purchasing_amendments = {
+		available = {
+		}
+		visible = {
+			tag = UKR
+		}
+		complete_effect = {
+			add_stability = 0.03
+			custom_effect_tooltip = UKR_pay_IMF_debt_small
+		}
+		icon = democracy
+		fire_only_once = yes
+		cost = 30
+		ai_will_do = {
+			factor = 10
+		}
+	}
+}
+
+UKR_special_military_operation = {
+	UKR_novorossiyan_offensive_decision = {
+		icon = democracy
+		fire_only_once = yes
+		cost = 100
+		allowed = {
+			tag = UKR
+		}
+		visible = {
+			NOT = {
+				is_in_faction_with = SOV
+				has_global_flag = nato_nato_won_nato_war
+				has_global_flag = SOV_first_nato_war_victory
+			}
+		}
+		available = {
+			date > 2026.07.01
+			has_war = no
+		}
+		complete_effect = {
+			SOV = {
+				country_event = {
+					id = russia.307
+				}
+			}
+		}
+		ai_will_do = {
+			factor = 999
+		}
+	}
+	UKR_first_mobilization_wave = {
+		available = {
+			has_war = yes
+		}
+		visible = {
+			tag = UKR
+		}
+		complete_effect = {
+			load_oob = "UKR_first_mobilization"
+		}
+		icon = democracy
+		fire_only_once = yes
+		cost = 1
+		ai_will_do = {
+			factor = 999
+		}
+	}
+	UKR_second_mobilization_wave = {
+		available = {
+			has_war = yes
+			UKR = {
+				surrender_progress > 0.2
+			}
+		}
+		visible = {
+			tag = UKR
+		}
+		complete_effect = {
+			load_oob = "UKR_second_mobilization"
+		}
+		icon = democracy
+		fire_only_once = yes
+		cost = 1
+		ai_will_do = {
+			factor = 999
+		}
+	}
+	UKR_third_mobilization_wave = {
+		available = {
+			has_war = yes
+			UKR = {
+				surrender_progress > 0.4
+			}
+		}
+		visible = {
+			tag = UKR
+		}
+		complete_effect = {
+			load_oob = "UKR_second_mobilization"
+		}
+		icon = democracy
+		fire_only_once = yes
+		cost = 1
+		ai_will_do = {
+			factor = 999
+		}
+	}
+	UKR_special_military_operation_timer = {
+		priority = 1
+		icon = GFX_SOV_decision_president_election_category
+		days_mission_timeout = 2500
+		fire_only_once = no
+		is_good = no
+		cancel_if_not_visible = yes
+		visible = {
+			NOT = {
+				has_global_flag = SOV_nato_war_begins_global
+			}
+		}
+		available = {
+			hidden_trigger = {
+				always = no
+			}
+		}
+		cancel_trigger = {
+			UKR = {
+				surrender_progress > 0.51
+			}
+		}
+		activation = {
+			always = no
+		}
+		complete_effect = {
+		}
+		cancel_effect = {
+			news_event = {
+				id = news.237
+			}
+			UKR = {
+				country_event = {
+					id = ukraine.5
+				}
+			}
+			GER = {
+				country_event = {
+					id = nato.22
+				}
+				country_event = {
+					id = germany.23
+					days = 20
+				}
+				country_event = {
+					id = germany.28
+					days = 40
+				}
+				GER_richard_rossmanith = {
+					unit_leader_event = {
+						id = germany.23
+						days = 10
+					}
+				}
+				if = {
+					limit = {
+						check_variable = {
+							GER_die_linke_popularity_var_temp > 15
+						}
+					}
+					country_event = {
+						id = germany.93
+						days = 60
+					}
+				}
+			}
+			FRA = {
+				country_event = {
+					id = nato.22
+				}
+			}
+			set_global_flag = SOV_nato_war_begins_global
+			ITA = {
+				set_country_flag = ITA_first_war_tree_enabled_flag
+				mark_focus_tree_layout_dirty = yes
+				hidden_effect = {
+					country_event = {
+						id = italy_ew_events.1
+						hours = 6
+					}
+				}
+			}
+			SOV = {
+				activate_mission = SOV_nato_war_deadline
+				mark_focus_tree_layout_dirty = yes
+				hidden_effect = {
+					remove_ideas = SOV_special_military_operation
+					remove_ideas = SOV_special_military_operation_1
+					if = {
+						limit = {
+							has_dlc = "No Step Back"
+							has_tech = improved_light_tank_chassis
+						}
+						country_event = {
+							id = russia.220
+						}
+					}
+					else_if = {
+						limit = {
+							NOT = {
+								has_dlc = "No Step Back"
+							}
+							has_tech = light_tank4
+						}
+						country_event = {
+							id = russia.220
+						}
+					}
+					every_country = {
+						limit = {
+							NOT = {
+								tag = UKR
+							}
+							is_in_faction_with = GER
+						}
+						add_ideas = NATO_european_war
+					}
+					if = {
+						limit = {
+							NOT = {
+								OR = {
+									date > 2024.09.01
+									date > 2025.09.01
+								}
+							}
+							NOT = {
+								OR = {
+									date < 2025.03.01
+									date < 2026.03.01
+								}
+							}
+						}
+						ITA = {
+							country_event = {
+								id = nato.12
+								days = 10
+							}
+						}
+						GER = {
+							country_event = {
+								id = nato.12
+								days = 10
+							}
+						}
+						FRA = {
+							country_event = {
+								id = nato.12
+								days = 10
+							}
+						}
+						POL = {
+							country_event = {
+								id = nato.12
+								days = 10
+							}
+						}
+						ROM = {
+							country_event = {
+								id = nato.12
+								days = 10
+							}
+						}
+						UKR = {
+							country_event = {
+								id = nato.12
+								days = 10
+							}
+						}
+						ENG = {
+							country_event = {
+								id = nato.12
+								days = 10
+							}
+						}
+						CZE = {
+							country_event = {
+								id = nato.12
+								days = 10
+							}
+						}
+						SPR = {
+							country_event = {
+								id = nato.12
+								days = 10
+							}
+						}
+					}
+					if = {
+						limit = {
+							OR = {
+								AND = {
+									date > 2023.03.01
+									date < 2023.06.01
+								}
+								AND = {
+									date > 2024.03.01
+									date < 2024.06.01
+								}
+								AND = {
+									date > 2025.03.01
+									date < 2025.06.01
+								}
+								AND = {
+									date > 2026.03.01
+									date < 2026.06.01
+								}
+								AND = {
+									date > 2027.03.01
+									date < 2027.06.01
+								}
+							}
+						}
+						SOV = {
+							country_event = {
+								id = russia.157
+								days = 10
+							}
+						}
+						GER = {
+							country_event = {
+								id = russia.157
+								days = 10
+							}
+						}
+						FRA = {
+							country_event = {
+								id = russia.157
+								days = 10
+							}
+						}
+					}
+					else_if = {
+						limit = {
+							OR = {
+								AND = {
+									date > 2023.06.01
+									date < 2023.09.01
+								}
+								AND = {
+									date > 2024.06.01
+									date < 2024.09.01
+								}
+								AND = {
+									date > 2025.06.01
+									date < 2025.09.01
+								}
+								AND = {
+									date > 2026.06.01
+									date < 2026.09.01
+								}
+								AND = {
+									date > 2027.06.01
+									date < 2027.09.01
+								}
+							}
+						}
+						SOV = {
+							country_event = {
+								id = russia.157
+								days = 270
+							}
+						}
+						GER = {
+							country_event = {
+								id = russia.157
+								days = 270
+							}
+						}
+						FRA = {
+							country_event = {
+								id = russia.157
+								days = 270
+							}
+						}
+					}
+					PLD = {
+						add_country_leader_trait = hos_hates_russians
+					}
+					country_event = {
+						id = russia.65
+						days = 230
+					}
+					HUN = {
+						load_oob = "HUN_nato_war"
+					}
+					ENG = {
+						if = {
+							limit = {
+								ENG = {
+									is_ai = yes
+								}
+							}
+							load_oob = "ENG_nato_war"
+						}
+					}
+					GER = {
+						if = {
+							limit = {
+								GER = {
+									is_ai = yes
+								}
+							}
+							load_oob = "GER_nato_war"
+						}
+					}
+					ROM = {
+						load_oob = "ROM_nato_war"
+					}
+					PLD = {
+						load_oob = "POL_nato_war"
+					}
+					if = {
+						#AI Help
+						limit = {
+							is_ai = yes
+						}
+						add_ideas = SOV_russia_can_win
+						# add_equipment_to_stockpile = {
+						# 	type = fighter_equipment_3
+						# 	amount = 1000
+						# 	producer = SOV
+						# }
+						# add_equipment_to_stockpile = {
+						# 	type = CAS_equipment_2
+						# 	amount = 500
+						# 	producer = SOV
+						# }
+					}
+					MOL = {
+						if = {
+							limit = {
+								SOV = {
+									NOT = {
+										has_country_flag = SOV_moldova_pro_russian
+									}
+								}
+							}
+							country_event = {
+								id = moldova.2
+								days = 20
+							}
+						}
+					}
+					LIT = {
+						load_oob = "LIT_mobilization"
+						country_event = {
+							id = nato.9
+							days = 10
+						}
+					}
+					EST = {
+						load_oob = "EST_mobilization"
+						country_event = {
+							id = nato.9
+							days = 10
+						}
+					}
+					LAT = {
+						load_oob = "LAT_mobilization"
+						country_event = {
+							id = nato.9
+							days = 10
+						}
+					}
+					SYR = {
+						country_event = {
+							id = syria.25
+							days = 60
+						}
+					}
+					load_oob = SOV_militia
+				}
+				if = {
+					limit = {
+						OR = {
+							has_government = authoritarian_democrat
+							has_government = fascist
+						}
+					}
+					add_timed_idea = {
+						idea = SOV_russian_storm
+						days = 120
+					}
+				}
+				else_if = {
+					limit = {
+						OR = {
+							has_government = communist
+							has_government = libertarian_socialist
+						}
+					}
+					add_timed_idea = {
+						idea = SOV_soviet_storm
+						days = 120
+					}
+				}
+				SOV = {
+					country_event = {
+						id = nato.14
+						hours = 2
+					}
+					add_dynamic_modifier = {
+						modifier = SOV_war_exhaustion_dynamic
+					}
+					remove_ideas = SOV_special_military_operation
+					set_variable = {
+						var = SOV_level_of_exhaustion
+						value = 0
+					}
+					set_variable = {
+						var = SOV_war_exhaustion_war_support_factor_dynamic
+						value = 0
+					}
+					set_variable = {
+						var = SOV_war_exhaustion_army_attack_factor_dynamic
+						value = 0
+					}
+					set_variable = {
+						var = SOV_war_exhaustion_army_defence_factor_dynamic
+						value = 0
+					}
+					set_variable = {
+						var = SOV_war_exhaustion_army_org_factor_dynamic
+						value = 0
+					}
+					set_variable = {
+						var = SOV_war_exhaustion_army_morale_factor_dynamic
+						value = 0
+					}
+				}
+			}
+		}
+	}
+}

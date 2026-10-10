@@ -1,0 +1,99 @@
+APA_balance_of_power_category = {
+	icon = generic_communism
+	priority = 12
+	allowed = {
+		original_tag = APA
+	}
+	visible = {
+		has_country_flag = APA_parties_centralized_flag
+	}
+}
+
+APA_revolution_progress_category = {
+	icon = APA_american_workers_congress
+	visible_when_empty = yes
+	scripted_gui = APA_revolution_progress_gui
+	priority = 7
+	allowed = {
+		original_tag = APA
+	}
+	visible = {
+		has_country_flag = APA_government_elected_flag
+	}
+}
+
+APA_american_workers_congress_category = {
+	icon = APA_american_workers_congress
+	visible_when_empty = yes
+	scripted_gui = APA_workers_congress_help_gui
+	priority = 6
+	allowed = {
+		original_tag = APA
+	}
+	visible = {
+		has_country_flag = APA_parties_centralized_flag
+	}
+}
+
+APA_revolutionary_military_category = {
+	icon = decision_APA_army
+	visible_when_empty = no
+	priority = 5
+	allowed = {
+		original_tag = APA
+	}
+	visible = {
+	}
+}
+
+APA_revolutionary_economy_category = {
+	icon = generic_industry
+	visible_when_empty = yes
+	priority = 4
+	allowed = {
+		original_tag = APA
+	}
+	visible = {
+		has_completed_focus = APA_sieze_the_means_of_production
+	}
+}
+
+APA_united_front_category = {
+	icon = generic_communism
+	visible_when_empty = yes
+	priority = 3
+	allowed = {
+		original_tag = APA
+	}
+	visible = {
+		has_completed_focus = APA_form_a_united_front
+	}
+}
+
+APA_decolonization_cat = {
+	icon = generic_communism
+	visible_when_empty = yes
+	priority = 2
+	allowed = {
+		original_tag = APA
+	}
+	visible = {
+		has_completed_focus = APA_decolonization
+		NOT = {
+			has_global_flag = USA_american_civil_war_over_global
+		}
+	}
+}
+
+APA_agency_of_socialist_security_category = {
+	icon = generic_crisis
+	picture = GFX_decision_cat_picture_spr_the_inevitable_civil_war
+	visible_when_empty = no
+	priority = 1
+	allowed = {
+		original_tag = APA
+	}
+	visible = {
+		always = no
+	}
+}

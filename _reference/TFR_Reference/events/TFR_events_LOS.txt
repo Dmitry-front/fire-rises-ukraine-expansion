@@ -1,0 +1,1788 @@
+###########################
+# League of the South Events
+###########################
+add_namespace = los
+add_namespace = los_news
+#Reformation of the Confederate States Congress
+country_event = {
+	id = los.1
+	title = los.1.t
+	desc = los.1.d
+	picture = GFX_confederate_congress
+	fire_only_once = yes
+	is_triggered_only = yes
+	trigger = {
+		tag = LOS
+	}
+	option = {
+		name = los.1.a
+		ai_chance = {
+			base = 55
+		}
+		add_ideas = LOS_hunter_wallace_hog
+		add_ideas = LOS_michael_cushman_for
+		add_ideas = LOS_harold_ray_crews_eco
+		add_ideas = LOS_christopher_monzon_sec
+		add_ideas = LOS_dennis_durham_int
+		add_popularity = {
+			ideology = conservative
+			popularity = 0.05
+		}
+		hidden_effect = {
+			set_country_flag = LOS_congress_formed_flag
+		}
+		complete_national_focus = LOS_embrace_southern_populism
+	}
+	option = {
+		name = los.1.b
+		ai_chance = {
+			base = 45
+		}
+		add_ideas = LOS_michael_tubbs_hog
+		add_ideas = LOS_david_duke_for
+		add_ideas = LOS_scott_wyatt_eco
+		add_ideas = LOS_pat_hines_sec
+		add_ideas = LOS_john_mark_malone_int
+		add_popularity = {
+			ideology = authoritarian_democrat
+			popularity = 0.05
+		}
+		hidden_effect = {
+			set_country_flag = LOS_congress_formed_flag
+		}
+		complete_national_focus = LOS_a_pure_south
+	}
+}
+
+#Hunter Wallace speech
+country_event = {
+	id = los.2
+	title = los.2.t
+	desc = los.2.d
+	picture = GFX_yankee_no_more
+	fire_only_once = yes
+	is_triggered_only = yes
+	trigger = {
+		tag = LOS
+	}
+	option = {
+		name = los.2.a
+		add_popularity = {
+			ideology = conservative
+			popularity = 0.03
+		}
+		hidden_effect = {
+			country_event = {
+				id = los.18
+				days = 105
+			}
+		}
+	}
+}
+
+#Southern victory in deep south
+country_event = {
+	id = los.3
+	title = los.3.t
+	desc = los.3.d
+	picture = GFX_LOS_march
+	fire_only_once = yes
+	is_triggered_only = yes
+	trigger = {
+		tag = LOS
+	}
+	immediate = {
+		hidden_effect = {
+			country_event = {
+				id = los.7
+				days = 17
+			}
+			country_event = {
+				id = los.24
+				days = 120
+			}
+		}
+	}
+	option = {
+		name = los.3.a
+		unlock_decision_category_tooltip = LOS_rooting_out_resistance_category
+		#activate_mission = LOS_army_of_southern_liberation_mission
+		add_stability = -0.2
+		add_political_power = 10
+		add_war_support = 0.15
+	}
+}
+
+#Event about the economy
+country_event = {
+	id = los.4
+	title = los.4.t
+	desc = los.4.d
+	picture = GFX_Oil_Crash
+	fire_only_once = yes
+	is_triggered_only = yes
+	trigger = {
+		tag = LOS
+	}
+	option = {
+		name = los.4.a
+		set_temp_variable = {
+			var = income_var_temp
+			value = 0.5
+		}
+		add_income = yes
+	}
+}
+
+#Mechanized Cavalry Brigade Forms
+country_event = {
+	id = los.5
+	title = los.5.t
+	desc = los.5.d
+	picture = GFX_mechanized_cavalry_brigade
+	fire_only_once = yes
+	is_triggered_only = yes
+	trigger = {
+		tag = LOS
+	}
+	option = {
+		name = los.5.a
+		recruit_character = LOS_chungus_khan
+	}
+}
+
+#NOI Generals Flip
+country_event = {
+	id = los.6
+	title = los.6.t
+	desc = los.6.d
+	picture = GFX_noi_generic
+	fire_only_once = yes
+	is_triggered_only = yes
+	trigger = {
+		tag = LOS
+	}
+	option = {
+		name = los.6.a
+		ai_chance = {
+			base = 1
+		}
+	}
+}
+
+#Massive Protests Errupt in Jackson
+country_event = {
+	id = los.7
+	title = los.7.t
+	desc = los.7.d
+	picture = GFX_jackson_protest
+	fire_only_once = yes
+	is_triggered_only = yes
+	trigger = {
+		tag = LOS
+	}
+	immediate = {
+		hidden_effect = {
+			add_political_power = -50
+			add_stability = -0.1
+			1009 = {
+				add_resistance = 10
+			}
+		}
+	}
+	option = {
+		name = los.7.a
+		ai_chance = {
+			base = 1
+		}
+		set_temp_variable = {
+			var = LOS_populist_support_var_temp
+			value = 0.05
+		}
+		LOS_add_populist_support = yes
+		effect_tooltip = {
+			add_political_power = -50
+			add_stability = -0.1
+			1009 = {
+				add_resistance = 10
+			}
+		}
+	}
+	option = {
+		name = los.7.b
+		ai_chance = {
+			base = 1
+		}
+		set_temp_variable = {
+			var = LOS_old_guard_support_var_temp
+			value = 0.05
+		}
+		LOS_add_old_guard_support = yes
+		effect_tooltip = {
+			add_political_power = -50
+			add_stability = -0.1
+			1009 = {
+				add_resistance = 10
+			}
+		}
+		hidden_effect = {
+			country_event = {
+				id = los.8
+				days = 7
+			}
+		}
+	}
+}
+
+#Fire in Jackson
+country_event = {
+	id = los.8
+	title = los.8.t
+	desc = los.8.d
+	picture = GFX_jackson_fire
+	fire_only_once = yes
+	is_triggered_only = yes
+	trigger = {
+		tag = LOS
+	}
+	immediate = {
+		hidden_effect = {
+			add_days_mission_timeout = {
+				mission = LOS_army_of_southern_liberation_mission
+				days = -5
+			}
+			add_stability = -0.1
+			set_temp_variable = {
+				var = LOS_congress_support_var_temp
+				value = -0.05
+			}
+			LOS_add_congress_support = yes
+			1009 = {
+				add_extra_state_shared_building_slots = -3
+				damage_building = {
+					type = infrastructure
+					damage = 5
+				}
+			}
+		}
+	}
+	option = {
+		name = los.8.a
+		ai_chance = {
+			base = 1
+		}
+		effect_tooltip = {
+			add_days_mission_timeout = {
+				mission = LOS_army_of_southern_liberation_mission
+				days = -5
+			}
+			add_stability = -0.1
+			set_temp_variable = {
+				var = LOS_congress_support_var_temp
+				value = -0.05
+			}
+			LOS_add_congress_support = yes
+		}
+		1009 = {
+			add_extra_state_shared_building_slots = -2
+			damage_building = {
+				type = infrastructure
+				damage = 3
+			}
+		}
+		hidden_effect = {
+			news_event = {
+				id = los_news.1
+			}
+		}
+	}
+}
+
+#Military funding allocations
+country_event = {
+	id = los.9
+	title = los.9.t
+	desc = los.9.d
+	picture = GFX_LOS_tank
+	fire_only_once = yes
+	is_triggered_only = yes
+	trigger = {
+		tag = LOS
+	}
+	#Factories
+	option = {
+		name = los.9.a
+		ai_chance = {
+			base = 1
+		}
+		set_temp_variable = {
+			var = income_var_temp
+			value = -0.5
+		}
+		add_income = yes
+		1106 = {
+			add_extra_state_shared_building_slots = 1
+			add_building_construction = {
+				type = arms_factory
+				level = 1
+				instant_build = yes
+			}
+		}
+		1105 = {
+			add_extra_state_shared_building_slots = 1
+			add_building_construction = {
+				type = arms_factory
+				level = 1
+				instant_build = yes
+			}
+		}
+		set_temp_variable = {
+			var = military_development_var_temp
+			value = 0.03
+		}
+		add_military_development = yes
+		set_temp_variable = {
+			var = industrial_development_var_temp
+			value = 0.01
+		}
+		add_industrial_development = yes
+	}
+	##Research
+	option = {
+		name = los.9.b
+		ai_chance = {
+			base = 1
+		}
+		set_temp_variable = {
+			var = income_var_temp
+			value = -0.6
+		}
+		add_income = yes
+		add_tech_bonus = {
+			bonus = 0.5
+			uses = 2
+			category = infantry_weapons
+		}
+		add_tech_bonus = {
+			bonus = 0.5
+			uses = 1
+			category = artillery
+		}
+		set_temp_variable = {
+			var = military_development_var_temp
+			value = 0.07
+		}
+		add_military_development = yes
+	}
+	##Equipment
+	option = {
+		name = los.9.c
+		ai_chance = {
+			base = 1
+		}
+		set_temp_variable = {
+			var = income_var_temp
+			value = -0.6
+		}
+		add_income = yes
+		add_equipment_to_stockpile = {
+			type = infantry_equipment_2
+			amount = 1500
+			producer = LOS
+		}
+		add_equipment_to_stockpile = {
+			type = motorized_equipment_1
+			amount = 450
+			producer = LOS
+		}
+		add_equipment_to_stockpile = {
+			type = mechanized_equipment_1
+			amount = 450
+			producer = LOS
+		}
+		set_temp_variable = {
+			var = military_development_var_temp
+			value = 0.05
+		}
+		add_equipment_to_stockpile = {
+			type = support_equipment
+			amount = 350
+			producer = LOS
+		}
+		add_military_development = yes
+	}
+	##Money
+	option = {
+		name = los.9.e
+		ai_chance = {
+			base = 1
+		}
+		set_temp_variable = {
+			var = income_var_temp
+			value = 0.4
+		}
+		add_income = yes
+	}
+}
+
+##Guns or Butter
+country_event = {
+	id = los.10
+	title = los.10.t
+	desc = los.10.d
+	picture = GFX_tubbs_pointing
+	fire_only_once = yes
+	is_triggered_only = yes
+	trigger = {
+		tag = LOS
+	}
+	option = {
+		name = los.10.a
+		ai_chance = {
+			base = 1
+		}
+		set_temp_variable = {
+			var = military_development_var_temp
+			value = 0.05
+		}
+		add_military_development = yes
+		add_equipment_to_stockpile = {
+			type = infantry_equipment_2
+			amount = 300
+			producer = LOS
+		}
+	}
+	option = {
+		name = los.10.b
+		ai_chance = {
+			base = 1
+		}
+		set_temp_variable = {
+			var = military_development_var_temp
+			value = 0.05
+		}
+		add_military_development = yes
+		add_equipment_to_stockpile = {
+			type = support_equipment
+			amount = 550
+			producer = LOS
+		}
+	}
+}
+
+##Russian Volunteers Arrive
+country_event = {
+	id = los.11
+	title = los.11.t
+	desc = los.11.d
+	picture = GFX_one_struggle
+	fire_only_once = yes
+	is_triggered_only = yes
+	trigger = {
+		tag = LOS
+	}
+	option = {
+		name = los.11.a
+		add_manpower = 400
+		load_oob = "SOV_LOS_volunteers"
+	}
+}
+
+#Communist Uprising
+country_event = {
+	id = los.12
+	title = los.12.t
+	desc = los.12.d
+	picture = GFX_communistprotest
+	fire_only_once = yes
+	is_triggered_only = yes
+	trigger = {
+		tag = LOS
+	}
+	immediate = {
+		hidden_effect = {
+			ASL = {
+				USA_civil_war_faction = yes
+				add_state_core = 978
+				add_state_core = 1009
+				add_state_core = 1012
+				transfer_state = 978
+				transfer_state = 1009
+				transfer_state = 1012
+				transfer_state = 1013
+				load_oob = "ASL_2020"
+				new_country = yes
+			}
+			ASL = {
+				declare_war_on = {
+					target = LOS
+					type = annex_everything
+				}
+			}
+		}
+	}
+	option = {
+		name = los.12.a
+		ai_chance = {
+			base = 1
+		}
+	}
+}
+
+#The Mason-Dixon Cooperative (PTF, NSM)
+country_event = {
+	id = los.13
+	title = los.13.t
+	desc = los.13.d
+	picture = GFX_confederate_flag
+	fire_only_once = yes
+	is_triggered_only = yes
+	trigger = {
+		USA_is_nationalist_tag = yes
+	}
+	#yay!!!
+	option = {
+		name = los.13.a
+		ai_chance = {
+			base = 2
+		}
+		add_timed_idea = {
+			idea = LOS_mason_dixon_cooperative_idea
+			days = 30
+		}
+		army_experience = 50
+		hidden_effect = {
+			LOS = {
+				country_event = los.14
+			}
+		}
+	}
+}
+
+#The Mason-Dixon Cooperative (LOS)
+country_event = {
+	id = los.14
+	title = los.14.t
+	desc = los.14.d
+	picture = GFX_confederate_flag2
+	fire_only_once = yes
+	is_triggered_only = yes
+	trigger = {
+		tag = LOS
+	}
+	#yes
+	option = {
+		name = los.14.a
+		ai_chance = {
+			base = 1
+		}
+		set_temp_variable = {
+			var = legit_var_temp
+			value = 0.1
+		}
+		add_legit = yes
+		army_experience = 50
+	}
+}
+
+#The KKK Wishes to Form Volunteers
+country_event = {
+	id = los.15
+	title = los.15.t
+	desc = los.15.d
+	picture = GFX_kkk_3
+	fire_only_once = yes
+	is_triggered_only = yes
+	trigger = {
+		tag = LOS
+	}
+	#yes
+	option = {
+		name = los.15.a
+		ai_chance = {
+			base = 1
+		}
+		add_stability = -0.1
+		if = {
+			limit = {
+				has_variable = LOS_kkk_support_var
+			}
+			set_temp_variable = {
+				var = LOS_kkk_support_var_temp
+				value = 0.1
+			}
+			LOS_add_kkk_support = yes
+		}
+		hidden_effect = {
+			load_oob = "LOS_kkk_volunteers"
+		}
+		custom_effect_tooltip = LOS_kkk_volunteer_tooltip
+	}
+	#no
+	option = {
+		name = los.15.b
+		ai_chance = {
+			base = 1
+		}
+		add_political_power = -25
+		add_stability = 0.15
+	}
+}
+
+#Texan Volunteers Arrive
+country_event = {
+	id = los.16
+	title = los.16.t
+	desc = los.16.d
+	picture = GFX_LOS_militia
+	fire_only_once = yes
+	is_triggered_only = yes
+	trigger = {
+		tag = LOS
+	}
+	option = {
+		name = los.16.a
+		ai_chance = {
+			base = 1
+		}
+		1105 = {
+			create_unit = {
+				division = "name = \"1st Texan Volunteer\" division_template = \"Volunteer Brigade\"  start_experience_factor = 0.2"
+				allow_spawning_on_enemy_provs = yes
+				owner = LOS
+			}
+		}
+	}
+}
+
+#Chud-Like Activities in New Orleans
+country_event = {
+	id = los.17
+	title = los.17.t
+	desc = los.17.d
+	picture = GFX_report_trump_protests2
+	fire_only_once = yes
+	is_triggered_only = yes
+	trigger = {
+		tag = LOS
+	}
+	#yes
+	option = {
+		name = los.17.a
+		ai_chance = {
+			base = 1
+		}
+		add_days_mission_timeout = {
+			mission = LOS_army_of_southern_liberation_mission
+			days = 15
+		}
+		add_manpower = -2
+		add_stability = -0.1
+		978 = {
+			damage_building = {
+				type = infrastructure
+				damage = 2
+			}
+		}
+	}
+}
+
+#Griffin Speaks
+country_event = {
+	id = los.18
+	title = los.18.t
+	desc = los.18.d
+	picture = GFX_confederate_congress
+	fire_only_once = yes
+	is_triggered_only = yes
+	trigger = {
+		tag = LOS
+	}
+	option = {
+		name = los.18.a
+		ai_chance = {
+			base = 1
+		}
+		add_popularity = {
+			ideology = conservative
+			popularity = 0.06
+		}
+	}
+}
+
+#Brazilian Confederados Arrive
+country_event = {
+	id = los.19
+	title = los.19.t
+	desc = los.19.d
+	picture = GFX_confederados
+	fire_only_once = yes
+	is_triggered_only = yes
+	trigger = {
+		tag = LOS
+	}
+	option = {
+		name = los.19.a
+		ai_chance = {
+			base = 1
+		}
+		add_manpower = 50000
+		979 = {
+			create_unit = {
+				division = "name = \"Unidade Confederada\" division_template = \"Volunteer Brigade\" start_experience_factor = 0.0"
+				allow_spawning_on_enemy_provs = yes
+				owner = LOS
+			}
+		}
+		979 = {
+			create_unit = {
+				division = "name = \"Brigada Jefferson Davis\" division_template = \"Volunteer Brigade\" start_experience_factor = 0.0"
+				allow_spawning_on_enemy_provs = yes
+				owner = LOS
+			}
+		}
+	}
+}
+
+#Tubbs Speaks
+country_event = {
+	id = los.20
+	title = los.20.t
+	desc = los.20.d
+	picture = GFX_confederate_congress
+	fire_only_once = yes
+	is_triggered_only = yes
+	trigger = {
+		tag = LOS
+	}
+	option = {
+		name = los.20.a
+		ai_chance = {
+			base = 1
+		}
+		add_popularity = {
+			ideology = authoritarian_democrat
+			popularity = 0.06
+		}
+	}
+}
+
+#Integration of the Ku Klux Klan
+country_event = {
+	id = los.21
+	title = los.21.t
+	desc = los.21.d
+	picture = GFX_kkk_2
+	fire_only_once = yes
+	is_triggered_only = yes
+	trigger = {
+		tag = LOS
+	}
+	immediate = {
+		hidden_effect = {
+			country_event = {
+				id = los.15
+				days = 55
+			}
+			set_variable = {
+				var = LOS_kkk_support_var
+				value = 0.15
+			}
+		}
+	}
+	option = {
+		name = los.21.a
+		ai_chance = {
+			base = 1
+		}
+		set_country_flag = LOS_klan_flag
+		unlock_decision_tooltip = LOS_send_in_the_klan_decision
+		custom_effect_tooltip = LOS_kkk_warning_tooltip
+	}
+}
+
+#Anti-Resistance Aid from the South
+country_event = {
+	id = los.22
+	title = los.22.t
+	desc = los.22.d
+	picture = GFX_LOS_vehicle
+	fire_only_once = yes
+	is_triggered_only = yes
+	trigger = {
+		USA_is_nationalist_tag = yes
+	}
+	option = {
+		name = los.22.a
+		ai_chance = {
+			base = 1
+		}
+		add_days_mission_timeout = {
+			mission = NSM_socialist_rebellion_mission
+			days = 10
+		}
+	}
+}
+
+#KKK Coup
+country_event = {
+	id = los.23
+	title = los.23.t
+	desc = los.23.d
+	picture = GFX_kkk_1
+	fire_only_once = yes
+	is_triggered_only = yes
+	trigger = {
+		tag = LOS
+	}
+	option = {
+		name = los.23.a
+		ai_chance = {
+			base = 1
+		}
+		set_politics = {
+			ruling_party = fascist
+			elections_allowed = no
+			long_name = "Ku Klux Klan"
+			name = "KKK"
+		}
+		recruit_character = LWK_Chris_Barker_char
+		promote_character = {
+			character = LWK_Chris_Barker_char
+			ideology = ethno_nationalism
+		}
+		retire_character = LOS_shaun_winkler
+		LWK = {
+			set_nationality = {
+				target_country = ROOT
+				character = LWK_Chris_Barker_char
+			}
+		}
+		hidden_effect = {
+			load_focus_tree = LOS_kkk_focus
+			set_cosmetic_tag = LOS_kkk
+		}
+	}
+}
+
+#The Truckkk Incident
+country_event = {
+	id = los.24
+	title = los.24.t
+	desc = los.24.d
+	picture = GFX_confederate_congress
+	fire_only_once = yes
+	is_triggered_only = yes
+	trigger = {
+		tag = LOS
+	}
+	option = {
+		name = los.24.a
+		ai_chance = {
+			base = 1
+		}
+	}
+}
+
+#Michael Hill resigns from his position as League President and President of the Confederate States of America, Hunter Wallace takes his place
+country_event = {
+	id = los.25
+	title = los.25.t
+	desc = los.25.d
+	picture = GFX_brad
+	fire_only_once = yes
+	is_triggered_only = yes
+	trigger = {
+		tag = LOS
+	}
+	option = {
+		name = los.25.a
+		ai_chance = {
+			base = 1
+		}
+		add_popularity = {
+			ideology = conservative
+			popularity = 0.05
+		}
+		add_country_leader_role = {
+			character = LOS_hunter_wallace
+			country_leader = {
+				ideology = right_populism
+			}
+		}
+		remove_country_leader_role = {
+			character = LOS_michael_hill
+			ideology = conservative
+		}
+	}
+}
+
+#Michael Hill resigns from his position as League President and President of the Confederate States of America, Michael Ralph Tubbs takes his place
+country_event = {
+	id = los.26
+	title = los.26.t
+	desc = los.26.d
+	picture = GFX_tubbs
+	fire_only_once = yes
+	is_triggered_only = yes
+	trigger = {
+		tag = LOS
+	}
+	option = {
+		name = los.26.a
+		add_country_leader_role = {
+			character = LOS_michael_tubbs
+			country_leader = {
+				ideology = right_populism
+			}
+		}
+		remove_country_leader_role = {
+			character = LOS_michael_hill
+			ideology = conservative
+		}
+	}
+}
+
+#Sudin joins the LOS, destroys the Yankees in the name of Allah at a medium pace
+country_event = {
+	id = los.27
+	title = los.27.t
+	desc = los.27.d
+	picture = GFX_Zhirinovsky_Youth
+	fire_only_once = yes
+	is_triggered_only = yes
+	trigger = {
+		tag = LOS
+	}
+	option = {
+		name = los.27.a
+		create_corps_commander = {
+			name = "'Sudin'"
+			picture = "Sudin.dds"
+			traits = {
+				trickster
+			}
+			skill = 1
+		}
+		add_manpower = 75
+		372 = {
+			create_unit = {
+				division = "name = \"Novorosskie Povstantsy\" division_template = \"Volunteer Brigade\" start_experience_factor = 0.0"
+				allow_spawning_on_enemy_provs = yes
+				owner = LOS
+			}
+		}
+	}
+}
+
+#Trial of the Republican Governors
+country_event = {
+	id = los.28
+	title = los.28.t
+	desc = los.28.d
+	picture = GFX_yankee_no_more
+	fire_only_once = yes
+	is_triggered_only = yes
+	trigger = {
+		tag = LOS
+	}
+	option = {
+		name = los.28.a
+		add_popularity = {
+			ideology = conservative
+			popularity = -0.05
+		}
+		hidden_effect = {
+			country_event = {
+				id = los.20
+				days = 85
+			}
+		}
+	}
+}
+
+#Military Parade
+country_event = {
+	id = los.29
+	title = los.29.t
+	desc = los.29.d
+	picture = GFX_LOS_march2
+	fire_only_once = yes
+	is_triggered_only = yes
+	trigger = {
+		tag = LOS
+	}
+	option = {
+		name = los.29.a
+		ai_chance = {
+			base = 1
+		}
+		add_popularity = {
+			ideology = authoritarian_democrat
+			popularity = 0.05
+		}
+	}
+}
+
+#Michael Hill resigns from his position as League President and President of the Confederate States of America, Tom Cotton takes his place
+country_event = {
+	id = los.30
+	title = los.30.t
+	desc = los.30.d
+	picture = GFX_confederate_congress
+	fire_only_once = yes
+	is_triggered_only = yes
+	trigger = {
+		tag = LOS
+	}
+	immediate = {
+		set_global_flag = LOS_trump_global_flag
+	}
+	option = {
+		name = los.30.a
+		ai_chance = {
+			base = 1
+		}
+		add_popularity = {
+			ideology = conservative
+			popularity = 0.05
+		}
+		set_politics = {
+			ruling_party = conservative
+		}
+		add_country_leader_role = {
+			character = LOS_tom_cotton
+			country_leader = {
+				ideology = right_populism
+			}
+		}
+		remove_country_leader_role = {
+			character = LOS_hunter_wallace
+			ideology = right_populism
+		}
+		set_cosmetic_tag = LOS_trump
+	}
+}
+
+#Dissolution of the Confederate States Congress
+country_event = {
+	id = los.31
+	title = los.31.t
+	desc = los.31.d
+	picture = GFX_confederate_congress
+	fire_only_once = yes
+	is_triggered_only = yes
+	trigger = {
+		tag = LOS
+	}
+	option = {
+		name = los.31.a
+		ai_chance = {
+			base = 1
+		}
+		add_popularity = {
+			ideology = conservative
+			popularity = 0.2
+		}
+		set_party_name = {
+			ideology = conservative
+			long_name = LOS_republican_party_long
+			name = LOS_republican_party
+		}
+		remove_ideas = LOS_confederal_system_idea
+	}
+}
+
+#Trial of the Old Guard
+country_event = {
+	id = los.32
+	title = los.32.t
+	desc = los.32.d
+	picture = GFX_confederate_congress
+	fire_only_once = yes
+	is_triggered_only = yes
+	trigger = {
+		tag = LOS
+	}
+	option = {
+		name = los.32.a
+		ai_chance = {
+			base = 1
+		}
+		add_popularity = {
+			ideology = authoritarian_democrat
+			popularity = -1
+		}
+		add_popularity = {
+			ideology = fascist
+			popularity = -1
+		}
+		add_popularity = {
+			ideology = national_socialist
+			popularity = -1
+		}
+		set_party_name = {
+			ideology = authoritarian_democrat
+			long_name = LOS_outlawed_party_long
+			name = LOS_outlawed_party
+		}
+		set_party_name = {
+			ideology = nationalist
+			long_name = LOS_outlawed_party_long
+			name = LOS_outlawed_party
+		}
+		set_party_name = {
+			ideology = fascist
+			long_name = LOS_outlawed_party_long
+			name = LOS_outlawed_party
+		}
+		set_party_name = {
+			ideology = national_socialist
+			long_name = LOS_outlawed_party_long
+			name = LOS_outlawed_party
+		}
+	}
+}
+
+#Gathering Foreign Support
+country_event = {
+	id = los.33
+	title = los.33.t
+	desc = los.33.d
+	picture = GFX_confederate_congress
+	fire_only_once = yes
+	is_triggered_only = yes
+	trigger = {
+		tag = LOS
+	}
+	immediate = {
+		hidden_effect = {
+			set_country_flag = LOS_foreign_support_flag
+		}
+	}
+	option = {
+		name = los.33.a
+		ai_chance = {
+			base = 1
+		}
+		unlock_decision_tooltip = LOS_turkey_support_decision
+		unlock_decision_tooltip = LOS_visegrad_support_decision
+		unlock_decision_tooltip = LOS_brazil_support_decision
+	}
+}
+
+#Reaching Out to the Denver Government
+country_event = {
+	id = los.34
+	title = los.34.t
+	desc = los.34.d
+	picture = GFX_report_USA_donald_trump
+	fire_only_once = yes
+	is_triggered_only = yes
+	trigger = {
+		tag = LOS
+	}
+	immediate = {
+		hidden_effect = {
+			USC = {
+				country_event = {
+					id = los.35
+					days = 10
+				}
+			}
+		}
+	}
+	option = {
+		name = los.34.a
+		ai_chance = {
+			base = 1
+		}
+	}
+}
+
+#Message From Little Rock
+country_event = {
+	id = los.35
+	title = los.35.t
+	desc = los.35.d
+	picture = GFX_confederate_congress
+	fire_only_once = yes
+	is_triggered_only = yes
+	trigger = {
+		tag = LOS
+	}
+	immediate = {
+		hidden_effect = {
+			LOS = {
+				country_event = {
+					id = los.36
+					days = 5
+				}
+			}
+		}
+	}
+	option = {
+		name = los.35.a
+		ai_chance = {
+			base = 1
+		}
+	}
+}
+
+#A Response!
+country_event = {
+	id = los.36
+	title = los.36.t
+	desc = los.36.d
+	picture = GFX_confederate_congress
+	fire_only_once = yes
+	is_triggered_only = yes
+	trigger = {
+		tag = LOS
+	}
+	immediate = {
+		hidden_effect = {
+			USC = {
+				add_to_faction = LOS
+			}
+		}
+	}
+	option = {
+		name = los.36.a
+		ai_chance = {
+			base = 1
+		}
+		effect_tooltip = {
+			USC = {
+				add_to_faction = LOS
+			}
+		}
+	}
+}
+
+#The Southern Constitutional Government Requests Support
+country_event = {
+	id = los.37
+	title = los.37.t
+	desc = los.37.d
+	picture = GFX_confederate_congress
+	fire_only_once = yes
+	is_triggered_only = yes
+	trigger = {
+		tag = TUR
+		tag = BRA
+		tag = POL
+		tag = HUN
+	}
+	option = {
+		trigger = {
+			tag = TUR
+		}
+		name = los.37.a
+		ai_chance = {
+			base = 1
+		}
+		LOS = {
+			country_event = {
+				id = los.38
+				days = 7
+			}
+		}
+	}
+	option = {
+		trigger = {
+			tag = POL
+		}
+		name = los.37.b
+		ai_chance = {
+			base = 1
+		}
+		LOS = {
+			country_event = {
+				id = los.39
+				days = 7
+			}
+		}
+	}
+	option = {
+		trigger = {
+			tag = BRA
+		}
+		name = los.37.c
+		ai_chance = {
+			base = 1
+		}
+		LOS = {
+			country_event = {
+				id = los.40
+				days = 7
+			}
+		}
+	}
+}
+
+#Turkish Support Arrives
+country_event = {
+	id = los.38
+	title = los.38.t
+	desc = los.38.d
+	picture = GFX_confederate_congress
+	fire_only_once = yes
+	is_triggered_only = yes
+	trigger = {
+		tag = LOS
+	}
+	immediate = {
+		hidden_effect = {
+			set_country_flag = LOS_foreign_support_flag
+		}
+	}
+	option = {
+		name = los.38.a
+		ai_chance = {
+			base = 1
+		}
+		add_equipment_to_stockpile = {
+			type = tac_bomber_equipment
+			amount = 25
+			producer = TUR
+		}
+	}
+}
+
+#Visegrad Support Arrives
+country_event = {
+	id = los.39
+	title = los.39.t
+	desc = los.39.d
+	picture = GFX_confederate_congress
+	fire_only_once = yes
+	is_triggered_only = yes
+	trigger = {
+		tag = LOS
+	}
+	immediate = {
+		hidden_effect = {
+			set_country_flag = LOS_foreign_support_flag
+		}
+	}
+	option = {
+		name = los.39.a
+		ai_chance = {
+			base = 1
+		}
+		add_equipment_to_stockpile = {
+			type = infantry_equipment_2
+			amount = 500
+			producer = POL
+		}
+		add_equipment_to_stockpile = {
+			type = infantry_equipment_2
+			amount = 500
+			producer = HUN
+		}
+	}
+}
+
+#Brazilian Support Arrives
+country_event = {
+	id = los.40
+	title = los.40.t
+	desc = los.40.d
+	picture = GFX_confederate_congress
+	fire_only_once = yes
+	is_triggered_only = yes
+	trigger = {
+		tag = LOS
+	}
+	immediate = {
+		hidden_effect = {
+			set_country_flag = LOS_foreign_support_flag
+		}
+	}
+	option = {
+		name = los.40.a
+		ai_chance = {
+			base = 1
+		}
+		add_equipment_to_stockpile = {
+			type = support_equipment
+			amount = 750
+			producer = BRA
+		}
+		add_manpower = 5000
+	}
+}
+
+#Integration With the American Constitutional Government
+country_event = {
+	id = los.41
+	title = los.41.t
+	desc = los.41.d
+	picture = GFX_confederate_congress
+	fire_only_once = yes
+	is_triggered_only = yes
+	trigger = {
+		tag = LOS
+	}
+	immediate = {
+		hidden_effect = {
+			set_country_flag = LOS_foreign_support_flag
+		}
+	}
+	option = {
+		name = los.41.a
+		ai_chance = {
+			base = 1
+		}
+		USC = {
+			annex_country = {
+				target = LOS
+				transfer_troops = yes
+			}
+		}
+		USC = {
+			change_tag_from = LOS
+		}
+	}
+}
+
+country_event = {
+	id = los.42
+	title = los.42.t
+	desc = los.42.d
+	picture = GFX_confederate_congress
+	is_triggered_only = yes
+	trigger = {
+		USA_is_nationalist_tag = yes
+	}
+	option = {
+		name = cac.44.a
+		ai_chance = {
+			base = 1
+		}
+		set_country_flag = LOS_autonomy_flag
+	}
+	option = {
+		name = cac.44.b
+		ai_chance = {
+			base = 0
+		}
+		custom_effect_tooltip = LOS_will_lead_war_tt
+		hidden_effect = {
+			LOS = {
+				country_event = {
+					id = los.44
+					days = 1
+				}
+			}
+		}
+	}
+}
+
+country_event = {
+	id = los.43
+	title = los.43.t
+	desc = los.43.d
+	picture = GFX_confederate_congress
+	fire_only_once = yes
+	is_triggered_only = yes
+	trigger = {
+		tag = LOS
+	}
+	option = {
+		name = los.43.a
+		ai_chance = {
+			base = 1
+		}
+	}
+	option = {
+		name = los.43.b
+		ai_chance = {
+			base = 0
+		}
+	}
+	option = {
+		name = los.43.c
+		ai_chance = {
+			base = 0
+		}
+		set_global_flag = LOS_refusal_flag
+	}
+}
+
+country_event = {
+	id = los.44
+	title = los.44.t
+	desc = los.44.d
+	picture = GFX_confederate_congress
+	fire_only_once = yes
+	is_triggered_only = yes
+	trigger = {
+		tag = LOS
+	}
+	immediate = {
+		hidden_effect = {
+			NSM_leave_national_front = yes
+		}
+	}
+	option = {
+		name = los.44.a
+		ai_chance = {
+			base = 1
+		}
+		effect_tooltip = {
+			NSM_leave_national_front = yes
+		}
+	}
+}
+
+#Capture of New Orleans
+country_event = {
+	id = los.45
+	title = los.45.t
+	desc = los.45.d
+	picture = GFX_Oil_Crash
+	fire_only_once = yes
+	is_triggered_only = yes
+	trigger = {
+		tag = LOS
+	}
+	immediate = {
+		hidden_effect = {
+			country_event = {
+				id = los.46
+				days = 180
+			}
+		}
+	}
+	option = {
+		name = los.45.a
+	}
+}
+
+#Robert E. Lee Monument in New Orleans Restored
+country_event = {
+	id = los.46
+	title = los.46.t
+	desc = los.46.d
+	picture = GFX_Oil_Crash
+	fire_only_once = yes
+	is_triggered_only = yes
+	trigger = {
+		tag = LOS
+	}
+	option = {
+		name = los.46.a
+		add_political_power = 10
+	}
+}
+
+#Pacifying Atomwaffen Remnants
+country_event = {
+	id = los.47
+	title = los.47.t
+	desc = los.47.d
+	picture = GFX_Oil_Crash
+	fire_only_once = yes
+	is_triggered_only = yes
+	trigger = {
+		tag = LOS
+	}
+	option = {
+		name = los.47.a
+	}
+}
+
+#event2
+country_event = {
+	id = los.48
+	title = los.48.t
+	desc = los.48.d
+	picture = GFX_Oil_Crash
+	fire_only_once = yes
+	is_triggered_only = yes
+	trigger = {
+		tag = LOS
+	}
+	option = {
+		name = los.48.a
+	}
+}
+
+#evebt3
+country_event = {
+	id = los.49
+	title = los.49.t
+	desc = los.49.d
+	picture = GFX_Oil_Crash
+	fire_only_once = yes
+	is_triggered_only = yes
+	trigger = {
+		tag = LOS
+	}
+	option = {
+		name = los.49.a
+	}
+}
+
+#event4
+country_event = {
+	id = los.50
+	title = los.50.t
+	desc = los.50.d
+	picture = GFX_Oil_Crash
+	fire_only_once = yes
+	is_triggered_only = yes
+	trigger = {
+		tag = LOS
+	}
+	option = {
+		name = los.50.a
+	}
+}
+
+#event5a
+country_event = {
+	id = los.51
+	title = los.51.t
+	desc = los.51.d
+	picture = GFX_Oil_Crash
+	fire_only_once = yes
+	is_triggered_only = yes
+	trigger = {
+		tag = LOS
+	}
+	option = {
+		name = los.51.a
+	}
+}
+
+#event5b
+country_event = {
+	id = los.52
+	title = los.52.t
+	desc = los.52.d
+	picture = GFX_Oil_Crash
+	fire_only_once = yes
+	is_triggered_only = yes
+	trigger = {
+		tag = LOS
+	}
+	option = {
+		name = los.52.a
+	}
+}
+
+#Invitation to the National Front
+country_event = {
+	id = los.53
+	title = los.53.t
+	desc = los.53.d
+	picture = GFX_Oil_Crash
+	fire_only_once = yes
+	is_triggered_only = yes
+	trigger = {
+		tag = LOS
+	}
+	option = {
+		name = los.53.a
+		ai_chance = {
+			base = 90
+		}
+		PTF = {
+			add_to_faction = LOS
+		}
+		random_owned_controlled_state = {
+			limit = {
+				is_core_of = ROOT
+				free_building_slots = {
+					building = arms_factory
+					size > 1
+					include_locked = yes
+				}
+			}
+			add_extra_state_shared_building_slots = 2
+			add_building_construction = {
+				type = arms_factory
+				level = 2
+				instant_build = yes
+			}
+		}
+		random_owned_controlled_state = {
+			limit = {
+				is_core_of = ROOT
+				free_building_slots = {
+					building = arms_factory
+					size > 1
+					include_locked = yes
+				}
+			}
+			add_extra_state_shared_building_slots = 1
+			add_building_construction = {
+				type = industrial_complex
+				level = 1
+				instant_build = yes
+			}
+		}
+		if = {
+			limit = {
+				NOT = {
+					has_idea = NSM_integrated_nationalist_militaries
+				}
+			}
+			add_ideas = NSM_integrated_nationalist_militaries
+		}
+	}
+	option = {
+		name = los.53.b
+		ai_chance = {
+			base = 0
+		}
+		add_war_support = 0.2
+		PTF = {
+			country_event = {
+				id = ptf.85
+			}
+		}
+	}
+}
+
+#The Great Jackson Fire
+news_event = {
+	id = los_news.1
+	title = los_news.1.t
+	desc = los_news.1.d
+	picture = GFX_another_day_in_the_bronx
+	major = yes
+	is_triggered_only = yes
+	trigger = {
+		original_tag = LOS
+	}
+	immediate = {
+		hidden_effect = {
+			add_war_support = -0.05
+			add_stability = -0.15
+		}
+	}
+	option = {
+		name = los_news.1.a
+		
+		trigger = {
+			tag = LOS
+		}
+		effect_tooltip = {
+			add_war_support = -0.05
+			add_stability = -0.15
+		}
+	}
+	option = {
+		name = los_news.1.b
+		
+		trigger = {
+			NOT = {
+				tag = LOS
+			}
+		}
+	}
+}

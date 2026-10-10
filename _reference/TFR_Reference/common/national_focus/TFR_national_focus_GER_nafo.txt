@@ -1,0 +1,4504 @@
+###Hey fella, what are you doing? This isnt a safe place for you.
+#no seriously I dont like you fuck off before I mog you
+focus_tree = {
+	id = GER_NAFO_tree_initial
+	country = {
+		base = 0
+		modifier = {
+			#Makes Tree persist after changes made to it
+			add = 20
+			tag = GER
+			has_country_flag = GER_nafo_tree_flag
+		}
+	}
+	focus = {
+		id = GER_democracy_falters
+		icon = GFX_focus_GER_Democracy_Falters
+		x = 8
+		y = 0
+		cost = 5
+		ai_will_do = {
+			factor = 25
+		}
+		available = {
+		}
+		completion_reward = {
+			GER_increase_catastrophe = yes
+			hidden_effect = {
+				add_dynamic_modifier = {
+					modifier = EU_member_dynamic
+				}
+			}
+		}
+	}
+	focus = {
+		id = GER_embrace_european_unity
+		icon = GFX_focus_GER_Embrace_European_Unity
+		relative_position_id = GER_democracy_falters
+		x = -2
+		y = 1
+		cost = 5
+		ai_will_do = {
+			factor = 25
+		}
+		available = {
+		}
+		prerequisite = {
+			focus = GER_democracy_falters
+		}
+		completion_reward = {
+			add_political_power = 25
+			set_temp_variable = {
+				inflation_var_temp = -0.5
+			}
+			add_inflation = yes
+			GER_increase_catastrophe = yes
+		}
+	}
+	focus = {
+		id = GER_call_emergency_elections
+		icon = GFX_focus_GER_call_emergency_elections
+		relative_position_id = GER_democracy_falters
+		x = 2
+		y = 1
+		cost = 5
+		ai_will_do = {
+			factor = 25
+		}
+		available = {
+		}
+		prerequisite = {
+			focus = GER_democracy_falters
+		}
+		completion_reward = {
+			add_popularity = {
+				ideology = social_liberal
+				popularity = 0.35
+			}
+			add_stability = 0.05
+			add_political_power = 25
+			country_event = {
+				id = germany.217
+			}
+		}
+	}
+	focus = {
+		id = GER_convene_the_european_parliament
+		icon = GFX_focus_GER_Convene_European_Parlament
+		relative_position_id = GER_democracy_falters
+		x = 0
+		y = 2
+		cost = 5
+		ai_will_do = {
+			factor = 25
+		}
+		prerequisite = {
+			focus = GER_embrace_european_unity
+		}
+		prerequisite = {
+			focus = GER_call_emergency_elections
+		}
+		available = {
+		}
+		completion_reward = {
+			set_country_flag = GER_ultralib_tree_unlocked_flag
+			focus_unlock = yes
+			create_faction = european_treaty_organization
+			hidden_effect = {
+				remove_faction_goal = faction_goal_the_atomic_race
+				add_faction_goal = faction_goal_placeholder_long_term
+				remove_faction_goal = faction_goal_a_military_base
+				add_faction_goal = faction_goal_placeholder_medium_term
+				add_faction_goal = faction_goal_placeholder_short_term
+			}
+			set_temp_variable = {
+				var = eu_fed_var_temp
+				value = 0.15
+			}
+			GER_add_eu_fed = yes
+			add_stability = 0.1
+			annex_country = {
+				target = BEL
+				transfer_troops = yes
+			}
+			annex_country = {
+				target = BRS
+				transfer_troops = yes
+			}
+			annex_country = {
+				target = HOL
+				transfer_troops = yes
+			}
+			annex_country = {
+				target = LUX
+				transfer_troops = yes
+			}
+			news_event = {
+				id = news.321
+			}
+			hidden_effect = {
+				add_country_leader_role = {
+					character = GER_european_commission_char
+					promote_leader = yes
+					country_leader = {
+						ideology = ultra_liberalism
+						desc = GER_EUROCOMMISSION_DESC
+						expire = "1.1.1.1"
+					}
+				}
+				add_country_leader_role = {
+					character = GER_european_commission_char
+					promote_leader = yes
+					country_leader = {
+						ideology = left_centrist
+						desc = GER_EUROCOMMISSION_DESC
+						expire = "1.1.1.1"
+					}
+				}
+				add_country_leader_role = {
+					character = GER_european_commission_char
+					promote_leader = yes
+					country_leader = {
+						ideology = classical_conservatism
+						desc = GER_EUROCOMMISSION_DESC
+						expire = "1.1.1.1"
+					}
+				}
+				add_country_leader_role = {
+					character = GER_european_commission_char
+					promote_leader = yes
+					country_leader = {
+						ideology = classical_liberalism
+						desc = GER_EUROCOMMISSION_DESC
+						expire = "1.1.1.1"
+					}
+				}
+				set_politics = {
+					ruling_party = social_liberal
+					elections_allowed = no
+				}
+				set_cosmetic_tag = EUU
+				add_ideas = GER_nationalist_resistance1
+				activate_mission = GER_nationalist_resistance_mission
+				add_ideas = GER_ursula_von_der_leyen_hog
+				add_ideas = GER_josep_borrel_for
+				add_ideas = GER_christine_lagarde_eco
+				add_ideas = GER_antonio_costa_sec
+				add_ideas = GER_Korner
+				add_ideas = GER_andrius_kubilius_theorist
+				country_event = {
+					id = germany.285
+					days = 120
+					random_days = 80
+				}
+				add_state_core = 1364
+				set_capital = {
+					state = 1364
+				}
+				focus_unlock = yes
+			}
+			hidden_effect = {
+				set_party_name = {
+					ideology = totalitarian_socialist
+					long_name = GER_outlawed_short
+					name = GER_outlawed_short
+				}
+				set_party_name = {
+					ideology = totalitarian_socialist
+					long_name = GER_outlawed_short
+					name = GER_outlawed_short
+				}
+				set_party_name = {
+					ideology = communist
+					long_name = GER_outlawed_short
+					name = GER_outlawed_short
+				}
+				set_party_name = {
+					ideology = libertarian_socialist
+					long_name = GER_eu_green
+					name = GER_eu_green_short
+				}
+				set_party_name = {
+					ideology = social_democrat
+					long_name = GER_eu_party_soc
+					name = GER_eu_party_soc_short
+				}
+				set_party_name = {
+					ideology = social_liberal
+					long_name = GER_volt_europa_long
+					name = GER_volt_europa
+				}
+				set_party_name = {
+					ideology = market_liberal
+					long_name = GER_eu_alliance
+					name = GER_eu_alliance_short
+				}
+				set_party_name = {
+					ideology = conservative
+					long_name = GER_eu_conservative
+					name = GER_eu_conservative_short
+				}
+				set_party_name = {
+					ideology = authoritarian_democrat
+					long_name = GER_eu_identity
+					name = GER_eu_identity_short
+				}
+				set_party_name = {
+					ideology = nationalist
+					long_name = GER_eu_army
+					name = GER_eu_army_short
+				}
+				set_party_name = {
+					ideology = fascist
+					long_name = GER_outlawed_short
+					name = GER_outlawed_short
+				}
+				set_party_name = {
+					ideology = national_socialist
+					long_name = GER_outlawed_short
+					name = GER_outlawed_short
+				}
+			}
+		}
+	}
+	focus = {
+		id = GER_bulwark_against_the_russian_menace
+		icon = GFX_focus_GER_bulwark_against_the_russian_menace
+		relative_position_id = GER_convene_the_european_parliament
+		x = 13
+		y = 1
+		cost = 5
+		ai_will_do = {
+			factor = 25
+		}
+		prerequisite = {
+			focus = GER_convene_the_european_parliament
+		}
+		allow_branch = {
+			has_country_flag = GER_ultralib_tree_unlocked_flag
+		}
+		completion_reward = {
+			remove_dynamic_modifier = {
+				modifier = GER_bundeswehr_dynamic
+			}
+			custom_effect_tooltip = tooltip_white_line
+			add_war_support = 0.1
+			army_experience = 50
+			custom_effect_tooltip = tooltip_white_line
+			effect_tooltip = {
+				add_ideas = GER_european_military
+			}
+			custom_effect_tooltip = tooltip_white_line
+			unlock_decision_category_tooltip = GER_european_armed_forces_category
+			unlock_decision_tooltip = GER_europe_must_defend_itself
+			set_temp_variable = {
+				var = campaign_slot_total_var_temp
+				value = 1
+			}
+			add_total_campaign_slot = yes
+			hidden_effect = {
+				country_event = {
+					id = germany.218
+					days = 60
+				}
+				if = {
+					limit = {
+						is_ai = yes
+					}
+					if = {
+						limit = {
+							NOT = {
+								has_dlc = "By Blood Alone"
+							}
+						}
+						add_equipment_to_stockpile = {
+							type = fighter_equipment_3
+							amount = 2000
+							producer = GER
+						}
+						add_equipment_to_stockpile = {
+							type = CAS_equipment_2
+							amount = 1000
+							producer = GER
+						}
+					}
+					else_if = {
+						limit = {
+							has_dlc = "By Blood Alone"
+						}
+						load_oob = "GER_air_help_bba"
+					}
+				}
+				add_dynamic_modifier = {
+					modifier = GER_european_military_dynamic
+				}
+				set_variable = {
+					var = GER_euro_political_power_gain_dynamic_var
+					value = 0
+				}
+				set_variable = {
+					var = GER_euro_war_support_factor_dynamic_var
+					value = 0
+				}
+				set_variable = {
+					var = GER_euro_war_support_weekly_dynamic_var
+					value = 0
+				}
+				set_variable = {
+					var = GER_euro_weekly_manpower_dynamic_var
+					value = 0
+				}
+				set_variable = {
+					var = GER_euro_weekly_casualties_war_support_dynamic_var
+					value = 0
+				}
+				set_variable = {
+					var = GER_euro_weekly_convoys_war_support_dynamic_var
+					value = 0
+				}
+				set_variable = {
+					var = GER_euro_weekly_bombing_war_support_dynamic_var
+					value = 0
+				}
+				set_variable = {
+					var = GER_euro_experience_gain_army_dynamic_var
+					value = 0
+				}
+				set_variable = {
+					var = GER_euro_experience_gain_army_factor_dynamic_var
+					value = 0
+				}
+				set_variable = {
+					var = GER_euro_experience_loss_factor_dynamic_var
+					value = 0
+				}
+				set_variable = {
+					var = GER_euro_max_command_power_dynamic_var
+					value = 0
+				}
+				set_variable = {
+					var = GER_euro_command_power_gain_mult_dynamic_var
+					value = 0
+				}
+				set_variable = {
+					var = GER_euro_army_org_factor_dynamic_var
+					value = 0.1
+				}
+				set_variable = {
+					var = GER_euro_army_org_regain_dynamic_var
+					value = 0
+				}
+				set_variable = {
+					var = GER_euro_org_loss_when_moving_dynamic_var
+					value = 0
+				}
+				set_variable = {
+					var = GER_euro_army_strength_factor_dynamic_var
+					value = 0
+				}
+				set_variable = {
+					var = GER_euro_coordination_bonus_dynamic_var
+					value = 0
+				}
+				set_variable = {
+					var = GER_euro_land_reinforce_rate_dynamic_var
+					value = 0
+				}
+				set_variable = {
+					var = GER_euro_max_planning_factor_dynamic_var
+					value = 0
+				}
+				set_variable = {
+					var = GER_euro_planning_speed_dynamic_var
+					value = 0
+				}
+				set_variable = {
+					var = GER_euro_max_dig_in_factor_dynamic_var
+					value = 0
+				}
+				set_variable = {
+					var = GER_euro_dig_in_speed_factor_dynamic_var
+					value = 0
+				}
+				set_variable = {
+					var = GER_euro_army_morale_factor_dynamic_var
+					value = 0
+				}
+				set_variable = {
+					var = GER_euro_army_attack_factor_dynamic_var
+					value = 0.05
+				}
+				set_variable = {
+					var = GER_euro_army_defence_factor_dynamic_var
+					value = 0
+				}
+				set_variable = {
+					var = GER_euro_breakthrough_factor_dynamic_var
+					value = 0.05
+				}
+				set_variable = {
+					var = GER_euro_army_speed_factor_dynamic_var
+					value = 0
+				}
+				set_variable = {
+					var = GER_euro_army_core_attack_factor_dynamic_var
+					value = 0
+				}
+				set_variable = {
+					var = GER_euro_army_core_defence_factor_dynamic_var
+					value = 0
+				}
+				set_variable = {
+					var = GER_euro_modifier_army_sub_unit_militia_attack_factor_dynamic_var
+					value = 0
+				}
+				set_variable = {
+					var = GER_euro_modifier_army_sub_unit_militia_defence_factor_dynamic_var
+					value = 0
+				}
+				set_variable = {
+					var = GER_euro_equipment_capture_factor_dynamic_var
+					value = 0
+				}
+				set_variable = {
+					var = GER_euro_out_of_supply_factor_dynamic_var
+					value = 0
+				}
+				set_variable = {
+					var = GER_euro_supply_consumption_factor_dynamic_var
+					value = 0
+				}
+				set_variable = {
+					var = GER_euro_conscription_factor_dynamic_var
+					value = 0
+				}
+				set_variable = {
+					var = GER_euro_mobilization_speed_dynamic_var
+					value = 0
+				}
+				set_variable = {
+					var = GER_euro_training_time_factor_dynamic_var
+					value = 0
+				}
+				set_variable = {
+					var = GER_euro_resistance_decay_on_our_occupied_states_dynamic_var
+					value = 0
+				}
+				set_variable = {
+					var = GER_euro_resistance_growth_on_our_occupied_states_dynamic_var
+					value = 0
+				}
+				set_variable = {
+					var = GER_euro_terrain_penalty_reduction_dynamic_var
+					value = 0
+				}
+				set_variable = {
+					var = GER_euro_acclimatization_hot_climate_gain_factor_dynamic_var
+					value = 0
+				}
+				set_variable = {
+					var = GER_euro_acclimatization_cold_climate_gain_factor_dynamic_var
+					value = 0
+				}
+				set_variable = {
+					var = GER_euro_pocket_penalty_dynamic_var
+					value = 0
+				}
+				set_variable = {
+					var = GER_euro_land_doctrine_cost_factor_dynamic_var
+					value = 0
+				}
+				set_variable = {
+					var = GER_euro_battalion_upkeep_factor_dynamic_var
+					value = 0
+				}
+				set_variable = {
+					var = GER_euro_development_monthly_dynamic_var
+					value = 0
+				}
+				set_variable = {
+					var = GER_euro_national_socialist_drift_dynamic_var
+					value = 0
+				}
+				set_variable = {
+					var = GER_euro_totalitarian_socialist_drift_dynamic_var
+					value = 0
+				}
+				set_variable = {
+					var = GER_euro_air_superiority_efficiency_dynamic_var
+					value = 0
+				}
+				set_variable = {
+					var = GER_euro_experience_gain_army_dynamic_var
+					value = 0
+				}
+				set_variable = {
+					var = GER_euro_army_armor_attack_factor_dynamic_var
+					value = 0
+				}
+				set_variable = {
+					var = GER_euro_production_speed_rail_way_factor_dynamic_var
+					value = 0
+				}
+				set_variable = {
+					var = GER_euro_production_speed_infrastructure_factor_dynamic_var
+					value = 0
+				}
+				set_variable = {
+					var = GER_euro_production_speed_supply_node_factor_dynamic_var
+					value = 0
+				}
+				set_variable = {
+					var = GER_euro_ground_attack_factor_dynamic_var
+					value = 0
+				}
+				set_variable = {
+					var = GER_euro_industrial_capacity_factory_dynamic_var
+					value = 0
+				}
+				set_variable = {
+					var = GER_euro_attrition_dynamic_var
+					value = 0
+				}
+			}
+		}
+	}
+	focus = {
+		id = GER_european_millitarisation
+		icon = GFX_focus_GER_european_millitarisation
+		relative_position_id = GER_bulwark_against_the_russian_menace
+		x = 4
+		y = 1
+		cost = 5
+		ai_will_do = {
+			factor = 25
+		}
+		prerequisite = {
+			focus = GER_bulwark_against_the_russian_menace
+		}
+		mutually_exclusive = {
+			focus = GER_project_our_power
+		}
+		completion_reward = {
+			army_experience = 25
+			set_temp_variable = {
+				var = military_development_var_temp
+				value = 0.15
+			}
+			add_military_development = yes
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = GER_european_military
+					add_idea = GER_european_military8
+				}
+			}
+			hidden_effect = {
+				add_to_variable = {
+					var = GER_euro_army_defence_factor_dynamic_var
+					value = 0.1
+				}
+				add_to_variable = {
+					var = GER_euro_dig_in_speed_factor_dynamic_var
+					value = 0.1
+				}
+				add_to_variable = {
+					var = GER_euro_ground_attack_factor_dynamic_var
+					value = 0.05
+				}
+			}
+		}
+	}
+	focus = {
+		id = GER_the_duty_of_every_young_man
+		icon = GFX_focus_GER_EU_Duty_for_Every_Men
+		relative_position_id = GER_european_millitarisation
+		x = 1
+		y = 1
+		cost = 5
+		ai_will_do = {
+			factor = 25
+		}
+		prerequisite = {
+			focus = GER_european_millitarisation
+		}
+		completion_reward = {
+			add_ideas = no_draft_exemptions
+			add_ideas = medium_conscription
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = GER_european_military
+					add_idea = GER_european_military10
+				}
+			}
+			hidden_effect = {
+				add_to_variable = {
+					var = GER_euro_training_time_factor_dynamic_var
+					value = -0.15
+				}
+			}
+		}
+	}
+	focus = {
+		id = GER_an_economy_of_war
+		icon = GFX_focus_GER_EU_Economy_of_War
+		relative_position_id = GER_european_millitarisation
+		x = -1
+		y = 1
+		cost = 5
+		ai_will_do = {
+			factor = 25
+		}
+		prerequisite = {
+			focus = GER_european_millitarisation
+		}
+		completion_reward = {
+			add_ideas = permanent_mobilization
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = GER_european_military
+					add_idea = GER_european_military9
+				}
+			}
+			hidden_effect = {
+				add_to_variable = {
+					var = GER_euro_industrial_capacity_factory_dynamic_var
+					value = 0.15
+				}
+			}
+		}
+	}
+	focus = {
+		id = GER_war_rationing
+		icon = GFX_focus_GER_EU_War_Rationing
+		relative_position_id = GER_an_economy_of_war
+		x = 0
+		y = 2
+		cost = 5
+		ai_will_do = {
+			factor = 25
+		}
+		prerequisite = {
+			focus = GER_an_economy_of_war
+		}
+		completion_reward = {
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = GER_european_military
+					add_idea = GER_european_military11
+				}
+			}
+			hidden_effect = {
+				add_to_variable = {
+					var = GER_euro_equipment_capture_factor_dynamic_var
+					value = 0.15
+				}
+				add_to_variable = {
+					var = GER_euro_attrition_dynamic_var
+					value = 0.05
+				}
+			}
+		}
+	}
+	focus = {
+		id = GER_million_man_army
+		icon = GFX_focus_GER_EU_Million_Men_Army
+		relative_position_id = GER_the_duty_of_every_young_man
+		x = 0
+		y = 2
+		cost = 5
+		ai_will_do = {
+			factor = 25
+		}
+		prerequisite = {
+			focus = GER_the_duty_of_every_young_man
+		}
+		available = {
+			ITA = {
+				OR = {
+					is_puppet_of = GER
+					exists = no
+				}
+			}
+			FRA = {
+				OR = {
+					is_puppet_of = GER
+					exists = no
+				}
+			}
+		}
+		completion_reward = {
+			custom_effect_tooltip = GER_million_man_army_tt
+			hidden_effect = {
+				ITA = {
+					set_nationality = {
+						target_country = GER
+						character = ITA_Gaetano_Zauner_char
+					}
+					set_nationality = {
+						target_country = GER
+						character = ITA_Lorenzo_DAddario_char
+					}
+				}
+				FRA = {
+					set_nationality = {
+						target_country = GER
+						character = FRA_Pierre_Chavancy
+					}
+					set_nationality = {
+						target_country = GER
+						character = FRA_Jean_Pierre_Bosser
+					}
+				}
+			}
+		}
+	}
+	focus = {
+		id = GER_fortress_europa
+		icon = GFX_focus_GER_EU_Fort_Europa
+		relative_position_id = GER_european_millitarisation
+		x = 0
+		y = 2
+		cost = 5
+		ai_will_do = {
+			factor = 25
+		}
+		prerequisite = {
+			focus = GER_european_millitarisation
+		}
+		completion_reward = {
+			unlock_decision_tooltip = GER_fortress_europa_program
+		}
+	}
+	focus = {
+		id = GER_project_our_power
+		icon = GFX_focus_GER_EU_Project_Our_Power
+		relative_position_id = GER_bulwark_against_the_russian_menace
+		x = -4
+		y = 1
+		cost = 5
+		ai_will_do = {
+			factor = 25
+		}
+		prerequisite = {
+			focus = GER_bulwark_against_the_russian_menace
+		}
+		mutually_exclusive = {
+			focus = GER_european_millitarisation
+		}
+		completion_reward = {
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = GER_european_military
+					add_idea = GER_european_military2
+				}
+			}
+			hidden_effect = {
+				add_to_variable = {
+					var = GER_euro_army_attack_factor_dynamic_var
+					value = 0.1
+				}
+				add_to_variable = {
+					var = GER_euro_breakthrough_factor_dynamic_var
+					value = 0.1
+				}
+				add_to_variable = {
+					var = GER_euro_air_superiority_efficiency_dynamic_var
+					value = 0.05
+				}
+			}
+		}
+	}
+	focus = {
+		id = GER_european_ingenuity
+		icon = GFX_focus_GER_EU_European_Ingeniuty
+		relative_position_id = GER_project_our_power
+		x = -1
+		y = 1
+		cost = 5
+		ai_will_do = {
+			factor = 25
+		}
+		prerequisite = {
+			focus = GER_project_our_power
+		}
+		completion_reward = {
+			set_temp_variable = {
+				var = military_development_var_temp
+				value = 0.2
+			}
+			add_military_development = yes
+			add_doctrine_cost_reduction = {
+				name = land_doc_bonus
+				cost_reduction = 0.75
+				uses = 1
+				category = cat_mobile_warfare
+			}
+			add_ideas = higher_training
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = GER_european_military
+					add_idea = GER_european_military3
+				}
+			}
+			hidden_effect = {
+				add_to_variable = {
+					var = GER_euro_experience_gain_army_dynamic_var
+					value = 0.25
+				}
+			}
+		}
+	}
+	focus = {
+		id = GER_metal_on_metal
+		icon = GFX_focus_GER_EU_Metal_On_Metal
+		relative_position_id = GER_project_our_power
+		x = 1
+		y = 1
+		cost = 5
+		ai_will_do = {
+			factor = 25
+		}
+		prerequisite = {
+			focus = GER_project_our_power
+		}
+		completion_reward = {
+			army_experience = 30
+			if = {
+				limit = {
+					NOT = {
+						has_dlc = "No Step Back"
+					}
+				}
+				add_tech_bonus = {
+					bonus = 1
+					uses = 2
+					name = mech_army_bonus
+					technology = main_battle_tank4
+					technology = main_battle_tank5
+					technology = main_battle_tank6
+				}
+			}
+			else = {
+				add_tech_bonus = {
+					bonus = 1
+					uses = 1
+					name = mech_army_bonus
+					technology = advanced_medium_tank_chassis
+				}
+			}
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = GER_european_military
+					add_idea = GER_european_military4
+				}
+			}
+			hidden_effect = {
+				add_to_variable = {
+					var = GER_euro_army_armor_attack_factor_dynamic_var
+					value = 0.1
+				}
+				add_to_variable = {
+					var = GER_euro_breakthrough_factor_dynamic_var
+					value = 0.1
+				}
+			}
+			unlock_decision_tooltip = GER_weapons_of_democracy
+		}
+	}
+	focus = {
+		id = GER_centralized_command
+		icon = GFX_focus_GER_EU_Centralized_Command
+		relative_position_id = GER_project_our_power
+		x = 0
+		y = 2
+		cost = 5
+		ai_will_do = {
+			factor = 25
+		}
+		prerequisite = {
+			focus = GER_project_our_power
+		}
+		completion_reward = {
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = GER_european_military
+					add_idea = GER_european_military7
+				}
+			}
+			hidden_effect = {
+				add_to_variable = {
+					var = GER_euro_army_org_factor_dynamic_var
+					value = 0.1
+				}
+				add_to_variable = {
+					var = GER_euro_planning_speed_dynamic_var
+					value = 0.1
+				}
+				add_to_variable = {
+					var = GER_euro_army_defence_factor_dynamic_var
+					value = -0.05
+				}
+				add_to_variable = {
+					var = GER_euro_max_planning_factor_dynamic_var
+					value = 0.05
+				}
+			}
+			custom_effect_tooltip = GER_oberkommando_tt
+			hidden_effect = {
+				division_template = {
+					name = "Regionales Heereskommando"
+					is_locked = yes
+					regiments = {
+						bus = {
+							x = 0
+							y = 0
+						}
+					}
+				}
+				capital_scope = {
+					create_unit = {
+						division = "division_template = \"Regionales Heereskommando\" start_experience_factor = 0.5 start_equipment_factor = 1.0"
+						owner = GER
+						count = 1
+					}
+					create_unit = {
+						division = "division_template = \"Regionales Heereskommando\" start_experience_factor = 0.5 start_equipment_factor = 1.0"
+						owner = GER
+						count = 1
+					}
+				}
+			}
+			unlock_decision_tooltip = GER_accelerated_officer_training
+		}
+	}
+	focus = {
+		id = GER_dominate_the_skies
+		icon = GFX_focus_GER_EU_Dominate_the_Skies
+		relative_position_id = GER_european_ingenuity
+		x = 0
+		y = 2
+		cost = 5
+		ai_will_do = {
+			factor = 25
+		}
+		prerequisite = {
+			focus = GER_european_ingenuity
+		}
+		completion_reward = {
+			add_tech_bonus = {
+				bonus = 0.5
+				uses = 2
+				name = mech_army_bonus
+				category = cat_old_air_doctrine
+			}
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = GER_european_military
+					add_idea = GER_european_military6
+				}
+			}
+			hidden_effect = {
+				add_to_variable = {
+					var = GER_euro_ground_attack_factor_dynamic_var
+					value = 0.1
+				}
+				add_to_variable = {
+					var = GER_euro_air_superiority_efficiency_dynamic_var
+					value = 0.1
+				}
+			}
+		}
+	}
+	focus = {
+		id = GER_maximize_supply_lines
+		icon = GFX_focus_GER_EU_Maximize_Supply_Lines
+		relative_position_id = GER_metal_on_metal
+		x = 0
+		y = 2
+		cost = 5
+		ai_will_do = {
+			factor = 25
+		}
+		prerequisite = {
+			focus = GER_metal_on_metal
+		}
+		completion_reward = {
+			add_ideas = war_mobilization
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = GER_european_military
+					add_idea = GER_european_military5
+				}
+			}
+			custom_effect_tooltip = GER_logistics_tt
+			hidden_effect = {
+				set_technology = {
+					german_logistics_tech = 1
+				}
+				add_to_variable = {
+					var = GER_euro_production_speed_rail_way_factor_dynamic_var
+					value = 0.1
+				}
+				add_to_variable = {
+					var = GER_euro_production_speed_infrastructure_factor_dynamic_var
+					value = 0.1
+				}
+				add_to_variable = {
+					var = GER_euro_production_speed_supply_node_factor_dynamic_var
+					value = 0.15
+				}
+			}
+		}
+	}
+	focus = {
+		id = GER_aggressive_realpolitk
+		icon = GFX_focus_GER_aggressive_realpolitk
+		relative_position_id = GER_bulwark_against_the_russian_menace
+		x = 0
+		y = 2
+		cost = 5
+		ai_will_do = {
+			base = 25
+			modifier = {
+				factor = 0
+				OR = {
+					has_completed_focus = GER_old_system_new_form
+					has_game_rule = {
+						rule = The_GER_Genuine_Conspiracy_Theories
+						option = The_GER_Genuine_Conspiracy_Theories_Gunther_Fehlinger
+					}
+				}
+			}
+		}
+		prerequisite = {
+			focus = GER_bulwark_against_the_russian_menace
+		}
+		available = {
+			if = {
+				limit = {
+					has_country_flag = GER_gunther_fehlinger_flag
+				}
+				NOT = {
+					has_country_flag = GER_gunther_fehlinger_flag
+				}
+			}
+		}
+		completion_reward = {
+			add_political_power = 150
+			add_war_support = 0.05
+			unlock_decision_tooltip = GER_invite_france_eu
+			unlock_decision_tooltip = GER_intervene_in_spain_eu
+			unlock_decision_tooltip = GER_intervene_in_portugal
+			unlock_decision_tooltip = GER_invite_italy_eu
+			unlock_decision_tooltip = GER_invite_ireland_eu
+		}
+	}
+	focus = {
+		id = GER_intergrate_west_poland
+		icon = GFX_focus_GER_intergrate_west_poland
+		relative_position_id = GER_aggressive_realpolitk
+		x = -2
+		y = 1
+		cost = 5
+		ai_will_do = {
+			factor = 25
+		}
+		prerequisite = {
+			focus = GER_aggressive_realpolitk
+		}
+		completion_reward = {
+			add_political_power = 150
+			unlock_decision_tooltip = GER_invite_poland_eu
+		}
+	}
+	focus = {
+		id = GER_secure_scandinavia
+		icon = GFX_focus_GER_secure_scandinavia
+		relative_position_id = GER_aggressive_realpolitk
+		x = 0
+		y = 1
+		cost = 5
+		ai_will_do = {
+			factor = 25
+		}
+		prerequisite = {
+			focus = GER_aggressive_realpolitk
+		}
+		completion_reward = {
+			add_political_power = 150
+			unlock_decision_tooltip = GER_invite_denmark_eu
+			unlock_decision_tooltip = GER_invite_norway_eu
+			unlock_decision_tooltip = GER_invite_sweden_eu
+		}
+	}
+	focus = {
+		id = GER_secure_central_european_democracy
+		icon = GFX_focus_GER_secure_central_european_democracy
+		relative_position_id = GER_aggressive_realpolitk
+		x = 2
+		y = 1
+		cost = 5
+		ai_will_do = {
+			factor = 25
+		}
+		prerequisite = {
+			focus = GER_aggressive_realpolitk
+		}
+		completion_reward = {
+			add_political_power = 150
+			unlock_decision_tooltip = GER_invite_czech_republic_eu
+			unlock_decision_tooltip = GER_invite_austria_eu
+			add_state_core = 4
+			add_state_core = 152
+			add_state_core = 153
+		}
+	}
+	focus = {
+		id = GER_balkan_intervention
+		icon = GFX_focus_GER_balkan_intervention
+		relative_position_id = GER_aggressive_realpolitk
+		x = 0
+		y = 2
+		cost = 5
+		ai_will_do = {
+			factor = 25
+		}
+		prerequisite = {
+			focus = GER_secure_central_european_democracy
+		}
+		prerequisite = {
+			focus = GER_secure_scandinavia
+		}
+		prerequisite = {
+			focus = GER_intergrate_west_poland
+		}
+		completion_reward = {
+			add_political_power = 150
+			unlock_decision_tooltip = GER_intervene_in_greece
+			unlock_decision_tooltip = GER_invite_slovenia
+			unlock_decision_tooltip = GER_invite_croatia
+			unlock_decision_tooltip = GER_free_bosnia
+			unlock_decision_tooltip = GER_free_serbia
+			unlock_decision_tooltip = GER_pressure_small_balkan_countries
+		}
+	}
+	focus = {
+		id = GER_war_plan_black
+		icon = GFX_focus_GER_War_Plan_Black
+		relative_position_id = GER_maximize_supply_lines
+		x = 3
+		y = 1
+		cost = 5
+		ai_will_do = {
+			factor = 25
+		}
+		prerequisite = {
+			focus = GER_balkan_intervention
+		}
+		prerequisite = {
+			focus = GER_million_man_army
+			focus = GER_war_rationing
+			focus = GER_maximize_supply_lines
+			focus = GER_dominate_the_skies
+		}
+		available = {
+			has_war = no
+			NOT = {
+				country_exists = ITA
+			}
+			FSP = {
+				is_puppet_of = GER
+			}
+			has_global_flag = GER_iberia_pacified
+		}
+		bypass = {
+			FRA = {
+				has_completed_focus = FRA_EU_Sister_Republic
+			}
+		}
+		completion_reward = {
+			custom_effect_tooltip = GER_war_plan_black_tt
+			hidden_effect = {
+				GER = {
+					annex_country = {
+						target = ITA
+						transfer_troops = yes
+					}
+					annex_country = {
+						target = FSP
+						transfer_troops = yes
+					}
+					every_state = {
+						limit = {
+							OR = {
+								is_core_of = ITA
+								is_core_of = FRA
+								is_core_of = SPR
+								is_core_of = POR
+							}
+						}
+						add_core_of = GER
+					}
+				}
+			}
+		}
+	}
+	focus = {
+		id = GER_reset_european_economies
+		icon = GFX_focus_GER_reset_european_economies
+		relative_position_id = GER_convene_the_european_parliament
+		x = -11
+		y = 1
+		cost = 5
+		ai_will_do = {
+			factor = 50
+		}
+		prerequisite = {
+			focus = GER_convene_the_european_parliament
+		}
+		allow_branch = {
+			has_country_flag = GER_ultralib_tree_unlocked_flag
+		}
+		completion_reward = {
+			GER_increase_catastrophe = yes
+			custom_effect_tooltip = tooltip_white_line
+			set_temp_variable = {
+				var = inflation_var_temp
+				value = inflation_var
+			}
+			multiply_temp_variable = {
+				var = inflation_var_temp
+				value = -0.25
+			}
+			add_inflation = yes
+			custom_effect_tooltip = tooltip_white_line
+			custom_effect_tooltip = change_tax_law_tooltip
+			show_ideas_tooltip = low_taxes
+			custom_effect_tooltip = tooltip_white_line
+			remove_dynamic_modifier = {
+				modifier = GER_peoples_economy_dynamic
+			}
+			custom_effect_tooltip = tooltip_white_line
+			effect_tooltip = {
+				add_ideas = GER_great_reset_dummy_1
+			}
+			hidden_effect = {
+				add_ideas = low_taxes
+				set_variable = {
+					var = GER_reset_political_power_gain_dynamic_var
+					value = 0
+				}
+				set_variable = {
+					var = GER_reset_stability_factor_dynamic_var
+					value = -0.15
+				}
+				set_variable = {
+					var = GER_reset_stability_weekly_dynamic_var
+					value = 0
+				}
+				set_variable = {
+					var = GER_reset_war_support_factor_dynamic_var
+					value = 0
+				}
+				set_variable = {
+					var = GER_reset_war_support_weekly_dynamic_var
+					value = 0
+				}
+				set_variable = {
+					var = GER_reset_consumer_goods_factor_dynamic_var
+					value = 0
+				}
+				set_variable = {
+					var = GER_reset_local_resources_factor_dynamic_var
+					value = 0
+				}
+				set_variable = {
+					var = GER_reset_global_building_slots_factor_dynamic_var
+					value = 0
+				}
+				set_variable = {
+					var = GER_reset_research_speed_factor_dynamic_var
+					value = 0
+				}
+				set_variable = {
+					var = GER_reset_compliance_growth_dynamic_var
+					value = 0
+				}
+				set_variable = {
+					var = GER_reset_resistance_growth_dynamic_var
+					value = 0
+				}
+				set_variable = {
+					var = GER_reset_resistance_decay_dynamic_var
+					value = 0
+				}
+				set_variable = {
+					var = GER_reset_production_factory_max_efficiency_factor_dynamic_var
+					value = 0
+				}
+				set_variable = {
+					var = GER_reset_production_factory_efficiency_gain_factor_dynamic_var
+					value = 0
+				}
+				set_variable = {
+					var = GER_reset_production_factory_start_efficiency_factor_dynamic_var
+					value = 0
+				}
+				set_variable = {
+					var = GER_reset_line_change_production_efficiency_factor_dynamic_var
+					value = 0
+				}
+				set_variable = {
+					var = GER_reset_production_lack_of_resource_penalty_factor_dynamic_var
+					value = 0
+				}
+				set_variable = {
+					var = GER_reset_fuel_gain_factor_dynamic_var
+					value = 0
+				}
+				set_variable = {
+					var = GER_reset_fuel_gain_factor_from_states_dynamic_var
+					value = 0
+				}
+				set_variable = {
+					var = GER_reset_production_speed_buildings_factor_dynamic_var
+					value = 0
+				}
+				set_variable = {
+					var = GER_reset_industrial_capacity_factory_dynamic_var
+					value = 0.1
+				}
+				set_variable = {
+					var = GER_reset_industrial_capacity_dockyard_dynamic_var
+					value = 0.1
+				}
+				set_variable = {
+					var = GER_reset_production_speed_infrastructure_factor_dynamic_var
+					value = 0
+				}
+				set_variable = {
+					var = GER_reset_production_speed_industrial_complex_factor_dynamic_var
+					value = 0
+				}
+				set_variable = {
+					var = GER_reset_production_speed_office_park_factor_dynamic_var
+					value = 0
+				}
+				set_variable = {
+					var = GER_reset_production_speed_rail_way_factor_dynamic_var
+					value = 0
+				}
+				set_variable = {
+					var = GER_reset_production_speed_arms_factory_factor_dynamic_var
+					value = 0
+				}
+				set_variable = {
+					var = GER_reset_production_speed_dockyard_factor_dynamic_var
+					value = 0
+				}
+				set_variable = {
+					var = GER_reset_production_speed_power_plant_factor_dynamic_var
+					value = 0
+				}
+				set_variable = {
+					var = GER_reset_production_speed_nuclear_reactor_factor_dynamic_var
+					value = 0
+				}
+				set_variable = {
+					var = GER_reset_production_speed_energy_farm_factor_dynamic_var
+					value = 0.2
+				}
+				set_variable = {
+					var = GER_reset_industrial_development_monthly_dynamic_var
+					value = 0
+				}
+				set_variable = {
+					var = GER_reset_poverty_development_monthly_dynamic_var
+					value = 0
+				}
+				set_variable = {
+					var = GER_reset_farming_development_monthly_dynamic_var
+					value = 0
+				}
+				set_variable = {
+					var = GER_reset_academic_development_monthly_dynamic_var
+					value = 0
+				}
+				set_variable = {
+					var = GER_reset_society_development_monthly_dynamic_var
+					value = 0
+				}
+				set_variable = {
+					var = GER_reset_income_growth_factor_dynamic_var
+					value = 0
+				}
+				set_variable = {
+					var = GER_reset_expense_growth_factor_dynamic_var
+					value = 0
+				}
+				set_variable = {
+					var = GER_reset_business_value_factor_dynamic_var
+					value = 0
+				}
+				set_variable = {
+					var = GER_reset_personal_value_factor_dynamic_var
+					value = -0.25
+				}
+				set_variable = {
+					var = GER_reset_personal_expense_dynamic_var
+					value = 0
+				}
+				set_variable = {
+					var = GER_reset_tax_business_rate_dynamic_var
+					value = 0
+				}
+				set_variable = {
+					var = GER_reset_tax_personal_rate_dynamic_var
+					value = 0
+				}
+				set_variable = {
+					var = GER_reset_interest_rate_dynamic_var
+					value = 0
+				}
+				set_variable = {
+					var = GER_reset_inflation_monthly_dynamic_var
+					value = 0
+				}
+				set_variable = {
+					var = GER_reset_military_factory_upkeep_factor_dynamic_var
+					value = 0
+				}
+				set_variable = {
+					var = GER_reset_local_factories_dynamic_var
+					value = 0
+				}
+				add_dynamic_modifier = {
+					modifier = GER_great_reset_dynamic
+				}
+			}
+		}
+	}
+	focus = {
+		id = GER_national_corporatism
+		icon = GFX_focus_GER_national_corporatism
+		relative_position_id = GER_reset_european_economies
+		x = -2
+		y = 1
+		cost = 5
+		ai_will_do = {
+			factor = 50
+			modifier = {
+				factor = 0
+				OR = {
+					has_game_rule = {
+						rule = The_GER_Genuine_Conspiracy_Theories
+						option = The_GER_Genuine_Conspiracy_Theories_Corporatocracy
+					}
+				}
+			}
+		}
+		prerequisite = {
+			focus = GER_reset_european_economies
+		}
+		mutually_exclusive = {
+			focus = GER_implement_corporate_governance
+		}
+		completion_reward = {
+			set_temp_variable = {
+				var = inflation_var_temp
+				value = inflation_var
+			}
+			multiply_temp_variable = {
+				var = inflation_var_temp
+				value = -0.33
+			}
+			add_inflation = yes
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = GER_great_reset_empty_dummy
+					add_idea = GER_great_reset_dummy_2
+				}
+			}
+			change_economy_type_inclusive_capitalism = yes
+			hidden_effect = {
+				add_to_variable = {
+					var = GER_reset_stability_factor_dynamic_var
+					value = 0.1
+				}
+				add_to_variable = {
+					var = GER_reset_business_value_factor_dynamic_var
+					value = 0.25
+				}
+				add_to_variable = {
+					var = GER_reset_personal_value_factor_dynamic_var
+					value = -0.25
+				}
+				add_to_variable = {
+					var = GER_reset_industrial_capacity_factory_dynamic_var
+					value = 0.2
+				}
+				add_to_variable = {
+					var = GER_reset_industrial_capacity_dockyard_dynamic_var
+					value = 0.1
+				}
+				add_to_variable = {
+					var = GER_reset_production_speed_power_plant_factor_dynamic_var
+					value = -0.5
+				}
+				add_to_variable = {
+					var = GER_reset_production_speed_nuclear_reactor_factor_dynamic_var
+					value = -0.5
+				}
+				add_to_variable = {
+					var = GER_reset_research_speed_factor_dynamic_var
+					value = -0.1
+				}
+				country_event = {
+					id = germany.283
+					days = 50
+					random_days = 50
+				}
+			}
+		}
+	}
+	focus = {
+		id = GER_nationalize_key_industries
+		icon = GFX_focus_GER_nationalize_key_industries
+		relative_position_id = GER_national_corporatism
+		x = -1
+		y = 1
+		cost = 5
+		ai_will_do = {
+			factor = 25
+		}
+		prerequisite = {
+			focus = GER_national_corporatism
+		}
+		completion_reward = {
+			set_temp_variable = {
+				inflation_var_temp = -0.5
+			}
+			add_inflation = yes
+			custom_effect_tooltip = tooltip_white_line
+			add_timed_idea = {
+				idea = GER_japanification
+				days = 300
+			}
+			custom_effect_tooltip = tooltip_white_line
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = GER_great_reset_empty_dummy
+					add_idea = GER_great_reset_dummy_3
+				}
+			}
+			hidden_effect = {
+				add_to_variable = {
+					var = GER_reset_consumer_goods_factor_dynamic_var
+					value = -0.1
+				}
+				add_to_variable = {
+					var = GER_reset_expense_growth_factor_dynamic_var
+					value = 0.25
+				}
+				add_to_variable = {
+					var = GER_reset_personal_value_factor_dynamic_var
+					value = -0.25
+				}
+				add_to_variable = {
+					var = GER_reset_dtg_threshold_factor_dynamic_var
+					value = 0.25
+				}
+				add_to_variable = {
+					var = GER_reset_monthly_population_dynamic_var
+					value = -0.5
+				}
+			}
+		}
+	}
+	focus = {
+		id = GER_promote_state_owned_enterprise
+		icon = GFX_focus_GER_EU_Promote_State_Owned_Enterprise
+		relative_position_id = GER_nationalize_key_industries
+		x = 0
+		y = 1
+		cost = 5
+		ai_will_do = {
+			factor = 25
+		}
+		prerequisite = {
+			focus = GER_nationalize_key_industries
+		}
+		completion_reward = {
+			set_temp_variable = {
+				var = inflation_var_temp
+				value = inflation_var
+			}
+			multiply_temp_variable = {
+				var = inflation_var_temp
+				value = -0.75
+			}
+			add_inflation = yes
+			add_political_power = 100
+			custom_effect_tooltip = tooltip_white_line
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = GER_great_reset_empty_dummy
+					add_idea = GER_great_reset_dummy_5
+				}
+				set_temp_variable = {
+					var = poverty_development_var_temp
+					value = 0.15
+				}
+				add_poverty_development = yes
+			}
+			hidden_effect = {
+				set_temp_variable = {
+					var = poverty_development_var_temp
+					value = -0.15
+				}
+				add_poverty_development = yes
+				add_to_variable = {
+					var = GER_reset_personal_expense_factor_dynamic_var
+					value = -0.15
+				}
+				add_to_variable = {
+					var = GER_reset_personal_value_factor_dynamic_var
+					value = -0.25
+				}
+				add_to_variable = {
+					var = GER_reset_industrial_capacity_factory_dynamic_var
+					value = 0.1
+				}
+				add_to_variable = {
+					var = GER_reset_war_support_factor_dynamic_var
+					value = -0.2
+				}
+				add_to_variable = {
+					var = GER_reset_monthly_population_dynamic_var
+					value = -0.5
+				}
+				add_to_variable = {
+					var = GER_reset_production_lack_of_resource_penalty_factor_dynamic_var
+					value = -0.3
+				}
+				add_to_variable = {
+					var = GER_reset_production_factory_start_efficiency_factor_dynamic_var
+					value = 0.15
+				}
+			}
+		}
+	}
+	focus = {
+		id = GER_strengthen_transnational_institutions
+		icon = GFX_focus_GER_strengthen_transnational_institutions
+		relative_position_id = GER_national_corporatism
+		x = 1
+		y = 1
+		cost = 5
+		ai_will_do = {
+			factor = 25
+		}
+		prerequisite = {
+			focus = GER_national_corporatism
+		}
+		completion_reward = {
+			add_popularity = {
+				ideology = social_liberal
+				popularity = 0.05
+			}
+			add_offsite_building = {
+				type = office_park
+				level = 10
+			}
+			custom_effect_tooltip = tooltip_white_line
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = GER_great_reset_empty_dummy
+					add_idea = GER_great_reset_dummy_4
+				}
+				set_temp_variable = {
+					var = society_development_var_temp
+					value = 0.1
+				}
+				add_society_development = yes
+			}
+			hidden_effect = {
+				set_temp_variable = {
+					var = society_development_var_temp
+					value = -0.1
+				}
+				add_society_development = yes
+				add_to_variable = {
+					var = GER_reset_personal_value_factor_dynamic_var
+					value = -0.25
+				}
+				add_to_variable = {
+					var = GER_reset_personal_expense_factor_dynamic_var
+					value = -0.15
+				}
+				add_to_variable = {
+					var = GER_reset_interest_rate_factor_dynamic_var
+					value = -0.5
+				}
+				add_to_variable = {
+					var = GER_reset_business_value_factor_dynamic_var
+					value = 0.25
+				}
+				add_to_variable = {
+					var = GER_reset_consumer_goods_factor_dynamic_var
+					value = -0.1
+				}
+				country_event = {
+					id = germany.313
+					days = 50
+				}
+			}
+		}
+	}
+	focus = {
+		id = GER_concessions_to_the_oligarchs
+		icon = GFX_focus_GER_EU_Concessions_to_the_Oligarchs
+		relative_position_id = GER_strengthen_transnational_institutions
+		x = 0
+		y = 1
+		cost = 5
+		ai_will_do = {
+			factor = 25
+		}
+		prerequisite = {
+			focus = GER_strengthen_transnational_institutions
+		}
+		completion_reward = {
+			add_popularity = {
+				ideology = authoritarian_democrat
+				popularity = 0.05
+			}
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = GER_great_reset_empty_dummy
+					add_idea = GER_great_reset_dummy_6
+				}
+				set_temp_variable = {
+					var = society_development_var_temp
+					value = 0.2
+				}
+				add_society_development = yes
+			}
+			hidden_effect = {
+				set_temp_variable = {
+					var = society_development_var_temp
+					value = -0.2
+				}
+				add_society_development = yes
+				add_to_variable = {
+					var = GER_reset_political_power_gain_dynamic_var
+					value = 0.1
+				}
+				add_to_variable = {
+					var = GER_reset_business_value_factor_dynamic_var
+					value = 0.25
+				}
+				add_to_variable = {
+					var = GER_reset_monthly_population_dynamic_var
+					value = -0.25
+				}
+				add_to_variable = {
+					var = GER_reset_research_speed_factor_dynamic_var
+					value = -0.15
+				}
+				add_to_variable = {
+					var = GER_reset_stability_factor_dynamic_var
+					value = 0.15
+				}
+				add_to_variable = {
+					var = GER_reset_encryption_dynamic_var
+					value = 3
+				}
+			}
+		}
+	}
+	focus = {
+		id = GER_implement_corporate_governance
+		icon = GFX_focus_GER_implement_corporate_governance
+		relative_position_id = GER_reset_european_economies
+		x = 2
+		y = 1
+		cost = 5
+		ai_will_do = {
+			factor = 25
+			modifier = {
+				factor = 0
+				OR = {
+					has_game_rule = {
+						rule = The_GER_Genuine_Conspiracy_Theories
+						option = The_GER_Genuine_Conspiracy_Theories_Klaus_Schwab
+					}
+				}
+			}
+		}
+		prerequisite = {
+			focus = GER_reset_european_economies
+		}
+		mutually_exclusive = {
+			focus = GER_national_corporatism
+		}
+		completion_reward = {
+			set_temp_variable = {
+				var = inflation_var_temp
+				value = inflation_var
+			}
+			multiply_temp_variable = {
+				var = inflation_var_temp
+				value = -0.5
+			}
+			add_inflation = yes
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = GER_great_reset_empty_dummy
+					add_idea = GER_great_reset_dummy_8
+				}
+			}
+			change_economy_type_oligopolistic_capitalism = yes
+			hidden_effect = {
+				add_to_variable = {
+					var = GER_reset_business_value_factor_dynamic_var
+					value = 0.2
+				}
+				add_to_variable = {
+					var = GER_reset_income_growth_factor_dynamic_var
+					value = 0.15
+				}
+				add_to_variable = {
+					var = GER_reset_production_factory_efficiency_gain_factor_dynamic_var
+					value = 0.15
+				}
+				add_to_variable = {
+					var = GER_reset_production_speed_office_park_factor_dynamic_var
+					value = 0.2
+				}
+			}
+		}
+	}
+	focus = {
+		id = GER_promote_enviromental_social_governance
+		icon = GFX_focus_GER_promote_enviromental_social_governance1
+		relative_position_id = GER_implement_corporate_governance
+		x = -1
+		y = 1
+		cost = 5
+		ai_will_do = {
+			factor = 25
+		}
+		prerequisite = {
+			focus = GER_implement_corporate_governance
+		}
+		completion_reward = {
+			set_temp_variable = {
+				var = inflation_var_temp
+				value = inflation_var
+			}
+			multiply_temp_variable = {
+				var = inflation_var_temp
+				value = -0.5
+			}
+			add_inflation = yes
+			modify_building_resources = {
+				building = energy_farm
+				resource = coal
+				amount = 1
+			}
+			custom_effect_tooltip = tooltip_white_line
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = GER_great_reset_empty_dummy
+					add_idea = GER_great_reset_dummy_9
+				}
+			}
+			hidden_effect = {
+				add_to_variable = {
+					var = GER_reset_personal_expense_factor_dynamic_var
+					value = -0.2
+				}
+				add_to_variable = {
+					var = GER_reset_personal_value_factor_dynamic_var
+					value = -0.15
+				}
+				add_to_variable = {
+					var = GER_reset_poverty_development_monthly_dynamic_var
+					value = -0.02
+				}
+				add_to_variable = {
+					var = GER_reset_industrial_development_monthly_dynamic_var
+					value = 0.02
+				}
+				add_to_variable = {
+					var = GER_reset_academic_development_monthly_dynamic_var
+					value = 0.02
+				}
+			}
+		}
+	}
+	focus = {
+		id = GER_shareholder_democracy
+		icon = GFX_focus_GER_shareholder_democracy
+		relative_position_id = GER_promote_enviromental_social_governance
+		x = 0
+		y = 1
+		cost = 5
+		ai_will_do = {
+			factor = 25
+		}
+		prerequisite = {
+			focus = GER_implement_corporate_governance
+		}
+		completion_reward = {
+			add_political_power = 200
+			set_temp_variable = {
+				var = farming_development_var_temp
+				value = -0.15
+			}
+			add_farming_development = yes
+			custom_effect_tooltip = tooltip_white_line
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = GER_great_reset_empty_dummy
+					add_idea = GER_great_reset_dummy_11
+				}
+			}
+			hidden_effect = {
+				add_to_variable = {
+					var = GER_reset_political_power_gain_dynamic_var
+					value = 0.2
+				}
+				add_to_variable = {
+					var = GER_reset_stability_factor_dynamic_var
+					value = 0.1
+				}
+				add_to_variable = {
+					var = GER_reset_expense_growth_factor_dynamic_var
+					value = -0.1
+				}
+				add_to_variable = {
+					var = GER_reset_local_factories_dynamic_var
+					value = 0.1
+				}
+				add_to_variable = {
+					var = GER_reset_society_development_monthly_dynamic_var
+					value = -0.01
+				}
+			}
+		}
+	}
+	focus = {
+		id = GER_reconstruct_european_cities
+		icon = GFX_focus_GER_reconstruct_european_cities
+		relative_position_id = GER_implement_corporate_governance
+		x = 1
+		y = 1
+		cost = 5
+		ai_will_do = {
+			factor = 25
+		}
+		prerequisite = {
+			focus = GER_implement_corporate_governance
+		}
+		completion_reward = {
+			country_event = germany.351
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = GER_great_reset_empty_dummy
+					add_idea = GER_great_reset_dummy_12
+				}
+			}
+			random_owned_controlled_state = {
+				limit = {
+					is_core_of = ROOT
+					free_building_slots = {
+						building = industrial_complex
+						size > 4
+						include_locked = yes
+					}
+				}
+				add_extra_state_shared_building_slots = 4
+				add_building_construction = {
+					type = industrial_complex
+					level = 4
+					instant_build = yes
+				}
+			}
+			random_owned_controlled_state = {
+				increase_state_category = yes
+			}
+			random_owned_controlled_state = {
+				increase_state_category = yes
+			}
+			random_owned_controlled_state = {
+				increase_state_category = yes
+			}
+			hidden_effect = {
+				add_to_variable = {
+					var = GER_reset_production_speed_buildings_factor_dynamic_var
+					value = 0.1
+				}
+				add_to_variable = {
+					var = GER_reset_global_building_slots_factor_dynamic_var
+					value = 0.15
+				}
+				add_to_variable = {
+					var = GER_reset_consumer_goods_factor_dynamic_var
+					value = -0.1
+				}
+			}
+		}
+	}
+	focus = {
+		id = GER_rentier_based_economy
+		icon = GFX_focus_GER_rentier_based_economy
+		relative_position_id = GER_reconstruct_european_cities
+		x = 0
+		y = 1
+		cost = 5
+		ai_will_do = {
+			factor = 25
+		}
+		prerequisite = {
+			focus = GER_implement_corporate_governance
+		}
+		completion_reward = {
+			set_temp_variable = {
+				var = inflation_var_temp
+				value = inflation_var
+			}
+			multiply_temp_variable = {
+				var = inflation_var_temp
+				value = -0.5
+			}
+			add_inflation = yes
+			custom_effect_tooltip = tooltip_white_line
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = GER_great_reset_empty_dummy
+					add_idea = GER_great_reset_dummy_10
+				}
+			}
+			decrease_welfare = yes
+			decrease_safety = yes
+			hidden_effect = {
+				add_to_variable = {
+					var = GER_reset_industrial_capacity_factory_dynamic_var
+					value = 0.15
+				}
+				add_to_variable = {
+					var = GER_reset_production_factory_efficiency_gain_factor_dynamic_var
+					value = 0.15
+				}
+				add_to_variable = {
+					var = GER_reset_research_speed_factor_dynamic_var
+					value = 0.05
+				}
+				add_to_variable = {
+					var = GER_reset_business_value_factor_dynamic_var
+					value = 0.15
+				}
+				add_to_variable = {
+					var = GER_reset_poverty_development_monthly_dynamic_var
+					value = -0.02
+				}
+			}
+		}
+	}
+	focus = {
+		id = GER_state_capitalism
+		icon = GFX_focus_GER_state_capitalism
+		relative_position_id = GER_promote_state_owned_enterprise
+		x = 1
+		y = 1
+		cost = 5
+		ai_will_do = {
+			factor = 25
+		}
+		prerequisite = {
+			focus = GER_promote_state_owned_enterprise
+		}
+		prerequisite = {
+			focus = GER_concessions_to_the_oligarchs
+		}
+		completion_reward = {
+			set_temp_variable = {
+				var = inflation_var_temp
+				value = inflation_var
+			}
+			multiply_temp_variable = {
+				var = inflation_var_temp
+				value = -0.99
+			}
+			add_inflation = yes
+			custom_effect_tooltip = tooltip_white_line
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = GER_great_reset_empty_dummy
+					add_idea = GER_great_reset_dummy_7
+				}
+				set_temp_variable = {
+					var = poverty_development_var_temp
+					value = 0.2
+				}
+				add_poverty_development = yes
+			}
+			hidden_effect = {
+				set_temp_variable = {
+					var = poverty_development_var_temp
+					value = -0.2
+				}
+				add_poverty_development = yes
+				add_to_variable = {
+					var = GER_reset_military_factory_upkeep_factor_dynamic_var
+					value = -0.3
+				}
+				add_to_variable = {
+					var = GER_reset_production_speed_arms_factory_factor_dynamic_var
+					value = 0.15
+				}
+				add_to_variable = {
+					var = GER_reset_industrial_capacity_factory_dynamic_var
+					value = 0.1
+				}
+				add_to_variable = {
+					var = GER_reset_political_power_gain_dynamic_var
+					value = 0.25
+				}
+				add_to_variable = {
+					var = GER_reset_personal_expense_factor_dynamic_var
+					value = -0.2
+				}
+				add_to_variable = {
+					var = GER_reset_dtg_threshold_factor_dynamic_var
+					value = 0.25
+				}
+			}
+		}
+	}
+	focus = {
+		id = GER_responsible_capitalism
+		icon = GFX_focus_GER_EU_Responsible_Capitalism
+		relative_position_id = GER_shareholder_democracy
+		x = 1
+		y = 1
+		cost = 5
+		ai_will_do = {
+			factor = 25
+		}
+		prerequisite = {
+			focus = GER_shareholder_democracy
+		}
+		prerequisite = {
+			focus = GER_rentier_based_economy
+		}
+		prerequisite = {
+			focus = GER_promote_enviromental_social_governance
+		}
+		prerequisite = {
+			focus = GER_reconstruct_european_cities
+		}
+		completion_reward = {
+			decrease_welfare = yes
+			custom_effect_tooltip = tooltip_white_line
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = GER_great_reset_empty_dummy
+					add_idea = GER_great_reset_dummy_13
+				}
+			}
+			set_temp_variable = {
+				var = academic_development_var_temp
+				value = 0.15
+			}
+			add_academic_development = yes
+			set_temp_variable = {
+				var = industrial_development_var_temp
+				value = 0.15
+			}
+			add_industrial_development = yes
+			set_temp_variable = {
+				var = inflation_var_temp
+				value = inflation_var
+			}
+			multiply_temp_variable = {
+				var = inflation_var_temp
+				value = -0.99
+			}
+			add_inflation = yes
+			hidden_effect = {
+				add_ideas = {
+					high_interest_rates
+				}
+				add_to_variable = {
+					var = GER_reset_income_growth_factor_dynamic_var
+					value = 0.15
+				}
+				add_to_variable = {
+					var = GER_reset_research_speed_factor_dynamic_var
+					value = 0.1
+				}
+				add_to_variable = {
+					var = GER_reset_consumer_goods_factor_dynamic_var
+					value = -0.1
+				}
+			}
+		}
+	}
+	focus = {
+		id = GER_fourth_industrial_revolution
+		icon = GFX_focus_GER_fourth_industrial_revolution
+		relative_position_id = GER_state_capitalism
+		x = 2
+		y = 1
+		cost = 5
+		ai_will_do = {
+			factor = 25
+		}
+		prerequisite = {
+			focus = GER_responsible_capitalism
+			focus = GER_state_capitalism
+		}
+		completion_reward = {
+			add_research_slot = 1
+			custom_effect_tooltip = tooltip_white_line
+			increase_industry = yes
+			increase_society = yes
+		}
+	}
+	focus = {
+		id = GER_the_techno_utopian_ideal
+		icon = GFX_focus_GER_the_techno_utopian_ideal
+		relative_position_id = GER_convene_the_european_parliament
+		x = -3
+		y = 1
+		cost = 5
+		ai_will_do = {
+			factor = 25
+			modifier = {
+				factor = 0
+				OR = {
+					has_game_rule = {
+						rule = The_GER_Genuine_Conspiracy_Theories
+						option = The_GER_Genuine_Conspiracy_Theories_Gunther_Fehlinger
+					}
+				}
+			}
+		}
+		prerequisite = {
+			focus = GER_convene_the_european_parliament
+		}
+		allow_branch = {
+			has_country_flag = GER_ultralib_tree_unlocked_flag
+			NOT = {
+				has_country_flag = GER_gunther_fehlinger_flag
+			}
+		}
+		mutually_exclusive = {
+			focus = GER_old_system_new_form
+		}
+		completion_reward = {
+			add_political_power = 100
+			add_ideas = GER_european_liberalization
+			add_popularity = {
+				ideology = authoritarian_democrat
+				popularity = 0.05
+			}
+			news_event = {
+				id = news.592
+				days = 1
+			}
+		}
+	}
+	focus = {
+		id = GER_freedom_isnt_free
+		icon = GFX_focus_GER_freedom_isnt_free
+		relative_position_id = GER_the_techno_utopian_ideal
+		x = -1
+		y = 1
+		cost = 5
+		ai_will_do = {
+			factor = 25
+		}
+		prerequisite = {
+			focus = GER_the_techno_utopian_ideal
+		}
+		completion_reward = {
+			GER_increase_liberalization = yes
+		}
+	}
+	focus = {
+		id = GER_weaken_regional_nationalism
+		icon = GFX_focus_GER_weaken_regional_nationalism
+		relative_position_id = GER_the_techno_utopian_ideal
+		x = 1
+		y = 1
+		cost = 5
+		ai_will_do = {
+			factor = 25
+		}
+		prerequisite = {
+			focus = GER_the_techno_utopian_ideal
+		}
+		completion_reward = {
+			add_stability = -0.1
+			add_political_power = 100
+			set_temp_variable = {
+				var = society_development_var_temp
+				value = -0.05
+			}
+			add_society_development = yes
+			set_temp_variable = {
+				var = eu_fed_var_temp
+				value = 0.05
+			}
+			GER_add_eu_fed = yes
+			GER_decrease_nationalist = yes
+			remove_mission = GER_nationalist_resistance_mission
+		}
+	}
+	focus = {
+		id = GER_concessions_to_the_tech_giants
+		icon = GFX_focus_GER_concessions_to_the_tech_giants
+		relative_position_id = GER_weaken_regional_nationalism
+		x = 2
+		y = 1
+		offset = {
+			x = -1
+			y = 0
+			trigger = {
+				has_country_flag = GER_wef_flag
+			}
+		}
+		cost = 5
+		ai_will_do = {
+			factor = 25
+			modifier = {
+				factor = 100
+				OR = {
+					has_game_rule = {
+						rule = The_GER_Genuine_Conspiracy_Theories
+						option = The_GER_Genuine_Conspiracy_Theories_Gunther_Fehlinger
+					}
+				}
+			}
+		}
+		prerequisite = {
+			focus = GER_weaken_regional_nationalism
+			focus = GER_entrenched_elitism
+		}
+		completion_reward = {
+			add_ideas = GER_corporate_influence
+			add_popularity = {
+				ideology = authoritarian_democrat
+				popularity = 0.05
+			}
+		}
+	}
+	focus = {
+		id = GER_the_corporate_state
+		icon = GFX_focus_GER_the_corporate_state
+		relative_position_id = GER_freedom_isnt_free
+		x = 1
+		y = 1
+		cost = 5
+		ai_will_do = {
+			factor = 25
+		}
+		prerequisite = {
+			focus = GER_freedom_isnt_free
+		}
+		prerequisite = {
+			focus = GER_weaken_regional_nationalism
+		}
+		available = {
+			OR = {
+				has_completed_focus = GER_national_corporatism
+				has_completed_focus = GER_implement_corporate_governance
+			}
+		}
+		completion_reward = {
+			custom_effect_tooltip = unlock_eco_minister_tooltip
+			show_ideas_tooltip = GER_Schwaub
+			#country_event = {
+			#	id = germany.222
+			#}
+			if = {
+				limit = {
+					has_game_rule = {
+						rule = The_GER_Genuine_Conspiracy_Theories
+						option = The_GER_Genuine_Conspiracy_Theories_Just_a_conspiracy_theory
+					}
+				}
+				complete_national_focus = GER_fourth_industrial_revolution
+			}
+			if = {
+				limit = {
+					has_completed_focus = GER_national_corporatism
+				}
+				country_event = {
+					id = germany.303
+					days = 15
+				}
+				hidden_effect = {
+					news_event = {
+						id = news.590
+						days = 17
+					}
+				}
+			}
+			else = {
+				activate_mission = GER_corpo_coup
+			}
+		}
+	}
+	focus = {
+		id = GER_secure_european_democracy
+		icon = GFX_focus_GER_secure_european_democracy
+		relative_position_id = GER_the_corporate_state
+		x = -1
+		y = 1
+		cost = 5
+		ai_will_do = {
+			factor = 25
+		}
+		prerequisite = {
+			focus = GER_the_corporate_state
+		}
+		prerequisite = {
+			focus = GER_prohibit_subversive_media
+		}
+		completion_reward = {
+			add_popularity = {
+				ideology = social_liberal
+				popularity = 0.05
+			}
+			unlock_decision_tooltip = GER_our_beautiful_liberty
+		}
+	}
+	focus = {
+		id = GER_prohibit_subversive_media
+		icon = GFX_focus_GER_prohibit_subversive_media
+		relative_position_id = GER_freedom_isnt_free
+		x = -1
+		y = 1
+		cost = 5
+		ai_will_do = {
+			factor = 25
+		}
+		prerequisite = {
+			focus = GER_freedom_isnt_free
+		}
+		completion_reward = {
+			add_political_power = 100
+			unlock_decision_tooltip = GER_think_of_your_future
+			set_temp_variable = {
+				var = campaign_slot_total_var_temp
+				value = 1
+			}
+			add_total_campaign_slot = yes
+		}
+	}
+	focus = {
+		id = GER_government_of_national_emergency
+		icon = GFX_focus_GER_government_of_national_emergency
+		relative_position_id = GER_concessions_to_the_tech_giants
+		x = 0
+		y = 1
+		offset = {
+			x = -1
+			y = 0
+			trigger = {
+				has_country_flag = GER_wef_flag
+			}
+		}
+		cost = 5
+		ai_will_do = {
+			factor = 25
+			modifier = {
+				factor = 100
+				OR = {
+					has_game_rule = {
+						rule = The_GER_Genuine_Conspiracy_Theories
+						option = The_GER_Genuine_Conspiracy_Theories_Gunther_Fehlinger
+					}
+				}
+			}
+		}
+		prerequisite = {
+			focus = GER_concessions_to_the_tech_giants
+		}
+		completion_reward = {
+			add_political_power = 150
+			add_popularity = {
+				ideology = social_liberal
+				popularity = 0.15
+			}
+			set_temp_variable = {
+				coalition_partner_var_temp = token:libertarian_socialist
+			}
+			add_to_coalition = yes
+			set_temp_variable = {
+				coalition_partner_var_temp = token:social_democrat
+			}
+			add_to_coalition = yes
+			set_temp_variable = {
+				coalition_partner_var_temp = token:market_liberal
+			}
+			add_to_coalition = yes
+			set_temp_variable = {
+				coalition_partner_var_temp = token:conservative
+			}
+			add_to_coalition = yes
+			set_temp_variable = {
+				coalition_partner_var_temp = token:authoritarian_democrat
+			}
+			add_to_coalition = yes
+			hidden_effect = {
+				if = {
+					limit = {
+						has_idea = GER_gunther_fehlinger_for
+						NOT = {
+							has_completed_focus = GER_aggressive_realpolitk
+						}
+					}
+					country_event = {
+						id = germany.304
+						days = 14
+					}
+					news_event = {
+						id = news.591
+						days = 16
+					}
+				}
+			}
+		}
+	}
+	focus = {
+		id = GER_old_system_new_form
+		icon = GFX_focus_GER_old_system_new_form
+		relative_position_id = GER_convene_the_european_parliament
+		x = 3
+		y = 1
+		cost = 5
+		ai_will_do = {
+			factor = 25
+			modifier = {
+				factor = 0
+				OR = {
+					has_game_rule = {
+						rule = The_GER_Genuine_Conspiracy_Theories
+						option = The_GER_Genuine_Conspiracy_Theories_Klaus_Schwab
+					}
+					has_game_rule = {
+						rule = The_GER_Genuine_Conspiracy_Theories
+						option = The_GER_Genuine_Conspiracy_Theories_Corporatocracy
+					}
+				}
+			}
+			modifier = {
+				factor = 100
+				OR = {
+					has_game_rule = {
+						rule = The_GER_Genuine_Conspiracy_Theories
+						option = The_GER_Genuine_Conspiracy_Theories_Gunther_Fehlinger
+					}
+				}
+			}
+		}
+		prerequisite = {
+			focus = GER_convene_the_european_parliament
+		}
+		allow_branch = {
+			has_country_flag = GER_ultralib_tree_unlocked_flag
+			NOT = {
+				OR = {
+					has_country_flag = GER_wef_flag
+					has_country_flag = GER_gunther_fehlinger_flag
+				}
+			}
+		}
+		mutually_exclusive = {
+			focus = GER_the_techno_utopian_ideal
+		}
+		completion_reward = {
+			add_ideas = GER_europa_steadfast
+			add_popularity = {
+				ideology = conservative
+				popularity = 0.1
+			}
+			custom_effect_tooltip = tooltip_white_line
+			custom_effect_tooltip = appoint_head_minister_tooltip
+			show_ideas_tooltip = GER_Weber
+			custom_effect_tooltip = tooltip_white_line
+			custom_effect_tooltip = appoint_foreign_minister_tooltip
+			show_ideas_tooltip = GER_Wieland
+			custom_effect_tooltip = tooltip_white_line
+			set_politics = {
+				ruling_party = conservative
+			}
+			set_temp_variable = {
+				coalition_partner_var_temp = token:social_liberal
+			}
+			add_to_coalition = yes
+			news_event = {
+				id = news.593
+				days = 1
+			}
+			hidden_effect = {
+				add_ideas = GER_Weber
+				add_ideas = GER_Wieland
+				if = {
+					limit = {
+						is_ai = yes
+					}
+					add_ideas = GER_gunther_fehlinger_for
+				}
+			}
+		}
+	}
+	focus = {
+		id = GER_entrenched_elitism
+		icon = GFX_focus_GER_entrenched_elitism
+		relative_position_id = GER_old_system_new_form
+		x = -1
+		y = 1
+		cost = 5
+		ai_will_do = {
+			factor = 25
+			modifier = {
+				factor = 100
+				OR = {
+					has_game_rule = {
+						rule = The_GER_Genuine_Conspiracy_Theories
+						option = The_GER_Genuine_Conspiracy_Theories_Gunther_Fehlinger
+					}
+				}
+			}
+		}
+		prerequisite = {
+			focus = GER_old_system_new_form
+		}
+		completion_reward = {
+			decrease_safety = yes
+			decrease_welfare = yes
+			add_political_power = 50
+		}
+	}
+	focus = {
+		id = GER_anti_modernist_revolution
+		icon = GFX_focus_GER_anti_modernist_revolution
+		relative_position_id = GER_old_system_new_form
+		x = 1
+		y = 1
+		cost = 5
+		ai_will_do = {
+			factor = 25
+		}
+		prerequisite = {
+			focus = GER_old_system_new_form
+		}
+		completion_reward = {
+			unlock_decision_tooltip = GER_anti_modernist_revolution_pr
+			set_temp_variable = {
+				var = campaign_slot_total_var_temp
+				value = 1
+			}
+			add_total_campaign_slot = yes
+			add_popularity = {
+				ideology = conservative
+				popularity = 0.1
+			}
+		}
+	}
+	focus = {
+		id = GER_european_nationalism
+		icon = GFX_focus_GER_european_nationalism
+		relative_position_id = GER_anti_modernist_revolution
+		x = 1
+		y = 1
+		cost = 5
+		ai_will_do = {
+			factor = 25
+		}
+		prerequisite = {
+			focus = GER_anti_modernist_revolution
+		}
+		completion_reward = {
+			add_political_power = 50
+			add_stability = 0.1
+			set_temp_variable = {
+				var = eu_fed_var_temp
+				value = -0.1
+			}
+			GER_add_eu_fed = yes
+			remove_mission = GER_nationalist_resistance_mission
+		}
+	}
+	focus = {
+		id = GER_codify_social_stratification
+		icon = GFX_focus_GER_codify_social_stratification
+		relative_position_id = GER_entrenched_elitism
+		x = 1
+		y = 1
+		cost = 5
+		ai_will_do = {
+			factor = 25
+		}
+		prerequisite = {
+			focus = GER_anti_modernist_revolution
+		}
+		prerequisite = {
+			focus = GER_entrenched_elitism
+		}
+		completion_reward = {
+			set_temp_variable = {
+				var = society_development_var_temp
+				value = 0.1
+			}
+			add_society_development = yes
+			set_temp_variable = {
+				var = poverty_development_var_temp
+				value = -0.1
+			}
+			add_poverty_development = yes
+			GER_increase_steadfast = yes
+		}
+	}
+	focus = {
+		id = GER_the_managerial_revolution
+		icon = GFX_focus_GER_the_managerial_revolution
+		relative_position_id = GER_codify_social_stratification
+		x = 1
+		y = 1
+		cost = 5
+		ai_will_do = {
+			factor = 25
+		}
+		prerequisite = {
+			focus = GER_european_nationalism
+		}
+		prerequisite = {
+			focus = GER_codify_social_stratification
+		}
+		completion_reward = {
+			custom_effect_tooltip = appoint_economic_minister_tooltip
+			show_ideas_tooltip = GER_Mortler
+			custom_effect_tooltip = tooltip_white_line
+			custom_effect_tooltip = appoint_interior_minister_tooltip
+			show_ideas_tooltip = GER_Ferber
+			custom_effect_tooltip = tooltip_white_line
+			custom_effect_tooltip = appoint_int_minister_tooltip
+			show_ideas_tooltip = GER_Schwab
+			hidden_effect = {
+				add_ideas = GER_Mortler
+				add_ideas = GER_Ferber
+				add_ideas = GER_Schwab
+			}
+		}
+	}
+	focus = {
+		id = GER_the_europe_of_tommorow
+		icon = GFX_focus_GER_the_europe_of_tomorrow
+		relative_position_id = GER_secure_european_democracy
+		x = 2
+		y = 1
+		offset = {
+			x = -1
+			y = 0
+			trigger = {
+				has_country_flag = GER_wef_flag
+			}
+		}
+		cost = 5
+		ai_will_do = {
+			factor = 25
+		}
+		prerequisite = {
+			focus = GER_secure_european_democracy
+		}
+		prerequisite = {
+			focus = GER_government_of_national_emergency
+		}
+		completion_reward = {
+			add_popularity = {
+				ideology = social_liberal
+				popularity = 0.05
+			}
+			set_temp_variable = {
+				var = eu_fed_var_temp
+				value = 0.05
+			}
+			GER_add_eu_fed = yes
+			custom_effect_tooltip = GER_integrate_benelux_tt
+			GER_increase_liberalization = yes
+			hidden_effect = {
+				every_state = {
+					limit = {
+						OR = {
+							is_core_of = BEL
+							is_core_of = HOL
+							is_core_of = LUX
+						}
+					}
+					add_core_of = GER
+				}
+				if = {
+					limit = {
+						has_idea = GER_nationalist_resistance1
+					}
+					remove_ideas = GER_nationalist_resistance1
+				}
+				else_if = {
+					limit = {
+						has_idea = GER_nationalist_resistance2
+					}
+					remove_ideas = GER_nationalist_resistance2
+				}
+				else_if = {
+					limit = {
+						has_idea = GER_nationalist_resistance3
+					}
+					remove_ideas = GER_nationalist_resistance3
+				}
+				else_if = {
+					limit = {
+						has_idea = GER_nationalist_resistance4
+					}
+					remove_ideas = GER_nationalist_resistance4
+				}
+			}
+		}
+	}
+	focus = {
+		id = GER_the_europe_of_yesterday
+		icon = GFX_focus_GER_the_europe_of_yesterday
+		relative_position_id = GER_the_managerial_revolution
+		x = -2
+		y = 1
+		cost = 5
+		ai_will_do = {
+			factor = 25
+		}
+		prerequisite = {
+			focus = GER_the_managerial_revolution
+		}
+		prerequisite = {
+			focus = GER_government_of_national_emergency
+		}
+		completion_reward = {
+			add_popularity = {
+				ideology = conservative
+				popularity = 0.05
+			}
+			add_war_support = 0.05
+			custom_effect_tooltip = GER_integrate_benelux_tt
+			GER_increase_steadfast = yes
+			hidden_effect = {
+				every_state = {
+					limit = {
+						OR = {
+							is_core_of = BEL
+							is_core_of = HOL
+							is_core_of = LUX
+						}
+					}
+					add_core_of = GER
+				}
+				if = {
+					limit = {
+						has_idea = GER_nationalist_resistance1
+					}
+					remove_ideas = GER_nationalist_resistance1
+				}
+				else_if = {
+					limit = {
+						has_idea = GER_nationalist_resistance2
+					}
+					remove_ideas = GER_nationalist_resistance2
+				}
+				else_if = {
+					limit = {
+						has_idea = GER_nationalist_resistance3
+					}
+					remove_ideas = GER_nationalist_resistance3
+				}
+				else_if = {
+					limit = {
+						has_idea = GER_nationalist_resistance4
+					}
+					remove_ideas = GER_nationalist_resistance4
+				}
+			}
+		}
+	}
+	focus = {
+		id = GER_europe_united_and_strong
+		icon = {
+			GFX_focus_GER_europe_united_and_strong2 = {
+				GER = {
+					NOT = {
+						has_country_flag = GER_gunther_fehlinger_flag
+					}
+				}
+			}
+
+			GFX_focus_GER_europe_united_and_strong_gunther = {
+				GER = {
+					has_country_flag = GER_gunther_fehlinger_flag
+				}
+			}
+			GFX_focus_GER_europe_united_and_strong2 = yes
+		}
+		relative_position_id = GER_the_europe_of_tommorow
+		x = 2
+		y = 1
+		offset = {
+			x = 1
+			y = 0
+			trigger = {
+				has_country_flag = GER_wef_flag
+			}
+		}
+		cost = 5
+		ai_will_do = {
+			factor = 25
+		}
+		prerequisite = {
+			focus = GER_the_europe_of_tommorow
+			focus = GER_the_europe_of_yesterday
+			focus = GER_the_order_of_the_future
+			focus = GER_secure_the_south
+			focus = GER_asian_gamble
+		}
+		available = {
+			if = {
+				limit = {
+					has_country_flag = GER_wef_flag
+				}
+				has_completed_focus = GER_the_order_of_the_future
+			}
+		}
+		completion_reward = {
+			unlock_decision_category_tooltip = GER_second_NATO_war_category
+			unlock_decision_tooltip = GER_we_are_the_cure
+			if = {
+				limit = {
+					has_completed_focus = GER_democracy_now
+				}
+				unlock_decision_tooltip = GER_the_only_solution_decision
+			}
+			add_war_support = 0.05
+			add_political_power = 100
+			set_temp_variable = {
+				var = eu_fed_var_temp
+				value = 0.05
+			}
+			GER_add_eu_fed = yes
+			if = {
+				limit = {
+					has_completed_focus = GER_old_system_new_form
+				}
+				GER_increase_steadfast = yes
+			}
+			else_if = {
+				limit = {
+					has_completed_focus = GER_the_techno_utopian_ideal
+				}
+				GER_increase_liberalization = yes
+			}
+		}
+	}
+	focus = {
+		id = GER_the_end_of_the_russian_experiment
+		icon = {
+			GFX_focus_GER_Kick_Down_The_Door = {
+				GER = {
+					NOT = {
+						has_country_flag = GER_gunther_fehlinger_flag
+					}
+				}
+			}
+
+			GFX_focus_GER_end_of_the_russian_experiment_gunther = {
+				GER = {
+					has_country_flag = GER_gunther_fehlinger_flag
+				}
+			}
+			GFX_focus_GER_Kick_Down_The_Door = yes
+		}
+		relative_position_id = GER_europe_united_and_strong
+		x = 0
+		y = 1
+		cost = 10
+		ai_will_do = {
+			factor = 25
+		}
+		prerequisite = {
+			focus = GER_europe_united_and_strong
+		}
+		prerequisite = {
+			focus = GER_war_plan_black
+		}
+		prerequisite = {
+			focus = GER_fourth_industrial_revolution
+		}
+		available = {
+			if = {
+				limit = {
+					has_completed_focus = GER_democracy_now
+				}
+				custom_trigger_tooltip = {
+					tooltip = completed_by_decision_tooltip
+					always = no
+				}
+			}
+		}
+		bypass = { 
+			has_global_flag = second_nato_war_flag 
+		}
+		completion_reward = {
+			declare_war_on = {
+				target = MLD
+				type = annex_everything
+			}
+			if = {
+				limit = {
+					CZE = {
+						exists = yes
+					}
+				}
+				declare_war_on = {
+					target = CZE
+					type = annex_everything
+				}
+			}
+			focus_unlock = yes
+			custom_effect_tooltip = unrestricted_diplomacy_tt
+			set_country_flag = unrestricted_diplomacy_flag
+			set_global_flag = second_nato_war_flag
+			add_timed_idea = {
+				idea = GER_vorwarts_europa_ultralib
+				days = 120
+			}
+			hidden_effect = {
+				if = {
+					limit = {
+						has_completed_focus = GER_democracy_now
+					}
+					news_event = news.585
+				}
+				else = {
+					news_event = news.537
+				}
+				ZZZ = {
+					activate_mission = second_nato_war_mission
+				}
+				SOV = {
+					remove_ideas = {
+						SOV_nato_war_victor
+						SOV_nato_war_victor1
+					}
+				}
+				if = {
+					#AI Help
+					limit = {
+						GER = {
+							is_ai = no
+						}
+						SOV = {
+							is_ai = yes
+						}
+					}
+					SOV = {
+						add_ideas = SOV_medvedev_can_win
+						# load_oob = "SOV_ai_help"
+						# if = {
+						# 	limit = {
+						# 		NOT = {
+						# 			has_dlc = "By Blood Alone"
+						# 		}
+						# 	}
+						# 	add_equipment_to_stockpile = {
+						# 		type = fighter_equipment_3
+						# 		amount = 2000
+						# 		producer = SOV
+						# 	}
+						# 	add_equipment_to_stockpile = {
+						# 		type = CAS_equipment_2
+						# 		amount = 1000
+						# 		producer = SOV
+						# 	}
+						# }
+						# else_if = {
+						# 	limit = {
+						# 		has_dlc = "By Blood Alone"
+						# 	}
+						# 	load_oob = "SOV_air_help_bba"
+						# }
+					}
+				}
+				country_event = {
+					id = germany.284
+					days = 40
+					random_days = 50
+				}
+			}
+		}
+	}
+	focus = {
+		id = GER_operation_walesa
+		icon = GFX_focus_GER_EU_OPERATION_WALESA
+		relative_position_id = GER_the_end_of_the_russian_experiment
+		x = -5
+		y = 1
+		cost = 5
+		ai_will_do = {
+			factor = 25
+		}
+		prerequisite = {
+			focus = GER_the_end_of_the_russian_experiment
+		}
+		allow_branch = {
+			has_completed_focus = GER_the_end_of_the_russian_experiment
+		}
+		completion_reward = {
+			add_timed_idea = {
+				idea = GER_operation_walesa_idea
+				days = 100
+			}
+			modify_timed_idea = {
+				idea = GER_vorwarts_europa_ultralib
+				days = 100
+			}
+		}
+	}
+	focus = {
+		id = GER_strike_most_vulnerable
+		icon = GFX_focus_GER_Strike_The_Most_Vulnerable
+		relative_position_id = GER_operation_walesa
+		x = 2
+		y = 1
+		cost = 5
+		ai_will_do = {
+			factor = 25
+		}
+		mutually_exclusive = {
+			focus = GER_redefine_what_is_european
+			focus = GER_reeducate_the_liberated_territories
+		}
+		prerequisite = {
+			focus = GER_utilize_europes_industry
+		}
+		prerequisite = {
+			focus = GER_operation_walesa
+		}
+		completion_reward = {
+			# add_days_mission_timeout = {
+			# 	mission = GER_eastern_general_economic_plan
+			# 	days = 365
+			# }
+			swap_ideas = {
+				remove_idea = GER_eastern_general_economic_plan
+				add_idea = GER_eastern_general_economic_plan1
+			}
+		}
+	}
+	focus = {
+		id = GER_sanctify_the_armed_forces
+		icon = GFX_focus_GER_Sanctify_The_Armed_Forces
+		relative_position_id = GER_the_end_of_the_russian_experiment
+		x = 1
+		y = 1
+		cost = 5
+		ai_will_do = {
+			factor = 25
+		}
+		prerequisite = {
+			focus = GER_the_end_of_the_russian_experiment
+		}
+		allow_branch = {
+			has_completed_focus = GER_the_end_of_the_russian_experiment
+		}
+		completion_reward = {
+			add_timed_idea = {
+				idea = GER_deify_the_martyrs
+				days = 100
+			}
+			add_war_support = 0.05
+			modify_timed_idea = {
+				idea = GER_vorwarts_europa_ultralib
+				days = 70
+			}
+			hidden_effect = {
+				country_event = {
+					id = germany.223
+					days = 5
+				}
+			}
+		}
+	}
+	focus = {
+		id = GER_reeducate_the_liberated_territories
+		icon = GFX_focus_GER_Reeducate_The_Liberated_Territories
+		relative_position_id = GER_sanctify_the_armed_forces
+		x = 2
+		y = 1
+		cost = 5
+		ai_will_do = {
+			factor = 25
+		}
+		prerequisite = {
+			focus = GER_sanctify_the_armed_forces
+			focus = GER_admit_finland_into_nato
+		}
+		mutually_exclusive = {
+			focus = GER_redefine_what_is_european
+			focus = GER_strike_most_vulnerable
+		}
+		completion_reward = {
+			add_stability = 0.1
+			unlock_decision_tooltip = GER_russia_we_bring_civilization
+			every_country = {
+				limit = {
+					has_idea = NOR_unwilling_ally
+				}
+				remove_ideas = NOR_unwilling_ally
+			}
+			every_state = {
+				limit = {
+					OR = {
+						is_owned_by = GER
+						is_controlled_by = GER
+					}
+					NOT = {
+						is_core_of = GER
+					}
+				}
+				add_resistance = -10
+			}
+		}
+	}
+	focus = {
+		id = GER_redefine_what_is_european
+		icon = GFX_focus_GER_redefine_european
+		relative_position_id = GER_the_end_of_the_russian_experiment
+		x = 0
+		y = 2
+		cost = 5
+		ai_will_do = {
+			factor = 25
+		}
+		prerequisite = {
+			focus = GER_the_end_of_the_russian_experiment
+		}
+		allow_branch = {
+			has_completed_focus = GER_the_end_of_the_russian_experiment
+		}
+		mutually_exclusive = {
+			focus = GER_reeducate_the_liberated_territories
+			focus = GER_strike_most_vulnerable
+		}
+		completion_reward = {
+			custom_effect_tooltip = GER_redefine_european_tt
+			country_event = {
+				id = european_union.14
+			}
+			add_war_support = 0.1
+		}
+	}
+	focus = {
+		id = GER_utilize_europes_industry
+		icon = GFX_focus_GER_utilize_europes_industrial_capacity
+		relative_position_id = GER_the_end_of_the_russian_experiment
+		x = -1
+		y = 1
+		cost = 5
+		ai_will_do = {
+			factor = 25
+		}
+		prerequisite = {
+			focus = GER_the_end_of_the_russian_experiment
+		}
+		allow_branch = {
+			has_completed_focus = GER_the_end_of_the_russian_experiment
+		}
+		completion_reward = {
+			add_ideas = {
+				GER_eastern_general_economic_plan
+			}
+			modify_timed_idea = {
+				idea = GER_vorwarts_europa_ultralib
+				days = 70
+			}
+		}
+	}
+	focus = {
+		id = GER_admit_finland_into_nato
+		icon = GFX_focus_GER_EU_Admit_Finland_Into_ETO
+		relative_position_id = GER_the_end_of_the_russian_experiment
+		x = 5
+		y = 1
+		cost = 5
+		ai_will_do = {
+			factor = 25
+		}
+		prerequisite = {
+			focus = GER_the_end_of_the_russian_experiment
+		}
+		allow_branch = {
+			has_completed_focus = GER_the_end_of_the_russian_experiment
+		}
+		bypass = {
+			OR = {
+				FIN = {
+					is_ally_with = SOV
+				}
+				FIN = {
+					OR = {
+						has_idea = SOV_brics_member
+						has_idea = SOV_brics_member_2
+					}
+				}
+			}
+		}
+		completion_reward = {
+			if = {
+				limit = {
+					GER = {
+						has_completed_focus = GER_democracy_now
+					}
+				}
+				annex_country = {
+					target = FIN
+					transfer_troops = yes
+				}
+			}
+			else = {
+				add_to_faction = FIN
+				FIN = {
+					declare_war_on = {
+						target = SOV
+						type = annex_everything
+					}
+				}
+			}
+		}
+	}
+	focus = {
+		id = GER_winter_logistics_training
+		icon = GFX_focus_GER_EU_Winter_Logistic_Training
+		relative_position_id = GER_admit_finland_into_nato
+		x = 1
+		y = 1
+		cost = 5
+		ai_will_do = {
+			factor = 25
+		}
+		prerequisite = {
+			focus = GER_admit_finland_into_nato
+		}
+		completion_reward = {
+			custom_effect_tooltip = GER_winter_warfare_battalion_tt
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = GER_european_military
+					add_idea = GER_european_military12
+				}
+			}
+			hidden_effect = {
+				add_to_variable = {
+					var = GER_euro_acclimatization_cold_climate_gain_factor_dynamic_var
+					value = 0.25
+				}
+				add_to_variable = {
+					var = GER_euro_attrition_dynamic_var
+					value = -0.1
+				}
+			}
+			hidden_effect = {
+				set_technology = {
+					winter_logistics_support_tech = 1
+					popup = no
+				}
+			}
+		}
+	}
+	focus = {
+		id = GER_assist_democracies_everywhere
+		icon = GFX_focus_GER_EU_Assist_Democracies_Everywhere
+		relative_position_id = GER_admit_finland_into_nato
+		x = 0
+		y = 2
+		cost = 5
+		ai_will_do = {
+			factor = 25
+		}
+		prerequisite = {
+			focus = GER_admit_finland_into_nato
+		}
+		completion_reward = {
+			set_temp_variable = {
+				var = income_var_temp
+				value = -100
+			}
+			add_income_with_inflation = yes
+			every_country = {
+				limit = {
+					NOT = {
+						original_tag = GER
+					}
+					has_war_with = SOV
+				}
+				add_stability = 0.1
+				add_war_support = 0.1
+				add_ideas = no_draft_exemptions
+				add_ideas = permanent_mobilization
+			}
+		}
+	}
+	focus = {
+		id = GER_war_time_advancements_eu
+		icon = GFX_focus_GER_war_time_advancements_nafo
+		relative_position_id = GER_utilize_europes_industry
+		x = 0
+		y = 2
+		cost = 5
+		ai_will_do = {
+			factor = 25
+		}
+		prerequisite = {
+			focus = GER_utilize_europes_industry
+		}
+		completion_reward = {
+			add_tech_bonus = {
+				name = GER_war_time_advancements_eu
+				bonus = 3
+				uses = 2
+				category = infantry_weapons
+				category = armor
+				category = artillery
+			}
+			hidden_effect = {
+				country_event = {
+					id = germany.339
+					days = 10
+				}
+			}
+		}
+	}
+	focus = {
+		id = GER_operation_petliura
+		icon = GFX_focus_GER_Opertation_Petliura
+		relative_position_id = GER_operation_walesa
+		x = 0
+		y = 2
+		cost = 5
+		ai_will_do = {
+			factor = 25
+		}
+		available = {
+			MLD = {
+				exists = no
+			}
+		}
+		prerequisite = {
+			focus = GER_operation_walesa
+		}
+		completion_reward = {
+			add_timed_idea = {
+				idea = GER_operation_petliura_idea
+				days = 100
+			}
+			modify_timed_idea = {
+				idea = GER_vorwarts_europa_ultralib
+				days = 100
+			}
+		}
+	}
+	focus = {
+		id = GER_kick_down_the_door
+		icon = GFX_focus_SOV_our_last_option
+		relative_position_id = GER_war_time_advancements_eu
+		x = 1
+		y = 1
+		cost = 5
+		ai_will_do = {
+			factor = 25
+		}
+		prerequisite = {
+			focus = GER_operation_petliura
+			focus = GER_assist_democracies_everywhere
+		}
+		completion_reward = {
+			set_country_flag = GER_nuclearized
+			set_temp_variable = {
+				var = campaign_slot_total_var_temp
+				value = 1
+			}
+			add_total_campaign_slot = yes
+			unlock_Decision_tooltip = GER_we_bring_the_storm
+			unlock_decision_tooltip = FRA_activate_nuclear_arsenal
+		}
+	}
+	### DAVOSS, VE ARE HERE, ZE AGENDA IS QUITE CLEAR ###
+	focus = {
+		id = GER_agenda_2040
+		icon = GFX_focus_GER_agenda_2040
+		relative_position_id = GER_convene_the_european_parliament
+		x = 3
+		y = 1
+		cost = 5
+		ai_will_do = {
+			factor = 25
+		}
+		prerequisite = {
+			focus = GER_convene_the_european_parliament
+		}
+		allow_branch = {
+			has_country_flag = GER_ultralib_tree_unlocked_flag
+			has_country_flag = GER_wef_flag
+		}
+		completion_reward = {
+			country_event = germany.305
+			unlock_decision_category_tooltip = GER_agenda_2040_cat
+			add_political_power = 100
+			hidden_effect = {
+				scoped_play_song = "inexplicable"
+			}
+		}
+	}
+	focus = {
+		id = GER_safety_and_security
+		icon = GFX_focus_GER_safety_and_security
+		relative_position_id = GER_agenda_2040
+		x = -1
+		y = 1
+		cost = 4
+		ai_will_do = {
+			factor = 25
+		}
+		prerequisite = {
+			focus = GER_agenda_2040
+		}
+		completion_reward = {
+			set_country_flag = highest_police_enabled_flag
+			set_country_flag = lower_safety_enabled_flag
+			add_ideas = GER_eye_in_the_sky
+			custom_effect_tooltip = tooltip_white_line
+			upgrade_intelligence_agency = upgrade_domestic_intelligence
+			upgrade_intelligence_agency = upgrade_geoint
+			upgrade_intelligence_agency = upgrade_masint
+			custom_effect_tooltip = tooltip_white_line
+			custom_effect_tooltip = change_safety_law_tooltip
+			show_ideas_tooltip = lower_safety
+			custom_effect_tooltip = tooltip_white_line
+			custom_effect_tooltip = change_security_law_tooltip
+			show_ideas_tooltip = highest_police
+			hidden_effect = {
+				add_ideas = highest_police
+				add_ideas = lower_safety
+			}
+		}
+	}
+	focus = {
+		id = GER_solidify_secret_clubs
+		icon = GFX_focus_GER_the_hands_behind_the_face
+		relative_position_id = GER_agenda_2040
+		x = 1
+		y = 1
+		cost = 4
+		ai_will_do = {
+			factor = 25
+		}
+		prerequisite = {
+			focus = GER_agenda_2040
+		}
+		completion_reward = {
+			add_popularity = {
+				ideology = authoritarian_democrat
+				popularity = 0.05
+			}
+			custom_effect_tooltip = tooltip_white_line
+			custom_effect_tooltip = appoint_head_minister_tooltip
+			show_ideas_tooltip = GER_borge_brende_hog
+			custom_effect_tooltip = tooltip_white_line
+			custom_effect_tooltip = appoint_foreign_minister_tooltip
+			show_ideas_tooltip = GER_peter_brabeck_letmathe_for
+			custom_effect_tooltip = tooltip_white_line
+			custom_effect_tooltip = appoint_economic_minister_tooltip
+			show_ideas_tooltip = GER_kristalina_georgieva_eco
+			custom_effect_tooltip = tooltip_white_line
+			custom_effect_tooltip = GER_solidify_secret_clubs_tt
+			hidden_effect = {
+				set_country_flag = GER_corporate_coup_flag
+				add_ideas = {
+					GER_kristalina_georgieva_eco
+					GER_borge_brende_hog
+					GER_peter_brabeck_letmathe_for
+				}
+				country_event = {
+					id = germany.306
+					days = 5
+				}
+			}
+		}
+	}
+	focus = {
+		id = GER_architecture_of_post_modernity
+		icon = GFX_focus_GER_architecture_of_post_modernity
+		relative_position_id = GER_agenda_2040
+		x = 3
+		y = 1
+		cost = 4
+		ai_will_do = {
+			factor = 25
+		}
+		prerequisite = {
+			focus = GER_agenda_2040
+		}
+		completion_reward = {
+			custom_effect_tooltip = GER_architecture_of_post_modernity_tt
+			unlock_decision_tooltip = GER_corporate_memphis_campaign_decision
+			add_political_power = 100
+			country_event = {
+				id = germany.314
+				days = 20
+			}
+		}
+	}
+	focus = {
+		id = GER_new_human_concept
+		icon = GFX_focus_GER_our_own_homo_sapiens
+		relative_position_id = GER_agenda_2040
+		x = 0
+		y = 2
+		cost = 4
+		ai_will_do = {
+			factor = 25
+		}
+		prerequisite = {
+			focus = GER_safety_and_security
+		}
+		prerequisite = {
+			focus = GER_solidify_secret_clubs
+		}
+		completion_reward = {
+			GER_decrease_catharsis_small = yes
+			unlock_decision_tooltip = GER_cybernetic_enhancements_decision
+			unlock_decision_tooltip = GER_new_human_concept_campaign_decision
+			hidden_effect = {
+				country_event = {
+					id = germany.337
+					days = 7
+				}
+			}
+		}
+	}
+	focus = {
+		id = GER_the_new_surplus_value
+		icon = GFX_focus_GER_the_new_surplus_value
+		relative_position_id = GER_new_human_concept
+		x = 2
+		y = 0
+		cost = 4
+		ai_will_do = {
+			factor = 25
+		}
+		prerequisite = {
+			focus = GER_solidify_secret_clubs
+		}
+		prerequisite = {
+			focus = GER_architecture_of_post_modernity
+		}
+		completion_reward = {
+			add_popularity = {
+				ideology = authoritarian_democrat
+				popularity = 0.1
+			}
+			unlock_decision_tooltip = GER_consume_ze_product_campaign_decision
+			country_event = germany.312
+			hidden_effect = {
+				add_ideas = lower_education
+				country_event = {
+					id = germany.307
+					days = 6
+				}
+			}
+		}
+	}
+	focus = {
+		id = GER_establish_the_two_class_society
+		icon = GFX_focus_GER_establish_the_two_class_society
+		relative_position_id = GER_safety_and_security
+		x = 0
+		y = 2
+		cost = 4
+		ai_will_do = {
+			factor = 25
+		}
+		prerequisite = {
+			focus = GER_new_human_concept
+		}
+		completion_reward = {
+			GER_decrease_catharsis_big = yes
+			custom_effect_tooltip = change_welfare_law_tooltip
+			show_ideas_tooltip = GER_two_class_society_welfare
+			hidden_effect = {
+				add_ideas = GER_two_class_society_welfare
+				#country_event = {
+				#	id = germany.308
+				#	days = 7
+				#}
+			}
+		}
+	}
+	focus = {
+		id = GER_erase_national_divisions
+		icon = GFX_focus_GER_erase_national_divisions
+		relative_position_id = GER_establish_the_two_class_society
+		x = 2
+		y = 0
+		cost = 4
+		ai_will_do = {
+			factor = 25
+		}
+		prerequisite = {
+			focus = GER_the_new_surplus_value
+		}
+		prerequisite = {
+			focus = GER_new_human_concept
+		}
+		completion_reward = {
+			custom_effect_tooltip = GER_erase_national_divisions_tt
+			custom_effect_tooltip = tooltip_white_line
+			custom_effect_tooltip = change_immigration_law_tooltip
+			show_ideas_tooltip = higher_immigration
+			hidden_effect = {
+				add_ideas = higher_immigration
+				add_ideas = higher_race
+			}
+		}
+	}
+	focus = {
+		id = GER_the_order_of_the_future
+		icon = GFX_focus_GER_the_order_of_the_future
+		relative_position_id = GER_new_human_concept
+		x = 0
+		y = 2
+		cost = 4
+		ai_will_do = {
+			factor = 25
+		}
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = GER_the_order_of_the_future_tt
+				check_variable = {
+					var = GER_agenda_2040_stage_var
+					value = 4
+					compare = greater_than_or_equals
+				}
+			}
+		}
+		prerequisite = {
+			focus = GER_establish_the_two_class_society
+		}
+		prerequisite = {
+			focus = GER_erase_national_divisions
+		}
+		completion_reward = {
+			country_event = {
+				id = germany.309
+				days = 3
+			}
+		}
+	}
+	### DECOLONIZE RUSSIA NOW! ###
+	focus = {
+		id = GER_democracy_now
+		icon = GFX_focus_GER_democracy_NOW
+		relative_position_id = GER_convene_the_european_parliament
+		x = 0
+		y = 1
+		cost = 5
+		ai_will_do = {
+			factor = 25
+		}
+		prerequisite = {
+			focus = GER_convene_the_european_parliament
+		}
+		allow_branch = {
+			has_country_flag = GER_ultralib_tree_unlocked_flag
+			has_country_flag = GER_gunther_fehlinger_flag
+		}
+		completion_reward = {
+			add_political_power = 100
+			unlock_decision_category_tooltip = GER_gunthers_twitter_cat
+			hidden_effect = {
+				scoped_play_song = "vision"
+				news_event = {
+					id = germany.316
+					days = 10
+				}
+				add_to_variable = {
+					var = GER_gunthers_following_var
+					value = 98.7
+				}
+				add_to_variable = {
+					var = GER_gunthers_followers_var
+					value = 100.2
+				}
+				add_to_variable = {
+					var = GER_gunthers_following_M_var
+					value = 1
+				}
+				add_to_variable = {
+					var = GER_gunthers_followers_M_var
+					value = 1
+				}
+				set_variable = {
+					var = GER_gunther_reintegration_cost_var
+					value = 75
+				}
+				if = {
+					limit = {
+						is_ai = yes
+					}
+					set_technology = {
+						mtg_at_sea_refueling = 1
+						mtg_landing_craft = 1
+						mtg_tank_landing_craft = 1
+					}
+				}
+			}
+		}
+	}
+	focus = {
+		id = GER_tax_reform_for_europeans
+		icon = GFX_focus_GER_tax_reform_for_europeans
+		relative_position_id = GER_democracy_now
+		x = -5
+		y = 3
+		cost = 5
+		ai_will_do = {
+			factor = 25
+		}
+		prerequisite = {
+			focus = GER_strengthen_the_heavy_lifters
+			focus = GER_total_decolonization
+		}
+		completion_reward = {
+			custom_effect_tooltip = change_tax_law_tooltip
+			show_ideas_tooltip = GER_gunther_taxes
+			custom_effect_tooltip = tooltip_white_line
+			set_temp_variable = {
+				var = poverty_development_var_temp
+				value = 0.1
+			}
+			add_poverty_development = yes
+			set_temp_variable = {
+				var = industrial_development_var_temp
+				value = 0.1
+			}
+			add_industrial_development = yes
+			hidden_effect = {
+				add_ideas = GER_gunther_taxes
+			}
+		}
+	}
+	focus = {
+		id = GER_bringing_europe_together
+		icon = GFX_focus_GER_bringing_europe_together
+		relative_position_id = GER_democracy_now
+		x = -3
+		y = 1
+		cost = 5
+		ai_will_do = {
+			factor = 25
+		}
+		prerequisite = {
+			focus = GER_democracy_now
+		}
+		available = {
+			has_completed_focus = GER_end_european_neutrality
+		}
+		completion_reward = {
+			add_political_power = 100
+			add_popularity = {
+				ideology = social_liberal
+				popularity = 0.1
+			}
+			add_popularity = {
+				ideology = conservative
+				popularity = 0.1
+			}
+			custom_effect_tooltip = tooltip_white_line
+			add_ideas = GER_europapa_idea1
+			custom_effect_tooltip = tooltip_white_line
+			every_state = {
+				limit = {
+					OR = {
+						is_core_of = FRA
+						is_core_of = HOL
+						is_core_of = BEL
+						is_core_of = AUS
+						is_core_of = LUX
+					}
+				}
+				add_core_of = GER
+			}
+		}
+	}
+	focus = {
+		id = GER_end_european_neutrality
+		icon = GFX_focus_GER_end_european_neutrality
+		relative_position_id = GER_democracy_now
+		x = 0
+		y = 1
+		cost = 5
+		ai_will_do = {
+			factor = 25
+		}
+		prerequisite = {
+			focus = GER_democracy_now
+		}
+		completion_reward = {
+			custom_effect_tooltip = GER_end_european_neutrality_tt
+			custom_effect_tooltip = GER_end_european_neutrality_core_tt
+		}
+	}
+	focus = {
+		id = GER_spread_our_message
+		icon = GFX_focus_GER_spread_our_message
+		relative_position_id = GER_democracy_now
+		x = 3
+		y = 1
+		cost = 5
+		ai_will_do = {
+			factor = 25
+		}
+		prerequisite = {
+			focus = GER_democracy_now
+		}
+		available = {
+			has_completed_focus = GER_end_european_neutrality
+		}
+		completion_reward = {
+			add_political_power = 100
+			custom_effect_tooltip = tooltip_white_line
+			effect_tooltip = {
+				add_ideas = GER_fehlinger_initiative_tooltip_idea
+			}
+			custom_effect_tooltip = tooltip_white_line
+			unlock_decision_tooltip = GER_decolonize_russia_decision
+			unlock_decision_tooltip = GER_the_message_of_freedom_campaign_decision
+			hidden_effect = {
+				add_dynamic_modifier = {
+					modifier = GER_fehlinger_initiative_dynamic
+				}
+				add_to_variable = {
+					var = GER_fehlinger_initiative_political_power_gain_dynamic_var
+					value = 0.1
+				}
+				add_to_variable = {
+					var = GER_fehlinger_initiative_drift_defence_factor_dynamic_var
+					value = 0.25
+				}
+				add_to_variable = {
+					var = GER_fehlinger_initiative_war_stability_factor_dynamic_var
+					value = 0.1
+				}
+				add_to_variable = {
+					var = GER_fehlinger_initiative_opinion_gain_monthly_same_ideology_factor_dynamic_var
+					value = 0.1
+				}
+			}
+		}
+	}
+	focus = {
+		id = GER_strengthen_the_heavy_lifters
+		icon = GFX_focus_GER_strengthen_the_heavy_lifters
+		relative_position_id = GER_bringing_europe_together
+		x = -1
+		y = 1
+		cost = 5
+		ai_will_do = {
+			factor = 25
+		}
+		mutually_exclusive = {
+			focus = GER_total_decolonization
+		}
+		prerequisite = {
+			focus = GER_bringing_europe_together
+		}
+		completion_reward = {
+			add_war_support = 0.1
+			custom_effect_tooltip = tooltip_white_line
+			every_state = {
+				limit = {
+					OR = {
+						region = 19
+						region = 20
+					}
+				}
+				add_dynamic_modifier = {
+					modifier = GER_french_heavy_lifter
+				}
+			}
+			custom_effect_tooltip = tooltip_white_line
+			every_state = {
+				limit = {
+					OR = {
+						region = 6
+						region = 7
+						region = 8
+					}
+				}
+				add_dynamic_modifier = {
+					modifier = GER_german_heavy_lifter
+				}
+			}
+		}
+	}
+	focus = {
+		id = GER_total_decolonization
+		icon = GFX_focus_GER_total_decolonization
+		relative_position_id = GER_bringing_europe_together
+		x = 1
+		y = 1
+		cost = 5
+		ai_will_do = {
+			factor = 25
+		}
+		mutually_exclusive = {
+			focus = GER_strengthen_the_heavy_lifters
+		}
+		prerequisite = {
+			focus = GER_bringing_europe_together
+		}
+		completion_reward = {
+			GER_decrease_nationalist = yes
+			custom_effect_tooltip = GER_total_decolonization_tt
+			custom_effect_tooltip = tooltip_white_line
+			increase_race = yes
+			increase_racial_integration = yes
+			set_variable = {
+				var = GER_gunther_reintegration_cost_var
+				value = 35
+			}
+		}
+	}
+	focus = {
+		id = GER_focus_on_the_home_front
+		icon = GFX_focus_GER_focus_on_the_home_front
+		relative_position_id = GER_spread_our_message
+		x = -1
+		y = 1
+		cost = 5
+		ai_will_do = {
+			factor = 25
+		}
+		mutually_exclusive = {
+			focus = GER_democratize_foreign_minds
+		}
+		prerequisite = {
+			focus = GER_spread_our_message
+		}
+		completion_reward = {
+			set_temp_variable = {
+				var = campaign_slot_total_var_temp
+				value = 1
+			}
+			add_total_campaign_slot = yes
+			unlock_decision_tooltip = GER_take_down_the_bear_campaign_decision
+			unlock_decision_tooltip = GER_mobilize_european_forces_campaign_decision
+			custom_effect_tooltip = tooltip_white_line
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = GER_fehlinger_initiative_empty_tooltip_idea
+					add_idea = GER_focus_on_the_home_front_tooltip_idea
+				}
+			}
+			hidden_effect = {
+				add_to_variable = {
+					var = GER_fehlinger_initiative_political_power_gain_dynamic_var
+					value = 0.15
+				}
+				add_to_variable = {
+					var = GER_fehlinger_initiative_drift_defence_factor_dynamic_var
+					value = 0.25
+				}
+				add_to_variable = {
+					var = GER_fehlinger_initiative_war_stability_factor_dynamic_var
+					value = 0.1
+				}
+				add_to_variable = {
+					var = GER_fehlinger_initiative_war_support_factor_dynamic_var
+					value = 0.1
+				}
+				add_to_variable = {
+					var = GER_fehlinger_initiative_resistance_growth_on_our_occupied_states_dynamic_var
+					value = 0.25
+				}
+			}
+		}
+	}
+	focus = {
+		id = GER_democratize_foreign_minds
+		icon = GFX_focus_GER_democratize_foreign_minds
+		relative_position_id = GER_spread_our_message
+		x = 1
+		y = 1
+		cost = 5
+		ai_will_do = {
+			factor = 25
+		}
+		mutually_exclusive = {
+			focus = GER_focus_on_the_home_front
+		}
+		prerequisite = {
+			focus = GER_spread_our_message
+		}
+		completion_reward = {
+			custom_effect_tooltip = GER_democratize_foreign_minds_tt
+			hidden_effect = {
+				every_possible_country = {
+					limit = {
+						OR = {
+							is_ally_with = SOV
+							is_ally_with = PRC
+						}
+					}
+					add_to_array = {
+						array = GER.GER_democratize_foreign_minds_targets
+						value = THIS.id
+					}
+				}
+			}
+		}
+	}
+	focus = {
+		id = GER_powerful_independent_united
+		icon = GFX_focus_GER_powerful_independent_united
+		relative_position_id = GER_bringing_europe_together
+		x = 0
+		y = 2
+		cost = 5
+		ai_will_do = {
+			factor = 25
+		}
+		prerequisite = {
+			focus = GER_total_decolonization
+			focus = GER_strengthen_the_heavy_lifters
+		}
+		completion_reward = {
+			if = {
+				limit = {
+					has_completed_focus = GER_strengthen_the_heavy_lifters
+				}
+				hidden_effect = {
+					swap_ideas = {
+						remove_idea = GER_europapa_idea1
+						add_idea = GER_europapa_idea2
+					}
+					add_political_power = 75
+					set_temp_variable = {
+						var = military_development_var_temp
+						value = 0.2
+					}
+					add_military_development = yes
+					set_temp_variable = {
+						var = industrial_development_var_temp
+						value = 0.2
+					}
+					add_industrial_development = yes
+				}
+			}
+			if = {
+				limit = {
+					has_completed_focus = GER_total_decolonization
+				}
+				hidden_effect = {
+					swap_ideas = {
+						remove_idea = GER_europapa_idea1
+						add_idea = GER_europapa_idea3
+					}
+					add_stability = 0.1
+					set_temp_variable = {
+						var = society_development_var_temp
+						value = 0.2
+					}
+					add_society_development = yes
+					set_temp_variable = {
+						var = poverty_development_var_temp
+						value = 0.2
+					}
+					add_poverty_development = yes
+				}
+			}
+			effect_tooltip = {
+				custom_effect_tooltip = GER_powerful_independent_united_left_tt
+				custom_effect_tooltip = tooltip_white_line
+				swap_ideas = {
+					remove_idea = GER_europapa_idea1
+					add_idea = GER_europapa_idea2
+				}
+				add_political_power = 75
+				set_temp_variable = {
+					var = military_development_var_temp
+					value = 0.2
+				}
+				add_military_development = yes
+				set_temp_variable = {
+					var = industrial_development_var_temp
+					value = 0.2
+				}
+				add_industrial_development = yes
+				custom_effect_tooltip = tooltip_white_line
+				custom_effect_tooltip = GER_powerful_independent_united_right_tt
+				custom_effect_tooltip = tooltip_white_line
+				swap_ideas = {
+					remove_idea = GER_europapa_idea1
+					add_idea = GER_europapa_idea3
+				}
+				add_stability = 0.1
+				set_temp_variable = {
+					var = society_development_var_temp
+					value = 0.2
+				}
+				add_society_development = yes
+				set_temp_variable = {
+					var = poverty_development_var_temp
+					value = 0.2
+				}
+				add_poverty_development = yes
+			}
+		}
+	}
+	focus = {
+		id = GER_end_world_neutrality
+		icon = GFX_focus_GER_end_world_neutrality
+		relative_position_id = GER_end_european_neutrality
+		x = 0
+		y = 2
+		cost = 5
+		ai_will_do = {
+			factor = 25
+		}
+		prerequisite = {
+			focus = GER_end_european_neutrality
+		}
+		prerequisite = {
+			focus = GER_strengthen_the_heavy_lifters
+			focus = GER_total_decolonization
+		}
+		prerequisite = {
+			focus = GER_focus_on_the_home_front
+			focus = GER_democratize_foreign_minds
+		}
+		completion_reward = {
+			custom_effect_tooltip = GER_end_world_neutrality_tt
+			custom_effect_tooltip = tooltip_white_line
+			add_ideas = GER_ending_world_neutrality_idea
+			if = {
+				limit = {
+					OR = {
+						has_game_rule = {
+							rule = The_GER_Gunther_Fehlinger_World
+							option = The_GER_Gunther_Fehlinger_World_FUCK_China
+						}
+						has_game_rule = {
+							rule = The_GER_Gunther_Fehlinger_World
+							option = The_GER_Gunther_Fehlinger_World_Suck_Japan
+						}
+						has_game_rule = {
+							rule = The_GER_Gunther_Fehlinger_World
+							option = The_GER_Gunther_Fehlinger_World_Peace
+						}
+					}
+				}
+				complete_national_focus = GER_asian_gamble
+			}
+			hidden_effect = {
+				every_country = {
+					limit = {
+						NOT = {
+							is_ally_with = SOV
+							is_ally_with = PRC
+						}
+						OR = {
+							has_government = social_liberal
+							has_government = social_democrat
+							has_government = market_liberal
+						}
+					}
+					add_ai_strategy = {
+						type = send_volunteers_desire
+						id = GER
+						value = 1000
+					}
+					add_ai_strategy = {
+						type = send_lend_lease_desire
+						id = GER
+						value = 1000
+					}
+				}
+			}
+		}
+	}
+	focus = {
+		id = GER_all_out_information_assault
+		icon = GFX_focus_GER_all_out_information_assault
+		relative_position_id = GER_spread_our_message
+		x = 0
+		y = 2
+		cost = 5
+		ai_will_do = {
+			factor = 25
+		}
+		prerequisite = {
+			focus = GER_focus_on_the_home_front
+			focus = GER_democratize_foreign_minds
+		}
+		completion_reward = {
+			add_political_power = 100
+			unlock_decision_tooltip = GER_social_media_takeover_decision
+			custom_effect_tooltip = tooltip_white_line
+			custom_effect_tooltip = change_security_law_tooltip
+			show_ideas_tooltip = GER_gunther_social_media_dominance
+			custom_effect_tooltip = tooltip_white_line
+			hidden_effect = {
+				country_event = {
+					id = germany.318
+					days = 20
+				}
+			}
+		}
+	}
+	focus = {
+		id = GER_think_tanks_for_war
+		icon = GFX_focus_GER_think_tanks_for_war
+		relative_position_id = GER_spread_our_message
+		x = 2
+		y = 2
+		cost = 5
+		ai_will_do = {
+			factor = 25
+		}
+		prerequisite = {
+			focus = GER_focus_on_the_home_front
+			focus = GER_democratize_foreign_minds
+		}
+		completion_reward = {
+			custom_effect_tooltip = appoint_head_minister_tooltip
+			show_ideas_tooltip = GER_nafo_council_hog
+			custom_effect_tooltip = tooltip_white_line
+			custom_effect_tooltip = appoint_interior_minister_tooltip
+			show_ideas_tooltip = GER_roman_abalin_sec
+			custom_effect_tooltip = tooltip_white_line
+			custom_effect_tooltip = appoint_theorist_minister_tooltip
+			show_ideas_tooltip = GER_carsten_breuer_theorist
+			custom_effect_tooltip = tooltip_white_line
+			custom_effect_tooltip = unlock_int_minister_tooltip
+			show_ideas_tooltip = GER_open_source_int
+			hidden_effect = {
+				add_ideas = GER_nafo_council_hog
+				add_ideas = GER_roman_abalin_sec
+				add_ideas = GER_carsten_breuer_theorist
+				country_event = {
+					id = germany.317
+					days = 20
+				}
+			}
+		}
+	}
+	focus = {
+		id = GER_secure_the_south
+		icon = GFX_focus_GER_secure_the_underbelly
+		relative_position_id = GER_end_world_neutrality
+		x = -1
+		y = 1
+		cost = 5
+		ai_will_do = {
+			factor = 25
+			modifier = {
+				factor = 0
+				OR = {
+					has_game_rule = {
+						rule = The_GER_Gunther_Fehlinger_World
+						option = The_GER_Gunther_Fehlinger_World_FUCK_China
+					}
+					has_game_rule = {
+						rule = The_GER_Gunther_Fehlinger_World
+						option = The_GER_Gunther_Fehlinger_World_Suck_Japan
+					}
+					has_game_rule = {
+						rule = The_GER_Gunther_Fehlinger_World
+						option = The_GER_Gunther_Fehlinger_World_Peace
+					}
+				}
+			}
+		}
+		mutually_exclusive = {
+			focus = GER_asian_gamble
+		}
+		prerequisite = {
+			focus = GER_end_world_neutrality
+		}
+		prerequisite = {
+			focus = GER_powerful_independent_united
+		}
+		prerequisite = {
+			focus = GER_tax_reform_for_europeans
+			focus = GER_think_tanks_for_war
+		}
+		completion_reward = {
+			custom_effect_tooltip = GER_secure_the_underbelly_tt
+		}
+	}
+	focus = {
+		id = GER_asian_gamble
+		icon = GFX_focus_GER_asian_gambit
+		relative_position_id = GER_end_world_neutrality
+		x = 1
+		y = 1
+		cost = 5
+		ai_will_do = {
+			factor = 25
+			modifier = {
+				factor = 0
+				OR = {
+					has_game_rule = {
+						rule = The_GER_Gunther_Fehlinger_World
+						option = The_GER_Gunther_Fehlinger_World_Africa
+					}
+				}
+			}
+		}
+		available = {
+			OR = {
+				has_global_flag = pan_asian_war_ongoing
+				has_global_flag = PRC_chinese_gaw_victory_global
+			}
+		}
+		mutually_exclusive = {
+			focus = GER_secure_the_south
+		}
+		prerequisite = {
+			focus = GER_end_world_neutrality
+		}
+		prerequisite = {
+			focus = GER_all_out_information_assault
+		}
+		prerequisite = {
+			focus = GER_tax_reform_for_europeans
+			focus = GER_think_tanks_for_war
+		}
+		completion_reward = {
+			custom_effect_tooltip = GER_improve_asian_position_tt
+			country_event = germany.340
+		}
+	}
+}

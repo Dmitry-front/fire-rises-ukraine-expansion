@@ -1,0 +1,83 @@
+### RATIO TRIGGERS ###
+NVX_has_significant_war = {
+	has_war = yes
+	surrender_progress > 0
+}
+
+NVX_fisc_ratio_military = {
+	OR = {
+		check_variable = { NVX_fisc_income_net < 0 }
+		check_variable = { NVX_fisc_expense_ratio_military > 0.4 }
+	}
+}
+
+NVX_fisc_ratio_military_army = {
+	NOT = { has_global_flag = sandbox_disable_advanced_economy }
+	OR = {
+		NVX_fisc_ratio_military = yes
+		if = {
+			limit = { num_of_naval_factories > 0 }
+			check_variable = { NVX_fisc_expense_ratio_military_army > 0.6 }
+			else = { check_variable = { NVX_fisc_expense_ratio_military_army > 1 } }
+		}
+	}
+}
+
+NVX_fisc_ratio_military_navy = {
+	NOT = { has_global_flag = sandbox_disable_advanced_economy }
+	OR = {
+		NVX_fisc_ratio_military = yes
+		if = {
+			limit = { num_of_naval_factories > 0 }
+			check_variable = { NVX_fisc_expense_ratio_military_navy > 0.5 }
+		}
+	}
+}
+
+NVX_fisc_ratio_save_money = {
+	if = {
+		limit = { NVX_has_significant_war = yes }
+		check_variable = { NVX_fisc_income_ratio_excess < 0.1 }
+		else = { check_variable = { NVX_fisc_income_ratio_excess < 0.25 } }
+	}
+}
+
+### LEGISLATION DESIRES ###
+
+NVX_legdes_ = {
+	
+}
+
+### DEVELOPMENT TRIGGERS ###
+
+NVX_develop_to_developing1 = {
+	check_variable = { NVX_fisc_economic_value > 0.799 }
+}
+
+NVX_develop_to_developing2 = {
+	check_variable = { NVX_fisc_economic_freedom_value > 0.199 }
+}
+
+NVX_develop_to_developed1 = {
+	check_variable = { NVX_fisc_economic_value > 0.799 }
+}
+
+NVX_develop_to_developed2 = {
+	check_variable = { NVX_fisc_economic_freedom_value > 0.499 }
+}
+
+
+### LEGISLATION TRIGGERS ###
+
+NVX_requires_limited_deficit = {
+	custom_trigger_tooltip = {
+		tooltip = TT_NVX_requires_limited_deficit
+		if = {
+			limit = {
+				check_variable = { NVX_fisc_income_net < 0 }
+				NOT = { has_global_flag = sandbox_disable_advanced_economy }
+			}
+			check_variable = { NVX_fisc > NVX_fisc_income_net_deficit }
+		}
+	}
+}

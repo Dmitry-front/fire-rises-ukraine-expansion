@@ -1,0 +1,129 @@
+
+equipments = {
+
+	PRC_Gundam_equipment = {
+		year = 1934
+		can_be_produced = {
+			NOT = { 	}
+		}
+		is_archetype = yes
+		is_convertable = yes
+		# picture = archetype_PRC_Gundam_equipment			
+		is_buildable = no
+		type = armor
+		group_by = archetype	
+		interface_category = interface_category_armor
+		upgrades = {
+			tank_reliability_upgrade
+			tank_engine_upgrade
+			tank_armor_upgrade
+			tank_gun_upgrade
+		}
+		
+		maximum_speed = 4.0
+		reliability = 1.0
+
+		defense = 10
+		breakthrough = 10
+		hardness = 0.80
+		armor_value = 100
+
+		soft_attack = 10
+		hard_attack = 10
+		ap_attack = 10
+		air_attack = 10
+		naval_strike_attack = 10
+		
+		lend_lease_cost = 10
+		build_cost_ic = 25
+		resources = {
+			steel = 1
+		}
+	
+	}
+
+	PRC_Gundam_equipment_1 = {
+		year = 1921
+		archetype = PRC_Gundam_equipment
+		priority = 100
+		visual_level = 1
+		is_convertable = yes
+	}
+
+	PRC_Gundam_equipment_2 = {
+		year = 1921
+		archetype = PRC_Gundam_equipment
+		priority = 100
+		visual_level = 1
+		is_convertable = yes
+		module_slots = {
+			main_armament_slot = {
+				required = yes
+				allowed_module_categories = {
+					tank_small_main_armament
+					tank_flamethrower
+			    } 
+			}
+			turret_type_slot = {
+				required = no
+				allowed_module_categories = {
+					tank_light_turret_type
+					tank_medium_turret_type
+				} 
+			}
+			suspension_type_slot = {
+				required = no
+				allowed_module_categories = {
+					tank_suspension_type
+				} 
+			}
+			armor_type_slot = {
+				required = no
+				allowed_module_categories = {
+					tank_armor_type
+				} 
+			}
+			engine_type_slot = {
+				required = no
+				allowed_module_categories = {
+					tank_engine_type
+				} 
+			}
+			special_type_slot_1 = {
+				required = no
+				allowed_module_categories = {
+					tank_radio_module
+					tank_special_module
+					tank_secondary_turret
+				} 
+			}
+			special_type_slot_2 = {
+				required = no
+				allowed_module_categories = {
+					tank_special_module
+					tank_secondary_turret
+					tank_radio_module
+				} 
+			}
+			special_type_slot_3 = {
+				required = no
+				allowed_module_categories = {
+					tank_special_module
+					tank_secondary_turret
+					tank_radio_module
+				} 
+			}
+			special_type_slot_4 = {
+				required = no
+				allowed_module_categories = {
+					tank_special_module
+					tank_secondary_turret
+					tank_radio_module
+				} 
+			}
+		}
+		default_modules = {
+			# main_armament_slot = tank_small_main_armament
+		}
+	}	
+}

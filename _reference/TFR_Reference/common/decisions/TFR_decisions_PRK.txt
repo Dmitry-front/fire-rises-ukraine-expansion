@@ -1,0 +1,762 @@
+kims_successor = {
+	bring_divisions_to_side = {
+	
+		icon = democracy
+	
+		available = {
+			tag = PRK
+		}
+		visible = {
+			has_country_flag = pak_couped_gov
+			NOT = {
+				has_global_flag = north_korean_civil_war
+			}
+		}
+		complete_effect = {
+			set_country_flag = bringing_divisions
+		}
+		
+		remove_effect = {
+			clr_country_flag = bringing_divisions
+			PRK_bring_divisions_side = yes
+		}
+		
+		fire_only_once = no
+		cost = 30
+		
+		
+		ai_will_do = {
+			factor = 10
+		}
+	}
+	
+	divert_firearms = {
+	
+		icon = democracy
+	
+		available = {
+			tag = PRK
+		}
+		visible = {
+			has_country_flag = cabinet_protests
+			NOT = {
+				has_global_flag = north_korean_civil_war
+			}
+		}
+		complete_effect = {
+			set_country_flag = stockpiliing_guns
+		}
+		
+		remove_effect = {
+			clr_country_flag = stockpiliing_guns
+			PRK_stockpile_infantry_weapons = yes
+		}
+		
+		fire_only_once = no
+		cost = 30
+		
+		
+		ai_will_do = {
+			factor = 10
+		}
+	}
+	
+	divert_mechanized_vehicles = {
+	
+		icon = democracy
+	
+		available = {
+			tag = PRK
+		}
+		visible = {
+			has_country_flag = impending_civil_war
+			NOT = {
+				has_global_flag = north_korean_civil_war
+			}
+		}
+		complete_effect = {
+			set_country_flag = stockpiliing_mechanized
+		}
+		
+		remove_effect = {
+			clr_country_flag = stockpiliing_guns
+			PRK_stockpile_mechanized_vehicles = yes
+		}
+		
+		fire_only_once = no
+		cost = 30
+		
+		
+		ai_will_do = {
+			factor = 10
+		}
+	}
+	
+	divert_tanks = {
+	
+		icon = democracy
+	
+		available = {
+			tag = PRK
+		}
+		visible = {
+			has_country_flag = impending_civil_war
+			NOT = {
+				has_global_flag = north_korean_civil_war
+			}
+		}
+		complete_effect = {
+
+		}
+		
+		remove_effect = {
+
+		}
+		
+		fire_only_once = no
+		cost = 30
+		
+		
+		ai_will_do = {
+			factor = 10
+		}
+	}
+}
+
+korean_war = {
+	accelerate_artillery_production = {
+	
+		icon = democracy
+	
+		available = {
+			tag = PRK
+			NOT = {
+				has_country_flag = building_guns
+				has_country_flag = building_mechanized
+				has_country_flag = building_self_propelled
+				has_country_flag = building_tank
+				
+			}
+		}
+		visible = {
+			tag = PRK
+			NOT = {
+				has_country_flag = second_korean_war
+			}
+		}
+		complete_effect = {
+			set_country_flag = building_artillery
+			add_ideas = {
+				PRK_artillery_production
+			}
+		}
+		
+		remove_effect = {
+			clr_country_flag = building_artillery
+			remove_ideas = {
+				PRK_artillery_production
+			}
+		}
+		
+		fire_only_once = no
+		days_remove = 80
+		cost = 30
+		
+		
+		ai_will_do = {
+			factor = 10
+		}
+	}
+	accelerate_firearm_production = {
+	
+		icon = democracy
+	
+		available = {
+			tag = PRK
+			NOT = {
+				has_country_flag = building_artillery
+				has_country_flag = building_mechanized
+				has_country_flag = building_self_propelled
+				has_country_flag = building_tank
+				
+			}
+		}
+		visible = {
+			tag = PRK
+			NOT = {
+				has_country_flag = second_korean_war
+			}
+		}
+		complete_effect = {
+			set_country_flag = building_guns
+			add_ideas = {
+				PRK_firearm_production
+			}
+		}
+		
+		remove_effect = {
+			clr_country_flag = building_guns
+			remove_ideas = {
+				PRK_firearm_production
+			}
+		}
+		
+		fire_only_once = no
+		days_remove = 80
+		cost = 30
+		
+		
+		ai_will_do = {
+			factor = 10
+		}
+	}
+	accelerate_tank_production = {
+	
+		icon = democracy
+	
+		available = {
+			tag = PRK
+			NOT = {
+				has_country_flag = building_guns
+				has_country_flag = building_mechanized
+				has_country_flag = building_self_propelled
+				has_country_flag = building_artillery
+				
+			}
+		}
+		visible = {
+			tag = PRK
+		}
+		complete_effect = {
+			set_country_flag = building_tanks
+			add_ideas = {
+				PRK_tank_production
+			}
+		}
+		
+		remove_effect = {
+			clr_country_flag = building_tanks
+			remove_ideas = {
+				PRK_tank_production
+			}
+		}
+		
+		fire_only_once = no
+		days_remove = 80
+		cost = 30
+		
+		
+		ai_will_do = {
+			factor = 10
+		}
+	}
+	accelerate_self_propelled_production = {
+	
+		icon = democracy
+	
+		available = {
+			tag = PRK
+			NOT = {
+				has_country_flag = building_guns
+				has_country_flag = building_mechanized
+				has_country_flag = building_artillery
+				has_country_flag = building_tank
+				
+			}
+		}
+		visible = {
+			tag = PRK
+			NOT = {
+				has_country_flag = second_korean_war
+			}
+		}
+		complete_effect = {
+			set_country_flag = building_self_propelled
+			add_ideas = {
+				PRK_selfpropelled
+			}
+		}
+		
+		remove_effect = {
+			clr_country_flag = building_self_propelled
+			remove_ideas = {
+				PRK_selfpropelled
+			}
+		}
+		
+		fire_only_once = no
+		days_remove = 80
+		cost = 30
+		
+		
+		ai_will_do = {
+			factor = 10
+		}
+	}
+	accelerate_mechanized_production = {
+	
+		icon = democracy
+	
+		available = {
+			tag = PRK
+			NOT = {
+				has_country_flag = building_guns
+				has_country_flag = building_artillery
+				has_country_flag = building_self_propelled
+				has_country_flag = building_tank
+				
+			}
+		}
+		visible = {
+			tag = PRK
+			NOT = {
+				has_country_flag = second_korean_war
+			}
+		}
+		complete_effect = {
+			set_country_flag = building_mechanized
+			add_ideas = {	
+				PRK_mechanized
+			}
+		}
+		
+		remove_effect = {
+			clr_country_flag = building_mechanized
+			remove_ideas = {
+				PRK_mechanized
+			}
+		}
+		
+		fire_only_once = no
+		days_remove = 80
+		cost = 30
+		
+		
+		ai_will_do = {
+			factor = 10
+		}
+	}
+	#### CONSTRUCTION ####
+	accelerate_infrastructure_construction = {
+	
+		icon = democracy
+	
+		available = {
+			tag = PRK
+		}
+		visible = {
+			tag = PRK
+			NOT = {
+				has_country_flag = second_korean_war
+			}
+		}
+		
+		modifier = {
+			production_speed_buildings_factor = 0.1
+			industry_free_repair_factor = 0.2
+		}
+		
+		complete_effect = {
+			set_country_flag = building_roads
+		}
+		
+		remove_effect = {
+			clr_country_flag = building_roads
+		}
+		
+		fire_only_once = no
+		days_remove = 80
+		cost = 30
+		
+		
+		ai_will_do = {
+			factor = 10
+		}
+	}
+	construct_SAM_sites = {
+	
+		icon = democracy
+	
+		available = {
+			tag = PRK
+		}
+		visible = {
+			tag = PRK
+			NOT = {
+				has_country_flag = second_korean_war
+			}
+		}
+		
+		complete_effect = {
+			1046 = {
+				if = {
+					limit = {
+						free_building_slots = {
+							building = anti_air_building
+							size > 1
+							include_locked = yes
+						}
+					}
+					add_extra_state_shared_building_slots = 1
+					add_building_construction = {
+						type = anti_air_building
+						level = 1
+						instant_build = yes
+					}
+				}
+			}
+			1045 = {
+				if = {
+					limit = {
+						free_building_slots = {
+							building = anti_air_building
+							size > 1
+							include_locked = yes
+						}
+					}
+					add_extra_state_shared_building_slots = 1
+					add_building_construction = {
+						type = anti_air_building
+						level = 1
+						instant_build = yes
+					}
+				}
+			}
+			1042 = {
+				if = {
+					limit = {
+						free_building_slots = {
+							building = anti_air_building
+							size > 1
+							include_locked = yes
+						}
+					}
+					add_extra_state_shared_building_slots = 1
+					add_building_construction = {
+						type = anti_air_building
+						level = 1
+						instant_build = yes
+					}
+				}
+			}
+			1044 = {
+				if = {
+					limit = {
+						free_building_slots = {
+							building = anti_air_building
+							size > 1
+							include_locked = yes
+						}
+					}
+					add_extra_state_shared_building_slots = 1
+					add_building_construction = {
+						type = anti_air_building
+						level = 1
+						instant_build = yes
+					}
+				}
+			}
+		}
+		
+		fire_only_once = yes
+		days_remove = 120
+		cost = 30
+		
+		
+		ai_will_do = {
+			factor = 10
+		}
+	}
+	
+	position_artillery = {
+	
+		icon = democracy
+	
+		available = {
+			tag = PRK
+		}
+		visible = {
+			tag = PRK
+			NOT = {
+				has_country_flag = second_korean_war
+			}
+		}
+		
+		complete_effect = {
+			set_country_flag = artillery_moved
+		}
+		
+		fire_only_once = yes
+		days_remove = 30
+		cost = 30
+		
+		
+		ai_will_do = {
+			factor = 10
+		}
+	}
+	
+	launch_artillery_strike = {
+	
+		icon = democracy
+	
+		available = {
+			has_country_flag = artillery_moved
+		}
+		visible = {
+			tag = PRK
+			has_country_flag = second_korean_war
+		}
+		
+		complete_effect = {
+		
+		}
+		
+		fire_only_once = yes
+		days_remove = 30
+		cost = 30
+		
+		
+		ai_will_do = {
+			factor = 10
+		}
+	}
+	
+	begin_the_war = {
+	
+		icon = democracy
+	
+		available = {
+			tag = PRK
+			has_country_flag = artillery_moved
+		}
+		visible = {
+			tag = PRK
+			has_country_flag = artillery_moved
+			NOT = {
+				has_country_flag = second_korean_war
+			}
+		}
+		
+		targeted_modifier = {
+			tag = KOR
+			attack_bonus_against = 7
+			defense_bonus_against = 0.05
+		}
+		
+		complete_effect = {
+			PRK = {
+				declare_war_on= { 
+					target = KOR 
+					type = annex_everything 
+				}
+			}
+		}
+		
+		fire_only_once = yes
+		days_remove = 40
+		cost = 30
+		
+		
+		ai_will_do = {
+			factor = 10
+		}
+	}
+}
+
+	PRK_korean_civil_war = {
+		PRK_KOR_intervention = {
+
+			priority = 1
+
+			icon = GFX_SOV_decision_president_election_category
+			
+			available = {
+				OR = {
+					PRK = {
+						527 = {
+							is_fully_controlled_by = PRK
+						}
+						1050 = {
+							is_fully_controlled_by = PRK
+						}
+						1043 = {
+							is_fully_controlled_by = PRK
+						}
+						1046 = {
+							is_fully_controlled_by = PRK
+						}
+						1045 = {
+							is_fully_controlled_by = PRK
+						}
+						1042 = {
+							is_fully_controlled_by = PRK
+						}
+						873 = {
+							is_fully_controlled_by = PRK
+						}
+						875 = {
+							is_fully_controlled_by = PRK
+						}
+						872 = {
+							is_fully_controlled_by = PRK
+						}
+						874 = {
+							is_fully_controlled_by = PRK
+						}
+					}
+					NK2 = {
+						527 = {
+							is_fully_controlled_by = NK2
+						}
+						1050 = {
+							is_fully_controlled_by = NK2
+						}
+						1043 = {
+							is_fully_controlled_by = NK2
+						}
+						1046 = {
+							is_fully_controlled_by = NK2
+						}
+						1045 = {
+							is_fully_controlled_by = NK2
+						}
+						1042 = {
+							is_fully_controlled_by = NK2
+						}
+						873 = {
+							is_fully_controlled_by = NK2
+						}
+						875 = {
+							is_fully_controlled_by = NK2
+						}
+						872 = {
+							is_fully_controlled_by = NK2
+						}
+						874 = {
+							is_fully_controlled_by = NK2
+						}
+					}
+				}
+			}
+
+			days_mission_timeout = 175
+
+			activation = {
+				always = no
+			}
+
+			visible = {
+			}
+			
+			fire_only_once = no
+			cancel_if_not_visible = yes
+			is_good = no
+			
+			complete_effect = {
+			}
+			
+			timeout_effect = {
+				KOR = {
+					declare_war_on = { 
+						target = PRK
+						type = annex_everything
+					}
+					declare_war_on = { 
+						target = NK2
+						type = annex_everything 
+					}
+					declare_war_on = { 
+						target = NK3
+						type = annex_everything 
+					}
+					add_ideas = KOR_unplanned_offensive
+					activate_mission = KOR_capture_pyongyang
+				}
+				news_event = {
+					id = china.95
+				}
+			}
+		}
+	}
+PRK_politburo_of_wpk = {
+	debug_rise_economic_sovereignty = {
+	
+		icon = democracy
+	
+		available = {
+			tag = PRK
+			is_ai = no
+		}
+		visible = {
+			always = yes
+		}
+		complete_effect = {
+			set_temp_variable = {
+				var = PRK_economic_sovereignty_level_var_temp
+				value = 0.05
+			}
+			PRK_add_economic_sovereignty = yes
+		}
+		
+		remove_effect = {
+		}
+		
+		fire_only_once = no
+		cost = 15
+		
+		
+		ai_will_do = {
+			factor = 10
+			#days_remove = 5
+		}
+	}
+	prk_proclaim_reunification_of_korea = {
+	
+		icon = democracy
+	
+		available = {
+			tag = PRK
+			owns_state = 1041
+			owns_state = 525
+			owns_state = 869
+			owns_state = 871
+			owns_state = 870
+			PRC = {
+				has_completed_focus = PRC_only_one_korea
+			}
+		}
+		visible = {
+			always = yes
+		}
+		complete_effect = {
+			set_portraits = {
+				character = PRK_kim_jongun
+				civilian = { large = "GFX_portrait_Kim_Jong_Un_Marshal" }
+			}
+			add_state_core = 1409
+			add_state_core = 1410
+			add_state_core = 1411
+			add_state_core = 1412
+			add_state_core = 1041
+			add_state_core = 525
+			add_state_core = 869
+			add_state_core = 871
+			add_state_core = 870
+			add_country_leader_trait = trait_victorious_marshal
+			every_country = {
+			    limit = {
+				    original_tag = PRC
+			    }
+			    country_event = { id = china.1511 days = 14 }
+		    }
+		}
+		remove_effect = {
+		}
+		fire_only_once = yes
+		cost = 10
+		ai_will_do = {
+			base = 9999
+		}
+	}
+}

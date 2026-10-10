@@ -1,0 +1,961 @@
+﻿add_namespace = RAJ
+#India Annexes Parts of Pakistan
+country_event = {
+	id = RAJ.1
+	title = RAJ.1.t
+	desc = RAJ.1.d
+	is_triggered_only = yes
+	immediate = {
+		set_cosmetic_tag = RAJ_Indian_Provisional_Government
+		add_country_leader_role = {
+			character = RAJ_Modi
+			promote_leader = yes
+			country_leader = {
+				ideology = right_populism
+				traits = {
+					#hos_lone_survivor
+				}
+			}
+		}
+		news_event = {
+			id = RAJ.5
+		}
+	}
+	option = {
+		name = RAJ.1.a
+		declare_war_on = { 
+			target = ULF
+			type = annex_everything 
+		}
+		random_list = {
+			25 = {
+				country_event = {
+					id = RAJ.10
+				}
+			}
+			25 = {
+				country_event = {
+					id = RAJ.14
+				}
+			}
+			25 = {
+				country_event = {
+					id = RAJ.12
+				}
+			}
+			25 = {
+				country_event = {
+					id = RAJ.15
+				}
+			}
+		}
+		hidden_effect = {
+			RAJ = {
+				annex_country = {
+					target = SND
+					transfer_troops = yes
+				}
+				add_state_core = 443
+				#add_state_core = 1324
+				transfer_state = 443
+				#transfer_state = 1324
+			}
+		}
+	}
+}
+
+country_event = { ###USE PRC_dissolve_india
+	id = RAJ.2
+	title = RAJ.2.t
+	desc = RAJ.2.d
+	is_triggered_only = yes
+	immediate = {
+		hidden_effect = {
+		}
+	}
+	option = {
+		name = RAJ.2.a
+	}
+}
+
+country_event = {
+	#Sticks and Stones war
+	id = RAJ.3
+	title = RAJ.3.t
+	desc = RAJ.3.d
+	is_triggered_only = yes
+	immediate = {
+		hidden_effect = {
+			every_country = {
+				limit = {
+					OR = {
+						tag = UPJ
+						tag = MPJ
+						tag = LRJ
+						tag = NAX
+						tag = SLJ
+						tag = BAN
+						tag = SAJ
+						tag = RSS
+						tag = DRV
+					}
+				}
+				load_oob = RAJ_templates_for_cw
+			}
+			LRJ = {
+				capital_scope = {
+					create_unit = {
+						division = "division_template = \"Indian CW Militia\" start_experience_factor = 0.1 start_equipment_factor = 1.0"
+						owner = PREV
+						count = 8
+					}
+					create_unit = {
+						division = "division_template = \"Indian CW Regular Infantry\" start_experience_factor = 0.2 start_equipment_factor = 1.0"
+						owner = PREV
+						count = 4
+					}
+				}
+			}
+			UPJ = {
+				capital_scope = {
+					create_unit = {
+						division = "division_template = \"Indian CW Militia\" start_experience_factor = 0.1 start_equipment_factor = 1.0"
+						owner = PREV
+						count = 5
+					}
+					create_unit = {
+						division = "division_template = \"Indian CW Regular Infantry\" start_experience_factor = 0.2 start_equipment_factor = 1.0"
+						owner = PREV
+						count = 2
+					}
+				}
+			}
+			MPJ = {
+				capital_scope = {
+					create_unit = {
+						division = "division_template = \"Indian CW Militia\" start_experience_factor = 0.1 start_equipment_factor = 1.0"
+						owner = PREV
+						count = 7
+					}
+					create_unit = {
+						division = "division_template = \"Indian CW Regular Infantry\" start_experience_factor = 0.2 start_equipment_factor = 1.0"
+						owner = PREV
+						count = 3
+					}
+				}
+			}
+			NAX = {
+				capital_scope = {
+					create_unit = {
+						division = "division_template = \"Indian CW Militia\" start_experience_factor = 0.1 start_equipment_factor = 1.0"
+						owner = PREV
+						count = 9
+					}
+					create_unit = {
+						division = "division_template = \"Indian CW Regular Infantry\" start_experience_factor = 0.2 start_equipment_factor = 1.0"
+						owner = PREV
+						count = 1
+					}
+				}
+			}
+			SLJ = {
+				capital_scope = {
+					create_unit = {
+						division = "division_template = \"Indian CW Militia\" start_experience_factor = 0.1 start_equipment_factor = 1.0"
+						owner = PREV
+						count = 5
+					}
+					create_unit = {
+						division = "division_template = \"Indian CW Regular Infantry\" start_experience_factor = 0.2 start_equipment_factor = 1.0"
+						owner = PREV
+						count = 5
+					}
+				}
+			}
+			SAJ = {
+				capital_scope = {
+					create_unit = {
+						division = "division_template = \"Indian CW Militia\" start_experience_factor = 0.1 start_equipment_factor = 1.0"
+						owner = PREV
+						count = 8
+					}
+					create_unit = {
+						division = "division_template = \"Indian CW Regular Infantry\" start_experience_factor = 0.2 start_equipment_factor = 1.0"
+						owner = PREV
+						count = 6
+					}
+				}
+			}
+			RSS = {
+				capital_scope = {
+					create_unit = {
+						division = "division_template = \"Indian CW Militia\" start_experience_factor = 0.1 start_equipment_factor = 1.0"
+						owner = PREV
+						count = 10
+					}
+					create_unit = {
+						division = "division_template = \"Indian CW Regular Infantry\" start_experience_factor = 0.2 start_equipment_factor = 1.0"
+						owner = PREV
+						count = 4
+					}
+				}
+			}
+			DRV = {
+				capital_scope = {
+					create_unit = {
+						division = "division_template = \"Indian CW Militia\" start_experience_factor = 0.1 start_equipment_factor = 1.0"
+						owner = PREV
+						count = 3
+					}
+					create_unit = {
+						division = "division_template = \"Indian CW Regular Infantry\" start_experience_factor = 0.2 start_equipment_factor = 1.0"
+						owner = PREV
+						count = 3
+					}
+				}
+			}
+			RAJ = {
+				declare_war_on = {
+					target = LRJ
+					type = annex_everything
+				}
+				declare_war_on = {
+					target = MPJ
+					type = annex_everything
+				}
+				declare_war_on = {
+					target = UPJ
+					type = annex_everything
+				}
+			}
+			UPJ = {
+				declare_war_on = {
+					target = LRJ
+					type = annex_everything
+				}
+				declare_war_on = {
+					target = MPJ
+					type = annex_everything
+				}
+			}
+			MPJ = {
+				declare_war_on = {
+					target = LRJ
+					type = annex_everything
+				}
+			}
+			SAJ = {
+				declare_war_on = {
+					target = RSS
+					type = annex_everything
+				}
+				declare_war_on = {
+					target = DRV
+					type = annex_everything
+				}
+			}
+			RSS = {
+				declare_war_on = {
+					target = DRV
+					type = annex_everything
+				}
+			}
+			SLJ = {
+				declare_war_on = {
+					target = NAX
+					type = annex_everything
+				}
+			}
+			#KHL = {
+			#	declare_war_on = {
+			#		target = RAJ
+			#		type = annex_everything
+			#	}
+			#}
+			#NBG = {
+			#	declare_war_on = {
+			#		target = SKM
+			#		type = annex_everything
+			#	}
+			#}
+			#TIG = {
+			#	transfer_state = 432
+			#	declare_war_on = {
+			#		target = SKM
+			#		type = annex_everything
+			#	}
+			#	declare_war_on = {
+			#		target = NBG
+			#		type = annex_everything
+			#	}
+			#}
+			#ULF = {
+			#	declare_war_on = {
+			#		target = SKM
+			#		type = annex_everything
+			#	}
+			#	declare_war_on = {
+			#		target = NBG
+			#		type = annex_everything
+			#	}
+			#	declare_war_on = {
+			#		target = TIG
+			#		type = annex_everything
+			#	}
+			#}
+			#if = {
+			#	limit = {
+			#		BAN = {
+			#			NOT = {
+			#				is_ally_with = PRC
+			#			}
+			#		}
+			#		country_exists = BAN
+			#	}
+			#	BAN = {
+			#		declare_war_on = {
+			#			target = SKM
+			#			type = annex_everything
+			#		}
+			#		declare_war_on = {
+			#			target = NBG
+			#			type = annex_everything
+			#		}
+			#		declare_war_on = {
+			#			target = TIG
+			#			type = annex_everything
+			#		}
+			#		declare_war_on = {
+			#			target = ULF
+			#			type = annex_everything
+			#		}
+			#	}
+			#}
+			#HUL = {
+			#	declare_war_on = {
+			#		target = RAJ
+			#		type = annex_everything
+			#	}
+			#	declare_war_on = {
+			#		target = KHL
+			#		type = annex_everything
+			#	}
+			#	declare_war_on = {
+			#		target = LRJ
+			#		type = annex_everything
+			#	}
+			#}
+		}
+	}
+	option = {
+		name = RAJ.3.a
+	}
+}
+
+country_event = {
+	id = RAJ.4
+	title = RAJ.4.t
+	desc = RAJ.4.d
+	is_triggered_only = yes
+	option = {
+		name = RAJ.4.a
+	}
+}
+
+news_event = {
+	id = RAJ.5
+	title = RAJ.5.t
+	desc = RAJ.5.d
+	picture = GFX_Naxalite_Uprising
+	is_triggered_only = yes
+	major = yes
+	option = {
+		name = RAJ.5.a
+		
+	}
+}
+
+news_event = {
+	id = RAJ.8
+	title = RAJ.8.t
+	desc = RAJ.8.d
+	picture = GFX_ULFA1
+	is_triggered_only = yes
+	major = yes
+	option = {
+		name = RAJ.8.a
+		
+	}
+}
+
+news_event = {
+	id = RAJ.9
+	title = RAJ.9.t
+	desc = RAJ.9.d
+	picture = GFX_ULFA2
+	is_triggered_only = yes
+	major = yes
+	option = {
+		name = RAJ.9.a
+		
+	}
+}
+
+country_event = {
+	#India Military Dictatorship
+	id = RAJ.10
+	title = RAJ.10.t
+	desc = RAJ.10.d
+	picture = GFX_ULFA2
+	is_triggered_only = yes
+	option = {
+		name = RAJ.10.a
+		RAJ = {
+			drop_cosmetic_tag = yes
+			set_politics = {
+				ruling_party = nationalist
+				elections_allowed = no
+			}
+			add_popularity = {
+				ideology = fascist
+				popularity = 0.1
+			}
+			add_popularity = {
+				ideology = nationalist
+				popularity = 0.4
+			}
+		}
+	}
+}
+
+country_event = {
+	#India Fascist (Rashtriya Swayamsevak Sangh)
+	id = RAJ.11
+	title = RAJ.11.t
+	desc = RAJ.11.d
+	picture = GFX_ULFA2
+	is_triggered_only = yes
+	option = {
+		name = RAJ.11.a
+		RAJ = {
+			set_politics = {
+				ruling_party = fascist
+				elections_allowed = no
+			}
+			add_popularity = {
+				ideology = fascist
+				popularity = 0.4
+			}
+			add_popularity = {
+				ideology = nationalist
+				popularity = 0.1
+			}
+		}
+	}
+}
+
+country_event = {
+	#India Fascist (Shiv Sena)
+	id = RAJ.12
+	title = RAJ.12.t
+	desc = RAJ.12.d
+	picture = GFX_ULFA2
+	is_triggered_only = yes
+	option = {
+		name = RAJ.12.a
+		RAJ = {
+			drop_cosmetic_tag = yes
+			set_politics = {
+				ruling_party = authoritarian_democrat
+				elections_allowed = no
+			}
+			add_popularity = {
+				ideology = authoritarian_democrat
+				popularity = 0.4
+			}
+			add_popularity = {
+				ideology = nationalist
+				popularity = 0.1
+			}
+		}
+	}
+}
+
+country_event = {
+	#India Neolib (INC)
+	id = RAJ.13
+	title = RAJ.13.t
+	desc = RAJ.13.d
+	picture = GFX_ULFA2
+	is_triggered_only = yes
+	option = {
+		name = RAJ.13.a
+		RAJ = {
+			set_politics = {
+				ruling_party = social_liberal
+				elections_allowed = no
+			}
+			add_popularity = {
+				ideology = social_liberal
+				popularity = 0.4
+			}
+			add_popularity = {
+				ideology = nationalist
+				popularity = 0.1
+			}
+		}
+	}
+}
+
+country_event = {
+	#India Stick with Modi
+	id = RAJ.14
+	title = RAJ.14.t
+	desc = RAJ.14.d
+	picture = GFX_ULFA2
+	is_triggered_only = yes
+	option = {
+		name = RAJ.14.a
+		RAJ = {
+			drop_cosmetic_tag = yes
+			add_popularity = {
+				ideology = conservative
+				popularity = 0.2
+			}
+			add_popularity = {
+				ideology = nationalist
+				popularity = 0.1
+			}
+		}
+	}
+}
+
+country_event = {
+	#India Stick with Modi - but he's extreme
+	id = RAJ.15
+	title = RAJ.15.t
+	desc = RAJ.15.d
+	picture = GFX_ULFA2
+	is_triggered_only = yes
+	option = {
+		name = RAJ.15.a
+		RAJ = {
+			drop_cosmetic_tag = yes
+			set_politics = {
+				ruling_party = nationalist
+				elections_allowed = no
+			}
+			set_portraits = {
+				character = RAJ_Modi
+				civilian = {
+					large = "gfx/Leaders/RAJ/RAJ_Modi_Nationalist.png"
+				}
+			}
+			add_country_leader_role = {
+				character = RAJ_Modi
+				promote_leader = yes
+				country_leader = {
+					ideology = radical_nationalism
+					traits = {
+						#hos_lone_survivor
+					}
+				}
+			}
+			add_popularity = {
+				ideology = nationalist
+				popularity = 0.2
+			}
+			add_popularity = {
+				ideology = conservative
+				popularity = 0.1
+			}
+		}
+	}
+}
+
+country_event = {
+	#2023 Bangladeshi election
+	id = RAJ.16
+	title = RAJ.16.t
+	desc = RAJ.16.d
+	picture = GFX_generic_elections
+	is_triggered_only = yes
+	fire_only_once = yes
+	
+	option = {
+		name = RAJ.16.a
+		retire_character = BAN_mohammad_abdul_hamid_char
+		promote_character = BAN_mohammad_shahabuddin_char
+		hidden_effect = { country_event = {  id = RAJ.17 days = 539 } }
+	}
+}
+
+country_event = {
+	#Non-cooperation Movement
+	id = RAJ.17
+	title = RAJ.17.t
+	desc = RAJ.17.d
+	picture = GFX_generic_media
+	is_triggered_only = yes
+	fire_only_once = yes
+	
+	option = {
+		name = RAJ.17.a
+		add_country_leader_role = {
+			character = BAN_mohammad_shahabuddin_char
+			promote_leader = yes
+			country_leader = {
+				ideology = centrist
+				expire = "1.1.1.1"
+				traits = {  }
+			}
+		}
+		set_party_name = {
+			ideology = social_liberal
+			long_name = BAN_nagorik_shakti_party_long
+			name = BAN_nagorik_shakti_party
+		}
+		end_ruling_party_wings = yes
+	}
+}
+
+country_event = {
+	#New President - 2022
+	id = RAJ.18
+	title = RAJ.18.t
+	desc = RAJ.18.d
+	picture = GFX_generic_elections
+	is_triggered_only = yes
+	fire_only_once = yes
+	
+	option = {
+		name = RAJ.18.a
+		retire_character = RAJ_Ram_Nath_Kovind
+		promote_character = RAJ_Droupadi_Murmu
+		add_popularity = {
+				ideology = conservative
+				popularity = 0.05
+		}
+	}
+}
+
+#the great asian war
+country_event = {
+	id = RAJ.19
+	title = RAJ.19.t
+	desc = RAJ.19.d
+	picture = GFX_generic_elections
+	is_triggered_only = yes
+	fire_only_once = yes
+	
+	option = {
+		name = RAJ.19.a
+		set_country_flag = RAJ_war_against_the_dragon_flag
+		focus_unlock = yes
+		complete_national_focus = RAJ_war_against_the_dragon
+	}
+}
+
+#militia deployed in our capital
+country_event = {
+	id = RAJ.20
+	title = RAJ.20.t
+	desc = RAJ.20.d
+	picture = GFX_generic_elections
+	is_triggered_only = yes
+	fire_only_once = no
+	trigger = {
+		has_global_flag = pan_asian_war_ongoing
+		NOT = {
+			has_global_flag = RAJ_india_dead
+		}
+	}
+	
+	option = {
+		name = RAJ.20.a
+		capital_scope = {
+			create_unit = {
+				division = "division_template = \"GAW Militia\" start_experience_factor = 0.2 start_equipment_factor = 1.0"
+				owner = PREV
+				count = 6
+			}
+		}
+		country_event = {
+			id = RAJ.20
+			days = 30
+		}
+	}
+}
+
+#Large Order from India for Infantry Equipment Supply
+country_event = {
+	id = RAJ.21
+	title = RAJ.21.t
+	desc = RAJ.21.d
+	picture = GFX_PRC_nib
+	is_triggered_only = yes
+	fire_only_once = no
+	
+	option = {
+		name = RAJ.21.a
+		add_timed_idea = {
+			idea = RAJ_SOV_supply_for_india_idea
+			days = 60
+		}
+		RAJ = {
+			country_event = {
+				id = RAJ.24
+				days = 1
+			}
+			add_equipment_to_stockpile = {
+				type = infantry_equipment_3
+				amount = 3500
+				producer = SOV
+			}
+			add_equipment_to_stockpile = {
+				type = support_equipment_1
+				amount = 500
+				producer = SOV
+			}
+			add_equipment_to_stockpile = {
+				type = anti_tank_equipment_2
+				amount = 350
+				producer = SOV
+			}
+			add_equipment_to_stockpile = {
+				type = anti_air_equipment_2
+				amount = 350
+				producer = SOV
+			}
+		}
+	}
+	option = {
+		name = RAJ.21.b
+		add_political_power = 10
+		RAJ = {
+			country_event = {
+				id = RAJ.25
+				days = 1
+			}
+		}
+	}
+}
+
+#Large Order from India for Jets Supply
+country_event = {
+	id = RAJ.22
+	title = RAJ.22.t
+	desc = RAJ.22.d
+	picture = GFX_SOV_su35_event
+	is_triggered_only = yes
+	fire_only_once = no
+	
+	option = {
+		name = RAJ.22.a
+		add_timed_idea = {
+			idea = RAJ_SOV_supply_for_india_idea
+			days = 100
+		}
+		RAJ = {
+			country_event = {
+				id = RAJ.24
+				days = 1
+			}
+			add_equipment_to_stockpile = {
+				type = small_plane_airframe_1
+				variant_name = "Su-27"
+				amount = 150
+				producer = SOV
+			}
+			add_equipment_to_stockpile = {
+				type = small_plane_cas_airframe_1
+				variant_name = "Su-25"
+				amount = 150
+				producer = SOV
+			}
+		}
+	}
+	option = {
+		name = RAJ.22.b
+		add_political_power = 10
+		RAJ = {
+			country_event = {
+				id = RAJ.25
+				days = 1
+			}
+		}
+	}
+}
+
+#Large Order from India for Armored Vechiles Supply
+country_event = {
+	id = RAJ.23
+	title = RAJ.23.t
+	desc = RAJ.23.d
+	picture = GFX_Generic_Tank_column
+	is_triggered_only = yes
+	fire_only_once = no
+	
+	option = {
+		name = RAJ.23.a
+		add_timed_idea = {
+			idea = RAJ_SOV_supply_for_india_idea
+			days = 80
+		}
+		RAJ = {
+			country_event = {
+				id = RAJ.24
+				days = 1
+			}
+			add_equipment_to_stockpile = {
+				type = modern_tank_chassis_1
+				variant_name = "T-90A"
+				amount = 350
+				producer = SOV
+			}
+			add_equipment_to_stockpile = {
+				type = mechanized_equipment_3
+				amount = 500
+				producer = SOV
+			}
+			add_equipment_to_stockpile = {
+				type = light_mechanized_equipment_3
+				amount = 500
+				producer = SOV
+			}
+			add_equipment_to_stockpile = {
+				type = motorized_equipment_1
+				amount = 500
+				producer = SOV
+			}
+		}
+	}
+	option = {
+		name = RAJ.23.b
+		add_political_power = 10
+		RAJ = {
+			country_event = {
+				id = RAJ.25
+				days = 1
+			}
+		}
+	}
+}
+
+#Russia Agrees to Supply
+country_event = {
+	id = RAJ.24
+	title = RAJ.24.t
+	desc = RAJ.24.d
+	picture = GFX_generic_elections
+	is_triggered_only = yes
+	fire_only_once = no
+	
+	option = {
+		name = RAJ.24.a
+	}
+}
+
+#Russia Refuses to Supply
+country_event = {
+	id = RAJ.25
+	title = RAJ.25.t
+	desc = RAJ.25.d
+	picture = GFX_generic_elections
+	is_triggered_only = yes
+	fire_only_once = no
+	
+	option = {
+		name = RAJ.25.a
+	}
+}
+
+#Chaos in India
+news_event = {
+	id = RAJ.26
+	title = RAJ.26.t
+	desc = RAJ.26.d
+	picture = GFX_India_Pakistan_War
+	is_triggered_only = yes
+	major = yes
+
+	option = {
+		name = RAJ.26.a
+		
+	}
+}
+
+#Indian Army Restores Order
+news_event = {
+	id = RAJ.27
+	title = RAJ.27.t
+	desc = RAJ.27.d
+	picture = GFX_PRC_RAJ_offensive_news
+	is_triggered_only = yes
+	major = yes
+
+	option = {
+		name = RAJ.27.a
+		
+	}
+}
+
+#Delhi Government Restores Order
+news_event = {
+	id = RAJ.28
+	title = RAJ.28.t
+	desc = RAJ.28.d
+	picture = GFX_RAJ_delhi_government_win_news
+	is_triggered_only = yes
+	major = yes
+
+	option = {
+		name = RAJ.28.a
+		
+	}
+}
+
+#Indian Union Restores Order
+news_event = {
+	id = RAJ.29
+	title = RAJ.29.t
+	desc = RAJ.29.d
+	picture = GFX_RAJ_indian_union_win_news
+	is_triggered_only = yes
+	major = yes
+
+	option = {
+		name = RAJ.29.a
+		
+	}
+}
+
+#Naxalites Restores Order
+news_event = {
+	id = RAJ.30
+	title = RAJ.30.t
+	desc = RAJ.30.d
+	picture = GFX_Naxalite_Uprising
+	is_triggered_only = yes
+	major = yes
+
+	option = {
+		name = RAJ.30.a
+		
+	}
+}
+
+#Indian Nationalists Restores Order
+news_event = {
+	id = RAJ.31
+	title = RAJ.31.t
+	desc = RAJ.31.d
+	picture = GFX_RAJ_indian_nationalists_win_news
+	is_triggered_only = yes
+	major = yes
+
+	option = {
+		name = RAJ.31.a
+		
+	}
+}

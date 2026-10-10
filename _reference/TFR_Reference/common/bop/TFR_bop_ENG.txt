@@ -1,0 +1,211 @@
+ENG_Charles_Power_bop = {
+	initial_value = -1
+	left_side = ENG_Parliamentarian_side	
+	right_side = ENG_Cavalier_side	
+	decision_category = ENG_Charles_Power_bop_category
+	#desc = ENG_Charles_Power_bop_desc #Doesn't do anything
+	#Middle
+	range = {
+		id = ENG_Middle_balance_range
+		min = 0
+		max = 0.12
+		modifier = {
+			stability_factor = -0.2
+			political_power_factor = -0.2
+		}
+		on_activate = {
+		}
+		on_deactivate = {
+		}
+	}
+	#Parliamentarian
+	side = {
+		id = ENG_Parliamentarian_side
+		icon = GFX_bop_ENG_parliamentarian
+		range = {
+			id = ENG_Parliamentarian_Bias
+			min = -1
+			max = 0
+			modifier = {
+				stability_factor = 0.2
+				war_support_factor = -0.1
+				political_power_factor = 0.2
+				power_balance_weekly = -0.001
+			}
+			on_activate = {
+			}
+			on_deactivate = {
+			}
+		}
+	}
+
+	#Cavalier
+	side = {
+		id = ENG_Cavalier_side	
+		icon = GFX_bop_ENG_cavalier
+		range = {
+			id = ENG_Cavalier_fragile
+			min = 0.12
+			max = 0.24
+			modifier = {
+				stability_factor = -0.2
+				war_support_factor = 0.1
+				political_power_factor = -0.2
+				power_balance_weekly = -0.002
+			}
+			on_activate = {
+			}
+			on_deactivate = {
+			}
+		}
+		range = {
+			id = ENG_Cavalier_weak
+			min = 0.24
+			max = 0.36
+			modifier = {
+				stability_factor = -0.15
+				war_support_factor = 0.125
+				political_power_factor = -0.175
+				power_balance_weekly = -0.001
+			}
+			on_activate = {
+			}
+			on_deactivate = {
+			}
+		}
+		range = {
+			id = ENG_Cavalier_growing
+			min = 0.36
+			max = 0.60
+			modifier = {
+				stability_factor = -0.1
+				war_support_factor = 0.125
+				political_power_factor = -0.15
+				power_balance_weekly = 0.001
+			}
+			on_activate = {
+			}
+			on_deactivate = {
+			}
+		}
+		range = {
+			id = ENG_Cavalier_established
+			min = 0.60
+			max = 0.72
+			modifier = {
+				stability_factor = -0.1
+				war_support_factor = 0.15
+				political_power_factor = -0.125
+				nationalist_drift = 0.01
+				power_balance_weekly = 0.002
+			}
+			on_activate = {
+				set_portraits = {
+					character = ENG_charles_iii_char
+					civilian = { large ="gfx/leaders/ENG/ENG_charles_iii_absolute_Military.png" }
+				} 
+			}
+			on_deactivate = {
+				set_portraits = {
+					character = ENG_charles_iii_char
+					civilian = { large ="gfx/leaders/ENG/ENG_charles_iii.png" }
+				} 
+			}
+		}
+		range = {
+			id = ENG_Cavalier_strong
+			min = 0.72
+			max = 0.84
+			modifier = {
+				war_support_factor = 0.15
+				nationalist_drift = 0.02
+				power_balance_weekly = 0.003
+			}
+			on_activate = {
+				set_portraits = {
+					character = ENG_charles_iii_char
+					civilian = { large ="gfx/leaders/ENG/ENG_charles_iii_absolute_Military.png" }
+				} 
+			}
+			on_deactivate = {
+				set_portraits = {
+					character = ENG_charles_iii_char
+					civilian = { large ="gfx/leaders/ENG/ENG_charles_iii.png" }
+				} 
+			}
+		}
+		range = {
+			id = ENG_Cavalier_dominant
+			min = 0.84
+			max = 0.96
+			modifier = {
+				stability_factor = 0.1
+				war_support_factor = 0.15
+				nationalist_drift = 0.03
+				political_power_factor = 0.125
+				head_minister_cost_factor = -0.1
+				foreign_minister_cost_factor = -0.1
+				economic_minister_cost_factor = -0.1
+				interior_minister_cost_factor = -0.1
+				intelligence_minister_cost_factor = -0.1
+				theorist_minister_cost_factor = -0.1
+				trade_laws_cost_factor = -0.1
+				mobilization_laws_cost_factor = -0.1
+				economy_cost_factor = -0.1
+				high_command_cost_factor = -0.1
+				air_chief_cost_factor = -0.1
+				army_chief_cost_factor = -0.1
+				navy_chief_cost_factor = -0.1
+			}
+			on_activate = {
+				set_portraits = {
+					character = ENG_charles_iii_char
+					civilian = { large ="gfx/leaders/ENG/ENG_charles_iii_absolute.png" }
+				} 
+			}
+			on_deactivate = {
+				set_portraits = {
+					character = ENG_charles_iii_char
+					civilian = { large ="gfx/leaders/ENG/ENG_charles_iii_absolute_Military.png" }
+				} 
+			}
+		}
+		range = {
+			id = ENG_Cavalier_ABSOLUTE
+			min = 0.96
+			max = 1
+			modifier = {
+				stability_factor = 0.2
+				war_support_factor = 0.2
+				nationalist_drift = 0.05
+				power_balance_weekly = -0.0025
+				head_minister_cost_factor = -0.25
+				foreign_minister_cost_factor = -0.25
+				economic_minister_cost_factor = -0.25
+				interior_minister_cost_factor = -0.25
+				intelligence_minister_cost_factor = -0.25
+				theorist_minister_cost_factor = -0.25
+				trade_laws_cost_factor = -0.25
+				mobilization_laws_cost_factor = -0.25
+				economy_cost_factor = -0.25
+				high_command_cost_factor = -0.25
+				air_chief_cost_factor = -0.25
+				army_chief_cost_factor = -0.25
+				navy_chief_cost_factor = -0.25
+			}
+			on_activate = {
+				set_portraits = {
+					character = ENG_charles_iii_char
+					civilian = { large ="gfx/leaders/ENG/ENG_charles_iii_absolute.png" }
+				} 
+			}
+			on_deactivate = {
+				set_portraits = {
+					character = ENG_charles_iii_char
+					civilian = { large ="gfx/leaders/ENG/ENG_charles_iii_absolute_Military.png" }
+				} 
+			}
+		}
+		
+	}
+}

@@ -1,0 +1,503 @@
+seek_american_alliance = {
+	abort_when_not_enabled = yes
+	allowed = {
+		NOT = {
+			tag = USC
+		}
+	}
+	enable = {
+		has_country_flag = seeks_american_alliance
+	}
+	ai_strategy = {
+		type = befriend
+		id = "USC"
+		value = 150
+	}
+	ai_strategy = {
+		type = alliance
+		id = "USC"
+		value = 150
+	}
+}
+
+USC_be_ready = {
+	abort_when_not_enabled = yes
+	allowed = {
+		tag = USC
+	}
+	enable = {
+		OR = {
+			has_global_flag = USA_american_civil_war_global
+			has_global_flag = USA_shattered_union_global
+		}
+		country_exists = USB
+	}
+	ai_strategy = {
+		type = force_build_armies
+		value = 1000
+	}
+	ai_strategy = {
+		type = prepare_for_war
+		id = USB
+		value = 1000
+	}
+	ai_strategy = {
+		type = pp_spend_amount
+		id = idea
+		value = 100
+	}
+	ai_strategy = {
+		type = pp_spend_amount
+		id = decision
+		value = 25
+	}
+}
+
+USC_be_ready_APA_strategy = {
+	allowed = {
+		tag = USC
+	}
+	enable = {
+		OR = {
+			has_global_flag = USA_american_civil_war_global
+			has_global_flag = USA_shattered_union_global
+		}
+	}
+	abort = {
+		always = no
+	}
+	
+	ai_strategy = {
+		type = prepare_for_war
+		id = APA
+		value = 100
+	}
+}
+
+#USC_sleepy_joe = {
+#	
+#	allowed = {
+#      tag = USC
+#   }
+#	
+#	enable = {
+#		tag = USC
+#	}
+#
+#	abort_when_not_enabled = yes
+#
+#	ai_strategy = {
+#		type = front_control
+#		tag = USB
+#		execution_type = rush
+#		execute_order = yes
+#		manual_attack = no
+#	}
+#
+#	ai_strategy = {
+#		type = consider_weak
+#		id = USB
+#		value = 1000
+#	}
+#
+#	ai_strategy = {
+#		type = conquer
+#		id = USB
+#		value = 1000
+#	}
+#}
+
+#USC_sleepy_commies = {
+#	
+#	allowed = {
+#       tag = USC
+#    }
+#	
+#	enable = {
+#		tag = USC
+#	}
+#
+#	abort_when_not_enabled = yes
+#
+#	ai_strategy = {
+#		type = front_control
+#		tag = APA
+#		execution_type = rush
+#		execute_order = yes
+#		manual_attack = no
+#	}
+#
+#	ai_strategy = {
+#		type = consider_weak
+#		id = APA
+#		value = 1000
+#	}
+#
+#	ai_strategy = {
+#		type = conquer
+#		id = APA
+#		value = 1000
+#	}
+#}
+
+USC_ignore_cunts = {
+	abort_when_not_enabled = yes
+	allowed = {
+		tag = USC
+	}
+	enable = {
+		OR = {
+			has_global_flag = USA_american_civil_war_global
+			has_global_flag = USA_shattered_union_global
+		}
+		NOT = {
+			has_war_with = CAN
+			has_war_with = MEX
+			has_war_with = WAs
+			has_war_with = ORE
+			has_war_with = CAL
+			has_war_with = NNN
+			has_war_with = NMX
+			has_war_with = WLF
+			has_war_with = CLM
+			has_war_with = HUM
+			has_war_with = MSS
+			has_war_with = LOU
+			has_war_with = TEX
+			has_war_with = ARZ
+			has_war_with = BLA
+		}
+	}
+	ai_strategy = {
+		type = ignore
+		id = "CAN"
+		value = 1000
+	}
+	ai_strategy = {
+		type = ignore
+		id = "MEX"
+		value = 1000
+	}
+	ai_strategy = {
+		type = ignore
+		id = "WAS"
+		value = 1000
+	}
+	ai_strategy = {
+		type = ignore
+		id = "ORE"
+		value = 1000
+	}
+	ai_strategy = {
+		type = ignore
+		id = "CAL"
+		value = 1000
+	}
+	ai_strategy = {
+		type = ignore
+		id = "NNN"
+		value = 1000
+	}
+	ai_strategy = {
+		type = ignore
+		id = "NMX"
+		value = 1000
+	}
+	ai_strategy = {
+		type = ignore
+		id = "WLF"
+		value = 1000
+	}
+	ai_strategy = {
+		type = ignore
+		id = "CLM"
+		value = 1000
+	}
+	ai_strategy = {
+		type = ignore
+		id = "HUM"
+		value = 1000
+	}
+	ai_strategy = {
+		type = ignore
+		id = "MSS"
+		value = 1000
+	}
+	ai_strategy = {
+		type = ignore
+		id = "LOU"
+		value = 1000
+	}
+	ai_strategy = {
+		type = ignore
+		id = "TEX"
+		value = 1000
+	}
+	ai_strategy = {
+		type = ignore
+		id = "ARZ"
+		value = 1000
+	}
+	ai_strategy = {
+		type = ignore
+		id = "BLA"
+		value = 1000
+	}
+}
+
+#USC_fucking_kill_biden = {
+#	allowed = {
+#		original_tag = USC
+#	}
+#	enable = {
+#		original_tag = USC
+#	}
+#	abort = {
+#		USB = {
+#			exists = no
+#		}
+#	}
+#	ai_strategy = {
+#		type = antagonize
+#		id = USB
+#		value = 1000
+#	}
+#}
+
+# USC_dont_bother_garrisoning = {
+# 	abort_when_not_enabled = yes
+# 	allowed = {
+# 		tag = USC
+# 	}
+# 	enable = {
+# 		OR = {
+# 			has_global_flag = USA_shattered_union_global
+# 			has_global_flag = USA_american_civil_war_global
+# 		}
+# 	}
+# 	ai_strategy = {
+# 		type = garrison
+# 		value = -100
+# 	}
+# }
+
+ARZ_californians_are_not_friends = {
+	abort_when_not_enabled = yes
+	allowed = {
+		tag = ARZ
+	}
+	enable = {
+		country_exists = CAL
+	}
+	ai_strategy = {
+		type = antagonize
+		id = "CAL"
+		value = 1000
+	}
+}
+
+USC_dont_thug_hunt_yet = { #Hazard, you deserve to be hanged for these names -IAVL
+	allowed = {
+		tag = USC
+	}
+	enable = {
+		tag = USC
+		NOT = {
+			has_war_with = BLA
+		}
+	}
+	abort_when_not_enabled = yes
+	ai_strategy = {
+		type = consider_weak
+		id = BLA
+		value = -1000
+	}
+	ai_strategy = {
+		type = conquer
+		id = BLA
+		value = -1000
+	}
+	ai_strategy = {
+		type = antagonize
+		id = "BLA"
+		value = -1000
+	}
+	ai_strategy = {
+		type = ignore
+		id = "BLA"
+		value = 1000
+	}
+}
+
+CLM_oregon_is_not_a_friend = {
+	abort_when_not_enabled = yes
+	allowed = {
+		tag = CLM
+	}
+	enable = {
+		country_exists = ORE
+	}
+	ai_strategy = {
+		type = antagonize
+		id = "ORE"
+		value = 1000
+	}
+}
+
+CAL_recall_newsome = {
+	allowed = {
+		tag = CAL
+	}
+	enable = {
+		tag = CAL
+		always = yes
+	}
+	abort_when_not_enabled = yes
+	ai_strategy = {
+		type = front_control
+		tag = APA
+		execution_type = rush
+		execute_order = yes
+		manual_attack = no
+	}
+	ai_strategy = {
+		type = consider_weak
+		id = APA
+		value = 500
+	}
+	ai_strategy = {
+		type = conquer
+		id = APA
+		value = 500
+	}
+}
+
+USC_defend_blitzkrieg  = {#Only perform careful attacks, we want to defend while USB has buffs.
+	allowed = {
+		original_tag = USC
+	}
+	enable = {
+		date < 2023.4.1
+		has_war_with = USB
+		OR = {
+			USB = {
+				OR = {
+					has_idea = USB_fighting_for_democracy_idea 
+					has_idea = USB_operation_mirage_idea
+					has_idea = USB_race_against_the_clock_idea
+				}
+			}
+			has_global_flag = {
+				flag = USA_american_civil_war_global
+				days < 350
+			}
+			has_idea = USA_military_disorganization_idea
+		}
+	}
+	abort = {
+		has_completed_focus = USC_army_reorganization
+	}
+	abort_when_not_enabled = yes
+	ai_strategy = {
+		type = front_control
+		tag = USB
+		ratio = 0.4
+		priority = 100
+		ordertype = front
+		execution_type = careful
+		execute_order = no
+	}
+	ai_strategy = {
+		type = strategic_air_importance
+		id = 198 #Strategic Region ID - Midwest
+		value = 20000 #value of stocked main front in active combat is usually around 35,000
+	}
+	ai_strategy = {
+		type = strategic_air_importance
+		id = 120 #Strategic Region ID - Great Plains
+		value = 20000 #value of stocked main front in active combat is usually around 35,000
+	}
+	ai_strategy = {
+		type = strategic_air_importance
+		id = 209 #Strategic Region ID - Great Plains
+		value = -20000 #value of stocked main front in active combat is usually around 35,000
+	}
+	ai_strategy = {
+		type = garrison
+		value = 50
+	}
+	ai_strategy = {
+		type = garrison_reinforcement_priority
+		value = 50
+	}
+}
+
+USC_kill_sloppy_joe_strategy = {
+	allowed = {
+		tag = USB
+	}
+	enable = {
+		surrender_progress < 0.1
+		OR = {
+			has_global_flag = USA_american_civil_war_global
+			has_global_flag = USA_shattered_union_global
+		}
+		OR = {
+			has_global_flag = {
+				flag = USA_american_civil_war_global
+				days > 525
+			}
+			has_completed_focus = USC_army_reorganization
+		}
+	}
+	abort_when_not_enabled = yes
+	ai_strategy = {
+		type = front_control
+		tag = USB
+		ratio = 0.5
+		priority = 100
+		ordertype = front
+		execution_type = rush
+		execute_order = yes
+	}
+	ai_strategy = {
+		type = consider_weak
+		id = USB
+		value = 100
+	}
+	ai_strategy = {
+		type = conquer
+		id = USB
+		value = 100
+	}
+	ai_strategy = {
+		type = prepare_for_war
+		id = USB
+		value = 100
+	}
+	ai_strategy = {
+		type = front_control
+		state_trigger = {
+			air_base > 0
+			is_controlled_by = USB
+		}
+		ratio = 0.15
+		ordertype = front
+		execution_type = rush
+	}
+	ai_strategy = {
+		type = strategic_air_importance
+		id = 209 #Strategic Region ID - Rustbelt
+		value = 20000 #value of stocked main front in active combat is usually around 35,000
+	}
+	ai_strategy = {
+		type = strategic_air_importance
+		id = 117 #Strategic Region ID - Columbia
+		value = 20000 #value of stocked main front in active combat is usually around 35,000
+	}
+	ai_strategy = {
+		type = strategic_air_importance
+		id = 210 #Strategic Region ID - Southern USA
+		value = 20000 #value of stocked main front in active combat is usually around 35,000
+	}
+}

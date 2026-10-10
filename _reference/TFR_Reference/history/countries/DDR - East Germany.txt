@@ -1,0 +1,172 @@
+﻿	capital = 64
+
+	set_research_slots = 3
+	set_convoys = 10
+	set_stability = 0.6
+
+	recruit_character = DDR_sahra_wagenknecht_char
+
+	set_technology = {
+			## Infantry ##
+			
+			infantry_weapons1 = 1
+			infantry_weapons2 = 1
+			infantry_weapons3 = 1
+			motorised_infantry = 1
+			infantry_rifle_upgrade = 1
+			infantry_rifle_upgrade2 = 1
+			infantry_rifle_upgrade3 = 1
+			upgraded_infantry_weapons1 = 1
+			support_weapons = 1
+			support_weapons2 = 1
+			support_weapons3 = 1
+			night_vision = 1
+			night_vision2 = 1
+			body_armor = 1
+			body_armor2 = 1
+			body_armor3 = 1
+			camouflage = 1
+			camouflage2 = 1
+			tech_mountaineers = 1
+			tech_rangers = 1
+			paratroopers = 1
+			basic_train = 1
+			
+			## Support Companies ##
+			tech_support = 1
+			tech_engineers = 1
+			tech_recon = 1
+			tech_military_police = 1
+			tech_maintenance_company = 1
+			tech_field_hospital = 1
+			tech_logistics_company = 1
+			tech_signal_company = 1
+			
+			## Armor ##
+			mechanised_infantry1 = 1
+			mechanised_infantry2 = 1
+			light_mechanized_infantry1 = 1
+			tank_destroyer1 = 1
+			self_propelled_aa1 = 1
+			
+			## Artillery ##
+			gw_artillery = 1
+			interwar_antitank = 1
+			interwar_antiair = 1
+			rocket_artillery = 1
+			interwar_artillery = 1
+			sp_artillery1 = 1
+			tank_destroyer1 = 1
+			self_propelled_aa1 = 1
+			artillery1 = 1
+			
+			## Air ##
+			attack_helicopter_1 = 1
+			utility_helicopter_1 = 1
+			
+			## Engineering ##
+			electronic_mechanical_engineering = 1
+			radio = 1
+			
+			## Industry ##
+			basic_machine_tools = 1
+			fuel_silos = 1
+			fuel_refining = 1
+			
+			## Doctrines ##
+			#mobile_warfare = 1
+			#fleet_in_being = 1
+			#formation_flying = 1
+	}
+
+	if = {
+		limit = {
+			NOT = { has_dlc = "No Step Back" }
+		}
+		set_technology = {
+			main_battle_tank1 = 1
+			main_battle_tank2 = 1
+			main_battle_tank3 = 1
+			light_tank1 = 1
+			light_tank2 = 1
+			amphibious_tank1 = 1
+			amphibious_mechanized_infantry1 = 1
+		}
+	}
+	if = {
+		limit = {
+			has_dlc = "No Step Back"
+		}
+		set_technology = {
+			gwtank_chassis = 1
+			basic_light_tank_chassis = 1
+			basic_medium_tank_chassis = 1
+			improved_medium_tank_chassis = 1
+			engine_tech_1 = 1
+			apds_tech = 1
+			turret_mounted_mg_tech = 1
+			heat_tech = 1
+			turret_mounted_atgm_tech = 1
+			apfsds_tech = 1
+			blow_out_compartment_tech = 1
+			auto_cannon_tech = 1
+			legacy_armor_designs = 1
+			armor_tech_1 = 1
+			armor_tech_2 = 1
+		}
+	}
+	
+	if = {
+		limit = { has_dlc = "By Blood Alone" }
+			set_air_oob = "GER_2020_air_bba"
+			set_technology = {
+				aa_lmg = 1
+				aa_cannon_1 = 1
+				aa_hmg = 1
+				engines_1 = 1
+				engines_2 = 1
+				early_bombs = 1
+				guided_bombs = 1
+				aircraft_construction = 1
+				survivability_studies = 1
+				iw_small_airframe = 1
+				basic_small_airframe = 1
+				iw_medium_airframe = 1
+				basic_medium_airframe = 1
+				iw_large_airframe = 1
+			}
+		else = {
+			set_air_oob = "GER_2020_air_legacy"
+			set_technology = {
+				CAS1 = 1
+				CAS2 = 1
+				fighter1 = 1
+				fighter2 = 1
+				fighter3 = 1
+				naval_bomber1 = 1
+				naval_bomber2 = 1
+				strategic_bomber1 = 1
+				tactical_bomber1 = 1
+				transport_plane2 = 1
+			}
+		}
+	}
+	
+#	add_ideas = {
+#	}
+
+	set_politics = {	
+		ruling_party = communist
+		last_election = "1990.1.1"
+		election_frequency = 48
+		elections_allowed = no
+	}
+
+	set_popularities = {
+		nationalist = 5
+		authoritarian_democrat = 5
+		conservative = 15
+		social_democrat = 5
+		social_liberal = 5
+		communist = 65
+	}

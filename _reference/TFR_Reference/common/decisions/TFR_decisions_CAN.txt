@@ -1,0 +1,250 @@
+ATW_aryan_liberation_war_category = {
+	CAN_invite_ally_to_faction_decision = {
+		icon = generic_shaking_hands
+		fire_only_once = no
+		allowed = {
+			tag = CAN
+		}
+		visible = {
+		}
+		target_root_trigger = {
+			is_in_faction = yes
+			is_faction_leader = yes
+		}
+		target_trigger = {
+			FROM = {
+				has_content_tag = yes
+				NOT = {
+					is_in_faction_with = ROOT
+					has_war_with = ROOT
+					tag = ATW
+				}
+				# if = {
+				# 	limit = {
+				# 		OR = {
+				# 			tag = GER
+				# 			tag = FRA
+				# 			tag = FPR
+				# 			tag = SOV
+				# 		}
+				# 	}
+				# 	OR = {
+				# 		has_global_flag = SOV_russia_second_nato_war_victory_global
+				# 		has_global_flag = SOV_nato_second_nato_war_victory_global
+				# 	}
+				# }
+				# if = {
+				# 	limit = {
+				# 		OR = {
+				# 			tag = PRC
+				# 			tag = JAP
+				# 		}
+				# 	}
+				# 	OR = {
+				# 		has_global_flag = PRC_chinese_gaw_victory_global
+				# 		has_global_flag = PRC_japanese_gaw_victory_global
+				# 	}
+				# }
+			}
+		}
+		available = {
+			ATW = {
+				set_temp_variable = {
+					var = ATW_suspicion_trigger_var_temp
+					value = 0.8
+				}
+				ATW_has_suspicion_greater_than_or_equals = yes
+			}
+			FROM = {
+				has_war = no
+			}
+		}
+		ai_will_do = {
+			factor = 100
+		}
+		complete_effect = {
+			every_country = {
+				limit = {
+					OR = {
+						tag = FROM
+						is_in_faction_with = FROM
+					}
+				}
+				declare_war_on = {
+					target = ATW
+					type = topple_government
+				}
+			}
+		}
+	}
+}
+
+CAN_our_neighbour_in_the_south_category = {
+	CAN_end_the_emergency = {
+		available = {
+
+        }
+		modifier = {
+		}
+		ai_will_do = {
+			factor = 100
+		}
+		fire_only_once = yes
+		cost = 50
+	    remove_effect = {
+			remove_ideas = CAN_emergencies_act
+			remove_ideas = CAN_emergencies_act_2
+			set_party_name = {
+				ideology = authoritarian_democrat
+				long_name = CAN_authoritarian_democrat_party_long
+				name = CAN_authoritarian_democrat_party
+			}
+			set_country_flag = head_of_gov_ui_enabled
+			if = {
+				limit = {
+					has_country_flag = CAN_mary_simon_flag
+				}
+				add_country_leader_role = {
+					character = CAN_Mary_Simon_char
+					promote_leader = yes
+					country_leader = {
+						ideology = neoliberalism
+						traits = {
+						}
+					}
+				}
+				hidden_effect = {
+				add_country_leader_role = {
+					character = CAN_Mary_Simon_char
+					promote_leader = yes
+					country_leader = {
+						ideology = classical_liberalism
+						traits = {
+						}
+					}
+				}
+				add_country_leader_role = {
+					character = CAN_Mary_Simon_char
+					promote_leader = yes
+					country_leader = {
+						ideology = neoconservative
+						traits = {
+						}
+					}
+				}
+				add_country_leader_role = {
+					character = CAN_Mary_Simon_char
+					promote_leader = yes
+					country_leader = {
+						ideology = ultra_conservatism
+						traits = {
+						}
+					}
+				}
+				add_country_leader_role = {
+					character = CAN_Mary_Simon_char
+					promote_leader = yes
+					country_leader = {
+						ideology = progressivism
+						traits = {
+						}
+					}
+				}
+				add_country_leader_role = {
+					character = CAN_Mary_Simon_char
+					promote_leader = yes
+					country_leader = {
+						ideology = reformist_socialism
+						traits = {
+						}
+					}
+				}			
+				}
+			}
+			if = {
+				limit = {
+					has_country_flag = CAN_joshua_leakey_flag
+				}
+				add_country_leader_role = {
+					character = CAN_Joshua_Leakey_char
+					promote_leader = yes
+					country_leader = {
+						ideology = neoliberalism
+						traits = {
+						}
+					}
+				}
+				hidden_effect = {
+				add_country_leader_role = {
+					character = CAN_Joshua_Leakey_char
+					promote_leader = yes
+					country_leader = {
+						ideology = classical_liberalism
+						traits = {
+						}
+					}
+				}
+				add_country_leader_role = {
+					character = CAN_Joshua_Leakey_char
+					promote_leader = yes
+					country_leader = {
+						ideology = neoconservative
+						traits = {
+						}
+					}
+				}
+				add_country_leader_role = {
+					character = CAN_Mary_Simon_char
+					promote_leader = yes
+					country_leader = {
+						ideology = ultra_conservatism
+						traits = {
+						}
+					}
+				}
+				add_country_leader_role = {
+					character = CAN_Joshua_Leakey_char
+					promote_leader = yes
+					country_leader = {
+						ideology = progressivism
+						traits = {
+						}
+					}
+				}
+				add_country_leader_role = {
+					character = CAN_Joshua_Leakey_char
+					promote_leader = yes
+					country_leader = {
+						ideology = reformist_socialism
+						traits = {
+						}
+					}
+					}
+				}
+			}
+			country_event = {
+				id = canada.10
+				days = 50
+			}
+		}
+	}
+	CAN_trudeau_resign = {
+		available = {
+			has_country_flag = head_of_gov_ui_enabled
+		}
+		modifier = {
+		}
+		ai_will_do = {
+			factor = 100
+		}
+		fire_only_once = yes
+		cost = 50
+	    remove_effect = {
+			CAN = {
+				country_event = {
+					id = canada.15
+				}
+			}
+		}
+	}
+}

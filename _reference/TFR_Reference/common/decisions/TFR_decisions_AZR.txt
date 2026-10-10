@@ -1,0 +1,534 @@
+	AZR_nagorno_karabakh = {
+		AZR_launch_first_skirmish = {
+
+			icon = GFX_decision_generic_ignite_civil_war
+			fire_only_once = yes
+
+			allowed = {
+				original_tag = AZR
+			}
+
+			available = {
+				original_tag = AZR
+				controls_state = 229
+			}
+			
+			visible = {
+				NOT = {
+					AZR = {
+						controls_state = 832
+					}
+				}
+			}
+
+			ai_will_do = {
+				factor = 0
+				modifier = {
+					add = 100
+					date >2020.9.27
+				}
+			}
+
+			complete_effect = {
+				custom_effect_tooltip = ARM_escalate_conflict
+				start_border_war = {
+				change_state_after_war = no
+					attacker = { state = 229
+						num_provinces = 2
+					}
+					defender = { state = 832
+						num_provinces = 2
+					}
+				}
+				set_country_flag = AZR_first_strikes
+				news_event = { id = news.140 }
+			}
+			
+			days_remove = 50
+			
+			remove_effect = {
+				AZR = {
+					transfer_state = 832
+				}
+			}
+		}
+		
+		AZR_launch_more_skirmishes = {
+
+			icon = generic_civil_support
+			fire_only_once = no
+
+			allowed = {
+				original_tag = AZR
+			}
+
+			available = {
+				has_border_war = no
+				controls_state = 229
+			}
+			
+			visible = {	
+				has_country_flag = AZR_first_strikes
+				NOT = {
+					AZR = {
+						controls_state = 832
+					}
+				}
+			}
+			ai_will_do = {
+				factor = 0
+				modifier = {
+					add = 100
+					date >2020.10.5
+				}
+			}
+
+			complete_effect = {
+			custom_effect_tooltip = ARM_escalate_conflict
+			start_border_war = {
+				change_state_after_war = no
+					attacker = { state = 229
+						num_provinces = 2
+						on_win = armenia.2
+					}
+					defender = { state = 832
+						num_provinces = 2
+						on_win = armenia.3
+					}
+				}
+			}
+		}
+		
+		NGK_rally_civilians = {
+
+			icon = GFX_decision_generic_nationalism
+			fire_only_once = no
+
+			allowed = {
+				original_tag = NGK
+			}
+
+			available = {
+				original_tag = NGK
+			}
+
+			cost = 15
+			days_remove = 15
+			ai_will_do = {
+				factor = 0
+				modifier = {
+					add = 100
+					date >2020.8.20
+				}
+			}
+			
+			remove_effect = {
+				add_manpower = 1500
+			}
+		}
+		
+		#NGK_build_trenches = {
+		#
+		#	icon = GFX_decision_generic_construction
+		#	fire_only_once = no
+		#
+		#	allowed = {
+		#		original_tag = NGK
+		#	}
+		#
+		#	available = {
+		#		original_tag = NGK
+		#	}
+		#
+		#	days_remove = 10
+		#	ai_will_do = {
+		#		factor = 10
+		#	}
+		#	
+		#	modifier = {
+		#		army_defence_factor = 0.15
+		#	}
+		#}
+		
+		ARM_rally_civilians = {
+
+			icon = GFX_decision_generic_nationalism
+			fire_only_once = no
+
+			allowed = {
+				original_tag = ARM
+			}
+
+			available = {
+				original_tag = ARM
+				AZR = {
+					has_country_flag = AZR_first_strikes
+				}
+			}
+
+			cost = 50
+			days_remove = 15
+			
+			remove_effect = {
+				add_manpower = 1500
+			}
+		}
+		
+		#ARM_launch_skirmish = {
+		#
+		#	icon = GFX_decision_generic_ignite_civil_war
+		#
+		#	allowed = {
+		#		original_tag = ARM
+		#	}
+		#
+		#	available = {
+		#		original_tag = ARM
+		#		AZR = {
+		#			has_country_flag = AZR_first_strikes
+		#		}
+		#	}
+		#	
+		#	ai_will_do = {
+		#		factor = 0
+		#		modifier = {
+		#			add = 100
+		#			date >2020.10.1
+		#		}
+		#	}
+		#
+		#	fire_only_once = yes
+		#	
+		#	complete_effect = {
+		#		custom_effect_tooltip = ARM_escalate_conflict
+		#		start_border_war = {
+		#			change_state_after_war = no
+		#			attacker = { state = 230
+		#				num_provinces = 2
+		#			}
+		#			defender = { state = 877
+		#				num_provinces = 1
+		#			}
+		#		}
+		#	}
+		#}
+		
+		#ARM_permit_strikes_into_azerbaijan = {
+		#
+		#	icon = GFX_decision_generic_ignite_civil_war
+		#
+		#	allowed = {
+		#		original_tag = ARM
+		#	}
+		#
+		#	available = {
+		#		original_tag = ARM
+		#		AZR = {
+		#			has_country_flag = AZR_first_strikes
+		#		}
+		#	}
+		#	
+		#	ai_will_do = {
+		#		factor = 0
+		#		modifier = {
+		#			add = 100
+		#			is_historical_focus_on = no
+		#		}
+		#	}
+		#	
+		#	fire_only_once = yes
+		#	
+		#	complete_effect = {
+		#		add_war_support = 0.05
+		#		add_stability = -0.05
+		#		set_country_flag = ARM_azeri_strikes_permitted
+		#	}
+		#}
+		
+		#ARM_strike_nakhchivan = {
+		#
+		#	icon = GFX_decision_generic_ignite_civil_war
+		#
+		#	allowed = {
+		#		original_tag = ARM
+		#	}
+		#
+		#	available = {
+		#		original_tag = ARM
+		#		has_country_flag = ARM_azeri_strikes_permitted
+		#	}
+		#	
+		#	ai_will_do = {
+		#		factor = 0
+		#		modifier = {
+		#			add = 100
+		#			is_historical_focus_on = no
+		#		}
+		#	}
+		#
+		#	fire_only_once = yes
+		#	
+		#	complete_effect = {
+		#		start_border_war = {
+		#			change_state_after_war = no
+		#			attacker = { state = 230
+		#				num_provinces = 3
+		#			}
+		#			defender = { state = 790
+		#				num_provinces = 1
+		#			}
+		#		}
+		#	}
+		#}
+		
+		AZR_declare_war_on_armenia = {
+
+			icon = GFX_decision_generic_tank
+
+			allowed = {
+				original_tag = AZR
+			}
+
+			available = {
+				original_tag = AZR
+				has_war = no
+				has_country_flag = AZR_third_defeat
+			}
+			
+			ai_will_do = {
+				factor = 10
+			}
+
+			fire_only_once = yes
+			
+			complete_effect = {
+				declare_war_on= { 
+					target = ARM
+					type = annex_everything 
+				}
+				declare_war_on= { 
+					target = NGK
+					type = annex_everything 
+				}
+			}
+		}
+		
+		ARM_declare_war_on_azerbaijan = {
+
+			icon = GFX_decision_generic_tank
+
+			allowed = {
+				original_tag = ARM
+			}
+
+			available = {
+				original_tag = ARM
+				has_war = no
+				has_country_flag = ARM_third_defeat
+			}
+			
+			ai_will_do = {
+				factor = 10
+			}
+
+			fire_only_once = yes
+			
+			complete_effect = {
+				declare_war_on= { 
+					target = AZR
+					type = annex_everything 
+				}
+				NGK = {
+					declare_war_on= { 
+						target = AZR
+						type = annex_everything 
+					}
+				}
+			}
+		}
+		
+		ARM_send_volunteers_to_artsakh = {
+
+			icon = GFX_decision_generic_military
+
+			allowed = {
+				original_tag = ARM
+			}
+
+			available = {
+				original_tag = ARM
+			}
+			
+			ai_will_do = {
+				factor = 0
+				modifier = {
+					add = 100
+					date >2020.10.1
+				}
+			}
+
+			fire_only_once = yes
+			days_remove = 5
+			
+			complete_effect = {
+				NGK = {
+					add_manpower = 500
+					random_owned_controlled_state = {
+						create_unit = {
+							division = "name = \"1. Kamavorakan Brigad\" division_template = \"Hradzgayin Gndi\"  start_experience_factor = 0.2"
+							allow_spawning_on_enemy_provs = no
+							owner = NGK
+						}
+					}
+				}
+			}
+		}
+		
+		SOV_sell_arms_to_artsakh = {
+
+			icon = GFX_generic_buy_arms
+
+			allowed = {
+				original_tag = SOV
+			}
+
+			available = {
+				original_tag = SOV
+			}
+			
+			ai_will_do = {
+				factor = 0
+				modifier = {
+					add = 100
+					date >2020.9.27
+				}
+			}
+
+			fire_only_once = no
+			days_remove = 10
+			
+			complete_effect = {
+				NGK = {
+					add_equipment_to_stockpile = {
+						type = infantry_equipment_2
+						amount = 150
+						producer = SOV 
+					}
+					add_equipment_to_stockpile = {
+						type = support_equipment
+						amount = 75
+						producer = SOV 
+					}
+					add_equipment_to_stockpile = {
+						type = motorized_equipment_1
+						amount = 75
+						producer = SOV 
+					}
+					add_equipment_to_stockpile = {
+						type = mechanized_equipment_1
+						amount = 75
+						producer = SOV 
+					}
+				}
+			}
+		}
+		
+		SOV_send_volunteers_to_artsakh = {
+
+			icon = GFX_decision_generic_military
+
+			allowed = {
+				original_tag = SOV
+			}
+
+			available = {
+				original_tag = SOV
+			}
+			
+			ai_will_do = {
+				factor = 0
+				modifier = {
+					add = 100
+					is_historical_focus_on = no
+				}
+			}
+			cost = 75
+
+			fire_only_once = yes
+			
+			complete_effect = {
+				NGK = {
+					load_oob = "NGK_russian_volunteers"
+				}
+			}
+		}
+		
+		TUR_deploy_syrian_mercenaries = {
+
+			icon = GFX_decision_generic_military
+
+			allowed = {
+				original_tag = TUR
+			}
+
+			available = {
+				original_tag = TUR
+			}
+			
+			ai_will_do = {
+				factor = 5
+			}
+			cost = 75
+			days_remove = 40
+			fire_only_once = yes
+			
+			modifier = {
+				experience_gain_army = 0.1
+			}
+			
+			complete_effect = {
+				AZR = {
+					load_oob = "AZR_syrian_mercs"
+				}
+			}
+			remove_effect = {
+				set_country_flag = TUR_nagorno_escalation
+			}
+		}
+		
+		TUR_send_drones_to_azerbaijan = {
+
+			icon = GFX_decision_generic_military
+
+			allowed = {
+				original_tag = TUR
+			}
+
+			available = {
+				original_tag = TUR
+			}
+			
+			visible = {
+				hidden_trigger = {
+					has_country_flag = TUR_nagorno_escalation
+				}
+			}
+			
+			ai_will_do = {
+				factor = 5
+			}
+			cost = 120
+			days_remove = 40
+			fire_only_once = yes
+			
+			modifier = {
+				experience_gain_air = 0.1
+			}
+			
+			complete_effect = {
+				AZR = {
+					country_event = { id = armenia.4 }
+				}
+			}
+		}
+	}

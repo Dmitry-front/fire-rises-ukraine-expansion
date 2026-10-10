@@ -1,0 +1,82 @@
+JAP_civil_coalition_power_balance = {
+	initial_value = 0
+	left_side = JAP_bop_cc_socialist	
+	right_side = JAP_bop_cc_liberal		
+	decision_category = JAP_civil_coalition_power_balance_category
+
+	#Middle
+	range = {
+		id = JAP_cc_middle
+		min = -0.25
+		max = 0.25
+		modifier = {
+			
+		}
+		on_activate = {
+		}
+		on_deactivate = {
+		}
+	}
+
+	#Socialist Civil Coalition
+	side = {
+		id = JAP_bop_cc_socialist
+		icon = GFX_bop_JAP_cc_socialist
+		range = {
+			id = JAP_cc_socialist_total_control_range
+			min = -1
+			max = -0.80
+			modifier = {
+				
+			}
+			on_activate = {
+				
+			}
+			on_deactivate = {
+			}
+		}
+		range = {
+			id = JAP_cc_socialist_dominant_range
+			min = -0.80
+			max = -0.25
+			modifier = {
+				
+			}
+			on_activate = {
+			}
+			on_deactivate = {
+			}
+		}
+	}
+
+	#Liberal Civil Coalition
+	side = {
+		id = JAP_bop_cc_liberal	
+		icon = GFX_bop_JAP_cc_liberal
+		range = {
+			id = JAP_cc_liberal_dominant_range
+			min = 0.25
+			max = 0.80
+			modifier = {
+				
+			}
+			on_activate = {
+			}
+			on_deactivate = {
+			}
+		}
+		range = {
+			id = JAP_cc_liberal_total_control_range
+			min = 0.80
+			max = 1
+			modifier = {
+				
+			}
+			on_activate = {
+				
+			}
+			on_deactivate = {
+			}
+		}
+	}
+}

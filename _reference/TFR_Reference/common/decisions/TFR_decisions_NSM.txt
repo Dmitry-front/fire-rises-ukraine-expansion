@@ -1,0 +1,4802 @@
+USA_second_american_civil_war_category = {
+	NSM_prepare_the_national_conference_decision = {
+		icon = GFX_PTF_National_Conference
+		#cancel_if_not_visible = yes
+		priority = 1000
+		cost = 0
+		allowed = {
+			OR = {
+				original_tag = NSM
+				original_tag = PTF
+				original_tag = ATW
+			}
+		}
+		visible = {
+			NOT = {
+				has_global_flag = NSM_national_conference_begun_global
+			}
+			if = {
+				limit = {
+					original_tag = PTF
+				}
+				NOT = {
+					has_completed_focus = PTF_one_nation_one_solution
+				}
+			}
+			else_if = {
+				limit = {
+					original_tag = ATW
+				}
+				has_completed_focus = ATW_accelerate_into_the_end
+				NOT = {
+					has_country_flag = ATW_national_conference_breaks_down_flag
+				}
+			}
+		}
+		available = {
+			is_in_faction = yes
+			USA_has_states_secured = yes
+			USA_has_militias_secured = yes
+			USA_has_gangs_secured = yes
+			USA_has_separatists_secured = yes
+			USA_has_rivals_secured = yes
+		}
+		ai_will_do = {
+			base = 1000
+		}
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: decision NSM_prepare_the_national_conference_decision complete_effect"
+			random_country = {
+				limit = {
+					has_country_flag = NSM_national_front_leader_flag
+				}
+				if = {
+					limit = {
+						country_exists = CAC
+					}
+					country_event = {
+						id = cac.44
+						days = 1
+					}
+				}
+				if = {
+					limit = {
+						country_exists = TNM
+					}
+					country_event = {
+						id = tnm.2
+						days = 1
+					}
+				}
+				if = {
+					limit = {
+						country_exists = LOS
+					}
+					country_event = {
+						id = los.42
+						days = 1
+					}
+				}
+			}
+			every_country = {
+				limit = {
+					USA_is_nationalist_tag = yes
+				}
+				country_event = {
+					id = nsm.29
+				}
+			}
+			hidden_effect = {
+				set_global_flag = NSM_national_conference_begun_global
+			}
+		}
+		remove_effect = {
+		}
+	}
+	# NSM_raise_volunteer_militias_decision = {
+	# 	icon = generic_prepare_civil_war
+	# 	allowed = {
+	# 		original_tag = NSM
+	# 	}
+	# 	visible = {
+	# 		has_completed_focus = NSM_Expose_the_Common_Enemy
+	# 	}
+	# 	available = {
+	# 		set_temp_variable = {
+	# 			var = legit_var_trigger_temp
+	# 			value = 0.05
+	# 		}
+	# 		has_legit_greater_than_or_equals = yes
+	# 	}
+	# 	ai_will_do = {
+	# 		factor = 2
+	# 	}
+	# 	cost = 0
+	# 	cancel_if_not_visible = yes
+	# 	days_remove = 35
+	# 	days_re_enable = 35
+	# 	modifier = {
+	# 	}
+	# 	complete_effect = {
+	# 		set_temp_variable = {
+	# 			var = legit_var_temp
+	# 			value = -0.05
+	# 		}
+	# 		add_legit = yes
+	# 	}
+	# 	remove_effect = {
+	# 		custom_effect_tooltip = NSM_raise_volunteer_militias_tooltip
+	# 		hidden_effect = {
+	# 			random_controlled_state = {
+	# 				limit = {
+	# 					is_controlled_by = NSM
+	# 					is_core_of = NSM
+	# 				}
+	# 				create_unit = {
+	# 					division = "division_template = \"Volunteer Militia\" start_experience_factor = 0.2"
+	# 					allow_spawning_on_enemy_provs = yes
+	# 					owner = ROOT
+	# 				}
+	# 			}
+	# 		}
+	# 	}
+	# }
+	NSM_expand_national_socialist_influence_decision = {
+		icon = ger_reichskommissariats
+		allowed = {
+			original_tag = NSM
+		}
+		visible = {
+			has_completed_focus = NSM_Racial_Reconstruction
+		}
+		available = {
+			set_temp_variable = {
+				var = legit_var_trigger_temp
+				value = 0.05
+			}
+			has_legit_greater_than_or_equals = yes
+		}
+		ai_will_do = {
+			base = 0
+		}
+		cost = 0
+		days_remove = 14
+		cancel_if_not_visible = yes
+		modifier = {
+		}
+		complete_effect = {
+			set_temp_variable = {
+				var = legit_var_temp
+				value = -0.05
+			}
+			add_legit = yes
+		}
+		remove_effect = {
+			add_political_power = 50
+		}
+	}
+	NSM_socialist_rebellion_mission = {
+		icon = generic_ignite_civil_war
+		allowed = {
+			tag = NSM
+		}
+		available = {
+			hidden_trigger = {
+				always = no
+			}
+		}
+		priority = 10
+		fire_only_once = yes
+		days_mission_timeout = 139
+		is_good = no
+		cancel_if_not_visible = yes
+		activation = {
+			always = no
+		}
+		visible = {
+			OR = {
+				has_idea = NSM_communist_rebellion_idea
+				has_idea = NSM_communist_rebellion_idea1
+			}
+		}
+		timeout_effect = {
+			if = {
+				limit = {
+					has_idea = NSM_communist_rebellion_idea
+				}
+				country_event = {
+					id = nsm.30
+				}
+				activate_mission = NSM_socialist_rebellion_mission
+			}
+			else_if = {
+				limit = {
+					has_idea = NSM_communist_rebellion_idea1
+				}
+				country_event = {
+					id = nsm.31
+				}
+			}
+		}
+	}
+	NSM_attack_FROM_decision = {
+		icon = generic_prepare_civil_war
+		war_with_target_on_remove = yes
+		fire_only_once = no
+		days_remove = 14
+		target_array = USA.faction_tag_array
+		custom_cost_text = NSM_attack_APA_decision_cost
+		custom_cost_trigger = {
+			NOT = {
+				command_power < 10
+			}
+		}
+		ai_will_do = {
+			base = 1000
+			modifier = {
+				factor = 0
+				NSM_national_front_ai_attack_check = yes
+			}
+		}
+		allowed = {
+			original_tag = NSM
+		}
+		target_root_trigger = {
+			has_completed_focus = NSM_Form_the_National_Front
+		}
+		target_trigger = {
+			FROM = {
+				NOT = {
+					has_war_with = ROOT
+					is_ally_with = ROOT
+				}
+				OR = {
+					any_controlled_state = {
+						any_neighbor_state = {
+							is_controlled_by = ROOT
+						}
+					}
+					any_other_country = {
+						OR = {
+							is_in_faction_with = ROOT
+							is_puppet_of = ROOT
+						}
+						any_controlled_state = {
+							any_neighbor_state = {
+								is_controlled_by = PREV.PREV.PREV
+							}
+						}
+					}
+				}
+			}
+		}
+		available = {
+			NOT = {
+				has_country_flag = war_justification_flag
+			}
+		}
+		visible = {
+			NOT = {
+				FROM = {
+					has_country_flag = USA_nationalist_autonomies
+				}
+			}
+		}
+		complete_effect = {
+			set_country_flag = {
+				flag = war_justification_flag
+				days = 14
+				value = 1
+			}
+			hidden_effect = {
+				add_command_power = -10
+			}
+		}
+		remove_effect = {
+			war_with_FROM = yes
+		}
+	}
+}
+
+NSM_Building_Amerika_category = {
+#	NSM_Rockwell_faction_defects_decision = {
+#		icon = generic_prepare_civil_war
+#		allowed = {
+#			tag = NSM
+#		}
+#		visible = {
+#			has_completed_focus = NSM_americas_fuhrer
+#		}
+#		available = {
+#			has_completed_focus = NSM_americas_fuhrer
+#		}
+#		ai_will_do = {
+#			factor = 7
+#		}
+#		cost = 0
+#		cancel_if_not_visible = yes
+#		days_remove = 1
+#		fire_only_once = yes
+#		remove_effect = {
+#			custom_effect_tooltip = NSM_rockwellians_will_defect_from_the_national_socialist_movement_tt
+#			country_event = nsm.66
+#			add_stability = -0.1
+#			hidden_effect = {
+#				activate_decision = NSM_Rockwellians_cause_conflict_decision
+#			}
+#			hidden_effect = {
+#				country_event = {
+#					days = 30
+#					id = NSM.73
+#				}
+#				country_event = {
+#					days = 70
+#					id = NSM.74
+#				}
+#				country_event = {
+#					days = 100
+#					id = NSM.74
+#				}
+#				country_event = {
+#					days = 135
+#					id = NSM.74
+#				}
+#				country_event = {
+#					days = 185
+#					id = NSM.75
+#				}
+#				country_event = {
+#					days = 220
+#					id = NSM.76
+#				}
+#				country_event = {
+#					days = 255
+#					id = NSM.77
+#				}
+#				country_event = {
+#					days = 285
+#					id = NSM.78
+#				}
+#				country_event = {
+#					days = 320
+#					id = NSM.79
+#				}
+#				country_event = {
+#					days = 350
+#					id = NSM.80
+#				}
+#				country_event = {
+#					days = 5
+#					id = NSM.81
+#				}
+#				country_event = {
+#					days = 7
+#					id = NSM.82
+#				}
+#			}
+#		}
+#	}
+	NSM_crush_the_rockwellians_1_decision = {
+		icon = generic_prepare_civil_war
+		allowed = {
+			tag = NSM
+		}
+		visible = {
+			hidden_trigger = {
+				has_global_flag = rockwells_defected
+			}
+		}
+		available = {
+		}
+		ai_will_do = {
+			factor = 10
+		}
+		cost = 100
+		cancel_if_not_visible = yes
+		fire_only_once = yes
+		complete_effect = {
+			custom_effect_tooltip = NSM_long_night_lives_tt
+			country_event = nsm.84
+		}
+	}
+	NSM_crush_the_rockwellians_2_decision = {
+		icon = generic_prepare_civil_war
+		allowed = {
+			tag = NSM
+		}
+		visible = {
+			has_global_flag = rockwells_defected
+			has_decision = NSM_crush_the_rockwellians_1_decision
+		}
+		available = {
+		}
+		ai_will_do = {
+			factor = 7
+		}
+		cost = 100
+		cancel_if_not_visible = yes
+		fire_only_once = yes
+		complete_effect = {
+			add_war_support = 0.1
+			add_manpower = -10000
+			add_popularity = {
+				ideology = national_socialist
+				popularity = 0.075
+			}
+		}
+	}
+	NSM_crush_the_rockwellians_3_decision = {
+		icon = generic_prepare_civil_war
+		allowed = {
+			tag = NSM
+		}
+		visible = {
+			has_global_flag = rockwells_defected
+			has_decision = NSM_crush_the_rockwellians_2_decision
+		}
+		available = {
+		}
+		ai_will_do = {
+			factor = 7
+		}
+		cost = 100
+		cancel_if_not_visible = yes
+		fire_only_once = yes
+		complete_effect = {
+			country_event = nsm.85
+		}
+	}
+	NSM_crush_the_rockwellians_4_decision = {
+		icon = generic_prepare_civil_war
+		allowed = {
+			tag = NSM
+		}
+		visible = {
+			has_global_flag = rockwells_defected
+			has_decision = NSM_crush_the_rockwellians_3_decision
+		}
+		available = {
+		}
+		ai_will_do = {
+			factor = 7
+		}
+		cost = 150
+		cancel_if_not_visible = yes
+		fire_only_once = yes
+		complete_effect = {
+			set_global_flag = rockwell_reduced_to_atoms
+			country_event = nsm.86
+			custom_effect_tooltip = NSM_sheop_dies_tt
+		}
+	}
+	NSM_crush_the_rockwellians_5_decision = {
+		icon = generic_prepare_civil_war
+		allowed = {
+			tag = NSM
+		}
+		visible = {
+			has_global_flag = rockwells_defected
+			has_decision = NSM_crush_the_rockwellians_4_decision
+		}
+		available = {
+		}
+		ai_will_do = {
+			factor = 7
+		}
+		cost = 100
+		cancel_if_not_visible = yes
+		fire_only_once = yes
+		complete_effect = {
+			remove_ideas = NSM_Rockwellian_opposition_idea
+			add_stability = 0.025
+			add_war_support = 0.025
+			add_popularity = {
+				ideology = fascist
+				popularity = -0.15
+			}
+		}
+	}
+	NSM_the_movement_reunited_decision = {
+		icon = generic_prepare_civil_war
+		allowed = {
+			tag = NSM
+		}
+		visible = {
+			has_idea = NSM_Rockwellian_opposition_idea
+		}
+		available = {
+			hidden_trigger = {
+				always = no
+			}
+		}
+		ai_will_do = {
+			factor = 7
+		}
+		cost = 0
+		cancel_if_not_visible = yes
+		fire_only_once = yes
+		complete_effect = {
+		}
+	}
+	NSM_reassure_amerika_decision = {
+		icon = generic_prepare_civil_war
+		allowed = {
+			tag = NSM
+		}
+		visible = {
+			has_idea = NSM_Rockwellian_opposition_idea
+		}
+		available = {
+		}
+		ai_will_do = {
+			factor = 4
+		}
+		cost = 50
+		cancel_if_not_visible = yes
+		fire_only_once = yes
+		complete_effect = {
+			add_stability = 0.05
+		}
+	}
+	NSM_phasing_out_rockwellian_influence_decision = {
+		icon = generic_prepare_civil_war
+		allowed = {
+			tag = NSM
+		}
+		visible = {
+			has_idea = NSM_Rockwellian_opposition_idea
+		}
+		available = {
+		}
+		ai_will_do = {
+			factor = 4
+		}
+		cost = 25
+		cancel_if_not_visible = yes
+		fire_only_once = yes
+		complete_effect = {
+			add_popularity = {
+				ideology = fascist
+				popularity = -0.025
+			}
+		}
+	}
+	###anglin exclusive decisions
+	NSM_cutting_welfare_for_industry_decision = {
+		icon = generic_prepare_civil_war
+		allowed = {
+			tag = NSM
+		}
+		visible = {
+			has_country_leader = {
+				character = NSM_andrew_anglin_char
+				ruling_only = yes
+			}
+		}
+		available = {
+			has_country_leader = {
+				character = NSM_andrew_anglin_char
+				ruling_only = yes
+			}
+		}
+		ai_will_do = {
+			factor = 5
+		}
+		cost = 50
+		cancel_if_not_visible = yes
+		fire_only_once = yes
+		complete_effect = {
+			add_ideas = lower_welfare
+			1075 = {
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = arms_factory
+					level = 2
+					instant_build = yes
+				}
+			}
+			1076 = {
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = arms_factory
+					level = 2
+					instant_build = yes
+				}
+			}
+		}
+	}
+	NSM_you_will_all_play_your_part_decision = {
+		icon = generic_prepare_civil_war
+		allowed = {
+			tag = NSM
+		}
+		visible = {
+			has_country_leader = {
+				character = NSM_andrew_anglin_char
+				ruling_only = yes
+			}
+		}
+		available = {
+			has_country_leader = {
+				character = NSM_andrew_anglin_char
+				ruling_only = yes
+			}
+		}
+		ai_will_do = {
+			factor = 5
+		}
+		cost = 50
+		cancel_if_not_visible = yes
+		fire_only_once = yes
+		complete_effect = {
+			add_ideas = high_conscription
+			add_manpower = 15000
+			add_stability = -0.02
+		}
+	}
+	NSM_demand_loyalty_to_the_fuhrer_decision = {
+		icon = generic_prepare_civil_war
+		allowed = {
+			tag = NSM
+		}
+		visible = {
+			has_country_leader = {
+				character = NSM_andrew_anglin_char
+				ruling_only = yes
+			}
+		}
+		available = {
+			has_country_leader = {
+				character = NSM_andrew_anglin_char
+				ruling_only = yes
+			}
+		}
+		ai_will_do = {
+			factor = 6
+		}
+		cost = 50
+		cancel_if_not_visible = yes
+		fire_only_once = yes
+		complete_effect = {
+			effect_tooltip = {
+				swap_ideas = {
+					add_idea = NSM_rebuilding_america_fuhrer_loyalty_idea
+					remove_idea = NSM_rebuilding_america_idea
+				}
+			}
+			hidden_effect = {
+				set_variable = {
+					var = NSM_rebuilding_america_revolution_military_stability_factor_dynamic_var
+					value = 0.05
+				}
+				set_variable = {
+					var = NSM_rebuilding_america_revolution_society_development_monthly_dynamic_var
+					value = -0.035
+				}
+				set_variable = {
+					var = NSM_rebuilding_america_military_political_power_gain_dynamic_var
+					value = 0.05
+				}
+			}
+		}
+	}
+	NSM_anti_resistance_operations_decision = {
+		icon = generic_prepare_civil_war
+		allowed = {
+			tag = NSM
+		}
+		visible = {
+			has_country_leader = {
+				character = NSM_andrew_anglin_char
+				ruling_only = yes
+			}
+		}
+		available = {
+			has_country_leader = {
+				character = NSM_andrew_anglin_char
+				ruling_only = yes
+			}
+		}
+		ai_will_do = {
+			factor = 6
+		}
+		cost = 50
+		cancel_if_not_visible = yes
+		fire_only_once = yes
+		complete_effect = {
+			add_popularity = {
+				ideology = national_socialist
+				popularity = 0.05
+			}
+			effect_tooltip = {
+				swap_ideas = {
+					add_idea = NSM_rebuilding_america_anti_resistance_idea
+					remove_idea = NSM_rebuilding_america_idea
+				}
+			}
+			hidden_effect = {
+				set_variable = {
+					var = NSM_rebuilding_america_fascist_dynamic_var
+					value = -0.01
+				}
+				set_variable = {
+					var = NSM_rebuilding_america_fascist_dynamic_var
+					value = 0.025
+				}
+			}
+		}
+	}
+	NSM_introduce_a_national_draft_decision = {
+		icon = generic_prepare_civil_war
+		allowed = {
+			tag = NSM
+		}
+		visible = {
+			has_country_leader = {
+				character = NSM_andrew_anglin_char
+				ruling_only = yes
+			}
+		}
+		available = {
+			has_country_leader = {
+				character = NSM_andrew_anglin_char
+				ruling_only = yes
+			}
+		}
+		ai_will_do = {
+			factor = 7
+		}
+		cost = 75
+		cancel_if_not_visible = yes
+		fire_only_once = yes
+		complete_effect = {
+			add_popularity = {
+				ideology = national_socialist
+				popularity = -0.05
+			}
+			effect_tooltip = {
+				swap_ideas = {
+					add_idea = NSM_rebuilding_america_introduce_a_draft_idea
+					remove_idea = NSM_rebuilding_america_idea
+				}
+			}
+			hidden_effect = {
+				set_variable = {
+					var = NSM_rebuilding_america_military_training_time_factor_dynamic_var
+					value = 0.1
+				}
+				set_variable = {
+					var = NSM_rebuilding_america_military_development_monthly_dynamic_var
+					value = 0.025
+				}
+				set_variable = {
+					var = NSM_rebuilding_america_revolution_recruitable_pop_dynamic_var
+					value = 0.05
+				}
+				set_variable = {
+					var = NSM_rebuilding_america_military_weekly_manpower_dynamic_var
+					value = 350
+				}
+			}
+		}
+	}
+	NSM_put_the_poor_to_work_decision = {
+		icon = generic_prepare_civil_war
+		allowed = {
+			tag = NSM
+		}
+		visible = {
+			has_country_leader = {
+				character = NSM_andrew_anglin_char
+				ruling_only = yes
+			}
+		}
+		available = {
+			has_country_leader = {
+				character = NSM_andrew_anglin_char
+				ruling_only = yes
+			}
+		}
+		ai_will_do = {
+			factor = 6
+		}
+		cost = 75
+		cancel_if_not_visible = yes
+		fire_only_once = yes
+		complete_effect = {
+			add_popularity = {
+				ideology = national_socialist
+				popularity = -0.05
+			}
+			effect_tooltip = {
+				swap_ideas = {
+					add_idea = NSM_rebuilding_america_put_the_poor_to_work_idea
+					remove_idea = NSM_rebuilding_america_idea
+				}
+			}
+			hidden_effect = {
+				set_variable = {
+					var = NSM_rebuilding_america_revolution_poverty_development_monthly_dynamic_var
+					value = 0.05
+				}
+				set_variable = {
+					var = NSM_rebuilding_america_revolution_military_stability_factor_dynamic_var
+					value = -0.05
+				}
+				set_variable = {
+					var = NSM_rebuilding_america_production_factory_efficiency_gain_factor_dynamic
+					value = -0.1
+				}
+				set_variable = {
+					var = NSM_rebuilding_america_production_speed_buildings_factor_dynamic
+					value = 0.1
+				}
+				set_variable = {
+					var = NSM_rebuilding_america_industrial_capacity_factory_dynamic_var
+					value = 0.075
+				}
+			}
+		}
+	}
+	###Mullet exclusive decisions 
+	NSM_restore_faith_in_america_decision = {
+		icon = generic_prepare_civil_war
+		allowed = {
+			tag = NSM
+		}
+		visible = {
+			has_country_leader = {
+				character = NSM_paul_mullet_char
+				ruling_only = yes
+			}
+		}
+		available = {
+			has_country_leader = {
+				character = NSM_paul_mullet_char
+				ruling_only = yes
+			}
+		}
+		ai_will_do = {
+			factor = 6
+		}
+		cost = 50
+		cancel_if_not_visible = yes
+		fire_only_once = yes
+		complete_effect = {
+			add_popularity = {
+				ideology = national_socialist
+				popularity = 0.05
+			}
+			add_stability = 0.05
+		}
+	}
+	NSM_healing_americas_wounds_decision = {
+		icon = generic_prepare_civil_war
+		allowed = {
+			tag = NSM
+		}
+		visible = {
+			has_country_leader = {
+				character = NSM_paul_mullet_char
+				ruling_only = yes
+			}
+		}
+		available = {
+			has_country_leader = {
+				character = NSM_paul_mullet_char
+				ruling_only = yes
+			}
+		}
+		ai_will_do = {
+			factor = 5
+		}
+		cost = 50
+		cancel_if_not_visible = yes
+		fire_only_once = yes
+		complete_effect = {
+			add_stability = 0.01
+			add_political_power = 50
+			set_temp_variable = {
+				var = society_development_var_temp
+				value = 0.05
+			}
+			add_society_development = yes
+			add_ideas = medium_welfare
+		}
+	}
+	NSM_restrict_child_service_decision = {
+		icon = generic_prepare_civil_war
+		allowed = {
+			tag = NSM
+		}
+		visible = {
+			has_country_leader = {
+				character = NSM_paul_mullet_char
+				ruling_only = yes
+			}
+		}
+		available = {
+			has_country_leader = {
+				character = NSM_paul_mullet_char
+				ruling_only = yes
+			}
+		}
+		ai_will_do = {
+			factor = 5
+		}
+		cost = 75
+		cancel_if_not_visible = yes
+		fire_only_once = yes
+		complete_effect = {
+			add_stability = 0.1
+			add_political_power = 35
+			effect_tooltip = {
+				swap_ideas = {
+					add_idea = NSM_rebuilding_america_ban_child_service_idea
+					remove_idea = NSM_rebuilding_america_idea
+				}
+			}
+			hidden_effect = {
+				set_variable = {
+					var = NSM_rebuilding_america_revolution_recruitable_pop_dynamic_var
+					value = -0.05
+				}
+				set_variable = {
+					var = NSM_rebuilding_america_military_development_monthly_dynamic_var
+					value = 0.075
+				}
+				set_variable = {
+					var = NSM_rebuilding_america_revolution_military_natsoc_factor_dynamic_var
+					value = 0.01
+				}
+			}
+		}
+	}
+	NSM_god_shall_save_us_decision = {
+		icon = generic_prepare_civil_war
+		allowed = {
+			tag = NSM
+		}
+		visible = {
+			has_country_leader = {
+				character = NSM_paul_mullet_char
+				ruling_only = yes
+			}
+		}
+		available = {
+			has_country_leader = {
+				character = NSM_paul_mullet_char
+				ruling_only = yes
+			}
+		}
+		ai_will_do = {
+			factor = 7
+		}
+		cost = 50
+		cancel_if_not_visible = yes
+		fire_only_once = yes
+		complete_effect = {
+			effect_tooltip = {
+				swap_ideas = {
+					add_idea = NSM_rebuilding_america_god_will_save_us_idea
+					remove_idea = NSM_rebuilding_america_idea
+				}
+			}
+			hidden_effect = {
+				set_variable = {
+					var = NSM_rebuilding_america_revolution_poverty_development_monthly_dynamic_var
+					value = 0.05
+				}
+				set_variable = {
+					var = NSM_rebuilding_america_resistance_activity_dynamic_var
+					value = -0.075
+				}
+			}
+		}
+	}
+	NSM_introduce_religious_segregation_decision = {
+		icon = generic_prepare_civil_war
+		allowed = {
+			tag = NSM
+		}
+		visible = {
+			has_country_leader = {
+				character = NSM_paul_mullet_char
+				ruling_only = yes
+			}
+		}
+		available = {
+			has_country_leader = {
+				character = NSM_paul_mullet_char
+				ruling_only = yes
+			}
+		}
+		ai_will_do = {
+			factor = 7
+		}
+		cost = 75
+		cancel_if_not_visible = yes
+		fire_only_once = yes
+		complete_effect = {
+			effect_tooltip = {
+				swap_ideas = {
+					add_idea = NSM_rebuilding_america_god_will_save_us_idea
+					remove_idea = NSM_rebuilding_america_idea
+				}
+			}
+			hidden_effect = {
+				set_variable = {
+					var = NSM_rebuilding_america_revolution_military_stability_factor_dynamic_var
+					value = -0.05
+				}
+				set_variable = {
+					var = NSM_rebuilding_america_revolution_military_natsoc_factor_dynamic_var
+					value = 0.01
+				}
+				set_variable = {
+					var = NSM_rebuilding_america_resistance_activity_dynamic_var
+					value = 0.025
+				}
+				set_variable = {
+					var = NSM_rebuilding_america_revolution_recruitable_pop_dynamic_var
+					value = -0.075
+				}
+				set_variable = {
+					var = NSM_rebuilding_america_military_war_support_factor_dynamic_var
+					value = 0.05
+				}
+			}
+		}
+	}
+	NSM_we_work_in_the_name_of_god_decision = {
+		icon = generic_prepare_civil_war
+		allowed = {
+			tag = NSM
+		}
+		visible = {
+			has_country_leader = {
+				character = NSM_paul_mullet_char
+				ruling_only = yes
+			}
+		}
+		available = {
+			has_country_leader = {
+				character = NSM_paul_mullet_char
+				ruling_only = yes
+			}
+		}
+		ai_will_do = {
+			factor = 7
+		}
+		cost = 50
+		cancel_if_not_visible = yes
+		fire_only_once = yes
+		complete_effect = {
+			effect_tooltip = {
+				swap_ideas = {
+					add_idea = NSM_rebuilding_america_work_for_god_idea
+					remove_idea = NSM_rebuilding_america_idea
+				}
+			}
+			hidden_effect = {
+				set_variable = {
+					var = NSM_rebuilding_america_industrial_capacity_factory_dynamic_var
+					value = 0.075
+				}
+				set_variable = {
+					var = NSM_rebuilding_america_production_speed_buildings_factor_dynamic
+					value = 0.05
+				}
+			}
+		}
+	}
+	NSM_a_faith_of_hope_for_america_decision = {
+		icon = generic_prepare_civil_war
+		allowed = {
+			tag = NSM
+		}
+		visible = {
+			has_country_leader = {
+				character = NSM_paul_mullet_char
+				ruling_only = yes
+			}
+		}
+		available = {
+			has_country_leader = {
+				character = NSM_paul_mullet_char
+				ruling_only = yes
+			}
+		}
+		ai_will_do = {
+			factor = 7
+		}
+		cost = 75
+		cancel_if_not_visible = yes
+		fire_only_once = yes
+		complete_effect = {
+			add_stability = 0.05
+			add_political_power = 75
+			effect_tooltip = {
+				swap_ideas = {
+					add_idea = NSM_rebuilding_america_faith_of_hope_idea
+					remove_idea = NSM_rebuilding_america_idea
+				}
+			}
+			hidden_effect = {
+				set_variable = {
+					var = NSM_rebuilding_america_revolution_society_development_monthly_dynamic_var
+					value = 0.05
+				}
+				set_variable = {
+					var = NSM_rebuilding_america_revolution_army_morale_factor_dynamic_var
+					value = 0.05
+				}
+				set_variable = {
+					var = NSM_rebuilding_america_production_factory_efficiency_gain_factor_dynamic
+					value = 0.1
+				}
+				set_variable = {
+					var = NSM_rebuilding_america_military_training_time_factor_dynamic_var
+					value = -0.075
+				}
+				set_variable = {
+					var = NSM_rebuilding_america_resistance_activity_dynamic_var
+					value = -0.05
+				}
+			}
+		}
+	}
+	###begin rebuilding the reich
+#	NSM_solidify_our_government_decision = {
+#		icon = generic_prepare_civil_war
+#		allowed = {
+#			tag = NSM
+#		}
+#		visible = {
+#			has_completed_focus = NSM_begin_rebuilding_the_reich
+#		}
+#		available = {
+#			has_completed_focus = NSM_begin_rebuilding_the_reich
+#		}
+#		ai_will_do = {
+#			factor = 5
+#		}
+#		cost = 50
+#		cancel_if_not_visible = yes
+#		fire_only_once = yes
+#		complete_effect = {
+#			add_stability = 0.01
+#			add_political_power = 25
+#			effect_tooltip = {
+#				swap_ideas = {
+#					add_idea = NSM_rebuilding_america_building_the_reich1_idea
+#					remove_idea = NSM_rebuilding_america_idea
+#				}
+#			}
+#			hidden_effect = {
+#				set_variable = {
+#					var = NSM_rebuilding_america_military_political_power_gain_dynamic_var
+#					value = 0.05
+#				}
+#				set_variable = {
+#					var = NSM_rebuilding_america_military_max_command_power_dynamic_var
+#					value = 0.1
+#				}
+#			}
+#		}
+#	}
+#	NSM_solidify_our_government_decision = {
+#		icon = generic_prepare_civil_war
+#		allowed = {
+#			tag = NSM
+#		}
+#		visible = {
+#			has_completed_focus = NSM_begin_building_the_reich
+#		}
+#		available = {
+#			has_completed_focus = NSM_begin_building_the_reich
+#		}
+#		ai_will_do = {
+#			factor = 5
+#		}
+#		cost = 50
+#		cancel_if_not_visible = yes
+#		fire_only_once = yes
+#		complete_effect = {
+#			add_stability = 0.01
+#			add_political_power = 25
+#			effect_tooltip = {
+#				swap_ideas = {
+#					add_idea = NSM_rebuilding_america_building_the_reich1_idea
+#					remove_idea = NSM_rebuilding_america_idea
+#				}
+#			}
+#			hidden_effect = {
+#				set_variable = {
+#					var = NSM_rebuilding_america_military_political_power_gain_dynamic_var
+#					value = 0.05
+#				}
+#				set_variable = {
+#					var = NSM_rebuilding_america_military_max_command_power_dynamic_var
+#					value = 0.1
+#				}
+#			}
+#		}
+#	}
+#	NSM_modernize_the_training_program_decision = {
+#		icon = generic_prepare_civil_war
+#		allowed = {
+#			tag = NSM
+#		}
+#		visible = {
+#			has_completed_focus = NSM_begin_building_the_reich
+#		}
+#		available = {
+#			has_completed_focus = NSM_begin_building_the_reich
+#		}
+#		ai_will_do = {
+#			factor = 6
+#		}
+#		cost = 50
+#		cancel_if_not_visible = yes
+#		fire_only_once = yes
+#		complete_effect = {
+#			add_war_support = 0.025
+#			add_ideas = medium_training
+#		}
+#	}
+#	NSM_restarting_american_industry_decision = {
+#		icon = generic_prepare_civil_war
+#		allowed = {
+#			tag = NSM
+#		}
+#		visible = {
+#			has_completed_focus = NSM_begin_building_the_reich
+#		}
+#		available = {
+#			has_completed_focus = NSM_begin_building_the_reich
+#		}
+#		ai_will_do = {
+#			factor = 7
+#		}
+#		cost = 50
+#		cancel_if_not_visible = yes
+#		fire_only_once = yes
+#		complete_effect = {
+#			add_stability = 0.02
+#			add_ideas = high_industry
+#			1099 = {
+#				add_extra_state_shared_building_slots = 2
+#				add_building_construction = {
+#					type = arms_factory
+#					level = 2
+#					instant_build = yes
+#				}
+#			}
+#		}
+#	}
+#	NSM_you_get_what_you_work_for_decision = {
+#		icon = generic_prepare_civil_war
+#		allowed = {
+#			tag = NSM
+#		}
+#		visible = {
+#			has_completed_focus = NSM_begin_building_the_reich
+#		}
+#		available = {
+#			has_completed_focus = NSM_begin_building_the_reich
+#		}
+#		ai_will_do = {
+#			factor = 5
+#		}
+#		cost = 50
+#		cancel_if_not_visible = yes
+#		fire_only_once = yes
+#		complete_effect = {
+#			add_ideas = medium_poverty
+#			1151 = {
+#				add_extra_state_shared_building_slots = 1
+#				add_building_construction = {
+#					type = industrial_complex
+#					level = 1
+#					instant_build = yes
+#				}
+#			}
+#			1093 = {
+#				add_extra_state_shared_building_slots = 1
+#				add_building_construction = {
+#					type = industrial_complex
+#					level = 1
+#					instant_build = yes
+#				}
+#			}
+#		}
+#	}
+#	NSM_stomp_out_rockwellian_remnants_decision = {
+#		icon = generic_prepare_civil_war
+#		allowed = {
+#			tag = NSM
+#		}
+#		visible = {
+#			has_completed_focus = NSM_removing_our_liberal_legacy
+#		}
+#		available = {
+#			has_completed_focus = NSM_removing_our_liberal_legacy
+#		}
+#		ai_will_do = {
+#			factor = 7
+#		}
+#		cost = 50
+#		cancel_if_not_visible = yes
+#		fire_only_once = yes
+#		complete_effect = {
+#			add_popularity = {
+#				ideology = fascist
+#				popularity = -0.05
+#			}
+#			add_political_power = 50
+#			add_war_support = 0.035
+#		}
+#	}
+#	NSM_strengthen_the_police_force_decision = {
+#		icon = generic_prepare_civil_war
+#		allowed = {
+#			tag = NSM
+#		}
+#		visible = {
+#			has_completed_focus = NSM_removing_our_liberal_legacy
+#		}
+#		available = {
+#			has_completed_focus = NSM_removing_our_liberal_legacy
+#		}
+#		ai_will_do = {
+#			factor = 6
+#		}
+#		cost = 50
+#		cancel_if_not_visible = yes
+#		fire_only_once = yes
+#		complete_effect = {
+#			add_stability = -0.01
+#			add_ideas = high_supervision
+#		}
+#	}
+#	NSM_children_are_fit_for_factories_decision = {
+#		icon = generic_prepare_civil_war
+#		allowed = {
+#			tag = NSM
+#		}
+#		visible = {
+#			has_completed_focus = NSM_the_power_of_youth
+#		}
+#		available = {
+#			has_completed_focus = NSM_the_power_of_youth
+#		}
+#		ai_will_do = {
+#			factor = 5
+#		}
+#		cost = 50
+#		cancel_if_not_visible = yes
+#		fire_only_once = yes
+#		complete_effect = {
+#			add_political_power = 100
+#			add_stability = -0.05
+#			1244 = {
+#				add_extra_state_shared_building_slots = 1
+#				add_building_construction = {
+#					type = industrial_complex
+#					level = 1
+#					instant_build = yes
+#				}
+#			}
+#			1068 = {
+#				add_extra_state_shared_building_slots = 1
+#				add_building_construction = {
+#					type = industrial_complex
+#					level = 1
+#					instant_build = yes
+#				}
+#			}
+#		}
+#	}
+#	NSM_the_final_solution_decision = {
+#		icon = generic_prepare_civil_war
+#		allowed = {
+#			tag = NSM
+#		}
+#		visible = {
+#			has_completed_focus = NSM_our_solution_is_final
+#		}
+#		available = {
+#			has_completed_focus = NSM_our_solution_is_final
+#		}
+#		ai_will_do = {
+#			factor = 9
+#		}
+#		cost = 75
+#		cancel_if_not_visible = yes
+#		fire_only_once = yes
+#		complete_effect = {
+#			add_war_support = 0.1
+#			add_stability = -0.05
+#			add_popularity = {
+#				ideology = national_socialist
+#				popularity = 0.035
+#			}
+#			country_event = {
+#				days = 1
+#				id = nsm.68
+#			}
+#			1099 = {
+#				add_extra_state_shared_building_slots = 1
+#				add_building_construction = {
+#					type = industrial_complex
+#					level = 1
+#					instant_build = yes
+#				}
+#			}
+#			1076 = {
+#				add_extra_state_shared_building_slots = 2
+#				add_building_construction = {
+#					type = arms_factory
+#					level = 2
+#					instant_build = yes
+#				}
+#			}
+#			effect_tooltip = {
+#				swap_ideas = {
+#					add_idea = NSM_rebuilding_america_final_solution_idea
+#					remove_idea = NSM_rebuilding_america_idea
+#				}
+#			}
+#			hidden_effect = {
+#				set_variable = {
+#					var = NSM_rebuilding_america_military_political_power_gain_dynamic_var
+#					value = 0.1
+#				}
+#				set_variable = {
+#					var = NSM_rebuilding_america_industrial_capacity_factory_dynamic_var
+#					value = 0.1
+#				}
+#				set_variable = {
+#					var = NSM_rebuilding_america_revolution_society_development_monthly_dynamic_var
+#					value = -0.1
+#				}
+#				set_variable = {
+#					var = NSM_rebuilding_america_resistance_activity_dynamic_var
+#					value = 0.025
+#				}
+#			}
+#		}
+#	}
+	#NSM_allow_scholars_to_dodge_the_draft_decision = {
+#		icon = generic_prepare_civil_war
+#		allowed = {
+#			tag = NSM
+#		}
+#		visible = {
+#			has_completed_focus = NSM_old_ideas_new_form
+#		}
+#		available = {
+#			has_completed_focus = NSM_old_ideas_new_form
+#		}
+#		ai_will_do = {
+#			factor = 5
+#		}
+#		cost = 50
+#		cancel_if_not_visible = yes
+#		fire_only_once = yes
+#		complete_effect = {
+#			add_ideas = education_examptions
+#		}
+#	}
+#	NSM_harshen_prison_standards_decision = {
+#		icon = generic_prepare_civil_war
+#		allowed = {
+#			tag = NSM
+#		}
+#		visible = {
+#			has_completed_focus = NSM_old_ideas_new_form
+#		}
+#		available = {
+#			has_completed_focus = NSM_old_ideas_new_form
+#		}
+#		ai_will_do = {
+#			factor = 5
+#		}
+#		cost = 50
+#		cancel_if_not_visible = yes
+#		fire_only_once = yes
+#		complete_effect = {
+#			add_ideas = low_prison
+#		}
+#	}
+#	NSM_prioritize_higher_education_decision = {
+#		icon = generic_prepare_civil_war
+#		allowed = {
+#			tag = NSM
+#		}
+#		visible = {
+#			has_completed_focus = NSM_old_ideas_new_form
+#		}
+#		available = {
+#			has_completed_focus = NSM_old_ideas_new_form
+#		}
+#		ai_will_do = {
+#			factor = 5
+#		}
+#		cost = 50
+#		cancel_if_not_visible = yes
+#		fire_only_once = yes
+#		complete_effect = {
+#			add_ideas = high_education
+#		}
+#	}
+#	NSM_raise_the_military_standard_decision = {
+#		icon = generic_prepare_civil_war
+#		allowed = {
+#			tag = NSM
+#		}
+#		visible = {
+#			has_completed_focus = NSM_old_ideas_new_form
+#		}
+#		available = {
+#			has_completed_focus = NSM_old_ideas_new_form
+#		}
+#		ai_will_do = {
+#			factor = 5
+#		}
+#		cost = 50
+#		cancel_if_not_visible = yes
+#		fire_only_once = yes
+#		complete_effect = {
+#			add_ideas = high_military
+#		}
+#	}
+#}
+
+#NSM_Writing_the_Salvation_Constitution_category = {
+#	NSM_The_Day_of_Signing_decision = {
+#		icon = generic_prepare_civil_war
+#		allowed = {
+#			tag = NSM
+#		}
+#		visible = {
+#			has_completed_focus = NSM_racial_laws
+#		}
+#		available = {
+#			has_dynamic_modifier = {
+#				modifier = NSM_The_Salvation_Constitution_idea
+#			}
+#		}
+#		ai_will_do = {
+#			factor = 7
+#		}
+#		cost = 0
+#		cancel_if_not_visible = yes
+#		days_remove = 215
+#		fire_only_once = yes
+#		remove_effect = {
+#			custom_effect_tooltip = NSM_begin_writing_the_savlation_constitution_deadline_decision_tt
+#		}
+#		complete_effect = {
+#		}
+#	}
+#	NSM_The_Foundation_of_Mankind_decision = {
+#		icon = generic_prepare_civil_war
+#		allowed = {
+#			tag = NSM
+#		}
+#		visible = {
+#			has_completed_focus = NSM_racial_laws
+#		}
+#		available = {
+#			has_decision = NSM_The_Day_of_Signing_decision
+#			has_dynamic_modifier = {
+#				modifier = NSM_The_Salvation_Constitution_idea
+#			}
+#		}
+#		ai_will_do = {
+#			factor = 7
+#		}
+#		cost = 75
+#		cancel_if_not_visible = yes
+#		fire_only_once = yes
+#		complete_effect = {
+#			effect_tooltip = {
+#				swap_ideas = {
+#					add_idea = NSM_The_Salvation_Constitution_foundation_of_mankind_idea
+#					remove_idea = NSM_The_Salvation_Constitution_idea
+#				}
+#			}
+#			hidden_effect = {
+#				set_variable = {
+#					var = NSM_The_Salvation_Constitution_idea_revolution_military_stability_factor_dynamic_var
+#					value = 0.05
+#				}
+#			}
+#		}
+#	}
+#	NSM_The_new_amendments_decision = {
+#		icon = generic_prepare_civil_war
+#		allowed = {
+#			tag = NSM
+#		}
+#		visible = {
+#			has_completed_focus = NSM_racial_laws
+#		}
+#		available = {
+#			has_decision = NSM_The_Day_of_Signing_decision
+#			has_dynamic_modifier = {
+#				modifier = NSM_The_Salvation_Constitution_idea
+#			}
+#		}
+#		ai_will_do = {
+#			factor = 7
+#		}
+#		cost = 75
+#		cancel_if_not_visible = yes
+#		fire_only_once = yes
+#		complete_effect = {
+#			effect_tooltip = {
+#				swap_ideas = {
+#					add_idea = NSM_The_Salvation_Constitution_new_amendments_idea
+#					remove_idea = NSM_The_Salvation_Constitution_idea
+#				}
+#			}
+#			hidden_effect = {
+#				set_variable = {
+#					var = NSM_The_Salvation_Constitution_idea_revolution_society_development_monthly_dynamic_var
+#					value = 0.025
+#				}
+#				set_variable = {
+#					var = NSM_The_Salvation_Constitution_idea_revolution_recruitable_pop_dynamic_var
+#					value = 0.05
+#				}
+#			}
+#		}
+#	}
+#	NSM_grant_police_authority_by_law_decision = {
+#		icon = generic_prepare_civil_war
+#		allowed = {
+#			tag = NSM
+#		}
+#		visible = {
+#			has_completed_focus = NSM_racial_laws
+#		}
+#		available = {
+#			has_decision = NSM_The_Day_of_Signing_decision
+#			has_dynamic_modifier = {
+#				modifier = NSM_The_Salvation_Constitution_idea
+#			}
+#		}
+#		ai_will_do = {
+#			factor = 7
+#		}
+#		cost = 50
+#		cancel_if_not_visible = yes
+#		fire_only_once = yes
+#		complete_effect = {
+#			effect_tooltip = {
+#				swap_ideas = {
+#					add_idea = NSM_The_Salvation_Constitution_police_authority_law_idea
+#					remove_idea = NSM_The_Salvation_Constitution_idea
+#				}
+#			}
+#			hidden_effect = {
+#				set_variable = {
+#					var = NSM_The_Salvation_Constitution_idea_resistance_activity_dynamic_var
+#					value = 0.075
+#				}
+#				set_variable = {
+#					var = NSM_The_Salvation_Constitution_idea_revolution_military_stability_factor_dynamic_var
+#					value = -0.05
+#				}
+#			}
+#		}
+#	}
+#	NSM_mandatory_school_attendance_decision = {
+#		icon = generic_prepare_civil_war
+#		allowed = {
+#			tag = NSM
+#		}
+#		visible = {
+#			has_completed_focus = NSM_racial_laws
+#		}
+#		available = {
+#			has_decision = NSM_The_Day_of_Signing_decision
+#			has_dynamic_modifier = {
+#				modifier = NSM_The_Salvation_Constitution_idea
+#			}
+#		}
+#		ai_will_do = {
+#			factor = 7
+#		}
+#		cost = 75
+#		cancel_if_not_visible = yes
+#		fire_only_once = yes
+#		complete_effect = {
+#			effect_tooltip = {
+#				swap_ideas = {
+#					add_idea = NSM_The_Salvation_Constitution_police_mandatory_school_idea
+#					remove_idea = NSM_The_Salvation_Constitution_idea
+#				}
+#			}
+#			hidden_effect = {
+#				set_variable = {
+#					var = NSM_The_Salvation_Constitution_idea_revolution_academic_development_monthly_dynamic_var
+#					value = 0.1
+#				}
+#			}
+#		}
+#	}
+#	NSM_military_stimulus_packages_decision = {
+#		icon = generic_prepare_civil_war
+#		allowed = {
+#			tag = NSM
+#		}
+#		visible = {
+#			has_completed_focus = NSM_racial_laws
+#		}
+#		available = {
+#			has_decision = NSM_The_Day_of_Signing_decision
+#			has_dynamic_modifier = {
+#				modifier = NSM_The_Salvation_Constitution_idea
+#			}
+#		}
+#		ai_will_do = {
+#			factor = 7
+#		}
+#		cost = 75
+#		cancel_if_not_visible = yes
+#		fire_only_once = yes
+#		complete_effect = {
+#			effect_tooltip = {
+#				swap_ideas = {
+#					add_idea = NSM_The_Salvation_Constitution_military_stimulus_school_idea
+#					remove_idea = NSM_The_Salvation_Constitution_idea
+#				}
+#			}
+#			hidden_effect = {
+#				set_variable = {
+#					var = NSM_The_Salvation_Constitution_idea_revolution_army_morale_factor_dynamic_var
+#					value = 0.035
+#				}
+#				set_variable = {
+#					var = NSM_The_Salvation_Constitution_idea_revolution_military_development_monthly_dynamic_var
+#					value = 0.05
+#				}
+#				set_variable = {
+#					var = NSM_The_Salvation_Constitution_idea_military_war_support_factor_dynamic_var
+#					value = 0.05
+#				}
+#			}
+#		}
+#	}
+#	NSM_the_power_heirarchy_in_the_movement_decision = {
+#		icon = generic_prepare_civil_war
+#		allowed = {
+#			tag = NSM
+#		}
+#		visible = {
+#			has_completed_focus = NSM_racial_laws
+#		}
+#		available = {
+#			has_decision = NSM_The_Day_of_Signing_decision
+#			has_dynamic_modifier = {
+#				modifier = NSM_The_Salvation_Constitution_idea
+#			}
+#		}
+#		ai_will_do = {
+#			factor = 7
+#		}
+#		cost = 50
+#		cancel_if_not_visible = yes
+#		fire_only_once = yes
+#		complete_effect = {
+#			effect_tooltip = {
+#				swap_ideas = {
+#					add_idea = NSM_The_Salvation_Constitution_police_movement_heirarchy_idea
+#					remove_idea = NSM_The_Salvation_Constitution_idea
+#				}
+#			}
+#			hidden_effect = {
+#				set_variable = {
+#					var = NSM_The_Salvation_Constitution_idea_revolution_society_development_monthly_dynamic_var
+#					value = 0.025
+#				}
+#				set_variable = {
+#					var = NSM_The_Salvation_Constitution_idea_revolution_military_natsoc_factor_dynamic_var
+#					value = 0.03
+#				}
+#				set_variable = {
+#					var = NSM_The_Salvation_Constitution_idea_military_political_power_gain_dynamic_var
+#					value = 0.1
+#				}
+#			}
+#		}
+#	}
+#	NSM_lower_the_working_age_decision = {
+#		icon = generic_prepare_civil_war
+#		allowed = {
+#			tag = NSM
+#		}
+#		visible = {
+#			has_completed_focus = NSM_racial_laws
+#		}
+#		available = {
+#			has_decision = NSM_The_Day_of_Signing_decision
+#			has_dynamic_modifier = {
+#				modifier = NSM_The_Salvation_Constitution_idea
+#			}
+#		}
+#		ai_will_do = {
+#			factor = 7
+#		}
+#		cost = 100
+#		cancel_if_not_visible = yes
+#		fire_only_once = yes
+#		complete_effect = {
+#			effect_tooltip = {
+#				swap_ideas = {
+#					add_idea = NSM_The_Salvation_Constitution_police_child_slavery_idea
+#					remove_idea = NSM_The_Salvation_Constitution_idea
+#				}
+#			}
+#			hidden_effect = {
+#				set_variable = {
+#					var = NSM_The_Salvation_Constitution_idea_revolution_poverty_development_monthly_dynamic_var
+#					value = 0.05
+#				}
+#				set_variable = {
+#					var = NSM_The_Salvation_Constitution_idea_income_growth_factor_dynamic
+#					value = 0.05
+#				}
+#				set_variable = {
+#					var = NSM_The_Salvation_Constitution_idea_production_speed_buildings_factor_dynamic
+#					value = 0.1
+#				}
+#				set_variable = {
+#					var = NSM_The_Salvation_Constitution_idea_industrial_capacity_factory_dynamic_var
+#					value = 0.05
+#				}
+#			}
+#		}
+#	}
+#	NSM_transfer_all_power_to_the_movement_decision = {
+#		icon = generic_prepare_civil_war
+#		allowed = {
+#			tag = NSM
+#		}
+#		visible = {
+#			has_completed_focus = NSM_racial_laws
+#		}
+#		available = {
+#			has_decision = NSM_The_Day_of_Signing_decision
+#			has_dynamic_modifier = {
+#				modifier = NSM_The_Salvation_Constitution_idea
+#			}
+#		}
+#		ai_will_do = {
+#			factor = 7
+#		}
+#		cost = 100
+#		cancel_if_not_visible = yes
+#		fire_only_once = yes
+#		complete_effect = {
+#			effect_tooltip = {
+#				swap_ideas = {
+#					add_idea = NSM_The_Salvation_Constitution_police_all_power_movement_idea
+#					remove_idea = NSM_The_Salvation_Constitution_idea
+#				}
+#			}
+#			hidden_effect = {
+#				set_variable = {
+#					var = NSM_The_Salvation_Constitution_idea_revolution_military_natsoc_factor_dynamic_var
+#					value = 0.01
+#				}
+#				set_variable = {
+#					var = NSM_The_Salvation_Constitution_idea_revolution_military_stability_factor_dynamic_var
+#					value = -0.05
+#				}
+#				set_variable = {
+#					var = NSM_The_Salvation_Constitution_idea_military_political_power_gain_dynamic_var
+#					value = 0.05
+#				}
+#			}
+#		}
+#	}
+}
+
+#NSM_The_Mexico_Situation_category = {
+#	NSM_show_no_mercy_decision = {
+#		icon = generic_prepare_civil_war
+#		allowed = {
+#			tag = NSM
+#		}
+#		visible = {
+#			has_completed_focus = NSM_burn_it_all_down
+#		}
+#		available = {
+#			or = {
+#				has_war_with = CDJ
+#				has_war_with = SIN
+#				has_war_with = CAS
+#				has_war_with = GUC
+#				has_war_with = MEX
+#				has_war_with = LFM
+#				has_war_with = ZAP
+#			}
+#		}
+#		ai_will_do = {
+#			factor = 5
+#		}
+#		cost = 75
+#		cancel_if_not_visible = yes
+#		fire_only_once = yes
+#		complete_effect = {
+#			add_timed_idea = {
+#				days = 125
+#				idea = NSM_no_mercy_idea
+#			}
+#			add_stability = -0.05
+#		}
+#	}
+#	NSM_target_the_civilian_industry_decision = {
+#		icon = generic_prepare_civil_war
+#		allowed = {
+#			tag = NSM
+#		}
+#		visible = {
+#			has_completed_focus = NSM_burn_it_all_down
+#		}
+#		available = {
+#			or = {
+#				has_war_with = CDJ
+#				has_war_with = SIN
+#				has_war_with = CAS
+#				has_war_with = GUC
+#				has_war_with = MEX
+#				has_war_with = LFM
+#				has_war_with = ZAP
+#			}
+#		}
+#		ai_will_do = {
+#			factor = 5
+#		}
+#		cost = 50
+#		cancel_if_not_visible = yes
+#		fire_only_once = yes
+#		complete_effect = {
+#			add_stability = -0.025
+#			81 = {
+#				add_building_construction = {
+#					type = industrial_complex
+#					level = -2
+#					instant_build = yes
+#				}
+#			}
+#			480 = {
+#				add_building_construction = {
+#					type = industrial_complex
+#					level = -1
+#					instant_build = yes
+#				}
+#			}
+#		}
+#	}
+#	NSM_form_the_guard_divisions_decision = {
+#		icon = generic_prepare_civil_war
+#		allowed = {
+#			tag = NSM
+#		}
+#		visible = {
+#			has_completed_focus = NSM_burn_it_all_down
+#		}
+#		available = {
+#			has_completed_focus = NSM_militarize_the_border_guard
+#			or = {
+#				has_war_with = CDJ
+#				has_war_with = SIN
+#				has_war_with = CAS
+#				has_war_with = GUC
+#				has_war_with = MEX
+#				has_war_with = LFM
+#				has_war_with = ZAP
+#			}
+#		}
+#		ai_will_do = {
+#			factor = 5
+#		}
+#		cost = 50
+#		cancel_if_not_visible = yes
+#		fire_only_once = yes
+#		complete_effect = {
+#			add_stability = -0.04
+#			if = {
+#				limit = {
+#					NSM = {
+#						controls_state = 983
+#					}
+#				}
+#				983 = {
+#					create_unit = {
+#						division = "name = \"1st unnamed Infantry Company 'Hristo Lukov'\" division_template = \"Volunteer Militia\"  start_experience_factor = 0.5"
+#						allow_spawning_on_enemy_provs = yes
+#						owner = ROOT
+#					}
+#					create_unit = {
+#						division = "name = \"1st unnamed Infantry Company 'Hristo Lukov'\" division_template = \"Volunteer Militia\"  start_experience_factor = 0.5"
+#						allow_spawning_on_enemy_provs = yes
+#						owner = ROOT
+#					}
+#				}
+#			}
+#			else_if = {
+#				limit = {
+#					NSM = {
+#						not = {
+#							controls_state = 983
+#						}
+#					}
+#				}
+#				1074 = {
+#					create_unit = {
+#						division = "name = \"1st unnamed Infantry Company 'Hristo Lukov'\" division_template = \"Volunteer Militia\"  start_experience_factor = 0.5"
+#						allow_spawning_on_enemy_provs = yes
+#						owner = ROOT
+#					}
+#					create_unit = {
+#						division = "name = \"1st unnamed Infantry Company 'Hristo Lukov'\" division_template = \"Volunteer Militia\"  start_experience_factor = 0.5"
+#						allow_spawning_on_enemy_provs = yes
+#						owner = ROOT
+#					}
+#				}
+#			}
+#		}
+#	}
+#	NSM_make_use_of_texas_rangers_decision = {
+#		icon = generic_prepare_civil_war
+#		allowed = {
+#			tag = NSM
+#		}
+#		visible = {
+#			has_completed_focus = NSM_burn_it_all_down
+#		}
+#		available = {
+#			has_completed_focus = NSM_militarize_the_border_guard
+#			or = {
+#				has_war_with = CDJ
+#				has_war_with = SIN
+#				has_war_with = CAS
+#				has_war_with = GUC
+#				has_war_with = MEX
+#				has_war_with = LFM
+#				has_war_with = ZAP
+#			}
+#		}
+#		ai_will_do = {
+#			factor = 5
+#		}
+#		cost = 75
+#		cancel_if_not_visible = yes
+#		fire_only_once = yes
+#		complete_effect = {
+#			add_stability = -0.04
+#			if = {
+#				limit = {
+#					NSM = {
+#						controls_state = 961
+#					}
+#				}
+#				961 = {
+#					create_unit = {
+#						division = "name = \"1st unnamed Infantry Company 'Hristo Lukov'\" division_template = \"Volunteer Militia\"  start_experience_factor = 0.5"
+#						allow_spawning_on_enemy_provs = yes
+#						owner = ROOT
+#					}
+#					create_unit = {
+#						division = "name = \"1st unnamed Infantry Company 'Hristo Lukov'\" division_template = \"Volunteer Militia\"  start_experience_factor = 0.5"
+#						allow_spawning_on_enemy_provs = yes
+#						owner = ROOT
+#					}
+#				}
+#			}
+#			else_if = {
+#				limit = {
+#					NSM = {
+#						not = {
+#							controls_state = 961
+#						}
+#					}
+#				}
+#				1074 = {
+#					create_unit = {
+#						division = "name = \"1st unnamed Infantry Company 'Hristo Lukov'\" division_template = \"Volunteer Militia\"  start_experience_factor = 0.5"
+#						allow_spawning_on_enemy_provs = yes
+#						owner = ROOT
+#					}
+#					create_unit = {
+#						division = "name = \"1st unnamed Infantry Company 'Hristo Lukov'\" division_template = \"Volunteer Militia\"  start_experience_factor = 0.5"
+#						allow_spawning_on_enemy_provs = yes
+#						owner = ROOT
+#					}
+#				}
+#			}
+#		}
+#	}
+#	NSM_fortify_ourselves_decision = {
+#		icon = generic_prepare_civil_war
+#		allowed = {
+#			tag = NSM
+#		}
+#		visible = {
+#			has_completed_focus = NSM_burn_it_all_down
+#		}
+#		available = {
+#			or = {
+#				has_war_with = CDJ
+#				has_war_with = SIN
+#				has_war_with = CAS
+#				has_war_with = GUC
+#				has_war_with = MEX
+#				has_war_with = LFM
+#				has_war_with = ZAP
+#			}
+#		}
+#		ai_will_do = {
+#			factor = 5
+#		}
+#		cost = 100
+#		cancel_if_not_visible = yes
+#		fire_only_once = yes
+#		complete_effect = {
+#			add_stability = -0.01
+#			13525 = {
+#				add_building_construction = {
+#					type = bunker
+#					level = 3
+#					instant_build = yes
+#					province = {
+#						all_provinces = yes
+#						limit_to_border = yes
+#						limit_to_victory_point > 1
+#					}
+#				}
+#			}
+#			3834 = {
+#				add_building_construction = {
+#					type = bunker
+#					level = 3
+#					instant_build = yes
+#					province = {
+#						all_provinces = yes
+#						limit_to_border = yes
+#						limit_to_victory_point > 1
+#					}
+#				}
+#			}
+#			13376 = {
+#				add_building_construction = {
+#					type = bunker
+#					level = 3
+#					instant_build = yes
+#					province = {
+#						all_provinces = yes
+#						limit_to_border = yes
+#						limit_to_victory_point > 1
+#					}
+#				}
+#			}
+#			13442 = {
+#				add_building_construction = {
+#					type = bunker
+#					level = 3
+#					instant_build = yes
+#					province = {
+#						all_provinces = yes
+#						limit_to_border = yes
+#						limit_to_victory_point > 1
+#					}
+#				}
+#			}
+#			13422 = {
+#				add_building_construction = {
+#					type = bunker
+#					level = 3
+#					instant_build = yes
+#					province = {
+#						all_provinces = yes
+#						limit_to_border = yes
+#						limit_to_victory_point > 1
+#					}
+#				}
+#			}
+#			12369 = {
+#				add_building_construction = {
+#					type = bunker
+#					level = 3
+#					instant_build = yes
+#					province = {
+#						all_provinces = yes
+#						limit_to_border = yes
+#						limit_to_victory_point > 1
+#					}
+#				}
+#			}
+#		}
+#	}
+#	### cartel+intervention decisions
+#	NSM_expand_the_cartel_divisions_decision = {
+#		icon = generic_prepare_civil_war
+#		allowed = {
+#			tag = NSM
+#		}
+#		visible = {
+#			has_completed_focus = NSM_convince_the_cartels
+#		}
+#		available = {
+#			has_completed_focus = NSM_convince_the_cartels
+#			or = {
+#				has_war_with = CDJ
+#				has_war_with = SIN
+#				has_war_with = CAS
+#				has_war_with = GUC
+#				has_war_with = MEX
+#				has_war_with = LFM
+#				has_war_with = ZAP
+#			}
+#		}
+#		ai_will_do = {
+#			factor = 5
+#		}
+#		cost = 75
+#		cancel_if_not_visible = yes
+#		fire_only_once = yes
+#		complete_effect = {
+#			add_stability = -0.035
+#			if = {
+#				limit = {
+#					NSM = {
+#						controls_state = 983
+#					}
+#				}
+#				983 = {
+#					create_unit = {
+#						division = "name = \"1st unnamed Infantry Company 'Hristo Lukov'\" division_template = \"Volunteer Militia\"  start_experience_factor = 0.5"
+#						allow_spawning_on_enemy_provs = yes
+#						owner = ROOT
+#					}
+#					create_unit = {
+#						division = "name = \"1st unnamed Infantry Company 'Hristo Lukov'\" division_template = \"Volunteer Militia\"  start_experience_factor = 0.5"
+#						allow_spawning_on_enemy_provs = yes
+#						owner = ROOT
+#					}
+#				}
+#			}
+#			else_if = {
+#				limit = {
+#					NSM = {
+#						not = {
+#							controls_state = 983
+#						}
+#					}
+#				}
+#				1074 = {
+#					create_unit = {
+#						division = "name = \"1st unnamed Infantry Company 'Hristo Lukov'\" division_template = \"Volunteer Militia\"  start_experience_factor = 0.5"
+#						allow_spawning_on_enemy_provs = yes
+#						owner = ROOT
+#					}
+#					create_unit = {
+#						division = "name = \"1st unnamed Infantry Company 'Hristo Lukov'\" division_template = \"Volunteer Militia\"  start_experience_factor = 0.5"
+#						allow_spawning_on_enemy_provs = yes
+#						owner = ROOT
+#					}
+#				}
+#			}
+#		}
+#	}
+#	NSM_prepare_the_industry_for_a_foreign_war_decision = {
+#		icon = generic_prepare_civil_war
+#		allowed = {
+#			tag = NSM
+#		}
+#		visible = {
+#			has_completed_focus = NSM_convince_the_cartels
+#		}
+#		available = {
+#			has_completed_focus = NSM_convince_the_cartels
+#			or = {
+#				has_war_with = CDJ
+#				has_war_with = SIN
+#				has_war_with = CAS
+#				has_war_with = GUC
+#				has_war_with = MEX
+#				has_war_with = LFM
+#				has_war_with = ZAP
+#			}
+#		}
+#		ai_will_do = {
+#			factor = 5
+#		}
+#		cost = 50
+#		cancel_if_not_visible = yes
+#		fire_only_once = yes
+#		complete_effect = {
+#			add_stability = -0.02
+#			983 = {
+#				add_building_construction = {
+#					type = arms_factory
+#					level = 1
+#					instant_build = yes
+#				}
+#			}
+#			983 = {
+#				add_building_construction = {
+#					type = arms_factory
+#					level = 1
+#					instant_build = yes
+#				}
+#			}
+#		}
+#	}
+#	NSM_prepare_for_a_swift_victory_decision = {
+#		icon = generic_prepare_civil_war
+#		allowed = {
+#			tag = NSM
+#		}
+#		visible = {
+#			has_completed_focus = NSM_convince_the_cartels
+#		}
+#		available = {
+#			has_completed_focus = NSM_blitzkrieg_in_the_desert
+#			or = {
+#				has_war_with = CDJ
+#				has_war_with = SIN
+#				has_war_with = CAS
+#				has_war_with = GUC
+#				has_war_with = MEX
+#				has_war_with = LFM
+#				has_war_with = ZAP
+#			}
+#		}
+#		ai_will_do = {
+#			factor = 5
+#		}
+#		cost = 50
+#		cancel_if_not_visible = yes
+#		fire_only_once = yes
+#		complete_effect = {
+#			add_stability = -0.025
+#			add_timed_idea = {
+#				days = 100
+#				idea = NSM_a_swift_and_decisive_victory_idea
+#			}
+#		}
+#	}
+#	NSM_mastering_mechanized_warfare_decision = {
+#		icon = generic_prepare_civil_war
+#		allowed = {
+#			tag = NSM
+#		}
+#		visible = {
+#			has_completed_focus = NSM_convince_the_cartels
+#		}
+#		available = {
+#			has_completed_focus = NSM_blitzkrieg_in_the_desert
+#			or = {
+#				has_war_with = CDJ
+#				has_war_with = SIN
+#				has_war_with = CAS
+#				has_war_with = GUC
+#				has_war_with = MEX
+#				has_war_with = LFM
+#				has_war_with = ZAP
+#			}
+#		}
+#		ai_will_do = {
+#			factor = 5
+#		}
+#		cost = 25
+#		cancel_if_not_visible = yes
+#		complete_effect = {
+#			army_experience = 30
+#			add_doctrine_cost_reduction = {
+#				cost_reduction = 0.75
+#				uses = 2
+#				category = cat_old_land_doctrine
+#			}
+#		}
+#	}
+#	NSM_thrust_the_spearhead_decision = {
+#		icon = generic_prepare_civil_war
+#		allowed = {
+#			tag = NSM
+#		}
+#		visible = {
+#			has_completed_focus = NSM_convince_the_cartels
+#		}
+#		available = {
+#			has_completed_focus = NSM_blitzkrieg_in_the_desert
+#			or = {
+#				has_war_with = CDJ
+#				has_war_with = SIN
+#				has_war_with = CAS
+#				has_war_with = GUC
+#				has_war_with = MEX
+#				has_war_with = LFM
+#				has_war_with = ZAP
+#			}
+#		}
+#		ai_will_do = {
+#			factor = 7
+#		}
+#		cost = 75
+#		cancel_if_not_visible = yes
+#		fire_only_once = yes
+#		complete_effect = {
+#			add_stability = -0.025
+#			army_experience = 5
+#			add_timed_idea = {
+#				days = 50
+#				idea = NSM_thrusting_the_spearhead_idea
+#			}
+#		}
+#	}
+#	NSM_operation_paulus_decision = {
+#		icon = generic_prepare_civil_war
+#		allowed = {
+#			tag = NSM
+#		}
+#		visible = {
+#			has_completed_focus = NSM_convince_the_cartels
+#		}
+#		available = {
+#			has_completed_focus = NSM_blitzkrieg_in_the_desert
+#			or = {
+#				has_war_with = CDJ
+#				has_war_with = SIN
+#				has_war_with = CAS
+#				has_war_with = GUC
+#				has_war_with = MEX
+#				has_war_with = LFM
+#				has_war_with = ZAP
+#			}
+#		}
+#		ai_will_do = {
+#			factor = 7
+#		}
+#		cost = 100
+#		cancel_if_not_visible = yes
+#		fire_only_once = yes
+#		complete_effect = {
+#			add_stability = -0.05
+#			add_timed_idea = {
+#				days = 50
+#				idea = NSM_operation_paulus_idea
+#			}
+#		}
+#	}
+#}
+
+#NSM_The_New_American_War_Machine_category = {
+#	NSM_new_military_plants_in_the_upper_peninsula_decision = {
+#		icon = generic_prepare_civil_war
+#		allowed = {
+#			tag = NSM
+#		}
+#		visible = {
+#			has_completed_focus = NSM_fuel_the_war_machine
+#		}
+#		available = {
+#			NSM = {
+#				controls_state = 1072
+#			}
+#		}
+#		ai_will_do = {
+#			factor = 2
+#		}
+#		cost = 50
+#		cancel_if_not_visible = yes
+#		fire_only_once = yes
+#		complete_effect = {
+#			1072 = {
+#				add_extra_state_shared_building_slots = 2
+#				add_building_construction = {
+#					type = arms_factory
+#					level = 2
+#					instant_build = yes
+#				}
+#			}
+#		}
+#	}
+#	NSM_new_military_plants_in_chitown_decision = {
+#		icon = generic_prepare_civil_war
+#		allowed = {
+#			tag = NSM
+#		}
+#		visible = {
+#			has_completed_focus = NSM_fuel_the_war_machine
+#			NSM = {
+#				controls_state = 1099
+#			}
+#		}
+#		available = {
+#			NSM = {
+#				controls_state = 1099
+#			}
+#		}
+#		ai_will_do = {
+#			factor = 2
+#		}
+#		cost = 50
+#		cancel_if_not_visible = yes
+#		fire_only_once = yes
+#		complete_effect = {
+#			1099 = {
+#				add_extra_state_shared_building_slots = 2
+#				add_building_construction = {
+#					type = arms_factory
+#					level = 2
+#					instant_build = yes
+#				}
+#			}
+#		}
+#	}
+#	NSM_new_military_plants_in_Milwaukee_decision = {
+#		icon = generic_prepare_civil_war
+#		allowed = {
+#			tag = NSM
+#		}
+#		visible = {
+#			has_completed_focus = NSM_fuel_the_war_machine
+#			NSM = {
+#				controls_state = 1244
+#			}
+#		}
+#		available = {
+#			NSM = {
+#				controls_state = 1244
+#			}
+#		}
+#		ai_will_do = {
+#			factor = 2
+#		}
+#		cost = 25
+#		cancel_if_not_visible = yes
+#		fire_only_once = yes
+#		complete_effect = {
+#			1244 = {
+#				add_extra_state_shared_building_slots = 1
+#				add_building_construction = {
+#					type = arms_factory
+#					level = 1
+#					instant_build = yes
+#				}
+#			}
+#		}
+#	}
+#	NSM_new_military_plants_in_Minneapolis_decision = {
+#		icon = generic_prepare_civil_war
+#		allowed = {
+#			tag = NSM
+#		}
+#		visible = {
+#			has_completed_focus = NSM_fuel_the_war_machine
+#			NSM = {
+#				controls_state = 1243
+#			}
+#		}
+#		available = {
+#			NSM = {
+#				controls_state = 1243
+#			}
+#		}
+#		ai_will_do = {
+#			factor = 2
+#		}
+#		cost = 25
+#		cancel_if_not_visible = yes
+#		fire_only_once = yes
+#		complete_effect = {
+#			1243 = {
+#				add_extra_state_shared_building_slots = 1
+#				add_building_construction = {
+#					type = arms_factory
+#					level = 1
+#					instant_build = yes
+#				}
+#			}
+#		}
+#	}
+#	NSM_new_military_plants_in_Indianapolis_decision = {
+#		icon = generic_prepare_civil_war
+#		allowed = {
+#			tag = NSM
+#		}
+#		visible = {
+#			has_completed_focus = NSM_fuel_the_war_machine
+#			NSM = {
+#				controls_state = 1151
+#			}
+#		}
+#		available = {
+#			NSM = {
+#				controls_state = 1151
+#			}
+#		}
+#		ai_will_do = {
+#			factor = 2
+#		}
+#		cost = 50
+#		cancel_if_not_visible = yes
+#		fire_only_once = yes
+#		complete_effect = {
+#			1151 = {
+#				add_extra_state_shared_building_slots = 2
+#				add_building_construction = {
+#					type = arms_factory
+#					level = 2
+#					instant_build = yes
+#				}
+#			}
+#		}
+#	}
+#	NSM_new_military_plants_in_Cincinnati_decision = {
+#		icon = generic_prepare_civil_war
+#		allowed = {
+#			tag = NSM
+#		}
+#		visible = {
+#			has_completed_focus = NSM_fuel_the_war_machine
+#			NSM = {
+#				controls_state = 1247
+#			}
+#		}
+#		available = {
+#			NSM = {
+#				controls_state = 1247
+#			}
+#		}
+#		ai_will_do = {
+#			factor = 2
+#		}
+#		cost = 25
+#		cancel_if_not_visible = yes
+#		fire_only_once = yes
+#		complete_effect = {
+#			1247 = {
+#				add_extra_state_shared_building_slots = 1
+#				add_building_construction = {
+#					type = arms_factory
+#					level = 1
+#					instant_build = yes
+#				}
+#			}
+#		}
+#	}
+#	NSM_new_military_plants_in_Louisville_decision = {
+#		icon = generic_prepare_civil_war
+#		allowed = {
+#			tag = NSM
+#		}
+#		visible = {
+#			has_completed_focus = NSM_fuel_the_war_machine
+#			NSM = {
+#				controls_state = 1000
+#			}
+#		}
+#		available = {
+#			NSM = {
+#				controls_state = 1000
+#			}
+#		}
+#		ai_will_do = {
+#			factor = 2
+#		}
+#		cost = 50
+#		cancel_if_not_visible = yes
+#		fire_only_once = yes
+#		complete_effect = {
+#			1000 = {
+#				add_extra_state_shared_building_slots = 2
+#				add_building_construction = {
+#					type = arms_factory
+#					level = 2
+#					instant_build = yes
+#				}
+#			}
+#		}
+#	}
+#	NSM_new_military_plants_in_Cleveland_decision = {
+#		icon = generic_prepare_civil_war
+#		allowed = {
+#			tag = NSM
+#		}
+#		visible = {
+#			has_completed_focus = NSM_fuel_the_war_machine
+#			NSM = {
+#				controls_state = 1245
+#			}
+#		}
+#		available = {
+#			NSM = {
+#				controls_state = 1245
+#			}
+#		}
+#		ai_will_do = {
+#			factor = 2
+#		}
+#		cost = 25
+#		cancel_if_not_visible = yes
+#		fire_only_once = yes
+#		complete_effect = {
+#			1245 = {
+#				add_extra_state_shared_building_slots = 1
+#				add_building_construction = {
+#					type = arms_factory
+#					level = 1
+#					instant_build = yes
+#				}
+#			}
+#		}
+#	}
+#	NSM_new_military_plants_in_columbus_decision = {
+#		icon = generic_prepare_civil_war
+#		allowed = {
+#			tag = NSM
+#		}
+#		visible = {
+#			has_completed_focus = NSM_fuel_the_war_machine
+#			NSM = {
+#				controls_state = 1246
+#			}
+#		}
+#		available = {
+#			NSM = {
+#				controls_state = 1246
+#			}
+#		}
+#		ai_will_do = {
+#			factor = 2
+#		}
+#		cost = 25
+#		cancel_if_not_visible = yes
+#		fire_only_once = yes
+#		complete_effect = {
+#			1246 = {
+#				add_extra_state_shared_building_slots = 1
+#				add_building_construction = {
+#					type = arms_factory
+#					level = 1
+#					instant_build = yes
+#				}
+#			}
+#		}
+#	}
+#	NSM_new_military_plants_in_Pittsburg_decision = {
+#		icon = generic_prepare_civil_war
+#		allowed = {
+#			tag = NSM
+#		}
+#		visible = {
+#			has_completed_focus = NSM_fuel_the_war_machine
+#			NSM = {
+#				controls_state = 1068
+#			}
+#		}
+#		available = {
+#			NSM = {
+#				controls_state = 1068
+#			}
+#		}
+#		ai_will_do = {
+#			factor = 2
+#		}
+#		cost = 50
+#		cancel_if_not_visible = yes
+#		fire_only_once = yes
+#		complete_effect = {
+#			1068 = {
+#				add_extra_state_shared_building_slots = 2
+#				add_building_construction = {
+#					type = arms_factory
+#					level = 2
+#					instant_build = yes
+#				}
+#			}
+#		}
+#	}
+#}
+
+#NSM_Maintaining_Movement_strength_category = {
+#	NSM_arise_patriots_decision = {
+#		icon = generic_prepare_civil_war
+#		allowed = {
+#			tag = NSM
+#		}
+#		visible = {
+#			has_completed_focus = NSM_warp_american_patriotism
+#		}
+#		available = {
+#		}
+#		ai_will_do = {
+#			factor = 2
+#		}
+#		cost = 50
+#		cancel_if_not_visible = yes
+#		fire_only_once = yes
+#		complete_effect = {
+#			add_war_support = 0.035
+#			1074 = {
+#				create_unit = {
+#					division = "name = \"1st unnamed Infantry Company 'Hristo Lukov'\" division_template = \"Volunteer Militia\"  start_experience_factor = 0.5"
+#					allow_spawning_on_enemy_provs = yes
+#					owner = ROOT
+#				}
+#				create_unit = {
+#					division = "name = \"1st unnamed Infantry Company 'Hristo Lukov'\" division_template = \"Volunteer Militia\"  start_experience_factor = 0.5"
+#					allow_spawning_on_enemy_provs = yes
+#					owner = ROOT
+#				}
+#			}
+#		}
+#	}
+#	NSM_Always_for_a_good_cause_decision = {
+#		icon = generic_prepare_civil_war
+#		allowed = {
+#			tag = NSM
+#		}
+#		visible = {
+#			has_completed_focus = NSM_a_christian_identity
+#		}
+#		available = {
+#		}
+#		ai_will_do = {
+#			factor = 2
+#		}
+#		cost = 25
+#		cancel_if_not_visible = yes
+#		fire_only_once = yes
+#		complete_effect = {
+#			add_war_support = 0.05
+#			add_command_power = 25
+#			add_popularity = {
+#				ideology = national_socialist
+#				popularity = 0.04
+#			}
+#		}
+#	}
+#	NSM_rockwells_enforcers_decision = {
+#		icon = generic_prepare_civil_war
+#		allowed = {
+#			tag = NSM
+#		}
+#		visible = {
+#			has_completed_focus = NSM_new_millenium_nazism
+#		}
+#		available = {
+#		}
+#		ai_will_do = {
+#			factor = 2
+#		}
+#		cost = 75
+#		cancel_if_not_visible = yes
+#		fire_only_once = yes
+#		complete_effect = {
+#			add_ideas = NSM_rockwells_enforcers_idea
+#			add_popularity = {
+#				ideology = national_socialist
+#				popularity = 0.02
+#			}
+#		}
+#	}
+#	NSM_choosing_from_the_military_police_decision = {
+#		icon = generic_prepare_civil_war
+#		allowed = {
+#			tag = NSM
+#		}
+#		visible = {
+#			has_completed_focus = NSM_new_millenium_nazism
+#		}
+#		available = {
+#		}
+#		ai_will_do = {
+#			factor = 2
+#		}
+#		cost = 75
+#		cancel_if_not_visible = yes
+#		fire_only_once = yes
+#		complete_effect = {
+#			add_stability = -0.02
+#			1074 = {
+#				create_unit = {
+#					division = "name = \"1st unnamed Infantry Company 'Hristo Lukov'\" division_template = \"Volunteer Militia\"  start_experience_factor = 0.5"
+#					allow_spawning_on_enemy_provs = yes
+#					owner = ROOT
+#				}
+#				create_unit = {
+#					division = "name = \"1st unnamed Infantry Company 'Hristo Lukov'\" division_template = \"Volunteer Militia\"  start_experience_factor = 0.5"
+#					allow_spawning_on_enemy_provs = yes
+#					owner = ROOT
+#				}
+#				create_unit = {
+#					division = "name = \"1st unnamed Infantry Company 'Hristo Lukov'\" division_template = \"Volunteer Militia\"  start_experience_factor = 0.5"
+#					allow_spawning_on_enemy_provs = yes
+#					owner = ROOT
+#				}
+#			}
+#		}
+#	}
+#	NSM_further_professionalize_the_police_decision = {
+#		icon = generic_prepare_civil_war
+#		allowed = {
+#			tag = NSM
+#		}
+#		visible = {
+#			has_completed_focus = NSM_modernize_the_defense_force
+#		}
+#		available = {
+#		}
+#		ai_will_do = {
+#			factor = 2
+#		}
+#		cost = 75
+#		cancel_if_not_visible = yes
+#		fire_only_once = yes
+#		complete_effect = {
+#			add_ideas = medium_police
+#			add_stability = 0.02
+#		}
+#	}
+#	NSM_what_We_fight_for_decision = {
+#		icon = generic_prepare_civil_war
+#		allowed = {
+#			tag = NSM
+#		}
+#		visible = {
+#			has_completed_focus = NSM_new_millenium_nazism
+#		}
+#		available = {
+#		}
+#		ai_will_do = {
+#			factor = 2
+#		}
+#		cost = 50
+#		cancel_if_not_visible = yes
+#		fire_only_once = yes
+#		complete_effect = {
+#			add_war_support = 0.035
+#			add_timed_idea = {
+#				days = 100
+#				idea = NSM_protecting_nationalism_idea
+#			}
+#		}
+#	}
+#	NSM_deploy_the_werewolves_decision = {
+#		icon = generic_prepare_civil_war
+#		allowed = {
+#			tag = NSM
+#		}
+#		visible = {
+#			has_completed_focus = NSM_american_werewolves
+#		}
+#		available = {
+#			has_idea = NSM_rockwells_enforcers_idea
+#		}
+#		ai_will_do = {
+#			factor = 5
+#		}
+#		cost = 100
+#		cancel_if_not_visible = yes
+#		fire_only_once = yes
+#		complete_effect = {
+#			swap_ideas = {
+#				add_idea = NSM_the_american_werewolves_idea
+#				remove_idea = NSM_rockwells_enforcers_idea
+#			}
+#			add_political_power = 15
+#			1074 = {
+#				create_unit = {
+#					division = "division_template = \"Volunteer Militia\"  start_experience_factor = 0.1"
+#					allow_spawning_on_enemy_provs = yes
+#					owner = NSM
+#				}
+#				create_unit = {
+#					division = "division_template = \"Volunteer Militia\"  start_experience_factor = 0.1"
+#					allow_spawning_on_enemy_provs = yes
+#					owner = NSM
+#				}
+#			}
+#		}
+#	}
+#	NSM_raise_the_training_standards_decision = {
+#		icon = generic_prepare_civil_war
+#		allowed = {
+#			tag = NSM
+#		}
+#		visible = {
+#			has_completed_focus = NSM_american_werewolves
+#		}
+#		available = {
+#		}
+#		ai_will_do = {
+#			factor = 5
+#		}
+#		cost = 50
+#		cancel_if_not_visible = yes
+#		fire_only_once = yes
+#		complete_effect = {
+#			add_ideas = high_training
+#			add_stability = 0.01
+#			add_popularity = {
+#				ideology = national_socialist
+#				popularity = 0.01
+#			}
+#		}
+#	}
+#}
+
+#NSM_the_rockwell_movement_category = {
+#	NSM_living_by_the_old_standards_decision = {
+#		icon = generic_prepare_civil_war
+#		allowed = {
+#			tag = NSM
+#		}
+#		visible = {
+#			has_completed_focus = NSM_encourage_white_nationalism
+#		}
+#		available = {
+#		}
+#		ai_will_do = {
+#			factor = 2
+#		}
+#		cost = 75
+#		cancel_if_not_visible = yes
+#		fire_only_once = yes
+#		modifier = {
+#		}
+#		complete_effect = {
+#		}
+#	}
+#}
+
+NSM_balance_of_power_category = {
+	NSM_add_left_bop_debug_decision = {
+		#icon = generic_political_rally
+		allowed = {
+			original_tag = NSM
+		}
+		visible = {
+			is_debug = yes
+			is_ai = no
+			has_power_balance = {
+				id = NSM_faction_balance
+			}
+		}
+		complete_effect = {
+			add_power_balance_value = {
+				id = NSM_faction_balance
+				value = -0.35
+			}
+		}
+	}
+	NSM_add_right_bop_debug_decision = {
+		#icon = generic_political_rally
+		allowed = {
+			original_tag = NSM
+		}
+		visible = {
+			is_debug = yes
+			is_ai = no
+			has_power_balance = {
+				id = NSM_faction_balance
+			}
+		}
+		complete_effect = {
+			add_power_balance_value = {
+				id = NSM_faction_balance
+				value = 0.35
+			}
+		}
+	}
+	NSM_pro_rockwell_decision = {
+		icon = generic_political_rally
+		cost = 25
+		days_remove = 70
+		days_re_enable = 70
+		allowed = {
+			original_tag = NSM
+		}
+		visible = {
+			NOT = {
+				has_country_flag = bop_decision_flag
+			}
+		}
+		available = {
+			NOT = {
+				power_balance_value = {
+					id = NSM_faction_balance
+					value < -0.9
+				}
+			}
+		}
+		ai_will_do = {
+			base = 2
+		}
+		modifier = {
+			power_balance_weekly = -0.01
+		}
+		complete_effect = {
+			hidden_effect = {
+				set_country_flag = {
+					flag = NSM_faction_balance
+					days = 140
+					value = 1
+				}
+			}
+		}
+		remove_effect = {
+		}
+	}
+	NSM_pro_hitlerite_decision = {
+		icon = generic_political_rally
+		cost = 25
+		days_remove = 70
+		days_re_enable = 70
+		allowed = {
+			original_tag = NSM
+		}
+		visible = {
+			NOT = {
+				has_country_flag = bop_decision_flag
+			}
+		}
+		available = {
+			NOT = {
+				power_balance_value = {
+					id = NSM_faction_balance
+					value > 0.9
+				}
+			}
+		}
+		ai_will_do = {
+			base = 2
+		}
+		modifier = {
+			power_balance_weekly = 0.01
+		}
+		complete_effect = {
+			hidden_effect = {
+				set_country_flag = {
+					flag = bop_decision_flag
+					days = 140
+					value = 1
+				}
+			}
+		}
+		remove_effect = {
+		}
+	}
+	# NSM_opposistion_growth_mission = {
+	# 	icon = generic_political_discourse
+	# 	allowed = {
+	# 		tag = NSM
+	# 	}
+	# 	available = {
+	# 		hidden_trigger = {
+	# 			always = no
+	# 		}
+	# 	}
+	# 	priority = 10
+	# 	fire_only_once = yes
+	# 	days_mission_timeout = NSM_opposistion_growth_days_var
+	# 	is_good = no
+	# 	cancel_if_not_visible = yes
+	# 	activation = {
+	# 		always = no
+	# 	}
+	# 	visible = {
+	# 		tag = NSM
+	# 	}
+	# 	timeout_effect = {
+	# 		if = {
+	# 			limit = {
+	# 				NOT = {
+	# 					has_country_flag = NSM_sided_with_reformists_flag
+	# 				}
+	# 			}
+	# 			set_temp_variable = {
+	# 				var = NSM_influence_ref_var_temp
+	# 				value = NSM_influence_debuff_var
+	# 			}
+	# 			NSM_add_influence_ref = yes
+	# 		}
+	# 		if = {
+	# 			limit = {
+	# 				NOT = {
+	# 					has_country_flag = NSM_sided_with_hardliners_flag
+	# 				}
+	# 			}
+	# 			set_temp_variable = {
+	# 				var = NSM_influence_har_var_temp
+	# 				value = NSM_influence_debuff_var
+	# 			}
+	# 			NSM_add_influence_har = yes
+	# 		}
+	# 		activate_mission = NSM_opposistion_growth_mission
+	# 	}
+	# }
+	# NSM_ban_race_mixed_couples = {
+	# 	icon = generic_political_rally
+	# 	allowed = {
+	# 		original_tag = NSM
+	# 	}
+	# 	visible = {
+	# 		has_completed_focus = NSM_establish_our_narrative
+	# 		has_country_flag = NSM_sided_with_hardliners_flag
+	# 	}
+	# 	available = {
+	# 		set_temp_variable = {
+	# 			var = NSM_influence_har_trigger_temp
+	# 			value = 100
+	# 		}
+	# 		NSM_has_influence_har_less_than = yes
+	# 	}
+	# 	ai_will_do = {
+	# 		factor = 5
+	# 	}
+	# 	cost = 10
+	# 	cancel_if_not_visible = yes
+	# 	fire_only_once = yes
+	# 	complete_effect = {
+	# 		set_temp_variable = {
+	# 			var = NSM_influence_har_var_temp
+	# 			value = 8
+	# 		}
+	# 		NSM_add_influence_har = yes
+	# 		add_stability = -0.05
+	# 	}
+	# 	remove_effect = {
+	# 	}
+	# }
+	# NSM_expose_our_enemies_decision = {
+	# 	icon = generic_propaganda_campaigns
+	# 	allowed = {
+	# 		original_tag = NSM
+	# 	}
+	# 	visible = {
+	# 		has_completed_focus = NSM_Expose_the_Plot
+	# 	}
+	# 	available = {
+	# 		NOT = {
+	# 			has_stability < 0
+	# 		}
+	# 		if = {
+	# 			limit = {
+	# 				has_country_flag = NSM_sided_with_reformists_flag
+	# 			}
+	# 			set_temp_variable = {
+	# 				var = NSM_influence_har_trigger_temp
+	# 				value = 5
+	# 			}
+	# 			NSM_has_influence_har_greater_than_or_equals = yes
+	# 		}
+	# 		else_if = {
+	# 			limit = {
+	# 				has_country_flag = NSM_sided_with_hardliners_flag
+	# 			}
+	# 			set_temp_variable = {
+	# 				var = NSM_influence_ref_trigger_temp
+	# 				value = 5
+	# 			}
+	# 			NSM_has_influence_ref_greater_than_or_equals = yes
+	# 		}
+	# 	}
+	# 	ai_will_do = {
+	# 		factor = 4
+	# 	}
+	# 	cost = 0
+	# 	days_remove = 7
+	# 	days_re_enable = 7
+	# 	cancel_if_not_visible = yes
+	# 	modifier = {
+	# 	}
+	# 	complete_effect = {
+	# 		add_stability = -0.025
+	# 	}
+	# 	remove_effect = {
+	# 		if = {
+	# 			limit = {
+	# 				has_country_flag = NSM_sided_with_reformists_flag
+	# 			}
+	# 			add_power_balance_value = {
+	# 				id = NSM_faction_balance
+	# 				value = -0.1
+	# 			}
+	# 		}
+	# 		else_if = {
+	# 			limit = {
+	# 				has_country_flag = NSM_sided_with_hardliners_flag
+	# 			}
+	# 			add_power_balance_value = {
+	# 				id = NSM_faction_balance
+	# 				value = 0.1
+	# 			}
+	# 		}
+	# 	}
+	# }
+	# NSM_propagate_our_cause_decision = {
+	# 	icon = generic_propaganda_campaigns
+	# 	allowed = {
+	# 		original_tag = NSM
+	# 	}
+	# 	visible = {
+	# 		hidden_trigger = {
+	# 			has_completed_focus = NSM_distribute_media
+	# 			OR = {
+	# 				has_country_flag = NSM_sided_with_reformists_flag
+	# 				has_country_flag = NSM_sided_with_hardliners_flag
+	# 			}
+	# 			OR = {
+	# 				has_idea = NSM_our_cause_idea
+	# 				has_idea = NSM_our_cause_idea1
+	# 				has_idea = NSM_our_cause_idea2
+	# 				has_idea = NSM_our_cause_idea3
+	# 			}
+	# 		}
+	# 	}
+	# 	available = {
+	# 		if = {
+	# 			limit = {
+	# 				has_country_flag = NSM_sided_with_reformists_flag
+	# 			}
+	# 			set_temp_variable = {
+	# 				var = NSM_influence_ref_trigger_temp
+	# 				value = 30
+	# 			}
+	# 			NSM_has_influence_ref_greater_than_or_equals = yes
+	# 		}
+	# 		else_if = {
+	# 			limit = {
+	# 				has_country_flag = NSM_sided_with_hardliners_flag
+	# 			}
+	# 			set_temp_variable = {
+	# 				var = NSM_influence_har_trigger_temp
+	# 				value = 30
+	# 			}
+	# 			NSM_has_influence_har_greater_than_or_equals = yes
+	# 		}
+	# 	}
+	# 	ai_will_do = {
+	# 		factor = 10
+	# 	}
+	# 	cost = 50
+	# 	days_remove = 14
+	# 	cancel_if_not_visible = yes
+	# 	modifier = {
+	# 		political_power_gain = -0.05
+	# 	}
+	# 	complete_effect = {
+	# 		if = {
+	# 			limit = {
+	# 				has_country_flag = NSM_sided_with_reformists_flag
+	# 			}
+	# 			set_temp_variable = {
+	# 				var = NSM_influence_ref_var_temp
+	# 				value = -5
+	# 			}
+	# 			NSM_add_influence_ref = yes
+	# 		}
+	# 		else_if = {
+	# 			limit = {
+	# 				has_country_flag = NSM_sided_with_hardliners_flag
+	# 			}
+	# 			set_temp_variable = {
+	# 				var = NSM_influence_har_var_temp
+	# 				value = -5
+	# 			}
+	# 			NSM_add_influence_har = yes
+	# 		}
+	# 	}
+	# 	remove_effect = {
+	# 		NSM_our_cause_decrease = yes
+	# 	}
+	# }
+	NSM_national_socialist_propaganda_campaign_decision = {
+		icon = generic_propaganda_campaigns
+		cost = 25
+		days_remove = 175
+		days_re_enable = 175
+		cancel_if_not_visible = yes
+		allowed = {
+			original_tag = NSM
+		}
+		visible = {
+			hidden_trigger = {
+				has_completed_focus = NSM_America_Awakens
+			}
+		}
+		available = {
+			has_campaign_slot = yes
+		}
+		ai_will_do = {
+			factor = 2
+		}
+		modifier = {
+			national_socialist_drift = 0.1
+			party_popularity_stability_factor = 0.2
+		}
+		complete_effect = {
+			remove_campaign_slot = yes
+		}
+		remove_effect = {
+			add_campaign_slot = yes
+		}
+	}
+	NSM_government_stabilization_campaign_decision = {
+		icon = generic_propaganda_campaigns
+		allowed = {
+			original_tag = NSM
+		}
+		visible = {
+			hidden_trigger = {
+				has_completed_focus = NSM_America_Awakens
+			}
+		}
+		available = {
+			has_campaign_slot = yes
+		}
+		ai_will_do = {
+			factor = 2
+		}
+		cost = 50
+		days_remove = 175
+		days_re_enable = 175
+		cancel_if_not_visible = yes
+		modifier = {
+			stability_weekly = 0.003
+		}
+		complete_effect = {
+			remove_campaign_slot = yes
+		}
+		remove_effect = {
+			add_campaign_slot = yes
+		}
+	}
+	NSM_nationalist_populism_campaign_decision = {
+		icon = generic_propaganda_campaigns
+		cost = 0
+		days_remove = 175
+		days_re_enable = 175
+		cancel_if_not_visible = yes
+		allowed = {
+			original_tag = NSM
+		}
+		visible = {
+			hidden_trigger = {
+				has_completed_focus = NSM_America_Awakens
+			}
+		}
+		available = {
+			power_balance_value = {
+				id = NSM_faction_balance
+				value < -0.1
+			}
+			has_campaign_slot = yes
+		}
+		ai_will_do = {
+			factor = 2
+		}
+		modifier = {
+			political_power_gain = 0.5
+		}
+		complete_effect = {
+			add_power_balance_value = {
+				id = NSM_faction_balance
+				value = 0.1
+			}
+			remove_campaign_slot = yes
+		}
+		remove_effect = {
+			add_campaign_slot = yes
+		}
+	}
+	NSM_christianization_campaign_decision = {
+		icon = generic_propaganda_campaigns
+		cost = 0
+		days_remove = 175
+		days_re_enable = 175
+		cancel_if_not_visible = yes
+		allowed = {
+			original_tag = NSM
+		}
+		visible = {
+			hidden_trigger = {
+				has_completed_focus = NSM_The_Aryan_Truth
+			}
+		}
+		available = {
+			power_balance_value = {
+				id = NSM_faction_balance
+				value > 0.1
+			}
+			has_campaign_slot = yes
+		}
+		ai_will_do = {
+			factor = 2
+		}
+		modifier = {
+			political_power_gain = 0.1
+			society_development_monthly = 0.02
+		}
+		complete_effect = {
+			add_power_balance_value = {
+				id = NSM_faction_balance
+				value = -0.1
+			}
+			remove_campaign_slot = yes
+		}
+		remove_effect = {
+			add_campaign_slot = yes
+		}
+	}
+}
+NSM_new_american_military_category = {
+	NSM_behind_enemy_lines_campaign_decision = {
+		icon = generic_propaganda_campaigns
+		allowed = {
+			original_tag = NSM
+		}
+		visible = {
+			hidden_trigger = {
+				has_completed_focus = NSM_Under_the_Gun
+			}
+		}
+		available = {
+			has_war = yes
+			has_campaign_slot = yes
+		}
+		ai_will_do = {
+			factor = 1
+		}
+		days_remove = 175
+		days_re_enable = 175
+		cost = 0
+		custom_cost_text = NSM_behind_enemy_lines_campaign_decision_cost
+		custom_cost_trigger = {
+			NOT = {
+				command_power < 20
+			}
+		}
+		cancel_if_not_visible = yes
+		modifier = {
+			army_speed_factor = 0.1
+			org_loss_when_moving = -0.1
+			max_command_power = -20
+		}
+		complete_effect = {
+			remove_campaign_slot = yes
+			hidden_effect = {
+				add_command_power = -20
+			}
+		}
+		remove_effect = {
+			add_campaign_slot = yes
+		}
+	}
+	NSM_fighting_for_The_same_cause_campaign_decision = {
+		icon = generic_propaganda_campaigns
+		allowed = {
+			original_tag = NSM
+		}
+		visible = {
+			hidden_trigger = {
+				has_completed_focus = NSM_Relax_Recruitment
+			}
+		}
+		available = {
+			has_war = yes
+			has_campaign_slot = yes
+		}
+		ai_will_do = {
+			factor = 1
+		}
+		days_remove = 175
+		days_re_enable = 175
+		cost = 0
+		custom_cost_text = NSM_behind_enemy_lines_campaign_decision_cost
+		custom_cost_trigger = {
+			NOT = {
+				command_power < 20
+			}
+		}
+		cancel_if_not_visible = yes
+		modifier = {
+			stability_factor = 0.05
+			mobilization_speed = 0.1
+			recruitable_population = 0.1
+			non_core_manpower = 0.05
+		}
+		complete_effect = {
+			remove_campaign_slot = yes
+			hidden_effect = {
+				add_command_power = -20
+			}
+		}
+		remove_effect = {
+			add_campaign_slot = yes
+		}
+	}
+	NSM_more_men_more_soldiers_decision = {
+		icon = generic_propaganda_campaigns
+		allowed = {
+			original_tag = NSM
+		}
+		visible = {
+			hidden_trigger = {
+				has_completed_focus = NSM_Relax_Recruitment
+			}
+		}
+		available = {
+			has_war = yes
+			has_campaign_slot = yes
+		}
+		ai_will_do = {
+			factor = 1
+		}
+		days_remove = 175
+		days_re_enable = 175
+		cost = 0
+		custom_cost_text = NSM_behind_enemy_lines_campaign_decision_cost
+		custom_cost_trigger = {
+			NOT = {
+				command_power < 20
+			}
+		}
+		cancel_if_not_visible = yes
+		modifier = {
+			training_time_factor = -0.15
+			max_training = 0.1
+			conscription_factor = 0.1
+		}
+		complete_effect = {
+			remove_campaign_slot = yes
+			hidden_effect = {
+				add_command_power = -20
+			}
+		}
+		remove_effect = {
+			add_campaign_slot = yes
+		}
+	}
+	NSM_revanchist_reconquest_campaign_decision = {
+		icon = generic_propaganda_campaigns
+		allowed = {
+			original_tag = NSM
+		}
+		visible = {
+			hidden_trigger = {
+				has_completed_focus = NSM_Form_the_National_Salvation_Army
+			}
+		}
+		available = {
+			has_war = yes
+			has_campaign_slot = yes
+		}
+		ai_will_do = {
+			factor = 1
+		}
+		days_remove = 175
+		days_re_enable = 175
+		cost = 0
+		custom_cost_text = NSM_revanchist_reconquest_campaign_decision_cost
+		custom_cost_trigger = {
+			NOT = {
+				command_power < 20
+			}
+		}
+		cancel_if_not_visible = yes
+		modifier = {
+			breakthrough_factor = 0.1
+			max_command_power = -20
+		}
+		complete_effect = {
+			remove_campaign_slot = yes
+			hidden_effect = {
+				add_command_power = -20
+			}
+		}
+		remove_effect = {
+			add_campaign_slot = yes
+		}
+	}
+	NSM_focused_fire_campaign_decision = {
+		icon = generic_propaganda_campaigns
+		allowed = {
+			original_tag = NSM
+		}
+		visible = {
+			hidden_trigger = {
+				has_completed_focus = NSM_Form_the_National_Salvation_Army
+			}
+		}
+		available = {
+			has_war = yes
+			has_campaign_slot = yes
+		}
+		ai_will_do = {
+			factor = 1
+		}
+		days_remove = 175
+		days_re_enable = 175
+		cost = 0
+		custom_cost_text = NSM_revanchist_reconquest_campaign_decision_cost
+		custom_cost_trigger = {
+			NOT = {
+				command_power < 20
+			}
+		}
+		cancel_if_not_visible = yes
+		modifier = {
+			coordination_bonus = 0.1
+			army_attack_factor = 0.05
+			max_command_power = -20
+		}
+		complete_effect = {
+			remove_campaign_slot = yes
+			hidden_effect = {
+				add_command_power = -20
+			}
+		}
+		remove_effect = {
+			add_campaign_slot = yes
+		}
+	}
+	NSM_for_the_greater_good_campaign_decision = {
+		icon = generic_propaganda_campaigns
+		allowed = {
+			original_tag = NSM
+		}
+		visible = {
+			hidden_trigger = {
+				has_completed_focus = NSM_Pure_Whites_Only
+			}
+		}
+		available = {
+			has_war = yes
+			has_campaign_slot = yes
+		}
+		ai_will_do = {
+			factor = 1
+		}
+		days_remove = 175
+		days_re_enable = 175
+		cost = 0
+		custom_cost_text = NSM_for_the_greater_good_campaign_decision_cost
+		custom_cost_trigger = {
+			NOT = {
+				command_power < 20
+			}
+		}
+		cancel_if_not_visible = yes
+		modifier = {
+			war_support_weekly = 0.002
+			supply_consumption_factor = -0.1
+			pocket_penalty = -0.1
+			max_command_power = -20
+		}
+		complete_effect = {
+			remove_campaign_slot = yes
+			hidden_effect = {
+				add_command_power = -20
+			}
+		}
+		remove_effect = {
+			add_campaign_slot = yes
+		}
+	}
+	NSM_fanatic_warfare_campaign_decision = {
+		icon = generic_propaganda_campaigns
+		allowed = {
+			original_tag = NSM
+		}
+		visible = {
+			hidden_trigger = {
+				has_completed_focus = NSM_Pure_Whites_Only
+			}
+		}
+		available = {
+			has_war = yes
+			has_campaign_slot = yes
+		}
+		ai_will_do = {
+			factor = 1
+		}
+		days_remove = 175
+		days_re_enable = 175
+		cost = 0
+		custom_cost_text = NSM_fanatic_warfare_campaign_decision_cost
+		custom_cost_trigger = {
+			NOT = {
+				command_power < 20
+			}
+		}
+		cancel_if_not_visible = yes
+		modifier = {
+			army_morale_factor = 0.1
+			army_org_regain = 0.05
+			attrition = -0.05
+			max_command_power = -20
+		}
+		complete_effect = {
+			remove_campaign_slot = yes
+			hidden_effect = {
+				add_command_power = -20
+			}
+		}
+		remove_effect = {
+			add_campaign_slot = yes
+		}
+	}
+}
+
+NSM_national_front_category = {
+	NSM_national_conference_mission = {
+		icon = generic_political_discourse
+		priority = 10
+		days_mission_timeout = 28
+		is_good = no
+		cancel_if_not_visible = yes
+		fixed_random_seed = no
+		activation = {
+			always = no
+		}
+		available = {
+			hidden_trigger = {
+				always = no
+			}
+		}
+		cancel_trigger = {
+			OR = {
+				AND = {
+					country_exists = LOS
+					NOT = {
+						is_in_faction_with = LOS
+					}
+				}
+				AND = {
+					country_exists = CAC
+					NOT = {
+						is_in_faction_with = CAC
+					}
+				}
+				AND = {
+					country_exists = TNM
+					NOT = {
+						is_in_faction_with = TNM
+					}
+				}
+			}
+		}
+		cancel_effect = {
+			hidden_effect = {
+				clr_global_flag = NSM_national_conference_begun_global
+			}
+		}
+		timeout_effect = {
+			NSM_national_conference_effect = yes
+		}
+	}
+	NSM_instant_national_conference_debug_decision = {
+		icon = USA_american_reunification
+		priority = 10
+		#cancel_if_not_visible = yes
+		cost = 0
+		allowed = {
+			OR = {
+				original_tag = NSM
+				original_tag = PTF
+				original_tag = ATW
+			}
+		}
+		visible = {
+			is_ai = no
+			is_debug = yes
+			has_active_mission = NSM_national_conference_mission
+		}
+		ai_will_do = {
+			base = 1000
+		}
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: decision NSM_instant_national_conference_debug_decision complete_effect"
+			if = {
+				limit = {
+					is_faction_leader = no
+				}
+				set_faction_leader = yes
+			}
+			NSM_national_conference_effect = yes
+		}
+		remove_effect = {
+		}
+	}
+	NSM_invite_faction_to_coalition_decision = {
+		icon = generic_shaking_hands
+		fire_only_once = no
+		allowed = {
+			USA_is_nationalist_tag = yes
+		}
+		visible = {
+			USA_is_nationalist_tag = yes
+		}
+		target_root_trigger = {
+			is_in_faction = yes
+			is_faction_leader = yes
+		}
+		target_trigger = {
+			FROM = {
+				is_in_faction = no
+				is_subject = no
+				NOT = {
+					has_war_with = ROOT
+					tag = ROOT
+					has_country_flag = NSM_left_faction_flag
+				}
+				OR = {
+					has_government = national_socialist
+					has_government = nationalist
+					has_government = fascist
+					has_government = authoritarian_democrat
+				}
+				USA_is_nationalist_tag = yes
+				if = {
+					limit = {
+						tag = PTF
+					}
+					PTF = {
+						NOT = {
+							has_completed_focus = PTF_one_nation_one_solution
+						}
+					}
+				}
+				if = {
+					limit = {
+						tag = ATW
+					}
+					ATW = {
+						NOT = {
+							has_country_flag = ATW_national_conference_breaks_down_flag
+						}
+					}
+					ROOT = {
+						NOT = {
+							is_in_faction_with = LOS
+						}
+					}
+				}
+				if = {
+					limit = {
+						tag = LOS
+					}
+					ROOT = {
+						NOT = {
+							is_in_faction_with = ATW
+						}
+					}
+					ATW = {
+						OR = {
+							is_ai = yes
+							has_country_flag = ATW_national_conference_breaks_down_flag
+						}
+					}
+				}
+				if = {
+					limit = {
+						tag = ATW
+					}
+					NOT = {
+						has_country_flag = ATW_national_conference_breaks_down_flag
+					}
+					ROOT = {
+						NOT = {
+							is_in_faction_with = LOS
+						}
+					}
+				}
+				if = {
+					limit = {
+						tag = CAC
+					}
+					has_country_flag = CAC_unified_flag
+				}
+			}
+		}
+		available = {
+			OR = {
+				any_allied_country = {
+					any_controlled_state = {
+						any_neighbor_state = {
+							is_controlled_by = FROM
+						}
+					}
+				}
+				any_controlled_state = {
+					any_neighbor_state = {
+						is_controlled_by = FROM
+					}
+				}
+			}
+		}
+		ai_will_do = {
+			factor = 100
+		}
+		complete_effect = {
+			if = {
+				limit = {
+					FROM = {
+						OR = {
+							tag = NSM
+							tag = PTF
+							tag = ATW
+						}
+					}
+				}
+				set_major = yes
+			}
+			FROM = {
+				set_country_flag = National_Front_Member
+			}
+			add_FROM_to_coalition = yes
+		}
+	}
+	NSM_assist_faction = {
+		icon = generic_industry
+		fire_only_once = no
+		days_re_enable = 175
+		custom_cost_text = NSM_attack_APA_decision_cost
+		custom_cost_trigger = {
+			NOT = {
+				command_power < 10
+			}
+		}
+		allowed = {
+			USA_is_nationalist_tag = yes
+		}
+		visible = {
+			is_in_faction = yes
+			is_faction_leader = yes
+			NOT = {
+				has_country_flag = NSM_national_conference_flag
+			}
+		}
+		target_root_trigger = {
+			is_in_faction = yes
+			is_faction_leader = yes
+		}
+		target_trigger = {
+			FROM = {
+				is_in_faction = no
+				is_subject = no
+				has_war = yes
+				NOT = {
+					has_war_with = NSM
+					has_idea = NSM_assistance_idea
+					tag = ROOT
+				}
+				USA_is_nationalist_tag = yes
+				OR = {
+					has_government = national_socialist
+					has_government = nationalist
+					has_government = fascist
+					has_government = authoritarian_democrat
+				}
+				if = {
+					limit = {
+						tag = CAC
+					}
+					has_country_flag = CAC_unified_flag
+				}
+			}
+		}
+		available = {
+		}
+		ai_will_do = {
+			factor = 100
+		}
+		complete_effect = {
+			FROM = {
+				add_timed_idea = {
+					idea = NSM_assistance_idea
+					days = 70
+				}
+			}
+			hidden_effect = {
+				add_command_power = -10
+			}
+		}
+	}
+	# NSM_stage_uprising_in_state_decision = {
+	# 	icon = generic_civil_support
+	# 	allowed = {
+	# 		original_tag = NSM
+	# 	}
+	# 	available = {
+	# 		NOT = {
+	# 			political_power_daily < 0.1
+	# 		}
+	# 		any_other_country = {
+	# 			controls_state = FROM
+	# 			has_war_with = ROOT
+	# 		}
+	# 	}
+	# 	state_target = yes
+	# 	on_map_mode = map_only
+	# 	#target_array = controlled_states
+	# 	target_root_trigger = {
+	# 		has_completed_focus = NSM_form_the_national_front
+	# 	}
+	# 	target_trigger = {
+	# 		FROM = {
+	# 			is_claimed_by = ROOT
+	# 			NOT = {
+	# 				is_controlled_by = ROOT
+	# 			}
+	# 			OR = {
+	# 				is_island_state = yes
+	# 				any_neighbor_state = {
+	# 					is_controlled_by = ROOT
+	# 				}
+	# 			}
+	# 			OR = {
+	# 				AND = {
+	# 					OR = {
+	# 						is_controlled_by = USC
+	# 						is_controlled_by = USB
+	# 					}
+	# 					ROOT = {
+	# 						has_completed_focus = NSM_contact_with_cells
+	# 					}
+	# 				}
+	# 			}
+	# 		}
+	# 	}
+	# 	ai_will_do = {
+	# 		factor = 3
+	# 	}
+	# 	cost = 35
+	# 	fire_only_once = no
+	# 	days_remove = 35
+	# 	modifier = {
+	# 		political_power_gain = -0.05
+	# 	}
+	# 	visible = {
+	# 		original_tag = NSM
+	# 	}
+	# 	complete_effect = {
+	# 	}
+	# 	remove_effect = {
+	# 		custom_effect_tooltip = NSM_stage_uprising_in_state_tooltip
+	# 		hidden_effect = {
+	# 			FROM = {
+	# 				create_unit = {
+	# 					division = "division_template = \"Volunteer Militia\" start_experience_factor = 0.2"
+	# 					allow_spawning_on_enemy_provs = yes
+	# 					owner = ROOT
+	# 				}
+	# 				create_unit = {
+	# 					division = "division_template = \"Volunteer Militia\" start_experience_factor = 0.2"
+	# 					allow_spawning_on_enemy_provs = yes
+	# 					owner = ROOT
+	# 				}
+	# 			}
+	# 		}
+	# 	}
+	# }
+}
+
+NSM_ministry_of_patriotism_category = {
+	NSM_enforce_compliance_decision = {
+		icon = generic_arrest
+		allowed = {
+			original_tag = NSM
+		}
+		visible = {
+			OR = {
+				has_country_flag = NSM_sided_with_reformists_flag
+				has_country_flag = NSM_sided_with_hardliners_flag
+			}
+		}
+		available = {
+			any_controlled_state = {
+				is_claimed_by = ROOT
+				NOT = {
+					is_core_of = ROOT
+				}
+			}
+			if = {
+				limit = {
+					has_country_flag = NSM_sided_with_reformists_flag
+				}
+				set_temp_variable = {
+					var = NSM_influence_ref_trigger_temp
+					value = 5
+				}
+				NSM_has_influence_ref_greater_than_or_equals = yes
+			}
+			else_if = {
+				limit = {
+					has_country_flag = NSM_sided_with_hardliners_flag
+				}
+				set_temp_variable = {
+					var = NSM_influence_har_trigger_temp
+					value = 5
+				}
+				NSM_has_influence_har_greater_than_or_equals = yes
+			}
+		}
+		ai_will_do = {
+			factor = 2
+		}
+		cost = 0
+		days_remove = 70
+		days_re_enable = 7
+		cancel_if_not_visible = yes
+		modifier = {
+			compliance_gain = 0.05
+		}
+		complete_effect = {
+			if = {
+				limit = {
+					has_country_flag = NSM_sided_with_reformists_flag
+				}
+				set_temp_variable = {
+					var = NSM_influence_ref_var_temp
+					value = -5
+				}
+				NSM_add_influence_ref = yes
+			}
+			else_if = {
+				limit = {
+					has_country_flag = NSM_sided_with_hardliners_flag
+				}
+				set_temp_variable = {
+					var = NSM_influence_har_var_temp
+					value = -5
+				}
+				NSM_add_influence_har = yes
+			}
+		}
+		remove_effect = {
+		}
+	}
+	# NSM_investigate_plot_in_lansing = {
+	# 	icon = generic_political_rally
+	# 	allowed = {
+	# 		original_tag = NSM
+	# 	}
+	# 	visible = {
+	# 		has_country_flag = NSM_investigate_flag
+	# 	}
+	# 	available = {
+	# 	}
+	# 	ai_will_do = {
+	# 		factor = 5
+	# 	}
+	# 	cost = 15
+	# 	days_remove = 30
+	# 	cancel_if_not_visible = yes
+	# 	modifier = {
+	# 	}
+	# 	complete_effect = {
+	# 		hidden_effect = {
+	# 			random_list = {
+	# 				3 = {
+	# 					country_event = {
+	# 						id = nsm.5
+	# 						days = 1
+	# 					}
+	# 					modifier = {
+	# 						add = 2
+	# 						if = {
+	# 							limit = {
+	# 								has_country_flag = NSM_sided_with_reformists_flag
+	# 								check_variable = {
+	# 									var = NSM_influence_ref_var_temp
+	# 									value > 60
+	# 								}
+	# 							}
+	# 						}
+	# 					}
+	# 					modifier = {
+	# 						add = 2
+	# 						if = {
+	# 							limit = {
+	# 								has_country_flag = NSM_sided_with_hardliners_flag
+	# 								check_variable = {
+	# 									var = NSM_influence_har_var_temp
+	# 									value > 60
+	# 								}
+	# 							}
+	# 						}
+	# 					}
+	# 				}
+	# 				4 = {
+	# 					country_event = {
+	# 						id = nsm.12
+	# 						days = 1
+	# 					}
+	# 					modifier = {
+	# 						add = 1
+	# 						if = {
+	# 							limit = {
+	# 								has_country_flag = NSM_sided_with_reformists_flag
+	# 								check_variable = {
+	# 									var = NSM_influence_ref_var_temp
+	# 									value < 60
+	# 								}
+	# 							}
+	# 						}
+	# 					}
+	# 					modifier = {
+	# 						add = 1
+	# 						if = {
+	# 							limit = {
+	# 								has_country_flag = NSM_sided_with_hardliners_flag
+	# 								check_variable = {
+	# 									var = NSM_influence_har_var_temp
+	# 									value < 60
+	# 								}
+	# 							}
+	# 						}
+	# 					}
+	# 				}
+	# 			}
+	# 		}
+	# 	}
+	# 	remove_effect = {
+	# 	}
+	# }
+}
+
+NSM_new_american_economics_category = {
+	NSM_industrial_renovation_decision = {
+		icon = generic_construction
+		allowed = {
+			tag = NSM
+		}
+		cost = 50
+		fire_only_once = no
+		days_remove = 35
+		days_re_enable = 35
+		available = {
+			any_state = {
+				NOT = {
+					has_state_flag = industrial_renovation_state
+				}
+				free_building_slots = {
+					building = infrastructure
+					size < 1
+				}
+				is_fully_controlled_by = ROOT
+				is_owned_by = ROOT
+			}
+		}
+		visible = {
+			#has_country_flag = unlock_industrial_renovation_decision
+		}
+		remove_effect = {
+			random_owned_state = {
+				limit = {
+					NOT = {
+						has_state_flag = industrial_renovation_state
+					}
+					free_building_slots = {
+						building = infrastructure
+						size < 1
+					}
+					is_fully_controlled_by = ROOT
+					is_owned_by = ROOT
+				}
+				add_extra_state_shared_building_slots = 1
+				set_state_flag = industrial_renovation_state
+			}
+		}
+		ai_will_do = {
+			factor = 1
+		}
+	}
+	NSM_civilian_factory_commission_decision = {
+		icon = generic_construction
+		allowed = {
+			tag = NSM
+		}
+		cost = 100
+		fire_only_once = no
+		days_remove = 70
+		days_re_enable = 70
+		available = {
+			any_state = {
+				NOT = {
+					has_state_flag = factory_comission_state
+				}
+				is_fully_controlled_by = ROOT
+				is_owned_by = ROOT
+				free_building_slots = {
+					building = industrial_complex
+					size > 1
+					include_locked = no
+				}
+			}
+		}
+		remove_effect = {
+			random_owned_state = {
+				limit = {
+					NOT = {
+						has_state_flag = factory_comission_state
+					}
+					is_fully_controlled_by = ROOT
+					is_owned_by = ROOT
+					free_building_slots = {
+						building = industrial_complex
+						size > 1
+						include_locked = no
+					}
+				}
+				add_building_construction = {
+					type = industrial_complex
+					level = 1
+					instant_build = yes
+				}
+				set_state_flag = factory_comission_state
+			}
+		}
+		ai_will_do = {
+			factor = 1
+		}
+	}
+	NSM_military_factory_commission_decision = {
+		icon = generic_construction
+		allowed = {
+			tag = NSM
+		}
+		cost = 100
+		fire_only_once = no
+		days_remove = 70
+		days_re_enable = 70
+		available = {
+			any_state = {
+				NOT = {
+					has_state_flag = factory_comission_state
+				}
+				is_fully_controlled_by = ROOT
+				is_owned_by = ROOT
+				free_building_slots = {
+					building = arms_factory
+					size > 1
+					include_locked = no
+				}
+			}
+		}
+		ai_will_do = {
+			factor = 1
+		}
+		remove_effect = {
+			random_owned_state = {
+				limit = {
+					NOT = {
+						has_state_flag = factory_comission_state
+					}
+					is_fully_controlled_by = ROOT
+					is_owned_by = ROOT
+					free_building_slots = {
+						building = arms_factory
+						size > 1
+						include_locked = no
+					}
+				}
+				add_building_construction = {
+					type = arms_factory
+					level = 1
+					instant_build = yes
+				}
+				set_state_flag = factory_comission_state
+			}
+		}
+	}
+	# NSM_upgrade_autarky_decision = {
+	# 	icon = generic_construction
+	# 	allowed = {
+	# 		tag = NSM
+	# 	}
+	# 	cost = 25
+	# 	fire_only_once = yes
+	# 	visible = {
+	# 		hidden_trigger = {
+	# 			has_completed_focus = NSM_revive_autarky
+	# 			has_idea = NSM_autarky_idea
+	# 		}
+	# 	}
+	# 	available = {
+	# 		num_of_controlled_states > 5
+	# 	}
+	# 	ai_will_do = {
+	# 		factor = 100
+	# 	}
+	# 	complete_effect = {
+	# 		swap_ideas = {
+	# 			remove_idea = NSM_autarky_idea
+	# 			add_idea = NSM_autarky_idea1
+	# 		}
+	# 	}
+	# }
+	NSM_financial_nationalism_campaign_decision = {
+		icon = generic_propaganda_campaigns
+		allowed = {
+			original_tag = NSM
+		}
+		visible = {
+			hidden_trigger = {
+				has_completed_focus = NSM_National_Capitalism
+			}
+		}
+		available = {
+			has_campaign_slot = yes
+		}
+		ai_will_do = {
+			factor = 1
+		}
+		cost = 50
+		days_remove = 175
+		days_re_enable = 175
+		cancel_if_not_visible = yes
+		modifier = {
+			production_speed_industrial_complex_factor = 0.15
+			production_speed_infrastructure_factor = 0.15
+		}
+		complete_effect = {
+			remove_campaign_slot = yes
+		}
+		remove_effect = {
+			add_campaign_slot = yes
+		}
+	}
+	NSM_patriotic_laboring_campaign_decision = {
+		icon = generic_propaganda_campaigns
+		allowed = {
+			original_tag = NSM
+		}
+		visible = {
+			hidden_trigger = {
+				has_completed_focus = NSM_embrace_corporatism
+			}
+		}
+		available = {
+			has_campaign_slot = yes
+		}
+		ai_will_do = {
+			factor = 1
+		}
+		cost = 50
+		days_remove = 175
+		days_re_enable = 175
+		cancel_if_not_visible = yes
+		modifier = {
+			production_speed_arms_factory_factor = 0.1
+			production_speed_dockyard_factor = 0.1
+		}
+		complete_effect = {
+			remove_campaign_slot = yes
+		}
+		remove_effect = {
+			add_campaign_slot = yes
+		}
+	}
+	NSM_man_the_factories_campaign_decision = {
+		icon = generic_propaganda_campaigns
+		allowed = {
+			original_tag = NSM
+		}
+		visible = {
+			hidden_trigger = {
+				has_completed_focus = NSM_man_the_factories
+			}
+		}
+		available = {
+			has_campaign_slot = yes
+		}
+		ai_will_do = {
+			factor = 1
+		}
+		cost = 25
+		days_remove = 175
+		days_re_enable = 175
+		cancel_if_not_visible = yes
+		modifier = {
+			conscription_factor = -0.05
+			production_factory_efficiency_gain_factor = 0.1
+			industrial_development_monthly = 0.015
+		}
+		complete_effect = {
+			remove_campaign_slot = yes
+		}
+		remove_effect = {
+			add_campaign_slot = yes
+		}
+	}
+	NSM_curb_hedonism_campaign_decision = {
+		icon = generic_propaganda_campaigns
+		allowed = {
+			original_tag = NSM
+		}
+		visible = {
+			hidden_trigger = {
+				has_completed_focus = NSM_Four_Year_Plan
+			}
+		}
+		available = {
+			has_campaign_slot = yes
+		}
+		ai_will_do = {
+			factor = 1
+		}
+		cost = 0
+		days_remove = 175
+		days_re_enable = 175
+		cancel_if_not_visible = yes
+		custom_cost_text = NSM_curb_hedonism_campaign_decision_cost
+		custom_cost_trigger = {
+			NOT = {
+				has_stability < 0.05
+			}
+		}
+		modifier = {
+			consumer_goods_factor = -0.15
+			personal_value_factor = -0.05
+			industrial_development_monthly = 0.02
+		}
+		complete_effect = {
+			remove_campaign_slot = yes
+			hidden_effect = {
+				add_stability = -0.05
+			}
+		}
+		remove_effect = {
+			add_campaign_slot = yes
+		}
+	}
+	NSM_knowledge_is_power_campaign_decision = {
+		icon = generic_propaganda_campaigns
+		allowed = {
+			original_tag = NSM
+		}
+		visible = {
+			hidden_trigger = {
+				has_completed_focus = NSM_National_Capitalism
+			}
+		}
+		available = {
+			has_campaign_slot = yes
+		}
+		ai_will_do = {
+			factor = 1
+		}
+		cost = 50
+		days_remove = 175
+		days_re_enable = 175
+		cancel_if_not_visible = yes
+		modifier = {
+			production_factory_max_efficiency_factor = 0.05
+			line_change_production_efficiency_factor = 0.1
+			research_speed_factor = 0.05
+		}
+		complete_effect = {
+			remove_campaign_slot = yes
+		}
+		remove_effect = {
+			add_campaign_slot = yes
+		}
+	}
+	NSM_hit_of_the_hammer_campaign_decision = {
+		icon = generic_propaganda_campaigns
+		allowed = {
+			original_tag = NSM
+		}
+		visible = {
+			hidden_trigger = {
+				has_completed_focus = NSM_embrace_corporatism
+			}
+		}
+		available = {
+			has_campaign_slot = yes
+		}
+		ai_will_do = {
+			factor = 1
+		}
+		cost = 50
+		days_remove = 175
+		days_re_enable = 175
+		cancel_if_not_visible = yes
+		modifier = {
+			industrial_capacity_factory = 0.05
+			industrial_capacity_dockyard = 0.05
+		}
+		complete_effect = {
+			remove_campaign_slot = yes
+		}
+		remove_effect = {
+			add_campaign_slot = yes
+		}
+	}
+	NSM_work_will_set_you_free_campaign_decision = {
+		icon = generic_propaganda_campaigns
+		allowed = {
+			original_tag = NSM
+		}
+		visible = {
+			hidden_trigger = {
+				has_completed_focus = NSM_Four_Year_Plan
+			}
+		}
+		available = {
+			has_campaign_slot = yes
+		}
+		ai_will_do = {
+			factor = 1
+		}
+		cost = 25
+		days_remove = 175
+		days_re_enable = 175
+		cancel_if_not_visible = yes
+		modifier = {
+			monthly_population = -0.5
+			industrial_capacity_factory = 0.1
+			industrial_capacity_dockyard = 0.1
+			production_speed_buildings_factor = 0.1
+		}
+		complete_effect = {
+			remove_campaign_slot = yes
+		}
+		remove_effect = {
+			add_campaign_slot = yes
+		}
+	}
+}
+
+debug_decisions = {
+	NSM_annex_michigan_debug_decision = {
+		icon = generic_ignite_civil_war
+		allowed = {
+			original_tag = NSM
+		}
+		visible = {
+			all_other_country = {
+				if = {
+					limit = {
+						OR = {
+							tag = HUM
+							tag = NSM
+							tag = HWM
+							tag = BMF
+							tag = MIM
+							NOT = {
+								tag = ROOT
+							}
+						}
+					}
+					exists = yes
+				}
+			}
+		}
+		available = {
+		}
+		ai_will_do = {
+			base = 0
+		}
+		complete_effect = {
+			NSM_local_theatre_win_debug_effect = yes
+		}
+		remove_effect = {
+		}
+	}
+}

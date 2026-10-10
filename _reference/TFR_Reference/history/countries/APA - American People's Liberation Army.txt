@@ -1,0 +1,1280 @@
+﻿capital = 932
+#oob = ""
+set_convoys = 60
+set_stability = 0.6
+set_war_support = 0.4
+set_country_flag = shithole_country
+set_variable = {
+	var = Diplomats_Var
+	value = 1
+}
+
+##### variables #####
+set_variable = {
+	var = PRC_influence_var
+	value = 0.15
+}
+
+#set_variable = {
+#	var = APA_Public_Opinion_China
+#	value = 0.70
+#}
+set_technology = {
+	## Infantry ##
+	
+	infantry_weapons1 = 1
+	infantry_weapons2 = 1
+	infantry_weapons3 = 1
+	motorised_infantry = 1
+	infantry_rifle_upgrade = 1
+	infantry_rifle_upgrade2 = 1
+	infantry_rifle_upgrade3 = 1
+	upgraded_infantry_weapons1 = 1
+	support_weapons = 1
+	support_weapons2 = 1
+	support_weapons3 = 1
+	night_vision = 1
+	night_vision2 = 1
+	night_vision3 = 1
+	body_armor = 1
+	body_armor2 = 1
+	body_armor3 = 1
+	camouflage = 1
+	camouflage2 = 1
+	marines = 1
+	tech_mountaineers = 1
+	paratroopers = 1
+	tech_rangers = 1
+	basic_train = 1
+	mechanised_infantry1 = 1
+	mechanised_infantry2 = 1
+	mechanised_infantry3 = 1
+	light_mechanized_infantry1 = 1
+	light_mechanized_infantry2 = 1
+	## Support Companies ##
+	tech_support = 1
+	tech_engineers = 1
+	tech_recon = 1
+	tech_field_hospital = 1
+	tech_logistics_company = 1
+	tech_military_police = 1
+	tech_signal_company = 1
+	tech_maintenance_company = 1
+	basic_railway = 1
+	forward_operating_base = 1
+	## Artillery ##
+	gw_artillery = 1
+	artillery1 = 1
+	artillery2 = 1
+	interwar_antitank = 1
+	interwar_antiair = 1
+	rocket_artillery = 1
+	interwar_artillery = 1
+	sp_artillery1 = 1
+	self_propelled_aa1 = 1
+	antitank1 = 1
+	antitank2 = 1
+	antiair1 = 1
+	antiair2 = 1
+	antiair3 = 1
+	## Air ##
+	attack_helicopter_1 = 1
+	utility_helicopter_1 = 1
+	## Engineering ##
+	electronic_mechanical_engineering = 1
+	radio = 1
+	power_plants = 1
+	nuclear_reactors = 1
+	#nukes = 1
+	## Industry ##
+	basic_machine_tools = 1
+	fuel_silos = 1
+	fuel_refining = 1
+}
+
+if = {
+	limit = {
+		NOT = {
+			has_dlc = "Man the Guns"
+		}
+	}
+	set_technology = {
+		early_destroyer = 1
+		early_light_cruiser = 1
+		basic_light_cruiser = 1
+		early_heavy_cruiser = 1
+		basic_heavy_cruiser = 1
+		improved_heavy_cruiser = 1
+		early_battleship = 1
+		basic_battleship = 1
+		early_carrier = 1
+		basic_carrier = 1
+		early_submarine = 1
+		basic_submarine = 1
+		transport = 1
+	}
+}
+
+if = {
+	limit = {
+		has_dlc = "Man the Guns"
+	}
+	set_technology = {
+		early_ship_hull_light = 1
+		early_ship_hull_cruiser = 1
+		basic_ship_hull_cruiser = 1
+		improved_ship_hull_cruiser = 1
+		early_ship_hull_heavy = 1
+		basic_ship_hull_heavy = 1
+		early_ship_hull_carrier = 1
+		basic_ship_hull_carrier = 1
+		early_ship_hull_submarine = 1
+		basic_ship_hull_submarine = 1
+		smoke_generator = 1
+		sonar = 1
+		basic_depth_charges = 1
+		improved_airplane_launcher = 1
+		basic_cruiser_armor_scheme = 1
+		basic_heavy_armor_scheme = 1
+		basic_torpedo = 1
+		basic_battery = 1
+		basic_light_battery = 1
+		basic_medium_battery = 1
+		basic_heavy_battery = 1
+		#basic_secondary_battery = 1
+		mtg_transport = 1
+		basic_naval_mines = 1
+		submarine_mine_laying = 1
+	}
+}
+
+if = {
+	limit = {
+		NOT = {
+			has_dlc = "No Step Back"
+		}
+	}
+	set_technology = {
+		main_battle_tank1 = 1
+		main_battle_tank2 = 1
+		main_battle_tank3 = 1
+		main_battle_tank4 = 1
+		light_tank1 = 1
+		light_tank2 = 1
+		amphibious_tank1 = 1
+		amphibious_mechanized_infantry1 = 1
+	}
+}
+
+if = {
+	limit = {
+		has_dlc = "No Step Back"
+	}
+	set_technology = {
+		gwtank_chassis = 1
+		basic_light_tank_chassis = 1
+		basic_medium_tank_chassis = 1
+		improved_light_tank_chassis = 1
+		improved_medium_tank_chassis = 1
+		engine_tech_1 = 1
+		amphibious_tank_chassis = 1
+		amphibious_mechanized_infantry1 = 1
+		apds_tech = 1
+		heat_tech = 1
+		apfsds_tech = 1
+		heatfs_tech = 1
+		legacy_armor_designs = 1
+		engine_tech_2 = 1
+	}
+}
+
+if = {
+	limit = {
+		has_dlc = "By Blood Alone"
+	}
+	set_technology = {
+		aa_lmg = 1
+		aa_cannon_1 = 1
+		aa_hmg = 1
+		engines_1 = 1
+		engines_2 = 1
+		early_bombs = 1
+		guided_bombs = 1
+		aircraft_construction = 1
+		survivability_studies = 1
+		iw_small_airframe = 1
+		basic_small_airframe = 1
+		iw_medium_airframe = 1
+		basic_medium_airframe = 1
+		iw_large_airframe = 1
+		basic_large_airframe = 1
+	}
+	else = {
+		set_technology = {
+			CAS1 = 1
+			CAS2 = 1
+			cv_CAS1 = 1
+			cv_CAS2 = 1
+			fighter1 = 1
+			fighter2 = 1
+			fighter3 = 1
+			cv_fighter1 = 1
+			cv_fighter2 = 1
+			cv_fighter3 = 1
+			naval_bomber1 = 1
+			naval_bomber2 = 1
+			naval_bomber3 = 1
+			cv_naval_bomber1 = 1
+			cv_naval_bomber2 = 1
+			cv_naval_bomber3 = 1
+			strategic_bomber1 = 1
+			strategic_bomber2 = 1
+			tactical_bomber1 = 1
+			scout_plane1 = 1
+			transport_plane2 = 1
+		}
+	}
+}
+
+#Country Flags
+set_country_flag = APA_jacobin_enable_flag
+set_country_flag = APA_octoberist_enable_flag
+set_country_flag = APA_neosocialist_enable_flag
+set_country_flag = APA_anarchist_enable_flag
+set_country_flag = APA_reactionary_enable_flag
+#American Workers' Congress Dynamic Modifier, This Is Where Inital Values Are Set
+set_variable = {
+	var = APA_politics_political_power_gain_dynamic_var
+	value = -0.2
+}
+
+set_variable = {
+	var = APA_politics_power_balance_weekly_dynamic_var
+	value = 0
+}
+
+set_variable = {
+	var = APA_politics_stability_factor_dynamic_var
+	value = -0.2
+}
+
+set_variable = {
+	var = APA_politics_stability_weekly_dynamic_var
+	value = 0
+}
+
+set_variable = {
+	var = APA_politics_war_stability_factor_dynamic_var
+	value = 0
+}
+
+set_variable = {
+	var = APA_politics_party_popularity_stability_factor_dynamic_var
+	value = 0
+}
+
+set_variable = {
+	var = APA_politics_war_support_factor_dynamic_var
+	value = -0.1
+}
+
+set_variable = {
+	var = APA_politics_war_support_weekly_dynamic_var
+	value = 0
+}
+
+set_variable = {
+	var = APA_politics_surrender_limit_dynamic_var
+	value = -0.2
+}
+
+set_variable = {
+	var = APA_politics_research_speed_factor_dynamic_var
+	value = 0
+}
+
+set_variable = {
+	var = APA_politics_production_factory_efficiency_gain_factor_dynamic_var
+	value = 0
+}
+
+set_variable = {
+	var = APA_politics_production_speed_buildings_factor_dynamic_var
+	value = 0
+}
+
+set_variable = {
+	var = APA_politics_production_factory_max_efficiency_factor_dynamic_var
+	value = 0
+}
+
+set_variable = {
+	var = APA_politics_operative_slot_dynamic_var
+	value = 0
+}
+
+set_variable = {
+	var = APA_politics_resistance_target_dynamic_var
+	value = 0
+}
+
+set_variable = {
+	var = APA_politics_compliance_growth_dynamic_var
+	value = 0
+}
+
+set_variable = {
+	var = APA_politics_resistance_growth_dynamic_var
+	value = 0
+}
+
+set_variable = {
+	var = APA_politics_resistance_decay_dynamic_var
+	value = 0
+}
+
+set_variable = {
+	var = APA_politics_required_garrison_factor_dynamic_var
+	value = 0
+}
+
+set_variable = {
+	var = APA_politics_resistance_damage_to_garrison_dynamic_var
+	value = 0
+}
+
+set_variable = {
+	var = APA_politics_totalitarian_socialist_drift_dynamic_var
+	value = 0
+}
+
+set_variable = {
+	var = APA_politics_communist_drift_dynamic_var
+	value = 0
+}
+
+set_variable = {
+	var = APA_politics_libertarian_socialist_drift_dynamic_var
+	value = 0
+}
+
+set_variable = {
+	var = APA_politics_social_democrat_drift_dynamic_var
+	value = 0
+}
+
+set_variable = {
+	var = APA_politics_authoritarian_democrat_drift_dynamic_var
+	value = 0
+}
+
+set_variable = {
+	var = APA_politics_foreign_minister_cost_factor_dynamic_var
+	value = 0
+}
+
+set_variable = {
+	var = APA_politics_economic_minister_cost_factor_dynamic_var
+	value = 0
+}
+
+set_variable = {
+	var = APA_politics_interior_minister_cost_dynamic_var
+	value = 0
+}
+
+set_variable = {
+	var = APA_politics_intelligence_minister_minister_cost_dynamic_var
+	value = 0
+}
+
+set_variable = {
+	var = APA_politics_society_development_monthly_dynamic_var
+	value = 0
+}
+
+set_variable = {
+	var = APA_politics_poverty_development_monthly_dynamic_var
+	value = 0
+}
+
+set_variable = {
+	var = APA_politics_industrial_development_monthly_dynamic_var
+	value = 0
+}
+
+#Revolution Progress Dynamic Modifier, This Is Where Inital Values Are Set
+set_variable = {
+	var = APA_revolution_political_power_gain_dynamic_var
+	value = 0
+}
+
+set_variable = {
+	var = APA_revolution_stability_factor_dynamic_var
+	value = 0
+}
+
+set_variable = {
+	var = APA_revolution_war_support_factor_dynamic_var
+	value = 0
+}
+
+set_variable = {
+	var = APA_revolution_production_factory_max_efficiency_factor_dynamic_var
+	value = 0
+}
+
+set_variable = {
+	var = APA_revolution_production_speed_buildings_factor_dynamic_var
+	value = 0
+}
+
+set_variable = {
+	var = APA_revolution_industrial_capacity_factory_dynamic_var
+	value = 0
+}
+
+set_variable = {
+	var = APA_revolution_industrial_capacity_dockyard_dynamic_var
+	value = 0
+}
+
+set_variable = {
+	var = APA_revolution_research_speed_factor_dynamic_var
+	value = 0
+}
+
+set_variable = {
+	var = APA_revolution_resistance_target_dynamic_var
+	value = 0
+}
+
+set_variable = {
+	var = APA_revolution_command_power_gain_mult_dynamic_var
+	value = 0
+}
+
+set_variable = {
+	var = APA_revolution_army_morale_factor_dynamic_var
+	value = 0
+}
+
+set_variable = {
+	var = APA_revolution_academic_development_monthly_dynamic_var
+	value = 0
+}
+
+set_variable = {
+	var = APA_revolution_poverty_development_monthly_dynamic_var
+	value = 0
+}
+
+set_variable = {
+	var = APA_revolution_military_development_monthly_dynamic_var
+	value = 0
+}
+
+set_variable = {
+	var = APA_revolution_society_development_monthly_dynamic_var
+	value = 0
+}
+
+#Drug Trade Dynamic Modifier, This Is Where Inital Values Are Set
+set_variable = {
+	var = APA_drugs_political_power_gain_dynamic_var
+	value = 0
+}
+
+set_variable = {
+	var = APA_drugs_stability_factor_dynamic_var
+	value = 0
+}
+
+set_variable = {
+	var = APA_drugs_stability_weekly_dynamic_var
+	value = 0
+}
+
+set_variable = {
+	var = APA_drugs_war_support_factor_dynamic_var
+	value = 0
+}
+
+set_variable = {
+	var = APA_drugs_war_support_weekly_dynamic_var
+	value = 0
+}
+
+set_variable = {
+	var = APA_drugs_consumer_goods_factor_dynamic_var
+	value = 0
+}
+
+set_variable = {
+	var = APA_drugs_compliance_growth_dynamic_var
+	value = 0
+}
+
+set_variable = {
+	var = APA_drugs_resistance_growth_dynamic_var
+	value = 0
+}
+
+set_variable = {
+	var = APA_drugs_resistance_decay_dynamic_var
+	value = 0
+}
+
+set_variable = {
+	var = APA_drugs_production_factory_max_efficiency_factor_dynamic_var
+	value = 0
+}
+
+set_variable = {
+	var = APA_drugs_production_factory_efficiency_gain_factor_dynamic_var
+	value = 0
+}
+
+set_variable = {
+	var = APA_drugs_production_speed_buildings_factor_dynamic_var
+	value = 0
+}
+
+set_variable = {
+	var = APA_drugs_industrial_capacity_factory_dynamic_var
+	value = 0
+}
+
+set_variable = {
+	var = APA_drugs_industrial_capacity_dockyard_dynamic_var
+	value = 0
+}
+
+set_variable = {
+	var = APA_drugs_industrial_development_monthly_dynamic_var
+	value = -0.01
+}
+
+set_variable = {
+	var = APA_drugs_poverty_development_monthly_dynamic_var
+	value = -0.01
+}
+
+set_variable = {
+	var = APA_drugs_farming_development_monthly_dynamic_var
+	value = -0.01
+}
+
+#Economic Dynamic Modifier, This Is Where Inital Values Are Set
+set_variable = {
+	var = APA_economy_political_power_gain_dynamic_var
+	value = 0
+}
+
+set_variable = {
+	var = APA_economy_stability_factor_dynamic_var
+	value = 0
+}
+
+set_variable = {
+	var = APA_economy_stability_weekly_dynamic_var
+	value = 0
+}
+
+set_variable = {
+	var = APA_economy_war_support_factor_dynamic_var
+	value = 0
+}
+
+set_variable = {
+	var = APA_economy_war_support_weekly_dynamic_var
+	value = 0
+}
+
+set_variable = {
+	var = APA_economy_consumer_goods_factor_dynamic_var
+	value = 0
+}
+
+set_variable = {
+	var = APA_economy_local_resources_factor_dynamic_var
+	value = 0
+}
+
+set_variable = {
+	var = APA_economy_global_building_slots_factor_dynamic_var
+	value = 0
+}
+
+set_variable = {
+	var = APA_economy_research_speed_factor_dynamic_var
+	value = 0
+}
+
+set_variable = {
+	var = APA_economy_economy_cost_factor_dynamic_var
+	value = 0
+}
+
+set_variable = {
+	var = APA_economy_trade_laws_cost_factor_dynamic_var
+	value = 0
+}
+
+set_variable = {
+	var = APA_economy_tax_laws_cost_factor_dynamic_var
+	value = 0
+}
+
+set_variable = {
+	var = APA_economy_compliance_growth_dynamic_var
+	value = 0
+}
+
+set_variable = {
+	var = APA_economy_resistance_growth_dynamic_var
+	value = 0
+}
+
+set_variable = {
+	var = APA_economy_resistance_decay_dynamic_var
+	value = 0
+}
+
+set_variable = {
+	var = APA_economy_production_factory_max_efficiency_factor_dynamic_var
+	value = -0.1
+}
+
+set_variable = {
+	var = APA_economy_production_factory_efficiency_gain_factor_dynamic_var
+	value = 0
+}
+
+set_variable = {
+	var = APA_economy_production_factory_start_efficiency_factor_dynamic_var
+	value = 0
+}
+
+set_variable = {
+	var = APA_economy_line_change_production_efficiency_factor_dynamic_var
+	value = 0
+}
+
+set_variable = {
+	var = APA_economy_production_lack_of_resource_penalty_factor_dynamic_var
+	value = 0
+}
+
+set_variable = {
+	var = APA_economy_conversion_cost_civ_to_mil_factor_dynamic_var
+	value = 0
+}
+
+set_variable = {
+	var = APA_economy_conversion_cost_mil_to_civ_factor_dynamic_var
+	value = 0
+}
+
+set_variable = {
+	var = APA_economy_production_speed_buildings_factor_dynamic_var
+	value = 0
+}
+
+set_variable = {
+	var = APA_economy_industrial_capacity_factory_dynamic_var
+	value = 0
+}
+
+set_variable = {
+	var = APA_economy_industrial_capacity_dockyard_dynamic_var
+	value = 0
+}
+
+set_variable = {
+	var = APA_economy_production_speed_infrastructure_factor_dynamic_var
+	value = -0.2
+}
+
+set_variable = {
+	var = APA_economy_production_speed_industrial_complex_factor_dynamic_var
+	value = -0.2
+}
+
+set_variable = {
+	var = APA_economy_production_speed_office_park_factor_dynamic_var
+	value = 0
+}
+
+set_variable = {
+	var = APA_economy_production_speed_rail_way_factor_dynamic_var
+	value = 0
+}
+
+set_variable = {
+	var = APA_economy_production_speed_arms_factory_factor_dynamic_var
+	value = 0
+}
+
+set_variable = {
+	var = APA_economy_production_speed_dockyard_factor_dynamic_var
+	value = 0
+}
+
+set_variable = {
+	var = APA_economy_industrial_development_monthly_dynamic_var
+	value = 0
+}
+
+set_variable = {
+	var = APA_economy_poverty_development_monthly_dynamic_var
+	value = 0
+}
+
+set_variable = {
+	var = APA_economy_farming_development_monthly_dynamic_var
+	value = 0
+}
+
+set_variable = {
+	var = APA_economy_income_growth_factor_dynamic_var
+	value = 0
+}
+
+set_variable = {
+	var = APA_economy_expense_growth_factor_dynamic_var
+	value = 0
+}
+
+set_variable = {
+	var = APA_economy_business_value_factor_dynamic_var
+	value = 0
+}
+
+set_variable = {
+	var = APA_economy_personal_value_factor_dynamic_var
+	value = 0
+}
+
+set_variable = {
+	var = APA_economy_tax_business_rate_dynamic_var
+	value = 0
+}
+
+set_variable = {
+	var = APA_economy_tax_personal_rate_dynamic_var
+	value = 0
+}
+
+set_variable = {
+	var = APA_economy_interest_rate_dynamic_var
+	value = 0
+}
+
+#Military Dynamic Modifier, This Is Where Inital Values Are Set
+set_variable = {
+	var = APA_military_political_power_gain_dynamic_var
+	value = -0.1
+}
+
+set_variable = {
+	var = APA_military_war_support_factor_dynamic_var
+	value = 0
+}
+
+set_variable = {
+	var = APA_military_war_support_weekly_dynamic_var
+	value = 0
+}
+
+set_variable = {
+	var = APA_military_weekly_casualties_war_support_dynamic_var
+	value = 0
+}
+
+set_variable = {
+	var = APA_military_weekly_convoys_war_support_dynamic_var
+	value = 0
+}
+
+set_variable = {
+	var = APA_military_weekly_bombing_war_support_dynamic_var
+	value = 0
+}
+
+set_variable = {
+	var = APA_military_experience_gain_army_dynamic_var
+	value = 0
+}
+
+set_variable = {
+	var = APA_military_experience_gain_army_factor_dynamic_var
+	value = 0
+}
+
+set_variable = {
+	var = APA_military_max_command_power_dynamic_var
+	value = 0
+}
+
+set_variable = {
+	var = APA_military_command_power_gain_mult_dynamic_var
+	value = -0.3
+}
+
+set_variable = {
+	var = APA_military_army_org_factor_dynamic_var
+	value = -0.2
+}
+
+set_variable = {
+	var = APA_military_army_org_regain_dynamic_var
+	value = 0
+}
+
+set_variable = {
+	var = APA_military_army_strength_factor_dynamic_var
+	value = 0
+}
+
+set_variable = {
+	var = APA_military_coordination_bonus_dynamic_var
+	value = 0
+}
+
+set_variable = {
+	var = APA_military_land_reinforce_rate_dynamic_var
+	value = 0
+}
+
+set_variable = {
+	var = APA_military_max_planning_factor_dynamic_var
+	value = -0.2
+}
+
+set_variable = {
+	var = APA_military_planning_speed_dynamic_var
+	value = 0
+}
+
+set_variable = {
+	var = APA_military_max_dig_in_factor_dynamic_var
+	value = 0
+}
+
+set_variable = {
+	var = APA_military_dig_in_speed_factor_dynamic_var
+	value = 0
+}
+
+set_variable = {
+	var = APA_military_army_morale_factor_dynamic_var
+	value = 0
+}
+
+set_variable = {
+	var = APA_military_army_attack_factor_dynamic_var
+	value = -0.25
+}
+
+set_variable = {
+	var = APA_military_army_defence_factor_dynamic_var
+	value = 0
+}
+
+set_variable = {
+	var = APA_military_breakthrough_factor_dynamic_var
+	value = 0
+}
+
+set_variable = {
+	var = APA_military_army_speed_factor_dynamic_var
+	value = 0
+}
+
+set_variable = {
+	var = APA_military_army_core_attack_factor_dynamic_var
+	value = 0
+}
+
+set_variable = {
+	var = APA_military_army_core_defence_factor_dynamic_var
+	value = 0
+}
+
+set_variable = {
+	var = APA_military_army_infantry_attack_factor_dynamic_var
+	value = 0
+}
+
+set_variable = {
+	var = APA_military_army_infantry_defence_factor_dynamic_var
+	value = 0
+}
+
+set_variable = {
+	var = APA_military_modifier_army_sub_unit_militia_attack_factor_dynamic_var
+	value = 0
+}
+
+set_variable = {
+	var = APA_military_modifier_army_sub_unit_militia_defence_factor_dynamic_var
+	value = 0
+}
+
+set_variable = {
+	var = APA_military_equipment_capture_factor_dynamic_var
+	value = 0
+}
+
+set_variable = {
+	var = APA_military_supply_consumption_factor_dynamic_var
+	value = -0.05
+}
+
+set_variable = {
+	var = APA_military_conscription_factor_dynamic_var
+	value = 0.05
+}
+
+set_variable = {
+	var = APA_military_resistance_decay_on_our_occupied_states_dynamic_var
+	value = 0
+}
+
+set_variable = {
+	var = APA_military_resistance_growth_on_our_occupied_states_dynamic_var
+	value = 0
+}
+
+set_variable = {
+	var = APA_military_pocket_penalty_dynamic_var
+	value = 0
+}
+
+set_variable = {
+	var = APA_military_land_doctrine_cost_factor_dynamic_var
+	value = 0
+}
+
+set_variable = {
+	var = APA_military_battalion_upkeep_factor_dynamic_var
+	value = -0.1
+}
+
+set_variable = {
+	var = APA_military_development_monthly_dynamic_var
+	value = -0.03
+}
+
+set_variable = {
+	var = APA_military_totalitarian_socialist_drift_dynamic_var
+	value = 0
+}
+
+set_variable = {
+	var = APA_military_communist_drift_dynamic_var
+	value = 0
+}
+
+set_variable = {
+	var = APA_military_libertarian_socialist_drift_dynamic_var
+	value = 0
+}
+
+set_variable = {
+	var = APA_military_social_democrat_drift_dynamic_var
+	value = 0
+}
+
+set_variable = {
+	var = APA_military_authoritarian_democrat_drift_dynamic_var
+	value = 0
+}
+
+#Government Variables
+set_variable = {
+	var = APA_revolution_progress_var
+	value = 0
+}
+
+set_variable = {
+	var = APA_revolution_progress_gui_var
+	value = 0
+}
+
+set_variable = {
+	var = APA_journalist_time_var
+	value = 69
+}
+
+set_variable = {
+	var = APA_counterrevolutionaries_organizing_time_var
+	value = 139
+}
+
+add_ideas = {
+	#National Spirits
+	APA_cabinet_crisis
+	APA_insecure_industry_idea
+	APA_coffeehouse_socialism_idea
+	APA_reactionary_resistance_idea
+	APA_low_popular_support_idea
+	APA_medium_leftist_unity_idea
+	#Laws
+	partial_mobilization
+	lower_trade
+	high_taxes
+	medium_interest_rates
+	low_welfare
+	low_safety
+	lower_conscription
+	high_female_service
+	low_supervision
+	medium_training
+	high_racial_integration
+	no_draft_exemptions
+	medium_immigration
+	medium_education
+	high_race
+	high_female
+	low_prison
+	high_police
+	medium_academic
+	medium_farming
+	low_poverty
+	high_industry
+	medium_military
+	medium_society
+	
+	ZZZ_revolutionary_front
+}
+
+add_dynamic_modifier = {
+	modifier = APA_drug_trade_dynamic
+}
+
+recruit_character = APA_michael_prysner_char
+recruit_character = APA_caleb_maupin_char
+recruit_character = APA_gloria_la_riva_char
+recruit_character = APA_howie_hawkins_char
+recruit_character = APA_mark_bray_char
+recruit_character = APA_julia_salazar_char
+recruit_character = APA_anarchism_char
+#recruit_character = APA_kimberle_crenshaw_char
+recruit_character = APA_brace_belden_char
+recruit_character = APA_spenser_rapone_char
+recruit_character = APA_raymond_luc_levasseur_char
+recruit_character = APA_kazi_toure_char
+recruit_character = APA_jaan_laaman_char
+recruit_character = APA_anastasia_lewis_char
+recruit_character = APA_artyom_char
+recruit_character = APA_alana_mclaughlin_char
+recruit_character = APA_kelly_dougherty_char
+recruit_character = APA_danny_sjursen_char
+recruit_character = APA_james_henson_char
+recruit_character = APA_jordan_matson_char
+recruit_character = APA_kevin_benderman_char
+recruit_character = APA_lee_j_carter_char
+recruit_character = APA_lucas_chapman_char
+recruit_character = APA_steven_estrada_char
+recruit_character = APA_tommy_morck_char
+recruit_character = APA_donald_courter_char
+recruit_character = APA_daniel_baker_char
+recruit_character = APA_jeff_monson_char
+recruit_character = APA_russell_bentley_char
+recruit_character = APA_jackson_hinkle_char
+recruit_character = APA_Wilmer_Puello_Mota
+recruit_character = APA_John_McIntyre
+recruit_character = APA_christopher_helali_char
+recruit_character = APA_eddie_liger_char
+recruit_character = APA_jonathan_wesley_hutto_char
+recruit_character = APA_robert_rob_joseph_roys_char
+set_politics = {
+	ruling_party = communist
+	last_election = "2020.11.3"
+	election_frequency = 48
+	elections_allowed = no
+}
+
+set_popularities = {
+	communist = 33
+	social_democrat = 20
+	libertarian_socialist = 20
+	totalitarian_socialist = 11
+	authoritarian_democrat = 16
+}
+
+if = {
+	limit = {
+		has_dlc = "No Step Back"
+	}
+	create_equipment_variant = {
+		name = "M1A2 Abrams"
+		type = modern_tank_chassis_1
+		parent_version = 0
+		modules = {
+			main_armament_slot = tank_high_velocity_cannon_2
+			turret_type_slot = tank_modern_tank_turret
+			suspension_type_slot = tank_bogie_suspension
+			armor_type_slot = tank_welded_armor
+			engine_type_slot = tank_gas_turbine_engine
+			special_type_slot_1 = tank_radio_1
+			special_type_slot_2 = smoke_launchers
+			special_type_slot_3 = wet_ammo_storage
+			special_type_slot_4 = extra_ammo_storage
+			special_type_slot_5 = gunner_nv_2
+		}
+		upgrades = {
+			tank_nsb_engine_upgrade = 9
+			tank_nsb_armor_upgrade = 4
+		}
+		icon = "gfx/interface/technologies/armor/MBT_2006_M1A2_Abrams.dds"
+	}
+	create_equipment_variant = {
+		name = "M1128 Stryker"
+		type = light_tank_chassis_1
+		parent_version = 0
+		modules = {
+			main_armament_slot = tank_small_cannon
+			turret_type_slot = tank_light_two_man_tank_turret
+			suspension_type_slot = tank_bogie_suspension
+			armor_type_slot = tank_riveted_armor
+			engine_type_slot = tank_gasoline_engine
+			special_type_slot_1 = tank_radio_1
+			special_type_slot_2 = extra_ammo_storage
+			special_type_slot_3 = smoke_launchers
+			special_type_slot_4 = empty
+			special_type_slot_5 = gunner_nv_2
+		}
+		upgrades = {
+			tank_nsb_engine_upgrade = 3
+			tank_nsb_armor_upgrade = 2
+		}
+		icon = "gfx/interface/technologies/armor/LT_2000_M1128_Stryker.dds"
+	}
+	create_equipment_variant = {
+		name = "M132 Zippo"
+		type = light_tank_chassis_1
+		parent_version = 0
+		modules = {
+			main_armament_slot = flamethrower
+			turret_type_slot = tank_light_two_man_tank_turret
+			suspension_type_slot = tank_bogie_suspension
+			armor_type_slot = tank_riveted_armor
+			engine_type_slot = tank_gasoline_engine
+			special_type_slot_1 = tank_radio_1
+			special_type_slot_2 = extra_ammo_storage
+			special_type_slot_3 = smoke_launchers
+			special_type_slot_4 = empty
+			special_type_slot_5 = gunner_optical_sight
+		}
+		upgrades = {
+			tank_nsb_engine_upgrade = 3
+			tank_nsb_armor_upgrade = 2
+		}
+		icon = "gfx/interface/technologies/armor/Universal/M113 Zippo.png"
+	}
+}
+
+if = {
+	limit = {
+		has_dlc = "By Blood Alone"
+	}
+	create_equipment_variant = {
+		name = "MQ-9 Reaper"
+		type = medium_plane_airframe_1
+		modules = {
+			fixed_main_weapon_slot = aircraft_cannon_1_2x
+			fixed_auxiliary_weapon_slot_1 = light_mg_4x
+			fixed_auxiliary_weapon_slot_2 = empty
+			fixed_auxiliary_weapon_slot_3 = empty
+			engine_type_slot = engine_2_1x
+			special_type_slot_1 = lmg_defense_turret_2x
+			special_type_slot_2 = empty
+			special_type_slot_3 = empty
+		}
+		icon = "GFX_tactical_bomber2_medium"
+	}
+	create_equipment_variant = {
+		name = "F-15E"
+		type = small_plane_airframe_0
+		modules = {
+			fixed_main_weapon_slot = heavy_mg_4x
+			fixed_auxiliary_weapon_slot_1 = bomb_locks
+			fixed_auxiliary_weapon_slot_2 = light_mg_4x
+			engine_type_slot = engine_1_1x
+			special_type_slot_1 = empty
+		}
+		obsolete = yes
+		icon = "GFX_USA_fighter2_medium"
+	}
+	create_equipment_variant = {
+		name = "F-16/IQ"
+		type = small_plane_airframe_1
+		modules = {
+			fixed_main_weapon_slot = heavy_mg_4x
+			fixed_auxiliary_weapon_slot_1 = heavy_mg_4x
+			fixed_auxiliary_weapon_slot_2 = light_mg_4x
+			engine_type_slot = engine_2_1x
+			special_type_slot_1 = hmg_defense_turret
+		}
+		icon = "GFX_USA_fighter3_medium"
+	}
+	create_equipment_variant = {
+		name = "A-10 Warthog"
+		type = small_plane_cas_airframe_1
+		modules = {
+			fixed_main_weapon_slot = light_mg_4x
+			fixed_auxiliary_weapon_slot_1 = light_mg_4x
+			fixed_auxiliary_weapon_slot_2 = heavy_mg_4x
+			fixed_auxiliary_weapon_slot_3 = heavy_mg_4x
+			engine_type_slot = engine_2_1x
+			special_type_slot_1 = hmg_defense_turret
+			special_type_slot_2 = hmg_defense_turret
+		}
+		icon = "GFX_USA_CAS2_medium"
+	}
+	create_equipment_variant = {
+		name = "B-52"
+		type = large_plane_airframe_1
+		modules = {
+			fixed_main_weapon_slot = aircraft_cannon_1_2x
+			fixed_auxiliary_weapon_slot_1 = empty
+			fixed_auxiliary_weapon_slot_2 = empty
+			engine_type_slot = engine_1_6x
+			special_type_slot_1 = empty
+			special_type_slot_2 = empty
+			special_type_slot_3 = empty
+		}
+		icon = "GFX_USA_strategic_bomber1_medium"
+	}
+	create_equipment_variant = {
+		name = "B-1"
+		type = large_plane_airframe_1
+		modules = {
+			fixed_main_weapon_slot = aircraft_cannon_1_2x
+			fixed_auxiliary_weapon_slot_1 = empty
+			fixed_auxiliary_weapon_slot_2 = empty
+			engine_type_slot = engine_2_3x
+			special_type_slot_1 = empty
+			special_type_slot_2 = empty
+			special_type_slot_3 = bomb_sights_1
+		}
+		icon = "GFX_USA_strategic_bomber2_medium"
+	}
+	create_equipment_variant = {
+		name = "B-2"
+		type = large_plane_airframe_1
+		modules = {
+			fixed_main_weapon_slot = aircraft_cannon_1_2x
+			fixed_auxiliary_weapon_slot_1 = aircraft_cannon_1_2x
+			fixed_auxiliary_weapon_slot_2 = empty
+			engine_type_slot = engine_1_4x
+			special_type_slot_1 = empty
+			special_type_slot_2 = empty
+			special_type_slot_3 = empty
+		}
+		icon = "GFX_USA_strategic_bomber3_medium"
+	}
+}

@@ -1,0 +1,4603 @@
+
+add_namespace = usc
+add_namespace = darkmaga
+
+#Civil War Concluded - USC Victory
+country_event = {
+	id = usc.1
+	title = usc.1.t
+	desc = usc.1.desc
+	picture = GFX_report_USA_flag
+	fire_only_once = yes
+	is_triggered_only = yes
+	trigger = {
+		tag = USC
+	}
+	immediate = {
+		hidden_effect = {
+			log = "[GetDateText]: [Root.GetName]: event usc.1 immediate"
+			annex_country = {
+				target = USN
+				transfer_troops = yes
+			}
+			every_state = {
+				limit = {
+					is_core_of = USN
+				}
+				add_core_of = USC
+				remove_core_of = USN
+			}
+			USA_civil_war_over = yes
+			set_cosmetic_tag = USC_reunified
+			set_country_flag = USC_reunified_flag
+			set_capital = {
+				state = 931
+				remember_old_capital = no
+			}
+			focus_unlock = yes
+			if = {
+				limit = {
+					has_country_leader = {
+						character = USC_donald_trump_char
+						ruling_only = yes
+					}
+					has_country_flag = USC_populist_king_flag
+					has_government = conservative
+				}
+				news_event = {
+					id = news.553
+					hours = 6
+				}
+			}
+			else_if = {
+				limit = {
+					has_government = authoritarian_democrat
+				}
+				news_event = {
+					id = news.138
+					hours = 6
+				}
+			}
+			else = {
+				news_event = {
+					id = news.133
+					hours = 6
+				}
+			}
+		}
+	}
+	option = {
+		name = usc.1.a
+		effect_tooltip = {
+			focus_unlock = yes
+		}
+	}
+}
+
+#Denver Crackdown
+country_event = {
+	id = usc.2
+	title = usc.2.t
+	desc = usc.2.desc
+	picture = GFX_USC_denver_riot
+	fire_only_once = yes
+	is_triggered_only = yes
+	trigger = {
+		tag = USC
+	}
+	immediate = {
+		hidden_effect = {
+			log = "[GetDateText]: [Root.GetName]: event usc.2 immediate"
+			add_manpower = -267
+		}
+	}
+	option = {
+		name = usc.2.a
+		effect_tooltip = {
+			add_manpower = -267
+		}
+	}
+}
+
+#Trump announces Denver as new "Legislative Hall"
+country_event = {
+	id = usc.3
+	title = usc.3.t
+	desc = usc.3.desc
+	picture = GFX_report_trump_denver_lh
+	fire_only_once = yes
+	is_triggered_only = yes
+	trigger = {
+		tag = USC
+	}
+	immediate = {
+		hidden_effect = {
+			log = "[GetDateText]: [Root.GetName]: event usc.3 immediate"
+			country_event = {
+				id = usc.2
+				days = 7
+			}
+			country_event = {
+				id = usc.14
+				days = 14
+			}
+		}
+	}
+	option = {
+		name = usc.3.a
+		if = {
+		    limit = {
+		        has_game_rule = {
+		            rule = The_Three_Faced_MAGA
+		            option = The_Three_Faced_MAGA_1
+		        }
+		    }
+		    add_popularity = {
+		        ideology = market_liberal
+		        popularity = 0.7
+		    }
+			set_temp_variable = {
+				var = USC_loyalty_lib_var_temp
+				value = 0.5
+			}	
+			USC_add_loyalty_lib = yes
+		}
+		if = {
+		    limit = {
+		        has_game_rule = {
+		            rule = The_Three_Faced_MAGA
+		            option = The_Three_Faced_MAGA_2
+		        }
+		    }
+		    add_popularity = {
+		        ideology = conservative
+		        popularity = 0.7
+		    }
+			set_temp_variable = {
+				var = USC_loyalty_con_var_temp
+				value = 0.5
+			}
+			USC_add_loyalty_con = yes
+		}
+		if = {
+		    limit = {
+		        has_game_rule = {
+		            rule = The_Three_Faced_MAGA
+		            option = The_Three_Faced_MAGA_3
+		        }
+		    }
+		    add_popularity = {
+		        ideology = authoritarian_democrat
+		        popularity = 0.7
+		    }
+			set_temp_variable = {
+				var = USC_loyalty_mil_var_temp
+				value = 0.5
+			}
+			USC_add_loyalty_mil = yes
+		}
+	}
+}
+
+#The Governmental Debate
+country_event = {
+	id = usc.4
+	title = usc.4.t
+	desc = usc.4.desc
+	picture = GFX_report_usc_future_of_government
+	fire_only_once = yes
+	is_triggered_only = yes
+	trigger = {
+		tag = USC
+	}
+	immediate = {
+		hidden_effect = {
+			log = "[GetDateText]: [Root.GetName]: event usc.4 immediate"
+			activate_mission = USC_faction_influence_mission
+		}
+	}
+	option = {
+		name = usc.4.a
+		ai_chance = {
+			base = 1
+		}
+		complete_national_focus = USC_reestablish_civilian_authority
+		activate_mission_tooltip = USC_faction_influence_mission
+	}
+	option = {
+		name = usc.4.b
+		ai_chance = {
+			base = 1
+		}
+		complete_national_focus = USC_suspend_habeus_corpus
+		activate_mission_tooltip = USC_faction_influence_mission
+	}
+}
+
+#A New VP
+country_event = {
+	id = usc.5
+	title = usc.5.t
+	desc = usc.5.desc
+	picture = GFX_USC_trump_support_2
+	fire_only_once = yes
+	is_triggered_only = yes
+	trigger = {
+		tag = USC
+	}
+	immediate = {
+		hidden_effect = {
+			log = "[GetDateText]: [Root.GetName]: event usc.5 immediate"
+		}
+	}
+	option = {
+		name = usc.5.a
+		ai_chance = {
+			base = 1
+		}
+		add_ideas = USC_lucian_lincoln_wood_hog
+	}
+	option = {
+		name = usc.5.b
+		ai_chance = {
+			base = 1
+		}
+		trigger = {
+			has_country_flag = USC_sided_with_congress_flag
+		}
+		add_ideas = USC_rand_paul_hog
+	}
+	option = {
+		name = usc.5.c
+		ai_chance = {
+			base = 1
+		}
+		trigger = {
+			has_country_flag = USC_sided_with_military_flag
+		}
+		add_ideas = USC_micheal_flynn_hog
+	}
+}
+
+#Military Coup
+country_event = {
+	id = usc.6
+	title = usc.6.t
+	desc = usc.6.desc
+	picture = GFX_USC_army_protests
+	fire_only_once = yes
+	is_triggered_only = yes
+	trigger = {
+		tag = USC
+	}
+	immediate = {
+		hidden_effect = {
+			log = "[GetDateText]: [Root.GetName]: event usc.6 immediate"
+			set_politics = {
+				ruling_party = nationalist
+				elections_allowed = no
+			}
+			add_popularity = {
+			    ideology = nationalist
+				popularity = 0.1
+			}
+		}
+	}
+	option = {
+		name = usc.6.a
+		effect_tooltip = {
+			set_politics = {
+				ruling_party = nationalist
+				elections_allowed = no
+			}
+		}
+	}
+}
+
+#State Lost
+country_event = {
+	id = usc.7
+	title = usc.7.t
+	desc = usc.7.desc
+	picture = GFX_USC_state_lost
+	is_triggered_only = yes
+	hidden = yes
+	trigger = {
+		tag = USC
+	}
+	immediate = {
+		hidden_effect = {
+			log = "[GetDateText]: [Root.GetName]: event usc.7 immediate"
+			set_temp_variable = {
+				var = USC_rage_var_temp
+				value = 0.005
+			}
+			USC_add_rage = yes
+			set_temp_variable = {
+				var = USC_refugee_manpower_var_temp
+				value = FROM.FROM.state_population_k
+			}
+			multiply_temp_variable = {
+				var = USC_refugee_manpower_var_temp
+				value = 0.05
+			}
+			random_owned_controlled_state = {
+				add_manpower = USC_refugee_manpower_var_temp
+			}
+			multiply_temp_variable = {
+				var = USC_refugee_manpower_var_temp
+				value = -1
+			}
+			FROM.FROM = {
+				add_manpower = USC_refugee_manpower_var_temp
+			}
+		}
+	}
+	option = {
+		name = usc.7.a
+		effect_tooltip = {
+			set_temp_variable = {
+				var = USC_rage_var_temp
+				value = 0.005
+			}
+			USC_add_rage = yes
+			set_temp_variable = {
+				var = USC_refugee_manpower_var_temp
+				value = FROM.FROM.state_population
+			}
+			multiply_temp_variable = {
+				var = USC_refugee_manpower_var_temp
+				value = 0.05
+			}
+			random_owned_controlled_state = {
+				add_manpower = USC_refugee_manpower_var_temp
+			}
+			multiply_temp_variable = {
+				var = USC_refugee_manpower_var_temp
+				value = -1
+			}
+			FROM.FROM = {
+				add_manpower = USC_refugee_manpower_var_temp
+			}
+		}
+	}
+}
+
+#Military Being Sus
+country_event = {
+	id = usc.8
+	title = usc.8.t
+	desc = usc.8.desc
+	picture = GFX_USC_trump_military
+	is_triggered_only = yes
+	trigger = {
+		tag = USC
+	}
+	immediate = {
+		hidden_effect = {
+			log = "[GetDateText]: [Root.GetName]: event usc.8 immediate"
+			activate_mission = USC_military_coup_mission
+		}
+	}
+	option = {
+		name = usc.8.a
+		activate_mission_tooltip = USC_military_coup_mission
+	}
+}
+
+#Military Stops Being Sus
+country_event = {
+	id = usc.9
+	title = usc.9.t
+	desc = usc.9.desc
+	picture = GFX_USC_trump_military
+	is_triggered_only = yes
+	trigger = {
+		tag = USC
+	}
+	immediate = {
+		hidden_effect = {
+			log = "[GetDateText]: [Root.GetName]: event usc.9 immediate"
+		}
+	}
+	option = {
+		name = usc.9.a
+	}
+}
+
+#Biden is Bidone
+country_event = {
+	id = usc.10
+	title = usc.10.t
+	desc = usc.10.desc
+	picture = GFX_USC_driving_biden_to_the_execution
+	is_triggered_only = yes
+	trigger = {
+		tag = USC
+	}
+	immediate = {
+		hidden_effect = {
+			log = "[GetDateText]: [Root.GetName]: event usc.10 immediate"
+			set_country_flag = USC_politics_unlocked_flag
+			focus_unlock = yes
+			country_event = { id = usc.62 days = 31 random_days = 5 random_hours = 10 }
+			country_event = { id = usc.94 days = 40 }
+			country_event = { id = usc.93 days = 10 }
+			scoped_play_song = "TFR_mu_tfr_real_american"
+		}
+	}
+	option = {
+		name = usc.10.a
+		effect_tooltip = {
+			unlock_decision_tooltip = USC_fate_of_corporate_america
+			focus_unlock = yes
+		}
+	}
+}
+
+#Congress Being Sus
+country_event = {
+	id = usc.11
+	title = usc.11.t
+	desc = usc.11.desc
+	picture = GFX_USC_trump_painting
+	is_triggered_only = yes
+	trigger = {
+		tag = USC
+	}
+	immediate = {
+		hidden_effect = {
+			log = "[GetDateText]: [Root.GetName]: event usc.11 immediate"
+			activate_mission = USC_military_coup_mission
+		}
+	}
+	option = {
+		name = usc.11.a
+		activate_mission_tooltip = USC_military_coup_mission
+	}
+}
+
+#Congress Stops Being Sus
+country_event = {
+	id = usc.12
+	title = usc.12.t
+	desc = usc.12.desc
+	picture = GFX_USC_trump_painting
+	is_triggered_only = yes
+	trigger = {
+		tag = USC
+	}
+	immediate = {
+		hidden_effect = {
+			log = "[GetDateText]: [Root.GetName]: event usc.12 immediate"
+			activate_mission = USC_congress_coup_mission
+		}
+	}
+	option = {
+		name = usc.12.a
+		activate_mission_tooltip = USC_congress_coup_mission
+	}
+}
+
+#Congress/Militia Coup
+country_event = {
+	id = usc.13
+	title = usc.13.t
+	desc = usc.13.desc
+	picture = GFX_USC_soldiers_4
+	fire_only_once = yes
+	is_triggered_only = yes
+	trigger = {
+		tag = USC
+	}
+	immediate = {
+		hidden_effect = {
+			log = "[GetDateText]: [Root.GetName]: event usc.13 immediate"
+			set_politics = {
+				ruling_party = market_liberal
+				elections_allowed = yes
+			}
+		}
+	}
+	option = {
+		name = usc.13.a
+		effect_tooltip = {
+			set_politics = {
+				ruling_party = market_liberal
+				elections_allowed = yes
+			}
+		}
+	}
+}
+
+#Between the Bullet and the Ballpoint Pen
+country_event = {
+	id = usc.14
+	title = usc.14.t
+	desc = usc.14.desc
+	picture = GFX_USC_trump_on_screens_2
+	fire_only_once = yes
+	is_triggered_only = yes
+	minor_flavor = yes
+	trigger = {
+		tag = USC
+	}
+	immediate = {
+		hidden_effect = {
+			log = "[GetDateText]: [Root.GetName]: event usc.14 immediate"
+		}
+	}
+	option = {
+		name = usc.14.a
+	}
+}
+
+#Ensuring Transparency
+country_event = {
+	id = usc.15
+	title = usc.15.t
+	desc = usc.15.desc
+	picture = GFX_USC_trumpists
+	fire_only_once = yes
+	is_triggered_only = yes
+	minor_flavor = yes
+	trigger = {
+		tag = USC
+	}
+	immediate = {
+		hidden_effect = {
+			log = "[GetDateText]: [Root.GetName]: event usc.15 immediate"
+		}
+	}
+	option = {
+		name = usc.15.a
+	}
+}
+
+#Trimming the Fat
+country_event = {
+	id = usc.16
+	title = usc.16.t
+	desc = usc.16.desc
+	picture = GFX_USC_soldiers_forward
+	fire_only_once = yes
+	is_triggered_only = yes
+	minor_flavor = yes
+	trigger = {
+		tag = USC
+	}
+	immediate = {
+		hidden_effect = {
+			log = "[GetDateText]: [Root.GetName]: event usc.16 immediate"
+		}
+	}
+	option = {
+		name = usc.16.a
+	}
+}
+
+#The Trump Amendments
+country_event = {
+	id = usc.17
+	title = usc.17.t
+	desc = usc.17.desc
+	picture = GFX_USC_trump_america
+	fire_only_once = yes
+	is_triggered_only = yes
+	minor_flavor = yes
+	trigger = {
+		tag = USC
+	}
+	immediate = {
+		hidden_effect = {
+			log = "[GetDateText]: [Root.GetName]: event usc.17 immediate"
+		}
+	}
+	option = {
+		name = usc.17.a
+	}
+}
+
+#Reporting From The Frontlines
+country_event = {
+	id = usc.18
+	title = usc.18.t
+	desc = usc.18.desc
+	picture = GFX_USC_soldiers
+	fire_only_once = yes
+	is_triggered_only = yes
+	minor_flavor = yes
+	trigger = {
+		tag = USC
+	}
+	immediate = {
+		hidden_effect = {
+			log = "[GetDateText]: [Root.GetName]: event usc.18 immediate"
+		}
+	}
+	option = {
+		name = usc.18.a
+	}
+}
+
+#No Mercy For Titors
+country_event = {
+	id = usc.19
+	title = usc.19.t
+	desc = usc.19.desc
+	picture = GFX_USC_trumpists_2
+	fire_only_once = yes
+	is_triggered_only = yes
+	minor_flavor = yes
+	trigger = {
+		tag = USC
+	}
+	immediate = {
+		hidden_effect = {
+			log = "[GetDateText]: [Root.GetName]: event usc.19 immediate"
+		}
+	}
+	option = {
+		name = usc.19.a
+	}
+}
+
+#Trump Addresses the Nation
+country_event = {
+	id = usc.20
+	title = usc.20.t
+	desc = usc.20.desc
+	picture = GFX_USC_trump_on_screens
+	fire_only_once = yes
+	is_triggered_only = yes
+	minor_flavor = yes
+	trigger = {
+		tag = USC
+	}
+	immediate = {
+		hidden_effect = {
+			log = "[GetDateText]: [Root.GetName]: event usc.20 immediate"
+		}
+	}
+	option = {
+		name = usc.20.a
+	}
+}
+
+#A New Apprentice
+country_event = {
+	id = usc.21
+	title = usc.21.t
+	desc = usc.21.desc
+	picture = GFX_USC_trumpists_3
+	fire_only_once = yes
+	is_triggered_only = yes
+	minor_flavor = yes
+	trigger = {
+		tag = USC
+	}
+	immediate = {
+		hidden_effect = {
+			log = "[GetDateText]: [Root.GetName]: event usc.21 immediate"
+		}
+	}
+	option = {
+		name = usc.21.a
+	}
+}
+
+#Law and Order
+country_event = {
+	id = usc.22
+	title = usc.22.t
+	desc = usc.22.desc
+	picture = GFX_USC_trump_the_champion
+	fire_only_once = yes
+	is_triggered_only = yes
+	minor_flavor = yes
+	trigger = {
+		tag = USC
+	}
+	immediate = {
+		hidden_effect = {
+			log = "[GetDateText]: [Root.GetName]: event usc.22 immediate"
+		}
+	}
+	option = {
+		name = usc.22.a
+	}
+}
+
+#Bombarding the Headquarters
+country_event = {
+	id = usc.23
+	title = usc.23.t
+	desc = usc.23.desc
+	picture = GFX_USC_soldiers_3
+	fire_only_once = yes
+	is_triggered_only = yes
+	minor_flavor = yes
+	trigger = {
+		tag = USC
+	}
+	immediate = {
+		hidden_effect = {
+			log = "[GetDateText]: [Root.GetName]: event usc.23 immediate"
+		}
+	}
+	option = {
+		name = usc.23.a
+	}
+}
+
+#Extinction of the Democracy 
+country_event = {
+	id = usc.24
+	title = usc.24.t
+	desc = usc.24.desc
+	picture = GFX_USC_trump_the_pretender
+	fire_only_once = yes
+	is_triggered_only = yes
+	minor_flavor = yes
+	trigger = {
+		tag = USC
+	}
+	immediate = {
+		hidden_effect = {
+			log = "[GetDateText]: [Root.GetName]: event usc.24 immediate"
+		}
+	}
+	option = {
+		name = usc.24.a
+	}
+}
+
+#Lofty Goals in the Legislature
+country_event = {
+	id = usc.25
+	title = usc.25.t
+	desc = usc.25.desc
+	picture = GFX_USC_trump_flag
+	fire_only_once = yes
+	is_triggered_only = yes
+	minor_flavor = yes
+	trigger = {
+		tag = USC
+	}
+	immediate = {
+		hidden_effect = {
+			log = "[GetDateText]: [Root.GetName]: event usc.25 immediate"
+		}
+	}
+	option = {
+		name = usc.25.a
+	}
+}
+
+#A Reminder of Patriotism... and Loyalty
+country_event = {
+	id = usc.26
+	title = usc.26.t
+	desc = usc.26.desc
+	picture = GFX_USC_idol_of_americans
+	fire_only_once = yes
+	is_triggered_only = yes
+	minor_flavor = yes
+	trigger = {
+		tag = USC
+	}
+	immediate = {
+		hidden_effect = {
+			log = "[GetDateText]: [Root.GetName]: event usc.26 immediate"
+		}
+	}
+	option = {
+		name = usc.26.a
+	}
+}
+
+#The Head of the Hydra
+country_event = {
+	id = usc.27
+	title = usc.27.t
+	desc = usc.27.desc
+	picture = GFX_USC_trump_the_pretender
+	fire_only_once = yes
+	is_triggered_only = yes
+	minor_flavor = yes
+	trigger = {
+		tag = USC
+	}
+	immediate = {
+		hidden_effect = {
+			log = "[GetDateText]: [Root.GetName]: event usc.27 immediate"
+		}
+	}
+	option = {
+		name = usc.27.a
+	}
+}
+
+#Over the Christmas table
+country_event = {
+	id = usc.28
+	title = usc.28.t
+	desc = usc.28.desc
+	picture = GFX_report_trump_denver_lh
+	fire_only_once = yes
+	is_triggered_only = yes
+	minor_flavor = yes
+	trigger = {
+		tag = USC
+	}
+	immediate = {
+		hidden_effect = {
+			log = "[GetDateText]: [Root.GetName]: event usc.28 immediate"
+		}
+	}
+	option = {
+		name = usc.28.a
+	}
+}
+
+#Reporting From The Frontlines 2
+country_event = {
+	id = usc.29
+	title = usc.29.t
+	desc = usc.29.desc
+	picture = GFX_USC_soldiers_2
+	fire_only_once = yes
+	is_triggered_only = yes
+	minor_flavor = yes
+	trigger = {
+		tag = USC
+	}
+	immediate = {
+		hidden_effect = {
+			log = "[GetDateText]: [Root.GetName]: event usc.29 immediate"
+		}
+	}
+	option = {
+		name = usc.29.a
+		hold_election = ROOT
+	}
+}
+
+#Marshal the military
+country_event = {
+	id = usc.30
+	title = usc.30.t
+	desc = usc.30.desc
+	picture = GFX_report_trump_denver_lh
+	fire_only_once = yes
+	is_triggered_only = yes
+	minor_flavor = yes
+	trigger = {
+		tag = USC
+	}
+	immediate = {
+		hidden_effect = {
+			log = "[GetDateText]: [Root.GetName]: event usc.30 immediate"
+		}
+	}
+	option = {
+		name = usc.30.a
+	}
+}
+
+#Mobilize the Militias
+country_event = {
+	id = usc.31
+	title = usc.31.t
+	desc = usc.31.desc
+	picture = GFX_report_trump_denver_lh
+	fire_only_once = yes
+	is_triggered_only = yes
+	minor_flavor = yes
+	trigger = {
+		tag = USC
+	}
+	immediate = {
+		hidden_effect = {
+			log = "[GetDateText]: [Root.GetName]: event usc.31 immediate"
+		}
+	}
+	option = {
+		name = usc.31.a
+	}
+}
+
+#The Refounding Father
+country_event = {
+	id = usc.32
+	title = usc.32.t
+	desc = usc.32.desc
+	picture = GFX_USC_the_new_ceaser
+	fire_only_once = yes
+	is_triggered_only = yes
+	minor_flavor = yes
+	trigger = {
+		tag = USC
+	}
+	immediate = {
+		hidden_effect = {
+			log = "[GetDateText]: [Root.GetName]: event usc.32 immediate"
+		}
+	}
+	option = {
+		name = usc.32.a
+	}
+}
+
+#Coming Full Circle
+country_event = {
+	id = usc.33
+	title = usc.33.t
+	desc = usc.33.desc
+	picture = GFX_USC_trumpism_forever
+	fire_only_once = yes
+	is_triggered_only = yes
+	minor_flavor = yes
+	trigger = {
+		tag = USC
+	}
+	immediate = {
+		hidden_effect = {
+			log = "[GetDateText]: [Root.GetName]: event usc.33 immediate"
+		}
+	}
+	option = {
+		name = usc.33.a
+	}
+}
+
+#A Throne Reclaimed
+country_event = {
+	id = usc.34
+	title = usc.34.t
+	desc = usc.34.desc
+	picture = GFX_report_trump_denver_lh
+	fire_only_once = yes
+	is_triggered_only = yes
+	minor_flavor = yes
+	trigger = {
+		tag = USC
+	}
+	immediate = {
+		hidden_effect = {
+			log = "[GetDateText]: [Root.GetName]: event usc.34 immediate"
+		}
+	}
+	option = {
+		name = usc.34.a
+	}
+}
+
+#Marco Rubio Appointed Vice President
+country_event = {
+	id = usc.35
+	title = usc.35.t
+	desc = usc.35.desc
+	picture = GFX_USC_rubio_trump
+	fire_only_once = yes
+	is_triggered_only = yes
+	minor_flavor = yes
+	trigger = {
+		tag = USC
+	}
+	immediate = {
+		hidden_effect = {
+			log = "[GetDateText]: [Root.GetName]: event usc.35 immediate"
+		}
+	}
+	option = {
+		name = usc.35.a
+	}
+}
+
+#Rand Paul Appointed Vice President
+country_event = {
+	id = usc.36
+	title = usc.36.t
+	desc = usc.36.desc
+	picture = GFX_USC_paul_trump
+	fire_only_once = yes
+	is_triggered_only = yes
+	minor_flavor = yes
+	trigger = {
+		tag = USC
+	}
+	immediate = {
+		hidden_effect = {
+			log = "[GetDateText]: [Root.GetName]: event usc.36 immediate"
+		}
+	}
+	option = {
+		name = usc.36.a
+	}
+}
+
+#Michael Flynn Appointed Vice President
+country_event = {
+	id = usc.37
+	title = usc.37.t
+	desc = usc.37.desc
+	picture = GFX_USC_flynn_trump
+	fire_only_once = yes
+	is_triggered_only = yes
+	minor_flavor = yes
+	trigger = {
+		tag = USC
+	}
+	immediate = {
+		hidden_effect = {
+			log = "[GetDateText]: [Root.GetName]: event usc.37 immediate"
+		}
+	}
+	option = {
+		name = usc.37.a
+	}
+}
+
+#A Relatively Expected Meeting
+country_event = {
+	id = usc.38
+	title = usc.38.t
+	desc = usc.38.desc
+	picture = GFX_USC_trump_in_hat
+	fire_only_once = yes
+	is_triggered_only = yes
+	minor_flavor = yes
+	trigger = {
+		tag = USC
+	}
+	immediate = {
+		hidden_effect = {
+			log = "[GetDateText]: [Root.GetName]: event usc.38 immediate"
+		}
+	}
+	option = {
+		name = usc.38.a
+	}
+}
+
+#An American Resistance
+country_event = {
+	id = usc.39
+	title = usc.39.t
+	desc = usc.39.desc
+	picture = GFX_USC_trump_support
+	fire_only_once = yes
+	is_triggered_only = yes
+	minor_flavor = yes
+	trigger = {
+		tag = USC
+	}
+	immediate = {
+		hidden_effect = {
+			log = "[GetDateText]: [Root.GetName]: event usc.39 immediate"
+		}
+	}
+	option = {
+		name = usc.39.a
+	}
+}
+
+#Acceptance and Death
+country_event = {
+	id = usc.40
+	title = usc.40.t
+	desc = usc.40.desc
+	picture = GFX_USC_trump_support
+	fire_only_once = yes
+	is_triggered_only = yes
+	minor_flavor = yes
+	trigger = {
+		tag = USC
+	}
+	immediate = {
+		hidden_effect = {
+			log = "[GetDateText]: [Root.GetName]: event usc.40 immediate"
+		}
+	}
+	option = {
+		name = usc.40.a
+	}
+}
+#USC Elections
+country_event = {
+	id = usc.41
+	title = usc.41.t
+	desc = {
+		text = usc.41.desc_1
+		trigger = {
+			date < 2025.01.01
+		}
+	}
+	desc = {
+		text = usc.41.desc_2_5
+		trigger = {
+			date > 2025.01.01
+			has_country_flag = USC_trump_third_time_flag
+		}
+	}
+	desc = {
+		text = usc.41.desc_2
+		trigger = {
+			date > 2025.01.01
+			NOT = {
+				has_country_flag = USC_trump_third_time_flag
+			}
+		}
+	}
+	picture = GFX_USC_elections
+	fire_only_once = no
+	is_triggered_only = yes
+	trigger = {
+		tag = USC
+		date < 2033.01.01
+		NOT = { has_country_flag = USC_elections_suspended_flag }
+	}
+	immediate = {
+		hidden_effect = {
+			log = "[GetDateText]: [Root.GetName]: event usc.41 immediate"
+			if = {
+				limit = {
+					NOT = {
+						OR = {
+							has_country_flag = USC_trump_third_time_flag
+							has_country_flag = USC_brand_new_president_flag 
+						}
+					}
+					date > 2027.01.01
+				}
+				country_event = { id = usc.77 days = 76 }
+			}
+		}
+	}
+	option = {
+		name = usc.41.a
+		if = {
+			limit = { has_country_flag = USC_trump_third_time_flag }
+			clr_country_flag = USC_trump_third_time_flag
+			clr_country_flag = USC_trump_third_term_flag
+		}
+		else_if = {
+			limit = {
+				date > 2027.01.01
+			}
+			set_country_flag = USC_brand_new_president_flag
+		}
+	}
+}
+#Trump Farewell Address to Nation
+country_event = {
+	id = usc.42
+	title = usc.42.t
+	desc = usc.42.desc
+	picture = GFX_USC_trump_letter
+	fire_only_once = yes
+	is_triggered_only = yes
+	trigger = {
+		tag = USC
+	}
+	immediate = {
+		hidden_effect = {
+			log = "[GetDateText]: [Root.GetName]: event usc.42 immediate"
+		}
+	}
+	option = {
+		name = usc.42.a
+		add_political_power = 25
+		add_stability = 0.015
+	}
+}
+#Trump picks new VP
+country_event = {
+	id = usc.43
+	title = usc.43.t
+	desc = usc.43.desc
+	picture = GFX_USC_trumpists_2
+	fire_only_once = yes
+	is_triggered_only = yes
+	trigger = {
+		tag = USC
+	}
+	immediate = {
+		hidden_effect = {
+			log = "[GetDateText]: [Root.GetName]: event usc.43 immediate"
+		}
+	}
+	option = { #mikey-pency
+		name = usc.43.j
+		trigger = {
+			has_country_flag = USC_pence_enabled_flag
+		}
+		add_popularity = {
+			ideology = conservative
+			popularity = 0.03
+		}
+		custom_effect_tooltip = appoint_head_minister_tooltip
+		show_ideas_tooltip = USC_mike_pence_hog
+		hidden_effect = {
+			add_ideas = USC_mike_pence_hog
+		}
+		
+	}	
+	option = { #jim jordan
+		name = usc.43.a
+		add_popularity = {
+			ideology = conservative
+			popularity = 0.03
+		}
+		custom_effect_tooltip = appoint_head_minister_tooltip
+		show_ideas_tooltip = USC_jim_jordan_hog
+		hidden_effect = {
+			add_ideas = USC_jim_jordan_hog
+		}
+		
+	}	
+	option = { #rubio
+		name = usc.43.b
+		add_political_power = 25
+		custom_effect_tooltip = appoint_head_minister_tooltip
+		show_ideas_tooltip = USC_marco_rubio_hog
+		hidden_effect = {
+			add_ideas = USC_marco_rubio_hog
+		}
+		
+	}	
+	option = { #byron donalds
+		name = usc.43.c
+		add_stability = -0.025
+		custom_effect_tooltip = appoint_head_minister_tooltip
+		show_ideas_tooltip = USC_bryon_donalds_hog
+		hidden_effect = {
+			add_ideas = USC_bryon_donalds_hog
+		}
+	}	
+	option = { #jd vance
+		name = usc.43.f
+		trigger = {
+			set_temp_variable = {
+				var = USC_rage_trigger_temp
+				value = 0.49
+			}
+			USC_has_rage_greater_than_or_equals = yes
+			USC_jd_vance_char = {
+				is_assigned = yes
+				skill > 1
+			}
+		}
+		add_political_power = -100
+		add_popularity = {
+			ideology = conservative
+			popularity = 0.05
+		}
+		add_stability = 0.03
+		custom_effect_tooltip = appoint_head_minister_tooltip
+		show_ideas_tooltip = USC_jd_vance_hog
+		set_country_flag = USC_jd_vance_selected_flag
+		hidden_effect = {
+			add_ideas = USC_jd_vance_hog
+		}
+	}
+}
+#Lost Illinois
+country_event = {
+	id = usc.44
+	title = usc.43.t
+	desc = usc.43.desc
+	picture = GFX_USC_illinois_lost
+	fire_only_once = yes
+	is_triggered_only = yes
+	trigger = {
+		tag = USC
+		any_state = {
+			not = {
+				USA_is_illinois_state = yes
+			}
+		}
+	}
+	immediate = {
+		hidden_effect = {
+			log = "[GetDateText]: [Root.GetName]: event usc.44 immediate"
+		}
+	}
+	option = {
+		name = usc.43.a
+		if = {
+			limit = {
+				any_state = {
+					USA_is_iowa_state = yes
+				}
+			}
+			USC_militia = yes
+			every_state = {
+				limit = {
+					USA_is_iowa_state = yes
+				}
+				custom_effect_tooltip = USC_build_foritfications
+				hidden_effect = {
+					add_building_construction = {
+					    type = bunker
+					    level = 1
+					    instant_build = yes
+					    province = {
+					        limit_to_victory_point > 1
+					    }
+					}
+					add_building_construction = {
+					    type = bunker
+					    level = 2
+					    instant_build = yes
+					    province = {
+					        limit_to_supply_node = yes
+					    }
+					}
+					add_building_construction = {
+					    type = anti_air_building
+					    level = 2
+    					instant_build = yes
+					}
+				}
+			}
+		}
+		if = {
+			limit = {
+				any_state = {
+					USA_is_missouri_state = yes
+				}
+			}
+			USC_militia = yes
+			every_state = {
+				limit = {
+					USA_is_missouri_state = yes
+				}
+				custom_effect_tooltip = USC_build_foritfications
+				hidden_effect = {
+					add_building_construction = {
+					    type = bunker
+					    level = 1
+					    instant_build = yes
+					    province = {
+					        limit_to_victory_point > 1
+					    }
+					}
+					add_building_construction = {
+					    type = bunker
+					    level = 2
+					    instant_build = yes
+					    province = {
+					        limit_to_supply_node = yes
+					    }
+					}
+					add_building_construction = {
+					    type = anti_air_building
+					    level = 2
+    					instant_build = yes
+					}
+				}
+			}
+		}
+		if = {
+			limit = {
+				any_state = {
+					USA_is_wisconsin_state = yes
+				}
+			}
+			USC_militia = yes
+			every_state = {
+				limit = {
+					USA_is_wisconsin_state = yes
+				}
+				custom_effect_tooltip = USC_build_foritfications
+				hidden_effect = {
+					add_building_construction = {
+					    type = bunker
+					    level = 1
+					    instant_build = yes
+					    province = {
+					        limit_to_victory_point > 1
+					    }
+					}
+					add_building_construction = {
+					    type = bunker
+					    level = 2
+					    instant_build = yes
+					    province = {
+					        limit_to_supply_node = yes
+					    }
+					}
+					add_building_construction = {
+					    type = anti_air_building
+					    level = 2
+    					instant_build = yes
+					}
+				}
+			}
+		}
+	}
+}
+#Lost Wisconsin
+country_event = {
+	id = usc.45
+	title = usc.44.t
+	desc = usc.44.desc
+	picture = GFX_USC_illinois_lost
+	fire_only_once = yes
+	is_triggered_only = yes
+	trigger = {
+		tag = USC
+		any_state = {
+			not = {
+				USA_is_wisconsin_state = yes
+			}
+		}
+	}
+	immediate = {
+		hidden_effect = {
+			log = "[GetDateText]: [Root.GetName]: event usc.45 immediate"
+		}
+	}
+	# One River Strategy
+	option = {
+		name = usc.43.a
+		unlock_decision_tooltip = USC_prepare_minneapolis_seigeworks_decision
+		unlock_decision_tooltip = USC_raise_minneapolis_citizens_decision
+		unlock_decision_tooltip = USC_remove_unionist_spies_saint_paul_decision
+		unlock_decision_tooltip = USC_evacuate_st_paul_patriots_decision
+		activate_mission = USC_holding_the_east_mission
+		
+	}
+	#Two River Strategy
+	option = {
+		name = usc.43.a
+		unlock_decision_tooltip = USC_prepare_minneapolis_seigeworks_decision
+		unlock_decision_tooltip = USC_raise_minneapolis_citizens_decision
+		unlock_decision_tooltip = USC_remove_unionist_spies_saint_paul_decision
+		unlock_decision_tooltip = USC_evacuate_st_paul_patriots_decision
+		activate_mission = USC_holding_the_north_mission
+		
+	}
+}
+#In My Darkest Hour / Trump's Leningrad
+country_event = {
+	id = usc.46
+	title = usc.46.t
+	desc = usc.46.d
+	picture = GFX_USC_trump_e
+	fire_only_once = yes
+	is_triggered_only = yes
+	trigger = {
+		tag = USC
+	}
+	immediate = {
+		hidden_effect = {
+			activate_mission = USC_hold_Minneapolis_mission
+			load_oob = USC_citizen_brigade_minneapolis
+		}
+	}
+	option = {
+		name = usc.46.a
+		add_war_support = 0.02
+		custom_effect_tooltip = USC_citizen_brigade_tt
+		effect_tooltip = {
+			activate_mission = USC_hold_Minneapolis_mission
+		}
+	}
+}
+
+#Sweating Bullets / Trump's Stalingrad
+country_event = {
+	id = usc.47
+	title = usc.47.t
+	desc = usc.47.d
+	picture = GFX_USC_trump_hard
+	fire_only_once = yes
+	is_triggered_only = yes
+	trigger = {
+		tag = USC
+	}
+	immediate = {
+		hidden_effect = {
+			activate_mission = USC_hold_saint_louis_mission
+			load_oob = USC_citizen_brigade_saint_louis
+		}
+	}
+	option = {
+		name = usc.47.a
+		add_war_support = 0.02
+		custom_effect_tooltip = USC_citizen_brigade_tt
+		effect_tooltip = {
+			activate_mission = USC_hold_saint_louis_mission
+		}
+	}
+}
+
+#Countdown to Extinction / Trump's Kiev
+country_event = {
+	id = usc.48
+	title = usc.48.t
+	desc = usc.48.d
+	picture = GFX_USC_trump_cap
+	fire_only_once = yes
+	is_triggered_only = yes
+	trigger = {
+		tag = USC
+	}
+	immediate = {
+		hidden_effect = {
+			activate_mission = USC_hold_oklahoma_city_mission
+			division_template = {
+				name = "Liberty Protectors"
+				
+				regiments = {
+					infantry = { x = 0 y = 0 }
+					militia = { x = 0 y = 1 }
+					militia = { x = 0 y = 2 }
+					militia = { x = 0 y = 3 }
+					militia = { x = 0 y = 4 }
+				}
+				support = {
+				}
+			}
+			1236 = {
+				create_unit = {
+					division = "name = \"Liberty Protectors\" division_template = \"Liberty Protectors\" start_experience_factor = 0.4 start_equipment_factor = 1.0" 
+					owner = ROOT	
+				}
+				create_unit = {
+					division = "name = \"Liberty Protectors\" division_template = \"Liberty Protectors\" start_experience_factor = 0.4 start_equipment_factor = 1.0" 
+					owner = ROOT	
+				}
+				create_unit = {
+					division = "name = \"Liberty Protectors\" division_template = \"Liberty Protectors\" start_experience_factor = 0.4 start_equipment_factor = 1.0" 
+					owner = ROOT	
+				}
+			}
+		}
+	}
+	option = {
+		name = usc.48.a
+		add_war_support = 0.02
+		custom_effect_tooltip = USC_citizen_brigade_tt
+		effect_tooltip = {
+			activate_mission = USC_hold_oklahoma_city_mission
+		}
+	}
+}
+
+#Endgame / Trump's Moscow
+country_event = {
+	id = usc.49
+	title = usc.49.t
+	desc = usc.49.d
+	picture = GFX_USC_trump_dark
+	fire_only_once = yes
+	is_triggered_only = yes
+	trigger = {
+		tag = USC
+	}
+	immediate = {
+		hidden_effect = {
+			activate_mission = USC_hold_denver_mission
+			division_template = {
+				name = "Liberty Protectors"
+				
+				regiments = {
+					infantry = { x = 0 y = 0 }
+					militia = { x = 0 y = 1 }
+					militia = { x = 0 y = 2 }
+					militia = { x = 0 y = 3 }
+					militia = { x = 0 y = 4 }
+				}
+				support = {
+				}
+			}
+			1142 = {
+				create_unit = {
+					division = "name = \"Liberty Protectors\" division_template = \"Liberty Protectors\" start_experience_factor = 0.4 start_equipment_factor = 1.0" 
+					owner = ROOT	
+				}
+				create_unit = {
+					division = "name = \"Liberty Protectors\" division_template = \"Liberty Protectors\" start_experience_factor = 0.4 start_equipment_factor = 1.0" 
+					owner = ROOT	
+				}
+				create_unit = {
+					division = "name = \"Liberty Protectors\" division_template = \"Liberty Protectors\" start_experience_factor = 0.4 start_equipment_factor = 1.0" 
+					owner = ROOT	
+				}
+			}
+		}
+	}
+	option = {
+		name = usc.49.a
+		add_war_support = 0.02
+		custom_effect_tooltip = USC_citizen_brigade_tt
+		effect_tooltip = {
+			activate_mission = USC_hold_denver_mission
+		}
+	}
+}
+
+#Trump Addresses the Nation
+country_event = {
+	id = usc.50
+	title = usc.50.t
+	desc = usc.50.d
+	picture = GFX_USC_trump_address
+	fire_only_once = yes
+	is_triggered_only = yes
+	trigger = {
+		tag = USC
+	}
+	option = {
+		name = usc.50.a
+		custom_effect_tooltip = USC_national_fury_tt
+	}
+}
+
+#Trump Reacts to the Unionist "President"
+country_event = {
+	id = usc.51
+	title = usc.51.t
+	desc = {
+		text = usc.51.desc_1
+		trigger = {
+			USB = {
+				OR = {
+					has_country_flag = USB_dem_sanders_won_flag
+					has_country_flag = USB_progressive_party_won_flag
+				}
+			}
+		}
+	}
+	desc = {
+		text = usc.51.desc_2
+		trigger = {
+			USB = {
+				OR = {
+					has_country_flag = USB_dem_bloomberg_won_flag
+					has_country_flag = USB_innovationist_party_won_flag
+				}
+			}
+		}
+	}
+	desc = {
+		text = usc.51.desc_3
+		trigger = {
+			USB = {
+				has_country_flag = USB_yang_won_flag
+			}
+		}
+	}	
+	desc = {
+		text = usc.51.desc_4
+		trigger = {
+			USB = {
+				has_country_flag = USB_harris_won_flag
+			}
+		}
+	}
+	desc = {
+		text = usc.51.desc_5
+		trigger = {
+			USB = {
+				has_country_flag = USB_romney_haley_won_flag
+			}
+		}
+	}
+	desc = {
+		text = usc.51.desc_6
+		trigger = {
+			USB = {
+				has_country_flag = USB_haley_romney_won_flag
+			}
+		}
+	}
+	desc = {
+		text = usc.51.desc_7
+		trigger = {
+			USB = {
+				has_country_flag = USB_klobuchar_won_flag
+			}
+		}
+	}
+	desc = {
+		text = usc.51.desc_8
+		trigger = {
+			USB = {
+				has_country_flag = USB_o_rourke_won_flag
+			}
+		}
+	}
+	desc = {
+		text = usc.51.desc_9
+		trigger = {
+			USB = {
+				has_country_flag = USB_buttigieg_won_flag
+			}
+		}
+	}
+	desc = {
+		text = usc.51.desc_10
+		trigger = {
+			USB = {
+				has_country_flag = USB_hillary_won_flag
+			}
+		}
+	}
+	desc = {
+		text = usc.51.desc_11
+		trigger = {
+			USB = {
+				has_country_flag = USB_biden_won_2024_flag
+			}
+		}
+	}
+	picture = GFX_USC_trump_crowd
+	#fire_only_once = yes
+	is_triggered_only = yes
+	trigger = {
+		OR = {
+			tag = USC
+			tag = USB
+		}
+	}
+	option = {
+		name = usc.51.a
+		trigger = {
+			tag = USC
+		}
+	}
+	option = {
+		name = usc.51.b
+		trigger = {
+			tag = USB
+		}
+	}
+}
+
+#Use of force
+country_event = {
+	id = usc.52
+	title = usc.52.t
+	desc = usc.52.d
+	picture = GFX_USC_trump_address
+	fire_only_once = yes
+	is_triggered_only = yes
+	trigger = {
+		tag = USC
+	}
+	option = { #Insurection must be crushed
+		name = usc.52.a
+		custom_effect_tooltip = USC_trump_dark_tt
+		custom_effect_tooltip = tooltip_white_line
+		set_temp_variable = {
+			var = USC_loyalty_mil_var_temp
+			value = 0.1
+		}
+		USC_add_loyalty_mil = yes
+		increase_police = yes
+	}	
+	option = { #Only the most necessary force
+		name = usc.52.b
+		set_temp_variable = {
+			var = USC_loyalty_con_var_temp
+			value = 0.1
+		}
+		USC_add_loyalty_con = yes		
+		set_temp_variable = {
+			var = USC_loyalty_lib_var_temp
+			value = 0.05
+		}
+		USC_add_loyalty_lib = yes
+		add_war_support = -0.015
+		add_political_power = 15
+	}
+}
+#Holding a Rally
+country_event = {
+	id = usc.53
+	title = usc.53.t
+	desc = usc.53.d
+	picture = GFX_USC_trump_support_2
+	fire_only_once = yes
+	is_triggered_only = yes
+	trigger = {
+		tag = USC
+	}
+	option = { #Denver
+		name = usc.53.a
+		add_political_power = -25
+		country_event = { id = usc.54 days = 6 }
+	}
+	option = { #Minneapolis
+		name = usc.53.b
+		add_political_power = -25
+		add_war_support = 0.05
+		country_event = { id = usc.55 days = 6 }
+	}
+	option = { #Fine, we won't rally, but hold a massive media campaign 
+		name = usc.53.c
+		add_political_power = 25
+		add_war_support = 0.025
+		add_stability = 0.015
+		country_event = { id = usc.64 days = 690 }
+	}
+}
+#Denver Rally
+country_event = {
+	id = usc.54
+	title = usc.54.t
+	desc = usc.54.d
+	picture = GFX_USC_trumpists_2
+	fire_only_once = yes
+	is_triggered_only = yes
+	trigger = {
+		tag = USC
+	}
+	option = { #The crowds are loving it
+		name = usc.54.a
+		add_war_support = 0.03
+		add_stability = 0.03
+		hidden_effect = {
+			country_event = { id = usc.64 days = 670 }
+		}
+	}
+}
+#Minneapolis Rally - Assasination Attempt
+country_event = {
+	id = usc.55
+	title = usc.55.t
+	desc = usc.55.d
+	picture = GFX_USC_trump_shooting
+	fire_only_once = yes
+	is_triggered_only = yes
+	trigger = {
+		tag = USC
+	}
+	option = { #Honey, they tried to kill president Trump!
+		name = usc.55.a
+		custom_effect_tooltip = USC_trump_dark_tt
+		custom_effect_tooltip = tooltip_white_line
+		add_to_variable = {
+			var = USC_dark_maga_points_var
+			value = 1
+		}
+		hidden_effect = {
+			country_event = { id = usc.59 days = 8 }
+			set_country_leader_portrait = {
+				portrait = GFX_portrait_USA_donald_trump9
+			}
+		}
+	}
+}
+
+#Kevin Roberts and Project: American Resurrection 
+country_event = {
+	id = usc.56
+	title = usc.56.t
+	desc = usc.56.d
+	picture = GFX_USC_trump_address
+	fire_only_once = yes
+	is_triggered_only = yes
+	trigger = {
+		tag = USC
+	}
+	option = { #they got some ideas
+		name = usc.56.a
+		custom_effect_tooltip = USC_trump_dark_tt
+		custom_effect_tooltip = tooltip_white_line
+		add_to_variable = {
+			var = USC_dark_maga_points_var
+			value = 1
+		}
+		set_country_flag = USC_dark_maga_minister_flag
+	}
+	option = { #sounds like jiberish to me
+		name = usc.56.b
+		add_political_power = 50
+		add_popularity = {
+			ideology = market_liberal
+			popularity = 0.05
+		}
+	}
+}
+
+#Mike Pence and Weak Republicans
+country_event = {
+	id = usc.57
+	title = usc.57.t
+	desc = usc.57.d
+	picture = GFX_USC_pence
+	fire_only_once = yes
+	is_triggered_only = yes
+	trigger = {
+		tag = USC
+	}
+	option = { #Folks, what can I do, so much humanity in me. Mikey, I forgive you
+		name = usc.57.a
+		USC_add_chirstian_right_mini_faction = yes
+		add_power_balance_value = {
+			id = USC_civil_war_balance
+			value = -0.075
+		}
+		set_country_flag = USC_pence_enabled_flag
+		custom_effect_tooltip = tooltip_white_line
+		custom_effect_tooltip = USC_pence_vp_pick_tt
+		custom_effect_tooltip = tooltip_white_line
+		custom_effect_tooltip = unlock_for_minister_tooltip
+		show_ideas_tooltip = USC_mike_pompeo_for
+		custom_effect_tooltip = unlock_eco_minister_tooltip
+		show_ideas_tooltip = USC_doug_burgum_eco
+		custom_effect_tooltip = unlock_sec_minister_tooltip
+		show_ideas_tooltip = USC_josh_hawley_sec
+	}
+	option = { #Mike, Mike, have you forgotten? I don't forget, I'm certainly don't forgive
+		name = usc.57.b
+		custom_effect_tooltip = USC_trump_dark_tt
+		custom_effect_tooltip = tooltip_white_line
+		add_power_balance_value = {
+			id = USC_civil_war_balance
+			value = 0.075
+		}
+		add_manpower = -500
+		add_to_variable = {
+			var = USC_dark_maga_points_var
+			value = 1
+		}
+		hidden_effect = {
+			USB = {
+				country_event = {
+					id = usb.122
+					days = 25
+					random_days = 14
+				}
+			}
+		}
+	}
+}
+
+#Elon Musk
+country_event = {
+	id = usc.58
+	title = usc.58.t
+	desc = usc.58.d
+	picture = GFX_USC_trump_address
+	fire_only_once = yes
+	is_triggered_only = yes
+	trigger = {
+		tag = USC
+	}
+	option = { #YES
+		name = usc.58.a
+		set_temp_variable = {
+			var = income_var_temp
+			value = 200
+		}
+		add_income = yes
+		custom_effect_tooltip = unlock_eco_minister_tooltip
+		show_ideas_tooltip = USC_elon_musk_eco
+		set_country_flag = USC_elon_musk_allowed_flag
+	}
+	option = { 	#okay
+		name = usc.58.b
+		add_political_power = 100
+		set_temp_variable = {
+			var = income_var_temp
+			value = 100
+		}
+		add_income = yes
+	}
+}
+
+#The days after
+country_event = {
+	id = usc.59
+	title = usc.59.t
+	desc = usc.59.d
+	picture = GFX_USC_trump_bandage
+	fire_only_once = yes
+	is_triggered_only = yes
+	trigger = {
+		tag = USC
+	}
+	option = { #
+		name = usc.59.a
+		custom_effect_tooltip = USC_trump_nominee_tt
+		add_power_balance_value = {
+			id = USC_civil_war_balance
+			value = 0.1
+		}
+		add_political_power = 50
+		add_war_support = 0.1
+	}
+}
+
+#Libertarian Revolt
+country_event = {
+	id = usc.61
+	title = usc.61.t
+	desc = usc.61.d
+	picture = GFX_USC_anti_trump
+	fire_only_once = yes
+	is_triggered_only = yes
+	trigger = {
+		tag = USC
+	}
+	option = { #
+		name = usc.61.a
+		add_ideas = USC_libertarian_rebellion_idea
+	}
+}
+
+#anti-trump
+country_event = {
+	id = usc.62
+	title = usc.62.t
+	desc = usc.62.d
+	picture = GFX_USC_anti_trump
+	fire_only_once = yes
+	is_triggered_only = yes
+	trigger = {
+		tag = USC
+	}
+	immediate = {
+		hidden_effect = {
+			set_country_flag = USC_anti_trump_protest_flag
+			activate_mission = USC_anti_american_protests_mission
+			add_ideas = USC_anti_american_protests_idea
+			add_stability = -0.1
+			add_popularity = {
+				ideology = social_democrat
+				popularity = 0.05
+			}		
+			add_popularity = {
+				ideology = social_liberal
+				popularity = 0.05
+			}	
+			add_popularity = {
+				ideology = libertarian_socialist
+				popularity = 0.05
+			}
+			add_popularity = {
+				ideology = communist
+				popularity = 0.05
+			}	
+			add_popularity = {
+				ideology = totalitarian_socialist
+				popularity = 0.05
+			}
+		}
+	}
+	option = { #
+		name = usc.62.a
+		activate_mission_tooltip = USC_anti_american_protests_mission
+		effect_tooltip = {
+			add_ideas = USC_anti_american_protests_idea
+			add_stability = -0.1
+			add_popularity = {
+				ideology = social_democrat
+				popularity = 0.05
+			}		
+			add_popularity = {
+				ideology = social_liberal
+				popularity = 0.05
+			}	
+			add_popularity = {
+				ideology = libertarian_socialist
+				popularity = 0.05
+			}
+			add_popularity = {
+				ideology = communist
+				popularity = 0.05
+			}	
+			add_popularity = {
+				ideology = totalitarian_socialist
+				popularity = 0.05
+			}
+		}
+		unlock_decision_tooltip = USC_rally_maga_supporters
+		unlock_decision_tooltip = USC_spread_counter_propaganda
+		unlock_decision_tooltip = USC_deploy_militia
+		unlock_decision_tooltip = USC_deploy_national_guard
+		unlock_decision_tooltip = USC_silence_the_fake_news
+		hidden_effect = {
+			country_event = { id = usc.63 days = 7 random_days = 5 }
+			if = {
+				limit = {
+					is_ai = yes
+				}
+				add_political_power = 100
+			}
+		}
+	}
+}
+
+#fox news segment
+country_event = {
+	id = usc.63
+	title = usc.63.t
+	desc = usc.63.d
+	picture = GFX_USC_jesse_watters
+	fire_only_once = yes
+	is_triggered_only = yes
+	trigger = {
+		tag = USC
+	}
+	option = { #
+		name = usc.63.a
+		add_stability = 0.015
+	}
+}
+
+#GOP nominates Trump for 2024
+country_event = {
+	id = usc.64
+	title = usc.64.t
+	desc = usc.64.d
+	picture = GFX_USC_trump_gop
+	fire_only_once = yes
+	is_triggered_only = yes
+	trigger = {
+		tag = USC
+	}
+	option = { #
+		name = usc.64.a
+		custom_effect_tooltip = USC_trump_nominee_tt
+		add_political_power = 25
+	}
+}
+
+#future of democrats
+country_event = {
+	id = usc.65
+	title = usc.65.t
+	desc = usc.65.d
+	picture = GFX_USC_democrats
+	fire_only_once = yes
+	is_triggered_only = yes
+	trigger = {
+		tag = USC
+	}
+	option = { #
+		name = usc.65.a
+		USC_add_trump_democrats_mini_faction = yes
+		add_political_power = -50
+		add_power_balance_value = {
+			id = USC_civil_war_balance
+			value = -0.065
+		}
+		hidden_effect = {
+			set_party_name = {
+				ideology = social_liberal
+				name = USC_new_democrats_short
+				long_name = USC_new_democrats_long
+			}
+			add_popularity = {
+				ideology = social_liberal
+				popularity = 0.055
+			}
+		}
+	}
+	option = { #
+		name = usc.65.b
+		add_political_power = 15
+		add_power_balance_value = {
+			id = USC_civil_war_balance
+			value = 0.065
+		}
+		set_country_flag = USC_bobby_kennedy_allowed_flag
+		custom_effect_tooltip = unlock_sec_minister_tooltip
+		show_ideas_tooltip = USC_robert_kennedy_jr_sec
+		hidden_effect = {
+			country_event = { id = usc.67 days = 25 random_days = 5 }
+		}
+	}
+}
+
+#libertarian party joins trump government
+country_event = {
+	id = usc.66
+	title = usc.66.t
+	desc = usc.66.d
+	picture = GFX_USC_trump_libertarians
+	fire_only_once = yes
+	is_triggered_only = yes
+	trigger = {
+		tag = USC
+	}
+	option = { #
+		name = usc.66.a
+		USC_add_libertarian_party_mini_faction = yes
+	}
+}
+
+#kennedy forms we the people
+country_event = {
+	id = usc.67
+	title = usc.67.t
+	desc = usc.67.d
+	picture = GFX_USC_kennedy_speech
+	fire_only_once = yes
+	is_triggered_only = yes
+	trigger = {
+		tag = USC
+	}
+	option = { #
+		name = usc.67.a
+		add_political_power = -25
+		USC_add_we_the_people_mini_faction = yes
+		hidden_effect = {
+			set_party_name = {
+				ideology = social_liberal
+				name = USC_we_the_people_short
+				long_name = USC_we_the_people_long
+			}
+			add_popularity = {
+				ideology = social_liberal
+				popularity = 0.053
+			}
+			add_country_leader_role = {
+				character = USC_robert_kennedy_jr_char
+				promote_leader = yes
+				country_leader = {
+					ideology = centrist
+					expire="1.1.1.1"
+					id=-1
+					traits = { }
+				}
+			}
+		}
+	}
+}
+
+#nick fuentes death event
+country_event = {
+	id = usc.68
+	title = usc.68.t
+	desc = usc.68.d
+	picture = GFX_USC_fuentes_dead
+	fire_only_once = yes
+	is_triggered_only = yes
+	trigger = {
+		tag = USC
+	}
+	option = { #
+		name = usc.68.a
+		add_political_power = 5
+	}
+}
+
+#tulsi gabbard political future
+country_event = {
+	id = usc.69
+	title = usc.69.t
+	desc = usc.69.d
+	picture = GFX_USC_trump_tulsi
+	fire_only_once = yes
+	is_triggered_only = yes
+	trigger = {
+		tag = USC
+	}
+	option = { #
+		name = usc.69.a
+		USC_add_leftists_mini_faction = yes
+		set_country_flag = USC_tulsi_upgraded_flag
+		swap_ideas = {
+			remove_idea = USC_tulsi_gabbard_int
+			add_idea = USC_tulsi_gabbard_2_int
+		}
+		hidden_effect = {
+			country_event = { id = usc.72 days = 70 random_hours = 10 }
+			set_party_name = {
+				ideology = social_democrat
+				name = USC_mpp_short
+				long_name = USC_mpp_long
+			}
+			add_popularity = {
+				ideology = social_democrat
+				popularity = 0.045
+			}
+			add_country_leader_role = {
+				character = USC_tulsi_gabbard_char
+				promote_leader = yes
+				country_leader = {
+					ideology = left_populism
+					expire="1.1.1.1"
+					id=-1
+					traits = { }
+				}
+			}
+		}
+	}
+	option = { #
+		name = usc.69.b
+		add_political_power = 35
+	}
+}
+
+
+#rude awakening - total betrayal
+country_event = {
+	id = usc.70
+	title = usc.70.t
+	desc = usc.70.d
+	picture = GFX_USC_trump_alone
+	fire_only_once = yes
+	is_triggered_only = yes
+	trigger = {
+		tag = USC
+	}
+	option = { #
+		name = usc.70.a
+		set_country_flag = USC_cowed_to_bureaucrats_flag
+		effect_tooltip = {
+			swap_ruler_traits = { remove = hos_vanguard_of_america add = hos_teflon_don }
+		}
+		hidden_effect = {
+			USC_trump_portrait_picker = yes
+			USC_donald_trump_char = {
+				promote_character = classical_liberalism
+				promote_character = classical_conservatism
+				promote_character = hybrid_regime
+			}
+			USC_donald_trump_char = {
+				swap_country_leader_traits = {
+					remove = hos_vanguard_of_america
+					add = hos_teflon_don
+					ideology = classical_liberalism
+				}
+				swap_country_leader_traits = {
+					remove = hos_vanguard_of_america
+					add = hos_teflon_don
+					ideology = classical_conservatism
+				}	
+				swap_country_leader_traits = {
+					remove = hos_vanguard_of_america
+					add = hos_teflon_don
+					ideology = hybrid_regime
+				}
+			}
+		}
+	}
+}
+
+#MAGA KING
+country_event = {
+	id = usc.71
+	title = usc.71.t
+	desc = usc.71.d
+	picture = GFX_USC_maga_king
+	fire_only_once = yes
+	is_triggered_only = yes
+	trigger = {
+		tag = USC
+	}
+	option = { #
+		name = usc.71.a
+		set_country_flag = USC_populist_king_flag
+		custom_effect_tooltip = USC_maga_king_tt
+		effect_tooltip = {
+			swap_ruler_traits = { remove = hos_vanguard_of_america add = hos_vanguard_of_america_2 }
+		}
+		hidden_effect = {
+			USC_trump_portrait_picker = yes
+			USC_donald_trump_char = {
+				promote_character = trumpism_market
+				promote_character = trumpism_conservative
+				promote_character = trumpism_authdem
+			}
+			USC_donald_trump_char = {
+				swap_country_leader_traits = {
+					remove = hos_vanguard_of_america
+					add = hos_vanguard_of_america_2
+					ideology = trumpism_market
+				}	
+				swap_country_leader_traits = {
+					remove = hos_vanguard_of_america
+					add = hos_vanguard_of_america_2
+					ideology = trumpism_conservative
+				}	
+				swap_country_leader_traits = {
+					remove = hos_vanguard_of_america
+					add = hos_vanguard_of_america_2
+					ideology = trumpism_authdem
+				}
+			}
+		}
+	}
+}
+
+#Formation of people's party
+country_event = {
+	id = usc.72
+	title = usc.72.t
+	desc = usc.72.d
+	picture = GFX_USC_trump_tulsi
+	fire_only_once = yes
+	is_triggered_only = yes
+	trigger = {
+		tag = USC
+	}
+	option = { #
+		name = usc.72.a
+		set_party_name = {
+			ideology = social_democrat
+			name = USC_peoples_party_name
+			long_name = USC_peoples_party_name
+		}
+		add_popularity = {
+			ideology = social_democrat
+			popularity = 0.015
+		}
+		set_country_flag = USC_peoples_party_formed_flag
+	}
+}
+
+#UltraMAGA gains momentum
+country_event = {
+	id = usc.73
+	title = usc.73.t
+	desc = usc.73.d
+	picture = GFX_USC_we_are_qanon
+	fire_only_once = yes
+	is_triggered_only = yes
+	trigger = {
+		tag = USC
+	}
+	option = { #
+		name = usc.73.a
+		USC_add_ultra_maga_mini_faction = yes
+		hidden_effect = {
+			add_popularity = {
+				ideology = national_socialist
+				popularity = 0.035
+			}
+			set_party_name = {
+				ideology = national_socialist
+				name = USC_ultra_maga_party
+				long_name = USC_ultra_maga_party_long
+			}
+		}
+	}
+}
+
+#return of trump's rasputin
+country_event = {
+	id = usc.74
+	title = usc.74.t
+	desc = usc.74.d
+	picture = GFX_USC_steve
+	fire_only_once = yes
+	is_triggered_only = yes
+	trigger = {
+		tag = USC
+	}
+	option = { #
+		name = usc.74.a
+		add_war_support = 0.015
+		add_popularity = {
+			ideology = fascist
+			popularity = 0.015
+		}
+		custom_effect_tooltip = unlock_eco_minister_tooltip
+		show_ideas_tooltip = USC_stephen_miller_eco		
+		custom_effect_tooltip = unlock_sec_minister_tooltip
+		show_ideas_tooltip = USC_steve_bannon_sec
+	}
+}
+
+#GOP nomination 
+country_event = {
+	id = usc.75
+	title = usc.75.t
+	desc = usc.75.d
+	picture = GFX_USC_GOP_debate
+	fire_only_once = yes
+	is_triggered_only = yes
+	trigger = {
+		tag = USC
+	}
+	immediate = {
+		hidden_effect = {
+			if = {
+				limit = {
+					NOT = { has_country_flag = USC_trump_third_term_flag }
+				}
+				set_country_flag = USC_its_over_term_flag
+			}
+		}
+	}
+	option = { #Trump third term
+		name = usc.75.a
+		trigger = {
+			has_country_flag = USC_trump_third_term_flag
+		}
+		set_country_flag = USC_trump_third_time_flag
+	}
+	option = { #Ivanka Trump
+		name = usc.75.a1
+		trigger = {
+			has_government = authoritarian_democrat
+			OR = {
+				power_balance_value = {
+					id = USC_civil_war_balance
+					value > -0.15
+				}
+				has_country_flag = USC_cowed_to_bureaucrats_flag
+			}
+			NOT = { has_country_flag = USC_trump_third_term_flag }
+		}
+		set_country_flag = USC_ivanka_president_pick_flag
+		if = {
+			limit = { date < 2030.01.01 }
+			country_event = { id = usc.79 days = 5 }
+		}	
+		else = {
+			country_event = { id = usc.78 days = 5 }
+		}
+	}
+	option = { #Don Trump JR
+		name = usc.75.a2
+		trigger = {
+			has_government = authoritarian_democrat
+			OR = {
+				power_balance_value = {
+					id = USC_civil_war_balance
+					value > 0.15
+				}
+				has_country_flag = USC_peoples_champion_flag
+			}
+			NOT = { has_country_flag = USC_trump_third_term_flag }
+		}
+		set_country_flag = USC_don_jr_president_pick_flag
+		if = {
+			limit = { date < 2030.01.01 }
+			country_event = { id = usc.79 days = 5 }
+		}	
+		else = {
+			country_event = { id = usc.78 days = 5 }
+		}
+	}
+	option = { #JD Vance
+		name = usc.75.b1
+		trigger = {
+			has_government = conservative
+			OR = {
+				power_balance_value = {
+					id = USC_civil_war_balance
+					value > 0.15
+				}
+				has_country_flag = USC_peoples_champion_flag
+			}
+			has_idea = USC_jd_vance_hog
+			NOT = { has_country_flag = USC_trump_third_term_flag }
+		}
+		set_country_flag = USC_jd_vance_president_pick_flag
+		country_event = { id = usc.78 days = 5 }
+	}
+	option = { #Rubio
+		name = usc.75.b2
+		trigger = {
+			has_government = conservative
+			OR = {
+				power_balance_value = {
+					id = USC_civil_war_balance
+					value > -0.15
+				}
+				has_country_flag = USC_cowed_to_bureaucrats_flag
+			}
+			has_idea = USC_marco_rubio_hog
+			NOT = { has_country_flag = USC_trump_third_term_flag }
+		}
+		set_country_flag = USC_rubio_president_pick_flag
+		country_event = { id = usc.78 days = 5 }
+	}
+	option = { #Ron Desantis
+		name = usc.75.b3
+		trigger = {
+			has_government = conservative
+			OR = {
+				power_balance_value = {
+					id = USC_civil_war_balance
+					value > -0.15
+				}
+				has_country_flag = USC_cowed_to_bureaucrats_flag
+			}
+			FLA = {
+				exists = no
+			}
+			check_variable = {
+				USC_loyalty_lib_var > USC_loyalty_mil_var
+			}
+			NOT = { has_country_flag = USC_trump_third_term_flag }
+		}
+		set_country_flag = USC_desantis_president_pick_flag
+		country_event = { id = usc.78 days = 5 }
+	}
+	option = { #Tucker Carlson
+		name = usc.75.b4
+		trigger = {
+			has_government = conservative
+			OR = {
+				power_balance_value = {
+					id = USC_civil_war_balance
+					value > 0.35
+				}
+				has_country_flag = USC_peoples_champion_flag
+			}
+			check_variable = {
+				USC_loyalty_lib_var > USC_loyalty_mil_var
+			}
+			NOT = { has_country_flag = USC_trump_third_term_flag }
+		}
+		set_country_flag = USC_carlson_president_pick_flag
+		country_event = { id = usc.78 days = 5 }
+	}
+	option = { #Mike Johnson
+		name = usc.75.b5
+		trigger = {
+			has_government = conservative
+			has_idea = USC_mike_johnson_sec
+			NOT = { has_country_flag = USC_trump_third_term_flag }
+		}
+		set_country_flag = USC_johnson_president_pick_flag
+		country_event = { id = usc.78 days = 5 }
+	}
+	option = { #Matt Gaetz
+		name = usc.75.b6
+		trigger = {
+			has_government = conservative
+			OR = {
+				power_balance_value = {
+					id = USC_civil_war_balance
+					value > 0.35
+				}
+				has_country_flag = USC_peoples_champion_flag
+			}
+			check_variable = {
+				USC_loyalty_mil_var > USC_loyalty_lib_var
+			}
+			NOT = { has_country_flag = USC_trump_third_term_flag }
+		}
+		set_country_flag = USC_gaetz_president_pick_flag
+		country_event = { id = usc.78 days = 5 }
+	}
+	option = { #Vivek
+		name = usc.75.b7
+		trigger = {
+			has_government = conservative
+			OR = {
+				power_balance_value = {
+					id = USC_civil_war_balance
+					value > 0.35
+				}
+				has_country_flag = USC_peoples_champion_flag
+			}
+			NOT = { has_country_flag = USC_trump_third_term_flag }
+		}
+		set_country_flag = USC_vivek_president_pick_flag
+		country_event = { id = usc.78 days = 5 }
+	}
+	option = { #Byron Donalds
+		name = usc.75.b8
+		trigger = {
+			has_government = conservative
+			check_variable = {
+				USC_loyalty_mil_var > USC_loyalty_lib_var
+			}
+			NOT = { has_country_flag = USC_trump_third_term_flag }
+		}
+		set_country_flag = USC_byron_president_pick_flag
+		country_event = { id = usc.78 days = 5 }
+	}
+	option = { #Kari Lake
+		name = usc.75.b9
+		trigger = {
+			has_government = conservative
+			check_variable = {
+				USC_loyalty_lib_var > USC_loyalty_mil_var
+			}
+			NOT = { has_country_flag = USC_trump_third_term_flag }
+		}
+		set_country_flag = USC_lake_president_pick_flag
+		country_event = { id = usc.78 days = 5 }
+	}	
+	option = { #Rand Paul
+		name = usc.75.c1
+		trigger = {
+			has_government = market_liberal
+			power_balance_value = {
+				id = USC_civil_war_balance
+				value > 0.15
+			}
+			NOT = { has_country_flag = USC_trump_third_term_flag }
+		}
+		set_country_flag = USC_paul_president_pick_flag
+		country_event = { id = usc.78 days = 5 }
+	}	
+	option = { #Sarah Palin
+		name = usc.75.c2
+		trigger = {
+			has_government = market_liberal
+			power_balance_value = {
+				id = USC_civil_war_balance
+				value > 0.35
+			}
+			NOT = { has_country_flag = USC_trump_third_term_flag }
+		}
+		set_country_flag = USC_palin_president_pick_flag
+		country_event = { id = usc.78 days = 5 }
+	}
+	option = { #Elon Musk
+		name = usc.75.c2
+		trigger = {
+			has_government = market_liberal
+			power_balance_value = {
+				id = USC_civil_war_balance
+				value > -0.15
+			}
+			NOT = { has_country_flag = USC_trump_third_term_flag }
+		}
+		set_country_flag = USC_musk_president_pick_flag
+		country_event = { id = usc.78 days = 5 }
+	}
+}
+
+#current president receives the Nomination
+country_event = {
+	id = usc.76
+	title = usc.76.t
+	desc = usc.76.d
+	picture = GFX_USC_GOP_debate
+	fire_only_once = yes
+	is_triggered_only = yes
+	trigger = {
+		tag = USC
+	}
+	option = { #
+		name = usc.76.a
+		add_political_power = 25
+	}
+}
+
+#the inauguration
+country_event = {
+	id = usc.77
+	title = usc.77.t
+	desc = usc.77.d
+	picture = GFX_USB_inauguration_day
+	fire_only_once = yes
+	is_triggered_only = yes
+	trigger = {
+		tag = USC
+	}
+	immediate = {
+		hidden_effect = {
+			USC_who_is_president_pick = yes
+			USC_who_is_vp_pick = yes
+		}
+	}
+	option = { #
+		name = usc.77.a
+		effect_tooltip = {
+			USC_who_is_president_pick = yes
+			USC_who_is_vp_pick = yes
+		}
+		country_event = { id = usc.42 days = 15 }
+	}
+}
+
+#vp pick
+country_event = {
+	id = usc.78
+	title = usc.78.t
+	desc = usc.78.d
+	picture = GFX_USC_GOP_debate_2
+	fire_only_once = yes
+	is_triggered_only = yes
+	trigger = {
+		tag = USC
+	}
+	option = { #Anthony Kern
+		name = usc.78.a1
+		trigger = {
+			OR = {
+				has_government = authoritarian_democrat
+				AND = {
+					check_variable = {
+						USC_loyalty_mil_var > USC_loyalty_lib_var
+					}
+					check_variable = {
+						USC_loyalty_mil_var > USC_loyalty_con_var
+					}
+				}
+			}
+		}
+		set_country_flag = USC_anthony_kern_vp_pick_flag
+	}	
+	option = { #Jack Posobiec
+		name = usc.78.a2
+		trigger = {
+			OR = {
+				has_government = authoritarian_democrat
+				AND = {
+					check_variable = {
+						USC_loyalty_mil_var > USC_loyalty_lib_var
+					}
+					check_variable = {
+						USC_loyalty_mil_var > USC_loyalty_con_var
+					}
+				}
+			}
+		}
+		set_country_flag = USC_posobiec_vp_pick_flag
+	}
+	option = { #Mark Finchem
+		name = usc.78.a3
+		trigger = {
+			PTF = {
+				exists = no
+			}
+			OR = {
+				has_government = authoritarian_democrat
+				AND = {
+					check_variable = {
+						USC_loyalty_mil_var > USC_loyalty_lib_var
+					}
+					check_variable = {
+						USC_loyalty_mil_var > USC_loyalty_con_var
+					}
+				}
+			}
+		}
+		set_country_flag = USC_finchem_vp_pick_flag
+	}
+	option = { #Tim Scott
+		name = usc.78.b1
+		trigger = {
+			OR = {
+				has_government = conservative
+				AND = {
+					check_variable = {
+						USC_loyalty_con_var > USC_loyalty_lib_var
+					}
+					check_variable = {
+						USC_loyalty_con_var > USC_loyalty_mil_var
+					}
+				}
+			}
+		}
+		set_country_flag = USC_tim_scott_vp_pick_flag
+	}	
+	option = { #Tuberville
+		name = usc.78.b2
+		trigger = {
+			OR = {
+				has_government = conservative
+				AND = {
+					check_variable = {
+						USC_loyalty_con_var > USC_loyalty_lib_var
+					}
+					check_variable = {
+						USC_loyalty_con_var > USC_loyalty_mil_var
+					}
+				}
+			}
+		}
+		set_country_flag = USC_tuberville_vp_pick_flag
+	}
+	option = { #Youngkin
+		name = usc.78.b3
+		trigger = {
+			OR = {
+				has_government = conservative
+				AND = {
+					check_variable = {
+						USC_loyalty_con_var > USC_loyalty_lib_var
+					}
+					check_variable = {
+						USC_loyalty_con_var > USC_loyalty_mil_var
+					}
+				}
+			}
+		}
+		set_country_flag = USC_youngkin_vp_pick_flag
+	}	
+	option = { #Massie
+		name = usc.78.c1
+		trigger = {
+			OR = {
+				has_government = market_liberal
+				AND = {
+					check_variable = {
+						USC_loyalty_lib_var > USC_loyalty_con_var
+					}
+					check_variable = {
+						USC_loyalty_lib_var > USC_loyalty_mil_var
+					}
+				}
+			}
+		}
+		set_country_flag = USC_massie_vp_pick_flag
+	}	
+	option = { #Wright
+		name = usc.78.c2
+		trigger = {
+			OR = {
+				has_government = market_liberal
+				AND = {
+					check_variable = {
+						USC_loyalty_lib_var > USC_loyalty_con_var
+					}
+					check_variable = {
+						USC_loyalty_lib_var > USC_loyalty_mil_var
+					}
+				}
+			}
+		}
+		set_country_flag = USC_wright_vp_pick_flag
+	}
+	option = { #Mace
+		name = usc.78.c3
+		trigger = {
+			OR = {
+				has_government = market_liberal
+				AND = {
+					check_variable = {
+						USC_loyalty_lib_var > USC_loyalty_con_var
+					}
+					check_variable = {
+						USC_loyalty_lib_var > USC_loyalty_mil_var
+					}
+				}
+			}
+		}
+		set_country_flag = USC_mace_vp_pick_flag
+	}
+}
+
+#trump picks trump aha!
+country_event = {
+	id = usc.79
+	title = usc.79.t
+	desc = usc.79.d
+	picture = GFX_USC_shadow_trump
+	fire_only_once = yes
+	is_triggered_only = yes
+	trigger = {
+		tag = USC
+	}
+	option = { #
+		name = usc.79.a
+		set_country_flag = USC_trump_vp_pick_flag
+		custom_effect_tooltip = USC_trump_vp_pick_tt
+		add_political_power = -100
+	}
+}
+#portrait of the president
+country_event = {
+	id = usc.80
+	title = usc.80.t
+	desc = usc.80.d
+	picture = GFX_USC_trump_portrait
+	fire_only_once = yes
+	is_triggered_only = yes
+	trigger = {
+		tag = USC
+	}
+	option = { #President of the People
+		name = usc.80.a
+		add_political_power = -25
+		add_country_leader_trait = USC_hog_president_of_the_people
+		set_temp_variable = {
+			var = USC_loyalty_con_var_temp
+			value = 0.05
+		}
+		USC_add_loyalty_con = yes
+		hidden_effect = {
+			USC_donald_trump_char = {
+				add_trait = {
+					ideology = right_libertarianism
+					trait = USC_hog_president_of_the_people
+				}	
+				add_trait = {
+					ideology = ultra_conservatism
+					trait = USC_hog_president_of_the_people
+				}		
+				add_trait = {
+					ideology = right_populism
+					trait = USC_hog_president_of_the_people
+				}		
+				add_trait = {
+					ideology = trumpism_conserative
+					trait = USC_hog_president_of_the_people
+				}	
+				add_trait = {
+					ideology = trumpism_authdem
+					trait = USC_hog_president_of_the_people
+				}	
+				add_trait = {
+					ideology = trumpism_market
+					trait = USC_hog_president_of_the_people
+				}
+				add_trait = {
+					ideology = classical_liberalism
+					trait = USC_hog_president_of_the_people
+				}	
+				add_trait = {
+					ideology = classical_conservatism
+					trait = USC_hog_president_of_the_people
+				}	
+				add_trait = {
+					ideology = hybrid_regime
+					trait = USC_hog_president_of_the_people
+				}
+			}
+		}
+	}	
+	option = { #Macho Man
+		name = usc.80.b
+		add_political_power = -25
+		add_country_leader_trait = USC_hog_macho_man
+		set_temp_variable = {
+			var = USC_loyalty_mil_var_temp
+			value = 0.05
+		}
+		USC_add_loyalty_mil = yes
+		hidden_effect = {
+			USC_donald_trump_char = {
+				add_trait = {
+					ideology = right_libertarianism
+					trait = USC_hog_macho_man
+				}	
+				add_trait = {
+					ideology = ultra_conservatism
+					trait = USC_hog_macho_man
+				}		
+				add_trait = {
+					ideology = right_populism
+					trait = USC_hog_macho_man
+				}		
+				add_trait = {
+					ideology = trumpism_conserative
+					trait = USC_hog_macho_man
+				}	
+				add_trait = {
+					ideology = trumpism_authdem
+					trait = USC_hog_macho_man
+				}	
+				add_trait = {
+					ideology = trumpism_libertarianism
+					trait = USC_hog_macho_man
+				}
+				add_trait = {
+					ideology = classical_liberalism
+					trait = USC_hog_macho_man
+				}	
+				add_trait = {
+					ideology = classical_conservatism
+					trait = USC_hog_macho_man
+				}	
+				add_trait = {
+					ideology = hybrid_regime
+					trait = USC_hog_macho_man
+				}
+			}
+		}
+	}	
+	option = { #Vizier of Capitalism
+		name = usc.80.c
+		add_political_power = -25
+		effect_tooltip = {
+			add_country_leader_trait = USC_hog_vizier_of_capitalism
+		}
+		set_temp_variable = {
+			var = USC_loyalty_lib_var_temp
+			value = 0.05
+		}
+		USC_add_loyalty_lib = yes
+		hidden_effect = {
+			USC_donald_trump_char = {
+				add_trait = {
+					ideology = right_libertarianism
+					trait = USC_hog_vizier_of_capitalism
+				}	
+				add_trait = {
+					ideology = ultra_conservatism
+					trait = USC_hog_vizier_of_capitalism
+				}		
+				add_trait = {
+					ideology = right_populism
+					trait = USC_hog_vizier_of_capitalism
+				}		
+				add_trait = {
+					ideology = trumpism_conserative
+					trait = USC_hog_vizier_of_capitalism
+				}	
+				add_trait = {
+					ideology = trumpism_authdem
+					trait = USC_hog_vizier_of_capitalism
+				}	
+				add_trait = {
+					ideology = trumpism_libertarianism
+					trait = USC_hog_vizier_of_capitalism
+				}
+				add_trait = {
+					ideology = classical_liberalism
+					trait = USC_hog_vizier_of_capitalism
+				}	
+				add_trait = {
+					ideology = classical_conservatism
+					trait = USC_hog_vizier_of_capitalism
+				}	
+				add_trait = {
+					ideology = hybrid_regime
+					trait = USC_hog_vizier_of_capitalism
+				}
+			}
+		}
+	}
+}
+
+#new party
+country_event = {
+	id = usc.81
+	title = usc.81.t
+	desc = usc.81.d
+	picture = GFX_USC_trump_on_screens_2
+	fire_only_once = yes
+	is_triggered_only = yes
+	trigger = {
+		tag = USC
+	}
+	immediate = {
+		hidden_effect = {
+			set_country_flag = USC_new_patriot_name_flag
+			set_country_flag = USC_new_populist_name_flag
+		}
+	}
+	option = { #United Party\United America
+		name = usc.81.a
+		if = {
+			limit = {
+				OR = {
+					has_idea = USC_patriotic_oligarchs_idea
+					has_country_flag = USC_cowed_to_bureaucrats_flag
+				}
+			}
+			set_party_name = {
+				ideology = authoritarian_democrat
+				long_name = USC_authoritarian_democrat_party6_long
+				name = USC_authoritarian_democrat_party6_short
+			}
+		}
+		else = {
+			set_party_name = {
+				ideology = authoritarian_democrat
+				long_name = USC_authoritarian_democrat_party4_long
+				name = USC_authoritarian_democrat_party4_short
+			}
+		}
+		add_stability = 0.05
+		hidden_effect = {
+			set_party_name = {
+    			ideology = market_liberal
+    			long_name = USC_market_liberal_party3_long
+    			name = USC_market_liberal_party3_short
+			}
+			set_party_name = {
+    			ideology = conservative
+    			long_name = USC_conservative_party3_long
+    			name = USC_conservative_party3_short
+			}
+			set_party_name = {
+    			ideology = nationalist
+    			long_name = USC_nationalist_party2_long
+    			name = USC_nationalist_party2_short
+			}
+			if = {
+				limit = {
+					has_idea = USC_patriotic_oligarchs_idea
+				}
+				set_country_leader_ideology = oligarchist
+			}
+		}
+	}
+	option = { #Constitution Party
+		name = usc.81.b
+		set_party_name = {
+			ideology = authoritarian_democrat
+			long_name = USC_authoritarian_democrat_party3_long
+			name = USC_authoritarian_democrat_party3_short
+		}
+		add_political_power = 100
+		hidden_effect = {
+			set_party_name = {
+    			ideology = market_liberal
+    			long_name = USC_market_liberal_party3_long
+    			name = USC_market_liberal_party3_short
+			}
+			set_party_name = {
+    			ideology = conservative
+    			long_name = USC_conservative_party3_long
+    			name = USC_conservative_party3_short
+			}
+			set_party_name = {
+    			ideology = nationalist
+    			long_name = USC_nationalist_party2_long
+    			name = USC_nationalist_party2_short
+			}
+		}
+	}	
+	option = { #Patriot Party
+		name = usc.81.f
+		set_party_name = {
+			ideology = authoritarian_democrat
+			long_name = USC_authoritarian_democrat_party2_long
+			name = USC_authoritarian_democrat_party2_short
+		}
+		add_war_support = 0.05
+		hidden_effect = {
+			set_party_name = {
+    			ideology = market_liberal
+    			long_name = USC_market_liberal_party3_long
+    			name = USC_market_liberal_party3_short
+			}
+			set_party_name = {
+    			ideology = conservative
+    			long_name = USC_conservative_party3_long
+    			name = USC_conservative_party3_short
+			}
+			set_party_name = {
+    			ideology = nationalist
+    			long_name = USC_nationalist_party2_long
+    			name = USC_nationalist_party2_short
+			}
+		}
+	}
+	option = { #Populist Party
+		name = usc.81.c
+		trigger = {
+			has_country_flag = USC_wignats_enabled_flag
+			AND = {
+				OR = {
+					has_idea = USC_steve_bannon_sec
+					has_idea = USC_stephen_miller_eco
+				}
+				OR = {
+					power_balance_value = {
+						id = USC_civil_war_balance
+						value > 0.35
+					}
+					has_country_flag = USC_populist_king_flag
+				}
+			}
+		}
+		set_party_name = {
+			ideology = authoritarian_democrat
+			long_name = USC_authoritarian_democrat_party5_long
+			name = USC_authoritarian_democrat_party5_short
+		}
+		set_party_name = {
+			ideology = nationalist
+			long_name = USC_authoritarian_democrat_party5_long
+			name = USC_authoritarian_democrat_party5_short
+		}
+		set_party_name = {
+			ideology = fascist
+			long_name = USC_authoritarian_democrat_party5_long
+			name = USC_authoritarian_democrat_party5_short
+		}
+		add_popularity = {
+			ideology = authoritarian_democrat
+			ideology = 0.05
+		}
+		if = {
+			limit = {
+				has_completed_focus = USC_one_party_for_one_america
+			}
+			add_popularity = {
+				ideology = nationalist
+				ideology = 0.05
+			}
+		}
+		add_popularity = {
+			ideology = fascist
+			ideology = 0.05
+		}
+		if = {
+			limit = {
+				has_completed_focus = USC_one_party_for_one_america
+			}
+			set_temp_variable = { coalition_partner_var_temp = token:nationalist }
+			add_to_coalition = yes
+		}
+		set_temp_variable = { coalition_partner_var_temp = token:fascist }
+		add_to_coalition = yes
+		hidden_effect = {
+			set_party_name = {
+    			ideology = market_liberal
+    			long_name = USC_market_liberal_party3_long
+    			name = USC_market_liberal_party3_short
+			}
+			set_party_name = {
+    			ideology = conservative
+    			long_name = USC_conservative_party3_long
+    			name = USC_conservative_party3_short
+			}
+		}
+	}
+}
+
+#populists minor faction
+country_event = {
+	id = usc.82
+	title = usc.82.t
+	desc = usc.82.d
+	picture = GFX_USC_trump_voice
+	fire_only_once = yes
+	is_triggered_only = yes
+	trigger = {
+		tag = USC
+	}
+	immediate = {
+	}
+	option = { #America First Workers
+		name = usc.82.a
+		USC_add_league_american_workers_mini_faction = yes
+		set_temp_variable = {
+			var = USC_loyalty_con_var_temp
+			value = 0.1
+		}
+		USC_add_loyalty_con = yes
+		add_power_balance_value = {
+			id = USC_civil_war_balance
+			value = 0.05
+		}
+	}
+	option = { #Independent Politicans
+		name = usc.82.b
+		USC_add_independents_mini_faction = yes
+		add_political_power = -50
+		add_power_balance_value = {
+			id = USC_civil_war_balance
+			value = 0.035
+		}
+	}	
+	option = { #Techo-Rightists
+		name = usc.82.c
+		USC_add_techno_rightists_mini_faction = yes
+		set_temp_variable = {
+			var = USC_loyalty_lib_var_temp
+			value = 0.1
+		}
+		USC_add_loyalty_lib = yes
+		add_power_balance_value = {
+			id = USC_civil_war_balance
+			value = -0.05
+		}
+	}
+}
+
+#fate of corporations
+country_event = {
+	id = usc.83
+	title = usc.83.t
+	desc = usc.83.d
+	picture = GFX_USC_trump_hard
+	fire_only_once = yes
+	is_triggered_only = yes
+	trigger = {
+		tag = USC
+	}
+	immediate = {
+	}
+	option = { #End them
+		name = usc.83.a
+		custom_effect_tooltip = USC_seized_corporate_assets_tt
+		custom_effect_tooltip = tooltip_white_line
+		add_timed_idea = {
+			idea = USC_seized_corporate_assets_idea
+			days = 365
+		}
+		add_political_power = -100
+		add_power_balance_value = {
+			id = USC_civil_war_balance
+			value = 0.1
+		}
+	}
+	option = { #Subdue them
+		name = usc.83.b
+		trigger = {
+			has_country_flag = USC_techno_rightists_enabled_flag
+		}
+		custom_effect_tooltip = USC_loyal_corporate_america_tt
+		custom_effect_tooltip = tooltip_white_line
+		add_ideas = USC_loyal_corporate_america_idea
+		add_political_power = 50
+		add_power_balance_value = {
+			id = USC_civil_war_balance
+			value = -0.05
+		}
+	}
+	option = { #Trump them
+		name = usc.83.c
+		custom_effect_tooltip = USC_corporate_maga_tt
+		custom_effect_tooltip = tooltip_white_line
+		add_ideas = USC_corporate_maga_idea
+		add_political_power = 100
+		add_power_balance_value = {
+			id = USC_civil_war_balance
+			value = -0.1
+		}
+	}
+}
+
+#militias celebrate end of 22nd
+country_event = {
+	id = usc.84
+	title = usc.84.t
+	desc = usc.84.d
+	picture = GFX_USC_trump_flag
+	fire_only_once = yes
+	is_triggered_only = yes
+	trigger = {
+		tag = USC
+	}
+	immediate = {
+	}
+	option = { #
+		name = usc.84.a
+		add_war_support = 0.035
+	}
+}
+#Trump in Mcdonalds
+country_event = {
+	id = usc.85
+	title = usc.85.t
+	desc = usc.85.d
+	picture = GFX_USC_trump_mcdonalds
+	fire_only_once = yes
+	is_triggered_only = yes
+	trigger = {
+		tag = USC
+	}
+	immediate = {
+	}
+	option = { #
+		name = usc.85.a
+		add_stability = 0.015
+	}
+}
+
+#Sean Hannity - Communist Trial
+country_event = {
+	id = usc.86
+	title = usc.86.t
+	desc = usc.86.d
+	picture = GFX_USC_sean_hannity
+	fire_only_once = yes
+	is_triggered_only = yes
+	trigger = {
+		tag = USC
+	}
+	immediate = {
+	}
+	option = { #
+		name = usc.86.a
+		add_popularity = {
+			ideology = authoritarian_democrat
+			popularity = 0.015
+		}
+		add_political_power = 5
+	}
+}
+
+#Tucker Carlson - Democrat Trial
+country_event = {
+	id = usc.87
+	title = usc.87.t
+	desc = usc.87.d
+	picture = GFX_USC_tucker_carlson
+	fire_only_once = yes
+	is_triggered_only = yes
+	trigger = {
+		tag = USC
+	}
+	immediate = {
+	}
+	option = { #
+		name = usc.87.a
+		add_stability = 0.01
+		add_political_power = 5
+	}
+}
+
+#Jesse Watters - PF Trial
+country_event = {
+	id = usc.88
+	title = usc.88.t
+	desc = usc.88.d
+	picture = GFX_USC_jesse_watters
+	fire_only_once = yes
+	is_triggered_only = yes
+	trigger = {
+		tag = USC
+	}
+	immediate = {
+	}
+	option = { #
+		name = usc.88.a
+		add_war_support = 0.01
+		add_political_power = 5
+	}
+}
+
+#Hulk Hogan
+country_event = {
+	id = usc.89
+	title = usc.89.t
+	desc = usc.89.d
+	picture = GFX_USC_the_hulkster
+	fire_only_once = yes
+	is_triggered_only = yes
+	trigger = {
+		tag = USC
+	}
+	immediate = {
+	}
+	option = { #
+		name = usc.89.a
+		add_war_support = 0.025
+		add_stability = -0.015
+	}
+}
+
+#For America
+country_event = {
+	id = usc.90
+	title = usc.90.t
+	desc = usc.90.d
+	picture = GFX_USC_trumpists
+	fire_only_once = yes
+	is_triggered_only = yes
+	trigger = {
+		tag = USC
+	}
+	immediate = {
+	}
+	option = { #
+		name = usc.90.a
+		add_war_support = 0.01
+	}
+}
+#Rebrand the GOP
+country_event = {
+	id = usc.91
+	title = usc.91.t
+	desc = usc.91.d
+	picture = GFX_USC_trump_america
+	fire_only_once = yes
+	is_triggered_only = yes
+	trigger = {
+		tag = USC
+	}
+	immediate = {
+	}
+	option = { #American People's Party
+		name = usc.91.a
+		add_ideas = USC_party_of_the_people_idea
+		set_party_name = {
+			ideology = conservative
+			long_name = USC_trump2_party_long
+			name = USC_trump2_party
+		}
+		hidden_effect = {
+			set_party_name = {
+				ideology = authoritarian_democrat
+				long_name = USC_trump2_2_party_long
+				name = USC_trump2_2_party
+			}	
+			set_party_name = {
+				ideology = market_liberal
+				long_name = USC_trump2_1_party_long
+				name = USC_trump2_1_party
+			}
+		}
+	}
+	option = { #Grand Patriotic Party
+		name = usc.91.b
+		add_ideas = USC_party_of_the_patriots_idea
+		set_party_name = {
+			ideology = conservative
+			long_name = USC_trump3_party_long
+			name = USC_trump3_party
+		}
+		hidden_effect = {
+			set_party_name = {
+				ideology = authoritarian_democrat
+				long_name = USC_trump3_2_party_long
+				name = USC_trump3_2_party
+			}	
+			set_party_name = {
+				ideology = market_liberal
+				long_name = USC_trump3_1_party_long
+				name = USC_trump3_1_party
+			}
+		}
+	}
+	option = { #America First Party
+		name = usc.91.c
+		add_ideas = USC_party_of_the_nation_idea
+		set_party_name = {
+			ideology = conservative
+			long_name = USC_trump1_party_long
+			name = USC_trump1_party
+		}
+		hidden_effect = {
+			set_party_name = {
+				ideology = authoritarian_democrat
+				long_name = USC_trump1_2_party_long
+				name = USC_trump1_2_party
+			}	
+			set_party_name = {
+				ideology = market_liberal
+				long_name = USC_trump1_1_party_long
+				name = USC_trump1_1_party
+			}
+		}
+	}
+}
+#MAGA Communism
+country_event = {
+	id = usc.92
+	title = usc.92.t
+	desc = usc.92.d
+	picture = GFX_USC_jackson_hinkle
+	fire_only_once = yes
+	is_triggered_only = yes
+	trigger = {
+		tag = USC
+	}
+	immediate = {
+	}
+	option = { #Crazy!
+		name = usc.92.a
+		USC_add_maga_communists_mini_faction = yes
+		custom_effect_tooltip = tooltip_white_line
+		add_political_power = -50
+		set_party_name = {
+			ideology = communist
+			long_name = USC_patcom_party_long
+			name = USC_patcom_party
+		}
+		hidden_effect = {
+			add_popularity = {
+				ideology = communist
+				popularity = 0.046
+			}
+			create_country_leader = {
+				name = APA_jackson_hinkle_char
+				picture = "gfx/Leaders/APA/APA_jackson_hinkle.png"
+				expire = "1.1.1.1"
+				ideology = left_nationalism
+				traits = {
+				}
+			}
+		}
+	}
+	option = { #Yup
+		name = usc.92.b
+		add_political_power = 25
+	}
+}
+
+#release of biden hostages
+country_event = {
+	id = usc.93
+	title = usc.93.t
+	desc = usc.93.d
+	picture = GFX_USC_trumpists_4
+	fire_only_once = yes
+	is_triggered_only = yes
+	trigger = {
+		tag = USC
+	}
+	immediate = {
+	}
+	option = { #Our great heroes of the rear front
+		name = usc.93.a
+		custom_effect_tooltip = USC_martyr_brigades_tt
+		hidden_effect = {
+			load_oob = USC_martyr_brigades
+		}
+		add_manpower = 1000
+		add_corps_commander_role = {
+			character = USC_enrique_tarrio_char
+			traits = {
+				media_personality
+				trait_reckless
+				trickster
+			}
+			skill = 1
+			attack_skill = 2
+			defense_skill = 1
+			planning_skill = 1
+			logistics_skill = 2
+		}
+	}
+}
+
+#spencer death event
+country_event = {
+	id = usc.94
+	title = usc.94.t
+	desc = usc.94.d
+	picture = GFX_USC_spencer_dead
+	fire_only_once = yes
+	is_triggered_only = yes
+	trigger = {
+		tag = USC
+	}
+	immediate = {
+	}
+	option = { #Burger
+		name = usc.94.a
+		add_stability = 0.005
+	}
+}
+
+#trump visits gunrange
+country_event = {
+	id = usc.95
+	title = usc.95.t
+	desc = usc.95.d
+	picture = GFX_USC_trump_gun_store
+	fire_only_once = yes
+	is_triggered_only = yes
+	trigger = {
+		tag = USC
+	}
+	immediate = {
+	}
+	option = { #
+		name = usc.95.a
+		add_war_support = 0.015
+	}
+}
+
+#trump hat event
+country_event = {
+	id = usc.96
+	title = usc.96.t
+	desc = usc.96.d
+	picture = GFX_USC_trump_cap
+	fire_only_once = yes
+	is_triggered_only = yes
+	trigger = {
+		tag = USC
+	}
+	immediate = {
+	}
+	option = { #in hat 
+		name = usc.96.a
+		custom_effect_tooltip = USC_trump_in_hat_portraits_tt
+		set_country_flag = USC_trump_hat_portraits_flag
+		hidden_effect = {
+			USC_trump_portrait_picker = yes
+		}
+	}
+	option = { #no hat
+		name = usc.96.b
+	}
+}
+
+##################################### DARK MAGA ######################################################
+
+country_event = {
+	id = darkmaga.1
+	title = darkmaga.1.t
+	desc = darkmaga.1.d
+	picture = GFX_USC_trump_address
+	fire_only_once = yes
+	is_triggered_only = yes
+	trigger = {
+		tag = USC
+	}
+	option = { #
+		name = darkmaga.1.a
+		complete_national_focus = USC_the_dark_mandate
+		set_country_flag = USC_dark_maga_unleashed_flag
+		focus_unlock = yes
+		hidden_effect = {
+			set_country_leader_portrait = {
+				portrait = GFX_portrait_USA_donald_trump_carnage
+			}
+			set_politics = {
+				ruling_party = nationalist
+				elections_allowed = no
+			}
+			add_popularity = {
+				ideology = nationalist
+				popularity = 0.31
+			}
+			add_country_leader_role = {
+				character = USC_donald_trump_char
+				promote_leader = yes
+				country_leader = {
+					ideology = autocrat
+					expire="1.1.1.1"
+					id=-1
+					traits = { 
+						hos_vanguard_of_america
+					}
+				}
+			}
+			set_party_name = {
+				ideology = nationalist
+				long_name = USC_dark_maga_party_long
+				name = USC_dark_maga_party
+			}		
+			set_party_name = {
+				ideology = market_liberal
+				long_name = USC_disloyal_party_long
+				name = USC_disloyal_party
+			}
+			set_party_name = {
+				ideology = conservative
+				long_name = USC_disloyal_party_long
+				name = USC_disloyal_party
+			}
+			set_party_name = {
+				ideology = authoritarian_democrat
+				long_name = USC_disloyal_party_long
+				name = USC_disloyal_party
+			}
+		}
+	}
+}
+
+#Dark MAGA - Party Name
+country_event = {
+	id = darkmaga.2
+	title = darkmaga.2.t
+	desc = darkmaga.2.d
+	picture = GFX_USC_trump_the_champion
+	fire_only_once = yes
+	is_triggered_only = yes
+	trigger = {
+		tag = USC
+	}
+	option = { #Greater America Party
+		name = darkmaga.2.a
+		set_party_name = {
+			ideology = nationalist
+			long_name = USC_dark_maga_1_party_long
+			name = USC_dark_maga_1_party
+		}	
+		set_party_name = {
+			ideology = authoritarian_democrat
+			long_name = USC_dark_maga_1_authdem_party_long
+			name = USC_dark_maga_1_authdem_party
+		}
+		set_party_name = {
+			ideology = fascist
+			long_name = USC_dark_maga_1_fasc_party_long
+			name = USC_dark_maga_1_fasc_party
+		}
+		custom_effect_tooltip = tooltip_white_line
+		set_temp_variable = { coalition_partner_var_temp = token:authoritarian_democrat }
+		add_to_coalition = yes	
+		set_temp_variable = { coalition_partner_var_temp = token:fascist }
+		add_to_coalition = yes
+	}
+	option = { # Trump Party
+		name = darkmaga.2.b
+		set_party_name = {
+			ideology = nationalist
+			long_name = USC_dark_maga_2_party_long
+			name = USC_dark_maga_2_party
+		}
+		set_party_name = {
+			ideology = authoritarian_democrat
+			long_name = USC_dark_maga_2_authdem_party_long
+			name = USC_dark_maga_2_authdem_party
+		}
+		set_party_name = {
+			ideology = fascist
+			long_name = USC_dark_maga_2_fasc_party_long
+			name = USC_dark_maga_2_fasc_party
+		}
+		custom_effect_tooltip = tooltip_white_line
+		set_temp_variable = { coalition_partner_var_temp = token:authoritarian_democrat }
+		add_to_coalition = yes	
+		set_temp_variable = { coalition_partner_var_temp = token:fascist }
+		add_to_coalition = yes
+	}	
+	option = { #National Unity
+		name = darkmaga.2.c
+		set_party_name = {
+			ideology = nationalist
+			long_name = USC_dark_maga_3_party_long
+			name = USC_dark_maga_3_party
+		}
+		set_party_name = {
+			ideology = authoritarian_democrat
+			long_name = USC_dark_maga_3_authdem_party_long
+			name = USC_dark_maga_3_authdem_party
+		}
+		set_party_name = {
+			ideology = fascist
+			long_name = USC_dark_maga_3_fasc_party_long
+			name = USC_dark_maga_3_fasc_party
+		}
+		custom_effect_tooltip = tooltip_white_line
+		set_temp_variable = { coalition_partner_var_temp = token:authoritarian_democrat }
+		add_to_coalition = yes	
+		set_temp_variable = { coalition_partner_var_temp = token:fascist }
+		add_to_coalition = yes
+	}
+	option = { #America First Party
+		name = darkmaga.2.f
+		set_party_name = {
+			ideology = nationalist
+			long_name = USC_dark_maga_4_party_long
+			name = USC_dark_maga_4_party
+		}
+		set_party_name = {
+			ideology = authoritarian_democrat
+			long_name = USC_dark_maga_4_authdem_party_long
+			name = USC_dark_maga_4_authdem_party
+		}
+		set_party_name = {
+			ideology = fascist
+			long_name = USC_dark_maga_4_fasc_party_long
+			name = USC_dark_maga_4_fasc_party
+		}
+		custom_effect_tooltip = tooltip_white_line
+		set_temp_variable = { coalition_partner_var_temp = token:authoritarian_democrat }
+		add_to_coalition = yes	
+		set_temp_variable = { coalition_partner_var_temp = token:fascist }
+		add_to_coalition = yes
+	}
+}
+
+#Dark MAGA - Death Penalty
+country_event = {
+	id = darkmaga.3
+	title = darkmaga.3.t
+	desc = darkmaga.3.d
+	picture = GFX_USC_noose
+	fire_only_once = yes
+	is_triggered_only = yes
+	trigger = {
+		tag = USC
+	}
+	option = { #
+		name = darkmaga.3.a
+		add_manpower = -1000
+		add_political_power = 100
+	}
+}
+
+#Dark MAGA - Resistance
+country_event = {
+	id = darkmaga.4
+	title = darkmaga.4.t
+	desc = darkmaga.4.d
+	picture = GFX_USC_noose
+	fire_only_once = yes
+	is_triggered_only = yes
+	trigger = {
+		tag = USC
+	}
+	immediate = {
+		hidden_effect = {
+			add_popularity = {
+				ideology = social_democrat
+				popularity = 0.055
+			}	
+			add_popularity = {
+				ideology = social_liberal
+				popularity = 0.055
+			}	
+			add_popularity = {
+				ideology = libertarian_socialist
+				popularity = 0.055
+			}
+		}
+	}
+	option = { #
+		name = darkmaga.4.a
+		add_ideas = USC_anti_trump_resistance_idea
+		set_party_name = {
+			ideology = social_democrat
+			long_name = USC_aff_party_long
+			name = USC_aff_party
+		}		
+		set_party_name = {
+			ideology = social_liberal
+			long_name = USC_aff_party_long
+			name = USC_aff_party
+		}	
+		set_party_name = {
+			ideology = libertarian_socialist
+			long_name = USC_aff_party_long
+			name = USC_aff_party
+		}
+		hidden_effect = {
+			random_list = {
+				50 = {
+					country_event = { id = darkmaga.5 days = 35 random_days = 5 }
+				}			
+				50 = {
+					country_event = { id = darkmaga.6 days = 35 random_days = 5 }
+				}
+			}
+		}
+	}
+}
+
+#Dark MAGA - Political Assasination
+country_event = {
+	id = darkmaga.5
+	title = darkmaga.5.t
+	desc = darkmaga.5.d
+	picture = GFX_USC_anti_trump_2
+	fire_only_once = yes
+	is_triggered_only = yes
+	trigger = {
+		tag = USC
+		has_idea = USC_anti_trump_resistance_idea
+	}
+	immediate = {
+		hidden_effect = {
+			add_political_power = -25
+			add_stability = -0.02
+			add_popularity = {
+				ideology = nationalist
+				popularity = -0.025
+			}
+			random_list = {
+				50 = {
+					country_event = { id = darkmaga.5 days = 35 random_days = 5 }
+				}			
+				50 = {
+					country_event = { id = darkmaga.6 days = 35 random_days = 5 }
+				}
+			}
+		}
+	}
+	option = { #
+		name = darkmaga.5.a
+		effect_tooltip = {
+			add_political_power = -25
+			add_stability = -0.02
+			add_popularity = {
+				ideology = nationalist
+				popularity = -0.025
+			}
+		}
+	}
+}
+
+#Dark MAGA - Factory sabotage
+country_event = {
+	id = darkmaga.6
+	title = darkmaga.6.t
+	desc = darkmaga.6.d
+	picture = GFX_USC_anti_trump_4
+	fire_only_once = yes
+	is_triggered_only = yes
+	trigger = {
+		tag = USC
+		has_idea = USC_anti_trump_resistance_idea
+	}
+	immediate = {
+		hidden_effect = {
+			random_list = {
+				50 = {
+					country_event = { id = darkmaga.5 days = 35 random_days = 5 }
+				}			
+				50 = {
+					country_event = { id = darkmaga.6 days = 35 random_days = 5 }
+				}
+			}
+		}
+	}
+	option = { #
+		name = darkmaga.6.a
+		random_owned_controlled_state = {
+			limit = {
+				num_of_civilian_factories > 1
+			}
+			damage_building = {
+				type = industrial_complex
+				damage = 0.05
+			}
+		}
+		add_stability = -0.02
+		add_popularity = {
+			ideology = nationalist
+			popularity = -0.025
+		}
+	}
+}
+
+
+####################
+#Post-Victory Event
+country_event = {
+	id = usc.1000
+	title = usc.1000.t
+	desc = usc.1000.d
+	picture = GFX_USC_trump_willfixit
+	fire_only_once = yes
+	is_triggered_only = yes
+	trigger = {
+		tag = USC
+	}
+	immediate = {
+		hidden_effect = {
+			if = {
+				limit = { has_country_flag = USC_cowed_to_bureaucrats_flag }
+				scoped_play_song = hotncold
+			}
+			else = {
+				scoped_play_song = twistedsister
+			}
+		}
+	}
+	option = { #victory
+		name = usc.1000.a
+		trigger = {
+			has_government = conservative
+		}
+		focus_unlock = yes
+		custom_effect_tooltip = USC_tfr_trump_victory_con_tt
+	}
+	option = { #victory
+		name = usc.1000.b
+		trigger = {
+			has_government = authoritarian_democrat
+		}
+		focus_unlock = yes
+		custom_effect_tooltip = USC_tfr_trump_victory_auth_tt
+	}	
+	option = { #victory
+		name = usc.1000.c
+		trigger = {
+			has_government = market_liberal
+		}
+		focus_unlock = yes
+		custom_effect_tooltip = USC_tfr_trump_victory_marlib_tt
+	}
+}
+
+#lethal aid
+country_event = {
+	id = usc.1001
+	title = usc.1001.t
+	desc = usc.1001.d
+	picture = GFX_USC_trumpists
+	fire_only_once = yes
+	is_triggered_only = yes
+	trigger = {
+		tag = USC
+	}
+	option = { #
+		name = usc.1001.a
+		if = {
+			limit = {
+				original_tag = SOV
+			}
+			USC = {
+				add_timed_idea = {
+					idea = USC_russian_lethal_aid_idea
+					days = 170
+				}
+				set_country_flag = {
+					flag = USC_aid_sent_flag
+					days = 200
+					value = 1
+				}
+				hidden_effect = {
+					add_equipment_to_stockpile = {
+						type = infantry_equipment_2
+						amount = 1000
+						producer = SOV
+					}
+					add_equipment_to_stockpile = {
+						type = support_equipment
+						amount = 250
+						producer = SOV
+					}
+				}
+			}
+		}	
+		if = {
+			limit = {
+				original_tag = JAP
+			}
+			USC = {
+				add_timed_idea = {
+					idea = USC_japanese_lethal_aid_idea
+					days = 170
+				}
+				set_country_flag = {
+					flag = USC_aid_sent_flag
+					days = 200
+					value = 1
+				}
+				hidden_effect = {
+					add_equipment_to_stockpile = {
+						type = infantry_equipment_1
+						amount = 1000
+						producer = JAP
+					}
+					add_equipment_to_stockpile = {
+						type = support_equipment
+						amount = 250
+						producer = JAP
+					}
+				}
+			}
+		}
+		ai_chance = {
+			factor = 10
+			modifier = {
+				factor = 25
+				AND = {
+					original_tag = JAP
+					has_government = conservative
+				}
+			}	
+			modifier = {
+				factor = -15
+				AND = {
+					original_tag = JAP
+					has_government = authoritarian_democrat
+				}
+			}	
+			modifier = {
+				factor = 15
+				AND = {
+					original_tag = SOV
+					has_government = authoritarian_democrat
+				}
+			}		
+			modifier = {
+				factor = 25
+				AND = {
+					original_tag = SOV
+					has_government = fascist
+				}
+			}		
+			modifier = {
+				factor = 5
+				AND = {
+					original_tag = SOV
+					has_government = communist
+				}
+			}
+			modifier = {
+				factor = -15
+				AND = {
+					original_tag = SOV
+					has_government = libertarian_socialist
+				}
+			}
+		}
+	}	
+	option = { #
+		name = usc.1001.b
+		ai_chance = {
+			factor = 10
+		}
+		add_political_power = 15
+	}
+}
+#lethal aid 2
+country_event = {
+	id = usc.1002
+	title = usc.1002.t
+	desc = usc.1002.d
+	picture = GFX_USC_trumpists
+	fire_only_once = yes
+	is_triggered_only = yes
+	trigger = {
+		tag = USC
+	}
+	option = { #
+		name = usc.1002.a
+		if = {
+			limit = {
+				original_tag = ISR
+			}
+			USC = {
+				add_timed_idea = {
+					idea = USC_israel_lethal_aid_idea
+					days = 170
+				}
+				set_country_flag = {
+					flag = USC_aid_sent_flag
+					days = 200
+					value = 1
+				}
+				hidden_effect = {
+					add_equipment_to_stockpile = {
+						type = infantry_equipment_1
+						amount = 1000
+						producer = ISR
+					}
+					add_equipment_to_stockpile = {
+						type = support_equipment
+						amount = 250
+						producer = ISR
+					}
+				}
+			}
+		}	
+		if = {
+			limit = {
+				original_tag = RAJ
+			}
+			USC = {
+				add_timed_idea = {
+					idea = USC_indian_lethal_aid_idea
+					days = 170
+				}
+				set_country_flag = {
+					flag = USC_aid_sent_flag
+					days = 200
+					value = 1
+				}
+				hidden_effect = {
+					add_equipment_to_stockpile = {
+						type = infantry_equipment_1
+						amount = 1000
+						producer = RAJ
+					}
+					add_equipment_to_stockpile = {
+						type = support_equipment
+						amount = 250
+						producer = RAJ
+					}
+				}
+			}
+		}
+	}
+}
+
+#debugging for stuff #gop nomination
+country_event = {
+	id = usc.1003
+	
+	hidden = yes
+	fire_only_once = no
+	
+	trigger = {
+		tag = USC
+	}
+	is_triggered_only = yes
+	immediate = {
+		if = {
+			limit = {
+				NOT = {
+					OR = {
+						has_country_flag = USC_brand_new_president_flag 
+						has_country_flag = USC_elections_suspended_flag
+					}
+				}
+			}
+			country_event = { id = usc.75 }
+		}
+		else_if = {
+			limit = {
+				has_country_flag = USC_brand_new_president_flag 
+			}
+			country_event = { id = usc.76 }
+		}
+		country_event = { id = usc.1003 days = 1080 }
+	}
+	option = { #
+		name = usc.1003.a
+	}
+}
+
+#AI Help 1 
+country_event = {
+	id = usc.1004
+	is_triggered_only = yes
+	trigger = {
+		tag = USC
+		is_ai = yes
+	}
+	hidden = yes
+	fire_only_once = yes
+	is_triggered_only = yes
+	immediate = {
+		add_to_variable = {
+			var = USC_military_army_defence_factor_dynamic_var
+			value = 0.05
+		}
+		division_template = {
+			name = "Reserve National Guard"
+			
+			regiments = {
+				infantry = { x = 0 y = 0 }
+				infantry = { x = 0 y = 1 }
+				infantry = { x = 0 y = 2 }
+				infantry = { x = 0 y = 3 }
+				infantry = { x = 0 y = 4 }
+				
+				infantry = { x = 1 y = 0 }
+				infantry = { x = 1 y = 1 }
+				infantry = { x = 1 y = 2 }
+				infantry = { x = 1 y = 3 }
+				infantry = { x = 1 y = 4 }
+			}
+			support = {
+				anti_tank = { x = 0 y = 0 }
+				engineer = { x = 0 y = 1 }
+				artillery = { x = 0 y = 2 }
+				spaa_company = { x = 0 y = 3 }
+			}
+		}
+		random_controlled_state = {
+			create_unit = {
+				division = "name = \"1. Reserve National Guard\" division_template = \"Reserve National Guard\" start_experience_factor = 0.4 start_equipment_factor = 1.0" 
+				owner = ROOT	
+			}
+			create_unit = {
+				division = "name = \"2. Reserve National Guard\" division_template = \"Reserve National Guard\" start_experience_factor = 0.4 start_equipment_factor = 1.0" 
+				owner = ROOT	
+			}
+			create_unit = {
+				division = "name = \"3. Reserve National Guard\" division_template = \"Reserve National Guard\" start_experience_factor = 0.4 start_equipment_factor = 1.0" 
+				owner = ROOT	
+			}
+			create_unit = {
+				division = "name = \"4. Reserve National Guard\" division_template = \"Reserve National Guard\" start_experience_factor = 0.4 start_equipment_factor = 1.0" 
+				owner = ROOT	
+			}
+		}
+		random_controlled_state = {
+			create_unit = {
+				division = "name = \"5. Reserve National Guard\" division_template = \"Reserve National Guard\" start_experience_factor = 0.4 start_equipment_factor = 1.0" 
+				owner = ROOT	
+			}
+			create_unit = {
+				division = "name = \"6. Reserve National Guard\" division_template = \"Reserve National Guard\" start_experience_factor = 0.4 start_equipment_factor = 1.0" 
+				owner = ROOT	
+			}
+			create_unit = {
+				division = "name = \"7. Reserve National Guard\" division_template = \"Reserve National Guard\" start_experience_factor = 0.4 start_equipment_factor = 1.0" 
+				owner = ROOT	
+			}
+			create_unit = {
+				division = "name = \"8. Reserve National Guard\" division_template = \"Reserve National Guard\" start_experience_factor = 0.4 start_equipment_factor = 1.0" 
+				owner = ROOT	
+			}
+		}
+		random_controlled_state = {
+			create_unit = {
+				division = "name = \"9. Reserve National Guard\" division_template = \"Reserve National Guard\" start_experience_factor = 0.4 start_equipment_factor = 1.0" 
+				owner = ROOT	
+			}
+			create_unit = {
+				division = "name = \"10. Reserve National Guard\" division_template = \"Reserve National Guard\" start_experience_factor = 0.4 start_equipment_factor = 1.0" 
+				owner = ROOT	
+			}
+			create_unit = {
+				division = "name = \"11. Reserve National Guard\" division_template = \"Reserve National Guard\" start_experience_factor = 0.4 start_equipment_factor = 1.0" 
+				owner = ROOT	
+			}
+			create_unit = {
+				division = "name = \"12. Reserve National Guard\" division_template = \"Reserve National Guard\" start_experience_factor = 0.4 start_equipment_factor = 1.0" 
+				owner = ROOT	
+			}
+		}
+		country_event = {
+			id = usc.1005
+			days = 425
+		}
+	}
+	option = { #
+		name = usc.1004.a
+	}
+}
+
+#AI Help 2
+country_event = {
+	id = usc.1005
+	is_triggered_only = yes
+	trigger = {
+		tag = USC
+		is_ai = yes
+	}
+	hidden = yes
+	fire_only_once = yes
+	is_triggered_only = yes
+	immediate = {
+		add_to_variable = {
+			var = USC_military_army_attack_factor_dynamic_var
+			value = 0.1
+		}
+		division_template = {
+			name = "Reformed Marine Corps Brigade"
+			
+			regiments = {
+				light_mechanized = { x = 0 y = 0 } 
+				light_mechanized = { x = 0 y = 1 }
+				mechanized = { x = 0 y = 2 }
+				modern_armor = { x = 1 y = 0 }
+				modern_sp_artillery_brigade = { x = 2 y = 0 }
+				modern_sp_artillery_brigade = { x = 2 y = 1 }
+				modern_sp_artillery_brigade = { x = 2 y = 2 }
+				spaa_brigade = { x = 2 y = 3 }
+				light_armor = { x = 3 y = 0 }
+			}
+			support = {
+				signal_company = { x = 0 y = 0 }
+				engineer = { x = 0 y = 1 }
+				spa_company = { x = 0 y = 2 }
+				spaa_company = { x = 0 y = 3 }
+				mbt_company = { x = 0 y = 4 }
+			}
+		}
+		random_controlled_state = {
+			create_unit = {
+				division = "name = \"1. Reformed Marine Corps Brigade\" division_template = \"Reformed Marine Corps Brigade\" start_experience_factor = 0.4 start_equipment_factor = 1.0" 
+				owner = ROOT	
+			}
+			create_unit = {
+				division = "name = \"2. Reformed Marine Corps Brigade\" division_template = \"Reformed Marine Corps Brigade\" start_experience_factor = 0.4 start_equipment_factor = 1.0" 
+				owner = ROOT	
+			}
+			create_unit = {
+				division = "name = \"3. Reformed Marine Corps Brigade\" division_template = \"Reformed Marine Corps Brigade\" start_experience_factor = 0.4 start_equipment_factor = 1.0" 
+				owner = ROOT	
+			}
+			create_unit = {
+				division = "name = \"4. Reformed Marine Corps Brigade\" division_template = \"Reformed Marine Corps Brigade\" start_experience_factor = 0.4 start_equipment_factor = 1.0" 
+				owner = ROOT	
+			}
+		}
+		random_controlled_state = {
+			create_unit = {
+				division = "name = \"5. Reformed Marine Corps Brigade\" division_template = \"Reformed Marine Corps Brigade\" start_experience_factor = 0.4 start_equipment_factor = 1.0" 
+				owner = ROOT	
+			}
+			create_unit = {
+				division = "name = \"6. Reformed Marine Corps Brigade\" division_template = \"Reformed Marine Corps Brigade\" start_experience_factor = 0.4 start_equipment_factor = 1.0" 
+				owner = ROOT	
+			}
+			create_unit = {
+				division = "name = \"7. Reformed Marine Corps Brigade\" division_template = \"Reformed Marine Corps Brigade\" start_experience_factor = 0.4 start_equipment_factor = 1.0" 
+				owner = ROOT	
+			}
+			create_unit = {
+				division = "name = \"8. Reformed Marine Corps Brigade\" division_template = \"Reformed Marine Corps Brigade\" start_experience_factor = 0.4 start_equipment_factor = 1.0" 
+				owner = ROOT	
+			}
+		}
+		random_controlled_state = {
+			create_unit = {
+				division = "name = \"9. Reformed Marine Corps Brigade\" division_template = \"Reformed Marine Corps Brigade\" start_experience_factor = 0.4 start_equipment_factor = 1.0" 
+				owner = ROOT	
+			}
+			create_unit = {
+				division = "name = \"10. Reformed Marine Corps Brigade\" division_template = \"Reformed Marine Corps Brigade\" start_experience_factor = 0.4 start_equipment_factor = 1.0" 
+				owner = ROOT	
+			}
+		}
+	}
+	option = { #
+		name = usc.1005.a
+	}
+}

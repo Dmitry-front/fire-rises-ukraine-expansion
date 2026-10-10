@@ -1,0 +1,3141 @@
+#Ideas
+#Power Balance
+
+USC_add_loyalty_lib = {
+	custom_effect_tooltip = USC_add_loyalty_lib_tooltip
+	set_temp_variable = {
+		target = 1
+	}
+	add_to_variable = {
+		var = USC_loyalty_lib_var
+		value = USC_loyalty_lib_var_temp
+	}
+	USC_faction_var_balancer = yes
+	hidden_effect = {
+		if = {
+			limit = {
+				check_variable = {
+					var = USC_loyalty_lib_var
+					value = 0.2
+					compare = less_than
+				}
+			}
+			set_variable = {
+				var = USC_loyalty_lib_income_growth_factor_dynamic_var
+				value = 0.015
+			}
+			set_variable = {
+				var = USC_loyalty_lib_tax_business_rate_factor_dynamic_var
+				value = -0.018
+			}		
+			set_variable = {
+				var = USC_loyalty_lib_consumer_goods_factor_dynamic_var
+				value = -0.005
+			}
+		}
+		else_if = {
+			limit = {
+				check_variable = {
+					var = USC_loyalty_lib_var
+					value = 0.2
+					compare = greater_than_or_equals
+				}
+				check_variable = {
+					var = USC_loyalty_lib_var
+					value = 0.3
+					compare = less_than
+				}
+			}
+			set_variable = {
+				var = USC_loyalty_lib_income_growth_factor_dynamic_var
+				value = 0.025
+			}
+			set_variable = {
+				var = USC_loyalty_lib_tax_business_rate_factor_dynamic_var
+				value = -0.035
+			}		
+			set_variable = {
+				var = USC_loyalty_lib_consumer_goods_factor_dynamic_var
+				value = -0.01
+			}
+		}
+		else_if = {
+			limit = {
+				check_variable = {
+					var = USC_loyalty_lib_var
+					value = 0.3
+					compare = greater_than_or_equals
+				}
+				check_variable = {
+					var = USC_loyalty_lib_var
+					value = 0.4
+					compare = less_than
+				}
+			}
+			set_variable = {
+				var = USC_loyalty_lib_income_growth_factor_dynamic_var
+				value = 0.03
+			}
+			set_variable = {
+				var = USC_loyalty_lib_tax_business_rate_factor_dynamic_var
+				value = -0.05
+			}		
+			set_variable = {
+				var = USC_loyalty_lib_consumer_goods_factor_dynamic_var
+				value = -0.015
+			}
+		}
+		else_if = {
+			limit = {
+				check_variable = {
+					var = USC_loyalty_lib_var
+					value = 0.4
+					compare = greater_than_or_equals
+				}
+				check_variable = {
+					var = USC_loyalty_lib_var
+					value = 0.5
+					compare = less_than
+				}
+			}
+			set_variable = {
+				var = USC_loyalty_lib_income_growth_factor_dynamic_var
+				value = 0.045
+			}
+			set_variable = {
+				var = USC_loyalty_lib_tax_business_rate_factor_dynamic_var
+				value = -0.08
+			}		
+			set_variable = {
+				var = USC_loyalty_lib_consumer_goods_factor_dynamic_var
+				value = -0.018
+			}
+		}	
+		else_if = {
+			limit = {
+				check_variable = {
+					var = USC_loyalty_lib_var
+					value = 0.5
+					compare = greater_than_or_equals
+				}
+				check_variable = {
+					var = USC_loyalty_lib_var
+					value = 0.6
+					compare = less_than
+				}
+			}
+			set_variable = {
+				var = USC_loyalty_lib_income_growth_factor_dynamic_var
+				value = 0.05
+			}
+			set_variable = {
+				var = USC_loyalty_lib_tax_business_rate_factor_dynamic_var
+				value = -0.09
+			}		
+			set_variable = {
+				var = USC_loyalty_lib_consumer_goods_factor_dynamic_var
+				value = -0.02
+			}
+		}
+		else_if = {
+			limit = {
+				check_variable = {
+					var = USC_loyalty_lib_var
+					value = 0.6
+					compare = greater_than_or_equals
+				}
+				check_variable = {
+					var = USC_loyalty_lib_var
+					value = 0.7
+					compare = less_than
+				}
+			}
+			set_variable = {
+				var = USC_loyalty_lib_income_growth_factor_dynamic_var
+				value = 0.05
+			}
+			set_variable = {
+				var = USC_loyalty_lib_tax_business_rate_factor_dynamic_var
+				value = -0.1
+			}		
+			set_variable = {
+				var = USC_loyalty_lib_consumer_goods_factor_dynamic_var
+				value = -0.025
+			}
+		}
+		else_if = {
+			limit = {
+				check_variable = {
+					var = USC_loyalty_lib_var
+					value = 0.7
+					compare = greater_than_or_equals
+				}
+			}
+			set_variable = {
+				var = USC_loyalty_lib_income_growth_factor_dynamic_var
+				value = 0.1
+			}
+			set_variable = {
+				var = USC_loyalty_lib_tax_business_rate_factor_dynamic_var
+				value = -0.15
+			}		
+			set_variable = {
+				var = USC_loyalty_lib_consumer_goods_factor_dynamic_var
+				value = -0.03
+			}
+		}
+	}
+}
+
+USC_add_loyalty_con = {
+	custom_effect_tooltip = USC_add_loyalty_con_tooltip
+	set_temp_variable = {
+		target = 2
+	}
+	add_to_variable = {
+		var = USC_loyalty_con_var
+		value = USC_loyalty_con_var_temp
+	}
+	USC_faction_var_balancer = yes
+	hidden_effect = {
+		if = {
+			limit = {
+				check_variable = {
+					var = USC_loyalty_con_var
+					value = 0.2
+					compare = less_than
+				}
+			}
+			set_variable = {
+				var = USC_loyalty_con_stability_factor_dynamic_var
+				value = 0.02
+			}
+			set_variable = {
+				var = USC_loyalty_con_political_power_gain_dynamic_var
+				value = 0.015
+			}	
+			set_variable = {
+				var = USC_loyalty_con_industrial_capacity_factory_dynamic_var
+				value = 0.005
+			}
+		}
+		else_if = {
+			limit = {
+				check_variable = {
+					var = USC_loyalty_con_var
+					value = 0.2
+					compare = greater_than_or_equals
+				}
+				check_variable = {
+					var = USC_loyalty_con_var
+					value = 0.3
+					compare = less_than
+				}
+			}
+			set_variable = {
+				var = USC_loyalty_con_stability_factor_dynamic_var
+				value = 0.03
+			}
+			set_variable = {
+				var = USC_loyalty_con_political_power_gain_dynamic_var
+				value = 0.02
+			}
+			set_variable = {
+				var = USC_loyalty_con_industrial_capacity_factory_dynamic_var
+				value = 0.015
+			}
+		}
+		else_if = {
+			limit = {
+				check_variable = {
+					var = USC_loyalty_con_var
+					value = 0.3
+					compare = greater_than_or_equals
+				}
+				check_variable = {
+					var = USC_loyalty_con_var
+					value = 0.4
+					compare = less_than
+				}
+			}
+			set_variable = {
+				var = USC_loyalty_con_stability_factor_dynamic_var
+				value = 0.034
+			}
+			set_variable = {
+				var = USC_loyalty_con_political_power_gain_dynamic_var
+				value = 0.023
+			}
+			set_variable = {
+				var = USC_loyalty_con_industrial_capacity_factory_dynamic_var
+				value = 0.02
+			}
+		}
+		else_if = {
+			limit = {
+				check_variable = {
+					var = USC_loyalty_con_var
+					value = 0.4
+					compare = greater_than_or_equals
+				}
+				check_variable = {
+					var = USC_loyalty_con_var
+					value = 0.5
+					compare = less_than
+				}
+			}
+			set_variable = {
+				var = USC_loyalty_con_stability_factor_dynamic_var
+				value = 0.039
+			}
+			set_variable = {
+				var = USC_loyalty_con_political_power_gain_dynamic_var
+				value = 0.031
+			}
+			set_variable = {
+				var = USC_loyalty_con_industrial_capacity_factory_dynamic_var
+				value = 0.023
+			}
+		}
+		else_if = {
+			limit = {
+				check_variable = {
+					var = USC_loyalty_con_var
+					value = 0.5
+					compare = greater_than_or_equals
+				}
+				check_variable = {
+					var = USC_loyalty_con_var
+					value = 0.6
+					compare = less_than
+				}
+			}
+			set_variable = {
+				var = USC_loyalty_con_stability_factor_dynamic_var
+				value = 0.04
+			}
+			set_variable = {
+				var = USC_loyalty_con_political_power_gain_dynamic_var
+				value = 0.05
+			}
+			set_variable = {
+				var = USC_loyalty_con_industrial_capacity_factory_dynamic_var
+				value = 0.027
+			}
+		}
+		else_if = {
+			limit = {
+				check_variable = {
+					var = USC_loyalty_con_var
+					value = 0.6
+					compare = greater_than_or_equals
+				}
+				check_variable = {
+					var = USC_loyalty_con_var
+					value = 0.7
+					compare = less_than
+				}
+			}
+			set_variable = {
+				var = USC_loyalty_con_stability_factor_dynamic_var
+				value = 0.051
+			}
+			set_variable = {
+				var = USC_loyalty_con_political_power_gain_dynamic_var
+				value = 0.1
+			}
+			set_variable = {
+				var = USC_loyalty_con_industrial_capacity_factory_dynamic_var
+				value = 0.035
+			}
+		}
+		else_if = {
+			limit = {
+				check_variable = {
+					var = USC_loyalty_con_var
+					value = 0.7
+					compare = greater_than_or_equals
+				}
+			}
+			set_variable = {
+				var = USC_loyalty_con_stability_factor_dynamic_var
+				value = 0.1
+			}
+			set_variable = {
+				var = USC_loyalty_con_political_power_gain_dynamic_var
+				value = 0.2
+			}
+			set_variable = {
+				var = USC_loyalty_con_industrial_capacity_factory_dynamic_var
+				value = 0.05
+			}
+		}
+	}
+}
+
+USC_add_loyalty_mil = {
+	custom_effect_tooltip = USC_add_loyalty_mil_tooltip
+	add_to_variable = {
+		var = USC_loyalty_mil_var
+		value = USC_loyalty_mil_var_temp
+	}
+	USC_faction_var_balancer = yes
+	hidden_effect = {
+		if = {
+			limit = {
+				check_variable = {
+					var = USC_loyalty_mil_var
+					value = 0.2
+					compare = less_than
+				}
+			}
+			set_variable = {
+				var = USC_loyalty_mil_war_stability_factor_dynamic_var
+				value = 0.02
+			}
+			set_variable = {
+				var = USC_loyalty_mil_command_power_gain_mult_dynamic_var
+				value = 0.025
+			}	
+			set_variable = {
+				var = USC_loyalty_mil_army_attack_factor_dynamic_var
+				value = 0.01
+			}
+		}
+		else_if = {
+			limit = {
+				check_variable = {
+					var = USC_loyalty_mil_var
+					value = 0.2
+					compare = greater_than_or_equals
+				}
+				check_variable = {
+					var = USC_loyalty_mil_var
+					value = 0.3
+					compare = less_than
+				}
+			}
+			set_variable = {
+				var = USC_loyalty_mil_war_stability_factor_dynamic_var
+				value = 0.05
+			}
+			set_variable = {
+				var = USC_loyalty_mil_command_power_gain_mult_dynamic_var
+				value = 0.04
+			}
+			set_variable = {
+				var = USC_loyalty_mil_army_attack_factor_dynamic_var
+				value = 0.015
+			}
+		}	
+		else_if = {
+			limit = {
+				check_variable = {
+					var = USC_loyalty_mil_var
+					value = 0.3
+					compare = greater_than_or_equals
+				}
+				check_variable = {
+					var = USC_loyalty_mil_var
+					value = 0.4
+					compare = less_than
+				}
+			}
+			set_variable = {
+				var = USC_loyalty_mil_war_stability_factor_dynamic_var
+				value = 0.06
+			}
+			set_variable = {
+				var = USC_loyalty_mil_command_power_gain_mult_dynamic_var
+				value = 0.042
+			}
+			set_variable = {
+				var = USC_loyalty_mil_army_attack_factor_dynamic_var
+				value = 0.017
+			}
+		}
+		else_if = {
+			limit = {
+				check_variable = {
+					var = USC_loyalty_mil_var
+					value = 0.4
+					compare = greater_than_or_equals
+				}
+				check_variable = {
+					var = USC_loyalty_mil_var
+					value = 0.5
+					compare = less_than
+				}
+			}
+			set_variable = {
+				var = USC_loyalty_mil_war_stability_factor_dynamic_var
+				value = 0.07
+			}
+			set_variable = {
+				var = USC_loyalty_mil_command_power_gain_mult_dynamic_var
+				value = 0.045
+			}
+			set_variable = {
+				var = USC_loyalty_mil_army_attack_factor_dynamic_var
+				value = 0.02
+			}
+		}
+		else_if = {
+			limit = {
+				check_variable = {
+					var = USC_loyalty_mil_var
+					value = 0.5
+					compare = greater_than_or_equals
+				}
+				check_variable = {
+					var = USC_loyalty_mil_var
+					value = 0.6
+					compare = less_than
+				}
+			}
+			set_variable = {
+				var = USC_loyalty_mil_war_stability_factor_dynamic_var
+				value = 0.085
+			}
+			set_variable = {
+				var = USC_loyalty_mil_command_power_gain_mult_dynamic_var
+				value = 0.061
+			}
+			set_variable = {
+				var = USC_loyalty_mil_army_attack_factor_dynamic_var
+				value = 0.027
+			}
+		}
+		else_if = {
+			limit = {
+				check_variable = {
+					var = USC_loyalty_mil_var
+					value = 0.6
+					compare = greater_than_or_equals
+				}
+				check_variable = {
+					var = USC_loyalty_mil_var
+					value = 0.7
+					compare = less_than
+				}
+			}
+			set_variable = {
+				var = USC_loyalty_mil_war_stability_factor_dynamic_var
+				value = 0.1
+			}
+			set_variable = {
+				var = USC_loyalty_mil_command_power_gain_mult_dynamic_var
+				value = 0.1
+			}		
+			set_variable = {
+				var = USC_loyalty_mil_army_attack_factor_dynamic_var
+				value = 0.035
+			}
+		}
+		else_if = {
+			limit = {
+				check_variable = {
+					var = USC_loyalty_mil_var
+					value = 0.7
+					compare = greater_than_or_equals
+				}
+			}
+			set_variable = {
+				var = USC_loyalty_mil_war_stability_factor_dynamic_var
+				value = 0.15
+			}
+			set_variable = {
+				var = USC_loyalty_mil_command_power_gain_mult_dynamic_var
+				value = 0.2
+			}
+			set_variable = {
+				var = USC_loyalty_mil_army_attack_factor_dynamic_var
+				value = 0.05
+			}
+		}
+	}
+}
+
+USC_faction_var_balancer = {
+	if = {
+		limit = {
+			check_variable = {
+				target = 1
+			}
+		}
+		divide_temp_variable = {
+			USC_loyalty_lib_var_temp = 5
+		}
+		multiply_temp_variable = {
+			USC_loyalty_lib_var_temp = -1
+		}
+		add_to_variable = {
+			USC_loyalty_con_var_temp = USC_loyalty_lib_var_temp
+		}
+		add_to_variable = {
+			USC_loyalty_mil_var_temp = USC_loyalty_lib_var_temp
+		}
+	}
+	else_if = {
+		limit = {
+			check_variable = {
+				target = 2
+			}
+		}
+		divide_temp_variable = {
+			USC_loyalty_con_var_temp = 5
+		}
+		multiply_temp_variable = {
+			USC_loyalty_con_var_temp = -1
+		}
+		add_to_variable = {
+			USC_loyalty_lib_var_temp = USC_loyalty_con_var_temp
+		}
+		add_to_variable = {
+			USC_loyalty_mil_var_temp = USC_loyalty_con_var_temp
+		}
+	}
+	else = {
+		divide_temp_variable = {
+			USC_loyalty_mil_var_temp = 5
+		}
+		multiply_temp_variable = {
+			USC_loyalty_mil_var_temp = -1
+		}
+		add_to_variable = {
+			USC_loyalty_con_var_temp = USC_loyalty_mil_var_temp
+		}
+		add_to_variable = {
+			USC_loyalty_lib_var_temp = USC_loyalty_mil_var_temp
+		}
+	}
+	set_temp_variable = {
+		total_popularity = 0
+	}
+	clamp_variable = {
+		var = USC_loyalty_con_var
+		min = 0
+		max = 1
+	}
+	add_to_temp_variable = {
+		total_popularity = USC_loyalty_con_var
+	}
+	clamp_variable = {
+		var = USC_loyalty_lib_var
+		min = 0
+		max = 1
+	}
+	add_to_temp_variable = {
+		total_popularity = USC_loyalty_lib_var
+	}
+	clamp_variable = {
+		var = USC_loyalty_mil_var
+		min = 0
+		max = 1
+	}
+	add_to_temp_variable = {
+		total_popularity = USC_loyalty_mil_var
+	}
+	if = {
+		limit = {
+			check_variable = {
+				total_popularity > 1
+			}
+		}
+		subtract_from_temp_variable = {
+			total_popularity = 1
+		}
+		hidden_effect = {
+			random_list = {
+				10 = {
+					modifier = {
+						factor = 0
+						check_variable = {
+							USC_loyalty_lib_var < total_popularity
+						}
+					}
+					subtract_from_variable = {
+						USC_loyalty_lib_var = total_popularity
+					}
+				}
+				10 = {
+					modifier = {
+						factor = 0
+						check_variable = {
+							USC_loyalty_con_var < total_popularity
+						}
+					}
+					subtract_from_variable = {
+						USC_loyalty_con_var = total_popularity
+					}
+				}
+				10 = {
+					modifier = {
+						factor = 0
+						check_variable = {
+							USC_loyalty_mil_var < total_popularity
+						}
+					}
+					subtract_from_variable = {
+						USC_loyalty_mil_var = total_popularity
+					}
+				}
+			}
+		}
+	}
+	else_if = {
+		limit = {
+			check_variable = {
+				total_popularity < 1
+			}
+		}
+		subtract_from_temp_variable = {
+			total_popularity = 1
+		}
+		multiply_temp_variable = {
+			total_popularity = -1
+		}
+		hidden_effect = {
+			random_list = {
+				10 = {
+					add_to_variable = {
+						USC_loyalty_lib_var = total_popularity
+					}
+				}
+				10 = {
+					add_to_variable = {
+						USC_loyalty_mil_var = total_popularity
+					}
+				}
+				10 = {
+					add_to_variable = {
+						USC_loyalty_con_var = total_popularity
+					}
+				}
+			}
+		}
+	}
+	set_temp_variable = {
+		USC_loyalty_con_var_temp = 0
+	}
+	set_temp_variable = {
+		USC_loyalty_lib_var_temp = 0
+	}
+	set_temp_variable = {
+		USC_loyalty_mil_var_temp = 0
+	}
+	hidden_effect = {
+		if = {
+			limit = {
+				has_country_flag = USC_ideology_change_enabled_flag
+			}
+			USC_ruling_party_change = yes
+		}
+	}
+}
+
+USC_ruling_party_change = {
+	if = {
+		limit = {
+			AND = {
+				check_variable = {
+					USC_loyalty_lib_var > USC_loyalty_mil_var
+				}		
+				check_variable = {
+					USC_loyalty_lib_var > USC_loyalty_con_var
+				}
+			}
+		}
+		set_politics = {
+			ruling_party = market_liberal
+			elections_allowed = yes
+		}
+	}
+	else_if = {
+		limit = {
+			AND = {
+				check_variable = {
+					USC_loyalty_con_var > USC_loyalty_lib_var
+				}		
+				check_variable = {
+					USC_loyalty_con_var > USC_loyalty_mil_var
+				}
+			}
+		}
+		set_politics = {
+			ruling_party = conservative
+			elections_allowed = yes
+		}
+	}
+	else_if = {
+		limit = {
+			AND = {
+				check_variable = {
+					USC_loyalty_mil_var > USC_loyalty_lib_var
+				}		
+				check_variable = {
+					USC_loyalty_mil_var > USC_loyalty_con_var
+				}
+			}
+		}
+		set_politics = {
+			ruling_party = authoritarian_democrat
+			elections_allowed = yes
+		}
+	}
+	USC_trump_portrait_picker = yes
+}
+
+USC_trump_portrait_picker = { #if you, GAME RULE GUY, touch this one more time, I will personally come to CHINA TOWN, USA, and force you to eat CHINESE mao zedong dollars #YOU actually cant code this is stupid, you idiot - sudin
+	if = {
+		limit = {
+			has_country_leader = {
+				character = USC_donald_trump_char
+			}
+			NOT = { 
+				has_country_flag = USC_trump_hat_portraits_flag
+			}
+		}
+		random_list = {
+			30 = {
+			modifier = {
+			    factor = 0
+			    OR = {
+			        has_game_rule = {
+			            rule = The_ever_changing_Trump
+			            option = The_ever_changing_Trump_2
+			            }
+			        has_game_rule = {
+			            rule = The_ever_changing_Trump
+			            option = The_ever_changing_Trump_3
+			            }
+			        has_game_rule = {
+			            rule = The_ever_changing_Trump
+			            option = The_ever_changing_Trump_4
+			            }
+			        has_game_rule = {
+			            rule = The_ever_changing_Trump
+			            option = The_ever_changing_Trump_5
+			            }
+			        has_game_rule = {
+			            rule = The_ever_changing_Trump
+			            option = The_ever_changing_Trump_6
+			            }
+			        has_game_rule = {
+			            rule = The_ever_changing_Trump
+			            option = The_ever_changing_Trump_7
+			            }
+			        has_game_rule = {
+			            rule = The_ever_changing_Trump
+			            option = The_ever_changing_Trump_8
+			            }
+			        }
+			    }
+				set_country_leader_portrait = {
+					portrait = GFX_portrait_USA_donald_trump2
+				}
+			}
+			30 = {
+			modifier = {
+			    factor = 0
+			    OR = {
+			        has_game_rule = {
+			            rule = The_ever_changing_Trump
+			            option = The_ever_changing_Trump_1
+			            }
+			        has_game_rule = {
+			            rule = The_ever_changing_Trump
+			            option = The_ever_changing_Trump_3
+			            }
+			        has_game_rule = {
+			            rule = The_ever_changing_Trump
+			            option = The_ever_changing_Trump_4
+			            }
+			        has_game_rule = {
+			            rule = The_ever_changing_Trump
+			            option = The_ever_changing_Trump_5
+			            }
+			        has_game_rule = {
+			            rule = The_ever_changing_Trump
+			            option = The_ever_changing_Trump_6
+			            }
+			        has_game_rule = {
+			            rule = The_ever_changing_Trump
+			            option = The_ever_changing_Trump_7
+			            }
+			        has_game_rule = {
+			            rule = The_ever_changing_Trump
+			            option = The_ever_changing_Trump_8
+			            }
+			        }
+			    }
+				set_country_leader_portrait = {
+					portrait = GFX_portrait_USA_donald_trump10
+				}
+			}
+			30 = {
+			modifier = {
+			    factor = 0
+			    OR = {
+			        has_game_rule = {
+			            rule = The_ever_changing_Trump
+			            option = The_ever_changing_Trump_1
+			            }
+			        has_game_rule = {
+			            rule = The_ever_changing_Trump
+			            option = The_ever_changing_Trump_2
+			            }
+			        has_game_rule = {
+			            rule = The_ever_changing_Trump
+			            option = The_ever_changing_Trump_4
+			            }
+			        has_game_rule = {
+			            rule = The_ever_changing_Trump
+			            option = The_ever_changing_Trump_5
+			            }
+			        has_game_rule = {
+			            rule = The_ever_changing_Trump
+			            option = The_ever_changing_Trump_6
+			            }
+			        has_game_rule = {
+			            rule = The_ever_changing_Trump
+			            option = The_ever_changing_Trump_7
+			            }
+			        has_game_rule = {
+			            rule = The_ever_changing_Trump
+			            option = The_ever_changing_Trump_8
+			            }
+			        }
+			    }
+				set_country_leader_portrait = {
+					portrait = GFX_portrait_USA_donald_trump11
+				}
+			}	
+			30 = {
+			modifier = {
+			    factor = 0
+			    OR = {
+			        has_game_rule = {
+			            rule = The_ever_changing_Trump
+			            option = The_ever_changing_Trump_1
+			            }
+			        has_game_rule = {
+			            rule = The_ever_changing_Trump
+			            option = The_ever_changing_Trump_2
+			            }
+			        has_game_rule = {
+			            rule = The_ever_changing_Trump
+			            option = The_ever_changing_Trump_3
+			            }
+			        has_game_rule = {
+			            rule = The_ever_changing_Trump
+			            option = The_ever_changing_Trump_5
+			            }
+			        has_game_rule = {
+			            rule = The_ever_changing_Trump
+			            option = The_ever_changing_Trump_6
+			            }
+			        has_game_rule = {
+			            rule = The_ever_changing_Trump
+			            option = The_ever_changing_Trump_7
+			            }
+			        has_game_rule = {
+			            rule = The_ever_changing_Trump
+			            option = The_ever_changing_Trump_8
+			            }
+			        }
+			    }
+				set_country_leader_portrait = {
+					portrait = GFX_portrait_USA_donald_trump12
+				}
+			}
+			30 = {
+			modifier = {
+			    factor = 0
+			    OR = {
+			        has_game_rule = {
+			            rule = The_ever_changing_Trump
+			            option = The_ever_changing_Trump_1
+			            }
+			        has_game_rule = {
+			            rule = The_ever_changing_Trump
+			            option = The_ever_changing_Trump_2
+			            }
+			        has_game_rule = {
+			            rule = The_ever_changing_Trump
+			            option = The_ever_changing_Trump_3
+			            }
+			        has_game_rule = {
+			            rule = The_ever_changing_Trump
+			            option = The_ever_changing_Trump_4
+			            }
+			        has_game_rule = {
+			            rule = The_ever_changing_Trump
+			            option = The_ever_changing_Trump_6
+			            }
+			        has_game_rule = {
+			            rule = The_ever_changing_Trump
+			            option = The_ever_changing_Trump_7
+			            }
+			        has_game_rule = {
+			            rule = The_ever_changing_Trump
+			            option = The_ever_changing_Trump_8
+			            }
+			        }
+			    }
+				set_country_leader_portrait = {
+					portrait = GFX_portrait_USA_donald_trump13
+				}
+			}	
+			30 = {
+			modifier = {
+			    factor = 0
+			    OR = {
+			        has_game_rule = {
+			            rule = The_ever_changing_Trump
+			            option = The_ever_changing_Trump_1
+			            }
+			        has_game_rule = {
+			            rule = The_ever_changing_Trump
+			            option = The_ever_changing_Trump_2
+			            }
+			        has_game_rule = {
+			            rule = The_ever_changing_Trump
+			            option = The_ever_changing_Trump_3
+			            }
+			        has_game_rule = {
+			            rule = The_ever_changing_Trump
+			            option = The_ever_changing_Trump_4
+			            }
+			        has_game_rule = {
+			            rule = The_ever_changing_Trump
+			            option = The_ever_changing_Trump_5
+			            }
+			        has_game_rule = {
+			            rule = The_ever_changing_Trump
+			            option = The_ever_changing_Trump_7
+			            }
+			        has_game_rule = {
+			            rule = The_ever_changing_Trump
+			            option = The_ever_changing_Trump_8
+			            }
+			        }
+			    }
+				set_country_leader_portrait = {
+					portrait = GFX_portrait_USA_donald_trump14
+				}
+			}	
+			30 = {
+			modifier = {
+			    factor = 0
+			    OR = {
+			        has_game_rule = {
+			            rule = The_ever_changing_Trump
+			            option = The_ever_changing_Trump_1
+			            }
+			        has_game_rule = {
+			            rule = The_ever_changing_Trump
+			            option = The_ever_changing_Trump_2
+			            }
+			        has_game_rule = {
+			            rule = The_ever_changing_Trump
+			            option = The_ever_changing_Trump_3
+			            }
+			        has_game_rule = {
+			            rule = The_ever_changing_Trump
+			            option = The_ever_changing_Trump_4
+			            }
+			        has_game_rule = {
+			            rule = The_ever_changing_Trump
+			            option = The_ever_changing_Trump_5
+			            }
+			        has_game_rule = {
+			            rule = The_ever_changing_Trump
+			            option = The_ever_changing_Trump_6
+			            }
+			        has_game_rule = {
+			            rule = The_ever_changing_Trump
+			            option = The_ever_changing_Trump_8
+			            }
+			        }
+			    }
+				set_country_leader_portrait = {
+					portrait = GFX_portrait_USA_donald_trump15
+				}
+			}	
+			30 = {
+			modifier = {
+			    factor = 0
+			    OR = {
+			        has_game_rule = {
+			            rule = The_ever_changing_Trump
+			            option = The_ever_changing_Trump_1
+			            }
+			        has_game_rule = {
+			            rule = The_ever_changing_Trump
+			            option = The_ever_changing_Trump_2
+			            }
+			        has_game_rule = {
+			            rule = The_ever_changing_Trump
+			            option = The_ever_changing_Trump_3
+			            }
+			        has_game_rule = {
+			            rule = The_ever_changing_Trump
+			            option = The_ever_changing_Trump_4
+			            }
+			        has_game_rule = {
+			            rule = The_ever_changing_Trump
+			            option = The_ever_changing_Trump_5
+			            }
+			        has_game_rule = {
+			            rule = The_ever_changing_Trump
+			            option = The_ever_changing_Trump_6
+			            }
+			        has_game_rule = {
+			            rule = The_ever_changing_Trump
+			            option = The_ever_changing_Trump_7
+			            }
+			        }
+			    }
+				set_country_leader_portrait = {
+					portrait = GFX_portrait_USA_donald_trump16
+				}
+			}
+		}
+	}
+	else_if = {
+		limit = {
+			has_country_leader = {
+				character = USC_donald_trump_char
+			}
+			has_country_flag = USC_trump_hat_portraits_flag
+		}
+		random_list = {
+			30 = {
+				set_country_leader_portrait = {
+					portrait = GFX_portrait_USA_donald_trump_in_hat_1
+				}
+			}	
+			30 = {
+				set_country_leader_portrait = {
+					portrait = GFX_portrait_USA_donald_trump_in_hat_2
+				}
+			}	
+			30 = {
+				set_country_leader_portrait = {
+					portrait = GFX_portrait_USA_donald_trump_in_hat_3
+				}
+			}	
+			30 = {
+				set_country_leader_portrait = {
+					portrait = GFX_portrait_USA_donald_trump_in_hat_4
+				}
+			}		
+			30 = {
+				set_country_leader_portrait = {
+					portrait = GFX_portrait_USA_donald_trump_in_hat_5
+				}
+			}	
+			30 = {
+				set_country_leader_portrait = {
+					portrait = GFX_portrait_USA_donald_trump_in_hat_6
+				}
+			}	
+			30 = {
+				set_country_leader_portrait = {
+					portrait = GFX_portrait_USA_donald_trump_in_hat_7
+				}
+			}	
+			30 = {
+				set_country_leader_portrait = {
+					portrait = GFX_portrait_USA_donald_trump_in_hat_8
+				}
+			}	
+			30 = {
+				set_country_leader_portrait = {
+					portrait = GFX_portrait_USA_donald_trump_in_hat_9
+				}
+			}	
+			30 = {
+				set_country_leader_portrait = {
+					portrait = GFX_portrait_USA_donald_trump_in_hat_10
+				}
+			}
+		}
+	}
+}
+
+USC_add_rage = {
+	custom_effect_tooltip = USC_add_rage_tooltip
+	add_to_variable = {
+		var = USC_rage_var
+		value = USC_rage_var_temp
+	}
+	clamp_variable = {
+		var = USC_rage_var
+		min = 0
+		max = 1
+	}
+	set_temp_variable = {
+		var = USC_rage_var_temp
+		value = USC_rage_var
+	}
+	add_to_temp_variable = {
+		var = USC_rage_var_temp
+		value = -0.5
+	}
+	set_variable = {
+		var = USC_rage_war_support_factor_dynamic_var
+		value = USC_rage_var_temp
+	}
+	multiply_variable = {
+		var = USC_rage_war_support_factor_dynamic_var
+		value = 0.5
+	}
+	set_variable = {
+		var = USC_rage_army_morale_factor_dynamic_var
+		value = USC_rage_var_temp
+	}
+	multiply_variable = {
+		var = USC_rage_army_morale_factor_dynamic_var
+		value = 0.5
+	}
+	set_variable = {
+		var = USC_rage_army_defence_factor_dynamic_var
+		value = USC_rage_var_temp
+	}
+	multiply_variable = {
+		var = USC_rage_army_defence_factor_dynamic_var
+		value = 0.5
+	}
+}
+
+USC_add_loyalty_militia = {
+	custom_effect_tooltip = USC_add_militia_loyalty_tooltip
+	add_to_variable = {
+		var = USC_militia_loyalty_var
+		value = USC_militia_loyalty_var_temp
+	}
+	clamp_variable = {
+		var = USC_militia_loyalty_var
+		min = 0
+		max = 1
+	}
+	hidden_effect = {
+		remove_ideas = USC_lower_militia_loyalty_idea
+		remove_ideas = USC_low_militia_loyalty_idea
+		remove_ideas = USC_medium_militia_loyalty_idea
+		remove_ideas = USC_high_militia_loyalty_idea
+		remove_ideas = USC_higher_militia_loyalty_idea
+		if = {
+			limit = {
+				check_variable = {
+					var = USC_militia_loyalty_var
+					value = 0.2
+					compare = less_than
+				}
+			}
+			add_ideas = USC_lower_militia_loyalty_idea
+		}
+		else_if = {
+			limit = {
+				check_variable = {
+					var = USC_militia_loyalty_var
+					value = 0.2
+					compare = greater_than_or_equals
+				}
+				check_variable = {
+					var = USC_militia_loyalty_var
+					value = 0.4
+					compare = less_than
+				}
+			}
+			add_ideas = USC_low_militia_loyalty_idea
+		}
+		else_if = {
+			limit = {
+				check_variable = {
+					var = USC_militia_loyalty_var
+					value = 0.4
+					compare = greater_than_or_equals
+				}
+				check_variable = {
+					var = USC_militia_loyalty_var
+					value = 0.6
+					compare = less_than
+				}
+			}
+			add_ideas = USC_medium_militia_loyalty_idea
+		}
+		else_if = {
+			limit = {
+				check_variable = {
+					var = USC_militia_loyalty_var
+					value = 0.6
+					compare = greater_than_or_equals
+				}
+				check_variable = {
+					var = USC_militia_loyalty_var
+					value = 0.8
+					compare = less_than
+				}
+			}
+			add_ideas = USC_high_militia_loyalty_idea
+		}
+		else_if = {
+			limit = {
+				check_variable = {
+					var = USC_militia_loyalty_var
+					value = 0.8
+					compare = greater_than_or_equals
+				}
+			}
+			add_ideas = USC_higher_militia_loyalty_idea
+		}
+	}
+}
+USC_militia = {
+	create_unit = {
+		division = "name = \"Volunteer Militia Brigade\" division_template = \"Volunteer Militia Brigade\" start_experience_factor = 0.1 start_equipment_factor = 0.3" 
+		owner = ROOT	
+	}
+}
+
+#Taking Back Our Country
+USC_take_back_state_effect = {
+	if = {
+		limit = {
+			FROM = {
+				USA_is_northern_texas_state = yes
+			}
+		}
+		every_state = {
+			limit = {
+				USA_is_northern_texas_state = yes
+			}
+			add_dynamic_modifier = {
+				modifier = USC_trump_offensive_modifier
+				days = 70
+				scope = USC
+			}
+		}
+	}
+	else_if = {
+		limit = {
+			FROM = {
+				USA_is_southern_texas_state = yes
+			}
+		}
+		every_state = {
+			limit = {
+				USA_is_southern_texas_state = yes
+			}
+			add_dynamic_modifier = {
+				modifier = USC_trump_offensive_modifier
+				days = 70
+				scope = USC
+			}
+		}
+	}
+	else_if = {
+		limit = {
+			FROM = {
+				USA_is_new_mexico_state = yes
+			}
+		}
+		every_state = {
+			limit = {
+				USA_is_new_mexico_state = yes
+			}
+			add_dynamic_modifier = {
+				modifier = USC_trump_offensive_modifier
+				days = 70
+				scope = USC
+			}
+		}
+	}
+	else_if = {
+		limit = {
+			FROM = {
+				USA_is_arizona_state = yes
+			}
+		}
+		every_state = {
+			limit = {
+				USA_is_arizona_state = yes
+			}
+			add_dynamic_modifier = {
+				modifier = USC_trump_offensive_modifier
+				days = 70
+				scope = USC
+			}
+		}
+	}
+	else_if = {
+		limit = {
+			FROM = {
+				USA_is_nevada_state = yes
+			}
+		}
+		every_state = {
+			limit = {
+				USA_is_nevada_state = yes
+			}
+			add_dynamic_modifier = {
+				modifier = USC_trump_offensive_modifier
+				days = 70
+				scope = USC
+			}
+		}
+	}
+	else_if = {
+		limit = {
+			FROM = {
+				USA_is_utah_state = yes
+			}
+		}
+		every_state = {
+			limit = {
+				USA_is_utah_state = yes
+			}
+			add_dynamic_modifier = {
+				modifier = USC_trump_offensive_modifier
+				days = 70
+				scope = USC
+			}
+		}
+	}
+	else_if = {
+		limit = {
+			FROM = {
+				USA_is_colorado_state = yes
+			}
+		}
+		every_state = {
+			limit = {
+				USA_is_colorado_state = yes
+			}
+			add_dynamic_modifier = {
+				modifier = USC_trump_offensive_modifier
+				days = 70
+				scope = USC
+			}
+		}
+	}
+	else_if = {
+		limit = {
+			FROM = {
+				USA_is_montana_state = yes
+			}
+		}
+		every_state = {
+			limit = {
+				USA_is_montana_state = yes
+			}
+			add_dynamic_modifier = {
+				modifier = USC_trump_offensive_modifier
+				days = 70
+				scope = USC
+			}
+		}
+	}
+	else_if = {
+		limit = {
+			FROM = {
+				USA_is_idaho_state = yes
+			}
+		}
+		every_state = {
+			limit = {
+				USA_is_idaho_state = yes
+			}
+			add_dynamic_modifier = {
+				modifier = USC_trump_offensive_modifier
+				days = 70
+				scope = USC
+			}
+		}
+	}
+	else_if = {
+		limit = {
+			FROM = {
+				USA_is_oregon_state = yes
+			}
+		}
+		every_state = {
+			limit = {
+				USA_is_oregon_state = yes
+			}
+			add_dynamic_modifier = {
+				modifier = USC_trump_offensive_modifier
+				days = 70
+				scope = USC
+			}
+		}
+	}
+	else_if = {
+		limit = {
+			FROM = {
+				USA_is_northern_california_state = yes
+			}
+		}
+		every_state = {
+			limit = {
+				USA_is_northern_california_state = yes
+			}
+			add_dynamic_modifier = {
+				modifier = USC_trump_offensive_modifier
+				days = 70
+				scope = USC
+			}
+		}
+	}
+	else_if = {
+		limit = {
+			FROM = {
+				USA_is_southern_california_state = yes
+			}
+		}
+		every_state = {
+			limit = {
+				USA_is_southern_california_state = yes
+			}
+			add_dynamic_modifier = {
+				modifier = USC_trump_offensive_modifier
+				days = 70
+				scope = USC
+			}
+		}
+	}
+	else_if = {
+		limit = {
+			FROM = {
+				USA_is_washington_state = yes
+			}
+		}
+		every_state = {
+			limit = {
+				USA_is_washington_state = yes
+			}
+			add_dynamic_modifier = {
+				modifier = USC_trump_offensive_modifier
+				days = 70
+				scope = USC
+			}
+		}
+	}
+	else_if = {
+		limit = {
+			FROM = {
+				USA_is_michigan_state = yes
+			}
+		}
+		every_state = {
+			limit = {
+				USA_is_michigan_state = yes
+			}
+			add_dynamic_modifier = {
+				modifier = USC_trump_offensive_modifier
+				days = 70
+				scope = USC
+			}
+		}
+	}
+	else_if = {
+		limit = {
+			FROM = {
+				USA_is_missouri_state = yes
+			}
+		}
+		every_state = {
+			limit = {
+				USA_is_missouri_state = yes
+			}
+			add_dynamic_modifier = {
+				modifier = USC_trump_offensive_modifier
+				days = 70
+				scope = USC
+			}
+		}
+	}
+	else_if = {
+		limit = {
+			FROM = {
+				USA_is_illinois_state = yes
+			}
+		}
+		every_state = {
+			limit = {
+				USA_is_illinois_state = yes
+			}
+			add_dynamic_modifier = {
+				modifier = USC_trump_offensive_modifier
+				days = 70
+				scope = USC
+			}
+		}
+	}
+	else_if = {
+		limit = {
+			FROM = {
+				USA_is_pennsylvania_state = yes
+			}
+		}
+		every_state = {
+			limit = {
+				USA_is_pennsylvania_state = yes
+			}
+			add_dynamic_modifier = {
+				modifier = USC_trump_offensive_modifier
+				days = 70
+				scope = USC
+			}
+		}
+	}
+	else_if = {
+		limit = {
+			FROM = {
+				USA_is_vermont_state = yes
+			}
+		}
+		every_state = {
+			limit = {
+				USA_is_vermont_state = yes
+			}
+			add_dynamic_modifier = {
+				modifier = USC_trump_offensive_modifier
+				days = 70
+				scope = USC
+			}
+		}
+	}
+	else_if = {
+		limit = {
+			FROM = {
+				USA_is_massachusetts_state = yes
+			}
+		}
+		every_state = {
+			limit = {
+				USA_is_massachusetts_state = yes
+			}
+			add_dynamic_modifier = {
+				modifier = USC_trump_offensive_modifier
+				days = 70
+				scope = USC
+			}
+		}
+	}
+	else_if = {
+		limit = {
+			FROM = {
+				USA_is_connecticut_state = yes
+			}
+		}
+		every_state = {
+			limit = {
+				USA_is_connecticut_state = yes
+			}
+			add_dynamic_modifier = {
+				modifier = USC_trump_offensive_modifier
+				days = 70
+				scope = USC
+			}
+		}
+	}
+	else_if = {
+		limit = {
+			FROM = {
+				USA_is_virginia_state = yes
+			}
+		}
+		every_state = {
+			limit = {
+				USA_is_virginia_state = yes
+			}
+			add_dynamic_modifier = {
+				modifier = USC_trump_offensive_modifier
+				days = 70
+				scope = USC
+			}
+		}
+	}
+	else_if = {
+		limit = {
+			FROM = {
+				USA_is_kentucky_state = yes
+			}
+		}
+		every_state = {
+			limit = {
+				USA_is_kentucky_state = yes
+			}
+			add_dynamic_modifier = {
+				modifier = USC_trump_offensive_modifier
+				days = 70
+				scope = USC
+			}
+		}
+	}
+	else_if = {
+		limit = {
+			FROM = {
+				USA_is_north_carolina_state = yes
+			}
+		}
+		every_state = {
+			limit = {
+				USA_is_north_carolina_state = yes
+			}
+			add_dynamic_modifier = {
+				modifier = USC_trump_offensive_modifier
+				days = 70
+				scope = USC
+			}
+		}
+	}
+	else_if = {
+		limit = {
+			FROM = {
+				USA_is_south_carolina_state = yes
+			}
+		}
+		every_state = {
+			limit = {
+				USA_is_south_carolina_state = yes
+			}
+			add_dynamic_modifier = {
+				modifier = USC_trump_offensive_modifier
+				days = 70
+				scope = USC
+			}
+		}
+	}
+	else_if = {
+		limit = {
+			FROM = {
+				USA_is_georgia_state = yes
+			}
+		}
+		every_state = {
+			limit = {
+				USA_is_georgia_state = yes
+			}
+			add_dynamic_modifier = {
+				modifier = USC_trump_offensive_modifier
+				days = 70
+				scope = USC
+			}
+		}
+	}
+	else_if = {
+		limit = {
+			FROM = {
+				USA_is_alabama_state = yes
+			}
+		}
+		every_state = {
+			limit = {
+				USA_is_alabama_state = yes
+			}
+			add_dynamic_modifier = {
+				modifier = USC_trump_offensive_modifier
+				days = 70
+				scope = USC
+			}
+		}
+	}
+	else_if = {
+		limit = {
+			FROM = {
+				USA_is_mississippi_state = yes
+			}
+		}
+		every_state = {
+			limit = {
+				USA_is_mississippi_state = yes
+			}
+			add_dynamic_modifier = {
+				modifier = USC_trump_offensive_modifier
+				days = 70
+				scope = USC
+			}
+		}
+	}
+	else_if = {
+		limit = {
+			FROM = {
+				USA_is_arkansas_state = yes
+			}
+		}
+		every_state = {
+			limit = {
+				USA_is_arkansas_state = yes
+			}
+			add_dynamic_modifier = {
+				modifier = USC_trump_offensive_modifier
+				days = 70
+				scope = USC
+			}
+		}
+	}
+	else_if = {
+		limit = {
+			FROM = {
+				USA_is_louisiana_state = yes
+			}
+		}
+		every_state = {
+			limit = {
+				USA_is_louisiana_state = yes
+			}
+			add_dynamic_modifier = {
+				modifier = USC_trump_offensive_modifier
+				days = 70
+				scope = USC
+			}
+		}
+	}
+	else_if = {
+		limit = {
+			FROM = {
+				USA_is_florida_state = yes
+			}
+		}
+		every_state = {
+			limit = {
+				USA_is_florida_state = yes
+			}
+			add_dynamic_modifier = {
+				modifier = USC_trump_offensive_modifier
+				days = 70
+				scope = USC
+			}
+		}
+	}
+	else_if = {
+		limit = {
+			FROM = {
+				USA_is_new_york_city_state = yes
+			}
+		}
+		every_state = {
+			limit = {
+				USA_is_new_york_city_state = yes
+			}
+			add_dynamic_modifier = {
+				modifier = USC_trump_offensive_modifier
+				days = 70
+				scope = USC
+			}
+		}
+	}
+	else_if = {
+		limit = {
+			FROM = {
+				USA_is_upstate_new_york_state = yes
+			}
+		}
+		every_state = {
+			limit = {
+				USA_is_upstate_new_york_state = yes
+			}
+			add_dynamic_modifier = {
+				modifier = USC_trump_offensive_modifier
+				days = 70
+				scope = USC
+			}
+		}
+	}
+	else_if = {
+		limit = {
+			FROM = {
+				USA_is_new_hampshire_state = yes
+			}
+		}
+		every_state = {
+			limit = {
+				USA_is_new_hampshire_state = yes
+			}
+			add_dynamic_modifier = {
+				modifier = USC_trump_offensive_modifier
+				days = 70
+				scope = USC
+			}
+		}
+	}
+	else_if = {
+		limit = {
+			FROM = {
+				USA_is_maine_state = yes
+			}
+		}
+		every_state = {
+			limit = {
+				USA_is_maine_state = yes
+			}
+			add_dynamic_modifier = {
+				modifier = USC_trump_offensive_modifier
+				days = 70
+				scope = USC
+			}
+		}
+	}
+	else_if = {
+		limit = {
+			FROM = {
+				USA_is_wyoming_state = yes
+			}
+		}
+		every_state = {
+			limit = {
+				USA_is_wyoming_state = yes
+			}
+			add_dynamic_modifier = {
+				modifier = USC_trump_offensive_modifier
+				days = 70
+				scope = USC
+			}
+		}
+	}
+	else_if = {
+		limit = {
+			FROM = {
+				USA_is_navajo_state = yes
+			}
+		}
+		every_state = {
+			limit = {
+				USA_is_navajo_state = yes
+			}
+			add_dynamic_modifier = {
+				modifier = USC_trump_offensive_modifier
+				days = 70
+				scope = USC
+			}
+		}
+	}
+	else_if = {
+		limit = {
+			FROM = {
+				USA_is_oklahoma_state = yes
+			}
+		}
+		every_state = {
+			limit = {
+				USA_is_oklahoma_state = yes
+			}
+			add_dynamic_modifier = {
+				modifier = USC_trump_offensive_modifier
+				days = 70
+				scope = USC
+			}
+		}
+	}
+	else_if = {
+		limit = {
+			FROM = {
+				USA_is_nebraska_state = yes
+			}
+		}
+		every_state = {
+			limit = {
+				USA_is_nebraska_state = yes
+			}
+			add_dynamic_modifier = {
+				modifier = USC_trump_offensive_modifier
+				days = 70
+				scope = USC
+			}
+		}
+	}
+	else_if = {
+		limit = {
+			FROM = {
+				USA_is_dakota_state = yes
+			}
+		}
+		every_state = {
+			limit = {
+				USA_is_dakota_state = yes
+			}
+			add_dynamic_modifier = {
+				modifier = USC_trump_offensive_modifier
+				days = 70
+				scope = USC
+			}
+		}
+	}
+	else_if = {
+		limit = {
+			FROM = {
+				USA_is_iowa_state = yes
+			}
+		}
+		every_state = {
+			limit = {
+				USA_is_iowa_state = yes
+			}
+			add_dynamic_modifier = {
+				modifier = USC_trump_offensive_modifier
+				days = 70
+				scope = USC
+			}
+		}
+	}
+	else_if = {
+		limit = {
+			FROM = {
+				USA_is_minnesota_state = yes
+			}
+		}
+		every_state = {
+			limit = {
+				USA_is_minnesota_state = yes
+			}
+			add_dynamic_modifier = {
+				modifier = USC_trump_offensive_modifier
+				days = 70
+				scope = USC
+			}
+		}
+	}
+	else_if = {
+		limit = {
+			FROM = {
+				USA_is_tennessee_state = yes
+			}
+		}
+		every_state = {
+			limit = {
+				USA_is_tennessee_state = yes
+			}
+			add_dynamic_modifier = {
+				modifier = USC_trump_offensive_modifier
+				days = 70
+				scope = USC
+			}
+		}
+	}
+	else_if = {
+		limit = {
+			FROM = {
+				USA_is_wisconsin_state = yes
+			}
+		}
+		every_state = {
+			limit = {
+				USA_is_wisconsin_state = yes
+			}
+			add_dynamic_modifier = {
+				modifier = USC_trump_offensive_modifier
+				days = 70
+				scope = USC
+			}
+		}
+	}
+	else_if = {
+		limit = {
+			FROM = {
+				USA_is_indiana_state = yes
+			}
+		}
+		every_state = {
+			limit = {
+				USA_is_indiana_state = yes
+			}
+			add_dynamic_modifier = {
+				modifier = USC_trump_offensive_modifier
+				days = 70
+				scope = USC
+			}
+		}
+	}
+	else_if = {
+		limit = {
+			FROM = {
+				USA_is_georgia_state = yes
+			}
+		}
+		every_state = {
+			limit = {
+				USA_is_georgia_state = yes
+			}
+			add_dynamic_modifier = {
+				modifier = USC_trump_offensive_modifier
+				days = 70
+				scope = USC
+			}
+		}
+	}
+	else_if = {
+		limit = {
+			FROM = {
+				USA_is_ohio_state = yes
+			}
+		}
+		every_state = {
+			limit = {
+				USA_is_ohio_state = yes
+			}
+			add_dynamic_modifier = {
+				modifier = USC_trump_offensive_modifier
+				days = 70
+				scope = USC
+			}
+		}
+	}
+	else_if = {
+		limit = {
+			FROM = {
+				USA_is_kansas_state = yes
+			}
+		}
+		every_state = {
+			limit = {
+				USA_is_kansas_state = yes
+			}
+			add_dynamic_modifier = {
+				modifier = USC_trump_offensive_modifier
+				days = 70
+				scope = USC
+			}
+		}
+	}
+	else = {
+		FROM = {
+			add_dynamic_modifier = {
+				modifier = USC_trump_offensive_modifier
+				days = 70
+				scope = USC
+			}
+		}
+	}
+}
+
+USC_decrease_anti_trump_protests = {
+	if = {
+		limit = {
+			has_idea = USC_anti_american_protests_idea
+		}
+		swap_ideas = {
+			remove_idea = USC_anti_american_protests_idea
+			add_idea = USC_anti_american_protests_2_idea
+		}
+	}
+	else_if = {
+		limit = {
+			has_idea = USC_anti_american_protests_2_idea
+		}
+		swap_ideas = {
+			remove_idea = USC_anti_american_protests_2_idea
+			add_idea = USC_anti_american_protests_3_idea
+		}
+	}
+	else_if = {
+		limit = {
+			has_idea = USC_anti_american_protests_3_idea
+		}
+		swap_ideas = {
+			remove_idea = USC_anti_american_protests_3_idea
+			add_idea = USC_anti_american_protests_4_idea
+		}
+	}
+	else_if = {
+		limit = {
+			has_idea = USC_anti_american_protests_4_idea
+		}
+		remove_ideas = USC_anti_american_protests_4_idea
+	}
+}
+
+USC_increase_national_garden = {
+	if = {
+		limit = {
+			has_idea = USC_national_garden_of_american_heroes_idea
+		}
+		swap_ideas = {
+			remove_idea = USC_national_garden_of_american_heroes_idea
+			add_idea = USC_national_garden_of_american_heroes_2_idea
+		}
+	}
+	else_if = {
+		limit = {
+			has_idea = USC_national_garden_of_american_heroes_2_idea
+		}
+		swap_ideas = {
+			remove_idea = USC_national_garden_of_american_heroes_2_idea
+			add_idea = USC_national_garden_of_american_heroes_3_idea
+		}
+	}
+}
+
+USC_increase_maga_revolution = {
+	if = {
+		limit = {
+			has_idea = USC_maga_revolution_idea
+		}
+		swap_ideas = {
+			remove_idea = USC_maga_revolution_idea
+			add_idea = USC_maga_revolution_2_idea
+		}
+	}
+	else_if = {
+		limit = {
+			has_idea = USC_maga_revolution_2_idea
+		}
+		swap_ideas = {
+			remove_idea = USC_maga_revolution_2_idea
+			add_idea = USC_maga_revolution_3_idea
+		}
+	}
+	else_if = {
+		limit = {
+			has_idea = USC_maga_revolution_3_idea
+		}
+		swap_ideas = {
+			remove_idea = USC_maga_revolution_3_idea
+			add_idea = USC_maga_revolution_4_idea
+		}
+	}	
+	else_if = {
+		limit = {
+			has_idea = USC_maga_revolution_4_idea
+		}
+		swap_ideas = {
+			remove_idea = USC_maga_revolution_4_idea
+			add_idea = USC_maga_revolution_5_idea
+		}
+	}
+}
+
+USC_increase_new_contract_with_america = {
+	if = {
+		limit = {
+			has_idea = USC_new_contract_with_america_idea
+		}
+		swap_ideas = {
+			remove_idea = USC_new_contract_with_america_idea
+			add_idea = USC_new_contract_with_america_2_idea
+		}
+	}
+	else_if = {
+		limit = {
+			has_idea = USC_new_contract_with_america_2_idea
+		}
+		swap_ideas = {
+			remove_idea = USC_new_contract_with_america_2_idea
+			add_idea = USC_new_contract_with_america_3_idea
+		}
+	}
+	else_if = {
+		limit = {
+			has_idea = USC_new_contract_with_america_3_idea
+		}
+		swap_ideas = {
+			remove_idea = USC_new_contract_with_america_3_idea
+			add_idea = USC_new_contract_with_america_4_idea
+		}
+	}	
+	else_if = {
+		limit = {
+			has_idea = USC_new_contract_with_america_4_idea
+		}
+		swap_ideas = {
+			remove_idea = USC_new_contract_with_america_4_idea
+			add_idea = USC_new_contract_with_america_5_idea
+		}
+	}
+}
+
+USC_increase_empowered_security_council = {
+	if = {
+		limit = {
+			has_idea = USC_empowered_security_council_idea
+		}
+		swap_ideas = {
+			remove_idea = USC_empowered_security_council_idea
+			add_idea = USC_empowered_security_council_2_idea
+		}
+	}
+	else_if = {
+		limit = {
+			has_idea = USC_empowered_security_council_2_idea
+		}
+		swap_ideas = {
+			remove_idea = USC_empowered_security_council_2_idea
+			add_idea = USC_empowered_security_council_3_idea
+		}
+	}
+	else_if = {
+		limit = {
+			has_idea = USC_empowered_security_council_3_idea
+		}
+		swap_ideas = {
+			remove_idea = USC_empowered_security_council_3_idea
+			add_idea = USC_empowered_security_council_4_idea
+		}
+	}	
+	else_if = {
+		limit = {
+			has_idea = USC_empowered_security_council_4_idea
+		}
+		swap_ideas = {
+			remove_idea = USC_empowered_security_council_4_idea
+			add_idea = USC_empowered_security_council_5_idea
+		}
+	}
+}
+
+USC_increase_strong_willed_presidency = {
+	if = {
+		limit = {
+			has_idea = USC_strong_willed_presidency_idea
+		}
+		swap_ideas = {
+			remove_idea = USC_strong_willed_presidency_idea
+			add_idea = USC_strong_willed_presidency_2_idea
+		}
+	}
+	else_if = {
+		limit = {
+			has_idea = USC_strong_willed_presidency_2_idea
+		}
+		swap_ideas = {
+			remove_idea = USC_strong_willed_presidency_2_idea
+			add_idea = USC_strong_willed_presidency_3_idea
+		}
+	}
+	else_if = {
+		limit = {
+			has_idea = USC_strong_willed_presidency_3_idea
+		}
+		swap_ideas = {
+			remove_idea = USC_strong_willed_presidency_3_idea
+			add_idea = USC_strong_willed_presidency_4_idea
+		}
+	}	
+	else_if = {
+		limit = {
+			has_idea = USC_strong_willed_presidency_4_idea
+		}
+		swap_ideas = {
+			remove_idea = USC_strong_willed_presidency_4_idea
+			add_idea = USC_strong_willed_presidency_5_idea
+		}
+	}
+}
+
+USC_increase_the_reins_act = {
+	if = {
+		limit = {
+			has_idea = USC_the_reins_act_idea
+		}
+		swap_ideas = {
+			remove_idea = USC_the_reins_act_idea
+			add_idea = USC_the_reins_act_2_idea
+		}
+	}
+	else_if = {
+		limit = {
+			has_idea = USC_the_reins_act_2_idea
+		}
+		swap_ideas = {
+			remove_idea = USC_the_reins_act_2_idea
+			add_idea = USC_the_reins_act_3_idea
+		}
+	}
+	else_if = {
+		limit = {
+			has_idea = USC_the_reins_act_3_idea
+		}
+		swap_ideas = {
+			remove_idea = USC_the_reins_act_3_idea
+			add_idea = USC_the_reins_act_4_idea
+		}
+	}	
+	else_if = {
+		limit = {
+			has_idea = USC_the_reins_act_4_idea
+		}
+		swap_ideas = {
+			remove_idea = USC_the_reins_act_4_idea
+			add_idea = USC_the_reins_act_5_idea
+		}
+	}
+}
+
+USC_increase_land_of_the_deregulations = {
+	if = {
+		limit = {
+			has_idea = USC_land_of_the_deregulations_idea
+		}
+		swap_ideas = {
+			remove_idea = USC_land_of_the_deregulations_idea
+			add_idea = USC_land_of_the_deregulations_2_idea
+		}
+	}
+	else_if = {
+		limit = {
+			has_idea = USC_land_of_the_deregulations_2_idea
+		}
+		swap_ideas = {
+			remove_idea = USC_land_of_the_deregulations_2_idea
+			add_idea = USC_land_of_the_deregulations_3_idea
+		}
+	}
+	else_if = {
+		limit = {
+			has_idea = USC_land_of_the_deregulations_3_idea
+		}
+		swap_ideas = {
+			remove_idea = USC_land_of_the_deregulations_3_idea
+			add_idea = USC_land_of_the_deregulations_4_idea
+		}
+	}	
+	else_if = {
+		limit = {
+			has_idea = USC_land_of_the_deregulations_4_idea
+		}
+		swap_ideas = {
+			remove_idea = USC_land_of_the_deregulations_4_idea
+			add_idea = USC_land_of_the_deregulations_5_idea
+		}
+	}
+}
+
+#MINOR FACTIONS
+
+USC_add_chirstian_right_mini_faction = {
+	if = {
+		limit = {
+			NOT = { has_country_flag = USC_minor_factions_enabled_flag }
+		}
+		custom_effect_tooltip = USC_enable_minor_factions_tt
+		set_country_flag = USC_minor_factions_enabled_flag
+	}
+	custom_effect_tooltip = USC_chirstian_right_faction_tt
+	set_country_flag = USC_chirstian_right_enabled_flag
+	show_ideas_tooltip = USC_christian_conservatives_tt_idea
+	hidden_effect = {
+		add_dynamic_modifier = {
+			modifier = USC_christian_conservatives_modifier
+		}
+		add_to_variable = {
+			var = USC_min_faction_christian_weekly_casualties_war_support_var
+			value = 0.05
+		}
+		add_to_variable = {
+			var = USC_min_faction_christian_mobilization_speed_var
+			value = 0.1
+		}
+		add_to_variable = {
+			var = USC_min_faction_christian_surrender_limit_var
+			value = 0.1
+		}
+	}
+}
+USC_add_libertarian_party_mini_faction = {
+	if = {
+		limit = {
+			NOT = { has_country_flag = USC_minor_factions_enabled_flag }
+		}
+		custom_effect_tooltip = USC_enable_minor_factions_tt
+		set_country_flag = USC_minor_factions_enabled_flag
+	}
+	custom_effect_tooltip = USC_libertarian_party_faction_tt
+	set_country_flag = USC_libertarian_party_enabled_flag
+	show_ideas_tooltip = USC_libertarian_party_tt_idea
+	hidden_effect = {
+		add_dynamic_modifier = {
+			modifier = USC_libertarian_party_modifier
+		}
+		set_variable = {
+			var = USC_min_faction_libertarian_global_building_slots_factor_var
+			value = 0.1
+		}
+		set_variable = {
+			var = USC_min_faction_libertarian_industry_free_repair_factor_var
+			value = 0.065
+		}
+		set_variable = {
+			var = USC_min_faction_libertarian_recon_factor_var
+			value = 0.05
+		}
+	}
+}
+USC_add_league_american_workers_mini_faction = {
+	if = {
+		limit = {
+			NOT = { has_country_flag = USC_minor_factions_enabled_flag }
+		}
+		custom_effect_tooltip = USC_enable_minor_factions_tt
+		set_country_flag = USC_minor_factions_enabled_flag
+	}
+	custom_effect_tooltip = USC_league_american_workers_faction_tt
+	set_country_flag = USC_league_american_workers_enabled_flag
+	show_ideas_tooltip = USC_league_american_workers_tt_idea
+	hidden_effect = {
+		add_dynamic_modifier = {
+			modifier = USC_league_american_workers_modifier
+		}
+		set_variable = {
+			var = USC_min_faction_league_american_workers_production_factory_start_efficiency_factor_var
+			value = 0.05
+		}
+		set_variable = {
+			var = USC_min_faction_league_american_workers_industrial_capacity_factory_var
+			value = 0.035
+		}
+		set_variable = {
+			var = USC_min_faction_league_american_workers_poverty_development_monthly_var
+			value = 0.005
+		}
+	}
+}
+USC_add_techno_rightists_mini_faction = {
+	if = {
+		limit = {
+			NOT = { has_country_flag = USC_minor_factions_enabled_flag }
+		}
+		custom_effect_tooltip = USC_enable_minor_factions_tt
+		set_country_flag = USC_minor_factions_enabled_flag
+	}
+	custom_effect_tooltip = USC_techno_rightists_faction_tt
+	set_country_flag = USC_techno_rightists_enabled_flag
+	show_ideas_tooltip = USC_techno_rightists_tt_idea
+	hidden_effect = {
+		add_dynamic_modifier = {
+			modifier = USC_techno_rightists_modifier
+		}
+		set_variable = {
+			var = USC_min_faction_techno_rightists_research_speed_factor_var
+			value = 0.05
+		}
+		set_variable = {
+			var = USC_min_faction_techno_rightists_business_value_factor_var
+			value = 0.1
+		}
+		set_variable = {
+			var = USC_min_faction_techno_rightists_income_growth_factor_var
+			value = 0.05
+		}
+	}
+}
+USC_add_trump_democrats_mini_faction = {
+	if = {
+		limit = {
+			NOT = { has_country_flag = USC_minor_factions_enabled_flag }
+		}
+		custom_effect_tooltip = USC_enable_minor_factions_tt
+		set_country_flag = USC_minor_factions_enabled_flag
+	}
+	custom_effect_tooltip = USC_trump_democrats_faction_tt
+	set_country_flag = USC_trump_democrats_enabled_flag
+	show_ideas_tooltip = USC_trump_democrats_tt_idea
+	hidden_effect = {
+		add_dynamic_modifier = {
+			modifier = USC_trump_democrats_modifier
+		}
+		add_to_variable = {
+			var = USC_min_faction_democrat_stability_factor_var
+			value = 0.065
+		}
+		add_to_variable = {
+			var = USC_min_faction_democrat_compliance_growth_var
+			value = 0.1
+		}
+		add_to_variable = {
+			var = USC_min_faction_democrat_initiative_factor_var
+			value = 0.1
+		}
+	}
+}
+USC_add_we_the_people_mini_faction = {
+	if = {
+		limit = {
+			NOT = { has_country_flag = USC_minor_factions_enabled_flag }
+		}
+		custom_effect_tooltip = USC_enable_minor_factions_tt
+		set_country_flag = USC_minor_factions_enabled_flag
+	}
+	custom_effect_tooltip = USC_kennedy_party_faction_tt
+	set_country_flag = USC_kennedy_party_enabled_flag
+	show_ideas_tooltip = USC_kennedy_party_tt_idea
+	hidden_effect = {
+		add_dynamic_modifier = {
+			modifier = USC_trump_democrats_modifier
+		}
+		add_to_variable = {
+			var = USC_min_faction_democrat_stability_factor_var
+			value = 0.045
+		}
+		add_to_variable = {
+			var = USC_min_faction_democrat_compliance_growth_var
+			value = 0.05
+		}
+		add_to_variable = {
+			var = USC_min_faction_democrat_initiative_factor_var
+			value = 0.06
+		}
+	}
+}
+USC_add_leftists_mini_faction = {
+	if = {
+		limit = {
+			NOT = { has_country_flag = USC_minor_factions_enabled_flag }
+		}
+		custom_effect_tooltip = USC_enable_minor_factions_tt
+		set_country_flag = USC_minor_factions_enabled_flag
+	}
+	custom_effect_tooltip = USC_leftist_faction_tt
+	set_country_flag = USC_left_patriots_enabled_flag
+	show_ideas_tooltip = USC_leftist_tt_idea
+	hidden_effect = {
+		add_dynamic_modifier = {
+			modifier = USC_leftists_modifier
+		}
+		add_to_variable = {
+			var = USC_min_faction_leftist_production_speed_infrastructure_factor_var
+			value = 0.1
+		}
+		add_to_variable = {
+			var = USC_min_faction_leftist_production_factory_max_efficiency_factor_var
+			value = 0.08
+		}
+		add_to_variable = {
+			var = USC_min_faction_leftist_army_attack_speed_factor_var
+			value = 0.07
+		}
+	}
+}
+
+USC_add_wignats_mini_faction = {
+	if = {
+		limit = {
+			NOT = { has_country_flag = USC_minor_factions_enabled_flag }
+		}
+		custom_effect_tooltip = USC_enable_minor_factions_tt
+		set_country_flag = USC_minor_factions_enabled_flag
+	}
+	custom_effect_tooltip = USC_wignats_faction_tt
+	set_country_flag = USC_wignats_enabled_flag
+	show_ideas_tooltip = USC_wignats_tt_idea
+	hidden_effect = {
+		add_dynamic_modifier = {
+			modifier = USC_wignats_modifier
+		}
+		add_to_variable = {
+			var = USC_min_faction_nationalist_war_support_factor_var
+			value = 0.1
+		}
+		add_to_variable = {
+			var = USC_min_faction_nationalist_resistance_decay_var
+			value = 0.075
+		}
+		add_to_variable = {
+			var = USC_min_faction_nationalist_army_strength_factor_var
+			value = 0.05
+		}
+	}
+}
+
+USC_add_independents_mini_faction = {
+	if = {
+		limit = {
+			NOT = { has_country_flag = USC_minor_factions_enabled_flag }
+		}
+		custom_effect_tooltip = USC_enable_minor_factions_tt
+		set_country_flag = USC_minor_factions_enabled_flag
+	}
+	custom_effect_tooltip = USC_independents_faction_tt
+	set_country_flag = USC_independents_enabled_flag
+	show_ideas_tooltip = USC_independents_tt_idea
+	hidden_effect = {
+		add_dynamic_modifier = {
+			modifier = USC_independents_modifier
+		}
+		add_to_variable = {
+			var = USC_min_faction_independent_coordination_bonus_var
+			value = 0.05
+		}
+		add_to_variable = {
+			var = USC_min_faction_independent_research_speed_factor_var
+			value = 0.05
+		}
+	}
+}
+
+USC_add_maga_communists_mini_faction = {
+	if = {
+		limit = {
+			NOT = { has_country_flag = USC_minor_factions_enabled_flag }
+		}
+		custom_effect_tooltip = USC_enable_minor_factions_tt
+		set_country_flag = USC_minor_factions_enabled_flag
+	}
+	custom_effect_tooltip = USC_maga_communists_faction_tt
+	set_country_flag = USC_maga_communists_enabled_flag
+	show_ideas_tooltip = USC_maga_communists_tt_idea
+	hidden_effect = {
+		add_dynamic_modifier = {
+			modifier = USC_maga_communists_modifier
+		}
+		add_to_variable = {
+			var = USC_min_faction_maga_communists_production_factory_efficiency_gain_factor_var
+			value = 0.05
+		}
+		add_to_variable = {
+			var = USC_min_faction_independent_truck_attrition_factor_var
+			value = -0.05
+		}
+	}
+}
+
+USC_add_ultra_maga_mini_faction = {
+	if = {
+		limit = {
+			NOT = { has_country_flag = USC_minor_factions_enabled_flag }
+		}
+		custom_effect_tooltip = USC_enable_minor_factions_tt
+		set_country_flag = USC_minor_factions_enabled_flag
+	}
+	custom_effect_tooltip = USC_ultra_maga_faction_tt
+	set_country_flag = USC_ultra_maga_enabled_flag
+	show_ideas_tooltip = USC_ultra_maga_tt_idea
+	hidden_effect = {
+		add_dynamic_modifier = {
+			modifier = USC_ultra_maga_modifier
+		}
+		add_to_variable = {
+			var = USC_min_faction_ultra_maga_army_core_attack_factor_var
+			value = 0.05
+		}
+		add_to_variable = {
+			var = USC_min_faction_ultra_maga_cas_damage_reduction_var
+			value = 0.05
+		}
+	}
+}
+
+USC_add_megachurches_mini_faction = {
+	if = {
+		limit = {
+			NOT = { has_country_flag = USC_minor_factions_enabled_flag }
+		}
+		custom_effect_tooltip = USC_enable_minor_factions_tt
+		set_country_flag = USC_minor_factions_enabled_flag
+	}
+	custom_effect_tooltip = USC_megachurches_faction_tt
+	set_country_flag = USC_megachurches_enabled_flag
+	show_ideas_tooltip = USC_megachurches_tt_idea
+	hidden_effect = {
+		add_dynamic_modifier = {
+			modifier = USC_megachurches_modifier
+		}
+		add_to_variable = {
+			var = USC_min_faction_megachurches_income_growth_factor_var
+			value = 0.045
+		}
+		add_to_variable = {
+			var = USC_min_faction_megachurches_out_of_supply_factor_var
+			value = -0.035
+		}
+	}
+}
+
+USC_who_is_president_pick = {
+	if = {
+		limit = {
+			has_country_flag = USC_musk_president_pick_flag
+		}
+		add_country_leader_role = {
+			character = USC_elon_musk_char
+			promote_leader = yes
+			country_leader = {
+				ideology = right_libertarianism
+				expire="1.1.1.1"
+				id=-1
+				traits = { }
+			}
+		}
+		hidden_effect = {
+			set_politics = {
+				ruling_party = market_liberal
+				elections_allowed = yes
+			}
+		}
+	}	
+	else_if = {
+		limit = {
+			has_country_flag = USC_palin_president_pick_flag
+		}
+		add_country_leader_role = {
+			character = USC_sarah_palin_char
+			promote_leader = yes
+			country_leader = {
+				ideology = right_libertarianism
+				expire="1.1.1.1"
+				id=-1
+				traits = { }
+			}
+		}
+		hidden_effect = {
+			set_politics = {
+				ruling_party = market_liberal
+				elections_allowed = yes
+			}
+		}
+	}	
+	else_if = {
+		limit = {
+			has_country_flag = USC_paul_president_pick_flag
+		}
+		promote_character = {
+			character = USC_rand_paul_char
+			ideology = right_libertarianism
+		}
+		hidden_effect = {
+			set_politics = {
+				ruling_party = market_liberal
+				elections_allowed = yes
+			}
+		}
+	}	
+	else_if = {
+		limit = {
+			has_country_flag = USC_lake_president_pick_flag
+		}
+		add_country_leader_role = {
+			character = USC_kari_lake_char
+			promote_leader = yes
+			country_leader = {
+				ideology = right_populism
+				expire="1.1.1.1"
+				id=-1
+				traits = { }
+			}
+		}
+		hidden_effect = {
+			set_politics = {
+				ruling_party = conservative
+				elections_allowed = yes
+			}
+		}
+	}	
+	else_if = {
+		limit = {
+			has_country_flag = USC_byron_president_pick_flag
+		}
+		add_country_leader_role = {
+			character = USC_byron_donalds_char
+			promote_leader = yes
+			country_leader = {
+				ideology = right_populism
+				expire="1.1.1.1"
+				id=-1
+				traits = { }
+			}
+		}
+		hidden_effect = {
+			set_politics = {
+				ruling_party = conservative
+				elections_allowed = yes
+			}
+		}
+	}
+	else_if = {
+		limit = {
+			has_country_flag = USC_vivek_president_pick_flag
+		}
+		promote_character = {
+			character = USC_vivek_ramaswamy_char
+			ideology = right_populism
+		}
+		hidden_effect = {
+			set_politics = {
+				ruling_party = conservative
+				elections_allowed = yes
+			}
+		}
+	}		
+	else_if = {
+		limit = {
+			has_country_flag = USC_johnson_president_pick_flag
+		}
+		promote_character = {
+			character = USC_mike_johnson_char
+			ideology = right_populism
+		}
+		hidden_effect = {
+			set_politics = {
+				ruling_party = conservative
+				elections_allowed = yes
+			}
+		}
+	}	
+	else_if = {
+		limit = {
+			has_country_flag = USC_carlson_president_pick_flag
+		}
+		promote_character = {
+			character = USC_tucker_carlson_char
+			ideology = right_populism
+		}
+		hidden_effect = {
+			set_politics = {
+				ruling_party = conservative
+				elections_allowed = yes
+			}
+		}
+	}	
+	else_if = {
+		limit = {
+			has_country_flag = USC_gaetz_president_pick_flag
+		}
+		promote_character = {
+			character = USC_matt_gaetz_char
+			ideology = right_populism
+		}
+		hidden_effect = {
+			set_politics = {
+				ruling_party = conservative
+				elections_allowed = yes
+			}
+		}
+	}
+	else_if = {
+		limit = {
+			has_country_flag = USC_desantis_president_pick_flag
+		}
+		promote_character = {
+			character = USC_ron_desantis_char
+			ideology = right_populism
+		}
+		hidden_effect = {
+			set_politics = {
+				ruling_party = conservative
+				elections_allowed = yes
+			}
+		}
+	}	
+	else_if = {
+		limit = {
+			has_country_flag = USC_rubio_president_pick_flag
+		}
+		promote_character = {
+			character = USC_marco_rubio_char
+			ideology = right_populism
+		}
+		hidden_effect = {
+			set_politics = {
+				ruling_party = conservative
+				elections_allowed = yes
+			}
+		}
+	}	
+	else_if = {
+		limit = {
+			has_country_flag = USC_jd_vance_president_pick_flag
+		}
+		promote_character = {
+			character = USC_jd_vance_char
+			ideology = right_populism
+		}
+		hidden_effect = {
+			set_politics = {
+				ruling_party = conservative
+				elections_allowed = yes
+			}
+		}
+	}
+	else_if = {
+		limit = {
+			has_country_flag = USC_ivanka_president_pick_flag
+		}
+		add_country_leader_role = {
+			character = USC_ivanka_trump_char
+			promote_leader = yes
+			country_leader = {
+				ideology = ultra_conservatism
+				expire="1.1.1.1"
+				id=-1
+				traits = { }
+			}
+		}
+		hidden_effect = {
+			set_politics = {
+				ruling_party = authoritarian_democrat
+				elections_allowed = yes
+			}
+		}
+	}	
+	else_if = {
+		limit = {
+			has_country_flag = USC_don_jr_president_pick_flag
+		}
+		promote_character = {
+			character = USC_trump_son_char
+			ideology = ultra_conservatism
+		}
+		hidden_effect = {
+			set_politics = {
+				ruling_party = authoritarian_democrat
+				elections_allowed = yes
+			}
+		}
+	}
+	if = {
+		limit = {
+			has_government = market_liberal
+			NOT = { has_country_flag = USC_cowed_to_bureaucrats_flag }
+		}
+		set_country_leader_ideology = trumpism_market
+	}	
+	else_if = {
+		limit = {
+			has_government = market_liberal
+			has_country_flag = USC_cowed_to_bureaucrats_flag
+		}
+		set_country_leader_ideology = classical_liberalism
+	}	
+	else_if = {
+		limit = {
+			has_government = conservative
+			NOT = { has_country_flag = USC_cowed_to_bureaucrats_flag }
+		}
+		set_country_leader_ideology = trumpism_conservative
+	}	
+	else_if = {
+		limit = {
+			has_government = conservative
+			has_country_flag = USC_cowed_to_bureaucrats_flag
+		}
+		set_country_leader_ideology = classical_conservatism
+	}
+	else_if = {
+		limit = {
+			has_government = authoritarian_democrat
+			NOT = { has_country_flag = USC_cowed_to_bureaucrats_flag }
+		}
+		set_country_leader_ideology = trumpism_authdem
+	}
+	else_if = {
+		limit = {
+			has_government = authoritarian_democrat
+			has_country_flag = USC_cowed_to_bureaucrats_flag
+			NOT = { has_idea = USC_patriotic_oligarchs_idea }
+		}
+		set_country_leader_ideology = hybrid_regime
+	}
+	else_if = {
+		limit = {
+			has_government = authoritarian_democrat
+			has_country_flag = USC_cowed_to_bureaucrats_flag
+			has_idea = USC_patriotic_oligarchs_idea
+		}
+		set_country_leader_ideology = oligarchist
+	}
+}
+USC_who_is_vp_pick = {
+	if = {
+		limit = {
+			has_country_flag = USC_trump_vp_pick_flag
+		}
+		custom_effect_tooltip = appoint_head_minister_tooltip
+		show_ideas_tooltip = USC_donald_trump_hog
+		hidden_effect = {
+			add_ideas = USC_donald_trump_hog
+		}
+	}
+	else_if = {
+		limit = {
+			has_country_flag = USC_tim_scott_vp_pick_flag
+		}
+		custom_effect_tooltip = appoint_head_minister_tooltip
+		show_ideas_tooltip = USC_tim_scott_hog
+		hidden_effect = {
+			add_ideas = USC_tim_scott_hog
+		}
+	}	
+	else_if = {
+		limit = {
+			has_country_flag = USC_anthony_kern_vp_pick_flag
+		}
+		custom_effect_tooltip = appoint_head_minister_tooltip
+		show_ideas_tooltip = USC_anthony_kern_hog
+		hidden_effect = {
+			add_ideas = USC_anthony_kern_hog
+		}
+	}
+	else_if = {
+		limit = {
+			has_country_flag = USC_posobiec_vp_pick_flag
+		}
+		custom_effect_tooltip = appoint_head_minister_tooltip
+		show_ideas_tooltip = USC_jack_posobiec_hog
+		hidden_effect = {
+			add_ideas = USC_jack_posobiec_hog
+		}
+	}	
+	else_if = {
+		limit = {
+			has_country_flag = USC_finchem_vp_pick_flag
+		}
+		custom_effect_tooltip = appoint_head_minister_tooltip
+		show_ideas_tooltip = USC_mark_finchem_hog
+		hidden_effect = {
+			add_ideas = USC_mark_finchem_hog
+		}
+	}	
+	else_if = {
+		limit = {
+			has_country_flag = USC_tuberville_vp_pick_flag
+		}
+		custom_effect_tooltip = appoint_head_minister_tooltip
+		show_ideas_tooltip = USC_tommy_tuberville_hog
+		hidden_effect = {
+			add_ideas = USC_tommy_tuberville_hog
+		}
+	}	
+	else_if = {
+		limit = {
+			has_country_flag = USC_youngkin_vp_pick_flag
+		}
+		custom_effect_tooltip = appoint_head_minister_tooltip
+		show_ideas_tooltip = USC_glenn_youngkin_hog
+		hidden_effect = {
+			add_ideas = USC_glenn_youngkin_hog
+		}
+	}	
+	else_if = {
+		limit = {
+			has_country_flag = USC_massie_vp_pick_flag
+		}
+		custom_effect_tooltip = appoint_head_minister_tooltip
+		show_ideas_tooltip = USC_thomas_massie_hog
+		hidden_effect = {
+			add_ideas = USC_thomas_massie_hog
+		}
+	}	
+	else_if = {
+		limit = {
+			has_country_flag = USC_wright_vp_pick_flag
+		}
+		custom_effect_tooltip = appoint_head_minister_tooltip
+		show_ideas_tooltip = USC_chris_wright_hog
+		hidden_effect = {
+			add_ideas = USC_chris_wright_hog
+		}
+	}
+	else_if = {
+		limit = {
+			has_country_flag = USC_mace_vp_pick_flag
+		}
+		custom_effect_tooltip = appoint_head_minister_tooltip
+		show_ideas_tooltip = USC_nancy_mace_hog
+		hidden_effect = {
+			add_ideas = USC_nancy_mace_hog
+		}
+	}
+}

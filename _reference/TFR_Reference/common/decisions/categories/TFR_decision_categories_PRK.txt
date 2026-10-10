@@ -1,0 +1,47 @@
+kims_successor = {
+	icon = united_states
+
+	allowed = {
+		original_tag = PRK
+	}
+}
+korean_war = {
+	icon = united_states
+
+	allowed = {
+		original_tag = PRK
+	}
+	
+	visible = {
+		has_completed_focus = PRK_prepare_for_war
+	}
+}
+
+PRK_politburo_of_wpk = {
+	icon = PRK_decisions_DPRK_Category_icon
+	picture = WPK_Politburo_Decision
+
+	allowed = {
+		original_tag = PRK
+		NOT = {
+			has_country_flag = PRK_Kim_Is_Dead
+		}
+	}
+	
+}
+
+PRK_korean_civil_war = {
+	icon = united_states
+
+	allowed = {
+		or = {
+			tag = PRK
+			tag = NK2
+			tag = NK3
+		}
+	}
+	
+	visible = {
+		has_global_flag = north_korean_civil_war
+	}
+}

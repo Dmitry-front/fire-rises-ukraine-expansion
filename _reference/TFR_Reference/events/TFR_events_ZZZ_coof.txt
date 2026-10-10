@@ -1,0 +1,171 @@
+﻿#random_controlled_state = {
+#	limit = {
+#		has_dynamic_modifier = {
+#			modifier = plague_test_modifier
+#		}
+#	}
+#	set_temp_variable = { disease_deaths = THIS.state_population_k }
+#	set_temp_variable = { disease_deaths_min = THIS.state_population_k }
+#	set_temp_variable = { disease_deaths_max = THIS.state_population_k }
+#	
+#	divide_temp_variable = { disease_deaths_min = 100 }
+#	divide_temp_variable = { disease_deaths_max = 10 }
+#	
+#	set_temp_variable_to_random = {
+#		var = disease_deaths
+#		min = disease_deaths_min
+#		max = disease_deaths_max
+#		integer = yes
+#	}
+#	
+#	multiply_temp_variable = { disease_deaths = -1 }
+#	
+#	add_manpower = var:disease_deaths
+#}
+
+add_namespace = disease_event
+
+# Disease spreads (Coof)
+country_event = {
+
+	id = disease_event.1
+	title = disease_event.1.t
+	desc = disease_event.1.d
+	
+	picture = GFX_report_first_us_covidcase
+	
+	fire_only_once = no
+	
+	is_triggered_only = yes
+	
+	hidden = no
+	
+	immediate = {
+	
+	}
+	
+	option = {
+		name = disease_event.1.a
+		ai_chance = {
+			base = 1
+		}
+		controller = { add_stability = -0.01 }
+		hidden_effect = {
+			controller = { set_country_flag = plague_first_appearance }
+		}
+	}
+	
+}
+
+# Disease increases (Coof)
+country_event = {
+
+	id = disease_event.2
+	title = disease_event.2.t
+	desc = disease_event.2.d
+	
+	picture = GFX_report_first_us_covidcase
+	
+	fire_only_once = no
+	
+	is_triggered_only = yes
+    
+	hidden = no
+	
+	immediate = {
+	
+	}
+	
+	option = {
+		name = disease_event.2.a
+		ai_chance = {
+			base = 1
+		}
+		194 = {
+			set_variable = { plague_state_modifier = -0.01 }
+			add_dynamic_modifier = { modifier = plague_state_modifier }
+			add_to_array = { array = global.plague_affected_states value = THIS.id }
+		}
+	}
+	
+	option = {
+		name = disease_event.2.b
+		ai_chance = {
+			base = 1
+		}
+		1149 = {
+			set_variable = { plague_state_modifier = -0.01 }
+			add_dynamic_modifier = { modifier = plague_state_modifier }
+			add_to_array = { array = global.plague_affected_states value = THIS.id }
+		}
+	}
+	
+	option = {
+		name = disease_event.2.c
+		ai_chance = {
+			base = 1
+		}
+		1240 = {
+			set_variable = { plague_state_modifier = -0.01 }
+			add_dynamic_modifier = { modifier = plague_state_modifier }
+			add_to_array = { array = global.plague_affected_states value = THIS.id }
+		}
+	}
+	
+}
+
+# Test event
+country_event = {
+
+	id = disease_event.3
+	title = disease_event.3.t
+	desc = disease_event.3.d
+	
+	picture = GFX_report_first_us_covidcase
+	
+	fire_only_once = no
+	
+	is_triggered_only = yes
+    
+	hidden = no
+	
+	immediate = {
+	
+	}
+	
+	option = {
+		name = disease_event.3.a
+		ai_chance = {
+			base = 1
+		}
+		random_controlled_state = {
+			set_variable = { plague_state_modifier = -0.01 }
+			add_dynamic_modifier = { modifier = plague_state_modifier }
+			add_to_array = { array = global.plague_affected_states value = THIS.id }
+		}
+	}
+	
+}
+
+country_event = {
+
+    id = disease_event.4
+    title = disease_event.4.t
+    desc = disease_event.4.d
+	
+    picture = GFX_report_first_us_covidcase
+	
+	fire_only_once = no
+	
+	is_triggered_only = yes
+    
+	hidden = yes
+	
+    option = {
+        name = my_event.2.a
+        
+		805 = {
+			subtract_from_variable = { plague_state_modifier = 0.1 }
+		}
+    }
+}

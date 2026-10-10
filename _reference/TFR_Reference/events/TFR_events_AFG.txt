@@ -1,0 +1,195 @@
+﻿add_namespace = afghanistan
+# American Peace Deal in Effect
+country_event = {
+	id = afghanistan.1
+	title = afghanistan.1.t
+	desc = afghanistan.1.d
+	picture = report_event_equipment
+	fire_only_once = yes
+	is_triggered_only = yes
+	trigger = {
+		OR = {
+			tag = AFG
+			tag = TAL
+		}
+	}
+	option = {
+		name = afghanistan.1.a
+		hidden_effect = {
+			TAL = {
+				country_event = {
+					id = afghanistan.4
+					days = 200
+				}
+			}
+		}
+	}
+}
+
+# NO ONES WATCHING FUCK YOU DIE
+country_event = {
+	id = afghanistan.2
+	title = afghanistan.2.t
+	desc = afghanistan.2.d
+	picture = report_event_equipment
+	fire_only_once = yes
+	is_triggered_only = yes
+	trigger = {
+		tag = TAL
+	}
+	option = {
+		name = afghanistan.2.a
+		declare_war_on = {
+			target = AFG
+			type = civil_war
+		}
+	}
+}
+
+# أعظم إمارة أفغانستان الإسلامية إن شاء الله
+country_event = {
+	id = afghanistan.3
+	title = afghanistan.3.t
+	desc = afghanistan.3.d
+	picture = report_event_equipment
+	fire_only_once = yes
+	is_triggered_only = yes
+	trigger = {
+		tag = TAL
+	}
+	option = {
+		name = afghanistan.3.a
+		TAL = {
+			set_cosmetic_tag = TAL_LOY_AFGHANISTAN
+			news_event = {
+				id = afghanistan.8
+			}
+			declare_war_on = {
+				target = PAK
+				type = civil_war
+			}
+			declare_war_on = {
+				target = ISK
+				type = civil_war
+			}
+			add_state_core = 445
+			add_state_core = 1323
+			add_state_core = 442
+			add_state_core = 1321
+			add_state_core = 787
+			annex_country = {
+				target = TLP
+				transfer_troops = yes
+			}
+			hidden_effect = {
+				TLP = {
+					set_nationality = {
+						target_country = ROOT
+						character = TPK_Noor_Wali_Mehsud
+					}
+				}
+			}
+		}
+		PAK = {
+			country_event = {
+				id = PAK.8
+				days = 250
+			}
+		}
+		ISK = {
+			set_province_controller = 14528
+			set_province_controller = 13781
+			set_province_controller = 12248
+			load_oob = "ISK_Afghan_War"
+		}
+	}
+}
+
+# Taliban gain further control of afghanistan
+country_event = {
+	id = afghanistan.4
+	title = afghanistan.4.t
+	desc = afghanistan.4.d
+	picture = report_event_equipment
+	fire_only_once = yes
+	is_triggered_only = yes
+	trigger = {
+		tag = TAL
+	}
+	option = {
+		name = afghanistan.4.a
+		transfer_state = 1056
+		transfer_state = 1053
+		transfer_state = 1052
+		hidden_effect = {
+			country_event = {
+				id = afghanistan.5
+				days = 200
+			}
+		}
+	}
+}
+
+# Taliban gain further control of afghanistan
+country_event = {
+	id = afghanistan.5
+	title = afghanistan.5.t
+	desc = afghanistan.5.d
+	picture = report_event_equipment
+	fire_only_once = yes
+	is_triggered_only = yes
+	trigger = {
+		tag = TAL
+	}
+	option = {
+		name = afghanistan.5.a
+		transfer_state = 415
+		transfer_state = 837
+		AFG = {
+			set_variable = {
+				disband_fraction = 0.75
+			}
+			disband_units_fraction = yes
+			clear_variable = disband_fraction
+		}
+	}
+}
+
+country_event = {
+	id = afghanistan.6
+	title = afghanistan.6.t
+	desc = afghanistan.6.d
+	picture = report_event_equipment
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = {
+		name = afghanistan.6.a
+		transfer_state = 442
+	}
+}
+
+country_event = {
+	id = afghanistan.7
+	title = afghanistan.7.t
+	desc = afghanistan.7.d
+	picture = report_event_equipment
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = {
+		name = afghanistan.7.a
+		transfer_state = 1058
+	}
+}
+
+news_event = {
+	id = afghanistan.8
+	title = afghanistan.8.t
+	desc = afghanistan.8.d
+	picture = GFX_Taliban_News
+	is_triggered_only = yes
+	major = yes
+	option = {
+		name = afghanistan.8.a
+		
+	}
+}

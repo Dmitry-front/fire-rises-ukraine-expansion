@@ -1,0 +1,6424 @@
+######################################################
+# French Communist Focus Tree
+# By Strategic Munchies
+# Contributed to by Aleks
+######################################################
+focus_tree = {
+	id = FPR_Communist_Civil_War
+	country = {
+		factor = 0
+	}
+	focus = {
+		id = FRA_Revolution_against_Humiliation
+		icon = GFX_focus_Oath_to_the_New_Republic
+		x = 7
+		y = 0
+		cost = 2
+		available_if_capitulated = yes
+		available = {
+			NOT = {
+				has_global_flag = SOV_cprf_won
+			}
+		}
+		ai_will_do = {
+			factor = 1
+		}
+		completion_reward = {
+			set_party_name = {
+				ideology = social_democrat
+				long_name = FPR_social_democrat_party_long_c
+				name = FPR_social_democrat_party_c
+			}
+			set_party_name = {
+				ideology = libertarian_socialist
+				long_name = FPR_libertarian_socialist_party_long_c
+				name = FPR_libertarian_socialist_party_c
+			}
+			set_party_name = {
+				ideology = communist
+				long_name = FPR_communist_party_long_c
+				name = FPR_communist_party_c
+			}
+			set_party_name = {
+				ideology = totalitarian_socialist
+				long_name = FPR_totalitarian_socialist_party_long_c
+				name = FPR_totalitarian_socialist_party_c
+			}
+			set_temp_variable = {
+				coalition_partner_var_temp = token:libertarian_socialist
+			}
+			add_to_coalition = yes
+			set_temp_variable = {
+				coalition_partner_var_temp = token:social_democrat
+			}
+			add_to_coalition = yes
+			set_temp_variable = {
+				coalition_partner_var_temp = token:totalitarian_socialist
+			}
+			add_to_coalition = yes
+			if = {
+				limit = {
+					FRA = {
+						has_country_flag = FRA_Melenchon_2022_flag
+					}
+				}
+				add_ideas = FPR_Revolutionary_Fervor_1
+				random_owned_controlled_state = {
+					create_unit = {
+						division = "name = \"Popular People's Militia\" division_template = \"Milice Révolutionnaire Populaire\" start_experience_factor = 0.1 start_equipment_factor = 0.8"
+						owner = FPR
+					}
+				}
+				random_owned_controlled_state = {
+					create_unit = {
+						division = "name = \"Popular People's Militia\" division_template = \"Milice Révolutionnaire Populaire\" start_experience_factor = 0.1 start_equipment_factor = 0.8"
+						owner = FPR
+					}
+				}
+				random_owned_controlled_state = {
+					create_unit = {
+						division = "name = \"Popular People's Militia\" division_template = \"Milice Révolutionnaire Populaire\" start_experience_factor = 0.1 start_equipment_factor = 0.8"
+						owner = FPR
+					}
+				}
+				random_owned_controlled_state = {
+					create_unit = {
+						division = "name = \"Popular People's Militia\" division_template = \"Milice Révolutionnaire Populaire\" start_experience_factor = 0.1 start_equipment_factor = 0.8"
+						owner = FPR
+					}
+				}
+				random_owned_controlled_state = {
+					create_unit = {
+						division = "name = \"Popular People's Militia\" division_template = \"Milice Révolutionnaire Populaire\" start_experience_factor = 0.1 start_equipment_factor = 0.8"
+						owner = FPR
+					}
+				}
+				FRA = {
+					country_event = {
+						id = france.160
+						days = 5
+					}
+					#Establishment Collapses
+				}
+			}
+			else = {
+				add_ideas = FPR_Revolutionary_Fervor_1
+				random_owned_controlled_state = {
+					create_unit = {
+						division = "name = \"Popular People's Militia\" division_template = \"Milice Révolutionnaire Populaire\" start_experience_factor = 0.1 start_equipment_factor = 0.8"
+						owner = FPR
+					}
+				}
+				random_owned_controlled_state = {
+					create_unit = {
+						division = "name = \"Popular People's Militia\" division_template = \"Milice Révolutionnaire Populaire\" start_experience_factor = 0.1 start_equipment_factor = 0.8"
+						owner = FPR
+					}
+				}
+				random_owned_controlled_state = {
+					create_unit = {
+						division = "name = \"Popular People's Militia\" division_template = \"Milice Révolutionnaire Populaire\" start_experience_factor = 0.1 start_equipment_factor = 0.8"
+						owner = FPR
+					}
+				}
+			}
+		}
+	}
+	focus = {
+		id = FRA_Rally_the_People
+		icon = GFX_focus_Sharpen_the_Peoples_Razor
+		x = 5
+		y = 1
+		cost = 2
+		available_if_capitulated = yes
+		ai_will_do = {
+			factor = 1
+		}
+		prerequisite = {
+			focus = FRA_Revolution_against_Humiliation
+		}
+		completion_reward = {
+			add_equipment_to_stockpile = {
+				type = infantry_equipment_2
+				amount = 2500
+				producer = FRA
+			}
+			add_equipment_to_stockpile = {
+				type = support_equipment
+				amount = 250
+				producer = FRA
+			}
+			add_equipment_to_stockpile = {
+				type = anti_tank_equipment_1
+				amount = 300
+				producer = FRA
+			}
+			add_equipment_to_stockpile = {
+				type = anti_air_equipment_1
+				amount = 300
+				producer = FRA
+			}
+			add_equipment_to_stockpile = {
+				type = motorized_equipment
+				amount = 400
+				producer = FRA
+			}
+			add_war_support = 0.1
+			FPR_Increase_Revolutionary_Fervor = yes
+		}
+	}
+	focus = {
+		id = FRA_Declare_Second_Revolution
+		icon = GFX_focus_FPR_declare_a_new_revolution
+		x = 4
+		y = 2
+		cost = 2
+		available_if_capitulated = yes
+		ai_will_do = {
+			factor = 1
+		}
+		prerequisite = {
+			focus = FRA_Rally_the_People
+		}
+		completion_reward = {
+			add_political_power = 100
+			country_event = {
+				id = france.161
+			}
+			#Meeting of the Revolutionary Minds
+			set_power_balance = {
+				id = FPR_Revolutionary_Congress
+				left_side = FPR_Lib_Socialists_side
+				right_side = FPR_Auth_Communists_side
+				set_value = 0
+			}
+			effect_tooltip = {
+				add_ideas = FPR_Revolution_dummy
+			}
+			hidden_effect = {
+				add_dynamic_modifier = {
+					modifier = FPR_Revolution_dynamic
+				}
+				add_to_variable = {
+					var = FPR_revolution_political_power_gain_dynamic_var
+					value = 0.05
+				}
+				add_to_variable = {
+					var = FPR_revolution_stability_factor_dynamic_var
+					value = -0.2
+				}
+				add_to_variable = {
+					var = FPR_revolution_poverty_development_monthly_dynamic_var
+					value = 0.01
+				}
+				add_to_variable = {
+					var = FPR_revolution_production_speed_buildings_factor_dynamic_var
+					value = 0.015
+				}
+			}
+		}
+	}
+	focus = {
+		id = FRA_New_Partisan_Movement
+		icon = GFX_focus_FPR_New_Partisans
+		x = 6
+		y = 2
+		cost = 2
+		available_if_capitulated = yes
+		ai_will_do = {
+			factor = 1
+		}
+		prerequisite = {
+			focus = FRA_Rally_the_People
+		}
+		completion_reward = {
+			add_manpower = 7500
+			FAF = {
+				add_ideas = FPR_Red_Partisans
+			}
+			FRA = {
+				add_ideas = FPR_Red_Partisans
+			}
+		}
+	}
+	focus = {
+		id = FRA_Stoke_Revolutionary_Fervor
+		icon = GFX_focus_FAF_Fight_the_Unholy_Reds
+		x = 5
+		y = 3
+		cost = 2
+		available_if_capitulated = yes
+		ai_will_do = {
+			factor = 1
+		}
+		prerequisite = {
+			focus = FRA_Declare_Second_Revolution
+		}
+		prerequisite = {
+			focus = FRA_New_Partisan_Movement
+		}
+		completion_reward = {
+			FPR_Increase_Revolutionary_Fervor = yes
+			effect_tooltip = {
+				swap_ideas = {
+					add_idea = FPR_stoke_revolutionary_fervor
+					remove_idea = FPR_Revolution_dummy
+				}
+			}
+			hidden_effect = {
+				add_to_variable = {
+					var = FPR_revolution_military_mobilization_speed_dynamic_var
+					value = 0.1
+				}
+				add_to_variable = {
+					var = FPR_revolution_military_training_time_factor_dynamic_var
+					value = -0.05
+				}
+			}
+		}
+	}
+	focus = {
+		id = FRA_Form_Peasant_Militias
+		icon = GFX_focus_FPR_Paris_Commune
+		x = 8
+		y = 1
+		cost = 2
+		available_if_capitulated = yes
+		ai_will_do = {
+			factor = 1
+		}
+		prerequisite = {
+			focus = FRA_Revolution_against_Humiliation
+		}
+		completion_reward = {
+			random_owned_controlled_state = {
+				create_unit = {
+					division = "name = \"Popular People's Militia\" division_template = \"Milice Révolutionnaire Populaire\" start_experience_factor = 0.1 start_equipment_factor = 0.1"
+					owner = FPR
+				}
+			}
+			random_owned_controlled_state = {
+				create_unit = {
+					division = "name = \"Popular People's Militia\" division_template = \"Milice Révolutionnaire Populaire\" start_experience_factor = 0.1 start_equipment_factor = 0.6"
+					owner = FPR
+				}
+			}
+			random_owned_controlled_state = {
+				create_unit = {
+					division = "name = \"Popular People's Militia\" division_template = \"Milice Révolutionnaire Populaire\" start_experience_factor = 0.1 start_equipment_factor = 0.2"
+					owner = FPR
+				}
+			}
+			random_owned_controlled_state = {
+				create_unit = {
+					division = "name = \"Popular People's Militia\" division_template = \"Milice Révolutionnaire Populaire\" start_experience_factor = 0.1 start_equipment_factor = 0.4"
+					owner = FPR
+				}
+			}
+			random_owned_controlled_state = {
+				create_unit = {
+					division = "name = \"Popular People's Militia\" division_template = \"Milice Révolutionnaire Populaire\" start_experience_factor = 0.1 start_equipment_factor = 0.4"
+					owner = FPR
+				}
+			}
+		}
+	}
+	focus = {
+		id = FRA_Found_the_French_Peoples_Liberation_Army
+		icon = GFX_focus_FPR_french_peoples_army
+		x = 8
+		y = 2
+		cost = 2
+		available_if_capitulated = yes
+		ai_will_do = {
+			factor = 1
+		}
+		prerequisite = {
+			focus = FRA_Form_Peasant_Militias
+		}
+		completion_reward = {
+			army_experience = 50
+			unlock_decision_category_tooltip = FPR_revolutionary_army_category
+			set_country_flag = FPR_revolutionary_army_category_focus
+			effect_tooltip = {
+				add_ideas = FPR_French_Peoples_Army_idea
+			}
+			hidden_effect = {
+				add_dynamic_modifier = {
+					modifier = FPR_PRAF_dynamic
+				}
+				add_to_variable = {
+					var = FPR_PRAF_weekly_manpower_dynamic_var
+					value = 250
+				}
+				add_to_variable = {
+					var = FPR_PRAF_land_doctrine_cost_factor_dynamic_var
+					value = -0.05
+				}
+				add_to_variable = {
+					var = FPR_PRAF_training_time_factor_dynamic_var
+					value = -0.05
+				}
+				add_to_variable = {
+					var = FPR_PRAF_command_abilities_cost_factor_dynamic_var
+					value = -0.1
+				}
+				add_to_variable = {
+					var = FPR_PRAF_army_leader_start_level_dynamic_var
+					value = 1
+				}
+				add_to_variable = {
+					var = FPR_PRAF_military_leader_cost_factor_dynamic_var
+					value = -0.25
+				}
+			}
+		}
+	}
+	focus = {
+		id = FRA_Crusade_Against_Imperialism
+		icon = GFX_focus_FPR_bleed_the_seine_red
+		x = 8
+		y = 3
+		cost = 2
+		available_if_capitulated = yes
+		ai_will_do = {
+			factor = 1
+		}
+		prerequisite = {
+			focus = FRA_Found_the_French_Peoples_Liberation_Army
+		}
+		completion_reward = {
+			16 = {
+				create_unit = {
+					division = "name = \"Popular People's Militia ''The French Communard Spirit''\" division_template = \"Milice Révolutionnaire Populaire\" start_experience_factor = 0.1 start_equipment_factor = 1.0"
+					owner = FPR
+					allow_spawning_on_enemy_provs = yes
+				}
+			}
+			add_political_power = 100
+			FPR_Increase_Revolutionary_Fervor = yes
+		}
+	}
+	focus = {
+		id = FRA_Crush_the_Reactionary_Villians
+		icon = GFX_focus_FPR_Crush_Nazis
+		x = 7
+		y = 4
+		cost = 2
+		available_if_capitulated = yes
+		ai_will_do = {
+			factor = 1
+		}
+		available = {
+		}
+		prerequisite = {
+			focus = FRA_Crusade_Against_Imperialism
+		}
+		prerequisite = {
+			focus = FRA_Stoke_Revolutionary_Fervor
+		}
+		completion_reward = {
+			set_war_support = 0.7
+			FPR_Increase_Revolutionary_Fervor = yes
+		}
+	}
+	focus = {
+		id = FRA_The_Peoples_Decree
+		icon = GFX_focus_FPR_National_Congress
+		x = 10
+		y = 4
+		cost = 2
+		available_if_capitulated = yes
+		ai_will_do = {
+			factor = 1
+		}
+		available = {
+			has_war = no
+		}
+		prerequisite = {
+			focus = FRA_Crusade_Against_Imperialism
+		}
+		prerequisite = {
+			focus = FRA_Stoke_Revolutionary_Fervor
+		}
+		completion_reward = {
+			custom_effect_tooltip = FPR_Fervor_reset_tt
+			hidden_effect = {
+				remove_ideas = {
+					FPR_Revolutionary_Fervor_5
+					FPR_Revolutionary_Fervor_4
+					FPR_Revolutionary_Fervor_3
+					FPR_Revolutionary_Fervor_2
+					FPR_Revolutionary_Fervor_1
+				}
+			}
+			country_event = {
+				id = france.171
+			}
+		}
+	}
+}
+
+focus_tree = {
+	id = FPR_Main_tree
+	country = {
+		factor = 0
+	}
+	focus = {
+		id = FPR_Revolution_realized
+		icon = GFX_focus_FPR_revolution_realized
+		x = 0
+		y = 0
+		cost = 2
+		available_if_capitulated = yes
+		ai_will_do = {
+			factor = 1
+		}
+		available = {
+		}
+		allow_branch = {
+		}
+		completion_reward = {
+			every_controlled_state = {
+				add_core_of = FPR
+			}
+			add_political_power = 120
+			add_stability = 0.05
+			set_capital = {
+				state = 16
+				remember_old_capital = yes
+			}
+			if = {
+				limit = {
+					has_government = totalitarian_socialist
+				}
+				add_popularity = {
+					ideology = totalitarian_socialist
+					popularity = 0.05
+				}
+			}
+			else_if = {
+				limit = {
+					has_government = communist
+				}
+				add_popularity = {
+					ideology = communist
+					popularity = 0.05
+				}
+			}
+			else_if = {
+				limit = {
+					has_government = libertarian_socialist
+				}
+				add_popularity = {
+					ideology = libertarian_socialist
+					popularity = 0.05
+				}
+			}
+			else_if = {
+				limit = {
+					has_government = social_democrat
+				}
+				add_popularity = {
+					ideology = social_democrat
+					popularity = 0.05
+				}
+			}
+		}
+	}
+	focus = {
+		id = FPR_Abolish_the_Nouvel_Ancien_Regime
+		icon = GFX_focus_FPR_abolish_ancien_regime
+		x = -2
+		y = 1
+		cost = 3
+		available_if_capitulated = yes
+		ai_will_do = {
+			factor = 1
+		}
+		available = {
+		}
+		allow_branch = {
+		}
+		relative_position_id = FPR_Revolution_realized
+		prerequisite = {
+			focus = FPR_Revolution_realized
+		}
+		completion_reward = {
+			add_timed_idea = {
+				idea = FPR_abolishing_the_regime_idea
+				days = 140
+			}
+			hidden_effect = {
+				country_event = {
+					id = france.231
+					days = 20
+				}
+				#Executions
+				country_event = {
+					id = france.232
+					days = 40
+				}
+				#The Calendar
+				country_event = {
+					id = france.233
+					days = 60
+				}
+				#Homosexuality and Gender
+				country_event = {
+					id = france.234
+					days = 80
+				}
+				#Tearing down of the Versailles Palace
+				country_event = {
+					id = france.235
+					days = 100
+				}
+				#Neo-Republican Ideals and Foreign Policy
+				country_event = {
+					id = france.236
+					days = 120
+				}
+				#Law of Suspects Reintroduced
+				country_event = {
+					id = france.237
+					days = 140
+				}
+				#Retribution of Robespierre
+			}
+		}
+	}
+	focus = {
+		id = FPR_Deploy_the_Red_Guard
+		icon = GFX_focus_FPR_deploy_revolutionary_guard
+		x = 2
+		y = 1
+		cost = 2
+		available_if_capitulated = yes
+		ai_will_do = {
+			factor = 1
+		}
+		available = {
+		}
+		allow_branch = {
+		}
+		relative_position_id = FPR_Revolution_realized
+		prerequisite = {
+			focus = FPR_Revolution_realized
+		}
+		completion_reward = {
+			add_stability = 0.15
+			set_temp_variable = {
+				var = military_development_var_temp
+				value = 0.1
+			}
+			add_military_development = yes
+			effect_tooltip = {
+				swap_ideas = {
+					add_idea = FPR_French_Peoples_Army_red_guard_idea
+					remove_idea = FPR_French_Peoples_Army_dummy_idea
+				}
+			}
+			hidden_effect = {
+				add_to_variable = {
+					var = FPR_PRAF_breakthrough_factor_dynamic_var
+					value = 0.05
+				}
+				add_to_variable = {
+					var = FPR_rebuilding_resistance_activity_dynamic_var
+					value = -0.15
+				}
+				if = {
+					limit = {
+						has_country_flag = FPR_red_guard_revolt_flag
+					}
+					country_event = {
+						id = france.1671
+						days = 5
+					}
+				}
+				else_if = {
+					limit = {
+						has_country_flag = FPR_anarchist_revolt_flag
+					}
+					country_event = {
+						id = france.167
+						days = 20
+					}
+				}
+			}
+		}
+	}
+	focus = {
+		id = FPR_Finalize_the_Constitution
+		icon = GFX_focus_FPR_finalize_the_constitution
+		x = 0
+		y = 2
+		cost = 3
+		available_if_capitulated = yes
+		ai_will_do = {
+			factor = 1
+		}
+		available = {
+		}
+		allow_branch = {
+		}
+		relative_position_id = FPR_Revolution_realized
+		prerequisite = {
+			focus = FPR_Abolish_the_Nouvel_Ancien_Regime
+		}
+		prerequisite = {
+			focus = FPR_Deploy_the_Red_Guard
+		}
+		completion_reward = {
+			remove_ideas = FRA_SC_Weakened_Movement_idea
+			hidden_effect = {
+				add_to_variable = {
+					var = FPR_rebuilding_political_power_gain_dynamic_var
+					value = 0.1
+				}
+				add_to_variable = {
+					var = FPR_rebuilding_stability_factor_dynamic_var
+					value = 0.1
+				}
+			}
+			add_timed_idea = {
+				idea = FPR_finalization_constitution_idea
+				days = 140
+			}
+		}
+	}
+	#ECONOMIC TREE
+	focus = {
+		id = FPR_From_the_Ground_Up
+		icon = GFX_focus_FPR_From_Ground_Up
+		x = 13
+		y = 3
+		cost = 3
+		available_if_capitulated = yes
+		ai_will_do = {
+			factor = 1
+		}
+		available = {
+		}
+		allow_branch = {
+		}
+		relative_position_id = FPR_Revolution_realized
+		prerequisite = {
+			focus = FPR_Finalize_the_Constitution
+		}
+		completion_reward = {
+			add_stability = 0.08
+			#add_industrial_development = yes
+			set_temp_variable = {
+				var = income_var_temp
+				value = 20
+			}
+			add_income_with_inflation = yes
+			add_tech_bonus = {
+				name = FPR_From_the_Ground_Up
+				bonus = 0.33
+				uses = 2
+				category = industry
+			}
+			swap_ideas = {
+				add_idea = FPR_communist_economy_1_idea
+				remove_idea = Euro_Collapse_idea
+			}
+			FPR_up_brick_by_brick = yes
+			unlock_decision_category_tooltip = FPR_revolutionary_economy_category
+			set_temp_variable = {
+				var = industrial_development_var_temp
+				value = 0.075
+			}
+			effect_tooltip = {
+				add_ideas = FPR_socialist_bastion_idea
+			}
+			hidden_effect = {
+				add_dynamic_modifier = {
+					modifier = FPR_socialist_bastion_dynamic
+				}
+				add_to_variable = {
+					var = FPR_socialist_bastion_industry_free_repair_factor_dynamic_var
+					value = 0.3
+				}
+				add_to_variable = {
+					var = FPR_socialist_bastion_production_speed_buildings_factor_dynamic_var
+					value = 0.1
+				}
+				add_to_variable = {
+					var = FPR_socialist_bastion_industrial_development_monthly_dynamic_var
+					value = 0.01
+				}
+			}
+		}
+	}
+	focus = {
+		id = FPR_National_Trade_Union
+		icon = GFX_focus_FPR_National_Trade_Union
+		x = -4
+		y = 1
+		cost = 4
+		available_if_capitulated = yes
+		ai_will_do = {
+			factor = 1
+		}
+		available = {
+		}
+		allow_branch = {
+		}
+		relative_position_id = FPR_From_the_Ground_Up
+		prerequisite = {
+			focus = FPR_From_the_Ground_Up
+		}
+		mutually_exclusive = {
+			focus = FPR_Revive_Syndicalist_Ideas
+		}
+		completion_reward = {
+			add_ideas = FPR_National_Trade_Union_idea
+			increase_safety = yes
+			set_temp_variable = {
+				var = industrial_development_var_temp
+				value = 0.05
+			}
+			add_industrial_development = yes
+			every_controlled_state = {
+				limit = {
+					has_active_resistance = yes
+				}
+				add_compliance = 15
+			}
+			FPR_up_brick_by_brick = yes
+			FPR_decrease_economic_burden = yes
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = FPR_socialist_bastion_dummy_idea
+					add_idea = FPR_national_trade_union_idea_dummy
+				}
+			}
+			hidden_effect = {
+				add_to_variable = {
+					var = FPR_socialist_bastion_production_factory_start_efficiency_factor_dynamic_var
+					value = 0.1
+				}
+				add_to_variable = {
+					var = FPR_socialist_bastion_industrial_capacity_factory_dynamic_var
+					value = 0.05
+				}
+			}
+			custom_effect_tooltip = tooltip_white_line
+			change_economy_type_planned_economy = yes
+		}
+	}
+	focus = {
+		id = FPR_Set_Price_Controls
+		icon = GFX_focus_FPR_Set_Price_Controls
+		x = -6
+		y = 3
+		cost = 4
+		available_if_capitulated = yes
+		ai_will_do = {
+			factor = 1
+		}
+		available = {
+		}
+		allow_branch = {
+		}
+		relative_position_id = FPR_From_the_Ground_Up
+		prerequisite = {
+			focus = FPR_National_Trade_Union
+		}
+		completion_reward = {
+			set_temp_variable = {
+				var = inflation_var_temp
+				value = inflation_var
+			}
+			multiply_temp_variable = {
+				var = inflation_var_temp
+				value = -0.33
+			}
+			add_inflation = yes
+			set_temp_variable = {
+				var = poverty_development_var_temp
+				value = 0.02
+			}
+			add_poverty_development = yes
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = FPR_socialist_bastion_dummy_idea
+					add_idea = FPR_set_price_control_idea_dummy
+				}
+			}
+			hidden_effect = {
+				add_to_variable = {
+					var = FPR_socialist_bastion_income_growth_factor_dynamic_var
+					value = 0.1
+				}
+				add_to_variable = {
+					var = FPR_socialist_bastion_consumer_goods_factor_dynamic_var
+					value = -0.05
+				}
+				add_to_variable = {
+					var = FPR_socialist_bastion_stability_factor_dynamic_var
+					value = 0.075
+				}
+				add_to_variable = {
+					var = FPR_socialist_bastion_industrial_capacity_factory_dynamic_var
+					value = 0.05
+				}
+			}
+			FPR_up_brick_by_brick = yes
+			activate_mission = FPR_price_control_mission
+		}
+	}
+	focus = {
+		id = FPR_Agrarian_Revival
+		icon = GFX_focus_FPR_Agrarian_Revival
+		x = -4
+		y = 4
+		cost = 4
+		available_if_capitulated = yes
+		ai_will_do = {
+			factor = 1
+		}
+		available = {
+		}
+		allow_branch = {
+		}
+		relative_position_id = FPR_From_the_Ground_Up
+		prerequisite = {
+			focus = FPR_National_Trade_Union
+		}
+		completion_reward = {
+			set_temp_variable = {
+				var = poverty_development_var_temp
+				value = 0.05
+			}
+			add_poverty_development = yes
+			increase_farming = yes
+			add_ideas = FPR_Agrarianism_idea
+			every_controlled_state = {
+				random_select_amount = 6
+				add_extra_state_shared_building_slots = 1
+			}
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = FPR_socialist_bastion_dummy_idea
+					add_idea = FPR_agrarian_revival_idea_dummy
+				}
+			}
+			hidden_effect = {
+				add_to_variable = {
+					var = FPR_socialist_bastion_monthly_population_dynamic_var
+					value = 0.15
+				}
+				add_to_variable = {
+					var = FPR_socialist_bastion_consumer_goods_factor_dynamic_var
+					value = -0.025
+				}
+				add_to_variable = {
+					var = FPR_socialist_bastion_production_factory_start_efficiency_factor_dynamic_var
+					value = 0.05
+				}
+				add_to_variable = {
+					var = FPR_socialist_bastion_production_factory_max_efficiency_factor_dynamic_var
+					value = 0.05
+				}
+				add_to_variable = {
+					var = FPR_socialist_bastion_production_speed_buildings_factor_dynamic_var
+					value = 0.075
+				}
+				add_to_variable = {
+					var = FPR_socialist_bastion_supply_consumption_factor_dynamic_var
+					value = -0.05
+				}
+				add_to_variable = {
+					var = FPR_socialist_bastion_farming_development_monthly_dynamic_var
+					value = 0.015
+				}
+			}
+		}
+	}
+	focus = {
+		id = FPR_Set_Production_Quotas
+		icon = GFX_focus_FPR_Set_Production_Quotas
+		x = -1
+		y = 5
+		cost = 4
+		available_if_capitulated = yes
+		ai_will_do = {
+			factor = 1
+		}
+		available = {
+		}
+		allow_branch = {
+		}
+		relative_position_id = FPR_From_the_Ground_Up
+		prerequisite = {
+			focus = FPR_Agrarian_Revival
+			focus = FPR_Ensure_Just_Wages
+		}
+		completion_reward = {
+			custom_effect_tooltip = FPR_production_quota_tt
+			hidden_effect = {
+				#Production Quota check
+				add_to_variable = {
+					var = FPR_rebuilding_industrial_capacity_dockyard_dynamic_var
+					value = 0.1
+				}
+				add_to_variable = {
+					var = FPR_rebuilding_industrial_capacity_factory_dynamic_var
+					value = 0.1
+				}
+			}
+		}
+	}
+	focus = {
+		id = FPR_Level_the_Playing_Field
+		icon = GFX_focus_FPR_level_the_playing_field
+		x = -6
+		y = 5
+		cost = 4
+		available_if_capitulated = yes
+		ai_will_do = {
+			factor = 1
+		}
+		available = {
+		}
+		allow_branch = {
+		}
+		relative_position_id = FPR_From_the_Ground_Up
+		prerequisite = {
+			focus = FPR_Agrarian_Revival
+			focus = FPR_Set_Price_Controls
+		}
+		completion_reward = {
+			add_stability = 0.03
+			add_political_power = 75
+			set_temp_variable = {
+				var = poverty_development_var_temp
+				value = 0.1
+			}
+			add_poverty_development = yes
+			FPR_up_brick_by_brick = yes
+			#increase_poverty = yes
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = FPR_socialist_bastion_dummy_idea
+					add_idea = FPR_level_the_playing_field_idea_dummy
+				}
+			}
+			hidden_effect = {
+				add_to_variable = {
+					var = FPR_socialist_bastion_poverty_development_monthly_dynamic_var
+					value = 0.015
+				}
+				add_to_variable = {
+					var = FPR_socialist_bastion_society_development_monthly_dynamic_var
+					value = 0.005
+				}
+				add_to_variable = {
+					var = FPR_socialist_bastion_production_factory_start_efficiency_factor_dynamic_var
+					value = 0.05
+				}
+				add_to_variable = {
+					var = FPR_socialist_bastion_research_speed_factor_dynamic_var
+					value = 0.1
+				}
+				add_to_variable = {
+					var = FPR_socialist_bastion_production_factory_max_efficiency_factor_dynamic_var
+					value = 0.05
+				}
+				add_to_variable = {
+					var = FPR_socialist_bastion_academic_development_monthly_dynamic_var
+					value = 0.01
+				}
+			}
+		}
+	}
+	focus = {
+		id = FPR_Workers_Assembly
+		icon = GFX_focus_FPR_The_Workers_Assembly
+		x = -2
+		y = 2
+		cost = 4
+		available_if_capitulated = yes
+		ai_will_do = {
+			factor = 1
+		}
+		available = {
+		}
+		allow_branch = {
+		}
+		relative_position_id = FPR_From_the_Ground_Up
+		prerequisite = {
+			focus = FPR_National_Trade_Union
+		}
+		mutually_exclusive = {
+			focus = FPR_Entrench_Workplace_Democracy
+		}
+		completion_reward = {
+			effect_tooltip = {
+				custom_effect_tooltip = FPR_authoritarian_lead_tt
+				add_timed_idea = {
+					idea = FPR_state_directed_economy_idea
+					days = 730
+				}
+				add_power_balance_value = {
+					id = FPR_Revolutionary_Congress
+					value = 0.1
+				}
+				add_popularity = {
+					ideology = communist
+					popularity = 0.05
+				}
+				add_popularity = {
+					ideology = totalitarian_socialist
+					popularity = 0.05
+				}
+				custom_effect_tooltip = tooltip_white_line
+				custom_effect_tooltip = FPR_libertarian_lead_tt
+				add_timed_idea = {
+					idea = FPR_cooperative_industrialism_idea
+					days = 730
+				}
+				add_power_balance_value = {
+					id = FPR_Revolutionary_Congress
+					value = 0.05
+				}
+				add_popularity = {
+					ideology = libertarian_socialist
+					popularity = 0.05
+				}
+				add_popularity = {
+					ideology = social_democrat
+					popularity = 0.05
+				}
+				custom_effect_tooltip = tooltip_white_line
+				swap_ideas = {
+					remove_idea = FPR_socialist_bastion_dummy_idea
+					add_idea = FPR_workers_assembly_dummy
+				}
+			}
+			hidden_effect = {
+				add_to_variable = {
+					var = FPR_socialist_bastion_industrial_capacity_factory_dynamic_var
+					value = 0.075
+				}
+				add_to_variable = {
+					var = FPR_socialist_bastion_industrial_development_monthly_dynamic_var
+					value = 0.005
+				}
+				add_to_variable = {
+					var = FPR_socialist_bastion_stability_factor_dynamic_var
+					value = 0.075
+				}
+				if = {
+					limit = {
+						power_balance_value = {
+							id = FPR_Revolutionary_Congress
+							value < 0
+						}
+					}
+					add_timed_idea = {
+						idea = FPR_state_directed_economy_idea
+						days = 125
+					}
+					add_power_balance_value = {
+						id = FPR_Revolutionary_Congress
+						value = 0.1
+					}
+					add_popularity = {
+						ideology = communist
+						popularity = 0.05
+					}
+					add_popularity = {
+						ideology = totalitarian_socialist
+						popularity = 0.05
+					}
+				}
+				if = {
+					limit = {
+						power_balance_value = {
+							id = FPR_Revolutionary_Congress
+							value > 0
+						}
+					}
+					add_timed_idea = {
+						idea = FPR_state_directed_economy_idea
+						days = 125
+					}
+					add_power_balance_value = {
+						id = FPR_Revolutionary_Congress
+						value = 0.05
+					}
+					add_popularity = {
+						ideology = libertarian_socialist
+						popularity = 0.05
+					}
+					add_popularity = {
+						ideology = social_democrat
+						popularity = 0.05
+					}
+				}
+			}
+			set_temp_variable = {
+				var = industrial_development_var_temp
+				value = 0.075
+			}
+			add_industrial_development = yes
+		}
+	}
+	focus = {
+		id = FPR_Combat_Hyperinflation
+		icon = GFX_focus_FPR_Combat_Hyperinflation
+		x = -2
+		y = 3
+		cost = 4
+		available_if_capitulated = yes
+		ai_will_do = {
+			factor = 1
+		}
+		available = {
+		}
+		allow_branch = {
+		}
+		relative_position_id = FPR_From_the_Ground_Up
+		prerequisite = {
+			focus = FPR_Workers_Assembly
+		}
+		completion_reward = {
+			add_ideas = FPR_combat_hyper_inflation_policy
+			add_stability = 0.05
+			add_political_power = 150
+			add_war_support = -0.02
+			set_temp_variable = {
+				var = inflation_var_temp
+				value = inflation_var
+			}
+			multiply_temp_variable = {
+				var = inflation_var_temp
+				value = -0.8
+			}
+			add_inflation = yes
+		}
+	}
+	focus = {
+		id = FPR_Revive_Syndicalist_Ideas
+		icon = GFX_focus_FPR_revive_syndicalist_dream
+		x = 4
+		y = 1
+		cost = 4
+		available_if_capitulated = yes
+		ai_will_do = {
+			factor = 1
+		}
+		available = {
+		}
+		allow_branch = {
+		}
+		relative_position_id = FPR_From_the_Ground_Up
+		mutually_exclusive = {
+			focus = FPR_National_Trade_Union
+		}
+		prerequisite = {
+			focus = FPR_From_the_Ground_Up
+		}
+		completion_reward = {
+			add_ideas = FAF_Worker_Syndicate_Program_idea
+			every_controlled_state = {
+				limit = {
+					has_active_resistance = yes
+				}
+				add_compliance = 15
+			}
+			FPR_decrease_economic_burden = yes
+			set_temp_variable = {
+				var = industrial_development_var_temp
+				value = 0.05
+			}
+			add_industrial_development = yes
+			FPR_up_brick_by_brick = yes
+			custom_effect_tooltip = tooltip_white_line
+			change_economy_type_worker_controlled = yes
+		}
+	}
+	focus = {
+		id = FPR_Entrench_Workplace_Democracy
+		icon = GFX_focus_FPR_workplace_democracy
+		x = 0
+		y = 2
+		cost = 4
+		available_if_capitulated = yes
+		ai_will_do = {
+			factor = 1
+		}
+		available = {
+		}
+		allow_branch = {
+		}
+		relative_position_id = FPR_From_the_Ground_Up
+		prerequisite = {
+			focus = FPR_Revive_Syndicalist_Ideas
+			focus = FPR_National_Trade_Union
+		}
+		mutually_exclusive = {
+			focus = FPR_Workers_Assembly
+		}
+		completion_reward = {
+			effect_tooltip = {
+				custom_effect_tooltip = FPR_authoritarian_lead_tt
+				add_timed_idea = {
+					idea = FPR_centralized_syndicalism_idea
+					days = 730
+				}
+				add_power_balance_value = {
+					id = FPR_Revolutionary_Congress
+					value = 0.1
+				}
+				custom_effect_tooltip = tooltip_white_line
+				custom_effect_tooltip = FPR_libertarian_lead_tt
+				add_timed_idea = {
+					idea = FPR_grassroots_socialism_idea
+					days = 730
+				}
+				add_power_balance_value = {
+					id = FPR_Revolutionary_Congress
+					value = 0.05
+				}
+				add_popularity = {
+					ideology = libertarian_socialist
+					popularity = 0.05
+				}
+				add_popularity = {
+					ideology = social_democrat
+					popularity = 0.05
+				}
+				custom_effect_tooltip = tooltip_white_line
+				swap_ideas = {
+					remove_idea = FPR_socialist_bastion_dummy_idea
+					add_idea = FPR_workplace_democracy_dummy
+				}
+			}
+			hidden_effect = {
+				add_to_variable = {
+					var = FPR_socialist_bastion_production_factory_max_efficiency_factor_dynamic_var
+					value = 0.075
+				}
+				add_to_variable = {
+					var = FPR_socialist_bastion_society_development_monthly_dynamic_var
+					value = 0.01
+				}
+				add_to_variable = {
+					var = FPR_socialist_bastion_society_development_monthly_dynamic_var
+					value = 0.005
+				}
+				add_to_variable = {
+					var = FPR_socialist_bastion_stability_factor_dynamic_var
+					value = 0.075
+				}
+				if = {
+					limit = {
+						power_balance_value = {
+							id = FPR_Revolutionary_Congress
+							value < 0
+						}
+					}
+					add_timed_idea = {
+						idea = FPR_grassroots_socialism_idea
+						days = 500
+					}
+					add_power_balance_value = {
+						id = FPR_Revolutionary_Congress
+						value = -0.05
+					}
+					add_popularity = {
+						ideology = libertarian_socialist
+						popularity = 0.05
+					}
+					add_popularity = {
+						ideology = social_democrat
+						popularity = 0.05
+					}
+				}
+				if = {
+					limit = {
+						power_balance_value = {
+							id = FPR_Revolutionary_Congress
+							value > 0
+						}
+					}
+					add_timed_idea = {
+						idea = FPR_centralized_syndicalism_idea
+						days = 500
+					}
+					add_power_balance_value = {
+						id = FPR_Revolutionary_Congress
+						value = -0.1
+					}
+					add_popularity = {
+						ideology = communist
+						popularity = 0.05
+					}
+					add_popularity = {
+						ideology = totalitarian_socialist
+						popularity = 0.05
+					}
+				}
+				set_temp_variable = {
+					var = society_development_var_temp
+					value = 0.1
+				}
+				add_society_development = yes
+				FPR_up_brick_by_brick = yes
+				FPR_decrease_economic_burden = yes
+				set_temp_variable = {
+					var = industrial_development_var_temp
+					value = 0.075
+				}
+				add_industrial_development = yes
+			}
+			set_temp_variable = {
+				var = inflation_var_temp
+				value = inflation_var
+			}
+			multiply_temp_variable = {
+				var = inflation_var_temp
+				value = -0.2
+			}
+			add_inflation = yes
+		}
+	}
+	focus = {
+		id = FPR_Ensure_Just_Wages
+		icon = GFX_focus_FPR_ensure_just_wages
+		x = 0
+		y = 3
+		cost = 4
+		available_if_capitulated = yes
+		ai_will_do = {
+			factor = 1
+		}
+		available = {
+		}
+		allow_branch = {
+		}
+		relative_position_id = FPR_From_the_Ground_Up
+		prerequisite = {
+			focus = FPR_Entrench_Workplace_Democracy
+			focus = FPR_Workers_Assembly
+		}
+		completion_reward = {
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = FPR_socialist_bastion_dummy_idea
+					add_idea = FPR_just_wages_dummy
+				}
+			}
+			hidden_effect = {
+				add_to_variable = {
+					var = FPR_socialist_bastion_income_growth_factor_dynamic_var
+					value = 0.15
+				}
+				add_to_variable = {
+					var = FPR_socialist_bastion_war_stability_factor_dynamic_var
+					value = 0.05
+				}
+				add_to_variable = {
+					var = FPR_socialist_bastion_society_development_monthly_dynamic_var
+					value = 0.005
+				}
+				add_to_variable = {
+					var = FPR_socialist_bastion_research_speed_factor_dynamic_var
+					value = 0.075
+				}
+			}
+			set_temp_variable = {
+				var = poverty_development_var_temp
+				value = 0.075
+			}
+			add_poverty_development = yes
+			set_temp_variable = {
+				var = society_development_var_temp
+				value = 0.1
+			}
+			add_society_development = yes
+			set_temp_variable = {
+				var = industrial_development_var_temp
+				value = -0.075
+			}
+			add_industrial_development = yes
+			add_timed_idea = {
+				idea = FPR_just_wages_idea
+				days = 180
+			}
+			set_temp_variable = {
+				var = inflation_var_temp
+				value = inflation_var
+			}
+			multiply_temp_variable = {
+				var = inflation_var_temp
+				value = -0.8
+			}
+			add_inflation = yes
+		}
+	}
+	focus = {
+		id = FPR_Unionized_arms_industry
+		icon = GFX_focus_FPR_unionized_Arms_industry
+		x = 2
+		y = 4
+		cost = 4
+		available_if_capitulated = yes
+		ai_will_do = {
+			factor = 1
+		}
+		available = {
+		}
+		allow_branch = {
+		}
+		relative_position_id = FPR_From_the_Ground_Up
+		mutually_exclusive = {
+			focus = FPR_Utilize_the_Civilian_Sector
+		}
+		prerequisite = {
+			focus = FPR_Ensure_Just_Wages
+			focus = FPR_Revive_Syndicalist_Ideas
+		}
+		completion_reward = {
+			add_ideas = FPR_unionized_arms_industry_idea
+			unlock_decision_tooltip = FPR_found_the_ministry_of_revolutionary_arms_decision
+			every_controlled_state = {
+				limit = {
+					is_core_of = ROOT
+					free_building_slots = {
+						building = arms_factory
+						size > 1
+						include_locked = yes
+					}
+				}
+				random_select_amount = 2
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = arms_factory
+					level = 2
+					instant_build = yes
+				}
+			}
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = FPR_socialist_bastion_dummy_idea
+					add_idea = FPR_unionized_arms_industry_dummy
+				}
+			}
+			hidden_effect = {
+				add_to_variable = {
+					var = FPR_socialist_bastion_production_speed_arms_factory_factor_dynamic_var
+					value = 0.075
+				}
+				add_to_variable = {
+					var = production_factory_efficiency_gain_factor
+					value = 0.1
+				}
+				add_to_variable = {
+					var = FPR_socialist_bastion_society_development_monthly_dynamic_var
+					value = 0.005
+				}
+				add_to_variable = {
+					var = FPR_socialist_bastion_research_speed_factor_dynamic_var
+					value = 0.075
+				}
+			}
+			set_temp_variable = {
+				var = industrial_development_var_temp
+				value = 0.075
+			}
+			add_industrial_development = yes
+		}
+	}
+	focus = {
+		id = FPR_Revive_the_Rail_Sector
+		icon = GFX_focus_FPR_Revolutionize_Transportation
+		x = 3
+		y = 3
+		cost = 4
+		available_if_capitulated = yes
+		ai_will_do = {
+			factor = 1
+		}
+		available = {
+		}
+		allow_branch = {
+		}
+		relative_position_id = FPR_From_the_Ground_Up
+		prerequisite = {
+			focus = FPR_Revive_Syndicalist_Ideas
+		}
+		prerequisite = {
+			focus = FPR_Entrench_Workplace_Democracy
+		}
+		completion_reward = {
+			FPR_decrease_economic_burden = yes
+			build_railway = {
+				level = 4
+				start_state = 16
+				target_state = 1378
+			}
+			build_railway = {
+				level = 4
+				start_state = 16
+				target_state = 2
+			}
+			add_timed_idea = {
+				idea = FPR_railway_fever_idea
+				days = 365
+			}
+			FPR_up_brick_by_brick = yes
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = FPR_socialist_bastion_dummy_idea
+					add_idea = FPR_revolutionize_transport_dummy
+				}
+			}
+			hidden_effect = {
+				add_to_variable = {
+					var = FPR_socialist_bastion_army_speed_factor_dynamic_var
+					value = 0.1
+				}
+				add_to_variable = {
+					var = FPR_socialist_bastion_production_speed_rail_way_factor_dynamic_var
+					value = 0.15
+				}
+				add_to_variable = {
+					var = FPR_socialist_bastion_production_speed_infrastructure_factor_dynamic_var
+					value = 0.1
+				}
+			}
+		}
+	}
+	focus = {
+		id = FPR_Utilize_the_Civilian_Sector
+		icon = GFX_focus_FPR_utilize_the_civilian_factor
+		x = 4
+		y = 4
+		cost = 4
+		available_if_capitulated = yes
+		ai_will_do = {
+			factor = 1
+		}
+		available = {
+		}
+		allow_branch = {
+		}
+		relative_position_id = FPR_From_the_Ground_Up
+		mutually_exclusive = {
+			focus = FPR_Unionized_arms_industry
+		}
+		prerequisite = {
+			focus = FPR_Revive_Syndicalist_Ideas
+		}
+		completion_reward = {
+			add_ideas = FPR_civilian_industry_idea
+			every_controlled_state = {
+				random_select_amount = 3
+				add_extra_state_shared_building_slots = 2
+			}
+			every_controlled_state = {
+				random_select_amount = 4
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = industrial_complex
+					level = 2
+					instant_build = yes
+				}
+			}
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = FPR_socialist_bastion_dummy_idea
+					add_idea = FPR_utilize_the_civilian_sector_dummy
+				}
+			}
+			hidden_effect = {
+				add_to_variable = {
+					var = FPR_socialist_bastion_production_speed_industrial_complex_factor_dynamic_var
+					value = 0.15
+				}
+				add_to_variable = {
+					var = FPR_socialist_bastion_monthly_population_dynamic_var
+					value = 0.05
+				}
+				add_to_variable = {
+					var = FPR_socialist_bastion_income_growth_factor_dynamic_var
+					value = 0.1
+				}
+			}
+			set_temp_variable = {
+				var = society_development_var_temp
+				value = 0.05
+			}
+			add_society_development = yes
+		}
+	}
+	focus = {
+		id = FPR_Prepare_for_the_Great_Struggle
+		icon = GFX_focus_FPR_Prepare_for_the_great_struggle
+		x = 2
+		y = 5
+		cost = 4
+		available_if_capitulated = yes
+		ai_will_do = {
+			factor = 1
+		}
+		available = {
+		}
+		allow_branch = {
+		}
+		relative_position_id = FPR_From_the_Ground_Up
+		prerequisite = {
+			focus = FPR_Utilize_the_Civilian_Sector
+			focus = FPR_Unionized_arms_industry
+		}
+		completion_reward = {
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = FPR_socialist_bastion_dummy_idea
+					add_idea = FPR_prepare_for_the_great_struggle_dummy
+				}
+			}
+			hidden_effect = {
+				add_to_variable = {
+					var = FPR_socialist_bastion_production_speed_industrial_complex_factor_dynamic_var
+					value = 0.15
+				}
+				add_to_variable = {
+					var = FPR_socialist_bastion_production_factory_max_efficiency_factor_dynamic_var
+					value = 0.05
+				}
+				add_to_variable = {
+					var = FPR_socialist_bastion_war_stability_factor_dynamic_var
+					value = 0.15
+				}
+			}
+			random_owned_state = {
+				limit = {
+					industrial_complex > 1
+				}
+				remove_building = {
+					type = industrial_complex
+					level = 1
+				}
+				add_building_construction = {
+					type = arms_factory
+					level = 1
+					instant_build = yes
+				}
+			}
+			random_owned_state = {
+				limit = {
+					industrial_complex > 1
+				}
+				remove_building = {
+					type = industrial_complex
+					level = 1
+				}
+				add_building_construction = {
+					type = arms_factory
+					level = 1
+					instant_build = yes
+				}
+			}
+			random_owned_state = {
+				limit = {
+					industrial_complex > 1
+				}
+				remove_building = {
+					type = industrial_complex
+					level = 1
+				}
+				add_building_construction = {
+					type = arms_factory
+					level = 1
+					instant_build = yes
+				}
+			}
+			random_owned_state = {
+				limit = {
+					office_park > 1
+				}
+				remove_building = {
+					type = office_park
+					level = 1
+				}
+				add_building_construction = {
+					type = arms_factory
+					level = 1
+					instant_build = yes
+				}
+			}
+			random_owned_state = {
+				limit = {
+					office_park > 1
+				}
+				remove_building = {
+					type = office_park
+					level = 1
+				}
+				add_building_construction = {
+					type = arms_factory
+					level = 1
+					instant_build = yes
+				}
+			}
+			random_owned_state = {
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = arms_factory
+					level = 2
+					instant_build = yes
+				}
+			}
+			random_owned_state = {
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = arms_factory
+					level = 2
+					instant_build = yes
+				}
+			}
+			FPR_up_brick_by_brick = yes
+		}
+	}
+	focus = {
+		id = FPR_Reach_Claselessness
+		icon = GFX_focus_FPR_Reach_Classlessness
+		x = -1
+		y = 6
+		cost = 4
+		available_if_capitulated = yes
+		ai_will_do = {
+			factor = 1
+		}
+		available = {
+		}
+		allow_branch = {
+		}
+		relative_position_id = FPR_From_the_Ground_Up
+		prerequisite = {
+			focus = FPR_Set_Production_Quotas
+		}
+		prerequisite = {
+			focus = FPR_Level_the_Playing_Field
+			focus = FPR_Prepare_for_the_Great_Struggle
+		}
+		completion_reward = {
+			# if = {
+			# 	limit = {
+			# 		NOT = {
+			# 			has_completed_focus = FPR_Set_Price_Controls
+			# 		}
+			# 	}
+			# }
+			custom_effect_tooltip = FPR_planned_economy_tt
+			add_ideas = FPR_planned_economy_idea
+			unlock_decision_tooltip = FPR_abolish_inheritance_decision
+			unlock_decision_tooltip = FPR_reform_french_education_decision
+			unlock_decision_tooltip = FPR_rewrite_french_traditions_decision
+			unlock_decision_tooltip = FPR_redistribution_campaigns_decision
+			unlock_decision_tooltip = FPR_ideoloize_class_warfare_decision
+			hidden_effect = {
+				add_to_variable = {
+					var = FPR_rebuilding_production_speed_buildings_factor_dynamic
+					value = 0.1
+				}
+				add_to_variable = {
+					var = FPR_rebuilding_stability_factor_dynamic_var
+					value = 0.1
+				}
+				add_to_variable = {
+					var = FPR_rebuilding_political_power_gain_dynamic_var
+					value = 0.1
+				}
+			}
+			FPR_up_brick_by_brick = yes
+		}
+	}
+	####################################
+	#ARMY TREE
+	####################################
+	focus = {
+		id = FPR_Rally_the_Revolutionaries
+		icon = GFX_focus_FPR_Rally_the_Revolutionaries
+		x = 0
+		y = 3
+		cost = 4
+		available_if_capitulated = yes
+		ai_will_do = {
+			factor = 1
+		}
+		available = {
+		}
+		allow_branch = {
+		}
+		relative_position_id = FPR_Revolution_realized
+		prerequisite = {
+			focus = FPR_Finalize_the_Constitution
+		}
+		completion_reward = {
+			add_manpower = 12500
+			add_war_support = 0.1
+			set_temp_variable = {
+				var = campaign_slot_total_var_temp
+				value = 1
+			}
+			add_total_campaign_slot = yes
+			effect_tooltip = {
+				swap_ideas = {
+					add_idea = FPR_French_Peoples_Army_rally_revolutionaries_idea
+					remove_idea = FPR_French_Peoples_Army_dummy_idea
+				}
+			}
+			hidden_effect = {
+				add_to_variable = {
+					var = FPR_PRAF_weekly_manpower_dynamic_var
+					value = 250
+				}
+				add_to_variable = {
+					var = FPR_rebuilding_resistance_activity_dynamic_var
+					value = -0.15
+				}
+			}
+		}
+	}
+	focus = {
+		id = FPR_Control_the_Black_Sea
+		icon = GFX_focus_FPR_Control_Black_Sea
+		x = -2
+		y = 4
+		cost = 4
+		available_if_capitulated = yes
+		ai_will_do = {
+			factor = 1
+		}
+		available = {
+		}
+		allow_branch = {
+		}
+		relative_position_id = FPR_Revolution_realized
+		prerequisite = {
+			focus = FPR_Rally_the_Revolutionaries
+		}
+		will_lead_to_war_with = TUR
+		will_lead_to_war_with = CYP
+		completion_reward = {
+			#invasion of Cyprus, war with Turkey
+			custom_effect_tooltip = FPR_cypriot_invasion_tt
+			hidden_effect = {
+				country_event = {
+					id = france.260
+				}
+				transfer_state = 836
+				836 = {
+					create_unit = {
+						division = "name = \"Popular People's Militia\" division_template = \"Milice Révolutionnaire Populaire\" start_experience_factor = 0.5 start_equipment_factor = 0.8"
+						owner = FPR
+					}
+					create_unit = {
+						division = "name = \"Popular People's Militia\" division_template = \"Milice Révolutionnaire Populaire\" start_experience_factor = 0.5 start_equipment_factor = 0.8"
+						owner = FPR
+					}
+				}
+				declare_war_on = {
+					target = CYP
+					type = annex_everything
+				}
+			}
+		}
+	}
+	focus = {
+		id = FPR_Professionalize_the_Army
+		icon = GFX_focus_FPR_Professionalize_the_Army
+		x = -3
+		y = 5
+		cost = 4
+		cancelable = no
+		available_if_capitulated = yes
+		ai_will_do = {
+			factor = 1
+		}
+		available = {
+		}
+		allow_branch = {
+		}
+		relative_position_id = FPR_Revolution_realized
+		prerequisite = {
+			focus = FPR_Control_the_Black_Sea
+		}
+		completion_reward = {
+			army_experience = 50
+			increase_military = yes
+			effect_tooltip = {
+				swap_ideas = {
+					add_idea = FPR_French_Peoples_Army_professionalize_army_idea
+					remove_idea = FPR_French_Peoples_Army_dummy_idea
+				}
+			}
+			hidden_effect = {
+				add_to_variable = {
+					var = FPR_PRAF_max_training_dynamic_var
+					value = 0.125
+				}
+				add_to_variable = {
+					var = FPR_PRAF_minimum_training_level_dynamic_var
+					value = 0.125
+				}
+				add_to_variable = {
+					var = FPR_PRAF_battalion_upkeep_factor_dynamic_var
+					value = 0.05
+				}
+				add_to_variable = {
+					var = FPR_PRAF_army_org_factor_dynamic_var
+					value = 0.15
+				}
+				add_to_variable = {
+					var = FPR_PRAF_army_attack_factor_dynamic_var
+					value = 0.1
+				}
+				add_to_variable = {
+					var = FPR_PRAF_max_planning_factor_dynamic_var
+					value = 0.5
+				}
+				add_to_variable = {
+					var = FPR_PRAF_command_power_gain_mult_dynamic_var
+					value = 0.2
+				}
+			}
+		}
+	}
+	focus = {
+		id = FPR_Empower_the_Navy
+		icon = GFX_focus_FPR_Empower_the_Navy
+		x = -4
+		y = 6
+		cost = 4
+		available_if_capitulated = yes
+		ai_will_do = {
+			factor = 1
+		}
+		available = {
+			owns_state = 836
+			owns_state = 183
+		}
+		allow_branch = {
+		}
+		relative_position_id = FPR_Revolution_realized
+		prerequisite = {
+			focus = FPR_Professionalize_the_Army
+		}
+		completion_reward = {
+			set_temp_variable = {
+				var = debt_var_temp
+				value = 1
+			}
+			add_debt = yes
+			navy_experience = 50
+			add_tech_bonus = {
+				name = FPR_Empower_the_Navy
+				bonus = 1
+				uses = 3
+				category = naval_equipment
+			}
+			add_doctrine_cost_reduction = {
+				name = FPR_Empower_the_Navy
+				cost_reduction = 0.5
+				uses = 2
+				category = cat_old_naval_doctrine
+			}
+			836 = {
+				add_building_construction = {
+					type = coastal_bunker
+					level = 5
+					instant_build = yes
+					province = {
+						all_provinces = yes
+					}
+				}
+			}
+			183 = {
+				add_building_construction = {
+					type = coastal_bunker
+					level = 5
+					instant_build = yes
+					province = {
+						all_provinces = yes
+					}
+				}
+			}
+		}
+	}
+	focus = {
+		id = FPR_From_Fathoms_Below
+		icon = GFX_focus_FPR_From_Fathom_Below
+		x = -5
+		y = 7
+		cost = 4
+		available_if_capitulated = yes
+		ai_will_do = {
+			factor = 1
+		}
+		available = {
+		}
+		allow_branch = {
+		}
+		relative_position_id = FPR_Revolution_realized
+		mutually_exclusive = {
+			focus = FPR_A_Red_Hurricane
+		}
+		prerequisite = {
+			focus = FPR_Empower_the_Navy
+		}
+		completion_reward = {
+			add_tech_bonus = {
+				name = FPR_From_Fathoms_Below
+				bonus = 1
+				uses = 2
+				category = ss_tech
+			}
+			if = {
+				limit = {
+					has_dlc = "Man the Guns"
+				}
+				create_equipment_variant = {
+					#Carrier 2020
+					name = "Toulon Class"
+					type = ship_hull_submarine_4
+					parent_version = 0
+					modules = {
+						fixed_ship_radar_slot = ship_sonar_1
+						mid_1_custom_slot = ship_radar_1
+						fixed_ship_torpedo_slot = ship_torpedo_sub_2
+						fixed_ship_engine_slot = sub_ship_engine_2
+						rear_1_custom_slot = ship_torpedo_sub_2
+					}
+				}
+				add_equipment_production = {
+					equipment = {
+						type = ship_hull_submarine_4
+						creator = "FPR"
+						version_name = "Toulon Class"
+					}
+					name = "Auboyneau"
+					requested_factories = 5
+					progress = 0.75
+					amount = 1
+				}
+				add_equipment_production = {
+					equipment = {
+						type = ship_hull_submarine_4
+						creator = "FPR"
+						version_name = "Toulon Class"
+					}
+					name = "Bourragué"
+					requested_factories = 5
+					progress = 0.75
+					amount = 1
+				}
+				add_equipment_production = {
+					equipment = {
+						type = ship_hull_submarine_4
+						creator = "FPR"
+						version_name = "Toulon Class"
+					}
+					name = "Darlan"
+					requested_factories = 5
+					progress = 0.75
+					amount = 1
+				}
+				add_equipment_production = {
+					equipment = {
+						type = ship_hull_submarine_4
+						creator = "FPR"
+						version_name = "Toulon Class"
+					}
+					name = "Godfroy"
+					requested_factories = 5
+					progress = 0.75
+					amount = 1
+				}
+				add_equipment_production = {
+					equipment = {
+						type = ship_hull_submarine_4
+						creator = "FPR"
+						version_name = "Toulon Class"
+					}
+					name = "Lartigue"
+					requested_factories = 5
+					progress = 0.75
+					amount = 1
+				}
+				add_equipment_production = {
+					equipment = {
+						type = ship_hull_submarine_4
+						creator = "FPR"
+						version_name = "Toulon Class"
+					}
+					name = "Michelier"
+					requested_factories = 5
+					progress = 0.75
+					amount = 1
+				}
+			}
+			else_if = {
+				limit = {
+					NOT = {
+						has_dlc = "Man the Guns"
+					}
+				}
+				add_equipment_production = {
+					equipment = {
+						type = submarine_4
+						creator = "FPR"
+					}
+					name = "Auboyneau"
+					requested_factories = 5
+					progress = 0.75
+					amount = 1
+				}
+				add_equipment_production = {
+					equipment = {
+						type = submarine_4
+						creator = "FPR"
+					}
+					name = "Bourragué"
+					requested_factories = 5
+					progress = 0.75
+					amount = 1
+				}
+				add_equipment_production = {
+					equipment = {
+						type = submarine_4
+						creator = "FPR"
+					}
+					name = "Darlan"
+					requested_factories = 5
+					progress = 0.75
+					amount = 1
+				}
+				add_equipment_production = {
+					equipment = {
+						type = submarine_4
+						creator = "FPR"
+					}
+					name = "Godfroy"
+					requested_factories = 5
+					progress = 0.75
+					amount = 1
+				}
+				add_equipment_production = {
+					equipment = {
+						type = submarine_4
+						creator = "FPR"
+					}
+					name = "Lartigue"
+					requested_factories = 5
+					progress = 0.75
+					amount = 1
+				}
+				add_equipment_production = {
+					equipment = {
+						type = submarine_4
+						creator = "FPR"
+					}
+					name = "Michelier"
+					requested_factories = 5
+					progress = 0.75
+					amount = 1
+				}
+			}
+		}
+	}
+	focus = {
+		id = FPR_A_Red_Hurricane
+		icon = GFX_focus_FPR_red_hurricane
+		x = -3
+		y = 7
+		cost = 4
+		available_if_capitulated = yes
+		ai_will_do = {
+			factor = 1
+		}
+		available = {
+		}
+		allow_branch = {
+		}
+		relative_position_id = FPR_Revolution_realized
+		mutually_exclusive = {
+			focus = FPR_From_Fathoms_Below
+		}
+		prerequisite = {
+			focus = FPR_Empower_the_Navy
+		}
+		completion_reward = {
+			add_ideas = FPR_red_hurricane_idea
+			air_experience = 50
+			add_tech_bonus = {
+				name = FPR_A_Red_Hurricane
+				bonus = 0.5
+				uses = 2
+				category = air_equipment
+			}
+			add_doctrine_cost_reduction = {
+				name = FPR_A_Red_Hurricane
+				cost_reduction = 0.5
+				uses = 3
+				category = cat_old_air_doctrine
+			}
+			effect_tooltip = {
+				swap_ideas = {
+					add_idea = FPR_red_hurricane_idea_dummy
+					remove_idea = FPR_French_Peoples_Army_dummy_idea
+				}
+			}
+			hidden_effect = {
+				add_to_variable = {
+					var = FPR_PRAF_air_superiority_efficiency_dynamic_var
+					value = 0.075
+				}
+				add_to_variable = {
+					var = FPR_PRAF_org_loss_when_moving_dynamic_var
+					value = -0.05
+				}
+				add_to_variable = {
+					var = FPR_PRAF_army_speed_factor_dynamic_var
+					value = 0.05
+				}
+			}
+		}
+	}
+	focus = {
+		id = FPR_Overclocked_Production
+		icon = GFX_focus_FPR_overclocked_production
+		x = -4
+		y = 8
+		cost = 4
+		available_if_capitulated = yes
+		ai_will_do = {
+			factor = 1
+		}
+		available = {
+		}
+		allow_branch = {
+		}
+		relative_position_id = FPR_Revolution_realized
+		prerequisite = {
+			focus = FPR_From_Fathoms_Below
+			focus = FPR_A_Red_Hurricane
+		}
+		completion_reward = {
+			set_temp_variable = {
+				var = industrial_development_var_temp
+				value = 0.12
+			}
+			add_industrial_development = yes
+			add_war_support = 0.08
+			unlock_decision_tooltip = FPR_overclock_production_decision
+		}
+	}
+	focus = {
+		id = FPR_Operation_Montagne
+		icon = GFX_focus_FPR_Operation_Montagne
+		x = 0
+		y = 5
+		cost = 4
+		available_if_capitulated = yes
+		ai_will_do = {
+			factor = 1
+		}
+		available = {
+		}
+		allow_branch = {
+		}
+		relative_position_id = FPR_Revolution_realized
+		prerequisite = {
+			focus = FPR_Bolster_the_Red_Waves
+			focus = FPR_Control_the_Black_Sea
+		}
+		will_lead_to_war_with = SWI
+		completion_reward = {
+			add_war_support = 0.08
+			if = {
+				limit = {
+					has_government = totalitarian_socialist
+				}
+				add_popularity = {
+					ideology = totalitarian_socialist
+					popularity = 0.05
+				}
+			}
+			else_if = {
+				limit = {
+					has_government = communist
+				}
+				add_popularity = {
+					ideology = communist
+					popularity = 0.05
+				}
+			}
+			else_if = {
+				limit = {
+					has_government = libertarian_socialist
+				}
+				add_popularity = {
+					ideology = libertarian_socialist
+					popularity = 0.05
+				}
+			}
+			else_if = {
+				limit = {
+					has_government = social_democrat
+				}
+				add_popularity = {
+					ideology = social_democrat
+					popularity = 0.05
+				}
+			}
+			declare_war_on = {
+				target = SWI
+				type = annex_everything
+			}
+		}
+	}
+	focus = {
+		id = FPR_Interventionist_Spirit
+		icon = GFX_focus_FPR_Interventionist_Spirit
+		x = -2
+		y = 6
+		cost = 4
+		available_if_capitulated = yes
+		ai_will_do = {
+			factor = 1
+		}
+		available = {
+		}
+		allow_branch = {
+		}
+		relative_position_id = FPR_Revolution_realized
+		prerequisite = {
+			focus = FPR_Operation_Montagne
+		}
+		completion_reward = {
+			add_political_power = 120
+			effect_tooltip = {
+				swap_ideas = {
+					add_idea = FPR_French_Peoples_Army_interventionist_idea
+					remove_idea = FPR_French_Peoples_Army_dummy_idea
+				}
+			}
+			hidden_effect = {
+				add_to_variable = {
+					var = FPR_PRAF_send_volunteer_size_dynamic_var
+					value = 10
+				}
+				add_to_variable = {
+					var = FPR_PRAF_land_reinforce_rate_dynamic_var
+					value = 0.05
+				}
+			}
+		}
+	}
+	focus = {
+		id = FPR_Arm_our_Comrades
+		icon = GFX_focus_FPR_Arm_Our_Comrades
+		x = 0
+		y = 6
+		cost = 4
+		available_if_capitulated = yes
+		ai_will_do = {
+			factor = 1
+		}
+		available = {
+		}
+		allow_branch = {
+		}
+		relative_position_id = FPR_Revolution_realized
+		prerequisite = {
+			focus = FPR_Operation_Montagne
+		}
+		completion_reward = {
+			random_owned_controlled_state = {
+				create_unit = {
+					division = "name = \"Popular People's Militia\" division_template = \"Milice Révolutionnaire Populaire\" start_experience_factor = 0.1 start_equipment_factor = 0.8"
+					owner = FPR
+				}
+			}
+			random_owned_controlled_state = {
+				create_unit = {
+					division = "name = \"Popular People's Militia\" division_template = \"Milice Révolutionnaire Populaire\" start_experience_factor = 0.1 start_equipment_factor = 0.8"
+					owner = FPR
+				}
+			}
+			random_owned_controlled_state = {
+				create_unit = {
+					division = "name = \"Popular People's Militia\" division_template = \"Milice Révolutionnaire Populaire\" start_experience_factor = 0.1 start_equipment_factor = 0.8"
+					owner = FPR
+				}
+			}
+			random_owned_controlled_state = {
+				create_unit = {
+					division = "name = \"Popular People's Militia\" division_template = \"Milice Révolutionnaire Populaire\" start_experience_factor = 0.1 start_equipment_factor = 0.8"
+					owner = FPR
+				}
+			}
+			random_owned_controlled_state = {
+				create_unit = {
+					division = "name = \"Popular People's Militia\" division_template = \"Milice Révolutionnaire Populaire\" start_experience_factor = 0.1 start_equipment_factor = 0.8"
+					owner = FPR
+				}
+			}
+			GER = {
+				add_equipment_to_stockpile = {
+					type = infantry_equipment
+					amount = 10000
+					producer = FPR
+				}
+				add_manpower = 50000
+			}
+		}
+	}
+	focus = {
+		id = FPR_Connecting_the_Union
+		icon = GFX_focus_FPR_Connect_the_Union
+		x = 2
+		y = 6
+		cost = 4
+		available_if_capitulated = yes
+		ai_will_do = {
+			factor = 1
+		}
+		available = {
+		}
+		allow_branch = {
+		}
+		relative_position_id = FPR_Revolution_realized
+		prerequisite = {
+			focus = FPR_Operation_Montagne
+		}
+		completion_reward = {
+			build_railway = {
+				level = 5
+				start_state = 16
+				target_state = 1378
+			}
+			every_owned_state = {
+				add_building_construction = {
+					type = infrastructure
+					level = 1
+					instant_build = yes
+				}
+			}
+		}
+	}
+	focus = {
+		id = FPR_Victory_or_Death
+		icon = GFX_focus_FPR_victory_or_death
+		x = 0
+		y = 7
+		cost = 4
+		available_if_capitulated = yes
+		ai_will_do = {
+			factor = 1
+		}
+		available = {
+		}
+		allow_branch = {
+		}
+		relative_position_id = FPR_Revolution_realized
+		prerequisite = {
+			focus = FPR_Interventionist_Spirit
+		}
+		prerequisite = {
+			focus = FPR_Arm_our_Comrades
+		}
+		prerequisite = {
+			focus = FPR_Connecting_the_Union
+		}
+		completion_reward = {
+			set_technology = {
+				nukes = 1
+			}
+			custom_effect_tooltip = nukes_tech_effect
+			add_equipment_to_stockpile = {
+				type = infantry_equipment
+				amount = 10000
+				producer = FPR
+			}
+			add_manpower = 50000
+			add_war_support = 0.15
+			add_nuclear_bombs = 10
+			add_to_variable = {
+				var = campaign_slot_total_var_temp
+				value = 1
+			}
+			hidden_effect = {
+				add_to_variable = {
+					var = FPR_rebuilding_resistance_activity_dynamic_var
+					value = -0.1
+				}
+			}
+		}
+	}
+	focus = {
+		id = FPR_Assist_Communist_Partisans
+		icon = GFX_focus_FPR_assist_communist_partisans
+		x = -1
+		y = 8
+		cost = 4
+		available_if_capitulated = yes
+		ai_will_do = {
+			factor = 1
+		}
+		available = {
+		}
+		allow_branch = {
+		}
+		relative_position_id = FPR_Revolution_realized
+		prerequisite = {
+			focus = FPR_Victory_or_Death
+		}
+		completion_reward = {
+			every_country = {
+				limit = {
+					is_in_faction_with = FPR
+				}
+				add_political_power = 100
+				add_equipment_to_stockpile = {
+					type = infantry_equipment
+					amount = 2000
+					producer = FPR
+				}
+			}
+			add_ideas = APA_volunteer_expansion_idea
+		}
+	}
+	focus = {
+		id = FPR_Infiltrate_the_Caucasus
+		icon = GFX_focus_FPR_caucasus
+		x = 1
+		y = 8
+		cost = 4
+		available_if_capitulated = yes
+		ai_will_do = {
+			factor = 1
+		}
+		available = {
+		}
+		allow_branch = {
+		}
+		relative_position_id = FPR_Revolution_realized
+		prerequisite = {
+			focus = FPR_Victory_or_Death
+		}
+		completion_reward = {
+			unlock_decision_tooltip = FPR_Increase_North_Caucasian_Resistance_1
+			unlock_decision_tooltip = FPR_Increase_South_Caucasian_Resistance_1
+			unlock_decision_tooltip = FPR_Start_Caucasian_Rebellion
+			custom_effect_tooltip = FPR_Infiltrate_the_Caucasus_tt
+		}
+	}
+	focus = {
+		id = FPR_Bolster_the_Red_Waves
+		icon = GFX_focus_FPR_red_waves
+		x = 2
+		y = 4
+		cost = 4
+		available_if_capitulated = yes
+		ai_will_do = {
+			factor = 1
+		}
+		available = {
+		}
+		allow_branch = {
+		}
+		relative_position_id = FPR_Revolution_realized
+		prerequisite = {
+			focus = FPR_Rally_the_Revolutionaries
+		}
+		will_lead_to_war_with = EPI
+		will_lead_to_war_with = EAF
+		completion_reward = {
+			random_owned_state = {
+				limit = {
+					is_coastal = yes
+				}
+				add_building_construction = {
+					type = dockyard
+					level = 1
+					instant_build = yes
+				}
+			}
+			random_owned_state = {
+				limit = {
+					is_coastal = yes
+				}
+				add_building_construction = {
+					type = dockyard
+					level = 1
+					instant_build = yes
+				}
+			}
+			random_owned_state = {
+				limit = {
+					is_coastal = yes
+				}
+				add_building_construction = {
+					type = dockyard
+					level = 1
+					instant_build = yes
+				}
+			}
+			navy_experience = 150
+			hidden_effect = {
+				EPI = {
+					transfer_navy = {
+						target = FPR
+					}
+				}
+				ADU = {
+					transfer_navy = {
+						target = FPR
+					}
+				}
+				EAF = {
+					transfer_navy = {
+						target = FPR
+					}
+				}
+				annex_country = {
+					target = ADU
+					transfer_troops = yes
+				}
+				annex_country = {
+					target = EPI
+					transfer_troops = yes
+				}
+				annex_country = {
+					target = EAF
+					transfer_troops = yes
+				}
+			}
+		}
+	}
+	focus = {
+		id = FPR_Continue_Partisan_Recruitment
+		icon = GFX_focus_FPR_continue_partisan_recruitment
+		x = 3
+		y = 5
+		cost = 4
+		available_if_capitulated = yes
+		ai_will_do = {
+			factor = 1
+		}
+		available = {
+		}
+		allow_branch = {
+		}
+		relative_position_id = FPR_Revolution_realized
+		prerequisite = {
+			focus = FPR_Bolster_the_Red_Waves
+		}
+		completion_reward = {
+			effect_tooltip = {
+				swap_ideas = {
+					add_idea = FPR_French_Peoples_Army_partisan_recruitment_idea
+					remove_idea = FPR_French_Peoples_Army_dummy_idea
+				}
+			}
+			hidden_effect = {
+				add_to_variable = {
+					var = FPR_PRAF_army_org_factor_dynamic_var
+					value = 0.05
+				}
+				add_to_variable = {
+					var = FPR_PRAF_recruitable_population_factor_dynamic_var
+					value = 0.15
+				}
+				add_to_variable = {
+					var = FPR_PRAF_army_attack_against_major_factor_dynamic_var
+					value = 0.05
+				}
+				add_to_variable = {
+					var = FPR_PRAF_army_defence_against_major_factor_dynamic_var
+					value = 0.1
+				}
+				add_to_variable = {
+					var = FPR_PRAF_max_planning_dynamic_var
+					value = 1
+				}
+				add_to_variable = {
+					var = FPR_PRAF_command_power_gain_mult_dynamic_var
+					value = 0.05
+				}
+				add_to_variable = {
+					var = FPR_PRAF_battalion_upkeep_factor_dynamic_var
+					value = -0.1
+				}
+			}
+		}
+	}
+	focus = {
+		id = FPR_Cult_of_Efficiency
+		icon = GFX_focus_FPR_cult_of_efficiency
+		x = 5
+		y = 6
+		cost = 4
+		available_if_capitulated = yes
+		ai_will_do = {
+			factor = 1
+		}
+		available = {
+		}
+		allow_branch = {
+		}
+		relative_position_id = FPR_Revolution_realized
+		prerequisite = {
+			focus = FPR_Continue_Partisan_Recruitment
+		}
+		completion_reward = {
+			set_temp_variable = {
+				var = military_development_var_temp
+				value = 0.25
+			}
+			add_military_development = yes
+			effect_tooltip = {
+				swap_ideas = {
+					add_idea = FPR_French_Peoples_Army_cult_of_efficiency_idea
+					remove_idea = FPR_French_Peoples_Army_dummy_idea
+				}
+			}
+			hidden_effect = {
+				add_to_variable = {
+					var = FPR_PRAF_army_speed_factor_dynamic_var
+					value = 0.1
+				}
+				add_to_variable = {
+					var = FPR_PRAF_army_attack_factor_dynamic_var
+					value = 0.05
+				}
+				add_to_variable = {
+					var = FPR_PRAF_training_time_factor_dynamic_var
+					value = -0.075
+				}
+				add_to_variable = {
+					var = FPR_PRAF_breakthrough_factor_dynamic_var
+					value = 0.1
+				}
+				add_to_variable = {
+					var = FPR_PRAF_academic_development_monthly_dynamic_var
+					value = 0.01
+				}
+				add_to_variable = {
+					var = FPR_PRAF_military_development_monthly_dynamic_var
+					value = 0.01
+				}
+			}
+		}
+	}
+	focus = {
+		id = FPR_Bomb_them_into_Submission
+		icon = GFX_focus_FPR_bomb_them
+		x = 5
+		y = 7
+		cost = 4
+		available_if_capitulated = yes
+		ai_will_do = {
+			factor = 1
+		}
+		available = {
+			has_completed_focus = FPR_Victory_or_Death
+		}
+		allow_branch = {
+		}
+		relative_position_id = FPR_Revolution_realized
+		prerequisite = {
+			focus = FPR_Continue_Partisan_Recruitment
+		}
+		mutually_exclusive = {
+			focus = FPR_The_Peoples_Navy
+		}
+		completion_reward = {
+			effect_tooltip = {
+				swap_ideas = {
+					add_idea = FPR_bomb_them_into_submission_idea_dummy
+					remove_idea = FPR_French_Peoples_Army_dummy_idea
+				}
+			}
+			hidden_effect = {
+				add_to_variable = {
+					var = FPR_PRAF_air_strategic_bomber_bombing_factor_dynamic_var
+					value = 0.15
+				}
+			}
+			add_nuclear_bombs = 5
+			add_tech_bonus = {
+				name = FPR_Bomb_them_into_Submission
+				bonus = 0.5
+				uses = 1
+				category = heavy_air
+			}
+			16 = {
+				add_building_construction = {
+					type = anti_air_building
+					level = 5
+					instant_build = yes
+				}
+			}
+		}
+	}
+	focus = {
+		id = FPR_The_Peoples_Navy
+		icon = GFX_focus_FPR_peoples_navy
+		x = 3
+		y = 7
+		cost = 4
+		available_if_capitulated = yes
+		ai_will_do = {
+			factor = 1
+		}
+		available = {
+		}
+		allow_branch = {
+		}
+		relative_position_id = FPR_Revolution_realized
+		prerequisite = {
+			focus = FPR_Continue_Partisan_Recruitment
+		}
+		mutually_exclusive = {
+			focus = FPR_Bomb_them_into_Submission
+		}
+		completion_reward = {
+			add_offsite_building = {
+				type = dockyard
+				level = 4
+			}
+		}
+	}
+	focus = {
+		id = FPR_Everything_for_Survival
+		icon = GFX_focus_FPR_everything_for_survival
+		x = 4
+		y = 8
+		cost = 4
+		available_if_capitulated = yes
+		ai_will_do = {
+			factor = 1
+		}
+		available = {
+		}
+		allow_branch = {
+		}
+		relative_position_id = FPR_Revolution_realized
+		prerequisite = {
+			focus = FPR_Bomb_them_into_Submission
+			focus = FPR_The_Peoples_Navy
+		}
+		completion_reward = {
+			add_ideas = total_mobilization
+		}
+	}
+	focus = {
+		id = FPR_Operation_Gallipoli
+		icon = GFX_focus_FPR_operation_turkey_murder
+		x = 0
+		y = 9
+		cost = 4
+		available_if_capitulated = yes
+		ai_will_do = {
+			factor = 1
+		}
+		available = {
+			is_in_faction_with = GER
+			TUR = {
+				exists = yes
+				is_puppet = no
+				is_in_faction = no
+			}
+		}
+		allow_branch = {
+		}
+		relative_position_id = FPR_Revolution_realized
+		prerequisite = {
+			focus = FPR_Everything_for_Survival
+			focus = FPR_Overclocked_Production
+		}
+		prerequisite = {
+			focus = FPR_Infiltrate_the_Caucasus
+		}
+		prerequisite = {
+			focus = FPR_Assist_Communist_Partisans
+		}
+		completion_reward = {
+			if = {
+				limit = {
+					GRK = {
+						NOT = {
+							has_war_with = GRE
+						}
+					}
+				}
+				add_to_faction = GRK
+				declare_war_on = {
+					target = TUR
+					type = annex_everything
+				}
+			}
+			else_if = {
+				limit = {
+					GRK = {
+						has_war_with = GRE
+					}
+				}
+				add_to_faction = GRK
+				declare_war_on = {
+					target = GRE
+					type = annex_everything
+				}
+				declare_war_on = {
+					target = TUR
+					type = annex_everything
+				}
+			}
+			else_if = {
+				limit = {
+					GRK = {
+						exists = no
+					}
+				}
+				declare_war_on = {
+					target = GRE
+					type = annex_everything
+				}
+				declare_war_on = {
+					target = TUR
+					type = annex_everything
+				}
+			}
+		}
+	}
+	#POLITICAL TREE
+	focus = {
+		id = FPR_Consolidate_the_New_Republic
+		icon = GFX_focus_FPR_Constitution
+		x = -10
+		y = 3
+		cost = 2
+		available_if_capitulated = yes
+		ai_will_do = {
+			factor = 1
+		}
+		available = {
+			NOT = {
+				has_idea = FPR_finalization_constitution_idea
+			}
+		}
+		allow_branch = {
+		}
+		relative_position_id = FPR_Revolution_realized
+		prerequisite = {
+			focus = FPR_Finalize_the_Constitution
+		}
+		completion_reward = {
+			add_stability = 0.05
+			add_political_power = 120
+			hidden_effect = {
+				add_to_variable = {
+					var = FPR_rebuilding_social_liberal_drift_dynamic_var
+					value = -0.025
+				}
+				add_to_variable = {
+					var = FPR_rebuilding_nationalist_dynamic_var
+					value = -0.025
+				}
+			}
+		}
+	}
+	focus = {
+		id = FPR_Aid_in_the_British_Revolution
+		icon = GFX_focus_FPR_british_revolution
+		x = 2
+		y = 1
+		cost = 1
+		available_if_capitulated = yes
+		ai_will_do = {
+			factor = 1
+		}
+		available = {
+		}
+		allow_branch = {
+		}
+		relative_position_id = FPR_Consolidate_the_New_Republic
+		prerequisite = {
+			focus = FPR_Consolidate_the_New_Republic
+		}
+		completion_reward = {
+			UK2 = {
+				add_equipment_to_stockpile = {
+					type = infantry_equipment
+					amount = 5000
+					producer = FPR
+				}
+				add_equipment_to_stockpile = {
+					type = support_equipment
+					amount = 1500
+					producer = FPR
+				}
+				add_political_power = 150
+				capital_scope = {
+					create_unit = {
+						division = "name = \"''Dorothy Kuya'' Battalion\" division_template = \"Revolutionary Militia\"  start_experience_factor = 0.3"
+						owner = PREV
+					}
+					create_unit = {
+						division = "name = \"''Jessie Eden'' Battalion\" division_template = \"Revolutionary Militia\"  start_experience_factor = 0.3"
+						owner = PREV
+					}
+					create_unit = {
+						division = "name = \"''Abraham Lazarus'' Battalion\" division_template = \"Revolutionary Militia\"  start_experience_factor = 0.3"
+						owner = PREV
+					}
+				}
+			}
+			diplomatic_relation = {
+				country = ENG
+				relation = embargo
+				active = yes
+			}
+		}
+	}
+	focus = {
+		id = FPR_Aid_Spanish_Leftists		#changed to the lowlands
+		icon = GFX_focus_FAF_liberate_lowlands
+		x = -2
+		y = 1
+		cost = 1
+		available_if_capitulated = yes
+		ai_will_do = {
+			factor = 1
+		}
+		available = {
+		}
+		allow_branch = {
+		}
+		relative_position_id = FPR_Consolidate_the_New_Republic
+		prerequisite = {
+			focus = FPR_Consolidate_the_New_Republic
+		}
+		completion_reward = {
+			LUX = {
+				add_equipment_to_stockpile = {
+					type = infantry_equipment
+					amount = 5000
+					producer = FPR
+				}
+				add_equipment_to_stockpile = {
+					type = support_equipment
+					amount = 1500
+					producer = FPR
+				}
+				capital_scope = {
+					create_unit = {
+						division = "name = \"''Luxembourge'' Battalion\" division_template = \"Recon Brigade\"  start_experience_factor = 0.3"
+						owner = PREV
+					}
+					create_unit = {
+						division = "name = \"''Commune de Paris'' Battalion\" division_template = \"Recon Brigade\"  start_experience_factor = 0.3"
+						owner = PREV
+					}
+					create_unit = {
+						division = "name = \"''Communism Worldwide'' Battalion\" division_template = \"Recon Brigade\"  start_experience_factor = 0.3"
+						owner = PREV
+					}
+				}
+				add_political_power = 150
+			}
+			diplomatic_relation = {
+				country = BEL
+				relation = embargo
+				active = yes
+			}
+			diplomatic_relation = {
+				country = HOL
+				relation = embargo
+				active = yes
+			}
+		}
+	}
+	focus = {
+		id = FPR_Establish_ourselves_in_the_Hearts_of_the_People
+		icon = GFX_focus_FPR_heart_of_people
+		x = 0
+		y = 1
+		cost = 4
+		available_if_capitulated = yes
+		ai_will_do = {
+			factor = 1
+		}
+		available = {
+		}
+		allow_branch = {
+		}
+		relative_position_id = FPR_Consolidate_the_New_Republic
+		prerequisite = {
+			focus = FPR_Consolidate_the_New_Republic
+		}
+		completion_reward = {
+			custom_effect_tooltip = FAF_XIV_society_tt
+			#focus_unlock = yes
+			hidden_effect = {
+				if = {
+					limit = {
+						has_country_flag = FRA_Melenchon_2022_flag
+					}
+					set_variable = {
+						FPR_utopia_dynamic_dynamic_var_stability_factor = 0.1
+					}
+					set_variable = {
+						FPR_utopia_dynamic_dynamic_var_political_power_factor = -0.05
+					}
+				}
+			}
+		}
+	}
+	#####ANARCHIST PATH#########
+	focus = {
+		id = FPR_No_Gods_No_Masters
+		icon = GFX_focus_FPR_Anarchist_No_God
+		x = 0
+		y = 2
+		cost = 4
+		available_if_capitulated = yes
+		ai_will_do = {
+			factor = 1
+		}
+		available = {
+		}
+		allow_branch = {
+			has_country_flag = FPR_Anarchist_path_flag
+		}
+		relative_position_id = FPR_Consolidate_the_New_Republic
+		prerequisite = {
+			focus = FPR_Establish_ourselves_in_the_Hearts_of_the_People
+		}
+		completion_reward = {
+			custom_effect_tooltip = FPR_ngnm_warning_tt
+			unlock_decision_category_tooltip = FPR_anarchist_france_category
+			effect_tooltip = {
+				add_ideas = FPR_no_gods_no_masters_idea
+			}
+			hidden_effect = {
+				add_dynamic_modifier = {
+					modifier = FPR_no_gods_no_masters_dynamic
+				}
+				add_to_variable = {
+					var = FPR_ngnm_stability_factor_dynamic_var
+					value = -0.8
+				}
+				add_to_variable = {
+					var = FPR_ngnm_weekly_manpower_dynamic_var
+					value = 250
+				}
+			}
+		}
+	}
+	focus = {
+		id = FPR_Our_Makhno
+		icon = GFX_focus_FPR_Anarchist_Architect
+		x = -2
+		y = 1
+		cost = 4
+		available_if_capitulated = yes
+		ai_will_do = {
+			factor = 1
+		}
+		available = {
+		}
+		allow_branch = {
+			has_country_flag = FPR_Anarchist_path_flag
+		}
+		relative_position_id = FPR_No_Gods_No_Masters
+		prerequisite = {
+			focus = FPR_No_Gods_No_Masters
+		}
+		completion_reward = {
+			add_country_leader_trait = hos_architect_of_the_revolution
+			unlock_decision_tooltip = FPR_protect_our_ideals_decision
+			unlock_decision_tooltip = FPR_ensure_stable_footing_decision
+			add_popularity = {
+				ideology = libertarian_socialist
+				popularity = 0.08
+			}
+		}
+	}
+	focus = {
+		id = FPR_Emulate_the_Makhnovtsi
+		icon = GFX_focus_FPR_emulate_makhnovschina
+		x = -3
+		y = 2
+		cost = 4
+		available_if_capitulated = yes
+		ai_will_do = {
+			factor = 1
+		}
+		available = {
+		}
+		allow_branch = {
+			has_country_flag = FPR_Anarchist_path_flag
+		}
+		relative_position_id = FPR_No_Gods_No_Masters
+		prerequisite = {
+			focus = FPR_Our_Makhno
+		}
+		completion_reward = {
+			custom_effect_tooltip = FPR_FRIA_building_tt
+			unlock_decision_tooltip = FPR_build_the_anarchist_army_xp_decision
+			unlock_decision_tooltip = FPR_fund_the_anarchist_army_decision
+			hidden_effect = {
+				clamp_variable = {
+					var = FPR_black_army_experience_var
+					min = 0
+					max = 1
+				}
+				clamp_variable = {
+					var = FPR_black_army_size_var
+					min = 0
+					max = 1
+				}
+				set_variable = {
+					var = FPR_black_army_experience_var
+					value = 0.05
+				}
+				set_variable = {
+					var = FPR_black_army_size_var
+					value = 0.05
+				}
+			}
+			effect_tooltip = {
+				swap_ideas = {
+					add_idea = FPR_nouveau_black_army_idea
+					remove_idea = FPR_no_gods_no_masters_dummy_idea
+				}
+			}
+			hidden_effect = {
+				add_to_variable = {
+					var = FPR_ngnm_army_sub_unit_militia_attack_factor_dynamic_var
+					value = 0.1
+				}
+				add_to_variable = {
+					var = FPR_ngnm_army_sub_unit_militia_defence_factor_dynamic_var
+					value = 0.1
+				}
+			}
+		}
+	}
+	focus = {
+		id = FPR_The_Black_Guards
+		icon = GFX_focus_FPR_found_the_revolutionary_insurgent_army
+		x = -2
+		y = 3
+		cost = 4
+		available_if_capitulated = yes
+		ai_will_do = {
+			factor = 1
+		}
+		available = {
+		}
+		allow_branch = {
+			has_country_flag = FPR_Anarchist_path_flag
+		}
+		relative_position_id = FPR_No_Gods_No_Masters
+		prerequisite = {
+			focus = FPR_Emulate_the_Makhnovtsi
+		}
+		prerequisite = {
+			focus = FPR_Dismantle_State_Apparatus
+		}
+		completion_reward = {
+			#mechanic related to building the RIA
+			add_to_variable = {
+				var = FPR_black_army_experience_var
+				value = 0.1
+			}
+			add_to_variable = {
+				var = FPR_black_army_size_var
+				value = 0.1
+			}
+			unlock_decision_tooltip = FPR_raise_the_black_hordes_decision
+		}
+	}
+	focus = {
+		id = FPR_Establish_the_Communal_System
+		icon = GFX_focus_FPR_empower_local_councils
+		x = 0
+		y = 1
+		cost = 4
+		available_if_capitulated = yes
+		ai_will_do = {
+			factor = 1
+		}
+		available = {
+		}
+		allow_branch = {
+			has_country_flag = FPR_Anarchist_path_flag
+		}
+		relative_position_id = FPR_No_Gods_No_Masters
+		prerequisite = {
+			focus = FPR_No_Gods_No_Masters
+		}
+		completion_reward = {
+			set_temp_variable = {
+				var = society_development_var_temp
+				value = 0.1
+			}
+			add_society_development = yes
+			every_owned_state = {
+				add_dynamic_modifier = {
+					modifier = FPR_empowered_anarchist_councils_dynamic_modifier
+				}
+			}
+			unlock_decision_tooltip = FPR_the_voice_of_the_people_decision
+		}
+	}
+	focus = {
+		id = FPR_Dismantle_State_Apparatus
+		icon = GFX_focus_FPR_dismantle_the_state_apparatus
+		x = -1
+		y = 2
+		cost = 4
+		available_if_capitulated = yes
+		ai_will_do = {
+			factor = 1
+		}
+		available = {
+		}
+		allow_branch = {
+			has_country_flag = FPR_Anarchist_path_flag
+		}
+		relative_position_id = FPR_No_Gods_No_Masters
+		prerequisite = {
+			focus = FPR_Establish_the_Communal_System
+		}
+		prerequisite = {
+			focus = FPR_Our_Makhno
+		}
+		completion_reward = {
+			add_ideas = free_school_education
+			add_ideas = anarchist_order
+			add_ideas = higher_prison
+			add_political_power = 150
+			unlock_decision_tooltip = FPR_break_down_the_state_decision
+		}
+	}
+	focus = {
+		id = FPR_Embolden_the_Poor
+		icon = GFX_focus_FPR_embolden_the_poor
+		x = 1
+		y = 2
+		cost = 4
+		available_if_capitulated = yes
+		ai_will_do = {
+			factor = 1
+		}
+		available = {
+		}
+		allow_branch = {
+			has_country_flag = FPR_Anarchist_path_flag
+		}
+		relative_position_id = FPR_No_Gods_No_Masters
+		prerequisite = {
+			focus = FPR_Establish_the_Communal_System
+		}
+		prerequisite = {
+			focus = FPR_Purge_Statist_Influence
+		}
+		completion_reward = {
+			increase_poverty = yes
+			add_stability = 0.1
+			add_manpower = 910000
+			effect_tooltip = {
+				swap_ideas = {
+					add_idea = FPR_march_of_the_people_idea
+					remove_idea = FPR_no_gods_no_masters_dummy_idea
+				}
+			}
+			hidden_effect = {
+				add_to_variable = {
+					var = FPR_ngnm_training_time_factor_dynamic_var
+					value = -0.25
+				}
+			}
+		}
+	}
+	focus = {
+		id = FPR_Purge_Statist_Influence
+		icon = GFX_focus_FPR_Anarchist_Purge_Statism
+		x = 2
+		y = 1
+		cost = 4
+		available_if_capitulated = yes
+		ai_will_do = {
+			factor = 1
+		}
+		available = {
+		}
+		allow_branch = {
+			has_country_flag = FPR_Anarchist_path_flag
+		}
+		relative_position_id = FPR_No_Gods_No_Masters
+		prerequisite = {
+			focus = FPR_No_Gods_No_Masters
+		}
+		completion_reward = {
+			add_stability = -0.15
+			remove_power_balance = {
+				id = FPR_Revolutionary_Congress
+			}
+			unlock_decision_tooltip = FPR_convert_or_die_soc_dem_decision
+			unlock_decision_tooltip = FPR_convert_or_die_communist_decision
+			unlock_decision_tooltip = FPR_convert_or_die_tot_soc_decision
+			set_party_name = {
+				ideology = communist
+				name = SOV_outlawed_party
+				long_name = SOV_outlawed_party
+			}
+			set_party_name = {
+				ideology = totalitarian_socialist
+				name = SOV_outlawed_party
+				long_name = SOV_outlawed_party
+			}
+			set_party_name = {
+				ideology = social_democrat
+				name = SOV_outlawed_party
+				long_name = SOV_outlawed_party
+			}
+			effect_tooltip = {
+				swap_ideas = {
+					add_idea = FPR_rise_above_idea
+					remove_idea = FPR_no_gods_no_masters_dummy_idea
+				}
+			}
+			hidden_effect = {
+				add_to_variable = {
+					var = FPR_ngnm_party_popularity_stability_factor_dynamic_var
+					value = 0.2
+				}
+			}
+		}
+	}
+	focus = {
+		id = FPR_Export_Anarchism_throughout_Europe
+		icon = GFX_focus_FPR_export_anarchism
+		x = 3
+		y = 2
+		cost = 4
+		available_if_capitulated = yes
+		ai_will_do = {
+			factor = 1
+		}
+		available = {
+		}
+		allow_branch = {
+			has_country_flag = FPR_Anarchist_path_flag
+		}
+		relative_position_id = FPR_No_Gods_No_Masters
+		prerequisite = {
+			focus = FPR_Purge_Statist_Influence
+		}
+		completion_reward = {
+			add_war_support = 0.05
+			unlock_decision_tooltip = FPR_cause_a_scene_decision
+			unlock_decision_tooltip = FPR_enforce_anarchist_doctrine_decision
+			unlock_decision_tooltip = FPR_establish_the_european_anarchist_collective_decision
+		}
+	}
+	focus = {
+		id = FPR_A_Wave_of_Black
+		icon = GFX_focus_FPR_A_Wave_of_Black
+		x = 2
+		y = 3
+		cost = 4
+		available_if_capitulated = yes
+		ai_will_do = {
+			factor = 1
+		}
+		available = {
+		}
+		allow_branch = {
+			has_country_flag = FPR_Anarchist_path_flag
+		}
+		relative_position_id = FPR_No_Gods_No_Masters
+		prerequisite = {
+			focus = FPR_Export_Anarchism_throughout_Europe
+		}
+		prerequisite = {
+			focus = FPR_Embolden_the_Poor
+		}
+		completion_reward = {
+			effect_tooltip = {
+				swap_ideas = {
+					add_idea = FPR_waves_of_black_idea
+					remove_idea = FPR_no_gods_no_masters_dummy_idea
+				}
+			}
+			hidden_effect = {
+				add_to_variable = {
+					var = FPR_ngnm_training_time_factor_dynamic_var
+					value = -0.5
+				}
+				add_to_variable = {
+					var = FPR_ngnm_recruitable_population_factor_dynamic_var
+					value = 0.25
+				}
+			}
+		}
+	}
+	focus = {
+		id = FPR_Abolish_Debt
+		icon = GFX_focus_FPR_abolish_debt
+		x = 0
+		y = 3
+		cost = 4
+		available_if_capitulated = yes
+		ai_will_do = {
+			factor = 1
+		}
+		available = {
+		}
+		allow_branch = {
+			has_country_flag = FPR_Anarchist_path_flag
+		}
+		relative_position_id = FPR_No_Gods_No_Masters
+		prerequisite = {
+			focus = FPR_Dismantle_State_Apparatus
+		}
+		prerequisite = {
+			focus = FPR_Embolden_the_Poor
+		}
+		completion_reward = {
+			set_temp_variable = {
+				var = debt_var_temp
+				value = -1000
+			}
+			add_debt = yes
+			set_temp_variable = {
+				var = poverty_development_var_temp
+				value = 0.25
+			}
+			add_poverty_development = yes
+			set_temp_variable = {
+				var = society_development_var_temp
+				value = 0.25
+			}
+			add_society_development = yes
+		}
+	}
+	focus = {
+		id = FPR_Embrace_True_Anarchism
+		icon = GFX_focus_FPR_embrace_chaos
+		x = 0
+		y = 4
+		cost = 4
+		available_if_capitulated = yes
+		ai_will_do = {
+			factor = 1
+		}
+		available = {
+		}
+		allow_branch = {
+			has_country_flag = FPR_Anarchist_path_flag
+		}
+		relative_position_id = FPR_No_Gods_No_Masters
+		prerequisite = {
+			focus = FPR_Abolish_Debt
+		}
+		prerequisite = {
+			focus = FPR_A_Wave_of_Black
+		}
+		prerequisite = {
+			focus = FPR_The_Black_Guards
+		}
+		completion_reward = {
+			add_war_support = 0.3
+			add_stability = 0.3
+			effect_tooltip = {
+				swap_ideas = {
+					add_idea = FPR_black_horizon_unbound_idea
+					remove_idea = FPR_no_gods_no_masters_dummy_idea
+				}
+			}
+			hidden_effect = {
+				add_to_variable = {
+					var = FPR_ngnm_army_speed_factor_dynamic_var
+					value = 0.1
+				}
+				add_to_variable = {
+					var = FPR_ngnm_political_power_gain_dynamic_var
+					value = 0.3
+				}
+				add_to_variable = {
+					var = FPR_ngnm_weekly_manpower_dynamic_var
+					value = 500
+				}
+			}
+		}
+	}
+	#####SOVIET PATH#########
+	focus = {
+		id = FPR_Arise_Sons_of_Marianne
+		icon = GFX_focus_FPR_Arise_Sons_of_Marianne
+		x = 0
+		y = 2
+		cost = 4
+		available_if_capitulated = yes
+		ai_will_do = {
+			factor = 1
+		}
+		available = {
+		}
+		allow_branch = {
+			has_country_flag = FPR_Red_Guard_path_flag
+		}
+		relative_position_id = FPR_Consolidate_the_New_Republic
+		prerequisite = {
+			focus = FPR_Establish_ourselves_in_the_Hearts_of_the_People
+		}
+		completion_reward = {
+			unlock_decision_category_tooltip = FPR_soviet_france_category
+			add_war_support = 0.12
+			country_event = {
+				id = france.7000
+			}
+			hidden_effect = {
+				country_event = {
+					id = france.7001
+					days = 7
+				}
+				#event adding daenincx bloc and arthaud bloc 
+			}
+		}
+	}
+	focus = {
+		id = FPR_Dissolve_the_National_Congress
+		icon = GFX_focus_FPR_Dissolve_the_National_Congress
+		x = -2
+		y = 1
+		cost = 4
+		available_if_capitulated = yes
+		ai_will_do = {
+			factor = 1
+		}
+		available = {
+		}
+		allow_branch = {
+			has_country_flag = FPR_Red_Guard_path_flag
+		}
+		relative_position_id = FPR_Arise_Sons_of_Marianne
+		prerequisite = {
+			focus = FPR_Arise_Sons_of_Marianne
+		}
+		completion_reward = {
+			add_political_power = 120
+			unlock_decision_tooltip = FPR_purge_anarchist_sympathizers_decision
+			remove_power_balance = {
+				id = FPR_Revolutionary_Congress
+			}
+		}
+	}
+	focus = {
+		id = FPR_Purge_the_Daeninckx_Bloc
+		icon = GFX_focus_FPR_Establish_National_Security_Bureau
+		x = -3
+		y = 2
+		cost = 4
+		available_if_capitulated = yes
+		ai_will_do = {
+			factor = 1
+		}
+		available = {
+		}
+		allow_branch = {
+			has_country_flag = FPR_Red_Guard_path_flag
+		}
+		relative_position_id = FPR_Arise_Sons_of_Marianne
+		prerequisite = {
+			focus = FPR_Dissolve_the_National_Congress
+		}
+		completion_reward = {
+			#massive purge of the opposition, working one side against other sides
+			add_ideas = FPR_NSB_idea
+			unlock_decision_tooltip = FPR_crack_down_on_left_opposition_decision
+			unlock_decision_tooltip = FPR_crack_down_on_right_opposition_decision
+			unlock_decision_tooltip = FPR_prosecute_left_opposition_leaders_decision
+			unlock_decision_tooltip = FPR_prosecute_right_opposition_leaders_decision
+			add_ideas = highest_police
+		}
+	}
+	focus = {
+		id = FPR_Cult_of_the_Red_General
+		icon = GFX_focus_FPR_Marshal_of_the_Revolution
+		x = -2
+		y = 3
+		cost = 4
+		available_if_capitulated = yes
+		ai_will_do = {
+			factor = 1
+		}
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = FPR_all_opps_dead_tt
+				has_country_flag = FPR_left_opp_dead
+				has_country_flag = FPR_right_opp_dead
+			}
+		}
+		allow_branch = {
+			has_country_flag = FPR_Red_Guard_path_flag
+		}
+		relative_position_id = FPR_Arise_Sons_of_Marianne
+		prerequisite = {
+			focus = FPR_Purge_the_Daeninckx_Bloc
+		}
+		completion_reward = {
+			effect_tooltip = {
+			}
+			hidden_effect = {
+				add_country_leader_trait = hos_red_marshal
+			}
+			unlock_decision_tooltip = FPR_our_glorious_savior_decision
+			unlock_decision_tooltip = FPR_the_red_napoleon_decision
+			add_country_leader_trait = hos_red_marshal
+		}
+	}
+	focus = {
+		id = FPR_Foundation_of_the_FFSR
+		icon = GFX_focus_FPR_Adopt_Soviet_Iconography
+		x = 0
+		y = 1
+		cost = 4
+		available_if_capitulated = yes
+		ai_will_do = {
+			factor = 1
+		}
+		available = {
+		}
+		allow_branch = {
+			has_country_flag = FPR_Red_Guard_path_flag
+		}
+		relative_position_id = FPR_Arise_Sons_of_Marianne
+		prerequisite = {
+			focus = FPR_Arise_Sons_of_Marianne
+		}
+		completion_reward = {
+			unlock_decision_tooltip = FPR_the_soviet_army_reborn_decision
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = FPR_Revolution_dummy
+					add_idea = FPR_adopt_soviet_iconography_dummy_idea
+				}
+			}
+			hidden_effect = {
+				add_to_variable = {
+					var = FPR_revolution_political_power_gain_dynamic_var
+					value = 0.15
+				}
+				scoped_play_song = "comrade"
+				country_event = {
+					id = france.7002
+				}
+				#civilian or military rule
+				country_event = {
+					id = france.7006
+				}
+				#larp or no larp				
+			}
+			add_popularity = {
+				ideology = totalitarian_socialist
+				popularity = 0.12
+			}
+		}
+	}
+	focus = {
+		id = FPR_Enact_Five_Year_Plan
+		icon = GFX_focus_FPR_Enact_the_Five_Year_Plan
+		x = -1
+		y = 2
+		cost = 4
+		available_if_capitulated = yes
+		ai_will_do = {
+			factor = 1
+		}
+		available = {
+		}
+		allow_branch = {
+			has_country_flag = FPR_Red_Guard_path_flag
+		}
+		relative_position_id = FPR_Arise_Sons_of_Marianne
+		prerequisite = {
+			focus = FPR_Foundation_of_the_FFSR
+		}
+		prerequisite = {
+			focus = FPR_Dissolve_the_National_Congress
+		}
+		completion_reward = {
+			set_temp_variable = {
+				var = industrial_development_var_temp
+				value = -0.15
+			}
+			add_industrial_development = yes
+			random_owned_state = {
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = industrial_complex
+					level = 1
+					instant_build = yes
+				}
+			}
+			random_owned_state = {
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = industrial_complex
+					level = 1
+					instant_build = yes
+				}
+			}
+			random_owned_state = {
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = industrial_complex
+					level = 1
+					instant_build = yes
+				}
+			}
+			add_timed_idea = {
+				idea = FPR_five_year_plan_idea
+				days = 1825
+			}
+			add_political_power = 75
+		}
+	}
+	focus = {
+		id = FPR_Reinvigorate_the_Workforce
+		icon = GFX_focus_FPR_Jumpstart_the_Workforce
+		x = 1
+		y = 2
+		cost = 4
+		available_if_capitulated = yes
+		ai_will_do = {
+			factor = 1
+		}
+		available = {
+		}
+		allow_branch = {
+			has_country_flag = FPR_Red_Guard_path_flag
+		}
+		relative_position_id = FPR_Arise_Sons_of_Marianne
+		prerequisite = {
+			focus = FPR_Foundation_of_the_FFSR
+			focus = FPR_Embrace_our_Red_Brothers
+		}
+		completion_reward = {
+			increase_taxes = yes
+			decrease_safety = yes
+			set_temp_variable = {
+				var = poverty_development_var_temp
+				value = 0.15
+			}
+			set_temp_variable = {
+				var = industrial_development_var_temp
+				value = 0.1
+			}
+			add_industrial_development = yes
+			add_poverty_development = yes
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = FPR_Revolution_dummy
+					add_idea = FPR_jumpstart_workforce_dummy_idea
+				}
+			}
+			hidden_effect = {
+				add_to_variable = {
+					var = FPR_revolution_production_factory_max_efficiency_factor_dynamic_var
+					value = 0.075
+				}
+				add_to_variable = {
+					var = FPR_revolution_production_speed_buildings_factor_dynamic_var
+					value = 0.1
+				}
+			}
+			add_stability = 0.08
+			add_political_power = 125
+			unlock_decision_tooltip = FPR_incentives_for_workers_decision
+		}
+	}
+	focus = {
+		id = FPR_Embrace_our_Red_Brothers
+		icon = GFX_focus_FPR_Embrace_our_Red_Brothers
+		x = 2
+		y = 1
+		cost = 4
+		available_if_capitulated = yes
+		ai_will_do = {
+			factor = 1
+		}
+		available = {
+			is_in_faction = yes
+		}
+		allow_branch = {
+			has_country_flag = FPR_Red_Guard_path_flag
+		}
+		relative_position_id = FPR_Arise_Sons_of_Marianne
+		prerequisite = {
+			focus = FPR_Arise_Sons_of_Marianne
+		}
+		completion_reward = {
+			set_country_flag = FPR_invest_ally_flag
+			custom_effect_tooltip = FPR_embrace_red_brothers_tt
+			hidden_effect = {
+				if = {
+					limit = {
+						is_in_faction_with = GER
+					}
+					add_offsite_building = {
+						type = industrial_complex
+						level = 1
+					}
+					add_political_power = 25
+				}
+				if = {
+					limit = {
+						is_in_faction_with = LUX
+					}
+					add_offsite_building = {
+						type = industrial_complex
+						level = 1
+					}
+					add_political_power = 25
+				}
+				if = {
+					limit = {
+						is_in_faction_with = ITA
+					}
+					add_offsite_building = {
+						type = industrial_complex
+						level = 1
+					}
+					add_political_power = 25
+				}
+				if = {
+					limit = {
+						is_in_faction_with = RSR
+					}
+					add_offsite_building = {
+						type = industrial_complex
+						level = 1
+					}
+					add_political_power = 25
+				}
+				if = {
+					limit = {
+						is_in_faction_with = UK2
+					}
+					add_offsite_building = {
+						type = industrial_complex
+						level = 1
+					}
+					add_political_power = 25
+				}
+				if = {
+					limit = {
+						is_in_faction_with = DEN
+					}
+					add_offsite_building = {
+						type = industrial_complex
+						level = 1
+					}
+					add_political_power = 25
+				}
+				if = {
+					limit = {
+						is_in_faction_with = NOR
+					}
+					add_offsite_building = {
+						type = industrial_complex
+						level = 1
+					}
+					add_political_power = 25
+				}
+				if = {
+					limit = {
+						is_in_faction_with = FIN
+					}
+					add_offsite_building = {
+						type = industrial_complex
+						level = 1
+					}
+					add_political_power = 25
+				}
+				if = {
+					limit = {
+						is_in_faction_with = SWE
+					}
+					add_offsite_building = {
+						type = industrial_complex
+						level = 1
+					}
+					add_political_power = 25
+				}
+				if = {
+					limit = {
+						is_in_faction_with = GRK
+					}
+					add_offsite_building = {
+						type = industrial_complex
+						level = 1
+					}
+					add_political_power = 25
+				}
+				if = {
+					limit = {
+						is_in_faction_with = PRP
+					}
+					add_offsite_building = {
+						type = industrial_complex
+						level = 1
+					}
+					add_political_power = 25
+				}
+			}
+			unlock_decision_category_tooltip = FPR_comecon_category
+			add_political_power = 50
+		}
+	}
+	focus = {
+		id = FPR_Franco_German_Treaty_of_Friendship_Alliance_and_Mutual_Assistance
+		icon = GFX_focus_FPR_Franco_German_Treaty_of_Friendship
+		x = 3
+		y = 2
+		cost = 4
+		available_if_capitulated = yes
+		ai_will_do = {
+			factor = 1
+		}
+		available = {
+		}
+		allow_branch = {
+			has_country_flag = FPR_Red_Guard_path_flag
+		}
+		relative_position_id = FPR_Arise_Sons_of_Marianne
+		prerequisite = {
+			focus = FPR_Embrace_our_Red_Brothers
+		}
+		completion_reward = {
+			custom_effect_tooltip = FPR_will_raise_fg_brigades_tt
+			add_ideas = FPR_franco_german_friendship_idea
+			add_stability = 0.1
+			add_political_power = 120
+			build_railway = {
+				level = 5
+				start_state = 16
+				target_state = 50
+			}
+			add_opinion_modifier = {
+				target = GER
+				modifier = franco_german_friendship
+			}
+			GER = {
+				add_ideas = FPR_franco_german_friendship_idea
+				add_stability = 0.1
+				add_political_power = 120
+				add_opinion_modifier = {
+					target = FPR
+					modifier = franco_german_friendship
+				}
+			}
+			hidden_effect = {
+				division_template = {
+					name = "Division Franco-Allemande"
+					regiments = {
+						modern_armor = {
+							x = 0
+							y = 0
+						}
+						spaa_brigade = {
+							x = 0
+							y = 1
+						}
+						light_mechanized = {
+							x = 1
+							y = 0
+						}
+						light_mechanized = {
+							x = 1
+							y = 1
+						}
+						modern_sp_artillery_brigade = {
+							x = 1
+							y = 2
+						}
+					}
+					support = {
+						signal_company = {
+							x = 0
+							y = 0
+						}
+						logistics_company = {
+							x = 0
+							y = 1
+						}
+						engineer = {
+							x = 0
+							y = 2
+						}
+						maintenance_company = {
+							x = 0
+							y = 3
+						}
+					}
+					is_locked = yes
+				}
+				800 = {
+					create_unit = {
+						division = "name = \"Division Franco-Allemande\" division_template = \"Division Franco-Allemande\" start_experience_factor = 0.5 start_equipment_factor = 1.0"
+						owner = FPR
+					}
+				}
+				GER = {
+					division_template = {
+						name = "Deutsch-Französische Teilung"
+						regiments = {
+							modern_armor = {
+								x = 0
+								y = 0
+							}
+							spaa_brigade = {
+								x = 0
+								y = 1
+							}
+							light_mechanized = {
+								x = 1
+								y = 0
+							}
+							light_mechanized = {
+								x = 1
+								y = 1
+							}
+							modern_sp_artillery_brigade = {
+								x = 1
+								y = 2
+							}
+						}
+						support = {
+							signal_company = {
+								x = 0
+								y = 0
+							}
+							logistics_company = {
+								x = 0
+								y = 1
+							}
+							engineer = {
+								x = 0
+								y = 2
+							}
+							maintenance_company = {
+								x = 0
+								y = 3
+							}
+						}
+						is_locked = yes
+					}
+					800 = {
+						create_unit = {
+							division = "name = \"Deutsch-Französische Teilung\" division_template = \"Deutsch-Französische Teilung\" start_experience_factor = 0.5 start_equipment_factor = 1.0"
+							owner = GER
+						}
+					}
+				}
+			}
+		}
+	}
+	focus = {
+		id = FPR_Embrace_Mass_Production
+		icon = GFX_focus_FPR_Industrial_Pride
+		x = 0
+		y = 3
+		cost = 4
+		available_if_capitulated = yes
+		ai_will_do = {
+			factor = 1
+		}
+		available = {
+		}
+		allow_branch = {
+			has_country_flag = FPR_Red_Guard_path_flag
+		}
+		relative_position_id = FPR_Arise_Sons_of_Marianne
+		prerequisite = {
+			focus = FPR_Enact_Five_Year_Plan
+		}
+		prerequisite = {
+			focus = FPR_Reinvigorate_the_Workforce
+		}
+		completion_reward = {
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = FPR_Revolution_dummy
+					add_idea = FPR_industrial_pride_dummy_idea
+				}
+			}
+			hidden_effect = {
+				add_to_variable = {
+					var = FPR_revolution_industrial_capacity_factory_dynamic_var
+					value = 0.1
+				}
+				add_to_variable = {
+					var = FPR_revolution_production_factory_max_efficiency_factor_dynamic_var
+					value = 0.075
+				}
+				add_to_variable = {
+					var = FPR_revolution_society_development_monthly_dynamic_var
+					value = 0.005
+				}
+			}
+			increase_industry = yes
+		}
+	}
+	focus = {
+		id = FPR_The_New_French_Man
+		icon = GFX_focus_FPR_The_New_Citizen
+		x = 2
+		y = 3
+		cost = 4
+		available_if_capitulated = yes
+		ai_will_do = {
+			factor = 1
+		}
+		available = {
+		}
+		allow_branch = {
+			has_country_flag = FPR_Red_Guard_path_flag
+		}
+		relative_position_id = FPR_Arise_Sons_of_Marianne
+		prerequisite = {
+			focus = FPR_Franco_German_Treaty_of_Friendship_Alliance_and_Mutual_Assistance
+		}
+		prerequisite = {
+			focus = FPR_Reinvigorate_the_Workforce
+		}
+		completion_reward = {
+			increase_society = yes
+			add_political_power = 50
+			add_war_support = 0.1
+			add_tech_bonus = {
+				name = FPR_The_New_French_Man
+				bonus = 2
+				uses = 2
+				category = industry
+			}
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = FPR_Revolution_dummy
+					add_idea = FPR_the_new_citizen_dummy_idea
+				}
+			}
+			hidden_effect = {
+				add_to_variable = {
+					var = FPR_revolution_stability_factor_dynamic_var
+					value = 0.05
+				}
+				add_to_variable = {
+					var = FPR_revolution_recruitable_population_factor_dynamic_var
+					value = 0.1
+				}
+			}
+		}
+	}
+	focus = {
+		id = FPR_Topple_the_Fascist_Menace
+		icon = GFX_focus_FPR_Spear_Fascism
+		x = 0
+		y = 4
+		cost = 4
+		available_if_capitulated = yes
+		ai_will_do = {
+			factor = 1
+		}
+		available = {
+		}
+		allow_branch = {
+			has_country_flag = FPR_Red_Guard_path_flag
+		}
+		relative_position_id = FPR_No_Gods_No_Masters
+		prerequisite = {
+			focus = FPR_Embrace_Mass_Production
+		}
+		prerequisite = {
+			focus = FPR_The_New_French_Man
+		}
+		prerequisite = {
+			focus = FPR_Cult_of_the_Red_General
+		}
+		completion_reward = {
+			add_war_support = 0.1
+			add_equipment_to_stockpile = {
+				type = infantry_equipment_3
+				amount = 10000
+				producer = FPR
+			}
+			increase_military = yes
+			add_ideas = FPR_spear_fascism_idea
+			add_war_support = 0.15
+		}
+	}
+	#####TROTSKYIST PATH#########
+	focus = {
+		id = FPR_Ideolize_the_Permanent_Revolution
+		icon = GFX_focus_FPR_idolizethepermanentrevolution
+		x = 0
+		y = 2
+		cost = 4
+		available_if_capitulated = yes
+		ai_will_do = {
+			factor = 1
+		}
+		available = {
+		}
+		allow_branch = {
+			has_country_flag = FPR_Trotsky_path_flag
+		}
+		relative_position_id = FPR_Consolidate_the_New_Republic
+		prerequisite = {
+			focus = FPR_Establish_ourselves_in_the_Hearts_of_the_People
+		}
+		completion_reward = {
+			unlock_decision_category_tooltip = FPR_global_revolution_category
+			hidden_effect = {
+				add_popularity = {
+					ideology = totalitarian_socialist
+					popularity = 0.35
+				}
+				every_country = {
+					limit = {
+						NOT = {
+							has_country_leader_ideology = trotskyism
+						}
+					}
+					add_opinion_modifier = {
+						target = FPR
+						modifier = FPR_permanent_revolution
+					}
+				}
+			}
+			every_other_country = {
+				limit = {
+					has_country_leader_ideology = trotskyism
+				}
+				add_opinion_modifier = {
+					target = FPR
+					modifier = FPR_permanent_revolution_good
+				}
+			}
+			add_stability = 0.08
+			hidden_effect = {
+				add_to_variable = {
+					var = FPR_revolution_communist_drift_dynamic_var
+					value = 0.1
+				}
+			}
+		}
+	}
+	focus = {
+		id = FPR_Ensure_Revolutionary_successes
+		icon = GFX_focus_FPR_foment_revolutionabroad
+		x = -2
+		y = 1
+		cost = 4
+		available_if_capitulated = yes
+		ai_will_do = {
+			factor = 1
+		}
+		available = {
+		}
+		allow_branch = {
+			has_country_flag = FPR_Trotsky_path_flag
+		}
+		relative_position_id = FPR_Ideolize_the_Permanent_Revolution
+		prerequisite = {
+			focus = FPR_Ideolize_the_Permanent_Revolution
+		}
+		completion_reward = {
+			unlock_decision_tooltip = FPR_aid_revolutions_decision
+			add_war_support = 0.1
+			add_command_power = 50
+			army_experience = 50
+		}
+	}
+	focus = {
+		id = FPR_The_Global_Class_Struggle
+		icon = GFX_focus_FPR_fifthinternational
+		x = -3
+		y = 2
+		cost = 4
+		available_if_capitulated = yes
+		ai_will_do = {
+			factor = 1
+		}
+		available = {
+		}
+		allow_branch = {
+			has_country_flag = FPR_Trotsky_path_flag
+		}
+		relative_position_id = FPR_Ideolize_the_Permanent_Revolution
+		prerequisite = {
+			focus = FPR_Ensure_Revolutionary_successes
+		}
+		completion_reward = {
+			#event about france hosting new internationale
+			country_event = {
+				id = france.8008
+			}
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = FPR_Revolution_dummy
+					add_idea = FPR_workers_of_the_world_united_idea
+				}
+			}
+			hidden_effect = {
+				add_to_variable = {
+					var = FPR_revolution_command_power_gain_mult_dynamic_var
+					value = 0.1
+				}
+				add_to_variable = {
+					var = FPR_revolution_production_lack_of_resource_penalty_factor_dynamic_var
+					value = -0.15
+				}
+				add_to_variable = {
+					var = FPR_revolution_army_morale_factor_dynamic_var
+					value = 0.05
+				}
+			}
+		}
+	}
+	focus = {
+		id = FPR_Champion_Proletariat_Internationalism
+		icon = GFX_focus_FPR_championinternational
+		x = -2
+		y = 3
+		cost = 4
+		available_if_capitulated = yes
+		ai_will_do = {
+			factor = 1
+		}
+		available = {
+		}
+		allow_branch = {
+			has_country_flag = FPR_Trotsky_path_flag
+		}
+		relative_position_id = FPR_Ideolize_the_Permanent_Revolution
+		prerequisite = {
+			focus = FPR_The_Socialist_Culture
+		}
+		prerequisite = {
+			focus = FPR_The_Global_Class_Struggle
+		}
+		completion_reward = {
+			unlock_decision_tooltip = FPR_call_for_international_volunteers_decision
+			set_temp_variable = {
+				var = industrial_development_var_temp
+				value = 0.25
+			}
+			add_industrial_development = yes
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = FPR_Revolution_dummy
+					add_idea = FPR_beacon_of_the_revolution_idea
+				}
+			}
+			hidden_effect = {
+				add_to_variable = {
+					var = FPR_revolution_army_core_defence_factor_dynamic_var
+					value = 0.1
+				}
+				add_to_variable = {
+					var = FPR_revolution_army_morale_factor_dynamic_var
+					value = 0.08
+				}
+			}
+		}
+	}
+	focus = {
+		id = FPR_Block_Deformation
+		icon = GFX_focus_FPR_defense_against_deformation
+		x = 0
+		y = 1
+		cost = 4
+		available_if_capitulated = yes
+		ai_will_do = {
+			factor = 1
+		}
+		available = {
+		}
+		allow_branch = {
+			has_country_flag = FPR_Trotsky_path_flag
+		}
+		relative_position_id = FPR_Ideolize_the_Permanent_Revolution
+		prerequisite = {
+			focus = FPR_Ideolize_the_Permanent_Revolution
+		}
+		completion_reward = {
+			unlock_decision_tooltip = FPR_fight_against_modern_stalinism_decision
+			add_stability = -0.1
+			add_popularity = {
+				ideology = totalitarian_socialist
+				popularity = -0.05
+			}
+			set_party_name = {
+				ideology = totalitarian_socialist
+				name = SOV_outlawed_party
+				long_name = SOV_outlawed_party
+			}
+			set_temp_variable = {
+				var = academic_development_var_temp
+				value = 0.15
+			}
+			add_academic_development = yes
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = FPR_Revolution_dummy
+					add_idea = FPR_end_bureaucratic_oppression_idea
+				}
+			}
+			hidden_effect = {
+				add_to_variable = {
+					var = FPR_revolution_drift_defence_factor_dynamic_var
+					value = 0.25
+				}
+				add_to_variable = {
+					var = FPR_revolution_production_speed_buildings_factor_dynamic_var
+					value = -0.1
+				}
+				add_to_variable = {
+					var = FPR_revolution_consumer_goods_dynamic_var
+					value = -0.05
+				}
+				add_to_variable = {
+					var = FPR_revolution_income_growth_factor_dynamic_var
+					value = 0.05
+				}
+			}
+		}
+	}
+	focus = {
+		id = FPR_The_Socialist_Culture
+		icon = GFX_focus_FPR_socialismofthefuture
+		x = -1
+		y = 2
+		cost = 4
+		available_if_capitulated = yes
+		ai_will_do = {
+			factor = 1
+		}
+		available = {
+		}
+		allow_branch = {
+			has_country_flag = FPR_Trotsky_path_flag
+		}
+		relative_position_id = FPR_Ideolize_the_Permanent_Revolution
+		prerequisite = {
+			focus = FPR_Block_Deformation
+		}
+		prerequisite = {
+			focus = FPR_Ensure_Revolutionary_successes
+		}
+		completion_reward = {
+			#Event about killing cultural capitalism
+			add_research_slot = 1
+			increase_education = yes
+			add_ideas = higher_taxes
+			add_ideas = higher_welfare
+			set_temp_variable = {
+				var = poverty_development_var_temp
+				value = 0.25
+			}
+			add_poverty_development = yes
+		}
+	}
+	focus = {
+		id = FPR_Long_Live_the_Workers_Revolution
+		icon = GFX_focus_FPR_longlivetheworkersrevolution
+		x = 1
+		y = 2
+		cost = 4
+		available_if_capitulated = yes
+		ai_will_do = {
+			factor = 1
+		}
+		available = {
+		}
+		allow_branch = {
+			has_country_flag = FPR_Trotsky_path_flag
+		}
+		relative_position_id = FPR_Ideolize_the_Permanent_Revolution
+		prerequisite = {
+			focus = FPR_Block_Deformation
+		}
+		prerequisite = {
+			focus = FPR_Socialist_Democracy
+		}
+		completion_reward = {
+			#Add campaign decision about factory output
+			unlock_decision_tooltip = FPR_output_for_the_revolution_decision
+			add_ideas = higher_safety
+			add_country_leader_role = {
+				character = FPR_supreme_soviet_char
+				promote_leader = yes
+				country_leader = {
+					ideology = trotskyism
+					traits = {
+						hos_heavy_doctrinal_following
+					}
+				}
+			}
+			random_owned_controlled_state = {
+				limit = {
+					is_core_of = ROOT
+					free_building_slots = {
+						building = industrial_complex
+						size > 0
+						include_locked = yes
+					}
+				}
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = industrial_complex
+					level = 1
+					instant_build = yes
+				}
+			}
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = FPR_Revolution_dummy
+					add_idea = FPR_the_class_struggle_dummy
+				}
+			}
+			hidden_effect = {
+				add_to_variable = {
+					var = FPR_revolution_industrial_capacity_factory_dynamic_var
+					value = 0.2
+				}
+				add_to_variable = {
+					var = FPR_revolution_line_change_production_efficiency_factor_dynamic_var
+					value = -0.05
+				}
+			}
+		}
+	}
+	focus = {
+		id = FPR_Socialist_Democracy
+		icon = GFX_focus_FPR_partydemocracy
+		x = 2
+		y = 1
+		cost = 4
+		available_if_capitulated = yes
+		ai_will_do = {
+			factor = 1
+		}
+		available = {
+		}
+		allow_branch = {
+			has_country_flag = FPR_Trotsky_path_flag
+		}
+		relative_position_id = FPR_Ideolize_the_Permanent_Revolution
+		prerequisite = {
+			focus = FPR_Ideolize_the_Permanent_Revolution
+		}
+		completion_reward = {
+			set_temp_variable = {
+				coalition_partner_var_temp = token:libertarian_socialist
+			}
+			add_to_coalition = yes
+			set_temp_variable = {
+				coalition_partner_var_temp = token:social_democrat
+			}
+			add_to_coalition = yes
+			add_popularity = {
+				ideology = communist
+				popularity = 0.05
+			}
+			add_popularity = {
+				ideology = libertarian_socialist
+				popularity = 0.05
+			}
+			add_popularity = {
+				ideology = social_democrat
+				popularity = 0.05
+			}
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = FPR_Revolution_dummy
+					add_idea = FPR_hear_the_people_speak_idea
+				}
+			}
+			hidden_effect = {
+				add_to_variable = {
+					var = FPR_revolution_party_popularity_stability_factor_dynamic_var
+					value = 0.1
+				}
+			}
+		}
+	}
+	focus = {
+		id = FPR_Coalition_the_Against_Fascism
+		icon = GFX_focus_FPR_unitedagainstfascism
+		x = 3
+		y = 2
+		cost = 4
+		available_if_capitulated = yes
+		ai_will_do = {
+			factor = 1
+		}
+		available = {
+		}
+		allow_branch = {
+			has_country_flag = FPR_Trotsky_path_flag
+		}
+		relative_position_id = FPR_Ideolize_the_Permanent_Revolution
+		prerequisite = {
+			focus = FPR_Socialist_Democracy
+		}
+		completion_reward = {
+			add_ideas = FPR_united_against_fascism_idea
+			add_war_support = 0.05
+			if = {
+				limit = {
+					is_in_faction = yes
+				}
+				every_allied_country = {
+					add_timed_idea = {
+						idea = FPR_united_against_fascism_idea
+						days = 180
+					}
+					add_war_support = 0.05
+				}
+			}
+		}
+	}
+	focus = {
+		id = FPR_Liberate_the_Balkans
+		icon = GFX_focus_FPR_liberatethebalkans
+		x = 2
+		y = 3
+		cost = 4
+		available_if_capitulated = yes
+		ai_will_do = {
+			factor = 1
+		}
+		available = {
+		}
+		allow_branch = {
+			has_country_flag = FPR_Trotsky_path_flag
+		}
+		relative_position_id = FPR_Ideolize_the_Permanent_Revolution
+		prerequisite = {
+			focus = FPR_Coalition_the_Against_Fascism
+		}
+		prerequisite = {
+			focus = FPR_Long_Live_the_Workers_Revolution
+		}
+		completion_reward = {
+			custom_effect_tooltip = FAF_invading_balkans_tt
+			hidden_effect = {
+				create_wargoal = {
+					type = annex_everything
+					target = SER
+				}
+				create_wargoal = {
+					type = annex_everything
+					target = CRO
+				}
+				create_wargoal = {
+					type = annex_everything
+					target = SLV
+				}
+				create_wargoal = {
+					type = annex_everything
+					target = BOS
+				}
+				create_wargoal = {
+					type = annex_everything
+					target = GRE
+				}
+				create_wargoal = {
+					type = annex_everything
+					target = ALB
+				}
+			}
+		}
+	}
+	focus = {
+		id = FPR_Cybertrot
+		icon = GFX_focus_FPR_cybertrot
+		x = 0
+		y = 3
+		cost = 4
+		available_if_capitulated = yes
+		ai_will_do = {
+			factor = 1
+		}
+		available = {
+		}
+		allow_branch = {
+			has_country_flag = FPR_Trotsky_path_flag
+		}
+		relative_position_id = FPR_Ideolize_the_Permanent_Revolution
+		prerequisite = {
+			focus = FPR_The_Socialist_Culture
+		}
+		prerequisite = {
+			focus = FPR_Long_Live_the_Workers_Revolution
+		}
+		cancelable = no
+		select_effect = {
+			country_event = {
+				id = france.8001
+				days = 10
+			}
+		}
+		completion_reward = {
+			custom_effect_tooltip = FPR_creation_of_cybertrot_tt
+			hidden_effect = {
+				country_event = {
+					id = france.8007
+				}
+			}
+		}
+	}
+	focus = {
+		id = FPR_Federation_of_Socialist_States
+		icon = GFX_focus_FPR_federationofsocialiststates
+		x = 0
+		y = 4
+		cost = 4
+		available_if_capitulated = yes
+		ai_will_do = {
+			factor = 1
+		}
+		available = {
+		}
+		allow_branch = {
+			has_country_flag = FPR_Trotsky_path_flag
+		}
+		relative_position_id = FPR_Ideolize_the_Permanent_Revolution
+		prerequisite = {
+			focus = FPR_Champion_Proletariat_Internationalism
+		}
+		prerequisite = {
+			focus = FPR_Liberate_the_Balkans
+		}
+		prerequisite = {
+			focus = FPR_Cybertrot
+		}
+		completion_reward = {
+			unlock_decision_tooltip = FPR_grow_the_federated_republic_of_europe_decision
+			set_cosmetic_tag = FRA_Federated_Republic_of_Europe
+			every_subject_country = {
+				FPR = {
+					annex_country = {
+						target = PREV
+						transfer_troops = yes
+					}
+				}
+			}
+		}
+	}
+	#####MELENCHON SOCIALISM#########
+	focus = {
+		id = FPR_France_shall_never_bow
+		icon = GFX_focus_FPR_france_shall_never_bow
+		x = 0
+		y = 2
+		cost = 4
+		available_if_capitulated = yes
+		ai_will_do = {
+			factor = 1
+		}
+		available = {
+		}
+		allow_branch = {
+			has_country_flag = FPR_Socialist_Melenchon_path_flag
+		}
+		relative_position_id = FPR_Consolidate_the_New_Republic
+		prerequisite = {
+			focus = FPR_Establish_ourselves_in_the_Hearts_of_the_People
+		}
+		completion_reward = {
+			add_stability = 0.1
+			add_political_power = 75
+		}
+	}
+	focus = {
+		id = FPR_Continuation_of_the_Republic
+		icon = GFX_focus_FPR_Continuation_of_the_Republic
+		x = -2
+		y = 1
+		cost = 4
+		available_if_capitulated = yes
+		ai_will_do = {
+			factor = 1
+		}
+		available = {
+		}
+		allow_branch = {
+			has_country_flag = FPR_Socialist_Melenchon_path_flag
+		}
+		relative_position_id = FPR_France_shall_never_bow
+		prerequisite = {
+			focus = FPR_France_shall_never_bow
+		}
+		completion_reward = {
+			add_stability = 0.1
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = FPR_Revolution_dummy
+					add_idea = FPR_melenchon_sixth_republic_idea
+				}
+			}
+			hidden_effect = {
+				add_to_variable = {
+					var = FPR_revolution_political_power_gain_dynamic_var
+					value = 0.15
+				}
+				add_to_variable = {
+					var = FPR_revolution_party_popularity_stability_factor_dynamic_var
+					value = 0.2
+				}
+			}
+		}
+	}
+	focus = {
+		id = FPR_Parliamentarian_Socialism
+		icon = GFX_focus_FPR_Parliamentarian_Socialism
+		x = -3
+		y = 2
+		cost = 4
+		available_if_capitulated = yes
+		ai_will_do = {
+			factor = 1
+		}
+		available = {
+		}
+		allow_branch = {
+			has_country_flag = FPR_Socialist_Melenchon_path_flag
+		}
+		relative_position_id = FPR_France_shall_never_bow
+		prerequisite = {
+			focus = FPR_Continuation_of_the_Republic
+		}
+		completion_reward = {
+			set_temp_variable = {
+				coalition_partner_var_temp = token:libertarian_socialist
+			}
+			add_to_coalition = yes
+			set_temp_variable = {
+				coalition_partner_var_temp = token:social_democrat
+			}
+			add_to_coalition = yes
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = FPR_Revolution_dummy
+					add_idea = FPR_nouveau_socialism_idea
+				}
+			}
+			hidden_effect = {
+				add_to_variable = {
+					var = FPR_revolution_poverty_development_monthly_dynamic_var
+					value = 0.025
+				}
+				add_to_variable = {
+					var = FPR_revolution_society_development_monthly_dynamic_var
+					value = 0.03
+				}
+			}
+		}
+	}
+	focus = {
+		id = FPR_The_Modern_Girondists
+		icon = GFX_focus_FPR_the_modern_girondists
+		x = -2
+		y = 3
+		cost = 4
+		available_if_capitulated = yes
+		ai_will_do = {
+			factor = 1
+		}
+		available = {
+		}
+		allow_branch = {
+			has_country_flag = FPR_Socialist_Melenchon_path_flag
+		}
+		relative_position_id = FPR_France_shall_never_bow
+		prerequisite = {
+			focus = FPR_Parliamentarian_Socialism
+		}
+		prerequisite = {
+			focus = FPR_Save_Earth_through_Ecology
+		}
+		completion_reward = {
+			add_stability = 0.08
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = FPR_Revolution_dummy
+					add_idea = FPR_modern_girondists_idea
+				}
+			}
+			hidden_effect = {
+				add_to_variable = {
+					var = FPR_revolution_industrial_capacity_factory_dynamic_var
+					value = 0.15
+				}
+				add_to_variable = {
+					var = FPR_revolution_libertarian_socialist_drift_dynamic_var
+					value = 0.02
+				}
+				add_to_variable = {
+					var = FPR_revolution_social_democrat_drift_dynamic_var
+					value = 0.015
+				}
+			}
+		}
+	}
+	focus = {
+		id = FPR_Smiling_Socialism
+		icon = GFX_focus_FPR_Socialism_with_a_Smile
+		x = 0
+		y = 1
+		cost = 4
+		available_if_capitulated = yes
+		ai_will_do = {
+			factor = 1
+		}
+		available = {
+		}
+		allow_branch = {
+			has_country_flag = FPR_Socialist_Melenchon_path_flag
+		}
+		relative_position_id = FPR_France_shall_never_bow
+		prerequisite = {
+			focus = FPR_France_shall_never_bow
+		}
+		completion_reward = {
+			add_ideas = higher_taxes
+			add_ideas = higher_welfare
+			set_temp_variable = {
+				var = poverty_development_var_temp
+				value = 0.25
+			}
+			add_poverty_development = yes
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = FPR_Revolution_dummy
+					add_idea = FPR_socialism_with_a_face_idea
+				}
+			}
+			hidden_effect = {
+				add_to_variable = {
+					var = FPR_revolution_production_speed_buildings_factor_dynamic_var
+					value = 0.05
+				}
+				add_to_variable = {
+					var = FPR_revolution_consumer_goods_dynamic_var
+					value = -0.1
+				}
+			}
+		}
+	}
+	focus = {
+		id = FPR_Save_Earth_through_Ecology
+		icon = GFX_focus_FPR_The_Eco_Revolution
+		x = -1
+		y = 2
+		cost = 4
+		available_if_capitulated = yes
+		ai_will_do = {
+			factor = 1
+		}
+		available = {
+		}
+		allow_branch = {
+			has_country_flag = FPR_Socialist_Melenchon_path_flag
+		}
+		relative_position_id = FPR_France_shall_never_bow
+		prerequisite = {
+			focus = FPR_Smiling_Socialism
+		}
+		prerequisite = {
+			focus = FPR_Continuation_of_the_Republic
+		}
+		completion_reward = {
+			set_temp_variable = {
+				var = farming_development_var_temp
+				value = 0.3
+			}
+			add_farming_development = yes
+			random_controlled_state = {
+				if = {
+					limit = {
+						is_core_of = ROOT
+						is_able_to_build_energy_farm_in_state = yes
+						free_building_slots = {
+							building = energy_farm
+							size > 0
+							include_locked = yes
+						}
+					}
+					add_extra_state_shared_building_slots = 1
+					add_building_construction = {
+						type = energy_farm
+						level = 1
+						instant_build = yes
+					}
+				}
+			}
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = FPR_Revolution_dummy
+					add_idea = FPR_eco_socialism_idea
+				}
+			}
+			hidden_effect = {
+				add_to_variable = {
+					var = FPR_revolution_production_oil_factor_dynamic_var
+					value = 0.1
+				}
+				add_to_variable = {
+					var = FPR_revolution_production_speed_energy_farm_factor_dynamic_var
+					value = 0.25
+				}
+				add_to_variable = {
+					var = FPR_revolution_army_fuel_consumption_factor_dynamic_var
+					value = -0.05
+				}
+			}
+		}
+	}
+	focus = {
+		id = FPR_Decentralize_the_Military
+		icon = GFX_focus_FPR_decentralize_the_military
+		x = 1
+		y = 2
+		cost = 4
+		available_if_capitulated = yes
+		ai_will_do = {
+			factor = 1
+		}
+		available = {
+		}
+		allow_branch = {
+			has_country_flag = FPR_Socialist_Melenchon_path_flag
+		}
+		relative_position_id = FPR_France_shall_never_bow
+		prerequisite = {
+			focus = FPR_Smiling_Socialism
+			focus = FPR_Liberalize_the_Revolution
+		}
+		completion_reward = {
+			set_temp_variable = {
+				var = society_development_var_temp
+				value = 0.25
+			}
+			add_society_development = yes
+			effect_tooltip = {
+				swap_ideas = {
+					add_idea = FPR_decentralized_command_idea
+					remove_idea = FPR_French_Peoples_Army_dummy_idea
+				}
+			}
+			hidden_effect = {
+				add_to_variable = {
+					var = FPR_PRAF_army_org_factor_dynamic_var
+					value = -0.05
+				}
+				add_to_variable = {
+					var = FPR_PRAF_army_speed_factor_dynamic_var
+					value = 0.08
+				}
+				add_to_variable = {
+					var = FPR_PRAF_experience_loss_factor_dynamic_var
+					value = -0.25
+				}
+				add_to_variable = {
+					var = FPR_PRAF_org_loss_when_moving_dynamic_var
+					value = -0.05
+				}
+			}
+		}
+	}
+	focus = {
+		id = FPR_Liberalize_the_Revolution
+		icon = GFX_focus_FPR_liberalize_revolution_idealism
+		x = 2
+		y = 1
+		cost = 4
+		available_if_capitulated = yes
+		ai_will_do = {
+			factor = 1
+		}
+		available = {
+		}
+		allow_branch = {
+			has_country_flag = FPR_Socialist_Melenchon_path_flag
+		}
+		relative_position_id = FPR_France_shall_never_bow
+		prerequisite = {
+			focus = FPR_France_shall_never_bow
+		}
+		completion_reward = {
+			add_political_power = 100
+			add_popularity = {
+				ideology = libertarian_socialist
+				popularity = 0.05
+			}
+			add_popularity = {
+				ideology = social_democrat
+				popularity = 0.05
+			}
+			set_temp_variable = {
+				var = society_development_var_temp
+				value = 0.25
+			}
+			add_society_development = yes
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = FPR_Revolution_dummy
+					add_idea = FPR_revolution_of_the_people_idea
+				}
+			}
+			hidden_effect = {
+				add_to_variable = {
+					var = FPR_revolution_army_morale_factor_dynamic_var
+					value = 0.1
+				}
+				add_to_variable = {
+					var = FPR_revolution_production_factory_max_efficiency_factor_dynamic_var
+					value = 0.05
+				}
+				add_to_variable = {
+					var = FPR_revolution_academic_development_monthly_dynamic_var
+					value = 0.03
+				}
+			}
+		}
+	}
+	focus = {
+		id = FPR_Democracy_in_the_Revolution
+		icon = GFX_focus_FPR_democracy_in_revolution
+		x = 3
+		y = 2
+		cost = 4
+		available_if_capitulated = yes
+		ai_will_do = {
+			factor = 1
+		}
+		available = {
+		}
+		allow_branch = {
+			has_country_flag = FPR_Socialist_Melenchon_path_flag
+		}
+		relative_position_id = FPR_France_shall_never_bow
+		prerequisite = {
+			focus = FPR_Liberalize_the_Revolution
+		}
+		completion_reward = {
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = FPR_Revolution_dummy
+					add_idea = FPR_revolution_of_the_people_idea
+				}
+			}
+			hidden_effect = {
+				add_to_variable = {
+					var = FPR_revolution_stability_factor_dynamic_var
+					value = 0.1
+				}
+				add_to_variable = {
+					var = FPR_revolution_income_growth_factor_dynamic_var
+					value = 0.05
+				}
+				add_to_variable = {
+					var = FPR_revolution_libertarian_socialist_drift_dynamic_var
+					value = 0.03
+				}
+			}
+		}
+	}
+	focus = {
+		id = FPR_Proud_Defenders_of_the_Revolution
+		icon = GFX_focus_FPR_Proud_Defenders_of_the_Revolution
+		x = 2
+		y = 3
+		cost = 4
+		available_if_capitulated = yes
+		ai_will_do = {
+			factor = 1
+		}
+		available = {
+		}
+		allow_branch = {
+			has_country_flag = FPR_Socialist_Melenchon_path_flag
+		}
+		relative_position_id = FPR_France_shall_never_bow
+		prerequisite = {
+			focus = FPR_Democracy_in_the_Revolution
+		}
+		prerequisite = {
+			focus = FPR_Decentralize_the_Military
+		}
+		completion_reward = {
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = FPR_Revolution_dummy
+					add_idea = FPR_defenders_of_the_revolution_idea
+				}
+			}
+			hidden_effect = {
+				add_to_variable = {
+					var = FPR_revolution_military_army_defence_factor_dynamic_var
+					value = 0.1
+				}
+				add_to_variable = {
+					var = FPR_revolution_army_morale_factor_dynamic_var
+					value = 0.08
+				}
+			}
+		}
+	}
+	focus = {
+		id = FPR_Operation_Terra		#ECO-TERROR for dummies
+		icon = GFX_focus_FPR_operation_terra
+		x = 0
+		y = 3
+		cost = 4
+		available_if_capitulated = yes
+		ai_will_do = {
+			factor = 1
+		}
+		available = {
+		}
+		allow_branch = {
+			has_country_flag = FPR_Socialist_Melenchon_path_flag
+		}
+		relative_position_id = FPR_France_shall_never_bow
+		prerequisite = {
+			focus = FPR_Save_Earth_through_Ecology
+		}
+		prerequisite = {
+			focus = FPR_Decentralize_the_Military
+		}
+		completion_reward = {
+			SOV = {
+				add_timed_idea = {
+					idea = FPR_op_terra_idea
+					days = 200
+				}
+			}
+			unlock_decision_tooltip = FPR_op_terra_phase_one
+			unlock_decision_tooltip = FPR_op_terra_phase_two
+			unlock_decision_tooltip = FPR_op_terra_phase_three
+		}
+	}
+	focus = {
+		id = FPR_Cult_of_Melenchon
+		icon = GFX_focus_FPR_Cult_of_Melenchon
+		x = 0
+		y = 4
+		cost = 4
+		available_if_capitulated = yes
+		ai_will_do = {
+			factor = 1
+		}
+		available = {
+		}
+		allow_branch = {
+			has_country_flag = FPR_Socialist_Melenchon_path_flag
+		}
+		relative_position_id = FPR_France_shall_never_bow
+		prerequisite = {
+			focus = FPR_Operation_Terra
+		}
+		prerequisite = {
+			focus = FPR_Proud_Defenders_of_the_Revolution
+		}
+		prerequisite = {
+			focus = FPR_The_Modern_Girondists
+		}
+		completion_reward = {
+			add_country_leader_trait = FPR_protector_of_the_republic
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = FPR_Revolution_dummy
+					add_idea = FPR_father_of_the_sixth_republic_idea
+				}
+			}
+			hidden_effect = {
+				add_to_variable = {
+					var = FPR_revolution_recruitable_population_factor_dynamic_var
+					value = 0.15
+				}
+				add_to_variable = {
+					var = FPR_revolution_surrender_limit_dynamic_var
+					value = 0.05
+				}
+			}
+		}
+	}
+	#####ARTSY SOCIALISM#########
+	focus = {
+		id = FPR_The_Soft_Revolution
+		icon = GFX_focus_FPR_the_reign_of_roses
+		x = 0
+		y = 2
+		cost = 4
+		available_if_capitulated = yes
+		ai_will_do = {
+			factor = 1
+		}
+		available = {
+		}
+		allow_branch = {
+			has_country_flag = FPR_Socialist_Daeninckx_path_flag
+		}
+		relative_position_id = FPR_Consolidate_the_New_Republic
+		prerequisite = {
+			focus = FPR_Establish_ourselves_in_the_Hearts_of_the_People
+		}
+		completion_reward = {
+			add_dynamic_modifier = {
+				modifier = FPR_utopia_dynamic
+			}
+			custom_effect_tooltip = FPR_The_Soft_Revolution_tt
+			country_event = france.9002
+			hidden_effect = {
+				FPR_utopia_calculator = yes
+			}
+		}
+	}
+	focus = {
+		id = FPR_Artistic_Revolution
+		icon = GFX_focus_FPR_artistic_revolution
+		x = -2
+		y = 1
+		cost = 4
+		available_if_capitulated = yes
+		ai_will_do = {
+			factor = 1
+		}
+		available = {
+		}
+		allow_branch = {
+			has_country_flag = FPR_Socialist_Daeninckx_path_flag
+		}
+		relative_position_id = FPR_The_Soft_Revolution
+		prerequisite = {
+			focus = FPR_The_Soft_Revolution
+		}
+		completion_reward = {
+			add_stability = 0.1
+			increase_exemptions = yes
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = FPR_utopia_dummy
+					add_idea = FPR_utopia_dummy_artistic_revolution
+				}
+			}
+			hidden_effect = {
+				add_to_variable = {
+					FPR_utopia_dynamic_dynamic_var_consumer_goods_factor = 0.1
+				}
+				add_to_variable = {
+					FPR_utopia_dynamic_dynamic_var_political_power_factor = 0.1
+				}
+			}
+		}
+	}
+	focus = {
+		id = FPR_Technosocialism
+		icon = GFX_focus_FPR_technosocialism
+		x = -3
+		y = 2
+		cost = 4
+		available_if_capitulated = yes
+		ai_will_do = {
+			factor = 1
+		}
+		available = {
+		}
+		allow_branch = {
+			has_country_flag = FPR_Socialist_Daeninckx_path_flag
+		}
+		relative_position_id = FPR_The_Soft_Revolution
+		prerequisite = {
+			focus = FPR_Artistic_Revolution
+		}
+		completion_reward = {
+			add_research_slot = 1
+			set_temp_variable = {
+				var = academic_development_var_temp
+				value = 0.1
+			}
+			add_academic_development = yes
+			set_temp_variable = {
+				var = industrial_development_var_temp
+				value = 0.1
+			}
+			add_industrial_development = yes
+			increase_education = yes
+		}
+	}
+	focus = {
+		id = FPR_Cultural_Revolution
+		icon = GFX_focus_FPR_cultural_revolution
+		x = -2
+		y = 3
+		cost = 4
+		available_if_capitulated = yes
+		ai_will_do = {
+			factor = 1
+		}
+		available = {
+		}
+		allow_branch = {
+			has_country_flag = FPR_Socialist_Daeninckx_path_flag
+		}
+		relative_position_id = FPR_The_Soft_Revolution
+		prerequisite = {
+			focus = FPR_Technosocialism
+		}
+		completion_reward = {
+			unlock_decision_tooltip = FPR_utopia_social_focus
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = FPR_utopia_dummy
+					add_idea = FPR_utopia_dummy_cultural_revolution
+				}
+			}
+			hidden_effect = {
+				add_to_variable = {
+					FPR_utopia_dynamic_dynamic_var_academic_development_monthly = 0.005
+				}
+				add_to_variable = {
+					FPR_utopia_dynamic_dynamic_var_farming_development_monthly = 0.005
+				}
+				add_to_variable = {
+					FPR_utopia_dynamic_dynamic_var_poverty_development_monthly = 0.005
+				}
+				add_to_variable = {
+					FPR_utopia_dynamic_dynamic_var_industrial_development_monthly = 0.005
+				}
+				add_to_variable = {
+					FPR_utopia_dynamic_dynamic_var_military_development_monthly = 0.005
+				}
+				add_to_variable = {
+					FPR_utopia_dynamic_dynamic_var_society_development_monthly = 0.005
+				}
+			}
+		}
+	}
+	focus = {
+		id = FPR_Peace_Bread_and_Equality
+		icon = GFX_focus_FPR_peace_bread_equality
+		x = 0
+		y = 1
+		cost = 4
+		available_if_capitulated = yes
+		ai_will_do = {
+			factor = 1
+		}
+		available = {
+		}
+		allow_branch = {
+			has_country_flag = FPR_Socialist_Daeninckx_path_flag
+		}
+		relative_position_id = FPR_The_Soft_Revolution
+		prerequisite = {
+			focus = FPR_The_Soft_Revolution
+		}
+		completion_reward = {
+			unlock_decision_tooltip = FPR_utopia_economic_focus
+			increase_welfare = yes
+			#add_ideas = medium_female
+			set_temp_variable = {
+				var = farming_development_var_temp
+				value = 0.1
+			}
+			add_farming_development = yes
+			add_power_balance_value = {
+				id = FPR_Revolutionary_Congress
+				value = -0.1
+			}
+		}
+	}
+	focus = {
+		id = FPR_Embrace_Passivity
+		icon = GFX_focus_FPR_embrace_passivity
+		x = -1
+		y = 2
+		cost = 4
+		available_if_capitulated = yes
+		ai_will_do = {
+			factor = 1
+		}
+		available = {
+		}
+		allow_branch = {
+			has_country_flag = FPR_Socialist_Daeninckx_path_flag
+		}
+		relative_position_id = FPR_The_Soft_Revolution
+		prerequisite = {
+			focus = FPR_Peace_Bread_and_Equality
+		}
+		prerequisite = {
+			focus = FPR_Artistic_Revolution
+		}
+		completion_reward = {
+			unlock_decision_tooltip = FPR_utopia_manpower_focus
+			add_war_support = -0.1
+			add_ideas = FPR_embrace_passivity_idea
+			decrease_conscription = yes
+		}
+	}
+	focus = {
+		id = FPR_Artisinal_Politics
+		icon = GFX_focus_FPR_artisinal_politics
+		x = 1
+		y = 2
+		cost = 4
+		available_if_capitulated = yes
+		ai_will_do = {
+			factor = 1
+		}
+		available = {
+		}
+		allow_branch = {
+			has_country_flag = FPR_Socialist_Daeninckx_path_flag
+		}
+		relative_position_id = FPR_The_Soft_Revolution
+		prerequisite = {
+			focus = FPR_Peace_Bread_and_Equality
+			focus = FPR_The_Revolutionary_Artist
+		}
+		completion_reward = {
+			unlock_decision_tooltip = FPR_utopia_minister_focus
+			unlock_decision_tooltip = FPR_utopia_female_committee_decision
+			unlock_decision_tooltip = FPR_utopia_minority_committee_decision
+			unlock_decision_tooltip = FPR_utopia_welfare_committee_decision
+			unlock_decision_tooltip = FPR_utopia_justice_committee_decision
+			unlock_decision_tooltip = FPR_utopia_diplomatic_committee_decision
+			set_temp_variable = {
+				var = ruling_popularity_var_temp
+				value = 0.1
+			}
+			add_ruling_party_popularity = yes
+			add_political_power = 100
+		}
+	}
+	focus = {
+		id = FPR_The_Revolutionary_Artist
+		icon = GFX_focus_FPR_revolutionize_french_media
+		x = 2
+		y = 1
+		cost = 4
+		available_if_capitulated = yes
+		ai_will_do = {
+			factor = 1
+		}
+		available = {
+		}
+		allow_branch = {
+			has_country_flag = FPR_Socialist_Daeninckx_path_flag
+		}
+		relative_position_id = FPR_The_Soft_Revolution
+		prerequisite = {
+			focus = FPR_The_Soft_Revolution
+		}
+		completion_reward = {
+			add_political_power = 150
+			set_temp_variable = {
+				var = ruling_popularity_var_temp
+				value = 0.05
+			}
+			add_ruling_party_popularity = yes
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = FPR_utopia_dummy
+					add_idea = FPR_utopia_dummy_revolutionary_artist
+				}
+			}
+			hidden_effect = {
+				add_to_variable = {
+					FPR_utopia_dynamic_dynamic_var_political_power_factor = 0.15
+				}
+			}
+		}
+	}
+	focus = {
+		id = FPR_The_Poet_of_the_Revolution
+		icon = GFX_focus_FPR_poet_of_the_revolution
+		x = 3
+		y = 2
+		cost = 4
+		available_if_capitulated = yes
+		ai_will_do = {
+			factor = 1
+		}
+		available = {
+		}
+		allow_branch = {
+			has_country_flag = FPR_Socialist_Daeninckx_path_flag
+		}
+		relative_position_id = FPR_The_Soft_Revolution
+		prerequisite = {
+			focus = FPR_The_Revolutionary_Artist
+		}
+		completion_reward = {
+			add_stability = 0.05
+			add_trait = {
+				character = FPR_Didier_Daeninckx_char
+				ideology = reformist_socialism
+				trait = FPR_poet_of_the_revolution
+			}
+			unlock_decision_tooltip = FPR_utopia_academic_investment_decision
+			unlock_decision_tooltip = FPR_utopia_agricultural_investment_decision
+			unlock_decision_tooltip = FPR_utopia_poverty_investment_decision
+			unlock_decision_tooltip = FPR_utopia_industry_investment_decision
+			unlock_decision_tooltip = FPR_utopia_society_investment_decision
+		}
+	}
+	focus = {
+		id = FPR_Vanguard_of_Peace_and_Porsperity
+		icon = GFX_focus_FPR_vanguard_of_peace
+		x = 2
+		y = 3
+		cost = 4
+		available_if_capitulated = yes
+		ai_will_do = {
+			factor = 1
+		}
+		available = {
+		}
+		allow_branch = {
+			has_country_flag = FPR_Socialist_Daeninckx_path_flag
+		}
+		relative_position_id = FPR_The_Soft_Revolution
+		prerequisite = {
+			focus = FPR_Artisinal_Politics
+		}
+		prerequisite = {
+			focus = FPR_The_Poet_of_the_Revolution
+		}
+		completion_reward = {
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = FPR_utopia_dummy
+					add_idea = FPR_utopia_dummy_vanguard
+				}
+			}
+			hidden_effect = {
+				add_to_variable = {
+					FPR_utopia_dynamic_dynamic_var_party_popularity_stability_factor = 0.25
+				}
+			}
+			add_power_balance_value = {
+				id = FPR_Revolutionary_Congress
+				value = -0.1
+			}
+		}
+	}
+	focus = {
+		id = FPR_The_Art_of_Politics
+		icon = GFX_focus_FPR_the_art_of_politics
+		x = 0
+		y = 3
+		cost = 4
+		available_if_capitulated = yes
+		ai_will_do = {
+			factor = 1
+		}
+		available = {
+		}
+		allow_branch = {
+			has_country_flag = FPR_Socialist_Daeninckx_path_flag
+		}
+		relative_position_id = FPR_The_Soft_Revolution
+		prerequisite = {
+			focus = FPR_Artisinal_Politics
+		}
+		prerequisite = {
+			focus = FPR_Embrace_Passivity
+		}
+		completion_reward = {
+			add_timed_idea = {
+				idea = FPR_The_Art_of_Politics_idea
+				days = 180
+			}
+			unlock_decision_tooltip = FPR_utopia_political_dance_extend
+			unlock_decision_tooltip = FPR_utopia_political_dance_restart
+			add_political_power = 100
+		}
+	}
+	focus = {
+		id = FPR_Peace_through_Defense
+		icon = GFX_focus_FPR_millenia_of_peace
+		x = 0
+		y = 4
+		cost = 4
+		available_if_capitulated = yes
+		ai_will_do = {
+			factor = 1
+		}
+		available = {
+		}
+		allow_branch = {
+			has_country_flag = FPR_Socialist_Daeninckx_path_flag
+		}
+		relative_position_id = FPR_The_Soft_Revolution
+		prerequisite = {
+			focus = FPR_The_Art_of_Politics
+		}
+		prerequisite = {
+			focus = FPR_Vanguard_of_Peace_and_Porsperity
+		}
+		prerequisite = {
+			focus = FPR_Cultural_Revolution
+		}
+		completion_reward = {
+			if = {
+				limit = {
+					has_idea = FPR_The_Art_of_Politics_idea
+				}
+				remove_ideas = FPR_The_Art_of_Politics_idea
+			}
+			add_war_support = 0.15
+			swap_ideas = {
+				remove_idea = FPR_embrace_passivity_idea
+				add_idea = FPR_embrace_passivity_two_idea
+			}
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = FPR_utopia_dummy
+					add_idea = FPR_utopia_dummy_vanguard
+				}
+			}
+			hidden_effect = {
+				add_to_variable = {
+					FPR_utopia_dynamic_dynamic_var_war_support_weekly = 0.01
+				}
+			}
+		}
+	}
+	#####JACOBIN SOCIALISM#########
+	focus = {
+		id = FPR_Purify_our_Revolution
+		icon = GFX_focus_FPR_Purify_the_Revolution
+		x = 0
+		y = 2
+		cost = 4
+		available_if_capitulated = yes
+		ai_will_do = {
+			factor = 1
+		}
+		available = {
+		}
+		allow_branch = {
+			has_country_flag = FPR_Jacobin_path_flag
+		}
+		relative_position_id = FPR_Consolidate_the_New_Republic
+		prerequisite = {
+			focus = FPR_Establish_ourselves_in_the_Hearts_of_the_People
+		}
+		completion_reward = {
+			add_ideas = highest_police
+		}
+	}
+	focus = {
+		id = FPR_Cult_of_Reason
+		icon = GFX_focus_FPR_Cult_of_Reason
+		x = -2
+		y = 1
+		cost = 4
+		available_if_capitulated = yes
+		ai_will_do = {
+			factor = 1
+		}
+		available = {
+		}
+		allow_branch = {
+			has_country_flag = FPR_Jacobin_path_flag
+		}
+		relative_position_id = FPR_Purify_our_Revolution
+		prerequisite = {
+			focus = FPR_Purify_our_Revolution
+		}
+		completion_reward = {
+			unlock_decision_category_tooltip = FPR_jacobin_category
+			#event about 'Cult of Reason' and the establishment of a totalistarian state religion
+			#event about Festival of Reason
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = FPR_Revolution_dummy
+					add_idea = FPR_eternal_flame_of_reason_idea
+				}
+			}
+			hidden_effect = {
+				add_to_variable = {
+					var = FPR_revolution_political_power_gain_dynamic_var
+					value = 0.05
+				}
+				add_to_variable = {
+					var = FPR_revolution_stability_factor_dynamic_var
+					value = -0.1
+				}
+				add_to_variable = {
+					var = FPR_revolution_society_development_monthly_dynamic_var
+					value = 0.025
+				}
+			}
+		}
+	}
+	focus = {
+		id = FPR_Ban_Political_Opposition
+		icon = GFX_focus_FPR_Ban_Political_Opposition
+		x = -3
+		y = 2
+		cost = 4
+		available_if_capitulated = yes
+		ai_will_do = {
+			factor = 1
+		}
+		available = {
+		}
+		allow_branch = {
+			has_country_flag = FPR_Jacobin_path_flag
+		}
+		relative_position_id = FPR_Purify_our_Revolution
+		prerequisite = {
+			focus = FPR_Cult_of_Reason
+		}
+		completion_reward = {
+			unlock_decision_tooltip = FPR_2nd_reign_of_terror
+			unlock_decision_tooltip = FPR_destroy_religious_sites
+			#event fetishizing the guillotine
+			#event about banning religion & follow up events about islamic and christian terrorism 
+			add_ideas = lower_prison
+			set_party_name = {
+				ideology = communist
+				name = SOV_outlawed_party
+				long_name = SOV_outlawed_party
+			}
+			set_party_name = {
+				ideology = libertarian_socialist
+				name = SOV_outlawed_party
+				long_name = SOV_outlawed_party
+			}
+			set_party_name = {
+				ideology = social_democrat
+				name = SOV_outlawed_party
+				long_name = SOV_outlawed_party
+			}
+		}
+	}
+	focus = {
+		id = FPR_Purge_Capital
+		icon = GFX_focus_FPR_Purge_Capital
+		x = -2
+		y = 3
+		cost = 4
+		available_if_capitulated = yes
+		ai_will_do = {
+			factor = 1
+		}
+		available = {
+		}
+		allow_branch = {
+			has_country_flag = FPR_Jacobin_path_flag
+		}
+		relative_position_id = FPR_Purify_our_Revolution
+		prerequisite = {
+			focus = FPR_Ban_Political_Opposition
+		}
+		prerequisite = {
+			focus = FPR_The_Rational_Renaissance
+		}
+		completion_reward = {
+			#event about french aristocracy and old money wealth
+			add_ideas = higher_taxes
+			add_ideas = lower_interest_rates
+			unlock_decision_tooltip = FPR_tout_pour_la_patrie
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = FPR_Revolution_dummy
+					add_idea = FPR_laissez_prendre_idea
+				}
+			}
+			hidden_effect = {
+				add_to_variable = {
+					var = FPR_revolution_consumer_goods_dynamic_var
+					value = -0.2
+				}
+				add_to_variable = {
+					var = FPR_revolution_business_value_factor_dynamic_var
+					value = -0.1
+				}
+			}
+		}
+	}
+	focus = {
+		id = FPR_Our_Greatest_Tradition
+		icon = GFX_focus_FPR_Our_Greatest_Tradition
+		x = 0
+		y = 1
+		cost = 4
+		available_if_capitulated = yes
+		ai_will_do = {
+			factor = 1
+		}
+		available = {
+		}
+		allow_branch = {
+			has_country_flag = FPR_Jacobin_path_flag
+		}
+		relative_position_id = FPR_Purify_our_Revolution
+		prerequisite = {
+			focus = FPR_Purify_our_Revolution
+		}
+		completion_reward = {
+			#event about revolution tradition
+			add_war_support = 0.1
+			add_popularity = {
+				ideology = totalitarian_socialist
+				popularity = 0.15
+			}
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = FPR_Revolution_dummy
+					add_idea = FPR_jacobin_vive_la_revolution_idea
+				}
+			}
+			hidden_effect = {
+				add_to_variable = {
+					var = FPR_revolution_command_power_gain_mult_dynamic_var
+					value = 0.08
+				}
+				add_to_variable = {
+					var = FPR_revolution_military_mobilization_speed_dynamic_var
+					value = 0.15
+				}
+			}
+		}
+	}
+	focus = {
+		id = FPR_The_Rational_Renaissance
+		icon = GFX_focus_FPR_Renaissance_of_the_Rational
+		x = -1
+		y = 2
+		cost = 4
+		available_if_capitulated = yes
+		ai_will_do = {
+			factor = 1
+		}
+		available = {
+		}
+		allow_branch = {
+			has_country_flag = FPR_Jacobin_path_flag
+		}
+		relative_position_id = FPR_Purify_our_Revolution
+		prerequisite = {
+			focus = FPR_Cult_of_Reason
+		}
+		prerequisite = {
+			focus = FPR_Our_Greatest_Tradition
+		}
+		completion_reward = {
+			#event about cultural consumerism and the death of french culture pasolini moment
+			#event about education
+			unlock_decision_tooltip = FPR_revolution_of_the_mind
+			unlock_decision_tooltip = FPR_promote_cultural_renaissance
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = FPR_Revolution_dummy
+					add_idea = FPR_liberation_of_thought_idea
+				}
+			}
+			hidden_effect = {
+				add_to_variable = {
+					var = FPR_revolution_research_speed_factor_dynamic_var
+					value = 0.05
+				}
+				add_to_variable = {
+					var = FPR_revolution_academic_development_monthly_dynamic_var
+					value = 0.1
+				}
+			}
+		}
+	}
+	focus = {
+		id = FPR_Replace_the_Red_Guard
+		icon = GFX_focus_FPR_Sack_the_Red_Guard
+		x = 1
+		y = 2
+		cost = 4
+		available_if_capitulated = yes
+		ai_will_do = {
+			factor = 1
+		}
+		available = {
+		}
+		allow_branch = {
+			has_country_flag = FPR_Jacobin_path_flag
+		}
+		relative_position_id = FPR_Purify_our_Revolution
+		prerequisite = {
+			focus = FPR_Our_Greatest_Tradition
+		}
+		prerequisite = {
+			focus = FPR_Restore_French_Pride
+		}
+		completion_reward = {
+			#Event about dismatling the redguards
+			add_ideas = higher_training
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = FPR_Revolution_dummy
+					add_idea = FPR_vanguards_of_france_idea
+				}
+			}
+			hidden_effect = {
+				add_to_variable = {
+					var = FPR_revolution_military_development_monthly_dynamic_var
+					value = 0.015
+				}
+				add_to_variable = {
+					var = FPR_revolution_special_forces_cap_dynamic_var
+					value = 0.1
+				}
+				add_to_variable = {
+					var = FPR_revolution_army_org_factor_dynamic_var
+					value = 0.05
+				}
+			}
+		}
+	}
+	focus = {
+		id = FPR_Restore_French_Pride
+		icon = GFX_focus_FPR_Pride_in_Our_Being
+		x = 2
+		y = 1
+		cost = 4
+		available_if_capitulated = yes
+		ai_will_do = {
+			factor = 1
+		}
+		available = {
+		}
+		allow_branch = {
+			has_country_flag = FPR_Jacobin_path_flag
+		}
+		relative_position_id = FPR_Purify_our_Revolution
+		prerequisite = {
+			focus = FPR_Purify_our_Revolution
+		}
+		completion_reward = {
+			add_political_power = 100
+			add_war_support = 0.08
+			add_doctrine_cost_reduction = {
+				name = land_doc_bonus
+				cost_reduction = 1
+				uses = 2
+				category = cat_old_land_doctrine
+			}
+			set_temp_variable = {
+				var = military_development_var_temp
+				value = 0.2
+			}
+			add_military_development = yes
+		}
+	}
+	focus = {
+		id = FPR_Establish_the_War_Cabinet
+		icon = GFX_focus_FPR_Revolutionary_War_Cabinet
+		x = 3
+		y = 2
+		cost = 4
+		available_if_capitulated = yes
+		ai_will_do = {
+			factor = 1
+		}
+		available = {
+		}
+		allow_branch = {
+			has_country_flag = FPR_Jacobin_path_flag
+		}
+		relative_position_id = FPR_Purify_our_Revolution
+		prerequisite = {
+			focus = FPR_Restore_French_Pride
+		}
+		completion_reward = {
+			add_command_power = 50
+			army_experience = 100
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = FPR_Revolution_dummy
+					add_idea = FPR_revolutionary_war_cabinet_idea
+				}
+			}
+			hidden_effect = {
+				add_to_variable = {
+					var = FPR_revolution_max_command_power_dynamic_var
+					value = 0.25
+				}
+				add_to_variable = {
+					var = FPR_revolution_planning_speed_dynamic_var
+					value = 0.15
+				}
+				add_to_variable = {
+					var = FPR_revolution_supply_factor_dynamic_var
+					value = 0.05
+				}
+			}
+		}
+	}
+	focus = {
+		id = FPR_Establish_the_Sister_Republics
+		icon = GFX_focus_FPR_Establish_Sister_Republics
+		x = 2
+		y = 3
+		cost = 4
+		available_if_capitulated = yes
+		ai_will_do = {
+			factor = 1
+		}
+		available = {
+		}
+		allow_branch = {
+			has_country_flag = FPR_Jacobin_path_flag
+		}
+		relative_position_id = FPR_Purify_our_Revolution
+		prerequisite = {
+			focus = FPR_Replace_the_Red_Guard
+		}
+		prerequisite = {
+			focus = FPR_Establish_the_War_Cabinet
+		}
+		completion_reward = {
+			custom_effect_tooltip = FPR_sister_republics_tt
+			unlock_decision_tooltip = FPR_establish_sister_republic_decision
+		}
+	}
+	focus = {
+		id = FPR_An_Army_of_the_Party
+		icon = GFX_focus_FPR_Army_of_Poutou
+		x = 0
+		y = 3
+		cost = 4
+		available_if_capitulated = yes
+		ai_will_do = {
+			factor = 1
+		}
+		available = {
+		}
+		allow_branch = {
+			has_country_flag = FPR_Jacobin_path_flag
+		}
+		relative_position_id = FPR_Purify_our_Revolution
+		prerequisite = {
+			focus = FPR_Replace_the_Red_Guard
+		}
+		prerequisite = {
+			focus = FPR_The_Rational_Renaissance
+		}
+		completion_reward = {
+			add_popularity = {
+				ideology = totalitarian_socialist
+				popularity = 0.08
+			}
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = FPR_Revolution_dummy
+					add_idea = FPR_politicized_military_idea
+				}
+			}
+			hidden_effect = {
+				add_to_variable = {
+					var = FPR_revolution_weekly_casualties_war_support_dynamic_var
+					value = 0.25
+				}
+				add_to_variable = {
+					var = FPR_revolution_party_popularity_stability_factor_dynamic_var
+					value = 0.15
+				}
+				add_to_variable = {
+					var = FPR_revolution_battalion_upkeep_factor_dynamic_var
+					value = 0.12
+				}
+				add_to_variable = {
+					var = FPR_revolution_recruitable_population_factor_dynamic_var
+					value = 0.1
+				}
+			}
+		}
+	}
+	focus = {
+		id = FPR_Supreme_Continental_Authority
+		icon = GFX_focus_FPR_Supreme_Continental_Authority
+		x = 0
+		y = 4
+		cost = 4
+		available_if_capitulated = yes
+		ai_will_do = {
+			factor = 1
+		}
+		available = {
+		}
+		allow_branch = {
+			has_country_flag = FPR_Jacobin_path_flag
+		}
+		relative_position_id = FPR_Purify_our_Revolution
+		prerequisite = {
+			focus = FPR_An_Army_of_the_Party
+		}
+		prerequisite = {
+			focus = FPR_Establish_the_Sister_Republics
+		}
+		prerequisite = {
+			focus = FPR_Purge_Capital
+		}
+		completion_reward = {
+			add_country_leader_trait = FPR_regent_of_liberty
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = FPR_Revolution_dummy
+					add_idea = FPR_the_continental_revolutionary_army_idea
+				}
+			}
+			hidden_effect = {
+				add_to_variable = {
+					var = FPR_revolution_max_command_power_dynamic_var
+					value = 0.25
+				}
+				add_to_variable = {
+					var = FPR_revolution_supply_factor_dynamic_var
+					value = 0.15
+				}
+				add_to_variable = {
+					var = FPR_revolution_max_command_power_dynamic_var
+					value = 0.05
+				}
+			}
+		}
+	}
+}

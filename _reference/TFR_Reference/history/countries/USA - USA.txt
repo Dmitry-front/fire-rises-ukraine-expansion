@@ -1,0 +1,972 @@
+capital = 931
+oob = "USA_2020"
+set_variable = {
+	var = Diplomats_Var
+	value = 3
+}
+
+if = {
+	limit = {
+		NOT = {
+			has_dlc = "No Step Back"
+		}
+	}
+	set_oob = "USA_2020"
+}
+
+if = {
+	limit = {
+		has_dlc = "No Step Back"
+	}
+	set_oob = "USA_2020_nsb"
+}
+
+if = {
+	limit = {
+		has_dlc = "Man the Guns"
+	}
+	set_naval_oob = "USA_2000_naval_mtg"
+	else = {
+		set_naval_oob = "USA_2000_naval_legacy"
+	}
+}
+
+set_research_slots = 4
+set_convoys = 1500
+set_stability = 0.95
+set_war_support = 0.175
+set_country_flag = generic_has_ministers_flag
+set_country_flag = developed_country
+set_country_flag = global_ass_lol
+send_embargo = CUB
+send_embargo = SUD
+set_technology = {
+	## Infantry ##
+	infantry_weapons1 = 1
+	infantry_weapons2 = 1
+	infantry_weapons3 = 1
+	motorised_infantry = 1
+	infantry_rifle_upgrade = 1
+	infantry_rifle_upgrade2 = 1
+	infantry_rifle_upgrade3 = 1
+	upgraded_infantry_weapons1 = 1
+	support_weapons = 1
+	support_weapons2 = 1
+	support_weapons3 = 1
+	night_vision = 1
+	night_vision2 = 1
+	night_vision3 = 1
+	body_armor = 1
+	body_armor2 = 1
+	body_armor3 = 1
+	camouflage = 1
+	camouflage2 = 1
+	marines = 1
+	tech_mountaineers = 1
+	paratroopers = 1
+	tech_rangers = 1
+	basic_train = 1
+	mechanised_infantry1 = 1
+	mechanised_infantry2 = 1
+	mechanised_infantry3 = 1
+	light_mechanized_infantry1 = 1
+	light_mechanized_infantry2 = 1
+	## Support Companies ##
+	tech_support = 1
+	tech_engineers = 1
+	tech_recon = 1
+	tech_field_hospital = 1
+	tech_logistics_company = 1
+	tech_military_police = 1
+	tech_signal_company = 1
+	tech_maintenance_company = 1
+	basic_railway = 1
+	forward_operating_base = 1
+	## Artillery ##
+	gw_artillery = 1
+	artillery1 = 1
+	artillery2 = 1
+	interwar_antitank = 1
+	interwar_antiair = 1
+	rocket_artillery = 1
+	interwar_artillery = 1
+	sp_artillery1 = 1
+	self_propelled_aa1 = 1
+	antitank1 = 1
+	antitank2 = 1
+	antiair1 = 1
+	antiair2 = 1
+	antiair3 = 1
+	## Air ##
+	attack_helicopter_1 = 1
+	utility_helicopter_1 = 1
+	## Engineering ##
+	electronic_mechanical_engineering = 1
+	radio = 1
+	power_plants = 1
+	power_plants1 = 1
+	nuclear_reactors = 1
+	energy_farms = 1
+	## Industry ##
+	basic_machine_tools = 1
+	fuel_silos = 1
+	fuel_refining = 1
+	synth_oil_experiments = 1
+}
+
+if = {
+	limit = {
+		NOT = {
+			has_dlc = "Man the Guns"
+		}
+	}
+	set_technology = {
+		early_destroyer = 1
+		early_light_cruiser = 1
+		basic_light_cruiser = 1
+		early_heavy_cruiser = 1
+		basic_heavy_cruiser = 1
+		improved_heavy_cruiser = 1
+		early_battleship = 1
+		basic_battleship = 1
+		early_carrier = 1
+		basic_carrier = 1
+		early_submarine = 1
+		basic_submarine = 1
+		transport = 1
+	}
+}
+
+if = {
+	limit = {
+		has_dlc = "Man the Guns"
+	}
+	set_technology = {
+		early_ship_hull_light = 1
+		early_ship_hull_cruiser = 1
+		basic_ship_hull_cruiser = 1
+		improved_ship_hull_cruiser = 1
+		early_ship_hull_heavy = 1
+		basic_ship_hull_heavy = 1
+		early_ship_hull_carrier = 1
+		basic_ship_hull_carrier = 1
+		early_ship_hull_submarine = 1
+		basic_ship_hull_submarine = 1
+		smoke_generator = 1
+		sonar = 1
+		basic_depth_charges = 1
+		improved_airplane_launcher = 1
+		basic_cruiser_armor_scheme = 1
+		basic_heavy_armor_scheme = 1
+		basic_torpedo = 1
+		basic_battery = 1
+		basic_light_battery = 1
+		basic_medium_battery = 1
+		basic_heavy_battery = 1
+		#basic_secondary_battery = 1
+		mtg_transport = 1
+		basic_naval_mines = 1
+		submarine_mine_laying = 1
+	}
+}
+
+if = {
+	limit = {
+		NOT = {
+			has_dlc = "No Step Back"
+		}
+	}
+	set_technology = {
+		main_battle_tank1 = 1
+		main_battle_tank2 = 1
+		main_battle_tank3 = 1
+		light_tank1 = 1
+		light_tank2 = 1
+		amphibious_tank1 = 1
+		amphibious_mechanized_infantry1 = 1
+	}
+}
+
+if = {
+	limit = {
+		has_dlc = "No Step Back"
+	}
+	set_technology = {
+		gwtank_chassis = 1
+		basic_light_tank_chassis = 1
+		basic_medium_tank_chassis = 1
+		improved_light_tank_chassis = 1
+		improved_medium_tank_chassis = 1
+		engine_tech_1 = 1
+		amphibious_tank_chassis = 1
+		amphibious_mechanized_infantry1 = 1
+		apds_tech = 1
+		heat_tech = 1
+		apfsds_tech = 1
+		heatfs_tech = 1
+		legacy_armor_designs = 1
+		engine_tech_2 = 1
+	}
+}
+
+if = {
+	limit = {
+		has_dlc = "By Blood Alone"
+	}
+	set_air_oob = "USA_2020_air_bba"
+	set_technology = {
+		aa_lmg = 1
+		aa_cannon_1 = 1
+		aa_hmg = 1
+		engines_1 = 1
+		engines_2 = 1
+		early_bombs = 1
+		guided_bombs = 1
+		aircraft_construction = 1
+		survivability_studies = 1
+		iw_small_airframe = 1
+		basic_small_airframe = 1
+		improved_small_airframe = 1
+		iw_medium_airframe = 1
+		basic_medium_airframe = 1
+		iw_large_airframe = 1
+		basic_large_airframe = 1
+	}
+	else = {
+		set_air_oob = "USA_2020_air_legacy"
+		set_technology = {
+			CAS1 = 1
+			CAS2 = 1
+			cv_CAS1 = 1
+			cv_CAS2 = 1
+			fighter1 = 1
+			fighter2 = 1
+			fighter3 = 1
+			cv_fighter1 = 1
+			naval_bomber1 = 1
+			cv_naval_bomber1 = 1
+			cv_naval_bomber2 = 1
+			cv_naval_bomber3 = 1
+			strategic_bomber1 = 1
+			strategic_bomber2 = 1
+			tactical_bomber1 = 1
+			scout_plane1 = 1
+			transport_plane2 = 1
+		}
+	}
+}
+
+if = {
+	limit = {
+		has_dlc = "La Resistance"
+	}
+	create_intelligence_agency = yes
+}
+
+add_ideas = {
+	#National Spirits
+	USA_political_division
+	USA_the_trump_economy_idea
+	USA_america_first_idea
+	USA_political_establishment
+	USA_constitutional_protections
+	USA_medium_immigration_idea
+	USA_world_police_idea
+	USA_second_amendment_idea
+	#Ministers
+	USA_mike_pence_hog
+	USA_mike_pompeo_for
+	USA_steven_mnuchin_eco
+	USA_david_bernhardt_sec
+	USA_john_ratcliffe_int
+	USA_mark_esper_theorist
+	#Laws
+	mass_consumerism
+	higher_trade
+	low_taxes
+	lower_interest_rates
+	high_welfare
+	lower_conscription
+	high_female_service
+	high_supervision
+	higher_training
+	high_racial_integration
+	general_exemptions
+	higher_safety
+	medium_race
+	medium_female
+	high_prison
+	high_police
+	#Development
+	medium_society
+	higher_academic
+	higher_farming
+	higher_poverty
+	higher_industry
+	higher_military
+}
+
+#Events
+country_event = {
+	id = usa.1
+	days = 1
+}
+
+country_event = {
+	id = usa.80
+	days = 19
+}
+
+#country_event = {
+#	id = usa.161
+#	days = 307
+#}
+country_event = {
+	id = usa.123
+	days = 60
+}
+
+country_event = {
+	id = usa.78
+	days = 69
+}
+
+country_event = {
+	id = usa.124
+	days = 217
+}
+
+country_event = {
+	id = usa.119
+	days = 262
+}
+
+country_event = {
+	id = usa.89
+	days = 294
+}
+
+country_event = {
+	# haha green line go down
+	id = usa.167
+	days = 82
+}
+
+country_event = {
+	# PF membership grows
+	id = usa.169
+	days = 197
+}
+
+country_event = {
+	# NSM membership grows
+	id = usa.176
+	days = 207
+}
+
+country_event = {
+	# PF March in Washington
+	id = usa.177
+	days = 219
+}
+
+country_event = {
+	# Biden Gets the Nomination
+	id = usa.164
+	days = 232
+}
+
+country_event = {
+	# why is california always on fire
+	id = usa.168
+	days = 255
+}
+
+country_event = {
+	# GMAC Organizes
+	id = usa.181
+	days = 271
+}
+
+country_event = {
+	# DeBlasio Killed
+	id = usa.180
+	days = 292
+}
+
+country_event = {
+	# Wisconsin Papers Leaked
+	id = usa.165
+	days = 341
+}
+
+country_event = {
+	# Judge Rules in Favor of DNC
+	id = usa.179
+	days = 352
+}
+
+country_event = {
+	# Barbara Lee Joins PSL
+	id = usa.172
+	days = 357
+}
+
+country_event = {
+	# Very tense Thanksgiving ceremony in DC
+	id = usa.143
+	days = 330
+}
+
+country_event = {
+	# Very tense Christmas celebration in DC
+	id = usa.143
+	days = 359
+}
+
+country_event = {
+	# APLA Arms in Cali
+	id = usa.178
+	days = 392
+}
+
+country_event = {
+	#NYSE Bombing
+	id = usa.189
+	days = 410
+}
+
+country_event = {
+	#JDL Gets Popular
+	id = usa.212
+	days = 214
+}
+
+add_opinion_modifier = {
+	target = AST
+	modifier = ANZUS
+}
+
+add_opinion_modifier = {
+	target = AST
+	modifier = ANZUS_trade
+}
+
+add_opinion_modifier = {
+	target = AST
+	modifier = five_eyes_agreement
+}
+
+add_opinion_modifier = {
+	target = CAN
+	modifier = american_canadian_friendship
+}
+
+add_opinion_modifier = {
+	target = CAN
+	modifier = five_eyes_agreement
+}
+
+add_opinion_modifier = {
+	target = ENG
+	modifier = five_eyes_agreement
+}
+
+add_opinion_modifier = {
+	target = NZL
+	modifier = five_eyes_agreement
+}
+
+add_opinion_modifier = {
+	target = NZL
+	modifier = ANZUS
+}
+
+add_opinion_modifier = {
+	target = NZL
+	modifier = ANZUS_trade
+}
+
+add_opinion_modifier = {
+	target = PRC
+	modifier = chinese_american_rivalry
+}
+
+create_faction = NATO
+remove_faction_goal = faction_goal_the_atomic_race
+add_faction_goal = faction_goal_placeholder_long_term
+remove_faction_goal = faction_goal_a_military_base
+add_faction_goal = faction_goal_placeholder_medium_term
+add_faction_goal = faction_goal_placeholder_short_term
+add_to_faction = USA
+add_to_faction = BEL
+add_to_faction = CAN
+add_to_faction = CZE
+add_to_faction = DEN
+add_to_faction = FRA
+add_to_faction = GER
+add_to_faction = GRE
+add_to_faction = HUN
+add_to_faction = ICE
+add_to_faction = ITA
+add_to_faction = LUX
+add_to_faction = HOL
+add_to_faction = NOR
+add_to_faction = PLD
+add_to_faction = POR
+add_to_faction = SPR
+add_to_faction = TUR
+add_to_faction = ENG
+add_to_faction = BUL
+add_to_faction = EST
+add_to_faction = LAT
+add_to_faction = LIT
+add_to_faction = ROM
+add_to_faction = SLO
+add_to_faction = SLV
+add_to_faction = ALB
+add_to_faction = CRO
+add_to_faction = MNT
+add_to_faction = MAC
+add_to_faction = BRS
+USA = {
+	USA_add_to_nato = yes
+}
+
+# Mitteleuropa
+every_country = {
+	limit = {
+		is_in_faction_with = USA
+	}
+	USA_add_to_nato = yes
+}
+
+give_guarantee = AST
+give_guarantee = ISR
+give_guarantee = JAP
+give_guarantee = KOR
+give_guarantee = NZL
+give_guarantee = PLU
+give_guarantee = CHI
+give_guarantee = PHI
+recruit_character = USA_bernie_sanders_char
+recruit_character = USA_joe_biden_char
+recruit_character = USA_gloria_la_riva_char
+recruit_character = USA_donald_trump_char
+recruit_character = USA_peta_lindsey_char
+recruit_character = USA_richard_spencer_char
+recruit_character = USA_thomas_rousseau_char
+recruit_character = USA_valeria_wasserman_char
+recruit_character = USA_Burt_Colucci_char
+recruit_character = USA_james_n._mattis_char
+recruit_character = USA_john_hyten_char
+recruit_character = USA_joseph_lengyel_char
+recruit_character = USA_mark_milley_char
+recruit_character = USA_gustave_perna_char
+recruit_character = USA_james_mcconville_char
+recruit_character = USA_john_raymond_char
+recruit_character = USA_terrence_o_shaughnessy_char
+recruit_character = USA_tod_wolters_char
+recruit_character = USA_erik_kurilla_char
+recruit_character = USA_robert_b._abrams_char
+recruit_character = USA_andrew_p._poppas_char
+recruit_character = USA_christopher_g._cavoli_char
+recruit_character = USA_paul_nakasone_char
+recruit_character = USA_kenneth_tovo_char
+recruit_character = USA_robert_caslen_char
+recruit_character = USA_burke_whitman_char
+recruit_character = USA_charles_chiarotti_char
+recruit_character = USA_charles_luckey_char
+recruit_character = USA_craig_q._timberlake_char
+recruit_character = USA_david_ottignon_char
+recruit_character = USA_helen_pratt_char
+recruit_character = USA_paul_lacamera_char
+recruit_character = USA_kevin_b_schneider_char
+#	recruit_character = USA_david_goldfein_char
+recruit_character = USA_micheal_flynn_char
+recruit_character = USA_herbert_raymond_mcmaster_char
+recruit_character = USA_david_hillberry_berger_char
+recruit_character = USA_gary_thomas_char
+recruit_character = USA_troy_black_char
+recruit_character = USA_john_kelly_char
+recruit_character = USA_eric_m_smith_char
+recruit_character = USA_ben_hodges_char
+recruit_character = USA_scott_ogrady_char
+recruit_character = USA_karsten_heckl_char
+recruit_character = USA_micheal_m_gilday_char
+recruit_character = USA_james_kilby_char
+#recruit_character = USA_dee_mewbourne_char
+recruit_character = USA_christopher_grady_char
+#	recruit_character = USA_craig_blakely_char
+recruit_character = USA_brian_davies_char
+recruit_character = USA_bruce_lindsey_char
+#	recruit_character = USA_harry_harris_jr._char
+#	recruit_character = USA_michael_rogers_char
+#	recruit_character = USA_john_richardson_char
+#	recruit_character = USA_william_moran_char
+#	recruit_character = USA_james_caldwell_jr._char
+recruit_character = USA_philip_davidson_char
+#	recruit_character = USA_michelle_howard_char
+#	recruit_character = USA_scott_swift_char
+#	recruit_character = USA_paul_zukunft_char
+#	recruit_character = USA_charles_michel_char
+#	recruit_character = USA_james_o._ellis_char
+#	recruit_character = USA_dennis_c._blair_char
+#	recruit_character = USA_vernon_e._clark_char
+#	recruit_character = USA_thomas_b._fargo_char
+#	recruit_character = USA_charles_s._abbot_char
+recruit_character = USA_carlos_del_toro_char
+recruit_character = USA_lloyd_austin_char
+set_politics = {
+	last_election = "2016.11.3"
+	elections_allowed = yes
+	election_frequency = 48
+	ruling_party = conservative
+}
+
+set_popularities = {
+	social_liberal = 40
+	conservative = 42
+	market_liberal = 5
+	authoritarian_democrat = 1
+	social_democrat = 8
+	libertarian_socialist = 3
+	communist = 1
+}
+
+### VARIANTS ###
+# 2000 Start #
+if = {
+	limit = {
+		not = {
+			has_dlc = "Man the Guns"
+		}
+	}
+}
+
+if = {
+	limit = {
+		has_dlc = "Man the Guns"
+	}
+	## Frigates ##
+	create_equipment_variant = {
+		name = "Oliver Hazard Perry-class"
+		type = ship_hull_cruiser_2
+		parent_version = 0
+		modules = {
+			fixed_ship_battery_slot = ship_light_medium_battery_2
+			fixed_ship_anti_air_slot = ship_anti_air_1
+			fixed_ship_fire_control_system_slot = ship_fire_control_system_0
+			fixed_ship_radar_slot = empty
+			fixed_ship_engine_slot = cruiser_ship_engine_2
+			fixed_ship_armor_slot = ship_armor_cruiser_2
+			fixed_ship_secondaries_slot = ship_secondaries_1
+			front_1_custom_slot = ship_light_medium_battery_2
+			mid_1_custom_slot = ship_airplane_launcher_1
+			mid_2_custom_slot = ship_anti_air_1
+			rear_1_custom_slot = empty
+		}
+		obsolete = yes
+	}
+	## Destroyers ##
+	create_equipment_variant = {
+		name = "Arleigh Burke-class"
+		type = ship_hull_cruiser_3
+		parent_version = 0
+		modules = {
+			fixed_ship_battery_slot = ship_medium_battery_2
+			fixed_ship_anti_air_slot = ship_anti_air_1
+			fixed_ship_fire_control_system_slot = ship_fire_control_system_0
+			fixed_ship_radar_slot = ship_radar_1
+			fixed_ship_engine_slot = cruiser_ship_engine_2
+			fixed_ship_armor_slot = ship_armor_cruiser_2
+			mid_1_custom_slot = ship_airplane_launcher_1
+			mid_2_custom_slot = ship_anti_air_1
+			rear_1_custom_slot = ship_light_medium_battery_2
+		}
+	}
+	## Missile Cruisers ##
+	create_equipment_variant = {
+		name = "Ticonderoga-class"
+		type = ship_hull_heavy_2
+		parent_version = 0
+		modules = {
+			fixed_ship_battery_slot = ship_heavy_battery_1
+			fixed_ship_anti_air_slot = ship_anti_air_1
+			fixed_ship_fire_control_system_slot = ship_fire_control_system_0
+			fixed_ship_radar_slot = ship_radar_1
+			fixed_ship_engine_slot = heavy_ship_engine_1
+			fixed_ship_secondaries_slot = ship_secondaries_1
+			fixed_ship_armor_slot = ship_armor_bb_2
+			front_1_custom_slot = ship_anti_air_1
+			mid_1_custom_slot = ship_airplane_launcher_1
+			mid_2_custom_slot = ship_secondaries_1
+			rear_1_custom_slot = ship_heavy_battery_1
+		}
+	}
+	## Carriers ##
+	create_equipment_variant = {
+		name = "Nimitz-class"
+		type = ship_hull_carrier_1
+		parent_version = 0
+		modules = {
+			fixed_ship_deck_slot_1 = ship_deck_space
+			fixed_ship_deck_slot_2 = ship_deck_space
+			fixed_ship_anti_air_slot = ship_anti_air_1
+			fixed_ship_radar_slot = empty
+			fixed_ship_engine_slot = carrier_ship_engine_1
+			fixed_ship_secondaries_slot = empty
+			front_1_custom_slot = ship_deck_space
+		}
+	}
+	## Submarines ##
+	create_equipment_variant = {
+		#Low Grade
+		name = "Benjamin Franklin-class"
+		type = ship_hull_submarine_2
+		parent_version = 0
+		modules = {
+			fixed_ship_torpedo_slot = ship_torpedo_sub_1
+			fixed_ship_engine_slot = sub_ship_engine_2
+			rear_1_custom_slot = empty
+		}
+	}
+	create_equipment_variant = {
+		#Many Torpedoes
+		name = "Seawolf-class"
+		type = ship_hull_submarine_2
+		parent_version = 0
+		modules = {
+			fixed_ship_radar_slot = ship_sonar_1
+			mid_1_custom_slot = ship_radar_1
+			fixed_ship_torpedo_slot = ship_torpedo_sub_2
+			fixed_ship_engine_slot = sub_ship_engine_2
+			rear_1_custom_slot = ship_torpedo_sub_2
+		}
+	}
+	create_equipment_variant = {
+		#
+		name = "Los Angeles-class"
+		type = ship_hull_submarine_2
+		parent_version = 0
+		modules = {
+			fixed_ship_radar_slot = ship_radar_1
+			fixed_ship_torpedo_slot = ship_torpedo_sub_2
+			fixed_ship_engine_slot = sub_ship_engine_2
+			rear_1_custom_slot = ship_torpedo_sub_1
+		}
+	}
+	create_equipment_variant = {
+		#
+		name = "Ohio-class"
+		type = ship_hull_submarine_2
+		parent_version = 0
+		modules = {
+			fixed_ship_torpedo_slot = ship_torpedo_sub_1
+			fixed_ship_engine_slot = sub_ship_engine_2
+			rear_1_custom_slot = ship_torpedo_sub_2
+		}
+	}
+}
+
+if = {
+	limit = {
+		has_dlc = "No Step Back"
+	}
+	create_equipment_variant = {
+		name = "M1A2 Abrams"
+		type = modern_tank_chassis_1
+		parent_version = 0
+		modules = {
+			main_armament_slot = tank_high_velocity_cannon_2
+			turret_type_slot = tank_modern_tank_turret
+			suspension_type_slot = tank_torsion_bar_suspension
+			armor_type_slot = tank_cast_armor
+			engine_type_slot = tank_gas_turbine_engine
+			special_type_slot_1 = tank_radio_1
+			special_type_slot_2 = smoke_launchers
+			special_type_slot_3 = wet_ammo_storage
+			special_type_slot_4 = extra_ammo_storage
+		}
+		upgrades = {
+			tank_nsb_engine_upgrade = 9
+			tank_nsb_armor_upgrade = 4
+		}
+		icon = "gfx/interface/technologies/armor/MBT_2006_M1A2_Abrams.dds"
+	}
+	create_equipment_variant = {
+		name = "M1128 Stryker"
+		type = light_tank_chassis_1
+		parent_version = 0
+		modules = {
+			main_armament_slot = tank_small_cannon
+			turret_type_slot = tank_light_two_man_tank_turret
+			suspension_type_slot = tank_christie_suspension
+			armor_type_slot = tank_riveted_armor
+			engine_type_slot = tank_gasoline_engine
+			special_type_slot_1 = tank_radio_1
+			special_type_slot_2 = extra_ammo_storage
+			special_type_slot_3 = smoke_launchers
+			special_type_slot_4 = empty
+		}
+		upgrades = {
+			tank_nsb_engine_upgrade = 3
+			tank_nsb_armor_upgrade = 2
+		}
+		icon = "gfx/interface/technologies/armor/LT_2000_M1128_Stryker.dds"
+	}
+	create_equipment_variant = {
+		name = "LAV-25"
+		type = amphibious_tank_chassis_1
+		parent_version = 0
+		modules = {
+			main_armament_slot = tank_small_cannon
+			turret_type_slot = tank_light_two_man_tank_turret
+			suspension_type_slot = tank_christie_suspension
+			armor_type_slot = tank_riveted_armor
+			engine_type_slot = tank_gasoline_engine
+			special_type_slot_1 = tank_radio_1
+			special_type_slot_2 = smoke_launchers
+			special_type_slot_3 = empty
+			special_type_slot_4 = empty
+		}
+		upgrades = {
+			tank_nsb_engine_upgrade = 2
+			tank_nsb_armor_upgrade = 3
+		}
+		icon = "gfx/interface/technologies/armor/USA_amphibious_tank.png"
+	}
+}
+
+if = {
+	limit = {
+		has_dlc = "By Blood Alone"
+	}
+	create_equipment_variant = {
+		name = "MQ-9 Reaper"
+		type = medium_plane_airframe_1
+		modules = {
+			fixed_main_weapon_slot = aircraft_cannon_1_2x
+			fixed_auxiliary_weapon_slot_1 = light_mg_4x
+			fixed_auxiliary_weapon_slot_2 = empty
+			fixed_auxiliary_weapon_slot_3 = empty
+			engine_type_slot = engine_2_1x
+			special_type_slot_1 = lmg_defense_turret_2x
+			special_type_slot_2 = empty
+			special_type_slot_3 = empty
+		}
+		icon = "GFX_tactical_bomber2_medium"
+	}
+	create_equipment_variant = {
+		name = "F-15E"
+		type = small_plane_airframe_0
+		modules = {
+			fixed_main_weapon_slot = heavy_mg_4x
+			fixed_auxiliary_weapon_slot_1 = bomb_locks
+			fixed_auxiliary_weapon_slot_2 = light_mg_4x
+			engine_type_slot = engine_1_1x
+			special_type_slot_1 = empty
+		}
+		obsolete = yes
+		icon = "GFX_USA_fighter2_medium"
+	}
+	create_equipment_variant = {
+		name = "F-16/IQ"
+		type = small_plane_airframe_1
+		modules = {
+			fixed_main_weapon_slot = heavy_mg_4x
+			fixed_auxiliary_weapon_slot_1 = heavy_mg_4x
+			fixed_auxiliary_weapon_slot_2 = light_mg_4x
+			engine_type_slot = engine_2_1x
+			special_type_slot_1 = hmg_defense_turret
+		}
+		icon = "GFX_USA_fighter3_medium"
+	}
+	create_equipment_variant = {
+		name = "F-22 Raptor"
+		type = small_plane_airframe_2
+		modules = {
+			fixed_main_weapon_slot = heavy_mg_4x
+			fixed_auxiliary_weapon_slot_1 = heavy_mg_4x
+			fixed_auxiliary_weapon_slot_2 = heavy_mg_4x
+			fixed_auxiliary_weapon_slot_3 = light_mg_4x
+			engine_type_slot = engine_1_2x
+			special_type_slot_1 = hmg_defense_turret
+			special_type_slot_2 = lmg_defense_turret_2x
+			special_type_slot_3 = lmg_defense_turret_2x
+		}
+		icon = "GFX_USA_fighter4_medium"
+	}
+	create_equipment_variant = {
+		name = "F-35 Lightning II"
+		type = small_plane_airframe_2
+		modules = {
+			fixed_main_weapon_slot = heavy_mg_4x
+			fixed_auxiliary_weapon_slot_1 = heavy_mg_4x
+			fixed_auxiliary_weapon_slot_2 = heavy_mg_4x
+			fixed_auxiliary_weapon_slot_3 = light_mg_4x
+			fixed_auxiliary_weapon_slot_4 = heavy_mg_4x
+			engine_type_slot = engine_2_2x
+			special_type_slot_1 = hmg_defense_turret
+			special_type_slot_2 = bomb_sights_2
+			special_type_slot_3 = ai_targeting_computer_small
+		}
+		icon = "GFX_USA_fighter5_medium"
+	}
+	create_equipment_variant = {
+		name = "A-10 Warthog"
+		type = small_plane_cas_airframe_1
+		modules = {
+			fixed_main_weapon_slot = light_mg_4x
+			fixed_auxiliary_weapon_slot_1 = light_mg_4x
+			fixed_auxiliary_weapon_slot_2 = heavy_mg_4x
+			fixed_auxiliary_weapon_slot_3 = heavy_mg_4x
+			engine_type_slot = engine_2_1x
+			special_type_slot_1 = hmg_defense_turret
+			special_type_slot_2 = hmg_defense_turret
+		}
+		icon = "GFX_USA_CAS2_medium"
+	}
+	create_equipment_variant = {
+		name = "B-52"
+		type = large_plane_airframe_1
+		modules = {
+			fixed_main_weapon_slot = aircraft_cannon_1_2x
+			fixed_auxiliary_weapon_slot_1 = empty
+			fixed_auxiliary_weapon_slot_2 = empty
+			engine_type_slot = engine_1_6x
+			special_type_slot_1 = empty
+			special_type_slot_2 = empty
+			special_type_slot_3 = empty
+		}
+		icon = "GFX_USA_strategic_bomber1_medium"
+	}
+	create_equipment_variant = {
+		name = "B-1"
+		type = large_plane_airframe_1
+		modules = {
+			fixed_main_weapon_slot = aircraft_cannon_1_2x
+			fixed_auxiliary_weapon_slot_1 = empty
+			fixed_auxiliary_weapon_slot_2 = empty
+			engine_type_slot = engine_2_3x
+			special_type_slot_1 = empty
+			special_type_slot_2 = empty
+			special_type_slot_3 = bomb_sights_1
+		}
+		icon = "GFX_USA_strategic_bomber2_medium"
+	}
+	create_equipment_variant = {
+		name = "B-2"
+		type = large_plane_airframe_1
+		modules = {
+			fixed_main_weapon_slot = aircraft_cannon_1_2x
+			fixed_auxiliary_weapon_slot_1 = aircraft_cannon_1_2x
+			fixed_auxiliary_weapon_slot_2 = empty
+			engine_type_slot = engine_1_4x
+			special_type_slot_1 = empty
+			special_type_slot_2 = empty
+			special_type_slot_3 = empty
+		}
+		icon = "GFX_USA_strategic_bomber3_medium"
+	}
+}

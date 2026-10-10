@@ -1,0 +1,151 @@
+ideas = {
+	country = {
+		PHI_legacy_of_the_martial_law_idea = {
+			picture = PHI_legacy_of_martial_law
+		    traits = {
+		        ZZZ_blank_idea_trait
+		    }
+			allowed = {
+				always = no
+			}
+			allowed_civil_war = {
+				always = yes
+			}
+			modifier = {
+				political_power_gain = -0.05
+				social_liberal_drift = 0.02
+				social_democrat_drift = 0.04
+				nationalist_drift = -0.08
+			}
+		}
+		PHI_mutual_defence_treaty_idea = {
+			picture = PHI_MDT
+		    traits = {
+		        ZZZ_blank_idea_trait
+		    }
+		        allowed = {
+				always = no
+			}
+			allowed_civil_war = {
+				always = yes
+			}
+			modifier = {
+				army_attack_factor = 0.05
+				experience_gain_navy_unit = 0.05
+				naval_morale = 10
+				conscription_factor = -0.10
+			}
+		}
+		PHI_increasing_chinese_influence_idea = {
+			picture = PHI_increasing_chinese_influence
+		    traits = {
+		        ZZZ_blank_idea_trait
+		    }
+			allowed = {
+				always = no
+			}
+			allowed_civil_war = {
+				always = yes
+			}
+			cancel = {
+				OR = {
+					has_war_with = PRC
+					is_in_faction_with = JAP
+				}
+			}
+			modifier = {
+				stability_factor = -0.05
+				foreign_subversive_activites = 0.3
+			}
+		}
+		PHI_marcos_family_idea = {
+			picture = PHI_marcos_family
+		    traits = {
+		        ZZZ_blank_idea_trait
+		    }
+			allowed = {
+				always = no
+			}
+			allowed_civil_war = {
+				always = yes
+			}
+			cancel = {
+				NOT = {
+					OR = {
+						has_government = conservative
+						has_government = authoritarian_democrat
+					}
+				}
+			}
+			modifier = {
+				stability_factor = 0.05
+				conservative_drift = 0.08
+				political_power_gain = -0.15
+			}
+		}
+		PHI_man_of_destiny_idea = {
+			picture = PHI_man_of_destiny
+		    traits = {
+		        ZZZ_blank_idea_trait
+		    }
+			allowed = {
+				always = no
+			}
+			allowed_civil_war = {
+				always = yes
+			}
+			cancel = {
+				NOT = {
+					has_government = social_democrat
+				}
+			}
+			modifier = {
+				stability_factor = 0.05
+				social_democrat_drift = 0.02
+				war_support_factor = 0.05
+				political_power_gain = 0.1
+			}
+		}
+		MIN_strength_of_the_brave_idea = {
+			picture = MIN_strength_of_the_brave
+		    traits = {
+		        ZZZ_blank_idea_trait
+		    }
+			allowed = {
+				always = no
+			}
+			allowed_civil_war = {
+				always = yes
+			}
+			modifier = {
+				political_power_gain = -0.05
+				war_support_factor = 0.1
+				army_attack_factor = 0.1
+				army_defence_factor = 0.1
+				army_core_defence_factor = 0.05
+				surrender_limit = 0.1
+				social_democrat_drift = 0.02
+			}
+		}
+		NPA_weapon_of_the_people_idea = {
+			picture = NPA_weapon_of_the_people
+		    traits = {
+		        ZZZ_blank_idea_trait
+		    }
+			allowed = {
+				always = no
+			}
+			allowed_civil_war = {
+				always = yes
+			}
+			modifier = {
+				mobilization_speed = 0.01
+				army_morale_factor = 0.05
+				training_time_factor = -0.05
+				army_attack_factor = 0.1
+				army_defence_factor = 0.2
+				surrender_limit = 0.1
+			}
+		}
+	}
+}

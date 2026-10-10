@@ -1,47 +1,53 @@
 # TFR_CHEATSHEET.md - шпаргалка по коду TFR
 
 Справочник для автора и Claude: что делают эффекты, триггеры и модификаторы именно TFR (не ванильные), с примерами и масштабами величин.
-Составлен 03.10.2026 по `_reference/` и по оригинальным TFR-файлам в репозитории (`TFR_*_UKR*`, `common/scripted_triggers/*TFR*`, игровые тексты `ABT_MONEY_*` в локализации). **Дополнен 04.10.2026** по расширенному набору референсов: законы, идеологии, дерево каждой России, фокусы Германии и Франции, черты, категории решений. Таблицы «что вообще существует в TFR» (законы, подидеологии, черты, модификаторы, здания) вынесены в **`TFR_CATALOG.md`** (генерируется `python3 _tools/build_catalog.py`); здесь - правила, рецепты и выводы. Дополнять по ходу работы.
+Первая версия составлена 03.10.2026 по ограниченному набору референсов; **10.10.2026 переписана по полному референсу TFR** (`_reference/TFR_Reference/`, версия `v1.2025.0b`): определения эффектов теперь видны, пометки (реф) заменяются на (код) там, где проверено. Таблицы «что вообще существует в TFR» (законы, подидеологии, черты, модификаторы, здания) - в **`TFR_CATALOG.md`** (генерируется `python3 _tools/build_catalog.py`); здесь - правила, рецепты и выводы.
+
+**Парные документы (10.10.2026), где разобрано по коду TFR подробно:**
+- `TFR_UKRAINE_HOOKS.md` - все крючки TFR на Украину (старт, падение городов, запуск и завершение войны, капитуляция и раздел, контракт `UKR_*`);
+- `TFR_ENGINE.md` - движок: бюджет, развитие, типы экономики и государства, `on_actions`, отношения, влияние, правила игры, defines;
+- `TFR_POLITICS.md` - партии, популярность, коалиции, выборы;
+- `TFR_INTERFACE.md` - локализация, форматирование, иконки, картинки, окна;
+- `TFR_SYNC.md` - где наши копии файлов TFR разошлись с оригиналами.
 
 ## 0. Как читать
 
 **Источник каждого утверждения:**
 - **(код)** — прочитано в оригинальном коде TFR, лежащем в репозитории. Самый надёжный источник.
-- **(реф)** — выведено из того, как это использует SOV в `_reference/`. Надёжно по смыслу, но определения эффекта мы не видим.
+- **(реф)** — выведено из того, как это использует SOV (первая версия документа, 03-04.10.2026), до появления полного референса. Надёжно по смыслу; где возможно, уже перепроверено по определению (код); не перепроверенное остаётся (реф).
 - **(автор)** — сказано автором.
 - **[ПРОВЕРИТЬ]** — гипотеза, нужна сверка с игрой или кодом TFR.
 
-**Главное ограничение.** Определения TFR-эффектов (`add_income`, `add_society_development`, `change_economy_type_*` и т. д.) лежат в `common/scripted_effects/` самого TFR. В репозитории их **нет**, мы видим только их использование. В репозитории лежат лишь TFR-скриптовые **триггеры** (`common/scripted_triggers/`), и они раскрывают, как устроены переменные под эффектами.
+**Что видно теперь.** В референсе есть определения TFR-эффектов (`common/scripted_effects/`: `add_income`, `add_society_development`, `change_economy_type_*` и т. д.), `on_actions`, события всех пространств имён (`russia`, `ukraine`, `news`, `nato`, `germany`...), локализация на пяти языках, `defines` и правила игры. Опираться нужно на них, а не на догадки по применению. После удаления папки `_reference/` остаётся индекс имён `_tools/tfr_index/` (события, фокусы, спрайты, идеи, динамические модификаторы, подидеологии, черты, типы государства и экономики) и документы выше.
 
 **Шкалы:** `add_stability`, `add_war_support`, `add_popularity` — доли (0.05 = 5 %). `add_political_power` — очки (25–100). Деньги — **миллиарды** (см. раздел 1).
 
-### Карта `_reference/` (на 04.10.2026)
+### Карта `_reference/TFR_Reference/` (на 10.10.2026)
 
-Все файлы начинаются с `_reference` (папка в игру не грузится), всего около 200 тыс. строк. Имена ниже даны без префикса `_referenceTFR_` / `_reference00_TFR_`.
+7143 файла: `common` (2146), `events` (125), `history` (3172), `interface` (330, только описания), `localisation` (1077, 5 языков), `map` (290), `portraits` (3). Картинок нет. Пустые `.txt` (213) - сознательные заглушки TFR поверх ванильных файлов.
 
-| Файл | Что внутри |
+| Что нужно | Папка и файлы |
 |---|---|
-| `national_focus_SOV.txt` | дерево Путина/ЕР (80 фокусов, `SOV_declare_smo`) и 5 общих `shared_focus` |
-| `national_focus_SOV_medvedev.txt` | дерево Медведева/ЕР (654 фокуса, `SOV_address_the_nation`) |
-| `national_focus_SOV_communist_new.txt` | КПРФ, id `SOV_communist` (327) |
-| `national_focus_SOV_fascist.txt` | ЛДПР, id `SOV_ldpr_gaming` (449) |
-| `national_focus_SOV_dugin.txt`, `_wagner.txt`, `_navalny.txt` | Дугин (69), Вагнер (47), Навальный (9, плюс 71 в войне НАТО) |
-| `national_focus_GER.txt`, `_FRA.txt` | Германия (163), Франция (205): образцы «полного» контента не-SOV страны |
-| `decisions_SOV.txt`, `decision_categories_SOV.txt` | 1148 решений в 53 категориях; 58 описаний категорий |
-| `ideas_SOV.txt` | 2095 идей (духи, министры, скрытые) |
-| `characters_SOV.txt` | 255 персонажей (портреты, роли) |
-| `ideologies.txt` | 11 идеологий и 180 подидеологий |
-| `laws_{economic,manpower,social,development}.txt` (`_reference00_TFR_laws_*`) | законы, 24 слота |
-| `traits_*` (9 файлов) | черты: глава государства, правительство, экономика, МИД, МВД, разведка, военные, компании, идеологии |
-| `idea_tags.txt` | `idea_categories`: слоты министров, законов, развития, армейские слоты |
-| `buildings.txt`, `01_landmark_buildings.txt` | типы зданий |
-| `generic_leader_abilities.txt` | способности лидеров |
+| деревья фокусов | `common/national_focus/` (60 файлов, 59 деревьев; общее дерево остальных стран - `generic_focus`): `SOV`, `SOV_medvedev`, `SOV_communist_new` (КПРФ), `SOV_fascist` (ЛДПР), `SOV_dugin`, `SOV_wagner`, `SOV_navalny`, `GER`, `FRA`, `USA`, `JAP`, `PRC`, ... **деревьев BLR, POL, UKR в TFR нет** |
+| эффекты | `common/scripted_effects/` (38 файлов, 854 эффекта): ядро `00_TFR_scripted_effects_ZZZ_generic.txt`, популярность `..._popularity.txt`, влияние `..._influence.txt`, итоги войн `TFR_scripted_effects_SOV.txt` |
+| триггеры | `common/scripted_triggers/` (общие в `00_TFR_scripted_triggers_ZZZ_generic.txt`) |
+| крючки | `common/on_actions/` (35 файлов); `00_..._startup.txt`, `TFR_on_actions_ZZZ.txt`, `TFR_on_actions_ZZZ_peace.txt` |
+| события | `events/TFR_events_<ТЕГ>.txt`, `TFR_events_ZZZ_*.txt` (`news`, `NATO`, `political`, `generic`) |
+| решения и категории | `common/decisions/` (74), `common/decisions/categories/` |
+| идеи, законы | `common/ideas/` (151): страновые `TFR_ideas_<ТЕГ>.txt`, законы `00_TFR_laws_{economic,manpower,social,development}.txt`, общие `TFR_ideas_ZZZ_generic.txt` |
+| персонажи | `common/characters/` (145 файлов), `history/countries/` (612) |
+| идеологии, черты | `common/ideologies/TFR_ideologies.txt`, `common/country_leader/TFR_traits_*.txt` (+ `00_traits.txt`) |
+| способности лидеров, здания, теги идей | `common/abilities/TFR_generic_leader_abilities.txt`, `common/buildings/`, `common/idea_tags/TFR_idea_tags.txt` |
+| баланс сил | `common/bop/` (`TFR_bop_SOV.txt`, `GER`, `USA` ...) |
+| экономические модификаторы | `common/modifier_definitions/00_TFR_economic_modifiers_definition.txt`, `common/dynamic_modifiers/` |
+| правила игры | `common/game_rules/00_game_rules.txt` |
+| отношения | `common/opinion_modifiers/` (21 файл), `common/scripted_diplomatic_actions/` |
+| ИИ | `common/ai_strategy/`, `common/ai_templates/`, `common/ai_strategy_plans/` |
+| defines | `common/defines/TFR_defines_changes.lua` |
+| интерфейс | `interface/*.gfx`, `*.gui`; сценарии окон `common/scripted_guis/` |
+| области | `history/states/` (названия в локализации `STATE_<id>`, не в имени файла) |
 
-**Нет в рабочей копии, но лежит в истории git** (удалены в коммите «Ref_new», последний коммит с ними `bc699df`): `events_SOV` (49 тыс. строк, события `russia.*` и `russiaflavor.*`), `scripted_effects_SOV`, `bop_SOV`, `traits_april`. Достать: `git show bc699df:_reference/Reference_TFR_events_SOV.txt > /tmp/x.txt`. Пометка **(реф-события)** ниже означает, что вывод сделан по ним.
-
-**Чего референсы не показывают вообще:** определения scripted effects (`add_income`, `add_society_development`, `focus_unlock` и т. д. - видно только применение); `on_actions` TFR (поэтому неизвестно, кто вызывает `russia.76` и `ukraine.13`); события других пространств имён (`ukraine.*` оригинала, `news.*`, `nato.*`, `germany.*`, `france.*`); локализацию TFR (тексты тултипов вроде `change_economic_law_tooltip` не видны, смысл по названию [ПРОВЕРИТЬ]).
-
-**Как искать аналог перед тем, как писать механику:** `grep -rn "ключевое_слово" _reference/` (эффект, флаг, идея), затем смотреть окружение найденного блока. Для структуры «как TFR делает N» самые полезные деревья - `GER` (полная не-российская страна, кабинеты, партии, ЕС) и `SOV_medvedev` (самое большое).
+**Как искать аналог перед тем, как писать механику:** `grep -rn "ключевое_слово" _reference/TFR_Reference/` (эффект, флаг, идея); после удаления референса - `grep -i "слово" _tools/tfr_index/*.txt` (только имена). Затем смотреть окружение найденного блока. Для структуры «как TFR делает N» самые полезные деревья - `GER` (полная не-российская страна, кабинеты, партии, ЕС) и `SOV_medvedev` (самое большое).
 
 ---
 
@@ -252,7 +258,7 @@ end_ruling_party_wings = yes      # убрать все крылья
 
 **Триггеры коалиции (код):** `is_in_coalition_with_<идеология> = yes`, где идеология из списка 11 (каждый ставит `coalition_target` и проверяет страновую переменную `is_in_coalition_with_<идеология>`); `is_in_coalition = yes` — есть любая. Общий вариант: `set_temp_variable = { coalition_target = token:X }` + `has_coalition_with_target = yes`.
 
-### 4.4. Тип государства и экономики (реф + реф-события; полный список по всем референсам, 04.10.2026)
+### 4.4. Тип государства и экономики (код; определения в `00_TFR_scripted_effects_ZZZ_generic.txt`, механика - `TFR_ENGINE.md`, 1.6)
 
 Эффекты вида `change_government_type_<X> = yes` / `change_economy_type_<X> = yes`.
 
@@ -260,7 +266,8 @@ end_ruling_party_wings = yes      # убрать все крылья
 
 **Тип экономики (15):** `welfare_capitalism` (12; Германия и Франция), `capitalism` (8), `socialist_market` (7), `mixed_economy` (5), `planned_economy` (5), `state_capitalism` (5), `left_corporatism` (4), `command_economy` (4), `oligopolistic_capitalism` (3), `military_controlled` (3), `worker_controlled` (2), `corporatism` (2), `liberal_corporatism` (1), `minarchism` (1), `developed_socialism` (1).
 
-- Запомнить/вернуть: `get_current_government_type = yes` + `restore_previous_government_type = yes`.
+- Полный список по определениям: **31 тип государства и 25 типов экономики** (`_tools/tfr_index/gov_types.txt`, `econ_types.txt`); каждый - идея `ZZZ_<тип>`, смена = снять все и добавить одну (`TFR_ENGINE.md`, 1.6).
+- Запомнить/вернуть: `get_current_government_type = yes` + `restore_previous_government_type = yes` сохраняют и возвращают не идею типа, а **политическое состояние**: правящую группу, 11 популярностей, коалицию, признак выборов и статус подчинения (`TFR_ENGINE.md`, 1.6).
 - Контексты в TFR: `liberal_corporatism` - дерево Медведева, фокус `SOV_state_corporations_liberalization` (линия Надеждина, «либерализация госкорпораций»; подмена идеи `SOV_nadezhdin_economy_*`, динамический модификатор); `worker_controlled` - «экономическая демократия» (`SOV_a_new_economy`, `SOV_adl_model_economy`, идея `SOV_new_socialist_economy_idea`); `minarchism` - ветка Навального; `capitalism` - либеральная линия ЕР; `corporatism` - ЛДПР и ЕР; `command_economy` - Дугин и «статистская модель»; `developed_socialism` - «брежневская» линия КПРФ.
 - **Закрыто: TD-21.** `change_economy_type_liberal_corporatism` существует в TFR, наша обёртка `UKR_set_liberal_corporatism_economy` названа правильно.
 - **TD-18 (закрыт 04.10.2026).** «Кооперативной экономики» под таким названием в референсах нет. По смыслу (рабочий контроль, экономическая демократия, кооперативы) ближе всего `worker_controlled`; сейчас `UKR_set_cooperative_economy` ставит `socialist_market`. Решение автора: ставим `worker_controlled`, исходная гипотеза записана комментарием в обёртке.
@@ -496,7 +503,7 @@ TFR-специфичные семейства ключей, которых не�
 - `usual_oligarch_influence_monthly`, `oligarch_influence_monthly`, `red_directors_influence_monthly`, `peoples_entrepreneurs_influence_monthly` - внутренние шкалы России, нам не нужны;
 - `disabled_ideas = 1` (SOV: блокирует слот идей в кризисных духах).
 
-**Вид идеи (реф, 2095 идей).** Типовой дух: `allowed`, `traits = { ZZZ_blank_idea_trait }` (1660 из 1702 «country»-идей SOV; в оригинальной `TFR_ideas_UKR.txt` только 2 из примерно 146 - то есть для работы не обязателен, смысл (вероятно, косметика окна) [ПРОВЕРИТЬ]), `picture`, `removal_cost = -1` (1593), `allowed_civil_war` (1094; у нас везде `always = yes`), `modifier`, иногда `targeted_modifier` (66), `on_add`/`on_remove` (5/62), `visible`/`available` (285/171), `equipment_bonus`, `research_bonus`. Категории: `country` 1702, `hidden_ideas` 108 (скрытые бонусы ИИ вроде `SOV_russia_can_win`), `head_minister` 84, `economic_minister` 59, `interior_minister` 52, `foreign_minister` 38, `intelligence_minister` 27, `theorist_minister` 23.
+**Вид идеи (реф, 2095 идей).** Типовой дух: `allowed`, `traits = { ZZZ_blank_idea_trait }` (1660 из 1702 «country»-идей SOV и **все 29 идей оригинальной `TFR_ideas_UKR.txt`**; смысл установлен по коду: эффект `remove_all_national_spirits` снимает `remove_ideas_with_trait = ZZZ_blank_idea_trait`, то есть черта отмечает идеи, которые сбрасываются при полном «перерождении» страны; у Украины этот эффект не вызывается, поэтому наши идеи без черты не ломаются; см. `TFR_SYNC.md`, раздел 3), `picture`, `removal_cost = -1` (1593), `allowed_civil_war` (1094; у нас везде `always = yes`), `modifier`, иногда `targeted_modifier` (66), `on_add`/`on_remove` (5/62), `visible`/`available` (285/171), `equipment_bonus`, `research_bonus`. Категории: `country` 1702, `hidden_ideas` 108 (скрытые бонусы ИИ вроде `SOV_russia_can_win`), `head_minister` 84, `economic_minister` 59, `interior_minister` 52, `foreign_minister` 38, `intelligence_minister` 27, `theorist_minister` 23.
 
 ---
 
@@ -543,11 +550,11 @@ TFR-специфичные семейства ключей, которых не�
 | `ukraine.17` | дерево Дугина, фокус `SOV_the_eurasian_people_shall_bow_no_longer` | через 10-15 дней |
 | `ukraine.8`, `ukraine.9`, `ukraine.15`, `ukraine.19` | дерево Дугина, фокус `SOV_march_on_the_west` | через 8, 10, 15, 12 дней |
 
-`ukraine.13` (выборы 2024) в референсах **не вызывается нигде** - TD-17 остаётся открытым; значит вызов сидит в `on_actions` или в файлах других стран мода. `russia.76` («переворот Залужного») в референсе события определён, но не вызывается нигде: это `is_triggered_only`, условие в самом событии только `UKR = { NOT = { is_puppet_of = SOV } exists = yes }`, а шанс около 30% и сам вызов - в `on_actions`/скриптах вне референсов (TD-01).
+**Закрыто 10.10.2026 по полному референсу:** `ukraine.13` (выборы 2024) вызывает `00_TFR_on_actions_ZZZ_startup.txt` (`on_startup`) **дважды**: через 1300 дней (около 24.07.2023) и через 1551 (31.03.2024); срабатывает ранний вызов (`fire_only_once`) - см. `TFR_UKRAINE_HOOKS.md`, 3. `russia.76` («переворот Залужного») вызывает `TFR_on_actions_ZZZ.txt`, блок `on_state_control_changed` «Kiev»: 30% при падении Киева в Первой европейской войне (`random_list` 70/30 с `news.230`), `TFR_UKRAINE_HOOKS.md`, 4.
 
 ---
 
-## 11. Способности лидеров (`_reference/_referenceTFR_generic_leader_abilities.txt`)
+## 11. Способности лидеров (`common/abilities/TFR_generic_leader_abilities.txt`)
 
 Файл: `common/abilities/`; формат ванильный, TFR добавляет флаги и страновые варианты.
 
@@ -628,7 +635,7 @@ TFR-специфичные семейства ключей, которых не�
 15. **Путать слоты `economy` (экономическая мобилизация) и `mobilization_laws` (призыв).** Они разные.
 16. **`load_focus_tree` без `keep_completed`** теряет пройденные фокусы, которых нет в новом дереве. У нас везде `keep_completed = yes`.
 17. **`SOV_declare_smo` как образец запуска войны.** Это ловушка (раздел 13.2); образец - `SOV_address_the_nation`.
-18. **`add_ideas` без `traits = { ZZZ_blank_idea_trait }`.** В оригинале UKR его нет почти ни у одной идеи, так что отсутствие не ошибка; не добавлять «для порядка».
+18. **`traits = { ZZZ_blank_idea_trait }` у идей.** В оригинале TFR он есть у всех страновых духов; черта нужна только эффекту `remove_all_national_spirits` (полный сброс страны). У нас он не вызывается, поэтому не добавлять «для порядка», но и не считать, что в TFR его нет.
 
 ---
 
@@ -685,7 +692,41 @@ completion_reward = {
 }
 ```
 
-**Расчёт долей в тексте события** - как в `ukraine_politics.205`: `[?UKR_r1_zel|0]` (число без имени переменной; в игре ещё не проверено, `HANDOFF.md`, п. 8).
+**Расчёт долей в тексте события** - как в `ukraine_politics.205`: `[?UKR_r1_zel|0]` (число без имени переменной; в игре ещё не проверено, `HANDOFF.md`, п. 8). Формат вывода переменных - `TFR_INTERFACE.md`, 1.2.
+
+**Коалиция Слуг народа с «За будущее» (2023) и её распад** (код: `00_TFR_scripted_effects_ZZZ_popularity.txt`; прирост политсилы = популярность правящей + 0.5 × коалиции + 0.9 × крыльев, `TFR_POLITICS.md`, 2.2-3):
+```
+set_temp_variable = { coalition_partner_var_temp = token:market_liberal }
+add_to_coalition = yes
+# ... позже, при распаде:
+set_temp_variable = { coalition_partner_var_temp = token:market_liberal }
+remove_from_coalition = yes
+```
+
+**Ступень закона развития или экономики без разговоров о тултипах** (код: `TFR_ENGINE.md`, 1.4):
+```
+set_temp_variable = { industrial_development_var_temp = 0.25 }
+add_industrial_development = yes     # шкала [-1; 1], при +1 шаг лестницы и попап generic.10/12
+```
+
+**Коронавирус по стандартной лестнице TFR** (код: `TFR_ENGINE.md`, 2): `increase_corona = yes` / `decrease_corona = yes` меняют идеи `lower_covid_cases ... higher_covid_cases`; проверка `generic_has_corona = yes`.
+
+**Модификатор отношений между странами** (код: `common/opinion_modifiers/*.txt`, список в `TFR_ENGINE.md`, 3):
+```
+add_opinion_modifier = { target = POL modifier = military_aid }      # +20, распад 0.25/день
+POL = { add_opinion_modifier = { target = UKR modifier = took_stand_for_us } }
+# условие согласия: has_opinion = { target = UKR value > 40 }
+```
+
+**Свой крючок на капитуляцию Украины** (код: `TFR_UKRAINE_HOOKS.md`, 6): в `common/on_actions/TFR_on_actions_UKR.txt`
+```
+on_capitulation = {
+	effect = {
+		if = { limit = { tag = UKR } country_event = { id = ukraine_politics.XXX days = 1 } }   # событие придёт после решения TFR
+	}
+}
+```
+Не менять `TFR_on_actions_ZZZ_peace.txt`; читать итог по флагам и косметическим тегам TFR (`UKR_has_not_capitulated`, `UKR_rus`, `UKR_rus_malorossiya`, `UKR_zhir`, `UKR_euro*`, `UKR_cossack`) [ПРОВЕРИТЬ порядок выполнения в игре].
 
 ---
 
@@ -700,6 +741,11 @@ completion_reward = {
 | Какое здание можно строить | `TFR_CATALOG.md`, раздел 7; здесь 15 |
 | Сколько давать за фокус | здесь 8.6 |
 | Как запускается война | здесь 13.2 |
-| Как TFR строит полное дерево страны | `_reference/_referenceTFR_national_focus_GER.txt`, `..._FRA.txt` |
-| Как строится многопартийная система (Бундестаг, ЕС) | `GER`: эффекты `GER_add_*` (определений нет, видно только применение) |
-| Как сделать окно решений с числами | `decision_categories_SOV` (`scripted_gui`) и наш `common/scripted_guis/UKR_war_mood_gui.txt` |
+| Как TFR строит полное дерево страны | `_reference/TFR_Reference/common/national_focus/TFR_national_focus_GER.txt`, `..._FRA.txt` |
+| Как строится многопартийная система (Бундестаг, ЕС) | `GER`: эффекты `GER_add_*` в `common/scripted_effects/TFR_scripted_effects_GER.txt` (4881 строка), триггеры `GER_has_*_support_*` в `TFR_scripted_triggers_GER.txt`, окно - `TFR_scripted_guis_GER.txt` |
+| Как сделать окно решений с числами | `decision_categories_SOV` (`scripted_gui`) и наш `common/scripted_guis/UKR_war_mood_gui.txt`; каркас - `TFR_INTERFACE.md`, 4 |
+| Что TFR делает с Украиной | `TFR_UKRAINE_HOOKS.md` |
+| Как считается бюджет, развитие, типы экономики и государства | `TFR_ENGINE.md` |
+| Популярность, коалиции, выборы | `TFR_POLITICS.md` |
+| Форматирование текста, иконки, готовые картинки событий | `TFR_INTERFACE.md` |
+| Чем наши копии файлов TFR отличаются от оригиналов | `TFR_SYNC.md`, `python3 _tools/tfr_drift.py` |

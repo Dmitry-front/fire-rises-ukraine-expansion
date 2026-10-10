@@ -1,0 +1,251 @@
+﻿add_namespace = nrtsrn
+
+#Unification request
+country_event = {
+	id = nrtsrn.1
+	title = {
+		text = nrtsrn.1.n.t
+		trigger = {
+			tag = NRT
+		}
+	}
+	title = {
+		text = nrtsrn.1.s.t
+		trigger = {
+			tag = SRN
+		}
+	}
+	desc = {
+		text = nrtsrn.1.n.d
+		trigger = {
+			tag = NRT
+		}
+	}
+	desc = {
+		text = nrtsrn.1.s.t
+		trigger = {
+			tag = SRN
+		}
+	}
+	picture = GFX_report_event_political_deal
+	
+	fire_only_once = no
+	is_triggered_only = yes
+	
+	option = {
+		name = nrtsrn.1.a2
+		FROM = {
+			annex_country = { target = ROOT transfer_troops = yes }
+			complete_national_focus = NRT_SRN_fuck_it_one_stuggle 
+		}
+	}
+	option = {
+		name = nrtsrn.1.a3
+		FROM = {
+			country_event = {
+				id = nrtsrn.2
+				days = 1
+			}
+		}
+	}
+	option = {   #Disagree
+		name = nrtsrn.1.b
+		FROM = {
+			complete_national_focus = NRT_SRN_dont_give_up_on_our_rivalry
+		}
+	}
+}
+country_event = {
+	id = nrtsrn.2
+	title = nrtsrn.2.t
+	desc = nrtsrn.2.d
+	picture = GFX_report_event_political_deal
+	
+	fire_only_once = yes
+	is_triggered_only = yes
+	
+	option = {
+		name = nrtsrn.1.a
+		FROM = {
+			annex_country = { target = ROOT transfer_troops = yes }
+			complete_national_focus = NRT_SRN_fuck_it_one_stuggle 
+		}
+	}
+	option = {
+		name = nrtsrn.1.b
+		complete_national_focus = NRT_SRN_dont_give_up_on_our_rivalry
+		FROM = {
+			country_event = {
+				id = nrtsrn.3
+				days = 1
+			}
+		}
+	}
+}
+country_event = {
+	id = nrtsrn.3
+	title = nrtsrn.3.t
+	desc = nrtsrn.3.d
+	picture = GFX_report_event_political_deal
+	
+	fire_only_once = yes
+	is_triggered_only = yes
+	immediate = {
+		complete_national_focus = NRT_SRN_dont_give_up_on_our_rivalry
+	}
+	option = {
+		name = nrtsrn.3.a
+	}
+}
+country_event = {
+	id = nrtsrn.4
+	title = nrtsrn.4.t
+	desc = nrtsrn.4.d
+	picture = GFX_report_event_political_deal
+	
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = {
+		name = nrtsrn.4.a
+		add_equipment_to_stockpile = {
+			type = infantry_equipment_1
+			amount = -5000
+		}
+		FROM = {
+			country_event = { id = nrtsrn.5 days = 1 }
+		}
+	}
+	option = {
+		name = nrtsrn.4.b
+		FROM = {
+			country_event = { id = nrtsrn.3 days = 1 }
+		}
+	}
+}
+country_event = {
+	id = nrtsrn.5
+	title = nrtsrn.5.t
+	desc = nrtsrn.5.d
+	picture = GFX_report_event_political_deal
+	
+	immediate = {
+		add_equipment_to_stockpile = {
+			type = infantry_equipment_1
+			amount = 5000
+			producer = MEX
+		}
+	}
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = {
+		name = nrtsrn.5.a
+	}
+}
+country_event = {
+	id = nrtsrn.6
+	title = nrtsrn.6.t
+	desc = nrtsrn.6.d
+	picture = GFX_report_event_political_deal
+
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = {
+		name = nrtsrn.6.a
+		if = {
+		limit = {
+			tag = SRN
+		}
+		NRT = {
+			transfer_state = 950
+			transfer_state = 949
+			transfer_state = 941
+			transfer_state = 932
+			declare_war_on = {
+				target = SRN
+				type = annex_everything
+			}
+		}
+		}
+		if = {
+		limit = {
+			tag = NRT
+		}
+		SRN = {
+			transfer_state = 945
+			transfer_state = 930
+			transfer_state = 952
+			transfer_state = 951
+			declare_war_on = {
+				target = NRT
+				type = annex_everything
+			}
+		}
+		}
+	}
+	option = {
+		name = nrtsrn.6.b 
+		if = {
+		limit = {
+			tag = SRN
+		}
+		NRT = {
+			transfer_state = 378
+			transfer_state = 1089
+			transfer_state = 948
+			transfer_state = 950
+			transfer_state = 947
+			transfer_state = 942
+			transfer_state = 941
+			SRN = {
+				puppet = NRT
+			}
+		}
+		}
+		if = {
+		limit = {
+			tag = NRT
+		}
+		SRN = {
+			transfer_state = 951
+			transfer_state = 946
+			transfer_state = 952
+			transfer_state = 930
+			transfer_state = 945
+			transfer_state = 944
+			NRT = {
+				puppet = SRN
+			}
+		}
+		}
+	}
+	option = {
+		name = nrtsrn.6.c 
+		if = {
+		limit = {
+			tag = SRN
+		}
+		NRT = {
+			transfer_state = 378
+			transfer_state = 1089
+			transfer_state = 948
+			transfer_state = 950
+			transfer_state = 947
+			transfer_state = 942
+			transfer_state = 941
+		}
+		}
+		if = {
+		limit = {
+			tag = NRT
+		}
+		SRN = {
+			transfer_state = 951
+			transfer_state = 946
+			transfer_state = 952
+			transfer_state = 930
+			transfer_state = 945
+			transfer_state = 944
+		}
+		}
+	}
+}

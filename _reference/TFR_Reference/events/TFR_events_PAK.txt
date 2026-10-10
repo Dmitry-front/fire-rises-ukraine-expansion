@@ -1,0 +1,829 @@
+﻿add_namespace = PAK
+
+#Pakistan dies
+country_event = {
+	id = PAK.1
+	title = PAK.1.t
+	desc = PAK.1.d
+	
+	is_triggered_only = yes
+
+	immediate = {
+		hidden_effect = {
+		}
+	}
+	
+	option = {
+		name = PAK.1.a
+		add_ideas = PAK_legitimate_government
+
+		BAL = { 
+			add_state_core = 1322
+			add_state_core = 444
+			transfer_state = 1322
+			transfer_state = 444
+			load_oob = "BAL_civil_war"
+			white_peace = {
+				tag = PAK
+			}
+			add_ideas = RAJ_disorganised_forces
+		}
+
+		ISK = { 
+			add_state_core = 1322
+			add_state_core = 444
+			add_state_core = 443
+			add_state_core = 1324
+			add_state_core = 445
+			add_state_core = 1323
+			add_state_core = 440
+			add_state_core = 442
+			add_state_core = 1321
+			add_state_core = 787
+			add_state_core = 1132
+			transfer_state = 1321
+			load_oob = "ISK_civil_war"
+			add_ideas = RAJ_disorganised_forces
+		}
+
+		TLP = { 
+			add_state_core = 445
+			add_state_core = 1323
+			add_state_core = 442
+			add_state_core = 1321
+			add_state_core = 787
+			transfer_state = 1323
+			load_oob = "TLP_civil_war"
+			add_ideas = RAJ_disorganised_forces
+		}
+
+	}
+}
+
+
+country_event = {
+	id = PAK.2
+	title = PAK.2.t
+	desc = PAK.2.d
+	
+	is_triggered_only = yes
+	
+	immediate = {
+	}
+	
+	option = {
+		name = PAK.2
+	}
+}
+
+country_event = {
+	id = PAK.3
+	title = PAK.3.t
+	desc = PAK.3.d
+	
+	is_triggered_only = yes
+
+	immediate = {
+	}
+
+	option = {
+		name = PAK.3.a
+		hidden_effect = {
+			news_event = {
+				id = PAK.7
+			}
+
+			RAJ = {
+				add_ideas = RAJ_clash_of_the_millions
+				#puppet = SND
+				
+				country_event = {
+					id = RAJ.4
+					days = 50
+				}
+			}
+
+			#SND = { 
+			#	add_state_core = 443
+			#	add_state_core = 1324
+			#	transfer_state = 443
+			#	load_oob = "SND_civil_war"
+			#}
+
+			SND = { 
+				set_politics = {
+					ruling_party = social_democrat
+					elections_allowed = yes
+				}
+				set_popularities = {
+					fascist = 10
+					conservative = 25
+					market_liberal = 10
+					social_liberal = 20
+					social_democrat = 35
+				}
+			}
+
+			HUL = { 
+				add_state_core = 441
+				add_state_core = 1131
+				transfer_state = 441
+				load_oob = "HUL_Pakistan_India_war"
+				declare_war_on = {
+					target = RAJ
+					type = annex_everything
+				}
+				give_military_access = PAK
+			}
+
+			PAK = {
+				declare_war_on = {
+					target = RAJ
+					type = annex_everything
+				}
+				declare_war_on = {
+					target = SND
+					type = annex_everything
+				}
+				give_military_access = HUL
+
+				add_ideas = PAK_clash_of_the_millions
+				add_ideas = war_mobilization
+				add_ideas = low_trade
+
+				load_oob = "PAK_Pakistan_India_war"
+
+				#country_event = {
+				#	id = PAK.4
+				#	days = 125
+				#}		
+				
+				
+				#country_event = {
+				#	id = PAK.5
+				#	days = 65
+				#}	
+			}
+			PRC = {
+				country_event = { id = china.134 }
+			}
+		}
+	}
+}
+
+country_event = {
+	id = PAK.4
+	title = PAK.4.t
+	desc = PAK.4.d
+	is_triggered_only = yes
+	fire_only_once = yes
+
+	immediate = {
+		hidden_effect = {
+			news_event = {
+				id = PAK.6
+			}
+			set_country_flag = PAK_lost_indo_pakistan_war
+			launch_nuke = {
+				province = 4979
+				use_nuke = no
+			}
+			launch_nuke = {
+				province = 12717
+				use_nuke = no
+			}
+			launch_nuke = {
+				province = 8022
+				use_nuke = no
+			}
+			launch_nuke = {
+				province = 2086
+				use_nuke = no
+			}
+			launch_nuke = {
+				province = 4915
+				use_nuke = no
+			}
+			every_country = {
+				goto_province = 4979 
+			}
+
+			PAK = {
+				white_peace = {
+					tag = RAJ
+				}
+				white_peace = {
+					tag = BAL
+				}	
+				country_event = {
+					id = PAK.1
+					days = 2
+				}	
+				delete_unit_template_and_units = {
+					division_template = "Irregular Militia"
+					disband = yes #will refund equipment and manpower
+				}
+				PAK = { 
+					set_politics = {
+						ruling_party = fascist
+						elections_allowed = no
+					}
+	
+					add_popularity = {
+						ideology = fascist
+						popularity = 0.35
+					}
+
+					remove_ideas = PAK_clash_of_the_millions
+				}
+			}
+
+			RAJ = {
+				country_event = {
+					id = RAJ.1
+					days = 4
+				}	
+				white_peace = {
+					tag = ULF
+				}	
+			}
+
+			AN1 = { 
+				transfer_state = 440
+				load_oob = "Anarchy_Pakistan_civil_war"
+				add_ideas = RAJ_disorganised_forces
+				#declare_war_on = {
+				#	target = RAJ
+				#	type = civil_war
+				#}
+				create_country_leader = {
+					name = ZZZ_anarchy_char
+					picture = "gfx/Leaders/ZZZ/ZZZ_anarchy.png"
+					expire = "1.1.1"
+					ideology = military_junta
+					traits = {
+					}
+				}
+			}
+
+			transfer_units_fraction= {
+				target = AN1
+				size = 0.2
+				stockpile_ratio = 0.15
+				army_ratio = 0.2
+				navy_ratio = 0.0
+				air_ratio = 0.0
+			}
+
+			PAK = { 
+				transfer_units_fraction= {
+					target = AN1
+					size = 0.09
+					stockpile_ratio = 0.04
+					army_ratio = 0.05
+					navy_ratio = 0.0
+					air_ratio = 0.0
+				}
+			}
+
+			ULF = {		
+				add_state_core = 432
+				add_state_core = 1366
+				add_state_core = 1368
+				add_state_core = 1369	
+				transfer_state = 432
+				transfer_state = 1366
+				transfer_state = 1368
+				transfer_state = 1369
+				load_oob = "ULF_civil_war"
+				add_ideas = RAJ_disorganised_forces
+			}
+
+			PRC = {
+				clr_country_flag = PRC_indo_pakistan_war_ongoing
+				country_event = { id = china.1513 days = 3 }
+			}
+		}
+	}
+
+	option = {
+		name = PAK.4.a
+	}
+}
+
+country_event = {
+	id = PAK.5
+	title = PAK.5.t
+	desc = PAK.5.d
+	
+	is_triggered_only = yes
+	fire_only_once = yes
+	
+	option = {
+		name = PAK.5.a
+		hidden_effect = {
+			annex_country = {
+				target = HUL
+				transfer_troops = no
+			}
+			PRC = {
+				country_event = {
+					id = china.357
+					days = 10
+				}
+			}
+			#PER = { #for future?
+			#	country_event = {
+			#		id = iran.16
+			#		days = 14
+			#	}
+			#}
+			BAL = {
+				declare_war_on = {
+					target = PAK
+					type = civil_war
+				}
+				declare_war_on = {
+					target = AN1
+					type = civil_war
+				}
+				declare_war_on = {
+					target = ISK
+					type = civil_war
+				}
+				declare_war_on = {
+					target = TLP
+					type = civil_war
+				}
+			}
+			TLP = {
+				declare_war_on = {
+					target = PAK
+					type = civil_war
+				}
+				declare_war_on = {
+					target = AN1
+					type = civil_war
+				}
+				declare_war_on = {
+					target = ISK
+					type = civil_war
+				}
+				declare_war_on = {
+					target = BAL
+					type = civil_war
+				}
+			}
+			ISK = {
+				declare_war_on = {
+					target = PAK
+					type = civil_war
+				}
+				declare_war_on = {
+					target = AN1
+					type = civil_war
+				}
+				declare_war_on = {
+					target = TLP
+					type = civil_war
+				}
+				declare_war_on = {
+					target = BAL
+					type = civil_war
+				}
+			}
+			AN1 = {
+				declare_war_on = {
+					target = PAK
+					type = civil_war
+				}
+				declare_war_on = {
+					target = ISK
+					type = civil_war
+				}
+				declare_war_on = {
+					target = TLP
+					type = civil_war
+				}
+				declare_war_on = {
+					target = BAL
+					type = civil_war
+				}
+			}
+		}
+	}
+}
+
+
+news_event = {
+	id = PAK.6
+	title = PAK.6.t
+	desc = PAK.6.d
+	picture = GFX_event_nuke
+	is_triggered_only = yes
+	fire_only_once = yes
+	major = yes
+
+	option = {
+		name = PAK.6.a
+		
+	}
+}
+
+news_event = {
+	id = PAK.7
+	title = PAK.7.t
+	desc = PAK.7.d
+	picture = GFX_India_Pakistan_War
+	is_triggered_only = yes
+	major = yes
+
+	option = {
+		name = PAK.7.a
+		
+	}
+}
+
+country_event = {
+	id = PAK.8
+	title = PAK.8.t
+	desc = PAK.8.d
+	fire_only_once = yes
+	is_triggered_only = yes
+	
+	immediate = {
+		hidden_effect = {
+			ISK = {
+				declare_war_on = {
+					target = PAK
+					type = civil_war
+				}		
+			}
+		}
+	}
+	
+	option = {
+		name = OK
+		
+	}
+}
+
+#Jihadis in Mumbai
+country_event = {
+	id = PAK.9
+	title = PAK.9.t
+	desc = PAK.9.d
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = PAK.9.a
+		load_oob = "PAK_jihadists"
+	}
+}
+
+#What type of angy wangy do i want....
+country_event = {
+	id = PAK.10
+	title = PAK.10.t
+	desc = PAK.10.d
+	
+	is_triggered_only = yes
+	
+	option = {#I want to martyr myself
+		name = PAK.10.a
+		ai_chance = {
+		    factor = 1
+		    modifier = {
+		        factor = 0
+		        OR = {
+		            has_game_rule = {
+		                rule = The_Pakistan_Turmoil
+		                option = The_Pakistan_Turmoil_PRGP
+		            }
+		        }
+		    }
+		}
+		add_stability = -0.1
+		set_politics = {
+			ruling_party = nationalist
+			elections_allowed = no
+			last_election = "2012.12.17"
+			election_frequency = 48
+		}
+		add_popularity = {
+			ideology = nationalist
+			popularity = 0.25
+		}	
+		add_ideas = PAK_sword_and_ummah
+		clr_country_flag = head_of_gov_ui_enabled
+	}
+	
+	option = {#uhhhhhhhh
+		name = PAK.10.b
+		ai_chance = {
+		    factor = 1
+		    modifier = {
+		        factor = 0
+		        OR = {
+		            has_game_rule = {
+		                rule = The_Pakistan_Turmoil
+		                option = The_Pakistan_Turmoil_PRHP
+		            }
+		        }
+		    }
+		}
+		set_party_name = {
+			ideology = authoritarian_democrat
+			long_name = PAK_military
+			name = PAK_military_short
+		}
+		set_politics = {
+			ruling_party = authoritarian_democrat
+			elections_allowed = no
+			last_election = "2012.12.17"
+			election_frequency = 48
+		}
+		add_popularity = {
+			ideology = authoritarian_democrat
+			popularity = 0.25
+		}
+		clr_country_flag = head_of_gov_ui_enabled
+	}
+}
+
+#Imran Khan ousted
+country_event = {
+	id = PAK.11
+	title = PAK.11.t
+	desc = PAK.11.d
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = PAK.11.a
+		set_politics = {
+			ruling_party = conservative
+			elections_allowed = no
+			last_election = "2012.12.17"
+			election_frequency = 48
+		}
+		add_popularity = {
+			ideology = conservative
+			popularity = 0.1
+		}
+	}
+}
+
+#Join EADI after India joined PDTO
+country_event = {
+	id = PAK.12
+	title = PAK.12.t
+	desc = PAK.12.d
+	
+	fire_only_once = yes
+	is_triggered_only = yes
+	trigger = {
+		tag = PRC
+		PRC = { is_in_faction = yes }
+		RAJ = { is_in_faction = yes }
+	}
+	
+	option = {
+		name = PAK.12.a
+		PRC = {
+			add_to_faction = PAK
+		}
+		PAK = {
+			set_country_flag = eadi_member
+		}
+		443= {
+			set_demilitarized_zone = no
+		}
+		1380= {
+			set_demilitarized_zone = no
+		}
+		787= {
+			set_demilitarized_zone = no
+		}
+		441= {
+			set_demilitarized_zone = no
+		}
+		1131= {
+			set_demilitarized_zone = no
+		}
+		439= {
+			set_demilitarized_zone = no
+		}
+		1132= {
+			set_demilitarized_zone = no
+		}
+		1381= {
+			set_demilitarized_zone = no
+		}
+		787= {
+			set_demilitarized_zone = no
+		}
+		428= {
+			set_demilitarized_zone = no
+		}
+	}
+}
+
+news_event = {
+	id = PAK.13
+	title = PAK.13.t
+	desc = PAK.13.d
+	picture = GFX_India_Pakistan_War
+	is_triggered_only = yes
+	major = yes
+
+	option = {
+		name = PAK.13.a
+		
+	}
+}
+
+country_event = { #fake
+	id = PAK.14
+	title = PAK.14.t
+	desc = PAK.14.d
+	is_triggered_only = yes
+
+	immediate = {
+		hidden_effect = {
+			news_event = {
+				id = PAK.6
+			}
+
+			launch_nuke = {
+				province = 4979
+				use_nuke = no
+			}
+			launch_nuke = {
+				province = 12717
+				use_nuke = no
+			}
+			launch_nuke = {
+				province = 8022
+				use_nuke = no
+			}
+			launch_nuke = {
+				province = 2086
+				use_nuke = no
+			}
+			launch_nuke = {
+				province = 4915
+				use_nuke = no
+			}
+			every_country = {
+				goto_province = 4979 
+			}
+
+			PAK = {
+				white_peace = {
+					tag = RAJ
+				}
+				white_peace = {
+					tag = BAL
+				}	
+				country_event = {
+					id = PAK.1
+					days = 2
+				}	
+				delete_unit_template_and_units = {
+					division_template = "Irregular Militia"
+					disband = yes #will refund equipment and manpower
+				}
+				PAK = { 
+					set_politics = {
+						ruling_party = fascist
+						elections_allowed = no
+					}
+	
+					add_popularity = {
+						ideology = fascist
+						popularity = 0.35
+					}
+
+					remove_ideas = PAK_clash_of_the_millions
+				}
+			}
+
+			RAJ = {
+				country_event = {
+					id = RAJ.1
+					days = 4
+				}	
+				white_peace = {
+					tag = ULF
+				}	
+			}
+
+			AN1 = { 
+				transfer_state = 440
+				load_oob = "Anarchy_Pakistan_civil_war"
+				add_ideas = RAJ_disorganised_forces
+				declare_war_on = {
+					target = RAJ
+					type = civil_war
+				}
+			}
+
+			transfer_units_fraction= {
+				target = AN1
+				size = 0.2
+				stockpile_ratio = 0.15
+				army_ratio = 0.2
+				navy_ratio = 0.0
+				air_ratio = 0.0
+			}
+
+			ULF = {		
+				add_state_core = 434
+				add_state_core = 432	
+				transfer_state = 432
+				transfer_state = 434
+				load_oob = "ULF_civil_war"
+				add_ideas = RAJ_disorganised_forces
+			}
+
+			#PRC = {
+			#	if = {
+			#		limit = {
+			#			NOT = {
+			#				PRC = {
+			#					has_country_flag = PRC_taiwan_war_lost
+			#				}
+			#			}
+			#		}
+			#		PRC = {
+			#			country_event = { id = china.81 days = 15 }
+			#		}
+			#	}
+			#}
+		}
+	}
+
+	option = {
+		name = PAK.14.a
+		country_event = PAK.14
+	}
+}
+
+#Order Restored
+country_event = {
+	id = PAK.15
+	title = PAK.15.t
+	desc = PAK.15.d
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = PAK.15.a
+		remove_ideas = PAK_legitimate_government
+		add_ideas = PAK_endless_fury
+		PRC = {
+			country_event = china.358
+		}
+	}
+}
+
+#2024 Presidential Election
+country_event = {
+	id = PAK.16
+	title = PAK.16.t
+	desc = PAK.16.d
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = PAK.16.a
+		trigger = { 
+			NOT = {
+				has_country_flag = PAK_lost_indo_pakistan_war
+			}
+		}
+		ai_chance = { factor = 70 }
+		promote_character = PAK_asif_ali_zardari_char
+		retire_character = PAK_arif_alvi_char
+	}
+	option = {
+		name = PAK.16.b
+		trigger = { 
+			NOT = {
+				has_country_flag = PAK_lost_indo_pakistan_war
+			}
+		}
+		ai_chance = { factor = 30 }
+		promote_character = PAK_mahmood_khan_achakzai_char
+		retire_character = PAK_arif_alvi_char
+		retire_character = PAK_asif_ali_zardari_char
+	}
+	option = {
+		name = PAK.16.c
+		trigger = { 
+			has_country_flag = PAK_lost_indo_pakistan_war
+		}
+	}
+}

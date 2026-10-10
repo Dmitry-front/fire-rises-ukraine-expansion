@@ -1,0 +1,32 @@
+﻿###########################
+# Holland Events
+###########################
+
+add_namespace = holland
+
+#We outta here lmao 
+country_event = {
+	id = holland.1
+	title = holland.1.t
+	desc = holland.1.d
+	picture = GFX_Generic_Fight_Jet
+	
+	fire_only_once = yes
+	is_triggered_only = yes
+	
+	trigger = {
+		tag = HOL
+	}
+
+	option = {
+	name = holland.1.a
+		white_peace = SOV
+		every_country = {
+			limit = {
+				has_country_flag = NATO_current_leader
+			}
+			remove_from_faction = HOL
+		}
+		news_event = { id = news.220 }
+	}
+}

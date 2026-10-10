@@ -1,0 +1,127 @@
+LOS_MAKE_CHANCELLORSVILLE_LOOK_LIKE_A_JOKE = {
+	enable = {
+		tag = LOS
+	}
+	abort_when_not_enabled = yes
+	ai_strategy = {
+		type = front_control
+		tag = LOS
+		execution_type = rush
+		execute_order = yes
+		manual_attack = no
+	}
+	ai_strategy = {
+		type = consider_weak
+		id = LOU
+		value = 1000
+	}
+	ai_strategy = {
+		type = conquer
+		id = LOU
+		value = 1000
+	}
+}
+
+LOS_do_not_support = {
+	enable = {
+		tag = LOS
+		has_war = no
+	}
+	abort = {
+		has_war = yes
+	}
+	ai_strategy = {
+		type = support
+		id = "NIC"
+		value = -900
+	}
+	ai_strategy = {
+		type = send_volunteers_desire
+		id = "NIC"
+		value = -900
+	}
+	ai_strategy = {
+		type = support
+		id = "COL"
+		value = -900
+	}
+	ai_strategy = {
+		type = send_volunteers_desire
+		id = "COL"
+		value = -900
+	}
+	ai_strategy = {
+		type = support
+		id = "SOV"
+		value = -900
+	}
+	ai_strategy = {
+		type = send_volunteers_desire
+		id = "SOV"
+		value = -900
+	}
+}
+
+LOS_you_should_be_prepared_for_war = {
+	enable = {
+		tag = LOS
+	}
+	abort_when_not_enabled = yes
+	ai_strategy = {
+		type = force_build_armies
+		value = 1000
+	}
+	ai_strategy = {
+		type = build_army
+		id = infantry
+		value = 1000
+	}
+}
+
+LOS_kill_atomwaffen_strategy = {
+	abort_when_not_enabled = yes
+	allowed = {
+		OR = {
+			original_tag = LOS
+			original_tag = NCA
+			original_tag = BLA
+		}
+	}
+	enable = {
+		ATW = {
+			exists = yes
+			OR = {
+				any_controlled_state = {
+					any_neighbor_state = {
+						is_controlled_by = ROOT
+					}
+				}
+				any_other_country = {
+					OR = {
+						is_in_faction_with = ROOT
+						is_puppet_of = ROOT
+					}
+					any_controlled_state = {
+						any_neighbor_state = {
+							is_controlled_by = ATW
+						}
+					}
+				}
+			}
+		}
+	}
+	ai_strategy = {
+		type = prepare_for_war
+		id = ATW
+		value = 1000
+	}
+	ai_strategy = {
+		type = front_control
+		tag = ATW
+		ratio = 0.5
+		priority = 100
+		ordertype = front
+		execution_type = rush
+		execute_order = yes
+	}
+}

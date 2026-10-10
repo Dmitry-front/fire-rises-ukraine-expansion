@@ -1,0 +1,475 @@
+FRA_NATO_war_category = {
+	icon = GFX_FRA_The_Russian_Menace
+	#picture = decision_SOV_nato_war 
+	visible_when_empty = yes
+	scripted_gui = war_escalation_decision_ui
+	allowed = {
+		tag = FRA
+	}
+	
+	on_map_area = {
+		state = 1059
+		zoom = 250
+	}
+
+	visible = {
+		tag = FRA
+		has_completed_focus = FRA_Operation_Saint_Arnaud
+		OR = {
+			NOT = {
+				has_global_flag = SOV_first_nato_war_victory
+				has_global_flag = nato_nato_won_nato_war
+			}
+		}
+	}
+}
+FAF_Second_NATO_war_category = {
+	icon = GFX_FRA_The_Russian_Menace
+	#picture = decision_SOV_nato_war 
+	visible_when_empty = yes
+	scripted_gui = war_escalation_decision_ui
+	allowed = {
+		tag = FAF
+	}
+	
+	on_map_area = {
+		state = 1059
+		zoom = 250
+	}
+
+	visible = {
+		tag = FAF
+		has_completed_focus = FAF_Operation_Clovis
+	}
+}
+FRA_influence_in_exrussia = {
+	icon = GFX_FRA_The_Russian_Menace
+	#picture = decision_SOV_nato_war 
+	visible_when_empty = yes
+	allowed = {
+		tag = FRA
+	}
+	
+	visible = {
+		tag = FRA
+		has_completed_focus = FRA_The_Liberators_of_the_Caucasus
+	}
+}
+FRA_Military_Retirement_category = {
+	icon = GFX_FRA_Army_Demands
+	visible_when_empty = yes
+	
+	allowed = {
+		tag = FRA
+	}
+	visible = {
+		has_completed_focus = FRA_The_Opening_Volley
+		NOT = {
+			OR = {
+				has_global_flag = nato_nato_won_nato_war
+				has_global_flag = SOV_first_nato_war_victory
+			}
+		}
+	}
+}
+FRA_coronavirus_category = {
+	icon = GFX_FRA_Fight_Them_in_the_Streets
+	picture = decision_cat_SOV_burning_america
+	visible_when_empty = no
+
+	allowed = {
+		tag = FRA
+	}
+		
+	visible = {
+		has_completed_focus = FRA_form_a_scientific_committe_to_combat_the_pandemic
+		NOT = {
+			OR = {
+				has_country_flag = FRA_force_vaccine
+				has_country_flag = FRA_open_up
+			}
+		}
+	}
+}
+
+FRA_Military_Demands_category = {
+	icon = GFX_FRA_Soldier_Category
+	picture = GFX_decision_cat_GMA_PMC_Hiring_cat
+	visible_when_empty = yes
+	
+	allowed = {
+		original_tag = FRA
+	}
+	visible = {
+		has_country_flag = FRA_Zemmour_Secret_path_flag
+	}
+}
+
+FAF_Identity_Forums_category = {
+	icon = GFX_FAF_identitarian_forums_cat
+	visible_when_empty = no
+	
+	allowed = {
+		original_tag = FAF
+	}
+	visible = {
+		OR = {
+			has_country_flag = FAF_Identity_Forums_flag
+			has_completed_focus = FAF_The_Building_Blocks_of_an_Empire
+		}
+	}
+}
+
+
+Fra_armed_forces_category = {
+	visible_when_empty = yes
+	icon = GFX_FRA_conduct_land_exercises
+	picture = GFX_decision_cat_FRA_The_Great_Game
+	allowed = {
+		tag = FRA
+	}
+	
+	visible = {
+		OR = {
+			has_completed_focus = FRA_the_french_armed_forces
+			has_completed_focus = FRA_VIC_The_French_European_Army
+			has_completed_focus = FRA_VIC_A_Distinctly_French_Force
+			has_completed_focus = FRA_VIC_The_New_Grand_Army
+			has_completed_focus = FRA_VIC_The_Frenchmans_Burden
+		}
+	}
+}
+
+FAF_balance_of_power_Mon_category = {
+	icon = GFX_decision_category_power_struggle
+
+	allowed = {
+		tag = FAF
+	}
+	
+	visible = {
+	}
+}
+FAF_balance_of_power_non_mon_category = {
+		icon = GFX_decision_category_power_struggle
+
+		allowed = {
+			tag = FAF
+		}
+		
+		visible = {
+		}
+}
+FAF_balance_of_power_Fascist_category = {
+		icon = GFX_decision_category_power_struggle
+
+		allowed = {
+			tag = FAF
+		}
+		
+		visible = {
+		}
+}
+
+FRA_France_on_the_World_Stage = {
+	icon = GFX_FRA_World_France_category
+	visible_when_empty = no
+	
+	allowed = {
+		original_tag = FRA
+	}
+	visible = {
+		original_tag = FRA
+	}
+}
+FRA_Battle_Legislation_Category = {
+	icon = GFX_FRA_Fight_the_Far_Right
+	visible_when_empty = no
+	
+	allowed = {
+		original_tag = FRA
+	}
+	visible = {
+		OR = {
+			has_completed_focus = FRA_Battle_Every_Legislation
+		}
+	}
+}
+FRA_National_Unity_Government_Category = {
+	icon = GFX_decision_generic_shaking_hands
+	visible_when_empty = no
+	
+	allowed = {
+		original_tag = FRA
+	}
+	visible = {
+		has_completed_focus = FRA_National_Unity_Government
+	}
+}
+FRA_The_French_Reagan_Category = {
+	icon = GFX_Pierre_de_Villiers
+	visible_when_empty = no
+	
+	allowed = {
+		original_tag = FRA
+	}
+	visible = {
+		has_completed_focus = FRA_A_True_Commander_in_Chief
+	}
+}
+FRA_Jupiter_Ascendent_Category = {
+	icon = GFX_FRA_Propagandize_Unity
+	visible_when_empty = no
+	
+	allowed = {
+		original_tag = FRA
+	}
+	visible = {
+		has_completed_focus = FRA_A_French_Renessiance
+	}
+}
+FRA_Organizing_the_Far_Right_Category = {
+	icon = GFX_FRA_Fight_Liberal_Unity
+	visible_when_empty = no
+	
+	allowed = {
+		original_tag = FRA
+	}
+	visible = {
+		has_completed_focus = FRA_A_Denied_Destiny
+		NOT = {
+			has_country_flag = FRA_bardella_flag
+		}
+	}
+}
+FRA_The_New_Constitution_Category = {
+	icon = GFX_6th_Constitution
+	
+	allowed = {
+		original_tag = FRA
+	}
+	visible = {
+		has_completed_focus = FRA_Unite_the_Left
+		NOT = {
+			has_completed_focus = FRA_silence_the_radical_left
+		}
+	}
+}
+FRA_fighting_the_good_fight_category = {
+	icon = GFX_6th_Constitution
+	
+	allowed = {
+		original_tag = FRA
+	}
+	visible = {
+		has_completed_focus = FRA_silence_the_radical_left
+	}
+}
+FRA_Anti_Police_Riots_Category = {
+	icon = GFX_FRA_Fight_Them_in_the_Streets
+	picture = decision_cat_SOV_burning_america
+	visible_when_empty = no
+	
+	allowed = {
+		original_tag = FRA
+	}
+	visible = {
+		OR = {
+			has_idea = FRA_Anti_Police_Protests_1
+			has_idea = FRA_Anti_Police_Protests_2
+			has_idea = FRA_Anti_Police_Protests_3
+			has_idea = FRA_Anti_Police_Protests_4
+			has_idea = FRA_Anti_Police_Protests_5
+			has_idea = FRA_Anti_Police_Protests_6
+			has_idea = FRA_Anti_Police_Protests_7
+			has_idea = FRA_Anti_Police_Protests_final
+		}
+	}
+}
+FAF_New_Era_Category = {
+	allowed = {
+		original_tag = FAF
+	}
+	visible = {
+		has_completed_focus = FAF_A_New_Era
+	}
+}
+FAF_seventh_french_republic_category = {
+	priority = 10
+	icon = GFX_decisions_FRA_democratic_institutions
+	visible_when_empty = yes
+	allowed = {
+		original_tag = FAF
+	}
+	visible = {
+		OR = {
+			has_completed_focus = FAF_Victory_of_the_Republicans
+			has_completed_focus = FAF_Victory_of_MoDem
+			has_completed_focus = FAF_Victory_of_the_National_Conservative_Union
+		}
+	}
+}
+FPR_revolutionary_economy_category = {
+	icon = GFX_decision_FPR_Ministry_of_Economy
+	allowed = {
+		original_tag = FPR
+	}
+	visible = {
+		has_completed_focus = FPR_From_the_Ground_Up
+	}
+}
+
+FPR_revolutionary_army_category = {
+	icon = GFX_decision_FPR_Peoples_Revolutionary_Army_of_France
+	allowed = {
+		original_tag = FPR
+	}
+	visible = {
+		has_country_flag = FPR_revolutionary_army_category_focus
+	}
+	visible_when_empty = yes
+}
+
+FRA_New_Era_Category = {
+	allowed = {
+		original_tag = FRA
+	}
+	visible = {
+		has_completed_focus = FRA_VIC_The_France_of_Today
+	}
+}
+FREU_the_union_cat = {
+	icon = GFX_FAF_european_nation
+	allowed = {
+		original_tag = FRA
+	}
+	visible = {
+		has_country_flag = FREU_union_flag
+	}
+}
+FAF_european_nation_category = {
+	icon = GFX_FAF_european_nation
+	allowed = {
+		original_tag = FAF
+	}
+	visible = {
+		has_completed_focus = FAF_Restart_European_Unity
+	}
+}
+FAF_fasces_over_france_cat = {
+	icon = GFX_FAF_fasces_over_france
+	allowed = {
+		original_tag = FAF
+	}
+	visible = {
+		has_completed_focus = FAF_The_French_Duce
+	}
+}
+FAF_pride_of_france_cat = {
+	icon = GFX_FAF_pride_of_france
+	allowed = {
+		original_tag = FAF
+	}
+	visible = {
+		has_completed_focus = FAF_The_Pride_of_France
+	}
+}
+FAF_lafayette_order_cat = {
+	icon = GFX_FAF_lafayette_order
+	allowed = {
+		original_tag = FAF
+	}
+	visible = {
+		has_completed_focus = FAF_A_New_Order
+	}
+		visible_when_empty = yes
+}
+FAF_heirs_of_charlamagne_cat = {
+	icon = GFX_FAF_charlamagne_category
+	allowed = {
+		original_tag = FAF
+	}
+	visible = {
+		has_completed_focus = FAF_The_Coronation
+	}
+	visible_when_empty = yes
+}
+FAF_balance_of_power_sword_and_shield_category = {
+	icon = GFX_decision_category_power_struggle
+
+	allowed = {
+		tag = FAF
+	}
+	
+	visible = {
+		has_completed_focus = FAF_The_Sword_and_Shield
+	}
+}
+FPR_anarchist_france_category = {
+	icon = GFX_decision_FPR_Hanging_the_Tyrants
+	allowed = {
+		original_tag = FPR
+	}
+	visible = {
+		has_completed_focus = FPR_No_Gods_No_Masters
+	}
+	visible_when_empty = yes
+}
+FPR_utopia_category = {
+	icon = GFX_decision_FPR_Destination_Utopie
+	allowed = {
+		original_tag = FPR
+	}
+	visible = {
+		has_completed_focus = FPR_The_Soft_Revolution
+		NOT = {
+			has_country_flag = FPR_utopia_goal_complete
+		}
+	}
+	scripted_gui = TFR_utopia_scripted_gui
+}
+FPR_jacobin_category = {
+	icon = GFX_decision_FPR_The_New_Enlightenment
+	allowed = {
+		original_tag = FPR
+	}
+	visible = {
+		has_completed_focus = FPR_Purify_our_Revolution
+	}
+}
+FPR_global_revolution_category = {
+	allowed = {
+		original_tag = FPR
+	}
+	visible = {
+		has_completed_focus = FPR_Ideolize_the_Permanent_Revolution
+	}
+}
+FPR_melenchon_category = {
+	icon = GFX_decision_FPR_The_Sixth_Republic
+	allowed = {
+		original_tag = FPR
+	}
+	visible = {
+		has_completed_focus = FPR_France_shall_never_bow
+	}
+}
+FPR_soviet_france_category = {
+	icon = GFX_decision_FPR_Our_Glorious_Saviour_Casanova
+	allowed = {
+		original_tag = FPR
+	}
+	visible = {
+		has_completed_focus = FPR_Arise_Sons_of_Marianne
+	}
+	visible_when_empty = yes
+}
+FPR_comecon_category = {
+	icon = GFX_decision_FPR_New_COMECON
+	allowed = {
+		original_tag = FPR
+	}
+	visible = {
+		has_completed_focus = FPR_Embrace_our_Red_Brothers
+	}
+}

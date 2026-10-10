@@ -1,0 +1,1617 @@
+PAK_indo_pakistan_war = {
+	RAJ_capital_fallen = {
+		available = {
+			NOT = {
+				has_global_flag = PRC_india_no_nukes
+			}
+			NOT = {
+				has_global_flag = PAK_RAJ_war_nuclear
+			}
+			PRC = {
+				has_country_flag = PRC_indo_pakistan_war_ongoing
+			}
+			surrender_progress > 0.15
+			has_war_with = PAK
+		}
+		visible = {
+			tag = RAJ
+		}
+		complete_effect = {
+			set_global_flag = PAK_RAJ_war_nuclear
+			set_global_flag = RAJ_capital_lost
+			PAK = {
+				country_event = {
+					id = PAK.4
+				}		
+
+				country_event = {
+					id = PAK.5
+					days = 12
+				}
+			}
+			PRC = {
+				clr_country_flag = PRC_indo_pakistan_war_ongoing
+				remove_mission = PRC_indo_pakistani_war_mission
+			}
+		}
+		remove_effect = {
+			
+		}
+		icon = democracy
+		
+		fire_only_once = yes
+		
+		ai_will_do = {
+			factor = 40 #decreased it a bit from 70
+		}
+	}
+	PAK_capital_fallen = {
+		available = {
+			NOT = {
+				has_global_flag = PRC_pakistan_no_nukes
+			}
+			NOT = {
+				440 = {
+					is_controlled_by = PAK
+				}
+				has_global_flag = PAK_RAJ_war_nuclear
+				is_ally_with = PRC
+			}
+			PRC = {
+				has_country_flag = PRC_indo_pakistan_war_ongoing
+			}
+			has_war_with = RAJ
+		}
+		visible = {
+			tag = PAK
+		}
+		complete_effect = {
+			set_global_flag = PAK_capital_lost
+			set_global_flag = PAK_RAJ_war_nuclear
+			country_event = {
+				id = PAK.4
+			}		
+				
+			country_event = {
+				id = PAK.5
+				days = 12
+			}	
+			PRC = {
+				clr_country_flag = PRC_indo_pakistan_war_ongoing
+				remove_mission = PRC_indo_pakistani_war_mission
+			}
+		}
+		remove_effect = {
+			
+		}
+		icon = democracy
+		
+		fire_only_once = yes
+		
+		ai_will_do = {
+			factor = 40 #decreased it a bit from 70
+		}
+	}
+	RAJ_launch_counter_offensive = {
+		available = {
+			PAK = {
+				OR = {
+					1381 = {
+						is_owned_by = PAK
+					}
+					1381 = {
+						is_controlled_by = PAK
+					}
+				}
+			}
+		}
+		visible = {
+			tag = RAJ
+		}
+		complete_effect = {
+			load_oob = "RAJ_mobilization"
+			swap_ideas = {
+				remove_idea = RAJ_clash_of_the_millions
+				add_idea = RAJ_clash_of_the_millions2
+			}
+		}
+		remove_effect = {
+			
+		}
+		icon = democracy
+		
+		fire_only_once = yes
+		cost = 10
+		
+		ai_will_do = {
+			factor = 100
+		}
+	}
+	PAK_launch_jihadist_uprising = {
+		available = {
+			has_war = yes
+		}
+		visible = {
+			tag = PAK
+		}
+		complete_effect = {
+			load_oob = "PAK_jihadists"
+		}
+		remove_effect = {
+			
+		}
+		icon = democracy
+		
+		fire_only_once = yes
+		cost = 50
+		
+		ai_will_do = {
+			factor = 1
+		}
+	}
+	RAJ_launch_sindh_uprising = {
+		available = {
+			has_war = yes
+		}
+		visible = {
+			tag = RAJ
+		}
+		complete_effect = {
+			load_oob = "SND_civil_war"
+		}
+		remove_effect = {
+			
+		}
+		icon = democracy
+		
+		fire_only_once = yes
+		cost = 50
+		
+		ai_will_do = {
+			factor = 1
+		}
+	}
+}
+
+PAK_nukes_cat = {
+	PAK_nuke_dehli = {
+		icon = GFX_decision_generic_deploy_nukes
+		available = {
+			RAJ  = {
+				controls_province = 2086
+			}
+			has_war_with = RAJ
+			if = {
+				limit = {
+					is_ai = yes
+				}
+				command_power > 15
+			}
+			else = {
+				command_power > 29
+			}
+		}
+		visible = {
+			has_country_flag = PAK_nukes_allowed
+		}
+		on_map_mode = map_and_decisions_view
+		fire_only_once = yes
+		cost = 50
+		days_remove = 2
+		complete_effect = {
+			add_command_power = -30
+		}
+		remove_effect = {
+			set_country_flag = PRC_used_nukes
+			launch_nuke = {
+				province = 2086
+			}
+			news_event = news.532
+			add_days_mission_timeout = {
+				mission = PRC_GAW_war_exhaustion
+				days = 20
+			}
+			JAP = {
+				add_days_mission_timeout = {
+					mission = JAP_GAW_war_exhaustion
+					days = -20
+				}
+			}
+			hidden_effect = {
+				AST = {
+					add_days_mission_timeout = {
+						mission = JAP_GAW_war_exhaustion
+						days = -20
+					}
+				}
+				RAJ = {
+					add_days_mission_timeout = {
+						mission = JAP_GAW_war_exhaustion
+						days = -20
+					}
+				}
+			}
+		}
+		ai_will_do = {
+			base = 50
+		}
+	}
+	PAK_nuke_chennai = {
+		icon = GFX_decision_generic_deploy_nukes
+		available = {
+			RAJ  = {
+				controls_province = 10278
+			}
+			has_war_with = RAJ
+			if = {
+				limit = {
+					is_ai = yes
+				}
+				command_power > 15
+			}
+			else = {
+				command_power > 29
+			}
+		}
+		visible = {
+			has_country_flag = PAK_nukes_allowed
+		}
+		on_map_mode = map_and_decisions_view
+		fire_only_once = yes
+		cost = 50
+		days_remove = 2
+		complete_effect = {
+			add_command_power = -30
+		}
+		remove_effect = {
+			set_country_flag = PRC_used_nukes
+			launch_nuke = {
+				province = 10278
+			}
+		}
+		ai_will_do = {
+			base = 50
+		}
+	}
+	PAK_nuke_mumbai = {
+		icon = GFX_decision_generic_deploy_nukes
+		available = {
+			RAJ  = {
+				controls_province = 1349
+			}
+			has_war_with = RAJ
+			if = {
+				limit = {
+					is_ai = yes
+				}
+				command_power > 15
+			}
+			else = {
+				command_power > 29
+			}
+		}
+		visible = {
+			has_country_flag = PAK_nukes_allowed
+		}
+		on_map_mode = map_and_decisions_view
+		fire_only_once = yes
+		cost = 50
+		days_remove = 2
+		complete_effect = {
+			add_command_power = -30
+		}
+		remove_effect = {
+			set_country_flag = PRC_used_nukes
+			launch_nuke = {
+				province = 1349
+			}
+		}
+		ai_will_do = {
+			base = 50
+		}
+	}
+	PAK_nuke_ahmbadabad = {
+		icon = GFX_decision_generic_deploy_nukes
+		available = {
+			RAJ  = {
+				controls_province = 9975
+			}
+			has_war_with = RAJ
+			if = {
+				limit = {
+					is_ai = yes
+				}
+				command_power > 15
+			}
+			else = {
+				command_power > 29
+			}
+		}
+		visible = {
+			has_country_flag = PAK_nukes_allowed
+		}
+		on_map_mode = map_and_decisions_view
+		fire_only_once = yes
+		cost = 50
+		days_remove = 2
+		complete_effect = {
+			add_command_power = -30
+		}
+		remove_effect = {
+			set_country_flag = PRC_used_nukes
+			launch_nuke = {
+				province = 9975
+			}
+		}
+		ai_will_do = {
+			base = 50
+		}
+	}
+	PAK_nuke_lucknow = {
+		icon = GFX_decision_generic_deploy_nukes
+		available = {
+			RAJ  = {
+				controls_province = 12137
+			}
+			has_war_with = RAJ
+			if = {
+				limit = {
+					is_ai = yes
+				}
+				command_power > 15
+			}
+			else = {
+				command_power > 29
+			}
+		}
+		visible = {
+			has_country_flag = PAK_nukes_allowed
+		}
+		on_map_mode = map_and_decisions_view
+		fire_only_once = yes
+		cost = 50
+		days_remove = 2
+		complete_effect = {
+			add_command_power = -30
+		}
+		remove_effect = {
+			set_country_flag = PRC_used_nukes
+			launch_nuke = {
+				province = 12137
+			}
+		}
+		ai_will_do = {
+			base = 50
+		}
+	}
+	PAK_nuke_indian_hyderabad = {
+		icon = GFX_decision_generic_deploy_nukes
+		available = {
+			RAJ  = {
+				controls_province = 8087
+			}
+			has_war_with = RAJ
+			if = {
+				limit = {
+					is_ai = yes
+				}
+				command_power > 15
+			}
+			else = {
+				command_power > 29
+			}
+		}
+		visible = {
+			has_country_flag = PAK_nukes_allowed
+		}
+		on_map_mode = map_and_decisions_view
+		fire_only_once = yes
+		cost = 50
+		days_remove = 2
+		complete_effect = {
+			add_command_power = -30
+		}
+		remove_effect = {
+			set_country_flag = PRC_used_nukes
+			launch_nuke = {
+				province = 8087
+			}
+		}
+		ai_will_do = {
+			base = 50
+		}
+	}
+	PAK_nuke_calcutta = {
+		icon = GFX_decision_generic_deploy_nukes
+		available = {
+			RAJ  = {
+				controls_province = 4245
+			}
+			has_war_with = RAJ
+			if = {
+				limit = {
+					is_ai = yes
+				}
+				command_power > 15
+			}
+			else = {
+				command_power > 29
+			}
+		}
+		visible = {
+			has_country_flag = PAK_nukes_allowed
+		}
+		on_map_mode = map_and_decisions_view
+		fire_only_once = yes
+		cost = 50
+		days_remove = 2
+		complete_effect = {
+			add_command_power = -30
+		}
+		remove_effect = {
+			set_country_flag = PRC_used_nukes
+			launch_nuke = {
+				province = 4245
+			}
+		}
+		ai_will_do = {
+			base = 50
+		}
+	}
+}
+
+RAJ_nukes_cat = {
+	RAJ_put_the_nuclear_arsenal_on_full_operational_alert = {
+		name = PRC_put_the_nuclear_arsenal_on_full_operational_alert
+		icon = GFX_decision_generic_deploy_nukes
+		available = {
+		}
+		visible = {
+			has_completed_focus = RAJ_activate_nuclear_arsenal
+		}
+		fire_only_once = yes
+		cost = 100
+		days_remove = 10
+		complete_effect = {
+		}
+		remove_effect = {
+			set_country_flag = RAJ_nukes_allowed
+			unlock_decision_category_tooltip = RAJ_nukes_cat
+		}
+		ai_will_do = {
+			base = 500
+		}
+	}
+	RAJ_our_final_decision = {
+		icon = GFX_decision_generic_deploy_nukes
+		available = {
+			surrender_progress > 0.35
+		}
+		visible = {
+			has_completed_focus = RAJ_activate_nuclear_arsenal
+		}
+		fire_only_once = yes
+		cost = 75
+		days_remove = 5
+		complete_effect = {
+		}
+		remove_effect = {
+			launch_nuke = {
+				province = 4987
+			}
+			launch_nuke = {
+				province = 8010
+			}
+	
+			launch_nuke = {
+				province = 13984
+				controller = PRC
+			}
+			launch_nuke = {
+				province = 4994
+				controller = PRC
+			}
+			launch_nuke = {
+				province = 2015
+				controller = PRC
+			}
+			launch_nuke = {
+				province = 4709
+				controller = PRC
+			}
+			launch_nuke = {
+				province = 1783
+				controller = PRC
+			}
+			launch_nuke = {
+				province = 12864
+				controller = PRC
+			}
+			launch_nuke = {
+				province = 12327
+				controller = PRC
+			}
+			launch_nuke = {
+				province = 2022
+				controller = PRC
+			}
+			launch_nuke = {
+				province = 7270
+				controller = PRC
+			}
+			launch_nuke = {
+				province = 531
+				controller = PRC
+			}
+			launch_nuke = {
+				province = 6638
+				controller = PRC
+			}
+			launch_nuke = {
+				province = 3742
+				controller = PRC
+			}
+			launch_nuke = {
+				province = 10724
+				controller = PRC
+			}
+			launch_nuke = {
+				province = 1976
+				controller = PRC
+			}
+			launch_nuke = {
+				province = 7418
+				controller = PRC
+			}
+			launch_nuke = {
+				province = 12274
+				controller = PRC
+			}
+			launch_nuke = {
+				province = 4925
+				controller = PRC
+			}
+			launch_nuke = {
+				province = 6999
+				controller = PRC
+			}
+			launch_nuke = {
+				province = 4504
+				controller = PRC
+			}
+			launch_nuke = {
+				province = 7446
+				controller = PRC
+			}
+			launch_nuke = {
+				province = 12841
+				controller = PRC
+			}
+			launch_nuke = {
+				province = 7965
+				controller = PRC
+			}
+			launch_nuke = {
+				province = 10856
+				controller = PRC
+			}
+			launch_nuke = {
+				province = 2067
+				controller = PRC
+			}
+
+			launch_nuke = {
+				province = 4979
+				controller = PAK
+			}
+			launch_nuke = {
+				province = 3456
+				controller = PAK
+			}
+			launch_nuke = {
+				province = 4110
+				controller = PAK
+			}
+			launch_nuke = {
+				province = 10772
+				controller = PAK
+			}
+
+			launch_nuke = {
+				province = 11929
+				controller = BAN
+			}
+			PRC = {
+				country_event = china.496
+			}
+		}
+		ai_will_do = {
+			base = 15
+			modifier = {
+    		    add = 100
+    		    NOT = {
+					is_ally_with = JAP
+				}
+    		}
+			modifier = {
+    		    add = 50
+    		    PRC = {
+					has_country_flag = PRC_nukes_available
+				}
+    		}
+			modifier = {
+    		    add = 100
+    		    has_global_flag = PRC_dehli_bombed
+    		}
+		}
+	}
+	RAJ_nuke_islamabad = {
+		icon = GFX_decision_generic_deploy_nukes
+		available = {
+			PAK  = {
+				controls_province = 4979
+			}
+			has_war_with = PAK
+			if = {
+				limit = {
+					is_ai = yes
+				}
+				command_power > 15
+			}
+			else = {
+				command_power > 29
+			}
+		}
+		visible = {
+			has_country_flag = RAJ_nukes_allowed
+		}
+		highlight_states = {
+			highlight_state_targets = {
+				state = 440
+			}
+		}
+		on_map_mode = map_and_decisions_view
+		fire_only_once = yes
+		cost = 75
+		days_remove = 2
+		complete_effect = {
+			add_command_power = -30
+		}
+		remove_effect = {
+			launch_nuke = {
+				province = 4979
+			}
+		}
+		ai_will_do = {
+			base = 75
+		}
+	}
+	RAJ_nuke_karachi = {
+		icon = GFX_decision_generic_deploy_nukes
+		available = {
+			PAK  = {
+				controls_province = 3456
+			}
+			has_war_with = PAK
+			if = {
+				limit = {
+					is_ai = yes
+				}
+				command_power > 15
+			}
+			else = {
+				command_power > 29
+			}
+		}
+		visible = {
+			has_country_flag = RAJ_nukes_allowed
+		}
+		highlight_states = {
+			highlight_state_targets = {
+				state = 1324
+			}
+		}
+		on_map_mode = map_and_decisions_view
+		fire_only_once = yes
+		cost = 75
+		days_remove = 2
+		complete_effect = {
+			add_command_power = -30
+		}
+		remove_effect = {
+			launch_nuke = {
+				province = 3456
+			}
+		}
+		ai_will_do = {
+			base = 75
+		}
+	}
+	RAJ_nuke_lahore = {
+		icon = GFX_decision_generic_deploy_nukes
+		available = {
+			PAK  = {
+				controls_province = 10772
+			}
+			has_war_with = PAK
+			if = {
+				limit = {
+					is_ai = yes
+				}
+				command_power > 15
+			}
+			else = {
+				command_power > 29
+			}
+		}
+		visible = {
+			has_country_flag = RAJ_nukes_allowed
+			tag = RAJ
+		}
+		highlight_states = {
+			highlight_state_targets = {
+				state = 1380
+			}
+		}
+		on_map_mode = map_and_decisions_view
+		fire_only_once = yes
+		cost = 50
+		days_remove = 2
+		complete_effect = {
+			add_command_power = -30
+		}
+		remove_effect = {
+			launch_nuke = {
+				province = 10772
+			}
+		}
+		ai_will_do = {
+			base = 75
+		}
+	}
+	RAJ_nuke_pakistani_hyderabad = {
+		icon = GFX_decision_generic_deploy_nukes
+		available = {
+			PAK  = {
+				controls_province = 4110
+			}
+			has_war_with = PAK
+			if = {
+				limit = {
+					is_ai = yes
+				}
+				command_power > 15
+			}
+			else = {
+				command_power > 29
+			}
+		}
+		visible = {
+			has_country_flag = RAJ_nukes_allowed
+			tag = RAJ
+		}
+		highlight_states = {
+			highlight_state_targets = {
+				state = 443
+			}
+		}
+		on_map_mode = map_and_decisions_view
+		fire_only_once = yes
+		cost = 50
+		days_remove = 2
+		complete_effect = {
+			add_command_power = -30
+		}
+		remove_effect = {
+			launch_nuke = {
+				province = 4110
+			}
+		}
+		ai_will_do = {
+			base = 75
+		}
+	}
+	RAJ_nuke_hong_kong = {
+		icon = GFX_decision_generic_deploy_nukes
+		available = {
+			PRC  = {
+				controls_province = 10062
+			}
+			has_war_with = PRC
+			if = {
+				limit = {
+					is_ai = yes
+				}
+				command_power > 15
+			}
+			else = {
+				command_power > 29
+			}
+		}
+		visible = {
+			has_country_flag = RAJ_nukes_allowed
+		}
+		highlight_states = {
+			highlight_state_targets = {
+				state = 326
+			}
+		}
+		on_map_mode = map_and_decisions_view
+		fire_only_once = yes
+		cost = 75
+		days_remove = 2
+		complete_effect = {
+			add_command_power = -30
+		}
+		remove_effect = {
+			launch_nuke = {
+				province = 10062
+			}
+			hidden_effect = {
+				PRC = {
+					if = {
+						limit = {
+							NOT = {
+								has_country_flag = PRC_put_the_nuclear_arsenal_on_full_operational_alert_flag
+							}
+						}
+						country_event = china.499
+					}
+				}
+			}
+		}
+		ai_will_do = {
+			base = 50
+		}
+	}
+	RAJ_nuke_guanghzhou = {
+		icon = GFX_decision_generic_deploy_nukes
+		available = {
+			PRC  = {
+				controls_province = 1047
+			}
+			has_war_with = PRC
+			if = {
+				limit = {
+					is_ai = yes
+				}
+				command_power > 15
+			}
+			else = {
+				command_power > 29
+			}
+		}
+		visible = {
+			has_country_flag = RAJ_nukes_allowed
+		}
+		highlight_states = {
+			highlight_state_targets = {
+				state = 592
+			}
+		}
+		on_map_mode = map_and_decisions_view
+		fire_only_once = yes
+		cost = 75
+		days_remove = 2
+		complete_effect = {
+			add_command_power = -30
+		}
+		remove_effect = {
+			launch_nuke = {
+				province = 1047
+			}
+			hidden_effect = {
+				PRC = {
+					if = {
+						limit = {
+							NOT = {
+								has_country_flag = PRC_put_the_nuclear_arsenal_on_full_operational_alert_flag
+							}
+						}
+						country_event = china.499
+					}
+				}
+			}
+		}
+		ai_will_do = {
+			base = 50
+		}
+	}
+	RAJ_nuke_shanghai = {
+		icon = GFX_decision_generic_deploy_nukes
+		available = {
+			PRC  = {
+				controls_province = 7014
+			}
+			has_war_with = PRC
+			if = {
+				limit = {
+					is_ai = yes
+				}
+				command_power > 15
+			}
+			else = {
+				command_power > 29
+			}
+		}
+		visible = {
+			has_country_flag = RAJ_nukes_allowed
+		}
+		highlight_states = {
+			highlight_state_targets = {
+				state = 1215
+			}
+		}
+		on_map_mode = map_and_decisions_view
+		fire_only_once = yes
+		cost = 75
+		days_remove = 2
+		complete_effect = {
+			add_command_power = -30
+		}
+		remove_effect = {
+			set_global_flag = RAJ_shanghai_bombed
+			launch_nuke = {
+				province = 7014
+			}
+			hidden_effect = {
+				PRC = {
+					if = {
+						limit = {
+							NOT = {
+								has_country_flag = PRC_put_the_nuclear_arsenal_on_full_operational_alert_flag
+							}
+						}
+						country_event = china.499
+					}
+				}
+			}
+		}
+		ai_will_do = {
+			base = 50
+		}
+	}
+	RAJ_nuke_beijing = {
+		icon = GFX_decision_generic_deploy_nukes
+		available = {
+			PRC  = {
+				controls_province = 9843
+			}
+			has_war_with = PRC
+			if = {
+				limit = {
+					is_ai = yes
+				}
+				command_power > 15
+			}
+			else = {
+				command_power > 29
+			}
+		}
+		visible = {
+			has_country_flag = RAJ_nukes_allowed
+		}
+		highlight_states = {
+			highlight_state_targets = {
+				state = 608
+			}
+		}
+		on_map_mode = map_and_decisions_view
+		fire_only_once = yes
+		cost = 75
+		days_remove = 2
+		complete_effect = {
+			add_command_power = -30
+		}
+		remove_effect = {
+			set_global_flag = RAJ_beijing_bombed
+			launch_nuke = {
+				province = 9843
+			}
+			hidden_effect = {
+				PRC = {
+					if = {
+						limit = {
+							NOT = {
+								has_country_flag = PRC_put_the_nuclear_arsenal_on_full_operational_alert_flag
+							}
+						}
+						country_event = china.499
+					}
+				}
+			}
+		}
+		ai_will_do = {
+			base = 50
+		}
+	}
+	RAJ_nuke_shenyang = {
+		icon = GFX_decision_generic_deploy_nukes
+		available = {
+			PRC  = {
+				controls_province = 11771
+			}
+			has_war_with = PRC
+			if = {
+				limit = {
+					is_ai = yes
+				}
+				command_power > 15
+			}
+			else = {
+				command_power > 29
+			}
+		}
+		visible = {
+			has_country_flag = RAJ_nukes_allowed
+		}
+		highlight_states = {
+			highlight_state_targets = {
+				state = 716
+			}
+		}
+		on_map_mode = map_and_decisions_view
+		fire_only_once = yes
+		cost = 75
+		days_remove = 2
+		complete_effect = {
+			add_command_power = -30
+		}
+		remove_effect = {
+			launch_nuke = {
+				province = 11771
+			}
+			hidden_effect = {
+				PRC = {
+					if = {
+						limit = {
+							NOT = {
+								has_country_flag = PRC_put_the_nuclear_arsenal_on_full_operational_alert_flag
+							}
+						}
+						country_event = china.499
+					}
+				}
+			}
+		}
+		ai_will_do = {
+			base = 50
+		}
+	}
+	RAJ_nuke_wuhan = {
+		icon = GFX_decision_generic_deploy_nukes
+		available = {
+			PRC  = {
+				controls_province = 4619
+			}
+			has_war_with = PRC
+			if = {
+				limit = {
+					is_ai = yes
+				}
+				command_power > 15
+			}
+			else = {
+				command_power > 29
+			}
+		}
+		visible = {
+			has_country_flag = RAJ_nukes_allowed
+		}
+		highlight_states = {
+			highlight_state_targets = {
+				state = 1211
+			}
+		}
+		on_map_mode = map_and_decisions_view
+		fire_only_once = yes
+		cost = 75
+		days_remove = 2
+		complete_effect = {
+			add_command_power = -30
+		}
+		remove_effect = {
+			launch_nuke = {
+				province = 4619
+			}
+			hidden_effect = {
+				PRC = {
+					if = {
+						limit = {
+							NOT = {
+								has_country_flag = PRC_put_the_nuclear_arsenal_on_full_operational_alert_flag
+							}
+						}
+						country_event = china.499
+					}
+				}
+			}
+		}
+		ai_will_do = {
+			base = 50
+		}
+	}
+	RAJ_nuke_pyongyang = {
+		icon = GFX_decision_generic_deploy_nukes
+		available = {
+			PRK  = {
+				controls_province = 13705
+			}
+			has_war_with = PRK
+			if = {
+				limit = {
+					is_ai = yes
+				}
+				command_power > 15
+			}
+			else = {
+				command_power > 29
+			}
+		}
+		visible = {
+			has_country_flag = RAJ_nukes_allowed
+		}
+		highlight_states = {
+			highlight_state_targets = {
+				state = 1043
+			}
+		}
+		on_map_mode = map_and_decisions_view
+		fire_only_once = yes
+		cost = 75
+		days_remove = 2
+		complete_effect = {
+			add_command_power = -30
+		}
+		remove_effect = {
+			launch_nuke = {
+				province = 13705
+			}
+		}
+		ai_will_do = {
+			base = 50
+		}
+	}
+}
+
+RAJ_foreign_policy_category = {
+	RAJ_order_infantry_equipment_from_russia = {
+		allowed = {
+			tag = RAJ
+		}
+		visible = {
+		}
+		available = {
+			date > 2024.06.01
+			NOT = {
+				has_country_flag = RAJ_order_from_russia_timer
+			}
+		}
+		cost = 50
+		fire_only_once = no
+		days_re_enable = 250
+		days_remove = 30
+		complete_effect = {
+			set_country_flag = RAJ_order_from_russia_timer
+			SOV = {
+				country_event = {
+					id = RAJ.21
+					days = 1
+				}
+			}
+			custom_effect_tooltip = if_they_accept
+			event_option_tooltip = RAJ.21.a
+		}
+		remove_effect = {
+			clr_country_flag = RAJ_order_from_russia_timer
+		}
+		ai_will_do = {
+			base = 999
+		}
+	}
+	RAJ_order_jets_from_russia = {
+		allowed = {
+			tag = RAJ
+		}
+		visible = {
+		}
+		available = {
+			date > 2024.06.01
+			NOT = {
+				has_country_flag = RAJ_order_from_russia_timer
+			}
+		}
+		cost = 50
+		fire_only_once = no
+		days_re_enable = 300
+		days_remove = 30
+		complete_effect = {
+			set_country_flag = RAJ_order_from_russia_timer
+			SOV = {
+				country_event = {
+					id = RAJ.22
+					days = 1
+				}
+			}
+			custom_effect_tooltip = if_they_accept
+			event_option_tooltip = RAJ.22.a
+		}
+		remove_effect = {
+			clr_country_flag = RAJ_order_from_russia_timer
+		}
+		ai_will_do = {
+			base = 999
+		}
+	}
+	RAJ_order_armored_vechiles_from_russia = {
+		allowed = {
+			tag = RAJ
+		}
+		visible = {
+		}
+		available = {
+			date > 2024.06.01
+			NOT = {
+				has_country_flag = RAJ_order_from_russia_timer
+			}
+		}
+		cost = 50
+		fire_only_once = no
+		days_re_enable = 300
+		days_remove = 30
+		complete_effect = {
+			set_country_flag = RAJ_order_from_russia_timer
+			SOV = {
+				country_event = {
+					id = RAJ.23
+					days = 1
+				}
+			}
+			custom_effect_tooltip = if_they_accept
+			event_option_tooltip = RAJ.23.a
+		}
+		remove_effect = {
+			clr_country_flag = RAJ_order_from_russia_timer
+		}
+		ai_will_do = {
+			base = 999
+		}
+	}
+}
+
+RAJ_civil_war_category = {
+	RAJ_unite_east = {
+		allowed = {
+			OR = {
+				original_tag = NAX
+				original_tag = SLJ
+			}
+		}
+		visible = {
+		}
+		available = {
+			owns_state = 435
+			owns_state = 1371
+			owns_state = 1372
+			owns_state = 426
+		}
+		fire_only_once = yes
+		complete_effect = {
+			add_state_core = 435
+			add_state_core = 1371
+			add_state_core = 1372
+			add_state_core = 426
+			declare_war_on = {
+				target = SAJ
+				type = annex_everything
+			}
+			declare_war_on = {
+				target = RSS
+				type = annex_everything
+			}
+			declare_war_on = {
+				target = DRV
+				type = annex_everything
+			}
+		}
+		ai_will_do = {
+			base = 999
+		}
+	}
+	RAJ_unite_south = {
+		allowed = {
+			OR = {
+				original_tag = SAJ
+				original_tag = RSS
+				original_tag = DRV
+			}
+		}
+		visible = {
+		}
+		available = {
+			owns_state = 429
+			owns_state = 425
+			owns_state = 427
+			owns_state = 423
+			owns_state = 320
+		}
+		fire_only_once = yes
+		complete_effect = {
+			add_state_core = 429
+			add_state_core = 425
+			add_state_core = 427
+			add_state_core = 423
+			add_state_core = 320
+			add_state_core = 424
+			add_state_core = 1418
+			declare_war_on = {
+				target = NAX
+				type = annex_everything
+			}
+			declare_war_on = {
+				target = SLJ
+				type = annex_everything
+			}
+		}
+		ai_will_do = {
+			base = 999
+		}
+	}
+	RAJ_unite_north = {
+		allowed = {
+			OR = {
+				original_tag = MPJ
+				original_tag = LRJ
+				original_tag = RAJ
+				original_tag = UPJ
+			}
+		}
+		visible = {
+		}
+		available = {
+			owns_state = 1379
+			owns_state = 438
+			owns_state = 433
+			owns_state = 428
+			owns_state = 436
+			owns_state = 1399
+			owns_state = 1400
+		}
+		fire_only_once = yes
+		complete_effect = {
+			add_state_core = 1379
+			add_state_core = 438
+			add_state_core = 433
+			add_state_core = 428
+			add_state_core = 436
+			add_state_core = 1399
+			add_state_core = 1400
+			declare_war_on = {
+				target = NAX
+				type = annex_everything
+			}
+			declare_war_on = {
+				target = SLJ
+				type = annex_everything
+			}
+			declare_war_on = {
+				target = MPJ
+				type = annex_everything
+			}
+			declare_war_on = {
+				target = LRJ
+				type = annex_everything
+			}
+			declare_war_on = {
+				target = RAJ
+				type = annex_everything
+			}
+			declare_war_on = {
+				target = UPJ
+				type = annex_everything
+			}
+		}
+		ai_will_do = {
+			base = 999
+		}
+	}
+	RAJ_unite_east_and_south = {
+		allowed = {
+			OR = {
+				original_tag = NAX
+				original_tag = SLJ
+				original_tag = SAJ
+				original_tag = RSS
+				original_tag = DRV
+			}
+		}
+		visible = {
+		}
+		available = {
+			owns_state = 435
+			owns_state = 1371
+			owns_state = 1372
+			owns_state = 426
+			owns_state = 429
+			owns_state = 425
+			owns_state = 427
+			owns_state = 423
+			owns_state = 320
+		}
+		fire_only_once = yes
+		complete_effect = {
+			add_state_core = 435
+			add_state_core = 1371
+			add_state_core = 1372
+			add_state_core = 426
+			add_state_core = 429
+			add_state_core = 425
+			add_state_core = 427
+			add_state_core = 423
+			add_state_core = 320
+			add_state_core = 424
+			add_state_core = 1418
+			declare_war_on = {
+				target = MPJ
+				type = annex_everything
+			}
+			declare_war_on = {
+				target = LRJ
+				type = annex_everything
+			}
+			declare_war_on = {
+				target = RAJ
+				type = annex_everything
+			}
+			declare_war_on = {
+				target = UPJ
+				type = annex_everything
+			}
+		}
+		ai_will_do = {
+			base = 999
+		}
+	}
+	RAJ_unite_india = {
+		allowed = {
+			OR = {
+				original_tag = MPJ
+				original_tag = LRJ
+				original_tag = RAJ
+				original_tag = UPJ
+				original_tag = NAX
+				original_tag = SLJ
+				original_tag = SAJ
+				original_tag = RSS
+				original_tag = DRV
+			}
+		}
+		visible = {
+		}
+		available = {
+			owns_state = 435
+			owns_state = 1371
+			owns_state = 1372
+			owns_state = 426
+			owns_state = 429
+			owns_state = 425
+			owns_state = 427
+			owns_state = 423
+			owns_state = 320
+			owns_state = 1379
+			owns_state = 438
+			owns_state = 433
+			owns_state = 428
+			owns_state = 436
+			owns_state = 1399
+			owns_state = 1400
+		}
+		fire_only_once = yes
+		complete_effect = {
+			add_state_core = 1379
+			add_state_core = 438
+			add_state_core = 433
+			add_state_core = 428
+			add_state_core = 436
+			add_state_core = 1399
+			add_state_core = 1400
+			add_state_core = 435
+			add_state_core = 1371
+			add_state_core = 1372
+			add_state_core = 426
+			add_state_core = 429
+			add_state_core = 425
+			add_state_core = 427
+			add_state_core = 423
+			add_state_core = 320
+			add_state_core = 424
+			add_state_core = 1418
+			remove_ideas = RAJ_indian_civil_war
+			RJN = {
+				transfer_navy = {
+					target = ROOT
+				}
+			}
+			annex_country = {
+			    target = RJN
+			    transfer_troops = no
+			}
+			if = {
+				limit = {
+					OR = {
+						original_tag = UPJ
+						original_tag = MPJ
+						original_tag = SLJ
+						original_tag = DRV #idk actually
+						original_tag = SAJ
+					}
+				}
+				set_cosmetic_tag = RAJ_after_cw_military_cosmetic
+				news_event = {
+					id = RAJ.27
+					days = 2
+				}
+			}
+			if = {
+				limit = {
+					original_tag = RAJ
+				}
+				news_event = {
+					id = RAJ.28
+					days = 2
+				}
+			}
+			if = {
+				limit = {
+					original_tag = LRJ
+				}
+				news_event = {
+					id = RAJ.29
+					days = 2
+				}
+			}
+			if = {
+				limit = {
+					original_tag = NAX
+				}
+				set_cosmetic_tag = NAX_after_cw_cosmetic
+				news_event = {
+					id = RAJ.30
+					days = 2
+				}
+			}
+			if = {
+				limit = {
+					original_tag = RSS
+				}
+				news_event = {
+					id = RAJ.31
+					days = 2
+				}
+			}
+			set_capital = {
+				state = 1379
+			}
+			if = {
+				limit = {
+					has_idea = RAJ_destroyed_country
+				}
+				add_timed_idea = {
+					idea = RAJ_destroyed_country
+					days = 500
+				}
+			}
+			add_timed_idea = {
+				idea = RAJ_aftermath_of_the_civil_war_idea
+				days = 500
+			}
+			add_ideas = {
+				RAJ_very_high_population_density
+				RAJ_personal_expense_factor_fix
+			}
+		}
+		ai_will_do = {
+			base = 999
+		}
+	}
+}

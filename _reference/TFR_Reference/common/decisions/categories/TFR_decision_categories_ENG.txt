@@ -1,0 +1,68 @@
+ENG_civil_war = {
+	icon = GFX_ENG_civil_war_cat
+
+	allowed = {
+	    OR = {
+		original_tag = ENG
+		original_tag = UK2
+		original_tag = SCO
+		}
+	}
+	visible = {
+		has_global_flag = SOV_first_nato_war_victory
+		has_global_flag = SOV_medvedev_won
+	}
+}
+
+ENG_civil_war_intervention_russia = {
+	icon = GFX_ENG_civil_war_cat
+    picture = decision_cat_ENG_civil_war
+	allowed = {
+	    original_tag = SOV
+	}
+	priority = -1
+	visible = {
+		has_global_flag = SOV_first_nato_war_victory
+		has_global_flag = SOV_medvedev_won
+		ENG = {
+			exists = yes
+			has_war = yes 
+			is_in_faction = no
+		}
+	}
+}
+
+ENG_civil_war_intervention_europe = {
+	icon = GFX_ENG_civil_war_cat
+    picture = decision_cat_ENG_civil_war
+	allowed = {
+	    original_tag = GER
+	}
+	visible = {
+		has_global_flag = SOV_first_nato_war_victory
+		has_global_flag = SOV_medvedev_won
+		OR = {
+		    UK2 = {
+				exists = yes
+				has_war = yes
+				is_in_faction = no
+		    }
+		    SCO = {
+				exists = yes
+				has_war = yes
+				is_in_faction = no
+		    }
+	    }
+    }
+}
+
+ENG_kill_sun_sets_idea_category = {
+	icon = GFX_ENG_civil_war_cat
+    picture = decision_cat_ENG_civil_war
+	allowed = {
+	    original_tag = ENG
+	}
+	visible = {
+		is_ai = no
+    }
+}

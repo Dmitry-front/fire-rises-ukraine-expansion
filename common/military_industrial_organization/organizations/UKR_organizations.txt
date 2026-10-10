@@ -1,7 +1,7 @@
 # Украинские военно-промышленные организации (PROPOSAL_concerns.md).
 # Каждая - копия базового архетипа TFR (include) со своим названием, иконкой, начальной чертой
-# и двумя-тремя уникальными чертами. Свои черты стоят в ряду y=5 под деревом архетипа
-# (все архетипы занимают ряды 0-4), без родителей: корневые, чтобы не пересекаться с чужими позициями.
+# и двумя-тремя уникальными чертами. Новые черты при include добавляются через add_trait (как в TFR_organizations_PRC.txt).
+# Каждая подвешена к существующей черте архетипа (any_parent) на свободную клетку; позиции сверены по _reference/TFR_Reference.
 # Иконки временные: ванильные GFX_idea_generic_*_manufacturer_* (CLAUDE.md, «Нужен арт»).
 # Окно решений, которые пополняют funds: common/decisions/UKR_decisions_defense_industry.txt
 
@@ -29,33 +29,49 @@ UKR_malyshev_organization = {
 	}
 
 	# Двигатель типа 6ТД: надёжность и скорость
-	trait = {
+	add_trait = {
 		token = UKR_mio_trait_oplot_engine
 		name = UKR_mio_trait_oplot_engine
 		icon = GFX_generic_mio_trait_icon_reliability
 
-		position = { x=0 y=5 }
-		relative_position_id = generic_mio_trait_power_traverse
+		special_trait_background = yes
+
+		position = { x=0 y=1 }
+		relative_position_id = generic_mio_trait_improved_suspension
+
+		any_parent = { generic_mio_trait_improved_suspension }
 
 		equipment_bonus = {
 			maximum_speed = 0.05
 			reliability = 0.05
 		}
+
+		ai_will_do = {
+			base = 2
+		}
 	}
 
 	# Комплекс динамической защиты: броня за счёт цены
-	trait = {
+	add_trait = {
 		token = UKR_mio_trait_reactive_armor
 		name = UKR_mio_trait_reactive_armor
 		icon = GFX_generic_mio_trait_icon_armor_value
 
-		position = { x=3 y=5 }
-		relative_position_id = generic_mio_trait_power_traverse
+		special_trait_background = yes
+
+		position = { x=0 y=1 }
+		relative_position_id = generic_mio_trait_crew_survival_layout
+
+		any_parent = { generic_mio_trait_crew_survival_layout }
 
 		equipment_bonus = {
 			armor_value = 0.08
 			defense = 0.05
 			build_cost_ic = 0.03
+		}
+
+		ai_will_do = {
+			base = 2
 		}
 	}
 }
@@ -83,13 +99,17 @@ UKR_armor_repair_organization = {
 	}
 
 	# Трофейный фонд: захваченная техника возвращается в строй
-	trait = {
+	add_trait = {
 		token = UKR_mio_trait_trophy_fund
 		name = UKR_mio_trait_trophy_fund
 		icon = GFX_generic_mio_department_icon_tank_general_conversion
 
-		position = { x=0 y=5 }
+		special_trait_background = yes
+
+		position = { x=0 y=1 }
 		relative_position_id = generic_mio_trait_enemy_tank_refitting
+
+		any_parent = { generic_mio_trait_enemy_tank_refitting }
 
 		limit_to_equipment_type = { armor }
 
@@ -97,16 +117,24 @@ UKR_armor_repair_organization = {
 			production_conversion_speed_factor = 0.2
 			production_resource_need_factor = -0.15
 		}
+
+		ai_will_do = {
+			base = 2
+		}
 	}
 
 	# Ремонт у линии фронта
-	trait = {
+	add_trait = {
 		token = UKR_mio_trait_field_repair
 		name = UKR_mio_trait_field_repair
 		icon = GFX_generic_mio_trait_icon_reliability
 
-		position = { x=3 y=5 }
-		relative_position_id = generic_mio_trait_enemy_tank_refitting
+		special_trait_background = yes
+
+		position = { x=0 y=1 }
+		relative_position_id = generic_mio_trait_plant_tech_exchange
+
+		any_parent = { generic_mio_trait_plant_tech_exchange }
 
 		limit_to_equipment_type = { armor }
 
@@ -115,6 +143,10 @@ UKR_armor_repair_organization = {
 		}
 		production_bonus = {
 			production_efficiency_gain_factor = 0.1
+		}
+
+		ai_will_do = {
+			base = 2
 		}
 	}
 }
@@ -140,33 +172,49 @@ UKR_kraz_organization = {
 	}
 
 	# Колёсные шасси большой проходимости
-	trait = {
+	add_trait = {
 		token = UKR_mio_trait_wheeled_chassis
 		name = UKR_mio_trait_wheeled_chassis
 		icon = GFX_generic_mio_trait_icon_maximum_speed
 
-		position = { x=0 y=5 }
-		relative_position_id = generic_mio_trait_simplified_suspension
+		special_trait_background = yes
+
+		position = { x=0 y=1 }
+		relative_position_id = generic_mio_trait_reinforced_wheels
+
+		any_parent = { generic_mio_trait_reinforced_wheels }
 
 		equipment_bonus = {
 			maximum_speed = 0.06
 			fuel_consumption = -0.05
 		}
+
+		ai_will_do = {
+			base = 2
+		}
 	}
 
 	# Противоминная защита корпуса
-	trait = {
+	add_trait = {
 		token = UKR_mio_trait_mine_resistant_hull
 		name = UKR_mio_trait_mine_resistant_hull
 		icon = GFX_generic_mio_trait_icon_defense
 
-		position = { x=3 y=5 }
-		relative_position_id = generic_mio_trait_simplified_suspension
+		special_trait_background = yes
+
+		position = { x=0 y=1 }
+		relative_position_id = generic_mio_trait_defensive_equipment
+
+		any_parent = { generic_mio_trait_defensive_equipment }
 
 		equipment_bonus = {
 			defense = 0.06
 			armor_value = 0.04
 			build_cost_ic = 0.02
+		}
+
+		ai_will_do = {
+			base = 2
 		}
 	}
 }
@@ -201,13 +249,17 @@ UKR_drone_cluster_organization = {
 	}
 
 	# Гаражные мастерские: быстро и дёшево, но сыро
-	trait = {
+	add_trait = {
 		token = UKR_mio_trait_garage_workshops
 		name = UKR_mio_trait_garage_workshops
 		icon = GFX_tfr_mio_icon_integrated_production
 
-		position = { x=0 y=5 }
+		special_trait_background = yes
+
+		position = { x=-1 y=1 }
 		relative_position_id = generic_mio_trait_drum_pattern_sights
+
+		any_parent = { generic_mio_trait_drum_pattern_sights }
 
 		production_bonus = {
 			production_efficiency_gain_factor = 0.15
@@ -216,34 +268,54 @@ UKR_drone_cluster_organization = {
 		equipment_bonus = {
 			reliability = -0.05
 		}
+
+		ai_will_do = {
+			base = 2
+		}
 	}
 
 	# Волонтёрское финансирование
-	trait = {
+	add_trait = {
 		token = UKR_mio_trait_volunteer_funding
 		name = UKR_mio_trait_volunteer_funding
 		icon = GFX_generic_mio_department_icon_facilities
 
-		position = { x=2 y=5 }
-		relative_position_id = generic_mio_trait_drum_pattern_sights
+		special_trait_background = yes
+
+		position = { x=0 y=1 }
+		relative_position_id = generic_mio_trait_reinforced_stocks
+
+		any_parent = { generic_mio_trait_reinforced_stocks }
 
 		organization_modifier = {
 			military_industrial_organization_funds_gain = 0.15
 		}
+
+		ai_will_do = {
+			base = 2
+		}
 	}
 
 	# Нейросетевое наведение
-	trait = {
+	add_trait = {
 		token = UKR_mio_trait_neuro_guidance
 		name = UKR_mio_trait_neuro_guidance
 		icon = GFX_tfr_mio_icon_AI_disign
 
-		position = { x=4 y=5 }
-		relative_position_id = generic_mio_trait_drum_pattern_sights
+		special_trait_background = yes
+
+		position = { x=0 y=1 }
+		relative_position_id = tfr_mio_trait_UAV_combat_unit
+
+		any_parent = { tfr_mio_trait_UAV_combat_unit }
 
 		equipment_bonus = {
 			soft_attack = 0.08
 			breakthrough = 0.04
+		}
+
+		ai_will_do = {
+			base = 2
 		}
 	}
 }
@@ -275,32 +347,48 @@ UKR_antonov_organization = {
 	}
 
 	# Школа транспортной авиации: дальность и грузоподъёмность
-	trait = {
+	add_trait = {
 		token = UKR_mio_trait_transport_school
 		name = UKR_mio_trait_transport_school
 		icon = GFX_generic_mio_trait_icon_naval_range
 
-		position = { x=0 y=5 }
-		relative_position_id = generic_mio_trait_reinforced_frames
+		special_trait_background = yes
+
+		position = { x=0 y=1 }
+		relative_position_id = generic_mio_trait_transport_conversions
+
+		any_parent = { generic_mio_trait_transport_conversions }
 
 		equipment_bonus = {
 			air_range = 0.1
 			build_cost_ic = -0.03
 		}
+
+		ai_will_do = {
+			base = 2
+		}
 	}
 
 	# Посадка на неподготовленные полосы
-	trait = {
+	add_trait = {
 		token = UKR_mio_trait_rough_field_landing
 		name = UKR_mio_trait_rough_field_landing
 		icon = GFX_generic_mio_trait_icon_reliability
 
-		position = { x=3 y=5 }
+		special_trait_background = yes
+
+		position = { x=1 y=1 }
 		relative_position_id = generic_mio_trait_reinforced_frames
+
+		any_parent = { generic_mio_trait_reinforced_frames }
 
 		equipment_bonus = {
 			reliability = 0.05
 			fuel_consumption = -0.05
+		}
+
+		ai_will_do = {
+			base = 2
 		}
 	}
 }
@@ -327,32 +415,48 @@ UKR_motor_sich_organization = {
 	}
 
 	# Двигатели Ивченко: тяга и надёжность
-	trait = {
+	add_trait = {
 		token = UKR_mio_trait_ivchenko_engines
 		name = UKR_mio_trait_ivchenko_engines
 		icon = GFX_generic_mio_trait_icon_maximum_speed
 
-		position = { x=0 y=5 }
+		special_trait_background = yes
+
+		position = { x=0 y=1 }
 		relative_position_id = generic_mio_trait_large_rudders_and_flaps
+
+		any_parent = { generic_mio_trait_large_rudders_and_flaps }
 
 		equipment_bonus = {
 			maximum_speed = 0.05
 			reliability = 0.05
 		}
+
+		ai_will_do = {
+			base = 2
+		}
 	}
 
 	# Экономичный расход топлива
-	trait = {
+	add_trait = {
 		token = UKR_mio_trait_fuel_economy
 		name = UKR_mio_trait_fuel_economy
 		icon = GFX_generic_mio_trait_icon_fuel_consumption
 
-		position = { x=3 y=5 }
-		relative_position_id = generic_mio_trait_large_rudders_and_flaps
+		special_trait_background = yes
+
+		position = { x=0 y=1 }
+		relative_position_id = generic_mio_trait_long_range_modifications
+
+		any_parent = { generic_mio_trait_long_range_modifications }
 
 		equipment_bonus = {
 			air_range = 0.1
 			fuel_consumption = -0.08
+		}
+
+		ai_will_do = {
+			base = 2
 		}
 	}
 }
@@ -379,33 +483,49 @@ UKR_aircraft_repair_organization = {
 	}
 
 	# Модернизация МиГ-29: бортовая электроника
-	trait = {
+	add_trait = {
 		token = UKR_mio_trait_mig29_upgrade
 		name = UKR_mio_trait_mig29_upgrade
 		icon = GFX_generic_mio_trait_icon_air_agility
 
-		position = { x=2 y=5 }
-		relative_position_id = generic_mio_trait_fabric_skin
+		special_trait_background = yes
+
+		position = { x=0 y=1 }
+		relative_position_id = generic_mio_trait_bigger_engines
+
+		any_parent = { generic_mio_trait_bigger_engines }
 
 		equipment_bonus = {
 			air_agility = 0.06
 			air_attack = 0.04
 			build_cost_ic = 0.03
 		}
+
+		ai_will_do = {
+			base = 2
+		}
 	}
 
 	# Капремонт Су-27: ресурс планера
-	trait = {
+	add_trait = {
 		token = UKR_mio_trait_su27_overhaul
 		name = UKR_mio_trait_su27_overhaul
 		icon = GFX_generic_mio_trait_icon_reliability
 
-		position = { x=5 y=5 }
-		relative_position_id = generic_mio_trait_fabric_skin
+		special_trait_background = yes
+
+		position = { x=0 y=1 }
+		relative_position_id = generic_mio_trait_cantilever_wing_structure
+
+		any_parent = { generic_mio_trait_cantilever_wing_structure }
 
 		equipment_bonus = {
 			reliability = 0.08
 			air_defence = 0.04
+		}
+
+		ai_will_do = {
+			base = 2
 		}
 	}
 }
@@ -433,33 +553,49 @@ UKR_mykolaiv_yard_organization = {
 	}
 
 	# Газотурбинные установки
-	trait = {
+	add_trait = {
 		token = UKR_mio_trait_gas_turbines
 		name = UKR_mio_trait_gas_turbines
 		icon = GFX_generic_mio_trait_icon_maximum_speed
 
-		position = { x=0 y=5 }
-		relative_position_id = generic_mio_trait_submarine_hunters_black_sea
+		special_trait_background = yes
+
+		position = { x=0 y=1 }
+		relative_position_id = generic_mio_trait_state_sponsored_growth
+
+		any_parent = { generic_mio_trait_state_sponsored_growth }
 
 		equipment_bonus = {
 			naval_speed = 0.06
 			fuel_consumption = -0.05
 		}
+
+		ai_will_do = {
+			base = 2
+		}
 	}
 
 	# Береговая оборона: ПВО и дешевизна за счёт дальности
-	trait = {
+	add_trait = {
 		token = UKR_mio_trait_coastal_defense
 		name = UKR_mio_trait_coastal_defense
 		icon = GFX_generic_mio_trait_icon_anti_air_attack
 
-		position = { x=3 y=5 }
-		relative_position_id = generic_mio_trait_submarine_hunters_black_sea
+		special_trait_background = yes
+
+		position = { x=0 y=1 }
+		relative_position_id = generic_mio_trait_base_defense
+
+		any_parent = { generic_mio_trait_base_defense }
 
 		equipment_bonus = {
 			anti_air_attack = 0.05
 			naval_range = -0.05
 			build_cost_ic = -0.03
+		}
+
+		ai_will_do = {
+			base = 2
 		}
 	}
 }

@@ -1,0 +1,235 @@
+#Tanks
+
+SOV_chtz_tankograd_organization = {
+	include = generic_medium_tank_organization	
+	icon = GFX_SOV_chtz_idea_idea
+	
+	allowed = {	
+		original_tag = SOV
+	}
+
+	equipment_type = { mio_cat_eq_all_light_tank mio_cat_eq_all_medium_tank }
+	research_categories = { mio_cat_tech_light_armor_and_modules mio_cat_tech_medium_armor_and_modules }
+
+	tree_header_text = {
+		text = mio_header_tank_construction
+		x = 3
+	}
+
+	tree_header_text = {
+		text = mio_header_equipment_and_specialization
+		x = 7
+	}
+	
+	initial_trait = {
+		name = CHTZ_tankograd_mio
+		
+		equipment_bonus = {
+			armor_value = 0.03
+			defense = 0.02
+			build_cost_ic = -0.01
+		}
+	}
+}
+
+#Planes
+
+SOV_Iljusin_okb_organization = {
+	include = generic_general_aircraft_organization	
+	icon = GFX_idea_SOV_OKB_Iljusin_idea
+	
+	allowed = {	
+		original_tag = SOV
+	}
+	
+	equipment_type = {
+		mio_cat_eq_all_small_plane
+		mio_cat_eq_all_medium_plane
+		mio_cat_eq_all_large_plane
+	}
+
+	research_categories = { air_equipment }
+	
+	initial_trait = {
+		name = generic_mio_initial_trait_general_aircraft_designer
+
+		organization_modifier = {
+			military_industrial_organization_research_bonus = 0.05
+		}
+		production_bonus = {
+			production_capacity_factor = 0.03
+		}
+	}
+}
+
+############################
+###### Infantry Weapons ####
+############################
+
+SOV_kalashnikov_concern_organization = {
+	include = generic_infantry_equipment_organization	
+	icon = GFX_SOV_kalashnikov_concern_idea
+	
+	allowed = {	
+		original_tag = SOV
+	}
+
+	tree_header_text = {
+		text = mio_header_design_and_production
+		x = 2.5
+	}
+
+	tree_header_text = {
+		text = mio_header_anti_tank
+		x = 7
+	}
+	
+	initial_trait = {
+		name = SOV_kalashnikov_concern_organization_trait
+
+		production_bonus = {
+			production_efficiency_cap_factor = 0.05
+		}
+		equipment_bonus = {
+			soft_attack = 0.04
+		}
+	}
+	
+	override_trait = {
+		token = generic_mio_trait_armor_piercing_rounds
+		
+		position = { x=0 y=2 }
+		relative_position_id = generic_mio_trait_quality_materials
+	}
+
+	override_trait = {
+		token = generic_mio_trait_advanced_barrel_forging
+		
+		position = { x=1 y=2 }
+		relative_position_id = generic_mio_trait_drum_pattern_sights
+	}
+
+	override_trait = {
+		token = generic_mio_trait_reinforced_stocks
+		
+		position = { x=3 y=0 }
+		relative_position_id = generic_mio_trait_drum_pattern_sights
+	}
+}
+
+SOV_tula_arms_plant_organization = {
+	include = generic_infantry_equipment_organization
+	icon = GFX_SOV_tula_arms_plant_organization
+	allowed = {	
+		tag = SOV
+		has_dlc = "Arms Against Tyranny"
+	}
+}
+
+SOV_gaz_group_organization = {
+	include = generic_motorized_mechanized_organization
+	icon = GFX_SOV_gaz_group_organization
+	allowed = {	
+		tag = SOV
+		has_dlc = "Arms Against Tyranny"
+	}
+}
+
+SOV_degtyaryov_plant_organization = {
+	include = generic_support_equipment_organization
+	icon = GFX_SOV_degtyaryov_plant_organization
+	allowed = {	
+		tag = SOV
+		has_dlc = "Arms Against Tyranny"
+	}
+}
+
+SOV_kbp_organization = {
+	include = generic_tank_organization
+	icon = GFX_SOV_kbp_organization
+	allowed = {	
+		tag = SOV
+		has_dlc = "Arms Against Tyranny"
+	}
+}
+
+SOV_zavod_devyat_organization = {
+	include = generic_artillery_organization
+	icon = GFX_SOV_zavod_devyat_organization
+	allowed = {	
+		tag = SOV
+		has_dlc = "Arms Against Tyranny"
+	}
+}
+
+SOV_uralvagonzavod_organization = {
+	include = generic_tank_refurbishment_plant_organization
+	icon = GFX_SOV_uralvagonzavod_organization
+	allowed = {	
+		tag = SOV
+		has_dlc = "Arms Against Tyranny"
+	}
+}
+
+SOV_oak_organization = {
+	include = generic_multi_role_aircraft_organization
+	icon = GFX_SOV_oak_organization
+	allowed = {	
+		tag = SOV
+		has_dlc = "Arms Against Tyranny"
+	}
+}
+
+SOV_sukhoi_organization = {
+	include = generic_high_agility_fighter_aircraft_organization
+	icon = GFX_SOV_sukhoi_organization
+	allowed = {	
+		tag = SOV
+		has_dlc = "Arms Against Tyranny"
+	}
+}
+
+SOV_kamov_organization = {
+	include = generic_cas_aircraft_organization
+	icon = GFX_SOV_kamov_organization
+	allowed = {	
+		tag = SOV
+		has_dlc = "Arms Against Tyranny"
+	}
+}
+
+SOV_severnaya_verf_organization = {
+	include = generic_escort_ship_organization
+	icon = GFX_SOV_severnaya_verf_organization
+	allowed = {	
+		tag = SOV
+		has_dlc = "Arms Against Tyranny"
+	}
+}
+
+SOV_osk_organization = {
+	include = generic_task_force_ship_organization
+	icon = GFX_SOV_osk_organization
+	allowed = {	
+		tag = SOV
+		has_dlc = "Arms Against Tyranny"
+	}
+}
+
+SOV_admiralteyskie_vepfi_organization = {
+	include = generic_submarine_organization
+	icon = GFX_SOV_admiralteyskie_vepfi_organization
+	allowed = {	
+		tag = SOV
+		has_dlc = "Arms Against Tyranny"
+	}
+}
+
+SOV_zaliv_organization = {
+	include = generic_black_sea_fleet_organization
+	icon = GFX_SOV_zaliv_organization
+	allowed = {	
+		tag = SOV
+		has_dlc = "Arms Against Tyranny"
+	}
+}

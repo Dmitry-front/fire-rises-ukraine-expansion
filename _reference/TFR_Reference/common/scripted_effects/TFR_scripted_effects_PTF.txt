@@ -1,0 +1,306 @@
+PTF_add_national_support = {
+	custom_effect_tooltip = PTF_add_national_support_tooltip
+	add_to_variable = {
+		var = PTF_national_support_var
+		value = PTF_national_support_var_temp
+	}
+	clamp_variable = {
+		var = PTF_national_support_var
+		min = 0
+		max = 1
+	}
+	hidden_effect = {
+		remove_ideas = PTF_lower_national_support_idea
+		remove_ideas = PTF_low_national_support_idea
+		remove_ideas = PTF_medium_national_support_idea
+		remove_ideas = PTF_high_national_support_idea
+		remove_ideas = PTF_higher_national_support_idea
+		if = {
+			limit = {
+				check_variable = {
+					var = PTF_national_support_var
+					value = 0.2
+					compare = less_than
+				}
+			}
+			add_ideas = PTF_lower_national_support_idea
+		}
+		else_if = {
+			limit = {
+				check_variable = {
+					var = PTF_national_support_var
+					value = 0.2
+					compare = greater_than_or_equals
+				}
+				check_variable = {
+					var = PTF_national_support_var
+					value = 0.4
+					compare = less_than
+				}
+			}
+			add_ideas = PTF_low_national_support_idea
+		}
+		else_if = {
+			limit = {
+				check_variable = {
+					var = PTF_national_support_var
+					value = 0.4
+					compare = greater_than_or_equals
+				}
+				check_variable = {
+					var = PTF_national_support_var
+					value = 0.6
+					compare = less_than
+				}
+			}
+			add_ideas = PTF_medium_national_support_idea
+		}
+		else_if = {
+			limit = {
+				check_variable = {
+					var = PTF_national_support_var
+					value = 0.6
+					compare = greater_than_or_equals
+				}
+				check_variable = {
+					var = PTF_national_support_var
+					value = 0.8
+					compare = less_than
+				}
+			}
+			add_ideas = PTF_high_national_support_idea
+		}
+		else_if = {
+			limit = {
+				check_variable = {
+					var = PTF_national_support_var
+					value = 0.8
+					compare = greater_than_or_equals
+				}
+			}
+			add_ideas = PTF_higher_national_support_idea
+		}
+	}
+}
+
+PTF_popularity_change = {
+	#National Socialist
+	set_variable = {
+		var = PTF_natsoc_popularity_var
+		value = party_popularity@national_socialist
+	}
+	set_variable = {
+		var = PTF_natsoc_popularity_dynamic_var
+		value = PTF_natsoc_popularity_var
+	}
+	multiply_variable = {
+		var = PTF_natsoc_popularity_dynamic_var
+		value = 0.2
+	}
+	#Fascist
+	set_variable = {
+		var = PTF_fascist_popularity_var
+		value = party_popularity@fascist
+	}
+	set_variable = {
+		var = PTF_fascist_popularity_dynamic_var
+		value = PTF_fascist_popularity_var
+	}
+	#Despotic
+	set_variable = {
+		var = PTF_nationalist_popularity_var
+		value = party_popularity@nationalist
+	}
+	set_variable = {
+		var = PTF_nationalist_popularity_dynamic_var
+		value = PTF_nationalist_popularity_var
+	}
+	multiply_variable = {
+		var = PTF_nationalist_popularity_dynamic_var
+		value = 0.2
+	}
+	#Authdem
+	set_variable = {
+		var = PTF_authdem_popularity_var
+		value = party_popularity@authoritarian_democrat
+	}
+	set_variable = {
+		var = PTF_authdem_popularity_dynamic_var
+		value = PTF_authdem_popularity_var
+	}
+	multiply_variable = {
+		var = PTF_authdem_popularity_dynamic_var
+		value = 0.25
+	}
+	#GOP
+	set_variable = {
+		var = PTF_conservative_popularity_var
+		value = party_popularity@conservative
+	}
+	set_variable = {
+		var = PTF_conservative_dynamic_var
+		value = PTF_conservative_popularity_var
+	}
+	multiply_variable = {
+		var = PTF_conservative_dynamic_var
+		value = -1
+	}
+}
+
+PTF_increase_rousseau_power = {
+	custom_effect_tooltip = PTF_increase_rousseau_power_tt
+	add_to_variable = {
+		var = PTF_rousseau_power_var
+		value = 1
+	}
+	clamp_variable = {
+		var = PTF_rousseau_power_var
+		min = 1
+		max = 7
+	}
+}
+
+PTF_decrease_rousseau_power = {
+	custom_effect_tooltip = PTF_decrease_rousseau_power_tt
+	add_to_variable = {
+		var = PTF_rousseau_power_var
+		value = -1
+	}
+	clamp_variable = {
+		var = PTF_rousseau_power_var
+		min = 1
+		max = 7
+	}
+}
+
+PTF_increase_popular_support = {
+	if = {
+		limit = {
+			has_idea = PTF_lower_popular_support_idea
+		}
+		swap_ideas = {
+			remove_idea = PTF_lower_popular_support_idea
+			add_idea = PTF_low_popular_support_idea
+		}
+	}
+	else_if = {
+		limit = {
+			has_idea = PTF_low_popular_support_idea
+		}
+		swap_ideas = {
+			remove_idea = PTF_low_popular_support_idea
+			add_idea = PTF_medium_popular_support_idea
+		}
+	}
+	else_if = {
+		limit = {
+			has_idea = PTF_medium_popular_support_idea
+		}
+		swap_ideas = {
+			remove_idea = PTF_medium_popular_support_idea
+			add_idea = PTF_high_popular_support_idea
+		}
+	}
+	else_if = {
+		limit = {
+			has_idea = PTF_high_popular_support_idea
+		}
+		swap_ideas = {
+			remove_idea = PTF_high_popular_support_idea
+			add_idea = PTF_higher_popular_support_idea
+		}
+	}
+}
+
+PTF_remove_popular_support = {
+	if = {
+		limit = {
+			has_idea = PTF_lower_popular_support_idea
+		}
+		remove_ideas = PTF_lower_popular_support_idea
+	}
+	else_if = {
+		limit = {
+			has_idea = PTF_low_popular_support_idea
+		}
+		remove_ideas = PTF_low_popular_support_idea
+	}
+	else_if = {
+		limit = {
+			has_idea = PTF_medium_popular_support_idea
+		}
+		remove_ideas = PTF_medium_popular_support_idea
+	}
+	else_if = {
+		limit = {
+			has_idea = PTF_high_popular_support_idea
+		}
+		remove_ideas = PTF_high_popular_support_idea
+	}
+	else_if = {
+		limit = {
+			has_idea = PTF_higher_popular_support_idea
+		}
+		remove_ideas = PTF_higher_popular_support_idea
+	}
+}
+
+PTF_increase_ideological_propoganda = {
+	if = {
+		limit = {
+			NOT = {
+				OR = {
+					has_idea = PTF_ideological_propoganda_idea
+					has_idea = PTF_ideological_propoganda_idea2
+					has_idea = PTF_ideological_propoganda_idea3
+				}
+			}
+		}
+		add_ideas = PTF_ideological_propoganda_idea
+	}
+	else_if = {
+		limit = {
+			has_idea = PTF_ideological_propoganda_idea
+		}
+		swap_ideas = {
+			remove_idea = PTF_ideological_propoganda_idea
+			add_idea = PTF_ideological_propoganda_idea2
+		}
+	}
+	else_if = {
+		limit = {
+			has_idea = PTF_ideological_propoganda_idea2
+		}
+		swap_ideas = {
+			remove_idea = PTF_ideological_propoganda_idea2
+			add_idea = PTF_ideological_propoganda_idea3
+		}
+	}
+}
+
+#Debug
+PTF_local_theatre_win_debug_effect = {
+	every_other_country = {
+		limit = {
+			NOT = {
+				tag = PTF
+			}
+			OR = {
+				tag = GMA
+				tag = PTF
+				tag = ATP
+				tag = NCY
+				tag = JDL
+				tag = LCN
+				tag = NYP
+				tag = VER
+				tag = SAT
+				tag = NEG
+			}
+		}
+		every_core_state = {
+			transfer_state_to = PTF
+		}
+	}
+	country_event = ptf.1
+}

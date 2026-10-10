@@ -1,0 +1,3217 @@
+###########################
+# Atomwaffen Events
+###########################
+add_namespace = atom
+
+#Endsiege
+country_event = {
+	id = atom.0
+	title = atom.0.t
+	desc = atom.0.desc
+	picture = GFX_event_ATW_endsieg
+	fire_only_once = yes
+	is_triggered_only = yes
+	trigger = {
+		tag = ATW
+	}
+	immediate = {
+		hidden_effect = {
+			log = "[GetDateText]: [Root.GetName]: event atom.0 immediate"
+		}
+	}
+	option = {
+		#Our Ultimate Victory
+		name = atom.0.a
+		trigger = {
+			NOT = {
+				has_country_flag = ATW_satanist_victory_flag
+			}
+		}
+		custom_effect_tooltip = you_have_won_tooltip
+		hidden_effect = {
+			news_event = {
+				id = atom.89
+			}
+		}
+	}
+	option = {
+		#Sic Transit Gloria Mundi
+		name = atom.0.b
+		trigger = {
+			has_country_flag = ATW_satanist_victory_flag
+		}
+		custom_effect_tooltip = you_have_won_tooltip
+		hidden_effect = {
+			news_event = {
+				id = atom.89
+			}
+		}
+	}
+}
+
+#Wiping the Slate Clean
+country_event = {
+	id = atom.1
+	title = atom.1.t
+	desc = atom.1.desc
+	picture = GFX_event_ATW_wiping_the_slate_clean
+	fire_only_once = yes
+	is_triggered_only = yes
+	trigger = {
+		tag = ATW
+	}
+	immediate = {
+		hidden_effect = {
+			log = "[GetDateText]: [Root.GetName]: event atom.1 immediate"
+		}
+	}
+	option = {
+		name = atom.1.a
+	}
+}
+
+#Popular Revolt Uprising
+country_event = {
+	id = atom.2
+	title = atom.2.t
+	desc = atom.2.desc
+	picture = GFX_event_ATW_anarchy_crushed_under_our_boots
+	fire_only_once = yes
+	is_triggered_only = yes
+	trigger = {
+		tag = ATW
+	}
+	immediate = {
+		hidden_effect = {
+			log = "[GetDateText]: [Root.GetName]: event atom.2 immediate"
+			FPM = {
+				kill_country_leader = yes
+			}
+			CAC_paul_harrell_char = {
+				set_nationality = FPM
+				add_country_leader_role = {
+					country_leader = {
+						ideology = right_libertarianism
+						traits = { 
+							hos_expert_minuteman 
+						}
+					}
+				}
+			}
+			every_state = {
+				limit = {
+					is_owned_by = ATW
+					OR = {
+						AND = {
+							NOT = { is_core_of = ATW }
+							compliance < 40
+						}
+						NOT = { is_controlled_by = ATW }
+					}
+				}
+				add_core_of = FPM
+			}
+			every_state = {
+				limit = { is_core_of = FPM }
+				transfer_state_to = FPM
+			}
+			FPM = {
+				add_ideas = FPM_hiers_to_the_revolution_idea
+				inherit_technology = ATW
+				promote_character = CAC_paul_harrell_char
+				load_oob = "FPM_revolt"
+				every_controlled_state = {
+					limit = {
+						is_core_of = FPM
+					}
+					create_unit = {
+						division = "division_template = \"Volunteer Militia\" start_experience_factor = 0.1"
+						owner = FPM
+					}
+					create_unit = {
+						division = "division_template = \"Volunteer Militia\" start_experience_factor = 0.1"
+						owner = FPM
+					}
+				}
+				declare_war_on = {
+					target = ATW
+					type = annex_everything
+				}
+			}
+			CAN = {
+				add_to_faction = FPM
+			}
+		}
+	}
+	option = {
+		name = atom.2.a
+	}
+}
+
+# Homemade Tank Battalions Created
+country_event = {
+	id = atom.3
+	title = atom.3.t
+	desc = atom.3.desc
+	picture = GFX_event_ATW_homemade_tank_division
+	fire_only_once = yes
+	is_triggered_only = yes
+	trigger = {
+		tag = ATW
+	}
+	immediate = {
+		hidden_effect = {
+			log = "[GetDateText]: [Root.GetName]: event atom.3 immediate"
+			set_technology = {
+				tech_signal_company = 1
+			}
+			if = {
+				limit = {
+					NOT = {
+						has_dlc = "No Step Back"
+					}
+				}
+				set_technology = {
+					main_battle_tank1 = 1
+				}
+			}
+			if = {
+				limit = {
+					has_dlc = "No Step Back"
+				}
+				set_technology = {
+					basic_medium_tank_chassis = 1
+					engine_tech_1 = 1
+				}
+			}
+		}
+	}
+	option = {
+		name = atom.3.a
+		hidden_effect = {
+			load_oob = "ATW_killdozer"
+			country_event = {
+				id = atom.4
+				days = 20
+			}
+		}
+	}
+}
+
+#Jailbirds
+country_event = {
+	id = atom.4
+	title = atom.4.t
+	desc = atom.4.desc
+	picture = GFX_event_ATW_jailbirds
+	fire_only_once = yes
+	is_triggered_only = yes
+	trigger = {
+		tag = ATW
+	}
+	immediate = {
+		hidden_effect = {
+			log = "[GetDateText]: [Root.GetName]: event atom.4 immediate"
+			random_owned_controlled_state = {
+				limit = {
+					is_capital = yes
+				}
+				set_temp_variable = {
+					var = USA_recruit_militia_tooltip_var_temp
+					value = 2
+				}
+				custom_effect_tooltip = USA_raise_militia_state_tooltip
+				hidden_effect = {
+					create_unit = {
+						division = "division_template = \"Volunteer Militia\" start_experience_factor = 0.1"
+						owner = ROOT
+					}
+					create_unit = {
+						division = "division_template = \"Volunteer Militia\" start_experience_factor = 0.1"
+						owner = ROOT
+					}
+				}
+			}
+		}
+	}
+	option = {
+		name = atom.4.a
+		effect_tooltip = {
+			random_owned_controlled_state = {
+				limit = {
+					is_capital = yes
+				}
+				set_temp_variable = {
+					var = USA_recruit_militia_tooltip_var_temp
+					value = 2
+				}
+				custom_effect_tooltip = USA_raise_militia_state_tooltip
+				hidden_effect = {
+					create_unit = {
+						division = "division_template = \"Volunteer Militia\" start_experience_factor = 0"
+						owner = ROOT
+					}
+					create_unit = {
+						division = "division_template = \"Volunteer Militia\" start_experience_factor = 0"
+						owner = ROOT
+					}
+				}
+			}
+		}
+	}
+}
+
+#Satanists Secure Power
+country_event = {
+	id = atom.5
+	title = atom.5.t
+	desc = atom.5.desc
+	picture = GFX_event_ATW_satanists_secure_power
+	fire_only_once = yes
+	is_triggered_only = yes
+	trigger = {
+		tag = ATW
+	}
+	immediate = {
+		hidden_effect = {
+			log = "[GetDateText]: [Root.GetName]: event atom.5 immediate"
+			remove_power_balance = {
+				id = ATW_religion_bop
+			}
+			set_country_flag = ATW_satanist_victory_flag
+			promote_character = ATW_joshua_sutter_char
+			add_ideas = ATW_joshua_sutter_hog
+			country_event = {
+				id = atom.83
+				days = 14
+			}
+			focus_unlock = yes
+		}
+	}
+	option = {
+		name = atom.5.a
+		effect_tooltip = {
+			remove_power_balance = {
+				id = ATW_religion_bop
+			}
+			promote_character = ATW_joshua_sutter_char
+			add_ideas = ATW_joshua_sutter_hog
+			focus_unlock = yes
+		}
+	}
+}
+
+#A New Beginning
+country_event = {
+	id = atom.6
+	title = atom.6.t
+	desc = atom.6.desc
+	picture = GFX_event_ATW_a_new_beginning
+	fire_only_once = yes
+	is_triggered_only = yes
+	trigger = {
+		tag = ATW
+	}
+	immediate = {
+		hidden_effect = {
+			log = "[GetDateText]: [Root.GetName]: event atom.6 immediate"
+			USA_civil_war_over = yes
+			set_country_flag = ATW_reunified_flag
+			set_capital = {
+				state = 931
+				remember_old_capital = no
+			}
+			if = {
+				limit = {
+					has_country_flag = ATW_satanist_victory_flag
+				}
+				set_cosmetic_tag = ATW_reunified_satanist
+				news_event = {
+					id = news.162
+					hours = 6
+				}
+			}
+			else_if = {
+				limit = {
+					has_country_flag = ATW_christian_victory_flag
+				}
+				set_cosmetic_tag = ATW_reunified_christian
+				news_event = {
+					id = news.555
+					hours = 6
+				}
+			}
+			else = {
+				set_cosmetic_tag = ATW_reunified
+				news_event = {
+					id = news.165
+					hours = 6
+				}
+			}
+			country_event = {
+				id = atom.82
+				days = 14
+			}
+			CAN = {
+				country_event = {
+					id = canada.14
+				}
+			}
+			focus_unlock = yes
+		}
+	}
+	option = {
+		name = atom.6.a
+		effect_tooltip = {
+			set_cosmetic_tag = ATW_reunified
+			set_capital = {
+				state = 931
+				remember_old_capital = no
+			}
+			focus_unlock = yes
+		}
+	}
+}
+
+# The Flames of Fanaticism
+country_event = {
+	id = atom.7
+	title = atom.7.t
+	desc = atom.7.d
+	picture = GFX_Washington_Painting_Fire
+	fire_only_once = yes
+	is_triggered_only = yes
+	trigger = {
+		tag = ATW
+	}
+	immediate = {
+		hidden_effect = {
+			log = "[GetDateText]: [Root.GetName]: event atom.7 immediate"
+		}
+	}
+	option = {
+		name = atom.7.a
+	}
+}
+
+#Flordia Unified
+country_event = {
+	id = atom.8
+	title = atom.8.t
+	desc = atom.8.d
+	picture = GFX_event_ATW_florida_unified
+	fire_only_once = yes
+	is_triggered_only = yes
+	trigger = {
+		tag = ATW
+	}
+	immediate = {
+		hidden_effect = {
+			log = "[GetDateText]: [Root.GetName]: event atom.8 immediate"
+			set_country_flag = ATW_flordia_unified_flag
+			set_capital = {
+				state = 936
+				remember_old_capital = yes
+			}
+			add_to_variable = {
+				var = ATW_military_army_attack_factor_dynamic_var
+				value = -0.1
+			}
+			add_to_variable = {
+				var = ATW_military_army_defence_factor_dynamic_var
+				value = -0.1
+			}
+			focus_unlock = yes
+			USA_remove_country_cores_effect = yes
+		}
+	}
+	option = {
+		name = atom.8.a
+		effect_tooltip = {
+			unlock_national_focus = ATW_consolidate_the_command
+			set_country_flag = ATW_flordia_unified_flag
+			set_capital = {
+				state = 936
+				remember_old_capital = yes
+			}
+			focus_unlock = yes
+			swap_ideas = {
+				remove_idea = ATW_heralds_of_the_apocalypse_dummy_idea
+				add_idea = ATW_florida_unified_idea
+			}
+		}
+	}
+}
+
+#PF invite to the national front
+country_event = {
+	id = atom.9
+	title = atom.9.t
+	desc = atom.9.d
+	picture = GFX_event_ATW_national_front_membership_secured
+	fire_only_once = yes
+	is_triggered_only = yes
+	trigger = {
+		tag = ATW
+	}
+	immediate = {
+		hidden_effect = {
+			log = "[GetDateText]: [Root.GetName]: event atom.9 immediate"
+		}
+	}
+	option = {
+		name = atom.9.a
+		ai_chance = {
+			base = 100
+		}
+		PTF = {
+			add_to_faction = ATW
+		}
+		random_owned_controlled_state = {
+			limit = {
+				is_core_of = ROOT
+				free_building_slots = {
+					building = arms_factory
+					size > 1
+					include_locked = yes
+				}
+			}
+			add_extra_state_shared_building_slots = 2
+			add_building_construction = {
+				type = arms_factory
+				level = 2
+				instant_build = yes
+			}
+		}
+		random_owned_controlled_state = {
+			limit = {
+				is_core_of = ROOT
+				free_building_slots = {
+					building = arms_factory
+					size > 1
+					include_locked = yes
+				}
+			}
+			add_extra_state_shared_building_slots = 1
+			add_building_construction = {
+				type = industrial_complex
+				level = 1
+				instant_build = yes
+			}
+		}
+		if = {
+			limit = {
+				NOT = {
+					has_idea = NSM_integrated_nationalist_militaries
+				}
+			}
+			add_ideas = NSM_integrated_nationalist_militaries
+		}
+	}
+	option = {
+		name = los.53.b
+		ai_chance = {
+			base = 0
+		}
+		PTF = {
+			country_event = {
+				id = ptf.86
+			}
+		}
+	}
+}
+
+country_event = {
+	#Re-Opening the Ratlines
+	id = atom.10
+	title = atom.10.t
+	desc = atom.10.desc
+	picture = GFX_event_ATW_reopen_the_ratlines
+	fire_only_once = yes
+	is_triggered_only = yes
+	trigger = {
+		tag = ATW
+	}
+	immediate = {
+		hidden_effect = {
+			log = "[GetDateText]: [Root.GetName]: event atom.10 immediate"
+		}
+	}
+	option = {
+		name = atom.10.a
+	}
+}
+
+country_event = {
+	#Joel Mingleton Victory
+	id = atom.11
+	title = atom.11.t
+	desc = atom.11.desc
+	picture = GFX_event_ATW_mason_returns
+	fire_only_once = yes
+	is_triggered_only = yes
+	trigger = {
+		tag = ATW
+	}
+	immediate = {
+		hidden_effect = {
+			log = "[GetDateText]: [Root.GetName]: event atom.11 immediate"
+			ATW_joel_mingleton_char = {
+				set_character_flag = ATW_returned_flag
+			}
+		}
+	}
+	option = {
+		name = atom.11.a
+		effect_tooltip = {
+			promote_character = ATW_joel_mingleton_char
+		}
+	}
+}
+
+country_event = {
+	#God Wills It
+	id = atom.12
+	title = atom.12.t
+	desc = atom.12.desc
+	picture = GFX_event_ATW_guided_by_god
+	fire_only_once = yes
+	is_triggered_only = yes
+	minor_flavor = yes
+	trigger = {
+		tag = ATW
+	}
+	immediate = {
+		hidden_effect = {
+			log = "[GetDateText]: [Root.GetName]: event atom.12 immediate"
+			add_manpower = -12
+		}
+	}
+	option = {
+		name = atom.12.a
+		hidden_effect = {
+			add_manpower = -12
+		}
+	}
+}
+
+country_event = {
+	#National Conference Breaks Down
+	id = atom.13
+	title = atom.13.t
+	desc = atom.13.desc
+	picture = GFX_event_ATW_national_congress_breaks_down
+	fire_only_once = yes
+	is_triggered_only = yes
+	trigger = {
+		tag = ATW
+	}
+	immediate = {
+		hidden_effect = {
+			log = "[GetDateText]: [Root.GetName]: event atom.13 immediate"
+			set_country_flag = ATW_national_conference_breaks_down_flag
+			leave_faction = yes
+			country_event = {
+				id = atom.14
+				days = 14
+			}
+			news_event = atom.67
+			add_to_variable = {
+				var = ATW_politics_suspicion_weekly_dynamic_var
+				value = -0.002
+			}
+			set_variable = {
+				var = ATW_suspicion_var
+				value = 0
+			}
+		}
+	}
+	option = {
+		name = atom.13.a
+		ai_chance = {
+			base = 100
+		}
+		effect_tooltip = {
+			leave_faction = yes
+			swap_ideas = {
+				remove_idea = ATW_national_front_idea
+				add_idea = ATW_doctrine_of_destruction_dummy_idea
+			}
+		}
+	}
+}
+
+country_event = {
+	#With Or Without
+	id = atom.14
+	title = atom.14.t
+	desc = atom.14.desc
+	picture = GFX_event_ATW_national_congress_breaks_down
+	fire_only_once = yes
+	is_triggered_only = yes
+	trigger = {
+		tag = ATW
+	}
+	immediate = {
+		hidden_effect = {
+			log = "[GetDateText]: [Root.GetName]: event atom.14 immediate"
+			every_other_country = {
+				limit = {
+					USA_is_nationalist_tag = yes
+				}
+				ROOT = {
+					declare_war_on = {
+						target = PREV
+						type = annex_everything
+					}
+				}
+			}
+		}
+	}
+	option = {
+		#We'll do it the hard way
+		name = atom.14.a
+		ai_chance = {
+			base = 100
+		}
+		effect_tooltip = {
+			every_other_country = {
+				limit = {
+					USA_is_nationalist_tag = yes
+				}
+				ROOT = {
+					declare_war_on = {
+						target = PREV
+						type = annex_everything
+					}
+				}
+			}
+		}
+	}
+}
+
+country_event = {
+	#A Broadcast To Remember
+	id = atom.15
+	title = atom.15.t
+	desc = atom.15.desc
+	picture = GFX_event_ATW_a_broadcast_to_remember
+	fire_only_once = yes
+	is_triggered_only = yes
+	trigger = {
+		tag = ATW
+	}
+	immediate = {
+		hidden_effect = {
+			log = "[GetDateText]: [Root.GetName]: event atom.15 immediate"
+			retire_ideology_leader = national_socialist
+			ATW_james_mason_char = {
+				set_character_flag = ATW_returned_flag
+				promote_leader = yes
+			}
+			news_event = {
+				id = atom.17
+				hours = 6
+			}
+		}
+	}
+	option = {
+		#The forefather returns.
+		name = atom.15.a
+		effect_tooltip = {
+			ATW_james_mason_char = {
+				add_country_leader_role = {
+					promote_leader = yes
+					country_leader = {
+						ideology = accelerationist
+						traits = {
+							hos_the_final_revolutionary
+						}
+					}
+				}
+				add_field_marshal_role = {
+					skill = 2
+					attack_skill = 2
+					defense_skill = 1
+					planning_skill = 2
+					logistics_skill = 2
+					traits = {
+						brilliant_strategist
+						engineer_officer
+						organizer
+						inspirational_leader
+					}
+				}
+			}
+		}
+	}
+}
+
+country_event = {
+	#The Second In Command
+	id = atom.16
+	title = atom.16.t
+	desc = atom.16.desc
+	picture = GFX_event_ATW_consolidating_the_command
+	fire_only_once = yes
+	is_triggered_only = yes
+	trigger = {
+		tag = ATW
+	}
+	immediate = {
+		hidden_effect = {
+			log = "[GetDateText]: [Root.GetName]: event atom.16 immediate"
+		}
+	}
+	option = {
+		#Keep Russell
+		name = atom.16.a
+		ai_chance = {
+			factor = 3
+				modifier = {
+					factor = 0
+						OR = {
+							has_game_rule = {
+							    rule = The_ATW_path
+								option = The_ATW_path_1
+							}
+							has_game_rule = {
+								rule = The_ATW_path
+								option = The_ATW_path_2
+							}
+						}
+					}
+				}
+		complete_national_focus = ATW_siege
+	}
+	option = {
+		#Side with Christians
+		name = atom.16.b
+		ai_chance = {
+			factor = 3
+				modifier = {
+					factor = 0
+						OR = {
+							has_game_rule = {
+							    rule = The_ATW_path
+								option = The_ATW_path_1
+							}
+							has_game_rule = {
+								rule = The_ATW_path
+								option = The_ATW_path_3
+							}
+						}
+					}
+				}
+		complete_national_focus = ATW_resurrection
+	}
+	option = {
+		#Side with 09A
+		name = atom.16.c
+		ai_chance = {
+			factor = 3
+				modifier = {
+					factor = 0
+						OR = {
+							has_game_rule = {
+								rule = The_ATW_path
+								option = The_ATW_path_2
+							}
+							has_game_rule = {
+								rule = The_ATW_path
+								option = The_ATW_path_3
+							}
+						}
+					}
+				}
+		complete_national_focus = ATW_insurrection
+	}
+}
+
+news_event = {
+	#James Mason Returns
+	id = atom.17
+	title = atom.17.t
+	desc = atom.17.desc
+	picture = GFX_ATW_james_mason_returns
+	is_triggered_only = yes
+	#major = yes
+	immediate = {
+		hidden_effect = {
+			log = "[GetDateText]: [Root.GetName]: event atom.17 immediate"
+		}
+	}
+	option = {
+		name = atom.17.a
+		
+		trigger = {
+			tag = ATW
+		}
+	}
+	option = {
+		name = atom.17.b
+		
+		trigger = {
+			NOT = {
+				tag = ATW
+			}
+		}
+	}
+}
+
+country_event = {
+	#Wolf in Sheep's Clothing
+	id = atom.18
+	title = atom.18.t
+	desc = atom.18.desc
+	picture = GFX_event_ATW_wolf_in_sheeps_clothing
+	fire_only_once = yes
+	is_triggered_only = yes
+	minor_flavor = yes
+	trigger = {
+		tag = ATW
+	}
+	immediate = {
+		hidden_effect = {
+			log = "[GetDateText]: [Root.GetName]: event atom.18 immediate"
+		}
+	}
+	option = {
+		name = atom.18.a
+	}
+}
+
+country_event = {
+	#Wildlife in Hitler-Strasse
+	id = atom.19
+	title = atom.19.t
+	desc = atom.19.desc
+	picture = GFX_event_ATW_mason_returns
+	fire_only_once = yes
+	is_triggered_only = yes
+	minor_flavor = yes
+	trigger = {
+		tag = ATW
+	}
+	immediate = {
+		hidden_effect = {
+			log = "[GetDateText]: [Root.GetName]: event atom.19 immediate"
+		}
+	}
+	option = {
+		name = atom.19.a
+	}
+}
+
+country_event = {
+	#Seed of Misanthropy
+	id = atom.20
+	title = atom.20.t
+	desc = atom.20.desc
+	picture = GFX_event_ATW_seed_of_misantroplophy
+	fire_only_once = yes
+	is_triggered_only = yes
+	minor_flavor = yes
+	trigger = {
+		tag = ATW
+	}
+	immediate = {
+		hidden_effect = {
+			log = "[GetDateText]: [Root.GetName]: event atom.20 immediate"
+		}
+	}
+	option = {
+		name = atom.20.a
+	}
+}
+
+#Pride Before Destruction
+country_event = {
+	id = atom.21
+	title = atom.21.t
+	desc = atom.21.desc
+	picture = GFX_event_ATW_pride_before_destruction
+	fire_only_once = yes
+	is_triggered_only = yes
+	minor_flavor = yes
+	trigger = {
+		tag = ATW
+	}
+	immediate = {
+		hidden_effect = {
+			log = "[GetDateText]: [Root.GetName]: event atom.21 immediate"
+		}
+	}
+	option = {
+		name = atom.20.a
+	}
+}
+
+#Our Urges
+country_event = {
+	id = atom.22
+	title = atom.22.t
+	desc = atom.22.desc
+	picture = GFX_event_ATW_our_urges
+	fire_only_once = yes
+	is_triggered_only = yes
+	minor_flavor = yes
+	trigger = {
+		tag = ATW
+	}
+	immediate = {
+		hidden_effect = {
+			log = "[GetDateText]: [Root.GetName]: event atom.22 immediate"
+		}
+	}
+	option = {
+		name = atom.22.a
+	}
+}
+
+#Unused
+country_event = {
+	### puppet aog
+	id = atom.23
+	title = atom.23.t
+	desc = atom.23.desc
+	picture = GFX_event_ATW_mason_returns
+	fire_only_once = yes
+	is_triggered_only = yes
+	trigger = {
+		tag = ATW
+	}
+	immediate = {
+		log = "[GetDateText]: [Root.GetName]: event atom.23 immediate"
+		hidden_effect = {
+			puppet = {
+				target = IKA
+				end_wars = yes
+			}
+			add_war_support = 0.05
+			add_political_power = 75
+		}
+	}
+	option = {
+		name = atom.23.a
+		effect_tooltip = {
+			puppet = {
+				target = IKA
+				end_wars = yes
+			}
+			add_war_support = 0.05
+			add_political_power = 75
+		}
+	}
+}
+
+#Unused
+country_event = {
+	id = atom.24
+	title = atom.24.t
+	desc = atom.24.desc
+	picture = GFX_event_ATW_mason_returns
+	fire_only_once = yes
+	is_triggered_only = yes
+	trigger = {
+		tag = ATW
+	}
+	immediate = {
+		hidden_effect = {
+			log = "[GetDateText]: [Root.GetName]: event atom.24 immediate"
+		}
+	}
+	option = {
+		name = atom.24.a
+	}
+}
+
+#Unused
+country_event = {
+	id = atom.25
+	title = atom.25.t
+	desc = atom.25.desc
+	picture = GFX_event_ATW_mason_returns
+	fire_only_once = yes
+	is_triggered_only = yes
+	trigger = {
+		tag = ATW
+	}
+	immediate = {
+		hidden_effect = {
+			log = "[GetDateText]: [Root.GetName]: event atom.25 immediate"
+		}
+	}
+	option = {
+		name = atom.25.a
+	}
+}
+
+#Guided by God
+country_event = {
+	id = atom.26
+	title = atom.26.t
+	desc = atom.26.desc
+	picture = GFX_event_ATW_mason_returns
+	fire_only_once = yes
+	is_triggered_only = yes
+	trigger = {
+		tag = ATW
+	}
+	immediate = {
+		hidden_effect = {
+			log = "[GetDateText]: [Root.GetName]: event atom.26 immediate"
+		}
+	}
+	option = {
+		name = atom.26.a
+	}
+}
+
+#Prepare for the Inevitable
+country_event = {
+	id = atom.27
+	title = atom.27.t
+	desc = atom.27.desc
+	picture = GFX_event_ATW_prepare_for_the_inevitable
+	fire_only_once = yes
+	is_triggered_only = yes
+	trigger = {
+		tag = ATW
+	}
+	immediate = {
+		hidden_effect = {
+			log = "[GetDateText]: [Root.GetName]: event atom.27 immediate"
+		}
+	}
+	option = {
+		name = atom.27.a
+	}
+}
+
+country_event = {
+	#A Night Alone
+	id = atom.28
+	title = atom.28.t
+	desc = atom.28.desc
+	picture = GFX_event_ATW_prepare_for_the_inevitable
+	fire_only_once = yes
+	is_triggered_only = yes
+	trigger = {
+		tag = ATW
+	}
+	immediate = {
+		hidden_effect = {
+			log = "[GetDateText]: [Root.GetName]: event atom.28 immediate"
+		}
+	}
+	option = {
+		name = atom.28.a
+	}
+}
+
+country_event = {
+	#Conquest
+	id = atom.29
+	title = atom.29.t
+	desc = atom.29.desc
+	picture = GFX_event_ATW_conquest
+	fire_only_once = yes
+	is_triggered_only = yes
+	trigger = {
+		tag = ATW
+	}
+	immediate = {
+		hidden_effect = {
+			log = "[GetDateText]: [Root.GetName]: event atom.29 immediate"
+		}
+	}
+	option = {
+		name = atom.29.a
+	}
+}
+
+country_event = {
+	#Pestilence
+	id = atom.30
+	title = atom.30.t
+	desc = atom.30.desc
+	picture = GFX_event_ATW_pestilence
+	fire_only_once = yes
+	is_triggered_only = yes
+	trigger = {
+		tag = ATW
+	}
+	immediate = {
+		hidden_effect = {
+			log = "[GetDateText]: [Root.GetName]: event atom.30 immediate"
+		}
+	}
+	option = {
+		name = atom.30.a
+	}
+}
+
+country_event = {
+	#Poison River
+	id = atom.31
+	title = atom.31.t
+	desc = atom.31.desc
+	picture = GFX_event_ATW_damnation
+	fire_only_once = yes
+	is_triggered_only = yes
+	trigger = {
+		tag = ATW
+	}
+	immediate = {
+		hidden_effect = {
+			log = "[GetDateText]: [Root.GetName]: event atom.31 immediate"
+		}
+	}
+	option = {
+		name = atom.31.a
+	}
+}
+
+country_event = {
+	#Poison River
+	id = atom.32
+	title = atom.32.t
+	desc = atom.32.desc
+	picture = GFX_event_ATW_damnation
+	fire_only_once = yes
+	is_triggered_only = yes
+	trigger = {
+		tag = ATW
+	}
+	immediate = {
+		hidden_effect = {
+			log = "[GetDateText]: [Root.GetName]: event atom.32 immediate"
+		}
+	}
+	option = {
+		name = atom.32.a
+	}
+}
+
+country_event = {
+	#Poison River
+	id = atom.33
+	title = atom.33.t
+	desc = atom.33.desc
+	picture = GFX_event_ATW_damnation
+	fire_only_once = yes
+	is_triggered_only = yes
+	trigger = {
+		tag = ATW
+	}
+	immediate = {
+		hidden_effect = {
+			log = "[GetDateText]: [Root.GetName]: event atom.33 immediate"
+		}
+	}
+	option = {
+		name = atom.33.a
+	}
+}
+
+country_event = {
+	#Poison River
+	id = atom.34
+	title = atom.34.t
+	desc = atom.34.desc
+	picture = GFX_event_ATW_damnation
+	fire_only_once = yes
+	is_triggered_only = yes
+	trigger = {
+		tag = ATW
+	}
+	immediate = {
+		hidden_effect = {
+			log = "[GetDateText]: [Root.GetName]: event atom.34 immediate"
+		}
+	}
+	option = {
+		name = atom.34.a
+	}
+}
+
+country_event = {
+	### nuke nashville
+	id = atom.35
+	title = atom.35.t
+	desc = atom.35.desc
+	picture = GFX_event_ATW_damnation
+	fire_only_once = yes
+	is_triggered_only = yes
+	trigger = {
+		tag = ATW
+	}
+	immediate = {
+		hidden_effect = {
+			log = "[GetDateText]: [Root.GetName]: event atom.35 immediate"
+		}
+	}
+	option = {
+		name = atom.35.a
+	}
+}
+
+country_event = {
+	#The Fallen Angel
+	id = atom.36
+	title = atom.36.t
+	desc = atom.36.desc
+	picture = GFX_event_ATW_demented_mercy
+	fire_only_once = yes
+	is_triggered_only = yes
+	trigger = {
+		tag = ATW
+	}
+	immediate = {
+		hidden_effect = {
+			log = "[GetDateText]: [Root.GetName]: event atom.36 immediate"
+		}
+	}
+	option = {
+		name = atom.36.a
+	}
+}
+
+country_event = {
+	#Return of the Princess
+	id = atom.37
+	title = atom.37.t
+	desc = atom.37.desc
+	picture = GFX_event_ATW_return_of_the_princess
+	fire_only_once = yes
+	is_triggered_only = yes
+	trigger = {
+		tag = ATW
+	}
+	immediate = {
+		hidden_effect = {
+			log = "[GetDateText]: [Root.GetName]: event atom.37 immediate"
+			add_manpower = -1
+		}
+	}
+	option = {
+		name = atom.37.a
+		effect_tooltip = {
+			add_manpower = -1
+		}
+	}
+}
+
+country_event = {
+	#The Knife that Cuts Deepest
+	id = atom.38
+	title = atom.38.t
+	desc = atom.38.desc
+	picture = GFX_event_ATW_the_knife_that_cuts_deepest
+	fire_only_once = yes
+	is_triggered_only = yes
+	trigger = {
+		tag = ATW
+	}
+	immediate = {
+		hidden_effect = {
+			log = "[GetDateText]: [Root.GetName]: event atom.38 immediate"
+		}
+	}
+	option = {
+		name = atom.38.a
+	}
+}
+
+country_event = {
+	#particular Justice
+	id = atom.39
+	title = atom.39.t
+	desc = atom.39.desc
+	picture = GFX_event_ATW_particular_justice
+	fire_only_once = yes
+	is_triggered_only = yes
+	trigger = {
+		tag = ATW
+	}
+	immediate = {
+		hidden_effect = {
+			log = "[GetDateText]: [Root.GetName]: event atom.39 immediate"
+		}
+	}
+	option = {
+		name = atom.39.a
+	}
+}
+
+country_event = {
+	#Triumph and Transcendence
+	id = atom.40
+	title = atom.40.t
+	desc = atom.40.desc
+	picture = GFX_event_ATW_triumph_and_transcendence
+	fire_only_once = yes
+	is_triggered_only = yes
+	trigger = {
+		tag = ATW
+	}
+	immediate = {
+		hidden_effect = {
+			log = "[GetDateText]: [Root.GetName]: event atom.40 immediate"
+		}
+	}
+	option = {
+		name = atom.40.a
+	}
+}
+
+country_event = {
+	#Golden Circle
+	id = atom.41
+	title = atom.41.t
+	desc = atom.41.desc
+	picture = GFX_event_ATW_golden_circle
+	fire_only_once = yes
+	is_triggered_only = yes
+	trigger = {
+		tag = ATW
+	}
+	immediate = {
+		hidden_effect = {
+			log = "[GetDateText]: [Root.GetName]: event atom.41 immediate"
+		}
+	}
+	option = {
+		name = atom.41.a
+	}
+}
+
+country_event = {
+	#Solemn Penance
+	id = atom.42
+	title = atom.42.t
+	desc = atom.42.desc
+	picture = GFX_event_ATW_solemn_penance
+	fire_only_once = yes
+	is_triggered_only = yes
+	trigger = {
+		tag = ATW
+	}
+	immediate = {
+		hidden_effect = {
+			log = "[GetDateText]: [Root.GetName]: event atom.42 immediate"
+			add_manpower = -75000
+		}
+	}
+	option = {
+		name = atom.42.a
+		effect_tooltip = {
+			add_manpower = -75000
+		}
+	}
+}
+
+country_event = {
+	#Dooms advent
+	id = atom.43
+	title = atom.43.t
+	desc = atom.43.desc
+	picture = GFX_event_ATW_dooms_advent
+	fire_only_once = yes
+	is_triggered_only = yes
+	trigger = {
+		tag = ATW
+	}
+	immediate = {
+		hidden_effect = {
+			log = "[GetDateText]: [Root.GetName]: event atom.43 immediate"
+		}
+	}
+	option = {
+		name = atom.43.a
+	}
+}
+
+country_event = {
+	#Eternal Devotion
+	id = atom.44
+	title = atom.44.t
+	desc = atom.44.desc
+	picture = GFX_event_ATW_eternal_devotion
+	fire_only_once = yes
+	is_triggered_only = yes
+	trigger = {
+		tag = ATW
+	}
+	immediate = {
+		hidden_effect = {
+			log = "[GetDateText]: [Root.GetName]: event atom.44 immediate"
+		}
+	}
+	option = {
+		name = atom.44.a
+	}
+}
+
+country_event = {
+	#clarity of faith
+	id = atom.45
+	title = atom.45.t
+	desc = atom.45.desc
+	picture = GFX_event_ATW_clarity_of_faith
+	fire_only_once = yes
+	is_triggered_only = yes
+	trigger = {
+		tag = ATW
+	}
+	immediate = {
+		hidden_effect = {
+			log = "[GetDateText]: [Root.GetName]: event atom.45 immediate"
+		}
+	}
+	option = {
+		name = atom.45.a
+	}
+}
+
+country_event = {
+	#Southern Carnage
+	id = atom.46
+	title = atom.46.t
+	desc = atom.46.desc
+	picture = GFX_event_ATW_southern_carnage
+	fire_only_once = yes
+	is_triggered_only = yes
+	trigger = {
+		tag = ATW
+	}
+	immediate = {
+		hidden_effect = {
+			log = "[GetDateText]: [Root.GetName]: event atom.46 immediate"
+		}
+	}
+	option = {
+		name = atom.46.a
+	}
+}
+
+country_event = {
+	#Sacred Sovereignty
+	id = atom.47
+	title = atom.47.t
+	desc = atom.47.desc
+	picture = GFX_event_ATW_southern_carnage
+	fire_only_once = yes
+	is_triggered_only = yes
+	trigger = {
+		tag = ATW
+	}
+	immediate = {
+		hidden_effect = {
+			log = "[GetDateText]: [Root.GetName]: event atom.47 immediate"
+		}
+	}
+	option = {
+		name = atom.47.a
+	}
+}
+
+country_event = {
+	#Unholy Torment
+	id = atom.48
+	title = atom.48.t
+	desc = atom.48.desc
+	picture = GFX_event_ATW_southern_carnage
+	fire_only_once = yes
+	is_triggered_only = yes
+	trigger = {
+		tag = ATW
+	}
+	immediate = {
+		hidden_effect = {
+			log = "[GetDateText]: [Root.GetName]: event atom.48 immediate"
+		}
+	}
+	option = {
+		name = atom.48.a
+	}
+}
+
+country_event = {
+	#AWD Asks to Join National Front
+	id = atom.49
+	title = atom.49.t
+	desc = atom.49.desc
+	picture = GFX_event_ATW_national_front_membership_secured
+	fire_only_once = yes
+	is_triggered_only = yes
+	trigger = {
+		OR = {
+			tag = NSM
+			tag = PTF
+		}
+	}
+	immediate = {
+		hidden_effect = {
+			log = "[GetDateText]: [Root.GetName]: event atom.49 immediate"
+		}
+	}
+	option = {
+		name = atom.49.a
+		ai_chance = {
+			base = 100
+		}
+		add_to_faction = FROM
+		custom_effect_tooltip = USA_add_to_coalition_tooltip
+		hidden_effect = {
+			every_enemy_country = {
+				declare_war_on = {
+					target = ROOT
+					type = civil_war
+				}
+			}
+		}
+		hidden_effect = {
+			every_enemy_country = {
+				every_other_country = {
+					limit = {
+						is_in_faction_with = ROOT
+					}
+					add_to_war = {
+						targeted_alliance = ROOT
+						enemy = PREV
+						hostility_reason = asked_to_join
+					}
+				}
+			}
+			FROM = {
+				country_event = atom.77
+			}
+		}
+	}
+	option = {
+		name = atom.49.b
+		ai_chance = {
+			base = 0
+		}
+	}
+}
+
+country_event = {
+	#nuke louisville
+	id = atom.50
+	title = atom.50.t
+	desc = atom.50.desc
+	picture = GFX_event_ATW_southern_carnage
+	fire_only_once = yes
+	is_triggered_only = yes
+	trigger = {
+		tag = ATW
+	}
+	immediate = {
+		hidden_effect = {
+			log = "[GetDateText]: [Root.GetName]: event atom.50 immediate"
+		}
+	}
+	option = {
+		name = atom.50.a
+	}
+}
+
+country_event = {
+	#nuke cincinnati
+	id = atom.51
+	title = atom.51.t
+	desc = atom.51.desc
+	picture = GFX_event_ATW_southern_carnage
+	fire_only_once = yes
+	is_triggered_only = yes
+	trigger = {
+		tag = ATW
+	}
+	immediate = {
+		hidden_effect = {
+			log = "[GetDateText]: [Root.GetName]: event atom.51 immediate"
+		}
+	}
+	option = {
+		name = atom.51.a
+	}
+}
+
+country_event = {
+	#nuke indianapolis
+	id = atom.52
+	title = atom.52.t
+	desc = atom.52.desc
+	picture = GFX_event_ATW_southern_carnage
+	fire_only_once = yes
+	is_triggered_only = yes
+	trigger = {
+		tag = ATW
+	}
+	immediate = {
+		hidden_effect = {
+			log = "[GetDateText]: [Root.GetName]: event atom.52 immediate"
+		}
+	}
+	option = {
+		name = atom.52.a
+	}
+}
+
+country_event = {
+	#nuke chicago
+	id = atom.53
+	title = atom.53.t
+	desc = atom.53.desc
+	picture = GFX_event_ATW_southern_carnage
+	fire_only_once = yes
+	is_triggered_only = yes
+	trigger = {
+		tag = ATW
+	}
+	immediate = {
+		hidden_effect = {
+			log = "[GetDateText]: [Root.GetName]: event atom.53 immediate"
+		}
+	}
+	option = {
+		name = atom.53.a
+	}
+}
+
+country_event = {
+	#nuke milwaukee
+	id = atom.54
+	title = atom.54.t
+	desc = atom.54.desc
+	picture = GFX_event_ATW_southern_carnage
+	fire_only_once = yes
+	is_triggered_only = yes
+	trigger = {
+		tag = ATW
+	}
+	immediate = {
+		hidden_effect = {
+			log = "[GetDateText]: [Root.GetName]: event atom.54 immediate"
+		}
+	}
+	option = {
+		name = atom.54.a
+	}
+}
+
+country_event = {
+	#nuke mineapolis
+	id = atom.55
+	title = atom.55.t
+	desc = atom.55.desc
+	picture = GFX_event_ATW_southern_carnage
+	fire_only_once = yes
+	is_triggered_only = yes
+	trigger = {
+		tag = ATW
+	}
+	immediate = {
+		hidden_effect = {
+			log = "[GetDateText]: [Root.GetName]: event atom.55 immediate"
+		}
+	}
+	option = {
+		name = atom.55.a
+	}
+}
+
+country_event = {
+	#nuke st louis
+	id = atom.56
+	title = atom.56.t
+	desc = atom.56.desc
+	picture = GFX_event_ATW_southern_carnage
+	fire_only_once = yes
+	is_triggered_only = yes
+	trigger = {
+		tag = ATW
+	}
+	immediate = {
+		hidden_effect = {
+			log = "[GetDateText]: [Root.GetName]: event atom.56 immediate"
+		}
+	}
+	option = {
+		name = atom.56.a
+	}
+}
+
+country_event = {
+	#nuke okalhoma
+	id = atom.57
+	title = atom.57.t
+	desc = atom.57.desc
+	picture = GFX_event_ATW_southern_carnage
+	fire_only_once = yes
+	is_triggered_only = yes
+	trigger = {
+		tag = ATW
+	}
+	immediate = {
+		hidden_effect = {
+			log = "[GetDateText]: [Root.GetName]: event atom.57 immediate"
+		}
+	}
+	option = {
+		name = atom.57.a
+	}
+}
+
+country_event = {
+	#nuke dallas
+	id = atom.58
+	title = atom.58.t
+	desc = atom.58.desc
+	picture = GFX_event_ATW_southern_carnage
+	fire_only_once = yes
+	is_triggered_only = yes
+	trigger = {
+		tag = ATW
+	}
+	immediate = {
+		hidden_effect = {
+			log = "[GetDateText]: [Root.GetName]: event.58 immediate"
+		}
+	}
+	option = {
+		name = atom.58.a
+	}
+}
+
+country_event = {
+	#nuke fort worth
+	id = atom.59
+	title = atom.59.t
+	desc = atom.59.desc
+	picture = GFX_event_ATW_southern_carnage
+	fire_only_once = yes
+	is_triggered_only = yes
+	trigger = {
+		tag = ATW
+	}
+	immediate = {
+		hidden_effect = {
+			log = "[GetDateText]: [Root.GetName]: event.59 immediate"
+		}
+	}
+	option = {
+		name = atom.59.a
+	}
+}
+
+country_event = {
+	#nuke houston
+	id = atom.60
+	title = atom.60.t
+	desc = atom.60.desc
+	picture = GFX_event_ATW_southern_carnage
+	fire_only_once = yes
+	is_triggered_only = yes
+	trigger = {
+		tag = ATW
+	}
+	immediate = {
+		hidden_effect = {
+			log = "[GetDateText]: [Root.GetName]: event.60 immediate"
+		}
+	}
+	option = {
+		name = atom.60.a
+	}
+}
+
+country_event = {
+	#nuke Austin
+	id = atom.61
+	title = atom.61.t
+	desc = atom.61.desc
+	picture = GFX_event_ATW_southern_carnage
+	fire_only_once = yes
+	is_triggered_only = yes
+	trigger = {
+		tag = ATW
+	}
+	immediate = {
+		hidden_effect = {
+			log = "[GetDateText]: [Root.GetName]: event.61 immediate"
+		}
+	}
+	option = {
+		name = atom.61.a
+	}
+}
+
+country_event = {
+	#nuke san antonio
+	id = atom.62
+	title = atom.62.t
+	desc = atom.62.desc
+	picture = GFX_event_ATW_southern_carnage
+	fire_only_once = yes
+	is_triggered_only = yes
+	trigger = {
+		tag = ATW
+	}
+	immediate = {
+		hidden_effect = {
+			log = "[GetDateText]: [Root.GetName]: event.62 immediate"
+		}
+	}
+	option = {
+		name = atom.62.a
+	}
+}
+
+country_event = {
+	#nuke seattle
+	id = atom.63
+	title = atom.63.t
+	desc = atom.63.desc
+	picture = GFX_event_ATW_southern_carnage
+	fire_only_once = yes
+	is_triggered_only = yes
+	trigger = {
+		tag = ATW
+	}
+	immediate = {
+		hidden_effect = {
+			log = "[GetDateText]: [Root.GetName]: event.63 immediate"
+		}
+	}
+	option = {
+		name = atom.63.a
+	}
+}
+
+country_event = {
+	#nuke san fran
+	id = atom.64
+	title = atom.64.t
+	desc = atom.64.desc
+	picture = GFX_event_ATW_southern_carnage
+	fire_only_once = yes
+	is_triggered_only = yes
+	trigger = {
+		tag = ATW
+	}
+	immediate = {
+		hidden_effect = {
+			log = "[GetDateText]: [Root.GetName]: event.64 immediate"
+		}
+	}
+	option = {
+		name = atom.64.a
+	}
+}
+
+country_event = {
+	#ATW Removed From National Front
+	id = atom.66
+	title = atom.66.t
+	desc = atom.66.desc
+	picture = GFX_event_ATW_national_congress_breaks_down
+	fire_only_once = yes
+	is_triggered_only = yes
+	trigger = {
+		tag = ATW
+	}
+	immediate = {
+		hidden_effect = {
+			log = "[GetDateText]: [Root.GetName]: event.66 immediate"
+			NSM_leave_national_front = yes
+			add_to_variable = {
+				var = ATW_politics_suspicion_weekly_dynamic_var
+				value = -0.002
+			}
+			set_variable = {
+				var = ATW_suspicion_var
+				value = 0
+			}
+			add_timed_idea = {
+				idea = ATW_plans_revealed_idea
+				days = 875
+			}
+		}
+	}
+	option = {
+		name = atom.66.a
+		effect_tooltip = {
+			NSM_leave_national_front = yes
+			add_timed_idea = {
+				idea = ATW_plans_revealed_idea
+				days = 875
+			}
+			swap_ideas = {
+				remove_idea = ATW_national_front_idea
+				add_idea = ATW_doctrine_of_destruction_dummy_idea
+			}
+		}
+	}
+}
+
+news_event = {
+	#National Conference Collapses
+	id = atom.67
+	title = atom.67.t
+	desc = atom.67.desc
+	picture = GFX_ATW_national_congress_collapse
+	is_triggered_only = yes
+	major = yes
+	immediate = {
+		hidden_effect = {
+			log = "[GetDateText]: [Root.GetName]: event atom.67 immediate"
+		}
+	}
+	option = {
+		name = atom.67.a
+		
+		trigger = {
+			tag = ATW
+		}
+	}
+	option = {
+		name = atom.67.b
+		
+		trigger = {
+			NOT = {
+				tag = ATW
+			}
+		}
+	}
+}
+
+country_event = {
+	#helter skelter
+	id = atom.68
+	title = atom.68.t
+	desc = atom.68.desc
+	picture = GFX_event_ATW_damnation
+	is_triggered_only = yes
+	trigger = {
+		OR = {
+			tag = USB
+			tag = USC
+			USA_is_state_tag = yes
+		}
+	}
+	immediate = {
+		hidden_effect = {
+			log = "[GetDateText]: [Root.GetName]: event atom.68 immediate"
+		}
+	}
+	option = {
+		name = atom.68.a
+		effect_tooltip = {
+			add_timed_idea = {
+				days = 175
+				idea = ATW_the_helter_skelter_idea
+			}
+		}
+	}
+}
+
+country_event = {
+	#National Front Suspicious of Us
+	id = atom.69
+	title = atom.69.t
+	desc = atom.69.desc
+	picture = GFX_event_ATW_national_front_membership_secured
+	is_triggered_only = yes
+	trigger = {
+		tag = ATW
+	}
+	immediate = {
+		hidden_effect = {
+			log = "[GetDateText]: [Root.GetName]: event atom.69 immediate"
+		}
+	}
+	option = {
+		name = atom.69.a
+	}
+}
+
+country_event = {
+	#Anarchy Crushed Under our Boots
+	id = atom.70
+	title = atom.70.t
+	desc = atom.70.desc
+	picture = GFX_event_ATW_anarchy_crushed_under_our_boots
+	is_triggered_only = yes
+	trigger = {
+		tag = ATW
+	}
+	immediate = {
+		hidden_effect = {
+			log = "[GetDateText]: [Root.GetName]: event atom.70 immediate"
+		}
+	}
+	option = {
+		name = atom.70.a
+		add_popularity = {
+			ideology = totalitarian_socialist
+			popularity = 0.1
+		}
+		add_popularity = {
+			ideology = libertarian_socialist
+			popularity = 0.15
+		}
+		add_stability = 0.05
+	}
+}
+
+country_event = {
+	#terrors exordium
+	id = atom.71
+	title = atom.71.t
+	desc = atom.71.desc
+	picture = GFX_event_ATW_terrors_exodium
+	is_triggered_only = yes
+	trigger = {
+		tag = ATW
+	}
+	immediate = {
+		hidden_effect = {
+			log = "[GetDateText]: [Root.GetName]: event atom.71 immediate"
+		}
+	}
+	option = {
+		name = atom.71.a
+		add_popularity = {
+			ideology = totalitarian_socialist
+			popularity = 0.1
+		}
+		add_popularity = {
+			ideology = libertarian_socialist
+			popularity = 0.15
+		}
+		add_stability = 0.05
+	}
+}
+
+country_event = {
+	#revolution in destruction
+	id = atom.72
+	title = atom.72.t
+	desc = atom.72.desc
+	picture = GFX_event_ATW_revolution_in_destruction
+	is_triggered_only = yes
+	trigger = {
+		tag = ATW
+	}
+	immediate = {
+		hidden_effect = {
+			log = "[GetDateText]: [Root.GetName]: event atom.72 immediate"
+		}
+	}
+	option = {
+		name = atom.72.a
+		add_popularity = {
+			ideology = national_socialist
+			popularity = 0.05
+		}
+	}
+}
+
+country_event = {
+	#prevailing overlord
+	id = atom.73
+	title = atom.73.t
+	desc = atom.73.desc
+	picture = GFX_event_ATW_prevailing_overlord
+	is_triggered_only = yes
+	trigger = {
+		tag = ATW
+	}
+	immediate = {
+		hidden_effect = {
+			log = "[GetDateText]: [Root.GetName]: event atom.73 immediate"
+		}
+	}
+	option = {
+		name = atom.73.a
+		add_popularity = {
+			ideology = national_socialist
+			popularity = 0.05
+		}
+	}
+}
+
+country_event = {
+	#Nuclear Congress
+	id = atom.74
+	title = atom.74.t
+	desc = atom.74.desc
+	picture = GFX_event_ATW_nuclear_congress
+	is_triggered_only = yes
+	minor_flavor = yes
+	trigger = {
+		tag = ATW
+	}
+	immediate = {
+		hidden_effect = {
+			log = "[GetDateText]: [Root.GetName]: event atom.74 immediate"
+		}
+	}
+	option = {
+		name = atom.74.a
+	}
+}
+
+country_event = {
+	#Accelerations Win Power Struggle
+	id = atom.75
+	title = atom.75.t
+	desc = atom.75.desc
+	picture = GFX_event_ATW_accerlerationists_secure_power
+	is_triggered_only = yes
+	trigger = {
+		tag = ATW
+	}
+	immediate = {
+		hidden_effect = {
+			log = "[GetDateText]: [Root.GetName]: event atom.75 immediate"
+			remove_power_balance = {
+				id = ATW_religion_bop
+			}
+			set_portraits = {
+				character = ATW_james_mason_char
+				civilian = {
+					large = "gfx/Leaders/ATW/ATW_james_mason1.png"
+				}
+			}
+			set_country_flag = ATW_accelerationist_victory_flag
+		}
+	}
+	option = {
+		name = atom.75.a
+		effect_tooltip = {
+			remove_power_balance = {
+				id = ATW_religion_bop
+			}
+		}
+	}
+}
+
+country_event = {
+	#Christians Secure Power
+	id = atom.76
+	title = atom.76.t
+	desc = atom.76.desc
+	picture = GFX_event_ATW_christians_secure_power
+	is_triggered_only = yes
+	trigger = {
+		tag = ATW
+	}
+	immediate = {
+		hidden_effect = {
+			log = "[GetDateText]: [Root.GetName]: event atom.76 immediate"
+			remove_power_balance = {
+				id = ATW_religion_bop
+			}
+			set_country_flag = ATW_christian_victory_flag
+			set_portraits = {
+				character = ATW_james_mason_char
+				civilian = {
+					large = "gfx/Leaders/ATW/ATW_james_mason2.png"
+				}
+			}
+			set_country_leader_ideology = death_cult
+		}
+	}
+	option = {
+		name = atom.76.a
+		effect_tooltip = {
+			remove_power_balance = {
+				id = ATW_religion_bop
+			}
+		}
+	}
+}
+
+country_event = {
+	#Joined National Front
+	id = atom.77
+	title = atom.77.t
+	desc = atom.77.desc
+	picture = GFX_event_ATW_national_front_membership_secured
+	is_triggered_only = yes
+	trigger = {
+		tag = ATW
+	}
+	immediate = {
+		hidden_effect = {
+			log = "[GetDateText]: [Root.GetName]: event atom.77 immediate"
+			add_to_variable = {
+				var = ATW_politics_suspicion_weekly_dynamic_var
+				value = 0.002
+			}
+		}
+	}
+	option = {
+		name = atom.77.a
+		effect_tooltip = {
+			swap_ideas = {
+				remove_idea = ATW_doctrine_of_destruction_dummy_idea
+				add_idea = ATW_national_front_idea
+			}
+		}
+	}
+}
+
+country_event = {
+	#The Beautiful Ones
+	id = atom.78
+	title = atom.78.t
+	desc = atom.78.desc
+	picture = GFX_event_ATW_the_beautiful_ones
+	is_triggered_only = yes
+	minor_flavor = yes
+	trigger = {
+		tag = ATW
+	}
+	immediate = {
+		hidden_effect = {
+			log = "[GetDateText]: [Root.GetName]: event atom.78 immediate"
+		}
+	}
+	option = {
+		name = atom.78.a
+	}
+}
+
+country_event = {
+	#Barbaro
+	id = atom.79
+	title = atom.79.t
+	desc = atom.79.desc
+	picture = GFX_event_ATW_a_strange_fruit
+	is_triggered_only = yes
+	minor_flavor = yes
+	trigger = {
+		tag = ATW
+	}
+	immediate = {
+		hidden_effect = {
+			log = "[GetDateText]: [Root.GetName]: event atom.79 immediate"
+		}
+	}
+	option = {
+		name = atom.79.a
+	}
+}
+
+country_event = {
+	#Demented Mercy
+	id = atom.80
+	title = atom.80.t
+	desc = atom.80.desc
+	picture = GFX_event_ATW_demented_mercy
+	is_triggered_only = yes
+	minor_flavor = yes
+	trigger = {
+		tag = ATW
+	}
+	immediate = {
+		hidden_effect = {
+			log = "[GetDateText]: [Root.GetName]: event atom.80 immediate"
+		}
+	}
+	option = {
+		name = atom.80.a
+	}
+}
+
+country_event = {
+	#american hell
+	id = atom.81
+	title = atom.81.t
+	desc = atom.81.desc
+	picture = GFX_event_ATW_the_nether_land
+	is_triggered_only = yes
+	minor_flavor = yes
+	trigger = {
+		tag = ATW
+	}
+	immediate = {
+		hidden_effect = {
+			log = "[GetDateText]: [Root.GetName]: event atom.81 immediate"
+		}
+	}
+	option = {
+		name = atom.81.a
+	}
+}
+
+country_event = {
+	#On The World Stage
+	id = atom.82
+	title = atom.82.t
+	desc = atom.82.desc
+	picture = GFX_event_ATW_on_the_world_stage
+	is_triggered_only = yes
+	fire_only_once = yes
+	trigger = {
+		tag = ATW
+	}
+	immediate = {
+		hidden_effect = {
+			log = "[GetDateText]: [Root.GetName]: event atom.82 immediate"
+			set_variable = {
+				var = ATW_suspicion_var
+				value = 0
+			}
+			add_to_variable = {
+				var = ATW_politics_suspicion_weekly_dynamic_var
+				value = 0.005
+			}
+			set_country_flag = ATW_on_the_world_stage_flag
+		}
+	}
+	option = {
+		name = atom.82.a
+		effect_tooltip = {
+			swap_ideas = {
+				remove_idea = ATW_doctrine_of_destruction_dummy_idea
+				add_idea = ATW_international_suspicion_idea
+			}
+		}
+	}
+}
+
+country_event = {
+	#The End of James Mason
+	id = atom.83
+	title = atom.83.t
+	desc = atom.83.desc
+	picture = GFX_event_ATW_the_end_of_commander_mason
+	is_triggered_only = yes
+	fire_only_once = yes
+	trigger = {
+		tag = ATW
+	}
+	immediate = {
+		hidden_effect = {
+			log = "[GetDateText]: [Root.GetName]: event atom.83 immediate"
+			ATW_james_mason_char = {
+				retire = yes
+			}
+		}
+	}
+	option = {
+		name = atom.83.a
+		hidden_effect = {
+			country_event = atom.105
+		}
+	}
+}
+
+country_event = {
+	#America, Under Siege
+	id = atom.84
+	title = atom.84.t
+	desc = atom.84.desc
+	picture = GFX_event_ATW_consolidating_the_command
+	is_triggered_only = yes
+	fire_only_once = yes
+	trigger = {
+		tag = ATW
+	}
+	immediate = {
+		hidden_effect = {
+			log = "[GetDateText]: [Root.GetName]: event atom.84 immediate"
+			set_global_flag = ATW_aryan_liberation_war_global
+			CAN = {
+				if = {
+					limit = {
+						is_in_faction = yes
+					}
+					leave_faction = yes
+				}
+				create_faction = USN_american_restoration_alliance_faction
+				hidden_effect = {
+					remove_faction_goal = faction_goal_the_atomic_race
+					add_faction_goal = faction_goal_placeholder_long_term
+					remove_faction_goal = faction_goal_a_military_base
+					add_faction_goal = faction_goal_placeholder_medium_term
+					add_faction_goal = faction_goal_placeholder_short_term
+				}
+				add_to_faction = USN
+				add_to_faction = CUB
+				add_to_faction = NIC
+				random_other_country = {
+					limit = {
+						has_country_flag = MEX_mexican_unifier_flag
+					}
+					CAN = {
+						add_to_faction = PREV
+					}
+				}
+				declare_war_on = {
+					target = ATW
+					type = annex_everything
+				}
+			}
+			every_other_country = {
+				limit = {
+					is_in_faction_with = CAN
+				}
+				declare_war_on = {
+					target = ATW
+					type = annex_everything
+				}
+			}
+			news_event = {
+				id = atom.85
+				hours = 6
+			}
+			add_to_variable = {
+				var = ATW_politics_suspicion_weekly_dynamic_var
+				value = 0.005
+			}
+			set_country_flag = ATW_on_the_world_stage_flag
+		}
+	}
+	option = {
+		#Bellum Internecinum!
+		name = atom.84.a
+		effect_tooltip = {
+			CAN = {
+				if = {
+					limit = {
+						is_in_faction = yes
+					}
+					leave_faction = yes
+				}
+				create_faction = USN_american_restoration_alliance_faction
+				hidden_effect = {
+					remove_faction_goal = faction_goal_the_atomic_race
+					add_faction_goal = faction_goal_placeholder_long_term
+					remove_faction_goal = faction_goal_a_military_base
+					add_faction_goal = faction_goal_placeholder_medium_term
+					add_faction_goal = faction_goal_placeholder_short_term
+				}
+				add_to_faction = USN
+				add_to_faction = CUB
+				add_to_faction = NIC
+				declare_war_on = {
+					target = ATW
+				}
+				every_other_country = {
+					limit = {
+						is_in_faction_with = CAN
+					}
+				}
+			}
+			swap_ideas = {
+				remove_idea = ATW_doctrine_of_destruction_dummy_idea
+				add_idea = ATW_international_suspicion_idea
+			}
+		}
+	}
+}
+
+news_event = {
+	#Aryan Liberation War
+	id = atom.85
+	title = atom.85.t
+	desc = atom.85.desc
+	picture = GFX_ATW_aryan_liberation_war
+	is_triggered_only = yes
+	major = yes
+	trigger = {
+		tag = ATW
+	}
+	immediate = {
+		hidden_effect = {
+			log = "[GetDateText]: [Root.GetName]: event atom.85 immediate"
+		}
+	}
+	option = {
+		#The world watches with bated breath.
+		name = atom.85.a
+		trigger = {
+			NOT = {
+				original_tag = ATW
+			}
+		}
+		if = {
+			limit = {
+				is_ai = no
+			}
+			set_country_flag = ATW_the_final_solution_super
+			scoped_sound_effect = TFR_se_the_last_war
+			scoped_play_song = "one_minute_of_silence"
+		}
+	}
+	option = {
+		#Totaler Krieg!
+		name = atom.85.b
+		trigger = {
+			original_tag = ATW
+		}
+		if = {
+			limit = {
+				is_ai = no
+			}
+			set_country_flag = ATW_the_final_solution_super
+			scoped_sound_effect = TFR_se_the_last_war
+			scoped_play_song = "one_minute_of_silence"
+		}
+	}
+}
+
+#Coughed up the codes
+country_event = {
+	id = atom.86
+	title = atom.86.t
+	desc = atom.86.desc
+	picture = GFX_event_ATW_codes
+	fire_only_once = yes
+	is_triggered_only = yes
+	trigger = {
+		tag = ATW
+	}
+	immediate = {
+		hidden_effect = {
+			log = "[GetDateText]: [Root.GetName]: event atom.86 immediate"
+			add_nuclear_bombs = 8
+		}
+	}
+	option = {
+		name = atom.86.a
+		effect_tooltip = {
+			add_nuclear_bombs = 8
+		}
+	}
+}
+
+#Still Not coughing up the codes
+country_event = {
+	id = atom.87
+	title = atom.87.t
+	desc = atom.87.desc
+	picture = GFX_event_ATW_codes
+	fire_only_once = yes
+	is_triggered_only = yes
+	minor_flavor = yes
+	trigger = {
+		tag = ATW
+	}
+	immediate = {
+		hidden_effect = {
+			log = "[GetDateText]: [Root.GetName]: event atom.87 immediate"
+			set_temp_variable = {
+				var = legit_var_temp
+				value = 1
+			}
+			add_legit = yes
+		}
+	}
+	option = {
+		name = atom.87.a
+	}
+}
+
+#Not coughing up the codes
+country_event = {
+	id = atom.88
+	title = atom.88.t
+	desc = atom.88.desc
+	picture = GFX_event_ATW_codes
+	fire_only_once = yes
+	is_triggered_only = yes
+	minor_flavor = yes
+	trigger = {
+		tag = ATW
+	}
+	immediate = {
+		hidden_effect = {
+			log = "[GetDateText]: [Root.GetName]: event atom.88 immediate"
+		}
+	}
+	option = {
+		name = atom.88.a
+	}
+}
+
+#NORAD detects Missiles
+news_event = {
+	id = atom.89
+	title = atom.89.t
+	desc = atom.89.desc
+	picture = GFX_ATW_NORAD_detection
+	is_triggered_only = yes
+	major = yes
+	immediate = {
+		hidden_effect = {
+			log = "[GetDateText]: [Root.GetName]: event atom.89 immediate"
+			set_global_flag = end_nuke_event
+			sound_effect = siren_sound_effect
+		}
+	}
+	option = {
+		name = atom.89.a
+		hidden_effect = {
+			country_event = atom.91
+		}
+	}
+}
+
+# Second Sun
+country_event = {
+	id = atom.90
+	title = atom.90.t
+	desc = atom.90.desc
+	picture = GFX_event_ATW_the_second_sun
+	is_triggered_only = yes
+	fire_only_once = yes
+	trigger = {
+	}
+	option = {
+		name = atom.90.a
+		hidden_effect = {
+			clr_country_flag = show_nuke_popup
+		}
+	}
+}
+
+#The End of the World
+country_event = {
+	id = atom.91
+	is_triggered_only = yes
+	hidden = yes
+	immediate = {
+		hidden_effect = {
+			log = "[GetDateText]: [Root.GetName]: event atom.91 immediate"
+			if = {
+				limit = {
+					tag = ATW
+				}
+				ATW_end_of_the_system_effect = yes
+			}
+			if = {
+				limit = {
+					is_ai = no
+				}
+				set_country_flag = show_nuke_popup
+				sound_effect = nuke_sound_effect
+				country_event = {
+					id = atom.90
+					days = 21
+				}
+			}
+		}
+	}
+}
+
+#Boston Nights
+country_event = {
+	id = atom.92
+	title = atom.92.t
+	desc = atom.92.desc
+	picture = GFX_event_ATW_conversation_over
+	fire_only_once = yes
+	is_triggered_only = yes
+	minor_flavor = yes
+	trigger = {
+		OR = {
+			tag = ATW
+			tag = PTF
+			tag = NSM
+		}	
+	}
+	immediate = {
+		hidden_effect = {
+			log = "[GetDateText]: [Root.GetName]: event atom.92 immediate"
+		}
+	}
+	option = {
+		name = atom.92.a
+	}
+}
+
+#Toy Soldiers
+country_event = {
+	id = atom.93
+	title = atom.93.t
+	desc = atom.93.desc
+	picture = GFX_event_ATW_conversation_over
+	fire_only_once = yes
+	is_triggered_only = yes
+	minor_flavor = yes
+	trigger = {
+		tag = ATW
+	}
+	immediate = {
+		hidden_effect = {
+			log = "[GetDateText]: [Root.GetName]: event atom.93 immediate"
+			
+		}
+	}
+	option = {
+		name = atom.93.a
+	}
+}
+
+#Strange Fruit
+country_event = {
+	id = atom.94
+	title = atom.94.t
+	desc = atom.94.desc
+	picture = GFX_event_ATW_a_strange_fruit
+	fire_only_once = yes
+	is_triggered_only = yes
+	minor_flavor = yes
+	trigger = {
+		tag = ATW
+	}
+	immediate = {
+		hidden_effect = {
+			log = "[GetDateText]: [Root.GetName]: event atom.94 immediate"
+			add_manpower = -1
+		}
+	}
+	option = {
+		name = atom.94.a
+		effect_tooltip = {
+			add_manpower = -1
+		}
+	}
+}
+
+#Screams of the South
+country_event = {
+	id = atom.95
+	title = atom.95.t
+	desc = atom.95.desc
+	picture = GFX_event_ATW_scerams_of_the_south
+	fire_only_once = yes
+	is_triggered_only = yes
+	minor_flavor = yes
+	trigger = {
+		tag = ATW
+	}
+	immediate = {
+		hidden_effect = {
+			log = "[GetDateText]: [Root.GetName]: event atom.95 immediate"
+		}
+	}
+	option = {
+		name = atom.95.a
+	}
+}
+
+#Conversation Over
+country_event = {
+	id = atom.96
+	title = atom.96.t
+	desc = atom.96.desc
+	picture = GFX_event_ATW_conversation_over
+	fire_only_once = yes
+	is_triggered_only = yes
+	minor_flavor = yes
+	trigger = {
+		tag = ATW
+	}
+	immediate = {
+		hidden_effect = {
+			log = "[GetDateText]: [Root.GetName]: event atom.96 immediate"
+		}
+	}
+	option = {
+		name = atom.96.a
+	}
+}
+
+#Damnation
+country_event = {
+	id = atom.97
+	title = atom.97.t
+	desc = atom.97.desc
+	picture = GFX_event_ATW_damnation
+	fire_only_once = yes
+	is_triggered_only = yes
+	minor_flavor = yes
+	trigger = {
+		tag = ATW
+	}
+	immediate = {
+		hidden_effect = {
+			log = "[GetDateText]: [Root.GetName]: event atom.97 immediate"
+		}
+	}
+	option = {
+		name = atom.97.a
+	}
+}
+
+#DeSanctimonious
+country_event = {
+	id = atom.98
+	title = atom.98.t
+	desc = atom.98.desc
+	picture = GFX_event_ATW_desanctimonious
+	fire_only_once = yes
+	is_triggered_only = yes
+	minor_flavor = yes
+	trigger = {
+		tag = ATW
+	}
+	immediate = {
+		hidden_effect = {
+			log = "[GetDateText]: [Root.GetName]: event atom.98 immediate"
+			FLA = {
+				retire_character = FLA_ron_desantis_char
+			}
+		}
+	}
+	option = {
+		name = atom.98.a
+		effect_tooltip = {
+			FLA = {
+				retire_character = FLA_ron_desantis_char
+			}
+		}
+	}
+}
+
+#A Blood Stained Letter
+country_event = {
+	id = atom.99
+	title = atom.99.t
+	desc = atom.99.desc
+	picture = GFX_event_ATW_national_front_membership_secured
+	fire_only_once = yes
+	is_triggered_only = yes
+	trigger = {
+		tag = NSM
+	}
+	immediate = {
+		hidden_effect = {
+			log = "[GetDateText]: [Root.GetName]: event atom.99 immediate"
+		}
+	}
+	option = {
+		name = atom.99.a
+		ai_chance = {
+			base = 1
+		}
+		add_power_balance_value = {
+			id = NSM_faction_balance
+			value = 0.1
+		}
+		add_political_power = 75
+		add_manpower = -30000
+		ATW = {
+			add_manpower = 30000
+		}
+	}
+	option = {
+		name = atom.99.b
+		ai_chance = {
+			base = 0
+		}
+		add_power_balance_value = {
+			id = NSM_faction_balance
+			value = -0.1
+		}
+	}
+}
+
+#One Last Purpose
+country_event = {
+	id = atom.100
+	title = atom.100.t
+	desc = atom.100.desc
+	picture = GFX_event_ATW_one_last_purpose
+	fire_only_once = yes
+	is_triggered_only = yes
+	minor_flavor = yes
+	trigger = {
+		tag = ATW
+	}
+	immediate = {
+		hidden_effect = {
+			log = "[GetDateText]: [Root.GetName]: event atom.100 immediate"
+		}
+	}
+	option = {
+		name = atom.100.a
+		effect_tooltip = {
+		}
+	}
+}
+
+#Nearer, My God, To Thee
+country_event = {
+	id = atom.101
+	title = atom.101.t
+	desc = atom.101.desc
+	picture = GFX_event_ATW_clarity_of_faith
+	fire_only_once = yes
+	is_triggered_only = yes
+	minor_flavor = yes
+	trigger = {
+		tag = ATW
+	}
+	immediate = {
+		hidden_effect = {
+			log = "[GetDateText]: [Root.GetName]: event atom.101 immediate"
+		}
+	}
+	option = {
+		name = atom.101.a
+		effect_tooltip = {
+		}
+	}
+}
+
+#Canaanite Blues
+country_event = {
+	id = atom.102
+	title = atom.102.t
+	desc = atom.102.desc
+	picture = GFX_event_ATW_canaaite_blues
+	fire_only_once = yes
+	is_triggered_only = yes
+	minor_flavor = yes
+	trigger = {
+		tag = ATW
+	}
+	immediate = {
+		hidden_effect = {
+			log = "[GetDateText]: [Root.GetName]: event atom.102 immediate"
+		}
+	}
+	option = {
+		name = atom.102.a
+		effect_tooltip = {
+		}
+	}
+}
+
+#Friend in Me
+country_event = {
+	id = atom.103
+	title = atom.103.t
+	desc = atom.103.desc
+	picture = GFX_event_ATW_friend_in_me
+	fire_only_once = yes
+	is_triggered_only = yes
+	minor_flavor = yes
+	trigger = {
+		tag = ATW
+	}
+	immediate = {
+		hidden_effect = {
+			log = "[GetDateText]: [Root.GetName]: event atom.103 immediate"
+		}
+	}
+	option = {
+		name = atom.103.a
+		effect_tooltip = {
+		}
+	}
+}
+
+#Kane Lives
+country_event = {
+	id = atom.104
+	title = atom.104.t
+	desc = atom.104.desc
+	picture = GFX_event_ATW_prevailing_overlord
+	fire_only_once = yes
+	is_triggered_only = yes
+	minor_flavor = yes
+	trigger = {
+		tag = ATW
+	}
+	immediate = {
+		hidden_effect = {
+			log = "[GetDateText]: [Root.GetName]: event atom.104 immediate"
+		}
+	}
+	option = {
+		name = atom.104.a
+		effect_tooltip = {
+			promote_character = ATW_kane_char
+		}
+		hidden_effect = {
+			ATW_kane_char = {
+				set_character_flag = ATW_returned_flag
+			}
+		}
+	}
+	option = {
+		name = atom.104.b
+	}
+}
+
+country_event = {
+	#The End of James Mason Part 2
+	id = atom.105
+	title = atom.105.t
+	desc = atom.105.desc
+	picture = GFX_event_ATW_the_end_of_commander_mason
+	is_triggered_only = yes
+	fire_only_once = yes
+	trigger = {
+		tag = ATW
+	}
+	immediate = {
+		hidden_effect = {
+			log = "[GetDateText]: [Root.GetName]: event atom.105 immediate"
+			ATW_james_mason_char = {
+				retire = yes
+			}
+		}
+	}
+	option = {
+		name = atom.105.a
+		effect_tooltip = {
+			ATW_james_mason_char = {
+				retire = yes
+			}
+		}
+	}
+}
+
+country_event = {
+	#The Cooking Video
+	id = atom.106
+	title = atom.106.t
+	desc = atom.106.desc
+	picture = GFX_ATW_cooking_video
+	is_triggered_only = yes
+	fire_only_once = yes
+	trigger = {
+		tag = ATW
+	}
+	immediate = {
+		hidden_effect = {
+			log = "[GetDateText]: [Root.GetName]: event atom.106 immediate"
+		}
+	}
+	option = {
+		name = atom.106.a
+	}
+}
+
+country_event = {
+	#Apres Mois, Le Deluge
+	id = atom.107
+	title = atom.107.t
+	desc = atom.107.desc
+	picture = GFX_ATW_hospital_bed
+	#is_triggered_only = yes
+	fire_only_once = yes
+	trigger = {
+		tag = ATW
+		OR = {
+			has_completed_focus = ATW_taming_the_beast_of_capital
+			has_completed_focus = ATW_the_vampire_economy
+		}
+	}
+	immediate = {
+		hidden_effect = {
+			log = "[GetDateText]: [Root.GetName]: event atom.107 immediate"
+		}
+	}
+	option = {
+		name = atom.107.a
+	}
+}
+
+country_event = {
+	#The Pilgrim
+	id = atom.108
+	title = atom.108.t
+	desc = atom.108.desc
+	picture = GFX_ATW_nuke_bike
+	is_triggered_only = yes
+	fire_only_once = yes
+	trigger = {
+		tag = ATW
+	}
+	immediate = {
+		hidden_effect = {
+			log = "[GetDateText]: [Root.GetName]: event atom.108 immediate"
+		}
+	}
+	option = {
+		name = atom.108.a
+	}
+}
+
+country_event = {
+	#Backroom Scientist
+	id = atom.109
+	title = atom.109.t
+	desc = atom.109.desc
+	picture = GFX_ATW_electricity_experiment
+	is_triggered_only = yes
+	fire_only_once = yes
+	trigger = {
+		tag = ATW
+	}
+	immediate = {
+		hidden_effect = {
+			log = "[GetDateText]: [Root.GetName]: event atom.109 immediate"
+		}
+	}
+	option = {
+		name = atom.109.a
+	}
+}
+
+country_event = {
+	#A Walk Around Wonderland
+	id = atom.110
+	title = atom.110.t
+	desc = atom.110.desc
+	picture = GFX_ATW_burning_disneyland
+	#is_triggered_only = yes
+	fire_only_once = yes
+	trigger = {
+		tag = ATW
+		controls_state = 939
+	}
+	immediate = {
+		hidden_effect = {
+			log = "[GetDateText]: [Root.GetName]: event atom.110 immediate"
+		}
+	}
+	option = {
+		name = atom.110.a
+	}
+}
+
+country_event = {
+	#Buckshot Roulette
+	id = atom.111
+	title = atom.111.t
+	desc = atom.111.desc
+	picture = GFX_ATW_buckshot_roulette
+	is_triggered_only = yes
+	fire_only_once = yes
+	trigger = {
+		tag = ATW
+	}
+	immediate = {
+		hidden_effect = {
+			log = "[GetDateText]: [Root.GetName]: event atom.111 immediate"
+		}
+	}
+	option = {
+		name = atom.111.a
+	}
+}

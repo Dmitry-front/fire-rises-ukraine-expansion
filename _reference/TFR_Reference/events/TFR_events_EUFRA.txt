@@ -1,0 +1,205 @@
+add_namespace = eufrance
+country_event = { #Leaders of Europe come together
+	id = eufrance.1
+	title = eufrance.1.t
+	desc = eufrance.1.d
+	picture = GFX_FRA_10k_french_losses
+	fire_only_once = yes
+	is_triggered_only = yes
+	trigger = {
+		
+	}
+	immediate = {
+		hidden_effect = {
+			
+		}
+	}
+
+	option = { #
+		name = eufrance.1.a
+		
+	}
+}
+
+country_event = { #EU Commission wants us to join
+	id = eufrance.5
+	title = eufrance.5.t
+	desc = eufrance.5.d
+	picture = GFX_Join_Axis
+	
+	is_triggered_only = yes
+	immediate = {
+	
+	}	
+	
+	option = { #fuck you
+		name = eufrance.5.a
+		trigger = {
+			NOT = {
+				OR = {
+					tag = AUS
+					tag = SWI
+					tag = FSP
+				}
+			}
+		}
+		if = {
+			limit = {
+				ROOT = {
+					tag = AUS
+				}
+			}
+			FRA = {
+				country_event = { id = eufrance.6 days = 3 }
+			}
+		}
+		else_if = {
+			limit = {
+				ROOT = {
+					tag = SWI
+				}
+			}
+			FRA = {
+				country_event = { id = eufrance.7 days = 3 }
+			}
+		}
+	}
+	
+	option = { #fuck me
+		name = eufrance.5.b
+		if = {
+			limit = {
+				ROOT = {
+					tag = AUS
+				}
+			}
+			GER = {
+				annex_country = {
+					target = AUS
+					transfer_troops = yes
+				}
+			}
+		}
+		else_if = {
+			limit = {
+				ROOT = {
+					tag = SWI
+				}
+			}
+			FRA = {
+				annex_country = {
+					target = SWI
+					transfer_troops = yes
+				}
+			}
+			GER = {
+				transfer_state = 151
+				transfer_state = 1450
+			}
+			if = {
+				limit = {
+					country_exists = ITA
+				}
+				ITA = {
+					transfer_state = 838
+				}
+			}
+			if = {
+				limit = {
+					NOT = {
+						country_exists = ITA
+					}
+				}
+				GER = {
+					transfer_state = 838
+				}
+			}
+		}
+		else_if = {
+			limit = {
+				ROOT = {
+					tag = FSP
+				}
+			}
+			FRA = {
+				annex_country = {
+					target = FSP
+					transfer_troops = yes
+				}
+			}
+		}
+	}
+}
+
+country_event = { #Austria Refusees
+	id = eufrance.6
+	title = eufrance.6.t
+	desc = eufrance.6.d
+	picture = GFX_Join_Axis
+	
+	is_triggered_only = yes
+	immediate = {
+	
+	}	
+	
+	option = { #fuck you
+		name = eufrance.6.a
+		declare_war_on = { 
+			target = AUS 
+			type = annex_everything 
+		}
+	}
+}
+
+country_event = { #Switzerland Refusees
+	id = eufrance.7
+	title = eufrance.7.t
+	desc = eufrance.7.d
+	picture = GFX_Join_Axis
+	
+	is_triggered_only = yes
+	immediate = {
+	
+	}	
+	
+	option = { #fuck you
+		name = eufrance.7.a
+		declare_war_on = { 
+			target = SWI
+			type = annex_everything 
+		}
+	}
+}
+
+country_event = { #Blame everything on the populists
+	id = eufrance.8
+	title = eufrance.8.t
+	desc = eufrance.8.d
+	picture = GFX_FRA_10k_french_losses
+	
+	is_triggered_only = yes
+	immediate = {
+	
+	}	
+	
+	option = { #fuck you lepen
+		name = eufrance.8.a
+		add_political_power = 50
+		add_popularity = {
+			ideology = libertarian_socialist
+			popularity = -0.05
+		}
+		add_popularity = {
+			ideology = conservative
+			popularity = -0.05
+		}
+		add_popularity = {
+			ideology = authoritarian_democrat
+			popularity = -0.05
+		}
+		add_popularity = {
+			ideology = nationalist
+			popularity = -0.05
+		}
+	}
+}

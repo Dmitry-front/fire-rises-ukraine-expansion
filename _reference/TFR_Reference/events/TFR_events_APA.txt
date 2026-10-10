@@ -1,0 +1,3808 @@
+###########################
+# APLA Events
+###########################
+add_namespace = apla
+#Propose Faction
+country_event = {
+	id = apla.1
+	title = apla.1.t
+	desc = apla.1.d
+	picture = GFX_APLA2
+	fire_only_once = yes
+	is_triggered_only = yes
+	trigger = {
+		tag = APA
+	}
+	immediate = {
+		hidden_effect = {
+			log = "[GetDateText]: [Root.GetName]: event apla.1 immediate"
+		}
+	}
+	option = {
+		name = apla.1.a
+	}
+}
+
+#Join American People's Liberation Front
+country_event = {
+	id = apla.2
+	title = apla.2.t
+	desc = apla.2.d
+	picture = GFX_APLA2
+	fire_only_once = yes
+	is_triggered_only = yes
+	trigger = {
+		tag = APA
+	}
+	immediate = {
+		hidden_effect = {
+			log = "[GetDateText]: [Root.GetName]: event apla.2 immediate"
+		}
+	}
+	option = {
+		name = apla.2.a
+		APA = {
+			country_event = {
+				id = apla.3
+				days = 1
+			}
+		}
+	}
+	option = {
+		name = apla.2.b
+		APA = {
+			country_event = {
+				id = apla.4
+				days = 1
+			}
+		}
+	}
+}
+
+#Accepted
+country_event = {
+	id = apla.3
+	title = apla.3.t
+	desc = apla.3.d
+	picture = GFX_APLA2
+	fire_only_once = yes
+	is_triggered_only = yes
+	trigger = {
+		tag = APA
+	}
+	immediate = {
+		hidden_effect = {
+			log = "[GetDateText]: [Root.GetName]: event apla.3 immediate"
+		}
+	}
+	option = {
+		name = apla.3.a
+	}
+}
+
+#Declined
+country_event = {
+	id = apla.4
+	title = apla.4.t
+	desc = apla.4.d
+	picture = GFX_APLA2
+	fire_only_once = yes
+	is_triggered_only = yes
+	trigger = {
+		tag = APA
+	}
+	immediate = {
+		hidden_effect = {
+			log = "[GetDateText]: [Root.GetName]: event apla.4 immediate"
+		}
+	}
+	option = {
+		name = apla.4.a
+	}
+}
+
+#Join Worker's Front
+country_event = {
+	id = apla.5
+	title = apla.5.t
+	desc = apla.5.d
+	picture = GFX_APLA2
+	fire_only_once = yes
+	is_triggered_only = yes
+	trigger = {
+		tag = RGA
+	}
+	immediate = {
+		hidden_effect = {
+			log = "[GetDateText]: [Root.GetName]: event apla.5 immediate"
+		}
+	}
+	option = {
+		name = apla.5.a
+		APA = {
+			country_event = {
+				id = apla.6
+				days = 1
+			}
+		}
+	}
+	option = {
+		name = apla.5.a
+		APA = {
+			country_event = {
+				id = apla.7
+				days = 1
+			}
+		}
+	}
+}
+
+#Accepted
+country_event = {
+	id = apla.6
+	title = apla.6.t
+	desc = apla.6.d
+	picture = GFX_APLA2
+	fire_only_once = yes
+	is_triggered_only = yes
+	trigger = {
+		tag = APA
+	}
+	immediate = {
+		hidden_effect = {
+			log = "[GetDateText]: [Root.GetName]: event apla.6 immediate"
+		}
+	}
+	option = {
+		name = apla.6.a
+		add_to_faction = RGA
+	}
+}
+
+#Declined
+country_event = {
+	id = apla.7
+	title = apla.7.t
+	desc = apla.7.d
+	picture = GFX_APLA2
+	fire_only_once = yes
+	is_triggered_only = yes
+	trigger = {
+		tag = APA
+	}
+	immediate = {
+		hidden_effect = {
+			log = "[GetDateText]: [Root.GetName]: event apla.7 immediate"
+		}
+	}
+	option = {
+		name = apla.7.a
+	}
+}
+
+#Area 51 Captured
+country_event = {
+	id = apla.8
+	title = apla.8.t
+	desc = apla.8.d
+	picture = GFX_APLA2
+	fire_only_once = yes
+	is_triggered_only = yes
+	trigger = {
+		tag = APA
+		APA = {
+			controls_state = 39
+		}
+	}
+	immediate = {
+		hidden_effect = {
+			log = "[GetDateText]: [Root.GetName]: event apla.8 immediate"
+			country_event = {
+				id = apla.9
+				days = 14
+			}
+		}
+	}
+	option = {
+		name = apla.8.a
+	}
+}
+
+#Area 51 Blows Up!
+country_event = {
+	id = apla.9
+	title = apla.9.t
+	desc = apla.9.d
+	picture = GFX_APLA2
+	fire_only_once = yes
+	is_triggered_only = yes
+	trigger = {
+		tag = APA
+	}
+	immediate = {
+		hidden_effect = {
+			log = "[GetDateText]: [Root.GetName]: event apla.9 immediate"
+			add_manpower = -12
+			add_stability = -0.05
+		}
+	}
+	option = {
+		name = apla.9.a
+		effect_tooltip = {
+			add_manpower = -12
+			add_stability = -0.05
+		}
+	}
+}
+
+#Las Vegas Captured
+country_event = {
+	id = apla.10
+	title = apla.10.t
+	desc = apla.10.d
+	picture = GFX_fall_of_lasvegas
+	fire_only_once = yes
+	is_triggered_only = yes
+	trigger = {
+		tag = APA
+	}
+	immediate = {
+		hidden_effect = {
+			log = "[GetDateText]: [Root.GetName]: event apla.10 immediate"
+		}
+	}
+	option = {
+		name = apla.10.a
+	}
+}
+
+#Failed to Capture Las Vegas
+country_event = {
+	id = apla.11
+	title = apla.11.t
+	desc = apla.11.d
+	picture = GFX_fail_lasvegas
+	fire_only_once = yes
+	is_triggered_only = yes
+	trigger = {
+		tag = APA
+	}
+	immediate = {
+		hidden_effect = {
+			log = "[GetDateText]: [Root.GetName]: event apla.11 immediate"
+		}
+	}
+	option = {
+		name = apla.11.a
+	}
+}
+
+#CPUSA Takes New York
+country_event = {
+	id = apla.12
+	title = apla.12.t
+	desc = apla.12.d
+	picture = GFX_Generic_CPUSA
+	fire_only_once = yes
+	is_triggered_only = yes
+	trigger = {
+		tag = APA
+	}
+	immediate = {
+		hidden_effect = {
+			log = "[GetDateText]: [Root.GetName]: event apla.12 immediate"
+		}
+	}
+	option = {
+		name = apla.12.a
+	}
+}
+
+#Paradise Incident
+country_event = {
+	id = apla.13
+	title = apla.13.t
+	desc = apla.13.d
+	picture = GFX_Paradise_Incident
+	fire_only_once = yes
+	is_triggered_only = yes
+	trigger = {
+		tag = APA
+	}
+	immediate = {
+		hidden_effect = {
+			log = "[GetDateText]: [Root.GetName]: event apla.13 immediate"
+			947 = {
+				set_state_name = "Chico"
+			}
+			add_victory_points = {
+				province = 766
+				value = -5
+			}
+			if = {
+				limit = {
+					is_ai = no
+				}
+				sound_effect = paradise_incident
+			}
+		}
+	}
+	option = {
+		name = apla.13.a
+		effect_tooltip = {
+			947 = {
+				set_state_name = "Chico"
+			}
+			add_victory_points = {
+				province = 766
+				value = -5
+			}
+		}
+		random_country_division = {
+			limit = {
+				division_has_battalion_in_template = militia
+				is_unit_template_reserves = no
+				unit_strength > 0.5
+			}
+			add_history_entry = {
+				key = "Partook in the cleansing of Paradise."
+				subject = "Division Honor"
+				allow = yes
+			}
+		}
+	}
+}
+
+#Redding Incident
+country_event = {
+	id = apla.14
+	title = apla.14.t
+	desc = apla.14.d
+	picture = GFX_APLA2
+	fire_only_once = yes
+	is_triggered_only = yes
+	trigger = {
+		tag = APA
+	}
+	immediate = {
+		hidden_effect = {
+			log = "[GetDateText]: [Root.GetName]: event apla.14 immediate"
+			add_victory_points = {
+				province = 13340
+				value = -3
+			}
+		}
+	}
+	option = {
+		name = apla.14.a
+		effect_tooltip = {
+			add_victory_points = {
+				province = 13340
+				value = -3
+			}
+		}
+	}
+}
+
+#Modoc Incident
+country_event = {
+	id = apla.15
+	title = apla.15.t
+	desc = apla.15.d
+	picture = GFX_APLA2
+	fire_only_once = yes
+	is_triggered_only = yes
+	trigger = {
+		tag = APA
+	}
+	immediate = {
+		hidden_effect = {
+			log = "[GetDateText]: [Root.GetName]: event apla.15 immediate"
+		}
+	}
+	option = {
+		name = apla.15.a
+	}
+}
+
+#Here's to you fighter Pilots
+country_event = {
+	id = apla.16
+	title = apla.16.t
+	desc = apla.16.d
+	picture = GFX_Generic_Fight_Jet
+	fire_only_once = yes
+	is_triggered_only = yes
+	trigger = {
+		tag = APA
+	}
+	immediate = {
+		hidden_effect = {
+			log = "[GetDateText]: [Root.GetName]: event apla.16 immediate"
+		}
+	}
+	option = {
+		name = apla.16.a
+	}
+}
+
+#Riva Visits Frontline Troops
+country_event = {
+	id = apla.17
+	title = apla.17.t
+	desc = apla.17.d
+	picture = GFX_Riva_Speech
+	fire_only_once = yes
+	is_triggered_only = yes
+	trigger = {
+		tag = APA
+	}
+	immediate = {
+		hidden_effect = {
+			log = "[GetDateText]: [Root.GetName]: event apla.17 immediate"
+		}
+	}
+	option = {
+		name = apla.17.a
+		add_war_support = 0.05
+	}
+}
+
+#Solving The Cabinent Problem
+country_event = {
+	id = apla.18
+	title = apla.18.t
+	desc = apla.18.d
+	picture = GFX_Riva_Speech
+	fire_only_once = yes
+	is_triggered_only = yes
+	trigger = {
+		tag = APA
+	}
+	immediate = {
+		hidden_effect = {
+			log = "[GetDateText]: [Root.GetName]: event apla.18 immediate"
+			set_country_flag = APA_parties_centralized_flag
+			country_event = {
+				id = apla.31
+				days = 28
+			}
+			country_event = {
+				id = apla.59
+				days = 60
+			}
+			country_event = {
+				id = apla.73
+				days = 180
+			}
+			add_ideas = APA_brace_belden_hog
+			add_ideas = APA_david_duhalde_for
+			add_ideas = APA_david_graeber_eco
+			add_ideas = APA_abby_martin_sec
+		}
+	}
+	option = {
+		name = apla.18.a
+		custom_effect_tooltip = appoint_head_minister_tooltip
+		show_ideas_tooltip = APA_brace_belden_hog
+		custom_effect_tooltip = appoint_foreign_minister_tooltip
+		show_ideas_tooltip = APA_david_duhalde_for
+		custom_effect_tooltip = appoint_economic_minister_tooltip
+		show_ideas_tooltip = APA_david_graeber_eco
+		custom_effect_tooltip = appoint_interior_minister_tooltip
+		show_ideas_tooltip = APA_abby_martin_sec
+		effect_tooltip = {
+			focus_unlock = yes
+		}
+	}
+}
+
+#Militiamen Cut off Water
+country_event = {
+	id = apla.19
+	title = apla.19.t
+	desc = apla.19.d
+	picture = GFX_Riva_Speech
+	fire_only_once = yes
+	is_triggered_only = yes
+	trigger = {
+		tag = APA
+	}
+	immediate = {
+		hidden_effect = {
+			log = "[GetDateText]: [Root.GetName]: event apla.19 immediate"
+			add_ideas = APA_water_shortage
+			add_stability = -0.05
+			add_war_support = -0.025
+		}
+	}
+	option = {
+		name = apla.19.a
+		effect_tooltip = {
+			add_ideas = APA_water_shortage
+			add_stability = -0.05
+			add_war_support = -0.025
+		}
+	}
+}
+
+#Congressional Election Of A Leader
+country_event = {
+	id = apla.20
+	title = apla.20.t
+	desc = apla.20.desc
+	picture = GFX_Riva_Speech
+	fire_only_once = yes
+	is_triggered_only = yes
+	trigger = {
+		tag = APA
+	}
+	immediate = {
+		hidden_effect = {
+			log = "[GetDateText]: [Root.GetName]: event apla.20 immediate"
+		}
+	}
+	option = {
+		name = apla.20.a
+		ai_chance = {
+			factor = 1
+		}
+		trigger = {
+			power_balance_value = {
+				id = APA_power_balance
+				value < 0.65
+			}
+			NOT = {
+				power_balance_value = {
+					id = APA_power_balance
+					value < 0
+				}
+			}
+		}
+		complete_national_focus = APA_the_glory_of_october
+		remove_country_leader_role = {
+			character = APA_michael_prysner_char
+			ideology = marxism_leninism
+		}
+		hidden_effect = {
+			set_country_flag = APA_government_elected_flag
+		}
+	}
+	option = {
+		name = apla.20.b
+		ai_chance = {
+			factor = 1
+		}
+		trigger = {
+			power_balance_value = {
+				id = APA_power_balance
+				value > -0.65
+			}
+			power_balance_value = {
+				id = APA_power_balance
+				value < 0
+			}
+		}
+		complete_national_focus = APA_bread_and_roses
+		remove_country_leader_role = {
+			character = APA_michael_prysner_char
+			ideology = marxism_leninism
+		}
+	}
+	option = {
+		name = apla.20.c
+		ai_chance = {
+			factor = 1
+		}
+		trigger = {
+			NOT = {
+				power_balance_value = {
+					id = APA_power_balance
+					value > -0.65
+				}
+			}
+		}
+		complete_national_focus = APA_no_gods_no_masters
+		remove_country_leader_role = {
+			character = APA_michael_prysner_char
+			ideology = marxism_leninism
+		}
+		hidden_effect = {
+			set_country_flag = APA_government_elected_flag
+		}
+	}
+	option = {
+		name = apla.20.d
+		ai_chance = {
+			factor = 1
+		}
+		trigger = {
+			NOT = {
+				power_balance_value = {
+					id = APA_power_balance
+					value < 0.65
+				}
+			}
+		}
+		complete_national_focus = APA_a_new_american_socialism
+		remove_country_leader_role = {
+			character = APA_michael_prysner_char
+			ideology = marxism_leninism
+		}
+		hidden_effect = {
+			set_country_flag = APA_government_elected_flag
+		}
+	}
+}
+
+#Reactionary State Added
+country_event = {
+	id = apla.21
+	title = apla.21.t
+	desc = apla.21.desc
+	picture = GFX_Riva_Speech
+	is_triggered_only = yes
+	trigger = {
+		tag = APA
+	}
+	immediate = {
+		hidden_effect = {
+			log = "[GetDateText]: [Root.GetName]: event apla.21 immediate"
+			FROM.FROM = {
+				custom_effect_tooltip = APA_reactionary_insurgent_state_tooltip
+				set_state_flag = APA_reactionary_insurgent_controlled_state
+			}
+			add_to_variable = {
+				var = APA_reactionary_insurgent_states_var
+				value = 1
+			}
+			add_to_variable = {
+				var = APA_reactionary_insurgent_states_dynamic_var
+				value = -0.01
+			}
+		}
+	}
+	option = {
+		name = apla.21.a
+		custom_effect_tooltip = APA_reactionary_insurgent_state_tooltip
+	}
+}
+
+#Victory Parade In Sacramento
+country_event = {
+	id = apla.22
+	title = apla.22.t
+	desc = apla.22.d
+	picture = GFX_APLA2
+	fire_only_once = yes
+	is_triggered_only = yes
+	trigger = {
+		tag = APA
+	}
+	immediate = {
+		hidden_effect = {
+			log = "[GetDateText]: [Root.GetName]: event apla.22 immediate"
+			set_capital = {
+				state = 941
+				remember_old_capital = no
+			}
+			set_country_flag = APA_politics_unlocked_flag
+			focus_unlock = yes
+			country_event = {
+				id = apla.87
+				days = 28
+			}
+			USA_remove_country_cores_effect = yes
+		}
+	}
+	option = {
+		name = apla.22.a
+		effect_tooltip = {
+			set_capital = {
+				state = 941
+				remember_old_capital = no
+			}
+			unlock_national_focus = APA_first_american_workers_congress
+			focus_unlock = yes
+		}
+	}
+}
+
+#Hunting Down 'Reactionaries'
+country_event = {
+	id = apla.23
+	title = apla.23.t
+	desc = apla.23.d
+	picture = GFX_APLA2
+	fire_only_once = yes
+	is_triggered_only = yes
+	trigger = {
+		tag = APA
+	}
+	immediate = {
+		hidden_effect = {
+			log = "[GetDateText]: [Root.GetName]: event apla.23 immediate"
+		}
+	}
+	option = {
+		name = apla.23.a
+		add_manpower = -49
+	}
+}
+
+#The Hills have Eyes
+country_event = {
+	id = apla.24
+	title = apla.24.t
+	desc = apla.24.d
+	picture = GFX_APLA2
+	fire_only_once = yes
+	is_triggered_only = yes
+	trigger = {
+		tag = APA
+	}
+	immediate = {
+		hidden_effect = {
+			log = "[GetDateText]: [Root.GetName]: event apla.24 immediate"
+		}
+	}
+	option = {
+		name = apla.24.a
+	}
+}
+
+#APLA Victory
+country_event = {
+	id = apla.25
+	title = apla.25.t
+	desc = apla.25.desc
+	picture = GFX_APLA2
+	fire_only_once = yes
+	is_triggered_only = yes
+	trigger = {
+		tag = APA
+	}
+	immediate = {
+		hidden_effect = {
+			log = "[GetDateText]: [Root.GetName]: event apla.25 immediate"
+			USA_civil_war_over = yes
+			if = {
+				limit = {
+					has_country_flag = APA_jac_cpusa_flag
+				}
+				set_cosmetic_tag = USA_maupin_red
+			}
+			else_if = {
+				limit = {
+					has_country_flag = APA_jac_nlp_flag
+				}
+				set_cosmetic_tag = USA_maupin_blue
+				set_portraits = {
+					character = APA_caleb_maupin_char
+					civilian = { large ="GFX_portrait_APA_caleb_maupin_liberal" }
+				}
+			}
+			else = {
+				set_cosmetic_tag = APA_reunified
+				set_portraits = {
+					character = APA_caleb_maupin_char
+					civilian = { large ="GFX_portrait_APA_caleb_maupin_unified" }
+				}
+			}
+			set_country_flag = APA_reunified_flag
+			focus_unlock = yes
+			set_capital = {
+				state = 931
+				remember_old_capital = no
+			}
+			if = {
+				limit = {
+					has_government = totalitarian_socialist
+				}
+				news_event = {
+					id = news.168
+				}
+			}
+			else_if = {
+				limit = {
+					has_government = social_democrat
+				}
+				news_event = {
+					id = news.362
+				}
+				set_party_name = {
+					ideology = social_democrat
+					long_name = APA_dsa_party_long
+					name = APA_dsa_party
+				}
+			}
+			else_if = {
+				limit = {
+					has_government = libertarian_socialist
+				}
+				news_event = {
+					id = news.361
+				}
+			}
+			else_if = {
+				limit = {
+					has_government = communist
+				}
+				news_event = {
+					id = news.135
+				}
+			}
+		}
+	}
+	option = {
+		name = apla.25.a
+		effect_tooltip = {
+			set_capital = {
+				state = 931
+				remember_old_capital = no
+			}
+			focus_unlock = yes
+		}
+	}
+}
+
+#Chinese SpecOps land 
+country_event = {
+	id = apla.26
+	title = apla.26.t
+	desc = apla.26.d
+	picture = GFX_apa_chyna
+	fire_only_once = yes
+	is_triggered_only = yes
+	trigger = {
+		tag = APA
+	}
+	immediate = {
+		hidden_effect = {
+			log = "[GetDateText]: [Root.GetName]: event apla.26 immediate"
+			load_oob = "APA_PLASF"
+			create_corps_commander = {
+				name = "'Long Yi'"
+				picture = "generals/APA_long_yi.png"
+				traits = {
+					trait_engineer
+					commando
+				}
+				skill = 1
+			}
+		}
+	}
+	option = {
+		name = apla.26.a
+		effect_tooltip = {
+			load_oob = "APA_PLASF"
+			create_corps_commander = {
+				name = "'Long Yi'"
+				picture = "generals/APA_long_yi.png"
+				traits = {
+					trait_engineer
+					commando
+				}
+				skill = 1
+			}
+		}
+	}
+}
+
+#A Case of Presidents
+country_event = {
+	id = apla.27
+	title = apla.27.t
+	desc = apla.27.d
+	picture = GFX_Washington_Painting
+	fire_only_once = yes
+	is_triggered_only = yes
+	trigger = {
+		tag = APA
+	}
+	immediate = {
+		hidden_effect = {
+			log = "[GetDateText]: [Root.GetName]: event apla.27 immediate"
+		}
+	}
+	option = {
+		name = apla.27.a
+	}
+}
+
+#Purging Degenerates
+country_event = {
+	id = apla.28
+	title = apla.28.t
+	desc = apla.28.d
+	picture = GFX_beria_moment
+	fire_only_once = yes
+	is_triggered_only = yes
+	trigger = {
+		tag = APA
+	}
+	immediate = {
+		hidden_effect = {
+			log = "[GetDateText]: [Root.GetName]: event apla.28 immediate"
+		}
+	}
+	option = {
+		name = apla.28.a
+	}
+}
+
+#Cascadian Normalization
+country_event = {
+	id = apla.29
+	title = apla.29.t
+	desc = apla.29.d
+	picture = GFX_Cascadian_Normalization
+	fire_only_once = yes
+	is_triggered_only = yes
+	trigger = {
+		tag = APA
+	}
+	immediate = {
+		hidden_effect = {
+			log = "[GetDateText]: [Root.GetName]: event apla.29 immediate"
+		}
+	}
+	option = {
+		name = apla.29.a
+	}
+}
+
+#Introducing the Factions
+country_event = {
+	id = apla.30
+	title = apla.30.t
+	desc = apla.30.d
+	picture = GFX_Riva_Speech
+	fire_only_once = yes
+	is_triggered_only = yes
+	trigger = {
+		tag = APA
+	}
+	immediate = {
+		hidden_effect = {
+			log = "[GetDateText]: [Root.GetName]: event apla.30 immediate"
+			set_political_power = 0
+		}
+	}
+	option = {
+		name = apla.30.a
+	}
+}
+
+#Conflict Between Militias
+country_event = {
+	id = apla.31
+	title = apla.31.t
+	desc = apla.31.d
+	picture = GFX_Antifa
+	fire_only_once = yes
+	is_triggered_only = yes
+	trigger = {
+		tag = APA
+	}
+	immediate = {
+		hidden_effect = {
+			log = "[GetDateText]: [Root.GetName]: event apla.31 immediate"
+		}
+	}
+	option = {
+		#Centralize the Command
+		name = apla.31.a
+		add_timed_idea = {
+			idea = APA_military_reorganization_idea
+			days = 180
+		}
+		hidden_effect = {
+			country_event = {
+				id = apla.32
+				days = 181
+			}
+		}
+		set_temp_variable = {
+			var = var:communist_popularity_var_temp
+			value = 0.05
+		}
+		add_communist_popularity = yes
+	}
+	option = {
+		#Blame the Anarchists
+		name = apla.31.b
+		add_political_power = 50
+		add_stability = -0.03
+		add_war_support = -0.03
+		set_temp_variable = {
+			var = var:totalitarian_socialist_popularity_var_temp
+			value = 0.05
+		}
+		add_totalitarian_socialist_popularity = yes
+	}
+	option = {
+		#Blame the Jacobins
+		name = apla.31.c
+		add_political_power = 50
+		add_stability = -0.03
+		add_war_support = -0.03
+		set_temp_variable = {
+			var = var:libertarian_socialist_popularity_var_temp
+			value = 0.05
+		}
+		add_libertarian_socialist_popularity = yes
+	}
+	option = {
+		#Ignore it
+		name = apla.31.e
+		add_political_power = 50
+		add_stability = -0.03
+		add_war_support = 0.03
+	}
+}
+
+#End of Militia Reorganziation
+country_event = {
+	id = apla.32
+	title = apla.32.t
+	desc = apla.32.d
+	picture = GFX_APLA_Militia1
+	fire_only_once = yes
+	is_triggered_only = yes
+	trigger = {
+		tag = APA
+	}
+	immediate = {
+		hidden_effect = {
+			log = "[GetDateText]: [Root.GetName]: event apla.32 immediate"
+		}
+	}
+	option = {
+		#Centralize the Command
+		name = apla.31.a
+		add_timed_idea = {
+			idea = APA_military_reorganization_over_idea
+			days = 600
+		}
+		add_war_support = 0.05
+	}
+}
+
+#JESSE WE MUST COOK METH FOR THE REVOLUTION
+country_event = {
+	id = apla.33
+	title = apla.33.t
+	desc = apla.33.d
+	picture = GFX_APLA_Cocaine
+	fire_only_once = yes
+	is_triggered_only = yes
+	trigger = {
+		tag = APA
+	}
+	immediate = {
+		hidden_effect = {
+			log = "[GetDateText]: [Root.GetName]: event apla.33 immediate"
+		}
+	}
+	option = {
+		#I COOKA DA METHA
+		name = apla.33.a
+		effect_tooltip = {
+			swap_ideas = {
+				remove_idea = APA_drug_trade_dummy_idea
+				add_idea = APA_drugs_legalized_idea
+			}
+		}
+		custom_effect_tooltip = APA_allow_drugs_tooltip
+		hidden_effect = {
+			add_to_variable = {
+				var = APA_drugs_consumer_goods_factor_dynamic_var
+				value = -0.05
+			}
+			set_country_flag = APA_drugs_allowed_flag
+		}
+	}
+	option = {
+		#No.
+		name = apla.33.b
+		custom_effect_tooltip = APA_ban_drugs_tooltip
+		remove_dynamic_modifier = {
+			modifier = APA_drug_trade_dynamic
+		}
+		add_stability = 0.05
+		add_political_power = 50
+	}
+}
+
+#Role of the Executive
+country_event = {
+	id = apla.34
+	title = apla.34.t
+	desc = apla.34.d
+	picture = GFX_APLA_Congress
+	fire_only_once = yes
+	is_triggered_only = yes
+	trigger = {
+		tag = APA
+	}
+	immediate = {
+		hidden_effect = {
+			log = "[GetDateText]: [Root.GetName]: event apla.34 immediate"
+		}
+	}
+	option = {
+		#UNLIMITED POWER
+		name = apla.34.a
+		add_stability = 0.02
+		add_power_balance_value = {
+			id = APA_power_balance
+			value = 0.1
+			tooltip_side = APA_centralization_side
+		}
+		set_temp_variable = {
+			var = var:totalitarian_socialist_popularity_var_temp
+			value = 0.07
+		}
+		add_totalitarian_socialist_popularity = yes
+		set_temp_variable = {
+			var = var:communist_popularity_var_temp
+			value = 0.04
+		}
+		add_communist_popularity = yes
+	}
+	option = {
+		#SOMEWHAT LIMITED POWER
+		name = apla.34.b
+		add_stability = 0.05
+		set_temp_variable = {
+			var = var:social_democrat_popularity_var_temp
+			value = 0.07
+		}
+		add_social_democrat_popularity = yes
+		set_temp_variable = {
+			var = var:communist_popularity_var_temp
+			value = 0.05
+		}
+		add_communist_popularity = yes
+	}
+	option = {
+		#VERY LIMITED POWER
+		name = apla.34.c
+		add_war_support = 0.05
+		add_political_power = 50
+		set_temp_variable = {
+			var = var:libertarian_socialist_popularity_var_temp
+			value = 0.07
+		}
+		add_libertarian_socialist_popularity = yes
+		set_temp_variable = {
+			var = var:communist_popularity_var_temp
+			value = 0.03
+		}
+		add_communist_popularity = yes
+		add_power_balance_value = {
+			id = APA_power_balance
+			value = -0.1
+			tooltip_side = APA_decentralization_side
+		}
+	}
+}
+
+#Role of the Court
+country_event = {
+	id = apla.35
+	title = apla.35.t
+	desc = apla.35.d
+	picture = GFX_Supremecourt
+	fire_only_once = yes
+	is_triggered_only = yes
+	trigger = {
+		tag = APA
+	}
+	immediate = {
+		hidden_effect = {
+			log = "[GetDateText]: [Root.GetName]: event apla.35 immediate"
+		}
+	}
+	option = {
+		#Abolish the Court
+		name = apla.35.a
+		add_political_power = 50
+		set_temp_variable = {
+			var = var:totalitarian_socialist_popularity_var_temp
+			value = 0.05
+		}
+		add_totalitarian_socialist_popularity = yes
+		set_temp_variable = {
+			var = var:libertarian_socialist_popularity_var_temp
+			value = 0.05
+		}
+		add_libertarian_socialist_popularity = yes
+		add_power_balance_value = {
+			id = APA_power_balance
+			value = -0.1
+			tooltip_side = APA_decentralization_side
+		}
+	}
+	option = {
+		#Keep the Court
+		name = apla.35.b
+		add_stability = 0.03
+		set_temp_variable = {
+			var = var:communist_popularity_var_temp
+			value = 0.05
+		}
+		add_communist_popularity = yes
+		set_temp_variable = {
+			var = var:social_democrat_popularity_var_temp
+			value = 0.05
+		}
+		add_social_democrat_popularity = yes
+		add_power_balance_value = {
+			id = APA_power_balance
+			value = 0.1
+			tooltip_side = APA_centralization_side
+		}
+	}
+}
+
+#Election Mechanisms
+country_event = {
+	id = apla.36
+	title = apla.36.t
+	desc = apla.36.d
+	picture = GFX_SouthAfricaElection
+	fire_only_once = yes
+	is_triggered_only = yes
+	trigger = {
+		tag = APA
+	}
+	immediate = {
+		hidden_effect = {
+			log = "[GetDateText]: [Root.GetName]: event apla.36 immediate"
+		}
+	}
+	option = {
+		#Direct Democracy
+		name = apla.36.a
+		add_war_support = 0.05
+		set_temp_variable = {
+			var = var:libertarian_socialist_popularity_var_temp
+			value = 0.07
+		}
+		add_libertarian_socialist_popularity = yes
+		add_power_balance_value = {
+			id = APA_power_balance
+			value = -0.1
+			tooltip_side = APA_decentralization_side
+		}
+	}
+	option = {
+		#Trade Union
+		name = apla.36.b
+		add_stability = 0.03
+		add_political_power = 15
+		set_temp_variable = {
+			var = var:libertarian_socialist_popularity_var_temp
+			value = 0.05
+		}
+		add_libertarian_socialist_popularity = yes
+		set_temp_variable = {
+			var = var:social_democrat_popularity_var_temp
+			value = 0.05
+		}
+		add_social_democrat_popularity = yes
+		add_power_balance_value = {
+			id = APA_power_balance
+			value = -0.05
+			tooltip_side = APA_decentralization_side
+		}
+	}
+	option = {
+		#Representative Democracy
+		name = apla.36.c
+		add_stability = 0.05
+		set_temp_variable = {
+			var = var:communist_popularity_var_temp
+			value = 0.05
+		}
+		add_communist_popularity = yes
+		set_temp_variable = {
+			var = var:social_democrat_popularity_var_temp
+			value = 0.05
+		}
+		add_social_democrat_popularity = yes
+		add_power_balance_value = {
+			id = APA_power_balance
+			value = 0.05
+			tooltip_side = APA_centralization_side
+		}
+	}
+	option = {
+		#Representative Democracy
+		name = apla.36.e
+		add_political_power = 50
+		set_temp_variable = {
+			var = var:totalitarian_socialist_popularity_var_temp
+			value = 0.07
+		}
+		add_totalitarian_socialist_popularity = yes
+		set_temp_variable = {
+			var = var:communist_popularity_var_temp
+			value = 0.03
+		}
+		add_communist_popularity = yes
+		add_power_balance_value = {
+			id = APA_power_balance
+			value = 0.1
+			tooltip_side = APA_centralization_side
+		}
+	}
+}
+
+#Unions
+country_event = {
+	id = apla.37
+	title = apla.37.t
+	desc = apla.37.d
+	picture = GFX_Generic_CPUSA
+	fire_only_once = yes
+	is_triggered_only = yes
+	trigger = {
+		tag = APA
+	}
+	immediate = {
+		hidden_effect = {
+			log = "[GetDateText]: [Root.GetName]: event apla.37 immediate"
+		}
+	}
+	option = {
+		#State Unions
+		name = apla.37.a
+		add_political_power = 50
+		set_temp_variable = {
+			var = var:totalitarian_socialist_popularity_var_temp
+			value = 0.05
+		}
+		add_totalitarian_socialist_popularity = yes
+		set_temp_variable = {
+			var = var:communist_popularity_var_temp
+			value = 0.05
+		}
+		add_communist_popularity = yes
+		add_power_balance_value = {
+			id = APA_power_balance
+			value = 0.1
+			tooltip_side = APA_centralization_side
+		}
+	}
+	option = {
+		#Independent Unions
+		name = apla.37.b
+		add_stability = 0.05
+		set_temp_variable = {
+			var = var:libertarian_socialist_popularity_var_temp
+			value = 0.05
+		}
+		add_libertarian_socialist_popularity = yes
+		set_temp_variable = {
+			var = var:social_democrat_popularity_var_temp
+			value = 0.05
+		}
+		add_social_democrat_popularity = yes
+		add_power_balance_value = {
+			id = APA_power_balance
+			value = -0.1
+			tooltip_side = APA_decentralization_side
+		}
+	}
+}
+
+#Constitution
+country_event = {
+	id = apla.38
+	title = apla.38.t
+	desc = apla.38.d
+	picture = GFX_APLA_Congress
+	fire_only_once = yes
+	is_triggered_only = yes
+	trigger = {
+		tag = APA
+	}
+	immediate = {
+		hidden_effect = {
+			log = "[GetDateText]: [Root.GetName]: event apla.38 immediate"
+			add_political_power = 50
+			CAL_laura_yeager = {
+				unit_leader_event = {
+					id = apla.39
+					days = 14
+				}
+			}
+		}
+	}
+	option = {
+		name = apla.38.a
+		effect_tooltip = {
+			add_political_power = 50
+		}
+		complete_national_focus = APA_the_vanguard_party
+	}
+	option = {
+		name = apla.38.b
+		effect_tooltip = {
+			add_political_power = 50
+		}
+		complete_national_focus = APA_the_popular_front
+	}
+}
+
+#Notice to Surrender
+unit_leader_event = {
+	id = apla.39
+	title = apla.39.t
+	desc = apla.39.d
+	picture = GFX_report_event_generic_mussolini
+	is_triggered_only = yes
+	immediate = {
+		hidden_effect = {
+			log = "[GetDateText]: [Root.GetName]: event apla.39 immediate"
+		}
+	}
+	option = {
+		name = apla.39.a
+		APA_anastasia_lewis_char = {
+			unit_leader_event = {
+				id = apla.40
+			}
+		}
+		APA_artyom_char = {
+			unit_leader_event = {
+				id = apla.41
+			}
+		}
+	}
+}
+
+#Re Notice to Surrender
+unit_leader_event = {
+	id = apla.40
+	title = apla.40.t
+	desc = apla.40.d
+	picture = GFX_report_event_generic_mussolini
+	is_triggered_only = yes
+	trigger = {
+		tag = APA
+	}
+	immediate = {
+		hidden_effect = {
+			log = "[GetDateText]: [Root.GetName]: event apla.40 immediate"
+		}
+	}
+	option = {
+		name = apla.40.a
+	}
+}
+
+#Russian Frequency Picked up
+unit_leader_event = {
+	id = apla.41
+	title = apla.41.t
+	desc = apla.41.d
+	picture = GFX_report_event_generic_mussolini
+	is_triggered_only = yes
+	immediate = {
+		hidden_effect = {
+			log = "[GetDateText]: [Root.GetName]: event apla.41 immediate"
+			sound_effect = artyom_comments
+		}
+	}
+	option = {
+		name = apla.41.a
+	}
+}
+
+#CSM War Crimes
+news_event = {
+	id = apla.42
+	title = apla.42.t
+	desc = apla.42.d
+	picture = GFX_news_convoy
+	is_triggered_only = yes
+	major = yes
+	trigger = {
+		tag = APA
+	}
+	immediate = {
+		hidden_effect = {
+			log = "[GetDateText]: [Root.GetName]: event apla.42 immediate"
+		}
+	}
+	option = {
+		name = apla.42.a
+		
+	}
+}
+
+#Silicon Valley War Crimes
+country_event = {
+	id = apla.43
+	title = apla.43.t
+	desc = apla.43.d
+	picture = GFX_communistprotest2
+	is_triggered_only = yes
+	trigger = {
+		tag = APA
+	}
+	immediate = {
+		hidden_effect = {
+			log = "[GetDateText]: [Root.GetName]: event apla.43 immediate"
+		}
+	}
+	option = {
+		# Yes Looting
+		name = apla.43.a
+		add_war_support = 0.06
+		add_political_power = -25
+		add_stability = -0.04
+		add_equipment_to_stockpile = {
+			type = infantry_equipment
+			amount = 3000
+			producer = APA
+		}
+	}
+	option = {
+		# No Looting
+		name = apla.43.b
+		add_war_support = -0.04
+		add_political_power = 50
+		add_stability = 0.04
+	}
+}
+
+#Silicon Valley War Crimes
+country_event = {
+	id = apla.44
+	title = apla.44.t
+	desc = apla.44.d
+	picture = GFX_Generic_Texas_Red_Guards
+	is_triggered_only = yes
+	immediate = {
+		hidden_effect = {
+			log = "[GetDateText]: [Root.GetName]: event apla.44 immediate"
+		}
+	}
+	option = {
+		# Yes Looting
+		name = apla.44.a
+		add_war_support = 0.05
+		add_political_power = -25
+		add_equipment_to_stockpile = {
+			type = infantry_equipment
+			amount = 3000
+			producer = APA
+		}
+	}
+}
+
+#Attacking Nevada
+country_event = {
+	id = apla.45
+	title = apla.45.t
+	desc = apla.45.d
+	picture = GFX_war2
+	is_triggered_only = yes
+	immediate = {
+		hidden_effect = {
+			log = "[GetDateText]: [Root.GetName]: event apla.45 immediate"
+		}
+	}
+	option = {
+		name = apla.45.a
+		if = {
+			limit = {
+				country_exists = FOL
+			}
+			declare_war_on = {
+				target = FOL
+				type = annex_everything
+			}
+		}
+		if = {
+			limit = {
+				country_exists = DUG
+			}
+			declare_war_on = {
+				target = DUG
+				type = annex_everything
+			}
+		}
+		if = {
+			limit = {
+				country_exists = VAG
+			}
+			declare_war_on = {
+				target = VAG
+				type = annex_everything
+			}
+		}
+	}
+}
+
+#Bohemian Groove
+country_event = {
+	id = apla.46
+	title = apla.46.t
+	desc = apla.46.d
+	picture = GFX_anarchist2
+	is_triggered_only = yes
+	immediate = {
+		hidden_effect = {
+			log = "[GetDateText]: [Root.GetName]: event apla.46 immediate"
+		}
+	}
+	option = {
+		# Let Nature Reclaim it
+		name = apla.46.a
+		add_stability = 0.02
+		set_temp_variable = {
+			var = var:social_democrat_popularity_var_temp
+			value = 0.03
+		}
+		add_social_democrat_popularity = yes
+	}
+	option = {
+		# Let Indigenous Take It
+		name = apla.46.b
+		add_stability = -0.02
+		set_temp_variable = {
+			var = var:libertarian_socialist_popularity_var_temp
+			value = 0.03
+		}
+		add_libertarian_socialist_popularity = yes
+		set_province_name = {
+			id = 942
+			name = APA_santa_rosa
+		}
+		942 = {
+			add_dynamic_modifier = {
+				modifier = autonomous_state
+			}
+		}
+	}
+	option = {
+		# History is History
+		name = apla.46.c
+		add_stability = 0.01
+		add_war_support = 0.01
+		set_temp_variable = {
+			var = var:communist_popularity_var_temp
+			value = 0.03
+		}
+		add_communist_popularity = yes
+	}
+	option = {
+		# LET IT BURN
+		name = apla.46.e
+		add_war_support = 0.03
+		add_political_power = 50
+		set_temp_variable = {
+			var = var:totalitarian_socialist_popularity_var_temp
+			value = 0.03
+		}
+		add_totalitarian_socialist_popularity = yes
+	}
+}
+
+#Operation Chocolate Mint: Failure
+country_event = {
+	id = apla.47
+	title = apla.47.t
+	desc = apla.47.d
+	picture = GFX_war2
+	is_triggered_only = yes
+	trigger = {
+		tag = APA
+	}
+	immediate = {
+		hidden_effect = {
+			log = "[GetDateText]: [Root.GetName]: event apla.47 immediate"
+		}
+	}
+	option = {
+		name = apla.47.a
+		hidden_effect = {
+			set_temp_variable = {
+				var = APA_leftist_unity_var_temp
+				value = -0.1
+			}
+			APA_add_leftist_unity = yes
+		}
+		custom_effect_tooltip = APA_its_over_tooltip
+	}
+}
+
+#Operation Chocolate Mint: Success
+country_event = {
+	id = apla.48
+	title = apla.48.t
+	desc = apla.48.d
+	picture = GFX_war2
+	is_triggered_only = yes
+	immediate = {
+		hidden_effect = {
+			log = "[GetDateText]: [Root.GetName]: event apla.48 immediate"
+		}
+	}
+	option = {
+		name = apla.48.a
+		set_temp_variable = {
+			var = APA_leftist_unity_var_temp
+			value = 0.1
+		}
+		APA_add_leftist_unity = yes
+	}
+}
+
+#The Last Marvel Movie
+country_event = {
+	id = apla.49
+	title = apla.49.t
+	desc = apla.49.d
+	picture = GFX_marvel
+	is_triggered_only = yes
+	immediate = {
+		hidden_effect = {
+			log = "[GetDateText]: [Root.GetName]: event apla.49 immediate"
+		}
+	}
+	option = {
+		name = apla.49.a
+		set_temp_variable = {
+			var = var:totalitarian_socialist_popularity_var_temp
+			value = 0.05
+		}
+		add_totalitarian_socialist_popularity = yes
+		add_war_support = 0.025
+	}
+}
+
+#Caleb Maupin Overthrown
+country_event = {
+	id = apla.50
+	title = apla.50.t
+	desc = apla.50.d
+	picture = GFX_marvel
+	is_triggered_only = yes
+	immediate = {
+		hidden_effect = {
+			log = "[GetDateText]: [Root.GetName]: event apla.50 immediate"
+			add_popularity = {
+				ideology = totalitarian_socialist
+				popularity = -0.15
+			}
+			add_stability = -0.15
+		}
+	}
+	option = {
+		name = apla.50.a
+		effect_tooltip = {
+			add_popularity = {
+				ideology = totalitarian_socialist
+				popularity = -0.15
+			}
+			add_stability = -0.15
+		}
+	}
+}
+
+#From Gangsters to Revolutionaries
+country_event = {
+	id = apla.51
+	title = apla.51.t
+	desc = apla.51.d
+	picture = GFX_APA_gangsters_to_revolutionaries
+	is_triggered_only = yes
+	immediate = {
+		hidden_effect = {
+			log = "[GetDateText]: [Root.GetName]: event apla.51 immediate"
+		}
+	}
+	option = {
+		name = apla.51.a
+		set_temp_variable = {
+			var = var:libertarian_socialist_popularity_var_temp
+			value = 0.05
+		}
+		add_libertarian_socialist_popularity = yes
+		set_temp_variable = {
+			var = var:communist_popularity_var_temp
+			value = 0.025
+		}
+		add_communist_popularity = yes
+		add_power_balance_value = {
+			id = APA_power_balance
+			value = -0.05
+		}
+		custom_effect_tooltip = APA_bfg_tt
+		hidden_effect = {
+			942 = {
+				create_unit = {
+					division = "name = \"Black Guerilla Family Militia\" division_template = \"Volunteer Militia\"  start_experience_factor = 0.0"
+					allow_spawning_on_enemy_provs = yes
+					owner = ROOT
+				}
+			}
+		}
+	}
+	option = {
+		name = apla.51.b
+		set_temp_variable = {
+			var = var:totalitarian_socialist_popularity_var_temp
+			value = 0.05
+		}
+		add_totalitarian_socialist_popularity = yes
+		set_temp_variable = {
+			var = var:social_democrat_popularity_var_temp
+			value = 0.025
+		}
+		add_social_democrat_popularity = yes
+		add_power_balance_value = {
+			id = APA_power_balance
+			value = 0.05
+		}
+	}
+}
+
+#Jacobin Revolutionary Agenda
+country_event = {
+	id = apla.52
+	title = apla.52.t
+	desc = apla.52.d
+	picture = GFX_red_patriotism
+	is_triggered_only = yes
+	immediate = {
+		hidden_effect = {
+			log = "[GetDateText]: [Root.GetName]: event apla.52 immediate"
+			add_dynamic_modifier = {
+				modifier = APA_revolution_progress_dynamic
+			}
+			# activate_mission = APA_journalists_investigating_mission
+			# activate_mission = APA_counterrevolutionaries_organizing_mission
+			set_temp_variable = {
+				var = APA_revolution_progress_var_temp
+				value = 0.04
+			}
+			APA_add_revolution_progress = yes
+		}
+	}
+	option = {
+		name = apla.52.a
+		custom_effect_tooltip = APA_congress_agenda_enabled_jacobin_tooltip
+		effect_tooltip = {
+			set_temp_variable = {
+				var = APA_revolution_progress_var_temp
+				value = 0.04
+			}
+			APA_add_revolution_progress = yes
+			add_dynamic_modifier = {
+				modifier = APA_revolution_progress_dynamic
+			}
+			unlock_national_focus = APA_unify_the_west_coast
+			# activate_mission = APA_journalists_investigating_mission
+			# activate_mission = APA_counterrevolutionaries_organizing_mission
+		}
+	}
+}
+
+#Anarchists Protest Government
+country_event = {
+	id = apla.53
+	title = apla.53.t
+	desc = apla.53.d
+	picture = GFX_anarchist2
+	is_triggered_only = yes
+	immediate = {
+		hidden_effect = {
+			log = "[GetDateText]: [Root.GetName]: event apla.53 immediate"
+		}
+	}
+	option = {
+		#Yes Cooperation
+		name = apla.53.a
+		set_temp_variable = {
+			var = var:libertarian_socialist_popularity_var_temp
+			value = 0.1
+		}
+		add_libertarian_socialist_popularity = yes
+		add_power_balance_value = {
+			id = APA_power_balance
+			value = -0.15
+			tooltip_side = APA_decentralization_side
+		}
+		set_temp_variable = {
+			var = APA_leftist_unity_var_temp
+			value = 0.1
+		}
+		APA_add_leftist_unity = yes
+		set_temp_variable = {
+			var = APA_support_anarchist_var_temp
+			value = 0.4
+		}
+		APA_add_support_anarchist = yes
+		effect_tooltip = {
+			swap_ideas = {
+				remove_idea = APA_american_workers_congress_dummy_idea
+				add_idea = APA_anarchist_coalition_idea
+			}
+		}
+		hidden_effect = {
+			add_to_variable = {
+				var = APA_politics_political_power_gain_dynamic_var
+				value = -0.3
+			}
+		}
+	}
+	option = {
+		#Fuck Them Anarkiddies
+		name = apla.53.b
+		set_temp_variable = {
+			var = var:libertarian_socialist_popularity_var_temp
+			value = 0.02
+		}
+		add_libertarian_socialist_popularity = yes
+		set_temp_variable = {
+			var = APA_support_anarchist_var_temp
+			value = -0.05
+		}
+		APA_add_support_anarchist = yes
+		add_power_balance_value = {
+			id = APA_power_balance
+			value = 0.05
+			tooltip_side = APA_centralization_side
+		}
+		add_political_power = 50
+		set_temp_variable = {
+			var = APA_leftist_unity_var_temp
+			value = -0.07
+		}
+		APA_add_leftist_unity = yes
+		hidden_effect = {
+			country_event = {
+				id = apla.55
+				days = 40
+			}
+		}
+	}
+}
+
+#Skunk Works Strike
+country_event = {
+	id = apla.54
+	title = apla.54.t
+	desc = apla.54.d
+	picture = GFX_communistprotest
+	is_triggered_only = yes
+	immediate = {
+		hidden_effect = {
+			log = "[GetDateText]: [Root.GetName]: event apla.54 immediate"
+		}
+	}
+	option = {
+		#Agree
+		name = apla.54.a
+		set_temp_variable = {
+			var = var:libertarian_socialist_popularity_var_temp
+			value = 0.05
+		}
+		add_libertarian_socialist_popularity = yes
+		add_power_balance_value = {
+			id = APA_power_balance
+			value = -0.05
+			tooltip_side = APA_decentralization_side
+		}
+		add_timed_idea = {
+			idea = APA_strike_demands_idea
+			days = 175
+		}
+	}
+	option = {
+		#The People's Strike Breakers
+		name = apla.54.b
+		set_temp_variable = {
+			var = var:communist_popularity_var_temp
+			value = 0.05
+		}
+		add_communist_popularity = yes
+		add_power_balance_value = {
+			id = APA_power_balance
+			value = 0.05
+			tooltip_side = APA_centralization_side
+		}
+		add_political_power = 50
+		add_timed_idea = {
+			idea = APA_strike_ongoing_idea
+			days = 350
+		}
+	}
+}
+
+#Anarchists Demand Reforms
+country_event = {
+	id = apla.55
+	title = apla.55.t
+	desc = apla.55.d
+	picture = GFX_anarchist3
+	is_triggered_only = yes
+	immediate = {
+		hidden_effect = {
+			log = "[GetDateText]: [Root.GetName]: event apla.55 immediate"
+		}
+	}
+	option = {
+		#Compromise
+		name = apla.55.a
+		set_temp_variable = {
+			var = var:libertarian_socialist_popularity_var_temp
+			value = 0.15
+		}
+		add_libertarian_socialist_popularity = yes
+		add_power_balance_value = {
+			id = APA_power_balance
+			value = -0.15
+			tooltip_side = APA_decentralization_side
+		}
+		set_temp_variable = {
+			var = APA_leftist_unity_var_temp
+			value = 0.1
+		}
+		set_temp_variable = {
+			var = APA_support_anarchist_var_temp
+			value = 0.4
+		}
+		APA_add_support_anarchist = yes
+		APA_add_leftist_unity = yes
+		effect_tooltip = {
+			swap_ideas = {
+				remove_idea = APA_american_workers_congress_dummy_idea
+				add_idea = APA_anarchist_coalition_idea
+			}
+		}
+		hidden_effect = {
+			add_to_variable = {
+				var = APA_politics_political_power_gain_dynamic_var
+				value = -0.3
+			}
+		}
+	}
+	option = {
+		#Reject Reforms
+		name = apla.54.b
+		set_temp_variable = {
+			var = var:libertarian_socialist_popularity_var_temp
+			value = 0.03
+		}
+		add_libertarian_socialist_popularity = yes
+		set_temp_variable = {
+			var = APA_support_anarchist_var_temp
+			value = -0.05
+		}
+		APA_add_support_anarchist = yes
+		add_power_balance_value = {
+			id = APA_power_balance
+			value = 0.05
+			tooltip_side = APA_centralization_side
+		}
+		set_temp_variable = {
+			var = APA_leftist_unity_var_temp
+			value = -0.05
+		}
+		APA_add_leftist_unity = yes
+		add_stability = 0.05
+		add_timed_idea = {
+			idea = APA_strike_ongoing_idea
+			days = 70
+		}
+	}
+}
+
+#Landback 
+news_event = {
+	id = apla.56
+	title = apla.56.t
+	desc = apla.56.d
+	picture = GFX_news_landback
+	is_triggered_only = yes
+	major = yes
+	immediate = {
+		hidden_effect = {
+			log = "[GetDateText]: [Root.GetName]: event apla.56 immediate"
+			NNN = {
+				add_popularity = {
+					ideology = libertarian_socialist
+					popularity = 0.1
+				}
+			}
+			BRN = {
+				add_popularity = {
+					ideology = libertarian_socialist
+					popularity = 0.1
+				}
+			}
+			BLA = {
+				add_popularity = {
+					ideology = libertarian_socialist
+					popularity = 0.1
+				}
+			}
+			CAC = {
+				add_popularity = {
+					ideology = libertarian_socialist
+					popularity = 0.1
+				}
+			}
+		}
+	}
+	option = {
+		#
+		name = apla.56.a
+		
+		
+	}
+}
+
+country_event = {
+	id = apla.57
+	title = apla.57.t
+	desc = apla.57.d
+	picture = GFX_red_patriotism
+	is_triggered_only = yes
+	immediate = {
+		hidden_effect = {
+			log = "[GetDateText]: [Root.GetName]: event apla.57 immediate"
+		}
+	}
+	option = {
+		name = apla.57.a
+		set_temp_variable = {
+			var = var:totalitarian_socialist_popularity_var_temp
+			value = 0.075
+		}
+		add_totalitarian_socialist_popularity = yes
+		set_temp_variable = {
+			var = var:social_democrat_popularity_var_temp
+			value = 0.025
+		}
+		add_social_democrat_popularity = yes
+		add_stability = 0.025
+	}
+}
+
+#Octoberist Agenda
+country_event = {
+	id = apla.58
+	title = apla.58.t
+	desc = apla.58.d
+	picture = GFX_APLA_Congress
+	is_triggered_only = yes
+	fire_only_once = yes
+	immediate = {
+		hidden_effect = {
+			log = "[GetDateText]: [Root.GetName]: event apla.58 immediate"
+			add_dynamic_modifier = {
+				modifier = APA_revolution_progress_dynamic
+			}
+			set_temp_variable = {
+				var = APA_revolution_progress_var_temp
+				value = 0.04
+			}
+			APA_add_revolution_progress = yes
+		}
+	}
+	option = {
+		name = apla.58.a
+		custom_effect_tooltip = APA_congress_agenda_enabled_octoberist_tooltip
+		effect_tooltip = {
+			set_temp_variable = {
+				var = APA_revolution_progress_var_temp
+				value = 0.04
+			}
+			APA_add_revolution_progress = yes
+			add_dynamic_modifier = {
+				modifier = APA_revolution_progress_dynamic
+			}
+			unlock_national_focus = APA_unify_the_west_coast
+		}
+	}
+}
+
+#Red Cross
+country_event = {
+	id = apla.59
+	title = apla.59.t
+	desc = apla.59.d
+	picture = GFX_yankee_no_more
+	fire_only_once = yes
+	is_triggered_only = yes
+	trigger = {
+		tag = APA
+	}
+	immediate = {
+		hidden_effect = {
+			log = "[GetDateText]: [Root.GetName]: event apla.59 immediate"
+		}
+	}
+	option = {
+		name = apla.59.a
+		add_stability = 0.025
+		set_temp_variable = {
+			var = var:social_democrat_popularity_var_temp
+			value = 0.025
+		}
+		add_social_democrat_popularity = yes
+		add_power_balance_value = {
+			id = APA_power_balance
+			value = -0.05
+			tooltip_side = APA_decentralization_side
+		}
+		add_war_support = -0.04
+	}
+	option = {
+		name = apla.59.b
+		add_stability = -0.04
+		set_temp_variable = {
+			var = var:totalitarian_socialist_popularity_var_temp
+			value = 0.025
+		}
+		add_totalitarian_socialist_popularity = yes
+		add_power_balance_value = {
+			id = APA_power_balance
+			value = 0.05
+			tooltip_side = APA_centralization_side
+		}
+		add_war_support = 0.025
+	}
+}
+
+#Operation Chocolate Mint
+news_event = {
+	id = apla.60
+	title = apla.60.t
+	desc = apla.60.d
+	picture = GFX_war2
+	is_triggered_only = yes
+	major = yes
+	immediate = {
+		hidden_effect = {
+			log = "[GetDateText]: [Root.GetName]: event apla.60 immediate"
+		}
+	}
+	option = {
+		#
+		name = apla.56.a
+		
+	}
+}
+
+#Anarchist Revolt
+country_event = {
+	id = apla.61
+	title = apla.61.t
+	desc = apla.61.d
+	picture = GFX_anarchist3
+	fire_only_once = yes
+	is_triggered_only = yes
+	trigger = {
+		tag = APA
+	}
+	immediate = {
+		hidden_effect = {
+			log = "[GetDateText]: [Root.GetName]: event apla.61 immediate"
+		}
+	}
+	option = {
+		name = apla.61.a
+		add_popularity = {
+			ideology = libertarian_socialist
+			popularity = -0.9
+		}
+		add_power_balance_value = {
+			id = APA_power_balance
+			value = 0.1
+			tooltip_side = APA_centralization_side
+		}
+		set_temp_variable = {
+			var = APA_support_anarchist_var_temp
+			value = -0.4
+		}
+		APA_add_support_anarchist = yes
+		add_war_support = -0.1
+		add_stability = -0.1
+		hidden_effect = {
+			ANA = {
+				transfer_state = 994
+				transfer_state = 993
+				transfer_state = 1081
+				transfer_state = 1036
+				transfer_state = 1037
+				load_oob = ANA_revolt
+				declare_war_on = {
+					target = APA
+					type = annex_everything
+				}
+				declare_war_on = {
+					target = CAC
+					type = annex_everything
+				}
+			}
+		}
+	}
+}
+
+#Anarchist Revolt Avoided
+country_event = {
+	id = apla.62
+	title = apla.62.t
+	desc = apla.62.d
+	picture = GFX_anarchist3
+	fire_only_once = yes
+	is_triggered_only = yes
+	trigger = {
+		tag = APA
+	}
+	immediate = {
+		hidden_effect = {
+			log = "[GetDateText]: [Root.GetName]: event apla.62 immediate"
+		}
+	}
+	option = {
+		name = apla.62.a
+		set_temp_variable = {
+			var = var:libertarian_socialist_popularity_var_temp
+			value = -0.1
+		}
+		add_libertarian_socialist_popularity = yes
+		set_temp_variable = {
+			var = APA_support_anarchist_var_temp
+			value = 0.1
+		}
+		APA_add_support_anarchist = yes
+		set_temp_variable = {
+			var = APA_leftist_unity_var_temp
+			value = 0.1
+		}
+		APA_add_leftist_unity = yes
+		add_stability = 0.05
+	}
+}
+
+#The Liberation Army
+country_event = {
+	id = apla.63
+	title = apla.63.t
+	desc = apla.63.d
+	picture = GFX_communist_guerilla
+	fire_only_once = yes
+	is_triggered_only = yes
+	trigger = {
+		tag = APA
+	}
+	immediate = {
+		hidden_effect = {
+			log = "[GetDateText]: [Root.GetName]: event apla.63 immediate"
+		}
+	}
+	option = {
+		name = apla.63.a
+		add_war_support = 0.02
+	}
+}
+
+#Collectivization Event
+country_event = {
+	id = apla.64
+	title = apla.64.t
+	desc = apla.64.d
+	picture = GFX_Riva_Speech
+	fire_only_once = yes
+	is_triggered_only = yes
+	trigger = {
+		tag = APA
+	}
+	immediate = {
+		hidden_effect = {
+			log = "[GetDateText]: [Root.GetName]: event apla.64 immediate"
+		}
+	}
+	option = {
+		name = apla.64.a
+		add_stability = 0.02
+	}
+}
+
+#Red Terror
+country_event = {
+	id = apla.65
+	title = apla.65.t
+	desc = apla.65.d
+	picture = GFX_APLA2
+	fire_only_once = yes
+	is_triggered_only = yes
+	trigger = {
+		tag = APA
+	}
+	immediate = {
+		hidden_effect = {
+			log = "[GetDateText]: [Root.GetName]: event apla.65 immediate"
+		}
+	}
+	option = {
+		name = apla.65.a
+		set_temp_variable = {
+			var = APA_leftist_unity_var_temp
+			value = 0.05
+		}
+		APA_add_leftist_unity = yes
+	}
+}
+
+#Fair Education Amendment
+country_event = {
+	id = apla.66
+	title = apla.66.t
+	desc = apla.66.d
+	picture = GFX_APLA_cpusa1
+	fire_only_once = yes
+	is_triggered_only = yes
+	trigger = {
+		tag = APA
+	}
+	immediate = {
+		hidden_effect = {
+			log = "[GetDateText]: [Root.GetName]: event apla.66 immediate"
+		}
+	}
+	option = {
+		name = apla.66.a
+		set_temp_variable = {
+			var = APA_leftist_unity_var_temp
+			value = 0.01
+		}
+		APA_add_leftist_unity = yes
+	}
+}
+
+#Economic Security Amendment
+country_event = {
+	id = apla.67
+	title = apla.67.t
+	desc = apla.67.d
+	picture = GFX_Generic_CPUSA
+	fire_only_once = yes
+	is_triggered_only = yes
+	trigger = {
+		tag = APA
+	}
+	immediate = {
+		hidden_effect = {
+			log = "[GetDateText]: [Root.GetName]: event apla.67 immediate"
+		}
+	}
+	option = {
+		name = apla.66.a
+		set_temp_variable = {
+			var = APA_leftist_unity_var_temp
+			value = 0.01
+		}
+		APA_add_leftist_unity = yes
+	}
+}
+
+#Common Resources Amendment
+country_event = {
+	id = apla.68
+	title = apla.68.t
+	desc = apla.68.d
+	picture = GFX_communistprotest2
+	fire_only_once = yes
+	is_triggered_only = yes
+	trigger = {
+		tag = APA
+	}
+	immediate = {
+		hidden_effect = {
+			log = "[GetDateText]: [Root.GetName]: event apla.68 immediate"
+		}
+	}
+	option = {
+		name = apla.68.a
+		add_stability = -0.02
+		set_temp_variable = {
+			var = APA_revolution_progress_var_temp
+			value = 0.03
+		}
+		APA_add_revolution_progress = yes
+		set_temp_variable = {
+			var = var:communist_popularity_var_temp
+			value = 0.025
+		}
+		add_communist_popularity = yes
+		set_temp_variable = {
+			var = var:social_democrat_popularity_var_temp
+			value = -0.05
+		}
+		add_social_democrat_popularity = yes
+	}
+	option = {
+		name = apla.68.b
+		add_stability = 0.05
+		set_temp_variable = {
+			var = var:social_democrat_popularity_var_temp
+			value = 0.05
+		}
+		add_social_democrat_popularity = yes
+	}
+}
+
+#Socialist Democracy Amendment
+country_event = {
+	id = apla.69
+	title = apla.69.t
+	desc = apla.69.d
+	picture = GFX_APLA_Congress
+	fire_only_once = yes
+	is_triggered_only = yes
+	trigger = {
+		tag = APA
+	}
+	immediate = {
+		hidden_effect = {
+			log = "[GetDateText]: [Root.GetName]: event apla.69 immediate"
+		}
+	}
+	option = {
+		name = apla.69.a
+		set_temp_variable = {
+			var = APA_leftist_unity_var_temp
+			value = 0.03
+		}
+		APA_add_leftist_unity = yes
+	}
+}
+
+#Socialist Democracy Amendment
+country_event = {
+	id = apla.70
+	title = apla.70.t
+	desc = apla.70.d
+	picture = GFX_communistjesus
+	fire_only_once = yes
+	is_triggered_only = yes
+	trigger = {
+		tag = APA
+	}
+	immediate = {
+		hidden_effect = {
+			log = "[GetDateText]: [Root.GetName]: event apla.70 immediate"
+		}
+	}
+	option = {
+		name = apla.70.a
+		add_political_power = 50
+	}
+}
+
+#Neosocialist Agenda
+country_event = {
+	id = apla.71
+	title = apla.71.t
+	desc = apla.71.d
+	picture = GFX_communistprotest2
+	is_triggered_only = yes
+	fire_only_once = yes
+	immediate = {
+		hidden_effect = {
+			log = "[GetDateText]: [Root.GetName]: event apla.71 immediate"
+			add_dynamic_modifier = {
+				modifier = APA_revolution_progress_dynamic
+			}
+			set_temp_variable = {
+				var = APA_revolution_progress_var_temp
+				value = 0.04
+			}
+			APA_add_revolution_progress = yes
+		}
+	}
+	option = {
+		name = apla.71.a
+		custom_effect_tooltip = APA_congress_agenda_enabled_neosocialist_tooltip
+		effect_tooltip = {
+			set_temp_variable = {
+				var = APA_revolution_progress_var_temp
+				value = 0.04
+			}
+			APA_add_revolution_progress = yes
+			add_dynamic_modifier = {
+				modifier = APA_revolution_progress_dynamic
+			}
+			unlock_national_focus = APA_unify_the_west_coast
+		}
+	}
+}
+
+#Anarchist Agenda
+country_event = {
+	id = apla.72
+	title = apla.72.t
+	desc = apla.72.d
+	picture = GFX_anarchist3
+	is_triggered_only = yes
+	fire_only_once = yes
+	immediate = {
+		hidden_effect = {
+			log = "[GetDateText]: [Root.GetName]: event apla.72 immediate"
+			add_dynamic_modifier = {
+				modifier = APA_revolution_progress_dynamic
+			}
+			set_temp_variable = {
+				var = APA_revolution_progress_var_temp
+				value = 0.04
+			}
+			APA_add_revolution_progress = yes
+		}
+	}
+	option = {
+		name = apla.72.a
+		custom_effect_tooltip = APA_congress_agenda_enabled_anarchist_tooltip
+		hidden_effect = {
+			country_event = {
+				id = apla.90
+			}
+		}
+		effect_tooltip = {
+			set_temp_variable = {
+				var = APA_revolution_progress_var_temp
+				value = 0.04
+			}
+			APA_add_revolution_progress = yes
+			add_dynamic_modifier = {
+				modifier = APA_revolution_progress_dynamic
+			}
+			unlock_national_focus = APA_unify_the_west_coast
+		}
+	}
+}
+
+#The Suburban Exodus
+country_event = {
+	id = apla.73
+	title = apla.73.t
+	desc = apla.73.d
+	picture = GFX_Saudi_Refugees
+	fire_only_once = yes
+	is_triggered_only = yes
+	trigger = {
+		tag = APA
+	}
+	immediate = {
+		hidden_effect = {
+			log = "[GetDateText]: [Root.GetName]: event apla.73 immediate"
+		}
+	}
+	option = {
+		name = apla.73.a
+		add_stability = -0.05
+		random_owned_controlled_state = {
+			add_building_construction = {
+				type = industrial_complex
+				level = 1
+				instant_build = yes
+			}
+		}
+	}
+	option = {
+		name = apla.73.b
+		add_political_power = -75
+		add_stability = 0.05
+		set_temp_variable = {
+			var = APA_popular_support_var_temp
+			value = 0.05
+		}
+		APA_add_popular_support = yes
+		set_temp_variable = {
+			var = debt_var_temp
+			value = 65
+		}
+		add_debt = yes
+	}
+}
+
+#Roll the Dice
+country_event = {
+	id = apla.74
+	title = apla.74.t
+	desc = apla.74.d
+	picture = GFX_APLA_tank
+	is_triggered_only = yes
+	fire_only_once = yes
+	immediate = {
+		hidden_effect = {
+			log = "[GetDateText]: [Root.GetName]: event apla.74 immediate"
+		}
+	}
+	option = {
+		name = apla.74.a 
+		set_temp_variable = {
+			var = APA_revolution_progress_var_temp
+			value = 0.01
+		}
+		APA_add_revolution_progress = yes
+		1097 = {
+			remove_building = {
+    			type = infrastructure
+   				level = 2
+			}
+		}
+	}
+}
+
+#Formation of the Youth Brigades
+country_event = {
+	id = apla.75
+	title = apla.75.t
+	desc = apla.75.d
+	picture = GFX_APLA1
+	is_triggered_only = yes
+	fire_only_once = yes
+	immediate = {
+		hidden_effect = {
+			log = "[GetDateText]: [Root.GetName]: event apla.75 immediate"
+		}
+	}
+	option = {
+		name = apla.75.a 
+		add_power_balance_value = {
+			id = APA_power_balance
+			value = -0.05
+		}
+	}
+	
+	option = {
+		name = apla.75.b
+		add_power_balance_value = {
+			id = APA_power_balance
+		    value = 0.05
+		}
+	}
+}
+
+#Nature of the ASS
+country_event = {
+	id = apla.76
+	title = apla.76.t
+	desc = apla.76.d
+	picture = GFX_communist_guerilla
+	is_triggered_only = yes
+	fire_only_once = yes
+	immediate = {
+		hidden_effect = {
+			log = "[GetDateText]: [Root.GetName]: event apla.76 immediate"
+		}
+	}
+	option = {
+		name = apla.76.a 
+		add_power_balance_value = {
+			id = APA_power_balance
+			value = -0.05
+		}
+		set_temp_variable = {
+			var = APA_popular_support_var_temp
+			value = 0.05
+		}
+		APA_add_popular_support = yes
+	}
+	
+	option = {
+		name = apla.76.b
+		add_power_balance_value = {
+			id = APA_power_balance
+		    value = 0.05
+		}
+		add_stability = 0.05
+	}
+}
+
+#Revolutionary Justice
+country_event = {
+	id = apla.77
+	title = apla.77.t
+	desc = apla.77.d
+	picture = GFX_Supremecourt
+	is_triggered_only = yes
+	fire_only_once = yes
+	immediate = {
+		hidden_effect = {
+			log = "[GetDateText]: [Root.GetName]: event apla.77 immediate"
+		}
+	}
+	option = {
+		name = apla.77.a 
+		add_power_balance_value = {
+			id = APA_power_balance
+			value = -0.05
+		}
+		set_temp_variable = {
+			var = APA_popular_support_var_temp
+			value = 0.05
+		}
+		APA_add_popular_support = yes
+	}
+	
+	option = {
+		name = apla.77.b
+		add_power_balance_value = {
+			id = APA_power_balance
+		    value = 0.05
+		}
+		add_stability = 0.05
+	}
+}
+
+#Vaush lol
+country_event = {
+	id = apla.78
+	title = apla.78.t
+	desc = apla.78.d
+	picture = GFX_horse
+	is_triggered_only = yes
+	fire_only_once = yes
+	immediate = {
+		hidden_effect = {
+			log = "[GetDateText]: [Root.GetName]: event apla.78 immediate"
+		}
+	}
+	option = {
+		name = apla.78.a 
+		add_power_balance_value = {
+			id = APA_power_balance
+			value = 0.01
+		}
+		add_manpower = -1
+	}
+}
+#Russell and Donbass volunteers
+country_event = {
+	id = apla.79
+	title = apla.79.t
+	desc = apla.79.d
+	picture = GFX_APA_russell
+	is_triggered_only = yes
+	fire_only_once = yes
+	immediate = {
+		hidden_effect = {
+			log = "[GetDateText]: [Root.GetName]: event apla.79 immediate"
+		}
+	}
+	option = {
+		name = apla.79.a
+		add_corps_commander_role = {
+			Character = APA_russell_bentley_char
+			traits = {
+				trait_APA_jacobin 
+				guerilla_fighter 
+				expert_improviser
+				scavenger
+				trait_APA_zealous_anti_fascist
+			}
+			skill = 3
+			attack_skill = 2
+			defense_skill = 3
+			planning_skill = 1
+			logistics_skill = 2
+		}
+		add_advisor_role = {
+			character = APA_russell_bentley_char
+			advisor = {
+				slot = army_chief
+				cost = 50
+				idea_token = APA_russell_bentley_army_chief
+				traits = {
+					army_chief_planning_2
+				}
+			}
+		}
+		add_manpower = 1000
+		set_temp_variable = {
+			var = APA_support_jacobin_var_temp
+			value = 0.025
+		}
+		APA_add_support_jacobin = yes
+		set_temp_variable = {
+			var = APA_leftist_unity_var_temp
+			value = 0.02
+		}
+		APA_add_leftist_unity = yes
+	}
+	option = {
+		name = apla.79.b
+		add_corps_commander_role = {
+			Character = APA_russell_bentley_char
+			traits = {
+				trait_APA_jacobin 
+				guerilla_fighter 
+				expert_improviser
+				scavenger
+			}
+			skill = 3
+			attack_skill = 2
+			defense_skill = 3
+			planning_skill = 1
+			logistics_skill = 2
+		}	
+		add_advisor_role = {
+			character = APA_russell_bentley_char
+			advisor = {
+				slot = army_chief
+				cost = 50
+				idea_token = APA_russell_bentley_army_chief
+				traits = {
+					army_chief_planning_2
+				}
+			}
+		}
+		add_manpower = 650
+		set_temp_variable = {
+			var = APA_support_octoberist_var_temp
+			value = 0.025
+		}
+		APA_add_support_octoberist = yes
+		set_temp_variable = {
+			var = APA_support_neosocialist_var_temp
+			value = 0.025
+		}
+		APA_add_support_neosocialist = yes
+		set_temp_variable = {
+			var = APA_leftist_unity_var_temp
+			value = -0.02
+		}
+		APA_add_leftist_unity = yes
+	}
+}
+#hinkle rises through the ranks
+country_event = {
+	id = apla.80
+	title = apla.80.t
+	desc = apla.80.d
+	picture = GFX_APA_apla_soldiers_larp
+	is_triggered_only = yes
+	fire_only_once = yes
+	immediate = {
+		hidden_effect = {
+			log = "[GetDateText]: [Root.GetName]: event apla.80 immediate"
+		}
+	}
+	option = {
+		name = apla.80.a
+		add_corps_commander_role = {
+			character = APA_jackson_hinkle_char
+			traits = {
+				trait_APA_jacobin
+				media_personality
+				trait_reckless
+				trait_APA_inspiring_commissar
+			}
+			skill = 1
+			attack_skill = 3
+			defense_skill = 1
+			planning_skill = 1
+			logistics_skill = 2
+		}
+		set_temp_variable = {
+			var = APA_support_jacobin_var_temp
+			value = 0.02
+		}
+		APA_add_support_jacobin = yes
+		set_temp_variable = {
+			var = APA_leftist_unity_var_temp
+			value = 0.01
+		}
+		APA_add_leftist_unity = yes
+	}
+	option = {
+		name = apla.80.b
+		set_temp_variable = {
+			var = APA_support_jacobin_var_temp
+			value = -0.02
+		}
+		APA_add_support_jacobin = yes
+	}
+}
+
+#maupin reforms the party
+country_event = {
+	id = apla.81
+	title = apla.81.t
+	desc = apla.81.d
+	picture = GFX_APA_red_america
+	is_triggered_only = yes
+	fire_only_once = yes
+	immediate = {
+		hidden_effect = {
+			log = "[GetDateText]: [Root.GetName]: event apla.81 immediate"
+		}
+	}
+	option = {
+		name = apla.81.a
+		set_temp_variable = {
+			var = APA_leftist_unity_var_temp
+			value = 0.05
+		}
+		APA_add_leftist_unity = yes
+		set_temp_variable = {
+			var = APA_popular_support_var_temp
+			value = 0.01
+		}
+		APA_add_popular_support = yes
+		set_party_name = {
+			ideology = totalitarian_socialist
+			name = APA_cpusa_jac_party
+			long_name = APA_cpusa_jac_party_long
+		}
+		custom_effect_tooltip = appoint_head_minister_tooltip
+		show_ideas_tooltip = APA_christoher_helali_hog
+		set_country_flag = APA_jac_cpusa_flag
+		hidden_effect = {
+			add_ideas = APA_christoher_helali_hog
+		}
+		mark_focus_tree_layout_dirty = yes
+	}
+	option = {
+		name = apla.81.b
+		set_temp_variable = {
+			var = APA_leftist_unity_var_temp
+			value = -0.1
+		}
+		APA_add_leftist_unity = yes
+		set_temp_variable = {
+			var = APA_support_jacobin_var_temp
+			value = 0.05
+		}
+		APA_add_support_jacobin = yes
+		set_temp_variable = {
+			var = APA_popular_support_var_temp
+			value = 0.025
+		}
+		APA_add_popular_support = yes
+		set_party_name = {
+			ideology = totalitarian_socialist
+			name = APA_awp_jac_party
+			long_name = APA_awp_jac_party_long
+		}
+		set_country_flag = APA_jac_awp_flag
+	}
+	option = {
+		name = apla.81.c
+		set_temp_variable = {
+			var = APA_leftist_unity_var_temp
+			value = -0.2
+		}
+		APA_add_leftist_unity = yes
+		set_temp_variable = {
+			var = APA_support_jacobin_var_temp
+			value = 0.1
+		}
+		APA_add_support_jacobin = yes
+		set_temp_variable = {
+			var = var:authoritarian_democrat_popularity_var_temp
+			value = -0.1
+		}
+		add_totalitarian_socialist_popularity = yes
+		set_temp_variable = {
+			var = APA_popular_support_var_temp
+			value = 0.05
+		}
+		APA_add_popular_support = yes
+		set_party_name = {
+			ideology = totalitarian_socialist
+			name = APA_nlp_jac_party
+			long_name = APA_nlp_jac_party_long
+		}
+		custom_effect_tooltip = appoint_head_minister_tooltip
+		show_ideas_tooltip = APA_jackson_hinkle_hog
+		set_country_flag = APA_jac_nlp_flag
+		hidden_effect = {
+			focus_unlock = yes
+			add_ideas = APA_jackson_hinkle_hog
+		}
+	}
+}
+#Congressional Election Of A Leader FOR AI BECAUSE PI REFUSES TO DO IT
+country_event = {
+	id = apla.82
+	title = apla.82.t
+	desc = apla.82.desc
+	picture = GFX_Riva_Speech
+	fire_only_once = yes
+	is_triggered_only = yes
+	trigger = {
+		tag = APA
+	}
+	immediate = {
+		hidden_effect = {
+			log = "[GetDateText]: [Root.GetName]: event apla.82 immediate"
+		}
+	}
+	option = {
+		name = apla.82.a
+		ai_chance = {
+			factor = 5
+				modifier = {
+					factor = 0
+						OR = {
+							has_game_rule = {
+							    rule = The_APA_path
+								option = The_APA_path_1
+							}
+							has_game_rule = {
+								rule = The_APA_path
+								option = The_APA_path_2
+							}
+							has_game_rule = {
+								rule = The_APA_path
+								option = The_APA_path_4
+							}
+						}
+					}
+		}
+		set_power_balance = {
+			id = APA_power_balance
+			left_side = APA_decentralization_side 
+			right_side = APA_centralization_side 
+			set_value = 0.50
+		}
+		complete_national_focus = APA_the_glory_of_october
+		remove_country_leader_role = {
+			character = APA_michael_prysner_char
+			ideology = marxism_leninism
+		}
+		hidden_effect = {
+			set_country_flag = APA_government_elected_flag
+		}
+	}
+	option = {
+		name = apla.82.b
+		ai_chance = {
+			factor = 3
+				modifier = {
+					factor = 0
+						OR = {
+							has_game_rule = {
+							    rule = The_APA_path
+								option = The_APA_path_1
+							}
+							has_game_rule = {
+								rule = The_APA_path
+								option = The_APA_path_3
+							}
+							has_game_rule = {
+								rule = The_APA_path
+								option = The_APA_path_4
+							}
+						}
+					}
+		}
+		set_power_balance = {
+			id = APA_power_balance
+			left_side = APA_decentralization_side 
+			right_side = APA_centralization_side 
+			set_value = -0.50
+		}
+		complete_national_focus = APA_bread_and_roses
+		remove_country_leader_role = {
+			character = APA_michael_prysner_char
+			ideology = marxism_leninism
+		}
+	}
+	option = {
+		name = apla.82.c
+		ai_chance = {
+			factor = 1
+				modifier = {
+					factor = 0
+						OR = {
+							has_game_rule = {
+								rule = The_APA_path
+								option = The_APA_path_2
+							}
+							has_game_rule = {
+								rule = The_APA_path
+								option = The_APA_path_3
+							}
+							has_game_rule = {
+								rule = The_APA_path
+								option = The_APA_path_4
+							}
+						}
+					}
+		}
+		set_power_balance = {
+			id = APA_power_balance
+			left_side = APA_decentralization_side 
+			right_side = APA_centralization_side 
+			set_value = -0.70
+		}
+		complete_national_focus = APA_no_gods_no_masters
+		remove_country_leader_role = {
+			character = APA_michael_prysner_char
+			ideology = marxism_leninism
+		}
+		hidden_effect = {
+			set_country_flag = APA_government_elected_flag
+		}
+	}
+	option = {
+		name = apla.82.d
+		ai_chance = {
+			factor = 3
+				modifier = {
+					factor = 0
+						OR = {
+							has_game_rule = {
+							    rule = The_APA_path
+								option = The_APA_path_1
+							}
+							has_game_rule = {
+								rule = The_APA_path
+								option = The_APA_path_2
+							}
+							has_game_rule = {
+								rule = The_APA_path
+								option = The_APA_path_3
+							}
+						}
+					}
+		}
+		set_power_balance = {
+			id = APA_power_balance
+			left_side = APA_decentralization_side 
+			right_side = APA_centralization_side 
+			set_value = 0.80
+		}
+		complete_national_focus = APA_a_new_american_socialism
+		remove_country_leader_role = {
+			character = APA_michael_prysner_char
+			ideology = marxism_leninism
+		}
+		hidden_effect = {
+			set_country_flag = APA_government_elected_flag
+		}
+	}
+}
+#The establishment of an anarchist order
+country_event = {
+	id = apla.83
+	title = apla.83.t
+	desc = apla.83.d
+	picture = GFX_apla_anarchists
+	is_triggered_only = yes
+	fire_only_once = yes
+	immediate = {
+		hidden_effect = {
+			log = "[GetDateText]: [Root.GetName]: event apla.83 immediate"
+		}
+	}
+	option = {
+		name = apla.83.a
+		add_stability = 0.10
+		add_ideas = anarchist_order
+		set_temp_variable = {
+			var = APA_leftist_unity_var_temp
+			value = 0.05
+		}
+		APA_add_leftist_unity = yes
+		set_country_flag = APLA_anarchist_order
+		effect_tooltip = {
+			swap_ideas = {
+				remove_idea = APA_american_workers_congress_dummy_idea
+				add_idea = APA_anarchist_order_idea
+			}
+		}
+		hidden_effect = {
+			add_to_variable = {
+				var = APA_politics_compliance_growth_dynamic_var
+				value = 0.15
+			}
+			add_to_variable = {
+				var = APA_politics_resistance_target_dynamic_var
+				value = -0.05
+			}
+			add_to_variable = {
+				var = APA_politics_resistance_decay_dynamic_var
+				value = 0.1
+			}
+		}
+	}
+}
+#invitation to ads
+country_event = {
+	id = apla.84
+	title = apla.84.t
+	desc = apla.84.d
+	picture = GFX_horse
+	is_triggered_only = yes
+	fire_only_once = yes
+	immediate = {
+		hidden_effect = {
+			log = "[GetDateText]: [Root.GetName]: event apla.84 immediate"
+		}
+	}
+	option = {
+		name = apla.84.a 
+		SOV_join_ADS = yes
+	}
+}
+country_event = {
+	id = apla.85
+	title = apla.85.t
+	desc = apla.85.d
+	picture = GFX_apa_hawkins
+	is_triggered_only = yes
+	fire_only_once = yes
+	immediate = {
+		hidden_effect = {
+			log = "[GetDateText]: [Root.GetName]: event apla.85 immediate"
+		}
+	}
+	option = {
+		name = apla.85.a
+		set_temp_variable = {
+			var = var:social_liberal_popularity_var_temp
+			value = 0.025
+		}
+		add_social_liberal_popularity = yes
+		APA_popularity_change = yes
+	}
+}
+#Our Crimson Struggle
+country_event = {
+	id = apla.86
+	title = apla.86.t
+	desc = apla.86.desc
+	picture = GFX_APLA2
+	is_triggered_only = yes
+	fire_only_once = yes
+	minor_flavor = yes
+	immediate = {
+		hidden_effect = {
+			log = "[GetDateText]: [Root.GetName]: event apla.86 immediate"
+		}
+	}
+	option = {
+		name = apla.86.a
+	}
+}
+#Family Ties
+country_event = {
+	id = apla.87
+	title = apla.87.t
+	desc = apla.87.desc
+	picture = GFX_APLA2
+	is_triggered_only = yes
+	fire_only_once = yes
+	minor_flavor = yes
+	immediate = {
+		hidden_effect = {
+			log = "[GetDateText]: [Root.GetName]: event apla.87 immediate"
+		}
+	}
+	option = {
+		name = apla.86.a
+	}
+}
+#IT'S OVER
+country_event = {
+	id = apla.88
+	title = apla.88.t
+	desc = apla.88.desc
+	picture = GFX_sanfrancisco
+	is_triggered_only = yes
+	immediate = {
+		hidden_effect = {
+			log = "[GetDateText]: [Root.GetName]: event apla.88 immediate"
+		}
+	}
+	option = {
+		name = apla.88.a
+		add_war_support = -0.10
+		set_temp_variable = {
+			var = APA_leftist_unity_var_temp
+			value = -0.1
+		}
+		APA_add_leftist_unity = yes
+		set_temp_variable = {
+			var = APA_popular_support_var_temp
+			value = -0.05
+		}
+		APA_add_popular_support = yes
+		retire_character = APA_michael_prysner_char
+	}
+}
+
+#Invitation to WAP
+country_event = {
+	id = apla.89
+	title = apla.89.t
+	desc = apla.89.desc
+	picture = GFX_WAP
+	fire_only_once = yes
+	is_triggered_only = yes
+	immediate = {
+		hidden_effect = {
+			log = "[GetDateText]: [Root.GetName]: event apla.89 immediate"
+		}
+	}
+	option = { #yes
+		name = apla.89.a
+		add_ideas = VEN_world_anti_imperialist_platform_idea
+		set_temp_variable = {
+			var = APA_support_jacobin_var_temp
+			value = 0.05
+		}
+		APA_add_support_jacobin = yes
+		set_temp_variable = {
+			var = APA_popular_support_var_temp
+			value = 0.05
+		}
+		APA_add_popular_support = yes
+	}
+	option = { #no
+		name = apla.89.b
+		add_political_power = 15
+		set_temp_variable = {
+			var = APA_leftist_unity_var_temp
+			value = -0.05
+		}
+		APA_add_leftist_unity = yes
+		set_temp_variable = {
+			var = APA_support_anarchist_var_temp
+			value = 0.025
+		}
+		APA_add_support_anarchist = yes		
+		set_temp_variable = {
+			var = APA_support_neosocialist_var_temp
+			value = 0.025
+		}
+		APA_add_support_neosocialist = yes
+	}
+}
+
+#Organisational Question
+country_event = {
+	id = apla.90
+	title = apla.90.t
+	desc = apla.90.desc
+	picture = GFX_APA_apla_anarchist_organization
+	is_triggered_only = yes
+	immediate = {
+		hidden_effect = {
+			log = "[GetDateText]: [Root.GetName]: event apla.90 immediate"
+		}
+	}
+	option = {
+		name = apla.90.a #Platformism
+		effect_tooltip = {
+			swap_ideas = {
+				remove_idea = APA_american_workers_congress_dummy_idea
+				add_idea = APA_platformism_idea
+			}
+		}
+		add_war_support = 0.05	
+		set_temp_variable = {
+			var = APA_revolution_progress_var_temp
+			value = -0.04
+		}
+		APA_add_revolution_progress = yes
+		set_temp_variable = {
+			var = APA_support_anarchist_var_temp
+			value = -0.10
+		}
+		APA_add_support_anarchist = yes
+		hidden_effect = {
+			add_to_variable = {
+				var = APA_politics_political_power_gain_dynamic_var
+				value = 0.15
+			}
+			add_to_variable = {
+				var = APA_politics_consumer_goods_factor_dynamic_var
+				value = -0.025
+			}
+			add_to_variable = {
+				var = APA_politics_stability_factor_dynamic_var
+				value = 0.05
+			}
+			add_to_variable = {
+				var = APA_politics_production_speed_buildings_factor_dynamic_var
+				value = 0.10
+			}
+			add_to_variable = {
+				var = APA_politics_production_factory_efficiency_gain_factor_dynamic_var
+				value = 0.05
+			}
+		}
+	}
+	option = { 
+		name = apla.90.b #Synthesis Anarchism
+		effect_tooltip = {
+			swap_ideas = {
+				remove_idea = APA_american_workers_congress_dummy_idea
+				add_idea = APA_synthesis_anarchism_idea
+			}
+		}
+		add_stability = 0.10
+		set_temp_variable = {
+			var = APA_leftist_unity_var_temp
+			value = 0.075
+		}
+		APA_add_leftist_unity = yes
+		set_temp_variable = {
+			var = APA_support_anarchist_var_temp
+			value = 0.05
+		}
+		APA_add_support_anarchist = yes
+		hidden_effect = {
+			add_to_variable = {
+				var = APA_politics_political_power_gain_dynamic_var
+				value = 0.10
+			}
+			add_to_variable = {
+				var = APA_politics_war_support_factor_dynamic_var
+				value = 0.05
+			}
+			add_to_variable = {
+				var = APA_politics_production_factory_efficiency_gain_factor_dynamic_var
+				value = 0.025
+			}
+			add_to_variable = {
+				var = APA_politics_production_factory_max_efficiency_factor_dynamic_var
+				value = 0.025
+			}
+			add_to_variable = {
+				var = APA_politics_society_development_monthly_dynamic_var
+				value = 0.005
+			}
+		}
+	}
+	option = {
+		name = apla.90.c #Anarcho-syndicalism
+		effect_tooltip = {
+			swap_ideas = {
+				remove_idea = APA_american_workers_congress_dummy_idea
+				add_idea = APA_anarcho_syndicalism_idea
+			}
+		}
+		add_war_support = 0.075
+		set_temp_variable = {
+			var = APA_support_anarchist_var_temp
+			value = 0.10
+		}
+		APA_add_support_anarchist = yes
+		set_temp_variable = {
+			var = APA_popular_support_var_temp
+			value = 0.05
+		}
+		APA_add_popular_support = yes
+		hidden_effect = {
+			add_to_variable = {
+				var = APA_politics_political_power_gain_dynamic_var
+				value = -0.10
+			}
+			add_to_variable = {
+				var = APA_politics_stability_factor_dynamic_var
+				value = -0.10
+			}
+			add_to_variable = {
+				var = APA_politics_production_factory_efficiency_gain_factor_dynamic_var
+				value = 0.05
+			}
+			add_to_variable = {
+				var = APA_politics_production_factory_max_efficiency_factor_dynamic_var
+				value = 0.05
+			}
+			add_to_variable = {
+				var = APA_politics_consumer_goods_factor_dynamic_var
+				value = 0.05
+			}
+			add_to_variable = {
+				var = APA_politics_personal_value_factor_dynamic_var
+				value = 0.10
+			}
+			add_to_variable = {
+				var = APA_politics_society_development_monthly_dynamic_var
+				value = 0.01
+			}
+			add_to_variable = {
+				var = APA_politics_poverty_development_monthly_dynamic_var
+				value = 0.01
+			}
+		}
+	}
+}
+
+
+#American 'Cultural Revolution'
+country_event = {
+	id = apla.91
+	title = apla.91.t
+	desc = apla.91.d
+	picture = GFX_Anarchist_Meeting
+	is_triggered_only = yes
+	fire_only_once = yes
+	immediate = {
+		hidden_effect = {
+			log = "[GetDateText]: [Root.GetName]: event apla.91 immediate"
+		}
+	}
+	option = {
+		name = apla.91.a 
+		effect_tooltip = {
+			swap_ideas = {
+				remove_idea = APA_american_workers_congress_dummy_idea
+				add_idea = APA_cultural_revolution_idea
+			}
+		}
+		APA_reactionary_resistance_decrease = yes
+		add_stability = 0.05
+		set_temp_variable = {
+			var = APA_popular_support_var_temp
+			value = -0.10
+		}
+		APA_add_popular_support = yes
+		set_temp_variable = {
+			var = APA_leftist_unity_var_temp
+			value = -0.10
+		}
+		APA_add_leftist_unity = yes
+		hidden_effect = {
+			add_to_variable = {
+				var = APA_politics_libertarian_socialist_drift_dynamic_var
+				value = 0.04
+			}
+		}
+	}
+	
+	option = {
+		name = apla.91.b
+		add_stability = -0.05
+		add_political_power = 50
+		set_temp_variable = {
+			var = APA_popular_support_var_temp
+			value = 0.10
+		}
+		APA_add_popular_support = yes
+		set_temp_variable = {
+			var = APA_leftist_unity_var_temp
+			value = 0.05
+		}
+		APA_add_leftist_unity = yes
+	}
+}
+
+#Eddie Ligar leaves for RPA
+country_event = {
+	id = apla.92
+	title = apla.92.t
+	desc = apla.92.d
+	picture = GFX_APA_apla_soldiers_larp
+	is_triggered_only = yes
+	fire_only_once = yes
+	immediate = {
+		hidden_effect = {
+			log = "[GetDateText]: [Root.GetName]: event apla.92 immediate"
+		}
+	}
+	option = { #bon voyage, Comrade!
+		name = apla.92.a
+		APA_eddie_liger_char = {
+			remove_unit_leader_role = yes
+		}
+	}
+}
+
+#Virtuous and Evil
+country_event = {
+	id = apla.93
+	title = apla.93.t
+	desc = apla.93.d
+	picture = GFX_APA_apla_soldiers_larp
+	is_triggered_only = yes
+	fire_only_once = yes
+	immediate = {
+		hidden_effect = {
+			log = "[GetDateText]: [Root.GetName]: event apla.93 immediate"
+		}
+	}
+	option = {
+		name = apla.93.a
+	}
+}
+
+#The Patrol
+country_event = {
+	id = apla.94
+	title = apla.94.t
+	desc = apla.94.d
+	picture = GFX_APA_san_jose
+	#is_triggered_only = yes
+	fire_only_once = yes
+	trigger = {
+		controls_state = 1039
+		has_completed_focus = APA_dare_to_die
+	}
+	immediate = {
+		hidden_effect = {
+			log = "[GetDateText]: [Root.GetName]: event apla.94 immediate"
+		}
+	}
+	option = {
+		name = apla.94.a
+	}
+}
+
+#Food Co-Op
+country_event = {
+	id = apla.95
+	title = apla.95.t
+	desc = apla.95.d
+	picture = GFX_APA_acp_car
+	#is_triggered_only = yes
+	fire_only_once = yes
+	trigger = {
+		tag = APA
+		has_idea = APA_low_leftist_unity_idea
+	}
+	immediate = {
+		hidden_effect = {
+			log = "[GetDateText]: [Root.GetName]: event apla.95 immediate"
+		}
+	}
+	option = {
+		name = apla.95.a
+	}
+}
+
+#Beijing Visit
+country_event = {
+	id = apla.96
+	title = apla.96.t
+	desc = apla.96.d
+	picture = GFX_APA_beijing_visit
+	is_triggered_only = yes
+	fire_only_once = yes
+	immediate = {
+		hidden_effect = {
+			log = "[GetDateText]: [Root.GetName]: event apla.96 immediate"
+		}
+	}
+	option = {
+		name = apla.96.a
+	}
+}
+
+#Prysner's Heroes
+country_event = {
+	id = apla.98
+	title = apla.98.t
+	desc = apla.98.d
+	picture = GFX_APA_prysners_heroes
+	is_triggered_only = yes
+	fire_only_once = yes
+	immediate = {
+		hidden_effect = {
+			log = "[GetDateText]: [Root.GetName]: event apla.98 immediate"
+		}
+	}
+	option = {
+		name = apla.98.a
+	}
+}

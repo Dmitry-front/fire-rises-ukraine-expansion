@@ -1,0 +1,297 @@
+######################################################
+# French Republic - NATO Loss Focus Tree
+# By Strategic Munchies
+######################################################
+focus_tree = {
+	id = FRA_NATO_LOST
+	country = {
+		factor = 0
+	}
+	
+	focus = { 
+		id = FRA_The_Fall_of_the_Republic
+		icon = GFX_focus_FRA_the_fall_of_republic
+		x = 10
+		y = 0
+		cost = 5
+		available_if_capitulated = yes
+		ai_will_do = {
+			factor = 1
+		}
+		available = {
+			
+		}
+		allow_branch = {
+			has_country_flag = FRA_Soft_Coup_flag
+		}
+		prerequisite = {
+
+		}
+		completion_reward = {
+			set_stability = -0.2
+			set_war_support = -0.2
+			set_cosmetic_tag = FRA_red_national_defense_ct
+			hidden_effect = {
+				BRA = {
+	                country_event = {
+	                    id = Brazil.1
+	                    days = 4
+	                }
+	            }
+			}
+		}
+	}
+	focus = { 
+		id = FRA_Martyr_of_the_Revolution
+		icon = GFX_focus_FRA_The_Martyr_of_the_revolution
+		x = 8
+		y = 1
+		cost = 5
+		available_if_capitulated = yes
+		ai_will_do = {
+			factor = 1
+		}
+		available = {
+			
+		}
+		allow_branch = {
+			has_country_flag = FRA_Soft_Coup_flag
+		}
+		prerequisite = {
+			focus = FRA_The_Fall_of_the_Republic
+		}
+		completion_reward = {
+			#add_country_leader_trait = hos_enemy_of_the_people
+			decrease_society = yes
+			# effect_tooltip = {
+			# 	FPR = {
+			# 		add_ideas = FPR_The_Unbowed_Martyr_idea
+			# 	}
+			# }
+			hidden_effect = {
+				FPR = {
+					set_country_flag = FPR_dead_melenchon_flag
+				}
+			}
+		}
+	}
+	focus = { 
+		id = FRA_Stand_Against_the_Junta
+		icon = GFX_focus_Stand_against_the_militant_junta
+		x = 12
+		y = 1
+		cost = 5
+		available_if_capitulated = yes
+		ai_will_do = {
+			factor = 1
+		}
+		available = {
+			
+		}
+		allow_branch = {
+			has_country_flag = FRA_Soft_Coup_flag
+		}
+		prerequisite = {
+			focus = FRA_The_Fall_of_the_Republic
+		}
+		completion_reward = {
+			add_stability = -0.30
+			decrease_military = yes
+			effect_tooltip = {
+				FPR = {
+					add_manpower = 25000
+				}
+			}
+		}
+	}
+	focus = { 
+		id = FRA_Baptism_through_Revolution
+		icon = GFX_focus_FRA_Baptism_Trough_Revolution
+		x = 10
+		y = 2
+		cost = 3
+		available_if_capitulated = yes
+		ai_will_do = {
+			factor = 1
+		}
+		available = {
+			
+		}
+		allow_branch = {
+			has_country_flag = FRA_Soft_Coup_flag
+		}
+		prerequisite = {
+			focus = FRA_Stand_Against_the_Junta
+		}
+		prerequisite = {
+			focus = FRA_Martyr_of_the_Revolution
+		}
+		completion_reward = {
+			country_event = {
+				id = france.37
+			}
+		}
+	}
+	focus = { 
+		id = FRA_Announce_Government_of_National_Defense
+		icon = GFX_focus_FRA_Nat_Gov_declared
+		x = 10
+		y = 0
+		cost = 5
+		available_if_capitulated = yes
+		ai_will_do = {
+			factor = 1
+		}
+		available = {
+			
+		}
+		allow_branch = {
+			NOT = {
+				has_country_flag = FRA_Soft_Coup_flag
+			}
+		}
+		prerequisite = {
+
+		}
+		completion_reward = {
+			if = {
+				limit = {
+					has_cosmetic_tag = FRA_darker
+				}
+				set_cosmetic_tag = FRA_Government_of_National_Defense_darker_costag
+			}
+			else = {
+				set_cosmetic_tag = FRA_Government_of_National_Defense_costag
+			}
+			increase_police = yes
+			hidden_effect = {
+				BRA = {
+	                country_event = {
+	                    id = Brazil.1
+	                    days = 4
+	                }
+	            }
+			}
+		}
+	}
+	focus = { 
+		id = FRA_Put_down_Militant_Nationalists
+		icon = GFX_focus_FRA_Put_Down_Militant_Nationalists
+		x = 8
+		y = 1
+		cost = 7
+		available_if_capitulated = yes
+		ai_will_do = {
+			factor = 1
+		}
+		available = {
+			hidden_trigger = {
+				NOT = {
+					has_global_flag = SOV_medvedev_won
+				}
+			}
+		}
+		mutually_exclusive = {
+			focus = FRA_Crush_the_Paris_Commune
+		}
+		allow_branch = {
+			NOT = {
+				has_country_flag = FRA_Soft_Coup_flag
+			}
+		}
+		prerequisite = {
+			focus = FRA_Announce_Government_of_National_Defense
+		}
+		completion_reward = {
+			remove_ideas = FRA_SC_Nationalists_idea
+			FAF = {
+				add_ideas = FRA_SC_Weakened_Movement_idea
+			}
+		}
+	}
+	focus = { 
+		id = FRA_Crush_the_Paris_Commune
+		icon = GFX_focus_FRA_Crush_The_Communist_Scum
+		x = 12
+		y = 1
+		cost = 7
+		available_if_capitulated = yes
+		ai_will_do = {
+			factor = 1
+		}
+		available = {
+			
+		}
+		mutually_exclusive = {
+			focus = FRA_Put_down_Militant_Nationalists
+		}
+		allow_branch = {
+			NOT = {
+				has_country_flag = FRA_Soft_Coup_flag
+			}
+		}
+		prerequisite = {
+			focus = FRA_Announce_Government_of_National_Defense
+		}
+		completion_reward = {
+			if = {
+				limit = {
+					FPR = {
+						exists = yes
+					}
+				}
+				declare_war_on = {
+	    			target = FPR
+	    			type = annex_everything
+				}
+			}
+			remove_ideas = FRA_SC_Communist_idea
+			FPR = {
+				add_ideas = FRA_SC_Weakened_Movement_idea
+			}
+		}
+	}
+	focus = { 
+		id = FRA_All_is_Well
+		icon = GFX_focus_FRA_Tout_Est_Bien
+		x = 10
+		y = 2
+		cost = 8
+		available_if_capitulated = yes
+		ai_will_do = {
+			factor = 1
+		}
+		available = {
+			NOT = {
+				country_exists = FAF
+				country_exists = FPR
+			}
+		}
+		allow_branch = {
+			NOT = {
+				has_country_flag = FRA_Soft_Coup_flag
+			}
+		}
+		prerequisite = {
+			focus = FRA_Crush_the_Paris_Commune
+			focus = FRA_Put_down_Militant_Nationalists
+		}
+		completion_reward = {
+			effect_tooltip = {
+				if = {
+					limit = {
+						has_idea = FRA_SC_Communist_idea
+					}
+					remove_ideas = FRA_SC_Communist_idea
+				}
+				if = {
+					limit = {
+						has_idea = FRA_SC_Nationalists_idea
+					}
+					remove_ideas = FRA_SC_Nationalists_idea
+				}
+				add_stability = 0.15
+			}
+		}
+	}
+}

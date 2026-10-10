@@ -1,0 +1,811 @@
+﻿add_namespace = canada
+#American Refugees cross over
+country_event = {
+	id = canada.1
+	title = canada.1.t
+	desc = canada.1.d
+	picture = GFX_report_event_russian_flag
+	is_triggered_only = yes
+	immediate = {
+		hidden_effect = {
+			add_ideas = CAN_american_refugees
+			country_event = {
+				id = canada.6
+				days = 5
+			}
+		}
+	}
+	option = {
+		name = canada.1.a
+		add_political_power = -100
+		effect_tooltip = {
+			add_ideas = CAN_american_refugees
+		}
+	}
+}
+
+country_event = {
+	#refugee crisis worsens
+	id = canada.2
+	title = canada.2.t
+	desc = canada.2.d
+	picture = GFX_report_event_russian_flag
+	is_triggered_only = yes
+	option = {
+		name = canada.1.a
+		add_popularity = {
+			ideology = conservative
+			popularity = 0.07
+		}
+		add_popularity = {
+			ideology = authoritarian_democrat
+			popularity = 0.05
+		}
+	}
+}
+
+news_event = {
+	#ndp on top
+	id = canada.3
+	title = canada.3.t
+	desc = canada.3.d
+	picture = GFX_ndp_on_top
+	is_triggered_only = yes
+	major = yes
+	option = {
+		name = canada.3.a
+		
+		hidden_effect = {
+			CAN = {
+				set_politics = {
+					ruling_party = social_democrat
+					elections_allowed = yes
+				}
+				set_popularities = {
+					totalitarian_socialist = 5
+					communist = 10
+					libertarian_socialist = 20
+					social_democrat = 35
+					social_liberal = 5
+					conservative = 7
+					authoritarian_democrat = 18
+				}
+			}
+		}
+	}
+}
+
+country_event = {
+	# Governor General choice - Canada
+	id = canada.4
+	title = canada.4.t
+	desc = canada.4.d
+	picture = GFX_Canada_Governor_General
+	is_triggered_only = yes
+	option = {
+		#Mary Simon
+		name = canada.4.a
+		ai_chance = {
+			factor = 1
+			modifier = {
+			    factor = 0
+			    OR = {
+			        has_game_rule = {
+			            rule = The_CAN_New_Governor_General
+			            option = The_CAN_New_Governor_General_Joshua_Leakey
+		            }
+		        }
+		    }
+		}
+		CAN = {
+			set_country_flag = CAN_mary_simon_flag
+		}
+	}
+	option = {
+		#Joshua Leakey
+		name = canada.4.b
+		ai_chance = {
+			factor = 1
+			modifier = {
+			    factor = 0
+			    OR = {
+			        has_game_rule = {
+			            rule = The_CAN_New_Governor_General
+			            option = The_CAN_New_Governor_General_Mary_Simon
+		            }
+		        }
+		    }
+		}
+		CAN = {
+			set_country_flag = CAN_joshua_leakey_flag
+		}
+	}
+}
+
+#Canada abandons nato obligations
+country_event = {
+	id = canada.5
+	title = canada.5.t
+	desc = canada.5.d
+	picture = GFX_Canada_NATO
+	is_triggered_only = yes
+	immediate = {
+	}
+	option = {
+		name = canada.5.a
+		CAN = {
+			leave_faction = yes
+		}
+		news_event = {
+			id = news.336
+		}
+	}
+}
+
+#Trudeau Invokes Emergencies Act
+country_event = {
+	id = canada.6
+	title = canada.6.t
+	desc = canada.6.d
+	picture = GFX_Canada_NATO
+	is_triggered_only = yes
+	immediate = {
+	}
+	option = {
+		name = canada.6.a
+		promote_character = {
+			character = CAN_justin_trudeau
+			ideology = neoliberalism
+		}
+		add_ideas = CAN_emergencies_act
+		hidden_effect = {
+			news_event = {
+				id = news.337
+			}
+		}
+		clr_country_flag = head_of_gov_ui_enabled
+	}
+}
+
+#Trudeau Invokes Emergencies Act 2
+country_event = {
+	id = canada.7
+	title = canada.7.t
+	desc = canada.7.d
+	picture = GFX_Canada_NATO
+	is_triggered_only = yes
+	immediate = {
+	}
+	option = {
+		name = canada.7.a
+		country_event = {
+			id = canada.9
+			days = 15
+		}
+		set_politics = {
+			ruling_party = authoritarian_democrat
+			elections_allowed = no
+		}
+		set_party_name = {
+			ideology = authoritarian_democrat
+			long_name = CAN_social_liberal_party_long
+			name = CAN_social_liberal_party
+		}
+		promote_character = {
+			character = CAN_justin_trudeau
+			ideology = hybrid_regime
+		}
+		set_portraits = {
+			character = CAN_justin_trudeau
+			civilian = {
+				large = "GFX_portrait_CAN_justin_trudeau_Older"
+			}
+		}
+		swap_ideas = {
+			remove_idea = CAN_emergencies_act
+			add_idea = CAN_emergencies_act_2
+		}
+	}
+}
+
+#Return of Governor - Victory
+country_event = {
+	id = canada.8
+	title = canada.8.t
+	desc = canada.8.d
+	picture = GFX_Canada_NATO
+	is_triggered_only = yes
+	immediate = {
+		hidden_effect = {
+			retire_character = CAN_justin_trudeau
+			set_politics = {
+				ruling_party = social_liberal
+				last_election = "2021.09.20"
+				election_frequency = 48
+				elections_allowed = yes
+			}
+		}
+	}
+	option = {
+		name = canada.8.a
+		remove_ideas = CAN_emergencies_act
+		remove_ideas = CAN_emergencies_act_2
+		set_party_name = {
+			ideology = authoritarian_democrat
+			long_name = CAN_authoritarian_democrat_party_long
+			name = CAN_authoritarian_democrat_party
+		}
+		set_country_flag = head_of_gov_ui_enabled
+		if = {
+			limit = {
+				has_country_flag = CAN_mary_simon_flag
+			}
+			add_country_leader_role = {
+				character = CAN_Mary_Simon_char
+				promote_leader = yes
+				country_leader = {
+					ideology = neoliberalism
+					traits = {
+					}
+				}
+			}
+			hidden_effect = {
+				add_country_leader_role = {
+					character = CAN_Mary_Simon_char
+					promote_leader = yes
+					country_leader = {
+						ideology = classical_liberalism
+						traits = {
+						}
+					}
+				}
+				add_country_leader_role = {
+					character = CAN_Mary_Simon_char
+					promote_leader = yes
+					country_leader = {
+						ideology = neoconservative
+						traits = {
+						}
+					}
+				}
+				add_country_leader_role = {
+					character = CAN_Mary_Simon_char
+					promote_leader = yes
+					country_leader = {
+						ideology = ultra_conservatism
+						traits = {
+						}
+					}
+				}
+				add_country_leader_role = {
+					character = CAN_Mary_Simon_char
+					promote_leader = yes
+					country_leader = {
+						ideology = progressivism
+						traits = {
+						}
+					}
+				}
+				add_country_leader_role = {
+					character = CAN_Mary_Simon_char
+					promote_leader = yes
+					country_leader = {
+						ideology = reformist_socialism
+						traits = {
+						}
+					}
+				}
+			}
+		}
+		if = {
+			limit = {
+				has_country_flag = CAN_joshua_leakey_flag
+			}
+			add_country_leader_role = {
+				character = CAN_Joshua_Leakey_char
+				promote_leader = yes
+				country_leader = {
+					ideology = neoliberalism
+					traits = {
+					}
+				}
+			}
+			hidden_effect = {
+				add_country_leader_role = {
+					character = CAN_Joshua_Leakey_char
+					promote_leader = yes
+					country_leader = {
+						ideology = classical_liberalism
+						traits = {
+						}
+					}
+				}
+				add_country_leader_role = {
+					character = CAN_Joshua_Leakey_char
+					promote_leader = yes
+					country_leader = {
+						ideology = neoconservative
+						traits = {
+						}
+					}
+				}
+				add_country_leader_role = {
+					character = CAN_Mary_Simon_char
+					promote_leader = yes
+					country_leader = {
+						ideology = ultra_conservatism
+						traits = {
+						}
+					}
+				}
+				add_country_leader_role = {
+					character = CAN_Joshua_Leakey_char
+					promote_leader = yes
+					country_leader = {
+						ideology = progressivism
+						traits = {
+						}
+					}
+				}
+				add_country_leader_role = {
+					character = CAN_Joshua_Leakey_char
+					promote_leader = yes
+					country_leader = {
+						ideology = reformist_socialism
+						traits = {
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+#Return of Governor - Defeat
+country_event = {
+	id = canada.9
+	title = canada.9.t
+	desc = canada.9.d
+	picture = GFX_Canada_NATO
+	is_triggered_only = yes
+	immediate = {
+		hidden_effect = {
+			retire_character = CAN_justin_trudeau
+			set_country_flag = CAN_PTF_defeat
+			add_popularity = {
+				ideology = authoritarian_democrat
+				popularity = -0.5
+			}
+			add_popularity = {
+				ideology = authoritarian_democrat
+				popularity = 0.1
+			}
+			set_politics = {
+				ruling_party = social_liberal
+				elections_allowed = no
+			}
+			country_event = {
+				id = canada.10
+				days = 30
+			}
+		}
+	}
+	option = {
+		name = canada.9.a
+		remove_ideas = CAN_emergencies_act
+		remove_ideas = CAN_emergencies_act_2
+		set_party_name = {
+			ideology = authoritarian_democrat
+			long_name = CAN_authoritarian_democrat_party_long
+			name = CAN_authoritarian_democrat_party
+		}
+		set_country_flag = head_of_gov_ui_enabled
+		if = {
+			limit = {
+				has_country_flag = CAN_mary_simon_flag
+			}
+			add_country_leader_role = {
+				character = CAN_Mary_Simon_char
+				promote_leader = yes
+				country_leader = {
+					ideology = neoliberalism
+					traits = {
+					}
+				}
+			}
+			hidden_effect = {
+				add_country_leader_role = {
+					character = CAN_Mary_Simon_char
+					promote_leader = yes
+					country_leader = {
+						ideology = classical_liberalism
+						traits = {
+						}
+					}
+				}
+				add_country_leader_role = {
+					character = CAN_Mary_Simon_char
+					promote_leader = yes
+					country_leader = {
+						ideology = neoconservative
+						traits = {
+						}
+					}
+				}
+				add_country_leader_role = {
+					character = CAN_Mary_Simon_char
+					promote_leader = yes
+					country_leader = {
+						ideology = ultra_conservatism
+						traits = {
+						}
+					}
+				}
+				add_country_leader_role = {
+					character = CAN_Mary_Simon_char
+					promote_leader = yes
+					country_leader = {
+						ideology = progressivism
+						traits = {
+						}
+					}
+				}
+				add_country_leader_role = {
+					character = CAN_Mary_Simon_char
+					promote_leader = yes
+					country_leader = {
+						ideology = reformist_socialism
+						traits = {
+						}
+					}
+				}
+			}
+		}
+		if = {
+			limit = {
+				has_country_flag = CAN_joshua_leakey_flag
+			}
+			add_country_leader_role = {
+				character = CAN_Joshua_Leakey_char
+				promote_leader = yes
+				country_leader = {
+					ideology = neoliberalism
+					traits = {
+					}
+				}
+			}
+			hidden_effect = {
+				add_country_leader_role = {
+					character = CAN_Joshua_Leakey_char
+					promote_leader = yes
+					country_leader = {
+						ideology = classical_liberalism
+						traits = {
+						}
+					}
+				}
+				add_country_leader_role = {
+					character = CAN_Joshua_Leakey_char
+					promote_leader = yes
+					country_leader = {
+						ideology = neoconservative
+						traits = {
+						}
+					}
+				}
+				add_country_leader_role = {
+					character = CAN_Mary_Simon_char
+					promote_leader = yes
+					country_leader = {
+						ideology = ultra_conservatism
+						traits = {
+						}
+					}
+				}
+				add_country_leader_role = {
+					character = CAN_Joshua_Leakey_char
+					promote_leader = yes
+					country_leader = {
+						ideology = progressivism
+						traits = {
+						}
+					}
+				}
+				add_country_leader_role = {
+					character = CAN_Joshua_Leakey_char
+					promote_leader = yes
+					country_leader = {
+						ideology = reformist_socialism
+						traits = {
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+country_event = {
+	id = canada.10
+	title = canada.10.t
+	desc = canada.10.d
+	picture = GFX_Canada_NATO
+	is_triggered_only = yes
+	immediate = {
+	}
+	option = {
+		name = canada.10.a
+		ai_chance = {
+			factor = 50
+			modifier = {
+				factor = 20
+				SOV = {
+					OR = {
+						has_government = fascist
+						has_government = communist
+					}
+				}
+			}
+			modifier = {
+				factor = 10
+				has_idea = CAN_justin_trudeau_hog
+			}
+			modifier = {
+			    factor = 0
+			    OR = {
+			        has_game_rule = {
+			            rule = The_Canada_Elections
+			            option = The_Canada_Elections_Liberals_Mark_Carney
+		            }
+			        has_game_rule = {
+			            rule = The_Canada_Elections
+			            option = The_Canada_Elections_Liberals_Trudeau
+		            }
+		        }
+		    }
+		}
+		set_politics = {
+			ruling_party = conservative
+			election_frequency = 48
+			elections_allowed = yes
+		}
+		remove_ideas = { 
+			CAN_justin_trudeau_hog
+			CAN_mark_carney_hog
+		}
+		add_ideas = CAN_pierre_poilievre_hog
+		add_popularity = {
+			ideology = conservative
+			popularity = 0.05
+		}
+		news_event = {
+			id = canada.11
+		}
+	}
+	option = {
+		name = canada.10.b
+		ai_chance = {
+			factor = 50
+			modifier = {
+				factor = 20
+				NOT = {
+					SOV = {
+						OR = {
+							has_government = fascist
+							has_government = communist
+						}
+					}
+				}
+			}
+			modifier = {
+				factor = 10
+				NOT = {
+					has_idea = CAN_justin_trudeau_hog
+				}
+			}
+			modifier = {
+			    factor = 0
+			    OR = {
+			        has_game_rule = {
+			            rule = The_Canada_Elections
+			            option = The_Canada_Elections_Conservatives
+		            }
+		        }
+		    }
+		}
+		set_politics = {
+			ruling_party = social_liberal
+			election_frequency = 48
+			elections_allowed = yes
+		}
+		add_popularity = {
+			ideology = social_liberal
+			popularity = 0.05
+		}
+		news_event = {
+			id = canada.12
+		}
+	}
+}
+
+#Trudeau loses
+news_event = {
+	id = canada.11
+	title = {
+		text = canada.11.t.1
+		trigger = {
+			has_country_flag = CAN_trudeau_stays
+		}
+	}
+	title = {
+		text = canada.11.t.2
+		trigger = {
+			NOT = { has_country_flag = CAN_trudeau_stays }
+		}
+	}
+	desc = canada.11.d
+	picture = GFX_CAN_conservative
+	is_triggered_only = yes
+	major = yes
+	option = {
+		name = canada.11.a
+	}
+}
+
+#Trudeau 4th term
+news_event = {
+	id = canada.12
+	title = canada.12.t
+	desc = {
+		text = canada.12.d.1
+		trigger = {
+			has_country_flag = CAN_trudeau_stays
+		}
+	}
+	desc = {
+		text = canada.12.d.2
+		trigger = {
+			NOT = { has_country_flag = CAN_trudeau_stays }
+		}
+	}
+	picture = GFX_trudeau_beard
+	is_triggered_only = yes
+	major = yes
+	option = {
+		name = canada.12.a
+		
+	}
+}
+
+#Fascism Rising
+country_event = {
+	id = canada.13
+	title = canada.13.t
+	desc = canada.13.desc
+	picture = GFX_trudeau_beard
+	is_triggered_only = yes
+	fire_only_once = yes
+	immediate = {
+		hidden_effect = {
+			swap_ideas = {
+				remove_idea = CAN_american_refugees
+				add_idea = CAN_bulwark_against_fascism_idea
+			}
+			swap_ideas = {
+				remove_idea = CAN_quebec_separatism_idea
+				add_idea = CAN_quebec_separatism_idea1
+			}
+		}
+	}
+	option = {
+		name = canada.13.a
+		effect_tooltip = {
+			swap_ideas = {
+				remove_idea = CAN_american_refugees
+				add_idea = CAN_bulwark_against_fascism_idea
+			}
+			swap_ideas = {
+				remove_idea = CAN_quebec_separatism_idea
+				add_idea = CAN_quebec_separatism_idea1
+			}
+		}
+	}
+}
+
+#Fascism Rising
+country_event = {
+	id = canada.14
+	title = canada.14.t
+	desc = canada.14.desc
+	picture = GFX_trudeau_beard
+	is_triggered_only = yes
+	fire_only_once = yes
+	trigger = {
+		tag = CAN
+	}
+	immediate = {
+		hidden_effect = {
+			USN = {
+				add_ideas = USN_bulwark_against_fascism_idea
+			}
+			swap_ideas = {
+				remove_idea = CAN_american_refugees
+				add_idea = CAN_bulwark_against_fascism_idea1
+			}
+			swap_ideas = {
+				remove_idea = CAN_quebec_separatism_idea
+				add_idea = CAN_quebec_separatism_idea1
+			}
+			every_controlled_state = {
+				limit = {
+					is_demilitarized_zone = yes
+				}
+				set_demilitarized_zone = no
+			}
+		}
+	}
+	option = {
+		name = canada.14.a
+		effect_tooltip = {
+			swap_ideas = {
+				remove_idea = CAN_american_refugees
+				add_idea = CAN_bulwark_against_fascism_idea1
+			}
+			swap_ideas = {
+				remove_idea = CAN_quebec_separatism_idea
+				add_idea = CAN_quebec_separatism_idea1
+			}
+		}
+	}
+}
+
+country_event = {
+	id = canada.15
+	title = canada.15.t
+	desc = canada.15.d
+	picture = GFX_Canada_NATO
+	is_triggered_only = yes
+	immediate = {
+	}
+	option = {
+		name = canada.15.a
+		ai_chance = {
+			factor = 50
+			modifier = {
+			    factor = 0
+			    OR = {
+			        has_game_rule = {
+			            rule = The_Canada_Elections
+			            option = The_Canada_Elections_Liberals_Mark_Carney
+		            }
+		        }
+		    }
+		}
+		set_country_flag = CAN_trudeau_stays
+		add_popularity = {
+			popularity = -0.05
+			ideology = social_liberal
+		}
+	}
+	option = {
+		name = canada.15.b
+		ai_chance = {
+			factor = 50
+			modifier = {
+				factor = 50
+				country_exists = USC
+			}
+			modifier = {
+			    factor = 0
+			    OR = {
+			        has_game_rule = {
+			            rule = The_Canada_Elections
+			            option = The_Canada_Elections_Liberals_Trudeau
+		            }
+		        }
+		    }
+		}
+		remove_ideas = CAN_justin_trudeau_hog
+		add_ideas = CAN_mark_carney_hog
+	}
+}

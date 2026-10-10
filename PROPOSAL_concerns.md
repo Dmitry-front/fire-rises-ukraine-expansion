@@ -8,7 +8,7 @@
 - Организация (MIO) - это блок в `common/military_industrial_organization/organizations/*.txt`. У SOV: `include = <архетип>`, свой `icon`, `allowed = { original_tag = SOV }` (у большинства ещё `has_dlc = "Arms Against Tyranny"`), при желании свой `initial_trait`, `override_trait` (сдвиг черты), новые `tree_header_text`.
 - Архетипы в `00_generic_organization.txt` помечены `allowed = { always = no }`: игре нужны только как шаблоны.
 - **Не закомментированные архетипы (подтверждены):** `generic_infantry_tank`, `mobile_tank`, `medium_tank`, `heavy_tank`, `tank_refurbishment_plant`, `battle_line_ship_DDG`, `submarine`, `black_sea_fleet`, `refurbishment_repair`, `light_aircraft`, `medium_aircraft`, `heavy_aircraft`, `cas_aircraft`, `naval_aircraft`, `multi_role_aircraft`, `high_agility_fighter_aircraft`, `range_focused_aircraft`, `armored_car` (нужен DLC La Resistance), **`generic_TFR_UAV_equipment_organization`** (черты БПЛА и крылатой ракеты, TFR-овский).
-- **Закомментированы в присланном файле** (но SOV их `include`-ит, значит они определены в другом файле TFR): `tank`, `task_force_ship`, `escort_ship`, `general_aircraft`, `artillery`, `infantry_equipment`, `support_equipment`, `motorized_mechanized`.
+- **Закомментированы в `00_generic_organization.txt`, но определены в `TFR_organizations_ZZZ_generic.txt`** (полный референс, 10.10.2026): `tank`, `task_force_ship`, `escort_ship`, `general_aircraft`, `artillery`, `infantry_equipment`, `support_equipment`, `motorized_mechanized`. Это **запасные организации для всех стран вне списка** (`allowed = NOT = { tag = SOV tag = USA ... }`, UKR в исключениях нет), поэтому Украина сейчас получает именно их, с общими названиями. Их же `include`-ят организации TFR (SOV, FRA и др.), значит для очереди 2 они доступны. Украинских MIO в TFR нет (`grep UKR` по папке `military_industrial_organization` пуст).
 - Награды и усиления: `mio:ID = { add_mio_funds = N add_mio_size = 1 add_mio_research_bonus = X add_mio_task_capacity = N add_mio_size_up_requirement_factor = -X }`. У SOV `add_mio_funds` лежит в `remove_effect` решения (ровно та схема, что нужна: решение отработало, в конце пришли funds).
 - Временный бонус к конкретной технике делается **идеей** с `equipment_bonus = { modern_tank_chassis = { build_cost_ic = -0.075 instant = yes } }` (так в TFR сделаны `SOV_*_production`). Обычные модификаторы страны на отдельный тип техники не действуют.
 
@@ -77,10 +77,10 @@
 ## 6. Риски
 
 - **[ПРОВЕРИТЬ]** тип `equipment_bonus` в идеях: ключи техники (`modern_tank_chassis`, `armored_car_equipment`, `small_plane_airframe`, корабельные) брать только из примеров TFR/ванили; для флота нужна сверка в игре.
-- **[ПРОВЕРИТЬ]** конфликт токенов черт при `include`: свои трейты нужно ставить на свободные позиции, иначе перекрытие в UI.
+- Новые черты при `include` добавляются через **`add_trait`** (как в `TFR_organizations_PRC.txt`), а не `trait`; ни одна организация TFR не использует голый `trait` поверх `include`. Позиции наших черт сверены по токенам архетипов: каждая на свободной клетке под родителем (`any_parent`), с `special_trait_background = yes` и `ai_will_do`.
 - MIO работают только с DLC Arms Against Tyranny: без него решения должны быть скрыты (`has_dlc` в `visible`/`allowed` категории).
 - Если дефолтные запасные организации останутся, у Украины будет «и дефолт, и наша» для одной техники (не ошибка, но захламление).
-- Архетипы из раздела «закомментированы» пока не используем: ссылка на неопределённый `include` даст ошибку в `error.log`.
+- Дефолтные запасные организации TFR (`ZZZ_generic`) у Украины остаются. Убрать их можно только заменой всего файла на 2229 строк с `tag = UKR` в исключениях; по правилам `TFR_SYNC.md` (раздел 1) так не делаем, чужой файл целиком не копируем. Для очереди 2 это значит: когда наши организации закроют все 8 слотов, останется решить, мирим ли с дубликатами.
 - Проверить игрой: появляются ли организации сразу на старте 2020 и сколько стартовых funds выдаёт игра.
 
 ## 7. Порядок работ (после утверждения)

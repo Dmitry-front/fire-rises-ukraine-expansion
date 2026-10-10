@@ -1,0 +1,134 @@
+CAC_dont_bother_garrisoning = {
+	enable = {
+		original_tag = CAC
+	}
+	abort_when_not_enabled = yes
+	
+	ai_strategy = {
+		type = garrison
+		value = -25
+	}
+}
+
+CAC_push_retard = {
+	enable = {
+		tag = CAC
+	}
+
+	abort_when_not_enabled = yes
+
+	ai_strategy = {
+		type = front_control
+		tag = CAC
+		execution_type = rush
+		execute_order = yes
+		manual_attack = no
+	}
+
+	ai_strategy = {
+		type = consider_weak
+		id = APA
+		value = 1000
+	}
+
+	ai_strategy = {
+		type = consider_weak
+		id = ORE
+		value = 1000
+	}
+
+	ai_strategy = {
+		type = consider_weak
+		id = PCR
+		value = 1000
+	}
+
+	ai_strategy = {
+		type = consider_weak
+		id = WAS
+		value = 1000
+	}
+
+	ai_strategy = {
+		type = consider_weak
+		id = WLF
+		value = 1000
+	}
+
+	ai_strategy = {
+		type = conquer
+		id = APA
+		#id = ORE
+		#id = PCR
+		#id = WAS
+		#id = WLF
+		value = 1000
+	}
+
+	ai_strategy = {
+		type = conquer
+		id = ORE
+		value = 1000
+	}
+
+	ai_strategy = {
+		type = conquer
+		id = PCR
+		value = 1000
+	}
+
+	ai_strategy = {
+		type = conquer
+		id = WAS
+		value = 1000
+	}
+
+	ai_strategy = {
+		type = conquer
+		id = WLF
+		value = 1000
+	}
+}
+
+CAC_doesnt_care_about_relation = {
+
+	enable = {
+		tag = CAC
+		has_war = yes
+	}
+	
+	abort = {
+		has_war = no
+	}
+
+	ai_strategy = {
+		type = pp_spend_priority
+		id = relation
+		value = -99
+	}
+}
+
+CAC_you_should_be_prepared_for_war = {
+
+	enable = {
+		tag = CAC
+	}
+	abort_when_not_enabled = yes
+	
+	ai_strategy = {
+        type = force_build_armies
+        value = 100
+    }
+	
+	ai_strategy = {
+		type = build_army
+		id = mechanized
+		value = 40
+	}
+	
+	ai_strategy = {
+		type = build_army
+		id = infantry
+		value = 60
+	}
+}

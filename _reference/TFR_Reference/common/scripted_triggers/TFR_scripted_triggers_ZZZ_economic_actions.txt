@@ -1,0 +1,64 @@
+is_economic_action_trigger = {
+	has_disabled_ideas = yes
+}
+
+test_one_economic_action_trigger = {
+	NOT = {
+		has_political_power < 50
+	}
+}
+
+print_money_economic_action_trigger = {
+	NOT = {
+		has_political_power < 100
+		has_idea = generic_print_money_idea
+	}
+	OR = {
+		has_idea = low_interest_rates
+		has_idea = lower_interest_rates
+		has_idea = lowest_interest_rates
+	}
+}
+
+quantitative_tightening_economic_action_trigger = {
+	NOT = {
+		has_political_power < 50
+		has_idea = generic_quantitative_tightening_idea
+	}
+	OR = {
+		has_idea = high_interest_rates
+		has_idea = higher_interest_rates
+	}
+}
+
+war_taxes_economic_action_trigger = {
+	NOT = {
+		has_political_power < 50
+		has_idea = generic_war_taxes_idea
+	}
+	has_war = yes
+}
+
+develop_state_economic_action_trigger = {
+	set_temp_variable = {
+		var = income_trigger_temp_var
+		value = 5
+	}
+	has_income_with_inflation_greater_than_or_equals = yes
+	custom_trigger_tooltip = {
+		tooltip = develop_state_economic_action_tooltip
+		NOT = {
+			has_country_flag = develop_state_economic_action_flag
+		}
+	}
+	any_owned_state = {
+		NOT = {
+			has_state_flag = develop_economic_action_state
+		}
+		is_fully_controlled_by = ROOT
+		free_building_slots = {
+			building = infrastructure
+			size < 1
+		}
+	}
+}

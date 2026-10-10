@@ -1,0 +1,2276 @@
+#USA_counting_heads_category = {
+#	GMA_form_new_england = {
+#		icon = generic_nationalism
+#		highlight_states = {
+#			state = 1079
+#			state = 793
+#			state = 1080
+#			state = 1078
+#			state = 1077
+#			state = 795
+#			state = 357
+#			state = 794
+#			state = 1114
+#			state = 792
+#			state = 1115
+#		}
+#		available = {
+#			has_full_control_of_state = 1079
+#			has_full_control_of_state = 793
+#			has_full_control_of_state = 1080
+#			has_full_control_of_state = 1078
+#			has_full_control_of_state = 1077
+#			has_full_control_of_state = 795
+#			has_full_control_of_state = 357
+#			has_full_control_of_state = 794
+#			has_full_control_of_state = 1114
+#			has_full_control_of_state = 792
+#			has_full_control_of_state = 1115
+#			or = {
+#		#		has_completed_focus = GMA_crush_the_enemies_of_property
+#		#		has_completed_focus = GMA_destroy_the_heirarchal_capitalists
+#			}
+#		}
+#		visible = {
+#			tag = GMA
+#		}
+#		ai_will_do = {
+#			factor = 50
+#		}
+#		fire_only_once = yes
+#		complete_effect = {
+#			news_event = {
+#		#		id = gma_news.2
+#			}
+#			country_event = {
+#		#		id = gma.21
+#		#		days = 15
+#			}
+#			transfer_state = 1079
+#			transfer_state = 793
+#			transfer_state = 1080
+#			transfer_state = 1078
+#			transfer_state = 1077
+#			transfer_state = 795
+#			transfer_state = 357
+#			transfer_state = 794
+#			transfer_state = 1114
+#			transfer_state = 792
+#			transfer_state = 1115
+#		}
+#	}
+#}	
+
+#GMA_hire_pmcs_cat = {
+#	GMA_Hire_CACI = {
+#		icon = GFX_GMA_CACI
+#		allowed = {
+#			tag = GMA
+#		}
+#		visible = {
+#			tag = GMA
+#		}
+#		available = {
+#			has_country_flag = GMA_Opened_doors_to_PMCs_FLAG
+#		}
+#		days_remove = 365
+#		custom_cost_text = dx_more_than_100B
+#		custom_cost_trigger = {
+#			check_variable = {
+#		#		var = income_var
+#		#		value = 0.1
+#			}
+#		}
+#		is_good = yes
+#		selectable_mission = yes
+#		complete_effect = {
+#			subtract_from_variable = {
+#		#		var = income_var
+#		#		value = 0.1
+#			}
+#			add_ideas = GMA_CACI_Intelligence_Brigade
+#		}
+#		remove_effect = {
+#			remove_ideas = GMA_CACI_Intelligence_Brigade
+#		}
+#	}
+#	GMA_Hire_Blackwater_Veterans = {
+#		icon = GFX_GMA_Blackwater
+#		allowed = {
+#			tag = GMA
+#		}
+#		available = {
+#			has_country_flag = GMA_Opened_doors_to_PMCs_FLAG
+#		}
+#		visible = {
+#			tag = GMA
+#		}
+#		days_remove = 365
+#		custom_cost_text = dx_more_than_100B
+#		custom_cost_trigger = {
+#			check_variable = {
+#		#		var = income_var
+#		#		value = 0.1
+#			}
+#		}
+#		is_good = yes
+#		selectable_mission = yes
+#		complete_effect = {
+#			custom_effect_tooltip = GMA_Blackwater_Hired_tt
+#			subtract_from_variable = {
+#		#		var = income_var
+#		#		value = 0.1
+#			}
+#			hidden_effect = {
+#		#		load_oob = GMA_BLCKWTR_OOB
+#			}
+#			add_popularity = {
+#		#		ideology = nationalist
+#		#		popularity = 0.02
+#			}
+#		}
+#		remove_effect = {
+#			delete_units = {
+#		#		division_template = "Blackwater Veterans"
+#		#		disband = no
+#			}
+#		}
+#	}
+#	GMA_Hire_Aegis_Defence_Forces = {
+#		icon = GFX_GMA_AEGIS
+#		allowed = {
+#			tag = GMA
+#		}
+#		available = {
+#			has_country_flag = GMA_Opened_doors_to_PMCs_FLAG
+#		}
+#		visible = {
+#			tag = GMA
+#		}
+#		days_remove = 365
+#		custom_cost_text = dx_more_than_100B
+#		custom_cost_trigger = {
+#			check_variable = {
+#		#		var = income_var
+#		#		value = 0.1
+#			}
+#		}
+#		is_good = yes
+#		selectable_mission = yes
+#		complete_effect = {
+#			custom_effect_tooltip = GMA_Aegis_Hired_tt
+#			subtract_from_variable = {
+#		#		var = income_var
+#		#		value = 0.1
+#			}
+#			hidden_effect = {
+#		#		load_oob = GMA_AEGIS_OOB
+#			}
+#			add_popularity = {
+#		#		ideology = conservative
+#		#		popularity = 0.02
+#			}
+#		}
+#		remove_effect = {
+#			delete_units = {
+#		#		division_template = "AEGIS Defence Brigade"
+#		#		disband = no
+#			}
+#		}
+#	}
+#	GMA_Allow_PMC_Air_Testing = {
+#		icon = GFX_GMA_Air_Testing
+#		allowed = {
+#			tag = GMA
+#		}
+#		available = {
+#			has_country_flag = GMA_Opened_doors_to_PMCs_FLAG
+#		}
+#		visible = {
+#			tag = GMA
+#		}
+#		days_remove = 150
+#		cost = 80
+#		is_good = yes
+#		selectable_mission = yes
+#		fire_only_once = yes
+#		complete_effect = {
+#			add_ideas = GMA_Indiscriminate_Air_Fire
+#			add_equipment_to_stockpile = {
+#		#		type = fighter_equipment_3
+#		#		amount = 70
+#		#		producer = SOV
+#			}
+#			add_equipment_to_stockpile = {
+#		#		type = fighter_equipment_3
+#		#		amount = 20
+#		#		producer = USA
+#			}
+#			add_equipment_to_stockpile = {
+#		#		type = fighter_equipment_3
+#		#		amount = 10
+#		#		producer = GER
+#			}
+#		}
+#		remove_effect = {
+#			remove_ideas = GMA_Indiscriminate_Air_Fire
+#			air_experience = 50
+#			add_equipment_to_stockpile = {
+#		#		type = fighter_equipment_3
+#		#		amount = -70
+#		#		producer = SOV
+#			}
+#			add_equipment_to_stockpile = {
+#		#		type = fighter_equipment_3
+#		#		amount = -20
+#		#		producer = USA
+#			}
+#			add_equipment_to_stockpile = {
+#		#		type = fighter_equipment_3
+#		#		amount = -10
+#		#		producer = GER
+#			}
+#		}
+#	}
+#	GMA_Create_Our_Own_PMC_Company = {
+#		icon = GFX_GMA_GMC
+#		allowed = {
+#			tag = GMA
+#		}
+#		available = {
+#			has_country_flag = GMA_Opened_doors_to_PMCs_FLAG
+#		}
+#		visible = {
+#			tag = GMA
+#		}
+#		days_remove = 60
+#		custom_cost_text = dx_more_than_500M
+#		custom_cost_trigger = {
+#			check_variable = {
+#		#		var = income_var
+#		#		value = 0.5
+#			}
+#		}
+#		is_good = yes
+#		selectable_mission = yes
+#		fire_only_once = yes
+#		complete_effect = {
+#			subtract_from_variable = {
+#		#		var = income_var
+#		#		value = 0.5
+#			}
+#		}
+#		remove_effect = {
+#			hidden_effect = {
+#		#		load_oob = GMA_Green_Mountain_Military_Company_OOB
+#			}
+#			add_ideas = GMA_Green_Mountain_Military_Company
+#		}
+#	}
+#}	
+
+#GMA_Maintaining_the_Association_category = {
+#	GMA_Freeze_PMC_Payments = {
+#		icon = GFX_GMA_Freeze_PMC_Payment
+#		allowed = {
+#			tag = GMA
+#		}
+#		available = {
+#			NOT = {
+#		#		has_country_flag = GMA_Currently_working_on_the_Association
+#			}
+#			has_completed_focus = GMA_burden_of_gaia
+#		}
+#		visible = {
+#			NOT = {
+#		#		has_country_flag = GMA_Association_Collapsed
+#			}
+#			has_completed_focus = GMA_burden_of_gaia
+#		}
+#		days_remove = 5
+#		cost = 20
+#		is_good = yes
+#		selectable_mission = yes
+#		fire_only_once = yes
+#		complete_effect = {
+#			set_country_flag = GMA_Currently_working_on_the_Association
+#		}
+#		remove_effect = {
+#			add_days_mission_timeout = {
+#		#		mission = GMA_The_Faltering_Alliance
+#		#		days = -10
+#			}
+#			set_temp_variable = {
+#		#		var = income_var_temp
+#		#		value = 2.5
+#			}
+#			add_income = yes
+#			clr_country_flag = GMA_Currently_working_on_the_Association
+#		}
+#	}
+#	GMA_Venerate_our_Libertarian_Forefathers = {
+#		icon = GFX_GMA_Venerate_the_Forefathers
+#		allowed = {
+#			tag = GMA
+#		}
+#		available = {
+#			NOT = {
+#		#		has_country_flag = GMA_Currently_working_on_the_Association
+#			}
+#			has_completed_focus = GMA_burden_of_atlas
+#		}
+#		visible = {
+#			NOT = {
+#		#		has_country_flag = GMA_Association_Collapsed
+#			}
+#			has_completed_focus = GMA_burden_of_atlas
+#		}
+#		days_remove = 5
+#		cost = 20
+#		is_good = yes
+#		selectable_mission = yes
+#		fire_only_once = yes
+#		complete_effect = {
+#			set_country_flag = GMA_Currently_working_on_the_Association
+#		}
+#		remove_effect = {
+#			add_popularity = {
+#		#		ideology = market_liberal
+#		#		popularity = 0.03
+#			}
+#			add_days_mission_timeout = {
+#		#		mission = GMA_The_Faltering_Alliance
+#		#		days = -5
+#			}
+#			clr_country_flag = GMA_Currently_working_on_the_Association
+#		}
+#	}
+#	GMA_Demand_Ban_on_Collectivist_Practices = {
+#		icon = GFX_GMA_Ban_Collectivist_Practices
+#		icon = GFX_GMA_Ban_Collectivist_Practices
+#		allowed = {
+#			tag = GMA
+#		}
+#		available = {
+#			NOT = {
+#		#		has_country_flag = GMA_Currently_working_on_the_Association
+#			}
+#			has_completed_focus = GMA_burden_of_atlas
+#		}
+#		visible = {
+#			NOT = {
+#		#		has_country_flag = GMA_Association_Collapsed
+#			}
+#			has_completed_focus = GMA_burden_of_atlas
+#		}
+#		days_remove = 5
+#		cost = 20
+#		is_good = yes
+#		selectable_mission = yes
+#		fire_only_once = yes
+#		complete_effect = {
+#			set_country_flag = GMA_Currently_working_on_the_Association
+#		}
+#		remove_effect = {
+#			add_popularity = {
+#		#		ideology = market_liberal
+#		#		popularity = 0.05
+#			}
+#			add_days_mission_timeout = {
+#		#		mission = GMA_The_Faltering_Alliance
+#		#		days = -10
+#			}
+#			clr_country_flag = GMA_Currently_working_on_the_Association
+#		}
+#	}
+#	GMA_Demand_PMC_Enrollment_in_the_AOF = {
+#		icon = GFX_GMA_PMC_Enrollment
+#		allowed = {
+#			tag = GMA
+#		}
+#		available = {
+#			NOT = {
+#		#		has_country_flag = GMA_Currently_working_on_the_Association
+#			}
+#			has_completed_focus = GMA_burden_of_atlas
+#		}
+#		visible = {
+#			NOT = {
+#		#		has_country_flag = GMA_Association_Collapsed
+#			}
+#			has_completed_focus = GMA_burden_of_atlas
+#		}
+#		days_remove = 5
+#		cost = 20
+#		is_good = yes
+#		selectable_mission = yes
+#		fire_only_once = yes
+#		complete_effect = {
+#			set_country_flag = GMA_Currently_working_on_the_Association
+#		}
+#		remove_effect = {
+#			add_popularity = {
+#		#		ideology = authoritarian_democrat
+#		#		popularity = 0.06
+#			}
+#			add_days_mission_timeout = {
+#		#		mission = GMA_The_Faltering_Alliance
+#		#		days = -20
+#			}
+#			clr_country_flag = GMA_Currently_working_on_the_Association
+#		}
+#	}
+#	GMA_Promote_Civil_Disputes = {
+#		icon = GFX_GMA_Healing_AOF
+#		allowed = {
+#			tag = GMA
+#		}
+#		available = {
+#			NOT = {
+#		#		has_country_flag = GMA_Currently_working_on_the_Association
+#			}
+#		}
+#		visible = {
+#			NOT = {
+#		#		has_country_flag = GMA_Association_Collapsed
+#			}
+#		}
+#		days_remove = 10
+#		cost = 15
+#		is_good = yes
+#		days_re_enable = 12
+#		selectable_mission = yes
+#		complete_effect = {
+#			set_country_flag = GMA_Currently_working_on_the_Association
+#		}
+#		remove_effect = {
+#			add_stability = 0.05
+#			add_days_mission_timeout = {
+#		#		mission = GMA_The_Faltering_Alliance
+#		#		days = 15
+#			}
+#			clr_country_flag = GMA_Currently_working_on_the_Association
+#		}
+#	}
+#	GMA_Our_Common_Enemy = {
+#		icon = GFX_GMA_Healing_AOF
+#		allowed = {
+#			tag = GMA
+#		}
+#		available = {
+#			NOT = {
+#		#		has_country_flag = GMA_Currently_working_on_the_Association
+#			}
+#		}
+#		visible = {
+#			NOT = {
+#		#		has_country_flag = GMA_Association_Collapsed
+#			}
+#		}
+#		days_remove = 21
+#		cost = 15
+#		is_good = yes
+#		selectable_mission = yes
+#		modifier = {
+#			war_support_weekly_factor = 0.02
+#		}
+#		complete_effect = {
+#			set_country_flag = GMA_Currently_working_on_the_Association
+#		}
+#		remove_effect = {
+#			clr_country_flag = GMA_Currently_working_on_the_Association
+#			add_days_mission_timeout = {
+#		#		mission = GMA_The_Faltering_Alliance
+#		#		days = 10
+#			}
+#		}
+#	}
+#	GMA_Hold_Anarchist_Convention = {
+#		icon = GFX_GMA_Healing_AOF
+#		allowed = {
+#			tag = GMA
+#		}
+#		available = {
+#			NOT = {
+#		#		has_country_flag = GMA_Currently_working_on_the_Association
+#			}
+#		}
+#		visible = {
+#			NOT = {
+#		#		has_country_flag = GMA_Association_Collapsed
+#			}
+#		}
+#		days_remove = 7
+#		cost = 50
+#		is_good = yes
+#		selectable_mission = yes
+#		fire_only_once = yes
+#		modifier = {
+#			stability_weekly_factor = 0.1
+#		}
+#		complete_effect = {
+#			set_country_flag = GMA_Currently_working_on_the_Association
+#		}
+#		remove_effect = {
+#			clr_country_flag = GMA_Currently_working_on_the_Association
+#			add_days_mission_timeout = {
+#		#		mission = GMA_The_Faltering_Alliance
+#		#		days = 40
+#			}
+#		}
+#	}
+#	GMA_SoL_Seize_Control = {
+#		icon = GFX_GMA_Faltering_Alliance
+#		allowed = {
+#			tag = GMA
+#		}
+#		available = {
+#			has_completed_focus = GMA_crush_the_enemies_of_property
+#			market_liberal > 0.5
+#		}
+#		visible = {
+#			NOT = {
+#		#		has_country_flag = GMA_Association_Collapsed
+#			}
+#		}
+#		days_remove = 7
+#		cost = 15
+#		is_good = yes
+#		selectable_mission = yes
+#		fire_only_once = yes
+#		modifier = {
+#			stability_weekly_factor = -0.05
+#		}
+#		complete_effect = {
+#		}
+#		remove_effect = {
+#			add_stability = -0.1
+#			set_politics = {
+#		#		ruling_party = market_liberal
+#		#		elections_allowed = no
+#		#		last_election = "1935.12.17"
+#		#		election_frequency = 48
+#			}
+#			add_days_mission_timeout = {
+#		#		mission = GMA_The_Faltering_Alliance
+#		#		days = -10
+#			}
+#		}
+#	}
+#	GMA_Force_Anarchist_Disarmament = {
+#		icon = GFX_GMA_Faltering_Alliance
+#		allowed = {
+#			tag = GMA
+#		}
+#		available = {
+#			NOT = {
+#		#		has_country_Flag = GMA_Libertarian_Disarmament
+#			}
+#			NOT = {
+#		#		has_country_flag = GMA_Currently_working_on_the_Association
+#			}
+#		}
+#		visible = {
+#			NOT = {
+#		#		has_country_flag = GMA_Association_Collapsed
+#			}
+#		}
+#		days_remove = 10
+#		cost = 30
+#		is_good = yes
+#		selectable_mission = yes
+#		fire_only_once = yes
+#		complete_effect = {
+#			set_country_flag = GMA_Currently_working_on_the_Association
+#		}
+#		remove_effect = {
+#			add_stability = -0.15
+#			set_country_flag = GMA_Anarchist_Disarmament
+#			add_days_mission_timeout = {
+#		#		mission = GMA_The_Faltering_Alliance
+#		#		days = -30
+#			}
+#			clr_country_flag = GMA_Currently_working_on_the_Association
+#		}
+#	}
+#	GMA_Force_Libertarian_Disarmament = {
+#		icon = GFX_GMA_Faltering_Alliance
+#		allowed = {
+#			tag = GMA
+#		}
+#		available = {
+#			NOT = {
+#		#		has_country_flag = GMA_Anarchist_Disarmament
+#			}
+#			NOT = {
+#		#		has_country_flag = GMA_Currently_working_on_the_Association
+#			}
+#		}
+#		visible = {
+#			NOT = {
+#		#		has_country_flag = GMA_Association_Collapsed
+#			}
+#		}
+#		days_remove = 10
+#		cost = 30
+#		is_good = yes
+#		selectable_mission = yes
+#		fire_only_once = yes
+#		complete_effect = {
+#			set_country_flag = GMA_Currently_working_on_the_Association
+#		}
+#		remove_effect = {
+#			add_stability = -0.15
+#			set_country_flag = GMA_Libertarian_Disarmament
+#			add_days_mission_timeout = {
+#		#		mission = GMA_The_Faltering_Alliance
+#		#		days = -30
+#			}
+#			clr_country_flag = GMA_Currently_working_on_the_Association
+#		}
+#	}
+#}	
+
+#GMA_Articles_of_Confederation_Decision_cat = {
+#	GMA_Rewrite_the_Articles_of_Confederation = {
+#		allowed = {
+#			tag = GMA
+#		}
+#		visible = {
+#			has_country_flag = GMA_Articles_of_Confederation_Decision_Flag
+#		}
+#		available = {
+#			has_country_flag = GMA_Articles_of_Confederation_Decision_Flag
+#		}
+#		cost = 100
+#		days_remove = 365
+#		is_good = yes
+#		selectable_mission = yes
+#		fire_only_once = yes
+#		complete_effect = {
+#			custom_effect_tooltip = GMA_Writing_Articles_tt
+#			set_country_flag = GMA_Rewriting_the_Articles_flag
+#		}
+#		remove_effect = {
+#			custom_effect_tooltip = GMA_Stop_Writing_Articles_tt
+#			clr_country_flag = GMA_Rewriting_the_Articles_flag
+#			set_country_flag = GMA_Confederate_Congress_flag
+#			country_event = {
+#		#		#The Articles pass
+#		#		id = gma.3
+#		#		days = 1
+#			}
+#		}
+#	}
+#	GMA_Redefine_the_Perpetual_Union = {
+#		allowed = {
+#			tag = GMA
+#		}
+#		available = {
+#			has_country_flag = GMA_Rewriting_the_Articles_flag
+#		}
+#		visible = {
+#			has_country_flag = GMA_Rewriting_the_Articles_flag
+#		}
+#		cost = 25
+#		is_good = yes
+#		selectable_mission = yes
+#		days_remove = 60
+#		fire_only_once = yes
+#		modifier = {
+#			stability_weekly = 0.02
+#		}
+#		complete_effect = {
+#		}
+#		remove_effect = {
+#			custom_effect_tooltip = GMA_the_new_Articles_add_on_tt
+#			set_country_flag = GMA_Art_Confed_Perp_Union_flag
+#		}
+#	}
+#	GMA_Allow_Interstate_Protectionism = {
+#		allowed = {
+#			tag = GMA
+#		}
+#		available = {
+#			has_country_flag = GMA_Rewriting_the_Articles_flag
+#			has_country_flag = GMA_Art_Confed_Perp_Union_flag
+#		}
+#		visible = {
+#			has_country_flag = GMA_Rewriting_the_Articles_flag
+#		}
+#		cost = 30
+#		days_remove = 60
+#		fire_only_once = yes
+#		modifier = {
+#			consumer_goods_factor = 0.05
+#			society_development_monthly = 0.05
+#		}
+#		complete_effect = {
+#		}
+#		remove_effect = {
+#			custom_effect_tooltip = GMA_the_new_Articles_add_on_tt
+#			set_country_flag = GMA_Interstate_protectionism_flag
+#		}
+#	}
+#	GMA_Stoke_Friendly_Rivalries = {
+#		allowed = {
+#			tag = GMA
+#		}
+#		available = {
+#			has_country_flag = GMA_Rewriting_the_Articles_flag
+#			has_country_flag = GMA_Art_Confed_Perp_Union_flag
+#			has_country_flag = GMA_Interstate_protectionism_flag
+#		}
+#		visible = {
+#			has_country_flag = GMA_Rewriting_the_Articles_flag
+#		}
+#		cost = 50
+#		is_good = yes
+#		selectable_mission = yes
+#		fire_only_once = yes
+#		days_remove = 60
+#		modifier = {
+#			production_speed_buildings_factor = 0.05
+#			research_speed_factor = 0.05
+#		}
+#		complete_effect = {
+#		}
+#		remove_effect = {
+#			custom_effect_tooltip = GMA_the_new_Articles_add_on_tt
+#			set_country_flag = GMA_Friendly_Rivalries_flag
+#		}
+#	}
+#	GMA_Consolidate_Foreign_Policy = {
+#		allowed = {
+#			tag = GMA
+#		}
+#		available = {
+#			has_country_flag = GMA_Rewriting_the_Articles_flag
+#			has_country_flag = GMA_Art_Confed_Perp_Union_flag
+#			has_country_flag = GMA_Interstate_protectionism_flag
+#			has_country_flag = GMA_Friendly_Rivalries_flag
+#		}
+#		visible = {
+#			has_country_flag = GMA_Rewriting_the_Articles_flag
+#		}
+#		cost = 20
+#		is_good = yes
+#		selectable_mission = yes
+#		fire_only_once = yes
+#		days_remove = 60
+#		modifier = {
+#			stability_weekly_factor = 0.03
+#			war_support_weekly_factor = 0.03
+#			guarantee_cost = -0.25
+#		}
+#		complete_effect = {
+#		}
+#		remove_effect = {
+#			custom_effect_tooltip = GMA_the_new_Articles_add_on_tt
+#			set_country_flag = GMA_Consolidated_FP_flag
+#		}
+#	}
+#	GMA_Recreate_the_Executive_Branch = {
+#		allowed = {
+#			tag = GMA
+#		}
+#		available = {
+#			has_country_flag = GMA_Rewriting_the_Articles_flag
+#			has_country_flag = GMA_Consolidated_FP_flag
+#			has_country_flag = GMA_Friendly_Rivalries_flag
+#			has_country_flag = GMA_Interstate_protectionism_flag
+#			has_country_flag = GMA_Art_Confed_Perp_Union_flag
+#		}
+#		visible = {
+#			has_country_flag = GMA_Rewriting_the_Articles_flag
+#		}
+#		cost = 75
+#		is_good = yes
+#		selectable_mission = yes
+#		fire_only_once = yes
+#		days_remove = 60
+#		modifier = {
+#			#political_advisor_cost_factor = -0.5
+#			political_power_gain = 0.2
+#		}
+#		complete_effect = {
+#		}
+#		remove_effect = {
+#			custom_effect_tooltip = GMA_the_new_Articles_add_on_tt
+#			set_country_flag = GMA_Exec_Branch_flag
+#		}
+#	}
+#}	
+
+#GMA_Congress_Decision_cat = {
+#	GMA_Determine_the_Focus_of_Congress = {
+#		allowed = {
+#			tag = GMA
+#		}
+#		visible = {
+#			has_country_flag = GMA_Confederate_Congress_flag
+#		}
+#		available = {
+#			has_country_flag = GMA_Confederate_Congress_flag
+#		}
+#		cost = 100
+#		days_remove = 365
+#		is_good = yes
+#		selectable_mission = yes
+#		complete_effect = {
+#			country_event = {
+#		#		id = gma.58
+#		#		days = 5
+#			}
+#		}
+#	}
+#	GMA_Shorten_Fishing_Times = {
+#		allowed = {
+#			tag = GMA
+#		}
+#		available = {
+#			has_country_flag = GMA_Domestic_Fisheries_Mechanic_Flag
+#			NOT = {
+#		#		has_completed_focus = GMA_Expand_New_England_Fisheries
+#			}
+#		}
+#		visible = {
+#			has_completed_focus = GMA_Enforce_Restrictive_Fishing_Protocols
+#		}
+#		cost = 20
+#		days_remove = 10
+#		fire_only_once = yes
+#		is_good = yes
+#		selectable_mission = yes
+#		modifier = {
+#			consumer_goods_factor = -0.04
+#		}
+#		remove_effect = {
+#			If = {
+#		#		limit = {
+#		#			OR = {
+#		#		#		has_completed_focus = GMA_call_of_the_wild
+#		#		#		has_completed_focus = GMA_post_scarcity_anarchism
+#		#			}
+#		#		}
+#		#		add_stability = 0.05
+#			}
+#			If = {
+#		#		limit = {
+#		#			OR = {
+#		#		#		has_completed_focus = GMA_Tread_on_the_Snakes
+#		#		#		has_completed_focus = GMA_Life_Liberty_Happiness
+#		#			}
+#		#		}
+#		#		add_stability = 0.05
+#			}
+#		}
+#	}
+#	GMA_Revoke_Lobster_Licenses = {
+#		allowed = {
+#			tag = GMA
+#		}
+#		available = {
+#			has_country_flag = GMA_Domestic_Fisheries_Mechanic_Flag
+#			NOT = {
+#		#		has_completed_focus = GMA_Expand_New_England_Fisheries
+#			}
+#		}
+#		visible = {
+#			has_completed_focus = GMA_Enforce_Restrictive_Fishing_Protocols
+#		}
+#		cost = 60
+#		days_remove = 10
+#		fire_only_once = yes
+#		is_good = yes
+#		selectable_mission = yes
+#		complete_effect = {
+#		}
+#		modifier = {
+#		}
+#		remove_effect = {
+#			If = {
+#		#		limit = {
+#		#			OR = {
+#		#		#		has_completed_focus = GMA_call_of_the_wild
+#		#		#		has_completed_focus = GMA_post_scarcity_anarchism
+#		#			}
+#		#		}
+#		#		add_stability = 0.05
+#		#		add_manpower = 14322
+#			}
+#			If = {
+#		#		limit = {
+#		#			OR = {
+#		#		#		has_completed_focus = GMA_Tread_on_the_Snakes
+#		#		#		has_completed_focus = GMA_Life_Liberty_Happiness
+#		#			}
+#		#		}
+#		#		add_stability = -0.02
+#		#		add_manpower = 14322
+#			}
+#		}
+#	}
+#	GMA_Increase_Fines = {
+#		allowed = {
+#			tag = GMA
+#		}
+#		available = {
+#			has_country_flag = GMA_Domestic_Fisheries_Mechanic_Flag
+#			NOT = {
+#		#		has_completed_focus = GMA_Expand_New_England_Fisheries
+#			}
+#		}
+#		visible = {
+#			has_completed_focus = GMA_Enforce_Restrictive_Fishing_Protocols
+#		}
+#		cost = 40
+#		days_remove = 80
+#		fire_only_once = yes
+#		is_good = yes
+#		selectable_mission = yes
+#		modifier = {
+#			consumer_goods_factor = -0.1
+#		}
+#		complete_effect = {
+#		}
+#		remove_effect = {
+#			If = {
+#		#		limit = {
+#		#			OR = {
+#		#		#		has_completed_focus = GMA_call_of_the_wild
+#		#		#		has_completed_focus = GMA_post_scarcity_anarchism
+#		#			}
+#		#		}
+#		#		add_stability = 0.05
+#			}
+#			If = {
+#		#		limit = {
+#		#			OR = {
+#		#		#		has_completed_focus = GMA_Tread_on_the_Snakes
+#		#		#		has_completed_focus = GMA_Life_Liberty_Happiness
+#		#			}
+#		#		}
+#		#		add_stability = -0.1
+#			}
+#		}
+#	}
+#	GMA_Arrest_Fishing_Offenders = {
+#		allowed = {
+#			tag = GMA
+#		}
+#		available = {
+#			has_decision = GMA_Shorten_Fishing_Times
+#			has_decision = GMA_Revoke_Lobster_Licenses
+#			has_decision = GMA_Increase_Fines
+#		}
+#		visible = {
+#			has_completed_focus = GMA_Enforce_Restrictive_Fishing_Protocols
+#		}
+#		cost = 80
+#		days_remove = 45
+#		fire_only_once = yes
+#		is_good = yes
+#		selectable_mission = yes
+#		modifier = {
+#			political_power_gain = 0.25
+#		}
+#		complete_effect = {
+#			add_equipment_to_stockpile = {
+#		#		type = convoy
+#		#		amount = 200
+#		#		producer = USA
+#			}
+#		}
+#		remove_effect = {
+#			If = {
+#		#		limit = {
+#		#			OR = {
+#		#		#		has_completed_focus = GMA_call_of_the_wild
+#		#		#		has_completed_focus = GMA_post_scarcity_anarchism
+#		#			}
+#		#		}
+#		#		add_war_support = 0.2
+#			}
+#			If = {
+#		#		limit = {
+#		#			OR = {
+#		#		#		has_completed_focus = GMA_Tread_on_the_Snakes
+#		#		#		has_completed_focus = GMA_Life_Liberty_Happiness
+#		#			}
+#		#		}
+#		#		country_event = {
+#		#			id = gma.65
+#		#			days = 20
+#		#		}
+#			}
+#		}
+#	}
+#	GMA_Support_Maine_Lobstermen = {
+#		allowed = {
+#			tag = GMA
+#		}
+#		available = {
+#			has_country_flag = GMA_Domestic_Fisheries_Mechanic_Flag
+#			has_completed_focus = GMA_Expand_New_England_Fisheries
+#		}
+#		visible = {
+#			has_completed_focus = GMA_Expand_New_England_Fisheries
+#		}
+#		cost = 25
+#		days_remove = 45
+#		fire_only_once = yes
+#		is_good = yes
+#		selectable_mission = yes
+#		modifier = {
+#			naval_morale = 10
+#		}
+#		remove_effect = {
+#			If = {
+#		#		limit = {
+#		#			OR = {
+#		#		#		has_completed_focus = GMA_call_of_the_wild
+#		#		#		has_completed_focus = GMA_post_scarcity_anarchism
+#		#			}
+#		#		}
+#		#		add_stability = 0.05
+#			}
+#			If = {
+#		#		limit = {
+#		#			OR = {
+#		#		#		has_completed_focus = GMA_Tread_on_the_Snakes
+#		#		#		has_completed_focus = GMA_Life_Liberty_Happiness
+#		#			}
+#		#		}
+#		#		add_stability = 0.05
+#			}
+#		}
+#	}
+#	GMA_Pardon_the_Coast_Guard = {
+#		allowed = {
+#			tag = GMA
+#		}
+#		available = {
+#			has_country_flag = GMA_Domestic_Fisheries_Mechanic_Flag
+#			has_completed_focus = GMA_Expand_New_England_Fisheries
+#		}
+#		visible = {
+#			has_completed_focus = GMA_Expand_New_England_Fisheries
+#		}
+#		cost = 20
+#		fire_only_once = yes
+#		is_good = yes
+#		selectable_mission = yes
+#		complete_effect = {
+#			navy_experience = 20
+#			GMA_Amy_Florentino = {
+#		#		add_naval_commander_role = {
+#		#			skill = 1
+#		#			attack_skill = 1
+#		#			defense_skill = 1
+#		#			planning_skill = 1
+#		#			logistics_skill = 1
+#		#		}
+#			}
+#			GMA_Mark_Neeland = {
+#		#		add_naval_commander_role = {
+#		#			skill = 1
+#		#			attack_skill = 1
+#		#			defense_skill = 1
+#		#			planning_skill = 1
+#		#			logistics_skill = 1
+#		#		}
+#			}
+#		}
+#	}
+#	GMA_Build_Boston_Better = {
+#		allowed = {
+#			tag = GMA
+#		}
+#		available = {
+#			has_country_flag = GMA_Domestic_Fisheries_Mechanic_Flag
+#			has_completed_focus = GMA_Expand_New_England_Fisheries
+#		}
+#		visible = {
+#			has_completed_focus = GMA_Expand_New_England_Fisheries
+#		}
+#		cost = 100
+#		days_remove = 200
+#		fire_only_once = yes
+#		is_good = yes
+#		selectable_mission = yes
+#		modifier = {
+#			consumer_goods_factor = 0.1
+#		}
+#		remove_effect = {
+#			If = {
+#		#		limit = {
+#		#			OR = {
+#		#		#		has_completed_focus = GMA_call_of_the_wild
+#		#		#		has_completed_focus = GMA_post_scarcity_anarchism
+#		#			}
+#		#		}
+#		#		357 = {
+#		#			set_building_level = {
+#		#		#		type = naval_base
+#		#		#		level = 10
+#		#		#		province = {
+#		#		#			id = 6732
+#		#		#		}
+#		#			}
+#		#		}
+#			}
+#			If = {
+#		#		limit = {
+#		#			OR = {
+#		#		#		has_completed_focus = GMA_Tread_on_the_Snakes
+#		#		#		has_completed_focus = GMA_Life_Liberty_Happiness
+#		#			}
+#		#		}
+#		#		add_stability = 0.15
+#		#		add_war_support = 0.05
+#		#		357 = {
+#		#			set_building_level = {
+#		#		#		type = naval_base
+#		#		#		level = 10
+#		#		#		province = {
+#		#		#			id = 6732
+#		#		#		}
+#		#			}
+#		#		}
+#			}
+#		}
+#	}
+#	GMA_Reposition_the_Capital = {
+#		allowed = {
+#			tag = GMA
+#		}
+#		visible = {
+#			has_country_flag = GMA_Confederate_Congress_flag
+#		}
+#		available = {
+#			has_country_flag = GMA_Confederate_Congress_flag
+#		}
+#		cost = 20
+#		is_good = yes
+#		selectable_mission = yes
+#		fire_only_once = yes
+#		complete_effect = {
+#			set_capital = {
+#		#		state = 918
+#		#		remember_old_capital = yes
+#			}
+#		}
+#	}
+#	GMA_Fund_Private_Highways = {
+#		allowed = {
+#			tag = GMA
+#		}
+#		visible = {
+#			has_country_flag = GMA_Confederate_Congress_flag
+#		}
+#		available = {
+#			has_country_flag = GMA_Confederate_Congress_flag
+#		}
+#		custom_cost_text = dx_more_than_500M
+#		custom_cost_trigger = {
+#			check_variable = {
+#		#		var = income_var
+#		#		value = 0.5
+#			}
+#		}
+#		is_good = yes
+#		selectable_mission = yes
+#		fire_only_once = yes
+#		days_remove = 80
+#		modifier = {
+#			consumer_goods_factor = -0.05
+#			production_speed_infrastructure_factor = 0.15
+#		}
+#	}
+#	GMA_Vote_on_Proposition_042 = {
+#		#Legalization of all drugs
+#		allowed = {
+#			tag = GMA
+#		}
+#		visible = {
+#			has_country_flag = GMA_Confederate_Congress_flag
+#		}
+#		available = {
+#			has_country_flag = GMA_Confederate_Congress_flag
+#		}
+#		cost = 20
+#		is_good = yes
+#		selectable_mission = yes
+#		fire_only_once = yes
+#		complete_effect = {
+#			add_stability = 0.05
+#			set_temp_variable = {
+#		#		var = income_var_temp
+#		#		value = 10
+#			}
+#			add_income = yes
+#		}
+#	}
+#	GMA_Vote_on_Proposition_008 = {
+#		#Legalization of homosexual marriage
+#		allowed = {
+#			tag = GMA
+#		}
+#		visible = {
+#			has_country_flag = GMA_Confederate_Congress_flag
+#		}
+#		available = {
+#			has_country_flag = GMA_Confederate_Congress_flag
+#		}
+#		cost = 20
+#		is_good = yes
+#		selectable_mission = yes
+#		fire_only_once = yes
+#		complete_effect = {
+#			add_stability = 0.05
+#			add_popularity = {
+#		#		ideology = social_liberal
+#		#		popularity = 0.03
+#			}
+#			add_popularity = {
+#		#		ideology = conservative
+#		#		popularity = 0.03
+#			}
+#		}
+#	}
+#	GMA_Vote_on_Proposition_009 = {
+#		#Legalization of Abortion
+#		allowed = {
+#			tag = GMA
+#		}
+#		visible = {
+#			has_country_flag = GMA_Confederate_Congress_flag
+#		}
+#		available = {
+#			has_country_flag = GMA_Confederate_Congress_flag
+#		}
+#		cost = 20
+#		is_good = yes
+#		selectable_mission = yes
+#		fire_only_once = yes
+#		complete_effect = {
+#			add_stability = 0.05
+#			add_popularity = {
+#		#		ideology = social_democrat
+#		#		popularity = 0.03
+#			}
+#			add_popularity = {
+#		#		ideology = conservative
+#		#		popularity = 0.03
+#			}
+#		}
+#	}
+#	GMA_Vote_on_Proposition_012 = {
+#		#Prohibition of Presidential Self-Pardons
+#		allowed = {
+#			tag = GMA
+#		}
+#		visible = {
+#			has_country_flag = GMA_Confederate_Congress_flag
+#		}
+#		available = {
+#			has_country_flag = GMA_Confederate_Congress_flag
+#		}
+#		cost = 20
+#		is_good = yes
+#		selectable_mission = yes
+#		fire_only_once = yes
+#		complete_effect = {
+#			add_popularity = {
+#		#		ideology = market_liberal
+#		#		popularity = 0.1
+#			}
+#		}
+#	}
+#	GMA_Vote_on_Proposition_076 = {
+#		#Mass Pardon
+#		allowed = {
+#			tag = GMA
+#		}
+#		visible = {
+#			has_country_flag = GMA_Confederate_Congress_flag
+#		}
+#		available = {
+#			has_country_flag = GMA_Confederate_Congress_flag
+#		}
+#		cost = 50
+#		is_good = yes
+#		selectable_mission = yes
+#		fire_only_once = yes
+#		complete_effect = {
+#			add_popularity = {
+#		#		ideology = market_liberal
+#		#		popularity = 0.1
+#			}
+#			add_manpower = 10000
+#		}
+#	}
+#}	
+
+#GMA_Ted_Cancer_Mechanic_cat = {
+#	GMA_Ted_Kaczynski_Death_Countdown = {
+#		allowed = {
+#			tag = GMA
+#		}
+#		visible = {
+#			has_country_flag = GMA_Ted_has_Cancer_Mechanic_FLAG
+#		}
+#		available = {
+#			always = no
+#		}
+#		activation = {
+#			has_country_flag = GMA_Ted_has_Cancer_Mechanic_FLAG
+#		}
+#		is_good = no
+#		fire_only_once = yes
+#		selectable_mission = no
+#		days_mission_timeout = 150
+#		timeout_effect = {
+#			country_event = {
+#		#		id = gma.56
+#		#		days = 1
+#			}
+#			hidden_effect = {
+#		#		if = {
+#		#			limit = {
+#		#		#		NOT = {
+#		#		#			has_country_flag = GMA_The_Officer
+#		#		#			has_country_flag = GMA_The_Fool
+#		#		#			has_country_flag = GMA_The_Son
+#		#		#		}
+#		#			}
+#		#			country_event = {
+#		#		#		id = gma.57
+#		#		#		days = 1
+#		#			}
+#		#		}
+#			}
+#		}
+#	}
+#	GMA_Recommend_Frontline_Removal = {
+#		allowed = {
+#			tag = GMA
+#		}
+#		visible = {
+#			has_country_flag = GMA_Ted_has_Cancer_Mechanic_FLAG
+#		}
+#		available = {
+#			has_country_flag = GMA_Ted_has_Cancer_Mechanic_FLAG
+#		}
+#		days_remove = 20
+#		cost = 150
+#		is_good = yes
+#		selectable_mission = yes
+#		fire_only_once = yes
+#		complete_effect = {
+#		}
+#		remove_effect = {
+#			add_days_mission_timeout = {
+#		#		mission = GMA_Ted_Kaczynski_Death_Countdown
+#		#		days = 50
+#			}
+#			GMA_Ted_Kaczynski_char = {
+#		#		remove_unit_leader_role = yes
+#			}
+#			GMA_Ashton_Knight_Char = {
+#		#		promote_leader = yes
+#			}
+#			add_war_support = -0.08
+#		}
+#	}
+#	GMA_Red_Stamp_Doctor_Notes = {
+#		allowed = {
+#			tag = GMA
+#		}
+#		visible = {
+#			has_country_flag = GMA_Ted_has_Cancer_Mechanic_FLAG
+#		}
+#		available = {
+#			has_country_flag = GMA_Ted_has_Cancer_Mechanic_FLAG
+#		}
+#		days_remove = 5
+#		cost = 25
+#		days_re_enable = 30
+#		is_good = no
+#		selectable_mission = yes
+#		complete_effect = {
+#		}
+#		remove_effect = {
+#			add_days_mission_timeout = {
+#		#		mission = GMA_Ted_Kaczynski_Death_Countdown
+#		#		days = -40
+#			}
+#			add_stability = 0.1
+#		}
+#	}
+#	GMA_Increase_Doctor_Visits = {
+#		allowed = {
+#			tag = GMA
+#		}
+#		visible = {
+#			has_country_flag = GMA_Ted_has_Cancer_Mechanic_FLAG
+#		}
+#		available = {
+#			has_country_flag = GMA_Ted_has_Cancer_Mechanic_FLAG
+#		}
+#		days_remove = 25
+#		cost = 75
+#		is_good = yes
+#		selectable_mission = yes
+#		fire_only_once = yes
+#		complete_effect = {
+#		}
+#		remove_effect = {
+#			add_days_mission_timeout = {
+#		#		mission = GMA_Ted_Kaczynski_Death_Countdown
+#		#		days = 10
+#			}
+#			add_stability = -0.05
+#		}
+#	}
+#	GMA_Declare_a_Successor = {
+#		allowed = {
+#			tag = GMA
+#		}
+#		visible = {
+#			has_country_flag = GMA_Ted_has_Cancer_Mechanic_FLAG
+#		}
+#		available = {
+#			has_country_flag = GMA_Ted_has_Cancer_Mechanic_FLAG
+#		}
+#		days_remove = 10
+#		cost = 10
+#		is_good = yes
+#		selectable_mission = yes
+#		fire_only_once = yes
+#		complete_effect = {
+#		}
+#		remove_effect = {
+#			country_event = {
+#		#		id = gma.55
+#		#		days = 1
+#			}
+#			add_stability = 0.05
+#		}
+#	}
+#}	
+
+#GMA_cultural_revolution_cat = {
+#	GMA_Demolish_Wall_Street = {
+#		allowed = {
+#			tag = GMA
+#		}
+#		visible = {
+#			tag = GMA
+#		}
+#		available = {
+#			has_full_control_of_state = 918
+#		}
+#		days_remove = 80
+#		cost = 150
+#		is_good = yes
+#		selectable_mission = yes
+#		fire_only_once = yes
+#		remove_effect = {
+#		}
+#	}
+#	GMA_Recruit_College_Reactionaries = {
+#		allowed = {
+#			tag = GMA
+#		}
+#		visible = {
+#			tag = GMA
+#		}
+#		available = {
+#		}
+#		cost = 100
+#		is_good = yes
+#		selectable_mission = yes
+#		fire_only_once = yes
+#		complete_effect = {
+#			load_oob = "GMA_College_Environmentalists"
+#		}
+#	}
+#	GMA_Hand_out_Accredited_Literature = {
+#		allowed = {
+#			tag = GMA
+#		}
+#		visible = {
+#			tag = GMA
+#		}
+#		available = {
+#		}
+#		days_remove = 12
+#		custom_cost_text = dx_more_than_100B
+#		custom_cost_trigger = {
+#			check_variable = {
+#		#		var = income_var
+#		#		value = 0.1
+#			}
+#		}
+#		is_good = yes
+#		selectable_mission = yes
+#		complete_effect = {
+#			if = {
+#		#		limit = {
+#		#			has_completed_focus = GMA_call_of_the_wild
+#		#		}
+#		#		add_popularity = {
+#		#			ideology = nationalist
+#		#			popularity = 0.04
+#		#		}
+#			}
+#			if = {
+#		#		limit = {
+#		#			has_country_leader = {
+#		#		#		character = GMA_Miriam_Simos_char
+#		#		#		ruling_only = yes
+#		#			}
+#		#		}
+#		#		add_popularity = {
+#		#			ideology = libertarian_socialist
+#		#			popularity = 0.04
+#		#		}
+#			}
+#			if = {
+#		#		limit = {
+#		#			NOT = {
+#		#		#		has_completed_focus = GMA_year_zero
+#		#		#		has_completed_focus = GMA_embrace_guru_culture
+#		#			}
+#		#		}
+#		#		add_popularity = {
+#		#			ideology = libertarian_socialist
+#		#			popularity = 0.02
+#		#		}
+#		#		add_popularity = {
+#		#			ideology = nationalist
+#		#			popularity = 0.02
+#		#		}
+#			}
+#		}
+#	}
+#	GMA_Ban_Reactionary_Media = {
+#		allowed = {
+#			tag = GMA
+#		}
+#		visible = {
+#			tag = GMA
+#		}
+#		available = {
+#		}
+#		cost = 80
+#		fire_only_once = yes
+#		complete_effect = {
+#			add_stability = 0.1
+#		}
+#	}
+#}	
+
+GMA_American_Reunification_cat = {
+	GMA_reunify_america_decision = {
+		icon = USA_american_reunification
+		cancel_if_not_visible = yes
+		cost = 0
+		allowed = {
+			original_tag = GMA
+		}
+		visible = {
+		}
+		available = {
+			USA_has_states_secured = yes
+			USA_has_militias_secured = yes
+			USA_has_gangs_secured = yes
+			USA_has_separatists_secured = yes
+			USA_has_rivals_secured = yes
+		}
+		ai_will_do = {
+			factor = 100
+		}
+		fire_only_once = yes
+		complete_effect = {
+			country_event = {
+				id = gma.72
+			}
+		}
+		remove_effect = {
+		}
+	}
+	GMA_attack_FROM_decision = {
+		icon = generic_prepare_civil_war
+		war_with_target_on_remove = yes
+		fire_only_once = no
+		days_remove = 14
+		allowed = {
+			original_tag = GMA
+		}
+		visible = {
+		}
+		target_root_trigger = {
+			has_completed_focus = GMA_Operation_Skewered_Eagle
+		}
+		target_trigger = {
+			FROM = {
+				NOT = {
+					has_war_with = ROOT
+					is_in_faction_with = GMA
+				}
+				OR = {
+					USA_is_militia_tag = yes
+					USA_is_rival_tag = yes
+					USA_is_separatist_tag = yes
+					USA_is_gang_tag = yes
+					USA_is_state_tag = yes
+				}
+			}
+		}
+		available = {
+			NOT = {
+				has_country_flag = war_justification_flag
+			}
+			OR = {
+				any_controlled_state = {
+					any_neighbor_state = {
+						is_controlled_by = FROM
+					}
+				}
+				FROM = {
+					has_capitulated = yes
+				}
+			}
+		}
+		ai_will_do = {
+			factor = 100
+		}
+		complete_effect = {
+			set_country_flag = {
+				flag = war_justification_flag
+				days = 14
+				value = 1
+			}
+		}
+		remove_effect = {
+			war_with_FROM = yes
+		}
+	}
+}	
+
+#GMA_Minutemen_cat = {
+#	GMA_Raise_the_Minutemen = {
+#		allowed = {
+#			tag = GMA
+#		}
+#		available = {
+#			has_country_flag = GMA_Ready_Minutemen_flag
+#			has_war = yes
+#			NOT = {
+#		#		has_country_flag = GMA_Minutemen_Raised_flag
+#			}
+#		}
+#		visible = {
+#			has_country_flag = GMA_Ready_Minutemen_flag
+#			NOT = {
+#		#		has_country_flag = GMA_Minutemen_Raised_flag
+#			}
+#		}
+#		cost = 50
+#		is_good = yes
+#		selectable_mission = yes
+#		complete_effect = {
+#			set_country_flag = GMA_Minutemen_Raised_flag
+#			If = {
+#		#		limit = {
+#		#			has_country_flag = GMA_Standard_Minutemen_flag
+#		#			NOT = {
+#		#		#		has_country_flag = GMA_Revolutionary_Minutemen_flag
+#		#			}
+#		#		}
+#		#		load_oob = "GMA_Minutemen_oob"
+#		#		add_ideas = GMA_Minutemen_Raised_idea
+#			}
+#			If = {
+#		#		limit = {
+#		#			has_country_flag = GMA_Revolutionary_Minutemen_flag
+#		#			NOT = {
+#		#		#		has_country_flag = GMA_Swiss_Standard_flag
+#		#			}
+#		#		}
+#		#		load_oob = "GMA_Minutemen_Revolutionary_oob"
+#		#		add_ideas = GMA_Minutemen_Raised_idea
+#			}
+#			If = {
+#		#		limit = {
+#		#			has_country_flag = GMA_Revolutionary_Minutemen_flag
+#		#			has_country_flag = GMA_Swiss_Standard_flag
+#		#			NOT = {
+#		#		#		has_completed_focus = GMA_Decrease_Regimental_Bureaucracy
+#		#			}
+#		#		}
+#		#		load_oob = "GMA_Minutemen_Revolutionary_oob"
+#		#		add_ideas = GMA_Minutemen_Raised_cheaper_idea
+#			}
+#			If = {
+#		#		limit = {
+#		#			has_country_flag = GMA_Revolutionary_Minutemen_flag
+#		#			has_country_flag = GMA_Swiss_Standard_flag
+#		#			has_completed_focus = GMA_Decrease_Regimental_Bureaucracy
+#		#		}
+#		#		load_oob = "GMA_Minutemen_Revolutionary_Max_oob"
+#		#		add_ideas = GMA_Minutemen_Raised_cheapest_idea
+#			}
+#		}
+#	}
+#	GMA_Demobilize_the_Minutemen = {
+#		allowed = {
+#			tag = GMA
+#		}
+#		available = {
+#			has_country_flag = GMA_Ready_Minutemen_flag
+#			has_war = yes
+#		}
+#		visible = {
+#			has_country_flag = GMA_Minutemen_Raised_flag
+#		}
+#		cost = 10
+#		days_remove = 20
+#		is_good = yes
+#		selectable_mission = yes
+#		modifier = {
+#			weekly_manpower = 1000
+#		}
+#		remove_effect = {
+#			clr_country_flag = GMA_Minutemen_Raised_flag
+#			If = {
+#		#		limit = {
+#		#			has_country_flag = GMA_Standard_Minutemen_flag
+#		#			NOT = {
+#		#		#		has_country_flag = GMA_Revolutionary_Minutemen_flag
+#		#			}
+#		#		}
+#		#		delete_unit_template_and_units = {
+#		#			division_template = "Minutemen Militia Division"
+#		#			disband = yes
+#		#		}
+#		#		remove_ideas = GMA_Minutemen_Raised_idea
+#		#		hidden_effect = {
+#		#			delete_unit_template_and_units = {
+#		#		#		division_template = "Minutemen Militia Division 2"
+#		#		#		disband = yes
+#		#			}
+#		#			delete_unit_template_and_units = {
+#		#		#		division_template = "Minutemen Militia Division 3"
+#		#		#		disband = yes
+#		#			}
+#		#			delete_unit_template_and_units = {
+#		#		#		division_template = "Minutemen Militia Division 4"
+#		#		#		disband = yes
+#		#			}
+#		#		}
+#			}
+#			If = {
+#		#		limit = {
+#		#			has_country_flag = GMA_Revolutionary_Minutemen_flag
+#		#			NOT = {
+#		#		#		has_country_flag = GMA_Swiss_Standard_flag
+#		#			}
+#		#		}
+#		#		delete_unit_template_and_units = {
+#		#			division_template = "Minutemen Militia Division"
+#		#			disband = yes
+#		#		}
+#		#		remove_ideas = GMA_Minutemen_Raised_idea
+#			}
+#			If = {
+#		#		limit = {
+#		#			has_country_flag = GMA_Revolutionary_Minutemen_flag
+#		#			has_country_flag = GMA_Swiss_Standard_flag
+#		#			not = {
+#		#		#		has_completed_focus = GMA_Decrease_Regimental_Bureaucracy
+#		#			}
+#		#		}
+#		#		delete_unit_template_and_units = {
+#		#			division_template = "Minutemen Militia Division"
+#		#			disband = yes
+#		#		}
+#		#		remove_ideas = GMA_Minutemen_Raised_cheaper_idea
+#		#		hidden_effect = {
+#		#			delete_unit_template_and_units = {
+#		#		#		division_template = "Minutemen Militia Division 2"
+#		#		#		disband = yes
+#		#			}
+#		#			delete_unit_template_and_units = {
+#		#		#		division_template = "Minutemen Militia Division 3"
+#		#		#		disband = yes
+#		#			}
+#		#			delete_unit_template_and_units = {
+#		#		#		division_template = "Minutemen Militia Division 4"
+#		#		#		disband = yes
+#		#			}
+#		#		}
+#			}
+#			If = {
+#		#		limit = {
+#		#			has_country_flag = GMA_Revolutionary_Minutemen_flag
+#		#			has_country_flag = GMA_Swiss_Standard_flag
+#		#			has_completed_focus = GMA_Decrease_Regimental_Bureaucracy
+#		#		}
+#		#		delete_unit_template_and_units = {
+#		#			division_template = "Minutemen Militia Division"
+#		#			disband = yes
+#		#		}
+#		#		remove_ideas = GMA_Minutemen_Raised_cheapest_idea
+#		#		hidden_effect = {
+#		#			delete_unit_template_and_units = {
+#		#		#		division_template = "Minutemen Militia Division 2"
+#		#		#		disband = yes
+#		#			}
+#		#			delete_unit_template_and_units = {
+#		#		#		division_template = "Minutemen Militia Division 3"
+#		#		#		disband = yes
+#		#			}
+#		#			delete_unit_template_and_units = {
+#		#		#		division_template = "Minutemen Militia Division 4"
+#		#		#		disband = yes
+#		#			}
+#		#		}
+#			}
+#		}
+#	}
+#}	
+
+#GMA_Manifesto_cat = {
+#	GMA_Teach_Against_Political_Correctness = {
+#		allowed = {
+#			tag = GMA
+#		}
+#		available = {
+#			has_country_flag = GMA_Manifesto_Decisions_flag
+#		}
+#		visible = {
+#			has_country_flag = GMA_Manifesto_Decisions_flag
+#		}
+#		fire_only_once = yes
+#		cost = 50
+#		is_good = yes
+#		selectable_mission = yes
+#		complete_effect = {
+#		}
+#	}
+#	GMA_Strip_Privilaged_Groups = {
+#		allowed = {
+#			tag = GMA
+#		}
+#		available = {
+#			has_country_flag = GMA_Manifesto_Decisions_flag
+#		}
+#		visible = {
+#			has_country_flag = GMA_Manifesto_Decisions_flag
+#		}
+#		fire_only_once = yes
+#		cost = 50
+#		is_good = yes
+#		selectable_mission = yes
+#		complete_effect = {
+#		}
+#	}
+#	GMA_Hang_Abusers = {
+#		allowed = {
+#			tag = GMA
+#		}
+#		available = {
+#			has_country_flag = GMA_Manifesto_Decisions_flag
+#		}
+#		visible = {
+#			has_country_flag = GMA_Manifesto_Decisions_flag
+#		}
+#		fire_only_once = yes
+#		cost = 50
+#		is_good = yes
+#		selectable_mission = yes
+#		complete_effect = {
+#		}
+#	}
+#	GMA_Reintroduce_Man_to_Nature = {
+#		allowed = {
+#			tag = GMA
+#		}
+#		available = {
+#			has_country_flag = GMA_Manifesto_Decisions_flag
+#		}
+#		visible = {
+#			has_country_flag = GMA_Manifesto_Decisions_flag
+#		}
+#		fire_only_once = yes
+#		cost = 50
+#		is_good = yes
+#		selectable_mission = yes
+#		complete_effect = {
+#		}
+#	}
+#	GMA_Crusade_against_Aristocratic_Decadence = {
+#		allowed = {
+#			tag = GMA
+#		}
+#		available = {
+#			has_country_flag = GMA_Manifesto_Decisions_flag
+#		}
+#		visible = {
+#			has_country_flag = GMA_Manifesto_Decisions_flag
+#		}
+#		fire_only_once = yes
+#		cost = 50
+#		is_good = yes
+#		selectable_mission = yes
+#		complete_effect = {
+#		}
+#	}
+#	GMA_Deprive_the_Four_Neccesities = {
+#		allowed = {
+#			tag = GMA
+#		}
+#		available = {
+#			has_country_flag = GMA_Manifesto_Decisions_flag
+#			has_country_flag = GMA_Simplistic_Policies_flag
+#		}
+#		visible = {
+#			has_country_flag = GMA_Manifesto_Decisions_flag
+#			has_country_flag = GMA_Simplistic_Policies_flag
+#		}
+#		fire_only_once = yes
+#		cost = 50
+#		is_good = yes
+#		selectable_mission = yes
+#		complete_effect = {
+#		}
+#	}
+#	GMA_Repress_Surrogate_Activities = {
+#		allowed = {
+#			tag = GMA
+#		}
+#		available = {
+#			has_country_flag = GMA_Manifesto_Decisions_flag
+#			has_country_flag = GMA_Simplistic_Policies_flag
+#		}
+#		visible = {
+#			has_country_flag = GMA_Manifesto_Decisions_flag
+#			has_country_flag = GMA_Simplistic_Policies_flag
+#		}
+#		fire_only_once = yes
+#		cost = 50
+#		is_good = yes
+#		selectable_mission = yes
+#		complete_effect = {
+#		}
+#	}
+#	GMA_Cultivate_Small_Societies = {
+#		allowed = {
+#			tag = GMA
+#		}
+#		available = {
+#			has_country_flag = GMA_Manifesto_Decisions_flag
+#			has_country_flag = GMA_Simplistic_Policies_flag
+#		}
+#		visible = {
+#			has_country_flag = GMA_Manifesto_Decisions_flag
+#			has_country_flag = GMA_Simplistic_Policies_flag
+#		}
+#		fire_only_once = yes
+#		cost = 50
+#		is_good = yes
+#		selectable_mission = yes
+#		complete_effect = {
+#		}
+#	}
+#	GMA_Revive_Truly_Traditional_Values = {
+#		allowed = {
+#			tag = GMA
+#		}
+#		available = {
+#			has_country_flag = GMA_Manifesto_Decisions_flag
+#			has_country_flag = GMA_Technophobia_flag
+#		}
+#		visible = {
+#			has_country_flag = GMA_Manifesto_Decisions_flag
+#			has_country_flag = GMA_Technophobia_flag
+#		}
+#		fire_only_once = yes
+#		cost = 50
+#		is_good = yes
+#		selectable_mission = yes
+#		complete_effect = {
+#		}
+#	}
+#	GMA_Strikedown_Advertisements = {
+#		allowed = {
+#			tag = GMA
+#		}
+#		available = {
+#			has_country_flag = GMA_Manifesto_Decisions_flag
+#			has_country_flag = GMA_Technophobia_flag
+#		}
+#		visible = {
+#			has_country_flag = GMA_Manifesto_Decisions_flag
+#			has_country_flag = GMA_Technophobia_flag
+#		}
+#		fire_only_once = yes
+#		cost = 50
+#		is_good = yes
+#		selectable_mission = yes
+#		complete_effect = {
+#		}
+#	}
+#	GMA_The_Myth_of_Human_Benefit = {
+#		allowed = {
+#			tag = GMA
+#		}
+#		available = {
+#			has_country_flag = GMA_Manifesto_Decisions_flag
+#			has_country_flag = GMA_Technophobia_flag
+#		}
+#		visible = {
+#			has_country_flag = GMA_Manifesto_Decisions_flag
+#			has_country_flag = GMA_Technophobia_flag
+#		}
+#		fire_only_once = yes
+#		cost = 50
+#		is_good = yes
+#		selectable_mission = yes
+#		complete_effect = {
+#		}
+#	}
+#}	
+
+#GMA_Organic_Cities_cat = {
+#	GMA_NYC_Increase_TS_No_Drive_Zone = {
+#		allowed = {
+#			tag = GMA
+#		}
+#		available = {
+#			has_country_flag = GMA_Org_Cities_Flag
+#		}
+#		visible = {
+#			has_country_flag = GMA_Org_Cities_Flag
+#		}
+#		fire_only_once = yes
+#		cost = 50
+#		is_good = yes
+#		selectable_mission = yes
+#		complete_effect = {
+#		}
+#	}
+#	GMA_NYC_Expand_Central_Park = {
+#		allowed = {
+#			tag = GMA
+#		}
+#		available = {
+#			has_country_flag = GMA_Org_Cities_Flag
+#		}
+#		visible = {
+#			has_country_flag = GMA_Org_Cities_Flag
+#		}
+#		fire_only_once = yes
+#		cost = 50
+#		is_good = yes
+#		selectable_mission = yes
+#		complete_effect = {
+#		}
+#	}
+#	GMA_AUSTIN_Implement_Air_Conditioning_Rations = {
+#		allowed = {
+#			tag = GMA
+#		}
+#		available = {
+#			has_country_flag = GMA_Org_Cities_Flag
+#		}
+#		visible = {
+#			has_country_flag = GMA_Org_Cities_Flag
+#		}
+#		fire_only_once = yes
+#		cost = 50
+#		is_good = yes
+#		selectable_mission = yes
+#		complete_effect = {
+#		}
+#	}
+#	GMA_AUSTIN_Expand_Webberville_Solar_Farm = {
+#		allowed = {
+#			tag = GMA
+#		}
+#		available = {
+#			has_country_flag = GMA_Org_Cities_Flag
+#		}
+#		visible = {
+#			has_country_flag = GMA_Org_Cities_Flag
+#		}
+#		fire_only_once = yes
+#		cost = 50
+#		is_good = yes
+#		selectable_mission = yes
+#		complete_effect = {
+#		}
+#	}
+#	GMA_LA_Simplify_Roadways = {
+#		allowed = {
+#			tag = GMA
+#		}
+#		available = {
+#			has_country_flag = GMA_Org_Cities_Flag
+#		}
+#		visible = {
+#			has_country_flag = GMA_Org_Cities_Flag
+#		}
+#		fire_only_once = yes
+#		cost = 50
+#		is_good = yes
+#		selectable_mission = yes
+#		complete_effect = {
+#		}
+#	}
+#	GMA_LA_Increase_Walkability = {
+#		allowed = {
+#			tag = GMA
+#		}
+#		available = {
+#			has_country_flag = GMA_Org_Cities_Flag
+#		}
+#		visible = {
+#			has_country_flag = GMA_Org_Cities_Flag
+#		}
+#		fire_only_once = yes
+#		cost = 50
+#		is_good = yes
+#		selectable_mission = yes
+#		complete_effect = {
+#		}
+#	}
+#	GMA_NATIONAL_Mandate_Efficient_Lightbulbs = {
+#		allowed = {
+#			tag = GMA
+#		}
+#		available = {
+#			has_country_flag = GMA_Org_Cities_Flag
+#		}
+#		visible = {
+#			has_country_flag = GMA_Org_Cities_Flag
+#		}
+#		fire_only_once = yes
+#		cost = 50
+#		is_good = yes
+#		selectable_mission = yes
+#		complete_effect = {
+#		}
+#	}
+#	GMA_NATIONAL_Ban_Single_Use_Items = {
+#		allowed = {
+#			tag = GMA
+#		}
+#		available = {
+#			has_country_flag = GMA_Org_Cities_Flag
+#		}
+#		visible = {
+#			has_country_flag = GMA_Org_Cities_Flag
+#		}
+#		fire_only_once = yes
+#		cost = 50
+#		is_good = yes
+#		selectable_mission = yes
+#		complete_effect = {
+#		}
+#	}
+#	GMA_NATIONAL_Replace_Toxic_Cleaning_Products = {
+#		allowed = {
+#			tag = GMA
+#		}
+#		available = {
+#			has_country_flag = GMA_Org_Cities_Flag
+#		}
+#		visible = {
+#			has_country_flag = GMA_Org_Cities_Flag
+#		}
+#		fire_only_once = yes
+#		cost = 50
+#		is_good = yes
+#		selectable_mission = yes
+#		complete_effect = {
+#		}
+#	}
+#	GMA_NATIONAL_Lower_Portion_Sizes = {
+#		allowed = {
+#			tag = GMA
+#		}
+#		available = {
+#			has_country_flag = GMA_Org_Cities_Flag
+#		}
+#		visible = {
+#			has_country_flag = GMA_Org_Cities_Flag
+#		}
+#		fire_only_once = yes
+#		cost = 50
+#		is_good = yes
+#		selectable_mission = yes
+#		complete_effect = {
+#		}
+#	}
+#	GMA_NATIONAL_Fund_Nationwide_Clean_Energy = {
+#		allowed = {
+#			tag = GMA
+#		}
+#		available = {
+#			has_country_flag = GMA_Org_Cities_Flag
+#		}
+#		visible = {
+#			has_country_flag = GMA_Org_Cities_Flag
+#		}
+#		fire_only_once = yes
+#		cost = 50
+#		is_good = yes
+#		selectable_mission = yes
+#		complete_effect = {
+#		}
+#	}
+#}	
+
+#GMA_Migration_Crisis_cat = {
+#	GMA_Rebirth_of_Border_Patrol = {
+#		allowed = {
+#			tag = GMA
+#		}
+#		available = {
+#			has_country_flag = GMA_Migrant_Crisis_flag
+#		}
+#		visible = {
+#			has_country_flag = GMA_Migrant_Crisis_flag
+#		}
+#		cost = 50
+#		is_good = yes
+#		fire_only_once = yes
+#		selectable_mission = yes
+#		complete_effect = {
+#		}
+#	}
+#	GMA_Plant_Migrant_Spies = {
+#		allowed = {
+#			tag = GMA
+#		}
+#		available = {
+#			has_country_flag = GMA_Migrant_Crisis_flag
+#		}
+#		visible = {
+#			has_country_flag = GMA_Migrant_Crisis_flag
+#		}
+#		cost = 50
+#		is_good = yes
+#		fire_only_once = yes
+#		selectable_mission = yes
+#		complete_effect = {
+#			add_ideas = GMA_Migrant_Spies
+#			set_country_flag = GMA_Migrant_Spies
+#		}
+#	}
+#}	

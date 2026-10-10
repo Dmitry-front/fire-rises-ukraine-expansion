@@ -1,0 +1,17 @@
+AZR_nagorno_karabakh = {
+	icon = GFX_decision_category_military_operation
+	visible_when_empty = yes
+	priority = 5
+
+	allowed = {
+		OR = {
+			tag = AZR
+			tag = ARM
+			tag = NGK
+			tag = TUR
+		}
+		NOT = {
+			has_global_flag = AZR_nagorno_captured
+		}
+	}
+}

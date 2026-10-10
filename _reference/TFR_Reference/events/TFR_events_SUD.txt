@@ -1,0 +1,187 @@
+﻿	add_namespace = sudan
+
+	#Lol get couped civilian government!!!!!
+	country_event = {
+		id = sudan.1
+		title = sudan.1.t
+		desc = sudan.1.d
+		picture = GFX_Sudan_coup
+		
+		is_triggered_only = yes
+		fire_only_once = yes
+		
+		trigger = {
+			tag = SUD
+		}
+		
+		immediate = {
+			hidden_effect = {
+				set_politics = {	
+					ruling_party = authoritarian_democrat
+					last_election = "2017.9.23"
+					election_frequency = 36
+					elections_allowed = no
+				}
+				add_popularity = {
+					ideology = authoritarian_democrat
+					popularity = 0.4
+				}
+			}
+		}
+		
+		option = {
+			name = sudan.1.a
+			effect_tooltip = {
+				set_politics = {	
+					ruling_party = authoritarian_democrat
+					last_election = "2017.9.23"
+					election_frequency = 36
+					elections_allowed = no
+				}			
+			}
+		}
+	}
+
+	#Darfur Uprising
+	country_event = {
+		id = sudan.2
+		title = sudan.2.t
+		desc = sudan.2.d
+		picture = GFX_Sudan_coup
+		
+		is_triggered_only = yes
+		fire_only_once = yes
+		
+		trigger = {
+			tag = SUD
+		}
+		
+		immediate = {
+			hidden_effect = {
+				SAO = { add_state_core = 761 }
+				SAO = { transfer_state = 761 }
+				SAO = {
+					load_oob = "SAO_2020"
+				}
+				SAO = {
+					declare_war_on = { 
+						target = SUD
+						type = civil_war 
+					}
+				}
+				SAO = {
+					declare_war_on = { 
+						target = RSF
+						type = civil_war 
+					}
+				}
+			}
+		}
+		
+		option = {
+			name = sudan.2.a
+			effect_tooltip = {
+				declare_war_on = { 
+					target = SAO
+					type = civil_war 
+				}		
+			}
+		}
+	}
+
+	#RSF Uprising
+	country_event = {
+		id = sudan.3
+		title = sudan.3.t
+		desc = sudan.3.desc
+		picture = GFX_Sudan_coup
+
+		is_triggered_only = yes
+
+		trigger = {
+			tag = SUD
+		}
+		
+		immediate = {
+			hidden_effect = {
+			}
+		}
+
+		option = {
+			name = sudan.3.a
+			RSF = {
+				add_state_core = 761
+				add_state_core = 549
+				add_state_core = 1346
+				add_state_core = 1347
+				add_state_core = 1350
+				add_state_core = 1349
+				add_state_core = 551
+				add_state_core = 1294
+				transfer_state = 761
+				transfer_state = 549
+				declare_war_on = { 
+					target = SUD
+					type = civil_war 
+				}
+				load_oob = "RSF_2020"
+			}
+			SUD = {
+				transfer_units_fraction= {
+					target = RSF
+					size = 0.2
+					stockpile_ratio = 0.03
+					army_ratio = 0.3
+					navy_ratio = 0.0
+					air_ratio = 0.0
+				}
+			}
+		}
+	}
+	
+	#RSF Unifies Sudan
+	country_event = {
+		id = sudan.4
+		title = sudan.4.t
+		desc = sudan.4.desc
+		picture = GFX_Sudan_coup
+
+		fire_only_once = yes
+
+		trigger = {
+			tag = RSF
+			has_war = no
+			NOT = {
+				has_cosmetic_tag = RSF_united
+			}
+		}
+
+		option = {
+			name = sudan.4.a
+			RSF = {
+				set_cosmetic_tag = RSF_united
+			}
+		}
+	}
+
+	#South Sudan changes flag
+	country_event = {
+		id = sudan.5
+		title = sudan.5.t
+		desc = sudan.5.desc
+		picture = GFX_Sudan_coup
+
+		fire_only_once = yes
+
+		trigger = {
+			tag = SSD
+			date > 2023.08.23
+		}
+
+		option = {
+			name = sudan.5.a
+			SSD = {
+				set_cosmetic_tag = SSD_2023
+			}
+		}
+	}

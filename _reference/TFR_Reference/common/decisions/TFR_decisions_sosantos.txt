@@ -1,0 +1,84 @@
+
+GRO_decisions = {
+	GRO_recruit_more_gangsters = {
+		icon = GFX_SOV_decision_SOV_far_right_groups
+		allowed = {
+			tag = RGA
+		}
+		fire_only_once = no
+		complete_effect = {
+			hidden_effect = {
+				load_oob = LOS_Sosantos_2
+			}
+		}
+		days_re_enable = 7
+		cost = 15
+	}
+	GRO_Kill_Ballas = {
+		icon = GFX_SOV_decision_SOV_far_right_groups
+		allowed = {
+			tag = RGA
+		}
+		fire_only_once = no
+		complete_effect = {
+			add_manpower = -3000
+			add_stability = 0.05
+		}
+		days_re_enable = 7
+		cost = 15
+	}
+	GRO_call_russians_again = {
+		icon = GFX_SOV_decision_SOV_far_right_groups
+		allowed = {
+			tag = RGA
+		}
+		visible = {
+			NOT = {
+				has_country_flag = yakuza
+			}
+			has_completed_focus = GRO_quiet_and_standardly
+		}
+		fire_only_once = yes
+		complete_effect = {
+			country_event = mexico.1985
+		}
+	}
+	GRO_call_japanese_again = {
+		icon = GFX_decision_SOV_brics_economy_decision
+		allowed = {
+			tag = RGA
+		}
+		visible = {
+			NOT = {
+				has_country_flag = brat_dva
+			}
+			has_completed_focus = GRO_quiet_and_standardly
+		}
+		fire_only_once = yes
+		complete_effect = {
+			country_event = mexico.1986
+		}
+	}
+	
+	GRO_reunify_america_decision = {
+		icon = USA_american_reunification
+		allowed = {
+			tag = RGA
+		}
+		visible = {
+			has_completed_focus = GRO_green_sabre
+		}
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = GRO_unified_america
+				has_full_control_of_state = 359
+				has_full_control_of_state = 366
+				has_full_control_of_state = 979
+			}
+		}
+		fire_only_once = yes
+		complete_effect = {
+			news_event = mexico.3050
+		}
+	}
+}

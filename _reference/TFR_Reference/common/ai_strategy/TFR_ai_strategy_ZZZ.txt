@@ -1,0 +1,593 @@
+# Written by Hiddengearz, Improved by Bird, KyCb(rockon)
+# Intelligence Agency AI Strategies moved to intelligence_agency.txt --Bird
+# Default Unit Production
+default_army_production_strategy = {
+	allowed = {
+		NOT = {
+			original_tag = USA
+			original_tag = CHI
+			original_tag = SOV
+		}
+	}
+	enable = {
+		always = yes
+	}
+	abort_when_not_enabled = yes
+	ai_strategy = {
+		type = role_ratio
+		id = infantry
+		value = 0
+	}
+	ai_strategy = {
+		type = role_ratio
+		id = motorized
+		value = 20
+	}
+	ai_strategy = {
+		type = role_ratio
+		id = garrison
+		value = 1
+	}
+	ai_strategy = {
+		type = role_ratio
+		id = mechanized
+		value = 30
+	}
+	ai_strategy = {
+		type = role_ratio
+		id = armor
+		value = 30
+	}
+	ai_strategy = {
+		type = role_ratio
+		id = marines
+		value = 0
+	}
+	ai_strategy = {
+		type = role_ratio
+		id = mountaineers
+		value = 0
+	}
+}
+
+default_area_priority = {
+	enable = {
+		always = yes
+	}
+	abort_when_not_enabled = yes
+	ai_strategy = {
+		type = area_priority
+		id = europe
+		value = 50
+	}
+	ai_strategy = {
+		type = area_priority
+		id = north_america
+		value = 50
+	}
+	ai_strategy = {
+		type = area_priority
+		id = south_america
+		value = 50
+	}
+	ai_strategy = {
+		type = area_priority
+		id = asia
+		value = 50
+	}
+	ai_strategy = {
+		type = area_priority
+		id = middle_east
+		value = 50
+	}
+	ai_strategy = {
+		type = area_priority
+		id = africa
+		value = 50
+	}
+	ai_strategy = {
+		type = area_priority
+		id = pacific
+		value = 50
+	}
+	ai_strategy = {
+		type = area_priority
+		id = oceania
+		value = 50
+	}
+}
+
+default_AI_needs_to_live = {
+	enable = {
+		surrender_progress > 0.49
+	}
+	abort = {
+		surrender_progress < 0.5
+	}
+	ai_strategy = {
+		type = role_ratio
+		id = Infantry
+		value = 150
+	}
+	ai_strategy = {
+		type = build_army
+		id = Infantry
+		value = 150
+	}
+}
+
+focus_on_apc_mechanized = {
+	allowed = {
+		OR = {
+			tag = SOV
+			tag = USC
+			tag = USB
+			tag = APA
+			tag = PTF
+			tag = NSM
+			tag = ATW
+			tag = CAL
+			tag = TEX
+			tag = CAC
+			tag = BRN
+			tag = PRC
+			tag = JAP
+			tag = GER
+			tag = FRA
+			tag = ITA
+			tag = ENG
+			tag = FAF
+		}
+	}
+	enable = {
+		has_equipment = {
+			light_mechanized_equipment > 2000
+		}
+	}
+	abort = {
+		has_equipment = {
+			light_mechanized_equipment < 1000
+		}
+	}
+	ai_strategy = {
+		type = role_ratio
+		id = mechanized
+		value = 200
+	}
+	ai_strategy = {
+		type = build_army
+		id = mechanized
+		value = 100
+	}
+}
+
+focus_on_ifv_mechanized = {
+	allowed = {
+		OR = {
+			tag = SOV
+			tag = USC
+			tag = USB
+			tag = APA
+			tag = PTF
+			tag = NSM
+			tag = ATW
+			tag = CAL
+			tag = TEX
+			tag = CAC
+			tag = BRN
+			tag = PRC
+			tag = JAP
+			tag = GER
+			tag = FRA
+			tag = ITA
+			tag = ENG
+			tag = FAF
+		}
+	}
+	enable = {
+		has_equipment = {
+			light_tank_chassis > 2000
+		}
+	}
+	abort = {
+		has_equipment = {
+			light_tank_chassis < 1000
+		}
+	}
+	ai_strategy = {
+		type = role_ratio
+		id = mechanized
+		value = 200
+	}
+	ai_strategy = {
+		type = build_army
+		id = mechanized
+		value = 100
+	}
+}
+
+focus_on_armor = {
+	allowed = {
+		OR = {
+			tag = SOV
+			tag = USC
+			tag = USB
+			tag = APA
+			tag = PTF
+			tag = NSM
+			tag = ATW
+			tag = CAL
+			tag = TEX
+			tag = CAC
+			tag = BRN
+			tag = PRC
+			tag = JAP
+			tag = GER
+			tag = FRA
+			tag = ITA
+			tag = ENG
+			tag = FAF
+		}
+	}
+	enable = {
+		has_equipment = {
+			modern_tank_chassis > 1500
+		}
+	}
+	abort = {
+		has_equipment = {
+			modern_tank_chassis < 1000
+		}
+	}
+	ai_strategy = {
+		type = role_ratio
+		id = armor
+		value = 250
+	}
+	ai_strategy = {
+		type = build_army
+		id = armor
+		value = 100
+	}
+}
+
+DEFAULT_template_design = {
+	#Generic across the board. This is just upgrading
+	allowed = {
+		OR = {
+			tag = SOV
+			tag = USC
+			tag = USB
+			tag = APA
+			tag = PTF
+			tag = NSM
+			tag = ATW
+			tag = CAL
+			tag = TEX
+			tag = CAC
+			tag = BRN
+			tag = PRC
+			tag = JAP
+			tag = GER
+			tag = FRA
+			tag = ITA
+			tag = ENG
+			tag = FAF
+		}
+	}
+	enable = {
+		always = yes
+	}
+	abort_when_not_enabled = yes
+	ai_strategy = {
+		type = role_ratio
+		id = infantry
+		value = -2
+	}
+	ai_strategy = {
+		type = role_ratio
+		id = motorized
+		value = 2
+	}
+	ai_strategy = {
+		type = role_ratio
+		id = garrison
+		value = 100
+	}
+	ai_strategy = {
+		type = role_ratio
+		id = mechanized
+		value = 100
+	}
+	ai_strategy = {
+		type = role_ratio
+		id = armor
+		value = 100
+	}
+	ai_strategy = {
+		type = role_ratio
+		id = marines
+		value = 100
+	}
+	ai_strategy = {
+		type = role_ratio
+		id = mountaineers
+		value = 50
+	}
+}
+
+default_air_unit_production = {
+	allowed = {
+		OR = {
+			tag = SOV
+			tag = USC
+			tag = USB
+			tag = APA
+			tag = PTF
+			tag = NSM
+			tag = ATW
+			tag = CAL
+			tag = TEX
+			tag = CAC
+			tag = BRN
+			tag = PRC
+			tag = JAP
+			tag = GER
+			tag = FRA
+			tag = ITA
+			tag = ENG
+			tag = FAF
+		}
+		# Custom AI
+		NOT = {
+			original_tag = USA			#United States
+			original_tag = CHI
+		}
+	}
+	enable = {
+		always = yes
+	}
+	abort_when_not_enabled = yes
+	ai_strategy = {
+		type = unit_ratio
+		id = fighter
+		value = 100
+	}
+	ai_strategy = {
+		type = unit_ratio
+		id = cas
+		value = 40
+	}
+	ai_strategy = {
+		type = unit_ratio
+		id = tactical_bomber
+		value = 5
+	}
+	ai_strategy = {
+		type = unit_ratio
+		id = strategic_bomber
+		value = 5
+	}
+	ai_strategy = {
+		type = unit_ratio
+		id = naval_bomber
+		value = 25
+	}
+	ai_strategy = {
+		type = unit_ratio
+		id = scout_plane
+		value = 0
+	}
+}
+
+default_garrison_strategy = {
+	enable = {
+		always = yes
+	}
+	abort_when_not_enabled = yes
+	ai_strategy = {
+		type = garrison
+		value = 10
+	}
+	ai_strategy = {
+		type = garrison_reinforcement_priority
+		value = 10
+	}
+}
+
+default_pp_spend_amount = {
+	enable = {
+		always = yes
+	}
+	abort_when_not_enabled = yes
+	ai_strategy = {
+		type = pp_spend_amount
+		id = idea
+		value = 100
+	}
+	ai_strategy = {
+		type = pp_spend_amount
+		id = decision
+		value = 100
+	}
+}
+
+do_not_waste_pp_if_saving_for_manpower_laws = {
+	enable = {
+		manpower_per_military_factory < 5000
+		has_war = yes
+	}
+	abort = {
+		OR = {
+			manpower_per_military_factory > 500
+			has_war = no
+		}
+	}
+	ai_strategy = {
+		type = pp_spend_priority
+		id = relation
+		value = -9999
+	}
+	ai_strategy = {
+		type = pp_spend_priority
+		id = guarantee
+		value = -9999
+	}
+	ai_strategy = {
+		type = pp_spend_priority
+		id = decision
+		value = -9999
+	}
+}
+
+ask_foreign_manpower_as_major = {
+	enable = {
+		is_major = yes
+		garrison_manpower_need > 200000
+	}
+	abort = {
+		garrison_manpower_need < 100000
+	}
+	ai_strategy = {
+		type = asking_foreign_garrison
+		value = 100
+		# id = ITA # id is optionnal. If it is filled, the value will just apply for this country. If not, the value will apply for all countries.
+	}
+}
+
+# default_build_power_plant_when_filled_up_strategy = {
+# 	abort_when_not_enabled = yes
+# 	allowed = {
+# 		is_relavent_tag = yes
+# 	}
+# 	enable = {
+# 		has_tech = power_plants
+# 		has_war = no
+# 		any_controlled_state = {
+# 			is_core_of = ROOT
+# 			free_building_slots = {
+# 				building = industrial_complex
+# 				size < 2
+# 			}
+# 			free_building_slots = {
+# 				building = industrial_complex
+# 				size > 0
+# 			}
+# 		}
+# 	}
+# 	ai_strategy = {
+# 		type = building_target
+# 		id = power_plant
+# 		value = 30
+# 	}
+# }
+
+default_research_power_plants_strategy = {
+	abort_when_not_enabled = yes
+	allowed = {
+		is_relavent_tag = yes
+	}
+	enable = {
+		NOT = {
+			has_tech = power_plants
+			has_tech = power_plants1
+			has_tech = nuclear_reactors
+			has_tech = energy_farms
+		}
+	}
+	ai_strategy = {
+		type = research_tech
+		id = power_plants
+		value = 100
+	}
+	ai_strategy = {
+		type = research_tech
+		id = power_plants1
+		value = 100
+	}
+	ai_strategy = {
+		type = research_tech
+		id = nuclear_reactors
+		value = 100
+	}
+	ai_strategy = {
+		type = research_tech
+		id = energy_farms
+		value = 100
+	}
+}
+
+default_stockpile_less_early_game_strategy = {
+	allowed = {
+		is_relavent_tag = yes
+	}
+	enable = {
+		date < 2024.1.1
+	}
+	abort_when_not_enabled = yes
+	ai_strategy = {
+		type = equipment_stockpile_surplus_ratio
+		value = -20
+	}
+}
+
+default_division_upgrades_are_very_important_strategy = {
+	allowed = {
+		is_relavent_tag = yes
+	}
+	enable = {
+		has_war = yes
+	}
+	abort_when_not_enabled = yes
+	ai_strategy = {
+		type = land_xp_spend_priority
+		id = division_template
+		value = 100
+	}
+}
+
+default_template_design_low_factories_strategy = {
+	allowed = {
+		is_relavent_tag = yes
+		has_content_tag = no
+	}
+	enable = {
+		num_of_military_factories < 20
+	}
+	abort_when_not_enabled = yes
+	ai_strategy = {
+		type = template_prio
+		id = infantry
+		value = 50
+	}
+	ai_strategy = {
+		type = template_prio
+		id = medium_armor
+		value = -100
+	}
+	ai_strategy = {
+		type = template_prio
+		id = motorized
+		value = -100
+	}
+	ai_strategy = {
+		type = template_prio
+		id = mechanized
+		value = -100
+	}
+}
+
+default_ai_with_content_focus_on_decisions_instead_of_laws_strategy = {
+	allowed = {
+		has_content_tag = yes
+	}
+	enable = {
+		always = yes
+	}
+	abort_when_not_enabled = yes
+	ai_strategy = {
+		type = pp_spend_priority
+		id = decision
+		value = 100
+	}
+}

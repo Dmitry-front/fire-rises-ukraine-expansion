@@ -1,0 +1,2158 @@
+﻿add_namespace = italy
+add_namespace = vatican
+add_namespace = italy_ew_events
+
+country_event = { #Fascist Coup
+	id = italy.1
+	title = italy.1.t
+	desc = italy.1.d
+	picture = GFX_Stepan_Bandera
+	is_triggered_only = yes
+	immediate = {
+		hidden_effect = {
+			change_economy_type_chaostic = yes
+			change_government_type_military_dictatorship = yes
+			news_event = {
+				id = news.248
+			}
+			load_oob = ITA_second_nato
+			set_politics = {
+				ruling_party = nationalist
+				elections_allowed = no
+				last_election = "1935.12.17"
+				election_frequency = 48
+			}
+			set_popularities = {
+				fascist = 15
+				national_socialist = 25
+				authoritarian_democrat = 15
+				nationalist = 35
+				conservative = 10
+			}
+			end_ruling_party_wings = yes
+			leave_faction = yes
+			add_country_leader_role = {
+				character = ITA_Fascist_Council_char
+				promote_leader = yes
+				country_leader = {
+					ideology = military_junta
+					traits = {
+					}
+				}
+			}
+			set_temp_variable = {
+				coalition_partner_var_temp = token:fascist
+			}
+			add_to_coalition = yes
+			set_temp_variable = {
+				coalition_partner_var_temp = token:national_socialist
+			}
+			add_to_coalition = yes
+			clr_country_flag = head_of_gov_ui_enabled
+			country_event = {
+				id = italy.3
+				days = 20
+			}
+			set_cosmetic_tag = ITA_Social_Republic_Fascist
+			set_party_name = {
+				ideology = totalitarian_socialist
+				name = ITA_banned_party
+				long_name = ITA_banned_party
+			}
+			set_party_name = {
+				ideology = communist
+				name = ITA_banned_party
+				long_name = ITA_banned_party
+			}
+			set_party_name = {
+				ideology = libertarian_socialist
+				name = ITA_banned_party
+				long_name = ITA_banned_party
+			}
+			set_party_name = {
+				ideology = social_democrat
+				name = ITA_banned_party
+				long_name = ITA_banned_party
+			}
+			set_party_name = {
+				ideology = social_liberal
+				name = ITA_banned_party
+				long_name = ITA_banned_party
+			}
+			set_party_name = {
+				ideology = market_liberal
+				name = ITA_banned_party
+				long_name = ITA_banned_party
+			}
+			set_party_name = {
+				ideology = conservative
+				name = ITA_banned_party
+				long_name = ITA_banned_party
+			}
+			set_party_name = {
+				ideology = authoritarian_democrat
+				name = ITA_banned_party
+				long_name = ITA_banned_party
+			}
+			set_party_name = {
+				ideology = nationalist
+				name = ITA_esercito_fascista_party
+				long_name = ITA_esercito_fascista_party_long
+			}
+			set_party_name = {
+				ideology = fascist
+				name = ITA_pnf_party
+				long_name = ITA_pnf_party_long
+			}
+			set_party_name = {
+				ideology = national_socialist
+				name = ITA_pnf_party
+				long_name = ITA_pnf_party_long
+			}
+			add_ideas = ITA_antibolscevismo_idea
+			remove_ideas = {
+				ITA_italynomics_2_idea
+				ITA_italynomics_3_idea
+				ITA_italynomics_4_idea
+				ITA_stifling_administration_idea
+				ITA_growing_bipolarity_idea
+			}
+		}
+	}
+	option = {
+		name = italy.1.a
+	}
+}
+
+country_event = { #Communist Coup
+	id = italy.2
+	title = italy.2.t
+	desc = italy.2.d
+	picture = GFX_Stepan_Bandera
+	is_triggered_only = yes
+	immediate = {
+		hidden_effect = {
+			change_economy_type_chaostic = yes
+			change_government_type_revolutionary_front = yes
+			load_oob = ITA_second_nato
+			news_event = {
+				id = news.251
+			}
+			set_cosmetic_tag = ITA_left_revolution
+			set_politics = {
+				ruling_party = libertarian_socialist
+				elections_allowed = no
+				last_election = "1935.12.17"
+				election_frequency = 48
+			}
+			set_popularities = {
+				communist = 30
+				totalitarian_socialist = 20
+				libertarian_socialist = 30
+				social_democrat = 20
+			}
+			end_ruling_party_wings = yes
+			leave_faction = yes
+			add_country_leader_role = {
+				character = ITA_cgil_council_char
+				promote_leader = yes
+				country_leader = {
+					ideology = popular_front_socialism
+					traits = {
+					}
+				}
+			}
+			clr_country_flag = head_of_gov_ui_enabled
+			country_event = {
+				id = italy.7
+				days = 20
+			}
+			set_temp_variable = {
+				ruling_party_wing_var_temp = token:communist
+			}
+			add_ruling_party_wing = yes
+			set_temp_variable = {
+				ruling_party_wing_var_temp = token:totalitarian_socialist
+			}
+			add_ruling_party_wing = yes
+			add_ideas = ITA_siamo_tutti_antifascisti_idea
+			remove_ideas = {
+				ITA_italynomics_2_idea
+				ITA_italynomics_3_idea
+				ITA_italynomics_4_idea
+				ITA_stifling_administration_idea
+				ITA_growing_bipolarity_idea
+			}
+		}
+	}
+	option = {
+		name = italy.2.a
+	}
+}
+
+country_event = { #Future of Fascist Italy
+	id = italy.3
+	title = italy.3.t
+	desc = italy.3.d
+	picture = GFX_HOL_King_Death
+	is_triggered_only = yes
+	immediate = {
+		hidden_effect = {
+		}
+	}
+	option = { #I kinda like fascism
+		name = italy.3.a
+		ai_chance = {
+			base = 1
+			modifier = {
+				factor = 0
+				OR = {
+					has_game_rule = {
+						rule = The_Italy_Turn_Right
+						option = The_Italy_Turn_Right_Accelerationists
+					}
+					has_game_rule = {
+						rule = The_Italy_Turn_Right
+						option = The_Italy_Turn_Right_nazi_maoism
+					}
+				}
+			}
+		}
+		country_event = {
+			id = italy.4
+			days = 28
+		}
+		add_ideas = ITA_gran_consiglio_del_fascismo_idea
+	}
+	option = { #Faster! 
+		name = italy.3.b
+		ai_chance = {
+			base = 1
+			modifier = {
+				factor = 0
+				OR = {
+					has_game_rule = {
+						rule = The_Italy_Turn_Right
+						option = The_Italy_Turn_Right_Latinists
+					}
+					has_game_rule = {
+						rule = The_Italy_Turn_Right
+						option = The_Italy_Turn_Right_Forza_Nuova
+					}
+					has_game_rule = {
+						rule = The_Italy_Turn_Right
+						option = The_Italy_Turn_Right_CasaPound
+					}
+				}
+			}
+		}
+		change_government_type_nazi_dictatorship = yes
+		change_economy_type_command_economy = yes
+		end_ruling_party_wings = yes
+		set_politics = {
+			ruling_party = national_socialist
+			elections_allowed = no
+			last_election = "1935.12.17"
+			election_frequency = 48
+		}
+		add_popularity = {
+			ideology = national_socialist
+			popularity = 0.2
+		}
+		add_country_leader_role = {
+			character = ITA_maurizio_ammendola_char
+			promote_leader = yes
+			country_leader = {
+				ideology = accelerationist
+				traits = {
+				}
+			}
+		}
+		set_cosmetic_tag = ITA_hagal
+		set_party_name = {
+			ideology = nationalist
+			name = ITA_hagal_party_long
+			long_name = ITA_hagal_party_long
+		}
+		set_party_name = {
+			ideology = fascist
+			name = ITA_banned_party
+			long_name = ITA_banned_party
+		}
+		set_party_name = {
+			ideology = national_socialist
+			name = ITA_hagal_party_long
+			long_name = ITA_hagal_party_long
+		}
+		set_temp_variable = {
+			coalition_partner_var_temp = token:fascist
+		}
+		remove_from_coalition = yes
+		set_temp_variable = {
+			ruling_party_wing_var_temp = token:nationalist
+		}
+		add_ruling_party_wing = yes
+		country_event = {
+			id = italy.5
+			days = 28
+		}
+		add_ideas = ITA_white_order_of_italy_idea
+	}
+}
+
+country_event = { #Grand Council... 
+	id = italy.4
+	title = italy.4.t
+	desc = italy.4.d
+	picture = GFX_HOL_King_Death
+	is_triggered_only = yes
+	immediate = {
+		hidden_effect = {
+			end_coalition = yes
+		}
+	}
+	option = { #Forza Nuova
+		name = italy.4.a
+		ai_chance = {
+			base = 1
+			modifier = {
+				factor = 0
+				OR = {
+					has_game_rule = {
+						rule = The_Italy_Turn_Right
+						option = The_Italy_Turn_Right_CasaPound
+					}
+					has_game_rule = {
+						rule = The_Italy_Turn_Right
+						option = The_Italy_Turn_Right_Latinists
+					}
+				}
+			}
+		}
+		change_government_type_fascist_dictatorship = yes
+		change_economy_type_command_economy = yes
+		set_politics = {
+			ruling_party = fascist
+			elections_allowed = no
+			last_election = "1935.12.17"
+			election_frequency = 48
+		}
+		add_country_leader_role = {
+			character = ITA_Roberto_Fiore_char
+			promote_leader = yes
+			country_leader = {
+				ideology = clerical_fascism
+				traits = {
+				}
+			}
+		}
+		set_party_name = {
+			ideology = fascist
+			name = ITA_forza_nuova_party
+			long_name = ITA_forza_nuova_party_long
+		}
+		set_temp_variable = {
+			ruling_party_wing_var_temp = token:national_socialist
+		}
+		add_ruling_party_wing = yes
+	}
+	option = { #Capasound
+		name = italy.4.b
+		ai_chance = {
+			base = 1
+			modifier = {
+				factor = 0
+				OR = {
+					has_game_rule = {
+						rule = The_Italy_Turn_Right
+						option = The_Italy_Turn_Right_Forza_Nuova
+					}
+					has_game_rule = {
+						rule = The_Italy_Turn_Right
+						option = The_Italy_Turn_Right_Latinists
+					}
+				}
+			}
+		}
+		change_government_type_fascist_dictatorship = yes
+		change_economy_type_corporatism = yes
+		set_politics = {
+			ruling_party = fascist
+			elections_allowed = no
+			last_election = "1935.12.17"
+			election_frequency = 48
+		}
+		add_country_leader_role = {
+			character = ITA_Gianluca_Iannone
+			promote_leader = yes
+			country_leader = {
+				ideology = classical_fascism
+				traits = {
+				}
+			}
+		}
+		set_party_name = {
+			ideology = fascist
+			name = ITA_casapound_party
+			long_name = ITA_casapound_party_long
+		}
+		set_temp_variable = {
+			ruling_party_wing_var_temp = token:national_socialist
+		}
+		add_ruling_party_wing = yes
+	}
+	option = { #GenIde
+		name = italy.4.c
+		ai_chance = {
+			base = 1
+			modifier = {
+				factor = 0
+				OR = {
+					has_game_rule = {
+						rule = The_Italy_Turn_Right
+						option = The_Italy_Turn_Right_CasaPound
+					}
+					has_game_rule = {
+						rule = The_Italy_Turn_Right
+						option = The_Italy_Turn_Right_Forza_Nuova
+					}
+				}
+			}
+		}
+		change_government_type_fascist_dictatorship = yes
+		change_economy_type_command_economy = yes
+		set_politics = {
+			ruling_party = national_socialist
+			elections_allowed = no
+			last_election = "1935.12.17"
+			election_frequency = 48
+		}
+		add_country_leader_role = {
+			character = ITA_Lorenzo_Fiato
+			promote_leader = yes
+			country_leader = {
+				ideology = identitarianism
+				traits = {
+				}
+			}
+		}
+		set_party_name = {
+			ideology = national_socialist
+			name = ITA_idents_party
+			long_name = ITA_idents_party_long
+		}
+		set_temp_variable = {
+			ruling_party_wing_var_temp = token:fascist
+		}
+		add_ruling_party_wing = yes
+	}
+}
+
+country_event = { #Erm...
+	id = italy.5
+	title = italy.5.t
+	desc = italy.5.d
+	picture = GFX_HOL_King_Death
+	is_triggered_only = yes
+	immediate = {
+		hidden_effect = {
+		}
+	}
+	option = { #Yeah... 
+		name = italy.5.a
+		ai_chance = {
+			base = 1
+			modifier = {
+				factor = 0
+				OR = {
+					has_game_rule = {
+						rule = The_Italy_Turn_Right
+						option = The_Italy_Turn_Right_Accelerationists
+					}
+					has_game_rule = {
+						rule = The_Italy_Turn_Left
+						option = The_Italy_Turn_Left_Maoists
+					}
+				}
+			}
+		}
+		end_ruling_party_wings = yes
+		add_country_leader_role = {
+			character = ITA_franco_freda_char
+			promote_leader = yes
+			country_leader = {
+				ideology = national_bolshevism
+				traits = {
+				}
+			}
+		}
+		add_country_leader_role = {
+			character = ITA_franco_freda_char
+			promote_leader = yes
+			country_leader = {
+				ideology = social_fascism
+				traits = {
+				}
+			}
+		}
+		set_party_name = {
+			ideology = national_socialist
+			name = ITA_nazmao_party
+			long_name = ITA_nazmao_party_long
+		}	
+		set_party_name = {
+			ideology = totalitarian_socialist
+			name = ITA_nazmao_party
+			long_name = ITA_nazmao_party_long
+		}			
+		set_party_name = {
+			ideology = nationalist
+			name = ITA_nazmao_army
+			long_name = ITA_nazmao_army_long
+		}
+		if = {
+			limit = {
+				has_government = national_socialist
+			}
+			set_temp_variable = {
+				ruling_party_wing_var_temp = token:totalitarian_socialist
+			}
+			add_ruling_party_wing = yes
+		}	
+		if = {
+			limit = {
+				has_government = totalitarian_socialist
+			}
+			set_temp_variable = {
+				ruling_party_wing_var_temp = token:national_socialist
+			}
+			add_ruling_party_wing = yes
+		}	
+		set_cosmetic_tag = ITA_nazi_maoism_italy
+		change_government_type_revolutionary_front = yes
+		change_economy_type_command_economy = yes
+		remove_ideas = {
+			ITA_cult_of_scuderi_idea
+			ITA_siamo_tutti_antifascisti_idea
+			ITA_antibolscevismo_idea
+			ITA_white_order_of_italy_idea
+		}
+	}
+	option = { #No! 
+		name = italy.5.b
+		ai_chance = {
+			base = 1	
+			modifier = {
+				factor = 0
+				OR = {
+					has_game_rule = {
+						rule = The_Italy_Turn_Right
+						option = The_Italy_Turn_Right_Accelerationists
+					}
+					has_game_rule = {
+						rule = The_Italy_Turn_Left
+						option = The_Italy_Turn_Left_Maoists
+					}
+				}
+			}
+		}
+	}	
+}
+
+
+
+country_event = {
+	id = italy.6
+	title = italy.6.t
+	desc = italy.6.d
+	picture = GFX_HOL_King_Death
+	is_triggered_only = yes
+	immediate = {
+		hidden_effect = {
+		}
+	}
+	option = { #Social Programs <3 
+		name = italy.6.a
+		swap_ideas = {
+			remove_idea = ITA_italynomics_1_idea
+			add_idea = ITA_italynomics_2_idea
+		}				
+	}
+	option = { #Nothing Ever Happens 
+		name = italy.6.b
+		swap_ideas = {
+			remove_idea = ITA_italynomics_1_idea
+			add_idea = ITA_italynomics_3_idea
+		}				
+	}
+	option = { #Grr Industry 
+		name = italy.6.c
+		swap_ideas = {
+			remove_idea = ITA_italynomics_1_idea
+			add_idea = ITA_italynomics_4_idea
+		}				
+	}
+}
+
+country_event = { #Future of Communism right here
+	id = italy.7
+	title = italy.7.t
+	desc = italy.7.d
+	picture = GFX_HOL_King_Death
+	is_triggered_only = yes
+	immediate = {
+		hidden_effect = {
+			end_ruling_party_wings = yes
+		}
+	}
+	option = {
+		#Socialist Democracy, PCI/PSU
+		name = italy.7.a
+		ai_chance = {
+			base = 1
+			modifier = {
+				factor = 0
+				OR = {
+					has_game_rule = {
+						rule = The_Italy_Turn_Left
+						option = The_Italy_Turn_Left_Maoists
+					}
+					has_game_rule = {
+						rule = The_Italy_Turn_Left
+						option = The_Italy_Turn_Left_nazi_maoism
+					}
+				}
+			}
+		}
+		country_event = {
+			id = italy.8
+			days = 60
+		}
+		set_cosmetic_tag = ITA_socialist_republic
+		hidden_effect = {
+			change_government_type_socialist_republic = yes
+			add_country_leader_role = {
+				character = ITA_giuliano_granato_char
+				promote_leader = yes
+				country_leader = {
+					ideology = left_populism
+					traits = {
+					}
+				}
+			}
+			add_country_leader_role = {
+				character = ITA_oliviero_diliberto_char
+				promote_leader = yes
+				country_leader = {
+					ideology = marxism_leninism
+					traits = {
+					}
+				}
+			}
+			add_country_leader_role = {
+				character = ITA_oliviero_diliberto_char
+				promote_leader = yes
+				country_leader = {
+					ideology = totalism
+					traits = {
+					}
+				}
+			}
+			set_party_name = {
+				ideology = totalitarian_socialist
+				name = ITA_commiefar_party
+				long_name = ITA_commiefar_party_long
+			}
+			set_party_name = {
+				ideology = communist
+				name = ITA_commieclose_party
+				long_name = ITA_commieclose_party_long
+			}
+			set_party_name = {
+				ideology = libertarian_socialist
+				name = ITA_socfar_party
+				long_name = ITA_socfar_party_long
+			}
+			set_party_name = {
+				ideology = social_democrat
+				name = ITA_socclose_party
+				long_name = ITA_socclose_party_long
+			}
+			set_party_name = {
+				ideology = social_liberal
+				name = ITA_banned_party
+				long_name = ITA_banned_party
+			}
+			set_party_name = {
+				ideology = market_liberal
+				name = ITA_banned_party
+				long_name = ITA_banned_party
+			}
+			set_party_name = {
+				ideology = conservative
+				name = ITA_banned_party
+				long_name = ITA_banned_party
+			}
+			set_party_name = {
+				ideology = authoritarian_democrat
+				name = ITA_banned_party
+				long_name = ITA_banned_party
+			}
+			set_party_name = {
+				ideology = nationalist
+				name = ITA_esercito_popolare_party
+				long_name = ITA_esercito_popolare_party_long
+			}
+			set_party_name = {
+				ideology = fascist
+				name = ITA_banned_party
+				long_name = ITA_banned_party
+			}
+			set_party_name = {
+				ideology = national_socialist
+				name = ITA_banned_party
+				long_name = ITA_banned_party
+			}
+			add_ideas = ITA_the_republican_split_idea
+		}
+	}
+	option = {
+		#PMLI - Maoism
+		name = italy.7.b
+		ai_chance = {
+			base = 1
+			modifier = {
+				factor = 0
+				OR = {
+					has_game_rule = {
+						rule = The_Italy_Turn_Left
+						option = The_Italy_Turn_Left_Communists
+					}
+					has_game_rule = {
+						rule = The_Italy_Turn_Left
+						option = The_Italy_Turn_Left_Socialists
+					}
+				}
+			}
+		}
+		set_cosmetic_tag = ITA_pmli_state
+		hidden_effect = {
+			change_government_type_communist_party_state = yes
+			change_economy_type_planned_economy = yes
+			end_ruling_party_wings = yes
+			set_politics = {
+				ruling_party = totalitarian_socialist
+				elections_allowed = no
+				last_election = "1935.12.17"
+				election_frequency = 48
+			}
+			add_popularity = {
+				ideology = totalitarian_socialist
+				popularity = 0.2
+			}
+			add_country_leader_role = {
+				character = ITA_giovanni_scuderi_char
+				promote_leader = yes
+				country_leader = {
+					ideology = maoism
+					traits = {
+					}
+				}
+			}
+			country_event = {
+				id = italy.5
+				days = 28
+			}
+			set_party_name = {
+				ideology = totalitarian_socialist
+				name = ITA_totalitarian_socialist_party
+				long_name = ITA_totalitarian_socialist_party_long
+			}
+			set_party_name = {
+				ideology = communist
+				name = ITA_banned_party
+				long_name = ITA_banned_party
+			}
+			set_party_name = {
+				ideology = libertarian_socialist
+				name = ITA_banned_party
+				long_name = ITA_banned_party
+			}
+			set_party_name = {
+				ideology = social_democrat
+				name = ITA_banned_party
+				long_name = ITA_banned_party
+			}
+			set_party_name = {
+				ideology = social_liberal
+				name = ITA_banned_party
+				long_name = ITA_banned_party
+			}
+			set_party_name = {
+				ideology = market_liberal
+				name = ITA_banned_party
+				long_name = ITA_banned_party
+			}
+			set_party_name = {
+				ideology = conservative
+				name = ITA_banned_party
+				long_name = ITA_banned_party
+			}
+			set_party_name = {
+				ideology = authoritarian_democrat
+				name = ITA_banned_party
+				long_name = ITA_banned_party
+			}
+			set_party_name = {
+				ideology = nationalist
+				name = ITA_esercito_popolare_party
+				long_name = ITA_esercito_popolare_party_long
+			}
+			set_party_name = {
+				ideology = fascist
+				name = ITA_banned_party
+				long_name = ITA_banned_party
+			}
+			set_party_name = {
+				ideology = national_socialist
+				name = ITA_banned_party
+				long_name = ITA_banned_party
+			}
+			add_ideas = ITA_cult_of_scuderi_idea
+		}
+	}
+}
+
+country_event = { #Very variegated elections
+	id = italy.8
+	title = italy.8.t
+	desc = italy.8.d
+	picture = GFX_HOL_King_Death
+	is_triggered_only = yes
+	immediate = {
+		hidden_effect = {
+		}
+	}
+	option = {
+		#Socialists win!
+		name = italy.8.a
+		ai_chance = {
+			base = 1
+			modifier = {
+				factor = 0
+				OR = {
+					has_game_rule = {
+						rule = The_Italy_Turn_Left
+						option = The_Italy_Turn_Left_Communists
+					}
+				}
+			}
+		}
+		set_politics = {
+			ruling_party = libertarian_socialist
+			elections_allowed = yes
+			last_election = "1935.12.17"
+			election_frequency = 48
+		}
+		add_country_leader_role = {
+			character = ITA_giuliano_granato_char
+			promote_leader = yes
+			country_leader = {
+				ideology = post_leftism
+				traits = {
+				}
+			}
+		}
+		set_temp_variable = {
+			ruling_party_wing_var_temp = token:social_democrat
+		}
+		add_ruling_party_wing = yes
+		set_temp_variable = {
+			coalition_partner_var_temp = token:communist
+		}
+		add_to_coalition = yes
+		set_temp_variable = {
+			coalition_partner_var_temp = token:totalitarian_socialist
+		}
+		add_to_coalition = yes
+		change_economy_type_left_corporatism = yes
+		add_ideas = ITA_new_italian_socialism_idea
+	}
+	option = {
+		#Communists win!
+		name = italy.8.b
+		ai_chance = {
+			base = 1
+			modifier = {
+				factor = 0
+				OR = {
+					has_game_rule = {
+						rule = The_Italy_Turn_Left
+						option = The_Italy_Turn_Left_Socialists
+					}
+				}
+			}
+		}
+		set_politics = {
+			ruling_party = communist
+			elections_allowed = yes
+			last_election = "1935.12.17"
+			election_frequency = 48
+		}
+		set_temp_variable = {
+			ruling_party_wing_var_temp = token:totalitarian_socialist
+		}
+		add_ruling_party_wing = yes
+		set_temp_variable = {
+			coalition_partner_var_temp = token:social_democrat
+		}
+		add_to_coalition = yes
+		set_temp_variable = {
+			coalition_partner_var_temp = token:libertarian_socialist
+		}
+		add_to_coalition = yes
+		change_economy_type_planned_economy = yes
+		add_ideas = ITA_an_old_party_idea
+	}
+}
+
+country_event = { #2022 El
+	id = italy.10
+	title = italy.10.t
+	desc = italy.10.d
+	picture = GFX_generic_elections
+	is_triggered_only = yes
+	immediate = {
+		end_ruling_party_wings = yes
+		end_coalition = yes
+	}
+	option = {
+		#Meloni 
+		name = italy.10.a
+		ai_chance = {
+			factor = 1
+		}
+		add_ideas = ITA_Giorgia_Meloni_HM
+		swap_ideas = {
+			remove_idea = ITA_political_chaos_idea
+			add_idea = ITA_growing_bipolarity_idea
+		}	
+		set_popularities = {
+			nationalist = 10
+			authoritarian_democrat = 27
+			conservative = 10
+			market_liberal = 12
+			social_liberal = 17
+			social_democrat = 20
+			libertarian_socialist = 4
+		}
+		set_politics = {
+			ruling_party = authoritarian_democrat
+			last_election = "2022.9.25"
+			election_frequency = 60
+			elections_allowed = yes
+		}
+		set_temp_variable = {
+			coalition_partner_var_temp = token:nationalist
+		}
+		add_to_coalition = yes
+		set_temp_variable = {
+			coalition_partner_var_temp = token:conservative
+		}
+		add_to_coalition = yes
+		news_event = { id = news.677 hours = 5 }
+		country_event = {
+			id = italy.14
+			days = 130
+		}
+		country_event = {
+			id = italy.6
+			days = 260
+		}
+	}
+	option = {
+		#Elly
+		name = italy.10.b
+		ai_chance = {
+			factor = 1
+		}
+		add_ideas = ITA_Elly_Schlein_HM
+		swap_ideas = {
+			remove_idea = ITA_political_chaos_idea
+			add_idea = ITA_growing_bipolarity_idea
+		}	
+		set_popularities = {
+			nationalist = 6
+			authoritarian_democrat = 23
+			conservative = 7
+			market_liberal = 15
+			social_liberal = 17
+			social_democrat = 24
+			libertarian_socialist = 8
+		}
+		set_politics = {
+			ruling_party = social_democrat
+			last_election = "2022.9.25"
+			election_frequency = 60
+			elections_allowed = yes
+		}
+		set_temp_variable = {
+			coalition_partner_var_temp = token:market_liberal
+		}
+		add_to_coalition = yes
+		set_temp_variable = {
+			coalition_partner_var_temp = token:libertarian_socialist
+		}
+		add_to_coalition = yes
+		news_event = { id = news.678 hours = 5 }
+		country_event = {
+			id = italy.13
+			days = 130
+		}
+		country_event = {
+			id = italy.6
+			days = 260
+		}
+		set_party_name = {
+			ideology = market_liberal
+			name = ITA_left_liberals_party
+			long_name = ITA_left_liberals_party_long
+		}
+	}
+}
+
+country_event = { #Conte resign
+	id = italy.11
+	title = italy.11.t
+	desc = italy.11.d
+	picture = GFX_generic_media
+	is_triggered_only = yes
+	immediate = {
+	}
+	option = {
+		#
+		name = italy.11.a
+		ai_chance = {
+			factor = 1
+		}
+		add_ideas = ITA_Mario_Draghi_HM
+		set_popularities = {
+			nationalist = 23
+			authoritarian_democrat = 18
+			conservative = 11
+			market_liberal = 8
+			social_liberal = 14
+			social_democrat = 21
+			libertarian_socialist = 5
+		}
+		set_temp_variable = {
+			coalition_partner_var_temp = token:nationalist
+		}
+		add_to_coalition = yes
+		set_temp_variable = {
+			coalition_partner_var_temp = token:conservative
+		}
+		add_to_coalition = yes
+	}
+}
+
+country_event = { #Postwar United Gov
+	id = italy.12
+	title = italy.12.t
+	desc = italy.12.d
+	picture = GFX_generic_media
+	is_triggered_only = yes
+	immediate = {
+		end_coalition = yes
+	}
+	option = {
+		#
+		name = italy.12.a
+		ai_chance = {
+			factor = 1
+		}
+		hidden_effect = {
+			hidden_effect = {
+				load_focus_tree = ITA_void_tree
+				set_country_flag = tree_void_italy_flag
+				clr_country_flag = ITA_war_tree_enabled_flag
+			}
+			set_party_name = {
+				ideology = totalitarian_socialist
+				name = ITA_fronteleft_party
+				long_name = ITA_fronteleft_party_long
+			}
+			set_party_name = {
+				ideology = communist
+				name = ITA_fronteleft_party
+				long_name = ITA_fronteleft_party_long
+			}
+			set_party_name = {
+				ideology = libertarian_socialist
+				name = ITA_fronteleft_party
+				long_name = ITA_fronteleft_party_long
+			}
+			set_party_name = {
+				ideology = social_democrat
+				name = ITA_unidem_left_party
+				long_name = ITA_unidem_left_party_long
+			}
+			set_party_name = {
+				ideology = market_liberal
+				name = ITA_unidem_center_party
+				long_name = ITA_unidem_center_party_long
+			}
+			set_party_name = {
+				ideology = conservative
+				name = ITA_unidem_center_party
+				long_name = ITA_unidem_center_party_long
+			}
+			set_party_name = {
+				ideology = authoritarian_democrat
+				name = ITA_unidem_right_party
+				long_name = ITA_unidem_right_party_long
+			}
+			set_party_name = {
+				ideology = fascist
+				name = ITA_fronteright_party
+				long_name = ITA_fronteright_party_long
+			}
+			set_party_name = {
+				ideology = national_socialist
+				name = ITA_fronteright_party
+				long_name = ITA_fronteright_party_long
+			}
+		}
+		set_politics = {
+			ruling_party = conservative
+			last_election = "2010.9.25"
+			election_frequency = 60
+			elections_allowed = no
+		}
+		set_temp_variable = {
+			ruling_party_wing_var_temp = token:social_democrat
+		}
+		add_ruling_party_wing = yes
+		set_temp_variable = {
+			ruling_party_wing_var_temp = token:market_liberal
+		}
+		add_ruling_party_wing = yes
+		set_temp_variable = {
+			ruling_party_wing_var_temp = token:authoritarian_democrat
+		}
+		add_ruling_party_wing = yes
+		change_government_type_provisional_government = yes
+	}
+}
+
+country_event = { #Will you take M5s with you 
+	id = italy.13
+	title = italy.13.t
+	desc = italy.13.d
+	picture = GFX_generic_media
+	is_triggered_only = yes
+	immediate = {
+	}
+	option = {
+		name = italy.13.a
+		ai_chance = {
+			factor = 1
+		}
+		hidden_effect = {
+		}
+		set_temp_variable = {
+			coalition_partner_var_temp = token:social_liberal
+		}
+		add_to_coalition = yes
+	}
+	option = {
+		name = italy.13.b
+		ai_chance = {
+			factor = 1
+		}
+	}
+}
+
+
+country_event = { #Will you take Azione
+	id = italy.14
+	title = italy.14.t
+	desc = italy.14.d
+	picture = GFX_generic_media
+	is_triggered_only = yes
+	immediate = {
+	}
+	option = {
+		name = italy.14.a
+		ai_chance = {
+			factor = 1
+		}
+		hidden_effect = {
+		}
+		set_temp_variable = {
+			coalition_partner_var_temp = token:market_liberal
+		}
+		add_to_coalition = yes
+		set_temp_variable = {
+			coalition_partner_var_temp = token:nationalist
+		}
+		remove_from_coalition = yes
+		set_party_name = {
+			ideology = market_liberal
+			name = ITA_azione_party
+			long_name = ITA_azione_party
+		}
+	}
+	option = {
+		name = italy.14.b
+		ai_chance = {
+			factor = 1
+		}
+	}
+}
+
+country_event = { #Bureau Shi
+	id = italy.15
+	title = italy.15.t
+	desc = italy.15.d
+	picture = GFX_generic_media
+	is_triggered_only = yes
+	immediate = {
+	}
+	option = {
+		name = italy.14.a
+		ai_chance = {
+			factor = 1
+		}
+		remove_ideas = {
+			ITA_stifling_administration_idea
+		}
+
+	}
+}
+
+#War Start
+country_event = {
+	id = italy_ew_events.1
+	title = italy_ew_events.1.t
+	desc = italy_ew_events.1.d
+	picture = GFX
+	is_triggered_only = yes
+	fire_only_once = yes
+	immediate = {
+	}
+	option = {
+		name = italy_ew_events.1.a
+		complete_national_focus = ITA_memento_audere_semper
+	}
+}
+
+country_event = { #Letters from the Front
+	id = italy_ew_events.2
+	title = italy_ew_events.2.t
+	desc = italy_ew_events.2.d
+	picture = GFX_ITA_letters_from_the_front_event_pic
+	is_triggered_only = yes
+	fire_only_once = yes
+	immediate = {
+	}
+	option = {
+		name = italy_ew_events.2.a
+	}
+}
+
+country_event = { #Polizia con gli studenti lore
+	id = italy_ew_events.3
+	title = italy_ew_events.3.t
+	desc = italy_ew_events.3.d
+	picture = GFX_ITA_russofili_event_pic
+	is_triggered_only = yes
+	fire_only_once = yes
+	immediate = {
+	}
+	option = {
+		name = italy_ew_events.3.a
+	}
+}
+
+country_event = { #Navi whroom
+	id = italy_ew_events.4
+	title = italy_ew_events.4.t
+	desc = italy_ew_events.4.d
+	picture = GFX_ITA_italian_navy_event_pic
+	is_triggered_only = yes
+	fire_only_once = yes
+	immediate = {
+	}
+	option = {
+		name = italy_ew_events.4.a
+	}
+}
+
+country_event = { #Lagunari
+	id = italy_ew_events.5
+	title = italy_ew_events.5.t
+	desc = italy_ew_events.5.d
+	picture = GFX_ITA_lagunari_event_pic
+	is_triggered_only = yes
+	fire_only_once = yes
+	immediate = {
+	}
+	option = {
+		name = italy_ew_events.5.a
+	}
+}
+
+country_event = { #Strikes
+	id = italy_ew_events.7
+	title = italy_ew_events.7.t
+	desc = italy_ew_events.7.d
+	picture = GFX
+	is_triggered_only = yes
+	fire_only_once = yes
+	immediate = {
+		hidden_effect = {
+			add_timed_idea = {
+				idea = ITA_widespread_strikes_idea
+				days = 250
+			}
+		}
+	}
+	option = {
+		name = italy_ew_events.7.a
+		modify_timed_idea = {
+			idea = ITA_widespread_strikes_idea
+			days = -100
+		}
+		add_stability = -0.1
+		add_political_power = -150
+	}
+	option = {
+		name = italy_ew_events.7.b
+	}
+}
+
+country_event = { #Rome Parade
+	id = italy_ew_events.8
+	title = italy_ew_events.8.t
+	desc = italy_ew_events.8.d
+	picture = GFX
+	is_triggered_only = yes
+	fire_only_once = yes
+	immediate = {
+
+	}
+	option = {
+		name = italy_ew_events.8.a
+		country_event = {
+			id = italy_ew_events.9
+			days = 7
+		}
+	}
+}
+
+country_event = { #For Those who sleep...
+	id = italy_ew_events.9
+	title = italy_ew_events.9.t
+	desc = italy_ew_events.9.d
+	picture = GFX_ITA_fireworks_event_pic
+	is_triggered_only = yes
+	fire_only_once = yes
+	immediate = {
+	}
+	option = {
+		name = italy_ew_events.9.a
+		custom_effect_tooltip = ITA_tfr_ita_ending_tt
+	}
+}
+
+
+country_event = {
+	#Francis Death
+	id = vatican.1
+	title = vatican.1.t
+	desc = vatican.1.d
+	picture = GFX_event_pope_francis_death
+	is_triggered_only = yes
+	immediate = {
+		hidden_effect = {
+			1449 = {
+				remove_dynamic_modifier = {
+					modifier = micro_vatican_city
+				}
+				add_dynamic_modifier = {
+					modifier = micro_vatican_vacant
+				}
+			}
+		}
+	}
+	option = {
+		name = vatican.1.a
+		news_event = {
+			id = vatican.2
+			hours = 2
+		}
+	}
+}
+
+news_event = {
+	id = vatican.2
+	title = vatican.2.t
+	desc = vatican.2.d
+	picture = GFX_news_francis_death
+	major = yes
+	is_triggered_only = yes
+	immediate = {
+		hidden_effect = {
+			ITA = {
+				country_event = {
+					id = vatican.3
+					days = 17
+				}
+			}
+		}
+	}
+	option = {
+		name = vatican.2.a
+	}
+}
+
+country_event = {
+	#Conclave
+	id = vatican.3
+	title = vatican.3.t
+	desc = vatican.3.d
+	picture = GFX_event_conclave
+	is_triggered_only = yes
+	immediate = {
+		hidden_effect = {
+			1449 = {
+				remove_dynamic_modifier = {
+					modifier = micro_vatican_vacant
+				}
+			}
+		}
+	}
+	option = {
+		#Tagle
+		name = vatican.3.a
+		hidden_effect = {
+			1449 = {
+				add_dynamic_modifier = {
+					modifier = micro_vatican_tagle
+				}
+			}
+			PHI = {
+				country_event = {
+					id = vatican.8
+					hours = 5
+				}
+			}
+		}
+		news_event = {
+			id = vatican.4
+			hours = 2
+		}
+		ai_chance = {
+			factor = 50
+			modifier = {
+				add = 30
+				SOV = {
+					has_government = fascist
+				}
+			}
+			modifier = {
+				add = 30
+				USA = {
+					has_country_flag = USA_biden_2020_inauguration_flag
+				}
+			}
+		}
+		every_country = {
+			limit = {
+				OR = {
+					tag = CAN
+					tag = MEX
+					tag = DOM
+					tag = HAI
+					tag = CUB
+					tag = GUA
+					tag = PAN
+					tag = COL
+					tag = PRU
+					tag = ECU
+					tag = VEN
+					tag = BRA
+					tag = CHL
+					tag = ARG
+					tag = PAR
+					tag = URG
+					tag = BOL
+					tag = HON
+					tag = ELS
+					tag = NIC
+					tag = COS
+					tag = BLZ
+					tag = IRE
+					tag = LIT
+					tag = PLD
+					tag = SLO
+					tag = HUN
+					tag = CRO
+					tag = SLV
+					tag = SWI
+					tag = ITA
+					tag = SPR
+					tag = POR
+					tag = LUX
+					tag = FRA
+					tag = AUS
+					tag = BEL
+					tag = BRD
+					tag = RWA
+					tag = MAD
+					tag = GAB
+					tag = COG
+					tag = ANG
+					tag = EQG
+					tag = UGA
+					tag = SSD
+					tag = RCG
+					tag = CMR
+					tag = PHI
+				}
+			}
+			add_popularity = {
+				popularity = 0.03
+				ideology = social_democrat
+			}
+		}
+	}
+	option = {
+		#Prevost
+		name = vatican.3.b
+		hidden_effect = {
+			1449 = {
+				add_dynamic_modifier = {
+					modifier = micro_vatican_prevost
+				}
+			}
+			USB = {
+				country_event = {
+					id = vatican.8
+					hours = 5
+				}
+			}
+		}
+		news_event = {
+			id = vatican.5
+			hours = 2
+		}
+		ai_chance = {
+			factor = 50
+			modifier = {
+				add = 30
+				SOV = {
+					has_government = authoritarian_democrat
+				}
+			}
+			modifier = {
+				add = 30
+				USA = {
+					has_country_flag = USA_biden_2020_inauguration_flag
+				}
+			}
+		}
+		every_country = {
+			limit = {
+				OR = {
+					tag = CAN
+					tag = MEX
+					tag = DOM
+					tag = HAI
+					tag = CUB
+					tag = GUA
+					tag = PAN
+					tag = COL
+					tag = PRU
+					tag = ECU
+					tag = VEN
+					tag = BRA
+					tag = CHL
+					tag = ARG
+					tag = PAR
+					tag = URG
+					tag = BOL
+					tag = HON
+					tag = ELS
+					tag = NIC
+					tag = COS
+					tag = BLZ
+					tag = IRE
+					tag = LIT
+					tag = PLD
+					tag = SLO
+					tag = HUN
+					tag = CRO
+					tag = SLV
+					tag = SWI
+					tag = ITA
+					tag = SPR
+					tag = POR
+					tag = LUX
+					tag = FRA
+					tag = AUS
+					tag = BEL
+					tag = BRD
+					tag = RWA
+					tag = MAD
+					tag = GAB
+					tag = COG
+					tag = ANG
+					tag = EQG
+					tag = UGA
+					tag = SSD
+					tag = RCG
+					tag = CMR
+					tag = PHI
+				}
+			}
+			add_popularity = {
+				popularity = 0.03
+				ideology = social_liberal
+			}
+		}
+	}
+	option = {
+		#Erdo
+		name = vatican.3.c
+		hidden_effect = {
+			1449 = {
+				add_dynamic_modifier = {
+					modifier = micro_vatican_erdo
+				}
+			}
+			HUN = {
+				country_event = {
+					id = vatican.8
+					hours = 5
+				}
+			}
+		}
+		news_event = {
+			id = vatican.6
+			hours = 2
+		}
+		ai_chance = {
+			factor = 50
+			modifier = {
+				add = 30
+				SOV = {
+					has_government = authoritarian_democrat
+				}
+			}
+			modifier = {
+				add = 30
+				USA = {
+					has_country_flag = USA_trump_2020_inauguration_flag
+				}
+			}
+		}
+		every_country = {
+			limit = {
+				OR = {
+					tag = CAN
+					tag = MEX
+					tag = DOM
+					tag = HAI
+					tag = CUB
+					tag = GUA
+					tag = PAN
+					tag = COL
+					tag = PRU
+					tag = ECU
+					tag = VEN
+					tag = BRA
+					tag = CHL
+					tag = ARG
+					tag = PAR
+					tag = URG
+					tag = BOL
+					tag = HON
+					tag = ELS
+					tag = NIC
+					tag = COS
+					tag = BLZ
+					tag = IRE
+					tag = LIT
+					tag = PLD
+					tag = SLO
+					tag = HUN
+					tag = CRO
+					tag = SLV
+					tag = SWI
+					tag = ITA
+					tag = SPR
+					tag = POR
+					tag = LUX
+					tag = FRA
+					tag = AUS
+					tag = BEL
+					tag = BRD
+					tag = RWA
+					tag = MAD
+					tag = GAB
+					tag = COG
+					tag = ANG
+					tag = EQG
+					tag = UGA
+					tag = SSD
+					tag = RCG
+					tag = CMR
+					tag = PHI
+				}
+			}
+			add_popularity = {
+				popularity = 0.03
+				ideology = conservative
+			}
+		}
+	}
+	option = {
+		#Sarah
+		name = vatican.3.e
+		hidden_effect = {
+			1449 = {
+				add_dynamic_modifier = {
+					modifier = micro_vatican_sarah
+				}
+			}
+			GNA = {
+				country_event = {
+					id = vatican.8
+					hours = 5
+				}
+			}
+		}
+		news_event = {
+			id = vatican.7
+			hours = 2
+		}
+		ai_chance = {
+			factor = 50
+			modifier = {
+				add = 30
+				SOV = {
+					has_government = communist
+				}
+			}
+			modifier = {
+				add = 10
+				has_global_flag = PRC_taiwan_war_won
+			}
+			modifier = {
+				add = 30
+				USA = {
+					has_country_flag = USA_trump_2020_inauguration_flag
+				}
+			}
+		}
+		every_country = {
+			limit = {
+				OR = {
+					tag = CAN
+					tag = MEX
+					tag = DOM
+					tag = HAI
+					tag = CUB
+					tag = GUA
+					tag = PAN
+					tag = COL
+					tag = PRU
+					tag = ECU
+					tag = VEN
+					tag = BRA
+					tag = CHL
+					tag = ARG
+					tag = PAR
+					tag = URG
+					tag = BOL
+					tag = HON
+					tag = ELS
+					tag = NIC
+					tag = COS
+					tag = BLZ
+					tag = IRE
+					tag = LIT
+					tag = PLD
+					tag = SLO
+					tag = HUN
+					tag = CRO
+					tag = SLV
+					tag = SWI
+					tag = ITA
+					tag = SPR
+					tag = POR
+					tag = LUX
+					tag = FRA
+					tag = AUS
+					tag = BEL
+					tag = BRD
+					tag = RWA
+					tag = MAD
+					tag = GAB
+					tag = COG
+					tag = ANG
+					tag = EQG
+					tag = UGA
+					tag = SSD
+					tag = RCG
+					tag = CMR
+					tag = PHI
+				}
+			}
+			add_popularity = {
+				popularity = 0.03
+				ideology = authoritarian_democrat
+			}
+		}
+	}
+}
+
+news_event = {
+	#Luis Tagle
+	id = vatican.4
+	title = vatican.4.t
+	desc = vatican.4.d
+	picture = GFX_news_tagle
+	major = yes
+	is_triggered_only = yes
+	immediate = {
+	}
+	option = {
+		name = vatican.4.a
+		effect_tooltip = {
+			if = {
+				limit = {
+					OR = {
+						tag = CAN
+						tag = MEX
+						tag = DOM
+						tag = HAI
+						tag = CUB
+						tag = GUA
+						tag = PAN
+						tag = COL
+						tag = PRU
+						tag = ECU
+						tag = VEN
+						tag = BRA
+						tag = CHL
+						tag = ARG
+						tag = PAR
+						tag = URG
+						tag = BOL
+						tag = HON
+						tag = ELS
+						tag = NIC
+						tag = COS
+						tag = BLZ
+						tag = IRE
+						tag = LIT
+						tag = PLD
+						tag = SLO
+						tag = HUN
+						tag = CRO
+						tag = SLV
+						tag = SWI
+						tag = ITA
+						tag = SPR
+						tag = POR
+						tag = LUX
+						tag = FRA
+						tag = AUS
+						tag = BEL
+						tag = BRD
+						tag = RWA
+						tag = MAD
+						tag = GAB
+						tag = COG
+						tag = ANG
+						tag = EQG
+						tag = UGA
+						tag = SSD
+						tag = RCG
+						tag = CMR
+						tag = PHI
+					}
+				}
+				add_popularity = {
+					popularity = 0.03
+					ideology = social_democrat
+				}
+			}
+		}
+	}
+}
+
+news_event = {
+	#Robert Prevost
+	id = vatican.5
+	title = vatican.5.t
+	desc = vatican.5.d
+	picture = GFX_news_prevost
+	major = yes
+	is_triggered_only = yes
+	immediate = {
+	}
+	option = {
+		name = vatican.5.a
+		effect_tooltip = {
+			if = {
+				limit = {
+					OR = {
+						tag = CAN
+						tag = MEX
+						tag = DOM
+						tag = HAI
+						tag = CUB
+						tag = GUA
+						tag = PAN
+						tag = COL
+						tag = PRU
+						tag = ECU
+						tag = VEN
+						tag = BRA
+						tag = CHL
+						tag = ARG
+						tag = PAR
+						tag = URG
+						tag = BOL
+						tag = HON
+						tag = ELS
+						tag = NIC
+						tag = COS
+						tag = BLZ
+						tag = IRE
+						tag = LIT
+						tag = PLD
+						tag = SLO
+						tag = HUN
+						tag = CRO
+						tag = SLV
+						tag = SWI
+						tag = ITA
+						tag = SPR
+						tag = POR
+						tag = LUX
+						tag = FRA
+						tag = AUS
+						tag = BEL
+						tag = BRD
+						tag = RWA
+						tag = MAD
+						tag = GAB
+						tag = COG
+						tag = ANG
+						tag = EQG
+						tag = UGA
+						tag = SSD
+						tag = RCG
+						tag = CMR
+						tag = PHI
+					}
+				}
+				add_popularity = {
+					popularity = 0.03
+					ideology = social_liberal
+				}
+			}
+		}
+	}
+}
+
+news_event = {
+	#Peter Erdo
+	id = vatican.6
+	title = vatican.6.t
+	desc = vatican.6.d
+	picture = GFX_news_erdo
+	is_triggered_only = yes
+	major = yes
+	immediate = {
+	}
+	option = {
+		name = vatican.6.a
+		effect_tooltip = {
+			if = {
+				limit = {
+					OR = {
+						tag = CAN
+						tag = MEX
+						tag = DOM
+						tag = HAI
+						tag = CUB
+						tag = GUA
+						tag = PAN
+						tag = COL
+						tag = PRU
+						tag = ECU
+						tag = VEN
+						tag = BRA
+						tag = CHL
+						tag = ARG
+						tag = PAR
+						tag = URG
+						tag = BOL
+						tag = HON
+						tag = ELS
+						tag = NIC
+						tag = COS
+						tag = BLZ
+						tag = IRE
+						tag = LIT
+						tag = PLD
+						tag = SLO
+						tag = HUN
+						tag = CRO
+						tag = SLV
+						tag = SWI
+						tag = ITA
+						tag = SPR
+						tag = POR
+						tag = LUX
+						tag = FRA
+						tag = AUS
+						tag = BEL
+						tag = BRD
+						tag = RWA
+						tag = MAD
+						tag = GAB
+						tag = COG
+						tag = ANG
+						tag = EQG
+						tag = UGA
+						tag = SSD
+						tag = RCG
+						tag = CMR
+						tag = PHI
+					}
+				}
+				add_popularity = {
+					popularity = 0.03
+					ideology = conservative
+				}
+			}
+		}
+	}
+}
+
+news_event = {
+	#Robert Sarah
+	id = vatican.7
+	title = vatican.7.t
+	desc = {
+		text = vatican.7.d.1
+		trigger = {
+			has_global_flag = PRC_taiwan_war_lost
+		}
+	}
+	desc = {
+		text = vatican.7.d.2
+		trigger = {
+			has_global_flag = PRC_taiwan_war_won
+		}
+	}
+	picture = GFX_news_sarah
+	major = yes
+	is_triggered_only = yes
+	immediate = {
+	}
+	option = {
+		name = vatican.7.a
+		effect_tooltip = {
+			if = {
+				limit = {
+					OR = {
+						tag = CAN
+						tag = MEX
+						tag = DOM
+						tag = HAI
+						tag = CUB
+						tag = GUA
+						tag = PAN
+						tag = COL
+						tag = PRU
+						tag = ECU
+						tag = VEN
+						tag = BRA
+						tag = CHL
+						tag = ARG
+						tag = PAR
+						tag = URG
+						tag = BOL
+						tag = HON
+						tag = ELS
+						tag = NIC
+						tag = COS
+						tag = BLZ
+						tag = IRE
+						tag = LIT
+						tag = PLD
+						tag = SLO
+						tag = HUN
+						tag = CRO
+						tag = SLV
+						tag = SWI
+						tag = ITA
+						tag = SPR
+						tag = POR
+						tag = LUX
+						tag = FRA
+						tag = AUS
+						tag = BEL
+						tag = BRD
+						tag = RWA
+						tag = MAD
+						tag = GAB
+						tag = COG
+						tag = ANG
+						tag = EQG
+						tag = UGA
+						tag = SSD
+						tag = RCG
+						tag = CMR
+						tag = PHI
+					}
+				}
+				add_popularity = {
+					popularity = 0.03
+					ideology = authoritarian_democrat
+				}
+			}
+		}
+	}
+}
+
+country_event = {
+	id = vatican.8
+	title = vatican.8.t
+	desc = vatican.8.d
+	picture = GFX_event_pope_francis_death
+	is_triggered_only = yes
+	trigger = {
+		OR = {
+			tag = USB
+			tag = PHI
+			tag = HUN
+			tag = GNA
+		}
+	}
+	immediate = {
+	}
+	option = {
+		name = vatican.8.a
+		add_political_power = 150
+		add_stability = 0.03
+	}
+}

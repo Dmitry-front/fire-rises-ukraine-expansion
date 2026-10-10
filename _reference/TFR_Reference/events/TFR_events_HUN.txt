@@ -1,0 +1,2011 @@
+###########################
+# Hungary Events
+###########################
+
+add_namespace = Hungary
+add_namespace = Hungary_news
+
+country_event = { #Political Debug
+	id = Hungary.999
+	title = Hungary.999.t
+	desc = Hungary.999.d
+	picture = GFX_Hungarian_4th_Republic
+	is_triggered_only = yes
+	fire_only_once = yes
+	option = { #Commie
+		name = Hungary.999.a
+		set_global_flag = SOV_cprf_won
+		
+	}
+	option = { #nationalist
+		name = Hungary.999.a
+		set_global_flag = SOV_ldpr_won
+		
+	}
+	option = { #medvedev
+		name = Hungary.999.a
+		set_global_flag = SOV_medvedev_won
+	}
+}
+country_event = { #Cosmetic tag Debug
+	id = Hungary.998
+	title = Hungary.998.t
+	desc = Hungary.998.d
+	picture = GFX_Hungarian_4th_Republic
+	is_triggered_only = yes
+	fire_only_once = yes
+	option = { #AUS-HUN
+		name = Hungary.998.a
+		set_cosmetic_tag = HUN_Austria_Hungary
+		
+	}
+	option = { #Romano-Hungarian Empire
+		name = Hungary.999.a
+		set_cosmetic_tag = HUN_Romano_Hungarian_Empire
+		
+	}
+	option = { #Carpathian Empire
+		name = Hungary.999.a
+		set_cosmetic_tag = HUN_Carpathian_Empire
+	}
+}
+
+country_event = {
+	id = Hungary.1
+	title = Hungary.1.t
+	desc = Hungary.1.d
+	picture = GFX_Hungary_Start
+	is_triggered_only = yes
+	fire_only_once = yes
+	option = {
+		name = Hungary.1.a
+		hidden_effect = {
+			country_event = { #Current Situation event
+				id = Hungary.2
+				days = 3 
+			}
+			
+		}
+	}
+}
+country_event = { #Current Situation
+	id = Hungary.2
+	title = Hungary.2.t
+	desc = Hungary.2.d
+	picture = GFX_Hungary_2020
+	is_triggered_only = yes
+	fire_only_once = yes
+	option = {
+		name = Hungary.2.a
+	}
+}
+country_event = { #Hungary loses money to oligarchs for stability
+	id = Hungary.3
+	title = Hungary.3.t
+	desc = Hungary.3.d
+	picture = GFX_Hungary_Start
+	is_triggered_only = yes
+	fire_only_once = yes
+	option = {
+		name = Hungary.3.a
+		add_stability = 0.03	
+	}
+}
+country_event = { #Change from Oligarchy to ultra conservatism
+	id = Hungary.4
+	title = Hungary.4.t
+	desc = Hungary.4.d
+	picture = GFX_Hungary_Start
+	is_triggered_only = yes
+	fire_only_once = yes
+	option = {
+		name = Hungary.4.a
+		add_country_leader_role = {
+		    character = HUN_Janos_Ader_char
+		    promote_leader = yes
+			country_leader = {
+				ideology = ultra_conservatism
+				traits = {
+					
+				}
+			}
+		}
+		add_country_leader_role = {
+		    character = HUN_Viktor_Orban_char
+			country_leader = {
+				ideology = ultra_conservatism
+				traits = {
+					
+				}
+			}
+		}
+	}
+}
+country_event = { #Hungary Leaves the European Union
+	id = Hungary.5
+	title = Hungary.5.t
+	desc = Hungary.5.d
+	picture = GFX_Hungary_Leaves_EU
+	is_triggered_only = yes
+	fire_only_once = yes
+	option = {
+		name = Hungary.5.a
+		news_event = { #The Announcement to the world
+			id = Hungary_news.1
+			days = 5
+		}
+		remove_ideas = {
+			HUN_Black_Sheep_of_the_EU
+		}
+		EU_leave_effect = yes
+	}
+}
+#country_event = { #Liberal EU Coup
+#	id = Hungary.6
+#	title = Hungary.6.t
+#	desc = Hungary.6.d
+#	picture = GFX_HUN_Pro_EU_Rally
+#	is_triggered_only = yes
+#	fire_only_once = yes
+#	option = {
+#		name = Hungary.6.a
+#		add_stability = -0.15
+#		set_country_flag = HUN_Opposition_Coup
+#		hidden_effect = {
+#			if = {
+#				limit = {
+#					OR = {
+#						has_completed_focus = HUN_Safeguard_Our_Nation
+#						has_completed_focus = HUN_Rebirth_of_the_Regency
+#						has_completed_focus = HUN_Honor_the_Martyrs_of_1919
+#						has_completed_focus = HUN_Request_CSTO_Observer_Membership
+#					}
+#				}
+#				country_event = { #coup
+#					id = Hungary.7
+#					days = 20
+#				}
+#			}
+#		}
+#		if = {
+#			limit = {
+#				has_country_flag = HUN_Ind_Opp_flag
+#			}
+#			set_politics = {	
+#				ruling_party = social_liberal
+#				last_election = "2022.04.08"
+#				election_frequency = 48
+#				elections_allowed = yes
+#			}
+#		}
+#		if = {
+#			limit = {
+#				has_country_flag = HUN_Soc_Lib_flag
+#			}
+#			set_politics = {	
+#				ruling_party = social_democrat
+#				last_election = "2022.04.08"
+#				election_frequency = 48
+#				elections_allowed = yes
+#			}
+#		}
+#		if = {
+#			limit = {
+#				has_country_flag = HUN_Soc_Labour_flag
+#			}
+#			set_politics = {	
+#				ruling_party = libertarian_socialist
+#				last_election = "2022.04.08"
+#				election_frequency = 48
+#				elections_allowed = yes
+#			}
+#			set_party_name = {
+#    			ideology = libertarian_socialist
+#    			long_name = HUN_United_For_Hungary_long
+#    			name = HUN_United_For_Hungary
+#			}
+#		}
+#		if = {
+#			limit = {
+#				has_country_flag = HUN_Jobbik_flag
+#			}
+#			set_politics = {	
+#				ruling_party = market_liberal
+#				last_election = "2022.04.08"
+#				election_frequency = 48
+#				elections_allowed = yes
+#			}
+#		}
+#		set_cosmetic_tag = HUN_Republic_of_Hungary
+#		remove_ideas = {
+#			HUN_Dis_United_for_Hungary
+#			HUN_Gerrymandered_Victory
+#			HUN_Hungary_First_Immigration_Laws
+#			HUN_Hungary_First_Economic_Focus
+#			HUN_Orbans_Playground
+#			HUN_Faux_Democracy
+#			HUN_Black_Sheep_of_the_EU
+#		}
+#		add_ideas = {
+#			idea_eu_member
+#			HUN_Unelected_Democrats
+#			HUN_Black_sheep_turned_White
+#		}
+#	}
+#}
+#country_event = { #Hungarian Revolt
+#	id = Hungary.7
+#	title = Hungary.7.t
+#	desc = Hungary.7.d
+#	picture = GFX_Hungarian_Revolt
+#	is_triggered_only = yes
+#	fire_only_once = yes
+#	option = {
+#		name = Hungary.7.a
+#		HNG = {
+#			43 = {
+#				add_core_of = HNG
+#			}
+#			154 = {
+#				add_core_of = HNG
+#			}
+#			155 = {
+#				add_core_of = HNG
+#			}
+#			854 = {
+#				add_core_of = HNG
+#			}
+#			transfer_state = 854
+#			load_oob = "HUN_Hungarian_Revolt"
+#			declare_war_on = {
+#    			target = HUN
+#    			type = annex_everything
+#			}
+#			if = {
+#				limit = {
+#					HUN = {
+#						has_completed_focus = HUN_Safeguard_Our_Nation
+#					}
+#				}
+#				set_cosmetic_tag = HUN_Hungarian_State
+#				HUN = {
+#					set_nationality = {
+#						target_country = HNG
+#						character = HUN_Viktor_Orban_char
+#					}
+#				}
+#				set_popularities = {
+#					conservative = 23
+#					social_democrat = 0
+#					authoritarian_democrat = 47
+#					social_liberal = 0
+#					market_liberal = 0
+#					nationalist = 17
+#					communist = 0
+#					totalitarian_socialist = 0
+#					libertarian_socialist = 0
+#					national_socialist = 5
+#					fascist = 8
+#				}
+#				set_politics = {
+#					ruling_party = authoritarian_democrat
+#    				elections_allowed = no
+#    				long_name = HUN_Fidesz_Despot_L
+#    				name = HUN_Fidesz_Despot
+#				}
+#				add_ideas = {
+#					HUN_Orban_Loyalism
+#				}
+#				load_oob = "HUN_Orbanist_Militias"
+#				if = {
+#					limit = {
+#						has_country_flag = HUN_Hungarian_Guard_Flag
+#					}
+#					load_oob = "HUN_Hungarian_Guard"
+#				}
+#				HNG = {
+#					promote_character = HUN_Viktor_Orban_char
+#				}
+#				HUN = {
+#					add_popularity = {
+#						ideology = authoritarian_democrat
+#    					popularity = -0.30
+#					}
+#					add_popularity = {
+#						ideology = conservative
+#    					popularity = -0.15
+#					}
+#				}
+#			}
+#			if = {
+#				limit = {
+#					HUN = {
+#						has_completed_focus = HUN_Honor_the_Martyrs_of_1919
+#					}
+#				}
+#				set_cosmetic_tag = HUN_Peoples_Republic_of_Hungarian
+#				set_politics = {
+#					ruling_party = communist
+#    				elections_allowed = no
+#				}
+#				add_ideas = {
+#					HUN_Loyalty_to_the_Workers
+#				}
+#				load_oob = "HUN_Communist_Militias"
+#				HUN = {
+#					if = {
+#						limit = {
+#							has_country_flag = HUN_Hungarian_Guard_Flag
+#						}
+#						load_oob = "HUN_Hungarian_Guard"
+#					}
+#					if = {
+#						limit = {
+#							has_country_flag = HUN_Soc_Labour_flag
+#						}
+#						country_event = {
+#							id = Hungary.20224
+#							days = 5
+#						}
+#					}
+#					remove_ideas = HUN_CPRF_Influence
+#					add_popularity = {
+#						ideology = totalitarian_socialist
+#   					popularity = -0.30
+#					}
+#					add_popularity = {
+#						ideology = communist
+#    					popularity = -0.15
+#					}
+#					add_popularity = {
+#						ideology = libertarian_socialist
+#    					popularity = -0.07
+#					}
+#				}
+#				SOV = {
+#					add_to_faction = HNG
+#				}
+#			}
+#			if = {
+#				limit = {
+#					HUN = {
+#						has_completed_focus = HUN_Rebirth_of_the_Regency
+#					}
+#				}
+#				set_cosmetic_tag = HUN_Hungarian_Kingdom
+#				set_politics = {
+#					ruling_party = nationalist
+#    				elections_allowed = no
+#				}
+#				set_popularities = {
+#					conservative = 5
+#					social_democrat = 0
+#					authoritarian_democrat = 27
+#					social_liberal = 0
+#					market_liberal = 0
+#					nationalist = 46
+#					communist = 0
+#					totalitarian_socialist = 0
+#					libertarian_socialist = 0
+#					national_socialist = 6
+#					fascist = 16
+#				}
+#				add_ideas = {
+#					HUN_Loyalty_to_the_Crown
+#				}
+#				load_oob = "HUN_Monarchist_Militias"
+#				if = {
+#					limit = {
+#						has_country_flag = HUN_Hungarian_Guard_Flag
+#					}
+#					load_oob = "HUN_Hungarian_Guard"
+#				}
+#				HNG = {
+#					promote_character = HNG_Laszlo_Toroczkai_char
+#				}
+#				HUN = {
+#					remove_ideas = HUN_LDPR_Influence
+#					add_popularity = {
+#						ideology = nationalist
+#    					popularity = -0.30
+#					}
+#					add_popularity = {
+#						ideology = fascist
+#    					popularity = -0.15
+#					}
+#					add_popularity = {
+#						ideology = national_socialist
+#    					popularity = -0.20
+#					}
+#				}
+#				SOV = {
+#					add_to_faction = HNG
+#				}
+#			}
+#			if = {
+#				limit = {
+#					HUN = {
+#						has_completed_focus = HUN_Request_CSTO_Observer_Membership
+#					}
+#				}
+#				set_cosmetic_tag = HUN_Hungarian_State
+#				set_politics = {
+#					ruling_party = authoritarian_democrat
+#    				elections_allowed = no
+#    				long_name = HUN_Fidesz_Despot_L
+#    				name = HUN_Fidesz_Despot
+#				}
+#				set_popularities = {
+#					conservative = 34
+#					social_democrat = 0
+#					authoritarian_democrat = 46
+#					social_liberal = 0
+#					market_liberal = 0
+#					nationalist = 15
+#					communist = 0
+#					totalitarian_socialist = 0
+#					libertarian_socialist = 0
+#					national_socialist = 0
+#					fascist = 5
+#				}
+#				load_oob = "HUN_Orbanist_Militias"
+#				if = {
+#					limit = {
+#						has_country_flag = HUN_Hungarian_Guard_Flag
+#					}
+#					load_oob = "HUN_Hungarian_Guard"
+#				}
+#				add_ideas = {
+#					HUN_Orban_Loyalism
+#				}
+#				promote_character = HUN_Viktor_Orban_char
+#				HUN = {
+#					remove_ideas = HUN_Medvedev_Influence
+#					add_popularity = {
+#						ideology = authoritarian_democrat
+#    					popularity = -0.30
+#					}
+#					add_popularity = {
+#						ideology = conservative
+#    					popularity = -0.15
+#					}
+#				}
+#				SOV = {
+#					add_to_faction = HNG
+#				}
+#			}
+#			change_tag_from = HUN
+#		}
+#	}
+#}
+country_event = { #Revival of Hungarian People's Welfare Association
+	id = Hungary.8
+	title = Hungary.8.t
+	desc = Hungary.8.d
+	picture = GFX_Hungarian_Nazi_Revival
+	is_triggered_only = yes
+	fire_only_once = yes
+	option = {
+		name = Hungary.8.a
+		add_popularity = {
+			ideology = national_socialist
+    		popularity = 0.04
+		}
+	}
+}
+country_event = { #Monarchists split from Our Homeland Party
+	id = Hungary.9
+	title = Hungary.9.t
+	desc = Hungary.9.d
+	picture = GFX_Hungarian_Monarchist_Revival
+	is_triggered_only = yes
+	fire_only_once = yes
+	option = {
+		name = Hungary.9.a
+		set_party_name = {
+   			ideology = nationalist
+   			long_name = HUN_National_Legitimist_Party_long
+    		name = HUN_National_Legitimist_Party
+		}
+		add_popularity = {
+			ideology = nationalist
+    		popularity = 0.04
+		}
+	}
+}
+country_event = { #Orban meets with Thurmer
+	id = Hungary.10
+	title = Hungary.10.t
+	desc = Hungary.10.d
+	picture = GFX_Orban_and_Thurmer
+	is_triggered_only = yes
+	fire_only_once = yes
+	option = {
+		name = Hungary.10.a
+		custom_effect_tooltip = HUN_Controlled_Opposition_tt
+		hidden_effect = {
+			country_event = { #Legalization of the Hungarian Workers Party 
+				id = Hungary.11
+				days = 10 
+			}
+		}
+	}
+}
+country_event = { #Legalization of the Hungarian Workers Party 
+	id = Hungary.11
+	title = Hungary.11.t
+	desc = Hungary.11.d
+	picture = GFX_Communist_Party_Founded
+	is_triggered_only = yes
+	fire_only_once = yes
+	option = {
+		name = Hungary.11.a
+		set_party_name = {
+   			ideology = communist
+   			long_name = HUN_General_Workers_Association_long
+    		name = HUN_General_Workers_Association
+		}
+		add_popularity = {
+			ideology = communist
+    		popularity = 0.04
+		}
+	}
+}
+country_event = { #Choice for King
+	id = Hungary.12
+	title = Hungary.12.t
+	desc = Hungary.12.d
+	picture = GFX_Crown_of_Hungary
+	is_triggered_only = yes
+	fire_only_once = yes
+	option = {
+		name = Hungary.12.a
+		ai_chance = {
+			factor = 23
+		} 
+		add_country_leader_role = {
+		    character = HUN_Eduard_Habsburg_Lothringen_char
+		    promote_leader = yes
+			country_leader = {
+				ideology = absolute_monarchist
+				traits = {
+				}
+			}
+		}
+		
+	}
+	option = {
+		name = Hungary.12.b
+		ai_chance = {
+			factor = 22
+		} 
+		add_country_leader_role = {
+		    character = HUN_Margareta_of_Romania_char
+		    promote_leader = yes
+			country_leader = {
+				ideology = absolute_monarchist
+				traits = {
+				}
+			}
+		}
+		
+		
+	}
+	option = {
+		name = Hungary.12.c
+		ai_chance = {
+			factor = 22
+		} 
+		add_country_leader_role = {
+		    character = HUN_Nicholas_Medforth_Mills_char
+		    promote_leader = yes
+			country_leader = {
+				ideology = absolute_monarchist
+				traits = {
+				}
+			}
+		}
+		
+	}
+	option = { #Betyársereg takes over
+		name = Hungary.12.e
+		ai_chance = {
+			factor = 33
+		} 
+		set_cosmetic_tag = HUN_Government_of_National_Unity
+		set_politics = {	
+			ruling_party = fascist
+			last_election = "2022.04.08"
+			election_frequency = 48
+			elections_allowed = no
+		}
+		add_country_leader_role = {
+		    character = HNG_Gyorgy_Gyula_Zagyva_char
+		    promote_leader = yes
+			country_leader = {
+				ideology = ethno_nationalism
+				traits = {
+				}
+			}
+		}
+		end_ruling_party_wings = yes
+		
+	}
+}
+country_event = { #COVID IS HERE
+	id = Hungary.13
+	title = Hungary.13.t
+	desc = Hungary.13.d
+	picture = GFX_Hungarian_Monarchist_Revival
+	is_triggered_only = yes
+	fire_only_once = yes
+	option = {
+		name = Hungary.13.a
+		add_ideas = HUN_Corona_Virus
+		country_event = {
+			id = Hungary.14
+			days = 20
+		}
+	}
+}
+country_event = { #Full beds
+	id = Hungary.14
+	title = Hungary.14.t
+	desc = Hungary.14.d
+	picture = GFX_Hungarian_Monarchist_Revival
+	is_triggered_only = yes
+	fire_only_once = yes
+	option = {
+		name = Hungary.14.a
+		add_timed_idea = {
+			idea = HUN_Overflowing_Hospitals
+			days = 365
+		}
+		
+	}
+}
+country_event = { #Hungary blames us
+	id = Hungary.15
+	title = Hungary.15.t
+	desc = Hungary.15.d
+	picture = GFX_Hungarian_Monarchist_Revival
+	is_triggered_only = yes
+	fire_only_once = yes
+	option = { #You're literally a landlocked country, get a boat loser
+		name = Hungary.15.a
+		add_opinion_modifier = {
+    		target = HUN
+    		modifier = minor_sanctions
+		}
+	}
+}
+country_event = { #Support French, UK or German Companies Airbus, BAE, or Lufthansa
+	id = Hungary.16
+	title = Hungary.16.t
+	desc = Hungary.16.d
+	picture = GFX_Hungarian_Monarchist_Revival
+	is_triggered_only = yes
+	fire_only_once = yes
+	option = { #Airbus
+		name = Hungary.16.a
+		add_ideas = HUN_Airbus
+		FRA = {
+			set_temp_variable = {
+				var = FRA_nato_leadership_var_temp
+				value = 0.03
+			}
+			FRA_add_nato_leadership = yes
+		}
+	}
+	option = { #Lufthansa
+		name = Hungary.16.b
+		add_ideas = HUN_Lufthansa
+		GER = {
+			set_temp_variable = {
+				var = GER_nato_leadership_var_temp
+				value = 0.03
+			}
+			GER_add_nato_leadership = yes
+		}
+		
+	}
+}
+country_event = { #Support French, UK or German Companies Krupp, BP, or Engie
+	id = Hungary.17
+	title = Hungary.17.t
+	desc = Hungary.17.d
+	picture = GFX_Hungarian_Monarchist_Revival
+	is_triggered_only = yes
+	fire_only_once = yes
+	option = { #Engie
+		name = Hungary.17.a
+		add_ideas = HUN_Engie
+		FRA = {
+			set_temp_variable = {
+				var = FRA_nato_leadership_var_temp
+				value = 0.03
+			}
+			FRA_add_nato_leadership = yes
+		}
+		
+	}
+	option = { #Krupp
+		name = Hungary.17.b
+		add_ideas = HUN_Krupp
+		GER = {
+			set_temp_variable = {
+				var = GER_nato_leadership_var_temp
+				value = 0.03
+			}
+			GER_add_nato_leadership = yes
+		}
+		
+	}
+}
+#country_event = { #2022 election
+#	id = Hungary.2022
+#	title = Hungary.2022.t
+#	desc = Hungary.2022.d
+#	picture = GFX_Hungarian_Monarchist_Revival
+#	is_triggered_only = yes
+#	fire_only_once = yes
+#	option = { #A Victory for women everywhere
+#		name = Hungary.2022.a
+#		trigger = {
+#           	has_completed_focus = HUN_Ideal_Illiberalism
+#        }
+#         hidden_effect = {
+#			retire_character = HUN_Janos_Ader_char
+#			promote_character = HUN_Katalin_Novak_char
+#		}
+#		hidden_effect = {
+#			country_event = {
+#				id = Hungary.20221
+#				days = 240
+#			}
+#		}
+#		clr_country_flag = head_of_gov_ui_enabled
+#	}
+#	option = { #Last election we will ever have
+#		name = Hungary.2022.b
+#		trigger = {
+#           	has_completed_focus = HUN_Ditch_the_Democracy_Label
+#        }
+#        add_stability = 0.10
+#        set_politics = {	
+#			ruling_party = authoritarian_democrat
+#			last_election = "2022.04.08"
+#			election_frequency = 48
+#			elections_allowed = no
+#		}
+#		clr_country_flag = head_of_gov_ui_enabled
+		
+#	}
+#	option = { #Fidesz victory by slim margins
+#		name = Hungary.2022.c
+#		trigger = {
+#			NOT = {
+#           		has_completed_focus = HUN_Ditch_the_Democracy_Label
+#           		has_completed_focus = HUN_Ideal_Illiberalism
+#           	}
+#        }
+#        add_stability = -0.10
+#        hidden_effect = {
+#    	    retire_character = HUN_Janos_Ader_char
+#			promote_character = HUN_Katalin_Novak_char
+#		}
+#		add_popularity = {
+#			ideology = authoritarian_democrat
+#    		popularity = -0.15
+#		}
+#        add_popularity = {
+#			ideology = conservative
+#    		popularity = -0.05
+#		}
+#		clr_country_flag = head_of_gov_ui_enabled
+		
+#	}
+#}
+
+country_event = { #De-authoritarianization of the regime
+	id = Hungary.20221
+	title = Hungary.20221.t
+	desc = Hungary.20221.d
+	picture = GFX_Hungarian_Monarchist_Revival
+	is_triggered_only = yes
+	fire_only_once = yes
+	option = { #
+		name = Hungary.20221.a
+		set_politics = {	
+			ruling_party = conservative
+			last_election = "2022.04.08"
+			election_frequency = 48
+			elections_allowed = yes
+		}
+	}
+}
+country_event = { #United for Hungary forms
+	id = Hungary.20222
+	title = Hungary.20222.t
+	desc = Hungary.20222.d
+	picture = GFX_Hungarian_Monarchist_Revival
+	is_triggered_only = yes
+	fire_only_once = yes
+	option = { #
+		name = Hungary.20222.a
+		country_event = {
+			id = Hungary.20223
+			days = 60
+		}
+		hidden_effect = {
+			set_party_name = {
+    			ideology = libertarian_socialist
+    			long_name = HUN_United_For_Hungary_long
+    			name = HUN_United_For_Hungary
+			}
+			set_party_name = {
+	    		ideology = social_democrat
+    			long_name = HUN_United_For_Hungary_long
+    			name = HUN_United_For_Hungary
+			}
+			set_party_name = {
+	    		ideology = social_liberal
+    			long_name = HUN_United_For_Hungary_long
+    			name = HUN_United_For_Hungary
+			}
+			set_party_name = {
+    			ideology = market_liberal
+    			long_name = HUN_United_For_Hungary_long
+    			name = HUN_United_For_Hungary
+			}
+		}
+	}
+}
+country_event = { #Leader of United Hungary
+	id = Hungary.20223
+	title = Hungary.20223.t
+	desc = Hungary.20223.d
+	picture = GFX_Hungarian_Monarchist_Revival
+	is_triggered_only = yes
+	fire_only_once = yes
+	option = { #Peter Marki Zay - Independent
+		name = Hungary.20223.a
+		set_country_flag = HUN_Ind_Opp_flag
+		ai_chance = {
+			base = 1
+			modifier = {
+				factor = 20
+				has_stability < 0.5
+			}
+		}
+	}
+	option = { #Ferenc Gyurcsany - Social Liberal
+		name = Hungary.20223.b
+		set_country_flag = HUN_Soc_Lib_flag
+		ai_chance = {
+			base = 1
+			modifier = {
+				factor = 10
+				FRA = {
+					has_completed_focus = FRA_en_marche
+				}
+			}
+		}
+	}
+	option = { #Kunhalmi Agnes - Hungarian Labour
+		name = Hungary.20223.c
+		set_country_flag = HUN_Soc_Labour_flag
+		ai_chance = {
+			base = 1
+			modifier = {
+				factor = 10
+				FRA = {
+					has_completed_focus = FRA_en_marche
+				}
+			}
+		}
+		
+	}
+	option = { #Peter Jakab - Jobbik Market Liberal
+		name = Hungary.20223.e
+		set_country_flag = HUN_Jobbik_flag
+		ai_chance = {
+			base = 1
+			modifier = {
+				factor = 10
+				FRA = {
+					has_completed_focus = FRA_rassemblent_national
+				}
+			}
+		}
+		
+	}
+}
+country_event = { #NATO Occupation
+	id = Hungary.20224
+	title = Hungary.20224.t
+	desc = Hungary.20224.d
+	picture = GFX_Hungarian_Monarchist_Revival
+	is_triggered_only = yes
+	fire_only_once = yes
+	option = { #
+		name = Hungary.20224.a
+		set_cosmetic_tag = HUN_NATO_Occupation
+		add_ideas = {
+			HUN_NATO_Puppet
+		}
+		add_country_leader_role = {
+		    character = HUN_Albert_Safar_char
+		    promote_leader = yes
+			country_leader = {
+				ideology = military_democracy
+				traits = {
+
+				}
+			}
+		}
+		set_politics = {	
+			ruling_party = authoritarian_democrat
+			last_election = "2022.04.08"
+			election_frequency = 48
+			elections_allowed = no
+			long_name = HUN_Military_Occupation_long
+    		name = HUN_Military_Occupation
+		}
+		hidden_effect = {
+			set_party_name = {
+    			ideology = conservative
+    			long_name = HUN_Military_Occupation_long
+    			name = HUN_Military_Occupation
+			}
+			set_party_name = {
+    			ideology = totalitarian_socialist
+    			long_name = GMA_Banned_Party
+    			name = GMA_Banned_Party
+			}
+			set_party_name = {
+    			ideology = communist
+    			long_name = GMA_Banned_Party
+    			name = GMA_Banned_Party
+			}
+			set_party_name = {
+    			ideology = national_socialist
+    			long_name = GMA_Banned_Party
+    			name = GMA_Banned_Party
+			}
+			set_party_name = {
+    			ideology = fascist
+    			long_name = GMA_Banned_Party
+    			name = GMA_Banned_Party
+			}
+			set_party_name = {
+    			ideology = nationalist
+    			long_name = GMA_Banned_Party
+    			name = GMA_Banned_Party
+			}
+			set_party_name = {
+    			ideology = libertarian_socialist
+    			long_name = GMA_Banned_Party
+    			name = GMA_Banned_Party
+			}
+			end_ruling_party_wings = yes
+		}
+
+		HNG = {
+			load_oob = "Hungarian_Defectors"
+		}
+	}
+}
+country_event = { #Creation of the Danubian Accord
+	id = Hungary.18
+	title = Hungary.18.t
+	desc = Hungary.18.d
+	picture = GFX_Hungarian_Monarchist_Revival
+	is_triggered_only = yes
+	option = { #yes
+		name = Hungary.18.a
+		ai_chance = {
+			factor = 100
+		} 
+		set_country_flag = HUN_Danubian_Accord_Member_flag
+		add_ideas = HUN_Danubian_Accord_idea
+	}
+	option = { #no
+		name = Hungary.18.b
+	}
+}
+country_event = { #Hungarian Enlistment Brigade
+	id = Hungary.19
+	title = Hungary.19.t
+	desc = Hungary.19.d
+	picture = GFX_Hungarian_4th_Republic
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = { #Welcome Brothers
+		name = Hungary.19.b
+		ai_chance = {
+			factor = 100
+		} 
+		load_oob = "Hungaro_Ukrainian_Legion"
+	}
+}
+country_event = { #Anti-LGBTQ
+	id = Hungary.20
+	title = Hungary.20.t
+	desc = Hungary.20.d
+	picture = GFX_Hungarian_4th_Republic
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = { #Welcome Brothers
+		name = Hungary.20.a
+		ai_chance = {
+			factor = 100
+		} 
+	}
+}
+country_event = { #Fidesz Inner Circle blockades Government Progress
+	id = Hungary.21
+	title = Hungary.21.t
+	desc = Hungary.21.d
+	picture = GFX_Hungarian_4th_Republic
+	fire_only_once = yes
+	is_triggered_only = yes
+	trigger = {
+		HUN = {
+			NOT = {
+				has_country_leader_with_trait = Fidesz_Inner_Circle
+			}
+			has_country_flag = Fidesz_Inner_Circle_Flag
+		}
+	}
+	option = { #Ugh, fuck OFF
+		name = Hungary.20.a
+		ai_chance = {
+			factor = 100
+		} 
+		add_stability = -0.10
+		add_political_power = -100
+	}
+}
+country_event = { #
+	id = Hungary.22
+	title = Hungary.22.t
+	desc = Hungary.22.d
+	picture = GFX_Hungary_Start
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = { #Money and PP
+		name = Hungary.22.a
+		ai_chance = {
+			factor = 25
+		} 
+		HUN = {
+			set_temp_variable = {
+		   		var = income_var_temp
+		   		value = 1.0
+		   	}
+		   	add_income = yes
+		   	add_political_power = 50
+		}
+		ROOT = {
+			set_temp_variable = {
+		   		var = income_var_temp
+		   		value = -1.0
+		   	}
+		   	add_income = yes
+		   	add_political_power = -50
+		}
+	}
+	option = { #PP
+		name = Hungary.22.b
+		ai_chance = {
+			factor = 50
+		} 
+		HUN = {
+			add_political_power = 50
+		}
+		ROOT = {
+		   	add_political_power = -50
+		}
+	}
+	option = { #Nothing
+		name = Hungary.22.c
+		ai_chance = {
+			factor = 25
+		} 
+		HUN = {
+			add_political_power = -25
+		}
+	}
+}
+country_event = { #Hungarian Diaspora Returning
+	id = Hungary.23
+	title = Hungary.23.t
+	desc = Hungary.23.d
+	picture = GFX_Hungarian_4th_Republic
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = { #Welcome Brothers
+		name = Hungary.23.a
+		ai_chance = {
+			factor = 100
+		} 
+		swap_ideas = {
+			remove_idea = HUN_Cultural_Surge
+			add_idea = HUN_Cultural_Revival
+		}
+	}
+}
+country_event = { #German or France
+	id = Hungary.24
+	title = Hungary.24.t
+	desc = Hungary.24.d
+	picture = GFX_Hungarian_4th_Republic
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = { #Germany
+		name = Hungary.24.a
+		ai_chance = {
+			factor = 50
+		} 
+		GER = {
+			country_event = { #Ask germany to lead joint excersizing
+				id = Hungary.251
+				days = 1
+			}
+		}
+	}
+	option = { #France
+		name = Hungary.24.a
+		ai_chance = {
+			factor = 50
+		} 
+		FRA = {
+			country_event = { #Ask france to lead joint excersizing
+				id = Hungary.252
+				days = 1
+			}
+		}
+	}
+}
+country_event = { #German leadership
+	id = Hungary.251
+	title = Hungary.251.t
+	desc = Hungary.251.d
+	picture = GFX_Hungarian_4th_Republic
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = { #yes
+		name = Hungary.251.a
+		ai_chance = {
+			factor = 90
+		} 
+		random = { #good buff
+	   		chance = 60
+    		country_event = { #good
+				id = Hungary.2532
+				days = 10
+			}
+			HUN = {
+				country_event = { #good
+					id = Hungary.2531
+					days = 10
+				}
+			}
+		}
+		random = { #Mediocre buff
+	   		chance = 30
+    		country_event = { #good
+				id = Hungary.2542
+				days = 10
+			}
+			HUN = {
+				country_event = { #good
+					id = Hungary.2541
+					days = 10
+				}
+			}
+		}
+		random = { #Shows massive flaw in NATO infrastructure
+	   		chance = 10
+    		country_event = { #Horrible
+				id = Hungary.2552
+				days = 10
+			}
+			HUN = {
+				country_event = { #Horrible
+					id = Hungary.2551
+					days = 10
+				}
+			}
+		}
+	}
+	option = { #no
+		name = Hungary.251.a
+		ai_chance = {
+			factor = 10
+		} 
+		HUN = {
+			country_event = { #EU military refuses
+				id = Hungary.25
+				days = 1
+			}
+		}
+	}
+}
+country_event = { #French leadership
+	id = Hungary.252
+	title = Hungary.252.t
+	desc = Hungary.252.d
+	picture = GFX_Hungarian_4th_Republic
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = { #yes
+		name = Hungary.252.a
+		ai_chance = {
+			factor = 90
+		} 
+		random_list = { #good buff
+	   		50 = {
+	    		country_event = { #good
+					id = Hungary.2533
+					days = 10
+				}
+				HUN = {
+					country_event = { #good
+						id = Hungary.2531
+						days = 10
+					}
+				}
+			}
+			40 = { #Mediocre buff
+	    		country_event = { #good
+					id = Hungary.2543
+					days = 10
+				}
+				HUN = {
+					country_event = { #good
+						id = Hungary.2541
+						days = 10
+					}
+				}
+			}
+			10 = { #Shows massive flaw in NATO infrastructure
+		   		
+		   		country_event = { #Horrible
+					id = Hungary.2553
+					days = 10
+				}
+				HUN = {
+					country_event = { #Horrible
+						id = Hungary.2551
+						days = 10
+					}
+				}
+	    		
+			}
+		}
+	}
+	option = { #no
+		name = Hungary.252.a
+		ai_chance = {
+			factor = 10
+		} 
+		HUN = {
+			country_event = { #EU military refuses
+				id = Hungary.25
+				days = 1
+			}
+		}
+	}
+}
+country_event = { #They said no
+	id = Hungary.25
+	title = Hungary.25.t
+	desc = Hungary.25.d
+	picture = GFX_Hungarian_4th_Republic
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = { #oh
+		name = Hungary.25.a
+		ai_chance = {
+			factor = 100
+		} 
+		add_war_support = -0.05
+	}
+}
+country_event = { #Good - Hungarian
+	id = Hungary.2531
+	title = Hungary.2531.t
+	desc = Hungary.2531.d
+	picture = GFX_Hungarian_4th_Republic
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = { #Welcome Brothers
+		name = Hungary.2531.a
+		ai_chance = {
+			factor = 100
+		} 
+		army_experience = 50
+		HUN_Albert_Safar_char = {
+			promote_leader = yes 
+
+		}
+		every_army_leader = {
+			random_list = {
+				20 = {
+	    			add_logistics = 1
+	    			gain_xp = 10
+				}
+				20 = {
+	    			add_planning = 1
+	    			gain_xp = 10
+				}
+				20 = {
+	    			add_defense = 1
+	    			gain_xp = 10
+				}
+				20 = {
+	    			add_attack = 1
+	    			gain_xp = 10
+				}
+				20 = {
+	    			add_skill_level = 1
+	    			gain_xp = 10
+	    		}
+			}
+		}
+	}
+}
+country_event = { #Mediocre - Hungarian
+	id = Hungary.2541
+	title = Hungary.2541.t
+	desc = Hungary.2541.d
+	picture = GFX_Hungarian_4th_Republic
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = { #Welcome Brothers
+		name = Hungary.2541.a
+		ai_chance = {
+			factor = 100
+		} 
+		army_experience = 20
+		HUN_Albert_Safar_char = {
+			promote_leader = yes 
+
+		}
+		every_army_leader = {
+			random_list = {
+				50 = {
+	    			add_planning = 1
+				}
+				50 = {
+	    			add_defense = 1
+				}
+			}
+		}
+	}
+}
+country_event = { #Bad - Hungarian
+	id = Hungary.2551
+	title = Hungary.2551.t
+	desc = Hungary.2551.d
+	picture = GFX_Hungarian_4th_Republic
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = { #Welcome Brothers
+		name = Hungary.2551.a
+		ai_chance = {
+			factor = 100
+		} 
+		army_experience = -50
+		HUN_Albert_Safar_char = {
+			promote_leader = yes 
+
+		}
+		HUN_Attila_Takacs_char = {
+			retire_character = yes
+		}
+		add_war_support = -0.10
+	}
+}
+country_event = { #Good - German
+	id = Hungary.2532
+	title = Hungary.2532.t
+	desc = Hungary.2532.d
+	picture = GFX_Hungarian_4th_Republic
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = { #Welcome Brothers
+		name = Hungary.2532.a
+		ai_chance = {
+			factor = 100
+		} 
+		army_experience = 50
+		every_army_leader = {
+			random_list = {
+   				20 = {
+	    			add_logistics = 1
+	    			gain_xp = 10
+				}
+				20 = {
+	    			add_planning = 1
+	    			gain_xp = 10
+				}
+				20 = {
+	    			add_defense = 1
+	    			gain_xp = 10
+				}
+				20 = {
+	    			add_attack = 1
+	    			gain_xp = 10
+				}
+				20 = {
+	    			add_skill_level = 1
+	    			gain_xp = 10
+				}
+			}
+		}
+	}
+}
+country_event = { #Mediocre - German
+	id = Hungary.2542
+	title = Hungary.2542.t
+	desc = Hungary.2542.d
+	picture = GFX_Hungarian_4th_Republic
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = { #Welcome Brothers
+		name = Hungary.2542.a
+		ai_chance = {
+			factor = 100
+		} 
+		army_experience = 20
+		every_army_leader = {
+			random_list = {
+				50 = {
+	    			add_planning = 1
+				}
+				50 = {
+	    			add_defense = 1
+				}
+			}
+		}
+	}
+}
+country_event = { #Bad - German
+	id = Hungary.2552
+	title = Hungary.2552.t
+	desc = Hungary.2552.d
+	picture = GFX_Hungarian_4th_Republic
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = { #Welcome Brothers
+		name = Hungary.2552.a
+		ai_chance = {
+			factor = 100
+		} 
+		army_experience = -50
+		add_war_support = -0.10
+	}
+}
+country_event = { #Good - French
+	id = Hungary.2533
+	title = Hungary.2533.t
+	desc = Hungary.2533.d
+	picture = GFX_Hungarian_4th_Republic
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = { #Welcome Brothers
+		name = Hungary.2533.a
+		ai_chance = {
+			factor = 100
+		} 
+		army_experience = 50
+		every_army_leader = {
+			random_list = {
+   				20 = {
+	    			add_logistics = 1
+	    			gain_xp = 10
+				}
+				20 = {
+	    			add_planning = 1
+	    			gain_xp = 10
+				}
+				20 = {
+	    			add_defense = 1
+	    			gain_xp = 10
+				}
+				20 = {
+	    			add_attack = 1
+	    			gain_xp = 10
+				}
+				20 = {
+	    			add_skill_level = 1
+	    			gain_xp = 10
+				}
+			}
+		}
+	}
+}
+country_event = { #Mediocre - French
+	id = Hungary.2543
+	title = Hungary.2543.t
+	desc = Hungary.2543.d
+	picture = GFX_Hungarian_4th_Republic
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = { #Welcome Brothers
+		name = Hungary.2543.a
+		ai_chance = {
+			factor = 100
+		} 
+		army_experience = 20
+		every_army_leader = {
+			random_list = {
+				50 = {
+	    			add_planning = 1
+				}
+				50 = {
+	    			add_defense = 1
+				}
+			}
+		}
+	}
+}
+country_event = { #Bad - French
+	id = Hungary.2553
+	title = Hungary.2553.t
+	desc = Hungary.2553.d
+	picture = GFX_Hungarian_4th_Republic
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = { #Welcome Brothers
+		name = Hungary.2553.a
+		ai_chance = {
+			factor = 100
+		} 
+		army_experience = -50
+		add_war_support = -0.10
+	}
+}
+country_event = { #EU Diplomat visits Hungarian Folk Festival
+	id = Hungary.26
+	title = Hungary.26.t
+	desc = Hungary.26.d
+	picture = GFX_Hungarian_4th_Republic
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = { #Beautiful
+		name = Hungary.26.a
+		ai_chance = {
+			factor = 100
+		} 
+		add_political_power = 25
+	}
+}
+country_event = { #Local Artists pay homage to 1956
+	id = Hungary.27
+	title = Hungary.27.t
+	desc = Hungary.27.d
+	picture = GFX_Hungarian_4th_Republic
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = { #Beautiful
+		name = Hungary.27.a
+		ai_chance = {
+			factor = 100
+		} 
+		add_popularity = {
+			ideology = communist
+			popularity = -0.03
+		}
+	}
+}
+
+country_event = { #2022 Hungarian parliamentary election
+	id = Hungary.28
+	title = Hungary.28.t
+	desc = Hungary.28.d
+	picture = GFX_Hungarian_4th_Republic
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = { #Beautiful
+		name = Hungary.28.a
+		ai_chance = {
+			factor = 100
+		}
+		set_politics = {
+			ruling_party = conservative
+    		elections_allowed = yes
+		}
+		add_popularity = {
+			ideology = conservative
+			popularity = 0.05
+		}	
+		add_popularity = {
+			ideology = market_liberal
+			popularity = 0.05
+		}
+		add_popularity = {
+			ideology = social_liberal
+			popularity = 0.05
+		}
+		add_popularity = {
+			ideology = social_democrat
+			popularity = 0.05
+		}
+		add_popularity = {
+			ideology = libertarian_socialist
+			popularity = 0.03
+		}
+		hidden_effect = {
+			add_ideas = HUN_Peter_Marki_Zay_HM
+			add_ideas = HUN_de_orbanization_idea
+			remove_ideas = {
+				HUN_Faux_Democracy
+				HUN_Orbans_Playground
+				HUN_Dis_United_for_Hungary
+				HUN_Gerrymandered_Victory
+			}
+			set_party_name = {
+    			ideology = libertarian_socialist
+    			long_name = HUN_United_For_Hungary_long
+    			name = HUN_United_For_Hungary
+			}
+			set_party_name = {
+	    		ideology = social_democrat
+    			long_name = HUN_United_For_Hungary_long
+    			name = HUN_United_For_Hungary
+			}
+			set_party_name = {
+	    		ideology = social_liberal
+    			long_name = HUN_United_For_Hungary_long
+    			name = HUN_United_For_Hungary
+			}
+			set_party_name = {
+    			ideology = market_liberal
+    			long_name = HUN_United_For_Hungary_long
+    			name = HUN_United_For_Hungary
+			}
+			set_party_name = {
+    			ideology = conservative
+    			long_name = HUN_United_For_Hungary_long
+    			name = HUN_United_For_Hungary
+			}
+			country_event = {
+				id = Hungary.29
+				days = 59
+			}		
+			country_event = {
+				id = Hungary.31
+				days = 1468
+			}	
+			news_event = {
+				id = news.679
+				days = 1
+			}
+		}
+	}
+}
+
+country_event = { #2022 president snap election
+	id = Hungary.29
+	title = Hungary.29.t
+	desc = Hungary.29.d
+	picture = GFX_Hungarian_4th_Republic
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = { #Beautiful
+		name = Hungary.29.a
+		ai_chance = {
+			factor = 100
+		}
+        hidden_effect = {
+			retire_character = HUN_Katalin_Novak_char
+			promote_character = HUN_Peter_Rona_char
+		}
+	}
+}
+
+country_event = { #2022 president normal election
+	id = Hungary.30
+	title = Hungary.30.t
+	desc = Hungary.30.d
+	picture = GFX_Hungarian_4th_Republic
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = { #Beautiful
+		name = Hungary.30.a
+		ai_chance = {
+			factor = 100
+		}
+        hidden_effect = {
+			retire_character = HUN_Janos_Ader_char
+			promote_character = HUN_Katalin_Novak_char
+		}
+	}
+}
+
+
+country_event = { #2026 Hungarian parliamentary election
+	id = Hungary.31
+	title = Hungary.31.t
+	desc = Hungary.31.d
+	picture = GFX_Hungarian_4th_Republic
+	fire_only_once = yes
+	is_triggered_only = yes
+	immediate = {
+		remove_ideas = HUN_de_orbanization_idea
+		set_party_name = {
+			ideology = social_liberal
+			long_name = HUN_lmp_party_long
+			name = HUN_lmp_party
+		}
+		set_party_name = {
+			ideology = social_democrat
+			long_name = HNG_social_democrat_party_long
+			name = HNG_social_democrat_party
+		}
+		set_party_name = {
+			ideology = conservative
+			long_name = HUN_tisza_party_long
+			name = HUN_tisza_party
+		}
+		set_party_name = {
+			ideology = social_liberal
+			long_name = HUN_lmp_party_long
+			name = HUN_lmp_party
+		}
+		set_party_name = {
+			ideology = market_liberal
+			long_name = HUN_momentum_party_long
+			name = HUN_momentum_party
+		}
+		set_party_name = {
+			ideology = authoritarian_democrat
+			long_name = HUN_market_liberal_party_long
+			name = HUN_market_liberal_party
+		}
+		set_party_name = {
+			ideology = libertarian_socialist
+			long_name = HUN_libertarian_socialist_party_long
+			name = HUN_libertarian_socialist_party
+		}
+    }
+	option = { #
+		name = Hungary.31.a
+		trigger = {
+			BRS = {
+				has_government = social_democrat
+			}
+		}
+		set_politics = {
+			ruling_party = social_democrat
+    		elections_allowed = yes
+		}
+		set_party_name = {
+			ideology = social_democrat
+			long_name = HNG_social_democrat_party_long
+			name = HNG_social_democrat_party
+		}
+		add_popularity = {
+			ideology = social_democrat
+			popularity = 0.05
+		}
+		add_ideas = HUN_Kunhalmi_Agnes_HM
+		news_event = { id = news.680 days = 1 }
+	}	
+	option = { #
+		name = Hungary.31.b
+		trigger = {
+			BRS = {
+				has_government = conservative
+			}
+		}
+		set_politics = {
+			ruling_party = conservative
+    		elections_allowed = yes
+		}
+		set_party_name = {
+			ideology = conservative
+			long_name = HUN_tisza_party_long
+			name = HUN_tisza_party
+		}
+		add_popularity = {
+			ideology = conservative
+			popularity = 0.05
+		}
+		add_ideas = HUN_Peter_Magyar_HM
+		news_event = { id = news.680 days = 1 }
+	}
+	option = { #
+		name = Hungary.31.c
+		trigger = {
+			BRS = {
+				has_government = social_liberal
+			}
+		}
+		set_politics = {
+			ruling_party = social_liberal
+    		elections_allowed = yes
+		}
+		set_party_name = {
+			ideology = social_liberal
+			long_name = HUN_lmp_party_long
+			name = HUN_lmp_party
+		}
+		add_popularity = {
+			ideology = social_liberal
+			popularity = 0.05
+		}
+		add_ideas = HUN_peter_ungar_HM
+		news_event = { id = news.680 days = 1 }
+	}	
+	option = { #
+		name = Hungary.31.f
+		trigger = {
+			BRS = {
+				has_government = market_liberal
+			}
+		}
+		set_politics = {
+			ruling_party = market_liberal
+    		elections_allowed = yes
+		}
+		set_party_name = {
+			ideology = market_liberal
+			long_name = HUN_momentum_party_long
+			name = HUN_momentum_party
+		}
+		add_popularity = {
+			ideology = market_liberal
+			popularity = 0.05
+		}
+		add_ideas = HUN_anna_donath_HM
+		news_event = { id = news.680 days = 1 }
+	}	
+	option = { #
+		name = Hungary.31.g
+		trigger = {
+			BRS = {
+				has_government = authoritarian_democrat
+			}
+		}
+		set_politics = {
+			ruling_party = authoritarian_democrat
+    		elections_allowed = yes
+		}
+		set_party_name = {
+			ideology = authoritarian_democrat
+			long_name = HUN_market_liberal_party_long
+			name = HUN_market_liberal_party
+		}
+		add_popularity = {
+			ideology = authoritarian_democrat
+			popularity = 0.05
+		}
+		add_ideas = HUN_Peter_Jakab_HM
+		news_event = { id = news.680 days = 1 }
+	}	
+	option = { #
+		name = Hungary.31.g1
+		trigger = {
+			BRS = {
+				has_government = libertarian_socialist
+			}
+		}
+		set_party_name = {
+			ideology = libertarian_socialist
+			long_name = HUN_libertarian_socialist_party_long
+			name = HUN_libertarian_socialist_party
+		}
+		set_politics = {
+			ruling_party = libertarian_socialist
+    		elections_allowed = yes
+		}
+		add_popularity = {
+			ideology = libertarian_socialist
+			popularity = 0.05
+		}
+		add_ideas = HUN_andras_jambor_HM
+		news_event = { id = news.680 days = 1 }
+	}
+}
+
+news_event = { 
+	id = Hungary_news.1
+	title = Hungary_news.1.t
+	desc = Hungary_news.1.d
+	picture = GFX_Hungary_Leaves_EU_news
+	major = yes
+	is_triggered_only = yes
+
+	option = {
+		name = Hungary_news.1.a
+		
+	}	
+}
+news_event = { 
+	id = Hungary_news.2
+	title = Hungary_news.2.t
+	desc = Hungary_news.2.d
+	picture = GFX_news_Orban_and_Merkel
+	major = yes
+	is_triggered_only = yes
+
+	option = {
+		name = Hungary_news.2.a
+		
+		trigger = {
+			OR = {
+				tag = USA
+				tag = GER
+				tag = ENG
+				tag = FRA
+			}
+		}
+	}
+	option = {
+		name = Hungary_news.2.b
+		
+		trigger = {
+			tag = SOV
+		}
+	}
+	option = {
+		name = Hungary_news.2.c
+		
+		trigger = {
+			NOT = {
+				tag = USA
+				tag = GER
+				tag = ENG
+				tag = FRA
+				tag = SOV
+			}
+		}
+	}
+}
+news_event = { 
+	id = Hungary_news.3
+	title = Hungary_news.3.t
+	desc = Hungary_news.3.d
+	picture = GFX_news_Orban_and_Putin
+	major = yes
+	is_triggered_only = yes
+
+	option = {
+		name = Hungary_news.3.a
+		
+		trigger = {
+			OR = {
+				tag = USA
+				tag = GER
+				tag = ENG
+				tag = FRA
+			}
+		}
+	}
+	option = {
+		name = Hungary_news.3.b
+		
+		trigger = {
+			tag = SOV
+		}
+	}
+	option = {
+		name = Hungary_news.3.c
+		
+		trigger = {
+			NOT = {
+				tag = USA
+				tag = USA
+				tag = GER
+				tag = ENG
+				tag = FRA
+				tag = SOV
+			}
+		}
+	}
+}

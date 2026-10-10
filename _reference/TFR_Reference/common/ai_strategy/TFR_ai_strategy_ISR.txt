@@ -1,0 +1,492 @@
+ISR_greatest_ally = {
+	enable = {
+		tag = ISR
+		has_war = no
+	}
+	abort = {
+		has_war = yes
+		has_war_with = EGY
+	}
+
+	ai_strategy = {
+		type = support
+		id = "EGY"
+		value = 900
+	}
+	ai_strategy = {
+		type = send_volunteers_desire
+		id = "EGY"
+		value = 300
+	}
+}
+
+ISR_prepare_for_war_strategy = {
+	allowed = {
+		original_tag = ISR
+	}
+	enable = {
+		has_war_with = PAL
+	}
+	ai_strategy = {
+		type = prepare_for_war
+		id = EGY
+		value = 25
+	}
+	ai_strategy = {
+		type = prepare_for_war
+		id = JOR
+		value = 25
+	}
+	abort = { always = no }
+}
+
+ISR_rule_the_heaven_1 = {
+	allowed = {
+		original_tag = ISR
+	}
+	enable = {
+		tag = ISR
+		has_war_with = EGY
+	}
+	abort = {
+		controls_state = 813
+		controls_state = 453
+	}
+	ai_strategy = {
+		type = front_control
+		tag = EGY
+		execution_type = rush
+		execute_order = yes
+		manual_attack = no
+	}
+	ai_strategy = {
+		type = conquer
+		id = EGY
+		value = 1000
+    }
+}
+
+ISR_rule_the_heaven_2 = {
+	allowed = {
+		original_tag = ISR
+	}
+	enable = {
+		tag = ISR
+		has_war_with = JOR
+	}
+	ai_strategy = {
+		type = front_control
+		tag = JOR
+		execution_type = rush
+		execute_order = yes
+		manual_attack = no
+	}
+	ai_strategy = {
+		type = conquer
+		id = JOR
+		value = 1000
+    }
+	abort = { always = no }
+}
+
+BUK_generation_kill_1 = {
+	allowed = {
+		original_tag = BUK
+	}
+	enable = {
+		tag = BUK
+		has_war_with = FIA
+	}
+	ai_strategy = {
+		type = front_control
+		tag = FIA
+		execution_type = rush
+		execute_order = yes
+		manual_attack = no
+	}
+	ai_strategy = {
+		type = conquer
+		id = FIA
+		value = 1000
+    }
+	abort = { always = no }
+}
+
+BUK_generation_kill_2 = {
+	allowed = {
+		original_tag = BUK
+	}
+	enable = {
+		tag = BUK
+		has_war_with = ABK
+		NOT = { has_war_with = PER }
+	}
+	ai_strategy = {
+		type = front_control
+		tag = ABK
+		execution_type = rush
+		execute_order = yes
+		manual_attack = no
+	}
+	ai_strategy = {
+		type = conquer
+		id = ABK
+		value = 1000
+    }
+	abort = { always = no }
+}
+
+BUK_generation_kill_3 = {
+	allowed = {
+		original_tag = BUK
+	}
+	enable = {
+		tag = BUK
+		has_war_with = IRQ
+	}
+	ai_strategy = {
+		type = front_control
+		tag = IRQ
+		execution_type = rush
+		execute_order = yes
+		manual_attack = no
+	}
+	ai_strategy = {
+		type = conquer
+		id = IRQ
+		value = 1000
+    }
+	abort = { always = no }
+}
+
+BUK_generation_kill_4 = {
+	allowed = {
+		original_tag = BUK
+	}
+	enable = {
+		tag = BUK
+		has_war_with = KUW
+	}
+	ai_strategy = {
+		type = front_control
+		tag = KUW
+		execution_type = rush
+		execute_order = yes
+		manual_attack = no
+	}
+	ai_strategy = {
+		type = conquer
+		id = KUW
+		value = 1000
+    }
+	abort = { always = no }
+}
+
+BUK_generation_kill_5 = {
+	allowed = {
+		original_tag = BUK
+	}
+	enable = {
+		tag = BUK
+		has_war_with = KUR
+	}
+	ai_strategy = {
+		type = front_control
+		tag = KUR
+		execution_type = rush
+		execute_order = yes
+		manual_attack = no
+	}
+	ai_strategy = {
+		type = conquer
+		id = KUR
+		value = 1000
+    }
+	abort = { always = no }
+}
+
+BUK_prepare_for_iran_war_strategy = {
+	allowed = {
+		original_tag = BUK
+	}
+	enable = {
+		FIA = { exists = no }
+		IRQ = { exists = no }
+	}
+	abort = {
+		has_country_leader = {
+			character = IRQ_raghad_hussein_char
+			ruling_only = yes
+		}
+	}
+	ai_strategy = {
+		type = prepare_for_war
+		id = PER
+		value = 25
+	}
+}
+
+FIA_generation_kill_1 = {
+	allowed = {
+		original_tag = FIA
+	}
+	enable = {
+		tag = FIA
+		has_war_with = ABK
+	}
+	ai_strategy = {
+		type = front_control
+		tag = ABK
+		execution_type = rush
+		execute_order = yes
+		manual_attack = no
+	}
+	ai_strategy = {
+		type = conquer
+		id = ABK
+		value = 1000
+    }
+	abort = { always = no }
+}
+
+FIA_generation_kill_2 = {
+	allowed = {
+		original_tag = FIA
+	}
+	enable = {
+		tag = FIA
+		has_war_with = BUK
+	}
+	ai_strategy = {
+		type = front_control
+		tag = BUK
+		execution_type = rush
+		execute_order = yes
+		manual_attack = no
+	}
+	ai_strategy = {
+		type = conquer
+		id = BUK
+		value = 1000
+    }
+	abort = { always = no }
+}
+
+FIA_generation_kill_3 = {
+	allowed = {
+		original_tag = FIA
+	}
+	enable = {
+		tag = FIA
+		has_war_with = IRQ
+	}
+	ai_strategy = {
+		type = front_control
+		tag = IRQ
+		execution_type = rush
+		execute_order = yes
+		manual_attack = no
+	}
+	ai_strategy = {
+		type = conquer
+		id = IRQ
+		value = 1000
+    }
+	abort = { always = no }
+}
+
+ABK_generation_kill_1 = {
+	allowed = {
+		original_tag = ABK
+	}
+	enable = {
+		tag = ABK
+		has_war_with = FIA
+	}
+	ai_strategy = {
+		type = front_control
+		tag = FIA
+		execution_type = rush
+		execute_order = yes
+		manual_attack = no
+	}
+	ai_strategy = {
+		type = conquer
+		id = FIA
+		value = 1000
+    }
+	abort = { always = no }
+}
+
+ABK_generation_kill_2 = {
+	allowed = {
+		original_tag = ABK
+	}
+	enable = {
+		tag = ABK
+		has_war_with = BUK
+		NOT = { has_war_with = PER }
+	}
+	ai_strategy = {
+		type = front_control
+		tag = BUK
+		execution_type = rush
+		execute_order = yes
+		manual_attack = no
+	}
+	ai_strategy = {
+		type = conquer
+		id = BUK
+		value = 1000
+    }
+	abort = { always = no }
+}
+
+ABK_generation_kill_3 = {
+	allowed = {
+		original_tag = ABK
+	}
+	enable = {
+		tag = ABK
+		has_war_with = IRQ
+	}
+	ai_strategy = {
+		type = front_control
+		tag = IRQ
+		execution_type = rush
+		execute_order = yes
+		manual_attack = no
+	}
+	ai_strategy = {
+		type = conquer
+		id = IRQ
+		value = 1000
+    }
+	abort = { always = no }
+}
+
+IRQ_generation_kill_1 = {
+	allowed = {
+		original_tag = IRQ
+	}
+	enable = {
+		tag = IRQ
+		has_war_with = BUK
+	}
+	ai_strategy = {
+		type = front_control
+		tag = BUK
+		execution_type = rush
+		execute_order = yes
+		manual_attack = no
+	}
+	ai_strategy = {
+		type = conquer
+		id = BUK
+		value = 1000
+    }
+	abort = { always = no }
+}
+
+IRQ_generation_kill_2 = {
+	allowed = {
+		original_tag = IRQ
+	}
+	enable = {
+		tag = IRQ
+		has_war_with = ABK
+	}
+	ai_strategy = {
+		type = front_control
+		tag = ABK
+		execution_type = rush
+		execute_order = yes
+		manual_attack = no
+	}
+	ai_strategy = {
+		type = conquer
+		id = ABK
+		value = 1000
+    }
+	abort = { always = no }
+}
+
+IRQ_generation_kill_3 = {
+	allowed = {
+		original_tag = IRQ
+	}
+	enable = {
+		tag = IRQ
+		has_war_with = FIA
+	}
+	ai_strategy = {
+		type = front_control
+		tag = FIA
+		execution_type = rush
+		execute_order = yes
+		manual_attack = no
+	}
+	ai_strategy = {
+		type = conquer
+		id = FIA
+		value = 1000
+    }
+	abort = { always = no }
+}
+
+GER_ISR_greatest_ally = {
+	enable = {
+	    OR = {
+		    tag = ISR
+			tag = FRA
+			tag = ENG
+			tag = PLD
+			tag = ROM 
+			tag = GRE
+			tag = ITA
+			tag = SPR
+			tag = POR
+			tag = DEN
+			tag = NOR
+			tag = UKR
+		}
+		has_war = no
+		has_global_flag = GER_sended_volunteers_isr
+	}
+	abort = {
+		has_war = yes
+	}
+
+	ai_strategy = {
+		type = support
+		id = "ISR"
+		value = 900
+	}
+	ai_strategy = {
+		type = send_volunteers_desire
+		id = "ISR"
+		value = 300
+	}
+}
+
+GER_greatest_ally = {
+	enable = {
+		tag = GER
+		has_war = no
+		has_global_flag = nato_nato_won_nato_war
+	}
+	abort = {
+		has_war = yes
+	}
+
+	ai_strategy = {
+		type = support
+		id = "ISR"
+		value = 900
+	}
+	ai_strategy = {
+		type = send_volunteers_desire
+		id = "ISR"
+		value = 300
+	}
+}

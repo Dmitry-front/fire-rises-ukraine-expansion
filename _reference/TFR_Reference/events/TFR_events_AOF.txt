@@ -1,0 +1,525 @@
+﻿add_namespace = aof
+add_namespace = aof_news
+add_namespace = aof_hidden
+add_namespace = aof_unit_leader
+#United NE
+country_event = {
+	id = aof.1
+	title = aof.1.t
+	desc = aof.1.d
+	is_triggered_only = yes
+	fire_only_once = yes
+	option = {
+		name = aof.1.a
+		set_temp_variable = {
+			var = legit_var_temp
+			value = 0.2
+		}
+		add_legit = yes
+	}
+}
+
+country_event = {
+	#Grafton Crisis - Split or Unify Debug
+	id = aof.2
+	title = aof.2.t
+	desc = aof.2.d
+	is_triggered_only = yes
+	fire_only_once = yes
+	trigger = {
+		OR = {
+			tag = GMA
+			tag = FAA
+			tag = GMC
+		}
+	}
+	immediate = {
+		hidden_effect = {
+			random_list = {
+				60 = {
+					dismantle_faction = yes
+					declare_war_on = {
+						target = FAA
+						type = civil_war
+					}
+					declare_war_on = {
+						target = GMC
+						type = civil_war
+					}
+					FAA = {
+						declare_war_on = {
+							target = GMA
+							type = civil_war
+						}
+						declare_war_on = {
+							target = ATP
+							type = civil_war
+						}
+						annex_country = {
+							target = GMC
+							transfer_troops = yes
+						}
+					}
+				}
+				40 = {
+					set_cosmetic_tag = AOF
+					annex_country = {
+						target = FAA
+						transfer_troops = yes
+					}
+					annex_country = {
+						target = GMC
+						transfer_troops = yes
+					}
+					annex_country = {
+						target = ATP
+						transfer_troops = yes
+					}
+				}
+			}
+		}
+	}
+	option = {
+		name = aof.2.a
+	}
+}
+
+country_event = {
+	#GMAC close to capitulation
+	id = aof.3
+	title = aof.3.t
+	desc = aof.3.d
+	is_triggered_only = yes
+	fire_only_once = yes
+	trigger = {
+		tag = GMA
+	}
+	immediate = {
+		hidden_effect = {
+			dismantle_faction = yes
+			declare_war_on = {
+				target = FAA
+				type = civil_war
+			}
+			declare_war_on = {
+				target = GMC
+				type = civil_war
+			}
+			FAA = {
+				declare_war_on = {
+					target = GMA
+					type = civil_war
+				}
+				declare_war_on = {
+					target = ATP
+					type = civil_war
+				}
+			}
+			GMC = {
+				declare_war_on = {
+					target = GMA
+					type = civil_war
+				}
+				declare_war_on = {
+					target = ATP
+					type = civil_war
+				}
+			}
+		}
+	}
+	option = {
+		name = aof.3.a
+	}
+}
+
+country_event = {
+	#SoL close to capitulation
+	id = aof.4
+	title = aof.4.t
+	desc = aof.4.d
+	fire_only_once = yes
+	is_triggered_only = yes
+	trigger = {
+		tag = GMA
+	}
+	immediate = {
+		hidden_effect = {
+			GMA = {
+				dismantle_faction = yes
+				declare_war_on = {
+					target = FAA
+					type = civil_war
+				}
+				declare_war_on = {
+					target = GMC
+					type = civil_war
+				}
+			}
+			GMC = {
+				declare_war_on = {
+					target = GMA
+					type = civil_war
+				}
+				declare_war_on = {
+					target = ATP
+					type = civil_war
+				}
+			}
+			declare_war_on = {
+				target = GMA
+				type = civil_war
+			}
+			declare_war_on = {
+				target = ATP
+				type = civil_war
+			}
+		}
+	}
+	option = {
+		name = aof.4.a
+	}
+}
+
+country_event = {
+	#GMC close to capitulation
+	id = aof.5
+	title = aof.5.t
+	desc = aof.5.d
+	fire_only_once = yes
+	is_triggered_only = yes
+	trigger = {
+		tag = FAA
+	}
+	immediate = {
+		hidden_effect = {
+			annex_country = {
+				target = GMC
+				transfer_troops = yes
+			}
+		}
+	}
+	option = {
+		name = aof.5.a
+	}
+}
+country_event = {
+	#Anarchists propose AOF
+	id = aof.6
+	title = aof.6.t
+	desc = aof.6.d
+	is_triggered_only = yes
+	immediate = {
+		
+	}
+	option = { #Anarchist Unity over all!
+		name = aof.6.a
+		add_ideas = AOF_Association_of_the_Freed_idea
+		set_power_balance = {
+		    id = AOF_BOP
+		    left_side = AOF_Anarchism_side
+		    right_side = AOF_Libertarianism_side
+		}
+		add_power_balance_value = {
+			id = AOF_BOP
+			value = 0.24
+		}
+		GMA = {
+			add_to_faction = FAA
+		}
+	}
+}
+country_event = {
+	#Local Mayors demand tax concessions - more possible power
+	id = aof.7
+	title = aof.7.t
+	desc = aof.7.d
+	is_triggered_only = yes
+	immediate = {
+		
+	}
+	option = { #taxes are for pussies
+		name = aof.7.a
+		add_ideas = lower_taxes
+		add_stability = 0.08
+	}
+	option = { #a fair and honest tax code
+		name = aof.7.b
+		add_ideas = low_taxes
+		add_power_balance_value = {
+			id = AOF_BOP
+			value = 0.12
+		}
+	}
+}
+country_event = {
+	#Concord Pact signed
+	id = aof.8
+	title = aof.8.t
+	desc = aof.8.d
+	is_triggered_only = yes
+	immediate = {
+		
+	}
+	option = { #Anarchist Unity over all!
+		name = aof.8.a
+		trigger = {
+			tag = FAA
+		}
+		give_military_access = GMC
+		give_guarantee = GMC
+		add_ideas = FAA_Concord_Pact_idea
+	}
+	option = { #Anarchist Unity over all!
+		name = aof.8.a
+		trigger = {
+			tag = GMC
+		}
+		give_military_access = FAA
+		give_guarantee = FAA
+		add_ideas = GMC_Concord_Pact_idea
+	}
+}
+country_event = {
+	#First meeting of the Association - both sides can gain more power - Support our cause in the Association
+	id = aof.9
+	title = aof.9.t
+	desc = aof.9.d
+	is_triggered_only = yes
+	immediate = {
+		
+	}
+	option = { #strengthen political ties
+		name = aof.9.a
+		trigger = {
+			tag = GMA
+		}
+		add_political_power = 50
+	}
+	option = { #Push our cause
+		name = aof.9.b
+		trigger = {
+			tag = GMA
+		}
+		add_power_balance_value = {
+			id = AOF_BOP
+			value = -0.12
+		}
+	}
+	option = { #strengthen political ties
+		name = aof.9.c
+		trigger = {
+			tag = FAA
+		}
+		add_political_power = 50
+	}
+	option = { #Push our cause
+		name = aof.9.e
+		trigger = {
+			tag = FAA
+		}
+		add_power_balance_value = {
+			id = AOF_BOP
+			value = 0.12
+		}
+	}
+}
+country_event = {
+	#Second meeting of the Association - allow minor party representation?
+	id = aof.10
+	title = aof.10.t
+	desc = aof.10.d
+	is_triggered_only = yes
+	immediate = {
+		
+	}
+	option = { #yes - votw gains a LOT of power
+		name = aof.10.a
+		trigger = {
+			tag = GMA
+		}
+		add_popularity = { ideology = nationalist popularity = 0.20 }
+		set_country_flag = AOF_VOTW_flag
+		add_ideas = GMA_vanguard_of_the_wild_idea
+		focus_unlock = yes
+	}
+	option = { #no
+		name = aof.10.b
+		trigger = {
+			tag = GMA
+		}
+		add_war_support = 0.08
+		add_ideas = GMA_vanguard_of_the_wild_dissident_idea
+		add_popularity = { ideology = libertarian_socialist popularity = 0.05 }
+		add_power_balance_value = {
+			id = AOF_BOP
+			value = -0.12
+		}
+	}
+	option = { #yes, republicans and democrats gain a LOT of power
+		name = aof.10.c
+		trigger = {
+			tag = FAA
+		}
+		add_ideas = FAA_freedom_of_association_idea
+		add_popularity = { ideology = conservative popularity = 0.10 }
+		add_popularity = { ideology = social_liberal popularity = 0.10 }
+		add_power_balance_value = {
+			id = AOF_BOP
+			value = -0.12
+		}
+	}
+	option = { #no
+		name = aof.10.e
+		trigger = {
+			tag = FAA
+		}
+		set_country_flag = AOF_GMC_flag
+		add_ideas = FAA_hypocritical_idealism_idea
+		add_popularity = { ideology = nationalist popularity = 0.20 }
+	}
+}
+country_event = {
+	#third meeting - crossroad, stupid disagreement leads to stalemate
+	id = aof.11
+	title = aof.11.t
+	desc = aof.11.d
+	is_triggered_only = yes
+	immediate = {
+		
+	}
+	option = { #stand our ground
+		name = aof.11.a
+		trigger = {
+			tag = GMA
+		}
+		custom_effect_tooltip = GMA_faa_opposition_tt
+		FAA = {
+			add_political_power = -25
+			add_stability = -0.04
+		}
+		add_power_balance_value = {
+			id = AOF_BOP
+			value = -0.12
+		}
+	}
+	option = { #stand down
+		name = aof.11.b
+		trigger = {
+			tag = GMA
+		}
+		custom_effect_tooltip = GMA_faa_stand_down_tt
+		FAA = {
+			add_political_power = 50
+			add_stability = 0.08
+		}
+	}
+	option = { #stand our ground
+		name = aof.11.c
+		trigger = {
+			tag = FAA
+		}
+		custom_effect_tooltip = GMA_gma_opposition_tt
+		GMA = {
+			add_political_power = -25
+			add_stability = -0.04
+		}
+		add_power_balance_value = {
+			id = AOF_BOP
+			value = 0.12
+		}
+	}
+	option = { #stand down
+		name = aof.11.e
+		trigger = {
+			tag = FAA
+		}
+		custom_effect_tooltip = GMA_gma_stand_down_tt
+		FAA = {
+			add_political_power = 50
+			add_stability = 0.08
+		}
+	}
+}
+country_event = {
+	#final meeting - leader of the faction
+	id = aof.12
+	title = aof.12.t
+	desc = aof.12.d
+	is_triggered_only = yes
+	immediate = {
+		
+	}
+	option = { #We stay leader
+		name = aof.12.a
+		trigger = {
+			tag = GMA
+			power_balance_value = {
+			    id = AOF_BOP
+			    value < 0.0
+			}
+		}
+		effect_tooltip = {
+			set_faction_leader = yes
+		}
+		add_stability = 0.075
+		add_political_power = 75
+	}
+	option = { #they become leader
+		name = aof.12.b
+		trigger = {
+			tag = GMA
+			power_balance_value = {
+			    id = AOF_BOP
+			    value > 0.0
+			}
+		}
+		add_stability = 0.025
+		FAA = {
+			effect_tooltip = {
+				set_faction_leader = yes
+			}
+		}
+	}
+	option = { #We become leader
+		name = aof.12.c
+		trigger = {
+			tag = FAA
+			power_balance_value = {
+			    id = AOF_BOP
+			    value > 0.0
+			}
+		}
+		set_faction_leader = yes
+		add_stability = 0.075
+		add_political_power = 75
+	}
+	option = { #stand down
+		name = aof.12.e
+		trigger = {
+			tag = FAA
+			power_balance_value = {
+			    id = AOF_BOP
+			    value < 0.0
+			}
+		}
+		add_stability = 0.025
+		GMA = {
+			effect_tooltip = {
+				set_faction_leader = yes
+			}
+		}
+	}
+}
+country_event = {
+	#Deusen appoints cabinet, gains major initial boost to BOP
+	id = aof.13
+	title = aof.13.t
+	desc = aof.13.d
+	is_triggered_only = yes
+	immediate = {
+		
+	}
+	option = { #For the Revolution
+		name = aof.13.a
+	}
+}

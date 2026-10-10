@@ -1,0 +1,124 @@
+	ideas = {
+		hidden_ideas = {
+			BRM_civil_war_idea = {
+				picture = SOV_stakhanovite_movement
+				allowed = {
+					always = no
+				}
+
+				allowed_civil_war = {
+					always = yes
+				}
+
+				removal_cost = -1
+				
+				modifier = {
+					surrender_limit = 1
+					ai_focus_defense_factor = 0.25
+					army_defence_factor = 0.15
+				}
+			}
+		}
+		country = {
+			BRM_ethnic_tensions = {
+				picture = BRM_ethnic_tensions
+			    traits = {
+			        ZZZ_blank_idea_trait
+			    }
+
+				allowed = {
+					always = no
+				}
+
+				allowed_civil_war = {
+					always = yes
+				}
+
+				removal_cost = -1
+				
+				modifier = {
+					army_org_factor = -0.05
+					society_development_monthly = -0.015
+					planning_speed = -0.15
+				}
+			}
+			BRM_national_ceasefire = {
+				picture = BRM_national_ceasefire
+			    traits = {
+			        ZZZ_blank_idea_trait
+			    }
+
+				allowed = {
+					always = no
+				}
+
+				allowed_civil_war = {
+					always = yes
+				}
+
+				available = {
+					NOT = {
+						OR = {
+							has_war_with = PRC
+							has_war_together_with = PRC
+						}
+					}
+				}
+
+				removal_cost = -1
+				
+				modifier = {
+					army_attack_factor = -1
+					ai_focus_aggressive_factor = -1
+				}
+			}
+			BRM_first_xiist_revolution = {
+				picture = BRM_first_xiist_revolution
+			    traits = {
+			        ZZZ_blank_idea_trait
+			    }
+
+				allowed = {
+					always = no
+				}
+
+				allowed_civil_war = {
+					always = yes
+				}
+
+				removal_cost = -1
+				
+				modifier = {
+					war_support_factor = 0.15
+					stability_factor = -0.05
+					communist_drift = 0.01
+				}
+				targeted_modifier = {
+					tag = PRC
+					extra_trade_to_target_factor = 0.5
+				}
+			}
+			BRM_unstable_junta = {
+				picture = BRM_junta
+			    traits = {
+			        ZZZ_blank_idea_trait
+			    }
+
+				allowed = {
+					always = no
+				}
+
+				allowed_civil_war = {
+					always = yes
+				}
+
+				removal_cost = -1
+				
+				modifier = {
+					army_org_factor = -0.05
+					stability_factor = -0.2
+					political_power_gain = -0.15
+				}
+			}
+		}
+	}

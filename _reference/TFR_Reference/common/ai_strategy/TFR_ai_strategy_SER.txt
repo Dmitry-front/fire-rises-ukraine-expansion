@@ -1,0 +1,54 @@
+SER_support_SRP = {
+	enable = {
+		tag = SER
+		has_war = no
+	}
+	abort = {
+		has_war = yes
+	}
+
+	ai_strategy = {
+		type = send_volunteers_desire
+		id = "SRP"
+		value = 900
+	}
+}
+
+SER_hatred_war = {
+	allowed = {
+		original_tag = SER
+	}
+	enable = {
+		tag = SER
+		has_war_with = CRO
+		has_war_with = SLV
+	}
+	abort = {
+		always = no
+	}
+	
+	ai_strategy = {
+		type = front_control
+		tag = CRO
+		tag = SLV
+		execution_type = rush
+		execute_order = yes
+		manual_attack = no
+	}
+	ai_strategy = {
+		type = consider_weak
+		id = SLV
+		value = 1000
+	}
+	ai_strategy = {
+		type = conquer
+		id = SLV
+		value = 1000
+    }
+	ai_strategy = {
+		type = conquer
+		id = CRO
+		value = 1000
+	}
+}	
+

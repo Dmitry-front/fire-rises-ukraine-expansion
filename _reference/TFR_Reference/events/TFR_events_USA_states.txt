@@ -1,0 +1,3784 @@
+﻿add_namespace = states
+#States take Action
+#California
+country_event = {
+	id = states.1
+	title = states.1.t
+	desc = states.1.d
+	picture = report_event_equipment
+	fire_only_once = yes
+	is_triggered_only = yes
+	trigger = {
+		tag = CAL
+	}
+	immediate = {
+		hidden_effect = {
+			
+		}
+	}
+	option = {
+		name = states.1.a
+	}
+}
+
+#Texas
+country_event = {
+	id = states.2
+	title = states.2.t
+	desc = states.2.d
+	picture = report_event_equipment
+	fire_only_once = yes
+	is_triggered_only = yes
+	trigger = {
+		tag = TEX
+	}
+	immediate = {
+		hidden_effect = {
+			
+		}
+	}
+	option = {
+		name = states.2.a
+	}
+}
+
+#South Test
+country_event = {
+	id = states.4
+	title = states.4.t
+	desc = states.4.d
+	picture = report_event_equipment
+	fire_only_once = yes
+	is_triggered_only = yes
+	trigger = {
+		tag = LOU
+	}
+	immediate = {
+		hidden_effect = {
+			BLA = {
+				USA_civil_war_faction = yes
+				add_state_core = 370
+				add_state_core = 1010
+				add_state_core = 1011
+				add_state_core = 367
+				add_state_core = 1016
+				add_state_core = 1013
+				add_state_core = 1015
+				add_state_core = 1014
+				add_state_core = 1009
+				add_state_core = 1012
+				transfer_state = 1009
+				transfer_state = 1012
+				transfer_state = 1013
+				load_oob = "BLA_2020"
+				#activate_mission = BLA_southern_rebellion_mission
+				new_country = yes
+			}
+			if = {
+				limit = {
+					has_global_flag = play_BLA_global
+				}
+				BLA = {
+					change_tag_from = USA
+				}
+				clr_global_flag = play_BLA_global
+			}
+		}
+	}
+	option = {
+		name = states.4.a
+		effect_tooltip = {
+			BLA = {
+				add_state_core = 982
+				add_state_core = 371
+				add_state_core = 981
+				add_state_core = 980
+				add_state_core = 370
+				add_state_core = 1010
+				add_state_core = 1011
+				add_state_core = 367
+				add_state_core = 1016
+				add_state_core = 1013
+				add_state_core = 1015
+				add_state_core = 1014
+				add_state_core = 1009
+				add_state_core = 1012
+				transfer_state = 978
+				transfer_state = 1009
+				transfer_state = 1012
+				transfer_state = 1013
+			}
+		}
+	}
+}
+
+#California War
+country_event = {
+	id = states.5
+	title = states.5.t
+	desc = states.5.d
+	picture = report_event_equipment
+	fire_only_once = yes
+	is_triggered_only = yes
+	trigger = {
+		tag = CAL
+	}
+	immediate = {
+		hidden_effect = {
+		}
+	}
+	option = {
+		name = states.5.a
+	}
+}
+
+#Texan War
+country_event = {
+	id = states.6
+	title = states.6.t
+	desc = states.6.d
+	picture = report_event_equipment
+	fire_only_once = yes
+	is_triggered_only = yes
+	trigger = {
+		tag = TEX
+	}
+	option = {
+		name = states.6.a
+		TEX = {
+			declare_war_on = {
+				target = TRG
+				type = civil_war
+			}
+			declare_war_on = {
+				target = ATH
+				type = civil_war
+			}
+		}
+		TNM = {
+			add_timed_idea = {
+				idea = TNM_republican_fillibustering_idea
+				days = 56
+			}
+			country_event = {
+				id = tnm.1
+				days = 56
+			}
+			declare_war_on = {
+				target = TEX
+				type = civil_war
+			}
+			declare_war_on = {
+				target = TRG
+				type = civil_war
+			}
+			declare_war_on = {
+				target = BSK
+				type = civil_war
+			}
+			declare_war_on = {
+				target = ATH
+				type = civil_war
+			}
+			declare_war_on = {
+				target = TFM
+				type = civil_war
+			}
+			declare_war_on = {
+				target = ATF
+				type = civil_war
+			}
+			declare_war_on = {
+				target = BND
+				type = civil_war
+			}
+		}
+		TFM = {
+			declare_war_on = {
+				target = TRG
+				type = civil_war
+			}
+			declare_war_on = {
+				target = TNM
+				type = civil_war
+			}
+			declare_war_on = {
+				target = ATH
+				type = civil_war
+			}
+			declare_war_on = {
+				target = TEX
+				type = civil_war
+			}
+		}
+		BSK = {
+			#FUCK EVERYONE
+			declare_war_on = {
+				target = TEX
+				type = civil_war
+			}
+			declare_war_on = {
+				target = TNM
+				type = civil_war
+			}
+			declare_war_on = {
+				target = TFM
+				type = civil_war
+			}
+			declare_war_on = {
+				target = TRG
+				type = civil_war
+			}
+			declare_war_on = {
+				target = ATH
+				type = civil_war
+			}
+			declare_war_on = {
+				target = BND
+				type = civil_war
+			}
+		}
+		BND = {
+			#FUCK EVERYONE
+			declare_war_on = {
+				target = TEX
+				type = civil_war
+			}
+			declare_war_on = {
+				target = TNM
+				type = civil_war
+			}
+			declare_war_on = {
+				target = TFM
+				type = civil_war
+			}
+			declare_war_on = {
+				target = TRG
+				type = civil_war
+			}
+			declare_war_on = {
+				target = ATH
+				type = civil_war
+			}
+			declare_war_on = {
+				target = BSK
+				type = civil_war
+			}
+		}
+		ATF = {
+			#WACO 2.0 LETS GOOOOOOOOOO
+			declare_war_on = {
+				target = TEX
+				type = civil_war
+			}
+			declare_war_on = {
+				target = TNM
+				type = civil_war
+			}
+			declare_war_on = {
+				target = TFM
+				type = civil_war
+			}
+			declare_war_on = {
+				target = TRG
+				type = civil_war
+			}
+			declare_war_on = {
+				target = ATH
+				type = civil_war
+			}
+			declare_war_on = {
+				target = BSK
+				type = civil_war
+			}
+			declare_war_on = {
+				target = BND
+				type = civil_war
+			}
+		}
+		ATH = {
+			declare_war_on = {
+				target = TRG
+				type = civil_war
+			}
+		}
+	}
+}
+
+#Oregon War
+country_event = {
+	id = states.7
+	title = states.7.t
+	desc = states.7.d
+	picture = report_event_equipment
+	fire_only_once = yes
+	is_triggered_only = yes
+	trigger = {
+		tag = USA
+	}
+	immediate = {
+		hidden_effect = {
+		}
+	}
+	option = {
+		name = states.7.a
+		effect_tooltip = {
+			ORE = {
+				transfer_state = 993
+				transfer_state = 994
+				transfer_state = 996
+				transfer_state = 385
+				transfer_state = 998
+				transfer_state = 997
+				transfer_state = 995
+				transfer_state = 999
+			}
+		}
+	}
+}
+
+#Southern War
+country_event = {
+	id = states.8
+	title = states.8.t
+	desc = states.8.d
+	picture = report_event_equipment
+	fire_only_once = yes
+	is_triggered_only = yes
+	trigger = {
+		tag = LOU
+	}
+	immediate = {
+		hidden_effect = {
+			BLA = {
+				declare_war_on = {
+					target = MSS
+					type = civil_war
+				}
+				declare_war_on = {
+					target = ALA
+					type = civil_war
+				}
+			}
+			LOS = {
+				declare_war_on = {
+					target = LOU
+					type = civil_war
+				}
+			}
+			IKA = {
+				declare_war_on = {
+					target = GRA
+					type = civil_war
+				}
+				declare_war_on = {
+					target = STC
+					type = civil_war
+				}
+				declare_war_on = {
+					target = LWK
+					type = civil_war
+				}
+				declare_war_on = {
+					target = RRR
+					type = civil_war
+				}
+				declare_war_on = {
+					target = NCA
+					type = civil_war
+				}
+			}
+			LWK = {
+				declare_war_on = {
+					target = GRA
+					type = civil_war
+				}
+				declare_war_on = {
+					target = STC
+					type = civil_war
+				}
+				declare_war_on = {
+					target = RRR
+					type = civil_war
+				}
+				declare_war_on = {
+					target = NCA
+					type = civil_war
+				}
+			}
+			NCA = {
+				declare_war_on = {
+					target = GRA
+					type = civil_war
+				}
+				declare_war_on = {
+					target = STC
+					type = civil_war
+				}
+			}
+			RRR = {
+				declare_war_on = {
+					target = GRA
+					type = civil_war
+				}
+				declare_war_on = {
+					target = STC
+					type = civil_war
+				}
+				declare_war_on = {
+					target = NCA
+					type = civil_war
+				}
+			}
+		}
+	}
+	option = {
+		name = states.8.a
+	}
+}
+
+#Floridan War
+country_event = {
+	id = states.9
+	title = states.9.t
+	desc = states.9.d
+	picture = report_event_equipment
+	fire_only_once = yes
+	is_triggered_only = yes
+	trigger = {
+		tag = FLA
+	}
+	immediate = {
+		hidden_effect = {
+			ATW = {
+				declare_war_on = {
+					target = FLA
+					type = civil_war
+				}
+				declare_war_on = {
+					target = FLM
+					type = civil_war
+				}
+			}
+			FLM = {
+				declare_war_on = {
+					target = FLA
+					type = civil_war
+				}
+			}
+			MMS = {
+				declare_war_on = {
+					target = FLA
+					type = civil_war
+				}
+				declare_war_on = {
+					target = FLM
+					type = civil_war
+				}
+				declare_war_on = {
+					target = ATW
+					type = civil_war
+				}
+			}
+			LRA = {
+				declare_war_on = {
+					target = FLA
+					type = civil_war
+				}
+				declare_war_on = {
+					target = FLM
+					type = civil_war
+				}
+				declare_war_on = {
+					target = ATW
+					type = civil_war
+				}
+				declare_war_on = {
+					target = MMS
+					type = civil_war
+				}
+			}
+			ZOE = {
+				declare_war_on = {
+					target = FLA
+					type = civil_war
+				}
+				declare_war_on = {
+					target = FLM
+					type = civil_war
+				}
+				declare_war_on = {
+					target = ATW
+					type = civil_war
+				}
+				declare_war_on = {
+					target = LRA
+					type = civil_war
+				}
+				declare_war_on = {
+					target = MMS
+					type = civil_war
+				}
+			}
+		}
+	}
+	option = {
+		name = states.9.a
+	}
+}
+
+#Mississippi
+country_event = {
+	id = states.10
+	title = states.10.t
+	desc = states.10.d
+	picture = report_event_equipment
+	fire_only_once = yes
+	is_triggered_only = yes
+	trigger = {
+		tag = USA
+	}
+	option = {
+		name = states.10.a
+	}
+}
+
+#Southern States
+country_event = {
+	id = states.11
+	title = states.11.t
+	desc = states.11.d
+	picture = report_event_equipment
+	fire_only_once = yes
+	is_triggered_only = no
+	trigger = {
+		tag = LOU
+	}
+	immediate = {
+		hidden_effect = {
+			LOU = {
+				country_event = {
+					id = states.4
+					days = 7
+				}
+			}
+		}
+	}
+	option = {
+		name = states.11.a
+	}
+}
+
+#California Beta Test
+country_event = {
+	id = states.12
+	title = states.12.t
+	desc = states.12.d
+	picture = report_event_equipment
+	fire_only_once = yes
+	is_triggered_only = no
+	trigger = {
+		tag = CAL
+	}
+	option = {
+		name = states.12.a
+		hidden_effect = {
+			CAL = {
+				country_event = {
+					id = states.1
+					days = 7
+				}
+			}
+		}
+	}
+}
+
+#Texas Beta Test
+country_event = {
+	id = states.13
+	title = states.13.t
+	desc = states.13.d
+	picture = report_event_equipment
+	fire_only_once = yes
+	is_triggered_only = no
+	trigger = {
+		tag = TEX
+	}
+	immediate = {
+		hidden_effect = {
+			country_event = {
+				id = states.2
+				days = 7
+			}
+		}
+	}
+	option = {
+		name = states.13.a
+	}
+}
+
+#Florida Beta Test
+country_event = {
+	id = states.14
+	title = states.14.t
+	desc = states.14.d
+	picture = report_event_equipment
+	fire_only_once = yes
+	is_triggered_only = yes
+	trigger = {
+		tag = FLA
+	}
+	immediate = {
+		hidden_effect = {
+			country_event = {
+				id = states.3
+				days = 7
+			}
+		}
+	}
+	option = {
+		name = states.14.a
+		effect_tooltip = {
+		}
+	}
+}
+
+#Oregon Test
+country_event = {
+	id = states.15
+	title = states.15.t
+	desc = states.15.d
+	picture = report_event_equipment
+	fire_only_once = yes
+	is_triggered_only = yes
+	trigger = {
+		tag = ORE
+	}
+	immediate = {
+		hidden_effect = {
+		}
+	}
+	option = {
+		name = states.15.a
+	}
+}
+
+#Excess Equipment Taken
+country_event = {
+	id = states.20
+	title = states.20.t
+	desc = states.20.d
+	picture = GFX_APLA_tank
+	fire_only_once = yes
+	is_triggered_only = yes
+	trigger = {
+		tag = APA
+	}
+	option = {
+		name = states.20.a
+		load_oob = "Exploited_Stockpile"
+		add_equipment_to_stockpile = {
+			type = motorized_equipment_1
+			amount = 200
+			producer = USA
+		}
+		add_equipment_to_stockpile = {
+			type = mechanized_equipment_1
+			amount = 200
+			producer = USA
+		}
+		add_equipment_to_stockpile = {
+			type = light_mechanized_equipment_2
+			amount = 200
+			producer = USA
+		}
+		add_equipment_to_stockpile = {
+			type = modern_tank_equipment_3
+			amount = 200
+			producer = USA
+		}
+		add_equipment_to_stockpile = {
+			type = spaa_equipment_1
+			amount = 200
+			producer = USA
+		}
+		add_equipment_to_stockpile = {
+			type = modern_tank_artillery_equipment_1
+			amount = 200
+			producer = USA
+		}
+	}
+}
+
+#Defense Companies/Airfield Accessed
+country_event = {
+	id = states.21
+	title = states.21.t
+	desc = states.21.d
+	picture = report_event_equipment
+	fire_only_once = yes
+	is_triggered_only = yes
+	trigger = {
+		tag = APA
+	}
+	option = {
+		name = states.21.a
+		add_equipment_to_stockpile = {
+			type = fighter_equipment_2
+			amount = 20
+			producer = USA
+		}
+		add_equipment_to_stockpile = {
+			type = fighter_equipment_3
+			amount = 10
+			producer = USA
+		}
+		add_equipment_to_stockpile = {
+			type = CAS_equipment_2
+			amount = 20
+			producer = USA
+		}
+		1039 = {
+			add_building_construction = {
+				type = arms_factory
+				level = 2
+				instant_build = yes
+			}
+			add_extra_state_shared_building_slots = 2
+		}
+	}
+}
+
+#Louisville Tank Duel
+news_event = {
+	id = states.22
+	title = states.22.t
+	desc = states.22.d
+	picture = GFX_Tank_Duel
+	major = yes
+	is_triggered_only = yes
+	option = {
+		name = states.22.a
+		
+		trigger = {
+			NOT = {
+				TAG = USC
+				TAG = USB
+				TAG = SOV
+				TAG = GER
+			}
+		}
+	}
+	option = {
+		name = states.22.b
+		
+		trigger = {
+			TAG = USC
+		}
+		add_war_support = 0.03
+	}
+	option = {
+		name = states.22.c
+		
+		trigger = {
+			TAG = USB
+		}
+	}
+	option = {
+		name = states.22.e
+		
+		trigger = {
+			TAG = SOV
+		}
+	}
+	option = {
+		name = states.22.f
+		
+		trigger = {
+			TAG = GER
+		}
+	}
+}
+
+#Battle of D.C.
+news_event = {
+	id = states.23
+	title = states.23.t
+	desc = states.23.d
+	picture = GFX_battle_for_dc
+	hidden = yes
+	is_triggered_only = yes
+	option = {
+		name = states.23.a
+		
+		trigger = {
+			NOT = {
+				TAG = USC
+				TAG = USB
+			}
+		}
+	}
+	option = {
+		name = states.23.b
+		
+		trigger = {
+			TAG = USC
+		}
+	}
+	option = {
+		name = states.23.c
+		
+		trigger = {
+			TAG = USB
+		}
+	}
+}
+
+#White House Liberated
+country_event = {
+	id = states.24
+	title = states.24.t
+	desc = states.24.d
+	picture = report_event_equipment
+	fire_only_once = yes
+	is_triggered_only = no
+	trigger = {
+		tag = USC
+		931 = {
+			is_owned_by = USB
+		}
+		USC = {
+			controls_province = 13310
+		}
+	}
+	immediate = {
+		set_global_flag = white_house_liberated
+	}
+	mean_time_to_happen = {
+		days = 2
+	}
+	option = {
+		name = states.24.a
+	}
+}
+
+#Pentagon Liberated
+country_event = {
+	id = states.25
+	title = states.25.t
+	desc = states.25.d
+	picture = report_event_equipment
+	fire_only_once = yes
+	is_triggered_only = no
+	trigger = {
+		tag = USC
+		931 = {
+			is_owned_by = USB
+		}
+		USC = {
+			controls_province = 13305
+		}
+	}
+	immediate = {
+		set_global_flag = pentagon_liberated
+	}
+	mean_time_to_happen = {
+		days = 2
+	}
+	option = {
+		name = states.25.a
+	}
+}
+
+#Battle of Sacramento APA v CLM
+news_event = {
+	id = states.26
+	title = states.26.t
+	desc = states.26.d
+	picture = GFX_Generic_City_Combat3
+	hidden = yes
+	is_triggered_only = yes
+	option = {
+		name = states.26.a
+		
+		trigger = {
+			NOT = {
+				TAG = APA
+				TAG = CLM
+			}
+		}
+	}
+	option = {
+		name = states.26.b
+		
+		trigger = {
+			TAG = APA
+		}
+	}
+	option = {
+		name = states.26.c
+		
+		trigger = {
+			TAG = CLM
+		}
+	}
+}
+
+#Battle of Sacramento APA v USA
+news_event = {
+	id = states.27
+	title = states.27.t
+	desc = states.27.d
+	picture = GFX_Battle_of_Sacramento
+	is_triggered_only = yes
+	hidden = yes
+	option = {
+		name = states.27.a
+		
+		trigger = {
+			NOT = {
+				TAG = USC
+				TAG = APA
+			}
+		}
+	}
+	option = {
+		name = states.27.b
+		
+		trigger = {
+			TAG = APA
+		}
+	}
+	option = {
+		name = states.27.c
+		
+		trigger = {
+			TAG = USC
+		}
+	}
+}
+
+#Battle of Portland APA v ORE
+news_event = {
+	id = states.28
+	title = states.28.t
+	desc = states.28.d
+	picture = GFX_Generic_City_Combat
+	is_triggered_only = yes
+	hidden = yes
+	option = {
+		name = states.28.a
+		
+		trigger = {
+			NOT = {
+				TAG = ORE
+				TAG = APA
+			}
+		}
+	}
+	option = {
+		name = states.28.b
+		
+		trigger = {
+			TAG = APA
+		}
+	}
+	option = {
+		name = states.28.c
+		
+		trigger = {
+			TAG = ORE
+		}
+	}
+}
+
+#Battle of Portland APA v USA
+news_event = {
+	id = states.29
+	title = states.29.t
+	desc = states.29.d
+	picture = GFX_Generic_City_Combat2
+	is_triggered_only = yes
+	hidden = yes
+	option = {
+		name = states.29.a
+		
+		trigger = {
+			NOT = {
+				TAG = USC
+				TAG = APA
+			}
+		}
+	}
+	option = {
+		name = states.29.b
+		
+		trigger = {
+			TAG = APA
+		}
+	}
+	option = {
+		name = states.29.c
+		
+		trigger = {
+			TAG = USC
+		}
+	}
+}
+
+#State declares government illegal
+country_event = {
+	id = states.30
+	title = states.30.t
+	desc = states.30.d
+	picture = report_event_equipment
+	is_triggered_only = yes
+	trigger = {
+		tag = USA
+	}
+	fire_only_once = no
+	option = {
+		name = states.30.a
+	}
+}
+
+#State declares government illegal
+country_event = {
+	id = states.31
+	title = states.31.t
+	desc = states.31.d
+	picture = report_event_equipment
+	is_triggered_only = yes
+	trigger = {
+		tag = USB
+	}
+	fire_only_once = no
+	option = {
+		name = states.30.a
+	}
+}
+
+#South Test
+country_event = {
+	id = states.32
+	title = states.32.t
+	desc = states.32.d
+	picture = report_event_equipment
+	is_triggered_only = yes
+	fire_only_once = yes
+	option = {
+		name = states.32.a
+		BLA = {
+			declare_war_on = {
+				target = LOU
+				type = civil_war
+			}
+			declare_war_on = {
+				target = MSS
+				type = civil_war
+			}
+			declare_war_on = {
+				target = ALA
+				type = civil_war
+			}
+			country_event = {
+				id = states.33
+				days = 28
+			}
+		}
+		LOU = {
+			load_oob = "LOU_2020"
+		}
+		MSS = {
+			load_oob = "MSS_2020"
+		}
+		ALA = {
+			load_oob = "ALA_2020"
+		}
+	}
+}
+
+#Atlanta Uprising
+country_event = {
+	id = states.33
+	title = states.33.t
+	desc = states.33.desc
+	picture = report_event_equipment
+	fire_only_once = yes
+	is_triggered_only = yes
+	trigger = {
+		tag = BLA
+	}
+	immediate = {
+		hidden_effect = {
+		}
+	}
+	option = {
+		name = states.33.a
+		effect_tooltip = {
+		}
+	}
+}
+
+#Battle of Portland APA v PPN
+news_event = {
+	id = states.34
+	title = states.34.t
+	desc = states.34.d
+	picture = GFX_Generic_City_Combat2
+	is_triggered_only = yes
+	hidden = yes
+	option = {
+		name = states.34.a
+		
+		trigger = {
+			NOT = {
+				TAG = PPN
+				TAG = APA
+			}
+		}
+	}
+	option = {
+		name = states.34.b
+		
+		trigger = {
+			TAG = APA
+		}
+	}
+	option = {
+		name = states.34.c
+		
+		trigger = {
+			TAG = PPN
+		}
+	}
+}
+
+#Battle of LA RGA v CAL
+news_event = {
+	id = states.35
+	title = states.35.t
+	desc = states.35.d
+	picture = GFX_Generic_City_Combat2
+	is_triggered_only = yes
+	hidden = yes
+	option = {
+		name = states.35.a
+		
+		trigger = {
+			NOT = {
+				TAG = CAL
+				TAG = RGA
+			}
+		}
+	}
+	option = {
+		name = states.35.b
+		
+		trigger = {
+			TAG = CAL
+		}
+	}
+	option = {
+		name = states.35.c
+		
+		trigger = {
+			TAG = RGA
+		}
+	}
+}
+
+#New England Exploades
+country_event = {
+	id = states.36
+	title = states.36.t
+	desc = states.36.d
+	picture = report_event_equipment
+	fire_only_once = yes
+	is_triggered_only = yes
+	trigger = {
+		tag = NEG
+	}
+	immediate = {
+		hidden_effect = {
+		}
+	}
+	option = {
+		name = states.36.a
+	}
+}
+
+#Battle of Macon
+country_event = {
+	id = states.38
+	title = states.38.t
+	desc = states.38.d
+	picture = GFX_Generic_City_Combat4
+	is_triggered_only = yes
+	hidden = yes
+	option = {
+		name = states.38.a
+		trigger = {
+			TAG = USB
+		}
+		USB = {
+			set_global_flag = macon_captured
+		}
+	}
+	option = {
+		name = states.38.b
+		trigger = {
+			TAG = USA
+		}
+		USA = {
+			set_global_flag = macon_captured
+		}
+	}
+}
+
+#Battle of Macon 2
+country_event = {
+	id = states.39
+	title = states.39.t
+	desc = states.39.d
+	picture = GFX_Generic_City_Combat4
+	is_triggered_only = yes
+	option = {
+		name = states.39.a
+		trigger = {
+			TAG = USB
+		}
+		USB = {
+			clr_global_flag = macon_captured
+		}
+	}
+	option = {
+		name = states.39.b
+		trigger = {
+			TAG = USA
+		}
+		USA = {
+			clr_global_flag = macon_captured
+		}
+	}
+}
+
+#Battle of Redding
+country_event = {
+	id = states.40
+	title = states.40.t
+	desc = states.40.d
+	picture = GFX_Generic_City_Combat4
+	is_triggered_only = yes
+	option = {
+		name = states.40.a
+		trigger = {
+			TAG = USB
+		}
+		USB = {
+			set_global_flag = redding_captured
+		}
+	}
+	option = {
+		name = states.40.b
+		trigger = {
+			TAG = USA
+		}
+		USA = {
+			set_global_flag = redding_captured
+		}
+	}
+}
+
+#Battle of Redding
+country_event = {
+	id = states.41
+	title = states.41.t
+	desc = states.41.d
+	picture = GFX_Generic_City_Combat4
+	is_triggered_only = yes
+	option = {
+		name = states.41.a
+		trigger = {
+			TAG = USB
+		}
+		USB = {
+			clr_global_flag = redding_captured
+		}
+	}
+	option = {
+		name = states.41.b
+		trigger = {
+			TAG = USA
+		}
+		USA = {
+			clr_global_flag = redding_captured
+		}
+	}
+}
+
+#Last Rights
+country_event = {
+	id = states.43
+	title = states.43.t
+	desc = states.43.d
+	picture = GFX_Generic_City_Combat4
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = {
+		name = states.43.a
+	}
+}
+
+#Incoming Transmission
+country_event = {
+	id = states.44
+	title = states.44.t
+	desc = states.44.d
+	picture = GFX_Generic_City_Combat4
+	fire_only_once = yes
+	is_triggered_only = yes
+	trigger = {
+	}
+	option = {
+		name = states.44.a
+	}
+}
+
+#Sinola Takes El Paso
+country_event = {
+	id = states.49
+	title = states.49.t
+	desc = states.49.d
+	picture = GFX_Generic_City_Combat4
+	fire_only_once = yes
+	is_triggered_only = yes
+	trigger = {
+		tag = ALF
+	}
+	option = {
+		name = states.49.a
+	}
+}
+
+#Las Vegas Defended
+country_event = {
+	id = states.50
+	title = states.50.t
+	desc = states.50.d
+	picture = GFX_Generic_US_Army
+	fire_only_once = yes
+	is_triggered_only = yes
+	trigger = {
+		tag = USA
+	}
+	option = {
+		name = states.50.a
+		hidden_effect = {
+		}
+	}
+}
+
+#Las Vegas Captured
+country_event = {
+	id = states.51
+	title = states.51.t
+	desc = states.51.d
+	picture = GFX_Generic_US_Army
+	fire_only_once = yes
+	is_triggered_only = yes
+	trigger = {
+		tag = USA
+	}
+	option = {
+		name = states.51.a
+		hidden_effect = {
+		}
+	}
+}
+
+#LOS Rises
+country_event = {
+	id = states.52
+	title = states.52.t
+	desc = states.52.desc
+	picture = GFX_Generic_US_Army
+	fire_only_once = yes
+	is_triggered_only = yes
+	trigger = {
+		tag = BLA
+	}
+	immediate = {
+		hidden_effect = {
+		}
+	}
+	option = {
+		name = states.52.a
+	}
+}
+
+#Battle of Phoenix APA v ARZ
+news_event = {
+	id = states.53
+	title = states.53.t
+	desc = states.53.d
+	picture = GFX_Generic_City_Combat2
+	is_triggered_only = yes
+	hidden = yes
+	option = {
+		name = states.53.a
+		
+		trigger = {
+			NOT = {
+				TAG = ARZ
+				TAG = APA
+			}
+		}
+	}
+	option = {
+		name = states.53.b
+		
+		trigger = {
+			TAG = APA
+		}
+	}
+	option = {
+		name = states.53.c
+		
+		trigger = {
+			TAG = ARZ
+		}
+	}
+}
+
+#Battle of Salt Lake City APA v USA
+news_event = {
+	id = states.54
+	title = states.54.t
+	desc = states.54.d
+	picture = GFX_Battle_of_Salt_Lake
+	is_triggered_only = yes
+	hidden = yes
+	option = {
+		name = states.54.a
+		
+		trigger = {
+			NOT = {
+				TAG = USA
+			}
+		}
+	}
+	option = {
+		name = states.54.b
+		
+		trigger = {
+			TAG = APA
+		}
+	}
+	option = {
+		name = states.54.c
+		
+		trigger = {
+			TAG = USA
+		}
+	}
+}
+
+#Battle of Albuquerque APA v USA
+news_event = {
+	id = states.55
+	title = states.55.t
+	desc = states.55.d
+	picture = GFX_Generic_City_Combat2
+	is_triggered_only = yes
+	hidden = yes
+	option = {
+		name = states.55.a
+		
+		trigger = {
+			NOT = {
+				TAG = ARZ
+				TAG = USA
+			}
+		}
+	}
+	option = {
+		name = states.55.b
+		
+		trigger = {
+			TAG = APA
+		}
+	}
+	option = {
+		name = states.55.c
+		
+		trigger = {
+			TAG = USA
+		}
+	}
+}
+
+#Battle of Austin TRG vs TEX
+news_event = {
+	id = states.56
+	title = states.56.t
+	desc = states.56.d
+	picture = GFX_Generic_City_Combat2
+	is_triggered_only = yes
+	hidden = yes
+	option = {
+		name = states.56.a
+		
+		trigger = {
+			NOT = {
+				TAG = TRG
+			}
+		}
+	}
+	option = {
+		name = states.56.b
+		
+		trigger = {
+			TAG = TRG
+		}
+	}
+}
+
+#Tampa Massacre
+news_event = {
+	id = states.57
+	title = states.57.t
+	desc = states.57.d
+	picture = GFX_Generic_Atomwaffen_News
+	is_triggered_only = yes
+	option = {
+		name = states.57.a
+		
+		trigger = {
+			NOT = {
+				TAG = ATW
+			}
+		}
+	}
+	option = {
+		name = states.57.b
+		
+		trigger = {
+			TAG = ATW
+		}
+	}
+}
+
+#Second Battle of Salt Lake
+news_event = {
+	id = states.58
+	title = states.58.t
+	desc = states.58.d
+	picture = GFX_Generic_Battle_Abrams
+	is_triggered_only = yes
+	hidden = yes
+	option = {
+		name = states.58.a
+		
+		trigger = {
+			NOT = {
+				TAG = USA
+			}
+		}
+	}
+	option = {
+		name = states.58.b
+		
+		trigger = {
+			TAG = APA
+		}
+	}
+	option = {
+		name = states.58.c
+		trigger = {
+			TAG = USA
+		}
+	}
+}
+
+#Militias in Virginia
+country_event = {
+	id = states.59
+	title = states.59.t
+	desc = states.59.d
+	picture = GFX_FBI_far_right_virginia
+	is_triggered_only = yes
+	fire_only_once = yes
+	trigger = {
+		tag = USA
+	}
+	option = {
+		name = states.59.a
+	}
+}
+
+#False Flags... Is someone trying to instigate some of these riots???? :0
+country_event = {
+	id = states.60
+	title = states.60.t
+	desc = states.60.d
+	picture = GFX_FBI_false_flag
+	is_triggered_only = yes
+	fire_only_once = yes
+	trigger = {
+		tag = USA
+	}
+	option = {
+		name = states.59.a
+	}
+}
+
+#Adamwaffen doing stuff again
+country_event = {
+	id = states.61
+	title = states.61.t
+	desc = states.61.d
+	picture = GFX_event_ATW_triumph_and_transcendence
+	is_triggered_only = yes
+	fire_only_once = yes
+	trigger = {
+		tag = USA
+	}
+	option = {
+		name = states.59.a
+	}
+}
+
+#Gloria la Riva getting pissy
+country_event = {
+	id = states.62
+	title = states.62.t
+	desc = states.62.d
+	picture = GFX_FBI_far_left_militia
+	is_triggered_only = yes
+	fire_only_once = yes
+	trigger = {
+		tag = USA
+	}
+	option = {
+		name = states.59.a
+	}
+}
+
+#GMAC Asks Maine to Join Faction
+country_event = {
+	id = states.63
+	title = states.63.t
+	desc = states.63.d
+	picture = 62
+	is_triggered_only = yes
+	trigger = {
+		tag = NEG
+	}
+	option = {
+		name = states.63.a
+		GMA = {
+			add_to_faction = NEG
+		}
+	}
+	option = {
+		name = states.63.b
+		add_war_support = 0.05
+	}
+}
+
+#GMAC Asks Vermont to Join Faction
+country_event = {
+	id = states.64
+	title = states.64.t
+	desc = states.64.d
+	picture = 62
+	is_triggered_only = yes
+	trigger = {
+		tag = VER
+	}
+	option = {
+		name = states.64.a
+		GMA = {
+			add_to_faction = VER
+		}
+		add_stability = -0.05
+	}
+	option = {
+		name = states.64.b
+		add_war_support = 0.05
+		add_stability = 0.05
+	}
+}
+
+#GMAC Asks Green Mountain Boys to Join Faction
+country_event = {
+	id = states.65
+	title = states.65.t
+	desc = states.65.d
+	picture = 62
+	is_triggered_only = yes
+	trigger = {
+		tag = GMB
+	}
+	option = {
+		name = states.64.a
+		GMA = {
+			add_to_faction = GMB
+		}
+		add_war_support = -0.05
+	}
+	option = {
+		name = states.64.b
+		add_war_support = 0.05
+	}
+}
+
+#Palmetto State Armory captured
+country_event = {
+	id = states.66
+	title = states.66.t
+	desc = states.66.d
+	picture = GFX_Palmetto_State_Armory
+	is_triggered_only = yes
+	trigger = {
+		#USA_civil_war_faction = yes
+	}
+	option = {
+		name = states.66.a
+	}
+}
+
+#Palmetto State Armory lost
+country_event = {
+	id = states.67
+	title = states.67.t
+	desc = states.67.d
+	picture = GFX_Palmetto_State_Armory
+	is_triggered_only = yes
+	trigger = {
+		#USA_civil_war_faction = yes
+	}
+	option = {
+		name = states.67.a
+	}
+}
+
+#Hoover Dam Captured
+country_event = {
+	id = states.68
+	title = states.68.t
+	desc = states.68.d
+	picture = GFX_Generic_Battle_Abrams
+	is_triggered_only = yes
+	hidden = yes
+	trigger = {
+		#USA_civil_war_faction = yes
+	}
+	option = {
+		name = states.68.a
+	}
+}
+
+#Hoover Dam lost
+country_event = {
+	id = states.69
+	title = states.69.t
+	desc = states.69.d
+	picture = GFX_Generic_Battle_Abrams
+	is_triggered_only = yes
+	hidden = yes
+	trigger = {
+		#USA_civil_war_faction = yes
+	}
+	option = {
+		name = states.69.a
+	}
+}
+
+#Albuquerque Police Station Captured
+country_event = {
+	id = states.70
+	title = states.70.t
+	desc = states.70.d
+	picture = GFX_Generic_Battle_Abrams
+	is_triggered_only = yes
+	hidden = yes
+	trigger = {
+		#USA_civil_war_faction = yes
+	}
+	option = {
+		name = states.70.a
+		#add_ideas = USA_albur_pd
+	}
+}
+
+#Albuquerque Police Station lost
+country_event = {
+	id = states.71
+	title = states.71.t
+	desc = states.71.d
+	picture = GFX_Generic_Battle_Abrams
+	is_triggered_only = yes
+	hidden = yes
+	trigger = {
+		#USA_civil_war_faction = yes
+	}
+	option = {
+		name = states.71.a
+		#remove_ideas = USA_albur_pd
+	}
+}
+
+#Battle of Seattle WAS vs CAC
+news_event = {
+	id = states.73
+	title = states.73.t
+	desc = states.73.d
+	picture = GFX_Generic_City_Combat
+	is_triggered_only = yes
+	hidden = yes
+	option = {
+		name = states.73.a
+		
+		trigger = {
+			NOT = {
+				TAG = CAC
+			}
+		}
+		effect_tooltip = {
+			CAC = {
+				set_temp_variable = {
+					var = legit_var_temp
+					value = 0.1
+				}
+				add_legit = yes
+			}
+		}
+	}
+	option = {
+		name = states.73.b
+		
+		trigger = {
+			TAG = CAC
+		}
+		effect_tooltip = {
+			CAC = {
+				set_temp_variable = {
+					var = legit_var_temp
+					value = 0.1
+				}
+				add_legit = yes
+			}
+		}
+	}
+}
+
+#Lockheed Martin Facility Captured
+country_event = {
+	id = states.74
+	title = states.74.t
+	desc = states.74.d
+	picture = GFX_Lockheed_Martin
+	is_triggered_only = yes
+	trigger = {
+		#USA_civil_war_faction = yes
+	}
+	option = {
+		name = states.74.a
+		#add_ideas = USA_lockheed_martin
+	}
+}
+
+#Lockheed Martin Facility lost
+country_event = {
+	id = states.75
+	title = states.75.t
+	desc = states.75.d
+	picture = GFX_Lockheed_Martin
+	is_triggered_only = yes
+	trigger = {
+		#USA_civil_war_faction = yes
+	}
+	option = {
+		name = states.75.a
+		#remove_ideas = USA_lockheed_martin
+	}
+}
+
+#Rock Island Arsenal Captured
+country_event = {
+	id = states.76
+	title = states.76.t
+	desc = states.76.d
+	picture = GFX_Rock_Island_Arsenal
+	is_triggered_only = yes
+	trigger = {
+		#USA_civil_war_faction = yes
+	}
+	option = {
+		name = states.76.a
+		#add_ideas = USA_rock_island_arsenal
+	}
+}
+
+#Rock Island Arsenal lost
+country_event = {
+	id = states.77
+	title = states.77.t
+	desc = states.77.d
+	picture = GFX_Rock_Island_Arsenal
+	is_triggered_only = yes
+	trigger = {
+		#USA_civil_war_faction = yes
+	}
+	option = {
+		name = states.77.a
+		#remove_ideas = USA_rock_island_arsenal
+	}
+}
+
+#Battle of Boston
+news_event = {
+	id = states.78
+	title = {
+		text = states.78.t1
+		trigger = {
+			PTF = {
+				OR = {
+					controls_state = 357
+					owns_state = 357
+				}
+			}
+		}
+	}
+	title = {
+		text = states.78.t2
+		trigger = {
+			GMA = {
+				OR = {
+					controls_state = 357
+					owns_state = 357
+				}
+			}
+		}
+	}
+	title = {
+		text = states.78.t3
+		trigger = {
+			USC = {
+				OR = {
+					controls_state = 357
+					owns_state = 357
+				}
+			}
+		}
+	}
+	title = {
+		text = states.78.t4
+		trigger = {
+			USB = {
+				OR = {
+					controls_state = 357
+					owns_state = 357
+				}
+			}
+		}
+	}
+	title = {
+		text = states.78.t5
+		trigger = {
+			APA = {
+				OR = {
+					controls_state = 357
+					owns_state = 357
+				}
+			}
+		}
+	}
+	title = {
+		text = states.78.t6
+		trigger = {
+			NSM = {
+				OR = {
+					controls_state = 357
+					owns_state = 357
+				}
+			}
+		}
+	}
+	title = {
+		text = states.78.t7
+		trigger = {
+			ATW = {
+				OR = {
+					controls_state = 357
+					owns_state = 357
+				}
+			}
+		}
+	}
+	desc = {
+		text = states.78.d1
+		trigger = {
+			PTF = {
+				OR = {
+					controls_state = 357
+					owns_state = 357
+				}
+			}
+		}
+	}
+	desc = {
+		text = states.78.d2
+		trigger = {
+			GMA = {
+				OR = {
+					controls_state = 357
+					owns_state = 357
+				}
+			}
+		}
+	}
+	desc = {
+		text = states.78.d3
+		trigger = {
+			USC = {
+				OR = {
+					controls_state = 357
+					owns_state = 357
+				}
+			}
+		}
+	}
+	desc = {
+		text = states.78.d4
+		trigger = {
+			USB = {
+				OR = {
+					controls_state = 357
+					owns_state = 357
+				}
+			}
+		}
+	}
+	desc = {
+		text = states.78.d5
+		trigger = {
+			APA = {
+				OR = {
+					controls_state = 357
+					owns_state = 357
+				}
+			}
+		}
+	}
+	desc = {
+		text = states.78.d6
+		trigger = {
+			NSM = {
+				OR = {
+					controls_state = 357
+					owns_state = 357
+				}
+			}
+		}
+	}
+	desc = {
+		text = states.78.d7
+		trigger = {
+			ATW = {
+				OR = {
+					controls_state = 357
+					owns_state = 357
+				}
+			}
+		}
+	}
+	picture = GFX_Generic_City_Combat
+	is_triggered_only = yes
+	hidden = yes
+	option = {
+		name = states.78.a
+		
+		trigger = {
+			NOT = {
+				TAG = ROOT
+			}
+		}
+		effect_tooltip = {
+			FROM = {
+				set_temp_variable = {
+					var = legit_var_temp
+					value = 0.1
+				}
+				add_legit = yes
+			}
+		}
+	}
+	option = {
+		name = states.78.b
+		
+		trigger = {
+			TAG = ROOT
+		}
+		effect_tooltip = {
+			ROOT = {
+				set_temp_variable = {
+					var = legit_var_temp
+					value = 0.1
+				}
+				add_legit = yes
+			}
+		}
+	}
+}
+
+#Battle of philadelphia
+news_event = {
+	id = states.79
+	title = {
+		text = states.79.t1
+		trigger = {
+			PTF = {
+				OR = {
+					controls_state = 1069
+					owns_state = 1069
+				}
+			}
+		}
+	}
+	title = {
+		text = states.79.t2
+		trigger = {
+			GMA = {
+				OR = {
+					controls_state = 1069
+					owns_state = 1069
+				}
+			}
+		}
+	}
+	title = {
+		text = states.79.t3
+		trigger = {
+			USC = {
+				OR = {
+					controls_state = 1069
+					owns_state = 1069
+				}
+			}
+		}
+	}
+	title = {
+		text = states.79.t4
+		trigger = {
+			USB = {
+				OR = {
+					controls_state = 1069
+					owns_state = 1069
+				}
+			}
+		}
+	}
+	title = {
+		text = states.79.t5
+		trigger = {
+			APA = {
+				OR = {
+					controls_state = 1069
+					owns_state = 1069
+				}
+			}
+		}
+	}
+	title = {
+		text = states.79.t6
+		trigger = {
+			NSM = {
+				OR = {
+					controls_state = 1069
+					owns_state = 1069
+				}
+			}
+		}
+	}
+	title = {
+		text = states.79.t7
+		trigger = {
+			ATW = {
+				OR = {
+					controls_state = 1069
+					owns_state = 1069
+				}
+			}
+		}
+	}
+	desc = {
+		text = states.79.d1
+		trigger = {
+			PTF = {
+				OR = {
+					controls_state = 1069
+					owns_state = 1069
+				}
+			}
+		}
+	}
+	desc = {
+		text = states.79.d2
+		trigger = {
+			GMA = {
+				OR = {
+					controls_state = 1069
+					owns_state = 1069
+				}
+			}
+		}
+	}
+	desc = {
+		text = states.79.d3
+		trigger = {
+			USC = {
+				OR = {
+					controls_state = 1069
+					owns_state = 1069
+				}
+			}
+		}
+	}
+	desc = {
+		text = states.79.d4
+		trigger = {
+			USB = {
+				OR = {
+					controls_state = 1069
+					owns_state = 1069
+				}
+			}
+		}
+	}
+	desc = {
+		text = states.79.d5
+		trigger = {
+			APA = {
+				OR = {
+					controls_state = 1069
+					owns_state = 1069
+				}
+			}
+		}
+	}
+	desc = {
+		text = states.79.d6
+		trigger = {
+			NSM = {
+				OR = {
+					controls_state = 1069
+					owns_state = 1069
+				}
+			}
+		}
+	}
+	desc = {
+		text = states.79.d7
+		trigger = {
+			ATW = {
+				OR = {
+					controls_state = 1069
+					owns_state = 1069
+				}
+			}
+		}
+	}
+	picture = GFX_Generic_City_Combat
+	is_triggered_only = yes
+	hidden = yes
+	option = {
+		name = states.79.a
+		
+		trigger = {
+			NOT = {
+				TAG = ROOT
+			}
+		}
+		effect_tooltip = {
+			FROM = {
+				set_temp_variable = {
+					var = legit_var_temp
+					value = 0.1
+				}
+				add_legit = yes
+			}
+		}
+	}
+	option = {
+		name = states.79.b
+		
+		trigger = {
+			TAG = ROOT
+		}
+		effect_tooltip = {
+			ROOT = {
+				set_temp_variable = {
+					var = legit_var_temp
+					value = 0.1
+				}
+				add_legit = yes
+			}
+		}
+	}
+}
+
+#Battle of Sacramento
+news_event = {
+	id = states.80
+	picture = GFX_news_US_tank_city
+	title = {
+		text = states.80.t1
+		trigger = {
+			PTF = {
+				OR = {
+					controls_state = 941
+					owns_state = 941
+				}
+			}
+		}
+	}
+	title = {
+		text = states.80.t2
+		trigger = {
+			GMA = {
+				OR = {
+					controls_state = 941
+					owns_state = 941
+				}
+			}
+		}
+	}
+	title = {
+		text = states.80.t3
+		trigger = {
+			USC = {
+				OR = {
+					controls_state = 941
+					owns_state = 941
+				}
+			}
+		}
+	}
+	title = {
+		text = states.80.t4
+		trigger = {
+			USB = {
+				OR = {
+					controls_state = 941
+					owns_state = 941
+				}
+			}
+		}
+	}
+	title = {
+		text = states.80.t5
+		trigger = {
+			APA = {
+				OR = {
+					controls_state = 941
+					owns_state = 941
+				}
+			}
+		}
+	}
+	title = {
+		text = states.80.t6
+		trigger = {
+			NSM = {
+				OR = {
+					controls_state = 941
+					owns_state = 941
+				}
+			}
+		}
+	}
+	title = {
+		text = states.80.t7
+		trigger = {
+			ATW = {
+				OR = {
+					controls_state = 941
+					owns_state = 941
+				}
+			}
+		}
+	}
+	desc = {
+		text = states.80.d1
+		trigger = {
+			PTF = {
+				OR = {
+					controls_state = 941
+					owns_state = 941
+				}
+			}
+		}
+	}
+	desc = {
+		text = states.80.d2
+		trigger = {
+			GMA = {
+				OR = {
+					controls_state = 941
+					owns_state = 941
+				}
+			}
+		}
+	}
+	desc = {
+		text = states.80.d3
+		trigger = {
+			USC = {
+				OR = {
+					controls_state = 941
+					owns_state = 941
+				}
+			}
+		}
+	}
+	desc = {
+		text = states.80.d4
+		trigger = {
+			USB = {
+				OR = {
+					controls_state = 941
+					owns_state = 941
+				}
+			}
+		}
+	}
+	desc = {
+		text = states.80.d5
+		trigger = {
+			APA = {
+				OR = {
+					controls_state = 941
+					owns_state = 941
+				}
+			}
+		}
+	}
+	desc = {
+		text = states.80.d6
+		trigger = {
+			NSM = {
+				OR = {
+					controls_state = 941
+					owns_state = 941
+				}
+			}
+		}
+	}
+	desc = {
+		text = states.80.d7
+		trigger = {
+			ATW = {
+				OR = {
+					controls_state = 941
+					owns_state = 941
+				}
+			}
+		}
+	}
+	picture = GFX_Generic_City_Combat
+	is_triggered_only = yes
+	hidden = yes
+	option = {
+		name = states.80.a
+		
+		trigger = {
+			NOT = {
+				TAG = ROOT
+			}
+		}
+		effect_tooltip = {
+			FROM = {
+				set_temp_variable = {
+					var = legit_var_temp
+					value = 0.1
+				}
+				add_legit = yes
+			}
+		}
+	}
+	option = {
+		name = states.80.b
+		
+		trigger = {
+			TAG = ROOT
+		}
+		effect_tooltip = {
+			ROOT = {
+				set_temp_variable = {
+					var = legit_var_temp
+					value = 0.1
+				}
+				add_legit = yes
+			}
+		}
+	}
+}
+
+#Battle of Denver
+news_event = {
+	id = states.81
+	title = {
+		text = states.81.t1
+		trigger = {
+			PTF = {
+				OR = {
+					controls_state = 1142
+					owns_state = 1142
+				}
+			}
+		}
+	}
+	title = {
+		text = states.81.t2
+		trigger = {
+			GMA = {
+				OR = {
+					controls_state = 1142
+					owns_state = 1142
+				}
+			}
+		}
+	}
+	title = {
+		text = states.81.t3
+		trigger = {
+			USC = {
+				OR = {
+					controls_state = 1142
+					owns_state = 1142
+				}
+			}
+		}
+	}
+	title = {
+		text = states.81.t4
+		trigger = {
+			USB = {
+				OR = {
+					controls_state = 1142
+					owns_state = 1142
+				}
+			}
+		}
+	}
+	title = {
+		text = states.81.t5
+		trigger = {
+			APA = {
+				OR = {
+					controls_state = 1142
+					owns_state = 1142
+				}
+			}
+		}
+	}
+	title = {
+		text = states.81.t6
+		trigger = {
+			NSM = {
+				OR = {
+					controls_state = 1142
+					owns_state = 1142
+				}
+			}
+		}
+	}
+	title = {
+		text = states.81.t7
+		trigger = {
+			ATW = {
+				OR = {
+					controls_state = 1142
+					owns_state = 1142
+				}
+			}
+		}
+	}
+	desc = {
+		text = states.81.d1
+		trigger = {
+			PTF = {
+				OR = {
+					controls_state = 1142
+					owns_state = 1142
+				}
+			}
+		}
+	}
+	desc = {
+		text = states.81.d2
+		trigger = {
+			GMA = {
+				OR = {
+					controls_state = 1142
+					owns_state = 1142
+				}
+			}
+		}
+	}
+	desc = {
+		text = states.81.d3
+		trigger = {
+			USC = {
+				OR = {
+					controls_state = 1142
+					owns_state = 1142
+				}
+			}
+		}
+	}
+	desc = {
+		text = states.81.d4
+		trigger = {
+			USB = {
+				OR = {
+					controls_state = 1142
+					owns_state = 1142
+				}
+			}
+		}
+	}
+	desc = {
+		text = states.81.d5
+		trigger = {
+			APA = {
+				OR = {
+					controls_state = 1142
+					owns_state = 1142
+				}
+			}
+		}
+	}
+	desc = {
+		text = states.81.d6
+		trigger = {
+			NSM = {
+				OR = {
+					controls_state = 1142
+					owns_state = 1142
+				}
+			}
+		}
+	}
+	desc = {
+		text = states.81.d7
+		trigger = {
+			ATW = {
+				OR = {
+					controls_state = 1142
+					owns_state = 1142
+				}
+			}
+		}
+	}
+	picture = GFX_Generic_City_Combat
+	is_triggered_only = yes
+	hidden = yes
+	option = {
+		name = states.81.a
+		
+		trigger = {
+			NOT = {
+				TAG = ROOT
+			}
+		}
+		effect_tooltip = {
+			FROM = {
+				set_temp_variable = {
+					var = legit_var_temp
+					value = 0.1
+				}
+				add_legit = yes
+			}
+		}
+	}
+	option = {
+		name = states.81.b
+		
+		trigger = {
+			TAG = ROOT
+		}
+		effect_tooltip = {
+			ROOT = {
+				set_temp_variable = {
+					var = legit_var_temp
+					value = 0.1
+				}
+				add_legit = yes
+			}
+		}
+	}
+}
+
+#Battle of Portland
+news_event = {
+	id = states.82
+	title = {
+		text = states.82.t1
+		trigger = {
+			PTF = {
+				OR = {
+					controls_state = 993
+					owns_state = 993
+				}
+			}
+		}
+	}
+	title = {
+		text = states.82.t2
+		trigger = {
+			GMA = {
+				OR = {
+					controls_state = 993
+					owns_state = 993
+				}
+			}
+		}
+	}
+	title = {
+		text = states.82.t3
+		trigger = {
+			USC = {
+				OR = {
+					controls_state = 993
+					owns_state = 993
+				}
+			}
+		}
+	}
+	title = {
+		text = states.82.t4
+		trigger = {
+			USB = {
+				OR = {
+					controls_state = 993
+					owns_state = 993
+				}
+			}
+		}
+	}
+	title = {
+		text = states.82.t5
+		trigger = {
+			APA = {
+				OR = {
+					controls_state = 993
+					owns_state = 993
+				}
+			}
+		}
+	}
+	title = {
+		text = states.82.t6
+		trigger = {
+			NSM = {
+				OR = {
+					controls_state = 993
+					owns_state = 993
+				}
+			}
+		}
+	}
+	title = {
+		text = states.82.t7
+		trigger = {
+			ATW = {
+				OR = {
+					controls_state = 993
+					owns_state = 993
+				}
+			}
+		}
+	}
+	desc = {
+		text = states.82.d1
+		trigger = {
+			PTF = {
+				OR = {
+					controls_state = 993
+					owns_state = 993
+				}
+			}
+		}
+	}
+	desc = {
+		text = states.82.d2
+		trigger = {
+			GMA = {
+				OR = {
+					controls_state = 993
+					owns_state = 993
+				}
+			}
+		}
+	}
+	desc = {
+		text = states.82.d3
+		trigger = {
+			USC = {
+				OR = {
+					controls_state = 993
+					owns_state = 993
+				}
+			}
+		}
+	}
+	desc = {
+		text = states.82.d4
+		trigger = {
+			USB = {
+				OR = {
+					controls_state = 993
+					owns_state = 993
+				}
+			}
+		}
+	}
+	desc = {
+		text = states.82.d5
+		trigger = {
+			APA = {
+				OR = {
+					controls_state = 993
+					owns_state = 993
+				}
+			}
+		}
+	}
+	desc = {
+		text = states.82.d6
+		trigger = {
+			NSM = {
+				OR = {
+					controls_state = 993
+					owns_state = 993
+				}
+			}
+		}
+	}
+	desc = {
+		text = states.82.d7
+		trigger = {
+			ATW = {
+				OR = {
+					controls_state = 993
+					owns_state = 993
+				}
+			}
+		}
+	}
+	picture = GFX_Generic_City_Combat
+	is_triggered_only = yes
+	hidden = yes
+	option = {
+		name = states.82.a
+		
+		trigger = {
+			NOT = {
+				TAG = ROOT
+			}
+		}
+		effect_tooltip = {
+			FROM = {
+				set_temp_variable = {
+					var = legit_var_temp
+					value = 0.1
+				}
+				add_legit = yes
+			}
+		}
+	}
+	option = {
+		name = states.82.b
+		
+		trigger = {
+			TAG = ROOT
+		}
+		effect_tooltip = {
+			ROOT = {
+				set_temp_variable = {
+					var = legit_var_temp
+					value = 0.1
+				}
+				add_legit = yes
+			}
+		}
+	}
+}
+
+#Battle of Indianapolis
+news_event = {
+	id = states.83
+	title = {
+		text = states.83.t1
+		trigger = {
+			PTF = {
+				OR = {
+					controls_state = 1151
+					owns_state = 1151
+				}
+			}
+		}
+	}
+	title = {
+		text = states.83.t2
+		trigger = {
+			GMA = {
+				OR = {
+					controls_state = 1151
+					owns_state = 1151
+				}
+			}
+		}
+	}
+	title = {
+		text = states.83.t3
+		trigger = {
+			USC = {
+				OR = {
+					controls_state = 1151
+					owns_state = 1151
+				}
+			}
+		}
+	}
+	title = {
+		text = states.83.t4
+		trigger = {
+			USB = {
+				OR = {
+					controls_state = 1151
+					owns_state = 1151
+				}
+			}
+		}
+	}
+	title = {
+		text = states.83.t5
+		trigger = {
+			APA = {
+				OR = {
+					controls_state = 1151
+					owns_state = 1151
+				}
+			}
+		}
+	}
+	title = {
+		text = states.83.t6
+		trigger = {
+			NSM = {
+				OR = {
+					controls_state = 1151
+					owns_state = 1151
+				}
+			}
+		}
+	}
+	title = {
+		text = states.83.t7
+		trigger = {
+			ATW = {
+				OR = {
+					controls_state = 1151
+					owns_state = 1151
+				}
+			}
+		}
+	}
+	desc = {
+		text = states.83.d1
+		trigger = {
+			PTF = {
+				OR = {
+					controls_state = 1151
+					owns_state = 1151
+				}
+			}
+		}
+	}
+	desc = {
+		text = states.83.d2
+		trigger = {
+			GMA = {
+				OR = {
+					controls_state = 1151
+					owns_state = 1151
+				}
+			}
+		}
+	}
+	desc = {
+		text = states.83.d3
+		trigger = {
+			USC = {
+				OR = {
+					controls_state = 1151
+					owns_state = 1151
+				}
+			}
+		}
+	}
+	desc = {
+		text = states.83.d4
+		trigger = {
+			USB = {
+				OR = {
+					controls_state = 1151
+					owns_state = 1151
+				}
+			}
+		}
+	}
+	desc = {
+		text = states.83.d5
+		trigger = {
+			APA = {
+				OR = {
+					controls_state = 1151
+					owns_state = 1151
+				}
+			}
+		}
+	}
+	desc = {
+		text = states.83.d6
+		trigger = {
+			NSM = {
+				OR = {
+					controls_state = 1151
+					owns_state = 1151
+				}
+			}
+		}
+	}
+	desc = {
+		text = states.83.d7
+		trigger = {
+			ATW = {
+				OR = {
+					controls_state = 1151
+					owns_state = 1151
+				}
+			}
+		}
+	}
+	picture = GFX_Generic_City_Combat
+	is_triggered_only = yes
+	hidden = yes
+	option = {
+		name = states.83.a
+		
+		trigger = {
+			NOT = {
+				TAG = ROOT
+			}
+		}
+		effect_tooltip = {
+			FROM = {
+				set_temp_variable = {
+					var = legit_var_temp
+					value = 0.1
+				}
+				add_legit = yes
+			}
+		}
+	}
+	option = {
+		name = states.83.b
+		
+		trigger = {
+			TAG = ROOT
+		}
+		effect_tooltip = {
+			ROOT = {
+				set_temp_variable = {
+					var = legit_var_temp
+					value = 0.1
+				}
+				add_legit = yes
+			}
+		}
+	}
+}
+
+#National Guard Armories Secured
+country_event = {
+	id = states.84
+	title = states.84.t
+	desc = states.84.d
+	picture = GFX_Generic_City_Combat4
+	is_triggered_only = yes
+	trigger = {
+		OR = {
+			tag = GMA
+			tag = PTF
+		}
+	}
+	option = {
+		name = states.84.a
+		hidden_effect = {
+			if = {
+				limit = {
+					tag = GMA
+				}
+				load_oob = "New_england_nat_guard"
+				357 = {
+					create_unit = {
+						division = "name = \"Revolutionary Armored Brigade\" division_template = \"Armored Brigade\"  start_experience_factor = 0.0"
+						allow_spawning_on_enemy_provs = yes
+						owner = ROOT
+					}
+				}
+			}
+			else = {
+				load_oob = "New_england_nat_guard"
+				357 = {
+					create_unit = {
+						division = "name = \"1st Armored Brigade 'Pershing'\" division_template = \"Armored Brigade\"  start_experience_factor = 0.0"
+						allow_spawning_on_enemy_provs = yes
+						owner = ROOT
+					}
+				}
+			}
+		}
+	}
+}
+
+#Battle of Nashville
+news_event = {
+	id = states.85
+	title = {
+		text = states.85.t1
+		trigger = {
+			PTF = {
+				OR = {
+					controls_state = 1151
+					owns_state = 1151
+				}
+			}
+		}
+	}
+	title = {
+		text = states.85.t2
+		trigger = {
+			GMA = {
+				OR = {
+					controls_state = 1151
+					owns_state = 1151
+				}
+			}
+		}
+	}
+	title = {
+		text = states.85.t3
+		trigger = {
+			USC = {
+				OR = {
+					controls_state = 1151
+					owns_state = 1151
+				}
+			}
+		}
+	}
+	title = {
+		text = states.85.t4
+		trigger = {
+			USB = {
+				OR = {
+					controls_state = 1151
+					owns_state = 1151
+				}
+			}
+		}
+	}
+	title = {
+		text = states.85.t5
+		trigger = {
+			APA = {
+				OR = {
+					controls_state = 1151
+					owns_state = 1151
+				}
+			}
+		}
+	}
+	title = {
+		text = states.85.t6
+		trigger = {
+			NSM = {
+				OR = {
+					controls_state = 1151
+					owns_state = 1151
+				}
+			}
+		}
+	}
+	title = {
+		text = states.85.t7
+		trigger = {
+			ATW = {
+				OR = {
+					controls_state = 1151
+					owns_state = 1151
+				}
+			}
+		}
+	}
+	desc = {
+		text = states.85.d1
+		trigger = {
+			PTF = {
+				OR = {
+					controls_state = 1151
+					owns_state = 1151
+				}
+			}
+		}
+	}
+	desc = {
+		text = states.85.d2
+		trigger = {
+			GMA = {
+				OR = {
+					controls_state = 1151
+					owns_state = 1151
+				}
+			}
+		}
+	}
+	desc = {
+		text = states.85.d3
+		trigger = {
+			USC = {
+				OR = {
+					controls_state = 1151
+					owns_state = 1151
+				}
+			}
+		}
+	}
+	desc = {
+		text = states.85.d4
+		trigger = {
+			USB = {
+				OR = {
+					controls_state = 1151
+					owns_state = 1151
+				}
+			}
+		}
+	}
+	desc = {
+		text = states.85.d5
+		trigger = {
+			APA = {
+				OR = {
+					controls_state = 1151
+					owns_state = 1151
+				}
+			}
+		}
+	}
+	desc = {
+		text = states.85.d6
+		trigger = {
+			NSM = {
+				OR = {
+					controls_state = 1151
+					owns_state = 1151
+				}
+			}
+		}
+	}
+	desc = {
+		text = states.85.d7
+		trigger = {
+			ATW = {
+				OR = {
+					controls_state = 1151
+					owns_state = 1151
+				}
+			}
+		}
+	}
+	picture = GFX_Generic_City_Combat
+	is_triggered_only = yes
+	hidden = yes
+	option = {
+		name = states.85.a
+		
+		trigger = {
+			NOT = {
+				TAG = ROOT
+			}
+		}
+		effect_tooltip = {
+			FROM = {
+				set_temp_variable = {
+					var = legit_var_temp
+					value = 0.1
+				}
+				add_legit = yes
+			}
+		}
+	}
+	option = {
+		name = states.85.b
+		
+		trigger = {
+			TAG = ROOT
+		}
+		effect_tooltip = {
+			ROOT = {
+				set_temp_variable = {
+					var = legit_var_temp
+					value = 0.1
+				}
+				add_legit = yes
+			}
+		}
+	}
+}
+
+#Las Vegas Captured
+country_event = {
+	id = states.86
+	title = states.86.t
+	desc = states.86.d
+	picture = GFX_Generic_City_Combat4
+	fire_only_once = yes
+	is_triggered_only = yes
+	trigger = {
+	}
+	immediate = {
+	}
+	option = {
+		name = states.86.a
+		add_stability = -0.05
+		add_war_support = -0.05
+		set_temp_variable = {
+			var = income_var_temp
+			value = 100
+		}
+		add_income = yes
+	}
+	option = {
+		name = states.86.b
+	}
+}
+
+#Harvard University Captured
+country_event = {
+	id = states.87
+	title = states.87.t
+	desc = states.87.d
+	picture = GFX_Generic_City_Combat4
+	fire_only_once = no
+	is_triggered_only = yes
+	trigger = {
+		#USA_civil_war_faction = yes
+	}
+	immediate = {
+	}
+	option = {
+		name = states.87.a
+		add_ideas = USA_harvard_university
+	}
+}
+
+#Harvard University Lost
+country_event = {
+	id = states.88
+	title = states.88.t
+	desc = states.88.d
+	picture = GFX_Generic_City_Combat4
+	fire_only_once = no
+	is_triggered_only = yes
+	trigger = {
+		#USA_civil_war_faction = yes
+	}
+	immediate = {
+	}
+	option = {
+		name = states.88.a
+		remove_ideas = USA_harvard_university
+	}
+}
+
+#Destruction of the Guidestones
+country_event = {
+	id = states.89
+	title = states.89.t
+	desc = states.89.d
+	picture = GFX_Guidestones
+	fire_only_once = yes
+	is_triggered_only = yes
+	trigger = {
+		#USA_civil_war_faction = yes
+	}
+	immediate = {
+	}
+	option = {
+		name = states.89.a
+		random_country_division = {
+			limit = {
+				is_unit_template_reserves = no
+				unit_strength > 0.5
+			}
+			add_history_entry = {
+				key = "Partook in the destruction of the Georgia Guidestones"
+				subject = "Division Honor"
+				allow = yes
+			}
+		}
+	}
+}
+
+#Hanscom Airforce Base Captured
+country_event = {
+	id = states.90
+	title = states.90.t
+	desc = states.90.d
+	picture = GFX_Blitz_und_Donner
+	fire_only_once = yes
+	is_triggered_only = yes
+	trigger = {
+		#USA_civil_war_faction = yes
+	}
+	immediate = {
+		hidden_effect = {
+			add_equipment_to_stockpile = {
+				type = attack_helicopter_equipment_1
+				amount = 10
+				producer = USA
+			}
+			if = {
+				limit = {
+					NOT = {
+						has_dlc = "By Blood Alone"
+					}
+				}
+				add_equipment_to_stockpile = {
+					type = fighter_equipment_3
+					amount = 15
+					producer = USA
+				}
+				add_equipment_to_stockpile = {
+					type = CAS_equipment_2
+					amount = 10
+					producer = USA
+				}
+			}
+			else_if = {
+				limit = {
+					has_dlc = "By Blood Alone"
+				}
+				add_equipment_to_stockpile = {
+					type = small_plane_cas_airframe
+					variant_name = "A-10 Warthog"
+					amount = 10
+				}
+				add_equipment_to_stockpile = {
+					type = small_plane_airframe
+					variant_name = "F-16/IQ"
+					amount = 15
+				}
+			}
+			add_equipment_to_stockpile = {
+				type = anti_air_equipment_1
+				amount = 250
+				producer = USA
+			}
+		}
+	}
+	option = {
+		name = states.90.a
+		random_country_division = {
+			limit = {
+				is_unit_template_reserves = no
+				unit_strength > 0.5
+			}
+			add_history_entry = {
+				key = "Partook in Capturing Hanscom Airforce Base"
+				subject = "Division Honor"
+				allow = yes
+			}
+		}
+		effect_tooltip = {
+			add_equipment_to_stockpile = {
+				type = attack_helicopter_equipment_1
+				amount = 10
+				producer = USA
+			}
+			if = {
+				limit = {
+					NOT = {
+						has_dlc = "By Blood Alone"
+					}
+				}
+				add_equipment_to_stockpile = {
+					type = fighter_equipment_3
+					amount = 15
+					producer = USA
+				}
+				add_equipment_to_stockpile = {
+					type = CAS_equipment_2
+					amount = 10
+					producer = USA
+				}
+			}
+			else_if = {
+				limit = {
+					has_dlc = "By Blood Alone"
+				}
+				add_equipment_to_stockpile = {
+					type = small_plane_cas_airframe
+					variant_name = "A-10 Warthog"
+					amount = 10
+				}
+				add_equipment_to_stockpile = {
+					type = small_plane_airframe
+					variant_name = "F-16/IQ"
+					amount = 15
+				}
+			}
+			add_equipment_to_stockpile = {
+				type = anti_air_equipment_1
+				amount = 250
+				producer = USA
+			}
+		}
+	}
+}
+
+#Battle of New Orleans
+news_event = {
+	id = states.91
+	title = {
+		text = states.91.t1
+		trigger = {
+			PTF = {
+				OR = {
+					controls_state = 978
+					owns_state = 978
+				}
+			}
+		}
+	}
+	title = {
+		text = states.91.t2
+		trigger = {
+			GMA = {
+				OR = {
+					controls_state = 978
+					owns_state = 978
+				}
+			}
+		}
+	}
+	title = {
+		text = states.91.t3
+		trigger = {
+			USC = {
+				OR = {
+					controls_state = 978
+					owns_state = 978
+				}
+			}
+		}
+	}
+	title = {
+		text = states.91.t4
+		trigger = {
+			USB = {
+				OR = {
+					controls_state = 978
+					owns_state = 978
+				}
+			}
+		}
+	}
+	title = {
+		text = states.91.t5
+		trigger = {
+			APA = {
+				OR = {
+					controls_state = 978
+					owns_state = 978
+				}
+			}
+		}
+	}
+	title = {
+		text = states.91.t6
+		trigger = {
+			NSM = {
+				OR = {
+					controls_state = 978
+					owns_state = 978
+				}
+			}
+		}
+	}
+	title = {
+		text = states.91.t7
+		trigger = {
+			ATW = {
+				OR = {
+					controls_state = 978
+					owns_state = 978
+				}
+			}
+		}
+	}
+	title = {
+		text = states.91.t8
+		trigger = {
+			LOS = {
+				OR = {
+					controls_state = 978
+					owns_state = 978
+				}
+			}
+		}
+	}
+	desc = {
+		text = states.91.d1
+		trigger = {
+			PTF = {
+				OR = {
+					controls_state = 978
+					owns_state = 978
+				}
+			}
+		}
+	}
+	desc = {
+		text = states.91.d2
+		trigger = {
+			GMA = {
+				OR = {
+					controls_state = 978
+					owns_state = 978
+				}
+			}
+		}
+	}
+	desc = {
+		text = states.91.d3
+		trigger = {
+			USC = {
+				OR = {
+					controls_state = 978
+					owns_state = 978
+				}
+			}
+		}
+	}
+	desc = {
+		text = states.91.d4
+		trigger = {
+			USB = {
+				OR = {
+					controls_state = 978
+					owns_state = 978
+				}
+			}
+		}
+	}
+	desc = {
+		text = states.91.d5
+		trigger = {
+			APA = {
+				OR = {
+					controls_state = 978
+					owns_state = 978
+				}
+			}
+		}
+	}
+	desc = {
+		text = states.91.d6
+		trigger = {
+			NSM = {
+				OR = {
+					controls_state = 978
+					owns_state = 978
+				}
+			}
+		}
+	}
+	desc = {
+		text = states.91.d7
+		trigger = {
+			ATW = {
+				OR = {
+					controls_state = 978
+					owns_state = 978
+				}
+			}
+		}
+	}
+	desc = {
+		text = states.91.d8
+		trigger = {
+			LOS = {
+				OR = {
+					controls_state = 978
+					owns_state = 978
+				}
+			}
+		}
+	}
+	picture = GFX_Generic_City_Combat
+	is_triggered_only = yes
+	hidden = yes
+	option = {
+		name = states.91.a
+		
+		trigger = {
+			NOT = {
+				TAG = ROOT
+			}
+		}
+		effect_tooltip = {
+			FROM = {
+				set_temp_variable = {
+					var = legit_var_temp
+					value = 0.1
+				}
+				add_legit = yes
+			}
+		}
+	}
+	option = {
+		name = states.91.b
+		
+		trigger = {
+			TAG = ROOT
+		}
+		effect_tooltip = {
+			ROOT = {
+				set_temp_variable = {
+					var = legit_var_temp
+					value = 0.1
+				}
+				add_legit = yes
+			}
+		}
+	}
+}

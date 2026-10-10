@@ -1,0 +1,163 @@
+﻿	capital = 546
+
+	oob = "TZN_2000"
+
+	set_research_slots = 3
+	set_convoys = 300
+	set_stability = 0.25
+
+	set_country_flag = developed_country
+
+	set_variable = { Russian_Influence = 0.05 }
+	set_variable = { Chinese_Influence = 0.55 }
+	set_variable = { American_Influence = 0.35 }
+	set_variable = { European_Influence = 0.00 }
+	set_variable = { PDO_Influence = 0.00 }
+	set_variable = { Sovereign_Influence = 0.10 }
+
+	recruit_character = TZN_john_magufuli_char
+	recruit_character = TZN_samia_suluhu_hassan_char
+	recruit_character = TZN_ramson_godwin_mwaisaka_char
+	recruit_character = TZN_richard_makanzo_char
+	recruit_character = TZN_jacob_john_mkunda_char
+	recruit_character = TZN_venance_salvatory_mabeyo_char
+	recruit_character = TZN_charles_mbuge_char
+	recruit_character = TZN_fadhil_omary_nondo_char
+	recruit_character = TZN_george_msongole_char
+	recruit_character = TZN_mathew_mkingule_char
+	recruit_character = TZN_salum_haji_othman_char
+	recruit_character = TZN_shabani_baraghashi_mani_char
+	recruit_character = TZN_yakubu_hassan_mohamed_char
+	recruit_character = TZN_rogastian_laswai_char
+
+	set_technology = {
+		## Infantry ##
+		
+		infantry_weapons1 = 1
+		infantry_weapons2 = 1
+		motorised_infantry = 1
+		infantry_rifle_upgrade = 1
+		support_weapons = 1
+		body_armor = 1
+		camouflage = 1
+		marines = 1
+		tech_mountaineers = 1
+		paratroopers = 1
+		basic_train = 1
+		
+		## Support Companies ##
+		tech_support = 1
+		tech_engineers = 1
+		tech_recon = 1
+		tech_military_police = 1
+		tech_maintenance_company = 1
+		tech_field_hospital = 1
+		tech_logistics_company = 1
+		tech_signal_company = 1
+		
+		## Armor ##
+		mechanised_infantry1 = 1
+		light_mechanized_infantry1 = 1
+		
+		## Artillery ##
+		gw_artillery = 1
+		interwar_antitank = 1
+		interwar_antiair = 1
+		self_propelled_aa1 = 1
+		interwar_artillery = 1
+		sp_artillery1 = 1
+		
+		## Air ##
+		transport_plane2 = 1
+		attack_helicopter_1 = 1
+		utility_helicopter_1 = 1
+		
+		## Engineering ##
+		#eng_low
+		
+		## Industry ##
+		#ind_low
+		
+		## Doctrines ##
+		
+	}
+	
+	if = {
+		limit = { has_dlc = "By Blood Alone" }
+			set_technology = {
+				aa_lmg = 1
+				aa_cannon_1 = 1
+				aa_hmg = 1
+				engines_1 = 1
+				engines_2 = 1
+				early_bombs = 1
+				guided_bombs = 1
+				aircraft_construction = 1
+				survivability_studies = 1
+				iw_small_airframe = 1
+				basic_small_airframe = 1
+				iw_medium_airframe = 1
+				basic_medium_airframe = 1
+				iw_large_airframe = 1
+			}
+		else = {
+			set_technology = {
+				CAS1 = 1
+				CAS2 = 1
+				fighter1 = 1
+				fighter2 = 1
+				scout_plane1 = 1
+				transport_plane2 = 1
+			}
+		}
+	}
+
+	if = {
+		limit = {
+			NOT = { has_dlc = "No Step Back" }
+		}
+		set_technology = {
+			main_battle_tank1 = 1
+			main_battle_tank2 = 1
+			light_tank1 = 1
+		}
+	}
+	if = {
+		limit = {
+			has_dlc = "No Step Back"
+		}
+		set_technology = {
+			gwtank_chassis = 1
+			basic_light_tank_chassis = 1
+			basic_medium_tank_chassis = 1
+			engine_tech_1 = 1
+		}
+	}
+
+	add_ideas = {
+		TZN_gdp_fix
+		low_poverty
+		african_union_member
+		commonwealth_of_nations_member
+	}
+
+	set_politics = {	
+		ruling_party = social_democrat
+		last_election = "2015.11.29"
+		election_frequency = 60
+		elections_allowed = yes
+	}
+
+	set_popularities = {
+		conservative = 16
+		social_democrat = 75
+		libertarian_socialist = 5
+		social_liberal = 4
+	}
+
+	TZN = {
+		country_event = {
+			id = tanzania.7
+			days = 441
+		}
+	}

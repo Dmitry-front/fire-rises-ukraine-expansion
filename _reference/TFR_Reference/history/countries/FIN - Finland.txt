@@ -1,0 +1,270 @@
+﻿	capital = 1484
+
+	oob = "FIN_2020"
+	if = {
+		limit = { has_dlc = "Man the Guns" }
+			set_naval_oob = "FIN_2020_naval_mtg"
+		else = {
+			set_naval_oob = "FIN_2020_naval_legacy"
+		}
+	}
+
+	set_research_slots = 4
+	set_convoys = 200
+	set_stability = 0.55
+
+	set_country_flag = country_language_finnish
+
+	set_variable = { Russian_Influence = 0.10 }
+	set_variable = { Chinese_Influence = 0.00 }
+	set_variable = { American_Influence = 0.00 }
+	set_variable = { European_Influence = 0.70 }
+	set_variable = { PDO_Influence = 0.00 }
+	set_variable = { Sovereign_Influence = 0.20 }
+
+	recruit_character = FIN_sauli_niinisto_char
+	recruit_character = FIN_alexander_stubb_char
+	recruit_character = FIN_pekka_haavisto_char
+	recruit_character = FIN_ossi_tiihonen_char
+	recruit_character = FIN_ano_turtiainen_char
+	recruit_character = FIN_liisa_taskinen_char
+
+	set_technology = {
+		## Infantry ##
+		infantry_weapons1 = 1
+		infantry_weapons2 = 1
+		motorised_infantry = 1
+		infantry_rifle_upgrade = 1
+		support_weapons = 1
+		support_weapons2 = 1
+		night_vision = 1
+		body_armor = 1
+		camouflage = 1
+		
+		## Support Companies ##
+		tech_support = 1
+		tech_engineers = 1
+		tech_recon = 1
+		tech_military_police = 1
+		tech_maintenance_company = 1
+		tech_field_hospital = 1
+		tech_logistics_company = 1
+		tech_signal_company = 1
+		
+		## Armor ##
+		main_battle_tank1 = 1
+		main_battle_tank2 = 1
+		main_battle_tank3 = 1
+		light_tank1 = 1
+		mechanised_infantry1 = 1
+		light_mechanized_infantry1 = 1
+		
+		## Artillery ##
+		gw_artillery = 1
+		interwar_antitank = 1
+		interwar_antiair = 1
+		interwar_artillery = 1
+		sp_artillery1 = 1
+		self_propelled_aa1 = 1
+		
+		## Air ##
+		attack_helicopter_1 = 1
+		utility_helicopter_1 = 1
+		
+		## Engineering ##
+		electronic_mechanical_engineering = 1
+		
+		## Industry ##
+		basic_machine_tools = 1
+		
+		## Doctrines ##
+		#mobile_warfare = 1
+		#fleet_in_being = 1
+		#formation_flying = 1
+	}
+	if = {
+		limit = { has_dlc = "By Blood Alone" }
+			set_technology = {
+				aa_lmg = 1
+				aa_cannon_1 = 1
+				aa_hmg = 1
+				engines_1 = 1
+				engines_2 = 1
+				early_bombs = 1
+				guided_bombs = 1
+				aircraft_construction = 1
+				survivability_studies = 1
+				iw_small_airframe = 1
+				basic_small_airframe = 1
+				iw_medium_airframe = 1
+				basic_medium_airframe = 1
+				iw_large_airframe = 1
+			}
+		else = {
+			set_technology = {
+				CAS1 = 1
+				CAS2 = 1
+				fighter1 = 1
+				fighter2 = 1
+				fighter3 = 1
+				naval_bomber1 = 1
+				strategic_bomber1 = 1
+				strategic_bomber2 = 1
+				transport_plane2 = 1
+			}
+		}
+	}
+	if = {
+		limit = { not = { has_dlc = "Man the Guns" } }
+		set_technology = {
+			early_destroyer = 1
+			basic_destroyer = 1
+			transport = 1
+		}
+	}
+	if = {
+		limit = { has_dlc = "Man the Guns" }
+		set_technology = {
+			early_ship_hull_light = 1
+			basic_ship_hull_light = 1
+			smoke_generator = 1
+			sonar = 1
+			basic_depth_charges = 1
+			basic_torpedo = 1
+			basic_battery = 1
+			basic_light_battery = 1
+			mtg_transport = 1
+			basic_naval_mines = 1
+			submarine_mine_laying = 1
+		}
+	}
+
+	add_ideas = {
+		FIN_gdp_fix
+		higher_trade
+		EU_euro_idea
+		low_conscription
+		finnish_neutrality
+		higher_poverty
+	}
+
+	set_politics = {
+		ruling_party = social_democrat
+		last_election = "2018.1.28"
+		election_frequency = 72
+		elections_allowed = yes
+	}
+		
+	set_popularities = {
+		conservative =  8.5
+		social_liberal = 31.1
+		authoritarian_democrat = 17.5
+		social_democrat = 17.7
+		libertarian_socialist = 8.2
+		market_liberal = 17
+	}
+
+	FIN = {
+		country_event = {
+			id = FIN.1
+			days = 1502
+		}
+	}
+
+	### VARIANTS ###
+	# 2000 Start #
+	if = {
+		limit = { not = { has_dlc = "Man the Guns" } }
+		
+	}
+	if = {
+		limit = { has_dlc = "Man the Guns" }
+		## MLC ##
+		create_equipment_variant = { #Hämeenmaa
+			name = "Hämeenmaa-class Minelayer"
+			type = ship_hull_light_1
+			parent_version = 0
+			role_icon_index = 4
+			modules = {
+				fixed_ship_battery_slot = ship_light_battery_1
+				fixed_ship_anti_air_slot = ship_anti_air_1
+				fixed_ship_fire_control_system_slot = ship_fire_control_system_0
+				fixed_ship_radar_slot = ship_radar_1
+				fixed_ship_engine_slot = light_ship_engine_2
+				fixed_ship_torpedo_slot = empty
+				mid_1_custom_slot = ship_mine_layer_1
+				rear_1_custom_slot = ship_mine_layer_1
+			}
+			icon = "GFX_FIN_hameenmaa_medium"
+		}
+		create_equipment_variant = { #Pansio
+			name = "Pansio-class Minelayer"
+			type = ship_hull_light_1
+			parent_version = 0
+			role_icon_index = 4
+			modules = {
+				fixed_ship_battery_slot = ship_light_battery_1
+				fixed_ship_anti_air_slot = empty
+				fixed_ship_fire_control_system_slot = empty
+				fixed_ship_radar_slot = empty
+				fixed_ship_engine_slot = light_ship_engine_1
+				fixed_ship_torpedo_slot = empty
+				mid_1_custom_slot = ship_mine_layer_1
+				rear_1_custom_slot = empty
+			}
+			icon = "GFX_FIN_pansio_medium"
+		}
+		## MCMV ##
+		create_equipment_variant = { #Katanpää
+			name = "Katanpää-class Mine Countermeasure Vessel"
+			type = ship_hull_light_1
+			parent_version = 0
+			role_icon_index = 5
+			modules = {
+				fixed_ship_battery_slot = ship_light_battery_1
+				fixed_ship_anti_air_slot = empty
+				fixed_ship_fire_control_system_slot = ship_fire_control_system_0
+				fixed_ship_radar_slot = ship_sonar_1
+				fixed_ship_engine_slot = light_ship_engine_2
+				fixed_ship_torpedo_slot = empty
+				mid_1_custom_slot = ship_mine_sweeper_1
+				rear_1_custom_slot = ship_depth_charge_1
+			}
+			icon = "GFX_FIN_katanpaa_medium"
+		}
+		## Missile Boats ##
+		create_equipment_variant = { #Rauma
+			name = "Rauma-class Missile Boat"
+			type = ship_hull_light_1
+			parent_version = 0
+			role_icon_index = 2
+			modules = {
+				fixed_ship_battery_slot = ship_light_battery_2
+				fixed_ship_anti_air_slot = ship_anti_air_1
+				fixed_ship_fire_control_system_slot = ship_fire_control_system_0
+				fixed_ship_radar_slot = empty
+				fixed_ship_engine_slot = light_ship_engine_2
+				fixed_ship_torpedo_slot = ship_torpedo_1
+				mid_1_custom_slot = ship_torpedo_1
+				rear_1_custom_slot = ship_depth_charge_1
+			}
+			icon = "GFX_FIN_rauma_medium"
+		}
+		create_equipment_variant = { #Hamina
+			name = "Hamina-class Missile Boat"
+			type = ship_hull_light_1
+			parent_version = 0
+			role_icon_index = 2
+			modules = {
+				fixed_ship_battery_slot = ship_light_battery_2
+				fixed_ship_anti_air_slot = ship_anti_air_1
+				fixed_ship_fire_control_system_slot = ship_fire_control_system_0
+				fixed_ship_radar_slot = ship_radar_1
+				fixed_ship_engine_slot = light_ship_engine_2
+				fixed_ship_torpedo_slot = ship_torpedo_1
+				mid_1_custom_slot = ship_torpedo_1
+				rear_1_custom_slot = ship_depth_charge_1
+			}
+			icon = "GFX_FIN_hamina_medium"
+		}
+	}

@@ -1,0 +1,101 @@
+﻿###########################
+# NEP Events
+###########################
+
+add_namespace = nep
+
+
+# Debug, check if russia is communist or not
+country_event = {
+	id = nep.1
+	title = nep.1.t
+	desc = nep.1.d
+	picture = report_event_equipment
+	
+	fire_only_once = yes
+	is_triggered_only = yes
+	
+	trigger = {
+		tag = NEP
+	}
+
+	option = {
+	name = nep.1.a
+		if = {
+			limit = {
+				SOV = {
+					OR = {
+						has_government = communist
+						has_government = libertarian_socialist
+					}
+				}
+			}
+			news_event = { id = news.246 }
+		}
+		else_if = {
+			limit = {
+				SOV = {
+					OR = {
+						has_government = authoritarian_democrat
+						has_government = fascist
+						has_government = national_socialist
+					}
+				}
+			}
+			news_event = { id = news.240 }
+		}
+	}
+}
+
+# Debug, remover fart cloud from ukraine
+country_event = {
+	id = nep.2
+	title = nep.1.t
+	desc = nep.1.d
+	picture = report_event_equipment
+	
+	fire_only_once = yes
+	is_triggered_only = yes
+	
+	trigger = {
+		tag = NEP
+	}
+
+	option = {
+		name = nep.1.a
+
+	}
+}
+
+# Real Nepal event no way!!! It's election
+country_event = {
+	id = nep.3
+	title = nep.1.t
+	desc = nep.1.d
+	picture = report_event_equipment
+	
+	fire_only_once = yes
+	is_triggered_only = yes
+	
+	trigger = {
+		tag = NEP
+	}
+
+	option = {
+		name = nep.1.a
+		set_politics = {	
+			ruling_party = totalitarian_socialist
+			last_election = "2022.11.20"
+			election_frequency = 60
+			elections_allowed = yes
+		}
+		add_popularity = { 
+			ideology = totalitarian_socialist
+			popularity = 0.1
+		}
+		add_popularity = { 
+			ideology = social_democrat
+			popularity = 0.05
+		}
+	}
+}

@@ -1,0 +1,574 @@
+AST_devastation_category = {
+	
+	AST_DEBUG_SETUP = {
+		
+		icon = generic_prepare_civil_war
+
+		visible = {
+			AND = {
+				country_exists = AST
+				is_debug = yes
+			}
+		}
+
+		complete_effect = {
+			AST_National_Devastation_Setup = yes
+		}
+	}
+	
+	# Devastation Rate #
+	AST_the_devastation_spreads = {
+		
+		icon = GFX_AST_the_devastation_spreads
+		
+		priority = 1
+
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = AST_the_devastation_spreads_tt		
+				AND = {
+					check_variable = { NSW_bushfire_devastation_rate = 0 }
+					check_variable = { NSW_drought_devastation_rate = 0 }
+					check_variable = { VIC_bushfire_devastation_rate = 0 }
+					check_variable = { VIC_drought_devastation_rate = 0 }
+				}
+			}
+		}
+		
+		ai_will_do = {
+			factor = 200
+		}
+
+		activation = {
+			has_country_flag = AST_National_Devastation_flag
+		}
+		
+		is_good = no
+		days_mission_timeout = 30
+		days_re_enable = 1
+		
+		complete_effect = {
+			set_country_flag = AST_DEVASTATION_ACTION_FLAG
+		}
+
+		timeout_effect = {
+			clr_country_flag = AST_DEVASTATION_ACTION_FLAG #A truly beautiful example of a cascading error was here due to forgetting the = , amazing - Temuzu
+			
+			add_to_variable = {
+				var = NSW_bushfire_devastation
+				value = NSW_bushfire_devastation_rate
+				tooltip = NSW_DS_bushfire_devastation_tt
+			}
+			add_to_variable = {
+				var = NSW_drought_devastation
+				value = NSW_drought_devastation_rate
+				tooltip = NSW_DS_drought_devastation_tt
+			}
+			add_to_variable = {
+				var = VIC_bushfire_devastation
+				value = VIC_bushfire_devastation_rate
+				tooltip = VIC_DS_bushfire_devastation_tt
+			}
+			add_to_variable = {
+				var = VIC_drought_devastation
+				value = VIC_drought_devastation_rate
+				tooltip = VIC_DS_drought_devastation_tt
+			}
+			random_list = {
+				15 = {
+					add_to_variable = {
+						var = VIC_bushfire_devastation_rate
+						value = 1
+						tooltip = NSW_DS_bushfire_devastation_rate_tt
+					}
+				}
+				10 = {
+					add_to_variable = {
+						var = VIC_bushfire_devastation_rate
+						value = 1
+						tooltip = NSW_DS_drought_devastation_rate_tt
+					}
+				}
+				10 = {
+					add_to_variable = {
+						var = VIC_bushfire_devastation_rate
+						value = 1
+						tooltip = VIC_DS_bushfire_devastation_rate_tt
+					}
+				}
+				5 = {
+					add_to_variable = {
+						var = VIC_bushfire_devastation_rate
+						value = 1
+						tooltip = VIC_DS_drought_devastation_rate_tt
+					}
+				}
+				60 = {
+				
+				}
+			}
+		}
+	}
+	# New South Wales Decisions #
+	AST_New_South_Wales = {
+		
+		icon = GFX_AST_NSW_devastation_icon
+
+		available = {
+			#
+		}
+		
+		ai_will_do = {
+			factor = 200
+		}
+		
+		highlight_states = {
+ 			highlight_state_targets = { state = 285 }
+ 			highlight_color_before_active = 3
+			highlight_color_while_active = 2
+		}
+
+		visible = {
+			country_exists = AST
+		}
+
+		complete_effect = {
+			#
+		}
+	}
+	AST_NSW_clear_the_princes_highway = {
+		
+		icon = GFX_AST_clear_the_princes_highway
+
+		available = {
+			#
+		}
+
+		fire_only_once = yes
+		ai_will_do = {
+			factor = 200
+		}
+
+		visible = {
+			country_exists = AST
+		}
+		
+		days_remove = 30
+		
+		complete_effect = {
+			set_country_flag = AST_DEVASTATION_ACTION_FLAG
+		}
+
+		remove_effect = {
+			clr_country_flag = AST_DEVASTATION_ACTION_FLAG
+			subtract_from_variable = {
+				var = NSW_bushfire_devastation
+				value = 5
+				tooltip = NSW_bushfire_med_decrease_tt
+			}
+		}
+	}
+	AST_NSW_reestablish_road_connections_to_rural_areas = {
+		
+		icon = GFX_AST_reopen_roads_to_rural_areas
+
+		available = {
+			#
+		}
+
+		fire_only_once = yes
+		ai_will_do = {
+			factor = 200
+		}
+
+		visible = {
+			country_exists = AST
+		}
+		
+		days_remove = 30
+		
+		complete_effect = {
+			set_country_flag = AST_DEVASTATION_ACTION_FLAG
+		}
+
+		remove_effect = {
+			clr_country_flag = AST_DEVASTATION_ACTION_FLAG
+			subtract_from_variable = {
+				var = NSW_bushfire_devastation
+				value = 5
+				tooltip = NSW_bushfire_med_decrease_tt
+			}
+		}
+	}
+	AST_NSW_contain_hunter_region_fires = {
+		
+		icon = GFX_AST_contain_hunter_region_fires
+
+		available = {
+			#
+		}
+
+		fire_only_once = yes
+		ai_will_do = {
+			factor = 200
+		}
+
+		visible = {
+			country_exists = AST
+		}
+		
+		days_remove = 15
+		
+		complete_effect = {
+			set_country_flag = AST_DEVASTATION_ACTION_FLAG
+		}
+
+		remove_effect = {
+			clr_country_flag = AST_DEVASTATION_ACTION_FLAG
+			subtract_from_variable = {
+				var = NSW_bushfire_devastation
+				value = 2.5
+				tooltip = NSW_bushfire_low_decrease_tt
+			}
+		}
+	}
+	AST_NSW_expand_backburning_efforts = {
+		
+		icon = GFX_AST_expand_backburning_efforts
+
+		available = {
+			#
+		}
+
+		#fire_only_once = yes
+		ai_will_do = {
+			factor = 200
+		}
+
+		visible = {
+			country_exists = AST
+		}
+		
+		days_remove = 30
+		days_re_enable = 10
+		
+		complete_effect = {
+			set_country_flag = AST_DEVASTATION_ACTION_FLAG
+		}
+
+		remove_effect = {
+			clr_country_flag = AST_DEVASTATION_ACTION_FLAG
+			subtract_from_variable = {
+				var = NSW_bushfire_devastation_rate
+				value = 1
+				tooltip = NSW_bushfire_rate_decrease_tt
+			}
+		}
+	}
+	AST_NSW_grant_access_to_water_reserves = {
+		
+		icon = GFX_AST_water_tap_icon
+
+		available = {
+			#
+		}
+
+		fire_only_once = yes
+		ai_will_do = {
+			factor = 200
+		}
+
+		visible = {
+			country_exists = AST
+		}
+
+		days_remove = 30
+		
+		complete_effect = {
+			set_country_flag = AST_DEVASTATION_ACTION_FLAG
+		}
+
+		remove_effect = {
+			clr_country_flag = AST_DEVASTATION_ACTION_FLAG
+			subtract_from_variable = {
+				var = NSW_drought_devastation
+				value = 5
+				tooltip = NSW_drought_med_decrease_tt
+			}
+		}
+	}
+	AST_NSW_introduce_water_austerity = {
+		
+		icon = GFX_AST_water_austerity
+
+		available = {
+			#
+		}
+
+		fire_only_once = yes
+		ai_will_do = {
+			factor = 200
+		}
+
+		visible = {
+			country_exists = AST
+		}
+		
+		days_remove = 14
+
+		complete_effect = {
+			set_country_flag = AST_DEVASTATION_ACTION_FLAG
+		}
+
+		remove_effect = {
+			clr_country_flag = AST_DEVASTATION_ACTION_FLAG
+			subtract_from_variable = {
+				var = NSW_drought_devastation
+				value = 10
+				tooltip = NSW_drought_high_decrease_tt
+			}
+		}
+	}
+	AST_NSW_import_fresh_water = {
+		
+		icon = GFX_AST_import_water
+
+		available = {
+			#
+		}
+
+		fire_only_once = yes
+		ai_will_do = {
+			factor = 200
+		}
+
+		visible = {
+			country_exists = AST
+		}
+		
+		days_remove = 30
+		days_re_enable = 5
+
+		complete_effect = {
+			set_country_flag = AST_DEVASTATION_ACTION_FLAG
+		}
+		
+		remove_effect = {
+			clr_country_flag = AST_DEVASTATION_ACTION_FLAG
+			subtract_from_variable = {
+				var = NSW_drought_devastation_rate
+				value = 1
+				tooltip = NSW_drought_rate_decrease_tt
+			}
+		}
+	}
+	
+	# Victoria Decisions #
+	AST_Victoria = {
+		
+		icon = GFX_AST_Victoria_devastation_icon
+
+		available = {
+			#
+		}
+		
+		ai_will_do = {
+			factor = 200
+		}
+		
+		highlight_states = {
+ 			highlight_state_targets = { state = 517 }
+ 			highlight_color_before_active = 3
+			highlight_color_while_active = 2
+		}
+
+		visible = {
+			country_exists = AST
+		}
+
+		complete_effect = {
+			#
+		}
+	}
+	
+	AST_VIC_extinguish_the_gippsland_fires = {
+		
+		icon = GFX_AST_extinquish_the_gippsland_fires
+
+		available = {
+			#
+		}
+
+		fire_only_once = yes
+		ai_will_do = {
+			factor = 200
+		}
+
+		visible = {
+			country_exists = AST
+		}
+		
+		days_remove = 20
+		
+		complete_effect = {
+			set_country_flag = AST_DEVASTATION_ACTION_FLAG
+		}
+		
+		remove_effect = {
+			clr_country_flag = AST_DEVASTATION_ACTION_FLAG
+			subtract_from_variable = {
+				var = VIC_bushfire_devastation
+				value = 5
+				tooltip = VIC_bushfire_med_decrease_tt
+			}
+		}
+	}
+	AST_VIC_stamp_out_the_embers = {
+		
+		icon = GFX_AST_decision_stamp_out_the_embers
+
+		available = {
+			#
+		}
+
+		fire_only_once = yes
+		ai_will_do = {
+			factor = 200
+		}
+
+		visible = {
+			country_exists = AST
+		}
+		
+		days_remove = 20
+		
+		complete_effect = {
+			set_country_flag = AST_DEVASTATION_ACTION_FLAG
+		}
+
+		remove_effect = {
+			clr_country_flag = AST_DEVASTATION_ACTION_FLAG
+			subtract_from_variable = {
+				var = NSW_bushfire_devastation
+				value = 2.5
+				tooltip = VIC_bushfire_low_decrease_tt
+			}
+		}
+	}
+	AST_VIC_expand_backburning_efforts = {
+		
+		icon = GFX_AST_expand_backburning_efforts
+
+		available = {
+			#
+		}
+
+		#fire_only_once = yes
+		ai_will_do = {
+			factor = 200
+		}
+
+		visible = {
+			country_exists = AST
+		}
+		
+		days_remove = 21
+		
+		complete_effect = {
+			set_country_flag = AST_DEVASTATION_ACTION_FLAG
+		}
+
+		remove_effect = {
+			clr_country_flag = AST_DEVASTATION_ACTION_FLAG
+			subtract_from_variable = {
+				var = VIC_bushfire_devastation_rate
+				value = 1
+				tooltip = VIC_bushfire_rate_decrease_tt
+			}
+		}
+	}
+	AST_VIC_draw_water_from_the_murray_river = {
+		
+		icon = GFX_AST_draw_from_the_murray_river
+
+		available = {
+			#
+		}
+
+		#fire_only_once = yes
+		ai_will_do = {
+			factor = 200
+		}
+
+		visible = {
+			country_exists = AST
+		}
+		
+		days_remove = 21
+		
+		complete_effect = {
+			set_country_flag = AST_DEVASTATION_ACTION_FLAG
+		}
+
+		remove_effect = {
+			clr_country_flag = AST_DEVASTATION_ACTION_FLAG
+			subtract_from_variable = {
+				var = VIC_drought_devastation
+				value = 5
+				tooltip = VIC_drought_med_decrease_tt
+			}
+		}
+	}
+	AST_VIC_import_fresh_water = {
+		
+		icon = GFX_AST_import_water
+
+		available = {
+			#
+		}
+
+		#fire_only_once = yes
+		ai_will_do = {
+			factor = 200
+		}
+
+		visible = {
+			country_exists = AST
+		}
+		
+		days_remove = 30
+		days_re_enable = 5
+		
+		complete_effect = {
+			set_country_flag = AST_DEVASTATION_ACTION_FLAG
+		}
+
+		remove_effect = {
+			clr_country_flag = AST_DEVASTATION_ACTION_FLAG
+			subtract_from_variable = {
+				var = VIC_drought_devastation_rate
+				value = 1
+				tooltip = VIC_drought_rate_decrease_tt
+			}
+		}
+	}
+}
+
+AST_patriot_coup_category = {
+	
+	AST_PATRIOT_GOVERNMENT_SETUP = {
+		
+		icon = generic_prepare_civil_war
+
+		visible = {
+			AND = {
+				country_exists = AST
+				is_debug = yes
+			}
+		}
+
+		complete_effect = {
+			set_cosmetic_tag = AST_patriot
+		}
+	}
+}

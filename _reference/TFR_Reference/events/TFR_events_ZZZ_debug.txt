@@ -1,0 +1,829 @@
+﻿add_namespace = debug
+
+# Add to Coalition
+country_event = {
+	id = debug.1
+	title = debug.1.t
+	desc = debug.1.desc
+	picture = GFX_Development_Academic
+	is_triggered_only = yes
+	trigger = {
+		is_debug = yes
+		is_ai = no
+	}
+	option = {
+		name = debug.1.a
+		trigger = {
+			NOT = {
+				has_government = totalitarian_socialist
+				check_variable = {
+					political_power_ideology_var = token:totalitarian_socialist
+				}
+				is_in_array = {
+					ROOT.coalition_partners_array = token:totalitarian_socialist
+				}
+			}
+		}
+		set_temp_variable = {
+			var = coalition_partner_var_temp
+			value = token:totalitarian_socialist
+		}
+		add_to_coalition = yes
+	}
+	option = {
+		name = debug.1.b
+		trigger = {
+			NOT = {
+				has_government = communist
+				check_variable = {
+					political_power_ideology_var = token:communist
+				}
+				is_in_array = {
+					ROOT.coalition_partners_array = token:communist
+				}
+			}
+		}
+		set_temp_variable = {
+			var = coalition_partner_var_temp
+			value = token:communist
+		}
+		add_to_coalition = yes
+	}
+	option = {
+		name = debug.1.c
+		trigger = {
+			NOT = {
+				has_government = libertarian_socialist
+				check_variable = {
+					political_power_ideology_var = token:libertarian_socialist
+				}
+				is_in_array = {
+					ROOT.coalition_partners_array = token:libertarian_socialist
+				}
+			}
+		}
+		set_temp_variable = {
+			var = coalition_partner_var_temp
+			value = token:libertarian_socialist
+		}
+		add_to_coalition = yes
+	}
+	option = {
+		name = debug.1.d
+		trigger = {
+			NOT = {
+				has_government = social_democrat
+				check_variable = {
+					political_power_ideology_var = token:social_democrat
+				}
+				is_in_array = {
+					ROOT.coalition_partners_array = token:social_democrat
+				}
+			}
+		}
+		set_temp_variable = {
+			var = coalition_partner_var_temp
+			value = token:social_democrat
+		}
+		add_to_coalition = yes
+	}
+	option = {
+		name = debug.1.e
+		trigger = {
+			NOT = {
+				has_government = social_liberal
+				check_variable = {
+					political_power_ideology_var = token:social_liberal
+				}
+				is_in_array = {
+					ROOT.coalition_partners_array = token:social_liberal
+				}
+			}
+		}
+		set_temp_variable = {
+			var = coalition_partner_var_temp
+			value = token:social_liberal
+		}
+		add_to_coalition = yes
+	}
+	option = {
+		name = debug.1.f
+		trigger = {
+			NOT = {
+				has_government = market_liberal
+				check_variable = {
+					political_power_ideology_var = token:market_liberal
+				}
+				is_in_array = {
+					ROOT.coalition_partners_array = token:market_liberal
+				}
+			}
+		}
+		set_temp_variable = {
+			var = coalition_partner_var_temp
+			value = token:market_liberal
+		}
+		add_to_coalition = yes
+	}
+	option = {
+		name = debug.1.g
+		trigger = {
+			NOT = {
+				has_government = conservative
+				check_variable = {
+					political_power_ideology_var = token:conservative
+				}
+				is_in_array = {
+					ROOT.coalition_partners_array = token:conservative
+				}
+			}
+		}
+		set_temp_variable = { coalition_partner_var_temp = token:conservative }
+		add_to_coalition = yes
+	}
+	option = {
+		name = debug.1.h
+		trigger = {
+			NOT = {
+				has_government = authoritarian_democrat
+				check_variable = {
+					political_power_ideology_var = token:authoritarian_democrat
+				}
+				is_in_array = {
+					ROOT.coalition_partners_array = token:authoritarian_democrat
+				}
+			}
+		}
+		set_temp_variable = {
+			var = coalition_partner_var_temp
+			value = token:authoritarian_democrat
+		}
+		add_to_coalition = yes
+	}
+	option = {
+		name = debug.1.i
+		trigger = {
+			NOT = {
+				has_government = nationalist
+				check_variable = {
+					political_power_ideology_var = token:nationalist
+				}
+				is_in_array = {
+					ROOT.coalition_partners_array = token:nationalist
+				}
+			}
+		}
+		set_temp_variable = {
+			var = coalition_partner_var_temp
+			value = token:nationalist
+		}
+		add_to_coalition = yes
+	}
+	option = {
+		name = debug.1.j
+		trigger = {
+			NOT = {
+				has_government = fascist
+				check_variable = {
+					political_power_ideology_var = token:fascist
+				}
+				is_in_array = {
+					ROOT.coalition_partners_array = token:fascist
+				}
+			}
+		}
+		set_temp_variable = {
+			var = coalition_partner_var_temp
+			value = token:fascist
+		}
+		add_to_coalition = yes
+	}
+	option = {
+		name = debug.1.k
+		trigger = {
+			NOT = {
+				has_government = national_socialist
+				check_variable = {
+					political_power_ideology_var = token:national_socialist
+				}
+				is_in_array = {
+					ROOT.coalition_partners_array = token:national_socialist
+				}
+			}
+		}
+		set_temp_variable = {
+			var = coalition_partner_var_temp
+			value = token:national_socialist
+		}
+		add_to_coalition = yes
+	}
+}
+
+# Remove from Coalition
+country_event = {
+	id = debug.2
+	title = debug.2.t
+	desc = debug.2.desc
+	picture = GFX_Development_Academic
+	is_triggered_only = yes
+	trigger = {
+		is_debug = yes
+		is_ai = no
+	}
+	option = {
+		name = debug.2.a
+		trigger = {
+			is_in_array = {
+				coalition_partners_array = token:totalitarian_socialist
+			}
+		}
+		set_temp_variable = {
+			var = coalition_partner_var_temp
+			value = token:totalitarian_socialist
+		}
+		remove_from_coalition = yes
+	}
+	option = {
+		name = debug.2.b
+		trigger = {
+			is_in_array = {
+				coalition_partners_array = token:communist
+			}
+		}
+		set_temp_variable = {
+			var = coalition_partner_var_temp
+			value = token:communist
+		}
+		remove_from_coalition = yes
+	}
+	option = {
+		name = debug.2.c
+		trigger = {
+			is_in_array = {
+				coalition_partners_array = token:libertarian_socialist
+			}
+		}
+		set_temp_variable = {
+			var = coalition_partner_var_temp
+			value = token:libertarian_socialist
+		}
+		remove_from_coalition = yes
+	}
+	option = {
+		name = debug.2.d
+		trigger = {
+			is_in_array = {
+				coalition_partners_array = token:social_democrat
+			}
+		}
+		set_temp_variable = {
+			var = coalition_partner_var_temp
+			value = token:social_democrat
+		}
+		remove_from_coalition = yes
+	}
+	option = {
+		name = debug.2.e
+		trigger = {
+			is_in_array = {
+				coalition_partners_array = token:social_liberal
+			}
+		}
+		set_temp_variable = {
+			var = coalition_partner_var_temp
+			value = token:social_liberal
+		}
+		remove_from_coalition = yes
+	}
+	option = {
+		name = debug.2.f
+		trigger = {
+			is_in_array = {
+				coalition_partners_array = token:market_liberal
+			}
+		}
+		set_temp_variable = {
+			var = coalition_partner_var_temp
+			value = token:market_liberal
+		}
+		remove_from_coalition = yes
+	}
+	option = {
+		name = debug.2.g
+		trigger = {
+			is_in_array = {
+				coalition_partners_array = token:conservative
+			}
+		}
+		set_temp_variable = {
+			var = coalition_partner_var_temp
+			value = token:conservative
+		}
+		remove_from_coalition = yes
+	}
+	option = {
+		name = debug.2.h
+		trigger = {
+			is_in_array = {
+				coalition_partners_array = token:authoritarian_democrat
+			}
+		}
+		set_temp_variable = {
+			var = coalition_partner_var_temp
+			value = token:authoritarian_democrat
+		}
+		remove_from_coalition = yes
+	}
+	option = {
+		name = debug.2.i
+		trigger = {
+			is_in_array = {
+				coalition_partners_array = token:nationalist
+			}
+		}
+		set_temp_variable = {
+			var = coalition_partner_var_temp
+			value = token:nationalist
+		}
+		remove_from_coalition = yes
+	}
+	option = {
+		name = debug.2.j
+		trigger = {
+			is_in_array = {
+				coalition_partners_array = token:fascist
+			}
+		}
+		set_temp_variable = {
+			var = coalition_partner_var_temp
+			value = token:fascist
+		}
+		remove_from_coalition = yes
+	}
+	option = {
+		name = debug.2.k
+		trigger = {
+			is_in_array = {
+				coalition_partners_array = token:national_socialist
+			}
+		}
+		set_temp_variable = {
+			var = coalition_partner_var_temp
+			value = token:national_socialist
+		}
+		remove_from_coalition = yes
+	}
+}
+
+# Enable/disable wargoal justification
+country_event = {
+	id = debug.3
+	title = debug.3.t
+	desc = debug.3.desc
+	picture = GFX_Development_Academic
+	is_triggered_only = yes
+	trigger = {
+		is_debug = yes
+		is_ai = no
+	}
+	option = {
+		name = debug.3.a
+		enable_wargoal_justification = yes
+	}
+	option = {
+		name = debug.3.b
+		disable_wargoal_justification = yes
+	}
+}
+
+# Enable/disable guarantee
+country_event = {
+	id = debug.4
+	title = debug.4.t
+	desc = debug.4.desc
+	picture = GFX_Development_Academic
+	is_triggered_only = yes
+	trigger = {
+		is_debug = yes
+		is_ai = no
+	}
+	option = {
+		name = debug.4.a
+		enable_guarantee = yes
+	}
+	option = {
+		name = debug.4.b
+		disable_guarantee = yes
+	}
+}
+
+# Add to Ruling Party
+country_event = {
+	id = debug.5
+	title = debug.5.t
+	desc = debug.5.desc
+	picture = GFX_Development_Academic
+	is_triggered_only = yes
+	trigger = {
+		is_debug = yes
+		is_ai = no
+	}
+	option = {
+		name = debug.5.a
+		trigger = {
+			NOT = {
+				has_government = totalitarian_socialist
+				check_variable = {
+					political_power_ideology_var = token:totalitarian_socialist
+				}
+				is_in_array = {
+					ROOT.ruling_party_wings_array = token:totalitarian_socialist
+				}
+			}
+		}
+		set_temp_variable = {
+			var = ruling_party_wing_var_temp
+			value = token:totalitarian_socialist
+		}
+		add_ruling_party_wing = yes
+	}
+	option = {
+		name = debug.5.b
+		trigger = {
+			NOT = {
+				has_government = communist
+				check_variable = {
+					political_power_ideology_var = token:communist
+				}
+				is_in_array = {
+					ROOT.ruling_party_wings_array = token:communist
+				}
+			}
+		}
+		set_temp_variable = {
+			var = ruling_party_wing_var_temp
+			value = token:communist
+		}
+		add_ruling_party_wing = yes
+	}
+	option = {
+		name = debug.5.c
+		trigger = {
+			NOT = {
+				has_government = libertarian_socialist
+				check_variable = {
+					political_power_ideology_var = token:libertarian_socialist
+				}
+				is_in_array = {
+					ROOT.ruling_party_wings_array = token:libertarian_socialist
+				}
+			}
+		}
+		set_temp_variable = {
+			var = ruling_party_wing_var_temp
+			value = token:libertarian_socialist
+		}
+		add_ruling_party_wing = yes
+	}
+	option = {
+		name = debug.5.d
+		trigger = {
+			NOT = {
+				has_government = social_democrat
+				check_variable = {
+					political_power_ideology_var = token:social_democrat
+				}
+				is_in_array = {
+					ROOT.ruling_party_wings_array = token:social_democrat
+				}
+			}
+		}
+		set_temp_variable = {
+			var = ruling_party_wing_var_temp
+			value = token:social_democrat
+		}
+		add_ruling_party_wing = yes
+	}
+	option = {
+		name = debug.5.e
+		trigger = {
+			NOT = {
+				has_government = social_liberal
+				check_variable = {
+					political_power_ideology_var = token:social_liberal
+				}
+				is_in_array = {
+					ROOT.ruling_party_wings_array = token:social_liberal
+				}
+			}
+		}
+		set_temp_variable = {
+			var = ruling_party_wing_var_temp
+			value = token:social_liberal
+		}
+		add_ruling_party_wing = yes
+	}
+	option = {
+		name = debug.5.f
+		trigger = {
+			NOT = {
+				has_government = market_liberal
+				check_variable = {
+					political_power_ideology_var = token:market_liberal
+				}
+				is_in_array = {
+					ROOT.ruling_party_wings_array = token:market_liberal
+				}
+			}
+		}
+		set_temp_variable = {
+			var = ruling_party_wing_var_temp
+			value = token:market_liberal
+		}
+		add_ruling_party_wing = yes
+	}
+	option = {
+		name = debug.5.g
+		trigger = {
+			NOT = {
+				has_government = conservative
+				check_variable = {
+					political_power_ideology_var = token:conservative
+				}
+				is_in_array = {
+					ROOT.ruling_party_wings_array = token:conservative
+				}
+			}
+		}
+		set_temp_variable = { ruling_party_wing_var_temp = token:conservative }
+		add_ruling_party_wing = yes
+	}
+	option = {
+		name = debug.5.h
+		trigger = {
+			NOT = {
+				has_government = authoritarian_democrat
+				check_variable = {
+					political_power_ideology_var = token:authoritarian_democrat
+				}
+				is_in_array = {
+					ROOT.ruling_party_wings_array = token:authoritarian_democrat
+				}
+			}
+		}
+		set_temp_variable = {
+			var = ruling_party_wing_var_temp
+			value = token:authoritarian_democrat
+		}
+		add_ruling_party_wing = yes
+	}
+	option = {
+		name = debug.5.i
+		trigger = {
+			NOT = {
+				has_government = nationalist
+				check_variable = {
+					political_power_ideology_var = token:nationalist
+				}
+				is_in_array = {
+					ROOT.ruling_party_wings_array = token:nationalist
+				}
+			}
+		}
+		set_temp_variable = {
+			var = ruling_party_wing_var_temp
+			value = token:nationalist
+		}
+		add_ruling_party_wing = yes
+	}
+	option = {
+		name = debug.5.j
+		trigger = {
+			NOT = {
+				has_government = fascist
+				check_variable = {
+					political_power_ideology_var = token:fascist
+				}
+				is_in_array = {
+					ROOT.ruling_party_wings_array = token:fascist
+				}
+			}
+		}
+		set_temp_variable = {
+			var = ruling_party_wing_var_temp
+			value = token:fascist
+		}
+		add_ruling_party_wing = yes
+	}
+	option = {
+		name = debug.5.k
+		trigger = {
+			NOT = {
+				has_government = national_socialist
+				check_variable = {
+					political_power_ideology_var = token:national_socialist
+				}
+				is_in_array = {
+					ROOT.ruling_party_wings_array = token:national_socialist
+				}
+			}
+		}
+		set_temp_variable = {
+			var = ruling_party_wing_var_temp
+			value = token:national_socialist
+		}
+		add_ruling_party_wing = yes
+	}
+}
+
+# Remove from Ruling Party
+country_event = {
+	id = debug.6
+	title = debug.6.t
+	desc = debug.6.desc
+	picture = GFX_Development_Academic
+	is_triggered_only = yes
+	trigger = {
+		is_debug = yes
+		is_ai = no
+	}
+	option = {
+		name = debug.6.a
+		trigger = {
+			is_in_array = {
+				ruling_party_wings_array = token:totalitarian_socialist
+			}
+		}
+		set_temp_variable = {
+			var = ruling_party_wing_var_temp
+			value = token:totalitarian_socialist
+		}
+		remove_ruling_party_wing = yes
+	}
+	option = {
+		name = debug.6.b
+		trigger = {
+			is_in_array = {
+				ruling_party_wings_array = token:communist
+			}
+		}
+		set_temp_variable = {
+			var = ruling_party_wing_var_temp
+			value = token:communist
+		}
+		remove_ruling_party_wing = yes
+	}
+	option = {
+		name = debug.6.c
+		trigger = {
+			is_in_array = {
+				ruling_party_wings_array = token:libertarian_socialist
+			}
+		}
+		set_temp_variable = {
+			var = ruling_party_wing_var_temp
+			value = token:libertarian_socialist
+		}
+		remove_ruling_party_wing = yes
+	}
+	option = {
+		name = debug.6.d
+		trigger = {
+			is_in_array = {
+				ruling_party_wings_array = token:social_democrat
+			}
+		}
+		set_temp_variable = {
+			var = ruling_party_wing_var_temp
+			value = token:social_democrat
+		}
+		remove_ruling_party_wing = yes
+	}
+	option = {
+		name = debug.6.e
+		trigger = {
+			is_in_array = {
+				ruling_party_wings_array = token:social_liberal
+			}
+		}
+		set_temp_variable = {
+			var = ruling_party_wing_var_temp
+			value = token:social_liberal
+		}
+		remove_ruling_party_wing = yes
+	}
+	option = {
+		name = debug.6.f
+		trigger = {
+			is_in_array = {
+				ruling_party_wings_array = token:market_liberal
+			}
+		}
+		set_temp_variable = {
+			var = ruling_party_wing_var_temp
+			value = token:market_liberal
+		}
+		remove_ruling_party_wing = yes
+	}
+	option = {
+		name = debug.6.g
+		trigger = {
+			is_in_array = {
+				ruling_party_wings_array = token:conservative
+			}
+		}
+		set_temp_variable = {
+			var = ruling_party_wing_var_temp
+			value = token:conservative
+		}
+		remove_ruling_party_wing = yes
+	}
+	option = {
+		name = debug.6.h
+		trigger = {
+			is_in_array = {
+				ruling_party_wings_array = token:authoritarian_democrat
+			}
+		}
+		set_temp_variable = {
+			var = ruling_party_wing_var_temp
+			value = token:authoritarian_democrat
+		}
+		remove_ruling_party_wing = yes
+	}
+	option = {
+		name = debug.6.i
+		trigger = {
+			is_in_array = {
+				ruling_party_wings_array = token:nationalist
+			}
+		}
+		set_temp_variable = {
+			var = ruling_party_wing_var_temp
+			value = token:nationalist
+		}
+		remove_ruling_party_wing = yes
+	}
+	option = {
+		name = debug.6.j
+		trigger = {
+			is_in_array = {
+				ruling_party_wings_array = token:fascist
+			}
+		}
+		set_temp_variable = {
+			var = ruling_party_wing_var_temp
+			value = token:fascist
+		}
+		remove_ruling_party_wing = yes
+	}
+	option = {
+		name = debug.6.k
+		trigger = {
+			is_in_array = {
+				ruling_party_wings_array = token:national_socialist
+			}
+		}
+		set_temp_variable = {
+			var = ruling_party_wing_var_temp
+			value = token:national_socialist
+		}
+		remove_ruling_party_wing = yes
+	}
+}
+
+# Dam event
+country_event = {
+	id = debug.7
+	title = debug.7.t
+	desc = debug.7.desc
+	picture = GFX_Development_Academic
+	is_triggered_only = yes
+	trigger = {
+		#is_debug = yes
+		#is_ai = no
+	}
+	option = {
+		name = debug.7.a
+		#building_generic_dam
+		#building_dam_mountain
+		create_entity = {
+			entity = building_generic_dam
+			id = 11111
+			#var = var_name
+			x = 1
+			y = 1
+			z = 1
+			province = 14164
+			state = 1297
+			rotation = 3.9
+			scale = 1.0
+			min_zoom = 750.0
+			visible = debug_entity
+		}
+	}
+	option = {
+		name = debug.7.b
+		destroy_entity = 11111
+	}
+}

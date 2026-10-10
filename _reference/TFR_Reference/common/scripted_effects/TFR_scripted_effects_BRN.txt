@@ -1,0 +1,272 @@
+	#looks for 1 less than what is needed in the effect to match tooltip, since flag is modified after effect is run
+	BRN_infiltration_succesful_show_uprising_effect = {
+		custom_effect_tooltip = BRN_infiltration_succesful
+		if = {
+			limit = {
+				OR = {
+					NOT = { has_state_flag = BRN_infiltration_@ROOT }
+					has_state_flag = {
+						flag = BRN_infiltration_@ROOT
+						value = 0
+					}
+				}
+			}		
+			custom_effect_tooltip = BRN_infiltrate_uprising_header
+			custom_effect_tooltip = BRN_infiltrate_uprising_effect_1
+		}
+		else_if = {
+			limit = {
+				has_state_flag = {
+					flag = BRN_infiltration_@ROOT
+					value = 1
+				}
+			}
+			custom_effect_tooltip = BRN_infiltrate_uprising_header
+			custom_effect_tooltip = BRN_infiltrate_uprising_effect_1
+		}
+		else_if = {
+			limit = {
+				has_state_flag = {
+					flag = BRN_infiltration_@ROOT
+					value = 2
+				}
+			}
+			custom_effect_tooltip = BRN_infiltrate_uprising_header
+			custom_effect_tooltip = BRN_infiltrate_uprising_effect_2
+			custom_effect_tooltip = BRN_infiltrate_uprising_effect_3
+		}
+		else_if = {
+			limit = {
+				has_state_flag = {
+					flag = BRN_infiltration_@ROOT
+					value > 2
+				}
+			}
+			custom_effect_tooltip = BRN_infiltrate_uprising_header
+			custom_effect_tooltip = BRN_infiltrate_uprising_effect_2
+			custom_effect_tooltip = BRN_infiltrate_uprising_effect_4
+		}
+	}
+
+
+	BRN_execute_infiltration_effects_for_PREV = {
+		if = {
+			limit = {
+				has_state_flag = {
+					flag = BRN_infiltration_@PREV
+					value = 1
+				}
+			}
+			damage_building = {
+				type = infrastructure
+				damage = 2
+			}
+			damage_building = {
+				type = arms_factory
+				damage = 2
+			}
+		}
+		if = {
+			limit = {
+				has_state_flag = {
+					flag = BRN_infiltration_@PREV
+					value = 2
+				}
+			}
+			damage_building = {
+				type = infrastructure
+				damage = 4
+			}
+			damage_building = {
+				type = arms_factory
+				damage = 4
+			}
+		}
+		if = {
+			limit = {
+				has_state_flag = {
+					flag = BRN_infiltration_@PREV
+					value = 3
+				}
+			}
+			custom_effect_tooltip = BRN_infiltrate_uprising_effect_3
+			hidden_effect = {
+				create_unit = {
+					division = "name = \"1. Comandos de Tejas\" division_template = \"Brigada de Infanteria\" start_experience_factor = 0.0" 
+					owner = PREV
+				}
+				create_unit = {
+					division = "name = \"2. Comandos de Tejas\" division_template = \"Brigada de Infanteria\" start_experience_factor = 0.0" 
+					owner = PREV
+				}
+				create_unit = {
+					division = "name = \"3. Comandos de Tejas\" division_template = \"Brigada de Infanteria\" start_experience_factor = 0.0" 
+					owner = PREV
+				}
+			}
+		}
+		if = {
+			limit = {
+				has_state_flag = {
+					flag = BRN_infiltration_@PREV
+					value = 4
+				}
+			}
+			#We probably don't want to destroy stuff in the state when we gain control and have units there.
+			PREV = {
+				set_state_controller = PREV
+				division_template = {
+					name = "Comandos de Elite"
+					priority = 3
+					regiments = {
+						recce = { x = 0 y = 0 }
+						recce = { x = 0 y = 1 }
+						recce = { x = 0 y = 2 }
+						recce = { x = 0 y = 4 }
+					}
+					support = {
+						signal_company = { x = 0 y = 0 }
+						logistics_company = { x = 0 y = 1 }
+					}
+				}
+			}
+			custom_effect_tooltip = BRN_infiltrate_uprising_effect_4
+			hidden_effect = {
+				create_unit = {
+					division = "name = \"Comandos de Elite\" division_template = \"Comandos de Elite\" start_experience_factor = 0.3" 
+					owner = PREV
+				}
+				create_unit = {
+					division = "name = \"Comandos de Elite\" division_template = \"Comandos de Elite\" start_experience_factor = 0.3" 
+					owner = PREV
+				}
+				create_unit = {
+					division = "name = \"Comandos de Elite\" division_template = \"Comandos de Elite\" start_experience_factor = 0.3" 
+					owner = PREV
+				}
+			}
+		}
+	}
+
+	#Idea Effects
+	BRN_decrease_chicano_authority = {
+		if = {
+			limit = {
+				has_idea = BRN_chicano_rule_4
+			}
+			swap_ideas = {
+				remove_idea = BRN_chicano_rule_4
+				add_idea = BRN_chicano_rule_3
+			}
+		}
+		else_if = {
+			limit = {
+				has_idea = BRN_chicano_rule_3
+			}
+			swap_ideas = {
+				remove_idea = BRN_chicano_rule_3
+				add_idea = BRN_chicano_rule_2
+			}
+		}
+		else_if = {
+			limit = {
+				has_idea = BRN_chicano_rule_2
+			}
+			swap_ideas = {
+				remove_idea = BRN_chicano_rule_2
+				add_idea = BRN_chicano_rule_1
+			}
+		}
+	}
+	
+	BRN_increase_chicano_authority = {
+		if = {
+			limit = {
+				has_idea = BRN_chicano_rule_1
+			}
+			swap_ideas = {
+				remove_idea = BRN_chicano_rule_1
+				add_idea = BRN_chicano_rule_2
+			}
+		}
+		else_if = {
+			limit = {
+				has_idea = BRN_chicano_rule_2
+			}
+			swap_ideas = {
+				remove_idea = BRN_chicano_rule_2
+				add_idea = BRN_chicano_rule_3
+			}
+		}
+		else_if = {
+			limit = {
+				has_idea = BRN_chicano_rule_3
+			}
+			swap_ideas = {
+				remove_idea = BRN_chicano_rule_3
+				add_idea = BRN_chicano_rule_4
+			}
+		}
+	}
+	
+	BRN_increase_la_raza = {
+		if = {
+			limit = {
+				has_idea = BRN_la_raza
+			}
+			swap_ideas = {
+				remove_idea = BRN_la_raza
+				add_idea = BRN_la_raza_2
+			}
+		}
+		else_if = {
+			limit = {
+				has_idea = BRN_la_raza_2
+			}
+			swap_ideas = {
+				remove_idea = BRN_la_raza_2
+				add_idea = BRN_la_raza_3
+			}
+		}
+		else_if = {
+			limit = {
+				has_idea = BRN_la_raza_3
+			}
+			swap_ideas = {
+				remove_idea = BRN_la_raza_3
+				add_idea = BRN_la_raza_4
+			}
+		}
+	}
+	
+	#Influence Effects
+	
+	BRN_add_factionalism = {
+		custom_effect_tooltip = BRN_add_factionalism_tooltip
+		add_to_variable = {
+          var = BRN_factionalism_var
+          value = BRN_factionalism_var_temp
+       }
+
+        clamp_variable = {
+			var = BRN_factionalism_var
+            min = BRN_factionalism_min_var
+			max = BRN_factionalism_max_var
+        }
+	}
+	
+	BRN_add_chicano_authority = {
+		custom_effect_tooltip = BRN_add_chicano_authority_tooltip
+		
+		add_to_variable = {
+			var = BRN_chicano_authority_var
+			value = BRN_chicano_authority_var_temp
+		}
+		
+		clamp_variable = {
+			var = BRN_chicano_authority_var
+			min = BRN_chicano_min_var
+			max = BRN_chicano_max_var
+		}
+		
+	}

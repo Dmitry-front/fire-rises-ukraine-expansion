@@ -1,0 +1,1240 @@
+capital = 366
+#oob = "ATW_2020"
+#Accelerationist
+recruit_character = ATW_brandon_russell_char
+recruit_character = ATW_james_mason_char
+recruit_character = ATW_vasilios_g_pistolis_char
+recruit_character = ATW_craig_lang_char
+recruit_character = ATW_jordan_duncan_char
+recruit_character = ATW_sarah_clendaniel_char
+recruit_character = ATW_shawn_michael_char
+#Christian
+recruit_character = ATW_jordan_jereb_char
+recruit_character = ATW_isaac_aguigui_char
+recruit_character = ATW_liam_j_collins_char
+recruit_character = ATW_the_masked_man_char
+recruit_character = ATW_aiden_bruce_umbaugh_char
+recruit_character = ATW_alex_zwiefelhofer_char
+recruit_character = ATW_beau_merryman_char
+recruit_character = ATW_conor_climo_char
+recruit_character = ATW_timothy_wilson_char
+#09A
+recruit_character = ATW_joshua_sutter_char
+recruit_character = ATW_augustus_sol_invictus_char
+recruit_character = ATW_jarrett_smith_char
+recruit_character = ATW_devon_arthurs_char
+recruit_character = ATW_john_cameron_denton_char
+recruit_character = ATW_ethan_melzer_char
+recruit_character = ATW_corwyn_carver_char
+recruit_character = ATW_kane_char #Erm, what the sigma?!
+#Other
+recruit_character = ATW_david_panzera_char
+recruit_character = ATW_joel_mingleton_char
+recruit_character = ATW_ali_gator_char
+
+set_research_slots = 3
+set_convoys = 10
+set_stability = 0.25
+set_war_support = 0.25
+set_country_flag = shithole_country
+set_technology = {
+	## Infantry ##
+	
+	infantry_weapons1 = 1
+	infantry_weapons2 = 1
+	motorised_infantry = 1
+	infantry_rifle_upgrade = 1
+	support_weapons = 1
+	night_vision = 1
+	body_armor = 1
+	camouflage = 1
+	## Support Companies ##
+	tech_support = 1
+	tech_engineers = 1
+	tech_recon = 1
+	tech_military_police = 1
+	tech_field_hospital = 1
+	## Armor ##
+	mechanised_infantry1 = 1
+	light_mechanized_infantry1 = 1
+	## Artillery ##
+	gw_artillery = 1
+	interwar_antitank = 1
+	interwar_antiair = 1
+	self_propelled_aa1 = 1
+	## Engineering ##
+	#eng_low
+	## Industry ##
+	#ind_low
+	## Doctrines ##
+	#asymetrical_warfare = 1
+}
+
+if = {
+	limit = {
+		has_dlc = "By Blood Alone"
+	}
+	set_technology = {
+		aa_lmg = 1
+		aa_cannon_1 = 1
+		aa_hmg = 1
+		engines_1 = 1
+		engines_2 = 1
+		early_bombs = 1
+		guided_bombs = 1
+		aircraft_construction = 1
+		survivability_studies = 1
+		iw_small_airframe = 1
+		basic_small_airframe = 1
+		iw_medium_airframe = 1
+		basic_medium_airframe = 1
+		iw_large_airframe = 1
+	}
+	else = {
+		set_technology = {
+			CAS1 = 1
+			CAS2 = 1
+			fighter1 = 1
+			fighter2 = 1
+			scout_plane1 = 1
+			transport_plane2 = 1
+		}
+	}
+}
+
+if = {
+	limit = {
+		NOT = {
+			has_dlc = "No Step Back"
+		}
+	}
+	set_technology = {
+		main_battle_tank1 = 1
+		light_tank1 = 1
+	}
+}
+
+if = {
+	limit = {
+		has_dlc = "No Step Back"
+	}
+	set_technology = {
+		gwtank_chassis = 1
+		basic_light_tank_chassis = 1
+		basic_medium_tank_chassis = 1
+		engine_tech_1 = 1
+		apds_tech = 1
+		legacy_armor_designs = 1
+	}
+}
+
+add_equipment_to_stockpile = {
+	type = motorized_equipment
+	amount = 100
+}
+
+add_equipment_to_stockpile = {
+	type = train_equipment
+	amount = 20
+}
+
+set_politics = {
+	ruling_party = national_socialist
+	last_election = "2020.11.3"
+	election_frequency = 48
+	elections_allowed = no
+}
+
+set_popularities = {
+	libertarian_socialist = 5
+	nationalist = 16.6
+	fascist = 17.7
+	national_socialist = 60.7
+}
+
+#Dyanmic Modifier Variables
+#Politics Dynamic Modifier
+set_variable = {
+	var = ATW_politics_political_power_gain_dynamic_var
+	value = -1
+}
+
+set_variable = {
+	var = ATW_politics_stability_factor_dynamic_var
+	value = 0
+}
+
+set_variable = {
+	var = ATW_politics_stability_weekly_dynamic_var
+	value = 0
+}
+
+set_variable = {
+	var = ATW_politics_war_stability_factor_dynamic_var
+	value = 0
+}
+
+set_variable = {
+	var = ATW_politics_party_popularity_stability_factor_dynamic_var
+	value = 0
+}
+
+set_variable = {
+	var = ATW_politics_war_support_factor_dynamic_var
+	value = -0.15
+}
+
+set_variable = {
+	var = ATW_politics_war_support_weekly_dynamic_var
+	value = 0
+}
+
+set_variable = {
+	var = ATW_politics_personal_expense_factor_dynamic_var
+	value = 0
+}
+
+set_variable = {
+	var = ATW_politics_desperation_weekly_dynamic_var
+	value = 0.002
+}
+
+set_variable = {
+	var = ATW_politics_devotion_weekly_dynamic_var
+	value = 0
+}
+
+set_variable = {
+	var = ATW_politics_despair_weekly_dynamic_var
+	value = 0
+}
+
+set_variable = {
+	var = ATW_politics_suspicion_weekly_dynamic_var
+	value = 0
+}
+
+set_variable = {
+	var = ATW_politics_society_development_monthly_dynamic_var
+	value = -0.01
+}
+
+set_variable = {
+	var = ATW_politics_poverty_development_monthly_dynamic_var
+	value = -0.01
+}
+
+set_variable = {
+	var = ATW_politics_monthly_population_dynamic_var
+	value = 0
+}
+
+#Economic Dynamic Modifier
+set_variable = {
+	var = ATW_economy_political_power_gain_dynamic_var
+	value = 0
+}
+
+set_variable = {
+	var = ATW_economy_stability_factor_dynamic_var
+	value = 0
+}
+
+set_variable = {
+	var = ATW_economy_stability_weekly_dynamic_var
+	value = 0
+}
+
+set_variable = {
+	var = ATW_economy_war_support_factor_dynamic_var
+	value = 0
+}
+
+set_variable = {
+	var = ATW_economy_war_support_weekly_dynamic_var
+	value = 0
+}
+
+set_variable = {
+	var = ATW_economy_consumer_goods_factor_dynamic_var
+	value = 0
+}
+
+set_variable = {
+	var = ATW_economy_local_resources_factor_dynamic_var
+	value = 0
+}
+
+set_variable = {
+	var = ATW_economy_global_building_slots_factor_dynamic_var
+	value = 0
+}
+
+set_variable = {
+	var = ATW_economy_research_speed_factor_dynamic_var
+	value = 0
+}
+
+set_variable = {
+	var = ATW_economy_economy_cost_factor_dynamic_var
+	value = 0
+}
+
+set_variable = {
+	var = ATW_economy_trade_laws_cost_factor_dynamic_var
+	value = 0
+}
+
+set_variable = {
+	var = ATW_economy_tax_laws_cost_factor_dynamic_var
+	value = 0
+}
+
+set_variable = {
+	var = ATW_economy_compliance_growth_dynamic_var
+	value = 0
+}
+
+set_variable = {
+	var = ATW_economy_resistance_growth_dynamic_var
+	value = 0
+}
+
+set_variable = {
+	var = ATW_economy_resistance_decay_dynamic_var
+	value = 0
+}
+
+set_variable = {
+	var = ATW_economy_production_factory_max_efficiency_factor_dynamic_var
+	value = 0
+}
+
+set_variable = {
+	var = ATW_economy_production_factory_efficiency_gain_factor_dynamic_var
+	value = 0
+}
+
+set_variable = {
+	var = ATW_economy_production_factory_start_efficiency_factor_dynamic_var
+	value = 0
+}
+
+set_variable = {
+	var = ATW_economy_line_change_production_efficiency_factor_dynamic_var
+	value = 0
+}
+
+set_variable = {
+	var = ATW_economy_production_lack_of_resource_penalty_factor_dynamic_var
+	value = 0
+}
+
+set_variable = {
+	var = ATW_economy_conversion_cost_civ_to_mil_factor_dynamic_var
+	value = 0
+}
+
+set_variable = {
+	var = ATW_economy_conversion_cost_mil_to_civ_factor_dynamic_var
+	value = 0
+}
+
+set_variable = {
+	var = ATW_economy_industry_repair_factor_dynamic_var
+	value = -0.9
+}
+
+set_variable = {
+	var = ATW_economy_production_speed_buildings_factor_dynamic_var
+	value = -0.3
+}
+
+set_variable = {
+	var = ATW_economy_industrial_capacity_factory_dynamic_var
+	value = -0.3
+}
+
+set_variable = {
+	var = ATW_economy_industrial_capacity_dockyard_dynamic_var
+	value = -0.3
+}
+
+set_variable = {
+	var = ATW_economy_production_speed_infrastructure_factor_dynamic_var
+	value = 0
+}
+
+set_variable = {
+	var = ATW_economy_production_speed_industrial_complex_factor_dynamic_var
+	value = 0
+}
+
+set_variable = {
+	var = ATW_economy_production_speed_office_park_factor_dynamic_var
+	value = 0
+}
+
+set_variable = {
+	var = ATW_economy_production_speed_rail_way_factor_dynamic_var
+	value = 0
+}
+
+set_variable = {
+	var = ATW_economy_production_speed_arms_factory_factor_dynamic_var
+	value = 0
+}
+
+set_variable = {
+	var = ATW_economy_production_speed_dockyard_factor_dynamic_var
+	value = 0
+}
+
+set_variable = {
+	var = ATW_economy_production_speed_power_plant_factor_dynamic_var
+	value = 0
+}
+
+set_variable = {
+	var = ATW_economy_production_speed_nuclear_reactor_factor_dynamic_var
+	value = 0
+}
+
+set_variable = {
+	var = ATW_economy_industrial_development_monthly_dynamic_var
+	value = 0
+}
+
+set_variable = {
+	var = ATW_economy_poverty_development_monthly_dynamic_var
+	value = 0
+}
+
+set_variable = {
+	var = ATW_economy_farming_development_monthly_dynamic_var
+	value = 0
+}
+
+set_variable = {
+	var = ATW_economy_academic_development_monthly_dynamic_var
+	value = 0
+}
+
+set_variable = {
+	var = ATW_economy_society_development_monthly_dynamic_var
+	value = 0
+}
+
+set_variable = {
+	var = ATW_economy_income_growth_factor_dynamic_var
+	value = 0
+}
+
+set_variable = {
+	var = ATW_economy_expense_growth_factor_dynamic_var
+	value = 0
+}
+
+set_variable = {
+	var = ATW_economy_business_value_factor_dynamic_var
+	value = -0.3
+}
+
+set_variable = {
+	var = ATW_economy_personal_value_factor_dynamic_var
+	value = -0.3
+}
+
+set_variable = {
+	var = ATW_economy_personal_expense_dynamic_var
+	value = 0
+}
+
+set_variable = {
+	var = ATW_economy_personal_expense_factor_dynamic_var
+	value = 0
+}
+
+set_variable = {
+	var = ATW_economy_tax_business_rate_dynamic_var
+	value = 0
+}
+
+set_variable = {
+	var = ATW_economy_tax_personal_rate_dynamic_var
+	value = 0
+}
+
+set_variable = {
+	var = ATW_economy_interest_rate_dynamic_var
+	value = 0
+}
+
+set_variable = {
+	var = ATW_economy_inflation_monthly_factor_dynamic_var
+	value = 0
+}
+
+#Military
+set_variable = {
+	var = ATW_military_political_power_gain_dynamic_var
+	value = 0
+}
+
+set_variable = {
+	var = ATW_military_war_support_factor_dynamic_var
+	value = 0
+}
+
+set_variable = {
+	var = ATW_military_war_support_weekly_dynamic_var
+	value = 0
+}
+
+set_variable = {
+	var = ATW_military_war_stability_factor_dynamic_var
+	value = 0
+}
+
+set_variable = {
+	var = ATW_military_weekly_casualties_war_support_dynamic_var
+	value = 0
+}
+
+set_variable = {
+	var = ATW_military_weekly_convoys_war_support_dynamic_var
+	value = 0
+}
+
+set_variable = {
+	var = ATW_military_weekly_bombing_war_support_dynamic_var
+	value = 0
+}
+
+set_variable = {
+	var = ATW_military_experience_gain_army_dynamic_var
+	value = 0
+}
+
+set_variable = {
+	var = ATW_military_experience_gain_army_factor_dynamic_var
+	value = -0.25
+}
+
+set_variable = {
+	var = ATW_military_experience_loss_factor_dynamic_var
+	value = 0
+}
+
+set_variable = {
+	var = ATW_military_max_command_power_dynamic_var
+	value = 0
+}
+
+set_variable = {
+	var = ATW_military_command_power_gain_mult_dynamic_var
+	value = 0
+}
+
+set_variable = {
+	var = ATW_military_army_org_factor_dynamic_var
+	value = -0.25
+}
+
+set_variable = {
+	var = ATW_military_army_org_regain_dynamic_var
+	value = 0
+}
+
+set_variable = {
+	var = ATW_military_org_loss_when_moving_dynamic_var
+	value = 0
+}
+
+set_variable = {
+	var = ATW_military_army_strength_factor_dynamic_var
+	value = 0
+}
+
+set_variable = {
+	var = ATW_military_coordination_bonus_dynamic_var
+	value = 0
+}
+
+set_variable = {
+	var = ATW_military_land_reinforce_rate_dynamic_var
+	value = 0
+}
+
+set_variable = {
+	var = ATW_military_max_planning_factor_dynamic_var
+	value = 0
+}
+
+set_variable = {
+	var = ATW_military_planning_speed_dynamic_var
+	value = 0
+}
+
+set_variable = {
+	var = ATW_military_max_dig_in_factor_dynamic_var
+	value = 0
+}
+
+set_variable = {
+	var = ATW_military_dig_in_speed_factor_dynamic_var
+	value = 0
+}
+
+set_variable = {
+	var = ATW_military_army_morale_factor_dynamic_var
+	value = 0
+}
+
+set_variable = {
+	var = ATW_military_army_attack_factor_dynamic_var
+	value = 0
+}
+
+set_variable = {
+	var = ATW_military_army_defence_factor_dynamic_var
+	value = 0
+}
+
+set_variable = {
+	var = ATW_military_breakthrough_factor_dynamic_var
+	value = 0
+}
+
+set_variable = {
+	var = ATW_military_army_speed_factor_dynamic_var
+	value = 0
+}
+
+set_variable = {
+	var = ATW_military_army_core_attack_factor_dynamic_var
+	value = 0
+}
+
+set_variable = {
+	var = ATW_military_army_core_defence_factor_dynamic_var
+	value = 0
+}
+
+set_variable = {
+	var = ATW_military_modifier_army_sub_unit_militia_attack_factor_dynamic_var
+	value = 0
+}
+
+set_variable = {
+	var = ATW_military_modifier_army_sub_unit_militia_defence_factor_dynamic_var
+	value = 0
+}
+
+set_variable = {
+	var = ATW_military_production_speed_air_base_factor_dynamic_var
+	value = 0
+}
+
+set_variable = {
+	var = ATW_military_production_speed_anti_air_building_factor_dynamic_var
+	value = 0
+}
+
+set_variable = {
+	var = ATW_military_production_speed_bunker_factor_dynamic_var
+	value = 0
+}
+
+set_variable = {
+	var = ATW_military_production_speed_coastal_bunker_factor_dynamic_var
+	value = 0
+}
+
+set_variable = {
+	var = ATW_military_equipment_capture_factor_dynamic_var
+	value = 0
+}
+
+set_variable = {
+	var = ATW_military_out_of_supply_factor_dynamic_var
+	value = 0
+}
+
+set_variable = {
+	var = ATW_military_attrition_dynamic_var
+	value = 0
+}
+
+set_variable = {
+	var = ATW_military_supply_consumption_factor_dynamic_var
+	value = 0
+}
+
+set_variable = {
+	var = ATW_military_conscription_factor_dynamic_var
+	value = -0.5
+}
+
+set_variable = {
+	var = ATW_military_mobilization_speed_dynamic_var
+	value = -0.5
+}
+
+set_variable = {
+	var = ATW_military_training_time_army_factor_dynamic_var
+	value = 0
+}
+
+set_variable = {
+	var = ATW_military_compliance_growth_dynamic_var
+	value = -0.3
+}
+
+set_variable = {
+	var = ATW_military_resistance_target_dynamic_var
+	value = 0
+}
+
+set_variable = {
+	var = ATW_military_resistance_growth_dynamic_var
+	value = 0.3
+}
+
+set_variable = {
+	var = ATW_military_resistance_decay_dynamic_var
+	value = -0.3
+}
+
+set_variable = {
+	var = ATW_military_required_garrison_factor_dynamic_var
+	value = 0
+}
+
+set_variable = {
+	var = ATW_military_resistance_decay_on_our_occupied_states_dynamic_var
+	value = 0
+}
+
+set_variable = {
+	var = ATW_military_resistance_growth_on_our_occupied_states_dynamic_var
+	value = 0
+}
+
+set_variable = {
+	var = ATW_military_terrain_penalty_reduction_dynamic_var
+	value = 0
+}
+
+set_variable = {
+	var = ATW_military_acclimatization_hot_climate_gain_factor_dynamic_var
+	value = 0
+}
+
+set_variable = {
+	var = ATW_military_acclimatization_cold_climate_gain_factor_dynamic_var
+	value = 0
+}
+
+set_variable = {
+	var = ATW_military_pocket_penalty_dynamic_var
+	value = 0
+}
+
+set_variable = {
+	var = ATW_military_land_doctrine_cost_factor_dynamic_var
+	value = 0
+}
+
+set_variable = {
+	var = ATW_military_battalion_upkeep_factor_dynamic_var
+	value = 0
+}
+
+set_variable = {
+	var = ATW_military_development_monthly_dynamic_var
+	value = 0
+}
+
+set_variable = {
+	var = ATW_military_surrender_limit_dynamic_var
+	value = 0
+}
+
+#Desperation
+set_variable = {
+	var = ATW_desperation_army_attack_factor_dynamic_var
+	value = 0
+}
+
+set_variable = {
+	var = ATW_desperation_production_speed_arms_factory_factor_dynamic_var
+	value = 0
+}
+
+set_variable = {
+	var = ATW_desperation_production_factory_efficiency_gain_factor_dynamic_var
+	value = 0
+}
+
+set_variable = {
+	var = ATW_desperation_production_speed_industrial_complex_factor_dynamic_var
+	value = 0
+}
+
+set_variable = {
+	var = ATW_desperation_research_speed_factor_dynamic_var
+	value = 0
+}
+
+#Devotion
+set_variable = {
+	var = ATW_devotion_political_power_gain_dynamic_var
+	value = 0
+}
+
+set_variable = {
+	var = ATW_devotion_army_defence_factor_dynamic_var
+	value = 0
+}
+
+set_variable = {
+	var = ATW_devotion_stability_factor_dynamic_var
+	value = 0
+}
+
+set_variable = {
+	var = ATW_devotion_conscription_factor_dynamic_var
+	value = 0
+}
+
+set_variable = {
+	var = ATW_devotion_war_support_factor_dynamic_var
+	value = 0
+}
+
+#Despair
+set_variable = {
+	var = ATW_despair_army_attack_factor_dynamic_var
+	value = 0
+}
+
+set_variable = {
+	var = ATW_despair_industrial_capacity_factory_dynamic_var
+	value = 0
+}
+
+set_variable = {
+	var = ATW_despair_industrial_capacity_dockyard_dynamic_var
+	value = 0
+}
+
+set_variable = {
+	var = ATW_despair_war_support_factor_dynamic_var
+	value = 0
+}
+
+set_variable = {
+	var = ATW_despair_army_morale_factor_dynamic_var
+	value = 0
+}
+
+set_variable = {
+	var = ATW_despair_stability_factor_dynamic_var
+	value = 0
+}
+
+###war crimes poison water
+set_variable = {
+	var = ATW_poison_water_poverty
+	value = -0.1
+}
+set_variable = {
+	var = ATW_poison_water_society
+	value = -0.1
+}
+set_variable = {
+	var = ATW_poison_water_monthly_pop
+	value = -0.15
+}
+set_variable = {
+	var = ATW_poison_water_conscription
+	value = -0.1
+}
+set_variable = {
+	var = ATW_poison_water_recruitablepop
+	value = -0.5
+}
+set_variable = {
+	var = ATW_poison_water_supply
+	value = -0.1
+}
+set_variable = {
+	var = ATW_poison_water_grace
+	value = -24
+}
+set_variable = {
+	var = ATW_poison_water_attriction
+	value = 0.2
+}
+set_variable = {
+	var = ATW_poison_water_localorg
+	value = -0.05
+}
+set_variable = {
+	var = ATW_poison_water_localfact
+	value = -0.35
+}
+set_variable = {
+	var = ATW_poison_water_speed
+	value = -0.05
+}
+set_variable = {
+	var = ATW_poison_water_org
+	value = -0.1
+}
+###war crimes wild fires
+set_variable = {
+	var = ATW_wild_fire_poverty
+	value = 0.0
+}
+set_variable = {
+	var = ATW_wild_fire_society
+	value = -0.1
+}
+set_variable = {
+	var = ATW_wild_fire_monthly_pop
+	value = -0.1
+}
+set_variable = {
+	var = ATW_wild_fire_conscription
+	value = -0.1
+}
+set_variable = {
+	var = ATW_wild_fire_recruitablepop
+	value = -0.5
+}
+set_variable = {
+	var = ATW_wild_fire_supply
+	value = -0.15
+}
+set_variable = {
+	var = ATW_wild_fire_grace
+	value = -72
+}
+set_variable = {
+	var = ATW_wild_fire_attriction
+	value = 0.15
+}
+set_variable = {
+	var = ATW_wild_fire_localorg
+	value = -0.05
+}
+set_variable = {
+	var = ATW_wild_fire_localfact
+	value = -0.15
+}
+set_variable = {
+	var = ATW_wild_fire_speed
+	value = -0.1
+}
+set_variable = {
+	var = ATW_wild_fire_org
+	value = -0.1
+}
+set_variable = {
+	var = ATW_wild_fire_supply_node
+	value = -0.2
+}
+
+set_variable = {
+	var = ATW_wild_fire_repair
+	value = -0.35
+}
+
+set_variable = {
+	var = ATW_wild_fire_buildingslots
+	value = -0.1
+}
+
+set_variable = {
+	var = ATW_wild_fire_localresources
+	value = -0.5
+}
+
+set_variable = {
+	var = ATW_wild_fire_coordination
+	value = -0.1
+}
+
+set_variable = {
+	var = ATW_wild_fire_defense
+	value = -0.1
+}
+
+###war crimes chemical hell
+set_variable = {
+	var = ATW_chemicals_poverty
+	value = 0.0
+}
+set_variable = {
+	var = ATW_chemicals_society
+	value = -0.2
+}
+set_variable = {
+	var = ATW_chemicals_monthly_pop
+	value = -0.25
+}
+set_variable = {
+	var = ATW_chemicals_conscription
+	value = -0.1
+}
+set_variable = {
+	var = ATW_chemicals_recruitablepop
+	value = -0.5
+}
+set_variable = {
+	var = ATW_chemicals_supply
+	value = -0.1
+}
+set_variable = {
+	var = ATW_chemicals_grace
+	value = -72
+}
+set_variable = {
+	var = ATW_chemicals_attriction
+	value = 0.15
+}
+set_variable = {
+	var = ATW_chemicals_localorg
+	value = -0.05
+}
+set_variable = {
+	var = ATW_chemicals_localfact
+	value = -0.2
+}
+set_variable = {
+	var = ATW_chemicals_speed
+	value = -0.15
+}
+set_variable = {
+	var = ATW_chemicals_org
+	value = -0.1
+}
+set_variable = {
+	var = ATW_chemicals_supply_node
+	value = -0.1
+}
+
+set_variable = {
+	var = ATW_chemicals_repair
+	value = -0.5
+}
+
+set_variable = {
+	var = ATW_chemicals_buildingslots
+	value = -0.15
+}
+
+set_variable = {
+	var = ATW_chemicals_localresources
+	value = -0.5
+}
+
+set_variable = {
+	var = ATW_chemicals_coordination
+	value = -0.2
+}
+
+set_variable = {
+	var = ATW_chemicals_defense
+	value = -0.15
+}
+###war crimes nuclear hell
+set_variable = {
+	var = ATW_nuked_poverty
+	value = -0.75
+}
+set_variable = {
+	var = ATW_nuked_society
+	value = -0.2
+}
+set_variable = {
+	var = ATW_nuked_monthly_pop
+	value = -0.35
+}
+set_variable = {
+	var = ATW_nuked_conscription
+	value = -0.1
+}
+set_variable = {
+	var = ATW_nuked_recruitablepop
+	value = -0.5
+}
+set_variable = {
+	var = ATW_nuked_supply
+	value = -0.2
+}
+set_variable = {
+	var = ATW_nuked_grace
+	value = -72
+}
+set_variable = {
+	var = ATW_nuked_attriction
+	value = 0.25
+}
+set_variable = {
+	var = ATW_nuked_localorg
+	value = -0.05
+}
+set_variable = {
+	var = ATW_nuked_localfact
+	value = -0.2
+}
+set_variable = {
+	var = ATW_nuked_speed
+	value = -0.15
+}
+set_variable = {
+	var = ATW_nuked_org
+	value = -0.15
+}
+set_variable = {
+	var = ATW_nuked_supply_node
+	value = -0.1
+}
+
+set_variable = {
+	var = ATW_nuked_repair
+	value = -0.75
+}
+
+set_variable = {
+	var = ATW_nuked_buildingslots
+	value = -0.25
+}
+
+set_variable = {
+	var = ATW_nuked_localresources
+	value = -0.5
+}
+
+set_variable = {
+	var = ATW_nuked_coordination
+	value = -0.25
+}
+
+set_variable = {
+	var = ATW_nuked_defense
+	value = -0.2
+}
+
+add_dynamic_modifier = {
+	modifier = ATW_doctrine_of_destruction_dynamic
+}
+
+add_dynamic_modifier = {
+	modifier = ATW_industrial_anarchy_dynamic
+}
+
+add_dynamic_modifier = {
+	modifier = ATW_heralds_of_the_apocalypse_dynamic
+}
+
+add_dynamic_modifier = {
+	modifier = ATW_desperation_dynamic
+}
+
+add_ideas = {
+	#National Spirits
+	#ATW_low_resistance_idea
+	#ATW_heralds_of_the_apocalypse_idea
+	#ATW_industrial_anarchy_idea
+	#ATW_doctrine_of_destruction_idea
+	#Ministers
+	#ATW_brandon_russell_hog
+	ATW_craig_lang_for
+	ATW_liam_j_collins_eco
+	ATW_john_cameron_denton_sec
+	ATW_jordan_duncan_int
+	#Laws
+	lower_immigration
+	lower_education
+	lower_race
+	lower_female
+	lower_prison
+	highest_police
+	low_conscription
+	lower_female_service
+	lower_supervision
+	high_training
+	lower_racial_integration
+	no_draft_exemptions
+	war_mobilization
+	lower_trade
+	higher_taxes
+	lower_interest_rates
+	lower_welfare
+	lower_safety
+	#Development
+	lower_academic
+	lower_farming
+	lower_poverty
+	low_industry
+	high_military
+	lower_society
+	
+	ZZZ_annihilation_cult
+}
+
+set_party_name = {
+    ideology = totalitarian_socialist
+    long_name = banned_party
+    name = banned_party
+}
+
+set_party_name = {
+    ideology = communist
+    long_name = banned_party
+    name = banned_party
+}
+
+set_party_name = {
+    ideology = social_democrat
+    long_name = banned_party
+    name = banned_party
+}
+
+set_party_name = {
+    ideology = social_liberal
+    long_name = banned_party
+    name = banned_party
+}
+
+set_party_name = {
+    ideology = market_liberal
+    long_name = banned_party
+    name = banned_party
+}
+
+set_party_name = {
+    ideology = conservative
+    long_name = banned_party
+    name = banned_party
+}
+
+set_party_name = {
+    ideology = authoritarian_democrat
+    long_name = banned_party
+    name = banned_party
+}
+
+set_party_name = {
+    ideology = libertarian_socialist
+    long_name = banned_party
+    name = banned_party
+}
+
+every_possible_country = {
+	add_opinion_modifier = { target = ATW modifier = opinion_deranged_death_cult }
+}	

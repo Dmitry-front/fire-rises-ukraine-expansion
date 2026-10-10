@@ -1,0 +1,2601 @@
+TFR_economic_ledger_calculation_gdp = {
+	get_sorted_scored_countries = {
+		scorer = economy_ledger_gdp_scorer
+		array = global.economy_ledger_gdp_list
+		scores = global.economy_ledger_gdp_value
+	}
+}
+
+TFR_economic_ledger_calculation_rgdp = {
+	get_sorted_scored_countries = {
+		scorer = economy_ledger_rgdp_scorer
+		array = global.economy_ledger_gdp_list
+		scores = global.economy_ledger_gdp_value
+	}
+}
+
+TFR_economic_ledger_calculation_debt = {
+	get_sorted_scored_countries = {
+		scorer = economy_ledger_debt_scorer
+		array = global.economy_ledger_gdp_list
+		scores = global.economy_ledger_gdp_value
+	}
+}
+
+TFR_economic_ledger_calculation_fctr = {
+	get_sorted_scored_countries = {
+		scorer = economy_ledger_fctr_scorer
+		array = global.economy_ledger_gdp_list
+		scores = global.economy_ledger_gdp_value
+	}
+}
+
+TFR_economic_ledger_calculation_rsrc_p = {
+	every_country = {
+		limit = { exists = yes }
+		set_variable = { nation_rsrc_p_total_var = 0 }
+		add_to_variable = { nation_rsrc_p_total_var = resource_produced@oil }
+		add_to_variable = { nation_rsrc_p_total_var = resource_produced@aluminium }
+		add_to_variable = { nation_rsrc_p_total_var = resource_produced@rubber }
+		add_to_variable = { nation_rsrc_p_total_var = resource_produced@tungsten }
+		add_to_variable = { nation_rsrc_p_total_var = resource_produced@steel }
+		add_to_variable = { nation_rsrc_p_total_var = resource_produced@chromium }
+		add_to_variable = { nation_rsrc_p_total_var = resource_produced@coal }
+	}
+	get_sorted_scored_countries = {
+		scorer = economy_ledger_rsrc_p_scorer
+		array = global.economy_ledger_gdp_list
+		scores = global.economy_ledger_gdp_value
+	}
+}
+
+TFR_economic_ledger_calculation_rsrc_n = {
+	every_country = {
+		limit = { exists = yes }
+		set_variable = { nation_rsrc_n_total_var = 0 }
+		add_to_variable = { nation_rsrc_n_total_var = resource_consumed@oil }
+		add_to_variable = { nation_rsrc_n_total_var = resource_consumed@aluminium }
+		add_to_variable = { nation_rsrc_n_total_var = resource_consumed@rubber }
+		add_to_variable = { nation_rsrc_n_total_var = resource_consumed@tungsten }
+		add_to_variable = { nation_rsrc_n_total_var = resource_consumed@steel }
+		add_to_variable = { nation_rsrc_n_total_var = resource_consumed@chromium }
+		add_to_variable = { nation_rsrc_n_total_var = resource_consumed@coal }
+	}
+	get_sorted_scored_countries = {
+		scorer = economy_ledger_rsrc_n_scorer
+		array = global.economy_ledger_gdp_list
+		scores = global.economy_ledger_gdp_value
+	}
+}
+
+TFR_economic_ledger_union_calculation_gdp = {
+	clear_array = global.econ_ledg_union_leaders
+	
+	random_country = {
+		limit = {
+			has_dynamic_modifier = {
+				modifier = EU_member_dynamic
+			}
+		}
+		add_to_array = {
+			array = global.econ_ledg_union_leaders
+			value = THIS.id
+		}
+		set_variable = { union_gdp_var = gdp_var }
+	}
+	random_country = {
+		limit = {
+			has_idea = arab_league_member
+		}
+		add_to_array = {
+			array = global.econ_ledg_union_leaders
+			value = THIS.id
+		}
+		set_variable = { union_gdp_var = gdp_var }
+	}
+	random_country = {
+		limit = {
+			has_idea = ASEAN_member
+		}
+		add_to_array = {
+			array = global.econ_ledg_union_leaders
+			value = THIS.id
+		}
+		set_variable = { union_gdp_var = gdp_var }
+	}
+	random_country = {
+		limit = {
+			OR = {
+				has_dynamic_modifier = {
+					modifier = SOV_ADS_dynamic
+				}
+				has_idea = SOV_ADS_member
+			}
+		}
+		add_to_array = {
+			array = global.econ_ledg_union_leaders
+			value = THIS.id
+		}
+		set_variable = { union_gdp_var = gdp_var }
+	}
+	random_country = {
+		limit = {
+			OR = {
+				has_dynamic_modifier = {
+					modifier = SOV_TMC_dynamic
+				}
+				has_idea = SOV_tmca_member
+			}
+		}
+		add_to_array = {
+			array = global.econ_ledg_union_leaders
+			value = THIS.id
+		}
+		set_variable = { union_gdp_var = gdp_var }
+	}
+	random_country = {
+		limit = {
+			OR = {
+				has_dynamic_modifier = {
+					modifier = SOV_brics_dynamic
+				}
+				has_idea = SOV_brics_member
+			}
+		}
+		add_to_array = {
+			array = global.econ_ledg_union_leaders
+			value = THIS.id
+		}
+		set_variable = { union_gdp_var = gdp_var }
+	}
+	random_country = {
+		limit = {
+			OR = {
+				has_dynamic_modifier = {
+					modifier = JAP_PEC_dynamic
+				}
+				has_idea = JAP_PEC_member
+				has_idea = JAP_PEC_member_2
+			}
+		}
+		add_to_array = {
+			array = global.econ_ledg_union_leaders
+			value = THIS.id
+		}
+		set_variable = { union_gdp_var = gdp_var }
+	}
+	random_country = {
+		limit = {
+			OR = {
+				has_idea = SOV_EEC_Member
+				has_idea = SOV_EEC_leader
+			}
+		}
+		add_to_array = {
+			array = global.econ_ledg_union_leaders
+			value = THIS.id
+		}
+		set_variable = { union_gdp_var = gdp_var }
+	}
+	
+	every_country = {
+		limit = {
+			has_dynamic_modifier = {
+				modifier = EU_member_dynamic
+			}
+			NOT = {
+				is_in_array = { global.econ_ledg_union_leaders = THIS.id }
+			}
+		}
+		random_country = {
+			limit = {
+				has_dynamic_modifier = {
+					modifier = EU_member_dynamic
+				}
+				is_in_array = { global.econ_ledg_union_leaders = THIS.id }
+			}
+			add_to_variable = { union_gdp_var = PREV.gdp_var }
+		}
+	}
+	every_country = {
+		limit = {
+			has_idea = arab_league_member
+			NOT = {
+				is_in_array = { global.econ_ledg_union_leaders = THIS.id }
+			}
+		}
+		random_country = {
+			limit = {
+				has_idea = arab_league_member
+				is_in_array = { global.econ_ledg_union_leaders = THIS.id }
+			}
+			add_to_variable = { union_gdp_var = PREV.gdp_var }
+		}
+	}
+	every_country = {
+		limit = {
+			has_idea = ASEAN_member
+			NOT = {
+				is_in_array = { global.econ_ledg_union_leaders = THIS.id }
+			}
+		}
+		random_country = {
+			limit = {
+				has_idea = ASEAN_member
+				is_in_array = { global.econ_ledg_union_leaders = THIS.id }
+			}
+			add_to_variable = { union_gdp_var = PREV.gdp_var }
+		}
+	}
+	every_country = {
+		limit = {
+			OR = {
+				has_dynamic_modifier = {
+					modifier = SOV_ADS_dynamic
+				}
+				has_idea = SOV_ADS_member
+			}
+			NOT = {
+				is_in_array = { global.econ_ledg_union_leaders = THIS.id }
+			}
+		}
+		random_country = {
+			limit = {
+				OR = {
+					has_dynamic_modifier = {
+						modifier = SOV_ADS_dynamic
+					}
+					has_idea = SOV_ADS_member
+				}
+				is_in_array = { global.econ_ledg_union_leaders = THIS.id }
+			}
+			add_to_variable = { union_gdp_var = PREV.gdp_var }
+		}
+	}
+	every_country = {
+		limit = {
+			OR = {
+				has_dynamic_modifier = {
+					modifier = SOV_TMC_dynamic
+				}
+				has_idea = SOV_tmca_member
+			}
+			NOT = {
+				is_in_array = { global.econ_ledg_union_leaders = THIS.id }
+			}
+		}
+		random_country = {
+			limit = {
+				OR = {
+					has_dynamic_modifier = {
+						modifier = SOV_TMC_dynamic
+					}
+					has_idea = SOV_tmca_member
+				}
+				is_in_array = { global.econ_ledg_union_leaders = THIS.id }
+			}
+			add_to_variable = { union_gdp_var = PREV.gdp_var }
+		}
+	}
+	every_country = {
+		limit = {
+			OR = {
+				has_dynamic_modifier = {
+					modifier = SOV_brics_dynamic
+				}
+				has_idea = SOV_brics_member
+			}
+			NOT = {
+				is_in_array = { global.econ_ledg_union_leaders = THIS.id }
+			}
+		}
+		random_country = {
+			limit = {
+				OR = {
+					has_dynamic_modifier = {
+						modifier = SOV_brics_dynamic
+					}
+					has_idea = SOV_brics_member
+				}
+				is_in_array = { global.econ_ledg_union_leaders = THIS.id }
+			}
+			add_to_variable = { union_gdp_var = PREV.gdp_var }
+		}
+	}
+	every_country = {
+		limit = {
+			OR = {
+				has_dynamic_modifier = {
+					modifier = JAP_PEC_dynamic
+				}
+				has_idea = JAP_PEC_member
+				has_idea = JAP_PEC_member_2
+			}
+			NOT = {
+				is_in_array = { global.econ_ledg_union_leaders = THIS.id }
+			}
+		}
+		random_country = {
+			limit = {
+				OR = {
+					has_dynamic_modifier = {
+						modifier = JAP_PEC_dynamic
+					}
+					has_idea = JAP_PEC_member
+					has_idea = JAP_PEC_member_2
+				}
+				is_in_array = { global.econ_ledg_union_leaders = THIS.id }
+			}
+			add_to_variable = { union_gdp_var = PREV.gdp_var }
+		}
+	}
+	every_country = {
+		limit = {
+			OR = {
+				has_idea = SOV_EEC_Member
+				has_idea = SOV_EEC_leader
+			}
+			NOT = {
+				is_in_array = { global.econ_ledg_union_leaders = THIS.id }
+			}
+		}
+		random_country = {
+			limit = {
+				OR = {
+					has_idea = SOV_EEC_Member
+					has_idea = SOV_EEC_leader
+				}
+				is_in_array = { global.econ_ledg_union_leaders = THIS.id }
+			}
+			add_to_variable = { union_gdp_var = PREV.gdp_var }
+		}
+	}
+	every_country = {
+		limit = {
+			is_in_array = { global.econ_ledg_union_leaders = THIS.id }
+		}
+		set_variable = {
+			var = union_gdp_trillion_var
+			value = union_gdp_var
+		}
+		multiply_variable = {
+			var = union_gdp_trillion_var
+			value = 0.001
+		}
+		set_variable = {
+			var = union_gdp_billion_var
+			value = union_gdp_var
+		}
+		set_variable = {
+			var = union_gdp_million_var
+			value = union_gdp_var
+		}
+		multiply_variable = {
+			var = union_gdp_million_var
+			value = 1000
+		}
+	}
+	
+	get_sorted_scored_countries = {
+		scorer = economy_ledger_union_gdp_scorer
+		array = global.economy_ledger_union_gdp_list
+		scores = global.economy_ledger_union_gdp_value
+	}
+}
+
+TFR_economic_ledger_union_calculation_rgdp = {
+	clear_array = global.econ_ledg_union_leaders
+	
+	random_country = {
+		limit = {
+			has_dynamic_modifier = {
+				modifier = EU_member_dynamic
+			}
+		}
+		add_to_array = {
+			array = global.econ_ledg_union_leaders
+			value = THIS.id
+		}
+		set_variable = { union_rgdp_var = gdp_total_var }
+	}
+	random_country = {
+		limit = {
+			has_idea = arab_league_member
+		}
+		add_to_array = {
+			array = global.econ_ledg_union_leaders
+			value = THIS.id
+		}
+		set_variable = { union_rgdp_var = gdp_total_var }
+	}
+	random_country = {
+		limit = {
+			has_idea = ASEAN_member
+		}
+		add_to_array = {
+			array = global.econ_ledg_union_leaders
+			value = THIS.id
+		}
+		set_variable = { union_rgdp_var = gdp_total_var }
+	}
+	random_country = {
+		limit = {
+			OR = {
+				has_dynamic_modifier = {
+					modifier = SOV_ADS_dynamic
+				}
+				has_idea = SOV_ADS_member
+			}
+		}
+		add_to_array = {
+			array = global.econ_ledg_union_leaders
+			value = THIS.id
+		}
+		set_variable = { union_rgdp_var = gdp_total_var }
+	}
+	random_country = {
+		limit = {
+			OR = {
+				has_dynamic_modifier = {
+					modifier = SOV_TMC_dynamic
+				}
+				has_idea = SOV_tmca_member
+			}
+		}
+		add_to_array = {
+			array = global.econ_ledg_union_leaders
+			value = THIS.id
+		}
+		set_variable = { union_rgdp_var = gdp_total_var }
+	}
+	random_country = {
+		limit = {
+			OR = {
+				has_dynamic_modifier = {
+					modifier = SOV_brics_dynamic
+				}
+				has_idea = SOV_brics_member
+			}
+		}
+		add_to_array = {
+			array = global.econ_ledg_union_leaders
+			value = THIS.id
+		}
+		set_variable = { union_rgdp_var = gdp_total_var }
+	}
+	random_country = {
+		limit = {
+			OR = {
+				has_dynamic_modifier = {
+					modifier = JAP_PEC_dynamic
+				}
+				has_idea = JAP_PEC_member
+				has_idea = JAP_PEC_member_2
+			}
+		}
+		add_to_array = {
+			array = global.econ_ledg_union_leaders
+			value = THIS.id
+		}
+		set_variable = { union_rgdp_var = gdp_total_var }
+	}
+	random_country = {
+		limit = {
+			OR = {
+				has_idea = SOV_EEC_Member
+				has_idea = SOV_EEC_leader
+			}
+		}
+		add_to_array = {
+			array = global.econ_ledg_union_leaders
+			value = THIS.id
+		}
+		set_variable = { union_rgdp_var = gdp_total_var }
+	}
+	
+	every_country = {
+		limit = {
+			has_dynamic_modifier = {
+				modifier = EU_member_dynamic
+			}
+			NOT = {
+				is_in_array = { global.econ_ledg_union_leaders = THIS.id }
+			}
+		}
+		random_country = {
+			limit = {
+				has_dynamic_modifier = {
+					modifier = EU_member_dynamic
+				}
+				is_in_array = { global.econ_ledg_union_leaders = THIS.id }
+			}
+			add_to_variable = { union_rgdp_var = PREV.gdp_total_var }
+		}
+	}
+	every_country = {
+		limit = {
+			has_idea = arab_league_member
+			NOT = {
+				is_in_array = { global.econ_ledg_union_leaders = THIS.id }
+			}
+		}
+		random_country = {
+			limit = {
+				has_idea = arab_league_member
+				is_in_array = { global.econ_ledg_union_leaders = THIS.id }
+			}
+			add_to_variable = { union_rgdp_var = PREV.gdp_total_var }
+		}
+	}
+	every_country = {
+		limit = {
+			has_idea = ASEAN_member
+			NOT = {
+				is_in_array = { global.econ_ledg_union_leaders = THIS.id }
+			}
+		}
+		random_country = {
+			limit = {
+				has_idea = ASEAN_member
+				is_in_array = { global.econ_ledg_union_leaders = THIS.id }
+			}
+			add_to_variable = { union_rgdp_var = PREV.gdp_total_var }
+		}
+	}
+	every_country = {
+		limit = {
+			OR = {
+				has_dynamic_modifier = {
+					modifier = SOV_ADS_dynamic
+				}
+				has_idea = SOV_ADS_member
+			}
+			NOT = {
+				is_in_array = { global.econ_ledg_union_leaders = THIS.id }
+			}
+		}
+		random_country = {
+			limit = {
+				OR = {
+					has_dynamic_modifier = {
+						modifier = SOV_ADS_dynamic
+					}
+					has_idea = SOV_ADS_member
+				}
+				is_in_array = { global.econ_ledg_union_leaders = THIS.id }
+			}
+			add_to_variable = { union_rgdp_var = PREV.gdp_total_var }
+		}
+	}
+	every_country = {
+		limit = {
+			OR = {
+				has_dynamic_modifier = {
+					modifier = SOV_TMC_dynamic
+				}
+				has_idea = SOV_tmca_member
+			}
+			NOT = {
+				is_in_array = { global.econ_ledg_union_leaders = THIS.id }
+			}
+		}
+		random_country = {
+			limit = {
+				OR = {
+					has_dynamic_modifier = {
+						modifier = SOV_TMC_dynamic
+					}
+					has_idea = SOV_tmca_member
+				}
+				is_in_array = { global.econ_ledg_union_leaders = THIS.id }
+			}
+			add_to_variable = { union_rgdp_var = PREV.gdp_total_var }
+		}
+	}
+	every_country = {
+		limit = {
+			OR = {
+				has_dynamic_modifier = {
+					modifier = SOV_brics_dynamic
+				}
+				has_idea = SOV_brics_member
+			}
+			NOT = {
+				is_in_array = { global.econ_ledg_union_leaders = THIS.id }
+			}
+		}
+		random_country = {
+			limit = {
+				OR = {
+					has_dynamic_modifier = {
+						modifier = SOV_brics_dynamic
+					}
+					has_idea = SOV_brics_member
+				}
+				is_in_array = { global.econ_ledg_union_leaders = THIS.id }
+			}
+			add_to_variable = { union_rgdp_var = PREV.gdp_total_var }
+		}
+	}
+	every_country = {
+		limit = {
+			OR = {
+				has_dynamic_modifier = {
+					modifier = JAP_PEC_dynamic
+				}
+				has_idea = JAP_PEC_member
+				has_idea = JAP_PEC_member_2
+			}
+			NOT = {
+				is_in_array = { global.econ_ledg_union_leaders = THIS.id }
+			}
+		}
+		random_country = {
+			limit = {
+				OR = {
+					has_dynamic_modifier = {
+						modifier = JAP_PEC_dynamic
+					}
+					has_idea = JAP_PEC_member
+					has_idea = JAP_PEC_member_2
+				}
+				is_in_array = { global.econ_ledg_union_leaders = THIS.id }
+			}
+			add_to_variable = { union_rgdp_var = PREV.gdp_total_var }
+		}
+	}
+	every_country = {
+		limit = {
+			OR = {
+				has_idea = SOV_EEC_Member
+				has_idea = SOV_EEC_leader
+			}
+			NOT = {
+				is_in_array = { global.econ_ledg_union_leaders = THIS.id }
+			}
+		}
+		random_country = {
+			limit = {
+				OR = {
+					has_idea = SOV_EEC_Member
+					has_idea = SOV_EEC_leader
+				}
+				is_in_array = { global.econ_ledg_union_leaders = THIS.id }
+			}
+			add_to_variable = { union_rgdp_var = PREV.gdp_total_var }
+		}
+	}
+	every_country = {
+		limit = {
+			is_in_array = { global.econ_ledg_union_leaders = THIS.id }
+		}
+		set_variable = {
+			var = union_gdp_total_var
+			value = union_rgdp_var
+		}
+		set_variable = {
+			var = union_gdp_total_trillion_var
+			value = union_rgdp_var
+		}
+		multiply_variable = {
+			var = union_gdp_total_trillion_var
+			value = 0.001
+		}
+		set_variable = {
+			var = union_gdp_total_billion_var
+			value = union_rgdp_var
+		}
+		set_variable = {
+			var = union_gdp_total_million_var
+			value = union_rgdp_var
+		}
+		multiply_variable = {
+			var = union_gdp_total_million_var
+			value = 1000
+		}
+	}
+	
+	get_sorted_scored_countries = {
+		scorer = economy_ledger_union_rgdp_scorer
+		array = global.economy_ledger_union_gdp_list
+		scores = global.economy_ledger_union_gdp_value
+	}
+}
+
+TFR_economic_ledger_union_calculation_debt = {
+	clear_array = global.econ_ledg_union_leaders
+	
+	random_country = {
+		limit = {
+			has_dynamic_modifier = {
+				modifier = EU_member_dynamic
+			}
+		}
+		add_to_array = {
+			array = global.econ_ledg_union_leaders
+			value = THIS.id
+		}
+		set_variable = { union_debt_var = debt_var }
+	}
+	random_country = {
+		limit = {
+			has_idea = arab_league_member
+		}
+		add_to_array = {
+			array = global.econ_ledg_union_leaders
+			value = THIS.id
+		}
+		set_variable = { union_debt_var = debt_var }
+	}
+	random_country = {
+		limit = {
+			has_idea = ASEAN_member
+		}
+		add_to_array = {
+			array = global.econ_ledg_union_leaders
+			value = THIS.id
+		}
+		set_variable = { union_debt_var = debt_var }
+	}
+	random_country = {
+		limit = {
+			OR = {
+				has_dynamic_modifier = {
+					modifier = SOV_ADS_dynamic
+				}
+				has_idea = SOV_ADS_member
+			}
+		}
+		add_to_array = {
+			array = global.econ_ledg_union_leaders
+			value = THIS.id
+		}
+		set_variable = { union_debt_var = debt_var }
+	}
+	random_country = {
+		limit = {
+			OR = {
+				has_dynamic_modifier = {
+					modifier = SOV_TMC_dynamic
+				}
+				has_idea = SOV_tmca_member
+			}
+		}
+		add_to_array = {
+			array = global.econ_ledg_union_leaders
+			value = THIS.id
+		}
+		set_variable = { union_debt_var = debt_var }
+	}
+	random_country = {
+		limit = {
+			OR = {
+				has_dynamic_modifier = {
+					modifier = SOV_brics_dynamic
+				}
+				has_idea = SOV_brics_member
+			}
+		}
+		add_to_array = {
+			array = global.econ_ledg_union_leaders
+			value = THIS.id
+		}
+		set_variable = { union_debt_var = debt_var }
+	}
+	random_country = {
+		limit = {
+			OR = {
+				has_dynamic_modifier = {
+					modifier = JAP_PEC_dynamic
+				}
+				has_idea = JAP_PEC_member
+				has_idea = JAP_PEC_member_2
+			}
+		}
+		add_to_array = {
+			array = global.econ_ledg_union_leaders
+			value = THIS.id
+		}
+		set_variable = { union_debt_var = debt_var }
+	}
+	random_country = {
+		limit = {
+			OR = {
+				has_idea = SOV_EEC_Member
+				has_idea = SOV_EEC_leader
+			}
+		}
+		add_to_array = {
+			array = global.econ_ledg_union_leaders
+			value = THIS.id
+		}
+		set_variable = { union_debt_var = debt_var }
+	}
+	
+	every_country = {
+		limit = {
+			has_dynamic_modifier = {
+				modifier = EU_member_dynamic
+			}
+			NOT = {
+				is_in_array = { global.econ_ledg_union_leaders = THIS.id }
+			}
+		}
+		random_country = {
+			limit = {
+				has_dynamic_modifier = {
+					modifier = EU_member_dynamic
+				}
+				is_in_array = { global.econ_ledg_union_leaders = THIS.id }
+			}
+			add_to_variable = { union_debt_var = PREV.debt_var }
+		}
+	}
+	every_country = {
+		limit = {
+			has_idea = arab_league_member
+			NOT = {
+				is_in_array = { global.econ_ledg_union_leaders = THIS.id }
+			}
+		}
+		random_country = {
+			limit = {
+				has_idea = arab_league_member
+				is_in_array = { global.econ_ledg_union_leaders = THIS.id }
+			}
+			add_to_variable = { union_debt_var = PREV.debt_var }
+		}
+	}
+	every_country = {
+		limit = {
+			has_idea = ASEAN_member
+			NOT = {
+				is_in_array = { global.econ_ledg_union_leaders = THIS.id }
+			}
+		}
+		random_country = {
+			limit = {
+				has_idea = ASEAN_member
+				is_in_array = { global.econ_ledg_union_leaders = THIS.id }
+			}
+			add_to_variable = { union_debt_var = PREV.debt_var }
+		}
+	}
+	every_country = {
+		limit = {
+			OR = {
+				has_dynamic_modifier = {
+					modifier = SOV_ADS_dynamic
+				}
+				has_idea = SOV_ADS_member
+			}
+			NOT = {
+				is_in_array = { global.econ_ledg_union_leaders = THIS.id }
+			}
+		}
+		random_country = {
+			limit = {
+				OR = {
+					has_dynamic_modifier = {
+						modifier = SOV_ADS_dynamic
+					}
+					has_idea = SOV_ADS_member
+				}
+				is_in_array = { global.econ_ledg_union_leaders = THIS.id }
+			}
+			add_to_variable = { union_debt_var = PREV.debt_var }
+		}
+	}
+	every_country = {
+		limit = {
+			OR = {
+				has_dynamic_modifier = {
+					modifier = SOV_TMC_dynamic
+				}
+				has_idea = SOV_tmca_member
+			}
+			NOT = {
+				is_in_array = { global.econ_ledg_union_leaders = THIS.id }
+			}
+		}
+		random_country = {
+			limit = {
+				OR = {
+					has_dynamic_modifier = {
+						modifier = SOV_TMC_dynamic
+					}
+					has_idea = SOV_tmca_member
+				}
+				is_in_array = { global.econ_ledg_union_leaders = THIS.id }
+			}
+			add_to_variable = { union_debt_var = PREV.debt_var }
+		}
+	}
+	every_country = {
+		limit = {
+			OR = {
+				has_dynamic_modifier = {
+					modifier = SOV_brics_dynamic
+				}
+				has_idea = SOV_brics_member
+			}
+			NOT = {
+				is_in_array = { global.econ_ledg_union_leaders = THIS.id }
+			}
+		}
+		random_country = {
+			limit = {
+				OR = {
+					has_dynamic_modifier = {
+						modifier = SOV_brics_dynamic
+					}
+					has_idea = SOV_brics_member
+				}
+				is_in_array = { global.econ_ledg_union_leaders = THIS.id }
+			}
+			add_to_variable = { union_debt_var = PREV.debt_var }
+		}
+	}
+	every_country = {
+		limit = {
+			OR = {
+				has_dynamic_modifier = {
+					modifier = JAP_PEC_dynamic
+				}
+				has_idea = JAP_PEC_member
+				has_idea = JAP_PEC_member_2
+			}
+			NOT = {
+				is_in_array = { global.econ_ledg_union_leaders = THIS.id }
+			}
+		}
+		random_country = {
+			limit = {
+				OR = {
+					has_dynamic_modifier = {
+						modifier = JAP_PEC_dynamic
+					}
+					has_idea = JAP_PEC_member
+					has_idea = JAP_PEC_member_2
+				}
+				is_in_array = { global.econ_ledg_union_leaders = THIS.id }
+			}
+			add_to_variable = { union_debt_var = PREV.debt_var }
+		}
+	}
+	every_country = {
+		limit = {
+			OR = {
+				has_idea = SOV_EEC_Member
+				has_idea = SOV_EEC_leader
+			}
+			NOT = {
+				is_in_array = { global.econ_ledg_union_leaders = THIS.id }
+			}
+		}
+		random_country = {
+			limit = {
+				OR = {
+					has_idea = SOV_EEC_Member
+					has_idea = SOV_EEC_leader
+				}
+				is_in_array = { global.econ_ledg_union_leaders = THIS.id }
+			}
+			add_to_variable = { union_debt_var = PREV.debt_var }
+		}
+	}
+	every_country = {
+		limit = {
+			is_in_array = { global.econ_ledg_union_leaders = THIS.id }
+		}
+		set_variable = {
+			var = union_debt_trillion_var
+			value = union_debt_var
+		}
+		multiply_variable = {
+			var = union_debt_trillion_var
+			value = 0.001
+		}
+		set_variable = {
+			var = union_debt_billion_var
+			value = union_debt_var
+		}
+		set_variable = {
+			var = union_debt_million_var
+			value = union_debt_var
+		}
+		multiply_variable = {
+			var = union_debt_million_var
+			value = 1000
+		}
+	}
+	
+	get_sorted_scored_countries = {
+		scorer = economy_ledger_union_debt_scorer
+		array = global.economy_ledger_union_gdp_list
+		scores = global.economy_ledger_union_gdp_value
+	}
+}
+
+TFR_economic_ledger_union_calculation_fctr = {
+	clear_array = global.econ_ledg_union_leaders
+	
+	random_country = {
+		limit = {
+			has_dynamic_modifier = {
+				modifier = EU_member_dynamic
+			}
+		}
+		add_to_array = {
+			array = global.econ_ledg_union_leaders
+			value = THIS.id
+		}
+		set_variable = { union_fctr_var = num_of_factories }
+	}
+	random_country = {
+		limit = {
+			has_idea = arab_league_member
+		}
+		add_to_array = {
+			array = global.econ_ledg_union_leaders
+			value = THIS.id
+		}
+		set_variable = { union_fctr_var = num_of_factories }
+	}
+	random_country = {
+		limit = {
+			has_idea = ASEAN_member
+		}
+		add_to_array = {
+			array = global.econ_ledg_union_leaders
+			value = THIS.id
+		}
+		set_variable = { union_fctr_var = num_of_factories }
+	}
+	random_country = {
+		limit = {
+			OR = {
+				has_dynamic_modifier = {
+					modifier = SOV_ADS_dynamic
+				}
+				has_idea = SOV_ADS_member
+			}
+		}
+		add_to_array = {
+			array = global.econ_ledg_union_leaders
+			value = THIS.id
+		}
+		set_variable = { union_fctr_var = num_of_factories }
+	}
+	random_country = {
+		limit = {
+			OR = {
+				has_dynamic_modifier = {
+					modifier = SOV_TMC_dynamic
+				}
+				has_idea = SOV_tmca_member
+			}
+		}
+		add_to_array = {
+			array = global.econ_ledg_union_leaders
+			value = THIS.id
+		}
+		set_variable = { union_fctr_var = num_of_factories }
+	}
+	random_country = {
+		limit = {
+			OR = {
+				has_dynamic_modifier = {
+					modifier = SOV_brics_dynamic
+				}
+				has_idea = SOV_brics_member
+			}
+		}
+		add_to_array = {
+			array = global.econ_ledg_union_leaders
+			value = THIS.id
+		}
+		set_variable = { union_fctr_var = num_of_factories }
+	}
+	random_country = {
+		limit = {
+			OR = {
+				has_dynamic_modifier = {
+					modifier = JAP_PEC_dynamic
+				}
+				has_idea = JAP_PEC_member
+				has_idea = JAP_PEC_member_2
+			}
+		}
+		add_to_array = {
+			array = global.econ_ledg_union_leaders
+			value = THIS.id
+		}
+		set_variable = { union_fctr_var = num_of_factories }
+	}
+	random_country = {
+		limit = {
+			OR = {
+				has_idea = SOV_EEC_Member
+				has_idea = SOV_EEC_leader
+			}
+		}
+		add_to_array = {
+			array = global.econ_ledg_union_leaders
+			value = THIS.id
+		}
+		set_variable = { union_fctr_var = num_of_factories }
+	}
+	
+	every_country = {
+		limit = {
+			has_dynamic_modifier = {
+				modifier = EU_member_dynamic
+			}
+			NOT = {
+				is_in_array = { global.econ_ledg_union_leaders = THIS.id }
+			}
+		}
+		random_country = {
+			limit = {
+				has_dynamic_modifier = {
+					modifier = EU_member_dynamic
+				}
+				is_in_array = { global.econ_ledg_union_leaders = THIS.id }
+			}
+			add_to_variable = { union_fctr_var = PREV.num_of_factories }
+		}
+	}
+	every_country = {
+		limit = {
+			has_idea = arab_league_member
+			NOT = {
+				is_in_array = { global.econ_ledg_union_leaders = THIS.id }
+			}
+		}
+		random_country = {
+			limit = {
+				has_idea = arab_league_member
+				is_in_array = { global.econ_ledg_union_leaders = THIS.id }
+			}
+			add_to_variable = { union_fctr_var = PREV.num_of_factories }
+		}
+	}
+	every_country = {
+		limit = {
+			has_idea = ASEAN_member
+			NOT = {
+				is_in_array = { global.econ_ledg_union_leaders = THIS.id }
+			}
+		}
+		random_country = {
+			limit = {
+				has_idea = ASEAN_member
+				is_in_array = { global.econ_ledg_union_leaders = THIS.id }
+			}
+			add_to_variable = { union_fctr_var = PREV.num_of_factories }
+		}
+	}
+	every_country = {
+		limit = {
+			OR = {
+				has_dynamic_modifier = {
+					modifier = SOV_ADS_dynamic
+				}
+				has_idea = SOV_ADS_member
+			}
+			NOT = {
+				is_in_array = { global.econ_ledg_union_leaders = THIS.id }
+			}
+		}
+		random_country = {
+			limit = {
+				OR = {
+					has_dynamic_modifier = {
+						modifier = SOV_ADS_dynamic
+					}
+					has_idea = SOV_ADS_member
+				}
+				is_in_array = { global.econ_ledg_union_leaders = THIS.id }
+			}
+			add_to_variable = { union_fctr_var = PREV.num_of_factories }
+		}
+	}
+	every_country = {
+		limit = {
+			OR = {
+				has_dynamic_modifier = {
+					modifier = SOV_TMC_dynamic
+				}
+				has_idea = SOV_tmca_member
+			}
+			NOT = {
+				is_in_array = { global.econ_ledg_union_leaders = THIS.id }
+			}
+		}
+		random_country = {
+			limit = {
+				OR = {
+					has_dynamic_modifier = {
+						modifier = SOV_TMC_dynamic
+					}
+					has_idea = SOV_tmca_member
+				}
+				is_in_array = { global.econ_ledg_union_leaders = THIS.id }
+			}
+			add_to_variable = { union_fctr_var = PREV.num_of_factories }
+		}
+	}
+	every_country = {
+		limit = {
+			OR = {
+				has_dynamic_modifier = {
+					modifier = SOV_brics_dynamic
+				}
+				has_idea = SOV_brics_member
+			}
+			NOT = {
+				is_in_array = { global.econ_ledg_union_leaders = THIS.id }
+			}
+		}
+		random_country = {
+			limit = {
+				OR = {
+					has_dynamic_modifier = {
+						modifier = SOV_brics_dynamic
+					}
+					has_idea = SOV_brics_member
+				}
+				is_in_array = { global.econ_ledg_union_leaders = THIS.id }
+			}
+			add_to_variable = { union_fctr_var = PREV.num_of_factories }
+		}
+	}
+	every_country = {
+		limit = {
+			OR = {
+				has_dynamic_modifier = {
+					modifier = JAP_PEC_dynamic
+				}
+				has_idea = JAP_PEC_member
+				has_idea = JAP_PEC_member_2
+			}
+			NOT = {
+				is_in_array = { global.econ_ledg_union_leaders = THIS.id }
+			}
+		}
+		random_country = {
+			limit = {
+				OR = {
+					has_dynamic_modifier = {
+						modifier = JAP_PEC_dynamic
+					}
+					has_idea = JAP_PEC_member
+					has_idea = JAP_PEC_member_2
+				}
+				is_in_array = { global.econ_ledg_union_leaders = THIS.id }
+			}
+			add_to_variable = { union_fctr_var = PREV.num_of_factories }
+		}
+	}
+	every_country = {
+		limit = {
+			OR = {
+				has_idea = SOV_EEC_Member
+				has_idea = SOV_EEC_leader
+			}
+			NOT = {
+				is_in_array = { global.econ_ledg_union_leaders = THIS.id }
+			}
+		}
+		random_country = {
+			limit = {
+				OR = {
+					has_idea = SOV_EEC_Member
+					has_idea = SOV_EEC_leader
+				}
+				is_in_array = { global.econ_ledg_union_leaders = THIS.id }
+			}
+			add_to_variable = { union_fctr_var = PREV.num_of_factories }
+		}
+	}
+	every_country = {
+		limit = {
+			is_in_array = { global.econ_ledg_union_leaders = THIS.id }
+		}
+		set_variable = {
+			var = union_fctr_total_var
+			value = union_fctr_var
+		}
+	}
+	
+	get_sorted_scored_countries = {
+		scorer = economy_ledger_union_fctr_scorer
+		array = global.economy_ledger_union_gdp_list
+		scores = global.economy_ledger_union_gdp_value
+	}
+}
+
+TFR_economic_ledger_union_calculation_rsrc_p = {
+	clear_array = global.econ_ledg_union_leaders
+	
+	random_country = {
+		limit = {
+			has_dynamic_modifier = {
+				modifier = EU_member_dynamic
+			}
+		}
+		add_to_array = {
+			array = global.econ_ledg_union_leaders
+			value = THIS.id
+		}
+		set_variable = { union_rsrc_p_var = 0 }
+		add_to_variable = { union_rsrc_p_var = resource_produced@oil }
+		add_to_variable = { union_rsrc_p_var = resource_produced@aluminium }
+		add_to_variable = { union_rsrc_p_var = resource_produced@rubber }
+		add_to_variable = { union_rsrc_p_var = resource_produced@tungsten }
+		add_to_variable = { union_rsrc_p_var = resource_produced@steel }
+		add_to_variable = { union_rsrc_p_var = resource_produced@chromium }
+		add_to_variable = { union_rsrc_p_var = resource_produced@coal }
+	}
+	random_country = {
+		limit = {
+			has_idea = arab_league_member
+		}
+		add_to_array = {
+			array = global.econ_ledg_union_leaders
+			value = THIS.id
+		}
+		set_variable = { union_rsrc_p_var = 0 }
+		add_to_variable = { union_rsrc_p_var = resource_produced@oil }
+		add_to_variable = { union_rsrc_p_var = resource_produced@aluminium }
+		add_to_variable = { union_rsrc_p_var = resource_produced@rubber }
+		add_to_variable = { union_rsrc_p_var = resource_produced@tungsten }
+		add_to_variable = { union_rsrc_p_var = resource_produced@steel }
+		add_to_variable = { union_rsrc_p_var = resource_produced@chromium }
+		add_to_variable = { union_rsrc_p_var = resource_produced@coal }
+	}
+	random_country = {
+		limit = {
+			has_idea = ASEAN_member
+		}
+		add_to_array = {
+			array = global.econ_ledg_union_leaders
+			value = THIS.id
+		}
+		set_variable = { union_rsrc_p_var = 0 }
+		add_to_variable = { union_rsrc_p_var = resource_produced@oil }
+		add_to_variable = { union_rsrc_p_var = resource_produced@aluminium }
+		add_to_variable = { union_rsrc_p_var = resource_produced@rubber }
+		add_to_variable = { union_rsrc_p_var = resource_produced@tungsten }
+		add_to_variable = { union_rsrc_p_var = resource_produced@steel }
+		add_to_variable = { union_rsrc_p_var = resource_produced@chromium }
+		add_to_variable = { union_rsrc_p_var = resource_produced@coal }
+	}
+	random_country = {
+		limit = {
+			OR = {
+				has_dynamic_modifier = {
+					modifier = SOV_ADS_dynamic
+				}
+				has_idea = SOV_ADS_member
+			}
+		}
+		add_to_array = {
+			array = global.econ_ledg_union_leaders
+			value = THIS.id
+		}
+		set_variable = { union_rsrc_p_var = 0 }
+		add_to_variable = { union_rsrc_p_var = resource_produced@oil }
+		add_to_variable = { union_rsrc_p_var = resource_produced@aluminium }
+		add_to_variable = { union_rsrc_p_var = resource_produced@rubber }
+		add_to_variable = { union_rsrc_p_var = resource_produced@tungsten }
+		add_to_variable = { union_rsrc_p_var = resource_produced@steel }
+		add_to_variable = { union_rsrc_p_var = resource_produced@chromium }
+		add_to_variable = { union_rsrc_p_var = resource_produced@coal }
+	}
+	random_country = {
+		limit = {
+			OR = {
+				has_dynamic_modifier = {
+					modifier = SOV_TMC_dynamic
+				}
+				has_idea = SOV_tmca_member
+			}
+		}
+		add_to_array = {
+			array = global.econ_ledg_union_leaders
+			value = THIS.id
+		}
+		set_variable = { union_rsrc_p_var = 0 }
+		add_to_variable = { union_rsrc_p_var = resource_produced@oil }
+		add_to_variable = { union_rsrc_p_var = resource_produced@aluminium }
+		add_to_variable = { union_rsrc_p_var = resource_produced@rubber }
+		add_to_variable = { union_rsrc_p_var = resource_produced@tungsten }
+		add_to_variable = { union_rsrc_p_var = resource_produced@steel }
+		add_to_variable = { union_rsrc_p_var = resource_produced@chromium }
+		add_to_variable = { union_rsrc_p_var = resource_produced@coal }
+	}
+	random_country = {
+		limit = {
+			OR = {
+				has_dynamic_modifier = {
+					modifier = SOV_brics_dynamic
+				}
+				has_idea = SOV_brics_member
+			}
+		}
+		add_to_array = {
+			array = global.econ_ledg_union_leaders
+			value = THIS.id
+		}
+		set_variable = { union_rsrc_p_var = 0 }
+		add_to_variable = { union_rsrc_p_var = resource_produced@oil }
+		add_to_variable = { union_rsrc_p_var = resource_produced@aluminium }
+		add_to_variable = { union_rsrc_p_var = resource_produced@rubber }
+		add_to_variable = { union_rsrc_p_var = resource_produced@tungsten }
+		add_to_variable = { union_rsrc_p_var = resource_produced@steel }
+		add_to_variable = { union_rsrc_p_var = resource_produced@chromium }
+		add_to_variable = { union_rsrc_p_var = resource_produced@coal }
+	}
+	random_country = {
+		limit = {
+			OR = {
+				has_dynamic_modifier = {
+					modifier = JAP_PEC_dynamic
+				}
+				has_idea = JAP_PEC_member
+				has_idea = JAP_PEC_member_2
+			}
+		}
+		add_to_array = {
+			array = global.econ_ledg_union_leaders
+			value = THIS.id
+		}
+		set_variable = { union_rsrc_p_var = 0 }
+		add_to_variable = { union_rsrc_p_var = resource_produced@oil }
+		add_to_variable = { union_rsrc_p_var = resource_produced@aluminium }
+		add_to_variable = { union_rsrc_p_var = resource_produced@rubber }
+		add_to_variable = { union_rsrc_p_var = resource_produced@tungsten }
+		add_to_variable = { union_rsrc_p_var = resource_produced@steel }
+		add_to_variable = { union_rsrc_p_var = resource_produced@chromium }
+		add_to_variable = { union_rsrc_p_var = resource_produced@coal }
+	}
+	random_country = {
+		limit = {
+			OR = {
+				has_idea = SOV_EEC_Member
+				has_idea = SOV_EEC_leader
+			}
+		}
+		add_to_array = {
+			array = global.econ_ledg_union_leaders
+			value = THIS.id
+		}
+		set_variable = { union_rsrc_p_var = 0 }
+		add_to_variable = { union_rsrc_p_var = resource_produced@oil }
+		add_to_variable = { union_rsrc_p_var = resource_produced@aluminium }
+		add_to_variable = { union_rsrc_p_var = resource_produced@rubber }
+		add_to_variable = { union_rsrc_p_var = resource_produced@tungsten }
+		add_to_variable = { union_rsrc_p_var = resource_produced@steel }
+		add_to_variable = { union_rsrc_p_var = resource_produced@chromium }
+		add_to_variable = { union_rsrc_p_var = resource_produced@coal }
+	}
+	
+	every_country = {
+		limit = {
+			has_dynamic_modifier = {
+				modifier = EU_member_dynamic
+			}
+			NOT = {
+				is_in_array = { global.econ_ledg_union_leaders = THIS.id }
+			}
+		}
+		random_country = {
+			limit = {
+				has_dynamic_modifier = {
+					modifier = EU_member_dynamic
+				}
+				is_in_array = { global.econ_ledg_union_leaders = THIS.id }
+			}
+			add_to_variable = { union_rsrc_p_var = PREV.resource_produced@oil }
+			add_to_variable = { union_rsrc_p_var = PREV.resource_produced@aluminium }
+			add_to_variable = { union_rsrc_p_var = PREV.resource_produced@rubber }
+			add_to_variable = { union_rsrc_p_var = PREV.resource_produced@tungsten }
+			add_to_variable = { union_rsrc_p_var = PREV.resource_produced@steel }
+			add_to_variable = { union_rsrc_p_var = PREV.resource_produced@chromium }
+			add_to_variable = { union_rsrc_p_var = PREV.resource_produced@coal }
+		}
+	}
+	every_country = {
+		limit = {
+			has_idea = arab_league_member
+			NOT = {
+				is_in_array = { global.econ_ledg_union_leaders = THIS.id }
+			}
+		}
+		random_country = {
+			limit = {
+				has_idea = arab_league_member
+				is_in_array = { global.econ_ledg_union_leaders = THIS.id }
+			}
+			add_to_variable = { union_rsrc_p_var = PREV.resource_produced@oil }
+			add_to_variable = { union_rsrc_p_var = PREV.resource_produced@aluminium }
+			add_to_variable = { union_rsrc_p_var = PREV.resource_produced@rubber }
+			add_to_variable = { union_rsrc_p_var = PREV.resource_produced@tungsten }
+			add_to_variable = { union_rsrc_p_var = PREV.resource_produced@steel }
+			add_to_variable = { union_rsrc_p_var = PREV.resource_produced@chromium }
+			add_to_variable = { union_rsrc_p_var = PREV.resource_produced@coal }
+		}
+	}
+	every_country = {
+		limit = {
+			has_idea = ASEAN_member
+			NOT = {
+				is_in_array = { global.econ_ledg_union_leaders = THIS.id }
+			}
+		}
+		random_country = {
+			limit = {
+				has_idea = ASEAN_member
+				is_in_array = { global.econ_ledg_union_leaders = THIS.id }
+			}
+			add_to_variable = { union_rsrc_p_var = PREV.resource_produced@oil }
+			add_to_variable = { union_rsrc_p_var = PREV.resource_produced@aluminium }
+			add_to_variable = { union_rsrc_p_var = PREV.resource_produced@rubber }
+			add_to_variable = { union_rsrc_p_var = PREV.resource_produced@tungsten }
+			add_to_variable = { union_rsrc_p_var = PREV.resource_produced@steel }
+			add_to_variable = { union_rsrc_p_var = PREV.resource_produced@chromium }
+			add_to_variable = { union_rsrc_p_var = PREV.resource_produced@coal }
+		}
+	}
+	every_country = {
+		limit = {
+			OR = {
+				has_dynamic_modifier = {
+					modifier = SOV_ADS_dynamic
+				}
+				has_idea = SOV_ADS_member
+			}
+			NOT = {
+				is_in_array = { global.econ_ledg_union_leaders = THIS.id }
+			}
+		}
+		random_country = {
+			limit = {
+				OR = {
+					has_dynamic_modifier = {
+						modifier = SOV_ADS_dynamic
+					}
+					has_idea = SOV_ADS_member
+				}
+				is_in_array = { global.econ_ledg_union_leaders = THIS.id }
+			}
+			add_to_variable = { union_rsrc_p_var = PREV.resource_produced@oil }
+			add_to_variable = { union_rsrc_p_var = PREV.resource_produced@aluminium }
+			add_to_variable = { union_rsrc_p_var = PREV.resource_produced@rubber }
+			add_to_variable = { union_rsrc_p_var = PREV.resource_produced@tungsten }
+			add_to_variable = { union_rsrc_p_var = PREV.resource_produced@steel }
+			add_to_variable = { union_rsrc_p_var = PREV.resource_produced@chromium }
+			add_to_variable = { union_rsrc_p_var = PREV.resource_produced@coal }
+		}
+	}
+	every_country = {
+		limit = {
+			OR = {
+				has_dynamic_modifier = {
+					modifier = SOV_TMC_dynamic
+				}
+				has_idea = SOV_tmca_member
+			}
+			NOT = {
+				is_in_array = { global.econ_ledg_union_leaders = THIS.id }
+			}
+		}
+		random_country = {
+			limit = {
+				OR = {
+					has_dynamic_modifier = {
+						modifier = SOV_TMC_dynamic
+					}
+					has_idea = SOV_tmca_member
+				}
+				is_in_array = { global.econ_ledg_union_leaders = THIS.id }
+			}
+			add_to_variable = { union_rsrc_p_var = PREV.resource_produced@oil }
+			add_to_variable = { union_rsrc_p_var = PREV.resource_produced@aluminium }
+			add_to_variable = { union_rsrc_p_var = PREV.resource_produced@rubber }
+			add_to_variable = { union_rsrc_p_var = PREV.resource_produced@tungsten }
+			add_to_variable = { union_rsrc_p_var = PREV.resource_produced@steel }
+			add_to_variable = { union_rsrc_p_var = PREV.resource_produced@chromium }
+			add_to_variable = { union_rsrc_p_var = PREV.resource_produced@coal }
+		}
+	}
+	every_country = {
+		limit = {
+			OR = {
+				has_dynamic_modifier = {
+					modifier = SOV_brics_dynamic
+				}
+				has_idea = SOV_brics_member
+			}
+			NOT = {
+				is_in_array = { global.econ_ledg_union_leaders = THIS.id }
+			}
+		}
+		random_country = {
+			limit = {
+				OR = {
+					has_dynamic_modifier = {
+						modifier = SOV_brics_dynamic
+					}
+					has_idea = SOV_brics_member
+				}
+				is_in_array = { global.econ_ledg_union_leaders = THIS.id }
+			}
+			add_to_variable = { union_rsrc_p_var = PREV.resource_produced@oil }
+			add_to_variable = { union_rsrc_p_var = PREV.resource_produced@aluminium }
+			add_to_variable = { union_rsrc_p_var = PREV.resource_produced@rubber }
+			add_to_variable = { union_rsrc_p_var = PREV.resource_produced@tungsten }
+			add_to_variable = { union_rsrc_p_var = PREV.resource_produced@steel }
+			add_to_variable = { union_rsrc_p_var = PREV.resource_produced@chromium }
+			add_to_variable = { union_rsrc_p_var = PREV.resource_produced@coal }
+		}
+	}
+	every_country = {
+		limit = {
+			OR = {
+				has_dynamic_modifier = {
+					modifier = JAP_PEC_dynamic
+				}
+				has_idea = JAP_PEC_member
+				has_idea = JAP_PEC_member_2
+			}
+			NOT = {
+				is_in_array = { global.econ_ledg_union_leaders = THIS.id }
+			}
+		}
+		random_country = {
+			limit = {
+				OR = {
+					has_dynamic_modifier = {
+						modifier = JAP_PEC_dynamic
+					}
+					has_idea = JAP_PEC_member
+					has_idea = JAP_PEC_member_2
+				}
+				is_in_array = { global.econ_ledg_union_leaders = THIS.id }
+			}
+			add_to_variable = { union_rsrc_p_var = PREV.resource_produced@oil }
+			add_to_variable = { union_rsrc_p_var = PREV.resource_produced@aluminium }
+			add_to_variable = { union_rsrc_p_var = PREV.resource_produced@rubber }
+			add_to_variable = { union_rsrc_p_var = PREV.resource_produced@tungsten }
+			add_to_variable = { union_rsrc_p_var = PREV.resource_produced@steel }
+			add_to_variable = { union_rsrc_p_var = PREV.resource_produced@chromium }
+			add_to_variable = { union_rsrc_p_var = PREV.resource_produced@coal }
+		}
+	}
+	every_country = {
+		limit = {
+			OR = {
+				has_idea = SOV_EEC_Member
+				has_idea = SOV_EEC_leader
+			}
+			NOT = {
+				is_in_array = { global.econ_ledg_union_leaders = THIS.id }
+			}
+		}
+		random_country = {
+			limit = {
+				OR = {
+					has_idea = SOV_EEC_Member
+					has_idea = SOV_EEC_leader
+				}
+				is_in_array = { global.econ_ledg_union_leaders = THIS.id }
+			}
+			add_to_variable = { union_rsrc_p_var = PREV.resource_produced@oil }
+			add_to_variable = { union_rsrc_p_var = PREV.resource_produced@aluminium }
+			add_to_variable = { union_rsrc_p_var = PREV.resource_produced@rubber }
+			add_to_variable = { union_rsrc_p_var = PREV.resource_produced@tungsten }
+			add_to_variable = { union_rsrc_p_var = PREV.resource_produced@steel }
+			add_to_variable = { union_rsrc_p_var = PREV.resource_produced@chromium }
+			add_to_variable = { union_rsrc_p_var = PREV.resource_produced@coal }
+		}
+	}
+	every_country = {
+		limit = {
+			is_in_array = { global.econ_ledg_union_leaders = THIS.id }
+		}
+		set_variable = {
+			var = union_rsrc_p_total_var
+			value = union_rsrc_p_var
+		}
+	}
+	
+	get_sorted_scored_countries = {
+		scorer = economy_ledger_union_rsrc_p_scorer
+		array = global.economy_ledger_union_gdp_list
+		scores = global.economy_ledger_union_gdp_value
+	}
+}
+
+TFR_economic_ledger_union_calculation_rsrc_n = {
+	clear_array = global.econ_ledg_union_leaders
+	
+	random_country = {
+		limit = {
+			has_dynamic_modifier = {
+				modifier = EU_member_dynamic
+			}
+		}
+		add_to_array = {
+			array = global.econ_ledg_union_leaders
+			value = THIS.id
+		}
+		set_variable = { union_rsrc_n_var = 0 }
+		add_to_variable = { union_rsrc_n_var = resource_consumed@oil }
+		add_to_variable = { union_rsrc_n_var = resource_consumed@aluminium }
+		add_to_variable = { union_rsrc_n_var = resource_consumed@rubber }
+		add_to_variable = { union_rsrc_n_var = resource_consumed@tungsten }
+		add_to_variable = { union_rsrc_n_var = resource_consumed@steel }
+		add_to_variable = { union_rsrc_n_var = resource_consumed@chromium }
+		add_to_variable = { union_rsrc_n_var = resource_consumed@coal }
+	}
+	random_country = {
+		limit = {
+			has_idea = arab_league_member
+		}
+		add_to_array = {
+			array = global.econ_ledg_union_leaders
+			value = THIS.id
+		}
+		set_variable = { union_rsrc_n_var = 0 }
+		add_to_variable = { union_rsrc_n_var = resource_consumed@oil }
+		add_to_variable = { union_rsrc_n_var = resource_consumed@aluminium }
+		add_to_variable = { union_rsrc_n_var = resource_consumed@rubber }
+		add_to_variable = { union_rsrc_n_var = resource_consumed@tungsten }
+		add_to_variable = { union_rsrc_n_var = resource_consumed@steel }
+		add_to_variable = { union_rsrc_n_var = resource_consumed@chromium }
+		add_to_variable = { union_rsrc_n_var = resource_consumed@coal }
+	}
+	random_country = {
+		limit = {
+			has_idea = ASEAN_member
+		}
+		add_to_array = {
+			array = global.econ_ledg_union_leaders
+			value = THIS.id
+		}
+		set_variable = { union_rsrc_n_var = 0 }
+		add_to_variable = { union_rsrc_n_var = resource_consumed@oil }
+		add_to_variable = { union_rsrc_n_var = resource_consumed@aluminium }
+		add_to_variable = { union_rsrc_n_var = resource_consumed@rubber }
+		add_to_variable = { union_rsrc_n_var = resource_consumed@tungsten }
+		add_to_variable = { union_rsrc_n_var = resource_consumed@steel }
+		add_to_variable = { union_rsrc_n_var = resource_consumed@chromium }
+		add_to_variable = { union_rsrc_n_var = resource_consumed@coal }
+	}
+	random_country = {
+		limit = {
+			OR = {
+				has_dynamic_modifier = {
+					modifier = SOV_ADS_dynamic
+				}
+				has_idea = SOV_ADS_member
+			}
+		}
+		add_to_array = {
+			array = global.econ_ledg_union_leaders
+			value = THIS.id
+		}
+		set_variable = { union_rsrc_n_var = 0 }
+		add_to_variable = { union_rsrc_n_var = resource_consumed@oil }
+		add_to_variable = { union_rsrc_n_var = resource_consumed@aluminium }
+		add_to_variable = { union_rsrc_n_var = resource_consumed@rubber }
+		add_to_variable = { union_rsrc_n_var = resource_consumed@tungsten }
+		add_to_variable = { union_rsrc_n_var = resource_consumed@steel }
+		add_to_variable = { union_rsrc_n_var = resource_consumed@chromium }
+		add_to_variable = { union_rsrc_n_var = resource_consumed@coal }
+	}
+	random_country = {
+		limit = {
+			OR = {
+				has_dynamic_modifier = {
+					modifier = SOV_TMC_dynamic
+				}
+				has_idea = SOV_tmca_member
+			}
+		}
+		add_to_array = {
+			array = global.econ_ledg_union_leaders
+			value = THIS.id
+		}
+		set_variable = { union_rsrc_n_var = 0 }
+		add_to_variable = { union_rsrc_n_var = resource_consumed@oil }
+		add_to_variable = { union_rsrc_n_var = resource_consumed@aluminium }
+		add_to_variable = { union_rsrc_n_var = resource_consumed@rubber }
+		add_to_variable = { union_rsrc_n_var = resource_consumed@tungsten }
+		add_to_variable = { union_rsrc_n_var = resource_consumed@steel }
+		add_to_variable = { union_rsrc_n_var = resource_consumed@chromium }
+		add_to_variable = { union_rsrc_n_var = resource_consumed@coal }
+	}
+	random_country = {
+		limit = {
+			OR = {
+				has_dynamic_modifier = {
+					modifier = SOV_brics_dynamic
+				}
+				has_idea = SOV_brics_member
+			}
+		}
+		add_to_array = {
+			array = global.econ_ledg_union_leaders
+			value = THIS.id
+		}
+		set_variable = { union_rsrc_n_var = 0 }
+		add_to_variable = { union_rsrc_n_var = resource_consumed@oil }
+		add_to_variable = { union_rsrc_n_var = resource_consumed@aluminium }
+		add_to_variable = { union_rsrc_n_var = resource_consumed@rubber }
+		add_to_variable = { union_rsrc_n_var = resource_consumed@tungsten }
+		add_to_variable = { union_rsrc_n_var = resource_consumed@steel }
+		add_to_variable = { union_rsrc_n_var = resource_consumed@chromium }
+		add_to_variable = { union_rsrc_n_var = resource_consumed@coal }
+	}
+	random_country = {
+		limit = {
+			OR = {
+				has_dynamic_modifier = {
+					modifier = JAP_PEC_dynamic
+				}
+				has_idea = JAP_PEC_member
+				has_idea = JAP_PEC_member_2
+			}
+		}
+		add_to_array = {
+			array = global.econ_ledg_union_leaders
+			value = THIS.id
+		}
+		set_variable = { union_rsrc_n_var = 0 }
+		add_to_variable = { union_rsrc_n_var = resource_consumed@oil }
+		add_to_variable = { union_rsrc_n_var = resource_consumed@aluminium }
+		add_to_variable = { union_rsrc_n_var = resource_consumed@rubber }
+		add_to_variable = { union_rsrc_n_var = resource_consumed@tungsten }
+		add_to_variable = { union_rsrc_n_var = resource_consumed@steel }
+		add_to_variable = { union_rsrc_n_var = resource_consumed@chromium }
+		add_to_variable = { union_rsrc_n_var = resource_consumed@coal }
+	}
+	random_country = {
+		limit = {
+			OR = {
+				has_idea = SOV_EEC_Member
+				has_idea = SOV_EEC_leader
+			}
+		}
+		add_to_array = {
+			array = global.econ_ledg_union_leaders
+			value = THIS.id
+		}
+		set_variable = { union_rsrc_n_var = 0 }
+		add_to_variable = { union_rsrc_n_var = resource_consumed@oil }
+		add_to_variable = { union_rsrc_n_var = resource_consumed@aluminium }
+		add_to_variable = { union_rsrc_n_var = resource_consumed@rubber }
+		add_to_variable = { union_rsrc_n_var = resource_consumed@tungsten }
+		add_to_variable = { union_rsrc_n_var = resource_consumed@steel }
+		add_to_variable = { union_rsrc_n_var = resource_consumed@chromium }
+		add_to_variable = { union_rsrc_n_var = resource_consumed@coal }
+	}
+	
+	every_country = {
+		limit = {
+			has_dynamic_modifier = {
+				modifier = EU_member_dynamic
+			}
+			NOT = {
+				is_in_array = { global.econ_ledg_union_leaders = THIS.id }
+			}
+		}
+		random_country = {
+			limit = {
+				has_dynamic_modifier = {
+					modifier = EU_member_dynamic
+				}
+				is_in_array = { global.econ_ledg_union_leaders = THIS.id }
+			}
+			add_to_variable = { union_rsrc_n_var = PREV.resource_consumed@oil }
+			add_to_variable = { union_rsrc_n_var = PREV.resource_consumed@aluminium }
+			add_to_variable = { union_rsrc_n_var = PREV.resource_consumed@rubber }
+			add_to_variable = { union_rsrc_n_var = PREV.resource_consumed@tungsten }
+			add_to_variable = { union_rsrc_n_var = PREV.resource_consumed@steel }
+			add_to_variable = { union_rsrc_n_var = PREV.resource_consumed@chromium }
+			add_to_variable = { union_rsrc_n_var = PREV.resource_consumed@coal }
+		}
+	}
+	every_country = {
+		limit = {
+			has_idea = arab_league_member
+			NOT = {
+				is_in_array = { global.econ_ledg_union_leaders = THIS.id }
+			}
+		}
+		random_country = {
+			limit = {
+				has_idea = arab_league_member
+				is_in_array = { global.econ_ledg_union_leaders = THIS.id }
+			}
+			add_to_variable = { union_rsrc_n_var = PREV.resource_consumed@oil }
+			add_to_variable = { union_rsrc_n_var = PREV.resource_consumed@aluminium }
+			add_to_variable = { union_rsrc_n_var = PREV.resource_consumed@rubber }
+			add_to_variable = { union_rsrc_n_var = PREV.resource_consumed@tungsten }
+			add_to_variable = { union_rsrc_n_var = PREV.resource_consumed@steel }
+			add_to_variable = { union_rsrc_n_var = PREV.resource_consumed@chromium }
+			add_to_variable = { union_rsrc_n_var = PREV.resource_consumed@coal }
+		}
+	}
+	every_country = {
+		limit = {
+			has_idea = ASEAN_member
+			NOT = {
+				is_in_array = { global.econ_ledg_union_leaders = THIS.id }
+			}
+		}
+		random_country = {
+			limit = {
+				has_idea = ASEAN_member
+				is_in_array = { global.econ_ledg_union_leaders = THIS.id }
+			}
+			add_to_variable = { union_rsrc_n_var = PREV.resource_consumed@oil }
+			add_to_variable = { union_rsrc_n_var = PREV.resource_consumed@aluminium }
+			add_to_variable = { union_rsrc_n_var = PREV.resource_consumed@rubber }
+			add_to_variable = { union_rsrc_n_var = PREV.resource_consumed@tungsten }
+			add_to_variable = { union_rsrc_n_var = PREV.resource_consumed@steel }
+			add_to_variable = { union_rsrc_n_var = PREV.resource_consumed@chromium }
+			add_to_variable = { union_rsrc_n_var = PREV.resource_consumed@coal }
+		}
+	}
+	every_country = {
+		limit = {
+			OR = {
+				has_dynamic_modifier = {
+					modifier = SOV_ADS_dynamic
+				}
+				has_idea = SOV_ADS_member
+			}
+			NOT = {
+				is_in_array = { global.econ_ledg_union_leaders = THIS.id }
+			}
+		}
+		random_country = {
+			limit = {
+				OR = {
+					has_dynamic_modifier = {
+						modifier = SOV_ADS_dynamic
+					}
+					has_idea = SOV_ADS_member
+				}
+				is_in_array = { global.econ_ledg_union_leaders = THIS.id }
+			}
+			add_to_variable = { union_rsrc_n_var = PREV.resource_consumed@oil }
+			add_to_variable = { union_rsrc_n_var = PREV.resource_consumed@aluminium }
+			add_to_variable = { union_rsrc_n_var = PREV.resource_consumed@rubber }
+			add_to_variable = { union_rsrc_n_var = PREV.resource_consumed@tungsten }
+			add_to_variable = { union_rsrc_n_var = PREV.resource_consumed@steel }
+			add_to_variable = { union_rsrc_n_var = PREV.resource_consumed@chromium }
+			add_to_variable = { union_rsrc_n_var = PREV.resource_consumed@coal }
+		}
+	}
+	every_country = {
+		limit = {
+			OR = {
+				has_dynamic_modifier = {
+					modifier = SOV_TMC_dynamic
+				}
+				has_idea = SOV_tmca_member
+			}
+			NOT = {
+				is_in_array = { global.econ_ledg_union_leaders = THIS.id }
+			}
+		}
+		random_country = {
+			limit = {
+				OR = {
+					has_dynamic_modifier = {
+						modifier = SOV_TMC_dynamic
+					}
+					has_idea = SOV_tmca_member
+				}
+				is_in_array = { global.econ_ledg_union_leaders = THIS.id }
+			}
+			add_to_variable = { union_rsrc_n_var = PREV.resource_consumed@oil }
+			add_to_variable = { union_rsrc_n_var = PREV.resource_consumed@aluminium }
+			add_to_variable = { union_rsrc_n_var = PREV.resource_consumed@rubber }
+			add_to_variable = { union_rsrc_n_var = PREV.resource_consumed@tungsten }
+			add_to_variable = { union_rsrc_n_var = PREV.resource_consumed@steel }
+			add_to_variable = { union_rsrc_n_var = PREV.resource_consumed@chromium }
+			add_to_variable = { union_rsrc_n_var = PREV.resource_consumed@coal }
+		}
+	}
+	every_country = {
+		limit = {
+			OR = {
+				has_dynamic_modifier = {
+					modifier = SOV_brics_dynamic
+				}
+				has_idea = SOV_brics_member
+			}
+			NOT = {
+				is_in_array = { global.econ_ledg_union_leaders = THIS.id }
+			}
+		}
+		random_country = {
+			limit = {
+				OR = {
+					has_dynamic_modifier = {
+						modifier = SOV_brics_dynamic
+					}
+					has_idea = SOV_brics_member
+				}
+				is_in_array = { global.econ_ledg_union_leaders = THIS.id }
+			}
+			add_to_variable = { union_rsrc_n_var = PREV.resource_consumed@oil }
+			add_to_variable = { union_rsrc_n_var = PREV.resource_consumed@aluminium }
+			add_to_variable = { union_rsrc_n_var = PREV.resource_consumed@rubber }
+			add_to_variable = { union_rsrc_n_var = PREV.resource_consumed@tungsten }
+			add_to_variable = { union_rsrc_n_var = PREV.resource_consumed@steel }
+			add_to_variable = { union_rsrc_n_var = PREV.resource_consumed@chromium }
+			add_to_variable = { union_rsrc_n_var = PREV.resource_consumed@coal }
+		}
+	}
+	every_country = {
+		limit = {
+			OR = {
+				has_dynamic_modifier = {
+					modifier = JAP_PEC_dynamic
+				}
+				has_idea = JAP_PEC_member
+				has_idea = JAP_PEC_member_2
+			}
+			NOT = {
+				is_in_array = { global.econ_ledg_union_leaders = THIS.id }
+			}
+		}
+		random_country = {
+			limit = {
+				OR = {
+					has_dynamic_modifier = {
+						modifier = JAP_PEC_dynamic
+					}
+					has_idea = JAP_PEC_member
+					has_idea = JAP_PEC_member_2
+				}
+				is_in_array = { global.econ_ledg_union_leaders = THIS.id }
+			}
+			add_to_variable = { union_rsrc_n_var = PREV.resource_consumed@oil }
+			add_to_variable = { union_rsrc_n_var = PREV.resource_consumed@aluminium }
+			add_to_variable = { union_rsrc_n_var = PREV.resource_consumed@rubber }
+			add_to_variable = { union_rsrc_n_var = PREV.resource_consumed@tungsten }
+			add_to_variable = { union_rsrc_n_var = PREV.resource_consumed@steel }
+			add_to_variable = { union_rsrc_n_var = PREV.resource_consumed@chromium }
+			add_to_variable = { union_rsrc_n_var = PREV.resource_consumed@coal }
+		}
+	}
+	every_country = {
+		limit = {
+			OR = {
+				has_idea = SOV_EEC_Member
+				has_idea = SOV_EEC_leader
+			}
+			NOT = {
+				is_in_array = { global.econ_ledg_union_leaders = THIS.id }
+			}
+		}
+		random_country = {
+			limit = {
+				OR = {
+					has_idea = SOV_EEC_Member
+					has_idea = SOV_EEC_leader
+				}
+				is_in_array = { global.econ_ledg_union_leaders = THIS.id }
+			}
+			add_to_variable = { union_rsrc_n_var = PREV.resource_consumed@oil }
+			add_to_variable = { union_rsrc_n_var = PREV.resource_consumed@aluminium }
+			add_to_variable = { union_rsrc_n_var = PREV.resource_consumed@rubber }
+			add_to_variable = { union_rsrc_n_var = PREV.resource_consumed@tungsten }
+			add_to_variable = { union_rsrc_n_var = PREV.resource_consumed@steel }
+			add_to_variable = { union_rsrc_n_var = PREV.resource_consumed@chromium }
+			add_to_variable = { union_rsrc_n_var = PREV.resource_consumed@coal }
+		}
+	}
+	every_country = {
+		limit = {
+			is_in_array = { global.econ_ledg_union_leaders = THIS.id }
+		}
+		set_variable = {
+			var = union_rsrc_n_total_var
+			value = union_rsrc_n_var
+		}
+	}
+	
+	get_sorted_scored_countries = {
+		scorer = economy_ledger_union_rsrc_n_scorer
+		array = global.economy_ledger_union_gdp_list
+		scores = global.economy_ledger_union_gdp_value
+	}
+}
+
+TFR_economic_ledger_faction_calculation_gdp = {
+	clear_array = global.econ_ledg_faction_leaders
+	every_country = { limit = { is_faction_leader = yes } 
+		add_to_array = {
+			array = global.econ_ledg_faction_leaders
+			value = THIS.id
+		}
+		set_variable = { faction_gdp_var = gdp_var }
+	}
+	every_country = { limit = { is_in_faction = yes is_faction_leader = no } 
+		faction_leader = {
+			add_to_variable = { faction_gdp_var = PREV.gdp_var }
+		}
+	}
+	every_country = { limit = { is_faction_leader = yes } 
+		set_variable = {
+			var = faction_gdp_trillion_var
+			value = faction_gdp_var
+		}
+		multiply_variable = {
+			var = faction_gdp_trillion_var
+			value = 0.001
+		}
+		set_variable = {
+			var = faction_gdp_billion_var
+			value = faction_gdp_var
+		}
+		set_variable = {
+			var = faction_gdp_million_var
+			value = faction_gdp_var
+		}
+		multiply_variable = {
+			var = faction_gdp_million_var
+			value = 1000
+		}
+	}
+	
+	get_sorted_scored_countries = {
+		scorer = economy_ledger_faction_gdp_scorer
+		array = global.economy_ledger_faction_gdp_list
+		scores = global.economy_ledger_faction_gdp_value
+	}
+}
+
+TFR_economic_ledger_faction_calculation_rgdp = {
+	clear_array = global.econ_ledg_faction_leaders
+	every_country = { limit = { is_faction_leader = yes } 
+		add_to_array = {
+			array = global.econ_ledg_faction_leaders
+			value = THIS.id
+		}
+		set_variable = { faction_rgdp_var = gdp_total_var }
+	}
+	every_country = { limit = { is_in_faction = yes is_faction_leader = no } 
+		faction_leader = {
+			add_to_variable = { faction_rgdp_var = PREV.gdp_total_var }
+		}
+	}
+	every_country = { limit = { is_faction_leader = yes } 
+		set_variable = {
+			var = faction_gdp_total_var
+			value = faction_rgdp_var
+		}
+		set_variable = {
+			var = faction_gdp_total_trillion_var
+			value = faction_rgdp_var
+		}
+		multiply_variable = {
+			var = faction_gdp_total_trillion_var
+			value = 0.001
+		}
+		set_variable = {
+			var = faction_gdp_total_billion_var
+			value = faction_rgdp_var
+		}
+		set_variable = {
+			var = faction_gdp_total_million_var
+			value = faction_rgdp_var
+		}
+		multiply_variable = {
+			var = faction_gdp_total_million_var
+			value = 1000
+		}
+	}
+	
+	get_sorted_scored_countries = {
+		scorer = economy_ledger_faction_rgdp_scorer
+		array = global.economy_ledger_faction_gdp_list
+		scores = global.economy_ledger_faction_gdp_value
+	}
+}
+
+TFR_economic_ledger_faction_calculation_debt = {
+	clear_array = global.econ_ledg_faction_leaders
+	every_country = { limit = { is_faction_leader = yes } 
+		add_to_array = {
+			array = global.econ_ledg_faction_leaders
+			value = THIS.id
+		}
+		set_variable = { faction_debt_var = debt_var }
+	}
+	every_country = { limit = { is_in_faction = yes is_faction_leader = no } 
+		faction_leader = {
+			add_to_variable = { faction_debt_var = PREV.debt_var }
+		}
+	}
+	every_country = { limit = { is_faction_leader = yes } 
+		set_variable = {
+			var = faction_debt_trillion_var
+			value = faction_debt_var
+		}
+		multiply_variable = {
+			var = faction_debt_trillion_var
+			value = 0.001
+		}
+		set_variable = {
+			var = faction_debt_billion_var
+			value = faction_debt_var
+		}
+		set_variable = {
+			var = faction_debt_million_var
+			value = faction_debt_var
+		}
+		multiply_variable = {
+			var = faction_debt_million_var
+			value = 1000
+		}
+	}
+	get_sorted_scored_countries = {
+		scorer = economy_ledger_faction_debt_scorer
+		array = global.economy_ledger_faction_gdp_list
+		scores = global.economy_ledger_faction_gdp_value
+	}
+}
+
+TFR_economic_ledger_faction_calculation_fctr = {
+	clear_array = global.econ_ledg_faction_leaders
+	every_country = { limit = { is_faction_leader = yes } 
+		add_to_array = {
+			array = global.econ_ledg_faction_leaders
+			value = THIS.id
+		}
+		set_variable = { faction_fctr_var = num_of_factories }
+	}
+	every_country = { limit = { is_in_faction = yes is_faction_leader = no } 
+		faction_leader = {
+			add_to_variable = { faction_fctr_var = PREV.num_of_factories }
+		}
+	}
+	every_country = { limit = { is_faction_leader = yes } 
+		set_variable = {
+			var = faction_fctr_total_var
+			value = faction_fctr_var
+		}
+	}
+	get_sorted_scored_countries = {
+		scorer = economy_ledger_faction_fctr_scorer
+		array = global.economy_ledger_faction_gdp_list
+		scores = global.economy_ledger_faction_gdp_value
+	}
+}
+
+TFR_economic_ledger_faction_calculation_rsrc_p = {
+	clear_array = global.econ_ledg_faction_leaders
+	every_country = { limit = { is_faction_leader = yes } 
+		add_to_array = {
+			array = global.econ_ledg_faction_leaders
+			value = THIS.id
+		}
+		set_variable = { faction_rsrc_p_var = 0 }
+		add_to_variable = { faction_rsrc_p_var = resource_produced@oil }
+		add_to_variable = { faction_rsrc_p_var = resource_produced@aluminium }
+		add_to_variable = { faction_rsrc_p_var = resource_produced@rubber }
+		add_to_variable = { faction_rsrc_p_var = resource_produced@tungsten }
+		add_to_variable = { faction_rsrc_p_var = resource_produced@steel }
+		add_to_variable = { faction_rsrc_p_var = resource_produced@chromium }
+		add_to_variable = { faction_rsrc_p_var = resource_produced@coal }
+	}
+	every_country = { limit = { is_in_faction = yes is_faction_leader = no } 
+		faction_leader = {
+			add_to_variable = { faction_rsrc_p_var = PREV.resource_produced@oil }
+			add_to_variable = { faction_rsrc_p_var = PREV.resource_produced@aluminium }
+			add_to_variable = { faction_rsrc_p_var = PREV.resource_produced@rubber }
+			add_to_variable = { faction_rsrc_p_var = PREV.resource_produced@tungsten }
+			add_to_variable = { faction_rsrc_p_var = PREV.resource_produced@steel }
+			add_to_variable = { faction_rsrc_p_var = PREV.resource_produced@chromium }
+			add_to_variable = { faction_rsrc_p_var = PREV.resource_produced@coal }
+		}
+	}
+	every_country = { limit = { is_faction_leader = yes } 
+		set_variable = {
+			var = faction_rsrc_p_total_var
+			value = faction_rsrc_p_var
+		}
+	}
+	get_sorted_scored_countries = {
+		scorer = economy_ledger_faction_rsrc_p_scorer
+		array = global.economy_ledger_faction_gdp_list
+		scores = global.economy_ledger_faction_gdp_value
+	}
+}
+
+TFR_economic_ledger_faction_calculation_rsrc_n = {
+	clear_array = global.econ_ledg_faction_leaders
+	every_country = { limit = { is_faction_leader = yes } 
+		add_to_array = {
+			array = global.econ_ledg_faction_leaders
+			value = THIS.id
+		}
+		set_variable = { faction_rsrc_n_var = 0 }
+		add_to_variable = { faction_rsrc_n_var = resource_consumed@oil }
+		add_to_variable = { faction_rsrc_n_var = resource_consumed@aluminium }
+		add_to_variable = { faction_rsrc_n_var = resource_consumed@rubber }
+		add_to_variable = { faction_rsrc_n_var = resource_consumed@tungsten }
+		add_to_variable = { faction_rsrc_n_var = resource_consumed@steel }
+		add_to_variable = { faction_rsrc_n_var = resource_consumed@chromium }
+		add_to_variable = { faction_rsrc_n_var = resource_consumed@coal }
+	}
+	every_country = { limit = { is_in_faction = yes is_faction_leader = no } 
+		faction_leader = {
+			add_to_variable = { faction_rsrc_n_var = PREV.resource_consumed@oil }
+			add_to_variable = { faction_rsrc_n_var = PREV.resource_consumed@aluminium }
+			add_to_variable = { faction_rsrc_n_var = PREV.resource_consumed@rubber }
+			add_to_variable = { faction_rsrc_n_var = PREV.resource_consumed@tungsten }
+			add_to_variable = { faction_rsrc_n_var = PREV.resource_consumed@steel }
+			add_to_variable = { faction_rsrc_n_var = PREV.resource_consumed@chromium }
+			add_to_variable = { faction_rsrc_n_var = PREV.resource_consumed@coal }
+		}
+	}
+	every_country = { limit = { is_faction_leader = yes } 
+		set_variable = {
+			var = faction_rsrc_n_total_var
+			value = faction_rsrc_n_var
+		}
+	}
+	get_sorted_scored_countries = {
+		scorer = economy_ledger_faction_rsrc_n_scorer
+		array = global.economy_ledger_faction_gdp_list
+		scores = global.economy_ledger_faction_gdp_value
+	}
+}
+
+TFR_economic_ledger_faction_calculation_milspending = {
+	clear_array = global.econ_ledg_faction_leaders
+	every_country = { limit = { is_faction_leader = yes } 
+		add_to_array = {
+			array = global.econ_ledg_faction_leaders
+			value = THIS.id
+		}
+		set_variable = { faction_milspending_var = military_spending_var }
+	}
+	every_country = { limit = { is_in_faction = yes is_faction_leader = no } 
+		faction_leader = {
+			add_to_variable = { faction_milspending_var = PREV.military_spending_var }
+		}
+	}
+	every_country = { limit = { is_faction_leader = yes } 
+		set_variable = {
+			var = faction_milspending_trillion_var
+			value = faction_milspending_var
+		}
+		multiply_variable = {
+			var = faction_milspending_trillion_var
+			value = 12
+		}
+		multiply_variable = {
+			var = faction_milspending_trillion_var
+			value = 0.001
+		}
+		set_variable = {
+			var = faction_milspending_billion_var
+			value = faction_milspending_var
+		}
+		multiply_variable = {
+			var = faction_milspending_billion_var
+			value = 12
+		}
+		set_variable = {
+			var = faction_milspending_million_var
+			value = faction_milspending_var
+		}
+		multiply_variable = {
+			var = faction_milspending_million_var
+			value = 12
+		}
+		multiply_variable = {
+			var = faction_milspending_million_var
+			value = 1000
+		}
+	}
+}
+
+TFR_economic_ledger_global_calculation_gdp = {
+	ZZZ = {
+		set_variable = { global_gdp_var = 0 }
+	}
+	every_country = {
+		limit = { exists = yes }
+		ZZZ = {
+			add_to_variable = { global_gdp_var = PREV.gdp_var }
+		}
+	}
+	ZZZ = {
+		set_variable = {
+			var = global_gdp_trillion_var
+			value = global_gdp_var
+		}
+		multiply_variable = {
+			var = global_gdp_trillion_var
+			value = 0.001
+		}
+		set_variable = {
+			var = global_gdp_billion_var
+			value = global_gdp_var
+		}
+		set_variable = {
+			var = global_gdp_million_var
+			value = global_gdp_var
+		}
+		multiply_variable = {
+			var = global_gdp_million_var
+			value = 1000
+		}
+	}
+}
+
+TFR_economic_ledger_global_calculation_rgdp = {
+	ZZZ = {
+		set_variable = { global_gdp_total_var = 0 }
+	}
+	every_country = {
+		limit = { exists = yes }
+		ZZZ = {
+			add_to_variable = { global_gdp_total_var = PREV.gdp_total_var }
+		}
+	}
+	ZZZ = {
+		set_variable = {
+			var = global_gdp_total_trillion_var
+			value = global_gdp_total_var
+		}
+		multiply_variable = {
+			var = global_gdp_total_trillion_var
+			value = 0.001
+		}
+		set_variable = {
+			var = global_gdp_total_billion_var
+			value = global_gdp_total_var
+		}
+		set_variable = {
+			var = global_gdp_total_million_var
+			value = global_gdp_total_var
+		}
+		multiply_variable = {
+			var = global_gdp_total_million_var
+			value = 1000
+		}
+	}
+}
+
+TFR_economic_ledger_global_calculation_debt = {
+	ZZZ = {
+		set_variable = { global_debt_var = 0 }
+	}
+	every_country = {
+		limit = { exists = yes }
+		ZZZ = {
+			add_to_variable = { global_debt_var = PREV.debt_var }
+		}
+	}
+	ZZZ = {
+		set_variable = {
+			var = global_debt_trillion_var
+			value = global_debt_var
+		}
+		multiply_variable = {
+			var = global_debt_trillion_var
+			value = 0.001
+		}
+		set_variable = {
+			var = global_debt_billion_var
+			value = global_debt_var
+		}
+		set_variable = {
+			var = global_debt_million_var
+			value = global_debt_var
+		}
+		multiply_variable = {
+			var = global_debt_million_var
+			value = 1000
+		}
+	}
+}
+
+TFR_economic_ledger_global_calculation_fctr = {
+	ZZZ = {
+		set_variable = { global_fctr_total_var = 0 }
+		set_variable = { global_civfctr_total_var = 0 }
+		set_variable = { global_milfctr_total_var = 0 }
+		set_variable = { global_navfctr_total_var = 0 }
+	}
+	every_country = {
+		limit = { exists = yes }
+		ZZZ = {
+			add_to_variable = { global_fctr_total_var = PREV.num_of_factories }
+			add_to_variable = { global_civfctr_total_var = PREV.num_of_civilian_factories }
+			add_to_variable = { global_milfctr_total_var = PREV.num_of_military_factories }
+			add_to_variable = { global_navfctr_total_var = PREV.num_of_naval_factories }
+		}
+	}
+}
+
+TFR_economic_ledger_global_calculation_rsrc_p = {
+	ZZZ = {
+		set_variable = { global_rsrc_p_total_var = 0 }
+		set_variable = { global_rsrc_p_oil_total_var = 0 }
+		set_variable = { global_rsrc_p_aluminium_total_var = 0 }
+		set_variable = { global_rsrc_p_rubber_total_var = 0 }
+		set_variable = { global_rsrc_p_tungsten_total_var = 0 }
+		set_variable = { global_rsrc_p_steel_total_var = 0 }
+		set_variable = { global_rsrc_p_chromium_total_var = 0 }
+		set_variable = { global_rsrc_p_coal_total_var = 0 }
+	}
+	every_country = {
+		limit = { exists = yes }
+		ZZZ = {
+			add_to_variable = { global_rsrc_p_total_var = PREV.resource_produced@oil }
+			add_to_variable = { global_rsrc_p_total_var = PREV.resource_produced@aluminium }
+			add_to_variable = { global_rsrc_p_total_var = PREV.resource_produced@rubber }
+			add_to_variable = { global_rsrc_p_total_var = PREV.resource_produced@tungsten }
+			add_to_variable = { global_rsrc_p_total_var = PREV.resource_produced@steel }
+			add_to_variable = { global_rsrc_p_total_var = PREV.resource_produced@chromium }
+			add_to_variable = { global_rsrc_p_total_var = PREV.resource_produced@coal }
+			
+			add_to_variable = { global_rsrc_p_oil_total_var = PREV.resource_produced@oil }
+			add_to_variable = { global_rsrc_p_aluminium_total_var = PREV.resource_produced@aluminium }
+			add_to_variable = { global_rsrc_p_rubber_total_var = PREV.resource_produced@rubber }
+			add_to_variable = { global_rsrc_p_tungsten_total_var = PREV.resource_produced@tungsten }
+			add_to_variable = { global_rsrc_p_steel_total_var = PREV.resource_produced@steel }
+			add_to_variable = { global_rsrc_p_chromium_total_var = PREV.resource_produced@chromium }
+			add_to_variable = { global_rsrc_p_coal_total_var = PREV.resource_produced@coal }
+		}
+	}
+}
+
+TFR_economic_ledger_global_calculation_rsrc_n = {
+	ZZZ = {
+		set_variable = { global_rsrc_n_total_var = 0 }
+		set_variable = { global_rsrc_n_oil_total_var = 0 }
+		set_variable = { global_rsrc_n_aluminium_total_var = 0 }
+		set_variable = { global_rsrc_n_rubber_total_var = 0 }
+		set_variable = { global_rsrc_n_tungsten_total_var = 0 }
+		set_variable = { global_rsrc_n_steel_total_var = 0 }
+		set_variable = { global_rsrc_n_chromium_total_var = 0 }
+		set_variable = { global_rsrc_n_coal_total_var = 0 }
+	}
+	every_country = {
+		limit = { exists = yes }
+		ZZZ = {
+			add_to_variable = { global_rsrc_n_total_var = PREV.resource_consumed@oil }
+			add_to_variable = { global_rsrc_n_total_var = PREV.resource_consumed@aluminium }
+			add_to_variable = { global_rsrc_n_total_var = PREV.resource_consumed@rubber }
+			add_to_variable = { global_rsrc_n_total_var = PREV.resource_consumed@tungsten }
+			add_to_variable = { global_rsrc_n_total_var = PREV.resource_consumed@steel }
+			add_to_variable = { global_rsrc_n_total_var = PREV.resource_consumed@chromium }
+			add_to_variable = { global_rsrc_n_total_var = PREV.resource_consumed@coal }
+			
+			add_to_variable = { global_rsrc_n_oil_total_var = PREV.resource_consumed@oil }
+			add_to_variable = { global_rsrc_n_aluminium_total_var = PREV.resource_consumed@aluminium }
+			add_to_variable = { global_rsrc_n_rubber_total_var = PREV.resource_consumed@rubber }
+			add_to_variable = { global_rsrc_n_tungsten_total_var = PREV.resource_consumed@tungsten }
+			add_to_variable = { global_rsrc_n_steel_total_var = PREV.resource_consumed@steel }
+			add_to_variable = { global_rsrc_n_chromium_total_var = PREV.resource_consumed@chromium }
+			add_to_variable = { global_rsrc_n_coal_total_var = PREV.resource_consumed@coal }
+		}
+	}
+}

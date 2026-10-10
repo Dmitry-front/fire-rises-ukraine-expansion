@@ -1,6 +1,6 @@
 # PROPOSAL: украинские концерны (MIO) и окно «Оборонная промышленность»
 
-**Статус:** утверждён автором (10.10.2026: все 8 организаций, ванильные иконки, отдельная категория), код написан в сессии 15, в игре не запускался. Очередь 2 (раздел 3) ждёт присланных архетипов.
+**Статус:** утверждён автором (10.10.2026: все 8 организаций, ванильные иконки, отдельная категория; затем «давай 2 очередь»). Код очередей 1 и 2 написан в сессии 15 (13 организаций, 13 решений), в игре не запускался.
 **Источники:** присланные автором файлы TFR `00_generic_organization.txt`, `00_DEBUG_organization.txt`, `TFR_organizations_SOV.txt`, `_template_organization.txt`; референсы `_referenceTFR_decisions_SOV.txt` (стр. 28880-28913), `_referenceTFR_ideas_SOV.txt` (бонусы `equipment_bonus`), `_referenceTFR_national_focus_FRA.txt` (`mio:` и `add_mio_*`). Факты о реальных заводах писались по памяти: **[ПРОВЕРИТЬ]**.
 
 ## 1. Как устроено в TFR (по присланным файлам)
@@ -26,7 +26,7 @@
 |---|---|---|---|
 | `UKR_malyshev_organization` | Завод им. Малышева, КБ им. Морозова (Харьков) | `generic_medium_tank` | двигатель 6ТД (надёжность, скорость); динамическая защита (броня, защита); начальная черта: броня +, цена - |
 | `UKR_armor_repair_organization` | бронетанковые ремонтные заводы (Львов, Киев, Николаев) | `generic_tank_refurbishment_plant` | «трофейный фонд» (ремонт и переделка трофейных машин дешевле), эффективность линии |
-| `UKR_kraz_organization` | КрАЗ (Кременчуг), «Богдан» | `generic_armored_car` | колёсные бронемашины: скорость, надёжность, цена |
+| `UKR_kraz_organization` | КрАЗ (Кременчуг), колёсные БТР и грузовики | `generic_motorized_mechanized` (БТР это `light_mechanized_equipment`; `armored_car_equipment` в TFR не работает) | колёсные БТР: скорость, топливо; противоминный корпус |
 | `UKR_drone_cluster_organization` | оборонный кластер БПЛА (стартапы, волонтёры) | `generic_TFR_UAV_equipment` | «гаражные мастерские» (рост эффективности, но надёжность -), «волонтёрское финансирование» (`funds_gain`), «нейронавигация» (soft_attack) |
 | `UKR_antonov_organization` | «Антонов» | `generic_heavy_aircraft` | транспортная авиация: дальность, цена; мрачных шуток про потери нет |
 | `UKR_motor_sich_organization` | «Мотор Сич», «Ивченко-Прогресс» | `generic_range_focused_aircraft` | двигатели: дальность, топливо, надёжность |
@@ -34,6 +34,8 @@
 | `UKR_mykolaiv_yard_organization` | Черноморский судостроительный завод, «Зоря-Машпроект» (Николаев) | `generic_black_sea_fleet` | малый флот: корветы, береговая оборона, газотурбины |
 
 **Очередь 2 (после ответа на вопрос 1):** `UKR_malyshev`-родня для лёгких танков (`generic_infantry_tank`/`mobile_tank`), «Форт» и стрелковое оружие (`infantry_equipment`), «Артём» и артиллерия (`artillery`), «Луч»/«Южное» и крылатая ракета «Нептун» (отдельная организация на архетипе БПЛА с упором на `tfr_mio_trait_cruise_missile`), морские дроны, «Укрзализныця» как `train_equipment` в `refurbishment`-ветке. Привязка к опорам блока 3: технократы усиливают `UKR_drone_cluster` (`UKR_t_drone_army`), олигархи получают кланы-владельцев (закупки «через приближённые компании», дух `UKR_eggs_scandal`), левые - национализация, националисты - `UKR_np_import_substitution`.
+
+**Очередь 2 (сделано 10.10.2026).** `UKR_fort_organization` (пехотное оружие, `generic_infantry_equipment`; решение при `UKR_territorial_defense_forces`), `UKR_artillery_works_organization` (`generic_artillery`; `UKR_combined_arms_doctrine`), `UKR_luch_organization` (КБ «Луч» и «Южное», ракеты на архетипе артиллерии, скидка на `guided_missile_equipment`; `UKR_deep_defense_tactics`), `UKR_radio_electronics_organization` (`generic_support_equipment`; `UKR_reform_general_staff_nato_standards`), `UKR_sea_drones_organization` (`generic_escort_ship`; `UKR_maritime_defense_strategy`), железнодорожная черта у ремонтных заводов. Осталось из очереди: лёгкие танки (`infantry_tank`/`mobile_tank`), привязка к опорам блока 3.
 
 Техника: каждая организация - короткий блок `include` + `icon` + `allowed` + `initial_trait` + 2-3 своих `trait` (позиции относительно существующих токенов архетипа, `any_parent`/`all_parents` из него же) + `override_trait` при необходимости. Ключи локализации: имя организации, описание, имя начальной черты, имена новых черт (ru + en).
 

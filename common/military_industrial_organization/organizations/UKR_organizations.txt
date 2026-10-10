@@ -149,29 +149,58 @@ UKR_armor_repair_organization = {
 			base = 2
 		}
 	}
+
+	# Железнодорожные мастерские: бронепоезда и платформы
+	add_trait = {
+		token = UKR_mio_trait_railway_workshops
+		name = UKR_mio_trait_railway_workshops
+		icon = GFX_generic_mio_trait_icon_armor_value
+
+		special_trait_background = yes
+
+		position = { x=0 y=1 }
+		relative_position_id = generic_mio_trait_long_distance_escort
+
+		any_parent = { generic_mio_trait_long_distance_escort }
+
+		limit_to_equipment_type = { train_equipment }
+
+		equipment_bonus = {
+			armor_value = 0.08
+			air_attack = 0.06
+			build_cost_ic = -0.04
+		}
+
+		ai_will_do = {
+			base = 2
+		}
+	}
 }
 
-# КрАЗ (Кременчуг) и производители бронемашин. Архетип требует DLC La Resistance
+# КрАЗ (Кременчуг) и производители колёсной бронетехники. В TFR линия БТР/БМП это light_mechanized_equipment
+# и mechanized_equipment, бронеавтомобилей (armored_car_equipment) в игре нет, поэтому архетип моторизованных/механизированных
 UKR_kraz_organization = {
-	include = generic_armored_car_organization
-	icon = GFX_idea_generic_tank_manufacturer_1
+	include = generic_motorized_mechanized_organization
+	icon = GFX_idea_generic_motorized_equipment_manufacturer_3
 
 	allowed = {
 		original_tag = UKR
 		has_dlc = "Arms Against Tyranny"
-		has_dlc = "La Resistance"
 	}
 
 	initial_trait = {
 		name = UKR_kraz_initial_trait
 
+		organization_modifier = {
+			military_industrial_organization_research_bonus = 0.05
+		}
 		equipment_bonus = {
-			maximum_speed = 0.03
 			reliability = 0.03
+			maximum_speed = 0.03
 		}
 	}
 
-	# Колёсные шасси большой проходимости
+	# Колёсные БТР большой проходимости
 	add_trait = {
 		token = UKR_mio_trait_wheeled_chassis
 		name = UKR_mio_trait_wheeled_chassis
@@ -180,9 +209,11 @@ UKR_kraz_organization = {
 		special_trait_background = yes
 
 		position = { x=0 y=1 }
-		relative_position_id = generic_mio_trait_reinforced_wheels
+		relative_position_id = generic_mio_trait_all_wheel_drive
 
-		any_parent = { generic_mio_trait_reinforced_wheels }
+		any_parent = { generic_mio_trait_all_wheel_drive }
+
+		limit_to_equipment_type = { light_mechanized_equipment mechanized_equipment }
 
 		equipment_bonus = {
 			maximum_speed = 0.06
@@ -203,9 +234,11 @@ UKR_kraz_organization = {
 		special_trait_background = yes
 
 		position = { x=0 y=1 }
-		relative_position_id = generic_mio_trait_defensive_equipment
+		relative_position_id = generic_mio_trait_bulletproof_panels
 
-		any_parent = { generic_mio_trait_defensive_equipment }
+		any_parent = { generic_mio_trait_bulletproof_panels }
+
+		limit_to_equipment_type = { light_mechanized_equipment mechanized_equipment }
 
 		equipment_bonus = {
 			defense = 0.06
@@ -591,6 +624,374 @@ UKR_mykolaiv_yard_organization = {
 		equipment_bonus = {
 			anti_air_attack = 0.05
 			naval_range = -0.05
+			build_cost_ic = -0.03
+		}
+
+		ai_will_do = {
+			base = 2
+		}
+	}
+}
+
+#####################################
+# Очередь 2: пехота, артиллерия, связь, флот #
+#####################################
+
+# Научно-производственное предприятие «Форт» (Винница) и государственные оружейные заводы
+UKR_fort_organization = {
+	include = generic_infantry_equipment_organization
+	icon = GFX_idea_generic_infantry_equipment_manufacturer_2
+
+	allowed = {
+		original_tag = UKR
+		has_dlc = "Arms Against Tyranny"
+	}
+
+	initial_trait = {
+		name = UKR_fort_initial_trait
+
+		production_bonus = {
+			production_efficiency_cap_factor = 0.03
+		}
+		equipment_bonus = {
+			reliability = 0.02
+		}
+	}
+
+	# Переход на калибр НАТО
+	add_trait = {
+		token = UKR_mio_trait_nato_calibre
+		name = UKR_mio_trait_nato_calibre
+		icon = GFX_generic_mio_trait_icon_soft_attack
+
+		special_trait_background = yes
+
+		position = { x=0 y=1 }
+		relative_position_id = generic_mio_trait_reinforced_stocks
+
+		any_parent = { generic_mio_trait_reinforced_stocks }
+
+		organization_modifier = {
+			military_industrial_organization_research_bonus = 0.05
+		}
+		equipment_bonus = {
+			soft_attack = 0.04
+			reliability = 0.04
+		}
+
+		ai_will_do = {
+			base = 2
+		}
+	}
+
+	# Модульная винтовка
+	add_trait = {
+		token = UKR_mio_trait_modular_rifle
+		name = UKR_mio_trait_modular_rifle
+		icon = GFX_generic_mio_trait_icon_defense
+
+		special_trait_background = yes
+
+		position = { x=0 y=1 }
+		relative_position_id = generic_mio_trait_semi_auto
+
+		any_parent = { generic_mio_trait_semi_auto }
+
+		equipment_bonus = {
+			defense = 0.04
+			breakthrough = 0.03
+			build_cost_ic = 0.02
+		}
+
+		ai_will_do = {
+			base = 2
+		}
+	}
+}
+
+# Артиллерийские заводы (Краматорск, Киев и другие)
+UKR_artillery_works_organization = {
+	include = generic_artillery_organization
+	icon = GFX_idea_generic_artillery_manufacturer_2
+
+	allowed = {
+		original_tag = UKR
+		has_dlc = "Arms Against Tyranny"
+	}
+
+	initial_trait = {
+		name = UKR_artillery_works_initial_trait
+
+		production_bonus = {
+			production_efficiency_gain_factor = 0.05
+		}
+		equipment_bonus = {
+			soft_attack = 0.03
+		}
+	}
+
+	# Самоходные гаубицы
+	add_trait = {
+		token = UKR_mio_trait_self_propelled_guns
+		name = UKR_mio_trait_self_propelled_guns
+		icon = GFX_generic_mio_trait_icon_soft_attack
+
+		special_trait_background = yes
+
+		position = { x=0 y=1 }
+		relative_position_id = generic_mio_trait_stable_platforms
+
+		any_parent = { generic_mio_trait_stable_platforms }
+
+		limit_to_equipment_type = { artillery_equipment modern_tank_artillery_chassis }
+
+		equipment_bonus = {
+			soft_attack = 0.06
+			breakthrough = 0.04
+			build_cost_ic = 0.03
+		}
+
+		ai_will_do = {
+			base = 2
+		}
+	}
+
+	# Огонь и смена позиции
+	add_trait = {
+		token = UKR_mio_trait_shoot_and_scoot
+		name = UKR_mio_trait_shoot_and_scoot
+		icon = GFX_generic_mio_trait_icon_defense
+
+		special_trait_background = yes
+
+		position = { x=0 y=1 }
+		relative_position_id = generic_mio_trait_mobile_limbers
+
+		any_parent = { generic_mio_trait_mobile_limbers }
+
+		equipment_bonus = {
+			defense = 0.05
+			reliability = 0.03
+		}
+
+		ai_will_do = {
+			base = 2
+		}
+	}
+}
+
+# КБ «Луч» (Киев) и КБ «Южное» (Днепр): ракетные комплексы
+UKR_luch_organization = {
+	include = generic_artillery_organization
+	icon = GFX_idea_generic_artillery_manufacturer_2
+
+	allowed = {
+		original_tag = UKR
+		has_dlc = "Arms Against Tyranny"
+	}
+
+	initial_trait = {
+		name = UKR_luch_initial_trait
+
+		organization_modifier = {
+			military_industrial_organization_research_bonus = 0.08
+		}
+		equipment_bonus = {
+			build_cost_ic = 0.02
+		}
+	}
+
+	# Береговой ракетный комплекс
+	add_trait = {
+		token = UKR_mio_trait_coastal_missile
+		name = UKR_mio_trait_coastal_missile
+		icon = GFX_generic_mio_trait_icon_hard_attack
+
+		special_trait_background = yes
+
+		position = { x=0 y=1 }
+		relative_position_id = generic_mio_trait_big_guns
+
+		any_parent = { generic_mio_trait_big_guns }
+
+		limit_to_equipment_type = { rocket_artillery_equipment motorized_rocket_equipment }
+
+		equipment_bonus = {
+			hard_attack = 0.08
+			ap_attack = 0.06
+			build_cost_ic = 0.04
+		}
+
+		ai_will_do = {
+			base = 2
+		}
+	}
+
+	# Ракетная навигация
+	add_trait = {
+		token = UKR_mio_trait_missile_guidance
+		name = UKR_mio_trait_missile_guidance
+		icon = GFX_generic_mio_trait_icon_breakthrough
+
+		special_trait_background = yes
+
+		position = { x=0 y=1 }
+		relative_position_id = generic_mio_trait_super_charges
+
+		any_parent = { generic_mio_trait_super_charges }
+
+		limit_to_equipment_type = { rocket_artillery_equipment motorized_rocket_equipment }
+
+		organization_modifier = {
+			military_industrial_organization_research_bonus = 0.05
+		}
+		equipment_bonus = {
+			breakthrough = 0.05
+			soft_attack = 0.06
+		}
+
+		ai_will_do = {
+			base = 2
+		}
+	}
+}
+
+# Радиоэлектронные предприятия (Кропивницкий, Киев и другие)
+UKR_radio_electronics_organization = {
+	include = generic_support_equipment_organization
+	icon = GFX_idea_generic_infantry_equipment_manufacturer_1
+
+	allowed = {
+		original_tag = UKR
+		has_dlc = "Arms Against Tyranny"
+	}
+
+	initial_trait = {
+		name = UKR_radio_electronics_initial_trait
+
+		organization_modifier = {
+			military_industrial_organization_research_bonus = 0.05
+		}
+		production_bonus = {
+			production_efficiency_gain_factor = 0.05
+		}
+	}
+
+	# Защищённая полевая связь
+	add_trait = {
+		token = UKR_mio_trait_field_radios
+		name = UKR_mio_trait_field_radios
+		icon = GFX_generic_mio_trait_icon_reliability
+
+		special_trait_background = yes
+
+		position = { x=0 y=1 }
+		relative_position_id = generic_mio_trait_pontoons
+
+		any_parent = { generic_mio_trait_pontoons }
+
+		limit_to_equipment_type = { support_equipment }
+
+		equipment_bonus = {
+			reliability = 0.05
+			build_cost_ic = -0.03
+		}
+
+		ai_will_do = {
+			base = 2
+		}
+	}
+
+	# Радиоэлектронная борьба
+	add_trait = {
+		token = UKR_mio_trait_electronic_warfare
+		name = UKR_mio_trait_electronic_warfare
+		icon = GFX_generic_mio_trait_icon_breakthrough
+
+		special_trait_background = yes
+
+		position = { x=1 y=1 }
+		relative_position_id = generic_mio_trait_private_scientists_program
+
+		any_parent = { generic_mio_trait_private_scientists_program }
+
+		limit_to_equipment_type = { infantry_equipment }
+
+		organization_modifier = {
+			military_industrial_organization_research_bonus = 0.08
+		}
+		equipment_bonus = {
+			breakthrough = 0.04
+			defense = 0.04
+		}
+
+		ai_will_do = {
+			base = 2
+		}
+	}
+}
+
+# Оборонный кластер морских дронов (Одесса, Николаев)
+UKR_sea_drones_organization = {
+	include = generic_escort_ship_organization
+	icon = GFX_idea_generic_naval_manufacturer_1
+
+	allowed = {
+		original_tag = UKR
+		has_dlc = "Arms Against Tyranny"
+	}
+
+	initial_trait = {
+		name = UKR_sea_drones_initial_trait
+
+		production_bonus = {
+			production_capacity_factor = 0.03
+		}
+		equipment_bonus = {
+			build_cost_ic = -0.02
+		}
+	}
+
+	# Безэкипажные катера
+	add_trait = {
+		token = UKR_mio_trait_unmanned_boats
+		name = UKR_mio_trait_unmanned_boats
+		icon = GFX_generic_mio_trait_icon_maximum_speed
+
+		special_trait_background = yes
+
+		position = { x=0 y=1 }
+		relative_position_id = generic_mio_trait_submarine_hunters
+
+		any_parent = { generic_mio_trait_submarine_hunters }
+
+		equipment_bonus = {
+			naval_speed = 0.08
+			build_cost_ic = -0.05
+			max_strength = -0.05
+		}
+
+		ai_will_do = {
+			base = 2
+		}
+	}
+
+	# Рой морских дронов
+	add_trait = {
+		token = UKR_mio_trait_sea_drone_swarm
+		name = UKR_mio_trait_sea_drone_swarm
+		icon = GFX_generic_mio_trait_icon_anti_air_attack
+
+		special_trait_background = yes
+
+		position = { x=0 y=1 }
+		relative_position_id = generic_mio_trait_fleet_escorts
+
+		any_parent = { generic_mio_trait_fleet_escorts }
+
+		equipment_bonus = {
+			anti_air_attack = 0.05
+			surface_detection = 0.1
 			build_cost_ic = -0.03
 		}
 

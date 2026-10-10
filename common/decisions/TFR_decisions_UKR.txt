@@ -1363,9 +1363,12 @@ UKR_covid_response_decisions = {
 	# Реальные даты (карантин с 12.03.2020, границы с 16.03, адаптивный карантин с 22.05 и зоны с 1.08, выходного дня с ноября,
 	# вакцинация с февраля 2021) - в условиях available, чтобы решения не появлялись раньше своего времени.
 
-	# Закрыть границы и авиасообщение
+	# Закрыть аэропорты и границы. Реальная хронология: с 16.03.2020 граница закрыта для иностранцев, с 17.03 остановлено
+	# международное пассажирское сообщение (авиа, поезда, автобусы), возобновление - с середины июня 2020 [ПРОВЕРИТЬ].
+	# Решение запускает процесс: дух UKR_closed_skies на 100 дней, через 12 дней событие о застрявших за границей (ukraine.410),
+	# через 95 дней выбор, когда открывать небо (ukraine.411; при продлении закрытия повторяется).
 	UKR_covid_close_borders = {
-		icon = GFX_decision_eng_trade_unions_demand
+		icon = GFX_decision_generic_fortification
 
 		visible = {
 			has_completed_focus = UKR_address_covid_threat
@@ -1373,29 +1376,31 @@ UKR_covid_response_decisions = {
 		}
 		available = {
 			has_idea = UKR_covid_crisis
-			date > 2020.3.10
+			date > 2020.3.12
 			has_political_power > 20
 		}
 
 		cost = 20
 		fire_only_once = yes
-		days_remove = 45
 
-		modifier = {
-			income_growth_factor = -0.05
-			consumer_goods_factor = 0.03
-		}
-
-		remove_effect = {
+		complete_effect = {
+			add_timed_idea = {
+				idea = UKR_closed_skies
+				days = 100
+			}
+			set_country_flag = UKR_covid_borders_closed
 			modify_timed_idea = {
 				idea = UKR_covid_crisis
 				days = -30
 			}
 			add_war_support = 0.01
-			# Склонность (скрыто)
+			custom_effect_tooltip = UKR_covid_close_borders_tt
+			# Склонность (скрыто) и продолжение цепочки
 			hidden_effect = {
 				add_to_variable = { UKR_authoritarian_lean = 1 }
 				UKR_clamp_leans = yes
+				country_event = { id = ukraine.410 days = 12 }
+				country_event = { id = ukraine.411 days = 95 }
 			}
 		}
 

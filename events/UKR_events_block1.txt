@@ -1390,6 +1390,178 @@ country_event = {
 	}
 }
 
+# --- Закрытие границ: застрявшие за границей (через 12 дней после решения UKR_covid_close_borders) ---
+country_event = {
+	id = ukraine.410
+	title = ukraine.410.t
+	desc = ukraine.410.d
+	picture = GFX_Generic_COVID1
+
+	is_triggered_only = yes
+
+	trigger = {
+		tag = UKR
+		has_country_flag = UKR_covid_borders_closed
+	}
+
+	# Эвакуационные рейсы
+	option = {
+		name = ukraine.410.a
+		set_temp_variable = {
+			var = income_var_temp
+			value = -3
+		}
+		add_income = yes
+		add_stability = 0.02
+		add_popularity = {
+			ideology = social_liberal
+			popularity = 0.01
+		}
+		# Вместе с вернувшимися приходят новые очаги
+		if = {
+			limit = { has_idea = UKR_covid_crisis }
+			modify_timed_idea = {
+				idea = UKR_covid_crisis
+				days = 10
+			}
+		}
+		ai_chance = { factor = 55 }
+	}
+
+	# Автобусы и поезда к границе, затем обсервация
+	option = {
+		name = ukraine.410.b
+		set_temp_variable = {
+			var = income_var_temp
+			value = -1.5
+		}
+		add_income = yes
+		add_stability = 0.01
+		hidden_effect = {
+			add_to_variable = { UKR_authoritarian_lean = 1 }
+			UKR_clamp_leans = yes
+		}
+		ai_chance = { factor = 30 }
+	}
+
+	# Пусть возвращаются сами
+	option = {
+		name = ukraine.410.c
+		add_political_power = 10
+		add_stability = -0.03
+		add_popularity = {
+			ideology = social_liberal
+			popularity = -0.015
+		}
+		hidden_effect = {
+			add_to_variable = { UKR_authoritarian_lean = 1 }
+			UKR_clamp_leans = yes
+		}
+		ai_chance = { factor = 15 }
+	}
+}
+
+# --- Закрытие границ: когда открывать небо (через 95 дней после решения; при продлении закрытия повторяется) ---
+country_event = {
+	id = ukraine.411
+	title = ukraine.411.t
+	desc = ukraine.411.d
+	picture = GFX_Generic_COVID1
+
+	is_triggered_only = yes
+
+	trigger = {
+		tag = UKR
+		has_country_flag = UKR_covid_borders_closed
+		has_country_flag = UKR_COVID_ongoing
+	}
+
+	# Открыть небо полностью
+	option = {
+		name = ukraine.411.a
+		if = {
+			limit = { has_idea = UKR_closed_skies }
+			remove_ideas = UKR_closed_skies
+		}
+		clr_country_flag = UKR_covid_borders_closed
+		set_temp_variable = {
+			var = income_var_temp
+			value = 2
+		}
+		add_income = yes
+		add_stability = 0.02
+		# Вторая волна
+		if = {
+			limit = { has_idea = UKR_covid_crisis }
+			modify_timed_idea = {
+				idea = UKR_covid_crisis
+				days = 25
+			}
+		}
+		ai_chance = { factor = 15 }
+	}
+
+	# Открыть с тестами и самоизоляцией
+	option = {
+		name = ukraine.411.b
+		if = {
+			limit = { has_idea = UKR_closed_skies }
+			remove_ideas = UKR_closed_skies
+		}
+		clr_country_flag = UKR_covid_borders_closed
+		set_temp_variable = {
+			var = income_var_temp
+			value = 1
+		}
+		add_income = yes
+		add_stability = 0.01
+		if = {
+			limit = { has_idea = UKR_covid_crisis }
+			modify_timed_idea = {
+				idea = UKR_covid_crisis
+				days = 10
+			}
+		}
+		hidden_effect = {
+			add_to_variable = { UKR_digital_lean = 1 }
+			UKR_clamp_leans = yes
+		}
+		ai_chance = { factor = 60 }
+	}
+
+	# Продлить закрытие ещё на сто дней
+	option = {
+		name = ukraine.411.c
+		if = {
+			limit = { has_idea = UKR_closed_skies }
+			modify_timed_idea = {
+				idea = UKR_closed_skies
+				days = 100
+			}
+		}
+		else = {
+			add_timed_idea = {
+				idea = UKR_closed_skies
+				days = 100
+			}
+		}
+		add_stability = -0.01
+		if = {
+			limit = { has_idea = UKR_covid_crisis }
+			modify_timed_idea = {
+				idea = UKR_covid_crisis
+				days = -20
+			}
+		}
+		hidden_effect = {
+			add_to_variable = { UKR_authoritarian_lean = 1 }
+			UKR_clamp_leans = yes
+			country_event = { id = ukraine.411 days = 95 }
+		}
+		ai_chance = { factor = 10 }
+	}
+}
+
 # --- Каналы Медведчука (в реальности 2 февраля 2021) ---
 # Цепочка СНБО -> Коломойский -> измена запускается только фокусом UKR_nsdc_sanctions:
 # 310 через 10 дней после фокуса, 312 через 31 день после 310, 311 через 98 дней после 310

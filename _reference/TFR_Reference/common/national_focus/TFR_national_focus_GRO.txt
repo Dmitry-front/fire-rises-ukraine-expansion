@@ -1,0 +1,1163 @@
+focus_tree = {
+	id = grove_street_tree
+	country = {
+		factor = 0
+	}
+	focus = {
+		id = GRO_Address_los_santos
+		icon = GFX_focus_GRO_Address_los_santos
+		x = 0
+		y = 0
+		cost = 2
+		available = {
+		}
+		completion_reward = {
+			set_country_flag = mission_passed_on_flag
+			hidden_effect = {
+				scoped_sound_effect = "mission_passed_sound"
+			}
+		}
+	}
+	focus = {
+		id = GRO_gather_the_homies
+		icon = GFX_focus_GRO_gather_the_homies
+		x = -1
+		y = 1
+		cost = 2
+		prerequisite = {
+			focus = GRO_Address_los_santos
+		}
+		available = {
+		}
+		completion_reward = {
+			set_country_flag = mission_passed_on_flag
+			add_corps_commander_role = {
+				Character = GRO_Sweet
+				traits = {
+					substance_addict
+				}
+				skill = 8
+				attack_skill = 8
+				defense_skill = 8
+				planning_skill = 8
+				logistics_skill = 8
+				legacy_id = -1
+			}
+			add_corps_commander_role = {
+				Character = GRO_ryder
+				traits = {
+					substance_addict
+					trait_reckless
+				}
+				skill = 1
+				attack_skill = 8
+				defense_skill = 1
+				planning_skill = 1
+				logistics_skill = 1
+				legacy_id = -1
+			}
+			add_corps_commander_role = {
+				Character = GRO_Big_Smoke
+				traits = {
+					trickster
+					substance_addict
+				}
+				skill = 1
+				attack_skill = 1
+				defense_skill = 8
+				planning_skill = 1
+				logistics_skill = 1
+				legacy_id = -1
+			}
+			add_manpower = 35683
+			hidden_effect = {
+				scoped_sound_effect = "mission_passed_sound"
+			}
+		}
+	}
+	focus = {
+		id = GRO_mourn_brian_and_mom
+		icon = GFX_focus_GRO_mourn_brian_and_mom
+		x = 1
+		y = 1
+		cost = 2
+		prerequisite = {
+			focus = GRO_Address_los_santos
+		}
+		available = {
+		}
+		completion_reward = {
+			set_country_flag = mission_passed_on_flag
+			custom_effect_tooltip = los_sos
+			hidden_effect = {
+				scoped_sound_effect = "mission_passed_sound"
+				load_oob = LOS_Sosantos_1
+			}
+		}
+	}
+	focus = {
+		id = GRO_everything_is_gangsta_now
+		icon = GFX_focus_GRO_everything_is_gangsta_now
+		x = 0
+		y = 2
+		cost = 2
+		prerequisite = {
+			focus = GRO_mourn_brian_and_mom
+		}
+		prerequisite = {
+			focus = GRO_gather_the_homies
+		}
+		available = {
+		}
+		completion_reward = {
+			set_country_flag = mission_passed_on_flag
+			unlock_decision_tooltip = GRO_recruit_more_gangsters
+			hidden_effect = {
+				scoped_sound_effect = "mission_passed_sound"
+			}
+			mark_focus_tree_layout_dirty = yes
+			custom_effect_tooltip = focus_unlock_tooltip
+		}
+	}
+	focus = {
+		id = GRO_its_working
+		icon = GFX_focus_GRO_its_working
+		x = 16
+		y = 0
+		cost = 3
+		allow_branch = {
+			has_completed_focus = GRO_everything_is_gangsta_now
+			NOT = {
+				has_country_flag = yakuza
+				has_country_flag = brat_dva
+			}
+		}
+		available = {
+			is_ai = no
+		}
+		completion_reward = {
+			set_country_flag = mission_passed_on_flag
+			retire_character = GRO_Big_Smoke
+			retire_character = GRO_ryder
+			hidden_effect = {
+				remove_ideas = {
+					GRO_Ryder_int
+					GRO_Big_Smoke_hog
+				}
+				scoped_sound_effect = "mission_passed_sound"
+			}
+		}
+	}
+	focus = {
+		id = GRO_welcome_to_san_andreas
+		icon = GFX_focus_GRO_welcome_to_san_andreas
+		x = 15
+		y = 1
+		cost = 3
+		available = {
+		}
+		prerequisite = {
+			focus = GRO_its_working
+		}
+		completion_reward = {
+			set_country_flag = mission_passed_on_flag
+			set_temp_variable = {
+				coalition_partner_var_temp = token:market_liberal
+			}
+			add_to_coalition = yes
+			set_temp_variable = {
+				coalition_partner_var_temp = token:social_liberal
+			}
+			add_to_coalition = yes
+			set_temp_variable = {
+				coalition_partner_var_temp = token:social_democrat
+			}
+			add_to_coalition = yes
+			set_temp_variable = {
+				coalition_partner_var_temp = token:libertarian_socialist
+			}
+			add_to_coalition = yes
+			set_temp_variable = {
+				coalition_partner_var_temp = token:conservative
+			}
+			add_to_coalition = yes
+			set_temp_variable = {
+				coalition_partner_var_temp = token:nationalist
+			}
+			add_to_coalition = yes
+			set_temp_variable = {
+				coalition_partner_var_temp = token:fascist
+			}
+			add_to_coalition = yes
+			set_temp_variable = {
+				coalition_partner_var_temp = token:communist
+			}
+			add_to_coalition = yes
+			set_temp_variable = {
+				coalition_partner_var_temp = token:authoritarian_democrat
+			}
+			add_to_coalition = yes
+			hidden_effect = {
+				scoped_sound_effect = "mission_passed_sound"
+			}
+		}
+	}
+	focus = {
+		id = GRO_fuck_tha_police
+		icon = GFX_focus_GRO_fuck_tha_police
+		x = 15
+		y = 3
+		cost = 3
+		available = {
+		}
+		prerequisite = {
+			focus = GRO_its_working
+		}
+		completion_reward = {
+			set_country_flag = mission_passed_on_flag
+			set_temp_variable = {
+				coalition_partner_var_temp = token:authoritarian_democrat
+			}
+			remove_from_coalition = yes
+			hidden_effect = {
+				scoped_sound_effect = "mission_passed_sound"
+			}
+		}
+	}
+	focus = {
+		id = GRO_life_is_a_beach
+		icon = GFX_focus_GRO_life_is_a_beach
+		x = 16
+		y = 2
+		cost = 3
+		available = {
+		}
+		prerequisite = {
+			focus = GRO_its_working
+		}
+		completion_reward = {
+			set_country_flag = mission_passed_on_flag
+			add_corps_commander_role = {
+				Character = GRO_Slidan
+				skill = 2
+				attack_skill = 2
+				defense_skill = 3
+				planning_skill = 1
+				logistics_skill = 2
+				legacy_id = -1
+			}
+			hidden_effect = {
+				scoped_sound_effect = "mission_passed_sound"
+			}
+		}
+	}
+	focus = {
+		id = GRO_quiet_and_standardly
+		icon = GFX_focus_GRO_quiet_and_standardly
+		x = 16
+		y = 4
+		cost = 3
+		available = {
+		}
+		prerequisite = {
+			focus = GRO_life_is_a_beach
+		}
+		prerequisite = {
+			focus = GRO_fuck_tha_police
+			focus = GRO_deport_the_ballas
+		}
+		completion_reward = {
+			set_country_flag = mission_passed_on_flag
+			country_event = mexico.2000
+			unlock_decision_tooltip = GRO_call_russians_again
+			unlock_decision_tooltip = GRO_call_japanese_again
+			hidden_effect = {
+				scoped_sound_effect = "mission_passed_sound"
+			}
+		}
+	}
+	focus = {
+		id = GRO_shining_example_of_gangsta_democracy
+		icon = GFX_focus_GRO_shining_example_of_gangsta_democracy
+		x = 17
+		y = 1
+		cost = 3
+		available = {
+		}
+		prerequisite = {
+			focus = GRO_its_working
+		}
+		completion_reward = {
+			set_country_flag = mission_passed_on_flag
+			add_popularity = {
+				ideology = social_liberal
+				popularity = 15
+			}
+			add_political_power = 1500
+			hidden_effect = {
+				scoped_sound_effect = "mission_passed_sound"
+			}
+		}
+	}
+	focus = {
+		id = GRO_deport_the_ballas
+		icon = GFX_focus_GRO_deport_the_ballas
+		x = 17
+		y = 3
+		cost = 3
+		available = {
+		}
+		prerequisite = {
+			focus = GRO_shining_example_of_gangsta_democracy
+		}
+		completion_reward = {
+			set_country_flag = mission_passed_on_flag
+			add_manpower = -10000
+			add_ideas = GRO_life_without_ballas
+			hidden_effect = {
+				scoped_sound_effect = "mission_passed_sound"
+			}
+		}
+	}
+	focus = {
+		id = GRO_nines_and_aks
+		icon = GFX_focus_GRO_nines_and_aks
+		x = 6
+		y = 0
+		cost = 3
+		allow_branch = {
+			has_completed_focus = GRO_everything_is_gangsta_now
+		}
+		available = {
+			is_ai = no
+		}
+		completion_reward = {
+			set_country_flag = mission_passed_on_flag
+			add_equipment_to_stockpile = {
+				type = infantry_equipment
+				amount = 30000
+				producer = SOV
+			}
+			add_equipment_to_stockpile = {
+				type = infantry_equipment
+				amount = 10000
+				producer = USA
+			}
+			hidden_effect = {
+				scoped_sound_effect = "mission_passed_sound"
+			}
+		}
+	}
+	focus = {
+		id = GRO_call_the_russian_friends
+		icon = GFX_focus_GRO_call_the_russian_friends
+		x = 10
+		y = 0
+		cost = 3
+		allow_branch = {
+			has_completed_focus = GRO_everything_is_gangsta_now
+		}
+		available = {
+			is_ai = no
+		}
+		completion_reward = {
+			set_country_flag = mission_passed_on_flag
+			country_event = mexico.1985
+			add_corps_commander_role = {
+				Character = GRO_Prigga
+				skill = 2
+				attack_skill = 3
+				defense_skill = 2
+				planning_skill = 1
+				logistics_skill = 3
+				legacy_id = -1
+			}
+			add_corps_commander_role = {
+				Character = GRO_Brat2
+				skill = 2
+				attack_skill = 3
+				defense_skill = 2
+				planning_skill = 1
+				logistics_skill = 3
+				legacy_id = -1
+			}
+			hidden_effect = {
+				scoped_sound_effect = "mission_passed_sound"
+			}
+		}
+	}
+	focus = {
+		id = GRO_yay_ka_boom_boom
+		icon = GFX_focus_GRO_yay_ka_boom_boom
+		x = 10
+		y = 1
+		cost = 3
+		prerequisite = {
+			focus = GRO_call_the_russian_friends
+		}
+		available = {
+		}
+		completion_reward = {
+			set_country_flag = mission_passed_on_flag
+			country_event = mexico.1988
+			add_equipment_to_stockpile = {
+				type = infantry_equipment
+				amount = 10000
+				producer = PRC
+			}
+			add_equipment_to_stockpile = {
+				type = support_equipment
+				amount = 2500
+				producer = PRC
+			}
+			add_equipment_to_stockpile = {
+				type = anti_tank_equipment_1
+				amount = 3000
+				producer = PRC
+			}
+			add_equipment_to_stockpile = {
+				type = anti_air_equipment_1
+				amount = 3000
+				producer = PRC
+			}
+			add_equipment_to_stockpile = {
+				type = motorized_equipment
+				amount = 4000
+				producer = PRC
+			}
+			hidden_effect = {
+				scoped_sound_effect = "mission_passed_sound"
+			}
+		}
+	}
+	focus = {
+		id = GRO_absorb_vinewood
+		icon = GFX_focus_GRO_absorb_vinewood
+		x = 6
+		y = 1
+		cost = 3
+		prerequisite = {
+			focus = GRO_nines_and_aks
+		}
+		available = {
+		}
+		completion_reward = {
+			set_country_flag = mission_passed_on_flag
+			every_owned_state = {
+				add_building_construction = {
+					type = industrial_complex
+					level = 10
+					instant_build = yes
+				}
+				add_building_construction = {
+					type = arms_factory
+					level = 10
+					instant_build = yes
+				}
+			}
+			hidden_effect = {
+				scoped_sound_effect = "mission_passed_sound"
+			}
+		}
+	}
+	focus = {
+		id = GRO_our_eastern_allies
+		icon = GFX_focus_GRO_our_eastern_allies
+		x = 6
+		y = 3
+		cost = 3
+		prerequisite = {
+			focus = GRO_absorb_vinewood
+		}
+		available = {
+			any_neighbor_country = {
+				tag = BLA
+			}
+		}
+		completion_reward = {
+			set_country_flag = mission_passed_on_flag
+			annex_country = {
+				target = BLA
+				transfer_troops = yes
+			}
+			hidden_effect = {
+				scoped_sound_effect = "mission_passed_sound"
+			}
+		}
+	}
+	focus = {
+		id = GRO_i_want_to_believe
+		icon = GFX_focus_GRO_i_want_to_believe
+		x = 5
+		y = 2
+		cost = 3
+		prerequisite = {
+			focus = GRO_absorb_vinewood
+		}
+		available = {
+		}
+		completion_reward = {
+			set_country_flag = mission_passed_on_flag
+			country_event = mexico.1987
+			hidden_effect = {
+				scoped_sound_effect = "mission_passed_sound"
+			}
+		}
+	}
+	focus = {
+		id = GRO_axis_tokyo_los_santos
+		icon = GFX_focus_GRO_axis_tokyo_los_santos
+		x = 10
+		y = 3
+		cost = 3
+		prerequisite = {
+			focus = GRO_yay_ka_boom_boom
+		}
+		available = {
+		}
+		mutually_exclusive = {
+			focus = GRO_call_wuzimu
+		}
+		completion_reward = {
+			set_country_flag = mission_passed_on_flag
+			country_event = mexico.1986
+			hidden_effect = {
+				scoped_sound_effect = "mission_passed_sound"
+			}
+		}
+	}
+	focus = {
+		id = GRO_vertical_birds
+		icon = GFX_focus_GRO_vertical_birds
+		x = 11
+		y = 2
+		cost = 3
+		prerequisite = {
+			focus = GRO_yay_ka_boom_boom
+		}
+		available = {
+		}
+		completion_reward = {
+			set_country_flag = mission_passed_on_flag
+			add_equipment_to_stockpile = {
+				type = fighter_equipment_3
+				amount = 2000
+				producer = PRC
+			}
+			hidden_effect = {
+				scoped_sound_effect = "mission_passed_sound"
+			}
+		}
+	}
+	focus = {
+		id = GRO_call_wuzimu
+		icon = GFX_focus_GRO_call_wuzimu
+		x = 12
+		y = 3
+		cost = 3
+		prerequisite = {
+			focus = GRO_vertical_birds
+		}
+		mutually_exclusive = {
+			focus = GRO_axis_tokyo_los_santos
+		}
+		available = {
+		}
+		completion_reward = {
+			set_country_flag = mission_passed_on_flag
+			hidden_effect = {
+				scoped_sound_effect = "mission_passed_sound"
+			}
+		}
+	}
+	focus = {
+		id = GRO_ice_cold_killa
+		icon = GFX_focus_GRO_ice_cold_killa
+		x = 8
+		y = 1
+		cost = 3
+		prerequisite = {
+			focus = GRO_nines_and_aks
+			focus = GRO_call_the_russian_friends
+		}
+		available = {
+		}
+		completion_reward = {
+			set_country_flag = mission_passed_on_flag
+			set_research_slots = 5
+			hidden_effect = {
+				scoped_sound_effect = "mission_passed_sound"
+			}
+		}
+	}
+	focus = {
+		id = GRO_black_project
+		icon = GFX_focus_GRO_black_project
+		x = 7
+		y = 2
+		cost = 3
+		prerequisite = {
+			focus = GRO_absorb_vinewood
+		}
+		prerequisite = {
+			focus = GRO_ice_cold_killa
+		}
+		mutually_exclusive = {
+			focus = GRO_new_model_army
+		}
+		available = {
+			is_ai = no
+			is_ironman = no
+		}
+		completion_reward = {
+			set_country_flag = mission_passed_on_flag
+			add_ideas = GRO_black_project_idea
+			country_event = mexico.1999
+			hidden_effect = {
+				scoped_sound_effect = "mission_passed_sound"
+			}
+		}
+	}
+	focus = {
+		id = GRO_new_model_army
+		icon = GFX_focus_GRO_new_model_army
+		x = 9
+		y = 2
+		cost = 3
+		prerequisite = {
+			focus = GRO_yay_ka_boom_boom
+		}
+		prerequisite = {
+			focus = GRO_ice_cold_killa
+		}
+		available = {
+		}
+		mutually_exclusive = {
+			focus = GRO_black_project
+		}
+		completion_reward = {
+			set_country_flag = mission_passed_on_flag
+			inherit_technology = SOV
+			inherit_technology = PRC
+			inherit_technology = USC
+			inherit_technology = GER
+			add_ideas = GRO_new_model_army
+			hidden_effect = {
+				scoped_sound_effect = "mission_passed_sound"
+			}
+		}
+	}
+	focus = {
+		id = GRO_green_sabre
+		icon = GFX_focus_GRO_green_sabre
+		x = 8
+		y = 3
+		cost = 3
+		prerequisite = {
+			focus = GRO_black_project
+			focus = GRO_new_model_army
+		}
+		available = {
+		}
+		completion_reward = {
+			set_country_flag = mission_passed_on_flag
+			unlock_decision_tooltip = GRO_reunify_america_decision
+			every_other_country = {
+				limit = {
+					NOT = {
+						original_tag = RGA
+					}
+					any_owned_state = {
+						is_core_of = USA
+					}
+				}
+				declare_war_on = {
+					target = RGA
+					type = annex_everything
+				}
+			}
+			every_state = {
+				limit = {
+					has_state_flag = USA_core_state
+				}
+				add_core_of = RGA
+			}
+			hidden_effect = {
+				scoped_sound_effect = "mission_passed_sound"
+			}
+		}
+	}
+	focus = {
+		id = GRO_Kazuma_Coup
+		icon = GFX_focus_GRO_Kazuma_Coup
+		x = 7
+		y = 4
+		cost = 3
+		allow_branch = {
+			has_country_flag = yakuza
+		}
+		available = {
+		}
+		completion_reward = {
+		}
+	}
+	focus = {
+		id = GRO_import_honda_accord
+		icon = GFX_focus_GRO_import_honda_accord
+		x = 6
+		y = 5
+		cost = 3
+		available = {
+		}
+		prerequisite = {
+			focus = GRO_Kazuma_Coup
+		}
+		completion_reward = {
+			add_ideas = {
+				GRO_japanese_brat
+			}
+			add_equipment_to_stockpile = {
+				type = motorized_equipment
+				amount = 3000
+				producer = JAP
+			}
+		}
+	}
+	focus = {
+		id = GRO_install_three_days_weekend
+		icon = GFX_focus_GRO_install_three_days_weekend
+		x = 8
+		y = 5
+		cost = 3
+		available = {
+		}
+		prerequisite = {
+			focus = GRO_Kazuma_Coup
+		}
+		completion_reward = {
+			add_stability = 0.15
+			country_event = mexico.3034
+		}
+	}
+	focus = {
+		id = GRO_direct_rule_from_tokyo
+		icon = GFX_focus_GRO_direct_rule_from_tokyo
+		x = 5
+		y = 6
+		cost = 3
+		available = {
+		}
+		mutually_exclusive = {
+			focus = GRO_exclusive_rights_for_yakuza
+		}
+		prerequisite = {
+			focus = GRO_import_honda_accord
+		}
+		completion_reward = {
+			create_country_leader = {
+				name = japanese_brat
+				picture = "gfx/Leaders/MOL/brat_jap.png"
+				expire = "1965.1.1"
+				ideology = constitutionalist
+			}
+		}
+	}
+	focus = {
+		id = GRO_exclusive_rights_for_yakuza
+		icon = GFX_focus_GRO_exclusive_rights_for_yakuza
+		x = 7
+		y = 6
+		cost = 3
+		available = {
+		}
+		mutually_exclusive = {
+			focus = GRO_direct_rule_from_tokyo
+		}
+		prerequisite = {
+			focus = GRO_import_honda_accord
+			focus = GRO_install_three_days_weekend
+		}
+		completion_reward = {
+			add_ideas = GRO_yakuza_state
+		}
+	}
+	focus = {
+		id = GRO_replace_american_companies
+		icon = GFX_focus_GRO_replace_american_companies
+		x = 9
+		y = 6
+		cost = 3
+		available = {
+		}
+		prerequisite = {
+			focus = GRO_install_three_days_weekend
+		}
+		completion_reward = {
+			add_stability = 0.1
+			add_political_power = 150
+			add_popularity = {
+				ideology = conservative
+				popularity = 100
+			}
+			add_corps_commander_role = {
+				Character = GRO_miyamoto
+				skill = 8
+				attack_skill = 8
+				defense_skill = 8
+				planning_skill = 8
+				logistics_skill = 8
+				legacy_id = -1
+			}
+		}
+	}
+	focus = {
+		id = GRO_cool_america_for_cool_japan
+		icon = GFX_focus_GRO_cool_america_for_cool_japan
+		x = 4
+		y = 7
+		cost = 3
+		available = {
+		}
+		prerequisite = {
+			focus = GRO_direct_rule_from_tokyo
+			focus = GRO_exclusive_rights_for_yakuza
+		}
+		prerequisite = {
+			focus = GRO_replace_american_companies
+		}
+		completion_reward = {
+			add_ideas = {
+				GRO_kasane_teto
+			}
+		}
+	}
+	focus = {
+		id = GRO_project_megagandon
+		icon = GFX_focus_GRO_project_megagandon
+		x = 6
+		y = 7
+		cost = 3
+		available = {
+		}
+		prerequisite = {
+			focus = GRO_direct_rule_from_tokyo
+			focus = GRO_exclusive_rights_for_yakuza
+		}
+		prerequisite = {
+			focus = GRO_replace_american_companies
+		}
+		completion_reward = {
+			add_ideas = {
+				GRO_megagandon
+			}
+			country_event = mexico.3030
+		}
+	}
+	focus = {
+		id = GRO_japanize_america
+		icon = GFX_focus_GRO_japanize_america
+		x = 8
+		y = 7
+		cost = 3
+		available = {
+		}
+		prerequisite = {
+			focus = GRO_direct_rule_from_tokyo
+			focus = GRO_exclusive_rights_for_yakuza
+		}
+		prerequisite = {
+			focus = GRO_replace_american_companies
+		}
+		mutually_exclusive = {
+			focus = GRO_classic_american_moe
+		}
+		completion_reward = {
+			add_ideas = {
+				GRO_fumo_reimu
+				GRO_fumo_marisa
+			}
+		}
+	}
+	focus = {
+		id = GRO_classic_american_moe
+		icon = GFX_focus_GRO_classic_american_moe
+		x = 10
+		y = 7
+		cost = 3
+		available = {
+		}
+		prerequisite = {
+			focus = GRO_direct_rule_from_tokyo
+			focus = GRO_exclusive_rights_for_yakuza
+		}
+		prerequisite = {
+			focus = GRO_replace_american_companies
+		}
+		mutually_exclusive = {
+			focus = GRO_japanize_america
+		}
+		completion_reward = {
+			add_ideas = {
+				GRO_Blu_Rivers
+				GRO_Virginia_Baker
+			}
+		}
+	}
+	focus = {
+		id = GRO_back_to_america
+		icon = GFX_focus_GRO_back_to_america
+		x = 3
+		y = 4
+		cost = 3
+		allow_branch = {
+			has_country_flag = brat_dva
+		}
+		available = {
+		}
+		completion_reward = {
+		}
+	}
+	focus = {
+		id = GRO_the_land_of_setting_sun
+		icon = GFX_focus_GRO_the_land_of_setting_sun
+		x = 7
+		y = 8
+		cost = 3
+		available = {
+		}
+		prerequisite = {
+			focus = GRO_japanize_america
+			focus = GRO_classic_american_moe
+		}
+		prerequisite = {
+			focus = GRO_project_megagandon
+			focus = GRO_cool_america_for_cool_japan
+		}
+		completion_reward = {
+			JAP = {
+				puppet = {
+					target = RGA
+					end_wars = no
+				}
+			}
+		}
+	}
+	focus = {
+		id = GRO_liberty_city_boombox
+		icon = GFX_focus_GRO_liberty_city_boombox
+		x = 1
+		y = 5
+		cost = 3
+		prerequisite = {
+			focus = GRO_back_to_america
+		}
+		available = {
+		}
+		completion_reward = {
+			add_ideas = {
+				GRO_tikhiy_den
+			}
+			add_corps_commander_role = {
+				Character = GRO_dan
+				traits = {
+					silent_hunter
+				}
+				skill = 8
+				attack_skill = 8
+				defense_skill = 8
+				planning_skill = 8
+				logistics_skill = 8
+				legacy_id = -1
+			}
+			358 = {
+				transfer_state_to = RGA
+			}
+			918 = {
+				transfer_state_to = RGA
+			}
+		}
+	}
+	focus = {
+		id = GRO_russian_hollywood
+		icon = GFX_focus_GRO_russian_hollywood
+		x = 3
+		y = 5
+		cost = 3
+		prerequisite = {
+			focus = GRO_back_to_america
+		}
+		mutually_exclusive = {
+			focus = GRO_new_brighton_beach
+		}
+		available = {
+		}
+		completion_reward = {
+			add_ideas = {
+				GRO_korol_i_shut
+				GRO_nevsky
+				GRO_stas_baretski
+				GRO_brekotkin
+			}
+		}
+	}
+	focus = {
+		id = GRO_new_brighton_beach
+		icon = GFX_focus_GRO_new_brighton_beach
+		x = 5
+		y = 5
+		cost = 3
+		prerequisite = {
+			focus = GRO_back_to_america
+		}
+		mutually_exclusive = {
+			focus = GRO_russian_hollywood
+		}
+		available = {
+		}
+		completion_reward = {
+			add_ideas = {
+				GRO_nico_bellic
+				GRO_roman_bellic
+				GRO_1klas
+				GRO_rozhkov
+			}
+		}
+	}
+	focus = {
+		id = GRO_second_gas_war
+		icon = GFX_focus_GRO_second_gas_war
+		x = 2
+		y = 6
+		cost = 3
+		prerequisite = {
+			focus = GRO_liberty_city_boombox
+		}
+		prerequisite = {
+			focus = GRO_russian_hollywood
+			focus = GRO_new_brighton_beach
+		}
+		available = {
+		}
+		completion_reward = {
+			send_embargo = GER
+			send_embargo = FRA
+			send_embargo = ITA
+			send_embargo = PLD
+			send_embargo = UKR
+			send_embargo = ENG
+		}
+	}
+	focus = {
+		id = GRO_introduce_the_cyrillics
+		icon = GFX_focus_GRO_introduce_the_cyrillics
+		x = 4
+		y = 6
+		cost = 1
+		prerequisite = {
+			focus = GRO_liberty_city_boombox
+		}
+		prerequisite = {
+			focus = GRO_russian_hollywood
+			focus = GRO_new_brighton_beach
+		}
+		available = {
+		}
+		completion_reward = {
+			add_stability = 0.1
+			add_political_power = 150
+			add_popularity = {
+				ideology = authoritarian_democrat
+				popularity = 100
+			}
+		}
+	}
+	focus = {
+		id = GRO_resell_alaska
+		icon = GFX_focus_GRO_resell_alaska
+		x = 0
+		y = 7
+		cost = 3
+		prerequisite = {
+			focus = GRO_second_gas_war
+		}
+		mutually_exclusive = {
+			focus = GRO_brother_state
+		}
+		available = {
+		}
+		completion_reward = {
+			463 = {
+				transfer_state_to = SOV
+			}
+		}
+	}
+	focus = {
+		id = GRO_brother_state
+		icon = GFX_focus_GRO_brother_state
+		x = 2
+		y = 7
+		cost = 3
+		prerequisite = {
+			focus = GRO_second_gas_war
+		}
+		mutually_exclusive = {
+			focus = GRO_resell_alaska
+		}
+		available = {
+			is_ai = NO
+		}
+		completion_reward = {
+			SOV = {
+				add_to_faction = RGA
+			}
+		}
+	}
+	focus = {
+		id = GRO_install_state_religion
+		icon = GFX_focus_GRO_install_state_religion
+		x = 4
+		y = 7
+		cost = 3
+		prerequisite = {
+			focus = GRO_introduce_the_cyrillics
+		}
+		available = {
+		}
+		completion_reward = {
+			add_ideas = GRO_State_Orthodoxy
+		}
+	}
+	focus = {
+		id = GRO_v_chem_sila
+		icon = GFX_focus_GRO_v_chem_sila
+		x = 6
+		y = 7
+		cost = 3
+		prerequisite = {
+			focus = GRO_introduce_the_cyrillics
+		}
+		available = {
+		}
+		completion_reward = {
+			country_event = mexico.2001
+		}
+	}
+	focus = {
+		id = GRO_brat_three
+		icon = GFX_focus_GRO_brat_three
+		x = 3
+		y = 8
+		cost = 3
+		prerequisite = {
+			focus = GRO_resell_alaska
+			focus = GRO_brother_state
+			focus = GRO_v_chem_sila
+			focus = GRO_install_state_religion
+		}
+		available = {
+		}
+		completion_reward = {
+			country_event = mexico.3000
+		}
+	}
+}

@@ -1,0 +1,569 @@
+﻿	capital = 1379
+
+	#oob = "RAJ_2020"
+	if = {
+		limit = {
+			NOT = {
+				has_dlc = "No Step Back"
+			}
+		}
+		set_oob = "RAJ_2020"
+	}
+
+	if = {
+		limit = {
+			has_dlc = "No Step Back"
+		}
+		set_oob = "RAJ_2020_nsb"
+	}
+	if = {
+		limit = { has_dlc = "Man the Guns" }
+			set_naval_oob = "RAJ_2000_naval_mtg"
+		else = {
+			set_naval_oob = "RAJ_2000_naval_legacy"
+		}
+	}
+	if = {
+		limit = { has_dlc = "By Blood Alone" }
+			set_air_oob = "RAJ_2020_air_bba"
+		else = {
+			set_air_oob = "RAJ_2020_air_legacy"
+		}
+	}
+	
+	set_research_slots = 3
+	set_convoys = 700
+	set_stability = 0.5
+	set_country_flag = head_of_gov_ui_enabled
+
+
+	set_technology = {
+		## Infantry ##
+		
+		infantry_weapons1 = 1
+		infantry_weapons2 = 1
+		motorised_infantry = 1
+		infantry_rifle_upgrade = 1
+		support_weapons = 1
+		support_weapons2 = 1
+		night_vision = 1
+		body_armor = 1
+		camouflage = 1
+		tech_mountaineers = 1
+		tech_rangers = 1
+		paratroopers = 1
+		basic_train = 1
+		
+		## Support Companies ##
+		tech_support = 1
+		tech_engineers = 1
+		tech_recon = 1
+		tech_military_police = 1
+		tech_maintenance_company = 1
+		tech_field_hospital = 1
+		tech_logistics_company = 1
+		tech_signal_company = 1
+		
+		## Armor ##
+		mechanised_infantry1 = 1
+		light_mechanized_infantry1 = 1
+		amphibious_mechanized_infantry1 = 1
+		
+		## Artillery ##
+		gw_artillery = 1
+		interwar_antitank = 1
+		interwar_antiair = 1
+		self_propelled_aa1 = 1
+		interwar_artillery = 1
+		sp_artillery1 = 1
+		
+		## Air ##
+		attack_helicopter_1 = 1
+		utility_helicopter_1 = 1
+		
+		## Engineering ##
+		electronic_mechanical_engineering = 1
+		power_plants = 1
+		nuclear_reactors = 1
+		#nukes = 1
+		
+		## Industry ##
+		basic_machine_tools = 1
+		
+		## Doctrines ##
+		#fleet_in_being = 1
+		#formation_flying = 1
+	}
+	
+	if = {
+		limit = { has_dlc = "By Blood Alone" }
+			set_technology = {
+				aa_lmg = 1
+				aa_cannon_1 = 1
+				aa_hmg = 1
+				engines_1 = 1
+				engines_2 = 1
+				early_bombs = 1
+				guided_bombs = 1
+				aircraft_construction = 1
+				iw_small_airframe = 1
+				basic_small_airframe = 1
+				iw_medium_airframe = 1
+				basic_medium_airframe = 1
+				iw_large_airframe = 1
+			}
+		else = {
+			set_technology = {
+				CAS1 = 1
+				CAS2 = 1
+				cv_CAS1 = 1
+				cv_CAS2 = 1
+				fighter1 = 1
+				fighter2 = 1
+				#fighter3 = 1
+				cv_fighter1 = 1
+				cv_fighter2 = 1
+				naval_bomber1 = 1
+				naval_bomber2 = 1
+				strategic_bomber1 = 1
+				tactical_bomber1 = 1
+				transport_plane2 = 1
+			}
+		}
+	}
+	
+	if = {
+		limit = {
+			NOT = { has_dlc = "No Step Back" }
+		}
+		set_technology = {
+			main_battle_tank1 = 1
+			main_battle_tank2 = 1
+			main_battle_tank3 = 1
+			light_tank1 = 1
+			amphibious_tank1 = 1
+			amphibious_mechanized_infantry1 = 1
+		}
+	}
+	if = {
+		limit = {
+			has_dlc = "No Step Back"
+		}
+		set_technology = {
+			gwtank_chassis = 1
+			basic_light_tank_chassis = 1
+			basic_medium_tank_chassis = 1
+			engine_tech_1 = 1
+		}
+	}
+
+	if = {
+		limit = { not = { has_dlc = "Man the Guns" } }
+		set_technology = {
+			early_destroyer = 1
+			basic_destroyer = 1
+			early_light_cruiser = 1
+			basic_light_cruiser = 1
+			early_heavy_cruiser = 1
+			basic_heavy_cruiser = 1
+			improved_heavy_cruiser = 1
+			early_carrier = 1
+			early_submarine = 1
+			basic_submarine = 1
+			transport = 1
+		}
+	}
+	if = {
+		limit = { has_dlc = "Man the Guns" }
+		set_technology = {
+			early_ship_hull_light = 1
+			basic_ship_hull_light = 1
+			early_ship_hull_cruiser = 1
+			basic_ship_hull_cruiser = 1
+			improved_ship_hull_cruiser = 1
+			early_ship_hull_carrier = 1
+			early_ship_hull_submarine = 1
+			basic_ship_hull_submarine = 1
+			smoke_generator = 1
+			sonar = 1
+			basic_depth_charges = 1
+			improved_airplane_launcher = 1
+			basic_cruiser_armor_scheme = 1
+			basic_torpedo = 1
+			basic_battery = 1
+			basic_light_battery = 1
+			basic_medium_battery = 1
+			basic_heavy_battery = 1
+			#basic_secondary_battery = 1
+			mtg_transport = 1
+			basic_naval_mines = 1
+			submarine_mine_laying = 1
+		}
+	}
+
+	#give_guarantee = SRL
+	#give_guarantee = BHU
+	#give_guarantee = NEP
+	
+	news_event = { id = news.173 days = 490 }
+	RAJ = {
+		country_event = {
+			id = RAJ.18
+			days = 929
+		}
+	}
+
+	add_ideas = {
+		RAJ_gdp_fix
+		RAJ_personal_expense_factor_fix
+		RAJ_very_high_population_density
+		#National Spirits
+		commonwealth_of_nations_member
+		RAJ_south_asian_tiger_idea
+		RAJ_religious_sectarianism_idea
+		RAJ_remnant_caste_system_idea
+		RAJ_transitioning_economy_idea
+		RAJ_rising_hindu_nationalism_idea
+		#Laws
+		mass_consumerism
+		higher_trade
+		medium_interest_rates
+		low_safety
+		medium_supervision
+		medium_racial_integration
+		general_exemptions
+		high_education
+		high_police
+		low_academic
+		medium_society
+		high_taxes
+		low_poverty
+	}
+
+	recruit_character = RAJ_Ram_Nath_Kovind
+	recruit_character = RAJ_Droupadi_Murmu
+	recruit_character = RAJ_Modi	
+	recruit_character = RAJ_Mohan_Bhagwat	
+	recruit_character = RAJ_Anil_Chauhan 
+	recruit_character = RAJ_Rahul_Ghandi
+	recruit_character = RAJ_Eknath_Shinde 
+	recruit_character = RAJ_Suchindra_Kumar
+	recruit_character = RAJ_Amardeep_Singh_Bhinder
+	recruit_character = RAJ_Manoj_Mukund_Naravane
+	recruit_character = RAJ_Upendra_Dwivedi
+	recruit_character = RAJ_Manoj_Pande
+	recruit_character = RAJ_Yogendra_Dimri
+	recruit_character = RAJ_Karambir_Singh
+	recruit_character = RAJ_Sanjay_Jasjit_Singh
+	recruit_character = RAJ_Amar_Preet_Singh
+	recruit_character = RAJ_Manoj_Kumar_Katiyar
+	recruit_character = RAJ_Nav_Kumar_Khanduri
+	recruit_character = RAJ_Anindya_Sengupta
+	recruit_character = RAJ_Johnson_P_Mathew
+	recruit_character = RAJ_Manjinder_Singh
+	recruit_character = RAJ_Devendra_Sharma
+	recruit_character = RAJ_Rana_Pratap_Kalita
+	recruit_character = RAJ_Pushpendra_Pal_Singh
+	recruit_character = RAJ_Devendra_Pratap_Pandey
+	recruit_character = RAJ_Ajai_Singh
+	recruit_character = RAJ_Ram_Chander_Tiwari
+	recruit_character = RAJ_Amardeep_Singh_Aujla
+	recruit_character = RAJ_Dhiraj_Seth
+	recruit_character = RAJ_Manish_Khanna
+	recruit_character = RAJ_Tejinder_Singh
+	recruit_character = RAJ_Ashutosh_Dixit
+	recruit_character = RAJ_Balakrishnan_Manikantan
+	recruit_character = RAJ_Narmdeshwar_Tiwari
+	recruit_character = RAJ_Dinesh_Kumar_Tripathi
+	recruit_character = RAJ_Vennam_Srinivas
+	recruit_character = RAJ_A_N_Pramod
+	recruit_character = RAJ_Krishna_Swaminathan
+	recruit_character = RAJ_Rajesh_Pendharkar
+	recruit_character = RAJ_Atul_Anand
+
+	set_politics = {	
+		ruling_party = conservative
+		last_election = "2017.7.17"
+		election_frequency = 60
+		elections_allowed = yes
+	}
+
+	set_popularities = {
+		authoritarian_democrat = 7
+		conservative = 43.9
+		market_liberal = 3
+		social_liberal = 22
+		social_democrat = 15.7
+		communist = 2.4
+		libertarian_socialist = 6
+	}
+
+	### VARIANTS ###
+	# 2020 Start #
+	if = {
+		limit = { not = { has_dlc = "Man the Guns" } }
+		
+	}
+	if = {
+		limit = { has_dlc = "Man the Guns" }
+		## Corvettes ##
+		create_equipment_variant = { #Corvette 1
+			name = "Veer-class"
+			type = ship_hull_light_1
+			parent_version = 0
+			modules = {
+				fixed_ship_battery_slot = ship_light_battery_1
+				fixed_ship_anti_air_slot = ship_anti_air_1
+				fixed_ship_fire_control_system_slot = ship_fire_control_system_0
+				fixed_ship_radar_slot = empty
+				fixed_ship_engine_slot = light_ship_engine_1
+				fixed_ship_torpedo_slot = ship_torpedo_1
+				mid_1_custom_slot = ship_torpedo_1
+				rear_1_custom_slot = ship_depth_charge_1
+			}
+			obsolete = yes
+		}
+		create_equipment_variant = { #Corvette 2
+			name = "Khukri-class"
+			type = ship_hull_light_2
+			parent_version = 0
+			modules = {
+				fixed_ship_battery_slot = ship_light_battery_2
+				fixed_ship_anti_air_slot = ship_anti_air_1
+				fixed_ship_fire_control_system_slot = ship_fire_control_system_0
+				fixed_ship_radar_slot = empty
+				fixed_ship_engine_slot = light_ship_engine_2
+				fixed_ship_torpedo_slot = ship_torpedo_1
+				mid_1_custom_slot = ship_torpedo_1
+				rear_1_custom_slot = ship_depth_charge_1
+			}
+			obsolete = no
+		}
+		## Frigates ##
+		create_equipment_variant = { #Frigate 1
+			name = "Nilgiri-class"
+			type = ship_hull_cruiser_1
+			parent_version = 0
+			modules = {
+				fixed_ship_battery_slot = ship_medium_battery_1
+				fixed_ship_anti_air_slot = ship_anti_air_1
+				fixed_ship_fire_control_system_slot = ship_fire_control_system_0
+				fixed_ship_radar_slot = empty
+				fixed_ship_engine_slot = cruiser_ship_engine_1
+				fixed_ship_armor_slot = ship_armor_cruiser_1
+				fixed_ship_secondaries_slot = ship_secondaries_1
+				mid_1_custom_slot = ship_airplane_launcher_1
+				mid_2_custom_slot = ship_anti_air_1
+				rear_1_custom_slot = empty
+			}
+			obsolete = yes
+		}
+		create_equipment_variant = { #Frigate 2
+			name = "Godavari-class"
+			type = ship_hull_cruiser_2
+			parent_version = 0
+			modules = {
+				fixed_ship_battery_slot = ship_light_medium_battery_2
+				fixed_ship_anti_air_slot = ship_anti_air_1
+				fixed_ship_fire_control_system_slot = ship_fire_control_system_0
+				fixed_ship_radar_slot = empty
+				fixed_ship_engine_slot = cruiser_ship_engine_2
+				fixed_ship_armor_slot = ship_armor_cruiser_2
+				fixed_ship_secondaries_slot = ship_secondaries_1
+				front_1_custom_slot = ship_light_medium_battery_2
+				mid_1_custom_slot = ship_airplane_launcher_1
+				mid_2_custom_slot = ship_anti_air_1
+				rear_1_custom_slot = empty
+			}
+			obsolete = no
+		}
+		## Destroyers ##
+		create_equipment_variant = { #Destroyer 2
+			name = "Rajput-class"
+			type = ship_hull_cruiser_2
+			parent_version = 0
+			modules = {
+				fixed_ship_battery_slot = ship_medium_battery_2
+				fixed_ship_anti_air_slot = ship_anti_air_1
+				fixed_ship_fire_control_system_slot = ship_fire_control_system_0
+				fixed_ship_radar_slot = ship_radar_1
+				fixed_ship_engine_slot = cruiser_ship_engine_2
+				fixed_ship_armor_slot = ship_armor_cruiser_2
+				mid_1_custom_slot = ship_airplane_launcher_1
+				mid_2_custom_slot = ship_anti_air_1
+				rear_1_custom_slot = empty
+			}
+			obsolete = yes
+		}
+		create_equipment_variant = {
+			name = "Delhi-class"
+			type = ship_hull_cruiser_3
+			parent_version = 0
+			modules = {
+				fixed_ship_battery_slot = ship_medium_battery_2
+				fixed_ship_anti_air_slot = ship_anti_air_1
+				fixed_ship_fire_control_system_slot = ship_fire_control_system_0
+				fixed_ship_radar_slot = ship_radar_1
+				fixed_ship_engine_slot = cruiser_ship_engine_2
+				fixed_ship_armor_slot = ship_armor_cruiser_2
+				mid_1_custom_slot = ship_airplane_launcher_1
+				mid_2_custom_slot = ship_anti_air_1
+				rear_1_custom_slot = empty
+			}
+		}
+		## Carriers ##
+		create_equipment_variant = { #Carrier 1 #Not needed for variant, just use type
+			name = "Centaur-class"
+			type = ship_hull_carrier_conversion_bb
+			parent_version = 0
+			modules = {
+				fixed_ship_deck_slot_1 = ship_deck_space
+				fixed_ship_deck_slot_2 = ship_deck_space
+				fixed_ship_anti_air_slot = empty
+				fixed_ship_radar_slot = empty
+				fixed_ship_engine_slot = carrier_ship_engine_1
+				fixed_ship_secondaries_slot = empty
+				
+			}
+			obsolete = no
+		}
+		## Submarines ##
+		create_equipment_variant = { #Diesel Sub 1
+			name = "Kalvari-class"
+			type = ship_hull_submarine_1
+			parent_version = 0
+			modules = {
+				fixed_ship_torpedo_slot = ship_torpedo_sub_1
+				fixed_ship_engine_slot = sub_ship_engine_1
+				rear_1_custom_slot = empty
+			}
+			obsolete = yes
+		}
+		create_equipment_variant = { #Nuclear Sub 2
+			name = "Sindhughosh-class"
+			type = ship_hull_submarine_2
+			parent_version = 0
+			modules = {
+				fixed_ship_torpedo_slot = ship_torpedo_sub_2
+				fixed_ship_engine_slot = sub_ship_engine_2
+				rear_1_custom_slot = ship_torpedo_sub_2
+			}
+			obsolete = no
+		}
+	}
+	
+	if = {
+		limit = {
+			has_dlc = "No Step Back"
+		}
+		create_equipment_variant = {
+			name = "T-90S"
+			type = modern_tank_chassis_1
+			parent_version = 0
+			modules = {
+				main_armament_slot = tank_heavy_cannon
+				turret_type_slot = tank_3_man_tank_turret
+				suspension_type_slot = tank_torsion_bar_suspension
+				armor_type_slot = tank_welded_armor
+				engine_type_slot = tank_diesel_engine
+				special_type_slot_1 = tank_radio_1
+				special_type_slot_2 = smoke_launchers
+				special_type_slot_3 = auto_loader
+				special_type_slot_4 = sloped_armor
+			}
+			upgrades = {
+				tank_nsb_engine_upgrade = 8
+				tank_nsb_armor_upgrade = 0
+			}
+			icon = "gfx/interface/technologies/armor/MBT_2012_T-90.png"
+		}
+		create_equipment_variant = {
+			name = "BRM-3K"
+			type = light_tank_chassis_1
+			parent_version = 0
+			modules = {
+				main_armament_slot = tank_auto_cannon
+				turret_type_slot = tank_light_two_man_tank_turret
+				suspension_type_slot = tank_christie_suspension
+				armor_type_slot = tank_riveted_armor
+				engine_type_slot = tank_gasoline_engine
+				special_type_slot_1 = tank_radio_1
+				special_type_slot_2 = extra_ammo_storage
+				special_type_slot_3 = smoke_launchers
+				special_type_slot_4 = secondary_turret_small_cannon
+			}
+			upgrades = {
+				tank_nsb_engine_upgrade = 3
+				tank_nsb_armor_upgrade = 2
+			}
+			icon = "gfx/interface/technologies/armor/LT_2000_BRM_3k.png"
+		}
+	}
+
+if = {
+	limit = {
+		has_dlc = "By Blood Alone"
+	}
+	create_equipment_variant = {
+		name = "Mirage 2000"
+		type = small_plane_airframe_1
+		modules = {
+			fixed_main_weapon_slot = heavy_mg_4x
+			fixed_auxiliary_weapon_slot_1 = heavy_mg_4x
+			fixed_auxiliary_weapon_slot_2 = light_mg_4x
+			engine_type_slot = engine_2_1x
+			special_type_slot_1 = radio_navigation_2
+		}
+		icon = "GFX_FRA_fighter1_medium"
+	}
+
+	create_equipment_variant = {
+		name = "MiG-21"
+		type = small_plane_cas_airframe_0
+		model = "SOV_fighter_equipment_1_entity"
+		modules = {
+			fixed_main_weapon_slot = light_mg_4x
+			fixed_auxiliary_weapon_slot_1 = bomb_locks
+			engine_type_slot = engine_1_1x
+			special_type_slot_1 = empty
+			special_type_slot_2 = empty	
+		}
+		icon = "GFX_SOV_fighter1_medium"
+	}
+	create_equipment_variant = {
+		name = "F-11 fighter"
+		type = small_plane_airframe_0
+		modules = {
+			fixed_main_weapon_slot = heavy_mg_4x
+			fixed_auxiliary_weapon_slot_1 = bomb_locks
+			fixed_auxiliary_weapon_slot_2 = empty
+			engine_type_slot = engine_1_1x
+			special_type_slot_1 = empty
+		}
+	}
+	create_equipment_variant = {
+		name = "Su-30MKI"
+		type = small_plane_airframe_1
+		modules = {
+			fixed_main_weapon_slot = heavy_mg_4x
+			fixed_auxiliary_weapon_slot_1 = light_mg_4x
+			fixed_auxiliary_weapon_slot_2 = light_mg_4x
+			engine_type_slot = engine_1_2x
+			special_type_slot_1 = bomb_sights_1
+			special_type_slot_2 = empty
+		}
+		icon = "GFX_PRC_Su30MKK"
+	}
+	create_equipment_variant = {
+		name = "Mig-29"
+		type = small_plane_airframe_1
+		modules = {
+			fixed_main_weapon_slot = heavy_mg_4x
+			fixed_auxiliary_weapon_slot_1 = heavy_mg_4x
+			fixed_auxiliary_weapon_slot_2 = light_mg_4x
+			engine_type_slot = engine_1_2x
+			special_type_slot_1 = bomb_sights_1
+		}
+		icon = "GFX_SOV_fighter2_medium"
+	}
+}

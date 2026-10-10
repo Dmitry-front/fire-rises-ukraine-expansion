@@ -1,0 +1,307 @@
+JAP_great_asian_war = {
+    icon = GFX_desicion_category_jsdf
+    visible_when_empty = yes
+
+    allowed = {
+		OR = {
+			tag = JAP
+			tag = AST
+			tag = RAJ
+			tag = CHI
+		}
+    }
+    
+    visible = {
+		OR = {
+			has_global_flag = GAW_soon
+			has_global_flag = pan_asian_war_ongoing
+		}
+        #is_debug = yes
+		NOT = {
+			has_country_flag = GAW_disabled
+		}
+    }
+    priority = 99
+}
+
+decisions_JAP = {
+	icon = japan
+
+	allowed = {
+		original_tag = JAP
+	}
+}
+ 
+JAP_national_diet_category = {
+    icon = GFX_desicion_category_japanese_diet_icon
+	#picture = GFX_desicion_category_japanese_diet
+	visible_when_empty = yes
+	priority = 10
+	
+	visible = {
+	    original_tag = JAP
+		NOT = {
+			has_country_flag = JAP_udf_flag
+		}
+	}
+	
+	allowed = {
+	    original_tag = JAP
+	}
+}
+ 
+JAP_japanese_japan_category = {
+    icon = GFX_desicion_category_japanese_diet_icon
+	#picture = GFX_desicion_category_japanese_diet
+	visible_when_empty = yes
+	priority = 10
+	
+	visible = {
+	    original_tag = JAP
+		has_completed_focus = JAP_great_japan_cool
+	}
+	
+	allowed = {
+	    original_tag = JAP
+	}
+}
+  
+JAP_new_japan_reforms_category = {
+    icon = GFX_desicion_category_japanese_diet_icon
+	#picture = GFX_desicion_category_japanese_diet
+	visible_when_empty = no
+	priority = 10
+	
+	visible = {
+	    original_tag = JAP
+		has_country_flag = JAP_only_liberal_ministers
+	}
+	
+	allowed = {
+	    original_tag = JAP
+	}
+}
+
+JAP_ldp_party_category = {
+	icon = GFX_JAP_desicion_category_ldp
+	picture = GFX_JAP_ldp_party
+	priority = 7
+	scripted_gui = TFR_JAP_ldp_info
+	visible = {
+		tag = JAP
+		OR = {
+			has_government = authoritarian_democrat
+			has_government = conservative			
+		}
+		NOT = {
+			has_country_flag = JAP_coup_president
+		}
+	}
+	allowed = {
+	    original_tag = JAP
+	}
+	visible_when_empty = yes
+}
+ 
+JAP_japan_economy_category = {
+	icon = GFX_JAP_desicion_category_ldp
+	priority = 6
+	visible = {
+		has_completed_focus = JAP_leap_to_prosperity
+	}
+	allowed = {
+	    original_tag = JAP
+	}
+	visible_when_empty = yes
+}
+
+JAP_oil_crisis_cat = {
+	icon = GFX_JAP_oil_crisis_cat
+	picture = GFX_decision_cat_PRC_oil_crisis_picture
+	priority = 6
+	visible = {
+		OR = {
+			has_idea = JAP_oil_crash1
+			has_idea = JAP_oil_crash2
+			has_idea = JAP_oil_crash3
+		}
+	}
+	allowed = {
+	    original_tag = JAP
+	}
+	visible_when_empty = yes
+}
+
+JAP_foreign_policy_cat = {
+    icon = japan
+	visible_when_empty = yes
+	priority = 5
+	scripted_gui = TFR_asian_cold_war_gui
+	visible = {
+	    original_tag = JAP
+		OR = {
+			has_completed_focus = JAP_new_leader_of_the_free_world
+			has_completed_focus = JAP_defeat_challenge_chinese_dominance
+		}
+		NOT = {
+			has_global_flag = pan_asian_war_ongoing
+			has_global_flag = PRC_chinese_gaw_victory_global
+			has_global_flag = PRC_japanese_gaw_victory_global
+		}
+	}
+	
+	allowed = {
+	    original_tag = JAP
+	}
+}
+
+JAP_PEC_category = {
+	icon = GFX_JAP_PEC_category
+	priority = 4
+	visible = {
+		tag = JAP
+		OR = {
+			has_completed_focus = JAP_own_economic_sphere
+			has_completed_focus = JAP_defeat_own_economic_sphere
+		}
+	}
+	allowed = {
+	    original_tag = JAP
+	}
+	visible_when_empty = yes
+}
+
+JAP_coronavirus_category = {
+    icon = japan
+	visible_when_empty = no
+	priority = 3
+
+	visible = {
+		OR = {
+			has_idea = JAP_covid_idea_1
+			has_idea = JAP_covid_idea_2
+			has_idea = JAP_covid_idea_3
+			has_idea = JAP_covid_idea_4
+			has_idea = JAP_covid_idea_5
+		}
+	}
+
+	allowed = {
+		original_tag = JAP
+	}
+}
+
+JAP_taiwan_war_category = {
+    icon = GFX_desicion_category_jsdf
+	picture = GFX_JAP_taiwan_war
+	visible_when_empty = yes
+	priority = 4
+	
+	visible = {
+	    has_global_flag = PRC_ongoing_taiwan_war
+		NOT = {
+			OR = {
+				has_global_flag = JAP_japan_lost
+				has_global_flag = JAP_japan_victory
+			}
+		}
+	}
+	
+	allowed = {
+	    original_tag = JAP
+	}
+}
+
+JAP_american_ships_category = {
+    icon = japan
+	picture = GFX_JAP_taiwan_war
+	visible_when_empty = yes
+	priority = 4
+	
+	visible = {
+	    USN = {
+			exists = yes
+		}
+		NOT = {
+			OR = {
+				has_global_flag = JAP_japan_lost
+				has_global_flag = JAP_japan_victory
+			}
+		}
+	}
+	
+	allowed = {
+	    original_tag = JAP
+	}
+}
+
+JAP_peoples_diet_category = {
+    icon = GFX_JAP_peoples_diet_category
+	picture = jap_peoples_diet
+	visible_when_empty = yes
+	priority = 5
+	
+	visible = {
+	    original_tag = JAP
+		has_completed_focus = JAP_emergency_congress
+	}
+	
+	allowed = {
+	    original_tag = JAP
+	}
+}
+
+JAP_american_intervention_category = {
+	icon = GFX_decision_category_america_burning_category
+	picture = decision_cat_SOV_burning_america2
+	visible_when_empty = yes
+	allowed = {
+		tag = JAP
+	}	
+	visible = {
+		tag = JAP
+		has_completed_focus = JAP_beyond_the_ocean
+		NOT = {
+			has_country_flag = JAP_i_hate_america_flag
+		}
+	}
+}
+
+JAP_civil_coalition_power_balance_category = {
+	icon = japan
+	priority = 5
+	allowed = {
+		tag = JAP
+	}	
+	visible = {
+		has_power_balance = {
+    		id = JAP_civil_coalition_power_balance
+		}
+	}
+}
+
+JAP_pdto_dec_cat = {
+	icon = GFX_desicion_category_jsdf
+	priority = 5
+	allowed = {
+		tag = JAP
+	}	
+	visible = {
+		has_completed_focus = JAP_form_pdto2
+	}
+}
+
+JAP_jietai_cat = {
+    icon = GFX_desicion_category_jsdf
+    visible_when_empty = yes
+
+    allowed = {
+    	tag = JAP
+    }
+    
+    visible = {
+    	has_completed_focus = JAP_redefine_the_japanese_army
+    }
+    
+    priority = 4
+}

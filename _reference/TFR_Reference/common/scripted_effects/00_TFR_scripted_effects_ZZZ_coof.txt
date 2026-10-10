@@ -1,0 +1,209 @@
+fourth_plague_pandemic_effect_initial_outbreak = {
+	random_list = {
+		1 = {
+			random_neighbor_state  = {
+				log = "Plague SPREADS to [THIS.GetName] from [PREV.GetName]"
+				
+				limit = {
+					NOT = { is_in_array = { global.plague_affected_states = THIS.id } }
+				}
+				set_variable = { plague_state_modifier = -0.01 }
+				add_dynamic_modifier = { modifier = plague_state_modifier }
+				add_to_array = { array = global.plague_affected_states value = THIS.id }
+			}
+			
+			add_to_variable = { global.plague_start_countdown = 1 }
+			
+			#Agriculture
+			#modifier = { add = 0 controller = { has_idea = highest_farming } }
+			modifier = { add = 1 controller = { has_idea = higher_farming } }
+			modifier = { add = 3 controller = { has_idea = high_farming } }
+			modifier = { add = 6 controller = { has_idea = medium_farming } }
+			modifier = { add = 9 controller = { has_idea = low_farming } }
+			modifier = { add = 12 controller = { has_idea = lower_farming } }
+			
+			modifier = { factor = 0 all_neighbor_state = { is_in_array = { global.plague_affected_states = THIS.id } } }
+		}
+		
+		1 = {
+			log = "Plague WORSENS to [THIS.GetName] from [PREV.GetName]"
+			add_to_variable = { global.plague_start_countdown = 1 }
+			
+			#Agriculture
+			#modifier = { add = 0 controller = { has_idea = highest_farming } }
+			modifier = { add = 1 controller = { has_idea = higher_farming } }
+			modifier = { add = 3 controller = { has_idea = high_farming } }
+			modifier = { add = 6 controller = { has_idea = medium_farming } }
+			modifier = { add = 9 controller = { has_idea = low_farming } }
+			modifier = { add = 12 controller = { has_idea = lower_farming } }
+			
+			modifier = { factor = 0 all_neighbor_state = { is_in_array = { global.plague_affected_states = THIS.id } } }
+		}
+		
+		5 = {
+			log = "Plague IDLES at [THIS.GetName]"
+		}
+	}
+}
+
+#fourth_plague_pandemic_effect = {
+#	#subtract_from_variable = { plague_state_modifier = 0.01 }
+#	#clamp_variable = {
+#	#	var = plague_state_modifier
+#	#	min = -1
+#	#	max = 0
+#	#}
+#	add_to_variable = { plague_state_immunity_modifier = plague_state_modifier }
+#	random_list = {
+#		1 = {
+#			random_neighbor_state  = {
+#				log = "Plague SPREADS to [THIS.GetName] from [PREV.GetName]"
+#				
+#				limit = {
+#					NOT = { is_in_array = { global.plague_affected_states = THIS.id } }
+#					NOT = { is_in_array = { global.plague_cured_states = THIS.id } }
+#				}
+#				set_variable = { plague_state_modifier = -0.01 }
+#				add_dynamic_modifier = { modifier = plague_state_modifier }
+#				add_to_array = { array = global.plague_affected_states value = THIS.id }
+#				controller = {
+#					if = {
+#						limit = {
+#							NOT = {
+#								has_country_flag = plague_first_appearance
+#							}
+#						}
+#						country_event = disease_event.1
+#					}
+#				}
+#			}
+#			
+#			#Agriculture
+#			#modifier = { add = 0 controller = { has_idea = highest_farming } }
+#			modifier = { add = 1 controller = { has_idea = higher_farming } }
+#			modifier = { add = 3 controller = { has_idea = high_farming } }
+#			modifier = { add = 6 controller = { has_idea = medium_farming } }
+#			modifier = { add = 9 controller = { has_idea = low_farming } }
+#			modifier = { add = 12 controller = { has_idea = lower_farming } }
+#			
+#			modifier = { factor = 0 all_neighbor_state = { is_in_array = { global.plague_affected_states = THIS.id } } }
+#		}
+#		
+#		1 = {
+#			controller = {
+#				random_controlled_state = {
+#					log = "Plague APPEARS in [THIS.GetName]"
+#					
+#					limit = {
+#						NOT = { is_in_array = { global.plague_affected_states = THIS.id } }
+#						NOT = { is_in_array = { global.plague_cured_states = THIS.id } }
+#						any_neighbor_state = {
+#							NOT = { is_in_array = { global.plague_affected_states = THIS.id } }
+#							NOT = { is_in_array = { global.plague_cured_states = THIS.id } }
+#						}
+#					}
+#					set_variable = { plague_state_modifier = -0.01 }
+#					add_dynamic_modifier = { modifier = plague_state_modifier }
+#					add_to_array = { array = global.plague_affected_states value = THIS.id }
+#				}
+#			}
+#			
+#			#Agriculture
+#			#modifier = { add = 0 controller = { has_idea = highest_farming } }
+#			modifier = { add = 1 controller = { has_idea = higher_farming } }
+#			modifier = { add = 3 controller = { has_idea = high_farming } }
+#			modifier = { add = 6 controller = { has_idea = medium_farming } }
+#			modifier = { add = 9 controller = { has_idea = low_farming } }
+#			modifier = { add = 12 controller = { has_idea = lower_farming } }
+#			
+#			modifier = { factor = 0.5 always = yes }
+#			
+#			modifier = { factor = 0 controller = { all_controlled_state = { is_in_array = { global.plague_affected_states = THIS.id } } } }
+#		}
+#		
+#		1 = {
+#			random_state = {
+#				log = "Plague SAILS to [THIS.GetName]"
+#				
+#				limit = {
+#					NOT = { is_in_array = { global.plague_affected_states = THIS.id } }
+#					NOT = { is_in_array = { global.plague_cured_states = THIS.id } }
+#					is_coastal = yes
+#				}
+#				set_variable = { plague_state_modifier = -0.01 }
+#				add_dynamic_modifier = { modifier = plague_state_modifier }
+#				add_to_array = { array = global.plague_affected_states value = THIS.id }
+#			}
+#			
+#			#Trade
+#			modifier = { add = 8 controller = { has_idea = higher_trade } }
+#			modifier = { add = 6 controller = { has_idea = high_trade } }
+#			modifier = { add = 4 controller = { has_idea = medium_trade } }
+#			modifier = { add = 2 controller = { has_idea = low_trade } }
+#			#modifier = { add = 0 controller = { has_idea = lower_trade } }
+#			
+#			#Immigration
+#			modifier = { add = 8 controller = { has_idea = higher_immigration } }
+#			modifier = { add = 6 controller = { has_idea = high_immigration } }
+#			modifier = { add = 4 controller = { has_idea = medium_immigration } }
+#			modifier = { add = 2 controller = { has_idea = low_immigration } }
+#			#modifier = { add = 0 controller = { has_idea = lower_immigration } }
+#			
+#			modifier = { factor = 0.2 always = yes }
+#			
+#			modifier = { factor = 0 is_coastal = no }
+#		}
+#		
+#		1 = {
+#			random_state = {
+#				log = "Plague FLIES to [THIS.GetName]"
+#				
+#				limit = {
+#					NOT = { is_in_array = { global.plague_affected_states = THIS.id } }
+#					NOT = { is_in_array = { global.plague_cured_states = THIS.id } }
+#					air_base > 0
+#				}
+#				set_variable = { plague_state_modifier = -0.01 }
+#				add_dynamic_modifier = { modifier = plague_state_modifier }
+#				add_to_array = { array = global.plague_affected_states value = THIS.id }
+#			}
+#			
+#			#Trade
+#			modifier = { add = 8 controller = { has_idea = higher_trade } }
+#			modifier = { add = 6 controller = { has_idea = high_trade } }
+#			modifier = { add = 4 controller = { has_idea = medium_trade } }
+#			modifier = { add = 2 controller = { has_idea = low_trade } }
+#			#modifier = { add = 0 controller = { has_idea = lower_trade } }
+#			
+#			#Immigration
+#			modifier = { add = 8 controller = { has_idea = higher_immigration } }
+#			modifier = { add = 6 controller = { has_idea = high_immigration } }
+#			modifier = { add = 4 controller = { has_idea = medium_immigration } }
+#			modifier = { add = 2 controller = { has_idea = low_immigration } }
+#			#modifier = { add = 0 controller = { has_idea = lower_immigration } }
+#			
+#			modifier = { factor = 0.2 always = yes }
+#			
+#			modifier = { factor = 0 air_base < 1 }
+#		}
+#		
+#		10 = {
+#			log = "Plague IDLES at [THIS.GetName]"
+#			
+#			#modifier = { add = plague_state_modifier always = yes }
+#		}
+#	}
+#	
+#	if = {
+#		limit = {
+#			check_variable = {
+#				var = plague_state_immunity_modifier
+#				value = -1
+#				compare = equals
+#			}
+#		}
+#		remove_from_array = { array = global.plague_affected_states value = THIS.id }
+#		remove_dynamic_modifier = { modifier = plague_state_modifier }
+#		add_to_array = { array = global.plague_cured_states value = THIS.id }
+#	}
+#}

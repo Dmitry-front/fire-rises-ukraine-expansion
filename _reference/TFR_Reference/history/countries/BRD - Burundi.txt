@@ -1,0 +1,127 @@
+﻿	capital = 780
+
+	oob = "BRD_2000"
+
+	set_research_slots = 2
+	set_convoys = 20
+	set_stability = 0.25
+
+	set_country_flag = country_language_english
+	set_country_flag = country_language_french
+	set_country_flag = country_behavior_dispersed
+	set_country_flag = country_behavior_indolent
+
+	set_variable = { Russian_Influence = 0.05 }
+	set_variable = { Chinese_Influence = 0.20 }
+	set_variable = { American_Influence = 0.05 }
+	set_variable = { European_Influence = 0.10 }
+	set_variable = { PDO_Influence = 0.00 }
+	set_variable = { Sovereign_Influence = 0.60 }
+
+	recruit_character = BRD_pierre_nkurunziza_char
+	recruit_character = BRD_evariste_ndayishimye_char
+
+	set_technology = {
+		## Infantry ##
+		infantry_weapons1 = 1
+		infantry_weapons2 = 1
+		motorised_infantry = 1
+		infantry_rifle_upgrade = 1
+		support_weapons = 1
+		night_vision = 1
+		body_armor = 1
+		camouflage = 1
+		marines = 1
+		tech_mountaineers = 1
+		paratroopers = 1
+		
+		## Support Companies ##
+		tech_support = 1
+		tech_engineers = 1
+		tech_recon = 1
+		tech_military_police = 1
+		tech_maintenance_company = 1
+		tech_field_hospital = 1
+		
+		## Armor ##
+		main_battle_tank1 = 1
+		main_battle_tank2 = 1
+		light_tank1 = 1
+		mechanised_infantry1 = 1
+		light_mechanized_infantry1 = 1
+		
+		## Artillery ##
+		gw_artillery = 1
+		interwar_antitank = 1
+		interwar_antiair = 1
+		tank_destroyer1 = 1
+		self_propelled_aa1 = 1
+		
+		## Engineering ##
+		#eng_low
+		
+		## Industry ##
+		#ind_low
+		
+		## Doctrines ##
+		
+	}
+	
+	if = {
+		limit = { has_dlc = "By Blood Alone" }
+			set_technology = {
+				aa_lmg = 1
+				aa_cannon_1 = 1
+				aa_hmg = 1
+				engines_1 = 1
+				engines_2 = 1
+				early_bombs = 1
+				guided_bombs = 1
+				aircraft_construction = 1
+				survivability_studies = 1
+				iw_small_airframe = 1
+				basic_small_airframe = 1
+				iw_medium_airframe = 1
+				basic_medium_airframe = 1
+				iw_large_airframe = 1
+			}
+		else = {
+			set_technology = {
+				CAS1 = 1
+				CAS2 = 1
+				fighter1 = 1
+				fighter2 = 1
+				scout_plane1 = 1
+				transport_plane2 = 1
+			}
+		}
+	}
+
+	add_ideas = {
+		Additional_negative_gdp_fix
+		BRD_gdp_fix
+		african_union_member
+		medium_conscription
+		lower_poverty
+	}
+	
+	#Events
+	country_event = {
+		id = africa.9
+		days = 159
+	}
+
+	set_politics = {
+		ruling_party = authoritarian_democrat
+		last_election = "2016.6.23"
+		election_frequency = 48
+		elections_allowed = yes
+	}
+	
+	set_popularities = {
+		nationalist = 8
+		authoritarian_democrat = 60
+		conservative = 8
+		social_democrat = 19
+		social_liberal = 5
+	}

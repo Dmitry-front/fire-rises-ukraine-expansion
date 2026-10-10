@@ -1,0 +1,272 @@
+
+BLA_the_splintered_struggle_category = {
+	BLA_increase_bp_influence_decision = {
+		icon = generic_nationalism
+		allowed = {
+			tag = BLA
+		}
+		fire_only_once = no
+		complete_effect = {
+		}
+		modifier = {
+			political_power_gain = -0.10
+		}
+		remove_effect = {
+			set_temp_variable = {
+				var = BLA_bp_influence_var_temp
+				value = 0.10
+			}
+			BLA_add_influence_bp = yes
+		}
+		days_remove = 14
+		days_re_enable = 14
+		cost = 10
+	}
+
+	BLA_increase_noi_influence_decision = {
+		icon = generic_nationalism
+		allowed = {
+			tag = BLA
+		}
+		fire_only_once = no
+		complete_effect = {
+		}
+		modifier = {
+			political_power_gain = -0.10
+		}
+		remove_effect = {
+			set_temp_variable = {
+				var = BLA_noi_influence_var_temp
+				value = 0.10
+			}
+			BLA_add_influence_noi = yes
+		}
+		days_remove = 14
+		days_re_enable = 14
+		cost = 10
+	}
+
+	BLA_anti_bp_campaign_decision = {
+		icon = generic_nationalism
+		allowed = {
+			tag = BLA
+		}
+		fire_only_once = no
+		complete_effect = {
+		}
+		modifier = {
+			political_power_gain = -0.10
+		}
+		remove_effect = {
+			set_temp_variable = {
+				var = BLA_bp_influence_var_temp
+				value = -0.05
+			}
+			BLA_add_influence_bp = yes
+		}
+		days_remove = 14
+		days_re_enable = 14
+		cost = 10
+	}
+
+	BLA_anti_noi_campaign_decision = {
+		icon = generic_nationalism
+		allowed = {
+			tag = BLA
+		}
+		fire_only_once = no
+		complete_effect = {
+		}
+		modifier = {
+			political_power_gain = -0.10
+		}
+		remove_effect = {
+			set_temp_variable = {
+				var = BLA_noi_influence_var_temp
+				value = -0.05
+			}
+			BLA_add_influence_noi = yes
+		}
+		days_remove = 14
+		days_re_enable = 14
+		cost = 10
+	}
+
+#	BLA_rise_in_noi_influence_mission = {
+#		icon = generic_nationalism
+#		activation = {
+#			has_idea = BLA_two_miltias_one_army_idea
+#			has_completed_focus = BLA_the_dream_realized
+#			has_country_flag = BLA_noi_flag
+#		}
+#		available = {
+#			always = no
+#		}
+#		icon = mission_icon    
+#		is_good = yes
+#		days_mission_timeout = 28
+#		selectable_mission = no
+#		cancel_if_not_visible = yes
+		
+#		timeout_effect = {
+#			set_temp_variable = {
+#				var = BLA_noi_influence_var_temp
+#				value = 0.05
+#			}
+#			BLA_add_influence_noi = yes
+#			set_temp_variable = {
+#				var = BLA_bp_influence_var_temp
+#				value = -0.05
+#			}
+#			BLA_add_influence_bp = yes
+#			set_country_flag = BLA_bp_flag
+#			clr_country_flag = BLA_noi_flag
+#			activate_mission = BLA_rise_in_bp_influence_mission
+#		}
+#	}
+#	BLA_rise_in_bp_influence_mission = {
+#		icon = generic_nationalism
+#		activation = {
+#			has_idea = BLA_two_miltias_one_army_idea
+#			has_completed_focus = BLA_the_dream_realized
+#			has_country_flag = BLA_bp_flag
+#		}
+#		available = {
+#			always = no
+#		}
+#		icon = mission_icon    
+#		is_good = yes
+#		days_mission_timeout = 28
+#		selectable_mission = no
+#		cancel_if_not_visible = yes
+#		
+#		timeout_effect = {
+#			set_temp_variable = {
+#				var = BLA_bp_influence_var_temp
+#				value = 0.05
+#			}
+#			BLA_add_influence_bp = yes
+#			set_temp_variable = {
+#				var = BLA_noi_influence_var_temp
+#				value = -0.05
+#			}
+#			BLA_add_influence_noi = yes
+#			set_country_flag = BLA_noi_flag
+#			clr_country_flag = BLA_bp_flag
+#			activate_mission = BLA_rise_in_noi_influence_mission
+#		}
+#	}
+}
+
+USA_second_american_civil_war_category = {
+	
+	BLA_form_new_afrika = {
+		icon = generic_nationalism
+	
+		highlight_states = {
+			highlight_state_targets = {
+				state = 978
+				state = 979 
+				state = 980 
+				state = 371 
+				state = 981 
+				state = 982 
+				state = 370 
+				state = 1010 
+				state = 1011 
+				state = 1009 
+				state = 367 
+				state = 1015 
+				state = 1016
+				state = 1014 
+				state = 1013 
+				state = 1012 
+				state = 1022 
+				state = 365 
+				state = 1020 
+				state = 1021 
+				state = 1019 
+				state = 1018 
+				state = 1017 
+			}
+		}
+
+		available = {
+			controls_state = 979 
+			controls_state = 982 
+			controls_state = 980 
+			controls_state = 371 
+			controls_state = 981 
+			controls_state = 370 
+			controls_state = 1010 
+			controls_state = 1011 
+			controls_state = 367 
+			controls_state = 1015 
+			controls_state = 1016 
+			controls_state = 1014 
+			owns_state = 978
+			owns_state = 1009
+			owns_state = 1012
+			owns_state = 1013
+		}
+
+		visible = {
+			tag = BLA
+		}
+
+		ai_will_do = {
+			factor = 50
+		}
+
+		fire_only_once = yes
+
+		complete_effect = {
+			set_cosmetic_tag = BLA_afrika
+			transfer_state = 979 
+			transfer_state = 982 
+			transfer_state = 980 
+			transfer_state = 371 
+			transfer_state = 981 
+			transfer_state = 370 
+			transfer_state = 1010 
+			transfer_state = 1011 
+			transfer_state = 367 
+			transfer_state = 1015 
+			transfer_state = 1016 
+			transfer_state  = 1014 
+		}
+	}
+}
+
+debug_decisions = {
+	BLA_rebels_rise_up_debug_decision = {
+	
+		icon = generic_ignite_civil_war
+
+		allowed = {
+			original_tag = BLA
+		}
+		
+		visible = {
+		}
+
+		available = {
+		}
+		
+		ai_will_do = {
+			factor = 0
+		}
+
+		modifier = {
+		}
+
+		complete_effect = {
+			country_event = {
+				id = states.52
+			}
+		}
+
+		remove_effect = {
+		}
+	}
+}

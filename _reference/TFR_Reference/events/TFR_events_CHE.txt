@@ -1,0 +1,67 @@
+﻿add_namespace = chechnya
+
+# Fuck it 3 way chechen war
+country_event = {
+	id = chechnya.1
+	title = chechnya.1.t
+	desc = chechnya.1.d
+	picture = report_event_equipment
+	
+	fire_only_once = yes
+	is_triggered_only = yes
+	
+	immediate = {
+		hidden_effect = {
+			leave_faction = yes
+		}
+	}
+
+	option = {
+		name = chechnya.1.a
+		CHE = {
+			load_oob = "CHE_2020"
+			if = {
+				limit = {
+					SOV = {
+						has_completed_focus = SOV_how_did_this_happen
+					}
+				}
+				set_politics = {
+					ruling_party = authoritarian_democrat
+					elections_allowed = no
+				}
+				add_popularity = {
+					ideology = authoritarian_democrat
+					popularity = 0.25
+				}
+				set_cosmetic_tag = CHE_akhmat
+				remove_ideas = SOV_eu_dominated_economy_idea
+			}
+			else = {
+				set_politics = {
+					ruling_party = social_liberal
+					elections_allowed = no
+				}
+				add_popularity = {
+					ideology = social_liberal
+					popularity = 0.25
+				}
+				remove_ideas = SOV_eu_dominated_economy_idea
+			}
+		}
+		NAV = {
+			add_state_core = 1284
+			add_state_core = 232
+			add_state_core = 828
+			add_state_core = 233
+			transfer_state = 232
+			transfer_state = 1284
+			load_oob = "NAV_2020"
+			declare_war_on = {
+				target = CHE
+				type = annex_everything 
+			}
+			add_ideas = SOV_devastated_industry2_idea
+		}
+	}
+}

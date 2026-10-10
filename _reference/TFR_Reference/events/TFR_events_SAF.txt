@@ -1,0 +1,282 @@
+add_namespace = SAF
+add_namespace = EFF
+add_namespace = ANC
+#Civil War
+country_event = {
+	id = saf.1
+	title = saf.1.t
+	desc = saf.1.d
+	picture = GFX_SouthAfricaElection
+	is_triggered_only = yes
+	option = {
+		name = saf.1.a
+		hidden_effect = {
+			country_event = {
+				id = saf.4
+				days = 10
+			}
+			SAF = {
+				set_politics = {
+					ruling_party = nationalist
+					elections_allowed = no
+					last_election = "2012.12.17"
+					election_frequency = 48
+				}
+				set_popularities = {
+					nationalist = 40
+					social_liberal = 15
+					market_liberal = 15
+					authoritarian_democrat = 15
+					conservative = 15
+				}
+				remove_state_core = 1317
+				remove_state_core = 818
+				remove_state_core = 719
+				remove_state_core = 1318
+				remove_state_core = 819
+				remove_state_core = 1343
+				remove_state_core = 275
+				remove_state_core = 1303
+				remove_state_core = 1342
+				set_equipment_fraction = 0
+				load_oob = SAF_SA_Civil_War
+				add_ideas = SAF_martial_law
+				add_ideas = SAF_loyal_military
+				remove_ideas = SAF_anc_corruption
+				set_nationality = {
+					target_country = SWZ
+					character = SAF_Fabian_Msimang_char
+				}
+				set_nationality = {
+					target_country = SWZ
+					character = SAF_Jongile_Maso_char
+				}
+				set_nationality = {
+					target_country = SWZ
+					character = SAF_Mzayifani_Buthelezi_char
+				}
+				set_nationality = {
+					target_country = SWZ
+					character = SAF_Ncedakele_Mtshatsheni_char
+				}
+				set_nationality = {
+					target_country = SWZ
+					character = SAF_Rudzani_Maphwanya_char
+				}
+				set_nationality = {
+					target_country = SWZ
+					character = SAF_Solly_Shoke_char
+				}
+				set_nationality = {
+					target_country = SWZ
+					character = SAF_Wiseman_Mbambo_char
+				}
+				set_nationality = {
+					target_country = SWZ
+					character = SAF_Bubele_Mhlana_char
+				}
+				set_nationality = {
+					target_country = SWZ
+					character = SAF_Monde_Lobese_char
+				}
+				set_nationality = {
+					target_country = SWZ
+					character = SAF_Samuel_Hlongwane_char
+				}
+			}
+			EFF = {
+				add_state_core = 818
+				add_state_core = 819
+				add_state_core = 1318
+				add_state_core = 1317
+				add_state_core = 719
+				add_state_core = 1343
+				add_state_core = 275
+				add_state_core = 1303
+				add_state_core = 1342
+				add_state_core = 1304
+				add_state_core = 681
+				transfer_state = 719
+				transfer_state = 275
+				transfer_state = 1342
+				load_oob = "EFF_SA_Civil_War"
+				add_ideas = EFF_modern_bush_war
+				add_ideas = EFF_revolutionary_chaos
+			}
+			SWZ = {
+				add_state_core = 818
+				add_state_core = 819
+				add_state_core = 1318
+				add_state_core = 1317
+				add_state_core = 719
+				add_state_core = 1343
+				add_state_core = 275
+				add_state_core = 1303
+				add_state_core = 1342
+				add_state_core = 1304
+				add_state_core = 681
+				transfer_state = 818
+				transfer_state = 1317
+				transfer_state = 1303
+				transfer_state = 1343
+				load_oob = "ANC_SA_Civil_War"
+				add_ideas = SWZ_widespread_corruption
+				add_ideas = SWZ_war_of_survival
+			}
+			LES = {
+				add_state_core = 819
+				add_state_core = 1318
+				add_state_core = 719
+				add_state_core = 1317
+				transfer_state = 819
+				transfer_state = 1318
+				load_oob = "ZULU_SA_Civil_War"
+			}
+			CFF = {
+				add_state_core = 1376
+				add_state_core = 681
+				add_state_core = 1304
+				transfer_state = 1376
+				load_oob = "CFF_SA_Civil_War"
+				add_timed_idea = {
+					idea = CFF_crusade_for_the_past
+					days = 200
+				}
+				add_ideas = CFF_widespread_insurgencies
+			}
+		}
+	}
+}
+
+#News Event of ANC Victory
+news_event = {
+	id = saf.2
+	title = saf.2.t
+	desc = saf.2.d
+	picture = GFX_SouthAfricaANC1
+	is_triggered_only = yes
+	major = yes
+	option = {
+		name = saf.2.a
+		
+	}
+}
+
+#News Event of EFF Victory
+news_event = {
+	id = saf.3
+	title = saf.3.t
+	desc = saf.3.d
+	picture = GFX_SouthAfricaEFF1
+	is_triggered_only = yes
+	major = yes
+	option = {
+		name = saf.3.a
+		
+	}
+}
+
+country_event = {
+	id = saf.4
+	title = saf.4.t
+	desc = saf.4.d
+	picture = GFX_SouthAfricaANC2
+	is_triggered_only = yes
+	option = {
+		name = saf.4.a
+		set_global_flag = SAF_civil_war_flag
+		hidden_effect = {
+			EFF = {
+				declare_war_on = {
+					target = LES
+					type = civil_war
+				}
+				declare_war_on = {
+					target = SAF
+					type = civil_war
+				}
+				declare_war_on = {
+					target = CFF
+					type = civil_war
+				}
+				declare_war_on = {
+					target = SWZ
+					type = civil_war
+				}
+			}
+			PRC = {
+				country_event = {
+					id = china.117
+					days = 5
+				}
+			}
+			SWZ = {
+				declare_war_on = {
+					target = LES
+					type = civil_war
+				}
+				declare_war_on = {
+					target = SAF
+					type = civil_war
+				}
+				declare_war_on = {
+					target = CFF
+					type = civil_war
+				}
+			}
+			SAF = {
+				declare_war_on = {
+					target = CFF
+					type = civil_war
+				}
+				declare_war_on = {
+					target = LES
+					type = civil_war
+				}
+			}
+			CFF = {
+				declare_war_on = {
+					target = LES
+					type = civil_war
+				}
+			}
+		}
+	}
+}
+
+#Cape Election Post war
+country_event = {
+	id = saf.5
+	title = saf.5.t
+	desc = saf.5.d
+	picture = GFX_SouthAfricaEFF2
+	is_triggered_only = yes
+	option = {
+		name = saf.5.a
+		set_politics = {
+			ruling_party = market_liberal
+			elections_allowed = no
+			last_election = "2022.12.17"
+			election_frequency = 48
+		}
+		add_popularity = {
+			ideology = market_liberal
+			popularity = 0.21
+		}
+		set_cosmetic_tag = SAF_unified
+	}
+	option = {
+		name = saf.5.b
+		set_politics = {
+			ruling_party = social_liberal
+			elections_allowed = no
+			last_election = "2022.12.17"
+			election_frequency = 48
+		}
+		add_popularity = {
+			ideology = social_liberal
+			popularity = 0.23
+		}
+		set_cosmetic_tag = SAF_unified
+	}
+}

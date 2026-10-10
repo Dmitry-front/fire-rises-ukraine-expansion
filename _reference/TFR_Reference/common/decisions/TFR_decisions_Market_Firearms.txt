@@ -1,0 +1,1361 @@
+Small_arms_market = {
+	Israel_WI = {
+		icon = GFX_decision_iwi_bg
+
+		available = {
+			hidden_trigger = { 
+				NOT = {
+					tag = ISR
+				}
+			}
+		}
+
+		visible = {
+		}
+
+		ai_will_do = {
+			base = 0
+			modifier = {
+				add = 1
+				has_equipment = {
+					infantry_equipment < 400
+				}
+				OR = {
+					tag = SAU
+					tag = UKR
+					tag = UAE
+					tag = KUW
+					tag = OMA
+					tag = YEM
+					tag = RAJ
+					tag = GUA
+					tag = COL
+					tag = FLA
+					tag = TEX
+					tag = CAL
+					tag = TZN
+					tag = ROM
+					tag = USC
+					tag = USB
+					tag = TEX
+				}
+			}
+		}
+
+		custom_cost_trigger = {
+			check_variable = { 
+				var = income_var 
+				value = 5
+				compare = greater_than_or_equals
+			}
+        }
+		
+		days_re_enable = 175
+
+		custom_cost_text = dx_more_than_5B
+
+		complete_effect = {
+			hidden_effect = {
+				set_temp_variable = {
+					var = income_var_temp
+					value = -5
+				}
+				add_income = yes
+			}
+			custom_effect_tooltip = "WThis Will Buy Weapons from BIsrael Weapons Industries W"
+			add_equipment_to_stockpile = {type = infantry_equipment_1 amount = 1000 producer = ISR }
+			add_equipment_to_stockpile = {type = infantry_equipment_3 amount = 500 producer = IS1 }
+			add_equipment_to_stockpile = {type = support_equipment_1 amount = 600 producer = ISR }
+		}
+	}
+
+	Beretta_Holdings = {
+		icon = GFX_decision_beretta_bg
+		
+		available = {
+			hidden_trigger = {
+				NOT = {
+					tag = ITA
+				}
+			}
+		}
+
+		ai_will_do = {
+			base = 0
+			modifier = {
+				add = 1
+				has_equipment = {
+					infantry_equipment < 400
+				}
+				OR = {
+					tag = USA
+					tag = GRE
+					tag = SPR
+					tag = POR
+					tag = AUS
+					tag = ROM
+					tag = HUN
+					tag = EGY
+					tag = CLM
+					tag = PTF
+					tag = WLF
+					tag = ATW
+					tag = FLM
+					tag = FLA
+					tag = CAL
+					tag = CHA
+					tag = ALG
+					tag = SER
+					tag = ROM
+					tag = POL
+					tag = ROM
+					tag = USC
+					tag = USB
+					tag = TEX
+				}
+			}
+		}
+
+		days_re_enable = 175
+
+		custom_cost_trigger = {
+			check_variable = { 
+				var = income_var 
+				value = 4
+				compare = greater_than_or_equals
+			}
+        }
+
+		custom_cost_text = dx_more_than_4B
+		
+		complete_effect = {
+			hidden_effect = {
+				set_temp_variable = {
+					var = income_var_temp
+					value = -4
+				}
+				add_income = yes
+			}
+			custom_effect_tooltip = "WThis Will Buy Weapons from gBeretta Holding W"
+			add_equipment_to_stockpile = {type = infantry_equipment_1 amount = 1000 producer = ITA }
+			add_equipment_to_stockpile = {type = infantry_equipment_2 amount = 1000 producer = ITA }
+		}
+	}
+
+	Kalashnikov = {
+		icon = GFX_decision_kalashnikov_bg
+		
+		available = {
+			hidden_trigger = {
+				NOT = {
+					tag = SOV
+				}
+			}
+			NOT = {
+				has_war_with = SOV
+			}
+		}
+
+		ai_will_do = {
+			base = 0
+			modifier = {
+				add = 1
+				has_equipment = {
+					infantry_equipment < 400
+				}
+				OR = {
+					tag = AFG
+					tag = YEM
+					tag = EGY
+					tag = COG
+					tag = RCG
+					tag = SYR
+					tag = IRQ
+					tag = PAK
+					tag = TAL
+					tag = HEZ
+					tag = PER
+					tag = HRL
+					tag = ALG
+					tag = SUD
+					tag = SHB
+					tag = CHA
+					tag = ANG
+					tag = APA
+					tag = ATS
+					tag = ATP
+					tag = ATH
+					tag = ATW
+					tag = GMA
+					tag = BUL
+					tag = KAZ
+					tag = ARM
+					tag = NOV
+					tag = BLA
+					tag = RPP
+					tag = ZET
+					tag = SIN
+					tag = GUF
+					tag = CDJ
+					tag = ZAP
+					tag = HOU
+					tag = AAS
+					tag = TAL
+					tag = HEZ
+					tag = NGA
+					tag = TZN
+				}
+			}
+		}
+
+		days_re_enable = 175
+
+		custom_cost_trigger = {
+			check_variable = { 
+				var = income_var 
+				value = 3 
+				compare = greater_than_or_equals
+			}
+        }
+
+		custom_cost_text = dx_more_than_3B
+		
+		complete_effect = {
+			hidden_effect = {
+				set_temp_variable = {
+					var = income_var_temp
+					value = -3
+				}
+				add_income = yes
+			}
+			custom_effect_tooltip = "WThis Will Buy Weapons from RKalashnikov W"
+			add_equipment_to_stockpile = {type = infantry_equipment_1 amount = 1000 producer = SOV }
+			add_equipment_to_stockpile = {type = infantry_equipment_2 amount = 500 producer = SOV }
+			add_equipment_to_stockpile = {type = artillery_equipment_1 amount = 200 producer = SOV }
+		}
+	}
+
+	Zbrojovka = {
+		icon = GFX_decision_zbrojovka_bg
+		
+		available = {
+			hidden_trigger = {
+				NOT = {
+					tag = CZE
+				}
+			}
+		}
+
+		ai_will_do = {
+			base = 0
+			modifier = {
+				add = 1
+				has_equipment = {
+					infantry_equipment < 400
+				}
+				OR = {
+					tag = ISS
+					tag = JOR
+					tag = KUR
+					tag = ROJ
+					tag = BLR
+					tag = UKR
+					tag = MOR
+					tag = TUN
+					tag = MAC
+					tag = NGR
+					tag = NGA
+					tag = OMA
+					tag = UAE
+					tag = KUW
+					tag = AFG
+					tag = IRQ
+					tag = ROM
+				}
+			}
+		}
+
+		days_re_enable = 175
+
+		custom_cost_trigger = {
+			check_variable = { 
+				var = income_var 
+				value = 3
+				compare = greater_than_or_equals 
+			}
+        }
+
+		custom_cost_text = dx_more_than_3B
+		
+		complete_effect = {
+			hidden_effect = {
+				set_temp_variable = {
+					var = income_var_temp
+					value = -3
+				}
+				add_income = yes
+			}
+			custom_effect_tooltip = "WThis Will Buy Weapons from GZbrojovka W"
+			add_equipment_to_stockpile = {type = infantry_equipment_1 amount = 1000 producer = CZE }
+			add_equipment_to_stockpile = {type = infantry_equipment_2 amount = 500 producer = CZE }
+			add_equipment_to_stockpile = {type = anti_air_equipment_1 amount = 300 producer = CZE }
+		}
+	}
+
+	Heckler_and_Koch = {
+		icon = GFX_decision_heckler_bg
+		allowed = {
+			NOT = {
+				tag = GER
+			}
+		}
+		ai_will_do = {
+			base = 0
+			modifier = {
+				add = 1
+				has_equipment = {
+					infantry_equipment < 400
+				}
+				OR = {
+					tag = ZET
+					tag = SIN
+					tag = GUF
+					tag = CDJ
+					tag = EGY
+					tag = JAP
+					tag = SAU
+					tag = ARR
+					tag = ROC
+					tag = JOR
+					tag = PAK
+					tag = CRO
+					tag = EST
+					tag = TUN
+					tag = RAJ
+					tag = SPR
+					tag = POR
+					tag = BEL
+					tag = AUS
+					tag = POL
+					tag = SLO
+					tag = ROM
+					tag = USB
+					tag = USC
+					tag = TEX
+				}
+			}
+		}
+
+		days_re_enable = 175
+
+		custom_cost_trigger = {
+			check_variable = { 
+				var = income_var 
+				value = 3 
+				compare = greater_than_or_equals
+			}
+        }
+
+		custom_cost_text = dx_more_than_3B
+		
+		complete_effect = {
+			hidden_effect = {
+				set_temp_variable = {
+					var = income_var_temp
+					value = -3
+				}
+			}
+			add_income = yes
+			custom_effect_tooltip = "WThis Will Buy Weapons from RHeckler & Koch W"
+			add_equipment_to_stockpile = {type = infantry_equipment_1 amount = 1000 producer = GER }
+			add_equipment_to_stockpile = {type = infantry_equipment_2 amount = 500 producer = GER }
+			add_equipment_to_stockpile = {type = artillery_equipment_2 amount = 300 producer = GER }
+		}
+	}
+
+	NORINCO = {
+		icon = GFX_decision_norinco_bg
+		
+		available = {
+			hidden_trigger = {
+				NOT = {
+					tag = PRC
+				}
+			}
+		}
+
+		ai_will_do = {
+			base = 0
+			modifier = {
+				add = 1
+				has_equipment = {
+					infantry_equipment < 400
+				}
+				OR = {
+					tag = AFG
+					tag = APA
+					tag = ATS
+					tag = ATP
+					tag = ATH
+					tag = GMA
+					tag = BLA
+					tag = COG
+					tag = RCG
+					tag = PRK
+					tag = AAS
+					tag = TAL
+					tag = ISS
+					tag = SHB
+					tag = ERI
+					tag = ETH
+					tag = SOM
+					tag = SUD
+					tag = COG
+					tag = RCG
+					tag = ANG
+					tag = ZAM
+					tag = MZB
+					tag = CAM
+					tag = NGR
+					tag = RGA
+					tag = TRG
+					tag = TZN
+					tag = CAR
+				}
+			}
+		}
+
+		days_re_enable = 175
+
+		custom_cost_trigger = {
+			check_variable = { 
+				var = income_var 
+				value = 3
+				compare = greater_than_or_equals
+			}
+        }
+
+		custom_cost_text = dx_more_than_3B
+		
+		complete_effect = {
+			hidden_effect = {
+				set_temp_variable = {
+					var = income_var_temp
+					value = -3
+				}
+				add_income = yes
+			}
+			custom_effect_tooltip = "WThis Will Buy Weapons from CNORINCO W"
+			add_equipment_to_stockpile = {type = infantry_equipment_1 amount = 1000 producer = PRC }
+			add_equipment_to_stockpile = {type = artillery_equipment_1 amount = 300 producer = PRC }
+			add_equipment_to_stockpile = {type = anti_tank_equipment_1 amount = 300 producer = PRC }
+		}
+	}
+}
+
+Small_arms_market_black = {
+	Kalashnikov_surplus = {
+		icon = GFX_decision_kalash_surplus_bg
+		allowed = {
+			NOT = {
+				tag = USA
+				tag = SOV
+				tag = PRC
+			}
+		}
+		available = {
+		}
+		
+
+		visible = {
+		}
+
+		ai_will_do = {
+			base = 0
+			modifier = {
+				add = 1
+				has_equipment = {
+					infantry_equipment < 400
+				}
+				OR = {
+					tag = HRL
+					tag = ISS
+					tag = HOU
+					tag = TAL
+					tag = SHB
+					tag = AAS
+					tag = JAH
+					tag = FSA
+					tag = APA
+					tag = TRG
+					tag = RGA
+					tag = ATS
+					tag = ATP
+					tag = ATH
+					tag = GMA
+					tag = BRN
+					tag = ATW
+					tag = NRT
+					tag = SRN
+					tag = SIN
+					tag = GUF
+					tag = CDJ
+					tag = ZAP
+					tag = ZET
+					tag = SAR
+					tag = HEZ
+					tag = CAR
+					tag = CAC
+					tag = TAT
+					tag = DAG
+					tag = YAK
+					tag = ABK
+					tag = BUK
+				}
+			}
+		}
+
+		custom_cost_trigger = {
+			check_variable = { 
+				var = income_var 
+				value = 10
+				compare = greater_than_or_equals
+			}
+        }
+		
+		days_re_enable = 175
+
+		custom_cost_text = dx_more_than_10B
+
+		complete_effect = {
+			hidden_effect = {
+				set_temp_variable = {
+					var = income_var_temp
+					value = -10
+				}
+				add_income = yes
+			}
+			add_equipment_to_stockpile = {type = infantry_equipment_3 amount = 1000 producer = SV1 }
+			add_equipment_to_stockpile = {type = infantry_equipment_4 amount = 200 producer = SV1 }
+			add_equipment_to_stockpile = {type = anti_air_equipment_1 amount = 300 producer = SV1 }
+			add_equipment_to_stockpile = {type = support_equipment_1 amount = 400 producer = SV1 }
+		}
+	}
+	
+	NORINCO_surplus = {
+		icon = GFX_decision_norinco_surplus_bg
+
+		available = {
+			hidden_trigger = { 
+				NOT = {
+					tag = USA
+					tag = SOV
+					tag = PRC
+				}
+			}
+		}
+
+		visible = {
+		}
+
+		ai_will_do = {
+			base = 0
+			modifier = {
+				add = 1
+				has_equipment = {
+					infantry_equipment < 400
+				}
+				OR = {
+					tag = HRL
+					tag = ISS
+					tag = HOU
+					tag = TAL
+					tag = SHB
+					tag = AAS
+					tag = JAH
+					tag = FSA
+					tag = APA
+					tag = TRG
+					tag = RGA
+					tag = ATS
+					tag = ATP
+					tag = ATH
+					tag = GMA
+					tag = BRN
+					tag = ATW
+					tag = NRT
+					tag = SRN
+					tag = SIN
+					tag = GUF
+					tag = CDJ
+					tag = ZAP
+					tag = ZET
+					tag = SAR
+					tag = HEZ
+					tag = CAR
+					tag = TAT
+					tag = YAK
+					tag = DAG
+					tag = ABK
+					tag = BUK
+				}
+			}
+		}
+
+		custom_cost_trigger = {
+			check_variable = { 
+				var = income_var 
+				value = 15
+			}
+        }
+		
+		days_re_enable = 175
+
+		custom_cost_text = dx_more_than_15B
+
+		complete_effect = {
+			hidden_effect = {
+				set_temp_variable = {
+					var = income_var_temp
+					value = -15
+				}
+				add_income = yes
+			}
+			add_equipment_to_stockpile = {type = infantry_equipment_1 amount = 800 producer = PRC }
+			add_equipment_to_stockpile = {type = support_equipment_1 amount = 100 producer = PRC }
+			add_equipment_to_stockpile = {type = anti_air_equipment_1 amount = 100 producer = PRC }
+			add_equipment_to_stockpile = {type = anti_tank_equipment_1 amount = 100 producer = PRC }
+		}
+	}
+	
+	World_War_Surplus = {
+		icon = GFX_decision_world_war_surplus_bg
+
+		available = {
+			hidden_trigger = { 
+				NOT = {
+					tag = USA
+					tag = SOV
+					tag = PRC
+				}
+			}
+		}
+
+		visible = {
+		}
+
+		ai_will_do = {
+			base = 0
+			modifier = {
+				add = 1
+				has_equipment = {
+					infantry_equipment < 400
+				}
+				OR = {
+					tag = ATW
+					tag = NSM
+					tag = TFM
+					tag = FLM
+					tag = CLM
+					tag = WLF
+					tag = HUM
+					tag = CAC
+					tag = MIM
+					tag = PTF
+					tag = BRN
+					tag = ABR
+					tag = AYN
+					tag = AYB
+					tag = LWK
+					tag = IKA
+					tag = NRT
+					tag = SRN
+					tag = DAG
+					tag = TAT
+					tag = YAK
+					tag = BOA
+					tag = BLA
+				}
+			}
+		}
+
+		custom_cost_trigger = {
+			check_variable = { 
+				var = income_var 
+				value = 2
+				compare = greater_than_or_equals
+			}
+        }
+		
+		days_re_enable = 175
+
+		custom_cost_text = dx_more_than_2B
+
+		complete_effect = {
+			hidden_effect = {
+				set_temp_variable = {
+					var = income_var_temp
+					value = -2
+				}
+				add_income = yes
+			}
+			add_equipment_to_stockpile = {type = infantry_equipment_1 amount = 300 producer = SV1 }
+			add_equipment_to_stockpile = {type = infantry_equipment_1 amount = 200 producer = US2 }
+			add_equipment_to_stockpile = {type = infantry_equipment_2 amount = 100 producer = UK1 }
+			add_equipment_to_stockpile = {type = infantry_equipment_1 amount = 100 producer = WGR }
+			add_equipment_to_stockpile = {type = infantry_equipment_2 amount = 100 producer = WGR }
+			if = {
+				limit = {
+					OR = {
+						tag = ATW
+						tag = NSM
+					}
+				}
+				random_list = {
+					60 = {
+					}
+					40 = {
+						add_equipment_to_stockpile = {type = anti_tank_equipment_1 amount = 100 producer = WGR }
+					}
+				}
+			}
+		}
+	}
+	
+	American_Civilian_Surplus = {
+		icon = GFX_decision_civilian_bg
+
+		available = {
+			hidden_trigger = { 
+				NOT = {
+					tag = USA
+					tag = SOV
+					tag = PRC
+				}
+			}
+		}
+
+		visible = {
+		}
+
+		ai_will_do = {
+			base = 0
+			modifier = {
+				add = 1
+				has_equipment = {
+					infantry_equipment < 400
+				}
+				OR = {
+					tag = ATW
+					tag = NSM
+					tag = TFM
+					tag = FLM
+					tag = CLM
+					tag = WLF
+					tag = HUM
+					tag = MIM
+					tag = APA
+					tag = CAC
+					tag = PTF
+					tag = BRN
+					tag = ABR
+					tag = AYN
+					tag = AYB
+					tag = LWK
+					tag = IKA
+					tag = NRT
+					tag = SRN
+					tag = BLA
+					tag = YAK
+					tag = TAT
+					tag = DAG
+					tag = BOA
+					tag = USC
+					tag = TEX
+				}
+			}
+		}
+
+		custom_cost_trigger = {
+			check_variable = { 
+				var = income_var 
+				value = 2
+				compare = greater_than_or_equals
+			}
+        }
+		
+		days_re_enable = 175
+
+		custom_cost_text = dx_more_than_2B
+
+		complete_effect = {
+			hidden_effect = {
+				set_temp_variable = {
+					var = income_var_temp
+					value = -2
+				}
+				add_income = yes
+			}
+			add_equipment_to_stockpile = {type = infantry_equipment_1 amount = 100 producer = US3 }
+			add_equipment_to_stockpile = {type = infantry_equipment_2 amount = 100 producer = US3 }
+			add_equipment_to_stockpile = {type = infantry_equipment_3 amount = 100 producer = US3 }
+			add_equipment_to_stockpile = {type = infantry_equipment_4 amount = 100 producer = US3 }
+			add_equipment_to_stockpile = {type = infantry_equipment_5 amount = 100 producer = US3 }
+			add_equipment_to_stockpile = {type = infantry_equipment_6 amount = 50 producer = US3 }
+			add_equipment_to_stockpile = {type = infantry_equipment_3 amount = 50 producer = US1 }
+			add_equipment_to_stockpile = {type = anti_tank_equipment_1 amount = 250 producer = USA }
+		}
+	}
+	
+	American_Military_Surplus = {
+		icon = GFX_decision_american_surplus_bg
+
+		available = {
+			hidden_trigger = { 
+				NOT = {
+					tag = USA
+					tag = SOV
+					tag = PRC
+				}
+			}
+		}
+
+		visible = {
+		}
+
+		ai_will_do = {
+			base = 0
+			modifier = {
+				add = 1
+				has_equipment = {
+					infantry_equipment < 400
+				}
+				OR = {
+					tag = ATW
+					tag = NSM
+					tag = TFM
+					tag = FLM
+					tag = CLM
+					tag = WLF
+					tag = HUM
+					tag = MIM
+					tag = PTF
+					tag = APA
+					tag = BRN
+					tag = ABR
+					tag = AYN
+					tag = AYB
+					tag = LWK
+					tag = IKA
+					tag = NRT
+					tag = SRN
+					tag = USC
+					tag = TEX
+				}
+			}
+		}
+
+		custom_cost_trigger = {
+			check_variable = { 
+				var = income_var 
+				value = 5
+				compare = greater_than_or_equals 
+			}
+        }
+		
+		days_re_enable = 175
+
+		custom_cost_text = dx_more_than_5B
+
+		complete_effect = {
+			hidden_effect = {
+				set_temp_variable = {
+					var = income_var_temp
+					value = -5
+				}
+				add_income = yes
+			}
+			add_equipment_to_stockpile = {type = infantry_equipment_2 amount = 600 producer = US1 }
+			add_equipment_to_stockpile = {type = infantry_equipment_4 amount = 200 producer = US2 }
+			add_equipment_to_stockpile = {type = infantry_equipment_5 amount = 200 producer = US2 }
+			add_equipment_to_stockpile = {type = anti_tank_equipment_1 amount = 400 producer = USA }
+		}
+	}
+	
+	Homemade_firearms = {
+		icon = GFX_decision_homemade_bg
+
+		visible = {
+			hidden_trigger = { 
+				NOT = {
+					tag = USA
+					tag = SOV
+					tag = PRC
+				}
+			}
+		}
+
+		ai_will_do = {
+			base = 0
+			modifier = {
+				add = 1
+				has_equipment = {
+					infantry_equipment < 400
+				}
+				OR = {
+					tag = ISS
+					tag = TAL
+					tag = SHB
+					tag = AAS
+					tag = JAH
+					tag = FSA
+					tag = APA
+					tag = TRG
+					tag = RGA
+					tag = ATS
+					tag = ATP
+					tag = ATH
+					tag = GMA
+					tag = BRN
+					tag = ATW
+					tag = NRT
+					tag = SRN
+					tag = SIN
+					tag = GUF
+					tag = CDJ
+					tag = ZAP
+					tag = ZET
+					tag = NSM
+					tag = BLA
+					tag = TAT
+					tag = YAK
+					tag = DAG
+					tag = BOA
+					tag = ABK
+					tag = BUK
+					tag = PTF
+				}
+			}
+		}
+
+		custom_cost_trigger = {
+			check_variable = { 
+				var = income_var 
+				value = 1 
+				compare = greater_than_or_equals
+			}
+        }
+		
+		days_re_enable = 175
+
+		custom_cost_text = dx_more_than_1B
+
+		complete_effect = {
+			hidden_effect = {
+				set_temp_variable = {
+					var = income_var_temp
+					value = -1
+				}
+				add_income = yes
+			}
+			add_equipment_to_stockpile = {type = infantry_equipment_1 amount = 1000 producer = UK1 }
+		}
+	}
+	
+	Technical_Conversions = {
+		icon = GFX_decision_technicals_bg
+
+		available = {
+			hidden_trigger = { 
+				NOT = {
+					tag = USA
+					tag = SOV
+					tag = PRC
+				}
+			}
+		}
+
+		visible = {
+		}
+
+		ai_will_do = {
+			base = 0
+			modifier = {
+				add = 1
+				has_equipment = {
+					motorized_equipment_1 < 400
+				}
+				OR = {
+					tag = ISS
+					tag = TAL
+					tag = HRL
+					tag = HOU
+					tag = CLM
+					tag = FLM
+					tag = TFM
+					tag = HUM
+					tag = WLF
+					tag = SHB
+					tag = AAS
+					tag = JAH
+					tag = FSA
+					tag = APA
+					tag = TRG
+					tag = RGA
+					tag = ATS
+					tag = ATP
+					tag = ATH
+					tag = GMA
+					tag = BRN
+					tag = ATW
+					tag = NRT
+					tag = SRN
+					tag = SIN
+					tag = GUF
+					tag = CDJ
+					tag = ZAP
+					tag = ZET
+					tag = NSM
+					tag = CAC
+					tag = BLA
+					tag = YAK
+					tag = DAG
+					tag = TAT
+					tag = BOA
+					tag = ABK
+					tag = BUK
+					tag = PTF
+					tag = USC
+					tag = TEX
+				}
+			}
+		}
+
+		custom_cost_trigger = {
+			check_variable = { 
+				var = income_var 
+				value = 5 
+				compare = greater_than_or_equals
+			}
+        }
+		
+		days_re_enable = 175
+
+		custom_cost_text = dx_more_than_5B
+
+		complete_effect = {
+			hidden_effect = {
+				set_temp_variable = {
+					var = income_var_temp
+					value = -5
+				}
+				add_income = yes
+			}
+			add_equipment_to_stockpile = {type = motorized_equipment_1 amount = 300 producer = ISS }
+			add_equipment_to_stockpile = {type = light_mechanized_equipment_1 amount = 100 producer = TAL }
+		}
+	}
+	
+	Mechanized_Vehicles = {
+		icon = GFX_decision_mechanized_bg
+
+		available = {
+			hidden_trigger = { 
+				NOT = {
+					tag = USA
+					tag = SOV
+					tag = PRC
+				}
+			}
+		}
+
+		visible = {
+		}
+
+		ai_will_do = {
+			base = 0
+			modifier = {
+				add = 1
+				has_equipment = {
+					modern_tank_chassis < 400
+				}
+				OR = {
+					tag = ISS
+					tag = TAL
+					tag = HRL
+					tag = ATW
+					tag = PTF
+					tag = BRN
+					tag = SHB
+					tag = AAS
+					tag = HOU
+					tag = JAH
+					tag = FSA
+					tag = APA
+					tag = TRG
+					tag = RGA
+					tag = ATS
+					tag = ATP
+					tag = ATH
+					tag = GMA
+					tag = ATW
+					tag = NRT
+					tag = SRN
+					tag = NSM
+					tag = CAC
+					tag = ABK
+					tag = BUK
+					tag = PTF
+					tag = USC
+					tag = TEX
+				}
+			}
+		}
+
+		custom_cost_trigger = {
+			check_variable = { 
+				var = income_var 
+				value = 25
+				compare = greater_than_or_equals 
+			}
+        }
+		
+		days_re_enable = 175
+
+		custom_cost_text = dx_more_than_25B
+
+		complete_effect = {
+			hidden_effect = {
+				set_temp_variable = {
+					var = income_var_temp
+					value = -25
+				}
+				add_income = yes
+			}
+			if = {
+				limit = {
+					has_dlc = "No Step Back"
+				}
+				add_equipment_to_stockpile = {
+					type = modern_tank_chassis_1
+					variant_name = "T-62M"
+					amount = 50
+					producer = SV1
+				}
+				add_equipment_to_stockpile = {
+					type = modern_tank_chassis_2
+					variant_name = "T-72A"
+					amount = 60
+					producer = SV1
+				}
+			}
+			else_if = {
+				limit = {
+					NOT = {
+						has_dlc = "No Step Back"
+					}
+				}
+				add_equipment_to_stockpile = {type = modern_tank_equipment_2 amount = 50 producer = SV1 }
+				add_equipment_to_stockpile = {type = modern_tank_equipment_3 amount = 60 producer = SV1 }
+			}
+			add_equipment_to_stockpile = {type = mechanized_equipment_1 amount = 50 producer = SV1 }
+			add_equipment_to_stockpile = {type = mechanized_equipment_2 amount = 100 producer = SV1 }
+			#add_equipment_to_stockpile = {type = modern_tank_artillery_equipment_1 amount = 50 producer = SV1 }
+		}
+	}
+
+	syphon_civilian_fuel = {
+		icon = GFX_decision_SYPHON_FUEL_bg
+
+		available = {
+			hidden_trigger = { 
+				NOT = {
+					tag = USA
+					tag = SOV
+					tag = PRC
+				}
+			}
+		}
+
+		visible = {
+		}
+
+		ai_will_do = {
+			base = 0
+			modifier = {
+				add = 1
+				has_fuel > 1000
+			}
+		}
+
+		custom_cost_trigger = {
+			check_variable = { 
+				var = income_var 
+				value = 2
+				compare = greater_than_or_equals 
+			}
+        }
+		
+		days_re_enable = 175
+
+		custom_cost_text = dx_more_than_2B
+
+		complete_effect = {
+			hidden_effect = {
+				set_temp_variable = {
+					var = income_var_temp
+					value = -2
+				}
+				add_income = yes
+			}
+			add_fuel = 2500
+		}
+	}
+	
+	civilian_helicopter_conversion = {
+		icon = GFX_decision_HELICOPTERS_bg
+
+		available = {
+			hidden_trigger = { 
+				NOT = {
+					tag = USA
+					tag = SOV
+					tag = PRC
+				}
+			}
+		}
+
+		visible = {
+		}
+
+		ai_will_do = {
+			base = 0
+			modifier = {
+				add = 1
+				has_equipment = {
+					utility_helicopter_equipment < 400
+				}
+				OR = {
+					tag = ISS
+					tag = TAL
+					tag = HRL
+					tag = ATW
+					tag = PTF
+					tag = BRN
+					tag = SHB
+					tag = AAS
+					tag = HOU
+					tag = JAH
+					tag = FSA
+					tag = APA
+					tag = TRG
+					tag = RGA
+					tag = ATS
+					tag = ATP
+					tag = ATH
+					tag = GMA
+					tag = ATW
+					tag = NRT
+					tag = SRN
+					tag = NSM
+					tag = CAC
+					tag = ABK
+					tag = BUK
+					tag = PTF
+					tag = USC
+					tag = TEX
+				}
+			}
+		}
+
+		custom_cost_trigger = {
+			check_variable = { 
+				var = income_var 
+				value = 25
+				compare = greater_than_or_equals 
+			}
+        }
+		
+		days_re_enable = 175
+
+		custom_cost_text = dx_more_than_25B
+
+		complete_effect = {
+			hidden_effect = {
+				set_temp_variable = {
+					var = income_var_temp
+					value = -25
+				}
+				add_income = yes
+			}
+			add_equipment_to_stockpile = {type = utility_helicopter_equipment amount = 50 producer = SOV }
+			add_equipment_to_stockpile = {type = attack_helicopter_equipment amount = 20 producer = SOV }
+		}
+	}
+
+	produce_narcotics = {
+		icon = GFX_decision_NARCOTICS_bg
+
+		available = {
+			hidden_trigger = { 
+				NOT = {
+					tag = USA
+					tag = SOV
+					tag = PRC
+				}
+			}
+		}
+
+		visible = {
+		}
+
+		ai_will_do = {
+			base = 0
+			modifier = {
+				add = 1
+				OR = {
+					tag = ISS
+					tag = TAL
+					tag = HRL
+					tag = ATW
+					tag = PTF
+					tag = BRN
+					tag = SHB
+					tag = AAS
+					tag = HOU
+					tag = JAH
+					tag = FSA
+					tag = APA
+					tag = TRG
+					tag = RGA
+					tag = ATS
+					tag = ATP
+					tag = ATH
+					tag = GMA
+					tag = ATW
+					tag = NRT
+					tag = SRN
+					tag = NSM
+					tag = CAC
+					tag = ABK
+					tag = BUK
+					tag = HOU
+				}
+			}
+		}
+
+		cost = 100
+		
+		days_remove = 70
+		days_re_enable = 175
+		
+		modifier = {
+			stability_weekly = -0.001
+			income_growth_factor = 0.15
+		}
+
+		complete_effect = {
+
+		}
+	}
+}

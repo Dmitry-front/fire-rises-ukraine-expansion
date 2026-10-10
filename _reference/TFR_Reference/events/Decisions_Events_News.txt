@@ -1,0 +1,172 @@
+﻿add_namespace = decision_event_news
+
+#Operation Napoleon
+country_event = {
+	id = decision_event_news.1
+	title = decision_event_news.1.t
+	desc = decision_event_news.1.d
+	picture = GFX_news_event_leopard_2
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = decision_event_news.1.o1
+		set_country_flag = GER_kaiser
+		set_country_flag = show_defense_tree
+		focus_unlock = yes
+		set_global_flag = second_nato_war_flag
+		
+	}
+}
+
+#Operation Napoleon
+country_event = {
+	id = decision_event_news.2
+	title = decision_event_news.1.t
+	desc = decision_event_news.1.d
+	picture = GFX_news_event_leopard_2
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = decision_event_news.1.o1
+		random_list = {
+						1 = {
+						}
+						99 = {
+							if = {
+								limit = {
+									NOT = {
+										has_country_flag = GER_urbanite_hell1
+										has_country_flag = GER_urbanite_hell2
+										has_country_flag = GER_urbanite_hell3
+									}
+								}
+								set_country_flag = GER_urbanite_hell1
+							}
+							else_if = {
+								limit = {
+									has_country_flag = GER_urbanite_hell1
+								}
+								set_country_flag = GER_urbanite_hell2
+							}
+							else_if = {
+								limit = {
+									has_country_flag = GER_urbanite_hell2
+								}
+								set_country_flag = GER_urbanite_hell3
+							}
+							random_owned_controlled_state = {
+								if = {
+									limit = {
+										NOT = {
+											has_state_flag = GER_urbanite_hell
+										}
+									}
+									set_state_flag = GER_urbanite_hell
+								}
+							}
+							modifier = {
+								factor = 10
+								has_completed_focus = GER_work_with_technocrats
+							}
+							modifier = {
+								factor = 10
+								has_completed_focus = GER_support_volt_europa
+							}
+							modifier = {
+								factor = 10
+								has_government = social_democrat
+							}
+						}
+					}
+	}
+}
+
+#Operation Napoleon
+country_event = {
+	id = decision_event_news.3
+	title = decision_event_news.1.t
+	desc = decision_event_news.1.d
+	picture = GFX_news_event_leopard_2
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = decision_event_news.1.o1
+		set_victory_points = {
+			province = 128
+			value = 50
+		}
+		set_province_name = {
+			id = 128
+			name = "Agartha"
+		}
+		create_entity = {
+			entity = agartha_entity
+			province = 128
+			state = 144
+			rotation = 6
+			scale = 0.3
+			min_zoom = 900.0
+		}
+	}
+}
+
+#Operation Napoleon
+country_event = {
+	id = decision_event_news.4
+	title = decision_event_news.1.t
+	desc = decision_event_news.1.d
+	picture = GFX_news_event_leopard_2
+	
+	is_triggered_only = yes
+	trigger = {
+
+	}
+	
+	option = {
+		name = decision_event_news.1.o1
+		load_oob = "GER_second_nato"
+	}
+}
+
+#Debug
+country_event = {
+	id = decision_event_news.5
+	title = decision_event_news.5.t
+	desc = decision_event_news.5.d
+	picture = GFX_Reality
+	
+	is_triggered_only = yes
+	trigger = {
+
+	}
+	
+	option = {
+		name = decision_event_news.5.a
+		load_oob = "ARR_german_support"
+	}
+}
+
+#Operation Napoleon
+country_event = {
+	id = decision_event_news.6
+	title = decision_event_news.6.t
+	desc = decision_event_news.6.d
+	picture = GFX_news_event_leopard_2
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = decision_event_news.6.o1
+		set_victory_points = {
+			province = 10693
+			value = 1
+		}
+		set_province_name = {
+			id = 10693
+			name = "Twin Peaks"
+		}
+	}
+}

@@ -1,0 +1,288 @@
+	raise_state_militias = {
+
+		sacramento_militia_2 = {
+			icon = generic_nationalism
+			
+			highlight_states = { state = 941 }
+
+			available = {
+				tag = CLM
+				not = {
+					has_country_flag = recruiting_militia
+				}
+			}
+
+			visible = {
+				tag = CLM
+				941 = {
+					is_owned_by = CLM
+				}
+			}
+
+			ai_will_do = {
+				factor = 2
+			}
+
+			fire_only_once = yes
+
+			days_remove = 15
+			
+			custom_cost_trigger = {
+				check_variable = { var = income_var value = 0.07 }
+			}
+
+			custom_cost_text = dx_more_than_70M
+
+			complete_effect = {
+				hidden_effect = {
+					subtract_from_variable  = { var = income_var value = 0.07 }
+					set_country_flag = recruiting_militia
+					941 = {
+						create_unit = {
+							division = "name = \"1st Sacramento Volunteers\" division_template = \"Volunteer Brigade\"  start_experience_factor = 0.0"
+							allow_spawning_on_enemy_provs = yes
+							owner = CLM
+						}
+						create_unit = {
+							division = "name = \"2nd Sacramento Volunteers\" division_template = \"Volunteer Brigade\"  start_experience_factor = 0.0"
+							allow_spawning_on_enemy_provs = yes
+							owner = CLM
+						}
+					}
+				}
+			}
+			remove_effect = {
+				clr_country_flag = recruiting_militia
+			}
+		}
+		
+		berkley_militia_2 = {
+			icon = generic_nationalism
+			
+			highlight_states = { state = 949 }
+
+			available = {
+				tag = CLM
+				not = {
+					has_country_flag = recruiting_militia
+				}
+			}
+
+			visible = {
+				tag = CLM
+				949 = {
+					is_owned_by = CLM
+				}
+			}
+
+			ai_will_do = {
+				factor = 2
+			}
+
+			fire_only_once = yes
+
+			days_remove = 15
+			
+			custom_cost_trigger = {
+				check_variable = { var = income_var value = 0.07 }
+			}
+
+			custom_cost_text = dx_more_than_70M
+
+			complete_effect = {
+				hidden_effect = {
+					subtract_from_variable  = { var = income_var value = 0.07 }
+					set_country_flag = recruiting_militia
+					949 = {
+						create_unit = {
+							division = "name = \"1st Berkley Volunteers\" division_template = \"Volunteer Brigade\"  start_experience_factor = 0.0"
+							allow_spawning_on_enemy_provs = yes
+							owner = CLM
+						}
+						create_unit = {
+							division = "name = \"2nd Berkley Volunteers\" division_template = \"Volunteer Brigade\"  start_experience_factor = 0.0"
+							allow_spawning_on_enemy_provs = yes
+							owner = CLM
+						}
+					}
+				}
+			}
+			remove_effect = {
+				clr_country_flag = recruiting_militia
+			}
+		}
+		
+		paradise_militia_2 = {
+			icon = generic_nationalism
+			
+			highlight_states = { state = 947 }
+
+			available = {
+				has_global_flag = USA_american_civil_war_global
+				tag = CLM
+				not = {
+					has_country_flag = recruiting_militia
+				}
+			}
+
+			visible = {
+				tag = CLM
+				947 = {
+					is_owned_by = CLM
+				}
+			}
+
+			ai_will_do = {
+				factor = 2
+			}
+
+			fire_only_once = yes
+
+			days_remove = 15
+			custom_cost_trigger = {
+				check_variable = { var = income_var value = 0.1 }
+			}
+
+			custom_cost_text = dx_more_than_100B
+
+			complete_effect = {
+				subtract_from_variable  = { var = income_var value = 0.1 }
+				set_country_flag = recruiting_militia
+				947 = {
+					create_unit = {
+						division = "name = \"1st Paradise Volunteers\" division_template = \"Volunteer Brigade\"  start_experience_factor = 0.0"
+						allow_spawning_on_enemy_provs = yes
+						owner = CLM
+					}
+					create_unit = {
+						division = "name = \"2nd Paradise Volunteers\" division_template = \"Volunteer Brigade\"  start_experience_factor = 0.0"
+						allow_spawning_on_enemy_provs = yes
+						owner = CLM
+					}
+					create_unit = {
+						division = "name = \"3rd Paradise Volunteers\" division_template = \"Volunteer Brigade\"  start_experience_factor = 0.0"
+						allow_spawning_on_enemy_provs = yes
+						owner = CLM
+					}
+				}
+			}
+			remove_effect = {
+				clr_country_flag = recruiting_militia
+			}
+		}
+
+		santa_rosa_militia_2 = {
+			icon = generic_nationalism
+			
+			highlight_states = { state = 942 }
+
+			available = {
+				has_global_flag = USA_american_civil_war_global
+				tag = CLM
+				not = {
+					has_country_flag = recruiting_militia
+				}
+			}
+
+			visible = {
+				tag = CLM
+				942 = {
+					is_owned_by = CLM
+				}
+			}
+
+			ai_will_do = {
+				factor = 2
+			}
+
+			fire_only_once = yes
+
+			days_remove = 15
+			
+			custom_cost_trigger = {
+				check_variable = { var = income_var value = 0.07 }
+			}
+
+			custom_cost_text = dx_more_than_70M
+
+			complete_effect = {
+				subtract_from_variable  = { var = income_var value = 0.07 }
+				set_country_flag = recruiting_militia
+				947 = {
+					create_unit = {
+						division = "name = \"1st Santa Rosa Volunteers\" division_template = \"Volunteer Brigade\"  start_experience_factor = 0.0"
+						allow_spawning_on_enemy_provs = yes
+						owner = CLM
+					}
+					create_unit = {
+						division = "name = \"2nd Santa Rosa Volunteers\" division_template = \"Volunteer Brigade\"  start_experience_factor = 0.0"
+						allow_spawning_on_enemy_provs = yes
+						owner = CLM
+					}
+				}
+			}
+			remove_effect = {
+				clr_country_flag = recruiting_militia
+			}
+		}
+
+		shasta_militia_2 = {
+			icon = generic_nationalism
+			
+			highlight_states = { state = 948 }
+
+			available = {
+				has_global_flag = USA_american_civil_war_global
+				tag = CLM
+				not = {
+					has_country_flag = recruiting_militia
+				}
+			}
+
+			visible = {
+				tag = CLM
+				948 = {
+					is_owned_by = CLM
+				}
+			}
+
+			ai_will_do = {
+				factor = 2
+			}
+
+			fire_only_once = yes
+
+			days_remove = 15
+			
+			custom_cost_trigger = {
+				check_variable = { var = income_var value = 0.07 }
+			}
+
+			custom_cost_text = dx_more_than_70M
+
+			complete_effect = {
+				subtract_from_variable  = { var = income_var value = 0.07 }
+				set_country_flag = recruiting_militia
+				947 = {
+					create_unit = {
+						division = "name = \"1st Shasta Volunteers\" division_template = \"Volunteer Brigade\"  start_experience_factor = 0.0"
+						allow_spawning_on_enemy_provs = yes
+						owner = CLM
+					}
+					create_unit = {
+						division = "name = \"2nd Shasta Volunteers\" division_template = \"Volunteer Brigade\"  start_experience_factor = 0.0"
+						allow_spawning_on_enemy_provs = yes
+						owner = CLM
+					}
+					create_unit = {
+						division = "name = \"3rd Shasta Volunteers\" division_template = \"Volunteer Brigade\"  start_experience_factor = 0.0"
+						allow_spawning_on_enemy_provs = yes
+						owner = CLM
+					}
+				}
+			}
+			remove_effect = {
+				clr_country_flag = recruiting_militia
+			}
+		}
+	}

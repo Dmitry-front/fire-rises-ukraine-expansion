@@ -1,0 +1,122 @@
+﻿	capital = 924
+
+#	oob = ""
+	
+	recruit_character = BRN_david_sanchez_char
+	recruit_character = BRN_juan_carlos_lee_char
+	#recruit_character = BRN_marisa_franco_char
+	recruit_character = BRN_octavio_garcia_char
+	recruit_character = BRN_fernando_gomez_char
+	recruit_character = BRN_sergio_blanco_char
+	recruit_character = BRN_pedro_castillo_char
+
+	set_country_flag = shithole_country
+
+	set_research_slots = 1
+	set_convoys = 10
+	set_stability = 0.7
+
+	set_technology = {
+		## Infantry ##
+		
+		infantry_weapons1 = 1
+		infantry_weapons2 = 1
+		motorised_infantry = 1
+		infantry_rifle_upgrade = 1
+		support_weapons = 1
+		night_vision = 1
+		body_armor = 1
+		camouflage = 1
+		
+		## Support Companies ##
+		tech_support = 1
+		tech_engineers = 1
+		tech_recon = 1
+		tech_military_police = 1
+		tech_field_hospital = 1
+		
+		## Armor ##
+		
+		## Artillery ##
+		gw_artillery = 1
+		interwar_antitank = 1
+		interwar_antiair = 1
+		
+		## Air ##
+		CAS1 = 1
+		fighter1 = 1
+		
+		## Engineering ##
+		#eng_low
+		
+		## Industry ##
+		#ind_low
+		
+		## Doctrines ##
+		
+	}
+	
+	if = {
+		limit = { has_dlc = "By Blood Alone" }
+			set_technology = {
+				aa_lmg = 1
+				aa_hmg = 1
+				engines_1 = 1
+				early_bombs = 1
+				guided_bombs = 1
+				iw_small_airframe = 1
+			}
+		else = {
+			set_technology = {
+				CAS1 = 1
+				fighter1 = 1
+			}
+		}
+	}
+
+	if = {
+		limit = {
+			NOT = { has_dlc = "No Step Back" }
+		}
+		set_technology = {
+			main_battle_tank1 = 1
+		}
+	}
+	if = {
+		limit = {
+			has_dlc = "No Step Back"
+		}
+		set_technology = {
+			gwtank_chassis = 1
+			basic_medium_tank_chassis = 1
+			engine_tech_1 = 1
+		}
+	}
+
+	set_politics = {	
+		ruling_party = social_democrat
+		last_election = "2018.1.1"
+		election_frequency = 48
+		elections_allowed = no
+	}
+
+	set_popularities = {
+		conservative  = 20
+		social_democrat = 45
+		nationalist = 5
+		libertarian_socialist = 10
+		social_liberal = 20
+	}
+
+	add_ideas = {
+		#National Spirits
+		BRN_la_raza
+		BRN_independent_chapters
+		BRN_inexperienced_soldiers
+		BRN_chicano_rule_1
+		#Development
+		low_industry
+		medium_society
+		low_poverty
+		low_education
+	}

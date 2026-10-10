@@ -1,0 +1,241 @@
+﻿#south east asian countries
+
+add_namespace = asean
+
+
+
+# Malaysian King
+country_event = {
+	id = asean.1
+	title = asean.1.t
+	desc = asean.1.d
+	picture = GFX_generic_media
+	fire_only_once = yes
+	is_triggered_only = yes
+	
+	trigger = {
+		tag = MAL
+	}
+
+	option = {
+		name = asean.1.a
+		retire_character = MAL_sultan_abdullah_char
+		add_field_marshal_role ={
+			Character = MAL_sultan_ibrahim_iskandar_char
+			traits={
+				commander_in_chief
+			}
+			skill=2
+			attack_skill=1
+			defense_skill=1
+			planning_skill=2
+			logistics_skill=1
+		}
+	}
+}
+
+# Indonesian 2024 Election
+country_event = {
+	id = asean.2
+	title = asean.2.t
+	desc = asean.2.d
+	picture = GFX_generic_elections
+	fire_only_once = yes
+	is_triggered_only = yes
+
+	trigger = {
+		tag = INS
+	}
+
+	option = {
+		name = asean.2.a
+		set_politics = {
+			ruling_party = conservative
+			elections_allowed = yes
+			last_election = "2024.2.14"
+        		election_frequency = 60
+		}
+		add_popularity = {
+			ideology = conservative
+			popularity = 0.15
+		}
+		add_popularity = {
+			ideology = market_liberal
+			popularity = 0.05
+		}
+		add_popularity = {
+			ideology = authoritarian_democrat
+			popularity = 0.05
+		}
+	}
+}
+
+# Mahatir Resigns
+country_event = {
+	id = asean.3
+	title = asean.3.t
+	desc = asean.3.d
+	picture = GFX_generic_media
+	fire_only_once = yes
+	is_triggered_only = yes
+	
+	trigger = {
+		tag = MAL
+	}
+
+	option = {
+		name = asean.3.a
+		set_politics = {
+			ruling_party = conservative
+			elections_allowed = yes
+			last_election = "2018.5.9"
+        	election_frequency = 48
+		}
+		add_popularity = {
+			ideology = conservative
+			popularity = 0.15
+		}
+		hidden_effect = {
+			country_event = { id = asean.4 days = 1004  }
+		}
+		set_temp_variable = {
+			coalition_partner_var_temp = token:social_liberal
+		}
+		remove_from_coalition = yes
+		set_temp_variable = {
+			coalition_partner_var_temp = token:market_liberal
+		}
+		remove_from_coalition = yes
+	}
+}
+
+# Malaysia 2022 Election
+country_event = {
+	id = asean.4
+	title = asean.4.t
+	desc = asean.4.d
+	picture = GFX_generic_elections
+	fire_only_once = yes
+	is_triggered_only = yes
+	
+	trigger = {
+		tag = MAL
+	}
+
+	option = {
+		name = asean.4.a
+		set_politics = {
+			ruling_party = social_democrat
+			elections_allowed = yes
+			last_election = "2018.5.9"
+        	election_frequency = 48
+		}
+		add_popularity = {
+			ideology = social_democrat
+			popularity = 0.15
+		}
+		set_temp_variable = {
+			coalition_partner_var_temp = token:social_liberal
+		}
+		add_to_coalition = yes
+		set_temp_variable = {
+			coalition_partner_var_temp = token:market_liberal
+		}
+		add_to_coalition = yes
+	}
+}
+
+# Singapore 2023 Election
+country_event = {
+	id = asean.5
+	title = asean.5.t
+	desc = asean.5.d
+	picture = GFX_generic_elections
+	
+	is_triggered_only = yes
+	immediate = {
+		
+	}
+	
+	option = {
+		name = asean.5.a
+		retire_character = SIG_halimah_yacob_char
+	}
+}
+#PRO-JAP GOVERNMENT (yet to be fully implemented)
+country_event = {
+	id = asean.6
+	title = asean.6.t
+	desc = asean.6.d
+	picture = GFX_generic_elections
+	
+	is_triggered_only = yes
+	immediate = {
+		
+	}
+	
+	option = {
+		name = asean.6.a
+		hidden_effect = {
+			if = {
+				limit = {
+					tag = LAO
+				}
+				set_cosmetic_tag = LAO_monarchist
+				create_country_leader = {
+					name = LAO_soulivong_savang_char
+					picture = "gfx/leaders/LAO/LAO_soulivong_savang.png"
+					ideology = absolute_monarchist
+					traits = {
+					}
+				}
+				create_country_leader = {
+					name = LAO_soulivong_savang_char
+					picture = "gfx/leaders/LAO/LAO_soulivong_savang.png"
+					ideology = ultra_conservatism
+					traits = {
+					}
+				}
+				set_politics = {
+					ruling_party = nationalist
+					elections_allowed = no
+				}
+				set_party_name = {
+					long_name = LAO_khun_lo_dynasty
+					name = LAO_khun_lo_dynasty
+					ideology = nationalist
+				}
+				clr_country_flag = head_of_gov_ui_enabled
+				add_popularity = {
+					ideology = nationalist
+					popularity = 0.45
+				}
+				add_popularity = {
+					ideology = authoritarian_democrat
+					popularity = 0.15
+				}
+				add_popularity = {
+					ideology = conservative
+					popularity = 0.15
+				}
+			}
+			else_if = {
+				limit = {
+					tag = CAM
+				}
+				set_politics = {
+					ruling_party = social_liberal
+					elections_allowed = yes
+					election_frequency = 60
+				}
+				set_popularities = {
+					social_liberal = 44
+					conservative = 22
+					market_liberal = 8
+					authoritarian_democrat = 17
+					social_democrat = 9
+				}
+			}
+		}
+	}
+}

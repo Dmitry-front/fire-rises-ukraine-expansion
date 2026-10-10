@@ -1,0 +1,59 @@
+peace_action_modifiers = {
+	generic_has_claim = {
+		category = has_claim
+		peace_action_type = take_states
+		enable = {
+			FROM.FROM.FROM = {
+				is_claimed_by = ROOT.FROM
+			}
+			ROOT.FROM = {
+				is_subject = no
+				pc_is_puppeted = no
+			}
+		}
+		cost_multiplier = 0.9
+	}
+	generic_has_core = {
+		category = has_claim
+		peace_action_type = take_states
+		enable = {
+			FROM.FROM.FROM = {
+				is_core_of = ROOT.FROM
+			}
+			ROOT.FROM = {
+				is_subject = no
+				pc_is_puppeted = no
+			}
+		}
+		cost_multiplier = 0.33
+	}
+	generic_occupies_state = {
+		category = occupation
+		peace_action_type = {
+			take_states
+		}
+		enable = {
+			FROM.FROM.FROM = {
+				is_controlled_by = ROOT
+				compliance > 0
+			}
+		}
+		cost_multiplier = 0.1
+	}
+	dont_puppet_plz = {
+		category = ideology
+		peace_action_type = {
+			puppet
+			force_government
+			liberate
+		}
+		enable = {
+			FROM = {
+				ROOT = {
+					is_ai = yes
+				}
+			}
+		}
+		cost_multiplier = 999
+	}
+}

@@ -1,0 +1,344 @@
+focus_tree = {
+	id = TFR_tree_JAP_republic
+	country = {
+		factor = 0
+	}
+	default = no
+	focus = {
+		id = JAP_proclaim_provinsial_government
+		icon = GFX_focus_JAP_proclaim_provinsial_government
+		cost = 1
+		x = 6
+		y = 0
+		available = {
+			has_global_flag = JAP_civil_war_started
+		}
+		completion_reward = {
+			custom_effect_tooltip = JAP_cc_government
+			hidden_effect = {
+				if = {
+					limit = {
+						has_global_flag = JAP_kazuo_killed
+					}
+					add_ideas = {
+						JAP_toru_miyamoto
+					}
+				}
+				if = {
+					limit = {
+						NOT = {
+							has_global_flag = JAP_kazuo_killed
+						}
+					}
+					add_ideas = {
+						JAP_kazuo_shii
+					}
+				}
+				add_ideas = {
+					JAP_akira_kasai
+					JAP_mizuho_fukushima
+					JAP_mari_kushibuchi
+					JAP_akira_koike
+				}
+				country_event = {
+					id = jap.75
+				}
+			}
+		}
+	}
+	focus = {
+		id = JAP_emergency_congress
+		icon = GFX_focus_JAP_emergency_congress
+		relative_position_id = JAP_proclaim_provinsial_government
+		cost = 2
+		x = -2
+		y = 1
+		prerequisite = {
+			focus = JAP_proclaim_provinsial_government
+		}
+		completion_reward = {
+			country_event = {
+				id = jap.41
+			}
+			add_to_array = {
+				JAP.ldp_popularity = party_popularity@conservative
+			}
+			add_to_array = {
+				JAP.ldp_popularity = party_popularity@authoritarian_democrat
+			}
+			hidden_effect = {
+				set_party_name = {
+					ideology = communist
+					long_name = JAP_united_democratic_front_t_long
+					name = JAP_united_democratic_front_t
+				}
+				set_party_name = {
+					ideology = libertarian_socialist
+					long_name = JAP_united_democratic_front_c_long
+					name = JAP_united_democratic_front_c
+				}
+				set_party_name = {
+					ideology = social_democrat
+					long_name = JAP_united_democratic_front_s_long
+					name = JAP_united_democratic_front_s
+				}
+			}
+		}
+	}
+	focus = {
+		id = JAP_japanese_revolutionary_armed_forces
+		icon = GFX_focus_JAP_japanese_revolutionary_armed_forces
+		relative_position_id = JAP_proclaim_provinsial_government
+		cost = 2
+		x = 2
+		y = 1
+		prerequisite = {
+			focus = JAP_proclaim_provinsial_government
+		}
+		completion_reward = {
+			army_experience = 15
+			add_command_power = 50
+		}
+	}
+	focus = {
+		id = JAP_address_to_the_parties
+		icon = GFX_focus_JAP_address_to_the_parties
+		relative_position_id = JAP_emergency_congress
+		cost = 3
+		x = -1
+		y = 1
+		prerequisite = {
+			focus = JAP_emergency_congress
+		}
+		completion_reward = {
+			add_stability = 0.02
+			add_war_support = 0.02
+			country_event = {
+				id = jap.76
+			}
+		}
+	}
+	focus = {
+		id = JAP_calm_the_bureaucracy
+		icon = GFX_focus_JAP_calm_the_bureaucracy
+		relative_position_id = JAP_emergency_congress
+		cost = 3
+		x = 1
+		y = 1
+		prerequisite = {
+			focus = JAP_emergency_congress
+		}
+		completion_reward = {
+			add_political_power = 35
+			add_stability = 0.02
+		}
+	}
+	focus = {
+		id = JAP_save_our_democracy
+		icon = GFX_focus_JAP_save_our_democracy
+		relative_position_id = JAP_japanese_revolutionary_armed_forces
+		cost = 3
+		x = -1
+		y = 1
+		prerequisite = {
+			focus = JAP_japanese_revolutionary_armed_forces
+		}
+		completion_reward = {
+			add_political_power = 50
+			add_war_support = 0.05
+		}
+	}
+	focus = {
+		id = JAP_use_everything
+		icon = GFX_focus_JAP_use_everything
+		relative_position_id = JAP_calm_the_bureaucracy
+		cost = 3
+		x = 1
+		y = 1
+		prerequisite = {
+			focus = JAP_address_to_the_parties
+		}
+		prerequisite = {
+			focus = JAP_calm_the_bureaucracy
+		}
+		prerequisite = {
+			focus = JAP_save_our_democracy
+		}
+		completion_reward = {
+			add_ideas = JAP_use_everything_republic_idea
+		}
+	}
+	focus = {
+		id = JAP_help_from_abroad
+		icon = GFX_focus_JAP_help_from_abroad
+		relative_position_id = JAP_use_everything
+		cost = 3
+		x = -1
+		y = 1
+		prerequisite = {
+			focus = JAP_use_everything
+		}
+		completion_reward = {
+			custom_effect_tooltip = JAP_help_from_abroad_tt
+			hidden_effect = {
+				if = {
+					limit = {
+						NOT = {
+							has_global_flag = JAP_civil_war_ended
+						}
+					}
+					uncomplete_national_focus = {
+						focus = JAP_help_from_abroad
+					}
+				}
+			}
+			random_list = {
+				10 = {
+					country_event = {
+						id = jap.68
+					}
+				}
+				10 = {
+					country_event = {
+						id = jap.69
+					}
+				}
+				10 = {
+					country_event = {
+						id = jap.70
+					}
+				}
+				10 = {
+					country_event = {
+						id = jap.71
+					}
+				}
+				10 = {
+					country_event = {
+						id = jap.72
+					}
+				}
+				10 = {
+					country_event = {
+						id = jap.73
+					}
+				}
+				10 = {
+					country_event = {
+						id = jap.74
+					}
+				}
+			}
+		}
+	}
+	focus = {
+		id = JAP_return_conscription
+		icon = GFX_focus_JAP_return_conscription
+		relative_position_id = JAP_japanese_revolutionary_armed_forces
+		cost = 3
+		x = 1
+		y = 2
+		prerequisite = {
+			focus = JAP_japanese_revolutionary_armed_forces
+		}
+		completion_reward = {
+			country_event = {
+				id = jap.67
+			}
+		}
+	}
+	focus = {
+		id = JAP_mobilize_zengakuren
+		icon = GFX_focus_JAP_mobilize_zengakuren
+		relative_position_id = JAP_return_conscription
+		cost = 2
+		x = -1
+		y = 1
+		prerequisite = {
+			focus = JAP_return_conscription
+		}
+		completion_reward = {
+			add_popularity = {
+				ideology = communist
+				popularity = 0.03
+			}
+			add_timed_idea = {
+				idea = JAP_zengakuren_mobilisation_idea
+				days = 70
+			}
+		}
+	}
+	focus = {
+		id = JAP_negotiate_with_radicals
+		icon = GFX_focus_JAP_negotiate_with_radicals
+		relative_position_id = JAP_return_conscription
+		cost = 2
+		x = 1
+		y = 1
+		prerequisite = {
+			focus = JAP_return_conscription
+		}
+		available = {
+			has_political_power > 74
+		}
+		completion_reward = {
+			add_political_power = -50
+			add_popularity = {
+				ideology = communist
+				popularity = 0.06
+			}
+			add_manpower = 15000
+			add_stability = 0.08
+			add_war_support = 0.05
+		}
+	}
+	focus = {
+		id = JAP_unite_the_people
+		icon = GFX_focus_JAP_unite_the_people
+		relative_position_id = JAP_mobilize_zengakuren
+		cost = 3
+		x = -1
+		y = 1
+		prerequisite = {
+			focus = JAP_use_everything
+		}
+		prerequisite = {
+			focus = JAP_mobilize_zengakuren
+		}
+		prerequisite = {
+			focus = JAP_negotiate_with_radicals
+		}
+		completion_reward = {
+			add_political_power = 50
+			if = {
+				limit = {
+					has_idea = JAP_republican_widespread_public_disorder_idea
+				}
+				remove_ideas = JAP_republican_widespread_public_disorder_idea
+			}
+			if = {
+				limit = {
+					has_idea = JAP_republican_widespread_public_disorder_party_adress_idea
+				}
+				remove_ideas = JAP_republican_widespread_public_disorder_party_adress_idea
+			}
+		}
+	}
+	focus = {
+		id = JAP_republican_referendum
+		icon = GFX_focus_JAP_proclaim_provinsial_government
+		relative_position_id = JAP_unite_the_people
+		cost = 3
+		x = 0
+		y = 1
+		prerequisite = {
+			focus = JAP_unite_the_people
+		}
+		allow_branch = {
+			has_global_flag = JAP_civil_war_ended
+		}
+		completion_reward = {
+			set_cosmetic_tag = JAP_republic
+		}
+	}
+}

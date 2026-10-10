@@ -1,0 +1,171 @@
+﻿	capital = 671
+
+	oob = "VIN_2020"
+
+	set_research_slots = 3
+	set_convoys = 600
+	set_stability = 0.4
+	country_event = {
+		id = vietnam.1
+		days = 460
+	}
+	country_event = {
+		id = vietnam.6
+		days = 1661
+	}
+
+	set_variable = { Russian_Influence = 0.00 }
+	set_variable = { Chinese_Influence = 0.20 }
+	set_variable = { American_Influence = 0.00 }
+	set_variable = { European_Influence = 0.0 }
+	set_variable = { PDO_Influence = 0.20 }
+	set_variable = { Sovereign_Influence = 0.60 }
+
+	recruit_character = VIN_nguyen_phu_trong_char
+	recruit_character = VIN_nguyen_xuan_phuc_char
+	recruit_character = VIN_vo_thi_anh_xuan_char
+	recruit_character = VIN_vo_van_thuong_char
+	recruit_character = VIN_to_lam_char
+	recruit_character = VIN_luong_cuong_char
+	recruit_character = VIN_vu_hai_san_char
+	recruit_character = VIN_nguyen_tan_cuong_char
+	recruit_character = VIN_pham_hoai_nam_char
+	recruit_character = VIN_phan_van_giang_char
+	recruit_character = VIN_trinh_van_quyet_char
+	
+	set_country_flag = head_of_gov_ui_enabled
+
+	set_technology = {
+		## Infantry ##
+		infantry_weapons1 = 1
+		infantry_weapons2 = 1
+		motorised_infantry = 1
+		infantry_rifle_upgrade = 1
+		support_weapons = 1
+		body_armor = 1
+		camouflage = 1
+		marines = 1
+		tech_mountaineers = 1
+		tech_rangers = 1
+		paratroopers = 1
+		
+		## Support Companies ##
+		tech_support = 1
+		tech_engineers = 1
+		tech_recon = 1
+		tech_military_police = 1
+		tech_maintenance_company = 1
+		tech_field_hospital = 1
+		tech_logistics_company = 1
+		tech_signal_company = 1
+		
+		## Armor ##
+		mechanised_infantry1 = 1
+		light_mechanized_infantry1 = 1
+		amphibious_mechanized_infantry1 = 1
+		
+		## Artillery ##
+		gw_artillery = 1
+		interwar_antitank = 1
+		interwar_antiair = 1
+		tank_destroyer1 = 1
+		self_propelled_aa1 = 1
+		interwar_artillery = 1
+		sp_artillery1 = 1
+		
+		## Air ##
+		attack_helicopter_1 = 1
+		utility_helicopter_1 = 1
+		
+		## Engineering ##
+		electronic_mechanical_engineering = 1
+		
+		## Industry ##
+		basic_machine_tools = 1
+		
+		## Doctrines ##
+		#mass_assault = 1
+		#formation_flying = 1
+	}
+	
+	if = {
+		limit = { has_dlc = "By Blood Alone" }
+			set_technology = {
+				aa_lmg = 1
+				aa_cannon_1 = 1
+				aa_hmg = 1
+				engines_1 = 1
+				engines_2 = 1
+				early_bombs = 1
+				guided_bombs = 1
+				aircraft_construction = 1
+				survivability_studies = 1
+				iw_small_airframe = 1
+				basic_small_airframe = 1
+				iw_medium_airframe = 1
+				basic_medium_airframe = 1
+				iw_large_airframe = 1
+			}
+		else = {
+			set_technology = {
+				CAS1 = 1
+				CAS2 = 1
+				fighter1 = 1
+				fighter2 = 1
+				fighter3 = 1
+				naval_bomber1 = 1
+				strategic_bomber1 = 1
+			}
+		}
+	}
+	
+	if = {
+		limit = {
+			NOT = { has_dlc = "No Step Back" }
+		}
+		set_technology = {
+			main_battle_tank1 = 1
+			main_battle_tank2 = 1
+			light_tank1 = 1
+		}
+	}
+	if = {
+		limit = {
+			has_dlc = "No Step Back"
+		}
+		set_technology = {
+			gwtank_chassis = 1
+			basic_light_tank_chassis = 1
+			basic_medium_tank_chassis = 1
+			engine_tech_1 = 1
+		}
+	}
+
+	add_ideas = {
+		VIN_gdp_fix
+		VIN_communist_party_vietnam
+		ASEAN_member
+		low_poverty
+		low_conscription
+	}
+
+	add_opinion_modifier = {
+		target = JAP
+		modifier = past_japanese_war_crimes
+	}
+
+	set_politics = {	
+		ruling_party = communist
+		last_election = "2018.1.1"
+		election_frequency = 48
+		elections_allowed = no
+	}
+
+	set_popularities = {
+		nationalist = 5
+		conservative = 4
+		social_liberal = 4
+		libertarian_socialist = 9
+		communist = 75
+		totalitarian_socialist = 3
+	}

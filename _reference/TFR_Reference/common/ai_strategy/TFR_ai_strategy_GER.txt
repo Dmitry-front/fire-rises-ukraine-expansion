@@ -1,0 +1,387 @@
+GER_prepare_to_fight_SOV_strategy = {
+	abort_when_not_enabled = yes
+	allowed = {
+		tag = GER
+	}
+	enable = {
+		date > 2024.1.1
+	}
+	ai_strategy = {
+		type = prepare_for_war
+		id = SOV
+		value = 100
+	}
+	ai_strategy = {
+		type = antagonize
+		id = SOV
+		value = 100
+	}
+	ai_strategy = {
+		type = contain
+		id = SOV
+		value = 100
+	}
+	ai_strategy = {
+		type = build_army
+		id = armor
+		value = 10
+	}
+	ai_strategy = {
+		type = build_army
+		id = infantry
+		value = 20
+	}
+}
+
+GER_the_army_is_full_of_fascists = {
+	allowed = {
+		original_tag = GER
+	}
+	enable = {
+		date > 2022.1.1
+	}
+	abort = {
+		date > 2028.1.1
+		always = no
+	}
+	ai_strategy = {
+		type = force_build_armies
+		value = 50
+	}
+	ai_strategy = {
+		type = building_target
+		id = arms_factory
+		value = 65
+	}
+	ai_strategy = {
+		type = added_military_to_civilian_factory_ratio
+		value = 30
+	}
+}
+
+GER_modern_blitzkrieg = {
+	allowed = {
+		tag = GER
+	}
+	enable = {
+		OR = {
+			has_government = fascist
+			has_government = nationalist
+			has_government = communist
+		}
+	}
+	abort_when_not_enabled = yes
+	ai_strategy = {
+		type = front_control
+		tag = MLD
+		tag = CZE
+		tag = SLO
+		tag = HUN
+		tag = ROM
+		tag = BUL
+		tag = SOV
+		tag = PLD
+		tag = BAY
+		execution_type = rush
+		execute_order = yes
+		manual_attack = no
+	}
+	ai_strategy = {
+		type = force_build_armies
+		value = 500
+	}
+}
+
+seek_german_alliance = {
+	enable = {
+		NOT = {
+			tag = GER
+		}
+		has_country_flag = seeks_german_alliance
+	}
+	abort = {
+		NOT = {
+			has_country_flag = seeks_german_alliance
+		}
+	}
+	ai_strategy = {
+		type = befriend
+		id = "GER"
+		value = 150
+	}
+	ai_strategy = {
+		type = alliance
+		id = "GER"
+		value = 150
+	}
+}
+
+GER_dejavu = {
+	allowed = {
+		original_tag = GER
+	}
+	enable = {
+		is_in_faction_with = UKR
+	}
+	abort = {
+		always = no
+	}
+	ai_strategy = {
+		type = dont_defend_ally_borders
+		id = "EST"
+		value = 200
+	}
+	ai_strategy = {
+		type = dont_defend_ally_borders
+		id = "LIT"
+		value = 200
+	}
+	ai_strategy = {
+		type = dont_defend_ally_borders
+		id = "LAT"
+		value = 200
+	}
+	ai_strategy = {
+		type = force_defend_ally_borders
+		id = "UKR"
+		value = 600
+	}
+	ai_strategy = {
+		type = put_unit_buffers
+		states = {
+			196
+			202
+			1285
+		}
+		ratio = 0.1
+		area = europe
+		subtract_invasions_from_need = no
+		subtract_fronts_from_need = yes
+	}
+}
+
+GER_support_ARR = {
+	enable = {
+		tag = GER
+		has_war = no
+		NOT = {
+			OR = {
+				has_government = fascist
+				has_government = nationalist
+				has_government = authoritarian_democrat
+			}
+		}
+	}
+	abort = {
+		has_war = yes
+		has_war_with = ARR
+	}
+	ai_strategy = {
+		type = support
+		id = "ARR"
+		value = 900
+	}
+	ai_strategy = {
+		type = send_volunteers_desire
+		id = "ARR"
+		value = 900
+	}
+}
+
+GER_support_USB = {
+	abort_when_not_enabled = yes
+	enable = {
+		tag = GER
+		has_war = no
+		has_global_flag = USA_american_civil_war_global
+	}
+	ai_strategy = {
+		type = send_volunteers_desire
+		id = "USB"
+		value = 900
+	}
+}
+
+GER_support_GRE = {
+	enable = {
+		tag = GER
+		has_war = no
+		has_government = fascist
+	}
+	abort = {
+		has_war = yes
+		has_war_with = GRE
+	}
+	ai_strategy = {
+		type = send_volunteers_desire
+		id = "GRE"
+		value = 900
+	}
+}
+
+GER_support_GRK = {
+	enable = {
+		tag = GER
+		has_war = no
+		OR = {
+			has_government = communist
+			has_government = libertarian_socialist
+		}
+	}
+	abort = {
+		has_war = yes
+		has_war_with = GRK
+	}
+	ai_strategy = {
+		type = send_volunteers_desire
+		id = "GRK"
+		value = 900
+	}
+}
+
+GER_support_PRS = {
+	enable = {
+		tag = GER
+		has_war = no
+		OR = {
+			has_government = communist
+			has_government = libertarian_socialist
+		}
+	}
+	abort = {
+		has_war = yes
+		has_war_with = PRS
+	}
+	ai_strategy = {
+		type = send_volunteers_desire
+		id = "PRS"
+		value = 900
+	}
+}
+
+GER_support_PRP = {
+	enable = {
+		tag = GER
+		has_war = no
+		OR = {
+			has_government = communist
+			has_government = libertarian_socialist
+		}
+	}
+	abort = {
+		has_war = yes
+		has_war_with = PRP
+	}
+	ai_strategy = {
+		type = send_volunteers_desire
+		id = "PRP"
+		value = 900
+	}
+}
+
+GER_support_UK2 = {
+	enable = {
+		tag = GER
+		has_war = no
+		OR = {
+			has_government = communist
+			has_government = libertarian_socialist
+		}
+	}
+	abort = {
+		has_war = yes
+		has_war_with = UK2
+	}
+	ai_strategy = {
+		type = send_volunteers_desire
+		id = "UK2"
+		value = 900
+	}
+}
+
+POS_kill_cyprus = {
+	enable = {
+		OR = {
+			tag = GER
+			tag = FAF
+			tag = FPR
+			tag = ITA
+		}
+		has_war_with = CYP
+	}
+	abort_when_not_enabled = yes
+	allowed = {
+      	OR = {
+			tag = GER
+			tag = FAF
+			tag = FPR
+			tag = ITA
+		}
+    }
+	ai_strategy = {
+		type = naval_invasion_focus
+		value = 400
+	}
+	ai_strategy = {
+		type = invade
+		id = "CYP"
+		value = 1000
+	}
+
+	ai_strategy = {
+	    type = invasion_unit_request
+	    state = 183
+	    value = 75
+	}
+	
+	ai_strategy = {
+	    type = invasion_unit_request
+	    state = 836
+	    value = 75
+	}
+
+	ai_strategy = {
+	    type = front_unit_request
+	    tag = CYP
+	    value = 125
+	}
+}
+
+GER_gunther_kill_britain = {
+	enable = {
+		original_tag = GER
+		has_completed_focus = GER_democracy_now
+		ENG = { exists = yes }
+	}
+	abort_when_not_enabled = yes
+	allowed = {
+      	original_tag = GER
+    }
+	ai_strategy = {
+		type = naval_invasion_focus
+		value = 300
+	}
+	ai_strategy = {
+		type = invade
+		id = ENG
+		value = 1000
+	}
+
+	ai_strategy = {
+		type = conquer
+		id = ENG
+		value = 50
+	}
+
+	ai_strategy = {
+	    type = invasion_unit_request
+	    strategic_region = 1
+	    value = 200
+	}
+
+	ai_strategy = {
+	    type = invasion_unit_request
+	    strategic_region = 2
+	    value = 200
+	}
+}

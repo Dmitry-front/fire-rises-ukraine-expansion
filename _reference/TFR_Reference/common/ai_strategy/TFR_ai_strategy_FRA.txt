@@ -1,0 +1,296 @@
+seek_french_alliance = {
+	allowed = {
+		NOT = {
+			tag = FRA
+		}
+	}
+	enable = {
+		has_country_flag = seeks_french_alliance
+	}
+	
+	abort = {
+		NOT = { has_country_flag = seeks_french_alliance }
+	}
+	
+	ai_strategy = {
+		type = befriend
+		id = "FRA"
+		value = 150
+	}
+	ai_strategy = {
+		type = alliance
+		id = "FRA"
+		value = 150
+	}
+}
+
+influence_by_france = {
+	allowed = {
+		NOT = { 
+			tag = FRA 
+		}
+	}
+	enable = {
+		has_country_flag = influenced_by_france
+	}
+	
+	abort = {
+		NOT = { has_country_flag = influenced_by_france }
+	}
+	
+	ai_strategy = {
+		type = befriend
+		id = "FRA"
+		value = 40
+	}
+	ai_strategy = {
+		type = alliance
+		id = "FRA"
+		value = 40
+	}
+}
+influence_by_france2 = {
+	allowed = {
+		NOT = { 
+			tag = FRA
+		}
+	}
+	enable = {
+		has_country_flag = influenced_by_france_2
+	}
+	
+	abort = {
+		NOT = { has_country_flag = influenced_by_france_2 }
+	}
+	
+	ai_strategy = {
+		type = befriend
+		id = "FRA"
+		value = 60
+	}
+	ai_strategy = {
+		type = alliance
+		id = "FRA"
+		value = 60
+	}
+}
+
+FRA_wants_mils = {
+	allowed = {
+		original_tag = FRA
+	}
+	enable = {
+		always = yes
+	}
+	abort = {
+		always = no
+	}
+	
+	ai_strategy = {
+		type = building_target
+		id = arms_factory
+		value = 5 
+	}
+}
+
+FRA_you_should_be_prepared_for_war = {
+	allowed = {
+		original_tag = FRA
+	}
+	enable = {
+		always = yes
+	}
+	abort = {
+		always = no
+	}
+	
+	
+	ai_strategy = {
+        type = force_build_armies
+        value = 500
+    }
+}
+
+FRA_the_holder_of_the_front = {
+	allowed = {
+		original_tag = FRA
+	}
+	enable = {
+		is_in_faction_with = UKR
+		has_completed_focus = FRA_Through_Europe_we_are_Strong
+	}
+	
+	abort = {
+		always = no
+	}
+	
+	ai_strategy = {
+		type = front_control
+		tag = SOV
+		tag = BLR
+		execution_type = careful
+		execute_order = yes
+		manual_attack = no
+		value = 80
+	}
+	ai_strategy = {
+		type = conquer
+		id = SOV
+		value = 80
+	}
+	ai_strategy = {
+		type = conquer
+		id = BLR
+		value = 80
+	}
+}
+FRA_blitzkreig_NATO1 = {
+	allowed = {
+		original_tag = FRA
+	}
+	enable = {
+		is_in_faction_with = UKR
+		has_completed_focus = FRA_A_Strong_France_is_a_Strong_Europe
+	}
+	
+	abort = {
+		always = no
+	}
+	ai_strategy = {
+		type = front_control
+
+		tag = SOV
+		tag = BLR
+		ratio = 0.5
+
+		value = 80
+		ordertype = front
+		execution_type = rush_weak
+		execute_order = yes
+		manual_attack = yes
+	}
+
+	ai_strategy = {
+		type = dont_defend_ally_borders
+		id = "LIT"
+		value = 200
+	}
+	
+	ai_strategy = {
+		type = dont_defend_ally_borders
+		id = "LAT"
+		value = 200
+	}
+
+	ai_strategy = {
+		type = dont_defend_ally_borders
+		id = "EST"
+		value = 200
+	}
+	
+	ai_strategy = {
+		type = force_defend_ally_borders
+		id = "UKR"
+		value = 500
+	}
+
+	ai_strategy = {
+		type = consider_weak
+		id = SOV
+		value = 1000
+	}
+
+	ai_strategy = {
+		type = consider_weak
+		id = BLR
+		value = 1000
+	}
+
+	ai_strategy = {
+		type = conquer
+		id = SOV
+		value = 1000
+	}
+
+	ai_strategy = {
+		type = conquer
+		id = BLR
+		value = 1000
+	}
+}
+FRA_Op_Davout = {
+	allowed = {
+		tag = FRA
+	}
+	enable = {
+		has_completed_focus = FRA_Operation_Saint_Arnaud
+	}
+
+	abort = {
+		always = no
+	}
+
+	ai_strategy = {
+		type = area_priority
+		id = kuban_landing_zone
+		value = 1000
+	}
+
+	ai_strategy = {
+		type = invasion_unit_request
+		area = kuban_landing_zone
+		value = 800
+		ratio = 0.5
+	}
+
+}
+
+FRA_support_NGA = {
+	allowed = {
+		original_tag = FRA
+	}
+	enable = {
+		has_war = no
+		NOT = {
+			has_global_flag = MLI_sahel_war_flag
+		}
+	}
+	abort = {
+		has_war = yes
+		has_war_with = NGA
+		date > 2020.4.1
+		has_global_flag = MLI_sahel_war_flag
+	}
+
+	ai_strategy = {
+		type = support
+		id = "NGA"
+		value = 900
+	}
+	ai_strategy = {
+		type = send_volunteers_desire
+		id = "NGA"
+		value = 900
+	}
+}
+
+FRA_support_UKR = {
+	allowed = {
+		original_tag = FRA
+	}
+	enable = {
+		has_war = no
+		UKR = {
+			has_war = yes
+		}
+	}
+	abort = {
+		has_war = yes
+		has_war_with = UKR
+	}
+	ai_strategy = {
+		type = support
+		id = "UKR"
+		value = 900
+	}
+}

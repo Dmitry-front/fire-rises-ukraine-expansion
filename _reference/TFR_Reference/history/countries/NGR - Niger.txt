@@ -1,0 +1,148 @@
+capital = 749
+
+oob = "NGR_2020"
+
+set_research_slots = 2
+set_convoys = 10
+set_stability = 0.45
+
+set_country_flag = country_language_french
+set_country_flag = country_behavior_dispersed
+set_country_flag = country_behavior_indolent
+
+	set_variable = { Russian_Influence = 0.05 }
+	set_variable = { Chinese_Influence = 0.40 }
+	set_variable = { American_Influence = 0.05 }
+	set_variable = { European_Influence = 0.30 }
+	set_variable = { PDO_Influence = 0.00 }
+	set_variable = { Sovereign_Influence = 0.20 }
+
+set_technology = {
+	## Infantry ##
+	
+	infantry_weapons1 = 1
+	infantry_weapons2 = 1
+	motorised_infantry = 1
+	infantry_rifle_upgrade = 1
+	support_weapons = 1
+	body_armor = 1
+	camouflage = 1
+	marines = 1
+	tech_mountaineers = 1
+	paratroopers = 1
+	
+	## Support Companies ##
+	tech_support = 1
+	tech_engineers = 1
+	tech_recon = 1
+	tech_military_police = 1
+	tech_maintenance_company = 1
+	tech_field_hospital = 1
+	tech_logistics_company = 1
+	tech_signal_company = 1
+	
+	## Armor ##
+	main_battle_tank1 = 1
+	main_battle_tank2 = 1
+	main_battle_tank3 = 1
+	light_tank1 = 1
+	mechanised_infantry1 = 1
+	light_mechanized_infantry1 = 1
+	
+	## Artillery ##
+	gw_artillery = 1
+	interwar_antitank = 1
+	interwar_antiair = 1
+	tank_destroyer1 = 1
+	self_propelled_aa1 = 1
+	
+	## Engineering ##
+	#eng_low
+	
+	## Industry ##
+	#ind_low
+	
+	## Doctrines ##
+	
+}
+
+if = {
+	limit = { has_dlc = "By Blood Alone" }
+		set_technology = {
+			aa_lmg = 1
+			aa_cannon_1 = 1
+			aa_hmg = 1
+			engines_1 = 1
+			engines_2 = 1
+			early_bombs = 1
+			guided_bombs = 1
+			aircraft_construction = 1
+			survivability_studies = 1
+			iw_small_airframe = 1
+			basic_small_airframe = 1
+			iw_medium_airframe = 1
+			basic_medium_airframe = 1
+			iw_large_airframe = 1
+		}
+	else = {
+		set_technology = {
+			CAS1 = 1
+			CAS2 = 1
+			fighter1 = 1
+			fighter2 = 1
+			fighter3 = 1
+			strategic_bomber1 = 1
+		}
+	}
+}
+
+set_country_flag = dominant_religion_islam
+set_country_flag = sunni_islam
+
+add_ideas = {
+	NGR_gdp_fix
+	lower_poverty
+	CHA_encroaching_sahara
+	african_union_member
+	medium_conscription
+	FRA_CFA_Franc
+}
+	
+#Events
+country_event = {
+	id = africa.4
+	days = 417
+}
+
+set_politics = {	
+	ruling_party = libertarian_socialist
+	last_election = "2016.2.21"
+	election_frequency = 60
+	elections_allowed = yes
+}
+
+set_popularities = {
+	conservative = 15
+	social_liberal = 6
+	authoritarian_democrat = 15
+	social_democrat = 20
+	nationalist = 2
+	libertarian_socialist = 42
+}
+
+recruit_character = NGR_Mahamadou_Issoufou_char
+recruit_character = NGR_Mohamed_Bazoum_char
+recruit_character = NGR_Alkassoum_Indatou_char
+recruit_character = NGR_Abdourahamane_Tchiani_char
+recruit_character = NGR_Abdou_Sidikou_Issa_char
+recruit_character = NGR_Amadou_Ibro_char
+recruit_character = NGR_Chekou_Kore_Lawel_char
+recruit_character = NGR_Garba_Hakimi_char
+recruit_character = NGR_Mahaman_Elhadj_Ousmane_char
+recruit_character = NGR_Maizama_Abdoulaye_char
+recruit_character = NGR_Mohamed_Toumba_char
+recruit_character = NGR_Moussa_Salaou_Barmou_char
+recruit_character = NGR_Oumarou_Namata_Gazama_char
+recruit_character = NGR_Salifou_Modi_char
+recruit_character = NGR_Salifou_Wakasso_char
+recruit_character = NGR_Sidi_Ahmed_char

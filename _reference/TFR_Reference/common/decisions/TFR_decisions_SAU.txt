@@ -1,0 +1,863 @@
+SAU_civil_war_preparations = {
+	SAU_civil_war_countdown = {
+
+		priority = 1
+
+		icon = revolt
+			
+		available = {
+			NOT = {
+				original_tag = SAU
+				has_global_flag = SAU_saudi_civil_war_global
+			}
+		}
+
+		days_mission_timeout = 100
+
+		activation = {
+			original_tag = SAU
+			has_country_flag = king_mohammed_salman
+			NOT = {
+				has_global_flag = saudi_liberals
+				has_country_flag = saudi_coalition
+			}
+		}
+
+		visible = {
+			hidden_trigger = {
+				NOT = {
+					has_global_flag = saudi_liberals
+					has_global_flag = saudi_coalition
+				}
+			}
+		}
+			
+		fire_only_once = yes
+		cancel_if_not_visible = yes
+		is_good = no
+			
+		complete_effect = {
+		}
+			
+		timeout_effect = {
+			country_event = {
+				id = saudi.9
+			}
+			custom_effect_tooltip = saudi_civil_war_tt
+		}
+	}
+	
+	SAU_prince_rebellion_countdown = {
+
+		priority = 1
+
+		icon = revolt
+			
+		available = {
+			NOT = {
+				original_tag = SAU
+				has_global_flag = SAU_saudi_civil_war_global
+			}
+		}
+
+		days_mission_timeout = 100
+
+		activation = {
+			original_tag = SAU
+			has_country_flag = saudi_coalition
+			NOT = {
+				has_global_flag = saudi_liberals
+				has_country_flag = king_mohammed_salman
+			}
+		}
+
+		visible = {
+			hidden_trigger = {
+				NOT = {
+					has_global_flag = saudi_liberals
+					has_global_flag = king_mohammed_salman
+				}
+			}
+		}
+			
+		fire_only_once = yes
+		cancel_if_not_visible = yes
+		is_good = no
+			
+		complete_effect = {
+		}
+			
+		timeout_effect = {
+			country_event = {
+				id = saudi.20
+			}
+			custom_effect_tooltip = prince_rebellion_tt
+		}
+	}
+	
+	SAU_liberal_preparations = {
+
+		priority = 1
+
+		icon = revolt
+			
+		available = {
+			NOT = {
+				original_tag = SAU
+				has_global_flag = SAU_saudi_civil_war_global
+			}
+		}
+
+		days_mission_timeout = 100
+
+		activation = {
+			original_tag = SAU
+			has_country_flag = saudi_liberals
+			NOT = {
+				has_global_flag = saudi_coalition
+				has_country_flag = king_mohammed_salman
+			}
+		}
+
+		visible = {
+			hidden_trigger = {
+				NOT = {
+					has_global_flag = saudi_coalition
+					has_global_flag = king_mohammed_salman
+				}
+			}
+		}
+			
+		fire_only_once = yes
+		cancel_if_not_visible = yes
+		is_good = no
+			
+		complete_effect = {
+		}
+			
+		timeout_effect = {
+			country_event = {
+				id = saudi.21
+			}
+			custom_effect_tooltip = liberal_uprising_tt
+		}
+	}
+	
+	SAU_spread_disinfo = {
+		
+		icon = generic_prepare_civil_war
+
+		allowed = {
+			original_tag = SAU
+		}
+
+		visible = {
+			has_global_flag = king_salman_dead
+			has_country_flag = saudi_liberals
+		}
+
+		available = {
+			has_country_flag = saudi_liberals
+			NOT = {
+				has_country_flag = SAU_making_move
+				has_country_flag = saudi_coalition
+				has_country_flag = king_mohammed_salman
+			}				
+		}
+
+		ai_will_do = {
+			factor = 10
+		}
+			
+		custom_cost_trigger = {
+			check_variable = { var = income_var value = 7 }
+		}
+		
+		custom_cost_text = dx_more_than_7
+
+		fire_only_once = yes
+		cancel_if_not_visible = yes
+
+		days_remove = 20
+
+		complete_effect = {
+			set_country_flag = SAU_making_move
+		}
+
+		remove_effect = {
+			clr_country_flag = SAU_making_move
+			add_days_mission_timeout = {
+				mission = SAU_liberal_preparations
+				days = 14
+			}
+		}
+	}
+	
+	SAU_code_virus = {
+		
+		icon = generic_prepare_civil_war
+
+		allowed = {
+			original_tag = SAU
+		}
+
+		visible = {
+			has_global_flag = king_salman_dead
+			has_country_flag = saudi_liberals
+		}
+
+		available = {
+			has_country_flag = saudi_liberals
+			NOT = {
+				has_country_flag = SAU_making_move
+				has_country_flag = saudi_coalition
+				has_country_flag = king_mohammed_salman
+			}				
+		}
+
+		ai_will_do = {
+			factor = 10
+		}
+			
+		custom_cost_trigger = {
+			check_variable = { var = income_var value = 25 }
+		}
+		
+		custom_cost_text = dx_more_than_25B
+
+		fire_only_once = yes
+		cancel_if_not_visible = yes
+
+		days_remove = 20
+
+		complete_effect = {
+			set_country_flag = SAU_making_move
+			custom_effect_tooltip = SAU_virus_tt
+		}
+
+		remove_effect = {
+			clr_country_flag = SAU_making_move
+			set_country_flag = SAU_virus_breach
+		}
+	}
+	
+	SAU_bribe_officers = {
+		
+		icon = generic_army_support
+
+		allowed = {
+			original_tag = SAU
+		}
+
+		visible = {
+			has_global_flag = king_salman_dead
+		}
+
+		available = {
+			hidden_trigger = {
+				OR = {
+					has_country_flag = king_mohammed_salman
+					has_country_flag = saudi_coalition
+					has_country_flag = saudi_liberals
+				}
+			}
+			NOT = {
+				has_country_flag = SAU_making_move
+			}				
+		}
+
+		ai_will_do = {
+			factor = 10
+		}
+			
+		custom_cost_trigger = {
+			check_variable = { var = income_var value = 45 }
+		}
+		
+		custom_cost_text = dx_more_than_45B
+
+		fire_only_once = yes
+		cancel_if_not_visible = yes
+
+		days_remove = 20
+
+		complete_effect = {
+			set_country_flag = SAU_making_move
+			custom_effect_tooltip = bribe_officers_tt
+			if = {
+				limit = {
+					has_country_flag = saudi_liberals
+				}
+				ARR = {
+					set_country_flag = bribed_officers
+				}
+			}
+			if = {
+				limit = {
+					has_country_flag = king_mohammed_salman
+				}
+				SAU = {
+					set_country_flag = bribed_officers
+				}
+			}
+			if = {
+				limit = {
+					has_country_flag = saudi_coalition
+				}
+				ROC = {
+					set_country_flag = bribed_officers
+				}
+			}
+		}
+
+		remove_effect = {
+			clr_country_flag = SAU_making_move
+			SAU_bribing_officers = yes
+		}
+	}
+	
+	SAU_alocate_heavy_equipment = {
+		
+		icon = generic_prepare_civil_war
+
+		allowed = {
+			original_tag = SAU
+		}
+
+		visible = {
+			has_global_flag = king_salman_dead
+		}
+
+		available = {
+			hidden_trigger = {
+				OR = {
+					has_country_flag = saudi_liberals
+					has_country_flag = saudi_coalition
+					has_country_flag = king_mohammed_salman
+				}
+			}
+			NOT = {
+				has_country_flag = SAU_making_move
+			}				
+		}
+
+		ai_will_do = {
+			factor = 10
+		}
+			
+		custom_cost_trigger = {
+			check_variable = { var = income_var value = 25 }
+		}
+		
+		custom_cost_text = dx_more_than_25B
+
+		fire_only_once = no
+		cancel_if_not_visible = yes
+
+		days_remove = 16
+
+		complete_effect = {
+			set_country_flag = SAU_making_move
+			custom_effect_tooltip = SAU_storing_equipment
+		}
+
+		remove_effect = {
+			clr_country_flag = SAU_making_move
+			SAU_equipment_stored = yes
+		}
+	}
+	
+	SAU_compromise_with_military = {
+		
+		icon = generic_shaking_hands
+
+		allowed = {
+			original_tag = SAU
+		}
+
+		visible = {
+			has_global_flag = king_salman_dead
+		}
+
+		available = {
+			hidden_trigger = {
+				OR = {
+					has_country_flag = king_mohammed_salman
+					has_country_flag = saudi_coalition
+				}
+			}
+			NOT = {
+				has_country_flag = SAU_making_move
+			}				
+		}
+
+		ai_will_do = {
+			factor = 10
+		}
+			
+		custom_cost_trigger = {
+			check_variable = { var = income_var value = 7 }
+		}
+		
+		custom_cost_text = dx_more_than_7
+
+		fire_only_once = yes
+		cancel_if_not_visible = yes
+
+		days_remove = 20
+
+		complete_effect = {
+			set_country_flag = SAU_making_move
+		}
+
+		remove_effect = {
+			clr_country_flag = SAU_making_move
+		}
+	}
+	
+	SAU_contact_private_military_companies = {
+		
+		icon = ger_mefo_bills
+
+		allowed = {
+			original_tag = SAU
+		}
+
+		visible = {
+			has_global_flag = king_salman_dead
+		}
+
+		available = {
+			hidden_trigger = {
+				OR = {
+					has_country_flag = saudi_coalition
+					has_country_flag = king_mohammed_salman
+				}
+			}
+			NOT = {
+				has_country_flag = SAU_making_move
+			}				
+		}
+
+		ai_will_do = {
+			factor = 10
+		}
+			
+		custom_cost_trigger = {
+			check_variable = { var = income_var value = 35 }
+		}
+		
+		custom_cost_text = dx_more_than_35B
+
+		fire_only_once = yes
+		cancel_if_not_visible = yes
+
+		days_remove = 20
+
+		complete_effect = {
+			set_country_flag = SAU_making_move
+			custom_effect_tooltip = SAU_pmcs_tt
+		}
+
+		remove_effect = {
+			clr_country_flag = SAU_making_move
+			SAU_contracting_pmcs = yes#
+		}
+	}
+	
+	SAU_arrest_mohammed = {
+		
+		icon = generic_prepare_civil_war
+
+		allowed = {
+			original_tag = SAU
+		}
+
+		visible = {
+			has_global_flag = king_salman_dead
+			has_country_flag = saudi_coalition
+		}
+
+		available = {
+			NOT = {
+				has_country_flag = SAU_making_move
+			}				
+		}
+
+		ai_will_do = {
+			factor = 50
+		}
+			
+		cost = 75
+
+		fire_only_once = yes
+		cancel_if_not_visible = yes
+
+		days_remove = 15
+
+		complete_effect = {
+			set_country_flag = SAU_making_move
+		}
+
+		remove_effect = {
+			clr_country_flag = SAU_making_move
+			custom_effect_tooltip = begin_saudi_civil_war
+			country_event = { id = saudi.19 }
+		}
+	}
+}
+
+SAU_yemeni_civil_war = {
+	SAU_launch_border_skirmish = {
+		
+		available = {
+			tag = SAU
+			controls_state = 1062
+		}
+
+		visible = {
+			tag = SAU
+			NOT = {
+				SAU = {
+					controls_state = 922
+				}
+			}
+		}
+		
+		ai_will_do = {
+			base = 5
+		}
+		
+		days_remove = 12
+		days_re_enable = 20
+
+		cost = 25
+		
+		fire_only_once = no
+		cancel_if_not_visible = yes
+			
+		remove_effect = {
+			start_border_war= {
+				change_state_after_war = no
+				attacker = { state = 1062
+					num_provinces = 1
+				}
+				defender = { state = 922
+					num_provinces = 1
+				}
+			}
+		}
+	}
+	
+	SAU_send_advisors_yemen = {
+	}
+	
+	SAU_send_guns = {
+		icon = generic_prepare_civil_war
+
+		allowed = {
+			original_tag = SAU
+		}
+
+		available = {
+			tag = SAU
+			YEM = {
+				check_variable = { var = income_var value = 2 }
+			}
+		}
+
+		ai_will_do = {
+			factor = 3
+		}
+			
+		cost = 50
+
+		fire_only_once = no
+		cancel_if_not_visible = yes
+
+		days_remove = 15
+		days_re_enable = 15
+
+		remove_effect = {
+			YEM = {
+				add_equipment_to_stockpile = {type = infantry_equipment_2 amount = 120 producer = SAU }
+				add_equipment_to_stockpile = {type = anti_tank_equipment amount = 50 producer = SAU }
+			}
+		}
+	}
+	
+	SAU_send_heavy_equipment = {
+		icon = generic_prepare_civil_war
+
+		allowed = {
+			original_tag = SAU
+		}
+
+		available = {
+			tag = SAU
+			YEM = {
+				check_variable = { var = income_var value = 4 }
+			}
+		}
+
+		ai_will_do = {
+			factor = 3
+		}
+			
+		cost = 60
+
+		fire_only_once = no
+		cancel_if_not_visible = yes
+
+		days_remove = 15
+		days_re_enable = 15
+
+		remove_effect = {
+			YEM = {
+				add_equipment_to_stockpile = {type = motorized_equipment amount = 90 producer = SAU }
+				add_equipment_to_stockpile = {type = modern_tank_chassis amount = 50 producer = SAU }
+				add_equipment_to_stockpile = {type = mechanized_equipment amount = 10 producer = SAU }
+				add_equipment_to_stockpile = {type = light_mechanized_equipment amount = 10 producer = SAU }
+			}
+		}
+	}
+	SAU_air_strike_houthi = {
+	}
+	SAU_air_strike_sharia = {
+	}
+}
+SAU_reunification = {
+	SAU_saudi_reunification = {
+		allowed = {
+			OR = {
+				tag = SAU
+				tag = ARR
+				tag = ROC
+				tag = SAR
+				tag = JAH
+			}
+		}
+		available = {
+		    OR = {
+				AND = {
+					tag = SAR
+					NOT = {
+						country_exists = SAU
+						country_exists = ARR
+						country_exists = ROC
+						country_exists = JAH
+					}
+				}
+				AND = {
+					tag = SAU
+					NOT = {
+						country_exists = SAR
+						country_exists = ARR
+						country_exists = ROC
+						country_exists = JAH
+					}
+				}
+				AND = {
+					tag = ROC
+					NOT = {
+						country_exists = SAU
+						country_exists = ARR
+						country_exists = SAR
+						country_exists = JAH
+					}
+				}
+				AND = {
+					tag = ARR
+					NOT = {
+						country_exists = SAU
+						country_exists = ROC
+						country_exists = SAR
+						country_exists = JAH
+					}
+				}
+				AND = {
+					tag = JAH
+					NOT = {
+						country_exists = SAU
+						country_exists = ROC
+						country_exists = SAR
+						country_exists = ARR
+					}
+				}
+			}
+        }
+		modifier = {
+		}
+		ai_will_do = {
+			factor = 100
+		}
+		fire_only_once = yes
+		cost = 0
+	    remove_effect = {
+			remove_decision = SAU_reunification
+			remove_ideas = SAU_saudi_civil_war
+			if = {
+				limit = {
+					tag = ARR
+				}
+				ARR = {
+					set_capital = {
+						state = 1126
+					}
+					change_government_type_presidential_republic = yes
+					add_ideas = arab_league_member
+					country_event = {
+						id = saudi.15
+					}
+				}
+				set_portraits = {
+					character = ARR_yahya_assiri_char
+					civilian = {
+						large = "gfx/leaders/ARR/Yahya Assiri1.dds"
+					}
+				}
+			}
+			if = {
+				limit = {
+					tag = ROC
+				}
+				ROC = {
+					set_cosmetic_tag = SAU
+					set_capital = {
+						state = 1126
+					}
+					add_ideas = arab_league_member
+					country_event = {
+						id = saudi.14
+					}
+				}
+			}
+			if = {
+				limit = {
+					tag = SAR
+				}
+				SAR = {
+					set_capital = {
+						state = 1126
+					}
+					country_event = {
+						id = saudi.17
+					}
+				}
+			}
+			if = {
+				limit = {
+					tag = JAH
+				}
+				JAH = {
+					country_event = {
+						id = saudi.16
+					}
+				}
+			}
+			if = {
+				limit = {
+					tag = SAU
+				}
+				SAU = {
+					country_event = {
+						id = saudi.13
+					}
+				}
+			}
+		}
+	}
+}
+YEM_yemeni_civil_war = {
+	AAS_southern_victory = {
+
+		icon = china
+
+		available = {
+			AAS = {
+				has_war = no
+				exists = yes
+			}
+		}
+
+		cost = 0
+
+		fire_only_once = yes
+
+		visible = {
+			tag = AAS
+		}
+
+		cancel_if_not_visible = yes
+
+		complete_effect = {
+			AAS = {
+				set_cosmetic_tag = AAS_victory
+				every_state = {
+					if = {
+						limit = {
+							AND = {
+								is_core_of = AAS
+								is_core_of = YEM
+							}
+						}
+						remove_core_of = YEM
+						remove_core_of = HOU
+					}
+				}
+				set_party_name = {
+					ideology = authoritarian_democrat
+					long_name = AAS_STC_party_long
+					name = AAS_STC_party_short
+				}
+				change_government_type_presidential_republic = yes
+				add_ideas = {
+					AAS_rebuilding_the_south
+					arab_league_member
+				}
+				add_popularity = {
+					ideology = libertarian_socialist
+					popularity = 0.15
+				}
+				add_popularity = {
+					ideology = communist
+					popularity = 0.07
+				}
+				add_popularity = {
+					ideology = nationalist
+					popularity = 0.04
+				}
+			}
+			YEM = {
+				set_cosmetic_tag = YEM_AAS_victory
+				transfer_state = 919
+				transfer_state = 293
+				transfer_state = 922
+				transfer_state = 923
+				every_state = {
+					remove_core_of = HOU
+				}
+				add_popularity = {
+					ideology = conservative
+					popularity = 0.2
+				}
+				add_popularity = {
+					ideology = nationalist
+					popularity = 0.05
+				}
+				set_capital = {
+					state = 919
+				}
+				add_ideas = YEM_1990_reversed
+			}
+			news_event = {
+				id = news.118
+				hours = 6
+			}
+		}
+
+		ai_will_do = {
+			base = 100
+		}
+	}	
+}

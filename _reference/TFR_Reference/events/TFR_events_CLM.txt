@@ -1,0 +1,76 @@
+﻿###########################
+# California Militia Events
+###########################
+
+add_namespace = clm
+
+# Spetsnaz in Northern California
+country_event = {
+	id = clm.1
+	title = clm.1.t
+	desc = clm.1.d
+	picture = GFX_Generic_Spetsnaz
+	
+	fire_only_once = yes
+	is_triggered_only = yes
+	
+	trigger = {
+		tag = CLM
+	}
+
+	option = {
+	name = clm.1.a
+		load_oob =  "CLM_spetsnaz"
+	}
+}
+
+# Mounted Rangers Volunteer
+country_event = {
+	id = clm.2
+	title = clm.2.t
+	desc = clm.2.d
+	picture = GFX_Generic_Spetsnaz
+	
+	fire_only_once = yes
+	is_triggered_only = yes
+	
+	trigger = {
+		tag = CLM
+	}
+
+	option = {
+	name = clm.2.a
+		load_oob =  "CLM_cavalry"
+	}
+}
+
+#State v Militia
+news_event = {
+	id = clm.3
+	title = clm.3.t
+	desc = clm.3.d
+	picture = GFX_war4
+	
+	fire_only_once = yes
+	is_triggered_only = yes
+	
+	trigger = {
+		OR = {
+			tag = CLM
+			tag = APA
+		}
+	}
+
+	immediate = {
+		CLM = {
+			declare_war_on = {
+				target = CAL
+				type = civil_war
+			}
+		}
+	}
+	option = {
+		name = clm.3.a
+		
+	}
+}

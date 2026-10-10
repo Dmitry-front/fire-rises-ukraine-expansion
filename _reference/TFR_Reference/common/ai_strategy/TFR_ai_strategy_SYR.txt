@@ -1,0 +1,38 @@
+SYR_we_didnt_forget = {
+	allowed = {
+		original_tag = SYR
+	}
+	enable = {
+		country_exists = TUR
+	}
+	abort = {
+		NOT = { country_exists = TUR }
+	}
+
+
+	ai_strategy = {
+		type = antagonize
+		id = "TUR"
+		value = 500
+	}
+}
+SYR_support_SOV = {
+	enable = {
+		tag = SYR
+		has_war = no
+	}
+	abort = {
+		has_war = yes
+	}
+
+	ai_strategy = {
+		type = support
+		id = "SOV"
+		value = 100
+	}
+	ai_strategy = {
+		type = send_volunteers_desire
+		id = "SAR"
+		value = 100
+	}
+}

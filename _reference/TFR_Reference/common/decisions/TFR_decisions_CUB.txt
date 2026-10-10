@@ -1,0 +1,986 @@
+second_nato_war_decisions = {
+	
+	second_nato_war_mission = {
+		priority = 1
+		icon = GFX_SOV_decision_nato_war_deadline
+		available = {
+			68 = {
+				controller = {
+					OR = {
+						tag = SOV
+						is_ally_with = SOV
+					}
+				}
+			}
+			65 = {
+				controller = {
+					OR = {
+						tag = SOV
+						is_ally_with = SOV
+					}
+				}
+			}
+			59 = {
+				controller = {
+					OR = {
+						tag = SOV
+						is_ally_with = SOV
+					}
+				}
+			}
+			1378 = {
+				controller = {
+					OR = {
+						tag = SOV
+						is_ally_with = SOV
+					}
+				}
+			}
+			16 = {
+				controller = {
+					OR = {
+						tag = SOV
+						is_ally_with = SOV
+					}
+				}
+			}
+			126 = {
+				controller = {
+					OR = {
+						tag = SOV
+						is_ally_with = SOV
+					}
+				}
+			}
+			22 = {
+				controller = {
+					OR = {
+						tag = SOV
+						is_ally_with = SOV
+					}
+				}
+			}
+			133 = {
+				controller = {
+					OR = {
+						tag = SOV
+						is_ally_with = SOV
+					}
+				}
+			}
+			1493 = {
+				controller = {
+					OR = {
+						tag = SOV
+						is_ally_with = SOV
+					}
+				}
+			}
+			115 = {
+				controller = {
+					OR = {
+						tag = SOV
+						is_ally_with = SOV
+					}
+				}
+			}
+			SOV = {
+				has_war = no
+			}
+		}
+		days_mission_timeout = 999
+		activation = {
+			always = no
+		}
+		visible = {
+		}
+		fire_only_once = no
+		cancel_if_not_visible = no
+		is_good = no
+		cancel_trigger = {
+			OR = {
+				SOV = {
+					NOT = {
+						owns_state = 195
+						owns_state = 853
+						owns_state = 219
+						owns_state = 1339
+						owns_state = 195
+						owns_state = 208
+						owns_state = 223
+						owns_state = 239
+						owns_state = 828
+						owns_state = 236
+						owns_state = 263
+						owns_state = 252
+						owns_state = 217
+					}
+				}
+				SOV = {
+					NOT = {
+						controls_state = 195
+						controls_state = 853
+						controls_state = 219
+						controls_state = 1339
+						controls_state = 195
+						controls_state = 208
+						controls_state = 223
+						controls_state = 239
+						controls_state = 828
+						controls_state = 236
+						controls_state = 263
+						controls_state = 252
+						controls_state = 217
+					}
+				}
+				SOV = {
+					surrender_progress > 0.8
+				}
+			}
+		}
+		cancel_effect = { #NATO Kill SOV
+			SOV = {
+				load_focus_tree = generic_focus
+			}
+			if = {
+				limit = {
+					has_global_flag = SOV_cprf_won
+					NOT = { has_global_flag = nato_nato_won_nato_war }
+				}
+				SOV = {
+					SOV_USSR_defeat_in_2nd_European_War = yes
+				}
+			}
+			if = {
+				limit = {
+					has_global_flag = SOV_ldpr_won
+					NOT = { has_global_flag = nato_nato_won_nato_war }
+				}
+				SOV = {
+					SOV_Zhir_defeat_in_2nd_European_War = yes
+				}
+			}
+			if = {
+				limit = {
+					has_global_flag = SOV_medvedev_won
+					NOT = { has_global_flag = nato_nato_won_nato_war }
+				}
+				SOV = {
+					SOV_Medv_defeat_in_2nd_European_War = yes
+				}
+			}
+			if = {
+				limit = {
+					has_global_flag = nato_nato_won_nato_war
+					has_global_flag = SOV_dugin_russia_flag
+				}
+				SOV = {
+					SOV_second_defeat = yes
+				}
+			}	
+			if = {
+				limit = {
+					has_global_flag = nato_nato_won_nato_war
+					has_global_flag = SOV_navalny_russia_flag
+				}
+				SOV = {
+					SOV_second_defeat = yes
+				}
+			}		
+			if = {
+				limit = {
+					has_global_flag = nato_nato_won_nato_war
+					has_global_flag = SOV_wagner_russia_flag
+				}
+				SOV = {
+					SOV_second_defeat = yes
+				}
+			}
+		}
+		timeout_effect = {
+			activate_mission = second_nato_war_mission
+		}
+		complete_effect = { #SOV kill Europe
+			if = {
+				limit = {
+					has_global_flag = nato_nato_won_nato_war
+					has_global_flag = SOV_wagner_russia_flag
+				}
+				SOV = {
+					SOV_Wagner_victory_in_2nd_European_War = yes
+				}
+			}
+			if = {
+				limit = {
+					has_global_flag = nato_nato_won_nato_war
+					has_global_flag = SOV_dugin_russia_flag
+				}
+				SOV = {
+					SOV_Dugin_victory_in_2nd_European_War = yes
+				}
+			}
+			if = {
+				limit = {
+					has_global_flag = nato_nato_won_nato_war
+					has_global_flag = SOV_navalny_russia_flag
+				}
+				SOV = {
+					SOV_Navalny_victory_in_2nd_European_War = yes
+				}
+			}
+			if = {
+				limit = {
+					has_global_flag = SOV_cprf_won
+					NOT = {
+						has_global_flag = nato_nato_won_nato_war
+					}
+				}
+				SOV = {
+					SOV_soviet_victory_in_2nd_European_War = yes
+				}
+			}
+			if = {
+				limit = {
+					has_global_flag = SOV_medvedev_won
+					NOT = { has_global_flag = SOV_alikhanov_leader_flag }
+					NOT = {
+						has_global_flag = nato_nato_won_nato_war
+					}
+				}
+				SOV = {
+					SOV_Medv_victory_in_2nd_European_War = yes
+				}
+			}		
+			if = {
+				limit = {
+					has_global_flag = SOV_medvedev_won
+					has_global_flag = SOV_alikhanov_leader_flag
+					NOT = {
+						has_global_flag = nato_nato_won_nato_war
+					}
+				}
+				SOV = {
+					SOV_alikhanov_victory_in_2nd_European_War = yes
+				}
+			}
+			if = {
+				limit = {
+					has_global_flag = SOV_ldpr_won
+					NOT = {
+						has_global_flag = nato_nato_won_nato_war
+					}
+				}
+				SOV = {
+					SOV_Zhir_victory_in_2nd_European_War = yes
+				}
+			}
+		}
+	}
+
+    ENG_uprising = {
+		visible = {
+		}
+		available = {
+			has_global_flag = second_nato_war_flag
+			has_global_flag = SOV_cprf_won
+			NOT = {
+				has_global_flag = nato_nato_won_nato_war
+			}
+			NOT = { 
+			    SOV = {
+				    is_puppet_of = GER
+				}
+			}
+			68 = {
+				controller = {
+					OR = {
+						tag = SOV
+						is_ally_with = SOV
+					}
+				}
+			}
+			65 = {
+				controller = {
+					OR = {
+						tag = SOV
+						is_ally_with = SOV
+					}
+				}
+			}
+			59 = {
+				controller = {
+					OR = {
+						tag = SOV
+						is_ally_with = SOV
+					}
+				}
+			}
+			1378 = {
+				controller = {
+					OR = {
+						tag = SOV
+						is_ally_with = SOV
+					}
+				}
+			}
+        }
+		modifier = {
+		}
+		ai_will_do = {
+			factor = 1000
+		}
+		fire_only_once = yes
+		days_remove = 25
+		cost = 0
+	    remove_effect = {
+            UK2 = {
+				transfer_state = 132 
+				every_state = {
+					limit = {
+						is_core_of = ENG
+					}
+					add_core_of = UK2
+				}
+				set_popularities = {
+					authoritarian_democrat = 17.5
+					fascist = 7.5
+					conservative = 4
+					social_democrat = 16
+					social_liberal = 6
+					market_liberal = 3
+					libertarian_socialist = 28.75
+					communist = 12.25
+					totalitarian_socialist = 5
+				}
+				set_politics= {
+					ruling_party = libertarian_socialist
+					elections_allowed = no 
+				}
+				SOV = { 
+					add_to_faction = UK2
+				}
+				set_cosmetic_tag = UK2_rebellion
+				declare_war_on = {
+					target = ENG
+					type = annex_everything
+				}
+				create_country_leader = {
+					name = ENG_free_britain_council_char
+					picture = "gfx/Leaders/ENG/Free_Britain_Council.png"
+					ideology = reformist_socialism
+					traits = {
+					}
+				}
+				set_party_name = { ideology = libertarian_socialist long_name = UK2_free_britain_union_long name = UK2_free_britain_union }
+				load_oob = "UK2_revolution"
+			}
+		}
+	}
+}
+
+third_euro_war_decisions = {
+	third_euro_war_mission = {
+		priority = 1
+		icon = GFX_SOV_decision_nato_war_deadline
+		available = {
+			GER = {
+				surrender_progress > 0.9
+			}
+		}
+		days_mission_timeout = 999
+		activation = {
+			always = no
+		}
+		visible = {
+		}
+		fire_only_once = no
+		cancel_if_not_visible = no
+		is_good = no
+		cancel_trigger = {
+			if = {
+				limit = {
+					FAF = { exists = yes }
+				}
+				FAF = {
+					surrender_progress > 0.9
+				}
+			}
+			else = {
+				GER = {
+					has_war = no
+				}
+				1493 = {
+					is_controlled_by_GER_or_ally = yes
+				}
+				16 = {
+					is_controlled_by_GER_or_ally = yes
+				}
+				126 = {
+					is_controlled_by_GER_or_ally = yes
+				}
+			}
+		}
+		cancel_effect = { # German Victory
+			FPR = {
+				load_focus_tree = generic_focus
+			}
+			FAF = {
+				load_focus_tree = generic_focus
+			}
+			every_country = {
+				limit = {
+					has_war_with = GER
+				}
+				white_peace = GER
+				dismantle_faction = yes
+				leave_faction = yes
+			}
+			if = {
+				limit = {
+					FAF = { exists = yes }
+				}
+				GER = {
+					puppet = FAF
+				}
+			}
+			GER = {
+				if = {
+					limit = {
+						has_country_flag = GER_left_accelerationist_flag
+					}
+					news_event = news.644
+				}
+				else_if = {
+					limit = {
+						has_country_flag = GER_spartanist_flag
+					}
+					news_event = news.645
+				}
+				else_if = {
+					limit = {
+						OR = {
+							has_country_leader = {
+								character = GER_radelsfuhrer
+								ruling_only = yes
+							}
+							has_country_leader = {
+								character = GER_klaus_armstroff_char
+								ruling_only = yes
+							}
+						}
+					}
+					news_event = news.647
+				}
+				else_if = {
+					limit = {
+						has_country_leader = {
+							character = GER_frank_franz
+							ruling_only = yes
+						}
+					}
+					news_event = news.648
+				}
+				else_if = {
+					limit = {
+						has_country_leader = {
+							character = GER_Heinrich_XIII
+							ruling_only = yes
+						}
+					}
+					news_event = news.649
+				}
+				else = {
+					news_event = news.643
+				}
+			}
+		}
+		timeout_effect = {
+			activate_mission = third_euro_war_mission
+		}
+		complete_effect = { #French Victory
+			if = {
+				limit = {
+					FAF = { exists = yes }
+				}
+				FAF_fascist_victory_in_third_ew = yes
+			}
+			else_if = {
+				limit = {
+					FPR = { exists = yes }
+				}
+				FPR_communist_victory_in_third_ew = yes
+			}
+		}
+	}
+}
+
+great_asian_war_decisions = {
+	great_asian_war_mission = {
+		priority = 1
+		icon = GFX_SOV_decision_nato_war_deadline
+		available = {
+			PRC = {
+				has_war = no
+				NOT = {
+					has_war_with = JAP
+					has_war_with = RAJ
+					has_war_with = AST
+				}
+			}
+		}
+		days_mission_timeout = 999
+		activation = {
+			always = no
+		}
+		visible = {
+		}
+		fire_only_once = no
+		cancel_if_not_visible = no
+		is_good = no
+		cancel_trigger = {
+			PRC = {
+				surrender_progress > 0.6
+			}
+		}
+		cancel_effect = { # PDTO victory
+			PRC = {
+				remove_mission = PRC_GAW_war_exhaustion
+				load_focus_tree = generic_focus
+			}
+			every_country = {
+				limit = {
+					has_war_with = JAP
+				}
+				white_peace = JAP
+				white_peace = RAJ
+				white_peace = AST
+				dismantle_faction = yes
+				leave_faction = yes
+			}
+			if = {
+				limit = {
+					has_global_flag = USB_gaw_intervention_global
+				}
+				PRC = { white_peace = USB }
+			}
+			if = { 
+				limit = {
+					PRC = {
+						has_war_with = GER
+					}
+				}
+				if = {
+					limit = {
+						GER = { has_completed_focus = GER_democracy_now }
+					}
+					GER = { country_event = germany.342 }
+				}
+				PRC = { white_peace = GER }
+			}
+			every_country = {
+				limit = {
+					has_cosmetic_tag = PRC_military_administration
+				}
+				PRC = { end_puppet = PREV }
+				drop_cosmetic_tag = yes
+				if = {
+					limit = {
+						JAP = {
+							is_in_faction_with = GER
+						}
+					}
+					GER_nato_mandate_puppet_PREV = yes
+				}
+			}
+			PRC_japans_victory_in_the_gaw = yes
+		}
+		timeout_effect = {
+			activate_mission = great_asian_war_mission
+		}
+		complete_effect = { #EADI Victory
+			clr_global_flag = pan_asian_war_ongoing
+			PRC = {
+				remove_mission = PRC_GAW_war_exhaustion
+			}
+			every_country = {
+				limit = {
+					has_war_with = PRC
+				}
+				white_peace = PRC
+				dismantle_faction = yes
+			}
+			PRC_chinas_victory_in_the_gaw_allies = yes
+			if = {
+				limit = {
+					has_global_flag = PRC_liberal_china_flag
+				}
+				PRC = {
+					if = {
+						limit = {
+							NOT = {
+								has_country_flag = PRC_september_3rd_portraits_flag
+							}
+						}
+						set_portraits = {
+							character = PRC_wang_yang
+							civilian = {
+								large = "GFX_portrait_PRC_Wang_Yang_Post_Gaw"
+							}
+						}
+					}
+					country_event = china.184
+				}
+			}
+			if = {
+				limit = {
+					PRC = {
+						has_country_leader = {
+							character = PRC_xi_jinping
+							ruling_only = yes
+						}
+					}
+				}
+				PRC = {
+					if = {
+						limit = {
+							NOT = {
+								has_country_flag = PRC_september_3rd_portraits_flag
+							}
+						}
+						set_portraits = {
+							character = PRC_xi_jinping
+							civilian = {
+								large = "GFX_portrait_PRC_xi_jinping_gaw_win"
+							}
+							army = {
+								large = "GFX_portrait_PRC_xi_jinping_cool"
+							}
+						}
+					}
+					country_event = { id = china.2000 days = 45 }
+					country_event = { id = china.1506 days = 5 }
+					country_event = { id = china.1507 days = 10 }
+					country_event = { id = china.1508 days = 15 }
+					country_event = { id = china.1509 days = 20 }
+					country_event = { id = china.1510 days = 25 }
+					country_event = { id = china.1514 days = 30 }
+					country_event = { id = china.1515 days = 35 }
+					country_event = { id = china.1516 days = 40 }
+				}
+			}
+			#if = {
+			#	limit = {
+			#		PRC = {
+			#			has_country_flag = PRC_nationalist_win
+			#		}
+			#	}
+			#	PRC = {
+			#		country_event = { id = china.2001 days = 3 }
+			#	}
+			#}
+			if = {
+				limit = {
+					PRC = {
+						has_country_flag = PRC_new_left_win
+					}
+				}
+				PRC = {
+					country_event = { id = china.2003 days = 3 }
+				}
+			}
+		}
+	}
+}
+
+cognoscenti_decisions = {
+	cognoscenti_russia_war_mission = {
+		priority = 1
+		icon = GFX_SOV_decision_nato_war_deadline
+		available = {
+			USB = {
+				surrender_progress > 0.4
+			}
+		}
+		days_mission_timeout = 999
+		activation = {
+			always = no
+		}
+		visible = {
+		}
+		fire_only_once = no
+		cancel_if_not_visible = no
+		is_good = no
+		cancel_trigger = {
+			SOV = {
+				surrender_progress > 0.6
+			}
+		}
+		cancel_effect = { # USB Victory
+			set_global_flag = USB_russia_defeated_global
+			every_country = {
+				limit = {
+					is_ally_with = SOV
+				}
+				white_peace = USB
+				leave_faction = yes
+				dismantle_faction = yes
+			}
+			every_country = {
+				limit = {
+					OR = {
+						has_country_flag = csto_member
+						has_country_flag = mto_member
+						has_country_flag = hu_member
+						has_country_flag = esto_member
+					}
+				}
+				clr_country_flag = csto_member
+				clr_country_flag = mto_member
+				clr_country_flag = hu_member
+				clr_country_flag = esto_member
+			}
+			SOV = {
+				load_focus_tree = generic_focus
+				drop_cosmetic_tag = yes
+				remove_all_national_spirits = yes
+				end_puppet = BLR
+				end_puppet = LIT
+				end_puppet = LAT
+				end_puppet = EST
+				end_puppet = MOL
+				end_puppet = UKR
+				end_puppet = GEO
+				end_puppet = AZR
+				end_puppet = ARM
+				end_puppet = KAZ
+				end_puppet = TAJ
+				end_puppet = KYR
+				end_puppet = UZB
+				end_puppet = TMS
+				release = BLR
+				release = LIT
+				release = LAT
+				release = EST
+				release = MOL
+				release = UKR
+				release = GEO
+				release = AZR
+				release = ARM
+				release = KAZ
+				release = TAJ
+				release = KYR
+				release = UZB
+				release = TMS
+				release = PLD
+				set_politics = {
+					ruling_party = nationalist
+					elections_allowed = no
+				}
+				set_party_name = {
+					ideology = nationalist
+					long_name = USB_NSS_russia_party_long
+					name = USB_NSS_russia_party
+				}
+				set_popularities = {
+					social_liberal = 5
+					conservative = 5
+					authoritarian_democrat = 7
+					market_liberal = 10
+					social_democrat = 9
+					nationalist = 51
+					communist = 13
+				}
+				create_country_leader = {
+					name = USB_mikhail_khodorkovsky_char
+					picture = "gfx/leaders/SOV/Mikhail_Khodorkovsky.png"
+					ideology = pax_americana_ultraglobalism
+				}
+			}
+			every_country = {
+				limit = {
+					OR = {
+						tag = BLR
+						tag = LIT
+						tag = LAT
+						tag = EST
+						tag = MOL
+						tag = UKR
+						tag = GEO
+						tag = AZR
+						tag = ARM
+						tag = PLD
+					}
+				}
+				VER = {
+					annex_country = {
+						target = PREV
+						transfer_troops = no
+					}
+					transfer_state = 857
+					transfer_state = 227
+					transfer_state = 228
+					transfer_state = 137
+					transfer_state = 1059
+					transfer_state = 741
+				}
+			}
+			every_country = {
+				limit = {
+					OR = {
+						tag = KAZ
+						tag = TAJ
+						tag = KYR
+						tag = UZB
+						tag = TMS
+					}
+				}
+				USN = {
+					annex_country = {
+						target = PREV
+						transfer_troops = no
+					}
+				}
+			}
+			if = {
+				limit = {
+					USN = {
+						NOT = { is_puppet_of = USB }
+					}	
+				}
+				USN = {
+					remove_all_national_spirits = yes
+					set_cosmetic_tag = USB_CENTCOM_cosmetic
+					set_party_name = {
+						ideology = nationalist
+						long_name = USA_nationalist_party_long
+						name = USA_nationalist_party
+					}
+					create_country_leader = {
+						name = USA_james_n._mattis_char
+						picture = "gfx/leaders/USA/generals/USA_james_mattis.png"
+						ideology = pax_americana_ultraglobalism
+					}
+					USB = {
+						puppet = PREV 
+						set_autonomy = {
+							target = PREV
+							autonomy_state = unified_combatant_command_puppet
+							freedom_level = 0.5
+						}
+					}
+					if = {
+						limit = {
+							USB = { has_completed_focus = USB_humanitarian_peacekeeping }
+						}
+						add_ideas = USB_humanitarian_peacekeeping_idea
+					}
+				}
+			}
+			USB = {
+				country_event = nss.66
+			}
+		}
+		timeout_effect = {
+			activate_mission = cognoscenti_russia_war_mission
+		}
+		complete_effect = { #USB Defeat
+			every_country = {
+				limit = {
+					has_war_with = SOV
+				}
+				white_peace = SOV
+				dismantle_faction = yes
+			}
+		}
+	}
+	cognoscenti_china_war_mission = {
+		priority = 1
+		icon = GFX_SOV_decision_nato_war_deadline
+		available = {
+			USB = {
+				surrender_progress > 0.4
+			}
+		}
+		days_mission_timeout = 999
+		activation = {
+			always = no
+		}
+		visible = {
+		}
+		fire_only_once = no
+		cancel_if_not_visible = no
+		is_good = no
+		cancel_trigger = {
+			PRC = {
+				surrender_progress > 0.6
+			}
+		}
+		cancel_effect = { # USB Victory
+			set_global_flag = USB_china_defeated_global
+			every_country = {
+				limit = {
+					OR = {
+						is_puppet_of = PRC
+						is_ally_with = PRC
+					}
+				}
+				PRC = {
+					end_puppet = PREV
+				}
+				drop_cosmetic_tag = yes
+				remove_all_national_spirits = yes
+				load_focus_tree = generic_focus
+				white_peace = USB
+				leave_faction = yes
+				dismantle_faction = yes
+			}
+			every_country = {
+				limit = {
+					has_country_flag = eadi_member
+				}
+				clr_country_flag = eadi_member
+			}
+			PRC = {
+				set_politics = {
+					ruling_party = nationalist
+					elections_allowed = no
+				}
+				set_party_name = {
+					ideology = nationalist
+					long_name = PRC_cpc_neomarxist_libsoc
+					name = PRC_cpc_neomarxist_libsoc_short
+				}
+				set_popularities = {
+					social_liberal = 5
+					conservative = 5
+					authoritarian_democrat = 7
+					market_liberal = 10
+					social_democrat = 9
+					nationalist = 40
+					communist = 24
+				}
+				create_country_leader = {
+					name = PRC_liu_yazhou_char
+					picture = "gfx/leaders/PRC/PRC_liu_yazhou.png"
+					ideology = pax_americana_ultraglobalism
+				}
+			}
+			USB = {
+				country_event = nss.67
+			}
+		}
+		timeout_effect = {
+			activate_mission = cognoscenti_china_war_mission
+		}
+		complete_effect = { #USB Defeat
+			every_country = {
+				limit = {
+					has_war_with = PRC
+				}
+				white_peace = PRC
+				dismantle_faction = yes
+			}
+		}
+	}
+}
+	

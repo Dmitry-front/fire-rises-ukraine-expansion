@@ -1,0 +1,438 @@
+﻿add_namespace = Ivory
+
+#French aid returns home
+country_event = {
+	id = Ivory.0
+	title = Ivory.0.t
+	desc = Ivory.0.d
+	picture = GFX_Generic_Fight_Jet
+	
+	fire_only_once = yes
+	is_triggered_only = yes
+	
+	option = {
+		name = Ivory.0.a
+		add_war_support = 0.05
+		add_manpower = 10000
+	}
+}
+country_event = {
+	id = Ivory.1
+	title = Ivory.1.t
+	desc = Ivory.1.d
+	picture = GFX_Generic_Fight_Jet
+	
+	fire_only_once = yes
+	is_triggered_only = yes
+	trigger = {
+		SOV = {
+			has_war_with = FRA
+		}
+		NOT = {
+			has_global_flag = second_nato_war_flag
+		}
+	}
+	immediate = {
+		hidden_effect = {
+			country_event = { #French military leaves to fight Russia
+				id = Ivory.2
+				days = 15
+			}
+			MRT = {
+				country_event = { #THE FRUIT IS RIPE
+					id = Ivory.3
+					days = 30
+				}
+			}
+			if = {
+				limit = {
+					country_exists = AQI
+				}
+				AQI = {
+					country_event = { #INVADE WEST AFRICA PROPER
+						id = Ivory.4
+						days = 35
+					}
+				}
+			}
+		}
+	}
+	option = {
+		name = Ivory.1.a
+		add_ideas = IVO_Army_Discontent_idea
+	}
+}
+country_event = { #French military leaves to fight Russia
+	id = Ivory.2
+	title = Ivory.2.t
+	desc = Ivory.2.d
+	picture = GFX_Generic_Fight_Jet
+	
+	fire_only_once = yes
+	is_triggered_only = yes
+	
+	option = {
+		name = Ivory.2.a
+		remove_ideas = {
+			IVO_French_Political_Influence
+			FRA_French_Economic_Influence_idea
+			FRA_French_Military_Influence_idea
+		}
+		add_war_support = -0.08
+		750 = {
+			set_demilitarized_zone = yes
+		}
+		751 = {
+			set_demilitarized_zone = yes
+		}
+		hidden_effect = {
+			country_event = { #Young officer coup
+				id = Ivory.5
+				days = 12
+			}
+		}
+	}
+}
+country_event = { #THE FRUIT IS RIPE
+	id = Ivory.3
+	title = Ivory.3.t
+	desc = Ivory.3.d
+	picture = GFX_Generic_Fight_Jet
+	
+	fire_only_once = yes
+	is_triggered_only = yes
+	
+	option = {
+		name = Ivory.3.a
+		declare_war_on = {
+    		target = IVO
+   			type = annex_everything
+		}
+		declare_war_on = {
+    		target = VOL
+   			type = annex_everything
+		}
+	}
+}
+country_event = { #INVADE WEST AFRICA PROPER
+	id = Ivory.4
+	title = Ivory.4.t
+	desc = Ivory.4.d
+	picture = GFX_Generic_Fight_Jet
+	
+	fire_only_once = yes
+	is_triggered_only = yes
+	
+	option = {
+		name = Ivory.4.a
+		declare_war_on = {
+    		target = IVO
+   			type = annex_everything
+		}
+		declare_war_on = {
+    		target = VOL
+   			type = annex_everything
+		}
+		declare_war_on = {
+    		target = MRT
+   			type = annex_everything
+		}
+	}
+}
+country_event = { #Civil war
+	id = Ivory.5
+	title = Ivory.5.t
+	desc = Ivory.5.d
+	picture = GFX_Generic_Fight_Jet
+	
+	fire_only_once = yes
+	is_triggered_only = yes
+	
+	option = {
+		name = Ivory.5.a
+		hidden_effect = {
+			every_core_state = {
+				add_core_of = VOL
+			}
+			set_nationality = {
+    			target_country = VOL
+    			character = VOL_Ibrahim_Traore_char
+			}
+			VOL = {
+				set_politics = {
+					ruling_party = nationalist
+    				last_election = "2022.04.10"
+					election_frequency = 60
+					elections_allowed = no
+				}
+				add_popularity = {
+					ideology = nationalist
+    				popularity = 0.32
+				}
+				transfer_state = 750
+				transfer_state = 751
+				set_cosmetic_tag = VOL_Union_of_West_African_States
+				add_country_leader_role = {
+					character = VOL_Ibrahim_Traore_char
+				    promote_leader = yes
+					country_leader = {
+						ideology = autocrat
+						traits = {
+							Africa_Ambitious_Dictator
+						}
+					}
+				}
+			}
+			transfer_units_fraction = {
+				target = VOL
+				size = 0.5
+				stockpile_ratio = 0.5
+				army_ratio = 0.3
+				keep_unit_leaders_trigger = {
+					OR = {
+						is_country_leader = yes
+						is_character = DAH_Fructueux_Gbaguidi_char
+						is_character = VOL_Paul_Henri_Sandaogo_Damiba_char
+						is_character = MLI_Bah_Ndaw_char
+					}
+				}
+			}
+			declare_war_on = {
+    			target = VOL
+   				type = annex_everything
+			}
+		}
+	}
+}
+country_event = { #Yay West Africa NATO
+	id = Ivory.6
+	title = Ivory.6.t
+	desc = Ivory.6.d
+	picture = GFX_Generic_Fight_Jet
+	is_triggered_only = yes
+	
+	option = {
+		name = Ivory.6.a
+		ai_chance = {
+			base = 1
+			modifier = {
+				any_neighbor_country = {
+					OR = {
+						tag = IVO
+						is_in_faction_with = IVO
+					}
+				}
+				factor = 80
+			}
+			modifier = {
+				tag = NGA
+				factor = 120
+			}
+		}
+		add_stability = 0.10
+		set_country_flag = WDTO_member
+		IVO = {
+			add_to_faction = ROOT
+		}
+	}
+	option = { #Join the counter offer
+		name = Ivory.6.b
+		ai_chance = {
+			base = 1
+			modifier = {
+				any_neighbor_country = {
+					OR = {
+						tag = MRT
+						is_in_faction_with = MRT
+					}
+				}
+				factor = 90
+			}
+			modifier = {
+				tag = NGR
+				factor = 120
+			}
+		}
+		add_war_support = 0.10
+		set_country_flag = West_African_Anti_Imperialist_Front_member
+		MRT = {
+			add_to_faction = ROOT
+		}
+	}
+	option = { #Declare Neutrality
+		name = Ivory.6.c
+		ai_chance = {
+			factor = 20
+		}
+		add_political_power = -100
+	}
+}
+country_event = { #Mali Demands Decolonization of our national identity
+	id = Ivory.7
+	title = Ivory.7.t
+	desc = Ivory.7.d
+	picture = GFX_Generic_Fight_Jet
+	
+	fire_only_once = yes
+	is_triggered_only = yes
+	
+	option = { #Uhhh we will do what we can?
+		name = Ivory.7.a
+		add_stability = -0.03
+		hidden_effect = {
+			random_list = {
+				75 = {
+					country_event = { id = Ivory.8 days = 45 } #Mali installs puppet monarch
+				}
+				25 = {
+					add_political_power = 1
+				}
+			}
+		}
+	}
+}
+country_event = { #Unwilling monarch installed
+	id = Ivory.8
+	title = Ivory.8.t
+	desc = Ivory.8.d
+	picture = GFX_Generic_Fight_Jet
+	
+	fire_only_once = yes
+	is_triggered_only = yes
+	
+	option = { #A King?
+		name = Ivory.8.a
+		set_politics = {
+			ruling_party = nationalist
+			last_election = "2022.04.10"
+			election_frequency = 60
+			elections_allowed = no
+		}
+		add_popularity = {
+			ideology = nationalist
+			popularity = 0.10
+		}
+		add_country_leader_role = {
+			character = IVO_Kwame_Adinkra_char
+		    promote_leader = yes
+			country_leader = {
+				ideology = absolute_monarchist
+				traits = {
+				}
+			}
+		}
+	}
+}
+country_event = {
+	id = Ivory.9
+	title = Ivory.9.t
+	desc = Ivory.9.d
+	picture = GFX_Generic_Fight_Jet
+	
+	fire_only_once = yes
+	is_triggered_only = yes
+	
+	option = {
+		name = Ivory.9.a
+		VOL = {
+			set_politics = {
+				ruling_party = nationalist
+				last_election = "2022.04.10"
+				election_frequency = 60
+				elections_allowed = no
+			}
+			add_popularity = {
+				ideology = nationalist
+				popularity = 0.32
+			}
+			add_country_leader_role = {
+				character = VOL_Ibrahim_Traore_char
+				promote_leader = yes
+				country_leader = {
+					ideology = autocrat
+					traits = {
+						Africa_Ambitious_Dictator
+					}
+				}
+			}
+		}
+		SOV = {
+			country_event = { id = russia.712 days = 5 }
+		}
+	}
+}
+country_event = { #ECOWAS
+	id = Ivory.11
+	title = Ivory.11.t
+	desc = Ivory.11.d
+	picture = GFX_Generic_Fight_Jet
+	
+	fire_only_once = yes
+	is_triggered_only = yes
+	
+	option = {
+		name = Ivory.11.a
+			create_faction = FRA_WA_West_African_Cooperation_Sphere
+			hidden_effect = {
+				remove_faction_goal = faction_goal_the_atomic_race
+				add_faction_goal = faction_goal_placeholder_long_term
+				remove_faction_goal = faction_goal_a_military_base
+				add_faction_goal = faction_goal_placeholder_medium_term
+				add_faction_goal = faction_goal_placeholder_short_term
+			}
+			set_country_flag = WDTO_member
+			SIE = {
+				country_event = { 
+					id = Ivory.6
+					days = 5
+				}
+			}
+			LIB = {
+				country_event = { 
+					id = Ivory.6
+					days = 5
+				}
+			}
+			if = {
+				limit = {
+					NGA = {
+						is_puppet_of = BIA
+					}
+				}
+				BIA = {
+					country_event = { 
+						id = Ivory.6
+						days = 5
+					}
+				}
+			}
+			else = {
+				NGA = {
+					country_event = { 
+						id = Ivory.6
+						days = 5
+					}
+				}
+			}
+			GHA = {
+				country_event = { 
+					id = Ivory.6
+					days = 5
+				}
+			}
+			CMR = {
+				country_event = { 
+					id = Ivory.6
+					days = 5
+				}
+			}
+			GNB = {
+				country_event = { 
+					id = Ivory.6
+					days = 5
+				}
+			}
+	}
+}
+
+

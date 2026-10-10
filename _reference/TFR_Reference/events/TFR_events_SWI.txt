@@ -1,0 +1,338 @@
+﻿###########################
+# Myanmar Events
+###########################
+
+add_namespace = Swiss
+
+#Red Isolationists Sweep local snap elections
+country_event = {
+	id = Swiss.1
+	title = Swiss.1.t
+	desc = Swiss.1.d
+	picture = GFX_Generic_Fight_Jet
+	
+	fire_only_once = yes
+	is_triggered_only = yes
+	
+	trigger = {
+		tag = SWI
+	}
+
+	option = {
+		name = Swiss.1.a
+		country_event = {
+			id = Swiss.3
+			days = 60
+		}
+		add_popularity = { ideology = communist popularity = 0.05 }
+	}
+}
+#National Isolationists Sweep local snap elections
+country_event = {
+	id = Swiss.2
+	title = Swiss.2.t
+	desc = Swiss.2.d
+	picture = GFX_Generic_Fight_Jet
+	
+	fire_only_once = yes
+	is_triggered_only = yes
+	
+	trigger = {
+		tag = SWI
+	}
+
+	option = {
+		name = Swiss.2.a
+		country_event = {
+			id = Swiss.4
+			days = 60
+		}
+		add_popularity = { ideology = fascist popularity = 0.05 }
+	}
+}
+
+country_event = { #Swiss Communist party elected to federal position
+	id = Swiss.3
+	title = Swiss.3.t
+	desc = Swiss.3.d
+	picture = GFX_Generic_Fight_Jet
+	
+	fire_only_once = yes
+	is_triggered_only = yes
+	
+	trigger = {
+		tag = SWI
+	}
+
+	option = {
+		name = Swiss.3.a
+		country_event = {
+			id = Swiss.5
+			days = 80
+		}
+		add_popularity = { ideology = communist popularity = 0.20 }
+	}
+}
+country_event = { #National Isolationists elected to federal position
+	id = Swiss.4
+	title = Swiss.4.t
+	desc = Swiss.4.d
+	picture = GFX_Generic_Fight_Jet
+	
+	fire_only_once = yes
+	is_triggered_only = yes
+	
+	trigger = {
+		tag = SWI
+	}
+
+	option = {
+		name = Swiss.4.a
+		country_event = {
+			id = Swiss.6
+			days = 80
+		}
+		add_popularity = { ideology = fascist popularity = 0.20 }
+	}
+}
+country_event = { #Communist Coup in Switzerland
+	id = Swiss.5
+	title = Swiss.5.t
+	desc = Swiss.5.d
+	picture = GFX_Generic_Fight_Jet
+	
+	fire_only_once = yes
+	is_triggered_only = yes
+	
+	trigger = {
+		tag = SWI
+	}
+
+	option = {
+		name = Swiss.5.a
+		set_cosmetic_tag = SWI_Peoples_United_Cantons
+		remove_ideas = swiss_political_system
+		set_politics = {
+			ruling_party = communist
+			elections_allowed = no
+			last_election = "1935.12.17"
+			election_frequency = 48
+		}
+		hidden_effect = {
+			set_popularities = {
+				communist = 55
+				libertarian_socialist = 10
+				social_democrat = 5
+				totalitarian_socialist = 30
+			}	
+			country_event = {
+				id = Swiss.7
+				days = 240
+			}
+		}
+		
+	}
+}
+country_event = { #Nationalist Coup in Switzerland
+	id = Swiss.6
+	title = Swiss.6.t
+	desc = Swiss.6.d
+	picture = GFX_Generic_Fight_Jet
+	
+	fire_only_once = yes
+	is_triggered_only = yes
+	
+	trigger = {
+		tag = SWI
+	}
+
+	option = {
+		name = Swiss.6.a
+		set_cosmetic_tag = SWI_Helvetic_State
+		remove_ideas = swiss_political_system
+		set_politics = {
+			ruling_party = fascist
+			elections_allowed = no
+			last_election = "1935.12.17"
+			election_frequency = 48
+		}
+		hidden_effect = {
+			set_popularities = {
+				nationalist = 30
+				authoritarian_democrat = 10
+				national_socialist = 5
+				fascist = 55
+			}
+			country_event = {
+				id = Swiss.8
+				days = 240
+			}	
+		}
+		
+	}
+}
+country_event = { #Crivellist-Hoxhaism Communist Thought Emerges
+	id = Swiss.7
+	title = Swiss.7.t
+	desc = Swiss.7.d
+	picture = GFX_Generic_Fight_Jet
+	
+	fire_only_once = yes
+	is_triggered_only = yes
+	
+	trigger = {
+		tag = SWI
+	}
+
+	option = {
+		name = Swiss.7.a
+		add_ideas = SWI_Red_Isolationism_idea
+		set_politics = {
+			ruling_party = totalitarian_socialist
+			elections_allowed = no
+			last_election = "1935.12.17"
+			election_frequency = 48
+		}
+		hidden_effect = {
+			set_popularities = {
+				totalitarian_socialist = 100
+			}	
+		}
+	}
+}
+country_event = { #Swiss Fascism Emerges
+	id = Swiss.8
+	title = Swiss.8.t
+	desc = Swiss.8.d
+	picture = GFX_Generic_Fight_Jet
+	
+	fire_only_once = yes
+	is_triggered_only = yes
+	
+	trigger = {
+		tag = SWI
+	}
+
+	option = {
+		name = Swiss.8.a
+		add_ideas = SWI_Europes_Black_Spot_idea
+	}
+}
+
+country_event = { #Federal Council
+	id = Swiss.9
+	title = Swiss.9.t
+	desc = Swiss.9.d
+	picture = GFX_generic_elections
+	
+	trigger = {
+		tag = SWI
+		OR = {
+			has_government = authoritarian_democrat
+			has_government = conservative
+			has_government = market_liberal
+			has_government = social_liberal
+			has_government = social_democrat
+		}
+	}
+	is_triggered_only = yes
+	immediate = {
+		hidden_effect ={
+			country_event = {
+				id = Swiss.9
+				days = 365
+			}
+		}
+	}
+
+	option = {
+		name = Swiss.9.a
+		ai_chance = {
+			factor = 1
+			modifier = {
+				factor = 0.5
+				has_government = social_democrat
+			}
+		}
+		set_politics = {
+			ruling_party = social_democrat
+			elections_allowed = yes
+		}
+		add_popularity = {
+			popularity = 0.02
+			ideology = social_democrat
+		}
+	}
+	option = {
+		name = Swiss.9.b
+		ai_chance = {
+			factor = 1
+			modifier = {
+				factor = 0.5
+				has_government = social_liberal
+			}
+		}
+		set_politics = {
+			ruling_party = social_liberal
+			elections_allowed = yes
+		}
+		add_popularity = {
+			popularity = 0.02
+			ideology = social_liberal
+		}
+	}
+	option = {
+		name = Swiss.9.c
+		set_politics = {
+			ruling_party = market_liberal
+			elections_allowed = yes
+		}
+		ai_chance = {
+			factor = 1
+			modifier = {
+				factor = 0.5
+				has_government = market_liberal
+			}
+		}
+		add_popularity = {
+			popularity = 0.02
+			ideology = market_liberal
+		}
+	}
+	option = {
+		name = Swiss.9.f
+		ai_chance = {
+			factor = 1
+			modifier = {
+				factor = 0.5
+				has_government = conservative
+			}
+		}
+		set_politics = {
+			ruling_party = conservative
+			elections_allowed = yes
+		}
+		add_popularity = {
+			popularity = 0.02
+			ideology = conservative
+		}
+	}
+	option = {
+		name = Swiss.9.e
+		ai_chance = {
+			factor = 1
+			modifier = {
+				factor = 0.5
+				has_government = authoritarian_democrat
+			}
+		}
+		set_politics = {
+			ruling_party = authoritarian_democrat
+			elections_allowed = yes
+		}
+		add_popularity = {
+			popularity = 0.02
+			ideology = authoritarian_democrat
+		}
+	}
+}

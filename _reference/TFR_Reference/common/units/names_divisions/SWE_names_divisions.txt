@@ -1,0 +1,560 @@
+﻿# Division template historical names system. Is a new method of naming the divisions based on the names-group assigned to it's template.
+# If we run out of all historical names, the names will be assigned in the old way.
+#
+# Each group has a made up tag. Use it if you want to append more, or replace existing names with the extra txt files (modding).
+#
+# for_countries - lists all countries that can use it. If empty, or entire tag is missing, all countries in the world can use it.
+#
+# can_use - is a trigger that locks/unlocks the group under specific circumstances. The trigger is in a country scope.
+#
+# division_types - is a list of tokens to corresponding unit types. A player can in fact use any group of names for a div.template
+#                  however this tag is a helper for an automated choice (for AI, or if the group must switch on it's own, because
+#                  for example the current one is no longer available due to the can_use trigger saying so).
+#                  In automated choice, the division template must have at least 1 of the following types for it to be chosen.
+#
+# fallback_name - Is going to be used if we run out of the scripted historical names. If you want to use the old division naming
+#                 mechanics to be used for fallbacks, then just skip this option.
+#
+# unordered - It's a list of historical division names that did not have a number. Regardless if such names happened in history or not
+#             this option is available here mainly for a mods.
+#
+# ordered - Is a list of all historical names. 
+#           Numbers must start from 1 and up. 
+#           Numbers can't repeat in one scope.
+#           If you script the name for this group, at the same number (for example in a mod in another file), the name will be override.
+#           All arguments between the brackets must be separated by spaces. Each argument is wrapped in "quotas".
+#           1st argument = The name. It must contain either: 
+#                          %d (for decimal number placement)
+#                          %s (for string number placement - ROMAN numbers like XIV).
+#           2nd argument is optional = A localizable text describing this historical division. The text will be visible in the tooltip
+#                                      where you choose the historical division name.
+#           3rd argument is optional = An URL preferably pointing to the WIKI. It's a future feature that is not currently working in
+#                                      the current game version.
+
+SWE_INF_01 = 
+{
+	name = "Infantry Brigades"
+
+	for_countries = { SWE }
+
+	can_use = { always = yes }
+
+	division_types = { "infantry" "motorized" "recce" "paratrooper"  }
+
+	# Number reservation system will tie to another group.
+	#link_numbering_with = { SWE_Gar_01 }
+
+	fallback_name = "IB %d"
+
+	# Names with numbers (only one number per entry). 
+	# It's okay to have gaps in numbering.
+	ordered =
+	{
+		#Active numbered brigades
+		1 = { "IB %d" }
+		4 = { "IB %d" }
+		7 = { "IB %d" }
+		19 = { "NB %d" }
+		
+		#Older brigades
+		2 = { "IB %d" }
+		3 = { "IB %d" }
+		5 = { "NB %d" }
+		6 = { "IB %d" }
+		8 = { "IB %d" }
+		9 = { "IB %d" }
+		10 = { "IB %d" }
+		11 = { "IB %d" }
+		12 = { "IB %d" }
+		13 = { "NB %d" }
+		14 = { "IB %d" }
+		15 = { "IB %d" }
+		16 = { "IB %d" }
+		17 = { "IB %d" }
+		18 = { "IB %d" }
+		20 = { "NB %d" }
+		21 = { "NB %d" }
+		22 = { "IB %d" }
+		23 = { "IB %d" }
+		24 = { "IB %d" }
+		25 = { "IB %d" }
+		26 = { "IB %d" }
+		27 = { "IB %d" }
+		28 = { "IB %d" }
+		29 = { "IB %d" }
+		30 = { "IB %d" }
+		31 = { "IB %d" }
+		32 = { "IB %d" }
+		33 = { "IB %d" }
+		34 = { "IB %d" }
+		35 = { "NB %d" }
+		36 = { "IB %d" }
+		37 = { "IB %d" }
+		38 = { "IB %d" }
+		39 = { "IB %d" }
+		40 = { "IB %d" }
+		41 = { "IB %d" }
+		42 = { "IB %d" }
+		43 = { "IB %d" }
+		44 = { "IB %d" }
+		45 = { "IB %d" }
+		46 = { "IB %d" }
+		47 = { "IB %d" }
+		48 = { "IB %d" }
+		49 = { "IB %d" }
+		50 = { "NB %d" }
+		51 = { "IB %d" }
+		
+		#Planned brigades
+		59 = { "IB %d" }
+		66 = { "IB %d" }
+		77 = { "IB %d" }
+		100 = { "IB 2000" }
+		63 = { "NB %d" }
+		85 = { "NB %d" }
+		101 = { "NB 2000" }
+		58 = { "NB %d" }
+		64 = { "IB %d" }
+		90 = { "IB %d" }
+	}
+}
+
+SWE_MEC_01 = 
+{
+	name = "Mechanized Brigades"
+
+	for_countries = { SWE }
+
+	can_use = { always = yes }
+
+	division_types = { "mechanized" "light_mechanized" }
+
+	fallback_name = "MekB %d"
+
+	link_numbering_with = { SWE_INF_01 }
+
+	# Names with numbers (only one number per entry)
+	ordered =
+	{
+		#Active numbered brigades
+		1 = { "MekIB %d" }
+		4 = { "MekB %d" }
+		7 = { "MekB %d" }
+		19 = { "NMekB %d" }
+		
+		#Older brigades
+		2 = { "MekB %d" }
+		3 = { "MekB %d" }
+		5 = { "NMekB %d" }
+		6 = { "MekB %d" }
+		8 = { "MekB %d" }
+		9 = { "MekB %d" }
+		10 = { "MekB %d" }
+		11 = { "MekB %d" }
+		12 = { "MekB %d" }
+		13 = { "NMekB %d" }
+		14 = { "MekB %d" }
+		15 = { "MekB %d" }
+		16 = { "MekB %d" }
+		17 = { "MekB %d" }
+		18 = { "MekB %d" }
+		20 = { "NMekB %d" }
+		21 = { "NMekB %d" }
+		22 = { "MekB %d" }
+		23 = { "MekB %d" }
+		24 = { "MekB %d" }
+		25 = { "MekB %d" }
+		26 = { "MekB %d" }
+		27 = { "MekB %d" }
+		28 = { "MekB %d" }
+		29 = { "MekB %d" }
+		30 = { "MekB %d" }
+		31 = { "MekB %d" }
+		32 = { "MekB %d" }
+		33 = { "MekB %d" }
+		34 = { "MekB %d" }
+		35 = { "NMekB %d" }
+		36 = { "MekB %d" }
+		37 = { "MekB %d" }
+		38 = { "MekB %d" }
+		39 = { "MekB %d" }
+		40 = { "MekB %d" }
+		41 = { "MekB %d" }
+		42 = { "MekB %d" }
+		43 = { "MekB %d" }
+		44 = { "MekB %d" }
+		45 = { "MekB %d" }
+		46 = { "MekB %d" }
+		47 = { "MekB %d" }
+		48 = { "MekB %d" }
+		49 = { "MekB %d" }
+		50 = { "NMekB %d" }
+		51 = { "MekB %d" }
+		
+		#Planned brigades
+		59 = { "MekB %d" }
+		66 = { "MekB %d" }
+		77 = { "MekB %d" }
+		100 = { "MekB 2000" }
+		63 = { "NMekB %d" }
+		85 = { "NMekB %d" }
+		101 = { "NMekB 2000" }
+		58 = { "NMekB %d" }
+		64 = { "MekB %d" }
+		90 = { "MekB %d" }
+	}
+}
+
+SWE_ARM_01 = 
+{
+	name = "Armored Brigades"
+
+	for_countries = { SWE }
+
+	can_use = { always = yes }
+
+	division_types = { "light_armor" "medium_armor" "heavy_armor" "modern_armor" }
+
+	fallback_name = "PB %d"
+
+	link_numbering_with = { SWE_INF_01 }
+
+	# Names with numbers (only one number per entry)
+	ordered =
+	{
+		#Active numbered brigades
+		1 = { "PB %d" }
+		4 = { "PB %d" }
+		7 = { "PB %d" }
+		19 = { "NPB %d" }
+		
+		#Older brigades
+		2 = { "PB %d" }
+		3 = { "PB %d" }
+		5 = { "NPB %d" }
+		6 = { "PB %d" }
+		8 = { "PB %d" }
+		9 = { "PB %d" }
+		10 = { "PB %d" }
+		11 = { "PB %d" }
+		12 = { "PB %d" }
+		13 = { "NPB %d" }
+		14 = { "PB %d" }
+		15 = { "PB %d" }
+		16 = { "PB %d" }
+		17 = { "PB %d" }
+		18 = { "PB %d" }
+		20 = { "NPB %d" }
+		21 = { "NPB %d" }
+		22 = { "PB %d" }
+		23 = { "PB %d" }
+		24 = { "PB %d" }
+		25 = { "PB %d" }
+		26 = { "PB %d" }
+		27 = { "PB %d" }
+		28 = { "PB %d" }
+		29 = { "PB %d" }
+		30 = { "PB %d" }
+		31 = { "PB %d" }
+		32 = { "PB %d" }
+		33 = { "PB %d" }
+		34 = { "PB %d" }
+		35 = { "NPB %d" }
+		36 = { "PB %d" }
+		37 = { "PB %d" }
+		38 = { "PB %d" }
+		39 = { "PB %d" }
+		40 = { "PB %d" }
+		41 = { "PB %d" }
+		42 = { "PB %d" }
+		43 = { "PB %d" }
+		44 = { "PB %d" }
+		45 = { "PB %d" }
+		46 = { "PB %d" }
+		47 = { "PB %d" }
+		48 = { "PB %d" }
+		49 = { "PB %d" }
+		50 = { "NPB %d" }
+		51 = { "PB %d" }
+		
+		#Planned brigades
+		59 = { "PB %d" }
+		66 = { "PB %d" }
+		77 = { "PB %d" }
+		100 = { "PB 2000" }
+		63 = { "NPB %d" }
+		85 = { "NPB %d" }
+		101 = { "NPB 2000" }
+		58 = { "NPB %d" }
+		64 = { "PB %d" }
+		90 = { "PB %d" }
+	}
+}
+
+SWE_ARM_02 = 
+{
+	name = "Armored Regiments"
+
+	for_countries = { SWE }
+
+	can_use = { always = yes }
+
+	division_types = { "light_armor" "medium_armor" "heavy_armor" "modern_armor" }
+
+	fallback_name = "P %d"
+
+	link_numbering_with = { SWE_INF_01 }
+
+	# Names with numbers (only one number per entry)
+	ordered =
+	{
+		#Active numbered regiments
+		4 = { "P %d" }
+		7 = { "P %d" }
+		18 = { "SG GTL" } #P 18
+		
+		#Regiments part of other units
+		5 = { "I 19" } #Strangely enough officially designated as an infantry regiment, is P 5 too
+		
+		#Older armored regiments
+		1 = { "P %d" }
+		2 = { "P %d" }
+		3 = { "P %d" }
+		6 = { "P %d" }
+		10 = { "P %d" }
+		
+		#Fictional regiments
+		8 = { "P %d" }
+		9 = { "P %d" }
+	}
+}
+
+SWE_MNT_01 = 
+{
+	name = "Mountain and Light Infantry Brigades"
+
+	for_countries = { SWE }
+
+	can_use = { always = yes }
+
+	division_types = { "mountaineers" "recce" }
+
+	fallback_name = "JB %d"
+
+	link_numbering_with = { SWE_INF_01 }
+
+	# Names with numbers (only one number per entry)
+	ordered =
+	{
+		#Active numbered brigades
+		1 = { "JB %d" }
+		4 = { "JB %d" }
+		7 = { "JB %d" }
+		19 = { "NJB %d" }
+		
+		#Older brigades
+		2 = { "JB %d" }
+		3 = { "JB %d" }
+		5 = { "NJB %d" }
+		6 = { "JB %d" }
+		8 = { "JB %d" }
+		9 = { "JB %d" }
+		10 = { "JB %d" }
+		11 = { "JB %d" }
+		12 = { "JB %d" }
+		13 = { "NJB %d" }
+		14 = { "JB %d" }
+		15 = { "JB %d" }
+		16 = { "JB %d" }
+		17 = { "JB %d" }
+		18 = { "JB %d" }
+		20 = { "NJB %d" }
+		21 = { "NJB %d" }
+		22 = { "JB %d" }
+		23 = { "JB %d" }
+		24 = { "JB %d" }
+		25 = { "JB %d" }
+		26 = { "JB %d" }
+		27 = { "JB %d" }
+		28 = { "JB %d" }
+		29 = { "JB %d" }
+		30 = { "JB %d" }
+		31 = { "JB %d" }
+		32 = { "JB %d" }
+		33 = { "JB %d" }
+		34 = { "JB %d" }
+		35 = { "NJB %d" }
+		36 = { "JB %d" }
+		37 = { "JB %d" }
+		38 = { "JB %d" }
+		39 = { "JB %d" }
+		40 = { "JB %d" }
+		41 = { "JB %d" }
+		42 = { "JB %d" }
+		43 = { "JB %d" }
+		44 = { "JB %d" }
+		45 = { "JB %d" }
+		46 = { "JB %d" }
+		47 = { "JB %d" }
+		48 = { "JB %d" }
+		49 = { "JB %d" }
+		50 = { "NJB %d" }
+		51 = { "JB %d" }
+		
+		#Planned brigades
+		59 = { "JB %d" }
+		66 = { "JB %d" }
+		77 = { "JB %d" }
+		100 = { "JB 2022" }
+		63 = { "NJB %d" }
+		85 = { "NJB %d" }
+		101 = { "NJB 2022" }
+		58 = { "NJB %d" }
+		64 = { "JB %d" }
+		90 = { "JB %d" }
+	}
+}
+
+SWE_MAR_01 = 
+{
+	name = "Marine Units"
+
+	for_countries = { SWE }
+
+	can_use = { always = yes }
+
+	division_types = { "marine" }
+
+	fallback_name = "MB %d"
+
+	# Names with numbers (only one number per entry)
+	ordered =
+	{
+		21 = { "FMB" }
+		22 = { "GMB" }
+		23 = { "RMB" }
+		24 = { "SMB" }
+		1 = { "KAB %d" }
+		2 = { "KAB %d" }
+		25 = { "Amf 1" }
+		3 = { "KAB %d" }
+		4 = { "KAB %d" }
+		26 = { "Amf 4" }
+		5 = { "KAB %d" }
+		6 = { "KAB %d" }
+	}
+}
+
+SWE_SPECOPS_01 = 
+{
+	name = "Special Operations Units"
+
+	for_countries = { SWE }
+
+	can_use = { always = yes }
+
+	division_types = { "special_forces" }
+
+	fallback_name = "SOG IE %d"
+
+	# Names with numbers (only one number per entry)
+	ordered =
+	{
+		1 = { "SOG IE %d" }
+		21 = { "SHG" }
+		2 = { "SOG IE %d" }
+		22 = { "STG" }
+		3 = { "SOG IE %d" }
+		23 = { "SSG" }
+		24 = { "SIG" }
+		4 = { "SOG IE %d" }
+		25 = { "SFS" }
+		5 = { "SOG IE %d" }
+	}
+}
+
+SWE_MIL_01 = 
+{
+	name = "Landstorm Brigades"
+
+	for_countries = { SWE }
+
+	can_use = { always = yes }
+
+	division_types = { "militia" "mot_militia" }
+
+	fallback_name = "LandB %d"
+
+	link_numbering_with = { SWE_INF_01 }
+
+	# Names with numbers (only one number per entry)
+	ordered =
+	{
+		#Active numbered brigades
+		1 = { "LandIB %d" }
+		4 = { "LandB %d" }
+		7 = { "LandB %d" }
+		19 = { "NLandB %d" }
+		
+		#Older brigades
+		2 = { "LandB %d" }
+		3 = { "LandB %d" }
+		5 = { "NLandB %d" }
+		6 = { "LandB %d" }
+		8 = { "LandB %d" }
+		9 = { "LandB %d" }
+		10 = { "LandB %d" }
+		11 = { "LandB %d" }
+		12 = { "LandB %d" }
+		13 = { "NLandB %d" }
+		14 = { "LandB %d" }
+		15 = { "LandB %d" }
+		16 = { "LandB %d" }
+		17 = { "LandB %d" }
+		18 = { "LandB %d" }
+		20 = { "NLandB %d" }
+		21 = { "NLandB %d" }
+		22 = { "LandB %d" }
+		23 = { "LandB %d" }
+		24 = { "LandB %d" }
+		25 = { "LandB %d" }
+		26 = { "LandB %d" }
+		27 = { "LandB %d" }
+		28 = { "LandB %d" }
+		29 = { "LandB %d" }
+		30 = { "LandB %d" }
+		31 = { "LandB %d" }
+		32 = { "LandB %d" }
+		33 = { "LandB %d" }
+		34 = { "LandB %d" }
+		35 = { "NLandB %d" }
+		36 = { "LandB %d" }
+		37 = { "LandB %d" }
+		38 = { "LandB %d" }
+		39 = { "LandB %d" }
+		40 = { "LandB %d" }
+		41 = { "LandB %d" }
+		42 = { "LandB %d" }
+		43 = { "LandB %d" }
+		44 = { "LandB %d" }
+		45 = { "LandB %d" }
+		46 = { "LandB %d" }
+		47 = { "LandB %d" }
+		48 = { "LandB %d" }
+		49 = { "LandB %d" }
+		50 = { "NLandB %d" }
+		51 = { "LandB %d" }
+		
+		#Planned brigades
+		59 = { "LandB %d" }
+		66 = { "LandB %d" }
+		77 = { "LandB %d" }
+		100 = { "LandB 2022" }
+		63 = { "NLandB %d" }
+		85 = { "NLandB %d" }
+		101 = { "NLandB 2022" }
+		58 = { "NLandB %d" }
+		64 = { "LandB %d" }
+		90 = { "LandB %d" }
+	}
+}

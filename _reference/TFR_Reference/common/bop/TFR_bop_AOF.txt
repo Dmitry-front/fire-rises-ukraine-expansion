@@ -1,0 +1,109 @@
+AOF_BOP = {
+	initial_value = -0.11
+	left_side = AOF_Anarchism_side	
+	right_side = AOF_Libertarianism_side	
+	#decision_category = AOF_BOP_category
+	#desc = AOF_BOP_desc #Doesn't do anything
+	#Middle
+	range = {
+		id = AOF_Middle_balance_range
+		min = -0.33
+		max = 0.33
+		modifier = {
+			stability_factor = 0.10
+			war_support_factor = 0.10
+			production_speed_buildings_factor = -0.05
+			production_factory_max_efficiency_factor = -0.025
+			max_planning_factor = -0.025
+			line_change_production_efficiency_factor = 0.05
+			planning_speed = 0.05
+			resistance_growth = -0.2
+			army_attack_factor = 0.05
+			political_power_gain = 0.05
+			compliance_growth = -0.05
+		}
+		on_activate = {
+		}
+		on_deactivate = {
+		}
+	}
+	#Anarchist
+	side = {
+		id = AOF_Anarchism_side
+		icon = GFX_bop_AOF_anarchist
+		range = {
+			id = AOF_Anarchism_total_control_range
+			min = -1
+			max = -0.66
+			modifier = {
+				stability_factor = -0.1
+				production_speed_buildings_factor = -0.20
+				production_factory_max_efficiency_factor = -0.1
+				max_planning_factor = -0.1
+				war_support_factor = 0.1
+				line_change_production_efficiency_factor = 0.2
+				planning_speed = 0.20
+			}
+			on_activate = {
+			}
+			on_deactivate = {
+			}
+		}
+		range = {
+			id = AOF_Anarchism_dominant_range
+			min = -0.66
+			max = -0.33
+			modifier = {
+				stability_factor = -0.05
+				production_speed_buildings_factor = -0.10
+				production_factory_max_efficiency_factor = -0.05
+				max_planning_factor = -0.05
+				war_support_factor = 0.05
+				line_change_production_efficiency_factor = 0.1
+				planning_speed = 0.1
+			}
+			on_activate = {
+			}
+			on_deactivate = {
+			}
+		}
+	}
+
+	#Libertarian
+	side = {
+		id = AOF_Libertarianism_side	
+		icon = GFX_bop_AOF_libertarian
+		range = {
+			id = AOF_Libertarianism_dominant_range
+			min = 0.33
+			max = 0.66
+			modifier = {
+				war_support_factor = -0.05
+				resistance_growth = -0.1
+				army_attack_factor = 0.1
+				political_power_gain = 0.1
+				compliance_growth = -0.1
+			}
+			on_activate = {
+			}
+			on_deactivate = {
+			}
+		}
+		range = {
+			id = AOF_Libertarianism_total_control_range
+			min = 0.66
+			max = 1
+			modifier = {
+				war_support_factor = -0.1
+				resistance_growth = -0.2
+				army_attack_factor = 0.2
+				political_power_gain = 0.2
+				compliance_growth = -0.20
+			}
+			on_activate = {
+			}
+			on_deactivate = {
+			}
+		}
+	}
+}

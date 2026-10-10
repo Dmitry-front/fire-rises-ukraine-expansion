@@ -1,0 +1,148 @@
+	capital = 767
+
+	oob = "NGA_2016"
+
+	set_research_slots = 2
+	set_convoys = 260
+	set_stability = 0.3
+
+	set_variable = { Russian_Influence = 0.05 }
+	set_variable = { Chinese_Influence = 0.30 }
+	set_variable = { American_Influence = 0.05 }
+	set_variable = { European_Influence = 0.30 }
+	set_variable = { PDO_Influence = 0.00 }
+	set_variable = { Sovereign_Influence = 0.30 }
+
+	set_technology = {
+		## Infantry ##
+		
+		infantry_weapons1 = 1
+		infantry_weapons2 = 1
+		motorised_infantry = 1
+		infantry_rifle_upgrade = 1
+		support_weapons = 1
+		body_armor = 1
+		camouflage = 1
+		marines = 1
+		tech_mountaineers = 1
+		paratroopers = 1
+		
+		## Support Companies ##
+		tech_support = 1
+		tech_engineers = 1
+		tech_recon = 1
+		tech_military_police = 1
+		tech_maintenance_company = 1
+		tech_field_hospital = 1
+		tech_logistics_company = 1
+		tech_signal_company = 1
+		
+		## Armor ##
+		main_battle_tank1 = 1
+		main_battle_tank2 = 1
+		main_battle_tank3 = 1
+		light_tank1 = 1
+		mechanised_infantry1 = 1
+		light_mechanized_infantry1 = 1
+		
+		## Artillery ##
+		gw_artillery = 1
+		interwar_antitank = 1
+		interwar_antiair = 1
+		tank_destroyer1 = 1
+		self_propelled_aa1 = 1
+		interwar_artillery = 1
+		sp_artillery1 = 1
+		
+		## Engineering ##
+		#eng_low
+		
+		## Industry ##
+		#ind_low
+		
+		## Doctrines ##
+		
+	}
+	
+	if = {
+		limit = { has_dlc = "By Blood Alone" }
+			set_technology = {
+				aa_lmg = 1
+				aa_cannon_1 = 1
+				aa_hmg = 1
+				engines_1 = 1
+				engines_2 = 1
+				early_bombs = 1
+				guided_bombs = 1
+				aircraft_construction = 1
+				survivability_studies = 1
+				iw_small_airframe = 1
+				basic_small_airframe = 1
+				iw_medium_airframe = 1
+				basic_medium_airframe = 1
+				iw_large_airframe = 1
+			}
+		else = {
+			set_technology = {
+				CAS1 = 1
+				CAS2 = 1
+				fighter1 = 1
+				fighter2 = 1
+				fighter3 = 1
+				naval_bomber1 = 1
+				naval_bomber2 = 1
+				strategic_bomber1 = 1
+			}
+		}
+	}
+
+	add_ideas = {
+		NGA_gdp_fix
+		low_poverty
+		CHA_encroaching_sahara
+		NGA_rampant_piratry
+		african_union_member
+		commonwealth_of_nations_member
+	}
+	
+	#Events
+	country_event = {
+		id = nigeria.9
+		days = 1151
+	}
+	
+	recruit_character = NGA_Muhammadu_Buhari_char
+	recruit_character = NGA_Bola_Tinubu_char
+	recruit_character = NGA_Julius_Abure_char
+	recruit_character = NGA_Atiku_Abubakar_char
+	recruit_character = NGA_Lucky_Irabor_char
+	recruit_character = NGA_Bashir_Magashi_char
+	recruit_character = NGA_Mohammed_Badaru_Abubakar_char
+	recruit_character = NGA_Christopher_Gwabin_Musa_char
+	recruit_character = NGA_Faruk_Yahaya_char
+	recruit_character = NGA_Taoreed_Lagbaja_char
+	recruit_character = NGA_Onyema_Nwachukwu_char
+	recruit_character = NGA_JE_Osifo_char
+	recruit_character = NGA_Hassan_Abubakar_char
+	recruit_character = NGA_Hilary_Nzan_char
+	recruit_character = NGA_Ibrahim_Attahiru_char
+	recruit_character = NGA_Isiaka_Oladayo_Amao_char
+	recruit_character = NGA_Wisdom_Benjamin_Etuk_char
+	recruit_character = NGA_Awwal_Zubairu_Gambo_char
+	recruit_character = NGA_Emmanuel_Ogalla_char
+	recruit_character = NGA_Ibok_Ete_Ekwe_Ibas_char
+	set_politics = {
+		ruling_party = social_liberal
+		last_election = "2019.2.23"
+		election_frequency = 48
+		elections_allowed = yes
+	}
+
+	set_popularities = {
+		nationalist = 3
+		authoritarian_democrat = 10
+		conservative = 30
+		market_liberal = 4
+		social_liberal = 40
+		social_democrat = 13
+	}

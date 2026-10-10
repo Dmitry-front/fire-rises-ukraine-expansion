@@ -1,0 +1,1478 @@
+	add_namespace = uk
+	add_namespace = ENG_Colony
+#This file is the biggest piece of dogshit ever. Thanks, Alithron. -IAVL
+	# 
+	country_event = {
+		id = uk.999
+		title = uk.999.t
+		desc = uk.999.d
+		picture = GFX_America_NGO
+		
+		fire_only_once = yes
+		is_triggered_only = yes
+		
+		trigger = {
+			tag = ENG
+		}
+
+		option = {
+			name = uk.999.a
+			add_power_balance_value = {
+			    id = ENG_Charles_Power_bop
+			    value = 0.2
+			}
+		}
+		option = {
+			name = uk.999.a
+			add_power_balance_value = {
+			    id = ENG_Charles_Power_bop
+			    value = 0.1
+			}
+		}
+		option = {
+			name = uk.999.a
+			add_power_balance_value = {
+			    id = ENG_Charles_Power_bop
+			    value = 0.05
+			}
+		}
+		option = {
+			name = uk.999.a
+			add_power_balance_value = {
+			    id = ENG_Charles_Power_bop
+			    value = -0.1
+			}
+		}
+	}
+	country_event = {
+		id = uk.1
+		title = uk.1.t
+		desc = uk.1.d
+		picture = GFX_America_NGO
+		
+		fire_only_once = yes
+		is_triggered_only = yes
+		
+		trigger = {
+			tag = ENG
+		}
+
+		option = {
+			name = uk.1.a
+		}
+	}
+	
+	# Elizibeth II Dies
+	country_event = {
+		id = uk.2
+		title = uk.2.t
+		desc = uk.2.d
+		picture = GFX_elizabeth_dies                  
+		
+		fire_only_once = yes
+		is_triggered_only = yes
+		immediate = {
+			hidden_effect = {
+				retire_character = ENG_elizabeth_ii_char
+				news_event = { id = news.364 hours = 8 }
+			}
+		}
+		
+		option = {
+			name = uk.2.a
+			promote_character = ENG_charles_iii_char
+			set_power_balance = {
+			    id = ENG_Charles_Power_bop
+			    left_side = ENG_Parliamentarian_side
+			    right_side = ENG_Cavalier_side
+			}
+			hidden_effect = {
+				add_power_balance_value = {
+				    id = ENG_Charles_Power_bop
+				    value = -1
+				}
+				if = {
+					limit = {
+						has_government = conservative
+					}
+					add_power_balance_value = {
+					    id = ENG_Charles_Power_bop
+					    value = 0.05
+					}
+				}
+				if = {
+					limit = {
+						has_government = authoritarian_democrat
+					}
+					add_power_balance_value = {
+					    id = ENG_Charles_Power_bop
+					    value = 0.10
+					}
+				}
+				if = {
+					limit = {
+						has_government = nationalist
+					}
+					add_power_balance_value = {
+					    id = ENG_Charles_Power_bop
+					    value = 0.10
+					}
+				}
+				if = {
+					limit = {
+						CAN = {
+							has_country_leader = {
+								character = CAN_Joshua_Leakey_char
+								ruling_only = yes
+							}
+						}
+					}
+					add_power_balance_value = {
+					    id = ENG_Charles_Power_bop
+					    value = 0.1
+					}
+				}
+				if = {
+					limit = {
+						AST = {
+							has_country_leader = {
+								character = AST_Ben_Roberts_Smith_char
+								ruling_only = yes
+							}
+							OR = {
+								has_government = nationalist
+								has_government = authoritarian_democrat
+							}
+						}
+					}
+					add_power_balance_value = {
+					    id = ENG_Charles_Power_bop
+					    value = 0.15
+					}
+				}
+				if = {
+					limit = {
+						AST = {
+							has_country_leader = {
+								character = AST_Ben_Roberts_Smith_char
+								ruling_only = yes
+							}
+							NOT = {
+								has_government = nationalist
+								has_government = authoritarian_democrat
+							}
+						}
+					}
+					add_power_balance_value = {
+					    id = ENG_Charles_Power_bop
+					    value = 0.1
+					}
+				}
+				if = {
+					limit = {
+						NZL = {
+							has_country_leader = {
+								character = NZL_Bruce_Ferguson_char
+								ruling_only = yes
+							}
+						}
+					}
+					add_power_balance_value = {
+					    id = ENG_Charles_Power_bop
+					    value = 0.05
+					}
+				}
+				if = {
+					limit = {
+						NZL = {
+							has_country_leader = {
+								character = NZL_Kevin_Short_char
+								ruling_only = yes
+							}
+						}
+					}
+					add_power_balance_value = {
+					    id = ENG_Charles_Power_bop
+					    value = 0.10
+					}
+				}
+			}
+		}
+	}
+	
+	# Philip Dies
+	country_event = {
+		id = uk.3
+		title = uk.3.t
+		desc = uk.3.d
+		picture = GFX_philip_dies
+		
+		fire_only_once = yes
+		is_triggered_only = yes
+		
+		
+		immediate = {
+		#
+		}
+		
+		option = {
+			name = uk.3.a
+		}
+	}
+	
+	# Charles comes knocking
+	country_event = {
+		id = uk.4
+		title = uk.4.t
+		desc = uk.4.d
+		picture = GFX_he_who_knocks
+		
+		fire_only_once = yes
+		is_triggered_only = yes
+		
+		trigger = {
+			tag = ENG
+		}
+		
+		immediate = {
+		#
+		}
+		
+		option = {
+			name = uk.4.a
+		}
+	}
+	
+	# The Past Repeats
+	country_event = {
+		id = uk.5
+		title = uk.5.t
+		desc = uk.5.d
+		picture = GFX_charles_dissolve_parliament
+		
+		fire_only_once = yes
+		is_triggered_only = yes
+		
+		trigger = {
+			tag = ENG
+		}
+		
+		immediate = {
+			hidden_effect = {
+				if = {
+					limit = {
+						is_power_balance_in_range = {
+						    id = ENG_Charles_Power_bop
+						    range > ENG_Cavalier_growing
+						}
+					}
+					add_stability = 0.02
+				}
+				if = {
+					limit = {
+						is_power_balance_in_range = {
+						    id = ENG_Charles_Power_bop
+						    range > ENG_Cavalier_established
+						}
+					}
+					add_stability = 0.03
+				}
+				if = {
+					limit = {
+						is_power_balance_in_range = {
+						    id = ENG_Charles_Power_bop
+						    range > ENG_Cavalier_strong
+						}
+					}
+					add_stability = 0.05
+					add_war_support = 0.05
+					126 = {
+						create_unit = {
+							division = "name = \"His Majesty's Royal Guards\" division_template = \"Special Forces\" start_experience_factor = 0.6 start_equipment_factor = 1.0" 
+							owner = ROOT	
+						}
+						create_unit = {
+							division = "name = \"His Majesty's Royal Guards\" division_template = \"Special Forces\" start_experience_factor = 0.6 start_equipment_factor = 1.0" 
+							owner = ROOT	
+						}
+					}
+				}
+				if = {
+					limit = {
+						is_power_balance_in_range = {
+						    id = ENG_Charles_Power_bop
+						    range > ENG_Cavalier_dominant
+						}
+					}
+					add_war_support = 0.05
+					add_manpower = 7500
+					126 = {
+						create_unit = {
+							division = "name = \"His Majesty's Royal Guards\" division_template = \"Special Forces\" start_experience_factor = 0.6 start_equipment_factor = 1.0" 
+							owner = ROOT	
+						}
+						create_unit = {
+							division = "name = \"His Majesty's Royal Guards\" division_template = \"Special Forces\" start_experience_factor = 0.6 start_equipment_factor = 1.0" 
+							owner = ROOT	
+						}
+						create_unit = {
+							division = "name = \"His Majesty's Royal Guards\" division_template = \"Special Forces\" start_experience_factor = 0.6 start_equipment_factor = 1.0" 
+							owner = ROOT	
+						}
+						create_unit = {
+							division = "name = \"His Majesty's Royal Guards\" division_template = \"Special Forces\" start_experience_factor = 0.6 start_equipment_factor = 1.0" 
+							owner = ROOT	
+						}
+					}
+				}
+				if = {
+					limit = {
+						is_power_balance_in_range = {
+						    id = ENG_Charles_Power_bop
+						    range > ENG_Cavalier_ABSOLUTE
+						}
+					}
+					add_political_power = 200
+					add_stability = 0.10
+					add_war_support = 0.10
+					add_manpower = 10000
+					126 = {
+						create_unit = {
+							division = "name = \"His Majesty's Royal Guards\" division_template = \"Special Forces\" start_experience_factor = 0.6 start_equipment_factor = 1.0" 
+							owner = ROOT	
+						}
+						create_unit = {
+							division = "name = \"His Majesty's Royal Guards\" division_template = \"Special Forces\" start_experience_factor = 0.6 start_equipment_factor = 1.0" 
+							owner = ROOT	
+						}
+						create_unit = {
+							division = "name = \"His Majesty's Royal Guards\" division_template = \"Special Forces\" start_experience_factor = 0.6 start_equipment_factor = 1.0" 
+							owner = ROOT	
+						}
+						create_unit = {
+							division = "name = \"His Majesty's Royal Guards\" division_template = \"Special Forces\" start_experience_factor = 0.6 start_equipment_factor = 1.0" 
+							owner = ROOT	
+						}
+						create_unit = {
+							division = "name = \"His Majesty's Royal Guards\" division_template = \"Special Forces\" start_experience_factor = 0.6 start_equipment_factor = 1.0" 
+							owner = ROOT	
+						}
+						create_unit = {
+							division = "name = \"His Majesty's Royal Guards\" division_template = \"Special Forces\" start_experience_factor = 0.6 start_equipment_factor = 1.0" 
+							owner = ROOT	
+						}
+					}
+				}
+				remove_power_balance = {
+					id = ENG_Charles_Power_bop
+				}
+				end_ruling_party_wings = yes
+			}
+		}
+		
+		option = {
+			name = uk.5.a
+			if = {
+				limit = {
+					has_global_flag = SOV_medvedev_won
+				}
+				set_politics = {
+					ruling_party = authoritarian_democrat
+				}
+				add_popularity = {
+					ideology = authoritarian_democrat
+					popularity = 0.27
+				}
+				add_ideas = ENG_nigel_farage_hog
+				remove_ideas = ENG_sun_sets_idea
+				news_event = { id = news.418 }
+				add_ideas = ENG_all_for_farage_idea
+				SOV = {
+					country_event = { id = uk.779 days = 10 random = 3 }
+				}
+			}
+			else = {
+				set_politics = {
+					ruling_party = nationalist
+				}
+				set_party_name = { 
+					ideology = nationalist 
+					long_name = ENG_monarchist_party_long
+					name = ENG_monarchist_party
+				}
+				add_popularity = {
+					ideology = nationalist
+					popularity = 0.35
+				}
+				set_portraits = {
+					character = ENG_charles_iii_char
+					civilian = { large ="gfx/leaders/ENG/ENG_charles_iii_absolute.png" }
+				} 
+				remove_ideas = ENG_sun_sets_idea
+				set_cosmetic_tag = ENG_Kingdom_of_Great_Britain_cos_tag
+			}
+			hidden_effect = {
+				if = { #Communist Revolution
+					limit = {
+						has_global_flag = SOV_ldpr_won
+					}
+					country_event = {
+						id = uk.51
+						days = 50
+						random_days = 10
+					}
+				}
+				if = { #Labor leaders arrested
+					limit = {
+						has_global_flag = SOV_cprf_won
+					}
+					country_event = {
+						id = uk.52
+						days = 50
+						random_days = 10
+					}
+				}
+				if = { #Eurocrat Revolution
+					limit = {
+						has_global_flag = SOV_medvedev_won
+					}
+					country_event = {
+						id = uk.56
+						days = 84
+						random_days = 13
+					}
+				}
+			}
+		}
+	}
+	country_event = { #Communists in Northumberland rise up
+		id = uk.51
+		title = uk.51.t
+		desc = uk.51.d
+		picture = GFX_Corbyn_Communism
+		
+		fire_only_once = yes
+		is_triggered_only = yes
+		
+		trigger = {
+			tag = ENG
+		}
+		
+		immediate = {
+			
+		}
+		
+		option = {
+			name = uk.51.a
+			hidden_effect = {
+			UK2 = {
+				every_state = {
+					limit = {
+						is_core_of = ENG
+					}
+					add_core_of = UK2
+				}
+				transfer_state = 131
+				transfer_state = 132
+				transfer_state = 130
+				set_politics = {
+					ruling_party = communist
+					elections_allowed = yes
+					election_frequency = 60
+					last_election = "2019.12.12"
+				}
+	
+				set_popularities = {
+					totalitarian_socialist = 22
+					communist = 34
+					libertarian_socialist = 20
+					social_democrat = 20
+					social_liberal = 4
+					market_liberal = 0
+					conservative = 0
+					authoritarian_democrat = 0
+					nationalist = 0
+					fascist = 0
+					national_socialist = 0	
+				}
+				change_tag_from = ENG
+			}
+			ENG = {
+				transfer_units_fraction= {
+					target = UK2
+					size = 0.6
+					stockpile_ratio = 0.6
+					army_ratio = 0.6
+					air_ratio = 0.6
+				}
+			}
+			}
+			country_event = { #Scotland Declares Independence
+				id = uk.58
+				days = 13
+			}
+			country_event = { #Workers rise up in the rest of UK
+				id = uk.57
+				days = 22
+			}
+
+		}
+	}
+	country_event = { #Labor Leaders arrested
+		id = uk.52
+		title = uk.52.t
+		desc = uk.52.d
+		picture = GFX_Total_Labour_Death
+		
+		fire_only_once = yes
+		is_triggered_only = yes
+		
+		trigger = {
+			tag = ENG
+		}
+		
+		immediate = {
+			
+		}
+		
+		option = {
+			name = uk.52.a
+			add_war_support = 0.10
+			add_stability = 0.15
+			add_popularity = {
+				ideology = social_democrat
+				popularity = -0.25
+			}
+			add_popularity = {
+				ideology = communist
+				popularity = -0.25
+			}
+			add_popularity = {
+				ideology = totalitarian_socialist
+				popularity = -0.25
+			}
+			add_popularity = {
+				ideology = libertarian_socialist
+				popularity = -0.25
+			}
+		}
+	}
+	country_event = { #Republican Revolution
+		id = uk.56
+		title = uk.56.t
+		desc = uk.56.d
+		picture = GFX_Republican_Revolt
+		
+		fire_only_once = yes
+		is_triggered_only = yes
+		
+		trigger = {
+			tag = ENG
+		}
+		
+		immediate = {
+			
+		}
+		
+		option = {
+			name = uk.56.a
+			hidden_effect = {
+				SOV = {
+					country_event = { id = uk.114 days = 1 }
+				}
+				GER = {
+					country_event = { id = uk.115 days = 1 }
+				}
+				UK2 = {
+					set_cosmetic_tag = ENG_eurocrat
+					set_popularities = {
+						social_liberal = 43
+						social_democrat = 32
+						market_liberal = 25
+					}
+					set_party_name = {
+						ideology = social_liberal
+						long_name = ENG_volt_britian
+						name = ENG_volt_britian
+					}		
+					set_party_name = {
+						ideology = social_democrat
+						long_name = ENG_volt_britian
+						name = ENG_volt_britian
+					}		
+					set_party_name = {
+						ideology = market_liberal
+						long_name = ENG_volt_britian
+						name = ENG_volt_britian
+					}
+					transfer_state = 1316
+					transfer_state = 1313
+					transfer_state = 1314
+					transfer_state = 1307
+					transfer_state = 1310
+					transfer_state = 123
+					transfer_state = 131
+					transfer_state = 132
+					transfer_state = 130
+					set_politics = {
+						ruling_party = social_liberal
+						elections_allowed = yes
+						election_frequency = 60
+					}
+				}
+				ENG = {
+					transfer_units_fraction = {
+						target = UK2
+						size = 0.5
+						stockpile_ratio = 0.5
+						army_ratio = 0.5
+						air_ratio = 0.5
+					}
+					declare_war_on = {
+	    				target = UK2
+	    				type = annex_everything
+					}
+					random_owned_state = {
+						create_unit = {
+							division = "name = \"Popular Militia\" division_template = \"Infantry Brigade\" start_experience_factor = 0.2"
+							owner = ENG
+							count = 2
+						}	
+						create_unit = {
+							division = "name = \"Popular Militia\" division_template = \"Infantry Brigade\" start_experience_factor = 0.2"
+							owner = ENG
+							count = 2
+						}
+					}
+					133 = {
+						create_unit = {
+							division = "name = \"Newcastle Defense Militia\" division_template = \"Infantry Brigade\" start_experience_factor = 0.2"
+							owner = ENG
+							prioritize_location = 351
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+					remove_ideas = ENG_sun_sets_idea
+					country_lock_all_division_template = no
+				}
+				country_event = { #Scotland Declares Independence
+					id = uk.58
+					days = 13
+				}
+			}
+		}
+	}
+	country_event = { #Revolts in Ulster 
+		id = uk.53
+		title = uk.53.t
+		desc = uk.53.d
+		picture = GFX_Northern_Ireland
+		
+		fire_only_once = yes
+		is_triggered_only = yes
+		
+		trigger = {
+			tag = ENG
+		}
+		
+		immediate = {
+			
+		}
+		
+		option = {
+			name = uk.53.a
+			custom_effect_tooltip = ENG_NIR_Troubles_tt
+			hidden_effect = {
+				NIR = {
+					set_cosmetic_tag = NIR_Black_and_Tans
+					add_ideas = {
+						NIR_Unstable_Royal_Coalition_idea
+						NIR_UVF_Paramilitaries_idea
+						NIR_For_King_and_Country_idea
+					}
+					transfer_state = 1049
+					transfer_state = 1129
+					transfer_state = 119
+					transfer_state = 1127
+					transfer_state = 1047
+					transfer_state = 1130
+					transfer_state = 1128
+					1048 = {
+						set_demilitarized_zone = yes
+					}
+					1128 = {
+						set_demilitarized_zone = yes
+					}
+					1129 = {
+						set_demilitarized_zone = yes
+					}
+					load_oob = "NIR_Ulster_Constabulary_Forces"
+					every_owned_state = {
+						add_core_of = NIR
+					}
+					country_event = {
+						id = uk.54
+						days = 10
+					}
+				}
+				IRE = {
+					country_event = {
+						id = uk.55
+						days = 5
+					}
+				}
+				country_event = {
+					id = uk.5
+					days = 20
+				}
+			}
+		}
+	}	
+	country_event = { #IRA Insurgency
+		id = uk.54
+		title = uk.54.t
+		desc = uk.54.d
+		picture = GFX_IRA_Revolt
+		
+		fire_only_once = yes
+		is_triggered_only = yes
+		
+		
+		
+		immediate = {
+			IRA = {
+				transfer_state = 1128
+				transfer_state = 1129
+				every_owned_state = {
+					add_core_of = IRA
+					remove_core_of = NIR
+					add_claim_by = NIR
+				}
+				set_country_flag = NIR_CW_flag
+				IRE = {
+					set_country_flag = NIR_CW_flag
+				}
+				declare_war_on = {
+    				target = NIR
+    				type = annex_everything
+				}
+				load_oob = "IRE_Irish_Provisional_Army"
+			}
+		}
+		
+		option = {
+			name = uk.54.a
+			hidden_effect = {
+				IRA = {
+					add_ideas = {
+						NIR_Gaelic_Storm_idea
+						NIR_Dreams_of_a_United_Ireland_idea
+					}
+					if = {
+						limit = {
+							has_global_flag = SOV_medvedev_won
+						}
+						add_ideas = NIR_Russian_Funding_Medvedev_idea
+					}
+					if = {
+						limit = {
+							has_global_flag = SOV_cprf_won
+						}
+						add_ideas = NIR_Russian_Funding_USSR_idea
+					}
+					if = {
+						limit = {
+							has_global_flag = SOV_ldpr_won
+						}
+						add_ideas = NIR_Russian_Funding_LDPR_idea
+					}
+				}
+			}
+		}
+	}
+	#IRA seize West LondonDerry
+	country_event = { 
+		id = uk.55
+		title = uk.55.t
+		desc = uk.55.d
+		picture = GFX_Police_IRA
+		
+		fire_only_once = yes
+		is_triggered_only = yes
+		
+		
+		immediate = {
+		#
+		}
+		
+		option = { #
+			name = uk.55.a
+			IRA = {
+				transfer_state = 1048
+				set_cosmetic_tag = NIR_IRA
+				promote_character = NIR_Micheal_o_Conghaile
+				set_politics = {
+					ruling_party = nationalist
+					last_election = "1980.1.1"
+					election_frequency = 48
+					elections_allowed = no
+				}
+				1048 = {
+					set_demilitarized_zone = no
+				}
+			}
+
+		}
+	}
+	country_event = { 
+		id = uk.59
+		title = uk.59.t
+		desc = uk.59.d
+		picture = GFX_Police_IRA
+		is_triggered_only = yes
+		fire_only_once = yes
+		
+		immediate = {
+		#
+		}
+		
+		option = { #
+			name = uk.55.a
+			declare_war_on = {
+				target = NIR
+				type = annex_everything
+			}
+		}
+	}
+	#Belfast Accord
+	country_event = { 
+		id = uk.60
+		title = uk.60.t
+		desc = uk.60.d
+		picture = GFX_Police_IRA
+		is_triggered_only = yes
+		fire_only_once = yes
+		immediate = {
+			
+		}
+		option = { #Ireland must be whole!
+			name = uk.60.a
+			
+		}
+		option = { #Ireland must be whole + Reperations
+			name = uk.60.a
+			
+		}
+		
+	}
+	country_event = { 
+		id = uk.61
+		title = uk.61.t
+		desc = uk.61.d
+		picture = GFX_Police_IRA
+		
+		fire_only_once = yes
+		is_triggered_only = yes
+		option = { #Ireland must be whole!
+			name = uk.61.a
+			annex_country = {
+				target = IRA
+				transfer_troops = no
+			}
+			every_core_state = {
+				add_core_of = IRE
+			}
+		
+		}
+		option = { #You can keep belfast - Republicans
+			name = uk.61.b
+			trigger = {
+				country_exists = UK2
+			}
+			IRA = {
+				transfer_state = 1049
+				transfer_state = 1129
+				transfer_state = 119
+				transfer_state = 1127
+				transfer_state = 1130
+				transfer_state = 1128
+			}
+			IRE = {
+				annex_country = {
+   					target = IRA
+    				transfer_troops = no
+				}
+				every_core_state = {
+					add_core_of = IRE
+				}
+			}
+			UK2 = {
+				transfer_state = 1047
+			}
+		}
+		option = { #You can keep belfast - UK
+			name = uk.61.c
+			trigger = {
+				country_exists = ENG
+			}
+			IRA = {
+				transfer_state = 1049
+				transfer_state = 1129
+				transfer_state = 119
+				transfer_state = 1127
+				transfer_state = 1130
+				transfer_state = 1128
+			}
+			IRE = {
+				annex_country = {
+   					target = IRA
+    				transfer_troops = no
+				}
+				every_core_state = {
+					add_core_of = IRE
+				}
+			}
+			ENG = {
+				transfer_state = 1047
+			}
+		}
+	}
+	country_event = { 
+		id = uk.65
+		title = uk.65.t
+		desc = uk.65.d
+		picture = GFX_Police_IRA
+		is_triggered_only = yes
+		fire_only_once = yes
+		option = { #Sign Belfast Peace Agreement
+			name = uk.65.a
+			
+		}
+		option = { #We will push to Dublin!
+			name = uk.65.b
+			add_ideas = NIR_Irish_Guerillas
+			every_core_state = {
+				add_claim_by = IRE
+			}
+			declare_war_on = { 
+				target = IRE 
+				type = annex_everything 
+			}
+			IRE = {
+				add_ideas = NIR_Fight_for_Independence
+				load_oob = "IRE_Citizens_Brigades"
+			}
+		}
+	}
+	country_event = { #Ireland MUST BE ONE NATION
+		id = uk.62
+		title = uk.62.t
+		desc = uk.62.d
+		picture = GFX_IRA_Revolt
+		
+		fire_only_once = yes
+		is_triggered_only = yes
+		
+		
+		
+		immediate = {
+			declare_war_on = { 
+				target = IRE 
+				type = annex_everything 
+			}
+			IRE = {
+				every_core_state = {
+					add_claim_by = IRA
+				}
+			}
+		}
+		
+		option = {
+			name = uk.62.a
+			add_war_support = 0.05
+		}
+	}
+	country_event = { #Northern Ireland demands Colonization reperations
+		id = uk.63
+		title = uk.63.t
+		desc = uk.63.d
+		picture = GFX_IRA_Revolt
+		
+		fire_only_once = yes
+		is_triggered_only = yes
+		
+		
+		
+		immediate = {
+			
+		}
+		
+		option = {
+			name = uk.63.a
+		}
+	}
+	country_event = { #Northern Ireland recognizes Scottish independence
+		id = uk.64
+		title = uk.64.t
+		desc = uk.64.d
+		picture = GFX_IRA_Revolt
+		
+		fire_only_once = yes
+		is_triggered_only = yes
+		
+		
+		
+		immediate = {
+			
+		}
+		
+		option = {
+			name = uk.64.a
+		}
+	}
+	country_event = { #Fate of Ireland
+		id = uk.70
+		title = uk.70.t
+		desc = uk.70.d
+		picture = GFX_Northern_Ireland
+		
+		fire_only_once = yes
+		is_triggered_only = yes
+		
+		
+		
+		immediate = {
+			
+		}
+		
+		option = { #Demand Full Annexation
+			name = uk.70.a
+		}
+		
+	}
+	country_event = { #England Demand Full Annexation
+		id = uk.66
+		title = uk.66.t
+		desc = uk.66.d
+		picture = GFX_Northern_Ireland
+		
+		fire_only_once = yes
+		is_triggered_only = yes
+		
+		
+		
+		immediate = {
+			
+		}
+		
+		option = { #Ok
+			name = uk.66.a
+			
+		}
+	}
+	country_event = { #England allows equal kingdom
+		id = uk.67
+		title = uk.67.t
+		desc = uk.67.d
+		picture = GFX_Northern_Ireland
+		
+		fire_only_once = yes
+		is_triggered_only = yes
+		
+		
+		
+		immediate = {
+			
+		}
+		
+		option = { #Ok
+			name = uk.67.a
+			
+		}
+	}
+	country_event = { #
+		id = uk.68
+		title = uk.68.t
+		desc = uk.68.d
+		picture = GFX_Northern_Ireland
+		
+		fire_only_once = yes
+		is_triggered_only = yes
+		
+		
+		
+		immediate = {
+			
+		}
+		
+		option = { #Ok
+			name = uk.68.a
+			
+		}
+	}
+	#Communist Revolution
+	country_event = { 
+		id = uk.57
+		title = uk.57.t
+		desc = uk.57.d
+		picture = GFX_Commie_Uprising
+		
+		fire_only_once = yes
+		is_triggered_only = yes
+		
+		
+		immediate = {
+		#
+		}
+		
+		option = { #
+			name = uk.57.a
+			UK2 = {
+				transfer_state = 1316
+				transfer_state = 1313
+				transfer_state = 1314
+				transfer_state = 1307
+				transfer_state = 1310
+				transfer_state = 123
+				load_oob = "ENG_Southern_Communists"
+				every_state = {
+					limit = {
+						is_core_of = ENG
+					}
+					add_core_of = UK2
+				}
+			}
+			ENG = {
+				declare_war_on = {
+    				target = UK2
+    				type = annex_everything
+				}
+			}
+		}
+	}
+	country_event = { 
+		id = uk.58
+		title = uk.58.t
+		desc = uk.58.d
+		picture = GFX_Free_Scotland
+		
+		fire_only_once = yes
+		is_triggered_only = yes
+		
+		
+		immediate = {
+		#
+		}
+		
+		option = { #
+			name = uk.58.a
+			SCO = {
+				transfer_state = 136
+				transfer_state = 133
+				transfer_state = 121
+				load_oob = "SCO_Scottish_Defense_League"
+			}
+			ENG = {
+				declare_war_on = {
+    				target = SCO
+    				type = annex_everything
+				}
+			}
+			UK2 = {
+				declare_war_on = {
+    				target = SCO
+    				type = annex_everything
+				}
+			}
+		}
+	}
+
+    #British Republic requests to join EU
+	country_event = { 
+		id = uk.111
+		title = uk.111.t
+		desc = uk.111.d
+		picture = GFX_Free_Scotland
+		
+		fire_only_once = yes
+		is_triggered_only = yes
+		
+		
+		immediate = {
+		
+		}
+		
+		option = { #aw hell naw
+		    name = uk.111.a
+			GER = {
+				add_to_faction = UK2
+			}
+			UK2 = {
+				set_cosmetic_tag = UK2_euro
+			}
+		}
+	}	
+	
+    #Scotland requests to join EU
+	country_event = { 
+		id = uk.112
+		title = uk.112.t
+		desc = uk.112.d
+		picture = GFX_Free_Scotland
+		
+		fire_only_once = yes
+		is_triggered_only = yes
+		
+		
+		immediate = {
+		
+		}
+		
+		option = { #wtf? ok
+		    name = uk.112.a
+			GER = {
+				add_to_faction = SCO
+			}
+		}
+	}
+	
+    #King Charles's Revenge (UK requests to join CSTO)
+	country_event = { 
+		id = uk.113
+		title = uk.113.t
+		desc = uk.113.d
+		picture = GFX_ENG_farage_smoking2
+		
+		fire_only_once = yes
+		is_triggered_only = yes
+		
+		
+		immediate = {
+		
+		}
+		
+		option = { #wtf even more?? ok
+		    name = uk.113.a
+            SOV = {
+		        add_to_faction = ENG
+		    }
+			ENG = {
+				add_ideas = ENG_csto_western_bulwark_idea
+			}
+			hidden_effect = {
+				news_event = { id = news.419 hours = 2 }
+			}
+		}
+	}
+	# A Very British Civil War - Russia
+	country_event = { 
+		id = uk.114
+		title = uk.114.t
+		desc = uk.114.d
+		picture = GFX_ENG_farage_save_britain
+		fire_only_once = yes
+		is_triggered_only = yes
+		immediate = {
+		}
+		option = { 
+		    name = uk.114.a
+			set_temp_variable = {
+				var = debt_var_temp
+				value = 70
+			}
+			add_debt = yes
+			unlock_decision_category_tooltip = ENG_civil_war_intervention_russia
+			ENG = {
+				add_timed_idea = {
+					idea = SOV_russian_support
+					days = 70
+				}
+			}
+		}
+	}
+	# A Very British Civil War - Europe
+	country_event = { 
+		id = uk.115
+		title = uk.115.t
+		desc = uk.115.d
+		picture = GFX_Free_Scotland
+		fire_only_once = yes
+		is_triggered_only = yes
+		immediate = {
+		}
+		option = { 
+		    name = uk.115.a
+		}
+	}
+#German Humanitarian Aid
+country_event = {
+	id = uk.116
+	title = uk.116.t
+	desc = uk.116.d
+	is_triggered_only = yes
+	fire_only_once = yes
+	trigger = {
+	    original_tag = UK2
+		original_tag = SCO
+	}
+	immediate = {
+		hidden_effect = {
+		}
+	}
+	option = {
+		name = uk.116.a
+		trigger = {
+			original_tag = UK2
+			original_tag = SCO
+		}
+		add_offsite_building = {
+			type = office_park
+			level = 1
+		}
+		add_offsite_building = {
+			type = industrial_complex
+			level = 1
+		}
+		set_temp_variable = {
+			var = income_var_temp
+			value = 10
+		}
+		add_income = yes
+		add_popularity = {
+			ideology = social_liberal
+			popularity = 0.02
+		}
+	}
+}
+	#uk leaves eu
+	country_event = {
+		id = uk.666
+		title = uk.666.t
+		desc = uk.666.d
+		picture = GFX_Free_Scotland
+		
+		fire_only_once = yes
+		is_triggered_only = yes
+		
+		
+		immediate = {
+		#
+		}
+		
+		option = { #
+			name = uk.666.a
+			EU_leave_effect = yes
+		}
+	}	
+	#2025 elections
+	country_event = {
+		id = uk.777
+		title = uk.777.t
+		desc = uk.777.d
+		picture = GFX_Free_Scotland
+		
+		fire_only_once = yes
+		is_triggered_only = yes
+		
+		
+		immediate = {
+		#
+		}
+		
+		option = { # its ovah
+			name = uk.777.a
+		    ai_chance = {
+			factor = 1
+			modifier = {
+				factor = 0
+				has_game_rule = {
+					rule = UK_election
+					option = UK_election_con
+					}
+			}
+		}
+			add_popularity = {
+				ideology = social_democrat
+				popularity = 0.25
+			}
+			set_politics = {
+				ruling_party = social_democrat
+				last_election = "2025.1.1"
+				elections_allowed = yes
+				election_frequency = 60
+			}
+			end_ruling_party_wings = yes
+			set_temp_variable = {
+				ruling_party_wing_var_temp = token:libertarian_socialist
+			}
+			add_ruling_party_wing = yes
+			add_ideas = {
+				ENG_kier_starmer_hog
+				ENG_david_lammy_for
+				ENG_rachel_reeves_eco
+				ENG_yvette_cooper_sec
+			}
+			country_event = { id = uk.778 days = 365 }
+			news_event = { id = news.324 hours = 6 }
+		}
+		option = { # its not ovah
+			name = uk.777.b
+		    ai_chance = {
+			factor = 1
+			modifier = {
+				factor = 0
+				has_game_rule = {
+					rule = UK_election
+					option = UK_election_soc
+					}
+			}
+		}
+			add_popularity = {
+				ideology = conservative
+				popularity = 0.15
+			}
+			add_ideas = ENG_rishi_sunak_hog
+			news_event = { id = news.325 hours = 6 }
+		}
+	}
+	#its truly ovah starmer rejoins eu
+	country_event = {
+		id = uk.778
+		title = uk.778.t
+		desc = uk.778.d
+		picture = GFX_Free_Scotland
+		
+		fire_only_once = yes
+		is_triggered_only = yes
+		
+		
+		immediate = {
+		#
+		}
+		
+		option = { # its ovah
+			EU_join_effect = yes
+		}
+	}
+	#Farage asks for BRICS observer status
+	country_event = {
+		id = uk.779
+		title = uk.779.t
+		desc = uk.779.d
+		picture = GFX_ENG_farage_smoking
+		
+		fire_only_once = yes
+		is_triggered_only = yes
+		
+		
+		immediate = {
+		#
+		}
+		
+		option = { #
+			name = uk.779.a
+			ENG = {
+				add_ideas = SOV_brics_observer_idea
+			}
+		}
+	}

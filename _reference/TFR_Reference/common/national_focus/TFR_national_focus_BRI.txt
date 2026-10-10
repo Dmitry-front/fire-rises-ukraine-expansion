@@ -1,0 +1,268 @@
+﻿######################################################
+# Brittany Focus Tree
+# By Strategic Munchies
+######################################################
+focus_tree = {
+	id = Brittany_focus_tree
+
+	country = {
+		factor = 0
+		
+		modifier = {
+			add = 0
+			tag = BRI
+		}
+	}
+	
+	default = no
+
+	
+
+
+	focus = {
+		id = BRI_Emergency_Conscription
+
+		icon = GFX_focus_BRI_Emergency_Conscription
+		x = 3
+		y = 0
+		cost = 5
+
+		ai_will_do = {
+			factor = 1000
+		}
+
+		available = {
+
+		}
+
+		bypass = {
+			
+		}
+		
+		search_filters = {FOCUS_FILTER_POLITICAL}
+		completion_reward = { #
+			decrease_military = yes
+			add_ideas = {
+				total_mobilization
+				highest_conscription
+				higher_female_service
+				lower_training
+				higher_racial_integration
+				no_draft_exemptions
+			}
+		}
+	}
+	focus = {
+		id = BRI_Seek_International_Aid
+
+		icon = GFX_focus_International_Breizh_Aid
+		x = 2
+		y = 1
+		cost = 4
+
+		ai_will_do = {
+			factor = 1000
+		}
+
+		available = {
+
+		}
+
+		bypass = {
+			
+		}
+		prerequisite = {
+			focus = BRI_Emergency_Conscription
+		}
+		search_filters = {FOCUS_FILTER_POLITICAL}
+		completion_reward = { #
+			add_war_support = 0.10
+			country_event = {
+				id = Brittany.1
+				days = 5
+			}
+		}
+	}
+	focus = {
+		id = BRI_Petition_the_Nationalists
+
+		icon = GFX_focus_Nationalist_Autonomy
+		x = 0
+		y = 2
+		cost = 4
+
+		ai_will_do = {
+			factor = 1000
+		}
+
+		available = {
+			NOT = {
+				has_country_flag = BRI_Denied_Nationalists_flag
+			}
+		}
+
+		bypass = {
+			
+		}
+		mutually_exclusive = {
+			focus = BRI_Petition_the_Republicans
+			focus = BRI_Petition_the_Communards
+			focus = BRI_Reclaim_Independence
+		}
+		prerequisite = {
+			focus = BRI_Seek_International_Aid
+		}
+		search_filters = {FOCUS_FILTER_POLITICAL}
+		completion_reward = { #
+			add_popularity = { ideology = authoritarian_democrat popularity = 0.20 }
+			FAF = {
+				country_event = {
+					id = Brittany.2
+					days = 5
+				}
+			}
+		}
+	}
+	focus = {
+		id = BRI_Petition_the_Republicans
+
+		icon = GFX_focus_Republican_Autonomy
+		x = 4
+		y = 2
+		cost = 4
+
+		ai_will_do = {
+			factor = 1000
+		}
+
+		available = {
+			NOT = {
+				has_country_flag = BRI_Denied_Establishment_flag
+			}
+		}
+
+		bypass = {
+			
+		}
+		mutually_exclusive = {
+			focus = BRI_Petition_the_Nationalists
+			focus = BRI_Petition_the_Communards
+			focus = BRI_Reclaim_Independence
+		}
+		prerequisite = {
+			focus = BRI_Seek_International_Aid
+		}
+		search_filters = {FOCUS_FILTER_POLITICAL}
+		completion_reward = { #
+			FRA = {
+				country_event = {
+					id = Brittany.5
+					days = 5
+				}
+			}
+		}
+	}
+	focus = {
+		id = BRI_Petition_the_Communards
+
+		icon = GFX_focus_Communard_Autonomy
+		x = 2
+		y = 2
+		cost = 4
+
+		ai_will_do = {
+			factor = 1000
+		}
+
+		available = {
+			NOT = {
+				has_country_flag = BRI_Denied_Communists_flag
+			}
+		}
+
+		bypass = {
+			
+		}
+		prerequisite = {
+			focus = BRI_Seek_International_Aid
+		}
+		mutually_exclusive = {
+			focus = BRI_Petition_the_Nationalists
+			focus = BRI_Petition_the_Republicans
+			focus = BRI_Reclaim_Independence
+		}
+		search_filters = {FOCUS_FILTER_POLITICAL}
+		completion_reward = { #
+			add_popularity = { ideology = communist popularity = 0.20 }
+			FPR = {
+				country_event = {
+					id = Brittany.8
+					days = 5
+				}
+			}
+		}
+	}
+	focus = {
+		id = BRI_Reclaim_Independence
+
+		icon = GFX_focus_Breton_Seperatism
+		x = 7
+		y = 2
+		cost = 4
+
+		ai_will_do = {
+			factor = 1000
+		}
+
+		available = {
+
+		}
+
+		bypass = {
+			
+		}
+		prerequisite = {
+			focus = BRI_Seek_International_Aid
+		}
+		prerequisite = {
+			focus = BRI_Appeal_to_Dissatisfied_Frenchmen
+		}
+		mutually_exclusive = {
+			focus = BRI_Petition_the_Nationalists
+			focus = BRI_Petition_the_Communards
+			focus = BRI_Petition_the_Republicans
+		}
+		search_filters = {FOCUS_FILTER_POLITICAL}
+		completion_reward = { #
+			add_stability = 0.15
+			set_country_flag = BRI_Declared_Independence_flag
+		}
+	}
+	focus = {
+		id = BRI_Appeal_to_Dissatisfied_Frenchmen
+
+		icon = GFX_focus_Pan_Celtic
+		x = 7
+		y = 1
+		cost = 4
+
+		ai_will_do = {
+			factor = 1000
+		}
+
+		available = {
+
+		}
+
+		bypass = {
+			
+		}
+		prerequisite = {
+			focus = BRI_Emergency_Conscription
+		}
+		search_filters = {FOCUS_FILTER_POLITICAL}
+		completion_reward = { #
+			add_ideas = BRI_Embolstered_Nationalism
+		}
+	}
+}

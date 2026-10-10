@@ -1,0 +1,490 @@
+USA_trust_bop = {
+	initial_value = 0
+	left_side = USA_bad_side
+	right_side = USA_good_side
+	decision_category = USA_balance_of_power_category
+
+	### Medium trust
+	range = {
+		id = USA_medium_trust_range
+		min = -0.05
+		max = 0.05
+		modifier = {
+		}
+		on_activate = {
+			if = {
+				limit = {
+					NOT = {
+						has_country_flag = USA_counting_heads_flag
+					}
+				}
+				custom_effect_tooltip = USA_countdown_day_mission_tooltip
+				if = {
+					limit = {
+						USA_sided_with_trump_trigger = yes
+					}
+					effect_tooltip = {
+						add_political_power = -100
+						random_list = {
+							50 = {
+								add_days_mission_timeout = {
+									mission = USA_civil_war_mission
+									days = -56
+								}
+								country_event = {
+									#Trump Wins
+									id = usa.128
+								}
+							}
+							50 = {
+								country_event = {
+									#Biden Wins
+									id = usa.14
+								}
+							}
+						}
+					}
+				}
+				else_if = {
+					limit = {
+						USA_sided_with_resistance_trigger = yes
+					}
+					effect_tooltip = {
+						random_list = {
+							50 = {
+								add_days_mission_timeout = {
+									mission = USA_civil_war_mission
+									days = -56
+								}
+								country_event = {
+									#Biden Wins
+									id = usa.14
+								}
+							}
+							50 = {
+								country_event = {
+									#Trump Wins
+									id = usa.128
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+		on_deactivate = {
+		}
+	}
+
+	### Bad Side
+	side = {
+		id = USA_bad_side	
+		icon = "GFX_bop_USB_biden_bad_side"
+
+		range = {
+			id = USA_low_trust_range
+			min = -0.45
+			max = -0.05
+			modifier = {
+				stability_factor = -0.05
+				political_power_gain = -0.1
+			}
+			on_activate = {
+				if = {
+					limit = {
+						NOT = {
+							has_country_flag = USA_counting_heads_flag
+						}
+					}
+					custom_effect_tooltip = USA_countdown_day_mission_tooltip
+					if = {
+						limit = {
+							USA_sided_with_trump_trigger = yes
+						}
+						effect_tooltip = {
+							add_political_power = -150
+							random_list = {
+								0 = {
+									country_event = {
+										#Trump Wins
+										id = usa.128
+									}
+								}
+								100 = {
+									country_event = {
+										#Biden Wins
+										id = usa.14
+									}
+								}
+							}
+						}
+					}
+					else_if = {
+						limit = {
+							USA_sided_with_resistance_trigger = yes
+						}
+						effect_tooltip = {
+							add_political_power = -150
+							random_list = {
+								0 = {
+									country_event = {
+										#Biden Wins
+										id = usa.14
+									}
+								}
+								100 = {
+									country_event = {
+										#Trump Wins
+										id = usa.128
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+			on_deactivate = {
+			}
+		}
+
+		range = {
+			id = USA_very_low_trust_range
+			min = -0.75
+			max = -0.45
+			modifier = {
+				stability_factor = -0.1
+				political_power_gain = -0.2
+			}
+			on_activate = {
+				if = {
+					limit = {
+						NOT = {
+							has_country_flag = USA_counting_heads_flag
+						}
+					}
+					custom_effect_tooltip = USA_countdown_day_mission_tooltip
+					if = {
+						limit = {
+							USA_sided_with_trump_trigger = yes
+						}
+						effect_tooltip = {
+							add_political_power = -200
+							random_list = {
+								0 = {
+									country_event = {
+										#Trump Wins
+										id = usa.128
+									}
+								}
+								100 = {
+									country_event = {
+										#Biden Wins
+										id = usa.14
+									}
+								}
+							}
+						}
+					}
+					else_if = {
+						limit = {
+							USA_sided_with_resistance_trigger = yes
+						}
+						effect_tooltip = {
+							add_political_power = -200
+							random_list = {
+								0 = {
+									country_event = {
+										#Biden Wins
+										id = usa.14
+									}
+								}
+								100 = {
+									country_event = {
+										#Trump Wins
+										id = usa.128
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+			on_deactivate = {
+			}
+		}
+
+		range = {
+			id = USA_overwhelmingly_low_trust_range
+			min = -1
+			max = -0.75
+			modifier = {
+				stability_factor = -0.15
+				political_power_gain = -0.3
+			}
+			on_activate = {
+				if = {
+					limit = {
+						NOT = {
+							has_country_flag = USA_counting_heads_flag
+						}
+					}
+					custom_effect_tooltip = USA_countdown_day_mission_tooltip
+					if = {
+						limit = {
+							USA_sided_with_trump_trigger = yes
+						}
+						effect_tooltip = {
+							add_political_power = -250
+							random_list = {
+								0 = {
+									country_event = {
+										#Trump Wins
+										id = usa.128
+									}
+								}
+								100 = {
+									country_event = {
+										#Biden Wins
+										id = usa.14
+									}
+								}
+							}
+						}
+					}
+					else_if = {
+						limit = {
+							USA_sided_with_resistance_trigger = yes
+						}
+						effect_tooltip = {
+							add_political_power = -250
+							random_list = {
+								0 = {
+									country_event = {
+										#Biden Wins
+										id = usa.14
+									}
+								}
+								100 = {
+									country_event = {
+										#Trump Wins
+										id = usa.128
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+			on_deactivate = {
+			}
+		}
+	}
+
+	### Good Side
+	side = {
+		id = USA_good_side	
+		icon = "GFX_bop_USB_biden_good_side"
+
+		range = {
+			id = USA_high_trust_range
+			min = 0.05
+			max = 0.45
+			modifier = {
+				stability_factor = 0.05
+				political_power_gain = 0.1
+			}
+			on_activate = {
+				if = {
+					limit = {
+						NOT = {
+							has_country_flag = USA_counting_heads_flag
+						}
+					}
+					custom_effect_tooltip = USA_countdown_day_mission_tooltip
+					if = {
+						limit = {
+							USA_sided_with_trump_trigger = yes
+						}
+						effect_tooltip = {
+							add_political_power = -50
+							add_days_mission_timeout = {
+								mission = USA_civil_war_mission
+								days = -28
+							}
+							random_list = {
+								100 = {
+									country_event = {
+										#Trump Wins
+										id = usa.128
+									}
+								}
+								0 = {
+									country_event = {
+										#Biden Wins
+										id = usa.14
+									}
+								}
+							}
+						}
+					}
+					else_if = {
+						limit = {
+							USA_sided_with_resistance_trigger = yes
+						}
+						effect_tooltip = {
+							add_political_power = -50
+							add_days_mission_timeout = {
+								mission = USA_civil_war_mission
+								days = -28
+							}
+							random_list = {
+								100 = {
+									country_event = {
+										#Biden Wins
+										id = usa.14
+									}
+								}
+								0 = {
+									country_event = {
+										#Trump Wins
+										id = usa.128
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+			on_deactivate = {
+			}
+		}
+
+		range = {
+			id = USA_very_high_trust_range
+			min = 0.45
+			max = 0.75
+			modifier = {
+				stability_factor = 0.1
+				political_power_gain = 0.2
+			}
+			on_activate = {
+				if = {
+					limit = {
+						NOT = {
+							has_country_flag = USA_counting_heads_flag
+						}
+					}
+					custom_effect_tooltip = USA_countdown_day_mission_tooltip
+					if = {
+						limit = {
+							USA_sided_with_trump_trigger = yes
+						}
+						effect_tooltip = {
+							random_list = {
+								100 = {
+									country_event = {
+										#Trump Wins
+										id = usa.128
+									}
+								}
+								0 = {
+									country_event = {
+										#Biden Wins
+										id = usa.14
+									}
+								}
+							}
+						}
+					}
+					else_if = {
+						limit = {
+							USA_sided_with_resistance_trigger = yes
+						}
+						effect_tooltip = {
+							random_list = {
+								100 = {
+									country_event = {
+										#Biden Wins
+										id = usa.14
+									}
+								}
+								0 = {
+									country_event = {
+										#Trump Wins
+										id = usa.128
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+			on_deactivate = {
+			}
+		}
+
+		range = {
+			id = USA_overwhelmingly_high_trust_range
+			min = 0.75
+			max = 1
+			modifier = {
+				stability_factor = 0.15
+				political_power_gain = 0.3
+			}
+			on_activate = {
+				if = {
+					limit = {
+						NOT = {
+							has_country_flag = USA_counting_heads_flag
+						}
+					}
+					custom_effect_tooltip = USA_countdown_day_mission_tooltip
+					if = {
+						limit = {
+							USA_sided_with_trump_trigger = yes
+						}
+						effect_tooltip = {
+							random_list = {
+								100 = {
+									country_event = {
+										#Trump Wins
+										id = usa.128
+									}
+								}
+								0 = {
+									country_event = {
+										#Biden Wins
+										id = usa.14
+									}
+								}
+							}
+						}
+					}
+					else_if = {
+						limit = {
+							USA_sided_with_resistance_trigger = yes
+						}
+						effect_tooltip = {
+							random_list = {
+								100 = {
+									country_event = {
+										#Biden Wins
+										id = usa.14
+									}
+								}
+								0 = {
+									country_event = {
+										#Trump Wins
+										id = usa.128
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+			on_deactivate = {
+			}
+		}
+	}
+}

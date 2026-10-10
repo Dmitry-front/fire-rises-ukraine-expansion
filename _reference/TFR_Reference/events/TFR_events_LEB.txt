@@ -1,0 +1,44 @@
+###########################
+# Lebanese Republic Events
+###########################
+
+add_namespace = lebanon
+
+# 2020 Beirut explosion
+country_event = {
+	id = lebanon.1
+	title = lebanon.1.t
+	desc = lebanon.1.d
+	picture = GFX_report_beirut_explosion
+	
+	fire_only_once = yes
+	is_triggered_only = yes
+
+	option = {
+	name = lebanon.1.a
+		add_stability = -0.05
+		add_manpower = -200
+		add_ideas = SOM_failed_state
+		news_event = {
+			id = news.182
+			hours = 1
+		}
+	}
+}
+
+# 2025 Electoral Session
+country_event = {
+	id = lebanon.2
+	title = lebanon.2.t
+	desc = lebanon.2.d
+	picture = GFX_generic_elections
+	
+	fire_only_once = yes
+	is_triggered_only = yes
+
+	option = {
+	name = lebanon.2.a
+		promote_character = LEB_joseph_aoun_char
+		retire_character = LEB_michel_aoun_char
+	}
+}

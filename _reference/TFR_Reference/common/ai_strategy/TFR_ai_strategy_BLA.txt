@@ -1,0 +1,143 @@
+
+BLA_everyone_is_weak = {
+	enable = {
+		tag = BLA
+		has_global_flag = USA_american_civil_war_global
+	}
+
+	abort_when_not_enabled = yes
+
+	ai_strategy = {
+		type = front_control
+		tag = LOS
+		tag = MSS
+		tag = ALA
+		tag = GRA
+		tag = LOU
+		tag = STC
+		execution_type = rush
+		execute_order = yes
+		manual_attack = no
+	}
+
+	ai_strategy = {
+		type = consider_weak
+		id = LOS
+		value = 1000
+	}
+
+	ai_strategy = {
+		type = consider_weak
+		id = MSS
+		value = 1000
+	}
+
+	ai_strategy = {
+		type = consider_weak
+		id = ALA
+		value = 1000
+	}
+
+	ai_strategy = {
+		type = consider_weak
+		id = GRA
+		value = 1000
+	}
+
+	ai_strategy = {
+		type = consider_weak
+		id = LOU
+		value = 1000
+	}
+
+	ai_strategy = {
+		type = consider_weak
+		id = STC
+		value = 1000
+	}
+
+	ai_strategy = {
+		type = conquer
+		id = LOS
+		value = 1000
+	}
+	ai_strategy = {
+		type = conquer
+		id = MSS
+		value = 1000
+	}
+	ai_strategy = {
+		type = conquer
+		id = ALA
+		value = 1000
+	}
+	ai_strategy = {
+		type = conquer
+		id = GRA
+		value = 1000
+	}
+	ai_strategy = {
+		type = conquer
+		id = LOU
+		value = 1000
+	}
+	ai_strategy = {
+		type = conquer
+		id = STC
+		value = 1000
+	}
+}
+
+BLA_doesnt_care_about_relation = {
+
+	enable = {
+		tag = BLA
+		has_war = yes
+	}
+	
+	abort = {
+		has_war = no
+	}
+
+	ai_strategy = {
+		type = pp_spend_priority
+		id = relation
+		value = -99
+	}
+}
+
+BLA_you_should_be_prepared_for_war = {
+
+	enable = {
+		tag = BLA
+	}
+	abort_when_not_enabled = yes
+	
+	ai_strategy = {
+        type = force_build_armies
+        value = 1000
+    }
+	
+	ai_strategy = {
+        type = force_build_armies
+        value = 1000
+    }
+	
+	ai_strategy = {
+		type = build_army
+		id = infantry
+		value = 500
+	}
+}
+BLA_wants_mils = {
+	enable = {
+		tag = BLA
+		date < 2023.9.15
+	}
+	abort_when_not_enabled = yes
+	ai_strategy = {
+		type = building_target
+		id = arms_factory
+		value = 59
+	}
+}

@@ -1,0 +1,121 @@
+european_union_decisions = {
+	FSP_iberia_pacified = {
+		icon = generic_political_rally
+		allowed = {
+			original_tag = FSP
+		}
+		visible = {
+            SPR = { exists = no }
+            SNS = { exists = no }
+            RSR = { exists = no }
+            PRP = { exists = no }
+            POR = { exists = no }
+            GOD = { exists = no }
+            GAL = { exists = no }
+            LCA = { exists = no }
+            CAT = { exists = no }
+            BAR = { exists = no }
+		}
+		ai_will_do = {
+		base = 1000
+		}
+		complete_effect = {
+            set_global_flag = GER_iberia_pacified
+		}
+	}
+	EAF_calm_after_the_storm = {
+		icon = generic_political_rally
+		allowed = {
+			original_tag = EAF
+		}
+		visible = {
+			OR = {
+				FRA = {
+					has_completed_focus = FRA_EU_Addressing_Our_Failures
+				}
+				FAF = {
+					has_completed_focus = FAF_Edict_of_Paris
+				}
+				FPR = {
+					has_completed_focus = FPR_Finalize_the_Constitution
+				}
+			}
+		}
+		ai_will_do = {
+			base = 1000
+		}
+		days_remove = 100
+		cost = 0
+		complete_effect = {
+		}
+		remove_effect = {
+			if = {
+				limit = {
+					FRA = {
+						has_completed_focus = FRA_EU_Addressing_Our_Failures
+					}
+				}
+				FRA = {
+				    country_event = { id = european_union.13 }
+					annex_country = {
+					    target = EAF
+						transfer_troops = yes
+					}
+					annex_country = {
+					    target = ADU
+						transfer_troops = yes
+					}
+					annex_country = {
+					    target = EPI
+						transfer_troops = yes
+					}
+				}
+			}
+			else_if = {
+				limit = {
+					FPR = {
+						has_completed_focus = FPR_Finalize_the_Constitution
+					}
+				}
+				FPR = {
+				    country_event = { id = european_union.13 }
+					annex_country = {
+					    target = EAF
+						transfer_troops = yes
+					}
+					annex_country = {
+					    target = ADU
+						transfer_troops = yes
+					}
+					annex_country = {
+					    target = EPI
+						transfer_troops = yes
+					}
+				}
+			}
+			else_if = {
+				limit = {
+					FAF = {
+						has_completed_focus = FAF_Edict_of_Paris
+					}
+				}
+				FAF = {
+				    country_event = { id = european_union.13 }
+					annex_country = {
+					    target = EAF
+						transfer_troops = yes
+					}
+					annex_country = {
+					    target = ADU
+						transfer_troops = yes
+					}
+					annex_country = {
+					    target = EPI
+						transfer_troops = yes
+					}
+				}
+			}
+		}
+	}
+}
+

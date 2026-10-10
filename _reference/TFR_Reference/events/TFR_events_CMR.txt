@@ -1,0 +1,173 @@
+###########################
+# Myanmar Events
+###########################
+
+add_namespace = Cameroon
+
+#Ambazonia War
+country_event = {
+	id = Cameroon.1
+	title = Cameroon.1.t
+	desc = Cameroon.1.d
+	picture = GFX_Generic_Fight_Jet
+	
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = {
+		name = Cameroon.1.a
+		AMB = {
+			transfer_state = 1361
+			hidden_effect = {
+				division_template = {
+					name = "Ambazonia Defence Forces"	
+					regiments = {
+						militia = { x = 0 y = 0 }
+						militia = { x = 0 y = 1 }
+						militia = { x = 0 y = 2 }
+						militia = { x = 0 y = 3 }
+					}
+					support = {
+						engineer = { x = 0 y = 0 }
+						recon = { x = 0 y = 0 }
+					}
+				}
+				random_owned_controlled_state = {
+					prioritize = { 755 }
+					create_unit = {
+						division = "name = \"Ambazonia Defence Brigade\" division_template = \"Ambazonia Defence Forces\" start_experience_factor = 0.1 start_equipment_factor = 0.7" 
+						owner = AMB	
+					}
+				}
+				random_owned_controlled_state = {
+					prioritize = { 755 }
+					create_unit = {
+						division = "name = \"Ambazonia Defence Brigade\" division_template = \"Ambazonia Defence Forces\" start_experience_factor = 0.1 start_equipment_factor = 0.7" 
+						owner = AMB	
+					}
+				}
+				random_owned_controlled_state = {
+					prioritize = { 755 }
+					create_unit = {
+						division = "name = \"Ambazonia Defence Brigade\" division_template = \"Ambazonia Defence Forces\" start_experience_factor = 0.1 start_equipment_factor = 0.7" 
+						owner = AMB	
+					}
+				}
+				random_owned_controlled_state = {
+					prioritize = { 755 }
+					create_unit = {
+						division = "name = \"Ambazonia Defence Brigade\" division_template = \"Ambazonia Defence Forces\" start_experience_factor = 0.1 start_equipment_factor = 0.7" 
+						owner = AMB	
+					}
+				}
+			}
+		}
+		hidden_effect = {
+			division_template = {
+				name = "Cameroon Security Forces"	
+				regiments = {
+					militia = { x = 0 y = 0 }
+					militia = { x = 0 y = 1 }
+					militia = { x = 0 y = 2 }
+					militia = { x = 0 y = 3 }
+				}
+				support = {
+					engineer = { x = 0 y = 0 }
+					recon = { x = 0 y = 0 }
+				}
+			}
+			random_owned_controlled_state = {
+				prioritize = { 756 }
+				create_unit = {
+					division = "name = \"Cameroon Security Brigade\" division_template = \"Cameroon Security Forces\" start_experience_factor = 0.1 start_equipment_factor = 0.8" 
+					owner = CMR	
+				}
+			}
+			random_owned_controlled_state = {
+				prioritize = { 756 }
+				create_unit = {
+					division = "name = \"Cameroon Security Brigade\" division_template = \"Cameroon Security Forces\" start_experience_factor = 0.1 start_equipment_factor = 0.7" 
+					owner = CMR	
+				}
+			}
+			random_owned_controlled_state = {
+				prioritize = { 756 }
+				create_unit = {
+					division = "name = \"Cameroon Security Brigade\" division_template = \"Cameroon Security Forces\" start_experience_factor = 0.1 start_equipment_factor = 0.7" 
+					owner = CMR	
+				}
+			}
+			random_owned_controlled_state = {
+				prioritize = { 756 }
+				create_unit = {
+					division = "name = \"Cameroon Security Brigade\" division_template = \"Cameroon Security Forces\" start_experience_factor = 0.1 start_equipment_factor = 0.7" 
+					owner = CMR	
+				}
+			}
+			random_owned_controlled_state = {
+				prioritize = { 756 }
+				create_unit = {
+					division = "name = \"Cameroon Security Brigade\" division_template = \"Cameroon Security Forces\" start_experience_factor = 0.1 start_equipment_factor = 0.7" 
+					owner = CMR	
+				}
+			}
+			random_owned_controlled_state = {
+				prioritize = { 756 }
+				create_unit = {
+					division = "name = \"Cameroon Security Brigade\" division_template = \"Cameroon Security Forces\" start_experience_factor = 0.1 start_equipment_factor = 0.7" 
+					owner = CMR	
+				}
+			}
+			random_owned_controlled_state = {
+				prioritize = { 756 }
+				create_unit = {
+					division = "name = \"Cameroon Security Brigade\" division_template = \"Cameroon Security Forces\" start_experience_factor = 0.1 start_equipment_factor = 0.7" 
+					owner = CMR	
+				}
+			}
+		}
+		declare_war_on = { 
+			target = AMB
+			type = annex_everything 
+		}
+		AQI = {
+			declare_war_on = { 
+				target = AMB
+				type = annex_everything 
+			}
+			declare_war_on = { 
+				target = CMR
+				type = annex_everything 
+			}
+			add_ideas = AQI_West_African_Jihad_idea
+		}
+		BIA = {
+			add_popularity = {
+				ideology = authoritarian_democrat
+    			popularity = 0.50
+			}
+			set_politics = {
+				ruling_party = authoritarian_democrat
+    			last_election = "2022.04.10"
+				election_frequency = 60
+				elections_allowed = no
+			}
+			create_faction = BIA_Alliance_of_Self_Determination
+			hidden_effect = {
+				remove_faction_goal = faction_goal_the_atomic_race
+				add_faction_goal = faction_goal_placeholder_long_term
+				remove_faction_goal = faction_goal_a_military_base
+				add_faction_goal = faction_goal_placeholder_medium_term
+				add_faction_goal = faction_goal_placeholder_short_term
+			}
+			set_country_flag = ASD_member
+			add_to_faction = AMB
+			declare_war_on = { 
+				target = CMR
+				type = annex_everything 
+			}
+		}
+		AMB = {
+			set_country_flag = ASD_member
+		}
+	}
+}

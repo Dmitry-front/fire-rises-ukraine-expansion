@@ -1,0 +1,132 @@
+NATO_war_category = {
+	icon = GFX_SOV_decision_nato_war_category
+	picture = decision_SOV_nato_war
+	visible_when_empty = yes
+	allowed = {
+		#is_in_faction_with = ENG
+	}
+	visible = {
+		has_global_flag = penis
+		NOT = {
+			tag = FRA
+		}
+	}
+}
+
+NATO_leadership_category = {
+	icon = GFX_decision_NATO_leadership
+	picture = GFX_NATO_leadership
+	priority = 10
+	visible_when_empty = yes
+	custom_icon = {
+		tag = ENG
+		value = eng_nato_leadership_icon_value
+		desc = eng_nato_leadership_full_influence_breakdown
+		visible = {
+			always = yes
+		}
+	}
+	custom_icon = {
+		tag = FRA
+		value = fra_nato_leadership_icon_value
+		desc = fra_nato_leadership_full_influence_breakdown
+		visible = {
+			always = yes
+		}
+	}
+	custom_icon = {
+		tag = GER
+		value = ger_nato_leadership_icon_value
+		desc = ger_nato_leadership_full_influence_breakdown
+		visible = {
+			always = yes
+		}
+	}
+	allowed = {
+		OR = {
+			original_tag = ZZZ
+			original_tag = GER
+			original_tag = FRA
+			original_tag = ENG
+		}
+	}
+	visible = {
+		has_global_flag = NATO_elections_begin
+		NOT = {
+			has_government = fascist
+			has_government = communist
+			has_government = nationalist
+			has_government = libertarian_socialist
+			GER = {
+				has_country_flag = NATO_current_leader
+			}
+			FRA = {
+				has_country_flag = NATO_current_leader
+			}
+			ENG = {
+				has_country_flag = NATO_current_leader
+			}
+		}
+	}
+}
+
+NATO_kaliningrad_commission_category = {
+	icon = GFX_GER_kaliningrad_commission_cat
+	allowed = {
+		OR = {
+			original_tag = GER
+			original_tag = PLD
+			original_tag = LIT
+			original_tag = UNN
+		}
+		NOT = {
+			OR = {
+				has_government = fascist
+				has_government = communist
+				has_government = nationalist
+				has_government = libertarian_socialist
+			}
+		}
+	}
+	visible = {
+		GER = {
+			has_completed_focus = GER_bid_for_kaliningrad
+		}
+	}
+	picture = GFX_NATO_leadership
+	priority = {
+		base = 10
+	}
+	custom_icon = {
+		tag = GER
+		value = ger_kaliningrad_icon_value
+		desc = ger_kaliningrad_full_influence_breakdown
+		visible = {
+			always = yes
+		}
+	}
+	custom_icon = {
+		tag = PLD
+		value = pld_kaliningrad_icon_value
+		desc = pld_kaliningrad_full_influence_breakdown
+		visible = {
+			always = yes
+		}
+	}
+	custom_icon = {
+		tag = LIT
+		value = lit_kaliningrad_icon_value
+		desc = lit_kaliningrad_full_influence_breakdown
+		visible = {
+			always = yes
+		}
+	}
+	custom_icon = {
+		tag = UNN
+		value = unn_kaliningrad_icon_value
+		desc = unn_kaliningrad_full_influence_breakdown
+		visible = {
+			always = yes
+		}
+	}
+}

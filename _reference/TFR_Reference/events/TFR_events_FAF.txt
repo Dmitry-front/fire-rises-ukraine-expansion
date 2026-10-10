@@ -1,0 +1,3746 @@
+add_namespace = Nationalist_France
+add_namespace = latinist
+country_event = {
+	#The Ashes of Europe...
+	id = latinist.999
+	title = latinist.1.t
+	desc = latinist.1.d
+	picture = GFX_French_Army
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = {
+		# Right
+		name = latinist.1.a
+		if = {
+			limit = {
+				has_power_balance = {
+					id = FAF_power_balance_non_mon
+				}
+			}
+			add_power_balance_value = {
+				id = FAF_power_balance_non_mon
+				value = 0.1
+			}
+		}
+		if = {
+			limit = {
+				has_power_balance = {
+					id = FAF_power_balance_mon
+				}
+			}
+			add_power_balance_value = {
+				id = FAF_power_balance_mon
+				value = 0.1
+			}
+		}
+		if = {
+			limit = {
+				has_power_balance = {
+					id = FAF_power_balance_Fascist
+				}
+			}
+			add_power_balance_value = {
+				id = FAF_power_balance_Fascist
+				value = 0.1
+			}
+		}
+	}
+	option = {
+		#Left
+		name = latinist.1.b
+		if = {
+			limit = {
+				has_power_balance = {
+					id = FAF_power_balance_non_mon
+				}
+			}
+			add_power_balance_value = {
+				id = FAF_power_balance_non_mon
+				value = -0.1
+			}
+		}
+		if = {
+			limit = {
+				has_power_balance = {
+					id = FAF_power_balance_mon
+				}
+			}
+			add_power_balance_value = {
+				id = FAF_power_balance_mon
+				value = -0.1
+			}
+		}
+		if = {
+			limit = {
+				has_power_balance = {
+					id = FAF_power_balance_Fascist
+				}
+			}
+			add_power_balance_value = {
+				id = FAF_power_balance_Fascist
+				value = -0.1
+			}
+		}
+	}
+}
+
+country_event = {
+	#The Ashes of Europe...
+	id = latinist.1
+	title = latinist.1.t
+	desc = latinist.1.d
+	picture = GFX_FAF_identitarian_1
+	fire_only_once = yes
+	is_triggered_only = yes
+	immediate = {
+		hidden_effect = {
+			add_popularity = {
+				ideology = national_socialist
+				popularity = 0.025
+			}
+		}
+	}
+	option = {
+		#Shall breathe new life
+		name = latinist.1.a
+		custom_effect_tooltip = FAF_empower_latinists_tt
+		set_country_flag = latin_empire_iden_1_flag
+	}
+	option = {
+		#Will lead to a fruitful 
+		name = latinist.1.b
+		custom_effect_tooltip = FAF_empower_bonapartists_tt
+		set_country_flag = latin_empire_bnpt_1_flag
+	}
+	option = {
+		#Shall bring back old orders
+		name = latinist.1.c
+		custom_effect_tooltip = FAF_empower_paneuros_tt
+		set_country_flag = latin_empire_wgnt_1_flag
+	}
+}
+
+country_event = {
+	#The Latin People...
+	id = latinist.2
+	title = latinist.2.t
+	desc = latinist.2.d
+	picture = GFX_FAF_latinism_1
+	fire_only_once = yes
+	is_triggered_only = yes
+	immediate = {
+		hidden_effect = {
+			add_popularity = {
+				ideology = national_socialist
+				popularity = 0.025
+			}
+		}
+	}
+	option = {
+		#Are the heart of European civilization
+		name = latinist.2.a
+		set_country_flag = latin_empire_iden_2_flag
+		custom_effect_tooltip = FAF_empower_latinists_tt
+	}
+	option = {
+		#Are known for their glorious conquests
+		name = latinist.2.b
+		custom_effect_tooltip = FAF_empower_bonapartists_tt
+		set_country_flag = latin_empire_bnpt_2_flag
+	}
+	option = {
+		#Are apart of a larger European identity
+		name = latinist.2.c
+		custom_effect_tooltip = FAF_empower_paneuros_tt
+		set_country_flag = latin_empire_wgnt_2_flag
+	}
+}
+
+country_event = {
+	#Our Connection to the past...
+	id = latinist.3
+	title = latinist.3.t
+	desc = latinist.3.d
+	picture = GFX_FAF_identitarian_2
+	fire_only_once = yes
+	is_triggered_only = yes
+	immediate = {
+		hidden_effect = {
+			add_popularity = {
+				ideology = national_socialist
+				popularity = 0.05
+			}
+		}
+	}
+	option = {
+		#The disgruntled youth
+		name = latinist.3.a
+		custom_effect_tooltip = FAF_empower_latinists_tt
+		set_country_flag = latin_empire_iden_3_flag
+	}
+	option = {
+		#The soldier at Waterloo
+		name = latinist.3.b
+		custom_effect_tooltip = FAF_empower_bonapartists_tt
+		set_country_flag = latin_empire_bnpt_3_flag
+	}
+	option = {
+		#The Slayer of Vandals
+		name = latinist.3.c
+		custom_effect_tooltip = FAF_empower_paneuros_tt
+		set_country_flag = latin_empire_wgnt_3_flag
+	}
+}
+
+country_event = {
+	#
+	id = latinist.5
+	title = latinist.5.t
+	desc = latinist.5.d
+	picture = GFX_FAF_escada
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = {
+		#
+		name = latinist.5.a
+		set_party_name = {
+			ideology = nationalist
+			long_name = ROME_nationalist_party_long
+			name = ROME_nationalist_party
+		}
+	}
+}
+
+country_event = {
+	#A Pique in Understanding
+	id = latinist.6
+	title = latinist.6.t
+	desc = latinist.6.d
+	picture = GFX_FRA_classroom
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = {
+		#
+		name = latinist.6.a
+		increase_academic = yes
+		add_stability = 0.05
+	}
+}
+
+country_event = {
+	#Join neo-fash EU?
+	id = latinist.71
+	title = latinist.71.t
+	desc = latinist.71.d
+	picture = GFX_FAF_fascist_eu
+	is_triggered_only = yes
+	option = {
+		#Sure
+		name = latinist.71.a
+		ai_chance = {
+			base = 1
+			modifier = {
+				factor = 20
+				has_opinion = {
+					target = FAF
+					value > 25
+				}
+			}
+			modifier = {
+				factor = 20
+				has_idea = FAF_europeanist_propaganda_idea
+			}
+		}
+		custom_effect_tooltip = FAF_european_nation_join_tt
+		hidden_effect = {
+			Fascist_EU_join_effect = yes
+		}
+		add_political_power = 15
+		FAF = {
+			add_political_power = 15
+			add_to_variable = {
+				var = FAF_EUN_consumer_goods_expected_value_dynamic_var
+				value = -0.01
+			}
+			add_to_variable = {
+				var = FAF_EUN_industrial_development_monthly_dynamic_var
+				value = 0.01
+			}
+		}
+	}
+	option = {
+		#A Stupid Idea
+		name = latinist.71.b
+		ai_chance = {
+			base = 1
+			modifier = {
+				factor = 20
+				has_opinion = {
+					target = FAF
+					value < 25
+				}
+			}
+		}
+		add_political_power = 30
+		add_opinion_modifier = {
+			target = FAF
+			modifier = protest_action_strong
+		}
+	}
+}
+
+country_event = {
+	#Join neo-fash EU once and for all
+	id = latinist.72
+	title = latinist.72.t
+	desc = latinist.72.d
+	picture = GFX_FAF_fascist_eu
+	is_triggered_only = yes
+	option = {
+		#Sure
+		name = latinist.72.a
+		ai_chance = {
+			base = 1
+			modifier = {
+				factor = 20
+				has_opinion = {
+					target = FAF
+					value > 25
+				}
+			}
+		}
+		every_owned_state = {
+			add_core_of = FAF
+		}
+		FAF = {
+			annex_country = {
+				target = ROOT
+				transfer_troops = yes
+			}
+		}
+	}
+	option = {
+		#A Stupid Idea
+		name = latinist.72.b
+		ai_chance = {
+			base = 1
+			modifier = {
+				factor = 20
+				has_opinion = {
+					target = FAF
+					value < 25
+				}
+			}
+		}
+		every_owned_state = {
+			add_claim_by = FAF
+		}
+		FAF = {
+			create_wargoal = {
+				type = annex_everything
+				target = ROOT
+			}
+		}
+	}
+}
+
+country_event = {
+	# France proposes new EU Federalizes
+	id = latinist.7
+	title = latinist.7.t
+	desc = latinist.7.d
+	picture = GFX_FAF_fash_eu_unification
+	is_triggered_only = yes
+	option = {
+		#We shall unite!
+		name = latinist.7.a
+		ai_chance = {
+			base = 1
+			modifier = {
+				factor = 20
+				has_opinion = {
+					target = FAF
+					value > 60
+				}
+			}
+		}
+		set_country_flag = FAF_european_nation_unified
+		if = {
+			limit = {
+				tag = GER
+			}
+			FAF = {
+				set_faction_leader = yes
+			}
+		}
+	}
+	option = {
+		#We will remain, but no federalization for us thanks
+		name = latinist.7.b
+		ai_chance = {
+			base = 1
+			modifier = {
+				factor = 20
+				has_opinion = {
+					target = FAF
+					value < 60
+				}
+				has_opinion = {
+					target = FAF
+					value > 20
+				}
+			}
+		}
+		add_stability = 0.05
+	}
+	option = {
+		#No
+		name = latinist.7.c
+		ai_chance = {
+			base = 1
+			modifier = {
+				factor = 20
+				has_opinion = {
+					target = FAF
+					value < 20
+				}
+			}
+		}
+		FAF = {
+			add_opinion_modifier = {
+				target = ROOT
+				modifier = protest_action_strong
+			}
+		}
+	}
+}
+
+country_event = {
+	# France proposes continental system
+	id = latinist.8
+	title = latinist.8.t
+	desc = latinist.8.d
+	picture = GFX_FAF_continental_blockade
+	is_triggered_only = yes
+	option = {
+		#We shall join
+		name = latinist.8.a
+		ai_chance = {
+			base = 1
+			modifier = {
+				factor = 20
+				has_opinion = {
+					target = FAF
+					value > 10
+				}
+			}
+		}
+		napoleon_EU_join_effect = yes
+		send_embargo = SOV
+		FAF = {
+			set_temp_variable = {
+				var = industrial_development_var_temp
+				value = 0.05
+			}
+			add_industrial_development = yes
+		}
+		if = {
+			limit = {
+				tag = GER
+			}
+			FAF = {
+				set_faction_leader = yes
+			}
+		}
+	}
+	option = {
+		#No
+		name = latinist.8.b
+		ai_chance = {
+			base = 1
+			modifier = {
+				factor = 20
+				has_opinion = {
+					target = FAF
+					value < 25
+				}
+			}
+		}
+		add_opinion_modifier = {
+			target = FAF
+			modifier = protest_action_strong
+		}
+	}
+}
+
+country_event = {
+	#restoration of the Imperial Palace
+	id = latinist.9
+	title = latinist.9.t
+	desc = latinist.9.d
+	picture = GFX_FAF_imperial_palace
+	fire_only_once = yes
+	is_triggered_only = yes
+	immediate = {
+	}
+	option = {
+		#Go ALL out
+		name = latinist.9.a
+		ai_chance = {
+			base = 5
+		}
+		effect_tooltip = {
+			swap_ideas = {
+				add_idea = FAF_nsimp_full_restoration_dummy
+				remove_idea = FAF_nsimp_dummy
+			}
+		}
+		hidden_effect = {
+			add_to_variable = {
+				var = FAF_nsimp_society_development_monthly_dynamic_var
+				value = 0.05
+			}
+			add_to_variable = {
+				var = FAF_nsimp_fascist_drift_dynamic_var
+				value = 0.075
+			}
+			add_to_variable = {
+				var = FAF_nsimp_political_power_gain_dynamic_var
+				value = 0.1
+			}
+		}
+		set_temp_variable = {
+			var = debt_var_temp
+			value = 100
+		}
+		add_debt = yes
+		add_stability = -0.05
+		add_timed_idea = {
+			idea = FAF_Imperial_Palace_idea
+			days = 730
+		}
+	}
+	option = {
+		#Clean it up
+		name = latinist.9.b
+		ai_chance = {
+			base = 5
+		}
+		effect_tooltip = {
+			swap_ideas = {
+				add_idea = FAF_nsimp_mid_restoration_dummy
+				remove_idea = FAF_nsimp_dummy
+			}
+		}
+		hidden_effect = {
+			add_to_variable = {
+				var = FAF_nsimp_society_development_monthly_dynamic_var
+				value = 0.015
+			}
+			add_to_variable = {
+				var = FAF_nsimp_fascist_drift_dynamic_var
+				value = 0.05
+			}
+			add_to_variable = {
+				var = FAF_nsimp_political_power_gain_dynamic_var
+				value = 0.03
+			}
+		}
+		set_temp_variable = {
+			var = debt_var_temp
+			value = 50
+		}
+		add_debt = yes
+		add_timed_idea = {
+			idea = FAF_Imperial_Palace_idea
+			days = 1095
+		}
+	}
+	option = {
+		#Let others deal with it
+		name = latinist.9.c
+		ai_chance = {
+			base = 5
+		}
+		add_stability = -0.05
+		add_political_power = 150
+		add_timed_idea = {
+			idea = FAF_Imperial_Palace_idea
+			days = 1460
+		}
+	}
+}
+
+country_event = {
+	#Join Latin Empire - Spain
+	id = latinist.10
+	title = latinist.10.t
+	desc = latinist.10.d
+	picture = GFX_FAF_latinism_1
+	is_triggered_only = yes
+	immediate = {
+	}
+	option = {
+		#We shall join
+		name = latinist.10.a
+		ai_chance = {
+			base = 2
+			modifier = {
+				factor = 999
+				tag = SNS
+				national_socialist > 0.2
+			}
+		}
+		FAF = {
+			annex_country = {
+				target = ROOT
+				transfer_troops = yes
+			}
+			every_state = {
+				limit = {
+					is_core_of = SPR
+				}
+				add_core_of = FAF
+			}
+		}
+	}
+	option = {
+		#No
+		name = latinist.10.b
+		ai_chance = {
+			base = 1
+			modifier = {
+				factor = 999
+				tag = RSR
+			}
+			modifier = {
+				factor = 999
+				tag = SPR
+			}
+			modifier = {
+				factor = 999
+				tag = SNS
+				national_socialist < 0.2
+			}
+		}
+		FAF = {
+			declare_war_on = {
+				target = SNS
+				type = annex_everything
+			}
+			declare_war_on = {
+				target = RSR
+				type = annex_everything
+			}
+			declare_war_on = {
+				target = SPR
+				type = annex_everything
+			}
+		}
+	}
+}
+
+country_event = {
+	#Join Latin Empire - Italy
+	id = latinist.11
+	title = latinist.11.t
+	desc = latinist.11.d
+	picture = GFX_FAF_latinism_1
+	is_triggered_only = yes
+	immediate = {
+	}
+	option = {
+		#We shall join
+		name = latinist.11.a
+		ai_chance = {
+			base = 999
+		}
+		FAF = {
+			annex_country = {
+				target = ITA
+				transfer_troops = yes
+			}
+			every_state = {
+				limit = {
+					is_core_of = ITA
+				}
+				add_core_of = FAF
+			}
+		}
+	}
+	option = {
+		#We shall join
+		name = latinist.11.b
+		ai_chance = {
+			base = 0
+		}
+		FAF = {
+			declare_war_on = {
+				target = ITA
+				type = annex_everything
+			}
+		}
+	}
+}
+
+country_event = {
+	#France annexes Catalonia
+	id = latinist.12
+	title = latinist.12.t
+	desc = latinist.12.d
+	picture = GFX_French_Army
+	is_triggered_only = yes
+	immediate = {
+	}
+	option = {
+		#Whatever
+		name = latinist.12.a
+		ai_chance = {
+			base = 1
+			modifier = {
+				has_opinion = {
+					target = FAF
+					value > 40
+				}
+				factor = 5
+			}
+		}
+		add_opinion_modifier = {
+			target = FAF
+			modifier = protest_action_strong
+		}
+	}
+	option = {
+		#EMBARGOOOOOO
+		name = latinist.12.b
+		ai_chance = {
+			base = 1
+			modifier = {
+				has_opinion = {
+					target = FAF
+					value < 40
+				}
+				has_opinion = {
+					target = FAF
+					value > 10
+				}
+				factor = 2
+			}
+		}
+		send_embargo = FAF
+		add_opinion_modifier = {
+			target = FAF
+			modifier = protest_action_strong
+		}
+	}
+	option = {
+		#WAAAAAAAAR
+		name = latinist.12.c
+		ai_chance = {
+			base = 1
+			modifier = {
+				has_opinion = {
+					target = FAF
+					value < 10
+				}
+				factor = 2
+			}
+		}
+		declare_war_on = {
+			target = FAF
+			type = annex_everything
+		}
+	}
+}
+
+country_event = {
+	#France Marches into Rome
+	id = latinist.13
+	title = latinist.13.t
+	desc = latinist.13.d
+	picture = GFX_FRA_bardella
+	fire_only_once = yes
+	is_triggered_only = yes
+	immediate = {
+	}
+	option = {
+		name = latinist.13.a
+		ai_chance = {
+			base = 100
+		}
+		FAF = {
+			country_event = {
+				id = latinist.14
+				hours = 6
+			}
+		}
+	}
+	option = {
+		name = latinist.13.b
+		ai_chance = {
+			base = 0
+		}
+		FAF = {
+			country_event = {
+				id = latinist.15
+				hours = 6
+			}
+		}
+	}
+}
+
+country_event = {
+	#Italians Retreat from Rome
+	id = latinist.14
+	title = latinist.14.t
+	desc = latinist.14.d
+	picture = GFX_FRA_bardella
+	fire_only_once = yes
+	is_triggered_only = yes
+	immediate = {
+		hidden_effect = {
+			FAF = {
+				transfer_state = 2
+				add_state_core = 2
+				transfer_state = 1493
+				add_state_core = 1493
+				transfer_state = 1449
+				add_state_core = 1449
+			}
+		}
+	}
+	option = {
+		name = latinist.14.a
+		effect_tooltip = {
+			FAF = {
+				transfer_state = 2
+				add_state_core = 2
+				transfer_state = 1493
+				add_state_core = 1493
+				transfer_state = 1449
+				add_state_core = 1449
+			}
+		}
+	}
+}
+
+country_event = {
+	#Italy Resists
+	id = latinist.15
+	title = latinist.15.t
+	desc = latinist.15.d
+	picture = GFX_FRA_bardella
+	fire_only_once = yes
+	is_triggered_only = yes
+	immediate = {
+	}
+	option = {
+		name = latinist.15.a
+		ITA = {
+			leave_faction = yes
+		}
+		FAF = {
+			declare_war_on = {
+				target = ITA
+				type = annex_everything
+			}
+		}
+	}
+}
+
+#France Demands Annexation - Portugal
+country_event = {
+	id = latinist.16
+	title = latinist.16.t
+	desc = latinist.16.d
+	picture = GFX_FAF_latinism_1
+	is_triggered_only = yes
+	immediate = {
+	}
+	option = {
+		#We shall join
+		name = latinist.16.a
+		ai_chance = {
+			base = 999
+		}
+		FAF = {
+			annex_country = {
+				target = ITA
+				transfer_troops = yes
+			}
+			every_state = {
+				limit = {
+					is_core_of = POR
+				}
+				add_core_of = FAF
+			}
+		}
+	}
+	option = {
+		#We shall not join
+		name = latinist.16.b
+		ai_chance = {
+			base = 0
+		}
+		FAF = {
+			declare_war_on = {
+				target = POR
+				type = annex_everything
+			}
+		}
+	}
+}
+
+#Anti pope
+country_event = {
+	id = latinist.17
+	title = latinist.17.t
+	desc = latinist.17.d
+	picture = GFX_FAF_latinism_1
+	fire_only_once = yes
+	trigger = {
+		1449 = {
+			owner = {
+				OR = {
+					tag = FAF
+					is_puppet_of = FAF
+				}				
+			}
+		}
+		FAF = {
+			has_completed_focus = FAF_Puppet_the_Church
+		}
+	}
+	hidden = yes
+	immediate = {
+	}
+	option = {
+		name = latinist.17.a
+		1449 = {
+			remove_dynamic_modifier = {
+				modifier = micro_vatican_tagle
+			}
+			remove_dynamic_modifier = {
+				modifier = micro_vatican_prevost
+			}
+			remove_dynamic_modifier = {
+				modifier = micro_vatican_erdo
+			}
+			remove_dynamic_modifier = {
+				modifier = micro_vatican_sarah
+			}
+			add_dynamic_modifier = {
+				modifier = micro_vatican_escada
+			}
+		}
+	}
+}
+
+#French Military demands submission
+country_event = {
+	id = Nationalist_France.99
+	title = Nationalist_France.99.t
+	desc = Nationalist_France.99.d
+	picture = GFX_FRA_France_Coup_2
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = {
+		#We need the aid
+		name = Nationalist_France.99.a
+		ai_chance = {
+			base = 100
+		}
+		FAF = {
+			country_event = {
+				id = Nationalist_France.0
+			}
+			puppet = BEL
+		}
+	}
+	option = {
+		#No
+		name = Nationalist_France.99.b
+		ai_chance = {
+			base = 0
+		}
+		FAF = {
+			country_event = {
+				id = Nationalist_France.2
+				days = 8
+			}
+		}
+	}
+}
+
+country_event = {
+	id = Nationalist_France.0
+	title = Nationalist_France.0.t
+	desc = Nationalist_France.0.d
+	picture = GFX_French_Army
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = {
+		#We need the aid
+		name = Nationalist_France.0.a
+		ai_chance = {
+			base = 100
+		}
+		declare_war_on = {
+			target = HOL
+			type = annex_everything
+		}
+		declare_war_on = {
+			target = LUX
+			type = annex_everything
+		}
+	}
+}
+
+country_event = {
+	id = Nationalist_France.2
+	title = Nationalist_France.2.t
+	desc = Nationalist_France.2.d
+	picture = GFX_French_Army
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = {
+		#The Natural borders of France shall return
+		name = Nationalist_France.2.a
+		ai_chance = {
+			base = 80
+		}
+		FAF = {
+			declare_war_on = {
+				target = HOL
+				type = annex_everything
+			}
+			declare_war_on = {
+				target = LUX
+				type = annex_everything
+			}
+			declare_war_on = {
+				target = BEL
+				type = annex_everything
+			}
+		}
+	}
+	option = {
+		#Whatever
+		name = Nationalist_France.2.b
+		ai_chance = {
+			base = 20
+		}
+		add_stability = -0.18
+	}
+}
+
+country_event = {
+	#Jean d'arc
+	id = Nationalist_France.3
+	title = Nationalist_France.3.t
+	desc = Nationalist_France.3.d
+	picture = GFX_Jean_darc
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = {
+		#
+		name = Nationalist_France.3.a
+		ai_chance = {
+			base = 100
+		}
+		set_country_flag = FAF_jean_darc_flag
+	}
+}
+
+country_event = {
+	#Rights of Man
+	id = Nationalist_France.4
+	title = Nationalist_France.4.t
+	desc = Nationalist_France.4.d
+	picture = GFX_Rights_of_Man_Debate
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = {
+		#
+		name = Nationalist_France.4.a
+		ai_chance = {
+			base = 100
+		}
+	}
+}
+
+country_event = {
+	#Marianne
+	id = Nationalist_France.5
+	title = Nationalist_France.5.t
+	desc = Nationalist_France.5.d
+	picture = GFX_Marianne_Soldier
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = {
+		#
+		name = Nationalist_France.5.a
+		ai_chance = {
+			base = 100
+		}
+	}
+}
+
+country_event = {
+	#Reclaiming the Marechal
+	id = Nationalist_France.6
+	title = Nationalist_France.6.t
+	desc = Nationalist_France.6.d
+	picture = GFX_Marechal_Pride
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = {
+		#
+		name = Nationalist_France.6.a
+		ai_chance = {
+			base = 100
+		}
+	}
+}
+
+country_event = {
+	#French Israelism
+	id = Nationalist_France.7
+	title = Nationalist_France.7.t
+	desc = Nationalist_France.7.d
+	picture = GFX_Lost_Tribe_Theory
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = {
+		#
+		name = Nationalist_France.7.a
+		ai_chance = {
+			base = 100
+		}
+	}
+}
+
+country_event = {
+	#Romanticizing the old Kingdom
+	id = Nationalist_France.8
+	title = Nationalist_France.8.t
+	desc = Nationalist_France.8.d
+	picture = GFX_French_Monarchist_Flag
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = {
+		#
+		name = Nationalist_France.8.a
+		ai_chance = {
+			base = 100
+		}
+	}
+}
+
+country_event = {
+	#Maurras Parade
+	id = Nationalist_France.9
+	title = Nationalist_France.9.t
+	desc = Nationalist_France.9.d
+	picture = GFX_Maurras_Parade
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = {
+		#
+		name = Nationalist_France.9.a
+		ai_chance = {
+			base = 100
+		}
+	}
+}
+
+country_event = {
+	#Government is Officialized
+	id = Nationalist_France.10
+	title = Nationalist_France.10.t
+	desc = Nationalist_France.10.d
+	picture = GFX_Maurras_Parade
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = {
+		#
+		name = Nationalist_France.10.a
+		ai_chance = {
+			base = 100
+		}
+	}
+}
+
+country_event = {
+	#France demands Baelaric
+	id = Nationalist_France.11
+	title = Nationalist_France.11.t
+	desc = Nationalist_France.11.d
+	picture = GFX_Maurras_Parade
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = {
+		#Give up
+		name = Nationalist_France.11.a
+		ai_chance = {
+			base = 90
+		}
+		transfer_state = 177
+	}
+	option = {
+		#WAR
+		name = Nationalist_France.11.a
+		ai_chance = {
+			base = 10
+		}
+		FAF = {
+			create_wargoal = {
+				type = annex_everything
+				target = ROOT
+			}
+		}
+	}
+}
+
+country_event = {
+	#France seizes Gibraltar
+	id = Nationalist_France.12
+	title = Nationalist_France.12.t
+	desc = Nationalist_France.12.d
+	picture = GFX_Maurras_Parade
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = {
+		#Our territory! Embrago!
+		name = Nationalist_France.12.a
+		send_embargo = FAF
+		add_opinion_modifier = {
+			target = FAF
+			modifier = protest_action_strong
+		}
+	}
+	option = {
+		#We shall thank them for the aid in dislodging the Pirates
+		name = Nationalist_France.12.a
+		add_war_support = -0.05
+		add_opinion_modifier = {
+			target = FAF
+			modifier = recent_actions_positive
+		}
+	}
+}
+
+country_event = {
+	#Franco-Italian Summit - Start
+	id = Nationalist_France.13
+	title = Nationalist_France.13.t
+	desc = Nationalist_France.13.d
+	picture = GFX_FRA_franco_italy_diplo
+	fire_only_once = yes
+	trigger = {
+		focus_progress = {
+			focus = FAF_Franco_Italian_Cooperation
+			progress > 0.05
+		}
+	}
+	option = {
+		#Invite our Italian allies to meet in Monaco
+		name = Nationalist_France.13.a
+		ITA = {
+			country_event = {
+				id = Nationalist_France.131
+			}
+		}
+	}
+}
+
+country_event = {
+	#Franco-Italian Summit - ITA
+	id = Nationalist_France.131
+	title = Nationalist_France.131.t
+	desc = Nationalist_France.131.d
+	picture = GFX_FRA_franco_italy_diplo
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = {
+		#We shall meet in Monaco!
+		name = Nationalist_France.131.a
+		add_political_power = 10
+		FAF = {
+			add_political_power = 10
+			country_event = {
+				id = Nationalist_France.132
+				days = 4
+			}
+		}
+	}
+}
+
+country_event = {
+	#Franco-Italian Summit - Entrance of Italian Representatives
+	id = Nationalist_France.132
+	title = Nationalist_France.132.t
+	desc = Nationalist_France.132.d
+	picture = GFX_FRA_monaco_palace
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = {
+		#A ceremony fit for our grandest ally!
+		name = Nationalist_France.132.a
+		ai_chance = {
+			base = 1
+			modifier = {
+				factor = 10
+				ITA = {
+					has_same_ideology = yes
+				}
+			}
+			modifier = {
+				factor = 3
+				has_opinion = {
+					target = ITA
+					value > 20
+				}
+			}
+		}
+		ITA = {
+			add_political_power = 20
+			country_event = {
+				id = Nationalist_France.133
+			}
+		}
+	}
+	option = {
+		#Humiliate them at every turn
+		name = Nationalist_France.132.b
+		ai_chance = {
+			base = 1
+			modifier = {
+				factor = 2
+				NOT = {
+					ITA = {
+						has_same_ideology = yes
+					}
+				}
+			}
+		}
+		add_political_power = 20
+		ITA = {
+			country_event = {
+				id = Nationalist_France.134
+			}
+		}
+	}
+}
+
+country_event = {
+	#Franco-Italian Summit - Success!
+	id = Nationalist_France.133
+	title = Nationalist_France.133.t
+	desc = Nationalist_France.133.d
+	picture = GFX_FRA_monaco_palace
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = {
+		#Pledge Italian Support
+		name = Nationalist_France.133.a
+		diplomatic_relation = {
+			country = FAF
+			relation = guarantee
+			active = yes
+		}
+		diplomatic_relation = {
+			country = FAF
+			relation = non_aggression_pact
+		}
+		add_opinion_modifier = {
+			target = FAF
+			modifier = fra_ita_summit_good
+		}
+		FAF = {
+			diplomatic_relation = {
+				country = ITA
+				relation = guarantee
+				active = yes
+			}
+			add_opinion_modifier = {
+				target = FAF
+				modifier = fra_ita_summit_good
+			}
+			country_event = {
+				id = Nationalist_France.135
+			}
+		}
+	}
+}
+
+country_event = {
+	#Franco-Italian Summit - Failure 1
+	id = Nationalist_France.134
+	title = Nationalist_France.134.t
+	desc = Nationalist_France.134.d
+	picture = GFX_FRA_monaco_palace
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = {
+		#Reach out to the Spanish
+		name = Nationalist_France.134.a
+		add_opinion_modifier = {
+			target = FAF
+			modifier = fra_ita_summit_bad
+		}
+		FAF = {
+			country_event = {
+				id = Nationalist_France.136
+			}
+			add_opinion_modifier = {
+				target = ITA
+				modifier = fra_ita_summit_bad
+			}
+		}
+		SNS = {
+			country_event = {
+				id = Nationalist_France.137
+			}
+		}
+	}
+}
+
+country_event = {
+	#Franco-Italian Summit - Success!
+	id = Nationalist_France.135
+	title = Nationalist_France.135.t
+	desc = Nationalist_France.135.d
+	picture = GFX_FRA_monaco_palace
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = {
+		#Begin the Bern Initiative
+		name = Nationalist_France.135.a
+		add_stability = 0.05
+		add_political_power = 30
+		add_war_support = 0.05
+		complete_national_focus = FAF_Franco_Italian_Cooperation
+		3 = {
+			add_claim_by = FAF
+		}
+		838 = {
+			add_claim_by = ITA
+		}
+		151 = {
+			add_claim_by = GER
+		}
+		1450 = {
+			add_claim_by = GER
+		}
+		effect_tooltip = {
+			unlock_national_focus = FAF_Bern_Initiative
+		}
+		set_country_flag = FAF_Divide_Switzerland_flag
+	}
+}
+
+country_event = {
+	#Franco-Italian Summit - Failure
+	id = Nationalist_France.136
+	title = Nationalist_France.136.t
+	desc = Nationalist_France.136.d
+	picture = GFX_FRA_monaco_palace
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = {
+		#Prepare the Piedmont Initiative
+		name = Nationalist_France.136.a
+		complete_national_focus = FAF_Franco_Italian_Cooperation
+		2 = {
+			add_claim_by = FAF
+		}
+		1493 = {
+			add_claim_by = FAF
+		}
+		115 = {
+			add_claim_by = FAF
+		}
+		158 = {
+			add_claim_by = FAF
+		}
+		effect_tooltip = {
+			unlock_national_focus = FAF_Demand_Mediterrenean_Assets
+		}
+		set_country_flag = FAF_Piedmont_Initiative_flag
+	}
+}
+
+country_event = {
+	#Italians reach out
+	id = Nationalist_France.137
+	title = Nationalist_France.137.t
+	desc = Nationalist_France.137.d
+	picture = GFX_SPR_Italy
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = {
+		#The French posturing worries us too
+		name = Nationalist_France.137.a
+		ai_chance = {
+			base = 60
+		}
+		add_war_support = 0.08
+		add_opinion_modifier = {
+			target = FAF
+			modifier = fra_ita_summit_bad
+		}
+		diplomatic_relation = {
+			country = ITA
+			relation = guarantee
+			active = yes
+		}
+		ITA = {
+			add_war_support = 0.08
+			diplomatic_relation = {
+				country = SNS
+				relation = guarantee
+				active = yes
+			}
+		}
+	}
+	option = {
+		#Stop worrying Italy
+		name = Nationalist_France.137.b
+		ai_chance = {
+			base = 40
+		}
+		add_war_support = -0.08
+		ITA = {
+			add_war_support = -0.08
+		}
+	}
+}
+
+country_event = {
+	#France demands Mediterranean Bases
+	id = Nationalist_France.14
+	title = Nationalist_France.14.t
+	desc = Nationalist_France.14.d
+	picture = GFX_Corsica_Navy
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = {
+		#Fuck your demands
+		name = Nationalist_France.14.a
+		ai_chance = {
+			base = 40
+		}
+		FAF = {
+			create_wargoal = {
+				type = take_state
+				target = ITA
+				generator = {
+					114
+					116
+				}
+			}
+		}
+	}
+	option = {
+		#We cannot risk war with France
+		name = Nationalist_France.14.b
+		ai_chance = {
+			base = 60
+		}
+		FAF = {
+			transfer_state = 114
+			transfer_state = 116
+		}
+	}
+}
+
+country_event = {
+	#Bern Initiative
+	id = Nationalist_France.15
+	title = Nationalist_France.15.t
+	desc = Nationalist_France.15.d
+	picture = GFX_SWI_alpes
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = {
+		#Fuck your demands
+		name = Nationalist_France.15.a
+		ai_chance = {
+			base = 1
+			modifier = {
+				factor = 5
+				FAF = {
+					divisions_in_border_state = {
+						size < 9
+						state = 3
+						border_state = var:state
+					}
+				}
+			}
+			modifier = {
+				factor = 5
+				ITA = {
+					divisions_in_border_state = {
+						size < 9
+						state = 838
+						border_state = var:state
+					}
+				}
+			}
+		}
+		FAF = {
+			create_wargoal = {
+				type = take_state
+				target = SWI
+				generator = {
+					3
+				}
+			}
+		}
+		add_ideas = SWI_bunkers_of_the_revolution_idea
+	}
+	option = {
+		#We cannot risk war with France and Italy
+		name = Nationalist_France.15.a
+		ai_chance = {
+			base = 2
+			modifier = {
+				factor = 5
+				FAF = {
+					divisions_in_border_state = {
+						size > 9
+						state = 3
+						border_state = var:state
+					}
+				}
+			}
+			modifier = {
+				factor = 5
+				ITA = {
+					divisions_in_border_state = {
+						size > 9
+						state = 838
+						border_state = var:state
+					}
+				}
+			}
+		}
+		add_ideas = SWI_mega_isolation_bunkers_of_the_revolution_idea
+		FAF = {
+			transfer_state = 3
+		}
+		ITA = {
+			transfer_state = 838
+		}
+	}
+}
+
+country_event = {
+	#Chateau revival Program
+	id = Nationalist_France.20
+	title = Nationalist_France.20.t
+	desc = Nationalist_France.20.d
+	picture = GFX_Chateau_Restoration_Program
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = {
+		#
+		name = Nationalist_France.20.a
+		ai_chance = {
+			base = 30
+		}
+		custom_effect_tooltip = FAF_Nobility_tt
+		hidden_effect = {
+			country_event = {
+				id = Nationalist_France.22
+				days = 7
+			}
+		}
+		country_event = {
+			id = Nationalist_France.21
+			days = 10
+		}
+		set_temp_variable = {
+			var = income_var_temp
+			value = -80
+		}
+		add_income = yes
+	}
+}
+
+country_event = {
+	#King announces tax breaks for Chateau owners
+	id = Nationalist_France.21
+	title = Nationalist_France.21.t
+	desc = Nationalist_France.21.d
+	picture = GFX_Chateau_Restoration_Program
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = {
+		#
+		name = Nationalist_France.21.a
+		ai_chance = {
+			base = 100
+		}
+		set_temp_variable = {
+			var = income_var_temp
+			value = -40
+		}
+		add_income = yes
+		set_temp_variable = {
+			var = poverty_development_var_temp
+			value = -0.1
+		}
+		add_poverty_development = yes
+		set_temp_variable = {
+			var = society_development_var_temp
+			value = 0.05
+		}
+		add_society_development = yes
+	}
+}
+
+country_event = {
+	#Lavish party thrown in Palace of Versailles
+	id = Nationalist_France.22
+	title = Nationalist_France.22.t
+	desc = Nationalist_France.22.d
+	picture = GFX_Versailles_Party
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = {
+		#They deserve it!
+		name = Nationalist_France.22.a
+		ai_chance = {
+			base = 100
+		}
+		set_temp_variable = {
+			var = income_var_temp
+			value = -0.1
+		}
+		add_income = yes
+		add_stability = -0.02
+		add_political_power = 25
+	}
+}
+
+country_event = {
+	#Noble family request restoration of Lower titles
+	id = Nationalist_France.23
+	title = Nationalist_France.23.t
+	desc = Nationalist_France.23.d
+	picture = GFX_French_Nobility
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = {
+		#
+		name = Nationalist_France.23.a
+		ai_chance = {
+			base = 50
+		}
+		add_political_power = 25
+		custom_effect_tooltip = FAF_Nobility_tt
+		hidden_effect = {
+			country_event = {
+				id = Nationalist_France.20
+			}			#
+			country_event = {
+				id = Nationalist_France.27
+				days = 120
+				random_days = 120
+			}			#
+			country_event = {
+				id = Nationalist_France.28
+				days = 35
+			}			#
+			country_event = {
+				id = Nationalist_France.29
+				days = 240
+			}			#
+		}
+	}
+}
+
+country_event = {
+	#Royal Pretenders re-emerge
+	id = Nationalist_France.24
+	title = Nationalist_France.24.t
+	desc = Nationalist_France.24.d
+	picture = GFX_FRA_Royal_Pretenders
+	fire_only_once = yes
+	is_triggered_only = yes
+	immediate = {
+		hidden_effect = {
+			country_event = {
+				id = Nationalist_France.26
+			}
+		}
+	}
+	option = {
+		#
+		name = Nationalist_France.24.a
+		ai_chance = {
+			base = 100
+		}
+		set_country_flag = FAF_royal_pretenders_flag
+		activate_mission = FAF_royal_house_squabbles_mission
+		effect_tooltip = {
+			add_ideas = FAF_royal_pretenders_idea
+		}
+		hidden_effect = {
+			add_dynamic_modifier = {
+				modifier = FAF_royal_pretenders_dynamic
+			}
+			add_to_variable = {
+				var = FAF_royal_pretenders_social_liberal_drift_dynamic_var
+				value = 0.1
+			}
+			add_to_variable = {
+				var = FAF_royal_pretenders_fascist_drift_dynamic_var
+				value = 0.1
+			}
+			add_to_variable = {
+				var = FAF_royal_pretenders_party_popularity_stability_factor_dynamic_var
+				value = -0.06
+			}
+			add_to_variable = {
+				var = FAF_royal_pretenders_political_power_cost_dynamic_var
+				value = 0.025
+			}
+			add_to_variable = {
+				var = FAF_royal_pretenders_drift_defence_factor_dynamic_var
+				value = -0.1
+			}
+		}
+		country_event = {
+			id = Nationalist_France.25
+			days = 70
+			random_days = 180
+		}		#
+	}
+}
+
+country_event = {
+	#Choice of Interior Minister
+	id = Nationalist_France.241
+	title = Nationalist_France.241.t
+	desc = Nationalist_France.241.d
+	picture = GFX_French_Monarchist_Flag
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = {
+		#
+		name = Nationalist_France.241.a
+		ai_chance = {
+			base = 10
+		}
+		custom_effect_tooltip = FAF_Warning_interior_tt
+		add_ideas = FAF_Charles_Prince_Napoleon_IM
+		hidden_effect = {
+			country_event = {
+				id = Nationalist_France.24
+				days = 90
+			}
+		}
+	}
+	option = {
+		#
+		name = Nationalist_France.241.b
+		ai_chance = {
+			base = 10
+		}
+		custom_effect_tooltip = FAF_Warning_interior_tt
+		add_ideas = FAF_Laurent_Marcangeli_IM
+	}
+	option = {
+		#
+		name = Nationalist_France.241.c
+		ai_chance = {
+			base = 10
+		}
+		custom_effect_tooltip = FAF_Warning_wife_interior_tt
+		add_ideas = FAF_Marie_Marguerite_of_Bourbon_IM
+		hidden_effect = {
+			country_event = {
+				id = Nationalist_France.24
+				days = 140
+			}
+		}
+		add_political_power = -75
+	}
+}
+
+country_event = {
+	#Noble speaks out in favor of Orleanist pretender
+	id = Nationalist_France.25
+	title = Nationalist_France.25.t
+	desc = Nationalist_France.25.d
+	picture = GFX_FRA_Royal_Pretenders
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = {
+		#
+		name = Nationalist_France.25.a
+		ai_chance = {
+			base = 100
+		}
+		add_to_variable = {
+			var = FAF_royal_pretenders_social_liberal_drift_dynamic_var
+			value = 0.05
+		}
+	}
+}
+
+country_event = {
+	#Officer reveals Republican officer movement
+	id = Nationalist_France.26
+	title = Nationalist_France.26.t
+	desc = Nationalist_France.26.d
+	picture = GFX_Noble_Republican
+	fire_only_once = yes
+	is_triggered_only = yes
+	immediate = {
+		hidden_effect = {
+			add_dynamic_modifier = {
+				modifier = FAF_republican_officers_dynamic
+			}
+		}
+	}
+	option = {
+		#
+		name = Nationalist_France.26.a
+		ai_chance = {
+			base = 100
+		}
+		add_political_power = -25
+		activate_mission = FAF_growing_republican_army_corps_mission
+		effect_tooltip = {
+			add_ideas = FAF_republican_officers_movement_idea
+		}
+		hidden_effect = {
+			add_to_variable = {
+				var = FAF_repub_monarch_communist_drift_dynamic_var
+				value = 0.1
+			}
+			add_to_variable = {
+				var = FAF_repub_monarch_army_core_defence_factor_dynamic_var
+				value = -0.08
+			}
+			add_to_variable = {
+				var = FAF_repub_monarch_war_support_factor_dynamic_var
+				value = -0.06
+			}
+			add_to_variable = {
+				var = FAF_repub_monarch_army_attack_against_major_factor_dynamic_var
+				value = -0.1
+			}
+			add_to_variable = {
+				var = FAF_repub_monarch_army_breakthrough_against_major_factor_dynamic_var
+				value = -0.09
+			}
+		}
+	}
+	option = {
+		#
+		name = Nationalist_France.26.b
+		ai_chance = {
+			base = 100
+		}
+		add_political_power = -50
+		activate_mission = FAF_growing_republican_army_corps_mission
+		effect_tooltip = {
+			add_ideas = FAF_republican_officers_movement_idea
+		}
+		hidden_effect = {
+			add_to_variable = {
+				var = FAF_repub_monarch_communist_drift_dynamic_var
+				value = 0.04
+			}
+			add_to_variable = {
+				var = FAF_repub_monarch_army_core_defence_factor_dynamic_var
+				value = -0.08
+			}
+			add_to_variable = {
+				var = FAF_repub_monarch_war_support_factor_dynamic_var
+				value = -0.06
+			}
+			add_to_variable = {
+				var = FAF_repub_monarch_army_attack_against_major_factor_dynamic_var
+				value = -0.1
+			}
+			add_to_variable = {
+				var = FAF_repub_monarch_army_breakthrough_against_major_factor_dynamic_var
+				value = -0.09
+			}
+		}
+	}
+}
+
+country_event = {
+	#Noble charged with murder
+	id = Nationalist_France.27
+	title = Nationalist_France.27.t
+	desc = Nationalist_France.27.d
+	picture = GFX_French_Justice_Building
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = {
+		#
+		name = Nationalist_France.27.a
+		#FAF_increase_republican_movement = yes
+		add_political_power = -100
+	}
+	option = {
+		#
+		name = Nationalist_France.27.b
+		ai_chance = {
+			base = 100
+		}
+		custom_effect_tooltip = FAF_Warning_murder_tt
+		add_stability = 0.1
+		add_popularity = {
+			ideology = nationalist
+			popularity = -0.05
+		}
+	}
+}
+
+country_event = {
+	#Louis throws party for the dauphin of France who is granted the Dauphiné province
+	id = Nationalist_France.28
+	title = Nationalist_France.28.t
+	desc = Nationalist_France.28.d
+	picture = GFX_Louis_and_Wife
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = {
+		#
+		name = Nationalist_France.28.a
+		ai_chance = {
+			base = 100
+		}
+		32 = {
+			add_dynamic_modifier = {
+				modifier = FAF_dauphine_province_modifier
+			}
+		}
+	}
+}
+
+country_event = {
+	#Noble caught in pedophile ring
+	id = Nationalist_France.29
+	title = Nationalist_France.29.t
+	desc = Nationalist_France.29.d
+	picture = GFX_French_Justice_Building
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = {
+		#
+		name = Nationalist_France.29.a
+		ai_chance = {
+			base = 50
+		}
+		set_temp_variable = {
+			var = society_development_var_temp
+			value = 0.1
+		}
+		add_society_development = yes
+		set_temp_variable = {
+			var = income_var_temp
+			value = -75
+		}
+		add_income = yes
+	}
+	option = {
+		#
+		name = Nationalist_France.29.b
+		ai_chance = {
+			base = 10
+		}
+		add_stability = -0.1
+		#FAF_increase_republican_movement = yes
+		set_temp_variable = {
+			var = income_var_temp
+			value = -20
+		}
+		add_income = yes
+	}
+}
+
+country_event = {
+	#Establishment of the Kingdom of France
+	id = Nationalist_France.30
+	title = Nationalist_France.30.t
+	desc = Nationalist_France.30.d
+	picture = GFX_Evil_Bardella
+	fire_only_once = yes
+	is_triggered_only = yes
+	immediate = {
+		hidden_effect = {
+			set_country_flag = FAF_Latinist_focus_flag
+			set_party_name = {
+				ideology = fascist
+				long_name = FAF_Les_Identitarian_party_long
+				name = FAF_Les_Identitarian_party
+			}
+			set_temp_variable = {
+				coalition_partner_var_temp = token:fascist
+			}
+			add_to_coalition = yes
+		}
+	}
+	option = {
+		#Establish the House of Bardella
+		name = Nationalist_France.30.a
+		ai_chance = {
+			base = 100
+		}
+		trigger = {
+			count_triggers = {
+				amount > 1
+				has_country_flag = latin_empire_iden_3_flag
+				has_country_flag = latin_empire_iden_2_flag
+				has_country_flag = latin_empire_iden_1_flag
+			}
+		}
+		add_country_leader_trait = hos_cultural_supremacist_trait
+		set_cosmetic_tag = FAF_Kingdom_of_the_French
+	}
+	option = {
+		#House of Bonaparte
+		name = Nationalist_France.30.b
+		ai_chance = {
+			base = 100
+		}
+		trigger = {
+			count_triggers = {
+				amount > 1
+				has_country_flag = latin_empire_bnpt_3_flag
+				has_country_flag = latin_empire_bnpt_2_flag
+				has_country_flag = latin_empire_bnpt_1_flag
+			}
+		}
+		set_politics = {
+			ruling_party = fascist
+			elections_allowed = no
+		}
+		add_country_leader_role = {
+			character = FAF_Jean_Christophe_Napoleon_char
+			promote_leader = yes
+			country_leader = {
+				ideology = vladimir_zhirinovsky_thought
+				traits = {
+					hos_first_consul_trait
+				}
+			}
+		}
+		set_cosmetic_tag = FAF_Kingdom_of_the_French_bonaparte
+	}
+	option = {
+		#Empower Camus
+		name = Nationalist_France.30.c
+		ai_chance = {
+			base = 100
+		}
+		trigger = {
+			count_triggers = {
+				amount > 1
+				has_country_flag = latin_empire_wgnt_3_flag
+				has_country_flag = latin_empire_wgnt_2_flag
+				has_country_flag = latin_empire_wgnt_1_flag
+			}
+		}
+		set_cosmetic_tag = FAF_Kingdom_of_the_French_camus
+		add_country_leader_role = {
+			character = FAF_Renaud_Camus_char
+			promote_leader = yes
+			country_leader = {
+				ideology = eurasianism
+				traits = {
+					hos_neo_federalist_trait
+					openly_gay
+				}
+			}
+		}
+	}
+}
+
+country_event = {
+	#Establishment of the Latin Empire
+	id = Nationalist_France.31
+	title = Nationalist_France.31.t
+	desc = Nationalist_France.31.d
+	picture = GFX_Latin_Empire_Proclaimed
+	fire_only_once = yes
+	is_triggered_only = yes
+	immediate = {
+		hidden_effect = {
+			every_country = {
+				limit = {
+					is_puppet_of = FAF
+				}
+				FAF = {
+					annex_country = {
+						target = PREV
+						transfer_troops = yes
+					}
+				}
+			}
+		}
+	}
+	option = {
+		#
+		name = Nationalist_France.31.a
+		ai_chance = {
+			base = 100
+		}
+		if = {
+			limit = {
+				FRA_Jordan_Bardella_char = {
+					is_country_leader = yes
+				}
+			}
+			set_cosmetic_tag = FRA_Latin_Empire
+			add_country_leader_trait = FAF_Augustus
+			set_portraits = {
+				character = FRA_Jordan_Bardella_char
+				civilian = {
+					large = "gfx/leaders/FRA/Jordan_Bardella_imperator.png"
+				}
+			}
+		}
+		if = {
+			limit = {
+				FAF_Jean_Christophe_Napoleon_char = {
+					is_country_leader = yes
+				}
+			}
+			set_cosmetic_tag = FRA_Latin_Empire_bonaparte
+			set_character_name = {
+				character = FAF_Jean_Christophe_Napoleon_char
+				name = Jean_Christophe_Regnal_Title
+			}
+		}
+		if = {
+			limit = {
+				FAF_Renaud_Camus_char = {
+					is_country_leader = yes
+				}
+			}
+			set_cosmetic_tag = FRA_Western_European_Empire
+			set_portraits = {
+				character = FAF_Renaud_Camus_char
+				civilian = {
+					large = "gfx/leaders/FRA/Renaud_Camus_Imperator.png"
+				}
+			}
+		}
+		every_owned_state = {
+			add_core_of = FAF
+		}
+	}
+}
+
+country_event = {
+	#Padanian Spring
+	id = Nationalist_France.32
+	title = Nationalist_France.32.t
+	desc = Nationalist_France.32.d
+	picture = GFX_Padania_Spring
+	fire_only_once = yes
+	is_triggered_only = yes
+	immediate = {
+		hidden_effect = {
+			LOM = {
+				set_cosmetic_tag = FAF_Kingdom_of_Padania_cos_tag
+				158 = {
+					add_core_of = LOM
+				}
+				159 = {
+					add_core_of = LOM
+				}
+				1492 = {
+					add_core_of = LOM
+				}
+				160 = {
+					add_core_of = LOM
+				}
+				161 = {
+					add_core_of = LOM
+				}
+				786 = {
+					add_core_of = LOM
+				}
+				39 = {
+					add_core_of = LOM
+				}
+			}
+			if = {
+				limit = {
+					838 = {
+						is_owned_by = ITA
+					}
+				}
+				838 = {
+					add_core_of = LOM
+				}
+			}
+		}
+	}
+	option = {
+		#
+		name = Nationalist_France.32.a
+		ai_chance = {
+			base = 1
+		}
+		add_popularity = {
+			ideology = national_socialist
+			popularity = -0.075
+		}
+		add_ideas = ITA_identitarian_crackdown_idea
+		FAF = {
+			set_country_flag = FAF_Padania_war_1
+			country_event = {
+				id = Nationalist_France.320
+			}
+		}
+	}
+	option = {
+		#
+		name = Nationalist_France.32.b
+		ai_chance = {
+			base = 1
+			modifier = {
+				factor = 5
+				FAF = {
+					has_completed_focus = FAF_Bern_Initiative
+				}
+			}
+			modifier = {
+				factor = 1000
+				ITA = {
+					OR = {
+						has_country_leader = {
+							character = ITA_Lorenzo_Fiato
+							ruling_only = yes
+						}
+						any_character = {
+							is_country_leader = yes
+							has_ideology = identitarianism
+						}
+					}
+				}
+			}
+		}
+		add_popularity = {
+			ideology = national_socialist
+			popularity = 0.125
+		}
+		add_ideas = ITA_identitarian_embrace_idea
+	}
+}
+
+country_event = {
+	#Violent reaction to Identitarianism,I now hate Italy
+	id = Nationalist_France.320
+	title = Nationalist_France.320.t
+	desc = Nationalist_France.320.d
+	picture = GFX_Padania_Spring
+	fire_only_once = yes
+	is_triggered_only = yes
+	immediate = {
+		hidden_effect = {
+		}
+	}
+	option = {
+		#
+		name = Nationalist_France.320.a
+		ai_chance = {
+			base = 1
+		}
+		set_country_flag = FAF_Padania_war_1
+		unlock_decision_tooltip = FAF_Force_Padanian_Referendum_decision
+		add_opinion_modifier = {
+			target = ITA
+			modifier = protest_action_strong
+		}
+		send_embargo = ITA
+	}
+}
+
+country_event = {
+	#Fate of Italia
+	id = Nationalist_France.328
+	title = Nationalist_France.328.t
+	desc = Nationalist_France.328.d
+	picture = GFX_Padania_Spring
+	fire_only_once = yes
+	is_triggered_only = yes
+	immediate = {
+		hidden_effect = {
+		}
+	}
+	option = {
+		#One Italy under our allies
+		name = Nationalist_France.328.a
+		ai_chance = {
+			base = 1
+		}
+		LOM = {
+			annex_country = {
+				target = ITA
+				transfer_troops = yes
+			}
+			annex_country = {
+				target = RME
+				transfer_troops = yes
+			}
+			set_cosmetic_tag = ITA_latinist_italy
+		}
+	}
+	option = {
+		#keep them split
+		name = Nationalist_France.328.b
+		ai_chance = {
+			base = 1
+		}
+	}
+}
+
+country_event = {
+	#French special forces aid Padanian seperatists
+	id = Nationalist_France.33
+	title = Nationalist_France.33.t
+	desc = Nationalist_France.33.d
+	picture = GFX_Padania_Spring
+	fire_only_once = yes
+	is_triggered_only = yes
+	immediate = {
+		hidden_effect = {
+		}
+	}
+	option = {
+		#
+		name = Nationalist_France.33.a
+		ai_chance = {
+			base = 100
+		}
+		FAF = {
+			set_country_flag = FAF_Padania_2
+		}
+		random_owned_controlled_state = {
+			prioritize = {
+				158
+				159
+				160
+				161
+				786
+				39
+			}
+			set_demilitarized_zone = yes
+		}
+		random_owned_controlled_state = {
+			prioritize = {
+				158
+				159
+				160
+				161
+				786
+				39
+			}
+			set_demilitarized_zone = yes
+		}
+		random_owned_controlled_state = {
+			prioritize = {
+				158
+				159
+				160
+				161
+				786
+				39
+			}
+			set_demilitarized_zone = yes
+		}
+		random_owned_controlled_state = {
+			prioritize = {
+				158
+				159
+				160
+				161
+				786
+				39
+			}
+			set_demilitarized_zone = yes
+		}
+		if = {
+			limit = {
+				838 = {
+					is_owned_by = ITA
+				}
+			}
+			random_owned_controlled_state = {
+				prioritize = {
+					838
+					158
+					159
+					160
+					161
+					786
+					39
+				}
+				set_demilitarized_zone = yes
+			}
+		}
+	}
+}
+
+country_event = {
+	# Cobbles loser fucking dude gets shot
+	id = Nationalist_France.34
+	title = Nationalist_France.34.t
+	desc = Nationalist_France.34.d
+	picture = GFX_Gianluca_Shot
+	fire_only_once = yes
+	is_triggered_only = yes
+	immediate = {
+		hidden_effect = {
+		}
+	}
+	option = {
+		#
+		name = Nationalist_France.34.a
+		ai_chance = {
+			base = 100
+		}
+		add_stability = -0.3
+		add_country_leader_role = {
+			character = ITA_Fascist_Council_char
+			promote_leader = yes
+			country_leader = {
+				ideology = classical_fascism
+			}
+		}
+	}
+}
+
+country_event = {
+	#Padania leaves Italy
+	id = Nationalist_France.35
+	title = Nationalist_France.35.t
+	desc = Nationalist_France.35.d
+	picture = GFX_Padania_Wiki
+	fire_only_once = yes
+	is_triggered_only = yes
+	immediate = {
+		hidden_effect = {
+			LOM = {
+				every_core_state = {
+					limit = {
+						is_demilitarized_zone = yes
+					}
+					transfer_state_to = LOM
+					create_unit = {
+						division = "name = \"Brigata Bersaglieri\" division_template = \"Brigata Bersaglieri\" start_experience_factor = 0.2"
+						owner = LOM
+					}
+					create_unit = {
+						division = "name = \"Brigata Meccanizzata\" division_template = \"Brigata Meccanizzata\" start_experience_factor = 0.2"
+						owner = LOM
+					}
+					create_unit = {
+						division = "name = \"Brigata Alpina\" division_template = \"Brigata Alpina\" start_experience_factor = 0.2"
+						owner = LOM
+					}
+				}
+			}
+			FAF = {
+				puppet = LOM
+			}
+		}
+	}
+	option = {
+		#
+		name = Nationalist_France.35.a
+		ai_chance = {
+			base = 100
+		}
+		LOM = {
+			declare_war_on = {
+				target = ITA
+				type = annex_everything
+			}
+		}
+	}
+}
+
+country_event = {
+	#France demands Italian shut-out
+	id = Nationalist_France.350
+	title = Nationalist_France.350.t
+	desc = Nationalist_France.350.d
+	picture = GFX_FRA_franco_italy
+	fire_only_once = yes
+	is_triggered_only = yes
+	immediate = {
+	}
+	option = {
+		#Maybe for some money and guns...
+		name = Nationalist_France.35.a
+		ai_chance = {
+			base = 100
+		}
+		remove_from_faction = ITA
+		add_equipment_to_stockpile = {
+			type = infantry_equipment
+			amount = 10000
+			producer = FAF
+		}
+		set_temp_variable = {
+			var = income_var_temp
+			value = 5
+		}
+		add_income = yes
+		FAF = {
+			country_event = {
+				id = Nationalist_France.351
+			}			#
+		}
+	}
+	option = {
+		#We stand with Italy
+		name = Nationalist_France.35.b
+		ai_chance = {
+			base = 0
+		}
+		FAF = {
+			country_event = {
+				id = Nationalist_France.352
+			}			#
+		}
+	}
+}
+
+country_event = {
+	#Germany abandons the Italians
+	id = Nationalist_France.351
+	title = Nationalist_France.351.t
+	desc = Nationalist_France.351.d
+	picture = GFX_FRA_franco_italy
+	fire_only_once = yes
+	is_triggered_only = yes
+	immediate = {
+	}
+	option = {
+		#Yay!
+		name = Nationalist_France.351.a
+		ai_chance = {
+			base = 100
+		}
+		add_political_power = 25
+		ITA = {
+			leave_faction = yes
+		}
+	}
+}
+
+country_event = {
+	#Germany stands with the Italians
+	id = Nationalist_France.352
+	title = Nationalist_France.352.t
+	desc = Nationalist_France.352.d
+	picture = GFX_FRA_franco_italy
+	fire_only_once = yes
+	is_triggered_only = yes
+	immediate = {
+	}
+	#	option = { #Fuck both of you!
+	#		name = Nationalist_France.352.a
+	#		ai_chance = {
+	#			factor = 0
+	#		}
+	#		leave_faction = yes
+	#	}
+	option = {
+		#Fine!
+		name = Nationalist_France.352.a
+		ai_chance = {
+			base = 100
+		}
+		set_country_flag = FAF_Italia_denied_flag
+	}
+}
+
+country_event = {
+	#Spanish Monarchy Arrives
+	id = Nationalist_France.36
+	title = Nationalist_France.36.t
+	desc = Nationalist_France.36.d
+	picture = GFX_SPR_monarchy
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = {
+		#We Must Restore him to his throne!
+		name = Nationalist_France.36.a
+		ai_chance = {
+			base = 80
+		}
+		add_stability = 0.05
+		add_war_support = 0.05
+		custom_effect_tooltip = unlock_for_minister_tooltip
+		#show_ideas_tooltip = FAF_Felipe_VI_FM
+	}
+}
+
+country_event = {
+	#Fate of Catalonia
+	id = Nationalist_France.37
+	title = Nationalist_France.37.t
+	desc = Nationalist_France.37.d
+	picture = GFX_French_Army
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = {
+		#Maintain French Garrison
+		name = Nationalist_France.37.a
+		ai_chance = {
+			base = 10
+		}
+		add_war_support = 0.05
+	}
+	option = {
+		#Deepen our Relationship NAPOLEON NAPOLEON NAPOLEON
+		name = Nationalist_France.37.b
+		ai_chance = {
+			base = 20
+		}
+		annex_country = {
+			target = FCT
+			transfer_troops = yes
+		}
+	}
+	option = {
+		#Deepen our Relationship FULL ANNEXATION
+		name = Nationalist_France.37.c
+		ai_chance = {
+			base = 20
+		}
+		add_stability = -0.05
+		annex_country = {
+			target = FCT
+			transfer_troops = yes
+		}
+		annex_country = {
+			target = FSP
+			transfer_troops = yes
+		}
+	}
+}
+
+country_event = {
+	#Support or Invade
+	id = Nationalist_France.38
+	title = Nationalist_France.38.t
+	desc = Nationalist_France.38.d
+	picture = GFX_French_Army
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = {
+		#Invite to the Pact of Steel
+		name = Nationalist_France.38.a
+		ai_chance = {
+			base = 10
+		}
+		if = {
+			limit = {
+				is_in_faction = yes
+			}
+			add_to_faction = SNS
+		}
+		else = {
+			give_guarantee = SNS
+			give_military_access = SNS
+			SNS = {
+				give_military_access = FAF
+				set_country_flag = SNS_frances_bitch
+			}
+		}
+		every_other_country = {
+			limit = {
+				has_war_with = SNS
+			}
+			declare_war_on = {
+				target = FAF
+				type = annex_everything
+			}
+		}
+	}
+	option = {
+		#The Spanish cannot be trusted to govern themselves
+		name = Nationalist_France.38.b
+		ai_chance = {
+			base = 20
+		}
+		every_other_country = {
+			limit = {
+				has_war_with = SNS
+			}
+			declare_war_on = {
+				target = FAF
+				type = annex_everything
+			}
+		}
+		declare_war_on = {
+			target = SNS
+			type = annex_everything
+		}
+	}
+}
+
+country_event = {
+	#Fate of Portugal
+	id = Nationalist_France.39
+	title = Nationalist_France.39.t
+	desc = Nationalist_France.39.d
+	picture = GFX_French_Army
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = {
+		#Demand Compliance
+		name = Nationalist_France.39.a
+		ai_chance = {
+			base = 80
+		}
+		GOD = {
+			random_list = {
+				50 = {
+					FAF = {
+						add_to_faction = GOD
+						puppet = GOD
+					}
+					GOD = {
+						set_politics = {
+							ruling_party = nationalist
+							elections_allowed = no
+							last_election = "1935.12.17"
+							election_frequency = 48
+						}
+					}
+				}
+				50 = {
+					FAF = {
+						create_wargoal = {
+							type = annex_everything
+							target = GOD
+						}
+					}
+				}
+			}
+		}
+	}
+	option = {
+		#March on Lisbon
+		name = Nationalist_France.39.b
+		ai_chance = {
+			base = 80
+		}
+		add_war_support = 0.1
+		FAF = {
+			create_wargoal = {
+				type = annex_everything
+				target = GOD
+			}
+		}
+	}
+	option = {
+		#Aid for Deradicalization
+		name = Nationalist_France.39.c
+		trigger = {
+			GOD = {
+				NOT = {
+					has_cosmetic_tag = GOD_Portuguese_State
+				}
+			}
+		}
+		ai_chance = {
+			base = 80
+		}
+		GOD = {
+			country_event = {
+				id = Nationalist_France.40
+			}
+		}
+	}
+}
+
+country_event = {
+	#Death or Dishonor
+	id = Nationalist_France.40
+	title = Nationalist_France.40.t
+	desc = Nationalist_France.40.d
+	picture = GFX_French_Army
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = {
+		#Military Marches on Lisbon
+		name = Nationalist_France.40.a
+		ai_chance = {
+			base = 25
+		}
+		add_war_support = -0.15
+		set_politics = {
+			ruling_party = nationalist
+			elections_allowed = no
+			last_election = "1935.12.17"
+			election_frequency = 48
+		}
+		add_country_leader_role = {
+			character = POR_Eugenio_Francisco_Nunes_Henriques_char
+			promote_leader = yes
+			country_leader = {
+				ideology = military_junta
+			}
+		}
+		set_party_name = {
+			ideology = nationalist
+			long_name = POR_Military_long
+			name = POR_Military
+		}
+		add_ideas = GOD_Military_Catholic_ISIS
+		set_cosmetic_tag = GOD_Portuguese_State
+	}
+	option = {
+		#Fuck you France, We must Liberate all Catholics
+		name = Nationalist_France.40.a
+		ai_chance = {
+			base = 75
+		}
+		add_war_support = 0.15
+		declare_war_on = {
+			target = FAF
+			type = annex_everything
+		}
+	}
+}
+
+country_event = {
+	#Death or Dishonor
+	id = Nationalist_France.41
+	title = Nationalist_France.40.t
+	desc = Nationalist_France.40.d
+	picture = GFX_French_Army
+	is_triggered_only = yes
+	option = {
+		ai_chance = {
+			base = 1
+			modifier = {
+				has_opinion = {
+					target = FAF
+					value > 20
+				}
+				factor = 10
+			}
+		}
+		name = Nationalist_France.41.a		#join
+		add_ideas = FAF_anti_soviet_pact
+		SOV = {
+			add_opinion_modifier = {
+				target = ROOT
+				modifier = worse_pact_against_us
+			}
+		}
+	}
+	option = {
+		name = Nationalist_France.41.b		#refuse
+		trigger = {
+			NOT = {
+				is_puppet_of = FAF
+			}
+		}
+		ai_chance = {
+			base = 1
+			modifier = {
+				has_opinion = {
+					target = FAF
+					value < 20
+				}
+				factor = 10
+			}
+		}
+	}
+}
+
+country_event = {
+	#Elections are held
+	id = Nationalist_France.42
+	title = Nationalist_France.42.t
+	desc = Nationalist_France.42.d
+	picture = GFX_FAF_first_election
+	fire_only_once = yes
+	is_triggered_only = yes
+	immediate = {
+		hidden_effect = {
+			set_party_name = {
+				ideology = market_liberal
+				long_name = FAF_Les_Republicains_party_long
+				name = FAF_Les_Republicains_party
+			}
+			set_party_name = {
+				ideology = social_liberal
+				long_name = FAF_MoDem_party_long
+				name = FAF_MoDem_party
+			}
+			set_party_name = {
+				ideology = conservative
+				long_name = FAF_National_Conservative_Union_party_long
+				name = FAF_National_Conservative_Union_party
+			}
+			add_country_leader_role = {
+				character = FAF_Francois_Xavier_Bellamy_char
+				promote_leader = yes
+				country_leader = {
+					ideology = civic_nationalism
+				}
+			}
+			add_country_leader_role = {
+				character = FAF_Francois_Bayrou_char
+				promote_leader = yes
+				country_leader = {
+					ideology = christian_democracy
+				}
+			}
+			add_country_leader_role = {
+				character = FAF_Stephane_Ravier_char
+				promote_leader = yes
+				country_leader = {
+					ideology = right_populism
+				}
+			}
+		}
+	}
+	option = {
+		name = Nationalist_France.42.a
+		ai_chance = {
+		    factor = 1
+		    modifier = {
+		        factor = 0
+		        OR = {
+		            has_game_rule = {
+		                rule = The_Government_of_National_Defense_Democratic
+		                option = The_Government_of_National_Defense_Democratic_Democratic_Movement
+		            }
+		            has_game_rule = {
+		                rule = The_Government_of_National_Defense_Democratic
+		                option = The_Government_of_National_Defense_Democratic_National_Conservative
+		            }
+		        }
+		    }
+		}
+		set_country_flag = FAF_LR_elected_flag
+		custom_effect_tooltip = FAF_balancing_militarism_and_democracy_tt
+		set_politics = {
+			ruling_party = market_liberal
+			elections_allowed = yes
+			last_election = "2027.04.06"
+			election_frequency = 60
+		}
+		focus_unlock = yes
+		complete_national_focus = FAF_Victory_of_the_Republicans
+	}
+	option = {
+		name = Nationalist_France.42.b
+		ai_chance = {
+		    factor = 1
+		    modifier = {
+		        factor = 0
+		        OR = {
+		            has_game_rule = {
+		                rule = The_Government_of_National_Defense_Democratic
+		                option = The_Government_of_National_Defense_Democratic_Republicain
+		            }
+		            has_game_rule = {
+		                rule = The_Government_of_National_Defense_Democratic
+		                option = The_Government_of_National_Defense_Democratic_National_Conservative
+		            }
+		        }
+		    }
+		}
+		set_country_flag = FAF_MoDem_elected_flag
+		custom_effect_tooltip = FAF_balancing_militarism_and_democracy_tt
+		set_politics = {
+			ruling_party = social_liberal
+			elections_allowed = yes
+			last_election = "2027.04.06"
+			election_frequency = 60
+		}
+		focus_unlock = yes
+		complete_national_focus = FAF_Victory_of_MoDem
+	}
+	option = {
+		name = Nationalist_France.42.c
+		ai_chance = {
+		    factor = 1
+		    modifier = {
+		        factor = 0
+		        OR = {
+		            has_game_rule = {
+		                rule = The_Government_of_National_Defense_Democratic
+		                option = The_Government_of_National_Defense_Democratic_Democratic_Movement
+		            }
+		            has_game_rule = {
+		                rule = The_Government_of_National_Defense_Democratic
+		                option = The_Government_of_National_Defense_Democratic_Republicain
+		            }
+		        }
+		    }
+		}
+		set_country_flag = FAF_NCU_elected_flag
+		custom_effect_tooltip = FAF_balancing_militarism_and_democracy_tt
+		set_politics = {
+			ruling_party = conservative
+			elections_allowed = yes
+			last_election = "2027.04.06"
+			election_frequency = 60
+		}
+		promote_character = FAF_Stephane_Ravier_char
+		focus_unlock = yes
+		complete_national_focus = FAF_Victory_of_the_National_Conservative_Union
+	}
+}
+
+country_event = {
+	#Lafayette killed in Paris
+	id = Nationalist_France.45
+	title = Nationalist_France.45.t
+	desc = Nationalist_France.45.d
+	picture = GFX_death_of_lafayette
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = {
+		name = Nationalist_France.45.a
+		add_ideas = FAF_lafayette_death_cult_idea
+		set_war_support = 1
+		add_political_power = 25
+		kill_country_leader = yes
+		hidden_effect = {
+			retire_character = FRA_Lafayette_char
+			add_ideas = {
+				highest_conscription
+				higher_female_service
+				lower_training
+				high_racial_integration
+				no_draft_exemptions
+			}
+		}
+		add_country_leader_role = {
+			character = FAF_Nikola_Perovic_char
+			promote_leader = yes
+			country_leader = {
+				ideology = death_cult
+				# traits = {
+				# 	FAF_heir_of_chaos
+				# }
+			}
+		}
+		division_template = {
+			name = "Milice Citoyenne"
+			is_locked = yes
+			regiments = {
+				militia = {
+					x = 0
+					y = 0
+				}
+				militia = {
+					x = 1
+					y = 0
+				}
+			}
+		}
+		capital_scope = {
+			create_unit = {
+				division = "division_template = \"Milice Citoyenne\" start_experience_factor = 0.2 start_equipment_factor = 0.8"
+				owner = FAF
+				count = 8
+			}
+		}
+	}
+}
+
+country_event = {
+	#''UnFrench'' Businesses Burn
+	id = Nationalist_France.46
+	title = Nationalist_France.46.t
+	desc = Nationalist_France.46.d
+	picture = GFX_burning_building
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = {
+		name = Nationalist_France.46.a
+		random_owned_state = {
+			limit = {
+				office_park > 1
+			}
+			remove_building = {
+				type = office_park
+				level = 1
+			}
+		}
+	}
+}
+
+country_event = {
+	#Destruction de l'âme de l'Europe releases
+	id = Nationalist_France.47
+	title = Nationalist_France.47.t
+	desc = Nationalist_France.47.d
+	picture = GFX_FRA_french_soldier
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = {
+		name = Nationalist_France.47.a
+		add_war_support = 0.03
+	}
+}
+
+country_event = {
+	#Patronage of the Arts
+	id = Nationalist_France.48
+	title = Nationalist_France.48.t
+	desc = Nationalist_France.48.d
+	picture = GFX_FRA_louvre_internal
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = {
+		#A movie on Louis XX could be cool!
+		name = Nationalist_France.48.a
+		random_list = {
+			60 = {
+				country_event = {
+					id = Nationalist_France.49
+					days = 365
+				}
+			}
+			40 = {
+				country_event = {
+					id = Nationalist_France.50
+					days = 365
+				}
+			}
+		}
+	}
+	option = {
+		#Monarchist Social Media platforms could use a revamp
+		name = Nationalist_France.48.b
+		random_list = {
+			50 = {
+				country_event = {
+					id = Nationalist_France.51
+					days = 30
+				}
+			}
+			50 = {
+				country_event = {
+					id = Nationalist_France.52
+					days = 30
+				}
+			}
+		}
+	}
+}
+
+country_event = {
+	#XX Releases - Critical Acclaim
+	id = Nationalist_France.49
+	title = Nationalist_France.49.t
+	desc = Nationalist_France.49.d
+	picture = GFX_XX_movie
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = {
+		name = Nationalist_France.49.a
+		add_stability = 0.05
+		add_political_power = 30
+	}
+}
+
+country_event = {
+	#XX Releases - Larp failure
+	id = Nationalist_France.50
+	title = Nationalist_France.50.t
+	desc = Nationalist_France.50.d
+	picture = GFX_XX_movie
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = {
+		name = Nationalist_France.50.a
+		add_stability = -0.03
+		add_political_power = -30
+	}
+}
+
+country_event = {
+	#Couronne Releases - Success
+	id = Nationalist_France.51
+	title = Nationalist_France.51.t
+	desc = Nationalist_France.51.d
+	picture = GFX_FRA_couronne
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = {
+		name = Nationalist_France.51.a
+		add_political_power = 100
+	}
+}
+
+country_event = {
+	#Couronne releases - Failure
+	id = Nationalist_France.52
+	title = Nationalist_France.52.t
+	desc = Nationalist_France.52.d
+	picture = GFX_FRA_couronne
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = {
+		name = Nationalist_France.52.a
+		add_political_power = -25
+	}
+}
+
+country_event = {
+	#France demands unification
+	id = Nationalist_France.53
+	title = Nationalist_France.53.t
+	desc = Nationalist_France.53.d
+	picture = GFX_FRA_monarchism_ending
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = {
+		#no
+		name = Nationalist_France.53.a
+		ai_chance = {
+			base = 20
+		}
+		FAF = {
+			set_character_name = {
+				character = FRA_Louis_XX_char
+				name = Louis_XX_and_II_Regnal_Title
+			}
+			set_cosmetic_tag = FAF_Franco_Iberian_Kingdom
+			declare_war_on = {
+				target = SNS
+				type = annex_everything
+			}
+			declare_war_on = {
+				target = SPR
+				type = annex_everything
+			}
+			declare_war_on = {
+				target = RSR
+				type = annex_everything
+			}
+		}
+	}
+	option = {
+		#yes
+		name = Nationalist_France.53.b
+		ai_chance = {
+			base = 80
+		}
+		every_other_country = {
+			limit = {
+				has_war_with = SNS
+			}
+			declare_war_on = {
+				target = FAF
+				type = civil_war
+			}
+		}
+		FAF = {
+			set_cosmetic_tag = FAF_Franco_Iberian_Kingdom
+			set_character_name = {
+				character = FRA_Louis_XX_char
+				name = Louis_XX_and_II_Regnal_Title
+			}
+			annex_country = {
+				target = SNS
+				transfer_troops = yes
+			}
+		}
+	}
+}
+
+unit_leader_event = {
+	#Operation Bastille - Failure
+	id = Nationalist_France.54
+	title = Nationalist_France.54.t
+	desc = Nationalist_France.54.d
+	picture = GFX_death_of_lafayette
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = {
+		name = Nationalist_France.54.a
+		THIS = {
+			add_timed_unit_leader_trait = {
+				trait = wounded
+				days = 96
+			}
+			add_attack = -1
+			gain_xp = 50
+		}
+	}
+}
+
+unit_leader_event = {
+	#Operation Bastille - success
+	id = Nationalist_France.55
+	title = Nationalist_France.55.t
+	desc = Nationalist_France.55.d
+	picture = GFX_death_of_lafayette
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = {
+		name = Nationalist_France.55.a
+		add_command_power = 100
+		THIS = {
+			add_timed_unit_leader_trait = {
+				trait = reinvigorated
+				days = 48
+			}
+			add_attack = 1
+			gain_xp = 100
+		}
+		add_war_support = 0.1
+		add_equipment_to_stockpile = {
+			type = infantry_equipment
+			amount = 7500
+			producer = FRA
+		}
+		add_equipment_to_stockpile = {
+			type = support_equipment
+			amount = 300
+			producer = FRA
+		}
+		hidden_effect = {
+			FRA = {
+				add_equipment_to_stockpile = {
+					type = infantry_equipment
+					amount = -7500
+					producer = FRA
+				}
+				add_equipment_to_stockpile = {
+					type = support_equipment
+					amount = -300
+					producer = FRA
+				}
+			}
+		}
+	}
+}
+
+country_event = {
+	#Lafayette connections
+	id = Nationalist_France.56
+	title = Nationalist_France.56.t
+	desc = Nationalist_France.56.d
+	picture = GFX_patriotfront2
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = {
+		name = Nationalist_France.56.a
+		add_corps_commander_role = {
+			character = FAF_PTF_Connor_Moran_char
+			skill = 1
+			attack_skill = 2
+			defense_skill = 1
+			planning_skill = 2
+			logistics_skill = 1
+			traits = {
+				guerilla_fighter
+				trait_reckless
+			}
+		}
+		add_corps_commander_role = {
+			character = FAF_PTF_Stephen_Farrea_char
+			skill = 3
+			attack_skill = 3
+			defense_skill = 1
+			planning_skill = 1
+			logistics_skill = 3
+			traits = {
+				engineer_officer
+				invader_ii
+			}
+		}
+	}
+}
+
+country_event = {
+	#Absorb Conservative movements
+	id = Nationalist_France.57
+	title = Nationalist_France.57.t
+	desc = Nationalist_France.57.d
+	picture = GFX_zemmour_accuse_macron_treason
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = {
+		#Let them in
+		name = Nationalist_France.57.a
+		add_manpower = 7500
+		add_popularity = {
+			ideology = authoritarian_democrat
+			popularity = 0.05
+		}
+		add_popularity = {
+			ideology = conservative
+			popularity = 0.05
+		}
+		hidden_effect = {
+			add_popularity = {
+				ideology = social_liberal
+				popularity = 0.05
+			}
+		}
+	}
+	option = {
+		#NEVER!
+		name = Nationalist_France.57.b
+		add_war_support = 0.05
+		add_stability = 0.05
+	}
+}
+
+country_event = {
+	#Plague of Socialism
+	id = Nationalist_France.58
+	title = Nationalist_France.58.t
+	desc = Nationalist_France.58.d
+	picture = GFX_trying_true_socialism
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = {
+		#We must END the plague
+		name = Nationalist_France.58.a
+	}
+}
+
+country_event = {
+	#Child Brigades
+	id = Nationalist_France.59
+	title = Nationalist_France.59.t
+	desc = Nationalist_France.59.d
+	picture = GFX_FRA_child_soldiers
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = {
+		#We must END the plague
+		name = Nationalist_France.59.a
+		capital_scope = {
+			create_unit = {
+				division = "name = \"4ème Brigade de Citoyens ''Voyants de la Sainte Lumière''\" division_template = \"Milice Citoyenne\" start_experience_factor = 0.0 start_equipment_factor = 0.3"
+				owner = FAF
+			}
+			create_unit = {
+				division = "name = \"5ème Brigade de Citoyens ''Fils de la Dixième Croisade''\" division_template = \"Milice Citoyenne\" start_experience_factor = 0.0 start_equipment_factor = 0.3"
+				owner = FAF
+			}
+		}
+	}
+	option = {
+		#we cannot allow children to fight
+		name = Nationalist_France.59.b
+		add_war_support = 0.025
+	}
+}
+
+country_event = {
+	#Elderly Brigades
+	id = Nationalist_France.60
+	title = Nationalist_France.60.t
+	desc = Nationalist_France.60.d
+	picture = GFX_FRA_veterans
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = {
+		#We must END the plague
+		name = Nationalist_France.60.a
+		capital_scope = {
+			create_unit = {
+				division = "name = \6e Brigade citoyenne ''Pères des Martyrs''\" division_template = \"Milice Citoyenne\" start_experience_factor = 0.3 start_equipment_factor = 0.4"
+				owner = FAF
+			}
+			create_unit = {
+				division = "name = \7ème Brigade de Citoyens ''Anciens Combattants des Guerres Oubliées''\" division_template = \"Milice Citoyenne\" start_experience_factor = 0.3 start_equipment_factor = 0.8"
+				owner = FAF
+			}
+		}
+	}
+	option = {
+		#we cannot allow our elders to fight
+		name = Nationalist_France.60.b
+		add_stability = 0.025
+	}
+}
+
+country_event = {
+	#Penal Battalions
+	id = Nationalist_France.61
+	title = Nationalist_France.61.t
+	desc = Nationalist_France.61.d
+	picture = GFX_FRA_jail
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = {
+		#We must END the plague
+		name = Nationalist_France.61.a
+		capital_scope = {
+			create_unit = {
+				division = "name = \"8e Brigade citoyenne ''Front contre l'influence Soviétique''\" division_template = \"Milice Citoyenne\" start_experience_factor = 0.3 start_equipment_factor = 0.1"
+				owner = FAF
+			}
+			create_unit = {
+				division = "name = \"9ème Brigade de Citoyens ''Destructeurs''\" division_template = \"Milice Citoyenne\" start_experience_factor = 0.3 start_equipment_factor = 0.1"
+				owner = FAF
+			}
+		}
+	}
+	option = {
+		#we cannot allow prisoners to fight
+		name = Nationalist_France.61.b
+		add_political_power = 25
+	}
+}
+
+country_event = {
+	#The End of the World
+	id = Nationalist_France.62
+	title = Nationalist_France.62.t
+	desc = Nationalist_France.62.d
+	picture = GFX_FRA_nukes
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = {
+		#Socialism must be wiped from existance
+		name = Nationalist_France.62.a
+		unlock_decision_tooltip = FAF_nuke_moscow_decision
+		unlock_decision_tooltip = FAF_nuke_kiev_decision
+		unlock_decision_tooltip = FAF_nuke_leningrad_decision
+		unlock_decision_tooltip = FAF_nuke_stalingrad_decision
+		unlock_decision_tooltip = FAF_nuke_sevastapol_decision
+	}
+}
+
+country_event = {
+	#The Resistance is formed
+	id = Nationalist_France.63
+	title = Nationalist_France.63.t
+	desc = Nationalist_France.63.d
+	picture = GFX_FAF_lafayette_resistance
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = {
+		#WEAKNESS must be wiped from existance
+		name = Nationalist_France.63.a
+		add_ideas = FAF_the_rising_flame_idea
+	}
+}
+
+country_event = {
+	#Operation Cleanliness
+	id = Nationalist_France.64
+	title = Nationalist_France.64.t
+	desc = Nationalist_France.64.d
+	picture = GFX_FRA_rain_in_paris
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = {
+		#
+		name = Nationalist_France.64.a
+		effect_tooltip = {
+			add_manpower = -664400
+		}
+		decrease_society = yes
+		hidden_effect = {
+			increase_poverty = yes
+		}
+	}
+}
+
+#Militarists/XIV Society Become Outraged
+country_event = {
+	id = Nationalist_France.65
+	title = Nationalist_France.65.t
+	desc = Nationalist_France.65.d
+	picture = GFX_FRA_WWI_soldiers
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = {
+		name = Nationalist_France.65.a
+		swap_ideas = {
+			remove_idea = FAF_XIV_Society_idea
+			add_idea = FAF_XIV_Society_5_idea
+		}
+	}
+}
+
+#Unrest in the Ranks
+country_event = {
+	id = Nationalist_France.66
+	title = Nationalist_France.66.t
+	desc = Nationalist_France.66.d
+	picture = GFX_FRA_French_Rumors
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = {
+		name = Nationalist_France.66.a
+		add_ideas = FAF_militarist_unrest_6_idea
+		hidden_effect = {
+			remove_ideas = FAF_XIV_Society_idea
+		}
+	}
+}
+
+#Ultranationalist Unrest
+country_event = {
+	id = Nationalist_France.68
+	title = Nationalist_France.68.t
+	desc = Nationalist_France.68.d
+	picture = GFX_Dictator_Benedetti
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = {
+		name = Nationalist_France.68.a
+		add_ideas = FAF_ultranationalist_rioting5_idea
+		hidden_effect = {
+			remove_ideas = FAF_XIV_Society_idea
+		}
+	}
+}
+
+#The Great Mystery
+country_event = {
+	id = Nationalist_France.69
+	title = Nationalist_France.69.t
+	desc = Nationalist_France.69.d
+	picture = GFX_death_of_lafayette
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = {
+		name = Nationalist_France.69.a
+		effect_tooltip = {
+			add_manpower = -1
+		}
+	}
+	option = {
+		name = Nationalist_France.69.a
+		effect_tooltip = {
+			add_manpower = -1
+		}
+	}
+	option = {
+		name = Nationalist_France.69.a
+		effect_tooltip = {
+			add_manpower = -1
+		}
+	}
+}

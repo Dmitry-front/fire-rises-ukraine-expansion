@@ -1,0 +1,173 @@
+APA_unit_production = {
+	allowed = {
+		original_tag = APA
+	}
+	enable = {
+		always = yes
+	}
+	abort = {
+		always = no
+	}
+	ai_strategy = {
+		type = role_ratio
+		id = infantry
+		value = 60
+	}
+}
+
+APA_biden_not_a_friend = {
+	allowed = {
+		tag = APA
+	}
+	enable = {
+		country_exists = USB
+	}
+	abort = {
+		USB = {
+			exists = no
+		}
+	}
+	ai_strategy = {
+		type = antagonize
+		id = "USB"
+		value = 200
+	}
+}
+
+APA_maoists_are_thugs = {
+	allowed = {
+		tag = APA
+	}
+	enable = {
+		country_exists = RGA
+	}
+	abort = {
+		RGA = {
+			exists = no
+		}
+	}
+	ai_strategy = {
+		type = antagonize
+		id = "RGA"
+		value = 100
+	}
+}
+
+APA_expand_fast_strategy = {
+	abort_when_not_enabled = yes
+	allowed = {
+		tag = APA
+	}
+	enable = {
+		has_country_flag = APA_politics_unlocked_flag
+		has_global_flag = USA_american_civil_war_global
+	}
+	ai_strategy = {
+		type = conquer
+		id = CAC
+		value = 1000
+	}
+	ai_strategy = {
+		type = prepare_for_war
+		id = CAC
+		value = 1000
+	}
+}
+
+APA_yasss_queen_slay_those_fashists_strategy = {
+	abort_when_not_enabled = yes
+	allowed = {
+		tag = APA
+	}
+	enable = {
+		has_global_flag = USA_american_civil_war_global
+		has_country_flag = APA_politics_unlocked_flag
+	}
+	ai_strategy = {
+		type = front_control
+		tag = CAC
+		priority = 100
+		ratio > 0.5
+		execution_type = rush
+		execute_order = yes
+		manual_attack = no
+	}
+	ai_strategy = {
+		type = prepare_for_war
+		id = CAC
+		value = 100
+	}
+}
+
+APA_doesnt_care_about_relation = {
+	allowed = {
+		tag = APA
+	}
+	enable = {
+		tag = APA
+		has_war = yes
+	}
+	abort = {
+		has_war = no
+	}
+	ai_strategy = {
+		type = pp_spend_priority
+		id = relation
+		value = -100
+	}
+}
+
+APA_you_should_be_prepared_for_war = {
+	allowed = {
+		tag = APA
+	}
+	enable = {
+		has_global_flag = USA_american_civil_war_global
+	}
+	abort_when_not_enabled = yes
+	ai_strategy = {
+		type = force_build_armies
+		value = 100
+	}
+	ai_strategy = {
+		type = build_army
+		id = armor
+		value = 10
+	}
+	ai_strategy = {
+		type = build_army
+		id = infantry
+		value = 20
+	}
+}
+
+APA_wants_mils = {
+	allowed = {
+		tag = APA
+	}
+	enable = {
+		tag = APA
+		date < 2023.9.15
+	}
+	abort_when_not_enabled = yes
+	ai_strategy = {
+		type = building_target
+		id = arms_factory
+		value = 40
+	}
+}
+
+APA_we_love_china = {
+	abort_when_not_enabled = yes
+	allowed = {
+		original_tag = APA
+	}
+	enable = {
+		has_global_flag = pan_asian_war_ongoing
+	}
+	ai_strategy = {
+	   type = send_volunteers_desire
+	   id = PRC
+	   value = 500
+	}
+}

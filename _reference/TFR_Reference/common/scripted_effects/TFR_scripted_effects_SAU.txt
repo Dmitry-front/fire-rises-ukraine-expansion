@@ -1,0 +1,330 @@
+	SAU_bribing_officers = {
+		if = {
+			limit = {
+				has_country_flag = saudi_liberals
+			}
+			add_to_variable = { ARR_uprising_units = 2 }
+		}
+		if = {
+			limit = {
+				has_country_flag = saudi_coalition
+			}
+			add_to_variable = { ROC_uprising_units = 2 }
+		}
+		if = {
+			limit = {
+				has_country_flag = king_mohammed_salman
+			}
+			add_to_variable = { SAU_uprising_units = 2 }
+		}
+	}
+	
+	SAU_contracting_pmcs = {
+		if = {
+			limit = {
+				has_country_flag = saudi_coalition
+			}
+			add_to_variable = { ROC_pmc_units = 2 }
+		}
+		if = {
+			limit = {
+				has_country_flag = king_mohammed_salman
+			}
+			add_to_variable = { SAU_pmc_units = 2 }
+		}
+	}
+	
+	ARR = {
+		if = {
+			limit = {
+				check_variable = { SAU.ARR_uprising_units > 0 }
+			}
+			hidden_effect = {
+				capital_scope = {
+					create_unit = {
+						division = "division_template = \"Liwa Almsha\" start_experience_factor = 0.2 start_equipment_factor = 1"
+						owner = PREV
+						count =  SAU.ARR_uprising_units
+					}
+				}
+			}
+		}
+		
+		if = {
+			limit = {
+				has_country_flag = bribed_officers
+			}
+			
+			create_corps_commander = {
+				name = "Eid Al Shalawi"
+				portrait_path = "gfx/leaders/SAU/Portrait_Eid_Al_Shalawi.dds"
+				traits = { panzer_leader }
+				skill = 1
+
+				attack_skill = 2
+				defense_skill = 2
+				planning_skill = 2
+				logistics_skill = 1
+			}
+		}
+		
+		if = {
+			limit = {
+				SAU = {
+					has_country_flag = SAU_virus_breach
+				}
+			}
+			SAU = {
+				add_timed_idea= { 
+					idea = SAU_omega_virus
+					days = 200 
+				}
+			}
+			ROC = {
+				add_timed_idea= { 
+					idea = SAU_omega_virus
+					days = 200 
+				}
+			}
+		}
+		
+		if = {
+			limit = {
+				check_variable = { SAU.ARR_heavy_equipment > 0 }
+			}
+			add_equipment_to_stockpile = {
+				type = artillery_equipment
+				amount = SAU.ARR_heavy_equipment
+				producer = SAU
+			}
+			add_equipment_to_stockpile = {
+				type = anti_tank_equipment_1
+				amount = SAU.ARR_heavy_equipment
+				producer = SAU
+			}
+			add_equipment_to_stockpile = {
+				type = modern_tank_chassis
+				amount = SAU.ARR_heavy_equipment
+				producer = SAU
+			}
+			add_equipment_to_stockpile = {
+				type = mechanized_equipment_1
+				amount = SAU.ARR_heavy_equipment
+				producer = SAU
+			}
+			add_equipment_to_stockpile = {
+				type = light_mechanized_equipment
+				amount = SAU.ARR_heavy_equipment
+				producer = SAU
+			}
+			add_equipment_to_stockpile = {
+				type = modern_tank_artillery_equipment
+				amount = SAU.ARR_heavy_equipment
+				producer = SAU
+			}
+			add_equipment_to_stockpile = {
+				type = motorized_equipment
+				amount = SAU.ARR_heavy_equipment
+				producer = SAU
+			}
+		}
+	}
+	
+	ROC = {
+		if = {
+			limit = {
+				check_variable = { SAU.ROC_uprising_units > 0 }
+			}
+			hidden_effect = {
+				capital_scope = {
+					create_unit = {
+						division = "division_template = \"Liwa Almsha\" start_experience_factor = 0.3 start_equipment_factor = 1"
+						owner = PREV
+						count =  SAU.ROC_uprising_units
+					}
+				}
+			}
+		}
+		if = {
+			limit = {
+				check_variable = { SAU.ROC_pmc_units > 0 }
+			}
+			hidden_effect = {
+				capital_scope = {
+					create_unit = {
+						division = "division_template = \"Sharikat Easkariat Khasa\" start_experience_factor = 0.3 start_equipment_factor = 1"
+						owner = PREV
+						count =  SAU.ROC_pmc_units
+					}
+				}
+			}
+		}
+		
+		if = {
+			limit = {
+				has_country_flag = bribed_officers
+			}
+			create_corps_commander = {
+				name = "Fahd Abdulaziz Al Saud"
+				portrait_path = "gfx/leaders/SAU/Fahd Abdulaziz Al Saud.dds"
+				traits = { armor_officer career_officer }
+				skill = 2
+
+				attack_skill = 2
+				defense_skill = 2
+				planning_skill = 2
+				logistics_skill = 1
+			}
+		}
+		
+		if = {
+			limit = {
+				check_variable = { SAU.ROC_heavy_equipment > 0 }
+			}
+			add_equipment_to_stockpile = {
+				type = artillery_equipment
+				amount = SAU.ROC_heavy_equipment
+				producer = SAU
+			}
+			add_equipment_to_stockpile = {
+				type = anti_tank_equipment_1
+				amount = SAU.ROC_heavy_equipment
+				producer = SAU
+			}
+			add_equipment_to_stockpile = {
+				type = modern_tank_chassis
+				amount = SAU.ROC_heavy_equipment
+				producer = SAU
+			}
+			add_equipment_to_stockpile = {
+				type = mechanized_equipment_1
+				amount = SAU.ROC_heavy_equipment
+				producer = SAU
+			}
+			add_equipment_to_stockpile = {
+				type = light_mechanized_equipment
+				amount = SAU.ROC_heavy_equipment
+				producer = SAU
+			}
+			add_equipment_to_stockpile = {
+				type = modern_tank_artillery_equipment
+				amount = SAU.ROC_heavy_equipment
+				producer = SAU
+			}
+			add_equipment_to_stockpile = {
+				type = motorized_equipment
+				amount = SAU.ROC_heavy_equipment
+				producer = SAU
+			}
+		}
+	}
+	
+	SAU = {
+		if = {
+			limit = {
+				check_variable = { SAU.SAU_uprising_units > 0 }
+			}
+			hidden_effect = {
+				capital_scope = {
+					create_unit = {
+						division = "division_template = \"Liwa Almsha\" start_experience_factor = 0.2 start_equipment_factor = 1"
+						owner = PREV
+						count =  SAU.SAU_uprising_units
+					}
+				}
+			}
+		}
+		if = {
+			limit = {
+				check_variable = { SAU.SAU_pmc_units > 0 }
+			}
+			hidden_effect = {
+				capital_scope = {
+					create_unit = {
+						division = "division_template = \"Sharikat Easkariat Khasa\" start_experience_factor = 0.3 start_equipment_factor = 1"
+						owner = PREV
+						count =  SAU.SAU_pmc_units
+					}
+				}
+			}
+		}
+		
+		if = {
+			limit = {
+				has_country_flag = bribed_officers
+			}
+			create_corps_commander = {
+				name = "Fahd Abdulaziz Al Saud"
+				portrait_path = "gfx/leaders/SAU/Fahd Abdulaziz Al Saud.dds"
+				traits = { armor_officer career_officer }
+				skill = 2
+
+				attack_skill = 2
+				defense_skill = 2
+				planning_skill = 2
+				logistics_skill = 1
+			}
+		}
+		
+		if = {
+			limit = {
+				check_variable = { SAU.SAU_heavy_equipment > 0 }
+			}
+			add_equipment_to_stockpile = {
+				type = artillery_equipment
+				amount = SAU.SAU_heavy_equipment
+				producer = SAU
+			}
+			add_equipment_to_stockpile = {
+				type = anti_tank_equipment_1
+				amount = SAU.SAU_heavy_equipment
+				producer = SAU
+			}
+			add_equipment_to_stockpile = {
+				type = modern_tank_chassis
+				amount = SAU.SAU_heavy_equipment
+				producer = SAU
+			}
+			add_equipment_to_stockpile = {
+				type = mechanized_equipment_1
+				amount = SAU.SAU_heavy_equipment
+				producer = SAU
+			}
+			add_equipment_to_stockpile = {
+				type = light_mechanized_equipment
+				amount = SAU.SAU_heavy_equipment
+				producer = SAU
+			}
+			add_equipment_to_stockpile = {
+				type = modern_tank_artillery_equipment
+				amount = SAU.SAU_heavy_equipment
+				producer = SAU
+			}
+			add_equipment_to_stockpile = {
+				type = motorized_equipment
+				amount = SAU.SAU_heavy_equipment
+				producer = SAU
+			}
+		}
+	}
+	
+	SAU_equipment_stored = {
+		if = {
+			limit = {
+				has_country_flag = king_mohammed_salman
+			}
+			add_to_variable = { SAU_heavy_equipment = 50 }
+		}
+		else_if = {
+			limit = {
+				has_country_flag = saudi_coalition
+			}
+			add_to_variable = { ROC_heavy_equipment = 50 }
+		}
+		else_if = {
+			limit = {
+				has_country_flag = saudi_liberal
+			}
+			add_to_variable = { ARR_heavy_equipment = 50 }
+		}
+	}

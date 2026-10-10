@@ -1,0 +1,285 @@
+﻿	capital = 1343
+
+	oob = "SAF_2020"
+	if = {
+		limit = { has_dlc = "Man the Guns" }
+			set_naval_oob = "SAF_2000_naval_mtg"
+		else = {
+			set_naval_oob = "SAF_2000_naval_legacy"
+		}
+	}
+
+	set_research_slots = 3
+	set_convoys = 535
+	set_stability = 0.4
+
+	set_country_flag = developed_country
+
+	set_variable = { Russian_Influence = 0.00 }
+	set_variable = { Chinese_Influence = 0.25 }
+	set_variable = { American_Influence = 0.15 }
+	set_variable = { European_Influence = 0.15 }
+	set_variable = { PDO_Influence = 0.25 }
+	set_variable = { Sovereign_Influence = 0.20 }
+	
+	set_technology = {
+		## Infantry ##
+		
+		infantry_weapons1 = 1
+		infantry_weapons2 = 1
+		motorised_infantry = 1
+		infantry_rifle_upgrade = 1
+		support_weapons = 1
+		night_vision = 1
+		body_armor = 1
+		camouflage = 1
+		paratroopers = 1
+		tech_mountaineers = 1
+		tech_rangers = 1
+		
+		## Support Companies ##
+		tech_support = 1
+		tech_engineers = 1
+		tech_recon = 1
+		tech_military_police = 1
+		tech_maintenance_company = 1
+		tech_field_hospital = 1
+		tech_logistics_company = 1
+		tech_signal_company = 1
+		
+		## Armor ##
+		main_battle_tank1 = 1
+		main_battle_tank2 = 1
+		main_battle_tank3 = 1
+		light_tank1 = 1
+		mechanised_infantry1 = 1
+		light_mechanized_infantry1 = 1
+		
+		## Artillery ##
+		gw_artillery = 1
+		interwar_antitank = 1
+		interwar_antiair = 1
+		tank_destroyer1 = 1
+		self_propelled_aa1 = 1
+		interwar_artillery = 1
+		sp_artillery1 = 1
+		
+		## Air ##
+		attack_helicopter_1 = 1
+		utility_helicopter_1 = 1
+		
+		## Engineering ##
+		electronic_mechanical_engineering = 1
+		radio = 1
+		
+		## Industry ##
+		basic_machine_tools = 1
+		fuel_silos = 1
+		fuel_refining = 1
+		
+		## Doctrines ##
+		#trade_interdiction = 1
+		
+	}
+	
+	if = {
+		limit = { has_dlc = "By Blood Alone" }
+			set_air_oob = "SAF_2020_air_bba"
+			set_technology = {
+				aa_lmg = 1
+				aa_cannon_1 = 1
+				aa_hmg = 1
+				engines_1 = 1
+				engines_2 = 1
+				early_bombs = 1
+				guided_bombs = 1
+				aircraft_construction = 1
+				survivability_studies = 1
+				iw_small_airframe = 1
+				basic_small_airframe = 1
+				iw_medium_airframe = 1
+				basic_medium_airframe = 1
+				iw_large_airframe = 1
+			}
+		else = {
+			set_air_oob = "SAF_2020_air_legacy"
+			set_technology = {
+				CAS1 = 1
+				CAS2 = 1
+				fighter1 = 1
+				fighter2 = 1
+				fighter3 = 1
+				naval_bomber1 = 1
+				naval_bomber2 = 1
+				strategic_bomber1 = 1
+				tactical_bomber1 = 1
+				transport_plane2 = 1
+			}
+		}
+	}
+
+	if = {
+		limit = { not = { has_dlc = "Man the Guns" } }
+		set_technology = {
+			early_destroyer = 1
+			early_submarine = 1
+			basic_submarine = 1
+			transport = 1
+		}
+	}
+	if = {
+		limit = { has_dlc = "Man the Guns" }
+		set_technology = {
+			early_ship_hull_light = 1
+			early_ship_hull_submarine = 1
+			basic_ship_hull_submarine = 1
+			smoke_generator = 1
+			sonar = 1
+			basic_depth_charges = 1
+			basic_torpedo = 1
+			basic_battery = 1
+			mtg_transport = 1
+			basic_naval_mines = 1
+			submarine_mine_laying = 1
+		}
+	}
+
+	add_ideas = {
+		SAF_gdp_fix
+		low_poverty
+		african_union_member
+		commonwealth_of_nations_member
+		SAF_racial_tensions
+		SAF_anc_corruption
+	}
+
+	recruit_character = SAF_cyril_ramaphosa_char
+	recruit_character = SAF_Charles_Alan_Laubscher_char
+	recruit_character = SAF_Pieter_Groenewald_char
+	recruit_character = SAF_Herman_Mashaba_char
+	recruit_character = SAF_John_Steenhuisen_char
+	recruit_character = SAF_Fabian_Msimang_char
+	recruit_character = SAF_Jongile_Maso_char
+	recruit_character = SAF_Mzayifani_Buthelezi_char
+	recruit_character = SAF_Ncedakele_Mtshatsheni_char
+	recruit_character = SAF_Rudzani_Maphwanya_char
+	recruit_character = SAF_Solly_Shoke_char
+	recruit_character = SAF_Wiseman_Mbambo_char
+	recruit_character = SAF_Bubele_Mhlana_char
+	recruit_character = SAF_Monde_Lobese_char
+	recruit_character = SAF_Samuel_Hlongwane_char
+
+	set_politics = {	
+		ruling_party = social_democrat
+		last_election = "2019.5.8"
+		election_frequency = 60
+		elections_allowed = yes
+	}
+
+	set_popularities = {
+		authoritarian_democrat = 3
+		social_liberal = 21
+		communist = 2
+		social_democrat = 55
+		market_liberal = 1
+		conservative = 5
+		totalitarian_socialist = 11
+		libertarian_socialist = 2
+	}
+
+	set_party_name = {
+    	ideology = national_socialist 
+   		long_name = SAF_national_socialist_party_long
+    	name = SAF_national_socialist_party_short
+	}
+	set_party_name = {
+    	ideology = fascist
+   		long_name = SAF_fascist_party_long
+    	name = SAF_fascist_party_short
+	}
+	set_party_name = {
+    	ideology = nationalist 
+   		long_name = SAF_nationalist_party_long
+    	name = SAF_nationalist_party_short
+	}
+	set_party_name = {
+    	ideology = authoritarian_democrat 
+   		long_name = SAF_authoritarian_democrat_party_long
+    	name = SAF_authoritarian_democrat_party_short
+	}
+	set_party_name = {
+    	ideology = conservative 
+   		long_name = SAF_conservative_party_long
+    	name = SAF_conservative_party_short
+	}
+	set_party_name = {
+    	ideology = market_liberal 
+   		long_name = SAF_market_liberal_party_long
+    	name = SAF_market_liberal_party_short
+	}
+	set_party_name = {
+    	ideology = social_liberal 
+   		long_name = SAF_social_liberal_party_long
+    	name = SAF_social_liberal_party_short
+	}
+	set_party_name = {
+    	ideology = social_democrat 
+   		long_name = SAF_social_democrat_party_long
+    	name = SAF_social_democrat_party_short
+	}
+	set_party_name = {
+    	ideology = libertarian_socialist 
+   		long_name = SAF_libertarian_socialist_party_long
+    	name = SAF_libertarian_socialist_party_short
+	}
+	set_party_name = {
+    	ideology = communist 
+    	long_name = SAF_communist_long
+    	name = SAF_communist_short
+	}
+	set_party_name = {
+    	ideology = totalitarian_socialist 
+   		long_name = SAF_totalitarian_socialist_long
+    	name = SAF_totalitarian_socialist_short
+	}
+
+	### VARIANTS ###
+	# 2000 Start #
+	if = {
+		limit = { not = { has_dlc = "Man the Guns" } }
+		
+	}
+	if = {
+		limit = { has_dlc = "Man the Guns" }
+		## Submarines ##
+		create_equipment_variant = { #Diesel Sub 1
+			name = "Daphné-class"
+			type = ship_hull_submarine_1
+			parent_version = 0
+			modules = {
+				fixed_ship_torpedo_slot = ship_torpedo_sub_1
+				fixed_ship_engine_slot = sub_ship_engine_1
+				rear_1_custom_slot = empty
+			}
+			obsolete = no
+		}
+	}
+	
+	if = {
+		limit = {
+			has_dlc = "By Blood Alone"
+		}
+
+		create_equipment_variant = {
+			name = "JAS 39C/D Gripen"
+			type = small_plane_airframe_1
+			modules = {
+				fixed_main_weapon_slot = heavy_mg_4x
+				fixed_auxiliary_weapon_slot_1 = heavy_mg_4x
+				fixed_auxiliary_weapon_slot_2 = light_mg_4x
+				engine_type_slot = engine_2_1x
+				special_type_slot_1 = hmg_defense_turret
+			}
+			icon = "GFX_fighter4_medium"
+		}
+	}

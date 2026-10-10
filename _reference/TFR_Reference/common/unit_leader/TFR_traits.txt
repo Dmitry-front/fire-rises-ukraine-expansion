@@ -1,0 +1,970 @@
+leader_traits = {
+	USA_republican_loyalist = { 
+		type = all
+		trait_type = personality_trait
+		gui_row = 1
+		
+		allowed = {
+			FROM = {
+				tag = USA
+			}
+		}
+		
+		gain_xp = {
+			always = no # not gainable
+		}
+		
+		modifier = {
+			
+		}
+		
+		ai_will_do = {
+			factor = 1
+		}
+		
+		new_commander_weight = {
+			factor = 0
+		}
+	}
+
+	USA_democrat_loyalist = { 
+		type = all
+		trait_type = personality_trait
+		gui_row = 2
+		
+		allowed = {
+			FROM = {
+				tag = USA
+			}
+		}
+		
+		gain_xp = {
+			always = no # not gainable
+		}
+		
+		modifier = {
+			
+		}
+		
+		ai_will_do = {
+			factor = 1
+		}
+		
+		new_commander_weight = {
+			factor = 0
+		}
+	}
+
+	USB_caligula_loyalist = { 
+		type = all
+		trait_type = personality_trait
+		gui_row = 2
+		
+		allowed = {
+			FROM = {
+				tag = USB
+				has_completed_focus = USB_rebirth
+			}
+		}
+		
+		gain_xp = {
+			always = no # not gainable
+		}
+		
+		modifier = {
+			promote_cost_factor = -0.25
+			army_attack_factor = 0.025
+		}
+		
+		ai_will_do = {
+			factor = 1
+		}
+		
+		new_commander_weight = {
+			factor = 100
+		}
+	}
+
+	USB_cowed_by_caligula = {
+
+		type = { land }
+		trait_type = personality_trait
+
+		allowed = {
+			FROM = { original_tag = USB }
+		}
+
+		new_commander_weight = {
+			factor = 0
+		}
+
+		attack_skill = -2
+		defense_skill = -2
+		
+		modifier = {
+			army_morale_factor = -0.1
+			land_reinforce_rate = -0.02
+		}
+	}
+
+	trait_SOV_hero_soviet_union = {
+
+		type = land
+		trait_type = status_trait
+		
+		non_shared_modifier = {
+			reassignment_duration_factor = 1   # +100% cost to replace leader
+			promote_cost_factor = -0.25
+			experience_gain_factor = 0.1
+		}
+		
+		allowed = {
+			FROM = {
+				tag = SOV
+			}
+		}
+
+		attack_skill = 1
+		defense_skill = 1
+	}
+	
+	trait_SOV_hero_russian_federation = {
+
+		type = land
+		trait_type = status_trait
+		
+		allowed = {
+			FROM = {
+				tag = SOV
+			}
+		}
+		
+		non_shared_modifier = {
+			reassignment_duration_factor = 1   # +100% cost to replace leader
+			promote_cost_factor = -0.25
+			experience_gain_factor = 0.1
+		}
+	
+		attack_skill = 1
+		defense_skill = 1
+	}
+	
+	trait_SOV_marshal_of_russian_federation = {
+
+		type = field_marshal
+		trait_type = status_trait
+		
+		allowed = {
+			FROM = {
+				tag = SOV
+			}
+		}
+		
+		field_marshal_modifier = {
+			army_morale_factor = 0.10
+			land_reinforce_rate = 0.02
+			max_army_group_size = 2
+		}
+	
+	}	
+	
+	trait_SOV_marshal_of_russia = {
+
+		type = field_marshal
+		trait_type = status_trait
+		
+		allowed = {
+			FROM = {
+				tag = SOV
+			}
+		}
+		
+		field_marshal_modifier = {
+			army_morale_factor = 0.10
+			land_reinforce_rate = 0.02
+			max_army_group_size = 2
+		}
+	
+	}	
+	
+	trait_SOV_marshal_of_soviet_union = {
+
+		type = field_marshal
+		trait_type = status_trait
+		
+		allowed = {
+			FROM = {
+				tag = SOV
+			}
+		}
+		
+		field_marshal_modifier = {
+			army_morale_factor = 0.10
+			land_reinforce_rate = 0.02
+			max_army_group_size = 2
+		}
+		
+	}	
+	
+	trait_SOV_marshal_of_union_state = {
+
+		type = field_marshal
+		trait_type = status_trait
+		
+		allowed = {
+			FROM = {
+				tag = SOV
+			}
+		}
+		
+		field_marshal_modifier = {
+			breakthrough_factor = 0.10
+			max_planning = 0.1
+			max_army_group_size = 2
+		}
+		
+	}
+	
+	trait_SOV_new_oprichnik = {
+		type = { land }
+		trait_type = status_trait
+		allowed = {
+			FROM = {
+				tag = SOV
+			}
+		}
+		
+		modifier = {
+			army_morale_factor = 0.1
+			experience_gain_factor = -0.1
+			army_attack_factor = 0.015
+		}
+	}	
+	
+	trait_russian_military_thought = {
+		type = { land }
+		trait_type = status_trait
+		
+		modifier = {
+			army_speed_factor = 0.035
+			breakthrough_factor = 0.015
+			max_planning_factor = 0.1
+			experience_gain_factor = 0.05
+		}
+	}
+		
+	trait_APA_zealous_anti_fascist = {
+		type = { land }
+		trait_type = status_trait
+		
+		modifier = {
+			army_org_factor = 0.025
+			army_attack_factor = 0.015
+			promote_cost_factor = 0.1
+		}
+	}
+	
+	trait_SOV_supreme_leader = {
+		type = field_marshal
+		
+		gain_xp = {
+			always = no # not gainable
+		}
+		cost = 1000
+		
+		field_marshal_modifier = {
+			supply_consumption_factor = -0.05
+			planning_speed = -0.1
+			offence = 0.1
+		}
+		
+		modifier = {
+			army_morale_factor = 0.1
+			experience_gain_factor = -0.2
+			army_attack_factor = 0.025
+		}
+		
+		ai_will_do = {
+			factor = 1
+		}
+		gui_row = 0
+		trait_type = status_trait
+	}
+	trait_NOV_LPR = {  
+
+		type = { land navy }
+		trait_type = status_trait
+		allowed = {
+			FROM = {
+				tag = NOV
+			}
+		}
+	}
+	
+	trait_NOV_DPR = {
+
+		type = { land navy }
+		trait_type = status_trait
+		allowed = {
+			FROM = {
+				tag = NOV
+			}
+		}
+	}
+	
+	trait_BLR_SOV = {  
+
+		type = { land navy }
+		trait_type = status_trait
+		allowed = {
+			FROM = {
+				OR = {
+					tag = SOV
+					tag = BLR
+				}
+			}
+		}
+	}
+	
+	trait_SOV_soviet_veteran = {  
+
+		type = { land navy }
+		trait_type = status_trait
+		allowed = {
+			FROM = {
+				tag = SOV
+			}
+		}
+		
+		modifier = {
+			army_org_factor = 0.075
+			planning_speed = -0.025
+			max_planning_factor = -0.025
+		}
+	}
+	
+	trait_SOV_hero_of_black_october = {  
+		type = { land }
+		trait_type = status_trait
+		allowed = {
+			FROM = {
+				tag = SOV
+			}
+		}
+		
+		modifier = {
+			army_morale_factor = 0.15
+		}
+	}	
+	
+	trait_SOV_derzhavnik_commander = {
+		type = { land }
+		trait_type = status_trait
+		allowed = {
+			FROM = {
+				tag = SOV
+			}
+		}
+		
+		modifier = {
+			planning_speed = 0.05
+			promote_cost_factor = -0.5
+		}
+	}	
+	
+	trait_APA_inspiring_commissar = {  
+		type = { land }
+		trait_type = status_trait
+		allowed = {
+			FROM = {
+				tag = APA
+			}
+		}
+		
+		modifier = {
+			army_morale_factor = 0.1
+		}
+	}	
+	
+	trait_zealous_nationalist = {  
+		type = { land }
+		trait_type = status_trait
+		
+		modifier = {
+			army_morale_factor = 0.1
+		}
+	}
+	
+	trait_battle_priest = {
+
+		type = { land navy }
+		trait_type = status_trait
+
+		modifier = {
+			promote_cost_factor = -0.5
+			land_reinforce_rate = 0.1
+		}
+	}
+	
+	trait_UKR_hero_ukraine = {
+
+		type = land
+		trait_type = status_trait
+		allowed = {
+			FROM = {
+				tag = UKR
+			}
+		}
+		
+		non_shared_modifier = {
+			reassignment_duration_factor = 1   # +100% cost to replace leader
+			promote_cost_factor = -0.25
+			experience_gain_factor = 0.1
+		}
+
+		attack_skill = 1
+		defense_skill = 1
+	}
+	
+	trait_APA_jacobin = {  
+
+		type = { land navy }
+		trait_type = status_trait
+		allowed = {
+			FROM = {
+				tag = APA
+			}
+		}
+	}
+	
+	trait_APA_octoberist = {  
+
+		type = { land navy }
+		trait_type = status_trait
+		allowed = {
+			FROM = {
+				tag = APA
+			}
+		}
+	}
+	
+	trait_APA_anarchist = {  
+
+		type = { land navy }
+		trait_type = status_trait
+		allowed = {
+			FROM = {
+				tag = APA
+			}
+		}
+	}
+	
+	trait_APA_neosocialist = {  
+
+		type = { land navy }
+		trait_type = status_trait
+		allowed = {
+			FROM = {
+				tag = APA
+			}
+		}
+	}
+	
+	trait_ATW_arch_angel = {  
+
+		type = land
+		trait_type = status_trait
+		allowed = {
+			FROM = {
+				tag = ATW
+			}
+		}
+		field_marshal_modifier = {
+			land_reinforce_rate = 0.15
+		}
+		modifier = {
+			army_morale_factor = 0.10
+			promote_cost_factor = -0.75
+			army_org_factor = 0.05
+			army_infantry_defence_factor = 0.1
+		}
+	}
+	
+	trait_ATW_the_cursed_one = {  
+
+		type = land
+		trait_type = status_trait
+		allowed = {
+			FROM = {
+				tag = ATW
+			}
+		}
+		field_marshal_modifier = {
+			land_reinforce_rate = 0.15
+			army_attack_factor = 0.1
+			army_speed_factor = 0.075
+			}
+		modifier = {
+			army_morale_factor = 0.075
+			promote_cost_factor = -0.75
+			army_attack_factor = 0.1
+			planning_speed = 0.075
+			breakthrough_factor = 0.05
+		}
+	}
+	
+	trait_GMA_Left_Anarchist = {  
+
+		type = land
+		trait_type = status_trait
+		allowed = {
+			FROM = {
+				OR = {
+					tag = GMA
+					tag = PRC
+				}
+			}
+		}
+		
+		modifier = {
+			army_attack_factor = 0.10
+		}
+	}
+
+	trait_american_zhukov = { 
+		type = land
+		trait_type = personality_trait
+		allowed = {
+			FROM = {
+				tag = APA
+			}
+		}
+		
+		modifier = {
+			army_org_factor = 0.10
+			max_army_group_size = 1
+			planning_speed = 0.07
+			max_planning_factor = 0.07
+		}
+		
+		new_commander_weight = {
+			factor = 1
+			
+			modifier = {
+				has_trait = trait_cautious
+				factor = 0 
+			}
+			modifier = {
+				FROM = { has_idea = best_of_the_best_spirit }
+				factor = 0
+			}
+			modifier = {
+				FROM = { has_idea = academy_scholarships_spirit }
+				factor = 0
+			}
+		}
+		
+		attack_skill_factor = 1
+		defense_skill_factor = 1
+		planning_skill_factor = 1
+	}
+	
+	trait_GMA_Environmentalist = {  
+
+		type = land
+		trait_type = status_trait
+		allowed = {
+			FROM = {
+				tag = GMA
+			}
+		}
+		modifier = {
+			river_crossing_factor = 0.1
+			acclimatization_cold_climate_gain_factor = 0.05
+			acclimatization_hot_climate_gain_factor = 0.05
+		}
+	}
+	
+	trait_GMA_PMC = {  
+
+		type = land
+		trait_type = status_trait
+		allowed = {
+			FROM = {
+				tag = GMA
+			}
+		}
+		modifier = {
+			promote_cost_factor = -0.5
+			initiative_factor = 0.05
+		}
+	}
+	
+	trait_GMA_Feminist = {  
+
+		type = land
+		trait_type = status_trait
+		allowed = {
+			FROM = {
+				tag = GMA
+			}
+		}
+		modifier = {
+			land_reinforce_rate = 0.10
+		}
+	}
+	
+	trait_GMA_Right_Anarchist = {  
+
+		type = land
+		trait_type = status_trait
+		allowed = {
+			FROM = {
+				tag = GMA
+			}
+		}
+		modifier = {
+			army_speed_factor = 0.10
+		}
+	}
+
+	trait_FRA_Political_Retirement = {  
+
+		type = land
+		trait_type = status_trait
+		allowed = {
+			FROM = {
+				tag = FRA
+			}
+		}
+		attack_skill = -3
+		defense_skill = -3
+		planning_skill = -3
+		logistics_skill = -3
+		modifier = {
+			reassignment_duration_factor = 2.0
+			promote_cost_factor = 5.0
+			cannot_use_abilities = 1
+		}
+	}
+
+	trait_FRA_Disgusted_with_Regime = {  
+
+		type = land
+		trait_type = status_trait
+		allowed = {
+			FROM = {
+				tag = FRA
+			}
+		}
+		field_marshal_modifier = {
+			land_reinforce_rate = -0.05
+		}
+		modifier = {
+			reassignment_duration_factor = 0.25
+			army_morale_factor = -0.10
+			promote_cost_factor = 1.0
+		}
+	}
+	trait_FRA_Happy_with_Regime = {  
+
+		type = land
+		trait_type = status_trait
+		allowed = {
+			FROM = {
+				tag = FRA
+			}
+		}
+		field_marshal_modifier = {
+			land_reinforce_rate = 0.025
+		}
+		modifier = {
+			army_morale_factor = 0.10
+			promote_cost_factor = -0.25
+		}
+	}
+	trait_FRA_Neutral_with_Regime = {  
+
+		type = land
+		trait_type = status_trait
+		allowed = {
+			FROM = {
+				tag = FRA
+			}
+		}
+	}
+	trait_FRA_Loyal_to_Military = {
+		type = land
+		trait_type = status_trait
+		allowed = {
+			FROM = {
+				tag = FRA
+			}
+		}
+		modifier = {
+			custom_modifier_tooltip = FRA_Loyal_to_Military_tt
+		}
+	}
+	trait_FRA_Loyal_to_Republic = {
+		type = land
+		trait_type = status_trait
+		allowed = {
+			FROM = {
+				tag = FRA
+			}
+		}
+		modifier = {
+			custom_modifier_tooltip = FRA_Loyal_to_Republic_tt
+		}
+	}
+	trait_PTF_W2R = {  
+
+		type = land
+		trait_type = status_trait
+		allowed = {
+			FROM = {
+				tag = PTF
+			}
+		}
+
+		attack_skill = 2
+
+		modifier = {
+			wounded_chance_factor = 0.40
+		}
+	}
+
+	#Generic Traits
+	
+	trait_dunce = { 
+		type = land
+		trait_type = personality_trait
+		
+		modifier = {
+			promote_cost_factor = 0.5
+			planning_speed = -0.25
+			wounded_chance_factor = 0.25
+			experience_gain_factor = -0.1
+		}
+		
+		new_commander_weight = {
+			factor = 1
+			
+			modifier = {
+				has_trait = trait_cautious
+				factor = 0 
+			}
+			modifier = {
+				FROM = { has_idea = best_of_the_best_spirit }
+				factor = 0
+			}
+			modifier = {
+				FROM = { has_idea = academy_scholarships_spirit }
+				factor = 0
+			}
+		}
+		
+		planning_skill = -1
+		defense_skill = 2
+	}
+
+	trait_eager_learner = { 
+		type = land
+		trait_type = personality_trait
+		
+		modifier = {
+			experience_gain_factor = 0.1
+		}
+		
+		new_commander_weight = {
+			factor = 1
+			
+			modifier = {
+				FROM = { has_idea = best_of_the_best_spirit }
+				factor = 0
+			}
+			modifier = {
+				FROM = { has_idea = academy_scholarships_spirit }
+				factor = 0
+			}
+		}
+	}
+	
+	trait_drone_operator = { 
+		type = land
+		trait_type = personality_trait
+		
+		modifier = {
+			recon_factor = 0.05
+			army_infantry_defence_factor = 0.13
+		}
+		
+		enable_ability = probing_attack
+		
+		new_commander_weight = {
+			factor = 1
+			
+			modifier = {
+				FROM = { has_idea = best_of_the_best_spirit }
+				factor = 0
+			}
+			modifier = {
+				FROM = { has_idea = academy_scholarships_spirit }
+				factor = 0
+			}
+		}
+	}
+	
+	PRC_thunder_gods_jungle = {
+		type = corps_commander
+		gain_xp = {
+			check_variable = { num_battalions_with_type@special_forces > 0 }
+			is_fighting_in_terrain = jungle
+			PRC = {
+				has_country_flag = PRC_thunder_gods_jungle_flag
+			}
+		}
+		custom_gain_xp_trigger_tooltip = GNG_has_egghead
+		cost = 300
+
+		ai_will_do = {
+			factor = 1
+		}
+
+		gui_row = 16
+		gui_column = -2
+
+		allowed = {
+			FROM = { tag = PRC }
+		}
+
+		prerequisites = {
+			
+		}
+
+		on_add = {
+			PRC = {
+				set_country_flag = PRC_thunder_gods_jungle_complete
+				every_unit_leader = {
+					limit = {
+						has_trait = PRC_thunder_gods_jungle
+					}
+					remove_unit_leader_trait = PRC_thunder_gods_jungle
+				}
+			}
+		}
+	}
+	PRC_thunder_gods_mountain = {
+		type = corps_commander
+		gain_xp = {
+			check_variable = { num_battalions_with_type@militia > 0 }
+			is_fighting_in_terrain = mountain
+			PRC = {
+				has_country_flag = PRC_thunder_gods_mountain_flag
+			}
+		}
+		custom_gain_xp_trigger_tooltip = GNG_has_egghead
+		cost = 300
+
+		ai_will_do = {
+			factor = 1
+		}
+
+		gui_row = 16
+		gui_column = -2
+
+		allowed = {
+			FROM = { tag = PRC }
+		}
+
+		prerequisites = {
+			
+		}
+
+		on_add = {
+			PRC = {
+				set_country_flag = PRC_thunder_gods_mountain_complete
+				every_unit_leader = {
+					limit = {
+						has_trait = PRC_thunder_gods_mountain
+					}
+					remove_unit_leader_trait = PRC_thunder_gods_mountain
+				}
+			}
+		}
+	}
+
+	trait_PRC_august_1st_medal = {  
+		type = land
+		trait_type = personality_trait
+		modifier = {
+			army_org_factor = 0.1
+		}
+		allowed = {
+			FROM = {
+				tag = PRC
+			}
+		}
+	}
+	trait_PRC_red_flag_medal = {  
+		type = land
+		trait_type = personality_trait
+		modifier = {
+			planning_speed = 0.1
+		}
+		allowed = {
+			FROM = {
+				tag = PRC
+			}
+		}
+	}
+	trait_PRC_red_star_medal = {  
+		type = land
+		trait_type = personality_trait
+		modifier = {
+			army_attack_factor = 0.075
+		}
+		allowed = {
+			FROM = {
+				tag = PRC
+			}
+		}
+	}
+	trait_PRC_tiger_tally = {  
+		type = land
+		trait_type = personality_trait
+		modifier = {
+			army_org_factor = 0.1
+			army_attack_factor = 0.025
+		}
+		allowed = {
+			FROM = {
+				tag = PRC
+			}
+		}
+	}
+	trait_PRC_goldfish_pouch = {  
+		type = land
+		trait_type = personality_trait
+		modifier = {
+			planning_speed = 0.1
+		}
+		allowed = {
+			FROM = {
+				tag = PRC
+			}
+		}
+	}
+	trait_PRC_iron_certificate = {  
+		type = land
+		trait_type = personality_trait
+		modifier = {
+			army_attack_factor = 0.075
+		}
+		allowed = {
+			FROM = {
+				tag = PRC
+			}
+		}
+	}
+}

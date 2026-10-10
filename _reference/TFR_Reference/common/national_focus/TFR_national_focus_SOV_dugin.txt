@@ -1,0 +1,2619 @@
+focus_tree = {
+	id = SOV_dugin_tree
+	country = {
+		factor = 0
+	}
+	focus = {
+		id = SOV_how_did_this_happen
+		icon = GFX_focus_SOV_how_did_this_happen
+		x = 13
+		y = 0
+		cost = 5
+		available = {
+		}
+		completion_reward = {
+			country_event = {
+				id = russia.152
+				hours = 6
+			}
+			set_temp_variable = {
+				var = SOV_fanaticism_var_temp
+				value = 0.05
+			}
+			SOV_add_fanaticism = yes
+			hidden_effect = {
+				CHE = {
+					country_event = {
+						id = chechnya.1
+						days = 100
+					}
+				}
+				set_global_flag = SOV_dugin_russia_flag
+				remove_ideas = SOV_national_front_of_salvation_2_idea
+				add_dynamic_modifier = {
+					modifier = SOV_fanaticism_dynamic
+				}
+				set_variable = {
+					var = SOV_fanaticism_var
+					value = 0.25
+				}
+				set_variable = {
+					var = SOV_fanaticism_dynamic_var
+					value = 0.1
+				}
+				NOV = {
+					set_cosmetic_tag = NOV_second_revolt
+					add_country_leader_role = {
+						character = NOV_alexander_khodakovsky
+						promote_leader = yes
+						country_leader = {
+							ideology = ethno_nationalism
+							expire = "1.1.1.1"
+						}
+					}
+				}
+				scoped_play_song = "lwde"
+				add_relation_rule_override = {
+					target = STR
+					can_send_volunteers = no
+				}
+				add_relation_rule_override = {
+					target = NOV
+					can_send_volunteers = no
+				}
+				add_relation_rule_override = {
+					target = DPR
+					can_send_volunteers = no
+				}
+				add_relation_rule_override = {
+					target = MEL
+					can_send_volunteers = no
+				}
+				add_relation_rule_override = {
+					target = WLN
+					can_send_volunteers = no
+				}
+				add_relation_rule_override = {
+					target = NEN
+					can_send_volunteers = no
+				}
+				random_list = {
+					seed = random
+					50 = {
+						country_event = {
+							id = russia.295
+							days = 20
+							random_days = 40
+						}
+					}
+					50 = {
+					}
+				}
+			}
+		}
+	}
+	focus = {
+		id = SOV_declare_eurasian_state
+		icon = GFX_focus_SOV_declare_eurasian_state
+		relative_position_id = SOV_how_did_this_happen
+		x = 0
+		y = 1
+		cost = 5
+		prerequisite = {
+			focus = SOV_how_did_this_happen
+		}
+		completion_reward = {
+			custom_effect_tooltip = SOV_commence_eurasian_revolution_bop_tt
+			custom_effect_tooltip = tooltip_white_line
+			add_timed_idea = {
+				idea = SOV_eurasian_revolution_idea
+				days = 200
+			}
+			custom_effect_tooltip = tooltip_white_line
+			unlock_decision_category_tooltip = SOV_Dugin_Directives_category
+			custom_effect_tooltip = tooltip_white_line
+			change_government_type_eurasianist_system = yes
+			hidden_effect = {
+				set_power_balance = {
+					id = SOV_dugin_power_balance
+					set_value = 0.1
+				}
+				country_event = {
+					id = russia.201
+					days = 60
+					random_days = 20
+				}
+				create_faction = Eurasia_Faction
+				hidden_effect = {
+					remove_faction_goal = faction_goal_the_atomic_race
+					add_faction_goal = faction_goal_placeholder_long_term
+					remove_faction_goal = faction_goal_a_military_base
+					add_faction_goal = faction_goal_placeholder_medium_term
+					add_faction_goal = faction_goal_placeholder_short_term
+				}
+				if = {
+					limit = {
+						is_ai = yes
+					}
+					load_oob = "SOV_ai_help"
+					if = {
+						limit = {
+							OR = {
+								GER = {
+									is_ai = no
+								}
+								FRA = {
+									is_ai = no
+								}
+							}
+						}
+						load_oob = "SOV_ai_help"
+					}
+					if = {
+						limit = {
+							NOT = {
+								has_dlc = "By Blood Alone"
+							}
+						}
+						add_equipment_to_stockpile = {
+							type = fighter_equipment_3
+							amount = 2000
+							producer = SOV
+						}
+						add_equipment_to_stockpile = {
+							type = CAS_equipment_2
+							amount = 1000
+							producer = SOV
+						}
+					}
+					else_if = {
+						limit = {
+							has_dlc = "By Blood Alone"
+						}
+						load_oob = "SOV_air_help_bba"
+					}
+				}
+			}
+		}
+	}
+	focus = {
+		id = SOV_a_great_awakening
+		icon = GFX_focus_SOV_solidify_our_control
+		x = -9
+		y = 1
+		cost = 5
+		relative_position_id = SOV_declare_eurasian_state
+		available = {
+		}
+		prerequisite = {
+			focus = SOV_declare_eurasian_state
+		}
+		completion_reward = {
+			country_event = {
+				id = russia.901
+				days = 1
+			}
+			modify_timed_idea = {
+				idea = SOV_eurasian_revolution_idea
+				days = 50
+			}
+			add_stability = 0.025
+			add_war_support = 0.025
+			add_popularity = {
+				ideology = national_socialist
+				popularity = 0.05
+			}
+			add_popularity = {
+				ideology = totalitarian_socialist
+				popularity = 0.05
+			}
+			unlock_decision_tooltip = SOV_praise_dasein_spirit
+		}
+	}
+	focus = {
+		id = SOV_a_million_voices_united
+		icon = GFX_focus_SOV_A_Million_Voices_United
+		x = -6
+		y = 1
+		cost = 5
+		relative_position_id = SOV_declare_eurasian_state
+		available = {
+		}
+		prerequisite = {
+			focus = SOV_declare_eurasian_state
+		}
+		completion_reward = {
+			add_popularity = {
+				ideology = totalitarian_socialist
+				popularity = 0.1
+			}
+			add_ideas = SOV_eurasian_unity_idea
+			unlock_decision_tooltip = SOV_Revive_International_Eurasian_Movement
+		}
+	}
+	focus = {
+		id = SOV_purge_atlanticist_ideolouges
+		icon = GFX_focus_SOV_purge_atlanticist_ideolouges
+		x = -4
+		y = 1
+		cost = 5
+		relative_position_id = SOV_declare_eurasian_state
+		available = {
+		}
+		prerequisite = {
+			focus = SOV_declare_eurasian_state
+		}
+		completion_reward = {
+			country_event = {
+				id = russia.154
+			}
+			add_stability = -0.075
+			add_political_power = 75
+			SOV_decrease_traitors = yes
+			set_temp_variable = {
+				var = society_development_var_temp
+				value = 0.125
+			}
+			add_society_development = yes
+		}
+	}
+	focus = {
+		id = SOV_the_eurasian_people_shall_bow_no_longer
+		icon = GFX_focus_SOV_the_eurasian_people_shall_bow_no_longer
+		x = 0
+		y = 1
+		cost = 5
+		relative_position_id = SOV_declare_eurasian_state
+		available = {
+			has_completed_focus = SOV_a_great_awakening
+			has_completed_focus = SOV_economic_reorganization
+			has_completed_focus = SOV_subversive_rearmament
+		}
+		prerequisite = {
+			focus = SOV_declare_eurasian_state
+		}
+		completion_reward = {
+			news_event = {
+				id = russia.155
+			}
+			add_war_support = 0.1
+			add_threat = 10
+			add_ideas = SOV_desire_for_revenge
+			SOV_decrease_national_catastrophe = yes
+			hidden_effect = {
+				UKR = {
+					country_event = {
+						id = ukraine.17
+						days = 10
+						random_days = 5
+					}
+				}
+			}
+		}
+	}
+	focus = {
+		id = SOV_stop_western_repayments
+		icon = GFX_focus_SOV_stop_western_repayments
+		x = 3
+		y = 1
+		cost = 5
+		relative_position_id = SOV_declare_eurasian_state
+		available = {
+			#	any_other_country = {
+			#		has_idea = SOV_war_reparations
+			#	}
+			has_completed_focus = SOV_subversive_rearmament
+		}
+		#bypass_if_unavailable = yes
+		prerequisite = {
+			focus = SOV_declare_eurasian_state
+		}
+		completion_reward = {
+			every_possible_country = {
+				limit = {
+					has_idea = SOV_war_reparations
+				}
+				remove_ideas = SOV_war_reparations
+			}
+			set_temp_variable = {
+				var = debt_var_temp
+				value = -500
+			}
+			add_debt = yes
+			add_political_power = 75
+			add_stability = 0.035
+		}
+	}
+	focus = {
+		id = SOV_duginomics
+		icon = GFX_focus_SOV_duginomics
+		x = 5
+		y = 1
+		cost = 5
+		relative_position_id = SOV_declare_eurasian_state
+		available = {
+		}
+		prerequisite = {
+			focus = SOV_declare_eurasian_state
+		}
+		completion_reward = {
+			add_ideas = SOV_duginomics_idea
+			unlock_decision_tooltip = SOV_Destroy_Economism
+			custom_effect_tooltip = tooltip_white_line
+			change_economy_type_command_economy = yes
+		}
+	}
+	focus = {
+		id = SOV_economic_reorganization
+		icon = GFX_focus_SOV_economic_reorganization
+		x = 4
+		y = 2
+		cost = 5
+		relative_position_id = SOV_declare_eurasian_state
+		available = {
+		}
+		prerequisite = {
+			focus = SOV_duginomics
+		}
+		prerequisite = {
+			focus = SOV_stop_western_repayments
+		}
+		completion_reward = {
+			swap_ideas = {
+				remove_idea = SOV_duginomics_idea
+				add_idea = SOV_duginomics2_idea
+			}
+		}
+	}
+	focus = {
+		id = SOV_subversive_rearmament
+		icon = GFX_focus_SOV_subversive_rearmament
+		relative_position_id = SOV_declare_eurasian_state
+		x = 8
+		y = 1
+		cost = 5
+		prerequisite = {
+			focus = SOV_declare_eurasian_state
+		}
+		completion_reward = {
+			add_timed_idea = {
+				idea = SOV_jsc_bills
+				days = 120
+			}
+		}
+	}
+	focus = {
+		id = SOV_soviet_nostalgia
+		icon = GFX_focus_SOV_Soviet_Nostalgia
+		relative_position_id = SOV_a_great_awakening
+		x = -1
+		y = 1
+		cost = 5
+		ai_will_do = {
+			factor = 1
+			modifier = {
+				factor = 0
+				OR = {
+					has_game_rule = {
+						rule = The_Dugin_Left_or_Right
+						option = The_Dugin_Left_or_Right_3
+					}
+				}
+			}
+		}
+		prerequisite = {
+			focus = SOV_a_great_awakening
+		}
+		mutually_exclusive = {
+			focus = SOV_a_new_eurasian_identity
+		}
+		completion_reward = {
+			add_ideas = SOV_stalinist_terror_idea
+			custom_effect_tooltip = unlock_hog_minister_tooltip
+			show_ideas_tooltip = SOV_Prilepin
+			unlock_decision_tooltip = SOV_Militarize_ESM
+			add_power_balance_value = {
+				id = SOV_dugin_power_balance
+				value = -0.1
+			}
+			hidden_effect = {
+				set_politics = {
+					ruling_party = totalitarian_socialist
+					elections_allowed = no
+				}
+			}
+		}
+	}
+	focus = {
+		id = SOV_a_new_eurasian_identity
+		icon = GFX_focus_SOV_a_new_eurasian_identity
+		relative_position_id = SOV_a_great_awakening
+		x = 1
+		y = 1
+		cost = 5
+		ai_will_do = {
+			factor = 1
+			modifier = {
+				factor = 0
+				OR = {
+					has_game_rule = {
+						rule = The_Dugin_Left_or_Right
+						option = The_Dugin_Left_or_Right_1
+					}
+				}
+			}
+		}
+		prerequisite = {
+			focus = SOV_a_great_awakening
+		}
+		mutually_exclusive = {
+			focus = SOV_soviet_nostalgia
+		}
+		completion_reward = {
+			add_ideas = SOV_the_construction_of_eurasia_idea
+			custom_effect_tooltip = unlock_sec_minister_tooltip
+			show_ideas_tooltip = SOV_Egor_Kholmogorov
+			unlock_decision_tooltip = SOV_Expand_ESM
+			add_power_balance_value = {
+				id = SOV_dugin_power_balance
+				value = 0.1
+			}
+			hidden_effect = {
+				add_popularity = {
+					ideology = national_socialist
+					popularity = 0.025
+				}
+				add_popularity = {
+					ideology = fascist
+					popularity = 0.025
+				}
+			}
+		}
+	}
+	focus = {
+		id = SOV_anti_imperialist_culture
+		icon = GFX_focus_SOV_anti_imperialist_culture
+		relative_position_id = SOV_purge_atlanticist_ideolouges
+		x = 0
+		y = 1
+		cost = 5
+		prerequisite = {
+			focus = SOV_purge_atlanticist_ideolouges
+			focus = SOV_a_million_voices_united
+		}
+		completion_reward = {
+			unlock_decision_tooltip = SOV_retarget_russian_hysteria_prop
+			add_war_support = 0.05
+			add_power_balance_value = {
+				id = SOV_dugin_power_balance
+				value = -0.05
+			}
+		}
+	}
+	focus = {
+		id = SOV_putting_the_asia_in_eurasia
+		icon = GFX_focus_SOV_putting_the_asia_in_eurasia
+		relative_position_id = SOV_purge_atlanticist_ideolouges
+		x = 2
+		y = 1
+		cost = 5
+		prerequisite = {
+			focus = SOV_the_eurasian_people_shall_bow_no_longer
+		}
+		will_lead_to_war_with = KAZ
+		completion_reward = {
+			create_wargoal = {
+				type = annex_everything
+				target = KAZ
+			}
+			create_wargoal = {
+				type = annex_everything
+				target = KYR
+			}
+			create_wargoal = {
+				type = annex_everything
+				target = UZB
+			}
+			create_wargoal = {
+				type = annex_everything
+				target = TMS
+			}
+			create_wargoal = {
+				type = annex_everything
+				target = TAJ
+			}
+			unlock_decision_tooltip = SOV_declare_eurasian_state_decision
+		}
+	}
+	focus = {
+		id = SOV_march_on_caucasus
+		icon = GFX_focus_SOV_march_on_caucasus
+		relative_position_id = SOV_putting_the_asia_in_eurasia
+		x = 0
+		y = 2
+		cost = 5
+		prerequisite = {
+			focus = SOV_putting_the_asia_in_eurasia
+		}
+		completion_reward = {
+			if = {
+				limit = {
+					NAV = {
+						exists = yes
+					}
+				}
+				declare_war_on = {
+					target = NAV
+					type = annex_everything
+				}
+			}
+			if = {
+				limit = {
+					CHE = {
+						exists = yes
+					}
+				}
+				annex_country = {
+					target = CHE
+					transfer_troops = yes
+				}
+				add_corps_commander_role = {
+					Character = SOV_apti_alaudinov_char
+					skill = 2
+					attack_skill = 2
+					defense_skill = 3
+					planning_skill = 3
+					logistics_skill = 2
+				}
+			}
+			if = {
+				limit = {
+					KHI = {
+						exists = yes
+					}
+				}
+				declare_war_on = {
+					target = KHI
+					type = annex_everything
+				}
+			}
+			custom_effect_tooltip = tooltip_white_line
+			if = {
+				limit = {
+					NOT = {
+						has_country_flag = SOV_decrease_national_catastrophe_don_caucasus_flag
+					}
+				}
+				SOV_decrease_national_catastrophe = yes
+				set_country_flag = SOV_decrease_national_catastrophe_don_caucasus_flag
+			}
+			hidden_effect = {
+				GER = {
+					country_event = {
+						id = germany.118
+					}
+				}
+				FRA = {
+					country_event = {
+						id = germany.118
+					}
+				}
+				UKR = {
+					country_event = {
+						id = germany.118
+					}
+				}
+			}
+		}
+	}
+	focus = {
+		id = SOV_push_for_don_reunifaction
+		icon = GFX_focus_SOV_push_for_don_reunifaction
+		relative_position_id = SOV_putting_the_asia_in_eurasia
+		x = 2
+		y = 2
+		cost = 5
+		prerequisite = {
+			focus = SOV_sign_the_kalmykia_agreement
+		}
+		completion_reward = {
+			country_event = {
+				id = russia.128
+			}
+			event_option_tooltip = russia.128.a
+			custom_effect_tooltip = tooltip_white_line
+			if = {
+				limit = {
+					NOT = {
+						has_country_flag = SOV_decrease_national_catastrophe_don_caucasus_flag
+					}
+				}
+				SOV_decrease_national_catastrophe = yes
+				set_country_flag = SOV_decrease_national_catastrophe_don_caucasus_flag
+			}
+		}
+	}
+	focus = {
+		id = SOV_march_on_the_west
+		icon = GFX_focus_SOV_march_west
+		relative_position_id = SOV_putting_the_asia_in_eurasia
+		x = 1
+		y = 3
+		cost = 7.2
+		available = {
+			has_completed_focus = SOV_implement_a_conscription_program
+			OR = {
+				has_completed_focus = SOV_organic_democracy
+				has_completed_focus = SOV_revise_foundations_of_geopolitics
+				has_completed_focus = SOV_conservative_revolution
+			}
+		}
+		prerequisite = {
+			focus = SOV_march_on_caucasus
+		}
+		prerequisite = {
+			focus = SOV_push_for_don_reunifaction
+		}
+		completion_reward = {
+			unlock_decision_category_tooltip = SOV_second_NATO_war_category
+			custom_effect_tooltip = SOV_march_on_the_west_tt
+			hidden_effect = {
+				FER = {
+					add_ideas = i_dont_wanna_call_ally
+				}
+				UKR = {
+					country_event = {
+						id = ukraine.15
+						days = 15
+						random = 5
+					}
+					country_event = {
+						id = ukraine.8
+						days = 8
+						random = 4
+					}
+					country_event = {
+						id = ukraine.9
+						days = 10
+						random = 2
+					}
+					country_event = {
+						id = ukraine.19
+						days = 12
+						random = 5
+					}
+				}
+			}
+		}
+	}
+	focus = {
+		id = SOV_grand_showdown
+		icon = GFX_focus_SOV_grand_showdown
+		relative_position_id = SOV_march_on_the_west
+		x = 0
+		y = 1
+		cost = 2.2
+		cancelable = no
+		prerequisite = {
+			focus = SOV_march_on_the_west
+		}
+		completion_reward = {
+			set_global_flag = second_nato_war_flag
+			news_event = {
+				id = news.226
+				hours = 4
+			}
+			declare_war_on = {
+				target = FER
+				type = annex_everything
+			}
+			declare_war_on = {
+				target = UKR
+				type = annex_everything
+			}
+			focus_unlock = yes
+			swap_ideas = {
+				remove_idea = SOV_desire_for_revenge
+				add_idea = SOV_desire_for_revenge2
+			}
+			set_temp_variable = {
+				var = SOV_fanaticism_var_temp
+				value = 0.05
+			}
+			SOV_add_fanaticism = yes
+			if = {
+				limit = {
+					country_exists = STR
+				}
+				annex_country = {
+					target = STR
+					transfer_troops = yes
+				}
+			}
+			if = {
+				limit = {
+					country_exists = MEL
+				}
+				annex_country = {
+					target = MEL
+					transfer_troops = yes
+				}
+			}
+			if = {
+				limit = {
+					country_exists = NEN
+				}
+				annex_country = {
+					target = NEN
+					transfer_troops = yes
+				}
+			}
+			if = {
+				limit = {
+					country_exists = WLN
+				}
+				annex_country = {
+					target = WLN
+					transfer_troops = yes
+				}
+			}
+			if = {
+				limit = {
+					country_exists = NOV
+				}
+				annex_country = {
+					target = NOV
+					transfer_troops = yes
+				}
+			}
+			custom_effect_tooltip = unrestricted_diplomacy_tt
+			set_country_flag = unrestricted_diplomacy_flag
+			hidden_effect = {
+				every_country = {
+					limit = {
+						OR = {
+							has_war_with = GER
+							has_war_with = FRA
+						}
+					}
+					leave_faction = yes
+					dismantle_faction = yes
+					SOV = {
+						add_to_faction = PREV
+					}
+				}
+				if = {
+					limit = {
+						country_exists = KBK
+					}
+					declare_war_on = {
+						target = KBK
+						type = annex_everything
+					}
+				}
+				if = {
+					limit = {
+						country_exists = SHL
+					}
+					declare_war_on = {
+						target = SHL
+						type = annex_everything
+					}
+				}
+				if = {
+					limit = {
+						country_exists = BYA
+					}
+					declare_war_on = {
+						target = SHL
+						type = annex_everything
+					}
+				}
+				if = {
+					#AI Help
+					limit = {
+						SOV = {
+							is_ai = yes
+						}
+					}
+					add_ideas = SOV_medvedev_can_win
+					# load_oob = "SOV_ai_help"
+					# if = {
+					# 	limit = {
+					# 		NOT = {
+					# 			has_dlc = "By Blood Alone"
+					# 		}
+					# 	}
+					# 	add_equipment_to_stockpile = {
+					# 		type = fighter_equipment_3
+					# 		amount = 2000
+					# 		producer = SOV
+					# 	}
+					# 	add_equipment_to_stockpile = {
+					# 		type = CAS_equipment_2
+					# 		amount = 1000
+					# 		producer = SOV
+					# 	}
+					# }
+					# else_if = {
+					# 	limit = {
+					# 		has_dlc = "By Blood Alone"
+					# 	}
+					# 	load_oob = "SOV_air_help_bba"
+					# }
+				}
+				GER = {
+					focus_unlock = yes
+					complete_national_focus = GER_europes_darkest_hour
+				}
+				HRL = {
+					if = {
+						limit = {
+							has_cosmetic_tag = HRL_nato
+						}
+						end_puppet = HRL
+					}
+				}
+				EGY = {
+					if = {
+						limit = {
+							has_cosmetic_tag = EGY_nato
+						}
+						end_puppet = EGY
+					}
+				}
+				SYR = {
+					if = {
+						limit = {
+							has_cosmetic_tag = SYR_nato
+						}
+						end_puppet = SYR
+						country_event = {
+							id = syria.30
+							days = 30
+						}
+					}
+				}
+				PER = {
+					if = {
+						limit = {
+							has_cosmetic_tag = HRL_nato
+						}
+						end_puppet = PER
+					}
+				}
+				# UDM = {
+				# 	country_event = {
+				# 		id = iran.19
+				# 		days = 60
+				# 	}
+				# }
+				news_event = {
+					id = news.409
+					hours = 8
+				}
+				ZZZ = {
+					activate_mission = second_nato_war_mission
+				}
+				UKR = {
+					remove_ideas = i_dont_wanna_call_ally
+				}
+				every_country = {
+					limit = {
+						OR = {
+							is_in_faction_with = GER
+							original_tag = GER
+						}
+					}
+					remove_ideas = i_dont_wanna_join_ally
+				}
+			}
+		}
+	}
+	focus = {
+		id = SOV_the_end_times
+		icon = GFX_focus_SOV_the_end_times
+		relative_position_id = SOV_grand_showdown
+		x = 2
+		y = 1
+		cost = 5
+		prerequisite = {
+			focus = SOV_grand_showdown
+		}
+		allow_branch = {
+			has_completed_focus = SOV_grand_showdown
+		}
+		available = {
+			surrender_progress > 0.1
+		}
+		completion_reward = {
+			add_ideas = SOV_the_final_war
+			#focus_unlock = yes
+		}
+	}
+	focus = {
+		id = SOV_mobilize_the_last_reserves
+		icon = GFX_focus_SOV_mobilize_the_last_reserves
+		relative_position_id = SOV_the_end_times
+		x = -1
+		y = 1
+		cost = 5
+		prerequisite = {
+			focus = SOV_the_end_times
+		}
+		completion_reward = {
+			swap_ideas = {
+				remove_idea = SOV_the_final_war
+				add_idea = SOV_the_final_war2
+			}
+			add_manpower = 10000
+			add_stability = -0.2
+		}
+	}
+	focus = {
+		id = SOV_loot_every_stockpile
+		icon = GFX_focus_SOV_loot_every_stockpile
+		relative_position_id = SOV_the_end_times
+		x = 1
+		y = 1
+		cost = 5
+		prerequisite = {
+			focus = SOV_the_end_times
+		}
+		completion_reward = {
+			add_equipment_to_stockpile = {
+				type = infantry_equipment_1
+				amount = 15000
+				producer = SV1
+			}
+			add_equipment_to_stockpile = {
+				type = infantry_equipment_2
+				amount = 7500
+				producer = SV1
+			}
+			add_equipment_to_stockpile = {
+				type = infantry_equipment_3
+				amount = 7500
+				producer = SV1
+			}
+			add_equipment_to_stockpile = {
+				type = infantry_equipment_4
+				amount = 7500
+				producer = SV1
+			}
+			add_equipment_to_stockpile = {
+				type = infantry_equipment_5
+				amount = 7500
+				producer = SV1
+			}
+			add_equipment_to_stockpile = {
+				type = artillery_equipment_1
+				amount = 1000
+				producer = SOV
+			}
+			add_equipment_to_stockpile = {
+				type = support_equipment_1
+				amount = 1500
+				producer = SOV
+			}
+		}
+	}
+	focus = {
+		id = SOV_every_man_every_woman_every_child
+		icon = GFX_focus_SOV_every_man_every_woman_every_child
+		relative_position_id = SOV_loot_every_stockpile
+		x = 0
+		y = 1
+		cost = 5
+		allow_branch = {
+			has_completed_focus = SOV_grand_showdown
+		}
+		prerequisite = {
+			focus = SOV_loot_every_stockpile
+		}
+		completion_reward = {
+			custom_effect_tooltip = SOV_every_man_every_woman_every_child_tt
+			swap_ideas = {
+				remove_idea = SOV_the_final_war2
+				add_idea = SOV_the_final_war3
+			}
+			add_manpower = 200000
+			set_temp_variable = {
+				var = society_development_var_temp
+				value = -0.35
+			}
+			add_society_development = yes
+			hidden_effect = {
+				load_oob = SOV_civilian_militia
+			}
+		}
+	}
+	focus = {
+		id = SOV_operation_olga
+		icon = GFX_focus_SOV_operation_olga
+		relative_position_id = SOV_grand_showdown
+		x = -2
+		y = 1
+		cost = 5
+		allow_branch = {
+			has_completed_focus = SOV_grand_showdown
+		}
+		prerequisite = {
+			focus = SOV_grand_showdown
+		}
+		completion_reward = {
+			set_temp_variable = {
+				var = SOV_fanaticism_var_temp
+				value = 0.1
+			}
+			SOV_add_fanaticism = yes
+			add_timed_idea = {
+				idea = SOV_navalny_operation
+				days = 100
+			}
+		}
+	}
+	focus = {
+		id = SOV_aerial_domminance
+		icon = GFX_focus_SOV_aerial_domminance
+		relative_position_id = SOV_operation_olga
+		x = -1
+		y = 1
+		cost = 5
+		prerequisite = {
+			focus = SOV_operation_olga
+		}
+		completion_reward = {
+			add_timed_idea = {
+				idea = SOV_aerial_domminance_idea
+				days = 365
+			}
+			if = {
+				limit = {
+					has_dlc = "By Blood Alone"
+				}
+				add_equipment_to_stockpile = {
+					type = small_plane_airframe_2
+					variant_name = "SU-25 (WP)"
+					amount = 300
+				}
+			}
+			else = {
+				add_equipment_to_stockpile = {
+					type = CAS_equipment_2
+					variant_name = "SU-25 (WP)"
+					amount = 300
+				}
+			}
+			set_temp_variable = {
+				var = debt_var_temp
+				value = 100
+			}
+			add_debt_with_inflation = yes
+		}
+	}
+	focus = {
+		id = SOV_flood_the_ranks
+		icon = GFX_focus_SOV_flood_the_ranks
+		relative_position_id = SOV_operation_olga
+		x = 1
+		y = 1
+		cost = 5
+		prerequisite = {
+			focus = SOV_operation_olga
+		}
+		completion_reward = {
+			add_timed_idea = {
+				idea = SOV_motherland_calls_idea
+				days = 250
+			}
+			add_stability = -0.1
+		}
+	}
+	focus = {
+		id = SOV_sign_the_kalmykia_agreement
+		icon = GFX_focus_SOV_sign_the_kalmykia_agreement
+		x = 0
+		y = 1
+		cost = 5
+		relative_position_id = SOV_the_eurasian_people_shall_bow_no_longer
+		prerequisite = {
+			focus = SOV_the_eurasian_people_shall_bow_no_longer
+		}
+		completion_reward = {
+			country_event = {
+				id = russia.129
+			}
+			add_political_power = 100
+			hidden_effect = {
+				country_event = {
+					id = russia.130
+					days = 30
+				}
+				GER = {
+					country_event = {
+						id = germany.241
+					}
+				}
+			}
+		}
+	}
+	focus = {
+		id = SOV_secure_the_flank
+		icon = GFX_focus_SOV_secure_the_flank
+		x = 2
+		y = 1
+		cost = 5
+		relative_position_id = SOV_the_eurasian_people_shall_bow_no_longer
+		prerequisite = {
+			focus = SOV_the_eurasian_people_shall_bow_no_longer
+		}
+		completion_reward = {
+			custom_effect_tooltip = SOV_secure_the_flank_tt
+			set_temp_variable = {
+				var = SOV_fanaticism_var_temp
+				value = 0.05
+			}
+			SOV_add_fanaticism = yes
+			hidden_effect = {
+				load_oob = SOV_reserve_far_eastern_divisions
+			}
+		}
+	}
+	focus = {
+		id = SOV_diversified_economics
+		icon = GFX_focus_SOV_diversified_economics
+		x = -2
+		y = 1
+		cost = 5
+		relative_position_id = SOV_subversive_rearmament
+		prerequisite = {
+			focus = SOV_subversive_rearmament
+		}
+		completion_reward = {
+			add_ideas = SOV_industrial_revitalization
+			every_controlled_state = {
+				add_extra_state_shared_building_slots = 1
+			}
+		}
+	}
+	focus = {
+		id = SOV_economic_autarky
+		icon = GFX_focus_SOV_economic_autarky
+		x = 0
+		y = 1
+		cost = 5
+		relative_position_id = SOV_subversive_rearmament
+		prerequisite = {
+			focus = SOV_subversive_rearmament
+		}
+		completion_reward = {
+			custom_effect_tooltip = change_trade_law_tooltip
+			show_ideas_tooltip = lower_trade
+			custom_effect_tooltip = tooltip_white_line
+			random_owned_controlled_state = {
+				add_resource = {
+					type = oil
+					amount = 15
+				}
+			}
+			random_owned_controlled_state = {
+				add_resource = {
+					type = oil
+					amount = 15
+				}
+			}
+			random_owned_controlled_state = {
+				add_resource = {
+					type = rubber
+					amount = 15
+				}
+			}
+			random_owned_controlled_state = {
+				add_resource = {
+					type = rubber
+					amount = 15
+				}
+			}
+			random_owned_controlled_state = {
+				add_resource = {
+					type = steel
+					amount = 25
+				}
+			}
+			random_owned_controlled_state = {
+				add_resource = {
+					type = chromium
+					amount = 15
+				}
+			}
+			random_owned_controlled_state = {
+				add_resource = {
+					type = aluminium
+					amount = 15
+				}
+			}
+			custom_effect_tooltip = tooltip_white_line
+			set_temp_variable = {
+				var = debt_var_temp
+				value = 125
+			}
+			add_debt_with_inflation = yes
+			hidden_effect = {
+				add_ideas = lower_trade
+			}
+		}
+	}
+	focus = {
+		id = SOV_eurasian_armed_forces
+		icon = GFX_focus_SOV_eurasian_armed_forces
+		relative_position_id = SOV_subversive_rearmament
+		x = 2
+		y = 1
+		cost = 5
+		prerequisite = {
+			focus = SOV_subversive_rearmament
+		}
+		completion_reward = {
+			effect_tooltip = {
+				add_ideas = SOV_eurasian_armed_forces_idea
+			}
+			unlock_decision_category_tooltip = SOV_eurasian_army_category
+			hidden_effect = {
+				country_event = {
+					id = russia.722
+					days = 35
+					random_days = 15
+				}
+				add_dynamic_modifier = {
+					modifier = SOV_eurasian_armed_forces_dynamic
+				}
+				add_to_variable = {
+					var = SOV_dugin_army_org_factor_dynamic
+					value = 0.05
+				}
+				add_to_variable = {
+					var = SOV_dugin_army_fuel_consumption_factor_dynamic
+					value = 0.05
+				}
+				add_to_variable = {
+					var = SOV_dugin_military_factory_upkeep_dynamic
+					value = 0.15
+				}
+				add_to_variable = {
+					var = SOV_dugin_battalion_upkeep_factor_dynamic
+					value = -0.05
+				}
+				add_to_variable = {
+					var = SOV_dugin_aircraft_upkeep_factor_dynamic
+					value = -0.15
+				}
+				add_to_variable = {
+					var = SOV_dugin_ship_upkeep_factor_dynamic
+					value = -0.15
+				}
+				add_to_variable = {
+					var = SOV_dugin_military_development_monthly_dynamic
+					value = 0.005
+				}
+				add_to_variable = {
+					var = SOV_dugin_army_morale_factor_dynamic
+					value = 0.05
+				}
+				add_to_variable = {
+					var = SOV_dugin_army_attack_factor_dynamic
+					value = 0.05
+				}
+				add_to_variable = {
+					var = SOV_dugin_special_forces_cap_dynamic
+					value = -0.15
+				}
+			}
+		}
+	}
+	focus = {
+		id = SOV_united_against_imperialism
+		icon = GFX_focus_SOV_united_against_imperialism
+		relative_position_id = SOV_soviet_nostalgia
+		x = -3
+		y = 1
+		cost = 5
+		prerequisite = {
+			focus = SOV_soviet_nostalgia
+		}
+		completion_reward = {
+			swap_ideas = {
+				remove_idea = SOV_stalinist_terror_idea
+				add_idea = SOV_stalinist_terror2_idea
+			}
+		}
+	}
+	focus = {
+		id = SOV_revolutionize_the_system
+		icon = GFX_focus_SOV_revolutionize_the_system
+		relative_position_id = SOV_soviet_nostalgia
+		x = 0
+		y = 2
+		cost = 5
+		prerequisite = {
+			focus = SOV_increase_local_autonomies
+			focus = SOV_federative_regionalism
+		}
+		completion_reward = {
+			add_ideas = SOV_new_revolutionary_state_idea
+			add_power_balance_value = {
+				id = SOV_dugin_power_balance
+				value = -0.1
+			}
+			hidden_effect = {
+				country_event = {
+					id = russia.721
+					days = 70
+					random_days = 30
+				}
+			}
+		}
+	}
+	focus = {
+		id = SOV_increase_local_autonomies
+		icon = GFX_focus_SOV_increase_local_autonomies
+		relative_position_id = SOV_soviet_nostalgia
+		x = -1
+		y = 1
+		cost = 5
+		ai_will_do = {
+			factor = 1
+			modifier = {
+				factor = 0
+				OR = {
+					has_game_rule = {
+						rule = The_Dugin_Left_or_Right
+						option = The_Dugin_Left_or_Right_2
+					}
+					has_game_rule = {
+						rule = The_Dugin_Left_or_Right
+						option = The_Dugin_Left_or_Right_3
+					}
+				}
+			}
+		}
+		mutually_exclusive = {
+			focus = SOV_federative_regionalism
+		}
+		prerequisite = {
+			focus = SOV_soviet_nostalgia
+		}
+		completion_reward = {
+			add_ideas = SOV_centralized_union_idea
+			add_power_balance_value = {
+				id = SOV_dugin_power_balance
+				value = -0.1
+			}
+		}
+	}
+	focus = {
+		id = SOV_federative_regionalism
+		icon = GFX_focus_SOV_federative_regionalism
+		relative_position_id = SOV_increase_local_autonomies
+		x = 2
+		y = 0
+		cost = 5
+		ai_will_do = {
+			factor = 1
+			modifier = {
+				factor = 0
+				OR = {
+					has_game_rule = {
+						rule = The_Dugin_Left_or_Right
+						option = The_Dugin_Left_or_Right_1
+					}
+					has_game_rule = {
+						rule = The_Dugin_Left_or_Right
+						option = The_Dugin_Left_or_Right_3
+					}
+				}
+			}
+		}
+		mutually_exclusive = {
+			focus = SOV_increase_local_autonomies
+			focus = SOV_reconceptualize_the_union
+		}
+		prerequisite = {
+			focus = SOV_soviet_nostalgia
+			focus = SOV_a_new_eurasian_identity
+		}
+		completion_reward = {
+			add_ideas = SOV_eurasia_autonomy
+			hidden_effect = {
+				country_event = {
+					id = russia.721
+					days = 70
+					random_days = 30
+				}
+			}
+			if = {
+				limit = {
+					has_game_rule = {
+						rule = The_Dugin_Left_or_Right
+						option = The_Dugin_Left_or_Right_2
+					}
+				}
+				set_power_balance = {
+					id = SOV_dugin_power_balance
+					left_side = SOV_lunarists_bop
+					right_side = SOV_solarists_bop
+					set_value = 0
+				}
+			}
+		}
+	}
+	focus = {
+		id = SOV_reconceptualize_the_union
+		icon = GFX_focus_SOV_reconceptualize_the_union
+		relative_position_id = SOV_soviet_nostalgia
+		x = 3
+		y = 1
+		cost = 5
+		ai_will_do = {
+			factor = 1
+			modifier = {
+				factor = 0
+				OR = {
+					has_game_rule = {
+						rule = The_Dugin_Left_or_Right
+						option = The_Dugin_Left_or_Right_1
+					}
+					has_game_rule = {
+						rule = The_Dugin_Left_or_Right
+						option = The_Dugin_Left_or_Right_2
+					}
+				}
+			}
+		}
+		mutually_exclusive = {
+			focus = SOV_federative_regionalism
+		}
+		prerequisite = {
+			focus = SOV_a_new_eurasian_identity
+		}
+		completion_reward = {
+			swap_ideas = {
+				remove_idea = SOV_the_construction_of_eurasia_idea
+				add_idea = SOV_the_construction_of_eurasia2_idea
+			}
+			add_power_balance_value = {
+				id = SOV_dugin_power_balance
+				value = 0.1
+			}
+			hidden_effect = {
+				country_event = {
+					id = russia.721
+					days = 70
+					random_days = 30
+				}
+			}
+		}
+	}
+	focus = {
+		id = SOV_tradionalist_meritocracy
+		icon = GFX_focus_SOV_tradionalist_meritocracy
+		relative_position_id = SOV_reconceptualize_the_union
+		x = -1
+		y = 1
+		cost = 5
+		prerequisite = {
+			focus = SOV_reconceptualize_the_union
+			focus = SOV_federative_regionalism
+		}
+		completion_reward = {
+			add_ideas = SOV_traditionalist_meritocracy_idea
+			add_power_balance_value = {
+				id = SOV_dugin_power_balance
+				value = 0.1
+			}
+		}
+	}
+	focus = {
+		id = SOV_wipe_out_nationalist_identities
+		icon = GFX_focus_SOV_wipe_out_nationalist_identities
+		relative_position_id = SOV_soviet_nostalgia
+		x = 5
+		y = 1
+		cost = 5
+		prerequisite = {
+			focus = SOV_a_new_eurasian_identity
+		}
+		completion_reward = {
+			add_ideas = SOV_imperial_multiethnicism_idea
+			every_controlled_state = {
+				limit = {
+					NOT = {
+						is_core_of = SOV
+					}
+				}
+				add_compliance = 15
+				add_resistance = -15
+			}
+			add_ideas = higher_racial_integration
+		}
+	}
+	focus = {
+		id = SOV_heirs_to_the_great_rus
+		icon = GFX_focus_SOV_heirs_to_the_great_rus
+		relative_position_id = SOV_wipe_out_nationalist_identities
+		x = 0
+		y = 1
+		cost = 5
+		prerequisite = {
+			focus = SOV_wipe_out_nationalist_identities
+		}
+		prerequisite = {
+			focus = SOV_reconceptualize_the_union
+		}
+		completion_reward = {
+			swap_ideas = {
+				remove_idea = SOV_imperial_multiethnicism_idea
+				add_idea = SOV_imperial_multiethnicism_2_idea
+			}
+		}
+	}
+	focus = {
+		id = SOV_conservative_revolution
+		icon = GFX_focus_SOV_Conservative_Revolution
+		relative_position_id = SOV_wipe_out_nationalist_identities
+		x = -1
+		y = 2
+		cost = 5
+		mutually_exclusive = {
+			focus = SOV_revise_foundations_of_geopolitics
+		}
+		prerequisite = {
+			focus = SOV_tradionalist_meritocracy
+		}
+		prerequisite = {
+			focus = SOV_wipe_out_nationalist_identities
+		}
+		completion_reward = {
+			SOV_decrease_traitors = yes
+			SOV_decrease_national_catastrophe = yes
+			add_ideas = {
+				SOV_Eurasian_Traditionalism
+			}
+		}
+	}
+	focus = {
+		id = SOV_strength_of_eastern_orthodoxy
+		icon = GFX_focus_SOV_solar_leader_of_eurasia
+		relative_position_id = SOV_conservative_revolution
+		x = 1
+		y = 1
+		cost = 5
+		prerequisite = {
+			focus = SOV_conservative_revolution
+		}
+		completion_reward = {
+			add_country_leader_trait = hos_solar_leader_of_eurasia
+		}
+	}
+	focus = {
+		id = SOV_spiritual_supremacy
+		icon = GFX_focus_SOV_spiritual_supremacy
+		relative_position_id = SOV_strength_of_eastern_orthodoxy
+		x = -2
+		y = 0
+		cost = 5
+		prerequisite = {
+			focus = SOV_conservative_revolution
+			focus = SOV_revise_foundations_of_geopolitics
+		}
+		completion_reward = {
+			add_stability = 0.1
+			add_timed_idea = {
+				idea = SOV_spiritual_supremacy_idea
+				days = 250
+			}
+			set_temp_variable = {
+				var = society_development_var_temp
+				value = 0.25
+			}
+			add_society_development = yes
+		}
+	}
+	focus = {
+		id = SOV_moscow_washington_axis
+		icon = GFX_focus_SOV_moscow_washington_axis
+		relative_position_id = SOV_anti_imperialist_culture
+		x = 1
+		y = 1
+		cost = 5
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = SOV_moscow_washington_axis_tt
+				AND = {
+					APA = {
+						has_government = totalitarian_socialist
+					}
+					country_exists = APA
+				}
+			}
+			custom_trigger_tooltip = {
+				tooltip = SOV_moscow_washington_axis_2_tt
+				SOV = {
+					has_government = totalitarian_socialist
+				}
+			}
+		}
+		prerequisite = {
+			focus = SOV_anti_imperialist_culture
+		}
+		prerequisite = {
+			focus = SOV_putting_the_asia_in_eurasia
+		}
+		completion_reward = {
+			country_event = {
+				id = russia.156
+			}
+			event_option_tooltip = russia.156.a
+			APA = {
+				country_event = {
+					id = russia.156
+				}
+				event_option_tooltip = russia.156.a
+			}
+			#unlock_decision_category_tooltip = SOV_moscow_washington_axis_cat
+		}
+	}
+	focus = {
+		id = SOV_recruit_islamist_fighters
+		icon = GFX_focus_SOV_recruit_islamist_fighters
+		relative_position_id = SOV_putting_the_asia_in_eurasia
+		x = 1
+		y = 1
+		cost = 5
+		available = {
+			236 = {
+				is_fully_controlled_by = SOV
+			}
+		}
+		prerequisite = {
+			focus = SOV_putting_the_asia_in_eurasia
+		}
+		prerequisite = {
+			focus = SOV_sign_the_kalmykia_agreement
+		}
+		completion_reward = {
+			custom_effect_tooltip = SOV_recruit_islamist_fighters_tt
+			set_temp_variable = {
+				var = SOV_fanaticism_var_temp
+				value = 0.05
+			}
+			SOV_add_fanaticism = yes
+			set_temp_variable = {
+				var = debt_var_temp
+				value = 2.5
+			}
+			add_debt_with_inflation = yes
+			hidden_effect = {
+				load_oob = SOV_islamist_volunteers
+			}
+		}
+	}
+	focus = {
+		id = SOV_detente_with_the_chinese
+		icon = GFX_focus_SOV_detente_with_the_chinese
+		relative_position_id = SOV_putting_the_asia_in_eurasia
+		x = 3
+		y = 1
+		cost = 5
+		prerequisite = {
+			focus = SOV_secure_the_flank
+		}
+		mutually_exclusive = {
+			focus = SOV_agreement_with_the_pdo
+		}
+		completion_reward = {
+			add_ideas = SOV_partnership_with_china
+			diplomatic_relation = {
+				country = PRC
+				relation = non_aggression_pact
+				active = yes
+			}
+			PRC = {
+				country_event = russia.776
+				effect_tooltip = {
+					add_ideas = SOV_PRC_JAP_partnership_with_dugin
+				}
+			}
+		}
+	}
+	focus = {
+		id = SOV_agreement_with_the_pdo
+		icon = GFX_focus_SOV_agreement_with_the_pdo
+		relative_position_id = SOV_putting_the_asia_in_eurasia
+		x = 5
+		y = 1
+		cost = 5
+		prerequisite = {
+			focus = SOV_secure_the_flank
+		}
+		mutually_exclusive = {
+			focus = SOV_detente_with_the_chinese
+		}
+		completion_reward = {
+			add_ideas = SOV_partnership_with_japan
+			diplomatic_relation = {
+				country = JAP
+				relation = non_aggression_pact
+				active = yes
+			}
+			diplomatic_relation = {
+				country = RAJ
+				relation = non_aggression_pact
+				active = yes
+			}
+			diplomatic_relation = {
+				country = AST
+				relation = non_aggression_pact
+				active = yes
+			}
+			every_country = {
+				limit = {
+					OR = {
+						tag = JAP
+						tag = RAJ
+						tag = AST
+					}
+				}
+				country_event = russia.776
+				effect_tooltip = {
+					add_ideas = SOV_PRC_JAP_partnership_with_dugin
+				}
+			}
+		}
+	}
+	focus = {
+		id = SOV_work_with_the_national_bourgoise
+		icon = GFX_focus_SOV_work_with_the_national_bourgoise
+		relative_position_id = SOV_diversified_economics
+		x = -1
+		y = 1
+		cost = 5
+		prerequisite = {
+			focus = SOV_diversified_economics
+		}
+		mutually_exclusive = {
+			focus = SOV_national_goals_over_profit_motives
+		}
+		completion_reward = {
+			add_ideas = SOV_eurasian_distributism_idea
+			custom_effect_tooltip = unlock_eco_minister_tooltip
+			show_ideas_tooltip = SOV_Konstantin_Malofeev
+			random_owned_controlled_state = {
+				add_building_construction = {
+					type = industrial_complex
+					level = 2
+					instant_build = yes
+				}
+			}
+			random_owned_controlled_state = {
+				add_building_construction = {
+					type = industrial_complex
+					level = 2
+					instant_build = yes
+				}
+			}
+			add_power_balance_value = {
+				id = SOV_dugin_power_balance
+				value = 0.1
+			}
+		}
+	}
+	focus = {
+		id = SOV_devalue_the_ruble
+		icon = GFX_focus_SOV_devalue_the_ruble
+		relative_position_id = SOV_diversified_economics
+		x = 0
+		y = 2
+		cost = 5
+		prerequisite = {
+			focus = SOV_diversified_economics
+		}
+		completion_reward = {
+			add_timed_idea = {
+				idea = SOV_ruble_devalued_idea
+				days = 356
+			}
+			random_owned_controlled_state = {
+				add_building_construction = {
+					type = industrial_complex
+					level = 2
+					instant_build = yes
+				}
+			}
+			add_power_balance_value = {
+				id = SOV_dugin_power_balance
+				value = 0.1
+			}
+		}
+	}
+	focus = {
+		id = SOV_eurasian_keynesianism
+		icon = GFX_focus_SOV_eurasian_keynesianism
+		relative_position_id = SOV_devalue_the_ruble
+		x = -1
+		y = 1
+		cost = 5
+		prerequisite = {
+			focus = SOV_decentralize_the_financial_system
+		}
+		prerequisite = {
+			focus = SOV_devalue_the_ruble
+		}
+		completion_reward = {
+			swap_ideas = {
+				remove_idea = SOV_eurasian_distributism_idea
+				add_idea = SOV_eurasian_distributism_2_idea
+			}
+			add_manpower = 5000
+			set_temp_variable = {
+				var = debt_var_temp
+				value = 50
+			}
+			add_debt_with_inflation = yes
+		}
+	}
+	focus = {
+		id = SOV_decentralize_the_financial_system
+		icon = GFX_focus_SOV_decentralize_the_financial_system
+		relative_position_id = SOV_work_with_the_national_bourgoise
+		x = -1
+		y = 1
+		cost = 5
+		prerequisite = {
+			focus = SOV_work_with_the_national_bourgoise
+		}
+		prerequisite = {
+			focus = SOV_economic_reorganization
+		}
+		mutually_exclusive = {
+			focus = SOV_national_goals_over_profit_motives
+		}
+		completion_reward = {
+			add_timed_idea = {
+				idea = SOV_decentralized_economics
+				days = 180
+			}
+			set_temp_variable = {
+				income_var_temp = 25
+			}
+			add_income_with_inflation = yes
+		}
+	}
+	focus = {
+		id = SOV_national_goals_over_profit_motives
+		icon = GFX_focus_SOV_national_goals_over_profit_motives
+		relative_position_id = SOV_diversified_economics
+		x = 1
+		y = 1
+		cost = 5
+		prerequisite = {
+			focus = SOV_diversified_economics
+		}
+		prerequisite = {
+			focus = SOV_economic_autarky
+		}
+		mutually_exclusive = {
+			focus = SOV_work_with_the_national_bourgoise
+		}
+		completion_reward = {
+			add_ideas = SOV_duginist_socialism_idea
+			custom_effect_tooltip = unlock_eco_minister_tooltip
+			show_ideas_tooltip = SOV_Delyagin
+			random_owned_controlled_state = {
+				add_building_construction = {
+					type = arms_factory
+					level = 2
+					instant_build = yes
+				}
+			}
+			random_owned_controlled_state = {
+				add_building_construction = {
+					type = arms_factory
+					level = 2
+					instant_build = yes
+				}
+			}
+			add_power_balance_value = {
+				id = SOV_dugin_power_balance
+				value = -0.1
+			}
+		}
+	}
+	focus = {
+		id = SOV_retool_civil_industry
+		icon = GFX_focus_SOV_retool_civil_industry
+		relative_position_id = SOV_national_goals_over_profit_motives
+		x = 1
+		y = 1
+		cost = 5
+		prerequisite = {
+			focus = SOV_national_goals_over_profit_motives
+		}
+		completion_reward = {
+			random_owned_controlled_state = {
+				add_building_construction = {
+					type = arms_factory
+					level = 1
+					instant_build = yes
+				}
+				add_extra_state_shared_building_slots = 2
+			}
+			random_owned_controlled_state = {
+				add_building_construction = {
+					type = arms_factory
+					level = 1
+					instant_build = yes
+				}
+				add_extra_state_shared_building_slots = 2
+			}
+			random_owned_controlled_state = {
+				add_building_construction = {
+					type = arms_factory
+					level = 1
+					instant_build = yes
+				}
+				add_extra_state_shared_building_slots = 2
+			}
+		}
+	}
+	focus = {
+		id = SOV_state_of_permanent_mobilization
+		icon = GFX_focus_SOV_state_of_permanent_mobilization
+		relative_position_id = SOV_national_goals_over_profit_motives
+		x = 0
+		y = 2
+		cost = 5
+		prerequisite = {
+			focus = SOV_national_goals_over_profit_motives
+		}
+		completion_reward = {
+			swap_ideas = {
+				remove_idea = SOV_duginist_socialism_idea
+				add_idea = SOV_duginist_socialism_2_idea
+			}
+			custom_effect_tooltip = change_economic_law_tooltip
+			show_ideas_tooltip = permanent_mobilization
+			hidden_effect = {
+				add_ideas = permanent_mobilization
+			}
+		}
+	}
+	focus = {
+		id = SOV_implement_a_conscription_program
+		icon = GFX_focus_SOV_implement_a_conscription_program
+		relative_position_id = SOV_eurasian_armed_forces
+		x = -1
+		y = 1
+		cost = 5
+		prerequisite = {
+			focus = SOV_eurasian_armed_forces
+		}
+		completion_reward = {
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = SOV_eurasian_armed_forces_dummy_idea
+					add_idea = SOV_implement_a_conscription_program_idea
+				}
+			}
+			custom_effect_tooltip = available_conscription_law
+			show_ideas_tooltip = eurasia_conscription
+			hidden_effect = {
+				add_to_variable = {
+					var = SOV_dugin_army_core_attack_factor_dynamic
+					value = 0.1
+				}
+				add_to_variable = {
+					var = SOV_dugin_army_defence_factor_dynamic
+					value = 0.15
+				}
+				add_to_variable = {
+					var = SOV_dugin_training_time_factor_dynamic
+					value = -0.1
+				}
+				add_to_variable = {
+					var = SOV_dugin_minimum_training_level_dynamic
+					value = -0.25
+				}
+				add_to_variable = {
+					var = SOV_dugin_military_leader_cost_factor_dynamic
+					value = -0.15
+				}
+			}
+		}
+	}
+	focus = {
+		id = SOV_expand_LTS_program
+		icon = GFX_focus_SOV_expand_LTS_program
+		relative_position_id = SOV_implement_a_conscription_program
+		x = 1
+		y = 1
+		cost = 5
+		prerequisite = {
+			focus = SOV_implement_a_conscription_program
+		}
+		prerequisite = {
+			focus = SOV_salvage_the_officer_corps
+		}
+		completion_reward = {
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = SOV_eurasian_armed_forces_dummy_idea
+					add_idea = SOV_expand_LTS_program_idea
+				}
+			}
+			if = {
+				limit = {
+					has_tech = body_armor6
+				}
+				set_technology = {
+					body_armor8 = 1
+				}
+			}
+			else = {
+				set_technology = {
+					body_armor6 = 1
+				}
+			}
+			add_tech_bonus = {
+				bonus = 0.5
+				uses = 2
+				category = support_tech
+				name = SOV_expand_LTS_program
+			}
+			add_tech_bonus = {
+				bonus = 0.5
+				uses = 2
+				category = infantry_tech
+				name = SOV_expand_LTS_program
+			}
+			add_tech_bonus = {
+				bonus = 0.5
+				uses = 2
+				category = artillery
+				name = SOV_expand_LTS_program
+			}
+			add_doctrine_cost_reduction = {
+				cost_reduction = 0.6
+				uses = 2
+				category = cat_old_land_doctrine
+				name = SOV_expand_LTS_program
+			}
+			hidden_effect = {
+				add_to_variable = {
+					var = SOV_dugin_terrain_penalty_reduction_dynamic
+					value = 0.1
+				}
+				add_to_variable = {
+					var = SOV_dugin_cas_damage_reduction_dynamic
+					value = 0.1
+				}
+				add_to_variable = {
+					var = SOV_dugin_research_speed_factor_dynamic
+					value = 0.1
+				}
+				add_to_variable = {
+					var = SOV_dugin_recon_factor_dynamic
+					value = 0.085
+				}
+			}
+		}
+	}
+	focus = {
+		id = SOV_the_tanks_of_the_future
+		icon = GFX_focus_SOV_the_tanks_of_the_future
+		relative_position_id = SOV_expand_LTS_program
+		x = 2
+		y = 0
+		cost = 5
+		prerequisite = {
+			focus = SOV_salvage_the_officer_corps
+		}
+		completion_reward = {
+			if = {
+				limit = {
+					NOT = {
+						has_dlc = "No Step Back"
+					}
+				}
+				add_tech_bonus = {
+					bonus = 1
+					uses = 1
+					name = mech_army_bonus
+					category = armor
+					category = cat_mechanized_equipment
+				}
+			}
+			else = {
+				add_tech_bonus = {
+					bonus = 1
+					uses = 1
+					name = mech_army_bonus
+					technology = basic_medium_tank_chassis
+					technology = improved_medium_tank_chassis
+					technology = advanced_medium_tank_chassis
+					technology = mechanised_infantry4
+				}
+			}
+		}
+	}
+	focus = {
+		id = SOV_lost_sons_of_eurasia
+		icon = GFX_focus_SOV_lost_sons_of_eurasia
+		relative_position_id = SOV_the_tanks_of_the_future
+		x = 0
+		y = 2
+		cost = 5
+		prerequisite = {
+			focus = SOV_the_tanks_of_the_future
+		}
+		completion_reward = {
+			add_manpower = 25000
+			unlock_decision_tooltip = SOV_organize_partisans_in_baltic
+			unlock_decision_tooltip = SOV_organize_partisans_in_ukraine
+			unlock_decision_tooltip = SOV_organize_partisans_in_belarus
+		}
+	}
+	focus = {
+		id = SOV_introduce_industrial_automization
+		icon = GFX_focus_SOV_introduce_industrial_automization
+		relative_position_id = SOV_expand_LTS_program
+		x = 1
+		y = 1
+		cost = 5
+		prerequisite = {
+			focus = SOV_the_tanks_of_the_future
+		}
+		prerequisite = {
+			focus = SOV_expand_LTS_program
+		}
+		completion_reward = {
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = SOV_eurasian_armed_forces_dummy_idea
+					add_idea = SOV_introduce_industrial_automization_idea
+				}
+			}
+			unlock_decision_tooltip = SOV_improve_supply_lines
+			hidden_effect = {
+				add_to_variable = {
+					var = SOV_dugin_production_factory_efficiency_gain_factor_dynamic
+					value = 0.05
+				}
+				add_to_variable = {
+					var = SOV_dugin_production_factory_max_efficiency_factor_dynamic
+					value = 0.07
+				}
+				add_to_variable = {
+					var = SOV_dugin_unit_upkeep_attrition_factor_dynamic
+					value = -0.1
+				}
+				add_to_variable = {
+					var = SOV_dugin_battalion_upkeep_factor_dynamic
+					value = -0.1
+				}
+				add_to_variable = {
+					var = SOV_dugin_military_factory_upkeep_factor_dynamic
+					value = 0.05
+				}
+				add_to_variable = {
+					var = SOV_dugin_aircraft_upkeep_factor_dynamic
+					value = -0.05
+				}
+				add_to_variable = {
+					var = SOV_dugin_supply_node_range_dynamic
+					value = 0.025
+				}
+			}
+		}
+	}
+	focus = {
+		id = SOV_install_ideological_fanaticism
+		icon = GFX_focus_SOV_install_ideological_fanaticism
+		relative_position_id = SOV_implement_a_conscription_program
+		x = 0
+		y = 2
+		cost = 5
+		prerequisite = {
+			focus = SOV_implement_a_conscription_program
+		}
+		completion_reward = {
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = SOV_eurasian_armed_forces_dummy_idea
+					add_idea = SOV_install_ideological_fanaticism_idea
+				}
+			}
+			add_war_support = 0.1
+			set_temp_variable = {
+				var = SOV_fanaticism_var_temp
+				value = 0.1
+			}
+			SOV_add_fanaticism = yes
+			hidden_effect = {
+				add_to_variable = {
+					var = SOV_dugin_army_morale_factor_dynamic
+					value = 0.04
+				}
+				add_to_variable = {
+					var = SOV_dugin_breakthrough_factor_dynamic
+					value = 0.065
+				}
+				add_to_variable = {
+					var = SOV_dugin_army_speed_factor_dynamic
+					value = 0.05
+				}
+				add_to_variable = {
+					var = SOV_dugin_fortification_damage_dynamic
+					value = 0.1
+				}
+				add_to_variable = {
+					var = SOV_dugin_max_dig_in_factor_dynamic
+					value = 0.08
+				}
+				add_to_variable = {
+					var = SOV_dugin_experience_loss_factor_dynamic
+					value = 0.1
+				}
+			}
+		}
+	}
+	focus = {
+		id = SOV_struggle_for_survival
+		icon = GFX_focus_SOV_struggle_for_survival
+		relative_position_id = SOV_install_ideological_fanaticism
+		x = 0
+		y = 1
+		cost = 5
+		prerequisite = {
+			focus = SOV_install_ideological_fanaticism
+		}
+		completion_reward = {
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = SOV_eurasian_armed_forces_dummy_idea
+					add_idea = SOV_eurasian_armed_forces_2_idea
+				}
+			}
+			set_temp_variable = {
+				var = SOV_fanaticism_var_temp
+				value = 0.05
+			}
+			SOV_add_fanaticism = yes
+			hidden_effect = {
+				add_to_variable = {
+					var = SOV_dugin_army_morale_factor_dynamic
+					value = 0.05
+				}
+				add_to_variable = {
+					var = SOV_dugin_army_core_attack_factor_dynamic
+					value = 0.05
+				}
+				add_to_variable = {
+					var = SOV_dugin_army_core_defense_factor_dynamic
+					value = 0.05
+				}
+				add_to_variable = {
+					var = SOV_dugin_army_org_regain_dynamic
+					value = 0.07
+				}
+				add_to_variable = {
+					var = SOV_dugin_mobilization_speed_dynamic
+					value = 0.1
+				}
+			}
+		}
+	}
+	focus = {
+		id = SOV_salvage_the_officer_corps
+		icon = GFX_focus_SOV_salvage_the_officer_corps
+		relative_position_id = SOV_eurasian_armed_forces
+		x = 1
+		y = 1
+		cost = 5
+		prerequisite = {
+			focus = SOV_eurasian_armed_forces
+		}
+		completion_reward = {
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = SOV_eurasian_armed_forces_dummy_idea
+					add_idea = SOV_salvage_the_officer_corps_idea
+				}
+			}
+			set_temp_variable = {
+				var = military_development_var_temp
+				value = 0.1
+			}
+			add_military_development = yes
+			unlock_decision_tooltip = SOV_new_officer_training
+			hidden_effect = {
+				add_to_variable = {
+					var = SOV_dugin_planning_speed_dynamic
+					value = 0.1
+				}
+				add_to_variable = {
+					var = SOV_dugin_grant_medal_cost_factor_dynamic
+					value = -0.1
+				}
+				add_to_variable = {
+					var = SOV_dugin_initiative_factor_dynamic
+					value = 0.1
+				}
+				add_to_variable = {
+					var = SOV_dugin_land_doctrine_cost_factor_dynamic
+					value = -0.035
+				}
+				add_to_variable = {
+					var = SOV_dugin_coordination_bonus_dynamic
+					value = 0.05
+				}
+				add_to_variable = {
+					var = SOV_dugin_military_development_monthly_dynamic
+					value = 0.005
+				}
+				add_to_variable = {
+					var = SOV_dugin_terrain_penalty_reduction_dynamic
+					value = 0.05
+				}
+			}
+		}
+	}
+	focus = {
+		id = SOV_heirs_of_the_union
+		icon = GFX_focus_SOV_heirs_of_the_union
+		relative_position_id = SOV_united_against_imperialism
+		x = 0
+		y = 1
+		cost = 5
+		prerequisite = {
+			focus = SOV_united_against_imperialism
+		}
+		prerequisite = {
+			focus = SOV_increase_local_autonomies
+		}
+		completion_reward = {
+			add_stability = 0.1
+			swap_ideas = {
+				remove_idea = SOV_stalinist_terror2_idea
+				add_idea = SOV_stalinist_terror3_idea
+			}
+		}
+	}
+	focus = {
+		id = SOV_organic_democracy
+		icon = GFX_focus_SOV_organic_democracy
+		relative_position_id = SOV_united_against_imperialism
+		x = 1
+		y = 2
+		cost = 5
+		ai_will_do = {
+			factor = 1
+			modifier = {
+				factor = 0
+				OR = {
+					has_game_rule = {
+						rule = The_Dugin_Left_or_Right
+						option = The_Dugin_Left_or_Right_2
+					}
+					has_game_rule = {
+						rule = The_Dugin_Left_or_Right
+						option = The_Dugin_Left_or_Right_3
+					}
+				}
+			}
+		}
+		mutually_exclusive = {
+			focus = SOV_revise_foundations_of_geopolitics
+		}
+		available = {
+		}
+		prerequisite = {
+			focus = SOV_united_against_imperialism
+		}
+		prerequisite = {
+			focus = SOV_revolutionize_the_system
+		}
+		completion_reward = {
+			swap_ideas = {
+				remove_idea = SOV_new_revolutionary_state_idea
+				add_idea = SOV_totalitarian_party_state_idea
+			}
+			SOV_decrease_traitors = yes
+			SOV_decrease_national_catastrophe = yes
+		}
+	}
+	focus = {
+		id = SOV_movement_of_all_eurasian_peoples
+		icon = GFX_focus_SOV_movement_of_all_eurasian_peoples
+		relative_position_id = SOV_united_against_imperialism
+		x = 0
+		y = 3
+		cost = 5
+		mutually_exclusive = {
+			focus = SOV_the_great_revolutionary
+		}
+		prerequisite = {
+			focus = SOV_organic_democracy
+		}
+		completion_reward = {
+			swap_ideas = {
+				remove_idea = SOV_totalitarian_party_state_idea
+				add_idea = SOV_totalitarian_party_state_2_idea
+			}
+			hidden_effect = {
+			}
+		}
+	}
+	focus = {
+		id = SOV_the_great_revolutionary		#and his daughter
+		icon = GFX_focus_SOV_the_great_revolutionary
+		relative_position_id = SOV_united_against_imperialism
+		x = 2
+		y = 3
+		cost = 5
+		mutually_exclusive = {
+			focus = SOV_movement_of_all_eurasian_peoples
+		}
+		prerequisite = {
+			focus = SOV_organic_democracy
+		}
+		completion_reward = {
+			hidden_effect = {
+			}
+			custom_effect_tooltip = SOV_the_great_revolutionary_tt
+			add_country_leader_trait = hos_the_great_revolutionary
+		}
+	}
+	focus = {
+		id = SOV_revise_foundations_of_geopolitics
+		icon = GFX_focus_SOV_revise_foundations_of_geopolitics
+		relative_position_id = SOV_increase_local_autonomies
+		x = 2
+		y = 2
+		cost = 5
+		ai_will_do = {
+			factor = 1
+			modifier = {
+				factor = 0
+				OR = {
+					has_game_rule = {
+						rule = The_Dugin_Left_or_Right
+						option = The_Dugin_Left_or_Right_1
+					}
+					has_game_rule = {
+						rule = The_Dugin_Left_or_Right
+						option = The_Dugin_Left_or_Right_3
+					}
+				}
+			}
+		}
+		available = {
+			is_power_balance_in_range = {
+				id = SOV_dugin_power_balance
+				range = SOV_dugin_middle
+			}
+		}
+		prerequisite = {
+			focus = SOV_increase_local_autonomies
+			focus = SOV_reconceptualize_the_union
+			focus = SOV_federative_regionalism
+		}
+		mutually_exclusive = {
+			focus = SOV_organic_democracy
+			focus = SOV_conservative_revolution
+		}
+		completion_reward = {
+			SOV_decrease_traitors = yes
+			SOV_decrease_national_catastrophe = yes
+			set_temp_variable = {
+				var = SOV_fanaticism_var_temp
+				value = 0.05
+			}
+			SOV_add_fanaticism = yes
+		}
+	}
+	focus = {
+		id = SOV_Power_in_Diversity
+		icon = GFX_focus_SOV_Power_In_Diversity
+		relative_position_id = SOV_revise_foundations_of_geopolitics
+		x = 0
+		y = 1
+		cost = 5
+		prerequisite = {
+			focus = SOV_revise_foundations_of_geopolitics
+		}
+		completion_reward = {
+			add_political_power = 150
+			add_country_leader_trait = hos_father_of_eurasianism
+		}
+	}
+	focus = {
+		id = SOV_motherland_of_virtue
+		icon = GFX_focus_SOV_motherland_of_virtue
+		relative_position_id = SOV_revise_foundations_of_geopolitics
+		x = 1
+		y = 2
+		cost = 5
+		prerequisite = {
+			focus = SOV_revise_foundations_of_geopolitics
+		}
+		completion_reward = {
+			add_political_power = 150
+			add_ideas = religious_exemptions
+			set_temp_variable = {
+				var = society_development_var_temp
+				value = 0.25
+			}
+			add_society_development = yes
+			set_temp_variable = {
+				var = poverty_development_var_temp
+				value = 0.25
+			}
+			add_poverty_development = yes
+		}
+	}
+	focus = {
+		id = SOV_empire_of_purity
+		icon = GFX_focus_SOV_empire_of_purity
+		relative_position_id = SOV_revise_foundations_of_geopolitics
+		x = 3
+		y = 2
+		cost = 5
+		ai_will_do = {
+			factor = 1
+			modifier = {
+				factor = 0
+				OR = {
+					has_game_rule = {
+						rule = The_Dugin_Left_or_Right
+						option = The_Dugin_Left_or_Right_1
+					}
+					has_game_rule = {
+						rule = The_Dugin_Left_or_Right
+						option = The_Dugin_Left_or_Right_2
+					}
+				}
+			}
+		}
+		prerequisite = {
+			focus = SOV_conservative_revolution
+		}
+		completion_reward = {
+			swap_ideas = {
+				remove_idea = SOV_traditionalist_meritocracy_idea
+				add_idea = SOV_empire_of_the_pure_idea
+			}
+		}
+	}
+	focus = {
+		id = SOV_god_kingdom_of_common_man
+		icon = GFX_focus_SOV_god_kingdom_of_common_man
+		relative_position_id = SOV_organic_democracy
+		x = 0
+		y = 2
+		cost = 5
+		prerequisite = {
+			focus = SOV_movement_of_all_eurasian_peoples
+			focus = SOV_the_great_revolutionary
+		}
+		completion_reward = {
+			swap_ideas = {
+				remove_idea = SOV_stalinist_terror3_idea
+				add_idea = SOV_stalinist_terror4_idea
+			}
+		}
+	}
+}
+
+#add_offsite_building = { type = arms_factory level = 2 }
+#add_offsite_building = { type = industrial_complex level = 2 }

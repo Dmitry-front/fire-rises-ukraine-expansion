@@ -1,0 +1,391 @@
+#BLR_Kommunarka_april_fools = {
+#
+#	BLR_candy_production = {
+#	icon = GFX_candy_kommunarka
+#	
+#			available = {
+#			  NOT = {
+#			    tag = BLR
+#				}
+#			}
+#	
+#			priority = 1
+#			fire_only_once = no
+#			days_mission_timeout = 7
+#			days_re_enable = 1
+#			is_good = yes
+#			cancel_if_not_visible = yes
+#
+#			activation = {
+#				always = no
+#			}
+#		
+#		timeout_effect = {
+#			set_temp_variable = {
+#				var = BLR_candies_april_fools_temp
+#				value = BLR_candies_amount_var
+#			}
+#			BLR_add_candies_in_kommunarka = yes
+#			hidden_effect = {
+#			activate_mission = BLR_candy_production
+#			}
+#		}
+#	}
+#	BLR_sell_candies_in_belarus = {
+#	        icon = GFX_BLR_Candy_Kommunarka
+#			allowed = {
+#			    tag = BLR
+#			}
+#			
+#			visible = {
+#			    tag = BLR
+#			}
+#			available = {
+#			check_variable = {
+#                   var = BLR_candies_april_fools_var
+#                   value = 500
+#                   compare = greater_than_or_equals
+#               }
+#			}
+#           days_remove = 10
+#			fire_only_once = no
+#			days_re_enable = 35
+#			cancel_if_not_visible = yes
+#			
+#			modifier = {
+#				industrial_capacity_factory = 0.05
+#				production_speed_buildings_factor = 0.02
+#			}
+#
+#			complete_effect = {
+#			   set_temp_variable = {
+#				   var = BLR_candies_april_fools_temp
+#				   value = -500
+#			    }
+#			    BLR_add_candies_in_kommunarka = yes
+#			}
+#
+#			remove_effect = {
+#			    add_stability = 0.05
+#			}
+#	    }
+#	BLR_sell_candies_in_russia = {
+#	        icon = GFX_BLR_Candy_Kommunarka
+#			
+#			allowed = {
+#			    tag = BLR
+#			}
+#			
+#			visible = {
+#			    tag = BLR
+#			}
+#						
+#			available = {
+#			check_variable = {
+#                   var = BLR_candies_april_fools_var
+#                   value = 1000
+#                   compare = greater_than_or_equals
+#               }
+#			}
+#           days_remove = 10
+#			fire_only_once = no
+#			days_re_enable = 50
+#			cancel_if_not_visible = yes
+#			
+#			modifier = {
+#				industrial_capacity_factory = 0.10
+#				production_speed_buildings_factor = 0.10
+#			}
+#
+#			complete_effect = { 
+#			    set_temp_variable = {
+#				   var = BLR_candies_april_fools_temp
+#				   value = -1000
+#			    }
+#			    BLR_add_candies_in_kommunarka = yes
+#				
+#				add_to_variable = {
+#			        var = BLR_sold_to_Russia
+#			        value = 1
+#		        }
+#			}
+#
+#			remove_effect = {
+#				set_temp_variable = {
+#					var = income_var_temp
+#					value = 0.1
+#				}
+#				add_income = yes
+#			}
+#	    }
+#	BLR_sell_candies_in_kazahstan = {
+#	        icon = GFX_BLR_Candy_Kommunarka
+#			
+#			allowed = {
+#			    tag = BLR
+#			}
+#			
+#			visible = {
+#			    tag = BLR
+#			}
+#			
+#			
+#			available = {
+#			check_variable = {
+#                   var = BLR_candies_april_fools_var
+#                   value = 500
+#                   compare = greater_than_or_equals
+#               }
+#			}
+#           days_remove = 10
+#			fire_only_once = no
+#			days_re_enable = 50
+#			cancel_if_not_visible = yes
+#			
+#			modifier = {
+#				industrial_capacity_factory = 0.10
+#				production_speed_buildings_factor = 0.10
+#			}
+#
+#			complete_effect = { 
+#			    set_temp_variable = {
+#				   var = BLR_candies_april_fools_temp
+#				   value = -500
+#			    }
+#			    BLR_add_candies_in_kommunarka = yes
+#				
+#				add_to_variable = {
+#			        var = BLR_sold_to_kaz
+#			        value = 1
+#		        }
+#			}
+#
+#			remove_effect = {
+#				set_temp_variable = {
+#					var = income_var_temp
+#					value = 0.06
+#				}
+#				add_income = yes
+#			}
+#	    }
+#	BLR_sell_candies_in_ukraine = {
+#	        icon = GFX_BLR_Candy_Kommunarka
+#			
+#			allowed = {
+#			    tag = BLR
+#			}
+#			
+#			visible = {
+#			    tag = BLR
+#			}
+#			
+#			available = {
+#			check_variable = {
+#                   var = BLR_candies_april_fools_var
+#                   value = 500
+#                   compare = greater_than_or_equals
+#               }
+#			}
+#           days_remove = 10
+#			fire_only_once = no
+#			days_re_enable = 50
+#			cancel_if_not_visible = yes
+#			
+#			modifier = {
+#				industrial_capacity_factory = 0.10
+#				production_speed_buildings_factor = 0.10
+#			}
+#
+#			complete_effect = { 
+#			    set_temp_variable = {
+#				   var = BLR_candies_april_fools_temp
+#				   value = -500
+#			    }
+#			    BLR_add_candies_in_kommunarka = yes
+#				
+#				add_to_variable = {
+#			        var = BLR_sold_to_hohol
+#			        value = 1
+#		        }
+#			}
+#
+#			remove_effect = {
+#				set_temp_variable = {
+#					var = income_var_temp
+#					value = 0.1
+#				}
+#				add_income = yes
+#			}
+#	    }
+#		BLR_sell_candies_in_minor_states_cis = {
+#	        icon = GFX_BLR_Candy_Kommunarka
+#			
+#			allowed = {
+#			    tag = BLR
+#			}
+#			
+#			visible = {
+#			    tag = BLR
+#			}
+#			
+#			available = {
+#			check_variable = {
+#                   var = BLR_candies_april_fools_var
+#                   value = 500
+#                   compare = greater_than_or_equals
+#               }
+#			}
+#           days_remove = 10
+#			fire_only_once = no
+#			days_re_enable = 50
+#			cancel_if_not_visible = yes
+#			
+#			modifier = {
+#				industrial_capacity_factory = 0.10
+#				production_speed_buildings_factor = 0.10
+#			}
+#
+#			complete_effect = { 
+#			    set_temp_variable = {
+#				   var = BLR_candies_april_fools_temp
+#				   value = -500
+#			    }
+#			    BLR_add_candies_in_kommunarka = yes
+#				
+#				add_to_variable = { 
+#			        var = BLR_sold_to_cis_minor #wtf
+#			        value = 1
+#		        }
+#			}
+#
+#			remove_effect = {
+#				set_temp_variable = {
+#					var = income_var_temp
+#					value = 0.1
+#				}
+#				add_income = yes
+#			}
+#	    }
+#
+#	   #BLR_subjugate_russia = {
+#	   #    icon = GFX_BLR_Candy_Kommunarka
+#		#    allowed = {
+#		#	    
+#		#    }
+#		#	available = {
+#		#	    BLR_sold_to_russia_greater_than_or_equals = yes
+#		#	}
+#		#	visible = {
+#		#		has_country_flag = BLR_lykashenko_fools
+#		#	}
+#      #    days_remove = 40
+#		#	fire_only_once = yes
+#		#	cancel_if_not_visible = yes
+#	   #
+#		#	complete_effect = {
+#		#		set_cosmetic_tag = UIN_union_state
+#		#		every_state = {
+#		#			limit = {
+#		#			is_core_of = SOV
+#		#			}
+#		#			add_core_of = BLR
+#		#			}
+#		#			hidden_effect = {
+#		#			country_event { id = belarus.668 days = 5 }
+#		#			}
+#		#		}
+#		#	}
+#	   #
+#		#	remove_effect = {
+#		#		SOV = {
+#		#		every_unit_leader = { 
+#		#				set_nationality = BLR
+#		#			} 
+#		#		}
+#		#		annex_country = {
+#		#			target = SOV
+#		#			transfer_troops = yes
+#		#			} 
+#		#		   hidden_effect = {
+#		#		   country_event = { id = belarus.667 days = 10 random = 2 }
+#		#		   }   
+#		#		}
+#	   #}
+#		BLR_subjugate_kaz = {
+#	        icon = GFX_BLR_Candy_Kommunarka
+#		    allowed = {
+#			    has_country_flag = BLR_lykashenko_fools
+#		    }
+#			available = {
+#			    BLR_sold_to_kaz_greater_than_or_equals = yes
+#			}
+#           days_remove = 30
+#			fire_only_once = yes
+#			cancel_if_not_visible = yes
+#	
+#			complete_effect = {
+#			every_state = {
+#				limit = {
+#				is_core_of = KAZ
+#				}
+#				add_core_of = BLR
+#				}
+#			}
+#
+#			remove_effect = {
+#			KAZ = {
+#		    every_unit_leader = { 
+#			        set_nationality = BLR
+#			    } 
+#		    }
+#			annex_country = {
+#  				target = KAZ
+#  				transfer_troops = yes
+#			    }   
+#			}
+#	    }
+#		BLR_expand_production = {
+#	        icon = GFX_BLR_Candy_Kommunarka
+#			allowed = {
+#			    tag = BLR
+#			}
+#			
+#			visible = {
+#			    tag = BLR
+#			}
+#			cost = 100
+#           days_remove = 50
+#			fire_only_once = yes
+#			cancel_if_not_visible = yes
+#			
+#			modifier = {
+#			}
+#
+#			complete_effect = { 
+#			    add_manpower = -2000
+#			}
+#
+#			remove_effect = {
+#			custom_effect_tooltip = BLR_expand_production_kommunarka_tooltip
+#				random_owned_controlled_state = {
+#					add_extra_state_shared_building_slots = 1
+#					add_building_construction = {
+#						type = industrial_complex 
+#						level = 1
+#						instant_build = yes
+#					}
+#				}
+#				set_temp_variable = {
+#					var = debt_var_temp
+#					value = 0.25
+#				}
+#				add_debt = yes
+#			    add_to_variable = {
+#			        var = BLR_candies_amount_var
+#			        value = 50
+#		        }
+#			}
+#	    }
+#   }
+#}
+	

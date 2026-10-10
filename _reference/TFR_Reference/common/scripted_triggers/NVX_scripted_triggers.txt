@@ -1,0 +1,115 @@
+### NATIONAL BEHAVIOUR TRIGGERS ###
+	#set_country_flag = 
+	#behavior_indolent_trigger = yes
+
+behavior_indolent_trigger = { #Never researches high-tier vehicle techs or artificial resource techs
+	has_country_flag = country_behavior_indolent
+}
+
+behavior_dispersed_trigger = { #Researches dispersed industry techs
+	has_country_flag = country_behavior_dispersed
+}
+
+behavior_competitive_trigger = { #Prioritizes military tech
+	has_country_flag = country_behavior_competitive
+}
+
+behavior_brazen_trigger = { #Will research nuclear tech without regard for international opposition
+	has_country_flag = country_behavior_brazen
+}
+
+behavior_diligent_trigger = { #??
+	has_country_flag = country_behavior_diligent
+}
+
+NVX_has_government_democratic = {
+	OR = {
+		has_government = nationalist
+		has_government = authoritarian_democrat
+		has_government = conservative
+		has_government = market_liberal
+		has_government = social_liberal
+		has_government = social_democrat
+		has_government = social_liberal
+		has_government = libertarian_socialist
+	}
+}
+
+NVX_has_government_fascist = {
+	OR = {
+		has_government = authoritarian_democrat
+		has_government = fascist
+	}
+}
+
+NVX_has_government_ideology_democratic = {
+	has_elections = yes
+	OR = {
+		has_government = authoritarian_democrat
+		has_government = nationalist
+		has_government = authoritarian_democrat
+		has_government = conservative
+		has_government = market_liberal
+		has_government = social_liberal
+		has_government = social_democrat
+		has_government = social_liberal
+		has_government = libertarian_socialist
+	}
+}
+
+NVX_has_government_ideology_authoritarian = {
+	OR = {
+		has_government = fascist
+		has_government = communist
+		AND = {
+			has_government = authoritarian_democrat
+			has_elections = no
+		}
+		AND = {
+			has_government = nationalist
+			has_elections = no
+		}
+	}
+}
+
+NVX_break_up_countries_trigger = {
+	OR = {
+		any_owned_state = { is_core_of = BAV }
+		any_owned_state = { is_core_of = TIB }
+		any_owned_state = { is_core_of = SIK }
+		any_owned_state = { is_core_of = XSM }
+		any_owned_state = { is_core_of = SHX }
+		any_owned_state = { is_core_of = MEN }
+		any_owned_state = { is_core_of = MAN }
+		any_owned_state = { is_core_of = YUN }
+		any_owned_state = { is_core_of = GXC }
+	}
+}
+
+
+### UNIT CONSTRUCTION TRIGGERS ###
+naval_minor_carrier_limit_one_trigger = {
+	is_major = no
+	num_of_naval_factories < 15
+	has_navy_size = {
+		type = carrier
+		size > 0
+	}
+}
+
+naval_minor_carrier_limit_two_trigger = {
+	is_major = no
+	num_of_naval_factories < 25
+	has_navy_size = {
+		type = carrier
+		size > 1
+	}
+}
+
+naval_minor_missile_cruiser_limit_trigger = {
+	is_major = no
+	has_navy_size = {
+		type = capital_ship
+		size > 5
+	}
+}

@@ -1,0 +1,181 @@
+SAF_civil_war = {
+	SAF_declare_victory = {
+		available = {
+			tag = SAF
+			has_war = no
+			controls_state = 681
+			controls_state = 1376
+			controls_state = 1317
+			controls_state = 818
+			controls_state = 719
+			controls_state = 1318
+			controls_state = 1376
+			controls_state = 1342
+			controls_state = 1303
+			controls_state = 1343
+			controls_state = 275
+		}
+		modifier = {
+		}
+		ai_will_do = {
+			factor = 100
+		}
+		fire_only_once = yes
+		days_remove = 5
+		cost = 0
+		
+		remove_effect = {
+			set_cosmetic_tag = SAF_unified
+			news_event = { id = news.371 }
+			country_event = { id = saf.5 days = 65 }
+			set_capital = {
+			  state = 681
+			  remember_old_capital = no
+			}
+			every_state = {
+				limit = {
+				is_core_of = SWZ
+				}
+				remove_core_of = EFF
+				remove_core_of = SWZ
+				remove_core_of = LES
+				add_core_of = SAF
+			}
+		}
+	}
+	SWZ_declare_victory = {
+		available = {
+			tag = SWZ
+			has_war = no
+			controls_state = 681
+			controls_state = 1376
+			controls_state = 1317
+			controls_state = 818
+			controls_state = 719
+			controls_state = 1318
+			controls_state = 1376
+			controls_state = 1342
+			controls_state = 1303
+			controls_state = 1343
+			controls_state = 275
+		}
+		modifier = {
+		}
+		ai_will_do = {
+			factor = 100
+		}
+		fire_only_once = yes
+		days_remove = 5
+		cost = 0
+		
+		remove_effect = {
+			news_event = { id = news.373 }
+			every_state = {
+				limit = {
+				is_core_of = SWZ
+				}
+				remove_core_of = EFF
+				remove_core_of = SAF
+				remove_core_of = LES
+			}
+		}
+	}
+
+		CFF_declare_victory = {
+		available = {
+			tag = CFF
+			has_war = no
+			controls_state = 681
+			controls_state = 1376
+			controls_state = 1317
+			controls_state = 818
+			controls_state = 719
+			controls_state = 1318
+			controls_state = 1376
+			controls_state = 1342
+			controls_state = 1303
+			controls_state = 1343
+			controls_state = 275
+		}
+		modifier = {
+		}
+		ai_will_do = {
+			factor = 100
+		}
+		fire_only_once = yes
+		days_remove = 5
+		cost = 0
+		
+		remove_effect = {
+			set_cosmetic_tag = CFF_unified
+			news_event = { id = news.372 }
+			set_capital = {
+			  state = 681
+			  remember_old_capital = no
+			}
+			every_state = {
+				limit = {
+				is_core_of = SWZ
+				}
+				remove_core_of = EFF
+				remove_core_of = LES
+				remove_core_of = SAF
+			}
+	    }
+    }
+}
+	EFF_civil_war = {
+		
+		EFF_declare_victory = {
+		
+			icon = generic_ignite_civil_war
+
+			allowed = {
+				
+			}
+			
+			visible = {
+
+			}
+
+			available = {
+				controls_state = 681
+				controls_state = 1376
+				controls_state = 1317
+				controls_state = 818
+				controls_state = 719
+				controls_state = 1318
+				controls_state = 1376
+				controls_state = 1342
+				controls_state = 1303
+				controls_state = 1343
+				controls_state = 275
+			}
+			
+			ai_will_do = {
+				factor = 100
+			}
+
+			fire_only_once = yes
+			
+			
+			complete_effect = {
+				news_event = {
+					id = news.370
+				}
+				create_faction = panafrican_faction
+				hidden_effect = {
+					remove_faction_goal = faction_goal_the_atomic_race
+					add_faction_goal = faction_goal_placeholder_long_term
+					remove_faction_goal = faction_goal_a_military_base
+					add_faction_goal = faction_goal_placeholder_medium_term
+					add_faction_goal = faction_goal_placeholder_short_term
+				}
+				set_cosmetic_tag = EFF_unified
+				EFF = {
+					add_to_faction = MZB
+					add_to_faction = ZIM
+				}
+			}
+		}
+	}	

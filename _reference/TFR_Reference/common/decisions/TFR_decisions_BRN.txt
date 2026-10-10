@@ -1,0 +1,866 @@
+#	BRN_internal_management = {
+	
+#		BRN_factionalism_growth_mission = {
+#
+#			icon = generic_political_discourse
+#
+#			allowed = {
+#				#tag = BRN
+#			}
+#
+#			available = {
+#				NOT = {
+#					original_tag = BRN
+#				}
+#			}
+#
+#			priority = 10
+#			fire_only_once = no
+#			days_mission_timeout = 20
+#			days_re_enable = 1
+#			is_good = no
+#			cancel_if_not_visible = yes
+#
+#			activation = {
+#				
+#			}
+#
+#			visible = {
+#				tag = BRN
+#			}
+#
+#			timeout_effect = {
+#				set_temp_variable = { 
+#					var = BRN_factionalism_var_temp
+#					value = 5
+#				}
+#				BRN_add_factionalism = yes				
+#				activate_mission = BRN_factionalism_growth_mission
+#			}
+#		}
+		
+#		BRN_investigate_FNM_infiltration = {
+		
+#			icon = generic_ignite_civil_war
+
+#			allowed = {
+#				original_tag = BRN
+#			}
+			
+#			visible = {
+#				hidden_trigger = {
+#					has_country_flag = FRM_infiltration
+#				}
+#			}
+
+#			available = {
+#				has_completed_focus = BRN_knights_of_christ
+#			}
+			
+#			ai_will_do = {
+#				factor = 1
+#			}
+
+#			days_remove = 15
+#			fire_only_once = yes
+			
+#			complete_effect = {
+				
+#			}
+
+#			remove_effect = {
+#				country_event = { id = brown.10 }
+#			}
+#		}
+#		BRN_relocate_navajo_settlements = {
+		
+#			icon = generic_ignite_civil_war
+
+#			allowed = {
+#				original_tag = BRN
+#			}
+			
+#			visible = {
+#				hidden_trigger = {
+#					has_completed_focus = BRN_knights_of_christ
+#				}
+#			}
+
+#			available = {
+#			}
+			
+#			ai_will_do = {
+#				factor = 0
+#			}
+			
+#			days_remove = 30
+#			fire_only_once = yes
+
+#			modifier = {
+#				political_power_gain = -0.15
+#			}
+
+#			complete_effect = {
+#				add_popularity = { 
+#					ideology = nationalist 
+#					popularity = 0.05
+#				}
+#			}
+
+#			remove_effect = {
+#				set_temp_variable = { 
+#					var = BRN_chicano_authority_var_temp
+#					value = 10
+#				}
+#				BRN_add_chicano_authority = yes		
+#				if = {
+#					limit = {
+#						check_variable = {
+#							var = BRN_chicano_authority_var
+#							value = 40
+#							compare = greater_than_or_equals
+#						}
+#					}
+#					BRN_increase_chicano_authority = yes
+#				}
+#				if = {
+#					limit = {
+#						check_variable = {
+#							var = BRN_chicano_authority_var
+#							value = 50
+#							compare = greater_than_or_equals
+#						}
+#					}
+#					BRN_increase_chicano_authority = yes
+#				}
+#				if = {
+#					limit = {
+#						check_variable = {
+#							var = BRN_chicano_authority_var
+#							value = 60
+#							compare = greater_than_or_equals
+#						}
+#					}
+#					BRN_increase_chicano_authority = yes
+#				}
+#				if = {
+#					limit = {
+#						check_variable = {
+#							var = BRN_chicano_authority_var
+#							value = 70
+#							compare = greater_than_or_equals
+#						}
+#					}
+#					BRN_increase_chicano_authority = yes
+#				}				
+#			}
+#		}
+#		BRN_attend_mass = {
+		
+#			icon = generic_ignite_civil_war
+
+#			allowed = {
+#				original_tag = BRN
+#			}
+			
+#			visible = {
+#				hidden_trigger = {
+#					has_completed_focus = BRN_knights_of_christ
+#				}
+#			}
+
+#			available = {
+#			}
+			
+#			ai_will_do = {
+#				factor = 0
+#			}
+			
+#			days_remove = 30
+#			days_re_enable = 30
+
+#			modifier = {
+#				nationalist_drift = 0.15
+#				political_power_gain = -0.15
+#			}
+
+#			complete_effect = {
+#			}
+
+#			remove_effect = {
+#				set_temp_variable = {
+#					var = society_development_var_temp
+#					value = 0.03
+#				}
+#				add_society_development = yes
+#			}
+#		}
+#		BRN_liquidate_alburqurque_police = {
+#		
+#			icon = generic_ignite_civil_war
+#
+#			allowed = {
+#				original_tag = BRN
+#			}
+#			
+#			visible = {
+#				hidden_trigger = {
+#					BRN = {
+#						owns_state = 376
+#					}
+#				}
+#			}
+#
+#			available = {
+#			}
+#			
+#			ai_will_do = {
+#				factor = 0
+#			}
+#			
+#			days_remove = 20
+#			fire_only_once = yes
+#			cost = 35
+#
+#			modifier = {
+#			}
+#
+#			complete_effect = {
+#				set_temp_variable = { 
+#					var = BRN_factionalism_var_temp
+#					value = -5
+#				}
+#				BRN_add_factionalism = yes
+#			}
+#
+#			remove_effect = {
+#				remove_ideas = USA_albur_pd
+#			}
+#		}
+#		BRN_recruit_young_party_members = {
+#		
+#			icon = generic_ignite_civil_war
+#
+#			allowed = {
+#				original_tag = BRN
+#			}
+#			
+#			visible = {
+#				hidden_trigger = {
+#					has_completed_focus = BRN_our_common_enemy
+#				}
+#			}
+#
+#			available = {
+#			}
+			
+#			ai_will_do = {
+#				factor = 0
+#			}
+#			cost = 35
+			
+#			days_remove = 30
+
+#			modifier = {
+#			}
+
+#			complete_effect = {
+#				add_popularity = { 
+#					ideology = libertarian_socialist 
+#					popularity = 0.05
+#				}
+#			}
+
+#			remove_effect = {
+#			}
+#		}
+#		BRN_meet_with_apla = {
+#		
+#			icon = generic_ignite_civil_war
+#
+#			allowed = {
+#				original_tag = BRN
+#			}
+#			
+#			visible = {
+#				hidden_trigger = {
+#					has_completed_focus = BRN_our_common_enemy
+#				}
+#			}
+#
+#			available = {
+#			}
+#			
+#			ai_will_do = {
+#				factor = 1
+#			}
+#			
+#			cost = 35
+#			
+#			days_remove = 30
+#			fire_only_once = yes
+#
+#			modifier = {
+#				libertarian_socialist_drift = 0.15
+#				political_power_gain = -0.15
+#			}
+#
+#			complete_effect = {
+#				APA = {
+#					country_event = { id = brown.24 days = 5 }
+#				}
+#			}
+#
+#			remove_effect = {
+#			}
+#		}
+#		BRN_reevaluate_womens_role_society = {
+#		
+#			icon = generic_ignite_civil_war
+#
+#			allowed = {
+#				original_tag = BRN
+#			}
+#			
+#			visible = {
+#				hidden_trigger = {
+#					has_completed_focus = BRN_our_common_enemy
+#				}
+#			}
+#
+#			available = {
+#			}
+#			
+#			ai_will_do = {
+#				factor = 0
+#			}
+			
+#			cost = 35
+			
+#			days_remove = 30
+
+#			modifier = {
+#				libertarian_socialist_drift = 0.15
+#				political_power_gain = -0.15
+#			}
+
+#			complete_effect = {
+#			}
+
+#			remove_effect = {
+#			}
+#		}
+#		BRN_prioritize_chicano_vaccination = {
+#		
+#			icon = generic_ignite_civil_war
+#
+#			allowed = {
+#				original_tag = BRN
+#			}
+			
+#			visible = {
+#				has_completed_focus = BRN_distribute_vaccines
+#				hidden_trigger = {
+#					NOT = {
+#						has_country_flag = BRN_vaccs_program
+#					}
+#				}
+#			}
+			
+#			cost = 50
+#
+#			available = {
+#			}
+#			
+#			ai_will_do = {
+#				factor = 0
+#			}
+
+#			modifier = {
+#			}
+#
+#			complete_effect = {
+#				set_temp_variable = { 
+#					var = BRN_chicano_authority_var_temp
+#					value = 20
+#				}
+#				BRN_add_chicano_authority = yes
+#				set_country_flag = BRN_chicano_vaccs
+#				if = {
+#					limit = {
+#						check_variable = {
+#							var = BRN_chicano_authority_var
+#							value = 40
+#							compare = greater_than_or_equals
+#						}
+#					}
+#					BRN_increase_chicano_authority = yes
+#				}
+#				if = {
+#					limit = {
+#						check_variable = {
+#							var = BRN_chicano_authority_var
+#							value = 50
+#							compare = greater_than_or_equals
+#						}
+#					}
+#					BRN_increase_chicano_authority = yes
+#				}
+#				if = {
+#					limit = {
+#						check_variable = {
+#							var = BRN_chicano_authority_var
+#							value = 60
+#							compare = greater_than_or_equals
+#						}
+#					}
+#					BRN_increase_chicano_authority = yes
+#				}
+#				if = {
+#					limit = {
+#						check_variable = {
+#							var = BRN_chicano_authority_var
+#							value = 70
+#							compare = greater_than_or_equals
+#						}
+#					}
+#					BRN_increase_chicano_authority = yes
+#				}
+#			}
+
+#			remove_effect = {
+#			}
+#		}
+#		BRN_full_vaccination_program = {
+		
+#			icon = generic_ignite_civil_war
+
+#			allowed = {
+#				original_tag = BRN
+#			}
+			
+#			visible = {
+#				has_completed_focus = BRN_distribute_vaccines
+#				hidden_trigger = {
+#					NOT = {
+#						has_country_flag = BRN_chicano_vaccs
+#					}
+#				}
+#			}
+			
+#			cost = 75
+
+#			available = {
+#			}
+			
+#			ai_will_do = {
+#				factor = 0
+#			}
+
+#			modifier = {
+#			}
+
+#			complete_effect = {
+#				every_state = {
+#					limit = {
+#						has_state_flag = USA_new_mexico_state
+#					}
+#					remove_dynamic_modifier = { 
+#						modifier = USA_coronavirus_state 
+#					}
+#					clr_state_flag = USA_coronavirus_affected_state
+#					set_state_flag = USA_coronavirus_protected_state
+#				}
+#				set_country_flag = BRN_vaccs_program
+#				set_temp_variable = { 
+#					var = BRN_chicano_authority_var
+#					value = -10
+#				}
+#				BRN_add_chicano_authority = yes
+#				hidden_effect = {
+#					if = {
+#						limit = {
+#							check_variable = {
+#								var = BRN_chicano_authority_var
+#								value = 10
+#								compare = less_than
+#							}
+#						}
+#						BRN_decrease_chicano_authority = yes
+#					}
+#					if = {
+#						limit = {
+#							check_variable = {
+#								var = BRN_chicano_authority_var
+#								value = 20
+#								compare = less_than
+#							}
+#						}
+#						BRN_decrease_chicano_authority = yes
+#					}
+#					if = {
+#						limit = {
+#							check_variable = {
+#								var = BRN_chicano_authority_var
+#								value = 25
+#								compare = less_than
+#							}
+#						}
+#						BRN_decrease_chicano_authority = yes
+#					}
+#					if = {
+#						limit = {
+#							check_variable = {
+#								var = BRN_chicano_authority_var
+#								value = 30
+#								compare = less_than
+#							}
+#						}
+#						BRN_decrease_chicano_authority = yes
+#					}
+#				}
+#			}
+
+#			remove_effect = {
+#			}
+#		}
+#		BRN_promote_chicano_heritage = {
+#		
+#			icon = generic_ignite_civil_war
+#
+#			allowed = {
+#				original_tag = BRN
+#			}
+#			
+#			visible = {
+#			}
+#
+#			available = {
+#			}
+#			
+#			ai_will_do = {
+#				factor = 0.1
+#			}
+#
+#			modifier = {
+#				political_power_gain = -0.15
+#			}
+#
+#			days_remove = 15
+#			days_re_enable = 25
+#
+#			complete_effect = {
+#			}
+#
+#			remove_effect = {
+#				set_temp_variable = { 
+#					var = BRN_factionalism_var_temp
+#					value = -5
+#				}
+#				BRN_add_factionalism = yes
+#			}
+#		}
+		
+#		BRN_launch_skirmish = {
+#		
+#			icon = generic_ignite_civil_war
+#
+#			allowed = {
+#				original_tag = BRN
+#			}
+			
+#			visible = {
+#				has_completed_focus = BRN_false_leftist_dichotomy
+#				NOT = {
+#					BRN = {
+#						controls_state = 946
+#					}
+#				}
+#			}
+
+#			available = {
+#				has_border_war = no
+#				APA = {
+#					country_exists = yes
+#				}
+#				controls_state = 992
+#			}
+			
+#			ai_will_do = {
+#				factor = 0
+#			}
+
+#			modifier = {
+				
+#			}
+
+#			cost = 25
+			
+#			days_remove = 10
+#			days_re_enable = 60
+
+#			complete_effect = {
+#			}
+
+#			remove_effect = {
+#				start_border_war = {
+#					change_state_after_war = no
+#					attacker = { state = 992
+#						num_provinces = 3
+#						on_win = brown.22
+#						on_lose = brown.21
+#					}
+#					defender = { state = 946
+#						num_provinces = 2
+#					}
+#				}
+#			}
+#		}
+#	}
+	
+#	BRN_texan_infiltration = {
+#	
+#	BRN_uprising = {
+#		icon = generic_ignite_civil_war
+#	
+#		visible = {
+#			tag = BRN
+#		}
+#		
+#		available = {
+#			BRN_uprising_is_available = yes
+#		}
+#
+#		fire_only_once = yes
+#
+#		days_remove = 60
+#
+#		cost = 25
+#
+#		ai_will_do = {
+#			base = 0
+#
+#			#Block if we get fewer than 3 troops
+#			modifier = {
+#				factor = 0
+#				NOT = {
+#					count_triggers = {
+#						amount = 3
+#						960 = { BRN_infiltration_uprising_PREV_will_spawn_troops_in_state = yes }
+#						964 = { BRN_infiltration_uprising_PREV_will_spawn_troops_in_state = yes }
+#						963 = { BRN_infiltration_uprising_PREV_will_spawn_troops_in_state = yes }
+#						965 = { BRN_infiltration_uprising_PREV_will_spawn_troops_in_state = yes }
+#					}
+#				}
+#			}
+
+			#The more troops, the bigger chance
+#			modifier = {
+#				add = 10
+#				960 = { BRN_infiltration_uprising_PREV_will_spawn_troops_in_state = yes }
+#			}
+#			modifier = {
+#				add = 10
+#				964 = { BRN_infiltration_uprising_PREV_will_spawn_troops_in_state = yes }
+#			}
+#			modifier = {
+#				add = 10
+#				963 = { BRN_infiltration_uprising_PREV_will_spawn_troops_in_state = yes }
+#			}
+#			modifier = {
+#				add = 10
+#				965 = { BRN_infiltration_uprising_PREV_will_spawn_troops_in_state = yes }
+#			}
+#
+#			#Sabotage is also nice
+#			modifier = {
+#				add = 3
+#				960 = { BRN_infiltration_uprising_PREV_will_sabotage_state = yes }
+#			}
+#			modifier = {
+#				add = 3
+#				964 = { BRN_infiltration_uprising_PREV_will_sabotage_state = yes }
+#			}
+#			modifier = {
+#				add = 3
+#				963 = { BRN_infiltration_uprising_PREV_will_sabotage_state = yes }
+#			}
+#			modifier = {
+#				add = 3
+#				965 = { BRN_infiltration_uprising_PREV_will_sabotage_state = yes }
+#			}
+#		}
+
+#		complete_effect = {
+
+#		}
+	
+#		remove_effect = {
+#			if = {
+#				limit = {
+#					country_exists = TEX
+#				}
+#				declare_war_on = { target = TEX type = annex_everything }
+#			}
+#			if = {
+#				limit = {
+#					country_exists = TFM
+#				}
+#				declare_war_on = { target = TFM type = annex_everything }
+#			}
+#			if = {
+#				limit = {
+#					country_exists = TRG
+#				}
+#				declare_war_on = { target = TRG type = annex_everything }
+#			}
+#			960 = {
+#				if = {
+#					limit = {
+#						CONTROLLER = { 
+#							OR = {
+#								tag = TEX 
+#								tag = TRG
+#							}
+#						}
+#						BRN_is_infiltrated_by_PREV = yes
+#					}
+#					BRN_execute_infiltration_effects_for_PREV = yes
+#				}
+#			}
+#			964 = {
+#				if = {
+#					limit = {
+#						CONTROLLER = { 
+#							OR = {
+#								tag = TEX 
+#								tag = TRG 
+#							}
+#						}
+#						BRN_is_infiltrated_by_PREV = yes
+#					}
+#					BRN_execute_infiltration_effects_for_PREV = yes
+#				}
+#			}
+#			963 = {
+#				if = {
+#					limit = {
+#						CONTROLLER = { 
+#							OR = {
+#								tag = TEX 
+#								tag = TRG 
+#							}
+#						}
+#						BRN_is_infiltrated_by_PREV = yes
+#					}
+#					BRN_execute_infiltration_effects_for_PREV = yes
+#				}
+#			}
+#			965 = {
+#				if = {
+#					limit = {
+#						CONTROLLER = { 
+#							OR = {
+#								tag = TFM
+#								tag = TRG
+#							}
+#						}
+#						BRN_is_infiltrated_by_PREV = yes
+#					}
+#					BRN_execute_infiltration_effects_for_PREV = yes
+#				}
+#			}
+#		}
+#	}
+	
+	
+#		BRN_infiltrate_el_paso = {
+#		
+#			icon = infiltrate_state
+#			visible = {
+#				has_completed_focus = BRN_decentralized_organization
+#				960 = {
+#					CONTROLLER = {
+#						tag = TEX
+#					}
+#				}
+#			}
+#		
+#			available = {
+#				NOT = { has_war_with = TEX }
+#				BRN_is_not_infiltrating_a_state = yes
+#				has_equipment = { infantry_equipment > 499 }
+#				960 = {
+#					BRN_can_increase_infiltration_in_state = yes
+#				}
+#			}
+
+#			highlight_state_targets = {
+#				state = 960
+#			}
+		
+#			modifier = {
+#				command_power_gain = -0.2
+#			}
+		
+			#INFILTRATE_STATE_AI_WILL_DO 960
+#			ai_will_do = {
+#				base = 80
+#				modifier = {
+#					factor = 0
+#					has_decision = BRN_uprising # don't throw away rifles if the uprising is going to start before you can finish this
+#				}
+#				modifier = {
+#					factor = 25
+#					960 = {
+#						has_state_flag = {
+#							flag = BRN_infiltration_@PREV
+#							value > 0
+#						}
+#					}
+#				}
+#				modifier = {
+#					factor = 50 #Really want to get to troop level
+#					960 = {
+#						has_state_flag = {
+#							flag = BRN_infiltration_@PREV
+#							value = 2
+#						}
+#					}
+#				}
+#			}
+#
+#			days_remove = 30
+#			days_re_enable = 0
+#	
+#			cost = 10
+#	
+#			complete_effect = {
+#				add_equipment_to_stockpile = {
+#					type = infantry_equipment
+#					amount = -500
+#				}			
+#				960 = {
+#					if = {
+#						limit = {
+#							NOT = { has_state_flag = BRN_infiltration_@ROOT }
+#						}
+#						set_state_flag = {
+#							flag = 960_infiltration_@ROOT
+#							value = 1
+#						}
+#					}
+#				}
+#			}
+
+#			remove_effect = {
+#				960 = {
+#					BRN_infiltration_succesful_show_uprising_effect = yes
+#					modify_state_flag = {
+#						flag = 960_infiltration_@ROOT
+#						value = 1
+#					}
+#				}
+#			}
+#		}
+#	}

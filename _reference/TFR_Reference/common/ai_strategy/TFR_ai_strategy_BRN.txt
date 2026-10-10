@@ -1,0 +1,126 @@
+BRN_everyone_is_weak = {
+	allowed = {
+		original_tag = BRN
+	}
+	enable = {
+		always = yes
+	}
+	
+	abort = {
+		always = no
+	}
+
+	abort_when_not_enabled = yes
+
+	ai_strategy = {
+		type = front_control
+		tag = ARZ
+		tag = ABR
+		tag = NMX
+		execution_type = rush
+		execute_order = yes
+		manual_attack = no
+	}
+
+	ai_strategy = {
+		type = consider_weak
+		id = ARZ
+		value = 1000
+	}
+
+	ai_strategy = {
+		type = consider_weak
+		id = NMX
+		value = 1000
+	}
+
+	ai_strategy = {
+		type = consider_weak
+		id = ABR
+		value = 1000
+	}
+
+	ai_strategy = {
+		type = consider_weak
+		id = NNN
+		value = 1000
+	}
+
+	ai_strategy = {
+		type = conquer
+		id = ARZ
+		value = 1000
+	}
+
+	ai_strategy = {
+		type = conquer
+		id = NMX
+		value = 1000
+	}
+
+	ai_strategy = {
+		type = conquer
+		id = ABR
+		value = 1000
+	}
+
+	ai_strategy = {
+		type = conquer
+		id = NNN
+		value = 1000
+	}
+}
+
+BRN_doesnt_care_about_relation = {
+
+	enable = {
+		tag = BRN
+		has_war = yes
+	}
+	
+	abort = {
+		has_war = no
+	}
+
+	ai_strategy = {
+		type = pp_spend_priority
+		id = relation
+		value = -99
+	}
+}
+
+BRN_you_should_be_prepared_for_war = {
+
+	enable = {
+		tag = BRN
+	}
+	abort_when_not_enabled = yes
+	
+	ai_strategy = {
+        type = force_build_armies
+        value = 1000
+    }
+	
+	ai_strategy = {
+        type = force_build_armies
+        value = 1000
+    }
+	
+	ai_strategy = {
+		type = build_army
+		id = infantry
+		value = 500
+	}
+}
+BRN_wants_mils = {
+	enable = {
+		tag = BRN
+		date < 2023.9.15
+	}
+	abort_when_not_enabled = yes
+	ai_strategy = {
+		type = building_target
+		id = arms_factory
+		value = 59
+	}
+}

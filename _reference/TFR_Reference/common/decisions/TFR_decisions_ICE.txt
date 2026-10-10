@@ -1,0 +1,484 @@
+ICE_Ecological_Disaster_Category = {
+	
+	ICE_ECO_COLLAPSE_DEBUG_SETUP = {
+		
+		icon = generic_prepare_civil_war
+		cancel_if_not_visible = yes
+		allowed = {
+			original_tag = ICE
+		}
+		visible = {
+			original_tag = ICE
+			is_debug = yes
+		}
+
+		complete_effect = {
+			set_global_flag = Ecological_Collapse
+			random_list = {
+				14 = { #Artic Collapse First fastest collapse
+					hidden_effect = {
+						country_event = { id = Iceland.400 days = 100 }
+						country_event = { id = Iceland.350 days = 200 }
+						country_event = { id = Iceland.300 days = 250 }
+						country_event = { id = Iceland.250 days = 300 }
+						country_event = { id = Iceland.200 days = 350 }
+						country_event = { id = Iceland.150 days = 400 }
+						country_event = { id = Iceland.100 days = 450 }
+					}
+				}
+				14 = { #African Collapse First
+					hidden_effect = {
+						country_event = { id = Iceland.400 days = 500 }
+						country_event = { id = Iceland.350 days = 400 }
+						country_event = { id = Iceland.300 days = 400 }
+						country_event = { id = Iceland.250 days = 325 }
+						country_event = { id = Iceland.200 days = 100 }
+						country_event = { id = Iceland.150 days = 175 }
+						country_event = { id = Iceland.100 days = 250 }
+					}
+				}
+				14 = { #North American Collapse First
+					hidden_effect = {
+						country_event = { id = Iceland.400 days = 500 }
+						country_event = { id = Iceland.350 days = 150 }
+						country_event = { id = Iceland.300 days = 100 }
+						country_event = { id = Iceland.250 days = 300 }
+						country_event = { id = Iceland.200 days = 375 }
+						country_event = { id = Iceland.150 days = 350 }
+						country_event = { id = Iceland.100 days = 300 }
+					}
+					
+				}
+				14 = { #South American Collapse First
+					hidden_effect = {
+						country_event = { id = Iceland.400 days = 500 }
+						country_event = { id = Iceland.350 days = 100 }
+						country_event = { id = Iceland.300 days = 150 }
+						country_event = { id = Iceland.250 days = 300 }
+						country_event = { id = Iceland.200 days = 375 }
+						country_event = { id = Iceland.150 days = 350 }
+						country_event = { id = Iceland.100 days = 300 }
+					}
+				}
+				14 = { #Asia American Collapse First
+					hidden_effect = {
+						country_event = { id = Iceland.400 days = 500 }
+						country_event = { id = Iceland.350 days = 400 }
+						country_event = { id = Iceland.300 days = 400 }
+						country_event = { id = Iceland.250 days = 325 }
+						country_event = { id = Iceland.200 days = 250 }
+						country_event = { id = Iceland.150 days = 175 }
+						country_event = { id = Iceland.100 days = 100 }
+					}
+				}
+				15 = { #European Collapse First
+					hidden_effect = {
+						country_event = { id = Iceland.400 days = 500 }
+						country_event = { id = Iceland.350 days = 400 }
+						country_event = { id = Iceland.300 days = 400 }
+						country_event = { id = Iceland.250 days = 325 }
+						country_event = { id = Iceland.200 days = 250 }
+						country_event = { id = Iceland.150 days = 100 }
+						country_event = { id = Iceland.100 days = 175 }
+					}
+					
+				}
+				15 = {#Oceania Collapse First
+					hidden_effect = {
+						country_event = { id = Iceland.400 days = 500 }
+						country_event = { id = Iceland.350 days = 400 }
+						country_event = { id = Iceland.300 days = 400 }
+						country_event = { id = Iceland.250 days = 100 }
+						country_event = { id = Iceland.200 days = 250 }
+						country_event = { id = Iceland.150 days = 325 }
+						country_event = { id = Iceland.100 days = 175 }
+					}
+				}
+			}
+		}
+	}
+	ICE_Request_Greenland = {
+		
+		icon = generic_prepare_civil_war
+		fire_only_once = yes
+		visible = {
+			
+				original_tag = ICE
+				DEN = {
+					owns_state = 101
+				}
+			
+		}
+		cancel_if_not_visible = yes
+		allowed = {
+			original_tag = ICE
+		}
+		ai_will_do = {
+			factor = 100
+		}
+		cost = 100
+		complete_effect = {
+			DEN = {
+				country_event = { id = Iceland.2 days = 10 }
+			}
+		}
+	}
+	ICE_Gather_the_Best_Scientists = {
+		
+		icon = generic_prepare_civil_war
+		fire_only_once = yes
+		visible = {
+			original_tag = ICE
+		}
+		cost = 50
+		cancel_if_not_visible = yes
+		allowed = {
+			original_tag = ICE
+		}
+		ai_will_do = {
+			factor = 100
+		}
+		days_remove = 365
+		remove_effect = {
+			add_research_slot = 1
+
+		}
+	}
+	ICE_Push_for_more_Solar = {
+		
+		icon = generic_prepare_civil_war
+		fire_only_once = yes
+		visible = {
+			original_tag = ICE
+		}
+		cancel_if_not_visible = yes
+		allowed = {
+			original_tag = ICE
+		}
+		ai_will_do = {
+			factor = 100
+		}
+		cost = 250
+		days_remove = 365
+		remove_effect = {
+			every_country = {
+				limit = {
+					exists = yes
+				}
+				add_ideas = ICE_International_Solar_Boost
+			}
+			add_days_mission_timeout = {
+				mission = ICE_Ecological_Collapse
+				days = 150
+			}
+		}
+	}
+	ICE_Warn_of_An_Extinction_Event = {
+		
+		icon = generic_prepare_civil_war
+		days_remove = 28
+		visible = {
+			original_tag = ICE
+		}
+		cancel_if_not_visible = yes
+		allowed = {
+			original_tag = ICE
+		}
+		ai_will_do = {
+			factor = 100
+		}
+		cost = 25
+
+		complete_effect = {
+			add_days_mission_timeout = {
+				mission = ICE_Ecological_Collapse
+				days = 20
+			}
+		}
+	}
+	ICE_United_for_our_Earth_Propaganda = {
+		icon = generic_prepare_civil_war
+		days_re_enable = 50
+		days_remove = 50
+		visible = {
+			original_tag = ICE
+			has_government = social_democrat
+		}
+		cancel_if_not_visible = yes
+		allowed = {
+			original_tag = ICE
+		}
+		ai_will_do = {
+			factor = 100
+		}
+		cost = 100
+
+		complete_effect = {
+			add_popularity = {
+				ideology = social_democrat
+				popularity = 0.04
+			}
+		}
+	}
+	ICE_Hold_March_for_the_Earth = {
+		icon = generic_prepare_civil_war
+		days_re_enable = 50
+		days_remove = 50
+		visible = {
+			original_tag = ICE
+			has_government = social_democrat
+		}
+		cancel_if_not_visible = yes
+		allowed = {
+			original_tag = ICE
+		}
+		ai_will_do = {
+			factor = 100
+		}
+		complete_effect = {
+			add_days_mission_timeout = {
+				mission = ICE_Ecological_Collapse
+				days = 3
+			}
+		}
+		modifier = {
+			political_power_gain = 0.5
+		}
+	}
+	ICE_Efficient_Government_Practices = {
+		icon = generic_prepare_civil_war
+		fire_only_once = yes
+		days_remove = 70
+		visible = {
+			original_tag = ICE
+			has_government = social_democrat
+		}
+		cost = 100
+		cancel_if_not_visible = yes
+		allowed = {
+			original_tag = ICE
+		}
+		ai_will_do = {
+			factor = 100
+		}
+		complete_effect = {
+			add_popularity = {
+				ideology = social_democrat
+				popularity = 0.08
+			}
+			add_days_mission_timeout = {
+				mission = ICE_Ecological_Collapse
+				days = 35
+			}
+		}
+	}
+	ICE_Enter_the_Scientific_Field_of_Life = {
+		
+		icon = generic_prepare_civil_war
+		fire_only_once = yes
+		days_remove = 21
+		visible = {
+			original_tag = ICE
+		}
+		cost = 25
+		cancel_if_not_visible = yes
+		allowed = {
+			original_tag = ICE
+		}
+		ai_will_do = {
+			factor = 100
+		}
+		complete_effect = {
+			country_event = { id = Iceland.3 }
+		}
+		remove_effect = {
+			set_country_flag = ICE_DeExtinction_Path
+		}
+	}
+	ICE_Invite_Colossal_Biosciences = {
+		
+		icon = generic_prepare_civil_war
+		fire_only_once = yes
+		days_remove = 45
+		visible = {
+			original_tag = ICE
+			has_country_flag = ICE_DeExtinction_Path
+		}
+		cancel_if_not_visible = yes
+		allowed = {
+			original_tag = ICE
+		}
+		ai_will_do = {
+			factor = 100
+		}
+		cost = 25
+
+		remove_effect = {
+			country_event = { id = Iceland.4 }
+			set_country_flag = ICE_DeExtinction_Path_2
+		}
+	}
+	ICE_Bring_Back_the_Mammoth = {
+		
+		icon = generic_prepare_civil_war
+		fire_only_once = yes
+		days_remove = 720
+		visible = {
+			original_tag = ICE
+			has_country_flag = ICE_DeExtinction_Path_3
+		}
+		cancel_if_not_visible = yes
+		allowed = {
+			original_tag = ICE
+		}
+		ai_will_do = {
+			factor = 100
+		}
+		cost = 100
+
+		remove_effect = {
+			country_event = { id = Iceland.5 }
+		}
+	}
+	ICE_Bring_Back_the_Dodo = {
+		
+		icon = generic_prepare_civil_war
+		fire_only_once = yes
+		days_remove = 365
+		visible = {
+			original_tag = ICE
+			has_country_flag = ICE_DeExtinction_Path_2
+		}
+		cancel_if_not_visible = yes
+		allowed = {
+			original_tag = ICE
+		}
+		ai_will_do = {
+			factor = 100
+		}
+		cost = 50
+
+		remove_effect = {
+			country_event = { id = Iceland.7 }
+		}
+	}
+	
+	# Devastation Rate #
+	ICE_Ecological_Collapse = {
+		
+		icon = GFX_AST_the_devastation_spreads
+		
+		priority = 1
+
+		available = {
+			
+		}
+		cancel_if_not_visible = yes
+		allowed = {
+			original_tag = ICE
+		}
+		available = {
+			always = no
+		}
+		activation = {
+			always = no
+		}
+		
+		ai_will_do = {
+			factor = 200
+		}
+
+		visible = {
+			original_tag = ICE
+		}
+		
+		is_good = no
+		days_mission_timeout = 4562
+		selectable_mission = no
+
+		timeout_effect = {
+			set_global_flag = Ecological_Collapse
+			random_list = {
+				14 = { #Artic Collapse First fastest collapse
+					hidden_effect = {
+						country_event = { id = Iceland.400 days = 100 }
+						country_event = { id = Iceland.350 days = 200 }
+						country_event = { id = Iceland.300 days = 250 }
+						country_event = { id = Iceland.250 days = 300 }
+						country_event = { id = Iceland.200 days = 350 }
+						country_event = { id = Iceland.150 days = 400 }
+						country_event = { id = Iceland.100 days = 450 }
+					}
+				}
+				14 = { #African Collapse First
+					hidden_effect = {
+						country_event = { id = Iceland.400 days = 500 }
+						country_event = { id = Iceland.350 days = 400 }
+						country_event = { id = Iceland.300 days = 400 }
+						country_event = { id = Iceland.250 days = 325 }
+						country_event = { id = Iceland.200 days = 100 }
+						country_event = { id = Iceland.150 days = 175 }
+						country_event = { id = Iceland.100 days = 250 }
+					}
+				}
+				14 = { #North American Collapse First
+					hidden_effect = {
+						country_event = { id = Iceland.400 days = 500 }
+						country_event = { id = Iceland.350 days = 150 }
+						country_event = { id = Iceland.300 days = 100 }
+						country_event = { id = Iceland.250 days = 300 }
+						country_event = { id = Iceland.200 days = 375 }
+						country_event = { id = Iceland.150 days = 350 }
+						country_event = { id = Iceland.100 days = 300 }
+					}
+					
+				}
+				14 = { #South American Collapse First
+					hidden_effect = {
+						country_event = { id = Iceland.400 days = 500 }
+						country_event = { id = Iceland.350 days = 100 }
+						country_event = { id = Iceland.300 days = 150 }
+						country_event = { id = Iceland.250 days = 300 }
+						country_event = { id = Iceland.200 days = 375 }
+						country_event = { id = Iceland.150 days = 350 }
+						country_event = { id = Iceland.100 days = 300 }
+					}
+				}
+				14 = { #Asia American Collapse First
+					hidden_effect = {
+						country_event = { id = Iceland.400 days = 500 }
+						country_event = { id = Iceland.350 days = 400 }
+						country_event = { id = Iceland.300 days = 400 }
+						country_event = { id = Iceland.250 days = 325 }
+						country_event = { id = Iceland.200 days = 250 }
+						country_event = { id = Iceland.150 days = 175 }
+						country_event = { id = Iceland.100 days = 100 }
+					}
+				}
+				15 = { #European Collapse First
+					hidden_effect = {
+						country_event = { id = Iceland.400 days = 500 }
+						country_event = { id = Iceland.350 days = 400 }
+						country_event = { id = Iceland.300 days = 400 }
+						country_event = { id = Iceland.250 days = 325 }
+						country_event = { id = Iceland.200 days = 250 }
+						country_event = { id = Iceland.150 days = 100 }
+						country_event = { id = Iceland.100 days = 175 }
+					}
+					
+				}
+				15 = {#Oceania Collapse First
+					hidden_effect = {
+						country_event = { id = Iceland.400 days = 500 }
+						country_event = { id = Iceland.350 days = 400 }
+						country_event = { id = Iceland.300 days = 400 }
+						country_event = { id = Iceland.250 days = 100 }
+						country_event = { id = Iceland.200 days = 250 }
+						country_event = { id = Iceland.150 days = 325 }
+						country_event = { id = Iceland.100 days = 175 }
+					}
+				}
+			}
+		}
+	}
+}

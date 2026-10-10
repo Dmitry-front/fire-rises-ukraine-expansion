@@ -1,0 +1,73 @@
+CHI_passive_protection = {
+
+	allowed = {
+		original_tag = CHI
+	}
+	enable = {
+		original_tag = CHI
+		date < 2025.1.1
+	}
+
+	abort = {
+		always = no
+	}
+	
+	ai_strategy = {
+		type = force_build_armies
+		value = 500
+	}
+	ai_strategy = {
+		type = build_army
+		id = anti_air
+		value = 400
+	}
+	ai_strategy = {
+		type = build_army
+		id = infantry
+		value = 500
+	}
+	ai_strategy = {
+		type = build_army
+		id = garrison
+		value = 200
+	}
+	ai_strategy = {
+		type = area_priority
+		id = east_china_mainland  #Lower Yangtze
+		value = -200
+	}
+	ai_strategy = {
+		type = naval_invasion_focus
+		value = -500
+	}
+	ai_strategy = {
+		type = ignore_army_incompetence
+		value = -500
+	}
+	ai_strategy = {
+		type = front_control
+		state_trigger = {
+			OR = {
+				state = 524
+				state = 1148
+				state = 1149
+				state = 1150
+			}
+		}
+		ratio = 0.0
+		ordertype = front
+		execution_type = careful
+		manual_attack = no
+	}
+	ai_strategy = {
+		type = put_unit_buffers
+		ratio = 0.2
+		states = {
+			524
+			1148
+			1149
+			1150
+		}
+		subtract_fronts_from_need = yes
+	}
+}

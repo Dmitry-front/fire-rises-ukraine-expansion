@@ -1,0 +1,739 @@
+	ideas = {
+		hidden_ideas = {
+				UKR_bratstvo_stoyaka = {
+				picture = SOV_stakhanovite_movement
+				allowed = {
+					always = no
+				}
+
+				allowed_civil_war = {
+					always = yes
+				}
+
+				removal_cost = -1
+				
+				modifier = {
+					mobilization_speed = 0.10
+					army_morale_factor = 0.05
+				}
+			}	
+			UKR_bratstvo_stoyaka_1 = {
+				picture = SOV_stakhanovite_movement
+				allowed = {
+					always = no
+				}
+
+				allowed_civil_war = {
+					always = yes
+				}
+
+				removal_cost = -1
+				
+				modifier = {
+					army_defence_factor = 0.025
+					army_strength_factor = 0.025
+					army_morale_factor = 0.035
+					war_support_factor = 0.055
+				}
+			}	
+		}
+		country = {
+			UKR_to_each_their_own = {
+				picture = UKR_to_each_their_own
+			    traits = {
+			        ZZZ_blank_idea_trait
+			    }
+			
+				allowed = { 
+					original_tag = FER
+				}
+			
+				removal_cost = -1
+				
+				modifier = {
+					political_power_gain = -0.20
+					stability_factor = -0.10
+					consumer_goods_factor = 0.05
+					cic_to_overlord_factor = 0.1
+					production_factory_efficiency_gain_factor = -0.05
+					industrial_capacity_factory = -0.05
+					production_speed_buildings_factor = -0.05
+				}
+			}
+			UKR_russian_spring = {   
+				picture = UKR_Military_Corruption 
+			    traits = {
+			        ZZZ_blank_idea_trait
+			    }
+
+				allowed = {
+					always = no
+				}
+
+				allowed_civil_war = {
+					always = yes
+				}
+
+				removal_cost = -1
+				
+				modifier = {
+					planning_speed = -0.25
+					army_speed_factor = -0.05
+					mobilization_speed = -0.15
+					battalion_upkeep_factor = -0.3
+					army_org_factor = -0.2
+				}
+			}
+			
+			UKR_corrupt_army_staff = {
+				picture = UKR_Military_Corruption 
+			    traits = {
+			        ZZZ_blank_idea_trait
+			    }
+
+				allowed = {
+					always = no
+				}
+
+				allowed_civil_war = {
+					always = yes
+				}
+
+				removal_cost = -1
+				
+				modifier = {
+					planning_speed = -0.25
+					army_speed_factor = -0.05
+					mobilization_speed = -0.15
+					battalion_upkeep_factor = -0.3
+				}
+			}
+			
+			UKR_government_corruption = {
+				picture = UKR_Corruption     
+			    traits = {
+			        ZZZ_blank_idea_trait
+			    }
+
+				allowed = {
+					always = no
+				}
+
+				allowed_civil_war = {
+					always = yes
+				}
+
+				removal_cost = -1
+				modifier = {
+					political_power_gain = -0.05
+					stability_factor = -0.10
+					misc_expense = 0.02
+					income_growth_factor = -0.025
+					planning_speed = -0.25
+					army_speed_factor = -0.05
+					mobilization_speed = -0.15
+					battalion_upkeep_factor = -0.3
+				}
+			}			
+			
+			UKR_far_right_meddling = {
+				picture = UKR_far_right_meddling     
+			    traits = {
+			        ZZZ_blank_idea_trait
+			    }
+
+				allowed = {
+					always = no
+				}
+
+				allowed_civil_war = {
+					always = yes
+				}
+
+				removal_cost = -1
+				modifier = {
+					stability_factor = -0.025
+					war_support_factor = 0.05
+					political_power_cost = 0.15
+					fascist_drift = 0.01
+					national_socialist_drift = 0.01
+				}
+			}		
+			
+			UKR_zelensky_growing_authoritarism = {
+				picture = UKR_zelensky_growing_authoritarism     
+			    traits = {
+			        ZZZ_blank_idea_trait
+			    }
+
+				allowed = {
+					always = no
+				}
+				cancel = {
+					NOT = {
+						has_country_leader = {
+							character = UKR_volodymyr_zelensky
+							ruling_only = yes
+						}
+					}
+				}
+				allowed_civil_war = {
+					always = yes
+				}
+
+				removal_cost = -1
+				modifier = {
+					political_power_gain = 0.05
+					consumer_goods_factor = 0.05
+					social_liberal_drift = 0.025
+					stability_factor = -0.02
+					society_development_monthly = -0.001
+				}
+			}
+			
+			UKR_zelensky_growing_authoritarism2 = {
+				picture = UKR_zelensky_growing_authoritarism
+			    traits = {
+			        ZZZ_blank_idea_trait
+			    }
+
+				allowed = {
+					always = no
+				}
+				cancel = {
+					NOT = {
+						has_country_leader = {
+							character = UKR_volodymyr_zelensky
+							ruling_only = yes
+						}	
+					}
+				}
+				allowed_civil_war = {
+					always = yes
+				}
+
+				removal_cost = -1
+				modifier = {
+					political_power_gain = 0.1
+					social_liberal_drift = 0.025
+					consumer_goods_factor = 0.05
+					stability_factor = -0.05
+					society_development_monthly = -0.002
+					personal_expense_factor = -0.15
+				}
+			}		
+			UKR_poroshenko_plutocracy = {
+				picture = UKR_poroshenko_plutocracy
+			    traits = {
+			        ZZZ_blank_idea_trait
+			    }
+
+				allowed = {
+					always = no
+				}
+				cancel = {
+					NOT = {
+						has_country_leader = {
+							character = UKR_petro_poroshenko
+							ruling_only = yes
+						}	
+					}
+				}
+				allowed_civil_war = {
+					always = yes
+				}
+
+				removal_cost = -1
+				modifier = {
+					political_power_gain = 0.15
+					conservative_drift = 0.02
+					stability_factor = -0.1
+					poverty_development_monthly = -0.002
+					personal_expense_factor = 0.15
+					income_growth_factor = 0.025
+				}
+			}
+			
+			UKR_ukrainian_ultranationalism = {
+				picture = UKR_ukrainian_ultranationalism
+			    traits = {
+			        ZZZ_blank_idea_trait
+			    }
+
+				allowed = {
+					always = no
+				}
+
+				allowed_civil_war = {
+					always = yes
+				}
+
+				removal_cost = -1
+				modifier = {
+					political_power_gain = -0.15
+					fascist_drift = 0.02
+					stability_factor = -0.1
+					poverty_development_monthly = -0.001
+					society_development_monthly = -0.001
+					personal_expense_factor = 0.15
+					army_morale_factor = 0.025
+					army_attack_factor = 0.025
+					conscription = 0.01
+				}
+			}
+			
+			UKR_minsk_protocol = {
+				picture = UKR_minsk_protocal   
+			    traits = {
+			        ZZZ_blank_idea_trait
+			    }
+
+				allowed = {
+					always = no
+				}
+
+				allowed_civil_war = {
+					always = yes
+				}
+
+				removal_cost = -1
+				
+				modifier = {
+					custom_modifier_tooltip = UKR_novo_conflict
+				}
+			}
+			
+			UKR_mass_insurgency = {   
+				picture = UKR_Mass_insurgency    
+			    traits = {
+			        ZZZ_blank_idea_trait
+			    }
+
+				allowed = {
+					always = no
+				}
+
+				allowed_civil_war = {
+					always = yes
+				}
+
+				removal_cost = -1
+				
+				modifier = {
+					army_org_factor = -0.2
+					command_power_gain_mult = -0.1
+					stability_factor = -0.10
+				}
+				
+			}
+			
+			UKR_embargoed_economy = {      
+				picture = UKR_Embargoed_Economy
+			    traits = {
+			        ZZZ_blank_idea_trait
+			    }
+
+				allowed = {
+					always = no
+				}
+
+				allowed_civil_war = {
+					always = yes
+				}
+
+				removal_cost = -1
+				
+				modifier = {
+					income_growth_factor = -0.1
+					min_export = -0.3
+					consumer_goods_factor = 0.10	
+				}
+				
+			}
+			
+			UKR_ukrainianrussian_church_schism = {      
+				picture = UKR_orthodox_schizm
+			    traits = {
+			        ZZZ_blank_idea_trait
+			    }
+
+				allowed = {
+					always = no
+				}
+
+				allowed_civil_war = {
+					always = yes
+				}
+
+				removal_cost = -1
+				
+				modifier = {
+					stability_factor = 0.05
+					conscription = 0.015
+				}
+				
+			}
+			
+			UKR_ukranian_orthodox_church = {
+				picture = UKR_ukranian_orthodox_church
+			    traits = {
+			        ZZZ_blank_idea_trait
+			    }
+				allowed = {
+					always = no
+				}
+
+				allowed_civil_war = {
+					always = yes
+				}
+
+				removal_cost = -1
+				
+				modifier = {
+					stability_factor = 0.1
+					political_power_gain = 0.15
+					consumer_goods_factor = -0.05
+					society_development_monthly = 0.01
+					personal_expense_factor = -0.2
+				}
+			}
+			
+			UKR_to_the_last = {
+				picture = GFX_idea_UKR_to_the_last
+			    traits = {
+			        ZZZ_blank_idea_trait
+			    }
+
+				allowed = {
+					always = no
+				}
+				cancel = {
+					is_puppet_of = SOV
+				}
+				allowed_civil_war = {
+					always = yes
+				}
+
+				removal_cost = -1
+				
+				modifier = {
+					army_morale_factor = 0.1
+					max_dig_in_factor = 0.10
+					army_core_defence_factor = 0.25
+					army_org = 5
+				}
+			}		
+			
+			UKR_collapsing_military = {
+				picture = UKR_collapsing_military
+			    traits = {
+			        ZZZ_blank_idea_trait
+			    }
+
+				allowed = {
+					always = no
+				}
+
+				allowed_civil_war = {
+					always = yes
+				}
+
+				removal_cost = -1
+				
+				modifier = {
+					army_morale_factor = -0.1
+					max_dig_in_factor = -0.10
+					army_core_defence_factor = -0.10
+					army_org = -2
+				}
+			}
+			
+			UKR_russian_economic_investements_idea = {
+				picture = UKR_russian_economic_investements_idea
+			    traits = {
+			        ZZZ_blank_idea_trait
+			    }
+
+				allowed = {
+					always = no
+				}
+
+				allowed_civil_war = {
+					always = yes
+				}
+
+				removal_cost = -1
+				
+				modifier = {
+					income_growth_factor = 0.1
+					conservative_drift = 0.01
+					consumer_goods_factor = -0.05
+					business_value_factor = 0.15
+					army_morale_factor = 0.025
+					society_development_monthly = 0.01
+					poverty_development_monthly = 0.01
+				}
+			}
+
+			UKR_heorim_slava = {
+				picture = GFX_idea_UKR_to_the_last
+			    traits = {
+			        ZZZ_blank_idea_trait
+			    }
+
+				allowed = {
+					always = no
+				}
+
+				allowed_civil_war = {
+					always = yes
+				}
+
+				removal_cost = -1
+				
+				modifier = {
+					army_morale_factor = 0.15
+					max_dig_in_factor = 0.05
+					army_core_defence_factor = 0.1
+					army_org = 5
+				}
+			}
+			
+			UKR_kiev_counter_offensive = {
+				picture = GFX_idea_UKR_to_the_last
+			    traits = {
+			        ZZZ_blank_idea_trait
+			    }
+
+				allowed = {
+					always = no
+				}
+				cancel = {
+					is_puppet_of = SOV
+				}
+				allowed_civil_war = {
+					always = yes
+				}
+
+				removal_cost = -1
+				
+				modifier = {
+					army_morale_factor = 0.2
+					army_attack_factor = 0.3
+					army_strength_factor = 0.2
+					ai_focus_aggressive_factor = 1
+				}
+			}
+			UKR_maidan = {
+				picture = GFX_idea_UKR_to_the_last
+			    traits = {
+			        ZZZ_blank_idea_trait
+			    }
+
+				allowed = {
+					always = no
+				}
+
+				allowed_civil_war = {
+					always = yes
+				}
+
+				removal_cost = -1
+				
+				modifier = {
+					stability_factor = -0.25
+					political_power_gain = -0.35
+					war_support_factor = -0.20
+					consumer_goods_factor = 0.15
+					income_growth_factor = -0.1
+				}
+			}		
+			UKR_legacy_of_kiev_junta_idea = {
+				picture = UKR_legacy_of_kiev_junta
+			    traits = {
+			        ZZZ_blank_idea_trait
+			    }
+
+				allowed = {
+					always = no
+				}
+
+				allowed_civil_war = {
+					always = yes
+				}
+
+				removal_cost = -1
+				
+				modifier = {
+					stability_factor = -0.15
+					industrial_capacity_factory = -0.055
+					industrial_capacity_dockyard = -0.035
+					business_value_factor = -0.15
+					personal_value_factor = -0.05
+					political_power_factor = -0.1
+					consumer_goods_factor = -0.02
+					production_speed_buildings_factor = -0.05
+					society_development_monthly = -0.01
+					poverty_development_monthly = -0.01
+					fascist_drift = 0.01
+					national_socialist_drift = 0.01
+				}
+			}
+			UKR_new_berkut_idea = {
+				picture = UKR_new_berkut_idea     
+			    traits = {
+			        ZZZ_blank_idea_trait
+			    }
+
+				allowed = {
+					always = no
+				}
+
+				allowed_civil_war = {
+					always = yes
+				}
+
+				removal_cost = -1
+				modifier = {
+					stability_factor = 0.05
+					war_support_factor = 0.025
+					political_power_cost = -0.15
+					conscription = 0.02
+					fascist_drift = -0.01
+					national_socialist_drift = -0.01
+				}
+			}	
+			UKR_brotherhood_treaty_idea = {
+				picture = UKR_brotherhood_treaty_idea     
+			    traits = {
+			        ZZZ_blank_idea_trait
+			    }
+
+				allowed = {
+					always = no
+				}
+
+				allowed_civil_war = {
+					always = yes
+				}
+
+				removal_cost = -1
+				modifier = {
+					stability_factor = 0.05
+					political_power_factor = 0.15
+					industrial_capacity_factory = 0.1
+					production_factory_efficiency_gain_factor = 0.05
+				}
+				targeted_modifier = {
+					tag = SOV
+					extra_trade_to_target_factor = 0.2
+					mic_to_target_factor = 0.05
+					cic_to_target_factor = 0.1
+				}
+			}		
+			UKR_brotherhood_treaty_2_idea = {
+				name = UKR_brotherhood_treaty_idea
+				picture = UKR_brotherhood_treaty_idea     
+			    traits = {
+			        ZZZ_blank_idea_trait
+			    }
+
+				allowed = {
+					always = no
+				}
+
+				allowed_civil_war = {
+					always = yes
+				}
+
+				removal_cost = -1
+				modifier = {
+					stability_factor = 0.1
+					political_power_factor = 0.2
+					industrial_capacity_factory = 0.15
+					production_factory_efficiency_gain_factor = 0.05
+				}
+				targeted_modifier = {
+					tag = SOV
+					extra_trade_to_target_factor = 0.5
+					mic_to_target_factor = 0.1
+					cic_to_target_factor = 0.15
+				}
+			}	
+			UKR_brotherhood_treaty_3_idea = { #Alikhanov only
+				picture = UKR_brotherhood_treaty_idea     
+				name = UKR_brotherhood_treaty_idea
+			    traits = {
+			        ZZZ_blank_idea_trait
+			    }
+
+				allowed = {
+					always = no
+				}
+
+				allowed_civil_war = {
+					always = yes
+				}
+
+				removal_cost = -1
+				modifier = {
+					political_power_factor = -0.05
+					industrial_capacity_factory = 0.1
+					production_factory_efficiency_gain_factor = 0.05
+				}
+				targeted_modifier = {
+					tag = SOV
+					extra_trade_to_target_factor = 0.7
+					mic_to_target_factor = 0.35
+					cic_to_target_factor = 0.45
+				}
+			}
+			UKR_russia_trained_security_force_idea = {
+				picture = UKR_russia_trained_security_force_idea     
+			    traits = {
+			        ZZZ_blank_idea_trait
+			    }
+
+				allowed = {
+					always = no
+				}
+
+				allowed_civil_war = {
+					always = yes
+				}
+
+				removal_cost = -1
+				modifier = {
+					decryption = 1.5
+					encryption = 1.5
+					stability_factor = 0.1
+					resistance_growth = -0.05
+					army_org_factor = 0.05
+					political_power_gain = -0.1
+				}
+			}
+			UKR_healthy_patriotism_idea = {
+				picture = UKR_healthy_patriotism_idea     
+			    traits = {
+			        ZZZ_blank_idea_trait
+			    }
+
+				allowed = {
+					always = no
+				}
+
+				allowed_civil_war = {
+					always = yes
+				}
+
+				removal_cost = -1
+				modifier = {
+					political_power_gain = 0.50
+					training_time_factor = -0.25
+					army_org_factor = 0.05
+					war_support_factor = 0.05
+					production_factory_efficiency_gain_factor = 0.05
+				}
+			}
+		}
+	}

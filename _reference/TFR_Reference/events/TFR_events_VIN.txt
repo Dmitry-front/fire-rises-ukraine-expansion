@@ -1,0 +1,207 @@
+﻿###########################
+# Vietnam Events
+###########################
+
+add_namespace = vietnam
+
+country_event = { #New President
+	id = vietnam.1
+	title = vietnam.1.t
+	desc = vietnam.1.d
+	picture = GFX_generic_vietnam
+	
+	is_triggered_only = yes
+	immediate = {
+		
+	}
+	
+	option = {
+		name = vietnam.1.a
+		retire_character = VIN_nguyen_phu_trong_char
+		hidden_effect = {
+			country_event = { id = vietnam.2 days = 653  }
+		}
+	}
+}
+
+country_event = { #Viet A Scandal
+	id = vietnam.2
+	title = vietnam.2.t
+	desc = vietnam.2.d
+	picture = GFX_generic_media
+	
+	is_triggered_only = yes
+	immediate = {
+		
+	}
+	
+	option = {
+		name = vietnam.2.a
+		retire_character = VIN_nguyen_xuan_phuc_char
+		add_ideas = VIN_corruption_trials 
+		hidden_effect = {
+			country_event = { id = vietnam.3 days = 44  }
+		}
+	}
+}
+
+country_event = { #Another New President
+	id = vietnam.3
+	title = vietnam.3.t
+	desc = vietnam.3.d
+	picture = GFX_generic_vietnam
+	
+	is_triggered_only = yes
+	immediate = {
+		
+	}
+	
+	option = {
+		name = vietnam.3.a
+		promote_character = VIN_vo_van_thuong_char
+		hidden_effect = {
+			country_event = { id = vietnam.4 days = 385  }
+		}
+	}
+}
+
+country_event = { #Another Scandal
+	id = vietnam.4
+	title = vietnam.4.t
+	desc = vietnam.4.d
+	picture = GFX_generic_media
+
+	is_triggered_only = yes
+	immediate = {
+
+	}
+
+	option = {
+		name = vietnam.4.a
+		retire_character = VIN_vo_van_thuong_char
+		promote_character = VIN_vo_thi_anh_xuan_char
+		hidden_effect = {
+			country_event = { id = vietnam.5 days = 62  }
+		}
+	}
+}
+
+country_event = { #Yet Another New President
+	id = vietnam.5
+	title = vietnam.5.t
+	desc = vietnam.5.d
+	picture = GFX_generic_vietnam
+
+	is_triggered_only = yes
+	immediate = {
+
+	}
+
+	option = {
+		name = vietnam.5.a
+		promote_character = VIN_to_lam_char
+		hidden_effect = {
+			country_event = { id = vietnam.8 days = 152  }
+		}
+	}
+}
+
+country_event = { #Nguyen Phu Trong dead
+	id = vietnam.6
+	title = vietnam.6.t
+	desc = vietnam.6.d
+	picture = GFX_generic_vietnam
+
+	is_triggered_only = yes
+	immediate = {
+
+	}
+
+	option = {
+		name = vietnam.6.a
+		hidden_effect = {
+			country_event = { id = vietnam.7 days = 15  }
+		}
+	}
+}
+
+country_event = { #General Secretary Elections
+	id = vietnam.7
+	title = vietnam.7.t
+	desc = vietnam.7.d
+	picture = GFX_generic_vietnam
+
+	is_triggered_only = yes
+	immediate = {
+
+	}
+
+	option = {
+		name = vietnam.7.a
+		ai_chance = {
+			factor = 10
+			modifier = {
+				add = 30
+				has_global_flag = PRC_taiwan_war_lost
+			}
+			modifier = {
+				factor = 0
+				OR = {
+				    has_game_rule = {
+				        rule = The_Vietnam_2024_Election
+				        option = The_Vietnam_2024_Election_Pham_Minh_Chinh
+				    }
+				}
+			}
+		}
+		set_temp_variable = {
+			var = global.JAP_influence_VIN_var_temp
+			value = 0.05
+		}
+		JAP_add_VIN_influence = yes
+	}
+
+	option = {
+		name = vietnam.7.b
+		factor = 10
+		ai_chance = {
+			factor = 10
+			modifier = {
+				add = 30
+				has_global_flag = PRC_taiwan_war_won
+			}
+			modifier = {
+				factor = 0
+				OR = {
+				    has_game_rule = {
+				        rule = The_Vietnam_2024_Election
+				        option = The_Vietnam_2024_Election_To_Lam
+				    }
+				}
+			}
+		}
+		set_temp_variable = {
+			var = global.PRC_influence_VIN_var_temp
+			value = 0.05
+		}
+		PRC_add_VIN_influence = yes
+	}
+}
+
+country_event = { #Yet Another New President Again
+	id = vietnam.8
+	title = vietnam.8.t
+	desc = vietnam.8.d
+	picture = GFX_generic_vietnam
+
+	is_triggered_only = yes
+	immediate = {
+
+	}
+
+	option = {
+		name = vietnam.8.a
+		retire_character = VIN_to_lam_char
+		promote_character = VIN_luong_cuong_char
+	}
+}

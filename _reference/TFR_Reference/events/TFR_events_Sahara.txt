@@ -1,0 +1,116 @@
+﻿add_namespace = sahara
+#Insurgents raid villages
+country_event = {
+	id = sahara.1
+	title = sahara.1.t
+	desc = sahara.1.d
+	picture = GFX_Generic_African_Insurgents
+	fire_only_once = yes
+	is_triggered_only = yes
+	trigger = {
+	}
+	option = {
+		name = sahara.1.a
+	}
+}
+
+#Insurgents destroy farmland
+country_event = {
+	id = sahara.2
+	title = sahara.2.t
+	desc = sahara.2.d
+	picture = GFX_Generic_African_Insurgents
+	fire_only_once = yes
+	is_triggered_only = yes
+	trigger = {
+	}
+	option = {
+		name = sahara.2.a
+	}
+}
+
+#Mass Refugees fleeing
+country_event = {
+	id = sahara.3
+	title = sahara.3.t
+	desc = sahara.3.d
+	picture = GFX_Generic_Fight_Jet
+	fire_only_once = yes
+	is_triggered_only = yes
+	trigger = {
+	}
+	option = {
+		name = sahara.3.a
+	}
+}
+
+#Sahara contained
+country_event = {
+	id = sahara.4
+	title = sahara.4.t
+	desc = sahara.4.d
+	picture = GFX_Generic_Fight_Jet
+	fire_only_once = yes
+	is_triggered_only = yes
+	trigger = {
+	}
+	option = {
+		name = sahara.4.a
+	}
+}
+
+#Sahara Expands OH MY GOD WHAT THE FUCK HAVE YOU DONE
+country_event = {
+	id = sahara.5
+	title = sahara.5.t
+	desc = sahara.5.d
+	picture = GFX_Generic_Fight_Jet
+	fire_only_once = yes
+	is_triggered_only = yes
+	trigger = {
+	}
+	option = {
+		name = sahara.5.a
+		#news_event = {
+		#	id = news.145
+		#}
+		hidden_effect = {
+			#West Africa
+			every_country = {
+				#Sahara to the Sea, millions evacuate
+				limit = {
+					OR = {
+						controls_state = 699
+					}
+				}
+			}
+			#SUD = {
+			#	country_event = {
+			#		id = sudan.2
+			#	}
+			#}
+			#North Africa
+			EGY = {
+				#Nile Dries up
+			}
+			every_country = {
+				#Sahara reaches the Mediterranean
+				limit = {
+					OR = {
+						controls_state = 458
+					}
+				}
+			}
+			every_country = {
+				#Sandstorms in Iberia
+				limit = {
+					OR = {
+						controls_state = 1302
+						controls_state = 181
+					}
+				}
+			}
+			#West Africa
+		}
+	}
+}

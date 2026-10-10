@@ -1,0 +1,143 @@
+HRL_unit_production = {
+	allowed = {
+		original_tag = HRL
+	}
+	enable = {
+		always = yes
+	}
+	
+	abort = {
+		always = no
+	}
+	
+	ai_strategy = {
+		type = role_ratio
+		id = garrison
+		value = 0
+	}
+
+	ai_strategy = {
+		type = role_ratio
+		id = armor
+		value = 50
+	}
+
+	ai_strategy = {
+		type = role_ratio
+		id = infantry
+		value = 50
+	}
+}
+
+HRL_you_should_be_prepared_for_war = {
+
+	allowed = {
+		original_tag = HRL
+	}
+	enable = {
+		always = yes
+	}
+	
+	abort = {
+		always = no
+	}
+	
+	ai_strategy = {
+        type = force_build_armies
+        value = 100
+    }
+}
+
+HRL_kill_kill_kill = {
+	allowed = {
+		original_tag = HRL
+	}
+	enable = {
+		tag = HRL
+		has_war_with = TUN
+	}
+	
+	abort = {
+		always = no
+	}
+	
+	ai_strategy = {
+		type = front_control
+		tag = TUN
+		execution_type = rush
+		execute_order = yes
+		manual_attack = no
+	}
+
+	ai_strategy = {
+		type = consider_weak
+		id = TUN
+		value = 1000
+	}
+
+	ai_strategy = {
+		type = conquer
+		id = TUN
+		value = 1000
+	}
+}
+
+HRL_defend_the_coast = {
+	allowed = {
+		original_tag = HRL
+	}
+	enable = {
+		has_war_with = GER
+	}
+
+	abort_when_not_enabled = yes
+
+	ai_strategy = {
+		type = put_unit_buffers
+
+		# ratio of total armeis in country to be buffered
+		ratio = 0.15
+
+		# you can specify an order id. ratio of same orders ids will be share same ratio
+		#order_id = 2
+
+		# states to put garrison orders (if no state is friendly, strat is invalid)
+		states = {
+			290
+			459
+			460
+			458
+			665
+			448
+			449
+			450
+			451
+		}
+
+		# ai areas that the orders will use these buffers in
+		area = asia
+
+		# by default if you have orders in target areas, the buffer will request less units.
+		# you can override this to disable the feature
+		subtract_invasions_from_need = yes
+		subtract_fronts_from_need = no
+	}
+}
+
+HRL_support_GER = {
+	enable = {
+		tag = HRL
+		has_war = no
+		has_country_flag = GER_gaddafi_military_support
+	}
+	abort = {
+		has_war = yes
+		has_war = yes
+	}
+
+	ai_strategy = {
+		type = send_volunteers_desire
+		id = "GER"
+		value = 900
+	}
+}

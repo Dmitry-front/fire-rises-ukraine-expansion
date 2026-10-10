@@ -1,0 +1,669 @@
+add_namespace = european_union
+
+#BLOOMBERG SWEEP
+	country_event = {
+		id = european_union.20
+		title = european_union.20.t
+		desc = european_union.20.desc
+		picture = GFX_report_USA_flag
+
+		is_triggered_only = yes
+		
+		immediate = {
+				set_politics = {
+				ruling_party = authoritarian_democrat
+				elections_allowed = no
+			}
+			hidden_effect = {
+			kill_country_leader = yes
+				set_cosmetic_tag = FRA_corpo
+				set_party_name = { 
+					ideology = authoritarian_democrat 
+					long_name = FRA_authoritarian_democrat_party_corpo_long
+					name = FRA_authoritarian_democrat_party_corpo
+				}
+					create_country_leader = {
+					name = FRA_Gerard_Wertheimer
+					picture = "gfx/leaders/FRA/FRA_Gérard_Wertheimer.png"
+					ideology = corporatocracy
+					traits = {
+					}
+				}
+			}
+		}
+
+		option = { #Corpo Administration
+			name = european_union.20.a
+			add_stability = -0.1
+			add_war_support = -0.1
+		}
+	}
+	country_event = {
+		id = european_union.21
+		title = european_union.21.t
+		desc = european_union.21.desc
+		picture = GFX_report_USA_flag
+
+		is_triggered_only = yes
+		
+		immediate = {
+				set_politics = {
+				ruling_party = authoritarian_democrat
+				elections_allowed = no
+			}
+			hidden_effect = {
+			kill_country_leader = yes
+				set_cosmetic_tag = ENG_corpo
+				set_party_name = { 
+					ideology = authoritarian_democrat 
+					long_name = ENG_authoritarian_democrat_party_corpo_long
+					name = ENG_authoritarian_democrat_party_corpo
+				}
+					create_country_leader = {
+					name = ENG_Jacob_Rothschild
+					picture = "gfx/leaders/ENG/ENG_Jacob_Rothschild.png"
+					ideology = corporatocracy
+					traits = {
+					}
+         		}
+			}
+		}
+		option = { #Corpo Administration
+			name = european_union.21.a
+			add_stability = -0.1
+			add_war_support = -0.1
+		}
+	}
+	country_event = {
+		id = european_union.22
+		title = european_union.22.t
+		desc = european_union.22.desc
+		picture = GFX_report_USA_flag
+
+		is_triggered_only = yes
+		
+		immediate = {
+				set_politics = {
+				ruling_party = authoritarian_democrat
+				elections_allowed = no
+			}
+			hidden_effect = {
+			kill_country_leader = yes
+				set_cosmetic_tag = GER_corpo
+				set_party_name = { 
+					ideology = authoritarian_democrat 
+					long_name = GER_volt_europa_corp_long
+					name = GER_volt_europa_corp
+				}
+				create_country_leader = {
+					name = GER_klaus_schwab_char
+					picture = "gfx/leaders/GER/GER_Klaus_Schwab.png"
+					ideology = corporatocracy
+					traits = {
+					}
+				}
+           	}
+		}
+
+		option = { #Corpo Administration
+			name = european_union.22.a
+			add_stability = -0.1
+			add_war_support = -0.1
+		}
+	}
+	
+	#Formation of the European Union
+	country_event = {
+		id = european_union.1
+		title = european_union.1.t
+		desc = european_union.1.d
+		picture = GFX_Join_Axis
+		
+		is_triggered_only = yes
+		fire_only_once = yes
+		immediate = {
+		
+		}	
+		
+		option = {
+			name = european_union.1.a
+			set_cosmetic_tag = GER_EUU
+			remove_ideas = belgian_political_system
+			HOL = {
+				country_event = { id = european_union.2 days = 30 }
+			}
+			LUX = {
+				country_event = { id = european_union.2 days = 30 }
+			}
+		}
+	}
+
+	#Expansion of the EU
+	country_event = {
+		id = european_union.2
+		title = european_union.2.t
+		desc = european_union.2.d
+		picture = GFX_Join_Axis
+		
+		is_triggered_only = yes
+		immediate = {
+		
+		}	
+		
+		option = {
+			name = european_union.2.a
+			set_cosmetic_tag = GER_EUU
+		}
+	}
+	
+	#France Join EU
+	country_event = {
+		id = european_union.3
+		title = european_union.3.t
+		desc = european_union.3.d
+		picture = GFX_Join_Axis
+		
+		is_triggered_only = yes
+		immediate = {
+		
+		}	
+		
+		option = {
+			name = european_union.3.a
+			FSP = {
+				annex_country = {
+					target = FRA
+					transfer_troops = yes
+				}
+				annex_country = {
+					target = FPR
+					transfer_troops = no
+				}
+				set_cosmetic_tag = FSP_eu
+				create_country_leader = {
+					name = GER_european_commission_char
+					picture = "European Commission.dds"
+					ideology = neoliberalism
+					traits = {
+					}
+				}
+			}
+			GER = {
+				puppet = FSP
+			}
+		}
+		
+		#option = { #I don't think it's fair for the Germany player, also the war will be easier to balance
+		#	name = european_union.3.b
+		#	GER = {
+		#		country_event = { id = european_union.4 days = 5 }
+		#	}
+		#}
+	}
+	
+	#France Declines
+	country_event = {
+		id = european_union.4
+		title = european_union.4.t
+		desc = european_union.4.d
+		picture = GFX_Join_Axis
+		
+		is_triggered_only = yes
+		immediate = {
+		
+		}	
+		
+		option = {
+			name = european_union.4.a
+			declare_war_on = { 
+				target = FRA
+				type = annex_everything 
+			}
+		}
+	}
+	
+	#EU COmmission wants us to join
+	country_event = {
+		id = european_union.5
+		title = european_union.5.t
+		desc = european_union.5.d
+		picture = GFX_Join_Axis
+		
+		is_triggered_only = yes
+		immediate = {
+		
+		}	
+		
+		option = { #fuck you
+			name = european_union.5.a
+			trigger = {
+				NOT = {
+					OR = {
+						tag = DEN
+						tag = NOR
+						tag = PLD
+						tag = AUS
+						tag = ITA
+						tag = FRA
+						tag = SWE
+					}
+				}
+			}
+			if = {
+				limit = {
+					ROOT = {
+						tag = PLD
+					}
+				}
+				GER = {
+					country_event = { id = european_union.6 days = 3 }
+				}
+			}
+			else_if = {
+				limit = {
+					ROOT = {
+						tag = ITA
+					}
+				}
+				GER = {
+					country_event = { id = european_union.7 days = 3 }
+				}
+			}
+			else_if = {
+				limit = {
+					ROOT = {
+						tag = CRO
+					}
+				}
+				GER = {
+					country_event = { id = european_union.8 days = 3 }
+				}
+			}
+			else_if = {
+				limit = {
+					ROOT = {
+						tag = SWE
+					}
+				}
+				GER = {
+					country_event = { id = european_union.9 days = 3 }
+				}
+			}
+			else_if = {
+				limit = {
+					ROOT = {
+						tag = CZE
+					}
+				}
+				GER = {
+					country_event = { id = european_union.10 days = 3 }
+				}
+			}
+			else_if = {
+				limit = {
+					ROOT = {
+						tag = AUS
+					}
+				}
+				GER = {
+					country_event = { id = european_union.11 days = 3 }
+				}
+			}
+		}
+		
+		option = { #fuck me
+			name = european_union.5.b
+			trigger = {
+				NOT = {
+					OR = {
+						tag = DEN
+						tag = NOR
+					}
+				}
+			}
+			GER = {
+				puppet = ROOT
+			}
+			if = {
+				limit = {
+					ROOT = {
+						tag = PLD
+					}
+				}
+				set_cosmetic_tag = POL_euro_commission
+				GER_ultralib_eu_puppet = yes
+				if = {
+					limit = {
+						CZE = {
+							is_puppet_of = GER
+						}
+					}
+					annex_country = {
+						target = CZE
+					}
+				}
+				annex_country = {
+					target = SIL
+				}
+			}
+			else_if = {
+				limit = {
+					ROOT = {
+						tag = ITA
+					}
+				}
+				GER = {
+					annex_country = {
+						target = ITA
+					}
+				}
+				ITA = {
+					every_core_state = {
+						add_core_of = GER
+					}
+				}
+			}
+			else_if = {
+				limit = {
+					ROOT = {
+						tag = CRO
+					}
+				}
+				GRE = {
+					annex_country = {
+						target = CRO
+						transfer_troops = yes
+					}
+				}
+			}
+			else_if = {
+				limit = {
+					ROOT = {
+						tag = SWE
+					}
+				}
+				DEN = {
+					annex_country = {
+						target = SWE
+						transfer_troops = yes
+					}
+			        every_state = {
+				        limit = {
+				            is_core_of = SWE
+				        }
+				    add_core_of = DEN
+				    }
+			    }
+			}
+			else_if = {
+				limit = {
+					ROOT = {
+						tag = CZE
+					}
+				}
+				if = {
+					limit = {
+						PLD = {
+							is_puppet_of = GER
+						}
+					}
+						PLD = {
+							annex_country = {
+							target = CZE
+						}
+			            every_state = {
+				            limit = {
+				            is_core_of = CZE
+				        }
+				        add_core_of = PLD
+				        }
+					    }
+				}
+				else_if = {
+					limit = {
+						PLD = {
+							NOT = {
+								is_puppet_of = GER
+							}
+						}
+					}
+					#set_cosmetic_tag = GER_EUU
+					GER = {
+						puppet = ROOT
+					}
+				}
+			}
+			else_if = {
+				limit = {
+					ROOT = {
+						tag = AUS
+					}
+				}
+				GER = {
+					annex_country = {
+						target = AUS
+						transfer_troops = yes
+					}
+				}
+			}
+		}
+		
+		option = { #fuck me
+			name = european_union.5.c
+            trigger = {
+				OR = {
+				    tag = DEN
+					tag = NOR
+				}
+			}
+			if = {
+				limit = {
+					ROOT = {
+						tag = DEN
+					}
+				}
+				GER = {
+					puppet = DEN
+				}
+				set_cosmetic_tag = SCA_euro_commission
+				GER_ultralib_eu_puppet = yes
+			}
+			else_if = {
+				limit = {
+					ROOT = {
+						tag = NOR
+					}
+				}
+				NOR = {
+					every_controlled_state = {
+						limit = {
+							is_core_of = NOR
+						}
+						add_core_of = DEN
+					}
+				}
+				DEN = {
+					annex_country = {
+						target = NOR
+						transfer_troops = yes
+					}
+				}
+			}
+		}
+	}
+	
+	#Poland Refusees
+	country_event = {
+		id = european_union.6
+		title = european_union.6.t
+		desc = european_union.6.d
+		picture = GFX_Join_Axis
+		
+		is_triggered_only = yes
+		immediate = {
+		
+		}	
+		
+		option = { #fuck you
+			name = european_union.6.a
+			declare_war_on = { 
+				target = PLD 
+				type = annex_everything 
+			}
+		}
+	}
+	
+	
+	#Italy Refusees
+	country_event = {
+		id = european_union.7
+		title = european_union.7.t
+		desc = european_union.7.d
+		picture = GFX_Join_Axis
+		
+		is_triggered_only = yes
+		immediate = {
+		
+		}	
+		
+		option = { #fuck you
+			name = european_union.7.a
+			declare_war_on = { 
+				target = ITA
+				type = annex_everything 
+			}
+		}
+	}
+	
+	#Croatia Refusees
+	country_event = {
+		id = european_union.8
+		title = european_union.8.t
+		desc = european_union.8.d
+		picture = GFX_Join_Axis
+		
+		is_triggered_only = yes
+		immediate = {
+		
+		}	
+		
+		option = { #fuck you
+			name = european_union.8.a
+			declare_war_on = { 
+				target = CRO
+				type = annex_everything 
+			}
+		}
+	}
+	
+	#Sweden Refusees
+	country_event = {
+		id = european_union.9
+		title = european_union.9.t
+		desc = european_union.9.d
+		picture = GFX_NATO_speech
+		
+		is_triggered_only = yes
+		immediate = {
+		
+		}	
+		
+		option = { #fuck you
+			name = european_union.9.a
+			declare_war_on = { 
+				target = SWE
+				type = annex_everything 
+			}
+		}
+	}
+	
+	#Czech Republic Refusees
+	country_event = {
+		id = european_union.10
+		title = european_union.10.t
+		desc = european_union.10.d
+		picture = GFX_NATO_speech
+		
+		is_triggered_only = yes
+		immediate = {
+		
+		}	
+		
+		option = { #fuck you
+			name = european_union.10.a
+			declare_war_on = { 
+				target = CZE
+				type = annex_everything 
+			}
+		}
+	}
+	
+	#Austria Republic Refusees
+	country_event = {
+		id = european_union.11
+		title = european_union.11.t
+		desc = european_union.11.d
+		picture = GFX_Join_Axis
+		
+		is_triggered_only = yes
+		immediate = {
+		
+		}	
+		
+		option = { #fuck you
+			name = european_union.11.a
+			declare_war_on = { 
+				target = AUS
+				type = annex_everything 
+			}
+		}
+	}
+	
+	#Greek Counter-Coup
+	country_event = {
+		id = european_union.12
+		title = european_union.12.t
+		desc = european_union.12.d
+		picture = GFX_GER_gunther_kosovo
+		
+		is_triggered_only = yes
+		immediate = {
+		
+		}	
+		
+		option = { #fuck you
+			name = european_union.12.a
+		}
+	}
+	#Naval Idiots Come Back
+	country_event = {
+		id = european_union.13
+		title = european_union.13.t
+		desc = european_union.13.d
+		picture = GFX_Generic_NATO
+		
+		is_triggered_only = yes
+		immediate = {
+		
+		}	
+		
+		option = {
+			name = european_union.13.a
+		}
+	}
+	#Redefining European
+	country_event = {
+		id = european_union.14
+		title = european_union.14.t
+		desc = european_union.14.d
+		picture = GFX_Generic_NATO
+		
+		is_triggered_only = yes
+		immediate = {
+		
+		}	
+		
+		option = {
+			name = european_union.14.a
+		}
+	}

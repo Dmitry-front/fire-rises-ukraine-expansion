@@ -1,0 +1,440 @@
+#OH WOW OF COURSE IT'S EMPTY 
+
+ENG_civil_war = {
+	UK2_declare_victory = {
+		available = {
+			tag = UK2
+			has_war = no
+			controls_state = 126
+			is_puppet = no
+			SCO = {
+				exists = no
+			}
+			GER = {
+				is_in_faction = yes
+			}
+		}
+		modifier = {
+		}
+		ai_will_do = {
+			factor = 100
+		}
+		fire_only_once = yes
+		days_remove = 5
+		cost = 0
+		
+		remove_effect = {
+		    every_state = {
+			    limit = {
+				    is_core_of = ENG
+				}
+			    add_core_of = UK2
+		    }
+            set_capital = {
+			  state = 126
+			  remember_old_capital = no
+			}
+		    GER = {
+				country_event = { id = uk.111 }
+			}
+		}
+	}
+	SCO_declare_victory = {
+		available = {
+			tag = SCO
+			has_war = no
+			is_puppet = no
+			GER = {
+				is_in_faction = yes
+			}
+		}
+		modifier = {
+		}
+		ai_will_do = {
+			factor = 100
+		}
+		fire_only_once = yes
+		days_remove = 5
+		cost = 0
+		
+		remove_effect = {
+			UK2 = {
+				transfer_state = 123
+				transfer_state = 125
+				transfer_state = 126
+				transfer_state = 127
+				transfer_state = 128
+				transfer_state = 129
+				transfer_state = 130
+				transfer_state = 131
+				transfer_state = 132
+				transfer_state = 338
+				transfer_state = 1307
+				transfer_state = 1308
+				transfer_state = 1309
+				transfer_state = 1310	
+				transfer_state = 1311
+				transfer_state = 1312
+				every_owned_state = {
+					add_core_of = UK2
+				}			
+				set_cosmetic_tag = ENG_england_rep
+			}
+			WLS = {
+				transfer_state = 1313	
+				transfer_state = 1314
+				transfer_state = 1315
+				transfer_state = 1316
+				transfer_state = 122
+			}
+			SCO = {
+				puppet = UK2
+				puppet = WLS
+			}
+		    GER = {
+				country_event = { id = uk.112 }
+		    }
+		}
+	}
+	ENG_declare_victory = {
+		available = {
+			tag = ENG
+			has_war = no
+			is_puppet = no
+            GER = {
+				has_completed_focus = GER_war_plan_black
+			}
+		}
+		modifier = {
+		}
+		ai_will_do = {
+			factor = 100
+		}
+		fire_only_once = yes
+		days_remove = 5
+		cost = 0
+		
+		remove_effect = {
+		    SOV = {
+				country_event = { id = uk.113 hours = 1 }
+			}
+			remove_ideas = ENG_struggling_health_sector_idea
+			add_ideas = {
+				ENG_struggling_health_sector_idea_1
+				ENG_reform_democracy_idea
+				ENG_reform_economics_idea
+				ENG_restored_military_pride_idea
+			}
+			set_party_name = {
+				ideology = libertarian_socialist
+				long_name = ENG_wpb_long
+				name = ENG_wpb
+			}		
+			set_party_name = {
+				ideology = nationalist
+				long_name = ENG_nationalist_party_long
+				name = ENG_nationalist_party
+			}		
+			set_party_name = {
+				ideology = social_democrat
+				long_name = ENG_sdp_long
+				name = ENG_sdp
+			}	
+			set_party_name = {
+				ideology = market_liberal
+				long_name = ENG_liberal_party
+				name = ENG_liberal_party
+			}
+			set_popularities = {
+				authoritarian_democrat = 36
+				libertarian_socialist = 12
+				nationalist = 17
+				social_democrat = 24
+				market_liberal = 11
+			}
+			set_country_leader_ideology = hybrid_regime
+		}
+	}
+}
+
+ENG_civil_war_intervention_russia = {
+	SOV_ENG_send_guns = {
+		visible = {
+		    tag = SOV
+		    has_global_flag = SOV_first_nato_war_victory
+		    has_global_flag = SOV_medvedev_won
+		    ENG = { has_war = yes }
+		}
+		available = {
+		    ENG = { has_war = yes }
+		}
+		icon = GFX_SOV_decision_military_aid
+		fire_only_once = no
+		days_remove = 20
+		days_re_enable = 40
+		remove_effect = {
+			ENG = {
+				add_equipment_to_stockpile = {
+					type = infantry_equipment_2
+					amount = 2500
+					producer = SOV
+				}
+				add_equipment_to_stockpile = {
+					type = support_equipment
+					amount = 250
+					producer = SOV
+				}
+				add_equipment_to_stockpile = {
+					type = anti_tank_equipment_1
+					amount = 300
+					producer = SOV
+				}
+				add_equipment_to_stockpile = {
+					type = anti_air_equipment_1
+					amount = 300
+					producer = SOV
+				}
+				add_equipment_to_stockpile = {
+					type = motorized_equipment
+					amount = 400
+					producer = SOV
+				}
+			}
+		}
+		cost = 25
+	}
+	SOV_ENG_humanitarian_aid = {
+		visible = {
+		    tag = SOV
+		    has_global_flag = SOV_first_nato_war_victory
+		    has_global_flag = SOV_medvedev_won
+		    ENG = { has_war = yes }
+		}
+		available = {
+		    ENG = { has_war = yes }
+		}
+		icon = GFX_SOV_decision_money_aid
+		fire_only_once = no
+		days_remove = 20
+		days_re_enable = 40
+		remove_effect = {
+			ENG = {
+				country_event = {
+					id = ptf.8
+				}
+			}
+		}
+		cost = 40
+	}
+	SOV_ENG_volunteer_group = {
+		visible = {
+			tag = SOV
+		    has_global_flag = SOV_first_nato_war_victory
+		    has_global_flag = SOV_medvedev_won
+		    ENG = { has_war = yes }
+		}
+		icon = GFX_SOV_decision_volunteer_group
+		fire_only_once = yes
+		days_remove = 14
+		available = {
+			NOT = {
+				has_country_flag = SOV_sended_volunteers_eng
+			}
+		}
+		complete_effect = {
+			hidden_effect = {
+				set_country_flag = SOV_sended_volunteers_eng
+			}
+		}
+		remove_effect = {
+		    ENG = {
+				custom_effect_tooltip = GER_england_volunteers_tt
+				hidden_effect = { load_oob = "SOV_ENG_volunteers" }
+			}
+		}
+		cost = 60
+	}
+}
+
+ENG_civil_war_intervention_europe = {
+	GER_ENG_send_guns = {
+		visible = {
+		    tag = GER
+		    has_global_flag = SOV_first_nato_war_victory
+		    has_global_flag = SOV_medvedev_won
+		    UK2 = { has_war = yes }
+		}
+		available = {
+		    UK2 = { has_war = yes }
+		}
+		icon = GFX_GER_send_guns_ENG_decision
+		fire_only_once = no
+		days_remove = 20
+		days_re_enable = 40
+		remove_effect = {
+			UK2 = {
+				add_equipment_to_stockpile = {
+					type = infantry_equipment_2
+					amount = 2500
+					producer = GER
+				}
+				add_equipment_to_stockpile = {
+					type = support_equipment
+					amount = 250
+					producer = GER
+				}
+				add_equipment_to_stockpile = {
+					type = anti_tank_equipment_1
+					amount = 300
+					producer = GER
+				}
+				add_equipment_to_stockpile = {
+					type = anti_air_equipment_1
+					amount = 300
+					producer = GER
+				}
+				add_equipment_to_stockpile = {
+					type = motorized_equipment
+					amount = 400
+					producer = GER
+				}
+			}
+		}
+		cost = 25
+	}
+	GER_ENG_humanitarian_aid = {
+		visible = {
+		    tag = GER
+		    has_global_flag = SOV_first_nato_war_victory
+		    has_global_flag = SOV_medvedev_won
+		    UK2 = { has_war = yes }
+		}
+		available = {
+		    UK2 = { has_war = yes }
+		}
+		icon = GFX_GER_send_aid_ENG_decision
+		fire_only_once = no
+		days_remove = 20
+		days_re_enable = 40
+		remove_effect = {
+			UK2 = {
+				country_event = {
+					id = uk.116
+				}
+			}
+		}
+		cost = 40
+	}
+	GER_ENG_volunteer_group = {
+		visible = {
+			tag = GER
+		    has_global_flag = SOV_first_nato_war_victory
+		    has_global_flag = SOV_medvedev_won
+		    UK2 = { has_war = yes }
+		}
+		icon = GFX_GER_EU_volunteer_decision
+		fire_only_once = yes
+		days_remove = 14
+		available = {
+			NOT = {
+				has_country_flag = GER_sended_volunteers_eng
+			}
+		}
+		complete_effect = {
+			hidden_effect = {
+				set_country_flag = GER_sended_volunteers_eng
+			}
+		}
+		remove_effect = {
+			UK2 = {
+				custom_effect_tooltip = GER_england_volunteers_tt
+				hidden_effect = { load_oob = GER_ENG_volunteers }
+			}
+		}
+		cost = 60
+	}
+	GER_SCO_send_guns = {
+		visible = {
+		    tag = GER
+		    has_global_flag = SOV_first_nato_war_victory
+		    has_global_flag = SOV_medvedev_won
+		    SCO = { has_war = yes }
+			UK2 = { exists = no }
+		}
+		available = {
+		    SCO = { has_war = yes }
+		}
+		icon = GFX_GER_send_guns_SCO_decision
+		fire_only_once = no
+		days_remove = 20
+		days_re_enable = 40
+		remove_effect = {
+			SCO = {
+				add_equipment_to_stockpile = {
+					type = infantry_equipment_2
+					amount = 2500
+					producer = GER
+				}
+				add_equipment_to_stockpile = {
+					type = support_equipment
+					amount = 250
+					producer = GER
+				}
+				add_equipment_to_stockpile = {
+					type = anti_tank_equipment_1
+					amount = 300
+					producer = GER
+				}
+				add_equipment_to_stockpile = {
+					type = anti_air_equipment_1
+					amount = 300
+					producer = GER
+				}
+				add_equipment_to_stockpile = {
+					type = motorized_equipment
+					amount = 400
+					producer = GER
+				}
+			}
+		}
+		cost = 25
+	}
+	GER_SCO_humanitarian_aid = {
+		visible = {
+		    tag = GER
+		    has_global_flag = SOV_first_nato_war_victory
+		    has_global_flag = SOV_medvedev_won
+		    SCO = { has_war = yes }
+			UK2 = { exists = no }
+		}
+		available = {
+		    SCO = { has_war = yes }
+		}
+		icon = GFX_GER_send_aid_SCO_decision
+		fire_only_once = no
+		days_remove = 20
+		days_re_enable = 40
+		remove_effect = {
+			SCO = {
+				country_event = {
+					id = uk.116
+				}
+			}
+		}
+		cost = 40
+	}
+}
+
+ENG_kill_sun_sets_idea_category = { # 67
+	ENG_kill_sun_sets_idea_decision = {
+		icon = GFX_GER_send_aid_SCO_decision
+		fire_only_once = yes
+		complete_effect = {
+			set_country_flag = ENG_sun_sets_idea_cancel_flag
+			effect_tooltip = {
+				remove_ideas = ENG_sun_sets_idea
+			}
+		}
+		cost = 150
+	}
+}

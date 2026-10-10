@@ -1,0 +1,1053 @@
+#Ideas
+APA_add_revolution_progress = {
+	custom_effect_tooltip = APA_add_revolution_progress_tooltip
+	add_to_variable = {
+		var = APA_revolution_progress_var
+		value = APA_revolution_progress_var_temp
+	}
+	clamp_variable = {
+		var = APA_revolution_progress_var
+		min = 0
+		max = 1
+	}
+	set_variable = {
+		var = APA_revolution_progress_gui_var
+		value = APA_revolution_progress_var
+	}
+	multiply_variable = {
+		var = APA_revolution_progress_gui_var
+		value = 100
+	}
+	if = {
+		limit = {
+			has_government = totalitarian_socialist
+		}
+		set_variable = {
+			var = APA_revolution_stability_factor_dynamic_var
+			value = APA_revolution_progress_var
+		}
+		multiply_variable = {
+			var = APA_revolution_stability_factor_dynamic_var
+			value = 0.25
+		}
+		set_variable = {
+			var = APA_revolution_society_development_monthly_dynamic_var
+			value = APA_revolution_progress_var
+		}
+		multiply_variable = {
+			var = APA_revolution_society_development_monthly_dynamic_var
+			value = 0.05
+		}
+	}
+	else_if = {
+		limit = {
+			has_government = communist
+		}
+		set_variable = {
+			var = APA_revolution_production_factory_max_efficiency_factor_dynamic_var
+			value = APA_revolution_progress_var
+		}
+		multiply_variable = {
+			var = APA_revolution_production_factory_max_efficiency_factor_dynamic_var
+			value = 0.125
+		}
+		set_variable = {
+			var = APA_revolution_production_speed_buildings_factor_dynamic_var
+			value = APA_revolution_progress_var
+		}
+		multiply_variable = {
+			var = APA_revolution_production_speed_buildings_factor_dynamic_var
+			value = 0.25
+		}
+		set_variable = {
+			var = APA_revolution_poverty_development_monthly_dynamic_var
+			value = APA_revolution_progress_var
+		}
+		multiply_variable = {
+			var = APA_revolution_poverty_development_monthly_dynamic_var
+			value = 0.05
+		}
+	}
+	else_if = {
+		limit = {
+			has_government = libertarian_socialist
+		}
+		set_variable = {
+			var = APA_revolution_industrial_capacity_factory_dynamic_var
+			value = APA_revolution_progress_var
+		}
+		multiply_variable = {
+			var = APA_revolution_industrial_capacity_factory_dynamic_var
+			value = 0.25
+		}
+		set_variable = {
+			var = APA_revolution_industrial_capacity_dockyard_dynamic_var
+			value = APA_revolution_progress_var
+		}
+		multiply_variable = {
+			var = APA_revolution_industrial_capacity_dockyard_dynamic_var
+			value = 0.25
+		}
+		set_variable = {
+			var = APA_revolution_command_power_gain_mult_dynamic_var
+			value = APA_revolution_progress_var
+		}
+		multiply_variable = {
+			var = APA_revolution_command_power_gain_mult_dynamic_var
+			value = 0.25
+		}
+		set_variable = {
+			var = APA_revolution_army_morale_factor_dynamic_var
+			value = APA_revolution_progress_var
+		}
+		multiply_variable = {
+			var = APA_revolution_army_morale_factor_dynamic_var
+			value = 0.25
+		}
+		set_variable = {
+			var = APA_revolution_military_development_monthly_dynamic_var
+			value = APA_revolution_progress_var
+		}
+		multiply_variable = {
+			var = APA_revolution_military_development_monthly_dynamic_var
+			value = 0.05
+		}
+	}
+	else_if = {
+		limit = {
+			has_government = social_democrat
+		}
+		set_variable = {
+			var = APA_revolution_political_power_gain_dynamic_var
+			value = APA_revolution_progress_var
+		}
+		multiply_variable = {
+			var = APA_revolution_political_power_gain_dynamic_var
+			value = 0.5
+		}
+		set_variable = {
+			var = APA_revolution_research_speed_factor_dynamic_var
+			value = APA_revolution_progress_var
+		}
+		multiply_variable = {
+			var = APA_revolution_research_speed_factor_dynamic_var
+			value = 0.25
+		}
+		set_variable = {
+			var = APA_revolution_academic_development_monthly_dynamic_var
+			value = APA_revolution_progress_var
+		}
+		multiply_variable = {
+			var = APA_revolution_academic_development_monthly_dynamic_var
+			value = 0.05
+		}
+	}
+}
+
+APA_counterrevolutionary_threat_increase = {
+	custom_effect_tooltip = APA_counterrevolutionary_threat_tt
+	add_to_variable = {
+		var = APA_jacobin_counterrevolution_var
+		value = APA_jacobin_counterrevolution_var_temp
+	}
+	clamp_variable = {
+		var = APA_jacobin_counterrevolution_var
+		min = 0
+		max = 1
+	}
+}
+
+APA_reactionary_resistance_decrease = {
+	if = {
+		limit = {
+			has_idea = APA_reactionary_resistance_idea
+		}
+		swap_ideas = {
+			remove_idea = APA_reactionary_resistance_idea
+			add_idea = APA_reactionary_resistance_idea1
+		}
+	}
+	else_if = {
+		limit = {
+			has_idea = APA_reactionary_resistance_idea1
+		}
+		swap_ideas = {
+			remove_idea = APA_reactionary_resistance_idea1
+			add_idea = APA_reactionary_resistance_idea2
+		}
+	}
+	else_if = {
+		limit = {
+			has_idea = APA_reactionary_resistance_idea2
+		}
+		remove_ideas = APA_reactionary_resistance_idea2
+	}
+}
+
+APA_add_popular_support = {
+	custom_effect_tooltip = APA_add_popular_support_tooltip
+	add_to_variable = {
+		var = APA_popular_support_var
+		value = APA_popular_support_var_temp
+	}
+	clamp_variable = {
+		var = APA_popular_support_var
+		min = 0
+		max = 1
+	}
+	hidden_effect = {
+		remove_ideas = APA_lower_popular_support_idea
+		remove_ideas = APA_low_popular_support_idea
+		remove_ideas = APA_medium_popular_support_idea
+		remove_ideas = APA_high_popular_support_idea
+		remove_ideas = APA_higher_popular_support_idea
+		if = {
+			limit = {
+				check_variable = {
+					var = APA_popular_support_var
+					value = 0.2
+					compare = less_than
+				}
+			}
+			add_ideas = APA_lower_popular_support_idea
+		}
+		else_if = {
+			limit = {
+				check_variable = {
+					var = APA_popular_support_var
+					value = 0.2
+					compare = greater_than_or_equals
+				}
+				check_variable = {
+					var = APA_popular_support_var
+					value = 0.4
+					compare = less_than
+				}
+			}
+			add_ideas = APA_low_popular_support_idea
+		}
+		else_if = {
+			limit = {
+				check_variable = {
+					var = APA_popular_support_var
+					value = 0.4
+					compare = greater_than_or_equals
+				}
+				check_variable = {
+					var = APA_popular_support_var
+					value = 0.6
+					compare = less_than
+				}
+			}
+			add_ideas = APA_medium_popular_support_idea
+		}
+		else_if = {
+			limit = {
+				check_variable = {
+					var = APA_popular_support_var
+					value = 0.6
+					compare = greater_than_or_equals
+				}
+				check_variable = {
+					var = APA_popular_support_var
+					value = 0.8
+					compare = less_than
+				}
+			}
+			add_ideas = APA_high_popular_support_idea
+		}
+		else_if = {
+			limit = {
+				check_variable = {
+					var = APA_popular_support_var
+					value = 0.8
+					compare = greater_than_or_equals
+				}
+			}
+			add_ideas = APA_higher_popular_support_idea
+		}
+	}
+}
+
+APA_add_leftist_unity = {
+	custom_effect_tooltip = APA_add_leftist_unity_tooltip
+	add_to_variable = {
+		var = APA_leftist_unity_var
+		value = APA_leftist_unity_var_temp
+	}
+	clamp_variable = {
+		var = APA_leftist_unity_var
+		min = 0
+		max = 1
+	}
+	hidden_effect = {
+		remove_ideas = APA_lower_leftist_unity_idea
+		remove_ideas = APA_low_leftist_unity_idea
+		remove_ideas = APA_medium_leftist_unity_idea
+		remove_ideas = APA_high_leftist_unity_idea
+		remove_ideas = APA_higher_leftist_unity_idea
+		if = {
+			limit = {
+				check_variable = {
+					var = APA_leftist_unity_var
+					value = 0.2
+					compare = less_than
+				}
+			}
+			add_ideas = APA_lower_leftist_unity_idea
+		}
+		else_if = {
+			limit = {
+				check_variable = {
+					var = APA_leftist_unity_var
+					value = 0.2
+					compare = greater_than_or_equals
+				}
+				check_variable = {
+					var = APA_leftist_unity_var
+					value = 0.4
+					compare = less_than
+				}
+			}
+			add_ideas = APA_low_leftist_unity_idea
+		}
+		else_if = {
+			limit = {
+				check_variable = {
+					var = APA_leftist_unity_var
+					value = 0.4
+					compare = greater_than_or_equals
+				}
+				check_variable = {
+					var = APA_leftist_unity_var
+					value = 0.6
+					compare = less_than
+				}
+			}
+			add_ideas = APA_medium_leftist_unity_idea
+		}
+		else_if = {
+			limit = {
+				check_variable = {
+					var = APA_leftist_unity_var
+					value = 0.6
+					compare = greater_than_or_equals
+				}
+				check_variable = {
+					var = APA_leftist_unity_var
+					value = 0.8
+					compare = less_than
+				}
+			}
+			add_ideas = APA_high_leftist_unity_idea
+		}
+		else_if = {
+			limit = {
+				check_variable = {
+					var = APA_leftist_unity_var
+					value = 0.8
+					compare = greater_than_or_equals
+				}
+			}
+			add_ideas = APA_higher_leftist_unity_idea
+		}
+	}
+}
+
+APA_popular_support_increase = {
+	if = {
+		limit = {
+			has_idea = APA_high_popular_support_idea
+		}
+		swap_ideas = {
+			remove_idea = APA_high_popular_support_idea
+			add_idea = APA_higher_popular_support_idea
+		}
+	}
+	else_if = {
+		limit = {
+			has_idea = APA_medium_popular_support_idea
+		}
+		swap_ideas = {
+			remove_idea = APA_medium_popular_support_idea
+			add_idea = APA_high_popular_support_idea
+		}
+	}
+	else_if = {
+		limit = {
+			has_idea = APA_low_popular_support_idea
+		}
+		swap_ideas = {
+			remove_idea = APA_low_popular_support_idea
+			add_idea = APA_medium_popular_support_idea
+		}
+	}
+	else_if = {
+		limit = {
+			has_idea = APA_lower_popular_support_idea
+		}
+		swap_ideas = {
+			remove_idea = APA_lower_popular_support_idea
+			add_idea = APA_low_popular_support_idea
+		}
+	}
+}
+
+APA_popular_support_decrease = {
+	if = {
+		limit = {
+			has_idea = APA_low_popular_support_idea
+		}
+		swap_ideas = {
+			remove_idea = APA_low_popular_support_idea
+			add_idea = APA_lower_popular_support_idea
+		}
+	}
+	else_if = {
+		limit = {
+			has_idea = APA_medium_popular_support_idea
+		}
+		swap_ideas = {
+			remove_idea = APA_medium_popular_support_idea
+			add_idea = APA_low_popular_support_idea
+		}
+	}
+	else_if = {
+		limit = {
+			has_idea = APA_high_popular_support_idea
+		}
+		swap_ideas = {
+			remove_idea = APA_high_popular_support_idea
+			add_idea = APA_medium_popular_support_idea
+		}
+	}
+	else_if = {
+		limit = {
+			has_idea = APA_higher_popular_support_idea
+		}
+		swap_ideas = {
+			remove_idea = APA_higher_popular_support_idea
+			add_idea = APA_high_popular_support_idea
+		}
+	}
+}
+
+#Political Effects
+
+
+APA_add_support_jacobin = {
+	custom_effect_tooltip = APA_add_support_jacobin_tooltip
+	add_to_variable = {
+		var = APA_support_jacobin_var
+		value = APA_support_jacobin_var_temp
+	}
+	clamp_variable = {
+		var = APA_support_jacobin_var
+		min = 0
+		max = 1
+	}
+	APA_popularity_change = yes
+}
+
+APA_add_support_octoberist = {
+	custom_effect_tooltip = APA_add_support_octoberist_tooltip
+	add_to_variable = {
+		var = APA_support_octoberist_var
+		value = APA_support_octoberist_var_temp
+	}
+	clamp_variable = {
+		var = APA_support_octoberist_var
+		min = 0
+		max = 1
+	}
+	APA_popularity_change = yes
+}
+
+APA_add_support_anarchist = {
+	custom_effect_tooltip = APA_add_support_anarchist_tooltip
+	add_to_variable = {
+		var = APA_support_anarchist_var
+		value = APA_support_anarchist_var_temp
+	}
+	clamp_variable = {
+		var = APA_support_anarchist_var
+		min = 0
+		max = 1
+	}
+	APA_popularity_change = yes
+}
+
+APA_add_support_neosocialist = {
+	custom_effect_tooltip = APA_add_support_neosocialist_tooltip
+	add_to_variable = {
+		var = APA_support_neosocialist_var
+		value = APA_support_neosocialist_var_temp
+	}
+	clamp_variable = {
+		var = APA_support_neosocialist_var
+		min = 0
+		max = 1
+	}
+	hidden_effect = {
+		APA_popularity_change = yes
+	}
+}
+
+APA_popularity_change = {
+	#Totalitarian Socialist
+	set_variable = {
+		var = APA_totsoc_popularity_var
+		value = party_popularity@totalitarian_socialist
+	}
+	set_variable = {
+		var = APA_totsoc_popularity_dynamic_var
+		value = APA_totsoc_popularity_var
+	}
+	multiply_variable = {
+		var = APA_totsoc_popularity_dynamic_var
+		value = 0.4
+	}
+	if = {
+		#Very Adversive
+		limit = {
+			check_variable = {
+				var = APA_support_jacobin_var
+				value = 0.2
+				compare = less_than
+			}
+		}
+		multiply_variable = {
+			var = APA_totsoc_popularity_dynamic_var
+			value = -1
+		}
+	}
+	else_if = {
+		#Adversive
+		limit = {
+			check_variable = {
+				var = APA_support_jacobin_var
+				value = 0.2
+				compare = greater_than_or_equals
+			}
+			check_variable = {
+				var = APA_support_jacobin_var
+				value = 0.4
+				compare = less_than
+			}
+		}
+		multiply_variable = {
+			var = APA_totsoc_popularity_dynamic_var
+			value = -0.5
+		}
+	}
+	else_if = {
+		#Indifferent
+		limit = {
+			check_variable = {
+				var = APA_support_jacobin_var
+				value = 0.4
+				compare = greater_than_or_equals
+			}
+			check_variable = {
+				var = APA_support_jacobin_var
+				value = 0.6
+				compare = less_than
+			}
+		}
+		multiply_variable = {
+			var = APA_totsoc_popularity_dynamic_var
+			value = 0
+		}
+	}
+	else_if = {
+		#Supportive
+		limit = {
+			check_variable = {
+				var = APA_support_jacobin_var
+				value = 0.6
+				compare = greater_than_or_equals
+			}
+			check_variable = {
+				var = APA_support_jacobin_var
+				value = 0.8
+				compare = less_than
+			}
+		}
+		multiply_variable = {
+			var = APA_totsoc_popularity_dynamic_var
+			value = 0.5
+		}
+	}
+	#Authoritarian Socialist
+	set_variable = {
+		var = APA_autsoc_popularity_var
+		value = party_popularity@communist
+	}
+	set_variable = {
+		var = APA_autsoc_popularity_dynamic_var
+		value = APA_autsoc_popularity_var
+	}
+	if = {
+		#Very Adversive
+		limit = {
+			check_variable = {
+				var = APA_support_octoberist_var
+				value = 0.2
+				compare = less_than
+			}
+		}
+		multiply_variable = {
+			var = APA_autsoc_popularity_dynamic_var
+			value = -1
+		}
+	}
+	else_if = {
+		#Adversive
+		limit = {
+			check_variable = {
+				var = APA_support_octoberist_var
+				value = 0.2
+				compare = greater_than_or_equals
+			}
+			check_variable = {
+				var = APA_support_octoberist_var
+				value = 0.4
+				compare = less_than
+			}
+		}
+		multiply_variable = {
+			var = APA_autsoc_popularity_dynamic_var
+			value = -0.5
+		}
+	}
+	else_if = {
+		#Indifferent
+		limit = {
+			check_variable = {
+				var = APA_support_octoberist_var
+				value = 0.4
+				compare = greater_than_or_equals
+			}
+			check_variable = {
+				var = APA_support_octoberist_var
+				value = 0.6
+				compare = less_than
+			}
+		}
+		multiply_variable = {
+			var = APA_autsoc_popularity_dynamic_var
+			value = 0
+		}
+	}
+	else_if = {
+		#Supportive
+		limit = {
+			check_variable = {
+				var = APA_support_octoberist_var
+				value = 0.6
+				compare = greater_than_or_equals
+			}
+			check_variable = {
+				var = APA_support_octoberist_var
+				value = 0.8
+				compare = less_than
+			}
+		}
+		multiply_variable = {
+			var = APA_autsoc_popularity_dynamic_var
+			value = 0.5
+		}
+	}
+	#Libertarian Socialist
+	set_variable = {
+		var = APA_libsoc_popularity_var
+		value = party_popularity@libertarian_socialist
+	}
+	set_variable = {
+		var = APA_libsoc_popularity_dynamic_var
+		value = APA_libsoc_popularity_var
+	}
+	multiply_variable = {
+		var = APA_libsoc_popularity_dynamic_var
+		value = 0.2
+	}
+	if = {
+		#Very Adversive
+		limit = {
+			check_variable = {
+				var = APA_support_anarchist_var
+				value = 0.2
+				compare = less_than
+			}
+		}
+		multiply_variable = {
+			var = APA_libsoc_popularity_dynamic_var
+			value = -1
+		}
+	}
+	else_if = {
+		#Adversive
+		limit = {
+			check_variable = {
+				var = APA_support_anarchist_var
+				value = 0.2
+				compare = greater_than_or_equals
+			}
+			check_variable = {
+				var = APA_support_anarchist_var
+				value = 0.4
+				compare = less_than
+			}
+		}
+		multiply_variable = {
+			var = APA_libsoc_popularity_dynamic_var
+			value = -0.5
+		}
+	}
+	else_if = {
+		#Indifferent
+		limit = {
+			check_variable = {
+				var = APA_support_anarchist_var
+				value = 0.4
+				compare = greater_than_or_equals
+			}
+			check_variable = {
+				var = APA_support_anarchist_var
+				value = 0.6
+				compare = less_than
+			}
+		}
+		multiply_variable = {
+			var = APA_libsoc_popularity_dynamic_var
+			value = 0
+		}
+	}
+	else_if = {
+		#Supportive
+		limit = {
+			check_variable = {
+				var = APA_support_anarchist_var
+				value = 0.6
+				compare = greater_than_or_equals
+			}
+			check_variable = {
+				var = APA_support_anarchist_var
+				value = 0.8
+				compare = less_than
+			}
+		}
+		multiply_variable = {
+			var = APA_libsoc_popularity_dynamic_var
+			value = 0.5
+		}
+	}
+	#Social Democrat
+	set_variable = {
+		var = APA_socdem_popularity_var
+		value = party_popularity@social_democrat
+	}
+	set_variable = {
+		var = APA_socdem_popularity_dynamic_var
+		value = APA_socdem_popularity_var
+	}
+	multiply_variable = {
+		var = APA_socdem_popularity_dynamic_var
+		value = 0.4
+	}
+	if = {
+		#Very Adversive
+		limit = {
+			check_variable = {
+				var = APA_support_neosocialist_var
+				value = 0.2
+				compare = less_than
+			}
+		}
+		multiply_variable = {
+			var = APA_socdem_popularity_dynamic_var
+			value = -1
+		}
+	}
+	else_if = {
+		#Adversive
+		limit = {
+			check_variable = {
+				var = APA_support_neosocialist_var
+				value = 0.2
+				compare = greater_than_or_equals
+			}
+			check_variable = {
+				var = APA_support_neosocialist_var
+				value = 0.4
+				compare = less_than
+			}
+		}
+		multiply_variable = {
+			var = APA_socdem_popularity_dynamic_var
+			value = -0.5
+		}
+	}
+	else_if = {
+		#Indifferent
+		limit = {
+			check_variable = {
+				var = APA_support_neosocialist_var
+				value = 0.4
+				compare = greater_than_or_equals
+			}
+			check_variable = {
+				var = APA_support_neosocialist_var
+				value = 0.6
+				compare = less_than
+			}
+		}
+		multiply_variable = {
+			var = APA_socdem_popularity_dynamic_var
+			value = 0
+		}
+	}
+	else_if = {
+		#Supportive
+		limit = {
+			check_variable = {
+				var = APA_support_neosocialist_var
+				value = 0.6
+				compare = greater_than_or_equals
+			}
+			check_variable = {
+				var = APA_support_neosocialist_var
+				value = 0.8
+				compare = less_than
+			}
+		}
+		multiply_variable = {
+			var = APA_socdem_popularity_dynamic_var
+			value = 0.5
+		}
+	}
+	#Reactionary
+	set_variable = {
+		var = APA_reactionary_popularity_var
+		value = 0
+	}
+	add_to_variable = {
+		var = APA_reactionary_popularity_var
+		value = party_popularity@social_liberal
+	}
+	add_to_variable = {
+		var = APA_reactionary_popularity_var
+		value = party_popularity@market_liberal
+	}
+	add_to_variable = {
+		var = APA_reactionary_popularity_var
+		value = party_popularity@conservative
+	}
+	add_to_variable = {
+		var = APA_reactionary_popularity_var
+		value = party_popularity@authoritarian_democrat
+	}
+	set_variable = {
+		var = APA_reactionary_popularity_dynamic_var
+		value = APA_reactionary_popularity_var
+	}
+	multiply_variable = {
+		var = APA_reactionary_popularity_dynamic_var
+		value = -0.5
+	}
+	APA_congress_support_change = yes
+}
+
+APA_congress_support_change = {
+	set_temp_variable = {
+		var = APA_support_congress_total_var_temp
+		value = 0
+	}
+	#Totalitarian Socialist
+	set_temp_variable = {
+		var = APA_jacobin_support_congress_var_temp
+		value = party_popularity@totalitarian_socialist
+	}
+	if = {
+		#Indifferent Or Lower
+		limit = {
+			check_variable = {
+				var = APA_support_jacobin_var
+				value = 0.6
+				compare = less_than
+			}
+		}
+		multiply_temp_variable = {
+			var = APA_jacobin_support_congress_var_temp
+			value = 0
+		}
+	}
+	else_if = {
+		#Supportive
+		limit = {
+			check_variable = {
+				var = APA_support_jacobin_var
+				value = 0.6
+				compare = greater_than_or_equals
+			}
+			check_variable = {
+				var = APA_support_jacobin_var
+				value = 0.8
+				compare = less_than
+			}
+		}
+		multiply_temp_variable = {
+			var = APA_jacobin_support_congress_var_temp
+			value = 0.5
+		}
+	}
+	add_to_temp_variable = {
+		var = APA_support_congress_total_var_temp
+		value = APA_jacobin_support_congress_var_temp
+	}
+	#Authoritarian Socialist
+	set_temp_variable = {
+		var = APA_octoberist_support_congress_var_temp
+		value = party_popularity@communist
+	}
+	if = {
+		#Indifferent Or Lower
+		limit = {
+			check_variable = {
+				var = APA_support_octoberist_var
+				value = 0.6
+				compare = less_than
+			}
+		}
+		multiply_temp_variable = {
+			var = APA_octoberist_support_congress_var_temp
+			value = 0
+		}
+	}
+	else_if = {
+		#Supportive
+		limit = {
+			check_variable = {
+				var = APA_support_octoberist_var
+				value = 0.6
+				compare = greater_than_or_equals
+			}
+			check_variable = {
+				var = APA_support_octoberist_var
+				value = 0.8
+				compare = less_than
+			}
+		}
+		multiply_variable = {
+			var = APA_octoberist_support_congress_var_temp
+			value = 0.5
+		}
+	}
+	add_to_temp_variable = {
+		var = APA_support_congress_total_var_temp
+		value = APA_octoberist_support_congress_var_temp
+	}
+	#Libertarian Socialist
+	set_temp_variable = {
+		var = APA_anarchist_support_congress_var_temp
+		value = party_popularity@libertarian_socialist
+	}
+	if = {
+		#Indifferent Or Lower
+		limit = {
+			check_variable = {
+				var = APA_support_anarchist_var
+				value = 0.6
+				compare = less_than
+			}
+		}
+		multiply_temp_variable = {
+			var = APA_anarchist_support_congress_var_temp
+			value = 0
+		}
+	}
+	else_if = {
+		#Supportive
+		limit = {
+			check_variable = {
+				var = APA_support_anarchist_var
+				value = 0.6
+				compare = greater_than_or_equals
+			}
+			check_variable = {
+				var = APA_support_anarchist_var
+				value = 0.8
+				compare = less_than
+			}
+		}
+		multiply_temp_variable = {
+			var = APA_anarchist_support_congress_var_temp
+			value = 0.5
+		}
+	}
+	add_to_temp_variable = {
+		var = APA_support_congress_total_var_temp
+		value = APA_anarchist_support_congress_var_temp
+	}
+	#Social Democrat
+	set_temp_variable = {
+		var = APA_neosocialist_support_congress_var_temp
+		value = party_popularity@social_democrat
+	}
+	if = {
+		#Indifferent Or Lower
+		limit = {
+			check_variable = {
+				var = APA_support_neosocialist_var
+				value = 0.6
+				compare = less_than
+			}
+		}
+		multiply_temp_variable = {
+			var = APA_neosocialist_support_congress_var_temp
+			value = 0
+		}
+	}
+	else_if = {
+		#Supportive
+		limit = {
+			check_variable = {
+				var = APA_support_neosocialist_var
+				value = 0.6
+				compare = greater_than_or_equals
+			}
+			check_variable = {
+				var = APA_support_neosocialist_var
+				value = 0.8
+				compare = less_than
+			}
+		}
+		multiply_temp_variable = {
+			var = APA_neosocialist_support_congress_var_temp
+			value = 0.5
+		}
+	}
+	add_to_temp_variable = {
+		var = APA_support_congress_total_var_temp
+		value = APA_neosocialist_support_congress_var_temp
+	}
+	#Total
+	set_variable = {
+		var = APA_support_congress_total_var
+		value = APA_support_congress_total_var_temp
+	}
+}
+
+#Influence
+PRC_add_influence = {
+	custom_effect_tooltip = PRC_add_influence_tooltip
+	add_to_variable = {
+		var = PRC_influence_var
+		value = PRC_influence_var_temp
+	}
+	clamp_variable = {
+		var = PRC_influence_var
+		min = 0
+		max = 1
+	}
+}

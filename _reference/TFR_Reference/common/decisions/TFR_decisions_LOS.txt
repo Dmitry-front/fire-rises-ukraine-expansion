@@ -1,0 +1,3651 @@
+USA_second_american_civil_war_category = {
+#	LOS_remember_who_you_are_decision = {
+#		icon = generic_nationalism
+#		allowed = {
+#			tag = LOS
+#		}
+#		ai_will_do = {
+#			factor = 2
+#		}
+#		fire_only_once = yes
+#		available = {
+#			NOT = {
+#				has_country_flag = LOS_propaganda_flag
+#			}
+#		}
+#		visible = {
+#			LOS = {
+#				has_completed_focus = LOS_a_professional_army
+#			}
+#		}
+#		complete_effect = {
+#			hidden_effect = {
+#				set_country_flag = LOS_propaganda_flag
+#			}
+#		}
+#		modifier = {
+#			army_org_factor = 0.1
+#			experience_gain_army_factor = 0.1
+#			political_power_gain = -0.1
+#		}
+#		remove_effect = {
+#			hidden_effect = {
+#				clr_country_flag = LOS_propaganda_flag
+#			}
+#			add_stability = 0.05
+#		}
+#		days_remove = 75
+#		cost = 250
+#	}
+#	LOS_the_great_crusade_decision = {
+#		icon = generic_nationalism
+#		allowed = {
+#			tag = LOS
+#		}
+#		ai_will_do = {
+#			factor = 2
+#		}
+#		fire_only_once = yes
+#		available = {
+#			NOT = {
+#				has_country_flag = LOS_propaganda_flag
+#			}
+#		}
+#		visible = {
+#			LOS = {
+#				has_completed_focus = LOS_southern_spirit
+#			}
+#		}
+#		complete_effect = {
+#			hidden_effect = {
+#				set_country_flag = LOS_propaganda_flag
+#			}
+#		}
+#		modifier = {
+#			army_morale_factor = 0.15
+#			army_speed_factor = 0.1
+#			political_power_gain = -0.1
+#		}
+#		remove_effect = {
+#			hidden_effect = {
+#				clr_country_flag = LOS_propaganda_flag
+#			}
+#			add_stability = 0.05
+#		}
+#		days_remove = 75
+#		cost = 250
+#	}
+#	LOS_sic_semper_tyrannis_decision = {
+#		icon = generic_nationalism
+#		allowed = {
+#			tag = LOS
+#		}
+#		ai_will_do = {
+#			factor = 2
+#		}
+#		fire_only_once = yes
+#		available = {
+#			NOT = {
+#				has_country_flag = LOS_propaganda_flag
+#			}
+#		}
+#		visible = {
+#			LOS = {
+#				has_completed_focus = LOS_sic_semper_tyrannis
+#			}
+#		}
+#		complete_effect = {
+#			hidden_effect = {
+#				set_country_flag = LOS_propaganda_flag
+#			}
+#		}
+#		targeted_modifier = {
+#			tag = USB
+#			attack_bonus_against = 0.1
+#			defense_bonus_against = 0.1
+#		}
+#		modifier = {
+#			army_speed_factor = 0.15
+#			political_power_gain = -0.1
+#		}
+#		remove_effect = {
+#			hidden_effect = {
+#				clr_country_flag = LOS_propaganda_flag
+#			}
+#			add_stability = 0.05
+#		}
+#		days_remove = 75
+#		cost = 250
+#	}
+#	LOS_the_steel_offensive_decision = {
+#		icon = generic_nationalism
+#		allowed = {
+#			tag = LOS
+#		}
+#		ai_will_do = {
+#			factor = 2
+#		}
+#		fire_only_once = yes
+#		available = {
+#			NOT = {
+#				has_country_flag = LOS_propaganda_flag
+#			}
+#		}
+#		visible = {
+#			LOS = {
+#				has_completed_focus = LOS_tank_effort
+#			}
+#		}
+#		complete_effect = {
+#			hidden_effect = {
+#				set_country_flag = LOS_propaganda_flag
+#			}
+#		}
+#		modifier = {
+#			army_armor_attack_factor = 0.25
+#			army_armor_speed_factor = 0.25
+#			political_power_gain = -0.1
+#		}
+#		remove_effect = {
+#			hidden_effect = {
+#				clr_country_flag = LOS_propaganda_flag
+#			}
+#			add_stability = 0.05
+#		}
+#		days_remove = 75
+#		cost = 250
+#	}
+#	LOS_into_the_fire_decision = {
+#		icon = generic_nationalism
+#		allowed = {
+#			tag = LOS
+#		}
+#		ai_will_do = {
+#			factor = 2
+#		}
+#		fire_only_once = yes
+#		available = {
+#			NOT = {
+#				has_country_flag = LOS_propaganda_flag
+#			}
+#		}
+#		visible = {
+#			LOS = {
+#				has_completed_focus = LOS_enter_the_fray
+#			}
+#		}
+#		complete_effect = {
+#			hidden_effect = {
+#				set_country_flag = LOS_propaganda_flag
+#			}
+#		}
+#		modifier = {
+#			army_infantry_attack_factor = 0.15
+#			army_defence_factor = 0.1
+#			army_morale_factor = 0.05
+#			army_speed_factor = 0.15
+#			political_power_gain = -0.1
+#			army_org_factor = -0.1
+#		}
+#		remove_effect = {
+#			hidden_effect = {
+#				clr_country_flag = LOS_propaganda_flag
+#			}
+#			add_stability = 0.05
+#		}
+#		days_remove = 75
+#		cost = 250
+#	}
+	LOS_turkey_support_decision = {
+		icon = generic_nationalism
+		allowed = {
+			tag = LOS
+		}
+		ai_will_do = {
+			factor = 2
+		}
+		fire_only_once = no
+		available = {
+			has_country_flag = LOS_foreign_support_flag
+			TUR = {
+				has_government = authoritarian_democrat
+			}
+		}
+		visible = {
+			has_country_flag = LOS_foreign_support_flag
+		}
+		complete_effect = {
+		}
+		remove_effect = {
+			TUR = {
+				country_event = {
+					id = los.37
+					days = 0
+				}
+			}
+		}
+		days_remove = 14
+		days_re_enable = 300
+		cost = 50
+	}
+	LOS_visegrad_support_decision = {
+		icon = generic_nationalism
+		allowed = {
+			tag = LOS
+		}
+		ai_will_do = {
+			factor = 2
+		}
+		fire_only_once = no
+		available = {
+			has_country_flag = LOS_foreign_support_flag
+			POL = {
+				has_government = conservative
+			}
+		}
+		visible = {
+			has_country_flag = LOS_foreign_support_flag
+		}
+		complete_effect = {
+		}
+		remove_effect = {
+			POL = {
+				country_event = {
+					id = los.37
+					days = 0
+				}
+			}
+		}
+		days_remove = 14
+		days_re_enable = 300
+		cost = 50
+	}
+	LOS_brazil_support_decision = {
+		icon = generic_nationalism
+		allowed = {
+			tag = LOS
+		}
+		ai_will_do = {
+			factor = 2
+		}
+		fire_only_once = no
+		available = {
+			has_country_flag = LOS_foreign_support_flag
+			BRA = {
+				has_government = conservative
+			}
+		}
+		visible = {
+			has_country_flag = LOS_foreign_support_flag
+		}
+		complete_effect = {
+		}
+		remove_effect = {
+			BRA = {
+				country_event = {
+					id = los.37
+					days = 0
+				}
+			}
+		}
+		days_remove = 14
+		days_re_enable = 300
+		cost = 50
+	}
+}
+
+##The Confederate States Congress
+#LOS_confederate_congress_category = {
+#	LOS_increase_populist_support_decision = {
+#		icon = generic_nationalism
+#		allowed = {
+#			tag = LOS
+#		}
+#		ai_will_do = {
+#			base = 0
+#			modifier = {
+#				factor = 100
+#				has_completed_focus = LOS_embrace_southern_populism
+#			}
+#			modifier = {
+#				factor = 0
+#				has_completed_focus = LOS_a_pure_south
+#			}
+#		}
+#		available = {
+#			NOT = {
+#				has_country_flag = LOS_political_action_flag
+#			}
+#			set_temp_variable = {
+#				var = LOS_populist_support_var_trigger_temp
+#				value = 1
+#			}
+#			LOS_has_populist_support_less_than = yes
+#		}
+#		visible = {
+#			has_completed_focus = LOS_embrace_southern_populism
+#		}
+#		fire_only_once = no
+#		complete_effect = {
+#			hidden_effect = {
+#				set_country_flag = LOS_political_action_flag
+#			}
+#		}
+#		remove_effect = {
+#			set_temp_variable = {
+#				var = LOS_populist_support_var_temp
+#				value = 0.05
+#			}
+#			LOS_add_populist_support = yes
+#			set_temp_variable = {
+#				var = LOS_congress_support_var_temp
+#				value = 0.025
+#			}
+#			LOS_add_congress_support = yes
+#			if = {
+#				limit = {
+#					has_variable = LOS_kkk_support_var
+#				}
+#				hidden_effect = {
+#					set_temp_variable = {
+#						var = LOS_kkk_support_var_temp
+#						value = -0.05
+#					}
+#					LOS_add_kkk_support = yes
+#				}
+#			}
+#			hidden_effect = {
+#				clr_country_flag = LOS_political_action_flag
+#			}
+#		}
+#		days_remove = 14
+#		days_re_enable = 14
+#		cost = 25
+#	}
+#	LOS_decrease_populist_support_decision = {
+#		icon = generic_nationalism
+#		allowed = {
+#			tag = LOS
+#		}
+#		ai_will_do = {
+#			base = 0
+#			modifier = {
+#				factor = 0
+#				has_completed_focus = LOS_embrace_southern_populism
+#			}
+#			modifier = {
+#				factor = 10
+#				has_completed_focus = LOS_a_pure_south
+#			}
+#		}
+#		available = {
+#			NOT = {
+#				has_country_flag = LOS_political_action_flag
+#			}
+#			set_temp_variable = {
+#				var = LOS_populist_support_var_trigger_temp
+#				value = 0
+#			}
+#			LOS_has_populist_support_greater_than_or_equals = yes
+#		}
+#		fire_only_once = no
+#		complete_effect = {
+#			hidden_effect = {
+#				set_country_flag = LOS_political_action_flag
+#			}
+#		}
+#		remove_effect = {
+#			set_temp_variable = {
+#				var = LOS_populist_support_var_temp
+#				value = -0.05
+#			}
+#			LOS_add_populist_support = yes
+#			set_temp_variable = {
+#				var = LOS_congress_support_var_temp
+#				value = 0.05
+#			}
+#			LOS_add_congress_support = yes
+#			if = {
+#				limit = {
+#					has_variable = LOS_kkk_support_var
+#				}
+#				hidden_effect = {
+#					set_temp_variable = {
+#						var = LOS_kkk_support_var_temp
+#						value = -0.1
+#					}
+#					LOS_add_kkk_support = yes
+#				}
+#			}
+#			hidden_effect = {
+#				clr_country_flag = LOS_political_action_flag
+#			}
+#		}
+#		days_remove = 14
+#		days_re_enable = 14
+#		cost = 25
+#	}
+#	LOS_increase_old_guard_support_decision = {
+#		icon = generic_nationalism
+#		allowed = {
+#			tag = LOS
+#		}
+#		ai_will_do = {
+#			base = 0
+#			modifier = {
+#				factor = 0
+#				has_completed_focus = LOS_embrace_southern_populism
+#			}
+#			modifier = {
+#				factor = 100
+#				has_completed_focus = LOS_a_pure_south
+#			}
+#		}
+#		available = {
+#			NOT = {
+#				has_country_flag = LOS_political_action_flag
+#			}
+#			set_temp_variable = {
+#				var = LOS_old_guard_support_var_trigger_temp
+#				value = 1
+#			}
+#			LOS_has_old_guard_support_less_than = yes
+#		}
+#		visible = {
+#			has_completed_focus = LOS_a_pure_south
+#		}
+#		fire_only_once = no
+#		complete_effect = {
+#			hidden_effect = {
+#				set_country_flag = LOS_political_action_flag
+#			}
+#		}
+#		remove_effect = {
+#			set_temp_variable = {
+#				var = LOS_old_guard_support_var_temp
+#				value = 0.05
+#			}
+#			LOS_add_old_guard_support = yes
+#			set_temp_variable = {
+#				var = LOS_congress_support_var_temp
+#				value = 0.025
+#			}
+#			LOS_add_congress_support = yes
+#			if = {
+#				limit = {
+#					has_variable = LOS_kkk_support_var
+#				}
+#				hidden_effect = {
+#					set_temp_variable = {
+#						var = LOS_kkk_support_var_temp
+#						value = -0.05
+#					}
+#					LOS_add_kkk_support = yes
+#				}
+#			}
+#			hidden_effect = {
+#				clr_country_flag = LOS_political_action_flag
+#			}
+#		}
+#		days_remove = 14
+#		days_re_enable = 14
+#		cost = 25
+#	}
+#	LOS_decrease_old_guard_support_decision = {
+#		icon = generic_nationalism
+#		allowed = {
+#			tag = LOS
+#		}
+#		ai_will_do = {
+#			base = 0
+#			modifier = {
+#				factor = 10
+#				has_completed_focus = LOS_embrace_southern_populism
+#			}
+#			modifier = {
+#				factor = 0
+#				has_completed_focus = LOS_a_pure_south
+#			}
+#		}
+#		available = {
+#			NOT = {
+#				has_country_flag = LOS_political_action_flag
+#			}
+#			set_temp_variable = {
+#				var = LOS_old_guard_support_var_trigger_temp
+#				value = 0
+#			}
+#			LOS_has_old_guard_support_greater_than_or_equals = yes
+#		}
+#		fire_only_once = no
+#		complete_effect = {
+#			hidden_effect = {
+#				set_country_flag = LOS_political_action_flag
+#			}
+#		}
+#		remove_effect = {
+#			set_temp_variable = {
+#				var = LOS_old_guard_support_var_temp
+#				value = -0.05
+#			}
+#			LOS_add_old_guard_support = yes
+#			set_temp_variable = {
+#				var = LOS_congress_support_var_temp
+#				value = 0.05
+#			}
+#			LOS_add_congress_support = yes
+#			if = {
+#				limit = {
+#					has_variable = LOS_kkk_support_var
+#				}
+#				hidden_effect = {
+#					set_temp_variable = {
+#						var = LOS_kkk_support_var_temp
+#						value = -0.1
+#					}
+#					LOS_add_kkk_support = yes
+#				}
+#			}
+#			hidden_effect = {
+#				clr_country_flag = LOS_political_action_flag
+#			}
+#		}
+#		days_remove = 14
+#		days_re_enable = 14
+#		cost = 25
+#	}
+#	LOS_opposition_taking_action_mission = {
+#		activation = {
+#			always = no
+#		}
+#		available = {
+#			hidden_trigger = {
+#				always = no
+#			}
+#		}
+#		icon = mission_icon
+#		is_good = no
+#		days_mission_timeout = 360
+#		selectable_mission = no
+#		cancel_if_not_visible = yes
+#		timeout_effect = {
+#			activate_mission = LOS_opposition_taking_action_mission
+#			set_temp_variable = {
+#				var = LOS_congress_support_var_temp
+#				value = -0.05
+#			}
+#			LOS_add_congress_support = yes
+#			if = {
+#				limit = {
+#					has_completed_focus = LOS_embrace_southern_populism
+#				}
+#				set_temp_variable = {
+#					var = LOS_old_guard_support_var_temp
+#					value = 0.05
+#				}
+#				LOS_add_old_guard_support = yes
+#				set_temp_variable = {
+#					var = LOS_populist_support_var_temp
+#					value = -0.05
+#				}
+#				LOS_add_populist_support = yes
+#			}
+#			if = {
+#				limit = {
+#					has_completed_focus = LOS_a_pure_south
+#				}
+#				set_temp_variable = {
+#					var = LOS_populist_support_var_temp
+#					value = 0.05
+#				}
+#				LOS_add_populist_support = yes
+#				set_temp_variable = {
+#					var = LOS_old_guard_support_var_temp
+#					value = -0.05
+#				}
+#				LOS_add_old_guard_support = yes
+#			}
+#			if = {
+#				limit = {
+#					has_variable = LOS_kkk_support_var
+#				}
+#				hidden_effect = {
+#					set_temp_variable = {
+#						var = LOS_kkk_support_var_temp
+#						value = 0.05
+#					}
+#					LOS_add_kkk_support = yes
+#				}
+#			}
+#			hidden_effect = {
+#				if = {
+#					limit = {
+#						set_temp_variable = {
+#							var = LOS_kkk_support_var_trigger_temp
+#							value = 0.8
+#						}
+#						LOS_has_kkk_support_greater_than_or_equals = yes
+#					}
+#					country_event = {
+#						id = los.23
+#					}
+#				}
+#			}
+#		}
+#	}
+#	LOS_revisit_constitutional_amendments_decision = {
+#		icon = generic_nationalism
+#		allowed = {
+#			tag = LOS
+#		}
+#		ai_will_do = {
+#			factor = 2
+#		}
+#		fire_only_once = yes
+#		available = {
+#			NOT = {
+#				has_country_flag = LOS_congress_law_flag
+#			}
+#			set_temp_variable = {
+#				var = LOS_congress_support_var_trigger_temp
+#				value = 0.5
+#			}
+#			LOS_has_congress_support_greater_than_or_equals = yes
+#			set_temp_variable = {
+#				var = LOS_populist_support_var_trigger_temp
+#				value = 0.35
+#			}
+#			LOS_has_populist_support_greater_than_or_equals = yes
+#		}
+#		visible = {
+#			LOS = {
+#				has_completed_focus = LOS_write_constitution
+#			}
+#		}
+#		complete_effect = {
+#			hidden_effect = {
+#				set_country_flag = LOS_congress_law_flag
+#			}
+#			set_temp_variable = {
+#				var = LOS_populist_support_var_temp
+#				value = -0.1
+#			}
+#			LOS_add_populist_support = yes
+#		}
+#		remove_effect = {
+#			add_stability = -0.05
+#			set_temp_variable = {
+#				var = society_development_var_temp
+#				value = 0.05
+#			}
+#			add_society_development = yes
+#			add_timed_idea = {
+#				idea = LOS_constitutional_reform_idea
+#				days = 60
+#			}
+#			swap_ideas = {
+#				remove_idea = LOS_southern_constitution_idea
+#				add_idea = LOS_southern_constitution2_idea
+#			}
+#			hidden_effect = {
+#				clr_country_flag = LOS_congress_law_flag
+#			}
+#		}
+#		cancel_trigger = {
+#			set_temp_variable = {
+#				var = LOS_congress_support_var_trigger_temp
+#				value = 0.5
+#			}
+#			LOS_has_congress_support_less_than = yes
+#		}
+#		days_remove = 30
+#		cost = 30
+#	}
+#	LOS_establish_minimum_prices_for_crops_decision = {
+#		icon = generic_nationalism
+#		allowed = {
+#			tag = LOS
+#		}
+#		ai_will_do = {
+#			factor = 2
+#		}
+#		fire_only_once = yes
+#		available = {
+#			NOT = {
+#				has_country_flag = LOS_congress_law_flag
+#			}
+#			set_temp_variable = {
+#				var = LOS_congress_support_var_trigger_temp
+#				value = 0.5
+#			}
+#			LOS_has_congress_support_greater_than_or_equals = yes
+#			set_temp_variable = {
+#				var = LOS_populist_support_var_trigger_temp
+#				value = 0.35
+#			}
+#			LOS_has_populist_support_greater_than_or_equals = yes
+#			set_temp_variable = {
+#				var = LOS_old_guard_support_var_trigger_temp
+#				value = 0.25
+#			}
+#			LOS_has_old_guard_support_greater_than_or_equals = yes
+#		}
+#		visible = {
+#			LOS = {
+#				has_completed_focus = LOS_rural_appeal
+#			}
+#		}
+#		complete_effect = {
+#			hidden_effect = {
+#				set_country_flag = LOS_congress_law_flag
+#			}
+#			set_temp_variable = {
+#				var = LOS_populist_support_var_temp
+#				value = -0.1
+#			}
+#			LOS_add_populist_support = yes
+#		}
+#		remove_effect = {
+#			add_stability = 0.1
+#			set_temp_variable = {
+#				var = farming_development_var_temp
+#				value = 0.05
+#			}
+#			add_farming_development = yes
+#			set_temp_variable = {
+#				var = LOS_populist_support_var_temp
+#				value = 0.05
+#			}
+#			LOS_add_populist_support = yes
+#			add_timed_idea = {
+#				idea = LOS_crop_price_reform_idea
+#				days = 60
+#			}
+#			hidden_effect = {
+#				clr_country_flag = LOS_congress_law_flag
+#			}
+#		}
+#		cancel_trigger = {
+#			set_temp_variable = {
+#				var = LOS_congress_support_var_trigger_temp
+#				value = 0.5
+#			}
+#			LOS_has_congress_support_less_than = yes
+#		}
+#		days_remove = 30
+#		cost = 20
+#	}
+#	LOS_the_wallace_antimonopoly_act_decision = {
+#		icon = generic_nationalism
+#		allowed = {
+#			tag = LOS
+#		}
+#		ai_will_do = {
+#			factor = 2
+#		}
+#		fire_only_once = yes
+#		available = {
+#			NOT = {
+#				has_country_flag = LOS_congress_law_flag
+#			}
+#			set_temp_variable = {
+#				var = LOS_congress_support_var_trigger_temp
+#				value = 0.5
+#			}
+#			LOS_has_congress_support_greater_than_or_equals = yes
+#			set_temp_variable = {
+#				var = LOS_populist_support_var_trigger_temp
+#				value = 0.45
+#			}
+#			LOS_has_populist_support_greater_than_or_equals = yes
+#		}
+#		visible = {
+#			LOS = {
+#				has_completed_focus = LOS_fight_northern_elitism
+#			}
+#		}
+#		complete_effect = {
+#			hidden_effect = {
+#				set_country_flag = LOS_congress_law_flag
+#				subtract_from_variable = {
+#					var = income_var
+#					value = 0.07
+#				}
+#			}
+#		}
+#		remove_effect = {
+#			add_stability = 0.1
+#			set_temp_variable = {
+#				var = industrial_development_var_temp
+#				value = 0.1
+#			}
+#			add_industrial_development = yes
+#			add_timed_idea = {
+#				idea = LOS_fighting_monopolies_idea
+#				days = 60
+#			}
+#			hidden_effect = {
+#				clr_country_flag = LOS_congress_law_flag
+#			}
+#		}
+#		cancel_trigger = {
+#			set_temp_variable = {
+#				var = LOS_congress_support_var_trigger_temp
+#				value = 0.5
+#			}
+#			LOS_has_congress_support_less_than = yes
+#		}
+#		days_remove = 30
+#		cost = 20
+#	}
+#	LOS_anti_refugee_policy_decision = {
+#		icon = generic_nationalism
+#		allowed = {
+#			tag = LOS
+#		}
+#		ai_will_do = {
+#			factor = 2
+#		}
+#		fire_only_once = yes
+#		available = {
+#			NOT = {
+#				has_country_flag = LOS_congress_law_flag
+#			}
+#			set_temp_variable = {
+#				var = LOS_congress_support_var_trigger_temp
+#				value = 0.5
+#			}
+#			LOS_has_congress_support_greater_than_or_equals = yes
+#		}
+#		visible = {
+#			LOS = {
+#				has_completed_focus = LOS_wipe_the_slate_clean
+#			}
+#		}
+#		complete_effect = {
+#			hidden_effect = {
+#				set_country_flag = LOS_congress_law_flag
+#				subtract_from_variable = {
+#					var = income_var
+#					value = 0.07
+#				}
+#			}
+#		}
+#		remove_effect = {
+#			add_stability = 0.1
+#			add_political_power = 50
+#			add_ideas = lower_immigration
+#			add_days_mission_timeout = {
+#				mission = LOS_army_of_southern_liberation_mission
+#				days = 5
+#			}
+#			hidden_effect = {
+#				clr_country_flag = LOS_congress_law_flag
+#			}
+#		}
+#		cancel_trigger = {
+#			set_temp_variable = {
+#				var = LOS_congress_support_var_trigger_temp
+#				value = 0.5
+#			}
+#			LOS_has_congress_support_less_than = yes
+#		}
+#		days_remove = 30
+#		cost = 20
+#	}
+#	LOS_revise_race_laws_decision = {
+#		icon = generic_nationalism
+#		allowed = {
+#			tag = LOS
+#		}
+#		ai_will_do = {
+#			factor = 2
+#		}
+#		fire_only_once = yes
+#		available = {
+#			NOT = {
+#				has_country_flag = LOS_congress_law_flag
+#			}
+#			set_temp_variable = {
+#				var = LOS_congress_support_var_trigger_temp
+#				value = 0.5
+#			}
+#			LOS_has_congress_support_greater_than_or_equals = yes
+#		}
+#		visible = {
+#			LOS = {
+#				has_completed_focus = LOS_racial_reconciliation
+#			}
+#		}
+#		complete_effect = {
+#			hidden_effect = {
+#				set_country_flag = LOS_congress_law_flag
+#			}
+#		}
+#		remove_effect = {
+#			add_political_power = 50
+#			add_ideas = low_race
+#			set_temp_variable = {
+#				var = LOS_populist_support_var_temp
+#				value = 0.05
+#			}
+#			LOS_add_populist_support = yes
+#			set_temp_variable = {
+#				var = LOS_old_guard_support_var_temp
+#				value = -0.05
+#			}
+#			LOS_add_old_guard_support = yes
+#			hidden_effect = {
+#				clr_country_flag = LOS_congress_law_flag
+#			}
+#		}
+#		cancel_trigger = {
+#			set_temp_variable = {
+#				var = LOS_congress_support_var_trigger_temp
+#				value = 0.5
+#			}
+#			LOS_has_congress_support_less_than = yes
+#		}
+#		days_remove = 30
+#		cost = 20
+#	}
+#	LOS_empower_the_rural_voter_base_decision = {
+#		icon = generic_nationalism
+#		allowed = {
+#			tag = LOS
+#		}
+#		ai_will_do = {
+#			factor = 2
+#		}
+#		fire_only_once = yes
+#		available = {
+#			NOT = {
+#				has_country_flag = LOS_congress_law_flag
+#			}
+#			set_temp_variable = {
+#				var = LOS_congress_support_var_trigger_temp
+#				value = 0.5
+#			}
+#			LOS_has_congress_support_greater_than_or_equals = yes
+#		}
+#		visible = {
+#			LOS = {
+#				has_completed_focus = LOS_county_unit_system
+#			}
+#		}
+#		complete_effect = {
+#			hidden_effect = {
+#				set_country_flag = LOS_congress_law_flag
+#			}
+#			set_temp_variable = {
+#				var = LOS_populist_support_var_temp
+#				value = 0.05
+#			}
+#			LOS_add_populist_support = yes
+#		}
+#		remove_effect = {
+#			add_stability = 0.05
+#			add_political_power = 35
+#			add_ideas = LOS_county_unit_system_idea
+#			hidden_effect = {
+#				clr_country_flag = LOS_congress_law_flag
+#			}
+#		}
+#		cancel_trigger = {
+#			set_temp_variable = {
+#				var = LOS_congress_support_var_trigger_temp
+#				value = 0.5
+#			}
+#			LOS_has_congress_support_less_than = yes
+#		}
+#		days_remove = 30
+#		cost = 20
+#	}
+#	LOS_increase_the_power_of_the_central_government_decision = {
+#		icon = generic_nationalism
+#		allowed = {
+#			tag = LOS
+#		}
+#		ai_will_do = {
+#			factor = 2
+#		}
+#		fire_only_once = yes
+#		available = {
+#			NOT = {
+#				has_country_flag = LOS_congress_law_flag
+#			}
+#			set_temp_variable = {
+#				var = LOS_congress_support_var_trigger_temp
+#				value = 0.5
+#			}
+#			LOS_has_congress_support_greater_than_or_equals = yes
+#			set_temp_variable = {
+#				var = LOS_populist_support_var_trigger_temp
+#				value = 0.5
+#			}
+#			LOS_has_populist_support_greater_than_or_equals = yes
+#		}
+#		visible = {
+#			LOS = {
+#				has_completed_focus = LOS_restructure_government
+#			}
+#		}
+#		complete_effect = {
+#			hidden_effect = {
+#				set_country_flag = LOS_congress_law_flag
+#			}
+#			set_temp_variable = {
+#				var = LOS_congress_support_var_temp
+#				value = -0.15
+#			}
+#			LOS_add_congress_support = yes
+#		}
+#		remove_effect = {
+#			add_stability = -0.1
+#			add_political_power = -25
+#			add_ideas = LOS_restructured_govt_idea
+#			hidden_effect = {
+#				clr_country_flag = LOS_congress_law_flag
+#			}
+#		}
+#		cancel_trigger = {
+#			set_temp_variable = {
+#				var = LOS_congress_support_var_trigger_temp
+#				value = 0.5
+#			}
+#			LOS_has_congress_support_less_than = yes
+#		}
+#		days_remove = 30
+#		cost = 20
+#	}
+#	LOS_anti_poverty_programs_decision = {
+#		icon = generic_nationalism
+#		allowed = {
+#			tag = LOS
+#		}
+#		ai_will_do = {
+#			factor = 2
+#		}
+#		fire_only_once = yes
+#		available = {
+#			NOT = {
+#				has_country_flag = LOS_congress_law_flag
+#			}
+#			set_temp_variable = {
+#				var = LOS_congress_support_var_trigger_temp
+#				value = 0.5
+#			}
+#			LOS_has_congress_support_greater_than_or_equals = yes
+#		}
+#		visible = {
+#			LOS = {
+#				has_completed_focus = LOS_fulfill_our_promises
+#			}
+#		}
+#		complete_effect = {
+#			hidden_effect = {
+#				set_country_flag = LOS_congress_law_flag
+#			}
+#		}
+#		remove_effect = {
+#			add_stability = 0.15
+#			add_political_power = 50
+#			add_timed_idea = {
+#				idea = LOS_war_on_poverty_idea
+#				days = 70
+#			}
+#			hidden_effect = {
+#				clr_country_flag = LOS_congress_law_flag
+#			}
+#		}
+#		cancel_trigger = {
+#			set_temp_variable = {
+#				var = LOS_congress_support_var_trigger_temp
+#				value = 0.5
+#			}
+#			LOS_has_congress_support_less_than = yes
+#		}
+#		days_remove = 30
+#		cost = 30
+#	}
+#	LOS_expand_state_rights_decision = {
+#		icon = generic_nationalism
+#		allowed = {
+#			tag = LOS
+#		}
+#		ai_will_do = {
+#			factor = 2
+#		}
+#		fire_only_once = yes
+#		available = {
+#			NOT = {
+#				has_country_flag = LOS_congress_law_flag
+#			}
+#			set_temp_variable = {
+#				var = LOS_congress_support_var_trigger_temp
+#				value = 0.5
+#			}
+#			LOS_has_congress_support_greater_than_or_equals = yes
+#			set_temp_variable = {
+#				var = LOS_old_guard_support_var_trigger_temp
+#				value = 0.35
+#			}
+#			LOS_has_old_guard_support_greater_than_or_equals = yes
+#		}
+#		visible = {
+#			LOS = {
+#				has_completed_focus = LOS_states_rights
+#			}
+#		}
+#		complete_effect = {
+#			hidden_effect = {
+#				set_country_flag = LOS_congress_law_flag
+#			}
+#			set_temp_variable = {
+#				var = LOS_old_guard_support_var_temp
+#				value = -0.1
+#			}
+#			LOS_add_old_guard_support = yes
+#		}
+#		remove_effect = {
+#			add_stability = 0.02
+#			add_timed_idea = {
+#				idea = LOS_state_reform_idea
+#				days = 60
+#			}
+#			swap_ideas = {
+#				remove_idea = LOS_states_rights_idea
+#				add_idea = LOS_states_rights2_idea
+#			}
+#			hidden_effect = {
+#				clr_country_flag = LOS_congress_law_flag
+#			}
+#		}
+#		cancel_trigger = {
+#			set_temp_variable = {
+#				var = LOS_congress_support_var_trigger_temp
+#				value = 0.5
+#			}
+#			LOS_has_congress_support_less_than = yes
+#		}
+#		days_remove = 30
+#		cost = 30
+#	}
+#	LOS_the_cultural_defense_act_decision = {
+#		icon = generic_nationalism
+#		allowed = {
+#			tag = LOS
+#		}
+#		ai_will_do = {
+#			factor = 2
+#		}
+#		fire_only_once = yes
+#		available = {
+#			NOT = {
+#				has_country_flag = LOS_congress_law_flag
+#			}
+#			set_temp_variable = {
+#				var = LOS_congress_support_var_trigger_temp
+#				value = 0.5
+#			}
+#			LOS_has_congress_support_greater_than_or_equals = yes
+#		}
+#		visible = {
+#			LOS = {
+#				has_completed_focus = LOS_honor_our_past
+#			}
+#		}
+#		complete_effect = {
+#			hidden_effect = {
+#				set_country_flag = LOS_congress_law_flag
+#			}
+#		}
+#		remove_effect = {
+#			add_stability = 0.25
+#			add_political_power = 50
+#			add_war_support = 0.2
+#			set_temp_variable = {
+#				var = legit_var_temp
+#				value = 0.05
+#			}
+#			hidden_effect = {
+#				clr_country_flag = LOS_congress_law_flag
+#			}
+#		}
+#		cancel_trigger = {
+#			set_temp_variable = {
+#				var = LOS_congress_support_var_trigger_temp
+#				value = 0.5
+#			}
+#			LOS_has_congress_support_less_than = yes
+#		}
+#		days_remove = 30
+#		cost = 15
+#	}
+#	LOS_expand_police_power_decision = {
+#		icon = generic_nationalism
+#		allowed = {
+#			tag = LOS
+#		}
+#		ai_will_do = {
+#			factor = 2
+#		}
+#		fire_only_once = yes
+#		available = {
+#			NOT = {
+#				has_country_flag = LOS_congress_law_flag
+#			}
+#			set_temp_variable = {
+#				var = LOS_congress_support_var_trigger_temp
+#				value = 0.5
+#			}
+#			LOS_has_congress_support_greater_than_or_equals = yes
+#			set_temp_variable = {
+#				var = LOS_old_guard_support_var_trigger_temp
+#				value = 0.25
+#			}
+#			LOS_has_old_guard_support_greater_than_or_equals = yes
+#		}
+#		visible = {
+#			LOS = {
+#				has_completed_focus = LOS_empower_police
+#			}
+#		}
+#		complete_effect = {
+#			hidden_effect = {
+#				set_country_flag = LOS_congress_law_flag
+#			}
+#		}
+#		remove_effect = {
+#			add_stability = 0.2
+#			add_war_support = 0.2
+#			set_temp_variable = {
+#				var = LOS_old_guard_support_var_temp
+#				value = -0.1
+#			}
+#			LOS_add_old_guard_support = yes
+#			add_ideas = higher_police
+#			hidden_effect = {
+#				clr_country_flag = LOS_congress_law_flag
+#			}
+#		}
+#		cancel_trigger = {
+#			set_temp_variable = {
+#				var = LOS_congress_support_var_trigger_temp
+#				value = 0.5
+#			}
+#			LOS_has_congress_support_less_than = yes
+#		}
+#		days_remove = 30
+#		cost = 15
+#	}
+#	LOS_expand_military_power_decision = {
+#		icon = generic_nationalism
+#		allowed = {
+#			tag = LOS
+#		}
+#		ai_will_do = {
+#			factor = 2
+#		}
+#		fire_only_once = yes
+#		available = {
+#			NOT = {
+#				has_country_flag = LOS_congress_law_flag
+#			}
+#			set_temp_variable = {
+#				var = LOS_congress_support_var_trigger_temp
+#				value = 0.5
+#			}
+#			LOS_has_congress_support_greater_than_or_equals = yes
+#			set_temp_variable = {
+#				var = LOS_old_guard_support_var_trigger_temp
+#				value = 0.45
+#			}
+#			LOS_has_old_guard_support_greater_than_or_equals = yes
+#		}
+#		visible = {
+#			LOS = {
+#				has_completed_focus = LOS_glorify_conquest
+#			}
+#		}
+#		complete_effect = {
+#			hidden_effect = {
+#				set_country_flag = LOS_congress_law_flag
+#			}
+#		}
+#		remove_effect = {
+#			add_stability = 0.2
+#			add_war_support = 0.2
+#			set_temp_variable = {
+#				var = LOS_old_guard_support_var_temp
+#				value = 0.1
+#			}
+#			LOS_add_old_guard_support = yes
+#			add_timed_idea = {
+#				idea = LOS_conquest_forever_idea
+#				days = 60
+#			}
+#			hidden_effect = {
+#				clr_country_flag = LOS_congress_law_flag
+#			}
+#		}
+#		cancel_trigger = {
+#			set_temp_variable = {
+#				var = LOS_congress_support_var_trigger_temp
+#				value = 0.5
+#			}
+#			LOS_has_congress_support_less_than = yes
+#		}
+#		days_remove = 30
+#		cost = 15
+#	}
+#	LOS_loosen_firearm_restrictions_decision = {
+#		icon = generic_nationalism
+#		allowed = {
+#			tag = LOS
+#		}
+#		ai_will_do = {
+#			factor = 2
+#		}
+#		fire_only_once = yes
+#		available = {
+#			NOT = {
+#				has_country_flag = LOS_congress_law_flag
+#			}
+#			set_temp_variable = {
+#				var = LOS_congress_support_var_trigger_temp
+#				value = 0.5
+#			}
+#			LOS_has_congress_support_greater_than_or_equals = yes
+#		}
+#		visible = {
+#			LOS = {
+#				has_completed_focus = LOS_cultural_cultivation
+#			}
+#		}
+#		complete_effect = {
+#			hidden_effect = {
+#				set_country_flag = LOS_congress_law_flag
+#			}
+#		}
+#		remove_effect = {
+#			add_stability = 0.15
+#			add_political_power = 50
+#			add_ideas = LOS_rebel_culture_idea
+#			hidden_effect = {
+#				clr_country_flag = LOS_congress_law_flag
+#			}
+#		}
+#		cancel_trigger = {
+#			set_temp_variable = {
+#				var = LOS_congress_support_var_trigger_temp
+#				value = 0.5
+#			}
+#			LOS_has_congress_support_less_than = yes
+#		}
+#		days_remove = 30
+#		cost = 20
+#	}
+#	LOS_proper_social_norms_decision = {
+#		icon = generic_nationalism
+#		allowed = {
+#			tag = LOS
+#		}
+#		ai_will_do = {
+#			factor = 2
+#		}
+#		fire_only_once = yes
+#		available = {
+#			NOT = {
+#				has_country_flag = LOS_congress_law_flag
+#			}
+#			set_temp_variable = {
+#				var = LOS_congress_support_var_trigger_temp
+#				value = 0.5
+#			}
+#			LOS_has_congress_support_greater_than_or_equals = yes
+#		}
+#		visible = {
+#			LOS = {
+#				has_completed_focus = LOS_new_southern_man
+#			}
+#		}
+#		complete_effect = {
+#			hidden_effect = {
+#				set_country_flag = LOS_congress_law_flag
+#			}
+#		}
+#		remove_effect = {
+#			add_stability = 0.15
+#			add_political_power = 50
+#			add_ideas = LOS_new_southern_man_idea
+#			hidden_effect = {
+#				clr_country_flag = LOS_congress_law_flag
+#			}
+#		}
+#		cancel_trigger = {
+#			set_temp_variable = {
+#				var = LOS_congress_support_var_trigger_temp
+#				value = 0.5
+#			}
+#			LOS_has_congress_support_less_than = yes
+#		}
+#		days_remove = 30
+#		cost = 20
+#	}
+#	LOS_labor_revitilazation_programs_decision = {
+#		icon = generic_nationalism
+#		allowed = {
+#			tag = LOS
+#		}
+#		ai_will_do = {
+#			factor = 2
+#		}
+#		fire_only_once = yes
+#		available = {
+#			NOT = {
+#				has_country_flag = LOS_congress_law_flag
+#			}
+#			set_temp_variable = {
+#				var = LOS_congress_support_var_trigger_temp
+#				value = 0.5
+#			}
+#			LOS_has_congress_support_greater_than_or_equals = yes
+#		}
+#		visible = {
+#			LOS = {
+#				has_completed_focus = LOS_destroy_northern_decadence
+#			}
+#		}
+#		complete_effect = {
+#			hidden_effect = {
+#				set_country_flag = LOS_congress_law_flag
+#			}
+#		}
+#		remove_effect = {
+#			add_stability = 0.15
+#			add_political_power = 50
+#			add_timed_idea = {
+#				idea = LOS_labor_revitilization_idea
+#				days = 70
+#			}
+#			hidden_effect = {
+#				clr_country_flag = LOS_congress_law_flag
+#			}
+#		}
+#		cancel_trigger = {
+#			set_temp_variable = {
+#				var = LOS_congress_support_var_trigger_temp
+#				value = 0.5
+#			}
+#			LOS_has_congress_support_less_than = yes
+#		}
+#		days_remove = 30
+#		cost = 30
+#	}
+#	LOS_statue_protection_laws_decision = {
+#		icon = generic_nationalism
+#		allowed = {
+#			tag = LOS
+#		}
+#		ai_will_do = {
+#			factor = 2
+#		}
+#		fire_only_once = yes
+#		available = {
+#			NOT = {
+#				has_country_flag = LOS_congress_law_flag
+#			}
+#			set_temp_variable = {
+#				var = LOS_congress_support_var_trigger_temp
+#				value = 0.5
+#			}
+#			LOS_has_congress_support_greater_than_or_equals = yes
+#		}
+#		visible = {
+#			LOS = {
+#				has_completed_focus = LOS_begin_the_cultural_revival
+#			}
+#		}
+#		complete_effect = {
+#			hidden_effect = {
+#				set_country_flag = LOS_congress_law_flag
+#			}
+#		}
+#		remove_effect = {
+#			add_stability = 0.15
+#			add_political_power = 100
+#			add_war_support = 0.1
+#			set_temp_variable = {
+#				var = legit_var_temp
+#				value = 0.05
+#			}
+#			hidden_effect = {
+#				clr_country_flag = LOS_congress_law_flag
+#			}
+#		}
+#		cancel_trigger = {
+#			set_temp_variable = {
+#				var = LOS_congress_support_var_trigger_temp
+#				value = 0.5
+#			}
+#			LOS_has_congress_support_less_than = yes
+#		}
+#		days_remove = 30
+#		cost = 15
+#	}
+#	LOS_establish_national_john_wilkes_booth_day_decision = {
+#		icon = generic_nationalism
+#		allowed = {
+#			tag = LOS
+#		}
+#		ai_will_do = {
+#			factor = 2
+#		}
+#		fire_only_once = yes
+#		available = {
+#			NOT = {
+#				has_country_flag = LOS_congress_law_flag
+#			}
+#			set_temp_variable = {
+#				var = LOS_congress_support_var_trigger_temp
+#				value = 0.5
+#			}
+#			LOS_has_congress_support_greater_than_or_equals = yes
+#		}
+#		visible = {
+#			LOS = {
+#				has_completed_focus = LOS_begin_the_cultural_revival
+#			}
+#		}
+#		complete_effect = {
+#			hidden_effect = {
+#				set_country_flag = LOS_congress_law_flag
+#			}
+#		}
+#		remove_effect = {
+#			add_political_power = 80
+#			add_war_support = 0.1
+#			add_popularity = {
+#				ideology = authoritarian_democrat
+#				popularity = 0.1
+#			}
+#			add_popularity = {
+#				ideology = conservative
+#				popularity = 0.1
+#			}
+#			hidden_effect = {
+#				clr_country_flag = LOS_congress_law_flag
+#			}
+#		}
+#		cancel_trigger = {
+#			set_temp_variable = {
+#				var = LOS_congress_support_var_trigger_temp
+#				value = 0.5
+#			}
+#			LOS_has_congress_support_less_than = yes
+#		}
+#		days_remove = 30
+#		days_re_enable = 30
+#		cost = 15
+#	}
+#}
+
+###Rooting out Resistance
+LOS_rooting_out_resistance_category = {
+	LOS_crush_resistance_in_birmingham_decision = {
+		icon = generic_nationalism
+		allowed = {
+			tag = LOS
+		}
+		ai_will_do = {
+			factor = 2
+		}
+		fire_only_once = no
+		available = {
+			divisions_in_state = {
+				size > 2
+				state = 1012
+			}
+		}
+		visible = {
+			LOS = {
+				has_active_mission = LOS_army_of_southern_liberation_mission
+			}
+		}
+		complete_effect = {
+		}
+		remove_effect = {
+			add_days_mission_timeout = {
+				mission = LOS_army_of_southern_liberation_mission
+				days = 20
+			}
+			1012 = {
+				add_resistance = -15
+			}
+		}
+		cancel_trigger = {
+			divisions_in_state = {
+				size < 2
+				state = 1012
+			}
+		}
+		days_remove = 30
+		days_re_enable = 30
+		cost = 15
+	}
+	LOS_crush_resistance_in_montgomery_decision = {
+		icon = generic_nationalism
+		allowed = {
+			tag = LOS
+		}
+		ai_will_do = {
+			factor = 2
+		}
+		fire_only_once = no
+		available = {
+			divisions_in_state = {
+				size > 2
+				state = 1013
+			}
+		}
+		visible = {
+			LOS = {
+				has_active_mission = LOS_army_of_southern_liberation_mission
+			}
+		}
+		complete_effect = {
+		}
+		remove_effect = {
+			add_days_mission_timeout = {
+				mission = LOS_army_of_southern_liberation_mission
+				days = 20
+			}
+			1013 = {
+				add_resistance = -15
+			}
+		}
+		cancel_trigger = {
+			divisions_in_state = {
+				size < 2
+				state = 1013
+			}
+		}
+		days_remove = 30
+		days_re_enable = 30
+		cost = 15
+	}
+	LOS_crush_resistance_in_jackson_decision = {
+		icon = generic_nationalism
+		allowed = {
+			tag = LOS
+		}
+		ai_will_do = {
+			factor = 2
+		}
+		fire_only_once = no
+		available = {
+			divisions_in_state = {
+				size > 2
+				state = 1009
+			}
+		}
+		visible = {
+			LOS = {
+				has_active_mission = LOS_army_of_southern_liberation_mission
+			}
+		}
+		complete_effect = {
+		}
+		remove_effect = {
+			add_days_mission_timeout = {
+				mission = LOS_army_of_southern_liberation_mission
+				days = 20
+			}
+			1009 = {
+				add_resistance = -15
+			}
+		}
+		cancel_trigger = {
+			divisions_in_state = {
+				size < 2
+				state = 1009
+			}
+		}
+		days_remove = 30
+		days_re_enable = 30
+		cost = 15
+	}
+	LOS_crush_resistance_in_new_orleans_decision = {
+		icon = generic_nationalism
+		allowed = {
+			tag = LOS
+		}
+		ai_will_do = {
+			factor = 2
+		}
+		fire_only_once = no
+		available = {
+			divisions_in_state = {
+				size > 2
+				state = 978
+			}
+		}
+		visible = {
+			LOS = {
+				has_active_mission = LOS_army_of_southern_liberation_mission
+			}
+		}
+		complete_effect = {
+		}
+		remove_effect = {
+			add_days_mission_timeout = {
+				mission = LOS_army_of_southern_liberation_mission
+				days = 20
+			}
+			978 = {
+				add_resistance = -15
+			}
+		}
+		cancel_trigger = {
+			divisions_in_state = {
+				size < 2
+				state = 978
+			}
+		}
+		days_remove = 30
+		cost = 15
+	}
+#	LOS_meet_with_resistance_leaders_decision = {
+#		icon = generic_nationalism
+#		allowed = {
+#			tag = LOS
+#		}
+#		ai_will_do = {
+#			factor = 2
+#		}
+#		fire_only_once = no
+#		visible = {
+#			has_completed_focus = LOS_racial_reconciliation
+#			LOS = {
+#				has_active_mission = LOS_army_of_southern_liberation_mission
+#			}
+#		}
+#		complete_effect = {
+#		}
+#		remove_effect = {
+#			add_days_mission_timeout = {
+#				mission = LOS_army_of_southern_liberation_mission
+#				days = 15
+#			}
+#			1012 = {
+#				add_compliance = 10
+#			}
+#			1013 = {
+#				add_compliance = 10
+#			}
+#			1009 = {
+#				add_compliance = 10
+#			}
+#			978 = {
+#				add_compliance = 10
+#			}
+#		}
+#		days_remove = 30
+#		days_re_enable = 60
+#		cost = 10
+#	}
+#	LOS_anti_resistance_cooperation_decision = {
+#		icon = generic_nationalism
+#		allowed = {
+#			tag = LOS
+#		}
+#		ai_will_do = {
+#			factor = 2
+#		}
+#		fire_only_once = no
+#		available = {
+#			divisions_in_state = {
+#				size > 2
+#				state = 372
+#			}
+#		}
+#		visible = {
+#			has_completed_focus = LOS_the_mason_dixon_pact
+#			LOS = {
+#				has_active_mission = LOS_army_of_southern_liberation_mission
+#			}
+#		}
+#		complete_effect = {
+#		}
+#		remove_effect = {
+#			add_days_mission_timeout = {
+#				mission = LOS_army_of_southern_liberation_mission
+#				days = 15
+#			}
+#			NSM = {
+#				country_event = los.22
+#			}
+#			1012 = {
+#				add_resistance = -18
+#			}
+#			1013 = {
+#				add_resistance = -18
+#			}
+#			1009 = {
+#				add_resistance = -18
+#			}
+#			978 = {
+#				add_resistance = -18
+#			}
+#		}
+#		cancel_trigger = {
+#			divisions_in_state = {
+#				size < 2
+#				state = 372
+#			}
+#		}
+#		days_remove = 30
+#		days_re_enable = 30
+#		cost = 10
+#	}
+	LOS_send_in_the_klan_decision = {
+		icon = generic_nationalism
+		allowed = {
+			tag = LOS
+		}
+		ai_will_do = {
+			factor = 2
+		}
+		fire_only_once = no
+		available = {
+		}
+		visible = {
+			has_country_flag = LOS_klan_flag
+			LOS = {
+				has_active_mission = LOS_army_of_southern_liberation_mission
+			}
+		}
+		complete_effect = {
+		}
+		remove_effect = {
+			add_days_mission_timeout = {
+				mission = LOS_army_of_southern_liberation_mission
+				days = 25
+			}
+			1012 = {
+				add_resistance = -25
+			}
+			1013 = {
+				add_resistance = -25
+			}
+			1009 = {
+				add_resistance = -25
+			}
+			978 = {
+				add_resistance = -25
+			}
+			add_stability = -0.15
+			add_popularity = {
+				ideology = fascist
+				popularity = 0.1
+			}
+			if = {
+				limit = {
+					has_variable = LOS_kkk_support_var
+				}
+				hidden_effect = {
+					set_temp_variable = {
+						var = LOS_kkk_support_var_temp
+						value = -0.05
+					}
+					LOS_add_kkk_support = yes
+				}
+			}
+		}
+		days_remove = 50
+		days_re_enable = 50
+		cost = 100
+	}
+	LOS_end_the_rebellion_decision = {
+		icon = generic_nationalism
+		allowed = {
+			tag = LOS
+		}
+		ai_will_do = {
+			factor = 100
+		}
+		fire_only_once = no
+		available = {
+			OR = {
+				1012 = {
+					resistance < 1
+				}
+				1013 = {
+					resistance < 1
+				}
+				1009 = {
+					resistance < 1
+				}
+				978 = {
+					resistance < 1
+				}
+			}
+		}
+		visible = {
+			LOS = {
+				has_active_mission = LOS_army_of_southern_liberation_mission
+			}
+		}
+		complete_effect = {
+		}
+		remove_effect = {
+			remove_mission = LOS_army_of_southern_liberation_mission
+			add_state_core = 1012
+			add_state_core = 1013
+			add_state_core = 1009
+			add_state_core = 978
+		}
+		days_remove = 30
+		days_re_enable = 30
+		cost = 15
+	}
+	LOS_army_of_southern_liberation_mission = {
+		activation = {
+			always = no
+		}
+		available = {
+			hidden_trigger = {
+				always = no
+			}
+		}
+		icon = mission_icon
+		is_good = no
+		days_mission_timeout = 90
+		selectable_mission = no
+		cancel_if_not_visible = yes
+		timeout_effect = {
+			hidden_effect = {
+				country_event = {
+					id = los.12
+				}
+			}
+			custom_effect_tooltip = LOS_uprising_tooltip
+		}
+	}
+}
+
+###Reconstructing the South
+LOS_reconstruct_the_south_category = {
+	LOS_march_across_the_river_decision = {
+		icon = generic_nationalism
+		allowed = {
+			tag = LOS
+		}
+		fire_only_once = yes
+		available = {
+			owns_state = 981
+			owns_state = 979
+			owns_state = 982
+			owns_state = 980
+			owns_state = 371
+			owns_state = 978
+			NOT = {
+				owns_state = 1016
+				owns_state = 1013
+				owns_state = 367
+				owns_state = 1015
+				owns_state = 1011
+				owns_state = 1009
+				owns_state = 1010
+				owns_state = 370
+				owns_state = 1014
+				owns_state = 1012
+				has_country_flag = LOS_expand_flag
+				has_war = yes
+			}
+		}
+		ai_will_do = {
+			factor = 2
+		}
+		complete_effect = {
+			hidden_effect = {
+				set_country_flag = LOS_expand_flag
+			}
+		}
+		remove_effect = {
+			LOS = {
+				declare_war_on = {
+					target = BLA
+					type = annex_everything
+				}
+				declare_war_on = {
+					target = MSS
+					type = annex_everything
+				}
+				declare_war_on = {
+					target = ALA
+					type = annex_everything
+				}
+			}
+			hidden_effect = {
+				clr_country_flag = LOS_expand_flag
+			}
+		}
+		days_remove = 100
+		cost = 0
+	}
+	LOS_retake_whats_ours_decision = {
+		#retake georgia, south carolina, and north carolina
+		icon = generic_nationalism
+		allowed = {
+			tag = LOS
+		}
+		ai_will_do = {
+			factor = 2
+		}
+		fire_only_once = yes
+		available = {
+			NOT = {
+				has_country_flag = LOS_expand_flag
+				has_war = yes
+			}
+			#				custom_trigger_tooltip = {
+			#					tooltip = LOS_govt_fate_tooltip
+			#					has_completed_focus = LOS_confederate_congress
+			#				}
+		}
+		visible = {
+			LOS = {
+				owns_state = 1014
+			}
+		}
+		complete_effect = {
+			hidden_effect = {
+				set_country_flag = LOS_expand_flag
+			}
+			add_equipment_to_stockpile = {
+				type = infantry_equipment_1
+				amount = 2500
+				producer = LOS
+			}
+			add_equipment_to_stockpile = {
+				type = support_equipment
+				amount = 300
+				producer = LOS
+			}
+			random_owned_controlled_state = {
+				create_unit = {
+					division = "name = \"Volunteer Brigade\" division_template = \"Volunteer Brigade\" start_experience_factor = 0.1"
+					owner = LOS
+					count = 1
+				}
+				create_unit = {
+					division = "name = \"Volunteer Brigade\" division_template = \"Volunteer Brigade\" start_experience_factor = 0.1"
+					owner = LOS
+					count = 1
+				}
+				create_unit = {
+					division = "name = \"Volunteer Brigade\" division_template = \"Volunteer Brigade\" start_experience_factor = 0.2"
+					owner = LOS
+					count = 1
+				}
+				create_unit = {
+					division = "name = \"Motorized Militia\" division_template = \"Motorized Militia\" start_experience_factor = 0.2"
+					owner = LOS
+					count = 1
+				}
+				create_unit = {
+					division = "name = \"National Guard\" division_template = \"National Guard\" start_experience_factor = 0.2"
+					owner = LOS
+					count = 2
+				}
+				create_unit = {
+					division = "name = \"National Guard\" division_template = \"National Guard\" start_experience_factor = 0.2"
+					owner = LOS
+					count = 1
+				}
+			}
+			random_owned_controlled_state = {
+				create_unit = {
+					division = "name = \"Volunteer Brigade\" division_template = \"Volunteer Brigade\" start_experience_factor = 0.2"
+					owner = LOS
+					count = 1
+				}
+				create_unit = {
+					division = "name = \"Volunteer Brigade\" division_template = \"Volunteer Brigade\" start_experience_factor = 0.1"
+					owner = LOS
+					count = 1
+				}
+			}
+		}
+		remove_effect = {
+			LOS = {
+				declare_war_on = {
+					target = STC
+					type = annex_everything
+				}
+				declare_war_on = {
+					target = GRA
+					type = annex_everything
+				}
+				declare_war_on = {
+					target = NCA
+					type = annex_everything
+				}
+				declare_war_on = {
+					target = IKA
+					type = annex_everything
+				}
+				declare_war_on = {
+					target = RRR
+					type = annex_everything
+				}
+			}
+			LOS = {
+				annex_country = {
+					target = LWK
+					transfer_troops = yes
+				}
+			}
+			LWK = {
+				set_nationality = {
+					target_country = LOS
+					character = LWK_Chris_Barker_char
+				}
+			}
+			hidden_effect = {
+				clr_country_flag = LOS_expand_flag
+			}
+		}
+		days_remove = 80
+		war_with_on_remove = NCA
+		war_with_on_remove = GRA
+		war_with_on_remove = STC
+		cost = 0
+	}
+	LOS_liberate_florida_decision = {
+		icon = generic_nationalism
+		allowed = {
+			tag = LOS
+		}
+		ai_will_do = {
+			factor = 2
+		}
+		fire_only_once = yes
+		available = {
+			NOT = {
+				has_country_flag = LOS_expand_flag
+				has_war = yes
+				is_in_faction_with = ATW
+			}
+		}
+		visible = {
+			LOS = {
+				owns_state = 1020
+				owns_state = 1021
+				owns_state = 1018
+				owns_state = 365
+				owns_state = 1006
+				owns_state = 364
+				owns_state = 1024
+				owns_state = 1026
+				owns_state = 1025
+				owns_state = 1019
+				owns_state = 1017
+				owns_state = 1023
+				owns_state = 1008
+				owns_state = 1005
+				owns_state = 363
+				owns_state = 1007
+				owns_state = 1107
+			}
+		}
+		complete_effect = {
+			hidden_effect = {
+				set_country_flag = LOS_expand_flag
+			}
+		}
+		remove_effect = {
+			if = {
+				limit = {
+					has_country_leader = {
+						character = LOS_tom_cotton
+						ruling_only = yes
+					}
+				}
+				LOS = {
+					declare_war_on = {
+						target = ATW
+						type = annex_everything
+					}
+					declare_war_on = {
+						target = FLM
+						type = annex_everything
+					}
+					declare_war_on = {
+						target = MMS
+						type = annex_everything
+					}
+					declare_war_on = {
+						target = ZOE
+						type = annex_everything
+					}
+					declare_war_on = {
+						target = LRA
+						type = annex_everything
+					}
+				}
+				LOS = {
+					annex_country = {
+						target = FLA
+						transfer_troops = yes
+					}
+				}
+			}
+			hidden_effect = {
+				clr_country_flag = LOS_expand_flag
+			}
+			if = {
+				limit = {
+					NOT = {
+						has_country_leader = {
+							character = LOS_tom_cotton
+							ruling_only = yes
+						}
+					}
+				}
+				LOS = {
+					declare_war_on = {
+						target = ATW
+						type = annex_everything
+					}
+					declare_war_on = {
+						target = FLA
+						type = annex_everything
+					}
+					declare_war_on = {
+						target = MMS
+						type = annex_everything
+					}
+					declare_war_on = {
+						target = ZOE
+						type = annex_everything
+					}
+					declare_war_on = {
+						target = LRA
+						type = annex_everything
+					}
+				}
+				LOS = {
+					annex_country = {
+						target = FLM
+						transfer_troops = yes
+					}
+				}
+			}
+			hidden_effect = {
+				clr_country_flag = LOS_expand_flag
+			}
+		}
+		days_remove = 60
+		cost = 0
+	}
+	LOS_liberate_texas_decision = {
+		icon = generic_nationalism
+		allowed = {
+			tag = LOS
+		}
+		ai_will_do = {
+			factor = 2
+		}
+		fire_only_once = yes
+		available = {
+			NOT = {
+				has_country_flag = LOS_expand_flag
+				has_war = yes
+			}
+		}
+		visible = {
+			LOS = {
+				owns_state = 1125
+				owns_state = 896
+				NOT = {
+					owns_state = 960
+					TEX = {
+						is_puppet_of = LOS
+					}
+				}
+			}
+		}
+		complete_effect = {
+			hidden_effect = {
+				set_country_flag = LOS_expand_flag
+			}
+		}
+		remove_effect = {
+			LOS = {
+				every_country = {
+					limit = {
+						OR = {
+							controls_state = 967
+							controls_state = 970
+							controls_state = 968
+							controls_state = 965
+							controls_state = 964
+							controls_state = 960
+							controls_state = 963
+							controls_state = 972
+							controls_state = 973
+							controls_state = 966
+							controls_state = 969
+							controls_state = 962
+							controls_state = 976
+							controls_state = 974
+							controls_state = 959
+							controls_state = 961
+							controls_state = 975
+							controls_state = 957
+							controls_state = 956
+							controls_state = 971
+							controls_state = 977
+							controls_state = 958
+							controls_state = 375
+						}
+					}
+					LOS = {
+						declare_war_on = {
+							target = PREV
+							type = annex_everything
+						}
+					}
+				}
+			}
+			hidden_effect = {
+				clr_country_flag = LOS_expand_flag
+			}
+		}
+		days_remove = 40
+		cost = 0
+	}
+	LOS_war_with_new_mexico_decision = {
+		icon = generic_nationalism
+		allowed = {
+			tag = LOS
+		}
+		fire_only_once = yes
+		available = {
+			NOT = {
+				has_country_flag = LOS_expand_flag
+				has_war = yes
+			}
+		}
+		visible = {
+			LOS = {
+				owns_state = 960
+			}
+		}
+		complete_effect = {
+			hidden_effect = {
+				set_country_flag = LOS_expand_flag
+			}
+		}
+		remove_effect = {
+			LOS = {
+				every_country = {
+					LOS = {
+						declare_war_on = {
+							target = NMX
+							type = annex_everything
+						}
+					}
+					LOS = {
+						declare_war_on = {
+							target = NNN
+							type = annex_everything
+						}
+					}
+					LOS = {
+						declare_war_on = {
+							target = ABR
+							type = annex_everything
+						}
+					}
+					LOS = {
+						declare_war_on = {
+							target = JUA
+							type = annex_everything
+						}
+					}
+					LOS = {
+						declare_war_on = {
+							target = MOG
+							type = annex_everything
+						}
+					}
+					LOS = {
+						declare_war_on = {
+							target = ARZ
+							type = annex_everything
+						}
+					}
+					LOS = {
+						declare_war_on = {
+							target = BRN
+							type = annex_everything
+						}
+					}
+				}
+			}
+			hidden_effect = {
+				clr_country_flag = LOS_expand_flag
+			}
+		}
+		days_remove = 14
+		cost = 0
+	}
+	LOS_southern_liberation_war_decision = {
+		icon = generic_nationalism
+		allowed = {
+			tag = LOS
+		}
+		ai_will_do = {
+			base = 0
+			modifier = {
+				add = 100
+				OR = {
+					NSM = {
+						has_war_with = USB
+					}
+					PTF = {
+						has_war_with = USB
+					}
+				}
+			}
+		}
+		fire_only_once = yes
+		available = {
+			NOT = {
+				has_country_flag = LOS_expand_flag
+				has_war = yes
+			}
+		}
+		visible = {
+			LOS = {
+				owns_state = 1092
+			}
+			OR = {
+				country_exists = USB
+				country_exists = USC
+			}
+		}
+		complete_effect = {
+			hidden_effect = {
+				set_country_flag = LOS_expand_flag
+			}
+		}
+		remove_effect = {
+			LOS = {
+				declare_war_on = {
+					target = USC
+					type = annex_everything
+				}
+				declare_war_on = {
+					target = USB
+					type = annex_everything
+				}
+			}
+			hidden_effect = {
+				clr_country_flag = LOS_expand_flag
+			}
+		}
+		days_remove = 30
+		cost = 0
+	}
+	LOS_restore_the_confederacy_decision = {
+		icon = generic_nationalism
+		allowed = {
+			tag = LOS
+		}
+		ai_will_do = {
+			factor = 2
+		}
+		fire_only_once = yes
+		available = {
+			NOT = {
+				has_country_flag = LOS_expand_flag
+			}
+		}
+		visible = {
+			LOS = {
+				owns_state = 372
+				owns_state = 1005
+				owns_state = 1017
+				owns_state = 1012
+			}
+		}
+		complete_effect = {
+			hidden_effect = {
+				set_country_flag = LOS_expand_flag
+			}
+		}
+		remove_effect = {
+			set_global_flag = USA_confederacy_formed_global_flag
+			LOS = {
+				set_cosmetic_tag = LOS_confederacy
+				set_portraits = {
+					character = LOS_michael_hill
+					civilian = { large ="gfx/Leaders/LOS/Michael Hill2.png" }
+				}
+				hidden_effect = {
+					if = {
+						limit = {
+							has_government = conservative
+						}
+						news_event = {
+							id = news.223
+						}
+					}
+					if = {
+						limit = {
+							has_government = nationalist
+						}
+						news_event = {
+							id = news.224
+						}
+					}
+				}
+			}
+			hidden_effect = {
+				clr_country_flag = LOS_expand_flag
+			}
+		}
+		days_remove = 0
+		cost = 0
+	}
+}
+
+#LOS_reconstruct_the_economy_category = {
+#	LOS_free_market_decision = {
+#		icon = generic_nationalism
+#		allowed = {
+#			tag = LOS
+#		}
+#		available = {
+#			has_completed_focus = LOS_the_free_hand
+#		}
+#		visible = {
+#			LOS = {
+#				has_completed_focus = LOS_the_free_hand
+#			}
+#		}
+#		fire_only_once = no
+#		remove_effect = {
+#			add_stability = 0.05
+#			set_temp_variable = {
+#				var = industrial_development_var_temp
+#				value = 0.05
+#			}
+#			add_industrial_development = yes
+#			set_temp_variable = {
+#				var = LOS_economic_development_var_temp
+#				value = 0.05
+#			}
+#			LOS_add_economic_development = yes
+#		}
+#		days_remove = 100
+#		days_re_enable = 100
+#		cost = 100
+#	}
+#	LOS_peoples_market_decision = {
+#		icon = generic_nationalism
+#		allowed = {
+#			tag = LOS
+#		}
+#		available = {
+#			has_completed_focus = LOS_the_peoples_hand
+#		}
+#		visible = {
+#			LOS = {
+#				has_completed_focus = LOS_the_peoples_hand
+#			}
+#		}
+#		fire_only_once = no
+#		remove_effect = {
+#			add_stability = 0.05
+#			set_temp_variable = {
+#				var = poverty_development_var_temp
+#				value = 0.05
+#			}
+#			add_poverty_development = yes
+#			set_temp_variable = {
+#				var = LOS_economic_development_var_temp
+#				value = 0.05
+#			}
+#			LOS_add_economic_development = yes
+#		}
+#		days_remove = 100
+#		days_re_enable = 100
+#		cost = 100
+#	}
+#	LOS_nationalize_military_industries_decision = {
+#		icon = generic_nationalism
+#		allowed = {
+#			tag = LOS
+#		}
+#		available = {
+#			has_completed_focus = LOS_reconstruct_southern_industry
+#		}
+#		visible = {
+#			LOS = {
+#				has_completed_focus = LOS_reconstruct_southern_industry
+#			}
+#		}
+#		fire_only_once = no
+#		remove_effect = {
+#			random_owned_state = {
+#				limit = {
+#					is_fully_controlled_by = ROOT
+#					is_owned_by = ROOT
+#					free_building_slots = {
+#						building = arms_factory
+#						size > 1
+#						include_locked = no
+#					}
+#				}
+#				add_building_construction = {
+#					type = arms_factory
+#					level = 1
+#					instant_build = yes
+#				}
+#			}
+#			set_temp_variable = {
+#				var = industrial_development_var_temp
+#				value = 0.02
+#			}
+#			add_industrial_development = yes
+#			set_temp_variable = {
+#				var = LOS_economic_development_var_temp
+#				value = 0.04
+#			}
+#			LOS_add_economic_development = yes
+#		}
+#		days_remove = 100
+#		days_re_enable = 110
+#		cost = 50
+#	}
+#	LOS_rebuild_southern_industry_decision = {
+#		icon = generic_nationalism
+#		allowed = {
+#			tag = LOS
+#		}
+#		available = {
+#			has_completed_focus = LOS_forge_new_factories
+#		}
+#		visible = {
+#			LOS = {
+#				has_completed_focus = LOS_forge_new_factories
+#			}
+#		}
+#		fire_only_once = no
+#		remove_effect = {
+#			random_owned_state = {
+#				limit = {
+#					is_fully_controlled_by = ROOT
+#					is_owned_by = ROOT
+#					free_building_slots = {
+#						building = industrial_complex
+#						size > 2
+#						include_locked = no
+#					}
+#				}
+#				add_building_construction = {
+#					type = industrial_complex
+#					level = 2
+#					instant_build = yes
+#				}
+#			}
+#			set_temp_variable = {
+#				var = industrial_development_var_temp
+#				value = 0.03
+#			}
+#			add_industrial_development = yes
+#			set_temp_variable = {
+#				var = LOS_economic_development_var_temp
+#				value = 0.03
+#			}
+#			LOS_add_economic_development = yes
+#		}
+#		days_remove = 130
+#		days_re_enable = 130
+#		cost = 70
+#	}
+#	LOS_revive_railroads_decision = {
+#		icon = generic_nationalism
+#		allowed = {
+#			tag = LOS
+#		}
+#		available = {
+#			has_completed_focus = LOS_revive_railroads
+#		}
+#		visible = {
+#			LOS = {
+#				has_completed_focus = LOS_revive_railroads
+#			}
+#		}
+#		fire_only_once = yes
+#		remove_effect = {
+#			random_owned_state = {
+#				limit = {
+#					is_fully_controlled_by = ROOT
+#					is_owned_by = ROOT
+#					free_building_slots = {
+#						building = infrastructure
+#						size > 2
+#						include_locked = no
+#					}
+#				}
+#				add_building_construction = {
+#					type = infrastructure
+#					level = 2
+#					instant_build = yes
+#				}
+#			}
+#			random_owned_state = {
+#				limit = {
+#					is_fully_controlled_by = ROOT
+#					is_owned_by = ROOT
+#					free_building_slots = {
+#						building = infrastructure
+#						size > 2
+#						include_locked = no
+#					}
+#				}
+#				add_building_construction = {
+#					type = infrastructure
+#					level = 2
+#					instant_build = yes
+#				}
+#			}
+#			build_railway = {
+#				level = 1
+#				build_only_on_allied = yes
+#				controller_priority = {
+#					base = 1
+#					modifier = {
+#						tag = LOS
+#						add = 2
+#					}
+#				}
+#				fallback = yes
+#				path = {
+#					4597
+#					12778
+#					7485
+#					1503
+#					4522
+#					12401
+#				}
+#				start_province = 4597
+#				target_province = 12401
+#			}
+#			set_temp_variable = {
+#				var = LOS_economic_development_var_temp
+#				value = 0.12
+#			}
+#			LOS_add_economic_development = yes
+#		}
+#		days_remove = 200
+#		cost = 250
+#	}
+#	LOS_welfare_expansion_decision = {
+#		icon = generic_nationalism
+#		allowed = {
+#			tag = LOS
+#		}
+#		available = {
+#			has_completed_focus = LOS_welfare_reforms
+#		}
+#		visible = {
+#			LOS = {
+#				has_completed_focus = LOS_welfare_reforms
+#			}
+#		}
+#		fire_only_once = no
+#		remove_effect = {
+#			set_temp_variable = {
+#				var = debt_var_temp
+#				value = 0.6
+#			}
+#			add_debt = yes
+#			set_temp_variable = {
+#				var = poverty_development_var_temp
+#				value = 0.04
+#			}
+#			add_poverty_development = yes
+#			set_temp_variable = {
+#				var = LOS_economic_development_var_temp
+#				value = 0.04
+#			}
+#			LOS_add_economic_development = yes
+#		}
+#		days_remove = 100
+#		days_re_enable = 110
+#		cost = 50
+#	}
+#	LOS_raise_taxes_decision = {
+#		icon = generic_nationalism
+#		allowed = {
+#			tag = LOS
+#		}
+#		available = {
+#			has_completed_focus = LOS_raise_taxes_on_the_wealthy
+#		}
+#		visible = {
+#			LOS = {
+#				has_completed_focus = LOS_raise_taxes_on_the_wealthy
+#			}
+#		}
+#		fire_only_once = no
+#		remove_effect = {
+#			add_timed_idea = {
+#				idea = LOS_raised_taxes_idea
+#				days = 20
+#			}
+#			set_temp_variable = {
+#				var = poverty_development_var_temp
+#				value = 0.04
+#			}
+#			add_poverty_development = yes
+#			set_temp_variable = {
+#				var = LOS_economic_development_var_temp
+#				value = 0.04
+#			}
+#			LOS_add_economic_development = yes
+#		}
+#		days_remove = 100
+#		days_re_enable = 110
+#		cost = 50
+#	}
+#	LOS_promote_private_industries_decision = {
+#		icon = generic_nationalism
+#		allowed = {
+#			tag = LOS
+#		}
+#		available = {
+#			has_completed_focus = LOS_promote_private_industries
+#		}
+#		visible = {
+#			LOS = {
+#				has_completed_focus = LOS_promote_private_industries
+#			}
+#		}
+#		fire_only_once = no
+#		remove_effect = {
+#			set_temp_variable = {
+#				var = income_var_temp
+#				value = 12
+#			}
+#			add_income = yes
+#			add_stability = 0.04
+#			set_temp_variable = {
+#				var = industrial_development_var_temp
+#				value = 0.04
+#			}
+#			add_industrial_development = yes
+#			set_temp_variable = {
+#				var = LOS_economic_development_var_temp
+#				value = 0.03
+#			}
+#			LOS_add_economic_development = yes
+#		}
+#		days_remove = 100
+#		days_re_enable = 110
+#		cost = 50
+#	}
+#	LOS_temporary_tax_breaks_decision = {
+#		icon = generic_nationalism
+#		allowed = {
+#			tag = LOS
+#		}
+#		available = {
+#			has_completed_focus = LOS_cut_taxes_for_all
+#		}
+#		visible = {
+#			LOS = {
+#				has_completed_focus = LOS_cut_taxes_for_all
+#			}
+#		}
+#		fire_only_once = no
+#		remove_effect = {
+#			add_timed_idea = {
+#				idea = LOS_tax_breaks_idea
+#				days = 20
+#			}
+#			set_temp_variable = {
+#				var = LOS_economic_development_var_temp
+#				value = 0.07
+#			}
+#			LOS_add_economic_development = yes
+#		}
+#		days_remove = 100
+#		days_re_enable = 110
+#		cost = 50
+#	}
+#	LOS_promote_small_businesses_decision = {
+#		icon = generic_nationalism
+#		allowed = {
+#			tag = LOS
+#		}
+#		available = {
+#			has_completed_focus = LOS_economic_mobilization
+#		}
+#		visible = {
+#			LOS = {
+#				has_completed_focus = LOS_economic_mobilization
+#			}
+#		}
+#		fire_only_once = no
+#		remove_effect = {
+#			set_temp_variable = {
+#				var = income_var_temp
+#				value = 8
+#			}
+#			add_income = yes
+#			add_stability = 0.15
+#			set_temp_variable = {
+#				var = industrial_development_var_temp
+#				value = 0.03
+#			}
+#			add_industrial_development = yes
+#			set_temp_variable = {
+#				var = LOS_economic_development_var_temp
+#				value = 0.03
+#			}
+#			LOS_add_economic_development = yes
+#		}
+#		days_remove = 100
+#		days_re_enable = 110
+#		cost = 50
+#	}
+#	LOS_stimulate_the_economy_decision = {
+#		icon = generic_nationalism
+#		allowed = {
+#			tag = LOS
+#		}
+#		available = {
+#			has_completed_focus = LOS_put_pows_to_work
+#		}
+#		visible = {
+#			LOS = {
+#				has_completed_focus = LOS_put_pows_to_work
+#			}
+#		}
+#		fire_only_once = no
+#		remove_effect = {
+#			set_temp_variable = {
+#				var = income_var_temp
+#				value = 21
+#			}
+#			add_income = yes
+#			add_stability = 0.03
+#			set_temp_variable = {
+#				var = industrial_development_var_temp
+#				value = 0.02
+#			}
+#			add_industrial_development = yes
+#			set_temp_variable = {
+#				var = poverty_development_var_temp
+#				value = 0.02
+#			}
+#			add_poverty_development = yes
+#			set_temp_variable = {
+#				var = LOS_economic_development_var_temp
+#				value = 0.04
+#			}
+#			LOS_add_economic_development = yes
+#		}
+#		days_remove = 100
+#		days_re_enable = 110
+#		cost = 75
+#	}
+#	LOS_corporate_cooperation_decision = {
+#		icon = generic_nationalism
+#		allowed = {
+#			tag = LOS
+#		}
+#		available = {
+#			has_completed_focus = LOS_cooperate_with_corporations
+#		}
+#		visible = {
+#			LOS = {
+#				has_completed_focus = LOS_cooperate_with_corporations
+#			}
+#		}
+#		fire_only_once = no
+#		remove_effect = {
+#			add_stability = 0.05
+#			set_temp_variable = {
+#				var = industrial_development_var_temp
+#				value = 0.05
+#			}
+#			add_industrial_development = yes
+#			set_temp_variable = {
+#				var = income_var_temp
+#				value = 1
+#			}
+#			add_income = yes
+#			set_temp_variable = {
+#				var = LOS_economic_development_var_temp
+#				value = 0.03
+#			}
+#			LOS_add_economic_development = yes
+#		}
+#		days_remove = 50
+#		days_re_enable = 75
+#		cost = 75
+#	}
+#	LOS_tecnological_investments_decision = {
+#		icon = generic_nationalism
+#		allowed = {
+#			tag = LOS
+#		}
+#		available = {
+#			has_completed_focus = LOS_machinery_investments
+#		}
+#		visible = {
+#			LOS = {
+#				has_completed_focus = LOS_machinery_investments
+#			}
+#		}
+#		fire_only_once = no
+#		remove_effect = {
+#			add_tech_bonus = {
+#				bonus = 1
+#				uses = 1
+#				category = industry
+#			}
+#			set_temp_variable = {
+#				var = income_var_temp
+#				value = -1
+#			}
+#			add_income = yes
+#			set_temp_variable = {
+#				var = LOS_economic_development_var_temp
+#				value = 0.03
+#			}
+#			LOS_add_economic_development = yes
+#		}
+#		days_remove = 75
+#		days_re_enable = 75
+#		cost = 120
+#	}
+#	LOS_housing_program_decision = {
+#		icon = generic_nationalism
+#		allowed = {
+#			tag = LOS
+#		}
+#		available = {
+#			has_completed_focus = LOS_housing_for_all
+#		}
+#		visible = {
+#			LOS = {
+#				has_completed_focus = LOS_housing_for_all
+#			}
+#		}
+#		fire_only_once = no
+#		remove_effect = {
+#			set_temp_variable = {
+#				var = poverty_development_var_temp
+#				value = 0.05
+#			}
+#			add_poverty_development = yes
+#			random_owned_state = {
+#				limit = {
+#					NOT = {
+#						has_state_flag = infrastructure_repairs_state
+#					}
+#					is_fully_controlled_by = ROOT
+#					is_owned_by = ROOT
+#					free_building_slots = {
+#						building = infrastructure
+#						size > 1
+#						include_locked = no
+#					}
+#				}
+#				add_building_construction = {
+#					type = infrastructure
+#					level = 1
+#					instant_build = yes
+#				}
+#			}
+#			set_temp_variable = {
+#				var = debt_var_temp
+#				value = 0.5
+#			}
+#			add_debt = yes
+#			set_temp_variable = {
+#				var = LOS_economic_development_var_temp
+#				value = 0.03
+#			}
+#			LOS_add_economic_development = yes
+#		}
+#		days_remove = 120
+#		days_re_enable = 120
+#		cost = 100
+#	}
+#	LOS_education_program_decision = {
+#		icon = generic_nationalism
+#		allowed = {
+#			tag = LOS
+#		}
+#		available = {
+#			has_completed_focus = LOS_housing_for_all
+#		}
+#		visible = {
+#			LOS = {
+#				has_completed_focus = LOS_housing_for_all
+#			}
+#		}
+#		fire_only_once = no
+#		remove_effect = {
+#			set_temp_variable = {
+#				var = academic_development_var_temp
+#				value = 0.1
+#			}
+#			add_academic_development = yes
+#			add_stability = 0.05
+#			set_temp_variable = {
+#				var = LOS_economic_development_var_temp
+#				value = 0.03
+#			}
+#			LOS_add_economic_development = yes
+#		}
+#		days_remove = 120
+#		days_re_enable = 120
+#		cost = 100
+#	}
+	###resource stuff
+#	LOS_dig_for_diamonds_decision = {
+#		icon = generic_nationalism
+#		allowed = {
+#			tag = LOS
+#		}
+#		available = {
+#			has_completed_focus = LOS_crater_of_diamonds
+#		}
+#		visible = {
+#			has_completed_focus = LOS_crater_of_diamonds
+#		}
+#		fire_only_once = no
+#		remove_effect = {
+#			set_temp_variable = {
+#				var = income_var_temp
+#				value = 1
+#			}
+#			add_income = yes
+#			set_temp_variable = {
+#				var = LOS_economic_development_var_temp
+#				value = 0.06
+#			}
+#			LOS_add_economic_development = yes
+#		}
+#		days_remove = 120
+#		days_re_enable = 120
+#		cost = 25
+#	}
+#	LOS_agricultural_aid_decision = {
+#		icon = generic_nationalism
+#		allowed = {
+#			tag = LOS
+#		}
+#		available = {
+#			has_completed_focus = LOS_agricultural_rejuvenation
+#		}
+#		visible = {
+#			has_completed_focus = LOS_agricultural_rejuvenation
+#		}
+#		fire_only_once = no
+#		remove_effect = {
+#			set_temp_variable = {
+#				var = farming_development_var_temp
+#				value = 0.05
+#			}
+#			add_farming_development = yes
+#			set_temp_variable = {
+#				var = LOS_economic_development_var_temp
+#				value = 0.02
+#			}
+#			LOS_add_economic_development = yes
+#		}
+#		days_remove = 80
+#		days_re_enable = 80
+#		cost = 50
+#	}
+#	LOS_improved_cotton_production_decision = {
+#		icon = generic_nationalism
+#		allowed = {
+#			tag = LOS
+#		}
+#		available = {
+#			has_completed_focus = LOS_cultivate_the_cotton_industry
+#		}
+#		visible = {
+#			has_completed_focus = LOS_cultivate_the_cotton_industry
+#		}
+#		fire_only_once = no
+#		remove_effect = {
+#			set_temp_variable = {
+#				var = farming_development_var_temp
+#				value = 0.03
+#			}
+#			add_farming_development = yes
+#		}
+#		remove_effect = {
+#			set_temp_variable = {
+#				var = industrial_development_var_temp
+#				value = 0.02
+#			}
+#			add_industrial_development = yes
+#			set_temp_variable = {
+#				var = LOS_economic_development_var_temp
+#				value = 0.04
+#			}
+#			LOS_add_economic_development = yes
+#		}
+#		days_remove = 100
+#		days_re_enable = 100
+#		cost = 75
+#	}
+#	LOS_rebuild_the_economy_mission = {
+#		activation = {
+#			has_country_flag = LOS_econ_flag
+#		}
+#		available = {
+#			set_temp_variable = {
+#				var = LOS_economic_development_var_trigger_temp
+#				value = 0.5
+#			}
+#			LOS_has_economic_development_greater_than_or_equals = yes
+#		}
+#		icon = mission_icon
+#		is_good = no
+#		days_mission_timeout = 915
+#		selectable_mission = yes
+#		cancel_if_not_visible = yes
+#		timeout_effect = {
+#			add_political_power = -100
+#			add_stability = -0.25
+#			set_temp_variable = {
+#				var = debt_var_temp
+#				value = 5
+#			}
+#			add_debt = yes
+#			activate_mission = LOS_rebuild_the_economy_mission
+#		}
+#		complete_effect = {
+#			swap_ideas = {
+#				remove_idea = LOS_terrible_industry_idea
+#				add_idea = LOS_tolerable_industry1_idea
+#			}
+#			activate_mission = LOS_refine_the_economy_mission
+#			remove_mission = LOS_rebuild_the_economy_mission
+#			hidden_effect = {
+#				clr_country_flag = LOS_econ_flag
+#			}
+#		}
+#	}
+#	LOS_refine_the_economy_mission = {
+#		activation = {
+#			has_idea = LOS_tolerable_industry1_idea
+#		}
+#		available = {
+#			set_temp_variable = {
+#				var = LOS_economic_development_var_trigger_temp
+#				value = 1
+#			}
+#			LOS_has_economic_development_greater_than_or_equals = yes
+#		}
+#		icon = mission_icon
+#		is_good = no
+#		days_mission_timeout = 915
+#		selectable_mission = yes
+#		cancel_if_not_visible = yes
+#		timeout_effect = {
+#			add_political_power = -200
+#			add_stability = -0.35
+#			set_temp_variable = {
+#				var = debt_var_temp
+#				value = 7
+#			}
+#			add_debt = yes
+#			activate_mission = LOS_refine_the_economy_mission
+#		}
+#		complete_effect = {
+#			swap_ideas = {
+#				remove_idea = LOS_tolerable_industry1_idea
+#				add_idea = LOS_terrific_industry_idea
+#			}
+#		}
+#	}
+#}
+
+debug_decisions = {
+	LOS_take_the_deep_south_debug_decision = {
+		icon = generic_ignite_civil_war
+		allowed = {
+			original_tag = LOS
+		}
+		visible = {
+		}
+		available = {
+		}
+		ai_will_do = {
+			factor = 0
+		}
+		modifier = {
+		}
+		complete_effect = {
+			BLA = {
+				every_core_state = {
+					transfer_state_to = LOS
+				}
+			}
+			LOU = {
+				every_core_state = {
+					transfer_state_to = LOS
+				}
+			}
+			MSS = {
+				every_core_state = {
+					transfer_state_to = LOS
+				}
+			}
+			ALA = {
+				every_core_state = {
+					transfer_state_to = LOS
+				}
+			}
+			country_event = {
+				id = los.3
+				days = 0
+			}
+			complete_national_focus = LOS_the_south_risen
+			complete_national_focus = LOS_arms_upon_arms
+			complete_national_focus = LOS_ally_republicans
+			complete_national_focus = LOS_confederate_congress
+		}
+		remove_effect = {
+		}
+	}
+	LOS_form_the_confederacy_debug_decision = {
+		icon = generic_ignite_civil_war
+		allowed = {
+			original_tag = LOS
+		}
+		visible = {
+		}
+		available = {
+		}
+		ai_will_do = {
+			factor = 0
+		}
+		modifier = {
+		}
+		complete_effect = {
+			BLA = {
+				every_core_state = {
+					transfer_state_to = LOS
+				}
+			}
+			LOU = {
+				every_core_state = {
+					transfer_state_to = LOS
+				}
+			}
+			MSS = {
+				every_core_state = {
+					transfer_state_to = LOS
+				}
+			}
+			ALA = {
+				every_core_state = {
+					transfer_state_to = LOS
+				}
+			}
+			ATW = {
+				every_core_state = {
+					transfer_state_to = LOS
+				}
+			}
+			GRA = {
+				every_core_state = {
+					transfer_state_to = LOS
+				}
+			}
+			STC = {
+				every_core_state = {
+					transfer_state_to = LOS
+				}
+			}
+			MMS = {
+				every_core_state = {
+					transfer_state_to = LOS
+				}
+			}
+			FLM = {
+				every_core_state = {
+					transfer_state_to = LOS
+				}
+			}
+			ZOE = {
+				every_core_state = {
+					transfer_state_to = LOS
+				}
+			}
+			LRA = {
+				every_core_state = {
+					transfer_state_to = LOS
+				}
+			}
+			FLA = {
+				every_core_state = {
+					transfer_state_to = LOS
+				}
+			}
+			USC = {
+				373 = {
+					transfer_state_to = LOS
+				}
+				374 = {
+					transfer_state_to = LOS
+				}
+				1242 = {
+					transfer_state_to = LOS
+				}
+				1236 = {
+					transfer_state_to = LOS
+				}
+				1241 = {
+					transfer_state_to = LOS
+				}
+				1124 = {
+					transfer_state_to = LOS
+				}
+				1125 = {
+					transfer_state_to = LOS
+				}
+				1071 = {
+					transfer_state_to = LOS
+				}
+			}
+			USB = {
+				1249 = {
+					transfer_state_to = LOS
+				}
+				1250 = {
+					transfer_state_to = LOS
+				}
+				1248 = {
+					transfer_state_to = LOS
+				}
+				1251 = {
+					transfer_state_to = LOS
+				}
+				368 = {
+					transfer_state_to = LOS
+				}
+				1006 = {
+					transfer_state_to = LOS
+				}
+				1002 = {
+					transfer_state_to = LOS
+				}
+				363 = {
+					transfer_state_to = LOS
+				}
+				1005 = {
+					transfer_state_to = LOS
+				}
+				1008 = {
+					transfer_state_to = LOS
+				}
+				1007 = {
+					transfer_state_to = LOS
+				}
+				364 = {
+					transfer_state_to = LOS
+				}
+				1000 = {
+					transfer_state_to = LOS
+				}
+				1003 = {
+					transfer_state_to = LOS
+				}
+				1001 = {
+					transfer_state_to = LOS
+				}
+				1004 = {
+					transfer_state_to = LOS
+				}
+				896 = {
+					transfer_state_to = LOS
+				}
+				362 = {
+					transfer_state_to = LOS
+				}
+				1123 = {
+					transfer_state_to = LOS
+				}
+				1122 = {
+					transfer_state_to = LOS
+				}
+				1070 = {
+					transfer_state_to = LOS
+				}
+				369 = {
+					transfer_state_to = LOS
+				}
+				1107 = {
+					transfer_state_to = LOS
+				}
+			}
+		}
+		remove_effect = {
+		}
+	}
+	LOS_clear_law_flag_debug_decision = {
+		icon = generic_ignite_civil_war
+		allowed = {
+			original_tag = LOS
+		}
+		visible = {
+		}
+		available = {
+		}
+		ai_will_do = {
+			factor = 0
+		}
+		modifier = {
+		}
+		complete_effect = {
+			clr_country_flag = LOS_congress_law_flag
+		}
+		days_remove = 0
+		days_re_enable = 0
+	}
+	LOS_take_a_shit_debug_decision = {
+		icon = generic_ignite_civil_war
+		allowed = {
+			original_tag = LOS
+		}
+		visible = {
+		}
+		available = {
+		}
+		ai_will_do = {
+			factor = 0
+		}
+		modifier = {
+		}
+		complete_effect = {
+			custom_effect_tooltip = LOS_no
+			hidden_effect = {
+				LOU = {
+					every_core_state = {
+						transfer_state_to = LOS
+					}
+				}
+				USC = {
+					373 = {
+						transfer_state_to = LOS
+					}
+					1125 = {
+						transfer_state_to = LOS
+					}
+					1124 = {
+						transfer_state_to = LOS
+					}
+					1071 = {
+						transfer_state_to = LOS
+					}
+					1134 = {
+						transfer_state_to = LOS
+					}
+					392 = {
+						transfer_state_to = LOS
+					}
+					391 = {
+						transfer_state_to = LOS
+					}
+					1256 = {
+						transfer_state_to = LOS
+					}
+					1257 = {
+						transfer_state_to = LOS
+					}
+					1243 = {
+						transfer_state_to = LOS
+					}
+					1249 = {
+						transfer_state_to = LOS
+					}
+					1248 = {
+						transfer_state_to = LOS
+					}
+					1250 = {
+						transfer_state_to = LOS
+					}
+					1251 = {
+						transfer_state_to = LOS
+					}
+					368 = {
+						transfer_state_to = LOS
+					}
+				}
+			}
+		}
+		remove_effect = {
+		}
+	}
+}

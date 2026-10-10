@@ -1,0 +1,295 @@
+USC_civil_war_balance = {
+	initial_value = 0
+	left_side = USC_congress_side
+	right_side = USC_military_side
+	decision_category = USC_balance_of_power_category
+	#Middle
+	range = {
+		id = USC_balance_range
+		min = -0.1
+		max = 0.1
+		modifier = {
+			stability_weekly = 0.002
+		}
+		on_activate = {
+		}
+		on_deactivate = {
+		}
+	}
+	#State Secretaries Side
+	side = {
+		id = USC_state_sec_side
+		icon = GFX_bop_USC_state_sec
+		range = {
+			id = USC_state_sec_total_control_range
+			min = -1
+			max = -0.90
+			modifier = {
+				political_power_gain = 0.3
+				war_support_factor = -0.15
+				army_defence_factor = 0.2
+			}
+			on_activate = {
+				hidden_effect = {
+					country_event = { days = 10 id = usc.70 }
+				}
+			}
+			on_deactivate = {
+			}
+		}
+		range = {
+			id = USC_state_sec_dominant_range
+			min = -0.90
+			max = -0.75
+			modifier = {
+				political_power_gain = 0.2
+				war_support_factor = -0.1
+				army_defence_factor = 0.15
+			}
+			on_activate = {
+			}
+			on_deactivate = {
+			}
+		}
+		range = {
+			id = USC_state_sec_alligned_range
+			min = -0.75
+			max = -0.35
+			modifier = {
+				political_power_gain = 0.1
+				war_support_factor = -0.05
+				army_defence_factor = 0.1
+			}
+			on_activate = {
+			}
+			on_deactivate = {
+			}
+		}
+		range = {
+			id = USC_state_sec_lean_range
+			min = -0.35
+			max = -0.1
+			modifier = {
+				political_power_gain = 0.05
+				army_defence_factor = 0.05
+			}
+			on_activate = {
+			}
+			on_deactivate = {
+			}
+		}
+	}	
+	#Entrepreneurs Side
+	side = {
+		id = USC_entrepreneurs_side
+		icon = GFX_bop_USC_entrepreneurs
+		range = {
+			id = USC_entrepreneurs_total_control_range
+			min = -1
+			max = -0.90
+			modifier = {
+				political_power_gain = 0.3
+				war_support_factor = -0.15
+				army_defence_factor = 0.2
+			}
+			on_activate = {
+				USC_donald_trump_char = {
+					swap_country_leader_traits = {
+						remove = hos_vanguard_of_america
+						add = hos_teflon_don
+					}
+				}
+			}
+			on_deactivate = {
+				USC_donald_trump_char = {
+					swap_country_leader_traits = {
+						remove = hos_teflon_don
+						add = hos_vanguard_of_america
+					}
+				}
+			}
+		}
+		range = {
+			id = USC_entrepreneurs_dominant_range
+			min = -0.90
+			max = -0.75
+			modifier = {
+				political_power_gain = 0.2
+				war_support_factor = -0.1
+				army_defence_factor = 0.15
+			}
+			on_activate = {
+			}
+			on_deactivate = {
+			}
+		}
+		range = {
+			id = USC_entrepreneurs_alligned_range
+			min = -0.75
+			max = -0.35
+			modifier = {
+				political_power_gain = 0.1
+				war_support_factor = -0.05
+				army_defence_factor = 0.1
+			}
+			on_activate = {
+			}
+			on_deactivate = {
+			}
+		}
+		range = {
+			id = USC_entrepreneurs_lean_range
+			min = -0.35
+			max = -0.1
+			modifier = {
+				political_power_gain = 0.05
+				army_defence_factor = 0.05
+			}
+			on_activate = {
+			}
+			on_deactivate = {
+			}
+		}
+	}
+	#Bureaucrats Side
+	side = {
+		id = USC_congress_side
+		icon = GFX_bop_USC_congress
+		range = {
+			id = USC_congress_total_control_range
+			min = -1
+			max = -0.90
+			modifier = {
+				political_power_gain = 0.3
+				war_support_factor = -0.15
+				army_defence_factor = 0.2
+			}
+			on_activate = {
+				USC_donald_trump_char = {
+					swap_country_leader_traits = {
+						remove = hos_vanguard_of_america
+						add = hos_teflon_don
+					}
+				}
+			}
+			on_deactivate = {
+				USC_donald_trump_char = {
+					swap_country_leader_traits = {
+						remove = hos_teflon_don
+						add = hos_vanguard_of_america
+					}
+				}
+			}
+		}
+		range = {
+			id = USC_congress_dominant_range
+			min = -0.90
+			max = -0.75
+			modifier = {
+				political_power_gain = 0.2
+				war_support_factor = -0.1
+				army_defence_factor = 0.15
+			}
+			on_activate = {
+			}
+			on_deactivate = {
+			}
+		}
+		range = {
+			id = USC_congress_alligned_range
+			min = -0.75
+			max = -0.35
+			modifier = {
+				political_power_gain = 0.1
+				war_support_factor = -0.05
+				army_defence_factor = 0.1
+			}
+			on_activate = {
+			}
+			on_deactivate = {
+			}
+		}
+		range = {
+			id = USC_congress_lean_range
+			min = -0.35
+			max = -0.1
+			modifier = {
+				political_power_gain = 0.05
+				army_defence_factor = 0.05
+			}
+			on_activate = {
+			}
+			on_deactivate = {
+			}
+		}
+	}
+
+	#The People Side
+	side = {
+		id = USC_military_side	
+		icon = GFX_bop_usc_military
+		range = {
+			id = USC_military_lean_range
+			min = 0.1
+			max = 0.35
+			modifier = {
+				army_attack_factor = 0.05
+				conscription_factor = 0.005
+				war_support_factor = 0.035
+			}
+			on_activate = {
+			}
+			on_deactivate = {
+			}
+		}
+		range = {
+			id = USC_military_alligned_range
+			min = 0.35
+			max = 0.75
+			modifier = {
+				army_attack_factor = 0.1
+				stability_factor = -0.05
+				conscription_factor = 0.015
+				war_support_factor = 0.035
+			}
+			on_activate = {
+			}
+			on_deactivate = {
+			}
+		}
+		range = {
+			id = USC_military_dominant_range
+			min = 0.75
+			max = 0.90
+			modifier = {
+				army_attack_factor = 0.15
+				stability_factor = -0.1
+				conscription_factor = 0.025
+				war_support_factor = 0.05
+			}
+			on_activate = {
+			}
+			on_deactivate = {
+			}
+		}
+		range = {
+			id = USC_military_total_control_range
+			min = 0.90
+			max = 1
+			modifier = {
+				army_attack_factor = 0.2
+				stability_factor = -0.15
+				conscription_factor = 0.035
+				war_support_factor = 0.1
+			}
+			on_activate = {
+				hidden_effect = {
+					country_event = { days = 10 id = usc.71 }
+				}
+			}
+			on_deactivate = {
+			}
+		}
+	}
+}
+

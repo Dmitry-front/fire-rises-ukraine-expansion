@@ -1,0 +1,1837 @@
+﻿add_namespace = Australia
+add_namespace = NZL
+add_namespace = Australia_gaw
+country_event = {
+	#Penny Wong decries our aggression against China
+	id = Australia.0
+	title = Australia.0.t
+	desc = Australia.0.d
+	picture = GFX_AST_Penny_wong
+	fire_only_once = yes
+	is_triggered_only = yes
+	immediate = {
+		hidden_effect = {
+			remove_ideas = AST_Penny_Wong_idea
+		}
+	}
+	option = {
+		#Traitor
+		name = Australia.0.a
+		ai_chance = {
+			factor = 33
+		}
+		add_war_support = -0.1
+	}
+}
+
+country_event = {
+	#Assassination of Penny Wong
+	id = Australia.1
+	title = Australia.1.t
+	desc = Australia.1.d
+	picture = GFX_AST_Penny_wong
+	fire_only_once = yes
+	is_triggered_only = yes
+	immediate = {
+		hidden_effect = {
+			set_country_flag = AST_LOST_WAR_flag
+			remove_ideas = AST_Penny_Wong_idea
+		}
+	}
+	option = {
+		#Law and Order must Prevail in these trying times - Conservative - Life w/o parol
+		name = Australia.1.a
+		ai_chance = {
+		    factor = 33
+		    modifier = {
+		        factor = 0
+		        OR = {
+		            has_game_rule = {
+		                rule = The_assassination_Penny_Wong
+		                option = The_assassination_Penny_Wong_Military_Junta
+		            }
+		            has_game_rule = {
+		                rule = The_assassination_Penny_Wong
+		                option = The_assassination_Penny_Wong_Australia_First
+		            }
+		        }
+		    }
+		}
+		country_event = {
+			id = Australia.2
+		}
+		country_event = {
+			id = Australia.18
+		}
+		add_ideas = AST_asian_cold_war
+		add_research_slot = 1
+	}
+	option = {
+		#She was working with the Enemy! - Mil - 20 years
+		name = Australia.1.b
+		ai_chance = {
+		    factor = 33
+		    modifier = {
+		        factor = 0
+		        OR = {
+		            has_game_rule = {
+		                rule = The_assassination_Penny_Wong
+		                option = The_assassination_Penny_Wong_Liberals_Party
+		            }
+		            has_game_rule = {
+		                rule = The_assassination_Penny_Wong
+		                option = The_assassination_Penny_Wong_National_Party
+		            }
+		            has_game_rule = {
+		                rule = The_assassination_Penny_Wong
+		                option = The_assassination_Penny_Wong_Australia_First
+		            }
+		        }
+		    }
+		}
+		country_event = {
+			id = Australia.3
+		}
+		country_event = {
+			id = Australia.18
+		}
+		add_ideas = AST_asian_cold_war
+		add_research_slot = 1
+	}
+	option = {
+		#She IS the Enemy! - Fash - Freedom
+		name = Australia.1.c
+		ai_chance = {
+		    factor = 34
+		    modifier = {
+		        factor = 0
+		        OR = {
+		            has_game_rule = {
+		                rule = The_assassination_Penny_Wong
+		                option = The_assassination_Penny_Wong_Liberals_Party
+		            }
+		            has_game_rule = {
+		                rule = The_assassination_Penny_Wong
+		                option = The_assassination_Penny_Wong_National_Party
+		            }
+		            has_game_rule = {
+		                rule = The_assassination_Penny_Wong
+		                option = The_assassination_Penny_Wong_Military_Junta
+		            }
+		        }
+		    }
+		}
+		country_event = {
+			id = Australia.4
+		}
+		country_event = {
+			id = Australia.18
+		}
+		add_ideas = AST_asian_cold_war
+		add_research_slot = 1
+	}
+}
+
+country_event = {
+	#Joel Davis Life w/o Parol
+	id = Australia.2
+	title = Australia.2.t
+	desc = Australia.2.d
+	picture = GFX_AST_Courthouse
+	fire_only_once = yes
+	is_triggered_only = yes
+	immediate = {
+		hidden_effect = {
+			add_popularity = {
+				ideology = conservative
+				popularity = 0.075
+			}
+		}
+	}
+	option = {
+		#Law and Order must Prevail in these trying times - Conservative - Life w/o parol
+		name = Australia.1.a
+		ai_chance = {
+			factor = 10
+		}
+		add_stability = 0.06
+		hidden_effect = {
+			country_event = {
+				#Conservatives gain power
+				id = Australia.5
+				days = 160
+			}
+		}
+	}
+}
+
+country_event = {
+	#Joel Davis 20 years
+	id = Australia.3
+	title = Australia.3.t
+	desc = Australia.3.d
+	picture = GFX_AST_Courthouse
+	fire_only_once = yes
+	is_triggered_only = yes
+	immediate = {
+		hidden_effect = {
+			add_popularity = {
+				ideology = nationalist
+				popularity = 0.075
+			}
+		}
+	}
+	option = {
+		#People are unhappy regardless
+		name = Australia.3.a
+		ai_chance = {
+			factor = 10
+		}
+		add_stability = -0.06
+		hidden_effect = {
+			country_event = {
+				#Veterans march on Canberra
+				id = Australia.6
+				days = 15
+			}
+		}
+	}
+}
+
+country_event = {
+	#Joel Davis Free
+	id = Australia.4
+	title = Australia.4.t
+	desc = Australia.4.d
+	picture = GFX_AST_Courthouse
+	fire_only_once = yes
+	is_triggered_only = yes
+	immediate = {
+		hidden_effect = {
+			add_popularity = {
+				ideology = fascist
+				popularity = 0.075
+			}
+		}
+	}
+	option = {
+		#
+		name = Australia.4.a
+		ai_chance = {
+			factor = 10
+		}
+		add_stability = -0.12
+		hidden_effect = {
+			country_event = {
+				#White Nationalists March on Canberra
+				id = Australia.7
+				days = 15
+			}
+		}
+	}
+}
+
+country_event = {
+	#
+	id = Australia.5
+	title = Australia.5.t
+	desc = Australia.5.d
+	picture = GFX_AST_Conservative_Australia_Victory
+	fire_only_once = yes
+	is_triggered_only = yes
+	immediate = {
+		hidden_effect = {
+			add_popularity = {
+				ideology = conservative
+				popularity = 0.075
+			}
+			NZL = {
+				country_event = {
+					id = NZL.1
+					days = 80
+				}
+			}
+		}
+	}
+	option = {
+		#Soft Cons
+		name = Australia.5.a
+		ai_chance = {
+		    factor = 10
+		    modifier = {
+		        factor = 0
+		        OR = {
+		            has_game_rule = {
+		                rule = The_assassination_Penny_Wong
+		                option = The_assassination_Penny_Wong_National_Party
+		            }
+		        }
+		    }
+		}
+		add_ideas = AST_Peter_Dutton_idea
+		add_country_leader_role = {
+			character = AST_david_hurley_char
+			promote_leader = yes
+			country_leader = {
+				ideology = classical_liberalism
+				traits = {
+				}
+			}
+		}
+		set_politics = {
+			ruling_party = market_liberal
+			elections_allowed = yes
+			last_election = "2022.05.21"
+			election_frequency = 36
+		}
+	}
+	option = {
+		#Paleocons
+		name = Australia.5.b
+		ai_chance = {
+		    factor = 10
+		    modifier = {
+		        factor = 0
+		        OR = {
+		            has_game_rule = {
+		                rule = The_assassination_Penny_Wong
+		                option = The_assassination_Penny_Wong_Liberals_Party
+		            }
+		        }
+		    }
+		}
+		add_ideas = AST_David_Littleproud_idea
+		add_country_leader_role = {
+			character = AST_david_hurley_char
+			promote_leader = yes
+			country_leader = {
+				ideology = classical_conservatism
+				traits = {
+				}
+			}
+		}
+		set_politics = {
+			ruling_party = conservative
+			elections_allowed = yes
+			last_election = "2022.05.21"
+			election_frequency = 36
+		}
+		end_ruling_party_wings = yes
+		set_temp_variable = {
+			ruling_party_wing_var_temp = token:market_liberal
+		}
+		add_ruling_party_wing = yes
+	}
+}
+
+country_event = {
+	#Military Junta Established
+	id = Australia.6
+	title = Australia.6.t
+	desc = Australia.6.d
+	picture = GFX_AST_Veteran_March
+	fire_only_once = yes
+	is_triggered_only = yes
+	immediate = {
+		hidden_effect = {
+			add_popularity = {
+				ideology = nationalist
+				popularity = 0.15
+			}
+			NZL = {
+				country_event = {
+					id = NZL.2
+					days = 80
+				}
+			}
+			ENG = {
+				country_event = {
+					id = ENG_Colony.1
+				}
+			}
+		}
+	}
+	option = {
+		#Military
+		name = Australia.6.a
+		ai_chance = {
+			factor = 10
+		}
+		add_country_leader_role = {
+			character = AST_Ben_Roberts_Smith_char
+			promote_leader = yes
+			country_leader = {
+				ideology = military_junta
+				traits = {
+				}
+			}
+		}
+		set_politics = {
+			ruling_party = nationalist
+			elections_allowed = no
+			election_frequency = 48
+		}
+		clr_country_flag = head_of_gov_ui_enabled
+		end_ruling_party_wings = yes
+	}
+}
+
+country_event = {
+	#Australia First dissolves the Government
+	id = Australia.7
+	title = Australia.7.t
+	desc = Australia.7.d
+	picture = GFX_AST_Eureka
+	fire_only_once = yes
+	is_triggered_only = yes
+	immediate = {
+		hidden_effect = {
+			add_popularity = {
+				ideology = fascist
+				popularity = 0.25
+			}
+			add_popularity = {
+				ideology = national_socialist
+				popularity = 0.05
+			}
+			add_popularity = {
+				ideology = authoritarian_democrat
+				popularity = 0.07
+			}
+			NZL = {
+				country_event = {
+					id = NZL.3
+					days = 80
+				}
+			}
+			ENG = {
+				country_event = {
+					id = ENG_Colony.2
+				}
+			}
+		}
+	}
+	option = {
+		#Wignat
+		name = Australia.7.a
+		ai_chance = {
+			factor = 10
+		}
+		remove_ideas = commonwealth_of_nations_member
+		set_politics = {
+			ruling_party = fascist
+			elections_allowed = no
+			last_election = "1935.12.17"
+			election_frequency = 48
+		}
+		add_country_leader_role = {
+			character = AST_Jim_Saleam_char
+			promote_leader = yes
+			country_leader = {
+				ideology = ethno_nationalism
+				traits = {
+				}
+			}
+		}
+		clr_country_flag = head_of_gov_ui_enabled
+		end_ruling_party_wings = yes
+	}
+}
+
+news_event = {
+	#Australian Nuclearization
+	id = Australia.8
+	title = Australia.8.t
+	desc = Australia.8.d
+	picture = GFX_event_nuke
+	fire_only_once = yes
+	is_triggered_only = yes
+	major = yes
+	option = {
+		#Epic Gamer Time
+		name = Australia.8.a
+		
+		hidden_effect = {
+			AST = {
+				add_nuclear_bombs = 10
+			}
+		}
+	}
+}
+
+news_event = {
+	#Australia Announces Nuclear Program
+	id = Australia.9
+	title = Australia.9.t
+	desc = Australia.9.d
+	picture = GFX_event_nuke
+	is_triggered_only = yes
+	fire_only_once = yes
+	major = yes
+	option = {
+		#Epic Gamer Time
+		name = Australia.8.a
+		
+		hidden_effect = {
+			AST = {
+				add_political_power = -200
+			}
+			news_event = {
+				id = australia.8
+				days = 600
+			}
+		}
+	}
+}
+
+country_event = {
+	#Choosing a new Governor General - Australia
+	id = Australia.10
+	title = Australia.10.t
+	desc = Australia.10.d
+	picture = GFX_Australia_Governor_General
+	fire_only_once = yes
+	is_triggered_only = yes
+	immediate = {
+		hidden_effect = {
+		}
+	}
+	option = {
+		#Margaret Beazley - Ceremonial Option
+		name = Australia.10.a
+		ai_chance = {
+			factor = 60
+		}
+		trigger = {
+			AST = {
+				NOT = {
+					has_government = nationalist
+					has_government = fascist
+				}
+			}
+		}
+		AST = {
+			#
+			add_country_leader_role = {
+				character = AST_Margaret_Beazley_char
+				promote_leader = yes
+				country_leader = {
+					ideology = neoliberalism
+					traits = {
+					}
+				}
+			}
+			hidden_effect = {
+				add_country_leader_role = {
+					character = AST_Margaret_Beazley_char
+					promote_leader = yes
+					country_leader = {
+						ideology = classical_liberalism
+						traits = {
+						}
+					}
+				}
+				add_country_leader_role = {
+					character = AST_Margaret_Beazley_char
+					promote_leader = yes
+					country_leader = {
+						ideology = neoconservative
+						traits = {
+						}
+					}
+				}
+				add_country_leader_role = {
+					character = AST_Margaret_Beazley_char
+					promote_leader = yes
+					country_leader = {
+						ideology = progressivism
+						traits = {
+						}
+					}
+				}
+				add_country_leader_role = {
+					character = AST_Margaret_Beazley_char
+					promote_leader = yes
+					country_leader = {
+						ideology = reformist_socialism
+						traits = {
+						}
+					}
+				}
+			}
+		}
+	}
+	option = {
+		#Ben Smith
+		name = Australia.10.b
+		ai_chance = {
+			factor = 40
+		}
+		trigger = {
+			AST = {
+				NOT = {
+					has_government = nationalist
+					has_government = fascist
+				}
+			}
+		}
+		add_power_balance_value = {
+			id = ENG_Charles_Power_bop
+			value = 0.1
+		}
+		AST = {
+			#AST_Ben_Roberts_Smith
+			add_country_leader_role = {
+				character = AST_Ben_Roberts_Smith_char
+				promote_leader = yes
+				country_leader = {
+					ideology = neoliberalism
+					traits = {
+					}
+				}
+			}
+			hidden_effect = {
+				add_country_leader_role = {
+					character = AST_Ben_Roberts_Smith_char
+					promote_leader = yes
+					country_leader = {
+						ideology = classical_liberalism
+						traits = {
+						}
+					}
+				}
+				add_country_leader_role = {
+					character = AST_Ben_Roberts_Smith_char
+					promote_leader = yes
+					country_leader = {
+						ideology = neoconservative
+						traits = {
+						}
+					}
+				}
+				add_country_leader_role = {
+					character = AST_Ben_Roberts_Smith_char
+					promote_leader = yes
+					country_leader = {
+						ideology = progressivism
+						traits = {
+						}
+					}
+				}
+				add_country_leader_role = {
+					character = AST_Ben_Roberts_Smith_char
+					promote_leader = yes
+					country_leader = {
+						ideology = reformist_socialism
+						traits = {
+						}
+					}
+				}
+			}
+		}
+	}
+	option = {
+		#Support Military Government
+		name = Australia.10.c
+		ai_chance = {
+			factor = 40
+		}
+		trigger = {
+			AST = {
+				has_government = nationalist
+			}
+		}
+		add_power_balance_value = {
+			id = ENG_Charles_Power_bop
+			value = 0.15
+		}
+		AST = {
+			add_ideas = AST_His_Majesties_Australia_idea
+		}
+	}
+	option = {
+		#Demand Restoration of Civillian Government
+		name = Australia.10.e
+		ai_chance = {
+			factor = 40
+		}
+		trigger = {
+			AST = {
+				has_government = nationalist
+			}
+			ENG = {
+				OR = {
+					has_government = social_democrat
+					has_government = social_liberal
+				}
+			}
+		}
+		add_power_balance_value = {
+			id = ENG_Charles_Power_bop
+			value = -0.1
+		}
+		AST = {
+			add_stability = -0.1
+			add_ideas = AST_The_Kings_No_idea
+		}
+	}
+	option = {
+		#recognize Australian Government in Exile
+		name = Australia.10.f
+		ai_chance = {
+			factor = 40
+		}
+		trigger = {
+			AST = {
+				has_government = fascist
+			}
+		}
+		add_power_balance_value = {
+			id = ENG_Charles_Power_bop
+			value = 0.2
+		}
+		AST = {
+			add_timed_idea = {
+				idea = AST_Monarchist_Plot_idea
+				days = 120
+			}
+		}
+	}
+}
+
+country_event = {
+	#2022 Election
+	id = Australia.11
+	title = Australia.11.t
+	desc = Australia.11.d
+	picture = GFX_AST_2022_Election
+	fire_only_once = yes
+	is_triggered_only = yes
+	immediate = {
+	}
+	option = {
+		#LABOUR VICTORY
+		name = Australia.11.a
+		ai_chance = {
+		    factor = 10
+		    modifier = {
+		        factor = 0
+		        OR = {
+		            has_game_rule = {
+		                rule = The_2022_Australia_Elections
+		                option = The_2022_Australia_Elections_Coalition
+		            }
+		        }
+		    }
+		}
+		set_politics = {
+			ruling_party = social_democrat
+			elections_allowed = yes
+			last_election = "2022.05.21"
+			election_frequency = 36
+		}
+		add_ideas = AST_Anthony_Albanese_char
+		add_country_leader_role = {
+			character = AST_david_hurley_char
+			promote_leader = yes
+			country_leader = {
+				ideology = social_democracy
+				traits = {
+				}
+			}
+		}
+		end_ruling_party_wings = yes
+		set_temp_variable = {
+			ruling_party_wing_var_temp = token:libertarian_socialist
+		}
+		add_ruling_party_wing = yes
+	}
+	option = {
+		#LNP VICTORY
+		name = Australia.11.b
+		ai_chance = {
+		    factor = 10
+		    modifier = {
+		        factor = 0
+		        OR = {
+		            has_game_rule = {
+		                rule = The_2022_Australia_Elections
+		                option = The_2022_Australia_Elections_Labor_Party
+		            }
+		        }
+		    }
+		}
+		add_ideas = AST_Scott_Morrison_char
+		set_politics = {
+			ruling_party = conservative
+			elections_allowed = yes
+			last_election = "2022.05.21"
+			election_frequency = 36
+			long_name = AST_Coalition_national_party_long
+			name = AST_Coalition_national_party
+		}
+		set_party_name = {
+			ideology = market_liberal
+			long_name = AST_Coalition_liberal_party_long
+			name = AST_Coalition_liberal_party
+		}
+		add_country_leader_role = {
+			character = AST_david_hurley_char
+			promote_leader = yes
+			country_leader = {
+				ideology = neoconservative
+				traits = {
+				}
+			}
+		}
+		end_ruling_party_wings = yes
+		set_temp_variable = {
+			ruling_party_wing_var_temp = token:market_liberal
+		}
+		add_ruling_party_wing = yes
+	}
+}
+
+country_event = {
+	#Increasing popularity of Unification
+	id = Australia.12
+	title = Australia.12.t
+	desc = Australia.12.d
+	picture = GFX_AST_Unification
+	fire_only_once = yes
+	is_triggered_only = yes
+	immediate = {
+		hidden_effect = {
+		}
+	}
+	option = {
+		#
+		name = Australia.12.a
+		ai_chance = {
+			factor = 10
+		}
+		hidden_effect = {
+			if = {
+				limit = {
+					AST = {
+						has_government = social_democrat
+						has_country_flag = AST_LOST_WAR_flag
+					}
+				}
+				country_event = {
+					#Labour leadership collapses
+					id = Australia.13
+					days = 30
+				}
+				country_event = {
+					#2025 election - conservative triumph
+					id = Australia.5
+					days = 95
+				}
+				country_event = {
+					#Unification of New Zealand and Australia 
+					id = Australia.17
+					days = 180
+				}
+			}
+			if = {
+				limit = {
+					AST = {
+						NOT = {
+							has_country_flag = AST_LOST_WAR_flag
+						}
+					}
+				}
+				country_event = {
+					#2025 Election
+					id = Australia.14
+					days = 95
+				}
+				country_event = {
+					#Unification of New Zealand and Australia 
+					id = Australia.17
+					days = 180
+				}
+			}
+			if = {
+				limit = {
+					AST = {
+						has_government = nationalist
+					}
+				}
+				country_event = {
+					#Unification of New Zealand and Australia - Nationalist
+					id = Australia.15
+					days = 70
+				}
+			}
+			if = {
+				limit = {
+					AST = {
+						has_government = fascist
+					}
+				}
+				country_event = {
+					#Unification of New Zealand and Australia - fascist
+					id = Australia.16
+					days = 70
+				}
+			}
+		}
+		trigger = {
+			tag = AST
+		}
+	}
+	option = {
+		#
+		name = Australia.12.b
+		ai_chance = {
+			factor = 10
+		}
+		add_stability = -0.2
+		trigger = {
+			tag = NZL
+		}
+	}
+}
+
+country_event = {
+	#Labour Leadership Collapses
+	id = Australia.13
+	title = Australia.13.t
+	desc = Australia.13.d
+	picture = GFX_AST_Labor_Collapse
+	fire_only_once = yes
+	is_triggered_only = yes
+	immediate = {
+		hidden_effect = {
+			remove_ideas = {
+				AST_Anthony_Albanese_char
+			}
+		}
+	}
+	option = {
+		#
+		name = Australia.13.a
+		ai_chance = {
+			factor = 10
+		}
+		add_ideas = AST_Collapsed_Government_idea
+	}
+}
+
+country_event = {
+	#2025 Election
+	id = Australia.14
+	title = Australia.14.t
+	desc = Australia.14.d
+	picture = GFX_AST_2025_election
+	fire_only_once = yes
+	is_triggered_only = yes
+	immediate = {
+		hidden_effect = {
+		}
+	}
+	option = {
+		#LABOUR VICTORY 2
+		name = Australia.14.a
+		ai_chance = {
+			factor = 10
+		}
+		if = {
+			limit = {
+				has_country_leader = {
+					character = AST_Margaret_Beazley_char
+					ruling_only = yes
+				}
+			}
+			add_country_leader_role = {
+				character = AST_Margaret_Beazley_char
+				promote_leader = yes
+				country_leader = {
+					ideology = social_democracy
+					traits = {
+					}
+				}
+			}
+			set_politics = {
+				ruling_party = social_democrat
+				elections_allowed = yes
+				last_election = "2025.05.21"
+				election_frequency = 36
+			}
+			end_ruling_party_wings = yes
+				set_temp_variable = {
+				ruling_party_wing_var_temp = token:libertarian_socialist
+			}
+			add_ruling_party_wing = yes
+		}
+		if = {
+			limit = {
+				has_country_leader = {
+					character = AST_Ben_Roberts_Smith_char
+					ruling_only = yes
+				}
+			}
+			add_country_leader_role = {
+				character = AST_Ben_Roberts_Smith_char
+				promote_leader = yes
+				country_leader = {
+					ideology = social_democracy
+					traits = {
+					}
+				}
+			}
+			set_politics = {
+				ruling_party = social_democrat
+				elections_allowed = yes
+				last_election = "2025.05.21"
+				election_frequency = 36
+			}
+			end_ruling_party_wings = yes
+				set_temp_variable = {
+				ruling_party_wing_var_temp = token:libertarian_socialist
+			}
+			add_ruling_party_wing = yes
+		}
+	}
+	option = {
+		#CONSERVATIVE VICTORY 2
+		name = Australia.14.b
+		ai_chance = {
+			factor = 10
+		}
+		if = {
+			limit = {
+				has_country_leader = {
+					character = AST_Margaret_Beazley_char
+					ruling_only = yes
+				}
+			}
+			add_country_leader_role = {
+				character = AST_Margaret_Beazley_char
+				promote_leader = yes
+				country_leader = {
+					ideology = right_populism
+					traits = {
+					}
+				}
+			}
+			set_politics = {
+				ruling_party = conservative
+				elections_allowed = yes
+				last_election = "2025.05.21"
+				election_frequency = 36
+			}
+			end_ruling_party_wings = yes
+				set_temp_variable = {
+				ruling_party_wing_var_temp = token:market_liberal
+			}
+			add_ruling_party_wing = yes
+		}
+		if = {
+			limit = {
+				has_country_leader = {
+					character = AST_Ben_Roberts_Smith_char
+					ruling_only = yes
+				}
+			}
+			add_country_leader_role = {
+				character = AST_Ben_Roberts_Smith_char
+				promote_leader = yes
+				country_leader = {
+					ideology = right_populism
+					traits = {
+					}
+				}
+			}
+			set_politics = {
+				ruling_party = conservative
+				elections_allowed = yes
+				last_election = "2025.05.21"
+				election_frequency = 36
+			}
+			end_ruling_party_wings = yes
+				set_temp_variable = {
+				ruling_party_wing_var_temp = token:market_liberal
+			}
+			add_ruling_party_wing = yes
+		}
+	}
+}
+
+country_event = {
+	#Unification of New Zealand and Australia - Nationalist
+	id = Australia.15
+	title = Australia.15.t
+	desc = Australia.15.d
+	picture = GFX_AST_Unification
+	fire_only_once = yes
+	is_triggered_only = yes
+	immediate = {
+		hidden_effect = {
+		}
+	}
+	option = {
+		#
+		name = Australia.15.a
+		ai_chance = {
+			factor = 10
+		}
+		annex_country = {
+			target = NZL
+			transfer_troops = yes
+		}
+		284 = {
+			add_core_of = AST
+		}
+		723 = {
+			add_core_of = AST
+		}
+	}
+}
+
+country_event = {
+	#Unification of New Zealand and Australia - Fascist
+	id = Australia.16
+	title = Australia.16.t
+	desc = Australia.16.d
+	picture = GFX_AST_Unification
+	fire_only_once = yes
+	is_triggered_only = yes
+	immediate = {
+		hidden_effect = {
+		}
+	}
+	option = {
+		#
+		name = Australia.16.a
+		ai_chance = {
+			factor = 10
+		}
+		annex_country = {
+			target = NZL
+			transfer_troops = yes
+		}
+		284 = {
+			add_claim_by = AST
+		}
+		723 = {
+			add_claim_by = AST
+		}
+	}
+}
+
+country_event = {
+	#Unification of New Zealand and Australia - Yep
+	id = Australia.17
+	title = Australia.17.t
+	desc = Australia.17.d
+	picture = GFX_AST_Unification
+	fire_only_once = yes
+	is_triggered_only = yes
+	immediate = {
+		hidden_effect = {
+		}
+	}
+	option = {
+		#
+		name = Australia.17.a
+		ai_chance = {
+			factor = 10
+		}
+		annex_country = {
+			target = NZL
+			transfer_troops = yes
+		}
+		284 = {
+			add_core_of = AST
+		}
+		723 = {
+			add_core_of = AST
+		}
+	}
+}
+
+#debug industrialization 
+country_event = {
+	id = Australia.18
+	title = Australia.18.t
+	desc = Australia.18.d
+	picture = GFX_AST_Penny_wong
+	fire_only_once = yes
+	is_triggered_only = yes
+	immediate = {
+		hidden_effect = {
+		}
+	}
+	option = {
+		name = Australia.18.a
+		random_owned_controlled_state = {
+			increase_state_category = yes
+			add_extra_state_shared_building_slots = 2
+		}
+		random_owned_controlled_state = {
+			increase_state_category = yes
+			add_extra_state_shared_building_slots = 2
+		}
+		random_owned_controlled_state = {
+			increase_state_category = yes
+			add_extra_state_shared_building_slots = 2
+		}
+		random_owned_controlled_state = {
+			increase_state_category = yes
+			add_extra_state_shared_building_slots = 1
+		}
+		random_owned_controlled_state = {
+			increase_state_category = yes
+			add_extra_state_shared_building_slots = 1
+		}
+		random_owned_controlled_state = {
+			limit = {
+				is_core_of = ROOT
+				free_building_slots = {
+					building = industrial_complex
+					size > 3
+					include_locked = yes
+				}
+			}
+			add_extra_state_shared_building_slots = 5
+			add_building_construction = {
+				type = industrial_complex
+				level = 4
+				instant_build = yes
+			}
+		}
+		random_owned_controlled_state = {
+			limit = {
+				is_core_of = ROOT
+				free_building_slots = {
+					building = industrial_complex
+					size > 3
+					include_locked = yes
+				}
+			}
+			add_extra_state_shared_building_slots = 5
+			add_building_construction = {
+				type = industrial_complex
+				level = 4
+				instant_build = yes
+			}
+		}
+		random_owned_controlled_state = {
+			limit = {
+				is_core_of = ROOT
+				free_building_slots = {
+					building = arms_factory
+					size > 3
+					include_locked = yes
+				}
+			}
+			add_extra_state_shared_building_slots = 5
+			add_building_construction = {
+				type = arms_factory
+				level = 4
+				instant_build = yes
+			}
+		}
+		random_owned_controlled_state = {
+			limit = {
+				is_core_of = ROOT
+				free_building_slots = {
+					building = arms_factory
+					size > 3
+					include_locked = yes
+				}
+			}
+			add_extra_state_shared_building_slots = 5
+			add_building_construction = {
+				type = arms_factory
+				level = 4
+				instant_build = yes
+			}
+		}
+		random_owned_controlled_state = {
+			limit = {
+				is_core_of = ROOT
+				free_building_slots = {
+					building = arms_factory
+					size > 3
+					include_locked = yes
+				}
+			}
+			add_extra_state_shared_building_slots = 5
+			add_building_construction = {
+				type = arms_factory
+				level = 4
+				instant_build = yes
+			}
+		}
+		random_owned_controlled_state = {
+			limit = {
+				is_core_of = ROOT
+				free_building_slots = {
+					building = arms_factory
+					size > 3
+					include_locked = yes
+				}
+			}
+			add_extra_state_shared_building_slots = 5
+			add_building_construction = {
+				type = arms_factory
+				level = 4
+				instant_build = yes
+			}
+		}
+		random_owned_controlled_state = {
+			limit = {
+				is_core_of = ROOT
+				free_building_slots = {
+					building = arms_factory
+					size > 3
+					include_locked = yes
+				}
+			}
+			add_extra_state_shared_building_slots = 5
+			add_building_construction = {
+				type = arms_factory
+				level = 4
+				instant_build = yes
+			}
+		}
+		random_owned_controlled_state = {
+			increase_state_category = yes
+			limit = {
+				is_core_of = ROOT
+				free_building_slots = {
+					building = dockyard
+					size > 2
+					include_locked = yes
+				}
+			}
+			add_extra_state_shared_building_slots = 4
+			add_building_construction = {
+				type = dockyard
+				level = 3
+				instant_build = yes
+			}
+		}
+		random_owned_controlled_state = {
+			increase_state_category = yes
+			add_extra_state_shared_building_slots = 4
+			limit = {
+				is_core_of = ROOT
+				free_building_slots = {
+					building = dockyard
+					size > 3
+					include_locked = yes
+				}
+			}
+			add_extra_state_shared_building_slots = 4
+			add_building_construction = {
+				type = dockyard
+				level = 4
+				instant_build = yes
+			}
+		}
+		random_owned_controlled_state = {
+			increase_state_category = yes
+			limit = {
+				is_core_of = ROOT
+				free_building_slots = {
+					building = dockyard
+					size > 2
+					include_locked = yes
+				}
+			}
+			add_extra_state_shared_building_slots = 4
+			add_building_construction = {
+				type = dockyard
+				level = 3
+				instant_build = yes
+			}
+		}
+		random_owned_controlled_state = {
+			limit = {
+				is_core_of = ROOT
+				free_building_slots = {
+					building = dockyard
+					size > 2
+					include_locked = yes
+				}
+			}
+			add_extra_state_shared_building_slots = 4
+			add_building_construction = {
+				type = dockyard
+				level = 3
+				instant_build = yes
+			}
+		}
+		add_manpower = 300000
+	}
+}
+
+country_event = {
+	#china begins a naval blockade of our coastline!
+	id = Australia.19
+	title = Australia.19.t
+	desc = Australia.19.d
+	picture = GFX_AST_Unification
+	fire_only_once = yes
+	is_triggered_only = yes
+	immediate = {
+		hidden_effect = {
+		}
+	}
+	option = {
+		name = Australia.19.a
+		PRC = {
+			country_event = {
+				id = Australia.20
+				days = 18
+			}
+		}
+		set_country_flag = GAW_disabled
+		clr_country_flag = pdto_member
+		JAP_leave_PEC = yes
+		leave_faction = yes
+	}
+}
+
+country_event = { #event for prc
+	#australia is withdraws from the war
+	id = Australia.20
+	title = Australia.20.t
+	desc = Australia.20.d
+	picture = GFX_PRC_china_diplomacy
+	fire_only_once = yes
+	is_triggered_only = yes
+	immediate = {
+		hidden_effect = {
+		}
+	}
+	option = {
+		name = Australia.20.a
+		add_stability = 0.025
+		white_peace = AST
+		if = {
+			limit = {
+				has_war_with = NZL
+			}
+			white_peace = NZL
+			NZL = {
+				hidden_effect = {
+					clr_country_flag = pdto_member
+					JAP_leave_PEC = yes
+					leave_faction = yes
+				}
+			}
+		}
+		add_days_mission_timeout = {
+			mission = PRC_GAW_war_exhaustion
+			days = 20
+		}
+	}
+}
+
+country_event = {
+	#Our bigger brother has influence - Elections
+	id = NZL.1
+	title = NZL.1.t
+	desc = NZL.1.d
+	picture = GFX_NZL_2023_election
+	fire_only_once = yes
+	is_triggered_only = yes
+	immediate = {
+		hidden_effect = {
+			remove_ideas = NZL_jacinda_ardern_hog
+			add_popularity = {
+				ideology = conservative
+				popularity = 0.07
+			}
+		}
+	}
+	option = {
+		#Conservative
+		name = NZL.1.b
+		ai_chance = {
+		    factor = 70
+		    modifier = {
+		        factor = 0
+		        OR = {
+		            has_game_rule = {
+		                rule = The_New_Zealand_Upheaval
+		                option = The_New_Zealand_Upheaval_Labour_Party
+		            }
+		        }
+		    }
+		}
+		set_politics = {
+			ruling_party = conservative
+			elections_allowed = yes
+			last_election = "2023.10.14"
+			election_frequency = 36
+		}
+		add_ideas = NZL_christopher_luxon_hog
+	}
+	option = {
+		#Chriss Hipkins
+		name = NZL.1.a
+		ai_chance = {
+		    factor = 30
+		    modifier = {
+		        factor = 0
+		        OR = {
+		            has_game_rule = {
+		                rule = The_New_Zealand_Upheaval
+		                option = The_New_Zealand_Upheaval_National_Party
+		            }
+		        }
+		    }
+		}
+		set_politics = {
+			ruling_party = social_democrat
+			elections_allowed = yes
+			last_election = "2023.10.14"
+			election_frequency = 36
+		}
+		add_popularity = {
+			ideology = social_democrat
+			popularity = 0.08
+		}
+		add_ideas = NZL_chris_hipkins_hog
+	}
+}
+
+country_event = {
+	#Our bigger brother has influence - Military Coup
+	id = NZL.2
+	title = NZL.2.t
+	desc = NZL.2.d
+	picture = GFX_NZL_Military_Coup
+	fire_only_once = yes
+	is_triggered_only = yes
+	immediate = {
+		hidden_effect = {
+			add_popularity = {
+				ideology = authoritarian_democrat
+				popularity = 0.15
+			}
+			ENG = {
+				country_event = {
+					id = ENG_Colony.5
+				}
+			}
+		}
+	}
+	option = {
+		#Military Putsch
+		name = NZL.2.a
+		ai_chance = {
+			factor = 10
+		}
+		set_politics = {
+			ruling_party = authoritarian_democrat
+			elections_allowed = no
+			election_frequency = 48
+		}
+		add_country_leader_role = {
+			character = NZL_Kevin_Short_char
+			promote_leader = yes
+			country_leader = {
+				ideology = hybrid_regime
+				traits = {
+				}
+			}
+		}
+		clr_country_flag = head_of_gov_ui_enabled
+	}
+}
+
+country_event = {
+	#Neo-Nazi Coup
+	id = NZL.3
+	title = NZL.3.t
+	desc = NZL.3.d
+	picture = GFX_NZL_Nazis
+	fire_only_once = yes
+	is_triggered_only = yes
+	immediate = {
+		hidden_effect = {
+			ENG = {
+				country_event = {
+					id = ENG_Colony.6
+				}
+			}
+		}
+	}
+	option = {
+		#NSM Adjacent
+		name = NZL.3.a
+		ai_chance = {
+		    factor = 33
+		    modifier = {
+		        factor = 0
+		        OR = {
+		            has_game_rule = {
+		                rule = The_New_Zealand_Upheaval
+		                option = The_New_Zealand_Upheaval_PT
+		            }
+		        }
+		    }
+		}
+		remove_ideas = commonwealth_of_nations_member
+		set_politics = {
+			ruling_party = national_socialist
+			elections_allowed = no
+			election_frequency = 48
+		}
+		add_country_leader_role = {
+			character = NZL_Vaughan_Tucker_char
+			promote_leader = yes
+			country_leader = {
+				ideology = neonazism
+				traits = {
+				}
+			}
+		}
+		hidden_effect = {
+			add_popularity = {
+				ideology = national_socialist
+				popularity = 0.15
+			}
+		}
+		clr_country_flag = head_of_gov_ui_enabled
+	}
+	option = {
+		#PF Adjacent
+		name = NZL.3.b
+		ai_chance = {
+		    factor = 33
+		    modifier = {
+		        factor = 0
+		        OR = {
+		            has_game_rule = {
+		                rule = The_New_Zealand_Upheaval
+		                option = The_New_Zealand_Upheaval_NSM
+		            }
+		        }
+		    }
+		}
+		remove_ideas = commonwealth_of_nations_member
+		set_politics = {
+			ruling_party = fascist
+			elections_allowed = no
+			election_frequency = 48
+		}
+		add_country_leader_role = {
+			character = NZL_James_Fairburn_char
+			promote_leader = yes
+			country_leader = {
+				ideology = classical_fascism
+				traits = {
+				}
+			}
+		}
+		hidden_effect = {
+			add_popularity = {
+				ideology = fascist
+				popularity = 0.15
+			}
+		}
+		clr_country_flag = head_of_gov_ui_enabled
+	}
+}
+
+country_event = {
+	#Choosing a new Governor General - New Zealand
+	id = NZL.4
+	title = NZL.4.t
+	desc = NZL.4.d
+	picture = GFX_New_Zealand_Governor_General
+	fire_only_once = yes
+	is_triggered_only = yes
+	immediate = {
+		hidden_effect = {
+		}
+	}
+	option = {
+		#Cindy Kiro - Ceremonial Option
+		name = NZL.4.a
+		ai_chance = {
+		    factor = 60
+		    modifier = {
+		        factor = 0
+		        OR = {
+		            has_game_rule = {
+		                rule = The_NZL_New_Governor_General
+		                option = The_NZL_New_Governor_General_Bruce_Ferguson
+		            }
+		        }
+		    }
+		}
+		NZL = {
+			#NZL_Cindy_Kiro_char
+			add_country_leader_role = {
+				character = NZL_Cindy_Kiro_char
+				promote_leader = yes
+				country_leader = {
+					ideology = neoliberalism
+					traits = {
+					}
+				}
+			}
+			hidden_effect = {
+				add_country_leader_role = {
+					character = NZL_Cindy_Kiro_char
+					promote_leader = yes
+					country_leader = {
+						ideology = classical_liberalism
+						traits = {
+						}
+					}
+				}
+				add_country_leader_role = {
+					character = NZL_Cindy_Kiro_char
+					promote_leader = yes
+					country_leader = {
+						ideology = neoconservative
+						traits = {
+						}
+					}
+				}
+				add_country_leader_role = {
+					character = NZL_Cindy_Kiro_char
+					promote_leader = yes
+					country_leader = {
+						ideology = progressivism
+						traits = {
+						}
+					}
+				}
+				add_country_leader_role = {
+					character = NZL_Cindy_Kiro_char
+					promote_leader = yes
+					country_leader = {
+						ideology = reformist_socialism
+						traits = {
+						}
+					}
+				}
+			}
+		}
+	}
+	option = {
+		#Bruce Fergusen
+		name = NZL.4.b
+		ai_chance = {
+		    factor = 40
+		    modifier = {
+		        factor = 0
+		        OR = {
+		            has_game_rule = {
+		                rule = The_NZL_New_Governor_General
+		                option = The_NZL_New_Governor_General_Cindy_Kiro
+		            }
+		        }
+		    }
+		}
+		NZL = {
+			#NZL_Bruce_Ferguson_char
+			add_country_leader_role = {
+				character = NZL_Bruce_Ferguson_char
+				promote_leader = yes
+				country_leader = {
+					ideology = neoliberalism
+					traits = {
+					}
+				}
+			}
+			hidden_effect = {
+				add_country_leader_role = {
+					character = NZL_Bruce_Ferguson_char
+					promote_leader = yes
+					country_leader = {
+						ideology = classical_liberalism
+						traits = {
+						}
+					}
+				}
+				add_country_leader_role = {
+					character = NZL_Bruce_Ferguson_char
+					promote_leader = yes
+					country_leader = {
+						ideology = neoconservative
+						traits = {
+						}
+					}
+				}
+				add_country_leader_role = {
+					character = NZL_Bruce_Ferguson_char
+					promote_leader = yes
+					country_leader = {
+						ideology = progressivism
+						traits = {
+						}
+					}
+				}
+				add_country_leader_role = {
+					character = NZL_Bruce_Ferguson_char
+					promote_leader = yes
+					country_leader = {
+						ideology = reformist_socialism
+						traits = {
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+#the great asian war
+country_event = {
+	id = Australia_gaw.1
+	title = Australia_gaw.1.t
+	desc = Australia_gaw.1.d
+	picture = GFX_generic_elections
+	is_triggered_only = yes
+	fire_only_once = yes
+	
+	option = {
+		name = Australia_gaw.1.a
+		focus_unlock = yes
+		complete_national_focus = AST_war_beyond_the_seas
+	}
+}
+
+#Australia Takes Control of the South Pacific Islands
+news_event = {
+	id = Australia_gaw.2
+	title = Australia_gaw.2.t
+	desc = Australia_gaw.2.d
+	picture = GFX_AST_annex_south_pacific_islands_news
+	is_triggered_only = yes
+	
+	option = {
+		name = Australia_gaw.2.a
+		trigger = {
+			is_ally_with = AST
+		}
+	}
+	option = {
+		name = Australia_gaw.2.b
+		trigger = {
+			is_ally_with = PRC
+		}
+	}
+	option = {
+		name = Australia_gaw.2.c
+		trigger = {
+			NOT = {
+				is_ally_with = AST
+				is_ally_with = PRC
+			}
+		}
+	}
+}

@@ -1,0 +1,815 @@
+﻿	add_namespace = brown
+
+	# Frente Nacionalista Infiltration?
+	country_event = {
+		id = brown.1
+		title = brown.1.t
+		desc = brown.1.d
+		picture = GFX_FNM_generic
+		
+		fire_only_once = yes
+		is_triggered_only = yes
+		
+		trigger = {
+
+		}
+
+		option = {
+			name = brown.1.a
+			add_popularity = { 
+				ideology = fascist				
+				popularity = 0.01
+			}	
+			set_country_flag = FRM_infiltration
+		}
+	}
+
+	# Army is tested
+	country_event = {
+		id = brown.2 
+		title = brown.2.t
+		desc = brown.2.d
+		picture = GFX_BRN_baptized_in_fire
+		
+		fire_only_once = yes
+		is_triggered_only = yes
+		
+		trigger = {
+			tag = BRN
+		}
+
+		option = {
+			name = brown.2.a
+			remove_ideas = BRN_inexperienced_soldiers
+		}
+	}
+
+	# Arizona Border Recon Uprising
+	country_event = {
+		id = brown.3
+		title = brown.3.t
+		desc = brown.3.d
+		picture = GFX_BRN_borderguard_deployed 
+		
+		fire_only_once = yes
+		is_triggered_only = yes
+		
+		trigger = {
+			tag = BRN
+		}
+
+		immediate = {
+			hidden_effect = {
+
+			}
+		}
+		
+		option = {
+			name = brown.3.a
+
+		}
+	}
+
+	# Mexican Volunteers
+	country_event = {
+		id = brown.4
+		title = brown.4.t
+		desc = brown.4.d
+		picture = GFX_BRN_mexican_volunteers	
+		
+		fire_only_once = yes
+		is_triggered_only = yes
+		
+		trigger = {
+			tag = BRN
+		}
+
+		option = {
+			name = brown.4.a
+			random_owned_controlled_state = {
+				create_unit = {
+					division = "name = \"1.Brigada de Voluntarios\" division_template = \"Brigada de Motorizada\"  start_experience_factor = 0.0"
+					allow_spawning_on_enemy_provs = yes
+					owner = BRN
+				}
+				create_unit = {
+					division = "name = \"2. Brigada de Voluntarios\" division_template = \"Brigada de Motorizada\"  start_experience_factor = 0.0"
+					allow_spawning_on_enemy_provs = yes
+					owner = BRN
+				}
+				create_unit = {
+					division = "name = \"3. Brigada de Voluntarios\" division_template = \"Brigada de Motorizada\"  start_experience_factor = 0.0"
+					allow_spawning_on_enemy_provs = yes
+					owner = BRN
+				}
+			}
+		}
+	}
+
+	# Victory in Arizona
+	country_event = {
+		id = brown.5
+		title = brown.5.t
+		desc = brown.5.d
+		picture = GFX_BRN_victory_over_arizona
+		
+		fire_only_once = yes
+		is_triggered_only = yes
+		
+		trigger = {
+			tag = BRN
+		}
+		
+		immediate = {
+			hidden_effect = {
+				complete_national_focus = BRN_our_triumph
+				country_event = { 
+					id = brown.6 
+					days = 40 
+				}
+				set_temp_variable = { 
+					var = BRN_chicano_authority_var_temp
+					value = 10
+				}	
+				BRN_add_chicano_authority = yes
+				focus_unlock = yes
+				add_ideas = BRN_devistated_industry_1
+			}
+		}
+
+		option = {
+			name = brown.5.a
+			effect_tooltip = {
+				set_temp_variable = { 
+					var = BRN_chicano_authority_var_temp
+					value = 10
+				}	
+				BRN_add_chicano_authority = yes
+				set_cosmetic_tag = BRN_chicano_state
+				focus_unlock = yes
+			}
+		}
+	}
+
+	# Phoenix Lights
+	country_event = {
+		id = brown.6
+		title = brown.6.t
+		desc = brown.6.d
+		picture = GFX_Phoenix_Lights
+		
+		fire_only_once = yes
+		is_triggered_only = yes
+		
+		trigger = {
+			tag = BRN
+		}
+		
+		immediate = {
+			hidden_effect = {
+				add_stability = -0.02
+			}
+		}
+
+		option = {
+			name = brown.6.a
+			effect_tooltip = {
+				add_stability = -0.02
+			}
+		}
+	}
+
+	# Phoenix Power Outage
+	country_event = {
+		id = brown.7
+		title = brown.7.t
+		desc = brown.7.d
+		picture = GFX_BRN_phoenix_outage
+		
+		fire_only_once = yes
+		is_triggered_only = yes
+		
+		trigger = {
+			tag = BRN
+		}
+		
+		immediate = {
+			hidden_effect = {
+				add_stability = -0.05
+			}
+		}
+
+		option = {
+			name = brown.7.a
+			effect_tooltip = {
+				add_stability = -0.05
+			}
+		}
+	}
+
+	# EDLC Congress Debate
+	country_event = {
+		id = brown.8
+		title = brown.8.t
+		desc = brown.8.d
+		picture = report_event_equipment
+		
+		fire_only_once = yes
+		is_triggered_only = yes
+		
+		trigger = {
+			tag = BRN
+		}
+
+		option = {
+			name = brown.8.a
+			complete_national_focus = BRN_knights_of_christ
+			add_popularity = { 
+				ideology = nationalist				
+				popularity = 0.10
+			}
+			hidden_effect = {
+				country_event = { 
+					id = brown.17 
+					days = 15 
+				}
+			}
+		}
+		
+		option = {
+			name = brown.8.b
+			complete_national_focus = BRN_our_common_enemy	
+			add_popularity = { 
+				ideology = libertarian_socialist				
+				popularity = 0.10
+			}
+			hidden_effect = {
+				set_cosmetic_tag = BRN_latinx
+				country_event = { 
+					id = brown.18 
+					days = 15 
+				}
+			}
+		}
+	}
+
+	# Arizona Patriot Uprising
+	country_event = {
+		id = brown.9
+		title = brown.9.t
+		desc = brown.9.d
+		picture = report_event_equipment
+		
+		fire_only_once = yes
+		is_triggered_only = yes
+		
+		trigger = {
+			tag = BRN
+		}
+		
+		immediate = {
+			hidden_effect = {
+				ABR = {
+					add_state_core = 991
+					add_state_core = 983
+					add_state_core = 985
+					add_state_core = 984
+					add_state_core = 992
+					add_state_core = 377
+					add_state_core = 987
+					transfer_state = 991
+					transfer_state = 987
+					declare_war_on = { 
+						target = BRN
+						type = civil_war 
+					}
+					load_oob = "ABR_uprising"
+					set_cosmetic_tag = ABR_PATRIOT
+				}
+			}
+		}
+
+		option = {
+			name = brown.9.a
+			
+		}
+	}
+
+	# Investigating the FRM
+	country_event = {
+		id = brown.10
+		title = brown.10.t
+		desc = brown.10.d
+		picture = report_event_equipment
+		
+		fire_only_once = yes
+		is_triggered_only = yes
+		
+		trigger = {
+			tag = BRN
+		}
+
+		option = {
+			name = brown.10.a
+			
+		}
+		
+		option = {
+			name = brown.10.b
+			add_popularity = { 
+				ideology = fascist				
+				popularity = 0.05
+			}	
+			hidden_effect = {
+				country_event = { id = brown.11 days = 60 }
+			}
+		}
+	}
+
+	# FRM Allowed to Participate in EDLC Mettings
+	country_event = {
+		id = brown.11
+		title = brown.11.t
+		desc = brown.11.d
+		picture = report_event_equipment
+		
+		fire_only_once = yes
+		is_triggered_only = yes
+		
+		trigger = {
+			tag = BRN
+		}
+
+		option = {
+			name = brown.11.a
+			add_ideas = BRN_FRM_influence
+			hidden_effect = {
+				country_event = { 
+					id = brown.12 
+					days = 60 
+				}
+			}
+		}
+	}
+
+	# FRM Armed Wing formed
+	country_event = {
+		id = brown.12
+		title = brown.12.t
+		desc = brown.12.d
+		picture = report_event_equipment
+		
+		fire_only_once = yes
+		is_triggered_only = yes
+		
+		trigger = {
+			tag = BRN
+		}
+
+		option = {
+			name = brown.12.a
+			add_political_power = -50
+			load_oob = "BRN_FRM_wing"
+			hidden_effect = {
+				country_event = { 
+					id = brown.13 
+					days = 60 
+				}
+			}
+		}
+		
+		option = {
+			name = brown.12.b
+			add_political_power = 50
+			hidden_effect = {
+				if = {
+					limit = {
+						check_variable = { BRN_factionalism_var_temp > 50 }
+					}
+					start_civil_war = {
+						ideology = fascist
+						capital = 987
+						size = 0.1
+						states = { 987 985 377 }
+					}
+					random_other_country = {
+						limit = {
+							original_tag = BRN
+							OR = {
+								has_government = authoritarian_democrat
+								has_government = nationalist
+								has_government = libertarian_socialist
+							}
+						}
+						load_oob = "FRM_2020"
+						set_stability = 0.4
+						set_war_support = 0.5
+					}					
+				}
+			}
+		}
+	}
+
+	# FRM Rally for Supporters
+	country_event = {
+		id = brown.13
+		title = brown.13.t
+		desc = brown.13.d
+		picture = report_event_equipment
+		
+		fire_only_once = yes
+		is_triggered_only = yes
+		
+		trigger = {
+			tag = BRN
+		}
+
+		option = {
+			name = brown.13.a
+			custom_effect_tooltip = BRN_factionalism_increase_tt
+			add_stability = -0.02
+			add_popularity = { 
+				ideology = fascist				
+				popularity = 0.03
+			}	
+			hidden_effect = {
+				country_event = { 
+					id = brown.14 
+					days = 60 
+				}
+			}
+		}
+
+		option = {
+			name = brown.13.b
+			add_stability = 0.03
+			hidden_effect = {
+				if = {
+					limit = {
+						check_variable = { BRN_factionalism_var_temp > 50 }
+					}
+					start_civil_war = {
+						ideology = fascist
+						capital = 987
+						size = 0.1
+						states = { 987 985 377 }
+					}
+					random_other_country = {
+						limit = {
+							original_tag = BRN
+							OR = {
+								has_government = authoritarian_democrat
+								has_government = nationalist
+								has_government = libertarian_socialist
+							}
+						}
+						load_oob = "FRM_2020"
+						set_stability = 0.4
+						set_war_support = 0.5
+					}					
+				}
+			}
+		}
+	}
+
+	# FRM Coup
+	country_event = {
+		id = brown.14
+		title = brown.14.t
+		desc = brown.14.d
+		picture = report_event_equipment
+		
+		fire_only_once = yes
+		is_triggered_only = yes
+		
+		trigger = {
+			tag = BRN
+		}
+
+		option = {
+			name = brown.14.a
+			set_politics = {
+				ruling_party = fascist
+				elections_allowed = no
+				last_election = "2019.12.17"
+				election_frequency = 48
+			}
+			add_popularity = { 
+				ideology = fascist				
+				popularity = 0.25
+			}
+			add_stability = -0.05
+			complete_national_focus = BRN_frente_nacionaliste_coup
+		}
+	}
+
+	# Where'd this money come from???!1?!? :0000
+	country_event = {
+		id = brown.15
+		title = brown.15.t
+		desc = brown.15.d
+		picture = report_event_equipment
+		
+		fire_only_once = yes
+		is_triggered_only = yes
+		
+		trigger = {
+			tag = BRN
+		}
+
+		option = {
+			name = brown.15.a
+			set_temp_variable = {
+				var = income_var_temp
+				value = 20
+			}
+			add_income = yes
+		}
+	}
+
+	# Cartel Crossings
+	country_event = {
+		id = brown.16
+		title = brown.16.t
+		desc = brown.16.d
+		picture = report_event_equipment
+		
+		fire_only_once = yes
+		is_triggered_only = yes
+		
+		trigger = {
+			tag = BRN
+		}
+
+		option = {
+			name = brown.16.a
+			add_stability = -0.1
+			add_ideas = MEX_cartel_presence_minor
+		}
+	}
+
+	# Progressives cause ruckus
+	country_event = {
+		id = brown.17
+		title = brown.17.t
+		desc = brown.17.d
+		picture = report_event_equipment
+		
+		fire_only_once = yes
+		is_triggered_only = yes
+		
+		trigger = {
+			tag = BRN
+		}
+
+		option = {
+			name = brown.17.a
+			set_temp_variable = { 
+				var = BRN_factionalism_var_temp
+				value = 5
+			}
+			BRN_add_factionalism = yes
+		}
+	}
+
+	# Hardliners cause ruckus
+	country_event = {
+		id = brown.18
+		title = brown.18.t
+		desc = brown.18.d
+		picture = report_event_equipment
+		
+		fire_only_once = yes
+		is_triggered_only = yes
+		
+		trigger = {
+			tag = BRN
+		}
+
+		option = {
+			name = brown.18.a
+			set_temp_variable = { 
+				var = BRN_factionalism_var_temp
+				value = 5
+			}
+			BRN_add_factionalism = yes
+		}
+	}
+
+	# Police refuse to cooperate
+	country_event = {
+		id = brown.19
+		title = brown.19.t
+		desc = brown.19.d
+		picture = report_event_equipment
+		
+		fire_only_once = yes
+		is_triggered_only = yes
+		
+		trigger = {
+			tag = BRN
+		}
+
+		option = {
+			name = brown.19.a
+			set_temp_variable = { 
+				var = BRN_chicano_authority_var_temp
+				value = 10
+			}	
+			BRN_add_chicano_authority = yes
+			add_political_power = 75
+		}
+		
+		option = {
+			name = brown.19.b
+			set_temp_variable = { 
+				var = BRN_factionalism_var_temp
+				value = 5
+			}
+			BRN_add_factionalism = yes
+			add_stability = -0.02
+		}
+	}
+
+	# Border Shootout
+	country_event = {
+		id = brown.20
+		title = brown.20.t
+		desc = brown.20.d
+		picture = report_event_equipment
+		
+		fire_only_once = yes
+		is_triggered_only = yes
+		
+		trigger = {
+			tag = BRN
+		}
+
+		option = {
+			name = brown.20.a
+			add_manpower = -14
+			add_stability = -0.05
+		}
+	}
+
+	# APLA Failed Skirmish
+	country_event = {
+		id = brown.21
+		title = brown.21.t
+		desc = brown.21.d
+		picture = report_event_equipment
+		
+		fire_only_once = yes
+		is_triggered_only = yes
+		
+		trigger = {
+			tag = BRN
+		}
+
+		option = {
+			name = brown.21.a
+			set_temp_variable = { 
+				var = BRN_factionalism_var_temp
+				value = 5
+			}
+			BRN_add_factionalism = yes
+		}
+	}
+
+	# APLA Successful Skirmish
+	country_event = {
+		id = brown.22
+		title = brown.22.t
+		desc = brown.22.d
+		picture = report_event_equipment
+		
+		fire_only_once = yes
+		is_triggered_only = yes
+		
+		trigger = {
+			tag = BRN
+		}
+
+		option = {
+			name = brown.22.a
+			add_equipment_to_stockpile = { 
+				type = infantry_equipment_1 
+				amount = 300 
+				producer = APA 
+			}
+			add_equipment_to_stockpile = { 
+				type = anti_tank_equipment 
+				amount = 100 
+				producer = APA 
+			}
+			add_equipment_to_stockpile = { 
+				type = support_equipment 
+				amount = 50 producer = APA 
+			}
+		}
+	}
+	
+	# Bigotry in the EDLC
+	country_event = {
+		id = brown.23
+		title = brown.23.t
+		desc = brown.23.d
+		picture = report_event_equipment
+		
+		fire_only_once = yes
+		is_triggered_only = yes
+		
+		trigger = {
+			tag = BRN
+		}
+
+		option = {
+			name = brown.23.a
+
+		}
+	}
+	
+	# Ask APLA for Protection
+	country_event = {
+		id = brown.24
+		title = brown.24.t
+		desc = brown.24.d
+		picture = report_event_equipment
+		
+		fire_only_once = yes
+		is_triggered_only = yes
+		
+		trigger = {
+			tag = APA
+		}
+
+		option = {
+			name = brown.24.a
+			BRN = {
+				country_event = { id = brown.25 days = 5 }
+			}
+		}
+		option = {
+			name = brown.24.b
+			puppet = BRN
+		}
+	}
+	
+	# Protection Granted
+	country_event = {
+		id = brown.25
+		title = brown.25.t
+		desc = brown.25.d
+		picture = report_event_equipment
+		
+		fire_only_once = yes
+		is_triggered_only = yes
+		
+		trigger = {
+			tag = BRN
+		}
+
+		option = {
+			name = brown.25.a
+		}
+	}
+	
+	# Threat Next Door
+	country_event = {
+		id = brown.26
+		title = brown.26.t
+		desc = brown.26.d
+		picture = report_event_equipment
+		
+		fire_only_once = yes
+		is_triggered_only = yes
+		
+		trigger = {
+			tag = BRN
+		}
+
+		option = {
+			name = brown.26.a
+			add_political_power = 75
+		}
+	}
+	
+	# Cartels Cross Over
+	country_event = {
+		id = brown.27
+		title = brown.27.t
+		desc = brown.27.d
+		picture = report_event_equipment
+		
+		fire_only_once = yes
+		is_triggered_only = yes
+		
+		trigger = {
+			tag = BSK
+		}
+
+		option = {
+			name = brown.27.a
+			load_oob = "BSK_cartels"
+		}
+	}

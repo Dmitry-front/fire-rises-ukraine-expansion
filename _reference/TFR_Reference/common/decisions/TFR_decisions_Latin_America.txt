@@ -1,0 +1,346 @@
+VEN_decisions_cat = {
+	VEN_form_wap = {
+		icon = generic_political_rally
+		fire_only_once = yes
+		available = {
+			original_tag = VEN
+			date > 2022.06.06
+		}
+		ai_will_do = {
+			base = 100
+		}
+		visible = {
+		}
+		remove_effect = {
+			news_event = { id = news.374 hours = 3 } 
+			add_ideas = VEN_world_anti_imperialist_platform_ven_idea
+		}
+		days_remove = 35
+		cost = 50
+	}
+	VEN_invite_ELN_into_wap = {
+		icon = generic_political_rally
+		fire_only_once = yes
+		available = {
+			original_tag = VEN
+			ELN = {
+				exists = yes
+			}
+			has_idea = VEN_world_anti_imperialist_platform_ven_idea
+		}
+		ai_will_do = {
+			base = 10
+		}
+		visible = {
+		}
+		remove_effect = {
+			ELN = {
+				add_ideas = VEN_world_anti_imperialist_platform_idea
+			}
+		}
+		days_remove = 25
+		cost = 50
+	}	
+	VEN_invite_NIC_into_wap = {
+		icon = generic_political_rally
+		fire_only_once = yes
+		available = {
+			original_tag = VEN
+			has_idea = VEN_world_anti_imperialist_platform_ven_idea
+			NIC = {
+				exists = yes
+				has_government = communist
+			}
+		}
+		ai_will_do = {
+			base = 10
+		}
+		visible = {
+		}
+		remove_effect = {
+			NIC = {
+				add_ideas = VEN_world_anti_imperialist_platform_idea
+			}
+		}
+		days_remove = 25
+		cost = 50
+	}		
+	VEN_invite_HON_into_wap = {
+		icon = generic_political_rally
+		fire_only_once = yes
+		available = {
+			original_tag = VEN
+			has_idea = VEN_world_anti_imperialist_platform_ven_idea
+			HON = {
+				exists = yes
+				has_government = libertarian_socialist
+			}
+		}
+		ai_will_do = {
+			base = 10
+		}
+		visible = {
+		}
+		remove_effect = {
+			HON = {
+				add_ideas = VEN_world_anti_imperialist_platform_idea
+			}
+		}
+		days_remove = 25
+		cost = 50
+	}	
+	VEN_invite_BOL_into_wap = {
+		icon = generic_political_rally
+		fire_only_once = yes
+		available = {
+			original_tag = VEN
+			has_idea = VEN_world_anti_imperialist_platform_ven_idea
+			BOL = {
+				exists = yes
+				OR = {
+					has_government = communist
+					has_government = social_democrat
+					has_government = libertarian_socialist
+				}
+			}
+		}
+		ai_will_do = {
+			base = 10
+		}
+		visible = {
+		}
+		remove_effect = {
+			BOL = {
+				add_ideas = VEN_world_anti_imperialist_platform_idea
+			}
+		}
+		days_remove = 25
+		cost = 50
+	}
+	VEN_invite_CUB_into_wap = {
+		icon = generic_political_rally
+		fire_only_once = yes
+		available = {
+			original_tag = VEN
+			has_idea = VEN_world_anti_imperialist_platform_ven_idea
+			CUB = {
+				exists = yes
+				OR = {
+					has_government = communist
+					has_government = social_democrat
+					has_government = libertarian_socialist
+				}
+			}
+		}
+		ai_will_do = {
+			base = 50
+		}
+		visible = {
+		}
+		remove_effect = {
+			CUB = {
+				add_ideas = VEN_world_anti_imperialist_platform_idea
+			}
+		}
+		days_remove = 25
+		cost = 50
+	}
+	VEN_invite_APA_into_wap = {
+		icon = generic_political_rally
+		fire_only_once = yes
+		available = {
+			original_tag = VEN
+			has_idea = VEN_world_anti_imperialist_platform_ven_idea
+			APA = {
+				exists = yes
+				OR = {
+					has_government = communist
+					has_government = totalitarian_socialist
+					has_government = social_democrat
+					has_government = libertarian_socialist
+				}
+			}
+		}
+		ai_will_do = {
+			base = 100
+		}
+		visible = {
+		}
+		remove_effect = {
+			APA = {
+				country_event = {
+					id = apla.89 
+					hours = 3 
+				}
+			}
+		}
+		days_remove = 25
+		cost = 100
+	}
+	VEN_invite_EFF_into_wap = {
+		icon = generic_political_rally
+		fire_only_once = yes
+		available = {
+			original_tag = VEN
+			has_idea = VEN_world_anti_imperialist_platform_ven_idea
+			EFF = {
+				exists = yes
+				OR = {
+					has_government = communist
+					has_government = totalitarian_socialist
+					has_government = social_democrat
+					has_government = libertarian_socialist
+				}
+			}
+		}
+		ai_will_do = {
+			base = 10
+		}
+		visible = {
+		}
+		remove_effect = {
+			EFF = {
+				add_ideas = VEN_world_anti_imperialist_platform_idea
+			}
+		}
+		days_remove = 25
+		cost = 50
+	}
+	VEN_invite_PRU_into_wap = {
+		icon = generic_political_rally
+		fire_only_once = yes
+		available = {
+			original_tag = VEN
+			has_idea = VEN_world_anti_imperialist_platform_ven_idea
+			PRU = {
+				exists = yes
+				OR = {
+					has_government = communist
+				}
+			}
+		}
+		ai_will_do = {
+			base = 10
+		}
+		visible = {
+		}
+		remove_effect = {
+			PRU = {
+				add_ideas = VEN_world_anti_imperialist_platform_idea
+			}
+		}
+		days_remove = 25
+		cost = 50
+	}	
+	VEN_proxy_war_with_ecu = {
+		icon = generic_political_rally
+		fire_only_once = yes
+		available = {
+			original_tag = VEN
+			has_idea = VEN_world_anti_imperialist_platform_ven_idea
+			ELN = {
+				exists = yes
+				OR = {
+					has_government = communist
+				}
+				has_war = no
+				has_idea = VEN_world_anti_imperialist_platform_idea
+			}
+			ECU = {
+				NOT = {
+					has_government = social_democrat
+				}
+			}
+		}
+		ai_will_do = {
+			base = 1
+		}
+		visible = {
+			always = no
+		}
+		remove_effect = {
+			ELN = {
+				declare_war_on = {
+					target = ECU
+					type = annex_everything
+				}
+			}
+			ECU = {
+				create_unit = {
+					division = "name = \"Jungle Brigade\" division_template = \"Jungle Brigade\" start_experience_factor = 0.1"
+					owner = ECU
+				}		
+				create_unit = {
+					division = "name = \"Jungle Brigade\" division_template = \"Jungle Brigade\" start_experience_factor = 0.1"
+					owner = ECU
+				}
+			}
+		}
+		days_remove = 75
+		cost = 100
+	}
+	VEN_destory_cia_opposition = {
+		icon = generic_political_rally
+		fire_only_once = yes
+		available = {
+			original_tag = VEN
+			date > 2022.01.01
+		}
+		ai_will_do = {
+			base = 100
+		}
+		visible = {
+		}
+		remove_effect = {
+			remove_ideas = VEN_cia_backed_opposition
+			add_popularity = {
+				ideology = communist
+				popularity = 0.1
+			}
+			add_ideas = VEN_maduro_popularity_solidified_idea
+			increase_society = yes
+		}
+		days_remove = 70
+		cost = 100
+	}	
+	VEN_begin_economic_rejuvination = {
+		icon = generic_political_rally
+		fire_only_once = yes
+		available = {
+			original_tag = VEN
+			date > 2023.01.01
+		}
+		ai_will_do = {
+			base = 100
+		}
+		visible = {
+		}
+		remove_effect = {
+			remove_ideas = VEN_economy_under_sanctions_idea
+			add_ideas = VEN_economic_chavismo_idea
+			increase_poverty = yes
+		}
+		days_remove = 100
+		cost = 100
+	}
+	VEN_venezuelian_army_revolutionary_forces_of_america = {
+		icon = generic_political_rally
+		fire_only_once = yes
+		available = {
+			original_tag = VEN
+			date > 2023.05.05
+		}
+		ai_will_do = {
+			base = 100
+		}
+		visible = {
+		}
+		remove_effect = {
+			add_ideas = VEN_venezuelian_bolivarian_army_idea
+			add_manpower = 250000
+			increase_military = yes
+		}
+		days_remove = 70
+		cost = 100
+	}
+}

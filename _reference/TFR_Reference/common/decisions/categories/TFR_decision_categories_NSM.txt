@@ -1,0 +1,183 @@
+NSM_balance_of_power_category = {
+	icon = GFX_decision_category_power_struggle
+	#scripted_gui = USC_balance_of_power_gui
+	allowed = {
+		tag = NSM
+	}
+}
+
+#NSM_managing_the_movement_category = {
+#	icon = generic_fascism
+#	picture = GFX_decision_cat_NSM_movement_infighting
+#	visible_when_empty = yes
+#	priority = 5
+#
+#	allowed = {
+#		original_tag = NSM
+#	}
+#	
+#	visible = {
+#		original_tag = NSM
+#	}
+#}
+
+NSM_Blood_Tribe_hidden_category = {
+	icon = generic_fascism
+	picture = GFX_decision_cat_NSM_movement_infighting
+	visible_when_empty = yes
+	priority = 6
+	allowed = {
+		tag = NSM
+	}
+	visible = {
+		has_completed_focus = NSM_new_millenium_nazism
+		has_power_balance = {
+			id = NSM_faction_balance
+		}
+	}
+}
+
+NSM_Building_Amerika_category = {
+	icon = generic_fascism
+	picture = GFX_decision_cat_NSM_movement_infighting
+	visible_when_empty = yes
+	priority = 4
+	allowed = {
+		tag = NSM
+	}
+	visible = {
+		has_completed_focus = NSM_americas_fuhrer
+	}
+}
+
+NSM_Writing_the_Salvation_Constitution_category = {
+	icon = generic_fascism
+	picture = GFX_decision_cat_NSM_movement_infighting
+	visible_when_empty = yes
+	priority = 4
+	allowed = {
+		tag = NSM
+	}
+	visible = {
+		has_completed_focus = NSM_racial_laws
+	}
+}
+
+NSM_The_Mexico_Situation_category = {
+	icon = generic_fascism
+	picture = GFX_decision_cat_NSM_movement_infighting
+	visible_when_empty = yes
+	priority = 4
+	allowed = {
+		tag = NSM
+	}
+	visible = {
+		or = {
+			has_completed_focus = NSM_convince_the_cartels
+			has_completed_focus = NSM_burn_it_all_down
+		}
+	}
+}
+
+NSM_The_New_American_War_Machine_category = {
+	icon = generic_fascism
+	picture = GFX_decision_cat_NSM_movement_infighting
+	visible_when_empty = yes
+	priority = 5
+	allowed = {
+		tag = NSM
+	}
+	visible = {
+		has_completed_focus = NSM_fuel_the_war_machine
+	}
+}
+
+NSM_Maintaining_Movement_strength_category = {
+	icon = generic_fascism
+	picture = GFX_decision_cat_NSM_movement_infighting
+	visible_when_empty = yes
+	priority = 4
+	allowed = {
+		tag = NSM
+	}
+	visible = {
+		has_completed_focus = NSM_new_millenium_nazism
+	}
+}
+
+NSM_the_rockwell_movement_category = {
+	icon = generic_fascism
+	picture = GFX_decision_cat_NSM_movement_infighting
+	visible_when_empty = yes
+	priority = 5
+	allowed = {
+		tag = NSM
+	}
+	visible = {
+		has_completed_focus = NSM_rockwell_rises
+	}
+}
+
+NSM_new_american_military_category = {
+	icon = generic_fascism
+	picture = GFX_decision_cat_NSM_movement_infighting
+	visible_when_empty = yes
+	priority = 5
+	allowed = {
+		original_tag = NSM
+	}
+	visible = {
+		has_completed_focus = NSM_Under_the_Gun
+	}
+}
+
+NSM_national_front_category = {
+	icon = NSM_national_front
+	visible_when_empty = yes
+	priority = 6
+	allowed = {
+		USA_is_nationalist_tag = yes
+	}
+	visible = {
+		NOT = {
+			has_global_flag = USA_american_civil_war_over_global
+		}
+		OR = {
+			NSM = {
+				is_in_faction = yes
+				is_faction_leader = yes
+			}
+			PTF = {
+				is_in_faction = yes
+				is_faction_leader = yes
+			}
+		}
+		is_in_faction = yes
+	}
+}
+
+NSM_new_american_economics_category = {
+	icon = generic_economy
+	picture = GFX_decision_cat_picture_NSM_industry_devlopment
+	visible_when_empty = yes
+	priority = 2
+	allowed = {
+		original_tag = NSM
+	}
+	visible = {
+		has_completed_focus = NSM_Man_the_Factories
+	}
+}
+
+NSM_ministry_of_patriotism_category = {
+	icon = generic_crisis
+	picture = GFX_decision_cat_picture_spr_the_inevitable_civil_war
+	visible_when_empty = yes
+	priority = 2
+	allowed = {
+		original_tag = NSM
+	}
+	visible = {
+		has_completed_focus = NSM_Form_the_Ministry_of_Patriotism
+	}
+}

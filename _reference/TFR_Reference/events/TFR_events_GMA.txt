@@ -1,0 +1,5040 @@
+###########################
+# GMAC Events
+###########################
+add_namespace = gma
+add_namespace = gma_news
+#Ted Kaczynski is caught on CCTV crossing border at night
+country_event = {
+	id = gma.1
+	title = gma.1.t
+	desc = gma.1.d
+	picture = GFX_CCTV_of_Ted
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = {
+		name = gma.1.a
+		add_stability = -0.01
+		USB = {
+			hidden_effect = {
+				country_event = {
+					id = gma.7
+					days = 7
+				}
+			}
+		}
+	}
+}
+
+#David van Deusen Assassinated
+country_event = {
+	id = gma.2
+	title = gma.2.t
+	desc = gma.2.d
+	picture = GFX_MIT
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = {
+		#Rest in Power 
+		name = gma.2.a
+		custom_effect_tooltip = GMA_David_van_Deusen_Died_tt
+		hidden_effect = {
+			retire_character = GMA_david_van_deusen_char
+		}
+	}
+}
+
+#The Articles are signed
+country_event = {
+	id = gma.3
+	title = gma.3.t
+	desc = gma.3.d
+	picture = GFX_Articles_of_Confederation
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = {
+		#You let the country fall into anarchy
+		name = gma.3.a
+		trigger = {
+			NOT = {
+				has_country_flag = GMA_Art_Confed_Perp_Union_flag
+			}
+		}
+		add_stability = -0.25
+		add_war_support = -0.25
+	}
+	option = {
+		#Perpetual Union
+		name = gma.3.b
+		trigger = {
+			has_country_flag = GMA_Art_Confed_Perp_Union_flag
+			NOT = {
+				has_country_flag = GMA_Interstate_protectionism_flag
+			}
+		}
+		add_ideas = GMA_Articles_of_Confederation_1_idea
+	}
+	option = {
+		#Perpetual Union and Protectionism
+		name = gma.3.c
+		trigger = {
+			has_country_flag = GMA_Art_Confed_Perp_Union_flag
+			has_country_flag = GMA_Interstate_protectionism_flag
+			NOT = {
+				has_country_flag = GMA_Friendly_Rivalries_flag
+			}
+		}
+		add_ideas = GMA_Articles_of_Confederation_2_idea
+	}
+	option = {
+		#Perpetual Union, State Friendly Rivalries and Protectionism
+		name = gma.3.e
+		trigger = {
+			has_country_flag = GMA_Art_Confed_Perp_Union_flag
+			has_country_flag = GMA_Interstate_protectionism_flag
+			has_country_flag = GMA_Friendly_Rivalries_flag
+			NOT = {
+				has_country_flag = GMA_Consolidated_FP_flag
+			}
+		}
+		add_ideas = GMA_Articles_of_Confederation_3_idea
+	}
+	option = {
+		#Perpetual Union, State Friendly Rivalries, foreign policy and Protectionism
+		name = gma.3.f
+		trigger = {
+			has_country_flag = GMA_Art_Confed_Perp_Union_flag
+			has_country_flag = GMA_Interstate_protectionism_flag
+			has_country_flag = GMA_Friendly_Rivalries_flag
+			has_country_flag = GMA_Consolidated_FP_flag
+			NOT = {
+				has_country_flag = GMA_Exec_Branch_flag
+			}
+		}
+		add_ideas = GMA_Articles_of_Confederation_4_idea
+	}
+	option = {
+		#the full 9 yards
+		name = gma.3.g
+		trigger = {
+			has_country_flag = GMA_Art_Confed_Perp_Union_flag
+			has_country_flag = GMA_Interstate_protectionism_flag
+			has_country_flag = GMA_Friendly_Rivalries_flag
+			has_country_flag = GMA_Consolidated_FP_flag
+			has_country_flag = GMA_Exec_Branch_flag
+		}
+		add_ideas = GMA_Articles_of_Confederation_4_idea
+		add_country_leader_trait = hos_President_of_Congress
+	}
+}
+
+#Meeting with local farmers
+country_event = {
+	id = gma.4
+	title = gma.4.t
+	desc = gma.4.d
+	picture = GFX_Pennsylvania
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = {
+		name = gma.4.a
+	}
+}
+
+#Recruiting Ashton Knight
+country_event = {
+	id = gma.5
+	title = gma.5.t
+	desc = gma.5.d
+	picture = GFX_The_Prodigal_Son
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = {
+		name = gma.5.a
+		add_country_leader_role = {
+			character = GMA_Ashton_Knight_Char
+			corps_commander = {
+				traits = {
+					trait_GMA_Environmentalist
+				}
+				skill = 1
+				attack_skill = 1
+				defense_skill = 1
+				planning_skill = 1
+				logistics_skill = 1
+			}
+		}
+		add_ideas = GMA_Ashton_Knight_IntelM
+	}
+}
+
+#Crossing into Biden's Territory
+country_event = {
+	id = gma.6
+	title = gma.6.t
+	desc = gma.6.d
+	picture = GFX_Pennsylvania
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = {
+		name = gma.6.a
+		declare_war_on = {
+			target = USB
+			type = annex_everything
+		}
+		add_war_support = 0.15
+	}
+}
+
+#Crisis on the Pennsylvanian Border
+country_event = {
+	id = gma.7
+	title = gma.7.t
+	desc = gma.7.d
+	picture = GFX_Pennsylvania
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = {
+		name = gma.7.a
+		add_manpower = -28
+		GMA = {
+			add_manpower = -3
+			hidden_effect = {
+				country_event = {
+					id = gma.11
+					days = 10
+				}
+			}
+		}
+	}
+}
+
+#Ted K broken out of prison
+country_event = {
+	id = gma.9
+	title = gma.9.t
+	desc = gma.9.d
+	picture = GFX_Kaczynski
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = {
+		name = gma.9.a
+		hidden_effect = {
+			USC = {
+				country_event = {
+					id = gma.1
+					days = 10
+				}
+			}
+			GMA = {
+				country_event = {
+					id = gma.11
+					days = 30
+				}
+			}
+			if = {
+				limit = {
+					USC = {
+						exists = no
+					}
+				}
+				USB = {
+					country_event = {
+						id = gma.7
+						days = 20
+					}
+				}
+			}
+			if = {
+				limit = {
+					USC = {
+						exists = no
+					}
+					USB = {
+						exists = no
+					}
+				}
+			}
+		}
+	}
+}
+
+country_event = {
+	#EU division
+	id = gma.91
+	title = gma.91.t
+	desc = gma.91.d
+	picture = GFX_Euro_Environmentalist_Brigade
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = {
+		name = gma.91.a
+		set_nationality = {
+			target_country = GMA
+			character = FRA_Nicolas_Hulot_char
+		}
+		add_country_leader_role = {
+			character = FRA_Nicolas_Hulot_char
+			corps_commander = {
+				traits = {
+					trait_GMA_Environmentalist
+				}
+				skill = 1
+				attack_skill = 1
+				defense_skill = 1
+				planning_skill = 1
+				logistics_skill = 1
+			}
+		}
+		load_oob = "GMA_European_Division"
+	}
+}
+
+#GMA Captures Washington DC
+country_event = {
+	id = gma.10
+	title = gma.10.t
+	desc = gma.10.d
+	picture = GFX_anarchist1
+	fire_only_once = yes
+	is_triggered_only = yes
+	trigger = {
+		tag = GMA
+		GMA = {
+			controls_state = 931
+		}
+	}
+	option = {
+		name = gma.10.a
+	}
+}
+
+#Ted gets to Vermont
+country_event = {
+	id = gma.11
+	title = gma.11.t
+	desc = gma.11.d
+	picture = GFX_Kaczynski_Arrives
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = {
+		name = gma.11.a
+		add_country_leader_role = {
+			character = GMA_Ted_Kaczynski_char
+			promote_leader = GMA_Ted_Kaczynski_char
+			field_marshal = {
+				traits = {
+					trait_GMA_Environmentalist
+					old_guard
+					war_hero
+					aggressive_assaulter
+				}
+				skill = 3
+				attack_skill = 1
+				defense_skill = 1
+				planning_skill = 5
+				logistics_skill = 1
+			}
+			country_leader = {
+				ideology = neo_luddism
+				traits = {
+					GMA_Beacon_of_Neo_Ludditism
+				}
+				expire = "1.1.1.1"
+				id = -1
+			}
+		}
+		add_war_support = 0.05
+		add_stability = 0.05
+		add_popularity = {
+			ideology = nationalist
+			popularity = 0.08
+		}
+	}
+}
+
+#Ted shakes hands with AnPrims
+country_event = {
+	id = gma.12
+	title = gma.12.t
+	desc = gma.12.d
+	picture = GFX_anarchist1
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = {
+		name = gma.12.a
+	}
+}
+
+#Mandatory Drug Testing
+country_event = {
+	id = gma.13
+	title = gma.13.t
+	desc = gma.13.d
+	picture = GFX_anarchist1
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = {
+		name = gma.13.a
+	}
+	option = {
+		#
+		name = gma.13.b
+	}
+}
+
+#Harvard gone :)
+country_event = {
+	id = gma.14
+	title = gma.14.t
+	desc = gma.14.d
+	picture = GFX_anarchist2
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = {
+		name = gma.14.a
+		add_stability = -0.03
+		add_war_support = 0.03
+		add_political_power = 25
+	}
+}
+
+#
+country_event = {
+	id = gma.15
+	title = gma.15.t
+	desc = gma.15.d
+	picture = GFX_anarchist4
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = {
+		name = gma.15.a
+		add_war_support = 0.03
+	}
+}
+
+#GMA Takes Boston
+news_event = {
+	id = gma_news.1
+	title = gma_news.1.t
+	desc = gma_news.1.d
+	picture = GFX_war1
+	is_triggered_only = yes
+	major = yes
+	trigger = {
+		tag = GMA
+		GMA = {
+			controls_state = 357
+		}
+	}
+	option = {
+		name = gma_news.1.a
+		
+	}
+}
+
+#Declaration of New England Free Territory
+news_event = {
+	id = gma_news.2
+	title = gma_news.2.t
+	desc = gma_news.2.d
+	picture = GFX_anarchist3
+	is_triggered_only = yes
+	major = yes
+	option = {
+		name = gma_news.2.a
+		
+	}
+}
+
+#GMAC Wins Civil War
+news_event = {
+	id = gma_news.3
+	title = gma_news.3.t
+	desc = gma_news.3.d
+	picture = GFX_gmac_victory
+	is_triggered_only = yes
+	major = yes
+	trigger = {
+		always = no
+	}
+	option = {
+		name = gma_news.3.a
+		hidden_effect = {
+			if = {
+				limit = {
+					is_ai = no
+				}
+				set_country_flag = GMA_victory
+				sound_effect = TFR_se_gma_victory
+			}
+		}
+	}
+}
+
+#GMAC Takes NYC
+news_event = {
+	id = gma_news.4
+	title = gma_news.4.t
+	desc = gma_news.4.d
+	picture = GFX_war2
+	is_triggered_only = yes
+	major = yes
+	trigger = {
+		tag = GMA
+		GMA = {
+			controls_state = 358
+		}
+	}
+	option = {
+		name = gma_news.1.a
+	}
+}
+
+#GMAC takes Richmond
+news_event = {
+	id = gma_news.5
+	title = gma_news.5.t
+	desc = gma_news.5.d
+	picture = GFX_war3
+	is_triggered_only = yes
+	major = yes
+	trigger = {
+		tag = GMA
+		GMA = {
+			controls_state = 1070
+		}
+	}
+	option = {
+		name = gma_news.1.a
+	}
+}
+
+#Teds UN Speech
+news_event = {
+	id = gma_news.6
+	title = gma_news.6.t
+	desc = gma_news.6.d
+	picture = GFX_war3
+	is_triggered_only = yes
+	major = yes
+	option = {
+		name = gma_news.6.a
+	}
+}
+
+news_event = {
+	#Capture of Alaska
+	id = gma_news.7
+	title = gma_news.7.t
+	desc = gma_news.7.d
+	picture = GFX_war3
+	fire_only_once = yes
+	major = yes
+	trigger = {
+		tag = GMA
+		GMA = {
+			controls_state = 463
+		}
+	}
+	option = {
+		name = gma_news.7.a
+	}
+}
+
+news_event = {
+	#CoFAR victory
+	id = gma_news.8
+	title = gma_news.8.t
+	desc = gma_news.8.d
+	picture = GFX_war3
+	is_triggered_only = yes
+	major = yes
+	is_triggered_only = yes
+	option = {
+		name = gma_news.8.a
+	}
+}
+
+news_event = {
+	#Libertarian GMC victory
+	id = gma_news.9
+	title = gma_news.9.t
+	desc = gma_news.9.d
+	picture = GFX_war3
+	is_triggered_only = yes
+	major = yes
+	is_triggered_only = yes
+	option = {
+		name = gma_news.9.a
+	}
+}
+
+news_event = {
+	#PMC GMC victory
+	id = gma_news.10
+	title = gma_news.10.t
+	desc = gma_news.10.d
+	picture = GFX_war3
+	is_triggered_only = yes
+	major = yes
+	is_triggered_only = yes
+	option = {
+		name = gma_news.10.a
+	}
+}
+
+news_event = {
+	#Repub of America victory
+	id = gma_news.11
+	title = gma_news.11.t
+	desc = gma_news.11.d
+	picture = GFX_war3
+	is_triggered_only = yes
+	major = yes
+	is_triggered_only = yes
+	option = {
+		name = gma_news.11.a
+	}
+}
+
+news_event = {
+	#Ted K victory
+	id = gma_news.12
+	title = gma_news.12.t
+	desc = gma_news.12.d
+	picture = GFX_war3
+	is_triggered_only = yes
+	major = yes
+	is_triggered_only = yes
+	option = {
+		name = gma_news.12.a
+	}
+}
+
+news_event = {
+	#Ted K victory, Knight in charge
+	id = gma_news.13
+	title = gma_news.13.t
+	desc = gma_news.13.d
+	picture = GFX_war3
+	is_triggered_only = yes
+	major = yes
+	is_triggered_only = yes
+	option = {
+		name = gma_news.13.a
+	}
+}
+
+news_event = {
+	#Ted K victory, Zerzan in charge
+	id = gma_news.14
+	title = gma_news.14.t
+	desc = gma_news.14.d
+	picture = GFX_war3
+	is_triggered_only = yes
+	major = yes
+	is_triggered_only = yes
+	option = {
+		name = gma_news.14.a
+	}
+}
+
+news_event = {
+	#Ted K victory, Coronado in charge
+	id = gma_news.15
+	title = gma_news.15.t
+	desc = gma_news.15.d
+	picture = GFX_war3
+	is_triggered_only = yes
+	major = yes
+	is_triggered_only = yes
+	option = {
+		name = gma_news.15.a
+	}
+}
+
+news_event = {
+	#Ted K victory, Arrow in charge
+	id = gma_news.16
+	title = gma_news.16.t
+	desc = gma_news.16.d
+	picture = GFX_war3
+	is_triggered_only = yes
+	major = yes
+	is_triggered_only = yes
+	option = {
+		name = gma_news.16.a
+	}
+}
+
+news_event = {
+	#Simos in charge
+	id = gma_news.17
+	title = gma_news.17.t
+	desc = gma_news.17.d
+	picture = GFX_war3
+	is_triggered_only = yes
+	major = yes
+	is_triggered_only = yes
+	option = {
+		name = gma_news.17.a
+	}
+}
+
+#Popular Front Breaks Down
+news_event = {
+	id = gma.16
+	title = gma.16.t
+	desc = gma.16.d
+	picture = GFX_war3
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = {
+		name = gma.16.a
+	}
+	clr_country_flag = GMA_Association_Ministers
+}
+
+#Libertarians Rebel
+country_event = {
+	id = gma.17
+	title = gma.17.t
+	desc = gma.17.d
+	picture = GFX_Dont_Tread
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = {
+		name = gma.17.a
+		hidden_effect = {
+			if = {
+				limit = {
+					controls_state = 1077
+				}
+				1077 = {
+					add_core_of = FAA
+				}
+			}
+			if = {
+				limit = {
+					controls_state = 795
+				}
+				795 = {
+					add_core_of = FAA
+				}
+			}
+			if = {
+				limit = {
+					controls_state = 357
+				}
+				357 = {
+					add_core_of = FAA
+				}
+			}
+			if = {
+				limit = {
+					controls_state = 1115
+				}
+				1115 = {
+					add_core_of = FAA
+				}
+			}
+			if = {
+				limit = {
+					controls_state = 793
+				}
+				793 = {
+					add_core_of = FAA
+				}
+			}
+			if = {
+				limit = {
+					controls_state = 1079
+				}
+				1079 = {
+					add_core_of = FAA
+				}
+			}
+			if = {
+				limit = {
+					controls_state = 1114
+				}
+				1114 = {
+					add_core_of = FAA
+				}
+			}
+			if = {
+				limit = {
+					controls_state = 1118
+				}
+				1118 = {
+					add_core_of = FAA
+				}
+			}
+			set_cosmetic_tag = GMA_GMAC_cosmetic_tag
+			remove_ideas = GMA_anarchist_infighting_idea
+			set_popularities = {
+				totalitarian_socialist = 10
+				communist = 10
+				libertarian_socialist = 45
+				social_democrat = 0
+				social_liberal = 0
+				market_liberal = 0
+				conservative = 0
+				authoritarian_democrat = 0
+				nationalist = 35
+				fascist = 0
+				national_socialist = 0
+			}
+			release = FAA
+			FAA = {
+				load_focus_tree = {
+					tree = GMA
+				}
+				complete_national_focus = GMA_no_compromise_with_statists
+				complete_national_focus = GMA_Anti_Fascism_Focus
+				complete_national_focus = GMA_burden_of_atlas
+				complete_national_focus = GMA_crush_the_enemies_of_property
+				complete_national_focus = GMA_open_our_door_to_pmcs
+				declare_war_on = {
+					target = GMA
+					type = annex_everything
+				}
+				declare_war_on = {
+					target = SAT
+					type = annex_everything
+				}
+				declare_war_on = {
+					target = NEG
+					type = annex_everything
+				}
+				declare_war_on = {
+					target = GMB
+					type = annex_everything
+				}
+				declare_war_on = {
+					target = VER
+					type = annex_everything
+				}
+				declare_war_on = {
+					target = PTF
+					type = annex_everything
+				}
+				declare_war_on = {
+					target = NCY
+					type = annex_everything
+				}
+				declare_war_on = {
+					target = WUR
+					type = annex_everything
+				}
+				declare_war_on = {
+					target = NYP
+					type = annex_everything
+				}
+				declare_war_on = {
+					target = ATP
+					type = annex_everything
+				}
+				declare_war_on = {
+					target = JDL
+					type = annex_everything
+				}
+				add_ideas = {
+					GMA_Cody_Wilson_HM
+					GMA_daniel_banyai_FM
+					GMA_jeffrey_tucker_EM
+					GMA_Christian_Yingling_IM
+					GMA_Mike_Dunn_IntelM
+				}
+			}
+			GMA = {
+				set_nationality = {
+					target_country = FAA
+					character = GMA_Daniel_Banyai_char
+				}
+				set_nationality = {
+					target_country = FAA
+					character = GMA_Carla_Gericke_char
+				}
+				set_nationality = {
+					target_country = FAA
+					character = GMA_Cody_Wilson_char
+				}
+				set_nationality = {
+					target_country = FAA
+					character = GMA_Christian_Yingling_char
+				}
+				set_nationality = {
+					target_country = FAA
+					character = GMA_Mike_Dunn_char
+				}
+				set_nationality = {
+					target_country = FAA
+					character = GMA_Alexander_Booth_char
+				}
+				set_nationality = {
+					target_country = FAA
+					character = GMA_Steven_Carrillo_char
+				}
+				remove_ideas = {
+					GMA_Cody_Wilson_HM
+					GMA_vermin_supreme_HM
+					GMA_Carla_Gericke_HM
+					GMA_daniel_banyai_FM
+					GMA_jeffrey_tucker_EM
+					GMA_Christian_Yingling_IM
+					GMA_Mike_Dunn_IntelM
+				}
+				add_ideas = {
+					GMA_John_Carico_HM
+					GMA_Daniel_McGowan_FM
+					GMA_Gage_Halupowski_EM
+					GMA_Rod_Coronado_IM
+					GMA_Margaret_Channon_IntelM
+				}
+			}
+			FAA = {
+				promote_character = GMA_Carla_Gericke_char
+			}
+		}
+	}
+}
+
+country_event = {
+	id = gma.18
+	title = gma.18.t
+	desc = gma.18.d
+	picture = GFX_Anarchist_Revolt
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = {
+		name = gma.18.a
+		hidden_effect = {
+			if = {
+				limit = {
+					controls_state = 1078
+				}
+				1078 = {
+					add_core_of = AOF
+				}
+			}
+			if = {
+				limit = {
+					controls_state = 1116
+				}
+				1116 = {
+					add_core_of = AOF
+				}
+			}
+			if = {
+				limit = {
+					controls_state = 918
+				}
+				918 = {
+					add_core_of = AOF
+				}
+			}
+			if = {
+				limit = {
+					controls_state = 358
+				}
+				358 = {
+					add_core_of = AOF
+				}
+			}
+			if = {
+				limit = {
+					controls_state = 1258
+				}
+				1258 = {
+					add_core_of = AOF
+				}
+			}
+			if = {
+				limit = {
+					controls_state = 1117
+				}
+				1117 = {
+					add_core_of = AOF
+				}
+			}
+			if = {
+				limit = {
+					controls_state = 792
+				}
+				792 = {
+					add_core_of = AOF
+				}
+			}
+			remove_ideas = GMA_anarchist_infighting_idea
+			set_politics = {
+				ruling_party = market_liberal
+				elections_allowed = no
+				last_election = "1935.12.17"
+				election_frequency = 48
+			}
+			set_cosmetic_tag = GMA_Sons_of_Libertycosmetic_tag
+			set_popularities = {
+				totalitarian_socialist = 0
+				communist = 0
+				libertarian_socialist = 0
+				social_democrat = 0
+				social_liberal = 0
+				market_liberal = 55
+				conservative = 25
+				authoritarian_democrat = 20
+				nationalist = 0
+				fascist = 0
+				national_socialist = 0
+			}
+			release = AOF
+			AOF = {
+				load_focus_tree = {
+					tree = GMA
+				}
+				complete_national_focus = GMA_no_compromise_with_statists
+				complete_national_focus = GMA_Anti_Capitalism_Focus
+				complete_national_focus = GMA_burden_of_gaia
+				complete_national_focus = GMA_invite_ELF_veterans
+				complete_national_focus = GMA_destroy_the_heirarchal_capitalists
+				declare_war_on = {
+					target = GMA
+					type = annex_everything
+				}
+				declare_war_on = {
+					target = JDL
+					type = annex_everything
+				}
+				declare_war_on = {
+					target = SAT
+					type = annex_everything
+				}
+				declare_war_on = {
+					target = NEG
+					type = annex_everything
+				}
+				declare_war_on = {
+					target = GMB
+					type = annex_everything
+				}
+				declare_war_on = {
+					target = VER
+					type = annex_everything
+				}
+				declare_war_on = {
+					target = PTF
+					type = annex_everything
+				}
+				declare_war_on = {
+					target = NCY
+					type = annex_everything
+				}
+				declare_war_on = {
+					target = WUR
+					type = annex_everything
+				}
+				declare_war_on = {
+					target = NYP
+					type = annex_everything
+				}
+				declare_war_on = {
+					target = ATP
+					type = annex_everything
+				}
+				add_ideas = {
+					GMA_John_Carico_HM
+					GMA_Daniel_McGowan_FM
+					GMA_Gage_Halupowski_EM
+					GMA_Rod_Coronado_IM
+					GMA_Margaret_Channon_IntelM
+				}
+			}
+			GMA = {
+				set_nationality = {
+					target_country = AOF
+					character = GMA_Rod_Coronado_char
+				}
+				set_nationality = {
+					target_country = AOF
+					character = GMA_david_van_deusen_char
+				}
+				set_nationality = {
+					target_country = AOF
+					character = GMA_Tre_Arrow_char
+				}
+				set_nationality = {
+					target_country = AOF
+					character = GMA_Daniel_McGowan_char
+				}
+				set_nationality = {
+					target_country = AOF
+					character = GMA_Gage_Halupowski_char
+				}
+				set_nationality = {
+					target_country = AOF
+					character = GMA_John_Carico_char
+				}
+				set_nationality = {
+					target_country = AOF
+					character = GMA_Margaret_Channon_char
+				}
+				GMA_Matthew_Banta_char = {
+					remove_trait = {
+						trait = trait_GMA_Left_Anarchist
+					}
+				}
+				remove_ideas = {
+					GMA_John_Carico_HM
+					GMA_Daniel_McGowan_FM
+					GMA_Gage_Halupowski_EM
+					GMA_Rod_Coronado_IM
+					GMA_Margaret_Channon_IntelM
+				}
+				add_ideas = {
+					GMA_Cody_Wilson_HM
+					GMA_daniel_banyai_FM
+					GMA_jeffrey_tucker_EM
+					GMA_Christian_Yingling_IM
+					GMA_Mike_Dunn_IntelM
+				}
+			}
+			AOF = {
+				promote_character = GMA_david_van_deusen_char
+			}
+		}
+	}
+}
+
+# Teddy K Coup
+country_event = {
+	id = gma.19
+	title = gma.19.t
+	desc = gma.19.d
+	picture = GFX_Vanguardist_Coup
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = {
+		name = gma.19.a
+		add_popularity = {
+			ideology = nationalist
+			popularity = 0.25
+		}
+		set_country_flag = GMA_TH_Kaczynski_FT
+		focus_unlock = yes
+		set_politics = {
+			ruling_party = nationalist
+			elections_allowed = no
+			last_election = "1935.12.17"
+			election_frequency = 48
+		}
+		remove_ideas = {
+			GMA_John_Carico_HM
+			GMA_Gage_Halupowski_EM
+			GMA_Rod_Coronado_IM
+			GMA_Margaret_Channon_IntelM
+		}
+		add_ideas = {
+			GMA_Rebecca_Rubin_HM
+			GMA_Darren_Thurston_EM
+			GMA_Lacey_Phillabaum_IM
+		}
+	}
+}
+
+# Solarpunk GMAC
+country_event = {
+	id = gma.20
+	title = gma.20.t
+	desc = gma.20.d
+	picture = GFX_Solarpunk
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = {
+		name = gma.19.a
+	}
+}
+
+country_event = {
+	id = gma.21
+	title = gma.21.t
+	desc = gma.21.d
+	picture = GFX_Generic_Border_Victory
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = {
+		name = gma.21.a
+		trigger = {
+			has_completed_focus = GMA_destroy_the_heirarchal_capitalists
+		}
+		country_event = {
+			id = gma.17
+			days = 1
+		}
+		set_country_flag = GMA_Association_Collapsed
+		clr_country_flag = GMA_Association_Category_FLAG
+	}
+	option = {
+		name = gma.21.b
+		trigger = {
+			has_completed_focus = GMA_crush_the_enemies_of_property
+		}
+		country_event = {
+			id = gma.18
+			days = 1
+		}
+		set_country_flag = GMA_Association_Collapsed
+		clr_country_flag = GMA_Association_Category_FLAG
+	}
+}
+
+country_event = {
+	#Buffalo annexation - Buffalo Response
+	id = gma.22
+	title = gma.22.t
+	desc = gma.22.d
+	picture = GFX_anarchist1
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = {
+		name = gma.22.a		#join GMAC
+		ai_chance = {
+			base = 99			#
+		}
+		custom_effect_tooltip = GMA_ANTifA_Annexation_tt
+		GMA = {
+			country_event = {
+				id = gma.23
+				days = 1
+			}
+		}
+	}
+}
+
+country_event = {
+	#Buffalo says yes
+	id = gma.23
+	title = gma.23.t
+	desc = gma.23.d
+	picture = GFX_anarchist1
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = {
+		name = gma.23.a		#Oh cool thanks
+		ai_chance = {
+			base = 100
+		}
+		GMA = {
+			annex_country = {
+				target = ATP
+				transfer_troops = yes
+			}
+			set_temp_variable = {
+				var = legit_var_temp
+				value = 0.1
+			}
+			add_legit = yes
+			add_popularity = {
+				ideology = libertarian_socialist
+				popularity = 0.1
+			}
+			add_days_mission_timeout = {
+				mission = GMA_The_Faltering_Alliance
+				days = -10
+			}
+		}
+	}
+}
+
+country_event = {
+	#Buffalo says no
+	id = gma.24
+	title = gma.24.t
+	desc = gma.24.d
+	picture = GFX_anarchist1
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = {
+		name = gma.24.a		#Well fuck you too
+		ai_chance = {
+			base = 100			#
+		}
+		declare_war_on = {
+			target = ATP
+			type = annex_everything
+		}
+	}
+}
+
+country_event = {
+	#NYPD annexation - NYPD Response
+	id = gma.25
+	title = gma.25.t
+	desc = gma.25.d
+	picture = GFX_NYPD1
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = {
+		name = gma.25.a		#join GMAC
+		ai_chance = {
+			base = 99			#
+		}
+		custom_effect_tooltip = GMA_NYPD_Annexation_tt
+		GMA = {
+			country_event = {
+				id = gma.26
+				days = 1
+			}
+		}
+	}
+}
+
+country_event = {
+	#NYPD says yes
+	id = gma.26
+	title = gma.26.t
+	desc = gma.26.d
+	picture = GFX_NYPD1
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = {
+		name = gma.26.a		#Oh cool thanks
+		ai_chance = {
+			base = 100
+		}
+		NYP = {
+			set_nationality = {
+				target_country = GMA
+				character = NYP_Dermont_Shea
+			}
+		}
+		GMA = {
+			annex_country = {
+				target = NYP
+				transfer_troops = yes
+			}
+			set_temp_variable = {
+				var = legit_var_temp
+				value = 0.1
+			}
+			add_legit = yes
+			add_popularity = {
+				ideology = conservative
+				popularity = 0.04
+			}
+			add_popularity = {
+				ideology = authoritarian_democrat
+				popularity = 0.02
+			}
+			add_popularity = {
+				ideology = market_liberal
+				popularity = 0.04
+			}
+			add_days_mission_timeout = {
+				mission = GMA_The_Faltering_Alliance
+				days = -10
+			}
+		}
+	}
+}
+
+country_event = {
+	#NYPD says no
+	id = gma.27
+	title = gma.27.t
+	desc = gma.27.d
+	picture = GFX_NYPD1
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = {
+		name = gma.27.a		#Well fuck you too
+		ai_chance = {
+			base = 100			#
+		}
+		declare_war_on = {
+			target = NYP
+			type = annex_everything
+		}
+	}
+}
+
+country_event = {
+	#college Student witnesses Mass Blood Eagleing of Pedophiles
+	id = gma.28
+	title = gma.28.t
+	desc = gma.28.d
+	picture = GFX_Boogaloo_Hanging
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = {
+		name = gma.28.a		#They deserved it
+		ai_chance = {
+			base = 100			#
+		}
+	}
+}
+
+country_event = {
+	#soldier watches as his brother, an undercover Fed is hung from a lamppost by his comrades
+	id = gma.29
+	title = gma.29.t
+	desc = gma.29.d
+	picture = GFX_Boogaloo_Hanging
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = {
+		name = gma.29.a		#I know I was never the favorite
+		ai_chance = {
+			base = 100			#
+		}
+	}
+}
+
+country_event = {
+	#public execution of David van Deusen
+	id = gma.30
+	title = gma.30.t
+	desc = gma.30.d
+	picture = GFX_Montpelier_Rainy
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = {
+		name = gma.30.a		#Suck it Leftie 
+		ai_chance = {
+			base = 100			#
+		}
+	}
+}
+
+country_event = {
+	#Silence on the homefront
+	id = gma.31
+	title = gma.31.t
+	desc = gma.31.d
+	picture = GFX_Pennsylvania
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = {
+		name = gma.31.a		#Long Live Liberty
+		ai_chance = {
+			base = 100			#
+		}
+		add_stability = 0.05
+	}
+}
+
+country_event = {
+	#Teacher is given new anti-democracy curriculum
+	id = gma.32
+	title = gma.32.t
+	desc = gma.32.d
+	picture = GFX_war3
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = {
+		name = gma.32.a		#So the New Revolution is like the Old one?
+		ai_chance = {
+			base = 100			#
+		}
+	}
+}
+
+country_event = {
+	#First meeting of the New Continental Congress
+	id = gma.33
+	title = gma.33.t
+	desc = gma.33.d
+	picture = GFX_Continental_Congress
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = {
+		name = gma.33.a		#
+		ai_chance = {
+			base = 100			#
+		}
+		country_event = {
+			#Federalization of the Military
+			id = gma.34
+			days = 1
+		}
+		add_political_power = 25
+	}
+}
+
+country_event = {
+	#Federalization of the Military
+	id = gma.34
+	title = gma.34.t
+	desc = gma.34.d
+	picture = GFX_miltia2
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = {
+		name = gma.34.a		#One American Military
+		ai_chance = {
+			base = 25			#
+		}
+		add_ideas = GMA_Military_Federalization_idea
+		country_event = {
+			#Federalization of the Government
+			id = gma.35
+			days = 1
+		}
+		add_popularity = {
+			ideology = social_democrat
+			popularity = 0.12
+		}
+		add_popularity = {
+			ideology = social_liberal
+			popularity = 0.06
+		}
+	}
+	option = {
+		name = gma.34.b		#A Military of Militias
+		ai_chance = {
+			base = 75			#
+		}
+		add_ideas = GMA_Local_Militaries_idea
+		country_event = {
+			#Federalization of the Government
+			id = gma.35
+			days = 1
+		}
+	}
+}
+
+country_event = {
+	#Federalization of the Government
+	id = gma.35
+	title = gma.35.t
+	desc = gma.35.d
+	picture = GFX_Monty_Python_Reference
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = {
+		name = gma.35.a		#Let the Paulists speak
+		ai_chance = {
+			base = 50			#
+		}
+		set_country_flag = GMA_Supported_Initial_Federalization_flag
+		add_popularity = {
+			ideology = conservative
+			popularity = 0.1
+		}
+		country_event = {
+			#Gary Johnson demands government crackdown on Boogaloo extremists
+			id = gma.36
+			days = 1
+		}
+	}
+	option = {
+		name = gma.35.b		#Let the Radicals speak
+		ai_chance = {
+			base = 50			#
+		}
+		set_country_flag = GMA_Shot_Down_Initial_Federalization_flag
+		if = {
+			limit = {
+				NOT = {
+					has_character = GMA_John_McAfee_char
+				}
+			}
+			country_event = {
+				#Spike Cohen demands Government Promise of Minarchist Ideals
+				id = gma.372
+				days = 1
+			}
+		}
+		if = {
+			limit = {
+				has_character = GMA_John_McAfee_char
+			}
+			country_event = {
+				#John McAffee demands Government Promise of Minarchist Ideals
+				id = gma.37
+				days = 1
+			}
+		}
+	}
+}
+
+country_event = {
+	#Gary Johnson demands government crackdown on Boogaloo extremists
+	id = gma.36
+	title = gma.36.t
+	desc = gma.36.d
+	picture = GFX_Gary_Johnson_Speaks
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = {
+		name = gma.36.a		#Boogaloo Vanguard is formed to stand against government overreach
+		ai_chance = {
+			base = 100			#
+		}
+		custom_effect_tooltip = GMA_Boog_BoP_tt
+		set_country_flag = GMA_First_Continental_Congress_Meeting_Concluded_flag
+		add_popularity = {
+			ideology = authoritarian_democrat
+			popularity = 0.15
+		}
+		custom_effect_tooltip = GMA_Elections_soon_tt
+		hidden_effect = {
+			country_event = {
+				#The Anarchist Thoughts on the proceedings of the New Continental Congress
+				id = gma.39
+				days = 14
+			}
+			country_event = {
+				#Inter-party Elections
+				id = gma.401
+				days = 60
+			}
+		}
+	}
+}
+
+country_event = {
+	#John McAffee demands Government Promise of Minarchist Ideals
+	id = gma.37
+	title = gma.37.t
+	desc = gma.37.d
+	picture = GFX_McAfee_Speaks
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = {
+		name = gma.37.a		#Boogaloo Vanguard is formed to stand for Minarchist Ideals
+		ai_chance = {
+			base = 100			#
+		}
+		set_country_flag = GMA_First_Continental_Congress_Meeting_Concluded_flag
+		add_popularity = {
+			ideology = authoritarian_democrat
+			popularity = 0.1
+		}
+		custom_effect_tooltip = GMA_Elections_soon_tt
+		hidden_effect = {
+			country_event = {
+				#The Socialist Thoughts on the proceedings of the New Continental Congress
+				id = gma.40
+				days = 14
+			}
+			country_event = {
+				#Inter-party Elections
+				id = gma.402
+				days = 60
+			}
+		}
+	}
+}
+
+country_event = {
+	#Spike Cohen demands Government Promise of Minarchist Ideals
+	id = gma.372
+	title = gma.372.t
+	desc = gma.372.d
+	picture = GFX_Cohen_Speaks
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = {
+		name = gma.372.a		#Boogaloo Vanguard is formed to stand for Minarchist Ideals
+		ai_chance = {
+			base = 100			#
+		}
+		set_country_flag = GMA_First_Continental_Congress_Meeting_Concluded_flag
+		add_popularity = {
+			ideology = authoritarian_democrat
+			popularity = 0.03
+		}
+		add_popularity = {
+			ideology = market_liberal
+			popularity = 0.07
+		}
+		custom_effect_tooltip = GMA_Libertarian_Elections_soon_tt
+		hidden_effect = {
+			country_event = {
+				#The Socialist Thoughts on the proceedings of the New Continental Congress
+				id = gma.40
+				days = 14
+			}
+			country_event = {
+				#Inter-party Elections
+				id = gma.403
+				days = 60
+			}
+		}
+	}
+}
+
+country_event = {
+	#Socialist Thought on the Proceedings of the Continental Congress - Government Denial of critical services
+	id = gma.40
+	title = gma.40.t
+	desc = gma.40.d
+	picture = GFX_war3
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = {
+		name = gma.40.a		#Starve and Cope
+		add_popularity = {
+			ideology = libertarian_socialist
+			popularity = 0.15
+		}
+	}
+}
+
+country_event = {
+	#Inter Party Elections - Gary Johnson
+	id = gma.401
+	title = gma.401.t
+	desc = gma.401.d
+	picture = GFX_war3
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = {
+		name = gma.401.a		#
+		add_popularity = {
+			ideology = conservative
+			popularity = -0.3
+		}
+		add_popularity = {
+			ideology = market_liberal
+			popularity = 0.3
+		}
+		promote_character = GMA_Gary_Johnson_char
+		set_country_flag = GMA_COFAR_Johnson_FT
+		focus_unlock = yes
+		add_country_leader_role = {
+			character = GMA_Gary_Johnson_char
+			promote_leader = yes
+			country_leader = {
+				ideology = classical_liberalism
+				traits = {
+					GMA_Credible_Alternative
+				}
+			}
+		}
+		add_country_leader_trait = hos_President_of_Congress
+	}
+}
+
+country_event = {
+	#Inter Party Elections - McAfee
+	id = gma.402
+	title = gma.402.t
+	desc = gma.402.d
+	picture = GFX_war3
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = {
+		name = gma.402.a		#Starve and Cope
+		promote_character = GMA_John_McAfee_char
+		set_country_flag = GMA_COFAR_McAfee_FT
+		focus_unlock = yes
+		add_country_leader_role = {
+			character = GMA_John_McAfee_char
+			promote_leader = yes
+			country_leader = {
+				ideology = right_anarchism
+				traits = {
+					GMA_Chaotic_but_Free
+				}
+			}
+		}
+		add_country_leader_trait = hos_President_of_Congress
+	}
+}
+
+country_event = {
+	#Inter Party Elections - Cohen
+	id = gma.403
+	title = gma.403.t
+	desc = gma.403.d
+	picture = GFX_war3
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = {
+		name = gma.403.a		#Starve and Cope
+		promote_character = GMA_Spike_Cohen_Char
+		set_country_flag = GMA_COFAR_McAfee_FT
+		focus_unlock = yes
+		add_country_leader_role = {
+			character = GMA_Spike_Cohen_Char
+			promote_leader = yes
+			country_leader = {
+				ideology = right_libertarianism
+				traits = {
+					GMA_Bazooka_Jew
+				}
+			}
+		}
+		add_country_leader_trait = hos_President_of_Congress
+	}
+}
+
+country_event = {
+	#Anarchist Thoughts on the Proceedings of the Continental Congress - Too much Government?
+	id = gma.39
+	title = gma.39.t
+	desc = gma.39.d
+	picture = GFX_war3
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = {
+		name = gma.39.a		#He has a point
+		add_popularity = {
+			ideology = libertarian_socialist
+			popularity = 0.1
+		}
+	}
+}
+
+country_event = {
+	#Mass Overdoseage causes hospital overflow
+	id = gma.38
+	title = gma.38.t
+	desc = gma.38.d
+	picture = GFX_war3
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = {
+		name = gma.38.a		#All is Gaias plan
+		add_ideas = GMA_Incapacitated_Infrastructure_idea
+		add_timed_idea = {
+			idea = GMA_Overflowing_Hospitals_idea
+			days = 35
+		}
+		hidden_effect = {
+			country_event = {
+				#Nationwide Riots
+				id = gma.381
+				days = 8
+			}
+		}
+	}
+}
+
+country_event = {
+	#Massive Nationwide Riots
+	id = gma.381
+	title = gma.381.t
+	desc = gma.381.d
+	picture = GFX_war3
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = {
+		name = gma.381.a		#We must find a cure for this insolence
+		add_ideas = GMA_Anti_Drug_Riots_idea
+		set_country_flag = GMA_Drug_Testing_flag
+		custom_effect_tooltip = GMA_Drug_Testing_tt
+		hidden_effect = {
+			country_event = {
+				#Riots get worse
+				id = gma.382
+				days = 24
+			}
+		}
+	}
+}
+
+country_event = {
+	#Riots Continue
+	id = gma.382
+	title = gma.382.t
+	desc = gma.382.d
+	picture = GFX_war3
+	is_triggered_only = yes
+	option = {
+		name = gma.382.a		#We must find a cure for this insolence
+		trigger = {
+			NOT = {
+				has_country_flag = GMA_Developed_Tranquility_flag
+			}
+		}
+		random_list = {
+			10 = {
+				add_stability = -0.05
+			}
+			10 = {
+				add_manpower = -100
+			}
+			10 = {
+				add_war_support = -0.05
+			}
+			10 = {
+				add_political_power = -40
+			}
+			10 = {
+				random_controlled_state = {
+					damage_building = {
+						type = infrastructure
+						damage = 1
+					}
+				}
+			}
+		}
+		hidden_effect = {
+			country_event = {
+				#Riots get worse
+				id = gma.382
+				days = 24
+			}
+		}
+	}
+	option = {
+		name = gma.382.b		#Force Distribution
+		trigger = {
+			has_country_flag = GMA_Developed_Tranquility_flag
+		}
+		country_event = {
+			#Riots slow
+			id = gma.383
+			days = 1
+		}
+	}
+}
+
+country_event = {
+	#Riots Slow
+	id = gma.383
+	title = gma.383.t
+	desc = gma.383.d
+	picture = GFX_war3
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = {
+		name = gma.383.a		#We must find a cure for this insolence
+		swap_ideas = {
+			remove_idea = GMA_Anti_Drug_Riots_idea
+			add_idea = GMA_Slowed_Anti_Drug_Riots_idea
+		}
+		hidden_effect = {
+			country_event = {
+				#Tranquility works
+				id = gma.384
+				days = 8
+			}
+			country_event = {
+				#Riots Stop completely
+				id = gma.385
+				days = 20
+			}
+		}
+	}
+}
+
+country_event = {
+	#Tranquility works
+	id = gma.384
+	title = gma.384.t
+	desc = gma.384.d
+	picture = GFX_war3
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = {
+		name = gma.384.a		#A Drug for every man
+		add_stability = 0.25
+		add_political_power = 150
+		remove_ideas = GMA_Incapacitated_Infrastructure_idea
+	}
+}
+
+country_event = {
+	#Riots stop
+	id = gma.385
+	title = gma.385.t
+	desc = gma.385.d
+	picture = GFX_war3
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = {
+		name = gma.385.a		#Finally
+		remove_ideas = GMA_Slowed_Anti_Drug_Riots_idea
+		add_stability = 0.05
+	}
+}
+
+country_event = {
+	#Tax Collectors are hung in Boston, protestors swiftly put down
+	id = gma.41
+	title = gma.41.t
+	desc = gma.41.d
+	picture = GFX_boston_massacre
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = {
+		name = gma.41.a		#Um... What the Jelq?
+		add_stability = -0.05
+		add_manpower = -16
+	}
+}
+
+country_event = {
+	#Establishment of Legal Political Parties
+	id = gma.42
+	title = gma.42.t
+	desc = gma.42.d
+	picture = GFX_war3
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = {
+		name = gma.42.a		#We have Freedom of Speech for a reason
+		custom_effect_tooltip = GMA_Parties_Organized_tt
+		add_popularity = {
+			ideology = social_liberal
+			popularity = 0.03
+		}
+		add_popularity = {
+			ideology = social_democrat
+			popularity = 0.03
+		}
+		add_popularity = {
+			ideology = totalitarian_socialist
+			popularity = 0.04
+		}
+		add_popularity = {
+			ideology = communist
+			popularity = 0.01
+		}
+		add_popularity = {
+			ideology = libertarian_socialist
+			popularity = 0.08
+		}
+		add_popularity = {
+			ideology = fascist
+			popularity = 0.04
+		}
+		add_popularity = {
+			ideology = national_socialist
+			popularity = 0.01
+		}
+		add_popularity = {
+			ideology = nationalist
+			popularity = 0.08
+		}
+		hidden_effect = {
+			set_party_name = {
+				ideology = totalitarian_socialist
+				long_name = GMA_CoFAR_totalitarian_socialist_long
+				name = GMA_CoFAR_totalitarian_socialist
+			}
+			set_party_name = {
+				ideology = communist
+				long_name = GMA_CoFAR_communist_long
+				name = GMA_CoFAR_communist
+			}
+			set_party_name = {
+				ideology = libertarian_socialist
+				long_name = GMA_CoFAR_libertarian_socialist_long
+				name = GMA_CoFAR_libertarian_socialist
+			}
+			set_party_name = {
+				ideology = social_democrat
+				long_name = GMA_CoFAR_social_democrat_long
+				name = GMA_CoFAR_social_democrat
+			}
+			set_party_name = {
+				ideology = social_liberal
+				long_name = GMA_CoFAR_social_liberal_long
+				name = GMA_CoFAR_social_liberal
+			}
+			set_party_name = {
+				ideology = market_liberal
+				long_name = GMA_CoFAR_market_liberal_long
+				name = GMA_CoFAR_market_liberal
+			}
+			set_party_name = {
+				ideology = conservative
+				long_name = GMA_CoFAR_conservative_long
+				name = GMA_CoFAR_conservative
+			}
+			set_party_name = {
+				ideology = authoritarian_democrat
+				long_name = GMA_CoFAR_authoritarian_democrat_long
+				name = GMA_CoFAR_authoritarian_democrat
+			}
+			set_party_name = {
+				ideology = nationalist
+				long_name = GMA_CoFAR_nationalist_long
+				name = GMA_CoFAR_nationalist
+			}
+			set_party_name = {
+				ideology = fascist
+				long_name = GMA_CoFAR_fascist_long
+				name = GMA_CoFAR_fascist
+			}
+			set_party_name = {
+				ideology = national_socialist
+				long_name = GMA_CoFAR_national_socialist_long
+				name = GMA_CoFAR_national_socialist
+			}
+			add_country_leader_role = {
+				character = GMA_Virgil_Goode_char
+				promote_leader = yes
+				country_leader = {
+					ideology = obliteration_of_the_self
+					expire = "1965.1.1.1"
+					traits = {
+						GMA_Neo_Constitutionalist
+					}
+				}
+			}
+			add_country_leader_role = {
+				character = GMA_Virgil_Goode_char
+				promote_leader = yes
+				country_leader = {
+					ideology = classical_fascism
+					expire = "2040.1.1"
+					traits = {
+						GMA_Neo_Constitutionalist
+					}
+				}
+			}
+			add_country_leader_role = {
+				character = GMA_Virgil_Goode_char
+				promote_leader = yes
+				country_leader = {
+					ideology = purification_administration
+					expire = "2040.1.1"
+					traits = {
+						GMA_Neo_Constitutionalist
+					}
+				}
+			}
+			add_country_leader_role = {
+				character = GMA_Virgil_Goode_char
+				promote_leader = yes
+				country_leader = {
+					ideology = ultra_conservatism
+					expire = "2040.1.1"
+					traits = {
+						GMA_Neo_Constitutionalist
+					}
+				}
+			}
+			add_country_leader_role = {
+				character = GMA_Tulsi_Gabbard_char
+				promote_leader = yes
+				country_leader = {
+					ideology = neoliberalism
+					expire = "2040.1.1"
+					traits = {
+						GMA_Hamiltonian_Federalist
+					}
+				}
+			}
+			add_country_leader_role = {
+				character = GMA_Tulsi_Gabbard_char
+				promote_leader = yes
+				country_leader = {
+					ideology = social_democracy
+					expire = "2040.1.1"
+					traits = {
+						GMA_Hamiltonian_Federalist
+					}
+				}
+			}
+			add_country_leader_role = {
+				character = GMA_Matthew_Banta_char
+				promote_leader = yes
+				country_leader = {
+					ideology = left_wing_junta
+					expire = "2040.1.1"
+					traits = {
+						GMA_GMAC_Defector
+					}
+				}
+			}
+			add_country_leader_role = {
+				character = GMA_Matthew_Banta_char
+				promote_leader = yes
+				country_leader = {
+					ideology = neo_socialism
+					expire = "2040.1.1"
+					traits = {
+						GMA_GMAC_Defector
+					}
+				}
+			}
+			add_country_leader_role = {
+				character = GMA_Matthew_Banta_char
+				promote_leader = yes
+				country_leader = {
+					ideology = reformist_socialism
+					expire = "2040.1.1"
+					traits = {
+						GMA_GMAC_Defector
+					}
+				}
+			}
+		}
+	}
+}
+
+country_event = {
+	#Growing Stability and Happiness in controlled territories
+	id = gma.43
+	title = gma.43.t
+	desc = gma.43.d
+	picture = GFX_war3
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = {
+		name = gma.43.a		#Well, good
+		add_stability = 0.1
+		add_political_power = 25
+		set_temp_variable = {
+			var = legit_var_temp
+			value = 0.05
+		}
+		add_legit = yes
+	}
+}
+
+country_event = {
+	#Foreign influence grows, but has its benefits
+	id = gma.44
+	title = gma.44.t
+	desc = gma.44.d
+	picture = GFX_war3
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = {
+		name = gma.44.a		#Well, good, i guess
+		add_ideas = GMA_Foreign_Investors_idea
+	}
+}
+
+country_event = {
+	#Oligarch Class Forming
+	id = gma.45
+	title = gma.45.t
+	desc = gma.45.d
+	picture = GFX_war3
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = {
+		name = gma.45.a		#This is what we fought against!
+		add_stability = -0.04
+		add_war_support = -0.06
+		add_ideas = GMA_Growing_Oligarch_Class_idea
+		hidden_effect = {
+			country_event = {
+				#Oligarch class solidified
+				id = gma.451
+				days = 300
+			}
+		}
+	}
+}
+
+country_event = {
+	#Oligarch Class Solidified
+	id = gma.451
+	title = gma.451.t
+	desc = gma.451.d
+	picture = GFX_war3
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = {
+		name = gma.451.a		#Oooo Money
+		swap_ideas = {
+			remove_idea = GMA_Growing_Oligarch_Class_idea
+			add_idea = GMA_Solidified_Oligarch_Class_idea
+		}
+	}
+}
+
+country_event = {
+	#Creation of a rural governments
+	id = gma.46
+	title = gma.46.t
+	desc = gma.46.d
+	picture = GFX_war3
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = {
+		name = gma.46.a		#
+		add_stability = 0.05
+		every_controlled_state = {
+			add_dynamic_modifier = {
+				modifier = GMA_Rural_Government
+			}
+		}
+	}
+}
+
+country_event = {
+	#Cody Wilson announces the Wilson Doctrine - Supporting a certain Mexican Cartel
+	id = gma.47
+	title = gma.47.t
+	desc = gma.47.d
+	picture = GFX_war3
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = {
+		name = gma.47.a		#Supporting Zetas
+		trigger = {
+			country_exists = ZET
+		}
+		add_equipment_to_stockpile = {
+			type = infantry_equipment
+			amount = -1000
+			producer = GMA
+		}
+		ZET = {
+			country_event = {
+				#Sons of Liberty Support
+				id = gma.471
+				days = 6
+			}
+		}
+	}
+	option = {
+		name = gma.47.b		#No Zetas - Supporting CJNG
+		trigger = {
+			NOT = {
+			}
+			country_exists = CDJ
+		}
+		add_equipment_to_stockpile = {
+			type = infantry_equipment
+			amount = -1000
+			producer = GMA
+		}
+		CDJ = {
+			country_event = {
+				#Sons of Liberty Support
+				id = gma.471
+				days = 6
+			}
+		}
+	}
+	option = {
+		name = gma.47.c		#No Zetas or CJNG - Supporting Sinaloa
+		trigger = {
+			NOT = {
+				country_exists = CDJ
+			}
+			country_exists = SIN
+		}
+		add_equipment_to_stockpile = {
+			type = infantry_equipment
+			amount = -1000
+			producer = GMA
+		}
+		SIN = {
+			country_event = {
+				#Sons of Liberty Support
+				id = gma.471
+				days = 6
+			}
+		}
+	}
+	option = {
+		name = gma.47.e		#No Cartels - Invasion of Mexico 
+		trigger = {
+			NOT = {
+				country_exists = CDJ
+				country_exists = SIN
+			}
+		}
+		create_wargoal = {
+			type = annex_everything
+			target = ZAP
+		}
+		create_wargoal = {
+			type = annex_everything
+			target = MEX
+		}
+		create_wargoal = {
+			type = annex_everything
+			target = GUC
+		}
+		ZAP = {
+			country_event = {
+				#Free Army Intervention
+				id = gma.472
+				days = 6
+			}
+		}
+		MEX = {
+			country_event = {
+				#Free Army Intervention
+				id = gma.472
+				days = 6
+			}
+		}
+		GUC = {
+			country_event = {
+				#Free Army Intervention
+				id = gma.472
+				days = 6
+			}
+		}
+	}
+}
+
+country_event = {
+	#Support from the Free Army of America
+	id = gma.471
+	title = gma.471.t
+	desc = gma.471.d
+	picture = GFX_war3
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = {
+		name = gma.471.a		#Recognize their claim to America in response
+		ai_chance = {
+			base = 80			#
+		}
+		trigger = {
+			is_in_faction = no
+		}
+		add_equipment_to_stockpile = {
+			type = infantry_equipment
+			amount = 1000
+			producer = GMA
+		}
+		add_stability = 0.05
+		add_political_power = 25
+		GMA = {
+			country_event = {
+				#Mexicans Recognized us
+				id = gma.473
+				days = 6
+			}
+			set_country_flag = GMA_Intervention_Continues_flag
+		}
+	}
+	option = {
+		name = gma.471.b		#Thanks
+		trigger = {
+			is_in_faction = no
+		}
+		add_equipment_to_stockpile = {
+			type = infantry_equipment
+			amount = 1000
+			producer = GMA
+		}
+		add_stability = 0.05
+		add_political_power = 25
+		GMA = {
+			set_country_flag = GMA_Intervention_Continues_flag
+		}
+		ai_chance = {
+			base = 20			#
+		}
+	}
+	option = {
+		name = gma.471.c		# We already have our friends Gringo
+		trigger = {
+			is_in_faction = yes
+		}
+		GMA = {
+			country_event = {
+				#Mexicans denied us
+				id = gma.474
+				days = 6
+			}
+			add_stability = -0.05
+			add_political_power = -25
+			add_country_leader_trait = hos_Failed_Diplomat
+			add_equipment_to_stockpile = {
+				type = infantry_equipment
+				amount = 1000
+				producer = GMA
+			}
+		}
+	}
+}
+
+country_event = {
+	#Free Army intervention in Mexico
+	id = gma.472
+	title = gma.472.t
+	desc = gma.472.d
+	picture = GFX_war3
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = {
+		name = gma.472.a		#Gringos Begone!
+		add_ideas = GMA_MEX_Second_American_Invasion
+		GMA = {
+			add_ideas = GMA_Second_Mexican_Intervention
+		}
+	}
+}
+
+country_event = {
+	#Mexicans Recognized Us
+	id = gma.473
+	title = gma.473.t
+	desc = gma.473.d
+	picture = GFX_war3
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = {
+		name = gma.473.a		#Thanks!
+		add_stability = 0.05
+		add_political_power = 25
+	}
+}
+
+country_event = {
+	#Mexicans Denied us
+	id = gma.474
+	title = gma.474.t
+	desc = gma.474.d
+	picture = GFX_war3
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = {
+		name = gma.474.a		#Fuck you too!
+		add_stability = -0.05
+		add_political_power = -25
+		set_country_flag = GMA_Isolated_out_of_Mexico_flag
+	}
+}
+
+country_event = {
+	#Trial of Gage Halupowski
+	id = gma.49
+	title = gma.49.t
+	desc = gma.49.d
+	picture = GFX_CAC_visit_new_york_city
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = {
+		name = gma.49.a
+		custom_effect_tooltip = GMA_Halupowski_Execution_tt
+		hidden_effect = {
+			retire_character = GMA_Gage_Halupowski_char
+			country_event = {
+				id = gma.491
+				days = 5
+			}
+		}
+	}
+}
+
+country_event = {
+	#Trial of Matthew Banta
+	id = gma.491
+	title = gma.491.t
+	desc = gma.491.d
+	picture = GFX_CAC_visit_new_york_city
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = {
+		name = gma.491.a
+		custom_effect_tooltip = GMA_Banta_Execution_tt
+		hidden_effect = {
+			retire_character = GMA_Matthew_Banta_char
+			country_event = {
+				id = gma.492
+				days = 5
+			}
+		}
+	}
+}
+
+country_event = {
+	#Trial of Margaret Channon
+	id = gma.492
+	title = gma.492.t
+	desc = gma.492.d
+	picture = GFX_CAC_visit_new_york_city
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = {
+		name = gma.492.a
+		custom_effect_tooltip = GMA_Channon_Execution_tt
+		hidden_effect = {
+			retire_character = GMA_Margaret_Channon_char
+			country_event = {
+				id = gma.493
+				days = 5
+			}
+		}
+	}
+}
+
+country_event = {
+	#Trial of 500
+	id = gma.493
+	title = gma.493.t
+	desc = gma.493.d
+	picture = GFX_CAC_visit_new_york_city
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = {
+		name = gma.493.a
+		custom_effect_tooltip = GMA_End_of_the_Cleansing_tt
+		add_manpower = -500
+	}
+}
+
+country_event = {
+	#Skyscrappers destroyed
+	id = gma.50
+	title = gma.50.t
+	desc = gma.50.d
+	picture = GFX_CAC_visit_new_york_city
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = {
+		name = gma.50.a
+		add_stability = 0.15
+		add_war_support = 0.05
+	}
+}
+
+country_event = {
+	#People start leaving our nation
+	id = gma.51
+	title = gma.51.t
+	desc = gma.51.d
+	picture = GFX_war3
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = {
+		name = gma.51.a
+		custom_effect_tooltip = GMA_Migrant_Crisis_tt
+		add_ideas = GMA_Migration_Crisis_1
+		set_country_flag = GMA_Migrant_Crisis_flag
+	}
+}
+
+country_event = {
+	#Mariam Simos claims Mother Gaia told her to lead
+	id = gma.53
+	title = gma.53.t
+	desc = gma.53.d
+	picture = GFX_war3
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = {
+		#if it is Gaia's will
+		name = gma.53.a
+		ai_chance = {
+			base = 50			#
+		}
+		trigger = {
+			NOT = {
+				has_completed_focus = GMA_call_of_the_wild
+			}
+		}
+		custom_effect_tooltip = GMA_Gaias_will
+		set_country_flag = GMA_Mariam_Simos_Control
+		set_party_name = {
+			ideology = libertarian_socialist
+			long_name = GMA_CUUPS_long
+			name = GMA_CUUPS
+		}
+		hidden_effect = {
+			promote_character = GMA_Miriam_Simos_char
+			country_event = {
+				id = gma.531
+				days = 21
+			}
+		}
+		set_cosmetic_tag = GMA_Spiritualist_Union
+	}
+	option = {
+		#Nutjob
+		name = gma.53.b
+		ai_chance = {
+			base = 50			#
+		}
+		add_stability = 0.05
+	}
+}
+
+country_event = {
+	#Cabinet of Mother Gaia
+	id = gma.531
+	title = gma.531.t
+	desc = gma.531.d
+	picture = GFX_war3
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = {
+		#Women have been oppressed for far too long!
+		name = gma.53.a
+		ai_chance = {
+			base = 50			#
+		}
+		add_ideas = higher_female
+		set_country_flag = GMA_SUG_Simos_FT
+		focus_unlock = yes
+	}
+}
+
+country_event = {
+	#Ted is diagnosed
+	id = gma.54
+	title = gma.54.t
+	desc = gma.54.d
+	picture = GFX_Ted_K_Cancer
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = {
+		#Keep it quiet...
+		name = gma.54.a
+		ai_chance = {
+			base = 50			#
+		}
+		custom_effect_tooltip = GMA_Ted_has_Cancer_tt
+		set_country_flag = GMA_Ted_has_Cancer_Mechanic_FLAG
+	}
+}
+
+country_event = {
+	#Ted Declares his successor
+	id = gma.55
+	title = gma.55.t
+	desc = gma.55.d
+	picture = GFX_Kaczynski
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = {
+		#The Son
+		name = gma.55.a
+		ai_chance = {
+			base = 90			#
+		}
+		trigger = {
+			GMA_Ashton_Knight_Char = {
+				is_field_marshal = yes
+				skill > 2
+			}
+		}
+		set_country_flag = GMA_The_Son
+	}
+	option = {
+		#The Fool
+		name = gma.55.b
+		ai_chance = {
+			base = 5			#
+		}
+		set_country_flag = GMA_The_Fool
+	}
+	option = {
+		#The Officer
+		name = gma.55.c
+		ai_chance = {
+			base = 5			#
+		}
+		set_country_flag = GMA_The_Officer
+	}
+}
+
+country_event = {
+	#The Death of Ted Kaczynski
+	id = gma.56
+	title = gma.56.t
+	desc = gma.56.d
+	picture = GFX_Gravestone
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = {
+		#
+		name = gma.56.a
+		ai_chance = {
+			base = 50			#
+		}
+		custom_effect_tooltip = GMA_Ted_ded_tt
+		hidden_effect = {
+			if = {
+				limit = {
+					has_country_flag = GMA_The_Son
+				}
+				set_country_flag = GMA_TH_Knight_FT
+				focus_unlock = yes
+				retire_character = GMA_Ted_Kaczynski_char
+				add_country_leader_role = {
+					character = GMA_Ashton_Knight_Char
+					promote_leader = yes
+					country_leader = {
+						ideology = neo_luddism
+						traits = {
+							GMA_Kaczynskis_Successor
+							GMA_Forged_in_Neo_Ludditism
+						}
+						expire = "1.1.1.1"
+						id = -1
+					}
+				}
+			}
+			if = {
+				limit = {
+					has_country_flag = GMA_The_Fool
+				}
+				set_country_flag = GMA_TH_Zerzan_FT
+				focus_unlock = yes
+				retire_character = GMA_Ted_Kaczynski_char
+				add_country_leader_role = {
+					character = GMA_John_Zerzan_char
+					promote_leader = yes
+					country_leader = {
+						ideology = neo_luddism
+						traits = {
+							GMA_Kaczynskis_Successor
+							GMA_Anarcho_Primitivist_Ideologue
+						}
+						expire = "1.1.1.1"
+						id = -1
+					}
+				}
+			}
+			if = {
+				limit = {
+					has_country_flag = GMA_The_Officer
+				}
+				set_country_flag = GMA_TH_Coronado_FT
+				focus_unlock = yes
+				retire_character = GMA_Ted_Kaczynski_char
+				set_politics = {
+					ruling_party = totalitarian_socialist
+					elections_allowed = no
+				}
+				add_country_leader_role = {
+					character = GMA_Rod_Coronado_char
+					promote_leader = yes
+					country_leader = {
+						ideology = left_wing_junta
+						traits = {
+							GMA_Kaczynskis_Successor
+							GMA_Military_Practitioner
+						}
+						expire = "1.1.1.1"
+						id = -1
+					}
+				}
+			}
+		}
+	}
+}
+
+country_event = {
+	#Ted Dies without successor
+	id = gma.57
+	title = gma.57.t
+	desc = gma.57.d
+	picture = GFX_Gravestone
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = {
+		#The nation fractures
+		name = gma.57.a
+		ai_chance = {
+			base = 100			#
+		}
+		add_stability = -0.2
+		set_politics = {
+			ruling_party = totalitarian_socialist
+			elections_allowed = no
+		}
+		set_country_flag = GMA_TH_Failstate_FT
+		focus_unlock = yes
+		add_country_leader_role = {
+			character = GMA_Tre_Arrow_char
+			promote_leader = yes
+			country_leader = {
+				ideology = left_wing_junta
+				traits = {
+					GMA_Illegitimate_Successor
+					GMA_Environmental_Opportunist
+				}
+				expire = "1.1.1.1"
+				id = -1
+			}
+		}
+	}
+}
+
+country_event = {
+	#Focus of Congress
+	id = gma.58
+	title = gma.58.t
+	desc = gma.58.d
+	picture = GFX_war3
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = {
+		#Civilian Factory Focus
+		name = gma.58.a
+		ai_chance = {
+			base = 33			#
+		}
+	}
+	option = {
+		#Military Focus
+		name = gma.58.b
+		ai_chance = {
+			base = 33			#
+		}
+	}
+	option = {
+		#Build up the soul of the nation
+		name = gma.58.c
+		ai_chance = {
+			base = 34			#
+		}
+	}
+}
+
+country_event = {
+	#Increasing Number of people joining the Navy
+	id = gma.59
+	title = gma.59.t
+	desc = gma.59.d
+	picture = GFX_war3
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = {
+		#Interesting
+		name = gma.59.a
+		ai_chance = {
+			base = 100
+		}
+		add_manpower = 4572
+		navy_experience = 25
+		hidden_effect = {
+			set_country_flag = GMA_Upcoming_Piracy_Age
+		}
+	}
+}
+
+country_event = {
+	#Golden Age of Piracy
+	id = gma.591
+	title = gma.591.t
+	desc = gma.591.d
+	picture = GFX_Golden_Age_of_Pirates
+	fire_only_once = yes
+	trigger = {
+		has_country_flag = GMA_Upcoming_Piracy_Age
+		has_idea = GMA_A_Pirate_Navy
+		has_war = yes
+	}
+	option = {
+		#Fuck Yeah
+		name = gma.591.a
+		navy_experience = 50
+		clr_country_flag = GMA_Upcoming_Piracy_Age
+		hidden_effect = {
+			country_event = {
+				id = gma.592
+				days = 10
+			}
+		}
+		ai_chance = {
+			base = 100
+		}
+	}
+}
+
+country_event = {
+	#Pirates Seize Ship
+	id = gma.592
+	title = gma.592.t
+	desc = gma.592.d
+	picture = GFX_Golden_Age_of_Pirates
+	is_triggered_only = yes
+	option = {
+		#Fuck Yeah
+		name = gma.592.a
+		navy_experience = 10
+		If = {
+			Limit = {
+				alliance_naval_strength_ratio > 0.3
+				alliance_naval_strength_ratio < 0.4
+			}
+			random_list = {
+				90 = {
+					add_manpower = 300
+				}
+				10 = {
+					navy_experience = 20
+					set_temp_variable = {
+						var = income_var_temp
+						value = 1
+					}
+					add_income = yes
+				}
+				10 = {
+					navy_experience = 30
+					add_equipment_to_stockpile = {
+						type = infantry_equipment
+						amount = 3000
+						producer = USA
+					}
+				}
+				5 = {
+					navy_experience = 50
+					load_oob = "GMA_Captured_Convoy"
+				}
+			}
+		}
+		If = {
+			Limit = {
+				alliance_naval_strength_ratio > 0.4
+				alliance_naval_strength_ratio < 0.5
+			}
+			random_list = {
+				80 = {
+					add_manpower = 300
+				}
+				20 = {
+					navy_experience = 20
+					set_temp_variable = {
+						var = income_var_temp
+						value = 1
+					}
+					add_income = yes
+				}
+				10 = {
+					navy_experience = 30
+					add_equipment_to_stockpile = {
+						type = infantry_equipment
+						amount = 3000
+						producer = USA
+					}
+				}
+				5 = {
+					navy_experience = 50
+					load_oob = "GMA_Captured_Convoy"
+				}
+			}
+		}
+		If = {
+			Limit = {
+				alliance_naval_strength_ratio > 0.5
+				alliance_naval_strength_ratio < 0.6
+			}
+			random_list = {
+				60 = {
+					add_manpower = 300
+				}
+				40 = {
+					navy_experience = 20
+					set_temp_variable = {
+						var = income_var_temp
+						value = 1
+					}
+					add_income = yes
+				}
+				20 = {
+					navy_experience = 30
+					add_equipment_to_stockpile = {
+						type = infantry_equipment
+						amount = 3000
+						producer = USA
+					}
+				}
+				10 = {
+					navy_experience = 50
+					load_oob = "GMA_Captured_Convoy"
+				}
+			}
+		}
+		If = {
+			Limit = {
+				alliance_naval_strength_ratio > 0.6
+			}
+			random_list = {
+				40 = {
+					add_manpower = 300
+				}
+				40 = {
+					navy_experience = 20
+					set_temp_variable = {
+						var = income_var_temp
+						value = 1
+					}
+					add_income = yes
+				}
+				20 = {
+					navy_experience = 30
+					add_equipment_to_stockpile = {
+						type = infantry_equipment
+						amount = 3000
+						producer = USA
+					}
+				}
+				20 = {
+					navy_experience = 50
+					load_oob = "GMA_Captured_Convoy"
+				}
+			}
+		}
+		hidden_effect = {
+			#Pirates Hunt
+			set_country_flag = GMA_Pirate_Hunt_FLAG
+		}
+		ai_chance = {
+			base = 100
+		}
+	}
+}
+
+country_event = {
+	#Pirates Hunt
+	id = gma.593
+	title = gma.593.t
+	desc = gma.593.d
+	picture = GFX_Golden_Age_of_Pirates
+	trigger = {
+		has_country_flag = GMA_Upcoming_Piracy_Age
+		has_country_flag = GMA_Pirate_Hunt_FLAG
+		has_idea = GMA_A_Pirate_Navy
+		has_war = yes
+	}
+	option = {
+		#Fuck Yeah
+		name = gma.591.a
+		trigger = {
+			has_war = yes
+		}
+		navy_experience = 50
+		clr_country_flag = GMA_Pirate_Hunt_FLAG
+		hidden_effect = {
+			country_event = {
+				id = gma.592
+				days = 32
+			}
+		}
+		ai_chance = {
+			base = 100
+		}
+	}
+	option = {
+		#Jits Over
+		name = gma.591.a
+		trigger = {
+			has_war = no
+		}
+		clr_country_flag = GMA_Upcoming_Piracy_Age
+		clr_country_flag = GMA_Pirate_Hunt_FLAG
+		ai_chance = {
+			base = 100
+		}
+	}
+}
+
+country_event = {
+	#Confederation offers peaceful reintegration
+	id = gma.61
+	title = gma.61.t
+	desc = gma.61.d
+	picture = GFX_war3
+	is_triggered_only = yes
+	option = {
+		#America is ready for peace
+		name = gma.61.a
+		if = {
+			limit = {
+				tag = MIM
+			}
+			set_cosmetic_tag = GMA_Confederated_Michigan
+			set_politics = {
+				ruling_party = market_liberal
+				elections_allowed = no
+				long_name = GMA_Mar_Lib_Reconstruction_long
+				name = GMA_Mar_Lib_Reconstruction
+			}
+			add_popularity = {
+				ideology = market_liberal
+				popularity = 0.1
+			}
+			GMA = {
+				add_to_faction = ROOT
+			}
+			#				GMA = {
+			#					puppet = MIM
+			#				}
+		}
+		if = {
+			limit = {
+				tag = FLA
+			}
+			set_politics = {
+				ruling_party = market_liberal
+				elections_allowed = no
+				long_name = GMA_Mar_Lib_Reconstruction_long
+				name = GMA_Mar_Lib_Reconstruction
+			}
+			add_popularity = {
+				ideology = market_liberal
+				popularity = 0.1
+			}
+			set_cosmetic_tag = GMA_Confederated_Florida
+			GMA = {
+				add_to_faction = ROOT
+			}
+			#				GMA = {
+			#					puppet = FLA
+			#				}
+		}
+		if = {
+			limit = {
+				tag = LOU
+			}
+			set_politics = {
+				ruling_party = market_liberal
+				elections_allowed = no
+				long_name = GMA_Mar_Lib_Reconstruction_long
+				name = GMA_Mar_Lib_Reconstruction
+			}
+			add_popularity = {
+				ideology = market_liberal
+				popularity = 0.1
+			}
+			set_cosmetic_tag = GMA_Confederated_Louisiana
+			GMA = {
+				add_to_faction = ROOT
+			}
+			#				GMA = {
+			#					puppet = LOU
+			#				}
+		}
+		if = {
+			limit = {
+				tag = ALA
+			}
+			set_politics = {
+				ruling_party = market_liberal
+				elections_allowed = no
+				long_name = GMA_Mar_Lib_Reconstruction_long
+				name = GMA_Mar_Lib_Reconstruction
+			}
+			add_popularity = {
+				ideology = market_liberal
+				popularity = 0.1
+			}
+			set_cosmetic_tag = GMA_Confederated_Alabama
+			GMA = {
+				add_to_faction = ROOT
+			}
+			#				GMA = {
+			#					puppet = ALA
+			#				}
+		}
+		if = {
+			limit = {
+				tag = GRA
+			}
+			set_politics = {
+				ruling_party = market_liberal
+				elections_allowed = no
+				long_name = GMA_Mar_Lib_Reconstruction_long
+				name = GMA_Mar_Lib_Reconstruction
+			}
+			add_popularity = {
+				ideology = market_liberal
+				popularity = 0.1
+			}
+			set_cosmetic_tag = GMA_Confederated_Georgia
+			GMA = {
+				add_to_faction = ROOT
+			}
+			#				GMA = {
+			#					puppet = GRA
+			#				}
+		}
+		if = {
+			limit = {
+				tag = STC
+			}
+			set_politics = {
+				ruling_party = market_liberal
+				elections_allowed = no
+				long_name = GMA_Mar_Lib_Reconstruction_long
+				name = GMA_Mar_Lib_Reconstruction
+			}
+			add_popularity = {
+				ideology = market_liberal
+				popularity = 0.1
+			}
+			set_cosmetic_tag = GMA_Confederated_South_Carolina
+			GMA = {
+				add_to_faction = ROOT
+			}
+			#				GMA = {
+			#					puppet = STC
+			#				}
+		}
+		if = {
+			limit = {
+				tag = TEX
+			}
+			set_politics = {
+				ruling_party = market_liberal
+				elections_allowed = no
+				long_name = GMA_Mar_Lib_Reconstruction_long
+				name = GMA_Mar_Lib_Reconstruction
+			}
+			add_popularity = {
+				ideology = market_liberal
+				popularity = 0.1
+			}
+			set_cosmetic_tag = GMA_Confederated_Texas
+			GMA = {
+				add_to_faction = ROOT
+			}
+			#				GMA = {
+			#					puppet = TEX
+			#				}
+		}
+		if = {
+			limit = {
+				tag = CAL
+			}
+			set_politics = {
+				ruling_party = market_liberal
+				elections_allowed = no
+				long_name = GMA_Mar_Lib_Reconstruction_long
+				name = GMA_Mar_Lib_Reconstruction
+			}
+			add_popularity = {
+				ideology = market_liberal
+				popularity = 0.1
+			}
+			set_cosmetic_tag = GMA_Confederated_California
+			GMA = {
+				add_to_faction = ROOT
+			}
+			#				GMA = {
+			#					puppet = CAL
+			#				}
+		}
+		if = {
+			limit = {
+				tag = MSS
+			}
+			set_cosmetic_tag = GMA_Confederated_Mississippi
+			#				GMA = {
+			#					puppet = MSS
+			#				}
+		}
+		if = {
+			limit = {
+				tag = ORE
+			}
+			set_politics = {
+				ruling_party = market_liberal
+				elections_allowed = no
+				long_name = GMA_Mar_Lib_Reconstruction_long
+				name = GMA_Mar_Lib_Reconstruction
+			}
+			add_popularity = {
+				ideology = market_liberal
+				popularity = 0.1
+			}
+			set_cosmetic_tag = GMA_Confederated_Oregon
+			GMA = {
+				add_to_faction = ROOT
+			}
+			#				GMA = {
+			#					puppet = ORE
+			#				}
+		}
+		if = {
+			limit = {
+				tag = WAS
+			}
+			set_politics = {
+				ruling_party = market_liberal
+				elections_allowed = no
+				long_name = GMA_Mar_Lib_Reconstruction_long
+				name = GMA_Mar_Lib_Reconstruction
+			}
+			add_popularity = {
+				ideology = market_liberal
+				popularity = 0.1
+			}
+			set_cosmetic_tag = GMA_Confederated_Washington
+			GMA = {
+				add_to_faction = ROOT
+			}
+			#				GMA = {
+			#					puppet = WAS
+			#				}
+		}
+		if = {
+			limit = {
+				tag = NMX
+			}
+			set_politics = {
+				ruling_party = market_liberal
+				elections_allowed = no
+				long_name = GMA_Mar_Lib_Reconstruction_long
+				name = GMA_Mar_Lib_Reconstruction
+			}
+			add_popularity = {
+				ideology = market_liberal
+				popularity = 0.1
+			}
+			set_cosmetic_tag = GMA_Confederated_New_Mexico
+			GMA = {
+				add_to_faction = ROOT
+			}
+			#				GMA = {
+			#					puppet = NMX
+			#				}
+		}
+		if = {
+			limit = {
+				tag = ARZ
+			}
+			set_politics = {
+				ruling_party = market_liberal
+				elections_allowed = no
+				long_name = GMA_Mar_Lib_Reconstruction_long
+				name = GMA_Mar_Lib_Reconstruction
+			}
+			add_popularity = {
+				ideology = market_liberal
+				popularity = 0.1
+			}
+			set_cosmetic_tag = GMA_Confederated_Arizona
+			GMA = {
+				add_to_faction = ROOT
+			}
+			#				GMA = {
+			#					puppet = ARZ
+			#				}
+		}
+		add_stability = 0.2
+		ai_chance = {
+			base = 50
+		}
+	}
+	option = {
+		#If it was that easy, we would've done it already
+		name = gma.61.b
+		ai_chance = {
+			base = 50
+		}
+	}
+}
+
+country_event = {
+	#Confederation offers peaceful reintegration
+	id = gma.611
+	title = gma.611.t
+	desc = gma.611.d
+	picture = GFX_war3
+	is_triggered_only = yes
+	option = {
+		#America is ready for peace
+		name = gma.611.a
+		if = {
+			limit = {
+				tag = MIM
+			}
+			set_cosmetic_tag = GMA_Michigan_Directorate
+			set_politics = {
+				ruling_party = nationalist
+				elections_allowed = no
+				long_name = GMA_PMC_Reconstruction_long
+				name = GMA_PMC_Reconstruction
+			}
+			add_popularity = {
+				ideology = nationalist
+				popularity = 0.1
+			}
+			GMA = {
+				add_to_faction = ROOT
+			}
+			#				GMA = {
+			#					puppet = MIM
+			#				}
+		}
+		if = {
+			limit = {
+				tag = FLA
+			}
+			set_politics = {
+				ruling_party = nationalist
+				elections_allowed = no
+				long_name = GMA_PMC_Reconstruction_long
+				name = GMA_PMC_Reconstruction
+			}
+			add_popularity = {
+				ideology = nationalist
+				popularity = 0.1
+			}
+			GMA = {
+				add_to_faction = ROOT
+			}
+			set_cosmetic_tag = GMA_Florida_Directorate
+			#				GMA = {
+			#					puppet = FLA
+			#				}
+		}
+		if = {
+			limit = {
+				tag = LOU
+			}
+			set_politics = {
+				ruling_party = nationalist
+				elections_allowed = no
+				long_name = GMA_PMC_Reconstruction_long
+				name = GMA_PMC_Reconstruction
+			}
+			add_popularity = {
+				ideology = nationalist
+				popularity = 0.1
+			}
+			GMA = {
+				add_to_faction = ROOT
+			}
+			set_cosmetic_tag = GMA_Louisiana_Directorate
+			#				GMA = {
+			#					puppet = LOU
+			#				}
+		}
+		if = {
+			limit = {
+				tag = ALA
+			}
+			set_politics = {
+				ruling_party = nationalist
+				elections_allowed = no
+				long_name = GMA_PMC_Reconstruction_long
+				name = GMA_PMC_Reconstruction
+			}
+			add_popularity = {
+				ideology = nationalist
+				popularity = 0.1
+			}
+			set_cosmetic_tag = GMA_Alabama_Directorate
+			GMA = {
+				add_to_faction = ROOT
+			}
+			#				GMA = {
+			#					puppet = ALA
+			#				}
+		}
+		if = {
+			limit = {
+				tag = GRA
+			}
+			set_politics = {
+				ruling_party = nationalist
+				elections_allowed = no
+				long_name = GMA_PMC_Reconstruction_long
+				name = GMA_PMC_Reconstruction
+			}
+			add_popularity = {
+				ideology = nationalist
+				popularity = 0.1
+			}
+			set_cosmetic_tag = GMA_Georgia_Directorate
+			GMA = {
+				add_to_faction = ROOT
+			}
+			#				GMA = {
+			#					puppet = GRA
+			#				}
+		}
+		if = {
+			limit = {
+				tag = STC
+			}
+			set_politics = {
+				ruling_party = nationalist
+				elections_allowed = no
+				long_name = GMA_PMC_Reconstruction_long
+				name = GMA_PMC_Reconstruction
+			}
+			add_popularity = {
+				ideology = nationalist
+				popularity = 0.1
+			}
+			set_cosmetic_tag = GMA_Carolina_Directorate
+			GMA = {
+				add_to_faction = ROOT
+			}
+			#				GMA = {
+			#					puppet = STC
+			#				}
+		}
+		if = {
+			limit = {
+				tag = TEX
+			}
+			set_politics = {
+				ruling_party = nationalist
+				elections_allowed = no
+				long_name = GMA_PMC_Reconstruction_long
+				name = GMA_PMC_Reconstruction
+			}
+			add_popularity = {
+				ideology = nationalist
+				popularity = 0.1
+			}
+			set_cosmetic_tag = GMA_Lone_Star_Company
+			GMA = {
+				add_to_faction = ROOT
+			}
+			#				GMA = {
+			#					puppet = TEX
+			#				}
+		}
+		if = {
+			limit = {
+				tag = CAL
+			}
+			set_cosmetic_tag = GMA_Golden_Company
+			GMA = {
+				add_to_faction = ROOT
+			}
+			set_politics = {
+				ruling_party = nationalist
+				elections_allowed = no
+				long_name = GMA_PMC_Reconstruction_long
+				name = GMA_PMC_Reconstruction
+			}
+			add_popularity = {
+				ideology = nationalist
+				popularity = 0.1
+			}
+			#				GMA = {
+			#					puppet = CAL
+			#				}
+		}
+		if = {
+			limit = {
+				tag = MSS
+			}
+			set_politics = {
+				ruling_party = nationalist
+				elections_allowed = no
+				long_name = GMA_PMC_Reconstruction_long
+				name = GMA_PMC_Reconstruction
+			}
+			add_popularity = {
+				ideology = nationalist
+				popularity = 0.1
+			}
+			set_cosmetic_tag = GMA_Mississippi_Directorate
+			GMA = {
+				add_to_faction = ROOT
+			}
+			#				GMA = {
+			#					puppet = MSS
+			#				}
+		}
+		if = {
+			limit = {
+				tag = ORE
+			}
+			set_politics = {
+				ruling_party = nationalist
+				elections_allowed = no
+				long_name = GMA_PMC_Reconstruction_long
+				name = GMA_PMC_Reconstruction
+			}
+			add_popularity = {
+				ideology = nationalist
+				popularity = 0.1
+			}
+			set_cosmetic_tag = GMA_Oregon_Directorate
+			GMA = {
+				add_to_faction = ROOT
+			}
+			#				GMA = {
+			#					puppet = ORE
+			#				}
+		}
+		if = {
+			limit = {
+				tag = WAS
+			}
+			set_politics = {
+				ruling_party = nationalist
+				elections_allowed = no
+				long_name = GMA_PMC_Reconstruction_long
+				name = GMA_PMC_Reconstruction
+			}
+			add_popularity = {
+				ideology = nationalist
+				popularity = 0.1
+			}
+			set_cosmetic_tag = GMA_Washington_Directorate
+			GMA = {
+				add_to_faction = ROOT
+			}
+			#				GMA = {
+			#					puppet = WAS
+			#				}
+		}
+		if = {
+			limit = {
+				tag = NMX
+			}
+			set_politics = {
+				ruling_party = nationalist
+				elections_allowed = no
+				long_name = GMA_PMC_Reconstruction_long
+				name = GMA_PMC_Reconstruction
+			}
+			add_popularity = {
+				ideology = nationalist
+				popularity = 0.1
+			}
+			set_cosmetic_tag = GMA_New_Mexico_Directorate
+			GMA = {
+				add_to_faction = ROOT
+			}
+			#				GMA = {
+			#					puppet = NMX
+			#				}
+		}
+		if = {
+			limit = {
+				tag = ARZ
+			}
+			set_politics = {
+				ruling_party = nationalist
+				elections_allowed = no
+				long_name = GMA_PMC_Reconstruction_long
+				name = GMA_PMC_Reconstruction
+			}
+			add_popularity = {
+				ideology = nationalist
+				popularity = 0.1
+			}
+			set_cosmetic_tag = GMA_Arizona_Directorate
+			GMA = {
+				add_to_faction = ROOT
+			}
+			#				GMA = {
+			#					puppet = ARZ
+			#				}
+		}
+		add_stability = 0.2
+		ai_chance = {
+			base = 50
+		}
+	}
+	option = {
+		#If it was that easy, we would've done it already
+		name = gma.61.b
+		ai_chance = {
+			base = 50
+		}
+	}
+}
+
+country_event = {
+	#Ted Offers Peaceful Reintegration
+	id = gma.612
+	title = gma.612.t
+	desc = gma.612.d
+	picture = GFX_war3
+	is_triggered_only = yes
+	option = {
+		#America is ready for peace
+		name = gma.611.a
+		if = {
+			limit = {
+				tag = MIM
+			}
+			set_cosmetic_tag = GMA_Michigan_Environmentalist_Brigade
+			set_politics = {
+				ruling_party = nationalist
+				elections_allowed = no
+				long_name = GMA_ELF_Dictatorship_long
+				name = GMA_ELF_Dictatorship
+			}
+			add_popularity = {
+				ideology = nationalist
+				popularity = 0.1
+			}
+			GMA = {
+				add_to_faction = ROOT
+			}
+			#				GMA = {
+			#					puppet = MIM
+			#				}
+		}
+		if = {
+			limit = {
+				tag = FLA
+			}
+			set_politics = {
+				ruling_party = nationalist
+				elections_allowed = no
+				long_name = GMA_ELF_Dictatorship_long
+				name = GMA_ELF_Dictatorship
+			}
+			add_popularity = {
+				ideology = nationalist
+				popularity = 0.1
+			}
+			GMA = {
+				add_to_faction = ROOT
+			}
+			set_cosmetic_tag = GMA_Florida_Environmentalist_Brigade
+			#				GMA = {
+			#					puppet = FLA
+			#				}
+		}
+		if = {
+			limit = {
+				tag = LOU
+			}
+			set_politics = {
+				ruling_party = nationalist
+				elections_allowed = no
+				long_name = GMA_ELF_Dictatorship_long
+				name = GMA_ELF_Dictatorship
+			}
+			add_popularity = {
+				ideology = nationalist
+				popularity = 0.1
+			}
+			GMA = {
+				add_to_faction = ROOT
+			}
+			set_cosmetic_tag = GMA_Louisiana_Environmentalist_Brigade
+			#				GMA = {
+			#					puppet = LOU
+			#				}
+		}
+		if = {
+			limit = {
+				tag = ALA
+			}
+			set_politics = {
+				ruling_party = nationalist
+				elections_allowed = no
+				long_name = GMA_ELF_Dictatorship_long
+				name = GMA_ELF_Dictatorship
+			}
+			add_popularity = {
+				ideology = nationalist
+				popularity = 0.1
+			}
+			set_cosmetic_tag = GMA_Alabama_Environmentalist_Brigade
+			GMA = {
+				add_to_faction = ROOT
+			}
+			#				GMA = {
+			#					puppet = ALA
+			#				}
+		}
+		if = {
+			limit = {
+				tag = GRA
+			}
+			set_politics = {
+				ruling_party = nationalist
+				elections_allowed = no
+				long_name = GMA_ELF_Dictatorship_long
+				name = GMA_ELF_Dictatorship
+			}
+			add_popularity = {
+				ideology = nationalist
+				popularity = 0.1
+			}
+			set_cosmetic_tag = GMA_Georgia_Environmentalist_Brigade
+			GMA = {
+				add_to_faction = ROOT
+			}
+			#				GMA = {
+			#					puppet = GRA
+			#				}
+		}
+		if = {
+			limit = {
+				tag = STC
+			}
+			set_politics = {
+				ruling_party = nationalist
+				elections_allowed = no
+				long_name = GMA_ELF_Dictatorship_long
+				name = GMA_ELF_Dictatorship
+			}
+			add_popularity = {
+				ideology = nationalist
+				popularity = 0.1
+			}
+			set_cosmetic_tag = GMA_Carolina_Environmentalist_Brigade
+			GMA = {
+				add_to_faction = ROOT
+			}
+			#				GMA = {
+			#					puppet = STC
+			#				}
+		}
+		if = {
+			limit = {
+				tag = TEX
+			}
+			set_politics = {
+				ruling_party = nationalist
+				elections_allowed = no
+				long_name = GMA_ELF_Dictatorship_long
+				name = GMA_ELF_Dictatorship
+			}
+			add_popularity = {
+				ideology = nationalist
+				popularity = 0.1
+			}
+			set_cosmetic_tag = GMA_Texan_Environmentalist_Brigade
+			GMA = {
+				add_to_faction = ROOT
+			}
+			#				GMA = {
+			#					puppet = TEX
+			#				}
+		}
+		if = {
+			limit = {
+				tag = CAL
+			}
+			set_cosmetic_tag = GMA_California_Environmentalist_Brigade
+			GMA = {
+				add_to_faction = ROOT
+			}
+			set_politics = {
+				ruling_party = nationalist
+				elections_allowed = no
+				long_name = GMA_ELF_Dictatorship_long
+				name = GMA_ELF_Dictatorship
+			}
+			add_popularity = {
+				ideology = nationalist
+				popularity = 0.1
+			}
+			#				GMA = {
+			#					puppet = CAL
+			#				}
+		}
+		if = {
+			limit = {
+				tag = MSS
+			}
+			set_politics = {
+				ruling_party = nationalist
+				elections_allowed = no
+				long_name = GMA_ELF_Dictatorship_long
+				name = GMA_ELF_Dictatorship
+			}
+			add_popularity = {
+				ideology = nationalist
+				popularity = 0.1
+			}
+			set_cosmetic_tag = GMA_Mississippi_Environmentalist_Brigade
+			GMA = {
+				add_to_faction = ROOT
+			}
+			#				GMA = {
+			#					puppet = MSS
+			#				}
+		}
+		if = {
+			limit = {
+				tag = ORE
+			}
+			set_politics = {
+				ruling_party = nationalist
+				elections_allowed = no
+				long_name = GMA_ELF_Dictatorship_long
+				name = GMA_ELF_Dictatorship
+			}
+			add_popularity = {
+				ideology = nationalist
+				popularity = 0.1
+			}
+			set_cosmetic_tag = GMA_Oregon_Environmentalist_Brigade
+			GMA = {
+				add_to_faction = ROOT
+			}
+			#				GMA = {
+			#					puppet = ORE
+			#				}
+		}
+		if = {
+			limit = {
+				tag = WAS
+			}
+			set_politics = {
+				ruling_party = nationalist
+				elections_allowed = no
+				long_name = GMA_ELF_Dictatorship_long
+				name = GMA_ELF_Dictatorship
+			}
+			add_popularity = {
+				ideology = nationalist
+				popularity = 0.1
+			}
+			set_cosmetic_tag = GMA_Washington_Environmentalist_Brigade
+			GMA = {
+				add_to_faction = ROOT
+			}
+			#				GMA = {
+			#					puppet = WAS
+			#				}
+		}
+		if = {
+			limit = {
+				tag = NMX
+			}
+			set_politics = {
+				ruling_party = nationalist
+				elections_allowed = no
+				long_name = GMA_ELF_Dictatorship_long
+				name = GMA_ELF_Dictatorship
+			}
+			add_popularity = {
+				ideology = nationalist
+				popularity = 0.1
+			}
+			set_cosmetic_tag = GMA_New_Mexico_Environmentalist_Brigade
+			GMA = {
+				add_to_faction = ROOT
+			}
+			#				GMA = {
+			#					puppet = NMX
+			#				}
+		}
+		if = {
+			limit = {
+				tag = ARZ
+			}
+			set_politics = {
+				ruling_party = nationalist
+				elections_allowed = no
+				long_name = GMA_ELF_Dictatorship_long
+				name = GMA_ELF_Dictatorship
+			}
+			add_popularity = {
+				ideology = nationalist
+				popularity = 0.1
+			}
+			set_cosmetic_tag = GMA_Arizona_Environmentalist_Brigade
+			GMA = {
+				add_to_faction = ROOT
+			}
+			#				GMA = {
+			#					puppet = ARZ
+			#				}
+		}
+		add_stability = 0.2
+		ai_chance = {
+			base = 30
+		}
+	}
+	option = {
+		#If it was that easy, we would've done it already
+		name = gma.61.b
+		ai_chance = {
+			base = 70
+		}
+	}
+}
+
+country_event = {
+	#Simos Offers Peaceful Reintegration
+	id = gma.613
+	title = gma.613.t
+	desc = gma.613.d
+	picture = GFX_war3
+	is_triggered_only = yes
+	option = {
+		#Forgive us Mother
+		name = gma.613.a
+		if = {
+			limit = {
+				tag = MIM
+			}
+			set_cosmetic_tag = GMA_Michigan_Covenant
+			set_politics = {
+				ruling_party = libertarian_socialist
+				elections_allowed = no
+				long_name = GMA_Covenant_Party_long
+				name = GMA_Covenant_Party
+			}
+			add_popularity = {
+				ideology = libertarian_socialist
+				popularity = 0.1
+			}
+			GMA = {
+				add_to_faction = ROOT
+			}
+			#				GMA = {
+			#					puppet = MIM
+			#				}
+		}
+		if = {
+			limit = {
+				tag = FLA
+			}
+			set_politics = {
+				ruling_party = libertarian_socialist
+				elections_allowed = no
+				long_name = GMA_Covenant_Party_long
+				name = GMA_Covenant_Party
+			}
+			add_popularity = {
+				ideology = libertarian_socialist
+				popularity = 0.1
+			}
+			GMA = {
+				add_to_faction = ROOT
+			}
+			set_cosmetic_tag = GMA_Florida_Covenant
+			#				GMA = {
+			#					puppet = FLA
+			#				}
+		}
+		if = {
+			limit = {
+				tag = LOU
+			}
+			set_politics = {
+				ruling_party = libertarian_socialist
+				elections_allowed = no
+				long_name = GMA_Covenant_Party_long
+				name = GMA_Covenant_Party
+			}
+			add_popularity = {
+				ideology = libertarian_socialist
+				popularity = 0.1
+			}
+			GMA = {
+				add_to_faction = ROOT
+			}
+			set_cosmetic_tag = GMA_Louisiana_Covenant
+			#				GMA = {
+			#					puppet = LOU
+			#				}
+		}
+		if = {
+			limit = {
+				tag = ALA
+			}
+			set_politics = {
+				ruling_party = libertarian_socialist
+				elections_allowed = no
+				long_name = GMA_Covenant_Party_long
+				name = GMA_Covenant_Party
+			}
+			add_popularity = {
+				ideology = libertarian_socialist
+				popularity = 0.1
+			}
+			set_cosmetic_tag = GMA_Alabama_Covenant
+			GMA = {
+				add_to_faction = ROOT
+			}
+			#				GMA = {
+			#					puppet = ALA
+			#				}
+		}
+		if = {
+			limit = {
+				tag = GRA
+			}
+			set_politics = {
+				ruling_party = libertarian_socialist
+				elections_allowed = no
+				long_name = GMA_Covenant_Party_long
+				name = GMA_Covenant_Party
+			}
+			add_popularity = {
+				ideology = libertarian_socialist
+				popularity = 0.1
+			}
+			set_cosmetic_tag = GMA_Georgia_Covenant
+			GMA = {
+				add_to_faction = ROOT
+			}
+			#				GMA = {
+			#					puppet = GRA
+			#				}
+		}
+		if = {
+			limit = {
+				tag = STC
+			}
+			set_politics = {
+				ruling_party = libertarian_socialist
+				elections_allowed = no
+				long_name = GMA_Covenant_Party_long
+				name = GMA_Covenant_Party
+			}
+			add_popularity = {
+				ideology = libertarian_socialist
+				popularity = 0.1
+			}
+			set_cosmetic_tag = GMA_Carolina_Covenant
+			GMA = {
+				add_to_faction = ROOT
+			}
+			#				GMA = {
+			#					puppet = STC
+			#				}
+		}
+		if = {
+			limit = {
+				tag = TEX
+			}
+			set_politics = {
+				ruling_party = libertarian_socialist
+				elections_allowed = no
+				long_name = GMA_Covenant_Party_long
+				name = GMA_Covenant_Party
+			}
+			add_popularity = {
+				ideology = libertarian_socialist
+				popularity = 0.1
+			}
+			set_cosmetic_tag = GMA_Texan_Covenant
+			GMA = {
+				add_to_faction = ROOT
+			}
+			#				GMA = {
+			#					puppet = TEX
+			#				}
+		}
+		if = {
+			limit = {
+				tag = CAL
+			}
+			set_cosmetic_tag = GMA_California_Covenant
+			GMA = {
+				add_to_faction = ROOT
+			}
+			set_politics = {
+				ruling_party = libertarian_socialist
+				elections_allowed = no
+				long_name = GMA_Covenant_Party_long
+				name = GMA_Covenant_Party
+			}
+			add_popularity = {
+				ideology = libertarian_socialist
+				popularity = 0.1
+			}
+			#				GMA = {
+			#					puppet = CAL
+			#				}
+		}
+		if = {
+			limit = {
+				tag = MSS
+			}
+			set_politics = {
+				ruling_party = libertarian_socialist
+				elections_allowed = no
+				long_name = GMA_Covenant_Party_long
+				name = GMA_Covenant_Party
+			}
+			add_popularity = {
+				ideology = libertarian_socialist
+				popularity = 0.1
+			}
+			set_cosmetic_tag = GMA_Mississippi_Covenant
+			GMA = {
+				add_to_faction = ROOT
+			}
+			#				GMA = {
+			#					puppet = MSS
+			#				}
+		}
+		if = {
+			limit = {
+				tag = ORE
+			}
+			set_politics = {
+				ruling_party = libertarian_socialist
+				elections_allowed = no
+				long_name = GMA_Covenant_Party_long
+				name = GMA_Covenant_Party
+			}
+			add_popularity = {
+				ideology = libertarian_socialist
+				popularity = 0.1
+			}
+			set_cosmetic_tag = GMA_Oregon_Covenant
+			GMA = {
+				add_to_faction = ROOT
+			}
+			#				GMA = {
+			#					puppet = ORE
+			#				}
+		}
+		if = {
+			limit = {
+				tag = WAS
+			}
+			set_politics = {
+				ruling_party = libertarian_socialist
+				elections_allowed = no
+				long_name = GMA_Covenant_Party_long
+				name = GMA_Covenant_Party
+			}
+			add_popularity = {
+				ideology = libertarian_socialist
+				popularity = 0.1
+			}
+			set_cosmetic_tag = GMA_Washington_Covenant
+			GMA = {
+				add_to_faction = ROOT
+			}
+			#				GMA = {
+			#					puppet = WAS
+			#				}
+		}
+		if = {
+			limit = {
+				tag = NMX
+			}
+			set_politics = {
+				ruling_party = libertarian_socialist
+				elections_allowed = no
+				long_name = GMA_Covenant_Party_long
+				name = GMA_Covenant_Party
+			}
+			add_popularity = {
+				ideology = libertarian_socialist
+				popularity = 0.1
+			}
+			set_cosmetic_tag = GMA_New_Mexico_Covenant
+			GMA = {
+				add_to_faction = ROOT
+			}
+			#				GMA = {
+			#					puppet = NMX
+			#				}
+		}
+		if = {
+			limit = {
+				tag = ARZ
+			}
+			set_politics = {
+				ruling_party = libertarian_socialist
+				elections_allowed = no
+				long_name = GMA_Covenant_Party_long
+				name = GMA_Covenant_Party
+			}
+			add_popularity = {
+				ideology = libertarian_socialist
+				popularity = 0.1
+			}
+			set_cosmetic_tag = GMA_Arizona_Covenant
+			GMA = {
+				add_to_faction = ROOT
+			}
+			#				GMA = {
+			#					puppet = ARZ
+			#				}
+		}
+		add_stability = 0.2
+		ai_chance = {
+			base = 20
+		}
+	}
+	option = {
+		#If it was that easy, we would've done it already
+		name = gma.61.b
+		ai_chance = {
+			base = 80
+		}
+	}
+}
+
+country_event = {
+	#Tranquility Base
+	id = gma.62
+	title = gma.62.t
+	desc = gma.62.d
+	picture = GFX_war3
+	is_triggered_only = yes
+	option = {
+		#Weed
+		name = gma.62.a
+		ai_chance = {
+			base = 40
+		}
+		set_country_flag = GMA_Marijuana_Chosen_flag
+	}
+	option = {
+		#Addy
+		name = gma.62.a
+		ai_chance = {
+			base = 35
+		}
+		set_country_flag = GMA_Adderall_Chosen_flag
+	}
+	option = {
+		#Krokodil
+		name = gma.62.a
+		ai_chance = {
+			base = 35
+		}
+		set_country_flag = GMA_Krokodil_Chosen_flag
+	}
+}
+
+country_event = {
+	#Year Zero
+	id = gma.63
+	title = gma.63.t
+	desc = gma.63.d
+	picture = GFX_war3
+	is_triggered_only = yes
+	option = {
+		#
+		name = gma.63.a
+		ai_chance = {
+			base = 100
+		}
+		add_stability = 0.15
+	}
+}
+
+country_event = {
+	#PMC Coup
+	id = gma.64
+	title = gma.64.t
+	desc = gma.64.d
+	picture = GFX_Vanguardist_Coup
+	is_triggered_only = yes
+	option = {
+		#Goodbye Ideals, Hello Money
+		name = gma.64.a
+		ai_chance = {
+			base = 100
+		}
+		add_popularity = {
+			ideology = nationalist
+			popularity = 0.45
+		}
+		set_politics = {
+			ruling_party = nationalist
+			elections_allowed = no
+			last_election = "2020.12.17"
+			election_frequency = 48
+		}
+		hidden_effect = {
+			set_country_flag = GMA_PMC_Heben_FT
+			focus_unlock = yes
+			add_country_leader_role = {
+				character = GMA_Adam_Barnum_char
+				corps_commander = {
+					traits = {
+						trait_GMA_PMC
+						infantry_officer
+						hill_fighter
+					}
+					skill = 1
+					attack_skill = 1
+					defense_skill = 1
+					planning_skill = 1
+					logistics_skill = 1
+				}
+			}
+		}
+		add_country_leader_role = {
+			character = GMA_Christopher_Heben_char
+			promote_leader = yes
+			country_leader = {
+				ideology = military_junta
+				expire = "1965.1.1.1"
+				traits = {
+					GMA_President_Field_Marshal_CEO
+				}
+			}
+		}
+		set_party_name = {
+			ideology = totalitarian_socialist
+			long_name = GMA_Banned_Party
+			name = GMA_Banned_Party
+		}
+		set_party_name = {
+			ideology = communist
+			long_name = GMA_Banned_Party
+			name = GMA_Banned_Party
+		}
+		set_party_name = {
+			ideology = libertarian_socialist
+			long_name = GMA_Banned_Party
+			name = GMA_Banned_Party
+		}
+		set_party_name = {
+			ideology = social_democrat
+			long_name = GMA_Banned_Party
+			name = GMA_Banned_Party
+		}
+		set_party_name = {
+			ideology = social_liberal
+			long_name = GMA_Banned_Party
+			name = GMA_Banned_Party
+		}
+		set_party_name = {
+			ideology = market_liberal
+			long_name = GMA_Banned_Party
+			name = GMA_Banned_Party
+		}
+		set_party_name = {
+			ideology = conservative
+			long_name = GMA_Banned_Party
+			name = GMA_Banned_Party
+		}
+		set_party_name = {
+			ideology = authoritarian_democrat
+			long_name = GMA_Banned_Party
+			name = GMA_Banned_Party
+		}
+		set_party_name = {
+			ideology = nationalist
+			long_name = GMA_GMPMC_long
+			name = GMA_GMPMC_short
+		}
+		set_party_name = {
+			ideology = fascist
+			long_name = GMA_Banned_Party
+			name = GMA_Banned_Party
+		}
+		set_party_name = {
+			ideology = national_socialist
+			long_name = GMA_Banned_Party
+			name = GMA_Banned_Party
+		}
+	}
+}
+
+country_event = {
+	#Lobsterman Riot
+	id = gma.65
+	title = gma.65.t
+	desc = gma.65.d
+	picture = GFX_Vanguardist_Coup
+	is_triggered_only = yes
+	option = {
+		#Right to Food - Libertarians
+		name = gma.65.a
+		ai_chance = {
+			base = 100
+		}
+	}
+	option = {
+		#Right to Food - Constitutionalists
+		name = gma.65.b
+		ai_chance = {
+			base = 100
+		}
+	}
+	option = {
+		#Right to Food - Federalists
+		name = gma.65.c
+		ai_chance = {
+			base = 100
+		}
+	}
+	option = {
+		#Right to Food - Doesn't Pass, Banyai Revolt
+		name = gma.65.e
+		ai_chance = {
+			base = 100
+		}
+		hidden_effect = {
+			country_event = {
+				id = gma.66
+				days = 20
+			}
+		}
+	}
+}
+
+country_event = {
+	#Banyai's Rebellion
+	id = gma.66
+	title = gma.66.t
+	desc = gma.66.d
+	picture = GFX_Vanguardist_Coup
+	is_triggered_only = yes
+	option = {
+		#Jesus Fuck, Really?
+		name = gma.66.a
+		ai_chance = {
+			base = 100
+		}
+		set_nationality = {
+			target_country = FAA
+			character = GMA_Daniel_Banyai_char
+		}
+		set_nationality = {
+			target_country = FAA
+			character = GMA_Alexander_Booth_char
+		}
+		set_nationality = {
+			target_country = FAA
+			character = GMA_Steven_Carrillo_char
+		}
+		792 = {
+			add_core_of = FAA
+		}
+		1115 = {
+			add_core_of = FAA
+		}
+		release = FAA
+		FAA = {
+			set_cosmetic_tag = FAA_Banyai
+			load_oob = FAA_Banyai_rebellion
+			declare_war_on = {
+				target = GMA
+				type = annex_everything
+			}
+			add_country_leader_role = {
+				character = GMA_Daniel_Banyai_char
+				promote_leader = yes
+				country_leader = {
+					ideology = right_anarchism
+					expire = "1965.1.1.1"
+					traits = {
+					}
+				}
+			}
+		}
+		set_country_flag = GMA_Banyai_Rebellion
+		Hidden_effect = {
+			if = {
+				limit = {
+					is_debug = yes
+				}
+				FAA = {
+					set_cosmetic_tag = FAA_Banyai_Santa
+					set_portraits = {
+						character = GMA_Daniel_Banyai_char
+						civilian = {
+							large = "gfx/leaders/GMA/Santa_Claus.png"
+						}
+						army = {
+							large = "gfx/leaders/GMA/Santa_Claus.png"
+							small = "gfx/interface/ideas/GMA/GMA_david_van_deusen.png"
+						}
+					}
+					GMA_Daniel_Banyai_char = {
+						add_country_leader_trait = GMA_Santa
+					}
+					set_country_leader_name = {
+						ideology = market_liberal
+						name = GMA_Santa_Claus
+					}
+				}
+			}
+		}
+	}
+}
+
+country_event = {
+	#Reclaiming the industry
+	id = gma.67
+	title = gma.67.t
+	desc = gma.67.d
+	picture = GFX_Vanguardist_Coup
+	is_triggered_only = yes
+	option = {
+		#Our work paid off
+		name = gma.67.a
+		ai_chance = {
+			base = 100
+		}
+		random_owned_controlled_state = {
+			limit = {
+				is_owned_by = GMA
+			}
+			add_building_construction = {
+				type = industrial_complex
+				level = 3
+				instant_build = yes
+			}
+			add_extra_state_shared_building_slots = 3
+		}
+		random_owned_controlled_state = {
+			limit = {
+				is_owned_by = GMA
+			}
+			add_building_construction = {
+				type = industrial_complex
+				level = 3
+				instant_build = yes
+			}
+			add_extra_state_shared_building_slots = 3
+		}
+		random_owned_controlled_state = {
+			limit = {
+				is_owned_by = GMA
+			}
+			add_building_construction = {
+				type = industrial_complex
+				level = 3
+				instant_build = yes
+			}
+			add_extra_state_shared_building_slots = 3
+		}
+		random_owned_controlled_state = {
+			limit = {
+				is_owned_by = GMA
+			}
+			add_building_construction = {
+				type = industrial_complex
+				level = 3
+				instant_build = yes
+			}
+			add_extra_state_shared_building_slots = 3
+		}
+		random_owned_controlled_state = {
+			add_building_construction = {
+				type = arms_factory
+				level = 3
+				instant_build = yes
+			}
+			add_extra_state_shared_building_slots = 3
+		}
+		random_owned_controlled_state = {
+			limit = {
+				is_owned_by = GMA
+			}
+			add_building_construction = {
+				type = arms_factory
+				level = 3
+				instant_build = yes
+			}
+			add_extra_state_shared_building_slots = 3
+		}
+	}
+}
+
+country_event = {
+	#Banyai Captures Johnson
+	id = gma.68
+	title = gma.68.t
+	desc = gma.68.d
+	picture = GFX_Vanguardist_Coup
+	trigger = {
+		tag = GMA
+		has_country_flag = GMA_Banyai_Rebellion
+		FAA = {
+			has_full_control_of_state = 918
+		}
+		has_country_leader = {
+			character = GMA_Gary_Johnson_char
+			ruling_only = yes
+		}
+	}
+	option = {
+		#
+		name = gma.68.a
+		ai_chance = {
+			base = 100
+		}
+		retire_character = GMA_Gary_Johnson_char
+		add_country_leader_role = {
+			character = GMA_Vermin_Supreme_Char
+			promote_leader = yes
+			country_leader = {
+				ideology = right_libertarianism
+				traits = {
+					GMA_Chaotic_but_Free
+				}
+			}
+		}
+		add_country_leader_trait = hos_President_of_Congress
+	}
+}
+
+country_event = {
+	#GMA Victory
+	id = gma.72
+	title = gma.72.t
+	desc = gma.72.d
+	picture = GFX_report_USA_flag
+	fire_only_once = yes
+	is_triggered_only = yes
+	immediate = {
+		hidden_effect = {
+			USA_civil_war_over = yes
+			set_country_flag = GMA_United_the_Nation
+			country_event = {
+				id = gma.721
+				days = 10
+			}
+			if = {
+				limit = {
+					has_completed_focus = GMA_Life_Liberty_Happiness					#CoFAR victory
+				}
+				news_event = {
+					id = gma_news.8
+					days = 3
+				}
+			}
+			if = {
+				limit = {
+					has_completed_focus = GMA_Permit_Execute_Authority					#Libertarian GMC victory
+					NOT = {
+						has_completed_focus = GMA_Velvet_Glove_on_an_Iron_Fist
+					}
+				}
+				news_event = {
+					id = gma_news.9
+					days = 3
+				}
+			}
+			if = {
+				limit = {
+					has_completed_focus = GMA_Tread_on_the_Snakes					#PMC GMC victory
+					NOT = {
+						has_completed_focus = GMA_Permit_Execute_Authority
+					}
+				}
+				news_event = {
+					id = gma_news.10
+					days = 3
+				}
+			}
+			if = {
+				limit = {
+					has_completed_focus = GMA_Velvet_Glove_on_an_Iron_Fist					#Repub of America victory
+					has_completed_focus = GMA_Tread_on_the_Snakes
+				}
+				news_event = {
+					id = gma_news.11
+					days = 3
+				}
+			}
+			if = {
+				limit = {
+					has_completed_focus = GMA_call_of_the_wild					#Ted K victory
+					NOT = {
+						has_completed_focus = GMA_Continue_His_Plan
+						has_completed_focus = GMA_A_Step_too_Far_is_Still_a_Step_Forward
+						has_completed_focus = GMA_Demilitarize_The_Vanguard
+						has_completed_focus = GMA_Disband_the_Vanguard
+					}
+				}
+				news_event = {
+					id = gma_news.12
+					days = 3
+				}
+			}
+			if = {
+				limit = {
+					has_completed_focus = GMA_Continue_His_Plan					#Ted K victory, Knight in charge
+				}
+				news_event = {
+					id = gma_news.13
+					days = 3
+				}
+			}
+			if = {
+				limit = {
+					has_completed_focus = GMA_A_Step_too_Far_is_Still_a_Step_Forward					#Ted K victory, Zerzan in charge
+				}
+				news_event = {
+					id = gma_news.14
+					days = 3
+				}
+			}
+			if = {
+				limit = {
+					has_completed_focus = GMA_Demilitarize_The_Vanguard					#Ted K victory, Coronado in charge
+				}
+				news_event = {
+					id = gma_news.15
+				}
+			}
+			if = {
+				limit = {
+					has_completed_focus = GMA_Disband_the_Vanguard					#Ted K victory, Arrow in charge
+				}
+				news_event = {
+					id = gma_news.16
+					days = 3
+				}
+			}
+			if = {
+				limit = {
+					has_completed_focus = GMA_post_scarcity_anarchism					#Simos in charge
+				}
+				news_event = {
+					id = gma_news.17
+					days = 3
+				}
+			}
+		}
+	}
+	option = {
+		name = gma.72.a
+	}
+}
+
+country_event = {
+	#The Honolulu Accords
+	id = gma.721
+	title = gma.721.t
+	desc = gma.721.d
+	picture = GFX_Vanguardist_Coup
+	is_triggered_only = yes
+	option = {
+		#Too Easy
+		name = gma.721.a
+		ai_chance = {
+			base = 100
+		}
+		USN = {
+			transfer_navy = {
+				target = GMA
+			}
+		}
+		GMA = {
+			annex_country = {
+				target = USN
+				transfer_troops = yes
+			}
+		}
+	}
+}
+
+country_event = {
+	#Republic of America Demands Canal Zone
+	id = gma.731
+	title = gma.731.t
+	desc = gma.731.d
+	picture = GFX_Vanguardist_Coup
+	is_triggered_only = yes
+	option = {
+		#We must concede
+		name = gma.731.a
+		ai_chance = {
+			base = 50
+		}
+		GMA = {
+			transfer_state = 685
+		}
+		add_stability = -0.25
+	}
+	option = {
+		#This violates the Torrijos–Carter Treaties
+		name = gma.731.b
+		ai_chance = {
+			base = 50
+		}
+		add_war_support = 0.05
+		GMA = {
+			declare_war_on = {
+				target = PAN
+				type = annex_everything
+			}
+		}
+	}
+}
+
+country_event = {
+	#Republic of America Demands Canal Zone
+	id = gma.732
+	title = gma.732.t
+	desc = gma.732.d
+	picture = GFX_Vanguardist_Coup
+	is_triggered_only = yes
+	option = {
+		#Our new allies to the North
+		name = gma.732.a
+		ai_chance = {
+			base = 80
+		}
+		GMA = {
+			transfer_state = 685
+			add_to_faction = ELS
+		}
+		add_stability = -0.1
+	}
+	option = {
+		#This violates the Torrijos–Carter Treaties
+		name = gma.731.b
+		ai_chance = {
+			base = 20
+		}
+		add_war_support = 0.05
+		GMA = {
+			declare_war_on = {
+				target = ELS
+				type = annex_everything
+			}
+		}
+	}
+}
+
+country_event = {
+	#Republic of America Demands Canal Zone
+	id = gma.733
+	title = gma.733.t
+	desc = gma.733.d
+	picture = GFX_Vanguardist_Coup
+	is_triggered_only = yes
+	option = {
+		#We must concede
+		name = gma.733.a
+		ai_chance = {
+			base = 20
+		}
+		GMA = {
+			transfer_state = 685
+		}
+		add_stability = -0.5
+	}
+	option = {
+		#Fuck you capitalist pigdogs
+		name = gma.733.b
+		ai_chance = {
+			base = 80
+		}
+		add_war_support = 0.2
+		GMA = {
+			declare_war_on = {
+				target = NIC
+				type = annex_everything
+			}
+		}
+	}
+}
+
+country_event = {
+	#Republic of America Offers Trade for Greenland
+	id = gma.74
+	title = gma.74.t
+	desc = gma.74.d
+	picture = GFX_Vanguardist_Coup
+	is_triggered_only = yes
+	option = {
+		#New American Markets? Count me in
+		name = gma.74.a
+		ai_chance = {
+			base = 90
+		}
+		GMA = {
+			transfer_state = 101
+		}
+		DEN = {
+			add_ideas = GMA_Nuuk_Trade_Agreement
+		}
+		101 = {
+			add_claim_by = GMA
+		}
+	}
+	option = {
+		#
+		name = gma.74.a
+		ai_chance = {
+			base = 10
+		}
+		add_stability = -0.05
+	}
+}

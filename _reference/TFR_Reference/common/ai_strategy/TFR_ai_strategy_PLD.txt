@@ -1,0 +1,123 @@
+PLD_wants_mils = {
+	enable = {
+		tag = PLD
+		date < 2025.9.15
+	}
+	abort_when_not_enabled = yes
+	ai_strategy = {
+		type = building_target
+		id = arms_factory
+		value = 60
+	}
+}
+
+PLD_be_ready = {
+
+	enable = {
+		tag = PLD
+	}
+	abort_when_not_enabled = yes
+	
+	ai_strategy = {
+        type = force_build_armies
+        value = 200
+    }
+}
+
+PLD_they_shall_not_pass = {
+	allowed = {
+		original_tag = PLD
+	}
+	enable = {
+		has_war = yes
+	}
+	
+	abort = {
+		always = no
+	}
+	
+	abort_when_not_enabled = yes
+	
+	ai_strategy = {
+		type = dont_defend_ally_borders
+		id = "LIT"
+		value = 1000
+	}
+	ai_strategy = {
+		type = dont_defend_ally_borders
+		id = "LAT"
+		value = 1000
+	}
+	ai_strategy = {
+		type = dont_defend_ally_borders
+		id = "EST"
+		value = 1000
+	}
+	ai_strategy = {
+		type = dont_defend_ally_borders
+		id = "HUN"
+		value = 1000
+	}
+	ai_strategy = {
+		type = dont_defend_ally_borders
+		id = "UKR"
+		value = 1000
+	}
+	ai_strategy = {
+		type = dont_defend_ally_borders
+		id = "ROM"
+		value = 1000
+	}
+}
+
+PLD_hahaahahaha_funnee_button_thats_funny_right_guys = {
+	allowed = {
+		original_tag = PLD
+	}
+	enable = {
+		has_war = yes
+	}
+	
+	abort = {
+		always = no
+	}
+
+	abort_when_not_enabled = yes
+
+	ai_strategy = {
+		type = front_control
+		tag = SOV
+		execution_type = rush
+		execute_order = yes
+		manual_attack = no
+	}
+
+	ai_strategy = {
+		type = consider_weak
+		id = SOV
+		value = 1000
+	}
+
+	ai_strategy = {
+		type = conquer
+		id = SOV
+		value = 1000
+	}
+}
+
+PLD_support_UKR = {
+	enable = {
+		tag = PLD
+		has_war = no
+	}
+	abort = {
+		has_war = yes
+		has_war_with = UKR
+	}
+
+	ai_strategy = {
+		type = support
+		id = "UKR"
+		value = 900
+	}
+}

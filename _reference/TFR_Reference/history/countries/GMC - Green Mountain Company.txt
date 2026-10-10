@@ -1,0 +1,144 @@
+	capital = 794
+
+#	oob = ""
+	
+	set_research_slots = 2
+	set_convoys = 30
+	set_stability = 0.1
+	set_war_support = 0.6
+
+	set_country_flag = shithole_country
+	recruit_character = GMA_Cody_Wilson_char #Libertarian
+	recruit_character = GMA_Airan_Berry_char
+	recruit_character = GMA_Luke_Denman_char
+	recruit_character = GMA_Chris_Osman_char
+	recruit_character = GMA_Christopher_Heben_char
+	recruit_character = GMA_Joseph_Hunter_char
+	recruit_character = GMA_Andrew_Milburn_char
+	recruit_character = GMA_Jordan_Goudreau_char
+	recruit_character = GMA_Adam_Barnum_char
+
+	set_variable = { 
+		var = GMA_recore_pp_var
+		value = 25
+	}
+
+	set_technology = {
+		## Infantry ##
+		
+		infantry_weapons1 = 1
+		infantry_weapons2 = 1
+		motorised_infantry = 1
+		infantry_rifle_upgrade = 1
+		support_weapons = 1
+		night_vision = 1
+		body_armor = 1
+		camouflage = 1
+		
+		## Support Companies ##
+		tech_support = 1
+		tech_engineers = 1
+		tech_recon = 1
+		tech_military_police = 1
+		tech_field_hospital = 1
+		
+		## Armor ##
+		mechanised_infantry1 = 1
+		light_mechanized_infantry1 = 1
+		
+		## Artillery ##
+		gw_artillery = 1
+		interwar_antitank = 1
+		interwar_antiair = 1
+		tank_destroyer1 = 1
+		self_propelled_aa1 = 1
+		
+		## Engineering ##
+		#eng_low
+		
+		## Industry ##
+		#ind_low
+		
+		## Doctrines ##
+		
+	}
+	
+	if = {
+		limit = { has_dlc = "By Blood Alone" }
+			set_technology = {
+				aa_lmg = 1
+				aa_cannon_1 = 1
+				aa_hmg = 1
+				engines_1 = 1
+				engines_2 = 1
+				early_bombs = 1
+				guided_bombs = 1
+				aircraft_construction = 1
+				survivability_studies = 1
+				iw_small_airframe = 1
+				basic_small_airframe = 1
+				iw_medium_airframe = 1
+				basic_medium_airframe = 1
+				iw_large_airframe = 1
+			}
+		else = {
+			set_technology = {
+				CAS1 = 1
+				CAS2 = 1
+				fighter1 = 1
+				fighter2 = 1
+				scout_plane1 = 1
+				transport_plane2 = 1
+			}
+		}
+	}
+	
+	if = {
+		limit = {
+			NOT = { has_dlc = "No Step Back" }
+		}
+		set_technology = {
+			main_battle_tank1 = 1
+			main_battle_tank2 = 1
+			light_tank1 = 1
+		}
+	}
+	if = {
+		limit = {
+			has_dlc = "No Step Back"
+		}
+		set_technology = {
+			gwtank_chassis = 1
+			basic_light_tank_chassis = 1
+			basic_medium_tank_chassis = 1
+			engine_tech_1 = 1
+		}
+	}
+	give_military_access = FAA
+	give_guarantee = FAA
+	set_politics = {	
+		ruling_party = nationalist
+		last_election = "2016.11.8"
+		election_frequency = 48
+		elections_allowed = no
+	}
+
+	set_popularities = {
+		totalitarian_socialist = 0
+		communist = 0
+		libertarian_socialist = 0
+		social_democrat = 0
+		social_liberal = 0
+		market_liberal = 31
+		conservative = 13
+		authoritarian_democrat = 24
+		nationalist = 32
+		fascist = 0 
+		national_socialist = 0
+	}
+
+	add_ideas = {
+		GMC_Spirit_of_the_GMB
+		GMC_Duality_of_the_GMC
+		#GMC_Concord_Pact_idea
+	}

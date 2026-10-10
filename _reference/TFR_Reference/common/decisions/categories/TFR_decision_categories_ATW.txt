@@ -1,0 +1,100 @@
+ATW_balance_of_power_category = {
+	allowed = {
+		original_tag = ATW
+	}
+}
+
+ATW_the_final_solution_category = {
+	icon = generic_deploy_nukes
+	visible_when_empty = yes
+	priority = 5
+	allowed = {
+		original_tag = ATW
+	}
+	visible = {
+		has_country_flag = ATW_on_the_world_stage_flag
+		NOT = {
+			has_global_flag = ATW_end_of_the_world_global
+		}
+	}
+}
+
+ATW_the_final_revolution_category = {
+	icon = GFX_decision_category_ATW_heralds_of_the_apocalypse
+	visible_when_empty = yes
+	priority = 6
+	allowed = {
+		original_tag = ATW
+	}
+	visible = {
+		NOT = {
+			has_global_flag = ATW_end_of_the_world_global
+		}
+		has_completed_focus = ATW_its_only_begun
+	}
+}
+
+ATW_heralds_of_the_apocalypse_category = {
+	icon = GFX_decision_category_ATW_heralds_of_the_apocalypse
+	priority = 5
+	visible_when_empty = yes
+	allowed = {
+		original_tag = ATW
+	}
+	visible = {
+		NOT = {
+			has_global_flag = ATW_end_of_the_world_global
+		}
+		has_completed_focus = ATW_its_only_begun
+	}
+}
+
+ATW_slaying_the_dragon_category = {
+	icon = generic_factory
+	visible_when_empty = yes
+	priority = 4
+	allowed = {
+		original_tag = ATW
+	}
+	visible = {
+		NOT = {
+			has_global_flag = ATW_end_of_the_world_global
+		}
+		has_completed_focus = ATW_slaying_the_dragon
+	}
+}
+
+ATW_american_resistance_category = {
+	priority = 3
+	visible_when_empty = yes
+	allowed = {
+		#original_tag = ATW
+		always = no
+	}
+	visible = {
+		NOT = {
+			has_global_flag = ATW_end_of_the_world_global
+		}
+		has_completed_focus = ATW_consolidate_the_command
+	}
+}
+
+ATW_aryan_liberation_war_category = {
+	visible_when_empty = yes
+	allowed = {
+		has_content_tag = yes
+		NOT = {
+			tag = ATW
+		}
+	}
+	visible = {
+		NOT = {
+			has_global_flag = ATW_end_of_the_world_global
+		}
+		has_global_flag = ATW_aryan_liberation_war_global
+		OR = {
+			has_war_with = ATW
+			is_in_faction_with = CAN
+		}
+	}
+}

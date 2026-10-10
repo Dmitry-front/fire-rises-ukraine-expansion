@@ -1,0 +1,1705 @@
+GER_NATO_war_category = {
+	
+}
+
+#deprecated???
+NATO_war_category = {	
+	NATO_test = {
+		visible = {
+				
+		}
+		icon = GFX_SOV_decision_vdv_training
+		fire_only_once = yes
+		days_remove = 90
+		ai_will_do = {
+			factor = 0
+		}
+		complete_effect = {
+
+		}
+		remove_effect = {
+			
+		}
+		cost = 50
+	}
+}	
+
+NATO_kaliningrad_commission_category = {
+	
+	NATO_commission_timer = {   
+	
+		icon = GFX_decision_border_war   
+		
+		visible = {
+			original_tag = GER
+			NOT = {
+				has_country_flag = NATO_commission_over
+			}
+		}  
+		
+		available = { 
+			hidden_trigger = {
+				tag = NEP
+			}
+		}
+
+		cancel_trigger = {
+			
+		}
+		
+		activation = { 
+			always = no 
+		}
+		
+		visible = {
+
+		}
+		
+		cancel_if_not_visible = yes 
+		is_good = no
+		fire_only_once = yes                            
+		selectable_mission = no  
+		days_mission_timeout = 365
+		
+		cancel_effect = {
+			GER = {
+				
+			}
+		}
+		
+		timeout_effect = {  
+			NATO_who_won_kaliningrad = yes
+			country_event = { id = nato.33 }
+		}
+	}
+	
+	LIT_annex_kaliningrad = {
+		
+		icon = eng_blackshirt_march
+
+		available = {
+			NOT = {
+				has_country_flag = EU_political_action
+			}
+			has_country_flag = LIT_integrated_economy
+			has_country_flag = LIT_relief_programs
+			has_country_flag = LIT_integrated_administrations
+		}
+
+		cost = 100
+		
+		days_remove = 50
+
+		fire_only_once = yes
+
+		visible = {
+			hidden_trigger = {
+				tag = LIT
+				has_global_flag = LIT_won_kaliningrad
+				UNN = {
+					exists = yes
+				}
+			}
+		}
+
+		cancel_if_not_visible = yes
+		
+		complete_effect = {
+			set_country_flag = EU_political_action
+		}
+		
+		remove_effect = {
+			add_state_core = 741
+			annex_country = {
+				target = UNN
+				transfer_troops = yes
+			}
+			set_province_name = { id = 6332 name = koenigsbergas_city }
+		}
+
+		ai_will_do = {
+			factor = 5
+		}
+	}
+	
+	LIT_establish_relief_programs = {
+		
+		icon = eng_blackshirt_march
+
+		available = {
+			NOT = {
+				has_country_flag = EU_political_action
+			}
+		}
+
+		cost = 15
+		
+		days_remove = 50
+
+		fire_only_once = yes
+
+		visible = {
+			hidden_trigger = {
+				tag = LIT
+				has_global_flag = LIT_won_kaliningrad
+				UNN = {
+					exists = yes
+				}
+			}
+		}
+
+		cancel_if_not_visible = yes
+		
+		complete_effect = {
+			set_country_flag = EU_political_action
+		}
+		
+		remove_effect = {
+			set_temp_variable = {
+				var = poverty_development_var_temp
+				value = 0.25
+			}
+			add_academic_development = yes
+			clr_country_flag = EU_political_action
+			set_country_flag = LIT_relief_programs
+		}
+
+		ai_will_do = {
+			factor = 5
+		}
+	}
+	
+	LIT_establish_administrations = {
+		
+		icon = eng_blackshirt_march
+
+		available = {
+			NOT = {
+				has_country_flag = EU_political_action
+			}
+		}
+
+		cost = 15
+		
+		days_remove = 50
+
+		fire_only_once = yes
+
+		visible = {
+			hidden_trigger = {
+				tag = LIT
+				has_global_flag = LIT_won_kaliningrad
+				UNN = {
+					exists = yes
+				}
+			}
+		}
+
+		cancel_if_not_visible = yes
+		
+		complete_effect = {
+			set_country_flag = EU_political_action
+		}
+		
+		remove_effect = {
+			set_temp_variable = {
+				var = academic_development_var_temp
+				value = 0.1
+			}
+			add_academic_development = yes
+			set_temp_variable = {
+				var = industrial_development_var_temp
+				value = 0.1
+			}
+			add_industrial_development = yes	
+			clr_country_flag = EU_political_action
+			set_country_flag = LIT_integrated_administrations
+		}
+
+		ai_will_do = {
+			factor = 5
+		}
+	}
+	
+	LIT_integrate_kaliningrad_industry = {
+		
+		icon = eng_blackshirt_march
+
+		available = {
+			NOT = {
+				has_country_flag = EU_political_action
+			}
+		}
+
+		cost = 15
+		
+		days_remove = 50
+
+		fire_only_once = yes
+
+		visible = {
+			hidden_trigger = {
+				tag = LIT
+				has_global_flag = LIT_won_kaliningrad
+				UNN = {
+					exists = yes
+				}
+			}
+		}
+
+		cancel_if_not_visible = yes
+		
+		complete_effect = {
+			set_country_flag = EU_political_action
+		}
+		
+		remove_effect = {
+			741 = {
+				if = {
+					limit = {
+						free_building_slots = {
+							building = industrial_complex
+							size > 0
+							include_locked = yes
+						}
+					}
+					add_extra_state_shared_building_slots = 2
+					add_building_construction = {
+						type = industrial_complex
+						level = 2
+						instant_build = yes
+					}
+				}
+				if = {
+					limit = {
+						free_building_slots = {
+							building = industrial_complex
+							size > 0
+							include_locked = yes
+						}
+					}
+					add_extra_state_shared_building_slots = 2
+					add_building_construction = {
+						type = dockyard
+						level = 2
+						instant_build = yes
+					}
+				}
+			}
+			clr_country_flag = EU_political_action
+			set_country_flag = LIT_integrated_economy
+		}
+
+		ai_will_do = {
+			factor = 5
+		}
+	}
+	
+	PLD_annex_kaliningrad = {
+		
+		icon = eng_blackshirt_march
+
+		available = {
+			NOT = {
+				has_country_flag = EU_political_action
+			}
+			has_country_flag = PLD_integrated_economy
+			has_country_flag = PLD_relief_programs
+			has_country_flag = PLD_integrated_administrations
+		}
+
+		cost = 100
+		
+		days_remove = 50
+
+		fire_only_once = yes
+
+		visible = {
+			hidden_trigger = {
+				tag = PLD
+				has_global_flag = PLD_won_kaliningrad
+				UNN = {
+					exists = yes
+				}
+			}
+		}
+
+		cancel_if_not_visible = yes
+		
+		complete_effect = {
+			set_country_flag = EU_political_action
+		}
+		
+		remove_effect = {
+			add_state_core = 741
+			annex_country = {
+				target = UNN
+				transfer_troops = yes
+			}
+			set_province_name = { id = 6332 name = krolewiec_city }
+		}
+
+		ai_will_do = {
+			factor = 5
+		}
+	}
+	
+	PLD_establish_relief_programs = {
+		
+		icon = eng_blackshirt_march
+
+		available = {
+			NOT = {
+				has_country_flag = EU_political_action
+			}
+		}
+
+		cost = 15
+		
+		days_remove = 50
+
+		fire_only_once = yes
+
+		visible = {
+			hidden_trigger = {
+				tag = PLD
+				has_global_flag = PLD_won_kaliningrad
+				UNN = {
+					exists = yes
+				}
+			}
+		}
+
+		cancel_if_not_visible = yes
+		
+		complete_effect = {
+			set_country_flag = EU_political_action
+		}
+		
+		remove_effect = {
+			set_temp_variable = {
+				var = poverty_development_var_temp
+				value = 0.25
+			}
+			add_academic_development = yes
+			clr_country_flag = EU_political_action
+			set_country_flag = PLD_relief_programs
+		}
+
+		ai_will_do = {
+			factor = 5
+		}
+	}
+	
+	PLD_establish_administrations = {
+		
+		icon = eng_blackshirt_march
+
+		available = {
+			NOT = {
+				has_country_flag = EU_political_action
+			}
+		}
+
+		cost = 15
+		
+		days_remove = 50
+
+		fire_only_once = yes
+
+		visible = {
+			hidden_trigger = {
+				tag = PLD
+				has_global_flag = PLD_won_kaliningrad
+				UNN = {
+					exists = yes
+				}
+			}
+		}
+
+		cancel_if_not_visible = yes
+		
+		complete_effect = {
+			set_country_flag = EU_political_action
+		}
+		
+		remove_effect = {
+			set_temp_variable = {
+				var = academic_development_var_temp
+				value = 0.1
+			}
+			add_academic_development = yes
+			set_temp_variable = {
+				var = industrial_development_var_temp
+				value = 0.1
+			}
+			add_industrial_development = yes	
+			clr_country_flag = EU_political_action
+			set_country_flag = PLD_integrated_administrations
+		}
+
+		ai_will_do = {
+			factor = 5
+		}
+	}
+	
+	PLD_integrate_kaliningrad_industry = {
+		
+		icon = eng_blackshirt_march
+
+		available = {
+			NOT = {
+				has_country_flag = EU_political_action
+			}
+		}
+
+		cost = 15
+		
+		days_remove = 50
+
+		fire_only_once = yes
+
+		visible = {
+			hidden_trigger = {
+				tag = PLD
+				has_global_flag = PLD_won_kaliningrad
+				UNN = {
+					exists = yes
+				}
+			}
+		}
+
+		cancel_if_not_visible = yes
+		
+		complete_effect = {
+			set_country_flag = EU_political_action
+		}
+		
+		remove_effect = {
+			741 = {
+				if = {
+					limit = {
+						free_building_slots = {
+							building = industrial_complex
+							size > 0
+							include_locked = yes
+						}
+					}
+					add_extra_state_shared_building_slots = 2
+					add_building_construction = {
+						type = industrial_complex
+						level = 2
+						instant_build = yes
+					}
+				}
+				if = {
+					limit = {
+						free_building_slots = {
+							building = industrial_complex
+							size > 0
+							include_locked = yes
+						}
+					}
+					add_extra_state_shared_building_slots = 2
+					add_building_construction = {
+						type = dockyard
+						level = 2
+						instant_build = yes
+					}
+				}
+			}
+			clr_country_flag = EU_political_action
+			set_country_flag = PLD_integrated_economy
+		}
+
+		ai_will_do = {
+			factor = 5
+		}
+	}
+
+	GER_annex_kaliningrad = {
+		
+		icon = eng_blackshirt_march
+
+		available = {
+			NOT = {
+				has_country_flag = EU_political_action
+			}
+			has_country_flag = GER_integrated_economy
+			has_country_flag = GER_relief_programs
+			has_country_flag = GER_integrated_administrations
+		}
+
+		cost = 100
+		
+		days_remove = 50
+
+		fire_only_once = yes
+
+		visible = {
+			hidden_trigger = {
+				tag = GER
+				has_global_flag = GER_won_kaliningrad
+				UNN = {
+					exists = yes
+				}
+			}
+		}
+
+		cancel_if_not_visible = yes
+		
+		complete_effect = {
+			set_country_flag = EU_political_action
+		}
+		
+		remove_effect = {
+			add_state_core = 741
+			annex_country = {
+				target = UNN
+				transfer_troops = yes
+			}
+			set_province_name = { id = 6332 name = konigsberg_city }
+		}
+
+		ai_will_do = {
+			factor = 5
+		}
+	}
+	
+	GER_establish_relief_programs = {
+		
+		icon = eng_blackshirt_march
+
+		available = {
+			NOT = {
+				has_country_flag = EU_political_action
+			}
+		}
+
+		cost = 15
+		
+		days_remove = 50
+
+		fire_only_once = yes
+
+		visible = {
+			hidden_trigger = {
+				tag = GER
+				has_global_flag = GER_won_kaliningrad
+				UNN = {
+					exists = yes
+				}
+			}
+		}
+
+		cancel_if_not_visible = yes
+		
+		complete_effect = {
+			set_country_flag = EU_political_action
+		}
+		
+		remove_effect = {
+			set_temp_variable = {
+				var = poverty_development_var_temp
+				value = 0.25
+			}
+			add_academic_development = yes
+			clr_country_flag = EU_political_action
+			set_country_flag = GER_relief_programs
+		}
+
+		ai_will_do = {
+			factor = 5
+		}
+	}
+	
+	GER_establish_administrations = {
+		
+		icon = eng_blackshirt_march
+
+		available = {
+			NOT = {
+				has_country_flag = EU_political_action
+			}
+		}
+
+		cost = 15
+		
+		days_remove = 50
+
+		fire_only_once = yes
+
+		visible = {
+			hidden_trigger = {
+				tag = GER
+				has_global_flag = GER_won_kaliningrad
+				UNN = {
+					exists = yes
+				}
+			}
+		}
+
+		cancel_if_not_visible = yes
+		
+		complete_effect = {
+			set_country_flag = EU_political_action
+		}
+		
+		remove_effect = {
+			set_temp_variable = {
+				var = academic_development_var_temp
+				value = 0.1
+			}
+			add_academic_development = yes
+			set_temp_variable = {
+				var = industrial_development_var_temp
+				value = 0.1
+			}
+			add_industrial_development = yes	
+			clr_country_flag = EU_political_action
+			set_country_flag = GER_integrated_administrations
+		}
+
+		ai_will_do = {
+			factor = 5
+		}
+	}
+	
+	GER_integrate_kaliningrad_industry = {
+		
+		icon = eng_blackshirt_march
+
+		available = {
+			NOT = {
+				has_country_flag = EU_political_action
+			}
+		}
+
+		cost = 15
+		
+		days_remove = 50
+
+		fire_only_once = yes
+
+		visible = {
+			hidden_trigger = {
+				tag = GER
+				has_global_flag = GER_won_kaliningrad
+				UNN = {
+					exists = yes
+				}
+			}
+		}
+
+		cancel_if_not_visible = yes
+		
+		complete_effect = {
+			set_country_flag = EU_political_action
+		}
+		
+		remove_effect = {
+			741 = {
+				if = {
+					limit = {
+						free_building_slots = {
+							building = industrial_complex
+							size > 0
+							include_locked = yes
+						}
+					}
+					add_extra_state_shared_building_slots = 2
+					add_building_construction = {
+						type = industrial_complex
+						level = 2
+						instant_build = yes
+					}
+				}
+				if = {
+					limit = {
+						free_building_slots = {
+							building = industrial_complex
+							size > 0
+							include_locked = yes
+						}
+					}
+					add_extra_state_shared_building_slots = 2
+					add_building_construction = {
+						type = dockyard
+						level = 2
+						instant_build = yes
+					}
+				}
+			}
+			clr_country_flag = EU_political_action
+			set_country_flag = GER_integrated_economy
+		}
+
+		ai_will_do = {
+			factor = 5
+		}
+	}
+	
+	GER_prop_up_kaliningrad_industry = {
+
+		icon = eng_blackshirt_march
+
+		available = {
+			tag = GER
+			has_completed_focus = GER_eastern_european_reconstruction_effort
+			NOT = {
+				has_country_flag = EU_political_action
+			}
+		}
+
+		cost = 15
+		
+		days_remove = 30
+		fire_only_once = yes
+
+		visible = {
+			tag = GER
+			hidden_trigger = {
+				NOT = {
+					OR = {
+						has_global_flag = PLD_won_kaliningrad
+						has_global_flag = LIT_won_kaliningrad
+						has_global_flag = GER_won_kaliningrad
+						has_global_flag = UNN_won_kaliningrad
+					}
+				}
+				UNN = {
+					exists = yes
+				}
+			}
+		}
+
+		cancel_if_not_visible = yes
+		
+		complete_effect = {
+			add_stability = 0.05
+			add_political_power = 75
+			set_temp_variable = {
+				var = debt_var_temp
+				value = 150
+			}
+			add_debt = yes
+			set_country_flag = EU_political_action
+		}
+		
+		remove_effect = {
+			741 = {
+				if = {
+					limit = {
+						free_building_slots = {
+							building = industrial_complex
+							size > 0
+							include_locked = yes
+						}
+					}
+					add_extra_state_shared_building_slots = 3
+					add_building_construction = {
+						type = industrial_complex
+						level = 3
+						instant_build = yes
+					}
+				}
+			}
+			
+			GER = {
+				set_temp_variable = {
+					var = GER_kaliningrad_var_temp
+					value = 0.1
+				}
+				GER_add_kaliningrad = yes
+			}
+			clr_country_flag = EU_political_action
+		}
+
+		ai_will_do = {
+			factor = 5
+		}
+	}
+	
+	GER_german_actions_in_nato_war = {
+
+		icon = eng_blackshirt_march
+
+		available = {
+			NOT = {
+				has_country_flag = EU_political_action
+			}
+		}
+
+		cost = 15
+		
+		days_remove = 5
+		days_re_enable = 15
+		fire_only_once = no
+
+		visible = {
+			tag = GER
+			hidden_trigger = {
+				NOT = {
+					OR = {
+						has_global_flag = PLD_won_kaliningrad
+						has_global_flag = LIT_won_kaliningrad
+						has_global_flag = GER_won_kaliningrad
+						has_global_flag = UNN_won_kaliningrad
+					}
+				}
+				UNN = {
+					exists = yes
+				}
+			}
+		}
+
+		cancel_if_not_visible = yes
+		
+		complete_effect = {
+			set_country_flag = EU_political_action
+		}
+		
+		remove_effect = {
+			GER = {
+				set_temp_variable = {
+					var = GER_kaliningrad_var_temp
+					value = 0.05
+				}
+				GER_add_kaliningrad = yes
+			}
+			clr_country_flag = EU_political_action
+		}
+
+		ai_will_do = {
+			factor = 5
+		}
+	}
+	
+	GER_denounce_german_history = {
+
+		icon = eng_blackshirt_march
+
+		available = {
+			NOT = {
+				has_country_flag = EU_political_action
+			}
+		}
+
+		cost = 15
+		
+		days_remove = 5
+		days_re_enable = 60
+		fire_only_once = no
+
+		visible = {
+			OR = {
+				tag = PLD
+				tag = UNN
+				tag = LIT
+			}
+			hidden_trigger = {
+				NOT = {
+					OR = {
+						has_global_flag = PLD_won_kaliningrad
+						has_global_flag = LIT_won_kaliningrad
+						has_global_flag = GER_won_kaliningrad
+						has_global_flag = UNN_won_kaliningrad
+					}
+				}
+				UNN = {
+					exists = yes
+				}
+			}
+		}
+
+		cancel_if_not_visible = yes
+		
+		complete_effect = {
+			set_country_flag = EU_political_action
+		}
+		
+		remove_effect = {
+			GER = {
+				set_temp_variable = {
+					var = GER_kaliningrad_var_temp
+					value = -0.05
+				}
+				GER_add_kaliningrad = yes
+			}
+			clr_country_flag = EU_political_action
+		}
+
+		ai_will_do = {
+			factor = 5
+		}
+	}
+	
+	GER_set_up_humanitarian_efforts = {
+
+		icon = eng_blackshirt_march
+
+		available = {
+			NOT = {
+				has_country_flag = EU_political_action
+			}
+		}
+
+		cost = 15
+		
+		days_remove = 5
+		days_re_enable = 15
+		fire_only_once = no
+
+		visible = {
+			OR = {
+				tag = PLD
+				tag = UNN
+				tag = LIT
+				tag = GER
+			}
+			hidden_trigger = {
+				NOT = {
+					OR = {
+						has_global_flag = PLD_won_kaliningrad
+						has_global_flag = LIT_won_kaliningrad
+						has_global_flag = GER_won_kaliningrad
+						has_global_flag = UNN_won_kaliningrad
+					}
+				}
+				UNN = {
+					exists = yes
+				}
+			}
+		}
+
+		cancel_if_not_visible = yes
+		
+		complete_effect = {
+			set_country_flag = EU_political_action
+		}
+		
+		remove_effect = {
+			if = {
+				limit = {
+					tag = GER
+				}
+				GER = {
+					set_temp_variable = {
+						var = GER_kaliningrad_var_temp
+						value = 0.05
+					}
+					GER_add_kaliningrad = yes
+				}
+			}
+			if = {
+				limit = {
+					tag = PLD
+				}
+				PLD = {
+					set_temp_variable = {
+						var = PLD_kaliningrad_var_temp
+						value = 0.05
+					}
+					PLD_add_kaliningrad = yes
+				}
+			}
+			if = {
+				limit = {
+					tag = LIT
+				}
+				LIT = {
+					set_temp_variable = {
+						var = LIT_kaliningrad_var_temp
+						value = 0.05
+					}
+					LIT_add_kaliningrad = yes
+				}
+			}
+			if = {
+				limit = {
+					tag = UNN
+				}
+				UNN = {
+					set_temp_variable = {
+						var = UNN_kaliningrad_var_temp
+						value = 0.05
+					}
+					UNN_add_kaliningrad = yes
+				}
+			}
+			clr_country_flag = EU_political_action
+		}
+
+		ai_will_do = {
+			factor = 5
+		}
+	}
+	
+	GER_denounce_un_history = {
+
+		icon = eng_blackshirt_march
+
+		available = {
+			NOT = {
+				has_country_flag = EU_political_action
+			}
+		}
+
+		cost = 15
+		
+		days_remove = 5
+		days_re_enable = 15
+		fire_only_once = no
+
+		visible = {
+			OR = {
+				tag = PLD
+				tag = GER
+				tag = LIT
+			}
+			hidden_trigger = {
+				NOT = {
+					OR = {
+						has_global_flag = PLD_won_kaliningrad
+						has_global_flag = LIT_won_kaliningrad
+						has_global_flag = GER_won_kaliningrad
+						has_global_flag = UNN_won_kaliningrad
+					}
+				}
+				UNN = {
+					exists = yes
+				}
+			}
+		}
+
+		cancel_if_not_visible = yes
+		
+		complete_effect = {
+			set_country_flag = EU_political_action
+		}
+		
+		remove_effect = {
+			UNN = {
+				set_temp_variable = {
+					var = UNN_kaliningrad_var_temp
+					value = -0.05
+				}
+				UNN_add_kaliningrad = yes
+			}
+			clr_country_flag = EU_political_action
+		}
+
+		ai_will_do = {
+			factor = 5
+		}
+	}
+	
+	GER_denounce_polish_nationalism = {
+
+		icon = eng_blackshirt_march
+
+		available = {
+			NOT = {
+				has_country_flag = EU_political_action
+			}
+		}
+
+		cost = 15
+		
+		days_remove = 5
+		days_re_enable = 15
+		fire_only_once = no
+
+		visible = {
+			OR = {
+				tag = UNN
+				tag = GER
+				tag = LIT
+			}
+			hidden_trigger = {
+				NOT = {
+					OR = {
+						has_global_flag = PLD_won_kaliningrad
+						has_global_flag = LIT_won_kaliningrad
+						has_global_flag = GER_won_kaliningrad
+						has_global_flag = UNN_won_kaliningrad
+					}
+				}
+				UNN = {
+					exists = yes
+				}
+			}
+		}
+
+		cancel_if_not_visible = yes
+		
+		complete_effect = {
+			set_country_flag = EU_political_action
+		}
+		
+		remove_effect = {
+			PLD = {
+				set_temp_variable = {
+					var = PLD_kaliningrad_var_temp
+					value = -0.05
+				}
+				PLD_add_kaliningrad = yes
+			}
+			clr_country_flag = EU_political_action
+		}
+
+		ai_will_do = {
+			factor = 5
+			
+		}
+	}
+	
+	GER_denounce_lithuanian_nationalism = {
+
+		icon = eng_blackshirt_march
+
+		available = {
+			NOT = {
+				has_country_flag = EU_political_action
+			}
+		}
+
+		cost = 15
+		
+		days_remove = 5
+		days_re_enable = 15
+		fire_only_once = no
+
+		visible = {
+			OR = {
+				tag = UNN
+				tag = GER
+				tag = PLD
+			}
+			hidden_trigger = {
+				NOT = {
+					OR = {
+						has_global_flag = PLD_won_kaliningrad
+						has_global_flag = LIT_won_kaliningrad
+						has_global_flag = GER_won_kaliningrad
+						has_global_flag = UNN_won_kaliningrad
+					}
+				}
+				UNN = {
+					exists = yes
+				}
+			}
+		}
+
+		cancel_if_not_visible = yes
+		
+		complete_effect = {
+			set_country_flag = EU_political_action
+		}
+		
+		remove_effect = {
+			LIT = {
+				set_temp_variable = {
+					var = LIT_kaliningrad_var_temp
+					value = -0.05
+				}
+				LIT_add_kaliningrad = yes
+			}
+			clr_country_flag = EU_political_action
+		}
+
+		ai_will_do = {
+			factor = 5
+			
+		}
+	}
+}
+
+SOV_second_NATO_war_category = {
+
+	SOV_tatical_nuke_st_petersburg = {
+
+		icon = eng_blackshirt_march
+
+		available = {
+
+		}
+
+		cost = 100
+		
+		days_remove = 5
+
+		fire_only_once = yes
+
+		visible = {
+			OR = {
+				tag = ENG
+				tag = FRA
+				num_of_nukes > 1
+			}
+			is_in_faction_with = ENG
+		}
+
+		cancel_if_not_visible = yes
+		
+		complete_effect = {
+
+		}
+		
+		remove_effect = {
+			if = {
+				limit = {
+					NOT = {
+						has_global_flag = SOV_nuked_deployed
+					}
+				}
+				sound_effect = siren_sound_effect
+				every_country = {
+					goto_province = 525 
+				}
+				set_global_flag = SOV_nuked_deployed
+			}
+			launch_nuke = {
+				province = 3151
+				controller = SOV
+				use_nuke = yes
+			}
+			set_global_flag = SOV_st_petersburg_nuked
+		}
+
+		ai_will_do = {
+			factor = 0
+			
+			modifier = {
+				factor = 0.5
+				has_global_flag = SOV_kiev_nuked
+			}
+			modifier = {
+				factor = 0.5
+				has_global_flag = SOV_budapest_nuked
+			}
+			modifier = {
+				factor = 0.5
+				has_global_flag = SOV_berlin_nuked
+			}
+			modifier = {
+				factor = 0.5
+				has_global_flag = SOV_bucharest_nuked
+			}
+		}
+	}
+	
+	SOV_tatical_nuke_moscow = {
+
+		icon = eng_blackshirt_march
+
+		available = {
+
+		}
+
+		cost = 100
+		
+		days_remove = 5
+
+		fire_only_once = yes
+
+		visible = {
+			OR = {
+				tag = ENG
+				tag = FRA
+				num_of_nukes > 1
+			}
+			is_in_faction_with = ENG
+		}
+
+		cancel_if_not_visible = yes
+		
+		complete_effect = {
+
+		}
+		
+		remove_effect = {
+			if = {
+				limit = {
+					NOT = {
+						has_global_flag = SOV_nuked_deployed
+					}
+				}
+				sound_effect = siren_sound_effect
+				every_country = {
+					goto_province = 525 
+				}
+				set_global_flag = SOV_nuked_deployed
+			}
+			launch_nuke = {
+				province = 6380
+				controller = SOV
+				use_nuke = yes
+			}
+			set_global_flag = SOV_moscow_nuked
+		}
+
+		ai_will_do = {
+			factor = 0
+			
+			modifier = {
+				factor = 0.5
+				has_global_flag = SOV_kiev_nuked
+			}
+			modifier = {
+				factor = 0.5
+				has_global_flag = SOV_budapest_nuked
+			}
+			modifier = {
+				factor = 0.5
+				has_global_flag = SOV_berlin_nuked
+			}
+			modifier = {
+				factor = 0.5
+				has_global_flag = SOV_bucharest_nuked
+			}
+			modifier = {
+				factor = 0.5
+				has_global_flag = SOV_warsaw_nuked
+			}
+		}
+	}
+	
+	SOV_tatical_nuke_volgograd = {
+
+		icon = eng_blackshirt_march
+
+		available = {
+
+		}
+
+		cost = 100
+		
+		days_remove = 5
+
+		fire_only_once = yes
+
+		visible = {
+			OR = {
+				tag = ENG
+				tag = FRA
+				num_of_nukes > 1
+			}
+			is_in_faction_with = ENG
+		}
+
+		cancel_if_not_visible = yes
+		
+		complete_effect = {
+
+		}
+		
+		remove_effect = {
+			if = {
+				limit = {
+					NOT = {
+						has_global_flag = SOV_nuked_deployed
+					}
+				}
+				sound_effect = siren_sound_effect
+				every_country = {
+					goto_province = 525 
+				}
+				set_global_flag = SOV_nuked_deployed
+			}
+			launch_nuke = {
+				province = 6380
+				controller = SOV
+				use_nuke = yes
+			}
+			set_global_flag = SOV_volgograd_nuked
+		}
+
+		ai_will_do = {
+			factor = 0
+			
+			modifier = {
+				factor = 0.5
+				has_global_flag = SOV_kiev_nuked
+			}
+			modifier = {
+				factor = 0.5
+				has_global_flag = SOV_budapest_nuked
+			}
+			modifier = {
+				factor = 0.5
+				has_global_flag = SOV_berlin_nuked
+			}
+			modifier = {
+				factor = 0.5
+				has_global_flag = SOV_bucharest_nuked
+			}
+			modifier = {
+				factor = 0.5
+				has_global_flag = SOV_warsaw_nuked
+			}
+		}
+	}
+	
+	SOV_tatical_nuke_belgorod = {
+
+		icon = eng_blackshirt_march
+
+		available = {
+
+		}
+
+		cost = 100
+		
+		days_remove = 5
+
+		fire_only_once = yes
+
+		visible = {
+			OR = {
+				tag = ENG
+				tag = FRA
+				num_of_nukes > 1
+			}
+			is_in_faction_with = ENG
+		}
+
+		cancel_if_not_visible = yes
+		
+		complete_effect = {
+
+		}
+		
+		remove_effect = {
+			if = {
+				limit = {
+					NOT = {
+						has_global_flag = SOV_nuked_deployed
+					}
+				}
+				sound_effect = siren_sound_effect
+				every_country = {
+					goto_province = 525 
+				}
+				set_global_flag = SOV_nuked_deployed
+			}
+			launch_nuke = {
+				province = 6517
+				controller = SOV
+				use_nuke = yes
+			}
+			set_global_flag = SOV_belgorod_nuked
+		}
+
+		ai_will_do = {
+			factor = 0
+			
+			modifier = {
+				factor = 0.5
+				has_global_flag = SOV_kiev_nuked
+			}
+			modifier = {
+				factor = 0.5
+				has_global_flag = SOV_budapest_nuked
+			}
+			modifier = {
+				factor = 0.5
+				has_global_flag = SOV_berlin_nuked
+			}
+			modifier = {
+				factor = 0.5
+				has_global_flag = SOV_bucharest_nuked
+			}
+			modifier = {
+				factor = 0.5
+				has_global_flag = SOV_warsaw_nuked
+			}
+		}
+	}
+	
+	SOV_tatical_nuke_rostov = {
+
+		icon = eng_blackshirt_march
+
+		available = {
+
+		}
+
+		cost = 100
+		
+		days_remove = 5
+
+		fire_only_once = yes
+
+		visible = {
+			OR = {
+				tag = ENG
+				tag = FRA
+				num_of_nukes > 1
+			}
+			is_in_faction_with = ENG
+		}
+
+		cancel_if_not_visible = yes
+		
+		complete_effect = {
+
+		}
+		
+		remove_effect = {
+			if = {
+				limit = {
+					NOT = {
+						has_global_flag = SOV_nuked_deployed
+					}
+				}
+				sound_effect = siren_sound_effect
+				every_country = {
+					goto_province = 525 
+				}
+				set_global_flag = SOV_nuked_deployed
+			}
+			launch_nuke = {
+				province = 9417
+				controller = SOV
+				use_nuke = yes
+			}
+			set_global_flag = SOV_rostov_nuked
+		}
+
+		ai_will_do = {
+			factor = 0
+			
+			modifier = {
+				factor = 0.5
+				has_global_flag = SOV_kiev_nuked
+			}
+			modifier = {
+				factor = 0.5
+				has_global_flag = SOV_budapest_nuked
+			}
+			modifier = {
+				factor = 0.5
+				has_global_flag = SOV_berlin_nuked
+			}
+			modifier = {
+				factor = 0.5
+				has_global_flag = SOV_bucharest_nuked
+			}
+			modifier = {
+				factor = 0.5
+				has_global_flag = SOV_warsaw_nuked
+			}
+		}
+	}
+	
+	
+	ENG_activate_nuclear_arsenal = {
+
+		icon = eng_blackshirt_march
+
+		available = {
+
+		}
+
+		cost = 100
+		
+		days_remove = 5
+
+		fire_only_once = yes
+
+		visible = {
+			tag = ENG
+
+		}
+
+		cancel_if_not_visible = yes
+		
+		complete_effect = {
+
+		}
+		
+		remove_effect = {
+			set_country_flag = activated_nuke_arsenal
+		}
+
+		ai_will_do = {
+			factor = 0
+			
+			modifier = {
+				factor = 0.2
+				has_global_flag = SOV_kiev_nuked
+			}
+			modifier = {
+				factor = 0.2
+				has_global_flag = SOV_budapest_nuked
+			}
+			modifier = {
+				factor = 0.2
+				has_global_flag = SOV_berlin_nuked
+			}
+			modifier = {
+				factor = 0.2
+				has_global_flag = SOV_bucharest_nuked
+			}
+			modifier = {
+				factor = 0.2
+				has_global_flag = SOV_warsaw_nuked
+			}
+		}
+	}
+	
+	FRA_activate_nuclear_arsenal = {
+
+		icon = eng_blackshirt_march
+
+		available = {
+
+		}
+
+		cost = 100
+		
+		days_remove = 5
+
+		fire_only_once = yes
+
+		visible = {
+			tag = FRA
+		}
+
+		cancel_if_not_visible = yes
+		
+		complete_effect = {
+
+		}
+		
+		remove_effect = {
+			set_country_flag = activated_nuke_arsenal
+		}
+
+		ai_will_do = {
+			factor = 0
+			
+			modifier = {
+				factor = 0.2
+				has_global_flag = SOV_kiev_nuked
+			}
+			modifier = {
+				factor = 0.2
+				has_global_flag = SOV_budapest_nuked
+			}
+			modifier = {
+				factor = 0.2
+				has_global_flag = SOV_berlin_nuked
+			}
+			modifier = {
+				factor = 0.2
+				has_global_flag = SOV_bucharest_nuked
+			}
+			modifier = {
+				factor = 0.2
+				has_global_flag = SOV_warsaw_nuked
+			}
+		}
+	}
+}

@@ -1,0 +1,555 @@
+GER_has_federalization_greater_than_or_equals = {
+	custom_trigger_tooltip = {
+		tooltip = GER_has_federalization_greater_than_or_equals_tooltip
+		NOT = {
+			check_variable = {
+				eu_fed_var > eu_fed_var_trigger_temp
+			}
+		}
+	}
+}
+
+GER_has_federalization_less_than = {
+	custom_trigger_tooltip = {
+		tooltip = GER_has_federalization_less_than_tooltip
+		check_variable = {
+			eu_fed_var < eu_fed_var_trigger_temp
+		}
+	}
+}
+
+#Bundestag
+
+GER_has_bundestag_support_greater_than = {
+	if = {
+		limit = {
+			has_dynamic_modifier = {
+				modifier = GER_bundestag_dynamic
+			}
+		}
+		custom_trigger_tooltip = {
+			tooltip = GER_has_bundestag_suppport_greater_than_tooltip
+			check_variable = {
+				var = GER_support_bundestag_total_var
+				value = GER_support_bundestag_total_trigger_var_temp
+				compare = greater_than
+			}
+		}
+	}
+}
+
+GER_has_die_linke_popularity_greater_than_or_equals = {
+	custom_trigger_tooltip = {
+		tooltip = GER_has_die_linke_popularity_more_than_tt
+		check_variable = {
+			var = GER_die_linke_popularity_var
+			value = GER_die_linke_popularity_trigger_temp
+			compare = greater_than_or_equals
+		}
+	}
+}
+
+GER_has_greens_popularity_greater_than_or_equals = {
+	custom_trigger_tooltip = {
+		tooltip = GER_has_greens_popularity_more_than_tt
+		check_variable = {
+			var = GER_greens_popularity_var
+			value = GER_greens_popularity_trigger_temp
+			compare = greater_than_or_equals
+		}
+	}
+}
+
+GER_has_spd_popularity_greater_than_or_equals = {
+	custom_trigger_tooltip = {
+		tooltip = GER_has_spd_popularity_more_than_tt
+		check_variable = {
+			var = GER_spd_popularity_var
+			value = GER_spd_popularity_trigger_temp
+			compare = greater_than_or_equals
+		}
+	}
+}
+
+GER_has_fdp_popularity_greater_than_or_equals = {
+	custom_trigger_tooltip = {
+		tooltip = GER_has_fdp_popularity_more_than_tt
+		check_variable = {
+			var = GER_fdp_popularity_var
+			value = GER_fdp_popularity_trigger_temp
+			compare = greater_than_or_equals
+		}
+	}
+}
+
+GER_has_cdu_popularity_greater_than_or_equals = {
+	custom_trigger_tooltip = {
+		tooltip = GER_has_cdu_popularity_more_than_tt
+		check_variable = {
+			var = GER_cdu_popularity_var
+			value = GER_cdu_popularity_trigger_temp
+			compare = greater_than_or_equals
+		}
+	}
+}
+
+GER_has_afd_popularity_greater_than_or_equals = {
+	custom_trigger_tooltip = {
+		tooltip = GER_has_afd_popularity_more_than_tt
+		check_variable = {
+			var = GER_afd_popularity_var
+			value = GER_afd_popularity_trigger_temp
+			compare = greater_than_or_equals
+		}
+	}
+}
+
+GER_has_ruling_popularity_greater_than_or_equals = {
+	if = {
+		limit = {
+			has_government = communist
+		}
+		set_temp_variable = {
+			var = GER_die_linke_popularity_trigger_temp
+			value = GER_ruling_popularity_trigger_temp
+		}
+		GER_has_die_linke_popularity_greater_than_or_equals = yes
+	}
+	else_if = {
+		limit = {
+			has_government = libertarian_socialist
+		}
+		set_temp_variable = {
+			var = GER_greens_popularity_trigger_temp
+			value = GER_ruling_popularity_trigger_temp
+		}
+		GER_has_greens_popularity_greater_than_or_equals = yes
+	}
+	else_if = {
+		limit = {
+			has_government = social_democrat
+		}
+		set_temp_variable = {
+			var = GER_spd_popularity_trigger_temp
+			value = GER_ruling_popularity_trigger_temp
+		}
+		GER_has_spd_popularity_greater_than_or_equals = yes
+	}
+	else_if = {
+		limit = {
+			has_government = market_liberal
+		}
+		set_temp_variable = {
+			var = GER_fdp_popularity_trigger_temp
+			value = GER_ruling_popularity_trigger_temp
+		}
+		GER_has_fdp_popularity_greater_than_or_equals = yes
+	}
+	else_if = {
+		limit = {
+			has_government = conservative
+		}
+		set_temp_variable = {
+			var = GER_cdu_popularity_trigger_temp
+			value = GER_ruling_popularity_trigger_temp
+		}
+		GER_has_cdu_popularity_greater_than_or_equals = yes
+	}
+	else_if = {
+		limit = {
+			has_government = authoritarian_democrat
+		}
+		set_temp_variable = {
+			var = GER_afd_popularity_trigger_temp
+			value = GER_ruling_popularity_trigger_temp
+		}
+		GER_has_afd_popularity_greater_than_or_equals = yes
+	}
+}
+
+GER_has_die_linke_popularity_less_than = {
+	custom_trigger_tooltip = {
+		tooltip = GER_has_die_linke_popularity_less_than_tt
+		check_variable = {
+			var = GER_die_linke_popularity_var
+			value = GER_die_linke_popularity_trigger_temp
+			compare = less_than
+		}
+	}
+}
+
+GER_has_greens_popularity_less_than = {
+	custom_trigger_tooltip = {
+		tooltip = GER_has_greens_popularity_less_than_tt
+		check_variable = {
+			var = party_popularity@social_liberal
+			value = GER_greens_popularity_trigger_temp
+			compare = less_than
+		}
+	}
+}
+
+GER_has_spd_popularity_less_than = {
+	custom_trigger_tooltip = {
+		tooltip = GER_has_spd_popularity_less_than_tt
+		check_variable = {
+			var = GER_spd_popularity_var
+			value = GER_spd_popularity_trigger_temp
+			compare = less_than
+		}
+	}
+}
+
+GER_has_fdp_popularity_less_than = {
+	custom_trigger_tooltip = {
+		tooltip = GER_has_fdp_popularity_less_than_tt
+		check_variable = {
+			var = GER_fdp_popularity_var
+			value = GER_fdp_popularity_trigger_temp
+			compare = less_than
+		}
+	}
+}
+
+GER_has_cdu_popularity_less_than = {
+	custom_trigger_tooltip = {
+		tooltip = GER_has_cdu_popularity_less_than_tt
+		check_variable = {
+			var = GER_cdu_popularity_var
+			value = GER_cdu_popularity_trigger_temp
+			compare = less_than
+		}
+	}
+}
+
+GER_has_afd_popularity_less_than = {
+	custom_trigger_tooltip = {
+		tooltip = GER_has_afd_popularity_less_than_tt
+		check_variable = {
+			var = GER_afd_popularity_var
+			value = GER_afd_popularity_trigger_temp
+			compare = less_than
+		}
+	}
+}
+
+GER_has_ruling_popularity_less_than = {
+	if = {
+		limit = {
+			has_government = libertarian_socialist
+		}
+		set_temp_variable = {
+			var = GER_die_linke_popularity_trigger_temp
+			value = GER_ruling_popularity_trigger_temp
+		}
+		GER_has_die_linke_popularity_less_than = yes
+	}
+	else_if = {
+		limit = {
+			has_government = social_liberal
+		}
+		set_temp_variable = {
+			var = GER_greens_popularity_trigger_temp
+			value = GER_ruling_popularity_trigger_temp
+		}
+		GER_has_greens_popularity_less_than = yes
+	}
+	else_if = {
+		limit = {
+			has_government = social_democrat
+		}
+		set_temp_variable = {
+			var = GER_spd_popularity_trigger_temp
+			value = GER_ruling_popularity_trigger_temp
+		}
+		GER_has_spd_popularity_less_than = yes
+	}
+	else_if = {
+		limit = {
+			has_government = market_liberal
+		}
+		set_temp_variable = {
+			var = GER_fdp_popularity_trigger_temp
+			value = GER_ruling_popularity_trigger_temp
+		}
+		GER_has_fdp_popularity_less_than = yes
+	}
+	else_if = {
+		limit = {
+			has_government = conservative
+		}
+		set_temp_variable = {
+			var = GER_cdu_popularity_trigger_temp
+			value = GER_ruling_popularity_trigger_temp
+		}
+		GER_has_cdu_popularity_less_than = yes
+	}
+	else_if = {
+		limit = {
+			has_government = authoritarian_democrat
+		}
+		set_temp_variable = {
+			var = GER_afd_popularity_trigger_temp
+			value = GER_ruling_popularity_trigger_temp
+		}
+		GER_has_afd_popularity_less_than = yes
+	}
+}
+
+GER_has_die_linke_support_greater_than_or_equals = {
+	custom_trigger_tooltip = {
+		tooltip = GER_has_die_linke_support_greater_than_or_equals_tt
+		check_variable = {
+			var = GER_support_die_linke_var
+			value = GER_die_linke_support_trigger_temp
+			compare = greater_than_or_equals
+		}
+	}
+}
+
+GER_has_greens_support_greater_than_or_equals = {
+	custom_trigger_tooltip = {
+		tooltip = GER_has_greens_support_greater_than_or_equals_tt
+		check_variable = {
+			var = GER_support_greens_var
+			value = GER_greens_support_trigger_temp
+			compare = greater_than_or_equals
+		}
+	}
+}
+
+GER_has_spd_support_greater_than_or_equals = {
+	custom_trigger_tooltip = {
+		tooltip = GER_has_spd_support_greater_than_or_equals_tt
+		check_variable = {
+			var = GER_support_spd_var
+			value = GER_spd_support_trigger_temp
+			compare = greater_than_or_equals
+		}
+	}
+}
+
+GER_has_fdp_support_greater_than_or_equals = {
+	custom_trigger_tooltip = {
+		tooltip = GER_has_fdp_support_greater_than_or_equals_tt
+		check_variable = {
+			var = GER_support_fdp_var
+			value = GER_fdp_support_trigger_temp
+			compare = greater_than_or_equals
+		}
+	}
+}
+
+GER_has_cdu_support_greater_than_or_equals = {
+	custom_trigger_tooltip = {
+		tooltip = GER_has_cdu_support_greater_than_or_equals_tt
+		check_variable = {
+			var = GER_support_cdu_var
+			value = GER_cdu_support_trigger_temp
+			compare = greater_than_or_equals
+		}
+	}
+}
+
+GER_has_afd_support_greater_than_or_equals = {
+	custom_trigger_tooltip = {
+		tooltip = GER_has_afd_support_greater_than_or_equals_tt
+		check_variable = {
+			var = GER_support_afd_var
+			value = GER_afd_support_trigger_temp
+			compare = greater_than_or_equals
+		}
+	}
+}
+
+GER_has_ruling_support_greater_than_or_equals = {
+	if = {
+		limit = {
+			has_government = libertarian_socialist
+		}
+		set_temp_variable = {
+			var = GER_die_linke_support_trigger_temp
+			value = GER_ruling_support_trigger_temp
+		}
+		GER_has_die_linke_support_greater_than_or_equals = yes
+	}
+	else_if = {
+		limit = {
+			has_government = social_liberal
+		}
+		set_temp_variable = {
+			var = GER_greens_support_trigger_temp
+			value = GER_ruling_support_trigger_temp
+		}
+		GER_has_greens_support_greater_than_or_equals = yes
+	}
+	else_if = {
+		limit = {
+			has_government = social_democrat
+		}
+		set_temp_variable = {
+			var = GER_spd_support_trigger_temp
+			value = GER_ruling_support_trigger_temp
+		}
+		GER_has_spd_support_greater_than_or_equals = yes
+	}
+	else_if = {
+		limit = {
+			has_government = market_liberal
+		}
+		set_temp_variable = {
+			var = GER_fdp_support_trigger_temp
+			value = GER_ruling_support_trigger_temp
+		}
+		GER_has_fdp_support_greater_than_or_equals = yes
+	}
+	else_if = {
+		limit = {
+			has_government = conservative
+		}
+		set_temp_variable = {
+			var = GER_cdu_support_trigger_temp
+			value = GER_ruling_support_trigger_temp
+		}
+		GER_has_cdu_support_greater_than_or_equals = yes
+	}
+	else_if = {
+		limit = {
+			has_government = authoritarian_democrat
+		}
+		set_temp_variable = {
+			var = GER_afd_support_trigger_temp
+			value = GER_ruling_support_trigger_temp
+		}
+		GER_has_afd_support_greater_than_or_equals = yes
+	}
+}
+
+GER_has_die_linke_support_less_than = {
+	custom_trigger_tooltip = {
+		tooltip = GER_has_die_linke_support_less_than_tt
+		check_variable = {
+			var = GER_support_die_linke_var
+			value = GER_die_linke_support_trigger_temp
+			compare = less_than
+		}
+	}
+}
+
+GER_has_greens_support_less_than = {
+	custom_trigger_tooltip = {
+		tooltip = GER_has_greens_support_less_than_tt
+		check_variable = {
+			var = GER_support_greens_var
+			value = GER_greens_support_trigger_temp
+			compare = less_than
+		}
+	}
+}
+
+GER_has_spd_support_less_than = {
+	custom_trigger_tooltip = {
+		tooltip = GER_has_spd_support_less_than_tt
+		check_variable = {
+			var = GER_support_spd_var
+			value = GER_spd_support_trigger_temp
+			compare = less_than
+		}
+	}
+}
+
+GER_has_fdp_support_less_than = {
+	custom_trigger_tooltip = {
+		tooltip = GER_has_fdp_support_less_than_tt
+		check_variable = {
+			var = GER_support_fdp_var
+			value = GER_fdp_support_trigger_temp
+			compare = less_than
+		}
+	}
+}
+
+GER_has_cdu_support_less_than = {
+	custom_trigger_tooltip = {
+		tooltip = GER_has_cdu_support_less_than_tt
+		check_variable = {
+			var = GER_support_cdu_var
+			value = GER_cdu_support_trigger_temp
+			compare = less_than
+		}
+	}
+}
+
+GER_has_afd_support_less_than = {
+	custom_trigger_tooltip = {
+		tooltip = GER_has_afd_support_less_than_tt
+		check_variable = {
+			var = GER_support_afd_var
+			value = GER_afd_support_trigger_temp
+			compare = less_than
+		}
+	}
+}
+
+GER_has_ruling_support_less_than = {
+	if = {
+		limit = {
+			has_government = communist
+		}
+		set_temp_variable = {
+			var = GER_die_linke_support_trigger_temp
+			value = GER_ruling_support_trigger_temp
+		}
+		GER_has_die_linke_support_less_than = yes
+	}
+	else_if = {
+		limit = {
+			has_government = libertarian_socialist
+		}
+		set_temp_variable = {
+			var = GER_greens_support_trigger_temp
+			value = GER_ruling_support_trigger_temp
+		}
+		GER_has_greens_support_less_than = yes
+	}
+	else_if = {
+		limit = {
+			has_government = social_democrat
+		}
+		set_temp_variable = {
+			var = GER_spd_support_trigger_temp
+			value = GER_ruling_support_trigger_temp
+		}
+		GER_has_spd_support_less_than = yes
+	}
+	else_if = {
+		limit = {
+			has_government = market_liberal
+		}
+		set_temp_variable = {
+			var = GER_fdp_support_trigger_temp
+			value = GER_ruling_support_trigger_temp
+		}
+		GER_has_fdp_support_less_than = yes
+	}
+	else_if = {
+		limit = {
+			has_government = conservative
+		}
+		set_temp_variable = {
+			var = GER_cdu_support_trigger_temp
+			value = GER_ruling_support_trigger_temp
+		}
+		GER_has_cdu_support_less_than = yes
+	}
+	else_if = {
+		limit = {
+			has_government = authoritarian_democrat
+		}
+		set_temp_variable = {
+			var = GER_afd_support_trigger_temp
+			value = GER_ruling_support_trigger_temp
+		}
+		GER_has_afd_support_less_than = yes
+	}
+}

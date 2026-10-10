@@ -1,0 +1,540 @@
+GER_balance_of_power_category = {
+	allowed = {
+		original_tag = GER
+	}
+}
+
+GER_fascist_bop_category = {
+	allowed = {
+		original_tag = GER
+	}
+}
+
+GER_european_armed_forces_category = {
+	icon = GFX_GER_EU_army_cat
+	picture = GER_europe_army
+	priority = 98
+	allowed = {
+		tag = GER
+	}
+	visible = {
+		OR = {
+			has_completed_focus = GER_anti_russian_bullwark
+			has_completed_focus = GER_bulwark_against_the_russian_menace
+		}
+		NOT = {
+			OR = {
+				has_government = fascist
+				has_government = communist
+				has_government = nationalist
+				has_government = libertarian_socialist
+			}
+		}
+	}
+	visible_when_empty = no
+}
+
+GER_parties_category = {
+	icon = GFX_decision_germany
+	priority = 98
+	scripted_gui = GER_bundestag_help_gui
+	allowed = {
+		tag = GER
+	}
+	visible = {
+		OR = {
+			has_completed_focus = GER_convene_the_bundestag
+			has_country_flag = GER_COVID_ongoing
+		}
+		NOT = {
+			has_government = fascist
+			has_government = nationalist
+			has_completed_focus = GER_democracy_falters
+		}
+		if = {
+			limit = {
+				OR = {
+					has_government = libertarian_socialist
+					has_government = communist
+				}
+			}
+			NOT = {
+				has_country_flag = GER_communists_selected
+			}
+		}
+	}
+	visible_when_empty = yes
+}
+
+GER_peoples_economy_category = {
+	icon = GFX_GER_volkswirtschaft_cat
+	picture = decision_cat_GER_volkswirtschaft
+	allowed = {
+		tag = GER
+	}
+	visible = {
+		NOT = {
+			OR = {
+				has_government = fascist
+				has_government = communist
+				has_government = nationalist
+			}
+		}
+	}
+}
+
+GER_five_year_plan_cat = {
+	icon = germany
+	picture = GFX_decision_cat_factory
+	visible_when_empty = yes
+	allowed = {
+		original_tag = GER
+	}
+	visible = {
+		has_completed_focus = GER_revitalize_german_industry
+	}
+}
+
+GER_socialist_market_economics_cat = {
+	icon = germany
+	picture = GFX_decision_cat_factory
+	visible_when_empty = yes
+	allowed = {
+		original_tag = GER
+	}
+	visible = {
+		has_completed_focus = GER_socialist_market_economics
+	}
+}
+
+GER_legion_recruitment = {
+	icon = germany
+	visible_when_empty = no
+	allowed = {
+		original_tag = GER
+	}
+	visible = {
+		has_completed_focus = GER_recruit_foreign_legions
+	}
+}
+
+european_union_category = {
+	icon = GFX_decision_european_union
+	priority = 99
+	allowed = {
+		OR = {
+			tag = GER
+			tag = FRA
+		}
+	}
+	visible = {
+		is_EU_member = yes
+	}
+	visible_when_empty = yes
+}
+
+GER_extremism_category = {
+	icon = GFX_decision_german_extremism
+	priority = 97
+	allowed = {
+		always = no
+	}
+	visible_when_empty = yes
+}
+
+GER_war_on_authoritarianism = {
+	icon = GFX_decision_german_extremism
+	priority = 97
+	allowed = {
+		tag = GER
+	}
+	visible = {
+		has_completed_focus = GER_uphold_democracy
+	}
+	visible_when_empty = yes
+}
+
+GER_turkish_gamble_category = {
+	icon = GFX_decision_germany
+	priority = 96
+	allowed = {
+		tag = GER
+	}
+	visible = {
+		date < "2023.05.30"
+		has_completed_focus = GER_the_turkish_gamble
+		NOT = {
+			OR = {
+				has_government = fascist
+				has_government = communist
+			}
+			OR = {
+				has_country_flag = TUR_stay_nato
+				has_country_flag = TUR_leave_nato
+			}
+		}
+	}
+	visible_when_empty = yes
+}
+
+GER_economic_wars_category = {
+	icon = generic_propaganda
+	visible_when_empty = no
+	allowed = {
+		tag = GER
+		NOT = {
+			OR = {
+				has_government = fascist
+				has_government = communist
+			}
+		}
+	}
+	visible = {
+		has_idea = SOV_nordstream
+	}
+}
+
+GER_eastern_european_development = {
+	icon = generic_propaganda
+	picture = GFX_GER_eastern_european_development
+	visible_when_empty = yes
+	allowed = {
+		tag = GER
+	}
+	visible = {
+		has_completed_focus = GER_ukrainian_belarus_cooperation
+	}
+}
+
+GER_eastern_rebellions_cat = {
+	icon = generic_propaganda
+	picture = GFX_GER_eastern_european_development
+	visible_when_empty = yes
+	allowed = {
+		tag = GER
+	}
+	visible = {
+		has_completed_focus = GER_modernize_the_eurotyphoon
+	}
+}
+
+GER_gas_shortages_category = {
+	icon = generic_propaganda
+	visible_when_empty = no
+	allowed = {
+		OR = {
+			tag = FRA
+			tag = POL
+			tag = GER
+		}
+		NOT = {
+			OR = {
+				has_government = fascist
+				has_government = communist
+			}
+		}
+	}
+	visible = {
+		has_global_flag = SOV_gaz_shortages_flag
+	}
+}
+
+GER_kampfgruppen = {
+	icon = generic_propaganda
+	visible_when_empty = no
+	allowed = {
+		tag = GER
+	}
+	visible = {
+		has_completed_focus = GER_national_service
+		has_completed_focus = GER_national_service_npd
+		has_completed_focus = GER_national_service_tw
+	}
+}
+
+GER_new_political_sphere_category = {
+	icon = GFX_GER_nationalist_germany_cat
+	visible_when_empty = yes
+	#picture = GFX_Pact_of_Steel
+	allowed = {
+		tag = GER
+	}
+	visible = {
+		has_completed_focus = GER_facit_omnia_voluntas
+		OR = {
+			has_government = fascist
+			has_government = nationalist
+			has_government = national_socialist
+		}
+	}
+}
+
+GER_ministry_of_propaganda = {
+	icon = generic_propaganda
+	visible_when_empty = yes
+	#picture = GFX_Pact_of_Steel
+	allowed = {
+		tag = GER
+	}
+	visible = {
+		has_completed_focus = GER_mastery_of_propaganda
+		OR = {
+			has_government = fascist
+			has_government = nationalist
+			has_government = national_socialist
+		}
+	}
+}
+
+GER_national_economy_category = {
+	icon = GFX_GER_nationalist_economy_cat
+	visible_when_empty = yes
+	#picture = GFX_Pact_of_Steel
+	allowed = {
+		tag = GER
+	}
+	visible = {
+		has_completed_focus = GER_revive_the_economy
+		OR = {
+			has_government = fascist
+			has_government = nationalist
+			has_government = national_socialist
+		}
+	}
+}
+
+GER_pact_of_steel_category = {
+	icon = generic_propaganda
+	visible_when_empty = yes
+	picture = GFX_Pact_of_Steel
+	allowed = {
+		tag = GER
+	}
+	visible = {
+		has_completed_focus = GER_eternal_alliance
+		OR = {
+			has_government = fascist
+			has_government = nationalist
+			has_government = national_socialist
+		}
+	}
+}
+
+GER_auferstanden_aus_ruinen_cat = {
+	icon = generic_propaganda
+	visible_when_empty = yes
+	#picture = GFX_Pact_of_Steel
+	allowed = {
+		tag = GER
+	}
+	visible = {
+		has_completed_focus = GER_provisional_revolutionary_popular_front
+	}
+}
+
+GER_spartanist_cat = {
+	icon = GFX_GER_national_revival_category
+	visible_when_empty = yes
+	#picture = GFX_Pact_of_Steel
+	allowed = {
+		tag = GER
+	}
+	visible = {
+		has_country_flag = GER_spartanist_flag
+	}
+}
+
+GER_agenda_2040_cat = {
+	icon = GFX_GER_agenda_2040_cat
+	visible_when_empty = yes
+	#picture = GFX_Pact_of_Steel
+	allowed = {
+		tag = GER
+	}
+	visible = {
+		has_completed_focus = GER_agenda_2040
+	}
+}
+
+GER_gunthers_twitter_cat = {
+	icon = GFX_GER_gunthers_twitter_cat_icon
+	visible_when_empty = yes
+	#picture = GFX_Pact_of_Steel
+	allowed = {
+		tag = GER
+	}
+	visible = {
+		has_completed_focus = GER_democracy_now
+	}
+}
+
+GER_lacc_cat = {
+	icon = GFX_GER_revitalizing_human_spirit_category
+	visible_when_empty = yes
+	#picture = GFX_Pact_of_Steel
+	allowed = {
+		tag = GER
+	}
+	visible = {
+		has_country_flag = GER_left_accelerationist_flag
+	}
+}
+
+GER_second_NATO_war_category = {
+	icon = GFX_SOV_decision_nato_war_category
+	picture = GFX_GER_nato_war
+	visible_when_empty = yes
+	allowed = {
+		OR = {
+			tag = FRA
+			tag = GER
+		}
+	}
+	visible = {
+		OR = {
+			has_completed_focus = GER_new_european_crusade
+			has_completed_focus = GER_europes_darkest_hour
+			has_completed_focus = GER_communists_forward
+			has_completed_focus = GER_europe_united_and_strong
+		}
+	}
+}
+
+GER_NATO_war_category = {
+	icon = GFX_SOV_decision_nato_war_category
+	#picture = GFX_GER_nato_war 
+	visible_when_empty = yes
+	scripted_gui = war_escalation_decision_ui
+	allowed = {
+		OR = {
+			tag = ENG
+			tag = GER
+			tag = ITA
+		}
+	}
+	visible = {
+		is_in_faction_with = GER
+		OR = {
+			has_global_flag = SOV_nato_war_begins_global
+			SOV = {
+				OR = {
+					has_completed_focus = SOV_prepare_to_march_west
+					has_completed_focus = SOV_address_the_nation
+					has_completed_focus = SOV_operation_southern_thunder
+				}
+			}
+		}
+		NOT = {
+			has_global_flag = nato_nato_won_nato_war
+			has_global_flag = SOV_first_nato_war_victory
+		}
+	}
+}
+
+GER_bundeswehr_category = {
+	icon = GFX_GER_bundeswehr_cat
+	picture = GFX_GER_bundeswehr_decision_pic
+	allowed = {
+		tag = GER
+	}
+	visible = {
+		OR = {
+			has_completed_focus = GER_rethinking_german_militarism
+			has_global_flag = nato_nato_won_nato_war
+		}
+	}
+	visible_when_empty = yes
+}
+
+GER_spread_the_revolution_category = {
+	icon = GFX_decision_category_SOV_restore_ties_with_eurosocialists
+	#picture = GFX_GER_nato_war 
+	visible_when_empty = yes
+	allowed = {
+		tag = GER
+	}
+	visible = {
+		OR = {
+			has_completed_focus = GER_trial_of_treasonous_politicians
+			has_completed_focus = GER_form_european_internationale
+		}
+		OR = {
+			has_government = totalitarian_socialist
+			has_government = communist
+			has_government = libertarian_socialist
+		}
+	}
+}
+
+PROXY_libyan_cw_cat = {
+	icon = GFX_GER_libya_proxy
+	#picture = GFX_GER_nato_war 
+	visible_when_empty = yes
+	allowed = {
+		OR = {
+			tag = GER
+			tag = FRA
+			tag = SOV
+		}
+	}
+	visible = {
+		LBA = {
+			has_war_with = HRL
+		}
+	}
+}
+
+PROXY_saudi_cw_cat = {
+	icon = GFX_GER_saudi_proxy
+	#picture = GFX_GER_nato_war 
+	visible_when_empty = yes
+	allowed = {
+		OR = {
+			tag = GER
+			tag = FRA
+			tag = SOV
+		}
+	}
+	visible = {
+		has_global_flag = saudi_civil_war_flag
+		if = {
+			limit = {
+				tag = SOV
+			}
+			if = {
+				limit = {
+					has_country_flag = SOV_support_saudi_gov_flag
+				}
+				SAU = { exists = yes }
+			}
+			else = {
+				SAR = { exists = yes }
+			}
+		}
+		else_if = {
+			limit = {
+				OR = {
+					tag = GER
+					tag = FRA
+				}
+			}
+			ARR = { exists = yes }
+		}
+	}
+}
+
+PROXY_maghreb_war_cat = {
+	icon = GFX_GER_maghreb_proxy
+	#picture = GFX_GER_nato_war 
+	visible_when_empty = yes
+	allowed = {
+		OR = {
+			tag = GER
+			tag = FRA
+			tag = SOV
+		}
+	}
+	visible = {
+		has_global_flag = ALG_maghreb_war_global
+	}
+}

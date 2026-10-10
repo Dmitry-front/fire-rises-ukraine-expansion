@@ -1,0 +1,109 @@
+	ideas = {
+		country = {
+			
+			MAC_fading_antiquisation = {
+				picture = MAC_policy_of_pragmatism
+			    traits = {
+			        ZZZ_blank_idea_trait
+			    }
+
+				allowed = {
+					always = no
+				}
+
+				allowed_civil_war = {
+					always = yes
+				}
+
+				cancel = {
+				NOT = { has_government = social_democrat }
+				}
+				
+				modifier = {
+					political_power_gain = -0.15
+					stability_factor = 0.05
+					opinion_gain_monthly_factor = 0.1
+					conservative_drift = 0.02
+				}
+			}
+			
+			
+			MAC_lukewarm_ethnic_tensions = {
+				picture = MAC_lukewarm_ethnic_tensions
+			    traits = {
+			        ZZZ_blank_idea_trait
+			    }
+
+				allowed = {
+					always = no
+				}
+
+				allowed_civil_war = {
+					always = yes
+				}
+
+				removal_cost = -1
+				
+				modifier = {
+					stability_weekly = -0.001
+					army_org = -2.5
+					society_development_monthly = -0.02
+					authoritarian_democrat_drift = 0.01
+					nationalist_drift = 0.01
+				}
+			}
+			
+			MAC_ineffective_legal_system = {
+				picture = generic_ineffective_legal_system
+			    traits = {
+			        ZZZ_blank_idea_trait
+			    }
+
+				allowed = {
+					always = no
+				}
+
+				allowed_civil_war = {
+					always = yes
+				}
+
+				removal_cost = -1
+				
+				modifier = {
+					society_development_monthly = -0.02
+				}
+			}
+
+			MAC_rising_antiquisation = {
+				picture = MAC_policy_of_patriotism
+			    traits = {
+			        ZZZ_blank_idea_trait
+			    }
+
+				allowed = {
+					always = no
+				}
+
+				allowed_civil_war = {
+					always = yes
+				}
+
+				cancel = {
+					NOT = { 
+						OR = {
+							has_government = conservative
+							has_government = authoritarian_democrat 
+						}
+					}
+				}
+				
+				modifier = {
+					political_power_gain = 0.05
+					stability_factor = 0.10
+					conscription = 0.015
+					conservative_drift = 0.02
+					authoritarian_democrat_drift = 0.01
+				}
+			}
+		}
+	}

@@ -1,0 +1,514 @@
+fix_influence_percentage = {
+	add_to_variable = {
+		European_Influence = European_Influence_Temp
+	}
+	custom_effect_tooltip = european_influence_increase_tt
+}
+
+increase_european_influence = {
+	add_to_variable = {
+		European_Influence = European_Influence_Temp
+	}
+	custom_effect_tooltip = european_influence_increase_tt
+}
+
+increase_american_influence = {
+	add_to_variable = {
+		American_Influence = American_Influence_Temp
+	}
+	custom_effect_tooltip = american_influence_increase_tt
+}
+
+increase_russian_influence = {
+	add_to_variable = {
+		Russian_Influence = Russian_Influence_Temp
+	}
+	custom_effect_tooltip = russian_influence_increase_tt
+}
+
+increase_chinese_influence = {
+	add_to_variable = {
+		Chinese_Influence = Chinese_Influence_Temp
+	}
+	custom_effect_tooltip = chinese_influence_increase_tt
+}
+
+increase_pdo_influence = {
+	add_to_variable = {
+		PDO_Influence = PDO_Influence_Temp
+	}
+	custom_effect_tooltip = pdo_influence_increase_tt
+}
+
+increase_sovereign_influence = {
+	add_to_variable = {
+		Sovereign_Influence = Sovereign_Influence_Temp
+	}
+	custom_effect_tooltip = sovereign_influence_increase_tt
+}
+
+#
+decrease_european_influence = {
+	subtract_from_variable = {
+		European_Influence = European_Influence_Temp
+	}
+	custom_effect_tooltip = european_influence_decrease_tt
+}
+
+decrease_american_influence = {
+	subtract_from_variable = {
+		American_Influence = American_Influence_Temp
+	}
+	custom_effect_tooltip = american_influence_decrease_tt
+}
+
+decrease_chinese_influence = {
+	subtract_from_variable = {
+		Chinese_Influence = Chinese_Influence_Temp
+	}
+	custom_effect_tooltip = chinese_influence_decrease_tt
+}
+
+decrease_russian_influence = {
+	subtract_from_variable = {
+		Russian_Influence = Russian_Influence_Temp
+	}
+	custom_effect_tooltip = russian_influence_decrease_tt
+}
+
+decrease_pdo_influence = {
+	subtract_from_variable = {
+		PDO_Influence = PDO_Influence_Temp
+	}
+	custom_effect_tooltip = PDO_influence_decrease_tt
+}
+
+decrease_sovereign_influence = {
+	subtract_from_variable = {
+		Sovereign_Influence = Sovereign_Influence_Temp
+	}
+	custom_effect_tooltip = sovereign_influence_decrease_tt
+}
+
+check_if_influence_sum_is_alright_if_too_high = {
+	set_temp_variable = {
+		Influence_Total_Sum = 0
+	}
+	add_to_temp_variable = {
+		Influence_Total_Sum = Russian_Influence
+	}
+	add_to_temp_variable = {
+		Influence_Total_Sum = Chinese_Influence
+	}
+	add_to_temp_variable = {
+		Influence_Total_Sum = American_Influence
+	}
+	add_to_temp_variable = {
+		Influence_Total_Sum = European_Influence
+	}
+	add_to_temp_variable = {
+		Influence_Total_Sum = PDO_Influence
+	}
+	add_to_temp_variable = {
+		Influence_Total_Sum = Sovereign_Influence
+	}
+	set_temp_variable = {
+		Temp_Active_Influence_Vars = 0
+	}
+	if = {
+		limit = {
+			check_variable = {
+				Russian_Influence > 0
+			}
+		}
+		add_to_temp_variable = {
+			Temp_Active_Influence_Vars = 1
+		}
+	}
+	if = {
+		limit = {
+			check_variable = {
+				Chinese_Influence > 0
+			}
+		}
+		add_to_temp_variable = {
+			Temp_Active_Influence_Vars = 1
+		}
+	}
+	if = {
+		limit = {
+			check_variable = {
+				American_Influence > 0
+			}
+		}
+		add_to_temp_variable = {
+			Temp_Active_Influence_Vars = 1
+		}
+	}
+	if = {
+		limit = {
+			check_variable = {
+				European_Influence > 0
+			}
+		}
+		add_to_temp_variable = {
+			Temp_Active_Influence_Vars = 1
+		}
+	}
+	if = {
+		limit = {
+			check_variable = {
+				PDO_Influence > 0
+			}
+		}
+		add_to_temp_variable = {
+			Temp_Active_Influence_Vars = 1
+		}
+	}
+	if = {
+		limit = {
+			check_variable = {
+				Sovereign_Influence > 0
+			}
+		}
+		add_to_temp_variable = {
+			Temp_Active_Influence_Vars = 1
+		}
+	}
+	if = {
+		limit = {
+			check_variable = {
+				Influence_Total_Sum > 1
+			}
+		}
+		set_temp_variable = {
+			Influence_Fixer = 1
+		}
+		subtract_from_temp_variable = {
+			Influence_Total_Sum = Influence_Fixer
+		}
+		divide_temp_variable = {
+			Influence_Total_Sum = Temp_Active_Influence_Vars
+		}
+	}
+	if = {
+		limit = {
+			check_variable = {
+				Russian_Influence > 0
+			}
+		}
+		subtract_from_variable = {
+			Russian_Influence = Influence_Total_Sum
+		}
+	}
+	if = {
+		limit = {
+			check_variable = {
+				Chinese_Influence > 0
+			}
+		}
+		subtract_from_variable = {
+			Chinese_Influence = Influence_Total_Sum
+		}
+	}
+	if = {
+		limit = {
+			check_variable = {
+				American_Influence > 0
+			}
+		}
+		subtract_from_variable = {
+			American_Influence = Influence_Total_Sum
+		}
+	}
+	if = {
+		limit = {
+			check_variable = {
+				European_Influence > 0
+			}
+		}
+		subtract_from_variable = {
+			European_Influence = Influence_Total_Sum
+		}
+	}
+	if = {
+		limit = {
+			check_variable = {
+				PDO_Influence > 0
+			}
+		}
+		subtract_from_variable = {
+			PDO_Influence = Influence_Total_Sum
+		}
+	}
+	if = {
+		limit = {
+			check_variable = {
+				Sovereign_Influence > 0
+			}
+		}
+		subtract_from_variable = {
+			Sovereign_Influence = Influence_Total_Sum
+		}
+	}
+	clamp_variable = {
+		var = Russian_Influence
+		min = 0
+		max = 1
+	}
+	clamp_variable = {
+		var = Chinese_Influence
+		min = 0
+		max = 1
+	}
+	clamp_variable = {
+		var = American_Influence
+		min = 0
+		max = 1
+	}
+	clamp_variable = {
+		var = European_Influence
+		min = 0
+		max = 1
+	}
+	clamp_variable = {
+		var = PDO_Influence
+		min = 0
+		max = 1
+	}
+	clamp_variable = {
+		var = Sovereign_Influence
+		min = 0
+		max = 1
+	}
+}
+
+check_if_influence_sum_is_alright_if_too_low = {
+	set_temp_variable = {
+		Influence_Total_Sum = 0
+	}
+	add_to_temp_variable = {
+		Influence_Total_Sum = Russian_Influence
+	}
+	add_to_temp_variable = {
+		Influence_Total_Sum = Chinese_Influence
+	}
+	add_to_temp_variable = {
+		Influence_Total_Sum = American_Influence
+	}
+	add_to_temp_variable = {
+		Influence_Total_Sum = European_Influence
+	}
+	add_to_temp_variable = {
+		Influence_Total_Sum = PDO_Influence
+	}
+	add_to_temp_variable = {
+		Influence_Total_Sum = Sovereign_Influence
+	}
+	set_temp_variable = {
+		Temp_Active_Influence_Vars = 0
+	}
+	if = {
+		limit = {
+			check_variable = {
+				Russian_Influence > 0
+			}
+		}
+		add_to_temp_variable = {
+			Temp_Active_Influence_Vars = 1
+		}
+	}
+	if = {
+		limit = {
+			check_variable = {
+				Chinese_Influence > 0
+			}
+		}
+		add_to_temp_variable = {
+			Temp_Active_Influence_Vars = 1
+		}
+	}
+	if = {
+		limit = {
+			check_variable = {
+				American_Influence > 0
+			}
+		}
+		add_to_temp_variable = {
+			Temp_Active_Influence_Vars = 1
+		}
+	}
+	if = {
+		limit = {
+			check_variable = {
+				European_Influence > 0
+			}
+		}
+		add_to_temp_variable = {
+			Temp_Active_Influence_Vars = 1
+		}
+	}
+	if = {
+		limit = {
+			check_variable = {
+				PDO_Influence > 0
+			}
+		}
+		add_to_temp_variable = {
+			Temp_Active_Influence_Vars = 1
+		}
+	}
+	if = {
+		limit = {
+			check_variable = {
+				Sovereign_Influence > 0
+			}
+		}
+		add_to_temp_variable = {
+			Temp_Active_Influence_Vars = 1
+		}
+	}
+	if = {
+		limit = {
+			check_variable = {
+				Influence_Total_Sum < 1
+			}
+		}
+		set_temp_variable = {
+			Influence_Fixer = 1
+		}
+		subtract_from_temp_variable = {
+			Influence_Fixer = Influence_Total_Sum
+		}
+		divide_temp_variable = {
+			Influence_Fixer = Temp_Active_Influence_Vars
+		}
+	}
+	if = {
+		limit = {
+			check_variable = {
+				Russian_Influence > 0
+			}
+		}
+		add_to_variable = {
+			Russian_Influence = Influence_Fixer
+		}
+	}
+	if = {
+		limit = {
+			check_variable = {
+				Chinese_Influence > 0
+			}
+		}
+		add_to_variable = {
+			Chinese_Influence = Influence_Fixer
+		}
+	}
+	if = {
+		limit = {
+			check_variable = {
+				American_Influence > 0
+			}
+		}
+		add_to_variable = {
+			American_Influence = Influence_Fixer
+		}
+	}
+	if = {
+		limit = {
+			check_variable = {
+				European_Influence > 0
+			}
+		}
+		add_to_variable = {
+			European_Influence = Influence_Fixer
+		}
+	}
+	if = {
+		limit = {
+			check_variable = {
+				PDO_Influence > 0
+			}
+		}
+		add_to_variable = {
+			PDO_Influence = Influence_Fixer
+		}
+	}
+	if = {
+		limit = {
+			check_variable = {
+				Sovereign_Influence > 0
+			}
+		}
+		add_to_variable = {
+			Sovereign_Influence = Influence_Fixer
+		}
+	}
+	clamp_variable = {
+		var = Russian_Influence
+		min = 0
+		max = 1
+	}
+	clamp_variable = {
+		var = Chinese_Influence
+		min = 0
+		max = 1
+	}
+	clamp_variable = {
+		var = American_Influence
+		min = 0
+		max = 1
+	}
+	clamp_variable = {
+		var = European_Influence
+		min = 0
+		max = 1
+	}
+	clamp_variable = {
+		var = PDO_Influence
+		min = 0
+		max = 1
+	}
+	clamp_variable = {
+		var = Sovereign_Influence
+		min = 0
+		max = 1
+	}
+	set_temp_variable = {
+		Influence_Total_Sum_2 = 0
+	}
+	add_to_temp_variable = {
+		Influence_Total_Sum_2 = Russian_Influence
+	}
+	add_to_temp_variable = {
+		Influence_Total_Sum_2 = Chinese_Influence
+	}
+	add_to_temp_variable = {
+		Influence_Total_Sum_2 = American_Influence
+	}
+	add_to_temp_variable = {
+		Influence_Total_Sum_2 = European_Influence
+	}
+	add_to_temp_variable = {
+		Influence_Total_Sum_2 = PDO_Influence
+	}
+	add_to_temp_variable = {
+		Influence_Total_Sum_2 = Sovereign_Influence
+	}
+	if = {
+		limit = {
+			check_variable = {
+				Influence_Total_Sum_2 < 1
+			}
+		}
+		set_temp_variable = {
+			Influence_Fixer_2 = 1
+		}
+		subtract_from_temp_variable = {
+			Influence_Fixer_2 = Influence_Total_Sum_2
+		}
+		add_to_variable = {
+			Sovereign_Influence = Influence_Fixer_2
+		}
+	}
+}

@@ -1,0 +1,54 @@
+###########################
+# Myanmar Events
+###########################
+
+add_namespace = Brazil
+
+#Seizing French overseas colonies
+country_event = {
+	id = Brazil.1
+	title = Brazil.1.t
+	desc = Brazil.1.d
+	picture = GFX_Generic_Fight_Jet
+	
+	fire_only_once = yes
+	is_triggered_only = yes
+	
+	trigger = {
+		tag = BRA
+	}
+
+	option = {
+		name = Brazil.1.a
+		transfer_state = 310
+		transfer_state = 904
+		310 = {
+			set_demilitarized_zone = yes
+		}
+		904 = {
+			set_demilitarized_zone = yes
+		}
+		FRA = {
+			country_event = {
+				id = Brazil.2
+				days = 15
+			}
+		}
+	}
+}
+country_event = {
+	id = Brazil.2
+	title = Brazil.2.t
+	desc = Brazil.2.d
+	picture = GFX_FRA_BRA_relations
+	
+	fire_only_once = yes
+	is_triggered_only = yes
+	
+	option = {
+		name = Brazil.2.a
+		send_embargo = BRA
+		add_war_support = -0.08
+		add_political_power = -25
+	}
+}

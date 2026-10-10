@@ -1,0 +1,156 @@
+﻿###########################
+# Tunisian Events
+###########################
+
+add_namespace = tunisia
+add_namespace = mauritania
+
+#President Coup
+country_event = {
+	id = tunisia.1
+	title = tunisia.1.t
+	desc = tunisia.1.d
+	picture = GFX_Tunisia_coup_report
+	
+	fire_only_once = yes
+	is_triggered_only = yes
+	
+	trigger = {
+		tag = TUN
+	}
+
+	immediate = {
+		hidden_effect = {
+			set_global_flag = TUN_pro_algeria_flag
+			set_politics = {	
+				ruling_party = authoritarian_democrat
+				last_election = "2017.9.23"
+				election_frequency = 36
+				elections_allowed = no
+			}
+			add_popularity = {
+				ideology = authoritarian_democrat
+				popularity = 0.5
+			}
+			set_party_name = {
+				ideology = authoritarian_democrat
+				name = TUN_july25_party
+				long_name = TUN_july25_party
+			}
+		}
+	}
+	
+	option = {
+		name = tunisia.1.a
+		effect_tooltip = {
+			set_politics = {	
+				ruling_party = authoritarian_democrat
+				last_election = "2017.9.23"
+				election_frequency = 36
+				elections_allowed = no
+			}		
+			set_party_name = {
+				ideology = authoritarian_democrat
+				name = TUN_july25_party
+				long_name = TUN_july25_party
+			}
+		}
+	}
+}
+
+#No-Confidence Vote
+country_event = {
+	id = tunisia.2
+	title = tunisia.2.t
+	desc = tunisia.2.d
+	picture = GFX_Tunisia_coup_report
+	
+	fire_only_once = yes
+	is_triggered_only = yes
+	
+	trigger = {
+		tag = TUN
+	}
+
+	immediate = {
+		hidden_effect = {
+			random_list = {
+				60 = {
+					set_global_flag = MRT_algeria_pressured_global
+				}
+				40 = {
+				}
+			}
+		}
+	}
+	
+	option = { #Success
+		name = tunisia.2.a
+		country_event = {
+			id = tunisia.3
+			days = 57
+		}
+	}
+	option = { #Failure
+		name = tunisia.2.b
+		country_event = {
+			id = tunisia.1
+			days = 148
+		}
+	}
+}
+
+#New Elections
+country_event = {
+	id = tunisia.3
+	title = tunisia.3.t
+	desc = tunisia.3.d
+	picture = GFX_Tunisia_coup_report
+	
+	fire_only_once = yes
+	is_triggered_only = yes
+	
+	trigger = {
+		tag = TUN
+	}
+
+	immediate = {
+		hidden_effect = {
+		}
+	}
+	
+	option = { 
+		name = tunisia.3.a
+		ai_chance = {
+		    base = 80
+		}
+		set_global_flag = TUN_pro_morocco_flag
+		set_politics = {
+			ruling_party = social_liberal
+			elections_allowed = yes
+		}
+		create_country_leader = {
+			name = TUN_nabil_karoui
+			picture = "gfx/leaders/TUN/TUN_nabil_karoui.png"
+			expire = "1.1.1.1"
+			ideology = neoliberalism
+		}
+	}
+	option = { 
+		name = tunisia.3.b
+		set_politics = {
+			ruling_party = authoritarian_democrat
+			elections_allowed = yes
+		}
+		create_country_leader = {
+			name = TUN_youssef_chahed
+			picture = "gfx/leaders/TUN/TUN_youssef_chahed.png"
+			expire = "1.1.1.1"
+			ideology = state_liberalism
+		}
+	}
+	option = { 
+		name = tunisia.3.c
+		set_global_flag = TUN_pro_algeria_flag
+	}
+}

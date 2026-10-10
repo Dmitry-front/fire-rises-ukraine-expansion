@@ -1,0 +1,49 @@
+﻿###########################
+# Denmark Events
+###########################
+
+add_namespace = denmark
+
+#We outta here lmao 
+country_event = {
+	id = denmark.1
+	title = denmark.1.t
+	desc = denmark.1.d
+	picture = GFX_Generic_Fight_Jet
+	
+	fire_only_once = yes
+	is_triggered_only = yes
+	
+	trigger = {
+		tag = DEN
+	}
+
+	option = {
+	name = denmark.1.a
+		white_peace = SOV
+		every_country = {
+			limit = {
+				has_country_flag = NATO_current_leader
+			}
+			remove_from_faction = DEN
+		}
+		news_event = { id = news.222 }
+	}
+}
+
+country_event = { #Margrethe abdicates
+	id = denmark.2
+	title = denmark.2.t
+	desc = denmark.2.d
+	picture = GFX_report_event_russian_flag
+	
+	is_triggered_only = yes
+	immediate = {
+		
+	}
+	
+	option = {
+		name = denmark.2.a
+		retire_character = DEN_margrethe_ii_char
+	}
+}

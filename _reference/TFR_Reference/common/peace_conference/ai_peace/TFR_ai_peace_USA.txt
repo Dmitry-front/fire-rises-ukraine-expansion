@@ -1,0 +1,141 @@
+peace_ai_desires = {
+	unifiers_want_all_states = {
+		peace_action_type = {
+			take_states
+		}
+		enable = {
+			ROOT = {
+				USA_is_civil_war_faction = yes
+			}
+			ROOT.FROM = {
+				USA_is_civil_war_faction = yes
+			}
+		}
+		ai_desire = 1000
+    }
+	unifiers_dont_want_puppet = {
+		peace_action_type = {
+			puppet
+			force_government
+			liberate
+		}
+		enable = {
+			ROOT = {
+				USA_is_civil_war_faction = yes
+			}
+			ROOT.FROM = {
+				OR = {
+					tag = USA
+					tag = USN
+					tag = FPM
+				}
+				USA_is_civil_war_faction = yes
+			}
+		}
+		ai_desire = -1000
+	}
+    ATW_get_fucked_ai_peace = {
+		peace_action_type = {
+			take_states
+		}
+		enable = {
+			ROOT.FROM = {
+				has_global_flag = USA_american_civil_war_global
+				USA_is_nationalist_tag = yes
+                NOT = {
+                    tag = ATW
+                }
+			}
+			ROOT.FROM.FROM.FROM = {
+				has_state_flag = USA_core_state
+				USA_is_alabama_state = no
+				USA_is_georgia_state = no
+				USA_is_mississippi_state = no
+				USA_is_louisiana_state = no
+				USA_is_arkansas_state = no
+				USA_is_south_carolina_state = no
+				USA_is_north_carolina_state = no
+			}
+		}
+		ai_desire = 10000
+	}
+	PTF_take_states_ai_peace = {
+		peace_action_type = {
+			take_states
+		}
+		enable = {
+			ROOT = {
+				has_global_flag = USA_american_civil_war_global
+				USA_is_civil_war_faction = yes
+			}
+			ROOT.FROM = {
+				tag = PTF
+			}
+			ROOT.FROM.FROM.FROM = {
+				has_state_flag = USA_core_state
+				OR = {
+					USA_is_pennsylvania_state = yes
+					USA_is_new_jersey_state = yes
+					USA_is_maryland_state = yes
+					USA_is_virginia_state = yes
+					USA_is_west_virginia_state = yes
+					USA_is_kentucky_state = yes
+					USA_is_tennessee_state = yes
+				}
+			}
+		}
+		ai_desire = 10000
+	}
+	NSM_take_states_ai_peace = {
+		peace_action_type = {
+			take_states
+		}
+		enable = {
+			ROOT = {
+				has_global_flag = USA_american_civil_war_global
+				USA_is_civil_war_faction = yes
+			}
+			FROM.FROM = {
+				tag = NSM
+			}
+			FROM.FROM.FROM = {
+				has_state_flag = USA_core_state
+				OR = {
+					USA_is_ohio_state = yes
+					USA_is_indiana_state = yes
+					USA_is_illinois_state = yes
+					USA_is_wisconsin_state = yes
+					USA_is_minnesota_state = yes
+				}
+			}
+		}
+		ai_desire = 10000
+	}
+	ATW_take_states_ai_peace = {
+		peace_action_type = {
+			take_states
+		}
+		enable = {
+			ROOT = {
+				has_global_flag = USA_american_civil_war_global
+				USA_is_civil_war_faction = yes
+			}
+			FROM.FROM = {
+				tag = ATW
+			}
+			FROM.FROM.FROM = {
+				has_state_flag = USA_core_state
+				OR = {
+					USA_is_alabama_state = yes
+					USA_is_georgia_state = yes
+					USA_is_mississippi_state = yes
+					USA_is_louisiana_state = yes
+					USA_is_arkansas_state = yes
+					USA_is_south_carolina_state = yes
+					USA_is_north_carolina_state = yes
+				}
+			}
+		}
+		ai_desire = 10000
+	}
+}

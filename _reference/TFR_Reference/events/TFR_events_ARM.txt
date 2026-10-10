@@ -1,0 +1,183 @@
+﻿###########################
+# Armenian Events
+###########################
+add_namespace = armenia
+# Border Clashes
+country_event = {
+	id = armenia.1
+	title = armenia.1.t
+	desc = armenia.1.d
+	picture = report_event_equipment
+	fire_only_once = yes
+	is_triggered_only = yes
+	trigger = {
+		tag = AZR
+		date > 2020.9.17
+	}
+	option = {
+		name = armenia.1.a
+		start_border_war = {
+			change_state_after_war = no
+			attacker = {
+				state = 229
+				num_provinces = 2
+			}
+			defender = {
+				state = 832
+				num_provinces = 2
+			}
+		}
+		ARM = {
+			country_event = {
+				id = armenia.2
+				days = 2
+			}
+		}
+		news_event = {
+			id = news.140
+			days = 2
+		}
+	}
+}
+
+# Azerbaijan Victorious
+country_event = {
+	id = armenia.2
+	title = armenia.2.t
+	desc = armenia.2.d
+	picture = report_event_equipment
+	fire_only_once = yes
+	is_triggered_only = yes
+	trigger = {
+		tag = AZR
+	}
+	option = {
+		name = armenia.2.a
+		add_stability = 0.05
+		add_political_power = 100
+		set_global_flag = AZR_nagorno_captured
+	}
+}
+
+# Azerbaijan Forces Defeated
+country_event = {
+	id = armenia.3
+	title = armenia.3.t
+	desc = armenia.3.d
+	picture = report_event_equipment
+	is_triggered_only = yes
+	trigger = {
+		tag = AZR
+	}
+	option = {
+		name = armenia.3.a
+		if = {
+			limit = {
+				AZR = {
+					has_country_flag = AZR_first_strikes
+				}
+			}
+			set_country_flag = AZR_first_defeat
+		}
+		if = {
+			limit = {
+				AZR = {
+					has_country_flag = AZR_first_defeat
+				}
+			}
+			set_country_flag = AZR_second_defeat
+		}
+		if = {
+			limit = {
+				AZR = {
+					has_country_flag = AZR_second_defeat
+				}
+			}
+			set_country_flag = AZR_third_defeat
+		}
+	}
+}
+
+# Turkish Drones Arrive
+country_event = {
+	id = armenia.4
+	title = armenia.4.t
+	desc = armenia.4.d
+	picture = GFX_Bayraktar_Azerbaijan
+	is_triggered_only = yes
+	trigger = {
+		tag = AZR
+	}
+	option = {
+		name = armenia.4.a
+		load_oob = "AZR_turkish_drones"
+		add_ideas = AZR_drone_force
+	}
+}
+
+# Hezbollah Crosses over
+country_event = {
+	id = armenia.5
+	title = armenia.5.t
+	desc = armenia.5.d
+	picture = GFX_Bayraktar_Azerbaijan
+	is_triggered_only = yes
+	option = {
+		name = armenia.5.a
+		HRZ = {
+			add_state_core = 878
+			add_state_core = 229
+			add_state_core = 877
+			transfer_state = 878
+			declare_war_on = {
+				target = AZR
+				type = annex_everything
+			}
+			load_oob = "HRZ_2020"
+		}
+		ARM = {
+			add_state_core = 790
+			add_state_core = 832
+			add_state_core = 1282
+			annex_country = {
+				target = NGK
+				transfer_troops = yes
+			}
+			declare_war_on = {
+				target = AZR
+				type = annex_everything
+			}
+			load_oob = "ARM_2020"
+		}
+	}
+}
+
+# Hezbollah Wins
+country_event = {
+	id = armenia.6
+	title = armenia.6.t
+	desc = armenia.6.d
+	picture = GFX_Bayraktar_Azerbaijan
+	fire_only_once = yes
+	trigger = {
+		original_tag = HRZ
+		has_war = no
+		owns_state = 229
+	}
+	option = {
+		name = armenia.6.a
+		HRZ = {
+			set_cosmetic_tag = AZR_islamist
+			every_state = {
+				limit = {
+					is_owned_by = HRZ
+				}
+				add_core_of = HRZ
+			}
+			set_capital = {
+				state = 229
+				remember_old_capital = no
+			}
+		}
+	}
+}

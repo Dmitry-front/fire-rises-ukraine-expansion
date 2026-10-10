@@ -1,0 +1,1566 @@
+technologies = {
+	electronic_mechanical_engineering = {
+		path = {
+			leads_to_tech = radio
+			research_cost_coeff = 1
+		}
+		path = {
+			leads_to_tech = tech_20_nanometer_mosfet
+			research_cost_coeff = 1
+		}
+		research_cost = 1.5
+		start_year = 2015
+		folder = {
+			name = electronics_folder
+			position = {
+				x = 0
+				y = 0
+			}
+		}
+		categories = {
+			electronics
+		}
+		ai_will_do = {
+			factor = 50
+			modifier = {
+				factor = 300
+				date > "2023.1.1"
+			}
+		}
+		on_research_complete = {
+			set_temp_variable = {
+				var = academic_development_var_temp
+				value = 0.025
+			}
+			add_academic_development = yes
+		}
+		research_speed_factor = 0.01
+		enable_building = {
+			building = radar_station
+			level = 1
+		}
+		enable_equipment_modules = {
+			ship_fire_control_system_0
+			ship_radar_1
+			tank_radio_1
+			ship_fire_control_system_1
+		}
+	}
+	tech_20_nanometer_mosfet = {
+		path = {
+			leads_to_tech = tech_10_nm_mosfets
+			research_cost_coeff = 1
+		}
+		research_cost = 2.5
+		start_year = 2015
+		folder = {
+			name = electronics_folder
+			position = {
+				x = 0
+				y = 2
+			}
+		}
+		categories = {
+			electronics
+		}
+		ai_will_do = {
+			factor = 3
+			modifier = {
+				factor = 6
+				has_war = yes
+			}
+			modifier = {
+				factor = 2
+				is_major = yes
+			}
+			modifier = {
+				factor = 5
+				date > "2021.7.1"
+			}
+		}
+		research_speed_factor = 0.02
+	}
+	tech_10_nm_mosfets = {
+		path = {
+			leads_to_tech = tech_5_nm_mosfets
+			research_cost_coeff = 1
+		}
+		research_cost = 2.5
+		start_year = 2019
+		folder = {
+			name = electronics_folder
+			position = {
+				x = 0
+				y = 4
+			}
+		}
+		categories = {
+			electronics
+		}
+		ai_will_do = {
+			factor = 1
+			modifier = {
+				factor = 6
+				has_war = yes
+			}
+			modifier = {
+				factor = 25
+				is_major = yes
+			}
+			modifier = {
+				factor = 5
+				date > "2023.7.1"
+			}
+		}
+		research_speed_factor = 0.02
+	}
+	tech_5_nm_mosfets = {
+		path = {
+			leads_to_tech = petascale_computing
+			research_cost_coeff = 1
+		}
+		path = {
+			leads_to_tech = early_quantum_computing
+			research_cost_coeff = 1
+		}
+		research_cost = 2.5
+		start_year = 2021
+		folder = {
+			name = electronics_folder
+			position = {
+				x = 0
+				y = 6
+			}
+		}
+		categories = {
+			electronics
+		}
+		ai_will_do = {
+			factor = 1
+			modifier = {
+				factor = 6
+				has_war = yes
+			}
+			modifier = {
+				factor = 25
+				is_major = yes
+			}
+			modifier = {
+				factor = 5
+				date > "2023.7.1"
+			}
+		}
+		research_speed_factor = 0.02
+	}
+	petascale_computing = {
+		path = {
+			leads_to_tech = modern_supercomputers
+			research_cost_coeff = 1
+		}
+		XOR = {
+			early_quantum_computing
+		}
+		research_cost = 2.5
+		start_year = 2023
+		folder = {
+			name = electronics_folder
+			position = {
+				x = -2
+				y = 8
+			}
+		}
+		categories = {
+			electronics
+		}
+		ai_will_do = {
+			factor = 3
+			modifier = {
+				factor = 6
+				has_war = yes
+			}
+			modifier = {
+				factor = 20
+				is_major = yes
+			}
+			modifier = {
+				factor = 5
+				date > "2023.7.1"
+			}
+		}
+		enable_equipment_modules = {
+			ship_fire_control_system_2
+		}
+		enable_equipment_modules = {
+			ship_fire_control_system_3
+		}
+		on_research_complete = {
+			set_temp_variable = {
+				var = academic_development_var_temp
+				value = 0.07
+			}
+			add_academic_development = yes
+		}
+		research_speed_factor = 0.03
+	}
+	modern_supercomputers = {
+		path = {
+			leads_to_tech = photonic_computing
+			research_cost_coeff = 1
+		}
+		research_cost = 2.5
+		start_year = 2025
+		folder = {
+			name = electronics_folder
+			position = {
+				x = -2
+				y = 10
+			}
+		}
+		categories = {
+			electronics
+		}
+		ai_will_do = {
+			factor = 1
+			modifier = {
+				factor = 6
+				has_war = yes
+			}
+			modifier = {
+				factor = 25
+				is_major = yes
+			}
+			modifier = {
+				factor = 5
+				date > "2025.7.1"
+			}
+		}
+		research_speed_factor = 0.03
+		on_research_complete = {
+			set_temp_variable = {
+				var = academic_development_var_temp
+				value = 0.07
+			}
+			add_academic_development = yes
+		}
+	}
+	photonic_computing = {
+		path = {
+			leads_to_tech = exascale_computing
+			research_cost_coeff = 1
+		}
+		research_cost = 2.5
+		start_year = 2027
+		folder = {
+			name = electronics_folder
+			position = {
+				x = -2
+				y = 12
+			}
+		}
+		categories = {
+			electronics
+		}
+		ai_will_do = {
+			factor = 1
+			modifier = {
+				factor = 6
+				has_war = yes
+			}
+			modifier = {
+				factor = 25
+				is_major = yes
+			}
+			modifier = {
+				factor = 5
+				date > "2027.7.1"
+			}
+		}
+		research_speed_factor = 0.03
+		on_research_complete = {
+			set_temp_variable = {
+				var = academic_development_var_temp
+				value = 0.05
+			}
+			add_academic_development = yes
+		}
+	}
+	exascale_computing = {
+		path = {
+			leads_to_tech = combat_supercomputers
+			research_cost_coeff = 1
+		}
+		research_cost = 2.1
+		start_year = 2029
+		folder = {
+			name = electronics_folder
+			position = {
+				x = -2
+				y = 14
+			}
+		}
+		categories = {
+			electronics
+		}
+		ai_will_do = {
+			factor = 1
+			modifier = {
+				factor = 6
+				has_war = yes
+			}
+			modifier = {
+				factor = 25
+				is_major = yes
+			}
+			modifier = {
+				factor = 5
+				date > "2029.7.1"
+			}
+		}
+		research_speed_factor = 0.04
+		on_research_complete = {
+			set_temp_variable = {
+				var = academic_development_var_temp
+				value = 0.05
+			}
+			add_academic_development = yes
+		}
+	}
+	combat_supercomputers = {
+		path = {
+			leads_to_tech = basic_nanomachines
+			research_cost_coeff = 1
+		}
+		research_cost = 3
+		start_year = 2031
+		folder = {
+			name = electronics_folder
+			position = {
+				x = -2
+				y = 16
+			}
+		}
+		categories = {
+			electronics
+		}
+		ai_will_do = {
+			factor = 1
+			modifier = {
+				factor = 6
+				has_war = yes
+			}
+			modifier = {
+				factor = 25
+				is_major = yes
+			}
+			modifier = {
+				factor = 5
+				date > "2031.7.1"
+			}
+		}
+		research_speed_factor = 0.01
+		max_planning_factor = 0.1
+		planning_speed = 0.1
+		on_research_complete = {
+			set_temp_variable = {
+				var = academic_development_var_temp
+				value = 0.05
+			}
+			add_academic_development = yes
+		}
+	}
+	early_quantum_computing = {
+		XOR = {
+			petascale_computing
+		}
+		path = {
+			leads_to_tech = quantum_supremacy
+			research_cost_coeff = 1
+		}
+		research_cost = 2
+		start_year = 2023
+		folder = {
+			name = electronics_folder
+			position = {
+				x = 2
+				y = 8
+			}
+		}
+		categories = {
+			electronics
+		}
+		ai_will_do = {
+			factor = 1
+			modifier = {
+				factor = 6
+				has_war = yes
+			}
+			modifier = {
+				factor = 25
+				is_major = yes
+			}
+			modifier = {
+				factor = 5
+				date > "2023.7.1"
+			}
+		}
+		research_speed_factor = 0.03
+		on_research_complete = {
+			set_temp_variable = {
+				var = academic_development_var_temp
+				value = 0.1
+			}
+			add_academic_development = yes
+		}
+	}
+	quantum_supremacy = {
+		path = {
+			leads_to_tech = high_temperature_superconductors
+			research_cost_coeff = 1
+		}
+		research_cost = 2.6
+		start_year = 2025
+		folder = {
+			name = electronics_folder
+			position = {
+				x = 2
+				y = 10
+			}
+		}
+		categories = {
+			electronics
+		}
+		ai_will_do = {
+			factor = 1
+			modifier = {
+				factor = 45
+				is_major = yes
+			}
+			modifier = {
+				factor = 5
+				date > "2025.7.1"
+			}
+		}
+		research_speed_factor = 0.06
+		on_research_complete = {
+			set_temp_variable = {
+				var = academic_development_var_temp
+				value = 0.1
+			}
+			add_academic_development = yes
+		}
+	}
+	high_temperature_superconductors = {
+		path = {
+			leads_to_tech = late_stage_nisq_computing
+			research_cost_coeff = 1
+		}
+		research_cost = 2.5
+		start_year = 2027
+		folder = {
+			name = electronics_folder
+			position = {
+				x = 2
+				y = 12
+			}
+		}
+		categories = {
+			electronics
+		}
+		ai_will_do = {
+			factor = 1
+			modifier = {
+				factor = 45
+				is_major = yes
+			}
+			modifier = {
+				factor = 5
+				date > "2027.7.1"
+			}
+		}
+		research_speed_factor = 0.02
+		production_speed_infrastructure_factor = 0.05
+		production_factory_efficiency_gain_factor = 0.03
+		on_research_complete = {
+			set_temp_variable = {
+				var = academic_development_var_temp
+				value = 0.03
+			}
+			add_academic_development = yes
+		}
+	}
+	late_stage_nisq_computing = {
+		path = {
+			leads_to_tech = tech_10000_qubit_computing
+			research_cost_coeff = 1
+		}
+		research_cost = 3
+		start_year = 2029
+		folder = {
+			name = electronics_folder
+			position = {
+				x = 2
+				y = 14
+			}
+		}
+		categories = {
+			electronics
+		}
+		ai_will_do = {
+			factor = 1
+			modifier = {
+				factor = 45
+				is_major = yes
+			}
+			modifier = {
+				factor = 5
+				date > "2029.7.1"
+			}
+		}
+		research_speed_factor = 0.06
+		on_research_complete = {
+			set_temp_variable = {
+				var = academic_development_var_temp
+				value = 0.1
+			}
+			add_academic_development = yes
+		}
+	}
+	tech_10000_qubit_computing = {
+		path = {
+			leads_to_tech = basic_nanomachines
+			research_cost_coeff = 1
+		}
+		research_cost = 4
+		start_year = 2031
+		folder = {
+			name = electronics_folder
+			position = {
+				x = 2
+				y = 16
+			}
+		}
+		categories = {
+			electronics
+		}
+		ai_will_do = {
+			factor = 1
+			modifier = {
+				factor = 45
+				is_major = yes
+			}
+			modifier = {
+				factor = 5
+				date > "2031.7.1"
+			}
+		}
+		on_research_complete = {
+			set_temp_variable = {
+				var = academic_development_var_temp
+				value = 0.15
+			}
+			add_academic_development = yes
+		}
+		research_speed_factor = 0.1
+	}
+	basic_nanomachines = {
+		path = {
+			leads_to_tech = advanced_nanomachines
+			research_cost_coeff = 1
+		}
+		research_cost = 2.5
+		start_year = 2033
+		folder = {
+			name = electronics_folder
+			position = {
+				x = 0
+				y = 18
+			}
+		}
+		categories = {
+			electronics
+		}
+		ai_will_do = {
+			factor = 1
+			modifier = {
+				factor = 6
+				has_war = yes
+			}
+			modifier = {
+				factor = 25
+				is_major = yes
+			}
+			modifier = {
+				factor = 5
+				date > "2033.7.1"
+			}
+		}
+		production_speed_buildings_factor = 0.1
+		monthly_population = 0.07
+		fuel_gain_factor = 5
+		on_research_complete = {
+			add_stability = -0.05
+		}
+	}
+	advanced_nanomachines = {
+		research_cost = 2.5
+		start_year = 2035
+		folder = {
+			name = electronics_folder
+			position = {
+				x = 0
+				y = 20
+			}
+		}
+		categories = {
+			electronics
+		}
+		ai_will_do = {
+			factor = 1
+			modifier = {
+				factor = 6
+				has_war = yes
+			}
+			modifier = {
+				factor = 25
+				is_major = yes
+			}
+			modifier = {
+				factor = 5
+				date > "2035.7.1"
+			}
+		}
+		production_speed_buildings_factor = 0.1
+		monthly_population = 0.07
+		on_research_complete = {
+			add_stability = -0.1
+		}
+	}
+	radio = {
+		path = {
+			leads_to_tech = radio_detection
+			research_cost_coeff = 1
+		}
+		research_cost = 2.5
+		start_year = 2015
+		folder = {
+			name = electronics_folder
+			position = {
+				x = -4
+				y = 2
+			}
+		}
+		categories = {
+			electronics
+		}
+		ai_will_do = {
+			factor = 3
+			modifier = {
+				factor = 6
+				has_war = yes
+			}
+			modifier = {
+				factor = 2
+				is_major = yes
+			}
+			modifier = {
+				factor = 5
+				date > "2021.7.1"
+			}
+		}
+		land_reinforce_rate = 0.05
+		coordination_bonus = 0.04
+	}
+	radio_detection = {
+		enable_building = {
+			building = radar_station
+			level = 2
+		}
+		static_anti_air_hit_chance_factor = 0.05
+		enable_equipment_modules = {
+			non_strategic_materials_small
+			self_sealing_fuel_tanks_small
+			armor_plate_small
+		}
+		path = {
+			leads_to_tech = decimetric_radar
+			research_cost_coeff = 1
+		}
+		research_cost = 1.5
+		start_year = 2019
+		folder = {
+			name = electronics_folder
+			position = {
+				x = -4
+				y = 4
+			}
+		}
+		categories = {
+			electronics
+			radar_tech
+		}
+		ai_will_do = {
+			factor = 1
+			modifier = {
+				factor = 4
+				OR = {
+					num_of_military_factories > 4
+					num_of_naval_factories > 4
+				}
+			}
+			modifier = {
+				factor = 2
+				original_tag = USA
+			}
+		}
+	}
+	decimetric_radar = {
+		enable_building = {
+			building = radar_station
+			level = 3
+		}
+		enable_equipment_modules = {
+			ship_radar_2
+			tank_radio_2
+		}
+		path = {
+			leads_to_tech = improved_decimetric_radar
+			research_cost_coeff = 1
+		}
+		research_cost = 1.5
+		start_year = 2021
+		folder = {
+			name = electronics_folder
+			position = {
+				x = -4
+				y = 6
+			}
+		}
+		categories = {
+			electronics
+			radar_tech
+		}
+		ai_will_do = {
+			factor = 1
+			modifier = {
+				factor = 4
+				OR = {
+					num_of_military_factories > 6
+					num_of_naval_factories > 6
+				}
+			}
+			modifier = {
+				factor = 3
+				OR = {
+					original_tag = SOV
+					original_tag = USA
+				}
+			}
+			modifier = {
+				factor = 0.5
+				date < "2023.1.1"
+			}
+		}
+	}
+	improved_decimetric_radar = {
+		enable_equipment_modules = {
+			ship_radar_3
+		}
+		static_anti_air_hit_chance_factor = 0.2
+		air_accidents_factor = -0.1
+		enable_equipment_modules = {
+			non_strategic_materials_small_2
+			self_sealing_fuel_tanks_small_2
+			armor_plate_small_2
+		}
+		path = {
+			leads_to_tech = centimetric_radar
+			research_cost_coeff = 1
+		}
+		research_cost = 2
+		start_year = 2023
+		folder = {
+			name = electronics_folder
+			position = {
+				x = -4
+				y = 8
+			}
+		}
+		categories = {
+			electronics
+			radar_tech
+		}
+		ai_will_do = {
+			factor = 1
+			modifier = {
+				factor = 4
+				OR = {
+					num_of_military_factories > 8
+					num_of_naval_factories > 8
+				}
+			}
+			modifier = {
+				factor = 3
+				OR = {
+					original_tag = SOV
+					original_tag = USA
+				}
+			}
+			modifier = {
+				factor = 0.5
+				date > 2023.1.1
+			}
+		}
+	}
+	centimetric_radar = {
+		enable_building = {
+			building = radar_station
+			level = 4
+		}
+		static_anti_air_hit_chance_factor = 0.05
+		coordination_bonus = 0.01
+		enable_equipment_modules = {
+			ship_radar_3
+			tank_radio_3
+		}
+		path = {
+			leads_to_tech = improved_centimetric_radar
+			research_cost_coeff = 1
+		}
+		research_cost = 2.5
+		start_year = 2025
+		folder = {
+			name = electronics_folder
+			position = {
+				x = -4
+				y = 10
+			}
+		}
+		categories = {
+			electronics
+			radar_tech
+		}
+		ai_will_do = {
+			factor = 1
+			modifier = {
+				factor = 4
+				OR = {
+					num_of_military_factories > 9
+					num_of_naval_factories > 9
+				}
+			}
+			modifier = {
+				factor = 2
+				OR = {
+					original_tag = SOV
+					original_tag = USA
+				}
+			}
+			modifier = {
+				factor = 0.5
+				date > 2025.1.1
+			}
+		}
+	}
+	improved_centimetric_radar = {
+		enable_building = {
+			building = radar_station
+			level = 5
+		}
+		enable_equipment_modules = {
+			ship_radar_4
+		}
+		#if = {
+		#	limit = {
+		#		has_dlc = "By Blood Alone"
+		#	}
+		enable_equipment_modules = {
+			non_strategic_materials_small_3
+			self_sealing_fuel_tanks_small_3
+			armor_plate_small_3
+		}
+		#}
+		path = {
+			leads_to_tech = advanced_centimetric_radar
+			research_cost_coeff = 1
+		}
+		research_cost = 2.5
+		start_year = 2027
+		folder = {
+			name = electronics_folder
+			position = {
+				x = -4
+				y = 12
+			}
+		}
+		categories = {
+			electronics
+			radar_tech
+		}
+		ai_will_do = {
+			factor = 1
+			modifier = {
+				factor = 4
+				OR = {
+					num_of_military_factories > 11
+					num_of_naval_factories > 11
+				}
+			}
+			modifier = {
+				factor = 2
+				OR = {
+					original_tag = SOV
+					original_tag = USA
+				}
+			}
+			modifier = {
+				factor = 0.5
+				date > 2027.1.1
+			}
+		}
+	}
+	advanced_centimetric_radar = {
+		enable_equipment_modules = {
+			ship_radar_5
+		}
+		static_anti_air_hit_chance_factor = 0.2
+		air_night_penalty = -0.1
+		path = {
+			leads_to_tech = basic_quantum_radar
+			research_cost_coeff = 1
+		}
+		research_cost = 2.5
+		start_year = 2029
+		folder = {
+			name = electronics_folder
+			position = {
+				x = -4
+				y = 14
+			}
+		}
+		categories = {
+			electronics
+			radar_tech
+		}
+		ai_will_do = {
+			factor = 1
+			modifier = {
+				factor = 4
+				OR = {
+					num_of_military_factories > 13
+					num_of_naval_factories > 13
+				}
+			}
+			modifier = {
+				factor = 3
+				OR = {
+					original_tag = SOV
+					original_tag = USA
+				}
+			}
+			modifier = {
+				factor = 0.5
+				date > 2029.1.1
+			}
+		}
+	}
+	basic_quantum_radar = {
+		enable_building = {
+			building = radar_station
+			level = 6
+		}
+		static_anti_air_hit_chance_factor = 0.05
+		path = {
+			leads_to_tech = improved_quantum_radar
+			research_cost_coeff = 1
+		}
+		research_cost = 2.5
+		start_year = 2031
+		folder = {
+			name = electronics_folder
+			position = {
+				x = -4
+				y = 16
+			}
+		}
+		categories = {
+			electronics
+			radar_tech
+		}
+		ai_will_do = {
+			factor = 1
+			modifier = {
+				factor = 4
+				OR = {
+					num_of_military_factories > 15
+					num_of_naval_factories > 15
+				}
+			}
+			modifier = {
+				factor = 3
+				OR = {
+					original_tag = PRC
+					original_tag = SOV
+					original_tag = USA
+				}
+			}
+			modifier = {
+				factor = 0.5
+				date > 2031.1.1
+			}
+			modifier = {
+				factor = 0
+				behavior_indolent_trigger = yes
+			}
+		}
+	}
+	improved_quantum_radar = {
+		enable_building = {
+			building = radar_station
+			level = 7
+		}
+		enable_equipment_modules = {
+			ship_radar_6
+		}
+		path = {
+			leads_to_tech = advanced_quantum_radar
+			research_cost_coeff = 1
+		}
+		research_cost = 2.5
+		start_year = 2033
+		folder = {
+			#EW
+			name = electronics_folder
+			position = {
+				x = -4
+				y = 18
+			}
+		}
+		categories = {
+			electronics
+			radar_tech
+		}
+		ai_will_do = {
+			factor = 1
+			modifier = {
+				factor = 4
+				OR = {
+					num_of_military_factories > 17
+					num_of_naval_factories > 17
+				}
+			}
+			modifier = {
+				factor = 3
+				OR = {
+					original_tag = PRC
+					original_tag = SOV
+					original_tag = USA
+				}
+			}
+			modifier = {
+				factor = 0.5
+				date < 2033.1.1
+			}
+			modifier = {
+				factor = 0
+				behavior_indolent_trigger = yes
+			}
+		}
+	}
+	advanced_quantum_radar = {
+		static_anti_air_hit_chance_factor = 0.2
+		air_weather_penalty = -0.1
+		research_cost = 2.5
+		start_year = 2035
+		folder = {
+			name = electronics_folder
+			position = {
+				x = -4
+				y = 20
+			}
+		}
+		categories = {
+			electronics
+			radar_tech
+		}
+		ai_will_do = {
+			factor = 1
+			modifier = {
+				factor = 4
+				OR = {
+					num_of_military_factories > 19
+					num_of_naval_factories > 19
+				}
+			}
+			modifier = {
+				factor = 3
+				OR = {
+					original_tag = PRC
+					original_tag = SOV
+					original_tag = USA
+				}
+			}
+			modifier = {
+				factor = 0.5
+				date < 2035.1.1
+			}
+			modifier = {
+				factor = 0
+				behavior_indolent_trigger = yes
+			}
+		}
+	}
+	# Power
+	power_plants = {
+		path = {
+			leads_to_tech = nuclear_reactors
+			research_cost_coeff = 1
+		}
+		path = {
+			leads_to_tech = power_plants1
+			research_cost_coeff = 1
+		}
+		path = {
+			leads_to_tech = energy_farms
+			research_cost_coeff = 1
+		}
+		start_year = 2015
+		research_cost = 3
+		folder = {
+			name = electronics_folder
+			position = {
+				x = 0
+				y = 0
+			}
+		}
+		ai_will_do = {
+			factor = 100
+		}
+		categories = {
+			energy
+		}
+		enable_building = {
+			building = power_plant
+			level = 1
+		}
+	}
+	power_plants1 = {
+		path = {
+			leads_to_tech = power_plants2
+			research_cost_coeff = 1
+		}
+		start_year = 2019
+		research_cost = 3
+		folder = {
+			name = electronics_folder
+			position = {
+				x = 0
+				y = 4
+			}
+		}
+		ai_will_do = {
+			factor = 100
+		}
+		categories = {
+			energy
+		}
+		enable_building = {
+			building = power_plant
+			level = 2
+		}
+	}
+	power_plants2 = {
+		path = {
+			leads_to_tech = power_plants3
+			research_cost_coeff = 1
+		}
+		start_year = 2023
+		research_cost = 3
+		folder = {
+			name = electronics_folder
+			position = {
+				x = 0
+				y = 8
+			}
+		}
+		ai_will_do = {
+			factor = 100
+		}
+		categories = {
+			energy
+		}
+		production_cost_power_plant_factor = -0.1
+	}
+	power_plants3 = {
+		path = {
+			leads_to_tech = power_plants4
+			research_cost_coeff = 1
+		}
+		start_year = 2027
+		research_cost = 3
+		folder = {
+			name = electronics_folder
+			position = {
+				x = 0
+				y = 12
+			}
+		}
+		ai_will_do = {
+			factor = 100
+		}
+		categories = {
+			energy
+		}
+		enable_building = {
+			building = power_plant
+			level = 3
+		}
+	}
+	power_plants4 = {
+		allow = {
+			NOT = {
+				has_tech = nuclear_reactors3
+				is_researching_technology = nuclear_reactors3
+				has_tech = energy_farms3
+				is_researching_technology = energy_farms3
+			}
+		}
+		path = {
+			leads_to_tech = power_plants5
+			research_cost_coeff = 1
+		}
+		start_year = 2031
+		research_cost = 3
+		folder = {
+			name = electronics_folder
+			position = {
+				x = 0
+				y = 16
+			}
+		}
+		ai_will_do = {
+			factor = 100
+		}
+		on_research_complete = {
+			modify_building_resources = {
+				building = power_plant
+				resource = coal
+				amount = 2
+			}
+		}
+		categories = {
+			energy
+		}
+		enable_building = {
+			building = power_plant
+			level = 4
+		}
+	}
+	power_plants5 = {
+		path = {
+			leads_to_tech = power_plants4
+			research_cost_coeff = 1
+		}
+		start_year = 2035
+		research_cost = 3
+		folder = {
+			name = electronics_folder
+			position = {
+				x = 0
+				y = 20
+			}
+		}
+		ai_will_do = {
+			factor = 100
+		}
+		categories = {
+			energy
+		}
+		on_research_complete = {
+			modify_building_resources = {
+				building = power_plant
+				resource = oil
+				amount = 1
+			}
+		}
+		production_speed_buildings_factor = 0.1
+		local_resources_factor = 0.05
+	}
+	nuclear_reactors = {
+		path = {
+			leads_to_tech = nuclear_reactors1
+			research_cost_coeff = 1
+		}
+		start_year = 2019
+		research_cost = 3
+		folder = {
+			name = electronics_folder
+			position = {
+				x = -2
+				y = 4
+			}
+		}
+		ai_will_do = {
+			factor = 100
+		}
+		categories = {
+			nuclear
+		}
+		enable_building = {
+			building = nuclear_reactor
+			level = 1
+		}
+	}
+	nuclear_reactors1 = {
+		path = {
+			leads_to_tech = nuclear_reactors2
+			research_cost_coeff = 1
+		}
+		start_year = 2023
+		research_cost = 3
+		folder = {
+			name = electronics_folder
+			position = {
+				x = -2
+				y = 8
+			}
+		}
+		ai_will_do = {
+			factor = 100
+		}
+		categories = {
+			nuclear
+		}
+		production_cost_nuclear_reactor_factor = -0.1
+	}
+	nuclear_reactors2 = {
+		path = {
+			leads_to_tech = nuclear_reactors3
+			research_cost_coeff = 1
+		}
+		start_year = 2027
+		research_cost = 3
+		folder = {
+			name = electronics_folder
+			position = {
+				x = -2
+				y = 12
+			}
+		}
+		ai_will_do = {
+			factor = 100
+		}
+		categories = {
+			nuclear
+		}
+		on_research_complete = {
+			modify_building_resources = {
+				building = nuclear_reactor
+				resource = steel
+				amount = 1
+			}
+		}
+	}
+	nuclear_reactors3 = {
+		allow = {
+			NOT = {
+				has_tech = power_plants4
+				is_researching_technology = power_plants4
+				has_tech = energy_farms3
+				is_researching_technology = energy_farms3
+			}
+		}		
+		on_research_complete = {
+			modify_building_resources = {
+				building = nuclear_reactor
+				resource = coal
+				amount = 2
+			}
+		}
+		path = {
+			leads_to_tech = nuclear_reactors4
+			research_cost_coeff = 1
+		}
+		start_year = 2031
+		research_cost = 3
+		folder = {
+			name = electronics_folder
+			position = {
+				x = -2
+				y = 16
+			}
+		}
+		ai_will_do = {
+			factor = 100
+		}
+		categories = {
+			nuclear
+		}
+		enable_building = {
+			building = nuclear_reactor
+			level = 2
+		}
+	}
+	nuclear_reactors4 = {
+		start_year = 2035
+		research_cost = 3
+		folder = {
+			name = electronics_folder
+			position = {
+				x = -2
+				y = 20
+			}
+		}
+		ai_will_do = {
+			factor = 100
+		}
+		on_research_complete = {
+			modify_building_resources = {
+				building = nuclear_reactor
+				resource = coal
+				amount = 4
+			}
+		}
+		categories = {
+			nuclear
+		}
+		local_building_slots_factor = 0.1
+	}
+	energy_farms = {
+		path = {
+			leads_to_tech = energy_farms1
+			research_cost_coeff = 1
+		}
+		start_year = 2019
+		research_cost = 3
+		folder = {
+			name = electronics_folder
+			position = {
+				x = 2
+				y = 4
+			}
+		}
+		ai_will_do = {
+			factor = 100
+		}
+		categories = {
+			nuclear
+		}
+		enable_building = {
+			building = energy_farm
+			level = 2
+		}
+	}
+	energy_farms1 = {
+		path = {
+			leads_to_tech = energy_farms2
+			research_cost_coeff = 1
+		}
+		start_year = 2023
+		research_cost = 3
+		folder = {
+			name = electronics_folder
+			position = {
+				x = 2
+				y = 8
+			}
+		}
+		ai_will_do = {
+			factor = 100
+		}
+		categories = {
+			nuclear
+		}
+		production_cost_energy_farm_factor = -0.1
+	}
+	energy_farms2 = {
+		path = {
+			leads_to_tech = energy_farms3
+			research_cost_coeff = 1
+		}
+		start_year = 2027
+		research_cost = 3
+		folder = {
+			name = electronics_folder
+			position = {
+				x = 2
+				y = 12
+			}
+		}
+		ai_will_do = {
+			factor = 100
+		}
+		categories = {
+			nuclear
+		}
+		enable_building = {
+			building = energy_farm
+			level = 3
+		}
+	}
+	energy_farms3 = {
+		allow = {
+			NOT = {
+				has_tech = power_plants4
+				is_researching_technology = power_plants4
+				has_tech = nuclear_reactors3
+				is_researching_technology = nuclear_reactors3
+			}
+		}
+		path = {
+			leads_to_tech = energy_farms4
+			research_cost_coeff = 1
+		}
+		start_year = 2031
+		research_cost = 3
+		folder = {
+			name = electronics_folder
+			position = {
+				x = 2
+				y = 16
+			}
+		}
+		ai_will_do = {
+			factor = 100
+		}
+		categories = {
+			nuclear
+		}
+		on_research_complete = {
+			modify_building_resources = {
+				building = energy_farm
+				resource = coal
+				amount = 2
+			}
+		}
+		enable_building = {
+			building = energy_farm
+			level = 4
+		}
+	}
+	energy_farms4 = {
+		start_year = 2035
+		research_cost = 3
+		folder = {
+			name = electronics_folder
+			position = {
+				x = 2
+				y = 20
+			}
+		}
+		ai_will_do = {
+			factor = 100
+		}
+		on_research_complete = {
+			modify_building_resources = {
+				building = energy_farm
+				resource = coal
+				amount = 2
+			}
+		}
+		categories = {
+			nuclear
+		}
+		industrial_capacity_factory = 0.1
+		industrial_capacity_dockyard = 0.1
+	}
+}

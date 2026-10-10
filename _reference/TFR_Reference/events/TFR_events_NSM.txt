@@ -1,0 +1,2235 @@
+﻿add_namespace = nsm
+#The Movement's Direction
+country_event = {
+	id = nsm.1
+	title = nsm.1.t
+	desc = nsm.1.desc
+	picture = GFX_movement_direction
+	fire_only_once = yes
+	is_triggered_only = yes
+	trigger = {
+		tag = NSM
+	}
+	immediate = {
+		hidden_effect = {
+		}
+	}
+	option = {
+		name = nsm.1.a
+		ai_chance = {
+			base = 1
+		}
+		swap_ideas = {
+			remove_idea = vacant_hog
+			add_idea = NSM_jeff_schoep_hog
+		}
+		set_power_balance = {
+			id = NSM_faction_balance
+			left_side = NSM_Rockwell_side
+			right_side = NSM_Hitlerite_side
+			set_value = -0.1
+		}
+	}
+	option = {
+		name = nsm.1.b
+		ai_chance = {
+			base = 1
+		}
+		swap_ideas = {
+			remove_idea = vacant_hog
+			add_idea = NSM_paul_mullet_hog
+		}
+		set_power_balance = {
+			id = NSM_faction_balance
+			left_side = NSM_rockwell_side
+			right_side = NSM_hitlerite_side
+			set_value = 0.1
+		}
+	}
+}
+
+#Special Forces Group Establishes
+country_event = {
+	id = nsm.2
+	title = nsm.2.t
+	desc = nsm.2.desc
+	picture = GFX_nsm_specialforces
+	fire_only_once = yes
+	is_triggered_only = yes
+	trigger = {
+		tag = NSM
+	}
+	immediate = {
+		hidden_effect = {
+			load_oob = "NSM_spec_ops"
+		}
+	}
+	option = {
+		name = nsm.2.a
+		effect_tooltip = {
+			load_oob = "NSM_spec_ops"
+		}
+	}
+}
+
+#Detroit Gangs Liquidated
+country_event = {
+	id = nsm.3
+	title = nsm.3.t
+	desc = nsm.3.d
+	picture = GFX_Generic_Detroit_Police
+	fire_only_once = yes
+	is_triggered_only = yes
+	trigger = {
+		tag = NSM
+	}
+	immediate = {
+		hidden_effect = {
+			set_temp_variable = {
+				var = legit_var_temp
+				value = 0.1
+			}
+			add_legit = yes
+		}
+	}
+	option = {
+		name = nsm.3.a
+		effect_tooltip = {
+			set_temp_variable = {
+				var = legit_var_temp
+				value = 0.1
+			}
+			add_legit = yes
+		}
+	}
+}
+
+#Mass Riots in Grand Rapids
+country_event = {
+	id = nsm.4
+	title = nsm.4.t
+	desc = nsm.4.d
+	picture = GFX_grandrapids_riot
+	fire_only_once = yes
+	is_triggered_only = yes
+	trigger = {
+		tag = NSM
+	}
+	immediate = {
+		hidden_effect = {
+		}
+	}
+	option = {
+		name = nsm.4.a
+		add_stability = -0.05
+		add_political_power = -50
+	}
+	option = {
+		name = nsm.4.b
+		add_stability = -0.05
+			random_list = {
+				3 = {
+					country_event = {
+						id = nsm.5
+						days = 4
+					}
+				}
+				5 = {
+					country_event = {
+						id = nsm.6
+						days = 4
+					}
+				}
+				2 = {
+					country_event = {
+						id = nsm.7
+						days = 4
+					}
+				}
+			}
+			country_event = {
+				id = nsm.14
+				days = 210
+			}
+	}
+}
+
+#Riots Put Down
+country_event = {
+	id = nsm.5
+	title = nsm.5.t
+	desc = nsm.5.d
+	picture = GFX_Generic_Reformer_Rally
+	fire_only_once = yes
+	is_triggered_only = yes
+	trigger = {
+		tag = NSM
+	}
+	immediate = {
+		hidden_effect = {
+			add_political_power = 25
+			add_power_balance_value = {
+				id = NSM_faction_balance
+				value = -0.05
+			}
+		}
+	}
+	option = {
+		name = nsm.5.a
+		trigger = {
+			NOT = {
+				has_country_flag = NSM_sided_with_hardliners_flag
+			}
+		}
+		effect_tooltip = {
+			add_political_power = 25
+			add_power_balance_value = {
+				id = NSM_faction_balance
+				value = -0.1
+			}
+		}
+	}
+	option = {
+		name = nsm.5.b
+		trigger = {
+			NOT = {
+				has_country_flag = NSM_sided_with_reformists_flag
+			}
+		}
+		effect_tooltip = {
+			add_political_power = 25
+			add_power_balance_value = {
+				id = NSM_faction_balance
+				value = 0.1
+			}
+		}
+	}
+}
+
+#Hardliners Crack Down Hard
+country_event = {
+	id = nsm.6
+	title = nsm.6.t
+	desc = nsm.6.d
+	picture = GFX_Hardliner_Crackdown
+	fire_only_once = yes
+	is_triggered_only = yes
+	trigger = {
+		tag = NSM
+	}
+	immediate = {
+		hidden_effect = {
+		}
+	}
+	option = {
+		name = nsm.6.a
+		add_political_power = 25
+		add_power_balance_value = {
+			id = NSM_faction_balance
+			value = 0.1
+		}
+	}
+}
+
+#Colucci Speaks in Grand Rapids
+country_event = {
+	id = nsm.7
+	title = nsm.7.t
+	desc = nsm.7.d
+	picture = GFX_Generic_NSM_March
+	fire_only_once = yes
+	is_triggered_only = yes
+	trigger = {
+		tag = NSM
+	}
+	immediate = {
+		hidden_effect = {
+		}
+	}
+	option = {
+		name = nsm.7.a
+		add_political_power = 50
+		add_stability = 0.02
+		add_power_balance_value = {
+			id = NSM_faction_balance
+			value = -0.05
+		}
+	}
+}
+
+#MAD MAN GOES ON A RAMPAGE ON I94
+country_event = {
+	id = nsm.8
+	title = nsm.8.t
+	desc = nsm.8.d
+	picture = GFX_Generic_Car_Chase
+	fire_only_once = yes
+	is_triggered_only = yes
+	trigger = {
+		tag = NSM
+	}
+	immediate = {
+		hidden_effect = {
+		}
+	}
+	option = {
+		name = nsm.8.a
+		add_stability = -0.01
+	}
+}
+
+#Potential Plot?
+country_event = {
+	id = nsm.9
+	title = nsm.9.t
+	desc = nsm.9.d
+	picture = report_event_equipment
+	fire_only_once = yes
+	is_triggered_only = yes
+	trigger = {
+		tag = NSM
+		NOT = {
+			has_global_flag = HUM_first_capitulation
+		}
+	}
+	immediate = {
+		hidden_effect = {
+		}
+	}
+	option = {
+		name = nsm.9.a
+		hidden_effect = {
+			NSM = {
+				country_event = {
+					id = nsm.10
+					days = 70
+				}
+			}
+		}
+	}
+	option = {
+		name = nsm.9.b
+		custom_effect_tooltip = NSM_investigate_plot_tt
+		set_country_flag = NSM_investigate_flag
+	}
+}
+
+#Terrorist Bombing at NSM HQ
+country_event = {
+	id = nsm.10
+	title = nsm.10.t
+	desc = nsm.10.d
+	picture = GFX_nsm_hq_bombing
+	fire_only_once = yes
+	is_triggered_only = yes
+	trigger = {
+		tag = NSM
+	}
+	immediate = {
+		hidden_effect = {
+		}
+	}
+	option = {
+		name = nsm.10.a
+		add_manpower = -38
+		add_political_power = -50
+		add_stability = -0.05
+	}
+}
+
+#Lead Discovered
+country_event = {
+	id = nsm.11
+	title = nsm.11.t
+	desc = nsm.11.d
+	picture = report_event_equipment
+	fire_only_once = yes
+	is_triggered_only = yes
+	trigger = {
+		tag = NSM
+	}
+	immediate = {
+		hidden_effect = {
+		}
+	}
+	option = {
+		name = nsm.11.a
+	}
+}
+
+#Investigation Turns up Nothing
+country_event = {
+	id = nsm.12
+	title = nsm.12.t
+	desc = nsm.12.d
+	picture = report_event_equipment
+	fire_only_once = yes
+	is_triggered_only = yes
+	trigger = {
+		tag = NSM
+	}
+	immediate = {
+		hidden_effect = {
+		}
+	}
+	option = {
+		name = nsm.12.a
+		hidden_effect = {
+			NSM = {
+				country_event = {
+					id = nsm.13
+					days = 60
+				}
+			}
+		}
+	}
+	option = {
+		name = nsm.12.b
+	}
+}
+
+#Hutaree Uprising
+country_event = {
+	id = nsm.13
+	title = nsm.13.t
+	desc = nsm.13.desc
+	picture = GFX_Hutaree_Militia
+	fire_only_once = yes
+	is_triggered_only = yes
+	trigger = {
+		tag = NSM
+	}
+	immediate = {
+		hidden_effect = {
+			add_political_power = -50
+			add_stability = -0.05
+			HUM = {
+				add_state_core = 1075
+				add_state_core = 1076
+				add_state_core = 1073
+				add_state_core = 1074
+				add_state_core = 393
+				add_state_core = 1093
+				transfer_state = 1075
+				declare_war_on = {
+					target = NSM
+					type = civil_war
+				}
+				load_oob = "HUM_uprising"
+			}
+		}
+	}
+	option = {
+		name = nsm.13.a
+	}
+}
+
+#Local Klan offers Support
+country_event = {
+	id = nsm.14
+	title = nsm.14.t
+	desc = nsm.14.desc
+	picture = GFX_Hutaree_Militia
+	fire_only_once = yes
+	is_triggered_only = yes
+	trigger = {
+		tag = NSM
+	}
+	option = {
+		name = nsm.14.a
+		add_political_power = -25
+		add_power_balance_value = {
+			id = NSM_faction_balance
+			value = -0.05
+		}
+	}
+	option = {
+		name = nsm.14.b
+		add_power_balance_value = {
+			id = NSM_faction_balance
+			value = 0.05
+		}
+		custom_effect_tooltip = NSM_klan_tt
+		hidden_effect = {
+			load_oob = "NSM_Klan_volunteers"
+		}
+	}
+}
+
+#Factory Works
+country_event = {
+	id = nsm.15
+	title = nsm.15.t
+	desc = nsm.15.desc
+	picture = GFX_Hutaree_Militia
+	fire_only_once = yes
+	is_triggered_only = yes
+	trigger = {
+		tag = NSM
+	}
+	option = {
+		name = nsm.15.a
+	}
+}
+
+#Taming the Appalachians
+country_event = {
+	id = nsm.16
+	title = nsm.16.t
+	desc = nsm.16.desc
+	picture = GFX_Hutaree_Militia
+	fire_only_once = yes
+	is_triggered_only = yes
+	trigger = {
+		tag = NSM
+	}
+	option = {
+		name = nsm.16.a
+	}
+}
+
+#UN Building Burned Down
+country_event = {
+	id = nsm.17
+	title = nsm.17.t
+	desc = nsm.17.desc
+	picture = GFX_Hutaree_Militia
+	fire_only_once = yes
+	is_triggered_only = yes
+	trigger = {
+		tag = NSM
+	}
+	option = {
+		name = nsm.17.a
+	}
+}
+
+#Lincoln's Grave Desecrated 
+country_event = {
+	id = nsm.18
+	title = nsm.18.t
+	desc = nsm.18.desc
+	picture = GFX_Hutaree_Militia
+	fire_only_once = yes
+	is_triggered_only = yes
+	trigger = {
+		tag = NSM
+	}
+	option = {
+		name = nsm.18.a
+	}
+}
+
+#Increase in Klan Activity 
+country_event = {
+	id = nsm.20
+	title = nsm.20.t
+	desc = nsm.20.desc
+	picture = GFX_Hutaree_Militia
+	fire_only_once = yes
+	is_triggered_only = yes
+	trigger = {
+		tag = NSM
+	}
+	option = {
+		name = nsm.20.a
+	}
+}
+
+#Capture of Washington D.C. 
+country_event = {
+	id = nsm.21
+	title = nsm.21.t
+	desc = nsm.21.desc
+	picture = GFX_Hutaree_Militia
+	fire_only_once = yes
+	is_triggered_only = yes
+	trigger = {
+		tag = NSM
+	}
+	option = {
+		name = nsm.21.a
+	}
+}
+
+#Union Graves Desecrated at Gettysburg
+country_event = {
+	id = nsm.22
+	title = nsm.22.t
+	desc = nsm.22.desc
+	picture = GFX_Hutaree_Militia
+	fire_only_once = yes
+	is_triggered_only = yes
+	trigger = {
+		tag = NSM
+	}
+	option = {
+		name = nsm.22.a
+	}
+}
+
+#Victory
+country_event = {
+	id = nsm.23
+	title = nsm.23.t
+	desc = nsm.23.desc
+	picture = GFX_Hutaree_Militia
+	fire_only_once = yes
+	is_triggered_only = yes
+	trigger = {
+		tag = NSM
+	}
+	immediate = {
+		hidden_effect = {
+			USA_civil_war_over = yes
+			set_cosmetic_tag = NSM_reunified
+			set_country_flag = NSM_reunified_flag
+			set_capital = {
+				state = 931
+				remember_old_capital = no
+			}
+		set_portraits = {
+			character = NSM_burt_colucci_char
+			civilian = {
+				large = "gfx/leaders/NSM/NSM_burt_colucci1.png"
+			}
+		}
+			if = {
+				limit = {
+					has_country_flag = NSM_sided_with_reformists_flag
+				}
+				news_event = {
+					id = news.163
+					hours = 6
+				}
+				set_party_name = {
+					ideology = national_socialist
+					name = NSM_reformist_party
+					long_name = NSM_reformist_party_long
+				}
+				set_country_leader_ideology = american_neonazism
+			}
+			else_if = {
+				limit = {
+					has_country_flag = NSM_sided_with_hardliners_flag
+				}
+				news_event = {
+					id = news.164
+					hours = 6
+				}
+				set_party_name = {
+					ideology = national_socialist
+					name = NSM_hardliner_party
+					long_name = NSM_hardliner_party_long
+				}
+			}
+			CAN = {
+				country_event = {
+					id = canada.13
+				}
+			}
+		}
+	}
+	option = {
+		name = nsm.23.a
+		ai_chance = {
+			base = 1
+		}
+		effect_tooltip = {
+			set_cosmetic_tag = NSM_reunified
+			set_capital = {
+				state = 931
+				remember_old_capital = no
+			}
+		}
+		focus_unlock = yes
+	}
+}
+
+#Burning Charlottesville 
+country_event = {
+	id = nsm.24
+	title = nsm.24.t
+	desc = nsm.24.desc
+	picture = GFX_Hutaree_Militia
+	fire_only_once = yes
+	is_triggered_only = yes
+	trigger = {
+		tag = NSM
+	}
+	option = {
+		name = nsm.24.a
+	}
+}
+
+#The People's Car
+country_event = {
+	id = nsm.25
+	title = nsm.25.t
+	desc = nsm.25.d
+	picture = GFX_nsm_johncar
+	fire_only_once = yes
+	is_triggered_only = yes
+	trigger = {
+		tag = NSM
+	}
+	option = {
+		name = nsm.25.a
+	}
+}
+
+#Michigan Unified
+country_event = {
+	id = nsm.26
+	title = nsm.26.t
+	desc = nsm.26.d
+	picture = GFX_Michigan_Unified
+	fire_only_once = yes
+	is_triggered_only = yes
+	trigger = {
+		tag = NSM
+	}
+	immediate = {
+		hidden_effect = {
+			# add_popularity = {
+			# 	ideology = communist
+			# 	popularity = 0.08
+			# }
+			# add_popularity = {
+			# 	ideology = libertarian_socialist
+			# 	popularity = 0.06
+			# }
+			# add_popularity = {
+			# 	ideology = totalitarian_socialist
+			# 	popularity = 0.03
+			# }
+			#add_ideas = NSM_communist_rebellion_idea
+			set_capital = {
+				state = 393
+			}
+			#activate_mission = NSM_socialist_rebellion_mission
+			#activate_mission = NSM_opposistion_growth_mission
+			set_country_flag = NSM_michigan_unfied_flag
+			every_state = {
+				limit = {
+					OR = {
+						USA_is_wisconsin_state = yes
+						#USA_is_ohio_state = yes
+						USA_is_indiana_state = yes
+						#USA_is_illinois_state = yes
+						state = 1099
+					}
+				}
+				add_core_of = ROOT
+			}
+			focus_unlock = yes
+		}
+	}
+	option = {
+		name = nsm.26.a
+		effect_tooltip = {
+			# add_popularity = {
+			# 	ideology = communist
+			# 	popularity = 0.08
+			# }
+			# add_popularity = {
+			# 	ideology = libertarian_socialist
+			# 	popularity = 0.06
+			# }
+			# add_popularity = {
+			# 	ideology = totalitarian_socialist
+			# 	popularity = 0.03
+			# }
+			#add_ideas = NSM_communist_rebellion_idea
+			set_capital = {
+				state = 393
+			}
+			every_state = {
+				limit = {
+					OR = {
+						USA_is_wisconsin_state = yes
+						#USA_is_ohio_state = yes
+						USA_is_indiana_state = yes
+						#USA_is_illinois_state = yes
+						state = 1099
+					}
+				}
+				add_core_of = NSM
+			}
+			#activate_mission = NSM_socialist_rebellion_mission
+			#activate_mission = NSM_opposistion_growth_mission
+			focus_unlock = yes
+		}
+	}
+}
+
+#NSM Coerces us!
+country_event = {
+	id = nsm.27
+	title = nsm.27.t
+	desc = nsm.27.d
+	picture = GFX_nsm_johncar
+	fire_only_once = yes
+	is_triggered_only = yes
+	trigger = {
+		tag = USN
+	}
+	immediate = {
+	}
+	option = {
+		#Decline
+		name = nsm.27.a
+		ai_chance = {
+			base = 1
+		}
+		country_event = {
+			id = nsm.28
+			days = 3
+		}
+	}
+	option = {
+		#Accept
+		name = nsm.27.b
+		ai_chance = {
+			base = 0
+		}
+		hidden_effect = {
+			NSM = {
+				annex_country = {
+					target = USN
+					transfer_troops = yes
+				}
+			}
+		}
+	}
+}
+
+#USN Refuses
+country_event = {
+	id = nsm.28
+	title = nsm.28.t
+	desc = nsm.28.d
+	picture = GFX_nsm_johncar
+	fire_only_once = yes
+	is_triggered_only = yes
+	trigger = {
+		tag = NSM
+	}
+	immediate = {
+	}
+	option = {
+		#Gay
+		name = nsm.28.a
+		ai_chance = {
+			base = 1
+		}
+		custom_effect_tooltip = NSM_reverse_the_degeneration_tooltip
+		set_country_flag = NSM_navy_refused_flag
+	}
+}
+
+#National Conference Preparations
+country_event = {
+	id = nsm.29
+	title = nsm.29.t
+	desc = nsm.29.d
+	picture = GFX_nsm_johncar
+	is_triggered_only = yes
+	trigger = {
+		USA_is_nationalist_tag = yes
+	}
+	immediate = {
+		hidden_effect = {
+			set_country_flag = NSM_national_conference_flag
+			activate_mission = NSM_national_conference_mission
+		}
+	}
+	option = {
+		#NSM Response
+		name = nsm.29.a
+		trigger = {
+			tag = NSM
+		}
+		ai_chance = {
+			base = 1
+		}
+		custom_effect_tooltip = NSM_national_conference_preparations_tooltip
+		activate_mission_tooltip = NSM_national_conference_mission
+	}
+	option = {
+		#PTF Response
+		name = nsm.29.b
+		trigger = {
+			tag = PTF
+		}
+		ai_chance = {
+			base = 1
+		}
+		custom_effect_tooltip = NSM_national_conference_preparations_tooltip
+		activate_mission_tooltip = NSM_national_conference_mission
+	}
+	option = {
+		#ATW Response
+		name = nsm.29.c
+		trigger = {
+			tag = ATW
+		}
+		ai_chance = {
+			base = 1
+		}
+		custom_effect_tooltip = NSM_national_conference_preparations_tooltip
+		activate_mission_tooltip = NSM_national_conference_mission
+	}
+	option = {
+		#Other Response
+		name = nsm.29.d1
+		trigger = {
+			NOT = {
+				tag = ATW
+				tag = PTF
+				tag = NSM
+			}
+		}
+		ai_chance = {
+			base = 1
+		}
+		custom_effect_tooltip = NSM_national_conference_preparations_tooltip
+		activate_mission_tooltip = NSM_national_conference_mission
+	}
+}
+
+#Communists Increase Resistance
+country_event = {
+	id = nsm.30
+	title = nsm.30.t
+	desc = nsm.30.d
+	picture = GFX_nsm_johncar
+	fire_only_once = yes
+	is_triggered_only = yes
+	trigger = {
+		tag = NSM
+	}
+	immediate = {
+		# hidden_effect = {
+		# 	swap_ideas = {
+		# 		remove_idea = NSM_communist_rebellion_idea
+		# 		add_idea = NSM_communist_rebellion_idea1
+		# 	}
+		# }
+	}
+	option = {
+		#We Must Deal With These Rebels
+		name = nsm.30.a
+		ai_chance = {
+			base = 1
+		}
+		# effect_tooltip = {
+		# 	swap_ideas = {
+		# 		remove_idea = NSM_communist_rebellion_idea
+		# 		add_idea = NSM_communist_rebellion_idea1
+		# 	}
+		# }
+	}
+}
+
+#Communists In Open Rebellion
+country_event = {
+	id = nsm.31
+	title = nsm.31.t
+	desc = nsm.31.d
+	picture = GFX_nsm_johncar
+	fire_only_once = yes
+	is_triggered_only = yes
+	trigger = {
+		tag = NSM
+	}
+	immediate = {
+		hidden_effect = {
+			BOA = {
+				USA_civil_war_faction = yes
+				add_state_core = 1075
+				add_state_core = 1076
+				add_state_core = 1074
+				add_state_core = 1073
+				add_state_core = 393
+				add_state_core = 1093
+				transfer_state = 1093
+				transfer_state = 1073
+				transfer_state = 1076
+				load_oob = "BOA_2020"
+				new_country = yes
+				declare_war_on = {
+					target = NSM
+					type = annex_everything
+				}
+			}
+		}
+	}
+	option = {
+		#We Must Deal With These Rebels
+		name = nsm.31.a
+		ai_chance = {
+			base = 1
+		}
+	}
+}
+
+#Communists Die
+country_event = {
+	id = nsm.32
+	title = nsm.32.t
+	desc = nsm.32.d
+	picture = GFX_nsm_johncar
+	fire_only_once = yes
+	is_triggered_only = yes
+	trigger = {
+		tag = NSM
+	}
+	immediate = {
+		hidden_effect = {
+		}
+	}
+	option = {
+		#Dab
+		name = nsm.32.a
+		ai_chance = {
+			base = 1
+		}
+		effect_tooltip = {
+		}
+	}
+}
+
+#Machinery
+country_event = {
+	id = nsm.33
+	title = nsm.33.t
+	desc = nsm.33.desc
+	picture = GFX_Hutaree_Militia
+	fire_only_once = yes
+	is_triggered_only = yes
+	trigger = {
+		tag = NSM
+	}
+	option = {
+		name = nsm.33.a
+	}
+}
+
+#Rekt part 1
+country_event = {
+	id = nsm.34
+	title = nsm.34.t
+	desc = nsm.34.d
+	picture = GFX_Hutaree_Militia
+	fire_only_once = yes
+	is_triggered_only = yes
+	trigger = {
+		tag = NSM
+	}
+	option = {
+		name = nsm.34.a
+	}
+}
+
+#Rekt part 2
+country_event = {
+	id = nsm.35
+	title = nsm.35.t
+	desc = nsm.35.d
+	picture = GFX_Hutaree_Militia
+	fire_only_once = yes
+	is_triggered_only = yes
+	trigger = {
+		tag = NSM
+	}
+	option = {
+		name = nsm.35.a
+	}
+}
+
+#Big Swastika in New Philidelphia
+country_event = {
+	id = nsm.36
+	title = nsm.36.t
+	desc = nsm.36.d
+	picture = GFX_Hutaree_Militia
+	fire_only_once = yes
+	is_triggered_only = yes
+	trigger = {
+		tag = NSM
+	}
+	option = {
+		name = nsm.36.a
+		create_entity = {
+			entity = swastika_entity
+			province = 13808
+			state = 1069
+			rotation = 6
+			scale = 0.3
+			min_zoom = 900
+		}
+	}
+}
+
+#PF Invite to National Front
+country_event = {
+	id = nsm.37
+	title = nsm.37.t
+	desc = nsm.37.d
+	picture = GFX_event_ATW_national_front_membership_secured
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = {
+		name = nsm.37.a
+		ai_chance = {
+			base = 100
+		}
+		news_event = {
+			id = nsm.38
+		}
+		effect_tooltip = {
+			complete_national_focus = NSM_Form_the_National_Front
+		}
+		PTF = {
+			add_to_faction = NSM
+		}
+		set_country_flag = National_Front_Member
+	}
+	option = {
+		name = nsm.37.b
+		ai_chance = {
+			base = 0
+		}
+		hidden_effect = {
+			PTF = {
+				dismantle_faction = yes
+				complete_national_focus = PTF_one_nation_one_solution
+				country_event = {
+					id = ptf.84
+				}
+			}
+		}
+	}
+}
+
+news_event = {
+	id = nsm.38
+	title = nsm.38.t
+	desc = nsm.38.d
+	picture = GFX_news_national_front
+	fire_only_once = yes
+	is_triggered_only = yes
+	major = yes
+	option = {
+		name = nsm.38.a
+		
+	}
+}
+
+### New Events
+country_event = {
+	id = nsm.39
+	title = nsm.39.t
+	desc = nsm.39.d
+	picture = GFX_miltia2
+	fire_only_once = yes
+	is_triggered_only = yes
+	trigger = {
+		tag = NSM
+	}
+	option = {
+		name = nsm.39.a
+		add_manpower = 5000
+		add_power_balance_value = {
+			id = NSM_faction_balance
+			value = 0.05
+		}
+	}
+	option = {
+		name = nsm.39.b
+		HUM = {
+			HUM_david_brian_stone_char = {
+				set_nationality = NSM
+			}
+		}
+		add_power_balance_value = {
+			id = NSM_faction_balance
+			value = -0.05
+		}
+	}
+}
+
+country_event = {
+	id = nsm.40
+	title = nsm.40.t
+	desc = nsm.40.d
+	picture = GFX_
+	fire_only_once = yes
+	is_triggered_only = yes
+	trigger = {
+		tag = NSM
+	}
+	option = {
+		name = nsm.40.a
+		add_popularity = {
+			ideology = nationalist
+			popularity = 0.05
+		}
+		add_political_power = -50
+		add_stability = -0.035
+	}
+}
+
+country_event = {
+	id = nsm.41
+	title = nsm.41.t
+	desc = nsm.41.d
+	picture = GFX_
+	fire_only_once = yes
+	is_triggered_only = yes
+	trigger = {
+		tag = NSM
+	}
+	immediate = {
+		hidden_effect = {
+			set_temp_variable = {
+				var = libertarian_socialist_popularity_var_temp
+				value = 0.05
+			}
+			add_libertarian_socialist_popularity = yes
+			add_stability = -0.05
+		}
+	}
+	option = {
+		name = nsm.41.a
+		effect_tooltip = {
+			set_temp_variable = {
+				var = libertarian_socialist_popularity_var_temp
+				value = 0.05
+			}
+			add_libertarian_socialist_popularity = yes
+			add_stability = -0.05
+		}
+	}
+}
+
+country_event = {
+	id = nsm.42
+	title = nsm.42.t
+	desc = nsm.42.d
+	picture = GFX_
+	fire_only_once = yes
+	is_triggered_only = yes
+	trigger = {
+		tag = NSM
+	}
+	option = {
+		name = nsm.42.a
+		add_popularity = {
+			ideology = social_liberal
+			popularity = 0.05
+		}
+		add_stability = -0.05
+	}
+}
+
+country_event = {
+	id = nsm.43
+	title = nsm.43.t
+	desc = nsm.43.d
+	picture = GFX_
+	fire_only_once = yes
+	is_triggered_only = yes
+	trigger = {
+		tag = NSM
+	}
+	option = {
+		name = nsm.43.a
+		add_popularity = {
+			ideology = social_liberal
+			popularity = 0.05
+		}
+		add_stability = -0.05
+	}
+}
+
+country_event = {
+	id = nsm.44	###operation manstein/wolvereine
+	title = nsm.44.t
+	desc = nsm.44.d
+	picture = GFX_
+	fire_only_once = yes
+	is_triggered_only = yes
+	trigger = {
+		tag = NSM
+	}
+	option = {
+		name = nsm.44.a
+		1072 = {
+			set_state_owner_to = NSM
+			create_unit = {
+				division = "name = \"1st unnamed Infantry Company 'Hristo Lukov'\" division_template = \"Volunteer Militia\"  start_experience_factor = 0.5"
+				allow_spawning_on_enemy_provs = yes
+				owner = NSM
+			}
+			create_unit = {
+				division = "name = \"1st unnamed Infantry Company 'Hristo Lukov'\" division_template = \"Volunteer Militia\"  start_experience_factor = 0.5"
+				allow_spawning_on_enemy_provs = yes
+				owner = NSM
+			}
+			create_unit = {
+				division = "name = \"1st unnamed Infantry Company 'Hristo Lukov'\" division_template = \"Volunteer Militia\"  start_experience_factor = 0.5"
+				allow_spawning_on_enemy_provs = yes
+				owner = NSM
+			}
+		}
+		add_equipment_to_stockpile = {
+			type = infantry_equipment
+			amount = 3000
+			producer = USC
+		}
+	}
+}
+
+country_event = {
+	id = nsm.45	###operation MASTADON/enigmastuff
+	title = nsm.45.t
+	desc = nsm.45.d
+	picture = GFX_
+	fire_only_once = yes
+	is_triggered_only = yes
+	trigger = {
+		tag = NSM
+	}
+	option = {
+		name = nsm.45.a
+		add_timed_idea = {
+			days = 365
+			idea = NSM_revised_enigma_code_idea
+		}
+	}
+}
+
+country_event = {
+	id = nsm.46	###invite the ptf to national front
+	title = nsm.46.t
+	desc = nsm.46.d
+	picture = GFX_NSM_flags
+	fire_only_once = yes
+	is_triggered_only = yes
+	trigger = {
+		tag = PTF
+	}
+	option = {
+		name = nsm.46.a		##yes
+		trigger = {
+			NOT = {
+				PTF = {
+					has_completed_focus = PTF_one_nation_one_solution
+				}
+			}
+		}
+		ai_chance = {
+			base = 100
+		}
+		NSM = {
+			add_to_faction = PTF
+		}
+	}
+	option = {
+		name = nsm.46.b
+		ai_chance = {
+			base = 0
+		}
+	}
+}
+
+country_event = {
+	id = nsm.47	###ptf joined
+	title = nsm.47.t
+	desc = nsm.47.d
+	picture = GFX_
+	fire_only_once = yes
+	is_triggered_only = yes
+	trigger = {
+		tag = PTF
+	}
+	option = {
+		name = nsm.47.a
+	}
+}
+
+country_event = {
+	id = nsm.48	###operation donitz negotiate with navy
+	title = nsm.48.t
+	desc = nsm.48.d
+	picture = GFX_
+	fire_only_once = yes
+	is_triggered_only = yes
+	trigger = {
+		tag = NSM
+	}
+	option = {
+		name = nsm.48.a
+		random_list = {
+			60 = {
+				country_event = nsm.49
+			}
+			40 = {
+				country_event = nsm.50
+			}
+		}
+	}
+}
+
+country_event = {
+	id = nsm.49	###operation donitz they join us
+	title = nsm.49.t
+	desc = nsm.49.d
+	picture = GFX_
+	fire_only_once = yes
+	is_triggered_only = yes
+	trigger = {
+		tag = NSM
+	}
+	option = {
+		name = nsm.49.a
+		set_naval_oob = USA_2000_naval_mtg
+	}
+}
+
+country_event = {
+	id = nsm.50	###operation donitz they hate us smh
+	title = nsm.50.t
+	desc = nsm.50.d
+	picture = GFX_
+	fire_only_once = yes
+	is_triggered_only = yes
+	trigger = {
+		tag = NSM
+	}
+	option = {
+		name = nsm.50.a
+		complete_national_focus = NSM_the_failure_of_diplomacy
+		uncomplete_national_focus = {
+			focus = NSM_negotiate_with_the_navy
+			uncomplete_children = yes
+			refund_political_power = yes
+		}
+	}
+}
+
+country_event = {
+	id = nsm.51	###operation donitz L diplomacy
+	title = nsm.51.t
+	desc = nsm.51.d
+	picture = GFX_
+	fire_only_once = yes
+	is_triggered_only = yes
+	trigger = {
+		tag = NSM
+	}
+	option = {
+		name = nsm.51.a
+		add_political_power = 50
+		add_war_support = 0.025
+	}
+}
+
+country_event = {
+	id = nsm.52	###operation donitz war with navy
+	title = nsm.52.t
+	desc = nsm.52.d
+	picture = GFX_
+	fire_only_once = yes
+	is_triggered_only = yes
+	trigger = {
+		tag = NSM
+	}
+	option = {
+		name = nsm.52.a
+		add_timed_idea = {
+			days = 150
+			idea = NSM_the_indomitable_american_spirit_idea
+		}
+	}
+}
+
+country_event = {
+	id = nsm.53	###operation rommel cartels
+	title = nsm.53.t
+	desc = nsm.53.d
+	picture = GFX_
+	fire_only_once = yes
+	is_triggered_only = yes
+	trigger = {
+		tag = NSM
+	}
+	option = {
+		name = nsm.53.a
+		983 = {
+			create_unit = {
+				division = "name = \"1st unnamed Infantry Company 'Hristo Lukov'\" division_template = \"Volunteer Militia\"  start_experience_factor = 0.5"
+				allow_spawning_on_enemy_provs = yes
+				owner = ROOT
+			}
+			create_unit = {
+				division = "name = \"1st unnamed Infantry Company 'Hristo Lukov'\" division_template = \"Volunteer Militia\"  start_experience_factor = 0.5"
+				allow_spawning_on_enemy_provs = yes
+				owner = ROOT
+			}
+			create_unit = {
+				division = "name = \"1st unnamed Infantry Company 'Hristo Lukov'\" division_template = \"Volunteer Militia\"  start_experience_factor = 0.5"
+				allow_spawning_on_enemy_provs = yes
+				owner = ROOT
+			}
+		}
+	}
+}
+
+country_event = {
+	id = nsm.54	###mexico cartel consequence
+	title = nsm.54.t
+	desc = nsm.54.d
+	picture = GFX_
+	fire_only_once = yes
+	is_triggered_only = yes
+	trigger = {
+		tag = NSM
+	}
+	option = {
+		name = nsm.54.a
+		random_list = {
+			40 = {
+				country_event = nsm.55
+			}
+			50 = {
+				country_event = nsm.56
+			}
+			10 = {
+				country_event = nsm.57
+			}
+		}
+	}
+}
+
+country_event = {
+	id = nsm.55	###light consequence
+	title = nsm.55.t
+	desc = nsm.55.d
+	picture = GFX_
+	fire_only_once = yes
+	is_triggered_only = yes
+	trigger = {
+		tag = NSM
+	}
+	option = {
+		name = nsm.55.a
+		add_manpower = -5000
+		add_timed_idea = {
+			days = 75
+			idea = NSM_small_deserting_idea
+		}
+	}
+}
+
+country_event = {
+	id = nsm.56	###medium consequence
+	title = nsm.56.t
+	desc = nsm.56.d
+	picture = GFX_
+	fire_only_once = yes
+	is_triggered_only = yes
+	trigger = {
+		tag = NSM
+	}
+	option = {
+		name = nsm.56.a
+		add_manpower = -10000
+		add_timed_idea = {
+			days = 75
+			idea = NSM_medium_deserting_idea
+		}
+	}
+}
+
+country_event = {
+	id = nsm.57	###hard consequence
+	title = nsm.57.t
+	desc = nsm.57.d
+	picture = GFX_
+	fire_only_once = yes
+	is_triggered_only = yes
+	trigger = {
+		tag = NSM
+	}
+	option = {
+		name = nsm.57.a
+		add_manpower = -30000
+		add_timed_idea = {
+			days = 75
+			idea = NSM_heavy_deserting_idea
+		}
+	}
+}
+
+country_event = {
+	id = nsm.58	###operation goebbels liberal scourge
+	title = nsm.58.t
+	desc = nsm.58.d
+	picture = GFX_
+	fire_only_once = yes
+	is_triggered_only = yes
+	trigger = {
+		tag = NSM
+	}
+	option = {
+		name = nsm.58.a
+		add_popularity = {
+			ideology = national_socialist
+			popularity = 0.075
+		}
+	}
+}
+
+country_event = {
+	id = nsm.59	###operation himmler warn of the inevitable
+	title = nsm.59.t
+	desc = nsm.59.d
+	picture = GFX_
+	fire_only_once = yes
+	is_triggered_only = yes
+	trigger = {
+		tag = NSM
+	}
+	option = {
+		name = nsm.59.a
+		PAN = {
+			add_popularity = {
+				ideology = national_socialist
+				popularity = 0.05
+			}
+		}
+		add_stability = -0.05
+	}
+}
+
+country_event = {
+	id = nsm.60	###operation himmler sabotage panama
+	title = nsm.60.t
+	desc = nsm.60.d
+	picture = GFX_
+	fire_only_once = yes
+	is_triggered_only = yes
+	trigger = {
+		tag = NSM
+	}
+	option = {
+		name = nsm.60.a
+		add_political_power = 50
+		PAN = {
+			country_event = {
+				id = nsm.61
+				days = 25
+			}
+		}
+	}
+}
+
+country_event = {
+	id = nsm.61	###operation himmler sabotage panama panama pov
+	title = nsm.61.t
+	desc = nsm.61.d
+	picture = GFX_
+	fire_only_once = yes
+	is_triggered_only = yes
+	trigger = {
+		tag = NSM
+	}
+	option = {
+		name = nsm.61.a
+		add_ideas = NSM_mass_flooding_idea
+	}
+}
+
+country_event = {
+	id = nsm.62	###operation himmler extending a hand
+	title = nsm.62.t
+	desc = nsm.62.d
+	picture = GFX_
+	fire_only_once = yes
+	is_triggered_only = yes
+	trigger = {
+		tag = NSM
+	}
+	option = {
+		name = nsm.62.a
+		PAN = {
+			swap_ideas = {
+				add_idea = NSM_medium_flooding_idea
+				remove_idea = NSM_mass_flooding_idea
+			}
+		}
+	}
+}
+
+country_event = {
+	id = nsm.63	###operation himmler extending a hand
+	title = nsm.63.t
+	desc = nsm.63.d
+	picture = GFX_
+	fire_only_once = yes
+	is_triggered_only = yes
+	trigger = {
+		tag = NSM
+	}
+	option = {
+		name = nsm.63.a
+		add_political_power = -100
+	}
+}
+
+country_event = {
+	id = nsm.64	###operation himmler cross atlantic ENG pov
+	title = nsm.64.t
+	desc = nsm.64.d
+	picture = GFX_
+	fire_only_once = yes
+	is_triggered_only = yes
+	trigger = {
+		tag = NSM
+	}
+	option = {
+		name = nsm.64.a
+	}
+}
+
+country_event = {
+	id = nsm.65	###operation himmler take bermuda
+	title = nsm.65.t
+	desc = nsm.65.d
+	picture = GFX_
+	fire_only_once = yes
+	is_triggered_only = yes
+	trigger = {
+		tag = NSM
+	}
+	option = {
+		name = nsm.65.a
+	}
+}
+
+country_event = {
+	id = nsm.66	###Rockwellians Defect
+	title = nsm.66.t
+	desc = nsm.66.d
+	picture = GFX_
+	fire_only_once = yes
+	is_triggered_only = yes
+	trigger = {
+		tag = NSM
+	}
+	option = {
+		name = nsm.66.a
+		add_popularity = {
+			ideology = fascist
+			popularity = 0.05
+		}
+		set_global_flag = rockwells_defected
+		add_ideas = NSM_Rockwellian_opposition_idea
+		add_ideas = NSM_single_party_movement_idea
+	}
+}
+
+country_event = {
+	id = nsm.67	###american fuhrer
+	title = nsm.67.t
+	desc = nsm.67.d
+	picture = GFX_
+	fire_only_once = yes
+	is_triggered_only = yes
+	trigger = {
+		tag = NSM
+	}
+	option = {
+		name = nsm.67.a		##ANGLIN I FORGOT HIS FUCKING NAME 
+		custom_effect_tooltip = NSM_elect_anglin_fuhrer_Decisions_tt
+		add_popularity = {
+			ideology = national_socialist
+			popularity = 0.01
+		}
+		retire_country_leader = yes
+		promote_character = NSM_andrew_anglin_char
+	}
+	option = {
+		name = nsm.67.b		##MILLET
+		custom_effect_tooltip = NSM_elect_Mullet_fuhrer_Decisions_tt
+		add_popularity = {
+			ideology = national_socialist
+			popularity = 0.02
+		}
+		retire_country_leader = yes
+		promote_character = NSM_paul_mullet_char
+	}
+}
+
+country_event = {
+	id = nsm.68	###final solution
+	title = nsm.68.t
+	desc = nsm.68.d
+	picture = GFX_
+	fire_only_once = yes
+	is_triggered_only = yes
+	trigger = {
+		tag = NSM
+	}
+	option = {
+		name = nsm.68.a
+		add_political_power = -30
+		add_popularity = {
+			ideology = fascist
+			popularity = 0.025
+		}
+		add_stability = -0.01
+	}
+}
+
+country_event = {
+	id = nsm.69	###rockwell resistance cleared
+	title = nsm.69.t
+	desc = nsm.69.d
+	picture = GFX_
+	fire_only_once = yes
+	is_triggered_only = yes
+	trigger = {
+		tag = NSM
+	}
+	option = {
+		name = nsm.69.a
+		add_stability = 0.02
+		add_popularity = {
+			ideology = fascist
+			popularity = -0.05
+		}
+	}
+}
+
+country_event = {
+	id = nsm.70	###the national aparthied
+	title = nsm.70.t
+	desc = nsm.70.d
+	picture = GFX_
+	fire_only_once = yes
+	is_triggered_only = yes
+	trigger = {
+		tag = NSM
+	}
+	option = {
+		name = nsm.70.a
+		add_political_power = 100
+		add_stability = 0.05
+		add_popularity = {
+			ideology = national_socialist
+			popularity = 0.075
+		}
+	}
+}
+
+country_event = {
+	id = nsm.71	###first
+	title = nsm.71.t
+	desc = nsm.71.d
+	picture = GFX_
+	fire_only_once = yes
+	is_triggered_only = yes
+	trigger = {
+		tag = NSM
+	}
+	option = {
+		name = nsm.71.a
+		add_political_power = 100
+		add_stability = 0.05
+		add_popularity = {
+			ideology = national_socialist
+			popularity = 0.075
+		}
+	}
+}
+
+country_event = {
+	id = nsm.72	###first rockwellian resistance ###hitlerite
+	title = nsm.72.t
+	desc = nsm.72.d
+	picture = GFX_
+	fire_only_once = yes
+	is_triggered_only = yes
+	trigger = {
+		tag = NSM
+	}
+	option = {
+		name = nsm.72.a
+		add_political_power = -50
+		add_stability = -0.05
+		add_popularity = {
+			ideology = national_socialist
+			popularity = -0.05
+		}
+	}
+}
+
+country_event = {
+	id = nsm.73	###rockwellian resistance ###hitlerite
+	title = nsm.73.t
+	desc = nsm.73.d
+	picture = GFX_
+	fire_only_once = yes
+	is_triggered_only = yes
+	trigger = {
+		tag = NSM
+	}
+	option = {
+		name = nsm.73.a
+		add_political_power = -50
+		add_stability = -0.025
+		add_war_support = -0.1
+		add_popularity = {
+			ideology = fascist
+			popularity = 0.05
+		}
+	}
+}
+
+country_event = {
+	id = nsm.74	###rockwellian resistance ###hitlerite
+	title = nsm.74.t
+	desc = nsm.74.d
+	picture = GFX_
+	fire_only_once = yes
+	is_triggered_only = yes
+	trigger = {
+		tag = NSM
+	}
+	option = {
+		name = nsm.74.a
+		add_political_power = -150
+		add_popularity = {
+			ideology = fascist
+			popularity = 0.075
+		}
+	}
+}
+
+country_event = {
+	id = nsm.75	###rockwellian resistance ###hitlerite
+	title = nsm.75.t
+	desc = nsm.75.d
+	picture = GFX_
+	fire_only_once = yes
+	is_triggered_only = yes
+	trigger = {
+		tag = NSM
+	}
+	option = {
+		name = nsm.75.a
+		add_political_power = -50
+		add_stability = -0.075
+		add_popularity = {
+			ideology = national_socialist
+			popularity = -0.05
+		}
+	}
+}
+
+country_event = {
+	id = nsm.76	###rockwellian resistance ###hitlerite
+	title = nsm.76.t
+	desc = nsm.76.d
+	picture = GFX_
+	fire_only_once = yes
+	is_triggered_only = yes
+	trigger = {
+		tag = NSM
+	}
+	option = {
+		name = nsm.76.a
+		add_stability = -0.05
+		add_popularity = {
+			ideology = national_socialist
+			popularity = -0.035
+		}
+	}
+}
+
+country_event = {
+	id = nsm.77	###rockwellian resistance ###hitlerite
+	title = nsm.77.t
+	desc = nsm.77.d
+	picture = GFX_
+	fire_only_once = yes
+	is_triggered_only = yes
+	trigger = {
+		tag = NSM
+	}
+	option = {
+		name = nsm.77.a
+		add_stability = -0.1
+		add_popularity = {
+			ideology = fascist
+			popularity = 0.05
+		}
+	}
+}
+
+country_event = {
+	id = nsm.78	###rockwellian resistance ###hitlerite
+	title = nsm.78.t
+	desc = nsm.78.d
+	picture = GFX_
+	fire_only_once = yes
+	is_triggered_only = yes
+	trigger = {
+		tag = NSM
+	}
+	option = {
+		name = nsm.78.a
+		add_stability = -0.025
+		add_war_support = -0.1
+		add_popularity = {
+			ideology = national_socialist
+			popularity = -0.05
+		}
+	}
+}
+
+country_event = {
+	id = nsm.79	###rockwellian resistance ###hitlerite
+	title = nsm.79.t
+	desc = nsm.79.d
+	picture = GFX_
+	fire_only_once = yes
+	is_triggered_only = yes
+	trigger = {
+		tag = NSM
+	}
+	option = {
+		name = nsm.79.a
+		add_stability = -0.05
+		add_war_support = -0.05
+		add_popularity = {
+			ideology = fascist
+			popularity = 0.05
+		}
+	}
+}
+
+country_event = {
+	id = nsm.80	###rockwellian resistance ###hitlerite
+	title = nsm.80.t
+	desc = nsm.80.d
+	picture = GFX_
+	fire_only_once = yes
+	is_triggered_only = yes
+	trigger = {
+		tag = NSM
+		NOT = {
+			has_global_flag = rockwell_reduced_to_atoms
+		}
+	}
+	option = {
+		name = nsm.80.a
+		add_stability = -0.05
+		add_political_power = -200
+		add_popularity = {
+			ideology = fascist
+			popularity = 0.05
+		}
+	}
+}
+
+country_event = {
+	id = nsm.81	###final rockwellian resistance ###hitlerite
+	title = nsm.81.t
+	desc = nsm.81.d
+	picture = GFX_
+	fire_only_once = yes
+	is_triggered_only = yes
+	trigger = {
+		tag = NSM
+		NOT = {
+			has_global_flag = rockwell_reduced_to_atoms
+		}
+	}
+	option = {
+		name = nsm.81.a
+		add_stability = -0.1
+		add_popularity = {
+			ideology = national_socialist
+			popularity = -0.1
+		}
+	}
+}
+
+country_event = {
+	id = nsm.82	###rockwellian resistance ###hitlerite
+	title = nsm.82.t
+	desc = nsm.82.d
+	picture = GFX_
+	fire_only_once = yes
+	is_triggered_only = yes
+	trigger = {
+		tag = NSM
+	}
+	option = {
+		name = nsm.82.a
+		add_stability = -0.1
+		add_popularity = {
+			ideology = national_socialist
+			popularity = -0.1
+		}
+	}
+}
+
+country_event = {
+	id = nsm.83	###rockwellian resistance ###hitlerite
+	title = nsm.83.t
+	desc = nsm.83.d
+	picture = GFX_
+	fire_only_once = yes
+	is_triggered_only = yes
+	trigger = {
+		tag = NSM
+	}
+	option = {
+		name = nsm.83.a
+		add_stability = -0.1
+		add_popularity = {
+			ideology = national_socialist
+			popularity = -0.1
+		}
+	}
+}
+
+country_event = {
+	id = nsm.84	###fight back against rockwellian resistance ###hitlerite
+	title = nsm.84.t
+	desc = nsm.84.d
+	picture = GFX_
+	fire_only_once = yes
+	is_triggered_only = yes
+	trigger = {
+		tag = NSM
+	}
+	option = {
+		name = nsm.84.a
+		add_stability = 0.1
+		add_political_power = 100
+		add_popularity = {
+			ideology = national_socialist
+			popularity = -0.05
+		}
+	}
+}
+
+country_event = {
+	id = nsm.85	###fight back against rockwellian resistance ###hitlerite
+	title = nsm.85.t
+	desc = nsm.85.d
+	picture = GFX_
+	fire_only_once = yes
+	is_triggered_only = yes
+	trigger = {
+		tag = NSM
+	}
+	option = {
+		name = nsm.85.a
+		add_stability = 0.05
+		add_war_support = 0.025
+		add_popularity = {
+			ideology = national_socialist
+			popularity = 0.05
+		}
+	}
+}
+
+country_event = {
+	id = nsm.86	###fight back against rockwellian resistance ###hitlerite
+	title = nsm.86.t
+	desc = nsm.86.d
+	picture = GFX_
+	fire_only_once = yes
+	is_triggered_only = yes
+	trigger = {
+		tag = NSM
+	}
+	option = {
+		name = nsm.86.a
+		add_stability = 0.1
+		add_war_support = 0.1
+		add_popularity = {
+			ideology = fascist
+			popularity = -0.15
+		}
+	}
+}
+
+country_event = {
+	id = nsm.87	###segregation restored
+	title = nsm.87.t
+	desc = nsm.87.d
+	picture = GFX_
+	fire_only_once = yes
+	is_triggered_only = yes
+	trigger = {
+		tag = NSM
+	}
+	option = {
+		name = nsm.87.a
+		add_stability = 0.01
+	}
+}
+
+country_event = {
+	id = nsm.88	#Not in the Notes #wow, what an extremely fucking fitting number for this event, isn't it? -IAVL
+	title = nsm.88.t
+	desc = nsm.88.d
+	picture = GFX_NSM_TNO
+	fire_only_once = yes
+	is_triggered_only = yes
+	trigger = {
+		tag = NSM
+	}
+	option = {
+		name = nsm.88.a
+	}
+}
+
+country_event = {
+	id = nsm.89	#Dreaming Big
+	title = nsm.89.t
+	desc = nsm.89.d
+	picture = GFX_NSM_nazi_house
+	fire_only_once = yes
+	is_triggered_only = yes
+	trigger = {
+		tag = NSM
+	}
+	option = {
+		name = nsm.89.a
+	}
+}
+
+country_event = {
+	id = nsm.90	#Blasting Tunes
+	title = nsm.90.t
+	desc = nsm.90.d
+	picture = GFX_NSM_suburb
+	fire_only_once = yes
+	is_triggered_only = yes
+	trigger = {
+		tag = NSM
+	}
+	option = {
+		name = nsm.90.a
+	}
+}

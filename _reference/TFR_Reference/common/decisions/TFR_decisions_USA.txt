@@ -1,0 +1,3262 @@
+USA_balance_of_power_category = {
+	USA_add_left_bop_debug_decision = {
+		allowed = {
+			original_tag = USA
+		}
+		visible = {
+			is_debug = yes
+			is_ai = no
+			has_power_balance = {
+				id = USA_trust_bop
+			}
+		}
+		complete_effect = {
+			add_power_balance_value = {
+				id = USA_trust_bop
+				value = -0.35
+			}
+		}
+	}
+	USA_add_right_bop_debug_decision = {
+		allowed = {
+			original_tag = USA
+		}
+		visible = {
+			is_debug = yes
+			is_ai = no
+			has_power_balance = {
+				id = USA_trust_bop
+			}
+		}
+		complete_effect = {
+			add_power_balance_value = {
+				id = USA_trust_bop
+				value = 0.35
+			}
+		}
+	}
+	USA_election_countdown_debug_decision = {
+		allowed = {
+			original_tag = USA
+		}
+		visible = {
+			is_debug = yes
+			is_ai = no
+			has_power_balance = {
+				id = USA_trust_bop
+			}
+		}
+		complete_effect = {
+			USA_count_down_mission_effect = yes
+		}
+	}
+	USA_countdown_day_mission = {
+		priority = 1
+		days_mission_timeout = 64
+		icon = generic_political_rally
+		fire_only_once = no
+		cancel_if_not_visible = yes
+		is_good = no
+		fixed_random_seed = no
+		available = {
+			NOT = {
+				original_tag = USA
+			}
+		}
+		activation = {
+			always = no
+		}
+		visible = {
+			NOT = {
+				has_country_flag = USA_counting_heads_flag
+			}
+		}
+		complete_effect = {
+		}
+		timeout_effect = {
+			USA_count_down_mission_effect = yes
+		}
+	}
+	USA_opposistion_action_mission = {
+		priority = 1
+		icon = USA_opposition_taking_action
+		days_mission_timeout = USA_opposistion_action_mission_mission_var
+		fire_only_once = no
+		#fixed_random_seed = no
+		is_good = no
+		activation = {
+			always = no
+		}
+		# visible = {
+		# 	NOT = {
+		# 		has_global_flag = USA_shattered_union_flag
+		# 	}
+		# }
+		available = {
+			hidden_trigger = {
+				always = no
+			}
+		}
+		complete_effect = {
+		}
+		timeout_effect = {
+			#Opposistion against Trump
+			if = {
+				limit = {
+					has_country_flag = USA_sided_with_trump_flag
+				}
+				add_power_balance_value = {
+					id = USA_trust_bop
+					value = -0.005
+				}
+			}
+			#Opposistion against Biden
+			else_if = {
+				limit = {
+					has_country_flag = USA_sided_with_resistance_flag
+				}
+				add_power_balance_value = {
+					id = USA_trust_bop
+					value = -0.015
+				}
+			}
+			activate_mission = USA_opposistion_action_mission
+		}
+	}
+	USA_rally_support_decision = {
+		icon = USA_rally_support
+		allowed = {
+			original_tag = USA
+		}
+		visible = {
+			has_country_flag = USA_sided_with_trump_flag
+			NOT = {
+				has_country_flag = USA_counting_heads_flag
+			}
+		}
+		available = {
+			NOT = {
+				has_country_flag = USA_political_campaign_flag
+			}
+		}
+		ai_will_do = {
+			base = 1
+		}
+		cost = 25
+		fire_only_once = no
+		days_remove = 28
+		days_re_enable = 28
+		complete_effect = {
+			set_country_flag = {
+				flag = USA_political_campaign_flag
+				days = 28
+				value = 1
+			}
+		}
+		remove_effect = {
+			set_temp_variable = {
+				var = conservative_popularity_var_temp
+				value = 0.02
+			}
+			add_conservative_popularity = yes
+			add_power_balance_value = {
+				id = USA_trust_bop
+				value = 0.05
+			}
+		}
+	}
+	USA_protest_the_government_decision = {
+		icon = USA_dem_protest
+		allowed = {
+			original_tag = USA
+		}
+		visible = {
+			has_country_flag = USA_sided_with_resistance_flag
+			NOT = {
+				has_country_flag = USA_counting_heads_flag
+			}
+		}
+		available = {
+			NOT = {
+				has_country_flag = USA_political_campaign_flag
+			}
+		}
+		ai_will_do = {
+			base = 1
+		}
+		cost = 10
+		fire_only_once = no
+		days_remove = 28
+		days_re_enable = 28
+		complete_effect = {
+			set_country_flag = {
+				flag = USA_political_campaign_flag
+				days = 28
+				value = 1
+			}
+		}
+		remove_effect = {
+			add_days_mission_timeout = {
+				mission = USA_opposistion_action_mission
+				days = 14
+			}
+			add_power_balance_value = {
+				id = USA_trust_bop
+				value = 0.02
+			}
+		}
+	}
+	USA_humiliate_the_opposistion_decision = {
+		icon = USA_humiliate_the_opposition
+		allowed = {
+			original_tag = USA
+		}
+		visible = {
+			OR = {
+				has_country_flag = USA_sided_with_resistance_flag
+				has_country_flag = USA_sided_with_trump_flag
+			}
+			NOT = {
+				has_country_flag = USA_counting_heads_flag
+			}
+		}
+		available = {
+			NOT = {
+				has_country_flag = USA_political_campaign_flag
+			}
+		}
+		ai_will_do = {
+			base = 1
+		}
+		cost = 20
+		fire_only_once = no
+		days_remove = 28
+		days_re_enable = 28
+		complete_effect = {
+			set_country_flag = {
+				flag = USA_political_campaign_flag
+				days = 28
+				value = 1
+			}
+		}
+		remove_effect = {
+			add_days_mission_timeout = {
+				mission = USA_opposistion_action_mission
+				days = 14
+			}
+			add_power_balance_value = {
+				id = USA_trust_bop
+				value = 0.05
+			}
+		}
+	}
+	USA_back_the_blue_decision = {
+		icon = USA_back_the_blue
+		allowed = {
+			original_tag = USA
+		}
+		visible = {
+			has_completed_focus = USA_back_the_blue
+			NOT = {
+				has_country_flag = USA_counting_heads_flag
+			}
+		}
+		available = {
+			NOT = {
+				has_country_flag = USA_political_campaign_flag
+			}
+		}
+		ai_will_do = {
+			base = 1
+		}
+		cost = 20
+		fire_only_once = yes
+		cancel_if_not_visible = yes
+		days_remove = 70
+		complete_effect = {
+			set_country_flag = {
+				flag = USA_political_campaign_flag
+				days = 70
+				value = 1
+			}
+		}
+		remove_effect = {
+			add_power_balance_value = {
+				id = USA_trust_bop
+				value = 0.15
+			}
+		}
+	}
+	USA_fund_the_media_decision = {
+		icon = USA_dem_media
+		cost = 25
+		fire_only_once = yes
+		days_remove = 14
+		allowed = {
+			original_tag = USA
+		}
+		visible = {
+			has_completed_focus = USA_engage_the_media
+			NOT = {
+				has_country_flag = USA_counting_heads_flag
+			}
+		}
+		available = {
+			NOT = {
+				has_country_flag = USA_political_campaign_flag
+			}
+		}
+		ai_will_do = {
+			base = 1
+		}
+		complete_effect = {
+			set_country_flag = {
+				flag = USA_political_campaign_flag
+				days = 14
+				value = 1
+			}
+		}
+		remove_effect = {
+			add_power_balance_value = {
+				id = USA_trust_bop
+				value = 0.1
+			}
+		}
+	}
+	USA_prolonge_impeachment_decision = {
+		icon = USA_congress_impeachment
+		#cost = 10
+		fire_only_once = yes
+		days_remove = 28
+		allowed = {
+			original_tag = USA
+		}
+		visible = {
+			has_completed_focus = USA_engage_the_media
+			NOT = {
+				has_country_flag = USA_counting_heads_flag
+			}
+		}
+		available = {
+			NOT = {
+				has_country_flag = USA_political_campaign_flag
+			}
+		}
+		ai_will_do = {
+			base = 1
+		}
+		complete_effect = {
+			set_country_flag = {
+				flag = USA_political_campaign_flag
+				days = 28
+				value = 1
+			}
+			add_days_mission_timeout = {
+				mission = USA_opposistion_action_mission
+				days = 35
+			}
+		}
+		remove_effect = {
+			add_power_balance_value = {
+				id = USA_trust_bop
+				value = -0.05
+			}
+		}
+	}
+	USA_fuel_the_machine_decision = {
+		icon = USA_fuel_the_machine
+		allowed = {
+			original_tag = USA
+		}
+		visible = {
+			has_completed_focus = USA_fuel_the_machine
+			NOT = {
+				has_country_flag = USA_counting_heads_flag
+			}
+		}
+		available = {
+			NOT = {
+				has_country_flag = USA_political_campaign_flag
+			}
+		}
+		ai_will_do = {
+			base = 1
+		}
+		cost = 0
+		custom_cost_text = USA_fuel_the_machine_decision_cost
+		custom_cost_trigger = {
+			check_variable = {
+				var = income_var
+				value = 250
+				compare = greater_than_or_equals
+			}
+		}
+		fire_only_once = no
+		days_remove = 28
+		days_re_enable = 28
+		complete_effect = {
+			set_country_flag = {
+				flag = USA_political_campaign_flag
+				days = 28
+				value = 1
+			}
+			hidden_effect = {
+				set_temp_variable = {
+					var = income_var_temp
+					value = -250
+				}
+				add_income = yes
+			}
+		}
+		remove_effect = {
+			add_political_power = 40
+		}
+	}
+	USA_fortify_the_election_decision = {
+		icon = generic_civil_support
+		allowed = {
+			original_tag = USA
+		}
+		visible = {
+			OR = {
+				has_completed_focus = USA_fuel_the_machine
+				has_completed_focus = USA_end_the_chaos
+			}
+			NOT = {
+				has_country_flag = USA_counting_heads_flag
+			}
+		}
+		available = {
+			NOT = {
+				has_country_flag = USA_political_campaign_flag
+			}
+		}
+		ai_will_do = {
+			base = 1
+		}
+		cost = 50
+		fire_only_once = no
+		days_remove = 28
+		days_re_enable = 28
+		complete_effect = {
+			set_country_flag = {
+				flag = USA_political_campaign_flag
+				days = 28
+				value = 1
+			}
+			custom_effect_tooltip = USA_fortify_the_election_tooltip
+		}
+		remove_effect = {
+			add_power_balance_value = {
+				id = USA_trust_bop
+				value = 0.1
+			}
+		}
+	}
+	USA_political_sabotage_decision = {
+		icon = generic_speech
+		#cost = 10
+		fire_only_once = no
+		days_remove = 28
+		days_re_enable = 28
+		allowed = {
+			original_tag = USA
+		}
+		visible = {
+			is_debug = yes
+			is_ai = no
+		}
+		available = {
+			NOT = {
+				has_country_flag = USA_political_campaign_flag
+			}
+		}
+		ai_will_do = {
+			base = 0
+		}
+		complete_effect = {
+			set_country_flag = {
+				flag = USA_political_campaign_flag
+				days = 28
+				value = 1
+			}
+		}
+		remove_effect = {
+			add_power_balance_value = {
+				id = USA_trust_bop
+				value = -0.15
+			}
+		}
+	}
+}
+
+USA_2020_election_category = {
+}
+
+USA_fighting_coronavirus = {
+	USA_coronavirus_outbreak_in_state_mission = {
+		priority = 1
+		icon = generic_coronavirus
+		allowed = {
+			original_tag = USA
+		}
+		available = {
+			NOT = {
+				original_tag = USA
+			}
+		}
+		highlight_color_while_active = 1
+		on_map_mode = map_and_decisions_view
+		days_mission_timeout = USA_coronavirus_outbreak_in_state_mission_var
+		activation = {
+			always = no
+		}
+		visible = {
+			has_country_flag = USA_coronavirus_strikes
+			any_owned_state = {
+				has_state_flag = USA_capital_state
+				NOT = {
+					has_state_flag = USA_coronavirus_protected_state
+					has_state_flag = USA_coronavirus_affected_state
+				}
+			}
+		}
+		cancel_if_not_visible = yes
+		is_good = no
+		complete_effect = {
+		}
+		timeout_effect = {
+			hidden_effect = {
+				add_to_variable = {
+					var = USA_coronavirus_outbreak_in_state_mission_count_var
+					value = 1
+				}
+			}
+			USA_coronavirus_outbreak_in_state_mission_effect = yes
+			USA_coronavirus_outbreak_effect = yes
+		}
+	}
+	USA_vaccine_research_mission = {
+		priority = 1
+		icon = USA_pfizer_vax
+		available = {
+			NOT = {
+				original_tag = USA
+			}
+		}
+		days_mission_timeout = USA_vaccine_research_mission_var
+		activation = {
+			always = no
+		}
+		visible = {
+			hidden_trigger = {
+				has_country_flag = USA_researching_vaccine_flag
+			}
+		}
+		fire_only_once = yes
+		cancel_if_not_visible = yes
+		is_good = no
+		complete_effect = {
+		}
+		timeout_effect = {
+			hidden_effect = {
+				clr_country_flag = USA_researching_vaccine_flag
+			}
+			custom_effect_tooltip = USA_prepare_the_vaccine_tooltip
+		}
+	}
+	USA_implement_guidelines = {
+		icon = ger_mefo_bills
+		available = {
+			has_active_mission = USA_coronavirus_outbreak_in_state_mission
+			NOT = {
+				has_country_flag = USA_public_health_action
+			}
+		}
+		visible = {
+			tag = USA
+			has_country_flag = USA_coronavirus_strikes
+			OR = {
+				has_completed_focus = USA_plan_for_the_worst
+				has_completed_focus = USA_expand_the_cdc
+			}
+			has_active_mission = USA_coronavirus_outbreak_in_state_mission
+		}
+		fire_only_once = yes
+		cancel_if_not_visible = yes
+		cost = 0
+		days_remove = 7
+		ai_will_do = {
+			base = 100
+		}
+		complete_effect = {
+			hidden_effect = {
+				set_country_flag = {
+					flag = USA_public_health_action
+					days = 7
+					value = 1
+				}
+			}
+		}
+		remove_effect = {
+			add_stability = -0.05
+			set_temp_variable = {
+				var = USA_coronavirus_outbreak_in_state_mission_var_temp
+				value = 2
+			}
+			USA_add_covid_growth_time = yes
+		}
+	}
+	USA_ban_international_travel_decision = {
+		icon = ger_mefo_bills
+		allowed = {
+			original_tag = USA
+		}
+		available = {
+			NOT = {
+				has_country_flag = USA_public_health_action
+			}
+		}
+		visible = {
+			has_completed_focus = USA_plan_for_the_worst
+			has_active_mission = USA_coronavirus_outbreak_in_state_mission
+		}
+		fire_only_once = yes
+		cancel_if_not_visible = yes
+		cost = 0
+		days_remove = 28
+		ai_will_do = {
+			base = 100
+		}
+		complete_effect = {
+			hidden_effect = {
+				set_country_flag = {
+					flag = USA_public_health_action
+					days = 28
+					value = 1
+				}
+			}
+			add_opinion_modifier = {
+				target = PRC
+				modifier = banned_travel
+			}
+			add_opinion_modifier = {
+				target = ENG
+				modifier = banned_travel
+			}
+			add_opinion_modifier = {
+				target = ITA
+				modifier = banned_travel
+			}
+			add_opinion_modifier = {
+				target = SPR
+				modifier = banned_travel
+			}
+			add_opinion_modifier = {
+				target = FRA
+				modifier = banned_travel
+			}
+			add_opinion_modifier = {
+				target = POR
+				modifier = banned_travel
+			}
+			set_temp_variable = {
+				var = USA_coronavirus_outbreak_in_state_mission_var_temp
+				value = 2
+			}
+			USA_add_covid_growth_time = yes
+		}
+		modifier = {
+			consumer_goods_factor = 0.1
+		}
+		remove_effect = {
+			hidden_effect = {
+			}
+		}
+	}
+	USA_purchase_masks = {
+		icon = generic_mask
+		available = {
+			NOT = {
+				has_country_flag = USA_public_health_action
+			}
+		}
+		visible = {
+			tag = USA
+			has_country_flag = USA_coronavirus_strikes
+			OR = {
+				has_completed_focus = USA_plan_for_the_worst
+				has_completed_focus = USA_expand_the_cdc
+			}
+		}
+		fire_only_once = no
+		cancel_if_not_visible = yes
+		cost = 25
+		days_remove = 3
+		ai_will_do = {
+			base = 1
+		}
+		complete_effect = {
+			hidden_effect = {
+				set_country_flag = {
+					flag = USA_public_health_action
+					days = 3
+					value = 1
+				}
+			}
+		}
+		remove_effect = {
+			hidden_effect = {
+			}
+			if = {
+				limit = {
+					has_country_flag = USA_stopped_the_spread_flag
+				}
+				set_temp_variable = {
+					var = mask_supply_var
+					value = 27500
+				}
+				add_mask_supply = yes
+			}
+			else = {
+				set_temp_variable = {
+					var = mask_supply_var
+					value = 15000
+				}
+				add_mask_supply = yes
+			}
+		}
+	}
+	USA_mass_mask_production = {
+		icon = ger_mefo_bills
+		allowed = {
+			original_tag = USA
+		}
+		visible = {
+			has_country_flag = USA_coronavirus_strikes
+			OR = {
+				has_completed_focus = USA_plan_for_the_worst
+				has_completed_focus = USA_expand_the_cdc
+			}
+			hidden_trigger = {
+				has_variable = mask_weekly_gain_var
+			}
+		}
+		available = {
+			NOT = {
+				political_power_daily < 0.05
+				has_country_flag = USA_public_health_action
+			}
+		}
+		cancel_if_not_visible = yes
+		cost = 5
+		days_remove = 35
+		days_re_enable = 35
+		ai_will_do = {
+			base = 50
+		}
+		complete_effect = {
+			hidden_effect = {
+				set_country_flag = {
+					flag = USA_public_health_action
+					days = 35
+					value = 1
+				}
+				if = {
+					limit = {
+						has_country_flag = USA_stopped_the_spread_flag
+					}
+					set_temp_variable = {
+						var = mask_daily_gain_var
+						value = 1000
+					}
+					add_mask_daily_gain = yes
+				}
+				else = {
+					set_temp_variable = {
+						var = mask_daily_gain_var
+						value = 500
+					}
+					add_mask_daily_gain = yes
+				}
+			}
+		}
+		modifier = {
+			political_power_gain = -0.05
+			custom_modifier_tooltip = USA_mass_mask_production_tooltip
+		}
+		remove_effect = {
+			hidden_effect = {
+				if = {
+					limit = {
+						has_country_flag = USA_stopped_the_spread_flag
+					}
+					set_temp_variable = {
+						var = mask_daily_gain_var
+						value = -500
+					}
+					add_mask_daily_gain = yes
+				}
+				else = {
+					set_temp_variable = {
+						var = mask_daily_gain_var
+						value = -250
+					}
+					add_mask_daily_gain = yes
+				}
+			}
+		}
+	}
+	USA_prevent_outbreak_in_state = {
+		icon = generic_mask
+		cost = 0
+		days_remove = 1
+		state_target = yes
+		on_map_mode = map_only
+		target_array = controlled_states
+		allowed = {
+			original_tag = USA
+		}
+		target_root_trigger = {
+			has_country_flag = USA_coronavirus_strikes
+			NOT = {
+				has_country_flag = USA_stopped_the_spread_flag
+			}
+		}
+		target_trigger = {
+			FROM = {
+				has_state_flag = USA_capital_state
+				NOT = {
+					has_state_flag = USA_coronavirus_affected_state
+					has_state_flag = USA_coronavirus_protected_state
+				}
+			}
+		}
+		available = {
+			NOT = {
+				has_country_flag = USA_pandemic_prevention_flag
+			}
+			USA_state_prevention_cost_trigger = yes
+		}
+		ai_will_do = {
+			base = 1
+		}
+		complete_effect = {
+			set_country_flag = {
+				flag = USA_pandemic_prevention_flag
+				days = 1
+				value = 1
+			}
+			USA_state_prevention_cost_effect = yes
+		}
+		remove_effect = {
+			FROM = {
+				set_state_flag = USA_coronavirus_protected_state
+				custom_effect_tooltip = USA_prevent_outbreak_in_state_tooltip
+			}
+		}
+	}
+	USA_deploy_vaccines_in_state = {
+		icon = generic_vaccine
+		cost = 0
+		fire_only_once = no
+		days_remove = 1
+		state_target = yes
+		on_map_mode = map_only
+		target_array = controlled_states
+		allowed = {
+			original_tag = USA
+		}
+		target_root_trigger = {
+			NOT = {
+				has_country_flag = USA_researching_vaccine_flag
+			}
+			OR = {
+				has_completed_focus = USA_expand_the_cdc
+				has_completed_focus = USA_prepare_the_vaccine
+			}
+		}
+		target_trigger = {
+			FROM = {
+				has_state_flag = USA_capital_state
+				has_state_flag = USA_coronavirus_affected_state
+				NOT = {
+					has_state_flag = USA_coronavirus_protected_state
+				}
+			}
+		}
+		available = {
+			NOT = {
+				has_country_flag = USA_deploy_vaccine_flag
+			}
+			USA_state_vaccine_cost_trigger = yes
+		}
+		ai_will_do = {
+			base = 1
+		}
+		complete_effect = {
+			set_country_flag = {
+				flag = USA_deploy_vaccine_flag
+				days = 1
+				value = 1
+			}
+			USA_state_vaccine_cost_effect = yes
+		}
+		remove_effect = {
+			USA_covid_reduction = yes
+			USA_state_vaccine_effect = yes
+		}
+	}
+	USA_minor_lockdown = {
+		icon = generic_operation
+		allowed = {
+			original_tag = USA
+		}
+		visible = {
+			NOT = {
+				has_country_flag = USA_stopped_the_spread_flag
+			}
+			OR = {
+				has_completed_focus = USA_implement_emergency_measures
+				has_completed_focus = USA_national_lockdowns
+			}
+			has_active_mission = USA_coronavirus_outbreak_in_state_mission
+		}
+		available = {
+			NOT = {
+				has_country_flag = USA_public_health_action
+			}
+			NOT = {
+				power_balance_value = {
+					id = USA_trust_bop
+					value < 0.05
+				}
+			}
+		}
+		ai_will_do = {
+			base = 1
+		}
+		fire_only_once = no
+		fixed_random_seed = no
+		cancel_if_not_visible = yes
+		cost = 10
+		days_remove = 14
+		days_re_enable = 14
+		modifier = {
+			political_power_gain = 0.1
+			consumer_goods_factor = 0.025
+			stability_weekly = -0.001
+		}
+		complete_effect = {
+			set_country_flag = {
+				flag = USA_public_health_action
+				days = 14
+				value = 1
+			}
+			add_power_balance_value = {
+				id = USA_trust_bop
+				value = -0.05
+			}
+			add_days_mission_timeout = {
+				mission = USA_coronavirus_outbreak_in_state_mission
+				days = 14
+			}
+		}
+		remove_effect = {
+		}
+	}
+	USA_mass_lockdowns = {
+		icon = oppression
+		allowed = {
+			original_tag = USA
+		}
+		visible = {
+			OR = {
+				has_completed_focus = USA_implement_emergency_measures
+				has_completed_focus = USA_national_lockdowns
+			}
+			has_active_mission = USA_coronavirus_outbreak_in_state_mission
+			NOT = {
+				has_country_flag = USA_stopped_the_spread_flag
+			}
+		}
+		available = {
+			NOT = {
+				has_country_flag = USA_public_health_action
+			}
+			NOT = {
+				power_balance_value = {
+					id = USA_trust_bop
+					value < 0.1
+				}
+			}
+		}
+		ai_will_do = {
+			base = 1
+		}
+		fire_only_once = no
+		fixed_random_seed = no
+		cancel_if_not_visible = yes
+		cost = 20
+		days_remove = 28
+		days_re_enable = 28
+		modifier = {
+			political_power_gain = 0.2
+			consumer_goods_factor = 0.05
+			stability_weekly = -0.002
+		}
+		complete_effect = {
+			set_country_flag = {
+				flag = USA_public_health_action
+				days = 28
+				value = 1
+			}
+			add_power_balance_value = {
+				id = USA_trust_bop
+				value = -0.1
+			}
+			add_days_mission_timeout = {
+				mission = USA_coronavirus_outbreak_in_state_mission
+				days = 28
+			}
+		}
+		remove_effect = {
+		}
+	}
+	USA_stop_the_spread_decision = {
+		icon = generic_civil_support
+		allowed = {
+			original_tag = USA
+		}
+		visible = {
+			has_active_mission = USA_coronavirus_outbreak_in_state_mission
+			OR = {
+				has_completed_focus = USA_build_back_better
+				has_completed_focus = USA_prepare_the_vaccine
+			}
+			NOT = {
+				has_country_flag = USA_stopped_the_spread_flag
+			}
+		}
+		available = {
+			NOT = {
+				has_country_flag = USA_public_health_action
+			}
+			custom_trigger_tooltip = {
+				tooltip = USA_stop_the_spread_trigger_tooltip
+				check_variable = {
+					var = USA_covid_states_var
+					value = 15
+					compare = less_than
+				}
+			}
+		}
+		ai_will_do = {
+			base = 100
+		}
+		fire_only_once = no
+		fixed_random_seed = no
+		cancel_if_not_visible = yes
+		cost = 50
+		days_remove = 7
+		modifier = {
+			production_factory_max_efficiency_factor = -0.3
+		}
+		complete_effect = {
+			set_country_flag = {
+				flag = USA_public_health_action
+				days = 7
+				value = 1
+			}
+		}
+		remove_effect = {
+			hidden_effect = {
+				set_country_flag = USA_stopped_the_spread_flag
+			}
+			add_power_balance_value = {
+				id = USA_trust_bop
+				value = 0.05
+			}
+			remove_mission = USA_coronavirus_outbreak_in_state_mission
+		}
+	}
+}
+
+USA_deal_with_the_movement = {
+	USA_siege_being_organized_mission = {
+		priority = 2
+		icon = USA_white_house_siege
+		available = {
+			NOT = {
+				original_tag = USA
+			}
+		}
+		days_mission_timeout = 70
+		activation = {
+			has_country_flag = USA_siege_being_organized_flag
+		}
+		visible = {
+			original_tag = USA
+			has_country_flag = USA_the_movement_flag
+		}
+		cancel_if_not_visible = yes
+		is_good = no
+		complete_effect = {
+		}
+		timeout_effect = {
+			custom_effect_tooltip = USA_siege_being_organized_tooltip
+			if = {
+				limit = {
+					check_variable = {
+						var = USA_the_movement_states_loc_var
+						value = 10
+						compare = greater_than_or_equals
+					}
+				}
+				country_event = {
+					id = usa.135
+				}
+			}
+			else = {
+				country_event = {
+					id = usa.136
+				}
+			}
+		}
+	}
+	USA_movement_protest_state_mission = {
+		priority = 1
+		icon = generic_protest_riot
+		available = {
+			always = no
+		}
+		highlight_color_while_active = 1
+		highlight_state_targets = {
+			state = FROM
+		}
+		on_map_mode = map_and_decisions_view
+		days_mission_timeout = USA_movement_organization_time_var
+		activation = {
+			always = no
+		}
+		visible = {
+			has_country_flag = USA_the_movement_flag
+			any_owned_state = {
+				has_state_flag = USA_major_city_state
+				NOT = {
+					has_state_flag = USA_movement_stronghold_state
+				}
+			}
+		}
+		cancel_if_not_visible = yes
+		is_good = no
+		complete_effect = {
+		}
+		timeout_effect = {
+			random_owned_state = {
+				limit = {
+					has_state_flag = USA_major_city_state
+					NOT = {
+						has_state_flag = USA_movement_stronghold_state
+					}
+				}
+				USA_add_movement_stronghold_state = yes
+			}
+			if = {
+				limit = {
+					OR = {
+						AND = {
+							has_country_flag = USA_sided_with_resistance_flag
+							check_variable = {
+								var = USA_election_opposistion_strength_var
+								value = 0.75
+								compare = less_than_or_equals
+							}
+						}
+						any_state = {
+							has_state_flag = USA_major_city_state
+							NOT = {
+								has_state_flag = USA_movement_stronghold_state
+							}
+						}
+					}
+				}
+				activate_mission = USA_movement_protest_state_mission
+				set_temp_variable = {
+					var = USA_movement_organization_time_var_temp
+					value = 1
+				}
+				USA_add_movement_protest_state_mission_days = yes
+			}
+			if = {
+				limit = {
+					has_country_flag = USA_sided_with_resistance_flag
+				}
+				custom_effect_tooltip = USA_remove_movement_mission_tooltip
+				effect_tooltip = {
+					remove_mission = USA_movement_protest_state_mission
+				}
+			}
+		}
+	}
+	USA_dissolve_protest_in_state = {
+		icon = generic_protest_peaceful
+		allowed = {
+			original_tag = USA
+		}
+		visible = {
+			FROM = {
+				has_state_flag = USA_movement_stronghold_state
+			}
+		}
+		available = {
+			NOT = {
+				has_country_flag = USA_dealing_with_a_protest_flag
+			}
+		}
+		state_target = yes
+		on_map_mode = map_only
+		target_array = controlled_states
+		target_trigger = {
+			FROM = {
+				is_fully_controlled_by = USA
+			}
+			OR = {
+				has_completed_focus = USA_compromise_with_the_protesters
+				has_completed_focus = USA_abandon_the_anarchists
+			}
+			FROM = {
+				has_state_flag = USA_major_city_state
+				has_state_flag = USA_movement_stronghold_state
+			}
+		}
+		ai_will_do = {
+			base = 1
+		}
+		cost = 15
+		fire_only_once = no
+		days_remove = 5
+		complete_effect = {
+			set_country_flag = {
+				flag = USA_dealing_with_a_protest_flag
+				days = 5
+				value = 1
+			}
+		}
+		remove_effect = {
+			FROM = {
+				USA_remove_movement_stronghold_state = yes
+			}
+			if = {
+				limit = {
+					has_country_flag = USA_sided_with_trump_flag
+				}
+				add_power_balance_value = {
+					id = USA_trust_bop
+					value = -0.012
+				}
+			}
+			else_if = {
+				limit = {
+					has_country_flag = USA_sided_with_resistance_flag
+				}
+				add_power_balance_value = {
+					id = USA_trust_bop
+					value = 0.004
+				}
+			}
+		}
+	}
+	USA_crush_the_riot_in_state = {
+		icon = generic_police_action
+		custom_cost_text = USA_crush_the_riot_in_state_decision_cost
+		allowed = {
+			original_tag = USA
+		}
+		visible = {
+			FROM = {
+				has_state_flag = USA_movement_stronghold_state
+			}
+		}
+		available = {
+			NOT = {
+				has_country_flag = USA_dealing_with_a_protest_flag
+			}
+			hidden_trigger = {
+				NOT = {
+					command_power < 10
+				}
+			}
+		}
+		state_target = yes
+		on_map_mode = map_only
+		target_array = controlled_states
+		highlight_state_targets = {
+			state = FROM
+		}
+		target_trigger = {
+			has_completed_focus = USA_crush_the_rioters
+			FROM = {
+				has_state_flag = USA_major_city_state
+				has_state_flag = USA_movement_stronghold_state
+			}
+		}
+		ai_will_do = {
+			base = 1
+		}
+		cost = 0
+		fire_only_once = no
+		days_remove = 3
+		custom_cost_trigger = {
+			NOT = {
+				command_power < 10
+			}
+		}
+		complete_effect = {
+			set_country_flag = {
+				flag = USA_dealing_with_a_protest_flag
+				days = 3
+				value = 1
+			}
+			add_stability = 0.005
+			hidden_effect = {
+				add_command_power = -10
+			}
+		}
+		remove_effect = {
+			FROM = {
+				USA_remove_movement_stronghold_state = yes
+			}
+			add_power_balance_value = {
+				id = USA_trust_bop
+				value = 0.005
+			}
+		}
+	}
+	USA_take_back_1037 = {
+		icon = generic_police_action
+		allowed = {
+			original_tag = USA
+		}
+		visible = {
+			has_country_flag = USA_CHZ_collaspe_flag
+			1037 = {
+				NOT = {
+					is_owned_and_controlled_by = USA
+				}
+			}
+		}
+		available = {
+			NOT = {
+				has_country_flag = USA_deal_with_the_movement_flag
+				political_power_daily < 0.05
+			}
+		}
+		ai_will_do = {
+			base = 100
+		}
+		cost = 0
+		fire_only_once = yes
+		cancel_if_not_visible = yes
+		on_map_mode = map_and_decisions_view
+		highlight_state_targets = {
+			state = 1037
+		}
+		days_remove = 7
+		modifier = {
+			political_power_gain = -0.05
+		}
+		complete_effect = {
+			set_country_flag = {
+				flag = USA_deal_with_the_movement_flag
+				days = 7
+				value = 1
+			}
+		}
+		remove_effect = {
+			add_stability = 0.05
+			1037 = {
+				USA_remove_movement_stronghold_state = yes
+			}
+			transfer_state = 1037
+		}
+	}
+	USA_encourage_militias = {
+		icon = eng_blackshirt_march
+		allowed = {
+			original_tag = USA
+		}
+		visible = {
+			has_active_mission = USA_movement_protest_state_mission
+			has_completed_focus = USA_crush_the_rioters
+		}
+		available = {
+			NOT = {
+				has_country_flag = USA_deal_with_the_movement_flag
+			}
+		}
+		ai_will_do = {
+			base = 1
+		}
+		cost = 0
+		fire_only_once = yes
+		cancel_if_not_visible = yes
+		days_remove = 14
+		modifier = {
+			stability_weekly = -0.01
+		}
+		complete_effect = {
+			set_country_flag = {
+				flag = USA_deal_with_the_movement_flag
+				days = 14
+				value = 1
+			}
+		}
+		remove_effect = {
+			clr_country_flag = USA_deal_with_the_movement_flag
+			set_country_flag = USA_encourage_militias_flag
+			custom_effect_tooltip = USA_encourage_militias_tooltip
+			swap_ideas = {
+				remove_idea = USA_second_amendment_idea
+				add_idea = USA_second_amendment_idea1
+			}
+		}
+	}
+	USA_send_in_the_police = {
+		icon = generic_arrest
+		allowed = {
+			original_tag = USA
+		}
+		visible = {
+			OR = {
+				has_country_flag = USA_sided_with_trump_flag
+				has_completed_focus = USA_abandon_the_anarchists
+			}
+			has_active_mission = USA_movement_protest_state_mission
+		}
+		available = {
+			NOT = {
+				has_country_flag = USA_deal_with_the_movement_flag
+			}
+		}
+		ai_will_do = {
+			base = 1
+		}
+		cost = 10
+		fire_only_once = no
+		fixed_random_seed = no
+		cancel_if_not_visible = yes
+		days_remove = 14
+		complete_effect = {
+			set_country_flag = {
+				flag = USA_deal_with_the_movement_flag
+				days = 14
+				value = 1
+			}
+			add_days_mission_timeout = {
+				mission = USA_movement_protest_state_mission
+				days = 7
+			}
+		}
+		remove_effect = {
+			if = {
+				limit = {
+					has_country_flag = USA_encourage_militias_flag
+				}
+				random_list = {
+					30 = {
+						country_event = {
+							id = usa.130
+						}
+					}
+					70 = {
+						add_stability = 0.05
+					}
+				}
+			}
+			else = {
+				random_list = {
+					65 = {
+						country_event = {
+							id = usa.130
+						}
+					}
+					35 = {
+						add_stability = 0.05
+					}
+				}
+			}
+		}
+	}
+	USA_fund_the_movement_decision = {
+		icon = generic_fundraising
+		allowed = {
+			original_tag = USA
+		}
+		visible = {
+			has_country_flag = USA_sided_with_resistance_flag
+			has_active_mission = USA_movement_protest_state_mission
+			hidden_trigger = {
+				check_variable = {
+					var = USA_movement_organization_time_var
+					value = 4
+					compare = greater_than_or_equals
+				}
+				USA = {
+					NOT = {
+						has_completed_focus = USA_abandon_the_anarchists
+					}
+				}
+			}
+		}
+		available = {
+			NOT = {
+				has_country_flag = USA_deal_with_the_movement_flag
+			}
+		}
+		ai_will_do = {
+			base = 1
+		}
+		cost = 10
+		fire_only_once = no
+		fixed_random_seed = no
+		cancel_if_not_visible = yes
+		days_remove = 7
+		days_re_enable = 7
+		complete_effect = {
+			set_country_flag = {
+				flag = USA_deal_with_the_movement_flag
+				days = 7
+				value = 1
+			}
+			set_temp_variable = {
+				var = USA_movement_organization_time_var_temp
+				value = 2
+			}
+			USA_reduce_movement_protest_state_mission_days = yes
+		}
+		remove_effect = {
+			add_power_balance_value = {
+				id = USA_trust_bop
+				value = -0.03
+			}
+		}
+	}
+	USA_end_the_chaos_decision = {
+		icon = generic_assassination
+		allowed = {
+			original_tag = USA
+		}
+		visible = {
+			has_active_mission = USA_movement_protest_state_mission
+			NOT = {
+				has_completed_focus = USA_mingle_with_the_movement
+			}
+			OR = {
+				has_completed_focus = USA_end_the_chaos
+				has_completed_focus = USA_flames_of_the_future
+			}
+		}
+		available = {
+			NOT = {
+				has_country_flag = USA_deal_with_the_movement_flag
+			}
+		}
+		ai_will_do = {
+			base = 100
+		}
+		cost = 50
+		fire_only_once = yes
+		cancel_if_not_visible = yes
+		days_remove = 7
+		complete_effect = {
+			set_country_flag = {
+				flag = USA_deal_with_the_movement_flag
+				days = 7
+				value = 1
+			}
+		}
+		remove_effect = {
+			remove_mission = USA_movement_protest_state_mission
+			set_country_flag = USA_end_the_chaos_flag
+		}
+	}
+}
+
+USA_counting_heads_category = {
+	USA_civil_war_mission = {
+		priority = 1
+		icon = USA_the_inevitable_civil_war
+		available = {
+			NOT = {
+				original_tag = USA
+			}
+		}
+		days_mission_timeout = 196
+		activation = {
+			always = no
+		}
+		visible = {
+			hidden_trigger = {
+				NOT = {
+					has_global_flag = USA_american_civil_war_global
+					has_global_flag = USA_american_civil_war_over_global
+					has_country_flag = USA_civil_war_mission_flag
+				}
+			}
+		}
+		fire_only_once = yes
+		cancel_if_not_visible = yes
+		is_good = no
+		complete_effect = {
+		}
+		timeout_effect = {
+			if = {
+				limit = {
+					has_country_flag = USA_trump_2020_inauguration_flag
+				}
+				country_event = {
+					id = usa.95
+				}
+				country_event = {
+					id = usa.16
+				}
+			}
+			else_if = {
+				limit = {
+					has_country_flag = USA_biden_2020_inauguration_flag
+				}
+				country_event = {
+					id = usa.5
+				}
+				country_event = {
+					id = usa.16
+				}
+			}
+			custom_effect_tooltip = USA_civil_war_tooltip
+		}
+	}
+	USA_compromise_with_democrats_decision = {
+		icon = USA_compromise_with_democrats
+		allowed = {
+			original_tag = USA
+		}
+		visible = {
+			hidden_trigger = {
+				has_active_mission = USA_civil_war_mission
+				USA_sided_with_trump_trigger = yes
+				has_country_flag = USA_trump_2020_inauguration_flag
+			}
+		}
+		available = {
+			NOT = {
+				has_country_flag = USA_political_action_flag
+			}
+			has_government = conservative
+			NOT = {
+				conservative < 0.33
+			}
+		}
+		ai_will_do = {
+			base = 100
+		}
+		cost = 25
+		fire_only_once = no
+		cancel_if_not_visible = yes
+		days_remove = 28
+		complete_effect = {
+			set_country_flag = {
+				flag = USA_political_action_flag
+				days = 28
+				value = 1
+			}
+		}
+		remove_effect = {
+			set_temp_variable = {
+				var = legit_var_temp
+				value = 0.025
+			}
+			add_legit = yes
+			add_popularity = {
+				ideology = conservative
+				popularity = -0.01
+			}
+			add_days_mission_timeout = {
+				mission = USA_civil_war_mission
+				days = 14
+			}
+		}
+	}
+	USA_press_propaganda_decision = {
+		icon = generic_political_discourse
+		allowed = {
+			original_tag = USA
+		}
+		visible = {
+			hidden_trigger = {
+				has_active_mission = USA_civil_war_mission
+				has_country_flag = USA_sided_with_resistance_flag
+				has_country_flag = USA_biden_2020_inauguration_flag
+			}
+		}
+		available = {
+			NOT = {
+				has_country_flag = USA_political_action_flag
+			}
+			NOT = {
+				power_balance_value = {
+					id = USA_trust_bop
+					value < 0.08
+				}
+			}
+		}
+		ai_will_do = {
+			base = 100
+		}
+		cost = 25
+		fire_only_once = no
+		cancel_if_not_visible = yes
+		days_remove = 28
+		complete_effect = {
+			set_country_flag = {
+				flag = USA_political_action_flag
+				days = 28
+				value = 1
+			}
+			add_power_balance_value = {
+				id = USA_trust_bop
+				value = -0.08
+			}
+		}
+		remove_effect = {
+			set_temp_variable = {
+				var = legit_var_temp
+				value = 0.02
+			}
+			add_legit = yes
+			add_days_mission_timeout = {
+				mission = USA_civil_war_mission
+				days = 14
+			}
+		}
+	}
+	USA_compromise_with_republicans_decision = {
+		icon = USA_compromise_with_republicans
+		cost = 25
+		fire_only_once = no
+		cancel_if_not_visible = yes
+		days_remove = 28
+		days_re_enable = 28
+		allowed = {
+			original_tag = USA
+		}
+		visible = {
+			hidden_trigger = {
+				has_active_mission = USA_civil_war_mission
+				has_country_flag = USA_sided_with_resistance_flag
+				has_country_flag = USA_biden_2020_inauguration_flag
+				has_completed_focus = USA_reconcile_republicans
+			}
+		}
+		available = {
+			NOT = {
+				has_country_flag = USA_political_action_flag
+			}
+			has_government = social_liberal
+			NOT = {
+				social_liberal < 0.25
+			}
+		}
+		ai_will_do = {
+			base = 100
+		}
+		complete_effect = {
+			set_country_flag = {
+				flag = USA_political_action_flag
+				days = 28
+				value = 1
+			}
+		}
+		remove_effect = {
+			set_temp_variable = {
+				var = legit_var_temp
+				value = 0.025
+			}
+			add_legit = yes
+			add_popularity = {
+				ideology = conservative
+				popularity = -0.01
+			}
+			add_power_balance_value = {
+				id = USA_trust_bop
+				value = 0.02
+			}
+			add_days_mission_timeout = {
+				mission = USA_civil_war_mission
+				days = 14
+			}
+		}
+	}
+	USA_unify_the_gop_decision = {
+		icon = USA_unify_the_gop
+		cost = 0
+		fire_only_once = no
+		cancel_if_not_visible = yes
+		days_remove = 28
+		days_re_enable = 28
+		allowed = {
+			original_tag = USA
+		}
+		visible = {
+			hidden_trigger = {
+				has_active_mission = USA_civil_war_mission
+				USA_sided_with_trump_trigger = yes
+				has_country_flag = USA_trump_2020_inauguration_flag
+			}
+		}
+		available = {
+			NOT = {
+				has_country_flag = USA_political_action_flag
+				has_stability < 0.0
+			}
+		}
+		ai_will_do = {
+			base = 100
+		}
+		complete_effect = {
+			set_country_flag = {
+				flag = USA_political_action_flag
+				days = 28
+				value = 1
+			}
+			add_stability = -0.02
+		}
+		remove_effect = {
+			set_temp_variable = {
+				var = legit_var_temp
+				value = 0.05
+			}
+			add_legit = yes
+			add_days_mission_timeout = {
+				mission = USA_civil_war_mission
+				days = 14
+			}
+		}
+	}
+	USA_unify_the_dems_decision = {
+		icon = USA_unify_the_dems
+		cost = 0
+		fire_only_once = no
+		cancel_if_not_visible = yes
+		days_remove = 28
+		days_re_enable = 28
+		allowed = {
+			original_tag = USA
+		}
+		visible = {
+			hidden_trigger = {
+				has_active_mission = USA_civil_war_mission
+				has_country_flag = USA_sided_with_resistance_flag
+				has_country_flag = USA_biden_2020_inauguration_flag
+				has_completed_focus = USA_unifiy_the_democratic_party
+			}
+		}
+		available = {
+			NOT = {
+				has_country_flag = USA_political_action_flag
+				has_stability < 0.0
+			}
+		}
+		ai_will_do = {
+			base = 100
+		}
+		complete_effect = {
+			set_country_flag = {
+				flag = USA_political_action_flag
+				days = 28
+				value = 1
+			}
+			add_stability = -0.02
+		}
+		remove_effect = {
+			set_temp_variable = {
+				var = legit_var_temp
+				value = 0.05
+			}
+			add_legit = yes
+			add_days_mission_timeout = {
+				mission = USA_civil_war_mission
+				days = 14
+			}
+		}
+	}
+	USA_hold_a_rally_decision = {
+		icon = USA_hold_a_rally_trump
+		cost = 25
+		fire_only_once = no
+		cancel_if_not_visible = yes
+		days_remove = 28
+		days_re_enable = 28
+		allowed = {
+			original_tag = USA
+		}
+		visible = {
+			hidden_trigger = {
+				has_active_mission = USA_civil_war_mission
+				USA_sided_with_trump_trigger = yes
+				has_country_flag = USA_trump_2020_inauguration_flag
+			}
+		}
+		available = {
+			NOT = {
+				has_country_flag = USA_political_action_flag
+			}
+			has_government = conservative
+			set_temp_variable = {
+				var = legit_var_trigger_temp
+				value = 0.05
+			}
+			has_legit_greater_than_or_equals = yes
+		}
+		ai_will_do = {
+			base = 100
+		}
+		complete_effect = {
+			set_country_flag = {
+				flag = USA_political_action_flag
+				days = 28
+				value = 1
+			}
+			set_temp_variable = {
+				var = legit_var_temp
+				value = -0.05
+			}
+			add_legit = yes
+		}
+		remove_effect = {
+			add_popularity = {
+				ideology = conservative
+				popularity = 0.02
+			}
+			add_power_balance_value = {
+				id = USA_trust_bop
+				value = 0.02
+			}
+			add_days_mission_timeout = {
+				mission = USA_civil_war_mission
+				days = 14
+			}
+		}
+	}
+	USA_hold_a_conference_decision = {
+		icon = USA_hold_conference
+		cost = 50
+		fire_only_once = no
+		cancel_if_not_visible = yes
+		days_remove = 28
+		days_re_enable = 28
+		allowed = {
+			original_tag = USA
+		}
+		visible = {
+			hidden_trigger = {
+				has_active_mission = USA_civil_war_mission
+				has_country_flag = USA_sided_with_resistance_flag
+				has_country_flag = USA_biden_2020_inauguration_flag
+			}
+		}
+		available = {
+			NOT = {
+				has_country_flag = USA_political_action_flag
+			}
+			has_government = social_liberal
+			set_temp_variable = {
+				var = legit_var_trigger_temp
+				value = 0.05
+			}
+			has_legit_greater_than_or_equals = yes
+		}
+		ai_will_do = {
+			base = 1000
+		}
+		complete_effect = {
+			set_country_flag = {
+				flag = USA_political_action_flag
+				days = 28
+				value = 1
+			}
+			set_temp_variable = {
+				var = legit_var_temp
+				value = -0.05
+			}
+			add_legit = yes
+		}
+		remove_effect = {
+			add_popularity = {
+				ideology = social_liberal
+				popularity = 0.02
+			}
+			add_power_balance_value = {
+				id = USA_trust_bop
+				value = 0.02
+			}
+			add_days_mission_timeout = {
+				mission = USA_civil_war_mission
+				days = 14
+			}
+		}
+	}
+	USA_talk_with_moderates_decision = {
+		icon = generic_shaking_hands
+		allowed = {
+			original_tag = USA
+		}
+		visible = {
+			hidden_trigger = {
+				has_active_mission = USA_civil_war_mission
+				OR = {
+					AND = {
+						has_completed_focus = USA_keep_america_great
+						USA_sided_with_trump_trigger = yes
+					}
+					AND = {
+						has_completed_focus = USA_build_back_better
+						has_country_flag = USA_sided_with_resistance_flag
+					}
+				}
+			}
+		}
+		available = {
+			NOT = {
+				has_country_flag = USA_political_action_flag
+			}
+		}
+		ai_will_do = {
+			base = 100
+		}
+		cost = 25
+		fire_only_once = yes
+		cancel_if_not_visible = yes
+		days_remove = 28
+		complete_effect = {
+			set_country_flag = {
+				flag = USA_political_action_flag
+				days = 28
+				value = 1
+			}
+		}
+		remove_effect = {
+			set_temp_variable = {
+				var = legit_var_temp
+				value = 0.025
+			}
+			add_legit = yes
+			add_stability = 0.025
+			add_days_mission_timeout = {
+				mission = USA_civil_war_mission
+				days = 14
+			}
+		}
+	}
+	USA_promise_progress_decision = {
+		icon = generic_shaking_hands
+		cost = 40
+		fire_only_once = yes
+		cancel_if_not_visible = yes
+		days_remove = 28
+		days_re_enable = 28
+		allowed = {
+			original_tag = USA
+		}
+		visible = {
+			hidden_trigger = {
+				has_active_mission = USA_civil_war_mission
+				has_completed_focus = USA_promise_progress
+			}
+		}
+		available = {
+			NOT = {
+				has_country_flag = USA_political_action_flag
+			}
+		}
+		ai_will_do = {
+			base = 1000
+		}
+		complete_effect = {
+			set_country_flag = {
+				flag = USA_political_action_flag
+				days = 28
+				value = 1
+			}
+		}
+		remove_effect = {
+			add_stability = 0.075
+			add_days_mission_timeout = {
+				mission = USA_civil_war_mission
+				days = 14
+			}
+		}
+	}
+	USA_store_guns_decision = {
+		icon = USA_store_guns
+		allowed = {
+			original_tag = USA
+		}
+		visible = {
+			hidden_trigger = {
+				has_active_mission = USA_civil_war_mission
+				OR = {
+					has_completed_focus = USA_defend_the_second_amendment
+					has_completed_focus = USA_minimalize_militias
+				}
+			}
+		}
+		available = {
+			NOT = {
+				has_country_flag = USA_political_action_flag
+			}
+			set_temp_variable = {
+				var = legit_var_trigger_temp
+				value = 0.05
+			}
+			has_legit_greater_than_or_equals = yes
+		}
+		ai_will_do = {
+			base = 100
+		}
+		cost = 25
+		fire_only_once = no
+		cancel_if_not_visible = yes
+		days_remove = 28
+		days_re_enable = 28
+		complete_effect = {
+			set_country_flag = {
+				flag = USA_political_action_flag
+				days = 28
+				value = 1
+			}
+			set_temp_variable = {
+				var = legit_var_temp
+				value = -0.05
+			}
+			add_legit = yes
+		}
+		remove_effect = {
+			custom_effect_tooltip = USA_store_guns_tooltip
+			hidden_effect = {
+				add_to_variable = {
+					var = USA_guns_in_storage_var
+					value = 1000
+				}
+			}
+			add_days_mission_timeout = {
+				mission = USA_civil_war_mission
+				days = 14
+			}
+		}
+	}
+	USA_talk_with_militias_decision = {
+		icon = generic_prepare_civil_war
+		cost = 50
+		fire_only_once = yes
+		cancel_if_not_visible = yes
+		days_remove = 28
+		allowed = {
+			original_tag = USA
+		}
+		visible = {
+			hidden_trigger = {
+				has_active_mission = USA_civil_war_mission
+				has_completed_focus = USA_keep_america_great
+				USA_sided_with_trump_trigger = yes
+			}
+		}
+		available = {
+			NOT = {
+				has_country_flag = USA_political_action_flag
+			}
+			set_temp_variable = {
+				var = legit_var_trigger_temp
+				value = 0.05
+			}
+			has_legit_greater_than_or_equals = yes
+		}
+		ai_will_do = {
+			base = 1000
+		}
+		complete_effect = {
+			set_country_flag = {
+				flag = USA_political_action_flag
+				days = 28
+				value = 1
+			}
+			set_temp_variable = {
+				var = legit_var_temp
+				value = -0.05
+			}
+			add_legit = yes
+		}
+		remove_effect = {
+			set_country_flag = USA_militia_support_flag
+			custom_effect_tooltip = USA_civil_war_begins_tooltip
+			effect_tooltip = {
+				USC = {
+					add_timed_idea = {
+						idea = USA_militia_support_idea
+						days = 175
+					}
+				}
+			}
+			add_days_mission_timeout = {
+				mission = USA_civil_war_mission
+				days = 14
+			}
+		}
+	}
+	USA_talk_with_the_military_decision = {
+		icon = generic_prepare_civil_war
+		cost = 50
+		fire_only_once = yes
+		cancel_if_not_visible = yes
+		days_remove = 28
+		days_re_enable = 28
+		allowed = {
+			original_tag = USA
+		}
+		visible = {
+			hidden_trigger = {
+				has_active_mission = USA_civil_war_mission
+				has_completed_focus = USA_keep_america_great
+				USA_sided_with_trump_trigger = yes
+			}
+		}
+		available = {
+			NOT = {
+				has_country_flag = USA_political_action_flag
+			}
+			set_temp_variable = {
+				var = legit_var_trigger_temp
+				value = 0.1
+			}
+			has_legit_greater_than_or_equals = yes
+		}
+		ai_will_do = {
+			base = 1000
+		}
+		complete_effect = {
+			set_country_flag = {
+				flag = USA_political_action_flag
+				days = 28
+				value = 1
+			}
+			set_temp_variable = {
+				var = legit_var_temp
+				value = -0.1
+			}
+			add_legit = yes
+		}
+		remove_effect = {
+			custom_effect_tooltip = USA_talk_with_the_military_tooltip
+			set_country_flag = USA_secured_the_military_flag
+			add_days_mission_timeout = {
+				mission = USA_civil_war_mission
+				days = 14
+			}
+		}
+	}
+	USA_expand_influence_in_395_decision = {
+		icon = eng_trade_unions_demand
+		cost = 100
+		fire_only_once = yes
+		cancel_if_not_visible = yes
+		days_remove = 28
+		days_re_enable = 28
+		on_map_mode = map_and_decisions_view
+		allowed = {
+			original_tag = USA
+		}
+		visible = {
+			hidden_trigger = {
+				has_active_mission = USA_civil_war_mission
+				has_completed_focus = USA_empower_the_government
+			}
+		}
+		available = {
+			NOT = {
+				has_country_flag = USA_political_action_flag
+			}
+			set_temp_variable = {
+				var = legit_var_trigger_temp
+				value = 0.1
+			}
+			has_legit_greater_than_or_equals = yes
+		}
+		ai_will_do = {
+			base = 1000
+		}
+		complete_effect = {
+			set_country_flag = {
+				flag = USA_political_action_flag
+				days = 28
+				value = 1
+			}
+			set_temp_variable = {
+				var = legit_var_temp
+				value = -0.1
+			}
+			add_legit = yes
+		}
+		remove_effect = {
+			custom_effect_tooltip = USA_expand_influence_in_395_tooltip
+			set_country_flag = USA_expand_influence_in_395_flag
+			add_days_mission_timeout = {
+				mission = USA_civil_war_mission
+				days = 14
+			}
+		}
+	}
+	USA_accelerate_the_conflict_decision = {
+		icon = generic_prepare_civil_war
+		allowed = {
+			original_tag = USA
+		}
+		visible = {
+			hidden_trigger = {
+				has_active_mission = USA_civil_war_mission
+				OR = {
+					AND = {
+						has_country_flag = USA_sided_with_trump_flag
+						has_country_flag = USA_biden_2020_inauguration_flag
+					}
+					AND = {
+						has_country_flag = USA_sided_with_resistance_flag
+						has_country_flag = USA_trump_2020_inauguration_flag
+					}
+				}
+			}
+		}
+		available = {
+			NOT = {
+				has_country_flag = USA_political_action_flag
+			}
+		}
+		ai_will_do = {
+			base = 100
+		}
+		cost = 25
+		fire_only_once = no
+		cancel_if_not_visible = yes
+		days_remove = 28
+		complete_effect = {
+			set_country_flag = {
+				flag = USA_political_action_flag
+				days = 28
+				value = 1
+			}
+			add_days_mission_timeout = {
+				mission = USA_civil_war_mission
+				days = -28
+			}
+		}
+		remove_effect = {
+		}
+	}
+	USA_underground_armaments_decision = {
+		icon = generic_prepare_civil_war
+		allowed = {
+			original_tag = USA
+		}
+		visible = {
+			hidden_trigger = {
+				has_active_mission = USA_civil_war_mission
+				has_country_flag = USA_sided_with_trump_flag
+				has_country_flag = USA_biden_2020_inauguration_flag
+				has_completed_focus = USA_underground_armaments
+			}
+		}
+		available = {
+			NOT = {
+				has_country_flag = USA_political_action_flag
+			}
+		}
+		ai_will_do = {
+			base = 100
+		}
+		cost = 25
+		fire_only_once = no
+		cancel_if_not_visible = yes
+		days_remove = 28
+		complete_effect = {
+			set_country_flag = {
+				flag = USA_political_action_flag
+				days = 28
+				value = 1
+			}
+			add_days_mission_timeout = {
+				mission = USA_civil_war_mission
+				days = -28
+			}
+		}
+		remove_effect = {
+			custom_effect_tooltip = USA_store_guns_tooltip
+			hidden_effect = {
+				add_to_variable = {
+					var = USA_guns_in_storage_var
+					value = 1000
+				}
+			}
+		}
+	}
+	USA_rally_the_people_decision = {
+		icon = generic_prepare_civil_war
+		allowed = {
+			original_tag = USA
+		}
+		visible = {
+			hidden_trigger = {
+				has_active_mission = USA_civil_war_mission
+				has_country_flag = USA_sided_with_trump_flag
+				has_country_flag = USA_biden_2020_inauguration_flag
+				has_completed_focus = USA_rally_the_people
+			}
+		}
+		available = {
+			NOT = {
+				has_country_flag = USA_political_action_flag
+			}
+		}
+		ai_will_do = {
+			base = 100
+		}
+		cost = 75
+		fire_only_once = no
+		cancel_if_not_visible = yes
+		days_remove = 28
+		complete_effect = {
+			set_country_flag = {
+				flag = USA_political_action_flag
+				days = 28
+				value = 1
+			}
+			add_days_mission_timeout = {
+				mission = USA_civil_war_mission
+				days = -28
+			}
+		}
+		remove_effect = {
+			set_country_flag = USA_rally_the_people_flag
+			custom_effect_tooltip = USA_civil_war_begins_tooltip
+			effect_tooltip = {
+				USB = {
+					add_stability = -0.1
+				}
+			}
+		}
+	}
+}
+
+USA_second_american_civil_war_category = {
+	USA_joining_faction_mission = {
+		priority = 1
+		icon = revolt
+		days_mission_timeout = 13
+		war_with_on_timeout = USB
+		war_with_on_timeout = APA
+		war_with_on_timeout = NSM
+		war_with_on_timeout = ATW
+		activation = {
+			hidden_trigger = {
+				has_country_flag = USA_joining_faction_flag
+			}
+		}
+		visible = {
+			is_in_faction = no
+		}
+		available = {
+			hidden_trigger = {
+				always = no
+			}
+		}
+		fire_only_once = yes
+		cancel_if_not_visible = yes
+		is_good = no
+		complete_effect = {
+		}
+		timeout_effect = {
+			clr_country_flag = USA_joining_faction_flag
+			USA_add_to_coalition = yes
+		}
+	}
+	USA_defend_las_vegas = {
+		icon = generic_civil_support
+		allowed = {
+			original_tag = USA
+		}
+		available = {
+			NOT = {
+				controls_state = 1097
+			}
+		}
+		activation = {
+			has_war = yes
+			379 = {
+				is_controlled_by = APA
+				OR = {
+					any_neighbor_state = {
+						CONTROLLER = {
+							has_war_with = APA
+						}
+						OWNER = {
+							tag = ROOT
+						}
+					}
+					NOT = {
+						is_fully_controlled_by = ROOT
+					}
+				}
+			}
+		}
+		fire_only_once = yes
+		days_mission_timeout = 30
+		is_good = yes
+		#Success
+		timeout_effect = {
+			add_stability = 0.05
+			add_war_support = 0.05
+			1097 = {
+				save_event_target_as = state
+			}
+			country_event = states.50
+		}
+		#Fail
+		complete_effect = {
+			1097 = {
+				save_event_target_as = state
+			}
+			country_event = states.51
+		}
+	}
+	USA_war_with_USB_mission = {
+		icon = generic_ignite_civil_war
+		allowed = {
+		}
+		available = {
+			hidden_trigger = {
+				always = no
+			}
+		}
+		priority = 1
+		fire_only_once = yes
+		days_mission_timeout = 14
+		is_good = no
+		cancel_if_not_visible = yes
+		war_with_on_timeout = USB
+		activation = {
+			always = no
+		}
+		visible = {
+			has_global_flag = USA_american_civil_war_global
+		}
+		timeout_effect = {
+			USA_war_with_USB = yes
+		}
+	}
+}
+
+debug_decisions = {
+	USA_MAA_civil_war_debug_decision = {
+		icon = generic_ignite_civil_war
+		fire_only_once = yes
+		cancel_if_not_visible = yes
+		days_remove = 1
+		allowed = {
+			original_tag = USA
+		}
+		visible = {
+			date < 2020.6.1
+			OR = {
+				has_country_flag = USA_sided_with_trump_flag
+				has_country_flag = USA_sided_with_resistance_flag
+			}
+		}
+		available = {
+		}
+		ai_will_do = {
+			base = 0
+		}
+		complete_effect = {
+			country_event = {
+				id = MAA.1
+			}
+			set_country_flag = MAA_April_Fools_Flag
+		}
+		remove_effect = {
+			country_event = {
+				id = MAA.2
+				days = 3
+			}
+		}
+	}
+	USA_A24_civil_war_debug_decision = {
+		icon = generic_ignite_civil_war
+		fire_only_once = yes
+		cancel_if_not_visible = yes
+		days_remove = 1
+		allowed = {
+			original_tag = USA
+		}
+		visible = {
+			date < 2020.6.1
+			OR = {
+				has_country_flag = USA_sided_with_trump_flag
+				has_country_flag = USA_sided_with_resistance_flag
+			}
+		}
+		available = {
+		}
+		ai_will_do = {
+			base = 0
+		}
+		complete_effect = {
+			country_event = {
+				id = A24.1
+			}
+			set_country_flag = A24_April_Fools_Flag
+		}
+	}
+	USA_civil_war_debug_decision = {
+		icon = generic_ignite_civil_war
+		fire_only_once = yes
+		cancel_if_not_visible = yes
+		days_remove = 1
+		allowed = {
+			original_tag = USA
+		}
+		visible = {
+			date < 2020.6.1
+			OR = {
+				has_country_flag = USA_sided_with_trump_flag
+				has_country_flag = USA_sided_with_resistance_flag
+			}
+			NOT = {
+				has_country_flag = MAA_April_Fools_Flag
+			}
+		}
+		available = {
+		}
+		ai_will_do = {
+			base = 0
+		}
+		complete_effect = {
+			country_event = {
+				id = usa.105
+			}
+		}
+		remove_effect = {
+			hidden_effect = {
+				country_event = {
+					id = usa.3
+				}
+				country_event = {
+					id = usa.13
+				}
+				if = {
+					limit = {
+						has_country_flag = USA_sided_with_trump_flag
+					}
+					if = {
+						limit = {
+							power_balance_value = {
+								id = USA_trust_bop
+								value > 0
+							}
+						}
+						country_event = {
+							#Trump Wins
+							id = usa.156
+						}
+					}
+					else = {
+						country_event = {
+							#Biden Wins
+							id = usa.4
+						}
+					}
+				}
+				else_if = {
+					limit = {
+						has_country_flag = USA_sided_with_resistance_flag
+					}
+					if = {
+						limit = {
+							power_balance_value = {
+								id = USA_trust_bop
+								value > 0
+							}
+						}
+						country_event = {
+							#Biden Wins
+							id = usa.4
+						}
+					}
+					else = {
+						country_event = {
+							#Trump Wins
+							id = usa.156
+						}
+					}
+				}
+			}
+			if = {
+				limit = {
+					has_country_leader = {
+						character = USA_donald_trump_char
+						ruling_only = yes
+					}
+				}
+				country_event = {
+					id = usa.95
+				}
+			}
+			else_if = {
+				limit = {
+					has_country_leader = {
+						character = USA_joe_biden_char
+						ruling_only = yes
+					}
+				}
+				country_event = {
+					id = usa.5
+				}
+			}
+		}
+	}
+	USA_choose_a_side_debug_decision = {
+		icon = generic_ignite_civil_war
+		fire_only_once = no
+		#days_remove = 1
+		allowed = {
+			original_tag = USA
+		}
+		visible = {
+			NOT = {
+				has_country_flag = USA_sided_with_trump_flag
+				has_country_flag = USA_sided_with_resistance_flag
+			}
+		}
+		available = {
+		}
+		ai_will_do = {
+			base = 0
+		}
+		complete_effect = {
+			complete_national_focus = USA_state_of_the_union
+			unlock_decision_tooltip = USA_civil_war_debug_decision
+		}
+		remove_effect = {
+		}
+	}
+	USA_increase_support_debug_decision = {
+		icon = generic_speech
+		fire_only_once = no
+		allowed = {
+			original_tag = USA
+		}
+		visible = {
+			OR = {
+				has_country_flag = USA_sided_with_trump_flag
+				has_country_flag = USA_sided_with_resistance_flag
+			}
+		}
+		available = {
+		}
+		ai_will_do = {
+			base = 0
+		}
+		complete_effect = {
+			add_power_balance_value = {
+				id = USA_trust_bop
+				value = 0.05
+			}
+		}
+		remove_effect = {
+		}
+	}
+	USA_decrease_support_debug_decision = {
+		icon = generic_speech
+		fire_only_once = no
+		allowed = {
+			original_tag = USA
+		}
+		visible = {
+			OR = {
+				has_country_flag = USA_sided_with_trump_flag
+				has_country_flag = USA_sided_with_resistance_flag
+			}
+		}
+		available = {
+		}
+		ai_will_do = {
+			base = 0
+		}
+		complete_effect = {
+			add_power_balance_value = {
+				id = USA_trust_bop
+				value = -0.05
+			}
+		}
+		remove_effect = {
+		}
+	}
+	USA_increase_opposistion_debug_decision = {
+		icon = generic_speech
+		fire_only_once = no
+		allowed = {
+			original_tag = USA
+		}
+		visible = {
+			OR = {
+				has_country_flag = USA_sided_with_trump_flag
+				has_country_flag = USA_sided_with_resistance_flag
+			}
+		}
+		available = {
+		}
+		ai_will_do = {
+			base = 0
+		}
+		complete_effect = {
+			add_power_balance_value = {
+				id = USA_trust_bop
+				value = -0.05
+			}
+		}
+		remove_effect = {
+		}
+	}
+	USA_decrease_opposistion_debug_decision = {
+		icon = generic_speech
+		fire_only_once = no
+		allowed = {
+			original_tag = USA
+		}
+		visible = {
+			OR = {
+				has_country_flag = USA_sided_with_trump_flag
+				has_country_flag = USA_sided_with_resistance_flag
+			}
+		}
+		available = {
+		}
+		ai_will_do = {
+			base = 0
+		}
+		complete_effect = {
+			add_power_balance_value = {
+				id = USA_trust_bop
+				value = 0.05
+			}
+		}
+		remove_effect = {
+		}
+	}
+	USA_win_election_debug_decision = {
+		icon = generic_speech
+		fire_only_once = no
+		allowed = {
+			original_tag = USA
+		}
+		visible = {
+			OR = {
+				has_country_flag = USA_sided_with_trump_flag
+				has_country_flag = USA_sided_with_resistance_flag
+			}
+		}
+		available = {
+		}
+		ai_will_do = {
+			base = 0
+		}
+		complete_effect = {
+			add_power_balance_value = {
+				id = USA_trust_bop
+				value = 1
+			}
+		}
+		remove_effect = {
+		}
+	}
+	USA_lose_election_debug_decision = {
+		icon = generic_speech
+		fire_only_once = no
+		allowed = {
+			original_tag = USA
+		}
+		visible = {
+			OR = {
+				has_country_flag = USA_sided_with_trump_flag
+				has_country_flag = USA_sided_with_resistance_flag
+			}
+		}
+		available = {
+		}
+		ai_will_do = {
+			base = 0
+		}
+		complete_effect = {
+			add_power_balance_value = {
+				id = USA_trust_bop
+				value = -1
+			}
+		}
+		remove_effect = {
+		}
+	}
+	USA_add_legit_debug_decision = {
+		icon = generic_speech
+		allowed = {
+			OR = {
+				tag = USA
+				USA_is_civil_war_faction = yes
+			}
+		}
+		visible = {
+			has_dynamic_modifier = {
+				modifier = USA_legitimacy_dynamic
+			}
+		}
+		available = {
+		}
+		ai_will_do = {
+			base = 0
+		}
+		complete_effect = {
+			set_temp_variable = {
+				var = legit_var_temp
+				value = 0.1
+			}
+			add_legit = yes
+		}
+		remove_effect = {
+		}
+	}
+	USA_decrease_legit_debug_decision = {
+		icon = generic_speech
+		allowed = {
+			OR = {
+				tag = USA
+				USA_is_civil_war_faction = yes
+			}
+		}
+		visible = {
+			has_dynamic_modifier = {
+				modifier = USA_legitimacy_dynamic
+			}
+		}
+		available = {
+		}
+		ai_will_do = {
+			base = 0
+		}
+		complete_effect = {
+			set_temp_variable = {
+				var = legit_var_temp
+				value = -0.1
+			}
+			add_legit = yes
+		}
+		remove_effect = {
+		}
+	}
+	USA_max_legit_debug_decision = {
+		icon = generic_speech
+		allowed = {
+			OR = {
+				tag = USA
+				USA_is_civil_war_faction = yes
+			}
+		}
+		visible = {
+			has_dynamic_modifier = {
+				modifier = USA_legitimacy_dynamic
+			}
+		}
+		available = {
+		}
+		ai_will_do = {
+			base = 0
+		}
+		complete_effect = {
+			set_temp_variable = {
+				var = legit_var_temp
+				value = 2
+			}
+			add_legit = yes
+		}
+		remove_effect = {
+		}
+	}
+	USA_min_legit_debug_decision = {
+		icon = generic_speech
+		allowed = {
+			OR = {
+				tag = USA
+				USA_is_civil_war_faction = yes
+			}
+		}
+		visible = {
+			has_dynamic_modifier = {
+				modifier = USA_legitimacy_dynamic
+			}
+		}
+		available = {
+		}
+		ai_will_do = {
+			base = 0
+		}
+		complete_effect = {
+			set_temp_variable = {
+				var = legit_var_temp
+				value = -2
+			}
+			add_legit = yes
+		}
+		remove_effect = {
+		}
+	}
+	USA_win_civil_war_debug_decision = {
+		icon = generic_speech
+		fire_only_once = yes
+		allowed = {
+			OR = {
+				tag = USB
+				tag = USC
+				tag = NSM
+				tag = BLA
+				tag = APA
+				tag = LOS
+				tag = PTF
+				tag = ATW
+				tag = GMA
+				tag = FAA
+				tag = BRN
+				tag = CAC
+			}
+		}
+		visible = {
+			has_global_flag = USA_american_civil_war_global
+		}
+		available = {
+		}
+		ai_will_do = {
+			base = 0
+		}
+		complete_effect = {
+			if = {
+				limit = {
+					USA_is_nationalist_tag = yes
+				}
+				NSM = {
+					NSM_local_theatre_win_debug_effect = yes
+					every_state = {
+						limit = {
+							OR = {
+								USA_is_ohio_state = yes
+								USA_is_indiana_state = yes
+								USA_is_illinois_state = yes
+								USA_is_wisconsin_state = yes
+							}
+						}
+						transfer_state_to = NSM
+					}
+					complete_national_focus = NSM_Form_the_National_Front
+				}
+				ATW = {
+					ATW_local_theatre_win_debug_effect = yes
+					every_state = {
+						limit = {
+							OR = {
+								USA_is_alabama_state = yes
+								USA_is_georgia_state = yes
+								USA_is_north_carolina_state = yes
+								USA_is_south_carolina_state = yes
+								USA_is_mississippi_state = yes
+							}
+						}
+						transfer_state_to = ATW
+					}
+					complete_national_focus = ATW_broadcast_our_terror
+					complete_national_focus = ATW_accelerate_into_the_end
+					complete_national_focus = ATW_consolidate_the_command
+					complete_national_focus = ATW_rattelsnakes_and_alligators
+					complete_national_focus = ATW_georgia_on_our_mind
+				}
+				PTF = {
+					PTF_local_theatre_win_debug_effect = yes
+					every_state = {
+						limit = {
+							OR = {
+								USA_is_pennsylvania_state = yes
+								USA_is_new_jersey_state = yes
+							}
+						}
+						transfer_state_to = PTF
+					}
+				}
+			}
+			every_other_country = {
+				limit = {
+					USA_is_civil_war_faction = yes
+					NOT = {
+						tag = USN
+						is_in_faction_with = ROOT
+					}
+					if = {
+						limit = {
+							ROOT = {
+								OR = {
+									tag = ATW
+									tag = PTF
+									tag = NSM
+								}
+							}
+						}
+						NOT = {
+							tag = ATW
+							tag = PTF
+							tag = NSM
+						}
+					}
+				}
+				ROOT = {
+					annex_country = {
+						target = PREV
+					}
+				}
+			}
+		}
+		remove_effect = {
+		}
+	}
+}
+
+USA_congress_category = {
+	USA_healing_the_nation = {
+		icon = USA_healing_the_nation
+		available = {
+			has_country_flag = USA_stabilized
+		}
+		visible = {
+			tag = USA
+		}
+		fire_only_once = no
+		cancel_if_not_visible = yes
+		cost = 25
+		days_remove = 3
+		ai_will_do = {
+			base = 1
+		}
+		complete_effect = {
+		}
+		remove_effect = {
+			effect_tooltip = {
+				add_stability = 0.2
+				if = {
+					limit = {
+						has_idea = USA_political_division
+					}
+					remove_ideas = USA_political_division
+				}
+				if = {
+					limit = {
+						has_idea = USA_political_division1
+					}
+					remove_ideas = USA_political_division1
+				}
+				if = {
+					limit = {
+						has_idea = USA_political_division2
+					}
+					remove_ideas = USA_political_division2
+				}
+				if = {
+					limit = {
+						has_idea = USA_political_division3
+					}
+					remove_ideas = USA_political_division3
+				}
+			}
+			hidden_effect = {
+				country_event = {
+					id = generic.0
+				}
+			}
+		}
+	}
+	USA_coronavirus_recovery_act = {
+		icon = USA_covid_recovery_act
+		available = {
+			has_country_flag = USA_stabilized
+		}
+		visible = {
+			tag = USA
+		}
+		fire_only_once = no
+		cancel_if_not_visible = yes
+		cost = 25
+		days_remove = 3
+		ai_will_do = {
+			base = 1
+		}
+		complete_effect = {
+		}
+		remove_effect = {
+			effect_tooltip = {
+				add_stability = 0.1
+				set_temp_variable = {
+					var = poverty_development_var_temp
+					value = 0.5
+				}
+				add_poverty_development = yes
+			}
+			hidden_effect = {
+				country_event = {
+					id = generic.0
+				}
+			}
+		}
+	}
+	USA_economic_equity_act = {
+		icon = USA_economic_equity_act
+		available = {
+			has_country_flag = USA_stabilized
+		}
+		visible = {
+			tag = USA
+		}
+		fire_only_once = no
+		cancel_if_not_visible = yes
+		cost = 25
+		days_remove = 3
+		ai_will_do = {
+			base = 1
+		}
+		complete_effect = {
+		}
+		remove_effect = {
+			effect_tooltip = {
+				add_stability = 0.1
+				set_temp_variable = {
+					var = poverty_development_var_temp
+					value = 0.25
+				}
+				add_poverty_development = yes
+			}
+			hidden_effect = {
+				country_event = {
+					id = generic.0
+				}
+			}
+		}
+	}
+}

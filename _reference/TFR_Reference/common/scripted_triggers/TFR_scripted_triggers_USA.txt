@@ -1,0 +1,2833 @@
+USA_mass_riots = {
+	custom_trigger_tooltip = {
+		tooltip = USA_mass_riots_tooltip
+		OR = {
+			has_idea = USA_mass_riots_idea
+			has_idea = USA_mass_riots_idea1
+			has_idea = USA_mass_riots_idea2
+			has_idea = USA_mingle_with_the_movement_idea
+			has_idea = USA_mingle_with_the_movement_idea1
+		}
+	}
+}
+
+USA_sided_with_trump_trigger = {
+	NOT = {
+		has_country_flag = USA_sided_with_resistance_flag
+	}
+}
+
+USA_sided_with_resistance_trigger = {
+	NOT = {
+		has_country_flag = USA_sided_with_trump_flag
+	}
+}
+
+USA_has_house_support_greater_than_or_equals = {
+	custom_trigger_tooltip = {
+		tooltip = USA_has_house_support_greater_than_or_equals_tooltip
+		check_variable = {
+			var = USA_house_support_var
+			value = USA_house_support_trigger_temp
+			compare = greater_than_or_equals
+		}
+	}
+}
+
+USA_has_senate_support_greater_than_or_equals = {
+	custom_trigger_tooltip = {
+		tooltip = USA_has_senate_support_greater_than_or_equals_tooltip
+		check_variable = {
+			var = USA_senate_support_var
+			value = USA_senate_support_trigger_temp
+			compare = greater_than_or_equals
+		}
+	}
+}
+
+USA_has_election_support_strength_greater_than_or_equals = {
+	custom_trigger_tooltip = {
+		tooltip = USA_has_election_support_strength_greater_than_or_equals_tooltip
+		check_variable = {
+			var = USA_election_support_strength_var
+			value = USA_election_support_strength_trigger_temp
+			compare = greater_than_or_equals
+		}
+	}
+}
+
+USA_has_election_opposistion_strength_less_than = {
+	custom_trigger_tooltip = {
+		tooltip = USA_has_election_opposistion_strength_less_than_tooltip
+		check_variable = {
+			var = USA_election_opposistion_strength_var
+			value = USA_election_opposistion_strength_trigger_temp
+			compare = less_than
+		}
+	}
+}
+
+USA_is_civil_war_faction = {
+	OR = {
+		tag = USC
+		tag = USB
+		tag = MIM
+		tag = FLM
+		tag = TFM
+		tag = CLM
+		tag = WLF
+		tag = BBC
+		tag = HUM
+		tag = PCR
+		tag = ABR
+		tag = NYP
+		tag = LOS
+		tag = PTF
+		tag = GMA
+		tag = SAT
+		tag = HUM
+		tag = BMF
+		tag = HWM
+		tag = NSM
+		tag = BLA
+		tag = ATW
+		tag = LRA
+		tag = TRG
+		tag = ATH
+		tag = BRN
+		tag = SRN
+		tag = RGA
+		tag = SRN
+		tag = APA
+		tag = AYB
+		tag = NRT
+		tag = HLA
+		tag = BGF
+		tag = CAC
+		tag = ATP
+		#tag = DES
+		tag = TEX
+		tag = NEG
+		tag = STC
+		tag = GRA
+		tag = FLA
+		tag = ALA
+		tag = MSS
+		tag = LOU
+		tag = NMX
+		tag = ARZ
+		tag = CAL
+		tag = ORE
+		tag = WAS
+		tag = NNN
+		tag = VER
+		tag = USN
+		tag = BSK
+		tag = BND
+		tag = AOF
+		tag = FAA
+		tag = MMS
+		tag = ZOE
+		tag = JDL
+		tag = NCY
+		tag = NCA
+		tag = MOS
+		tag = BNF
+		tag = DUG
+		tag = LDS
+		tag = MOG
+		tag = RPP
+		tag = LCN
+		tag = ATF
+		tag = LWK
+		tag = IKA
+		tag = RRR
+		tag = FOL
+		tag = JUA
+		tag = VAG
+		tag = BOA
+		tag = PDX
+		tag = BBC
+		tag = ASL
+		tag = BOA
+		tag = GMC
+		tag = TNM
+		tag = RCA
+		tag = GOP
+	}
+}
+
+USA_is_state_tag = {
+	OR = {
+		tag = VER
+		tag = ARZ
+		tag = TEX
+		tag = NMX
+		tag = NNN
+		tag = CAL
+		tag = ORE
+		tag = WAS
+		tag = LOU
+		tag = MSS
+		tag = ALA
+		tag = GRA
+		tag = STC
+		tag = FLA
+		tag = MIM
+		tag = NEG
+		tag = NCY
+		tag = NCA
+	}
+}
+
+USA_has_states_secured = {
+	custom_trigger_tooltip = {
+		tooltip = USA_has_states_secured_tooltip
+		all_country = {
+			OR = {
+				NOT = {
+					tag = VER
+					tag = ARZ
+					tag = TEX
+					tag = NMX
+					tag = NNN
+					tag = CAL
+					tag = ORE
+					tag = WAS
+					tag = LOU
+					tag = MSS
+					tag = ALA
+					tag = GRA
+					tag = STC
+					tag = FLA
+					tag = MIM
+					tag = NEG
+					tag = NCY
+					tag = NCA
+				}
+				is_in_faction_with = ROOT
+				tag = ROOT
+			}
+		}
+	}
+}
+
+USA_is_militia_tag = {
+	OR = {
+		tag = CLM
+		tag = SAT
+		tag = WLF
+		tag = NYP
+		tag = ATP
+		tag = ATH
+		tag = ABR
+		tag = RGC
+		tag = TRG
+		tag = RGP
+		tag = RGA
+		tag = PCR
+		tag = MOS
+		tag = BNF
+		tag = ATF
+		tag = DUG
+		tag = RRR
+		tag = MOS
+		tag = IKA
+		tag = LWK
+		tag = ASL
+		tag = BOA
+		tag = FOL
+	}
+}
+
+USA_has_militias_secured = {
+	custom_trigger_tooltip = {
+		tooltip = USA_has_militias_secured_tooltip
+		all_country = {
+			OR = {
+				NOT = {
+					tag = CLM
+					tag = SAT
+					tag = WLF
+					tag = NYP
+					tag = ATP
+					tag = ATH
+					tag = ABR
+					tag = RGC
+					tag = TRG
+					tag = RGP
+					tag = RGA
+					tag = PCR
+					tag = BNF
+					tag = ATF
+					tag = DUG
+					tag = RRR
+					tag = MOS
+					tag = IKA
+					tag = LWK
+					tag = FOL
+					tag = ASL
+					tag = BOA
+				}
+				is_in_faction_with = ROOT
+				tag = ROOT
+			}
+		}
+	}
+}
+
+USA_is_gang_tag = {
+	OR = {
+		tag = LCN
+		tag = HWM
+		tag = BMF
+		tag = MMS
+		tag = ZOE
+		tag = LCN
+		tag = FLM
+		tag = LRA
+		tag = BND
+		tag = SRN
+		tag = AYB
+		tag = HLA
+		tag = BGF
+		tag = NRT
+		tag = RPP
+		tag = MOG
+		tag = LCN
+		tag = JUA
+		tag = VAG
+		tag = TFM
+	}
+}
+
+USA_has_gangs_secured = {
+	custom_trigger_tooltip = {
+		tooltip = USA_has_gangs_secured_tooltip
+		all_country = {
+			OR = {
+				NOT = {
+					tag = LCN
+					tag = HWM
+					tag = BMF
+					tag = MMS
+					tag = ZOE
+					tag = LCN
+					tag = FLM
+					tag = LRA
+					tag = BND
+					tag = SRN
+					tag = AYB
+					tag = HLA
+					tag = BGF
+					tag = NRT
+					tag = RPP
+					tag = MOG
+					tag = LCN
+					tag = JUA
+					tag = VAG
+					tag = TFM
+				}
+				is_in_faction_with = ROOT
+				tag = ROOT
+			}
+		}
+	}
+}
+
+USA_is_separatist_tag = {
+	OR = {
+		tag = LOS
+		tag = BLA
+		tag = IKA
+		tag = LWK
+		tag = AYN
+		#tag = DES
+		tag = JDL
+		tag = BRN
+		tag = BSK
+		tag = LDS
+		tag = TNM
+	}
+}
+
+USA_has_separatists_secured = {
+	custom_trigger_tooltip = {
+		tooltip = USA_has_separatists_secured_tooltip
+		all_country = {
+			OR = {
+				NOT = {
+					tag = LOS
+					tag = BLA
+					tag = IKA
+					tag = LWK
+					tag = AYN
+					#tag = DES
+					tag = JDL
+					tag = BRN
+					tag = BSK
+					tag = LDS
+					tag = TNM
+				}
+				is_in_faction_with = ROOT
+				tag = ROOT
+			}
+		}
+	}
+}
+
+USA_is_rival_tag = {
+	OR = {
+		tag = USC
+		tag = USB
+		tag = GMA
+		tag = GMC
+		tag = FAA
+		tag = AOF
+		tag = PTF
+		tag = NSM
+		tag = ATW
+		tag = APA
+		tag = HUM
+		tag = SAT
+		tag = BOA
+		tag = PDX
+		tag = BBC
+		tag = CAC
+		tag = GOP
+	}
+}
+
+USA_has_rivals_secured = {
+	custom_trigger_tooltip = {
+		tooltip = USA_has_rivals_secured_tooltip
+		all_country = {
+			OR = {
+				NOT = {
+					tag = USC
+					tag = USB
+					tag = GMA
+					tag = GMC
+					tag = FAA
+					tag = AOF
+					tag = PTF
+					tag = NSM
+					tag = ATW
+					tag = APA
+					tag = HUM
+					tag = SAT
+					tag = BOA
+					tag = PDX
+					tag = CAC
+					tag = BBC
+					tag = GOP
+				}
+				is_in_faction_with = ROOT
+				tag = ROOT
+			}
+		}
+	}
+}
+
+USA_is_nationalist_tag = {
+	OR = {
+		tag = PTF
+		tag = NSM
+		tag = LOS
+		tag = TNM
+		tag = ATW
+		tag = FOL
+		tag = TFM
+		tag = AYB
+		tag = LWK
+		tag = BBC
+		tag = CAC
+	}
+}
+
+#Recruit Militia
+USA_is_recruiting_visible = {
+	OR = {
+		is_claimed_by = ROOT
+		is_core_of = ROOT
+	}
+	is_controlled_by = ROOT
+	ROOT = {
+		has_country_flag = USA_enable_militia_recruitment_flag
+	}
+}
+
+USA_is_recruitable = {
+	is_core_of = ROOT
+	is_controlled_by = ROOT
+}
+
+#Recoring
+USA_is_corable_visible = {
+	is_claimed_by = ROOT
+	is_controlled_by = ROOT
+	NOT = {
+		is_core_of = ROOT
+	}
+}
+
+USA_is_corable = {
+	is_claimed_by = ROOT
+	is_controlled_by = ROOT
+	OR = {
+		AND = {
+			compliance > 25
+			resistance < 25
+		}
+		has_resistance = no
+	}
+}
+
+# State Triggers
+USA_is_washington_state = {
+	OR = {
+		state = 386
+		state = 1083
+		state = 1082
+		state = 1036
+		state = 1037
+		state = 1081
+		state = 1299
+	}
+}
+
+USA_has_washington_state = {
+	custom_trigger_tooltip = {
+		tooltip = USA_has_washington_tooltip
+		all_state = {
+			if = {
+				limit = {
+					USA_is_washington_state = yes
+				}
+				is_fully_controlled_by = ROOT
+			}
+		}
+	}
+}
+
+USA_is_oregon_state = {
+	OR = {
+		state = 385
+		state = 999
+		state = 995
+		state = 997
+		state = 998
+		state = 996
+		state = 994
+		state = 993
+	}
+}
+
+USA_has_oregon_state = {
+	custom_trigger_tooltip = {
+		tooltip = USA_has_oregon_tooltip
+		all_state = {
+			if = {
+				limit = {
+					USA_is_oregon_state = yes
+				}
+				is_fully_controlled_by = ROOT
+			}
+		}
+	}
+}
+
+USA_is_southern_california_state = {
+	OR = {
+		state = 932
+		state = 1039
+		state = 943
+		state = 949
+		state = 954
+		state = 1040
+		state = 953
+		state = 944
+		state = 945
+		state = 946
+		state = 930
+		state = 952
+		state = 951
+		state = 1298
+	}
+}
+
+USA_has_southern_california_state = {
+	custom_trigger_tooltip = {
+		tooltip = USA_has_southern_california_tooltip
+		all_state = {
+			if = {
+				limit = {
+					USA_is_southern_california_state = yes
+				}
+				is_fully_controlled_by = ROOT
+			}
+		}
+	}
+}
+
+USA_is_northern_california_state = {
+	OR = {
+		state = 941		#Northern California Capital
+		state = 947
+		state = 942
+		state = 950
+		state = 948
+		state = 1089
+		state = 950
+		state = 378
+	}
+}
+
+USA_has_northern_california_state = {
+	custom_trigger_tooltip = {
+		tooltip = USA_has_northern_california_tooltip
+		all_state = {
+			if = {
+				limit = {
+					USA_is_northern_california_state = yes
+				}
+				is_fully_controlled_by = ROOT
+			}
+		}
+	}
+}
+
+USA_is_california_state = {
+	OR = {
+		USA_is_northern_california_state = yes
+		USA_is_southern_california_state = yes
+	}
+}
+
+USA_is_nevada_state = {
+	OR = {
+		state = 1097
+		state = 379
+		state = 1098
+		state = 1096		#Capital
+		state = 1234
+		state = 1095
+		state = 1094
+		state = 1301
+	}
+}
+
+USA_has_nevada_state = {
+	custom_trigger_tooltip = {
+		tooltip = USA_has_nevada_tooltip
+		all_state = {
+			if = {
+				limit = {
+					USA_is_nevada_state = yes
+				}
+				is_fully_controlled_by = ROOT
+			}
+		}
+	}
+}
+
+USA_is_idaho_state = {
+	OR = {
+		state = 387
+		state = 1084
+		state = 1086
+		state = 1085
+		state = 1300
+	}
+}
+
+USA_has_idaho_state = {
+	custom_trigger_tooltip = {
+		tooltip = USA_has_idaho_tooltip
+		all_state = {
+			if = {
+				limit = {
+					USA_is_idaho_state = yes
+				}
+				is_fully_controlled_by = ROOT
+			}
+		}
+	}
+}
+
+USA_is_utah_state = {
+	OR = {
+		state = 1100
+		state = 1101
+		state = 1102
+		state = 1103
+		state = 1104
+		state = 380
+	}
+}
+
+USA_has_utah_state = {
+	custom_trigger_tooltip = {
+		tooltip = USA_has_utah_tooltip
+		all_state = {
+			if = {
+				limit = {
+					USA_is_utah_state = yes
+				}
+				is_fully_controlled_by = ROOT
+			}
+		}
+	}
+}
+
+USA_is_arizona_state = {
+	OR = {
+		state = 983
+		state = 992
+		state = 985
+		state = 987
+		state = 377
+		state = 991
+	}
+}
+
+USA_has_arizona_state = {
+	custom_trigger_tooltip = {
+		tooltip = USA_has_arizona_tooltip
+		all_state = {
+			if = {
+				limit = {
+					USA_is_arizona_state = yes
+				}
+				is_fully_controlled_by = ROOT
+			}
+		}
+	}
+}
+
+USA_is_montana_state = {
+	OR = {
+		state = 388
+		state = 1088
+		state = 1087
+	}
+}
+
+USA_is_wyoming_state = {
+	OR = {
+		state = 381
+		state = 1143
+		state = 1146
+		state = 1147
+	}
+}
+
+USA_is_colorado_state = {
+	OR = {
+		state = 1142
+		state = 984
+		state = 1145
+		state = 1144
+		state = 382
+	}
+}
+
+USA_is_new_mexico_state = {
+	OR = {
+		state = 1183
+		state = 1446
+		state = 1235
+		state = 376
+		state = 1240
+		state = 1038
+		state = 839
+	}
+}
+
+USA_has_new_mexico_state = {
+	custom_trigger_tooltip = {
+		tooltip = USA_has_new_mexico_tooltip
+		all_state = {
+			if = {
+				limit = {
+					USA_is_new_mexico_state = yes
+				}
+				is_fully_controlled_by = ROOT
+			}
+		}
+	}
+}
+
+USA_is_navajo_state = {
+	OR = {
+		state = 986
+		state = 988		#Capital
+		state = 989
+		state = 990
+	}
+}
+
+USA_has_navajo_state = {
+	custom_trigger_tooltip = {
+		tooltip = USA_has_navajo_tooltip
+		all_state = {
+			if = {
+				limit = {
+					USA_is_navajo_state = yes
+				}
+				is_fully_controlled_by = ROOT
+			}
+		}
+	}
+}
+
+USA_is_southern_texas_state = {
+	OR = {
+		state = 959
+		state = 958
+		state = 977
+		state = 976
+		state = 962
+		state = 974
+		state = 969
+		state = 961		#Capital
+		state = 966
+		state = 973
+		state = 965
+		state = 963
+		state = 964
+		state = 969
+		state = 968
+		state = 960
+	}
+}
+
+USA_is_northern_texas_state = {
+	OR = {
+		state = 956		#Capital
+		state = 375
+		state = 975
+		state = 971
+		state = 957
+		state = 972
+		state = 970
+		state = 967
+	}
+}
+
+USA_is_texas_state = {
+	OR = {
+		USA_is_southern_texas_state = yes
+		USA_is_northern_texas_state = yes
+	}
+}
+
+USA_is_kansas_state = {
+	OR = {
+		state = 1133
+		state = 383
+		state = 934
+	}
+}
+
+USA_is_oklahoma_state = {
+	OR = {
+		state = 1236
+		state = 374
+		state = 1241
+		state = 1242
+	}
+}
+
+USA_is_nebraska_state = {
+	OR = {
+		state = 1237
+		state = 384
+		state = 1238
+	}
+}
+
+USA_is_dakota_state = {
+	OR = {
+		state = 1175
+		state = 390
+		state = 389
+		state = 1239
+	}
+}
+
+USA_is_south_dakota_state = {
+	OR = {
+		state = 1175
+		state = 390
+	}
+}
+
+USA_is_north_dakota_state = {
+	OR = {
+		state = 389
+		state = 1239
+	}
+}
+
+USA_is_louisiana_state = {
+	OR = {
+		state = 978
+		state = 982
+		state = 979
+		state = 980
+		state = 371
+		state = 981
+	}
+}
+
+USA_has_louisiana_state = {
+	custom_trigger_tooltip = {
+		tooltip = USA_has_louisiana_tooltip
+		all_state = {
+			if = {
+				limit = {
+					USA_is_louisiana_state = yes
+				}
+				is_fully_controlled_by = ROOT
+			}
+		}
+	}
+}
+
+USA_is_arkansas_state = {
+	OR = {
+		state = 372
+		state = 1106
+		state = 1105
+	}
+}
+
+USA_has_arkansas_state = {
+	custom_trigger_tooltip = {
+		tooltip = USA_has_arkansas_tooltip
+		all_state = {
+			if = {
+				limit = {
+					USA_is_arkansas_state = yes
+				}
+				is_fully_controlled_by = ROOT
+			}
+		}
+	}
+}
+
+USA_is_missouri_state = {
+	OR = {
+		state = 1071
+		state = 1124
+		state = 373
+		state = 1125
+	}
+}
+
+USA_is_iowa_state = {
+	OR = {
+		state = 392
+		state = 1134
+	}
+}
+
+USA_is_minnesota_state = {
+	OR = {
+		state = 1243
+		state = 1257
+		state = 1256
+		state = 391
+	}
+}
+
+USA_is_mississippi_state = {
+	OR = {
+		state = 1009
+		state = 1011
+		state = 1010
+		state = 370
+	}
+}
+
+USA_has_mississippi_state = {
+	custom_trigger_tooltip = {
+		tooltip = USA_has_mississippi_tooltip
+		all_state = {
+			if = {
+				limit = {
+					USA_is_mississippi_state = yes
+				}
+				is_fully_controlled_by = ROOT
+			}
+		}
+	}
+}
+
+USA_is_tennessee_state = {
+	OR = {
+		state = 1248
+		state = 1249
+		state = 1250
+		state = 1251
+		state = 368
+	}
+}
+
+USA_is_kentucky_state = {
+	OR = {
+		state = 1000
+		state = 1002
+		state = 369
+		state = 1003
+		state = 1001
+		state = 1004
+	}
+}
+
+USA_is_illinois_state = {
+	OR = {
+		state = 1119
+		state = 1120
+		state = 395
+		state = 1121
+		state = 1099
+	}
+}
+
+USA_is_wisconsin_state = {
+	OR = {
+		state = 394
+		state = 1072
+		state = 1252
+		state = 1253
+		state = 1244
+	}
+}
+
+USA_is_alabama_state = {
+	OR = {
+		state = 1013
+		state = 367
+		state = 1015
+		state = 1016
+		state = 1014
+		state = 1012
+	}
+}
+
+USA_has_alabama_state = {
+	custom_trigger_tooltip = {
+		tooltip = USA_has_alabama_tooltip
+		all_state = {
+			if = {
+				limit = {
+					USA_is_alabama_state = yes
+				}
+				is_fully_controlled_by = ROOT
+			}
+		}
+	}
+}
+
+USA_is_indiana_state = {
+	OR = {
+		state = 396
+		state = 1172
+		state = 1171
+		state = 1151
+	}
+}
+
+USA_is_michigan_state = {
+	OR = {
+		state = 1073
+		state = 1093
+		state = 393
+		state = 1074
+		state = 1491
+		state = 1076
+		state = 1075
+	}
+}
+
+USA_has_michigan_state = {
+	custom_trigger_tooltip = {
+		tooltip = USA_has_michigan_tooltip
+		all_state = {
+			if = {
+				limit = {
+					USA_is_michigan_state = yes
+				}
+				is_fully_controlled_by = ROOT
+			}
+		}
+	}
+}
+
+USA_is_florida_state = {
+	OR = {
+		state = 936
+		state = 935
+		state = 937
+		state = 939
+		state = 938
+		state = 940
+		state = 1113
+		state = 366
+		state = 1060
+		state = 1092
+	}
+}
+
+USA_has_florida_state = {
+	custom_trigger_tooltip = {
+		tooltip = USA_has_florida_tooltip
+		all_state = {
+			if = {
+				limit = {
+					USA_is_florida_state = yes
+				}
+				is_fully_controlled_by = ROOT
+			}
+		}
+	}
+}
+
+USA_is_georgia_state = {
+	OR = {
+		state = 1017
+		state = 1019
+		state = 1020
+		state = 1021
+		state = 1018
+		state = 365
+		state = 1022
+		state = 933
+	}
+}
+
+USA_has_georgia_state = {
+	custom_trigger_tooltip = {
+		tooltip = USA_has_georgia_tooltip
+		all_state = {
+			if = {
+				limit = {
+					USA_is_georgia_state = yes
+				}
+				is_fully_controlled_by = ROOT
+			}
+		}
+	}
+}
+
+USA_is_ohio_state = {
+	OR = {
+		state = 1254
+		state = 1246
+		state = 1255
+		state = 1247
+		state = 1245
+		state = 261
+	}
+}
+
+USA_is_south_carolina_state = {
+	OR = {
+		state = 1024
+		state = 1025
+		state = 1023
+		state = 364
+		state = 1026
+	}
+}
+
+USA_has_south_carolina_state = {
+	custom_trigger_tooltip = {
+		tooltip = USA_has_south_carolina_tooltip
+		all_state = {
+			if = {
+				limit = {
+					USA_is_south_carolina_state = yes
+				}
+				is_fully_controlled_by = ROOT
+			}
+		}
+	}
+}
+
+USA_is_north_carolina_state = {
+	OR = {
+		state = 363
+		state = 1006
+		state = 1007
+		state = 1005
+		state = 1008
+		state = 1107
+	}
+}
+
+USA_has_north_carolina_state = {
+	custom_trigger_tooltip = {
+		tooltip = USA_has_north_carolina_tooltip
+		all_state = {
+			if = {
+				limit = {
+					USA_is_north_carolina_state = yes
+				}
+				is_fully_controlled_by = ROOT
+			}
+		}
+	}
+}
+
+USA_is_virginia_state = {
+	OR = {
+		state = 1070
+		state = 362
+		state = 1123
+		state = 1122
+	}
+}
+
+USA_is_west_virginia_state = {
+	OR = {
+		state = 896
+	}
+}
+
+USA_is_maryland_state = {
+	OR = {
+		state = 361
+		state = 931
+	}
+}
+
+USA_is_pennsylvania_state = {
+	OR = {
+		state = 360
+		state = 1174
+		state = 1068
+		state = 1173
+		state = 1069
+	}
+}
+
+USA_is_new_jersey_state = {
+	OR = {
+		state = 359
+	}
+}
+
+USA_is_new_york_city_state = {
+	OR = {
+		state = 358
+		state = 918
+	}
+}
+
+USA_is_upstate_new_york_state = {
+	OR = {
+		state = 1118
+		state = 1116
+		state = 1258
+		state = 1117
+	}
+}
+
+USA_is_new_york_state = {
+	OR = {
+		USA_is_new_york_city_state = yes
+		USA_is_upstate_new_york_state = yes
+	}
+}
+
+USA_is_connecticut_state = {
+	OR = {
+		state = 795
+		state = 1077
+	}
+}
+
+USA_is_massachusetts_state = {
+	OR = {
+		state = 357
+		state = 1078
+	}
+}
+
+USA_is_new_hampshire_state = {
+	OR = {
+		state = 794
+		state = 1114
+	}
+}
+
+USA_is_vermont_state = {
+	OR = {
+		state = 793
+		state = 1079
+		state = 1080
+	}
+}
+
+USA_is_maine_state = {
+	OR = {
+		state = 792
+		state = 1115
+	}
+}
+
+#Covid
+USA_state_prevention_cost_trigger = {
+	set_temp_variable = {
+		var = mask_supply_trigger_temp
+		value = FROM.USA_total_state_population_k_var
+	}
+	multiply_temp_variable = {
+		var = mask_supply_trigger_temp
+		value = 3
+	}
+	has_mask_supply_greater_than_or_equals = yes
+}
+
+USA_state_vaccine_cost_trigger = {
+	set_temp_variable = {
+		var = mask_supply_trigger_temp
+		value = FROM.USA_total_state_population_k_var
+	}
+	multiply_temp_variable = {
+		var = mask_supply_trigger_temp
+		value = 3
+	}
+	if = {
+		limit = {
+			USA = {
+				has_completed_focus = USA_warp_speed
+			}
+		}
+		multiply_temp_variable = {
+			mask_supply_trigger_temp = 0.75
+		}
+	}
+	else = {
+		multiply_temp_variable = {
+			mask_supply_trigger_temp = 1.1
+		}
+	}
+	has_mask_supply_greater_than_or_equals = yes
+}
+
+#Coring
+USA_state_coring_scripted_trigger = {
+	custom_trigger_tooltip = {
+		tooltip = USA_controls_entire_state_tooltip
+		if = {
+			limit = {
+				FROM = {
+					USA_is_northern_texas_state = yes
+				}
+			}
+			all_state = {
+				if = {
+					limit = {
+						USA_is_northern_texas_state = yes
+					}
+					USA_is_corable = yes
+				}
+			}
+		}
+		else_if = {
+			limit = {
+				FROM = {
+					USA_is_southern_texas_state = yes
+				}
+			}
+			all_state = {
+				if = {
+					limit = {
+						USA_is_southern_texas_state = yes
+					}
+					USA_is_corable = yes
+				}
+			}
+		}
+		else_if = {
+			limit = {
+				FROM = {
+					has_state_flag = USA_new_mexico_state
+				}
+			}
+			all_state = {
+				if = {
+					limit = {
+						USA_is_new_mexico_state = yes
+					}
+					USA_is_corable = yes
+				}
+			}
+		}
+		else_if = {
+			limit = {
+				FROM = {
+					has_state_flag = USA_arizona_state
+				}
+			}
+			all_state = {
+				if = {
+					limit = {
+						USA_is_arizona_state = yes
+					}
+					USA_is_corable = yes
+				}
+			}
+		}
+		else_if = {
+			limit = {
+				FROM = {
+					has_state_flag = USA_nevada_state
+				}
+			}
+			all_state = {
+				if = {
+					limit = {
+						USA_is_nevada_state = yes
+					}
+					USA_is_corable = yes
+				}
+			}
+		}
+		else_if = {
+			limit = {
+				FROM = {
+					has_state_flag = USA_utah_state
+				}
+			}
+			all_state = {
+				if = {
+					limit = {
+						USA_is_utah_state = yes
+					}
+					USA_is_corable = yes
+				}
+			}
+		}
+		else_if = {
+			limit = {
+				FROM = {
+					has_state_flag = USA_colorado_state
+				}
+			}
+			all_state = {
+				if = {
+					limit = {
+						USA_is_colorado_state = yes
+					}
+					USA_is_corable = yes
+				}
+			}
+		}
+		else_if = {
+			limit = {
+				FROM = {
+					has_state_flag = USA_montana_state
+				}
+			}
+			all_state = {
+				if = {
+					limit = {
+						USA_is_montana_state = yes
+					}
+					USA_is_corable = yes
+				}
+			}
+		}
+		else_if = {
+			limit = {
+				FROM = {
+					has_state_flag = USA_idaho_state
+				}
+			}
+			all_state = {
+				if = {
+					limit = {
+						USA_is_idaho_state = yes
+					}
+					USA_is_corable = yes
+				}
+			}
+		}
+		else_if = {
+			limit = {
+				FROM = {
+					has_state_flag = USA_oklahoma_state
+				}
+			}
+			all_state = {
+				if = {
+					limit = {
+						USA_is_oklahoma_state = yes
+					}
+					USA_is_corable = yes
+				}
+			}
+		}
+		else_if = {
+			limit = {
+				FROM = {
+					has_state_flag = USA_iowa_state
+				}
+			}
+			all_state = {
+				if = {
+					limit = {
+						USA_is_iowa_state = yes
+					}
+					USA_is_corable = yes
+				}
+			}
+		}
+		else_if = {
+			limit = {
+				FROM = {
+					has_state_flag = USA_maryland_state
+				}
+			}
+			all_state = {
+				if = {
+					limit = {
+						USA_is_maryland_state = yes
+					}
+					USA_is_corable = yes
+				}
+			}
+		}
+		else_if = {
+			limit = {
+				FROM = {
+					has_state_flag = USA_nebraska_state
+				}
+			}
+			all_state = {
+				if = {
+					limit = {
+						USA_is_nebraska_state = yes
+					}
+					USA_is_corable = yes
+				}
+			}
+		}
+		else_if = {
+			limit = {
+				FROM = {
+					has_state_flag = USA_minnesota_state
+				}
+			}
+			all_state = {
+				if = {
+					limit = {
+						USA_is_minnesota_state = yes
+					}
+					USA_is_corable = yes
+				}
+			}
+		}
+		else_if = {
+			limit = {
+				FROM = {
+					has_state_flag = USA_wisconsin_state
+				}
+			}
+			all_state = {
+				if = {
+					limit = {
+						USA_is_wisconsin_state = yes
+					}
+					USA_is_corable = yes
+				}
+			}
+		}
+		else_if = {
+			limit = {
+				FROM = {
+					has_state_flag = USA_tennesse_state
+				}
+			}
+			all_state = {
+				if = {
+					limit = {
+						USA_is_tennessee_state = yes
+					}
+					USA_is_corable = yes
+				}
+			}
+		}
+		else_if = {
+			limit = {
+				FROM = {
+					has_state_flag = USA_ohio_state
+				}
+			}
+			all_state = {
+				if = {
+					limit = {
+						USA_is_ohio_state = yes
+					}
+					USA_is_corable = yes
+				}
+			}
+		}
+		else_if = {
+			limit = {
+				FROM = {
+					has_state_flag = USA_oregon_state
+				}
+			}
+			all_state = {
+				if = {
+					limit = {
+						USA_is_oregon_state = yes
+					}
+					USA_is_corable = yes
+				}
+			}
+		}
+		else_if = {
+			limit = {
+				FROM = {
+					USA_is_northern_california_state = yes
+				}
+			}
+			all_state = {
+				if = {
+					limit = {
+						USA_is_northern_california_state = yes
+					}
+					USA_is_corable = yes
+				}
+			}
+		}
+		else_if = {
+			limit = {
+				FROM = {
+					USA_is_southern_california_state = yes
+				}
+			}
+			all_state = {
+				if = {
+					limit = {
+						USA_is_southern_california_state = yes
+					}
+					USA_is_corable = yes
+				}
+			}
+		}
+		else_if = {
+			limit = {
+				FROM = {
+					USA_is_washington_state = yes
+				}
+			}
+			all_state = {
+				if = {
+					limit = {
+						USA_is_washington_state = yes
+					}
+					USA_is_corable = yes
+				}
+			}
+		}
+		else_if = {
+			limit = {
+				FROM = {
+					has_state_flag = USA_wyoming_state
+				}
+			}
+			all_state = {
+				if = {
+					limit = {
+						USA_is_wyoming_state = yes
+					}
+					USA_is_corable = yes
+				}
+			}
+		}
+		else_if = {
+			limit = {
+				FROM = {
+					has_state_flag = USA_michigan_state
+				}
+			}
+			all_state = {
+				if = {
+					limit = {
+						USA_is_michigan_state = yes
+					}
+					USA_is_corable = yes
+				}
+			}
+		}
+		else_if = {
+			limit = {
+				FROM = {
+					has_state_flag = USA_missouri_state
+				}
+			}
+			all_state = {
+				if = {
+					limit = {
+						USA_is_missouri_state = yes
+					}
+					USA_is_corable = yes
+				}
+			}
+		}
+		else_if = {
+			limit = {
+				FROM = {
+					has_state_flag = USA_illinois_state
+				}
+			}
+			all_state = {
+				if = {
+					limit = {
+						USA_is_illinois_state = yes
+					}
+					USA_is_corable = yes
+				}
+			}
+		}
+		else_if = {
+			limit = {
+				FROM = {
+					USA_is_dakota_state = yes
+				}
+			}
+			all_state = {
+				if = {
+					limit = {
+						USA_is_dakota_state = yes
+					}
+					USA_is_corable = yes
+				}
+			}
+		}
+		else_if = {
+			limit = {
+				FROM = {
+					has_state_flag = USA_pennsylvania_state
+				}
+			}
+			all_state = {
+				if = {
+					limit = {
+						USA_is_pennsylvania_state = yes
+					}
+					USA_is_corable = yes
+				}
+			}
+		}
+		else_if = {
+			limit = {
+				FROM = {
+					has_state_flag = USA_vermont_state
+				}
+			}
+			all_state = {
+				if = {
+					limit = {
+						USA_is_vermont_state = yes
+					}
+					USA_is_corable = yes
+				}
+			}
+		}
+		else_if = {
+			limit = {
+				FROM = {
+					has_state_flag = USA_massachusetts_state
+				}
+			}
+			all_state = {
+				if = {
+					limit = {
+						USA_is_massachusetts_state = yes
+					}
+					USA_is_corable = yes
+				}
+			}
+		}
+		else_if = {
+			limit = {
+				FROM = {
+					has_state_flag = USA_connecticut_state
+				}
+			}
+			all_state = {
+				if = {
+					limit = {
+						USA_is_connecticut_state = yes
+					}
+					USA_is_corable = yes
+				}
+			}
+		}
+		else_if = {
+			limit = {
+				FROM = {
+					has_state_flag = USA_virginia_state
+				}
+			}
+			all_state = {
+				if = {
+					limit = {
+						USA_is_virginia_state = yes
+					}
+					USA_is_corable = yes
+				}
+			}
+		}
+		else_if = {
+			limit = {
+				FROM = {
+					has_state_flag = USA_indiana_state
+				}
+			}
+			all_state = {
+				if = {
+					limit = {
+						USA_is_indiana_state = yes
+					}
+					USA_is_corable = yes
+				}
+			}
+		}
+		else_if = {
+			limit = {
+				FROM = {
+					has_state_flag = USA_kentucky_state
+				}
+			}
+			all_state = {
+				if = {
+					limit = {
+						USA_is_kentucky_state = yes
+					}
+					USA_is_corable = yes
+				}
+			}
+		}
+		else_if = {
+			limit = {
+				FROM = {
+					has_state_flag = USA_north_carolina_state
+				}
+			}
+			all_state = {
+				if = {
+					limit = {
+						USA_is_north_carolina_state = yes
+					}
+					USA_is_corable = yes
+				}
+			}
+		}
+		else_if = {
+			limit = {
+				FROM = {
+					has_state_flag = USA_south_carolina_state
+				}
+			}
+			all_state = {
+				if = {
+					limit = {
+						USA_is_south_carolina_state = yes
+					}
+					USA_is_corable = yes
+				}
+			}
+		}
+		else_if = {
+			limit = {
+				FROM = {
+					USA_is_georgia_state = yes
+				}
+			}
+			all_state = {
+				if = {
+					limit = {
+						USA_is_georgia_state = yes
+					}
+					USA_is_corable = yes
+				}
+			}
+		}
+		else_if = {
+			limit = {
+				FROM = {
+					has_state_flag = USA_alabama_state
+				}
+			}
+			all_state = {
+				if = {
+					limit = {
+						USA_is_alabama_state = yes
+					}
+					USA_is_corable = yes
+				}
+			}
+		}
+		else_if = {
+			limit = {
+				FROM = {
+					has_state_flag = USA_mississippi_state
+				}
+			}
+			all_state = {
+				if = {
+					limit = {
+						USA_is_mississippi_state = yes
+					}
+					USA_is_corable = yes
+				}
+			}
+		}
+		else_if = {
+			limit = {
+				FROM = {
+					has_state_flag = USA_arkansas_state
+				}
+			}
+			all_state = {
+				if = {
+					limit = {
+						USA_is_arkansas_state = yes
+					}
+					USA_is_corable = yes
+				}
+			}
+		}
+		else_if = {
+			limit = {
+				FROM = {
+					has_state_flag = USA_kansas_state
+				}
+			}
+			all_state = {
+				if = {
+					limit = {
+						USA_is_kansas_state = yes
+					}
+					USA_is_corable = yes
+				}
+			}
+		}
+		else_if = {
+			limit = {
+				FROM = {
+					has_state_flag = USA_louisiana_state
+				}
+			}
+			all_state = {
+				if = {
+					limit = {
+						USA_is_louisiana_state = yes
+					}
+					USA_is_corable = yes
+				}
+			}
+		}
+		else_if = {
+			limit = {
+				FROM = {
+					has_state_flag = USA_florida_state
+				}
+			}
+			all_state = {
+				if = {
+					limit = {
+						USA_is_florida_state = yes
+					}
+					USA_is_corable = yes
+				}
+			}
+		}
+		else_if = {
+			limit = {
+				FROM = {
+					USA_is_new_york_city_state = yes
+				}
+			}
+			all_state = {
+				if = {
+					limit = {
+						USA_is_new_york_city_state = yes
+					}
+					USA_is_corable = yes
+				}
+			}
+		}
+		else_if = {
+			limit = {
+				FROM = {
+					USA_is_upstate_new_york_state = yes
+				}
+			}
+			all_state = {
+				if = {
+					limit = {
+						USA_is_upstate_new_york_state = yes
+					}
+					USA_is_corable = yes
+				}
+			}
+		}
+		else_if = {
+			limit = {
+				FROM = {
+					has_state_flag = USA_new_hampshire_state
+				}
+			}
+			all_state = {
+				if = {
+					limit = {
+						USA_is_new_hampshire_state = yes
+					}
+					USA_is_corable = yes
+				}
+			}
+		}
+		else_if = {
+			limit = {
+				FROM = {
+					has_state_flag = USA_maine_state
+				}
+			}
+			all_state = {
+				if = {
+					limit = {
+						USA_is_maine_state = yes
+					}
+					USA_is_corable = yes
+				}
+			}
+		}
+		else = {
+			FROM = {
+				USA_is_corable = yes
+			}
+		}
+	}
+}
+
+USA_has_unified_theater = {
+	if = {
+		limit = {
+			tag = USB
+		}
+		USC = {
+			exists = no
+		}
+	}
+}
+
+#Recruiting
+USA_state_recruit_scripted_trigger = {
+	custom_trigger_tooltip = {
+		tooltip = USA_controls_entire_state_militia_tooltip
+		if = {
+			limit = {
+				FROM = {
+					USA_is_northern_texas_state = yes
+				}
+			}
+			all_state = {
+				if = {
+					limit = {
+						USA_is_northern_texas_state = yes
+					}
+					USA_is_recruitable = yes
+				}
+			}
+		}
+		else_if = {
+			limit = {
+				FROM = {
+					USA_is_southern_texas_state = yes
+				}
+			}
+			all_state = {
+				if = {
+					limit = {
+						USA_is_southern_texas_state = yes
+					}
+					USA_is_recruitable = yes
+				}
+			}
+		}
+		else_if = {
+			limit = {
+				FROM = {
+					has_state_flag = USA_new_mexico_state
+				}
+			}
+			all_state = {
+				if = {
+					limit = {
+						USA_is_new_mexico_state = yes
+					}
+					USA_is_recruitable = yes
+				}
+			}
+		}
+		else_if = {
+			limit = {
+				FROM = {
+					has_state_flag = USA_arizona_state
+				}
+			}
+			all_state = {
+				if = {
+					limit = {
+						USA_is_arizona_state = yes
+					}
+					USA_is_recruitable = yes
+				}
+			}
+		}
+		else_if = {
+			limit = {
+				FROM = {
+					has_state_flag = USA_nevada_state
+				}
+			}
+			all_state = {
+				if = {
+					limit = {
+						USA_is_nevada_state = yes
+					}
+					USA_is_recruitable = yes
+				}
+			}
+		}
+		else_if = {
+			limit = {
+				FROM = {
+					has_state_flag = USA_utah_state
+				}
+			}
+			all_state = {
+				if = {
+					limit = {
+						USA_is_utah_state = yes
+					}
+					USA_is_recruitable = yes
+				}
+			}
+		}
+		else_if = {
+			limit = {
+				FROM = {
+					has_state_flag = USA_colorado_state
+				}
+			}
+			all_state = {
+				if = {
+					limit = {
+						USA_is_colorado_state = yes
+					}
+					USA_is_recruitable = yes
+				}
+			}
+		}
+		else_if = {
+			limit = {
+				FROM = {
+					has_state_flag = USA_montana_state
+				}
+			}
+			all_state = {
+				if = {
+					limit = {
+						USA_is_montana_state = yes
+					}
+					USA_is_recruitable = yes
+				}
+			}
+		}
+		else_if = {
+			limit = {
+				FROM = {
+					has_state_flag = USA_idaho_state
+				}
+			}
+			all_state = {
+				if = {
+					limit = {
+						USA_is_idaho_state = yes
+					}
+					USA_is_recruitable = yes
+				}
+			}
+		}
+		else_if = {
+			limit = {
+				FROM = {
+					has_state_flag = USA_oklahoma_state
+				}
+			}
+			all_state = {
+				if = {
+					limit = {
+						USA_is_oklahoma_state = yes
+					}
+					USA_is_recruitable = yes
+				}
+			}
+		}
+		else_if = {
+			limit = {
+				FROM = {
+					has_state_flag = USA_iowa_state
+				}
+			}
+			all_state = {
+				if = {
+					limit = {
+						USA_is_iowa_state = yes
+					}
+					USA_is_recruitable = yes
+				}
+			}
+		}
+		else_if = {
+			limit = {
+				FROM = {
+					has_state_flag = USA_maryland_state
+				}
+			}
+			all_state = {
+				if = {
+					limit = {
+						USA_is_maryland_state = yes
+					}
+					USA_is_recruitable = yes
+				}
+			}
+		}
+		else_if = {
+			limit = {
+				FROM = {
+					has_state_flag = USA_nebraska_state
+				}
+			}
+			all_state = {
+				if = {
+					limit = {
+						USA_is_nebraska_state = yes
+					}
+					USA_is_recruitable = yes
+				}
+			}
+		}
+		else_if = {
+			limit = {
+				FROM = {
+					has_state_flag = USA_minnesota_state
+				}
+			}
+			all_state = {
+				if = {
+					limit = {
+						USA_is_minnesota_state = yes
+					}
+					USA_is_recruitable = yes
+				}
+			}
+		}
+		else_if = {
+			limit = {
+				FROM = {
+					has_state_flag = USA_wisconsin_state
+				}
+			}
+			all_state = {
+				if = {
+					limit = {
+						USA_is_wisconsin_state = yes
+					}
+					USA_is_recruitable = yes
+				}
+			}
+		}
+		else_if = {
+			limit = {
+				FROM = {
+					has_state_flag = USA_tennesse_state
+				}
+			}
+			all_state = {
+				if = {
+					limit = {
+						USA_is_tennessee_state = yes
+					}
+					USA_is_recruitable = yes
+				}
+			}
+		}
+		else_if = {
+			limit = {
+				FROM = {
+					has_state_flag = USA_ohio_state
+				}
+			}
+			all_state = {
+				if = {
+					limit = {
+						USA_is_ohio_state = yes
+					}
+					USA_is_recruitable = yes
+				}
+			}
+		}
+		else_if = {
+			limit = {
+				FROM = {
+					has_state_flag = USA_oregon_state
+				}
+			}
+			all_state = {
+				if = {
+					limit = {
+						USA_is_oregon_state = yes
+					}
+					USA_is_recruitable = yes
+				}
+			}
+		}
+		else_if = {
+			limit = {
+				FROM = {
+					USA_is_northern_california_state = yes
+				}
+			}
+			all_state = {
+				if = {
+					limit = {
+						USA_is_northern_california_state = yes
+					}
+					USA_is_recruitable = yes
+				}
+			}
+		}
+		else_if = {
+			limit = {
+				FROM = {
+					USA_is_southern_california_state = yes
+				}
+			}
+			all_state = {
+				if = {
+					limit = {
+						USA_is_southern_california_state = yes
+					}
+					USA_is_recruitable = yes
+				}
+			}
+		}
+		else_if = {
+			limit = {
+				FROM = {
+					has_state_flag = USA_washington_state
+				}
+			}
+			all_state = {
+				if = {
+					limit = {
+						USA_is_washington_state = yes
+					}
+					USA_is_recruitable = yes
+				}
+			}
+		}
+		else_if = {
+			limit = {
+				FROM = {
+					has_state_flag = USA_wyoming_state
+				}
+			}
+			all_state = {
+				if = {
+					limit = {
+						USA_is_wyoming_state = yes
+					}
+					USA_is_recruitable = yes
+				}
+			}
+		}
+		else_if = {
+			limit = {
+				FROM = {
+					has_state_flag = USA_michigan_state
+				}
+			}
+			all_state = {
+				if = {
+					limit = {
+						USA_is_michigan_state = yes
+					}
+					USA_is_recruitable = yes
+				}
+			}
+		}
+		else_if = {
+			limit = {
+				FROM = {
+					has_state_flag = USA_missouri_state
+				}
+			}
+			all_state = {
+				if = {
+					limit = {
+						USA_is_missouri_state = yes
+					}
+					USA_is_recruitable = yes
+				}
+			}
+		}
+		else_if = {
+			limit = {
+				FROM = {
+					has_state_flag = USA_illinois_state
+				}
+			}
+			all_state = {
+				if = {
+					limit = {
+						USA_is_illinois_state = yes
+					}
+					USA_is_recruitable = yes
+				}
+			}
+		}
+		else_if = {
+			limit = {
+				FROM = {
+					USA_is_dakota_state = yes
+				}
+			}
+			all_state = {
+				if = {
+					limit = {
+						USA_is_dakota_state = yes
+					}
+					USA_is_recruitable = yes
+				}
+			}
+		}
+		else_if = {
+			limit = {
+				FROM = {
+					has_state_flag = USA_pennsylvania_state
+				}
+			}
+			all_state = {
+				if = {
+					limit = {
+						USA_is_pennsylvania_state = yes
+					}
+					USA_is_recruitable = yes
+				}
+			}
+		}
+		else_if = {
+			limit = {
+				FROM = {
+					has_state_flag = USA_vermont_state
+				}
+			}
+			all_state = {
+				if = {
+					limit = {
+						USA_is_vermont_state = yes
+					}
+					USA_is_recruitable = yes
+				}
+			}
+		}
+		else_if = {
+			limit = {
+				FROM = {
+					has_state_flag = USA_massachusetts_state
+				}
+			}
+			all_state = {
+				if = {
+					limit = {
+						USA_is_massachusetts_state = yes
+					}
+					USA_is_recruitable = yes
+				}
+			}
+		}
+		else_if = {
+			limit = {
+				FROM = {
+					has_state_flag = USA_connecticut_state
+				}
+			}
+			all_state = {
+				if = {
+					limit = {
+						USA_is_connecticut_state = yes
+					}
+					USA_is_recruitable = yes
+				}
+			}
+		}
+		else_if = {
+			limit = {
+				FROM = {
+					has_state_flag = USA_virginia_state
+				}
+			}
+			all_state = {
+				if = {
+					limit = {
+						USA_is_virginia_state = yes
+					}
+					USA_is_recruitable = yes
+				}
+			}
+		}
+		else_if = {
+			limit = {
+				FROM = {
+					has_state_flag = USA_indiana_state
+				}
+			}
+			all_state = {
+				if = {
+					limit = {
+						USA_is_indiana_state = yes
+					}
+					USA_is_recruitable = yes
+				}
+			}
+		}
+		else_if = {
+			limit = {
+				FROM = {
+					has_state_flag = USA_kentucky_state
+				}
+			}
+			all_state = {
+				if = {
+					limit = {
+						USA_is_kentucky_state = yes
+					}
+					USA_is_recruitable = yes
+				}
+			}
+		}
+		else_if = {
+			limit = {
+				FROM = {
+					has_state_flag = USA_north_carolina_state
+				}
+			}
+			all_state = {
+				if = {
+					limit = {
+						USA_is_north_carolina_state = yes
+					}
+					USA_is_recruitable = yes
+				}
+			}
+		}
+		else_if = {
+			limit = {
+				FROM = {
+					has_state_flag = USA_south_carolina_state
+				}
+			}
+			all_state = {
+				if = {
+					limit = {
+						USA_is_south_carolina_state = yes
+					}
+					USA_is_recruitable = yes
+				}
+			}
+		}
+		else_if = {
+			limit = {
+				FROM = {
+					USA_is_georgia_state = yes
+				}
+			}
+			all_state = {
+				if = {
+					limit = {
+						USA_is_georgia_state = yes
+					}
+					USA_is_recruitable = yes
+				}
+			}
+		}
+		else_if = {
+			limit = {
+				FROM = {
+					has_state_flag = USA_alabama_state
+				}
+			}
+			all_state = {
+				if = {
+					limit = {
+						USA_is_alabama_state = yes
+					}
+					USA_is_recruitable = yes
+				}
+			}
+		}
+		else_if = {
+			limit = {
+				FROM = {
+					has_state_flag = USA_mississippi_state
+				}
+			}
+			all_state = {
+				if = {
+					limit = {
+						USA_is_mississippi_state = yes
+					}
+					USA_is_recruitable = yes
+				}
+			}
+		}
+		else_if = {
+			limit = {
+				FROM = {
+					has_state_flag = USA_arkansas_state
+				}
+			}
+			all_state = {
+				if = {
+					limit = {
+						USA_is_arkansas_state = yes
+					}
+					USA_is_recruitable = yes
+				}
+			}
+		}
+		else_if = {
+			limit = {
+				FROM = {
+					has_state_flag = USA_kansas_state
+				}
+			}
+			all_state = {
+				if = {
+					limit = {
+						USA_is_kansas_state = yes
+					}
+					USA_is_recruitable = yes
+				}
+			}
+		}
+		else_if = {
+			limit = {
+				FROM = {
+					has_state_flag = USA_louisiana_state
+				}
+			}
+			all_state = {
+				if = {
+					limit = {
+						USA_is_louisiana_state = yes
+					}
+					USA_is_recruitable = yes
+				}
+			}
+		}
+		else_if = {
+			limit = {
+				FROM = {
+					has_state_flag = USA_florida_state
+				}
+			}
+			all_state = {
+				if = {
+					limit = {
+						USA_is_florida_state = yes
+					}
+					USA_is_recruitable = yes
+				}
+			}
+		}
+		else_if = {
+			limit = {
+				FROM = {
+					USA_is_new_york_city_state = yes
+				}
+			}
+			all_state = {
+				if = {
+					limit = {
+						USA_is_new_york_city_state = yes
+					}
+					USA_is_recruitable = yes
+				}
+			}
+		}
+		else_if = {
+			limit = {
+				FROM = {
+					USA_is_upstate_new_york_state = yes
+				}
+			}
+			all_state = {
+				if = {
+					limit = {
+						USA_is_upstate_new_york_state = yes
+					}
+					USA_is_recruitable = yes
+				}
+			}
+		}
+		else_if = {
+			limit = {
+				FROM = {
+					has_state_flag = USA_new_hampshire_state
+				}
+			}
+			all_state = {
+				if = {
+					limit = {
+						USA_is_new_hampshire_state = yes
+					}
+					USA_is_recruitable = yes
+				}
+			}
+		}
+		else_if = {
+			limit = {
+				FROM = {
+					has_state_flag = USA_maine_state
+				}
+			}
+			all_state = {
+				if = {
+					limit = {
+						USA_is_maine_state = yes
+					}
+					USA_is_recruitable = yes
+				}
+			}
+		}
+		else = {
+			FROM = {
+				USA_is_recruitable = yes
+			}
+		}
+	}
+}
+
+#Post-Civil War
+USA_reconstruction_cooldown_trigger = {
+	NOT = {
+		has_country_flag = USA_reconstruction_cooldown_flag
+	}
+}
+
+USA_has_reconstruction_progress_greater_than_or_equals = {
+	if = {
+		limit = {
+			has_dynamic_modifier = {
+				modifier = inflation_dynamic
+			}
+		}
+		custom_trigger_tooltip = {
+			tooltip = USA_has_reconstruction_progress_tooltip
+			check_variable = {
+				var = USA_reconstruction_progress_var
+				value = USA_reconstruction_progress_trigger_var_temp
+				compare = greater_than_or_equals
+			}
+		}
+	}
+	else = {
+		NOT = {
+			has_dynamic_modifier = {
+				modifier = USA_reconstruction_dynamic
+			}
+		}
+	}
+}
+
+USA_controls_all_cores_trigger = {
+	custom_trigger_tooltip = {
+		tooltip = USA_controls_all_cores_tooltip
+		all_state = {
+			if = {
+				limit = {
+					OR = {
+						USA_is_washington_state = yes
+						USA_is_oregon_state = yes
+						USA_is_oregon_state = yes
+						USA_is_california_state = yes
+						USA_is_nevada_state = yes
+						USA_is_idaho_state = yes
+						USA_is_utah_state = yes
+						USA_is_arizona_state = yes
+						USA_is_montana_state = yes
+						USA_is_wyoming_state = yes
+						USA_is_colorado_state = yes
+						USA_is_new_mexico_state = yes
+						USA_is_navajo_state = yes
+						USA_is_texas_state = yes
+						USA_is_kansas_state = yes
+						USA_is_oklahoma_state = yes
+						USA_is_nebraska_state = yes
+						USA_is_dakota_state = yes
+						USA_is_louisiana_state = yes
+						USA_is_arkansas_state = yes
+						USA_is_missouri_state = yes
+						USA_is_iowa_state = yes
+						USA_is_minnesota_state = yes
+						USA_is_mississippi_state = yes
+						USA_is_tennessee_state = yes
+						USA_is_kentucky_state = yes
+						USA_is_illinois_state = yes
+						USA_is_wisconsin_state = yes
+						USA_is_alabama_state = yes
+						USA_is_alabama_state = yes
+						USA_is_indiana_state = yes
+						USA_is_michigan_state = yes
+						USA_is_michigan_state = yes
+						USA_is_florida_state = yes
+						USA_is_georgia_state = yes
+						USA_is_ohio_state = yes
+						USA_is_south_carolina_state = yes
+						USA_is_north_carolina_state = yes
+						USA_is_virginia_state = yes
+						USA_is_west_virginia_state = yes
+						USA_is_maryland_state = yes
+						USA_is_pennsylvania_state = yes
+						USA_is_new_jersey_state = yes
+						USA_is_new_york_city_state = yes
+						USA_is_upstate_new_york_state = yes
+						USA_is_new_york_state = yes
+						USA_is_connecticut_state = yes
+						USA_is_massachusetts_state = yes
+						USA_is_new_hampshire_state = yes
+						USA_is_vermont_state = yes
+						USA_is_maine_state = yes
+					}
+				}
+				is_fully_controlled_by = ROOT
+			}
+		}
+	}
+}

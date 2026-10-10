@@ -1,0 +1,140 @@
+﻿	capital = 317
+
+	oob = "NIC_2020"
+
+	set_research_slots = 2
+	set_convoys = 65
+	set_stability = 0.4
+
+	set_variable = { Russian_Influence = 0.15 }
+	set_variable = { Chinese_Influence = 0.60 }
+	set_variable = { American_Influence = 0.05 }
+	set_variable = { European_Influence = 0.0 }
+	set_variable = { PDO_Influence = 0.00 }
+	set_variable = { Sovereign_Influence = 0.20 }
+	set_major = yes
+	set_technology = {
+		## Infantry ##
+		infantry_weapons1 = 1
+		infantry_weapons2 = 1
+		motorised_infantry = 1
+		infantry_rifle_upgrade = 1
+		support_weapons = 1
+		support_weapons2 = 1
+		night_vision = 1
+		body_armor = 1
+		camouflage = 1
+		
+		## Support Companies ##
+		tech_support = 1
+		tech_engineers = 1
+		tech_recon = 1
+		tech_military_police = 1
+		tech_maintenance_company = 1
+		tech_field_hospital = 1
+		tech_logistics_company = 1
+		tech_signal_company = 1
+		
+		## Armor ##
+		mechanised_infantry1 = 1
+		light_mechanized_infantry1 = 1
+		
+		## Artillery ##
+		gw_artillery = 1
+		interwar_antitank = 1
+		interwar_antiair = 1
+		self_propelled_aa1 = 1
+		interwar_artillery = 1
+		sp_artillery1 = 1
+		
+		## Engineering ##
+		#eng_low
+		
+		## Industry ##
+		#ind_low
+		
+		## Doctrines ##
+		
+	}
+	
+	if = {
+		limit = { has_dlc = "By Blood Alone" }
+			set_technology = {
+				aa_lmg = 1
+				aa_cannon_1 = 1
+				aa_hmg = 1
+				engines_1 = 1
+				engines_2 = 1
+				early_bombs = 1
+				guided_bombs = 1
+				aircraft_construction = 1
+				survivability_studies = 1
+				iw_small_airframe = 1
+				basic_small_airframe = 1
+				iw_medium_airframe = 1
+				basic_medium_airframe = 1
+				iw_large_airframe = 1
+			}
+		else = {
+			set_technology = {
+				CAS1 = 1
+				CAS2 = 1
+				fighter1 = 1
+				fighter2 = 1
+				fighter3 = 1
+				naval_bomber1 = 1
+				strategic_bomber1 = 1
+			}
+		}
+	}
+
+	if = {
+		limit = {
+			NOT = { has_dlc = "No Step Back" }
+		}
+		set_technology = {
+			main_battle_tank1 = 1
+			main_battle_tank2 = 1
+			light_tank1 = 1
+			light_tank2 = 1
+		}
+	}
+	if = {
+		limit = {
+			has_dlc = "No Step Back"
+		}
+		set_technology = {
+			gwtank_chassis = 1
+			basic_light_tank_chassis = 1
+			basic_medium_tank_chassis = 1
+			engine_tech_1 = 1
+		}
+	}
+
+	add_ideas = {
+		NIC_gdp_fix
+		NIC_revolutionary_spirit
+		NIC_legacy_of_protests
+		MEX_cartel_presence_moderate
+		low_poverty
+		low_conscription
+	}
+
+	recruit_character = NIC_Daniel_Ortega_char
+
+	set_politics = {	
+		ruling_party = communist
+		last_election = "2016.11.6"
+		election_frequency = 60
+		elections_allowed = yes
+	}
+
+	set_popularities = {
+		communist = 46
+		libertarian_socialist = 5
+		social_democrat = 14
+		social_liberal = 11
+		market_liberal = 19
+		conservative = 4
+		authoritarian_democrat = 1
+	}

@@ -1,0 +1,125 @@
+capital = 775
+
+set_research_slots = 2
+set_convoys = 100
+set_stability = 0.25
+
+	set_variable = { Russian_Influence = 0.05 }
+	set_variable = { Chinese_Influence = 0.45 }
+	set_variable = { American_Influence = 0.05 }
+	set_variable = { European_Influence = 0.25 }
+	set_variable = { PDO_Influence = 0.00 }
+	set_variable = { Sovereign_Influence = 0.20 }
+
+set_technology = {
+	## Infantry ##
+	infantry_weapons1 = 1
+	infantry_weapons2 = 1
+	motorised_infantry = 1
+	infantry_rifle_upgrade = 1
+	support_weapons = 1
+	body_armor = 1
+	camouflage = 1
+	
+	## Support Companies ##
+	tech_support = 1
+	tech_engineers = 1
+	tech_recon = 1
+	tech_military_police = 1
+	tech_maintenance_company = 1
+	tech_field_hospital = 1
+	tech_logistics_company = 1
+	tech_signal_company = 1
+	
+	## Armor ##
+	main_battle_tank1 = 1
+	main_battle_tank2 = 1
+	main_battle_tank3 = 1
+	light_tank1 = 1
+	mechanised_infantry1 = 1
+	light_mechanized_infantry1 = 1
+	
+	## Artillery ##
+	gw_artillery = 1
+	interwar_antitank = 1
+	interwar_antiair = 1
+	tank_destroyer1 = 1
+	self_propelled_aa1 = 1
+	
+	## Engineering ##
+	#eng_low
+	
+	## Industry ##
+	#ind_low
+	
+	## Doctrines ##
+	
+}
+
+if = {
+	limit = { has_dlc = "By Blood Alone" }
+		set_technology = {
+			aa_lmg = 1
+			aa_cannon_1 = 1
+			aa_hmg = 1
+			engines_1 = 1
+			engines_2 = 1
+			early_bombs = 1
+			guided_bombs = 1
+			aircraft_construction = 1
+			survivability_studies = 1
+			iw_small_airframe = 1
+			basic_small_airframe = 1
+			iw_medium_airframe = 1
+			basic_medium_airframe = 1
+			iw_large_airframe = 1
+		}
+	else = {
+		set_technology = {
+			CAS1 = 1
+			CAS2 = 1
+			fighter1 = 1
+			fighter2 = 1
+			naval_bomber1 = 1
+			strategic_bomber1 = 1
+		}
+	}
+}
+
+
+add_ideas = {
+	GNA_gdp_fix
+	lower_poverty
+	african_union_member
+	low_conscription
+}
+
+set_politics = {	
+	ruling_party = social_democrat
+	last_election = "2015.10.11"
+	election_frequency = 60
+	elections_allowed = yes
+}
+
+set_popularities = {
+    social_democrat = 65
+    social_liberal = 35
+}
+recruit_character = GNA_Mamady_Doumbouya_char
+recruit_character = GNA_Alpha_Conde_char
+recruit_character = GNA_Abdoulaye_Keita_char
+recruit_character = GNA_Amara_Camara_char
+recruit_character = GNA_Aminata_Diallo_char
+recruit_character = GNA_Balla_Samoura_char
+recruit_character = GNA_Billy_Nankouma_Keita_char
+recruit_character = GNA_Fama_Kourouma_char
+recruit_character = GNA_Ibrahima_Sory_Bangoura_char
+recruit_character = GNA_Jean_Saa_Kamano_char
+recruit_character = GNA_Lancinet_Diallo_char
+recruit_character = GNA_Laye_Toure_char
+recruit_character = GNA_Mamadi_Conde_char
+recruit_character = GNA_Mamady_Conde_char
+recruit_character = GNA_Moro_Diakite_char
+recruit_character = GNA_Moussa_Keita_char
+recruit_character = GNA_Sidiba_Koulibaly_char
+recruit_character = GNA_Tamba_Kallas_Tolno_char

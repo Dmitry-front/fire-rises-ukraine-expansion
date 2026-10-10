@@ -1,0 +1,189 @@
+infantry_USA = {
+
+	available_for = {
+		USA
+		USB
+		USC
+	}
+	
+	role = infantry
+
+	
+	upgrade_prio = {
+		factor = 20
+
+		modifier = {
+			factor = 20
+		}
+	}
+	
+	#match_to_count = 0.60
+
+	infantry_default_USA = {
+	
+		upgrade_prio = {
+			factor = 20
+
+			modifier = {
+				factor = 40
+			}
+		}
+		
+		target_template = {
+			regiments = {
+				mechanized = 5
+				modern_sp_artillery_brigade = 2
+				recce = 2
+				motorized = 2
+			}
+		}
+	}
+	
+	infantry_2_USA = {
+	
+		upgrade_prio = {
+			factor = 25
+
+			modifier = {
+				factor = 25
+			}
+		}
+		
+		target_template = {
+			regiments = {
+				motorized = 5
+				modern_sp_artillery_brigade = 1
+				recce = 1
+			}
+		}
+	}
+	
+	infantry_3_USA = {
+	
+		upgrade_prio = {
+			factor = 20
+
+			modifier = {
+				factor = 40
+			}
+		}
+		
+		target_template = {
+			regiments = {
+				mechanized = 4
+				modern_sp_artillery_brigade = 1
+				recce = 1
+				motorized = 1
+			}
+		}
+	}
+}
+
+paratrooper_USA = {
+
+	role = paratrooper
+	
+	available_for = {
+		USA
+		USB
+		USC
+	}
+	
+	upgrade_prio = {
+		factor = 2
+
+		modifier = {
+			factor = 0
+			NOT = {
+				has_tech = paratroopers
+			}
+		}
+	}
+	
+	#match_to_count = 0.45
+	
+	paratrooper_default = {
+	
+		upgrade_prio = {
+			factor = 2
+
+			modifier = {
+				factor = 1
+			}
+		}
+
+		target_template = {
+			regiments = {
+				paratrooper = 3
+				recce = 2
+				artillery_brigade = 1
+			}
+		}
+	}
+}
+
+armored_USA = {
+
+	available_for = {
+		USA
+		USB
+		USC
+	}
+	
+	role = armor
+	
+	#match_to_count = 0.5
+	
+	upgrade_prio = {
+		factor = 20
+
+		modifier = {
+			factor = 40
+			has_tech = main_battle_tank1
+		}
+	}
+
+	modern_armor_default_USA = {
+	
+		upgrade_prio = {
+			factor = 25
+
+			modifier = {
+				factor = 25
+				has_tech = main_battle_tank1
+			}
+		}
+
+		target_template = {
+			regiments = {
+				modern_armor = 6
+				light_mechanized = 2
+				modern_sp_artillery_brigade = 4
+				spaa_brigade = 2
+				motorized = 1
+			}
+		}
+	}
+	
+	modern_armor_2_USA = {
+	
+		upgrade_prio = {
+			factor = 20
+
+			modifier = {
+				factor = 40
+				has_tech = main_battle_tank1
+			}
+		}
+	
+		target_template = {
+			regiments = {
+				modern_armor = 2
+				light_mechanized = 2
+				modern_sp_artillery_brigade = 1
+				motorized = 1
+				recce = 1
+			}
+		}
+	}
+}

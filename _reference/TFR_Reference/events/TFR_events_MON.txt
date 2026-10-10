@@ -1,0 +1,128 @@
+﻿#Mongolia
+
+add_namespace = MON
+
+#Mongolian Election
+country_event = {
+	id = MON.1
+	title = MON.1.t
+	desc = MON.1.d
+	picture = GFX_MON_election
+	is_triggered_only = yes
+
+	trigger = {
+
+	}
+
+	option = {
+		name = MON.1.a
+		ai_chance = {
+			factor = 72
+		    modifier = {
+				factor = 0
+				OR = {
+				    has_game_rule = {
+					    rule = THE_MON_election
+					    option = THE_MON_election_2
+					}
+				    has_game_rule = {
+					    rule = THE_MON_election
+					    option = THE_MON_election_3
+					}
+			      }
+			   }
+		}
+		add_popularity = { 
+			ideology = social_democrat
+			popularity = 0.2
+		}
+		add_popularity = { 
+			ideology = libertarian_socialist
+			popularity = 0.05
+		}
+		set_politics = {
+			ruling_party = social_democrat 
+			elections_allowed = yes
+			last_election = "2021.6.9"
+        	election_frequency = 72
+		}
+		remove_ideas = MON_divided_government_idea
+		clr_country_flag = head_of_gov_ui_enabled
+	}
+
+	option = {
+		name = MON.1.b
+		ai_chance = {
+			factor = 22
+		    modifier = {
+				factor = 0
+				OR = {
+				    has_game_rule = {
+					    rule = THE_MON_election
+					    option = THE_MON_election_1
+					}
+				    has_game_rule = {
+					    rule = THE_MON_election
+					    option = THE_MON_election_3
+					}
+			      }
+			   }
+		}
+		add_popularity = { 
+			ideology = social_liberal
+			popularity = 0.15
+		}
+		add_popularity = {
+			ideology = market_liberal
+			popularity = 0.05
+		}
+		set_politics = {
+			ruling_party = social_liberal
+			elections_allowed = yes
+			last_election = "2021.6.9"
+        	election_frequency = 72
+		}
+		set_party_name = {
+			long_name = MON_HUN_party
+			name = MON_HUN_party
+			ideology = social_liberal
+		}
+		remove_ideas = MON_mpp_dominated_politics_idea
+	}
+	
+	option = {
+		name = MON.1.c
+		ai_chance = {
+			factor = 6
+		    modifier = {
+				factor = 0
+				OR = {
+				    has_game_rule = {
+					    rule = THE_MON_election
+					    option = THE_MON_election_1
+					}
+				    has_game_rule = {
+					    rule = THE_MON_election
+					    option = THE_MON_election_2
+					}
+			      }
+			   }
+		}
+		add_popularity = { 
+			ideology = conservative
+			popularity = 0.05
+		}
+		add_popularity = { 
+			ideology = libertarian_socialist
+			popularity = -0.05
+		}
+		set_politics = {
+			ruling_party = conservative
+			elections_allowed = yes
+			last_election = "2021.6.9"
+        	election_frequency = 72
+		}
+		retire_character = MON_khaltmaagiin_battulga_char
+    	promote_character = MON_sodnomzunduin_erdene_char
+	}
+}

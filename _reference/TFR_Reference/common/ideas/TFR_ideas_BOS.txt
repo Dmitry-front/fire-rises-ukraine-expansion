@@ -1,0 +1,82 @@
+	ideas = {
+		country = {
+			BOS_collapsing_condominium = {
+				picture = BOS_collapsing_condominium
+			    traits = {
+			        ZZZ_blank_idea_trait
+			    }
+
+				allowed = {
+					always = no
+				}
+
+				allowed_civil_war = {
+					always = yes
+				}
+
+				removal_cost = -1
+				
+				modifier = {
+					political_power_gain = -0.1
+					war_support_factor = -0.1
+					authoritarian_democrat_drift = 0.01
+					social_democrat_drift = 0.02
+					nationalist_drift = 0.01
+					stability_weekly = -0.001
+					society_development_monthly = -0.04
+				}
+			}
+			
+			BOS_fallout_of_the_bosnian_spring = {
+				picture = BOS_bosnian_spring
+			    traits = {
+			        ZZZ_blank_idea_trait
+			    }
+
+				allowed = {
+					always = no
+				}
+
+				allowed_civil_war = {
+					always = yes
+				}
+
+				cancel = {
+					has_stability > 0.75
+				}
+
+				removal_cost = -1
+				
+				modifier = {
+					stability_factor = -0.15
+					business_value_factor = -0.15
+					production_factory_max_efficiency_factor = -0.2
+					poverty_development_monthly = -0.01
+				}
+			}
+			
+			BOS_feeble_government = {
+				picture = generic_feeble_government
+			    traits = {
+			        ZZZ_blank_idea_trait
+			    }
+
+				allowed = {
+					always = no
+				}
+
+				allowed_civil_war = {
+					always = yes
+				}
+
+				removal_cost = -1
+				
+				modifier = {
+					political_power_cost = 0.15
+					consumer_goods_factor = 0.15
+					misc_expense = 0.02
+					drift_defence_factor = -0.15
+				}
+			}
+		}
+	}

@@ -1,0 +1,372 @@
+USA_save_for_core_strategy = {
+	abort_when_not_enabled = yes
+	allowed = {
+		USA_is_civil_war_faction = yes
+		OR = {
+			USA_is_separatist_tag = yes
+			USA_is_rival_tag = yes
+		}
+	}
+	enable = {
+		any_state = {
+			is_claimed_by = ROOT
+			NOT = {
+				is_core_of = ROOT
+			}
+		}
+	}
+	ai_strategy = {
+		type = pp_spend_amount
+		id = decision
+		value = 50
+	}
+}
+
+#Foreign Support
+BLR_support_PTF = {
+	enable = {
+		tag = BLR
+		has_war = no
+		has_government = nationalist
+	}
+	abort = {
+		has_war = yes
+		has_war_with = PTF
+	}
+
+	ai_strategy = {
+		type = support
+		id = "PTF"
+		value = 300
+	}
+}
+
+SOV_support_PTF = {
+	enable = {
+		tag = SOV
+		OR = {
+			has_government = authoritarian_democrat
+			has_government = fascist
+		}
+		date > 2024.1.1
+	}
+	abort = {
+		has_war = yes
+		has_war_with = PTF
+	}
+
+	ai_strategy = {
+		type = support
+		id = "PTF"
+		value = 300
+	}
+}
+
+SOV_support_LOS = {
+	enable = {
+		tag = SOV
+		OR = {
+			has_government = authoritarian_democrat
+			has_government = fascist
+		}
+		date > 2024.1.1
+	}
+	abort = {
+		has_war = yes
+		has_war_with = LOS
+	}
+
+	ai_strategy = {
+		type = support
+		id = "LOS"
+		value = 300
+	}
+}
+
+PRC_support_APA = {
+	enable = {
+		tag = PRC
+		has_war = no
+		APA = {
+			OR = {
+				has_war_with = PTF
+				has_war_with = NSM
+				has_war_with = ATW
+			}
+		}
+	}
+	abort = {
+		has_war = yes
+		has_war_with = APA
+		date > 2020.1.1
+	}
+
+	ai_strategy = {
+		type = support
+		id = "APA"
+		value = 300
+	}
+	ai_strategy = {
+		type = send_volunteers_desire
+		id = "APA"
+		value = 900
+	}
+}
+
+PRK_support_APA = {
+	enable = {
+		tag = PRK
+		has_war = no
+	}
+	abort = {
+		has_war = yes
+		has_war_with = APA
+		date > 2020.1.1
+	}
+
+	ai_strategy = {
+		type = support
+		id = "APA"
+		value = 300
+	}
+	ai_strategy = {
+		type = send_volunteers_desire
+		id = "APA"
+		value = 900
+	}
+}
+
+############## Biden
+
+GER_support_USB = {
+	enable = {
+		tag = GER
+		has_war = no
+	}
+	abort = {
+		has_war = yes
+		has_war_with = USB
+		USB = { has_completed_focus = USB_rebirth }
+		date > 2020.1.1
+	}
+
+	ai_strategy = {
+		type = support
+		id = "USB"
+		value = 900
+	}
+}
+
+ENG_support_USB = {
+	enable = {
+		tag = ENG
+		has_war = no
+	}
+	abort = {
+		has_war = yes
+		has_war_with = USB
+		USB = { has_completed_focus = USB_rebirth }
+		date > 2020.1.1
+	}
+
+	ai_strategy = {
+		type = support
+		id = "USB"
+		value = 900
+	}
+}
+
+FRA_support_USB = {
+	enable = {
+		tag = FRA
+		has_war = no
+	}
+	abort = {
+		has_war = yes
+		has_war_with = USB
+		USB = { has_completed_focus = USB_rebirth }
+		date > 2020.1.1
+	}
+
+	ai_strategy = {
+		type = support
+		id = "USB"
+		value = 900
+	}
+}
+
+SPR_support_USB = {
+	enable = {
+		tag = SPR
+		has_war = no
+	}
+	abort = {
+		has_war = yes
+		has_war_with = USB
+		date > 2020.1.1
+	}
+
+	ai_strategy = {
+		type = support
+		id = "USB"
+		value = 900
+	}
+}
+
+POR_support_USB = {
+	enable = {
+		tag = POR
+		has_war = no
+	}
+	abort = {
+		has_war = yes
+		has_war_with = USB
+		date > 2020.1.1
+	}
+
+	ai_strategy = {
+		type = support
+		id = "USB"
+		value = 900
+	}
+}
+
+HOL_support_USB = {
+	enable = {
+		tag = HOL
+		has_war = no
+	}
+	abort = {
+		has_war = yes
+		has_war_with = USB
+		date > 2020.1.1
+	}
+
+	ai_strategy = {
+		type = support
+		id = "USB"
+		value = 900
+	}
+}
+
+BEL_support_USB = {
+	enable = {
+		tag = BEL
+		has_war = no
+	}
+	abort = {
+		has_war = yes
+		has_war_with = USB
+		date > 2020.1.1
+	}
+
+	ai_strategy = {
+		type = support
+		id = "USB"
+		value = 900
+	}
+}
+
+################### Trump
+
+HUN_support_USC = {
+	enable = {
+		tag = HUN
+		has_war = no
+	}
+	abort = {
+		has_war = yes
+		has_war_with = USC
+		date > 2020.1.1
+	}
+
+	ai_strategy = {
+		type = support
+		id = "USC"
+		value = 900
+	}
+}
+
+POL_support_USC = {
+	enable = {
+		tag = POL
+		has_war = no
+	}
+	abort = {
+		has_war = yes
+		has_war_with = USC
+		date > 2020.1.1
+	}
+
+	ai_strategy = {
+		type = support
+		id = "USC"
+		value = 900
+	}
+}
+
+CRO_support_USC = {
+	enable = {
+		tag = CRO
+		has_war = no
+	}
+	abort = {
+		has_war = yes
+		has_war_with = USC
+		date > 2020.1.1
+	}
+
+	ai_strategy = {
+		type = support
+		id = "USC"
+		value = 900
+	}
+}
+
+TUR_support_USC = {
+	enable = {
+		tag = TUR
+		has_war = no
+	}
+	abort = {
+		has_war = yes
+		has_war_with = USC
+		date > 2020.1.1
+	}
+
+	ai_strategy = {
+		type = support
+		id = "USC"
+		value = 900
+	}
+}
+
+USA_build_for_civil_war_strategy = {
+	abort_when_not_enabled = yes
+	allowed = {
+		OR = {
+			original_tag = USB
+			original_tag = USC
+			original_tag = PTF
+			original_tag = NSM
+			original_tag = LOS
+			original_tag = ATW
+			original_tag = APA
+		}
+	}
+	enable = {
+		NOT = {
+			has_global_flag = USA_american_civil_war_over_global
+		}
+	}
+	abort_when_not_enabled = yes
+	ai_strategy = {
+		type = building_target
+		id = arms_factory
+		value = 25
+	}
+	ai_strategy = {
+		type = force_build_armies
+		value = 100
+	}
+}

@@ -1,0 +1,149 @@
+﻿add_namespace = moldova
+
+#2020 elections
+country_event = {
+	id = moldova.1
+	title = moldova.1.t
+	desc = moldova.1.d
+	picture = GFX_moldovan_2020_elections
+	
+	is_triggered_only = yes
+	
+	option = { #Sandu wins 
+		name = moldova.1.a
+		ai_chance = {
+				base = 1
+		    	modifier = {
+				    factor = 0
+				    OR = {
+				        has_game_rule = {
+					        rule = The_MOL_2020_election
+					        option = The_MOL_2020_election_2
+					    }
+			      }
+			   }
+			}
+        set_politics = {
+	        ruling_party = social_liberal
+            elections_allowed = yes
+        }
+        add_popularity = {
+            ideology = social_liberal
+            popularity = 0.10
+        }
+        hidden_effect = {
+            remove_ideas = MOL_pro_european_opposition
+            add_ideas = MOL_pro_russian_opposition
+        }
+	}
+    
+    option = { #Dodon wins again
+		name = moldova.1.b
+		ai_chance = {
+				base = 1
+		    	modifier = {
+				    factor = 0
+				    OR = {
+				        has_game_rule = {
+					        rule = The_MOL_2020_election
+					        option = The_MOL_2020_election_1
+					    }
+			      }
+			   }
+			}
+        add_popularity = {
+            ideology = libertarian_socialist
+            popularity = 0.10
+        }
+		set_global_flag = MOL_dodon_won
+        hidden_effect = {
+           #################DIEEEEEEEEEEEEEEEEE
+        }
+	}
+}
+
+#RACE WAR RACE WAR RACE WAR
+country_event = {
+	id = moldova.2
+	title = moldova.2.t
+	desc = moldova.2.d
+	picture = GFX_moldovan_2020_elections
+	
+	is_triggered_only = yes
+	
+	option = {  
+		name = moldova.2.a
+		if = {
+			limit = {
+				TRA = { NOT = { is_puppet_of = SOV } }
+			}
+			TRA = {
+				add_state_core = 857
+				transfer_state = 857
+				load_oob = "TRA_2020"
+			}
+		}
+		TRA = {
+			declare_war_on = { 
+				target = MOL
+				type = civil_war 
+			}
+		}
+	}
+}
+
+#Letter from Moskau
+country_event = {
+	id = moldova.3
+	title = moldova.3.t
+	desc = moldova.3.d
+	picture = GFX_moldovan_2020_elections
+	
+	is_triggered_only = yes
+	
+	option = {  
+		name = moldova.3.a
+		ai_chance = { 
+			base = 10
+		}
+		SOV = {
+			country_event = { id = moldova.4 days = 10 }
+		}
+	}
+
+	option = { 
+		name = moldova.3.b
+		ai_chance = { 
+			base = 1
+		}
+	}
+}
+
+country_event = {
+	id = moldova.4
+	title = moldova.4.t
+	desc = moldova.4.d
+	picture = GFX_moldovan_2020_elections
+	
+	is_triggered_only = yes
+	
+	option = {  
+		name = moldova.4.a
+		hidden_effect = {
+			set_country_flag = SOV_lettered_moldova
+		}
+	}
+}
+
+country_event = {
+	id = moldova.5
+	title = moldova.5.t
+	desc = moldova.5.d
+	picture = GFX_moldovan_2020_elections
+	
+	is_triggered_only = yes
+	
+	option = {  
+		name = moldova.3.a
+	}
+}

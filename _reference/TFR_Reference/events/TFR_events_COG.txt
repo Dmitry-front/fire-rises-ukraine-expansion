@@ -1,0 +1,726 @@
+﻿add_namespace = congo
+
+#Congo Collapse
+news_event = {
+	id = congo.1
+	title = congo.1.t
+	desc = congo.1.d
+	picture = GFX_news_congo_collapse
+	
+	is_triggered_only = yes
+	major = yes
+	
+	immediate = {
+		hidden_effect = {
+			RCG = {
+				news_event = {
+					id = congo.2
+					days = 120
+				}
+			}
+			TZN = {
+				country_event = { # Form East Africa
+					id = tanzania.1
+					days = 1000
+				}
+			}
+			EGY = {
+				country_event = {
+					id = egypt.2
+					days = 1270
+				}
+			}
+			DRO = {
+				transfer_state = 1360
+				transfer_state = 1356
+				transfer_state = 718
+				transfer_state = 1357
+				add_state_core = 1360
+				add_state_core = 1356
+				add_state_core = 718
+				add_state_core = 1357
+				add_state_core = 538
+				add_state_core = 1359
+				add_state_core = 1358
+				add_state_core = 295
+				add_state_core = 1363
+				add_state_core = 1362
+				add_state_core = 760
+				add_state_core = 759
+				add_state_core = 758
+				add_state_core = 757
+				add_state_core = 865
+				add_state_core = 864
+				add_state_core = 862
+				add_state_core = 863
+				declare_war_on = {
+    				target = COG
+    				type = annex_everything
+				}
+				if = {
+					limit = {
+						CAR = {
+							has_government = social_democrat
+						}
+					}
+					create_faction = DRO_faction
+					hidden_effect = {
+						remove_faction_goal = faction_goal_the_atomic_race
+					add_faction_goal = faction_goal_placeholder_long_term
+						remove_faction_goal = faction_goal_a_military_base
+					add_faction_goal = faction_goal_placeholder_medium_term
+						add_faction_goal = faction_goal_placeholder_short_term
+					}
+					add_to_faction = CAR
+				}
+			}
+			NDC = {
+				transfer_state = 862
+				add_state_core = 862
+				load_oob = NDC_revolt
+				declare_war_on = {
+    				target = COG
+    				type = annex_everything
+				}
+				declare_war_on = {
+    				target = DRO
+    				type = annex_everything
+				}
+				declare_war_on = {
+    				target = M23
+    				type = annex_everything
+				}
+				declare_war_on = {
+    				target = MMK
+    				type = annex_everything
+				}
+				declare_war_on = {
+    				target = BDK
+    				type = annex_everything
+				}
+			}
+			M23 = {
+				transfer_state = 863
+				add_state_core = 863
+				add_state_core = 862
+				add_state_core = 864
+				add_state_core = 865
+				add_state_core = 1357
+				load_oob = M23_revolt
+				declare_war_on = {
+    				target = COG
+    				type = annex_everything
+				}
+				declare_war_on = {
+    				target = DRO
+    				type = annex_everything
+				}
+				declare_war_on = {
+    				target = BDK
+    				type = annex_everything
+				}
+				declare_war_on = {
+    				target = MMK
+    				type = annex_everything
+				}
+				declare_war_on = {
+    				target = NDC
+    				type = annex_everything
+				}
+			}
+			MMK = {
+				transfer_state = 865
+				add_state_core = 865
+				load_oob = MMK_revolt
+				declare_war_on = {
+    				target = COG
+    				type = annex_everything
+				}
+				declare_war_on = {
+    				target = DRO
+    				type = annex_everything
+				}
+				declare_war_on = {
+    				target = M23
+    				type = annex_everything
+				}
+				declare_war_on = {
+    				target = BDK
+    				type = annex_everything
+				}
+				declare_war_on = {
+    				target = NDC
+    				type = annex_everything
+				}
+			}
+			BDK = {
+				transfer_state = 1362
+				add_state_core = 1362
+				add_state_core = 1363
+				add_state_core = 295
+				load_oob = BDK_revolt
+				declare_war_on = {
+    				target = COG
+    				type = annex_everything
+				}
+				declare_war_on = {
+    				target = DRO
+    				type = annex_everything
+				}
+				declare_war_on = {
+    				target = M23
+    				type = annex_everything
+				}
+				declare_war_on = {
+    				target = MMK
+    				type = annex_everything
+				}
+				declare_war_on = {
+    				target = NDC
+    				type = annex_everything
+				}
+				country_event = {
+					id = congo.3
+					days = 180
+				}
+			}
+			#ANG = {
+			#	country_event = {
+			#		id = congo.4
+			#		days = 160
+			#	}
+			#}
+			COG = {
+				transfer_units_fraction= {
+					target = DRO
+					size = 0.5
+					stockpile_ratio = 0.0
+					army_ratio = 0.5
+					air_ratio = 0.6
+				}
+				remove_ideas = {
+					COG_eastern_instability
+					COG_tenuous_social_contract
+					COG_chaos_in_diversity
+				}
+				add_popularity = {
+					ideology = conservative
+					popularity = -0.10
+				}
+			}
+		}
+	}
+	
+	option = {
+		name = congo.1.a
+		
+	}
+}
+
+news_event = {
+	id = congo.2
+	title = congo.2.t
+	desc = congo.2.d
+	picture = GFX_news_RCG_coup
+	
+	is_triggered_only = yes
+	major = yes
+	
+	immediate = {
+		hidden_effect = {
+			#news_event = {
+			#	id = congo.3
+			#	days = 30
+			#}
+			RCG = {
+				load_oob = RCG_civil_war
+				add_state_core = 1360
+				add_state_core = 1356
+				add_state_core = 718
+				add_state_core = 1357
+				add_state_core = 538
+				add_state_core = 1359
+				add_state_core = 1358
+				add_state_core = 295
+				add_state_core = 1363
+				add_state_core = 1362
+				add_state_core = 760
+				add_state_core = 759
+				add_state_core = 758
+				add_state_core = 757
+				add_state_core = 865
+				add_state_core = 864
+				add_state_core = 862
+				add_state_core = 863
+				set_politics = {
+					ruling_party = totalitarian_socialist
+    				elections_allowed = no
+    				long_name = RCG_totsoc_long
+    				name = RCG_totsoc_short
+				}
+				set_party_name = {
+    				ideology = communist
+    				long_name = RCG_commie_long
+    				name = RCG_commie_short
+				}
+				set_party_name = {
+    				ideology = libertarian_socialist
+    				long_name = RCG_libsocialism_long
+    				name = RCG_libsocialism_short
+				}
+				set_party_name = {
+    				ideology = social_democrat
+    				long_name = RCG_socialdem_long
+    				name = RCG_socialdem_short
+				}
+				set_popularities = {
+					totalitarian_socialist = 75
+					communist = 10
+					libertarian_socialist = 10
+					social_democrat = 5
+				}
+				add_country_leader_role = {
+					character = RCG_denis_sassou_nguesso_char
+					promote_leader = yes
+					country_leader = {
+						ideology = left_wing_junta
+						traits = {
+						}
+					}
+				}
+				set_cosmetic_tag = RCG_coup
+				declare_war_on = {
+    				target = COG
+    				type = annex_everything
+				}
+				declare_war_on = {
+    				target = DRO
+    				type = annex_everything
+				}
+				declare_war_on = {
+    				target = BDK
+    				type = annex_everything
+				}
+				declare_war_on = {
+    				target = M23
+    				type = annex_everything
+				}
+				declare_war_on = {
+    				target = NDC
+    				type = annex_everything
+				}
+				declare_war_on = {
+    				target = MMK
+    				type = annex_everything
+				}
+			}
+			RCO = {
+				transfer_state = 757
+				transfer_state = 758
+				add_state_core = 757
+				add_state_core = 758
+				load_oob = RCO_revolt
+				declare_war_on = {
+    				target = RCG
+    				type = annex_everything
+				}
+				declare_war_on = {
+    				target = DRO
+    				type = annex_everything
+				}
+				declare_war_on = {
+    				target = COG
+    				type = annex_everything
+				}
+				declare_war_on = {
+    				target = BDK
+    				type = annex_everything
+				}
+				declare_war_on = {
+    				target = M23
+    				type = annex_everything
+				}
+				declare_war_on = {
+    				target = NDC
+    				type = annex_everything
+				}
+				declare_war_on = {
+    				target = MMK
+    				type = annex_everything
+				}
+			}
+			COG = {
+				add_state_core = 1360
+				add_state_core = 1356
+				add_state_core = 718
+				add_state_core = 1357
+				add_state_core = 538
+				add_state_core = 1359
+				add_state_core = 1358
+				add_state_core = 295
+				add_state_core = 1363
+				add_state_core = 1362
+				add_state_core = 760
+				add_state_core = 759
+				add_state_core = 758
+				add_state_core = 757
+				add_state_core = 865
+				add_state_core = 864
+				add_state_core = 862
+				add_state_core = 863
+			}
+			DRO = {
+				add_state_core = 1360
+				add_state_core = 1356
+				add_state_core = 718
+				add_state_core = 1357
+				add_state_core = 538
+				add_state_core = 1359
+				add_state_core = 1358
+				add_state_core = 295
+				add_state_core = 1363
+				add_state_core = 1362
+				add_state_core = 760
+				add_state_core = 759
+				add_state_core = 758
+				add_state_core = 757
+				add_state_core = 865
+				add_state_core = 864
+				add_state_core = 862
+				add_state_core = 863
+			}
+
+			if = {
+				limit = {
+					CAR = {
+						has_government = authoritarian_democrat
+					}
+				}
+				CAR = {
+					declare_war_on = {
+						target = M23
+						type = annex_everything
+					}
+					declare_war_on = {
+						target = COG
+						type = annex_everything
+					}
+					declare_war_on = {
+						target = DRO
+						type = annex_everything
+					}
+					declare_war_on = {
+						target = RCG
+						type = annex_everything
+					}
+					declare_war_on = {
+						target = BDK
+						type = annex_everything
+					}
+					declare_war_on = {
+						target = RCO
+						type = annex_everything
+					}
+					declare_war_on = {
+						target = NDC
+						type = annex_everything
+					}
+					declare_war_on = {
+						target = MMK
+						type = annex_everything
+					}
+				}
+			}
+			
+			if = {
+				limit = {
+					CPC = {
+						has_government = authoritarian_democrat
+					}
+				}
+
+				CPC = {
+					give_military_access = COG
+					declare_war_on = {
+						target = M23
+						type = annex_everything
+					}
+					declare_war_on = {
+						target = DRO
+						type = annex_everything
+					}
+					declare_war_on = {
+						target = RCG
+						type = annex_everything
+					}
+					declare_war_on = {
+						target = BDK
+						type = annex_everything
+					}
+					declare_war_on = {
+						target = RCO
+						type = annex_everything
+					}
+					declare_war_on = {
+						target = NDC
+						type = annex_everything
+					}
+					declare_war_on = {
+						target = MMK
+						type = annex_everything
+					}
+				}
+
+				COG = {
+					give_military_access = CPC
+					create_faction = COG_Congo_Pact
+					hidden_effect = {
+						remove_faction_goal = faction_goal_the_atomic_race
+					add_faction_goal = faction_goal_placeholder_long_term
+						remove_faction_goal = faction_goal_a_military_base
+					add_faction_goal = faction_goal_placeholder_medium_term
+						add_faction_goal = faction_goal_placeholder_short_term
+					}
+					add_to_faction = CPC
+				}
+			}
+			if = {
+				limit = {
+					CPC = {
+						has_government = nationalist
+					}
+				}
+
+				CPC = {
+					declare_war_on = {
+						target = M23
+						type = annex_everything
+					}
+					declare_war_on = {
+						target = DRO
+						type = annex_everything
+					}
+					declare_war_on = {
+						target = RCG
+						type = annex_everything
+					}
+					declare_war_on = {
+						target = COG
+						type = annex_everything
+					}
+					declare_war_on = {
+						target = RCO
+						type = annex_everything
+					}
+					declare_war_on = {
+						target = NDC
+						type = annex_everything
+					}
+					declare_war_on = {
+						target = MMK
+						type = annex_everything
+					}
+					declare_war_on = {
+						target = BDK
+						type = annex_everything
+					}
+				}
+			}
+		}
+	}
+	
+	option = {
+		name = congo.2.a
+		
+		if = {
+			limit = { tag = SOV }
+			unlock_decision_tooltip = SOV_permit_wagner_forces_into_congo
+		}
+	}
+}
+country_event = { #Holy War for Cabinda
+	id = congo.3
+	title = congo.3.t
+	desc = congo.3.d
+	picture = GFX_French_Military_Government
+	fire_only_once = yes
+	is_triggered_only = yes
+	immediate = {
+		
+	}
+
+	option = { #RAAAAAA
+		name = congo.3.a
+		842 = {
+			add_claim_by = BDK
+		}
+		declare_war_on = {
+			target = ANG
+			type = annex_everything
+		}
+		add_manpower = 7500
+	}
+}
+country_event = { #Military warns of BDK invasion, push for totalitarian powers
+	id = congo.4
+	title = congo.4.t
+	desc = congo.4.d
+	picture = GFX_French_Military_Government
+	fire_only_once = yes
+	is_triggered_only = yes
+	immediate = {
+		
+	}
+
+	option = { #
+		name = congo.4.a
+		add_stability = 0.10
+		add_war_support = 0.10
+	}
+	option = { #
+		name = congo.4.b
+		add_war_support = 0.20
+		set_country_flag = ANG_angola_reich_flag
+		set_politics = {
+			ruling_party = communist
+			elections_allowed = no
+		}
+		add_country_leader_role = {
+				character = RCG_denis_sassou_nguesso_char
+				promote_leader = yes
+				country_leader = {
+					ideology = left_wing_junta
+					traits = {
+					}
+				}
+			}
+		create_faction = ANG_Afrocom
+		hidden_effect = {
+			remove_faction_goal = faction_goal_the_atomic_race
+			add_faction_goal = faction_goal_placeholder_long_term
+			remove_faction_goal = faction_goal_a_military_base
+			add_faction_goal = faction_goal_placeholder_medium_term
+			add_faction_goal = faction_goal_placeholder_short_term
+		}
+		add_to_faction = RCG
+	}
+}
+country_event = { #Victory and expansion
+	id = congo.5
+	title = congo.5.t
+	desc = congo.5.d
+	picture = GFX_French_Military_Government
+	fire_only_once = yes
+	is_triggered_only = yes
+	immediate = {
+		
+	}
+	trigger = {
+		tag = ANG
+		has_country_flag = ANG_angola_reich_flag
+		M23 = {
+			exists = no
+		}
+		DRO = {
+			exists = no
+		}
+		COG = {
+			exists = no
+		}
+		RCG = {
+			exists = yes
+		}
+		RCO = {
+			exists = no
+		}
+		NDC = {
+			exists = no
+		}
+		MMK = {
+			exists = no
+		}
+		BDK = {
+			exists = no
+		}
+		CAR = {
+			exists = no
+		}
+		CPC = {
+			exists = no
+		}
+	}
+	option = { #Events to join (turn into decisions later)
+		name = congo.5.a
+		MZB = {
+			country_event = {
+				id = congo.6
+			}
+		}
+		ZAM = {
+			country_event = {
+				id = congo.6
+			}
+		}
+		NMB = {
+			country_event = {
+				id = congo.6
+			}
+		}
+		MLW = {
+			country_event = {
+				id = congo.6
+			}
+		}
+		ZIM = {
+			country_event = {
+				id = congo.6
+			}
+		}
+		if = {
+			limit = {
+				EFF = {
+					has_war = yes
+				}
+			}
+			add_ai_strategy = {
+				type = send_volunteers_desire
+				id = "EFF"
+				value = 100
+			}
+			add_ai_strategy = {
+				type = support
+				id = "EFF"
+				value = 300
+			}
+		}
+		else = {
+			EFF = {
+				country_event = {
+					id = congo.6
+				}
+			}
+		}
+	}
+}
+country_event = { #Join Africom?
+	id = congo.6
+	title = congo.6.t
+	desc = congo.6.d
+	picture = GFX_French_Military_Government
+	fire_only_once = yes
+	is_triggered_only = yes
+	immediate = {
+		
+	}
+
+	option = { 
+		name = congo.6.a
+		#ANG = {
+		#	add_to_faction = ROOT
+		#}
+	}
+	option = { #No thanks
+		name = congo.6.b
+		add_political_power = -100
+	}
+}

@@ -1,0 +1,1372 @@
+characters = {
+	USA_bernie_sanders_char = {
+		portraits = {
+			civilian = {
+				large = "gfx/Leaders/USB/portrait_USA_bernie_sanders.png"
+			}
+		}
+		country_leader = {
+			ideology = progressivism
+		}
+	}
+	USA_joe_biden_char = {
+		portraits = {
+			civilian = {
+				large = "gfx/Leaders/USA/USA_joe_biden.png"
+			}
+		}
+		country_leader = {
+			ideology = neoliberalism
+			traits = {
+				hos_middleman
+			}
+		}
+	}
+	USA_gloria_la_riva_char = {
+		portraits = {
+			civilian = {
+				large = "gfx/Leaders/APA/APA_gloria_la_riva.png"
+			}
+		}
+		country_leader = {
+			ideology = marxism_leninism
+		}
+	}
+	USA_donald_trump_char = {
+		portraits = {
+			civilian = {
+				large = "gfx/leaders/USA/USA_donald_trump.png"
+			}
+		}
+		country_leader = {
+			desc = "POLITICS_DONALD_TRUMP_DESC"
+			ideology = right_populism
+			traits = {
+				hos_divisive_populist
+				#hos_tangerine_tyrant
+			}
+		}
+	}
+	USA_peta_lindsey_char = {
+		portraits = {
+			civilian = {
+				large = "gfx/Leaders/APA/APA_peta_lindsay.png"
+			}
+		}
+		country_leader = {
+			ideology = left_anarchist
+		}
+	}
+	USA_richard_spencer_char = {
+		portraits = {
+			civilian = {
+				large = "gfx/leaders/USA/generals/USA_mark_milley.png"
+			}
+		}
+		country_leader = {
+			ideology = autocrat
+		}
+	}
+	USA_thomas_rousseau_char = {
+		portraits = {
+			civilian = {
+				large = "gfx/Leaders/PTF/PTF_thomas_rousseau_revolution.png"
+			}
+		}
+		country_leader = {
+			ideology = classical_fascism
+		}
+	}
+	USA_valeria_wasserman_char = {
+		portraits = {
+			civilian = {
+				large = "gfx/leaders/APA/APA_valeria_wasserman.png"
+			}
+		}
+		country_leader = {
+			ideology = jacobinism
+			traits = {
+			}
+		}
+	}
+	USA_Burt_Colucci_char = {
+		portraits = {
+			civilian = {
+				large = "gfx/leaders/NSM/NSM_burt_colucci.png"
+			}
+		}
+		country_leader = {
+			ideology = neonazism
+			traits = {
+			}
+		}
+	}
+	#Military
+	USA_micheal_flynn_char = {
+		portraits = {
+			civilian = {
+				large = "gfx/leaders/USA/USA_michael_flynn.png"
+			}
+			army = {
+				large = "gfx/leaders/USA/generals/USA_micheal_flynn.png"
+				small = "gfx/interface/ideas/USA/advisors/USA_micheal_flynn.png"
+			}
+		}
+	}
+	USA_john_kelly_char = {
+		portraits = {
+			civilian = {
+				large = "gfx/leaders/USA/generals/USA_john_kelly.png"
+			}
+			army = {
+				large = "gfx/leaders/USA/generals/USA_john_kelly.png"
+				small = "gfx/interface/ideas/USA/advisors/USA_john_kelly.png"
+			}
+		}
+	}
+	USA_james_n._mattis_char = {
+		portraits = {
+			army = {
+				large = "gfx/leaders/USA/generals/USA_james_mattis.png"
+				small = "gfx/interface/ideas/USA/advisors/USA_james_mattis.png"
+			}
+		}
+		advisor = {
+			slot = army_chief
+			idea_token = USA_james_n._mattis_army_chief
+			ledger = army
+			cost = 150
+			ai_will_do = {
+				base = 100
+			}
+			traits = {
+				army_chief_offensive_3
+			}
+		}
+		can_be_captured = no
+		field_marshal = {
+			traits = {
+				old_guard
+				brilliant_strategist
+				war_hero
+				organizer
+			}
+			skill = 6
+			attack_skill = 5
+			defense_skill = 4
+			planning_skill = 4
+			logistics_skill = 2
+			legacy_id = 2
+		}
+	}
+	USA_john_hyten_char = {
+		portraits = {
+			army = {
+				large = "gfx/leaders/USA/generals/USA_john_hyten.png"
+				small = "gfx/interface/ideas/USA/advisors/USA_john_hyten.png"
+			}
+		}
+		advisor = {
+			slot = army_chief
+			idea_token = USA_john_hyten_army_chief
+			ledger = army
+			cost = 100
+			traits = {
+				army_chief_drill_2
+			}
+		}
+		can_be_captured = no
+		field_marshal = {
+			traits = {
+				inflexible_strategist
+				organizer
+				skilled_staffer
+				expert_delegator
+			}
+			skill = 4
+			attack_skill = 2
+			defense_skill = 4
+			planning_skill = 2
+			logistics_skill = 4
+		}
+	}
+	USA_joseph_lengyel_char = {
+		portraits = {
+			army = {
+				large = "gfx/leaders/USA/generals/USA_joseph_lengyel.png"
+				small = "gfx/interface/ideas/USA/advisors/USA_joseph_lengyel.png"
+			}
+		}
+		can_be_captured = no
+		field_marshal = {
+			traits = {
+				inflexible_strategist
+				trait_cautious
+			}
+			skill = 3
+			attack_skill = 1
+			defense_skill = 3
+			planning_skill = 2
+			logistics_skill = 2
+		}
+		advisor = {
+			slot = air_chief
+			idea_token = USA_joesph_lengyel_air_chief
+			ledger = air
+			available = {
+				if = {
+					limit = {
+						tag = USC
+					}
+					has_completed_focus = USC_reorganize_the_air_force
+				}
+			}
+			traits = {
+				air_chief_ground_support_2
+			}
+			cost = 100
+			ai_will_do = {
+				factor = 2
+			}
+		}
+	}
+	USA_mark_milley_char = {
+		portraits = {
+			civilian = {
+				large = "gfx/leaders/USA/generals/USA_mark_milley.png"
+			}
+			army = {
+				large = "gfx/leaders/USA/generals/USA_mark_milley.png"
+				small = GFX_idea_USB_mark_milley_minister
+			}
+		}
+		can_be_captured = no
+		field_marshal = {
+			traits = {
+				brilliant_strategist
+				media_personality
+				armor_officer
+				politically_connected
+				inspirational_leader
+			}
+			skill = 4
+			attack_skill = 4
+			defense_skill = 2
+			planning_skill = 4
+			logistics_skill = 1
+		}
+		advisor = {
+			slot = army_chief
+			idea_token = USA_mark_milley_army_chief
+			traits = {
+				army_chief_planning_2
+			}
+			cost = 100
+			ai_will_do = {
+				base = 1
+			}
+		}
+	}
+	USA_gustave_perna_char = {
+		portraits = {
+			army = {
+				large = "gfx/leaders/USA/generals/USA_gustave_perna.png"
+				small = "gfx/interface/ideas/USA/advisors/USA_gustave_perna.png"
+			}
+		}
+		can_be_captured = no
+		field_marshal = {
+			traits = {
+				organizer
+				logistics_wizard
+				inspirational_leader
+			}
+			skill = 4
+			attack_skill = 3
+			defense_skill = 2
+			planning_skill = 4
+			logistics_skill = 2
+		}
+		advisor = {
+			slot = army_chief
+			idea_token = USA_gustave_perna_army_chief
+			ledger = army
+			traits = {
+				army_chief_morale_2
+			}
+			cost = 100
+			ai_will_do = {
+				base = 1
+			}
+		}
+	}
+	USA_lloyd_austin_char = {
+		portraits = {
+			army = {
+				large = "gfx/leaders/USA/generals/USA_lloyd_austin.png"
+				small = "gfx/interface/ideas/USA/advisors/USA_lloyd_austin.png"
+			}
+		}
+		can_be_captured = no
+		field_marshal = {
+			traits = {
+				career_officer
+				infantry_officer
+				trait_mountaineer
+				desert_fox
+				organizer
+			}
+			skill = 4
+			attack_skill = 2
+			defense_skill = 2
+			planning_skill = 3
+			logistics_skill = 4
+		}
+		#advisor = {
+		#	slot = army_chief
+		#	idea_token = USA_lloyd_austin_army_chief
+		#	ledger = army
+		#	traits = {
+		#		army_chief_organizational_2
+		#	}
+		#	cost = 100
+		#	ai_will_do = {
+		#		base = 1
+		#	}
+		#}
+	}
+	USA_herbert_raymond_mcmaster_char = {
+		portraits = {
+			army = {
+				large = "gfx/leaders/USA/generals/USA_herbert_raymond_mcmaster.png"
+				small = "gfx/interface/ideas/USA/advisors/USA_herbert_raymond_mcmaster.png"
+			}
+		}
+		#corps_commander = {
+		#	traits = {
+		#		brilliant_strategist
+		#		cavalry_leader
+		#		panzer_leader 
+		#	}
+		#	skill=4
+		#	attack_skill=4
+		#	defense_skill=3
+		#	planning_skill=3
+		#	logistics_skill=3
+		#	legacy_id=-1
+		#}
+		#advisor={
+		#	slot = high_command
+		#	idea_token = USA_herbert_raymond_mcmaster_high_command
+		#	ledger = army
+		#	traits = {
+		#		army_armored_2
+		#	}
+		#	cost = 100
+		#	ai_will_do = {
+		#		factor = 1
+		#	}
+		#}
+	}
+	USA_eric_m_smith_char = {
+		portraits = {
+			army = {
+				large = "gfx/leaders/USA/generals/USA_eric_m_smith.png"
+			}
+		}
+		can_be_captured = no
+		corps_commander = {
+			traits = {
+				organizer
+				commando
+				naval_invader
+			}
+			skill = 3
+			attack_skill = 2
+			defense_skill = 2
+			planning_skill = 3
+			logistics_skill = 3
+		}
+	}
+	USA_james_mcconville_char = {
+		portraits = {
+			army = {
+				large = "gfx/leaders/USA/generals/USA_james_mcconville.png"
+				small = "gfx/interface/ideas/USA/advisors/USA_james_mcconville.png"
+			}
+		}
+		can_be_captured = no
+		field_marshal = {
+			traits = {
+				commando
+			}
+			skill = 3
+			attack_skill = 3
+			defense_skill = 2
+			planning_skill = 2
+			logistics_skill = 3
+		}
+		advisor = {
+			slot = high_command
+			idea_token = USA_james_mcconville_high_command
+			ledger = army
+			traits = {
+				army_commando_1
+			}
+			cost = 50
+			ai_will_do = {
+				base = 1
+			}
+		}
+	}
+	USA_john_raymond_char = {
+		portraits = {
+			army = {
+				large = "gfx/leaders/USA/generals/USA_john_raymond.png"
+				small = "gfx/interface/ideas/USA/advisors/USA_john_raymond.png"
+			}
+		}
+		can_be_captured = no
+		field_marshal = {
+			traits = {
+				trait_engineer
+				fast_planner
+			}
+			skill = 4
+			attack_skill = 2
+			defense_skill = 2
+			planning_skill = 4
+			logistics_skill = 2
+		}
+		advisor = {
+			slot = army_chief
+			idea_token = USA_john_raymond_high_command
+			traits = {
+				army_chief_reform_2
+			}
+			cost = 100
+			ai_will_do = {
+				base = 1
+			}
+		}
+	}
+	USA_terrence_o_shaughnessy_char = {
+		portraits = {
+			army = {
+				large = "gfx/leaders/USA/generals/USA_terrence_o_shaughnessy.png"
+				small = "gfx/interface/ideas/USA/advisors/USA_terrence_o'shaughnessy.png"
+			}
+		}
+		can_be_captured = no
+		field_marshal = {
+			traits = {
+				old_guard
+				organizer
+			}
+			skill = 2
+			attack_skill = 1
+			defense_skill = 1
+			planning_skill = 2
+			logistics_skill = 2
+		}
+		advisor = {
+			slot = army_chief
+			idea_token = USA_terrence_o_shaughnessy_high_command
+			traits = {
+				army_chief_entrenchment_1
+			}
+			cost = 50
+			ai_will_do = {
+				base = 1
+			}
+		}
+	}
+	USA_tod_wolters_char = {
+		portraits = {
+			army = {
+				small = "gfx/interface/ideas/generic/advisors/generic_vacant.png"
+			}
+			army = {
+				large = "gfx/leaders/USA/generals/USA_tod_wolters.png"
+				small = "gfx/interface/ideas/USA/advisors/USA_tod_wolters.png"
+			}
+		}
+		can_be_captured = no
+		field_marshal = {
+			traits = {
+				brilliant_strategist
+				offensive_doctrine
+			}
+			skill = 3
+			attack_skill = 3
+			defense_skill = 1
+			planning_skill = 3
+			logistics_skill = 1
+		}
+		advisor = {
+			slot = army_chief
+			idea_token = USA_tod_wolters_army_chief
+			ledger = army
+			traits = {
+				army_chief_offensive_1
+			}
+			cost = 50
+			ai_will_do = {
+				base = 1
+			}
+		}
+	}
+	USA_david_hillberry_berger_char = {
+		portraits = {
+			army = {
+				small = "gfx/interface/ideas/USA/advisors/USA_david_berger.png"
+				large = "gfx/leaders/USA/generals/USA_david_hillberry_berger.png"
+			}
+		}
+		can_be_captured = no
+		corps_commander = {
+			traits = {
+				organizer
+				adaptable
+				infantry_leader
+				desert_fox
+				trickster
+				trait_engineer
+			}
+			skill = 4
+			attack_skill = 3
+			defense_skill = 3
+			planning_skill = 3
+			logistics_skill = 4
+		}
+		advisor = {
+			slot = high_command
+			idea_token = USA_david_hillberry_berger_high_command
+			ledger = army
+			available = {
+				if = {
+					limit = {
+						tag = USC
+					}
+					has_completed_focus = USC_an_adaptable_army
+				}
+			}
+			traits = {
+				army_adaptibility_2
+			}
+			cost = 100
+			ai_will_do = {
+				base = 1
+			}
+		}
+	}
+	USA_gary_thomas_char = {
+		portraits = {
+			army = {
+				small = "gfx/interface/ideas/USA/advisors/USA_gary_thomas.png"
+				large = "gfx/leaders/USA/generals/USA_gary_thomas.png"
+			}
+		}
+		can_be_captured = no
+		corps_commander = {
+			traits = {
+				organizer
+				trickster
+				commando
+			}
+			skill = 3
+			attack_skill = 2
+			defense_skill = 2
+			planning_skill = 3
+			logistics_skill = 3
+		}
+		advisor = {
+			slot = air_chief
+			idea_token = USA_gary_thomas_air_chief
+			ledger = air
+			available = {
+				if = {
+					limit = {
+						tag = USC
+					}
+					has_completed_focus = USC_reorganize_the_air_force
+				}
+			}
+			traits = {
+				air_chief_night_operations_2
+			}
+			cost = 100
+			ai_will_do = {
+				base = 1
+			}
+		}
+	}
+	USA_troy_black_char = {
+		portraits = {
+			army = {
+				small = "gfx/interface/ideas/USA/advisors/USA_troy_black.png"
+				large = "gfx/leaders/USA/generals/USA_troy_black.png"
+			}
+		}
+		can_be_captured = no
+		corps_commander = {
+			traits = {
+				trickster
+				commando
+			}
+			skill = 2
+			attack_skill = 2
+			defense_skill = 2
+			planning_skill = 1
+			logistics_skill = 2
+		}
+	}
+	USA_erik_kurilla_char = {
+		portraits = {
+			army = {
+				small = "gfx/interface/ideas/generic/advisors/generic_vacant.png"
+			}
+			army = {
+				large = "gfx/leaders/USA/generals/USA_erik_kurilla.png"
+			}
+		}
+		can_be_captured = no
+		corps_commander = {
+			traits = {
+				winter_specialist
+			}
+			skill = 3
+			attack_skill = 2
+			defense_skill = 2
+			planning_skill = 1
+			logistics_skill = 3
+		}
+	}
+	USA_robert_b._abrams_char = {
+		portraits = {
+			army = {
+				large = "gfx/leaders/USA/generals/USA_robert_b_abrams.png"
+				small = "gfx/interface/ideas/USA/advisors/USA_robert_b_abrams.png"
+			}
+		}
+		can_be_captured = no
+		corps_commander = {
+			traits = {
+				brilliant_strategist
+				skilled_staffer
+			}
+			skill = 4
+			attack_skill = 3
+			defense_skill = 3
+			planning_skill = 3
+			logistics_skill = 2
+		}
+		advisor = {
+			slot = high_command
+			idea_token = USA_robert_b._abrams_high_command
+			ledger = army
+			traits = {
+				army_logistics_2
+			}
+			cost = 100
+			ai_will_do = {
+				base = 1
+			}
+		}
+	}
+	USA_andrew_p._poppas_char = {
+		portraits = {
+			army = {
+				large = "gfx/leaders/USA/generals/USA_andrew_p_poppas.png"
+			}
+		}
+		can_be_captured = no
+		corps_commander = {
+			traits = {
+				old_guard
+				desert_fox
+				hill_fighter
+			}
+			skill = 3
+			attack_skill = 1
+			defense_skill = 3
+			planning_skill = 2
+			logistics_skill = 2
+		}
+	}
+	USA_christopher_g._cavoli_char = {
+		portraits = {
+			army = {
+				large = "gfx/leaders/USA/generals/USA_christopher_g_cavoli.png"
+			}
+		}
+		can_be_captured = no
+		corps_commander = {
+			traits = {
+				infantry_officer
+			}
+			skill = 1
+			attack_skill = 1
+			defense_skill = 1
+			planning_skill = 1
+			logistics_skill = 1
+		}
+	}
+	USA_paul_nakasone_char = {
+		portraits = {
+			army = {
+				small = "gfx/interface/ideas/generic/advisors/generic_vacant.png"
+				large = "gfx/leaders/USA/generals/USA_paul_nakasone.png"
+			}
+		}
+		can_be_captured = no
+		corps_commander = {
+			traits = {
+				trickster
+				naval_invader
+			}
+			skill = 4
+			attack_skill = 4
+			defense_skill = 2
+			planning_skill = 1
+			logistics_skill = 3
+		}
+	}
+	USA_kenneth_tovo_char = {
+		portraits = {
+			army = {
+				large = "gfx/leaders/USA/generals/USA_kenneth_tovo.png"
+				small = "gfx/interface/ideas/USA/advisors/USA_kenneth_tovo.png"
+			}
+		}
+		can_be_captured = no
+		corps_commander = {
+			traits = {
+				trickster
+				trait_engineer
+				commando
+			}
+			skill = 4
+			attack_skill = 4
+			defense_skill = 1
+			planning_skill = 3
+			logistics_skill = 3
+		}
+		advisor = {
+			slot = high_command
+			idea_token = USA_kenneth_tovo_high_command
+			traits = {
+				army_entrenchment_2
+			}
+			cost = 100
+			ai_will_do = {
+				base = 1
+			}
+		}
+	}
+	USA_robert_caslen_char = {
+		portraits = {
+			army = {
+				large = "gfx/leaders/USA/generals/USA_robert_caslen.png"
+			}
+		}
+		can_be_captured = no
+		corps_commander = {
+			traits = {
+				ranger
+			}
+			skill = 3
+			attack_skill = 3
+			defense_skill = 1
+			planning_skill = 2
+			logistics_skill = 2
+		}
+	}
+	USA_burke_whitman_char = {
+		portraits = {
+			army = {
+				large = "gfx/leaders/USA/generals/USA_burke_whitman.png"
+				small = "gfx/interface/ideas/USA/advisors/USA_burke_whitman.png"
+			}
+		}
+		can_be_captured = no
+		corps_commander = {
+			traits = {
+				organizer
+				naval_invader
+			}
+			skill = 3
+			attack_skill = 3
+			defense_skill = 1
+			planning_skill = 2
+			logistics_skill = 2
+		}
+		advisor = {
+			slot = high_command
+			idea_token = USA_burke_whitman_high_command
+			traits = {
+				army_regrouping_2
+			}
+			cost = 100
+			ai_will_do = {
+				base = 1
+			}
+		}
+	}
+	USA_charles_chiarotti_char = {
+		portraits = {
+			army = {
+				small = "gfx/interface/ideas/generic/advisors/generic_vacant.png"
+			}
+			army = {
+				large = "gfx/leaders/USA/generals/USA_charles_chiarotti.png"
+			}
+		}
+		can_be_captured = no
+		corps_commander = {
+			traits = {
+				trait_engineer
+				naval_invader
+			}
+			skill = 2
+			attack_skill = 1
+			defense_skill = 2
+			planning_skill = 2
+			logistics_skill = 1
+		}
+	}
+	USA_charles_luckey_char = {
+		portraits = {
+			army = {
+				small = "gfx/interface/ideas/generic/advisors/generic_vacant.png"
+			}
+			army = {
+				large = "gfx/leaders/USA/generals/USA_charles_luckey.png"
+			}
+		}
+		can_be_captured = no
+		corps_commander = {
+			traits = {
+				old_guard
+				urban_assault_specialist
+			}
+			skill = 2
+			attack_skill = 2
+			defense_skill = 2
+			planning_skill = 1
+			logistics_skill = 1
+		}
+	}
+	USA_craig_q._timberlake_char = {
+		portraits = {
+			army = {
+				large = "gfx/leaders/USA/generals/USA_craig_q_timberlake.png"
+				small = "gfx/interface/ideas/USA/advisors/USA_craig_q_timberlake.png"
+			}
+		}
+		can_be_captured = no
+		corps_commander = {
+			traits = {
+				naval_invader
+			}
+			skill = 2
+			attack_skill = 2
+			defense_skill = 1
+			planning_skill = 1
+			logistics_skill = 2
+		}
+		advisor = {
+			slot = high_command
+			idea_token = USA_craig_q._timberlake_high_command
+			traits = {
+				navy_amphibious_assault_1
+			}
+			cost = 50
+			ai_will_do = {
+				base = 1
+			}
+		}
+	}
+	USA_david_ottignon_char = {
+		portraits = {
+			army = {
+				large = "gfx/leaders/USA/generals/USA_david_ottignon.png"
+				small = "gfx/interface/ideas/USA/advisors/USA_david_ottigon.png"
+			}
+		}
+		can_be_captured = no
+		corps_commander = {
+			traits = {
+				trait_engineer
+				naval_invader
+			}
+			skill = 3
+			attack_skill = 2
+			defense_skill = 1
+			planning_skill = 2
+			logistics_skill = 3
+		}
+	}
+	USA_helen_pratt_char = {
+		portraits = {
+			army = {
+				small = "gfx/interface/ideas/generic/advisors/generic_vacant.png"
+			}
+			army = {
+				large = "gfx/leaders/USA/generals/USA_helen_pratt.png"
+				small = "gfx/interface/ideas/USA/advisors/USA_helen_pratt.png"
+			}
+		}
+		can_be_captured = no
+		corps_commander = {
+			traits = {
+				organizer
+				naval_invader
+			}
+			skill = 3
+			attack_skill = 1
+			defense_skill = 1
+			planning_skill = 3
+			logistics_skill = 3
+		}
+		advisor = {
+			slot = high_command
+			idea_token = USA_helen_pratt_high_command
+			traits = {
+				army_regrouping_1
+			}
+			cost = 50
+			ai_will_do = {
+				base = 1
+			}
+		}
+	}
+	USA_paul_lacamera_char = {
+		portraits = {
+			army = {
+				large = "gfx/leaders/USA/generals/USA_paul_lacamera.png"
+				small = "gfx/interface/ideas/USA/advisors/USA_paul_lacamera.png"
+			}
+		}
+		can_be_captured = no
+		corps_commander = {
+			traits = {
+				old_guard
+				trait_cautious
+				infantry_officer
+				trickster
+			}
+			skill = 4
+			attack_skill = 2
+			defense_skill = 4
+			planning_skill = 2
+			logistics_skill = 2
+		}
+		advisor = {
+			slot = high_command
+			idea_token = USA_paul_lacamera_high_command
+			traits = {
+				army_infantry_2
+			}
+			cost = 100
+			ai_will_do = {
+				base = 1
+			}
+		}
+	}
+	USA_ben_hodges_char = {
+		portraits = {
+			army = {
+				large = "gfx/leaders/USA/generals/USA_ben_hodges.png"
+				small = "gfx/interface/ideas/USA/advisors/USA_ben_hodges.png"
+			}
+		}
+		can_be_captured = no
+		corps_commander = {
+			traits = {
+				old_guard
+				trait_cautious
+				infantry_officer
+			}
+			skill = 3
+			attack_skill = 2
+			defense_skill = 4
+			planning_skill = 2
+			logistics_skill = 2
+		}
+	}
+	USA_karsten_heckl_char = {
+		portraits = {
+			army = {
+				large = "gfx/leaders/USA/generals/USA_karsten_heckl.png"
+				small = "gfx/interface/ideas/USA/advisors/USA_karsten_heckl.png"
+			}
+		}
+		can_be_captured = no
+		corps_commander = {
+			traits = {
+				infantry_leader
+				naval_invader
+			}
+			skill = 3
+			attack_skill = 2
+			defense_skill = 2
+			planning_skill = 3
+			logistics_skill = 3
+		}
+	}
+	USA_kevin_b_schneider_char = {
+		portraits = {
+			army = {
+				large = "gfx/leaders/USA/generals/USA_kevin_b_schneider.png"
+				small = "gfx/interface/ideas/USA/advisors/USA_kevin_b_schneider.png"
+			}
+		}
+		can_be_captured = no
+		corps_commander = {
+			traits = {
+				old_guard
+				trait_cautious
+				infantry_officer
+			}
+			skill = 4
+			attack_skill = 2
+			defense_skill = 2
+			planning_skill = 4
+			logistics_skill = 3
+		}
+		advisor = {
+			slot = air_chief
+			idea_token = USA_kevin_b_schneider_air_chief
+			traits = {
+				air_chief_reform_3
+			}
+			cost = 150
+			ai_will_do = {
+				base = 1
+			}
+		}
+	}
+	USA_scott_ogrady_char = {
+		portraits = {
+			army = {
+				large = "gfx/leaders/USA/generals/USA_scott_ogrady.png"
+				small="gfx/interface/ideas/USA/advisors/USA_scott_ogrady.png"
+			}
+		}
+		can_be_captured = no
+		corps_commander = {
+			traits = {
+				brilliant_strategist
+				war_hero
+				trait_eager_learner
+			}
+			skill = 2
+			attack_skill = 2
+			defense_skill = 2
+			planning_skill = 1
+			logistics_skill = 2
+		}
+		advisor = {
+			slot = high_command
+			idea_token = USA_scott_ogrady_high_command
+			traits = {
+				air_air_superiority_1
+			}
+			cost = 50
+			ai_will_do = {
+				base = 1
+			}
+		}
+	}
+	USA_eric_parker_char = {
+		portraits = {
+			army = {
+				large = "gfx/leaders/USA/generals/USA_eric_parker.png"
+				small = "gfx/interface/ideas/USA/advisors/USA_eric_parker.png"
+			}
+		}
+		can_be_captured = no
+		corps_commander = {
+			traits = {
+				infantry_officer
+				trickster
+				media_personality
+				trait_reckless
+			}
+			skill = 1
+			attack_skill = 1
+			defense_skill = 1
+			planning_skill = 1
+			logistics_skill = 1
+		}
+	}
+	USA_chris_hill_char = {
+		portraits = {
+			army = {
+				large = "gfx/leaders/USA/generals/USA_chris_hill.png"
+				small = "gfx/interface/ideas/USA/advisors/USA_chris_hill.png"
+			}
+		}
+		can_be_captured = no
+		corps_commander = {
+			traits = {
+				infantry_officer
+				camouflage_expert
+				trickster
+			}
+			skill = 2
+			attack_skill = 2
+			defense_skill = 2
+			planning_skill = 1
+			logistics_skill = 2
+		}
+	}
+	USA_joesph_rice_char = {
+		portraits = {
+			army = {
+				large = "gfx/leaders/USA/generals/USA_joseph_rice.png"
+			}
+		}
+		can_be_captured = no
+		corps_commander = {
+			traits = {
+				infantry_officer
+				organizer
+			}
+			skill = 2
+			attack_skill = 1
+			defense_skill = 2
+			planning_skill = 2
+			logistics_skill = 2
+		}
+	}
+	USA_steward_rhodes_char = {
+		portraits = {
+			army = {
+				large = "gfx/leaders/USA/generals/USA_steward_rhodes.png"
+			}
+		}
+		can_be_captured = no
+		corps_commander = {
+			traits = {
+			}
+			skill = 1
+			attack_skill = 1
+			defense_skill = 1
+			planning_skill = 1
+			logistics_skill = 1
+		}
+	}
+	#Navy
+	USA_micheal_m_gilday_char = {
+		portraits = {
+			civilian = {
+				large = "gfx/leaders/USA/admirals/USA_michael_m_gilday.png"
+			}
+			army = {
+				large = "gfx/leaders/USA/admirals/USA_michael_m_gilday.png"
+				small = "gfx/interface/ideas/USA/advisors/USA_michael_m_gilday.png"
+			}
+		}
+		can_be_captured = no
+		navy_leader = {
+			traits = {
+				navy_career_officer
+				old_guard_navy
+				destroyer_leader
+				fleet_protector
+			}
+			skill = 5
+			attack_skill = 2
+			defense_skill = 6
+			maneuvering_skill = 3
+			coordination_skill = 5
+		}
+		advisor = {
+			slot = navy_chief
+			idea_token = USA_michael_m_gilday_navy_chief
+			ledger = navy
+			traits = {
+				navy_chief_decisive_battle_3
+			}
+			cost = 150
+			ai_will_do = {
+				factor = 2
+			}
+		}
+	}
+	USA_carlos_del_toro_char = {
+		portraits = {
+			army = {
+				large = "gfx/leaders/USA/admirals/USA_carlos_del_toro.png"
+				small = "gfx/interface/ideas/USA/advisors/USA_carlos_del_toro.png"
+			}
+		}
+		can_be_captured = no
+		navy_leader = {
+			traits = {
+				old_guard_navy
+				chief_engineer
+				safety_first
+			}
+			skill = 3
+			attack_skill = 2
+			defense_skill = 2
+			maneuvering_skill = 2
+			coordination_skill = 2
+		}
+		advisor = {
+			slot = navy_chief
+			idea_token = USA_carlos_del_toro_navy_chief
+			ledger = navy
+			traits = {
+				navy_chief_reform_1
+			}
+			cost = 50
+			ai_will_do = {
+				factor = 2
+			}
+		}
+	}
+	USA_james_kilby_char = {
+		portraits = {
+			army = {
+				large = "gfx/leaders/USA/admirals/USA_james_kilby.png"
+			}
+		}
+		can_be_captured = no
+		navy_leader = {
+			traits = {
+				fly_swatter
+			}
+			skill = 4
+			attack_skill = 3
+			defense_skill = 3
+			maneuvering_skill = 2
+			coordination_skill = 3
+		}
+	}
+	USA_dee_mewbourne_char = {
+		portraits = {
+			army = {
+				small = "gfx/interface/ideas/generic/advisors/generic_vacant.png"
+			}
+			army = {
+				large = "gfx/leaders/USA/admirals/USA_dee_mewbourne.png"
+			}
+		}
+		can_be_captured = no
+		navy_leader = {
+			traits = {
+				fly_swatter
+				aviation_enthusiast
+			}
+			skill = 3
+			attack_skill = 3
+			defense_skill = 2
+			maneuvering_skill = 2
+			coordination_skill = 2
+		}
+	}
+	USA_christopher_grady_char = {
+		portraits = {
+			army = {
+				large = "gfx/leaders/USA/admirals/USA_christopher_grady.png"
+			}
+		}
+		can_be_captured = no
+		navy_leader = {
+			traits = {
+				spotter
+				navy_career_officer
+				old_guard_navy
+				destroyer_leader
+			}
+			skill = 5
+			attack_skill = 4
+			defense_skill = 4
+			maneuvering_skill = 4
+			coordination_skill = 4
+		}
+	}
+	USA_brian_davies_char = {
+		portraits = {
+			army = {
+				large = "gfx/leaders/USA/admirals/USA_brian_davies.png"
+			}
+		}
+		can_be_captured = no
+		navy_leader = {
+			traits = {
+				seawolf
+				loading_drill_master
+			}
+			skill = 3
+			attack_skill = 3
+			defense_skill = 2
+			maneuvering_skill = 2
+			coordination_skill = 2
+		}
+	}
+	USA_bruce_lindsey_char = {
+		portraits = {
+			army = {
+				large = "gfx/leaders/USA/admirals/USA_bruce_lindsey.png"
+			}
+		}
+		can_be_captured = no
+		navy_leader = {
+			traits = {
+				air_controller
+				concealment_expert
+			}
+			skill = 2
+			attack_skill = 2
+			defense_skill = 2
+			maneuvering_skill = 2
+			coordination_skill = 1
+		}
+	}
+	USA_james_caldwell_jr_char = {
+		portraits = {
+			army = {
+				large = "gfx/leaders/USA/admirals/USA_james_f_caldwell_jr.png"
+			}
+		}
+		can_be_captured = no
+		navy_leader = {
+			traits = {
+				seawolf
+				hunter_killer
+				loading_drill_master
+				lancer
+			}
+			skill = 5
+			attack_skill = 6
+			defense_skill = 2
+			maneuvering_skill = 5
+			coordination_skill = 2
+		}
+	}
+	USA_philip_davidson_char = {
+		portraits = {
+			army = {
+				large = "gfx/leaders/USA/admirals/USA_phillip_s_davidson.png"
+			}
+		}
+		can_be_captured = no
+		navy_leader = {
+			traits = {
+				superior_tactician
+				chief_engineer
+				bold
+			}
+			skill = 4
+			attack_skill = 3
+			defense_skill = 2
+			maneuvering_skill = 4
+			coordination_skill = 2
+		}
+	}
+}

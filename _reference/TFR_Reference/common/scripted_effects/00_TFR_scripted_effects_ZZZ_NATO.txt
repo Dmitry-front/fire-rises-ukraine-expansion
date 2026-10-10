@@ -1,0 +1,588 @@
+NATO_unity = {
+	GER = {
+		add_ideas = NATO_unity_2
+	}
+	ENG = {
+		add_ideas = NATO_unity_2
+	}
+	SPR = {
+		add_ideas = NATO_unity_2
+	}
+	POR = {
+		add_ideas = NATO_unity_2
+	}
+	FRA = {
+		add_ideas = NATO_unity_2
+	}
+	BEL = {
+		add_ideas = NATO_unity_2
+	}
+	HOL = {
+		add_ideas = NATO_unity_2
+	}
+	DEN = {
+		add_ideas = NATO_unity_2
+	}
+	NOR = {
+		add_ideas = NATO_unity_2
+	}
+	POL = {
+		add_ideas = NATO_unity_2
+	}
+	CZE = {
+		add_ideas = NATO_unity_2
+	}
+	SLO = {
+		add_ideas = NATO_unity_2
+	}
+	HUN = {
+		add_ideas = NATO_unity_2
+	}
+	ITA = {
+		add_ideas = NATO_unity_2
+	}
+	SLV = {
+		add_ideas = NATO_unity_2
+	}
+	SLO = {
+		add_ideas = NATO_unity_2
+	}
+	CRO = {
+		add_ideas = NATO_unity_2
+	}
+	ROM = {
+		add_ideas = NATO_unity_2
+	}
+	ALB = {
+		add_ideas = NATO_unity_2
+	}
+	GRE = {
+		add_ideas = NATO_unity_2
+	}
+	BUL = {
+		add_ideas = NATO_unity_2
+	}
+	TUR = {
+		add_ideas = NATO_unity_2
+	}
+	LIT = {
+		add_ideas = NATO_unity_2
+	}
+	LAT = {
+		add_ideas = NATO_unity_2
+	}
+	EST = {
+		add_ideas = NATO_unity_2
+	}
+}
+
+NATO_unity_increase = {
+	every_country = {
+		limit = {
+			OR = {
+				has_idea = NATO_unity_1
+				has_idea = NATO_unity_2
+				has_idea = NATO_unity_3
+				has_idea = NATO_unity_4
+				has_idea = NATO_unity_5
+			}
+		}
+		if = {
+			limit = {
+				has_idea = NATO_unity_1
+			}
+			swap_ideas = {
+				remove_idea = NATO_unity_1
+				add_idea = NATO_unity_2
+			}
+		}
+		else_if = {
+			limit = {
+				has_idea = NATO_unity_2
+			}
+			swap_ideas = {
+				remove_idea = NATO_unity_2
+				add_idea = NATO_unity_3
+			}
+		}
+		else_if = {
+			limit = {
+				has_idea = NATO_unity_3
+			}
+			swap_ideas = {
+				remove_idea = NATO_unity_3
+				add_idea = NATO_unity_4
+			}
+		}
+		else_if = {
+			limit = {
+				has_idea = NATO_unity_4
+			}
+			swap_ideas = {
+				remove_idea = NATO_unity_4
+				add_idea = NATO_unity_5
+			}
+		}
+	}
+}
+
+NATO_unity_decrease = {
+	every_country = {
+		if = {
+			limit = {
+				has_idea = NATO_unity_4
+			}
+			swap_ideas = {
+				remove_idea = NATO_unity_4
+				add_idea = NATO_unity_3
+			}
+		}
+		else_if = {
+			limit = {
+				has_idea = NATO_unity_3
+			}
+			swap_ideas = {
+				remove_idea = NATO_unity_3
+				add_idea = NATO_unity_2
+			}
+		}
+		else_if = {
+			limit = {
+				has_idea = NATO_unity_2
+			}
+			swap_ideas = {
+				remove_idea = NATO_unity_2
+				add_idea = NATO_unity_1
+			}
+		}
+	}
+}
+
+NATO_increase_victor = {
+	if = {
+		limit = {
+			has_idea = NATO_victor_of_the_european_war4
+		}
+		remove_ideas = NATO_victor_of_the_european_war4
+	}
+	else_if = {
+		limit = {
+			has_idea = NATO_victor_of_the_european_war3
+		}
+		swap_ideas = {
+			remove_idea = NATO_victor_of_the_european_war3
+			add_idea = NATO_victor_of_the_european_war4
+		}
+	}
+	else_if = {
+		limit = {
+			has_idea = NATO_victor_of_the_european_war2
+		}
+		swap_ideas = {
+			remove_idea = NATO_victor_of_the_european_war2
+			add_idea = NATO_victor_of_the_european_war3
+		}
+	}
+	else_if = {
+		limit = {
+			has_idea = NATO_victor_of_the_european_war
+		}
+		swap_ideas = {
+			remove_idea = NATO_victor_of_the_european_war
+			add_idea = NATO_victor_of_the_european_war2
+		}
+	}
+}
+
+NATO_increase_economy = {
+	if = {
+		limit = {
+			has_idea = NATO_devestated_economy3
+		}
+		remove_ideas = NATO_devestated_economy3
+	}
+	else_if = {
+		limit = {
+			has_idea = NATO_devestated_economy2
+		}
+		swap_ideas = {
+			remove_idea = NATO_devestated_economy2
+			add_idea = NATO_devestated_economy3
+		}
+	}
+	else_if = {
+		limit = {
+			has_idea = NATO_devestated_economy
+		}
+		swap_ideas = {
+			remove_idea = NATO_devestated_economy
+			add_idea = NATO_devestated_economy2
+		}
+	}
+}
+
+NATO_increase_administration = {
+	if = {
+		limit = {
+			has_idea = NATO_unstable_administration3
+		}
+		remove_ideas = NATO_unstable_administration3
+	}
+	else_if = {
+		limit = {
+			has_idea = NATO_unstable_administration2
+		}
+		swap_ideas = {
+			remove_idea = NATO_unstable_administration2
+			add_idea = NATO_unstable_administration3
+		}
+	}
+	else_if = {
+		limit = {
+			has_idea = NATO_unstable_administration
+		}
+		swap_ideas = {
+			remove_idea = NATO_unstable_administration
+			add_idea = NATO_unstable_administration2
+		}
+	}
+}
+
+NATO_back_to_the_future_part_II = {
+	set_technology = {
+		upgraded_infantry_weapons2 = 1
+		infantry_weapons4 = 1
+		infantry_weapons3 = 1
+		infantry_rifle_upgrade3 = 1
+		infantry_rifle_upgrade4 = 1
+		infantry_rifle_upgrade5 = 1
+		infantry_rifle_upgrade6 = 1
+		support_weapons3 = 1
+		support_weapons4 = 1
+		support_weapons5 = 1
+		night_vision2 = 1
+		night_vision3 = 1
+		night_vision4 = 1
+		body_armor3 = 1
+		body_armor4 = 1
+		body_armor5 = 1
+		mechanised_infantry2 = 1
+		mechanised_infantry3 = 1
+		light_mechanized_infantry2 = 1
+		light_mechanized_infantry3 = 1
+		motorised_infantry2 = 1
+		artillery2 = 1
+		artillery3 = 1
+		artillery4 = 1
+		sp_artillery2 = 1
+		self_propelled_aa2 = 1
+		antiair2 = 1
+		antiair3 = 1
+		antiair4 = 1
+		antitank2 = 1
+		antitank3 = 1
+		antitank4 = 1
+		tech_combat_engineers = 1
+		tech_thermobaric_weapons = 1
+		tech_engineers2 = 1
+	}
+	add_equipment_to_stockpile = {
+		type = infantry_equipment_3
+		amount = 15000
+	}
+	add_equipment_to_stockpile = {
+		type = anti_tank_equipment_3
+		amount = 7000
+	}
+	add_equipment_to_stockpile = {
+		type = anti_air_equipment_3
+		amount = 7000
+	}
+	add_equipment_to_stockpile = {
+		type = support_equipment
+		amount = 7000
+	}
+	add_equipment_to_stockpile = {
+		type = light_mechanized_equipment_3
+		amount = 4000
+	}
+	add_equipment_to_stockpile = {
+		type = mechanized_equipment_3
+		amount = 4000
+	}
+	add_equipment_to_stockpile = {
+		type = motorized_equipment_2
+		amount = 6000
+	}
+	add_equipment_to_stockpile = {
+		type = modern_tank_artillery_equipment_1
+		amount = 1000
+	}
+	army_experience = 300
+}
+
+NATO_escalate_the_war_effect = {
+	custom_effect_tooltip = GER_war_escalation_inc_tt
+	hidden_effect = {
+		GER = {
+			add_to_variable = {
+				var = GER_war_escalation_level
+				value = 1
+			}
+			clamp_variable = {
+				var = GER_nato_leadership_var
+				min = 0
+				max = 6
+			}
+		}
+	}
+}
+
+GER_add_nato_leadership = {
+	custom_effect_tooltip = GER_nato_leadership_var_tooltip
+	add_to_variable = {
+		var = GER_nato_leadership_var
+		value = GER_nato_leadership_var_temp
+	}
+	clamp_variable = {
+		var = GER_nato_leadership_var
+		min = 0
+		max = 1
+	}
+}
+
+FRA_add_nato_leadership = {
+	custom_effect_tooltip = FRA_nato_leadership_var_tooltip
+	add_to_variable = {
+		var = FRA_nato_leadership_var
+		value = FRA_nato_leadership_var_temp
+	}
+	clamp_variable = {
+		var = FRA_nato_leadership_var
+		min = 0
+		max = 1
+	}
+}
+
+ENG_add_nato_leadership = {
+	custom_effect_tooltip = ENG_nato_leadership_var_tooltip
+	add_to_variable = {
+		var = ENG_nato_leadership_var
+		value = ENG_nato_leadership_var_temp
+	}
+	clamp_variable = {
+		var = ENG_nato_leadership_var
+		min = 0
+		max = 1
+	}
+}
+
+NATO_who_won_the_election = {
+	hidden_effect = {
+		if = {
+			limit = {
+				check_variable = {
+					GER.GER_nato_leadership_var > FRA.FRA_nato_leadership_var
+				}
+				check_variable = {
+					GER.GER_nato_leadership_var > ENG.ENG_nato_leadership_var
+				}
+			}
+			set_global_flag = GER_won_leadership_global
+		}
+		else_if = {
+			limit = {
+				check_variable = {
+					FRA.FRA_nato_leadership_var > GER.GER_nato_leadership_var
+				}
+				check_variable = {
+					FRA.FRA_nato_leadership_var > ENG.ENG_nato_leadership_var
+				}
+			}
+			set_global_flag = FRA_won_leadership_global
+		}
+		else_if = {
+			limit = {
+				check_variable = {
+					ENG.ENG_nato_leadership_var > GER.GER_nato_leadership_var
+				}
+				check_variable = {
+					ENG.ENG_nato_leadership_var > FRA.FRA_nato_leadership_var
+				}
+			}
+			set_global_flag = ENG_won_leadership_global
+		}
+		else = {
+			random_list = {
+				10 = {
+					modifier = {
+						factor = 0
+						check_variable = {
+							var = GER.GER_nato_leadership_var
+							value = FRA.FRA_nato_leadership_var
+							compare = less_than
+						}
+						check_variable = {
+							var = GER.GER_nato_leadership_var
+							value = ENG.ENG_nato_leadership_var
+							compare = less_than
+						}
+					}
+					set_global_flag = GER_won_leadership_global
+				}
+				10 = {
+					modifier = {
+						factor = 0
+						check_variable = {
+							var = FRA.FRA_nato_leadership_var
+							value = GER.GER_nato_leadership_var
+							compare = less_than
+						}
+						check_variable = {
+							var = FRA.FRA_nato_leadership_var
+							value = ENG.ENG_nato_leadership_var
+							compare = less_than
+						}
+					}
+					set_global_flag = FRA_won_leadership_global
+				}
+				10 = {
+					modifier = {
+						factor = 0
+						check_variable = {
+							var = ENG.ENG_nato_leadership_var
+							value = GER.GER_nato_leadership_var
+							compare = less_than
+						}
+						check_variable = {
+							var = ENG.ENG_nato_leadership_var
+							value = FRA.FRA_nato_leadership_var
+							compare = less_than
+						}
+					}
+					set_global_flag = ENG_won_leadership_global
+				}
+			}
+		}
+	}
+}
+
+NATO_who_won_kaliningrad = {
+	if = {
+		limit = {
+			check_variable = {
+				GER.GER_kaliningrad_var > UNN.UNN_kaliningrad_var
+			}
+			check_variable = {
+				GER.GER_kaliningrad_var > LIT.LIT_kaliningrad_var
+			}
+			check_variable = {
+				GER.GER_kaliningrad_var > PLD.PLD_kaliningrad_var
+			}
+		}
+		set_global_flag = GER_won_kaliningrad
+	}
+	else_if = {
+		limit = {
+			check_variable = {
+				PLD.PLD_kaliningrad_var > UNN.UNN_kaliningrad_var
+			}
+			check_variable = {
+				PLD.PLD_kaliningrad_var > LIT.LIT_kaliningrad_var
+			}
+			check_variable = {
+				PLD.PLD_kaliningrad_var > GER.GER_kaliningrad_var
+			}
+		}
+		set_global_flag = PLD_won_kaliningrad
+	}
+	else_if = {
+		limit = {
+			check_variable = {
+				LIT.LIT_kaliningrad_var > UNN.UNN_kaliningrad_var
+			}
+			check_variable = {
+				LIT.LIT_kaliningrad_var > PLD.PLD_kaliningrad_var
+			}
+			check_variable = {
+				LIT.LIT_kaliningrad_var > GER.GER_kaliningrad_var
+			}
+		}
+		set_global_flag = LIT_won_kaliningrad
+	}
+	else_if = {
+		limit = {
+			check_variable = {
+				UNN.UNN_kaliningrad_var > LIT.LIT_kaliningrad_var
+			}
+			check_variable = {
+				UNN.UNN_kaliningrad_var > PLD.PLD_kaliningrad_var
+			}
+			check_variable = {
+				UNN.UNN_kaliningrad_var > GER.GER_kaliningrad_var
+			}
+		}
+		set_global_flag = LIT_won_kaliningrad
+	}
+}
+
+GER_add_kaliningrad = {
+	custom_effect_tooltip = GER_kaliningrad_var_tooltip
+	add_to_variable = {
+		var = GER_kaliningrad_var
+		value = GER_kaliningrad_var_temp
+	}
+	clamp_variable = {
+		var = GER_kaliningrad_var
+		min = 0
+		max = 1
+	}
+}
+
+PLD_add_kaliningrad = {
+	custom_effect_tooltip = PLD_kaliningrad_var_tooltip
+	add_to_variable = {
+		var = PLD_kaliningrad_var
+		value = PLD_kaliningrad_var_temp
+	}
+	clamp_variable = {
+		var = PLD_kaliningrad_var
+		min = 0
+		max = 1
+	}
+}
+
+LIT_add_kaliningrad = {
+	custom_effect_tooltip = LIT_kaliningrad_var_tooltip
+	add_to_variable = {
+		var = LIT_kaliningrad_var
+		value = LIT_kaliningrad_var_temp
+	}
+	clamp_variable = {
+		var = LIT_kaliningrad_var
+		min = 0
+		max = 1
+	}
+}
+
+UNN_add_kaliningrad = {
+	custom_effect_tooltip = UNN_kaliningrad_var_tooltip
+	add_to_variable = {
+		var = UNN_kaliningrad_var
+		value = UNN_kaliningrad_var_temp
+	}
+	clamp_variable = {
+		var = UNN_kaliningrad_var
+		min = 0
+		max = 1
+	}
+}
+
+NATO_join_faction_effect = {
+	random_other_country = {
+		limit = {
+			has_country_flag = NATO_current_leader
+		}
+		country_event = nato.4
+	}
+}

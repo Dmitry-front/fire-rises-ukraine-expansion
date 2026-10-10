@@ -1,0 +1,358 @@
+	CAC_add_influence_center = {
+		custom_effect_tooltip = CAC_add_influence_center_tooltip
+		
+		add_to_variable = {
+			var = CAC_influence_center_var
+			value = CAC_influence_center_var_temp
+		}
+		
+		clamp_variable = {
+			var = CAC_influence_center_var
+			min = 0
+			max = 1
+		}
+	}
+
+	CAC_add_influence_left = {
+		custom_effect_tooltip = CAC_add_influence_left_tooltip
+		
+		add_to_variable = {
+			var = CAC_influence_left_var
+			value = CAC_influence_left_var_temp
+		}
+		
+		clamp_variable = {
+			var = CAC_influence_left_var
+			min = 0
+			max = 1
+		}
+	}
+	
+	CAC_add_influence_right = {
+		custom_effect_tooltip = CAC_add_influence_right_tooltip
+		
+		add_to_variable = {
+			var = CAC_influence_right_var
+			value = CAC_influence_right_var_temp
+		}
+		
+		clamp_variable = {
+			var = CAC_influence_right_var
+			min = 0
+			max = 1
+		}
+	}
+
+	CAC_add_ecological_development = {
+		custom_effect_tooltip = CAC_add_ecological_development_tooltip
+
+		add_to_variable = {
+			var = CAC_ecological_development_var
+			value = CAC_ecological_development_var_temp
+		}
+
+		clamp_variable = {
+			var = CAC_ecological_development_var
+			min = CAC_ecological_development_min_var
+			max = CAC_ecological_development_max_var
+		}
+
+		multiply_temp_variable = {
+			var = CAC_ecological_development_var_temp
+			value = 0.15
+		}
+
+		add_to_variable = {
+			var = CAC_ecological_development_dynamic_var
+			value = CAC_ecological_development_var_temp
+		}
+	}
+
+	CAC_popsupport_decrease = {
+		if = {
+			limit = {
+				has_idea = CAC_popular_support1_idea
+			}
+			add_political_power = -50
+		}
+		else_if = {
+			limit = {
+				has_idea = CAC_popular_support2_idea
+			}
+			swap_ideas = {
+				remove_idea = CAC_popular_support2_idea
+				add_idea = CAC_popular_support1_idea
+			}
+		}
+		else_if = {
+			limit = {
+				has_idea = CAC_popular_support3_idea
+			}
+			swap_ideas = {
+				remove_idea = CAC_popular_support3_idea
+				add_idea = CAC_popular_support2_idea
+			}
+		}
+		else_if = {
+			limit = {
+				has_idea = CAC_popular_support4_idea
+			}
+			swap_ideas = {
+				remove_idea = CAC_popular_support4_idea
+				add_idea = CAC_popular_support3_idea
+			}
+		}
+		else_if = {
+			limit = {
+				has_idea = CAC_popular_support5_idea
+			}
+			swap_ideas = {
+				remove_idea = CAC_popular_support5_idea
+				add_idea = CAC_popular_support4_idea
+			}
+		}
+		else_if = {
+			limit = {
+				has_idea = CAC_popular_support6_idea
+			}
+			swap_ideas = {
+				remove_idea = CAC_popular_support6_idea
+				add_idea = CAC_popular_support5_idea
+			}
+		}
+		else = {
+			swap_ideas = {
+				remove_idea = CAC_popular_support7_idea
+				add_idea = CAC_popular_support6_idea
+			}
+		}
+	}
+
+	CAC_popsupport_increase = {
+		if = {
+			limit = {
+				has_idea = CAC_popular_support7_idea
+			}
+			add_political_power = 50
+		}
+		else_if = {
+			limit = {
+				has_idea = CAC_popular_support6_idea
+			}
+			swap_ideas = {
+				remove_idea = CAC_popular_support6_idea
+				add_idea = CAC_popular_support7_idea
+			}
+		}
+		else_if = {
+			limit = {
+				has_idea = CAC_popular_support5_idea
+			}
+			swap_ideas = {
+				remove_idea = CAC_popular_support5_idea
+				add_idea = CAC_popular_support6_idea
+			}
+		}
+		else_if = {
+			limit = {
+				has_idea = CAC_popular_support4_idea
+			}
+			swap_ideas = {
+				remove_idea = CAC_popular_support4_idea
+				add_idea = CAC_popular_support5_idea
+			}
+		}
+		else_if = {
+			limit = {
+				has_idea = CAC_popular_support3_idea
+			}
+			swap_ideas = {
+				remove_idea = CAC_popular_support3_idea
+				add_idea = CAC_popular_support4_idea
+			}
+		}
+		else_if = {
+			limit = {
+				has_idea = CAC_popular_support2_idea
+			}
+			swap_ideas = {
+				remove_idea = CAC_popular_support2_idea
+				add_idea = CAC_popular_support3_idea
+			}
+		}
+		else = {
+			swap_ideas = {
+				remove_idea = CAC_popular_support1_idea
+				add_idea = CAC_popular_support2_idea
+			}
+		}
+	}
+
+	CAC_factory_ecodev_decrease = {
+		if = {
+			limit = {
+				CAC = {
+					OR = {
+						has_built = {
+							type = industrial_complex
+							value > 0
+						}
+						has_built = {
+							type = arms_factory
+							value > 0
+						}
+					}
+				}
+			}
+			set_temp_variable = {
+				var = CAC_ecological_development_var_temp
+				value = -0.15
+			}
+			CAC_add_ecological_development = yes
+		}
+	}
+
+	CAC_ecologicalaccel_increase = {
+		if = {
+			limit = {
+				has_idea = CAC_ecological_acceleration_phase_one_idea
+			}
+			swap_ideas = {
+				add_idea = CAC_ecological_acceleration_phase_two_idea
+				remove_idea = CAC_ecological_acceleration_phase_one_idea
+			}
+		}
+		else_if = {
+			limit = {
+				has_idea = CAC_ecological_acceleration_phase_two_idea
+			}
+			swap_ideas = {
+				add_idea = CAC_ecological_acceleration_phase_three_idea
+				remove_idea = CAC_ecological_acceleration_phase_two_idea
+			}
+		}
+		else_if = {
+			limit = {
+				has_idea = CAC_ecological_acceleration_phase_three_idea
+			}
+			swap_ideas = {
+				add_idea = CAC_ecological_acceleration_phase_four_idea
+				remove_idea = CAC_ecological_acceleration_phase_three_idea
+			}
+		}
+	}
+
+	CAC_reconstruction_increase = {
+		if = {
+			limit = {
+				has_idea = CAC_reconstruction_idea
+			}
+			swap_ideas = {
+				add_idea = CAC_reconstruction2_idea
+				remove_idea = CAC_reconstruction_idea
+			}
+		}
+		else_if = {
+			limit = {
+				has_idea = CAC_reconstruction2_idea
+			}
+			swap_ideas = {
+				add_idea = CAC_reconstruction3_idea
+				remove_idea = CAC_reconstruction2_idea
+			}
+		}
+		else_if = {
+			limit = {
+				has_idea = CAC_reconstruction3_idea
+			}
+			remove_ideas = CAC_reconstruction3_idea
+			add_timed_idea = {
+				idea = CAC_reconstruction4_idea
+				days = 365
+			}
+		}
+	}
+
+	CAC_ecofascism_decrease = {
+		if = {
+			limit = {
+				has_idea = CAC_ecocorporatism_idea
+			}
+			add_political_power = -50
+		}
+		else_if = {
+			limit = {
+				has_idea = CAC_ecocorporatism1_idea
+			}
+			swap_ideas = {
+				remove_idea = CAC_ecocorporatism1_idea
+				add_idea = CAC_ecocorporatism_idea
+			}
+		}
+		else_if = {
+			limit = {
+				has_idea = CAC_ecocorporatism2_idea
+			}
+			swap_ideas = {
+				remove_idea = CAC_ecocorporatism2_idea
+				add_idea = CAC_ecocorporatism1_idea
+			}
+		}
+		else_if = {
+			limit = {
+				has_idea = CAC_ecocorporatism3_idea
+			}
+			swap_ideas = {
+				remove_idea = CAC_ecocorporatism3_idea
+				add_idea = CAC_ecocorporatism2_idea
+			}
+		}
+		else = {
+			swap_ideas = {
+				remove_idea = CAC_ecocorporatism4_idea
+				add_idea = CAC_ecocorporatism3_idea
+			}
+		}
+	}
+
+	CAC_ecofascism_increase = {
+		if = {
+			limit = {
+				has_idea = CAC_ecocorporatism4_idea
+			}
+			add_political_power = 50
+		}
+		else_if = {
+			limit = {
+				has_idea = CAC_ecocorporatism3_idea
+			}
+			swap_ideas = {
+				remove_idea = CAC_ecocorporatism3_idea
+				add_idea = CAC_ecocorporatism4_idea
+			}
+		}
+		else_if = {
+			limit = {
+				has_idea = CAC_ecocorporatism2_idea
+			}
+			swap_ideas = {
+				remove_idea = CAC_ecocorporatism2_idea
+				add_idea = CAC_ecocorporatism3_idea
+			}
+		}
+		else_if = {
+			limit = {
+				has_idea = CAC_ecocorporatism1_idea
+			}
+			swap_ideas = {
+				remove_idea = CAC_ecocorporatism1_idea
+				add_idea = CAC_ecocorporatism2_idea
+			}
+		}
+		else = {
+			swap_ideas = {
+				remove_idea = CAC_ecocorporatism_idea
+				add_idea = CAC_ecocorporatism1_idea
+			}
+		}
+	}

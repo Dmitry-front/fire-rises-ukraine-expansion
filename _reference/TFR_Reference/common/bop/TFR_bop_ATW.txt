@@ -1,0 +1,158 @@
+ATW_religion_bop = {
+	initial_value = 0
+	left_side = ATW_satanist_side	
+	right_side = ATW_christian_side	
+	decision_category = ATW_balance_of_power_category
+	#Middle
+	range = {
+		id = ATW_balance_range
+		min = -0.15
+		max = 0.15
+		modifier = {
+			stability_weekly = 0.001
+		}
+		on_activate = {
+				custom_effect_tooltip = ATW_accelerationist_control_range_tooltip
+		}
+		on_deactivate = {
+		}
+	}
+	#Satanists Side
+	side = {
+		id = ATW_satanist_side
+		icon = GFX_bop_ATW_satanist
+		range = {
+			id = ATW_satanist_total_control_range
+			min = -1
+			max = -0.85
+			modifier = {
+				political_power_gain = 0.3
+				stability_factor = -0.15
+				army_attack_factor = 0.2
+			}
+			on_activate = {
+				custom_effect_tooltip = ATW_satanist_control_range_tooltip
+			}
+			on_deactivate = {
+			}
+		}
+		range = {
+			id = ATW_satanist_dominant_range
+			min = -0.85
+			max = -0.65
+			modifier = {
+				political_power_gain = 0.2
+				stability_factor = -0.1
+				army_attack_factor = 0.15
+			}
+			on_activate = {
+				custom_effect_tooltip = ATW_satanist_control_range_tooltip
+			}
+			on_deactivate = {
+			}
+		}
+		range = {
+			id = ATW_satanist_alligned_range
+			min = -0.65
+			max = -0.35
+			modifier = {
+				political_power_gain = 0.1
+				stability_factor = -0.05
+				army_attack_factor = 0.1
+			}
+			on_activate = {
+				custom_effect_tooltip = ATW_satanist_control_range_tooltip
+			}
+			on_deactivate = {
+			}
+		}
+		range = {
+			id = ATW_satanist_lean_range
+			min = -0.35
+			max = -0.15
+			modifier = {
+				political_power_gain = 0.05
+				army_attack_factor = 0.05
+			}
+			on_activate = {
+				custom_effect_tooltip = ATW_accelerationist_control_range_tooltip
+			}
+			on_deactivate = {
+			}
+		}
+	}
+
+	#Christians Side
+	side = {
+		id = ATW_christian_side	
+		icon = GFX_bop_ATW_christian
+		range = {
+			id = ATW_christian_lean_range
+			min = 0.15
+			max = 0.35
+			modifier = {
+				production_speed_buildings_factor = 0.025
+				compliance_growth = 0.05
+				army_defence_factor = 0.05
+				breakthrough_factor = 0.05
+			}
+			on_activate = {
+				custom_effect_tooltip = ATW_accelerationist_control_range_tooltip
+			}
+			on_deactivate = {
+			}
+		}
+		range = {
+			id = ATW_christian_alligned_range
+			min = 0.35
+			max = 0.65
+			modifier = {
+				production_speed_buildings_factor = 0.05
+				compliance_growth = 0.1
+				army_defence_factor = 0.1
+				breakthrough_factor = 0.1
+				war_support_factor = -0.05
+			}
+			on_activate = {
+				custom_effect_tooltip = ATW_christian_control_range_tooltip
+			}
+			on_deactivate = {
+			}
+		}
+		range = {
+			id = ATW_christian_dominant_range
+			min = 0.65
+			max = 0.85
+			modifier = {
+				production_speed_buildings_factor = 0.075
+				compliance_growth = 0.15
+				army_defence_factor = 0.15
+				breakthrough_factor = 0.15
+				war_support_factor = -0.1
+			}
+			on_activate = {
+				custom_effect_tooltip = ATW_christian_control_range_tooltip
+			}
+			on_deactivate = {
+			}
+		}
+		range = {
+			id = ATW_christian_total_control_range
+			min = 0.85
+			max = 1
+			modifier = {
+				production_speed_buildings_factor = 0.1
+				compliance_growth = 0.2
+				army_defence_factor = 0.2
+				breakthrough_factor = 0.2
+				war_support_factor = -0.15
+			}
+			on_activate = {
+				custom_effect_tooltip = ATW_christian_control_range_tooltip
+			}
+			on_deactivate = {
+			}
+		}
+	}
+}
+

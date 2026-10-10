@@ -1,0 +1,45 @@
+GRE_gyro_power = {
+	enable = {
+		tag = GRE
+		has_war_with = SOV
+	}
+
+	abort_when_not_enabled = yes
+
+	ai_strategy = {
+		type = front_control
+		tag = SOV
+		execution_type = rush
+		execute_order = yes
+		manual_attack = no
+	}
+
+	ai_strategy = {
+		type = consider_weak
+		id = SOV
+		value = 1000
+	}
+
+	ai_strategy = {
+		type = conquer
+		id = SOV
+		value = 1000
+	}
+}
+
+GRE_support_UKR = {
+	enable = {
+		tag = GRE
+		has_war = no
+	}
+	abort = {
+		has_war = yes
+		has_war_with = UKR
+	}
+
+	ai_strategy = {
+		type = support
+		id = "UKR"
+		value = 900
+	}
+}

@@ -1,0 +1,466 @@
+# focus_tree = {
+# 	id = PRK
+# 	country = {
+# 		factor = 0
+# 	}
+
+# 	focus = {
+# 		id = PRK_party_congress
+# 		icon = GFX_Generic_Juche
+# 		x = 10
+# 		y = 0
+# 		cost = 10
+# 		available_if_capitulated = yes
+# 		ai_will_do = {
+# 			factor = 1
+# 		}
+# 		completion_reward = {
+# 			add_political_power = 50
+# 			add_stability= 0.05
+# 		}
+# 	}
+	
+# 	focus = {
+# 		id = PRK_meet_with_trump
+# 		icon = GFX_goal_unknown
+# 		x = 8
+# 		y = 1
+# 		cost = 10
+# 		available_if_capitulated = yes
+# 		prerequisite = { focus = PRK_party_congress }
+# 		mutually_exclusive = { focus = PRK_continue_nuclear_program }
+# 		ai_will_do = {
+# 			factor = 1
+# 		}
+# 		completion_reward = {
+# 			add_political_power = 50
+# 			add_stability= 0.05
+# 		}
+# 	}
+	
+# 	focus = {
+# 		id = PRK_continue_nuclear_program
+# 		icon = GFX_goal_unknown
+# 		x = 12
+# 		y = 1
+# 		cost = 10
+# 		available_if_capitulated = yes
+# 		prerequisite = { focus = PRK_party_congress }
+# 		mutually_exclusive = { focus = PRK_meet_with_trump }
+# 		ai_will_do = {
+# 			factor = 1
+# 		}
+# 		completion_reward = {
+# 			add_political_power = 50
+# 			add_stability= 0.05
+# 		}
+# 	}
+	
+# 	focus = {
+# 		id = PRK_nuclear_arms_limitations
+# 		icon = GFX_goal_unknown
+# 		x = 7
+# 		y = 2
+# 		cost = 10
+# 		available_if_capitulated = yes
+# 		prerequisite = { focus = PRK_meet_with_trump }
+# 		ai_will_do = {
+# 			factor = 1
+# 		}
+# 		completion_reward = {
+# 			add_political_power = 50
+# 			add_stability= 0.05
+# 		}
+# 	}
+	
+# 	focus = {
+# 		id = PRK_prepare_talks_with_south
+# 		icon = GFX_goal_unknown
+# 		x = 9
+# 		y = 2
+# 		cost = 10
+# 		available_if_capitulated = yes
+# 		prerequisite = { focus = PRK_meet_with_trump }
+# 		ai_will_do = {
+# 			factor = 1
+# 		}
+# 		completion_reward = {
+# 			add_political_power = 50
+# 			add_stability= 0.05
+# 		}
+# 	}
+	
+# 	focus = {
+# 		id = PRK_modernize_kpa
+# 		icon = GFX_goal_unknown
+# 		x = 17
+# 		y = 0
+# 		cost = 10
+# 		available_if_capitulated = yes
+# 		ai_will_do = {
+# 			factor = 1
+# 		}
+# 		completion_reward = {
+# 			add_political_power = 50
+# 			add_stability= 0.05
+# 		}
+# 	}
+	
+# 	focus = {
+# 		id = PRK_armor_research
+# 		icon = GFX_goal_unknown
+# 		x = 19
+# 		y = 1
+# 		cost = 10
+# 		available_if_capitulated = yes
+# 		prerequisite = { focus = PRK_modernize_kpa }
+# 		ai_will_do = {
+# 			factor = 1
+# 		}
+# 		completion_reward = {
+# 			add_political_power = 50
+# 			add_stability= 0.05
+# 		}
+# 	}
+	
+# 	focus = {
+# 		id = PRK_fund_new_tank_designs
+# 		icon = GFX_goal_unknown
+# 		x = 19
+# 		y = 3
+# 		cost = 10
+# 		available_if_capitulated = yes
+# 		prerequisite = { focus = PRK_armor_research }
+# 		prerequisite = { focus = PRK_fund_domestic_designs }
+# 		ai_will_do = {
+# 			factor = 1
+# 		}
+# 		completion_reward = {
+# 			add_tech_bonus = {
+# 				name = armored_bonus
+# 				bonus = 2
+# 				uses = 2
+# 				category = armor
+# 			}
+# 		}
+# 	}
+	
+# 	focus = {
+# 		id = PRK_study_chinese_dezines
+# 		icon = GFX_goal_unknown
+# 		x = 17
+# 		y = 1
+# 		cost = 10
+# 		available_if_capitulated = yes
+# 		prerequisite = { focus = PRK_modernize_kpa }
+# 		ai_will_do = {
+# 			factor = 1
+# 		}
+# 		completion_reward = {
+# 			add_tech_bonus = {
+# 				name = light_mech_bonus
+# 				bonus = 0.75
+# 				uses = 2
+# 				category = cat_mechanized_equipment
+# 			}
+# 		}
+# 	}
+	
+# 	focus = {
+# 		id = PRK_study_russian_designs
+# 		icon = GFX_goal_unknown
+# 		x = 15
+# 		y = 1
+# 		cost = 10
+# 		available_if_capitulated = yes
+# 		prerequisite = { focus = PRK_modernize_kpa }
+# 		ai_will_do = {
+# 			factor = 1
+# 		}
+# 		completion_reward = {
+# 			add_tech_bonus = {
+# 				name = arty_bonus
+# 				bonus = 0.75
+# 				uses = 2
+# 				category = artillery
+# 			}
+# 		}
+# 	}
+	
+# 	focus = {
+# 		id = PRK_fund_domestic_designs
+# 		icon = GFX_goal_unknown
+# 		x = 18
+# 		y = 2
+# 		cost = 10
+# 		available_if_capitulated = yes
+# 		prerequisite = { focus = PRK_modernize_kpa }
+# 		ai_will_do = {
+# 			factor = 1
+# 		}
+# 		completion_reward = {
+# 			873 = {
+# 				if = {
+# 					limit = {
+# 						free_building_slots = {
+# 							building = arms_factory
+# 							size > 2
+# 							include_locked = yes
+# 						}
+# 					}
+# 					add_extra_state_shared_building_slots = 2
+# 					add_building_construction = {
+# 						type = arms_factory
+# 						level = 2
+# 						instant_build = yes
+# 					}
+# 				}
+# 			}
+# 		}
+# 	}
+	
+# 	focus = {
+# 		id = PRK_issue_ballistic_vests
+# 		icon = GFX_goal_unknown
+# 		x = 16
+# 		y = 2
+# 		cost = 10
+# 		available_if_capitulated = yes
+# 		prerequisite = { focus = PRK_modernize_kpa }
+# 		ai_will_do = {
+# 			factor = 1
+# 		}
+# 		completion_reward = {
+# 			add_tech_bonus = {
+# 				name = armor_bonus
+# 				bonus = 0.75
+# 				uses = 2
+# 				category = infantry_tech
+# 			}
+# 		}
+# 	}
+	
+# 	focus = {
+# 		id = PRK_salute_pilots
+# 		icon = GFX_goal_unknown
+# 		x = 25
+# 		y = 0
+# 		cost = 10
+# 		available_if_capitulated = yes
+# 		ai_will_do = {
+# 			factor = 1
+# 		}
+# 		completion_reward = {
+# 			add_political_power = 50
+# 			add_stability= 0.05
+# 		}
+# 	}
+	
+# 	focus = {
+# 		id = PRK_salute_sailors
+# 		icon = GFX_goal_unknown
+# 		x = 30
+# 		y = 0
+# 		cost = 10
+# 		available_if_capitulated = yes
+# 		ai_will_do = {
+# 			factor = 1
+# 		}
+# 		completion_reward = {
+# 			add_political_power = 50
+# 			add_stability= 0.05
+# 		}
+# 	}
+	
+# 	focus = {
+# 		id = PRK_the_leaders_health
+# 		icon = GFX_goal_unknown
+# 		x = 13
+# 		y = 3
+# 		cost = 10
+# 		available_if_capitulated = yes
+# 		ai_will_do = {
+# 			factor = 1
+# 		}
+# 		completion_reward = {
+# 			add_political_power = 50
+# 			add_stability= 0.05
+# 		}
+# 	}
+	
+# 	focus = {
+# 		id = PRK_celebrate_the_dear_leader
+# 		icon = GFX_goal_unknown
+# 		x = 16
+# 		y = 4
+# 		cost = 10
+# 		available_if_capitulated = yes
+# 		prerequisite = { focus = PRK_the_leaders_health }
+# 		mutually_exclusive = { focus = PRK_mourne_the_dear_leader }
+# 		ai_will_do = {
+# 			factor = 1
+# 		}
+# 		completion_reward = {
+# 			add_political_power = 50
+# 			add_stability= 0.05
+# 		}
+# 	}
+
+# 	focus = {
+# 		id = PRK_host_military_parade
+# 		icon = GFX_goal_unknown
+# 		x = 16
+# 		y = 5
+# 		cost = 10
+# 		available_if_capitulated = yes
+# 		prerequisite = { focus = PRK_celebrate_the_dear_leader }
+# 		ai_will_do = {
+# 			factor = 1
+# 		}
+# 		completion_reward = {
+# 			add_political_power = 50
+# 			add_stability= 0.05
+# 		}
+# 	}
+	
+# 	focus = {
+# 		id = PRK_continue_public_works
+# 		icon = GFX_goal_unknown
+# 		x = 15
+# 		y = 6
+# 		cost = 10
+# 		available_if_capitulated = yes
+# 		prerequisite = { focus = PRK_host_military_parade }
+# 		ai_will_do = {
+# 			factor = 1
+# 		}
+# 		completion_reward = {
+# 			add_political_power = 50
+# 			add_stability= 0.05
+# 		}
+# 	}
+	
+# 	focus = {
+# 		id = PRK_industrialize_countryside
+# 		icon = GFX_goal_unknown
+# 		x = 17
+# 		y = 6
+# 		cost = 10
+# 		available_if_capitulated = yes
+# 		prerequisite = { focus = PRK_host_military_parade }
+# 		ai_will_do = {
+# 			factor = 1
+# 		}
+# 		completion_reward = {
+# 			add_political_power = 50
+# 			add_stability= 0.05
+# 		}
+# 	}
+	
+# 	focus = {
+# 		id = PRK_prepare_for_war
+# 		icon = GFX_goal_unknown
+# 		x = 16
+# 		y = 7
+# 		cost = 10
+# 		available_if_capitulated = yes
+# 		prerequisite = { focus = PRK_industrialize_countryside }
+# 		prerequisite = { focus = PRK_continue_public_works }
+# 		ai_will_do = {
+# 			factor = 1
+# 		}
+# 		completion_reward = {
+# 			add_political_power = 50
+# 			add_stability= 0.05
+# 		}
+# 	}
+	
+# 	focus = {
+# 		id = PRK_mourne_the_dear_leader
+# 		icon = GFX_goal_unknown
+# 		x = 10
+# 		y = 4
+# 		cost = 10
+# 		available_if_capitulated = yes
+# 		prerequisite = { focus = PRK_the_leaders_health }
+# 		mutually_exclusive = { focus = PRK_celebrate_the_dear_leader }
+# 		ai_will_do = {
+# 			factor = 1
+# 		}
+# 		completion_reward = {
+# 			add_political_power = 50
+# 			add_stability= 0.05
+# 		}
+# 	}
+	
+# 	focus = {
+# 		id = PRK_let_the_military_deal_protests
+# 		icon = GFX_goal_unknown
+# 		x = 9
+# 		y = 6
+# 		cost = 10
+# 		available_if_capitulated = yes
+# 		prerequisite = { focus = PRK_mourne_the_dear_leader }
+# 		mutually_exclusive = { focus = PRK_let_the_protests_continue }
+# 		ai_will_do = {
+# 			factor = 1
+# 		}
+# 		completion_reward = {
+# 			add_political_power = 50
+# 			add_stability= 0.05
+# 		}
+# 	}
+	
+# 	focus = {
+# 		id = PRK_let_the_protests_continue
+# 		icon = GFX_goal_unknown
+# 		x = 11
+# 		y = 6
+# 		cost = 10
+# 		available_if_capitulated = yes
+# 		prerequisite = { focus = PRK_mourne_the_dear_leader }
+# 		mutually_exclusive = { focus = PRK_let_the_military_deal_protests }
+# 		ai_will_do = {
+# 			factor = 1
+# 		}
+# 		completion_reward = {
+# 			add_political_power = 50
+# 			add_stability= 0.05
+# 		}
+# 	}
+	
+# 	focus = {
+# 		id = PRK_normalize_the_situation
+# 		icon = GFX_goal_unknown
+# 		x = 10
+# 		y = 7
+# 		cost = 10
+# 		available_if_capitulated = yes
+# 		prerequisite = { focus = PRK_let_the_military_deal_protests }
+# 		prerequisite = { focus = PRK_let_the_protests_continue }
+# 		ai_will_do = {
+# 			factor = 1
+# 		}
+# 		completion_reward = {
+# 			add_political_power = 50
+# 			add_stability= 0.05
+# 		}
+# 	}
+	
+# 	focus = {
+# 		id = PRK_fortify_pyongyang
+# 		icon = GFX_goal_unknown
+# 		x = 10
+# 		y = 8
+# 		cost = 10
+# 		available_if_capitulated = yes
+# 		prerequisite = { focus = PRK_normalize_the_situation }
+# 		ai_will_do = {
+# 			factor = 1
+# 		}
+# 		completion_reward = {
+# 			add_political_power = 50
+# 			add_stability= 0.05
+# 		}
+# 	}
+# }

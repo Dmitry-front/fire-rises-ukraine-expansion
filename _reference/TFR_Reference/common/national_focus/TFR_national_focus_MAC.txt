@@ -1,0 +1,148 @@
+focus_tree = {
+	id = macedonia_tree
+	country = {
+		factor = 0
+		#modifier = {
+		#	add = 10
+		#	tag = MAC		}
+	}
+	focus = {
+		id = MAC_what_has_gone_wrong
+		icon = GFX_focus_generic_abolish_prisons
+		x = 4
+		y = 0
+		cost = 5
+		available = {
+			is_ai = no
+		}
+		ai_will_do = {
+			factor = 1
+		}
+		completion_reward = {
+			set_politics = {
+				ruling_party = nationalist
+				elections_allowed = no
+			}
+			add_popularity = {
+				ideology = nationalist
+				popularity = 1
+			}
+		}
+	}
+	focus = {
+		id = MAC_unleash_the_horde
+		icon = GFX_focus_generic_abolish_prisons
+		x = 4
+		y = 1
+		cost = 5
+		ai_will_do = {
+			factor = 1
+		}
+		prerequisite = {
+			focus = MAC_what_has_gone_wrong
+		}
+		completion_reward = {
+			#load_oob = MAC_horde
+			add_manpower = 500000
+		}
+	}
+	focus = {
+		id = MAC_reclaim_kosovo
+		icon = GFX_focus_generic_abolish_prisons
+		x = 4
+		y = 2
+		cost = 5
+		ai_will_do = {
+			factor = 1
+		}
+		prerequisite = {
+			focus = MAC_unleash_the_horde
+		}
+		completion_reward = {
+			declare_war_on = {
+				target = KOS
+				type = annex_everything
+			}
+		}
+	}
+	focus = {
+		id = MAC_towards_yugoslavia
+		icon = GFX_focus_generic_abolish_prisons
+		x = 2
+		y = 3
+		cost = 5
+		ai_will_do = {
+			factor = 1
+		}
+		prerequisite = {
+			focus = MAC_reclaim_kosovo
+		}
+		mutually_exclusive = {
+			focus = MAC_glory_of_alexander
+		}
+		completion_reward = {
+			every_state = {
+				limit = {
+					is_core_of = SER
+				}
+				add_core_of = MAC
+			}
+			declare_war_on = {
+				target = SER
+				type = annex_everything
+			}
+			declare_war_on = {
+				target = BOS
+				type = annex_everything
+			}
+			declare_war_on = {
+				target = CRO
+				type = annex_everything
+			}
+		}
+	}
+	focus = {
+		id = MAC_glory_of_alexander
+		icon = GFX_focus_generic_abolish_prisons
+		x = 6
+		y = 3
+		cost = 5
+		ai_will_do = {
+			factor = 1
+		}
+		prerequisite = {
+			focus = MAC_reclaim_kosovo
+		}
+		mutually_exclusive = {
+			focus = MAC_towards_yugoslavia
+		}
+		completion_reward = {
+			every_state = {
+				limit = {
+					is_core_of = GRE
+				}
+				add_core_of = MAC
+			}
+		}
+	}
+	focus = {
+		id = MAC_death_to_nato
+		icon = GFX_focus_generic_abolish_prisons
+		x = 4
+		y = 4
+		cost = 5
+		ai_will_do = {
+			factor = 1
+		}
+		prerequisite = {
+			focus = MAC_towards_yugoslavia
+			focus = MAC_glory_of_alexander
+		}
+		completion_reward = {
+			declare_war_on = {
+				target = USA
+				type = annex_everything
+			}
+		}
+	}
+}

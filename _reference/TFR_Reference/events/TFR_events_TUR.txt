@@ -1,0 +1,249 @@
+﻿###########################
+# Turkey Events
+###########################
+add_namespace = turkey
+#Turkey Leaves NATO (country)
+country_event = {
+	id = turkey.1
+	title = turkey.1.t
+	desc = turkey.1.d
+	picture = GFX_Tunisia_coup_report
+	fire_only_once = yes
+	is_triggered_only = yes
+	trigger = {
+		tag = TUR
+	}
+	option = {
+		name = turkey.1.a
+		TUR = {
+			clr_country_flag = global_ass_lol
+			leave_faction = yes
+			hidden_effect = {
+				remove_ideas = {
+					NATO_unity_1
+					NATO_unity_2
+					NATO_unity_3
+					NATO_unity_4
+					NATO_unity_5
+					idea_EU_unified_army_commands
+				}
+			}
+		}
+		news_event = {
+			id = turkey.2
+			days = 1
+		}
+	}
+}
+
+news_event = {
+	id = turkey.2
+	title = turkey.2.t
+	desc = turkey.2.d
+	picture = GFX_news_report_turkey_leaves_nato
+	is_triggered_only = yes
+	major = yes
+	trigger = {
+		always = yes
+	}
+	option = {
+		name = turkey.2.a
+	}
+}
+
+#Erdogan Wins
+country_event = {
+	id = turkey.3
+	title = turkey.3.t
+	desc = turkey.3.d
+	picture = GFX_Tunisia_coup_report
+	fire_only_once = yes
+	is_triggered_only = yes
+	trigger = {
+		tag = GER
+	}
+	immediate = {
+		hidden_effect = {
+			TUR = {
+				country_event = {
+					id = turkey.1
+					days = 75
+					random_days = 50
+				}
+			}
+		}
+	}
+	option = {
+		name = turkey.3.a
+		add_political_power = -50
+		effect_tooltip = {
+			TUR = {
+				leave_faction = yes
+			}
+		}
+	}
+}
+
+#Erdogan loses 
+country_event = {
+	id = turkey.4
+	title = turkey.4.t
+	desc = turkey.4.d
+	picture = GFX_Tunisia_coup_report
+	fire_only_once = yes
+	is_triggered_only = yes
+	trigger = {
+		tag = GER
+	}
+	immediate = {
+		hidden_effect = {
+			TUR = {
+				set_politics = {
+					ruling_party = social_democrat
+					elections_allowed = yes
+				}
+			}
+		}
+	}
+	option = {
+		name = turkey.4.a
+		add_political_power = 50
+		effect_tooltip = {
+			TUR = {
+				set_politics = {
+					ruling_party = social_democrat
+					elections_allowed = yes
+				}
+			}
+		}
+	}
+}
+
+country_event = {
+	id = turkey.5
+	title = turkey.5.t
+	desc = turkey.5.d
+	picture = GFX_news_report_turkey_leaves_nato
+	fire_only_once = yes
+	is_triggered_only = yes
+	trigger = {
+		always = yes
+	}
+	option = {
+	    name = turkey.5.a
+	    ai_chance = {
+	        base = 1
+	        modifier = {
+	            factor = 0
+	            OR = {
+	                has_game_rule = {
+	                    rule = The_2023_Turkish_Elections
+	                    option = The_2023_Turkish_Elections_Erdogan_Neutrality
+	                }
+	                has_game_rule = {
+	                    rule = The_2023_Turkish_Elections
+	                    option = The_2023_Turkish_Elections_Kemal_Win
+	                }
+	            }
+	        }
+	    }
+		GER = {
+			if = {
+				limit = {
+					OR = {
+					    AND = {
+					        has_completed_focus = GER_the_turkish_gamble
+					        check_variable = {
+					            GER_Turkish_Influence < 80
+					        }
+					    }
+					    has_game_rule = {
+					        rule = The_2023_Turkish_Elections
+					        option = The_2023_Turkish_Elections_Erdogan_Win
+						}
+					}
+				}
+				# Lose EU Unity
+				set_country_flag = TUR_leave_nato
+				GER = {
+					country_event = {
+						id = turkey.3
+					}
+				}
+			}
+		}
+	}
+	option = {
+	    name = turkey.5.b
+	    ai_chance = {
+	        base = 1
+	        modifier = {
+	            factor = 0
+	            OR = {
+	                has_game_rule = {
+	                    rule = The_2023_Turkish_Elections
+	                    option = The_2023_Turkish_Elections_Erdogan_Win
+	                }
+	                has_game_rule = {
+	                    rule = The_2023_Turkish_Elections
+	                    option = The_2023_Turkish_Elections_Erdogan_Neutrality
+	                }
+	            }
+	        }
+	    }
+		GER = {
+			if = {
+				limit = {
+					OR = {
+					    AND = {
+					        has_completed_focus = GER_the_turkish_gamble
+					        check_variable = {
+					            GER_Turkish_Influence > 80
+					        }
+					        check_variable = {
+					            GER_Turkish_Influence = 80
+					        }
+					    }
+					    has_game_rule = {
+					        rule = The_2023_Turkish_Elections
+					        option = The_2023_Turkish_Elections_Kemal_Win
+						}
+					}
+				}
+				effect_tooltip = { NATO_unity_increase = yes }
+				set_country_flag = TUR_stay_nato
+				GER = {
+					country_event = {
+						id = turkey.4
+					}
+				}
+				hidden_effect = {
+					NATO_unity_increase = yes
+				}
+			}
+		}
+	}
+	option = {
+	    name = turkey.5.c
+	    ai_chance = {
+	        base = 1
+	        modifier = {
+	            factor = 0
+	            OR = {
+	                has_game_rule = {
+	                    rule = The_2023_Turkish_Elections
+	                    option = The_2023_Turkish_Elections_Erdogan_Win
+	                }
+	                has_game_rule = {
+	                    rule = The_2023_Turkish_Elections
+	                    option = The_2023_Turkish_Elections_Erdogan_Neutrality
+	                }
+	                has_game_rule = {
+	                    rule = The_2023_Turkish_Elections
+	                    option = The_2023_Turkish_Elections_Kemal_Win
+	                }
+	            }
+	        }
+	    }
+	}
+}

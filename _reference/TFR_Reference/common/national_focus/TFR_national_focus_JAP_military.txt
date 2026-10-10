@@ -1,0 +1,212 @@
+focus_tree = {
+    id = TFR_tree_JAP_military
+	country = {
+	    factor = 0
+	}
+	default = no
+
+    focus = {
+	    id = JAP_restore_order
+		icon = GFX_focus_JAP_restore_order
+		cost = 1
+		x = 6
+		y = 0
+		
+		available = {
+		    has_global_flag = JAP_civil_war_started
+	    }
+		
+		completion_reward = {
+		    add_ideas = JAP_suspended_constitution
+		}
+	}
+	
+    focus = {
+	    id = JAP_military_government
+		icon = GFX_focus_JAP_formation_of_military_government
+        relative_position_id = JAP_restore_order
+		cost = 3
+		x = 3
+		y = 1
+        prerequisite = { focus = JAP_restore_order }
+		
+		completion_reward = {
+			custom_effect_tooltip = JAP_cc_government
+			hidden_effect = {
+				add_ideas = {
+					JAP_mitsuhiro_kimura
+					JAP_tadae_takubo
+					JAP_yuzo_kabashima
+					JAP_toshio_tamogami
+				}
+			}
+		}
+	}
+
+    focus = {
+	    id = JAP_mobilise_reserves
+		icon = GFX_focus_JAP_mobilize_reservists
+        relative_position_id = JAP_restore_order
+		cost = 2
+		x = -1
+		y = 1
+        prerequisite = { focus = JAP_restore_order }
+		
+		completion_reward = {
+		}
+	}
+
+    focus = {
+	    id = JAP_kill_red
+		icon = GFX_focus_JAP_japanese_revolutionary_armed_forces
+        relative_position_id = JAP_mobilise_reserves
+		cost = 2
+		x = 1
+		y = 1
+        prerequisite = { focus = JAP_mobilise_reserves }
+		
+		completion_reward = {
+		    add_political_power = 50
+		}
+	}
+
+    focus = {
+	    id = JAP_rigid_centralization
+		icon = GFX_focus_JAP_proclaim_provinsial_government
+        relative_position_id = JAP_mobilise_reserves
+		cost = 3
+		x = -1
+		y = 2
+        prerequisite = { focus = JAP_mobilise_reserves }
+		
+		completion_reward = {
+		    add_political_power = 50
+		}
+	}
+
+    focus = {
+	    id = JAP_patriot_coalition
+		icon = GFX_focus_JAP_proclaim_provinsial_government
+        relative_position_id = JAP_rigid_centralization
+		cost = 3
+		x = -1
+		y = 1
+        prerequisite = { focus = JAP_rigid_centralization }
+		
+		completion_reward = {
+		    add_political_power = 50
+		}
+	}
+
+    focus = {
+	    id = JAP_shake_up_people
+		icon = GFX_focus_JAP_proclaim_provinsial_government
+        relative_position_id = JAP_rigid_centralization
+		cost = 3
+		x = 1
+		y = 1
+        prerequisite = { focus = JAP_rigid_centralization }
+		
+		completion_reward = {
+		    add_political_power = 50
+		}
+	}
+
+    focus = {
+	    id = JAP_ldp_restoration
+		icon = GFX_focus_JAP_use_everything
+        relative_position_id = JAP_military_government
+		cost = 3
+		x = -1
+		y = 1
+        prerequisite = { focus = JAP_military_government }
+		
+		completion_reward = {
+		    add_political_power = 50
+		}
+	}
+
+    focus = {
+	    id = JAP_destroy_devils_bureaucracy
+		icon = GFX_focus_JAP_return_conscription
+        relative_position_id = JAP_military_government
+		cost = 3
+		x = 1
+		y = 1
+        prerequisite = { focus = JAP_military_government }
+		
+		completion_reward = {
+		    add_political_power = 50
+		}
+	}
+
+    focus = {
+	    id = JAP_operation_oni
+		icon = GFX_focus_JAP_mobilize_zengakuren
+        relative_position_id = JAP_destroy_devils_bureaucracy
+		cost = 2
+		x = -3
+		y = 1
+        prerequisite = { focus = JAP_destroy_devils_bureaucracy }
+        prerequisite = { focus = JAP_ldp_restoration }
+        prerequisite = { focus = JAP_kill_red }
+		
+		completion_reward = {
+		    add_political_power = 50
+		}
+	}
+	
+	focus = {
+	    id = JAP_help_from_abroad
+		icon = GFX_focus_JAP_help_from_abroad
+        relative_position_id = JAP_operation_oni
+		cost = 3
+		x = 1
+		y = 1
+        prerequisite = { focus = JAP_operation_oni }
+		
+		completion_reward = {
+		    add_political_power = 50
+			hidden_effect = {
+				if = { 
+					limit = { NOT = { has_global_flag = JAP_civil_war_ended } }
+					uncomplete_national_focus = { focus = JAP_help_from_abroad }
+				}
+			}
+		}
+	}
+	
+    focus = {
+	    id = JAP_kill_traitors
+		icon = GFX_focus_JAP_negotiate_with_radicals
+        relative_position_id = JAP_shake_up_people
+		cost = 2
+		x = 1
+		y = 1
+        prerequisite = { focus = JAP_shake_up_people }
+        prerequisite = { focus = JAP_operation_oni }
+        prerequisite = { focus = JAP_patriot_coalition }
+		
+		completion_reward = {
+		    add_political_power = 50
+		}
+	}
+	
+	focus = {
+	    id = JAP_japan_restoration
+		icon = GFX_focus_JAP_proclaim_provinsial_government
+        relative_position_id = JAP_unite_the_people
+		cost = 3
+		x = 0
+		y = 1
+        prerequisite = { focus = JAP_unite_the_people }
+		allow_branch = {
+		    has_global_flag = JAP_civil_war_ended
+		}
+		
+		completion_reward = {
+			set_cosmetic_tag = JAP_republic
+		}
+	}
+
+}

@@ -1,0 +1,105 @@
+﻿add_namespace = romania
+
+#2020 elections
+country_event = {
+	id = romania.1
+	title = romania.1.t
+	desc = romania.1.d
+	picture = GFX_election
+	
+	is_triggered_only = yes
+	
+	option = { #PNL wins 
+		name = romania.1.a
+        add_popularity = {
+            ideology = market_liberal
+            popularity = 0.05
+        }
+	}
+    
+    option = { #PSD wins
+		name = romania.1.b
+        add_popularity = {
+            ideology = social_democrat
+            popularity = 0.05
+        }
+	}
+}
+country_event = {
+	id = romania.2
+	title = romania.2.t
+	desc = romania.2.d
+	picture = GFX_election
+	
+	is_triggered_only = yes
+	
+	option = { #Monarchist civil War
+		name = romania.2.a
+        WLC = {
+        	transfer_state = 84
+        	transfer_state = 899
+        	declare_war_on = {
+				target = ROM
+				type = civil_war
+			}
+        }
+        ROM = {
+        	transfer_units_fraction= {
+				target = WLC
+				size = 0.5
+				stockpile_ratio = 0.3
+				army_ratio = 0.6
+				air_ratio = 0.3
+			}
+        }
+	}
+    
+}
+country_event = { #Pro-France Identitarian Coup
+	id = romania.3
+	title = romania.3.t
+	desc = romania.3.d
+	picture = GFX_election
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = romania.3.a
+		FAF = {
+			puppet = WLC
+		}
+       	set_politics = {
+			ruling_party = national_socialist
+			last_election = "2017.4.23"
+			election_frequency = 72
+			elections_allowed = no
+		}
+	}
+}
+
+country_event = { #2025 Presidential Elections
+	id = romania.4
+	title = romania.4.t
+	desc = romania.4.d
+	picture = GFX_election
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = romania.4.a
+		promote_character = ROM_nicusor_dan_char
+       	set_politics = {
+			ruling_party = social_liberal
+			elections_allowed = yes
+		}
+		add_popularity = {
+            ideology = social_liberal
+            popularity = 0.1
+        }
+		set_party_name = {
+			ideology = social_liberal
+			long_name = ROM_bolojan_cabinet_party
+			name = ROM_bolojan_cabinet_party
+		}
+	}
+}

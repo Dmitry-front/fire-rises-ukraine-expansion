@@ -1,0 +1,284 @@
+###########################
+# Tanzanian Events
+###########################
+
+add_namespace = tanzania
+
+# President death 
+country_event = {
+	id = tanzania.7
+	title = tanzania.7.t
+	desc = tanzania.7.d
+	picture = GFX_generic_media
+
+	fire_only_once = yes
+	is_triggered_only = yes
+	
+	trigger = {
+		tag = TZN
+	}
+
+	option = {
+		name = tanzania.7.a
+		retire_character = TZN_john_magufuli_char
+		promote_character = TZN_samia_suluhu_hassan_char
+	}
+}
+# Formation of the East African Federation
+country_event = {
+	id = tanzania.1
+	title = tanzania.1.t
+	desc = tanzania.1.d
+	picture = GFX_East_Africa_Summit
+	
+	fire_only_once = yes
+	is_triggered_only = yes
+	
+	trigger = {
+		tag = TZN
+	}
+
+	option = {
+		name = tanzania.1.a
+		set_country_flag = TZN_formed_east_africa
+		news_event = { 
+			id = news.170
+		}
+		country_event = {
+			id = tanzania.2
+			days = 100
+		}
+		add_ideas = TZN_young_republic
+		add_timed_idea = {
+			idea = TZN_military_integration
+			days = 1000
+		}
+		set_cosmetic_tag = TZN_east_africa
+		set_popularities = {
+			social_democrat = 35
+			conservative = 30
+			social_liberal = 15
+			libertarian_socialist = 5
+			authoritarian_democrat = 15
+		}
+		add_state_core = 547
+		add_state_core = 548
+		add_state_core = 781
+		add_state_core = 780
+		add_state_core = 1351
+		add_state_core = 1352
+		add_state_core = 1353
+		add_state_core = 1354
+		hidden_effect = {
+			
+			annex_country = {
+				target = KEN
+				transfer_troops = yes
+			}
+			annex_country = {
+				target = UGA
+				transfer_troops = yes
+			}
+			annex_country = {
+				target = RWA
+				transfer_troops = yes
+			}
+			annex_country = {
+				target = BRD
+				transfer_troops = yes
+			}
+			if = {
+				limit = {
+					M23 = {
+						has_cosmetic_tag = M23_EAF_northern_zone
+					}
+					DRO = {
+						has_cosmetic_tag = DRO_EAF_kivu_zone
+					}
+				}
+				annex_country = {
+					target = M23
+					transfer_troops = yes
+				}
+				annex_country = {
+					target = DRO
+					transfer_troops = yes
+				}
+			}
+			random_owned_controlled_state = {
+				if = {
+					limit = {
+						free_building_slots = {
+							building = arms_factory
+							size > 2
+							include_locked = yes
+						}
+					}
+					add_extra_state_shared_building_slots = 2
+					add_building_construction = {
+						type = arms_factory
+						level = 2
+						instant_build = yes
+					}
+				}
+			}
+			random_owned_controlled_state = {
+				if = {
+					limit = {
+						free_building_slots = {
+							building = industrial_complex
+							size > 5
+							include_locked = yes
+						}
+					}
+					add_extra_state_shared_building_slots = 5
+					add_building_construction = {
+						type = industrial_complex
+						level = 5
+						instant_build = yes
+					}
+				}
+			}
+		}
+		create_country_leader = {
+			name = TZN_federation_council_char
+			picture = "TZN_federation_council.dds"
+			ideology = progressivism
+		}
+	}
+}
+
+#NO NO NO WORDS
+country_event = {
+	id = tanzania.2
+	title = tanzania.2.t
+	desc = tanzania.2.d
+	picture = GFX_East_Africa_Summit
+	
+	fire_only_once = yes
+	is_triggered_only = yes
+	
+	trigger = {
+		tag = TZN
+	}
+
+	option = {
+	name = tanzania.2.a
+		hidden_effect = {
+			#removed because this caused border gore
+		}
+	}
+}
+
+# Soviet Assistance
+country_event = {
+	id = tanzania.3
+	title = tanzania.3.t
+	desc = tanzania.3.d
+	picture = GFX_East_Africa_Summit
+	
+	fire_only_once = yes
+	is_triggered_only = yes
+	
+	trigger = {
+		tag = TZN
+	}
+
+	option = {
+	name = tanzania.3.a
+		add_equipment_to_stockpile = {type = support_equipment_1 amount = 300 producer = SOV }
+		add_equipment_to_stockpile = {type = infantry_equipment_2 amount = 1000 producer = SOV }
+		add_equipment_to_stockpile = {type = anti_air_equipment_1 amount = 300 producer = SOV }
+		add_equipment_to_stockpile = {type = anti_tank_equipment_1 amount = 300 producer = SOV }
+		add_equipment_to_stockpile = {type = modern_tank_chassis amount = 150 producer = SOV }
+		add_equipment_to_stockpile = {type = motorized_equipment_1 amount = 150 producer = SOV }
+		add_equipment_to_stockpile = {type = mechanized_equipment_2 amount = 150 producer = SOV }
+	}
+}
+
+# Soviets invite us to COMECON
+country_event = {
+	id = tanzania.4
+	title = tanzania.4.t
+	desc = tanzania.4.d
+	picture = GFX_East_Africa_Summit
+	
+	fire_only_once = yes
+	is_triggered_only = yes
+	
+	trigger = {
+		tag = TZN
+	}
+
+	option = {#accept
+	name = tanzania.4.a
+		SOV = {
+			country_event = { id = tanzania.5 days = 5 }
+		}
+		ai_chance = {
+			factor = 50
+			modifier = {
+				add = 15
+				SOV = {
+					has_country_flag = SOV_sent_economic_assistance
+				}
+			}
+			modifier = {
+				add = 10
+				has_country_flag = SOV_sent_volunteers
+			}
+		}
+	}
+	
+	option = {#deny
+	name = tanzania.4.b
+		SOV = {
+			country_event = { id = tanzania.6 days = 5 }
+		}
+		ai_chance = {
+			factor = 50
+		}
+	}
+}
+
+# East Africa Joins COMECON
+country_event = {
+	id = tanzania.5
+	title = tanzania.5.t
+	desc = tanzania.5.d
+	picture = GFX_East_Africa_Summit
+	
+	fire_only_once = yes
+	is_triggered_only = yes
+	
+	trigger = {
+		tag = SOV
+	}
+
+	option = {
+	name = tanzania.5.a
+		TZN = {
+			add_ideas = SOV_comecon_member
+		}
+	}
+}
+
+# East Africa Refuses
+country_event = {
+	id = tanzania.6
+	title = tanzania.6.t
+	desc = tanzania.6.d
+	picture = GFX_East_Africa_Summit
+	
+	fire_only_once = yes
+	is_triggered_only = yes
+	
+	trigger = {
+		tag = SOV
+	}
+
+	option = {
+	name = tanzania.6.a
+		add_political_power = -50
+	}
+}

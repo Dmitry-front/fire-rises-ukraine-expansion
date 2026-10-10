@@ -1,0 +1,1399 @@
+###########################
+# Libyan Events
+###########################
+
+add_namespace = libya
+
+# Fall of Misrata
+country_event = {
+	id = libya.1
+	title = libya.1.t
+	desc = libya.1.d
+	picture = GFX_Libyan_National_Army
+	
+	fire_only_once = yes
+	is_triggered_only = yes
+	
+	trigger = {
+		tag = HRL
+		has_war = yes
+		HRL = {
+			controls_province = 9980
+		}
+	}
+
+	option = {
+	name = libya.1.a
+		add_war_support = 0.03
+		add_stability = 0.03
+	}
+}
+
+# Fall of Tripoli
+country_event = {
+	id = libya.2
+	title = libya.2.t
+	desc = libya.2.d
+	picture = GFX_Libyan_National_Army
+	
+	fire_only_once = yes
+	is_triggered_only = yes
+	
+	trigger = {
+		tag = HRL
+		has_war = yes
+		HRL = {
+			controls_province = 1149
+		}
+	}
+
+	option = {
+	name = libya.2.a
+		add_war_support = 0.1
+		add_stability = 0.1
+		set_cosmetic_tag = HRL_Libya
+		country_event = { id = libya.4 days = 10 }
+	}
+}
+
+# House of Representatives Victory
+country_event = {
+	id = libya.3
+	title = libya.3.t
+	desc = libya.3.d
+	picture = report_event_equipment
+	
+	fire_only_once = yes
+	is_triggered_only = yes
+	
+	trigger = {
+		tag = HRL
+		448 = { is_owned_by = HRL }
+		NOT = {
+			has_war = yes
+		}
+	}
+
+	option = {
+		name = libya.3.a
+		set_cosmetic_tag = HRL_Libya
+	}
+}
+
+# Elections
+country_event = {
+	id = libya.4
+	title = libya.4.t
+	desc = libya.4.d
+	picture = GFX_Libyan_Elections
+	
+	fire_only_once = yes
+	is_triggered_only = yes
+	
+	trigger = {
+		tag = HRL
+	}
+
+	option = {
+		name = libya.4.a
+		country_event = { id = libya.5 days = 365 }	
+	}
+	option = {
+		name = libya.4.b
+		country_event = { id = libya.41 days = 365 }	
+	}
+}
+
+# Saif al-Islam Gaddafi Wins
+country_event = {
+	id = libya.5
+	title = libya.5.t
+	desc = libya.5.d
+	picture = report_event_equipment
+	
+	fire_only_once = yes
+	is_triggered_only = yes
+	
+	trigger = {
+		tag = HRL
+	}
+
+	option = {
+	name = libya.5.a
+		add_popularity = {
+			ideology = communist
+			popularity = 0.45
+		}
+		set_politics = { ruling_party = communist elections_allowed = no }
+		add_ideas = HRL_arab_world_1
+		hidden_effect = {
+			set_global_flag = HRL_gaddafi_won_global
+			#country_event = { id = libya.14 days = 500 }
+			news_event = news.543
+		}
+	}
+}
+
+#  Wins
+country_event = {
+	id = libya.6
+	title = libya.6.t
+	desc = libya.6.d
+	picture = report_event_equipment
+	
+	fire_only_once = yes
+	is_triggered_only = yes
+	
+	trigger = {
+		tag = HRL
+	}
+
+	option = {
+	name = libya.6.a
+		add_popularity = {
+			ideology = authoritarian_democrat
+			popularity = 0.10
+		}
+	}
+}
+
+#  Wins
+country_event = {
+	id = libya.7
+	title = libya.7.t
+	desc = libya.7.d
+	picture = report_event_equipment
+	
+	fire_only_once = yes
+	is_triggered_only = yes
+
+	option = {
+	name = libya.7.a
+
+	}
+}
+
+# Turkish Support
+country_event = {
+	id = libya.8
+	title = libya.8.t
+	desc = libya.8.d
+	picture = report_event_equipment
+	
+	fire_only_once = yes
+	is_triggered_only = yes
+	
+	trigger = {
+		tag = LBA
+	}
+
+	option = {
+	name = libya.8.a
+		add_ideas = {
+			LBA_turkish_support
+		}
+	}
+}
+
+# Pro-Gaddafist Rally in Tobruk
+country_event = {
+	id = libya.9
+	title = libya.9.t
+	desc = libya.9.d
+	picture = report_event_equipment
+	
+	fire_only_once = yes
+	is_triggered_only = yes
+	
+	trigger = {
+		tag = HRL
+	}
+
+	option = {
+	name = libya.9.a
+		add_popularity = {
+			ideology = communist
+			popularity = 0.03
+		}
+	}
+	
+	option = {
+	name = libya.9.b
+		add_popularity = {
+			ideology = communist
+			popularity = -0.05
+		}
+		add_stability = -0.03
+	}
+}
+
+# Libyan Military Commission
+country_event = {
+	id = libya.10
+	title = libya.10.t
+	desc = libya.10.d
+	picture = report_event_equipment
+	
+	fire_only_once = yes
+	is_triggered_only = yes
+	
+	trigger = {
+		tag = LBA
+	}
+
+	option = {
+	name = libya.10.a
+		HRL = {
+			country_event = { id = libya.11 days = 2 }
+		}
+	}
+}
+
+# Libyan Military Commission
+country_event = {
+	id = libya.11
+	title = libya.11.t
+	desc = libya.11.d
+	picture = report_event_equipment
+	
+	fire_only_once = yes
+	is_triggered_only = yes
+	
+	trigger = {
+		tag = HRL
+	}
+
+	option = {
+	name = libya.11.a
+		LBA = {
+			country_event = { id = libya.12 days = 2 }
+		}
+	}
+	
+	option = {
+	name = libya.11.b
+		LBA = {
+			country_event = { id = libya.13 days = 2 }
+		}
+	}
+}
+
+# Libyan Military Commission Success
+country_event = {
+	id = libya.12
+	title = libya.12.t
+	desc = libya.12.d
+	picture = report_event_equipment
+	
+	fire_only_once = yes
+	is_triggered_only = yes
+	
+	trigger = {
+		tag = HRL
+	}
+
+	option = {
+	name = libya.12.a
+		white_peace = HRL
+		LBA = {
+			transfer_state = 907
+		}
+	}
+}
+
+# Libyan Military Commission Failure
+country_event = {
+	id = libya.13
+	title = libya.13.t
+	desc = libya.13.d
+	picture = report_event_equipment
+	
+	fire_only_once = yes
+	is_triggered_only = yes
+	
+	trigger = {
+		tag = HRL
+	}
+
+	option = {
+	name = libya.13.a
+
+	}
+}
+
+##### AI CONQUEST EVENTS WILL BE DISABLED ONCE LIBYA HAS CONTENT #like that's ever gonna happen lol -IAVL
+#INVASION OF TUNISIA
+country_event = {
+	id = libya.14
+	title = libya.14.t
+	desc = libya.14.d
+	picture = report_event_equipment
+	
+	fire_only_once = yes
+	is_triggered_only = yes
+	
+	trigger = {
+		tag = HRL
+	}
+
+	option = {
+	name = libya.14.a
+		declare_war_on = { 
+			target = TUN 
+			type = annex_everything 
+		}
+		hidden_effect = {
+			add_equipment_to_stockpile = {type = infantry_equipment_2 amount = 1250 producer = UK1 }
+			add_equipment_to_stockpile = {type = infantry_equipment_1 amount = 500 producer = WGR }
+			add_equipment_to_stockpile = {type = infantry_equipment_2 amount = 1500 producer = WGR }
+			add_equipment_to_stockpile = {type = infantry_equipment_1 amount = 300 producer = UK1 }
+			add_equipment_to_stockpile = {type = motorized_equipment_1 amount = 200 producer = ISS }
+			add_equipment_to_stockpile = {type = light_mechanized_equipment_1 amount = 200 producer = TAL }
+		}
+	}
+}
+
+#INVASION OF ALGERIA
+country_event = {
+	id = libya.15
+	title = libya.15.t
+	desc = libya.15.d
+	picture = report_event_equipment
+	
+	fire_only_once = yes
+	is_triggered_only = yes
+	
+	trigger = {
+		tag = HRL
+	}
+
+	option = {
+	name = libya.15.a
+		HRL_arab_world_increase = yes
+		declare_war_on = { 
+			target = ALG
+			type = annex_everything 
+		}	
+		hidden_effect = {
+			declare_war_on = { 
+				target = AG1
+				type = annex_everything 
+			}	
+			declare_war_on = { 
+				target = AG2
+				type = annex_everything 
+			}	
+			declare_war_on = { 
+				target = AG3
+				type = annex_everything 
+			}
+		}
+
+	}
+}
+country_event = {
+	id = libya.151
+	title = libya.151.t
+	desc = libya.151.d
+	picture = report_event_equipment
+	
+	fire_only_once = yes
+	is_triggered_only = yes
+	
+	trigger = {
+		tag = HRL
+	}
+
+	option = {
+	name = libya.15.a
+		declare_war_on = { 
+			target = AG1
+			type = annex_everything 
+		}
+	}
+}
+
+# INVASION OF MOROCCO
+country_event = {
+	id = libya.16
+	title = libya.16.t
+	desc = libya.16.d
+	picture = report_event_equipment
+	
+	fire_only_once = yes
+	is_triggered_only = yes
+	
+	trigger = {
+		tag = HRL
+	}
+
+	option = {
+	name = libya.16.a
+		declare_war_on = { 
+			target = MOR
+			type = annex_everything 
+		}	
+		hidden_effect = {
+			declare_war_on = { 
+				target = CRM
+				type = annex_everything 
+			}	
+			declare_war_on = { 
+				target = RIF
+				type = annex_everything 
+			}	
+		}
+	}
+}
+
+# Arab Unification
+country_event = {
+	id = libya.17
+	title = libya.17.t
+	desc = libya.17.d
+	picture = report_event_equipment
+	
+	fire_only_once = yes
+	
+	trigger = {
+		tag = HRL
+		MOR = { exists = no }
+		ALG = {	exists = no }
+		has_war = no
+	}
+
+	option = {
+		name = libya.17.a
+		HRL = {
+			HRL_arab_world_increase = yes
+			set_cosmetic_tag = HRL_arab_republic
+			every_state = {
+				limit = {
+					is_owned_by = HRL
+				}
+				add_core_of = HRL
+			}
+			set_portraits = {
+				character = HRL_saif_islam_gaddafi_char
+				civilian = {
+					large = "gfx/leaders/HRL/Saif al-Islam Gaddafi1.png"
+				}
+			}
+		}
+		news_event = news.166
+	}
+}
+
+# INVASION OF EGYPT
+country_event = {
+	id = libya.18
+	title = libya.18.t
+	desc = libya.18.d
+	picture = report_event_equipment
+	
+	fire_only_once = yes
+	
+	trigger = {
+		tag = HRL
+		EGY = {
+			exists = no
+		}
+		MUS = {
+			has_cosmetic_tag = MUS_egy
+		}
+	}
+
+	option = {
+	name = libya.18.a
+		declare_war_on = { 
+			target = EGY
+			type = annex_everything 
+		}
+		declare_war_on = { 
+			target = MUS
+			type = annex_everything 
+		}
+		declare_war_on = { 
+			target = WLS
+			type = annex_everything 
+		}		
+	}
+}
+
+# INVASION OF SUDAN
+country_event = {
+	id = libya.19
+	title = libya.19.t
+	desc = libya.19.d
+	picture = report_event_equipment
+	
+	fire_only_once = yes
+	is_triggered_only = yes
+	
+	trigger = {
+		tag = HRL
+	}
+
+	option = {
+		name = libya.19.a
+		HRL_arab_world_increase = yes
+		declare_war_on = { 
+			target = SUD
+			type = annex_everything 
+		}	
+	}
+}
+
+# Soviet Economic Aid
+country_event = {
+	id = libya.21
+	title = libya.21.t
+	desc = libya.21.d
+	picture = report_event_equipment
+	
+	fire_only_once = yes
+	is_triggered_only = yes
+	
+	trigger = {
+		tag = HRL
+	}
+
+	option = {
+	name = libya.21.a
+
+	}
+}
+
+# Soviets invite us to COMECON
+country_event = {
+	id = libya.22
+	title = libya.22.t
+	desc = libya.22.d
+	picture = report_event_equipment
+	
+	fire_only_once = yes
+	is_triggered_only = yes
+	
+	trigger = {
+		tag = HRL
+	}
+
+	option = {#accept
+	name = libya.22.a
+		SOV = {
+			country_event = { id = libya.23 days = 5 }
+		}
+		ai_chance = {
+			factor = 50
+			modifier = {
+				add = 15
+				has_country_flag = SOV_sent_economic_assistance
+			}
+			modifier = {
+				add = 10
+				has_country_flag = SOV_sent_volunteers
+			}
+		}
+	}
+	
+	option = {#deny
+	name = libya.22.b
+		SOV = {
+			country_event = { id = libya.24 days = 5 }
+		}
+		ai_chance = {
+			factor = 50
+		}
+	}
+}
+
+# Libya joins COMECON
+country_event = {
+	id = libya.23
+	title = libya.23.t
+	desc = libya.23.d
+	picture = report_event_equipment
+	
+	fire_only_once = yes
+	is_triggered_only = yes
+	
+	trigger = {
+		tag = SOV
+	}
+
+	option = {
+	name = libya.23.a
+		HRL = {
+			add_ideas = SOV_comecon_member
+		}
+	}
+}
+
+# Libya refuses
+country_event = {
+	id = libya.24
+	title = libya.24.t
+	desc = libya.24.d
+	picture = report_event_equipment
+	
+	fire_only_once = yes
+	is_triggered_only = yes
+	
+	trigger = {
+		tag = SOV
+	}
+
+	option = {
+	name = libya.24.a
+		add_political_power = -50
+	}
+}
+
+# Soviet Volunteers
+country_event = {
+	id = libya.25
+	title = libya.25.t
+	desc = libya.25.d
+	picture = report_event_equipment
+	
+	fire_only_once = yes
+	is_triggered_only = yes
+	
+	trigger = {
+		tag = HRL
+	}
+
+	option = {
+	name = libya.25.a
+		load_oob = "HRL_spetsnaz"
+	}
+}
+
+# Tuareg Rebellion
+country_event = {
+	id = libya.26
+	title = libya.26.t
+	desc = libya.26.d
+	picture = report_event_equipment
+	
+	fire_only_once = yes
+	is_triggered_only = yes
+	
+	trigger = {
+		tag = HRL
+		NOT = {
+			has_cosmetic_tag = HRL_nato
+		}
+	}
+
+	option = {
+	name = libya.26.a
+		HAR = {
+			add_state_core = 907
+			add_state_core = 1325
+			transfer_state = 1325
+			load_oob = "HAR_2020"
+			declare_war_on = { 
+				target = HRL
+				type = annex_everything
+			}	
+		}
+	}
+}
+
+# Western Sahara Rebellion
+country_event = {
+	id = libya.27
+	title = libya.27.t
+	desc = libya.27.d
+	picture = report_event_equipment
+	
+	fire_only_once = yes
+	is_triggered_only = yes
+	
+	trigger = {
+		tag = HRL
+		NOT = {
+			has_cosmetic_tag = HRL_nato
+		}
+	}
+
+	option = {
+	name = libya.27.a
+		WES = {
+			add_state_core = 882
+			transfer_state = 882
+			load_oob = "WES_2020"
+			declare_war_on = { 
+				target = HRL
+				type = annex_everything
+			}	
+		}
+	}
+}
+
+# europe is killing eachother LETS KILL OURSELVES TOO
+country_event = {
+	id = libya.28
+	title = libya.28.t
+	desc = libya.28.d
+	picture = report_event_equipment
+	
+	fire_only_once = yes
+	is_triggered_only = yes
+	
+	trigger = {
+		tag = HRL
+	}
+
+	option = {
+	name = libya.28.a
+		LBA = {
+			transfer_state = 450
+			transfer_state = 663
+			transfer_state = 451
+			load_oob = "LBA_nato"
+			declare_war_on = { 
+				target = HRL
+				type = annex_everything
+			}	
+			set_cosmetic_tag = LBA_libya
+			set_politics = {
+				ruling_party = authoritarian_democrat
+				elections_allowed = no
+				last_election = "2011.12.17"
+			}
+			add_popularity = {
+				ideology = authoritarian_democrat
+				popularity = 0.4
+			}
+			create_country_leader = {
+				name = HRL_khalifa_haftar_char
+				picture = "Khalifa Haftar.dds"
+				ideology = military_democracy
+				traits = {  }
+			}
+		}
+	}
+}
+country_event = {
+	id = libya.29
+	title = libya.29.t
+	desc = libya.29.d
+	picture = report_event_equipment
+	
+	fire_only_once = yes
+	is_triggered_only = yes
+	
+	trigger = {
+		tag = LBA
+	}
+	immediate = {
+
+	}
+
+	option = { #Long live King
+		name = libya.29.a
+		add_popularity = {
+			ideology = conservative
+			popularity = 0.20
+		}
+		set_cosmetic_tag = LBA_united_kingdom_of_libya
+		set_politics = {
+			ruling_party = conservative
+		}
+		add_country_leader_role = {
+			character = LBA_Mohammed_El_Senussi_char
+			promote_leader = yes
+			country_leader = {
+				ideology = constitutionalist
+				traits = {
+					
+				}
+			}
+		}
+		hidden_effect = {
+			#country_event = { id = libya.30 days = 500 } #What the fuck would these guys do? fill in blank
+			#news_event = news.543
+		}
+	}
+}
+
+#Libyan Civil War Ceasefire
+country_event = {
+	id = libya.30
+	title = libya.30.t
+	desc = libya.30.d
+	picture = report_event_equipment
+	
+	fire_only_once = yes
+	is_triggered_only = yes
+	
+	trigger = {
+		tag = LBA
+		LBA = {
+			has_war_with = HRL
+		}
+	}
+	immediate = {
+		hidden_effect = {
+			LBA = {
+				annex_country = {
+					target = HRL
+				}
+				country_event = {
+					id = libya.32
+					days = 100
+				}
+			}
+			news_event = {
+				id = libya.31
+				hours = 12
+			}
+		}
+	}
+
+	option = {
+		name = libya.30.a
+	}
+}
+
+#Libyan Civil War Ceasefire News
+news_event = {
+	id = libya.31
+	title = libya.31.t
+	desc = libya.31.d
+	picture = GFX_HRL_libyan_civil_war_end
+	major = yes
+	fire_only_once = yes
+	is_triggered_only = yes
+	
+	trigger = {
+	}
+	immediate = {
+		hidden_effect = {
+		}
+	}
+
+	option = {
+		name = libya.31.a
+	}
+}
+
+#Government of National Unity Formed
+country_event = {
+	id = libya.32
+	title = libya.32.t
+	desc = libya.32.d
+	picture = report_event_equipment
+	
+	fire_only_once = yes
+	is_triggered_only = yes
+	
+	trigger = {
+	}
+	immediate = {
+		hidden_effect = {
+			random_list = {
+				10 = {
+					country_event = {
+						id = libya.33
+						days = 287
+					}
+				}
+				10 = {
+					country_event = {
+						id = libya.34
+						days = 287
+					}
+				}
+				10 = {
+					country_event = {
+						id = libya.35
+						days = 287
+					}
+				}
+				10 = {
+					country_event = {
+						id = libya.36
+						days = 287
+					}
+				}
+			}
+		}
+	}
+
+	option = {
+		name = libya.32.a
+	}
+}
+
+#Gaddafi Elected
+country_event = {
+	id = libya.33
+	title = libya.33.t
+	desc = libya.33.d
+	picture = report_event_equipment
+	
+	fire_only_once = yes
+	is_triggered_only = yes
+	
+	trigger = {
+	}
+	immediate = {
+		hidden_effect = {
+			set_politics = {
+				ruling_party = communist
+				elections_allowed = yes
+			}
+			if = {
+				limit = {
+					tag = LBA 
+				}
+				create_country_leader = {
+					name = HRL_saif_islam_gaddafi_char
+					picture = "gfx/Leaders/HRL/Saif al-Islam Gaddafi.dds"
+					expire = "1.1.1.1"
+					ideology = hybrid_regime
+				}
+			}
+			country_event = {
+				id = libya.40
+				days = 90
+			}
+			random_list = {
+				50 = {
+					country_event = {
+						id = libya.37
+						days = 1200
+					}
+				}
+				50 = {
+				}
+			}
+		}
+	}
+
+	option = {
+		name = libya.33.a
+	}
+}
+
+#Dheibeh Elected
+country_event = {
+	id = libya.34
+	title = libya.34.t
+	desc = libya.34.d
+	picture = report_event_equipment
+	
+	fire_only_once = yes
+	is_triggered_only = yes
+	
+	trigger = {
+	}
+	immediate = {
+		hidden_effect = {
+			set_global_flag = HRL_pro_algeria_global
+			set_politics = {
+				ruling_party = authoritarian_democrat
+				elections_allowed = yes
+			}
+			create_country_leader = {
+				name = LBA_abdul_hamid_dbeibeh
+				picture = "gfx/leaders/LBA/LBA_abdul_hamid_dbeibeh.png"
+				expire = "1.1.1.1"
+				ideology = hybrid_regime
+			}
+			country_event = {
+				id = libya.39
+				days = 90
+			}
+		}
+	}
+
+	option = {
+		name = libya.34.a
+	}
+}
+
+#Jalil Elected
+country_event = {
+	id = libya.35
+	title = libya.35.t
+	desc = libya.35.d
+	picture = report_event_equipment
+	
+	fire_only_once = yes
+	is_triggered_only = yes
+	
+	trigger = {
+	}
+	immediate = {
+		hidden_effect = {
+			set_politics = {
+				ruling_party = conservative
+				elections_allowed = yes
+			}
+			create_country_leader = {
+				name = LBA_mustafa_abdul_jalil
+				picture = "gfx/leaders/LBA/LBA_mustafa_abdul_jalil.png"
+				expire = "1.1.1.1"
+				ideology = islamic_democrat
+			}
+			set_global_flag = LBA_pro_morocco_global
+			country_event = {
+				id = libya.38
+				days = 90
+			}
+		}
+	}
+
+	option = {
+		name = libya.35.a
+	}
+}
+
+#Elections Suspended
+country_event = {
+	id = libya.36
+	title = libya.36.t
+	desc = libya.36.d
+	picture = report_event_equipment
+	
+	fire_only_once = yes
+	is_triggered_only = yes
+	
+	trigger = {
+	}
+	immediate = {
+		hidden_effect = {
+			news_event = libya.45
+		}
+	}
+
+	option = {
+		name = libya.36.a
+	}
+}
+
+#Gaddafi Turns Autocrat
+country_event = {
+	id = libya.37
+	title = libya.37.t
+	desc = libya.37.d
+	picture = report_event_equipment
+	
+	fire_only_once = yes
+	is_triggered_only = yes
+	
+	trigger = {
+	}
+	immediate = {
+		hidden_effect = {
+			set_politics = {
+				ruling_party = communist
+				elections_allowed = no
+			}
+		}
+	}
+	option = {
+		name = libya.37.a
+	}
+}
+
+#Restoration of Monarchy
+country_event = {
+	id = libya.38
+	title = libya.38.t
+	desc = libya.38.d
+	picture = report_event_equipment
+	
+	fire_only_once = yes
+	is_triggered_only = yes
+	
+	trigger = {
+	}
+	immediate = {
+		hidden_effect = {
+			news_event = libya.46
+			add_popularity = {
+				ideology = conservative
+				popularity = 0.20
+			}
+			set_cosmetic_tag = LBA_united_kingdom_of_libya
+			set_politics = {
+				ruling_party = conservative
+			}
+			retire_ideology_leader = conservative
+			add_country_leader_role = {
+				character = LBA_Mohammed_El_Senussi_char
+				promote_leader = yes
+				country_leader = {
+					ideology = constitutionalist
+					traits = {
+						
+					}
+				}
+			}
+		}
+	}
+
+	option = {
+		name = libya.38.a
+	}
+}
+
+#Federal Republic of Libya
+country_event = {
+	id = libya.39
+	title = libya.39.t
+	desc = libya.39.d
+	picture = report_event_equipment
+	
+	fire_only_once = yes
+	is_triggered_only = yes
+	
+	trigger = {
+	}
+	immediate = {
+		hidden_effect = {
+			set_cosmetic_tag = LBA_federal_republic_of_libya
+		}
+	}
+
+	option = {
+		name = libya.39.a
+	}
+}
+
+#Libyan Arab Islamic Republic Declared
+country_event = {
+	id = libya.40
+	title = libya.40.t
+	desc = libya.40.d
+	picture = report_event_equipment
+	
+	fire_only_once = yes
+	is_triggered_only = yes
+	
+	trigger = {
+	}
+	immediate = {
+		hidden_effect = {
+			set_cosmetic_tag = LBA_libyan_arab_islamic_republic
+		}
+	}
+
+	option = {
+		name = libya.40.a
+	}
+}
+
+#Haftar Wins
+country_event = {
+	id = libya.41
+	title = libya.41.t
+	desc = libya.41.d
+	picture = report_event_equipment
+	
+	fire_only_once = yes
+	is_triggered_only = yes
+	
+	trigger = {
+	}
+	immediate = {
+		hidden_effect = {
+			set_global_flag = HRL_pro_algeria_global
+			set_cosmetic_tag = LBA_libyan_arab_republic
+			set_politics = {
+				ruling_party = authoritarian_democrat
+				elections_allowed = yes
+			}
+			create_country_leader = {
+				name = HRL_khalifa_haftar_char
+				picture = "gfx/leaders/HRL/Khalifa_Belgacem_Haftar.png"
+				expire = "1.1.1.1"
+				ideology = military_democracy
+			}
+			country_event = {
+				id = libya.44
+				days = 1800
+				random_days = 200
+			}
+		}
+	}
+
+	option = {
+		name = libya.41.a
+	}
+}
+
+#Government Victory
+country_event = {
+	id = libya.42
+	title = libya.42.t
+	desc = libya.42.d
+	picture = report_event_equipment
+	
+	fire_only_once = yes
+	is_triggered_only = yes
+	
+	trigger = {
+		tag = LBA
+	}
+	immediate = {
+		hidden_effect = {
+			random_list = {
+				50 = {
+					country_event = {
+						id = libya.35
+						days = 180
+					}
+				}
+				50 = {
+					country_event = {
+						id = libya.43
+						days = 180
+					}
+				}
+			}
+		}
+	}
+
+	option = {
+		name = libya.42.a
+	}
+}
+
+#Abdusahmain Elected
+country_event = {
+	id = libya.43
+	title = libya.43.t
+	desc = libya.43.d
+	picture = report_event_equipment
+	
+	fire_only_once = yes
+	is_triggered_only = yes
+	
+	trigger = {
+	}
+	immediate = {
+		hidden_effect = {
+			set_politics = {
+				ruling_party = conservative
+				elections_allowed = yes
+			}
+			create_country_leader = {
+				name = LBA_nouri_abusahmain
+				picture = "gfx/leaders/LBA/LBA_nouri_abusahmain.png"
+				expire = "1.1.1.1"
+				ideology = islamic_democrat
+			}
+		}
+	}
+
+	option = {
+		name = libya.43.a
+	}
+	option = {
+		name = libya.43.b
+	}
+}
+
+#Haftar Dies
+country_event = {
+	id = libya.44
+	title = libya.44.t
+	desc = libya.44.d
+	picture = report_event_equipment
+	
+	fire_only_once = yes
+	is_triggered_only = yes
+	
+	trigger = {
+	}
+	immediate = {
+		hidden_effect = {
+			set_politics = {
+				ruling_party = communist
+				elections_allowed = yes
+			}
+			create_country_leader = {
+				name = LBA_saddam_haftar
+				picture = "gfx/leaders/LBA/LBA_saddam_haftar.png"
+				expire = "1.1.1.1"
+				ideology = left_baathism
+			}
+		}
+	}
+
+	option = {
+		name = libya.44.a
+	}
+}
+
+#Libyan Elections Suspended
+news_event = {
+	id = libya.45
+	title = libya.45.t
+	desc = libya.45.d
+	picture = GFX_HRL_libyan_civil_war_end
+	major = yes
+	fire_only_once = yes
+	is_triggered_only = yes
+	
+	trigger = {
+	}
+	immediate = {
+		hidden_effect = {
+		}
+	}
+
+	option = {
+		name = libya.45.a
+	}
+}
+
+#Kingdom of Libya Restored
+news_event = {
+	id = libya.46
+	title = libya.46.t
+	desc = libya.46.d
+	picture = GFX_HRL_libyan_civil_war_end
+	major = yes
+	fire_only_once = yes
+	is_triggered_only = yes
+	
+	trigger = {
+	}
+	immediate = {
+		hidden_effect = {
+		}
+	}
+
+	option = {
+		name = libya.46.a
+	}
+}
+
+#New Libyan Warlord Era
+news_event = {
+	id = libya.47
+	title = libya.47.t
+	desc = libya.47.d
+	picture = GFX_HRL_libyan_civil_war_end
+	major = yes
+	fire_only_once = yes
+	is_triggered_only = yes
+	
+	trigger = {
+	}
+	immediate = {
+		hidden_effect = {
+		}
+	}
+
+	option = {
+		name = libya.47.a
+	}
+}

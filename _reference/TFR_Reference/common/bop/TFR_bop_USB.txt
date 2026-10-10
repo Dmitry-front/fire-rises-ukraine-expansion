@@ -1,0 +1,151 @@
+USB_trust_bop = {
+	initial_value = 0
+	left_side = USB_bad_side
+	right_side = USB_good_side
+	decision_category = USB_balance_of_power_category
+
+	### Medium trust
+	range = {
+		id = USB_medium_trust_range
+		min = -0.15
+		max = 0.15
+		modifier = {
+		}
+		on_activate = {
+			custom_effect_tooltip = GER_high_trust_range_tooltip
+		}
+		on_deactivate = {
+		}
+	}
+
+	### Bad Side
+	side = {
+		id = USB_bad_side	
+		icon = "GFX_bop_USB_bop_low_pop_DEM"
+
+		range = {
+			id = USB_low_trust_range
+			min = -0.45
+			max = -0.15
+			modifier = {
+				stability_factor = -0.05
+				war_support_factor = -0.05
+				political_power_gain = -0.1
+			}
+			on_activate = {
+				custom_effect_tooltip = GER_high_trust_range_tooltip
+				USB_update_agenda_decision_cost = yes
+			}
+			on_deactivate = {
+			}
+		}
+
+		range = {
+			id = USB_very_low_trust_range
+			min = -0.75
+			max = -0.45
+			modifier = {
+				stability_factor = -0.1
+				war_support_factor = -0.1
+				political_power_gain = -0.2
+			}
+			on_activate = {
+				custom_effect_tooltip = GER_very_low_trust_range_tooltip
+				USB_update_agenda_decision_cost = yes
+			}
+			on_deactivate = {
+			}
+		}
+
+		range = {
+			id = USB_overwhelmingly_low_trust_range
+			min = -1
+			max = -0.75
+			modifier = {
+				stability_factor = -0.15
+				war_support_factor = -0.15
+				political_power_gain = -0.3
+			}
+			on_activate = {
+				custom_effect_tooltip = GER_overwhelmingly_low_trust_range_tooltip
+				USB_update_agenda_decision_cost = yes
+				if = {
+					limit = {
+						has_country_leader = {
+							character = USB_hillary_clinton_char
+							ruling_only = yes
+						}
+					}
+					hidden_effect = {
+						country_event = {
+							id = usb.127
+							days = 5
+						}
+					}
+				}
+			}
+			on_deactivate = {
+			}
+		}
+	}
+
+	### Good Side
+	side = {
+		id = USB_good_side	
+		icon = "GFX_bop_USB_bop_high_pop_DEM"
+
+		range = {
+			id = USB_high_trust_range
+			min = 0.15
+			max = 0.45
+			modifier = {
+				stability_factor = 0.05
+				war_support_factor = 0.05
+				conscription_factor = 0.05
+				mobilization_speed = 0.05
+			}
+			on_activate = {
+				custom_effect_tooltip = GER_high_trust_range_tooltip
+				USB_update_agenda_decision_cost = yes
+			}
+			on_deactivate = {
+			}
+		}
+
+		range = {
+			id = USB_very_high_trust_range
+			min = 0.45
+			max = 0.75
+			modifier = {
+				stability_factor = 0.1
+				war_support_factor = 0.1
+				conscription_factor = 0.1
+				mobilization_speed = 0.1
+			}
+			on_activate = {
+				custom_effect_tooltip = GER_very_high_trust_range_tooltip
+				USB_update_agenda_decision_cost = yes
+			}
+			on_deactivate = {
+			}
+		}
+
+		range = {
+			id = USB_overwhelmingly_high_trust_range
+			min = 0.75
+			max = 1
+			modifier = {
+				stability_factor = 0.15
+				war_support_factor = 0.15
+				conscription_factor = 0.15
+				mobilization_speed = 0.15
+			}
+			on_activate = {
+				custom_effect_tooltip = GER_overwhelmingly_high_trust_range_tooltip
+				USB_update_agenda_decision_cost = yes
+			}
+			on_deactivate = {
+			}
+		}
+	}
+}

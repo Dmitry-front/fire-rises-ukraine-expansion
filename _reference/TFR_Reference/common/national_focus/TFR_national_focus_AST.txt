@@ -1,0 +1,1443 @@
+
+# ## Commonwealth of Australia ##
+# # Focus Tree Roots #
+# focus_tree = {
+# 	id = AST_Starting_Focus_Tree
+# 	country = {
+# 		factor = 0
+# 	}
+# 	default = no
+# 	#shared_focus = AST_a_nation_in_crisis
+# }
+
+focus_tree = {
+	id = AST_Pandemic_Focus_Tree
+	country = {
+		factor = 0
+		modifier = {
+			add = 10
+			tag = AST
+		}
+	}
+	default = no
+	#shared_focus = AST_the_covid_pandemic
+	shared_focus = AST_war_beyond_the_seas
+}
+
+# # Shared Focuses #
+# shared_focus = {
+# 	id = AST_a_nation_in_crisis
+# 	icon = GFX_goal_unknown
+# 	cost = 5
+# 	ai_will_do = {
+# 		factor = 1
+# 	}
+# 	x = 9
+# 	y = 0
+# 	completion_reward = {
+# 		log = "[GetDateText]: [Root.GetName]: Focus AST_a_nation_in_crisis"
+# 		custom_effect_tooltip = AST_a_nation_in_crisis_tt
+# 		hidden_effect = {
+# 			AST_National_Devastation_Setup = yes
+# 		}
+# 		set_country_flag = AST_National_Devastation_flag
+# 	}
+# }
+
+# # Bushfires #
+# shared_focus = {
+# 	id = AST_combat_the_bushfires
+# 	icon = GFX_AST_hold_the_line
+# 	cost = 5
+# 	ai_will_do = {
+# 		factor = 1
+# 	}
+# 	prerequisite = {
+# 		focus = AST_a_nation_in_crisis
+# 	}
+# 	mutually_exclusive = {
+# 		focus = AST_support_the_farmers
+# 	}
+# 	x = -1
+# 	y = 1
+# 	relative_position_id = AST_a_nation_in_crisis
+# 	completion_reward = {
+# 		log = "[GetDateText]: [Root.GetName]: Focus AST_combat_the_bushfires"
+# 		add_political_power = 50
+# 		subtract_from_variable = {
+# 			var = NSW_bushfire_devastation
+# 			value = 2.5
+# 			tooltip = NSW_bushfire_low_decrease_tt
+# 		}
+# 	}
+# }
+
+# shared_focus = {
+# 	id = AST_support_the_farmers
+# 	icon = GFX_AST_support_the_farmers
+# 	cost = 5
+# 	ai_will_do = {
+# 		factor = 1
+# 	}
+# 	prerequisite = {
+# 		focus = AST_a_nation_in_crisis
+# 	}
+# 	mutually_exclusive = {
+# 		focus = AST_combat_the_bushfires
+# 	}
+# 	x = 1
+# 	y = 1
+# 	relative_position_id = AST_a_nation_in_crisis
+# 	completion_reward = {
+# 		log = "[GetDateText]: [Root.GetName]: Focus AST_support_the_farmers"
+# 		add_stability = 0.1
+# 		subtract_from_variable = {
+# 			var = NSW_drought_devastation
+# 			value = 5
+# 			tooltip = NSW_drought_med_decrease_tt
+# 		}
+# 	}
+# }
+
+# shared_focus = {
+# 	id = AST_emergency_fire_service_support
+# 	icon = GFX_AST_emergency_fire_support
+# 	cost = 5
+# 	ai_will_do = {
+# 		factor = 1
+# 	}
+# 	prerequisite = {
+# 		focus = AST_combat_the_bushfires
+# 	}
+# 	x = -1
+# 	y = 1
+# 	relative_position_id = AST_combat_the_bushfires
+# 	completion_reward = {
+# 		log = "[GetDateText]: [Root.GetName]: Focus AST_emergency_fire_service_support"
+# 		set_temp_variable = {
+# 			var = debt_var_temp
+# 			value = 25
+# 		}
+# 		add_debt_with_inflation = yes
+# 		subtract_from_variable = {
+# 			var = NSW_bushfire_devastation
+# 			value = 5
+# 			tooltip = NSW_bushfire_med_decrease_tt
+# 		}
+# 		subtract_from_variable = {
+# 			var = VIC_bushfire_devastation
+# 			value = 2.5
+# 			tooltip = VIC_bushfire_low_decrease_tt
+# 		}
+# 	}
+# }
+
+# shared_focus = {
+# 	id = AST_introduce_water_rationing
+# 	icon = GFX_AST_introduce_water_rationing
+# 	cost = 5
+# 	ai_will_do = {
+# 		factor = 1
+# 	}
+# 	prerequisite = {
+# 		focus = AST_support_the_farmers
+# 	}
+# 	x = 1
+# 	y = 1
+# 	relative_position_id = AST_support_the_farmers
+# 	completion_reward = {
+# 		log = "[GetDateText]: [Root.GetName]: Focus AST_support_the_farmers"
+# 		add_stability = -0.05
+# 		add_popularity = {
+# 			ideology = market_liberal
+# 			popularity = -0.1
+# 		}
+# 		subtract_from_variable = {
+# 			var = NSW_drought_devastation
+# 			value = 2.5
+# 			tooltip = NSW_drought_low_decrease_tt
+# 		}
+# 	}
+# }
+
+# shared_focus = {
+# 	id = AST_deploy_the_adf
+# 	icon = GFX_AST_deploy_the_adf
+# 	cost = 5
+# 	ai_will_do = {
+# 		factor = 1
+# 	}
+# 	prerequisite = {
+# 		focus = AST_support_the_farmers
+# 		focus = AST_combat_the_bushfires
+# 	}
+# 	x = -1
+# 	y = 1
+# 	relative_position_id = AST_support_the_farmers
+# 	completion_reward = {
+# 		log = "[GetDateText]: [Root.GetName]: Focus AST_deploy_the_adf"
+# 		add_war_support = 0.05
+# 		subtract_from_variable = {
+# 			var = NSW_bushfire_devastation
+# 			value = 5
+# 			tooltip = NSW_bushfire_med_decrease_tt
+# 		}
+# 	}
+# }
+
+# shared_focus = {
+# 	id = AST_the_bushfire_recovery_plan
+# 	icon = GFX_AST_The_Bushfire_Recovery_Plan
+# 	cost = 5
+# 	ai_will_do = {
+# 		factor = 1
+# 	}
+# 	prerequisite = {
+# 		focus = AST_deploy_the_adf
+# 	}
+# 	prerequisite = {
+# 		focus = AST_emergency_fire_service_support
+# 		focus = AST_introduce_water_rationing
+# 	}
+# 	x = 0
+# 	y = 1
+# 	relative_position_id = AST_deploy_the_adf
+# 	completion_reward = {
+# 		log = "[GetDateText]: [Root.GetName]: Focus AST_the_bushfire_recovery_plan"
+# 		add_political_power = 100
+# 		add_timed_idea = {
+# 			idea = AST_idea_bushfire_recovery_plan
+# 			days = 182
+# 		}
+# 		set_temp_variable = {
+# 			var = debt_var_temp
+# 			value = 250
+# 		}
+# 		add_debt_with_inflation = yes
+# 		clr_country_flag = AST_National_Devastation_flag
+# 	}
+# }
+
+# shared_focus = {
+# 	id = AST_national_donation_campaign
+# 	icon = GFX_AST_National_Donation_Campaign
+# 	cost = 5
+# 	ai_will_do = {
+# 		factor = 1
+# 	}
+# 	prerequisite = {
+# 		focus = AST_the_bushfire_recovery_plan
+# 	}
+# 	allow_branch = {
+# 		has_completed_focus = AST_the_bushfire_recovery_plan
+# 	}
+# 	x = -2
+# 	y = 1
+# 	relative_position_id = AST_the_bushfire_recovery_plan
+# 	completion_reward = {
+# 		log = "[GetDateText]: [Root.GetName]: Focus AST_national_donation_campaign"
+# 		add_stability = 0.1
+# 		add_ideas = {
+# 			high_farming
+# 		}
+# 	}
+# }
+
+# shared_focus = {
+# 	id = AST_expand_emergency_water_reserve
+# 	icon = GFX_AST_expand_emergency_water_reserves
+# 	cost = 5
+# 	ai_will_do = {
+# 		factor = 1
+# 	}
+# 	prerequisite = {
+# 		focus = AST_the_bushfire_recovery_plan
+# 	}
+# 	allow_branch = {
+# 		has_completed_focus = AST_the_bushfire_recovery_plan
+# 	}
+# 	x = 2
+# 	y = 1
+# 	relative_position_id = AST_the_bushfire_recovery_plan
+# 	completion_reward = {
+# 		log = "[GetDateText]: [Root.GetName]: Focus AST_expand_emergency_water_reserve"
+# 		set_temp_variable = {
+# 			var = debt_var_temp
+# 			value = 10
+# 		}
+# 		add_debt_with_inflation = yes
+# 		285 = {
+# 			add_extra_state_shared_building_slots = 2
+# 			add_building_construction = {
+# 				type = synthetic_refinery
+# 				level = 2
+# 				instant_build = yes
+# 			}
+# 		}
+# 		517 = {
+# 			add_extra_state_shared_building_slots = 1
+# 			add_building_construction = {
+# 				type = synthetic_refinery
+# 				level = 1
+# 				instant_build = yes
+# 			}
+# 		}
+# 	}
+# }
+
+# shared_focus = {
+# 	id = AST_assure_the_public
+# 	icon = GFX_AST_reassure_the_public
+# 	cost = 5
+# 	ai_will_do = {
+# 		factor = 1
+# 	}
+# 	prerequisite = {
+# 		focus = AST_the_bushfire_recovery_plan
+# 	}
+# 	allow_branch = {
+# 		has_completed_focus = AST_the_bushfire_recovery_plan
+# 	}
+# 	x = 0
+# 	y = 1
+# 	relative_position_id = AST_the_bushfire_recovery_plan
+# 	completion_reward = {
+# 		log = "[GetDateText]: [Root.GetName]: Focus AST_national_donation_campaign"
+# 		add_stability = 0.05
+# 		add_popularity = {
+# 			ideology = market_liberal
+# 			popularity = 0.025
+# 		}
+# 	}
+# }
+
+# shared_focus = {
+# 	id = AST_the_worst_has_yet_to_come
+# 	icon = GFX_AST_the_worst_has_yet_to_come
+# 	cost = 5
+# 	ai_will_do = {
+# 		factor = 1
+# 	}
+# 	prerequisite = {
+# 		focus = AST_national_donation_campaign
+# 	}
+# 	prerequisite = {
+# 		focus = AST_assure_the_public
+# 	}
+# 	prerequisite = {
+# 		focus = AST_expand_emergency_water_reserve
+# 	}
+# 	x = 0
+# 	y = 1
+# 	relative_position_id = AST_assure_the_public
+# 	completion_reward = {
+# 		log = "[GetDateText]: [Root.GetName]: Focus AST_the_worst_has_yet_to_come"
+# 		focus_unlock = yes
+# 	}
+# }
+
+# # Pandemic Tree
+# shared_focus = {
+# 	id = AST_the_covid_pandemic
+# 	icon = GFX_goal_unknown
+# 	cost = 2
+# 	ai_will_do = {
+# 		factor = 1
+# 	}
+# 	x = 9
+# 	y = 0
+# 	completion_reward = {
+# 		log = "[GetDateText]: [Root.GetName]: Focus AST_the_covid_pandemic"
+# 	}
+# }
+
+# shared_focus = {
+# 	id = AST_introduce_preventative_measures
+# 	icon = GFX_goal_unknown
+# 	cost = 3
+# 	ai_will_do = {
+# 		factor = 1
+# 	}
+# 	prerequisite = {
+# 		focus = AST_the_covid_pandemic
+# 	}
+# 	x = -1
+# 	y = 1
+# 	relative_position_id = AST_the_covid_pandemic
+# 	completion_reward = {
+# 		log = "[GetDateText]: [Root.GetName]: Focus AST_introduce_preventative_measures"
+# 		add_political_power = 50
+# 	}
+# }
+
+# shared_focus = {
+# 	id = AST_quarentine_infected_individuals
+# 	icon = GFX_goal_unknown
+# 	cost = 3
+# 	ai_will_do = {
+# 		factor = 1
+# 	}
+# 	prerequisite = {
+# 		focus = AST_the_covid_pandemic
+# 	}
+# 	x = 1
+# 	y = 1
+# 	relative_position_id = AST_the_covid_pandemic
+# 	completion_reward = {
+# 		log = "[GetDateText]: [Root.GetName]: Focus AST_quarentine_infected_individuals"
+# 		add_political_power = 50
+# 	}
+# }
+
+# shared_focus = {
+# 	id = AST_enforce_mask_mandates
+# 	icon = GFX_goal_unknown
+# 	cost = 3
+# 	ai_will_do = {
+# 		factor = 1
+# 	}
+# 	prerequisite = {
+# 		focus = AST_introduce_preventative_measures
+# 	}
+# 	x = -1
+# 	y = 1
+# 	relative_position_id = AST_introduce_preventative_measures
+# 	completion_reward = {
+# 		log = "[GetDateText]: [Root.GetName]: Focus AST_enforce_mask_mandates"
+# 		add_political_power = 50
+# 	}
+# }
+
+# shared_focus = {
+# 	id = AST_introduce_mandatory_testing
+# 	icon = GFX_goal_unknown
+# 	cost = 3
+# 	ai_will_do = {
+# 		factor = 1
+# 	}
+# 	prerequisite = {
+# 		focus = AST_introduce_preventative_measures
+# 	}
+# 	prerequisite = {
+# 		focus = AST_quarentine_infected_individuals
+# 	}
+# 	x = 1
+# 	y = 1
+# 	relative_position_id = AST_introduce_preventative_measures
+# 	completion_reward = {
+# 		log = "[GetDateText]: [Root.GetName]: Focus AST_introduce_mandatory_testing"
+# 		add_political_power = 50
+# 	}
+# }
+
+# shared_focus = {
+# 	id = AST_restrict_overseas_travel
+# 	icon = GFX_goal_unknown
+# 	cost = 3
+# 	ai_will_do = {
+# 		factor = 1
+# 	}
+# 	prerequisite = {
+# 		focus = AST_quarentine_infected_individuals
+# 	}
+# 	x = 1
+# 	y = 1
+# 	relative_position_id = AST_quarentine_infected_individuals
+# 	completion_reward = {
+# 		log = "[GetDateText]: [Root.GetName]: Focus AST_restrict_overseas_travel"
+# 		add_political_power = 50
+# 	}
+# }
+
+# # Government
+# shared_focus = {
+# 	id = AST_initiate_national_lockdowns
+# 	icon = GFX_goal_unknown
+# 	cost = 3
+# 	ai_will_do = {
+# 		factor = 1
+# 	}
+# 	prerequisite = {
+# 		focus = AST_enforce_mask_mandates
+# 	}
+# 	prerequisite = {
+# 		focus = AST_introduce_mandatory_testing
+# 	}
+# 	prerequisite = {
+# 		focus = AST_restrict_overseas_travel
+# 	}
+# 	mutually_exclusive = {
+# 		focus = AST_the_national_resistance
+# 	}
+# 	x = -3
+# 	y = 1
+# 	relative_position_id = AST_enforce_mask_mandates
+# 	completion_reward = {
+# 		log = "[GetDateText]: [Root.GetName]: Focus AST_initiate_national_lockdowns"
+# 		custom_effect_tooltip = AST_initiate_national_lockdowns_tt
+# 	}
+# }
+
+# # Rightwing
+# shared_focus = {
+# 	id = AST_the_national_resistance
+# 	icon = GFX_goal_unknown
+# 	cost = 3
+# 	ai_will_do = {
+# 		factor = 1
+# 	}
+# 	prerequisite = {
+# 		focus = AST_enforce_mask_mandates
+# 	}
+# 	prerequisite = {
+# 		focus = AST_introduce_mandatory_testing
+# 	}
+# 	prerequisite = {
+# 		focus = AST_restrict_overseas_travel
+# 	}
+# 	mutually_exclusive = {
+# 		focus = AST_initiate_national_lockdowns
+# 	}
+# 	x = 3
+# 	y = 1
+# 	relative_position_id = AST_restrict_overseas_travel
+# 	completion_reward = {
+# 		log = "[GetDateText]: [Root.GetName]: Focus AST_the_national_resistance"
+# 		custom_effect_tooltip = AST_the_national_resistance_tt
+# 	}
+# }
+
+# shared_focus = {
+# 	id = AST_defy_lockdown_mandates
+# 	icon = GFX_goal_unknown
+# 	cost = 3
+# 	ai_will_do = {
+# 		factor = 1
+# 	}
+# 	prerequisite = {
+# 		focus = AST_the_national_resistance
+# 	}
+# 	x = 0
+# 	y = 1
+# 	relative_position_id = AST_the_national_resistance
+# 	completion_reward = {
+# 		log = "[GetDateText]: [Root.GetName]: Focus AST_defy_lockdown_mandates"
+# 	}
+# }
+
+###GAW
+shared_focus = {
+	id = AST_war_beyond_the_seas
+	icon = GFX_focus_AST_war_beyond_the_seas
+	x = 0
+	y = 0
+	cost = 5
+	available_if_capitulated = yes
+	ai_will_do = {
+		factor = 100
+	}
+	available = {
+		always = no
+	}
+	allow_branch = {
+		has_global_flag = pan_asian_war_ongoing
+		NOT = {
+			is_ally_with = PRC
+		}
+	}
+	completion_reward = {
+	}
+}
+shared_focus = {
+	id = AST_secure_the_indian_ocean
+	icon = GFX_focus_AST_secure_the_indian_ocean
+	x = -4
+	y = 1
+	cost = 4.3
+	available_if_capitulated = yes
+	relative_position_id = AST_war_beyond_the_seas
+	ai_will_do = {
+		factor = 100
+	}
+	prerequisite = {
+		focus = AST_war_beyond_the_seas
+	}
+	available = {
+	}
+	completion_reward = {
+		522 = {
+			add_extra_state_shared_building_slots = 3
+			add_building_construction = {
+				type = dockyard
+				level = 3
+				instant_build = yes
+			}
+			add_building_construction = {
+				type = naval_base
+				level = 5
+				province = 1652
+				instant_build = yes
+			}
+		}
+		712 = {
+			add_manpower = 5000
+			add_extra_state_shared_building_slots = 1
+			add_building_construction = {
+				type = dockyard
+				level = 1
+				instant_build = yes
+			}
+			add_building_construction = {
+				type = naval_base
+				level = 3
+				province = 13002
+				instant_build = yes
+			}
+		}
+		711 = {
+			add_manpower = 5000
+			add_extra_state_shared_building_slots = 1
+			add_building_construction = {
+				type = dockyard
+				level = 1
+				instant_build = yes
+			}
+			add_building_construction = {
+				type = naval_base
+				level = 3
+				province = 13005
+				instant_build = yes
+			}
+		}
+		custom_effect_tooltip = tooltip_white_line
+		custom_effect_tooltip = AST_secure_the_indian_ocean_tt
+		hidden_effect = {
+			damage_units = {
+				state = 422
+				damage = 0.3
+				org_damage = 0.3
+				str_damage = 0.3
+				ratio = yes
+				army = yes
+				navy = no
+			}
+			load_oob = AST_sri_lanka
+		}
+	}
+}
+shared_focus = {
+	id = AST_south_china_sea_excursion
+	icon = GFX_focus_AST_south_china_sea_excursion
+	x = -4
+	y = 3
+	cost = 4.3
+	available_if_capitulated = yes
+	relative_position_id = AST_war_beyond_the_seas
+	ai_will_do = {
+		factor = 100
+	}
+	prerequisite = {
+		focus = AST_secure_the_indian_ocean
+	}
+	available = {
+	}
+	completion_reward = {
+		custom_effect_tooltip = AST_south_china_sea_excursion_tt
+		custom_effect_tooltip = tooltip_white_line
+		add_timed_idea = {
+			idea = AST_south_china_sea_excursion_idea
+			days = 100
+		}
+		hidden_effect = {
+			if = {
+				limit = { has_dlc = "Man the Guns" }
+				load_oob = AST_south_china_excursion_fleet
+			}
+			else = {
+				load_oob = AST_south_china_excursion_fleet_legacy
+			}
+		}
+	}
+}
+shared_focus = {
+	id = AST_support_the_sea_defensive_effort
+	icon = GFX_focus_AST_support_the_sea_defensive_effort
+	x = -2
+	y = 1
+	cost = 4.3
+	available_if_capitulated = yes
+	relative_position_id = AST_war_beyond_the_seas
+	ai_will_do = {
+		factor = 100
+	}
+	prerequisite = {
+		focus = AST_war_beyond_the_seas
+	}
+	available = {
+	}
+	completion_reward = {
+		custom_effect_tooltip = AST_support_the_sea_defensive_effort_tt
+		custom_effect_tooltip = tooltip_white_line
+		every_country = {
+			limit = {
+				OR = {
+					original_tag = BRM
+					original_tag = SIA
+					original_tag = LAO
+					original_tag = VIN
+					original_tag = CAM
+					original_tag = PHI
+					original_tag = MAL
+					original_tag = INS
+				}
+				is_ally_with = AST
+			}
+			add_offsite_building = {
+				type = arms_factory
+				level = 2
+			}
+			add_offsite_building = {
+				type = dockyard
+				level = 2
+			}
+			add_offsite_building = {
+				type = industrial_complex
+				level = 1
+			}
+		}
+		add_offsite_building = {
+			type = arms_factory
+			level = 1
+		}
+	}
+}
+shared_focus = {
+	id = AST_operation_cuppa
+	icon = GFX_focus_AST_operation_cuppa
+	x = -3
+	y = 2
+	cost = 4.3
+	available_if_capitulated = yes
+	relative_position_id = AST_war_beyond_the_seas
+	ai_will_do = {
+		factor = 100
+	}
+	prerequisite = {
+		focus = AST_secure_the_indian_ocean
+	}
+	prerequisite = {
+		focus = AST_support_the_sea_defensive_effort
+	}
+	available = {
+		INS = {
+			surrender_progress > 0.01
+		}
+		is_ally_with = INS
+	}
+	bypass = {
+		NOT = {
+			is_ally_with = INS
+		}
+	}
+	completion_reward = {
+		army_experience = 35
+		add_timed_idea = {
+			idea = AST_battle_for_the_east_indian_archipelago_idea
+			days = 100
+		}
+		custom_effect_tooltip = tooltip_white_line
+		INS = {
+			army_experience = 35
+			add_war_support = 0.1
+			add_manpower = 50000
+			add_timed_idea = {
+				idea = AST_battle_for_the_east_indian_archipelago_idea
+				days = 100
+			}
+		}
+	}
+}
+shared_focus = {
+	id = AST_invoke_the_defence_act
+	icon = GFX_focus_AST_invoke_the_defence_act
+	x = 0
+	y = 1
+	cost = 4.3
+	available_if_capitulated = yes
+	relative_position_id = AST_war_beyond_the_seas
+	ai_will_do = {
+		factor = 200
+	}
+	prerequisite = {
+		focus = AST_war_beyond_the_seas
+	}
+	available = {
+	}
+	completion_reward = {
+		custom_effect_tooltip = change_economic_law_tooltip
+		show_ideas_tooltip = war_mobilization
+		custom_effect_tooltip = tooltip_white_line
+		custom_effect_tooltip = change_mobilization_law_tooltip
+		show_ideas_tooltip = medium_conscription
+		custom_effect_tooltip = tooltip_white_line
+		add_ideas = AST_invoked_defense_act_idea
+		hidden_effect = {
+			add_ideas = war_mobilization
+			add_ideas = medium_conscription
+		}
+	}
+}
+shared_focus = {
+	id = AST_kickstart_the_defence_industry
+	icon = GFX_focus_AST_kickstart_the_defence_industry
+	x = -1
+	y = 2
+	cost = 4.3
+	available_if_capitulated = yes
+	relative_position_id = AST_war_beyond_the_seas
+	ai_will_do = {
+		factor = 100
+	}
+	prerequisite = {
+		focus = AST_invoke_the_defence_act
+	}
+	available = {
+	}
+	completion_reward = {
+		random_owned_controlled_state = {
+			limit = {
+				is_core_of = ROOT
+				state_population > 500000
+				free_building_slots = {
+					building = arms_factory
+					size > 1
+					include_locked = yes
+				}
+			}
+			add_extra_state_shared_building_slots = 2
+			add_building_construction = {
+				type = arms_factory
+				level = 2
+				instant_build = yes
+			}
+		}
+		random_owned_controlled_state = {
+			limit = {
+				is_core_of = ROOT
+				state_population > 500000
+				free_building_slots = {
+					building = arms_factory
+					size > 1
+					include_locked = yes
+				}
+			}
+			add_extra_state_shared_building_slots = 2
+			add_building_construction = {
+				type = arms_factory
+				level = 2
+				instant_build = yes
+			}
+		}
+		random_owned_controlled_state = {
+			limit = {
+				is_core_of = ROOT
+				state_population > 500000
+				free_building_slots = {
+					building = arms_factory
+					size > 1
+					include_locked = yes
+				}
+			}
+			add_extra_state_shared_building_slots = 2
+			add_building_construction = {
+				type = arms_factory
+				level = 1
+				instant_build = yes
+			}
+		}
+		random_owned_controlled_state = {
+			limit = {
+				is_core_of = ROOT
+				state_population > 500000
+				free_building_slots = {
+					building = arms_factory
+					size > 1
+					include_locked = yes
+				}
+			}
+			add_extra_state_shared_building_slots = 2
+			add_building_construction = {
+				type = arms_factory
+				level = 1
+				instant_build = yes
+			}
+		}
+		set_temp_variable = {
+			var = debt_var_temp
+			value = 50
+		}
+		add_debt_with_inflation = yes
+	}
+}
+shared_focus = {
+	id = AST_deploy_long_range_naval_weaponry
+	icon = GFX_focus_AST_deploy_long_range_naval_weaponry
+	x = -2
+	y = 3
+	cost = 4.3
+	available_if_capitulated = yes
+	relative_position_id = AST_war_beyond_the_seas
+	ai_will_do = {
+		factor = 100
+	}
+	prerequisite = {
+		focus = AST_operation_cuppa
+	}
+	prerequisite = {
+		focus = AST_kickstart_the_defence_industry
+	}
+	available = {
+	}
+	completion_reward = {
+		navy_experience = 50
+		add_doctrine_cost_reduction = {
+			cost_reduction = 0.5
+			uses = 2
+			category = cat_old_naval_doctrine
+		}
+		custom_effect_tooltip = tooltip_white_line
+		add_ideas = AST_enhanced_long_range_naval_weaponry_idea
+	}
+}
+shared_focus = {
+	id = AST_support_indian_operations
+	icon = GFX_focus_AST_support_indian_operations
+	x = -3
+	y = 4
+	cost = 4.3
+	available_if_capitulated = yes
+	relative_position_id = AST_war_beyond_the_seas
+	ai_will_do = {
+		factor = 100
+	}
+	prerequisite = {
+		focus = AST_operation_cuppa
+	}
+	prerequisite = {
+		focus = AST_australian_expeditionary_forces
+	}
+	available = {
+		1418 = {
+			is_controlled_by_ROOT_or_ally = yes
+		}
+	}
+	bypass = {
+		NOT = {
+			is_ally_with = RAJ
+		}
+	}
+	completion_reward = {
+		add_manpower = -25000
+		custom_effect_tooltip = AST_support_indian_operations_tt
+		army_experience = 35
+		custom_effect_tooltip = tooltip_white_line
+		RAJ = {
+			add_ideas = AST_RAJ_australian_assistance_in_military_operations_idea
+		}
+		hidden_effect = {
+			division_template = {			
+				name = "Australian Shock Brigade"
+				priority = 2
+				regiments = {
+				    mechanized = { x = 0 y = 0 }
+					mechanized = { x = 0 y = 1 }
+					mechanized = { x = 1 y = 0 }
+					mechanized = { x = 1 y = 1 }
+					modern_sp_artillery_brigade = { x = 2 y = 0 }
+					modern_sp_artillery_brigade = { x = 2 y = 1 }
+			    }
+				support = {
+					recon = { x = 0 y = 0 }
+					engineer = { x = 0 y = 1 }
+					artillery = { x = 0 y = 2 }
+					anti_tank = { x = 0 y = 3 }
+					spaa_company = { x = 0 y = 4 }
+				}
+			}
+			1148 = {
+	    		create_unit = {
+					division = "division_template = \"Australian Shock Brigade\" start_experience_factor = 0.6 start_equipment_factor = 1.0"
+					owner = ROOT
+					count = 4
+				}
+			}
+		}
+	}
+}
+shared_focus = {
+	id = AST_australian_expeditionary_forces
+	icon = GFX_focus_AST_australian_expeditionary_forces
+	x = 0
+	y = 3
+	cost = 4.3
+	available_if_capitulated = yes
+	relative_position_id = AST_war_beyond_the_seas
+	ai_will_do = {
+		factor = 200
+	}
+	prerequisite = {
+		focus = AST_invoke_the_defence_act
+	}
+	available = {
+	}
+	completion_reward = {
+		add_ideas = AST_australian_expeditionary_forces_idea
+	}
+}
+shared_focus = {
+	id = AST_protecting_australian_shores
+	icon = GFX_focus_AST_protecting_australian_shores
+	x = 1
+	y = 2
+	cost = 4.3
+	available_if_capitulated = yes
+	relative_position_id = AST_war_beyond_the_seas
+	ai_will_do = {
+		factor = 100
+	}
+	prerequisite = {
+		focus = AST_invoke_the_defence_act
+	}
+	available = {
+		520 = {
+			is_fully_controlled_by = AST
+		}
+		521 = {
+			is_fully_controlled_by = AST
+		}
+		285 = {
+			is_fully_controlled_by = AST
+		}
+	}
+	bypass = {
+		OR = {
+			NOT = {
+				520 = {
+					is_fully_controlled_by = AST
+				}
+			}
+			NOT = {
+				521 = {
+					is_fully_controlled_by = AST
+				}
+			}
+			NOT = {
+				285 = {
+					is_fully_controlled_by = AST
+				}
+			}
+		}
+	}
+	completion_reward = {
+		add_stability = 0.1
+		add_war_support = 0.05
+		custom_effect_tooltip = AST_protecting_australian_shores_tt
+		custom_effect_tooltip = tooltip_white_line
+		520 = {
+			add_building_construction = {
+				type = coastal_bunker
+				level = 3
+				instant_build = yes
+				province = 7669
+			}
+		}
+		521 = {
+			add_building_construction = {
+				type = coastal_bunker
+				level = 3
+				instant_build = yes
+				province = 7566
+			}
+			add_building_construction = {
+				type = coastal_bunker
+				level = 3
+				instant_build = yes
+				province = 7564
+			}
+		}
+		285 = {
+			add_building_construction = {
+				type = coastal_bunker
+				level = 3
+				instant_build = yes
+				province = 4864
+			}
+			add_building_construction = {
+				type = coastal_bunker
+				level = 3
+				instant_build = yes
+				province = 12406
+			}
+			add_building_construction = {
+				type = coastal_bunker
+				level = 3
+				instant_build = yes
+				province = 7520
+			}
+		}
+		hidden_effect = {
+			load_oob = AST_coastal_brigades
+		}
+	}
+}
+shared_focus = {
+	id = AST_operation_mandate
+	icon = GFX_focus_AST_operation_mandate
+	x = 2
+	y = 1
+	cost = 7.2
+	available_if_capitulated = yes
+	relative_position_id = AST_war_beyond_the_seas
+	ai_will_do = {
+		factor = 100
+	}
+	prerequisite = {
+		focus = AST_war_beyond_the_seas
+	}
+	mutually_exclusive = {
+		focus = AST_call_upon_the_biketawa_declaration_signatories
+	}
+	available = {
+	}
+	completion_reward = {
+		news_event = {
+			id = Australia_gaw.2
+			days = 1
+		}
+		annex_country = {
+			target = PNG
+			transfer_troops = yes
+		}
+		transfer_state = 643
+		transfer_state = 639
+		transfer_state = 633
+		transfer_state = 684
+		transfer_state = 647
+		transfer_state = 632
+		transfer_state = 726
+		hidden_effect = {
+			every_state = {
+				limit = {
+					is_core_of = PNG
+				}
+				add_core_of = AST
+			}
+			add_state_core = 643
+			add_state_core = 639
+			add_state_core = 633
+			add_state_core = 684
+			add_state_core = 647
+			add_state_core = 632
+			add_state_core = 726
+		}
+	}
+}
+shared_focus = {
+	id = AST_call_upon_the_biketawa_declaration_signatories
+	icon = GFX_focus_AST_call_upon_the_biketawa_declaration_signatories
+	x = 4
+	y = 1
+	cost = 2.9
+	available_if_capitulated = yes
+	relative_position_id = AST_war_beyond_the_seas
+	ai_will_do = {
+		factor = 100
+	}
+	prerequisite = {
+		focus = AST_war_beyond_the_seas
+	}
+	mutually_exclusive = {
+		focus = AST_operation_mandate
+	}
+	available = {
+	}
+	completion_reward = {
+		add_war_support = 0.05
+		add_manpower = 25000
+		custom_effect_tooltip = AST_call_upon_the_biketawa_declaration_signatories_tt
+		hidden_effect = {
+			division_template = {			
+				name = "South Pacific Islands Brigade"
+				priority = 1
+				regiments = {
+				    infantry = { x = 0 y = 0 }
+					infantry = { x = 0 y = 1 }
+					infantry = { x = 0 y = 2 }
+					infantry = { x = 1 y = 0 }
+					infantry = { x = 1 y = 1 }
+					infantry = { x = 1 y = 2 }
+			    }
+				support = {
+					recon = { x = 0 y = 0 }
+					engineer = { x = 0 y = 1 }
+				}
+			}
+			capital_scope = {
+	    		create_unit = {
+					division = "division_template = \"South Pacific Islands Brigade\" start_experience_factor = 0.6 start_equipment_factor = 1.0"
+					owner = ROOT
+					count = 7
+				}
+			}
+		}
+	}
+}
+shared_focus = {
+	id = AST_oceanian_forward_operating_bases
+	icon = GFX_focus_AST_oceanian_forward_operating_bases
+	x = 3
+	y = 3
+	cost = 4.3
+	available_if_capitulated = yes
+	relative_position_id = AST_war_beyond_the_seas
+	ai_will_do = {
+		factor = 100
+	}
+	prerequisite = {
+		focus = AST_operation_mandate
+		focus = AST_call_upon_the_biketawa_declaration_signatories
+	}
+	prerequisite = {
+		focus = AST_protecting_australian_shores
+	}
+	available = {
+	}
+	completion_reward = {
+		520 = {
+			add_building_construction = {
+				type = naval_base
+				level = 2
+				province = 7669
+				instant_build = yes
+			}
+		}
+		521 = {
+			add_building_construction = {
+				type = naval_base
+				level = 2
+				province = 7566
+				instant_build = yes
+			}
+		}
+		add_ideas = AST_oceanian_forward_operating_bases_idea
+	}
+}
+shared_focus = {
+	id = AST_integrate_new_zealand_military_command
+	icon = GFX_focus_AST_integrate_new_zealand_military_command
+	x = 3
+	y = 4
+	cost = 4.3
+	available_if_capitulated = yes
+	relative_position_id = AST_war_beyond_the_seas
+	ai_will_do = {
+		factor = 100
+	}
+	prerequisite = {
+		focus = AST_australian_expeditionary_forces
+	}
+	prerequisite = {
+		focus = AST_oceanian_forward_operating_bases
+	}
+	available = {
+	}
+	completion_reward = {
+		custom_effect_tooltip = AST_integrate_new_zealand_military_command_tt
+		custom_effect_tooltip = tooltip_white_line
+		NZL = {
+			add_ideas = NZL_integrated_military_command_with_australia_idea
+		}
+		hidden_effect = {
+			NZL = {
+				transfer_units_fraction = {
+					target = AST
+					size = 1
+					stockpile_ratio = 1
+					army_ratio = 1
+					navy_ratio = 1
+					air_ratio = 1
+				}
+			}
+		}
+	}
+}
+shared_focus = {
+	id = AST_focus_on_the_defence_of_taiwan
+	icon = GFX_focus_AST_focus_on_the_defence_of_taiwan
+	x = -1
+	y = 4
+	cost = 4.3
+	available_if_capitulated = yes
+	relative_position_id = AST_war_beyond_the_seas
+	ai_will_do = {
+		factor = 200
+	}
+	prerequisite = {
+		focus = AST_australian_expeditionary_forces
+	}
+	mutually_exclusive = {
+		focus = AST_prepare_to_assist_japanese_operations
+	}
+	available = {
+		1148 = {
+			is_controlled_by_ROOT_or_ally = yes
+		}
+		1149 = {
+			is_controlled_by_ROOT_or_ally = yes
+		}
+		1150 = {
+			is_controlled_by_ROOT_or_ally = yes
+		}
+		524 = {
+			is_controlled_by_ROOT_or_ally = yes
+		}
+	}
+	completion_reward = {
+		add_manpower = -50000
+		custom_effect_tooltip = AST_focus_on_the_defence_of_taiwan_tt
+		army_experience = 35
+		custom_effect_tooltip = tooltip_white_line
+		CHI = {
+			add_ideas = AST_CHI_australian_assistance_in_military_operations_idea
+		}
+		hidden_effect = {
+			division_template = {			
+				name = "Taiwan Defense Brigade"
+				priority = 1
+				regiments = {
+				    recce = { x = 0 y = 0 }
+					recce = { x = 0 y = 1 }
+					recce = { x = 0 y = 2 }
+					recce = { x = 1 y = 0 }
+					recce = { x = 1 y = 1 }
+					recce = { x = 1 y = 2 }
+					modern_sp_artillery_brigade = { x = 2 y = 0 }
+					modern_sp_artillery_brigade = { x = 2 y = 1 }
+					modern_armor = { x = 2 y = 2 }
+			    }
+				support = {
+					recon = { x = 0 y = 0 }
+					engineer = { x = 0 y = 1 }
+					artillery = { x = 0 y = 2 }
+					anti_tank = { x = 0 y = 3 }
+					spaa_company = { x = 0 y = 4 }
+				}
+			}
+			1148 = {
+	    		create_unit = {
+					division = "division_template = \"Taiwan Defense Brigade\" start_experience_factor = 0.6 start_equipment_factor = 1.0"
+					owner = ROOT
+					count = 6
+				}
+			}
+		}
+	}
+}
+shared_focus = {
+	id = AST_prepare_to_assist_japanese_operations
+	icon = GFX_focus_AST_prepare_to_assist_japanese_operations
+	x = 1
+	y = 4
+	cost = 4.3
+	available_if_capitulated = yes
+	relative_position_id = AST_war_beyond_the_seas
+	ai_will_do = {
+		factor = 200
+	}
+	prerequisite = {
+		focus = AST_australian_expeditionary_forces
+	}
+	mutually_exclusive = {
+		focus = AST_focus_on_the_defence_of_taiwan
+	}
+	available = {
+		1332 = {
+			is_controlled_by_ROOT_or_ally = yes
+		}
+	}
+	completion_reward = {
+		add_manpower = -30000
+		custom_effect_tooltip = AST_prepare_to_assist_japanese_operations_tt
+		army_experience = 20
+		custom_effect_tooltip = tooltip_white_line
+		JAP = {
+			add_ideas = AST_JAP_australian_assistance_in_military_operations_idea
+		}
+		hidden_effect = {
+			division_template = {			
+				name = "Gaijin Marines Brigade"
+				priority = 2
+				regiments = {
+				    marine = { x = 0 y = 0 }
+					marine = { x = 0 y = 1 }
+					marine = { x = 0 y = 2 }
+					marine = { x = 1 y = 0 }
+					marine = { x = 1 y = 1 }
+					marine = { x = 1 y = 2 }
+					modern_sp_artillery_brigade = { x = 2 y = 0 }
+					modern_sp_artillery_brigade = { x = 2 y = 1 }
+					mechanized = { x = 3 y = 0 }
+					mechanized = { x = 3 y = 1 }
+			    }
+				support = {
+					recon = { x = 0 y = 0 }
+					engineer = { x = 0 y = 1 }
+					artillery = { x = 0 y = 2 }
+					anti_tank = { x = 0 y = 3 }
+					spaa_company = { x = 0 y = 4 }
+				}
+			}
+			1332 = {
+	    		create_unit = {
+					division = "division_template = \"Gaijin Marines Brigade\" start_experience_factor = 0.6 start_equipment_factor = 1.0"
+					owner = ROOT
+					count = 3
+				}
+			}
+		}
+	}
+}
+shared_focus = {
+	id = AST_taking_the_dragon_down_unda
+	icon = GFX_focus_AST_taking_the_dragon_down_unda
+	x = 0
+	y = 5
+	cost = 4.3
+	available_if_capitulated = yes
+	relative_position_id = AST_war_beyond_the_seas
+	ai_will_do = {
+		factor = 100
+	}
+	prerequisite = {
+		focus = AST_focus_on_the_defence_of_taiwan
+		focus = AST_prepare_to_assist_japanese_operations
+	}
+	prerequisite = {
+		focus = AST_integrate_new_zealand_military_command
+	}
+	prerequisite = {
+		focus = AST_support_indian_operations
+	}
+	available = {
+		PRC = {
+			surrender_progress > 0.05
+		}
+	}
+	completion_reward = {
+		add_manpower = 50000
+		add_timed_idea = {
+			idea = AST_the_final_blow_idea
+			days = 80
+		}
+	}
+}

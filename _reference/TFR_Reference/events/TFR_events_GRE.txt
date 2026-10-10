@@ -1,0 +1,128 @@
+﻿add_namespace = greece
+
+#Golden Dawn take over
+country_event = {
+	id = greece.1
+	title = greece.1.t
+	desc = greece.1.d
+	picture = GFX_Greek_flag
+	
+	is_triggered_only = yes
+
+	immediate = {
+		hidden_effect = {
+			news_event = { 
+				id = news.262
+			}
+			GRE = {
+				country_event = {
+					id = greece.2
+					days = 5
+				}
+			}
+		}
+	}
+
+	option = {
+	    name = greece.1.a
+		GRE = { 
+			leave_faction = yes
+			set_politics = {
+				ruling_party = national_socialist
+				elections_allowed = no
+				last_election = "2012.12.17"
+				election_frequency = 48
+			}
+			set_popularities = {
+				national_socialist = 40
+				fascist = 35
+				authoritarian_democrat = 15
+				conservative = 10
+			}
+			remove_ideas = {
+				GRE_anti_austerity_idea
+				GRE_political_disillusionment_idea
+			}
+			end_ruling_party_wings = yes
+		}
+	}
+}
+
+#Leftists rise up
+country_event = {
+	id = greece.2
+	title = greece.2.t
+	desc = greece.2.d
+	picture = GFX_Greek_flag
+	
+	is_triggered_only = yes
+
+	immediate = {
+		hidden_effect = {
+			news_event = { 
+				id = news.252
+			}
+			GRE = {
+				country_event = {
+					id = greece.3
+					days = 2
+				}
+			}
+		}
+	}
+	
+	option = {
+		name = greece.2.a
+		load_oob = "GRE_civil_war"
+		if = {
+			limit = {
+				has_global_flag = SOV_cprf_won
+			}
+			GRE = {
+				add_ideas = FRA_Anti_Communist_Front
+			}
+		}
+		if = {
+			limit = {
+				has_global_flag = SOV_ldpr_won
+			}
+			GRK = {
+				add_ideas = FRA_The_Popular_Front
+			}
+		}
+		GRK = { 
+			add_state_core = 184
+			add_state_core = 731
+			add_state_core = 185
+			add_state_core = 47
+			add_state_core = 182
+			add_state_core = 187
+			add_state_core = 164
+			transfer_state = 182
+			transfer_state = 47
+			transfer_state = 731
+			load_oob = "GRK_civil_war"
+		}
+	}
+}
+
+#WAR
+country_event = {
+	id = greece.3
+	title = greece.3.t
+	desc = greece.3.d
+	picture = GFX_Greek_flag
+	
+	is_triggered_only = yes
+
+	option = {
+	    name = greece.3.a
+		GRE = {
+			declare_war_on = {
+				target = GRK
+				type = civil_war
+			}			
+		}	
+	}
+}
+

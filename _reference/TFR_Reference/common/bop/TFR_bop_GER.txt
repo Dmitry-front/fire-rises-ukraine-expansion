@@ -1,0 +1,321 @@
+GER_power_balance = {
+	initial_value = 0
+	left_side = GER_reichstag	
+	right_side = GER_ok_heer	
+	decision_category = GER_fascist_bop_category
+
+	#Middle
+	range = {
+		id = GER_balance_range
+		min = -0.15
+		max = 0.15
+		modifier = {
+			
+		}
+		on_activate = {
+		}
+		on_deactivate = {
+		}
+	}
+
+	#Reichstag
+	side = {
+		id = GER_reichstag
+		icon = GFX_bop_PTF_trad
+		range = {
+			id = GER_reichstag_total_control_range
+			min = -1
+			max = -0.85
+			modifier = {
+				poverty_development_monthly = 0.04
+				war_support_factor = -0.15
+				command_power_gain = 0.1
+				army_defence_factor = 0.12
+			}
+			on_activate = {
+			}
+			on_deactivate = {
+			}
+		}
+		range = {
+			id = GER_reichstag_dominant_range
+			min = -0.85
+			max = -0.65
+			modifier = {
+				poverty_development_monthly = 0.03
+				war_support_factor = -0.1
+				command_power_gain = 0.075
+				army_defence_factor = 0.09
+			}
+			on_activate = {
+			}
+			on_deactivate = {
+			}
+		}
+		range = {
+			id = GER_reichstag_alligned_range
+			min = -0.65
+			max = -0.35
+			modifier = {
+				poverty_development_monthly = 0.02
+				war_support_factor = -0.05
+				command_power_gain = 0.05
+				army_defence_factor = 0.06
+			}
+			on_activate = {
+				country_event = { id = germany.169 }
+			}
+			on_deactivate = {
+			}
+		}
+		range = {
+			id = GER_reichstag_lean_range
+			min = -0.35
+			max = -0.15
+			modifier = {
+				poverty_development_monthly = 0.01
+				war_support_factor = -0.025
+				command_power_gain = 0.025
+				army_defence_factor = 0.03 
+			}
+			on_activate = {
+			}
+			on_deactivate = {
+			}
+		}
+	}
+
+	#OKH
+	side = {
+		id = GER_ok_heer	
+		icon = GFX_bop_PTF_futurist
+		range = {
+			id = GER_heer_lean_range
+			min = 0.15
+			max = 0.35
+			modifier = {
+				society_development_monthly = 0.01
+				stability_factor = -0.025
+				political_power_gain = 0.05
+				army_attack_factor = 0.03
+			}
+			on_activate = {
+			}
+			on_deactivate = {
+			}
+		}
+		range = {
+			id = GER_ok_heer_alligned_range
+			min = 0.35
+			max = 0.65
+			modifier = {
+				stability_factor = -0.05
+				society_development_monthly = 0.02
+				political_power_gain = 0.1
+				army_attack_factor = 0.06
+			}
+			on_activate = {
+				country_event = { id = germany.170 }
+			}
+			on_deactivate = {
+			}
+		}
+		range = {
+			id = GER_ok_heer_dominant_range
+			min = 0.65
+			max = 0.85
+			modifier = {
+				stability_factor = -0.1
+				society_development_monthly = 0.03
+				political_power_gain = 0.15
+				army_attack_factor = 0.09
+			}
+			on_activate = {
+			}
+			on_deactivate = {
+			}
+		}
+		range = {
+			id = GER_ok_heer_control_range
+			min = 0.85
+			max = 1
+			modifier = {
+				stability_factor = -0.15
+				society_development_monthly = 0.04
+				political_power_gain = 0.20
+				army_attack_factor = 0.12
+			}
+			on_activate = {
+			}
+			on_deactivate = {
+			}
+		}
+	}
+}
+
+GER_trust_bop = {
+	initial_value = 0
+	left_side = GER_bad_side
+	right_side = GER_good_side
+	decision_category = GER_balance_of_power_category
+
+	### Medium trust
+	range = {
+		id = GER_medium_trust_range
+		min = -0.15
+		max = 0.15
+		modifier = {
+		}
+		on_activate = {
+			custom_effect_tooltip = GER_high_trust_range_tooltip
+			hidden_effect = {
+				if = {
+					limit = {
+						has_country_leader = {
+							character = GER_frankwalter_steinmeir
+							ruling_only = yes
+						}
+					}
+					set_portraits = {
+						character = GER_frankwalter_steinmeir
+						civilian = {
+							large = "gfx/leaders/GER/GER_frank_walter_steinmeier.png"
+						}
+					}
+				}
+			}
+		}
+		on_deactivate = {
+		}
+	}
+
+	### Bad Side
+	side = {
+		id = GER_bad_side	
+		icon = GFX_bop_GER_low_party_trust
+
+		range = {
+			id = GER_low_trust_range
+			min = -0.45
+			max = -0.15
+			modifier = {
+				stability_factor = -0.05
+				war_support_factor = -0.05
+				political_power_gain = -0.15
+			}
+			on_activate = {
+				custom_effect_tooltip = GER_high_trust_range_tooltip
+				GER_update_agenda_decision_cost = yes
+				hidden_effect = {
+					if = {
+						limit = {
+							has_country_leader = {
+								character = GER_frankwalter_steinmeir
+								ruling_only = yes
+							}
+						}
+						set_portraits = {
+							character = GER_frankwalter_steinmeir
+							civilian = {
+								large = "gfx/leaders/GER/GER_frank_walter_steinmeier2.png"
+							}
+						}
+					}
+				}
+			}
+			on_deactivate = {
+			}
+		}
+
+		range = {
+			id = GER_very_low_trust_range
+			min = -0.75
+			max = -0.45
+			modifier = {
+				stability_factor = -0.1
+				war_support_factor = -0.1
+				political_power_gain = -0.3
+			}
+			on_activate = {
+				custom_effect_tooltip = GER_very_low_trust_range_tooltip
+				GER_update_agenda_decision_cost = yes
+			}
+			on_deactivate = {
+			}
+		}
+
+		range = {
+			id = GER_overwhelmingly_low_trust_range
+			min = -1
+			max = -0.75
+			modifier = {
+				stability_factor = -0.15
+				war_support_factor = -0.15
+				political_power_gain = -0.45
+			}
+			on_activate = {
+				custom_effect_tooltip = GER_overwhelmingly_low_trust_range_tooltip
+				GER_update_agenda_decision_cost = yes
+			}
+			on_deactivate = {
+			}
+		}
+	}
+
+	### Good Side
+	side = {
+		id = GER_good_side	
+		icon = GFX_bop_GER_high_party_trust
+
+		range = {
+			id = GER_high_trust_range
+			min = 0.15
+			max = 0.45
+			modifier = {
+				stability_factor = 0.05
+				war_support_factor = 0.05
+				conscription_factor = 0.05
+			}
+			on_activate = {
+				custom_effect_tooltip = GER_high_trust_range_tooltip
+				GER_update_agenda_decision_cost = yes
+			}
+			on_deactivate = {
+			}
+		}
+
+		range = {
+			id = GER_very_high_trust_range
+			min = 0.45
+			max = 0.75
+			modifier = {
+				stability_factor = 0.1
+				war_support_factor = 0.1
+				conscription_factor = 0.1
+			}
+			on_activate = {
+				custom_effect_tooltip = GER_very_high_trust_range_tooltip
+				GER_update_agenda_decision_cost = yes
+			}
+			on_deactivate = {
+			}
+		}
+
+		range = {
+			id = GER_overwhelmingly_high_trust_range
+			min = 0.75
+			max = 1
+			modifier = {
+				stability_factor = 0.15
+				war_support_factor = 0.15
+				conscription_factor = 0.15
+			}
+			on_activate = {
+				custom_effect_tooltip = GER_overwhelmingly_high_trust_range_tooltip
+				GER_update_agenda_decision_cost = yes
+			}
+			on_deactivate = {
+			}
+		}
+	}
+}

@@ -1,0 +1,162 @@
+﻿add_namespace = poland
+
+#Sons of Pilsudski coup
+country_event = {
+	id = poland.1
+	title = poland.1.t
+	desc = poland.1.d
+	picture = GFX_polish_larp
+	is_triggered_only = yes
+
+	immediate = {
+		hidden_effect = {
+			add_ideas = POL_spirit_of_the_warsaw_uprising
+			set_party_name = { 
+				ideology = authoritarian_democrat  
+				name = PLD_authdem_association_of_army
+				long_name = PLD_authdem_association_of_army_long
+			}
+			set_party_name = { 
+				ideology = fascist
+				name = PLD_fascist_association_of_army 
+				long_name = PLD_fascist_association_of_army_long
+			}
+			set_party_name = { 
+				ideology = nationalist  
+				name = PLD_nationalist_association_of_army 
+				long_name = PLD_nationalist_association_of_army_long
+			}
+			add_ideas = {
+				lower_immigration
+				lower_education
+				low_race
+				medium_female
+				low_prison
+				highest_police
+				high_conscription
+				higher_female_service
+				medium_supervision
+				high_training
+				medium_racial_integration
+				religious_exemptions
+				permanent_mobilization
+				low_trade_autarky
+				higher_taxes
+				lower_interest_rates
+				lower_welfare
+				medium_safety
+				medium_academic
+				low_farming
+				low_poverty
+				medium_industry
+				medium_military
+				medium_society
+			}
+			if = {
+				limit = {
+					has_idea = visegrad_group_member
+				}
+				remove_ideas = visegrad_group_member
+			}
+			remove_ideas = POL_eurosceptic_divide_idea
+		}
+	}
+	
+	option = {
+		name = poland.1.a
+		kill_country_leader = yes
+		set_politics = {
+			ruling_party = nationalist
+			last_election = "2022.04.10"
+			election_frequency = 60
+			elections_allowed = no
+		}
+		set_cosmetic_tag = PLD_National_Government
+		set_temp_variable = { coalition_partner_var_temp = token:authoritarian_democrat }
+		add_to_coalition = yes
+		set_temp_variable = { coalition_partner_var_temp = token:fascist }
+		add_to_coalition = yes
+		add_popularity = {
+			ideology = nationalist
+			popularity = 0.35
+		}
+	}
+}
+
+country_event = {
+	id = poland.2
+	title = poland.2.t
+	desc = poland.2.d
+	picture = GFX_generic_elections
+	is_triggered_only = yes
+
+	trigger = {
+	}
+	
+	option = {
+		name = poland.2.a
+		set_politics = {
+			ruling_party = social_liberal
+			last_election = "2025.06.01"
+			election_frequency = 60
+			elections_allowed = yes
+		}
+		add_popularity = {
+			popularity = 0.10
+			ideology = social_liberal
+		}
+		ai_chance = {
+			factor = 49
+			modifier = {
+			    factor = 0
+			    OR = {
+			        has_game_rule = {
+			            rule = The_PLD_25_Election
+			            option = The_PLD_25_Election_PiS
+			        }
+			    }
+			}
+		}
+	}
+	option = {
+		name = poland.2.b
+		promote_character = PLD_karol_nawrocki_char
+		set_politics = {
+			ruling_party = conservative
+			last_election = "2025.06.01"
+			election_frequency = 60
+			elections_allowed = yes
+		}
+		add_popularity = {
+			popularity = 0.05
+			ideology = conservative
+		}
+		add_popularity = {
+			popularity = 0.05
+			ideology = authoritarian_democrat
+		}
+		ai_chance = {
+			factor = 50
+			modifier = {
+				add = 30
+				OR = {
+					SOV = {
+						has_government = communist
+					}
+					SOV = {
+						has_government = fascist
+					}
+				}
+			}
+			modifier = {
+			    factor = 0
+			    OR = {
+			        has_game_rule = {
+			            rule = The_PLD_25_Election
+			            option = The_PLD_25_Election_Civic_Platform
+			        }
+			    }
+			}
+		}
+	}
+}

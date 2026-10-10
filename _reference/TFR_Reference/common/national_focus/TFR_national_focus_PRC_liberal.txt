@@ -1,0 +1,2783 @@
+focus_tree = {
+	id = china_liberal_focus
+	country = {
+		factor = 0
+		modifier = {
+			#Makes Tree persist after changes made to it
+			add = 20
+			tag = PRC
+			has_global_flag = PRC_liberal_china_flag
+		}
+	}
+	
+	shared_focus = PRC_establish_eadi
+	shared_focus = PRC_chinas_spot_in_the_sun
+	shared_focus = PRC_chinas_greatest_hour
+	shared_focus = PRC_belt_and_road_initiative_non_cen
+	#Political
+	focus = {
+		id = PRC_the_chinese_glasnost
+		icon = GFX_focus_PRC_The_Second_Beijing_Spring
+		x = 14
+		y = 0
+		cost = 2
+		available_if_capitulated = yes
+		ai_will_do = {
+			factor = 100
+		}
+		available = {
+			#is_ai = no
+		}
+		completion_reward = {
+			activate_mission = PRC_Wave_of_Uncertainty
+			activate_mission = PRC_Oligarchist_Actions
+			add_political_power = 100
+			custom_effect_tooltip = PRC_conservates_angry
+			set_power_balance = {
+				id = PRC_Liberal_Conservative_power_balance
+				left_side = PRC_conservate_side
+			 	right_side = PRC_liberal_side
+		 	}
+			unlock_decision_category_tooltip = PRC_chinas_liberalization_category
+			effect_tooltip = {
+				add_ideas = PRC_chinese_reforms_dummy_idea_0
+			}
+			set_variable = {
+				PRC_chinese_reforms_production_factory_efficiency_gain_factor_dynamic_var = 0.0
+			}	
+			set_variable = {
+				PRC_chinese_reforms_research_speed_factor_dynamic_var = 0.005
+			}
+			set_variable = {
+				PRC_chinese_reforms_consumer_goods_factor_dynamic_var = -0.01
+			}
+			set_variable = {
+				PRC_chinese_reforms_stability_factor_dynamic_var = -0.05
+			}	
+			set_variable = {
+				PRC_chinese_reforms_political_power_cost_dynamic_var = 0.05
+			}	
+			hidden_effect = {
+				set_global_flag = PRC_liberal_china_flag
+				add_dynamic_modifier = {
+					modifier = PRC_chinese_reforms_dynamic
+				}
+				add_country_leader_role = {
+					character = PRC_wang_yang
+					promote_leader = yes
+					country_leader = {
+						ideology = patriotic_socialism
+						traits = { hos_enlightened_gentleman }
+					}
+				}
+				add_popularity = {
+					ideology = nationalist
+					popularity = -1
+				}
+				set_party_name = {
+					ideology = nationalist
+					long_name = PRC_suspended_party_long
+					name = PRC_suspended_party
+				}
+				set_party_name = {
+					ideology = totalitarian_socialist
+					long_name = PRC_suspended_party_long
+					name = PRC_suspended_party
+				}
+				set_party_name = {
+					ideology = libertarian_socialist
+					long_name = PRC_libertarian_socialist_party_liberals_long
+					name = PRC_libertarian_socialist_party_liberals
+				}
+				set_variable = {
+					var = PRC_reforms_progress
+					value = 5
+					#tooltip = set_var_to_100_tt
+				}
+				set_variable = {
+					var = PRC_reforms_progress_prev
+					value = 0
+				}
+				PRC_add_reforms_progress = yes
+				country_event = {
+					id = china.152 
+					hours = 5
+				}
+				country_event = {
+					id = china.145
+					days = 3
+				}				
+				set_country_flag = PRC_chinas_liberalization_enabled_flag
+				set_variable = {
+					var = PRC_approval_rating_var
+					value = 0.35
+				}
+				PRC_add_party_approval = yes
+				add_dynamic_modifier = {
+					modifier = PRC_approval_rating_dynamic
+				}
+				set_stability = 0.38
+				scoped_play_song = "lotayu"
+				country_event = {
+					id = china.417
+					days = 200
+					random_days = 150
+				}
+				country_event = {
+					id = china.418
+					days = 175
+					random_days = 100
+				}
+				country_event = {
+					id = china.419
+					days = 250
+					random_days = 75
+				}
+				country_event = {
+					id = china.420
+					days = 200
+					random_days = 200
+				}
+				country_event = {
+					id = china.421
+					days = 175
+					random_days = 100
+				}
+			}			
+		}
+	}
+	focus = {
+		id = PRC_reform_the_upper_leadership
+		icon = GFX_focus_PRC_Reform_Upper_Leadership
+		x = -1
+		y = 1
+		cost = 3
+		available_if_capitulated = yes
+		prerequisite = {
+			focus = PRC_the_chinese_glasnost
+		}
+		relative_position_id = PRC_the_chinese_glasnost
+		mutually_exclusive = {
+			focus = PRC_special_political_zones
+		}
+		ai_will_do = {
+			factor = 100
+			modifier = {
+			    factor = 0
+			    OR = {
+			        has_game_rule = {
+			            rule = The_PRC_Post_GAW_Election_Chinese_Socialist_Democracy
+			            option = The_PRC_Post_GAW_Election_Chinese_Socialist_Democracy_3
+			        }
+			    }
+			}
+		}
+		available = {
+		}
+		completion_reward = {
+			add_country_leader_trait = hos_star_of_chinese_perestroika
+			custom_effect_tooltip = PRC_full_speed_ahead_tt
+			add_stability = -0.05
+			add_political_power = 75
+			set_temp_variable = {
+				var = PRC_reforms_progress_temp
+				value = 5
+			}
+			PRC_add_reforms_progress = yes
+			set_temp_variable = {
+				var = PRC_approval_rating_var_temp
+				value = -0.05
+			}
+			PRC_add_party_approval = yes
+			add_power_balance_value = {
+				id = PRC_Liberal_Conservative_power_balance
+				value = 0.05
+			}
+			unlock_decision_tooltip = PRC_Chinese_Reform
+			hidden_effect = {
+				country_event = {
+					id = china.198
+					days = 5
+				}
+			}
+		}
+	}
+	focus = {
+		id = PRC_roll_back_censorship_programs
+		icon = GFX_focus_PRC_reform_local_leadership
+		x = -1
+		y = 1
+		cost = 3
+		available_if_capitulated = yes
+		prerequisite = {
+			focus = PRC_reform_the_upper_leadership
+		}
+		relative_position_id = PRC_reform_the_upper_leadership
+		ai_will_do = {
+			factor = 100
+		}
+		available = {
+			NOT = {
+				has_idea = PRC_Party_Pushback
+			}
+		}
+		completion_reward = {
+			add_stability = -0.03
+			add_power_balance_value = {
+				id = PRC_Liberal_Conservative_power_balance
+				value = 0.025
+			}
+			set_temp_variable = {
+				var = academic_development_var_temp
+				value = 0.05
+			}
+			add_academic_development = yes
+			unlock_decision_tooltip = PRC_Local_Government_Reform
+		}
+	}
+	focus = {
+		id = PRC_release_the_tianmen_archives
+		icon = GFX_focus_PRC_mss_reformation
+		x = -1
+		y = 1
+		cost = 3
+		available_if_capitulated = yes
+		prerequisite = {
+			focus = PRC_roll_back_censorship_programs
+		}
+		relative_position_id = PRC_roll_back_censorship_programs
+		ai_will_do = {
+			factor = 100
+		}
+		completion_reward = {	
+			add_timed_idea = {
+				idea = PRC_Blink_the_Eye
+				days = 90
+			}
+			unlock_decision_tooltip = PRC_Reform_on_National_Security_System	
+		}
+	}
+	focus = {
+		id = PRC_establish_the_principles_of_confucian_democracy
+		icon = GFX_focus_PRC_embrace_communitarianism
+		x = 0
+		y = 2
+		cost = 3
+		available_if_capitulated = yes
+		prerequisite = {
+			focus = PRC_roll_back_censorship_programs
+		}
+		prerequisite = {
+			focus = PRC_release_the_tianmen_archives
+		}
+		prerequisite = {
+			focus = PRC_rehabilitate_political_dissidents
+		}
+		relative_position_id = PRC_roll_back_censorship_programs
+		ai_will_do = {
+			factor = 100
+		}
+		available = {
+		}
+		completion_reward = {
+			add_stability = 0.03
+			add_political_power = 50
+			add_power_balance_value = {
+				id = PRC_Liberal_Conservative_power_balance
+				value = -0.015
+			}
+			add_popularity = {
+				ideology = conservative
+				popularity = 0.03
+			}
+			set_variable = {
+				PRC_chinese_reforms_production_factory_efficiency_gain_factor_dynamic_var = 0.03
+			}	
+			set_variable = {
+				PRC_chinese_reforms_research_speed_factor_dynamic_var = 0.01
+			}
+			set_variable = {
+				PRC_chinese_reforms_consumer_goods_factor_dynamic_var = -0.05
+			}
+			set_variable = {
+				PRC_chinese_reforms_stability_factor_dynamic_var = 0.0
+			}	
+			set_variable = {
+				PRC_chinese_reforms_political_power_cost_dynamic_var = 0.04
+			}
+			unlock_decision_tooltip = PRC_Embrace_Communitarianism
+		}
+	}
+	focus = {
+		id = PRC_special_political_zones
+		icon = GFX_focus_PRC_Pragmatic_Solution_in_the_Politburo
+		x = 1
+		y = 1
+		cost = 3
+		available_if_capitulated = yes
+		prerequisite = {
+			focus = PRC_the_chinese_glasnost
+		}
+		relative_position_id = PRC_the_chinese_glasnost
+		mutually_exclusive = {
+			focus = PRC_reform_the_upper_leadership
+		}
+		ai_will_do = {
+			factor = 100
+			modifier = {
+			    factor = 0
+			    OR = {
+			        has_game_rule = {
+			            rule = The_PRC_Post_GAW_Election_Chinese_Socialist_Democracy
+			            option = The_PRC_Post_GAW_Election_Chinese_Socialist_Democracy_2
+			        }
+			    }
+			}
+		}
+		available = {
+		}
+		completion_reward = {
+			add_country_leader_trait = hos_the_new_deng_xiaoping
+			custom_effect_tooltip = PRC_pragmatic_reformation_tt
+			add_popularity = {
+				ideology = communist
+				popularity = 0.025
+			}
+			set_temp_variable = {
+				var = PRC_approval_rating_var_temp
+				value = 0.05
+			}
+			PRC_add_party_approval = yes
+			add_power_balance_value = {
+				id = PRC_Liberal_Conservative_power_balance
+				value = 0.025
+			}
+			hidden_effect = {
+				country_event = {
+					id = china.199
+					days = 5
+				}
+			}
+		}
+	}
+	focus = {
+		id = PRC_encourage_provincial_autonomy
+		icon = GFX_focus_PRC_Encourage_Provincial_Autonomy
+		x = 1
+		y = 1
+		cost = 3
+		available_if_capitulated = yes
+		prerequisite = {
+			focus = PRC_special_political_zones
+		}
+		relative_position_id = PRC_special_political_zones
+		ai_will_do = {
+			factor = 100
+		}
+		available = {
+			NOT = {
+				has_idea = PRC_Party_Pushback
+			}
+		}
+		completion_reward = {
+			add_stability = 0.04
+			PRC_increase_comprehensive_transformation = yes
+			set_temp_variable = {
+				var = academic_development_var_temp
+				value = -0.03
+			}
+			add_academic_development = yes
+			add_power_balance_value = {
+				id = PRC_Liberal_Conservative_power_balance
+				value = 0.06
+			}
+		}
+	}
+	focus = {
+		id = PRC_praise_the_wukan_model
+		icon = GFX_focus_PRC_Praise_Wukan_Model
+		x = 1
+		y = 1
+		cost = 3
+		available_if_capitulated = yes
+		prerequisite = {
+			focus = PRC_encourage_provincial_autonomy
+		}
+		relative_position_id = PRC_encourage_provincial_autonomy
+		ai_will_do = {
+			factor = 100
+		}
+		available = {
+		}
+		completion_reward = {
+			add_political_power = 75
+			set_temp_variable = {
+				var = society_development_var_temp
+				value = 0.10
+			}
+			add_society_development = yes
+			unlock_decision_tooltip = PRC_Shrink_Bureaucracy_System
+		}
+	}
+	focus = {
+		id = PRC_support_pro_democracy_candidates
+		icon = GFX_focus_PRC_rooting_weeds
+		x = 0
+		y = 2
+		cost = 3
+		available_if_capitulated = yes
+		prerequisite = {
+			focus = PRC_encourage_provincial_autonomy
+		}
+		prerequisite = {
+			focus = PRC_praise_the_wukan_model
+		}
+		prerequisite = {
+			focus = PRC_push_for_local_democracy
+		}
+		relative_position_id = PRC_encourage_provincial_autonomy
+		ai_will_do = {
+			factor = 100
+		}
+		available = {
+		}
+		completion_reward = {
+			set_temp_variable = {
+				var = PRC_approval_rating_var_temp
+				value = 0.075
+			}
+			PRC_add_party_approval = yes
+			add_popularity = {
+				ideology = social_democrat
+				popularity = 0.06
+			}
+			add_popularity = {
+				ideology = social_liberal
+				popularity = 0.06
+			}
+			add_popularity = {
+				ideology = market_liberal
+				popularity = 0.06
+			}
+			unlock_decision_tooltip = PRC_Fight_Against_Corruption
+		}
+	}
+	focus = {
+		id = PRC_question_the_four_cardinal_principles
+		icon = GFX_focus_PRC_breeding_ground_reforms
+		x = 0
+		y = 2
+		cost = 3
+		available_if_capitulated = yes
+		prerequisite = {
+			focus = PRC_reform_the_upper_leadership
+			focus = PRC_special_political_zones
+		}
+		relative_position_id = PRC_the_chinese_glasnost
+		ai_will_do = {
+			factor = 100
+		}
+		available = {
+		}
+		completion_reward = {
+			country_event = china.400
+			country_event = {
+				id = china.193
+				days = 2
+			}
+			add_ideas = PRC_Hundred_Flower_Campaign_idea
+			set_temp_variable = {
+				var = PRC_approval_rating_var_temp
+				value = -0.025
+			}
+			PRC_add_party_approval = yes
+			set_temp_variable = {
+				var = PRC_reforms_progress_temp
+				value = 2
+			}
+			PRC_add_reforms_progress = yes
+			unlock_decision_tooltip = PRC_Call_on_Democratic_Progressive
+			hidden_effect = {
+				country_event = {
+					id = china.459
+					days = 50
+				}
+			}
+		}
+	}
+	focus = {
+		id = PRC_rehabilitate_political_dissidents
+		icon = GFX_focus_PRC_freedom_provinces_initiative
+		x = -1
+		y = 1
+		cost = 3
+		available_if_capitulated = yes
+		prerequisite = {
+			focus = PRC_question_the_four_cardinal_principles
+		}
+		relative_position_id = PRC_question_the_four_cardinal_principles
+		ai_will_do = {
+			factor = 100
+		}
+		available = {
+		}
+		completion_reward = {
+			country_event = {
+				id = china.195
+				days = 1
+			}
+			unlock_decision_tooltip = PRC_Force_Federalism
+			unlock_decision_tooltip = PRC_introduce_governor_elections
+		}
+	}
+	focus = {
+		id = PRC_push_for_local_democracy
+		icon = GFX_focus_PRC_chinese_media_thaw
+		x = 1
+		y = 1
+		cost = 3
+		available_if_capitulated = yes
+		prerequisite = {
+			focus = PRC_question_the_four_cardinal_principles
+		}
+		relative_position_id = PRC_question_the_four_cardinal_principles
+		ai_will_do = {
+			factor = 100
+		}
+		available = {
+		}
+		completion_reward = {
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = PRC_chinese_reforms_dummy_idea
+					add_idea = PRC_media_thaw_idea
+				}
+			}
+			set_temp_variable = {
+				var = PRC_approval_rating_var_temp
+				value = -0.10
+			}
+			PRC_add_party_approval = yes
+			unlock_decision_tooltip = PRC_Censorship_Reform
+			add_to_variable = {
+				PRC_chinese_reforms_war_support_weekly_dynamic_var = 0.003
+			}
+			add_to_variable = {
+				PRC_chinese_reforms_stability_weekly_dynamic_var = 0.002
+			}
+			add_to_variable = {
+				PRC_chinese_reforms_party_popularity_stability_factor_dynamic_var = 0.05
+			}	
+			add_to_variable = {
+				PRC_chinese_reforms_political_power_cost_dynamic_var = 0.075
+			}
+		}
+	}
+	focus = {
+		id = PRC_relax_censorship_laws #Refocus Eye
+		icon = GFX_focus_PRC_unchain_people_congress
+		x = 0
+		y = 2
+		cost = 3
+		available_if_capitulated = yes
+		prerequisite = {
+			focus = PRC_question_the_four_cardinal_principles
+		}
+		prerequisite = {
+			focus = PRC_rehabilitate_political_dissidents
+		}
+		prerequisite = {
+			focus = PRC_push_for_local_democracy
+		}
+		relative_position_id = PRC_question_the_four_cardinal_principles
+		ai_will_do = {
+			factor = 100
+		}
+		available = {
+		}
+		completion_reward = {
+			country_event = china.402
+			add_stability = 0.04
+			set_temp_variable = {
+				var = PRC_reforms_progress_temp
+				value = 3
+			}
+			PRC_add_reforms_progress = yes
+			add_popularity = {
+				ideology = social_democrat
+				popularity = 0.02
+			}
+			add_popularity = {
+				ideology = social_liberal
+				popularity = 0.01
+			}
+			if = {
+			    limit = { 
+			        has_game_rule = { 
+			            rule = The_PRC_Liberal_Progress_of_Reforms
+			            option = The_PRC_Liberal_Progress_of_Reforms_1
+			        }
+			    }
+			    set_temp_variable = {
+			        var = PRC_reforms_progress_temp
+			        value = 50
+			    }
+			    PRC_add_reforms_progress = yes
+			}
+		}
+	}
+	focus = {
+		id = PRC_unchain_the_united_front
+		icon = GFX_focus_PRC_large_strong_society
+		x = -1
+		y = 1
+		cost = 3
+		available_if_capitulated = yes
+		prerequisite = {
+			focus = PRC_relax_censorship_laws
+		}
+		prerequisite = {
+			focus = PRC_establish_the_principles_of_confucian_democracy
+			focus = PRC_support_pro_democracy_candidates
+		}
+		relative_position_id = PRC_relax_censorship_laws
+		ai_will_do = {
+			factor = 100
+		}
+		available = {
+		}
+		completion_reward = {
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = PRC_chinese_reforms_dummy_idea
+					add_idea = PRC_unchain_the_united_front_idea
+				}
+			}
+			set_temp_variable = {
+				var = PRC_approval_rating_var_temp
+				value = 0.05
+			}
+			PRC_add_party_approval = yes
+			add_power_balance_value = {
+				id = PRC_Liberal_Conservative_power_balance
+				value = 0.05
+			}
+			add_to_variable = {
+				PRC_chinese_reforms_production_factory_efficiency_gain_factor_dynamic_var = 0.04
+			}		
+			add_to_variable = {
+				PRC_chinese_reforms_research_speed_factor_dynamic_var = 0.05
+			}
+			add_to_variable = {
+				PRC_chinese_reforms_consumer_goods_factor_dynamic_var = -0.02
+			}
+			add_to_variable = {
+				PRC_chinese_reforms_stability_factor_dynamic_var = 0.025
+			}	
+			add_to_variable = {
+				PRC_chinese_reforms_political_power_cost_dynamic_var = -0.01
+			}	
+		}
+	}
+	focus = {
+		id = PRC_remove_the_guiding_role
+		icon = GFX_focus_PRC_transparent_representative_government
+		x = 1
+		y = 1
+		cost = 3
+		available_if_capitulated = yes
+		prerequisite = {
+			focus = PRC_relax_censorship_laws
+		}
+		prerequisite = {
+			focus = PRC_establish_the_principles_of_confucian_democracy
+			focus = PRC_support_pro_democracy_candidates
+		}
+		relative_position_id = PRC_relax_censorship_laws
+		ai_will_do = {
+			factor = 100
+		}
+		available = {
+		}
+		completion_reward = {
+			country_event = {
+				id = china.331
+				hours = 6
+			}
+			add_stability = 0.05
+			add_political_power = 50
+			add_popularity = {
+    			ideology = communist
+    			popularity = 0.05
+			}
+			unlock_decision_tooltip = PRC_Deepening_Judicial_Openness
+		}
+	}
+	focus = {
+		id = PRC_the_chinese_spring
+		icon = GFX_focus_PRC_chinese_spring
+		x = 0
+		y = 2
+		cost = 3
+		available_if_capitulated = yes
+		prerequisite = {
+			focus = PRC_unchain_the_united_front
+		}
+		prerequisite = {
+			focus = PRC_remove_the_guiding_role
+		}
+		available = {
+			if = {
+				limit = {
+					is_ai = no
+				}
+				custom_trigger_tooltip = {
+					tooltip = PRC_reforms_progres_more_or_50_tooltip
+					check_variable = {
+						var = PRC_reforms_progress
+						value = 50
+						compare = greater_than_or_equals
+					}
+				}
+			}
+			else = {
+				OR = {
+					date > 2024.10.10
+					custom_trigger_tooltip = {
+						tooltip = PRC_reforms_progres_more_or_50_tooltip
+						check_variable = {
+							var = PRC_reforms_progress
+							value = 50
+							compare = greater_than_or_equals
+						}
+					}
+				}
+			}
+		}
+		relative_position_id = PRC_relax_censorship_laws
+		ai_will_do = {
+			factor = 125
+		}
+		completion_reward = {
+			country_event = {
+				id = china.192
+			}
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = PRC_chinese_reforms_dummy_idea
+					add_idea = PRC_spring_of_china_idea
+				}
+			}
+			set_temp_variable = {
+				var = PRC_reforms_progress_temp
+				value = 5
+			}
+			PRC_add_reforms_progress = yes
+			add_to_variable = {
+				PRC_chinese_reforms_war_support_factor_dynamic_var = 0.035
+			}		
+			add_to_variable = {
+				PRC_chinese_reforms_research_speed_factor_dynamic_var = 0.05
+			}
+			add_to_variable = {
+				PRC_chinese_reforms_consumer_goods_factor_dynamic_var = -0.05
+			}
+			add_to_variable = {
+				PRC_chinese_reforms_stability_factor_dynamic_var = 0.1
+			}	
+			add_to_variable = {
+				PRC_chinese_reforms_society_development_monthly_dynamic_var = 0.005
+			}
+			custom_effect_tooltip = PRC_for_policy_tree_opened_tt
+			set_country_flag = PRC_for_policy_tree_available
+			custom_effect_tooltip = PRC_military_tree_opened_tt
+			set_country_flag = PRC_military_tree_available
+			mark_focus_tree_layout_dirty = yes
+			hidden_effect = {
+				if = {
+					limit = {
+						NOT = {
+							has_country_flag = PRC_september_3rd_portraits_flag
+						}
+					}
+					set_portraits = {
+						character = PRC_wang_yang
+						civilian = {
+							large = "GFX_portrait_PRC_Wang_Yang_reformed"
+						}
+					}
+				}
+				country_event = {
+					id = china.106
+					days = 10
+				}
+				country_event = {
+					id = china.457
+					days = 50
+				}
+				country_event = {
+					id = china.458
+					days = 85
+				}
+				country_event = {
+					id = china.355
+					days = 100
+					random_days = 50
+				}
+			}
+		}
+	}
+	focus = {
+		id = PRC_fulfill_the_fifth_modernization
+		icon = GFX_focus_PRC_fulfill_the_fifth_modernization
+		x = -2
+		y = 1
+		cost = 3
+		available_if_capitulated = yes
+		prerequisite = {
+			focus = PRC_the_chinese_spring
+		}
+		available = {
+		}
+		relative_position_id = PRC_the_chinese_spring
+		ai_will_do = {
+			factor = 100
+		}
+		completion_reward = {
+			country_event = china.405
+			add_political_power = 50
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = PRC_chinese_reforms_dummy_idea
+					add_idea = PRC_fifth_modernization_idea
+				}
+			}
+			set_temp_variable = {
+				var = PRC_reforms_progress_temp
+				value = 3
+			}
+			PRC_add_reforms_progress = yes
+			add_to_variable = {
+				PRC_chinese_reforms_war_support_weekly_dynamic_var = 0.003
+			}
+			add_to_variable = {
+				PRC_chinese_reforms_stability_weekly_dynamic_var = 0.002
+			}
+			add_to_variable = {
+				PRC_chinese_reforms_party_popularity_stability_factor_dynamic_var = 0.05
+			}
+		}
+	}
+	focus = {
+		id = PRC_overall_process_peoples_demorcracy
+		icon = GFX_focus_PRC_overall_process_peoples_demorcracy
+		x = -3
+		y = 2
+		cost = 3
+		available_if_capitulated = yes
+		prerequisite = {
+			focus = PRC_fulfill_the_fifth_modernization
+		}
+		available = {
+		}
+		relative_position_id = PRC_the_chinese_spring
+		ai_will_do = {
+			factor = 100
+			modifier = {
+			    factor = 0
+			    OR = {
+			        has_game_rule = {
+			            rule = The_PRC_Fifth_Modernization
+			            option = The_PRC_Fifth_Modernization_2
+			        }
+			    }
+			}
+		}
+		mutually_exclusive = {
+			focus = PRC_chinese_special_socialist_democracy
+		}
+		completion_reward = {
+			custom_effect_tooltip = PRC_party_platformism_tt
+			add_political_power = -100
+			set_temp_variable = {
+				var = PRC_approval_rating_var_temp
+				value = 0.04
+			}
+			PRC_add_party_approval = yes
+			add_power_balance_value = {
+				id = PRC_Liberal_Conservative_power_balance
+				value = 0.02
+			}
+			hidden_effect = {
+				set_party_name = {
+					ideology = conservative
+					long_name = PRC_conservative_party_long
+					name = PRC_conservative_party
+				}
+				set_temp_variable = {
+					coalition_partner_var_temp = token:libertarian_socialist
+				}
+				add_to_coalition = yes
+			}
+		}
+	}
+	focus = {
+		id = PRC_chinese_special_socialist_democracy
+		icon = GFX_focus_PRC_chinese_special_socialist_democracy
+		x = -1
+		y = 2
+		cost = 3
+		available_if_capitulated = yes
+		prerequisite = {
+			focus = PRC_fulfill_the_fifth_modernization
+		}
+		available = {
+		}
+		relative_position_id = PRC_the_chinese_spring
+		ai_will_do = {
+			factor = 100
+			modifier = {
+			    factor = 0
+			    OR = {
+			        has_game_rule = {
+			            rule = The_PRC_Fifth_Modernization
+			            option = The_PRC_Fifth_Modernization_1
+			        }
+			    }
+			}
+		}
+		mutually_exclusive = {
+			focus = PRC_overall_process_peoples_demorcracy
+		}
+		completion_reward = {
+			country_event = china.175
+			add_political_power = 30
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = PRC_chinese_reforms_dummy_idea
+					add_idea = PRC_chinese_special_socialist_democracy_idea
+				}
+			}
+			unlock_decision_tooltip = PRC_Whole_Process_Peoples_Democracy
+			add_to_variable = {
+				PRC_chinese_reforms_production_factory_efficiency_gain_factor_dynamic_var = 0.02
+			}
+			add_to_variable = {
+				PRC_chinese_reforms_consumer_goods_factor_dynamic_var = -0.02
+			}
+			add_to_variable = {
+				PRC_chinese_reforms_stability_factor_dynamic_var = 0.015
+			}		
+		}
+	}
+	focus = {
+		id = PRC_empower_masses_autonomus_committe
+		icon = GFX_focus_PRC_empower_masses_autonomus_committe
+		x = -4
+		y = 3
+		cost = 3
+		available_if_capitulated = yes
+		prerequisite = {
+			focus = PRC_overall_process_peoples_demorcracy
+		}
+		available = {
+		}
+		relative_position_id = PRC_the_chinese_spring
+		ai_will_do = {
+			factor = 100
+		}
+		completion_reward = {
+			PRC_increase_comprehensive_transformation = yes
+			set_temp_variable = {
+				var = PRC_reforms_progress_temp
+				value = 4
+			}
+			PRC_add_reforms_progress = yes
+			add_popularity = {
+				ideology = communist
+				popularity = 0.03
+			}
+		}
+	}
+	focus = {
+		id = PRC_promote_political_participation
+		icon = GFX_focus_PRC_promote_political_participation
+		x = 0
+		y = 3
+		cost = 3
+		available_if_capitulated = yes
+		prerequisite = {
+			focus = PRC_chinese_special_socialist_democracy
+		}
+		available = {
+		}
+		relative_position_id = PRC_the_chinese_spring
+		ai_will_do = {
+			factor = 100
+		}
+		completion_reward = {
+			add_stability = -0.05
+			add_political_power = 120
+			PRC_increase_comprehensive_transformation = yes
+			set_temp_variable = {
+				var = PRC_approval_rating_var_temp
+				value = 0.02
+			}
+			PRC_add_party_approval = yes
+		}
+	}
+	focus = {
+		id = PRC_multiple_religious_leadership
+		icon = GFX_focus_PRC_multiple_religious_leadership
+		x = -2
+		y = 3
+		cost = 3
+		available_if_capitulated = yes
+		prerequisite = {
+			focus = PRC_chinese_special_socialist_democracy
+			focus = PRC_overall_process_peoples_demorcracy
+		}
+		available = {
+		}
+		relative_position_id = PRC_the_chinese_spring
+		ai_will_do = {
+			factor = 100
+		}
+		completion_reward = {
+			country_event = {
+				id = china.194
+				days = 3
+			}
+			add_stability = 0.04
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = PRC_chinese_reforms_dummy_idea
+					add_idea = PRC_special_religious_freedom_idea
+				}
+			}
+			set_temp_variable = {
+				var = PRC_reforms_progress_temp
+				value = 4
+			}
+			PRC_add_reforms_progress = yes
+			add_to_variable = {
+				PRC_chinese_reforms_war_support_weekly_dynamic_var = 0.002
+			}
+			add_to_variable = {
+				PRC_chinese_reforms_stability_weekly_dynamic_var = -0.001
+			}
+			add_to_variable = {
+				PRC_chinese_reforms_party_popularity_stability_factor_dynamic_var = 0.05
+			}
+		}
+	}
+	focus = {
+		id = PRC_the_sun_rises_on_a_new_china
+		icon = GFX_focus_PRC_the_sun_rises_on_a_new_china
+		x = -2
+		y = 4
+		cost = 3
+		available_if_capitulated = yes
+		prerequisite = {
+			focus = PRC_empower_masses_autonomus_committe
+			focus = PRC_promote_political_participation
+		}
+		prerequisite = {
+			focus = PRC_multiple_religious_leadership
+		}
+		available = {
+		}
+		relative_position_id = PRC_the_chinese_spring
+		ai_will_do = {
+			factor = 100
+		}
+		completion_reward = {
+			country_event = china.460
+			add_political_power = 50
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = PRC_chinese_reforms_dummy_idea
+					add_idea = PRC_the_sun_rises_on_a_new_china_idea
+				}
+			}
+			add_to_variable = {
+				PRC_chinese_reforms_production_factory_efficiency_gain_factor_dynamic_var = 0.03
+			}
+			add_to_variable = {
+				PRC_chinese_reforms_stability_factor_dynamic_var = 0.05
+			}	
+			add_to_variable = {
+				PRC_chinese_reforms_political_power_cost_dynamic_var = -0.05
+			}
+			hidden_effect = {
+				country_event = {
+					id = china.196
+					days = 7
+				}
+			}
+		}
+	}
+	focus = {
+		id = PRC_party_renewal_and_revision_campaign
+		icon = GFX_focus_PRC_party_renewal_and_revision_campaign
+		x = 2
+		y = 1
+		cost = 3
+		available_if_capitulated = yes
+		prerequisite = {
+			focus = PRC_the_chinese_spring
+		}
+		available = {
+			OR = {
+				has_completed_focus = PRC_overall_process_peoples_demorcracy
+				has_completed_focus = PRC_chinese_special_socialist_democracy
+			}
+		}
+		relative_position_id = PRC_the_chinese_spring
+		ai_will_do = {
+			factor = 100
+		}
+		completion_reward = {
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = PRC_chinese_reforms_dummy_idea
+					add_idea = PRC_party_renewal_and_revision_campaign_idea
+				}
+			}
+			set_temp_variable = {
+				var = PRC_approval_rating_var_temp
+				value = 0.08
+			}
+			PRC_add_party_approval = yes
+			set_temp_variable = {
+				var = PRC_reforms_progress_temp
+				value = -5
+			}
+			PRC_add_reforms_progress = yes
+			add_to_variable = {
+				PRC_chinese_reforms_stability_factor_dynamic_var = -0.03
+			}	
+			add_to_variable = {
+				PRC_chinese_reforms_political_power_cost_dynamic_var = 0.1
+			}	
+		}
+	}
+	focus = {
+		id = PRC_cadre_rejuvenation
+		icon = GFX_focus_PRC_cadre_rejuvenation
+		x = 1
+		y = 2
+		cost = 3
+		available_if_capitulated = yes
+		prerequisite = {
+			focus = PRC_party_renewal_and_revision_campaign
+		}
+		available = {
+		}
+		relative_position_id = PRC_the_chinese_spring
+		ai_will_do = {
+			factor = 100
+		}
+		completion_reward = {
+			add_political_power = 70
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = PRC_chinese_reforms_dummy_idea
+					add_idea = PRC_fundational_system_reform_idea
+				}
+			}
+			set_temp_variable = {
+				var = PRC_approval_rating_var_temp
+				value = 0.02
+			}
+			PRC_add_party_approval = yes
+			add_popularity = {
+				ideology = communist
+				popularity = 0.03
+			}
+			add_to_variable = {
+				PRC_chinese_reforms_consumer_goods_factor_dynamic_var = -0.01
+			}
+			add_to_variable = {
+				PRC_chinese_reforms_stability_factor_dynamic_var = 0.05
+			}
+			add_to_variable = {
+				PRC_chinese_reforms_war_support_factor_dynamic_var = 0.035
+			}
+		}
+	}
+	focus = {
+		id = PRC_support_initiatives_in_the_party
+		icon = GFX_focus_PRC_support_initiatives_in_the_party
+		x = 3
+		y = 2
+		cost = 3
+		available_if_capitulated = yes
+		prerequisite = {
+			focus = PRC_party_renewal_and_revision_campaign
+		}
+		available = {
+		}
+		relative_position_id = PRC_the_chinese_spring
+		ai_will_do = {
+			factor = 100
+		}
+		completion_reward = {
+			PRC_increase_comprehensive_transformation = yes
+			set_temp_variable = {
+				var = PRC_approval_rating_var_temp
+				value = 0.03
+			}
+			PRC_add_party_approval = yes
+			add_popularity = {
+				ideology = communist
+				popularity = 0.02
+			}
+		}
+	}
+	focus = {
+		id = PRC_the_new_peoples_democratic_program
+		icon = GFX_focus_PRC_the_new_peoples_democratic_program
+		x = 2
+		y = 3
+		cost = 3
+		available_if_capitulated = yes
+		prerequisite = {
+			focus = PRC_cadre_rejuvenation
+		}
+		prerequisite = {
+			focus = PRC_support_initiatives_in_the_party
+		}
+		available = {
+		}
+		relative_position_id = PRC_the_chinese_spring
+		ai_will_do = {
+			factor = 100
+		}
+		completion_reward = {
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = PRC_chinese_reforms_dummy_idea
+					add_idea = PRC_the_new_peoples_democratic_program_idea
+				}
+			}
+			add_popularity = {
+				ideology = communist
+				popularity = 0.02
+			}
+			add_to_variable = {
+				PRC_chinese_reforms_stability_factor_dynamic_var = 0.03
+			}
+			add_to_variable = {
+				PRC_chinese_reforms_drift_defence_factor_dynamic_var = -0.2
+			}
+			add_to_variable = {
+				PRC_chinese_reforms_social_democrat_acceptance_dynamic_var = 15
+			}
+			add_to_variable = {
+				PRC_chinese_reforms_libertarian_socialist_acceptance_dynamic_var = 15
+			}
+			add_to_variable = {
+				PRC_chinese_reforms_social_liberal_acceptance_dynamic_var = 15
+			}
+		}
+	}
+	focus = {
+		id = PRC_party_of_xxi_century
+		icon = GFX_focus_PRC_party_of_xxi_century
+		x = 2
+		y = 4
+		cost = 3
+		available_if_capitulated = yes
+		prerequisite = {
+			focus = PRC_the_new_peoples_democratic_program
+		}
+		available = {
+		}
+		relative_position_id = PRC_the_chinese_spring
+		ai_will_do = {
+			factor = 100
+		}
+		completion_reward = {
+			add_political_power = 100
+			add_popularity = {
+				ideology = communist
+				popularity = 0.02
+			}
+			set_temp_variable = {
+				var = society_development_var_temp
+				value = 0.10
+			}
+			add_society_development = yes
+			set_temp_variable = {
+				var = academic_development_var_temp
+				value = 0.10
+			}
+			add_academic_development = yes
+			unlock_decision_tooltip = PRC_New_Era_Democratic_Politics
+			if = {
+			    limit = { 
+			        has_game_rule = { 
+			            rule = The_PRC_Liberal_Progress_of_Reforms
+			            option = The_PRC_Liberal_Progress_of_Reforms_1
+			        }
+			    }
+			    set_temp_variable = {
+			        var = PRC_reforms_progress_temp
+			        value = 50
+			    }
+			    PRC_add_reforms_progress = yes
+			}
+		}
+	}
+	focus = {
+		id = PRC_five_shinig_stars_of_china
+		icon = GFX_focus_PRC_five_shinig_stars_of_china
+		x = 0
+		y = 5
+		cost = 3
+		available_if_capitulated = yes
+		prerequisite = {
+			focus = PRC_party_of_xxi_century
+		}
+		prerequisite = {
+			focus = PRC_the_sun_rises_on_a_new_china
+		}
+		available = {
+			if = {
+				limit = {
+					is_ai = no
+				}
+				custom_trigger_tooltip = {
+					tooltip = PRC_reforms_progres_more_or_90_tooltip
+					check_variable = {
+						var = PRC_reforms_progress
+						value = 90
+						compare = greater_than_or_equals
+					}
+				}
+			}
+			else = {
+				OR = {
+					date > 2026.10.10
+					custom_trigger_tooltip = {
+						tooltip = PRC_reforms_progres_more_or_90_tooltip
+						check_variable = {
+							var = PRC_reforms_progress
+							value = 90
+							compare = greater_than_or_equals
+						}
+					}
+				}
+			}			
+		}
+		relative_position_id = PRC_the_chinese_spring
+		ai_will_do = {
+			factor = 125
+		}
+		completion_reward = {
+			country_event = china.180
+			add_stability = 0.05
+			add_political_power = 120
+			add_ideas = PRC_five_stars_shines_over_china_idea
+			set_temp_variable = {
+				var = PRC_reforms_progress_temp
+				value = 3
+			}
+			PRC_add_reforms_progress = yes
+			add_popularity = {
+				ideology = communist
+				popularity = 0.02
+			}
+		}
+	}
+	#economy
+	
+	focus = {
+		id = PRC_economic_cake_growth
+		icon = GFX_focus_PRC_economic_cake_growth
+		x = 25
+		y = 0
+		cost = 2
+		available_if_capitulated = yes
+		ai_will_do = {
+			factor = 100
+		}
+		available = {
+			has_completed_focus = PRC_the_chinese_glasnost
+		}
+		completion_reward = {
+			remove_dynamic_modifier = {
+				modifier = PRC_made_in_china_dynamic
+			}
+			custom_effect_tooltip = tooltip_white_line
+			effect_tooltip = {
+				add_ideas = PRC_econ_engine_dummy_idea0
+			}
+			custom_effect_tooltip = tooltip_white_line
+			change_economy_type_party_state_capitalism = yes
+			hidden_effect = {
+				add_to_variable = {
+					PRC_econ_engine_local_resources_factor_dynamic_var = 0.05
+				}
+				add_to_variable = {
+					PRC_econ_engine_production_factory_efficiency_gain_factor_dynamic_var = 0.05
+				}
+				add_to_variable = {
+					PRC_econ_engine_production_speed_infrastructure_factor_dynamic_var = 0.05
+				}
+				add_to_variable = {
+					PRC_econ_engine_repair_speed_infrastructure_factor_dynamic_var = 0.05
+				}
+				add_to_variable = {
+					PRC_econ_engine_consumer_goods_factor_dynamic_var = -0.05
+				}
+				add_dynamic_modifier = {
+					modifier = PRC_econ_engine_dynamic
+				}
+			}
+		}
+	}
+	
+	focus = {
+		id = PRC_break_soe_hegemony
+		icon = GFX_focus_PRC_break_soe_hegemony
+		cost = 4
+		relative_position_id = PRC_economic_cake_growth
+		x = -2
+		y = 1
+        ai_will_do = {
+        	factor = 100
+        }
+        available = {
+        }
+		prerequisite = { focus = PRC_economic_cake_growth }
+		mutually_exclusive = {
+			focus = PRC_chinese_theory_corporatism
+		}
+		
+		completion_reward = {
+			country_event = {
+				id = china.461
+				days = 1
+			}
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = PRC_econ_engine_dummy_idea
+					add_idea = PRC_competitive_market_idea
+				}
+			}
+			unlock_decision_tooltip = PRC_encourage_market_competition
+			add_to_variable = {
+				PRC_econ_engine_consumer_goods_factor_dynamic_var = -0.025
+			}
+			add_to_variable = {
+				PRC_econ_engine_production_speed_infrastructure_factor_dynamic_var = -0.05
+			}
+		}
+	}
+	
+	focus = {
+		id = PRC_introduce_separation_state_economy
+		icon = GFX_focus_PRC_introduce_separation_state_economy
+		cost = 4
+		relative_position_id = PRC_break_soe_hegemony
+		x = -1
+		y = 1
+        ai_will_do = {
+        	factor = 100
+        }
+        available = {
+        }
+		prerequisite = { focus = PRC_break_soe_hegemony }
+		
+		completion_reward = {
+			add_stability = -0.03
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = PRC_econ_engine_dummy_idea
+					add_idea = PRC_introduce_separation_state_economy_idea
+				}
+			}
+			add_to_variable = {
+				PRC_econ_engine_production_factory_efficiency_gain_factor_dynamic_var = 0.1
+			}
+			add_to_variable = {
+				PRC_econ_engine_production_speed_infrastructure_factor_dynamic_var = 0.05
+			}
+			add_to_variable = {
+				PRC_econ_engine_consumer_goods_factor_dynamic_var = -0.05
+			}
+			add_to_variable = {
+				PRC_econ_engine_income_growth_factor_dynamic_var = 0.05
+			}
+			add_to_variable = {
+				PRC_econ_engine_production_factory_max_efficiency_factor_dynamic_var = -0.1
+			}
+		}
+	}
+	
+	focus = {
+		id = PRC_encourage_competition
+		icon = GFX_focus_PRC_encourage_competition
+		cost = 4
+		relative_position_id = PRC_introduce_separation_state_economy
+		x = -2
+		y = 1
+        ai_will_do = {
+        	factor = 100
+        }
+        available = {
+        }
+		prerequisite = { focus = PRC_introduce_separation_state_economy }
+		
+		completion_reward = {
+			add_stability = -0.03
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = PRC_econ_engine_dummy_idea
+					add_idea = PRC_encourage_competition_idea
+				}
+			}
+			set_temp_variable = {
+				var = poverty_development_var_temp
+				value = -0.05
+			}
+			add_poverty_development = yes
+			add_power_balance_value = {
+				id = PRC_Liberal_Conservative_power_balance
+				value = 0.025
+			}
+			add_to_variable = {
+				PRC_econ_engine_tax_business_rate_factor_dynamic_var = -0.03
+			}
+			add_to_variable = {
+				PRC_three_great_campaign_business_value_dynamic_var = 0.1
+			}
+			add_to_variable = {
+				PRC_econ_engine_trade_opinion_factor_dynamic_var = 0.15
+			}
+		}
+	}
+	
+	focus = {
+		id = PRC_ten_strikes_burdensome_tarrifs
+		icon = GFX_focus_PRC_ten_strikes_burdensome_tarrifs
+		cost = 4
+		relative_position_id = PRC_introduce_separation_state_economy
+		x = 0
+		y = 1
+        ai_will_do = {
+        	factor = 100
+        }
+        available = {
+        }
+		prerequisite = { focus = PRC_introduce_separation_state_economy }
+		
+		completion_reward = {
+			increase_trade = yes
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = PRC_econ_engine_dummy_idea
+					add_idea = PRC_ten_strikes_burdensome_tarrifs_idea
+				}
+			}
+			add_power_balance_value = {
+				id = PRC_Liberal_Conservative_power_balance
+				value = 0.025
+			}
+			add_to_variable = {
+				PRC_econ_engine_industrial_capacity_factory_dynamic_var = 0.05
+			}
+			add_to_variable = {
+				PRC_econ_engine_trade_opinion_factor_dynamic_var = 0.1
+			}
+		}
+	}
+	
+	focus = {
+		id = PRC_final_blow_iron_bowl
+		icon = GFX_focus_PRC_final_blow_iron_bowl
+		cost = 4
+		relative_position_id = PRC_ten_strikes_burdensome_tarrifs
+		x = -1
+		y = 1
+        ai_will_do = {
+        	factor = 100
+        }
+        available = {
+        }
+		prerequisite = { focus = PRC_ten_strikes_burdensome_tarrifs }
+		prerequisite = { focus = PRC_encourage_competition }
+		
+		completion_reward = {
+			add_stability = -0.07
+			add_political_power = 120
+			decrease_welfare = yes
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = PRC_econ_engine_dummy_idea
+					add_idea = PRC_final_blow_iron_bowl_idea
+				}
+			}
+			add_power_balance_value = {
+				id = PRC_Liberal_Conservative_power_balance
+				value = 0.125
+			}
+			set_temp_variable = {
+				var = income_var_temp
+				value = 50
+			}
+			add_income_with_inflation = yes
+			add_to_variable = {
+				PRC_econ_engine_industrial_capacity_factory_dynamic_var = 0.05
+			}
+			add_to_variable = {
+				PRC_three_great_campaign_personal_expense_factor_dynamic_var = -0.15
+			}
+		}
+	}
+	
+	focus = {
+		id = PRC_preserve_two_mountain_theory
+		icon = GFX_focus_PRC_preserve_two_mountain_theory
+		cost = 4
+		relative_position_id = PRC_break_soe_hegemony
+		x = 1
+		y = 1
+        ai_will_do = {
+        	factor = 100
+        }
+        available = {
+        }
+		prerequisite = { focus = PRC_break_soe_hegemony focus = PRC_chinese_theory_corporatism }
+		
+		mutually_exclusive = {
+			focus = PRC_encourage_digitalization
+		}
+		
+		completion_reward = {
+			add_stability = 0.05
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = PRC_chinese_enviroment_dummy_idea
+					add_idea = PRC_preserve_two_mountain_theory_idea
+				}
+			}
+			set_temp_variable = {
+				var = debt_var_temp
+				value = 20
+			}
+			add_debt_with_inflation = yes
+			set_temp_variable = {
+				var = PRC_enviromental_progress_temp
+				value = 0.05
+			}
+			PRC_add_enviromental_progress = yes
+			add_to_variable = {
+				PRC_ce_consumer_goods_factor_dynamic_var = 0.025
+			}
+			add_to_variable = {
+				PRC_ce_production_factory_max_efficiency_factor_dynamic_var = -0.03
+			}
+			add_to_variable = {
+				PRC_ce_monthly_population_dynamic_var = 0.1
+			}
+			add_to_variable = {
+				PRC_ce_industrial_development_monthly_dynamic_var = -0.01
+			}
+			add_to_variable = {
+				PRC_ce_society_development_monthly_dynamic_var = 0.01
+			}
+		}
+	}
+	
+	focus = {
+		id = PRC_encourage_digitalization
+		icon = GFX_focus_PRC_encourage_digitalization
+		cost = 4
+		relative_position_id = PRC_break_soe_hegemony
+		x = 3
+		y = 1
+        ai_will_do = {
+        	factor = 100
+        }
+        available = {
+        }
+		prerequisite = { focus = PRC_break_soe_hegemony focus = PRC_chinese_theory_corporatism }
+		
+		mutually_exclusive = {
+			focus = PRC_preserve_two_mountain_theory
+		}
+		
+		completion_reward = {
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = PRC_econ_engine_dummy_idea
+					add_idea = PRC_encourage_digitalization_idea
+				}
+			}
+			add_tech_bonus = {
+				name = PRC_encourage_digitalization
+				bonus = 0.5
+				uses = 2
+				category = electronics
+			}
+			add_to_variable = {
+				PRC_econ_engine_research_speed_factor_dynamic_var = 0.05
+			}
+			add_to_variable = {
+				PRC_three_great_campaign_personal_income_factor_dynamic_var = 0.1
+			}
+			add_to_variable = {
+				PRC_econ_engine_income_growth_factor_dynamic_var = 0.05
+			}
+		}
+	}
+	
+	focus = {
+		id = PRC_set_free_private_defense_companies
+		icon = GFX_focus_PRC_set_free_private_defense_companies
+		cost = 4
+		relative_position_id = PRC_encourage_digitalization
+		x = 0
+		y = 1
+        ai_will_do = {
+        	factor = 100
+        }
+        available = {
+        }
+		prerequisite = { focus = PRC_encourage_digitalization focus = PRC_preserve_two_mountain_theory }
+		
+		mutually_exclusive = {
+			focus = PRC_sez_expansion
+		}
+		
+		completion_reward = {
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = PRC_econ_engine_dummy_idea
+					add_idea = PRC_set_free_private_defense_companies_idea
+				}
+			}
+			add_ideas = PRC_chinese_interventionism
+			add_power_balance_value = {
+				id = PRC_Liberal_Conservative_power_balance
+				value = -0.1
+			}
+			set_temp_variable = {
+				var = income_var_temp
+				value = 40
+			}
+			add_income_with_inflation = yes
+			add_to_variable = {
+				PRC_econ_engine_trade_opinion_factor_dynamic_var = 0.15
+			}
+			add_to_variable = {
+				PRC_econ_engine_income_growth_factor_dynamic_var = 0.2
+			}
+			add_to_variable = {
+				PRC_three_great_campaign_dtg_threshold_dynamic_var = 0.15
+			}
+		}
+	}
+	
+	focus = {
+		id = PRC_sez_expansion
+		icon = GFX_focus_PRC_sez_expansion
+		cost = 4
+		relative_position_id = PRC_encourage_digitalization
+		x = -2
+		y = 1
+        ai_will_do = {
+        	factor = 100
+        }
+        available = {
+        }
+		prerequisite = { focus = PRC_encourage_digitalization focus = PRC_preserve_two_mountain_theory }
+		
+		mutually_exclusive = {
+			focus = PRC_set_free_private_defense_companies
+		}
+		
+		completion_reward = {
+			country_event = china.179
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = PRC_econ_engine_dummy_idea
+					add_idea = PRC_sez_expansion_idea
+				}
+			}
+			add_power_balance_value = {
+				id = PRC_Liberal_Conservative_power_balance
+				value = 0.05
+			}
+			set_temp_variable = {
+				var = poverty_development_var_temp
+				value = 0.05
+			}
+			add_poverty_development = yes
+			set_temp_variable = {
+				var = debt_var_temp
+				value = 25
+			}
+			add_debt_with_inflation = yes
+			custom_effect_tooltip = PRC_expand_sezs_tt
+			add_to_variable = {
+				PRC_econ_engine_poverty_development_monthly_dynamic_var = 0.01
+			}
+			add_to_variable = {
+				PRC_econ_engine_industrial_development_monthly_dynamic_var = 0.01
+			}
+			add_to_variable = {
+				PRC_econ_engine_consumer_goods_factor_dynamic_var = 0.025
+			}
+		}
+	}
+	
+	focus = {
+		id = PRC_prioritize_tech_sector
+		icon = GFX_focus_PRC_prioritize_tech_sector
+		cost = 4
+		relative_position_id = PRC_sez_expansion
+		x = 1
+		y = 1
+        ai_will_do = {
+        	factor = 100
+        }
+        available = {
+        }
+		prerequisite = { 
+			focus = PRC_sez_expansion 
+			focus = PRC_set_free_private_defense_companies
+		}
+		
+		completion_reward = {
+			add_research_slot = 1
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = PRC_econ_engine_dummy_idea
+					add_idea = PRC_prioritize_tech_sector_idea
+				}
+			}
+			add_to_variable = {
+				PRC_econ_engine_research_speed_factor_dynamic_var = 0.025
+			}
+		}
+	}
+	
+	focus = {
+		id = PRC_chinese_theory_corporatism
+		icon = GFX_focus_PRC_chinese_theory_corporatism
+		cost = 4
+		relative_position_id = PRC_economic_cake_growth
+		x = 2
+		y = 1
+        ai_will_do = {
+        	factor = 100
+        }
+        available = {
+        }
+		prerequisite = { focus = PRC_economic_cake_growth }
+		mutually_exclusive = {
+			focus = PRC_break_soe_hegemony
+		}
+		
+		completion_reward = {
+			country_event = {
+				id = china.462
+				days = 1
+			}
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = PRC_econ_engine_dummy_idea
+					add_idea = PRC_national_capitalist_system_idea
+				}
+			}
+			add_power_balance_value = {
+				id = PRC_Liberal_Conservative_power_balance
+				value = -0.1
+			}
+			unlock_decision_tooltip = PRC_supress_small_business
+			add_to_variable = {
+				PRC_econ_engine_production_speed_buildings_factor_dynamic_var = 0.1
+			}
+			add_to_variable = {
+				PRC_econ_engine_production_lack_of_resource_penalty_factor_dynamic_var = 0.1
+			}
+			add_to_variable = {
+				PRC_econ_engine_consumer_goods_factor_dynamic_var = -0.05
+			}
+			hidden_effect = {
+				country_event = {
+					id = china.197
+					days = 8
+				}
+			}
+		}
+	}
+	
+	focus = {
+		id = PRC_guiding_role_market
+		icon = GFX_focus_PRC_guiding_role_market
+		cost = 4
+		relative_position_id = PRC_chinese_theory_corporatism
+		x = 1
+		y = 1
+        ai_will_do = {
+        	factor = 100
+        }
+        available = {
+        }
+		prerequisite = { focus = PRC_chinese_theory_corporatism }
+		
+		completion_reward = {
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = PRC_econ_engine_dummy_idea
+					add_idea = PRC_guiding_role_market_idea
+				}
+			}
+			add_power_balance_value = {
+				id = PRC_Liberal_Conservative_power_balance
+				value = -0.05
+			}
+			add_to_variable = {
+				PRC_econ_engine_repair_speed_infrastructure_factor_dynamic_var = 0.15
+			}
+			add_to_variable = {
+				PRC_econ_engine_cic_construction_boost_factor_dynamic_var = 0.1
+			}
+			add_to_variable = {
+				PRC_econ_engine_production_speed_industrial_complex_factor_dynamic_var = 0.15
+			}
+			add_to_variable = {
+				PRC_three_great_campaign_production_speed_office_park_factor_dynamic_var = 0.15
+			}
+		}
+	}	
+	focus = {
+		id = PRC_harmonization_companies
+		icon = GFX_focus_PRC_harmonization_companies
+		cost = 4
+		relative_position_id = PRC_guiding_role_market
+		x = 0
+		y = 1
+        ai_will_do = {
+        	factor = 100
+        }
+        available = {
+        }
+		prerequisite = { focus = PRC_guiding_role_market }
+		
+		completion_reward = {
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = PRC_econ_engine_dummy_idea
+					add_idea = PRC_harmonization_companies_idea
+				}
+			}
+			add_power_balance_value = {
+				id = PRC_Liberal_Conservative_power_balance
+				value = -0.05
+			}
+			set_temp_variable = {
+				var = industrial_development_var_temp
+				value = 0.05
+			}
+			add_industrial_development = yes
+			add_to_variable = {
+				PRC_econ_engine_industrial_capacity_factory_dynamic_var = 0.05
+			}
+			add_to_variable = {
+				PRC_three_great_campaign_dtg_threshold_dynamic_var = 0.25
+			}
+			add_to_variable = {
+				PRC_econ_engine_industrial_development_monthly_dynamic_var = 0.005
+			}
+		}
+	}
+	focus = {
+		id = PRC_corporate_autonomism
+		icon = GFX_focus_PRC_corporate_autonomism
+		cost = 4
+		relative_position_id = PRC_guiding_role_market
+		x = 2
+		y = 1
+        ai_will_do = {
+        	factor = 100
+        }
+        available = {
+        }
+		prerequisite = { focus = PRC_guiding_role_market }
+		
+		completion_reward = {
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = PRC_econ_engine_dummy_idea
+					add_idea = PRC_corporate_autonomism_idea
+				}
+			}
+			add_power_balance_value = {
+				id = PRC_Liberal_Conservative_power_balance
+				value = -0.05
+			}
+			add_to_variable = {
+				PRC_econ_engine_tax_business_rate_factor_dynamic_var = -0.03
+			}
+			add_to_variable = {
+				PRC_econ_engine_local_resources_factor_dynamic_var = 0.1
+			}
+			add_to_variable = {
+				PRC_econ_engine_production_factory_max_efficiency_factor_dynamic_var = 0.1
+			}
+		}
+	}
+	focus = {
+		id = PRC_reformed_corporate_iron_bowl
+		icon = GFX_focus_PRC_reformed_corporate_iron_bowl
+		cost = 4
+		relative_position_id = PRC_corporate_autonomism
+		x = -1
+		y = 1
+        ai_will_do = {
+        	factor = 100
+        }
+        available = {
+        }
+		prerequisite = { focus = PRC_corporate_autonomism }
+		prerequisite = { focus = PRC_harmonization_companies }
+		
+		completion_reward = {
+			increase_welfare = yes
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = PRC_econ_engine_dummy_idea
+					add_idea = PRC_reformed_corporate_iron_bowl_idea
+				}
+			}
+			add_power_balance_value = {
+				id = PRC_Liberal_Conservative_power_balance
+				value = -0.125
+			}
+			add_popularity = {
+				ideology = communist
+				popularity = -0.04
+			}
+			set_temp_variable = {
+				var = income_var_temp
+				value = 15
+			}
+			add_income_with_inflation = yes
+			add_to_variable = {
+				PRC_three_great_campaign_personal_income_factor_dynamic_var = -0.075
+			}
+			add_to_variable = {
+				PRC_econ_engine_consumer_goods_factor_dynamic_var = -0.05
+			}
+			add_to_variable = {
+				PRC_econ_engine_industrial_capacity_factory_dynamic_var = 0.05
+			}
+		}
+	}
+	focus = {
+		id = PRC_wang_yang_three_campaigns
+		icon = GFX_focus_PRC_wang_yang_three_campaigns
+		cost = 4
+		relative_position_id = PRC_reformed_corporate_iron_bowl
+		x = -4
+		y = 1
+        ai_will_do = {
+        	factor = 100
+        }
+        available = {
+			has_completed_focus = PRC_the_chinese_spring
+        }
+		prerequisite = { focus = PRC_final_blow_iron_bowl focus = PRC_reformed_corporate_iron_bowl }
+		prerequisite = { focus = PRC_prioritize_tech_sector }
+		
+		completion_reward = {
+			add_political_power = 100
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = PRC_econ_engine_dummy_idea
+					add_idea = PRC_wang_yang_three_campaigns_idea
+				}
+			}
+			add_to_variable = {
+				PRC_econ_engine_research_speed_factor_dynamic_var = 0.05
+			}
+			add_to_variable = {
+				PRC_econ_engine_industrial_capacity_factory_dynamic_var = 0.05
+			}
+			set_temp_variable = {
+				var = debt_var_temp
+				value = 40
+			}
+			add_debt_with_inflation = yes
+		}
+	}
+	focus = {
+		id = PRC_military_industries_renewal_campaign
+		icon = GFX_focus_PRC_military_industries_renewal_campaign
+		cost = 4
+		relative_position_id = PRC_wang_yang_three_campaigns
+		x = -2
+		y = 1
+        ai_will_do = {
+        	factor = 100
+        }
+        available = {
+        }
+		prerequisite = { focus = PRC_wang_yang_three_campaigns }
+		
+		completion_reward = {
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = PRC_econ_engine_dummy_idea
+					add_idea = PRC_pillar_of_great_nation_idea
+				}
+			}
+			add_to_variable = {
+				PRC_econ_engine_production_speed_arms_factory_factor_dynamic_var = 0.1
+			}
+			add_to_variable = {
+				PRC_three_great_campaign_expense_growth_factor_dynamic_var = 0.05
+			}
+			add_to_variable = {
+				PRC_three_great_campaign_equipment_conversion_speed_dynamic_var = 0.1
+			}
+		}
+	}
+	focus = {
+		id = PRC_100_dockyard_plan
+		icon = GFX_focus_PRC_100_dockyard_plan
+		cost = 4
+		relative_position_id = PRC_military_industries_renewal_campaign
+		x = -1
+		y = 1
+        ai_will_do = {
+        	factor = 100
+        }
+        available = {
+        }
+		prerequisite = { focus = PRC_military_industries_renewal_campaign }
+		
+		completion_reward = {
+			activate_mission = PRC_100_dockyards_plan_mission
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = PRC_econ_engine_dummy_idea
+					add_idea = PRC_100_dockyard_plan_idea
+				}
+			}
+			1219 = {
+				add_building_construction = {
+					type = dockyard
+					level = 2
+					instant_build = yes
+				}
+				add_extra_state_shared_building_slots = 2
+			}
+			595 = {
+				add_building_construction = {
+					type = dockyard
+					level = 2
+					instant_build = yes
+				}
+				add_extra_state_shared_building_slots = 2
+			}
+			1218 = {
+				add_building_construction = {
+					type = dockyard
+					level = 2
+					instant_build = yes
+				}
+				add_extra_state_shared_building_slots = 2
+			}
+			set_temp_variable = {
+				var = debt_var_temp
+				value = 35
+			}
+			add_debt_with_inflation = yes
+			add_to_variable = {
+				PRC_three_great_campaign_production_speed_dockyard_factor_dynamic_var = 0.2
+			}
+			add_ai_strategy = {
+				type = building_target
+				id = dockyard
+				value = 100
+			}
+		}
+	}
+	focus = {
+		id = PRC_set_new_military_standarts
+		icon = GFX_focus_PRC_set_new_military_standarts
+		cost = 4
+		relative_position_id = PRC_military_industries_renewal_campaign
+		x = 1
+		y = 1
+        ai_will_do = {
+        	factor = 100
+        }
+        available = {
+			has_completed_focus = PRC_chinas_spot_in_the_sun
+        }
+		prerequisite = { focus = PRC_military_industries_renewal_campaign }
+		prerequisite = { focus = PRC_china_future_campaign }
+		
+		completion_reward = {
+			army_experience = 50
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = PRC_econ_engine_dummy_idea
+					add_idea = PRC_set_new_military_standarts_idea
+				}
+			}
+			add_to_variable = {
+				PRC_three_great_campaign_equipment_upgrade_xp_cost_dynamic_var = -0.1
+			}
+			add_to_variable = {
+				PRC_three_great_campaign_army_fuel_consumption_factor_dynamic_var = -0.1
+			}
+			add_to_variable = {
+				PRC_three_great_campaign_navy_fuel_consumption_factor_dynamic_var = -0.1
+			}
+			add_to_variable = {
+				PRC_three_great_campaign_air_fuel_consumption_factor_dynamic_var = -0.1
+			}
+			set_temp_variable = {
+				var = PRC_army_reform_progress_temp
+				value = 0.05
+			}
+			PRC_add_army_reform_progress = yes
+		}
+	}
+	focus = {
+		id = PRC_encourage_industrial_modernization
+		icon = GFX_focus_PRC_encourage_industrial_modernization
+		cost = 4
+		relative_position_id = PRC_set_new_military_standarts
+		x = -1
+		y = 1
+        ai_will_do = {
+        	factor = 100
+        }
+        available = {
+        }
+		prerequisite = { focus = PRC_set_new_military_standarts focus = PRC_100_dockyard_plan }
+		
+		completion_reward = {
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = PRC_econ_engine_dummy_idea
+					add_idea = PRC_encourage_industrial_modernization_idea
+				}
+			}
+			set_temp_variable = {
+				var = industrial_development_var_temp
+				value = 0.15
+			}
+			add_industrial_development = yes
+			set_temp_variable = {
+				var = debt_var_temp
+				value = 75
+			}
+			add_debt_with_inflation = yes
+			add_to_variable = {
+				PRC_econ_engine_industrial_capacity_factory_dynamic_var = 0.05
+			}
+			add_to_variable = {
+				PRC_econ_engine_production_factory_efficiency_gain_factor_dynamic_var = 0.075
+			}
+			add_to_variable = {
+				PRC_three_great_campaign_production_lack_of_resource_penalty_factor_dynamic_var = -0.05
+			}
+			add_to_variable = {
+				PRC_econ_engine_repair_speed_infrastructure_factor_dynamic_var = 0.05
+			}
+			add_to_variable = {
+				PRC_three_great_campaign_line_change_production_efficiency_factor_dynamic_var = 0.03
+			}
+		}
+	}
+	focus = {
+		id = PRC_expand_research_development
+		icon = GFX_focus_PRC_expand_research_development
+		cost = 4
+		relative_position_id = PRC_set_new_military_standarts
+		x = 0
+		y = 2
+        ai_will_do = {
+        	factor = 100
+        }
+        available = {
+        }
+		prerequisite = { focus = PRC_set_new_military_standarts }
+		
+		completion_reward = {
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = PRC_econ_engine_dummy_idea
+					add_idea = PRC_expand_research_development_idea
+				}
+			}
+			unlock_decision_tooltip = PRC_expand_rnd
+			add_to_variable = {
+				PRC_three_great_campaign_academic_development_monthly_dynamic_var = 0.02
+			}
+			add_to_variable = {
+				PRC_three_great_campaign_society_development_monthly_dynamic_var = 0.02
+			}
+			add_to_variable = {
+				PRC_econ_engine_research_speed_factor_dynamic_var = 0.075
+			}
+		}
+	}
+	focus = {
+		id = PRC_shipbuilding_ingenuity
+		icon = GFX_focus_PRC_shipbuilding_ingenuity
+		cost = 4
+		relative_position_id = PRC_100_dockyard_plan
+		x = 0
+		y = 2
+        ai_will_do = {
+        	factor = 100
+        }
+        available = {
+        }
+		prerequisite = { focus = PRC_100_dockyard_plan }
+		
+		completion_reward = {
+			navy_experience = 50
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = PRC_econ_engine_dummy_idea
+					add_idea = PRC_shipbuilding_ingenuity_idea
+				}
+			}
+			add_tech_bonus = {
+				name = PRC_shipbuilding_ingenuity
+				bonus = 0.75
+				uses = 3
+				category = ship_modules_tech
+			}
+			add_to_variable = {
+				PRC_three_great_campaign_repair_speed_factor_dynamic_var = 0.1
+			}
+			add_to_variable = {
+				PRC_three_great_campaign_industrial_capacity_dockyard_dynamic_var = 0.125
+			}
+		}
+	}
+	focus = {
+		id = PRC_china_future_campaign
+		icon = GFX_focus_PRC_china_future_campaign
+		cost = 4
+		relative_position_id = PRC_wang_yang_three_campaigns
+		x = 0
+		y = 1
+        ai_will_do = {
+        	factor = 100
+        }
+        available = {
+        }
+		prerequisite = { focus = PRC_wang_yang_three_campaigns }
+		
+		completion_reward = {
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = PRC_econ_engine_dummy_idea
+					add_idea = PRC_technological_powerhouse_idea
+				}
+			}
+			add_to_variable = {
+				PRC_econ_engine_research_speed_factor_dynamic_var = 0.05
+			}
+			add_to_variable = {
+				PRC_three_great_campaign_academic_development_monthly_dynamic_var = 0.015
+			}
+			add_to_variable = {
+				PRC_three_great_campaign_expense_growth_factor_dynamic_var = 0.05
+			}
+		}
+	}
+	focus = {
+		id = PRC_invest_mass_smart_manufacturing
+		icon = GFX_focus_PRC_invest_mass_smart_manufacturing
+		cost = 4
+		relative_position_id = PRC_china_future_campaign
+		x = 0
+		y = 2
+        ai_will_do = {
+        	factor = 100
+        }
+        available = {
+        }
+		prerequisite = { focus = PRC_china_future_campaign }
+		
+		completion_reward = {
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = PRC_econ_engine_dummy_idea
+					add_idea = PRC_invest_mass_smart_manufacturing_idea
+				}
+			}
+			set_temp_variable = {
+				var = debt_var_temp
+				value = 50
+			}
+			add_debt_with_inflation = yes
+			add_to_variable = {
+				PRC_three_great_campaign_production_factory_start_efficiency_factor_dynamic_var = 0.075
+			}
+			add_to_variable = {
+				PRC_econ_engine_production_factory_max_efficiency_factor_dynamic_var = 0.075
+			}
+		}
+	}
+	focus = {
+		id = PRC_lower_tax_high_tech
+		icon = GFX_focus_PRC_lower_tax_high_tech
+		cost = 4
+		relative_position_id = PRC_china_future_campaign
+		x = 1
+		y = 1
+        ai_will_do = {
+        	factor = 100
+        }
+        available = {
+        }
+		prerequisite = { focus = PRC_china_future_campaign }
+		prerequisite = { focus = PRC_greening_economy_campaign }
+		
+		completion_reward = {
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = PRC_econ_engine_dummy_idea
+					add_idea = PRC_lower_tax_high_tech_idea
+				}
+			}
+			every_military_industrial_organization = {
+				add_mio_funds = 1250
+			}
+			set_temp_variable = {
+				var = academic_development_var_temp
+				value = 0.02
+			}
+			add_academic_development = yes
+			add_to_variable = {
+				PRC_econ_engine_production_factory_max_efficiency_factor_dynamic_var = 0.03
+			}
+			add_to_variable = {
+				PRC_econ_engine_tax_business_rate_factor_dynamic_var = -0.025
+			}
+			add_to_variable = {
+				PRC_three_great_campaign_personal_income_factor_dynamic_var = 0.05
+			}
+		}
+	}
+	focus = {
+		id = PRC_encourage_domestic_production
+		icon = GFX_focus_PRC_encourage_domestic_production
+		cost = 4
+		relative_position_id = PRC_china_future_campaign
+		x = 1
+		y = 3
+        ai_will_do = {
+        	factor = 100
+        }
+        available = {
+        }
+		prerequisite = { focus = PRC_lower_tax_high_tech }
+		
+		completion_reward = {
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = PRC_econ_engine_dummy_idea
+					add_idea = PRC_encourage_domestic_production
+				}
+			}
+			605 = {
+				add_resource = {
+					type = chromium
+					amount = 25
+				}
+			}
+			1228 = {
+				add_resource = {
+    				type = chromium
+    				amount = 35
+				}
+			}
+			591 = {
+				add_resource = {
+					type = rubber
+					amount = 25
+				}
+			}
+			1196 = {
+				add_resource = {
+					type = rubber
+					amount = 15
+				}
+			}
+			1188 = {
+				add_resource = {
+    				type = steel
+    				amount = 40
+				}
+			}
+			592 = {
+				add_resource = {
+    				type = steel
+    				amount = 30
+				}
+			}
+			615 = {
+				add_resource = {
+    				type = oil
+    				amount = 45
+				}
+			}
+			unlock_decision_tooltip = PRC_expand_resource_production
+			add_to_variable = {
+				PRC_econ_engine_income_growth_factor_dynamic_var = 0.05
+			}
+			add_to_variable = {
+				PRC_econ_engine_local_resources_factor_dynamic_var = 0.05
+			}
+		}
+	}
+	focus = {
+		id = PRC_greening_economy_campaign
+		icon = GFX_focus_PRC_greening_economy_campaign
+		cost = 4
+		relative_position_id = PRC_wang_yang_three_campaigns
+		x = 2
+		y = 1
+        ai_will_do = {
+        	factor = 100
+        }
+        available = {
+		
+        }
+		prerequisite = { focus = PRC_wang_yang_three_campaigns }
+		
+		completion_reward = {
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = PRC_econ_engine_dummy_idea
+					add_idea = PRC_lush_mountains_clean_rivers_idea
+				}
+			}
+			unlock_decision_tooltip = PRC_construct_renewables
+			set_temp_variable = {
+				var = PRC_enviromental_progress_temp
+				value = 0.05
+			}
+			PRC_add_enviromental_progress = yes
+			add_to_variable = {
+				PRC_econ_engine_consumer_goods_factor_dynamic_var = 0.025
+			}
+			add_to_variable = {
+				PRC_three_great_campaign_production_speed_energy_farm_factor_dynamic_var = 0.15
+			}
+			add_to_variable = {
+				PRC_three_great_campaign_agriculture_development_monthly_dynamic_var = 0.01
+			}
+			add_to_variable = {
+				PRC_three_great_campaign_expense_growth_factor_dynamic_var = 0.05
+			}
+		}
+	}
+	focus = {
+		id = PRC_phased_decommissioning_old_plants
+		icon = GFX_focus_PRC_phased_decommissioning_old_plants
+		cost = 4
+		relative_position_id = PRC_greening_economy_campaign
+		x = 1
+		y = 1
+        ai_will_do = {
+        	factor = 100
+        }
+        available = {
+        }
+		prerequisite = { focus = PRC_greening_economy_campaign }
+		
+		completion_reward = {
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = PRC_econ_engine_dummy_idea
+					add_idea = PRC_phased_decommissioning_old_plants_idea
+				}
+			}
+			set_temp_variable = {
+				var = society_development_var_temp
+				value = 0.05
+			}
+			add_society_development = yes
+			set_temp_variable = {
+				var = PRC_enviromental_progress_temp
+				value = 0.05
+			}
+			modify_building_resources = {
+				building = energy_farm
+				resource = coal
+				amount = 1
+			}
+			PRC_add_enviromental_progress = yes
+			add_to_variable = {
+				PRC_three_great_campaign_agriculture_development_monthly_dynamic_var = 0.01
+			}
+			add_to_variable = {
+				PRC_three_great_campaign_production_speed_energy_farm_factor_dynamic_var = 0.1
+			}
+			add_to_variable = {
+				PRC_econ_engine_industrial_capacity_factory_dynamic_var = -0.025
+			}
+		}
+	}
+	focus = {
+		id = PRC_support_agricultural_modernization
+		icon = GFX_focus_PRC_support_agricultural_modernization
+		cost = 4
+		relative_position_id = PRC_phased_decommissioning_old_plants
+		x = -1
+		y = 1
+        ai_will_do = {
+        	factor = 100
+        }
+        available = {
+        }
+		prerequisite = { focus = PRC_lower_tax_high_tech focus = PRC_phased_decommissioning_old_plants }
+		
+		completion_reward = {
+			add_stability = 0.035
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = PRC_econ_engine_dummy_idea
+					add_idea = PRC_support_agricultural_modernization_idea
+				}
+			}
+			set_temp_variable = {
+				var = debt_var_temp
+				value = 15
+			}
+			add_debt_with_inflation = yes
+			set_temp_variable = {
+				var = farming_development_var_temp
+				value = 0.075
+			}
+			add_farming_development = yes
+			set_temp_variable = {
+				var = PRC_enviromental_progress_temp
+				value = 0.025
+			}
+			PRC_add_enviromental_progress = yes
+			add_to_variable = {
+				PRC_three_great_campaign_agriculture_development_monthly_dynamic_var = 0.01
+			}
+			add_to_variable = {
+				PRC_three_great_campaign_personal_income_factor_dynamic_varv = 0.03
+			}
+		}
+	}
+	focus = {
+		id = PRC_green_energy_green_vehicles_plan
+		icon = GFX_focus_PRC_green_energy_green_vehicles_plan
+		cost = 4
+		relative_position_id = PRC_phased_decommissioning_old_plants
+		x = 0
+		y = 2
+        ai_will_do = {
+        	factor = 100
+        }
+        available = {
+        }
+		prerequisite = { focus = PRC_phased_decommissioning_old_plants }
+		
+		completion_reward = {
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = PRC_econ_engine_dummy_idea
+					add_idea = PRC_green_energy_green_vehicles_plan_idea
+				}
+			}
+			add_tech_bonus = {
+				name = PRC_green_energy_green_vehicles_plan
+				bonus = 0.25
+				uses = 2
+				category = energy
+			}
+			set_temp_variable = {
+				var = PRC_enviromental_progress_temp
+				value = 0.035
+			}
+			PRC_add_enviromental_progress = yes
+			add_to_variable = {
+				PRC_econ_engine_research_speed_factor_dynamic_var = 0.02
+			}
+			add_to_variable = {
+				PRC_three_great_campaign_agriculture_development_monthly_dynamic_var = 0.01
+			}
+		}
+	}
+	focus = {
+		id = PRC_new_china_model
+		icon = GFX_focus_PRC_new_china_model
+		cost = 4
+		relative_position_id = PRC_green_energy_green_vehicles_plan
+		x = -3
+		y = 1
+        ai_will_do = {
+        	factor = 100
+        }
+        available = {
+        }
+		prerequisite = { focus = PRC_green_energy_green_vehicles_plan }
+		prerequisite = { focus = PRC_invest_mass_smart_manufacturing }
+		prerequisite = { focus = PRC_encourage_domestic_production }
+		prerequisite = { focus = PRC_shipbuilding_ingenuity }
+		prerequisite = { focus = PRC_expand_research_development }
+		
+		completion_reward = {
+			add_stability = 0.05
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = PRC_econ_engine_dummy_idea
+					add_idea = PRC_new_china_model_idea
+				}
+			}
+			set_temp_variable = {
+				var = industrial_development_var_temp
+				value = 0.125
+			}
+			add_industrial_development = yes
+			set_temp_variable = {
+				var = poverty_development_var_temp
+				value = 0.125
+			}
+			add_poverty_development = yes
+			set_temp_variable = {
+				var = academic_development_var_temp
+				value = 0.125
+			}
+			add_academic_development = yes
+			set_temp_variable = {
+				var = income_var_temp
+				value = 50
+			}
+			add_income_with_inflation = yes
+			add_to_variable = {
+				PRC_three_great_campaign_income_growth_factor_dynamic_var = 0.05
+			}
+			add_to_variable = {
+				PRC_econ_engine_society_development_monthly_dynamic_var = 0.015
+			}
+			add_to_variable = {
+				PRC_econ_engine_industrial_development_monthly_dynamic_var = 0.015
+			}
+		}
+	}
+}

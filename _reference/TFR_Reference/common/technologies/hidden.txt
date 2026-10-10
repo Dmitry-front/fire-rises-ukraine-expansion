@@ -1,0 +1,119 @@
+technologies = {
+	nukes = {
+		#Only Added by effect
+		allow = {
+			always = no
+		}
+		research_cost = 1
+		nuclear_production = 1
+		#If you change these
+		#Change the custom tooltip too: nukes_tech_effect
+	}
+
+	#gotterdammerung shit
+
+	land_multi_charge_large_caliber_gun_tech = {
+		allow = {
+			always = no
+		}
+
+		start_year = 1936
+		enable_building = {
+			building = mega_gun_emplacement
+			level = 1
+		}
+	}
+	
+	tech_cyber_units_warfare = {
+		research_cost = 1
+
+		allow = { always = no } #only added by effect
+
+		show_effect_as_desc = yes
+		category_support_battalions = {
+			recon = 0.3
+			breakthrough = 0.25
+			initiative = 0.15
+			entrenchment = 0.1
+		}
+	}
+	
+	tech_upgraded_start_generals = {
+		research_cost = 1
+
+		allow = { always = no } #only added by effect
+
+		show_effect_as_desc = yes
+
+		army_leader_start_level = 2
+		army_leader_start_attack_level = 2
+		army_leader_start_defense_level = 2
+	}
+
+	commercial_nuclear_reactor_tech = {
+		allow = {
+			always = no
+		}
+
+		start_year = 1936
+		enable_building = {
+			building = commercial_nuclear_reactor
+			level = 1
+		}
+	}
+
+	stronghold_network_tech = {
+		allow = {
+			always = no
+		}
+
+		start_year = 1936
+		enable_building = {
+			building = stronghold_network
+			level = 1
+		}
+	}
+	
+	#############################
+		### Nuclear Projects ###
+	#############################
+
+	isotope_separation_centrifugal = {
+		# boosts nuclear production		
+		start_year = 1943
+		research_cost = 5
+		categories = {
+			nuclear
+		}
+		sp_nuclear_bomb_speed_factor = 0.05
+		sp_thermo_nuclear_bomb_speed_factor = 0.05
+		nuclear_production_factor = 0.5
+	}
+
+	thermonuclear_bombs = {
+	
+		start_year = 1950
+		research_cost = 5
+		
+		ai_will_do = {
+			factor = 10
+		}
+		# TODO_ASD: Enable when code implemented
+		#THERMONUCLEAR_BOMB_PRODUCTION_SCALE = 1
+		thermonuclear_production = 1
+
+		categories = {
+			nuclear
+		}
+	}
+	
+	tech_derzhavnik_battalion = {
+		research_cost = 1
+
+		allow = { always = no } #only added by effect
+
+		enable_subunits = {
+			derzhavnik_battalion
+		}
+	}
+}

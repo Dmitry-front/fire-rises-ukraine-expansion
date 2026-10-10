@@ -1,0 +1,495 @@
+ATW_add_desperation = {
+	custom_effect_tooltip = ATW_add_desperation_tooltip
+	add_to_variable = {
+		var = ATW_desperation_var
+		value = ATW_desperation_var_temp
+	}
+	clamp_variable = {
+		var = ATW_desperation_var
+		min = 0
+		max = 1
+	}
+	set_temp_variable = {
+		var = ATW_desperation_var_temp
+		value = ATW_desperation_var
+	}
+	add_to_temp_variable = {
+		var = ATW_desperation_var_temp
+		value = -0.5
+	}
+	set_variable = {
+		var = ATW_desperation_army_attack_factor_dynamic_var
+		value = ATW_desperation_var_temp
+	}
+	multiply_variable = {
+		var = ATW_desperation_army_attack_factor_dynamic_var
+		value = 0.25
+	}
+	set_variable = {
+		var = ATW_desperation_production_speed_arms_factory_factor_dynamic_var
+		value = ATW_desperation_var_temp
+	}
+	multiply_variable = {
+		var = ATW_desperation_production_speed_arms_factory_factor_dynamic_var
+		value = 0.25
+	}
+	set_variable = {
+		var = ATW_desperation_production_factory_efficiency_gain_factor_dynamic_var
+		value = ATW_desperation_var_temp
+	}
+	multiply_variable = {
+		var = ATW_desperation_production_factory_efficiency_gain_factor_dynamic_var
+		value = 0.5
+	}
+	set_variable = {
+		var = ATW_desperation_production_speed_industrial_complex_factor_dynamic_var
+		value = ATW_desperation_var_temp
+	}
+	multiply_variable = {
+		var = ATW_desperation_production_speed_industrial_complex_factor_dynamic_var
+		value = -0.25
+	}
+	set_variable = {
+		var = ATW_desperation_research_speed_factor_dynamic_var
+		value = ATW_desperation_var_temp
+	}
+	multiply_variable = {
+		var = ATW_desperation_research_speed_factor_dynamic_var
+		value = -0.25
+	}
+}
+
+ATW_add_devotion = {
+	custom_effect_tooltip = ATW_add_devotion_tooltip
+	add_to_variable = {
+		var = ATW_devotion_var
+		value = ATW_devotion_var_temp
+	}
+	clamp_variable = {
+		var = ATW_devotion_var
+		min = 0
+		max = 1
+	}
+	set_temp_variable = {
+		var = ATW_devotion_var_temp
+		value = ATW_devotion_var
+	}
+	add_to_temp_variable = {
+		var = ATW_devotion_var_temp
+		value = -0.5
+	}
+	set_variable = {
+		var = ATW_devotion_army_defence_factor_dynamic_var
+		value = ATW_devotion_var_temp
+	}
+	multiply_variable = {
+		var = ATW_devotion_army_defence_factor_dynamic_var
+		value = 0.5
+	}
+	set_variable = {
+		var = ATW_devotion_stability_factor_dynamic_var
+		value = ATW_devotion_var_temp
+	}
+	multiply_variable = {
+		var = ATW_devotion_stability_factor_dynamic_var
+		value = 0.5
+	}
+	set_variable = {
+		var = ATW_devotion_conscription_factor_dynamic_var
+		value = ATW_devotion_var_temp
+	}
+	multiply_variable = {
+		var = ATW_devotion_conscription_factor_dynamic_var
+		value = 0.5
+	}
+	set_variable = {
+		var = ATW_devotion_war_support_factor_dynamic_var
+		value = ATW_devotion_var_temp
+	}
+	multiply_variable = {
+		var = ATW_devotion_war_support_factor_dynamic_var
+		value = -0.5
+	}
+}
+
+ATW_add_despair = {
+	custom_effect_tooltip = ATW_add_despair_tooltip
+	add_to_variable = {
+		var = ATW_despair_var
+		value = ATW_despair_var_temp
+	}
+	clamp_variable = {
+		var = ATW_despair_var
+		min = 0
+		max = 1
+	}
+	set_temp_variable = {
+		var = ATW_despair_var_temp
+		value = ATW_despair_var
+	}
+	add_to_temp_variable = {
+		var = ATW_despair_var_temp
+		value = -0.5
+	}
+	set_variable = {
+		var = ATW_despair_army_attack_factor_dynamic_var
+		value = ATW_despair_var_temp
+	}
+	multiply_variable = {
+		var = ATW_despair_army_attack_factor_dynamic_var
+		value = 0.5
+	}
+	set_variable = {
+		var = ATW_despair_industrial_capacity_factory_dynamic_var
+		value = ATW_despair_var_temp
+	}
+	multiply_variable = {
+		var = ATW_despair_industrial_capacity_factory_dynamic_var
+		value = 0.5
+	}
+	set_variable = {
+		var = ATW_despair_industrial_capacity_dockyard_dynamic_var
+		value = ATW_despair_var_temp
+	}
+	multiply_variable = {
+		var = ATW_despair_industrial_capacity_dockyard_dynamic_var
+		value = 0.5
+	}
+	set_variable = {
+		var = ATW_despair_army_morale_factor_dynamic_var
+		value = ATW_despair_var_temp
+	}
+	multiply_variable = {
+		var = ATW_despair_army_morale_factor_dynamic_var
+		value = 0.5
+	}
+	set_variable = {
+		var = ATW_despair_stability_factor_dynamic_var
+		value = ATW_despair_var_temp
+	}
+	multiply_variable = {
+		var = ATW_despair_stability_factor_dynamic_var
+		value = -0.5
+	}
+}
+
+ATW_add_resistance = {
+	custom_effect_tooltip = ATW_add_resistance_tooltip
+	add_to_variable = {
+		var = ATW_resistance_var
+		value = ATW_resistance_var_temp
+	}
+	clamp_variable = {
+		var = ATW_resistance_var
+		min = 0
+		max = 1
+	}
+	hidden_effect = {
+		remove_ideas = ATW_lower_resistance_idea
+		remove_ideas = ATW_low_resistance_idea
+		remove_ideas = ATW_medium_resistance_idea
+		remove_ideas = ATW_high_resistance_idea
+		remove_ideas = ATW_higher_resistance_idea
+		if = {
+			limit = {
+				check_variable = {
+					var = ATW_resistance_var
+					value = 0.2
+					compare = less_than
+				}
+			}
+			add_ideas = ATW_lower_resistance_idea
+		}
+		else_if = {
+			limit = {
+				check_variable = {
+					var = ATW_resistance_var
+					value = 0.2
+					compare = greater_than_or_equals
+				}
+				check_variable = {
+					var = ATW_resistance_var
+					value = 0.4
+					compare = less_than
+				}
+			}
+			add_ideas = ATW_low_resistance_idea
+		}
+		else_if = {
+			limit = {
+				check_variable = {
+					var = ATW_resistance_var
+					value = 0.4
+					compare = greater_than_or_equals
+				}
+				check_variable = {
+					var = ATW_resistance_var
+					value = 0.6
+					compare = less_than
+				}
+			}
+			add_ideas = ATW_medium_resistance_idea
+		}
+		else_if = {
+			limit = {
+				check_variable = {
+					var = ATW_resistance_var
+					value = 0.6
+					compare = greater_than_or_equals
+				}
+				check_variable = {
+					var = ATW_resistance_var
+					value = 0.8
+					compare = less_than
+				}
+			}
+			add_ideas = ATW_high_resistance_idea
+		}
+		else_if = {
+			limit = {
+				check_variable = {
+					var = ATW_resistance_var
+					value = 0.8
+					compare = greater_than_or_equals
+				}
+			}
+			add_ideas = ATW_higher_resistance_idea
+		}
+	}
+}
+
+ATW_add_layer_of_hell_effect = {
+	if = {
+		limit = {
+			has_idea = ATW_layer_of_treachery_idea
+		}
+		add_political_power = 50
+	}
+	else_if = {
+		limit = {
+			has_idea = ATW_layer_of_limbo_idea
+		}
+		custom_effect_tooltip = ATW_add_layer_of_hell_tooltip
+		set_variable = {
+			var = ATW_dantes_inferno_circle_level_var
+			value = 1
+		}
+		swap_ideas = {
+			remove_idea = ATW_layer_of_limbo_idea
+			add_idea = ATW_layer_of_lust_idea
+		}
+	}
+	else_if = {
+		limit = {
+			has_idea = ATW_layer_of_lust_idea
+		}
+		custom_effect_tooltip = ATW_add_layer_of_hell_tooltip
+		set_variable = {
+			var = ATW_dantes_inferno_circle_level_var
+			value = 2
+		}
+		swap_ideas = {
+			remove_idea = ATW_layer_of_lust_idea
+			add_idea = ATW_layer_of_gluttony_idea
+		}
+	}
+	else_if = {
+		limit = {
+			has_idea = ATW_layer_of_gluttony_idea
+		}
+		custom_effect_tooltip = ATW_add_layer_of_hell_tooltip
+		set_variable = {
+			var = ATW_dantes_inferno_circle_level_var
+			value = 3
+		}
+		swap_ideas = {
+			remove_idea = ATW_layer_of_gluttony_idea
+			add_idea = ATW_layer_of_greed_idea
+		}
+	}
+	else_if = {
+		limit = {
+			has_idea = ATW_layer_of_greed_idea
+		}
+		custom_effect_tooltip = ATW_add_layer_of_hell_tooltip
+		set_variable = {
+			var = ATW_dantes_inferno_circle_level_var
+			value = 4
+		}
+		swap_ideas = {
+			remove_idea = ATW_layer_of_greed_idea
+			add_idea = ATW_layer_of_anger_idea
+		}
+	}
+	else_if = {
+		limit = {
+			has_idea = ATW_layer_of_anger_idea
+		}
+		custom_effect_tooltip = ATW_add_layer_of_hell_tooltip
+		set_variable = {
+			var = ATW_dantes_inferno_circle_level_var
+			value = 5
+		}
+		swap_ideas = {
+			remove_idea = ATW_layer_of_anger_idea
+			add_idea = ATW_layer_of_heresy_idea
+		}
+	}
+	else_if = {
+		limit = {
+			has_idea = ATW_layer_of_heresy_idea
+		}
+		custom_effect_tooltip = ATW_add_layer_of_hell_tooltip
+		set_variable = {
+			var = ATW_dantes_inferno_circle_level_var
+			value = 6
+		}
+		swap_ideas = {
+			remove_idea = ATW_layer_of_heresy_idea
+			add_idea = ATW_layer_of_violence_idea
+		}
+	}
+	else_if = {
+		limit = {
+			has_idea = ATW_layer_of_violence_idea
+		}
+		custom_effect_tooltip = ATW_add_layer_of_hell_tooltip
+		set_variable = {
+			var = ATW_dantes_inferno_circle_level_var
+			value = 7
+		}
+		swap_ideas = {
+			remove_idea = ATW_layer_of_violence_idea
+			add_idea = ATW_layer_of_fraud_idea
+		}
+	}
+	else_if = {
+		limit = {
+			has_idea = ATW_layer_of_fraud_idea
+		}
+		custom_effect_tooltip = ATW_add_layer_of_hell_tooltip
+		set_variable = {
+			var = ATW_dantes_inferno_circle_level_var
+			value = 8
+		}
+		swap_ideas = {
+			remove_idea = ATW_layer_of_fraud_idea
+			add_idea = ATW_layer_of_treachery_idea
+		}
+	}
+	else = {
+		custom_effect_tooltip = ATW_intro_inferno_mechanic_tooltip
+		add_ideas = ATW_layer_of_limbo_idea
+		set_variable = {
+			var = ATW_dantes_inferno_circle_level_var
+			value = 0
+		}
+	}
+}
+
+ATW_add_suspicion = {
+	custom_effect_tooltip = ATW_add_suspicion_tooltip
+	add_to_variable = {
+		var = ATW_suspicion_var
+		value = ATW_suspicion_var_temp
+	}
+	clamp_variable = {
+		var = ATW_suspicion_var
+		min = 0
+		max = 1
+	}
+	if = {
+		limit = {
+			OR = {
+				is_in_faction_with = NSM
+				is_in_faction_with = PTF
+			}
+		}
+		if = {
+			limit = {
+				check_variable = {
+					var = ATW_suspicion_var
+					value = 0.65
+					compare = greater_than_or_equals
+				}
+			}
+			activate_mission = ATW_the_boot_mission
+		}
+		if = {
+			limit = {
+				check_variable = {
+					var = ATW_suspicion_var
+					value = 0.5
+					compare = greater_than_or_equals
+				}
+			}
+			country_event = atom.69
+		}
+	}
+	else_if = {
+		limit = {
+			has_country_flag = ATW_on_the_world_stage_flag
+		}
+		if = {
+			limit = {
+				check_variable = {
+					var = ATW_suspicion_var
+					value = 0.4
+					compare = greater_than_or_equals
+				}
+			}
+			activate_mission = ATW_international_intervention_mission
+		}
+		if = {
+			limit = {
+				check_variable = {
+					var = ATW_suspicion_var
+					value = 0.6
+					compare = greater_than_or_equals
+				}
+			}
+			activate_mission = ATW_popular_revolt_mission
+		}
+	}
+}
+
+#Aryan Liberation War
+ATW_end_of_the_system_effect = {
+	set_global_flag = ATW_end_of_the_world_global
+	delete_unit = {
+	}
+	ATW = {
+		load_focus_tree = generic_focus
+		if = {
+			limit = {
+				NOT = {
+					controls_state = 931
+				}
+			}
+			transfer_state = 931
+		}
+	}
+	ZZZ = {
+		every_state = {
+			limit = {
+				NOT = {
+					state = 931
+				}
+			}
+			transfer_state_to = ZZZ
+		}
+	}
+}
+
+#Debug
+ATW_local_theatre_win_debug_effect = {
+	every_state = {
+		limit = {
+			USA_is_florida_state = yes
+		}
+		transfer_state_to = ATW
+	}
+	country_event = {
+		id = atom.8
+	}
+}

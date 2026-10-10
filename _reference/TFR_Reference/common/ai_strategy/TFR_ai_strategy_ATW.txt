@@ -1,0 +1,204 @@
+ATW_kill_feds_strategy = {
+	abort_when_not_enabled = yes
+	allowed = {
+		original_tag = ATW
+	}
+	enable = {
+		has_completed_focus = ATW_consolidate_the_command
+		OR = {
+			country_exists = USC
+			country_exists = USB
+		}
+		OR = {
+			USB = {
+				OR = {
+					any_controlled_state = {
+						any_neighbor_state = {
+							is_controlled_by = ROOT
+						}
+					}
+					any_other_country = {
+						OR = {
+							is_in_faction_with = ROOT
+							is_puppet_of = ROOT
+						}
+						any_controlled_state = {
+							any_neighbor_state = {
+								is_controlled_by = USB
+							}
+						}
+					}
+				}
+			}
+			USC = {
+				OR = {
+					any_controlled_state = {
+						any_neighbor_state = {
+							is_controlled_by = ROOT
+						}
+					}
+					any_other_country = {
+						OR = {
+							is_in_faction_with = ROOT
+							is_puppet_of = ROOT
+						}
+						any_controlled_state = {
+							any_neighbor_state = {
+								is_controlled_by = USC
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+	ai_strategy = {
+		type = prepare_for_war
+		id = USB
+		value = 1000
+	}
+	ai_strategy = {
+		type = front_control
+		tag = USB
+		ratio = 0.5
+		priority = 100
+		ordertype = front
+		execution_type = rush
+		execute_order = yes
+	}
+	ai_strategy = {
+		type = prepare_for_war
+		id = USC
+		value = 1000
+	}
+	ai_strategy = {
+		type = front_control
+		tag = USC
+		ratio = 0.5
+		priority = 100
+		ordertype = front
+		execution_type = rush
+		execute_order = yes
+	}
+}
+
+ATW_kill_commies_strategy = {
+	abort_when_not_enabled = yes
+	allowed = {
+		original_tag = ATW
+	}
+	enable = {
+		has_completed_focus = ATW_consolidate_the_command
+		APA = {
+			exists = yes
+			OR = {
+				any_controlled_state = {
+					any_neighbor_state = {
+						is_controlled_by = ROOT
+					}
+				}
+				any_other_country = {
+					OR = {
+						is_in_faction_with = ROOT
+						is_puppet_of = ROOT
+					}
+					any_controlled_state = {
+						any_neighbor_state = {
+							is_controlled_by = APA
+						}
+					}
+				}
+			}
+		}
+	}
+	ai_strategy = {
+		type = prepare_for_war
+		id = APA
+		value = 1000
+	}
+	ai_strategy = {
+		type = front_control
+		tag = APA
+		ratio = 0.5
+		priority = 100
+		ordertype = front
+		execution_type = rush
+		execute_order = yes
+	}
+}
+
+ATW_kill_confederates_strategy = {
+	abort_when_not_enabled = yes
+	allowed = {
+		original_tag = ATW
+	}
+	enable = {
+		has_completed_focus = ATW_consolidate_the_command
+		LOS = {
+			exists = yes
+			OR = {
+				any_controlled_state = {
+					any_neighbor_state = {
+						is_controlled_by = ROOT
+					}
+				}
+				any_other_country = {
+					OR = {
+						is_in_faction_with = ROOT
+						is_puppet_of = ROOT
+					}
+					any_controlled_state = {
+						any_neighbor_state = {
+							is_controlled_by = ATW
+						}
+					}
+				}
+			}
+		}
+	}
+	ai_strategy = {
+		type = prepare_for_war
+		id = LOS
+		value = 1000
+	}
+	ai_strategy = {
+		type = front_control
+		tag = LOS
+		ratio = 0.5
+		priority = 100
+		ordertype = front
+		execution_type = rush
+		execute_order = yes
+	}
+}
+
+#Anti-AWD
+ATW_everyone_hates_us_strategy = {
+	abort_when_not_enabled = yes
+	allowed = {
+		OR = {
+			tag = ZOE
+			tag = LRA
+			tag = FLM
+			tag = MMS
+			tag = UNN
+		}
+	}
+	enable = {
+		country_exists = ATW
+	}
+	ai_strategy = {
+		type = prepare_for_war
+		id = ATW
+		value = 1000
+	}
+	ai_strategy = {
+		type = front_control
+		tag = ATW
+		ratio = 0.5
+		priority = 100
+		ordertype = front
+		execution_type = careful
+		execute_order = yes
+	}
+}

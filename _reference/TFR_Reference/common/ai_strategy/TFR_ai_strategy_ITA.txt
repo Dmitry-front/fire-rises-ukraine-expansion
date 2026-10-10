@@ -1,0 +1,281 @@
+seek_italian_alliance = {
+	enable = {
+		NOT = { tag = ITA }
+		has_country_flag = seeks_italian_alliance
+	}
+	
+	abort = {
+		NOT = { has_country_flag = seeks_italian_alliance }
+	}
+	
+	ai_strategy = {
+		type = befriend
+		id = "ITA"
+		value = 50
+	}
+	ai_strategy = {
+		type = alliance
+		id = "ITA"
+		value = 125
+	}
+}
+
+ITA_support_UKR = {
+	enable = {
+		tag = ITA
+		has_war = no
+	}
+	abort = {
+		has_war = yes
+		has_war_with = UKR
+	}
+
+	ai_strategy = {
+		type = support
+		id = "UKR"
+		value = 900
+	}
+}
+
+ITA_support_GRE = {
+	enable = {
+		tag = ITA
+		has_war = no
+		has_government = fascist
+	}
+	abort = {
+		has_war = yes
+		has_war_with = GRE
+	}
+
+	ai_strategy = {
+		type = support
+		id = "GRE"
+		value = 900
+	}
+	ai_strategy = {
+		type = send_volunteers_desire
+		id = "GRE"
+		value = 900
+	}
+}
+
+ITA_support_GRK = {
+	enable = {
+		tag = ITA
+		has_war = no
+		has_government = communist
+	}
+	abort = {
+		has_war = yes
+		has_war_with = GRK
+	}
+
+	ai_strategy = {
+		type = support
+		id = "GRK"
+		value = 900
+	}
+	ai_strategy = {
+		type = send_volunteers_desire
+		id = "GRK"
+		value = 900
+	}
+}
+
+ITA_support_SNS = {
+	enable = {
+		tag = ITA
+		has_war = no
+		has_government = fascist
+	}
+	abort = {
+		has_war = yes
+		has_war_with = SNS
+	}
+
+	ai_strategy = {
+		type = support
+		id = "SNS"
+		value = 900
+	}
+	ai_strategy = {
+		type = send_volunteers_desire
+		id = "SNS"
+		value = 900
+	}
+}
+
+ITA_support_PRS = {
+	enable = {
+		tag = ITA
+		has_war = no
+		has_government = communist
+	}
+	abort = {
+		has_war = yes
+		has_war_with = PRS
+	}
+
+	ai_strategy = {
+		type = support
+		id = "PRS"
+		value = 900
+	}
+	ai_strategy = {
+		type = send_volunteers_desire
+		id = "PRS"
+		value = 900
+	}
+}
+
+ITA_support_GOD = {
+	enable = {
+		tag = ITA
+		has_war = no
+		has_government = fascist
+	}
+	abort = {
+		has_war = yes
+		has_war_with = GOD
+	}
+
+	ai_strategy = {
+		type = support
+		id = "GOD"
+		value = 900
+	}
+	ai_strategy = {
+		type = send_volunteers_desire
+		id = "GOD"
+		value = 900
+	}
+}
+
+ITA_support_PRP = {
+	enable = {
+		tag = ITA
+		has_war = no
+		has_government = communist
+	}
+	abort = {
+		has_war = yes
+		has_war_with = GOD
+	}
+
+	ai_strategy = {
+		type = support
+		id = "PRP"
+		value = 900
+	}
+	ai_strategy = {
+		type = send_volunteers_desire
+		id = "PRP"
+		value = 900
+	}
+}
+
+ITA_forza_italia = {
+	allowed = {
+		original_tag = ITA
+	}
+	enable = {
+		is_in_faction_with = UKR
+	}
+	
+	abort = {
+		has_war = no
+	}
+
+	ai_strategy = {
+		type = force_defend_ally_borders
+		id = "EST"
+		value = 600
+	}
+	ai_strategy = {
+		type = force_defend_ally_borders
+		id = "LIT"
+		value = 600
+	}
+	ai_strategy = {
+		type = force_defend_ally_borders
+		id = "LAT"
+		value = 600
+	}
+	
+	ai_strategy = {
+		type = front_control
+		tag = SOV
+		execution_type = rush
+		execute_order = yes
+		manual_attack = no
+	}
+
+	ai_strategy = {
+		type = consider_weak
+		id = SOV
+		value = 1000
+	}
+
+	ai_strategy = {
+		type = conquer
+		id = SOV
+		value = 1000
+	}
+}
+
+ITA_to_the_front = {
+	enable = {
+		tag = ITA
+		has_war_with = SOV
+		OR = {
+			has_government = communist
+			has_government = fascist
+		}
+	}
+	abort = {
+		has_war = no
+	}
+	ai_strategy = {
+		type = dont_defend_ally_borders
+		id = "GER"
+		value = -100
+	}
+}
+
+ITA_support_UK2 = {
+	enable = {
+		tag = GER
+		has_war = no
+		OR = {
+			has_government = communist
+			has_government = libertarian_socialist
+		}
+	}
+	abort = {
+		has_war = yes
+		has_war_with = UK2
+	}
+
+	ai_strategy = {
+		type = send_volunteers_desire
+		id = "UK2"
+		value = 900
+	}
+}
+
+ITA_stop_spamming = {
+	allowed = {
+		original_tag = PRC
+	}
+	enable = {
+		date > 2028.1.1
+	}
+	abort = {
+		always = no
+	}
+	ai_strategy = {
+		type = force_build_armies
+		value = -100
+	}
+}

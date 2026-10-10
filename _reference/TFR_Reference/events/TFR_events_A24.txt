@@ -1,0 +1,138 @@
+﻿add_namespace = A24
+country_event = {
+	id = A24.1
+	title = A24.1.t
+	desc = A24.1.desc
+	picture = GFX_Development_Academic
+	is_triggered_only = yes
+	trigger = {
+		always = no
+	}
+	option = {
+		name = A24.1.a
+		A24 = {
+			set_nationality = {
+			    target_country = USA
+			    character = A24_Nick_Offerman
+			}
+			set_nationality = {
+			    target_country = USC
+			    character = A24_Brian_Cranston
+			}
+			set_nationality = {
+			    target_country = LOS
+			    character = A24_Ryan_Gosling
+			}
+			set_nationality = {
+			    target_country = USC
+			    character = A24_Jesse_Plemons
+			}
+			set_nationality = {
+			    target_country = APA
+			    character = A24_John_Cena
+			}
+		}
+		USA = {
+			
+			add_country_leader_role = {
+			    character = A24_Nick_Offerman
+			    promote_leader = yes
+			    country_leader = {
+			        ideology = hybrid_regime
+			        expire = "1965.1.1.1"
+			        traits = {  }
+			    }
+			}
+			set_politics = {
+			    ruling_party = authoritarian_democrat
+			    elections_allowed = no
+			    last_election = "1935.12.17"
+			    election_frequency = 48
+			    long_name = A24_USA
+			    name = A24_USA
+			}
+			add_popularity = {
+				ideology = authoritarian_democrat
+    			popularity = 0.11
+			}
+			set_cosmetic_tag = A24_Loyalist_States
+		}
+		USC = {
+			
+			add_country_leader_role = {
+			    character = A24_Brian_Cranston
+			    promote_leader = yes
+			    country_leader = {
+			        ideology = right_populism
+			        expire = "1965.1.1.1"
+			        traits = {  }
+			    }
+			}
+			set_politics = {
+			    ruling_party = conservative
+			    elections_allowed = no
+			    last_election = "1935.12.17"
+			    election_frequency = 48
+			    long_name = A24_USC
+			    name = A24_USC
+			}
+			add_popularity = {
+				ideology = conservative
+    			popularity = 0.33
+			}
+			set_cosmetic_tag = A24_Western_Forces
+		}
+		APA = {
+			add_country_leader_role = {
+			    character = A24_John_Cena
+			    promote_leader = yes
+			    country_leader = {
+			        ideology = marxism_leninism
+			        expire = "1965.1.1.1"
+			        traits = {  }
+			    }
+			}
+			set_politics = {
+			    ruling_party = communist
+			    elections_allowed = no
+			    last_election = "1935.12.17"
+			    election_frequency = 48
+			    long_name = A24_APA
+			    name = A24_APA
+			}
+			add_popularity = {
+				ideology = communist
+    			popularity = 0.33
+			}
+			set_cosmetic_tag = A24_New_Peoples_Army
+		}
+		LOS = {
+			promote_character = {
+			    character = A24_Ryan_Gosling
+			    ideology = nationalist
+			}
+			add_country_leader_role = {
+			    character = A24_Ryan_Gosling
+			    promote_leader = yes
+			    country_leader = {
+			        ideology = radical_nationalism
+			        expire = "1965.1.1.1"
+			        traits = {  }
+			    }
+			}
+			set_politics = {
+			    ruling_party = nationalist
+			    elections_allowed = no
+			    last_election = "1935.12.17"
+			    election_frequency = 48
+			    long_name = A24_LOS
+			    name = A24_LOS
+			}
+			add_popularity = {
+				ideology = nationalist
+    			popularity = 0.33
+			}
+			set_cosmetic_tag = A24_Florida_Alliance
+		}
+	}
+}

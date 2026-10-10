@@ -1,0 +1,1090 @@
+
+FAF_power_balance_non_mon = {
+	initial_value = 0
+	left_side = FAF_Gaullist_side	
+	right_side = FAF_Petainist_side	
+	decision_category = FAF_balance_of_power_non_mon_category
+
+	#Middle
+	range = {
+		id = FAF_balance_range
+		min = -0.15
+		max = 0.15
+		modifier = {
+			
+		}
+		on_activate = {
+			hidden_effect = {
+				focus_unlock = yes
+			}
+		}
+		on_deactivate = {
+			hidden_effect = {
+				focus_unlock = yes
+			}
+		}
+	}
+
+	#Gaullist Side
+	side = {
+		id = FAF_Gaullist_side
+		icon = GFX_bop_FRA_Gaullist
+		range = {
+			id = FAF_Gaullist_total_control_range
+			min = -1
+			max = -0.85
+			modifier = {
+				command_power_gain = 0.1
+				army_attack_factor = 0.12
+			}
+			on_activate = {
+				country_event = {
+					id = France.70
+					days = 1
+				}
+				hidden_effect = {
+					focus_unlock = yes
+				}
+			}
+			on_deactivate = {
+				hidden_effect = {
+					focus_unlock = yes
+				}
+			}
+		}
+		range = {
+			id = FAF_Gaullist_dominant_range
+			min = -0.85
+			max = -0.65
+			modifier = {
+				command_power_gain = 0.075
+				army_attack_factor = 0.09
+			}
+			on_activate = {
+				hidden_effect = {
+					focus_unlock = yes
+				}
+			}
+			on_deactivate = {
+				hidden_effect = {
+					focus_unlock = yes
+				}
+			}
+		}
+		range = {
+			id = FAF_Gaullist_alligned_range
+			min = -0.65
+			max = -0.35
+			modifier = {
+				command_power_gain = 0.05
+				army_attack_factor = 0.06
+			}
+			on_activate = {
+				country_event = {
+					id = France.71
+					days = 1
+				}
+				hidden_effect = {
+					focus_unlock = yes
+				}
+			}
+			on_deactivate = {
+				hidden_effect = {
+					focus_unlock = yes
+				}
+			}
+		}
+		range = {
+			id = FAF_Gaullist_lean_range
+			min = -0.35
+			max = -0.15
+			modifier = {
+				command_power_gain = 0.025
+				army_attack_factor = 0.03 
+			}
+			on_activate = {
+				hidden_effect = {
+					focus_unlock = yes
+				}
+			}
+			on_deactivate = {
+				hidden_effect = {
+					focus_unlock = yes
+				}
+			}
+		}
+	}
+
+	#Petain Side
+	side = {
+		id = FAF_Petainist_side	
+		icon = GFX_bop_FRA_Petain
+		range = {
+			id = FAF_Petainist_lean_range
+			min = 0.15
+			max = 0.35
+			modifier = {
+				political_power_gain = 0.05
+				army_defence_factor = 0.03
+			}
+			on_activate = { #
+				country_event = {
+					id = France.72
+					days = 1
+				}
+				hidden_effect = {
+					focus_unlock = yes
+				}
+			}
+			on_deactivate = {
+				hidden_effect = {
+					focus_unlock = yes
+				}
+			}
+		}
+		range = {
+			id = FAF_Petainist_alligned_range
+			min = 0.35
+			max = 0.60
+			modifier = {
+				political_power_gain = 0.1
+				army_defence_factor = 0.06
+			}
+			on_activate = {
+				country_event = {
+					id = France.73
+					days = 1
+				}
+				hidden_effect = {
+					focus_unlock = yes
+				}
+			}
+			on_deactivate = {
+				hidden_effect = {
+					focus_unlock = yes
+				}
+			}
+		}
+		range = {
+			id = FAF_Petainist_dominant_range
+			min = 0.60
+			max = 0.95
+			modifier = {
+				political_power_gain = 0.15
+				army_defence_factor = 0.09
+			}
+			on_activate = {
+				country_event = {
+					id = France.74
+					days = 1
+				}
+				hidden_effect = {
+					focus_unlock = yes
+				}
+			}
+			on_deactivate = {
+				hidden_effect = {
+					focus_unlock = yes
+				}
+			}
+		}
+		range = {
+			id = FAF_Petainist_total_control_range
+			min = 0.95
+			max = 1
+			modifier = {
+				political_power_gain = 0.20
+				army_defence_factor = 0.12
+			}
+			on_activate = {
+				custom_effect_tooltip = FAF_lafayette_coup_tt
+				add_manpower = 25000
+				hidden_effect = {
+					focus_unlock = yes
+					country_event = {
+						id = France.75
+						days = 1
+					}
+				}
+			}
+			on_deactivate = {
+				hidden_effect = {
+					focus_unlock = yes
+				}
+			}
+		}
+	}
+}
+FAF_sword_and_shield_bop = {
+    initial_value = 0
+    right_side = FAF_shield_side
+    left_side = FAF_sword_side
+    decision_category = FAF_balance_of_power_sword_and_shield_category
+
+
+    range = {
+        id = FAF_sword_shield_side
+        min = -0.15
+        max = 0.15
+        modifier = {
+        }
+        on_activate = {
+        }
+        on_deactivate = {
+        }
+    }
+
+
+    #sword Side
+    side = {
+        id = FAF_sword_side    
+        icon = GFX_bop_FAF_sword
+        range = {
+            id = FAF_sword_range
+            min = -1
+            max = -0.15
+            modifier = {
+                command_power_gain = 0.1
+                army_attack_factor = 0.12
+            }
+        }
+    }
+
+    #shield Side
+    side = {
+        id = FAF_shield_side    
+        icon = GFX_bop_FAF_sheild
+        range = {
+            id = FAF_shield_range
+            min = 0.15
+            max = 1
+            modifier = {
+                political_power_gain = 0.1
+                army_defence_factor = 0.12
+            }
+        }
+    }
+}
+
+FAF_power_balance_mon = {
+	initial_value = 0
+	left_side = FAF_Bourbon_side	
+	right_side = FAF_Petainist_Monarch_side	
+	decision_category = FAF_balance_of_power_Mon_category
+
+	#Middle
+	range = {
+		id = FAF_balance_range
+		min = -0.15
+		max = 0.15
+		modifier = {
+			
+		}
+		on_activate = {
+				hidden_effect = {
+					focus_unlock = yes
+				}
+		}
+		on_deactivate = {
+			hidden_effect = {
+				focus_unlock = yes
+			}
+		}
+	}
+
+	#Bourbon Side
+	side = {
+		id = FAF_Bourbon_side
+		icon = GFX_bop_FRA_Bourbon
+		range = {
+			id = FAF_Bourbon_total_control_range
+			min = -1
+			max = -0.75
+			modifier = {
+				max_planning_factor = 0.1
+				experience_gain_army = 0.07
+				experience_gain_air = 0.07
+				experience_gain_navy = 0.07
+				grant_medal_cost_factor = -0.80
+				consumer_goods_factor = 0.15
+			}
+			on_activate = {
+				hidden_effect = {
+					focus_unlock = yes
+				}
+				country_event = {
+					id = France.77
+					days = 1
+				}
+			}
+			on_deactivate = {
+			hidden_effect = {
+				focus_unlock = yes
+			}
+			}
+		}
+		range = {
+			id = FAF_Bourbon_dominant_range
+			min = -0.75
+			max = -0.55
+			modifier = {
+				max_planning_factor = 0.075
+				experience_gain_army = 0.05
+				experience_gain_air = 0.05
+				experience_gain_navy = 0.05
+				grant_medal_cost_factor = -0.60
+				consumer_goods_factor = 0.125
+			}
+			on_activate = {
+				hidden_effect = {
+					focus_unlock = yes
+				}
+			}
+			on_deactivate = {
+			hidden_effect = {
+				focus_unlock = yes
+			}
+			}
+		}
+		range = {
+			id = FAF_Bourbon_alligned_range
+			min = -0.55
+			max = -0.35
+			modifier = {
+				max_planning_factor = 0.05
+				experience_gain_army = 0.03
+				experience_gain_air = 0.03
+				experience_gain_navy = 0.03
+				grant_medal_cost_factor = -0.40
+				consumer_goods_factor = 0.10
+			}
+			on_activate = {
+				hidden_effect = {
+					focus_unlock = yes
+				}
+				country_event = {
+					id = France.76
+					days = 1
+				}
+			}
+			on_deactivate = {
+			hidden_effect = {
+				focus_unlock = yes
+			}
+			}
+		}
+		range = {
+			id = FAF_Bourbon_lean_range
+			min = -0.35
+			max = -0.15
+			modifier = {
+				max_planning_factor = 0.025
+				experience_gain_army = 0.01
+				experience_gain_air = 0.01
+				experience_gain_navy = 0.01
+				grant_medal_cost_factor = -0.20
+				consumer_goods_factor = 0.05
+			}
+			on_activate = {
+				hidden_effect = {
+					focus_unlock = yes
+				}
+			}
+			on_deactivate = {
+			hidden_effect = {
+				focus_unlock = yes
+			}
+			}
+		}
+	}
+
+	#Petain Side
+	side = {
+		id = FAF_Petainist_Monarch_side	
+		icon = GFX_bop_FRA_Petain
+		range = {
+			id = FAF_Petainist_Monarch_lean_range
+			min = 0.15
+			max = 0.35
+			modifier = {
+				political_power_gain = 0.05
+				army_defence_factor = 0.03
+			}
+			on_activate = {
+				hidden_effect = {
+					focus_unlock = yes
+				}
+			}
+			on_deactivate = {
+			hidden_effect = {
+				focus_unlock = yes
+			}
+			}
+		}
+		range = {
+			id = FAF_Petainist_Monarch_alligned_range
+			min = 0.35
+			max = 0.60
+			modifier = {
+				political_power_gain = 0.1
+				army_defence_factor = 0.06
+			}
+			on_activate = {
+				hidden_effect = {
+					focus_unlock = yes
+				}
+				country_event = {
+					id = France.73
+					days = 1
+				}
+			}
+			on_deactivate = {
+			hidden_effect = {
+				focus_unlock = yes
+			}
+			}
+		}
+		range = {
+			id = FAF_Petainist_Monarch_dominant_range
+			min = 0.60
+			max = 0.95
+			modifier = {
+				political_power_gain = 0.15
+				army_defence_factor = 0.09
+			}
+			on_activate = {
+				hidden_effect = {
+					focus_unlock = yes
+				}
+				country_event = {
+					id = France.74
+					days = 1
+				}
+			}
+			on_deactivate = {
+				hidden_effect = {
+					focus_unlock = yes
+				}
+			}
+		}
+		range = {
+			id = FAF_Petainist_Monarch_total_control_range
+			min = 0.95
+			max = 1
+			modifier = {
+				political_power_gain = 0.20
+				army_defence_factor = 0.12
+			}
+			on_activate = {
+				add_manpower = 25000
+				hidden_effect = {
+					focus_unlock = yes
+					country_event = {
+						id = France.75
+						days = 1
+					}
+				}
+			}
+			on_deactivate = {
+				hidden_effect = {
+					focus_unlock = yes
+				}
+			}
+		}
+	}
+}
+
+FAF_power_balance_Fascist = {
+	initial_value = 0
+	left_side = FAF_Fascist_side	
+	right_side = FAF_Latinists_side	
+	decision_category = FAF_balance_of_power_Fascist_category
+
+	#Middle
+	range = {
+		id = FAF_Fascist_balance_range
+		min = -0.10
+		max = 0.10
+		modifier = {
+			head_minister_cost_factor = -0.5
+			foreign_minister_cost_factor = -0.5
+			economic_minister_cost_factor = -0.5
+			interior_minister_cost_factor = -0.5
+			intelligence_minister_cost_factor = -0.5
+			theorist_minister_cost_factor = -0.5
+		}
+		on_activate = {
+			hidden_effect = {
+				focus_unlock = yes
+			}
+			clr_country_flag = FAF_Latinist_Movement_flag
+			clr_country_flag = FAF_Latinist_Propaganda_flag
+			clr_country_flag = FAF_Italy_and_Spain_flag
+
+		}
+		on_deactivate = {
+			hidden_effect = {
+				focus_unlock = yes
+			}
+		}
+	}
+
+	#Trad Fash Side
+	side = {
+		id = FAF_Fascist_side
+		icon = GFX_bop_FAF_Fascist
+		range = {
+			id = FAF_Fascist_total_control_range
+			min = -1
+			max = -0.85
+			modifier = {
+				war_support_factor = 0.15
+				political_power_factor = 0.15
+				stability_factor = -0.15
+				head_minister_cost_factor = 0.5
+				foreign_minister_cost_factor = 0.5
+				economic_minister_cost_factor = 0.5
+				interior_minister_cost_factor = 0.5
+				intelligence_minister_cost_factor = 0.5
+				theorist_minister_cost_factor = 0.5
+			}
+			on_activate = {
+				remove_power_balance = {
+					id = FAF_power_balance_Fascist
+				}
+				add_country_leader_trait = FAF_Le_Dictateur
+				add_ideas = FAF_Full_Fascist_Control_idea
+				set_country_flag = FAF_Fascist_politics
+				hidden_effect = {
+					focus_unlock = yes
+				}
+			}
+			on_deactivate = {
+			hidden_effect = {
+				focus_unlock = yes
+			}
+			}
+		}
+		range = {
+			id = FAF_Fascist_dominant_range
+			min = -0.85
+			max = -0.65
+			modifier = {
+				war_support_factor = 0.1
+				political_power_factor = 0.1
+				stability_factor = -0.1
+				head_minister_cost_factor = 0.25
+				foreign_minister_cost_factor = 0.25
+				economic_minister_cost_factor = 0.25
+				interior_minister_cost_factor = 0.25
+				intelligence_minister_cost_factor = 0.25
+				theorist_minister_cost_factor = 0.25
+			}
+			on_activate = {
+				hidden_effect = {
+					focus_unlock = yes
+				}
+			}
+			on_deactivate = {
+			hidden_effect = {
+				focus_unlock = yes
+			}
+			}
+		}
+		range = {
+			id = FAF_Fascist_aligned_range
+			min = -0.65
+			max = -0.25
+			modifier = {
+				war_support_factor = 0.075
+				political_power_factor = 0.05
+				stability_factor = -0.05
+				head_minister_cost_factor = -0.15
+				foreign_minister_cost_factor = -0.15
+				economic_minister_cost_factor = -0.15
+				interior_minister_cost_factor = -0.15
+				intelligence_minister_cost_factor = -0.15
+				theorist_minister_cost_factor = -0.15
+			}
+			on_activate = {
+				hidden_effect = {
+					focus_unlock = yes
+				}
+				
+			}
+			on_deactivate = {
+			hidden_effect = {
+				focus_unlock = yes
+			}
+			}
+		}
+		range = {
+			id = FAF_Fascist_lean_range
+			min = -0.25
+			max = -0.10
+			modifier = {
+				war_support_factor = 0.05
+				political_power_factor = 0.025
+				stability_factor = -0.025
+				head_minister_cost_factor = -0.30
+				foreign_minister_cost_factor = -0.30
+				economic_minister_cost_factor = -0.30
+				interior_minister_cost_factor = -0.30
+				intelligence_minister_cost_factor = -0.30
+				theorist_minister_cost_factor = -0.30
+			}
+			on_activate = {
+				hidden_effect = {
+					focus_unlock = yes
+				}
+			}
+			on_deactivate = {
+			hidden_effect = {
+				focus_unlock = yes
+			}
+			}
+		}
+	}
+
+	#Latinist Side
+	side = {
+		id = FAF_Latinists_side	
+		icon = GFX_bop_FAF_Latinists
+		range = { #Allows Latinist Ministers
+			id = FAF_Latinists_lean_range
+			min = 0.10
+			max = 0.35
+			modifier = {
+				non_core_manpower = 0.05
+				improve_relations_maintain_cost_factor = -0.10
+				head_minister_cost_factor = -0.30
+				foreign_minister_cost_factor = -0.30
+				economic_minister_cost_factor = -0.30
+				interior_minister_cost_factor = -0.30
+				intelligence_minister_cost_factor = -0.30
+				theorist_minister_cost_factor = -0.30
+				national_socialist_drift = 0.01
+			}
+			on_activate = {
+				hidden_effect = {
+					focus_unlock = yes
+				} #
+				country_event = {
+					id = latinist.1
+				}
+				set_country_flag = FAF_Latinist_Movement_flag
+			}
+			on_deactivate = {
+				hidden_effect = {
+					focus_unlock = yes
+				}
+			}
+		}
+		range = { #Allows Internal Latinist Propaganda
+			id = FAF_Latinists_aligned_range
+			min = 0.35
+			max = 0.55
+			modifier = {
+				non_core_manpower = 0.08
+				improve_relations_maintain_cost_factor = -0.12
+				head_minister_cost_factor = -0.15
+				foreign_minister_cost_factor = -0.15
+				economic_minister_cost_factor = -0.15
+				interior_minister_cost_factor = -0.15
+				intelligence_minister_cost_factor = -0.15
+				theorist_minister_cost_factor = -0.15
+				national_socialist_drift = 0.02
+			}
+			on_activate = {
+				hidden_effect = {
+					focus_unlock = yes
+				}
+				country_event = {
+					id = latinist.2
+				}
+				set_country_flag = FAF_Latinist_Propaganda_flag
+			}
+			on_deactivate = {
+			hidden_effect = {
+				focus_unlock = yes
+			}
+			}
+		}
+		range = { #Allows Italy and Spain Latinist Propaganda
+			id = FAF_Latinists_dominant_range
+			min = 0.55
+			max = 0.80
+			modifier = {
+				non_core_manpower = 0.10
+				improve_relations_maintain_cost_factor = -0.14
+				conscription_factor = 0.02
+				head_minister_cost_factor = 0.25
+				foreign_minister_cost_factor = 0.25
+				economic_minister_cost_factor = 0.25
+				interior_minister_cost_factor = 0.25
+				intelligence_minister_cost_factor = 0.25
+				theorist_minister_cost_factor = 0.25
+				national_socialist_drift = 0.03
+			}
+			on_activate = {
+				hidden_effect = {
+					focus_unlock = yes
+				}
+				country_event = {
+					id = latinist.3
+				}
+				set_country_flag = FAF_Italy_and_Spain_flag
+			}
+			on_deactivate = {
+			hidden_effect = {
+				focus_unlock = yes
+			}
+			}
+		}
+		range = { #Latinist Coup + Greek and Croatian Propaganda
+			id = FAF_Latinists_total_control_range
+			min = 0.80
+			max = 1
+			modifier = {
+				non_core_manpower = 0.125
+				improve_relations_maintain_cost_factor = -0.16
+				conscription_factor = 0.04
+				head_minister_cost_factor = 0.5
+				foreign_minister_cost_factor = 0.5
+				economic_minister_cost_factor = 0.5
+				interior_minister_cost_factor = 0.5
+				intelligence_minister_cost_factor = 0.5
+				theorist_minister_cost_factor = 0.5
+				national_socialist_drift = 0.05
+			}
+			on_activate = {
+				set_country_flag = FAF_latinist_politics
+				hidden_effect = {
+					focus_unlock = yes
+				}
+				set_politics = {
+					ruling_party = national_socialist
+    				last_election = "2022.04.10"
+					election_frequency = 60
+					elections_allowed = no
+				}
+				add_country_leader_role = {
+					character = FRA_Jordan_Bardella_char
+				    promote_leader = yes
+					country_leader = {
+						ideology = identitarianism
+						traits = {
+							
+						}
+					}
+				}
+				set_country_flag = FAF_Greek_and_Croatia_flag
+				add_ideas = FAF_Full_Latinist_Control_idea
+				remove_power_balance = {
+					id = FAF_power_balance_Fascist
+				}
+				if = {
+					limit = {
+						national_socialist > 39
+					}
+					add_stability = 0.10
+				}
+				if = {
+					limit = {
+						national_socialist < 39
+					}
+					add_stability = -0.10
+				}
+			}
+			on_deactivate = {
+			hidden_effect = {
+				focus_unlock = yes
+			}
+			}
+		}
+	}
+}
+
+FPR_Revolutionary_Congress = {
+	initial_value = 0
+	left_side = FPR_Lib_Socialists_side	
+	right_side = FPR_Auth_Communists_side	
+	decision_category = FPR_Revolutionary_Congress_category
+
+	#Hung Congress
+	range = {
+		id = FPR_balance_range
+		min = -0.125
+		max = 0.125
+		modifier = {
+			stability_weekly = -0.03
+			political_power_gain = -0.25
+		}
+		on_activate = {
+			
+		}
+		on_deactivate = {
+			
+		}
+	}
+
+	#Socialist Side
+	side = {
+		id = FPR_Lib_Socialists_side
+		icon = GFX_bop_FPR_Socialist_Bloc
+		range = {
+			id = FPR_Socialist_total_control_range
+			min = -1
+			max = -0.85
+			modifier = {
+				
+			}
+			on_activate = {
+				
+			}
+			on_deactivate = {
+				
+			}
+		}
+		range = {
+			id = FPR_Socialist_dominant_range
+			min = -0.85
+			max = -0.65
+			modifier = {
+				
+			}
+			on_activate = {
+				
+			}
+			on_deactivate = {
+				
+			}
+		}
+		range = {
+			id = FPR_Socialist_alligned_range
+			min = -0.65
+			max = -0.35
+			modifier = {
+				
+			}
+			on_activate = {
+				
+			}
+			on_deactivate = {
+				
+			}
+		}
+		range = {
+			id = FPR_Socialist_lean_range
+			min = -0.35
+			max = -0.125
+			modifier = {
+				
+			}
+			on_activate = {
+				
+			}
+			on_deactivate = {
+				
+			}
+		}
+	}
+
+	#Authoritarian Side
+	side = {
+		id = FPR_Auth_Communists_side	
+		icon = GFX_bop_FPR_Communist_Bloc
+		range = {
+			id = FPR_Communist_lean_range
+			min = 0.125
+			max = 0.35
+			modifier = {
+				
+			}
+			on_activate = {
+				
+			}
+			on_deactivate = {
+				
+			}
+		}
+		range = {
+			id = FPR_Communist_alligned_range
+			min = 0.35
+			max = 0.60
+			modifier = {
+				
+			}
+			on_activate = {
+				
+			}
+			on_deactivate = {
+				
+			}
+		}
+		range = {
+			id = FPR_Communist_dominant_range
+			min = 0.60
+			max = 0.95
+			modifier = {
+				
+			}
+			on_activate = {
+				
+			}
+			on_deactivate = {
+				
+			}
+		}
+		range = {
+			id = FPR_Communist_total_control_range
+			min = 0.95
+			max = 1
+			modifier = {
+				
+			}
+			on_activate = {
+				
+			}
+			on_deactivate = {
+				
+			}
+		}
+	}
+}
+
+FRA_new_peoples_front_bop = {
+	initial_value = 0
+	left_side = FRA_unbowed_side	
+	right_side = FRA_socialists_side	
+	decision_category = FRA_The_New_Constitution_Category
+
+	#Center
+	range = {
+		id = FRA_center_range
+		min = -0.15
+		max = 0.15
+		modifier = {
+			
+		}
+		on_activate = {
+			
+		}
+		on_deactivate = {
+			
+		}
+	}
+
+	#LFI side
+	side = {
+		id = FRA_unbowed_side
+		icon = GFX_bop_FRA_unbowed
+		range = {
+			id = FRA_unbowed_total_control_range
+			min = -1
+			max = -0.85
+			modifier = {
+				political_power_gain = 0.3
+				stability_factor = -0.15
+			}
+			on_activate = {
+				country_event = {
+					id = france.244
+					days = 1
+				}
+			}
+			on_deactivate = {
+				
+			}
+		}
+		range = {
+			id = FRA_unbowed_dominant_range
+			min = -0.85
+			max = -0.55
+			modifier = {
+				political_power_gain = 0.2
+				stability_factor = -0.01
+				power_balance_weekly = -0.01
+			}
+			on_activate = {
+				
+			}
+			on_deactivate = {
+				
+			}
+		}
+		range = {
+			id = FRA_unbowed_alligned_range
+			min = -0.55
+			max = -0.15
+			modifier = {
+				political_power_gain = 0.1
+				stability_factor = -0.05
+				power_balance_weekly = -0.02
+			}
+			on_activate = {
+				
+			}
+			on_deactivate = {
+				
+			}
+		}
+	}
+
+	#PS side
+	side = {
+		id = FRA_socialists_side	
+		icon = GFX_bop_FRA_socialists
+		range = {
+			id = FRA_socialists_alligned_range
+			min = 0.15
+			max = 0.55
+			modifier = {
+				political_power_gain = -0.1
+				stability_factor = 0.05
+				power_balance_weekly = 0.02
+			}
+			on_activate = {
+				
+			}
+			on_deactivate = {
+				
+			}
+		}
+		range = {
+			id = FRA_socialists_dominant_range
+			min = 0.55
+			max = 0.85
+			modifier = {
+				political_power_gain = -0.2
+				stability_factor = 0.10
+				power_balance_weekly = 0.01
+			}
+			on_activate = {
+				
+			}
+			on_deactivate = {
+				
+			}
+		}
+		range = {
+			id = FRA_socialists_total_control_range
+			min = 0.85
+			max = 1
+			modifier = {
+				political_power_gain = -0.3
+				stability_factor = 0.15
+			}
+			on_activate = {
+				country_event = {
+					id = france.245
+					days = 1
+				}
+			}
+			on_deactivate = {
+				
+			}
+		}
+	}
+}
+

@@ -1,0 +1,4641 @@
+focus_tree = {
+    id = SOV
+    country = {
+        factor = 0
+        modifier = {
+            add = 10
+            tag = SOV
+        }
+    }
+    focus = {
+        id = SOV_the_russian_dream
+        icon = GFX_focus_SOV_the_russian_dream
+        x = 15
+        y = 0
+        cost = 5
+        cancelable = no
+        available = {
+            has_country_leader = {
+                character = SOV_vladimir_putin
+                ruling_only = yes
+            }
+        }
+        allow_branch = {
+            has_country_leader = {
+                character = SOV_vladimir_putin
+                ruling_only = yes
+            }
+        }
+        completion_reward = {
+            add_political_power = 100
+            hidden_effect = {
+                country_event = {
+                    id = russia.18
+                    days = 31
+                }
+                country_event = {
+                    id = russia.567
+                    days = 110
+                    random_days = 20
+                }
+                scoped_play_song = "fog"
+            }
+        }
+    }
+    focus = {
+        id = SOV_crush_western_influence
+        icon = GFX_focus_SOV_crush_western_influence
+        x = -8
+        y = 1
+        cost = 4
+        relative_position_id = SOV_the_russian_dream
+        available = {
+            has_country_leader = {
+                character = SOV_vladimir_putin
+                ruling_only = yes
+            }
+        }
+        prerequisite = {
+            focus = SOV_the_russian_dream
+        }
+        completion_reward = {
+            set_temp_variable = {
+                var = SOV_election_approval_rating_nav_var_temp
+                value = -0.1
+            }
+            SOV_add_election_approval_rating_nav = yes
+            add_political_power = 100
+            hidden_effect = {
+                add_popularity = {
+                    ideology = social_liberal
+                    popularity = -0.05
+                }
+            }
+        }
+    }
+    focus = {
+        id = SOV_pacify_abkhazia_and_south_ossetia
+        icon = GFX_focus_SOV_pacify_abkhazia_and_south_ossetia
+        relative_position_id = SOV_crush_western_influence
+        x = -2
+        y = 1
+        cost = 4
+        ai_will_do = {
+            factor = 100
+            modifier = {
+                factor = 0
+                OR = {
+                    has_game_rule = {
+                        rule = The_Move_Against_the_Fifth_Column
+                        option = The_Move_Against_the_Fifth_Column_1
+                    }
+                }
+            }
+        }
+        available = {
+            has_country_leader = {
+                character = SOV_vladimir_putin
+                ruling_only = yes
+            }
+        }
+        prerequisite = {
+            focus = SOV_crush_western_influence
+        }
+        mutually_exclusive = {
+            focus = SOV_the_navalny_fifth_column
+        }
+        completion_reward = {
+            add_timed_idea = {
+                idea = SOV_litte_russian_spring
+                days = 100
+            }
+            unlock_decision_tooltip = SOV_referendum_in_ossetia
+            unlock_decision_tooltip = SOV_referendum_in_abkhazia
+            hidden_effect = {
+                add_threat = 1
+                add_state_core = 796
+                add_state_core = 797
+            }
+        }
+    }
+    focus = {
+        id = SOV_the_navalny_fifth_column
+        icon = GFX_focus_SOV_the_navalny_fifth_column
+        relative_position_id = SOV_crush_western_influence
+        x = 2
+        y = 1
+        cost = 4
+        ai_will_do = {
+            factor = 100
+            modifier = {
+                factor = 0
+                OR = {
+                    has_game_rule = {
+                        rule = The_Move_Against_the_Fifth_Column
+                        option = The_Move_Against_the_Fifth_Column_2
+                    }
+                }
+            }
+        }
+        available = {
+            has_country_leader = {
+                character = SOV_vladimir_putin
+                ruling_only = yes
+            }
+        }
+        prerequisite = {
+            focus = SOV_crush_western_influence
+        }
+        mutually_exclusive = {
+            focus = SOV_pacify_abkhazia_and_south_ossetia
+        }
+        completion_reward = {
+            set_country_flag = SOV_the_navalny_fifth_column_flag
+            SOV_decrease_putinism_faltering = yes
+            set_temp_variable = {
+                var = SOV_election_approval_rating_nav_var_temp
+                value = -0.03
+            }
+            SOV_add_election_approval_rating_nav = yes
+            add_political_power = -50
+            hidden_effect = {
+                add_popularity = {
+                    ideology = market_liberal
+                    popularity = -0.01
+                }
+                add_popularity = {
+                    ideology = social_liberal
+                    popularity = -0.01
+                }
+                country_event = {
+                    id = russiaflavor.40
+                    days = 11
+                }
+            }
+        }
+    }
+    focus = {
+        id = SOV_anti_ukranian_military_exercizes
+        icon = GFX_focus_SOV_anti_ukranian_military_exercizes
+        relative_position_id = SOV_crush_western_influence
+        x = -1
+        y = 2
+        cost = 4
+        available = {
+            has_country_leader = {
+                character = SOV_vladimir_putin
+                ruling_only = yes
+            }
+        }
+        prerequisite = {
+            focus = SOV_pacify_abkhazia_and_south_ossetia
+            focus = SOV_the_navalny_fifth_column
+        }
+        mutually_exclusive = {
+            focus = SOV_spread_anti_western_propaganda
+        }
+        completion_reward = {
+            add_threat = 1
+            army_experience = 10
+            add_war_support = 0.025
+            1059 = {
+                add_building_construction = {
+                    type = infrastructure
+                    level = 1
+                    instant_build = yes
+                }
+            }
+            1283 = {
+                add_building_construction = {
+                    type = infrastructure
+                    level = 1
+                    instant_build = yes
+                }
+            }
+            unlock_decision_tooltip = SOV_conduct_military_exercise_in_bryansk
+            unlock_decision_tooltip = SOV_conduct_military_exercise_in_kursk_and_belgorod
+            unlock_decision_tooltip = SOV_conduct_military_exercise_in_crimea
+            set_country_flag = SOV_anti_ukranian_military_exercizes_flag
+        }
+    }
+    focus = {
+        id = SOV_anti_globalist_bulwark
+        icon = GFX_focus_SOV_anti_globalist_bulwark
+        relative_position_id = SOV_crush_western_influence
+        x = -3
+        y = 2
+        cost = 4
+        available = {
+            has_country_leader = {
+                character = SOV_vladimir_putin
+                ruling_only = yes
+            }
+        }
+        prerequisite = {
+            focus = SOV_pacify_abkhazia_and_south_ossetia
+        }
+        completion_reward = {
+            add_political_power = 100
+            add_war_support = 0.1
+            set_temp_variable = {
+                var = SOV_election_approval_rating_ur_var_temp
+                value = 0.05
+            }
+            SOV_add_election_approval_rating_ur = yes
+            modify_timed_idea = {
+                idea = SOV_litte_russian_spring
+                days = 100
+            }
+            PER = {
+                add_opinion_modifier = {
+                    target = SOV
+                    modifier = took_stand_for_us
+                }
+            }
+            RAJ = {
+                add_opinion_modifier = {
+                    target = SOV
+                    modifier = took_stand_for_us
+                }
+            }
+        }
+    }
+    focus = {
+        id = SOV_assist_our_novorossiyan_allies
+        icon = GFX_focus_SOV_help_out_novorossiya
+        relative_position_id = SOV_crush_western_influence
+        x = -2
+        y = 3
+        cost = 4
+        available = {
+            has_country_leader = {
+                character = SOV_vladimir_putin
+                ruling_only = yes
+            }
+        }
+        prerequisite = {
+            focus = SOV_anti_ukranian_military_exercizes
+            focus = SOV_spread_anti_western_propaganda
+        }
+        prerequisite = {
+            focus = SOV_anti_globalist_bulwark
+        }
+        mutually_exclusive = {
+            focus = SOV_destabilize_the_west
+        }
+        completion_reward = {
+            add_threat = 1
+            unlock_decision_tooltip = SOV_push_for_novorossiyan_unification
+            NOV = {
+                add_ideas = NOV_russian_aid_idea
+                random_owned_controlled_state = {
+                    add_extra_state_shared_building_slots = 2
+                    add_building_construction = {
+                        type = industrial_complex
+                        level = 2
+                        instant_build = yes
+                    }
+                }
+                add_equipment_to_stockpile = {
+                    type = infantry_equipment_2
+                    amount = 2500
+                    producer = SOV
+                }
+            }
+            DPR = {
+                add_ideas = NOV_russian_aid_idea
+                random_owned_controlled_state = {
+                    add_extra_state_shared_building_slots = 2
+                    add_building_construction = {
+                        type = industrial_complex
+                        level = 2
+                        instant_build = yes
+                    }
+                }
+                add_equipment_to_stockpile = {
+                    type = infantry_equipment_2
+                    amount = 2500
+                    producer = SOV
+                }
+            }
+            hidden_effect = {
+                country_event = {
+                    id = russia.568
+                    hours = 8
+                }
+            }
+        }
+    }
+    focus = {
+        id = SOV_glorify_our_victory
+        icon = GFX_focus_SOV_glorify_our_victory
+        relative_position_id = SOV_assist_our_novorossiyan_allies
+        x = -1
+        y = 1
+        cost = 4
+        available = {
+            has_country_leader = {
+                character = SOV_vladimir_putin
+                ruling_only = yes
+            }
+        }
+        prerequisite = {
+            focus = SOV_assist_our_novorossiyan_allies
+        }
+        completion_reward = {
+            add_war_support = 0.025
+            add_political_power = 50
+            modify_timed_idea = {
+                idea = SOV_litte_russian_spring
+                days = 100
+            }
+        }
+    }
+    focus = {
+        id = SOV_prepare_the_union_state
+        icon = GFX_focus_SOV_prepare_the_union_state
+        relative_position_id = SOV_pacify_abkhazia_and_south_ossetia
+        x = 1
+        y = 3
+        cost = 4
+        available = {
+            has_country_leader = {
+                character = SOV_vladimir_putin
+                ruling_only = yes
+            }
+            custom_trigger_tooltip = {
+                tooltip = SOV_prepare_the_union_state_tt
+                BLR = {
+                    is_in_faction_with = SOV
+                }
+            }
+        }
+        prerequisite = {
+            focus = SOV_assist_our_novorossiyan_allies
+            focus = SOV_destabilize_the_west
+        }
+        mutually_exclusive = {
+            focus = SOV_arrest_navalny
+        }
+        completion_reward = {
+            unlock_decision_category_tooltip = SOV_prepare_the_union_state_category
+            hidden_effect = {
+                country_event = {
+                    id = russiaflavor.18
+                    days = 10
+                }
+            }
+        }
+    }
+    focus = {
+        id = SOV_spread_anti_western_propaganda
+        icon = GFX_focus_SOV_spread_anti_western_propaganda
+        relative_position_id = SOV_pacify_abkhazia_and_south_ossetia
+        x = 3
+        y = 1
+        cost = 4
+        mutually_exclusive = {
+            focus = SOV_anti_ukranian_military_exercizes
+        }
+        available = {
+            has_country_leader = {
+                character = SOV_vladimir_putin
+                ruling_only = yes
+            }
+        }
+        prerequisite = {
+            focus = SOV_pacify_abkhazia_and_south_ossetia
+            focus = SOV_the_navalny_fifth_column
+        }
+        completion_reward = {
+            set_temp_variable = {
+                var = SOV_election_approval_rating_nav_var_temp
+                value = -0.1
+            }
+            SOV_add_election_approval_rating_nav = yes
+            add_stability = 0.05
+            add_political_power = 50
+            hidden_effect = {
+                add_popularity = {
+                    ideology = social_liberal
+                    popularity = -0.05
+                }
+            }
+        }
+    }
+    focus = {
+        #Increase FSB Budget
+        id = SOV_destabilize_the_west
+        icon = GFX_focus_SOV_increase_fsb_funding
+        relative_position_id = SOV_pacify_abkhazia_and_south_ossetia
+        x = 2
+        y = 2
+        cost = 4
+        available = {
+            has_country_leader = {
+                character = SOV_vladimir_putin
+                ruling_only = yes
+            }
+        }
+        prerequisite = {
+            focus = SOV_spread_anti_western_propaganda
+            focus = SOV_anti_ukranian_military_exercizes
+        }
+        mutually_exclusive = {
+            focus = SOV_assist_our_novorossiyan_allies
+            focus = SOV_increase_online_censorship
+        }
+        completion_reward = {
+            SOV_decrease_putinism_faltering = yes
+            upgrade_intelligence_agency = upgrade_collection
+            set_temp_variable = {
+                var = debt_var_temp
+                value = 20
+            }
+            add_debt_with_inflation = yes
+            hidden_effect = {
+                country_event = {
+                    id = russiaflavor.39
+                    days = 10
+                }
+            }
+        }
+    }
+    focus = {
+        #Renew The Mandate
+        id = SOV_increase_fsb_funding
+        icon = GFX_focus_SOV_renew_the_mandate
+        relative_position_id = SOV_the_navalny_fifth_column
+        x = 1
+        y = 1
+        cost = 4
+        available = {
+            has_country_leader = {
+                character = SOV_vladimir_putin
+                ruling_only = yes
+            }
+        }
+        prerequisite = {
+            focus = SOV_the_navalny_fifth_column
+        }
+        completion_reward = {
+            add_stability = 0.025
+            add_timed_idea = {
+                idea = SOV_pro_putin_campaign_idea
+                days = 85
+            }
+            set_temp_variable = {
+                var = debt_var_temp
+                value = 35
+            }
+            add_debt_with_inflation = yes
+            set_temp_variable = {
+                var = SOV_election_approval_rating_ur_var_temp
+                value = 0.025
+            }
+            SOV_add_election_approval_rating_ur = yes
+        }
+    }
+    focus = {
+        id = SOV_increase_online_censorship
+        icon = GFX_focus_SOV_increase_online_censorship
+        relative_position_id = SOV_the_navalny_fifth_column
+        x = 0
+        y = 2
+        cost = 4
+        available = {
+            has_country_leader = {
+                character = SOV_vladimir_putin
+                ruling_only = yes
+            }
+        }
+        prerequisite = {
+            focus = SOV_increase_fsb_funding
+        }
+        prerequisite = {
+            focus = SOV_spread_anti_western_propaganda
+            focus = SOV_anti_ukranian_military_exercizes
+        }
+        mutually_exclusive = {
+            focus = SOV_destabilize_the_west
+        }
+        completion_reward = {
+            add_war_support = -0.05
+            add_stability = -0.05
+            set_temp_variable = {
+                var = SOV_election_approval_rating_nav_var_temp
+                value = -0.05
+            }
+            SOV_add_election_approval_rating_nav = yes
+            modify_timed_idea = {
+                idea = SOV_pro_putin_campaign_idea
+                days = 50
+            }
+            set_temp_variable = {
+                var = society_development_var_temp
+                value = -0.05
+            }
+            add_society_development = yes
+            set_country_flag = SOV_increased_online_censorship
+            hidden_effect = {
+                country_event = {
+                    id = russiaflavor.29
+                    days = 7
+                }
+            }
+        }
+    }
+    focus = {
+        id = SOV_amplify_state_media
+        icon = GFX_focus_SOV_amplify_state_media
+        relative_position_id = SOV_increase_online_censorship
+        x = 1
+        y = 1
+        cost = 4
+        available = {
+            has_country_leader = {
+                character = SOV_vladimir_putin
+                ruling_only = yes
+            }
+        }
+        prerequisite = {
+            focus = SOV_increase_online_censorship
+        }
+        mutually_exclusive = {
+            focus = SOV_destabilize_the_west
+        }
+        completion_reward = {
+            add_war_support = 0.05
+            add_stability = 0.05
+            set_temp_variable = {
+                var = SOV_election_approval_rating_nav_var_temp
+                value = -0.025
+            }
+            SOV_add_election_approval_rating_nav = yes
+            modify_timed_idea = {
+                idea = SOV_pro_putin_campaign_idea
+                days = 50
+            }
+        }
+    }
+    focus = {
+        id = SOV_arrest_navalny
+        icon = GFX_focus_SOV_arrest_navalny
+        relative_position_id = SOV_the_navalny_fifth_column
+        x = -1
+        y = 3
+        cost = 4
+        available = {
+            has_country_leader = {
+                character = SOV_vladimir_putin
+                ruling_only = yes
+            }
+            has_country_flag = SOV_navalny_protests
+            hidden_trigger = {
+                NOT = {
+                    has_country_flag = SOV_assassination_attempt_happened_flag
+                }
+            }
+        }
+        prerequisite = {
+            focus = SOV_increase_online_censorship
+            focus = SOV_destabilize_the_west
+        }
+        mutually_exclusive = {
+            focus = SOV_prepare_the_union_state
+        }
+        completion_reward = {
+            remove_ideas = SOV_navalny_protests_idea
+            remove_mission = SOV_liberalism_spreads_mission
+            set_temp_variable = {
+                var = SOV_election_approval_rating_nav_var_temp
+                value = -0.05
+            }
+            SOV_add_election_approval_rating_nav = yes
+            hidden_effect = {
+                country_event = {
+                    id = russiaflavor.12
+                    days = 5
+                }
+            }
+        }
+    }
+    focus = {
+        id = SOV_1000_years_of_putinism
+        icon = GFX_focus_SOV_1000_years_of_putinism
+        relative_position_id = SOV_crush_western_influence
+        x = 0
+        y = 5
+        cost = 5
+        available = {
+            has_country_leader = {
+                character = SOV_vladimir_putin
+                ruling_only = yes
+            }
+        }
+        prerequisite = {
+            focus = SOV_prepare_the_union_state
+            focus = SOV_arrest_navalny
+        }
+        completion_reward = {
+            SOV_decrease_putinism_faltering = yes
+            set_temp_variable = {
+                var = SOV_election_approval_rating_ur_var_temp
+                value = 0.05
+            }
+            SOV_add_election_approval_rating_ur = yes
+            custom_effect_tooltip = SOV_years_of_putinism_bonus_tt
+        }
+    }
+    focus = {
+        id = SOV_fight_against_the_left
+        icon = GFX_focus_SOV_fight_against_the_left
+        relative_position_id = SOV_the_russian_dream
+        x = -1
+        y = 1
+        cost = 4
+        available = {
+            has_country_leader = {
+                character = SOV_vladimir_putin
+                ruling_only = yes
+            }
+        }
+        prerequisite = {
+            focus = SOV_the_russian_dream
+        }
+        completion_reward = {
+            unlock_decision_tooltip = censor_pro_communist_newspapers
+            add_political_power = 100
+            add_stability = -0.015
+            hidden_effect = {
+                country_event = {
+                    id = russiaflavor.24
+                    days = 33
+                }
+            }
+        }
+    }
+    focus = {
+        id = SOV_fight_against_the_right
+        icon = GFX_focus_SOV_fight_against_the_right
+        relative_position_id = SOV_the_russian_dream
+        x = 1
+        y = 1
+        cost = 4
+        available = {
+            has_country_leader = {
+                character = SOV_vladimir_putin
+                ruling_only = yes
+            }
+        }
+        prerequisite = {
+            focus = SOV_the_russian_dream
+        }
+        completion_reward = {
+            unlock_decision_tooltip = shut_down_ldpr_social_media
+            add_political_power = 100
+            add_war_support = -0.015
+            hidden_effect = {
+                country_event = {
+                    id = russiaflavor.38
+                    days = 31
+                }
+            }
+        }
+    }
+    focus = {
+        id = SOV_fight_communist_nostolgia
+        icon = GFX_focus_SOV_fight_communist_nostolgia
+        relative_position_id = SOV_fight_against_the_left
+        x = -1
+        y = 1
+        cost = 4
+        available = {
+            has_country_leader = {
+                character = SOV_vladimir_putin
+                ruling_only = yes
+            }
+        }
+        prerequisite = {
+            focus = SOV_fight_against_the_left
+        }
+        completion_reward = {
+            unlock_decision_tooltip = prevent_communist_rally
+            unlock_decision_tooltip = conduct_communist_smear_campaign
+            add_political_power = 25
+            set_temp_variable = {
+                var = SOV_election_approval_rating_cprf_var_temp
+                value = -0.02
+            }
+            SOV_add_election_approval_rating_cprf = yes
+            hidden_effect = {
+                add_popularity = {
+                    ideology = communist
+                    popularity = -0.02
+                }
+            }
+        }
+    }
+    focus = {
+        id = SOV_expand_government_framework
+        icon = GFX_focus_SOV_expand_government_framework
+        relative_position_id = SOV_fight_against_the_left
+        x = 1
+        y = 1
+        cost = 5
+        available = {
+            has_country_leader = {
+                character = SOV_vladimir_putin
+                ruling_only = yes
+            }
+        }
+        prerequisite = {
+            focus = SOV_fight_against_the_left
+            focus = SOV_fight_against_the_right
+        }
+        completion_reward = {
+            add_political_power = 15
+            set_temp_variable = {
+                var = SOV_election_approval_rating_ur_var_temp
+                value = 0.03
+            }
+            SOV_add_election_approval_rating_ur = yes
+            unlock_decision_tooltip = expand_onf_decision
+        }
+    }
+    focus = {
+        id = SOV_towers_of_kremlin
+        icon = GFX_focus_SOV_towers_of_kremlin
+        relative_position_id = SOV_expand_government_framework
+        x = 0
+        y = 2
+        cost = 4
+        available = {
+            has_country_leader = {
+                character = SOV_vladimir_putin
+                ruling_only = yes
+            }
+        }
+        prerequisite = {
+            focus = SOV_expand_government_framework
+        }
+        prerequisite = {
+            focus = SOV_bribe_corrupt_cprf_officials
+            focus = SOV_bribe_corrupt_ldpr_officials
+        }
+        completion_reward = {
+            country_event = { id = russia.876 }
+            add_stability = 0.02
+            add_political_power = 25
+            set_country_flag = SOV_towers_of_kremlin_completed_flag
+        }
+    }
+    focus = {
+        id = SOV_fight_ldpr_influence
+        icon = GFX_focus_SOV_fight_ldpr_influence
+        relative_position_id = SOV_fight_against_the_right
+        x = 1
+        y = 1
+        cost = 4
+        available = {
+            has_country_leader = {
+                character = SOV_vladimir_putin
+                ruling_only = yes
+            }
+        }
+        prerequisite = {
+            focus = SOV_fight_against_the_right
+        }
+        completion_reward = {
+            unlock_decision_tooltip = prevent_ldpr_rally
+            unlock_decision_tooltip = arrest_ldpr_politician
+            add_political_power = 25
+            set_temp_variable = {
+                var = SOV_election_approval_rating_ldpr_var_temp
+                value = -0.03
+            }
+            SOV_add_election_approval_rating_ldpr = yes
+            hidden_effect = {
+                add_popularity = {
+                    ideology = fascist
+                    popularity = -0.03
+                }
+            }
+        }
+    }
+    focus = {
+        id = SOV_arrest_troublesome_politicians
+        icon = GFX_focus_SOV_arrest_troublesome_politicians
+        relative_position_id = SOV_fight_communist_nostolgia
+        x = -1
+        y = 1
+        cost = 6
+        available = {
+            has_country_leader = {
+                character = SOV_vladimir_putin
+                ruling_only = yes
+            }
+        }
+        prerequisite = {
+            focus = SOV_fight_communist_nostolgia
+            focus = SOV_the_navalny_fifth_column
+        }
+        completion_reward = {
+            SOV_decrease_putinism_faltering = yes
+            unlock_decision_tooltip = arrest_communist_politician
+            set_temp_variable = {
+                var = SOV_election_approval_rating_ldpr_var_temp
+                value = 0.025
+            }
+            SOV_add_election_approval_rating_ldpr = yes
+            hidden_effect = {
+                add_popularity = {
+                    ideology = social_liberal
+                    popularity = -0.02
+                }
+                add_popularity = {
+                    ideology = market_liberal
+                    popularity = -0.02
+                }
+                add_popularity = {
+                    ideology = libertarian_socialist
+                    popularity = -0.02
+                }
+            }
+        }
+    }
+    focus = {
+        id = SOV_bribe_corrupt_cprf_officials
+        icon = GFX_focus_SOV_bribe_corrupt_cprf_officials
+        relative_position_id = SOV_fight_communist_nostolgia
+        x = 1
+        y = 1
+        cost = 4
+        available = {
+            has_country_leader = {
+                character = SOV_vladimir_putin
+                ruling_only = yes
+            }
+        }
+        prerequisite = {
+            focus = SOV_fight_communist_nostolgia
+        }
+        completion_reward = {
+            add_political_power = 100
+            set_temp_variable = {
+                var = SOV_election_approval_rating_cprf_var_temp
+                value = -0.02
+            }
+            SOV_add_election_approval_rating_cprf = yes
+        }
+    }
+    focus = {
+        id = SOV_bribe_corrupt_ldpr_officials
+        icon = GFX_focus_SOV_bribe_corrupt_ldpr_officials
+        relative_position_id = SOV_fight_communist_nostolgia
+        x = 3
+        y = 1
+        cost = 4
+        available = {
+            has_country_leader = {
+                character = SOV_vladimir_putin
+                ruling_only = yes
+            }
+        }
+        prerequisite = {
+            focus = SOV_fight_ldpr_influence
+        }
+        completion_reward = {
+            add_political_power = 100
+            set_temp_variable = {
+                var = SOV_election_approval_rating_ldpr_var_temp
+                value = -0.02
+            }
+            SOV_add_election_approval_rating_ldpr = yes
+        }
+    }
+    focus = {
+        id = SOV_stimulate_srzp
+        icon = GFX_focus_SOV_stimulate_srzp
+        relative_position_id = SOV_bribe_corrupt_ldpr_officials
+        x = 0
+        y = 2
+        cost = 4
+        available = {
+            has_country_flag = SOV_srzp_merged_flag
+            has_country_leader = {
+                character = SOV_vladimir_putin
+                ruling_only = yes
+            }
+        }
+        prerequisite = {
+            focus = SOV_towers_of_kremlin
+        }
+        prerequisite = {
+            focus = SOV_arrest_fascist_extremists
+            focus = SOV_arrest_communist_extremists
+        }
+        mutually_exclusive = {
+            focus = SOV_strengthen_the_federation_chairman
+        }
+        completion_reward = {
+            add_political_power = 25
+            set_temp_variable = {
+                var = SOV_election_approval_rating_srzp_var_temp
+                value = 0.02
+            }
+            SOV_add_election_approval_rating_srzp = yes
+            if = {
+                limit = {
+                    has_completed_focus = SOV_fight_communist_nostolgia
+                }
+                unlock_decision_tooltip = SOV_use_srzp_to_hinder_cprf
+            }
+            if = {
+                limit = {
+                    has_completed_focus = SOV_fight_ldpr_influence
+                }
+                unlock_decision_tooltip = SOV_use_srzp_to_hinder_ldpr
+            }
+        }
+    }
+    focus = {
+        id = SOV_purge_problematic_oligarchs
+        icon = GFX_focus_SOV_purge_problematic_oligarchs
+        relative_position_id = SOV_fight_communist_nostolgia
+        x = 5
+        y = 1
+        cost = 6
+        available = {
+            has_country_leader = {
+                character = SOV_vladimir_putin
+                ruling_only = yes
+            }
+        }
+        prerequisite = {
+            focus = SOV_fight_ldpr_influence
+            focus = SOV_focus_on_corruption
+        }
+        completion_reward = {
+            SOV_decrease_oligarchy = yes
+            set_temp_variable = {
+                var = SOV_election_approval_rating_cprf_var_temp
+                value = 0.025
+            }
+            SOV_add_election_approval_rating_cprf = yes
+        }
+    }
+    focus = {
+        id = SOV_arrest_communist_extremists
+        icon = GFX_focus_SOV_arrest_communist_extremists
+        relative_position_id = SOV_bribe_corrupt_cprf_officials
+        x = -1
+        y = 1
+        cost = 4
+        available = {
+            has_country_leader = {
+                character = SOV_vladimir_putin
+                ruling_only = yes
+            }
+        }
+        prerequisite = {
+            focus = SOV_fight_communist_nostolgia
+        }
+        completion_reward = {
+            add_popularity = {
+                ideology = libertarian_socialist
+                popularity = -0.02
+            }
+            add_popularity = {
+                ideology = communist
+                popularity = -0.01
+            }
+            add_popularity = {
+                ideology = totalitarian_socialist
+                popularity = -0.01
+            }
+            add_stability = 0.02
+            add_political_power = 20
+            set_temp_variable = {
+                var = SOV_election_approval_rating_cprf_var_temp
+                value = -0.03
+            }
+            SOV_add_election_approval_rating_cprf = yes
+            set_temp_variable = {
+                var = SOV_election_approval_rating_ldpr_var_temp
+                value = 0.03
+            }
+            SOV_add_election_approval_rating_ldpr = yes
+        }
+    }
+    focus = {
+        id = SOV_arrest_fascist_extremists
+        icon = GFX_focus_SOV_arrest_fascist_extremists
+        relative_position_id = SOV_bribe_corrupt_cprf_officials
+        x = 3
+        y = 1
+        cost = 4
+        available = {
+            has_country_leader = {
+                character = SOV_vladimir_putin
+                ruling_only = yes
+            }
+        }
+        prerequisite = {
+            focus = SOV_fight_ldpr_influence
+        }
+        completion_reward = {
+            add_popularity = {
+                ideology = fascist
+                popularity = -0.02
+            }
+            add_popularity = {
+                ideology = national_socialist
+                popularity = -0.02
+            }
+            add_stability = 0.02
+            add_political_power = 20
+            set_temp_variable = {
+                var = SOV_election_approval_rating_ldpr_var_temp
+                value = -0.03
+            }
+            SOV_add_election_approval_rating_ldpr = yes
+            set_temp_variable = {
+                var = SOV_election_approval_rating_cprf_var_temp
+                value = 0.03
+            }
+            SOV_add_election_approval_rating_cprf = yes
+        }
+    }
+    focus = {
+        id = SOV_calls_of_russian_unity
+        icon = GFX_focus_SOV_calls_of_russian_unity
+        relative_position_id = SOV_bribe_corrupt_cprf_officials
+        x = -2
+        y = 2
+        cost = 4
+        available = {
+            has_country_leader = {
+                character = SOV_vladimir_putin
+                ruling_only = yes
+            }
+        }
+        prerequisite = {
+            focus = SOV_arrest_troublesome_politicians
+        }
+        completion_reward = {
+            unlock_decision_tooltip = stir_up_nationalism
+            add_war_support = 0.025
+            add_political_power = 25
+            set_temp_variable = {
+                var = SOV_election_approval_rating_ldpr_var_temp
+                value = 0.025
+            }
+            SOV_add_election_approval_rating_ldpr = yes
+            hidden_effect = {
+                add_popularity = {
+                    ideology = fascist
+                    popularity = 0.025
+                }
+            }
+        }
+    }
+    focus = {
+        id = SOV_utilize_communist_nostalgia
+        icon = GFX_focus_SOV_utilize_communist_nostalgia
+        relative_position_id = SOV_purge_problematic_oligarchs
+        x = 0
+        y = 2
+        cost = 4
+        available = {
+            has_country_leader = {
+                character = SOV_vladimir_putin
+                ruling_only = yes
+            }
+        }
+        prerequisite = {
+            focus = SOV_purge_problematic_oligarchs
+        }
+        completion_reward = {
+            unlock_decision_tooltip = offer_material_concessions
+            set_temp_variable = {
+                var = SOV_election_approval_rating_cprf_var_temp
+                value = 0.025
+            }
+            SOV_add_election_approval_rating_cprf = yes
+            add_stability = 0.025
+            add_political_power = 25
+            hidden_effect = {
+                add_popularity = {
+                    ideology = communist
+                    popularity = 0.025
+                }
+            }
+        }
+    }
+    focus = {
+        id = SOV_strengthen_the_federation_chairman
+        icon = GFX_focus_SOV_strengthen_the_federation_chairman
+        relative_position_id = SOV_towers_of_kremlin
+        x = -1
+        y = 1
+        cost = 4
+        available = {
+            has_country_leader = {
+                character = SOV_vladimir_putin
+                ruling_only = yes
+            }
+        }
+        prerequisite = {
+            focus = SOV_towers_of_kremlin
+        }
+        prerequisite = {
+            focus = SOV_arrest_communist_extremists
+            focus = SOV_arrest_fascist_extremists
+        }
+        mutually_exclusive = {
+            focus = SOV_stimulate_srzp
+        }
+        completion_reward = {
+            add_political_power = 100
+            set_temp_variable = {
+                var = SOV_election_approval_rating_ur_var_temp
+                value = 0.05
+            }
+            SOV_add_election_approval_rating_ur = yes
+            hidden_effect = {
+                add_popularity = {
+                    ideology = authoritarian_democrat
+                    popularity = 0.05
+                }
+            }
+        }
+    }
+    focus = {
+        id = SOV_pass_the_new_constitution
+        icon = GFX_focus_SOV_pass_the_new_constitution
+        relative_position_id = SOV_strengthen_the_federation_chairman
+        x = 1
+        y = 1
+        cost = 5
+        available = {
+            has_country_leader = {
+                character = SOV_vladimir_putin
+                ruling_only = yes
+            }
+            hidden_trigger = {
+                NOT = {
+                    has_country_flag = SOV_assassination_attempt_happened_flag
+                }
+            }
+        }
+        prerequisite = {
+            focus = SOV_strengthen_the_federation_chairman
+            focus = SOV_stimulate_srzp
+        }
+        completion_reward = {
+            add_political_power = 150
+            add_stability = 0.1
+            set_temp_variable = {
+                var = SOV_election_approval_rating_ur_var_temp
+                value = 0.05
+            }
+            SOV_add_election_approval_rating_ur = yes
+            swap_ruler_traits = {
+                remove = hos_puppet_master
+                add = hos_puppet_master_2
+            }
+            hidden_effect = {
+                add_popularity = {
+                    ideology = authoritarian_democrat
+                    popularity = 0.05
+                }
+            }
+        }
+    }
+    focus = {
+        id = SOV_declare_smo
+        icon = GFX_focus_SOV_declare_smo
+        relative_position_id = SOV_pass_the_new_constitution
+        x = 0
+        y = 1
+        cost = 30
+        cancelable = no
+        available = {
+            has_country_leader = {
+                character = SOV_vladimir_putin
+                ruling_only = yes
+            }
+        }
+        prerequisite = {
+            focus = SOV_pass_the_new_constitution
+        }
+        prerequisite = {
+            focus = SOV_back_to_normal
+        }
+        prerequisite = {
+            focus = SOV_1000_years_of_putinism
+        }
+        completion_reward = {
+            effect_tooltip = {
+                declare_war_on = {
+                    target = UKR
+                    type = annex_everything
+                }
+                UKR = {
+                    add_ideas = UKR_to_the_last
+                }
+                news_event = {
+                    id = news.190
+                }
+                focus_unlock = yes
+            }
+            hidden_effect = {
+                country_event = {
+                    id = russia.484
+                }
+            }
+        }
+    }
+    focus = {
+        id = SOV_enrich_mother_russia
+        icon = GFX_focus_SOV_enrich_mother_russia
+        relative_position_id = SOV_the_russian_dream
+        x = 9
+        y = 1
+        cost = 4
+        available = {
+            has_country_leader = {
+                character = SOV_vladimir_putin
+                ruling_only = yes
+            }
+        }
+        ai_will_do = {
+            factor = 5
+        }
+        prerequisite = {
+            focus = SOV_the_russian_dream
+        }
+        completion_reward = {
+            random_owned_controlled_state = {
+                add_extra_state_shared_building_slots = 1
+                add_building_construction = {
+                    type = industrial_complex
+                    level = 1
+                    instant_build = yes
+                }
+            }
+            random_owned_controlled_state = {
+                add_extra_state_shared_building_slots = 1
+                add_building_construction = {
+                    type = industrial_complex
+                    level = 1
+                    instant_build = yes
+                }
+            }
+            add_resource = {
+                type = oil
+                amount = 80
+                state = 195
+            }
+            set_temp_variable = {
+                var = debt_var_temp
+                value = 150
+            }
+            add_debt_with_inflation = yes
+        }
+        select_effect = {
+            log = "[GetDateText]: [Root.GetName]: focus SOV_enrich_mother_russia select_effect"
+            hidden_effect = {
+                if = {
+                    limit = {
+                        has_game_rule = {
+                            rule = The_First_Union_Presidential_Election
+                            option = The_First_Union_Presidential_Election_5
+                        }
+                    }
+                    set_temp_variable = {
+                        var = SOV_oligarch_approval_rating_var_temp
+                        value = -0.75
+                    }
+                    SOV_add_oligarch_approval_rating = yes
+                }
+            }
+        }
+    }
+    focus = {
+        id = SOV_focus_on_corruption
+        icon = GFX_focus_SOV_focus_on_corruption
+        relative_position_id = SOV_enrich_mother_russia
+        x = -2
+        y = 1
+        cost = 6
+        ai_will_do = {
+            factor = 100
+            modifier = {
+                factor = 0
+                OR = {
+                    has_game_rule = {
+                        rule = The_First_Union_Presidential_Election
+                        option = The_First_Union_Presidential_Election_5
+                    }
+                }
+            }
+        }
+        available = {
+            has_country_leader = {
+                character = SOV_vladimir_putin
+                ruling_only = yes
+            }
+            set_temp_variable = {
+                var = SOV_oligarch_approval_rating_trigger_temp
+                value = 0.4
+            }
+            SOV_has_influence_oligarchs_greater_than_or_equals = yes
+        }
+        mutually_exclusive = {
+            focus = SOV_sanction_proof_economy
+        }
+        prerequisite = {
+            focus = SOV_enrich_mother_russia
+        }
+        completion_reward = {
+            set_country_flag = SOV_focus_on_corruption_flag
+            SOV_decrease_oligarchy = yes
+            hidden_effect = {
+                country_event = {
+                    id = russiaflavor.19
+                    days = 16
+                }
+            }
+        }
+    }
+    focus = {
+        id = SOV_sanction_proof_economy
+        icon = GFX_focus_SOV_sanction_proof_economy
+        relative_position_id = SOV_enrich_mother_russia
+        x = 2
+        y = 1
+        cost = 6
+        mutually_exclusive = {
+            focus = SOV_focus_on_corruption
+        }
+        prerequisite = {
+            focus = SOV_enrich_mother_russia
+        }
+        ai_will_do = {
+            factor = 100
+            modifier = {
+                factor = 0
+                OR = {
+                    has_game_rule = {
+                        rule = The_First_Union_Presidential_Election
+                        option = The_First_Union_Presidential_Election_6
+                    }
+                }
+            }
+        }
+        available = {
+            has_country_leader = {
+                character = SOV_vladimir_putin
+                ruling_only = yes
+            }
+        }
+        completion_reward = {
+            set_temp_variable = {
+                var = SOV_election_approval_rating_ur_var_temp
+                value = -0.03
+            }
+            SOV_add_election_approval_rating_ur = yes
+            SOV_decrease_sanctions = yes
+        }
+    }
+    focus = {
+        id = SOV_encourage_domestic_production
+        icon = GFX_focus_SOV_encourage_domestic_production
+        relative_position_id = SOV_sanction_proof_economy
+        x = 1
+        y = 1
+        cost = 6
+        available = {
+            has_country_leader = {
+                character = SOV_vladimir_putin
+                ruling_only = yes
+            }
+        }
+        prerequisite = {
+            focus = SOV_sanction_proof_economy
+        }
+        completion_reward = {
+            every_controlled_state = {
+                random_select_amount = 3
+                add_extra_state_shared_building_slots = 1
+                add_building_construction = {
+                    type = industrial_complex
+                    level = 1
+                    instant_build = yes
+                }
+            }
+            set_temp_variable = {
+                var = income_var_temp
+                value = 100
+            }
+            add_income_with_inflation = yes
+        }
+    }
+    focus = {
+        id = SOV_chinese_trade_deals
+        icon = GFX_focus_SOV_chinese_trade_deals
+        relative_position_id = SOV_encourage_domestic_production
+        x = 0
+        y = 2
+        cost = 4
+        available = {
+            has_country_leader = {
+                character = SOV_vladimir_putin
+                ruling_only = yes
+            }
+        }
+        prerequisite = {
+            focus = SOV_fund_military_advancement
+            focus = SOV_strengthen_gazprom
+        }
+        completion_reward = {
+            hidden_effect = {
+                PRC = {
+                    country_event = {
+                        id = china.35						#news report about increased chinese russian trade
+                        hours = 6
+                    }
+                }
+                country_event = {
+                    id = russia.38					#news report about increased chinese russian trade
+                    hours = 6
+                }
+            }
+            add_timed_idea = {
+                idea = SOV_russian_chinese_deals_idea
+                days = 100
+            }
+        }
+    }
+    focus = {
+        id = SOV_strengthen_gazprom
+        icon = GFX_focus_SOV_strengthen_gazprom
+        relative_position_id = SOV_chinese_trade_deals
+        x = 2
+        y = -1
+        cost = 4
+        available = {
+            has_country_leader = {
+                character = SOV_vladimir_putin
+                ruling_only = yes
+            }
+        }
+        prerequisite = {
+            focus = SOV_encourage_domestic_production
+        }
+        mutually_exclusive = {
+            focus = SOV_fund_military_advancement
+        }
+        completion_reward = {
+            swap_ideas = {
+                remove_idea = SOV_The_Petrol_Economy
+                add_idea = SOV_The_Petrol_Economy2
+            }
+            set_temp_variable = {
+                var = SOV_oligarch_approval_rating_var_temp
+                value = 0.05
+            }
+            SOV_add_oligarch_approval_rating = yes
+        }
+    }
+    focus = {
+        id = SOV_fund_military_advancement
+        icon = GFX_focus_SOV_fund_military_advancement
+        relative_position_id = SOV_chinese_trade_deals
+        x = 0
+        y = -1
+        cost = 4
+        available = {
+            has_country_leader = {
+                character = SOV_vladimir_putin
+                ruling_only = yes
+            }
+        }
+        prerequisite = {
+            focus = SOV_encourage_domestic_production
+        }
+        mutually_exclusive = {
+            focus = SOV_strengthen_gazprom
+        }
+        completion_reward = {
+            add_tech_bonus = {
+                name = SOV_fund_military_advancement
+                bonus = 0.5
+                uses = 2
+                category = infantry_tech
+            }
+            add_tech_bonus = {
+                name = SOV_fund_military_advancement
+                bonus = 0.5
+                uses = 1
+                category = support_tech
+            }
+            add_tech_bonus = {
+                name = SOV_fund_military_advancement
+                bonus = 0.2
+                uses = 1
+                category = artillery
+            }
+            add_tech_bonus = {
+                name = SOV_fund_military_advancement
+                bonus = 0.2
+                uses = 1
+                category = armor
+            }
+            army_experience = 25
+            set_temp_variable = {
+                var = military_development_var_temp
+                value = 0.02
+            }
+            add_military_development = yes
+        }
+    }
+    focus = {
+        id = SOV_force_lockdowns
+        icon = GFX_focus_SOV_force_lockdowns
+        relative_position_id = SOV_sanction_proof_economy
+        x = -2
+        y = 1
+        cost = 3
+        available = {
+            has_country_leader = {
+                character = SOV_vladimir_putin
+                ruling_only = yes
+            }
+        }
+        prerequisite = {
+            focus = SOV_sanction_proof_economy
+            focus = SOV_focus_on_corruption
+        }
+        ai_will_do = {
+            factor = 5
+        }
+        completion_reward = {
+            set_temp_variable = {
+                var = SOV_election_approval_rating_ur_var_temp
+                value = -0.05
+            }
+            SOV_add_election_approval_rating_ur = yes
+            set_temp_variable = {
+                var = SOV_election_approval_rating_nav_var_temp
+                value = 0.05
+            }
+            SOV_add_election_approval_rating_nav = yes
+            add_days_mission_timeout = {
+                mission = SOV_handle_covid_mission
+                days = 100
+            }
+            add_political_power = -100
+        }
+    }
+    focus = {
+        id = SOV_kickstart_vaccine_research
+        icon = GFX_focus_SOV_kickstart_vaccine_research
+        relative_position_id = SOV_force_lockdowns
+        x = -1
+        y = 1
+        cost = 4
+        available = {
+            has_country_leader = {
+                character = SOV_vladimir_putin
+                ruling_only = yes
+            }
+        }
+        prerequisite = {
+            focus = SOV_force_lockdowns
+        }
+        ai_will_do = {
+            factor = 5
+        }
+        mutually_exclusive = {
+            focus = SOV_purchase_sinovac_vaccine
+        }
+        completion_reward = {
+            country_event = {
+                id = russia.87
+            }
+            set_temp_variable = {
+                var = SOV_election_approval_rating_ur_var_temp
+                value = 0.02
+            }
+            SOV_add_election_approval_rating_ur = yes
+            set_temp_variable = {
+                var = debt_var_temp
+                value = 150
+            }
+            add_debt_with_inflation = yes
+            add_days_mission_timeout = {
+                mission = SOV_handle_covid_mission
+                days = 100
+            }
+            hidden_effect = {
+                random = {
+                    chance = 20
+                    country_event = {
+                        id = russia.482
+                        days = 20
+                        random_days = 5
+                    }
+                }
+            }
+        }
+    }
+    focus = {
+        id = SOV_purchase_sinovac_vaccine
+        icon = GFX_focus_SOV_purchase_sinovac_vaccine
+        relative_position_id = SOV_force_lockdowns
+        x = 1
+        y = 1
+        cost = 4
+        available = {
+            has_country_leader = {
+                character = SOV_vladimir_putin
+                ruling_only = yes
+            }
+        }
+        prerequisite = {
+            focus = SOV_force_lockdowns
+        }
+        ai_will_do = {
+            factor = 5
+        }
+        mutually_exclusive = {
+            focus = SOV_kickstart_vaccine_research
+        }
+        completion_reward = {
+            set_temp_variable = {
+                var = SOV_election_approval_rating_cprf_var_temp
+                value = 0.02
+            }
+            SOV_add_election_approval_rating_cprf = yes
+            set_temp_variable = {
+                var = debt_var_temp
+                value = 200
+            }
+            add_debt_with_inflation = yes
+            add_days_mission_timeout = {
+                mission = SOV_handle_covid_mission
+                days = 200
+            }
+            hidden_effect = {
+                random = {
+                    chance = 20
+                    country_event = {
+                        id = russia.481
+                        days = 20
+                        random_days = 5
+                    }
+                }
+            }
+        }
+    }
+    focus = {
+        id = SOV_restore_public_confidence
+        icon = GFX_focus_SOV_restore_public_confidence
+        relative_position_id = SOV_kickstart_vaccine_research
+        x = 0
+        y = 1
+        cost = 5
+        available = {
+            has_country_leader = {
+                character = SOV_vladimir_putin
+                ruling_only = yes
+            }
+        }
+        prerequisite = {
+            focus = SOV_kickstart_vaccine_research
+            focus = SOV_purchase_sinovac_vaccine
+        }
+        ai_will_do = {
+            factor = 5
+        }
+        mutually_exclusive = {
+            focus = SOV_against_chipivization
+        }
+        completion_reward = {
+            add_stability = 0.1
+            set_temp_variable = {
+                var = SOV_election_approval_rating_ur_var_temp
+                value = 0.02
+            }
+            SOV_add_election_approval_rating_ur = yes
+            set_temp_variable = {
+                var = SOV_election_approval_rating_ldpr_var_temp
+                value = 0.02
+            }
+            SOV_add_election_approval_rating_ldpr = yes
+            custom_effect_tooltip = SOV_no_covid_tt
+        }
+    }
+    focus = {
+        id = SOV_against_chipivization
+        icon = GFX_focus_SOV_against_chipivization
+        relative_position_id = SOV_kickstart_vaccine_research
+        x = 2
+        y = 1
+        cost = 5
+        available = {
+            has_country_leader = {
+                character = SOV_vladimir_putin
+                ruling_only = yes
+            }
+        }
+        prerequisite = {
+            focus = SOV_kickstart_vaccine_research
+            focus = SOV_purchase_sinovac_vaccine
+        }
+        mutually_exclusive = {
+            focus = SOV_restore_public_confidence
+        }
+        ai_will_do = {
+            factor = 5
+        }
+        completion_reward = {
+            add_stability = -0.1
+            set_temp_variable = {
+                var = SOV_election_approval_rating_cprf_var_temp
+                value = 0.03
+            }
+            SOV_add_election_approval_rating_cprf = yes
+            set_temp_variable = {
+                var = SOV_election_approval_rating_srzp_var_temp
+                value = 0.01
+            }
+            SOV_add_election_approval_rating_srzp = yes
+            custom_effect_tooltip = SOV_no_covid_tt
+        }
+    }
+    focus = {
+        id = SOV_back_to_normal
+        icon = GFX_focus_SOV_back_to_normal
+        relative_position_id = SOV_kickstart_vaccine_research
+        x = 1
+        y = 2
+        cost = 5
+        available = {
+            has_country_leader = {
+                character = SOV_vladimir_putin
+                ruling_only = yes
+            }
+        }
+        prerequisite = {
+            focus = SOV_chinese_trade_deals
+            focus = SOV_restore_faith_in_government
+        }
+        prerequisite = {
+            focus = SOV_restore_public_confidence
+            focus = SOV_against_chipivization
+        }
+        ai_will_do = {
+            factor = 5
+        }
+        completion_reward = {
+            custom_effect_tooltip = SOV_restore_public_confidence_tt
+            hidden_effect = {
+                remove_ideas = SOV_coronavirus_pandemic_idea4
+                remove_ideas = SOV_coronavirus_pandemic_idea3
+                remove_ideas = SOV_coronavirus_pandemic_idea2
+                remove_ideas = SOV_coronavirus_pandemic_idea1
+                remove_ideas = SOV_coronavirus_pandemic_idea
+                set_country_flag = SOV_dealt_with_coronavirus
+            }
+            add_stability = 0.1
+            add_political_power = 50
+        }
+    }
+    focus = {
+        id = SOV_increase_public_transparency
+        icon = GFX_focus_SOV_increase_public_transparency
+        relative_position_id = SOV_focus_on_corruption
+        x = -1
+        y = 1
+        cost = 6
+        available = {
+            has_country_leader = {
+                character = SOV_vladimir_putin
+                ruling_only = yes
+            }
+        }
+        prerequisite = {
+            focus = SOV_focus_on_corruption
+        }
+        completion_reward = {
+            set_temp_variable = {
+                var = SOV_election_approval_rating_ur_var_temp
+                value = 0.015
+            }
+            SOV_add_election_approval_rating_ur = yes
+            add_stability = -0.07
+            add_political_power = 50
+        }
+    }
+    focus = {
+        id = SOV_investigate_corrupt_parties
+        icon = GFX_focus_SOV_investigate_corrupt_parties
+        relative_position_id = SOV_focus_on_corruption
+        x = -3
+        y = 2
+        cost = 4
+        available = {
+            has_country_leader = {
+                character = SOV_vladimir_putin
+                ruling_only = yes
+            }
+        }
+        prerequisite = {
+            focus = SOV_increase_public_transparency
+        }
+        mutually_exclusive = {
+            focus = SOV_sponsor_russian_digital_economy
+        }
+        completion_reward = {
+            add_timed_idea = {
+                idea = SOV_increased_benefits_idea
+                days = 180
+            }
+            set_temp_variable = {
+                var = debt_var_temp
+                value = 45
+            }
+            add_debt_with_inflation = yes
+            set_temp_variable = {
+                var = SOV_election_approval_rating_ur_var_temp
+                value = 0.025
+            }
+            SOV_add_election_approval_rating_ur = yes
+        }
+    }
+    focus = {
+        id = SOV_sponsor_russian_digital_economy
+        icon = GFX_focus_SOV_sponsor_russian_digital_economy
+        relative_position_id = SOV_focus_on_corruption
+        x = -1
+        y = 2
+        cost = 4
+        available = {
+            has_country_leader = {
+                character = SOV_vladimir_putin
+                ruling_only = yes
+            }
+        }
+        prerequisite = {
+            focus = SOV_increase_public_transparency
+        }
+        mutually_exclusive = {
+            focus = SOV_investigate_corrupt_parties
+        }
+        completion_reward = {
+            add_timed_idea = {
+                idea = SOV_funding_digital_economy_idea
+                days = 180
+            }
+            set_temp_variable = {
+                var = debt_var_temp
+                value = 50
+            }
+            add_debt_with_inflation = yes
+            set_temp_variable = {
+                var = SOV_election_approval_rating_nav_var_temp
+                value = -0.025
+            }
+            SOV_add_election_approval_rating_nav = yes
+            hidden_effect = {
+                add_popularity = {
+                    ideology = market_liberal
+                    popularity = 0.025
+                }
+            }
+            set_country_flag = SOV_supported_digital_economy
+        }
+    }
+    focus = {
+        id = SOV_restore_faith_in_government
+        icon = GFX_focus_SOV_restore_faith_in_government
+        relative_position_id = SOV_focus_on_corruption
+        x = -1
+        y = 3
+        cost = 4
+        available = {
+            has_country_leader = {
+                character = SOV_vladimir_putin
+                ruling_only = yes
+            }
+        }
+        prerequisite = {
+            focus = SOV_investigate_corrupt_parties
+            focus = SOV_sponsor_russian_digital_economy
+        }
+        completion_reward = {
+            add_political_power = 100
+            add_stability = 0.025
+            set_temp_variable = {
+                var = SOV_election_approval_rating_nav_var_temp
+                value = -0.025
+            }
+            SOV_add_election_approval_rating_nav = yes
+            set_temp_variable = {
+                var = SOV_election_approval_rating_ur_var_temp
+                value = 0.05
+            }
+            SOV_add_election_approval_rating_ur = yes
+        }
+    }
+    focus = {
+        id = SOV_what_now
+        icon = {
+        	GFX_focus_SOV_what_now = {
+        		has_country_flag = SOV_putin_resigns_flag
+        	}
+
+        	GFX_focus_SOV_what_now_sad = {
+        		has_country_flag = SOV_putin_death_flag
+        	}
+        	GFX_focus_SOV_what_now = yes
+        }
+        relative_position_id = SOV_the_russian_dream
+        x = -7
+        y = 0
+        cost = 0
+        allow_branch = {
+            NOT = {
+                has_country_leader = {
+                    character = SOV_vladimir_putin
+                    ruling_only = yes
+                }
+            }
+        }
+        available = {
+            is_completed_by_event = yes
+        }
+        prerequisite = {
+        }
+        completion_reward = {
+            custom_effect_tooltip = SOV_what_now_tt
+        }
+    }
+    focus = {
+        id = SOV_spread_cprf_leaflets
+        icon = GFX_focus_SOV_spread_cprf_leaflets
+        relative_position_id = SOV_what_now
+        x = -2
+        y = 1
+        cost = 2
+        ai_will_do = {
+            factor = 1
+            modifier = {
+                factor = 0
+                OR = {
+                    has_game_rule = {
+                        rule = The_Pre_Election_Congress_of_CPRF
+                        option = The_Pre_Election_Congress_of_CPRF_4
+                    }
+                }
+            }
+        }
+        prerequisite = {
+            focus = SOV_what_now
+        }
+        mutually_exclusive = {
+            focus = SOV_ramp_up_the_agitation
+            focus = SOV_party_of_power
+        }
+        available = {
+            hidden_trigger = {
+                NOT = {
+                    has_completed_focus = SOV_post_putin_elections
+                }
+            }
+        }
+        completion_reward = {
+            add_timed_idea = {
+                idea = SOV_communist_leaflets_idea
+                days = 45
+            }
+            set_temp_variable = {
+                var = SOV_election_approval_rating_cprf_var_temp
+                value = 0.025
+            }
+            SOV_add_election_approval_rating_cprf = yes
+            unlock_decision_tooltip = conduct_ldpr_smear_campaign
+            unlock_decision_tooltip = conduct_ur_smear_campaign
+            unlock_decision_tooltip = conduct_liberal_smear_campaign
+            hidden_effect = {
+                country_event = {
+                    id = russia.530
+                    hours = 7
+                }
+            }
+        }
+    }
+    focus = {
+        id = SOV_party_of_power
+        icon = GFX_focus_SOV_party_of_power
+        relative_position_id = SOV_what_now
+        x = 0
+        y = 1
+        cost = 2
+        ai_will_do = {
+            factor = 1
+            modifier = {
+                factor = 0
+                OR = {
+                    has_game_rule = {
+                        rule = The_Pre_Election_Congress_of_CPRF
+                        option = The_Pre_Election_Congress_of_CPRF_1
+                    }
+                    has_game_rule = {
+                        rule = The_Pre_Election_Congress_of_CPRF
+                        option = The_Pre_Election_Congress_of_CPRF_2
+                    }
+                    has_game_rule = {
+                        rule = The_Pre_Election_Congress_of_CPRF
+                        option = The_Pre_Election_Congress_of_CPRF_3
+                    }
+                }
+            }
+        }
+        mutually_exclusive = {
+            focus = SOV_ramp_up_the_agitation
+            focus = SOV_spread_cprf_leaflets
+        }
+        prerequisite = {
+            focus = SOV_what_now
+        }
+        available = {
+            hidden_trigger = {
+                NOT = {
+                    has_completed_focus = SOV_post_putin_elections
+                }
+            }
+        }
+        completion_reward = {
+            add_timed_idea = {
+                idea = SOV_party_of_power_idea
+                days = 45
+            }
+            set_temp_variable = {
+                var = SOV_election_approval_rating_ur_var_temp
+                value = 0.025
+            }
+            SOV_add_election_approval_rating_ur = yes
+            unlock_decision_tooltip = conduct_ldpr_smear_campaign
+            unlock_decision_tooltip = conduct_communist_smear_campaign
+            unlock_decision_tooltip = conduct_liberal_smear_campaign
+        }
+    }
+    focus = {
+        id = SOV_ramp_up_the_agitation
+        icon = GFX_focus_SOV_ramp_up_the_agitation
+        relative_position_id = SOV_what_now
+        x = 2
+        y = 1
+        cost = 2
+        ai_will_do = {
+            factor = 1
+            modifier = {
+                factor = 0
+                OR = {
+                    has_game_rule = {
+                        rule = The_Pre_Election_Congress_of_CPRF
+                        option = The_Pre_Election_Congress_of_CPRF_1
+                    }
+                    has_game_rule = {
+                        rule = The_Pre_Election_Congress_of_CPRF
+                        option = The_Pre_Election_Congress_of_CPRF_2
+                    }
+                    has_game_rule = {
+                        rule = The_Pre_Election_Congress_of_CPRF
+                        option = The_Pre_Election_Congress_of_CPRF_3
+                    }
+                }
+            }
+        }
+        mutually_exclusive = {
+            focus = SOV_party_of_power
+            focus = SOV_spread_cprf_leaflets
+        }
+        available = {
+            hidden_trigger = {
+                NOT = {
+                    has_completed_focus = SOV_post_putin_elections
+                }
+            }
+        }
+        prerequisite = {
+            focus = SOV_what_now
+        }
+        completion_reward = {
+            add_timed_idea = {
+                idea = SOV_tell_zhirinovsky_the_truth_idea
+                days = 45
+            }
+            set_temp_variable = {
+                var = SOV_election_approval_rating_ldpr_var_temp
+                value = 0.025
+            }
+            SOV_add_election_approval_rating_ldpr = yes
+            unlock_decision_tooltip = conduct_communist_smear_campaign
+            unlock_decision_tooltip = conduct_ur_smear_campaign
+            unlock_decision_tooltip = conduct_liberal_smear_campaign
+        }
+    }
+    focus = {
+        id = SOV_post_putin_elections
+        icon = GFX_focus_SOV_post_putin_elections
+        relative_position_id = SOV_what_now
+        x = 0
+        y = 2
+        cost = 1
+        available = {
+            is_completed_by_event = yes
+        }
+        prerequisite = {
+            focus = SOV_party_of_power
+            focus = SOV_ramp_up_the_agitation
+            focus = SOV_spread_cprf_leaflets
+        }
+        completion_reward = {
+            add_political_power = 15
+            add_popularity = {
+                ideology = communist
+                popularity = 0.02
+            }
+            add_popularity = {
+                ideology = authoritarian_democrat
+                popularity = 0.02
+            }
+            add_popularity = {
+                ideology = fascist
+                popularity = 0.02
+            }
+        }
+    }
+    focus = {
+        id = SOV_new_revolution
+        icon = {
+        	GFX_focus_SOV_new_revolution_3 = {
+        		NOT = {
+        		    OR = {
+        		        has_country_flag = SOV_afonin_selected_flag
+        		        has_country_flag = SOV_grudinin_selected_flag
+        		        has_country_flag = SOV_levchenko_selected_flag
+        		    }
+        		}
+        	}
+
+        	GFX_focus_SOV_new_revolution_2 = {
+        		has_country_flag = SOV_levchenko_selected_flag
+        	}
+
+        	GFX_focus_SOV_new_revolution = {
+        		has_country_flag = SOV_grudinin_selected_flag
+        	}
+
+        	GFX_focus_SOV_new_revolution_4 = {
+        		has_country_flag = SOV_afonin_selected_flag
+        	}
+        	GFX_focus_SOV_new_revolution_3 = yes
+        }
+        relative_position_id = SOV_what_now
+        x = -4
+        y = 3
+        cost = 4
+        mutually_exclusive = {
+            focus = SOV_russian_destiny
+            focus = SOV_maintain_status_quo
+        }
+        prerequisite = {
+            focus = SOV_post_putin_elections
+        }
+        available = {
+            is_completed_by_event = yes
+        }
+        completion_reward = {
+            add_popularity = {
+                ideology = communist
+                popularity = 0.015
+            }
+        }
+    }
+    focus = {
+        id = SOV_use_the_younger_base
+        icon = GFX_focus_SOV_10_steps_to_peoples_power
+        relative_position_id = SOV_new_revolution
+        x = -1
+        y = 1
+        cost = 4
+        prerequisite = {
+            focus = SOV_new_revolution
+        }
+        completion_reward = {
+            custom_effect_tooltip = SOV_use_the_younger_base_tt
+            set_temp_variable = {
+                var = SOV_election_approval_rating_cprf_var_temp
+                value = 0.025
+            }
+            SOV_add_election_approval_rating_cprf = yes
+        }
+    }
+    focus = {
+        id = SOV_cprf_is_your_party
+        icon = GFX_focus_SOV_its_your_party
+        relative_position_id = SOV_new_revolution
+        x = 1
+        y = 1
+        cost = 4
+        prerequisite = {
+            focus = SOV_new_revolution
+        }
+        completion_reward = {
+            unlock_decision_tooltip = SOV_expose_medvedev
+            set_temp_variable = {
+                var = SOV_election_approval_rating_cprf_var_temp
+                value = 0.01
+            }
+            SOV_add_election_approval_rating_cprf = yes
+            hidden_effect = {
+                set_temp_variable = {
+                    var = SOV_election_approval_rating_ur_var_temp
+                    value = -0.02
+                }
+                SOV_add_election_approval_rating_ur = yes
+            }
+        }
+    }
+    focus = {
+        id = SOV_promises_of_bread
+        icon = GFX_focus_SOV_favorite_of_smart_voting
+        relative_position_id = SOV_use_the_younger_base
+        x = 2
+        y = 1
+        cost = 4
+        available = {
+        }
+        prerequisite = {
+            focus = SOV_use_the_younger_base
+        }
+        prerequisite = {
+            focus = SOV_cprf_is_your_party
+        }
+        mutually_exclusive = {
+            focus = SOV_remember_the_old_days
+        }
+        completion_reward = {
+            unlock_decision_tooltip = SOV_youth_for_communism
+            set_temp_variable = {
+                var = SOV_election_approval_rating_cprf_var_temp
+                value = 0.025
+            }
+            SOV_add_election_approval_rating_cprf = yes
+            set_temp_variable = {
+                var = SOV_election_approval_rating_nav_var_temp
+                value = -0.025
+            }
+            SOV_add_election_approval_rating_nav = yes
+            set_country_flag = SOV_favorite_of_smart_voting_flag
+        }
+    }
+    focus = {
+        id = SOV_remember_the_old_days
+        icon = GFX_focus_SOV_our_soviet_past
+        relative_position_id = SOV_new_revolution
+        x = -1
+        y = 2
+        cost = 4
+        available = {
+        }
+        prerequisite = {
+            focus = SOV_use_the_younger_base
+        }
+        prerequisite = {
+            focus = SOV_cprf_is_your_party
+        }
+        mutually_exclusive = {
+            focus = SOV_promises_of_bread
+        }
+        completion_reward = {
+            unlock_decision_tooltip = SOV_victories_of_socialism
+            set_temp_variable = {
+                var = SOV_election_approval_rating_cprf_var_temp
+                value = 0.025
+            }
+            SOV_add_election_approval_rating_cprf = yes
+            set_temp_variable = {
+                var = SOV_election_approval_rating_ur_var_temp
+                value = -0.025
+            }
+            SOV_add_election_approval_rating_ur = yes
+            set_country_flag = SOV_our_soviet_past_flag
+        }
+    }
+    focus = {
+        id = SOV_victory_day
+        icon = GFX_focus_SOV_remember_the_old_days
+        relative_position_id = SOV_new_revolution
+        x = 0
+        y = 3
+        cost = 4
+        prerequisite = {
+            focus = SOV_remember_the_old_days
+            focus = SOV_promises_of_bread
+        }
+        completion_reward = {
+            unlock_decision_tooltip = SOV_march_through_moscow
+        }
+    }
+    focus = {
+        id = SOV_for_a_just_russia
+        icon = GFX_focus_SOV_for_a_just_russia
+        relative_position_id = SOV_what_now
+        x = -8
+        y = 3
+        cost = 4
+        mutually_exclusive = {
+            focus = SOV_russian_destiny
+            focus = SOV_maintain_status_quo
+            focus = SOV_new_revolution
+        }
+        prerequisite = {
+            focus = SOV_post_putin_elections
+        }
+        allow_branch = {
+            has_country_flag = SOV_srzp_path_unlocked_flag
+        }
+        available = {
+            is_completed_by_event = yes
+        }
+        completion_reward = {
+            unlock_decision_tooltip = conduct_ldpr_smear_campaign
+            unlock_decision_tooltip = conduct_ur_smear_campaign
+            unlock_decision_tooltip = conduct_liberal_smear_campaign
+        }
+    }
+    focus = {
+        id = SOV_solidarity_and_prosperity
+        icon = GFX_focus_SOV_for_a_just_russia
+        relative_position_id = SOV_for_a_just_russia
+        x = -1
+        y = 1
+        cost = 4
+        prerequisite = {
+            focus = SOV_for_a_just_russia
+        }
+        available = {
+        }
+        completion_reward = {
+            set_temp_variable = {
+                var = SOV_election_approval_rating_srzp_var_temp
+                value = 0.05
+            }
+            SOV_add_election_approval_rating_srzp = yes
+        }
+    }
+    focus = {
+        id = SOV_party_of_culture
+        icon = GFX_focus_SOV_for_a_just_russia
+        relative_position_id = SOV_for_a_just_russia
+        x = 1
+        y = 1
+        cost = 4
+        prerequisite = {
+            focus = SOV_for_a_just_russia
+        }
+        available = {
+        }
+        completion_reward = {
+            set_temp_variable = {
+                var = SOV_election_approval_rating_srzp_var_temp
+                value = 0.05
+            }
+            SOV_add_election_approval_rating_srzp = yes
+        }
+    }
+    focus = {
+        id = SOV_radical_change
+        icon = GFX_focus_SOV_for_a_just_russia
+        relative_position_id = SOV_for_a_just_russia
+        x = -1
+        y = 2
+        cost = 4
+        mutually_exclusive = {
+            focus = SOV_fairer_future
+        }
+        prerequisite = {
+            focus = SOV_party_of_culture
+            focus = SOV_solidarity_and_prosperity
+        }
+        available = {
+        }
+        completion_reward = {
+            add_political_power = -100
+            add_stability = -0.1
+            set_temp_variable = {
+                var = SOV_election_approval_rating_srzp_var_temp
+                value = SOV_election_approval_rating_cprf_var
+            }
+            SOV_add_election_approval_rating_srzp = yes
+        }
+    }
+    focus = {
+        id = SOV_fairer_future
+        icon = GFX_focus_SOV_fair_commonwealth
+        relative_position_id = SOV_for_a_just_russia
+        x = 1
+        y = 2
+        cost = 4
+        mutually_exclusive = {
+            focus = SOV_radical_change
+        }
+        prerequisite = {
+            focus = SOV_party_of_culture
+            focus = SOV_solidarity_and_prosperity
+        }
+        available = {
+        }
+        completion_reward = {
+            add_political_power = 100
+            add_stability = 0.1
+            set_temp_variable = {
+                var = SOV_election_approval_rating_srzp_var_temp
+                value = SOV_election_approval_rating_ur_var
+            }
+            SOV_add_election_approval_rating_srzp = yes
+        }
+    }
+    focus = {
+        id = SOV_we_must_fight_for_justice
+        icon = GFX_focus_SOV_for_a_just_russia
+        relative_position_id = SOV_for_a_just_russia
+        x = 0
+        y = 3
+        cost = 4
+        prerequisite = {
+            focus = SOV_fairer_future
+            focus = SOV_radical_change
+        }
+        available = {
+        }
+        completion_reward = {
+            set_temp_variable = {
+                var = SOV_election_approval_rating_srzp_var_temp
+                value = 0.05
+            }
+            SOV_add_election_approval_rating_srzp = yes
+        }
+    }
+    focus = {
+        id = SOV_russian_destiny
+        icon = GFX_focus_SOV_russian_destiny
+        relative_position_id = SOV_what_now
+        x = 4
+        y = 3
+        cost = 4
+        mutually_exclusive = {
+            focus = SOV_new_revolution
+            focus = SOV_maintain_status_quo
+        }
+        prerequisite = {
+            focus = SOV_post_putin_elections
+        }
+        available = {
+            is_completed_by_event = yes
+        }
+        completion_reward = {
+            add_popularity = {
+                ideology = fascist
+                popularity = 0.015
+            }
+        }
+    }
+    focus = {
+        id = SOV_promises_of_land
+        icon = GFX_focus_SOV_imperial_populism
+        relative_position_id = SOV_russian_destiny
+        x = 0
+        y = 1
+        cost = 4
+        mutually_exclusive = {
+        }
+        prerequisite = {
+            focus = SOV_russian_destiny
+        }
+        completion_reward = {
+            unlock_decision_tooltip = SOV_ldpr_always_only_truth
+            set_temp_variable = {
+                var = SOV_election_approval_rating_ldpr_var_temp
+                value = 0.025
+            }
+            SOV_add_election_approval_rating_ldpr = yes
+        }
+    }
+    focus = {
+        id = SOV_russophilic_propaganda
+        icon = GFX_focus_SOV_digital_campaign
+        relative_position_id = SOV_russian_destiny
+        x = 1
+        y = 2
+        cost = 4
+        mutually_exclusive = {
+            focus = SOV_anti_establishment_big_tent
+        }
+        prerequisite = {
+            focus = SOV_russian_destiny
+        }
+        completion_reward = {
+            custom_effect_tooltip = SOV_russophilic_propaganda_tt
+            set_temp_variable = {
+                var = SOV_election_approval_rating_ldpr_var_temp
+                value = 0.025
+            }
+            SOV_add_election_approval_rating_ldpr = yes
+        }
+    }
+    focus = {
+        id = SOV_anti_establishment_big_tent
+        icon = GFX_focus_SOV_anti_establishment_big_tent
+        relative_position_id = SOV_russian_destiny
+        x = -1
+        y = 2
+        cost = 4
+        mutually_exclusive = {
+            focus = SOV_russophilic_propaganda
+        }
+        prerequisite = {
+            focus = SOV_russian_destiny
+        }
+        completion_reward = {
+            unlock_decision_tooltip = SOV_ldpr_always_for_the_people
+            set_temp_variable = {
+                var = SOV_election_approval_rating_cprf_var_temp
+                value = -0.01
+            }
+            SOV_add_election_approval_rating_cprf = yes
+            set_temp_variable = {
+                var = SOV_election_approval_rating_ur_var_temp
+                value = -0.02
+            }
+            SOV_add_election_approval_rating_ur = yes
+            set_country_flag = SOV_anti_establishment_front
+        }
+    }
+    focus = {
+        id = SOV_attack_the_polls
+        icon = GFX_focus_SOV_send_ldpr_agittrains
+        relative_position_id = SOV_russian_destiny
+        x = 0
+        y = 3
+        cost = 4
+        mutually_exclusive = {
+        }
+        prerequisite = {
+            focus = SOV_promises_of_land
+        }
+        completion_reward = {
+            unlock_decision_tooltip = SOV_ldpr_zhirinovsky_will_listen
+            set_temp_variable = {
+                var = SOV_election_approval_rating_ldpr_var_temp
+                value = 0.02
+            }
+            SOV_add_election_approval_rating_ldpr = yes
+        }
+    }
+    focus = {
+        id = SOV_maintain_status_quo
+        icon = GFX_focus_SOV_maintain_status_quo
+        relative_position_id = SOV_what_now
+        x = 0
+        y = 3
+        cost = 4
+        mutually_exclusive = {
+            focus = SOV_new_revolution
+            focus = SOV_russian_destiny
+        }
+        prerequisite = {
+            focus = SOV_post_putin_elections
+        }
+        available = {
+            is_completed_by_event = yes
+        }
+        completion_reward = {
+            add_popularity = {
+                ideology = authoritarian_democrat
+                popularity = 0.015
+            }
+        }
+    }
+    focus = {
+        id = SOV_gain_church_support
+        icon = GFX_focus_SOV_enforce_churches_authority
+        relative_position_id = SOV_maintain_status_quo
+        x = 2
+        y = 1
+        cost = 4
+        mutually_exclusive = {
+        }
+        prerequisite = {
+            focus = SOV_maintain_status_quo
+            focus = SOV_russian_destiny
+        }
+        completion_reward = {
+            set_temp_variable = {
+                var = SOV_election_approval_rating_ur_var_temp
+                value = 0.02
+            }
+            SOV_add_election_approval_rating_ur = yes
+            set_temp_variable = {
+                var = SOV_election_approval_rating_ldpr_var_temp
+                value = 0.02
+            }
+            SOV_add_election_approval_rating_ldpr = yes
+            add_political_power = 50
+        }
+    }
+    focus = {
+        id = SOV_gain_oligarchist_support
+        icon = GFX_focus_SOV_gain_oligarchist_support
+        relative_position_id = SOV_maintain_status_quo
+        x = -1
+        y = 2
+        cost = 4
+        prerequisite = {
+            focus = SOV_improve_ur_image
+        }
+        completion_reward = {
+            unlock_decision_tooltip = SOV_we_trust_in_medvedev
+            set_temp_variable = {
+                var = SOV_election_approval_rating_ur_var_temp
+                value = 0.02
+            }
+            SOV_add_election_approval_rating_ur = yes
+        }
+    }
+    focus = {
+        id = SOV_use_extreme_measures
+        icon = GFX_focus_SOV_use_extreme_measures
+        relative_position_id = SOV_maintain_status_quo
+        x = 1
+        y = 3
+        cost = 4
+        prerequisite = {
+            focus = SOV_send_aid_to_america
+        }
+        mutually_exclusive = {
+            focus = SOV_heir_to_strongman
+        }
+        completion_reward = {
+            set_temp_variable = {
+                var = SOV_election_approval_rating_ur_var_temp
+                value = 0.02
+            }
+            SOV_add_election_approval_rating_ur = yes
+            set_temp_variable = {
+                var = SOV_election_approval_rating_nav_var_temp
+                value = -0.035
+            }
+            SOV_add_election_approval_rating_nav = yes
+            add_stability = 0.05
+            custom_effect_tooltip = tooltip_white_line
+            custom_effect_tooltip = SOV_use_extreme_measures_tt
+            set_country_flag = SOV_use_extreme_measures_flag
+        }
+    }
+    focus = {
+        id = SOV_improve_ur_image
+        icon = GFX_focus_SOV_improve_ur_image
+        relative_position_id = SOV_maintain_status_quo
+        x = 0
+        y = 1
+        cost = 4
+        prerequisite = {
+            focus = SOV_maintain_status_quo
+        }
+        completion_reward = {
+            unlock_decision_tooltip = SOV_we_are_united_russia
+            set_temp_variable = {
+                var = SOV_election_approval_rating_ur_var_temp
+                value = 0.02
+            }
+            SOV_add_election_approval_rating_ur = yes
+            set_temp_variable = {
+                var = debt_var_temp
+                value = 10
+            }
+            add_debt_with_inflation = yes
+        }
+    }
+    focus = {
+        id = SOV_heir_to_strongman
+        icon = GFX_focus_SOV_heir_to_strongman
+        relative_position_id = SOV_maintain_status_quo
+        x = -1
+        y = 3
+        cost = 4
+        prerequisite = {
+            focus = SOV_gain_oligarchist_support
+            focus = SOV_send_aid_to_america
+        }
+        mutually_exclusive = {
+            focus = SOV_use_extreme_measures
+        }
+        completion_reward = {
+            set_temp_variable = {
+                var = SOV_election_approval_rating_ur_var_temp
+                value = 0.02
+            }
+            SOV_add_election_approval_rating_ur = yes
+            set_temp_variable = {
+                var = SOV_election_approval_rating_ldpr_var_temp
+                value = -0.02
+            }
+            SOV_add_election_approval_rating_ldpr = yes
+            add_war_support = 0.05
+            custom_effect_tooltip = tooltip_white_line
+            custom_effect_tooltip = SOV_heir_to_strongman_tt
+            set_country_flag = SOV_heir_to_strongman_flag
+        }
+    }
+    focus = {
+        id = SOV_send_aid_to_america
+        icon = GFX_focus_SOV_send_aid_to_saudi_arabia
+        relative_position_id = SOV_maintain_status_quo
+        x = 1
+        y = 2
+        cost = 4
+        prerequisite = {
+            focus = SOV_improve_ur_image
+        }
+        completion_reward = {
+            custom_effect_tooltip = SOV_send_aid_to_america_tt
+            unlock_decision_tooltip = SOV_the_future_is_ours
+            set_temp_variable = {
+                var = SOV_election_approval_rating_cprf_var_temp
+                value = -0.02
+            }
+            SOV_add_election_approval_rating_cprf = yes
+            set_temp_variable = {
+                var = debt_var_temp
+                value = 5
+            }
+            add_debt_with_inflation = yes
+            hidden_effect = {
+                country_event = {
+                    id = russia.381
+                    days = 10
+                    random_days = 5
+                }
+            }
+        }
+    }
+}
+
+shared_focus = {
+    id = SOV_rollback_serdykovs_reforms
+    icon = {
+    	GFX_focus_SOV_rollback_serdykovs_reforms = {
+    		OR = {
+    		    has_global_flag = SOV_medvedev_won
+    		    has_global_flag = SOV_srzp_won
+    		}
+    	}
+
+    	GFX_focus_SOV_rollback_serdykovs_reforms_LDPR = {
+    		has_global_flag = SOV_ldpr_won
+    	}
+
+    	GFX_focus_SOV_rollback_serdykovs_reforms_CPRF = {
+    		has_global_flag = SOV_cprf_won
+    	}
+    	GFX_focus_SOV_rollback_serdykovs_reforms = yes
+    }
+    x = 4
+    y = 0
+    cost = 4
+    ai_will_do = {
+        factor = 30
+		modifier = {
+			add = 75
+			OR = {
+				has_completed_focus = SOV_power_and_strength
+				has_completed_focus = SOV_guiding_hand
+			}
+		}
+		modifier = {
+			add = 75
+			has_completed_focus = SOV_xix_party_congress
+		}
+    }
+    allow_branch = {
+        OR = {
+            has_global_flag = SOV_cprf_won
+            has_global_flag = SOV_ldpr_won
+            has_global_flag = SOV_medvedev_won
+            has_global_flag = SOV_srzp_won
+        }
+        NOT = {
+            OR = {
+                has_global_flag = SOV_first_nato_war_victory
+                has_global_flag = nato_nato_won_nato_war
+                has_country_flag = SOV_grudinin_coup
+                has_country_flag = SOV_klychkov_coup
+                has_country_flag = SOV_yavlinsky_coup
+                has_country_flag = SOV_surovikin_coup
+            }
+        }
+    }
+    available = {
+        if = {
+            limit = {
+                has_global_flag = SOV_cprf_won
+            }
+            has_completed_focus = SOV_first_convocation
+        }
+        else_if = {
+            limit = {
+                has_global_flag = SOV_medvedev_won
+            }
+            has_completed_focus = SOV_convene_the_duma
+        }
+    }
+    offset = {
+        x = -2
+        y = 0
+        trigger = {
+            has_global_flag = SOV_srzp_won
+        }
+    }
+    completion_reward = {
+        unlock_decision_category_tooltip = SOV_russian_army_category
+        hidden_effect = {
+            country_event = {
+                id = russiaflavor.23
+                days = 7
+            }
+        }
+        if = {
+            limit = {
+                has_global_flag = SOV_cprf_won
+            }
+            effect_tooltip = {
+                swap_ideas = {
+                    remove_idea = SOV_Permanent_Defense_Readiness
+                    add_idea = SOV_soviet_army
+                }
+            }
+            country_event = {
+                id = russia.315
+                days = 5
+            }
+            country_event = {
+                id = russia.705
+                days = 15
+                random_days = 10
+            }
+            hidden_effect = {
+                add_dynamic_modifier = {
+                    modifier = SOV_soviet_army_dynamic
+                }
+                remove_ideas = SOV_Permanent_Defense_Readiness
+            }
+        }
+        if = {
+            limit = {
+                OR = {
+                    has_global_flag = SOV_medvedev_won
+                    has_global_flag = SOV_srzp_won
+                }
+            }
+            effect_tooltip = {
+                swap_ideas = {
+                    remove_idea = SOV_Permanent_Defense_Readiness
+                    add_idea = SOV_Permanent_Defense_Readiness_rollback_serdykovs_reforms
+                }
+            }
+            hidden_effect = {
+                add_dynamic_modifier = {
+                    modifier = SOV_Permanent_Defense_Readiness_dynamic
+                }
+                remove_ideas = SOV_Permanent_Defense_Readiness
+            }
+        }
+        if = {
+            limit = {
+                has_global_flag = SOV_ldpr_won
+            }
+            effect_tooltip = {
+                swap_ideas = {
+                    remove_idea = SOV_Permanent_Defense_Readiness
+                    add_idea = SOV_thousand_of_banners
+                }
+            }
+            hidden_effect = {
+                add_dynamic_modifier = {
+                    modifier = SOV_thousand_of_banners_dynamic
+                }
+                remove_ideas = SOV_Permanent_Defense_Readiness
+            }
+        }
+        set_variable = {
+            var = SOV_voenny_army_org_factor_dynamic
+            value = 0.05
+        }
+        set_variable = {
+            var = SOV_voenny_max_planning_factor_dynamic
+            value = 0.15
+        }
+        set_variable = {
+            var = SOV_voenny_battalion_upkeep_factor_dynamic
+            value = -0.2
+        }
+        set_variable = {
+            var = SOV_voenny_aircraft_upkeep_factor_dynamic
+            value = -0.2
+        }
+        set_variable = {
+            var = SOV_voenny_ship_upkeep_factor_dynamic
+            value = -0.2
+        }
+        set_variable = {
+            var = SOV_voenny_military_factory_upkeep_factor_dynamic
+            value = -0.25
+        }
+        set_variable = {
+            var = SOV_voenny_dockyard_upkeep_factor_dynamic
+            value = -0.25
+        }
+        set_variable = {
+            var = SOV_voenny_production_factory_max_efficiency_factor_dynamic
+            value = -0.05
+        }
+        set_variable = {
+            var = SOV_voenny_conscription_factor_dynamic
+            value = 0
+        }
+        force_update_dynamic_modifier = yes
+    }
+}
+
+shared_focus = {
+    id = SOV_expand_ratnik_programme
+    icon = {
+    	GFX_focus_SOV_expand_ratnik_programme = {
+    		OR = {
+    		    has_global_flag = SOV_medvedev_won
+    		    has_global_flag = SOV_srzp_won
+    		}
+    	}
+
+    	GFX_focus_SOV_expand_ratnik_programme_LDPR = {
+    		has_global_flag = SOV_ldpr_won
+    	}
+
+    	GFX_focus_SOV_expand_ratnik_programme_CPRF = {
+    		has_global_flag = SOV_cprf_won
+    	}
+    	GFX_focus_SOV_expand_ratnik_programme = yes
+    }
+    relative_position_id = SOV_rollback_serdykovs_reforms
+    x = -1
+    y = 1
+    cost = 5
+    ai_will_do = {
+        factor = 30
+		
+		modifier = {
+			add = 75
+			has_completed_focus = SOV_xix_party_congress
+		}
+    }
+    prerequisite = {
+        focus = SOV_rollback_serdykovs_reforms
+    }
+    completion_reward = {
+        add_tech_bonus = {
+            name = SOV_expand_ratnik_programme
+            bonus = 0.5
+            uses = 4
+            category = infantry_tech
+        }
+        army_experience = 10
+    }
+}
+
+shared_focus = {
+    id = SOV_improve_deep_battle_theory
+    icon = {
+    	GFX_focus_SOV_improve_deep_battle_theory = {
+    		OR = {
+    		    has_global_flag = SOV_medvedev_won
+    		    has_global_flag = SOV_srzp_won
+    		}
+    	}
+
+    	GFX_focus_SOV_improve_deep_battle_theory_LDPR = {
+    		has_global_flag = SOV_ldpr_won
+    	}
+
+    	GFX_focus_SOV_improve_deep_battle_theory_CPRF = {
+    		has_global_flag = SOV_cprf_won
+    	}
+    	GFX_focus_SOV_improve_deep_battle_theory = yes
+    }
+    ai_will_do = {
+        factor = 120
+    }
+    relative_position_id = SOV_rollback_serdykovs_reforms
+    x = 2
+    y = 1
+    cost = 5.5
+    mutually_exclusive = {
+        focus = SOV_improve_gerasimovs_doctrine
+    }
+    prerequisite = {
+        focus = SOV_rollback_serdykovs_reforms
+    }
+    completion_reward = {
+        add_doctrine_cost_reduction = {
+            name = SOV_improve_deep_battle_theory
+            cost_reduction = 0.5
+            uses = 2
+            category = cat_mass_assault
+        }
+        if = {
+            limit = {
+                has_global_flag = SOV_cprf_won
+            }
+            effect_tooltip = {
+                swap_ideas = {
+                    remove_idea = SOV_soviet_army_blank
+                    add_idea = SOV_soviet_army_improve_deep_battle_theory
+                }
+            }
+            unlock_decision_tooltip = SOV_upgrade_sobolev
+        }
+        if = {
+            limit = {
+                OR = {
+                    has_global_flag = SOV_medvedev_won
+                    has_global_flag = SOV_srzp_won
+                }
+            }
+            effect_tooltip = {
+                swap_ideas = {
+                    remove_idea = SOV_Permanent_Defense_Readiness_blank
+                    add_idea = SOV_Permanent_Defense_Readiness_improve_deep_battle_theory
+                }
+            }
+            unlock_decision_tooltip = SOV_upgrade_shoygu
+        }
+        if = {
+            limit = {
+                has_global_flag = SOV_ldpr_won
+            }
+            effect_tooltip = {
+                swap_ideas = {
+                    remove_idea = SOV_thousand_of_banners_blank
+                    add_idea = SOV_thousand_of_banners_improve_deep_battle_theory
+                }
+            }
+            unlock_decision_tooltip = SOV_upgrade_shoygu
+        }
+        unlock_decision_tooltip = SOV_revive_position_of_marshal
+        add_to_variable = {
+            var = SOV_voenny_conscription_factor_dynamic
+            value = 0.35
+        }
+        add_to_variable = {
+            var = SOV_voenny_supply_factor_dynamic
+            value = 0.05
+        }
+        add_to_variable = {
+            var = SOV_voenny_combat_width_factor_dynamic
+            value = -0.05
+        }
+        add_to_variable = {
+            var = SOV_voenny_max_planning_factor_dynamic
+            value = 0.075
+        }
+        add_to_variable = {
+            var = SOV_voenny_army_strength_factor_dynamic
+            value = 0.1
+        }
+        add_to_variable = {
+            var = SOV_voenny_army_speed_factor_dynamic
+            value = 0.05
+        }
+        force_update_dynamic_modifier = yes
+    }
+}
+
+shared_focus = {
+    id = SOV_improve_gerasimovs_doctrine
+    icon = {
+    	GFX_focus_SOV_improve_gerasimov_doctrine = {
+    		OR = {
+    		    has_global_flag = SOV_medvedev_won
+    		    has_global_flag = SOV_srzp_won
+    		}
+    	}
+
+    	GFX_focus_SOV_improve_gerasimov_doctrine_LDPR = {
+    		has_global_flag = SOV_ldpr_won
+    	}
+
+    	GFX_focus_SOV_improve_gerasimov_doctrine_CPRF = {
+    		has_global_flag = SOV_cprf_won
+    	}
+    	GFX_focus_SOV_improve_gerasimov_doctrine = yes
+    }
+    ai_will_do = {
+        factor = -999 # Герасимовка несовместима с ебучим ИИ Параходов, всего доброго ~ Wood
+    }
+    relative_position_id = SOV_rollback_serdykovs_reforms
+    x = 4
+    y = 1
+    cost = 5.5
+    mutually_exclusive = {
+        focus = SOV_improve_deep_battle_theory
+    }
+    prerequisite = {
+        focus = SOV_rollback_serdykovs_reforms
+    }
+    available = {
+        if = {
+            limit = {
+                has_global_flag = SOV_ldpr_won
+            }
+            NOT = {
+                has_country_flag = SOV_disable_gerasimov_doctrine_flag
+            }
+        }
+    }
+    completion_reward = {
+        add_doctrine_cost_reduction = {
+            name = SOV_improve_gerasimovs_doctrine
+            cost_reduction = 0.5
+            uses = 2
+            category = cat_mobile_warfare
+        }
+        if = {
+            limit = {
+                has_global_flag = SOV_cprf_won
+            }
+            effect_tooltip = {
+                swap_ideas = {
+                    remove_idea = SOV_soviet_army_blank
+                    add_idea = SOV_soviet_army_improve_gerasimovs_doctrine
+                }
+            }
+        }
+        if = {
+            limit = {
+                OR = {
+                    has_global_flag = SOV_medvedev_won
+                    has_global_flag = SOV_srzp_won
+                }
+            }
+            effect_tooltip = {
+                swap_ideas = {
+                    remove_idea = SOV_Permanent_Defense_Readiness_blank
+                    add_idea = SOV_Permanent_Defense_Readiness_improve_gerasimovs_doctrine
+                }
+            }
+        }
+        if = {
+            limit = {
+                has_global_flag = SOV_ldpr_won
+            }
+            effect_tooltip = {
+                swap_ideas = {
+                    remove_idea = SOV_thousand_of_banners_blank
+                    add_idea = SOV_thousand_of_banners_improve_gerasimovs_doctrine
+                }
+            }
+        }
+        enable_tech_cyber_units_warfare = yes
+        custom_effect_tooltip = tooltip_white_line
+        custom_effect_tooltip = appoint_theorist_minister_tooltip
+        show_ideas_tooltip = SOV_Belousov
+        add_to_variable = {
+            var = SOV_voenny_conscription_factor_dynamic
+            value = -0.15
+        }
+        add_to_variable = {
+            var = SOV_voenny_planning_speed_dynamic
+            value = 0.1
+        }
+        add_to_variable = {
+            var = SOV_voenny_army_strength_factor_dynamic
+            value = 0.05
+        }
+        add_to_variable = {
+            var = SOV_voenny_army_attack_factor_dynamic
+            value = 0.025
+        }
+        add_to_variable = {
+            var = SOV_voenny_army_defence_factor_dynamic
+            value = 0.025
+        }
+        force_update_dynamic_modifier = yes
+        hidden_effect = {
+            add_ideas = SOV_Belousov
+        }
+    }
+}
+
+shared_focus = {
+    id = SOV_reform_the_officer_corps
+    icon = {
+    	GFX_focus_SOV_reform_the_officer_corps = {
+    		OR = {
+    		    has_global_flag = SOV_medvedev_won
+    		    has_global_flag = SOV_srzp_won
+    		}
+    	}
+
+    	GFX_focus_SOV_reform_the_officer_corps_LDPR = {
+    		has_global_flag = SOV_ldpr_won
+    	}
+
+    	GFX_focus_SOV_reform_the_officer_corps_CPRF = {
+    		has_global_flag = SOV_cprf_won
+    	}
+    	GFX_focus_SOV_reform_the_officer_corps = yes
+    }
+    ai_will_do = {
+        factor = 30
+    }
+    relative_position_id = SOV_expand_ratnik_programme
+    x = -1
+    y = 1
+    cost = 4
+    mutually_exclusive = {
+        focus = SOV_centralize_military_structures
+    }
+    prerequisite = {
+        focus = SOV_expand_ratnik_programme
+    }
+    completion_reward = {
+        if = {
+            limit = {
+                has_global_flag = SOV_cprf_won
+            }
+            effect_tooltip = {
+                swap_ideas = {
+                    remove_idea = SOV_soviet_army_blank
+                    add_idea = SOV_soviet_army_reform_the_officer_corps
+                }
+            }
+        }
+        if = {
+            limit = {
+                OR = {
+                    has_global_flag = SOV_medvedev_won
+                    has_global_flag = SOV_srzp_won
+                }
+            }
+            effect_tooltip = {
+                swap_ideas = {
+                    remove_idea = SOV_Permanent_Defense_Readiness_blank
+                    add_idea = SOV_Permanent_Defense_Readiness_reform_the_officer_corps
+                }
+            }
+        }
+        if = {
+            limit = {
+                has_global_flag = SOV_ldpr_won
+            }
+            effect_tooltip = {
+                swap_ideas = {
+                    remove_idea = SOV_thousand_of_banners_blank
+                    add_idea = SOV_thousand_of_banners_reform_the_officer_corps
+                }
+            }
+        }
+        add_to_variable = {
+            var = SOV_voenny_military_development_monthly_dynamic
+            value = 0.005
+        }
+        add_to_variable = {
+            var = SOV_voenny_army_org_factor_dynamic
+            value = 0.075
+        }
+        add_political_power = -75
+        set_temp_variable = {
+            var = military_development_var_temp
+            value = 0.15
+        }
+        force_update_dynamic_modifier = yes
+        add_military_development = yes
+    }
+}
+
+shared_focus = {
+    id = SOV_centralize_military_structures
+    icon = {
+    	GFX_focus_SOV_centralized_command_structures = {
+    		OR = {
+    		    has_global_flag = SOV_medvedev_won
+    		    has_global_flag = SOV_srzp_won
+    		}
+    	}
+
+    	GFX_focus_SOV_centralized_command_structures_LDPR = {
+    		has_global_flag = SOV_ldpr_won
+    	}
+
+    	GFX_focus_SOV_centralized_command_structures_CPRF = {
+    		has_global_flag = SOV_cprf_won
+    	}
+    	GFX_focus_SOV_centralized_command_structures = yes
+    }
+    ai_will_do = {
+        factor = 30
+    }
+    relative_position_id = SOV_expand_ratnik_programme
+    x = 2
+    y = 1
+    cost = 4
+    mutually_exclusive = {
+        focus = SOV_reform_the_officer_corps
+    }
+    prerequisite = {
+        focus = SOV_expand_ratnik_programme
+    }
+    prerequisite = {
+        focus = SOV_improve_deep_battle_theory
+    }
+    completion_reward = {
+        if = {
+            limit = {
+                has_global_flag = SOV_cprf_won
+            }
+            effect_tooltip = {
+                swap_ideas = {
+                    remove_idea = SOV_soviet_army_blank
+                    add_idea = SOV_soviet_army_centralize_military_structures
+                }
+            }
+        }
+        if = {
+            limit = {
+                OR = {
+                    has_global_flag = SOV_medvedev_won
+                    has_global_flag = SOV_srzp_won
+                }
+            }
+            effect_tooltip = {
+                swap_ideas = {
+                    remove_idea = SOV_Permanent_Defense_Readiness_blank
+                    add_idea = SOV_Permanent_Defense_Readiness_centralize_military_structures
+                }
+            }
+        }
+        if = {
+            limit = {
+                has_global_flag = SOV_ldpr_won
+            }
+            effect_tooltip = {
+                swap_ideas = {
+                    remove_idea = SOV_thousand_of_banners_blank
+                    add_idea = SOV_thousand_of_banners_centralize_military_structures
+                }
+            }
+        }
+        add_to_variable = {
+            var = SOV_voenny_max_planning_factor_dynamic
+            value = 0.05
+        }
+        add_to_variable = {
+            var = SOV_voenny_max_command_power_dynamic
+            value = 30
+        }
+        add_to_variable = {
+            var = SOV_voenny_combat_width_factor_dynamic
+            value = -0.025
+        }
+        force_update_dynamic_modifier = yes
+        add_stability = 0.05
+        add_political_power = 100
+        add_command_power = 30
+    }
+}
+
+shared_focus = {
+    id = SOV_unify_command_structures
+    icon = {
+    	GFX_focus_SOV_unify_command_structure = {
+    		OR = {
+    		    has_global_flag = SOV_medvedev_won
+    		    has_global_flag = SOV_srzp_won
+    		}
+    	}
+
+    	GFX_focus_SOV_unify_command_structure_LDPR = {
+    		has_global_flag = SOV_ldpr_won
+    	}
+
+    	GFX_focus_SOV_unify_command_structure_CPRF = {
+    		has_global_flag = SOV_cprf_won
+    	}
+    	GFX_focus_SOV_unify_command_structure = yes
+    }
+    ai_will_do = {
+        factor = 30
+    }
+    relative_position_id = SOV_expand_ratnik_programme
+    x = 0
+    y = 2
+    cost = 3
+    prerequisite = {
+        focus = SOV_expand_ratnik_programme
+    }
+    completion_reward = {
+        set_temp_variable = {
+            var = military_development_var_temp
+            value = 0.05
+        }
+        add_military_development = yes
+        army_experience = 35
+        custom_effect_tooltip = tooltip_white_line
+        unlock_decision_tooltip = SOV_deal_with_logistics
+        custom_effect_tooltip = tooltip_white_line
+        custom_effect_tooltip = SOV_unify_command_structures_tt
+        hidden_effect = {
+            BLR = {
+                every_unit_leader = {
+                    set_nationality = SOV
+                }
+            }
+            add_trait = {
+                character = BLR_vadim_denisenko
+                slot = corps_commander
+                trait = trait_BLR_SOV
+            }
+            add_trait = {
+                character = BLR_alexander_volfovich
+                slot = corps_commander
+                trait = trait_BLR_SOV
+            }
+            add_trait = {
+                character = BLR_viktor_gulevich
+                slot = field_marshal
+                trait = trait_BLR_SOV
+            }
+            add_trait = {
+                character = BLR_oleg_belokonev
+                slot = corps_commander
+                trait = trait_BLR_SOV
+            }
+            add_trait = {
+                character = BLR_kiktor_khrenin
+                slot = corps_commander
+                trait = trait_BLR_SOV
+            }
+        }
+    }
+}
+
+shared_focus = {
+    id = SOV_give_way_to_youth
+    icon = {
+    	GFX_focus_SOV_give_way_to_youth = {
+    		OR = {
+    		    has_global_flag = SOV_medvedev_won
+    		    has_global_flag = SOV_srzp_won
+    		}
+    	}
+
+    	GFX_focus_SOV_give_way_to_youth_LDPR = {
+    		has_global_flag = SOV_ldpr_won
+    	}
+
+    	GFX_focus_SOV_give_way_to_youth_CPRF = {
+    		has_global_flag = SOV_cprf_won
+    	}
+    	GFX_focus_SOV_give_way_to_youth = yes
+    }
+    ai_will_do = {
+        factor = 30
+    }
+    relative_position_id = SOV_reform_the_officer_corps
+    x = -1
+    y = 1
+    cost = 4
+    prerequisite = {
+        focus = SOV_reform_the_officer_corps
+    }
+    completion_reward = {
+        army_experience = 30
+        if = {
+            limit = {
+                has_global_flag = SOV_cprf_won
+            }
+            effect_tooltip = {
+                swap_ideas = {
+                    remove_idea = SOV_soviet_army_blank
+                    add_idea = SOV_soviet_army_give_way_to_youth
+                }
+            }
+        }
+        if = {
+            limit = {
+                OR = {
+                    has_global_flag = SOV_medvedev_won
+                    has_global_flag = SOV_srzp_won
+                }
+            }
+            effect_tooltip = {
+                swap_ideas = {
+                    remove_idea = SOV_Permanent_Defense_Readiness_blank
+                    add_idea = SOV_Permanent_Defense_Readiness_give_way_to_youth
+                }
+            }
+        }
+        if = {
+            limit = {
+                has_global_flag = SOV_ldpr_won
+            }
+            effect_tooltip = {
+                swap_ideas = {
+                    remove_idea = SOV_thousand_of_banners_blank
+                    add_idea = SOV_thousand_of_banners_give_way_to_youth
+                }
+            }
+        }
+        add_to_variable = {
+            var = SOV_voenny_military_leader_cost_factor_dynamic
+            value = -0.3
+        }
+        force_update_dynamic_modifier = yes
+        custom_override_tooltip = {
+            tooltip = {
+                localization_key = tooltip_enable_hidden_tech
+                TECH = country_culture|tech_upgraded_start_generals
+                EFFECT = tech_effect|tech_upgraded_start_generals
+            }
+            set_technology = {
+                tech_upgraded_start_generals = 1
+                popup = no
+            }
+        }
+        custom_effect_tooltip = tooltip_white_line
+        unlock_decision_tooltip = SOV_new_military_schools
+    }
+}
+
+shared_focus = {
+    id = SOV_promote_reliable_cadres
+    icon = {
+    	GFX_focus_SOV_promote_reliable_cadres = {
+    		OR = {
+    		    has_global_flag = SOV_medvedev_won
+    		    has_global_flag = SOV_srzp_won
+    		}
+    	}
+
+    	GFX_focus_SOV_promote_reliable_cadres_LDPR = {
+    		has_global_flag = SOV_ldpr_won
+    	}
+
+    	GFX_focus_SOV_retain_trained_officers = {
+    		has_global_flag = SOV_cprf_won
+    	}
+    	GFX_focus_SOV_promote_reliable_cadres = yes
+    }
+    relative_position_id = SOV_centralize_military_structures
+    x = 0
+    y = 1
+    cost = 4
+    prerequisite = {
+        focus = SOV_centralize_military_structures
+    }
+    completion_reward = {
+        unlock_decision_tooltip = SOV_fight_against_parquet_officers
+        if = {
+            limit = {
+                has_global_flag = SOV_cprf_won
+            }
+            unlock_decision_tooltip = SOV_call_for_veterans
+            effect_tooltip = {
+                swap_ideas = {
+                    remove_idea = SOV_soviet_army_blank
+                    add_idea = SOV_soviet_army_promote_reliable_cadres
+                }
+            }
+        }
+        if = {
+            limit = {
+                OR = {
+                    has_global_flag = SOV_medvedev_won
+                    has_global_flag = SOV_srzp_won
+                }
+            }
+            effect_tooltip = {
+                swap_ideas = {
+                    remove_idea = SOV_Permanent_Defense_Readiness_blank
+                    add_idea = SOV_Permanent_Defense_Readiness_promote_reliable_cadres
+                }
+            }
+        }
+        if = {
+            limit = {
+                has_global_flag = SOV_ldpr_won
+            }
+            effect_tooltip = {
+                swap_ideas = {
+                    remove_idea = SOV_thousand_of_banners_blank
+                    add_idea = SOV_thousand_of_banners_promote_reliable_cadres
+                }
+            }
+        }
+        every_unit_leader = {
+            limit = {
+                is_corps_commander = yes
+                skill > 2
+            }
+            add_max_trait = 1
+            add_skill_level = 1
+            add_attack = 1
+            add_defense = 1
+        }
+        add_to_variable = {
+            var = SOV_voenny_grant_medal_cost_factor_dynamic
+            value = -0.5
+        }
+        add_to_variable = {
+            var = SOV_voenny_experience_gain_army_factor_dynamic
+            value = -0.05
+        }
+        force_update_dynamic_modifier = yes
+    }
+}
+
+shared_focus = {
+    id = SOV_patriotic_zealousy
+    icon = {
+    	GFX_focus_SOV_patriotic_zealousy = {
+    		OR = {
+    		    has_global_flag = SOV_medvedev_won
+    		    has_global_flag = SOV_srzp_won
+    		}
+    	}
+
+    	GFX_focus_SOV_revanchist_fervor = {
+    		has_global_flag = SOV_ldpr_won
+    	}
+
+    	GFX_focus_SOV_idological_fanaticism = {
+    		has_global_flag = SOV_cprf_won
+    	}
+    	GFX_focus_SOV_patriotic_zealousy = yes
+    }
+    ai_will_do = {
+        factor = 30
+    }
+    relative_position_id = SOV_improve_deep_battle_theory
+    x = 1
+    y = 1
+    cost = 2.5
+    prerequisite = {
+        focus = SOV_improve_deep_battle_theory
+        focus = SOV_improve_gerasimovs_doctrine
+    }
+    completion_reward = {
+        add_war_support = 0.15
+        if = {
+            limit = {
+                NOT = {
+                    has_completed_focus = SOV_improve_gerasimovs_doctrine
+                    has_completed_focus = SOV_improve_deep_battle_theory
+                }
+            }
+            custom_effect_tooltip = SOV_patriotic_zealousy_tooltip_1
+            if = {
+                limit = {
+                    has_global_flag = SOV_cprf_won
+                }
+                effect_tooltip = {
+                    swap_ideas = {
+                        remove_idea = SOV_soviet_army_blank
+                        add_idea = SOV_soviet_army_patriotic_zealousy_1
+                    }
+                }
+            }
+            if = {
+                limit = {
+                    OR = {
+                        has_global_flag = SOV_medvedev_won
+                        has_global_flag = SOV_srzp_won
+                    }
+                }
+                effect_tooltip = {
+                    swap_ideas = {
+                        remove_idea = SOV_Permanent_Defense_Readiness_blank
+                        add_idea = SOV_Permanent_Defense_Readiness_patriotic_zealousy_1
+                    }
+                }
+            }
+            if = {
+                limit = {
+                    has_global_flag = SOV_ldpr_won
+                }
+                effect_tooltip = {
+                    swap_ideas = {
+                        remove_idea = SOV_thousand_of_banners_blank
+                        add_idea = SOV_thousand_of_banners_patriotic_zealousy_1
+                    }
+                }
+            }
+            custom_effect_tooltip = SOV_patriotic_zealousy_tooltip_2
+            if = {
+                limit = {
+                    has_global_flag = SOV_cprf_won
+                }
+                effect_tooltip = {
+                    swap_ideas = {
+                        remove_idea = SOV_soviet_army_blank
+                        add_idea = SOV_soviet_army_patriotic_zealousy_2
+                    }
+                }
+            }
+            if = {
+                limit = {
+                    OR = {
+                        has_global_flag = SOV_medvedev_won
+                        has_global_flag = SOV_srzp_won
+                    }
+                }
+                effect_tooltip = {
+                    swap_ideas = {
+                        remove_idea = SOV_Permanent_Defense_Readiness_blank
+                        add_idea = SOV_Permanent_Defense_Readiness_patriotic_zealousy_2
+                    }
+                }
+            }
+            if = {
+                limit = {
+                    has_global_flag = SOV_ldpr_won
+                }
+                effect_tooltip = {
+                    swap_ideas = {
+                        remove_idea = SOV_thousand_of_banners_blank
+                        add_idea = SOV_thousand_of_banners_patriotic_zealousy_2
+                    }
+                }
+            }
+        }
+        else_if = {
+            limit = {
+                has_completed_focus = SOV_improve_deep_battle_theory
+            }
+            if = {
+                limit = {
+                    has_global_flag = SOV_cprf_won
+                }
+                effect_tooltip = {
+                    swap_ideas = {
+                        remove_idea = SOV_soviet_army_blank
+                        add_idea = SOV_soviet_army_patriotic_zealousy_1
+                    }
+                }
+            }
+            if = {
+                limit = {
+                    OR = {
+                        has_global_flag = SOV_medvedev_won
+                        has_global_flag = SOV_srzp_won
+                    }
+                }
+                effect_tooltip = {
+                    swap_ideas = {
+                        remove_idea = SOV_Permanent_Defense_Readiness_blank
+                        add_idea = SOV_Permanent_Defense_Readiness_patriotic_zealousy_1
+                    }
+                }
+            }
+            if = {
+                limit = {
+                    has_global_flag = SOV_ldpr_won
+                }
+                effect_tooltip = {
+                    swap_ideas = {
+                        remove_idea = SOV_thousand_of_banners_blank
+                        add_idea = SOV_thousand_of_banners_patriotic_zealousy_1
+                    }
+                }
+            }
+        }
+        else = {
+            if = {
+                limit = {
+                    has_global_flag = SOV_cprf_won
+                }
+                effect_tooltip = {
+                    swap_ideas = {
+                        remove_idea = SOV_soviet_army_blank
+                        add_idea = SOV_soviet_army_patriotic_zealousy_2
+                    }
+                }
+            }
+            if = {
+                limit = {
+                    OR = {
+                        has_global_flag = SOV_medvedev_won
+                        has_global_flag = SOV_srzp_won
+                    }
+                }
+                effect_tooltip = {
+                    swap_ideas = {
+                        remove_idea = SOV_Permanent_Defense_Readiness_blank
+                        add_idea = SOV_Permanent_Defense_Readiness_patriotic_zealousy_2
+                    }
+                }
+            }
+            if = {
+                limit = {
+                    has_global_flag = SOV_ldpr_won
+                }
+                effect_tooltip = {
+                    swap_ideas = {
+                        remove_idea = SOV_thousand_of_banners_blank
+                        add_idea = SOV_thousand_of_banners_patriotic_zealousy_2
+                    }
+                }
+            }
+        }
+        if = {
+            limit = {
+                has_completed_focus = SOV_improve_deep_battle_theory
+            }
+            add_to_variable = {
+                var = SOV_voenny_army_morale_factor_dynamic
+                value = 0.1
+            }
+            add_to_variable = {
+                var = SOV_voenny_unit_upkeep_attrition_factor_dynamic
+                value = -0.075
+            }
+        }
+        else = {
+            add_to_variable = {
+                var = SOV_voenny_army_morale_factor_dynamic
+                value = 0.1
+            }
+            add_to_variable = {
+                var = SOV_voenny_army_attack_factor_dynamic
+                value = 0.025
+            }
+            add_to_variable = {
+                var = SOV_voenny_army_defence_factor_dynamic
+                value = 0.025
+            }
+        }
+        force_update_dynamic_modifier = yes
+    }
+}
+
+shared_focus = {
+    id = SOV_science_in_the_service_of_the_army
+    icon = {
+    	GFX_focus_SOV_science_in_the_service_of_the_army = {
+    		OR = {
+    		    has_global_flag = SOV_medvedev_won
+    		    has_global_flag = SOV_srzp_won
+    		}
+    	}
+
+    	GFX_focus_SOV_science_in_the_service_of_the_army_LDPR = {
+    		has_global_flag = SOV_ldpr_won
+    	}
+
+    	GFX_focus_SOV_science_in_the_service_of_the_army_CPRF = {
+    		has_global_flag = SOV_cprf_won
+    	}
+    	GFX_focus_SOV_science_in_the_service_of_the_army = yes
+    }
+    ai_will_do = {
+        factor = 30
+    }
+    relative_position_id = SOV_improve_gerasimovs_doctrine
+    x = 1
+    y = 1
+    cost = 3.5
+    prerequisite = {
+        focus = SOV_improve_gerasimovs_doctrine
+    }
+    prerequisite = {
+        focus = SOV_modernization_of_aircraft_and_ships
+    }
+    completion_reward = {
+        add_research_slot = 1
+        custom_effect_tooltip = SOV_reseach_slot_warning_tt
+        add_tech_bonus = {
+            bonus = 0.5
+            uses = 1
+            category = industry
+            name = SOV_science_in_the_service_of_the_army
+        }
+        add_tech_bonus = {
+            bonus = 0.5
+            uses = 1
+            category = electronics
+            name = SOV_science_in_the_service_of_the_army
+        }
+        unlock_decision_tooltip = SOV_expand_drone_production
+        hidden_effect = {
+            country_event = {
+                id = russia.1111
+                days = 365
+            }
+        }
+    }
+}
+
+shared_focus = {
+    id = SOV_modernization_of_aircraft_and_ships
+    icon = {
+    	GFX_focus_SOV_modernization_of_aircraft_and_ships_UR = {
+    		OR = {
+    		    has_global_flag = SOV_medvedev_won
+    		    has_global_flag = SOV_srzp_won
+    		}
+    	}
+
+    	GFX_focus_SOV_modernization_of_aircraft_and_ships_LDPR = {
+    		has_global_flag = SOV_ldpr_won
+    	}
+
+    	GFX_focus_SOV_modernization_of_aircraft_and_ships_CPRF = {
+    		has_global_flag = SOV_cprf_won
+    	}
+    	GFX_focus_SOV_modernization_of_aircraft_and_ships_UR = yes
+    }
+    ai_will_do = {
+        factor = 15
+    }
+    relative_position_id = SOV_improve_gerasimovs_doctrine
+    x = 2
+    y = 0
+    cost = 4
+    prerequisite = {
+        focus = SOV_rollback_serdykovs_reforms
+    }
+    completion_reward = {
+        unlock_decision_tooltip = SOV_repair_kuznetsov
+        add_tech_bonus = {
+            bonus = 0.5
+            uses = 2
+            category = air_equipment
+            name = SOV_modernization_of_aircraft_and_ships
+        }
+        add_tech_bonus = {
+            bonus = 0.5
+            uses = 2
+            category = naval_equipment
+            name = SOV_modernization_of_aircraft_and_ships
+        }
+    }
+}
+
+shared_focus = {
+    id = SOV_build_up_air_and_sea_fleets
+    icon = {
+    	GFX_focus_SOV_build_up_air_and_sea_fleets_UR = {
+    		OR = {
+    		    has_global_flag = SOV_medvedev_won
+    		    has_global_flag = SOV_srzp_won
+    		}
+    	}
+
+    	GFX_focus_SOV_build_up_air_and_sea_fleets_LDPR = {
+    		has_global_flag = SOV_ldpr_won
+    	}
+
+    	GFX_focus_SOV_build_up_air_and_sea_fleets_CPRF = {
+    		has_global_flag = SOV_cprf_won
+    	}
+    	GFX_focus_SOV_build_up_air_and_sea_fleets_UR = yes
+    }
+    ai_will_do = {
+        factor = 15
+    }
+    relative_position_id = SOV_modernization_of_aircraft_and_ships
+    x = 1
+    y = 1
+    cost = 4
+    prerequisite = {
+        focus = SOV_modernization_of_aircraft_and_ships
+    }
+    completion_reward = {
+        if = {
+            limit = {
+                has_dlc = "By Blood Alone"
+            }
+            add_timed_idea = {
+                idea = SOV_fleet_production_bba
+                days = 250
+            }
+        }
+        else = {
+            add_timed_idea = {
+                idea = SOV_fleet_production
+                days = 250
+            }
+        }
+        unlock_decision_tooltip = SOV_build_up_western_airbases
+    }
+}
+
+shared_focus = {
+    id = SOV_emphasizing_vocational_training
+    icon = {
+    	GFX_focus_SOV_emphasizing_vocational_training_UR = {
+    		OR = {
+    		    has_global_flag = SOV_medvedev_won
+    		    has_global_flag = SOV_srzp_won
+    		}
+    	}
+
+    	GFX_focus_SOV_emphasizing_vocational_training_LDPR = {
+    		has_global_flag = SOV_ldpr_won
+    	}
+
+    	GFX_focus_SOV_emphasizing_vocational_training_CPRF = {
+    		has_global_flag = SOV_cprf_won
+    	}
+    	GFX_focus_SOV_emphasizing_vocational_training_UR = yes
+    }
+    ai_will_do = {
+        factor = 15
+    }
+    relative_position_id = SOV_build_up_air_and_sea_fleets
+    x = 0
+    y = 1
+    cost = 4
+    prerequisite = {
+        focus = SOV_build_up_air_and_sea_fleets
+    }
+    completion_reward = {
+        air_experience = 50
+        navy_experience = 50
+        add_doctrine_cost_reduction = {
+            cost_reduction = 0.5
+            uses = 2
+            category = cat_old_air_doctrine
+            name = SOV_emphasizing_vocational_training
+        }
+        add_doctrine_cost_reduction = {
+            cost_reduction = 0.5
+            uses = 2
+            category = cat_old_naval_doctrine
+            name = SOV_emphasizing_vocational_training
+        }
+        unlock_decision_tooltip = SOV_conduct_air_warfare_exercises
+        unlock_decision_tooltip = SOV_conduct_navy_warfare_exercises
+    }
+}
+
+shared_focus = {
+    id = SOV_start_armata_production
+    icon = {
+    	GFX_focus_SOV_start_armata_production = {
+    		OR = {
+    		    has_global_flag = SOV_medvedev_won
+    		    has_global_flag = SOV_srzp_won
+    		}
+    	}
+
+    	GFX_focus_SOV_start_armata_production_LDPR = {
+    		has_global_flag = SOV_ldpr_won
+    	}
+
+    	GFX_focus_SOV_start_armata_production_CPRF = {
+    		has_global_flag = SOV_cprf_won
+    	}
+    	GFX_focus_SOV_start_armata_production = yes
+    }
+    ai_will_do = {
+        factor = 30
+    }
+    relative_position_id = SOV_patriotic_zealousy
+    x = 2
+    y = 1
+    cost = 5
+    prerequisite = {
+        focus = SOV_patriotic_zealousy
+    }
+    prerequisite = {
+        focus = SOV_science_in_the_service_of_the_army
+    }
+    mutually_exclusive = {
+        focus = SOV_expand_t90_production
+    }
+    completion_reward = {
+        if = {
+            limit = {
+                NOT = {
+                    has_tech = advanced_medium_tank_chassis
+                    has_tech = main_battle_tank4
+                }
+            }
+            add_tech_bonus = {
+                bonus = 1.5
+                uses = 1
+                name = mech_army_bonus
+                technology = advanced_medium_tank_chassis
+            }
+        }
+        else = {
+            hidden_effect = {
+                if = {
+                    limit = {
+                        has_dlc = "No Step Back"
+                    }
+                    create_equipment_variant = {
+                        name = "T-14 Armata"
+                        type = modern_tank_chassis_3
+                        parent_version = 0
+                        modules = {
+                            main_armament_slot = tank_high_velocity_cannon_2
+                            turret_type_slot = tank_modern_tank_turret
+                            suspension_type_slot = tank_torsion_bar_suspension
+                            armor_type_slot = tank_cast_armor
+                            engine_type_slot = tank_diesel_engine
+                            special_type_slot_1 = tank_radio_1
+                            special_type_slot_2 = smoke_launchers
+                            special_type_slot_3 = auto_loader
+                            special_type_slot_4 = sloped_armor
+                            special_type_slot_5 = gunner_thermal_1
+                        }
+                        upgrades = {
+                            tank_nsb_engine_upgrade = 9
+                            tank_nsb_armor_upgrade = 2
+                        }
+                    }
+                    add_equipment_production = {
+                        equipment = {
+                            type = modern_tank_chassis_3
+                            creator = "SOV"
+                            version_name = "T-14 Armata"
+                        }
+                        requested_factories = 8
+                        progress = 0.9
+                        efficiency = 100
+                    }
+                }
+                else = {
+                    create_equipment_variant = {
+                        name = "T-14 Armata"
+                        type = modern_tank_equipment_4
+                        parent_version = 0
+                        upgrades = {
+                            tank_reliability_upgrade = 3
+                            tank_engine_upgrade = 5
+                            tank_armor_upgrade = 2
+                            tank_art_upgrade = 2
+                        }
+                    }
+                    add_equipment_production = {
+                        equipment = {
+                            type = modern_tank_equipment_4
+                            creator = "SOV"
+                            version_name = "T-14 Armata"
+                        }
+                        requested_factories = 8
+                        progress = 0.9
+                        efficiency = 100
+                    }
+                }
+            }
+            custom_effect_tooltip = SOV_start_armata_production_tooltip
+        }
+        random_owned_controlled_state = {
+            limit = {
+                is_core_of = ROOT
+                free_building_slots = {
+                    building = arms_factory
+                    size > 1
+                    include_locked = yes
+                }
+            }
+            add_extra_state_shared_building_slots = 1
+            add_building_construction = {
+                type = arms_factory
+                level = 1
+                instant_build = yes
+            }
+        }
+        random_owned_controlled_state = {
+            limit = {
+                is_core_of = ROOT
+                free_building_slots = {
+                    building = arms_factory
+                    size > 1
+                    include_locked = yes
+                }
+            }
+            add_extra_state_shared_building_slots = 1
+            add_building_construction = {
+                type = arms_factory
+                level = 1
+                instant_build = yes
+            }
+        }
+        add_timed_idea = {
+            idea = SOV_mass_tank_production
+            days = 300
+        }
+        unlock_decision_tooltip = SOV_mass_mechanization
+    }
+}
+
+shared_focus = {
+    id = SOV_expand_t90_production
+    icon = {
+    	GFX_focus_SOV_expand_t90_production = {
+    		OR = {
+    		    has_global_flag = SOV_medvedev_won
+    		    has_global_flag = SOV_srzp_won
+    		}
+    	}
+
+    	GFX_focus_SOV_expand_t90_production_LDPR = {
+    		has_global_flag = SOV_ldpr_won
+    	}
+
+    	GFX_focus_SOV_expand_t90_production_CPRF = {
+    		has_global_flag = SOV_cprf_won
+    	}
+    	GFX_focus_SOV_expand_t90_production = yes
+    }
+    ai_will_do = {
+        factor = 30
+    }
+    relative_position_id = SOV_patriotic_zealousy
+    x = 0
+    y = 1
+    cost = 3.5
+    mutually_exclusive = {
+        focus = SOV_start_armata_production
+    }
+    prerequisite = {
+        focus = SOV_patriotic_zealousy
+    }
+    completion_reward = {
+        hidden_effect = {
+            if = {
+                limit = {
+                    has_dlc = "No Step Back"
+                }
+                create_equipment_variant = {
+                    name = "T-90M \"Proryv\""
+                    type = modern_tank_chassis_2
+                    parent_version = 0
+                    modules = {
+                        main_armament_slot = tank_high_velocity_cannon_2
+                        turret_type_slot = tank_modern_tank_turret
+                        suspension_type_slot = tank_torsion_bar_suspension
+                        armor_type_slot = tank_cast_armor
+                        engine_type_slot = tank_diesel_engine
+                        special_type_slot_1 = tank_radio_1
+                        special_type_slot_2 = smoke_launchers
+                        special_type_slot_3 = auto_loader
+                        special_type_slot_4 = sloped_armor
+                        special_type_slot_5 = gunner_thermal_1
+                    }
+                    upgrades = {
+                        tank_nsb_engine_upgrade = 9
+                        tank_nsb_armor_upgrade = 2
+                    }
+                    icon = "gfx/interface/technologies/armor/MBT_2018_T-90MS.png"
+                }
+                add_equipment_production = {
+                    equipment = {
+                        type = modern_tank_chassis_2
+                        creator = "SOV"
+                        version_name = "T-90M \"Proryv\""
+                    }
+                    requested_factories = 10
+                    progress = 0.9
+                    efficiency = 100
+                }
+            }
+            else = {
+                create_equipment_variant = {
+                    name = "T-90M \"Proryv\""
+                    type = modern_tank_equipment_3
+                    parent_version = 0
+                    model = "SOV_modern_armor_3_entity"
+                    upgrades = {
+                        tank_reliability_upgrade = 2
+                        tank_engine_upgrade = 5
+                        tank_armor_upgrade = 2
+                        tank_art_upgrade = 2
+                    }
+                    icon = "gfx/interface/technologies/armor/MBT_2018_T-90MS.png"
+                }
+                add_equipment_production = {
+                    equipment = {
+                        type = modern_tank_equipment_3
+                        creator = "SOV"
+                        version_name = "T-90M \"Proryv\""
+                    }
+                    requested_factories = 10
+                    progress = 0.9
+                    efficiency = 100
+                }
+            }
+        }
+        custom_effect_tooltip = SOV_expand_t90_production_tooltip
+        random_owned_controlled_state = {
+            limit = {
+                is_core_of = ROOT
+                free_building_slots = {
+                    building = arms_factory
+                    size > 0
+                    include_locked = yes
+                }
+            }
+            add_extra_state_shared_building_slots = 1
+            add_building_construction = {
+                type = arms_factory
+                level = 1
+                instant_build = yes
+            }
+        }
+        add_timed_idea = {
+            idea = SOV_mass_tank_production
+            days = 300
+        }
+        unlock_decision_tooltip = SOV_mass_mechanization
+    }
+}
+
+shared_focus = {
+    id = SOV_new_russian_army
+    icon = {
+    	GFX_focus_SOV_reorganized_russian_armed_forces = {
+    		OR = {
+    		    has_global_flag = SOV_medvedev_won
+    		    has_global_flag = SOV_srzp_won
+    		}
+    	}
+
+    	GFX_focus_SOV_reorganized_russian_armed_forces_LDPR = {
+    		has_global_flag = SOV_ldpr_won
+    	}
+
+    	GFX_focus_SOV_the_might_of_soviet_army = {
+    		has_global_flag = SOV_cprf_won
+    	}
+    	GFX_focus_SOV_reorganized_russian_armed_forces = yes
+    }
+    ai_will_do = {
+        factor = 30
+    }
+    relative_position_id = SOV_promote_reliable_cadres
+    x = 1
+    y = 1
+    cost = 4
+    prerequisite = {
+        focus = SOV_give_way_to_youth
+        focus = SOV_promote_reliable_cadres
+    }
+    prerequisite = {
+        focus = SOV_start_armata_production
+        focus = SOV_expand_t90_production
+    }
+    prerequisite = {
+        focus = SOV_unify_command_structures
+    }
+    completion_reward = {
+        if = {
+            limit = {
+                NOT = {
+                    has_completed_focus = SOV_improve_deep_battle_theory
+                    has_completed_focus = SOV_improve_gerasimovs_doctrine
+                }
+            }
+            custom_effect_tooltip = SOV_patriotic_zealousy_tooltip_1
+            if = {
+                limit = {
+                    has_global_flag = SOV_cprf_won
+                }
+                effect_tooltip = {
+                    swap_ideas = {
+                        remove_idea = SOV_soviet_army_blank
+                        add_idea = SOV_soviet_army_new_russian_army_1
+                    }
+                }
+            }
+            if = {
+                limit = {
+                    OR = {
+                        has_global_flag = SOV_medvedev_won
+                        has_global_flag = SOV_srzp_won
+                    }
+                }
+                effect_tooltip = {
+                    swap_ideas = {
+                        remove_idea = SOV_Permanent_Defense_Readiness_blank
+                        add_idea = SOV_Permanent_Defense_Readiness_new_russian_army_1
+                    }
+                }
+            }
+            if = {
+                limit = {
+                    has_global_flag = SOV_ldpr_won
+                }
+                effect_tooltip = {
+                    swap_ideas = {
+                        remove_idea = SOV_thousand_of_banners_blank
+                        add_idea = SOV_thousand_of_banners_new_russian_army_1
+                    }
+                }
+            }
+            custom_effect_tooltip = SOV_patriotic_zealousy_tooltip_2
+            if = {
+                limit = {
+                    has_global_flag = SOV_cprf_won
+                }
+                effect_tooltip = {
+                    swap_ideas = {
+                        remove_idea = SOV_soviet_army_blank
+                        add_idea = SOV_soviet_army_new_russian_army_2
+                    }
+                }
+            }
+            if = {
+                limit = {
+                    OR = {
+                        has_global_flag = SOV_medvedev_won
+                        has_global_flag = SOV_srzp_won
+                    }
+                }
+                effect_tooltip = {
+                    swap_ideas = {
+                        remove_idea = SOV_Permanent_Defense_Readiness_blank
+                        add_idea = SOV_Permanent_Defense_Readiness_new_russian_army_2
+                    }
+                }
+            }
+            if = {
+                limit = {
+                    has_global_flag = SOV_ldpr_won
+                }
+                effect_tooltip = {
+                    swap_ideas = {
+                        remove_idea = SOV_thousand_of_banners_blank
+                        add_idea = SOV_thousand_of_banners_new_russian_army_2
+                    }
+                }
+            }
+        }
+        else_if = {
+            limit = {
+                has_completed_focus = SOV_improve_deep_battle_theory
+            }
+            if = {
+                limit = {
+                    has_global_flag = SOV_cprf_won
+                }
+                effect_tooltip = {
+                    swap_ideas = {
+                        remove_idea = SOV_soviet_army_blank
+                        add_idea = SOV_soviet_army_new_russian_army_1
+                    }
+                }
+            }
+            if = {
+                limit = {
+                    OR = {
+                        has_global_flag = SOV_medvedev_won
+                        has_global_flag = SOV_srzp_won
+                    }
+                }
+                effect_tooltip = {
+                    swap_ideas = {
+                        remove_idea = SOV_Permanent_Defense_Readiness_blank
+                        add_idea = SOV_Permanent_Defense_Readiness_new_russian_army_1
+                    }
+                }
+            }
+            if = {
+                limit = {
+                    has_global_flag = SOV_ldpr_won
+                }
+                effect_tooltip = {
+                    swap_ideas = {
+                        remove_idea = SOV_thousand_of_banners_blank
+                        add_idea = SOV_thousand_of_banners_new_russian_army_1
+                    }
+                }
+            }
+        }
+        else = {
+            if = {
+                limit = {
+                    has_global_flag = SOV_cprf_won
+                }
+                effect_tooltip = {
+                    swap_ideas = {
+                        remove_idea = SOV_soviet_army_blank
+                        add_idea = SOV_soviet_army_new_russian_army_2
+                    }
+                }
+            }
+            if = {
+                limit = {
+                    OR = {
+                        has_global_flag = SOV_medvedev_won
+                        has_global_flag = SOV_srzp_won
+                    }
+                }
+                effect_tooltip = {
+                    swap_ideas = {
+                        remove_idea = SOV_Permanent_Defense_Readiness_blank
+                        add_idea = SOV_Permanent_Defense_Readiness_new_russian_army_2
+                    }
+                }
+            }
+            if = {
+                limit = {
+                    has_global_flag = SOV_ldpr_won
+                }
+                effect_tooltip = {
+                    swap_ideas = {
+                        remove_idea = SOV_thousand_of_banners_blank
+                        add_idea = SOV_thousand_of_banners_new_russian_army_2
+                    }
+                }
+            }
+        }
+        if = {
+            limit = {
+                has_completed_focus = SOV_improve_deep_battle_theory
+            }
+            add_to_variable = {
+                var = SOV_voenny_training_time_factor_dynamic
+                value = -0.075
+            }
+            add_to_variable = {
+                var = SOV_voenny_production_factory_efficiency_gain_factor_dynamic
+                value = 0.05
+            }
+            add_to_variable = {
+                var = SOV_voenny_production_factory_max_efficiency_factor_dynamic
+                value = 0.075
+            }
+            add_to_variable = {
+                var = SOV_voenny_army_strength_factor_dynamic
+                value = 0.05
+            }
+            add_to_variable = {
+                var = SOV_voenny_army_speed_factor_dynamic
+                value = 0.1
+            }
+            add_to_variable = {
+                var = SOV_voenny_combat_width_factor_dynamic
+                value = -0.1
+            }
+            add_to_variable = {
+                var = SOV_voenny_land_doctrine_cost_factor_dynamic
+                value = -0.05
+            }
+        }
+        else = {
+            add_to_variable = {
+                var = SOV_voenny_max_planning_factor_dynamic
+                value = 0.075
+            }
+            add_to_variable = {
+                var = SOV_voenny_army_org_factor_dynamic
+                value = 0.025
+            }
+            add_to_variable = {
+                var = SOV_voenny_army_attack_factor_dynamic
+                value = 0.05
+            }
+            add_to_variable = {
+                var = SOV_voenny_army_defence_factor_dynamic
+                value = 0.05
+            }
+            add_to_variable = {
+                var = SOV_voenny_land_doctrine_cost_factor_dynamic
+                value = -0.05
+            }
+        }
+    }
+}

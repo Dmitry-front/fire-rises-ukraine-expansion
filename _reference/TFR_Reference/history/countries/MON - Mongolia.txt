@@ -1,0 +1,177 @@
+﻿	capital = 1391
+
+	set_research_slots = 3
+	set_convoys = 10
+	set_stability = 0.5
+
+	set_country_flag = country_language_mongolian
+	set_country_flag = head_of_gov_ui_enabled
+
+	set_variable = { Russian_Influence = 0.40 }
+	set_variable = { Chinese_Influence = 0.30 }
+	set_variable = { American_Influence = 0.0 }
+	set_variable = { European_Influence = 0.0 }
+	set_variable = { PDO_Influence = 0 }
+	set_variable = { Sovereign_Influence = 0.30 }
+
+	recruit_character = MON_khaltmaagiin_battulga_char
+	recruit_character = MON_ukhnaagiin_khurelsukh_char
+	recruit_character = MON_dangaasurengiin_enkhbat_char
+	recruit_character = MON_nambaryn_enkhbayar_char
+	recruit_character = MON_sodnomzunduin_erdene_char
+	recruit_character = MON_tserendejidiin_byambajav_char
+	recruit_character = MON_tsevegsurengiin_togoo_char
+	recruit_character = MON_gursediin_saikhanbayar_char
+	recruit_character = MON_dovchinsurengiin_ganzorig_char
+	recruit_character = MON_national_front_char
+
+	set_technology = {
+		## Infantry ##
+		infantry_weapons1 = 1
+		infantry_weapons2 = 1
+		motorised_infantry = 1
+		infantry_rifle_upgrade = 1
+		support_weapons = 1
+		night_vision = 1
+		body_armor = 1
+		camouflage = 1
+		marines = 1
+		tech_mountaineers = 1
+		paratroopers = 1
+		
+		## Support Companies ##
+		tech_support = 1
+		tech_engineers = 1
+		tech_recon = 1
+		tech_military_police = 1
+		tech_maintenance_company = 1
+		tech_field_hospital = 1
+		tech_logistics_company = 1
+		tech_signal_company = 1
+		
+		## Armor ##
+		mechanised_infantry1 = 1
+		light_mechanized_infantry1 = 1
+		
+		## Artillery ##
+		gw_artillery = 1
+		interwar_antitank = 1
+		interwar_antiair = 1
+		tank_destroyer1 = 1
+		self_propelled_aa1 = 1
+		
+		## Engineering ##
+		electronic_mechanical_engineering = 1
+		
+		## Industry ##
+		basic_machine_tools = 1
+		
+		## Doctrines ##
+		
+	}
+	
+	if = {
+		limit = {
+			NOT = { has_dlc = "No Step Back" }
+		}
+		set_oob = "MON_2000"
+		set_technology = {
+			main_battle_tank1 = 1
+			main_battle_tank2 = 1
+			main_battle_tank3 = 1
+			light_tank1 = 1
+			light_tank2 = 1
+		}
+	}
+	if = {
+		limit = {
+			has_dlc = "No Step Back"
+		}
+		set_oob = "MON_2000_nsb"
+		set_technology = {
+			gwtank_chassis = 1
+			basic_light_tank_chassis = 1
+			basic_medium_tank_chassis = 1
+			improved_medium_tank_chassis = 1
+			engine_tech_1 = 1
+			auto_loader_tech = 1
+			turret_mounted_atgm_tech = 1
+			apds_tech = 1
+			heat_tech = 1
+			apfsds_tech = 1
+			legacy_armor_designs = 1
+			armor_tech_1 = 1
+			armor_tech_2 = 1
+		}
+	}
+	
+	if = {
+		limit = { has_dlc = "By Blood Alone" }
+			set_technology = {
+				aa_lmg = 1
+				aa_cannon_1 = 1
+				aa_hmg = 1
+				engines_1 = 1
+				engines_2 = 1
+				early_bombs = 1
+				guided_bombs = 1
+				aircraft_construction = 1
+				survivability_studies = 1
+				iw_small_airframe = 1
+				basic_small_airframe = 1
+				iw_medium_airframe = 1
+				basic_medium_airframe = 1
+				iw_large_airframe = 1
+				power_plants = 1
+			}
+		else = {
+			set_technology = {
+				CAS1 = 1
+				CAS2 = 1
+				fighter1 = 1
+				fighter2 = 1
+				fighter3 = 1
+				naval_bomber1 = 1
+				strategic_bomber1 = 1
+			}
+		}
+	}
+
+	add_ideas = {
+		MON_gdp_fix
+		MON_divided_government_idea
+		MON_mpp_dominated_politics_idea
+		MON_corrupt_bureaucracy_idea
+		MON_between_two_giants_idea
+
+		high_welfare
+		medium_immigration
+		medium_education
+		medium_race
+		medium_academic
+		low_poverty
+		medium_society
+
+		#MON_u_khurelsukh_hog
+		#MON_d_tsogtbaatar_for
+		#MON_ch_khurelbaatar_eco
+		#MON_ts_nyamdorj_sec
+		#MON_d_gerel_int
+		#MON_n_enkhbold_def
+	}
+
+	set_politics = {
+		ruling_party = conservative
+		last_election = "2017.6.1"
+		election_frequency = 48
+		elections_allowed = yes
+	}
+
+	set_popularities = {
+		conservative = 29
+		social_liberal = 10
+		market_liberal = 7
+		social_democrat = 41
+		authoritarian_democrat = 5
+		libertarian_socialist = 8
+	}

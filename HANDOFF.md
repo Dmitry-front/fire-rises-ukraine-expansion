@@ -33,8 +33,8 @@
 **Что в коде.** `common/military_industrial_organization/organizations/UKR_organizations.txt` (13 организаций), `common/ideas/UKR_ideas_defense_industry.txt` (13 идей-скидок), `common/decisions/categories/UKR_decision_categories_defense.txt`, `common/decisions/UKR_decisions_defense_industry.txt` (13 решений), `localisation/{russian,english}/UKR_defense_industry_l_*.yml` (по 168 ключей), 13 строк `unlock_decision_tooltip` в наградах фокусов `TFR_national_focus_UKR.txt`. Реестр - `DESIGN.md`, раздел 12; журнал - раздел 16.
 
 **Проверить в игре (присылать `error.log`).**
-1. Загрузка без ошибок: `include` архетипов TFR вместе с `add_trait` (17 черт под родителями из архетипов, `special_trait_background`), `limit_to_equipment_type` в начальной черте ремонтных заводов, иконки `GFX_idea_generic_*`, `GFX_generic_mio_*`, `GFX_tfr_mio_*`.
-2. Организации видны в экране MIO на старте 2020 (нужен DLC Arms Against Tyranny); у КрАЗ ещё La Resistance. Стартовые funds выдаёт игра.
+1. Загрузка без ошибок: `include` архетипов TFR вместе с `add_trait` (28 черт под родителями из архетипов, `special_trait_background`), `limit_to_equipment_type` в начальной черте ремонтных заводов, иконки `GFX_idea_generic_*`, `GFX_generic_mio_*`, `GFX_tfr_mio_*`.
+2. Организации видны в экране MIO на старте 2020 (нужен DLC Arms Against Tyranny; La Resistance больше не нужен). Стартовые funds выдаёт игра.
 3. Рядом с нашими остались дефолтные запасные организации TFR (`TFR_organizations_ZZZ_generic.txt`, UKR не исключён): общие названия и иконки. Убирать заменой файла не будем (`TFR_SYNC.md`, раздел 1); решить после очереди 2.
 4. Окно «Оборонная промышленность» появляется после первого из 12 фокусов (13 решений); решение списывает ПП и деньги (`custom_cost_text` `UKR_mio_cost_a/b/c`), вешает идею, через 150-180 дней снимает её и добавляет funds в нужную организацию; повтор через 365 дней.
 5. Ключи техники в `equipment_bonus` (теперь только встречающиеся в идеях TFR; из непроверенных остался `rocket_artillery_equipment`) без ошибок; скидка видна в производстве. КрАЗ работает на архетипе моторизованных/механизированных (БТР это `light_mechanized_equipment`).

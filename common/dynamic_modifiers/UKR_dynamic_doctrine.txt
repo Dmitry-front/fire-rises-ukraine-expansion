@@ -1,0 +1,21 @@
+# Постоянные бонусы доктринных фокусов старого дерева (TFR_national_focus_UKR.txt, TD-35).
+# Значения берутся из переменных, которые награды фокусов наращивают через add_to_variable.
+# Награда фокуса сначала меняет переменную, затем выдаёт модификатор (add_dynamic_modifier) и вызывает force_update_dynamic_modifier.
+# Модификатор остаётся навсегда: бонусы фокусов складываются с идеями, которые те же фокусы выдают.
+#   UKR_army_attack_factor_dynamic                - «Тактика блицкрига»
+#   UKR_offensive_capability                      - «Модернизация танковых войск» (атака бронетехники)
+#   UKR_construction_speed_bunker_factor_dynamic  - «Строительство укреплений» (сухопутные бункеры)
+#   UKR_production_speed_bunker_factor_dynamic    - «Строительство укреплений» (береговые бункеры)
+#   UKR_army_defence_factor_dynamic, UKR_max_dig_in_factor_dynamic, UKR_max_planning_factor_dynamic - «Тактика глубокой обороны»
+# В TFR нет модификатора construction_speed_bunker_factor: скорость строительства зданий задаёт production_speed_<здание>_factor.
+UKR_doctrine_bonus_dynamic = {
+	icon = chi_war_of_resistance
+
+	army_attack_factor = UKR_army_attack_factor_dynamic
+	army_defence_factor = UKR_army_defence_factor_dynamic
+	army_armor_attack_factor = UKR_offensive_capability
+	production_speed_bunker_factor = UKR_construction_speed_bunker_factor_dynamic
+	production_speed_coastal_bunker_factor = UKR_production_speed_bunker_factor_dynamic
+	max_dig_in_factor = UKR_max_dig_in_factor_dynamic
+	max_planning_factor = UKR_max_planning_factor_dynamic
+}

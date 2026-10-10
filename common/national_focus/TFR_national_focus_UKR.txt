@@ -68,8 +68,6 @@ focus_tree = {
 				days = 300
 			}
 
-			unlock_decision_tooltip = UKR_help_forces_against_russian_influence
-
 			set_temp_variable = {
 				var = income_var_temp
 				value = -5.5
@@ -401,7 +399,7 @@ focus_tree = {
 				USA = {
 					add_opinion_modifier = {
 						target = UKR
-						modifier = military_cooperation
+						modifier = UKR_military_cooperation
 					}
 				}
 			}
@@ -1364,6 +1362,8 @@ focus_tree = {
 				var = UKR_offensive_capability
 				value = 0.15
 			}
+			add_dynamic_modifier = { modifier = UKR_doctrine_bonus_dynamic }
+			force_update_dynamic_modifier = yes
 		}
 	}
 
@@ -1394,6 +1394,7 @@ focus_tree = {
 				var = UKR_army_attack_factor_dynamic
 				value = 0.1
 			}
+			add_dynamic_modifier = { modifier = UKR_doctrine_bonus_dynamic }
 			force_update_dynamic_modifier = yes
 		}
 	}
@@ -1487,7 +1488,6 @@ focus_tree = {
 				uses = 1
 				category = motorized_equipment
 			}
-			unlock_decision_tooltip = UKR_tactical_fortifications
 			force_update_dynamic_modifier = yes
 		}
 	}
@@ -1558,6 +1558,7 @@ focus_tree = {
 				var = UKR_production_speed_bunker_factor_dynamic
 				value = 0.2
 			}
+			add_dynamic_modifier = { modifier = UKR_doctrine_bonus_dynamic }
 			add_tech_bonus = {
 				name = UKR_field_fortifications_engineers
 				bonus = 0.3
@@ -1599,6 +1600,7 @@ focus_tree = {
 				var = UKR_max_planning_factor_dynamic
 				value = 0.1
 			}
+			add_dynamic_modifier = { modifier = UKR_doctrine_bonus_dynamic }
 			force_update_dynamic_modifier = yes
 		}
 	}
@@ -1988,6 +1990,7 @@ focus_tree = {
 		}
 		completion_reward = {
 			add_political_power = 25
+			add_ideas = UKR_digital_state_idea
 			add_stability = 0.01
 			set_temp_variable = {
 				var = income_var_temp

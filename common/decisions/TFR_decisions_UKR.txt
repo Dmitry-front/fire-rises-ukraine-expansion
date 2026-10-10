@@ -647,6 +647,62 @@ UKR_special_military_operation = {
 		}
 	}
 	
+	UKR_artillery_warfare_course = {
+		icon = GFX_decision_generic_army_support
+
+		available = {
+			has_completed_focus = UKR_forge_professional_officer_corps
+			command_power > 30
+			NOT = { has_country_flag = UKR_artillery_course_cooldown }
+		}
+
+		visible = {
+			has_completed_focus = UKR_forge_professional_officer_corps
+		}
+
+		fire_only_once = no
+		days_re_enable = 360
+		days_remove = 360
+
+		modifier = {
+		experience_gain_army = 0.02
+		}
+
+		custom_cost_trigger = {
+			command_power > 29
+		}
+
+		custom_cost_text = 30cp_cost
+
+		complete_effect = {
+			add_command_power = -30
+			custom_effect_tooltip = UKR_artillery_leader_training_tooltip
+			hidden_effect = {
+				random_army_leader = {
+					limit = {
+						is_corps_commander = yes
+						NOT = { has_trait = fortress_buster }
+					}
+					add_unit_leader_trait = fortress_buster
+					add_skill_level = 1
+				}
+				random_army_leader = {
+					limit = {
+						is_corps_commander = yes
+						NOT = { has_trait = fortress_buster }
+					}
+					add_unit_leader_trait = fortress_buster
+					add_skill_level = 1
+				}
+				set_country_flag = { flag = UKR_artillery_course_cooldown days = 360 }
+			}
+		}
+
+		ai_will_do = {
+			factor = 5
+		}
+	}
+
 	UKR_mobile_warfare_program = {
 		icon = generic_tank
 		
@@ -979,21 +1035,21 @@ UKR_political_decisions = {
 				air_experience = 10
 				add_opinion_modifier = {
 					target = UKR
-					modifier = military_cooperation
+					modifier = UKR_military_cooperation
 				}
 			}
 			ENG = {
 				navy_experience = 10
 				add_opinion_modifier = {
 					target = UKR
-					modifier = military_cooperation
+					modifier = UKR_military_cooperation
 				}
 			}
 			GER = {
 				army_experience = 10
 				add_opinion_modifier = {
 					target = UKR
-					modifier = military_cooperation
+					modifier = UKR_military_cooperation
 				}
 			}
 		}
@@ -1269,23 +1325,23 @@ UKR_startup_ecosystem_category = {
 			}
 			add_opinion_modifier = {
 				target = FRA
-				modifier = small_increase
+				modifier = UKR_small_increase
 			}
 			add_opinion_modifier = {
 				target = ENG
-				modifier = small_increase
+				modifier = UKR_small_increase
 			}
 			add_opinion_modifier = {
 				target = GER
-				modifier = small_increase
+				modifier = UKR_small_increase
 			}
 			add_opinion_modifier = {
 				target = POL
-				modifier = small_increase
+				modifier = UKR_small_increase
 			}
 			add_opinion_modifier = {
 				target = ROM
-				modifier = small_increase
+				modifier = UKR_small_increase
 			}
 			set_temp_variable = {
 					var = industrial_development_var_temp
@@ -2267,12 +2323,12 @@ UKR_against_occupiers = {
 				}
 				add_opinion_modifier = {
 					target = ITA
-					modifier = military_cooperation
+					modifier = UKR_military_cooperation
 				}
 				ITA = {
 					add_opinion_modifier = {
 						target = UKR
-						modifier = military_cooperation
+						modifier = UKR_military_cooperation
 					}
 					add_timed_idea = {
 						idea = UKR_idea_resistance_coalition
@@ -2286,12 +2342,12 @@ UKR_against_occupiers = {
 				}
 				add_opinion_modifier = {
 					target = ENG
-					modifier = military_cooperation
+					modifier = UKR_military_cooperation
 				}
 				ENG = {
 					add_opinion_modifier = {
 						target = UKR
-						modifier = military_cooperation
+						modifier = UKR_military_cooperation
 					}
 					add_timed_idea = {
 						idea = UKR_idea_resistance_coalition
@@ -2305,12 +2361,12 @@ UKR_against_occupiers = {
 				}
 				add_opinion_modifier = {
 					target = FRA
-					modifier = military_cooperation
+					modifier = UKR_military_cooperation
 				}
 				FRA = {
 					add_opinion_modifier = {
 						target = UKR
-						modifier = military_cooperation
+						modifier = UKR_military_cooperation
 					}
 					add_timed_idea = {
 						idea = UKR_idea_resistance_coalition
@@ -2324,12 +2380,12 @@ UKR_against_occupiers = {
 				}
 				add_opinion_modifier = {
 					target = GER
-					modifier = military_cooperation
+					modifier = UKR_military_cooperation
 				}
 				GER = {
 					add_opinion_modifier = {
 						target = UKR
-						modifier = military_cooperation
+						modifier = UKR_military_cooperation
 					}
 					add_timed_idea = {
 						idea = UKR_idea_resistance_coalition

@@ -2061,6 +2061,42 @@ focus_tree = {
 		}
 	}
 
-
+	# Консолидация реформы армии: в конце военной ветки духи Генштаба, БПЛА и выбранной доктрины сводятся в один
+	focus = {
+		id = UKR_army_consolidation
+		icon = GFX_goal_generic_army_doctrines
+		relative_position_id = UKR_consolidate_tactical_gains
+		x = 0
+		y = 1
+		cost = 5
+		# Обязательны оба общих фокуса и любой из трёх финалов доктрин
+		prerequisite = { focus = UKR_forge_professional_officer_corps }
+		prerequisite = { focus = UKR_UAV_warfare_revolution }
+		prerequisite = { focus = UKR_blitzkrieg_tactics focus = UKR_consolidate_tactical_gains focus = UKR_deep_defense_tactics }
+		available = {
+			is_puppet = no
+		}
+		ai_will_do = {
+			factor = 12
+		}
+		completion_reward = {
+			army_experience = 25
+			custom_effect_tooltip = UKR_army_consolidation_tooltip
+			if = {
+				limit = { has_completed_focus = UKR_blitzkrieg_tactics }
+				remove_ideas = { UKR_nato_command_structure UKR_UAV_warfare_pioneers UKR_blitzkrieg_doctrine }
+				add_ideas = UKR_army_reform_offensive
+			}
+			else_if = {
+				limit = { has_completed_focus = UKR_consolidate_tactical_gains }
+				remove_ideas = { UKR_nato_command_structure UKR_UAV_warfare_pioneers UKR_mobile_battlegroups UKR_consolidation_tactics }
+				add_ideas = UKR_army_reform_combined
+			}
+			else = {
+				remove_ideas = { UKR_nato_command_structure UKR_UAV_warfare_pioneers UKR_fortification_bureau UKR_echeloned_defense }
+				add_ideas = UKR_army_reform_defensive
+			}
+		}
+	}
 
 }

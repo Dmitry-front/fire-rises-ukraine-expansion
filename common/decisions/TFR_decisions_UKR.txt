@@ -21,6 +21,46 @@
 
 UKR_special_military_operation = {
 
+	# Пакет западной помощи: открывает фокус «Обеспечить западную помощь». Цена в ПП: 25, 35, 45 и так далее (+10 за нажатие)
+	UKR_western_aid_package = {
+		icon = generic_lend_lease
+
+		visible = {
+			has_completed_focus = UKR_secure_western_aid
+		}
+		available = {
+			has_completed_focus = UKR_secure_western_aid
+		}
+
+		cost = UKR_western_aid_cost
+
+		fire_only_once = no
+		days_re_enable = 30
+
+		ai_will_do = {
+			factor = 3
+		}
+
+		complete_effect = {
+			add_to_variable = { UKR_western_aid_cost = 10 }
+			add_equipment_to_stockpile = {
+				type = infantry_equipment_1
+				amount = 400
+				producer = POL
+			}
+			add_equipment_to_stockpile = {
+				type = support_equipment
+				amount = 80
+				producer = GER
+			}
+			add_equipment_to_stockpile = {
+				type = anti_tank_equipment_1
+				amount = 60
+				producer = ENG
+			}
+		}
+	}
+
 	UKR_establish_border_defense_system = {
 		icon = GFX_decision_generic_fortification
 		available = {

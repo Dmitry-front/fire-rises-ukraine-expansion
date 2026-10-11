@@ -9,9 +9,9 @@ focus_tree = {
 	}
 	focus = {
 		id = UKR_intelligence_operation
-		icon = GFX_UKR_intelligence_operation
-		x = 4
+		x = 6
 		y = 0
+		icon = GFX_UKR_intelligence_operation
 		cost = 1
 		ai_will_do = {
 			factor = 20
@@ -43,12 +43,12 @@ focus_tree = {
 
 	focus = {
 	    id = UKR_military_budget_expansion
+	    relative_position_id = UKR_reform_general_staff_nato_standards
+	    x = 3
+	    y = 1
 	    icon = GFX_UKR_budget_military
-	    relative_position_id = UKR_intelligence_operation
-	    x = 24
-	    y = 2
 	    cost = 4
-	    prerequisite = { focus = UKR_intelligence_operation }
+	    prerequisite = { focus = UKR_reform_general_staff_nato_standards }
 	    available = {
          has_completed_focus = UKR_reform_general_staff_nato_standards
          is_puppet = no
@@ -88,15 +88,15 @@ focus_tree = {
 
 	focus = {
 		id = UKR_shadow_war_capabilities
+		relative_position_id = UKR_military_budget_expansion
+		x = 0
+		y = 1
 		icon = GFX_UKR_shadow_war
-		x = -4
-		y = 2
 		cost = 5
 		ai_will_do = {
 			factor = 10
 		}
 		prerequisite = { focus = UKR_military_budget_expansion }
-		relative_position_id = UKR_military_budget_expansion
 		available = {
 			is_puppet = no
 		}
@@ -138,10 +138,10 @@ focus_tree = {
 
 	focus = {
 		id = UKR_donbass_conflict_and_crimea_annexation
-		icon = GFX_UKR_donbass_conflict_and_crimea_annexation
 		relative_position_id = UKR_intelligence_operation
 		x = 0
 		y = 1
+		icon = GFX_UKR_donbass_conflict_and_crimea_annexation
 		cost = 3
 		ai_will_do = {
 			factor = 20
@@ -171,10 +171,10 @@ focus_tree = {
 	}
 	focus = {
 		id = UKR_oligarchs_and_economy
-		icon = GFX_focus_generic_monetary_union
 		relative_position_id = UKR_donbass_conflict_and_crimea_annexation
 		x = 0
 		y = 1
+		icon = GFX_focus_generic_monetary_union
 		cost = 3
 		ai_will_do = {
 			factor = 20
@@ -204,11 +204,11 @@ focus_tree = {
 	}
 	focus = {
 		id = UKR_corruption_and_power_consolidation
-		icon = GFX_focus_ARG_crackdown_on_corruption
 		relative_position_id = UKR_oligarchs_and_economy
-		#GFX_focus_UKR_corruption
 		x = 0
 		y = 1
+		icon = GFX_focus_ARG_crackdown_on_corruption
+		#GFX_focus_UKR_corruption
 		cost = 3
 		ai_will_do = {
 			factor = 20
@@ -236,10 +236,10 @@ focus_tree = {
 	}
 	focus = {
 		id = UKR_presidential_elections
-		icon = GFX_UKR_Actor_President
 		relative_position_id = UKR_corruption_and_power_consolidation
 		x = 0
 		y = 1
+		icon = GFX_UKR_Actor_President
 		cost = 3
 		ai_will_do = {
 			factor = 20
@@ -260,10 +260,10 @@ focus_tree = {
 	}
 	focus = {
 		id = UKR_path_to_independence
-		icon = GFX_focus_UKR_Slava_Ukraina
 		relative_position_id = UKR_presidential_elections
 		x = 0
 		y = 1
+		icon = GFX_focus_UKR_Slava_Ukraina
 		cost = 5
 		ai_will_do = {
 			factor = 20
@@ -295,10 +295,10 @@ focus_tree = {
 	}
 	focus = {
 		id = UKR_european_integration
-		icon = GFX_UKR_european_integration
 		relative_position_id = UKR_path_to_independence
-		x = 0
-		y = 1
+		x = -3
+		y = 2
+		icon = GFX_UKR_european_integration
 		cost = 4
 		ai_will_do = {
 			factor = 20
@@ -353,10 +353,10 @@ focus_tree = {
 	}	
 	focus = {
 		id = UKR_secure_western_aid
-		icon = GFX_SOV_the_means_to_wage_war_ccp_2d_sov_compatibility
 		relative_position_id = UKR_european_integration
-		x = 1
-		y = 5
+		x = 2
+		y = 1
+		icon = GFX_SOV_the_means_to_wage_war_ccp_2d_sov_compatibility
 		cost = 4
 		ai_will_do = {
 			factor = 15
@@ -401,10 +401,10 @@ focus_tree = {
 	}
 	focus = {
 		id = UKR_develop_domestic_industry
-		icon = GFX_SOV_heavy_industry_ccp_2d_sov_compatibility
 		relative_position_id = UKR_european_integration
-		x = -1
-		y = 5
+		x = 0
+		y = 1
+		icon = GFX_SOV_heavy_industry_ccp_2d_sov_compatibility
 		cost = 6
 		ai_will_do = {
 			factor = 10
@@ -453,10 +453,10 @@ focus_tree = {
 	}
 	focus = {
 		id = UKR_defensive_fortifications
-		icon = GFX_SOV_policy_of_individual_security_ccp_2d_sov_compatibility
 		relative_position_id = UKR_develop_domestic_industry
 		x = 1
 		y = 1
+		icon = GFX_SOV_policy_of_individual_security_ccp_2d_sov_compatibility
 		cost = 4
 		ai_will_do = {
 			factor = 15
@@ -511,10 +511,10 @@ focus_tree = {
 	}
 	focus = {
 		id = UKR_territorial_defense_forces
-		icon = GFX_focus_SWE_hedgehog_defense
 		relative_position_id = UKR_defensive_fortifications
 		x = 0
 		y = 1
+		icon = GFX_focus_SWE_hedgehog_defense
 		cost = 5
 		ai_will_do = {
 			factor = 15
@@ -552,10 +552,10 @@ focus_tree = {
 	}
 	focus = {
 		id = UKR_diplomatic_offensive
-		icon = GFX_focus_generic_diplomatic_treaty
 		relative_position_id = UKR_european_integration
-		x = -3
+		x = -2
 		y = 1
+		icon = GFX_focus_generic_diplomatic_treaty
 		cost = 4
 		ai_will_do = {
 			factor = 10
@@ -592,10 +592,10 @@ focus_tree = {
 	}
 	focus = {
 		id = UKR_national_reconciliation
-		icon = GFX_goal_generic_national_unity
 		relative_position_id = UKR_path_to_independence
-		x = 2
+		x = 0
 		y = 2
+		icon = GFX_goal_generic_national_unity
 		cost = 4
 		ai_will_do = {
 			factor = 10
@@ -639,13 +639,14 @@ focus_tree = {
 	}
 	focus = {
 		id = UKR_economic_transformation
+		x = 17
+		y = 7
 		icon = GFX_SOV_planned_economy_ccp_2d_sov_compatibility
-		x = 10
-		y = 0
 		cost = 3
 		ai_will_do = {
 			factor = 10
 		}
+		prerequisite = { focus = UKR_path_to_independence }
 		available = {
 			has_completed_focus = UKR_path_to_independence
 			has_country_leader = {
@@ -661,14 +662,14 @@ focus_tree = {
 	#PORT
 	focus = {
 		id = UKR_port_infrastructure_investment
+		relative_position_id = UKR_economic_transformation
+		x = -2
+		y = 1
 		icon = GFX_goal_generic_construct_naval_dockyard
 		
 		prerequisite = { 
 			focus = UKR_economic_transformation
 		}
-		relative_position_id = UKR_economic_transformation
-		x = -2
-		y = 1
 		
 		cost = 6
 		ai_will_do = {
@@ -715,13 +716,13 @@ focus_tree = {
 	}
 	focus = {
 		id = UKR_maritime_revival
+		relative_position_id = UKR_port_infrastructure_investment
+		x = 0
+		y = 1
 		icon = GFX_goal_generic_navy_cruiser
 		prerequisite = { 
 			focus = UKR_port_infrastructure_investment 
 		}
-		relative_position_id = UKR_port_infrastructure_investment 
-		x = 0
-		y = 1
 		
 		cost = 5
 		ai_will_do = {
@@ -771,14 +772,14 @@ focus_tree = {
 	}
 	focus = {
 		id = UKR_convoy_fleet_development
+		relative_position_id = UKR_maritime_revival
+		x = 0
+		y = 1
 		icon = GFX_goal_generic_occupy_states_coastal
 		prerequisite = { 
 			focus = UKR_maritime_revival
 		}
-		relative_position_id = UKR_maritime_revival
 		
-		x = 0
-		y = 1
 		
 		cost = 4
 		ai_will_do = {
@@ -816,13 +817,13 @@ focus_tree = {
 	}
 	focus = {
 		id = UKR_maritime_doctrine_adaptation
+		relative_position_id = UKR_convoy_fleet_development
+		x = 0
+		y = 1
 		icon = GFX_focus_generic_coastal_fort
 		prerequisite = { 
 			focus = UKR_convoy_fleet_development
 		}
-		relative_position_id = UKR_convoy_fleet_development
-		x = 0
-		y = 1
 		
 		cost = 4
 		ai_will_do = {
@@ -864,13 +865,13 @@ focus_tree = {
 
 	focus = {
 		id = UKR_maritime_defense_strategy
+		relative_position_id = UKR_maritime_doctrine_adaptation
+		x = 0
+		y = 1
 		icon = GFX_goal_generic_build_navy
 		prerequisite = { 
 			focus = UKR_maritime_doctrine_adaptation
 		}
-		relative_position_id = UKR_maritime_doctrine_adaptation
-		x = 0
-		y = 1
 		
 		cost = 4
 		ai_will_do = {
@@ -906,10 +907,10 @@ focus_tree = {
 	}
 	focus = {
 		id = UKR_big_construction
-		icon = GFX_goal_generic_construct_civilian
 		relative_position_id = UKR_economic_transformation
 		x = 2
 		y = 1
+		icon = GFX_goal_generic_construct_civilian
 		cost = 6
 		ai_will_do = {
 			factor = 10
@@ -952,10 +953,10 @@ focus_tree = {
 	}
 	focus = {
 		id = UKR_digital_economy
-		icon = GFX_focus_SWE_radiotjanst
 		relative_position_id = UKR_big_construction
 		x = 0
 		y = 1
+		icon = GFX_focus_SWE_radiotjanst
 		cost = 4
 		ai_will_do = {
 			factor = 10
@@ -992,10 +993,10 @@ focus_tree = {
 	}
 	focus = {
 		id = UKR_startup_support
-		icon = GFX_focus_ARG_develop_the_electricity_sector
 		relative_position_id = UKR_digital_economy
 		x = 0
 		y = 1
+		icon = GFX_focus_ARG_develop_the_electricity_sector
 		cost = 4
 		ai_will_do = {
 			factor = 10
@@ -1029,10 +1030,10 @@ focus_tree = {
 	}
 	focus = {
 		id = UKR_agricultural_reform
-		icon = GFX_focus_generic_agricultural_subsidies
 		relative_position_id = UKR_economic_transformation
 		x = 0
 		y = 1
+		icon = GFX_focus_generic_agricultural_subsidies
 		cost = 5
 		ai_will_do = {
 			factor = 10
@@ -1066,10 +1067,10 @@ focus_tree = {
 	}
 	focus = {
 		id = UKR_land_market_opening
-		icon = GFX_focus_generic_farmland
 		relative_position_id = UKR_agricultural_reform
 		x = 0
 		y = 1
+		icon = GFX_focus_generic_farmland
 		cost = 4
 		ai_will_do = {
 			factor = 10
@@ -1095,10 +1096,10 @@ focus_tree = {
 	}
 	focus = {
 		id = UKR_invest_in_infrastructure
-		icon = GFX_goal_generic_construct_infrastructure
 		relative_position_id = UKR_big_construction
 		x = 2
 		y = 1
+		icon = GFX_goal_generic_construct_infrastructure
 		cost = 7
 		ai_will_do = {
 			factor = 10
@@ -1149,10 +1150,11 @@ focus_tree = {
 	#Milit_Focus
 		focus = {
 		id = UKR_reform_general_staff_nato_standards
+		x = 10
+		y = 7
 		icon = GFX_UKR_reform_general_staff_nato_standards
-		x = 20
-		y = 0
 		cost = 5
+		prerequisite = { focus = UKR_path_to_independence }
 		available = {
 			has_completed_focus = UKR_path_to_independence
 			OR = {
@@ -1180,10 +1182,10 @@ focus_tree = {
 
 	focus = {
 	    id = UKR_forge_professional_officer_corps
-	    icon = GFX_UKR_forge_professional_officer_corps
 	    relative_position_id = UKR_reform_general_staff_nato_standards
-	    x = 1
-	    y = 4
+	    x = -2
+	    y = 0
+	    icon = GFX_UKR_forge_professional_officer_corps
 	    cost = 5
 	    prerequisite = { focus = UKR_reform_general_staff_nato_standards }
 	    available = {
@@ -1215,10 +1217,10 @@ focus_tree = {
 
 	focus = {
 	    id = UKR_UAV_warfare_revolution
-	    icon = GFX_UKR_UAV_warfare_revolution
 	    relative_position_id = UKR_reform_general_staff_nato_standards
-	    x = -1
-	    y = 4
+	    x = 2
+	    y = 0
+	    icon = GFX_UKR_UAV_warfare_revolution
 	    cost = 5
 	    prerequisite = { focus = UKR_reform_general_staff_nato_standards }
 	    available = {
@@ -1255,10 +1257,10 @@ focus_tree = {
 
 	focus = {
 		id = UKR_mobile_tactics_doctrine
-		icon = GFX_focus_generic_tank_assault
 		relative_position_id = UKR_reform_general_staff_nato_standards
-		x = -2
+		x = -3
 		y = 1
+		icon = GFX_focus_generic_tank_assault
 		cost = 4
 		ai_will_do = {
 			factor = 10
@@ -1302,10 +1304,10 @@ focus_tree = {
 
 	focus = {
 		id = UKR_modernize_tank_forces
-		icon = GFX_focus_generic_tank_assembly
 		relative_position_id = UKR_mobile_tactics_doctrine
 		x = 0
 		y = 1
+		icon = GFX_focus_generic_tank_assembly
 		cost = 5
 		ai_will_do = {
 			factor = 10
@@ -1349,13 +1351,12 @@ focus_tree = {
 
 	focus = {
 	    id = UKR_blitzkrieg_tactics
-	    icon = GFX_SOV_the_glory_of_the_red_army_alt_ccp_2d_sov_compatibility
 	    relative_position_id = UKR_modernize_tank_forces
 	    x = 0
 	    y = 1
+	    icon = GFX_SOV_the_glory_of_the_red_army_alt_ccp_2d_sov_compatibility
 	    cost = 6
 	    prerequisite = { focus = UKR_modernize_tank_forces }
-	    mutually_exclusive = { focus = UKR_focus }
 	    ai_will_do = {
          factor = 10
 	    }
@@ -1382,10 +1383,10 @@ focus_tree = {
 
 	focus = {
 		id = UKR_combined_arms_doctrine
-		icon = GFX_SOV_barrier_troops_ccp_2d_sov_compatibility
 		relative_position_id = UKR_reform_general_staff_nato_standards
-		x = 0
+		x = -1
 		y = 1
+		icon = GFX_SOV_barrier_troops_ccp_2d_sov_compatibility
 		cost = 4
 		ai_will_do = {
 			factor = 15
@@ -1421,10 +1422,10 @@ focus_tree = {
 
 	focus = {
 		id = UKR_mobile_groups_tactics
-		icon = GFX_focus_generic_full_social_mobilization
 		relative_position_id = UKR_combined_arms_doctrine
 		x = 0
 		y = 1
+		icon = GFX_focus_generic_full_social_mobilization
 		cost = 5
 		ai_will_do = {
 			factor = 10
@@ -1442,13 +1443,12 @@ focus_tree = {
 
 	focus = {
 	    id = UKR_consolidate_tactical_gains
-	    icon = GFX_SOV_soviet_artillery_ccp_2d_sov_compatibility
 	    relative_position_id = UKR_mobile_groups_tactics
 	    x = 0
 	    y = 1
+	    icon = GFX_SOV_soviet_artillery_ccp_2d_sov_compatibility
 	    cost = 6
 	    prerequisite = { focus = UKR_mobile_groups_tactics }
-	    mutually_exclusive = { focus = UKR_focus }
 	    ai_will_do = {
          factor = 10
 	    }
@@ -1474,10 +1474,10 @@ focus_tree = {
 
 	focus = {
 		id = UKR_defensive_doctrine
-		icon = GFX_goal_continuous_def_against_influence
 		relative_position_id = UKR_reform_general_staff_nato_standards
-		x = 2
+		x = 1
 		y = 1
+		icon = GFX_goal_continuous_def_against_influence
 		cost = 4
 		ai_will_do = {
 			factor = 10
@@ -1515,10 +1515,10 @@ focus_tree = {
 
 	focus = {
 		id = UKR_fortification_construction
-		icon = GFX_SOV_improve_the_stalin_line_ccp_2d_sov_compatibility
 		relative_position_id = UKR_defensive_doctrine
 		x = 0
 		y = 1
+		icon = GFX_SOV_improve_the_stalin_line_ccp_2d_sov_compatibility
 		cost = 5
 		ai_will_do = {
 			factor = 10
@@ -1549,13 +1549,12 @@ focus_tree = {
 
 	focus = {
 	    id = UKR_deep_defense_tactics
-	    icon = GFX_SOV_fortify_mongolian_border_ccp_2d_sov_compatibility
 	    relative_position_id = UKR_fortification_construction
 	    x = 0
 	    y = 1
+	    icon = GFX_SOV_fortify_mongolian_border_ccp_2d_sov_compatibility
 	    cost = 6
 	    prerequisite = { focus = UKR_fortification_construction }
-	    mutually_exclusive = { focus = UKR_focus }
 	    ai_will_do = {
          factor = 10
 	    }
@@ -1586,14 +1585,15 @@ focus_tree = {
 	# Основной фокус, от которого идут все ветки
 	focus = {
 		id = UKR_path_to_new_ukraine
+		x = 26
+		y = 8
 		icon = GFX_focus_generic_diplomatic_treaty
-		x = 30
-		y = 0
 		cost = 3
 		ai_will_do = {
 			factor = 10
 		}
 		
+		prerequisite = { focus = UKR_economic_transformation }
 		available = {
 			has_completed_focus = UKR_economic_transformation
 			has_country_leader = {
@@ -1614,10 +1614,10 @@ focus_tree = {
 	
 	focus = {
 		id = UKR_chernobyl_legacy
-		icon = GFX_focus_wonderweapons
 		relative_position_id = UKR_path_to_new_ukraine
-		x = -3
+		x = -2
 		y = 1
+		icon = GFX_focus_wonderweapons
 		cost = 5
 		ai_will_do = {
 			factor = 10
@@ -1649,10 +1649,10 @@ focus_tree = {
 	
 	focus = {
 		id = UKR_modernize_nuclear_facilities
-		icon = GFX_focus_research
 		relative_position_id = UKR_chernobyl_legacy
 		x = 0
 		y = 1
+		icon = GFX_focus_research
 		cost = 6
 		ai_will_do = {
 			factor = 10
@@ -1682,10 +1682,10 @@ focus_tree = {
 	
 	focus = {
 		id = UKR_energy_independence
-		icon = GFX_goal_generic_construction2
 		relative_position_id = UKR_modernize_nuclear_facilities
 		x = 0
 		y = 1
+		icon = GFX_goal_generic_construction2
 		cost = 7
 		ai_will_do = {
 			factor = 10
@@ -1708,10 +1708,10 @@ focus_tree = {
 	
 	focus = {
 		id = UKR_military_adaptability
-		icon = GFX_goal_generic_army_doctrines
 		relative_position_id = UKR_path_to_new_ukraine
 		x = 0
 		y = 1
+		icon = GFX_goal_generic_army_doctrines
 		cost = 5
 		ai_will_do = {
 			factor = 15
@@ -1727,10 +1727,10 @@ focus_tree = {
 	
 	focus = {
 		id = UKR_military_industrial_complex
-		icon = GFX_goal_generic_army_tanks
 		relative_position_id = UKR_military_adaptability
 		x = 0
 		y = 1
+		icon = GFX_goal_generic_army_tanks
 		cost = 6
 		ai_will_do = {
 			factor = 15
@@ -1773,10 +1773,10 @@ focus_tree = {
 	
 	focus = {
 		id = UKR_special_forces_equipment
-		icon = GFX_goal_generic_special_forces
 		relative_position_id = UKR_military_industrial_complex
 		x = 0
 		y = 1
+		icon = GFX_goal_generic_special_forces
 		cost = 5
 		ai_will_do = {
 			factor = 10
@@ -1805,10 +1805,10 @@ focus_tree = {
 	
 	focus = {
 		id = UKR_decommunization
-		icon = GFX_focus_GER_end_european_communism
 		relative_position_id = UKR_path_to_new_ukraine
-		x = 3
+		x = 2
 		y = 1
+		icon = GFX_focus_GER_end_european_communism
 		cost = 4
 		ai_will_do = {
 			factor = 10
@@ -1835,10 +1835,10 @@ focus_tree = {
 	
 	focus = {
 		id = UKR_ukrainian_renaissance
-		icon = GFX_goal_generic_propaganda
 		relative_position_id = UKR_decommunization
 		x = 0
 		y = 1
+		icon = GFX_goal_generic_propaganda
 		cost = 5
 		ai_will_do = {
 			factor = 10
@@ -1882,10 +1882,10 @@ focus_tree = {
 	
 	focus = {
 		id = UKR_education_reform
-		icon = GFX_goal_generic_scientific_exchange
 		relative_position_id = UKR_ukrainian_renaissance
 		x = 0
 		y = 1
+		icon = GFX_goal_generic_scientific_exchange
 		cost = 6
 		ai_will_do = {
 			factor = 10
@@ -1921,10 +1921,14 @@ focus_tree = {
 #Ukraine COVID Response Tree
 	focus = {
 		id = UKR_address_covid_threat
-		icon = GFX_UKR_Covid
-		x = 6
+		x = 8
 		y = 0
+		icon = GFX_UKR_Covid
 		cost = 3
+		# Скрыт, пока не пришло событие ukraine.400 (дух UKR_covid_crisis)
+		allow_branch = {
+			has_idea = UKR_covid_crisis
+		}
 		available = {
 			has_idea = UKR_covid_crisis
 		}
@@ -1950,10 +1954,10 @@ focus_tree = {
 	# Цифровое государство: запуск «Дії» (2020)
 	focus = {
 		id = UKR_state_in_smartphone
-		icon = GFX_goal_generic_scientific_exchange
 		relative_position_id = UKR_oligarchs_and_economy
-		x = 7
-		y = 7
+		x = -2
+		y = 0
+		icon = GFX_goal_generic_scientific_exchange
 		cost = 3
 		prerequisite = { focus = UKR_oligarchs_and_economy }
 		available = {
@@ -1968,6 +1972,7 @@ focus_tree = {
 		completion_reward = {
 			add_political_power = 25
 			add_ideas = UKR_digital_state_idea
+			unlock_decision_tooltip = UKR_covid_certificates
 			add_stability = 0.01
 			set_temp_variable = {
 				var = income_var_temp
@@ -1989,10 +1994,10 @@ focus_tree = {
 	# Санкции СНБО против «своих» (2021)
 	focus = {
 		id = UKR_nsdc_sanctions
-		icon = GFX_goal_generic_secret_weapon
 		relative_position_id = UKR_corruption_and_power_consolidation
-		x = 5
-		y = 6
+		x = 2
+		y = 0
+		icon = GFX_goal_generic_secret_weapon
 		cost = 3
 		prerequisite = { focus = UKR_corruption_and_power_consolidation }
 		available = {
@@ -2022,10 +2027,10 @@ focus_tree = {
 	# Социальный щит: индексация пенсий и выплат
 	focus = {
 		id = UKR_social_shield
-		icon = GFX_goal_generic_consumer_goods
 		relative_position_id = UKR_presidential_elections
-		x = 3
-		y = 5
+		x = -2
+		y = 0
+		icon = GFX_goal_generic_consumer_goods
 		cost = 3
 		prerequisite = { focus = UKR_presidential_elections }
 		available = {
@@ -2056,21 +2061,6 @@ focus_tree = {
 		}
 	}
 
-    focus = {
-        id = UKR_focus
-        icon = GFX_UKR_reform_general_staff_nato_standards
-        x = 20
-        y = 6
-        cost = 5.7
-        prerequisite = { focus = UKR_UAV_warfare_revolution }
-        prerequisite = { focus = UKR_forge_professional_officer_corps }
-        mutually_exclusive = { focus = UKR_deep_defense_tactics focus = UKR_blitzkrieg_tactics focus = UKR_consolidate_tactical_gains }
-        ai_will_do = {
-            factor = 1
-        }
-        completion_reward = {
-            log = "[GetDateText]: [Root.GetName]: Focus UKR_focus completed"
-        }
-    }
+
 
 }

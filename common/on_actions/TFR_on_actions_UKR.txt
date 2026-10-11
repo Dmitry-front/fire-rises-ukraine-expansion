@@ -55,6 +55,17 @@ on_actions = {
     # Проверка потери ключевых городов
     on_daily = {
         effect = {
+            # Страховка для ковид-фокуса (allow_branch): если ковид уже идёт, а дерево не обновлено (старое сохранение), обновить
+            if = {
+                limit = {
+                    tag = UKR
+                    has_country_flag = UKR_COVID_ongoing
+                    NOT = { has_country_flag = UKR_covid_tree_refreshed }
+                }
+                set_country_flag = UKR_covid_tree_refreshed
+                mark_focus_tree_layout_dirty = yes
+            }
+
             if = {
                 limit = {
                     tag = UKR

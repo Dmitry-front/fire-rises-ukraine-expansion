@@ -10,7 +10,7 @@ focus_tree = {
 	focus = {
 		id = UKR_intelligence_operation
 		icon = GFX_UKR_intelligence_operation
-		x = 2
+		x = 4
 		y = 0
 		cost = 1
 		ai_will_do = {
@@ -42,61 +42,55 @@ focus_tree = {
 	}
 
 	focus = {
-		id = UKR_military_budget_expansion
-		icon = GFX_UKR_budget_military
-		x = -3
-		y = 1
-		cost = 4
-		ai_will_do = {
-			factor = 15
-		}
-		relative_position_id = UKR_intelligence_operation
-		prerequisite = {
-			focus = UKR_intelligence_operation
-			}
-		available = {
-			has_completed_focus = UKR_reform_general_staff_nato_standards
-			is_puppet = no
-		}
-		completion_reward = {
-			add_political_power = 40
-			add_command_power = 30
-			add_war_support = 0.02
-			
-			add_timed_idea = {
-				idea = UKR_increased_funding_agency
-				days = 300
-			}
-
-			set_temp_variable = {
-				var = income_var_temp
-				value = -5.5
-			}
-			add_income_with_inflation = yes
-			
-			custom_effect_tooltip = UKR_budget_military_expansion_tooltip
-				
-			hidden_effect = {
-				# TODO: событие ukraine.801 (ГУР) не написано — вызов отключён до его появления
-				#country_event = { id = ukraine.801 days = 7 }
-				add_popularity = {
-					ideology = nationalist
-					popularity = 0.02
-				}
-			}
-			# Склонность (скрыто)
-			hidden_effect = {
-				add_to_variable = { UKR_authoritarian_lean = 4 }
-				UKR_clamp_leans = yes
-			}
-		}
+	    id = UKR_military_budget_expansion
+	    icon = GFX_UKR_budget_military
+	    relative_position_id = UKR_intelligence_operation
+	    x = 24
+	    y = 2
+	    cost = 4
+	    prerequisite = { focus = UKR_intelligence_operation }
+	    available = {
+         has_completed_focus = UKR_reform_general_staff_nato_standards
+         is_puppet = no
+	    }
+	    ai_will_do = {
+         factor = 15
+	    }
+	    completion_reward = {
+         add_political_power = 40
+         add_command_power = 30
+         add_war_support = 0.02
+         add_timed_idea = {
+             idea = UKR_increased_funding_agency
+             days = 300
+         }
+         set_temp_variable = {
+             var = income_var_temp
+             value = -5.5
+         }
+         add_income_with_inflation = yes
+         custom_effect_tooltip = UKR_budget_military_expansion_tooltip
+         hidden_effect = {
+             # TODO: событие ukraine.801 (ГУР) не написано — вызов отключён до его появления
+             #country_event = { id = ukraine.801 days = 7 }
+             add_popularity = {
+                 ideology = nationalist
+                 popularity = 0.02
+             }
+         }
+         # Склонность (скрыто)
+         hidden_effect = {
+             add_to_variable = { UKR_authoritarian_lean = 4 }
+             UKR_clamp_leans = yes
+         }
+	    }
 	}
 
 	focus = {
 		id = UKR_shadow_war_capabilities
 		icon = GFX_UKR_shadow_war
-		x = 0
-		y = 1
+		x = -4
+		y = 2
 		cost = 5
 		ai_will_do = {
 			factor = 10
@@ -303,7 +297,7 @@ focus_tree = {
 		id = UKR_european_integration
 		icon = GFX_UKR_european_integration
 		relative_position_id = UKR_path_to_independence
-		x = 3
+		x = 0
 		y = 1
 		cost = 4
 		ai_will_do = {
@@ -362,7 +356,7 @@ focus_tree = {
 		icon = GFX_SOV_the_means_to_wage_war_ccp_2d_sov_compatibility
 		relative_position_id = UKR_european_integration
 		x = 1
-		y = 1
+		y = 5
 		cost = 4
 		ai_will_do = {
 			factor = 15
@@ -410,7 +404,7 @@ focus_tree = {
 		icon = GFX_SOV_heavy_industry_ccp_2d_sov_compatibility
 		relative_position_id = UKR_european_integration
 		x = -1
-		y = 1
+		y = 5
 		cost = 6
 		ai_will_do = {
 			factor = 10
@@ -600,8 +594,8 @@ focus_tree = {
 		id = UKR_national_reconciliation
 		icon = GFX_goal_generic_national_unity
 		relative_position_id = UKR_path_to_independence
-		x = 1
-		y = 1
+		x = 2
+		y = 2
 		cost = 4
 		ai_will_do = {
 			factor = 10
@@ -1185,91 +1179,77 @@ focus_tree = {
 	# Новые фокусы после UKR_reform_general_staff_nato_standards
 
 	focus = {
-		id = UKR_forge_professional_officer_corps
-		icon = GFX_UKR_forge_professional_officer_corps
-		relative_position_id = UKR_reform_general_staff_nato_standards
-		x = -2
-		y = 4
-		cost = 5
-		
-		prerequisite = {
-			focus = UKR_reform_general_staff_nato_standards
-		}
-		
-		available = {
-			is_puppet = no
-		}
-		
-		ai_will_do = {
-			factor = 10
-			modifier = {
-				factor = 2
-				threat > 0.5
-			}
-		}
-		
-		completion_reward = {
-			army_experience = 35
-			add_doctrine_cost_reduction = {
-				cost_reduction = 0.1
-				uses = 1
-				category = land_doctrine
-			}
-			custom_effect_tooltip = UKR_officer_training_decisions_tooltip
-			hidden_effect = {
-				unlock_decision_tooltip = UKR_artillery_warfare_course
-				unlock_decision_tooltip = UKR_mobile_warfare_program
-				unlock_decision_tooltip = UKR_infantry_tactics_school
-				unlock_decision_tooltip = UKR_hybrid_operations_school
-			}
-		}
+	    id = UKR_forge_professional_officer_corps
+	    icon = GFX_UKR_forge_professional_officer_corps
+	    relative_position_id = UKR_reform_general_staff_nato_standards
+	    x = 1
+	    y = 4
+	    cost = 5
+	    prerequisite = { focus = UKR_reform_general_staff_nato_standards }
+	    available = {
+         is_puppet = no
+	    }
+	    ai_will_do = {
+         factor = 10
+         modifier = {
+             factor = 2
+             threat > 0.5
+         }
+	    }
+	    completion_reward = {
+         army_experience = 35
+         add_doctrine_cost_reduction = {
+             cost_reduction = 0.1
+             uses = 1
+             category = land_doctrine
+         }
+         custom_effect_tooltip = UKR_officer_training_decisions_tooltip
+         hidden_effect = {
+             unlock_decision_tooltip = UKR_artillery_warfare_course
+             unlock_decision_tooltip = UKR_mobile_warfare_program
+             unlock_decision_tooltip = UKR_infantry_tactics_school
+             unlock_decision_tooltip = UKR_hybrid_operations_school
+         }
+	    }
 	}
 
 	focus = {
-		id = UKR_UAV_warfare_revolution
-		icon = GFX_UKR_UAV_warfare_revolution
-		relative_position_id = UKR_reform_general_staff_nato_standards
-		x = 2
-		y = 4
-		cost = 5
-		
-		prerequisite = {
-			focus = UKR_reform_general_staff_nato_standards
-		}
-		
-		available = {
-			is_puppet = no
-		}
-		
-		ai_will_do = {
-			factor = 12
-			modifier = {
-				factor = 2
-				has_war = no
-			}
-		}
-		
-		completion_reward = {
-			air_experience = 25
-			add_tech_bonus = {
-				name = UKR_UAV_research
-				bonus = 0.2
-				uses = 2
-				category = cas_bomber
-				category = tactical_bomber
-			}
-			add_ideas = UKR_UAV_warfare_pioneers
-			custom_effect_tooltip = UKR_drone_doctrine_tooltip
-			unlock_decision_tooltip = UKR_mio_drone_workshops
-			# Склонность (скрыто)
-			hidden_effect = {
-				add_to_variable = { UKR_digital_lean = 6 }
-				UKR_clamp_leans = yes
-			}
-		}
+	    id = UKR_UAV_warfare_revolution
+	    icon = GFX_UKR_UAV_warfare_revolution
+	    relative_position_id = UKR_reform_general_staff_nato_standards
+	    x = -1
+	    y = 4
+	    cost = 5
+	    prerequisite = { focus = UKR_reform_general_staff_nato_standards }
+	    available = {
+         is_puppet = no
+	    }
+	    ai_will_do = {
+         factor = 12
+         modifier = {
+             factor = 2
+             has_war = no
+         }
+	    }
+	    completion_reward = {
+         air_experience = 25
+         add_tech_bonus = {
+             name = UKR_UAV_research
+             bonus = 0.2
+             uses = 2
+             category = cas_bomber
+             category = tactical_bomber
+         }
+         add_ideas = UKR_UAV_warfare_pioneers
+         custom_effect_tooltip = UKR_drone_doctrine_tooltip
+         unlock_decision_tooltip = UKR_mio_drone_workshops
+         # Склонность (скрыто)
+         hidden_effect = {
+             add_to_variable = { UKR_digital_lean = 6 }
+             UKR_clamp_leans = yes
+         }
+	    }
 	}
-
-
 
 	# Mobile Tactics Branch - Offensive Doctrine
 
@@ -1277,7 +1257,7 @@ focus_tree = {
 		id = UKR_mobile_tactics_doctrine
 		icon = GFX_focus_generic_tank_assault
 		relative_position_id = UKR_reform_general_staff_nato_standards
-		x = -4
+		x = -2
 		y = 1
 		cost = 4
 		ai_will_do = {
@@ -1368,35 +1348,34 @@ focus_tree = {
 	}
 
 	focus = {
-		id = UKR_blitzkrieg_tactics
-		icon = GFX_SOV_the_glory_of_the_red_army_alt_ccp_2d_sov_compatibility
-		relative_position_id =  UKR_modernize_tank_forces
-		x = 0
-		y = 1
-		cost = 6
-		ai_will_do = {
-			factor = 10
-		}
-		prerequisite = {
-			focus = UKR_modernize_tank_forces
-		}
-		completion_reward = {
-			add_ideas = UKR_blitzkrieg_doctrine
-			custom_effect_tooltip = UKR_blitzkrieg_operations_tooltip
-			hidden_effect = {
-				add_timed_idea = {
-					idea = UKR_rapid_offensive_operations
-					days = 365
-				}
-			}
-			add_command_power = 50
-			add_to_variable = {
-				var = UKR_army_attack_factor_dynamic
-				value = 0.1
-			}
-			add_dynamic_modifier = { modifier = UKR_doctrine_bonus_dynamic }
-			force_update_dynamic_modifier = yes
-		}
+	    id = UKR_blitzkrieg_tactics
+	    icon = GFX_SOV_the_glory_of_the_red_army_alt_ccp_2d_sov_compatibility
+	    relative_position_id = UKR_modernize_tank_forces
+	    x = 0
+	    y = 1
+	    cost = 6
+	    prerequisite = { focus = UKR_modernize_tank_forces }
+	    mutually_exclusive = { focus = UKR_focus }
+	    ai_will_do = {
+         factor = 10
+	    }
+	    completion_reward = {
+         add_ideas = UKR_blitzkrieg_doctrine
+         custom_effect_tooltip = UKR_blitzkrieg_operations_tooltip
+         hidden_effect = {
+             add_timed_idea = {
+                 idea = UKR_rapid_offensive_operations
+                 days = 365
+             }
+         }
+         add_command_power = 50
+         add_to_variable = {
+             var = UKR_army_attack_factor_dynamic
+             value = 0.1
+         }
+         add_dynamic_modifier = { modifier = UKR_doctrine_bonus_dynamic }
+         force_update_dynamic_modifier = yes
+	    }
 	}
 
 	# Combined Arms Branch - Balanced Doctrine
@@ -1462,34 +1441,33 @@ focus_tree = {
 	}
 
 	focus = {
-		id = UKR_consolidate_tactical_gains
-		icon = GFX_SOV_soviet_artillery_ccp_2d_sov_compatibility
-		relative_position_id = UKR_mobile_groups_tactics
-		x = 0
-		y = 1
-		cost = 6
-		ai_will_do = {
-			factor = 10
-		}
-		prerequisite = {
-			focus = UKR_mobile_groups_tactics
-		}
-		completion_reward = {
-			add_ideas = UKR_consolidation_tactics
-			add_tech_bonus = {
-				name = UKR_field_fortifications
-				bonus = 0.5
-				uses = 1
-				category = engineers_tech
-			}
-			add_tech_bonus = {
-				name = UKR_mobile_tactics_groups
-				bonus = 0.2
-				uses = 1
-				category = motorized_equipment
-			}
-			force_update_dynamic_modifier = yes
-		}
+	    id = UKR_consolidate_tactical_gains
+	    icon = GFX_SOV_soviet_artillery_ccp_2d_sov_compatibility
+	    relative_position_id = UKR_mobile_groups_tactics
+	    x = 0
+	    y = 1
+	    cost = 6
+	    prerequisite = { focus = UKR_mobile_groups_tactics }
+	    mutually_exclusive = { focus = UKR_focus }
+	    ai_will_do = {
+         factor = 10
+	    }
+	    completion_reward = {
+         add_ideas = UKR_consolidation_tactics
+         add_tech_bonus = {
+             name = UKR_field_fortifications
+             bonus = 0.5
+             uses = 1
+             category = engineers_tech
+         }
+         add_tech_bonus = {
+             name = UKR_mobile_tactics_groups
+             bonus = 0.2
+             uses = 1
+             category = motorized_equipment
+         }
+         force_update_dynamic_modifier = yes
+	    }
 	}
 
 	# Defensive Branch - Deep Defense Doctrine
@@ -1498,7 +1476,7 @@ focus_tree = {
 		id = UKR_defensive_doctrine
 		icon = GFX_goal_continuous_def_against_influence
 		relative_position_id = UKR_reform_general_staff_nato_standards
-		x = 4
+		x = 2
 		y = 1
 		cost = 4
 		ai_will_do = {
@@ -1570,39 +1548,38 @@ focus_tree = {
 	}
 
 	focus = {
-		id = UKR_deep_defense_tactics
-		icon = GFX_SOV_fortify_mongolian_border_ccp_2d_sov_compatibility
-		relative_position_id = UKR_fortification_construction
-		x = 0
-		y = 1
-		cost = 6
-		ai_will_do = {
-			factor = 10
-		}
-		prerequisite = {
-			focus = UKR_fortification_construction
-		}
-		completion_reward = {
-			add_command_power = 40
-			add_war_support = 0.1
-			add_ideas = UKR_echeloned_defense
-			custom_effect_tooltip = UKR_deep_defense_tooltip
-			unlock_decision_tooltip = UKR_mio_luch_missiles
-			add_to_variable = {
-				var = UKR_army_defence_factor_dynamic
-				value = 0.15
-			}
-			add_to_variable = {
-				var = UKR_max_dig_in_factor_dynamic
-				value = 0.25
-			}
-			add_to_variable = {
-				var = UKR_max_planning_factor_dynamic
-				value = 0.1
-			}
-			add_dynamic_modifier = { modifier = UKR_doctrine_bonus_dynamic }
-			force_update_dynamic_modifier = yes
-		}
+	    id = UKR_deep_defense_tactics
+	    icon = GFX_SOV_fortify_mongolian_border_ccp_2d_sov_compatibility
+	    relative_position_id = UKR_fortification_construction
+	    x = 0
+	    y = 1
+	    cost = 6
+	    prerequisite = { focus = UKR_fortification_construction }
+	    mutually_exclusive = { focus = UKR_focus }
+	    ai_will_do = {
+         factor = 10
+	    }
+	    completion_reward = {
+         add_command_power = 40
+         add_war_support = 0.1
+         add_ideas = UKR_echeloned_defense
+         custom_effect_tooltip = UKR_deep_defense_tooltip
+         unlock_decision_tooltip = UKR_mio_luch_missiles
+         add_to_variable = {
+             var = UKR_army_defence_factor_dynamic
+             value = 0.15
+         }
+         add_to_variable = {
+             var = UKR_max_dig_in_factor_dynamic
+             value = 0.25
+         }
+         add_to_variable = {
+             var = UKR_max_planning_factor_dynamic
+             value = 0.1
+         }
+         add_dynamic_modifier = { modifier = UKR_doctrine_bonus_dynamic }
+         force_update_dynamic_modifier = yes
+	    }
 	}
 
 	# Главный фокус - Стратегия национального обновления
@@ -1945,7 +1922,7 @@ focus_tree = {
 	focus = {
 		id = UKR_address_covid_threat
 		icon = GFX_UKR_Covid
-		x = 5
+		x = 6
 		y = 0
 		cost = 3
 		available = {
@@ -1975,8 +1952,8 @@ focus_tree = {
 		id = UKR_state_in_smartphone
 		icon = GFX_goal_generic_scientific_exchange
 		relative_position_id = UKR_oligarchs_and_economy
-		x = 3
-		y = 1
+		x = 7
+		y = 7
 		cost = 3
 		prerequisite = { focus = UKR_oligarchs_and_economy }
 		available = {
@@ -2014,8 +1991,8 @@ focus_tree = {
 		id = UKR_nsdc_sanctions
 		icon = GFX_goal_generic_secret_weapon
 		relative_position_id = UKR_corruption_and_power_consolidation
-		x = 2
-		y = 1
+		x = 5
+		y = 6
 		cost = 3
 		prerequisite = { focus = UKR_corruption_and_power_consolidation }
 		available = {
@@ -2047,8 +2024,8 @@ focus_tree = {
 		id = UKR_social_shield
 		icon = GFX_goal_generic_consumer_goods
 		relative_position_id = UKR_presidential_elections
-		x = 2
-		y = 1
+		x = 3
+		y = 5
 		cost = 3
 		prerequisite = { focus = UKR_presidential_elections }
 		available = {
@@ -2078,5 +2055,22 @@ focus_tree = {
 			}
 		}
 	}
+
+    focus = {
+        id = UKR_focus
+        icon = GFX_UKR_reform_general_staff_nato_standards
+        x = 20
+        y = 6
+        cost = 5.7
+        prerequisite = { focus = UKR_UAV_warfare_revolution }
+        prerequisite = { focus = UKR_forge_professional_officer_corps }
+        mutually_exclusive = { focus = UKR_deep_defense_tactics focus = UKR_blitzkrieg_tactics focus = UKR_consolidate_tactical_gains }
+        ai_will_do = {
+            factor = 1
+        }
+        completion_reward = {
+            log = "[GetDateText]: [Root.GetName]: Focus UKR_focus completed"
+        }
+    }
 
 }

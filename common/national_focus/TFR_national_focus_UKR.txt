@@ -1184,10 +1184,11 @@ focus_tree = {
 	    id = UKR_forge_professional_officer_corps
 	    relative_position_id = UKR_reform_general_staff_nato_standards
 	    x = -2
-	    y = 0
+	    y = 4
 	    icon = GFX_UKR_forge_professional_officer_corps
 	    cost = 5
-	    prerequisite = { focus = UKR_reform_general_staff_nato_standards }
+	    # Идёт после любой доктрины (схема 11.10.2026)
+	    prerequisite = { focus = UKR_blitzkrieg_tactics focus = UKR_consolidate_tactical_gains focus = UKR_deep_defense_tactics }
 	    available = {
          is_puppet = no
 	    }
@@ -1218,11 +1219,12 @@ focus_tree = {
 	focus = {
 	    id = UKR_UAV_warfare_revolution
 	    relative_position_id = UKR_reform_general_staff_nato_standards
-	    x = 2
-	    y = 0
+	    x = 0
+	    y = 4
 	    icon = GFX_UKR_UAV_warfare_revolution
 	    cost = 5
-	    prerequisite = { focus = UKR_reform_general_staff_nato_standards }
+	    # Идёт после любой доктрины (схема 11.10.2026)
+	    prerequisite = { focus = UKR_blitzkrieg_tactics focus = UKR_consolidate_tactical_gains focus = UKR_deep_defense_tactics }
 	    available = {
          is_puppet = no
 	    }
@@ -1363,12 +1365,7 @@ focus_tree = {
 	    completion_reward = {
          add_ideas = UKR_blitzkrieg_doctrine
          custom_effect_tooltip = UKR_blitzkrieg_operations_tooltip
-         hidden_effect = {
-             add_timed_idea = {
-                 idea = UKR_rapid_offensive_operations
-                 days = 365
-             }
-         }
+         unlock_decision_tooltip = UKR_rapid_offensive_surge
          add_command_power = 50
          add_to_variable = {
              var = UKR_army_attack_factor_dynamic
@@ -2067,12 +2064,11 @@ focus_tree = {
 		icon = GFX_goal_generic_army_doctrines
 		relative_position_id = UKR_consolidate_tactical_gains
 		x = 0
-		y = 1
+		y = 2
 		cost = 5
-		# Обязательны оба общих фокуса и любой из трёх финалов доктрин
+		# Обязательны оба общих фокуса (они идут после любой из доктрин)
 		prerequisite = { focus = UKR_forge_professional_officer_corps }
 		prerequisite = { focus = UKR_UAV_warfare_revolution }
-		prerequisite = { focus = UKR_blitzkrieg_tactics focus = UKR_consolidate_tactical_gains focus = UKR_deep_defense_tactics }
 		available = {
 			is_puppet = no
 		}

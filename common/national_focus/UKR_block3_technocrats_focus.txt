@@ -291,6 +291,18 @@ focus_tree = {
 			value = 0.15
 			}
 			add_military_development = yes
+			# Связка с БПЛА: если дух «Пионеры» уже сведён в «Армию нового образца», награда больше
+			if = {
+				limit = { has_completed_focus = UKR_army_consolidation }
+				army_experience = 25
+				add_command_power = 25
+				set_temp_variable = {
+					var = military_development_var_temp
+					value = 0.05
+				}
+				add_military_development = yes
+				custom_effect_tooltip = UKR_t_drone_synergy_tooltip
+			}
 			hidden_effect = {
 				country_event = { id = ukraine_politics.402 days = 30 }
 			}

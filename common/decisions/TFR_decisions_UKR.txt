@@ -3138,6 +3138,45 @@ UKR_against_occupiers = {
 
 # New Blitz
 UKR_offensive_operations = {
+
+	# Стремительное наступление: бывший временный дух фокуса «Тактика блицкрига» (11.10.2026): 90 дней, откат 300, 25 ПП и 30 КО
+	UKR_rapid_offensive_surge = {
+		icon = GFX_decision_tank_divisions
+
+		visible = {
+			has_completed_focus = UKR_blitzkrieg_tactics
+		}
+		available = {
+			command_power > 29
+		}
+
+		cost = 25
+		custom_cost_trigger = {
+			command_power > 29
+		}
+		custom_cost_text = 30cp_cost
+
+		fire_only_once = no
+		days_remove = 90
+		days_re_enable = 300
+
+		ai_will_do = {
+			factor = 5
+			modifier = {
+				factor = 2
+				has_war_with = SOV
+			}
+		}
+
+		complete_effect = {
+			add_command_power = -30
+			add_ideas = UKR_rapid_offensive_operations
+		}
+
+		remove_effect = {
+			remove_ideas = UKR_rapid_offensive_operations
+		}
+	}
 	
 	# Rapid Armored Thrust
 	UKR_rapid_armored_thrust = {

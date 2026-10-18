@@ -912,6 +912,44 @@ UKR_special_military_operation = {
 }
 
 UKR_political_decisions = {
+	# Социальный щит: повторяемая программа помощи, открывается фокусом UKR_social_shield. Три запуска за игру,
+	# каждый действует 180 дней, между запусками откат 240 дней; счётчик запусков - UKR_social_shield_uses.
+	UKR_social_shield_program = {
+		icon = GFX_decision_generic_consumer_goods
+
+		visible = {
+			has_completed_focus = UKR_social_shield
+		}
+		available = {
+			has_political_power > 29
+			custom_trigger_tooltip = {
+				tooltip = UKR_social_shield_uses_tt
+				check_variable = { UKR_social_shield_uses < 3 }
+			}
+		}
+
+		cost = 30
+		days_remove = 180
+		days_re_enable = 240
+
+		modifier = {
+			poverty_development_monthly = 0.01
+		}
+
+		complete_effect = {
+			set_temp_variable = {
+				var = income_var_temp
+				value = -2.5
+			}
+			add_income_with_inflation = yes
+			add_to_variable = { UKR_social_shield_uses = 1 }
+		}
+
+		ai_will_do = {
+			factor = 20
+		}
+	}
+
 		UKR_anti_corruption_campaign = {
 		icon = GFX_decision_generic_political_discourse
 		
@@ -1017,18 +1055,45 @@ UKR_political_decisions = {
 					modifier = political_pressure
 				}
 			}
-			random_country = {
-				limit = {
-					is_major = yes
-					NOT = { tag = SOV }
+			# Постоянные члены Совбеза, кроме России и Китая: фиксированный список вместо random_country,
+			# иначе подсказка решения показывает одну страну, а отношения улучшаются у другой
+			if = {
+				limit = { country_exists = USA }
+				USA = {
+					add_opinion_modifier = {
+						target = UKR
+						modifier = diplomatic_support
+					}
+					add_opinion_modifier = {
+						target = SOV
+						modifier = political_pressure
+					}
 				}
-				add_opinion_modifier = {
-					target = UKR
-					modifier = diplomatic_support
+			}
+			if = {
+				limit = { country_exists = ENG }
+				ENG = {
+					add_opinion_modifier = {
+						target = UKR
+						modifier = diplomatic_support
+					}
+					add_opinion_modifier = {
+						target = SOV
+						modifier = political_pressure
+					}
 				}
-				add_opinion_modifier = {
-					target = SOV
-					modifier = political_pressure
+			}
+			if = {
+				limit = { country_exists = FRA }
+				FRA = {
+					add_opinion_modifier = {
+						target = UKR
+						modifier = diplomatic_support
+					}
+					add_opinion_modifier = {
+						target = SOV
+						modifier = political_pressure
+					}
 				}
 			}
 		}
@@ -1417,10 +1482,10 @@ UKR_covid_response_decisions = {
 		available = {
 			has_idea = UKR_covid_crisis
 			date > 2020.3.12
-			has_political_power > 20
+			has_political_power > 10
 		}
 
-		cost = 20
+		cost = 10
 		fire_only_once = yes
 
 		complete_effect = {
@@ -1433,7 +1498,6 @@ UKR_covid_response_decisions = {
 				idea = UKR_covid_crisis
 				days = -30
 			}
-			add_war_support = 0.01
 			custom_effect_tooltip = UKR_covid_close_borders_tt
 			# Склонность (скрыто) и продолжение цепочки
 			hidden_effect = {
@@ -1501,10 +1565,10 @@ UKR_covid_response_decisions = {
 		available = {
 			has_idea = UKR_covid_crisis
 			date > 2020.4.1
-			has_political_power > 25
+			has_political_power > 14
 		}
 
-		cost = 25
+		cost = 15
 		fire_only_once = yes
 		days_remove = 20
 
@@ -1602,8 +1666,8 @@ UKR_covid_response_decisions = {
 			has_country_flag = UKR_COVID_ongoing
 		}
 		available = {
+			has_completed_focus = UKR_economic_transformation
 			has_idea = UKR_covid_crisis
-			date > 2020.9.15
 			has_political_power > 30
 		}
 
@@ -1614,7 +1678,7 @@ UKR_covid_response_decisions = {
 		complete_effect = {
 			set_temp_variable = {
 				var = income_var_temp
-				value = -2
+				value = -4.6
 			}
 			add_income = yes
 		}
@@ -1791,12 +1855,11 @@ UKR_covid_response_decisions = {
 
 		visible = {
 			has_completed_focus = UKR_address_covid_threat
-			has_completed_focus = UKR_state_in_smartphone
 			has_country_flag = UKR_COVID_ongoing
 		}
 		available = {
+			has_completed_focus = UKR_state_in_smartphone
 			has_idea = UKR_covid_crisis
-			date > 2021.10.1
 			has_political_power > 30
 		}
 

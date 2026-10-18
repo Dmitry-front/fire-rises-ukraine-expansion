@@ -2,14 +2,14 @@
 # Схема: событие даёт дух add_timed_idea, затем вызывает UKR_season_<дух> = yes. Эффект считает множитель UKR_sm_k
 # (склонности, честность, сила Левого фронта), записывает переменные UKR_sm_<дух>_<партия> и обновляет динамический
 # модификатор из common/dynamic_modifiers/UKR_dynamic_season.txt. Вызывать ПОСЛЕ add_timed_idea.
-# Единицы *_drift в TFR не проверены в игре: общая сила всех сдвигов регулируется переменной UKR_season_scale (по умолчанию 1).
+# Единицы *_drift в TFR не проверены в игре: общая сила всех сдвигов регулируется переменной UKR_season_scale (по умолчанию 3: тест 17.10.2026 показал, что при 1 эффекты слабые).
 # Если дрейф слабый - увеличить (например, set_variable = { UKR_season_scale = 5 } в консоли), если сильный - уменьшить.
 
 # Создаёт регулятор силы, если его ещё нет
 UKR_season_scale_init = {
 	if = {
 		limit = { NOT = { has_variable = UKR_season_scale } }
-		set_variable = { var = UKR_season_scale value = 1 }
+		set_variable = { var = UKR_season_scale value = 3 }
 	}
 }
 

@@ -128,7 +128,7 @@
 					planning_speed = -0.25
 					army_speed_factor = -0.05
 					mobilization_speed = -0.15
-					battalion_upkeep_factor = -0.3
+					battalion_upkeep_factor = 0.3
 				}
 			}			
 			
@@ -690,7 +690,7 @@
 					planning_speed = -0.20
 					army_speed_factor = -0.04
 					mobilization_speed = -0.12
-					battalion_upkeep_factor = -0.25
+					battalion_upkeep_factor = 0.25
 				}
 			}	
 			UKR_endemic_corruption = {
@@ -1414,7 +1414,6 @@
 
 				modifier = {
 					income_growth_factor = -0.06
-					consumer_goods_factor = 0.03
 					trade_opinion_factor = -0.10
 				}
 			}
@@ -1450,7 +1449,7 @@
 				}
 				
 				modifier = {
-					stability_weekly = -0.002
+					stability_weekly = -0.003
 					stability_factor = -0.15
 					war_support_factor = -0.10
 					production_speed_buildings_factor = -0.15
@@ -2766,7 +2765,6 @@
 			}
 			traits = {
 				int_encryptor
-				sec_compassionate_gentleman
 			}
 		}
 		UKR_budanov = {
@@ -2788,8 +2786,9 @@
 			allowed = {
 				original_tag = UKR
 			}
+			# в списке советников не показываем: появляется только заменой UKR_budanov
 			visible = {
-				is_puppet = no
+				has_idea = UKR_budanov_2
 			}
 			traits = {
 				int_former_spy

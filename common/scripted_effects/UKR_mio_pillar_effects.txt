@@ -1,0 +1,890 @@
+# Связка украинских организаций MIO с опорами блока 3 (PROPOSAL_concerns.md, раздел 8.1).
+# Файл генерируется скриптом; руками правят значения, тексты и ключи локализации держат в паре.
+# 1) UKR_mio_hook_<фокус>: награда фокуса-крючка опоры (funds и размер организаций), вызывается из completion_reward.
+# 2) UKR_mio_pillar_window_<имя> / UKR_mio_pillar_window_tt_<имя>: бонус опоры при завершении программы окна
+#    «Оборонная промышленность» (remove_effect и подсказка в complete_effect решения UKR_mio_*).
+# Все mio:-эффекты обёрнуты в has_dlc = "Arms Against Tyranny": без DLC организаций нет.
+# Кланы-владельцы (абстракция мода, не утверждение о реальной собственности): met - Малышева, ремонт танков, артиллерия;
+# priv - БПЛА, радиоэлектроника, морские дроны; gas - КрАЗ, Форт; sec - Антонов, Мотор Сич, авиаремонт, верфи, Луч.
+
+UKR_mio_hook_t_drone_army = {
+	if = {
+		limit = { has_dlc = "Arms Against Tyranny" }
+		custom_effect_tooltip = UKR_mio_hook_t_drone_army_tt
+		hidden_effect = {
+			mio:UKR_drone_cluster_organization = {
+				add_mio_funds = 300
+				add_mio_size = 1
+			}
+			mio:UKR_sea_drones_organization = {
+				add_mio_funds = 150
+			}
+		}
+	}
+}
+
+UKR_mio_hook_t_cyber_troops = {
+	if = {
+		limit = { has_dlc = "Arms Against Tyranny" }
+		custom_effect_tooltip = UKR_mio_hook_t_cyber_troops_tt
+		hidden_effect = {
+			mio:UKR_radio_electronics_organization = {
+				add_mio_funds = 250
+				add_mio_size = 1
+			}
+		}
+	}
+}
+
+UKR_mio_hook_t_digital_mobilization = {
+	if = {
+		limit = { has_dlc = "Arms Against Tyranny" }
+		custom_effect_tooltip = UKR_mio_hook_t_digital_mobilization_tt
+		hidden_effect = {
+			mio:UKR_sea_drones_organization = {
+				add_mio_funds = 200
+			}
+			mio:UKR_luch_organization = {
+				add_mio_funds = 150
+			}
+		}
+	}
+}
+
+UKR_mio_hook_l_oligarch_audit = {
+	if = {
+		limit = { has_dlc = "Arms Against Tyranny" }
+		custom_effect_tooltip = UKR_mio_hook_l_oligarch_audit_tt
+		hidden_effect = {
+			mio:UKR_armor_repair_organization = {
+				add_mio_funds = 150
+			}
+			mio:UKR_aircraft_repair_organization = {
+				add_mio_funds = 150
+			}
+		}
+	}
+}
+
+UKR_mio_hook_l_strategic_sectors = {
+	if = {
+		limit = { has_dlc = "Arms Against Tyranny" }
+		custom_effect_tooltip = UKR_mio_hook_l_strategic_sectors_tt
+		hidden_effect = {
+			mio:UKR_motor_sich_organization = {
+				add_mio_funds = 300
+				add_mio_size = 1
+			}
+			mio:UKR_antonov_organization = {
+				add_mio_funds = 300
+				add_mio_size = 1
+			}
+		}
+	}
+}
+
+UKR_mio_hook_l_army_not_for_oligarchs = {
+	if = {
+		limit = { has_dlc = "Arms Against Tyranny" }
+		custom_effect_tooltip = UKR_mio_hook_l_army_not_for_oligarchs_tt
+		hidden_effect = {
+			mio:UKR_malyshev_organization = {
+				add_mio_funds = 250
+				add_mio_size = 1
+			}
+			mio:UKR_artillery_works_organization = {
+				add_mio_funds = 200
+			}
+		}
+	}
+}
+
+UKR_mio_hook_ol_procurement = {
+	if = {
+		limit = { has_dlc = "Arms Against Tyranny" }
+		custom_effect_tooltip = UKR_mio_hook_ol_procurement_tt
+		hidden_effect = {
+			mio:UKR_antonov_organization = {
+				add_mio_funds = 60
+			}
+			mio:UKR_motor_sich_organization = {
+				add_mio_funds = 60
+			}
+			mio:UKR_aircraft_repair_organization = {
+				add_mio_funds = 60
+			}
+			mio:UKR_mykolaiv_yard_organization = {
+				add_mio_funds = 60
+			}
+			mio:UKR_luch_organization = {
+				add_mio_funds = 60
+			}
+		}
+	}
+}
+
+UKR_mio_hook_ol_clan_industry = {
+	if = {
+		limit = { has_dlc = "Arms Against Tyranny" }
+		custom_effect_tooltip = UKR_mio_hook_ol_clan_industry_tt
+		hidden_effect = {
+			mio:UKR_malyshev_organization = {
+				add_mio_funds = 100
+			}
+			mio:UKR_armor_repair_organization = {
+				add_mio_funds = 100
+			}
+			mio:UKR_artillery_works_organization = {
+				add_mio_funds = 100
+			}
+		}
+	}
+}
+
+UKR_mio_hook_ol_mobilization_reserve = {
+	if = {
+		limit = { has_dlc = "Arms Against Tyranny" }
+		custom_effect_tooltip = UKR_mio_hook_ol_mobilization_reserve_tt
+		hidden_effect = {
+			mio:UKR_kraz_organization = {
+				add_mio_funds = 100
+			}
+			mio:UKR_fort_organization = {
+				add_mio_funds = 100
+			}
+			mio:UKR_drone_cluster_organization = {
+				add_mio_funds = 70
+			}
+			mio:UKR_radio_electronics_organization = {
+				add_mio_funds = 70
+			}
+			mio:UKR_sea_drones_organization = {
+				add_mio_funds = 70
+			}
+		}
+	}
+}
+
+UKR_mio_hook_np_army_artels = {
+	if = {
+		limit = { has_dlc = "Arms Against Tyranny" }
+		custom_effect_tooltip = UKR_mio_hook_np_army_artels_tt
+		hidden_effect = {
+			mio:UKR_fort_organization = {
+				add_mio_funds = 250
+				add_mio_size = 1
+			}
+			mio:UKR_kraz_organization = {
+				add_mio_funds = 100
+			}
+		}
+	}
+}
+
+UKR_mio_hook_np_army_arms = {
+	if = {
+		limit = { has_dlc = "Arms Against Tyranny" }
+		custom_effect_tooltip = UKR_mio_hook_np_army_arms_tt
+		hidden_effect = {
+			mio:UKR_artillery_works_organization = {
+				add_mio_funds = 250
+				add_mio_size = 1
+			}
+			mio:UKR_luch_organization = {
+				add_mio_funds = 150
+			}
+		}
+	}
+}
+
+UKR_mio_hook_np_ethnic_economy = {
+	if = {
+		limit = { has_dlc = "Arms Against Tyranny" }
+		custom_effect_tooltip = UKR_mio_hook_np_ethnic_economy_tt
+		hidden_effect = {
+			mio:UKR_kraz_organization = {
+				add_mio_funds = 200
+				add_mio_size = 1
+			}
+			mio:UKR_malyshev_organization = {
+				add_mio_funds = 100
+			}
+		}
+	}
+}
+
+# Завод имени Малышева: клан met
+UKR_mio_pillar_window_malyshev = {
+	if = {
+		limit = { has_dlc = "Arms Against Tyranny" }
+		if = {
+			limit = {
+				has_country_flag = UKR_pillar_chosen_left
+			}
+			mio:UKR_malyshev_organization = {
+				add_mio_funds = 100
+			}
+			add_stability = 0.01
+		}
+		if = {
+			limit = {
+				has_country_flag = UKR_pillar_chosen_oligarchs
+				has_country_flag = UKR_ol_vertical_done
+			}
+			mio:UKR_malyshev_organization = {
+				add_mio_funds = 100
+			}
+			hidden_effect = {
+				set_temp_variable = { UKR_ol_amt = 8 }
+				UKR_ol_claim_met = yes
+				set_temp_variable = { UKR_ol_sh = 1 }
+				UKR_ol_share_met = yes
+			}
+		}
+	}
+}
+
+UKR_mio_pillar_window_tt_malyshev = {
+	if = {
+		limit = { has_dlc = "Arms Against Tyranny" }
+		if = {
+			limit = {
+				has_country_flag = UKR_pillar_chosen_left
+			}
+			custom_effect_tooltip = UKR_mio_pillar_tt_l
+		}
+		if = {
+			limit = {
+				has_country_flag = UKR_pillar_chosen_oligarchs
+				has_country_flag = UKR_ol_vertical_done
+			}
+			custom_effect_tooltip = UKR_mio_pillar_tt_o_met
+		}
+	}
+}
+
+# Бронетанковые ремонтные заводы: клан met
+UKR_mio_pillar_window_armor_repair = {
+	if = {
+		limit = { has_dlc = "Arms Against Tyranny" }
+		if = {
+			limit = {
+				has_country_flag = UKR_pillar_chosen_left
+			}
+			mio:UKR_armor_repair_organization = {
+				add_mio_funds = 100
+			}
+			add_stability = 0.01
+		}
+		if = {
+			limit = {
+				has_country_flag = UKR_pillar_chosen_oligarchs
+				has_country_flag = UKR_ol_vertical_done
+			}
+			mio:UKR_armor_repair_organization = {
+				add_mio_funds = 100
+			}
+			hidden_effect = {
+				set_temp_variable = { UKR_ol_amt = 8 }
+				UKR_ol_claim_met = yes
+				set_temp_variable = { UKR_ol_sh = 1 }
+				UKR_ol_share_met = yes
+			}
+		}
+	}
+}
+
+UKR_mio_pillar_window_tt_armor_repair = {
+	if = {
+		limit = { has_dlc = "Arms Against Tyranny" }
+		if = {
+			limit = {
+				has_country_flag = UKR_pillar_chosen_left
+			}
+			custom_effect_tooltip = UKR_mio_pillar_tt_l
+		}
+		if = {
+			limit = {
+				has_country_flag = UKR_pillar_chosen_oligarchs
+				has_country_flag = UKR_ol_vertical_done
+			}
+			custom_effect_tooltip = UKR_mio_pillar_tt_o_met
+		}
+	}
+}
+
+# Артиллерийские заводы: клан met
+UKR_mio_pillar_window_artillery_works = {
+	if = {
+		limit = { has_dlc = "Arms Against Tyranny" }
+		if = {
+			limit = {
+				has_country_flag = UKR_pillar_chosen_left
+			}
+			mio:UKR_artillery_works_organization = {
+				add_mio_funds = 100
+			}
+			add_stability = 0.01
+		}
+		if = {
+			limit = {
+				has_country_flag = UKR_pillar_chosen_nationalists
+			}
+			mio:UKR_artillery_works_organization = {
+				add_mio_funds = 100
+			}
+			add_war_support = 0.01
+		}
+		if = {
+			limit = {
+				has_country_flag = UKR_pillar_chosen_oligarchs
+				has_country_flag = UKR_ol_vertical_done
+			}
+			mio:UKR_artillery_works_organization = {
+				add_mio_funds = 100
+			}
+			hidden_effect = {
+				set_temp_variable = { UKR_ol_amt = 8 }
+				UKR_ol_claim_met = yes
+				set_temp_variable = { UKR_ol_sh = 1 }
+				UKR_ol_share_met = yes
+			}
+		}
+	}
+}
+
+UKR_mio_pillar_window_tt_artillery_works = {
+	if = {
+		limit = { has_dlc = "Arms Against Tyranny" }
+		if = {
+			limit = {
+				has_country_flag = UKR_pillar_chosen_left
+			}
+			custom_effect_tooltip = UKR_mio_pillar_tt_l
+		}
+		if = {
+			limit = {
+				has_country_flag = UKR_pillar_chosen_nationalists
+			}
+			custom_effect_tooltip = UKR_mio_pillar_tt_n
+		}
+		if = {
+			limit = {
+				has_country_flag = UKR_pillar_chosen_oligarchs
+				has_country_flag = UKR_ol_vertical_done
+			}
+			custom_effect_tooltip = UKR_mio_pillar_tt_o_met
+		}
+	}
+}
+
+# Оборонный кластер БПЛА: клан priv
+UKR_mio_pillar_window_drone_cluster = {
+	if = {
+		limit = { has_dlc = "Arms Against Tyranny" }
+		if = {
+			limit = {
+				has_country_flag = UKR_pillar_chosen_technocrats
+			}
+			mio:UKR_drone_cluster_organization = {
+				add_mio_funds = 100
+			}
+		}
+		if = {
+			limit = {
+				has_country_flag = UKR_pillar_chosen_oligarchs
+				has_country_flag = UKR_ol_vertical_done
+			}
+			mio:UKR_drone_cluster_organization = {
+				add_mio_funds = 100
+			}
+			hidden_effect = {
+				set_temp_variable = { UKR_ol_amt = 8 }
+				UKR_ol_claim_priv = yes
+				set_temp_variable = { UKR_ol_sh = 1 }
+				UKR_ol_share_priv = yes
+			}
+		}
+	}
+}
+
+UKR_mio_pillar_window_tt_drone_cluster = {
+	if = {
+		limit = { has_dlc = "Arms Against Tyranny" }
+		if = {
+			limit = {
+				has_country_flag = UKR_pillar_chosen_technocrats
+			}
+			custom_effect_tooltip = UKR_mio_pillar_tt_t
+		}
+		if = {
+			limit = {
+				has_country_flag = UKR_pillar_chosen_oligarchs
+				has_country_flag = UKR_ol_vertical_done
+			}
+			custom_effect_tooltip = UKR_mio_pillar_tt_o_priv
+		}
+	}
+}
+
+# Радиоэлектроника: клан priv
+UKR_mio_pillar_window_radio_electronics = {
+	if = {
+		limit = { has_dlc = "Arms Against Tyranny" }
+		if = {
+			limit = {
+				has_country_flag = UKR_pillar_chosen_technocrats
+			}
+			mio:UKR_radio_electronics_organization = {
+				add_mio_funds = 100
+			}
+		}
+		if = {
+			limit = {
+				has_country_flag = UKR_pillar_chosen_oligarchs
+				has_country_flag = UKR_ol_vertical_done
+			}
+			mio:UKR_radio_electronics_organization = {
+				add_mio_funds = 100
+			}
+			hidden_effect = {
+				set_temp_variable = { UKR_ol_amt = 8 }
+				UKR_ol_claim_priv = yes
+				set_temp_variable = { UKR_ol_sh = 1 }
+				UKR_ol_share_priv = yes
+			}
+		}
+	}
+}
+
+UKR_mio_pillar_window_tt_radio_electronics = {
+	if = {
+		limit = { has_dlc = "Arms Against Tyranny" }
+		if = {
+			limit = {
+				has_country_flag = UKR_pillar_chosen_technocrats
+			}
+			custom_effect_tooltip = UKR_mio_pillar_tt_t
+		}
+		if = {
+			limit = {
+				has_country_flag = UKR_pillar_chosen_oligarchs
+				has_country_flag = UKR_ol_vertical_done
+			}
+			custom_effect_tooltip = UKR_mio_pillar_tt_o_priv
+		}
+	}
+}
+
+# Морские дроны: клан priv
+UKR_mio_pillar_window_sea_drones = {
+	if = {
+		limit = { has_dlc = "Arms Against Tyranny" }
+		if = {
+			limit = {
+				has_country_flag = UKR_pillar_chosen_technocrats
+			}
+			mio:UKR_sea_drones_organization = {
+				add_mio_funds = 100
+			}
+		}
+		if = {
+			limit = {
+				has_country_flag = UKR_pillar_chosen_oligarchs
+				has_country_flag = UKR_ol_vertical_done
+			}
+			mio:UKR_sea_drones_organization = {
+				add_mio_funds = 100
+			}
+			hidden_effect = {
+				set_temp_variable = { UKR_ol_amt = 8 }
+				UKR_ol_claim_priv = yes
+				set_temp_variable = { UKR_ol_sh = 1 }
+				UKR_ol_share_priv = yes
+			}
+		}
+	}
+}
+
+UKR_mio_pillar_window_tt_sea_drones = {
+	if = {
+		limit = { has_dlc = "Arms Against Tyranny" }
+		if = {
+			limit = {
+				has_country_flag = UKR_pillar_chosen_technocrats
+			}
+			custom_effect_tooltip = UKR_mio_pillar_tt_t
+		}
+		if = {
+			limit = {
+				has_country_flag = UKR_pillar_chosen_oligarchs
+				has_country_flag = UKR_ol_vertical_done
+			}
+			custom_effect_tooltip = UKR_mio_pillar_tt_o_priv
+		}
+	}
+}
+
+# КрАЗ: клан gas
+UKR_mio_pillar_window_kraz = {
+	if = {
+		limit = { has_dlc = "Arms Against Tyranny" }
+		if = {
+			limit = {
+				has_country_flag = UKR_pillar_chosen_nationalists
+			}
+			mio:UKR_kraz_organization = {
+				add_mio_funds = 100
+			}
+			add_war_support = 0.01
+		}
+		if = {
+			limit = {
+				has_country_flag = UKR_pillar_chosen_oligarchs
+				has_country_flag = UKR_ol_vertical_done
+			}
+			mio:UKR_kraz_organization = {
+				add_mio_funds = 100
+			}
+			hidden_effect = {
+				set_temp_variable = { UKR_ol_amt = 8 }
+				UKR_ol_claim_gas = yes
+				set_temp_variable = { UKR_ol_sh = 1 }
+				UKR_ol_share_gas = yes
+			}
+		}
+	}
+}
+
+UKR_mio_pillar_window_tt_kraz = {
+	if = {
+		limit = { has_dlc = "Arms Against Tyranny" }
+		if = {
+			limit = {
+				has_country_flag = UKR_pillar_chosen_nationalists
+			}
+			custom_effect_tooltip = UKR_mio_pillar_tt_n
+		}
+		if = {
+			limit = {
+				has_country_flag = UKR_pillar_chosen_oligarchs
+				has_country_flag = UKR_ol_vertical_done
+			}
+			custom_effect_tooltip = UKR_mio_pillar_tt_o_gas
+		}
+	}
+}
+
+# Форт: клан gas
+UKR_mio_pillar_window_fort = {
+	if = {
+		limit = { has_dlc = "Arms Against Tyranny" }
+		if = {
+			limit = {
+				has_country_flag = UKR_pillar_chosen_nationalists
+			}
+			mio:UKR_fort_organization = {
+				add_mio_funds = 100
+			}
+			add_war_support = 0.01
+		}
+		if = {
+			limit = {
+				has_country_flag = UKR_pillar_chosen_oligarchs
+				has_country_flag = UKR_ol_vertical_done
+			}
+			mio:UKR_fort_organization = {
+				add_mio_funds = 100
+			}
+			hidden_effect = {
+				set_temp_variable = { UKR_ol_amt = 8 }
+				UKR_ol_claim_gas = yes
+				set_temp_variable = { UKR_ol_sh = 1 }
+				UKR_ol_share_gas = yes
+			}
+		}
+	}
+}
+
+UKR_mio_pillar_window_tt_fort = {
+	if = {
+		limit = { has_dlc = "Arms Against Tyranny" }
+		if = {
+			limit = {
+				has_country_flag = UKR_pillar_chosen_nationalists
+			}
+			custom_effect_tooltip = UKR_mio_pillar_tt_n
+		}
+		if = {
+			limit = {
+				has_country_flag = UKR_pillar_chosen_oligarchs
+				has_country_flag = UKR_ol_vertical_done
+			}
+			custom_effect_tooltip = UKR_mio_pillar_tt_o_gas
+		}
+	}
+}
+
+# Антонов: клан sec
+UKR_mio_pillar_window_antonov = {
+	if = {
+		limit = { has_dlc = "Arms Against Tyranny" }
+		if = {
+			limit = {
+				has_country_flag = UKR_pillar_chosen_left
+			}
+			mio:UKR_antonov_organization = {
+				add_mio_funds = 100
+			}
+			add_stability = 0.01
+		}
+		if = {
+			limit = {
+				has_country_flag = UKR_pillar_chosen_oligarchs
+				has_country_flag = UKR_ol_vertical_done
+			}
+			mio:UKR_antonov_organization = {
+				add_mio_funds = 100
+			}
+			hidden_effect = {
+				set_temp_variable = { UKR_ol_amt = 8 }
+				UKR_ol_claim_sec = yes
+				set_temp_variable = { UKR_ol_sh = 1 }
+				UKR_ol_share_sec = yes
+			}
+		}
+	}
+}
+
+UKR_mio_pillar_window_tt_antonov = {
+	if = {
+		limit = { has_dlc = "Arms Against Tyranny" }
+		if = {
+			limit = {
+				has_country_flag = UKR_pillar_chosen_left
+			}
+			custom_effect_tooltip = UKR_mio_pillar_tt_l
+		}
+		if = {
+			limit = {
+				has_country_flag = UKR_pillar_chosen_oligarchs
+				has_country_flag = UKR_ol_vertical_done
+			}
+			custom_effect_tooltip = UKR_mio_pillar_tt_o_sec
+		}
+	}
+}
+
+# Мотор Сич: клан sec
+UKR_mio_pillar_window_motor_sich = {
+	if = {
+		limit = { has_dlc = "Arms Against Tyranny" }
+		if = {
+			limit = {
+				has_country_flag = UKR_pillar_chosen_left
+			}
+			mio:UKR_motor_sich_organization = {
+				add_mio_funds = 100
+			}
+			add_stability = 0.01
+		}
+		if = {
+			limit = {
+				has_country_flag = UKR_pillar_chosen_oligarchs
+				has_country_flag = UKR_ol_vertical_done
+			}
+			mio:UKR_motor_sich_organization = {
+				add_mio_funds = 100
+			}
+			hidden_effect = {
+				set_temp_variable = { UKR_ol_amt = 8 }
+				UKR_ol_claim_sec = yes
+				set_temp_variable = { UKR_ol_sh = 1 }
+				UKR_ol_share_sec = yes
+			}
+		}
+	}
+}
+
+UKR_mio_pillar_window_tt_motor_sich = {
+	if = {
+		limit = { has_dlc = "Arms Against Tyranny" }
+		if = {
+			limit = {
+				has_country_flag = UKR_pillar_chosen_left
+			}
+			custom_effect_tooltip = UKR_mio_pillar_tt_l
+		}
+		if = {
+			limit = {
+				has_country_flag = UKR_pillar_chosen_oligarchs
+				has_country_flag = UKR_ol_vertical_done
+			}
+			custom_effect_tooltip = UKR_mio_pillar_tt_o_sec
+		}
+	}
+}
+
+# Авиаремонтные заводы: клан sec
+UKR_mio_pillar_window_aircraft_repair = {
+	if = {
+		limit = { has_dlc = "Arms Against Tyranny" }
+		if = {
+			limit = {
+				has_country_flag = UKR_pillar_chosen_left
+			}
+			mio:UKR_aircraft_repair_organization = {
+				add_mio_funds = 100
+			}
+			add_stability = 0.01
+		}
+		if = {
+			limit = {
+				has_country_flag = UKR_pillar_chosen_oligarchs
+				has_country_flag = UKR_ol_vertical_done
+			}
+			mio:UKR_aircraft_repair_organization = {
+				add_mio_funds = 100
+			}
+			hidden_effect = {
+				set_temp_variable = { UKR_ol_amt = 8 }
+				UKR_ol_claim_sec = yes
+				set_temp_variable = { UKR_ol_sh = 1 }
+				UKR_ol_share_sec = yes
+			}
+		}
+	}
+}
+
+UKR_mio_pillar_window_tt_aircraft_repair = {
+	if = {
+		limit = { has_dlc = "Arms Against Tyranny" }
+		if = {
+			limit = {
+				has_country_flag = UKR_pillar_chosen_left
+			}
+			custom_effect_tooltip = UKR_mio_pillar_tt_l
+		}
+		if = {
+			limit = {
+				has_country_flag = UKR_pillar_chosen_oligarchs
+				has_country_flag = UKR_ol_vertical_done
+			}
+			custom_effect_tooltip = UKR_mio_pillar_tt_o_sec
+		}
+	}
+}
+
+# Николаевские верфи: клан sec
+UKR_mio_pillar_window_mykolaiv_yard = {
+	if = {
+		limit = { has_dlc = "Arms Against Tyranny" }
+		if = {
+			limit = {
+				has_country_flag = UKR_pillar_chosen_left
+			}
+			mio:UKR_mykolaiv_yard_organization = {
+				add_mio_funds = 100
+			}
+			add_stability = 0.01
+		}
+		if = {
+			limit = {
+				has_country_flag = UKR_pillar_chosen_oligarchs
+				has_country_flag = UKR_ol_vertical_done
+			}
+			mio:UKR_mykolaiv_yard_organization = {
+				add_mio_funds = 100
+			}
+			hidden_effect = {
+				set_temp_variable = { UKR_ol_amt = 8 }
+				UKR_ol_claim_sec = yes
+				set_temp_variable = { UKR_ol_sh = 1 }
+				UKR_ol_share_sec = yes
+			}
+		}
+	}
+}
+
+UKR_mio_pillar_window_tt_mykolaiv_yard = {
+	if = {
+		limit = { has_dlc = "Arms Against Tyranny" }
+		if = {
+			limit = {
+				has_country_flag = UKR_pillar_chosen_left
+			}
+			custom_effect_tooltip = UKR_mio_pillar_tt_l
+		}
+		if = {
+			limit = {
+				has_country_flag = UKR_pillar_chosen_oligarchs
+				has_country_flag = UKR_ol_vertical_done
+			}
+			custom_effect_tooltip = UKR_mio_pillar_tt_o_sec
+		}
+	}
+}
+
+# Луч и Южное: клан sec
+UKR_mio_pillar_window_luch = {
+	if = {
+		limit = { has_dlc = "Arms Against Tyranny" }
+		if = {
+			limit = {
+				has_country_flag = UKR_pillar_chosen_technocrats
+			}
+			mio:UKR_luch_organization = {
+				add_mio_funds = 100
+			}
+		}
+		if = {
+			limit = {
+				has_country_flag = UKR_pillar_chosen_nationalists
+			}
+			mio:UKR_luch_organization = {
+				add_mio_funds = 100
+			}
+			add_war_support = 0.01
+		}
+		if = {
+			limit = {
+				has_country_flag = UKR_pillar_chosen_oligarchs
+				has_country_flag = UKR_ol_vertical_done
+			}
+			mio:UKR_luch_organization = {
+				add_mio_funds = 100
+			}
+			hidden_effect = {
+				set_temp_variable = { UKR_ol_amt = 8 }
+				UKR_ol_claim_sec = yes
+				set_temp_variable = { UKR_ol_sh = 1 }
+				UKR_ol_share_sec = yes
+			}
+		}
+	}
+}
+
+UKR_mio_pillar_window_tt_luch = {
+	if = {
+		limit = { has_dlc = "Arms Against Tyranny" }
+		if = {
+			limit = {
+				has_country_flag = UKR_pillar_chosen_technocrats
+			}
+			custom_effect_tooltip = UKR_mio_pillar_tt_t
+		}
+		if = {
+			limit = {
+				has_country_flag = UKR_pillar_chosen_nationalists
+			}
+			custom_effect_tooltip = UKR_mio_pillar_tt_n
+		}
+		if = {
+			limit = {
+				has_country_flag = UKR_pillar_chosen_oligarchs
+				has_country_flag = UKR_ol_vertical_done
+			}
+			custom_effect_tooltip = UKR_mio_pillar_tt_o_sec
+		}
+	}
+}

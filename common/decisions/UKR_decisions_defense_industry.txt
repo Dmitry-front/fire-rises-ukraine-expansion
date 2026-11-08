@@ -3,7 +3,8 @@
 # -> по окончании идея снимается и организация получает funds (mio:..., add_mio_funds, как у SOV_izhevsk_kalashnikov_expansion).
 # Стоимость: политсила - нативный cost (движок сам списывает и красит в панели), деньги - custom_cost_trigger (ликвидность, income_var)
 # с текстом UKR_mio_cost_<N>B и парой UKR_mio_cost_<N>B_blocked (как dx_more_than_*_blocked в TFR: красный, когда не хватает).
-# Подсказка о funds: UKR_mio_funds_<N>_tt.
+# Подсказка о funds: UKR_mio_funds_<N>_tt. Бонус опоры блока 3 (funds, у олигархов претензии клана): UKR_mio_pillar_window_<имя>,
+# подсказка UKR_mio_pillar_window_tt_<имя> (common/scripted_effects/UKR_mio_pillar_effects.txt).
 UKR_defense_industry_category = {
 
 	UKR_mio_malyshev_overhaul = {
@@ -39,10 +40,12 @@ UKR_defense_industry_category = {
 			add_income = yes
 			add_ideas = UKR_mio_malyshev_boost
 			custom_effect_tooltip = UKR_mio_funds_300_tt
+			UKR_mio_pillar_window_tt_malyshev = yes
 		}
 
 		remove_effect = {
 			remove_ideas = UKR_mio_malyshev_boost
+			UKR_mio_pillar_window_malyshev = yes
 			mio:UKR_malyshev_organization = {
 				add_mio_funds = 300
 			}
@@ -86,10 +89,12 @@ UKR_defense_industry_category = {
 			add_income = yes
 			add_ideas = UKR_mio_trophy_boost
 			custom_effect_tooltip = UKR_mio_funds_200_tt
+			UKR_mio_pillar_window_tt_armor_repair = yes
 		}
 
 		remove_effect = {
 			remove_ideas = UKR_mio_trophy_boost
+			UKR_mio_pillar_window_armor_repair = yes
 			mio:UKR_armor_repair_organization = {
 				add_mio_funds = 200
 			}
@@ -133,10 +138,12 @@ UKR_defense_industry_category = {
 			add_income = yes
 			add_ideas = UKR_mio_kraz_boost
 			custom_effect_tooltip = UKR_mio_funds_200_tt
+			UKR_mio_pillar_window_tt_kraz = yes
 		}
 
 		remove_effect = {
 			remove_ideas = UKR_mio_kraz_boost
+			UKR_mio_pillar_window_kraz = yes
 			mio:UKR_kraz_organization = {
 				add_mio_funds = 200
 			}
@@ -180,10 +187,12 @@ UKR_defense_industry_category = {
 			add_income = yes
 			add_ideas = UKR_mio_drone_boost
 			custom_effect_tooltip = UKR_mio_funds_300_tt
+			UKR_mio_pillar_window_tt_drone_cluster = yes
 		}
 
 		remove_effect = {
 			remove_ideas = UKR_mio_drone_boost
+			UKR_mio_pillar_window_drone_cluster = yes
 			mio:UKR_drone_cluster_organization = {
 				add_mio_funds = 300
 			}
@@ -234,10 +243,12 @@ UKR_defense_industry_category = {
 			add_income = yes
 			add_ideas = UKR_mio_antonov_boost
 			custom_effect_tooltip = UKR_mio_funds_250_tt
+			UKR_mio_pillar_window_tt_antonov = yes
 		}
 
 		remove_effect = {
 			remove_ideas = UKR_mio_antonov_boost
+			UKR_mio_pillar_window_antonov = yes
 			mio:UKR_antonov_organization = {
 				add_mio_funds = 250
 			}
@@ -281,10 +292,12 @@ UKR_defense_industry_category = {
 			add_income = yes
 			add_ideas = UKR_mio_motor_sich_boost
 			custom_effect_tooltip = UKR_mio_funds_250_tt
+			UKR_mio_pillar_window_tt_motor_sich = yes
 		}
 
 		remove_effect = {
 			remove_ideas = UKR_mio_motor_sich_boost
+			UKR_mio_pillar_window_motor_sich = yes
 			mio:UKR_motor_sich_organization = {
 				add_mio_funds = 250
 			}
@@ -328,10 +341,12 @@ UKR_defense_industry_category = {
 			add_income = yes
 			add_ideas = UKR_mio_aircraft_boost
 			custom_effect_tooltip = UKR_mio_funds_200_tt
+			UKR_mio_pillar_window_tt_aircraft_repair = yes
 		}
 
 		remove_effect = {
 			remove_ideas = UKR_mio_aircraft_boost
+			UKR_mio_pillar_window_aircraft_repair = yes
 			mio:UKR_aircraft_repair_organization = {
 				add_mio_funds = 200
 			}
@@ -375,10 +390,12 @@ UKR_defense_industry_category = {
 			add_income = yes
 			add_ideas = UKR_mio_yard_boost
 			custom_effect_tooltip = UKR_mio_funds_300_tt
+			UKR_mio_pillar_window_tt_mykolaiv_yard = yes
 		}
 
 		remove_effect = {
 			remove_ideas = UKR_mio_yard_boost
+			UKR_mio_pillar_window_mykolaiv_yard = yes
 			mio:UKR_mykolaiv_yard_organization = {
 				add_mio_funds = 300
 			}
@@ -422,10 +439,12 @@ UKR_defense_industry_category = {
 			add_income = yes
 			add_ideas = UKR_mio_fort_boost
 			custom_effect_tooltip = UKR_mio_funds_200_tt
+			UKR_mio_pillar_window_tt_fort = yes
 		}
 
 		remove_effect = {
 			remove_ideas = UKR_mio_fort_boost
+			UKR_mio_pillar_window_fort = yes
 			mio:UKR_fort_organization = {
 				add_mio_funds = 200
 			}
@@ -469,10 +488,12 @@ UKR_defense_industry_category = {
 			add_income = yes
 			add_ideas = UKR_mio_artillery_boost
 			custom_effect_tooltip = UKR_mio_funds_250_tt
+			UKR_mio_pillar_window_tt_artillery_works = yes
 		}
 
 		remove_effect = {
 			remove_ideas = UKR_mio_artillery_boost
+			UKR_mio_pillar_window_artillery_works = yes
 			mio:UKR_artillery_works_organization = {
 				add_mio_funds = 250
 			}
@@ -516,10 +537,12 @@ UKR_defense_industry_category = {
 			add_income = yes
 			add_ideas = UKR_mio_luch_boost
 			custom_effect_tooltip = UKR_mio_funds_300_tt
+			UKR_mio_pillar_window_tt_luch = yes
 		}
 
 		remove_effect = {
 			remove_ideas = UKR_mio_luch_boost
+			UKR_mio_pillar_window_luch = yes
 			mio:UKR_luch_organization = {
 				add_mio_funds = 300
 			}
@@ -563,10 +586,12 @@ UKR_defense_industry_category = {
 			add_income = yes
 			add_ideas = UKR_mio_radio_boost
 			custom_effect_tooltip = UKR_mio_funds_200_tt
+			UKR_mio_pillar_window_tt_radio_electronics = yes
 		}
 
 		remove_effect = {
 			remove_ideas = UKR_mio_radio_boost
+			UKR_mio_pillar_window_radio_electronics = yes
 			mio:UKR_radio_electronics_organization = {
 				add_mio_funds = 200
 			}
@@ -610,10 +635,12 @@ UKR_defense_industry_category = {
 			add_income = yes
 			add_ideas = UKR_mio_sea_drones_boost
 			custom_effect_tooltip = UKR_mio_funds_250_tt
+			UKR_mio_pillar_window_tt_sea_drones = yes
 		}
 
 		remove_effect = {
 			remove_ideas = UKR_mio_sea_drones_boost
+			UKR_mio_pillar_window_sea_drones = yes
 			mio:UKR_sea_drones_organization = {
 				add_mio_funds = 250
 			}

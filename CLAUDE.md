@@ -221,7 +221,7 @@ localisation/{russian,english}/
 - **`GFX_report_event_ukrainian_civil_war` не определён локально** - спрайт TFR, используется как временная картинка.
 - **`GFX_idea_UKR_minsk_protocal`** - опечатка есть в оригинале TFR (`picture = UKR_minsk_protocal`); иконка в TFR та же. Не наша.
 - **Дубли ключей в `TFR_characters_l_*.yml`** (EN 5, RU 18) - унаследованы от копии файла TFR, не трогаем (TD-11).
-- **«Ключей только в EN / только в RU», «RU-ключи без кириллицы»** в блоках `GATHERING_STORM`, `BLITZKRIEG`, `SOV_party_resources`, `COUNTRY_*` - ключи TFR. Наши два случая: `ukraine.314.t` («Pandora Papers» - собственное имя, не дефект) и мёртвый `UKR_begin_land_reforms` (TD-40).
+- **«Ключей только в EN / только в RU», «RU-ключи без кириллицы»** в блоках `GATHERING_STORM`, `BLITZKRIEG`, `SOV_party_resources`, `COUNTRY_*` - ключи TFR. Наш единственный случай: `ukraine.314.t` («Pandora Papers» - собственное имя, не дефект).
 - **«Нет ключей для наших фокусов/событий: 38»** - базовые события TFR `ukraine.6-10`, `15-19`, `belarus.*` и отключённое `russia.76`: в локализации самого TFR этих текстов нет, а вызывает их только игра (`TECH_DEBT.md` закрыто TD-05, `DESIGN.md`, раздел 11).
 - **Имена TFR: 0 несовпадений** - это норма. Если не 0, где-то выдумано имя подидеологии, черты или типа.
 

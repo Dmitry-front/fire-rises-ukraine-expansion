@@ -12,11 +12,11 @@ Claude не может запустить игру. Всё ниже написа
 
 ## A. Загрузка и ошибки `error.log` (сначала это)
 
-- [ ] Нет жалоб на дубль `russia.76` (наша копия отключена `always = no`), нет `fleet_in_being` (TD-20, правка ещё не сделана) (0и, 0е)
+- [ ] Нет жалоб на дубль `russia.76` (наша копия отключена `always = no`); нет жалобы на технологию `fleet_in_being` (закомментирована 08.11.2026) (0и, 0е)
 - [ ] Нет жалоб на `scripted_triggers` (дубль удалён, TD-34) (0и)
 - [ ] Спрайты и портреты: строки `sprite` / `GFX_` / `portrait` / `texture`; особенно `GFX_idea_UKR_minsk_protocal` (опечатка есть и в TFR) (0в, TD-25)
 - [ ] Иконка `UKR_to_the_last` (правило `picture = X` против полного имени, TD-33) (0е)
-- [ ] `interface/frontendgamesetupview.gui`: «Could not find new_content / more_countries / filters» (TD-20)
+- [ ] Меню выбора страны: нет жалоб «Could not find new_content / more_countries / filters» (копии `frontendgamesetupview.*` удалены 08.11.2026); экран выбора страны и стартовая справка Украины открываются; колонки Украины в меню нет (ожидаемо)
 - [ ] Новые ключи модификаторов без ошибок: `party_popularity_stability_factor`, `trade_opinion_factor`, `war_support_weekly`, `opinion_gain_monthly_factor`, `improve_relations_maintain_cost_factor`, `production_speed_arms_factory_factor`, `authoritarian_democrat_drift`, `battalion_upkeep_factor` (0б, 0г)
 - [ ] `UKR_doctrine_bonus_dynamic` (ключи `production_speed_coastal_bunker_factor`, `army_armor_attack_factor`, `max_dig_in_factor`, `max_planning_factor`), решение `UKR_artillery_warfare_course` (черта `fortress_buster`) (0и)
 - [ ] Строки `UKR_modern_armor_entity` в логе - ошибка TFR, не наша

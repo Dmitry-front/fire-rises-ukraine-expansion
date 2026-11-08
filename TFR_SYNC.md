@@ -21,7 +21,7 @@
 | `common/scripted_localisation/TFR_FBI_Scripted_Loc.txt` | наше: четыре текста для UKR и исключение `tag = UKR` в списке «нет контента»; **устаревания нет** |
 | `common/scripted_triggers/00_TFR_scripted_triggers_ZZZ_generic.txt` | **устаревание** (раздел 4) |
 | `common/intelligence_agencies/00_intelligence_agencies.txt` | **устаревание** (раздел 5) |
-| `interface/frontendgamesetupview.gui` / `.gfx` | **устаревание** (раздел 6) |
+| `interface/frontendgamesetupview.gui` / `.gfx` | **удалены 08.11.2026** (раздел 6) |
 | `localisation/{russian,english}/TFR_characters_l_*.yml` | **устаревание: потеряно 221 (ru) / 236 (en) ключей** (раздел 2) |
 | `localisation/russian/TFR_districts_l_russian.yml` / `english/TFR_startup_l_english.yml` | **устаревание: потеряно 165 (ru) / 140 (en) ключей** (раздел 2) |
 | `localisation/*/bookmarks_l_russian.yml` | потерян 1 ключ (`COUNTRY_SELECTION_CHARACTER_DESC`) |
@@ -103,7 +103,7 @@
 - В `.gfx` у TFR текстуры меню `country_selection_entry` и `country_selection_bg` - `.dds`, у нас `.tga`; самих картинок в репозитории нет (они в установленном TFR), так что нужно сверить расширения с файлами игры [ПРОВЕРИТЬ: иначе меню выбора страны покажет пустые фоны].
 - Наше: окно `backdrop_6` с картинкой `GFX_UKR_intro` (`gfx/menu_setup_image/UKR_intro.png`) и спрайт в `.gfx` - не пересекается с оригиналом.
 
-Рекомендация: взять свежий `frontendgamesetupview.gui/.gfx` TFR и заново добавить в них наш блок `backdrop_6` + `GFX_UKR_intro`.
+**Сделано 08.11.2026:** копии удалены (решение автора), меню берёт файлы TFR; спрайт `GFX_UKR_intro` перенесён в `interface/UKR_start_menu.gfx`, колонка `backdrop_6` потеряна. Если нужна колонка Украины, взять свежий `.gui` TFR и добавить блок из `git show fe91f4e:interface/frontendgamesetupview.gui` (строки 705-718).
 
 ---
 

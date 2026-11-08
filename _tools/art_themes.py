@@ -5,7 +5,7 @@
 def T(name, rx, words, ready):
     ART_THEMES.append((name, rx, words, ready))
 
-T('выборы', r'выбор|голосован|бюллетен|избирател|кандидат|тур[а-я]* |рейтинг',
+T('выборы', r'выбор|голосован|бюллетен|избирател|кандидат|тур[а-я]*\b|рейтинг',
   ['election', 'vote', 'ballot', 'campaign'],
   ['GFX_UKR_2024_election', 'GFX_UKR_2019_election', 'GFX_report_event_election_vote', 'GFX_generic_elections', 'GFX_ukraine_election_zelensky'])
 T('кампания, митинг в поддержку', r'кампани|стадион|предвыбор|агитац|штаб',
@@ -23,7 +23,7 @@ T('майдан, революция', r'майдан|революци|досто
 T('суд, дело, обыски', r'\bсуд|дело|вакс|набу|обыск|следстви|приговор|обвин|прокурор|прокуратур|заседани',
   ['court', 'trial', 'judge', 'justice', 'police'],
   ['GFX_report_event_gre_trial', 'GFX_rus_court', 'GFX_Supremecourt', 'GFX_UKR_big_corruption_scandal', 'GFX_UKR_ministr_avakov_scandal'])
-T('коррупция, скандал, утечка', r'коррупц|скандал|утечк|слив|разоблач|публикаци|взятк|расследован',
+T('коррупция, скандал, утечка', r'коррупц|скандал|утечк|слив|разоблач|публикаци|взятк|расследован|чиновник|дач[аиу]|тёщ|звоночек',
   ['corrupt', 'scandal', 'leak', 'newspaper'],
   ['GFX_UKR_big_corruption_scandal', 'GFX_SOV_busted_corruption', 'GFX_UKR_ministr_avakov_scandal'])
 T('олигархи, кланы, бизнес', r'олигарх|клан|приват|металл|энергетик|бизнес|концерн|холдинг|коломойск|ахметов|акционер',
@@ -65,7 +65,7 @@ T('церковь, религия', r'церков|храм|православн
 T('цифра, Дія, дроны, кибер', r'цифров|\bдія\b|дия|дрон|кибер|хакатон|приложени|смартфон|онлайн|электронн|е-голос',
   ['digital', 'cyber', 'drone', 'computer', 'internet'],
   ['GFX_UKR_digital_state', 'GFX_UKR_it_growth', 'GFX_PRC_drone_uav'])
-T('телевидение, эфир, соцсети', r'телемарафон|эфир|\bтв\b|телевиз|ток-шоу|ролик|реклам|соцсет|чат|журналист|пресс|канал|\bсми\b|1\+1',
+T('телевидение, эфир, соцсети', r'марафон|эфир|\bтв\b|телевиз|ток-шоу|ролик|реклам|соцсет|чат|журналист|пресс|канал|\bсми\b|1\+1',
   ['media', 'tv', 'television', 'broadcast', 'press', 'journalists'],
   ['GFX_generic_media', 'GFX_report_event_journalists_speech', 'GFX_USB_white_house_media_room'])
 T('дебаты, форум, съезд, совещание', r'дебат|форум|съезд|конвент|комисси|совещани|обед|ужин|встреч|заседани|саммит|конференц',
@@ -155,3 +155,17 @@ T('портрет страны, итоги', r'портрет|итоги|рес�
 T('Ермак, опора, дело', r'ермак|опор[аыу]|межигор|бюро|ваке?с',
   ['corrupt', 'scandal', 'court'],
   ['GFX_UKR_big_corruption_scandal', 'GFX_UKR_ministr_avakov_scandal', 'GFX_report_event_gre_trial'])
+
+# Темы под ранее неохваченные события
+T('усталость от войны, мирная платформа', r'партия мира|жизнь важнее|военкомат|устал|бронь|наклейк|мирн',
+  ['peace', 'protest', 'fatigue', 'refugee'],
+  ['GFX_event_UKR_war_fatigue', 'GFX_event_UKR_war_fatigue_up', 'GFX_JAP_peace_protests', 'GFX_stavropol_peace'])
+T('коалиция, союзник, фракции', r'союзник|коалици|за будущее|сорвать|нервнич|фракци',
+  ['coalition', 'handshake', 'parliament'],
+  ['GFX_report_event_generic_handshake', 'GFX_report_event_generic_parliament', 'GFX_UKR_rada_oligarchy'])
+T('штаб, карта, стратегия кампании', r'штаб|карт[аыу]\b|убедить|электорат|лоскутн|лагер[ья]|между тур',
+  ['planning', 'campaign', 'map'],
+  ['GFX_report_event_military_planning', 'GFX_generic_meeting_room', 'GFX_UKR_2024_election'])
+T('телемарафон, зрители', r'телемарафон|марафон|ведущи|комментари|зрител|эфир',
+  ['media', 'tv', 'broadcast'],
+  ['GFX_generic_media', 'GFX_report_event_journalists_speech'])

@@ -130,14 +130,19 @@ def main():
             if not mid: continue
             eid = mid.group(1)
             cur = pic.group(1) if pic else ''
+            hidden = bool(re.search(r'^\s*hidden\s*=\s*yes', b, re.M))
             missing = bool(cur) and cur not in known and cur not in PLACEHOLDERS
             temp = (cur in PLACEHOLDERS) or missing
             if not show_all and not temp: continue
             t = clean(loc.get(eid + '.t', ''))
             d = clean(loc.get(eid + '.d', ''))
             themes, cands = suggest(t, d, tfr, allgfx, ours)
+            if not t and not d:
+                themes = ['нет текста у нас (служебное событие TFR, картинка не важна)']
+            elif hidden:
+                themes = ['скрытое событие'] + themes
             rows.append(dict(file=base, id=eid, kind=kind, title=t, desc=d, cur=cur, missing=missing,
-                             orig=(eid in tfr_events),
+                             orig=(eid in tfr_events), hidden=hidden,
                              temp=temp, themes=themes, cands=cands))
     # сохранить колонку «Решение»
     decided = {}
@@ -146,8 +151,9 @@ def main():
             m = re.match(r'\|\s*`([\w\.]+)`\s*\|(.*)\|\s*(.*?)\s*\|\s*$', line)
             if m and m.group(3): decided[m.group(1)] = m.group(3)
     by = collections.OrderedDict()
-    for r in sorted(rows, key=lambda r: r['orig']):
-        by.setdefault(('Оригинал TFR: ' if r['orig'] else '') + r['file'], []).append(r)
+    for r in sorted(rows, key=lambda r: (r['hidden'], r['orig'])):
+        pre = 'Скрытые (hidden = yes), картинка не видна: ' if r['hidden'] else ('Оригинал TFR: ' if r['orig'] else '')
+        by.setdefault(pre + r['file'], []).append(r)
     L = ['# ART_MAP.md - карта картинок событий', '',
          'Генерируется `python3 _tools/art_map.py` (темы подбора - `_tools/art_themes.py`). '
          'Колонка «Решение» заполняется вручную и сохраняется при перезапуске. '
@@ -156,8 +162,9 @@ def main():
          'Прежде чем ставить картинку, проверить её в игре: ни имена, ни этот файл не заменяют превью.', '']
     n = sum(1 for r in rows if r['temp'])
     nm = sum(1 for r in rows if r['missing'])
-    no = sum(1 for r in rows if r['orig'])
-    L += ['Событий с временной картинкой: **%d** (из них спрайт не определён нигде: **%d**; события-оригиналы TFR: %d); в таблице: %d.' % (n, nm, no, len(rows)),
+    no = sum(1 for r in rows if r['orig'] and not r['hidden'])
+    nh = sum(1 for r in rows if r['hidden'])
+    L += ['Событий с временной картинкой: **%d** (из них спрайт не определён нигде: **%d**; оригиналы TFR: %d; скрытые, картинка не видна: %d); в таблице: %d.' % (n, nm, no, nh, len(rows)),
           'Заглушка `GFX_report_event_ukrainian_civil_war` не найдена ни в индексе TFR, ни у нас: возможно, ванильный спрайт [ПРОВЕРИТЬ в игре, нет ли пустой рамки]. '
           '«Нет спрайта!» - картинка точно нигде не определена, в игре будет пустая рамка.', '']
     for f, rs in by.items():
@@ -174,8 +181,8 @@ def main():
                 decided.get(r['id'], '')))
         L.append('')
     open(out, 'w', encoding='utf-8', newline='\n').write('\n'.join(L))
-    print('событий в карте: %d (с временной картинкой %d); без кандидатов: %d -> %s' % (
-        len(rows), n, sum(1 for r in rows if not r['cands']), os.path.relpath(out, ROOT)))
+    print('событий в карте: %d (с временной картинкой %d); без кандидатов (видимые): %d -> %s' % (
+        len(rows), n, sum(1 for r in rows if not r['cands'] and not r['hidden'] and (r['title'] or r['desc'])), os.path.relpath(out, ROOT)))
 
 
 if __name__ == '__main__':

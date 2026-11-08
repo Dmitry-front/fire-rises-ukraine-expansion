@@ -26,6 +26,7 @@
 | `localisation/russian/TFR_districts_l_russian.yml` / `english/TFR_startup_l_english.yml` | **устаревание: потеряно 165 (ru) / 140 (en) ключей** (раздел 2) |
 | `localisation/*/bookmarks_l_russian.yml` | потерян 1 ключ (`COUNTRY_SELECTION_CHARACTER_DESC`) |
 | `localisation/*/TFR_country_localisation_UKR_l_*.yml` | наши изменения; **потерь нет** (105-107 ключей TFR целы, у нас 2961) |
+| `common/military_industrial_organization/organizations/TFR_organizations_ZZZ_generic.txt` | **наше изменение (08.11.2026)**: в 8 условиях `allowed` добавлено `original_tag = UKR`, остальное байт в байт; устаревания нет (раздел 9) |
 
 Вывод: ядро UKR-контента (события, решения, идеи, персонажи) разошлось с TFR только нашими правками. Реальные потери - в **локализации** других стран и в трёх «служебных» файлах (триггеры, разведка, меню выбора страны).
 
@@ -117,3 +118,13 @@
 ## 8. Что сделано в сессии
 
 В сессии **изменений кода и локализации не вносилось**, только документация и `_tools/audit.py`. Все расхождения выше - предложения для согласования.
+
+---
+
+## 9. `TFR_organizations_ZZZ_generic.txt`: наша копия (08.11.2026)
+
+- Файл TFR (запасные военно-промышленные организации для стран вне списка: танки, надводный флот, авиация, артиллерия, пехотное снаряжение, поддержка, моторизованные/механизированные) копирует Украине 8 безликих организаций. Решение автора 08.11.2026: убрать их, чтобы в экране MIO были только наши 13 (`UKR_organizations.txt`).
+- Единственное отличие от оригинала: в каждом из 8 блоков `allowed = { NOT = { ... } }` после `tag = GER` добавлена строка `original_tag = UKR` (и комментарий-шапка в начале файла). `diff` с референсом показывает ровно 8 добавленных строк.
+- Организации TFR и наши, которые делают `include = generic_*_organization` из этого файла (SOV, FRA и др.; у нас `generic_motorized_mechanized`, `generic_infantry_equipment`, `generic_artillery`, `generic_support_equipment`, `generic_escort_ship`), продолжают работать: у включающей организации своё `allowed`.
+- **Что теряет Украина:** лёгкие танки (`mio_cat_eq_all_light_tank`), авианосцы, крейсеры и эсминцы (`generic_task_force_ship`) остаются без организации. Корабли не критичны; для лёгких танков нужна 14-я организация (архетип `generic_mobile_tank`/`generic_infantry_tank`, очередь в `PROPOSAL_concerns.md`).
+- **При обновлении TFR:** сравнить файл с новым оригиналом (`_tools/tfr_drift.py` или `diff`), перенести новое, оставить 8 строк `original_tag = UKR`.

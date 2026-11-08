@@ -1,7 +1,9 @@
 # Блок «Оборонная промышленность» (PROPOSAL_concerns.md): решения при военных фокусах.
 # Схема: платим политсилу и деньги -> на срок программы действует скидка на конкретную технику (идея UKR_mio_*_boost)
 # -> по окончании идея снимается и организация получает funds (mio:..., add_mio_funds, как у SOV_izhevsk_kalashnikov_expansion).
-# Тексты стоимости: UKR_mio_cost_a/b/c (локализация), подсказка о funds: UKR_mio_funds_<N>_tt.
+# Стоимость: политсила - нативный cost (движок сам списывает и красит в панели), деньги - custom_cost_trigger (ликвидность, income_var)
+# с текстом UKR_mio_cost_<N>B и парой UKR_mio_cost_<N>B_blocked (как dx_more_than_*_blocked в TFR: красный, когда не хватает).
+# Подсказка о funds: UKR_mio_funds_<N>_tt.
 UKR_defense_industry_category = {
 
 	UKR_mio_malyshev_overhaul = {
@@ -16,20 +18,20 @@ UKR_defense_industry_category = {
 			has_dlc = "Arms Against Tyranny"
 		}
 
+		cost = 35
 		custom_cost_trigger = {
-			has_political_power > 34
 			check_variable = {
 				var = income_var
 				value = 3
+				compare = greater_than_or_equals
 			}
 		}
-		custom_cost_text = UKR_mio_cost_b
+		custom_cost_text = UKR_mio_cost_3B
 
 		days_remove = 180
 		days_re_enable = 365
 
 		complete_effect = {
-			add_political_power = -35
 			set_temp_variable = {
 				var = income_var_temp
 				value = -3
@@ -63,20 +65,20 @@ UKR_defense_industry_category = {
 			has_dlc = "Arms Against Tyranny"
 		}
 
+		cost = 25
 		custom_cost_trigger = {
-			has_political_power > 24
 			check_variable = {
 				var = income_var
 				value = 2
+				compare = greater_than_or_equals
 			}
 		}
-		custom_cost_text = UKR_mio_cost_a
+		custom_cost_text = UKR_mio_cost_2B
 
 		days_remove = 150
 		days_re_enable = 365
 
 		complete_effect = {
-			add_political_power = -25
 			set_temp_variable = {
 				var = income_var_temp
 				value = -2
@@ -110,20 +112,20 @@ UKR_defense_industry_category = {
 			has_dlc = "Arms Against Tyranny"
 		}
 
+		cost = 25
 		custom_cost_trigger = {
-			has_political_power > 24
 			check_variable = {
 				var = income_var
 				value = 2
+				compare = greater_than_or_equals
 			}
 		}
-		custom_cost_text = UKR_mio_cost_a
+		custom_cost_text = UKR_mio_cost_2B
 
 		days_remove = 150
 		days_re_enable = 365
 
 		complete_effect = {
-			add_political_power = -25
 			set_temp_variable = {
 				var = income_var_temp
 				value = -2
@@ -157,20 +159,20 @@ UKR_defense_industry_category = {
 			has_dlc = "Arms Against Tyranny"
 		}
 
+		cost = 35
 		custom_cost_trigger = {
-			has_political_power > 34
 			check_variable = {
 				var = income_var
 				value = 3
+				compare = greater_than_or_equals
 			}
 		}
-		custom_cost_text = UKR_mio_cost_b
+		custom_cost_text = UKR_mio_cost_3B
 
 		days_remove = 150
 		days_re_enable = 365
 
 		complete_effect = {
-			add_political_power = -35
 			set_temp_variable = {
 				var = income_var_temp
 				value = -3
@@ -211,20 +213,20 @@ UKR_defense_industry_category = {
 			has_dlc = "Arms Against Tyranny"
 		}
 
+		cost = 35
 		custom_cost_trigger = {
-			has_political_power > 34
 			check_variable = {
 				var = income_var
 				value = 3
+				compare = greater_than_or_equals
 			}
 		}
-		custom_cost_text = UKR_mio_cost_b
+		custom_cost_text = UKR_mio_cost_3B
 
 		days_remove = 180
 		days_re_enable = 365
 
 		complete_effect = {
-			add_political_power = -35
 			set_temp_variable = {
 				var = income_var_temp
 				value = -3
@@ -258,20 +260,20 @@ UKR_defense_industry_category = {
 			has_dlc = "Arms Against Tyranny"
 		}
 
+		cost = 35
 		custom_cost_trigger = {
-			has_political_power > 34
 			check_variable = {
 				var = income_var
 				value = 3
+				compare = greater_than_or_equals
 			}
 		}
-		custom_cost_text = UKR_mio_cost_b
+		custom_cost_text = UKR_mio_cost_3B
 
 		days_remove = 180
 		days_re_enable = 365
 
 		complete_effect = {
-			add_political_power = -35
 			set_temp_variable = {
 				var = income_var_temp
 				value = -3
@@ -305,20 +307,20 @@ UKR_defense_industry_category = {
 			has_dlc = "Arms Against Tyranny"
 		}
 
+		cost = 25
 		custom_cost_trigger = {
-			has_political_power > 24
 			check_variable = {
 				var = income_var
 				value = 2
+				compare = greater_than_or_equals
 			}
 		}
-		custom_cost_text = UKR_mio_cost_a
+		custom_cost_text = UKR_mio_cost_2B
 
 		days_remove = 150
 		days_re_enable = 365
 
 		complete_effect = {
-			add_political_power = -25
 			set_temp_variable = {
 				var = income_var_temp
 				value = -2
@@ -352,20 +354,20 @@ UKR_defense_industry_category = {
 			has_dlc = "Arms Against Tyranny"
 		}
 
+		cost = 50
 		custom_cost_trigger = {
-			has_political_power > 49
 			check_variable = {
 				var = income_var
 				value = 5
+				compare = greater_than_or_equals
 			}
 		}
-		custom_cost_text = UKR_mio_cost_c
+		custom_cost_text = UKR_mio_cost_5B
 
 		days_remove = 180
 		days_re_enable = 365
 
 		complete_effect = {
-			add_political_power = -50
 			set_temp_variable = {
 				var = income_var_temp
 				value = -5
@@ -399,20 +401,20 @@ UKR_defense_industry_category = {
 			has_dlc = "Arms Against Tyranny"
 		}
 
+		cost = 25
 		custom_cost_trigger = {
-			has_political_power > 24
 			check_variable = {
 				var = income_var
 				value = 2
+				compare = greater_than_or_equals
 			}
 		}
-		custom_cost_text = UKR_mio_cost_a
+		custom_cost_text = UKR_mio_cost_2B
 
 		days_remove = 150
 		days_re_enable = 365
 
 		complete_effect = {
-			add_political_power = -25
 			set_temp_variable = {
 				var = income_var_temp
 				value = -2
@@ -446,20 +448,20 @@ UKR_defense_industry_category = {
 			has_dlc = "Arms Against Tyranny"
 		}
 
+		cost = 35
 		custom_cost_trigger = {
-			has_political_power > 34
 			check_variable = {
 				var = income_var
 				value = 3
+				compare = greater_than_or_equals
 			}
 		}
-		custom_cost_text = UKR_mio_cost_b
+		custom_cost_text = UKR_mio_cost_3B
 
 		days_remove = 180
 		days_re_enable = 365
 
 		complete_effect = {
-			add_political_power = -35
 			set_temp_variable = {
 				var = income_var_temp
 				value = -3
@@ -493,20 +495,20 @@ UKR_defense_industry_category = {
 			has_dlc = "Arms Against Tyranny"
 		}
 
+		cost = 50
 		custom_cost_trigger = {
-			has_political_power > 49
 			check_variable = {
 				var = income_var
 				value = 5
+				compare = greater_than_or_equals
 			}
 		}
-		custom_cost_text = UKR_mio_cost_c
+		custom_cost_text = UKR_mio_cost_5B
 
 		days_remove = 180
 		days_re_enable = 365
 
 		complete_effect = {
-			add_political_power = -50
 			set_temp_variable = {
 				var = income_var_temp
 				value = -5
@@ -540,20 +542,20 @@ UKR_defense_industry_category = {
 			has_dlc = "Arms Against Tyranny"
 		}
 
+		cost = 25
 		custom_cost_trigger = {
-			has_political_power > 24
 			check_variable = {
 				var = income_var
 				value = 2
+				compare = greater_than_or_equals
 			}
 		}
-		custom_cost_text = UKR_mio_cost_a
+		custom_cost_text = UKR_mio_cost_2B
 
 		days_remove = 150
 		days_re_enable = 365
 
 		complete_effect = {
-			add_political_power = -25
 			set_temp_variable = {
 				var = income_var_temp
 				value = -2
@@ -587,20 +589,20 @@ UKR_defense_industry_category = {
 			has_dlc = "Arms Against Tyranny"
 		}
 
+		cost = 35
 		custom_cost_trigger = {
-			has_political_power > 34
 			check_variable = {
 				var = income_var
 				value = 3
+				compare = greater_than_or_equals
 			}
 		}
-		custom_cost_text = UKR_mio_cost_b
+		custom_cost_text = UKR_mio_cost_3B
 
 		days_remove = 150
 		days_re_enable = 365
 
 		complete_effect = {
-			add_political_power = -35
 			set_temp_variable = {
 				var = income_var_temp
 				value = -3

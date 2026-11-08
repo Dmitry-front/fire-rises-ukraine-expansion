@@ -2105,4 +2105,44 @@ focus_tree = {
 		}
 	}
 
+	# Финал блока 1: фокус-приманка (DESIGN.md, 4.3). Игрок его не получает: цепочка слухов и распад союза
+	# (ukraine_politics.120-125) рвутся раньше срока, а событие ukraine_politics.200 меняет дерево на блок 2.
+	# Окно: союз в Раде заключён не раньше 5.11.2023, фокус идёт 84 дня, дерево блока 2 грузится около 1.01.2024.
+	# Страховка: если фокус всё же завершится, completion_reward сам запускает развязку и загрузку блока 2.
+	focus = {
+		id = UKR_golden_age
+		icon = GFX_goal_generic_national_unity
+		x = 18
+		y = 14
+		cost = 12
+		# Концы четырёх ветвей: политика, декоммунизация и культура, армия, экономика (бутылочное горлышко)
+		prerequisite = { focus = UKR_national_reconciliation }
+		prerequisite = { focus = UKR_education_reform }
+		prerequisite = { focus = UKR_army_consolidation }
+		prerequisite = { focus = UKR_invest_in_infrastructure }
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = UKR_golden_age_available_tt
+				has_country_flag = UKR_rada_union_partner
+			}
+		}
+		ai_will_do = {
+			factor = 5
+		}
+		select_effect = {
+			hidden_effect = {
+				set_country_flag = UKR_golden_age_started
+			}
+		}
+		completion_reward = {
+			add_political_power = 200
+			add_stability = 0.1
+			add_war_support = 0.05
+			hidden_effect = {
+				UKR_start_scandal_chain = yes
+				set_country_flag = UKR_block2_ready
+			}
+		}
+	}
+
 }

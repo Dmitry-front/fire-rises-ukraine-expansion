@@ -196,6 +196,8 @@ _reference/                                       — референсы TFR (т
 _tools/audit.py                                   — статический аудит ТОЛЬКО нашего кода (папки на «_» не сканирует); с TFR сверяется по индексу _tools/tfr_index/
 _tools/build_tfr_index.py                         — пересборка индекса TFR (события, фокусы, спрайты, идеи, подидеологии, черты, типы государства и экономики) из _reference/TFR_Reference; индекс лежит в репозитории, папку _reference можно удалять
 _tools/build_catalog.py                           — пересборка TFR_CATALOG.md из _reference/ (python3 _tools/build_catalog.py)
+_tools/art_map.py, _tools/art_themes.py              — карта картинок событий: python3 _tools/art_map.py пишет ART_MAP.md (ID события, заголовок, контекст, текущая картинка, темы, кандидаты, колонка «Решение»); темы подбора - art_themes.py
+ART_MAP.md                                        — генерируется art_map.py: события с временной картинкой и подходящие спрайты (наши, TFR); «Решение» заполняется вручную и сохраняется при перезапуске
 events/TFR_events_UKR*.txt, TFR_events_BLR.txt, TFR_events_Baltic.txt, TFR_events_SOV_UKR.txt
 interface/*.gfx, *.gui, gfx/…                     — спрайты и GUI настроя
 localisation/{russian,english}/
@@ -243,6 +245,7 @@ localisation/{russian,english}/
 
 ## Нужен арт (временные иконки)
 _Список фокусов, событий и идей с временными иконками — дополнять по ходу работы._
+- **Подбор картинок событий:** `ART_MAP.md` (генерируется `python3 _tools/art_map.py`): по каждому событию с заглушкой даёт контекст и кандидатов (наши `GFX_UKR_*`/`GFX_event_UKR_*`, TFR, слабые совпадения по имени отмечены `*`). Превью картинок в репозитории нет: выбор подтверждать по рисункам установленной TFR.
 - Идеи `UKR_national_memory_institute_radical`, `UKR_national_memory_institute_moderate`, `UKR_national_memory_institute_moderate_Holodomor` — сейчас иконки итогов декоммунизации.
 - Фокусы `UKR_state_in_smartphone`, `UKR_nsdc_sanctions`, `UKR_social_shield` — временные `GFX_goal_generic_*`.
 - События `ukraine_politics.101–125` — временные картинки `GFX_report_event_ukrainian_civil_war` и `GFX_UKR_status_economy` (104). Нужны: кризис Запада, левые, правые, «яйца по 17», кампания, выборы, союз, кулуары, распад союза, митинги.

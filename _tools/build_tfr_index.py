@@ -76,6 +76,18 @@ for sub in ('interface', 'gfx'):
         rows += re.findall(r'name\s*=\s*"?(GFX_\w+)', strip_comments(read(p)))
 write('gfx.txt', rows, 'Спрайты TFR (определения в .gfx; самих картинок в индексе нет)')
 
+# --- картинки событий: спрайт <TAB> имя файла картинки (подсказка по смыслу для _tools/art_map.py)
+rows = []
+sprite_re = re.compile(r'SpriteType\s*=\s*\{(.*?)\n\s*\}', re.S)
+for p in walk('interface', '.gfx'):
+    for m in sprite_re.finditer(strip_comments(read(p))):
+        b = m.group(1)
+        n = re.search(r'name\s*=\s*"?(GFX_\w+)', b)
+        tf = re.search(r'texturefile\s*=\s*"?([^"\n]+)', b)
+        if n and tf and ('event_pictures' in tf.group(1).lower() or 'news_event' in tf.group(1).lower()):
+            rows.append('%s\t%s' % (n.group(1), os.path.basename(tf.group(1).strip().strip('"'))))
+write('event_pictures.txt', rows, 'Картинки событий TFR: спрайт, файл (подсказка по смыслу)')
+
 # --- подидеологии: все идентификаторы из файла идеологий (как делал аудит раньше)
 rows = []
 for p in walk(os.path.join('common', 'ideologies'), '.txt'):

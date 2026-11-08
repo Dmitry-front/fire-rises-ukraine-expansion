@@ -112,6 +112,11 @@ def suggest(title, desc, tfr, allgfx, ours, limit=4):
     return [t for _, t in themes[:3]], [(s, v[1], v[0]) for s, v in ranked[:limit]]
 
 
+def file_name(eid):
+    """Имя файла картинки события: UKR_<id с подчёркиваниями>.png (папка gfx/event_pictures/)."""
+    return 'UKR_%s.png' % eid.replace('.', '_')
+
+
 def main():
     show_all = '--all' in sys.argv
     out = os.path.join(ROOT, 'ART_MAP.md')
@@ -144,12 +149,15 @@ def main():
             rows.append(dict(file=base, id=eid, kind=kind, title=t, desc=d, cur=cur, missing=missing,
                              orig=(eid in tfr_events), hidden=hidden,
                              temp=temp, themes=themes, cands=cands))
-    # сохранить колонку «Решение»
-    decided = {}
+    # сохранить ручные колонки «Решение» и «Статус» (по ID события)
+    decided, status = {}, {}
     if os.path.exists(out):
         for line in read(out).split('\n'):
-            m = re.match(r'\|\s*`([\w\.]+)`\s*\|(.*)\|\s*(.*?)\s*\|\s*$', line)
-            if m and m.group(3): decided[m.group(1)] = m.group(3)
+            cells = [c.strip() for c in line.strip().strip('|').split('|')]
+            m = re.match(r'`([\w\.]+)`$', cells[0]) if cells and len(cells) >= 7 else None
+            if not m: continue
+            if cells[6]: decided[m.group(1)] = cells[6]
+            if len(cells) >= 9 and cells[8]: status[m.group(1)] = cells[8]
     by = collections.OrderedDict()
     for r in sorted(rows, key=lambda r: (r['hidden'], r['orig'])):
         pre = 'Скрытые (hidden = yes), картинка не видна: ' if r['hidden'] else ('Оригинал TFR: ' if r['orig'] else '')
@@ -159,7 +167,12 @@ def main():
          'Колонка «Решение» заполняется вручную и сохраняется при перезапуске. '
          'Кандидаты: **наш** - спрайт из `interface/UKR_event_pictures.gfx`; **TFR** - готовое попадание по теме; '
          '**TFR\\*** - совпадение по словам в имени (слабее, смотреть превью). '
-         'Прежде чем ставить картинку, проверить её в игре: ни имена, ни этот файл не заменяют превью.', '']
+         'Прежде чем ставить картинку, проверить её в игре: ни имена, ни этот файл не заменяют превью.', '',
+         '**Своя картинка (снимок из прессы и т. п.):** сохранить в `gfx/event_pictures/` под именем из колонки «Имя файла» (PNG, **500x250**, пропорция 2:1), '
+         'дописать спрайт `GFX_UKR_<имя без UKR_ и .png>` в `interface/UKR_event_pictures.gfx` и поставить его в `picture =` события. '
+         '**Статус** (вручную, сохраняется при перезапуске): `найдено` - снимок выбран; `обработано` - обрезан, фильтр общего стиля, лежит в `gfx/event_pictures/`; '
+         '`в моде` - спрайт описан и стоит в событии. Если файл с таким именем уже лежит в `gfx/event_pictures/`, статус «в моде» ставится автоматически. '
+         'Для скрытых и служебных событий имя файла `-` (картинка не нужна).', '']
     n = sum(1 for r in rows if r['temp'])
     nm = sum(1 for r in rows if r['missing'])
     no = sum(1 for r in rows if r['orig'] and not r['hidden'])
@@ -169,16 +182,21 @@ def main():
           '«Нет спрайта!» - картинка точно нигде не определена, в игре будет пустая рамка.', '']
     for f, rs in by.items():
         L += ['## %s (%d)' % (f, len(rs)), '',
-              '| ID | Заголовок | Контекст | Сейчас | Темы | Кандидаты | Решение |', '|---|---|---|---|---|---|---|']
+              '| ID | Заголовок | Контекст | Сейчас | Темы | Кандидаты | Решение | Имя файла | Статус |', '|---|---|---|---|---|---|---|---|---|']
         for r in rs:
             ctx = r['desc'][:140].replace('|', '/') + ('...' if len(r['desc']) > 140 else '')
             cur = '`%s`' % r['cur'] if r['cur'] else '-'
             if r['missing']: cur += ' (**нет спрайта!**)'
             elif r['temp']: cur += ' (заглушка)'
             cands = '<br>'.join('`%s` (%s)' % (s, w) for s, w, _ in r['cands']) or '-'
-            L.append('| `%s` | %s | %s | %s | %s | %s | %s |' % (
+            skip = r['hidden'] or not (r['title'] or r['desc'])
+            fname = '-' if skip else file_name(r['id'])
+            st = status.get(r['id'], '')
+            if not st and not skip and os.path.exists(os.path.join(ROOT, 'gfx', 'event_pictures', fname)):
+                st = 'в моде'
+            L.append('| `%s` | %s | %s | %s | %s | %s | %s | %s | %s |' % (
                 r['id'], r['title'].replace('|', '/'), ctx, cur, ', '.join(r['themes']) or '-', cands,
-                decided.get(r['id'], '')))
+                decided.get(r['id'], '').replace('|', '/'), '`%s`' % fname if not skip else '-', st))
         L.append('')
     open(out, 'w', encoding='utf-8', newline='\n').write('\n'.join(L))
     print('событий в карте: %d (с временной картинкой %d); без кандидатов (видимые): %d -> %s' % (

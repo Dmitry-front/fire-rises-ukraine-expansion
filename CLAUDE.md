@@ -197,7 +197,7 @@ _tools/audit.py                                   — статический а�
 _tools/build_tfr_index.py                         — пересборка индекса TFR (события, фокусы, спрайты, идеи, подидеологии, черты, типы государства и экономики) из _reference/TFR_Reference; индекс лежит в репозитории, папку _reference можно удалять
 _tools/build_catalog.py                           — пересборка TFR_CATALOG.md из _reference/ (python3 _tools/build_catalog.py)
 _tools/art_map.py, _tools/art_themes.py              — карта картинок событий: python3 _tools/art_map.py пишет ART_MAP.md (ID события, заголовок, контекст, текущая картинка, темы, кандидаты, колонка «Решение»); темы подбора - art_themes.py
-ART_MAP.md                                        — генерируется art_map.py: события с временной картинкой и подходящие спрайты (наши, TFR); «Решение» заполняется вручную и сохраняется при перезапуске
+ART_MAP.md                                        — генерируется art_map.py: события с временной картинкой и подходящие спрайты (наши, TFR); «Решение» и «Статус» (найдено / обработано / в моде) заполняются вручную и сохраняются при перезапуске, «Имя файла» - куда сохранять свою картинку (PNG 500x250)
 events/TFR_events_UKR*.txt, TFR_events_BLR.txt, TFR_events_Baltic.txt, TFR_events_SOV_UKR.txt
 interface/*.gfx, *.gui, gfx/…                     — спрайты и GUI настроя
 localisation/{russian,english}/

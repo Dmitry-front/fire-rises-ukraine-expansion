@@ -20,6 +20,11 @@ UKR_malyshev_organization = {
 		has_dlc = "Arms Against Tyranny"
 	}
 
+	# Лёгкие танки (08.11.2026): как у SOV_chtz_tankograd_organization в TFR, архетип средних танков с расширенными типами техники.
+	# Так организация охватывает и лёгкие, и средние танки, отдельная организация не нужна.
+	equipment_type = { mio_cat_eq_all_light_tank mio_cat_eq_all_medium_tank }
+	research_categories = { mio_cat_tech_light_armor_and_modules mio_cat_tech_medium_armor_and_modules }
+
 	initial_trait = {
 		name = UKR_malyshev_initial_trait
 
@@ -69,6 +74,57 @@ UKR_malyshev_organization = {
 			armor_value = 0.08
 			defense = 0.05
 			build_cost_ic = 0.03
+		}
+
+		ai_will_do = {
+			base = 2
+		}
+	}
+
+	# Лёгкое шасси Морозова: лёгкие танки быстрее и дешевле
+	add_trait = {
+		token = UKR_mio_trait_light_chassis
+		name = UKR_mio_trait_light_chassis
+		icon = GFX_generic_mio_trait_icon_maximum_speed
+
+		special_trait_background = yes
+
+		position = { x=0 y=1 }
+		relative_position_id = generic_mio_trait_truck_engines
+
+		any_parent = { generic_mio_trait_truck_engines }
+
+		limit_to_equipment_type = { mio_cat_eq_all_light_tank }
+
+		equipment_bonus = {
+			maximum_speed = 0.06
+			build_cost_ic = -0.04
+		}
+
+		ai_will_do = {
+			base = 2
+		}
+	}
+
+	# Лёгкий танк поддержки пехоты: огневая мощь и прорыв за счёт брони
+	add_trait = {
+		token = UKR_mio_trait_light_support_tank
+		name = UKR_mio_trait_light_support_tank
+		icon = GFX_generic_mio_trait_icon_reliability
+
+		special_trait_background = yes
+
+		position = { x=0 y=1 }
+		relative_position_id = generic_mio_trait_simplified_turret_design
+
+		any_parent = { generic_mio_trait_simplified_turret_design }
+
+		limit_to_equipment_type = { mio_cat_eq_all_light_tank }
+
+		equipment_bonus = {
+			soft_attack = 0.07
+			breakthrough = 0.03
+			armor_value = -0.04
 		}
 
 		ai_will_do = {

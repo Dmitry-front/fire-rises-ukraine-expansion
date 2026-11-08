@@ -1,0 +1,552 @@
+add_namespace = ukraine_industry
+
+# События-вехи украинских организаций MIO (PROPOSAL_concerns.md, раздел 8.2). 13 событий, по одному на организацию.
+# Вызываются из remove_effect решений UKR_mio_* (первое завершение программы, через 2 дня): is_triggered_only, fire_only_once.
+# Факты по памяти, помечены [ПРОВЕРИТЬ] в DESIGN.md; приукрашено там, где игровая хронология могла опередить реальность.
+# Картинки временные (существующие спрайты TFR и наши), см. CLAUDE.md, «Нужен арт». Награды небольшие: 100-200 funds, 0.02-0.04 развития.
+# Файл создан генератором (данные -> код и локализация RU/EN); правьте напрямую, генератор одноразовый.
+
+country_event = {
+	id = ukraine_industry.1
+	title = ukraine_industry.1.t
+	desc = ukraine_industry.1.d
+	picture = GFX_Generic_Tank_column
+
+	is_triggered_only = yes
+	fire_only_once = yes
+
+	option = {
+		name = ukraine_industry.1.a
+		add_war_support = 0.02
+		set_temp_variable = {
+			var = military_development_var_temp
+			value = 0.03
+		}
+		add_military_development = yes
+		mio:UKR_malyshev_organization = {
+			add_mio_funds = 100
+		}
+		ai_chance = { factor = 50 }
+	}
+
+	option = {
+		name = ukraine_industry.1.b
+		set_temp_variable = {
+			var = income_var_temp
+			value = 2.5
+		}
+		add_income_with_inflation = yes
+		add_political_power = 15
+		set_temp_variable = {
+			var = industrial_development_var_temp
+			value = 0.02
+		}
+		add_industrial_development = yes
+		ai_chance = { factor = 50 }
+	}
+
+}
+
+country_event = {
+	id = ukraine_industry.2
+	title = ukraine_industry.2.t
+	desc = ukraine_industry.2.d
+	picture = GFX_Development_Industry
+
+	is_triggered_only = yes
+	fire_only_once = yes
+
+	option = {
+		name = ukraine_industry.2.a
+		set_temp_variable = {
+			var = military_development_var_temp
+			value = 0.04
+		}
+		add_military_development = yes
+		add_war_support = 0.01
+		set_temp_variable = {
+			var = income_var_temp
+			value = -0.5
+		}
+		add_income_with_inflation = yes
+		ai_chance = { factor = 50 }
+	}
+
+	option = {
+		name = ukraine_industry.2.b
+		set_temp_variable = {
+			var = income_var_temp
+			value = 1.5
+		}
+		add_income_with_inflation = yes
+		set_temp_variable = {
+			var = industrial_development_var_temp
+			value = 0.03
+		}
+		add_industrial_development = yes
+		ai_chance = { factor = 50 }
+	}
+
+}
+
+country_event = {
+	id = ukraine_industry.3
+	title = ukraine_industry.3.t
+	desc = ukraine_industry.3.d
+	picture = GFX_event_UKR_industry_export
+
+	is_triggered_only = yes
+	fire_only_once = yes
+
+	option = {
+		name = ukraine_industry.3.a
+		set_temp_variable = {
+			var = military_development_var_temp
+			value = 0.03
+		}
+		add_military_development = yes
+		add_war_support = 0.02
+		ai_chance = { factor = 50 }
+	}
+
+	option = {
+		name = ukraine_industry.3.b
+		set_temp_variable = {
+			var = income_var_temp
+			value = 2.0
+		}
+		add_income_with_inflation = yes
+		set_temp_variable = {
+			var = industrial_development_var_temp
+			value = 0.02
+		}
+		add_industrial_development = yes
+		mio:UKR_kraz_organization = {
+			add_mio_funds = 100
+		}
+		ai_chance = { factor = 50 }
+	}
+
+}
+
+country_event = {
+	id = ukraine_industry.4
+	title = ukraine_industry.4.t
+	desc = ukraine_industry.4.d
+	picture = GFX_PRC_drone_uav
+
+	is_triggered_only = yes
+	fire_only_once = yes
+
+	option = {
+		name = ukraine_industry.4.a
+		mio:UKR_drone_cluster_organization = {
+			add_mio_funds = 200
+		}
+		set_temp_variable = {
+			var = income_var_temp
+			value = -0.5
+		}
+		add_income_with_inflation = yes
+		add_stability = 0.01
+		ai_chance = { factor = 50 }
+	}
+
+	option = {
+		name = ukraine_industry.4.b
+		set_temp_variable = {
+			var = military_development_var_temp
+			value = 0.04
+		}
+		add_military_development = yes
+		add_political_power = -10
+		hidden_effect = {
+			add_to_variable = { UKR_digital_lean = 2 }
+			UKR_clamp_leans = yes
+		}
+		ai_chance = { factor = 50 }
+	}
+
+}
+
+country_event = {
+	id = ukraine_industry.5
+	title = ukraine_industry.5.t
+	desc = ukraine_industry.5.d
+	picture = GFX_Plane_Factories
+
+	is_triggered_only = yes
+	fire_only_once = yes
+
+	option = {
+		name = ukraine_industry.5.a
+		add_political_power = 30
+		add_stability = 0.02
+		set_temp_variable = {
+			var = income_var_temp
+			value = -3.0
+		}
+		add_income_with_inflation = yes
+		mio:UKR_antonov_organization = {
+			add_mio_funds = 150
+		}
+		ai_chance = { factor = 50 }
+	}
+
+	option = {
+		name = ukraine_industry.5.b
+		set_temp_variable = {
+			var = military_development_var_temp
+			value = 0.03
+		}
+		add_military_development = yes
+		add_war_support = 0.02
+		set_temp_variable = {
+			var = income_var_temp
+			value = -1.0
+		}
+		add_income_with_inflation = yes
+		ai_chance = { factor = 50 }
+	}
+
+}
+
+country_event = {
+	id = ukraine_industry.6
+	title = ukraine_industry.6.t
+	desc = ukraine_industry.6.d
+	picture = GFX_UKR_investment_forum
+
+	is_triggered_only = yes
+	fire_only_once = yes
+
+	option = {
+		name = ukraine_industry.6.a
+		set_temp_variable = {
+			var = income_var_temp
+			value = 4.0
+		}
+		add_income_with_inflation = yes
+		add_political_power = -10
+		hidden_effect = {
+			add_to_variable = { European_Influence = -0.02 }
+			clamp_variable = { var = European_Influence min = 0 max = 1 }
+		}
+		ai_chance = { factor = 33 }
+	}
+
+	option = {
+		name = ukraine_industry.6.b
+		add_political_power = 15
+		set_temp_variable = {
+			var = income_var_temp
+			value = -2.5
+		}
+		add_income_with_inflation = yes
+		add_stability = -0.01
+		hidden_effect = {
+			add_to_variable = { UKR_authoritarian_lean = 1 }
+			UKR_clamp_leans = yes
+		}
+		ai_chance = { factor = 33 }
+	}
+
+	option = {
+		name = ukraine_industry.6.c
+		set_temp_variable = {
+			var = income_var_temp
+			value = 1.0
+		}
+		add_income_with_inflation = yes
+		set_temp_variable = {
+			var = military_development_var_temp
+			value = 0.02
+		}
+		add_military_development = yes
+		mio:UKR_motor_sich_organization = {
+			add_mio_funds = 100
+		}
+		ai_chance = { factor = 33 }
+	}
+
+}
+
+country_event = {
+	id = ukraine_industry.7
+	title = ukraine_industry.7.t
+	desc = ukraine_industry.7.d
+	picture = GFX_Generic_Fight_Jet
+
+	is_triggered_only = yes
+	fire_only_once = yes
+
+	option = {
+		name = ukraine_industry.7.a
+		set_temp_variable = {
+			var = military_development_var_temp
+			value = 0.03
+		}
+		add_military_development = yes
+		set_temp_variable = {
+			var = income_var_temp
+			value = -1.0
+		}
+		add_income_with_inflation = yes
+		add_war_support = 0.01
+		ai_chance = { factor = 50 }
+	}
+
+	option = {
+		name = ukraine_industry.7.b
+		add_political_power = 10
+		set_temp_variable = {
+			var = industrial_development_var_temp
+			value = 0.02
+		}
+		add_industrial_development = yes
+		hidden_effect = {
+			add_to_variable = { European_Influence = 0.02 }
+			clamp_variable = { var = European_Influence min = 0 max = 1 }
+		}
+		ai_chance = { factor = 50 }
+	}
+
+}
+
+country_event = {
+	id = ukraine_industry.8
+	title = ukraine_industry.8.t
+	desc = ukraine_industry.8.d
+	picture = GFX_UKR_big_construction_event
+
+	is_triggered_only = yes
+	fire_only_once = yes
+
+	option = {
+		name = ukraine_industry.8.a
+		set_temp_variable = {
+			var = industrial_development_var_temp
+			value = 0.03
+		}
+		add_industrial_development = yes
+		set_temp_variable = {
+			var = income_var_temp
+			value = -2.0
+		}
+		add_income_with_inflation = yes
+		add_political_power = 10
+		ai_chance = { factor = 50 }
+	}
+
+	option = {
+		name = ukraine_industry.8.b
+		set_temp_variable = {
+			var = income_var_temp
+			value = -1.0
+		}
+		add_income_with_inflation = yes
+		add_war_support = 0.01
+		hidden_effect = {
+			add_to_variable = { European_Influence = 0.01 }
+			clamp_variable = { var = European_Influence min = 0 max = 1 }
+		}
+		ai_chance = { factor = 50 }
+	}
+
+}
+
+country_event = {
+	id = ukraine_industry.9
+	title = ukraine_industry.9.t
+	desc = ukraine_industry.9.d
+	picture = GFX_UKR_preparing_for_war
+
+	is_triggered_only = yes
+	fire_only_once = yes
+
+	option = {
+		name = ukraine_industry.9.a
+		set_temp_variable = {
+			var = military_development_var_temp
+			value = 0.03
+		}
+		add_military_development = yes
+		set_temp_variable = {
+			var = income_var_temp
+			value = -1.0
+		}
+		add_income_with_inflation = yes
+		hidden_effect = {
+			add_to_variable = { European_Influence = 0.01 }
+			clamp_variable = { var = European_Influence min = 0 max = 1 }
+		}
+		ai_chance = { factor = 50 }
+	}
+
+	option = {
+		name = ukraine_industry.9.b
+		add_manpower = 5000
+		add_war_support = 0.01
+		ai_chance = { factor = 50 }
+	}
+
+}
+
+country_event = {
+	id = ukraine_industry.10
+	title = ukraine_industry.10.t
+	desc = ukraine_industry.10.d
+	picture = GFX_Development_Military
+
+	is_triggered_only = yes
+	fire_only_once = yes
+
+	option = {
+		name = ukraine_industry.10.a
+		add_war_support = 0.02
+		set_temp_variable = {
+			var = military_development_var_temp
+			value = 0.04
+		}
+		add_military_development = yes
+		add_stability = -0.01
+		ai_chance = { factor = 50 }
+	}
+
+	option = {
+		name = ukraine_industry.10.b
+		set_temp_variable = {
+			var = military_development_var_temp
+			value = 0.02
+		}
+		add_military_development = yes
+		add_political_power = 10
+		set_temp_variable = {
+			var = income_var_temp
+			value = -0.5
+		}
+		add_income_with_inflation = yes
+		ai_chance = { factor = 50 }
+	}
+
+}
+
+country_event = {
+	id = ukraine_industry.11
+	title = ukraine_industry.11.t
+	desc = ukraine_industry.11.d
+	picture = GFX_UKR_diplomat
+
+	is_triggered_only = yes
+	fire_only_once = yes
+
+	option = {
+		name = ukraine_industry.11.a
+		set_temp_variable = {
+			var = income_var_temp
+			value = 2.5
+		}
+		add_income_with_inflation = yes
+		add_stability = -0.005
+		add_political_power = 10
+		hidden_effect = {
+			add_to_variable = { European_Influence = 0.01 }
+			clamp_variable = { var = European_Influence min = 0 max = 1 }
+		}
+		ai_chance = { factor = 50 }
+	}
+
+	option = {
+		name = ukraine_industry.11.b
+		set_temp_variable = {
+			var = military_development_var_temp
+			value = 0.04
+		}
+		add_military_development = yes
+		add_war_support = 0.01
+		ai_chance = { factor = 50 }
+	}
+
+}
+
+country_event = {
+	id = ukraine_industry.12
+	title = ukraine_industry.12.t
+	desc = ukraine_industry.12.d
+	picture = GFX_UKR_digital_state
+
+	is_triggered_only = yes
+	fire_only_once = yes
+
+	option = {
+		name = ukraine_industry.12.a
+		set_temp_variable = {
+			var = military_development_var_temp
+			value = 0.03
+		}
+		add_military_development = yes
+		set_temp_variable = {
+			var = income_var_temp
+			value = -1.0
+		}
+		add_income_with_inflation = yes
+		hidden_effect = {
+			add_to_variable = { UKR_digital_lean = 1 }
+			UKR_clamp_leans = yes
+		}
+		ai_chance = { factor = 50 }
+	}
+
+	option = {
+		name = ukraine_industry.12.b
+		add_political_power = 10
+		set_temp_variable = {
+			var = income_var_temp
+			value = -1.0
+		}
+		add_income_with_inflation = yes
+		hidden_effect = {
+			add_to_variable = { European_Influence = 0.02 }
+			clamp_variable = { var = European_Influence min = 0 max = 1 }
+		}
+		ai_chance = { factor = 50 }
+	}
+
+}
+
+country_event = {
+	id = ukraine_industry.13
+	title = ukraine_industry.13.t
+	desc = ukraine_industry.13.d
+	picture = GFX_UKR_preparing_for_war
+
+	is_triggered_only = yes
+	fire_only_once = yes
+
+	option = {
+		name = ukraine_industry.13.a
+		set_temp_variable = {
+			var = military_development_var_temp
+			value = 0.04
+		}
+		add_military_development = yes
+		add_war_support = 0.01
+		ai_chance = { factor = 50 }
+	}
+
+	option = {
+		name = ukraine_industry.13.b
+		set_temp_variable = {
+			var = income_var_temp
+			value = 1.0
+		}
+		add_income_with_inflation = yes
+		add_political_power = 10
+		hidden_effect = {
+			add_to_variable = { European_Influence = 0.02 }
+			clamp_variable = { var = European_Influence min = 0 max = 1 }
+		}
+		ai_chance = { factor = 50 }
+	}
+
+}

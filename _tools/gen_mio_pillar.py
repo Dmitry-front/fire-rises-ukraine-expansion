@@ -9,14 +9,14 @@ ORGS = {  # короткое имя: (id организации, клан, T, L,
  'artillery_works':('UKR_artillery_works_organization','met',0,1,1,'Артиллерийские заводы','Artillery Works'),
  'drone_cluster':('UKR_drone_cluster_organization','priv',1,0,0,'Оборонный кластер БПЛА','UAV Defence Cluster'),
  'radio_electronics':('UKR_radio_electronics_organization','priv',1,0,0,'Радиоэлектроника','Radio-Electronics'),
- 'sea_drones':('UKR_sea_drones_organization','priv',1,0,0,'Морские дроны','Sea Drones'),
+ 'sea_drones':('UKR_mykolaiv_yard_organization','priv',1,0,0,'Верфи и морские дроны','Shipyards and Sea Drones'),
  'kraz':('UKR_kraz_organization','gas',0,0,1,'КрАЗ','KrAZ'),
- 'fort':('UKR_fort_organization','gas',0,0,1,'Форт','Fort'),
+ 'fort':('UKR_drone_cluster_organization','gas',0,0,1,'Форт и кластер БПЛА','Fort and UAV Cluster'),
  'antonov':('UKR_antonov_organization','sec',0,1,0,'Антонов','Antonov'),
  'motor_sich':('UKR_motor_sich_organization','sec',0,1,0,'Мотор Сич','Motor Sich'),
- 'aircraft_repair':('UKR_aircraft_repair_organization','sec',0,1,0,'Авиаремонтные заводы','Aircraft Repair Plants'),
+ 'aircraft_repair':('UKR_motor_sich_organization','sec',0,1,0,'Мотор Сич и авиаремонт','Motor Sich and Aircraft Repair'),
  'mykolaiv_yard':('UKR_mykolaiv_yard_organization','sec',0,1,0,'Николаевские верфи','Mykolaiv Shipyards'),
- 'luch':('UKR_luch_organization','sec',1,0,1,'Луч и Южное','Luch and Pivdenne'),
+ 'luch':('UKR_artillery_works_organization','sec',1,0,1,'Артём, Луч и Южное','Artem, Luch and Pivdenne'),
 }
 # хуки фокусов: (опора, фокус) -> [(короткое имя, funds, size)]
 HOOKS = [
@@ -34,6 +34,25 @@ HOOKS = [
  ('n','UKR_np_ethnic_economy',[('kraz',200,1),('malyshev',100,0)]),
 ]
 WIN_FUNDS = 100
+# Девять организаций после объединения (08.11.2026): имя в подсказках по id организации
+ORG_NAME = {
+ 'UKR_malyshev_organization':('Завод имени Малышева','Malyshev Plant'),
+ 'UKR_armor_repair_organization':('Бронетанковые заводы','Armoured Plants'),
+ 'UKR_kraz_organization':('КрАЗ','KrAZ'),
+ 'UKR_drone_cluster_organization':('Форт и кластер БПЛА','Fort and UAV Cluster'),
+ 'UKR_antonov_organization':('Антонов','Antonov'),
+ 'UKR_motor_sich_organization':('Мотор Сич и авиаремонт','Motor Sich and Aircraft Repair'),
+ 'UKR_mykolaiv_yard_organization':('Верфи и морские дроны','Shipyards and Sea Drones'),
+ 'UKR_artillery_works_organization':('Артём, Луч и Южное','Artem, Luch and Pivdenne'),
+ 'UKR_radio_electronics_organization':('Радиоэлектроника','Radio-Electronics'),
+}
+def agg(lst):
+    # складывает funds и размер по организациям (несколько программ могут вести в одну организацию)
+    d={}
+    for sname,f,sz in lst:
+        oid=ORGS[sname][0]
+        a=d.setdefault(oid,[0,0]); a[0]+=f; a[1]=max(a[1],sz)
+    return [(oid,f,sz) for oid,(f,sz) in d.items()]
 PILLARS = {'t':'UKR_pillar_chosen_technocrats','l':'UKR_pillar_chosen_left','o':'UKR_pillar_chosen_oligarchs','n':'UKR_pillar_chosen_nationalists'}
 
 out=[]
@@ -43,15 +62,14 @@ out.append("""# Связка украинских организаций MIO с 
 # 2) UKR_mio_pillar_window_<имя> / UKR_mio_pillar_window_tt_<имя>: бонус опоры при завершении программы окна
 #    «Оборонная промышленность» (remove_effect и подсказка в complete_effect решения UKR_mio_*).
 # Все mio:-эффекты обёрнуты в has_dlc = "Arms Against Tyranny": без DLC организаций нет.
-# Кланы-владельцы (абстракция мода, не утверждение о реальной собственности): met - Малышева, ремонт танков, артиллерия;
+# Кланы-владельцы (абстракция мода, не утверждение о реальной собственности): met - Малышева, бронетанковые заводы, артиллерия;
 # priv - БПЛА, радиоэлектроника, морские дроны; gas - КрАЗ, Форт; sec - Антонов, Мотор Сич, авиаремонт, верфи, Луч.
 """)
 for p,focus,lst in HOOKS:
     out.append(f"UKR_mio_hook_{focus[4:]} = {{\n\tif = {{\n\t\tlimit = {{ has_dlc = \"Arms Against Tyranny\" }}")
     out.append(f"\t\tcustom_effect_tooltip = UKR_mio_hook_{focus[4:]}_tt")
     out.append("\t\thidden_effect = {")
-    for s,f,sz in lst:
-        oid=ORGS[s][0]
+    for oid,f,sz in agg(lst):
         out.append(f"\t\t\tmio:{oid} = {{")
         out.append(f"\t\t\t\tadd_mio_funds = {f}")
         if sz: out.append(f"\t\t\t\tadd_mio_size = {sz}")
@@ -90,8 +108,8 @@ for p,focus,lst in HOOKS:
     key=f"UKR_mio_hook_{focus[4:]}_tt"
     def fmt(i):
         parts=[]
-        for s,f,sz in lst:
-            parts.append(f"{nm(s,i)} §G+{f}§!"+((" (размер +1)" if i==0 else " (size +1)") if sz else ""))
+        for oid,f,sz in agg(lst):
+            parts.append(f"{ORG_NAME[oid][i]} §G+{f}§!"+((" (размер +1)" if i==0 else " (size +1)") if sz else ""))
         return "; ".join(parts)
     add(key,"Финансирование организаций: "+fmt(0),"Organisation funding: "+fmt(1))
 add('UKR_mio_pillar_tt_t',"Опора технократов: организация получит ещё §G100§! ед. финансирования","Technocrat pillar: the organisation will receive another §G100§! funds")

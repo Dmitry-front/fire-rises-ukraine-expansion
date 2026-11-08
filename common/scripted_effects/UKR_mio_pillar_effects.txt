@@ -4,7 +4,7 @@
 # 2) UKR_mio_pillar_window_<имя> / UKR_mio_pillar_window_tt_<имя>: бонус опоры при завершении программы окна
 #    «Оборонная промышленность» (remove_effect и подсказка в complete_effect решения UKR_mio_*).
 # Все mio:-эффекты обёрнуты в has_dlc = "Arms Against Tyranny": без DLC организаций нет.
-# Кланы-владельцы (абстракция мода, не утверждение о реальной собственности): met - Малышева, ремонт танков, артиллерия;
+# Кланы-владельцы (абстракция мода, не утверждение о реальной собственности): met - Малышева, бронетанковые заводы, артиллерия;
 # priv - БПЛА, радиоэлектроника, морские дроны; gas - КрАЗ, Форт; sec - Антонов, Мотор Сич, авиаремонт, верфи, Луч.
 
 UKR_mio_hook_t_drone_army = {
@@ -16,7 +16,7 @@ UKR_mio_hook_t_drone_army = {
 				add_mio_funds = 300
 				add_mio_size = 1
 			}
-			mio:UKR_sea_drones_organization = {
+			mio:UKR_mykolaiv_yard_organization = {
 				add_mio_funds = 150
 			}
 		}
@@ -41,10 +41,10 @@ UKR_mio_hook_t_digital_mobilization = {
 		limit = { has_dlc = "Arms Against Tyranny" }
 		custom_effect_tooltip = UKR_mio_hook_t_digital_mobilization_tt
 		hidden_effect = {
-			mio:UKR_sea_drones_organization = {
+			mio:UKR_mykolaiv_yard_organization = {
 				add_mio_funds = 200
 			}
-			mio:UKR_luch_organization = {
+			mio:UKR_artillery_works_organization = {
 				add_mio_funds = 150
 			}
 		}
@@ -59,7 +59,7 @@ UKR_mio_hook_l_oligarch_audit = {
 			mio:UKR_armor_repair_organization = {
 				add_mio_funds = 150
 			}
-			mio:UKR_aircraft_repair_organization = {
+			mio:UKR_motor_sich_organization = {
 				add_mio_funds = 150
 			}
 		}
@@ -108,15 +108,12 @@ UKR_mio_hook_ol_procurement = {
 				add_mio_funds = 60
 			}
 			mio:UKR_motor_sich_organization = {
-				add_mio_funds = 60
-			}
-			mio:UKR_aircraft_repair_organization = {
-				add_mio_funds = 60
+				add_mio_funds = 120
 			}
 			mio:UKR_mykolaiv_yard_organization = {
 				add_mio_funds = 60
 			}
-			mio:UKR_luch_organization = {
+			mio:UKR_artillery_works_organization = {
 				add_mio_funds = 60
 			}
 		}
@@ -149,16 +146,13 @@ UKR_mio_hook_ol_mobilization_reserve = {
 			mio:UKR_kraz_organization = {
 				add_mio_funds = 100
 			}
-			mio:UKR_fort_organization = {
-				add_mio_funds = 100
-			}
 			mio:UKR_drone_cluster_organization = {
-				add_mio_funds = 70
+				add_mio_funds = 170
 			}
 			mio:UKR_radio_electronics_organization = {
 				add_mio_funds = 70
 			}
-			mio:UKR_sea_drones_organization = {
+			mio:UKR_mykolaiv_yard_organization = {
 				add_mio_funds = 70
 			}
 		}
@@ -170,7 +164,7 @@ UKR_mio_hook_np_army_artels = {
 		limit = { has_dlc = "Arms Against Tyranny" }
 		custom_effect_tooltip = UKR_mio_hook_np_army_artels_tt
 		hidden_effect = {
-			mio:UKR_fort_organization = {
+			mio:UKR_drone_cluster_organization = {
 				add_mio_funds = 250
 				add_mio_size = 1
 			}
@@ -187,11 +181,8 @@ UKR_mio_hook_np_army_arms = {
 		custom_effect_tooltip = UKR_mio_hook_np_army_arms_tt
 		hidden_effect = {
 			mio:UKR_artillery_works_organization = {
-				add_mio_funds = 250
+				add_mio_funds = 400
 				add_mio_size = 1
-			}
-			mio:UKR_luch_organization = {
-				add_mio_funds = 150
 			}
 		}
 	}
@@ -476,7 +467,7 @@ UKR_mio_pillar_window_tt_radio_electronics = {
 	}
 }
 
-# Морские дроны: клан priv
+# Верфи и морские дроны: клан priv
 UKR_mio_pillar_window_sea_drones = {
 	if = {
 		limit = { has_dlc = "Arms Against Tyranny" }
@@ -484,7 +475,7 @@ UKR_mio_pillar_window_sea_drones = {
 			limit = {
 				has_country_flag = UKR_pillar_chosen_technocrats
 			}
-			mio:UKR_sea_drones_organization = {
+			mio:UKR_mykolaiv_yard_organization = {
 				add_mio_funds = 100
 			}
 		}
@@ -493,7 +484,7 @@ UKR_mio_pillar_window_sea_drones = {
 				has_country_flag = UKR_pillar_chosen_oligarchs
 				has_country_flag = UKR_ol_vertical_done
 			}
-			mio:UKR_sea_drones_organization = {
+			mio:UKR_mykolaiv_yard_organization = {
 				add_mio_funds = 100
 			}
 			hidden_effect = {
@@ -575,7 +566,7 @@ UKR_mio_pillar_window_tt_kraz = {
 	}
 }
 
-# Форт: клан gas
+# Форт и кластер БПЛА: клан gas
 UKR_mio_pillar_window_fort = {
 	if = {
 		limit = { has_dlc = "Arms Against Tyranny" }
@@ -583,7 +574,7 @@ UKR_mio_pillar_window_fort = {
 			limit = {
 				has_country_flag = UKR_pillar_chosen_nationalists
 			}
-			mio:UKR_fort_organization = {
+			mio:UKR_drone_cluster_organization = {
 				add_mio_funds = 100
 			}
 			add_war_support = 0.01
@@ -593,7 +584,7 @@ UKR_mio_pillar_window_fort = {
 				has_country_flag = UKR_pillar_chosen_oligarchs
 				has_country_flag = UKR_ol_vertical_done
 			}
-			mio:UKR_fort_organization = {
+			mio:UKR_drone_cluster_organization = {
 				add_mio_funds = 100
 			}
 			hidden_effect = {
@@ -725,7 +716,7 @@ UKR_mio_pillar_window_tt_motor_sich = {
 	}
 }
 
-# Авиаремонтные заводы: клан sec
+# Мотор Сич и авиаремонт: клан sec
 UKR_mio_pillar_window_aircraft_repair = {
 	if = {
 		limit = { has_dlc = "Arms Against Tyranny" }
@@ -733,7 +724,7 @@ UKR_mio_pillar_window_aircraft_repair = {
 			limit = {
 				has_country_flag = UKR_pillar_chosen_left
 			}
-			mio:UKR_aircraft_repair_organization = {
+			mio:UKR_motor_sich_organization = {
 				add_mio_funds = 100
 			}
 			add_stability = 0.01
@@ -743,7 +734,7 @@ UKR_mio_pillar_window_aircraft_repair = {
 				has_country_flag = UKR_pillar_chosen_oligarchs
 				has_country_flag = UKR_ol_vertical_done
 			}
-			mio:UKR_aircraft_repair_organization = {
+			mio:UKR_motor_sich_organization = {
 				add_mio_funds = 100
 			}
 			hidden_effect = {
@@ -825,7 +816,7 @@ UKR_mio_pillar_window_tt_mykolaiv_yard = {
 	}
 }
 
-# Луч и Южное: клан sec
+# Артём, Луч и Южное: клан sec
 UKR_mio_pillar_window_luch = {
 	if = {
 		limit = { has_dlc = "Arms Against Tyranny" }
@@ -833,7 +824,7 @@ UKR_mio_pillar_window_luch = {
 			limit = {
 				has_country_flag = UKR_pillar_chosen_technocrats
 			}
-			mio:UKR_luch_organization = {
+			mio:UKR_artillery_works_organization = {
 				add_mio_funds = 100
 			}
 		}
@@ -841,7 +832,7 @@ UKR_mio_pillar_window_luch = {
 			limit = {
 				has_country_flag = UKR_pillar_chosen_nationalists
 			}
-			mio:UKR_luch_organization = {
+			mio:UKR_artillery_works_organization = {
 				add_mio_funds = 100
 			}
 			add_war_support = 0.01
@@ -851,7 +842,7 @@ UKR_mio_pillar_window_luch = {
 				has_country_flag = UKR_pillar_chosen_oligarchs
 				has_country_flag = UKR_ol_vertical_done
 			}
-			mio:UKR_luch_organization = {
+			mio:UKR_artillery_works_organization = {
 				add_mio_funds = 100
 			}
 			hidden_effect = {

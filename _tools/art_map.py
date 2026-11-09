@@ -63,6 +63,7 @@ def art_directive(raw_lines, line_idx):
 ICON_SOURCES = [
     ('decision', 'common/decisions/UKR_decisions_allies.txt', 'gfx/interface/decisions/UKR', '45x45', 'icon'),
     ('idea', 'common/ideas/UKR_ideas_allies.txt', 'gfx/interface/ideas/UKR', '68x68', 'picture'),
+    ('idea', 'common/ideas/UKR_ideas_coalition.txt', 'gfx/interface/ideas/UKR', '68x68', 'picture'),
 ]
 
 

@@ -113,6 +113,30 @@ defined_text = {
 		localization_key = UKR_trust_reason_21
 	}
 	text = {
+		trigger = { check_variable = { var = UKR_nato_trust_last_reason value = 22 compare = equals } }
+		localization_key = UKR_trust_reason_22
+	}
+	text = {
+		trigger = { check_variable = { var = UKR_nato_trust_last_reason value = 23 compare = equals } }
+		localization_key = UKR_trust_reason_23
+	}
+	text = {
+		trigger = { check_variable = { var = UKR_nato_trust_last_reason value = 24 compare = equals } }
+		localization_key = UKR_trust_reason_24
+	}
+	text = {
+		trigger = { check_variable = { var = UKR_nato_trust_last_reason value = 25 compare = equals } }
+		localization_key = UKR_trust_reason_25
+	}
+	text = {
+		trigger = { check_variable = { var = UKR_nato_trust_last_reason value = 26 compare = equals } }
+		localization_key = UKR_trust_reason_26
+	}
+	text = {
+		trigger = { check_variable = { var = UKR_nato_trust_last_reason value = 27 compare = equals } }
+		localization_key = UKR_trust_reason_27
+	}
+	text = {
 		trigger = { always = yes }
 		localization_key = UKR_trust_reason_0
 	}
@@ -144,5 +168,42 @@ defined_text = {
 	text = {
 		trigger = { always = yes }
 		localization_key = UKR_NATO_UNITY_0
+	}
+}
+
+# Этап 4 «Коалиция»: уровень ПВО (UKR_air_defense_level 0-3) и место в штабе (UKR_hq_seat 0-2), строки окна «Союзники»
+defined_text = {
+	name = UKR_AD_LEVEL_DISPLAY
+	text = {
+		trigger = { check_variable = { var = UKR_air_defense_level value = 3 compare = greater_than_or_equals } }
+		localization_key = UKR_AD_LEVEL_3
+	}
+	text = {
+		trigger = { check_variable = { var = UKR_air_defense_level value = 2 compare = equals } }
+		localization_key = UKR_AD_LEVEL_2
+	}
+	text = {
+		trigger = { check_variable = { var = UKR_air_defense_level value = 1 compare = equals } }
+		localization_key = UKR_AD_LEVEL_1
+	}
+	text = {
+		trigger = { always = yes }
+		localization_key = UKR_AD_LEVEL_0
+	}
+}
+
+defined_text = {
+	name = UKR_HQ_SEAT_DISPLAY
+	text = {
+		trigger = { check_variable = { var = UKR_hq_seat value = 2 compare = greater_than_or_equals } }
+		localization_key = UKR_HQ_SEAT_2
+	}
+	text = {
+		trigger = { check_variable = { var = UKR_hq_seat value = 1 compare = equals } }
+		localization_key = UKR_HQ_SEAT_1
+	}
+	text = {
+		trigger = { always = yes }
+		localization_key = UKR_HQ_SEAT_0
 	}
 }

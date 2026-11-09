@@ -1,0 +1,693 @@
+add_namespace = ukraine_coalition
+
+# Этап 4 «Коалиция» (PROPOSAL_war_europe.md, раздел 6, фаза II; DESIGN.md, раздел 12). Все события у Украины.
+# Фаза II начинается с ukraine.5.a (флаг UKR_coalition_phase, через 6 дней приходит .1; первые 120 дней действует UKR_coalition_early).
+# Что TFR делает сам, мы только читаем (TFR_UKRAINE_HOOKS.md, раздел 5; DESIGN.md, раздел 12): лидер блока (глобальные флаги
+# GER/FRA/ENG_won_leadership_global), газ (идеи Германии от nato.12/13), миссия Франции FRA_Operation_Davout_decision и её флаги,
+# флаги Германии ENG_agreed_offensive / FRA_agreed_offensive от nato.24/25. Единство НАТО и таймер вступления не трогаем.
+# Войну события не заканчивают (сценарий TFR): меняются настрой, стабильность, доверие, место в штабе, цены запросов.
+# Строка "# art: reuse" над событием читает _tools/art_map.py: картинка временная (учёт - ART_MAP.md).
+#
+#   1  первый штаб коалиции            2  постоянное место за столом штаба
+#  10  кто командует коалицией        11  газ и хранилища                12  реестр формирований
+#  30  «Давут»: просьба               31  «Давут»: итог                  32  совместное наступление
+#  50  намёки на переговоры           51  условия союзников              52  гарантии безопасности
+#  70  многослойная ПВО (из UKR_update_air_defense_level)
+
+# ---------------------------------------------------------------- 1-9: старт фазы II и штаб
+
+# art: reuse
+country_event = {
+	id = ukraine_coalition.1
+	title = ukraine_coalition.1.t
+	desc = {
+		text = ukraine_coalition.1.d_seat
+		trigger = { check_variable = { var = UKR_hq_seat value = 1 compare = greater_than_or_equals } }
+	}
+	desc = {
+		text = ukraine_coalition.1.d_guest
+		trigger = { check_variable = { var = UKR_hq_seat value = 1 compare = less_than } }
+	}
+	picture = GFX_event_UKR_war_support_NATO
+
+	is_triggered_only = yes
+	fire_only_once = yes
+
+	immediate = {
+		hidden_effect = {
+			# Штаб открыт: события .30-.32 ждут этого флага, чтобы приходить после первого штаба
+			set_country_flag = UKR_coalition_hq_open
+			# Место в штабе по доверию: от 65 - участник (1), ниже - гость (0)
+			if = {
+				limit = { check_variable = { var = UKR_nato_trust value = 65 compare = greater_than_or_equals } }
+				set_temp_variable = { var = UKR_seat_new value = 1 }
+			}
+			else = {
+				set_temp_variable = { var = UKR_seat_new value = 0 }
+			}
+			UKR_set_hq_seat = yes
+		}
+	}
+
+	option = {
+		name = ukraine_coalition.1.a
+		ai_chance = { base = 70 }
+		set_country_flag = UKR_liaison_accepted
+		add_timed_idea = {
+			idea = UKR_joint_planning
+			days = 60
+		}
+	}
+
+	option = {
+		name = ukraine_coalition.1.b
+		ai_chance = { base = 30 }
+		set_country_flag = UKR_command_sovereign
+		add_war_support = 0.03
+		add_stability = 0.02
+	}
+}
+
+# art: reuse
+country_event = {
+	id = ukraine_coalition.2
+	title = ukraine_coalition.2.t
+	desc = ukraine_coalition.2.d
+	picture = GFX_UKR_diplomat
+
+	trigger = {
+		tag = UKR
+		UKR_coalition_mature = yes
+		check_variable = { var = UKR_hq_seat value = 1 compare = equals }
+		check_variable = { var = UKR_nato_trust value = 80 compare = greater_than_or_equals }
+	}
+	mean_time_to_happen = { days = 45 }
+	fire_only_once = yes
+
+	option = {
+		name = ukraine_coalition.2.a
+		ai_chance = { base = 80 }
+		set_temp_variable = { var = UKR_seat_new value = 2 }
+		UKR_set_hq_seat = yes
+		UKR_trust_coalition_loyal = yes
+		add_political_power = -25
+	}
+
+	option = {
+		name = ukraine_coalition.2.b
+		ai_chance = { base = 20 }
+		set_country_flag = UKR_command_sovereign
+		add_war_support = 0.03
+	}
+}
+
+# ---------------------------------------------------------------- 10-29: споры внутри НАТО
+
+# Кто командует коалицией: итог выбора лидера читаем по глобальным флагам TFR (nato.26-28)
+# art: reuse
+country_event = {
+	id = ukraine_coalition.10
+	title = ukraine_coalition.10.t
+	desc = {
+		text = ukraine_coalition.10.d_ger
+		trigger = { has_global_flag = GER_won_leadership_global }
+	}
+	desc = {
+		text = ukraine_coalition.10.d_fra
+		trigger = { has_global_flag = FRA_won_leadership_global }
+	}
+	desc = {
+		text = ukraine_coalition.10.d_eng
+		trigger = { has_global_flag = ENG_won_leadership_global }
+	}
+	desc = {
+		text = ukraine_coalition.10.d_none
+		trigger = {
+			NOT = {
+				OR = {
+					has_global_flag = GER_won_leadership_global
+					has_global_flag = FRA_won_leadership_global
+					has_global_flag = ENG_won_leadership_global
+				}
+			}
+		}
+	}
+	picture = GFX_Generic_NATO
+
+	trigger = {
+		tag = UKR
+		UKR_coalition_mature = yes
+	}
+	mean_time_to_happen = { days = 30 }
+	fire_only_once = yes
+
+	option = {
+		name = ukraine_coalition.10.a
+		ai_chance = { base = 40 }
+		set_country_flag = UKR_cmd_loyal
+		UKR_trust_coalition_loyal = yes
+		UKR_leader_opinion_loyal = yes
+		add_timed_idea = {
+			idea = UKR_coalition_friction
+			days = 90
+		}
+	}
+
+	option = {
+		name = ukraine_coalition.10.b
+		trigger = { check_variable = { var = UKR_hq_seat value = 1 compare = greater_than_or_equals } }
+		ai_chance = {
+			base = 40
+			modifier = { add = 20 check_variable = { var = UKR_nato_trust value = 65 compare = greater_than_or_equals } }
+		}
+		set_country_flag = UKR_cmd_staff
+		UKR_big3_opinion_loyal = yes
+		add_political_power = -15
+		add_timed_idea = {
+			idea = UKR_joint_planning
+			days = 120
+		}
+	}
+
+	option = {
+		name = ukraine_coalition.10.c
+		ai_chance = { base = 20 }
+		set_country_flag = UKR_cmd_aloof
+		add_war_support = 0.02
+		add_political_power = 20
+	}
+}
+
+# Газ и украинские хранилища: срабатывает, когда у Германии есть идея газового дефицита от nato.12/13
+# art: reuse
+country_event = {
+	id = ukraine_coalition.11
+	title = ukraine_coalition.11.t
+	desc = ukraine_coalition.11.d
+	picture = GFX_Civilian_Airliners
+
+	trigger = {
+		tag = UKR
+		UKR_coalition_mature = yes
+		country_exists = GER
+		GER = {
+			OR = {
+				has_idea = GER_looming_winter_gas_shortage
+				has_idea = GER_winter_gas_shortage
+			}
+		}
+	}
+	mean_time_to_happen = { days = 15 }
+	fire_only_once = yes
+
+	option = {
+		name = ukraine_coalition.11.a
+		ai_chance = { base = 40 }
+		set_country_flag = UKR_gas_shared
+		UKR_trust_coalition_loyal = yes
+		UKR_gas_goodwill = yes
+		add_timed_idea = {
+			idea = UKR_gas_squeeze
+			days = 150
+		}
+	}
+
+	option = {
+		name = ukraine_coalition.11.b
+		ai_chance = { base = 20 }
+		set_country_flag = UKR_gas_kept
+		UKR_trust_coalition_strain = yes
+		add_stability = 0.02
+		GER = { add_opinion_modifier = { target = UKR modifier = ukr_coalition_strained } }
+	}
+
+	option = {
+		name = ukraine_coalition.11.c
+		trigger = { check_variable = { var = UKR_nato_trust value = 45 compare = greater_than_or_equals } }
+		ai_chance = { base = 40 }
+		set_country_flag = UKR_gas_traded
+		UKR_gas_goodwill = yes
+		add_to_variable = { var = UKR_air_defense_points value = 1 }
+		add_timed_idea = {
+			idea = UKR_gas_squeeze
+			days = 90
+		}
+		hidden_effect = { UKR_update_air_defense_level = yes }
+	}
+}
+
+# Реестр формирований: союзники хотят знать, кому передают оружие (если реестра ещё нет)
+# art: reuse
+country_event = {
+	id = ukraine_coalition.12
+	title = ukraine_coalition.12.t
+	desc = ukraine_coalition.12.d
+	picture = GFX_UKR_diplomat
+
+	trigger = {
+		tag = UKR
+		UKR_coalition_mature = yes
+		NOT = { has_country_flag = UKR_volunteer_registry }
+	}
+	mean_time_to_happen = { days = 40 }
+	fire_only_once = yes
+
+	option = {
+		name = ukraine_coalition.12.a
+		ai_chance = {
+			base = 50
+			modifier = { add = -25 has_country_flag = UKR_pillar_chosen_nationalists }
+		}
+		set_country_flag = UKR_volunteer_registry
+		set_country_flag = UKR_registry_open
+		UKR_trust_transparency = yes
+		army_experience = 5
+		add_to_variable = { UKR_nationalist_lean = -2 }
+		UKR_clamp_leans = yes
+		if = {
+			limit = { has_country_flag = UKR_pillar_chosen_nationalists }
+			add_stability = -0.03
+			add_war_support = -0.02
+		}
+	}
+
+	option = {
+		name = ukraine_coalition.12.b
+		ai_chance = { base = 30 }
+		set_country_flag = UKR_volunteers_integrated
+		army_experience = 8
+		add_political_power = -10
+	}
+
+	option = {
+		name = ukraine_coalition.12.c
+		ai_chance = {
+			base = 20
+			modifier = { add = 25 has_country_flag = UKR_pillar_chosen_nationalists }
+			modifier = { add = 15 has_country_flag = UKR_np_hero_upa }
+		}
+		set_country_flag = UKR_registry_refused
+		UKR_trust_coalition_strain = yes
+		add_war_support = 0.03
+		add_to_variable = { UKR_nationalist_lean = 2 }
+		UKR_clamp_leans = yes
+		add_timed_idea = {
+			idea = UKR_coalition_friction
+			days = 90
+		}
+	}
+}
+
+# ---------------------------------------------------------------- 30-49: совместные операции
+
+# «Давут»: Франция готовит десант к Крыму (миссия FRA_Operation_Davout_decision, TFR); у Украины просят разведку и прикрытие
+# art: reuse
+country_event = {
+	id = ukraine_coalition.30
+	title = ukraine_coalition.30.t
+	desc = ukraine_coalition.30.d
+	picture = GFX_FRA_operation_davout
+
+	trigger = {
+		tag = UKR
+		UKR_coalition_active = yes
+		has_country_flag = UKR_coalition_hq_open
+		country_exists = FRA
+		FRA = { has_active_mission = FRA_Operation_Davout_decision }
+	}
+	mean_time_to_happen = { days = 5 }
+	fire_only_once = yes
+
+	option = {
+		name = ukraine_coalition.30.a
+		ai_chance = { base = 40 }
+		set_country_flag = UKR_davout_support
+		add_political_power = -25
+		UKR_trust_joint_op = yes
+		add_timed_idea = {
+			idea = UKR_joint_planning
+			days = 90
+		}
+		add_to_variable = { var = UKRwarfatigue value = 2 }
+		UKR_mood_sync = yes
+		FRA = { add_opinion_modifier = { target = UKR modifier = ukr_coalition_loyal } }
+	}
+
+	option = {
+		name = ukraine_coalition.30.b
+		ai_chance = { base = 30 }
+		set_country_flag = UKR_davout_limited
+	}
+
+	option = {
+		name = ukraine_coalition.30.c
+		trigger = { check_variable = { var = UKR_hq_seat value = 1 compare = greater_than_or_equals } }
+		ai_chance = { base = 30 }
+		set_country_flag = UKR_davout_contingent
+		army_experience = 10
+		add_manpower = -3000
+		UKR_trust_joint_op = yes
+		add_to_variable = { var = UKRhate value = 3 }
+		add_to_variable = { var = UKRwarfatigue value = 3 }
+		UKR_mood_sync = yes
+		FRA = { add_opinion_modifier = { target = UKR modifier = ukr_coalition_loyal } }
+	}
+}
+
+# «Давут»: итог. Читаем флаги Франции: успех (FRA_davout_success_flag, ставит TFR при захвате провинций) или провал (FRA_failed_operation_davout)
+# art: reuse
+country_event = {
+	id = ukraine_coalition.31
+	title = ukraine_coalition.31.t
+	desc = {
+		text = ukraine_coalition.31.d_win
+		trigger = { FRA = { has_country_flag = FRA_davout_success_flag } }
+	}
+	desc = {
+		text = ukraine_coalition.31.d_fail
+		trigger = { NOT = { FRA = { has_country_flag = FRA_davout_success_flag } } }
+	}
+	picture = GFX_FRA_operation_davout
+
+	trigger = {
+		tag = UKR
+		UKR_coalition_active = yes
+		has_country_flag = UKR_coalition_hq_open
+		country_exists = FRA
+		FRA = {
+			OR = {
+				has_country_flag = FRA_davout_success_flag
+				has_country_flag = FRA_failed_operation_davout
+			}
+		}
+	}
+	mean_time_to_happen = { days = 3 }
+	fire_only_once = yes
+
+	# Успех
+	option = {
+		name = ukraine_coalition.31.a
+		trigger = { FRA = { has_country_flag = FRA_davout_success_flag } }
+		ai_chance = { base = 60 }
+		add_war_support = 0.05
+		add_political_power = 25
+		add_to_variable = { var = UKRwarfatigue value = -4 }
+		UKR_mood_sync = yes
+		if = {
+			limit = {
+				OR = {
+					has_country_flag = UKR_davout_support
+					has_country_flag = UKR_davout_contingent
+				}
+			}
+			UKR_trust_joint_op = yes
+		}
+	}
+
+	option = {
+		name = ukraine_coalition.31.b
+		trigger = { FRA = { has_country_flag = FRA_davout_success_flag } }
+		ai_chance = { base = 40 }
+		add_stability = 0.03
+		UKR_trust_coalition_loyal = yes
+	}
+
+	# Провал
+	option = {
+		name = ukraine_coalition.31.c
+		trigger = { FRA = { has_country_flag = FRA_failed_operation_davout } }
+		ai_chance = { base = 60 }
+		UKR_trust_coalition_loyal = yes
+		add_war_support = -0.01
+	}
+
+	option = {
+		name = ukraine_coalition.31.d
+		trigger = { FRA = { has_country_flag = FRA_failed_operation_davout } }
+		ai_chance = { base = 40 }
+		UKR_trust_coalition_strain = yes
+		add_war_support = 0.02
+	}
+}
+
+# Совместное наступление: Германия, Франция и Британия согласовали общий план (nato.24/25, флаги на Германии)
+# art: reuse
+country_event = {
+	id = ukraine_coalition.32
+	title = ukraine_coalition.32.t
+	desc = ukraine_coalition.32.d
+	picture = GFX_Generic_Bundeswehr
+
+	trigger = {
+		tag = UKR
+		UKR_coalition_active = yes
+		has_country_flag = UKR_coalition_hq_open
+		country_exists = GER
+		GER = {
+			has_country_flag = ENG_agreed_offensive
+			has_country_flag = FRA_agreed_offensive
+		}
+	}
+	mean_time_to_happen = { days = 4 }
+	fire_only_once = yes
+
+	option = {
+		name = ukraine_coalition.32.a
+		ai_chance = {
+			base = 35
+			modifier = { add = -20 UKR_fatigue_high = yes }
+		}
+		set_country_flag = UKR_offensive_main
+		UKR_trust_joint_op = yes
+		add_political_power = -20
+		add_timed_idea = {
+			idea = UKR_joint_planning
+			days = 90
+		}
+		add_to_variable = { var = UKRwarfatigue value = 4 }
+		add_to_variable = { var = UKRhate value = 2 }
+		UKR_mood_sync = yes
+	}
+
+	option = {
+		name = ukraine_coalition.32.b
+		ai_chance = { base = 40 }
+		set_country_flag = UKR_offensive_flank
+		add_timed_idea = {
+			idea = UKR_joint_planning
+			days = 45
+		}
+		add_to_variable = { var = UKRwarfatigue value = 2 }
+		UKR_mood_sync = yes
+	}
+
+	option = {
+		name = ukraine_coalition.32.c
+		trigger = { UKR_fatigue_high = yes }
+		ai_chance = {
+			base = 25
+			modifier = { add = 20 UKR_fatigue_critical = yes }
+		}
+		set_country_flag = UKR_offensive_declined
+		UKR_trust_coalition_strain = yes
+		add_stability = 0.02
+		add_to_variable = { var = UKRwarfatigue value = -2 }
+		UKR_mood_sync = yes
+		add_timed_idea = {
+			idea = UKR_coalition_friction
+			days = 90
+		}
+	}
+}
+
+# ---------------------------------------------------------------- 50-69: давление на переговоры (усталость + доверие)
+
+# Намёки: усталость высокая, доверие ниже 50
+# art: reuse
+country_event = {
+	id = ukraine_coalition.50
+	title = ukraine_coalition.50.t
+	desc = ukraine_coalition.50.d
+	picture = GFX_event_UKR_war_fatigue
+
+	trigger = {
+		tag = UKR
+		UKR_coalition_mature = yes
+		UKR_fatigue_high = yes
+		UKR_trust_below_50 = yes
+		NOT = { has_country_flag = UKR_talks_cd }
+		NOT = { has_country_flag = UKR_talks_track }
+	}
+	mean_time_to_happen = { days = 20 }
+
+	# Отвергнуть публично
+	option = {
+		name = ukraine_coalition.50.a
+		ai_chance = {
+			base = 40
+			modifier = { add = 15 check_variable = { var = UKRhate value = 50 compare = greater_than_or_equals } }
+		}
+		set_country_flag = { flag = UKR_talks_cd days = 120 }
+		add_war_support = 0.04
+		add_stability = 0.02
+		UKR_trust_talks_refused = yes
+		add_to_variable = { var = UKR_talks_refusals value = 1 }
+		add_to_variable = { var = UKRhate value = 2 }
+		UKR_mood_sync = yes
+	}
+
+	# Закрытые консультации
+	option = {
+		name = ukraine_coalition.50.b
+		ai_chance = {
+			base = 40
+			modifier = { add = 15 UKR_fatigue_critical = yes }
+			modifier = { add = -20 has_country_flag = UKR_pillar_chosen_nationalists }
+		}
+		set_country_flag = { flag = UKR_talks_cd days = 120 }
+		set_country_flag = UKR_talks_consultations
+		add_stability = -0.02
+		if = {
+			limit = { has_country_flag = UKR_pillar_chosen_nationalists }
+			add_stability = -0.03
+		}
+		UKR_trust_talks_open = yes
+		add_to_variable = { var = UKRwarfatigue value = -6 }
+		add_to_variable = { var = UKRhate value = -3 }
+		UKR_mood_sync = yes
+	}
+
+	# Гарантии вместо заморозки
+	option = {
+		name = ukraine_coalition.50.c
+		trigger = { check_variable = { var = UKR_nato_trust value = 35 compare = greater_than_or_equals } }
+		ai_chance = { base = 20 }
+		set_country_flag = { flag = UKR_talks_cd days = 120 }
+		set_country_flag = UKR_guarantees_asked
+		add_war_support = 0.01
+		add_to_variable = { var = UKRwarfatigue value = -2 }
+		UKR_mood_sync = yes
+	}
+}
+
+# Условия союзников: после отказа, усталость критическая, доверие ниже 40
+# art: reuse
+country_event = {
+	id = ukraine_coalition.51
+	title = ukraine_coalition.51.t
+	desc = ukraine_coalition.51.d
+	picture = GFX_event_UKR_war_fatigue
+
+	trigger = {
+		tag = UKR
+		UKR_coalition_mature = yes
+		check_variable = { var = UKR_talks_refusals value = 1 compare = greater_than_or_equals }
+		UKR_fatigue_critical = yes
+		UKR_trust_below_40 = yes
+		NOT = { has_country_flag = UKR_talks_cd }
+		NOT = { has_country_flag = UKR_talks_track }
+	}
+	mean_time_to_happen = { days = 20 }
+
+	# Принять условия и сесть за стол
+	option = {
+		name = ukraine_coalition.51.a
+		ai_chance = { base = 45 }
+		set_country_flag = { flag = UKR_talks_cd days = 150 }
+		set_country_flag = UKR_talks_track
+		add_stability = -0.03
+		UKR_trust_talks_open = yes
+		add_to_variable = { var = UKRwarfatigue value = -10 }
+		add_to_variable = { var = UKRhate value = -4 }
+		UKR_mood_sync = yes
+	}
+
+	# Отказаться: помощь дороже, место в штабе ниже
+	option = {
+		name = ukraine_coalition.51.b
+		ai_chance = { base = 55 }
+		set_country_flag = { flag = UKR_talks_cd days = 150 }
+		set_country_flag = { flag = UKR_aid_surcharge days = 120 }
+		add_timed_idea = {
+			idea = UKR_peace_pressure
+			days = 120
+		}
+		UKR_trust_talks_refused = yes
+		add_to_variable = { var = UKR_talks_refusals value = 1 }
+		add_war_support = 0.03
+		if = {
+			limit = { check_variable = { var = UKR_hq_seat value = 1 compare = greater_than_or_equals } }
+			set_temp_variable = { var = UKR_seat_new value = UKR_hq_seat }
+			subtract_from_temp_variable = { var = UKR_seat_new value = 1 }
+			UKR_set_hq_seat = yes
+		}
+		hidden_effect = { UKR_update_request_costs = yes }
+	}
+}
+
+# Гарантии безопасности: доверие от 75, усталость от 45, место в штабе есть
+# art: reuse
+country_event = {
+	id = ukraine_coalition.52
+	title = ukraine_coalition.52.t
+	desc = ukraine_coalition.52.d
+	picture = GFX_NATO_speech
+
+	trigger = {
+		tag = UKR
+		UKR_coalition_mature = yes
+		check_variable = { var = UKR_nato_trust value = 75 compare = greater_than_or_equals }
+		check_variable = { var = UKRwarfatigue value = 45 compare = greater_than_or_equals }
+		check_variable = { var = UKR_hq_seat value = 1 compare = greater_than_or_equals }
+		NOT = { has_country_flag = UKR_security_roadmap }
+	}
+	mean_time_to_happen = { days = 30 }
+	fire_only_once = yes
+
+	option = {
+		name = ukraine_coalition.52.a
+		ai_chance = { base = 70 }
+		set_country_flag = UKR_security_roadmap
+		add_timed_idea = {
+			idea = UKR_security_track
+			days = 240
+		}
+		add_to_variable = { var = UKRwarfatigue value = -8 }
+		add_to_variable = { var = UKRhate value = -2 }
+		UKR_mood_sync = yes
+	}
+
+	option = {
+		name = ukraine_coalition.52.b
+		ai_chance = { base = 30 }
+		set_country_flag = UKR_nato_membership_demand
+		add_war_support = 0.03
+		UKR_trust_coalition_strain = yes
+	}
+}
+
+# ---------------------------------------------------------------- 70-79: ПВО
+
+# Разъяснение многослойной ПВО: показывается один раз на уровень 2 и один раз на уровень 3 (из UKR_update_air_defense_level)
+# art: reuse
+country_event = {
+	id = ukraine_coalition.70
+	title = ukraine_coalition.70.t
+	desc = {
+		text = ukraine_coalition.70.d_l3
+		trigger = { check_variable = { var = UKR_air_defense_level value = 3 compare = greater_than_or_equals } }
+	}
+	desc = {
+		text = ukraine_coalition.70.d_l2
+		trigger = { check_variable = { var = UKR_air_defense_level value = 3 compare = less_than } }
+	}
+	picture = GFX_event_UKR_war_support_NATO
+
+	is_triggered_only = yes
+
+	option = {
+		name = ukraine_coalition.70.a
+		ai_chance = { base = 100 }
+		add_stability = 0.01
+	}
+}

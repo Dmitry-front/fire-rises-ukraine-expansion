@@ -1,0 +1,30 @@
+# Этап 4 «Коалиция» (PROPOSAL_war_europe.md, раздел 6, фаза II; DESIGN.md, раздел 12). Область - Украина.
+# Фаза II начинается с ukraine.5 (приглашение в НАТО): опция .a ставит флаг UKR_coalition_phase.
+
+# Фаза II идёт и война с Россией не закончилась
+UKR_coalition_active = {
+	has_country_flag = UKR_coalition_phase
+	has_war_with = SOV
+}
+
+# То же, но первые 120 дней после старта прошли (UKR_coalition_early снимается сам): поздние события ждут
+UKR_coalition_mature = {
+	UKR_coalition_active = yes
+	NOT = { has_country_flag = UKR_coalition_early }
+}
+
+# Усталость от войны (UKRwarfatigue, 0-100): высокая и критическая
+UKR_fatigue_high = {
+	check_variable = { var = UKRwarfatigue value = 55 compare = greater_than_or_equals }
+}
+UKR_fatigue_critical = {
+	check_variable = { var = UKRwarfatigue value = 70 compare = greater_than_or_equals }
+}
+
+# Доверие европейского НАТО (UKR_nato_trust) ниже порогов давления на переговоры
+UKR_trust_below_50 = {
+	check_variable = { var = UKR_nato_trust value = 50 compare = less_than }
+}
+UKR_trust_below_40 = {
+	check_variable = { var = UKR_nato_trust value = 40 compare = less_than }
+}

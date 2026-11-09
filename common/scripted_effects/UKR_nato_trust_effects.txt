@@ -329,3 +329,65 @@ UKR_nato_aid_scale = {
 	divide_temp_variable = { var = UKR_aid_amount value = 100 }
 	round_temp_variable = UKR_aid_amount
 }
+
+# ---------------------------------------------------------------- этап 4 «Коалиция» (ukraine_coalition.*, DESIGN.md, раздел 12)
+
+# Поддержали общую линию коалиции или лидера блока. (+3)
+UKR_trust_coalition_loyal = {
+	custom_effect_tooltip = UKR_trust_tt_coalition_loyal
+	hidden_effect = {
+		set_temp_variable = { var = UKR_trust_d value = 3 }
+		set_temp_variable = { var = UKR_trust_r value = 22 }
+		UKR_trust_apply = yes
+	}
+}
+
+# Пошли против общей линии коалиции. (-3)
+UKR_trust_coalition_strain = {
+	custom_effect_tooltip = UKR_trust_tt_coalition_strain
+	hidden_effect = {
+		set_temp_variable = { var = UKR_trust_d value = -3 }
+		set_temp_variable = { var = UKR_trust_r value = 23 }
+		UKR_trust_apply = yes
+	}
+}
+
+# Прозрачность: единый реестр формирований, открытые данные для союзников. (+3)
+UKR_trust_transparency = {
+	custom_effect_tooltip = UKR_trust_tt_transparency
+	hidden_effect = {
+		set_temp_variable = { var = UKR_trust_d value = 3 }
+		set_temp_variable = { var = UKR_trust_r value = 24 }
+		UKR_trust_apply = yes
+	}
+}
+
+# Участие в совместной операции союзников. (+3)
+UKR_trust_joint_op = {
+	custom_effect_tooltip = UKR_trust_tt_joint_op
+	hidden_effect = {
+		set_temp_variable = { var = UKR_trust_d value = 3 }
+		set_temp_variable = { var = UKR_trust_r value = 25 }
+		UKR_trust_apply = yes
+	}
+}
+
+# Отказ от давления союзников на переговоры. (-3)
+UKR_trust_talks_refused = {
+	custom_effect_tooltip = UKR_trust_tt_talks_refused
+	hidden_effect = {
+		set_temp_variable = { var = UKR_trust_d value = -3 }
+		set_temp_variable = { var = UKR_trust_r value = 26 }
+		UKR_trust_apply = yes
+	}
+}
+
+# Согласие на консультации о переговорах. (+2)
+UKR_trust_talks_open = {
+	custom_effect_tooltip = UKR_trust_tt_talks_open
+	hidden_effect = {
+		set_temp_variable = { var = UKR_trust_d value = 2 }
+		set_temp_variable = { var = UKR_trust_r value = 27 }
+		UKR_trust_apply = yes
+	}
+}

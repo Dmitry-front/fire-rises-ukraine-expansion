@@ -1,0 +1,146 @@
+# Этап 4 «Коалиция» (PROPOSAL_war_europe.md, раздел 6, фаза II; DESIGN.md, раздел 12). Иконки временные (CLAUDE.md, «Нужен арт»; ART_MAP.md).
+# Уровни ПВО и место в штабе меняют scripted effects UKR_update_air_defense_level и UKR_set_hq_seat (UKR_coalition_effects.txt).
+# Остальные духи временные: их выдают события ukraine_coalition.* через add_timed_idea.
+ideas = {
+	country = {
+		# Уровень ПВО 1: отдельные батареи прикрывают Киев и несколько ключевых объектов
+		UKR_air_defense_level_1 = {
+			picture = generic_anti_air
+			allowed = {
+				original_tag = UKR
+			}
+			removal_cost = -1
+			modifier = {
+				static_anti_air_damage_factor = 0.05
+				static_anti_air_hit_chance_factor = 0.05
+				industry_air_damage_factor = -0.05
+			}
+		}
+
+		# Уровень ПВО 2: два яруса, дальнобойные комплексы плюс зенитные расчёты и мобильные группы
+		UKR_air_defense_level_2 = {
+			picture = generic_anti_air
+			allowed = {
+				original_tag = UKR
+			}
+			removal_cost = -1
+			modifier = {
+				static_anti_air_damage_factor = 0.1
+				static_anti_air_hit_chance_factor = 0.1
+				industry_air_damage_factor = -0.1
+				stability_factor = 0.01
+			}
+		}
+
+		# Уровень ПВО 3: многослойная система вокруг столицы и узлов энергетики
+		UKR_air_defense_level_3 = {
+			picture = generic_anti_air
+			allowed = {
+				original_tag = UKR
+			}
+			removal_cost = -1
+			modifier = {
+				static_anti_air_damage_factor = 0.15
+				static_anti_air_hit_chance_factor = 0.15
+				industry_air_damage_factor = -0.15
+				stability_factor = 0.02
+				war_support_factor = 0.02
+			}
+		}
+
+		# Место в штабе коалиции, ступень 1: участник
+		UKR_coalition_seat_1 = {
+			picture = generic_stability
+			allowed = {
+				original_tag = UKR
+			}
+			removal_cost = -1
+			modifier = {
+				command_power_gain_mult = 0.05
+				planning_speed = 0.05
+			}
+		}
+
+		# Место в штабе коалиции, ступень 2: постоянное место за столом
+		UKR_coalition_seat_2 = {
+			picture = generic_stability
+			allowed = {
+				original_tag = UKR
+			}
+			removal_cost = -1
+			modifier = {
+				command_power_gain_mult = 0.1
+				planning_speed = 0.1
+				max_planning = 0.05
+			}
+		}
+
+		# Совместное планирование с союзниками (временный)
+		UKR_joint_planning = {
+			picture = generic_infantry_bonus
+			allowed = {
+				original_tag = UKR
+			}
+			removal_cost = -1
+			modifier = {
+				planning_speed = 0.15
+				max_planning = 0.1
+				coordination_bonus = 0.05
+			}
+		}
+
+		# Охлаждение в коалиции: союзники недовольны нашей позицией (временный)
+		UKR_coalition_friction = {
+			picture = generic_stability
+			allowed = {
+				original_tag = UKR
+			}
+			removal_cost = -1
+			modifier = {
+				political_power_gain = -0.05
+				stability_factor = -0.02
+			}
+		}
+
+		# Газ ушёл в европейские хранилища: своя зима тоже тяжёлая (временный)
+		UKR_gas_squeeze = {
+			picture = generic_stability
+			allowed = {
+				original_tag = UKR
+			}
+			removal_cost = -1
+			modifier = {
+				consumer_goods_factor = 0.05
+				stability_factor = -0.03
+			}
+		}
+
+		# Давление союзников: помощь привязывают к переговорам (временный)
+		UKR_peace_pressure = {
+			picture = generic_stability
+			allowed = {
+				original_tag = UKR
+			}
+			removal_cost = -1
+			modifier = {
+				political_power_gain = -0.15
+				war_support_factor = -0.05
+				stability_factor = -0.03
+			}
+		}
+
+		# Дорожная карта гарантий безопасности: понятный горизонт (временный)
+		UKR_security_track = {
+			picture = generic_fortify_the_borders
+			allowed = {
+				original_tag = UKR
+			}
+			removal_cost = -1
+			modifier = {
+				political_power_gain = 0.1
+				war_support_factor = 0.05
+				stability_factor = 0.05
+			}
+		}
+	}
+}

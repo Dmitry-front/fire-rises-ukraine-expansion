@@ -299,6 +299,15 @@ on_actions = {
                 UKR_update_request_costs = yes
             }
 
+            # Этап 4 «Коалиция»: уровень ПВО (очки от запросов к странам и дух приоритета ПВО), пока идёт война
+            if = {
+                limit = {
+                    tag = UKR
+                    has_country_flag = UKR_war_mood_active
+                }
+                UKR_update_air_defense_level = yes
+            }
+
             # Синхронизация военных духов с переменными настроя
             if = {
                 limit = {

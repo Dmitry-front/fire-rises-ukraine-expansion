@@ -1,0 +1,195 @@
+# Этап 4 «Коалиция» (PROPOSAL_war_europe.md, раздел 6, фаза II; DESIGN.md, раздел 12). Область - Украина.
+
+# Уровень ПВО 0-3 (UKR_air_defense_level) из очков UKR_air_defense_points (их дают запросы к Германии, Франции и Литве, этап 3)
+# и духа приоритета ПВО (решение UKR_air_defense_priority): очки 1 / 3 / 4 дают уровень 1 / 2 / 3, дух добавляет +1, потолок 3.
+# Читает ukrainewar.300 (сила и частота ударов по инфраструктуре). Вызывается из on_daily (TFR_on_actions_UKR.txt) во время войны.
+# Идея уровня меняется только при смене уровня; разъяснение (ukraine_coalition.70) показывается один раз на уровень 2 и на уровень 3.
+UKR_update_air_defense_level = {
+	clamp_variable = { var = UKR_air_defense_points min = 0 max = 12 }
+
+	set_temp_variable = { var = UKR_ad_new value = 0 }
+	if = {
+		limit = { check_variable = { var = UKR_air_defense_points value = 1 compare = greater_than_or_equals } }
+		set_temp_variable = { var = UKR_ad_new value = 1 }
+	}
+	if = {
+		limit = { check_variable = { var = UKR_air_defense_points value = 3 compare = greater_than_or_equals } }
+		set_temp_variable = { var = UKR_ad_new value = 2 }
+	}
+	if = {
+		limit = { check_variable = { var = UKR_air_defense_points value = 4 compare = greater_than_or_equals } }
+		set_temp_variable = { var = UKR_ad_new value = 3 }
+	}
+	if = {
+		limit = { has_idea = UKR_idea_air_defense_priority }
+		add_to_temp_variable = { var = UKR_ad_new value = 1 }
+		clamp_temp_variable = { var = UKR_ad_new min = 0 max = 3 }
+	}
+
+	if = {
+		limit = {
+			OR = {
+				NOT = { check_variable = { var = UKR_air_defense_level value = UKR_ad_new compare = equals } }
+				# Страховка: уровень посчитан, а духа нет (старое сохранение, снятие идей)
+				AND = {
+					check_variable = { var = UKR_ad_new value = 1 compare = equals }
+					NOT = { has_idea = UKR_air_defense_level_1 }
+				}
+				AND = {
+					check_variable = { var = UKR_ad_new value = 2 compare = equals }
+					NOT = { has_idea = UKR_air_defense_level_2 }
+				}
+				AND = {
+					check_variable = { var = UKR_ad_new value = 3 compare = equals }
+					NOT = { has_idea = UKR_air_defense_level_3 }
+				}
+			}
+		}
+
+		# Разъяснение: один раз на уровень 2 и один раз на уровень 3
+		if = {
+			limit = {
+				check_variable = { var = UKR_ad_new value = 3 compare = equals }
+				NOT = { has_country_flag = UKR_ad_notice_3 }
+			}
+			set_country_flag = UKR_ad_notice_3
+			set_country_flag = UKR_ad_notice_2
+			country_event = { id = ukraine_coalition.70 days = 2 }
+		}
+		else_if = {
+			limit = {
+				check_variable = { var = UKR_ad_new value = 2 compare = equals }
+				NOT = { has_country_flag = UKR_ad_notice_2 }
+			}
+			set_country_flag = UKR_ad_notice_2
+			country_event = { id = ukraine_coalition.70 days = 2 }
+		}
+
+		if = {
+			limit = { has_idea = UKR_air_defense_level_1 }
+			remove_ideas = UKR_air_defense_level_1
+		}
+		if = {
+			limit = { has_idea = UKR_air_defense_level_2 }
+			remove_ideas = UKR_air_defense_level_2
+		}
+		if = {
+			limit = { has_idea = UKR_air_defense_level_3 }
+			remove_ideas = UKR_air_defense_level_3
+		}
+		if = {
+			limit = { check_variable = { var = UKR_ad_new value = 1 compare = equals } }
+			add_ideas = UKR_air_defense_level_1
+		}
+		else_if = {
+			limit = { check_variable = { var = UKR_ad_new value = 2 compare = equals } }
+			add_ideas = UKR_air_defense_level_2
+		}
+		else_if = {
+			limit = { check_variable = { var = UKR_ad_new value = 3 compare = equals } }
+			add_ideas = UKR_air_defense_level_3
+		}
+		set_variable = { var = UKR_air_defense_level value = UKR_ad_new }
+	}
+}
+
+# Снять духи уровня ПВО (конец войны, postwar). Переменные остаются.
+UKR_clear_air_defense_spirits = {
+	if = {
+		limit = { has_idea = UKR_air_defense_level_1 }
+		remove_ideas = UKR_air_defense_level_1
+	}
+	if = {
+		limit = { has_idea = UKR_air_defense_level_2 }
+		remove_ideas = UKR_air_defense_level_2
+	}
+	if = {
+		limit = { has_idea = UKR_air_defense_level_3 }
+		remove_ideas = UKR_air_defense_level_3
+	}
+	set_variable = { var = UKR_air_defense_level value = 0 }
+}
+
+# Место Украины в штабе коалиции (UKR_hq_seat 0-2). Вход: временная UKR_seat_new (0, 1 или 2).
+# 0 - гость, нас слушают; 1 - участник штаба; 2 - постоянное место за столом. Духи меняются вместе с переменной.
+UKR_set_hq_seat = {
+	set_variable = { var = UKR_hq_seat value = UKR_seat_new }
+	if = {
+		limit = { has_idea = UKR_coalition_seat_1 }
+		remove_ideas = UKR_coalition_seat_1
+	}
+	if = {
+		limit = { has_idea = UKR_coalition_seat_2 }
+		remove_ideas = UKR_coalition_seat_2
+	}
+	if = {
+		limit = { check_variable = { var = UKR_seat_new value = 1 compare = equals } }
+		add_ideas = UKR_coalition_seat_1
+	}
+	else_if = {
+		limit = { check_variable = { var = UKR_seat_new value = 2 compare = equals } }
+		add_ideas = UKR_coalition_seat_2
+	}
+}
+
+# Отношение лидера блока к Украине (лидера выбрала TFR в событиях nato.26-28, итог читаем по глобальным флагам).
+# Если выбор лидера не состоялся (флагов нет), ничего не происходит.
+UKR_leader_opinion_loyal = {
+	if = {
+		limit = { has_global_flag = GER_won_leadership_global country_exists = GER }
+		GER = { add_opinion_modifier = { target = UKR modifier = ukr_coalition_loyal } }
+	}
+	else_if = {
+		limit = { has_global_flag = FRA_won_leadership_global country_exists = FRA }
+		FRA = { add_opinion_modifier = { target = UKR modifier = ukr_coalition_loyal } }
+	}
+	else_if = {
+		limit = { has_global_flag = ENG_won_leadership_global country_exists = ENG }
+		ENG = { add_opinion_modifier = { target = UKR modifier = ukr_coalition_loyal } }
+	}
+}
+UKR_leader_opinion_strained = {
+	if = {
+		limit = { has_global_flag = GER_won_leadership_global country_exists = GER }
+		GER = { add_opinion_modifier = { target = UKR modifier = ukr_coalition_strained } }
+	}
+	else_if = {
+		limit = { has_global_flag = FRA_won_leadership_global country_exists = FRA }
+		FRA = { add_opinion_modifier = { target = UKR modifier = ukr_coalition_strained } }
+	}
+	else_if = {
+		limit = { has_global_flag = ENG_won_leadership_global country_exists = ENG }
+		ENG = { add_opinion_modifier = { target = UKR modifier = ukr_coalition_strained } }
+	}
+}
+
+# Германия помогла с газом (событие .11): благодарность Берлина, отдельный модификатор
+UKR_gas_goodwill = {
+	if = {
+		limit = { country_exists = GER }
+		GER = { add_opinion_modifier = { target = UKR modifier = ukr_coalition_gas_help } }
+	}
+}
+
+# Отношение всех троих (Германия, Франция, Британия) к нам, когда мы предлагаем общий штаб или участвуем в операции союзников
+UKR_big3_opinion_loyal = {
+	if = {
+		limit = { country_exists = GER }
+		GER = { add_opinion_modifier = { target = UKR modifier = ukr_coalition_loyal } }
+	}
+	if = {
+		limit = { country_exists = FRA }
+		FRA = { add_opinion_modifier = { target = UKR modifier = ukr_coalition_loyal } }
+	}
+	if = {
+		limit = { country_exists = ENG }
+		ENG = { add_opinion_modifier = { target = UKR modifier = ukr_coalition_loyal } }
+	}
+}
+
+# Синхронизация настроя после изменения UKRhate / UKRwarfatigue в событиях коалиции (как в ukrainewar.300)
+UKR_mood_sync = {
+	UKR_update_hate_spirit = yes
+	UKR_update_fatigue_spirit = yes
+	force_update_dynamic_modifier = yes
+}

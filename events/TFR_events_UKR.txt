@@ -287,6 +287,10 @@ country_event = {
 	}
 	option = {
 		name = ukraine.5.a
+		# Этап 4 «Коалиция»: начало фазы II (PROPOSAL_war_europe.md, раздел 6); первые 120 дней поздние события ждут
+		set_country_flag = UKR_coalition_phase
+		set_country_flag = { flag = UKR_coalition_early days = 120 }
+		country_event = { id = ukraine_coalition.1 days = 6 }
 		every_country = {
 			limit = {
 				has_country_flag = NATO_current_leader

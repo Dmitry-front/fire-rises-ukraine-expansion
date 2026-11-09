@@ -4,6 +4,9 @@ from .fx import *
 W_FROZEN = ('UKR = { has_idea = UKR_eu_aid_frozen }', -20)
 W_ANTICORR = ('UKR = { has_idea = UKR_anticorruption_wave }', 15)
 W_EURO = ('UKR = { has_idea = UKR_euro_momentum }', 10)
+# Ветка Германии «NATO War» (TFR): излишки уже отданы Украине (300 САУ и др.) или танки оставлены себе, запас для новой просьбы меньше
+W_SURPLUS = ('has_completed_focus = GER_deliver_excess_equipment_to_ukraine', -10)
+W_KEPT = ('has_completed_focus = GER_dust_off_legacy_equipment', -15)
 
 REQ = [
 	dict(
@@ -85,7 +88,7 @@ REQ = [
 			'Germany handed over part of the equipment: the rest, the chancellery says, will follow once the allies join the decision.'),
 		res_no=T('Берлин отказал: канцелярия не хочет «идти впереди союзников». Просьбу можно повторить позже.',
 			'Berlin refused: the chancellery does not want to «walk ahead of the allies». The request can be repeated later.'),
-		weights=[W_EURO, W_FROZEN],
+		weights=[W_EURO, W_FROZEN, W_SURPLUS, W_KEPT],
 		full=[eq('modern_tank_equipment_2', 50, 'GER'), eq('mechanized_equipment_1', 100, 'GER'), eq('artillery_equipment_2', 40, 'GER')],
 		part='auto',
 	),

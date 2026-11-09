@@ -563,6 +563,14 @@ def gen_effects():
 			'\t\tset_variable = { var = UKR_ll_delay value = %d }' % ld,
 			'\t}',
 		]
+	lines += [
+		'',
+		'\t# Этап 4: надбавка 20 процентов к цене, пока действует флаг UKR_aid_surcharge (ukraine_coalition.51, отказ от условий союзников)',
+		'\tif = {',
+		'\t\tlimit = { has_country_flag = UKR_aid_surcharge }',
+		'\t\tadd_to_variable = { var = UKR_req_pct value = 20 }',
+		'\t}',
+	]
 	lines.append('')
 	for r in REQ:
 		lines += [

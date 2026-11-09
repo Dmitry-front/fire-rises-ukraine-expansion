@@ -96,6 +96,13 @@ def check():
         for m in re.finditer(r'has_completed_focus = (UKR_w_\w+)', d['visible'] + '\n' + d['complete']):
             if m.group(1) not in idset:
                 errors.append('%s: нет фокуса %s' % (d['id'], m.group(1)))
+    sched = set(re.findall(r'ukrainewar\.(\d+) days', '\n'.join(f['reward'] for f in FO.F)))
+    for e in DE.E:
+        if e['id'] not in (810, 812) and str(e['id']) not in sched:
+            errors.append('событие ukrainewar.%d не планируется ни одним фокусом' % e['id'])
+    for s in sched:
+        if int(s) not in [e['id'] for e in DE.E]:
+            errors.append('фокус планирует несуществующее событие ukrainewar.%s' % s)
     unused = idea_ids - used_ideas
     if unused:
         errors.append('идеи без ссылок: %s' % sorted(unused))
@@ -139,7 +146,8 @@ def all_loc(lang):
         n = 'ukrainewar.%d' % e['id']
         out.append((n + '.t', e['t_ru'] if ru else e['t_en']))
         out.append((n + '.d', e['d_ru'] if ru else e['d_en']))
-        out.append((n + '.a', e['a_ru'] if ru else e['a_en']))
+        for k, (a_ru, a_en, _) in zip('abcd', e['opts']):
+            out.append((n + '.' + k, a_ru if ru else a_en))
     for k, (a, b) in DE.TT.items():
         out.append((k, a if ru else b))
     return out
@@ -236,14 +244,12 @@ def decisions_file():
 
 # ---------------------------------------------------------------- события
 def events_file():
-    out = ['# Дерево войны: события ukrainewar.810-812 (DESIGN.md 8.5, сессия 24). ГЕНЕРИРУЕТСЯ _tools/gen_war_tree.py.',
-           '# 810 - вводное (из UKR_w_start_war_tree), 811 - военное положение (из UKR_w_martial_law), 812 - вторая ступень дерева.',
+    out = ['# Дерево войны: события ukrainewar.810-818 (DESIGN.md 8.5, сессия 24). ГЕНЕРИРУЕТСЯ _tools/gen_war_tree.py.',
+           '# 810-812 - вводные и вторая ступень, 813-818 - реакции на выбор игрока (планируются наградами фокусов).',
            '', 'add_namespace = ukrainewar', '']
     for e in DE.E:
         n = 'ukrainewar.%d' % e['id']
-        trig = ['tag = UKR']
-        if e['id'] == 812:
-            trig += ['has_country_flag = UKR_w_started', 'NOT = { has_country_flag = UKR_w_tier2 }']
+        trig = ['tag = UKR'] + e.get('extra', [])
         out.append('# art: reuse')
         out.append('country_event = {')
         out.append('\tid = %s' % n)
@@ -255,12 +261,15 @@ def events_file():
         out.append('\tfire_only_once = yes')
         out.append('')
         out.append('\ttrigger = {\n%s\n\t}' % ind('\n'.join(trig), 2))
-        out.append('')
-        out.append('\toption = {')
-        out.append('\t\tname = %s.a' % n)
-        if e['effect']:
-            out.append(ind(e['effect'], 2))
-        out.append('\t}')
+        for k, (_, _, eff) in zip('abcd', e['opts']):
+            out.append('')
+            out.append('\toption = {')
+            out.append('\t\tname = %s.%s' % (n, k))
+            if eff:
+                out.append(ind(eff, 2))
+            if len(e['opts']) > 1:
+                out.append('\t\tai_chance = {\n\t\t\tfactor = 1\n\t\t}')
+            out.append('\t}')
         out.append('}')
         out.append('')
     return '\n'.join(out)

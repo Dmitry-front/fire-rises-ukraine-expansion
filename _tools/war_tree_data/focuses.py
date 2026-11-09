@@ -176,6 +176,7 @@ focus(
     reward='\n'.join([
         income('-2'),
         'add_ideas = UKR_wi_military_pay',
+        'hidden_effect = { country_event = { id = ukrainewar.813 days = 20 } }',
         fat(-3),
         lean('left', 2),
     ]),
@@ -191,6 +192,7 @@ focus(
     en_d='Mobilization by slogans: history, language, the image of the enemy. A wave of volunteers and high morale, but such rhetoric feeds hatred and strengthens the nationalists.\n\nMutually exclusive choice: the method of mobilization.',
     reward='\n'.join([
         timed('UKR_wi_patriotic_wave', 365),
+        'hidden_effect = { country_event = { id = ukrainewar.814 days = 20 } }',
         'add_manpower = 15000',
         hate(4),
         'add_popularity = { ideology = nationalist popularity = 0.01 }',
@@ -203,15 +205,15 @@ focus(
     prereq=[['UKR_w_general_mobilization']], excl=['UKR_w_pay_the_soldiers', 'UKR_w_call_to_the_nation'],
     ai='factor = 4\nmodifier = { factor = 3 check_variable = { var = UKR_authoritarian_lean value = 40 compare = greater_than } }',
     ru='Принудительный призыв',
-    ru_d='Облавы у военкоматов, повестки на улице, штрафы за уклонение. Армия получает людей быстро, но общество недовольно, а союзники смотрят на это без одобрения.\n\nВзаимоисключающий выбор: способ мобилизации.',
+    ru_d='Облавы у военкоматов, повестки на улице, штрафы за уклонение. Армия получает людей быстро, но общество недовольно: жалобы на злоупотребления множатся, а доверие к власти падает. Платит за это стабильность, а не репутация у союзников.\n\nВзаимоисключающий выбор: способ мобилизации.',
     en='Forced Conscription',
-    en_d='Raids at enlistment offices, summonses served in the street, fines for evasion. The army gets people fast, but society is unhappy and allies do not approve.\n\nMutually exclusive choice: the method of mobilization.',
+    en_d='Raids at enlistment offices, summonses served in the street, fines for evasion. The army gets people fast, but society is unhappy: complaints about abuses multiply and trust in the authorities falls. The price is paid in stability, not in standing with allies.\n\nMutually exclusive choice: the method of mobilization.',
     reward='\n'.join([
         'add_manpower = 60000',
         'add_ideas = UKR_wi_forced_draft',
+        'hidden_effect = { country_event = { id = ukrainewar.815 days = 20 } }',
         fat(5),
         lean('authoritarian', 3),
-        'UKR_trust_coercion = yes',
     ]),
 )
 
@@ -283,6 +285,7 @@ focus(
     en_d='Factories are dismantled and moved from the east and south to the west: machine tools, people, archives. Months of downtime, but then production returns where it is harder to reach.\n\nUnlocks the Carpathian logistics plan and the dispersal of production.',
     reward='\n'.join([
         timed('UKR_wi_relocation', 180),
+        'hidden_effect = { country_event = { id = ukrainewar.816 days = 30 } }',
         unlock('UKR_carpathian_logistics_plan', 'UKR_wd_factory_dispersal'),
     ]),
 )
@@ -357,6 +360,7 @@ focus(
     reward='\n'.join([
         'add_political_power = 20',
         timed('UKR_wi_world_sympathy', 150),
+        'hidden_effect = { country_event = { id = ukrainewar.818 days = 12 } }',
         'UKR_trust_diplomacy = yes',
         unlock('UKR_western_aid_package', 'UKR_resistance_coalition', 'UKR_wd_donor_conference'),
     ]),
@@ -428,6 +432,7 @@ focus(
     en_d='Mass-produced reconnaissance and strike drones, assembled in workshops and factories, provide what artillery lacks: eyes on the front line and a cheap strike.\n\nUnlocks strike coordination and a drone batch.',
     reward='\n'.join([
         timed('UKR_wi_drone_surge', 180),
+        'hidden_effect = { country_event = { id = ukrainewar.817 days = 25 } }',
         'UKR_w_mio_drones = yes',
         unlock('UKR_bayraktar_strike_coordination', 'UKR_wd_drone_batch'),
     ]),

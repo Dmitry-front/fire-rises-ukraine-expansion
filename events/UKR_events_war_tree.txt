@@ -1,5 +1,5 @@
-# Дерево войны: события ukrainewar.810-812 (DESIGN.md 8.5, сессия 24). ГЕНЕРИРУЕТСЯ _tools/gen_war_tree.py.
-# 810 - вводное (из UKR_w_start_war_tree), 811 - военное положение (из UKR_w_martial_law), 812 - вторая ступень дерева.
+# Дерево войны: события ukrainewar.810-818 (DESIGN.md 8.5, сессия 24). ГЕНЕРИРУЕТСЯ _tools/gen_war_tree.py.
+# 810-812 - вводные и вторая ступень, 813-818 - реакции на выбор игрока (планируются наградами фокусов).
 
 add_namespace = ukrainewar
 
@@ -62,5 +62,214 @@ country_event = {
 		name = ukrainewar.812.a
 		set_country_flag = UKR_w_tier2
 		custom_effect_tooltip = UKR_w_tt_tier2
+	}
+}
+
+# art: reuse
+country_event = {
+	id = ukrainewar.813
+	title = ukrainewar.813.t
+	desc = ukrainewar.813.d
+	picture = GFX_Development_Military
+
+	is_triggered_only = yes
+	fire_only_once = yes
+
+	trigger = {
+		tag = UKR
+	}
+
+	option = {
+		name = ukrainewar.813.a
+		set_temp_variable = { var = income_var_temp value = -1 }
+		add_income_with_inflation = yes
+		add_manpower = 5000
+		hidden_effect = { add_to_variable = { var = UKRwarfatigue value = -2 } }
+		custom_effect_tooltip = UKR_w_tt_fatigue_down
+		ai_chance = {
+			factor = 1
+		}
+	}
+
+	option = {
+		name = ukrainewar.813.b
+		add_equipment_to_stockpile = { type = support_equipment amount = 300 producer = UKR }
+		add_stability = -0.01
+		ai_chance = {
+			factor = 1
+		}
+	}
+}
+
+# art: reuse
+country_event = {
+	id = ukrainewar.814
+	title = ukrainewar.814.t
+	desc = ukrainewar.814.d
+	picture = GFX_UKR_preparing_for_war
+
+	is_triggered_only = yes
+	fire_only_once = yes
+
+	trigger = {
+		tag = UKR
+	}
+
+	option = {
+		name = ukrainewar.814.a
+		add_war_support = 0.02
+		add_popularity = { ideology = nationalist popularity = 0.005 }
+		hidden_effect = { add_to_variable = { var = UKRhate value = 2 } }
+		custom_effect_tooltip = UKR_w_tt_hate_up
+		ai_chance = {
+			factor = 1
+		}
+	}
+
+	option = {
+		name = ukrainewar.814.b
+		add_stability = 0.01
+		UKR_trust_restraint = yes
+		hidden_effect = { add_to_variable = { var = UKRhate value = -2 } }
+		custom_effect_tooltip = UKR_w_tt_hate_down
+		ai_chance = {
+			factor = 1
+		}
+	}
+}
+
+# art: reuse
+country_event = {
+	id = ukrainewar.815
+	title = ukrainewar.815.t
+	desc = ukrainewar.815.d
+	picture = GFX_Generic_Tank_column
+
+	is_triggered_only = yes
+	fire_only_once = yes
+
+	trigger = {
+		tag = UKR
+	}
+
+	option = {
+		name = ukrainewar.815.a
+		add_stability = 0.01
+		add_manpower = -5000
+		hidden_effect = { add_to_variable = { var = UKRwarfatigue value = -2 } }
+		custom_effect_tooltip = UKR_w_tt_fatigue_down
+		ai_chance = {
+			factor = 1
+		}
+	}
+
+	option = {
+		name = ukrainewar.815.b
+		add_manpower = 10000
+		add_stability = -0.01
+		hidden_effect = { add_to_variable = { var = UKRwarfatigue value = 2 } }
+		custom_effect_tooltip = UKR_w_tt_fatigue_up
+		ai_chance = {
+			factor = 1
+		}
+	}
+}
+
+# art: reuse
+country_event = {
+	id = ukrainewar.816
+	title = ukrainewar.816.t
+	desc = ukrainewar.816.d
+	picture = GFX_UKR_big_construction_event
+
+	is_triggered_only = yes
+	fire_only_once = yes
+
+	trigger = {
+		tag = UKR
+	}
+
+	option = {
+		name = ukrainewar.816.a
+		add_stability = 0.02
+		add_political_power = 10
+		ai_chance = {
+			factor = 1
+		}
+	}
+
+	option = {
+		name = ukrainewar.816.b
+		add_equipment_to_stockpile = { type = support_equipment amount = 300 producer = UKR }
+		add_stability = -0.01
+		ai_chance = {
+			factor = 1
+		}
+	}
+}
+
+# art: reuse
+country_event = {
+	id = ukrainewar.817
+	title = ukrainewar.817.t
+	desc = ukrainewar.817.d
+	picture = GFX_PRC_drone_uav
+
+	is_triggered_only = yes
+	fire_only_once = yes
+
+	trigger = {
+		tag = UKR
+	}
+
+	option = {
+		name = ukrainewar.817.a
+		army_experience = 5
+		UKR_w_mio_drones_batch = yes
+		ai_chance = {
+			factor = 1
+		}
+	}
+
+	option = {
+		name = ukrainewar.817.b
+		set_temp_variable = { var = income_var_temp value = -1 }
+		add_income_with_inflation = yes
+		add_war_support = 0.02
+		ai_chance = {
+			factor = 1
+		}
+	}
+}
+
+# art: reuse
+country_event = {
+	id = ukrainewar.818
+	title = ukrainewar.818.t
+	desc = ukrainewar.818.d
+	picture = GFX_UKR_diplomat
+
+	is_triggered_only = yes
+	fire_only_once = yes
+
+	trigger = {
+		tag = UKR
+	}
+
+	option = {
+		name = ukrainewar.818.a
+		add_political_power = 10
+		UKR_trust_transparency = yes
+		ai_chance = {
+			factor = 1
+		}
+	}
+
+	option = {
+		name = ukrainewar.818.b
+		add_political_power = 20
+		ai_chance = {
+			factor = 1
+		}
 	}
 }

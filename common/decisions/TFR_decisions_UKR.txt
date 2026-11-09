@@ -1,6 +1,7 @@
 UKR_special_military_operation = {
 
-	# Пакет западной помощи: открывает фокус «Обеспечить западную помощь». Цена в ПП: 25, 35, 45 и так далее (+10 за нажатие)
+	# Пакет западной помощи: открывает фокус «Обеспечить западную помощь». Базовая цена в ПП: 25, 35, 45 и так далее (+10 за нажатие),
+	# итоговая цена UKR_western_aid_price = база x доверие европейского НАТО (100/115/130/150 процентов, UKR_update_request_costs)
 	UKR_western_aid_package = {
 		icon = generic_lend_lease
 
@@ -11,7 +12,7 @@ UKR_special_military_operation = {
 			has_completed_focus = UKR_secure_western_aid
 		}
 
-		cost = UKR_western_aid_cost
+		cost = UKR_western_aid_price
 
 		fire_only_once = no
 		days_re_enable = 30
@@ -22,6 +23,7 @@ UKR_special_military_operation = {
 
 		complete_effect = {
 			add_to_variable = { UKR_western_aid_cost = 10 }
+			UKR_update_request_costs = yes
 			custom_effect_tooltip = UKR_nato_aid_scale_tt
 			set_temp_variable = { var = UKR_aid_base value = 400 }
 			UKR_nato_aid_scale = yes
@@ -2572,7 +2574,8 @@ UKR_against_occupiers = {
 		visible = {
 			has_war_with = SOV
 		}
-		cost = 100
+		# Базовая цена 100, итоговая UKR_lend_lease_price зависит от доверия европейского НАТО (100/115/130/150 процентов)
+		cost = UKR_lend_lease_price
 		days_remove = 30
 		days_re_enable = 150
 		complete_effect = {

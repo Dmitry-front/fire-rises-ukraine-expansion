@@ -1,0 +1,2318 @@
+add_namespace = ukraine_foreign
+
+# События запросов к европейским странам (этап 3, PROPOSAL_war_europe.md 4.1, DESIGN.md раздел 12).
+# Файл создан генератором _tools/gen_allies.py (данные - _tools/allies_data/*.py); после ручных правок генератор не запускать.
+# Запрос (область страны-ответчика): три опции - полный пакет, частичный, отказ; выбирает ИИ по ai_chance (отношение страны к Украине,
+# доверие европейского НАТО, прошлое Украины), человек выбирает сам. Опция выдаёт эффекты Украине (в области UKR) и шлёт итог.
+# Итог (область Украины): один текст на исход по флагу UKR_req_<запрос>_full/_part/_no и одна подходящая кнопка.
+# Картинки временные (существующие спрайты), см. CLAUDE.md, «Нужен арт».
+
+# PLD -> pl_hub
+country_event = {
+	id = ukraine_foreign.300
+	title = ukraine_foreign.300.t
+	desc = ukraine_foreign.300.d
+	picture = GFX_event_UKR_war_support_NATO
+
+	is_triggered_only = yes
+
+	option = {
+		name = UKR_req_opt_full
+		ai_chance = {
+			base = 25
+			modifier = { add = 25 UKR_ally_opinion_high = yes }
+			modifier = { add = 10 UKR_ally_opinion_mid = yes }
+			modifier = { add = -20 UKR_ally_opinion_low = yes }
+			modifier = { add = 25 UKR_ally_trust_top = yes }
+			modifier = { add = 15 UKR_ally_trust_high = yes }
+			modifier = { add = -10 UKR_ally_trust_low = yes }
+			modifier = { add = -20 UKR_ally_trust_none = yes }
+			modifier = { add = 10 has_global_flag = SOV_nato_war_begins_global }
+			modifier = { add = -15 UKR = { has_country_flag = UKR_np_hero_upa } }
+		}
+		add_opinion_modifier = { target = UKR modifier = ukr_allies_request_met }
+		UKR = {
+			clr_country_flag = UKR_req_pl_hub_pending
+			set_country_flag = { flag = UKR_req_pl_hub_full days = 10 }
+			if = {
+				limit = { has_idea = UKR_pl_hub_idea_lim }
+				remove_ideas = UKR_pl_hub_idea_lim
+			}
+			add_timed_idea = {
+				idea = UKR_pl_hub_idea
+				days = 365
+			}
+			set_temp_variable = { var = UKR_aid_base value = 60 }
+			UKR_nato_aid_scale = yes
+			add_equipment_to_stockpile = {
+				type = support_equipment_1
+				amount = UKR_aid_amount
+				producer = PLD
+			}
+			set_country_flag = UKR_pl_hub_open
+			country_event = { id = ukraine_foreign.320 days = 150 }
+			country_event = { id = ukraine_foreign.310 days = 1 }
+		}
+	}
+
+	option = {
+		name = UKR_req_opt_part
+		ai_chance = {
+			base = 35
+			modifier = { add = -10 UKR_ally_opinion_high = yes }
+			modifier = { add = 5 UKR_ally_opinion_mid = yes }
+			modifier = { add = -15 UKR_ally_trust_top = yes }
+			modifier = { add = -5 UKR_ally_trust_high = yes }
+			modifier = { add = 10 UKR_ally_trust_mid = yes }
+			modifier = { add = 10 UKR_ally_trust_low = yes }
+			modifier = { add = 5 UKR_ally_trust_none = yes }
+		}
+		add_opinion_modifier = { target = UKR modifier = ukr_allies_request_partial }
+		UKR = {
+			clr_country_flag = UKR_req_pl_hub_pending
+			set_country_flag = { flag = UKR_req_pl_hub_part days = 10 }
+			if = {
+				limit = { NOT = { has_idea = UKR_pl_hub_idea } }
+				add_timed_idea = {
+					idea = UKR_pl_hub_idea_lim
+					days = 180
+				}
+			}
+			set_temp_variable = { var = UKR_aid_base value = 30 }
+			UKR_nato_aid_scale = yes
+			add_equipment_to_stockpile = {
+				type = support_equipment_1
+				amount = UKR_aid_amount
+				producer = PLD
+			}
+			set_country_flag = UKR_pl_hub_open
+			country_event = { id = ukraine_foreign.320 days = 150 }
+			country_event = { id = ukraine_foreign.310 days = 1 }
+		}
+	}
+
+	option = {
+		name = UKR_req_opt_no
+		ai_chance = {
+			base = 15
+			modifier = { add = -10 UKR_ally_opinion_high = yes }
+			modifier = { add = 25 UKR_ally_opinion_low = yes }
+			modifier = { add = -10 UKR_ally_trust_top = yes }
+			modifier = { add = -5 UKR_ally_trust_high = yes }
+			modifier = { add = 10 UKR_ally_trust_low = yes }
+			modifier = { add = 25 UKR_ally_trust_none = yes }
+			modifier = { add = -5 has_global_flag = SOV_nato_war_begins_global }
+			modifier = { add = 15 UKR = { has_country_flag = UKR_np_hero_upa } }
+		}
+		UKR = {
+			clr_country_flag = UKR_req_pl_hub_pending
+			set_country_flag = { flag = UKR_req_pl_hub_no days = 10 }
+			country_event = { id = ukraine_foreign.310 days = 1 }
+		}
+	}
+}
+
+country_event = {
+	id = ukraine_foreign.310
+	title = ukraine_foreign.310.t
+	desc = {
+		text = ukraine_foreign.310.d_full
+		trigger = { has_country_flag = UKR_req_pl_hub_full }
+	}
+	desc = {
+		text = ukraine_foreign.310.d_part
+		trigger = { has_country_flag = UKR_req_pl_hub_part }
+	}
+	desc = {
+		text = ukraine_foreign.310.d_no
+		trigger = { has_country_flag = UKR_req_pl_hub_no }
+	}
+	picture = GFX_event_UKR_war_support_NATO
+
+	is_triggered_only = yes
+
+	option = {
+		name = UKR_req_res_full
+		trigger = { has_country_flag = UKR_req_pl_hub_full }
+		UKR_trust_request_full = yes
+		clr_country_flag = UKR_req_pl_hub_full
+		ai_chance = { base = 100 }
+	}
+
+	option = {
+		name = UKR_req_res_part
+		trigger = { has_country_flag = UKR_req_pl_hub_part }
+		UKR_trust_request_part = yes
+		clr_country_flag = UKR_req_pl_hub_part
+		ai_chance = { base = 100 }
+	}
+
+	option = {
+		name = UKR_req_res_no
+		trigger = { has_country_flag = UKR_req_pl_hub_no }
+		clr_country_flag = UKR_req_pl_hub_no
+		ai_chance = { base = 100 }
+	}
+}
+
+# PLD -> pl_arms
+country_event = {
+	id = ukraine_foreign.301
+	title = ukraine_foreign.301.t
+	desc = ukraine_foreign.301.d
+	picture = GFX_Generic_Tank_column
+
+	is_triggered_only = yes
+
+	option = {
+		name = UKR_req_opt_full
+		ai_chance = {
+			base = 25
+			modifier = { add = 25 UKR_ally_opinion_high = yes }
+			modifier = { add = 10 UKR_ally_opinion_mid = yes }
+			modifier = { add = -20 UKR_ally_opinion_low = yes }
+			modifier = { add = 25 UKR_ally_trust_top = yes }
+			modifier = { add = 15 UKR_ally_trust_high = yes }
+			modifier = { add = -10 UKR_ally_trust_low = yes }
+			modifier = { add = -20 UKR_ally_trust_none = yes }
+			modifier = { add = 10 has_global_flag = SOV_nato_war_begins_global }
+			modifier = { add = -20 UKR = { has_country_flag = UKR_np_hero_upa } }
+		}
+		add_opinion_modifier = { target = UKR modifier = ukr_allies_request_met }
+		UKR = {
+			clr_country_flag = UKR_req_pl_arms_pending
+			set_country_flag = { flag = UKR_req_pl_arms_full days = 10 }
+			set_temp_variable = { var = UKR_aid_base value = 60 }
+			UKR_nato_aid_scale = yes
+			add_equipment_to_stockpile = {
+				type = artillery_equipment_2
+				amount = UKR_aid_amount
+				producer = PLD
+			}
+			set_temp_variable = { var = UKR_aid_base value = 80 }
+			UKR_nato_aid_scale = yes
+			add_equipment_to_stockpile = {
+				type = anti_air_equipment_1
+				amount = UKR_aid_amount
+				producer = PLD
+			}
+			set_temp_variable = { var = UKR_aid_base value = 120 }
+			UKR_nato_aid_scale = yes
+			add_equipment_to_stockpile = {
+				type = modern_tank_equipment_1
+				amount = UKR_aid_amount
+				producer = PLD
+			}
+			country_event = { id = ukraine_foreign.311 days = 1 }
+		}
+	}
+
+	option = {
+		name = UKR_req_opt_part
+		ai_chance = {
+			base = 35
+			modifier = { add = -10 UKR_ally_opinion_high = yes }
+			modifier = { add = 5 UKR_ally_opinion_mid = yes }
+			modifier = { add = -15 UKR_ally_trust_top = yes }
+			modifier = { add = -5 UKR_ally_trust_high = yes }
+			modifier = { add = 10 UKR_ally_trust_mid = yes }
+			modifier = { add = 10 UKR_ally_trust_low = yes }
+			modifier = { add = 5 UKR_ally_trust_none = yes }
+		}
+		add_opinion_modifier = { target = UKR modifier = ukr_allies_request_partial }
+		UKR = {
+			clr_country_flag = UKR_req_pl_arms_pending
+			set_country_flag = { flag = UKR_req_pl_arms_part days = 10 }
+			set_temp_variable = { var = UKR_aid_base value = 30 }
+			UKR_nato_aid_scale = yes
+			add_equipment_to_stockpile = {
+				type = artillery_equipment_2
+				amount = UKR_aid_amount
+				producer = PLD
+			}
+			set_temp_variable = { var = UKR_aid_base value = 40 }
+			UKR_nato_aid_scale = yes
+			add_equipment_to_stockpile = {
+				type = anti_air_equipment_1
+				amount = UKR_aid_amount
+				producer = PLD
+			}
+			set_temp_variable = { var = UKR_aid_base value = 60 }
+			UKR_nato_aid_scale = yes
+			add_equipment_to_stockpile = {
+				type = modern_tank_equipment_1
+				amount = UKR_aid_amount
+				producer = PLD
+			}
+			country_event = { id = ukraine_foreign.311 days = 1 }
+		}
+	}
+
+	option = {
+		name = UKR_req_opt_no
+		ai_chance = {
+			base = 15
+			modifier = { add = -10 UKR_ally_opinion_high = yes }
+			modifier = { add = 25 UKR_ally_opinion_low = yes }
+			modifier = { add = -10 UKR_ally_trust_top = yes }
+			modifier = { add = -5 UKR_ally_trust_high = yes }
+			modifier = { add = 10 UKR_ally_trust_low = yes }
+			modifier = { add = 25 UKR_ally_trust_none = yes }
+			modifier = { add = -5 has_global_flag = SOV_nato_war_begins_global }
+			modifier = { add = 20 UKR = { has_country_flag = UKR_np_hero_upa } }
+		}
+		UKR = {
+			clr_country_flag = UKR_req_pl_arms_pending
+			set_country_flag = { flag = UKR_req_pl_arms_no days = 10 }
+			country_event = { id = ukraine_foreign.311 days = 1 }
+		}
+	}
+}
+
+country_event = {
+	id = ukraine_foreign.311
+	title = ukraine_foreign.311.t
+	desc = {
+		text = ukraine_foreign.311.d_full
+		trigger = { has_country_flag = UKR_req_pl_arms_full }
+	}
+	desc = {
+		text = ukraine_foreign.311.d_part
+		trigger = { has_country_flag = UKR_req_pl_arms_part }
+	}
+	desc = {
+		text = ukraine_foreign.311.d_no
+		trigger = { has_country_flag = UKR_req_pl_arms_no }
+	}
+	picture = GFX_Generic_Tank_column
+
+	is_triggered_only = yes
+
+	option = {
+		name = UKR_req_res_full
+		trigger = { has_country_flag = UKR_req_pl_arms_full }
+		UKR_trust_request_full = yes
+		clr_country_flag = UKR_req_pl_arms_full
+		ai_chance = { base = 100 }
+	}
+
+	option = {
+		name = UKR_req_res_part
+		trigger = { has_country_flag = UKR_req_pl_arms_part }
+		UKR_trust_request_part = yes
+		clr_country_flag = UKR_req_pl_arms_part
+		ai_chance = { base = 100 }
+	}
+
+	option = {
+		name = UKR_req_res_no
+		trigger = { has_country_flag = UKR_req_pl_arms_no }
+		clr_country_flag = UKR_req_pl_arms_no
+		ai_chance = { base = 100 }
+	}
+}
+
+# PLD -> pl_medevac
+country_event = {
+	id = ukraine_foreign.302
+	title = ukraine_foreign.302.t
+	desc = ukraine_foreign.302.d
+	picture = GFX_FRA_red_cross_ukraine
+
+	is_triggered_only = yes
+
+	option = {
+		name = UKR_req_opt_full
+		ai_chance = {
+			base = 25
+			modifier = { add = 25 UKR_ally_opinion_high = yes }
+			modifier = { add = 10 UKR_ally_opinion_mid = yes }
+			modifier = { add = -20 UKR_ally_opinion_low = yes }
+			modifier = { add = 25 UKR_ally_trust_top = yes }
+			modifier = { add = 15 UKR_ally_trust_high = yes }
+			modifier = { add = -10 UKR_ally_trust_low = yes }
+			modifier = { add = -20 UKR_ally_trust_none = yes }
+			modifier = { add = 10 has_global_flag = SOV_nato_war_begins_global }
+		}
+		add_opinion_modifier = { target = UKR modifier = ukr_allies_request_met }
+		UKR = {
+			clr_country_flag = UKR_req_pl_medevac_pending
+			set_country_flag = { flag = UKR_req_pl_medevac_full days = 10 }
+			if = {
+				limit = { has_idea = UKR_pl_medevac_idea_lim }
+				remove_ideas = UKR_pl_medevac_idea_lim
+			}
+			add_timed_idea = {
+				idea = UKR_pl_medevac_idea
+				days = 540
+			}
+			country_event = { id = ukraine_foreign.312 days = 1 }
+		}
+	}
+
+	option = {
+		name = UKR_req_opt_part
+		ai_chance = {
+			base = 35
+			modifier = { add = -10 UKR_ally_opinion_high = yes }
+			modifier = { add = 5 UKR_ally_opinion_mid = yes }
+			modifier = { add = -15 UKR_ally_trust_top = yes }
+			modifier = { add = -5 UKR_ally_trust_high = yes }
+			modifier = { add = 10 UKR_ally_trust_mid = yes }
+			modifier = { add = 10 UKR_ally_trust_low = yes }
+			modifier = { add = 5 UKR_ally_trust_none = yes }
+		}
+		add_opinion_modifier = { target = UKR modifier = ukr_allies_request_partial }
+		UKR = {
+			clr_country_flag = UKR_req_pl_medevac_pending
+			set_country_flag = { flag = UKR_req_pl_medevac_part days = 10 }
+			if = {
+				limit = { NOT = { has_idea = UKR_pl_medevac_idea } }
+				add_timed_idea = {
+					idea = UKR_pl_medevac_idea_lim
+					days = 270
+				}
+			}
+			country_event = { id = ukraine_foreign.312 days = 1 }
+		}
+	}
+
+	option = {
+		name = UKR_req_opt_no
+		ai_chance = {
+			base = 15
+			modifier = { add = -10 UKR_ally_opinion_high = yes }
+			modifier = { add = 25 UKR_ally_opinion_low = yes }
+			modifier = { add = -10 UKR_ally_trust_top = yes }
+			modifier = { add = -5 UKR_ally_trust_high = yes }
+			modifier = { add = 10 UKR_ally_trust_low = yes }
+			modifier = { add = 25 UKR_ally_trust_none = yes }
+			modifier = { add = -5 has_global_flag = SOV_nato_war_begins_global }
+		}
+		UKR = {
+			clr_country_flag = UKR_req_pl_medevac_pending
+			set_country_flag = { flag = UKR_req_pl_medevac_no days = 10 }
+			country_event = { id = ukraine_foreign.312 days = 1 }
+		}
+	}
+}
+
+country_event = {
+	id = ukraine_foreign.312
+	title = ukraine_foreign.312.t
+	desc = {
+		text = ukraine_foreign.312.d_full
+		trigger = { has_country_flag = UKR_req_pl_medevac_full }
+	}
+	desc = {
+		text = ukraine_foreign.312.d_part
+		trigger = { has_country_flag = UKR_req_pl_medevac_part }
+	}
+	desc = {
+		text = ukraine_foreign.312.d_no
+		trigger = { has_country_flag = UKR_req_pl_medevac_no }
+	}
+	picture = GFX_FRA_red_cross_ukraine
+
+	is_triggered_only = yes
+
+	option = {
+		name = UKR_req_res_full
+		trigger = { has_country_flag = UKR_req_pl_medevac_full }
+		UKR_trust_request_full = yes
+		clr_country_flag = UKR_req_pl_medevac_full
+		ai_chance = { base = 100 }
+	}
+
+	option = {
+		name = UKR_req_res_part
+		trigger = { has_country_flag = UKR_req_pl_medevac_part }
+		UKR_trust_request_part = yes
+		clr_country_flag = UKR_req_pl_medevac_part
+		ai_chance = { base = 100 }
+	}
+
+	option = {
+		name = UKR_req_res_no
+		trigger = { has_country_flag = UKR_req_pl_medevac_no }
+		clr_country_flag = UKR_req_pl_medevac_no
+		ai_chance = { base = 100 }
+	}
+}
+
+# GER -> ger_air
+country_event = {
+	id = ukraine_foreign.400
+	title = ukraine_foreign.400.t
+	desc = ukraine_foreign.400.d
+	picture = GFX_UKR_status_NATO
+
+	is_triggered_only = yes
+
+	option = {
+		name = UKR_req_opt_full
+		ai_chance = {
+			base = 25
+			modifier = { add = 25 UKR_ally_opinion_high = yes }
+			modifier = { add = 10 UKR_ally_opinion_mid = yes }
+			modifier = { add = -20 UKR_ally_opinion_low = yes }
+			modifier = { add = 25 UKR_ally_trust_top = yes }
+			modifier = { add = 15 UKR_ally_trust_high = yes }
+			modifier = { add = -10 UKR_ally_trust_low = yes }
+			modifier = { add = -20 UKR_ally_trust_none = yes }
+			modifier = { add = 10 has_global_flag = SOV_nato_war_begins_global }
+			modifier = { add = -20 UKR = { has_idea = UKR_eu_aid_frozen } }
+			modifier = { add = 15 UKR = { has_idea = UKR_anticorruption_wave } }
+		}
+		add_opinion_modifier = { target = UKR modifier = ukr_allies_request_met }
+		UKR = {
+			clr_country_flag = UKR_req_ger_air_pending
+			set_country_flag = { flag = UKR_req_ger_air_full days = 10 }
+			set_temp_variable = { var = UKR_aid_base value = 60 }
+			UKR_nato_aid_scale = yes
+			add_equipment_to_stockpile = {
+				type = anti_air_equipment_2
+				amount = UKR_aid_amount
+				producer = GER
+			}
+			set_temp_variable = { var = UKR_aid_base value = 40 }
+			UKR_nato_aid_scale = yes
+			add_equipment_to_stockpile = {
+				type = spaa_equipment_1
+				amount = UKR_aid_amount
+				producer = GER
+			}
+			add_to_variable = { var = UKR_air_defense_points value = 2 }
+			country_event = { id = ukraine_foreign.410 days = 1 }
+		}
+	}
+
+	option = {
+		name = UKR_req_opt_part
+		ai_chance = {
+			base = 35
+			modifier = { add = -10 UKR_ally_opinion_high = yes }
+			modifier = { add = 5 UKR_ally_opinion_mid = yes }
+			modifier = { add = -15 UKR_ally_trust_top = yes }
+			modifier = { add = -5 UKR_ally_trust_high = yes }
+			modifier = { add = 10 UKR_ally_trust_mid = yes }
+			modifier = { add = 10 UKR_ally_trust_low = yes }
+			modifier = { add = 5 UKR_ally_trust_none = yes }
+		}
+		add_opinion_modifier = { target = UKR modifier = ukr_allies_request_partial }
+		UKR = {
+			clr_country_flag = UKR_req_ger_air_pending
+			set_country_flag = { flag = UKR_req_ger_air_part days = 10 }
+			set_temp_variable = { var = UKR_aid_base value = 30 }
+			UKR_nato_aid_scale = yes
+			add_equipment_to_stockpile = {
+				type = anti_air_equipment_2
+				amount = UKR_aid_amount
+				producer = GER
+			}
+			set_temp_variable = { var = UKR_aid_base value = 20 }
+			UKR_nato_aid_scale = yes
+			add_equipment_to_stockpile = {
+				type = spaa_equipment_1
+				amount = UKR_aid_amount
+				producer = GER
+			}
+			add_to_variable = { var = UKR_air_defense_points value = 1 }
+			country_event = { id = ukraine_foreign.410 days = 1 }
+		}
+	}
+
+	option = {
+		name = UKR_req_opt_no
+		ai_chance = {
+			base = 15
+			modifier = { add = -10 UKR_ally_opinion_high = yes }
+			modifier = { add = 25 UKR_ally_opinion_low = yes }
+			modifier = { add = -10 UKR_ally_trust_top = yes }
+			modifier = { add = -5 UKR_ally_trust_high = yes }
+			modifier = { add = 10 UKR_ally_trust_low = yes }
+			modifier = { add = 25 UKR_ally_trust_none = yes }
+			modifier = { add = -5 has_global_flag = SOV_nato_war_begins_global }
+			modifier = { add = 20 UKR = { has_idea = UKR_eu_aid_frozen } }
+			modifier = { add = -15 UKR = { has_idea = UKR_anticorruption_wave } }
+		}
+		UKR = {
+			clr_country_flag = UKR_req_ger_air_pending
+			set_country_flag = { flag = UKR_req_ger_air_no days = 10 }
+			country_event = { id = ukraine_foreign.410 days = 1 }
+		}
+	}
+}
+
+country_event = {
+	id = ukraine_foreign.410
+	title = ukraine_foreign.410.t
+	desc = {
+		text = ukraine_foreign.410.d_full
+		trigger = { has_country_flag = UKR_req_ger_air_full }
+	}
+	desc = {
+		text = ukraine_foreign.410.d_part
+		trigger = { has_country_flag = UKR_req_ger_air_part }
+	}
+	desc = {
+		text = ukraine_foreign.410.d_no
+		trigger = { has_country_flag = UKR_req_ger_air_no }
+	}
+	picture = GFX_UKR_status_NATO
+
+	is_triggered_only = yes
+
+	option = {
+		name = UKR_req_res_full
+		trigger = { has_country_flag = UKR_req_ger_air_full }
+		UKR_trust_request_full = yes
+		clr_country_flag = UKR_req_ger_air_full
+		ai_chance = { base = 100 }
+	}
+
+	option = {
+		name = UKR_req_res_part
+		trigger = { has_country_flag = UKR_req_ger_air_part }
+		UKR_trust_request_part = yes
+		clr_country_flag = UKR_req_ger_air_part
+		ai_chance = { base = 100 }
+	}
+
+	option = {
+		name = UKR_req_res_no
+		trigger = { has_country_flag = UKR_req_ger_air_no }
+		clr_country_flag = UKR_req_ger_air_no
+		ai_chance = { base = 100 }
+	}
+}
+
+# GER -> ger_credit
+country_event = {
+	id = ukraine_foreign.401
+	title = ukraine_foreign.401.t
+	desc = ukraine_foreign.401.d
+	picture = GFX_UKR_investment_forum
+
+	is_triggered_only = yes
+
+	option = {
+		name = UKR_req_opt_full
+		ai_chance = {
+			base = 25
+			modifier = { add = 25 UKR_ally_opinion_high = yes }
+			modifier = { add = 10 UKR_ally_opinion_mid = yes }
+			modifier = { add = -20 UKR_ally_opinion_low = yes }
+			modifier = { add = 25 UKR_ally_trust_top = yes }
+			modifier = { add = 15 UKR_ally_trust_high = yes }
+			modifier = { add = -10 UKR_ally_trust_low = yes }
+			modifier = { add = -20 UKR_ally_trust_none = yes }
+			modifier = { add = 10 has_global_flag = SOV_nato_war_begins_global }
+			modifier = { add = -25 UKR = { has_idea = UKR_eu_aid_frozen } }
+			modifier = { add = 15 UKR = { has_idea = UKR_anticorruption_wave } }
+			modifier = { add = 10 UKR = { has_country_flag = UKR_pillar_chosen_technocrats } }
+			modifier = { add = -10 UKR = { has_country_flag = UKR_pillar_chosen_oligarchs } }
+		}
+		add_opinion_modifier = { target = UKR modifier = ukr_allies_request_met }
+		UKR = {
+			clr_country_flag = UKR_req_ger_credit_pending
+			set_country_flag = { flag = UKR_req_ger_credit_full days = 10 }
+			set_temp_variable = { var = UKR_aid_base value = 12 }
+			UKR_nato_aid_scale = yes
+			set_temp_variable = { var = income_var_temp value = UKR_aid_amount }
+			add_income_with_inflation = yes
+			set_temp_variable = { var = debt_var_temp value = 6 }
+			add_debt_with_inflation = yes
+			country_event = { id = ukraine_foreign.411 days = 1 }
+		}
+	}
+
+	option = {
+		name = UKR_req_opt_part
+		ai_chance = {
+			base = 35
+			modifier = { add = -10 UKR_ally_opinion_high = yes }
+			modifier = { add = 5 UKR_ally_opinion_mid = yes }
+			modifier = { add = -15 UKR_ally_trust_top = yes }
+			modifier = { add = -5 UKR_ally_trust_high = yes }
+			modifier = { add = 10 UKR_ally_trust_mid = yes }
+			modifier = { add = 10 UKR_ally_trust_low = yes }
+			modifier = { add = 5 UKR_ally_trust_none = yes }
+		}
+		add_opinion_modifier = { target = UKR modifier = ukr_allies_request_partial }
+		UKR = {
+			clr_country_flag = UKR_req_ger_credit_pending
+			set_country_flag = { flag = UKR_req_ger_credit_part days = 10 }
+			set_temp_variable = { var = UKR_aid_base value = 6 }
+			UKR_nato_aid_scale = yes
+			set_temp_variable = { var = income_var_temp value = UKR_aid_amount }
+			add_income_with_inflation = yes
+			set_temp_variable = { var = debt_var_temp value = 3 }
+			add_debt_with_inflation = yes
+			country_event = { id = ukraine_foreign.411 days = 1 }
+		}
+	}
+
+	option = {
+		name = UKR_req_opt_no
+		ai_chance = {
+			base = 15
+			modifier = { add = -10 UKR_ally_opinion_high = yes }
+			modifier = { add = 25 UKR_ally_opinion_low = yes }
+			modifier = { add = -10 UKR_ally_trust_top = yes }
+			modifier = { add = -5 UKR_ally_trust_high = yes }
+			modifier = { add = 10 UKR_ally_trust_low = yes }
+			modifier = { add = 25 UKR_ally_trust_none = yes }
+			modifier = { add = -5 has_global_flag = SOV_nato_war_begins_global }
+			modifier = { add = 25 UKR = { has_idea = UKR_eu_aid_frozen } }
+			modifier = { add = -15 UKR = { has_idea = UKR_anticorruption_wave } }
+			modifier = { add = -10 UKR = { has_country_flag = UKR_pillar_chosen_technocrats } }
+			modifier = { add = 10 UKR = { has_country_flag = UKR_pillar_chosen_oligarchs } }
+		}
+		UKR = {
+			clr_country_flag = UKR_req_ger_credit_pending
+			set_country_flag = { flag = UKR_req_ger_credit_no days = 10 }
+			country_event = { id = ukraine_foreign.411 days = 1 }
+		}
+	}
+}
+
+country_event = {
+	id = ukraine_foreign.411
+	title = ukraine_foreign.411.t
+	desc = {
+		text = ukraine_foreign.411.d_full
+		trigger = { has_country_flag = UKR_req_ger_credit_full }
+	}
+	desc = {
+		text = ukraine_foreign.411.d_part
+		trigger = { has_country_flag = UKR_req_ger_credit_part }
+	}
+	desc = {
+		text = ukraine_foreign.411.d_no
+		trigger = { has_country_flag = UKR_req_ger_credit_no }
+	}
+	picture = GFX_UKR_investment_forum
+
+	is_triggered_only = yes
+
+	option = {
+		name = UKR_req_res_full
+		trigger = { has_country_flag = UKR_req_ger_credit_full }
+		UKR_trust_request_full = yes
+		clr_country_flag = UKR_req_ger_credit_full
+		ai_chance = { base = 100 }
+	}
+
+	option = {
+		name = UKR_req_res_part
+		trigger = { has_country_flag = UKR_req_ger_credit_part }
+		UKR_trust_request_part = yes
+		clr_country_flag = UKR_req_ger_credit_part
+		ai_chance = { base = 100 }
+	}
+
+	option = {
+		name = UKR_req_res_no
+		trigger = { has_country_flag = UKR_req_ger_credit_no }
+		clr_country_flag = UKR_req_ger_credit_no
+		ai_chance = { base = 100 }
+	}
+}
+
+# GER -> ger_armor
+country_event = {
+	id = ukraine_foreign.402
+	title = ukraine_foreign.402.t
+	desc = ukraine_foreign.402.d
+	picture = GFX_Generic_Tank_column
+
+	is_triggered_only = yes
+
+	option = {
+		name = UKR_req_opt_full
+		ai_chance = {
+			base = 25
+			modifier = { add = 25 UKR_ally_opinion_high = yes }
+			modifier = { add = 10 UKR_ally_opinion_mid = yes }
+			modifier = { add = -20 UKR_ally_opinion_low = yes }
+			modifier = { add = 25 UKR_ally_trust_top = yes }
+			modifier = { add = 15 UKR_ally_trust_high = yes }
+			modifier = { add = -10 UKR_ally_trust_low = yes }
+			modifier = { add = -20 UKR_ally_trust_none = yes }
+			modifier = { add = 10 has_global_flag = SOV_nato_war_begins_global }
+			modifier = { add = 10 UKR = { has_idea = UKR_euro_momentum } }
+			modifier = { add = -20 UKR = { has_idea = UKR_eu_aid_frozen } }
+		}
+		add_opinion_modifier = { target = UKR modifier = ukr_allies_request_met }
+		UKR = {
+			clr_country_flag = UKR_req_ger_armor_pending
+			set_country_flag = { flag = UKR_req_ger_armor_full days = 10 }
+			set_temp_variable = { var = UKR_aid_base value = 50 }
+			UKR_nato_aid_scale = yes
+			add_equipment_to_stockpile = {
+				type = modern_tank_equipment_2
+				amount = UKR_aid_amount
+				producer = GER
+			}
+			set_temp_variable = { var = UKR_aid_base value = 100 }
+			UKR_nato_aid_scale = yes
+			add_equipment_to_stockpile = {
+				type = mechanized_equipment_1
+				amount = UKR_aid_amount
+				producer = GER
+			}
+			set_temp_variable = { var = UKR_aid_base value = 40 }
+			UKR_nato_aid_scale = yes
+			add_equipment_to_stockpile = {
+				type = artillery_equipment_2
+				amount = UKR_aid_amount
+				producer = GER
+			}
+			country_event = { id = ukraine_foreign.412 days = 1 }
+		}
+	}
+
+	option = {
+		name = UKR_req_opt_part
+		ai_chance = {
+			base = 35
+			modifier = { add = -10 UKR_ally_opinion_high = yes }
+			modifier = { add = 5 UKR_ally_opinion_mid = yes }
+			modifier = { add = -15 UKR_ally_trust_top = yes }
+			modifier = { add = -5 UKR_ally_trust_high = yes }
+			modifier = { add = 10 UKR_ally_trust_mid = yes }
+			modifier = { add = 10 UKR_ally_trust_low = yes }
+			modifier = { add = 5 UKR_ally_trust_none = yes }
+		}
+		add_opinion_modifier = { target = UKR modifier = ukr_allies_request_partial }
+		UKR = {
+			clr_country_flag = UKR_req_ger_armor_pending
+			set_country_flag = { flag = UKR_req_ger_armor_part days = 10 }
+			set_temp_variable = { var = UKR_aid_base value = 25 }
+			UKR_nato_aid_scale = yes
+			add_equipment_to_stockpile = {
+				type = modern_tank_equipment_2
+				amount = UKR_aid_amount
+				producer = GER
+			}
+			set_temp_variable = { var = UKR_aid_base value = 50 }
+			UKR_nato_aid_scale = yes
+			add_equipment_to_stockpile = {
+				type = mechanized_equipment_1
+				amount = UKR_aid_amount
+				producer = GER
+			}
+			set_temp_variable = { var = UKR_aid_base value = 20 }
+			UKR_nato_aid_scale = yes
+			add_equipment_to_stockpile = {
+				type = artillery_equipment_2
+				amount = UKR_aid_amount
+				producer = GER
+			}
+			country_event = { id = ukraine_foreign.412 days = 1 }
+		}
+	}
+
+	option = {
+		name = UKR_req_opt_no
+		ai_chance = {
+			base = 15
+			modifier = { add = -10 UKR_ally_opinion_high = yes }
+			modifier = { add = 25 UKR_ally_opinion_low = yes }
+			modifier = { add = -10 UKR_ally_trust_top = yes }
+			modifier = { add = -5 UKR_ally_trust_high = yes }
+			modifier = { add = 10 UKR_ally_trust_low = yes }
+			modifier = { add = 25 UKR_ally_trust_none = yes }
+			modifier = { add = -5 has_global_flag = SOV_nato_war_begins_global }
+			modifier = { add = -10 UKR = { has_idea = UKR_euro_momentum } }
+			modifier = { add = 20 UKR = { has_idea = UKR_eu_aid_frozen } }
+		}
+		UKR = {
+			clr_country_flag = UKR_req_ger_armor_pending
+			set_country_flag = { flag = UKR_req_ger_armor_no days = 10 }
+			country_event = { id = ukraine_foreign.412 days = 1 }
+		}
+	}
+}
+
+country_event = {
+	id = ukraine_foreign.412
+	title = ukraine_foreign.412.t
+	desc = {
+		text = ukraine_foreign.412.d_full
+		trigger = { has_country_flag = UKR_req_ger_armor_full }
+	}
+	desc = {
+		text = ukraine_foreign.412.d_part
+		trigger = { has_country_flag = UKR_req_ger_armor_part }
+	}
+	desc = {
+		text = ukraine_foreign.412.d_no
+		trigger = { has_country_flag = UKR_req_ger_armor_no }
+	}
+	picture = GFX_Generic_Tank_column
+
+	is_triggered_only = yes
+
+	option = {
+		name = UKR_req_res_full
+		trigger = { has_country_flag = UKR_req_ger_armor_full }
+		UKR_trust_request_full = yes
+		clr_country_flag = UKR_req_ger_armor_full
+		ai_chance = { base = 100 }
+	}
+
+	option = {
+		name = UKR_req_res_part
+		trigger = { has_country_flag = UKR_req_ger_armor_part }
+		UKR_trust_request_part = yes
+		clr_country_flag = UKR_req_ger_armor_part
+		ai_chance = { base = 100 }
+	}
+
+	option = {
+		name = UKR_req_res_no
+		trigger = { has_country_flag = UKR_req_ger_armor_no }
+		clr_country_flag = UKR_req_ger_armor_no
+		ai_chance = { base = 100 }
+	}
+}
+
+# FRA -> fra_caesar
+country_event = {
+	id = ukraine_foreign.420
+	title = ukraine_foreign.420.t
+	desc = ukraine_foreign.420.d
+	picture = GFX_FRA_french_soldier
+
+	is_triggered_only = yes
+
+	option = {
+		name = UKR_req_opt_full
+		ai_chance = {
+			base = 25
+			modifier = { add = 25 UKR_ally_opinion_high = yes }
+			modifier = { add = 10 UKR_ally_opinion_mid = yes }
+			modifier = { add = -20 UKR_ally_opinion_low = yes }
+			modifier = { add = 25 UKR_ally_trust_top = yes }
+			modifier = { add = 15 UKR_ally_trust_high = yes }
+			modifier = { add = -10 UKR_ally_trust_low = yes }
+			modifier = { add = -20 UKR_ally_trust_none = yes }
+			modifier = { add = 10 has_global_flag = SOV_nato_war_begins_global }
+			modifier = { add = -10 UKR = { has_idea = UKR_eu_aid_frozen } }
+		}
+		add_opinion_modifier = { target = UKR modifier = ukr_allies_request_met }
+		UKR = {
+			clr_country_flag = UKR_req_fra_caesar_pending
+			set_country_flag = { flag = UKR_req_fra_caesar_full days = 10 }
+			set_temp_variable = { var = UKR_aid_base value = 70 }
+			UKR_nato_aid_scale = yes
+			add_equipment_to_stockpile = {
+				type = artillery_equipment_2
+				amount = UKR_aid_amount
+				producer = FRA
+			}
+			set_temp_variable = { var = UKR_aid_base value = 40 }
+			UKR_nato_aid_scale = yes
+			add_equipment_to_stockpile = {
+				type = support_equipment_1
+				amount = UKR_aid_amount
+				producer = FRA
+			}
+			country_event = { id = ukraine_foreign.430 days = 1 }
+		}
+	}
+
+	option = {
+		name = UKR_req_opt_part
+		ai_chance = {
+			base = 35
+			modifier = { add = -10 UKR_ally_opinion_high = yes }
+			modifier = { add = 5 UKR_ally_opinion_mid = yes }
+			modifier = { add = -15 UKR_ally_trust_top = yes }
+			modifier = { add = -5 UKR_ally_trust_high = yes }
+			modifier = { add = 10 UKR_ally_trust_mid = yes }
+			modifier = { add = 10 UKR_ally_trust_low = yes }
+			modifier = { add = 5 UKR_ally_trust_none = yes }
+		}
+		add_opinion_modifier = { target = UKR modifier = ukr_allies_request_partial }
+		UKR = {
+			clr_country_flag = UKR_req_fra_caesar_pending
+			set_country_flag = { flag = UKR_req_fra_caesar_part days = 10 }
+			set_temp_variable = { var = UKR_aid_base value = 35 }
+			UKR_nato_aid_scale = yes
+			add_equipment_to_stockpile = {
+				type = artillery_equipment_2
+				amount = UKR_aid_amount
+				producer = FRA
+			}
+			set_temp_variable = { var = UKR_aid_base value = 20 }
+			UKR_nato_aid_scale = yes
+			add_equipment_to_stockpile = {
+				type = support_equipment_1
+				amount = UKR_aid_amount
+				producer = FRA
+			}
+			country_event = { id = ukraine_foreign.430 days = 1 }
+		}
+	}
+
+	option = {
+		name = UKR_req_opt_no
+		ai_chance = {
+			base = 15
+			modifier = { add = -10 UKR_ally_opinion_high = yes }
+			modifier = { add = 25 UKR_ally_opinion_low = yes }
+			modifier = { add = -10 UKR_ally_trust_top = yes }
+			modifier = { add = -5 UKR_ally_trust_high = yes }
+			modifier = { add = 10 UKR_ally_trust_low = yes }
+			modifier = { add = 25 UKR_ally_trust_none = yes }
+			modifier = { add = -5 has_global_flag = SOV_nato_war_begins_global }
+			modifier = { add = 10 UKR = { has_idea = UKR_eu_aid_frozen } }
+		}
+		UKR = {
+			clr_country_flag = UKR_req_fra_caesar_pending
+			set_country_flag = { flag = UKR_req_fra_caesar_no days = 10 }
+			country_event = { id = ukraine_foreign.430 days = 1 }
+		}
+	}
+}
+
+country_event = {
+	id = ukraine_foreign.430
+	title = ukraine_foreign.430.t
+	desc = {
+		text = ukraine_foreign.430.d_full
+		trigger = { has_country_flag = UKR_req_fra_caesar_full }
+	}
+	desc = {
+		text = ukraine_foreign.430.d_part
+		trigger = { has_country_flag = UKR_req_fra_caesar_part }
+	}
+	desc = {
+		text = ukraine_foreign.430.d_no
+		trigger = { has_country_flag = UKR_req_fra_caesar_no }
+	}
+	picture = GFX_FRA_french_soldier
+
+	is_triggered_only = yes
+
+	option = {
+		name = UKR_req_res_full
+		trigger = { has_country_flag = UKR_req_fra_caesar_full }
+		UKR_trust_request_full = yes
+		clr_country_flag = UKR_req_fra_caesar_full
+		ai_chance = { base = 100 }
+	}
+
+	option = {
+		name = UKR_req_res_part
+		trigger = { has_country_flag = UKR_req_fra_caesar_part }
+		UKR_trust_request_part = yes
+		clr_country_flag = UKR_req_fra_caesar_part
+		ai_chance = { base = 100 }
+	}
+
+	option = {
+		name = UKR_req_res_no
+		trigger = { has_country_flag = UKR_req_fra_caesar_no }
+		clr_country_flag = UKR_req_fra_caesar_no
+		ai_chance = { base = 100 }
+	}
+}
+
+# FRA -> fra_air
+country_event = {
+	id = ukraine_foreign.421
+	title = ukraine_foreign.421.t
+	desc = ukraine_foreign.421.d
+	picture = GFX_Generic_Fight_Jet
+
+	is_triggered_only = yes
+
+	option = {
+		name = UKR_req_opt_full
+		ai_chance = {
+			base = 25
+			modifier = { add = 25 UKR_ally_opinion_high = yes }
+			modifier = { add = 10 UKR_ally_opinion_mid = yes }
+			modifier = { add = -20 UKR_ally_opinion_low = yes }
+			modifier = { add = 25 UKR_ally_trust_top = yes }
+			modifier = { add = 15 UKR_ally_trust_high = yes }
+			modifier = { add = -10 UKR_ally_trust_low = yes }
+			modifier = { add = -20 UKR_ally_trust_none = yes }
+			modifier = { add = 10 has_global_flag = SOV_nato_war_begins_global }
+			modifier = { add = -10 UKR = { has_idea = UKR_eu_aid_frozen } }
+			modifier = { add = 10 UKR = { has_idea = UKR_anticorruption_wave } }
+		}
+		add_opinion_modifier = { target = UKR modifier = ukr_allies_request_met }
+		UKR = {
+			clr_country_flag = UKR_req_fra_air_pending
+			set_country_flag = { flag = UKR_req_fra_air_full days = 10 }
+			set_temp_variable = { var = UKR_aid_base value = 24 }
+			UKR_nato_aid_scale = yes
+			add_equipment_to_stockpile = {
+				type = fighter_equipment_2
+				amount = UKR_aid_amount
+				producer = FRA
+			}
+			set_temp_variable = { var = UKR_aid_base value = 30 }
+			UKR_nato_aid_scale = yes
+			add_equipment_to_stockpile = {
+				type = anti_air_equipment_2
+				amount = UKR_aid_amount
+				producer = FRA
+			}
+			set_temp_variable = { var = UKR_aid_base value = 30 }
+			UKR_nato_aid_scale = yes
+			add_equipment_to_stockpile = {
+				type = guided_missile_equipment_1
+				amount = UKR_aid_amount
+				producer = FRA
+			}
+			add_to_variable = { var = UKR_air_defense_points value = 1 }
+			country_event = { id = ukraine_foreign.431 days = 1 }
+		}
+	}
+
+	option = {
+		name = UKR_req_opt_part
+		ai_chance = {
+			base = 35
+			modifier = { add = -10 UKR_ally_opinion_high = yes }
+			modifier = { add = 5 UKR_ally_opinion_mid = yes }
+			modifier = { add = -15 UKR_ally_trust_top = yes }
+			modifier = { add = -5 UKR_ally_trust_high = yes }
+			modifier = { add = 10 UKR_ally_trust_mid = yes }
+			modifier = { add = 10 UKR_ally_trust_low = yes }
+			modifier = { add = 5 UKR_ally_trust_none = yes }
+		}
+		add_opinion_modifier = { target = UKR modifier = ukr_allies_request_partial }
+		UKR = {
+			clr_country_flag = UKR_req_fra_air_pending
+			set_country_flag = { flag = UKR_req_fra_air_part days = 10 }
+			set_temp_variable = { var = UKR_aid_base value = 15 }
+			UKR_nato_aid_scale = yes
+			add_equipment_to_stockpile = {
+				type = anti_air_equipment_2
+				amount = UKR_aid_amount
+				producer = FRA
+			}
+			set_temp_variable = { var = UKR_aid_base value = 15 }
+			UKR_nato_aid_scale = yes
+			add_equipment_to_stockpile = {
+				type = guided_missile_equipment_1
+				amount = UKR_aid_amount
+				producer = FRA
+			}
+			country_event = { id = ukraine_foreign.431 days = 1 }
+		}
+	}
+
+	option = {
+		name = UKR_req_opt_no
+		ai_chance = {
+			base = 15
+			modifier = { add = -10 UKR_ally_opinion_high = yes }
+			modifier = { add = 25 UKR_ally_opinion_low = yes }
+			modifier = { add = -10 UKR_ally_trust_top = yes }
+			modifier = { add = -5 UKR_ally_trust_high = yes }
+			modifier = { add = 10 UKR_ally_trust_low = yes }
+			modifier = { add = 25 UKR_ally_trust_none = yes }
+			modifier = { add = -5 has_global_flag = SOV_nato_war_begins_global }
+			modifier = { add = 10 UKR = { has_idea = UKR_eu_aid_frozen } }
+			modifier = { add = -10 UKR = { has_idea = UKR_anticorruption_wave } }
+		}
+		UKR = {
+			clr_country_flag = UKR_req_fra_air_pending
+			set_country_flag = { flag = UKR_req_fra_air_no days = 10 }
+			country_event = { id = ukraine_foreign.431 days = 1 }
+		}
+	}
+}
+
+country_event = {
+	id = ukraine_foreign.431
+	title = ukraine_foreign.431.t
+	desc = {
+		text = ukraine_foreign.431.d_full
+		trigger = { has_country_flag = UKR_req_fra_air_full }
+	}
+	desc = {
+		text = ukraine_foreign.431.d_part
+		trigger = { has_country_flag = UKR_req_fra_air_part }
+	}
+	desc = {
+		text = ukraine_foreign.431.d_no
+		trigger = { has_country_flag = UKR_req_fra_air_no }
+	}
+	picture = GFX_Generic_Fight_Jet
+
+	is_triggered_only = yes
+
+	option = {
+		name = UKR_req_res_full
+		trigger = { has_country_flag = UKR_req_fra_air_full }
+		UKR_trust_request_full = yes
+		clr_country_flag = UKR_req_fra_air_full
+		ai_chance = { base = 100 }
+	}
+
+	option = {
+		name = UKR_req_res_part
+		trigger = { has_country_flag = UKR_req_fra_air_part }
+		UKR_trust_request_part = yes
+		clr_country_flag = UKR_req_fra_air_part
+		ai_chance = { base = 100 }
+	}
+
+	option = {
+		name = UKR_req_res_no
+		trigger = { has_country_flag = UKR_req_fra_air_no }
+		clr_country_flag = UKR_req_fra_air_no
+		ai_chance = { base = 100 }
+	}
+}
+
+# FRA -> fra_volunteers
+country_event = {
+	id = ukraine_foreign.422
+	title = ukraine_foreign.422.t
+	desc = ukraine_foreign.422.d
+	picture = GFX_event_UKR_volunteers
+
+	is_triggered_only = yes
+
+	option = {
+		name = UKR_req_opt_full
+		ai_chance = {
+			base = 25
+			modifier = { add = 25 UKR_ally_opinion_high = yes }
+			modifier = { add = 10 UKR_ally_opinion_mid = yes }
+			modifier = { add = -20 UKR_ally_opinion_low = yes }
+			modifier = { add = 25 UKR_ally_trust_top = yes }
+			modifier = { add = 15 UKR_ally_trust_high = yes }
+			modifier = { add = -10 UKR_ally_trust_low = yes }
+			modifier = { add = -20 UKR_ally_trust_none = yes }
+			modifier = { add = 10 has_global_flag = SOV_nato_war_begins_global }
+			modifier = { add = -25 UKR = { has_idea = UKR_far_right_legalised } }
+			modifier = { add = -15 UKR = { has_idea = UKR_far_right_meddling } }
+		}
+		add_opinion_modifier = { target = UKR modifier = ukr_allies_request_met }
+		UKR = {
+			clr_country_flag = UKR_req_fra_volunteers_pending
+			set_country_flag = { flag = UKR_req_fra_volunteers_full days = 10 }
+			add_manpower = 15000
+			army_experience = 8
+			if = {
+				limit = { has_idea = UKR_vol_vetted_idea_lim }
+				remove_ideas = UKR_vol_vetted_idea_lim
+			}
+			add_timed_idea = {
+				idea = UKR_vol_vetted_idea
+				days = 365
+			}
+			set_country_flag = UKR_volunteer_registry
+			country_event = { id = ukraine_foreign.432 days = 1 }
+		}
+	}
+
+	option = {
+		name = UKR_req_opt_part
+		ai_chance = {
+			base = 35
+			modifier = { add = -10 UKR_ally_opinion_high = yes }
+			modifier = { add = 5 UKR_ally_opinion_mid = yes }
+			modifier = { add = -15 UKR_ally_trust_top = yes }
+			modifier = { add = -5 UKR_ally_trust_high = yes }
+			modifier = { add = 10 UKR_ally_trust_mid = yes }
+			modifier = { add = 10 UKR_ally_trust_low = yes }
+			modifier = { add = 5 UKR_ally_trust_none = yes }
+		}
+		add_opinion_modifier = { target = UKR modifier = ukr_allies_request_partial }
+		UKR = {
+			clr_country_flag = UKR_req_fra_volunteers_pending
+			set_country_flag = { flag = UKR_req_fra_volunteers_part days = 10 }
+			add_manpower = 7500
+			army_experience = 4
+			if = {
+				limit = { NOT = { has_idea = UKR_vol_vetted_idea } }
+				add_timed_idea = {
+					idea = UKR_vol_vetted_idea_lim
+					days = 180
+				}
+			}
+			set_country_flag = UKR_volunteer_registry
+			country_event = { id = ukraine_foreign.432 days = 1 }
+		}
+	}
+
+	option = {
+		name = UKR_req_opt_no
+		ai_chance = {
+			base = 15
+			modifier = { add = -10 UKR_ally_opinion_high = yes }
+			modifier = { add = 25 UKR_ally_opinion_low = yes }
+			modifier = { add = -10 UKR_ally_trust_top = yes }
+			modifier = { add = -5 UKR_ally_trust_high = yes }
+			modifier = { add = 10 UKR_ally_trust_low = yes }
+			modifier = { add = 25 UKR_ally_trust_none = yes }
+			modifier = { add = -5 has_global_flag = SOV_nato_war_begins_global }
+			modifier = { add = 25 UKR = { has_idea = UKR_far_right_legalised } }
+			modifier = { add = 15 UKR = { has_idea = UKR_far_right_meddling } }
+		}
+		UKR = {
+			clr_country_flag = UKR_req_fra_volunteers_pending
+			set_country_flag = { flag = UKR_req_fra_volunteers_no days = 10 }
+			country_event = { id = ukraine_foreign.432 days = 1 }
+		}
+	}
+}
+
+country_event = {
+	id = ukraine_foreign.432
+	title = ukraine_foreign.432.t
+	desc = {
+		text = ukraine_foreign.432.d_full
+		trigger = { has_country_flag = UKR_req_fra_volunteers_full }
+	}
+	desc = {
+		text = ukraine_foreign.432.d_part
+		trigger = { has_country_flag = UKR_req_fra_volunteers_part }
+	}
+	desc = {
+		text = ukraine_foreign.432.d_no
+		trigger = { has_country_flag = UKR_req_fra_volunteers_no }
+	}
+	picture = GFX_event_UKR_volunteers
+
+	is_triggered_only = yes
+
+	option = {
+		name = UKR_req_res_full
+		trigger = { has_country_flag = UKR_req_fra_volunteers_full }
+		UKR_trust_request_full = yes
+		clr_country_flag = UKR_req_fra_volunteers_full
+		ai_chance = { base = 100 }
+	}
+
+	option = {
+		name = UKR_req_res_part
+		trigger = { has_country_flag = UKR_req_fra_volunteers_part }
+		UKR_trust_request_part = yes
+		clr_country_flag = UKR_req_fra_volunteers_part
+		ai_chance = { base = 100 }
+	}
+
+	option = {
+		name = UKR_req_res_no
+		trigger = { has_country_flag = UKR_req_fra_volunteers_no }
+		clr_country_flag = UKR_req_fra_volunteers_no
+		ai_chance = { base = 100 }
+	}
+}
+
+# ENG -> eng_intel
+country_event = {
+	id = ukraine_foreign.440
+	title = ukraine_foreign.440.t
+	desc = ukraine_foreign.440.d
+	picture = GFX_UKR_diplomat
+
+	is_triggered_only = yes
+
+	option = {
+		name = UKR_req_opt_full
+		ai_chance = {
+			base = 25
+			modifier = { add = 25 UKR_ally_opinion_high = yes }
+			modifier = { add = 10 UKR_ally_opinion_mid = yes }
+			modifier = { add = -20 UKR_ally_opinion_low = yes }
+			modifier = { add = 25 UKR_ally_trust_top = yes }
+			modifier = { add = 15 UKR_ally_trust_high = yes }
+			modifier = { add = -10 UKR_ally_trust_low = yes }
+			modifier = { add = -20 UKR_ally_trust_none = yes }
+			modifier = { add = 10 has_global_flag = SOV_nato_war_begins_global }
+			modifier = { add = 10 UKR = { has_country_flag = UKR_pillar_chosen_technocrats } }
+			modifier = { add = -10 UKR = { has_country_flag = UKR_pillar_chosen_oligarchs } }
+			modifier = { add = -10 UKR = { has_idea = UKR_eu_aid_frozen } }
+		}
+		add_opinion_modifier = { target = UKR modifier = ukr_allies_request_met }
+		UKR = {
+			clr_country_flag = UKR_req_eng_intel_pending
+			set_country_flag = { flag = UKR_req_eng_intel_full days = 10 }
+			if = {
+				limit = { has_idea = UKR_uk_intel_idea_lim }
+				remove_ideas = UKR_uk_intel_idea_lim
+			}
+			add_timed_idea = {
+				idea = UKR_uk_intel_idea
+				days = 365
+			}
+			set_country_flag = UKR_uk_intel_partnership
+			country_event = { id = ukraine_foreign.450 days = 1 }
+		}
+	}
+
+	option = {
+		name = UKR_req_opt_part
+		ai_chance = {
+			base = 35
+			modifier = { add = -10 UKR_ally_opinion_high = yes }
+			modifier = { add = 5 UKR_ally_opinion_mid = yes }
+			modifier = { add = -15 UKR_ally_trust_top = yes }
+			modifier = { add = -5 UKR_ally_trust_high = yes }
+			modifier = { add = 10 UKR_ally_trust_mid = yes }
+			modifier = { add = 10 UKR_ally_trust_low = yes }
+			modifier = { add = 5 UKR_ally_trust_none = yes }
+		}
+		add_opinion_modifier = { target = UKR modifier = ukr_allies_request_partial }
+		UKR = {
+			clr_country_flag = UKR_req_eng_intel_pending
+			set_country_flag = { flag = UKR_req_eng_intel_part days = 10 }
+			if = {
+				limit = { NOT = { has_idea = UKR_uk_intel_idea } }
+				add_timed_idea = {
+					idea = UKR_uk_intel_idea_lim
+					days = 180
+				}
+			}
+			set_country_flag = UKR_uk_intel_partnership
+			country_event = { id = ukraine_foreign.450 days = 1 }
+		}
+	}
+
+	option = {
+		name = UKR_req_opt_no
+		ai_chance = {
+			base = 15
+			modifier = { add = -10 UKR_ally_opinion_high = yes }
+			modifier = { add = 25 UKR_ally_opinion_low = yes }
+			modifier = { add = -10 UKR_ally_trust_top = yes }
+			modifier = { add = -5 UKR_ally_trust_high = yes }
+			modifier = { add = 10 UKR_ally_trust_low = yes }
+			modifier = { add = 25 UKR_ally_trust_none = yes }
+			modifier = { add = -5 has_global_flag = SOV_nato_war_begins_global }
+			modifier = { add = -10 UKR = { has_country_flag = UKR_pillar_chosen_technocrats } }
+			modifier = { add = 10 UKR = { has_country_flag = UKR_pillar_chosen_oligarchs } }
+			modifier = { add = 10 UKR = { has_idea = UKR_eu_aid_frozen } }
+		}
+		UKR = {
+			clr_country_flag = UKR_req_eng_intel_pending
+			set_country_flag = { flag = UKR_req_eng_intel_no days = 10 }
+			country_event = { id = ukraine_foreign.450 days = 1 }
+		}
+	}
+}
+
+country_event = {
+	id = ukraine_foreign.450
+	title = ukraine_foreign.450.t
+	desc = {
+		text = ukraine_foreign.450.d_full
+		trigger = { has_country_flag = UKR_req_eng_intel_full }
+	}
+	desc = {
+		text = ukraine_foreign.450.d_part
+		trigger = { has_country_flag = UKR_req_eng_intel_part }
+	}
+	desc = {
+		text = ukraine_foreign.450.d_no
+		trigger = { has_country_flag = UKR_req_eng_intel_no }
+	}
+	picture = GFX_UKR_diplomat
+
+	is_triggered_only = yes
+
+	option = {
+		name = UKR_req_res_full
+		trigger = { has_country_flag = UKR_req_eng_intel_full }
+		UKR_trust_request_full = yes
+		clr_country_flag = UKR_req_eng_intel_full
+		ai_chance = { base = 100 }
+	}
+
+	option = {
+		name = UKR_req_res_part
+		trigger = { has_country_flag = UKR_req_eng_intel_part }
+		UKR_trust_request_part = yes
+		clr_country_flag = UKR_req_eng_intel_part
+		ai_chance = { base = 100 }
+	}
+
+	option = {
+		name = UKR_req_res_no
+		trigger = { has_country_flag = UKR_req_eng_intel_no }
+		clr_country_flag = UKR_req_eng_intel_no
+		ai_chance = { base = 100 }
+	}
+}
+
+# ENG -> eng_training
+country_event = {
+	id = ukraine_foreign.441
+	title = ukraine_foreign.441.t
+	desc = ukraine_foreign.441.d
+	picture = GFX_FRA_training
+
+	is_triggered_only = yes
+
+	option = {
+		name = UKR_req_opt_full
+		ai_chance = {
+			base = 25
+			modifier = { add = 25 UKR_ally_opinion_high = yes }
+			modifier = { add = 10 UKR_ally_opinion_mid = yes }
+			modifier = { add = -20 UKR_ally_opinion_low = yes }
+			modifier = { add = 25 UKR_ally_trust_top = yes }
+			modifier = { add = 15 UKR_ally_trust_high = yes }
+			modifier = { add = -10 UKR_ally_trust_low = yes }
+			modifier = { add = -20 UKR_ally_trust_none = yes }
+			modifier = { add = 10 has_global_flag = SOV_nato_war_begins_global }
+		}
+		add_opinion_modifier = { target = UKR modifier = ukr_allies_request_met }
+		UKR = {
+			clr_country_flag = UKR_req_eng_training_pending
+			set_country_flag = { flag = UKR_req_eng_training_full days = 10 }
+			army_experience = 20
+			if = {
+				limit = { has_idea = UKR_uk_training_idea_lim }
+				remove_ideas = UKR_uk_training_idea_lim
+			}
+			add_timed_idea = {
+				idea = UKR_uk_training_idea
+				days = 540
+			}
+			country_event = { id = ukraine_foreign.451 days = 1 }
+		}
+	}
+
+	option = {
+		name = UKR_req_opt_part
+		ai_chance = {
+			base = 35
+			modifier = { add = -10 UKR_ally_opinion_high = yes }
+			modifier = { add = 5 UKR_ally_opinion_mid = yes }
+			modifier = { add = -15 UKR_ally_trust_top = yes }
+			modifier = { add = -5 UKR_ally_trust_high = yes }
+			modifier = { add = 10 UKR_ally_trust_mid = yes }
+			modifier = { add = 10 UKR_ally_trust_low = yes }
+			modifier = { add = 5 UKR_ally_trust_none = yes }
+		}
+		add_opinion_modifier = { target = UKR modifier = ukr_allies_request_partial }
+		UKR = {
+			clr_country_flag = UKR_req_eng_training_pending
+			set_country_flag = { flag = UKR_req_eng_training_part days = 10 }
+			army_experience = 10
+			if = {
+				limit = { NOT = { has_idea = UKR_uk_training_idea } }
+				add_timed_idea = {
+					idea = UKR_uk_training_idea_lim
+					days = 270
+				}
+			}
+			country_event = { id = ukraine_foreign.451 days = 1 }
+		}
+	}
+
+	option = {
+		name = UKR_req_opt_no
+		ai_chance = {
+			base = 15
+			modifier = { add = -10 UKR_ally_opinion_high = yes }
+			modifier = { add = 25 UKR_ally_opinion_low = yes }
+			modifier = { add = -10 UKR_ally_trust_top = yes }
+			modifier = { add = -5 UKR_ally_trust_high = yes }
+			modifier = { add = 10 UKR_ally_trust_low = yes }
+			modifier = { add = 25 UKR_ally_trust_none = yes }
+			modifier = { add = -5 has_global_flag = SOV_nato_war_begins_global }
+		}
+		UKR = {
+			clr_country_flag = UKR_req_eng_training_pending
+			set_country_flag = { flag = UKR_req_eng_training_no days = 10 }
+			country_event = { id = ukraine_foreign.451 days = 1 }
+		}
+	}
+}
+
+country_event = {
+	id = ukraine_foreign.451
+	title = ukraine_foreign.451.t
+	desc = {
+		text = ukraine_foreign.451.d_full
+		trigger = { has_country_flag = UKR_req_eng_training_full }
+	}
+	desc = {
+		text = ukraine_foreign.451.d_part
+		trigger = { has_country_flag = UKR_req_eng_training_part }
+	}
+	desc = {
+		text = ukraine_foreign.451.d_no
+		trigger = { has_country_flag = UKR_req_eng_training_no }
+	}
+	picture = GFX_FRA_training
+
+	is_triggered_only = yes
+
+	option = {
+		name = UKR_req_res_full
+		trigger = { has_country_flag = UKR_req_eng_training_full }
+		UKR_trust_request_full = yes
+		clr_country_flag = UKR_req_eng_training_full
+		ai_chance = { base = 100 }
+	}
+
+	option = {
+		name = UKR_req_res_part
+		trigger = { has_country_flag = UKR_req_eng_training_part }
+		UKR_trust_request_part = yes
+		clr_country_flag = UKR_req_eng_training_part
+		ai_chance = { base = 100 }
+	}
+
+	option = {
+		name = UKR_req_res_no
+		trigger = { has_country_flag = UKR_req_eng_training_no }
+		clr_country_flag = UKR_req_eng_training_no
+		ai_chance = { base = 100 }
+	}
+}
+
+# ENG -> eng_missiles
+country_event = {
+	id = ukraine_foreign.442
+	title = ukraine_foreign.442.t
+	desc = ukraine_foreign.442.d
+	picture = GFX_UKR_preparing_for_war
+
+	is_triggered_only = yes
+
+	option = {
+		name = UKR_req_opt_full
+		ai_chance = {
+			base = 25
+			modifier = { add = 25 UKR_ally_opinion_high = yes }
+			modifier = { add = 10 UKR_ally_opinion_mid = yes }
+			modifier = { add = -20 UKR_ally_opinion_low = yes }
+			modifier = { add = 25 UKR_ally_trust_top = yes }
+			modifier = { add = 15 UKR_ally_trust_high = yes }
+			modifier = { add = -10 UKR_ally_trust_low = yes }
+			modifier = { add = -20 UKR_ally_trust_none = yes }
+			modifier = { add = 10 has_global_flag = SOV_nato_war_begins_global }
+		}
+		add_opinion_modifier = { target = UKR modifier = ukr_allies_request_met }
+		UKR = {
+			clr_country_flag = UKR_req_eng_missiles_pending
+			set_country_flag = { flag = UKR_req_eng_missiles_full days = 10 }
+			set_temp_variable = { var = UKR_aid_base value = 100 }
+			UKR_nato_aid_scale = yes
+			add_equipment_to_stockpile = {
+				type = anti_tank_equipment_1
+				amount = UKR_aid_amount
+				producer = ENG
+			}
+			set_temp_variable = { var = UKR_aid_base value = 30 }
+			UKR_nato_aid_scale = yes
+			add_equipment_to_stockpile = {
+				type = anti_air_equipment_2
+				amount = UKR_aid_amount
+				producer = ENG
+			}
+			set_temp_variable = { var = UKR_aid_base value = 30 }
+			UKR_nato_aid_scale = yes
+			add_equipment_to_stockpile = {
+				type = guided_missile_equipment_1
+				amount = UKR_aid_amount
+				producer = ENG
+			}
+			country_event = { id = ukraine_foreign.452 days = 1 }
+		}
+	}
+
+	option = {
+		name = UKR_req_opt_part
+		ai_chance = {
+			base = 35
+			modifier = { add = -10 UKR_ally_opinion_high = yes }
+			modifier = { add = 5 UKR_ally_opinion_mid = yes }
+			modifier = { add = -15 UKR_ally_trust_top = yes }
+			modifier = { add = -5 UKR_ally_trust_high = yes }
+			modifier = { add = 10 UKR_ally_trust_mid = yes }
+			modifier = { add = 10 UKR_ally_trust_low = yes }
+			modifier = { add = 5 UKR_ally_trust_none = yes }
+		}
+		add_opinion_modifier = { target = UKR modifier = ukr_allies_request_partial }
+		UKR = {
+			clr_country_flag = UKR_req_eng_missiles_pending
+			set_country_flag = { flag = UKR_req_eng_missiles_part days = 10 }
+			set_temp_variable = { var = UKR_aid_base value = 50 }
+			UKR_nato_aid_scale = yes
+			add_equipment_to_stockpile = {
+				type = anti_tank_equipment_1
+				amount = UKR_aid_amount
+				producer = ENG
+			}
+			set_temp_variable = { var = UKR_aid_base value = 15 }
+			UKR_nato_aid_scale = yes
+			add_equipment_to_stockpile = {
+				type = anti_air_equipment_2
+				amount = UKR_aid_amount
+				producer = ENG
+			}
+			country_event = { id = ukraine_foreign.452 days = 1 }
+		}
+	}
+
+	option = {
+		name = UKR_req_opt_no
+		ai_chance = {
+			base = 15
+			modifier = { add = -10 UKR_ally_opinion_high = yes }
+			modifier = { add = 25 UKR_ally_opinion_low = yes }
+			modifier = { add = -10 UKR_ally_trust_top = yes }
+			modifier = { add = -5 UKR_ally_trust_high = yes }
+			modifier = { add = 10 UKR_ally_trust_low = yes }
+			modifier = { add = 25 UKR_ally_trust_none = yes }
+			modifier = { add = -5 has_global_flag = SOV_nato_war_begins_global }
+		}
+		UKR = {
+			clr_country_flag = UKR_req_eng_missiles_pending
+			set_country_flag = { flag = UKR_req_eng_missiles_no days = 10 }
+			country_event = { id = ukraine_foreign.452 days = 1 }
+		}
+	}
+}
+
+country_event = {
+	id = ukraine_foreign.452
+	title = ukraine_foreign.452.t
+	desc = {
+		text = ukraine_foreign.452.d_full
+		trigger = { has_country_flag = UKR_req_eng_missiles_full }
+	}
+	desc = {
+		text = ukraine_foreign.452.d_part
+		trigger = { has_country_flag = UKR_req_eng_missiles_part }
+	}
+	desc = {
+		text = ukraine_foreign.452.d_no
+		trigger = { has_country_flag = UKR_req_eng_missiles_no }
+	}
+	picture = GFX_UKR_preparing_for_war
+
+	is_triggered_only = yes
+
+	option = {
+		name = UKR_req_res_full
+		trigger = { has_country_flag = UKR_req_eng_missiles_full }
+		UKR_trust_request_full = yes
+		clr_country_flag = UKR_req_eng_missiles_full
+		ai_chance = { base = 100 }
+	}
+
+	option = {
+		name = UKR_req_res_part
+		trigger = { has_country_flag = UKR_req_eng_missiles_part }
+		UKR_trust_request_part = yes
+		clr_country_flag = UKR_req_eng_missiles_part
+		ai_chance = { base = 100 }
+	}
+
+	option = {
+		name = UKR_req_res_no
+		trigger = { has_country_flag = UKR_req_eng_missiles_no }
+		clr_country_flag = UKR_req_eng_missiles_no
+		ai_chance = { base = 100 }
+	}
+}
+
+# ENG -> eng_naval
+country_event = {
+	id = ukraine_foreign.443
+	title = ukraine_foreign.443.t
+	desc = ukraine_foreign.443.d
+	picture = GFX_PRC_drone_uav
+
+	is_triggered_only = yes
+
+	option = {
+		name = UKR_req_opt_full
+		ai_chance = {
+			base = 25
+			modifier = { add = 25 UKR_ally_opinion_high = yes }
+			modifier = { add = 10 UKR_ally_opinion_mid = yes }
+			modifier = { add = -20 UKR_ally_opinion_low = yes }
+			modifier = { add = 25 UKR_ally_trust_top = yes }
+			modifier = { add = 15 UKR_ally_trust_high = yes }
+			modifier = { add = -10 UKR_ally_trust_low = yes }
+			modifier = { add = -20 UKR_ally_trust_none = yes }
+			modifier = { add = 10 has_global_flag = SOV_nato_war_begins_global }
+		}
+		add_opinion_modifier = { target = UKR modifier = ukr_allies_request_met }
+		UKR = {
+			clr_country_flag = UKR_req_eng_naval_pending
+			set_country_flag = { flag = UKR_req_eng_naval_full days = 10 }
+			mio:UKR_drone_cluster_organization = {
+				add_mio_funds = 150
+			}
+			navy_experience = 15
+			country_event = { id = ukraine_foreign.453 days = 1 }
+		}
+	}
+
+	option = {
+		name = UKR_req_opt_part
+		ai_chance = {
+			base = 35
+			modifier = { add = -10 UKR_ally_opinion_high = yes }
+			modifier = { add = 5 UKR_ally_opinion_mid = yes }
+			modifier = { add = -15 UKR_ally_trust_top = yes }
+			modifier = { add = -5 UKR_ally_trust_high = yes }
+			modifier = { add = 10 UKR_ally_trust_mid = yes }
+			modifier = { add = 10 UKR_ally_trust_low = yes }
+			modifier = { add = 5 UKR_ally_trust_none = yes }
+		}
+		add_opinion_modifier = { target = UKR modifier = ukr_allies_request_partial }
+		UKR = {
+			clr_country_flag = UKR_req_eng_naval_pending
+			set_country_flag = { flag = UKR_req_eng_naval_part days = 10 }
+			mio:UKR_drone_cluster_organization = {
+				add_mio_funds = 75
+			}
+			navy_experience = 7
+			country_event = { id = ukraine_foreign.453 days = 1 }
+		}
+	}
+
+	option = {
+		name = UKR_req_opt_no
+		ai_chance = {
+			base = 15
+			modifier = { add = -10 UKR_ally_opinion_high = yes }
+			modifier = { add = 25 UKR_ally_opinion_low = yes }
+			modifier = { add = -10 UKR_ally_trust_top = yes }
+			modifier = { add = -5 UKR_ally_trust_high = yes }
+			modifier = { add = 10 UKR_ally_trust_low = yes }
+			modifier = { add = 25 UKR_ally_trust_none = yes }
+			modifier = { add = -5 has_global_flag = SOV_nato_war_begins_global }
+		}
+		UKR = {
+			clr_country_flag = UKR_req_eng_naval_pending
+			set_country_flag = { flag = UKR_req_eng_naval_no days = 10 }
+			country_event = { id = ukraine_foreign.453 days = 1 }
+		}
+	}
+}
+
+country_event = {
+	id = ukraine_foreign.453
+	title = ukraine_foreign.453.t
+	desc = {
+		text = ukraine_foreign.453.d_full
+		trigger = { has_country_flag = UKR_req_eng_naval_full }
+	}
+	desc = {
+		text = ukraine_foreign.453.d_part
+		trigger = { has_country_flag = UKR_req_eng_naval_part }
+	}
+	desc = {
+		text = ukraine_foreign.453.d_no
+		trigger = { has_country_flag = UKR_req_eng_naval_no }
+	}
+	picture = GFX_PRC_drone_uav
+
+	is_triggered_only = yes
+
+	option = {
+		name = UKR_req_res_full
+		trigger = { has_country_flag = UKR_req_eng_naval_full }
+		UKR_trust_request_full = yes
+		clr_country_flag = UKR_req_eng_naval_full
+		ai_chance = { base = 100 }
+	}
+
+	option = {
+		name = UKR_req_res_part
+		trigger = { has_country_flag = UKR_req_eng_naval_part }
+		UKR_trust_request_part = yes
+		clr_country_flag = UKR_req_eng_naval_part
+		ai_chance = { base = 100 }
+	}
+
+	option = {
+		name = UKR_req_res_no
+		trigger = { has_country_flag = UKR_req_eng_naval_no }
+		clr_country_flag = UKR_req_eng_naval_no
+		ai_chance = { base = 100 }
+	}
+}
+
+# EST -> est_package
+country_event = {
+	id = ukraine_foreign.460
+	title = ukraine_foreign.460.t
+	desc = ukraine_foreign.460.d
+	picture = GFX_event_UKR_war_support_NATO
+
+	is_triggered_only = yes
+
+	option = {
+		name = UKR_req_opt_full
+		ai_chance = {
+			base = 25
+			modifier = { add = 25 UKR_ally_opinion_high = yes }
+			modifier = { add = 10 UKR_ally_opinion_mid = yes }
+			modifier = { add = -20 UKR_ally_opinion_low = yes }
+			modifier = { add = 25 UKR_ally_trust_top = yes }
+			modifier = { add = 15 UKR_ally_trust_high = yes }
+			modifier = { add = -10 UKR_ally_trust_low = yes }
+			modifier = { add = -20 UKR_ally_trust_none = yes }
+			modifier = { add = 10 has_global_flag = SOV_nato_war_begins_global }
+		}
+		add_opinion_modifier = { target = UKR modifier = ukr_allies_request_met }
+		UKR = {
+			clr_country_flag = UKR_req_est_package_pending
+			set_country_flag = { flag = UKR_req_est_package_full days = 10 }
+			set_temp_variable = { var = UKR_aid_base value = 30 }
+			UKR_nato_aid_scale = yes
+			add_equipment_to_stockpile = {
+				type = artillery_equipment_1
+				amount = UKR_aid_amount
+				producer = EST
+			}
+			set_temp_variable = { var = UKR_aid_base value = 60 }
+			UKR_nato_aid_scale = yes
+			add_equipment_to_stockpile = {
+				type = anti_tank_equipment_1
+				amount = UKR_aid_amount
+				producer = EST
+			}
+			country_event = { id = ukraine_foreign.470 days = 1 }
+		}
+	}
+
+	option = {
+		name = UKR_req_opt_part
+		ai_chance = {
+			base = 35
+			modifier = { add = -10 UKR_ally_opinion_high = yes }
+			modifier = { add = 5 UKR_ally_opinion_mid = yes }
+			modifier = { add = -15 UKR_ally_trust_top = yes }
+			modifier = { add = -5 UKR_ally_trust_high = yes }
+			modifier = { add = 10 UKR_ally_trust_mid = yes }
+			modifier = { add = 10 UKR_ally_trust_low = yes }
+			modifier = { add = 5 UKR_ally_trust_none = yes }
+		}
+		add_opinion_modifier = { target = UKR modifier = ukr_allies_request_partial }
+		UKR = {
+			clr_country_flag = UKR_req_est_package_pending
+			set_country_flag = { flag = UKR_req_est_package_part days = 10 }
+			set_temp_variable = { var = UKR_aid_base value = 15 }
+			UKR_nato_aid_scale = yes
+			add_equipment_to_stockpile = {
+				type = artillery_equipment_1
+				amount = UKR_aid_amount
+				producer = EST
+			}
+			set_temp_variable = { var = UKR_aid_base value = 30 }
+			UKR_nato_aid_scale = yes
+			add_equipment_to_stockpile = {
+				type = anti_tank_equipment_1
+				amount = UKR_aid_amount
+				producer = EST
+			}
+			country_event = { id = ukraine_foreign.470 days = 1 }
+		}
+	}
+
+	option = {
+		name = UKR_req_opt_no
+		ai_chance = {
+			base = 15
+			modifier = { add = -10 UKR_ally_opinion_high = yes }
+			modifier = { add = 25 UKR_ally_opinion_low = yes }
+			modifier = { add = -10 UKR_ally_trust_top = yes }
+			modifier = { add = -5 UKR_ally_trust_high = yes }
+			modifier = { add = 10 UKR_ally_trust_low = yes }
+			modifier = { add = 25 UKR_ally_trust_none = yes }
+			modifier = { add = -5 has_global_flag = SOV_nato_war_begins_global }
+		}
+		UKR = {
+			clr_country_flag = UKR_req_est_package_pending
+			set_country_flag = { flag = UKR_req_est_package_no days = 10 }
+			country_event = { id = ukraine_foreign.470 days = 1 }
+		}
+	}
+}
+
+country_event = {
+	id = ukraine_foreign.470
+	title = ukraine_foreign.470.t
+	desc = {
+		text = ukraine_foreign.470.d_full
+		trigger = { has_country_flag = UKR_req_est_package_full }
+	}
+	desc = {
+		text = ukraine_foreign.470.d_part
+		trigger = { has_country_flag = UKR_req_est_package_part }
+	}
+	desc = {
+		text = ukraine_foreign.470.d_no
+		trigger = { has_country_flag = UKR_req_est_package_no }
+	}
+	picture = GFX_event_UKR_war_support_NATO
+
+	is_triggered_only = yes
+
+	option = {
+		name = UKR_req_res_full
+		trigger = { has_country_flag = UKR_req_est_package_full }
+		UKR_trust_request_full = yes
+		clr_country_flag = UKR_req_est_package_full
+		ai_chance = { base = 100 }
+	}
+
+	option = {
+		name = UKR_req_res_part
+		trigger = { has_country_flag = UKR_req_est_package_part }
+		UKR_trust_request_part = yes
+		clr_country_flag = UKR_req_est_package_part
+		ai_chance = { base = 100 }
+	}
+
+	option = {
+		name = UKR_req_res_no
+		trigger = { has_country_flag = UKR_req_est_package_no }
+		clr_country_flag = UKR_req_est_package_no
+		ai_chance = { base = 100 }
+	}
+}
+
+# LAT -> lat_drones
+country_event = {
+	id = ukraine_foreign.461
+	title = ukraine_foreign.461.t
+	desc = ukraine_foreign.461.d
+	picture = GFX_PRC_drone_uav
+
+	is_triggered_only = yes
+
+	option = {
+		name = UKR_req_opt_full
+		ai_chance = {
+			base = 25
+			modifier = { add = 25 UKR_ally_opinion_high = yes }
+			modifier = { add = 10 UKR_ally_opinion_mid = yes }
+			modifier = { add = -20 UKR_ally_opinion_low = yes }
+			modifier = { add = 25 UKR_ally_trust_top = yes }
+			modifier = { add = 15 UKR_ally_trust_high = yes }
+			modifier = { add = -10 UKR_ally_trust_low = yes }
+			modifier = { add = -20 UKR_ally_trust_none = yes }
+			modifier = { add = 10 has_global_flag = SOV_nato_war_begins_global }
+		}
+		add_opinion_modifier = { target = UKR modifier = ukr_allies_request_met }
+		UKR = {
+			clr_country_flag = UKR_req_lat_drones_pending
+			set_country_flag = { flag = UKR_req_lat_drones_full days = 10 }
+			mio:UKR_drone_cluster_organization = {
+				add_mio_funds = 150
+			}
+			set_temp_variable = { var = UKR_aid_base value = 40 }
+			UKR_nato_aid_scale = yes
+			add_equipment_to_stockpile = {
+				type = anti_air_equipment_1
+				amount = UKR_aid_amount
+				producer = LAT
+			}
+			country_event = { id = ukraine_foreign.471 days = 1 }
+		}
+	}
+
+	option = {
+		name = UKR_req_opt_part
+		ai_chance = {
+			base = 35
+			modifier = { add = -10 UKR_ally_opinion_high = yes }
+			modifier = { add = 5 UKR_ally_opinion_mid = yes }
+			modifier = { add = -15 UKR_ally_trust_top = yes }
+			modifier = { add = -5 UKR_ally_trust_high = yes }
+			modifier = { add = 10 UKR_ally_trust_mid = yes }
+			modifier = { add = 10 UKR_ally_trust_low = yes }
+			modifier = { add = 5 UKR_ally_trust_none = yes }
+		}
+		add_opinion_modifier = { target = UKR modifier = ukr_allies_request_partial }
+		UKR = {
+			clr_country_flag = UKR_req_lat_drones_pending
+			set_country_flag = { flag = UKR_req_lat_drones_part days = 10 }
+			mio:UKR_drone_cluster_organization = {
+				add_mio_funds = 75
+			}
+			set_temp_variable = { var = UKR_aid_base value = 20 }
+			UKR_nato_aid_scale = yes
+			add_equipment_to_stockpile = {
+				type = anti_air_equipment_1
+				amount = UKR_aid_amount
+				producer = LAT
+			}
+			country_event = { id = ukraine_foreign.471 days = 1 }
+		}
+	}
+
+	option = {
+		name = UKR_req_opt_no
+		ai_chance = {
+			base = 15
+			modifier = { add = -10 UKR_ally_opinion_high = yes }
+			modifier = { add = 25 UKR_ally_opinion_low = yes }
+			modifier = { add = -10 UKR_ally_trust_top = yes }
+			modifier = { add = -5 UKR_ally_trust_high = yes }
+			modifier = { add = 10 UKR_ally_trust_low = yes }
+			modifier = { add = 25 UKR_ally_trust_none = yes }
+			modifier = { add = -5 has_global_flag = SOV_nato_war_begins_global }
+		}
+		UKR = {
+			clr_country_flag = UKR_req_lat_drones_pending
+			set_country_flag = { flag = UKR_req_lat_drones_no days = 10 }
+			country_event = { id = ukraine_foreign.471 days = 1 }
+		}
+	}
+}
+
+country_event = {
+	id = ukraine_foreign.471
+	title = ukraine_foreign.471.t
+	desc = {
+		text = ukraine_foreign.471.d_full
+		trigger = { has_country_flag = UKR_req_lat_drones_full }
+	}
+	desc = {
+		text = ukraine_foreign.471.d_part
+		trigger = { has_country_flag = UKR_req_lat_drones_part }
+	}
+	desc = {
+		text = ukraine_foreign.471.d_no
+		trigger = { has_country_flag = UKR_req_lat_drones_no }
+	}
+	picture = GFX_PRC_drone_uav
+
+	is_triggered_only = yes
+
+	option = {
+		name = UKR_req_res_full
+		trigger = { has_country_flag = UKR_req_lat_drones_full }
+		UKR_trust_request_full = yes
+		clr_country_flag = UKR_req_lat_drones_full
+		ai_chance = { base = 100 }
+	}
+
+	option = {
+		name = UKR_req_res_part
+		trigger = { has_country_flag = UKR_req_lat_drones_part }
+		UKR_trust_request_part = yes
+		clr_country_flag = UKR_req_lat_drones_part
+		ai_chance = { base = 100 }
+	}
+
+	option = {
+		name = UKR_req_res_no
+		trigger = { has_country_flag = UKR_req_lat_drones_no }
+		clr_country_flag = UKR_req_lat_drones_no
+		ai_chance = { base = 100 }
+	}
+}
+
+# LIT -> lit_support
+country_event = {
+	id = ukraine_foreign.462
+	title = ukraine_foreign.462.t
+	desc = ukraine_foreign.462.d
+	picture = GFX_event_UKR_volunteers
+
+	is_triggered_only = yes
+
+	option = {
+		name = UKR_req_opt_full
+		ai_chance = {
+			base = 25
+			modifier = { add = 25 UKR_ally_opinion_high = yes }
+			modifier = { add = 10 UKR_ally_opinion_mid = yes }
+			modifier = { add = -20 UKR_ally_opinion_low = yes }
+			modifier = { add = 25 UKR_ally_trust_top = yes }
+			modifier = { add = 15 UKR_ally_trust_high = yes }
+			modifier = { add = -10 UKR_ally_trust_low = yes }
+			modifier = { add = -20 UKR_ally_trust_none = yes }
+			modifier = { add = 10 has_global_flag = SOV_nato_war_begins_global }
+		}
+		add_opinion_modifier = { target = UKR modifier = ukr_allies_request_met }
+		UKR = {
+			clr_country_flag = UKR_req_lit_support_pending
+			set_country_flag = { flag = UKR_req_lit_support_full days = 10 }
+			set_temp_variable = { var = UKR_aid_base value = 50 }
+			UKR_nato_aid_scale = yes
+			add_equipment_to_stockpile = {
+				type = anti_air_equipment_1
+				amount = UKR_aid_amount
+				producer = LIT
+			}
+			army_experience = 5
+			add_to_variable = { var = UKR_air_defense_points value = 1 }
+			country_event = { id = ukraine_foreign.472 days = 1 }
+		}
+	}
+
+	option = {
+		name = UKR_req_opt_part
+		ai_chance = {
+			base = 35
+			modifier = { add = -10 UKR_ally_opinion_high = yes }
+			modifier = { add = 5 UKR_ally_opinion_mid = yes }
+			modifier = { add = -15 UKR_ally_trust_top = yes }
+			modifier = { add = -5 UKR_ally_trust_high = yes }
+			modifier = { add = 10 UKR_ally_trust_mid = yes }
+			modifier = { add = 10 UKR_ally_trust_low = yes }
+			modifier = { add = 5 UKR_ally_trust_none = yes }
+		}
+		add_opinion_modifier = { target = UKR modifier = ukr_allies_request_partial }
+		UKR = {
+			clr_country_flag = UKR_req_lit_support_pending
+			set_country_flag = { flag = UKR_req_lit_support_part days = 10 }
+			set_temp_variable = { var = UKR_aid_base value = 25 }
+			UKR_nato_aid_scale = yes
+			add_equipment_to_stockpile = {
+				type = anti_air_equipment_1
+				amount = UKR_aid_amount
+				producer = LIT
+			}
+			army_experience = 3
+			country_event = { id = ukraine_foreign.472 days = 1 }
+		}
+	}
+
+	option = {
+		name = UKR_req_opt_no
+		ai_chance = {
+			base = 15
+			modifier = { add = -10 UKR_ally_opinion_high = yes }
+			modifier = { add = 25 UKR_ally_opinion_low = yes }
+			modifier = { add = -10 UKR_ally_trust_top = yes }
+			modifier = { add = -5 UKR_ally_trust_high = yes }
+			modifier = { add = 10 UKR_ally_trust_low = yes }
+			modifier = { add = 25 UKR_ally_trust_none = yes }
+			modifier = { add = -5 has_global_flag = SOV_nato_war_begins_global }
+		}
+		UKR = {
+			clr_country_flag = UKR_req_lit_support_pending
+			set_country_flag = { flag = UKR_req_lit_support_no days = 10 }
+			country_event = { id = ukraine_foreign.472 days = 1 }
+		}
+	}
+}
+
+country_event = {
+	id = ukraine_foreign.472
+	title = ukraine_foreign.472.t
+	desc = {
+		text = ukraine_foreign.472.d_full
+		trigger = { has_country_flag = UKR_req_lit_support_full }
+	}
+	desc = {
+		text = ukraine_foreign.472.d_part
+		trigger = { has_country_flag = UKR_req_lit_support_part }
+	}
+	desc = {
+		text = ukraine_foreign.472.d_no
+		trigger = { has_country_flag = UKR_req_lit_support_no }
+	}
+	picture = GFX_event_UKR_volunteers
+
+	is_triggered_only = yes
+
+	option = {
+		name = UKR_req_res_full
+		trigger = { has_country_flag = UKR_req_lit_support_full }
+		UKR_trust_request_full = yes
+		clr_country_flag = UKR_req_lit_support_full
+		ai_chance = { base = 100 }
+	}
+
+	option = {
+		name = UKR_req_res_part
+		trigger = { has_country_flag = UKR_req_lit_support_part }
+		UKR_trust_request_part = yes
+		clr_country_flag = UKR_req_lit_support_part
+		ai_chance = { base = 100 }
+	}
+
+	option = {
+		name = UKR_req_res_no
+		trigger = { has_country_flag = UKR_req_lit_support_no }
+		clr_country_flag = UKR_req_lit_support_no
+		ai_chance = { base = 100 }
+	}
+}
+
+# Цепочка Польши: зерно на границе (через 150 дней после согласия на транзитный хаб)
+country_event = {
+	id = ukraine_foreign.320
+	title = ukraine_foreign.320.t
+	desc = ukraine_foreign.320.d
+	picture = GFX_UKR_agricultural_success
+
+	is_triggered_only = yes
+	fire_only_once = yes
+
+	trigger = {
+		has_war_with = SOV
+		country_exists = PLD
+	}
+
+	# Согласиться на запрет, пустить зерно через «коридоры солидарности»
+	option = {
+		name = ukraine_foreign.320.a
+		PLD = {
+			add_opinion_modifier = { target = UKR modifier = ukr_allies_grain_solidarity }
+		}
+		UKR_trust_warsaw_dialogue = yes
+		set_temp_variable = { var = income_var_temp value = -0.8 }
+		add_income_with_inflation = yes
+		ai_chance = { base = 40 }
+	}
+
+	# Жаловаться в ВТО и давить через Брюссель
+	option = {
+		name = ukraine_foreign.320.b
+		PLD = {
+			add_opinion_modifier = { target = UKR modifier = ukr_allies_grain_dispute }
+		}
+		UKR_trust_warsaw_dispute = yes
+		add_political_power = 15
+		ai_chance = { base = 20 }
+	}
+
+	# Тихие переговоры: лицензии на вывоз и квоты
+	option = {
+		name = ukraine_foreign.320.c
+		PLD = {
+			add_opinion_modifier = { target = UKR modifier = ukr_allies_request_partial }
+		}
+		set_temp_variable = { var = income_var_temp value = -0.4 }
+		add_income_with_inflation = yes
+		ai_chance = { base = 40 }
+	}
+}
+
+# Цепочка Польши: итог решения UKR_pl_exhumations
+country_event = {
+	id = ukraine_foreign.321
+	title = ukraine_foreign.321.t
+	desc = ukraine_foreign.321.d
+	picture = GFX_UKR_diplomat
+
+	is_triggered_only = yes
+
+	option = {
+		name = ukraine_foreign.321.a
+		ai_chance = { base = 100 }
+	}
+}

@@ -1,0 +1,98 @@
+# Европейское НАТО, этап 3 (PROPOSAL_war_europe.md 4.1): ступень доверия, цены и сроки запросов к странам.
+# Файл создан генератором _tools/gen_allies.py. Область - Украина. Вызывается из UKR_trust_apply (при каждом изменении доверия),
+# из on_daily (TFR_on_actions_UKR.txt) и из фокуса UKR_secure_western_aid.
+
+# Вход: временная UKR_rq_base (базовая цена), выход: временная UKR_rq_price (база x UKR_req_pct / 100, округлено).
+UKR_rq_price_apply = {
+	set_temp_variable = { var = UKR_rq_price value = UKR_rq_base }
+	multiply_temp_variable = { var = UKR_rq_price value = UKR_req_pct }
+	divide_temp_variable = { var = UKR_rq_price value = 100 }
+	round_temp_variable = UKR_rq_price
+}
+
+# Ступень доверия: 1 - от 65, 2 - 45-64, 3 - 25-44, 4 - ниже 25. Цена: 100/115/130/150 процентов; ответ: 7/14/28/45 дней
+# (Прибалтика 3/5/10/20). Затем цены всех запросов UKR_req_cost_<запрос> и двух старых решений помощи.
+UKR_update_request_costs = {
+	set_variable = { var = UKR_req_tier value = 4 }
+	set_variable = { var = UKR_req_pct value = 150 }
+	set_variable = { var = UKR_req_delay value = 45 }
+	set_variable = { var = UKR_req_delay_b value = 20 }
+	if = {
+		limit = { check_variable = { var = UKR_nato_trust value = 25 compare = greater_than_or_equals } }
+		set_variable = { var = UKR_req_tier value = 3 }
+		set_variable = { var = UKR_req_pct value = 130 }
+		set_variable = { var = UKR_req_delay value = 28 }
+		set_variable = { var = UKR_req_delay_b value = 10 }
+	}
+	if = {
+		limit = { check_variable = { var = UKR_nato_trust value = 45 compare = greater_than_or_equals } }
+		set_variable = { var = UKR_req_tier value = 2 }
+		set_variable = { var = UKR_req_pct value = 115 }
+		set_variable = { var = UKR_req_delay value = 14 }
+		set_variable = { var = UKR_req_delay_b value = 5 }
+	}
+	if = {
+		limit = { check_variable = { var = UKR_nato_trust value = 65 compare = greater_than_or_equals } }
+		set_variable = { var = UKR_req_tier value = 1 }
+		set_variable = { var = UKR_req_pct value = 100 }
+		set_variable = { var = UKR_req_delay value = 7 }
+		set_variable = { var = UKR_req_delay_b value = 3 }
+	}
+
+	set_temp_variable = { var = UKR_rq_base value = 40 }
+	UKR_rq_price_apply = yes
+	set_variable = { var = UKR_req_cost_pl_hub value = UKR_rq_price }
+	set_temp_variable = { var = UKR_rq_base value = 65 }
+	UKR_rq_price_apply = yes
+	set_variable = { var = UKR_req_cost_pl_arms value = UKR_rq_price }
+	set_temp_variable = { var = UKR_rq_base value = 35 }
+	UKR_rq_price_apply = yes
+	set_variable = { var = UKR_req_cost_pl_medevac value = UKR_rq_price }
+	set_temp_variable = { var = UKR_rq_base value = 70 }
+	UKR_rq_price_apply = yes
+	set_variable = { var = UKR_req_cost_ger_air value = UKR_rq_price }
+	set_temp_variable = { var = UKR_rq_base value = 50 }
+	UKR_rq_price_apply = yes
+	set_variable = { var = UKR_req_cost_ger_credit value = UKR_rq_price }
+	set_temp_variable = { var = UKR_rq_base value = 85 }
+	UKR_rq_price_apply = yes
+	set_variable = { var = UKR_req_cost_ger_armor value = UKR_rq_price }
+	set_temp_variable = { var = UKR_rq_base value = 55 }
+	UKR_rq_price_apply = yes
+	set_variable = { var = UKR_req_cost_fra_caesar value = UKR_rq_price }
+	set_temp_variable = { var = UKR_rq_base value = 80 }
+	UKR_rq_price_apply = yes
+	set_variable = { var = UKR_req_cost_fra_air value = UKR_rq_price }
+	set_temp_variable = { var = UKR_rq_base value = 35 }
+	UKR_rq_price_apply = yes
+	set_variable = { var = UKR_req_cost_fra_volunteers value = UKR_rq_price }
+	set_temp_variable = { var = UKR_rq_base value = 40 }
+	UKR_rq_price_apply = yes
+	set_variable = { var = UKR_req_cost_eng_intel value = UKR_rq_price }
+	set_temp_variable = { var = UKR_rq_base value = 50 }
+	UKR_rq_price_apply = yes
+	set_variable = { var = UKR_req_cost_eng_training value = UKR_rq_price }
+	set_temp_variable = { var = UKR_rq_base value = 70 }
+	UKR_rq_price_apply = yes
+	set_variable = { var = UKR_req_cost_eng_missiles value = UKR_rq_price }
+	set_temp_variable = { var = UKR_rq_base value = 55 }
+	UKR_rq_price_apply = yes
+	set_variable = { var = UKR_req_cost_eng_naval value = UKR_rq_price }
+	set_temp_variable = { var = UKR_rq_base value = 30 }
+	UKR_rq_price_apply = yes
+	set_variable = { var = UKR_req_cost_est_package value = UKR_rq_price }
+	set_temp_variable = { var = UKR_rq_base value = 35 }
+	UKR_rq_price_apply = yes
+	set_variable = { var = UKR_req_cost_lat_drones value = UKR_rq_price }
+	set_temp_variable = { var = UKR_rq_base value = 35 }
+	UKR_rq_price_apply = yes
+	set_variable = { var = UKR_req_cost_lit_support value = UKR_rq_price }
+
+	# Старые решения помощи: база растёт у пакета западной помощи (+10 за нажатие), у ленд-лиза постоянна
+	set_temp_variable = { var = UKR_rq_base value = UKR_western_aid_cost }
+	UKR_rq_price_apply = yes
+	set_variable = { var = UKR_western_aid_price value = UKR_rq_price }
+	set_temp_variable = { var = UKR_rq_base value = 100 }
+	UKR_rq_price_apply = yes
+	set_variable = { var = UKR_lend_lease_price value = UKR_rq_price }
+}

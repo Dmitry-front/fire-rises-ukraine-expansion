@@ -1,0 +1,739 @@
+# Запросы к европейским странам (этап 3, PROPOSAL_war_europe.md 4.1, DESIGN.md раздел 12).
+# Файл создан генератором _tools/gen_allies.py (данные - _tools/allies_data/*.py); после ручных правок генератор не запускать.
+# Цена в политсиле - переменная UKR_req_cost_<запрос> (база x доверие, UKR_update_request_costs); ответ страны приходит событием
+# ukraine_foreign.3xx/4xx через 7/14/28/45 дней (Прибалтика 3/5/10/20) и зависит от отношения страны к Украине, доверия и прошлого.
+# Блокировка до ответа - флаг UKR_req_<запрос>_pending (до 60 дней); потом действует перезарядка days_re_enable.
+UKR_allies_category = {
+	UKR_req_pl_hub = {
+		icon = generic_lend_lease
+
+		visible = {
+			has_war_with = SOV
+			country_exists = PLD
+		}
+		available = {
+			NOT = { has_country_flag = UKR_req_pl_hub_pending }
+		}
+
+		cost = UKR_req_cost_pl_hub
+
+		fire_only_once = no
+		days_re_enable = 270
+
+		complete_effect = {
+			set_country_flag = { flag = UKR_req_pl_hub_pending days = 60 }
+			custom_effect_tooltip = UKR_req_wait_tt
+			custom_effect_tooltip = UKR_nato_aid_scale_tt
+			hidden_effect = {
+				if = {
+					limit = { check_variable = { var = UKR_req_tier value = 1 compare = equals } }
+					PLD = { country_event = { id = ukraine_foreign.300 days = 7 } }
+				}
+				else_if = {
+					limit = { check_variable = { var = UKR_req_tier value = 2 compare = equals } }
+					PLD = { country_event = { id = ukraine_foreign.300 days = 14 } }
+				}
+				else_if = {
+					limit = { check_variable = { var = UKR_req_tier value = 3 compare = equals } }
+					PLD = { country_event = { id = ukraine_foreign.300 days = 28 } }
+				}
+				else = {
+					PLD = { country_event = { id = ukraine_foreign.300 days = 45 } }
+				}
+			}
+		}
+
+		ai_will_do = {
+			factor = 4
+		}
+	}
+
+	UKR_req_pl_arms = {
+		icon = GFX_decision_generic_military_support
+
+		visible = {
+			has_war_with = SOV
+			country_exists = PLD
+		}
+		available = {
+			NOT = { has_country_flag = UKR_req_pl_arms_pending }
+		}
+
+		cost = UKR_req_cost_pl_arms
+
+		fire_only_once = no
+		days_re_enable = 150
+
+		complete_effect = {
+			set_country_flag = { flag = UKR_req_pl_arms_pending days = 60 }
+			custom_effect_tooltip = UKR_req_wait_tt
+			custom_effect_tooltip = UKR_nato_aid_scale_tt
+			hidden_effect = {
+				if = {
+					limit = { check_variable = { var = UKR_req_tier value = 1 compare = equals } }
+					PLD = { country_event = { id = ukraine_foreign.301 days = 7 } }
+				}
+				else_if = {
+					limit = { check_variable = { var = UKR_req_tier value = 2 compare = equals } }
+					PLD = { country_event = { id = ukraine_foreign.301 days = 14 } }
+				}
+				else_if = {
+					limit = { check_variable = { var = UKR_req_tier value = 3 compare = equals } }
+					PLD = { country_event = { id = ukraine_foreign.301 days = 28 } }
+				}
+				else = {
+					PLD = { country_event = { id = ukraine_foreign.301 days = 45 } }
+				}
+			}
+		}
+
+		ai_will_do = {
+			factor = 4
+		}
+	}
+
+	UKR_req_pl_medevac = {
+		icon = GFX_decision_generic_army_support
+
+		visible = {
+			has_war_with = SOV
+			country_exists = PLD
+		}
+		available = {
+			NOT = { has_country_flag = UKR_req_pl_medevac_pending }
+		}
+
+		cost = UKR_req_cost_pl_medevac
+
+		fire_only_once = no
+		days_re_enable = 270
+
+		complete_effect = {
+			set_country_flag = { flag = UKR_req_pl_medevac_pending days = 60 }
+			custom_effect_tooltip = UKR_req_wait_tt
+			hidden_effect = {
+				if = {
+					limit = { check_variable = { var = UKR_req_tier value = 1 compare = equals } }
+					PLD = { country_event = { id = ukraine_foreign.302 days = 7 } }
+				}
+				else_if = {
+					limit = { check_variable = { var = UKR_req_tier value = 2 compare = equals } }
+					PLD = { country_event = { id = ukraine_foreign.302 days = 14 } }
+				}
+				else_if = {
+					limit = { check_variable = { var = UKR_req_tier value = 3 compare = equals } }
+					PLD = { country_event = { id = ukraine_foreign.302 days = 28 } }
+				}
+				else = {
+					PLD = { country_event = { id = ukraine_foreign.302 days = 45 } }
+				}
+			}
+		}
+
+		ai_will_do = {
+			factor = 4
+		}
+	}
+
+	UKR_req_ger_air = {
+		icon = GFX_decision_generic_air
+
+		visible = {
+			has_war_with = SOV
+			country_exists = GER
+		}
+		available = {
+			NOT = { has_country_flag = UKR_req_ger_air_pending }
+		}
+
+		cost = UKR_req_cost_ger_air
+
+		fire_only_once = no
+		days_re_enable = 180
+
+		complete_effect = {
+			set_country_flag = { flag = UKR_req_ger_air_pending days = 60 }
+			custom_effect_tooltip = UKR_req_wait_tt
+			custom_effect_tooltip = UKR_nato_aid_scale_tt
+			hidden_effect = {
+				if = {
+					limit = { check_variable = { var = UKR_req_tier value = 1 compare = equals } }
+					GER = { country_event = { id = ukraine_foreign.400 days = 7 } }
+				}
+				else_if = {
+					limit = { check_variable = { var = UKR_req_tier value = 2 compare = equals } }
+					GER = { country_event = { id = ukraine_foreign.400 days = 14 } }
+				}
+				else_if = {
+					limit = { check_variable = { var = UKR_req_tier value = 3 compare = equals } }
+					GER = { country_event = { id = ukraine_foreign.400 days = 28 } }
+				}
+				else = {
+					GER = { country_event = { id = ukraine_foreign.400 days = 45 } }
+				}
+			}
+		}
+
+		ai_will_do = {
+			factor = 2
+		}
+	}
+
+	UKR_req_ger_credit = {
+		icon = GFX_decision_generic_industry
+
+		visible = {
+			has_war_with = SOV
+			country_exists = GER
+		}
+		available = {
+			NOT = { has_country_flag = UKR_req_ger_credit_pending }
+		}
+
+		cost = UKR_req_cost_ger_credit
+
+		fire_only_once = no
+		days_re_enable = 240
+
+		complete_effect = {
+			set_country_flag = { flag = UKR_req_ger_credit_pending days = 60 }
+			custom_effect_tooltip = UKR_req_wait_tt
+			custom_effect_tooltip = UKR_nato_aid_scale_tt
+			hidden_effect = {
+				if = {
+					limit = { check_variable = { var = UKR_req_tier value = 1 compare = equals } }
+					GER = { country_event = { id = ukraine_foreign.401 days = 7 } }
+				}
+				else_if = {
+					limit = { check_variable = { var = UKR_req_tier value = 2 compare = equals } }
+					GER = { country_event = { id = ukraine_foreign.401 days = 14 } }
+				}
+				else_if = {
+					limit = { check_variable = { var = UKR_req_tier value = 3 compare = equals } }
+					GER = { country_event = { id = ukraine_foreign.401 days = 28 } }
+				}
+				else = {
+					GER = { country_event = { id = ukraine_foreign.401 days = 45 } }
+				}
+			}
+		}
+
+		ai_will_do = {
+			factor = 4
+		}
+	}
+
+	UKR_req_ger_armor = {
+		icon = GFX_decision_generic_tank
+
+		visible = {
+			has_war_with = SOV
+			country_exists = GER
+		}
+		available = {
+			NOT = { has_country_flag = UKR_req_ger_armor_pending }
+		}
+
+		cost = UKR_req_cost_ger_armor
+
+		fire_only_once = no
+		days_re_enable = 240
+
+		complete_effect = {
+			set_country_flag = { flag = UKR_req_ger_armor_pending days = 60 }
+			custom_effect_tooltip = UKR_req_wait_tt
+			custom_effect_tooltip = UKR_nato_aid_scale_tt
+			hidden_effect = {
+				if = {
+					limit = { check_variable = { var = UKR_req_tier value = 1 compare = equals } }
+					GER = { country_event = { id = ukraine_foreign.402 days = 7 } }
+				}
+				else_if = {
+					limit = { check_variable = { var = UKR_req_tier value = 2 compare = equals } }
+					GER = { country_event = { id = ukraine_foreign.402 days = 14 } }
+				}
+				else_if = {
+					limit = { check_variable = { var = UKR_req_tier value = 3 compare = equals } }
+					GER = { country_event = { id = ukraine_foreign.402 days = 28 } }
+				}
+				else = {
+					GER = { country_event = { id = ukraine_foreign.402 days = 45 } }
+				}
+			}
+		}
+
+		ai_will_do = {
+			factor = 2
+		}
+	}
+
+	UKR_req_fra_caesar = {
+		icon = GFX_decision_generic_military
+
+		visible = {
+			has_war_with = SOV
+			country_exists = FRA
+		}
+		available = {
+			NOT = { has_country_flag = UKR_req_fra_caesar_pending }
+		}
+
+		cost = UKR_req_cost_fra_caesar
+
+		fire_only_once = no
+		days_re_enable = 150
+
+		complete_effect = {
+			set_country_flag = { flag = UKR_req_fra_caesar_pending days = 60 }
+			custom_effect_tooltip = UKR_req_wait_tt
+			custom_effect_tooltip = UKR_nato_aid_scale_tt
+			hidden_effect = {
+				if = {
+					limit = { check_variable = { var = UKR_req_tier value = 1 compare = equals } }
+					FRA = { country_event = { id = ukraine_foreign.420 days = 7 } }
+				}
+				else_if = {
+					limit = { check_variable = { var = UKR_req_tier value = 2 compare = equals } }
+					FRA = { country_event = { id = ukraine_foreign.420 days = 14 } }
+				}
+				else_if = {
+					limit = { check_variable = { var = UKR_req_tier value = 3 compare = equals } }
+					FRA = { country_event = { id = ukraine_foreign.420 days = 28 } }
+				}
+				else = {
+					FRA = { country_event = { id = ukraine_foreign.420 days = 45 } }
+				}
+			}
+		}
+
+		ai_will_do = {
+			factor = 4
+		}
+	}
+
+	UKR_req_fra_air = {
+		icon = GFX_decision_generic_air
+
+		visible = {
+			has_war_with = SOV
+			country_exists = FRA
+		}
+		available = {
+			NOT = { has_country_flag = UKR_req_fra_air_pending }
+		}
+
+		cost = UKR_req_cost_fra_air
+
+		fire_only_once = no
+		days_re_enable = 240
+
+		complete_effect = {
+			set_country_flag = { flag = UKR_req_fra_air_pending days = 60 }
+			custom_effect_tooltip = UKR_req_wait_tt
+			custom_effect_tooltip = UKR_nato_aid_scale_tt
+			hidden_effect = {
+				if = {
+					limit = { check_variable = { var = UKR_req_tier value = 1 compare = equals } }
+					FRA = { country_event = { id = ukraine_foreign.421 days = 7 } }
+				}
+				else_if = {
+					limit = { check_variable = { var = UKR_req_tier value = 2 compare = equals } }
+					FRA = { country_event = { id = ukraine_foreign.421 days = 14 } }
+				}
+				else_if = {
+					limit = { check_variable = { var = UKR_req_tier value = 3 compare = equals } }
+					FRA = { country_event = { id = ukraine_foreign.421 days = 28 } }
+				}
+				else = {
+					FRA = { country_event = { id = ukraine_foreign.421 days = 45 } }
+				}
+			}
+		}
+
+		ai_will_do = {
+			factor = 2
+		}
+	}
+
+	UKR_req_fra_volunteers = {
+		icon = GFX_decision_generic_army_support
+
+		visible = {
+			has_war_with = SOV
+			country_exists = FRA
+		}
+		available = {
+			NOT = { has_country_flag = UKR_req_fra_volunteers_pending }
+		}
+
+		cost = UKR_req_cost_fra_volunteers
+
+		fire_only_once = no
+		days_re_enable = 300
+
+		complete_effect = {
+			set_country_flag = { flag = UKR_req_fra_volunteers_pending days = 60 }
+			custom_effect_tooltip = UKR_req_wait_tt
+			hidden_effect = {
+				if = {
+					limit = { check_variable = { var = UKR_req_tier value = 1 compare = equals } }
+					FRA = { country_event = { id = ukraine_foreign.422 days = 7 } }
+				}
+				else_if = {
+					limit = { check_variable = { var = UKR_req_tier value = 2 compare = equals } }
+					FRA = { country_event = { id = ukraine_foreign.422 days = 14 } }
+				}
+				else_if = {
+					limit = { check_variable = { var = UKR_req_tier value = 3 compare = equals } }
+					FRA = { country_event = { id = ukraine_foreign.422 days = 28 } }
+				}
+				else = {
+					FRA = { country_event = { id = ukraine_foreign.422 days = 45 } }
+				}
+			}
+		}
+
+		ai_will_do = {
+			factor = 4
+		}
+	}
+
+	UKR_req_eng_intel = {
+		icon = generic_intelligence_document
+
+		visible = {
+			has_war_with = SOV
+			country_exists = ENG
+		}
+		available = {
+			NOT = { has_country_flag = UKR_req_eng_intel_pending }
+		}
+
+		cost = UKR_req_cost_eng_intel
+
+		fire_only_once = no
+		days_re_enable = 300
+
+		complete_effect = {
+			set_country_flag = { flag = UKR_req_eng_intel_pending days = 60 }
+			custom_effect_tooltip = UKR_req_wait_tt
+			hidden_effect = {
+				if = {
+					limit = { check_variable = { var = UKR_req_tier value = 1 compare = equals } }
+					ENG = { country_event = { id = ukraine_foreign.440 days = 7 } }
+				}
+				else_if = {
+					limit = { check_variable = { var = UKR_req_tier value = 2 compare = equals } }
+					ENG = { country_event = { id = ukraine_foreign.440 days = 14 } }
+				}
+				else_if = {
+					limit = { check_variable = { var = UKR_req_tier value = 3 compare = equals } }
+					ENG = { country_event = { id = ukraine_foreign.440 days = 28 } }
+				}
+				else = {
+					ENG = { country_event = { id = ukraine_foreign.440 days = 45 } }
+				}
+			}
+		}
+
+		ai_will_do = {
+			factor = 4
+		}
+	}
+
+	UKR_req_eng_training = {
+		icon = GFX_decision_generic_army_support
+
+		visible = {
+			has_war_with = SOV
+			country_exists = ENG
+		}
+		available = {
+			NOT = { has_country_flag = UKR_req_eng_training_pending }
+		}
+
+		cost = UKR_req_cost_eng_training
+
+		fire_only_once = no
+		days_re_enable = 240
+
+		complete_effect = {
+			set_country_flag = { flag = UKR_req_eng_training_pending days = 60 }
+			custom_effect_tooltip = UKR_req_wait_tt
+			hidden_effect = {
+				if = {
+					limit = { check_variable = { var = UKR_req_tier value = 1 compare = equals } }
+					ENG = { country_event = { id = ukraine_foreign.441 days = 7 } }
+				}
+				else_if = {
+					limit = { check_variable = { var = UKR_req_tier value = 2 compare = equals } }
+					ENG = { country_event = { id = ukraine_foreign.441 days = 14 } }
+				}
+				else_if = {
+					limit = { check_variable = { var = UKR_req_tier value = 3 compare = equals } }
+					ENG = { country_event = { id = ukraine_foreign.441 days = 28 } }
+				}
+				else = {
+					ENG = { country_event = { id = ukraine_foreign.441 days = 45 } }
+				}
+			}
+		}
+
+		ai_will_do = {
+			factor = 4
+		}
+	}
+
+	UKR_req_eng_missiles = {
+		icon = GFX_decision_generic_military_support
+
+		visible = {
+			has_war_with = SOV
+			country_exists = ENG
+		}
+		available = {
+			NOT = { has_country_flag = UKR_req_eng_missiles_pending }
+		}
+
+		cost = UKR_req_cost_eng_missiles
+
+		fire_only_once = no
+		days_re_enable = 180
+
+		complete_effect = {
+			set_country_flag = { flag = UKR_req_eng_missiles_pending days = 60 }
+			custom_effect_tooltip = UKR_req_wait_tt
+			custom_effect_tooltip = UKR_nato_aid_scale_tt
+			hidden_effect = {
+				if = {
+					limit = { check_variable = { var = UKR_req_tier value = 1 compare = equals } }
+					ENG = { country_event = { id = ukraine_foreign.442 days = 7 } }
+				}
+				else_if = {
+					limit = { check_variable = { var = UKR_req_tier value = 2 compare = equals } }
+					ENG = { country_event = { id = ukraine_foreign.442 days = 14 } }
+				}
+				else_if = {
+					limit = { check_variable = { var = UKR_req_tier value = 3 compare = equals } }
+					ENG = { country_event = { id = ukraine_foreign.442 days = 28 } }
+				}
+				else = {
+					ENG = { country_event = { id = ukraine_foreign.442 days = 45 } }
+				}
+			}
+		}
+
+		ai_will_do = {
+			factor = 2
+		}
+	}
+
+	UKR_req_eng_naval = {
+		icon = GFX_decision_generic_military
+
+		visible = {
+			has_war_with = SOV
+			country_exists = ENG
+		}
+		available = {
+			NOT = { has_country_flag = UKR_req_eng_naval_pending }
+		}
+
+		cost = UKR_req_cost_eng_naval
+
+		fire_only_once = no
+		days_re_enable = 270
+
+		complete_effect = {
+			set_country_flag = { flag = UKR_req_eng_naval_pending days = 60 }
+			custom_effect_tooltip = UKR_req_wait_tt
+			hidden_effect = {
+				if = {
+					limit = { check_variable = { var = UKR_req_tier value = 1 compare = equals } }
+					ENG = { country_event = { id = ukraine_foreign.443 days = 7 } }
+				}
+				else_if = {
+					limit = { check_variable = { var = UKR_req_tier value = 2 compare = equals } }
+					ENG = { country_event = { id = ukraine_foreign.443 days = 14 } }
+				}
+				else_if = {
+					limit = { check_variable = { var = UKR_req_tier value = 3 compare = equals } }
+					ENG = { country_event = { id = ukraine_foreign.443 days = 28 } }
+				}
+				else = {
+					ENG = { country_event = { id = ukraine_foreign.443 days = 45 } }
+				}
+			}
+		}
+
+		ai_will_do = {
+			factor = 4
+		}
+	}
+
+	UKR_req_est_package = {
+		icon = generic_shaking_hands
+
+		visible = {
+			has_war_with = SOV
+			country_exists = EST
+		}
+		available = {
+			NOT = { has_country_flag = UKR_req_est_package_pending }
+		}
+
+		cost = UKR_req_cost_est_package
+
+		fire_only_once = no
+		days_re_enable = 120
+
+		complete_effect = {
+			set_country_flag = { flag = UKR_req_est_package_pending days = 60 }
+			custom_effect_tooltip = UKR_req_wait_b_tt
+			custom_effect_tooltip = UKR_nato_aid_scale_tt
+			hidden_effect = {
+				if = {
+					limit = { check_variable = { var = UKR_req_tier value = 1 compare = equals } }
+					EST = { country_event = { id = ukraine_foreign.460 days = 3 } }
+				}
+				else_if = {
+					limit = { check_variable = { var = UKR_req_tier value = 2 compare = equals } }
+					EST = { country_event = { id = ukraine_foreign.460 days = 5 } }
+				}
+				else_if = {
+					limit = { check_variable = { var = UKR_req_tier value = 3 compare = equals } }
+					EST = { country_event = { id = ukraine_foreign.460 days = 10 } }
+				}
+				else = {
+					EST = { country_event = { id = ukraine_foreign.460 days = 20 } }
+				}
+			}
+		}
+
+		ai_will_do = {
+			factor = 4
+		}
+	}
+
+	UKR_req_lat_drones = {
+		icon = GFX_decision_generic_research
+
+		visible = {
+			has_war_with = SOV
+			country_exists = LAT
+		}
+		available = {
+			NOT = { has_country_flag = UKR_req_lat_drones_pending }
+		}
+
+		cost = UKR_req_cost_lat_drones
+
+		fire_only_once = no
+		days_re_enable = 180
+
+		complete_effect = {
+			set_country_flag = { flag = UKR_req_lat_drones_pending days = 60 }
+			custom_effect_tooltip = UKR_req_wait_b_tt
+			custom_effect_tooltip = UKR_nato_aid_scale_tt
+			hidden_effect = {
+				if = {
+					limit = { check_variable = { var = UKR_req_tier value = 1 compare = equals } }
+					LAT = { country_event = { id = ukraine_foreign.461 days = 3 } }
+				}
+				else_if = {
+					limit = { check_variable = { var = UKR_req_tier value = 2 compare = equals } }
+					LAT = { country_event = { id = ukraine_foreign.461 days = 5 } }
+				}
+				else_if = {
+					limit = { check_variable = { var = UKR_req_tier value = 3 compare = equals } }
+					LAT = { country_event = { id = ukraine_foreign.461 days = 10 } }
+				}
+				else = {
+					LAT = { country_event = { id = ukraine_foreign.461 days = 20 } }
+				}
+			}
+		}
+
+		ai_will_do = {
+			factor = 4
+		}
+	}
+
+	UKR_req_lit_support = {
+		icon = GFX_decision_generic_protection
+
+		visible = {
+			has_war_with = SOV
+			country_exists = LIT
+		}
+		available = {
+			NOT = { has_country_flag = UKR_req_lit_support_pending }
+		}
+
+		cost = UKR_req_cost_lit_support
+
+		fire_only_once = no
+		days_re_enable = 150
+
+		complete_effect = {
+			set_country_flag = { flag = UKR_req_lit_support_pending days = 60 }
+			custom_effect_tooltip = UKR_req_wait_b_tt
+			custom_effect_tooltip = UKR_nato_aid_scale_tt
+			hidden_effect = {
+				if = {
+					limit = { check_variable = { var = UKR_req_tier value = 1 compare = equals } }
+					LIT = { country_event = { id = ukraine_foreign.462 days = 3 } }
+				}
+				else_if = {
+					limit = { check_variable = { var = UKR_req_tier value = 2 compare = equals } }
+					LIT = { country_event = { id = ukraine_foreign.462 days = 5 } }
+				}
+				else_if = {
+					limit = { check_variable = { var = UKR_req_tier value = 3 compare = equals } }
+					LIT = { country_event = { id = ukraine_foreign.462 days = 10 } }
+				}
+				else = {
+					LIT = { country_event = { id = ukraine_foreign.462 days = 20 } }
+				}
+			}
+		}
+
+		ai_will_do = {
+			factor = 4
+		}
+	}
+
+	UKR_pl_exhumations = {
+		icon = GFX_decision_generic_political_discourse
+
+		visible = {
+			has_war_with = SOV
+			country_exists = PLD
+			NOT = { has_country_flag = UKR_pl_exhumations_done }
+		}
+		available = {
+			NOT = { has_country_flag = UKR_pl_exhumations_done }
+		}
+
+		cost = 40
+		fire_only_once = yes
+
+		complete_effect = {
+			set_country_flag = UKR_pl_exhumations_done
+			PLD = {
+				add_opinion_modifier = { target = UKR modifier = ukr_allies_exhumations }
+			}
+			UKR_trust_warsaw_dialogue = yes
+			add_stability = -0.01
+			add_popularity = {
+				ideology = nationalist
+				popularity = -0.01
+			}
+			country_event = { id = ukraine_foreign.321 days = 3 }
+		}
+
+		ai_will_do = {
+			factor = 2
+		}
+	}
+}

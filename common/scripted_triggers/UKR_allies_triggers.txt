@@ -1,0 +1,41 @@
+# Европейское НАТО, этап 3 (PROPOSAL_war_europe.md 4.1): полосы отношения и доверия для ai_chance опций событий стран.
+# Область - страна-ответчик (Польша, Германия, ...): отношение считается ЕЁ к Украине (has_opinion target = UKR),
+# доверие читается у Украины (UKR_nato_trust). Полосы не пересекаются, поэтому в ai_chance веса складываются понятно.
+
+# Отношение страны к Украине
+UKR_ally_opinion_high = {
+	has_opinion = { target = UKR value > 40 }
+}
+UKR_ally_opinion_mid = {
+	has_opinion = { target = UKR value > 10 }
+	NOT = { has_opinion = { target = UKR value > 40 } }
+}
+UKR_ally_opinion_low = {
+	NOT = { has_opinion = { target = UKR value > -20 } }
+}
+
+# Доверие европейского НАТО (шкала UKR_nato_trust, 0-100): от 85, 65-84, 45-64, 25-44, ниже 25
+UKR_ally_trust_top = {
+	UKR = { check_variable = { var = UKR_nato_trust value = 85 compare = greater_than_or_equals } }
+}
+UKR_ally_trust_high = {
+	UKR = {
+		check_variable = { var = UKR_nato_trust value = 65 compare = greater_than_or_equals }
+		check_variable = { var = UKR_nato_trust value = 85 compare = less_than }
+	}
+}
+UKR_ally_trust_mid = {
+	UKR = {
+		check_variable = { var = UKR_nato_trust value = 45 compare = greater_than_or_equals }
+		check_variable = { var = UKR_nato_trust value = 65 compare = less_than }
+	}
+}
+UKR_ally_trust_low = {
+	UKR = {
+		check_variable = { var = UKR_nato_trust value = 25 compare = greater_than_or_equals }
+		check_variable = { var = UKR_nato_trust value = 45 compare = less_than }
+	}
+}
+UKR_ally_trust_none = {
+	UKR = { check_variable = { var = UKR_nato_trust value = 25 compare = less_than } }
+}

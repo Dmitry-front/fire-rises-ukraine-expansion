@@ -9,6 +9,8 @@ UKR_trust_apply = {
 	add_to_variable = { var = UKR_nato_trust value = UKR_trust_d }
 	clamp_variable = { var = UKR_nato_trust min = 0 max = 100 }
 	set_variable = { var = UKR_nato_trust_last_reason value = UKR_trust_r }
+	# Этап 3: ступень доверия и цены запросов к странам зависят от шкалы (UKR_allies_effects.txt)
+	UKR_update_request_costs = yes
 }
 
 # Освобождён город: Европа видит, что помощь не пропадает. (+3)
@@ -167,6 +169,26 @@ UKR_trust_warsaw_dispute = {
 	hidden_effect = {
 		set_temp_variable = { var = UKR_trust_d value = -3 }
 		set_temp_variable = { var = UKR_trust_r value = 19 }
+		UKR_trust_apply = yes
+	}
+}
+
+# Просьба к европейской стране выполнена полностью (итоговое событие ukraine_foreign.31x/41x/43x/45x/47x). (+2)
+UKR_trust_request_full = {
+	custom_effect_tooltip = UKR_trust_tt_request_full
+	hidden_effect = {
+		set_temp_variable = { var = UKR_trust_d value = 2 }
+		set_temp_variable = { var = UKR_trust_r value = 20 }
+		UKR_trust_apply = yes
+	}
+}
+
+# Просьба выполнена частично. (+1)
+UKR_trust_request_part = {
+	custom_effect_tooltip = UKR_trust_tt_request_part
+	hidden_effect = {
+		set_temp_variable = { var = UKR_trust_d value = 1 }
+		set_temp_variable = { var = UKR_trust_r value = 21 }
 		UKR_trust_apply = yes
 	}
 }

@@ -287,6 +287,7 @@ UKR_season_fop_digital_deal = {
 
 # UKR_eu_aid_frozen: множитель 1 (много источников)
 UKR_season_eu_aid_frozen = {
+	UKR_trust_aid_frozen = yes
 	UKR_season_scale_init = yes
 	set_temp_variable = { var = UKR_sm_k value = 1 }
 	UKR_season_k_finish = yes
@@ -568,6 +569,7 @@ UKR_season_deoligarchization_wave = {
 # Волна антикоррупционных реформ. Перед вызовом: set_temp_variable = { var = UKR_wave_step value = N } (ступень 1-2)
 # k = 0.8 + 0.2 * N. Вызывается из UKR_corruption_step_down
 UKR_season_anticorruption_wave = {
+	UKR_trust_anticorruption = yes
 	UKR_season_scale_init = yes
 	add_timed_idea = { idea = UKR_anticorruption_wave days = 120 }
 	set_temp_variable = { var = UKR_sm_k value = UKR_wave_step }

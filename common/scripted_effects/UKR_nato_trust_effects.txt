@@ -1,0 +1,309 @@
+# Европейское НАТО, этап 1 (PROPOSAL_war_europe.md, DESIGN.md раздел 12).
+# Одна шкала доверия UKR_nato_trust (0-100), маркер единства НАТО (только чтение), масштаб помощи.
+# Все изменения доверия идут через обёртки с фиксированной величиной: таблица последствий в одном месте.
+# Каждая обёртка показывает игроку подсказку (custom_effect_tooltip) и пишет код причины для окна «Союзники».
+# Коды причин: UKR_nato_trust_last_reason -> ключ UKR_trust_reason_N (localisation/*/UKR_allies_l_*.yml).
+
+# Внутренний эффект. Вход: временные UKR_trust_d (изменение) и UKR_trust_r (код причины).
+UKR_trust_apply = {
+	add_to_variable = { var = UKR_nato_trust value = UKR_trust_d }
+	clamp_variable = { var = UKR_nato_trust min = 0 max = 100 }
+	set_variable = { var = UKR_nato_trust_last_reason value = UKR_trust_r }
+}
+
+# Освобождён город: Европа видит, что помощь не пропадает. (+3)
+UKR_trust_city_liberated = {
+	custom_effect_tooltip = UKR_trust_tt_city_liberated
+	hidden_effect = {
+		set_temp_variable = { var = UKR_trust_d value = 3 }
+		set_temp_variable = { var = UKR_trust_r value = 1 }
+		UKR_trust_apply = yes
+	}
+}
+
+# Освобождение Киева. (+6)
+UKR_trust_capital_liberated = {
+	custom_effect_tooltip = UKR_trust_tt_capital_liberated
+	hidden_effect = {
+		set_temp_variable = { var = UKR_trust_d value = 6 }
+		set_temp_variable = { var = UKR_trust_r value = 2 }
+		UKR_trust_apply = yes
+	}
+}
+
+# Потерян крупный город. (-2)
+UKR_trust_city_lost = {
+	custom_effect_tooltip = UKR_trust_tt_city_lost
+	hidden_effect = {
+		set_temp_variable = { var = UKR_trust_d value = -2 }
+		set_temp_variable = { var = UKR_trust_r value = 3 }
+		UKR_trust_apply = yes
+	}
+}
+
+# Потеря Киева. (-5)
+UKR_trust_capital_lost = {
+	custom_effect_tooltip = UKR_trust_tt_capital_lost
+	hidden_effect = {
+		set_temp_variable = { var = UKR_trust_d value = -5 }
+		set_temp_variable = { var = UKR_trust_r value = 4 }
+		UKR_trust_apply = yes
+	}
+}
+
+# Сдерживание в войне. (+4)
+UKR_trust_restraint = {
+	custom_effect_tooltip = UKR_trust_tt_restraint
+	hidden_effect = {
+		set_temp_variable = { var = UKR_trust_d value = 4 }
+		set_temp_variable = { var = UKR_trust_r value = 5 }
+		UKR_trust_apply = yes
+	}
+}
+
+# Эскалация вглубь России. (-3)
+UKR_trust_escalation = {
+	custom_effect_tooltip = UKR_trust_tt_escalation
+	hidden_effect = {
+		set_temp_variable = { var = UKR_trust_d value = -3 }
+		set_temp_variable = { var = UKR_trust_r value = 6 }
+		UKR_trust_apply = yes
+	}
+}
+
+# Заморозка помощи ЕС. (-6)
+UKR_trust_aid_frozen = {
+	custom_effect_tooltip = UKR_trust_tt_aid_frozen
+	hidden_effect = {
+		set_temp_variable = { var = UKR_trust_d value = -6 }
+		set_temp_variable = { var = UKR_trust_r value = 7 }
+		UKR_trust_apply = yes
+	}
+}
+
+# Волна антикоррупционных реформ. (+4)
+UKR_trust_anticorruption = {
+	custom_effect_tooltip = UKR_trust_tt_anticorruption
+	hidden_effect = {
+		set_temp_variable = { var = UKR_trust_d value = 4 }
+		set_temp_variable = { var = UKR_trust_r value = 8 }
+		UKR_trust_apply = yes
+	}
+}
+
+# Курс на европейскую интеграцию. (+5)
+UKR_trust_euro_course = {
+	custom_effect_tooltip = UKR_trust_tt_euro_course
+	hidden_effect = {
+		set_temp_variable = { var = UKR_trust_d value = 5 }
+		set_temp_variable = { var = UKR_trust_r value = 9 }
+		UKR_trust_apply = yes
+	}
+}
+
+# Дипломатическое наступление. (+3)
+UKR_trust_diplomacy = {
+	custom_effect_tooltip = UKR_trust_tt_diplomacy
+	hidden_effect = {
+		set_temp_variable = { var = UKR_trust_d value = 3 }
+		set_temp_variable = { var = UKR_trust_r value = 10 }
+		UKR_trust_apply = yes
+	}
+}
+
+# Договорённости о западной помощи. (+3)
+UKR_trust_western_ties = {
+	custom_effect_tooltip = UKR_trust_tt_western_ties
+	hidden_effect = {
+		set_temp_variable = { var = UKR_trust_d value = 3 }
+		set_temp_variable = { var = UKR_trust_r value = 11 }
+		UKR_trust_apply = yes
+	}
+}
+
+# Реформа Генштаба по стандартам НАТО. (+4)
+UKR_trust_nato_standards = {
+	custom_effect_tooltip = UKR_trust_tt_nato_standards
+	hidden_effect = {
+		set_temp_variable = { var = UKR_trust_d value = 4 }
+		set_temp_variable = { var = UKR_trust_r value = 12 }
+		UKR_trust_apply = yes
+	}
+}
+
+# Запрос о партнёрстве с НАТО. (+4)
+UKR_trust_nato_partnership = {
+	custom_effect_tooltip = UKR_trust_tt_nato_partnership
+	hidden_effect = {
+		set_temp_variable = { var = UKR_trust_d value = 4 }
+		set_temp_variable = { var = UKR_trust_r value = 13 }
+		UKR_trust_apply = yes
+	}
+}
+
+# Региональный альянс. (+3)
+UKR_trust_regional_alliance = {
+	custom_effect_tooltip = UKR_trust_tt_regional_alliance
+	hidden_effect = {
+		set_temp_variable = { var = UKR_trust_d value = 3 }
+		set_temp_variable = { var = UKR_trust_r value = 14 }
+		UKR_trust_apply = yes
+	}
+}
+
+# Диалог с Варшавой. (+3)
+UKR_trust_warsaw_dialogue = {
+	custom_effect_tooltip = UKR_trust_tt_warsaw_dialogue
+	hidden_effect = {
+		set_temp_variable = { var = UKR_trust_d value = 3 }
+		set_temp_variable = { var = UKR_trust_r value = 18 }
+		UKR_trust_apply = yes
+	}
+}
+
+# Спор с Варшавой. (-3)
+UKR_trust_warsaw_dispute = {
+	custom_effect_tooltip = UKR_trust_tt_warsaw_dispute
+	hidden_effect = {
+		set_temp_variable = { var = UKR_trust_d value = -3 }
+		set_temp_variable = { var = UKR_trust_r value = 19 }
+		UKR_trust_apply = yes
+	}
+}
+
+# Курс новой опоры блока 3 в глазах Европы (разовый сдвиг при начале второго срока, ukraine_politics.304.a):
+# технократы +10 (код причины 15), левые +3 (код 16), олигархи -5 и националисты -5 (код 17).
+UKR_trust_pillar_profile = {
+	if = {
+		limit = { has_country_flag = UKR_pillar_chosen_technocrats }
+		custom_effect_tooltip = UKR_trust_tt_pillar_technocrats
+		hidden_effect = {
+			set_temp_variable = { var = UKR_trust_d value = 10 }
+			set_temp_variable = { var = UKR_trust_r value = 15 }
+			UKR_trust_apply = yes
+		}
+	}
+	else_if = {
+		limit = { has_country_flag = UKR_pillar_chosen_left }
+		custom_effect_tooltip = UKR_trust_tt_pillar_left
+		hidden_effect = {
+			set_temp_variable = { var = UKR_trust_d value = 3 }
+			set_temp_variable = { var = UKR_trust_r value = 16 }
+			UKR_trust_apply = yes
+		}
+	}
+	else_if = {
+		limit = {
+			OR = {
+				has_country_flag = UKR_pillar_chosen_oligarchs
+				has_country_flag = UKR_pillar_chosen_nationalists
+			}
+		}
+		custom_effect_tooltip = UKR_trust_tt_pillar_cold
+		hidden_effect = {
+			set_temp_variable = { var = UKR_trust_d value = -5 }
+			set_temp_variable = { var = UKR_trust_r value = 17 }
+			UKR_trust_apply = yes
+		}
+	}
+}
+
+# Маркер «НАТО едино» (ТОЛЬКО ЧТЕНИЕ): считаем из идей NATO_unity_1..5, которые выдаёт TFR (событие usa.103).
+# Берём Германию, при её отсутствии Францию, затем Британию; идей нет (до usa.103) - ступень 0.
+# У PLD ступеней, скорее всего, нет (TFR выдаёт их несуществующей POL), поэтому Польшу не читаем.
+# Идеи единства мы не выдаём и не меняем (решение автора, 09.11.2026). Вызывается из on_daily (TFR_on_actions_UKR.txt).
+UKR_update_nato_unity_marker = {
+	set_variable = { var = UKR_nato_unity_level value = 0 }
+	if = {
+		limit = { country_exists = GER GER = { has_idea = NATO_unity_5 } }
+		set_variable = { var = UKR_nato_unity_level value = 5 }
+	}
+	else_if = {
+		limit = { country_exists = GER GER = { has_idea = NATO_unity_4 } }
+		set_variable = { var = UKR_nato_unity_level value = 4 }
+	}
+	else_if = {
+		limit = { country_exists = GER GER = { has_idea = NATO_unity_3 } }
+		set_variable = { var = UKR_nato_unity_level value = 3 }
+	}
+	else_if = {
+		limit = { country_exists = GER GER = { has_idea = NATO_unity_2 } }
+		set_variable = { var = UKR_nato_unity_level value = 2 }
+	}
+	else_if = {
+		limit = { country_exists = GER GER = { has_idea = NATO_unity_1 } }
+		set_variable = { var = UKR_nato_unity_level value = 1 }
+	}
+	else_if = {
+		limit = { country_exists = FRA FRA = { has_idea = NATO_unity_5 } }
+		set_variable = { var = UKR_nato_unity_level value = 5 }
+	}
+	else_if = {
+		limit = { country_exists = FRA FRA = { has_idea = NATO_unity_4 } }
+		set_variable = { var = UKR_nato_unity_level value = 4 }
+	}
+	else_if = {
+		limit = { country_exists = FRA FRA = { has_idea = NATO_unity_3 } }
+		set_variable = { var = UKR_nato_unity_level value = 3 }
+	}
+	else_if = {
+		limit = { country_exists = FRA FRA = { has_idea = NATO_unity_2 } }
+		set_variable = { var = UKR_nato_unity_level value = 2 }
+	}
+	else_if = {
+		limit = { country_exists = FRA FRA = { has_idea = NATO_unity_1 } }
+		set_variable = { var = UKR_nato_unity_level value = 1 }
+	}
+	else_if = {
+		limit = { country_exists = ENG ENG = { has_idea = NATO_unity_5 } }
+		set_variable = { var = UKR_nato_unity_level value = 5 }
+	}
+	else_if = {
+		limit = { country_exists = ENG ENG = { has_idea = NATO_unity_4 } }
+		set_variable = { var = UKR_nato_unity_level value = 4 }
+	}
+	else_if = {
+		limit = { country_exists = ENG ENG = { has_idea = NATO_unity_3 } }
+		set_variable = { var = UKR_nato_unity_level value = 3 }
+	}
+	else_if = {
+		limit = { country_exists = ENG ENG = { has_idea = NATO_unity_2 } }
+		set_variable = { var = UKR_nato_unity_level value = 2 }
+	}
+	else_if = {
+		limit = { country_exists = ENG ENG = { has_idea = NATO_unity_1 } }
+		set_variable = { var = UKR_nato_unity_level value = 1 }
+	}
+
+	# Множитель объёма помощи в процентах: единое НАТО даёт больше, расколотое меньше
+	set_variable = { var = UKR_nato_aid_mult value = 100 }
+	if = {
+		limit = { check_variable = { var = UKR_nato_unity_level value = 1 compare = equals } }
+		set_variable = { var = UKR_nato_aid_mult value = 60 }
+	}
+	else_if = {
+		limit = { check_variable = { var = UKR_nato_unity_level value = 2 compare = equals } }
+		set_variable = { var = UKR_nato_aid_mult value = 80 }
+	}
+	else_if = {
+		limit = { check_variable = { var = UKR_nato_unity_level value = 4 compare = equals } }
+		set_variable = { var = UKR_nato_aid_mult value = 115 }
+	}
+	else_if = {
+		limit = { check_variable = { var = UKR_nato_unity_level value = 5 compare = equals } }
+		set_variable = { var = UKR_nato_aid_mult value = 130 }
+	}
+}
+
+# Масштаб объёма помощи по единству НАТО. Вход: временная UKR_aid_base (базовое количество), выход: UKR_aid_amount.
+# Страховка: если множитель ещё не посчитан (0), считаем 100.
+UKR_nato_aid_scale = {
+	if = {
+		limit = { check_variable = { var = UKR_nato_aid_mult value = 1 compare = less_than } }
+		set_variable = { var = UKR_nato_aid_mult value = 100 }
+	}
+	set_temp_variable = { var = UKR_aid_amount value = UKR_aid_base }
+	multiply_temp_variable = { var = UKR_aid_amount value = UKR_nato_aid_mult }
+	divide_temp_variable = { var = UKR_aid_amount value = 100 }
+	round_temp_variable = UKR_aid_amount
+}

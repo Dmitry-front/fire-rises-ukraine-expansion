@@ -1,0 +1,66 @@
+guiTypes = {
+
+    # Окно «Европейское НАТО» (категория UKR_allies_category, scripted GUI UKR_allies_display_gui).
+    # Тексты - defined_text из common/scripted_localisation/UKR_allies_loc.txt, цвет задан в ключах локализации.
+    # Нового арта нет: только текст и подсказки (pdx_tooltip на строках, как в окнах TFR).
+    containerWindowType = {
+        name = "UKR_allies_window"
+        position = { x = 0 y = 0 }
+        size = { width = 480 height = 100 }
+
+        # Заголовок
+        instantTextBoxType = {
+            name = "allies_title"
+            position = { x = 15 y = 8 }
+            font = "hoi_18mbs"
+            text = "UKR_ALLIES_TITLE"
+            maxWidth = 450
+            maxHeight = 24
+            format = left
+        }
+
+        # Строка 1: доверие европейского НАТО (число и название ступени одним цветом)
+        instantTextBoxType = {
+            name = "allies_trust_label"
+            position = { x = 15 y = 40 }
+            font = "hoi_16mbs"
+            text = "UKR_ALLIES_TRUST_LABEL"
+            maxWidth = 160
+            maxHeight = 22
+            format = left
+            pdx_tooltip = "UKR_ALLIES_TRUST_TOOLTIP"
+        }
+        instantTextBoxType = {
+            name = "allies_trust_value"
+            position = { x = 175 y = 40 }
+            font = "hoi_16mbs"
+            text = "[UKR_NATO_TRUST_DISPLAY]"
+            maxWidth = 290
+            maxHeight = 22
+            format = right
+            pdx_tooltip = "UKR_ALLIES_TRUST_TOOLTIP"
+        }
+
+        # Строка 2: единство НАТО (ступень 1-5 или «нет данных»), множитель объёма помощи
+        instantTextBoxType = {
+            name = "allies_unity_label"
+            position = { x = 15 y = 68 }
+            font = "hoi_16mbs"
+            text = "UKR_ALLIES_UNITY_LABEL"
+            maxWidth = 160
+            maxHeight = 22
+            format = left
+            pdx_tooltip = "UKR_ALLIES_UNITY_TOOLTIP"
+        }
+        instantTextBoxType = {
+            name = "allies_unity_value"
+            position = { x = 175 y = 68 }
+            font = "hoi_16mbs"
+            text = "[UKR_NATO_UNITY_DISPLAY]"
+            maxWidth = 290
+            maxHeight = 22
+            format = right
+            pdx_tooltip = "UKR_ALLIES_UNITY_TOOLTIP"
+        }
+    }
+}

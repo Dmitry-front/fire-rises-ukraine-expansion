@@ -1,0 +1,879 @@
+# Общее дерево войны Украины (DESIGN.md 8.5, сессия 24). ГЕНЕРИРУЕТСЯ _tools/gen_war_tree.py из _tools/war_tree_data/focuses.py.
+# Один набор shared_focus подключён строками shared_focus = ... ко всем шести деревьям (блок 1, блок 2, четыре опоры).
+# Сетка: y от 16 (ниже всех деревьев), шаг 2 по x. Слоты опор (x = 15) делят клетки: на экране виден один фокус, остальные скрыты allow_branch.
+# Все фокусы - available_if_capitulated = yes. Вводный фокус завершается скриптом (UKR_w_start_war_tree из ukrainewar.1).
+
+shared_focus = {
+	id = UKR_w_war_comes_home
+	icon = GFX_goal_generic_national_unity
+	x = 18
+	y = 16
+	cost = 1
+	allow_branch = {
+		has_country_flag = UKR_w_started
+	}
+	available_if_capitulated = yes
+	available = {
+		has_war_with = SOV
+	}
+	ai_will_do = {
+		factor = 1000
+	}
+	completion_reward = {
+		add_war_support = 0.05
+	}
+}
+
+shared_focus = {
+	id = UKR_w_martial_law
+	icon = GFX_goal_generic_defence
+	x = 18
+	y = 17
+	cost = 1
+	prerequisite = { focus = UKR_w_war_comes_home }
+	allow_branch = {
+		has_country_flag = UKR_w_started
+	}
+	available_if_capitulated = yes
+	available = {
+		has_war_with = SOV
+	}
+	ai_will_do = {
+		factor = 1000
+	}
+	completion_reward = {
+		add_ideas = UKR_wi_martial_law
+		add_stability = 0.03
+		add_political_power = 25
+		set_country_flag = UKR_w_martial_law
+		custom_effect_tooltip = UKR_w_tt_election_ban
+		UKR_martial_law_elections_off = yes
+		hidden_effect = {
+			country_event = { id = ukrainewar.811 days = 1 }
+			country_event = { id = ukrainewar.812 days = 120 }
+		}
+	}
+}
+
+shared_focus = {
+	id = UKR_w_supreme_command
+	icon = GFX_goal_generic_army_doctrines
+	x = 3
+	y = 18
+	cost = 3
+	prerequisite = { focus = UKR_w_martial_law }
+	allow_branch = {
+		has_country_flag = UKR_w_started
+	}
+	available_if_capitulated = yes
+	ai_will_do = {
+		factor = 20
+	}
+	completion_reward = {
+		add_command_power = 30
+		add_ideas = UKR_wi_stavka
+		unlock_decision_tooltip = UKR_establish_border_defense_system
+	}
+}
+
+shared_focus = {
+	id = UKR_w_unified_command
+	icon = GFX_goal_generic_army_doctrines
+	x = 1
+	y = 19
+	cost = 4
+	prerequisite = { focus = UKR_w_supreme_command }
+	mutually_exclusive = { focus = UKR_w_operational_commands }
+	allow_branch = {
+		has_country_flag = UKR_w_started
+	}
+	available_if_capitulated = yes
+	ai_will_do = {
+		factor = 10
+		modifier = { factor = 2 check_variable = { var = UKR_authoritarian_lean value = UKR_digital_lean compare = greater_than } }
+	}
+	completion_reward = {
+		add_ideas = UKR_wi_unified_command
+		unlock_decision_tooltip = UKR_rapid_offensive_surge
+	}
+}
+
+shared_focus = {
+	id = UKR_w_operational_commands
+	icon = GFX_goal_generic_army_doctrines
+	x = 5
+	y = 19
+	cost = 4
+	prerequisite = { focus = UKR_w_supreme_command }
+	mutually_exclusive = { focus = UKR_w_unified_command }
+	allow_branch = {
+		has_country_flag = UKR_w_started
+	}
+	available_if_capitulated = yes
+	ai_will_do = {
+		factor = 10
+		modifier = { factor = 2 check_variable = { var = UKR_digital_lean value = UKR_authoritarian_lean compare = greater_than } }
+	}
+	completion_reward = {
+		add_ideas = UKR_wi_operational
+		unlock_decision_tooltip = UKR_rapid_armored_thrust
+	}
+}
+
+shared_focus = {
+	id = UKR_w_battle_experience
+	icon = GFX_goal_generic_army_doctrines
+	x = 3
+	y = 20
+	cost = 4
+	prerequisite = { focus = UKR_w_unified_command focus = UKR_w_operational_commands }
+	allow_branch = {
+		has_country_flag = UKR_w_started
+	}
+	available_if_capitulated = yes
+	available = {
+		OR = { has_country_flag = UKR_coalition_phase has_country_flag = UKR_w_tier2 }
+	}
+	ai_will_do = {
+		factor = 20
+	}
+	completion_reward = {
+		army_experience = 50
+		if = {
+			limit = { has_completed_focus = UKR_w_unified_command }
+			add_timed_idea = { idea = UKR_wi_staff_rhythm days = 270 }
+		}
+		else = {
+			add_timed_idea = { idea = UKR_wi_local_initiative days = 270 }
+		}
+		if = {
+			limit = { has_completed_focus = UKR_army_consolidation }
+			army_experience = 25
+		}
+		unlock_decision_tooltip = UKR_azov_steel_operation
+	}
+}
+
+shared_focus = {
+	id = UKR_w_general_mobilization
+	icon = GFX_goal_generic_national_unity
+	x = 9
+	y = 18
+	cost = 3
+	prerequisite = { focus = UKR_w_martial_law }
+	allow_branch = {
+		has_country_flag = UKR_w_started
+	}
+	available_if_capitulated = yes
+	ai_will_do = {
+		factor = 20
+	}
+	completion_reward = {
+		add_manpower = 40000
+		add_stability = -0.03
+		add_war_support = 0.02
+		hidden_effect = { add_to_variable = { var = UKRwarfatigue value = 2 } }
+		custom_effect_tooltip = UKR_w_tt_fatigue_up
+		unlock_decision_tooltip = UKR_second_mobilization_wave
+		unlock_decision_tooltip = UKR_third_mobilization_wave
+		unlock_decision_tooltip = UKR_wd_mobilization_campaign
+	}
+}
+
+shared_focus = {
+	id = UKR_w_pay_the_soldiers
+	icon = GFX_goal_generic_consumer_goods
+	x = 7
+	y = 19
+	cost = 4
+	prerequisite = { focus = UKR_w_general_mobilization }
+	mutually_exclusive = { focus = UKR_w_call_to_the_nation focus = UKR_w_forced_mobilization }
+	allow_branch = {
+		has_country_flag = UKR_w_started
+	}
+	available_if_capitulated = yes
+	ai_will_do = {
+		factor = 10
+		modifier = { factor = 2 check_variable = { var = UKR_left_lean value = UKR_nationalist_lean compare = greater_than } }
+	}
+	completion_reward = {
+		set_temp_variable = { var = income_var_temp value = -2 }
+		add_income_with_inflation = yes
+		add_ideas = UKR_wi_military_pay
+		hidden_effect = { add_to_variable = { var = UKRwarfatigue value = -3 } }
+		custom_effect_tooltip = UKR_w_tt_fatigue_down
+		hidden_effect = {
+			add_to_variable = { var = UKR_left_lean value = 2 }
+			UKR_clamp_leans = yes
+		}
+	}
+}
+
+shared_focus = {
+	id = UKR_w_call_to_the_nation
+	icon = GFX_goal_generic_propaganda
+	x = 9
+	y = 19
+	cost = 4
+	prerequisite = { focus = UKR_w_general_mobilization }
+	mutually_exclusive = { focus = UKR_w_pay_the_soldiers focus = UKR_w_forced_mobilization }
+	allow_branch = {
+		has_country_flag = UKR_w_started
+	}
+	available_if_capitulated = yes
+	ai_will_do = {
+		factor = 10
+		modifier = { factor = 2 check_variable = { var = UKR_nationalist_lean value = UKR_left_lean compare = greater_than } }
+	}
+	completion_reward = {
+		add_timed_idea = { idea = UKR_wi_patriotic_wave days = 365 }
+		add_manpower = 15000
+		hidden_effect = { add_to_variable = { var = UKRhate value = 4 } }
+		custom_effect_tooltip = UKR_w_tt_hate_up
+		add_popularity = { ideology = nationalist popularity = 0.01 }
+		hidden_effect = {
+			add_to_variable = { var = UKR_nationalist_lean value = 3 }
+			UKR_clamp_leans = yes
+		}
+	}
+}
+
+shared_focus = {
+	id = UKR_w_forced_mobilization
+	icon = GFX_goal_generic_dangerous_deal
+	x = 11
+	y = 19
+	cost = 4
+	prerequisite = { focus = UKR_w_general_mobilization }
+	mutually_exclusive = { focus = UKR_w_pay_the_soldiers focus = UKR_w_call_to_the_nation }
+	allow_branch = {
+		has_country_flag = UKR_w_started
+	}
+	available_if_capitulated = yes
+	ai_will_do = {
+		factor = 4
+		modifier = { factor = 3 check_variable = { var = UKR_authoritarian_lean value = 40 compare = greater_than } }
+	}
+	completion_reward = {
+		add_manpower = 60000
+		add_ideas = UKR_wi_forced_draft
+		hidden_effect = { add_to_variable = { var = UKRwarfatigue value = 5 } }
+		custom_effect_tooltip = UKR_w_tt_fatigue_up
+		hidden_effect = {
+			add_to_variable = { var = UKR_authoritarian_lean value = 3 }
+			UKR_clamp_leans = yes
+		}
+		UKR_trust_coercion = yes
+	}
+}
+
+shared_focus = {
+	id = UKR_w_reserve_and_veterans
+	icon = GFX_goal_generic_national_unity
+	x = 9
+	y = 20
+	cost = 4
+	prerequisite = { focus = UKR_w_pay_the_soldiers focus = UKR_w_call_to_the_nation focus = UKR_w_forced_mobilization }
+	allow_branch = {
+		has_country_flag = UKR_w_started
+	}
+	available_if_capitulated = yes
+	available = {
+		OR = { has_country_flag = UKR_coalition_phase has_country_flag = UKR_w_tier2 }
+	}
+	ai_will_do = {
+		factor = 20
+	}
+	completion_reward = {
+		if = {
+			limit = { has_completed_focus = UKR_w_pay_the_soldiers }
+			add_manpower = 15000
+			army_experience = 10
+		}
+		else_if = {
+			limit = { has_completed_focus = UKR_w_call_to_the_nation }
+			add_manpower = 20000
+			hidden_effect = { add_to_variable = { var = UKRhate value = 2 } }
+			custom_effect_tooltip = UKR_w_tt_hate_up
+		}
+		else = {
+			add_manpower = 25000
+			hidden_effect = { add_to_variable = { var = UKRwarfatigue value = 3 } }
+			custom_effect_tooltip = UKR_w_tt_fatigue_up
+		}
+		unlock_decision_tooltip = UKR_honor_fallen
+		unlock_decision_tooltip = UKR_veteran_psych_care
+	}
+}
+
+shared_focus = {
+	id = UKR_w_united_news
+	icon = GFX_goal_generic_propaganda
+	x = 7
+	y = 21
+	cost = 4
+	prerequisite = { focus = UKR_w_reserve_and_veterans }
+	mutually_exclusive = { focus = UKR_w_open_communication }
+	allow_branch = {
+		has_country_flag = UKR_w_started
+	}
+	available_if_capitulated = yes
+	ai_will_do = {
+		factor = 10
+		modifier = { factor = 2 check_variable = { var = UKR_authoritarian_lean value = UKR_digital_lean compare = greater_than } }
+	}
+	completion_reward = {
+		add_ideas = UKR_wi_unified_info
+		hidden_effect = { add_to_variable = { var = UKRhate value = 2 } }
+		custom_effect_tooltip = UKR_w_tt_hate_up
+		hidden_effect = {
+			add_to_variable = { var = UKR_authoritarian_lean value = 4 }
+			UKR_clamp_leans = yes
+		}
+		unlock_decision_tooltip = UKR_resilience_campaign
+	}
+}
+
+shared_focus = {
+	id = UKR_w_open_communication
+	icon = GFX_goal_generic_scientific_exchange
+	x = 11
+	y = 21
+	cost = 4
+	prerequisite = { focus = UKR_w_reserve_and_veterans }
+	mutually_exclusive = { focus = UKR_w_united_news }
+	allow_branch = {
+		has_country_flag = UKR_w_started
+	}
+	available_if_capitulated = yes
+	ai_will_do = {
+		factor = 10
+		modifier = { factor = 2 check_variable = { var = UKR_digital_lean value = UKR_authoritarian_lean compare = greater_than } }
+	}
+	completion_reward = {
+		add_ideas = UKR_wi_open_comms
+		hidden_effect = {
+			add_to_variable = { var = UKR_digital_lean value = 4 }
+			UKR_clamp_leans = yes
+		}
+		UKR_trust_transparency = yes
+		unlock_decision_tooltip = UKR_cultural_morale_boost
+	}
+}
+
+shared_focus = {
+	id = UKR_w_relocate_industry
+	icon = GFX_goal_generic_construct_civ_factory
+	x = 21
+	y = 18
+	cost = 3
+	prerequisite = { focus = UKR_w_martial_law }
+	allow_branch = {
+		has_country_flag = UKR_w_started
+	}
+	available_if_capitulated = yes
+	ai_will_do = {
+		factor = 20
+	}
+	completion_reward = {
+		add_timed_idea = { idea = UKR_wi_relocation days = 180 }
+		unlock_decision_tooltip = UKR_carpathian_logistics_plan
+		unlock_decision_tooltip = UKR_wd_factory_dispersal
+	}
+}
+
+shared_focus = {
+	id = UKR_w_state_war_order
+	icon = GFX_goal_generic_construct_mil_factory
+	x = 19
+	y = 19
+	cost = 4
+	prerequisite = { focus = UKR_w_relocate_industry }
+	mutually_exclusive = { focus = UKR_w_private_contracts }
+	allow_branch = {
+		has_country_flag = UKR_w_started
+	}
+	available_if_capitulated = yes
+	ai_will_do = {
+		factor = 10
+		modifier = { factor = 2 check_variable = { var = UKR_left_lean value = UKR_digital_lean compare = greater_than } }
+	}
+	completion_reward = {
+		add_ideas = UKR_wi_state_order
+		UKR_w_mio_state_order = yes
+		unlock_decision_tooltip = UKR_project_asgard
+	}
+}
+
+shared_focus = {
+	id = UKR_w_private_contracts
+	icon = GFX_goal_generic_trade
+	x = 23
+	y = 19
+	cost = 4
+	prerequisite = { focus = UKR_w_relocate_industry }
+	mutually_exclusive = { focus = UKR_w_state_war_order }
+	allow_branch = {
+		has_country_flag = UKR_w_started
+	}
+	available_if_capitulated = yes
+	ai_will_do = {
+		factor = 10
+		modifier = { factor = 2 check_variable = { var = UKR_digital_lean value = UKR_left_lean compare = greater_than } }
+	}
+	completion_reward = {
+		add_ideas = UKR_wi_private_contracts
+		UKR_w_mio_private = yes
+		unlock_decision_tooltip = UKR_project_asgard
+	}
+}
+
+shared_focus = {
+	id = UKR_w_sky_shield
+	icon = GFX_goal_generic_defence
+	x = 21
+	y = 20
+	cost = 4
+	prerequisite = { focus = UKR_w_state_war_order focus = UKR_w_private_contracts }
+	allow_branch = {
+		has_country_flag = UKR_w_started
+	}
+	available_if_capitulated = yes
+	available = {
+		OR = { has_country_flag = UKR_coalition_phase has_country_flag = UKR_w_tier2 }
+	}
+	ai_will_do = {
+		factor = 20
+	}
+	completion_reward = {
+		add_to_variable = { var = UKR_air_defense_points value = 1 }
+		UKR_update_air_defense_level = yes
+		custom_effect_tooltip = UKR_w_tt_air_point
+		add_timed_idea = { idea = UKR_wi_sky_shield days = 180 }
+	}
+}
+
+shared_focus = {
+	id = UKR_w_resilient_grid
+	icon = GFX_goal_generic_construct_civ_factory
+	x = 21
+	y = 21
+	cost = 4
+	prerequisite = { focus = UKR_w_sky_shield }
+	allow_branch = {
+		has_country_flag = UKR_w_started
+	}
+	available_if_capitulated = yes
+	ai_will_do = {
+		factor = 20
+	}
+	completion_reward = {
+		add_ideas = UKR_wi_resilient_grid
+		add_stability = 0.02
+		unlock_decision_tooltip = UKR_wd_grid_repair
+	}
+}
+
+shared_focus = {
+	id = UKR_w_appeal_to_the_world
+	icon = GFX_goal_generic_improve_relations
+	x = 27
+	y = 18
+	cost = 3
+	prerequisite = { focus = UKR_w_martial_law }
+	allow_branch = {
+		has_country_flag = UKR_w_started
+	}
+	available_if_capitulated = yes
+	ai_will_do = {
+		factor = 20
+	}
+	completion_reward = {
+		add_political_power = 20
+		add_timed_idea = { idea = UKR_wi_world_sympathy days = 150 }
+		UKR_trust_diplomacy = yes
+		unlock_decision_tooltip = UKR_western_aid_package
+		unlock_decision_tooltip = UKR_resistance_coalition
+		unlock_decision_tooltip = UKR_wd_donor_conference
+	}
+}
+
+shared_focus = {
+	id = UKR_w_europe_first
+	icon = GFX_goal_generic_improve_relations
+	x = 25
+	y = 19
+	cost = 4
+	prerequisite = { focus = UKR_w_appeal_to_the_world }
+	mutually_exclusive = { focus = UKR_w_own_strength }
+	allow_branch = {
+		has_country_flag = UKR_w_started
+	}
+	available_if_capitulated = yes
+	ai_will_do = {
+		factor = 10
+		modifier = { factor = 2 check_variable = { var = UKR_digital_lean value = UKR_nationalist_lean compare = greater_than } }
+	}
+	completion_reward = {
+		add_ideas = UKR_wi_europe_course
+		UKR_trust_euro_course = yes
+		set_country_flag = UKR_w_europe_first
+		unlock_decision_tooltip = UKR_lend_lease_program
+		unlock_decision_tooltip = UKR_nato_intelligence_operation
+	}
+}
+
+shared_focus = {
+	id = UKR_w_own_strength
+	icon = GFX_goal_generic_secret_weapon
+	x = 29
+	y = 19
+	cost = 4
+	prerequisite = { focus = UKR_w_appeal_to_the_world }
+	mutually_exclusive = { focus = UKR_w_europe_first }
+	allow_branch = {
+		has_country_flag = UKR_w_started
+	}
+	available_if_capitulated = yes
+	ai_will_do = {
+		factor = 10
+		modifier = { factor = 2 check_variable = { var = UKR_nationalist_lean value = UKR_digital_lean compare = greater_than } }
+	}
+	completion_reward = {
+		add_ideas = UKR_wi_self_reliance
+		UKR_w_mio_self_reliance = yes
+		set_country_flag = UKR_w_own_strength
+	}
+}
+
+shared_focus = {
+	id = UKR_w_regional_security
+	icon = GFX_goal_generic_improve_relations
+	x = 27
+	y = 20
+	cost = 5
+	prerequisite = { focus = UKR_w_europe_first focus = UKR_w_own_strength }
+	allow_branch = {
+		has_country_flag = UKR_w_started
+	}
+	available_if_capitulated = yes
+	available = {
+		OR = { has_country_flag = UKR_coalition_phase has_country_flag = UKR_w_tier2 }
+	}
+	ai_will_do = {
+		factor = 20
+	}
+	completion_reward = {
+		add_political_power = 25
+		add_timed_idea = { idea = UKR_wi_regional days = 270 }
+		if = {
+			limit = {
+				has_country_flag = UKR_coalition_phase
+				check_variable = { var = UKR_hq_seat value = 2 compare = less_than }
+				check_variable = { var = UKR_nato_trust value = 55 compare = greater_than_or_equals }
+			}
+			set_temp_variable = { var = UKR_seat_new value = UKR_hq_seat }
+			add_to_temp_variable = { var = UKR_seat_new value = 1 }
+			UKR_set_hq_seat = yes
+			custom_effect_tooltip = UKR_w_tt_seat_up
+		}
+		unlock_decision_tooltip = UKR_regional_alliance
+	}
+}
+
+shared_focus = {
+	id = UKR_w_drone_war
+	icon = GFX_goal_generic_secret_weapon
+	x = 33
+	y = 18
+	cost = 3
+	prerequisite = { focus = UKR_w_martial_law }
+	allow_branch = {
+		has_country_flag = UKR_w_started
+	}
+	available_if_capitulated = yes
+	ai_will_do = {
+		factor = 20
+	}
+	completion_reward = {
+		add_timed_idea = { idea = UKR_wi_drone_surge days = 180 }
+		UKR_w_mio_drones = yes
+		unlock_decision_tooltip = UKR_bayraktar_strike_coordination
+		unlock_decision_tooltip = UKR_wd_drone_batch
+	}
+}
+
+shared_focus = {
+	id = UKR_w_deep_strikes
+	icon = GFX_goal_generic_dangerous_deal
+	x = 31
+	y = 19
+	cost = 4
+	prerequisite = { focus = UKR_w_drone_war }
+	mutually_exclusive = { focus = UKR_w_attrition_defense }
+	allow_branch = {
+		has_country_flag = UKR_w_started
+	}
+	available_if_capitulated = yes
+	ai_will_do = {
+		factor = 8
+		modifier = { factor = 2 check_variable = { var = UKR_nationalist_lean value = 35 compare = greater_than } }
+	}
+	completion_reward = {
+		add_timed_idea = { idea = UKR_wi_deep_strike days = 180 }
+		add_war_support = 0.03
+		hidden_effect = { add_to_variable = { var = UKRhate value = 3 } }
+		custom_effect_tooltip = UKR_w_tt_hate_up
+		UKR_trust_escalation = yes
+		unlock_decision_tooltip = UKR_night_raids_operation
+		unlock_decision_tooltip = UKR_sabotage_at_any_cost
+		unlock_decision_tooltip = UKR_everything_against_enemy
+	}
+}
+
+shared_focus = {
+	id = UKR_w_attrition_defense
+	icon = GFX_goal_generic_defence
+	x = 35
+	y = 19
+	cost = 4
+	prerequisite = { focus = UKR_w_drone_war }
+	mutually_exclusive = { focus = UKR_w_deep_strikes }
+	allow_branch = {
+		has_country_flag = UKR_w_started
+	}
+	available_if_capitulated = yes
+	ai_will_do = {
+		factor = 10
+		modifier = { factor = 2 check_variable = { var = UKR_digital_lean value = UKR_nationalist_lean compare = greater_than } }
+	}
+	completion_reward = {
+		add_ideas = UKR_wi_attrition
+		UKR_trust_restraint = yes
+		unlock_decision_tooltip = UKR_strategic_triangle_defense
+	}
+}
+
+shared_focus = {
+	id = UKR_w_black_sea_drones
+	icon = GFX_goal_generic_secret_weapon
+	x = 33
+	y = 20
+	cost = 4
+	prerequisite = { focus = UKR_w_deep_strikes focus = UKR_w_attrition_defense }
+	allow_branch = {
+		has_country_flag = UKR_w_started
+	}
+	available_if_capitulated = yes
+	available = {
+		OR = { has_country_flag = UKR_coalition_phase has_country_flag = UKR_w_tier2 }
+	}
+	ai_will_do = {
+		factor = 20
+	}
+	completion_reward = {
+		navy_experience = 25
+		add_timed_idea = { idea = UKR_wi_black_sea days = 270 }
+		UKR_w_mio_sea = yes
+		unlock_decision_tooltip = UKR_serpents_path_assault
+	}
+}
+
+shared_focus = {
+	id = UKR_w_p_tech_digital_hq
+	icon = GFX_goal_generic_scientific_exchange
+	x = 15
+	y = 18
+	cost = 3
+	prerequisite = { focus = UKR_w_martial_law }
+	allow_branch = {
+		has_country_flag = UKR_pillar_chosen_technocrats
+	}
+	available_if_capitulated = yes
+	ai_will_do = {
+		factor = 30
+	}
+	completion_reward = {
+		add_timed_idea = { idea = UKR_wi_p_tech_digital_hq days = 365 }
+		add_command_power = 20
+		hidden_effect = {
+			add_to_variable = { var = UKR_digital_lean value = 3 }
+			UKR_clamp_leans = yes
+		}
+	}
+}
+
+shared_focus = {
+	id = UKR_w_p_tech_drone_command
+	icon = GFX_goal_generic_secret_weapon
+	x = 15
+	y = 20
+	cost = 5
+	prerequisite = { focus = UKR_w_p_tech_digital_hq }
+	allow_branch = {
+		has_country_flag = UKR_pillar_chosen_technocrats
+	}
+	available_if_capitulated = yes
+	available = {
+		OR = { has_country_flag = UKR_coalition_phase has_country_flag = UKR_w_tier2 }
+	}
+	ai_will_do = {
+		factor = 30
+	}
+	completion_reward = {
+		add_timed_idea = { idea = UKR_wi_p_tech_drone_command days = 365 }
+		army_experience = 25
+		UKR_w_mio_drones = yes
+	}
+}
+
+shared_focus = {
+	id = UKR_w_p_left_labor_front
+	icon = GFX_goal_generic_consumer_goods
+	x = 15
+	y = 18
+	cost = 3
+	prerequisite = { focus = UKR_w_martial_law }
+	allow_branch = {
+		has_country_flag = UKR_pillar_chosen_left
+	}
+	available_if_capitulated = yes
+	ai_will_do = {
+		factor = 30
+	}
+	completion_reward = {
+		add_timed_idea = { idea = UKR_wi_p_left_labor_front days = 365 }
+		add_popularity = { ideology = social_democrat popularity = 0.01 }
+		hidden_effect = {
+			add_to_variable = { var = UKR_left_lean value = 3 }
+			UKR_clamp_leans = yes
+		}
+	}
+}
+
+shared_focus = {
+	id = UKR_w_p_left_people_defense
+	icon = GFX_goal_generic_national_unity
+	x = 15
+	y = 20
+	cost = 5
+	prerequisite = { focus = UKR_w_p_left_labor_front }
+	allow_branch = {
+		has_country_flag = UKR_pillar_chosen_left
+	}
+	available_if_capitulated = yes
+	available = {
+		OR = { has_country_flag = UKR_coalition_phase has_country_flag = UKR_w_tier2 }
+	}
+	ai_will_do = {
+		factor = 30
+	}
+	completion_reward = {
+		add_timed_idea = { idea = UKR_wi_p_left_people_defense days = 365 }
+		add_manpower = 20000
+		add_stability = 0.02
+	}
+}
+
+shared_focus = {
+	id = UKR_w_p_olig_business_cabinet
+	icon = GFX_goal_generic_trade
+	x = 15
+	y = 18
+	cost = 3
+	prerequisite = { focus = UKR_w_martial_law }
+	allow_branch = {
+		has_country_flag = UKR_pillar_chosen_oligarchs
+	}
+	available_if_capitulated = yes
+	ai_will_do = {
+		factor = 30
+	}
+	completion_reward = {
+		add_timed_idea = { idea = UKR_wi_p_olig_business_cabinet days = 365 }
+		set_temp_variable = { var = income_var_temp value = 1.5 }
+		add_income_with_inflation = yes
+		hidden_effect = {
+			add_to_variable = { var = UKR_authoritarian_lean value = 2 }
+			UKR_clamp_leans = yes
+		}
+	}
+}
+
+shared_focus = {
+	id = UKR_w_p_olig_patron_battalions
+	icon = GFX_goal_generic_construct_mil_factory
+	x = 15
+	y = 20
+	cost = 5
+	prerequisite = { focus = UKR_w_p_olig_business_cabinet }
+	allow_branch = {
+		has_country_flag = UKR_pillar_chosen_oligarchs
+	}
+	available_if_capitulated = yes
+	available = {
+		OR = { has_country_flag = UKR_coalition_phase has_country_flag = UKR_w_tier2 }
+	}
+	ai_will_do = {
+		factor = 30
+	}
+	completion_reward = {
+		add_timed_idea = { idea = UKR_wi_p_olig_patron_battalions days = 365 }
+		add_equipment_to_stockpile = { type = infantry_equipment_1 amount = 3000 producer = UKR }
+		add_equipment_to_stockpile = { type = support_equipment amount = 300 producer = UKR }
+	}
+}
+
+shared_focus = {
+	id = UKR_w_p_nat_nation_council
+	icon = GFX_goal_generic_propaganda
+	x = 15
+	y = 18
+	cost = 3
+	prerequisite = { focus = UKR_w_martial_law }
+	allow_branch = {
+		has_country_flag = UKR_pillar_chosen_nationalists
+	}
+	available_if_capitulated = yes
+	ai_will_do = {
+		factor = 30
+	}
+	completion_reward = {
+		add_timed_idea = { idea = UKR_wi_p_nat_nation_council days = 365 }
+		hidden_effect = { add_to_variable = { var = UKRhate value = 3 } }
+		custom_effect_tooltip = UKR_w_tt_hate_up
+		add_popularity = { ideology = nationalist popularity = 0.01 }
+		hidden_effect = {
+			add_to_variable = { var = UKR_nationalist_lean value = 3 }
+			UKR_clamp_leans = yes
+		}
+	}
+}
+
+shared_focus = {
+	id = UKR_w_p_nat_volunteer_corps
+	icon = GFX_goal_generic_army_doctrines
+	x = 15
+	y = 20
+	cost = 5
+	prerequisite = { focus = UKR_w_p_nat_nation_council }
+	allow_branch = {
+		has_country_flag = UKR_pillar_chosen_nationalists
+	}
+	available_if_capitulated = yes
+	available = {
+		OR = { has_country_flag = UKR_coalition_phase has_country_flag = UKR_w_tier2 }
+	}
+	ai_will_do = {
+		factor = 30
+	}
+	completion_reward = {
+		add_timed_idea = { idea = UKR_wi_p_nat_volunteer_corps days = 365 }
+		add_manpower = 25000
+		army_experience = 10
+		hidden_effect = {
+			add_to_variable = { var = UKR_nationalist_lean value = 2 }
+			UKR_clamp_leans = yes
+		}
+	}
+}

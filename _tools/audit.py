@@ -131,6 +131,8 @@ print('\n=== Дубли ID фокусов')
 fdefs = collections.defaultdict(list)
 for p in [x for x in texts if x.startswith('common/national_focus/')]:
     for i, f, l in blocks_ids(p, r'focus\s*=\s*\{\s*id\s*=\s*(\w+)', 1): fdefs[i].append((f, l))
+    # shared_focus (общее дерево войны) определяется на верхнем уровне файла, глубина 0
+    for i, f, l in blocks_ids(p, r'(?<![\w])shared_focus\s*=\s*\{\s*id\s*=\s*(\w+)', 0): fdefs[i].append((f, l))
 tfr_focuses = load_index('focuses.txt')
 own_focus_files = {os.path.basename(f) for v in fdefs.values() for f, _ in v}
 for k, v in fdefs.items():

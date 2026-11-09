@@ -6,10 +6,16 @@ UKR_special_military_operation = {
 		icon = generic_lend_lease
 
 		visible = {
-			has_completed_focus = UKR_secure_western_aid
+			OR = {
+				has_completed_focus = UKR_secure_western_aid
+				has_completed_focus = UKR_w_appeal_to_the_world
+			}
 		}
 		available = {
-			has_completed_focus = UKR_secure_western_aid
+			OR = {
+				has_completed_focus = UKR_secure_western_aid
+				has_completed_focus = UKR_w_appeal_to_the_world
+			}
 		}
 
 		cost = UKR_western_aid_price
@@ -52,7 +58,10 @@ UKR_special_military_operation = {
 	UKR_establish_border_defense_system = {
 		icon = GFX_decision_generic_fortification
 		available = {
-			has_completed_focus = UKR_defensive_fortifications
+			OR = {
+				has_completed_focus = UKR_defensive_fortifications
+				has_completed_focus = UKR_w_supreme_command
+			}
 			has_war_support > 0.3
 			command_power > 30
 			check_variable = { UKR_border_defense_uses < 5 }
@@ -166,6 +175,7 @@ UKR_special_military_operation = {
 			}
 		}
 		visible = {
+			has_completed_focus = UKR_w_general_mobilization
 			tag = UKR
 		}
 		complete_effect = {
@@ -189,6 +199,7 @@ UKR_special_military_operation = {
 			}
 		}
 		visible = {
+			has_completed_focus = UKR_w_general_mobilization
 			tag = UKR
 		}
 		complete_effect = {
@@ -2402,6 +2413,7 @@ UKR_against_occupiers = {
 			NOT = { has_country_flag = UKR_resistance_coalition_formed }
 		}
 		visible = {
+			has_completed_focus = UKR_w_appeal_to_the_world
 			has_war_with = SOV
 			NOT = { has_country_flag = UKR_resistance_coalition_formed }
 		}
@@ -2510,6 +2522,7 @@ UKR_against_occupiers = {
 			NOT = { has_country_flag = UKR_regional_alliance_formed }
 		}
 		visible = {
+			has_completed_focus = UKR_w_regional_security
 			has_war_with = SOV
 			NOT = { has_country_flag = UKR_regional_alliance_formed }
 		}
@@ -2572,6 +2585,7 @@ UKR_against_occupiers = {
 			has_war_with = SOV
 		}
 		visible = {
+			has_completed_focus = UKR_w_europe_first
 			has_war_with = SOV
 		}
 		# Базовая цена 100, итоговая UKR_lend_lease_price зависит от доверия европейского НАТО (100/115/130/150 процентов)
@@ -2670,6 +2684,7 @@ UKR_against_occupiers = {
 		}
 		
 		visible = {
+			has_completed_focus = UKR_w_relocate_industry
 			has_war_with = SOV
 			NOT = { has_country_flag = UKR_carpathian_plan_completed }
 		}
@@ -2872,12 +2887,18 @@ UKR_against_occupiers = {
 		
 		available = {
 			has_war_with = SOV
-			has_completed_focus = UKR_reform_general_staff_nato_standards
+			OR = {
+				has_completed_focus = UKR_reform_general_staff_nato_standards
+				has_completed_focus = UKR_w_drone_war
+			}
 			command_power > 10
 		}
 		
 		visible = {
-			has_completed_focus = UKR_reform_general_staff_nato_standards
+			OR = {
+				has_completed_focus = UKR_reform_general_staff_nato_standards
+				has_completed_focus = UKR_w_drone_war
+			}
 		}
 		
 		custom_cost_trigger = {
@@ -2919,13 +2940,19 @@ UKR_against_occupiers = {
 		
 		available = {
 			has_war_with = SOV
-			has_completed_focus = UKR_reform_general_staff_nato_standards
+			OR = {
+				has_completed_focus = UKR_reform_general_staff_nato_standards
+				has_completed_focus = UKR_w_europe_first
+			}
 			command_power > 10
 			NOT = { has_country_flag = UKR_nato_intel_cooldown }
 		}
 		
 		visible = {
-			has_completed_focus = UKR_reform_general_staff_nato_standards
+			OR = {
+				has_completed_focus = UKR_reform_general_staff_nato_standards
+				has_completed_focus = UKR_w_europe_first
+			}
 		}
 		
 		custom_cost_trigger = {
@@ -2975,13 +3002,19 @@ UKR_against_occupiers = {
 		
 		available = {
 			has_war_with = SOV
-			has_completed_focus = UKR_reform_general_staff_nato_standards
+			OR = {
+				has_completed_focus = UKR_reform_general_staff_nato_standards
+				has_completed_focus = UKR_w_deep_strikes
+			}
 			command_power > 30
 			has_army_experience > 50
 		}
 		
 		visible = {
-			has_completed_focus = UKR_reform_general_staff_nato_standards
+			OR = {
+				has_completed_focus = UKR_reform_general_staff_nato_standards
+				has_completed_focus = UKR_w_deep_strikes
+			}
 		}
 		
 		custom_cost_trigger = {
@@ -3021,7 +3054,10 @@ UKR_against_occupiers = {
 		
 		available = {
 			has_war_with = SOV
-			has_completed_focus = UKR_defensive_doctrine
+			OR = {
+				has_completed_focus = UKR_defensive_doctrine
+				has_completed_focus = UKR_w_attrition_defense
+			}
 			command_power > 30
 			controls_state = 226 # Dnipro
 			controls_state = 1285 # Kyiv 
@@ -3029,7 +3065,10 @@ UKR_against_occupiers = {
 		}
 		
 		visible = {
-			has_country_flag = UKR_defensive_doctrine_chosen
+			OR = {
+				has_country_flag = UKR_defensive_doctrine_chosen
+				has_completed_focus = UKR_w_attrition_defense
+			}
 			has_war_with = SOV
 		}
 		
@@ -3078,12 +3117,20 @@ UKR_against_occupiers = {
 		icon = GFX_decision_UKR_asgard
 		
 		available = {
-			has_completed_focus = UKR_military_industrial_complex
+			OR = {
+				has_completed_focus = UKR_military_industrial_complex
+				has_completed_focus = UKR_w_state_war_order
+				has_completed_focus = UKR_w_private_contracts
+			}
 			NOT = { has_country_flag = UKR_asgard_active }
 		}
 		
 		visible = {
-			has_completed_focus = UKR_military_industrial_complex
+			OR = {
+				has_completed_focus = UKR_military_industrial_complex
+				has_completed_focus = UKR_w_state_war_order
+				has_completed_focus = UKR_w_private_contracts
+			}
 		}
 		
 		cost = 25
@@ -3131,13 +3178,19 @@ UKR_against_occupiers = {
 		
 		available = {
 			has_war = yes
-			has_completed_focus = UKR_reform_general_staff_nato_standards
+			OR = {
+				has_completed_focus = UKR_reform_general_staff_nato_standards
+				has_completed_focus = UKR_w_black_sea_drones
+			}
 			command_power > 30
 			has_stability > 0.5
 		}
 		
 		visible = {
-			has_completed_focus = UKR_reform_general_staff_nato_standards
+			OR = {
+				has_completed_focus = UKR_reform_general_staff_nato_standards
+				has_completed_focus = UKR_w_black_sea_drones
+			}
 		}
 		
 		custom_cost_trigger = {
@@ -3183,7 +3236,10 @@ UKR_against_occupiers = {
 		
 		available = {
 			has_war_with = SOV
-			has_completed_focus = UKR_reform_general_staff_nato_standards
+			OR = {
+				has_completed_focus = UKR_reform_general_staff_nato_standards
+				has_completed_focus = UKR_w_battle_experience
+			}
 			command_power > 10
 			NOT = { has_country_flag = UKR_azov_op_active }
 		}
@@ -3231,7 +3287,10 @@ UKR_offensive_operations = {
 		icon = GFX_decision_tank_divisions
 
 		visible = {
-			has_completed_focus = UKR_blitzkrieg_tactics
+			OR = {
+				has_completed_focus = UKR_blitzkrieg_tactics
+				has_completed_focus = UKR_w_unified_command
+			}
 		}
 		available = {
 			command_power > 29
@@ -3271,12 +3330,18 @@ UKR_offensive_operations = {
 		
 		available = {
 			has_war_with = SOV
-			has_completed_focus = UKR_blitzkrieg_tactics
+			OR = {
+				has_completed_focus = UKR_blitzkrieg_tactics
+				has_completed_focus = UKR_w_operational_commands
+			}
 			command_power > 30
 		}
 		
 		visible = {
-			has_country_flag = UKR_mobile_doctrine_chosen
+			OR = {
+				has_country_flag = UKR_mobile_doctrine_chosen
+				has_completed_focus = UKR_w_operational_commands
+			}
 		}
 		
 		custom_cost_trigger = {

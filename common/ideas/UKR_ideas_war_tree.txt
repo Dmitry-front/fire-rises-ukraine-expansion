@@ -1,0 +1,435 @@
+# Духи дерева войны (DESIGN.md 8.5, сессия 24). ГЕНЕРИРУЕТСЯ _tools/gen_war_tree.py из _tools/war_tree_data/ideas.py.
+# Иконки временные (CLAUDE.md, «Нужен арт»). Выдаются фокусами UKR_w_* и решениями UKR_wd_*.
+ideas = {
+	country = {
+		UKR_wi_martial_law = {
+			picture = generic_fortify_the_borders
+			allowed = {
+				original_tag = UKR
+			}
+			removal_cost = -1
+			modifier = {
+				war_support_factor = 0.1
+				conscription_factor = 0.05
+				stability_factor = -0.03
+				consumer_goods_factor = 0.03
+			}
+		}
+
+		UKR_wi_stavka = {
+			picture = generic_stability
+			allowed = {
+				original_tag = UKR
+			}
+			removal_cost = -1
+			modifier = {
+				planning_speed = 0.1
+				command_power_gain_mult = 0.1
+			}
+		}
+
+		UKR_wi_unified_command = {
+			picture = generic_armor
+			allowed = {
+				original_tag = UKR
+			}
+			removal_cost = -1
+			modifier = {
+				army_attack_factor = 0.05
+				planning_speed = 0.1
+				dig_in_speed_factor = -0.1
+			}
+		}
+
+		UKR_wi_operational = {
+			picture = generic_infantry_bonus
+			allowed = {
+				original_tag = UKR
+			}
+			removal_cost = -1
+			modifier = {
+				army_defence_factor = 0.05
+				army_org_factor = 0.05
+				command_power_gain_mult = -0.05
+				experience_gain_army_factor = 0.1
+			}
+		}
+
+		UKR_wi_staff_rhythm = {
+			picture = generic_stability
+			allowed = {
+				original_tag = UKR
+			}
+			removal_cost = -1
+			modifier = {
+				planning_speed = 0.15
+				army_org_factor = 0.03
+				experience_gain_army_factor = 0.05
+			}
+		}
+
+		UKR_wi_local_initiative = {
+			picture = generic_infantry_bonus
+			allowed = {
+				original_tag = UKR
+			}
+			removal_cost = -1
+			modifier = {
+				army_org_factor = 0.08
+				army_defence_factor = 0.03
+				experience_gain_army_factor = 0.1
+			}
+		}
+
+		UKR_wi_military_pay = {
+			picture = generic_stability
+			allowed = {
+				original_tag = UKR
+			}
+			removal_cost = -1
+			modifier = {
+				war_support_factor = 0.05
+				stability_factor = 0.03
+				consumer_goods_factor = 0.03
+			}
+		}
+
+		UKR_wi_patriotic_wave = {
+			picture = generic_infantry_bonus
+			allowed = {
+				original_tag = UKR
+			}
+			removal_cost = -1
+			modifier = {
+				war_support_factor = 0.12
+				conscription_factor = 0.05
+			}
+		}
+
+		UKR_wi_forced_draft = {
+			picture = generic_infantry_bonus
+			allowed = {
+				original_tag = UKR
+			}
+			removal_cost = -1
+			modifier = {
+				conscription_factor = 0.15
+				stability_factor = -0.05
+				war_support_factor = -0.04
+			}
+		}
+
+		UKR_wi_unified_info = {
+			picture = generic_stability
+			allowed = {
+				original_tag = UKR
+			}
+			removal_cost = -1
+			modifier = {
+				war_support_factor = 0.08
+				stability_factor = 0.02
+				political_power_gain = -0.05
+			}
+		}
+
+		UKR_wi_open_comms = {
+			picture = generic_stability
+			allowed = {
+				original_tag = UKR
+			}
+			removal_cost = -1
+			modifier = {
+				stability_factor = 0.04
+				political_power_gain = 0.05
+				war_support_factor = 0.02
+			}
+		}
+
+		UKR_wi_relocation = {
+			picture = generic_production_bonus
+			allowed = {
+				original_tag = UKR
+			}
+			removal_cost = -1
+			modifier = {
+				industry_air_damage_factor = -0.2
+				production_speed_buildings_factor = -0.1
+				consumer_goods_factor = 0.02
+			}
+		}
+
+		UKR_wi_state_order = {
+			picture = generic_production_bonus
+			allowed = {
+				original_tag = UKR
+			}
+			removal_cost = -1
+			modifier = {
+				industrial_capacity_factory = 0.05
+				production_speed_arms_factory_factor = 0.1
+				production_factory_efficiency_gain_factor = 0.05
+			}
+		}
+
+		UKR_wi_private_contracts = {
+			picture = generic_production_bonus
+			allowed = {
+				original_tag = UKR
+			}
+			removal_cost = -1
+			modifier = {
+				production_factory_efficiency_gain_factor = 0.15
+				consumer_goods_factor = 0.02
+				stability_factor = -0.01
+			}
+		}
+
+		UKR_wi_sky_shield = {
+			picture = generic_anti_air
+			allowed = {
+				original_tag = UKR
+			}
+			removal_cost = -1
+			modifier = {
+				production_speed_anti_air_building_factor = 0.15
+				static_anti_air_damage_factor = 0.05
+				industry_air_damage_factor = -0.05
+			}
+		}
+
+		UKR_wi_resilient_grid = {
+			picture = generic_production_bonus
+			allowed = {
+				original_tag = UKR
+			}
+			removal_cost = -1
+			modifier = {
+				stability_factor = 0.02
+				industry_air_damage_factor = -0.1
+				consumer_goods_factor = -0.01
+			}
+		}
+
+		UKR_wi_world_sympathy = {
+			picture = generic_stability
+			allowed = {
+				original_tag = UKR
+			}
+			removal_cost = -1
+			modifier = {
+				stability_factor = 0.02
+				war_support_factor = 0.04
+			}
+		}
+
+		UKR_wi_europe_course = {
+			picture = generic_stability
+			allowed = {
+				original_tag = UKR
+			}
+			removal_cost = -1
+			modifier = {
+				political_power_gain = 0.05
+				production_speed_arms_factory_factor = -0.05
+			}
+		}
+
+		UKR_wi_self_reliance = {
+			picture = generic_production_bonus
+			allowed = {
+				original_tag = UKR
+			}
+			removal_cost = -1
+			modifier = {
+				production_speed_arms_factory_factor = 0.1
+				industrial_capacity_factory = 0.05
+				consumer_goods_factor = 0.02
+			}
+		}
+
+		UKR_wi_regional = {
+			picture = generic_fortify_the_borders
+			allowed = {
+				original_tag = UKR
+			}
+			removal_cost = -1
+			modifier = {
+				war_support_factor = 0.03
+				supply_consumption_factor = -0.03
+			}
+		}
+
+		UKR_wi_drone_surge = {
+			picture = generic_armor
+			allowed = {
+				original_tag = UKR
+			}
+			removal_cost = -1
+			modifier = {
+				army_attack_factor = 0.03
+				army_defence_factor = 0.03
+				experience_gain_army_factor = 0.1
+			}
+		}
+
+		UKR_wi_deep_strike = {
+			picture = generic_air_bonus
+			allowed = {
+				original_tag = UKR
+			}
+			removal_cost = -1
+			modifier = {
+				army_attack_factor = 0.02
+				war_support_factor = 0.04
+			}
+		}
+
+		UKR_wi_attrition = {
+			picture = generic_fortify_the_borders
+			allowed = {
+				original_tag = UKR
+			}
+			removal_cost = -1
+			modifier = {
+				army_defence_factor = 0.06
+				dig_in_speed_factor = 0.15
+				supply_consumption_factor = -0.05
+			}
+		}
+
+		UKR_wi_black_sea = {
+			picture = generic_air_bonus
+			allowed = {
+				original_tag = UKR
+			}
+			removal_cost = -1
+			modifier = {
+				stability_factor = 0.01
+				war_support_factor = 0.02
+			}
+		}
+
+		UKR_wi_pause = {
+			picture = generic_stability
+			allowed = {
+				original_tag = UKR
+			}
+			removal_cost = -1
+			modifier = {
+				army_org_factor = 0.08
+				land_reinforce_rate = 0.05
+			}
+		}
+
+		UKR_wi_grid_repair = {
+			picture = generic_production_bonus
+			allowed = {
+				original_tag = UKR
+			}
+			removal_cost = -1
+			modifier = {
+				stability_factor = 0.02
+				industry_air_damage_factor = -0.1
+			}
+		}
+
+		UKR_wi_p_tech_digital_hq = {
+			picture = generic_stability
+			allowed = {
+				original_tag = UKR
+			}
+			removal_cost = -1
+			modifier = {
+				command_power_gain_mult = 0.1
+				planning_speed = 0.1
+				land_reinforce_rate = 0.05
+			}
+		}
+
+		UKR_wi_p_tech_drone_command = {
+			picture = generic_armor
+			allowed = {
+				original_tag = UKR
+			}
+			removal_cost = -1
+			modifier = {
+				army_attack_factor = 0.04
+				army_defence_factor = 0.04
+			}
+		}
+
+		UKR_wi_p_left_labor_front = {
+			picture = generic_production_bonus
+			allowed = {
+				original_tag = UKR
+			}
+			removal_cost = -1
+			modifier = {
+				industrial_capacity_factory = 0.04
+				political_power_gain = 0.05
+				consumer_goods_factor = -0.02
+			}
+		}
+
+		UKR_wi_p_left_people_defense = {
+			picture = generic_infantry_bonus
+			allowed = {
+				original_tag = UKR
+			}
+			removal_cost = -1
+			modifier = {
+				conscription_factor = 0.08
+				stability_factor = 0.02
+			}
+		}
+
+		UKR_wi_p_olig_business_cabinet = {
+			picture = generic_production_bonus
+			allowed = {
+				original_tag = UKR
+			}
+			removal_cost = -1
+			modifier = {
+				production_factory_efficiency_gain_factor = 0.1
+				stability_factor = -0.02
+			}
+		}
+
+		UKR_wi_p_olig_patron_battalions = {
+			picture = generic_infantry_bonus
+			allowed = {
+				original_tag = UKR
+			}
+			removal_cost = -1
+			modifier = {
+				army_org_factor = 0.05
+				army_defence_factor = 0.03
+			}
+		}
+
+		UKR_wi_p_nat_nation_council = {
+			picture = generic_stability
+			allowed = {
+				original_tag = UKR
+			}
+			removal_cost = -1
+			modifier = {
+				war_support_factor = 0.08
+				conscription_factor = 0.03
+			}
+		}
+
+		UKR_wi_p_nat_volunteer_corps = {
+			picture = generic_infantry_bonus
+			allowed = {
+				original_tag = UKR
+			}
+			removal_cost = -1
+			modifier = {
+				army_attack_factor = 0.04
+				experience_gain_army_factor = 0.1
+			}
+		}
+
+	}
+}

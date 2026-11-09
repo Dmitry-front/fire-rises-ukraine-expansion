@@ -1,0 +1,66 @@
+# Дерево войны: события ukrainewar.810-812 (DESIGN.md 8.5, сессия 24). ГЕНЕРИРУЕТСЯ _tools/gen_war_tree.py.
+# 810 - вводное (из UKR_w_start_war_tree), 811 - военное положение (из UKR_w_martial_law), 812 - вторая ступень дерева.
+
+add_namespace = ukrainewar
+
+# art: reuse
+country_event = {
+	id = ukrainewar.810
+	title = ukrainewar.810.t
+	desc = ukrainewar.810.d
+	picture = GFX_event_UKR_start_war
+
+	is_triggered_only = yes
+	fire_only_once = yes
+
+	trigger = {
+		tag = UKR
+	}
+
+	option = {
+		name = ukrainewar.810.a
+		custom_effect_tooltip = UKR_w_tt_tree_intro
+	}
+}
+
+# art: reuse
+country_event = {
+	id = ukrainewar.811
+	title = ukrainewar.811.t
+	desc = ukrainewar.811.d
+	picture = GFX_UKR_preparing_for_war
+
+	is_triggered_only = yes
+	fire_only_once = yes
+
+	trigger = {
+		tag = UKR
+	}
+
+	option = {
+		name = ukrainewar.811.a
+	}
+}
+
+# art: reuse
+country_event = {
+	id = ukrainewar.812
+	title = ukrainewar.812.t
+	desc = ukrainewar.812.d
+	picture = GFX_Generic_Tank_column
+
+	is_triggered_only = yes
+	fire_only_once = yes
+
+	trigger = {
+		tag = UKR
+		has_country_flag = UKR_w_started
+		NOT = { has_country_flag = UKR_w_tier2 }
+	}
+
+	option = {
+		name = ukrainewar.812.a
+		set_country_flag = UKR_w_tier2
+		custom_effect_tooltip = UKR_w_tt_tier2
+	}
+}

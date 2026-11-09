@@ -1,0 +1,160 @@
+# Решения дерева войны (DESIGN.md 8.5, сессия 24). ГЕНЕРИРУЕТСЯ _tools/gen_war_tree.py из _tools/war_tree_data/decisions.py.
+# Видны после соответствующего фокуса UKR_w_*; категория общая с остальными военными решениями.
+UKR_against_occupiers = {
+
+	UKR_wd_operational_pause = {
+		icon = GFX_decision_generic_military
+		visible = {
+			has_war_with = SOV
+			has_completed_focus = UKR_w_supreme_command
+		}
+		available = {
+			has_war_with = SOV
+		}
+		fire_only_once = no
+		cost = 15
+		days_re_enable = 90
+		complete_effect = {
+			hidden_effect = { add_to_variable = { var = UKRwarfatigue value = -4 } }
+			custom_effect_tooltip = UKR_w_tt_fatigue_down
+			add_timed_idea = { idea = UKR_wi_pause days = 30 }
+		}
+		ai_will_do = {
+			factor = 5
+		}
+	}
+
+	UKR_wd_mobilization_campaign = {
+		icon = GFX_decision_generic_military
+		visible = {
+			has_war_with = SOV
+			has_completed_focus = UKR_w_general_mobilization
+		}
+		available = {
+			has_war_with = SOV
+		}
+		fire_only_once = no
+		cost = 25
+		days_re_enable = 120
+		complete_effect = {
+			if = {
+				limit = { has_completed_focus = UKR_w_pay_the_soldiers }
+				add_manpower = 12000
+				set_temp_variable = { var = income_var_temp value = -1 }
+				add_income_with_inflation = yes
+			}
+			else_if = {
+				limit = { has_completed_focus = UKR_w_call_to_the_nation }
+				add_manpower = 8000
+				add_war_support = 0.02
+				hidden_effect = { add_to_variable = { var = UKRhate value = 2 } }
+				custom_effect_tooltip = UKR_w_tt_hate_up
+			}
+			else_if = {
+				limit = { has_completed_focus = UKR_w_forced_mobilization }
+				add_manpower = 20000
+				add_stability = -0.02
+				hidden_effect = { add_to_variable = { var = UKRwarfatigue value = 2 } }
+				custom_effect_tooltip = UKR_w_tt_fatigue_up
+			}
+			else = {
+				add_manpower = 8000
+			}
+		}
+		ai_will_do = {
+			factor = 5
+		}
+	}
+
+	UKR_wd_factory_dispersal = {
+		icon = GFX_decision_generic_construction
+		visible = {
+			has_war_with = SOV
+			has_completed_focus = UKR_w_relocate_industry
+		}
+		available = {
+			has_war_with = SOV
+		}
+		fire_only_once = no
+		cost = 20
+		days_re_enable = 100
+		days_remove = 60
+		modifier = {
+			industry_air_damage_factor = -0.15
+		}
+		complete_effect = {
+			add_stability = 0.01
+		}
+		remove_effect = {
+			add_political_power = 5
+		}
+		ai_will_do = {
+			factor = 5
+		}
+	}
+
+	UKR_wd_donor_conference = {
+		icon = GFX_decision_generic_consumer_goods
+		visible = {
+			has_war_with = SOV
+			has_completed_focus = UKR_w_appeal_to_the_world
+		}
+		available = {
+			has_war_with = SOV
+		}
+		fire_only_once = no
+		cost = 30
+		days_re_enable = 180
+		complete_effect = {
+			set_temp_variable = { var = income_var_temp value = 2 }
+			add_income_with_inflation = yes
+			UKR_trust_diplomacy = yes
+		}
+		ai_will_do = {
+			factor = 5
+		}
+	}
+
+	UKR_wd_drone_batch = {
+		icon = GFX_decision_generic_army_support
+		visible = {
+			has_war_with = SOV
+			has_completed_focus = UKR_w_drone_war
+		}
+		available = {
+			has_war_with = SOV
+		}
+		fire_only_once = no
+		cost = 15
+		days_re_enable = 60
+		complete_effect = {
+			army_experience = 5
+			UKR_w_mio_drones_batch = yes
+		}
+		ai_will_do = {
+			factor = 5
+		}
+	}
+
+	UKR_wd_grid_repair = {
+		icon = GFX_decision_generic_construction
+		visible = {
+			has_war_with = SOV
+			has_completed_focus = UKR_w_resilient_grid
+		}
+		available = {
+			has_war_with = SOV
+		}
+		fire_only_once = no
+		cost = 20
+		days_re_enable = 90
+		complete_effect = {
+			add_stability = 0.01
+			add_timed_idea = { idea = UKR_wi_grid_repair days = 45 }
+		}
+		ai_will_do = {
+			factor = 5
+		}
+	}
+
+}

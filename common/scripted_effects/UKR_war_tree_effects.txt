@@ -1,0 +1,129 @@
+# Дерево войны: служебные эффекты (DESIGN.md 8.5, сессия 24). Сами фокусы и идеи - _tools/gen_war_tree.py.
+
+# Старт дерева. Вызывается один раз из ukrainewar.1 (то есть при любом запуске войны с SOV, не только по ukraine.11).
+# Флаг открывает ветку (allow_branch), вводный фокус завершается сам, вводное событие приходит через 2 дня.
+UKR_w_start_war_tree = {
+	set_country_flag = UKR_w_started
+	hidden_effect = {
+		complete_national_focus = UKR_w_war_comes_home
+		mark_focus_tree_layout_dirty = yes
+		country_event = { id = ukrainewar.810 days = 2 }
+	}
+}
+
+# Конец войны (из ukrainewar.200): снимаем военное положение и возвращаем выборы.
+# Флаг UKR_w_started остаётся: пройденная часть дерева остаётся на экране.
+UKR_w_war_end_cleanup = {
+	if = {
+		limit = { has_country_flag = UKR_w_martial_law }
+		clr_country_flag = UKR_w_martial_law
+		remove_ideas = UKR_wi_martial_law
+		UKR_martial_law_elections_on = yes
+	}
+}
+
+# Запрет выборов на время военного положения. set_politics требует ruling_party, поэтому перебираем 11 главных идеологий TFR
+# (common/ideologies/TFR_ideologies.txt) и сохраняем правящую партию как есть.
+UKR_martial_law_elections_off = {
+	hidden_effect = {
+		if = { limit = { has_government = totalitarian_socialist } set_politics = { ruling_party = totalitarian_socialist elections_allowed = no } }
+		else_if = { limit = { has_government = communist } set_politics = { ruling_party = communist elections_allowed = no } }
+		else_if = { limit = { has_government = libertarian_socialist } set_politics = { ruling_party = libertarian_socialist elections_allowed = no } }
+		else_if = { limit = { has_government = social_democrat } set_politics = { ruling_party = social_democrat elections_allowed = no } }
+		else_if = { limit = { has_government = social_liberal } set_politics = { ruling_party = social_liberal elections_allowed = no } }
+		else_if = { limit = { has_government = market_liberal } set_politics = { ruling_party = market_liberal elections_allowed = no } }
+		else_if = { limit = { has_government = conservative } set_politics = { ruling_party = conservative elections_allowed = no } }
+		else_if = { limit = { has_government = authoritarian_democrat } set_politics = { ruling_party = authoritarian_democrat elections_allowed = no } }
+		else_if = { limit = { has_government = nationalist } set_politics = { ruling_party = nationalist elections_allowed = no } }
+		else_if = { limit = { has_government = fascist } set_politics = { ruling_party = fascist elections_allowed = no } }
+		else_if = { limit = { has_government = national_socialist } set_politics = { ruling_party = national_socialist elections_allowed = no } }
+	}
+}
+
+# Возврат выборов после войны. Не возвращаем, если выборы отменила конституционная реформа пути олигархов (флаг UKR_ol_const_term).
+UKR_martial_law_elections_on = {
+	hidden_effect = {
+		if = {
+			limit = { NOT = { has_country_flag = UKR_ol_const_term } }
+			if = { limit = { has_government = totalitarian_socialist } set_politics = { ruling_party = totalitarian_socialist elections_allowed = yes } }
+			else_if = { limit = { has_government = communist } set_politics = { ruling_party = communist elections_allowed = yes } }
+			else_if = { limit = { has_government = libertarian_socialist } set_politics = { ruling_party = libertarian_socialist elections_allowed = yes } }
+			else_if = { limit = { has_government = social_democrat } set_politics = { ruling_party = social_democrat elections_allowed = yes } }
+			else_if = { limit = { has_government = social_liberal } set_politics = { ruling_party = social_liberal elections_allowed = yes } }
+			else_if = { limit = { has_government = market_liberal } set_politics = { ruling_party = market_liberal elections_allowed = yes } }
+			else_if = { limit = { has_government = conservative } set_politics = { ruling_party = conservative elections_allowed = yes } }
+			else_if = { limit = { has_government = authoritarian_democrat } set_politics = { ruling_party = authoritarian_democrat elections_allowed = yes } }
+			else_if = { limit = { has_government = nationalist } set_politics = { ruling_party = nationalist elections_allowed = yes } }
+			else_if = { limit = { has_government = fascist } set_politics = { ruling_party = fascist elections_allowed = yes } }
+			else_if = { limit = { has_government = national_socialist } set_politics = { ruling_party = national_socialist elections_allowed = yes } }
+		}
+	}
+}
+
+# Награды в организациях оборонной промышленности (MIO). Все mio:-эффекты работают только с DLC Arms Against Tyranny,
+# как и в UKR_mio_pillar_effects.txt. Подсказки - ключи UKR_w_tt_mio_* (localisation/*/UKR_war_tree_l_*.yml).
+UKR_w_mio_drones = {
+	if = {
+		limit = { has_dlc = "Arms Against Tyranny" }
+		custom_effect_tooltip = UKR_w_tt_mio_drones
+		hidden_effect = {
+			mio:UKR_drone_cluster_organization = { add_mio_funds = 300 }
+		}
+	}
+}
+
+UKR_w_mio_drones_batch = {
+	if = {
+		limit = { has_dlc = "Arms Against Tyranny" }
+		custom_effect_tooltip = UKR_w_tt_mio_drones_batch
+		hidden_effect = {
+			mio:UKR_drone_cluster_organization = { add_mio_funds = 100 }
+		}
+	}
+}
+
+UKR_w_mio_state_order = {
+	if = {
+		limit = { has_dlc = "Arms Against Tyranny" }
+		custom_effect_tooltip = UKR_w_tt_mio_state_order
+		hidden_effect = {
+			mio:UKR_malyshev_organization = { add_mio_funds = 250 }
+			mio:UKR_armor_repair_organization = { add_mio_funds = 250 }
+			mio:UKR_artillery_works_organization = { add_mio_funds = 250 }
+		}
+	}
+}
+
+UKR_w_mio_private = {
+	if = {
+		limit = { has_dlc = "Arms Against Tyranny" }
+		custom_effect_tooltip = UKR_w_tt_mio_private
+		hidden_effect = {
+			mio:UKR_drone_cluster_organization = { add_mio_funds = 250 }
+			mio:UKR_radio_electronics_organization = { add_mio_funds = 250 }
+			mio:UKR_mykolaiv_yard_organization = { add_mio_funds = 250 }
+		}
+	}
+}
+
+UKR_w_mio_self_reliance = {
+	if = {
+		limit = { has_dlc = "Arms Against Tyranny" }
+		custom_effect_tooltip = UKR_w_tt_mio_self_reliance
+		hidden_effect = {
+			mio:UKR_kraz_organization = { add_mio_funds = 150 }
+			mio:UKR_antonov_organization = { add_mio_funds = 150 }
+			mio:UKR_motor_sich_organization = { add_mio_funds = 150 }
+		}
+	}
+}
+
+UKR_w_mio_sea = {
+	if = {
+		limit = { has_dlc = "Arms Against Tyranny" }
+		custom_effect_tooltip = UKR_w_tt_mio_sea
+		hidden_effect = {
+			mio:UKR_mykolaiv_yard_organization = { add_mio_funds = 250 }
+		}
+	}
+}

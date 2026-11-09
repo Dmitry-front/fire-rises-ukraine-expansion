@@ -193,3 +193,100 @@ UKR_mood_sync = {
 	UKR_update_fatigue_spirit = yes
 	force_update_dynamic_modifier = yes
 }
+
+# Что сделали союзники (информационные события ukraine_coalition.80-88). Раз в день проверяем действия стран НАТО из TFR, которые касаются Украины:
+# выполненный фокус или активное решение. Флаг UKR_ally_seen_<действие> защищает от повторов. Файлы TFR не трогаем, только читаем.
+# has_completed_focus и has_decision читают область страны (GER, FRA, ITA); решения с days_remove считаются активными, пока идёт срок.
+# Вызывается из on_daily (TFR_on_actions_UKR.txt) для Украины.
+UKR_check_ally_actions = {
+	# Германия: фокус GER_aid_ukraine (помощь промышленности Украины)
+	if = {
+		limit = {
+			NOT = { has_country_flag = UKR_ally_seen_ger_aid }
+			country_exists = GER
+			GER = { has_completed_focus = GER_aid_ukraine }
+		}
+		set_country_flag = UKR_ally_seen_ger_aid
+		country_event = { id = ukraine_coalition.80 days = 1 }
+	}
+	# Германия: фокус GER_deliver_excess_equipment_to_ukraine (излишки техники)
+	if = {
+		limit = {
+			NOT = { has_country_flag = UKR_ally_seen_ger_surplus }
+			country_exists = GER
+			GER = { has_completed_focus = GER_deliver_excess_equipment_to_ukraine }
+		}
+		set_country_flag = UKR_ally_seen_ger_surplus
+		country_event = { id = ukraine_coalition.81 days = 1 }
+	}
+	# Германия: фокус GER_take_in_ukrainian_refugees (беженцы)
+	if = {
+		limit = {
+			NOT = { has_country_flag = UKR_ally_seen_ger_refugees }
+			country_exists = GER
+			GER = { has_completed_focus = GER_take_in_ukrainian_refugees }
+		}
+		set_country_flag = UKR_ally_seen_ger_refugees
+		country_event = { id = ukraine_coalition.82 days = 1 }
+	}
+	# Германия: решение GER_bail_out_ukraine (финансовая помощь, 60 дней)
+	if = {
+		limit = {
+			NOT = { has_country_flag = UKR_ally_seen_ger_bailout }
+			country_exists = GER
+			GER = { has_decision = GER_bail_out_ukraine }
+		}
+		set_country_flag = UKR_ally_seen_ger_bailout
+		country_event = { id = ukraine_coalition.83 days = 1 }
+	}
+	# Германия: решение GER_invite_ukraine_to_the_eu (приглашение в ЕС, 30 дней)
+	if = {
+		limit = {
+			NOT = { has_country_flag = UKR_ally_seen_ger_eu }
+			country_exists = GER
+			GER = { has_decision = GER_invite_ukraine_to_the_eu }
+		}
+		set_country_flag = UKR_ally_seen_ger_eu
+		country_event = { id = ukraine_coalition.84 days = 1 }
+	}
+	# Франция: решение FRA_UKR_joint_excersizes_decision (совместные учения, 14 дней)
+	if = {
+		limit = {
+			NOT = { has_country_flag = UKR_ally_seen_fra_exercises }
+			country_exists = FRA
+			FRA = { has_decision = FRA_UKR_joint_excersizes_decision }
+		}
+		set_country_flag = UKR_ally_seen_fra_exercises
+		country_event = { id = ukraine_coalition.85 days = 1 }
+	}
+	# Франция: фокус FRA_cement_ukrainian_crimea (укрепление Крыма)
+	if = {
+		limit = {
+			NOT = { has_country_flag = UKR_ally_seen_fra_crimea }
+			country_exists = FRA
+			FRA = { has_completed_focus = FRA_cement_ukrainian_crimea }
+		}
+		set_country_flag = UKR_ally_seen_fra_crimea
+		country_event = { id = ukraine_coalition.86 days = 1 }
+	}
+	# Франция: фокус FRA_conscript_cossack_brigades (казачьи бригады)
+	if = {
+		limit = {
+			NOT = { has_country_flag = UKR_ally_seen_fra_cossacks }
+			country_exists = FRA
+			FRA = { has_completed_focus = FRA_conscript_cossack_brigades }
+		}
+		set_country_flag = UKR_ally_seen_fra_cossacks
+		country_event = { id = ukraine_coalition.87 days = 1 }
+	}
+	# Италия: решение ITA_protect_odesa (прикрытие Одессы, 200 дней)
+	if = {
+		limit = {
+			NOT = { has_country_flag = UKR_ally_seen_ita_odesa }
+			country_exists = ITA
+			ITA = { has_decision = ITA_protect_odesa }
+		}
+		set_country_flag = UKR_ally_seen_ita_odesa
+		country_event = { id = ukraine_coalition.88 days = 1 }
+	}
+}

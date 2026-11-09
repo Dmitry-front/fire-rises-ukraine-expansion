@@ -13,6 +13,7 @@ add_namespace = ukraine_coalition
 #  30  «Давут»: просьба               31  «Давут»: итог                  32  совместное наступление
 #  50  намёки на переговоры           51  условия союзников              52  гарантии безопасности
 #  70  многослойная ПВО (из UKR_update_air_defense_level)
+#  80-88  что сделали союзники (информационные, награда +5 политсилы / +5 опыта армии / +5 командных очков; приходят из UKR_check_ally_actions)
 
 # ---------------------------------------------------------------- 1-9: старт фазы II и штаб
 
@@ -689,5 +690,172 @@ country_event = {
 		name = ukraine_coalition.70.a
 		ai_chance = { base = 100 }
 		add_stability = 0.01
+		add_command_power = 5
+	}
+}
+
+# ---------------------------------------------------------------- 80-99: что сделали союзники (информационные)
+# Страна НАТО в TFR сделала что-то для Украины (выполнила фокус или запустила решение): игрок узнаёт, кто это сделал, в каком контексте
+# и что получает. Приходят из UKR_check_ally_actions (флаг UKR_ally_seen_<действие> - один раз). Одна опция, небольшая награда.
+
+# Германия: фокус GER_aid_ukraine
+# art: reuse
+country_event = {
+	id = ukraine_coalition.80
+	title = ukraine_coalition.80.t
+	desc = ukraine_coalition.80.d
+	picture = GFX_UKR_investment_forum
+
+	is_triggered_only = yes
+	fire_only_once = yes
+
+	option = {
+		name = ukraine_coalition.80.a
+		ai_chance = { base = 100 }
+		add_political_power = 5
+	}
+}
+
+# Германия: фокус GER_deliver_excess_equipment_to_ukraine
+# art: reuse
+country_event = {
+	id = ukraine_coalition.81
+	title = ukraine_coalition.81.t
+	desc = ukraine_coalition.81.d
+	picture = GFX_Generic_Tank_column
+
+	is_triggered_only = yes
+	fire_only_once = yes
+
+	option = {
+		name = ukraine_coalition.81.a
+		ai_chance = { base = 100 }
+		army_experience = 5
+	}
+}
+
+# Германия: фокус GER_take_in_ukrainian_refugees
+# art: reuse
+country_event = {
+	id = ukraine_coalition.82
+	title = ukraine_coalition.82.t
+	desc = ukraine_coalition.82.d
+	picture = GFX_UKR_diplomat
+
+	is_triggered_only = yes
+	fire_only_once = yes
+
+	option = {
+		name = ukraine_coalition.82.a
+		ai_chance = { base = 100 }
+		add_political_power = 5
+	}
+}
+
+# Германия: решение GER_bail_out_ukraine
+# art: reuse
+country_event = {
+	id = ukraine_coalition.83
+	title = ukraine_coalition.83.t
+	desc = ukraine_coalition.83.d
+	picture = GFX_UKR_investment_forum
+
+	is_triggered_only = yes
+	fire_only_once = yes
+
+	option = {
+		name = ukraine_coalition.83.a
+		ai_chance = { base = 100 }
+		add_political_power = 5
+	}
+}
+
+# Германия: решение GER_invite_ukraine_to_the_eu
+# art: reuse
+country_event = {
+	id = ukraine_coalition.84
+	title = ukraine_coalition.84.t
+	desc = ukraine_coalition.84.d
+	picture = GFX_UKR_diplomat
+
+	is_triggered_only = yes
+	fire_only_once = yes
+
+	option = {
+		name = ukraine_coalition.84.a
+		ai_chance = { base = 100 }
+		add_political_power = 5
+	}
+}
+
+# Франция: решение FRA_UKR_joint_excersizes_decision
+# art: reuse
+country_event = {
+	id = ukraine_coalition.85
+	title = ukraine_coalition.85.t
+	desc = ukraine_coalition.85.d
+	picture = GFX_FRA_Military
+
+	is_triggered_only = yes
+	fire_only_once = yes
+
+	option = {
+		name = ukraine_coalition.85.a
+		ai_chance = { base = 100 }
+		army_experience = 5
+	}
+}
+
+# Франция: фокус FRA_cement_ukrainian_crimea
+# art: reuse
+country_event = {
+	id = ukraine_coalition.86
+	title = ukraine_coalition.86.t
+	desc = ukraine_coalition.86.d
+	picture = GFX_FRA_operation_davout
+
+	is_triggered_only = yes
+	fire_only_once = yes
+
+	option = {
+		name = ukraine_coalition.86.a
+		ai_chance = { base = 100 }
+		add_command_power = 5
+	}
+}
+
+# Франция: фокус FRA_conscript_cossack_brigades
+# art: reuse
+country_event = {
+	id = ukraine_coalition.87
+	title = ukraine_coalition.87.t
+	desc = ukraine_coalition.87.d
+	picture = GFX_FRA_Military
+
+	is_triggered_only = yes
+	fire_only_once = yes
+
+	option = {
+		name = ukraine_coalition.87.a
+		ai_chance = { base = 100 }
+		add_political_power = 5
+	}
+}
+
+# Италия: решение ITA_protect_odesa
+# art: reuse
+country_event = {
+	id = ukraine_coalition.88
+	title = ukraine_coalition.88.t
+	desc = ukraine_coalition.88.d
+	picture = GFX_event_UKR_war_support_NATO
+
+	is_triggered_only = yes
+	fire_only_once = yes
+
+	option = {
+		name = ukraine_coalition.88.a
+		ai_chance = { base = 100 }
+		add_command_power = 5
 	}
 }

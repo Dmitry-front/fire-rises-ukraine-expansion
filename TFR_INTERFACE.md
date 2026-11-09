@@ -107,7 +107,7 @@ scripted_gui = {
 	}
 }
 ```
-Правила: имя окна и элементов с префиксом `UKR_`; `.gui` и `.gfx` в `interface/` только в файлах `UKR_*.gui/.gfx` (иначе замена файла TFR; `CLAUDE.md`); `parent_window_token` брать из существующих токенов TFR (`top_bar`, `decision_category_entry`, `selected_country_view_diplomacy`, `ruling_party_wings_bg_anchor`).
+Правила: имя окна и элементов с префиксом `UKR_`; `.gui` и `.gfx` в `interface/` только в файлах `UKR_*.gui/.gfx` (иначе замена файла TFR; `CLAUDE.md`); `parent_window_token` брать из существующих токенов TFR (`top_bar`, `selected_country_view_diplomacy`, `politics_tab`, `ruling_party_wings_bg_anchor`). Для окна внутри категории решений (`context_type = decision_category`) токен обычно **не нужен**: у 21 из 22 таких scripted GUI TFR его нет, у одного (`TFR_utopia_scripted_gui`, FPR) стоит `decision_tab`. Токена `decision_category_entry` в TFR нет (проверено 09.11.2026; раньше он был здесь указан ошибочно).
 
 ---
 

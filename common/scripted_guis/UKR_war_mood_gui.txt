@@ -8,7 +8,9 @@ scripted_gui = {
 
 		window_name = "UKR_war_mood_bars_window"
 
-		parent_window_token = decision_category_entry
+		# parent_window_token не задаём: 21 из 22 scripted GUI TFR в категориях решений его не используют
+		# (окно привязывается к категории через scripted_gui в common/decisions/categories), токена
+		# decision_category_entry нет нигде в TFR. Если окна не видно в игре, пробовать decision_tab (как TFR_utopia_scripted_gui).
 
 		visible = {
 			check_variable = { var = UKRhate value = 0 compare = greater_than_or_equals }

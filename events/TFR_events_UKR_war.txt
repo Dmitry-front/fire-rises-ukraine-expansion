@@ -171,7 +171,7 @@ country_event = {
 		name = ukrainewar.100.b
 		trigger = { has_political_power > 50 }
 		add_political_power = -50
-		add_war_support = -0.012
+		add_war_support = -0.12
 		add_stability = -0.08
 		if = {
 			limit = { has_country_flag = UKR_state_without_territory }
@@ -867,14 +867,16 @@ country_event = {
 	trigger = {
 		tag = UKR
 		has_country_flag = UKR_war_mood_active
-		has_country_flag = UKR_first_mobilization_completed
+		# Один раз на каждую волну: флаг ставит решение волны, событие его снимает
+		has_country_flag = UKR_mobilization_effect_pending
 		has_war_with = SOV
 	}
-	
+
 	mean_time_to_happen = { days = 35 }
-	
+
 	option = {
 		name = ukrainewar.310.a
+		clr_country_flag = UKR_mobilization_effect_pending
 		add_to_variable = { var = UKRhate value = 3 }
 		add_to_variable = { var = UKRwarfatigue value = 3 }
 		UKR_update_hate_spirit = yes

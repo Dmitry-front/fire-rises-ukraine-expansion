@@ -25,26 +25,26 @@ UKR_special_military_operation = {
 			add_to_variable = { UKR_western_aid_cost = 10 }
 			UKR_update_request_costs = yes
 			custom_effect_tooltip = UKR_nato_aid_scale_tt
-			set_temp_variable = { var = UKR_aid_base value = 400 }
-			UKR_nato_aid_scale = yes
-			add_equipment_to_stockpile = {
-				type = infantry_equipment_1
-				amount = UKR_aid_amount
-				producer = PLD
-			}
-			set_temp_variable = { var = UKR_aid_base value = 80 }
-			UKR_nato_aid_scale = yes
-			add_equipment_to_stockpile = {
-				type = support_equipment
-				amount = UKR_aid_amount
-				producer = GER
-			}
-			set_temp_variable = { var = UKR_aid_base value = 60 }
-			UKR_nato_aid_scale = yes
-			add_equipment_to_stockpile = {
-				type = anti_tank_equipment_1
-				amount = UKR_aid_amount
-				producer = ENG
+			custom_effect_tooltip = UKR_aid_package_tt
+			custom_effect_tooltip = UKR_aid_delay_tt
+			# Пакет приходит событием ukraine_foreign.480 через 3/5/7/10 дней по ступени доверия (раньше сразу),
+			# выдачу техники (Польша, Германия, Британия) делает оно (immediate)
+			hidden_effect = {
+				if = {
+					limit = { check_variable = { var = UKR_req_tier value = 1 compare = equals } }
+					country_event = { id = ukraine_foreign.480 days = 3 }
+				}
+				else_if = {
+					limit = { check_variable = { var = UKR_req_tier value = 2 compare = equals } }
+					country_event = { id = ukraine_foreign.480 days = 5 }
+				}
+				else_if = {
+					limit = { check_variable = { var = UKR_req_tier value = 3 compare = equals } }
+					country_event = { id = ukraine_foreign.480 days = 7 }
+				}
+				else = {
+					country_event = { id = ukraine_foreign.480 days = 10 }
+				}
 			}
 		}
 	}
@@ -2576,58 +2576,36 @@ UKR_against_occupiers = {
 		}
 		# Базовая цена 100, итоговая UKR_lend_lease_price зависит от доверия европейского НАТО (100/115/130/150 процентов)
 		cost = UKR_lend_lease_price
-		days_remove = 30
 		days_re_enable = 150
 		complete_effect = {
 			add_stability = 0.02
 			add_war_support = 0.02
 			custom_effect_tooltip = UKR_nato_aid_scale_tt
+			custom_effect_tooltip = UKR_lend_lease_tt
+			custom_effect_tooltip = UKR_aid_delay_ll_tt
+			# Поставка приходит событием ukraine_foreign.481 через 7/10/14/21 день по ступени доверия (раньше 30 дней),
+			# выдачу техники и духа UKR_idea_lend_lease делает оно (immediate)
+			hidden_effect = {
+				if = {
+					limit = { check_variable = { var = UKR_req_tier value = 1 compare = equals } }
+					country_event = { id = ukraine_foreign.481 days = 7 }
+				}
+				else_if = {
+					limit = { check_variable = { var = UKR_req_tier value = 2 compare = equals } }
+					country_event = { id = ukraine_foreign.481 days = 10 }
+				}
+				else_if = {
+					limit = { check_variable = { var = UKR_req_tier value = 3 compare = equals } }
+					country_event = { id = ukraine_foreign.481 days = 14 }
+				}
+				else = {
+					country_event = { id = ukraine_foreign.481 days = 21 }
+				}
+			}
 			#log = "[GetDateText]: [Root.GetName]: Decision UKR_lend_lease_program"
 			#news_event = { id = ukr_news.3 hours = 6 }
 		}
-		remove_effect = {
-			set_country_flag = UKR_lend_lease_approved
-			add_timed_idea = {
-				idea = UKR_idea_lend_lease
-				days = 150
-			}
-			set_temp_variable = { var = UKR_aid_base value = 1500 }
-			UKR_nato_aid_scale = yes
-			add_equipment_to_stockpile = {
-				type = infantry_equipment_1
-				amount = UKR_aid_amount
-				producer = FRA
-			}
-			set_temp_variable = { var = UKR_aid_base value = 400 }
-			UKR_nato_aid_scale = yes
-			add_equipment_to_stockpile = {
-				type = support_equipment
-				amount = UKR_aid_amount
-				producer = GER
-			}
-			set_temp_variable = { var = UKR_aid_base value = 150 }
-			UKR_nato_aid_scale = yes
-			add_equipment_to_stockpile = {
-				type = anti_tank_equipment_1
-				amount = UKR_aid_amount
-				producer = ENG
-			}
-			set_temp_variable = { var = UKR_aid_base value = 120 }
-			UKR_nato_aid_scale = yes
-			add_equipment_to_stockpile = {
-				type = motorized_equipment
-				amount = UKR_aid_amount
-				producer = PLD
-			}
-			set_temp_variable = { var = UKR_aid_base value = 500 }
-			UKR_nato_aid_scale = yes
-			add_equipment_to_stockpile = {
-				type = infantry_equipment_1
-				amount = UKR_aid_amount
-				producer = ITA
-			}
-		}
-		
+
 		ai_will_do = {
 			factor = 80
 		}

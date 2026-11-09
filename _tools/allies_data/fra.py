@@ -10,11 +10,11 @@ REQ = [
 		name=T('Просить Париж: артиллерийский контракт', 'Ask Paris: an artillery contract'),
 		desc=T(
 			'Просим Францию поставить колёсные самоходные гаубицы и снаряды и заключить длительный контракт с промышленностью.\n\n'
-			'§YЧто это.§! CAESAR: 155-мм гаубица на шасси грузовика 6x6; во французской армии с 2008 года, быстро меняет позицию после выстрела и поэтому хуже поддаётся контрбатарейному огню.\n'
+			'§YЧто это.§! CAESAR: 155-мм гаубица на шасси грузовика 6x6; во французской армии с 2000-х, быстро меняет позицию после выстрела и поэтому хуже поддаётся контрбатарейному огню.\n'
 			'§YВ реальности.§! С 2022 года Франция передала Украине десятки CAESAR (часть оплатили другие страны, включая Данию) и заказывала новые партии у промышленности.\n'
 			'§YЧто даст.§! Мобильная артиллерия и снаряды к ней; ответ зависит от того, сколько Франция может выделить, не оголив собственную армию.',
 			'We ask France to supply wheeled self-propelled howitzers and shells and to sign a long-term contract with industry.\n\n'
-			'§YWhat it is.§! CAESAR: a 155 mm howitzer on a 6x6 truck chassis; in the French army since 2008, it changes position quickly after firing and is therefore harder to hit with counter-battery fire.\n'
+			'§YWhat it is.§! CAESAR: a 155 mm howitzer on a 6x6 truck chassis; in the French army since the 2000s, it changes position quickly after firing and is therefore harder to hit with counter-battery fire.\n'
 			'§YIn reality.§! Since 2022 France has handed Ukraine dozens of CAESARs (some paid for by other countries, Denmark among them) and ordered new batches from industry.\n'
 			'§YWhat it gives.§! Mobile artillery and shells for it; the answer depends on how much France can release without baring its own army.'),
 		req_t=T('Просьба Киева: артиллерийский контракт', 'Kyiv\'s request: an artillery contract'),
@@ -37,12 +37,12 @@ REQ = [
 		name=T('Просить Париж: авиация и зенитные ракеты', 'Ask Paris: aircraft and air defence missiles'),
 		desc=T(
 			'Просим Францию передать зенитные ракетные комплексы, крылатые ракеты и боевые самолёты.\n\n'
-			'§YЧто это.§! ЗРК SAMP/T (франко-итальянский, ракеты «Астер 30»), крылатые ракеты SCALP-EG (двойник британской Storm Shadow, дальность свыше 250 км), истребители «Мираж 2000» (во французской авиации с 1980-х годов).\n'
-			'§YВ реальности.§! Франция поставила SCALP в 2023 году, SAMP/T в 2023-2024 годах, а затем готовила передачу «Миражей 2000-5».\n'
+			'§YЧто это.§! ЗРК SAMP/T (франко-итальянский, ракеты «Астер 30»), крылатые ракеты SCALP-EG (двойник британской Storm Shadow, дальность свыше 250 км), истребители 4-го поколения «Мираж 2000» (во французской авиации с 1980-х).\n'
+			'§YВ реальности.§! В 2023-2024 годах Франция поставила SCALP и SAMP/T, а затем готовила передачу «Миражей».\n'
 			'§YЧто даст.§! Зенитное прикрытие, дальний удар по тылам и боевая авиация; но Париж отдаёт такие системы осторожно.',
 			'We ask France to hand over surface-to-air missile systems, cruise missiles and combat aircraft.\n\n'
-			'§YWhat it is.§! SAMP/T (Franco-Italian, Aster 30 missiles), SCALP-EG cruise missiles (twin of the British Storm Shadow, range over 250 km) and Mirage 2000 fighters (in French service since the 1980s).\n'
-			'§YIn reality.§! France delivered SCALP in 2023 and SAMP/T in 2023-2024, and then prepared the transfer of Mirage 2000-5 aircraft.\n'
+			'§YWhat it is.§! SAMP/T (Franco-Italian, Aster 30 missiles), SCALP-EG cruise missiles (twin of the British Storm Shadow, range over 250 km) and fourth-generation Mirage 2000 fighters (in French service since the 1980s).\n'
+			'§YIn reality.§! In 2023-2024 France delivered SCALP and SAMP/T, and then prepared the transfer of Mirage aircraft.\n'
 			'§YWhat it gives.§! Air defence cover, long-range strikes on the rear and combat aircraft; but Paris gives up such systems cautiously.'),
 		req_t=T('Просьба Киева: авиация и зенитные ракеты', 'Kyiv\'s request: aircraft and air defence missiles'),
 		req_d=T('Украина просит зенитные ракетные комплексы, крылатые ракеты и истребители. Каждая из этих систем снимается с вооружения самой Франции.',

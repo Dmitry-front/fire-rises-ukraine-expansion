@@ -8,12 +8,12 @@ REQ = [
 		name=T('Просить Таллин: быстрый пакет', 'Ask Tallinn: a quick package'),
 		desc=T(
 			'Просим Эстонию срочно передать из собственных запасов то, что можно отправить за несколько дней.\n\n'
-			'§YЧто это.§! Малый, но быстрый пакет: 155-мм гаубицы FH-70 (в европейских армиях с 1970-х), переносные противотанковые комплексы Javelin (с 1996 года), боеприпасы.\n'
-			'§YВ реальности.§! Эстония передала Украине гаубицы FH-70 и Javelin и вошла в число стран, дающих помощи больше всех в процентах от ВВП; поставки начались ещё до февраля 2022 года.\n'
+			'§YЧто это.§! Малый, но быстрый пакет: 155-мм гаубицы FH-70 (в европейских армиях с 1970-х), переносные противотанковые комплексы Javelin (с 1990-х), боеприпасы.\n'
+			'§YВ реальности.§! Эстония передала Украине гаубицы FH-70 и Javelin и вошла в число стран, дающих помощи больше всех в процентах от ВВП; поставки начались ещё до начала полномасштабного вторжения.\n'
 			'§YЧто даст.§! Небольшая, но срочная помощь; Таллин отвечает быстрее других.',
 			'We ask Estonia to hand over at once from its own stocks whatever can be shipped within days.\n\n'
-			'§YWhat it is.§! A small but quick package: 155 mm FH-70 howitzers (in European armies since the 1970s), Javelin portable anti-tank systems (since 1996) and ammunition.\n'
-			'§YIn reality.§! Estonia handed Ukraine FH-70 howitzers and Javelins and is among the countries giving the most aid as a share of GDP; deliveries began even before February 2022.\n'
+			'§YWhat it is.§! A small but quick package: 155 mm FH-70 howitzers (in European armies since the 1970s), Javelin portable anti-tank systems (since the 1990s) and ammunition.\n'
+			'§YIn reality.§! Estonia handed Ukraine FH-70 howitzers and Javelins and is among the countries giving the most aid as a share of GDP; deliveries began even before the start of the full-scale invasion.\n'
 			'§YWhat it gives.§! Small but urgent help; Tallinn answers faster than the others.'),
 		req_t=T('Просьба Киева: срочный пакет', 'Kyiv\'s request: an urgent package'),
 		req_d=T('Украина просит передать из запасов то, что можно отправить за несколько дней. У Эстонии немного, но решение принимается без долгих споров.',
@@ -36,11 +36,11 @@ REQ = [
 		desc=T(
 			'Просим Латвию вместе с Британией возглавить коалицию по беспилотникам: общие закупки, финансирование мастерских и поставки.\n\n'
 			'§YЧто это.§! Совместные закупки и финансирование производства: разведывательные дроны, ударные FPV, наземные роботы. Латвия берёт на себя координацию.\n'
-			'§YВ реальности.§! В феврале 2024 года Латвия и Британия возглавили «Коалицию дронов» в формате «Рамштайн»; Латвия также передавала Украине зенитные комплексы «Стингер».\n'
+			'§YВ реальности.§! В 2024 году Латвия и Британия возглавили «Коалицию дронов» в формате «Рамштайн»; Латвия также передавала Украине зенитные комплексы «Стингер».\n'
 			'§YЧто даст.§! Деньги для кластера БПЛА и зенитные ракеты.',
 			'We ask Latvia, together with Britain, to lead a coalition on drones: joint purchases, funding of workshops and deliveries.\n\n'
 			'§YWhat it is.§! Joint purchases and production funding: reconnaissance drones, strike FPVs, ground robots. Latvia takes on the coordination.\n'
-			'§YIn reality.§! In February 2024 Latvia and Britain led the «Drone Coalition» in the Ramstein format; Latvia also handed Ukraine Stinger air defence systems.\n'
+			'§YIn reality.§! In 2024 Latvia and Britain led the «Drone Coalition» in the Ramstein format; Latvia also handed Ukraine Stinger air defence systems.\n'
 			'§YWhat it gives.§! Funds for the drone cluster and air defence missiles.'),
 		req_t=T('Просьба Киева: коалиция дронов', 'Kyiv\'s request: a drone coalition'),
 		req_d=T('Украина просит возглавить коалицию по беспилотникам: общие закупки и финансирование мастерских. Армия готова скоординировать, если партнёры подтвердят свои взносы.',
@@ -62,11 +62,11 @@ REQ = [
 		name=T('Просить Вильнюс: зенитные ракеты и инструкторы', 'Ask Vilnius: air defence missiles and instructors'),
 		desc=T(
 			'Просим Литву передать переносные зенитные комплексы и командировать инструкторов.\n\n'
-			'§YЧто это.§! ПЗРК «Стингер» (в армиях НАТО с 1981 года) и инструкторы для подготовки расчётов и сапёров.\n'
+			'§YЧто это.§! ПЗРК «Стингер» (в армиях НАТО с 1980-х) и инструкторы для подготовки расчётов и сапёров.\n'
 			'§YВ реальности.§! Литва передала Украине «Стингеры», а общество собирало деньги на помощь: в 2022 году народный сбор на беспилотник «Байрактар» был настолько быстрым, что производитель решил подарить машину.\n'
 			'§YЧто даст.§! Зенитные ракеты, опыт и шаг к защите неба.',
 			'We ask Lithuania to hand over portable air defence systems and to send instructors.\n\n'
-			'§YWhat it is.§! Stinger man-portable air defence systems (in NATO armies since 1981) and instructors to train crews and sappers.\n'
+			'§YWhat it is.§! Stinger man-portable air defence systems (in NATO armies since the 1980s) and instructors to train crews and sappers.\n'
 			'§YIn reality.§! Lithuania handed Ukraine Stingers, and society raised money for aid: in 2022 a popular fundraiser for a Bayraktar drone was so quick that the manufacturer decided to donate the machine.\n'
 			'§YWhat it gives.§! Air defence missiles, experience and a step towards protecting the sky.'),
 		req_t=T('Просьба Киева: ПВО и инструкторы', 'Kyiv\'s request: air defence and instructors'),

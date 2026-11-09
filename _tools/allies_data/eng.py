@@ -9,11 +9,11 @@ REQ = [
 		desc=T(
 			'Просим Британию делиться разведданными и помочь защитить наши каналы связи.\n\n'
 			'§YЧто это.§! Данные радио- и радиотехнической разведки, спутниковые снимки, совместная оценка угроз и защита шифров.\n'
-			'§YВ реальности.§! Перед вторжением 2022 года Британия и США рассекретили часть данных о планах России, а с февраля 2022 года британское Министерство обороны публикует регулярные обзоры хода войны.\n'
+			'§YВ реальности.§! Перед вторжением 2022 года Британия и США рассекретили часть данных о планах России, а с начала войны британское Министерство обороны публикует регулярные обзоры её хода.\n'
 			'§YЧто даст.§! На время растут возможности перехвата и накопления данных; но Лондон делится только с теми, кто умеет хранить секреты.',
 			'We ask Britain to share intelligence and to help protect our communication channels.\n\n'
 			'§YWhat it is.§! Signals and electronic intelligence, satellite imagery, joint threat assessment and cipher protection.\n'
-			'§YIn reality.§! Before the 2022 invasion Britain and the United States declassified part of the data on Russia\'s plans, and since February 2022 the British Ministry of Defence has published regular reviews of the course of the war.\n'
+			'§YIn reality.§! Before the 2022 invasion Britain and the United States declassified part of the data on Russia\'s plans, and since the start of the war the British Ministry of Defence has published regular reviews of its course.\n'
 			'§YWhat it gives.§! For a time, interception and data gathering improve; but London shares only with those who can keep secrets.'),
 		req_t=T('Просьба Киева: обмен разведданными', 'Kyiv\'s request: intelligence sharing'),
 		req_d=T('Украина просит постоянный обмен данными и помощь в защите связи. Разведывательные службы напоминают: источники уязвимы, а утечки стоят дорого.',
@@ -38,11 +38,11 @@ REQ = [
 		desc=T(
 			'Просим Британию организовать на своей территории подготовку наших новобранцев и офицеров.\n\n'
 			'§YЧто это.§! Курсы на британских полигонах: общевойсковая подготовка, тактика малых подразделений, медицина, сапёрное дело, обучение командиров.\n'
-			'§YВ реальности.§! С июня 2022 года Британия руководила операцией «Интерфлекс»: инструкторы из нескольких стран за несколько недель готовили новобранцев, и за годы операции обучение прошли десятки тысяч человек.\n'
+			'§YВ реальности.§! С 2022 года Британия руководила операцией «Интерфлекс»: инструкторы из нескольких стран за несколько недель готовили новобранцев, и за годы операции обучение прошли десятки тысяч человек.\n'
 			'§YЧто даст.§! Опыт армии и более быстрая подготовка дивизий на время миссии.',
 			'We ask Britain to organise the training of our recruits and officers on its territory.\n\n'
 			'§YWhat it is.§! Courses at British training areas: combined-arms training, small-unit tactics, medicine, combat engineering, commander training.\n'
-			'§YIn reality.§! From June 2022 Britain led Operation Interflex: instructors from several countries trained recruits in a few weeks, and over the years of the operation tens of thousands of people were trained.\n'
+			'§YIn reality.§! From 2022 Britain led Operation Interflex: instructors from several countries trained recruits in a few weeks, and over the years of the operation tens of thousands of people were trained.\n'
 			'§YWhat it gives.§! Army experience and faster training of divisions for the duration of the mission.'),
 		req_t=T('Просьба Киева: учебная миссия', 'Kyiv\'s request: a training mission'),
 		req_d=T('Украина просит принять новобранцев и офицеров на подготовку на британских полигонах. Армия оценивает, сколько инструкторов можно снять с собственных частей.',
@@ -64,12 +64,12 @@ REQ = [
 		name=T('Просить Лондон: противотанковые и дальнобойные ракеты', 'Ask London: anti-tank and long-range missiles'),
 		desc=T(
 			'Просим Британию передать противотанковые комплексы и ракеты дальнего действия.\n\n'
-			'§YЧто это.§! NLAW (шведско-британский одноразовый противотанковый комплекс, в британской армии с 2009 года), Starstreak (зенитный комплекс с лазерным наведением, с 1997 года), Storm Shadow (крылатая ракета с дальностью свыше 250 км, у британских ВВС с начала 2000-х).\n'
-			'§YВ реальности.§! В 2022 году Британия передала тысячи NLAW, затем Starstreak, а в мае 2023-го первой из западных стран поставила Storm Shadow, ограничив их применение.\n'
+			'§YЧто это.§! NLAW (шведско-британский одноразовый противотанковый комплекс, в британской армии с 2000-х), Starstreak (зенитный комплекс с лазерным наведением, с 1990-х), Storm Shadow (крылатая ракета с дальностью свыше 250 км, у британских ВВС с начала 2000-х).\n'
+			'§YВ реальности.§! В 2022 году Британия передала тысячи NLAW, затем Starstreak, а в 2023 году первой из западных стран поставила Storm Shadow, ограничив их применение.\n'
 			'§YЧто даст.§! Противотанковая и зенитная техника и дальний удар по тылам; Лондон просит гарантий, что ракеты не уйдут на сторону.',
 			'We ask Britain to hand over anti-tank systems and long-range missiles.\n\n'
-			'§YWhat it is.§! NLAW (a Swedish-British disposable anti-tank weapon, in the British army since 2009), Starstreak (a laser-guided air defence system, since 1997) and Storm Shadow (a cruise missile with a range of over 250 km, with the RAF since the early 2000s).\n'
-			'§YIn reality.§! In 2022 Britain handed over thousands of NLAWs, then Starstreak, and in May 2023 became the first Western country to supply Storm Shadow, restricting how it could be used.\n'
+			'§YWhat it is.§! NLAW (a Swedish-British disposable anti-tank weapon, in the British army since the 2000s), Starstreak (a laser-guided air defence system, since the 1990s) and Storm Shadow (a cruise missile with a range of over 250 km, with the RAF since the early 2000s).\n'
+			'§YIn reality.§! In 2022 Britain handed over thousands of NLAWs, then Starstreak, and in 2023 became the first Western country to supply Storm Shadow, restricting how it could be used.\n'
 			'§YWhat it gives.§! Anti-tank and air defence equipment and a long-range strike on the rear; London asks for guarantees that the missiles will not be misused.'),
 		req_t=T('Просьба Киева: ракеты', 'Kyiv\'s request: missiles'),
 		req_d=T('Украина просит противотанковые и зенитные комплексы и ракеты дальнего действия. Министерство обороны обсуждает условия применения.',

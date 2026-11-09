@@ -12,11 +12,11 @@ REQ = [
 		desc=T(
 			'Просим Польшу принимать союзные грузы на юго-востоке страны и перегружать их для Украины.\n\n'
 			'§YЧто это.§! Узловые аэродромы и станции Подкарпатья. На границе меняется колея (в Европе 1435 мм, у нас 1520 мм), поэтому вагоны перегружают или меняют тележки.\n'
-			'§YВ реальности.§! С февраля 2022 года через юго-восток Польши, в первую очередь через аэропорт Жешув-Ясёнка, шла значительная часть западной военной помощи; узел прикрывали силами союзников.\n'
+			'§YВ реальности.§! С начала полномасштабной войны, в 2022 году, через юго-восток Польши, в первую очередь через аэропорт Жешув-Ясёнка, шла значительная часть западной военной помощи; узел прикрывали силами союзников.\n'
 			'§YЧто даст.§! Быстрее пополняются потери и склады, приходит техника тыла.',
 			'We ask Poland to receive allied cargo in the south-east of the country and to transship it for Ukraine.\n\n'
 			'§YWhat it is.§! The junction airfields and railway stations of the Subcarpathian region. The track gauge changes at the border (1435 mm in Europe, 1520 mm in Ukraine), so wagons are transshipped or have their bogies swapped.\n'
-			'§YIn reality.§! From February 2022 a large share of Western military aid went through south-eastern Poland, above all through Rzeszow-Jasionka airport; allied forces covered the hub.\n'
+			'§YIn reality.§! From the start of the full-scale war, in 2022, a large share of Western military aid went through south-eastern Poland, above all through Rzeszow-Jasionka airport; allied forces covered the hub.\n'
 			'§YWhat it gives.§! Losses and stockpiles are replenished faster, and rear-area equipment arrives.'),
 		req_t=T('Просьба Киева: транзитный коридор', 'Kyiv\'s request: a transit corridor'),
 		req_d=T('Украина просит открыть юго-восточные аэродромы и станции для союзных грузов и взять перегрузку на себя. Решение придётся защищать перед избирателями: узел может стать целью.',
@@ -39,12 +39,12 @@ REQ = [
 		name=T('Просить Варшаву: оружие из польских арсеналов', 'Ask Warsaw: arms from Polish arsenals'),
 		desc=T(
 			'Просим Польшу передать часть техники и боеприпасов из собственных складов, пока промышленность союзников раскачивается.\n\n'
-			'§YЧто это.§! Танки Т-72 и польские ПТ-91 «Твярды» (в польской армии с 1990-х), самоходные гаубицы 155 мм «Краб» (с середины 2010-х) и ПЗРК «Пёрун» (с 2010 года).\n'
-			'§YВ реальности.§! В 2022 году Польша первой из НАТО передала более двухсот танков Т-72, затем самоходные гаубицы «Краб» и тысячи ПЗРК «Гром» и «Пёрун».\n'
+			'§YЧто это.§! Танки Т-72 и польские ПТ-91 «Твярды» (в польской армии с 1990-х), самоходные гаубицы 155 мм «Краб» (с 2010-х) и ПЗРК «Пёрун» (с 2010-х).\n'
+			'§YВ реальности.§! В 2022 году Польша первой из НАТО передала сотни танков Т-72, затем самоходные гаубицы «Краб» и тысячи ПЗРК «Гром» и «Пёрун».\n'
 			'§YЧто даст.§! Артиллерия, зенитные расчёты и бронетехника, которые можно двинуть в бой за недели.',
 			'We ask Poland to hand over part of its equipment and ammunition from its own stores while allied industry gets up to speed.\n\n'
-			'§YWhat it is.§! T-72 tanks and Polish PT-91 Twardy tanks (in the Polish army since the 1990s), 155 mm Krab self-propelled howitzers (since the mid-2010s) and Piorun man-portable air defence systems (since 2010).\n'
-			'§YIn reality.§! In 2022 Poland was the first NATO member to hand over more than two hundred T-72 tanks, then Krab howitzers and thousands of Grom and Piorun launchers.\n'
+			'§YWhat it is.§! T-72 tanks and Polish PT-91 Twardy tanks (in the Polish army since the 1990s), 155 mm Krab self-propelled howitzers (since the 2010s) and Piorun man-portable air defence systems (since the 2010s).\n'
+			'§YIn reality.§! In 2022 Poland was the first NATO member to hand over hundreds of T-72 tanks, then Krab howitzers and thousands of Grom and Piorun launchers.\n'
 			'§YWhat it gives.§! Artillery, air defence crews and armour that can be sent into battle within weeks.'),
 		req_t=T('Просьба Киева: оружие из польских складов', 'Kyiv\'s request: arms from Polish stores'),
 		req_d=T('Украина просит передать часть танков, самоходных гаубиц и зенитных комплексов из арсеналов Войска Польского. Военные предупреждают, что собственные склады опустеют.',
@@ -112,8 +112,8 @@ IDEAS = [
 CHAIN = dict(
 	grain=dict(
 		t=T('Зерно на польской границе', 'Grain on the Polish border'),
-		d=T('Украинское зерно, идущее транзитом через Польшу, оседает на местном рынке и обрушивает цены для польских фермеров. Варшава грозит запретом ввоза, а фермеры и перевозчики блокируют переходы. В нашей реальности так было весной 2023 года: Польша, Венгрия и Словакия закрыли рынки для украинского зерна, ЕС ввёл временные ограничения, а Киев жаловался в ВТО.\n\nТеперь нужно решить, как отвечать.',
-			'Ukrainian grain moving in transit through Poland settles on the local market and collapses prices for Polish farmers. Warsaw threatens an import ban, and farmers and hauliers block the crossings. In our reality this happened in the spring of 2023: Poland, Hungary and Slovakia closed their markets to Ukrainian grain, the EU introduced temporary restrictions, and Kyiv complained to the WTO.\n\nWe must now decide how to respond.'),
+		d=T('Украинское зерно, идущее транзитом через Польшу, оседает на местном рынке и обрушивает цены для польских фермеров. Варшава грозит запретом ввоза, а фермеры и перевозчики блокируют переходы. В нашей реальности так было в 2023 году: Польша, Венгрия и Словакия закрыли рынки для украинского зерна, ЕС ввёл временные ограничения, а Киев жаловался в ВТО.\n\nТеперь нужно решить, как отвечать.',
+			'Ukrainian grain moving in transit through Poland settles on the local market and collapses prices for Polish farmers. Warsaw threatens an import ban, and farmers and hauliers block the crossings. In our reality this happened in 2023: Poland, Hungary and Slovakia closed their markets to Ukrainian grain, the EU introduced temporary restrictions, and Kyiv complained to the WTO.\n\nWe must now decide how to respond.'),
 		a=T('Согласиться на запрет и пустить зерно через «коридоры солидарности».', 'Accept the ban and send the grain through the «solidarity lanes».'),
 		b=T('Жаловаться в ВТО и давить через Брюссель.', 'Complain to the WTO and press through Brussels.'),
 		c=T('Тихие переговоры: лицензии на вывоз и квоты.', 'Quiet talks: export licences and quotas.'),
@@ -123,11 +123,11 @@ CHAIN = dict(
 		desc=T(
 			'Даём Варшаве разрешение искать и эксгумировать останки польских жертв Волынской трагедии 1943-1944 годов и ухаживать за захоронениями. Взамен просим такого же отношения к украинским могилам в Польше.\n\n'
 			'§YЧто это.§! Комиссии историков и судебных экспертов, работы в сёлах Волыни и Галичины, согласование с местными властями. Тема болезненная: это вопрос памяти и для поляков, и для украинцев.\n'
-			'§YВ реальности.§! В 2025 году, впервые за много лет, в селе Пузники (Тернопольская область) начались эксгумации по согласованию Киева и Варшавы.\n'
+			'§YВ реальности.§! В середине 2020-х, впервые за много лет, в селе Пузники (Тернопольская область) начались эксгумации по согласованию Киева и Варшавы.\n'
 			'§YЧто даст.§! Заметно теплеет отношение Польши, растёт доверие; часть националистов недовольна.',
 			'We give Warsaw permission to search for and exhume the remains of Polish victims of the Volhynia tragedy of 1943-1944 and to tend the burial sites. In return we ask for the same treatment of Ukrainian graves in Poland.\n\n'
 			'§YWhat it is.§! Commissions of historians and forensic experts, work in the villages of Volhynia and Galicia, coordination with local authorities. The subject is painful: it is a matter of memory for both Poles and Ukrainians.\n'
-			'§YIn reality.§! In 2025, for the first time in many years, exhumations began in the village of Puzhnyky (Ternopil Oblast), agreed between Kyiv and Warsaw.\n'
+			'§YIn reality.§! In the mid-2020s, for the first time in many years, exhumations began in the village of Puzhnyky (Ternopil Oblast), agreed between Kyiv and Warsaw.\n'
 			'§YWhat it gives.§! Poland\'s attitude warms noticeably and trust grows; part of the nationalists are displeased.'),
 		res_t=T('Эксгумации начались', 'The exhumations have begun'),
 		res_d=T('Польские и украинские эксперты начали работу в поле. Первые останки найдены и приняты с уважением. Вопрос остаётся трудным, но разговор начался, и в Варшаве это заметили.',

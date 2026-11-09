@@ -11,18 +11,22 @@ UKR_rq_price_apply = {
 }
 
 # Ступень доверия: 1 - от 65, 2 - 45-64, 3 - 25-44, 4 - ниже 25. Цена: 100/115/130/150 процентов; ответ: 7/14/28/45 дней
-# (Прибалтика 3/5/10/20). Затем цены всех запросов UKR_req_cost_<запрос> и двух старых решений помощи.
+# (Прибалтика 3/5/10/20; старые решения помощи: пакет 3/5/7/10, ленд-лиз 7/10/14/21). Затем цены всех запросов UKR_req_cost_<запрос> и двух старых решений.
 UKR_update_request_costs = {
 	set_variable = { var = UKR_req_tier value = 4 }
 	set_variable = { var = UKR_req_pct value = 150 }
 	set_variable = { var = UKR_req_delay value = 45 }
 	set_variable = { var = UKR_req_delay_b value = 20 }
+	set_variable = { var = UKR_aid_delay value = 10 }
+	set_variable = { var = UKR_ll_delay value = 21 }
 	if = {
 		limit = { check_variable = { var = UKR_nato_trust value = 25 compare = greater_than_or_equals } }
 		set_variable = { var = UKR_req_tier value = 3 }
 		set_variable = { var = UKR_req_pct value = 130 }
 		set_variable = { var = UKR_req_delay value = 28 }
 		set_variable = { var = UKR_req_delay_b value = 10 }
+		set_variable = { var = UKR_aid_delay value = 7 }
+		set_variable = { var = UKR_ll_delay value = 14 }
 	}
 	if = {
 		limit = { check_variable = { var = UKR_nato_trust value = 45 compare = greater_than_or_equals } }
@@ -30,6 +34,8 @@ UKR_update_request_costs = {
 		set_variable = { var = UKR_req_pct value = 115 }
 		set_variable = { var = UKR_req_delay value = 14 }
 		set_variable = { var = UKR_req_delay_b value = 5 }
+		set_variable = { var = UKR_aid_delay value = 5 }
+		set_variable = { var = UKR_ll_delay value = 10 }
 	}
 	if = {
 		limit = { check_variable = { var = UKR_nato_trust value = 65 compare = greater_than_or_equals } }
@@ -37,6 +43,8 @@ UKR_update_request_costs = {
 		set_variable = { var = UKR_req_pct value = 100 }
 		set_variable = { var = UKR_req_delay value = 7 }
 		set_variable = { var = UKR_req_delay_b value = 3 }
+		set_variable = { var = UKR_aid_delay value = 3 }
+		set_variable = { var = UKR_ll_delay value = 7 }
 	}
 
 	set_temp_variable = { var = UKR_rq_base value = 40 }

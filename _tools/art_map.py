@@ -6,6 +6,9 @@
 и gfx.txt) и из наших спрайтов (interface/UKR_event_pictures.gfx).
 По умолчанию - только события с временной картинкой (нет спрайта или заглушка).
 Колонка «Решение» в ART_MAP.md сохраняется при перезапуске (по ID события).
+Строка-директива над событием: "# art: reuse" - картинка поставлена временно из уже существующего спрайта, событие попадает в карту;
+"# art: -" - картинка не нужна (событие страны-ответчика, его видит только игрок за неё), в карту не попадает.
+Отдельный раздел карты - значки решений и духов из ICON_SOURCES (ID, что изобразить, имя файла, статус).
 Подбор идёт по ключевым словам (ART_THEMES ниже), это подсказка, а не автозамена:
 смотреть превью картинок в установленной TFR и записывать выбор в колонку «Решение».
 """
@@ -35,13 +38,58 @@ def strip_comments(t):
 
 
 def event_blocks(c):
-    """Верхнеуровневые блоки country_event/news_event с отступом по скобкам."""
+    """Верхнеуровневые блоки country_event/news_event с отступом по скобкам; третье значение - номер строки начала."""
     for m in re.finditer(r'^(country_event|news_event)\s*=\s*\{', c, re.M):
         i, d = m.end(), 1
         while i < len(c) and d:
             d += (c[i] == '{') - (c[i] == '}')
             i += 1
-        yield m.group(1), c[m.end():i - 1]
+        yield m.group(1), c[m.end():i - 1], c.count('\n', 0, m.start())
+
+
+def art_directive(raw_lines, line_idx):
+    """Директива "# art: ..." в ближайшей непустой строке над событием (reuse или -), иначе None."""
+    j = line_idx - 1
+    while j >= 0 and not raw_lines[j].strip():
+        j -= 1
+    if j >= 0:
+        m = re.match(r'\s*#\s*art:\s*(\S+)', raw_lines[j])
+        if m:
+            return m.group(1)
+    return None
+
+
+# Значки (решения и духи) с временной или чужой картинкой: (раздел, файл, вид, папка PNG, размер, поле картинки)
+ICON_SOURCES = [
+    ('decision', 'common/decisions/UKR_decisions_allies.txt', 'gfx/interface/decisions/UKR', '45x45', 'icon'),
+    ('idea', 'common/ideas/UKR_ideas_allies.txt', 'gfx/interface/ideas/UKR', '68x68', 'picture'),
+]
+
+
+def icon_rows(loc):
+    """Значки из ICON_SOURCES: (вид, ключ, название, что изобразить, сейчас, папка, размер, есть_lim)."""
+    rows = []
+    for kind, rel, folder, size, field in ICON_SOURCES:
+        path = os.path.join(ROOT, rel)
+        if not os.path.exists(path):
+            continue
+        text = strip_comments(read(path))
+        indent = r'\t' if kind == 'decision' else r'\t\t'
+        keys = re.findall(r'^%s(UKR_\w+) = \{' % indent, text, re.M)
+        for m in re.finditer(r'^%s(UKR_\w+) = \{' % indent, text, re.M):
+            key, i, d = m.group(1), m.end(), 1
+            while i < len(text) and d:
+                d += (text[i] == '{') - (text[i] == '}')
+                i += 1
+            body = text[m.end():i - 1]
+            pic = re.search(r'^\s*%s\s*=\s*(\S+)' % field, body, re.M)
+            if kind == 'idea' and key.endswith('_lim'):
+                continue
+            desc = clean(loc.get(key + '_desc', ''))
+            short = desc.split('. ')[0][:160]
+            rows.append((kind, key, clean(loc.get(key, '')), short, pic.group(1) if pic else '-', folder, size,
+                         (key + '_lim') in keys))
+    return rows
 
 
 def load_loc():
@@ -129,7 +177,11 @@ def main():
     rows = []
     for p in sorted(glob.glob(os.path.join(ROOT, 'events', '*.txt'))):
         base = os.path.basename(p)
-        for kind, b in event_blocks(strip_comments(read(p))):
+        raw = read(p)
+        raw_lines = raw.split('\n')
+        for kind, b, ln in event_blocks(strip_comments(raw)):
+            directive = art_directive(raw_lines, ln)
+            if directive == '-': continue
             mid = re.search(r'\bid\s*=\s*([\w\.]+)', b)
             pic = re.search(r'^\s*picture\s*=\s*(\w+)', b, re.M)
             if not mid: continue
@@ -137,16 +189,17 @@ def main():
             cur = pic.group(1) if pic else ''
             hidden = bool(re.search(r'^\s*hidden\s*=\s*yes', b, re.M))
             missing = bool(cur) and cur not in known and cur not in PLACEHOLDERS
-            temp = (cur in PLACEHOLDERS) or missing
+            reuse = (directive == 'reuse')
+            temp = (cur in PLACEHOLDERS) or missing or reuse
             if not show_all and not temp: continue
             t = clean(loc.get(eid + '.t', ''))
-            d = clean(loc.get(eid + '.d', ''))
+            d = clean(loc.get(eid + '.d', '') or loc.get(eid + '.d_full', ''))
             themes, cands = suggest(t, d, tfr, allgfx, ours)
             if not t and not d:
                 themes = ['нет текста у нас (служебное событие TFR, картинка не важна)']
             elif hidden:
                 themes = ['скрытое событие'] + themes
-            rows.append(dict(file=base, id=eid, kind=kind, title=t, desc=d, cur=cur, missing=missing,
+            rows.append(dict(file=base, id=eid, kind=kind, title=t, desc=d, cur=cur, missing=missing, reuse=reuse,
                              orig=(eid in tfr_events), hidden=hidden,
                              temp=temp, themes=themes, cands=cands))
     # сохранить ручные колонки «Решение» и «Статус» (по ID события)
@@ -172,12 +225,15 @@ def main():
          'дописать спрайт `GFX_UKR_<имя без UKR_ и .png>` в `interface/UKR_event_pictures.gfx` и поставить его в `picture =` события. '
          '**Статус** (вручную, сохраняется при перезапуске): `найдено` - снимок выбран; `обработано` - обрезан, фильтр общего стиля, лежит в `gfx/event_pictures/`; '
          '`в моде` - спрайт описан и стоит в событии. Если файл с таким именем уже лежит в `gfx/event_pictures/`, статус «в моде» ставится автоматически. '
-         'Для скрытых и служебных событий имя файла `-` (картинка не нужна).', '']
+         'Для скрытых и служебных событий имя файла `-` (картинка не нужна). '
+         'Событие с временной картинкой из уже существующего спрайта помечается в коде строкой `# art: reuse` над `country_event` и попадает в таблицу '
+         '(колонка «Сейчас» - `(временная, чужая)`); строка `# art: -` означает, что картинка не нужна (событие страны-ответчика), и в таблицу такое событие не попадает.', '']
     n = sum(1 for r in rows if r['temp'])
     nm = sum(1 for r in rows if r['missing'])
     no = sum(1 for r in rows if r['orig'] and not r['hidden'])
     nh = sum(1 for r in rows if r['hidden'])
-    L += ['Событий с временной картинкой: **%d** (из них спрайт не определён нигде: **%d**; оригиналы TFR: %d; скрытые, картинка не видна: %d); в таблице: %d.' % (n, nm, no, nh, len(rows)),
+    nr = sum(1 for r in rows if r.get('reuse'))
+    L += ['Событий с временной картинкой: **%d** (из них спрайт не определён нигде: **%d**; оригиналы TFR: %d; скрытые, картинка не видна: %d; временные из существующих спрайтов, `# art: reuse`: %d); в таблице: %d.' % (n, nm, no, nh, nr, len(rows)),
           'Заглушка `GFX_report_event_ukrainian_civil_war` не найдена ни в индексе TFR, ни у нас: возможно, ванильный спрайт [ПРОВЕРИТЬ в игре, нет ли пустой рамки]. '
           '«Нет спрайта!» - картинка точно нигде не определена, в игре будет пустая рамка.', '']
     for f, rs in by.items():
@@ -187,6 +243,7 @@ def main():
             ctx = r['desc'][:140].replace('|', '/') + ('...' if len(r['desc']) > 140 else '')
             cur = '`%s`' % r['cur'] if r['cur'] else '-'
             if r['missing']: cur += ' (**нет спрайта!**)'
+            elif r.get('reuse'): cur += ' (временная, чужая)'
             elif r['temp']: cur += ' (заглушка)'
             cands = '<br>'.join('`%s` (%s)' % (s, w) for s, w, _ in r['cands']) or '-'
             skip = r['hidden'] or not (r['title'] or r['desc'])
@@ -198,9 +255,27 @@ def main():
                 r['id'], r['title'].replace('|', '/'), ctx, cur, ', '.join(r['themes']) or '-', cands,
                 decided.get(r['id'], '').replace('|', '/'), '`%s`' % fname if not skip else '-', st))
         L.append('')
+    icons = icon_rows(loc)
+    if icons:
+        L += ['## Значки решений и духов (временные, чужие)', '',
+              'Решение: PNG **45x45** в `gfx/interface/decisions/UKR/<имя>.png`, спрайт `GFX_decision_<ключ>` в `interface/UKR_decisions.gfx`, '
+              'в решении `icon = GFX_decision_<ключ>`. Дух: PNG **68x68** в `gfx/interface/ideas/UKR/<имя>.png`, спрайт `GFX_idea_<ключ>` в `interface/UKR_ideas.gfx`, '
+              'в идее `picture = <ключ>` (без `GFX_idea_`). Статус и решение вносятся вручную и сохраняются при перезапуске; если файл с таким именем уже лежит в папке, '
+              'статус «в моде» ставится автоматически. Урезанная версия духа (`_lim`) использует тот же значок.', '',
+              '| ID | Название | Что изобразить | Сейчас | Темы | Кандидаты | Решение | Имя файла | Статус |', '|---|---|---|---|---|---|---|---|---|']
+        for kind, key, name, short, cur, folder, size, has_lim in icons:
+            fname = '%s.png' % key
+            st = status.get(key, '')
+            if not st and os.path.exists(os.path.join(ROOT, folder, fname)):
+                st = 'в моде'
+            kind_ru = 'решение' if kind == 'decision' else 'дух'
+            what = short.replace('|', '/') + (' (общий значок с `_lim`)' if has_lim else '')
+            L.append('| `%s` | %s (%s) | %s | `%s` (чужой) | - | - | %s | `%s/%s` (%s) | %s |' % (
+                key, name.replace('|', '/'), kind_ru, what, cur, decided.get(key, '').replace('|', '/'), folder, fname, size, st))
+        L.append('')
     open(out, 'w', encoding='utf-8', newline='\n').write('\n'.join(L))
-    print('событий в карте: %d (с временной картинкой %d); без кандидатов (видимые): %d -> %s' % (
-        len(rows), n, sum(1 for r in rows if not r['cands'] and not r['hidden'] and (r['title'] or r['desc'])), os.path.relpath(out, ROOT)))
+    print('событий в карте: %d (с временной картинкой %d); без кандидатов (видимые): %d; значков: %d -> %s' % (
+        len(rows), n, sum(1 for r in rows if not r['cands'] and not r['hidden'] and (r['title'] or r['desc'])), len(icons), os.path.relpath(out, ROOT)))
 
 
 if __name__ == '__main__':

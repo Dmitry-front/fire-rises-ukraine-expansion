@@ -401,6 +401,106 @@ EXH_EVENT = '''country_event = {
 '''
 
 
+AID_EVENT = '''country_event = {
+	id = ukraine_foreign.480
+	title = ukraine_foreign.480.t
+	desc = ukraine_foreign.480.d
+	picture = GFX_event_UKR_war_support_NATO
+
+	is_triggered_only = yes
+
+	# Прибытие пакета западной помощи (решение UKR_western_aid_package, задержка 3/5/7/10 дней по доверию)
+	immediate = {
+		set_temp_variable = { var = UKR_aid_base value = 400 }
+		UKR_nato_aid_scale = yes
+		add_equipment_to_stockpile = {
+			type = infantry_equipment_1
+			amount = UKR_aid_amount
+			producer = PLD
+		}
+		set_temp_variable = { var = UKR_aid_base value = 80 }
+		UKR_nato_aid_scale = yes
+		add_equipment_to_stockpile = {
+			type = support_equipment
+			amount = UKR_aid_amount
+			producer = GER
+		}
+		set_temp_variable = { var = UKR_aid_base value = 60 }
+		UKR_nato_aid_scale = yes
+		add_equipment_to_stockpile = {
+			type = anti_tank_equipment_1
+			amount = UKR_aid_amount
+			producer = ENG
+		}
+	}
+
+	option = {
+		name = ukraine_foreign.480.a
+		ai_chance = { base = 100 }
+	}
+}
+'''
+
+LL_EVENT = '''country_event = {
+	id = ukraine_foreign.481
+	title = ukraine_foreign.481.t
+	desc = ukraine_foreign.481.d
+	picture = GFX_Generic_Tank_column
+
+	is_triggered_only = yes
+
+	# Прибытие ленд-лиза (решение UKR_lend_lease_program, задержка 7/10/14/21 день по доверию; раньше 30 дней)
+	immediate = {
+		set_country_flag = UKR_lend_lease_approved
+		add_timed_idea = {
+			idea = UKR_idea_lend_lease
+			days = 150
+		}
+		set_temp_variable = { var = UKR_aid_base value = 1500 }
+		UKR_nato_aid_scale = yes
+		add_equipment_to_stockpile = {
+			type = infantry_equipment_1
+			amount = UKR_aid_amount
+			producer = FRA
+		}
+		set_temp_variable = { var = UKR_aid_base value = 400 }
+		UKR_nato_aid_scale = yes
+		add_equipment_to_stockpile = {
+			type = support_equipment
+			amount = UKR_aid_amount
+			producer = GER
+		}
+		set_temp_variable = { var = UKR_aid_base value = 150 }
+		UKR_nato_aid_scale = yes
+		add_equipment_to_stockpile = {
+			type = anti_tank_equipment_1
+			amount = UKR_aid_amount
+			producer = ENG
+		}
+		set_temp_variable = { var = UKR_aid_base value = 120 }
+		UKR_nato_aid_scale = yes
+		add_equipment_to_stockpile = {
+			type = motorized_equipment
+			amount = UKR_aid_amount
+			producer = PLD
+		}
+		set_temp_variable = { var = UKR_aid_base value = 500 }
+		UKR_nato_aid_scale = yes
+		add_equipment_to_stockpile = {
+			type = infantry_equipment_1
+			amount = UKR_aid_amount
+			producer = ITA
+		}
+	}
+
+	option = {
+		name = ukraine_foreign.481.a
+		ai_chance = { base = 100 }
+	}
+}
+'''
+
+
 def gen_events():
 	head = (
 		'add_namespace = ukraine_foreign\n'
@@ -410,15 +510,18 @@ def gen_events():
 		'# Запрос (область страны-ответчика): три опции - полный пакет, частичный, отказ; выбирает ИИ по ai_chance (отношение страны к Украине,\n'
 		'# доверие европейского НАТО, прошлое Украины), человек выбирает сам. Опция выдаёт эффекты Украине (в области UKR) и шлёт итог.\n'
 		'# Итог (область Украины): один текст на исход по флагу UKR_req_<запрос>_full/_part/_no и одна подходящая кнопка.\n'
-		'# Картинки временные (существующие спрайты), см. CLAUDE.md, «Нужен арт».\n'
+		'# Картинки временные (существующие спрайты); учёт арта - ART_MAP.md. Строка "# art:" над событием читает _tools/art_map.py:\n'
+		'# "# art: reuse" - картинка временная, событие попадает в ART_MAP.md; "# art: -" - картинка не нужна (событие страны-ответчика).\n'
 		'\n'
 	)
 	parts = []
 	for r in REQ:
-		parts.append('# %s -> %s\n' % (r['tag'], r['key']) + render_request_event(r))
-		parts.append(render_result_event(r))
-	parts.append('# Цепочка Польши: зерно на границе (через 150 дней после согласия на транзитный хаб)\n' + GRAIN_EVENT)
-	parts.append('# Цепочка Польши: итог решения UKR_pl_exhumations\n' + EXH_EVENT)
+		parts.append('# %s -> %s\n# art: -\n' % (r['tag'], r['key']) + render_request_event(r))
+		parts.append('# art: reuse\n' + render_result_event(r))
+	parts.append('# Цепочка Польши: зерно на границе (через 150 дней после согласия на транзитный хаб)\n# art: reuse\n' + GRAIN_EVENT)
+	parts.append('# Цепочка Польши: итог решения UKR_pl_exhumations\n# art: reuse\n' + EXH_EVENT)
+	parts.append('# Прибытие пакета западной помощи (старое решение UKR_western_aid_package)\n# art: reuse\n' + AID_EVENT)
+	parts.append('# Прибытие ленд-лиза (старое решение UKR_lend_lease_program)\n# art: reuse\n' + LL_EVENT)
 	return head + '\n'.join(parts)
 
 
@@ -439,14 +542,16 @@ def gen_effects():
 		'}',
 		'',
 		'# Ступень доверия: 1 - от 65, 2 - 45-64, 3 - 25-44, 4 - ниже 25. Цена: 100/115/130/150 процентов; ответ: 7/14/28/45 дней',
-		'# (Прибалтика 3/5/10/20). Затем цены всех запросов UKR_req_cost_<запрос> и двух старых решений помощи.',
+		'# (Прибалтика 3/5/10/20; старые решения помощи: пакет 3/5/7/10, ленд-лиз 7/10/14/21). Затем цены всех запросов UKR_req_cost_<запрос> и двух старых решений.',
 		'UKR_update_request_costs = {',
 		'\tset_variable = { var = UKR_req_tier value = 4 }',
 		'\tset_variable = { var = UKR_req_pct value = 150 }',
 		'\tset_variable = { var = UKR_req_delay value = 45 }',
 		'\tset_variable = { var = UKR_req_delay_b value = 20 }',
+		'\tset_variable = { var = UKR_aid_delay value = 10 }',
+		'\tset_variable = { var = UKR_ll_delay value = 21 }',
 	]
-	for lo, tier, pct, d, db in ((25, 3, 130, 28, 10), (45, 2, 115, 14, 5), (65, 1, 100, 7, 3)):
+	for lo, tier, pct, d, db, ad, ld in ((25, 3, 130, 28, 10, 7, 14), (45, 2, 115, 14, 5, 5, 10), (65, 1, 100, 7, 3, 3, 7)):
 		lines += [
 			'\tif = {',
 			'\t\tlimit = { check_variable = { var = UKR_nato_trust value = %d compare = greater_than_or_equals } }' % lo,
@@ -454,6 +559,8 @@ def gen_effects():
 			'\t\tset_variable = { var = UKR_req_pct value = %d }' % pct,
 			'\t\tset_variable = { var = UKR_req_delay value = %d }' % d,
 			'\t\tset_variable = { var = UKR_req_delay_b value = %d }' % db,
+			'\t\tset_variable = { var = UKR_aid_delay value = %d }' % ad,
+			'\t\tset_variable = { var = UKR_ll_delay value = %d }' % ld,
 			'\t}',
 		]
 	lines.append('')
@@ -525,6 +632,14 @@ SHARED = {
 	'UKR_trust_reason_21': ('§G+1§! просьба выполнена частично', '§G+1§! a request was partly met'),
 	'UKR_trust_tt_request_full': ('Доверие европейского НАТО: §G+2§!', 'European NATO trust: §G+2§!'),
 	'UKR_trust_tt_request_part': ('Доверие европейского НАТО: §G+1§!', 'European NATO trust: §G+1§!'),
+	'UKR_aid_package_tt': ('Состав пакета: стрелковое оружие и боеприпасы (Польша), снаряжение поддержки (Германия), противотанковые комплексы (Британия).',
+		'Contents of the package: small arms and ammunition (Poland), support equipment (Germany), anti-tank systems (Britain).'),
+	'UKR_lend_lease_tt': ('Состав поставки: стрелковое оружие (Франция, Италия), снаряжение поддержки (Германия), противотанковые комплексы (Британия), грузовики и транспортёры (Польша); на 150 дней действует дух ленд-лиза.',
+		'Contents of the shipment: small arms (France, Italy), support equipment (Germany), anti-tank systems (Britain), trucks and carriers (Poland); the lend-lease spirit lasts 150 days.'),
+	'UKR_aid_delay_tt': ('Пакет придёт примерно через §Y[?UKR_aid_delay|0]§! дн.; чем ниже доверие, тем дольше.',
+		'The package will arrive in about §Y[?UKR_aid_delay|0]§! days; the lower the trust, the longer.'),
+	'UKR_aid_delay_ll_tt': ('Поставка придёт примерно через §Y[?UKR_ll_delay|0]§! дн.; чем ниже доверие, тем дольше.',
+		'The shipment will arrive in about §Y[?UKR_ll_delay|0]§! days; the lower the trust, the longer.'),
 	'ukr_allies_request_met': ('Просьба Украины выполнена', 'Ukraine\'s request met'),
 	'ukr_allies_request_partial': ('Просьба Украины выполнена частично', 'Ukraine\'s request partly met'),
 	'ukr_allies_grain_dispute': ('Спор о зерне: жалобы и давление', 'The grain dispute: complaints and pressure'),
@@ -568,6 +683,14 @@ def gen_loc(lang):
 	put('ukraine_foreign.321.t', c['exh']['res_t'][lang])
 	put('ukraine_foreign.321.d', c['exh']['res_d'][lang])
 	put('ukraine_foreign.321.a', c['exh']['res_a'][lang])
+	put('ukraine_foreign.480.t', 'Пакет западной помощи прибыл' if lang == 'ru' else 'The Western aid package has arrived')
+	put('ukraine_foreign.480.d', ('Очередная партия помощи пересекла границу: польская стрелковая техника и боеприпасы, немецкое снаряжение поддержки и британские противотанковые комплексы. Каждый такой пакет невелик, но между крупными поставками он держит армию на ходу. Размер партии зависит от единства НАТО.'
+		if lang == 'ru' else 'Another batch of aid has crossed the border: Polish small arms and ammunition, German support equipment and British anti-tank systems. Each such package is small, but between the large deliveries it keeps the army going. The size of the batch depends on the unity of NATO.'))
+	put('ukraine_foreign.480.a', 'Принять и распределить по бригадам.' if lang == 'ru' else 'Accept and distribute among the brigades.')
+	put('ukraine_foreign.481.t', 'Ленд-лиз: первая поставка' if lang == 'ru' else 'Lend-lease: the first shipment')
+	put('ukraine_foreign.481.d', ('Программа ленд-лиза заработала: из Франции и Италии пришли стрелковые комплексы, из Германии снаряжение поддержки, из Британии противотанковые комплексы, из Польши грузовики и транспортёры. Поставки рассчитаны на месяцы, поэтому действует и временный дух ленд-лиза.\n\n§YВ реальности.§! Закон о ленд-лизе для Украины США приняли в 2022 году: он упростил передачу техники без немедленной оплаты и ускорил поставки.'
+		if lang == 'ru' else 'The lend-lease programme is under way: small arms arrived from France and Italy, support equipment from Germany, anti-tank systems from Britain, trucks and carriers from Poland. The deliveries are planned for months, so the temporary lend-lease spirit applies as well.\n\n§YIn reality.§! The United States adopted the lend-lease act for Ukraine in 2022: it simplified the transfer of equipment without immediate payment and sped up deliveries.'))
+	put('ukraine_foreign.481.a', 'Принять поставку.' if lang == 'ru' else 'Accept the shipment.')
 	lines.append('')
 	for idea in IDEAS:
 		put(idea['name'], idea['%s_name' % lang])

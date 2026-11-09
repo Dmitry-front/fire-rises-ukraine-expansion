@@ -12,12 +12,12 @@ REQ = [
 		name=T('Просить Берлин: щит для неба', 'Ask Berlin: a shield for the sky'),
 		desc=T(
 			'Просим Германию передать зенитные комплексы и самоходные установки для защиты городов и энергосистемы.\n\n'
-			'§YЧто это.§! Зенитные комплексы средней дальности IRIS-T SLM, самоходные зенитные установки «Гепард» (были на вооружении бундесвера с 1976 до 2010 года) и ЗРК «Пэтриот».\n'
-			'§YВ реальности.§! С осени 2022 года Германия передавала IRIS-T SLM и около полусотни «Гепардов», а позже, вместе с партнёрами, и батареи «Пэтриот».\n'
+			'§YЧто это.§! Зенитные комплексы средней дальности IRIS-T SLM, самоходные зенитные установки «Гепард» (стояли на вооружении бундесвера с 1970-х до 2010-х) и ЗРК «Пэтриот».\n'
+			'§YВ реальности.§! С 2022 года Германия передавала IRIS-T SLM и около полусотни «Гепардов», а позже, вместе с партнёрами, и батареи «Пэтриот».\n'
 			'§YЧто даст.§! Зенитная техника на склад и шаг к защите инфраструктуры от ударов с воздуха.',
 			'We ask Germany to hand over air defence systems and self-propelled guns to protect our cities and the power grid.\n\n'
-			'§YWhat it is.§! IRIS-T SLM medium-range air defence systems, Gepard self-propelled anti-aircraft guns (in Bundeswehr service from 1976 until 2010) and Patriot missile systems.\n'
-			'§YIn reality.§! From autumn 2022 Germany supplied IRIS-T SLM and about fifty Gepards, and later, together with partners, Patriot batteries.\n'
+			'§YWhat it is.§! IRIS-T SLM medium-range air defence systems, Gepard self-propelled anti-aircraft guns (in Bundeswehr service from the 1970s until the 2010s) and Patriot missile systems.\n'
+			'§YIn reality.§! From 2022 Germany supplied IRIS-T SLM and about fifty Gepards, and later, together with partners, Patriot batteries.\n'
 			'§YWhat it gives.§! Air defence equipment for the stockpile and a step towards protecting infrastructure from air strikes.'),
 		req_t=T('Просьба Киева: противовоздушный щит', 'Kyiv\'s request: an air defence shield'),
 		req_d=T('Украина просит зенитные комплексы для защиты городов и энергосистемы. Ответ определит, сколько ракет и систем Германия может выделить, не оголив собственную ПВО.',
@@ -68,12 +68,12 @@ REQ = [
 		name=T('Просить Берлин: тяжёлая техника', 'Ask Berlin: heavy equipment'),
 		desc=T(
 			'Просим Германию передать танки, боевые машины пехоты и самоходные гаубицы из запасов бундесвера и промышленности.\n\n'
-			'§YЧто это.§! Танки «Леопард 2» (в Германии с 1979 года, модификация 2А6 с 2001-го), боевые машины пехоты «Мардер» (с 1971 года) и самоходные гаубицы PzH 2000 (с 1998 года).\n'
-			'§YВ реальности.§! В 2022 году Германия передала первые PzH 2000, а в январе 2023-го, после месяцев споров, согласилась на «Леопарды 2» и «Мардеры», когда США и другие союзники решили присоединиться.\n'
+			'§YЧто это.§! Танки «Леопард 2» (в Германии с 1970-х, модификация 2А6 с 2000-х), боевые машины пехоты «Мардер» (с 1970-х) и самоходные гаубицы PzH 2000 (с 1990-х).\n'
+			'§YВ реальности.§! В 2022 году Германия передала первые PzH 2000, а в 2023 году, после месяцев споров, согласилась на «Леопарды 2» и «Мардеры», когда США и другие союзники решили присоединиться.\n'
 			'§YЧто даст.§! Бронетехника и артиллерия для наступательных операций; но без доверия решение у Берлина вырвать трудно.',
 			'We ask Germany to hand over tanks, infantry fighting vehicles and self-propelled howitzers from Bundeswehr stocks and from industry.\n\n'
-			'§YWhat it is.§! Leopard 2 tanks (in Germany since 1979, the 2A6 version since 2001), Marder infantry fighting vehicles (since 1971) and PzH 2000 self-propelled howitzers (since 1998).\n'
-			'§YIn reality.§! In 2022 Germany handed over the first PzH 2000, and in January 2023, after months of dispute, agreed to Leopard 2 and Marder when the United States and other allies decided to join.\n'
+			'§YWhat it is.§! Leopard 2 tanks (in Germany since the 1970s, the 2A6 version since the 2000s), Marder infantry fighting vehicles (since the 1970s) and PzH 2000 self-propelled howitzers (since the 1990s).\n'
+			'§YIn reality.§! In 2022 Germany handed over the first PzH 2000, and in 2023, after months of dispute, agreed to Leopard 2 and Marder when the United States and other allies decided to join.\n'
 			'§YWhat it gives.§! Armour and artillery for offensive operations; but without trust it is hard to extract such a decision from Berlin.'),
 		req_t=T('Просьба Киева: тяжёлая техника', 'Kyiv\'s request: heavy equipment'),
 		req_d=T('Украина просит танки, боевые машины пехоты и самоходные гаубицы. Канцлер колеблется: не хочет эскалации и ждёт, что решат союзники.',

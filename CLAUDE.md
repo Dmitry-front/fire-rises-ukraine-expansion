@@ -132,6 +132,7 @@
 - **Стройка:** `add_extra_state_shared_building_slots`, `add_building_construction`.
 - **Политика:** около 30 идеологий TFR (`social_liberal`, `authoritarian_democrat`, `conservative`, `nationalist`, `military_junta`, `oligarchist`, `hybrid_regime`, …). Также `add_to_coalition`, `add_ruling_party_wing`, `set_party_name`, `add_power_balance_value`. Популярность партий Рады показываем **процентами**, без мест и отдельного интерфейса.
 - **Типы государства:** `change_government_type_*` (например, `presidential_republic`, `semi_presidential_system`, `military_dictatorship`) и `change_economy_type_*` (например, `mixed_economy`, `oligopolistic_capitalism`, `military_controlled`).
+- **Польша - тег `PLD`, не `POL`.** В TFR `POL` не существует как страна (ни одной области в `history/states`, авторы пишут: «POL would randomly crash the game»), действующая Польша - `PLD` («Not Poland»). `PLD = { ... }`, `country_exists = PLD`, `producer = PLD`; эффекты на `POL` молча не работают. Исправлено 09.11.2026 (16 мест).
 - **Влияние:** переменные `Russian_Influence`, `European_Influence`, `American_Influence`, `Chinese_Influence`, `PDO_Influence`, `Sovereign_Influence`.
 - Динамические модификаторы (`add_dynamic_modifier`) и `set_temp_variable` для расчётов в тултипах. После изменения переменной динамического модификатора — `force_update_dynamic_modifier = yes`.
 
